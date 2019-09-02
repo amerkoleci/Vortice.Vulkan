@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Description>Vulkan low level bindings.</Description>
+    <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
+    <VersionPrefix>1.1.121</VersionPrefix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.5.2" />
+    <ProjectReference Include="../Patch/Patch.csproj"
+                     ReferenceOutputAssembly="false"
+                     SkipGetTargetFrameworkProperties="true"
+                     GlobalPropertiesToRemove="TargetFramework" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PatcherExecutable>$(BinDir)\$(Configuration)\Patch\netcoreapp2.1\Patch.dll</PatcherExecutable>
+  </PropertyGroup>
+
+  <Target Name="PathDll" AfterTargets="Build">
+    <Message Text="Patch dll." />
+    <Exec Command='dotnet "$(PatcherExecutable)" --input "$(TargetPath)"' />
+  </Target>
+</Project>
