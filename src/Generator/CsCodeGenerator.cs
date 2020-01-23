@@ -76,10 +76,18 @@ namespace Generator
             { "HANDLE", "IntPtr" },
             { "SECURITY_ATTRIBUTES", "IntPtr" },
             { "LPCWSTR", "IntPtr" },
+            { "HMONITOR", "IntPtr" },
 
             { "xcb_connection_t", "IntPtr" },
             { "xcb_window_t", "IntPtr" },
             { "xcb_visualid_t", "IntPtr" },
+
+            { "CAMetalLayer", "IntPtr" },
+            { "GgpFrameToken", "IntPtr" },
+            { "GgpStreamDescriptor", "IntPtr" },
+
+            // TODO: Until we marshal functions
+            { "VkDeviceAddress", "IntPtr" },
         };
 
         public static void Generate(VulkanSpecs specs, string outputPath)

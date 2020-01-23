@@ -24,6 +24,8 @@ namespace Generator
 
         public bool IsLength { get; set; }
 
+        public string LegalValues { get; }
+
         public VulkanMemberDefinition(
             string name,
             VulkanTypeSpecification type,
@@ -33,7 +35,7 @@ namespace Generator
             string elementCountSymbolic,
             string lengthMemberName,
             bool nullTerminated,
-            string comment)
+            string comment, string legalValues)
         {
             Name = name;
             Type = type;
@@ -44,6 +46,7 @@ namespace Generator
             LengthMemberName = lengthMemberName;
             NullTerminated = nullTerminated;
             Comment = comment;
+            LegalValues = legalValues;
         }
     }
 }

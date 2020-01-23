@@ -10,19 +10,11 @@
 
   <ItemGroup>
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.5.2" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.7.0" />
     <ProjectReference Include="../Patch/Patch.csproj"
                      ReferenceOutputAssembly="false"
                      SkipGetTargetFrameworkProperties="true"
                      GlobalPropertiesToRemove="TargetFramework" />
   </ItemGroup>
 
-  <PropertyGroup>
-    <PatcherExecutable>$(BinDir)\$(Configuration)\Patch\netcoreapp2.1\Patch.dll</PatcherExecutable>
-  </PropertyGroup>
-
-  <Target Name="PathDll" AfterTargets="Build">
-    <Message Text="Patch dll." />
-    <Exec Command='dotnet "$(PatcherExecutable)" --input "$(TargetPath)"' />
-  </Target>
 </Project>

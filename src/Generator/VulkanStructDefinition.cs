@@ -16,12 +16,15 @@ namespace Generator
 
         public VulkanMemberDefinition[] Members { get; }
 
-        public VulkanStructDefinition(string name, bool isUnion, bool isBlittable, VulkanMemberDefinition[] members)
+        public string Alias { get; }
+
+        public VulkanStructDefinition(string name, bool isUnion, bool isBlittable, VulkanMemberDefinition[] members, string alias)
         {
             Name = name;
             IsUnion = isUnion;
             IsBlittable = isBlittable;
             Members = members;
+            Alias = alias;
         }
 
         public override string ToString()

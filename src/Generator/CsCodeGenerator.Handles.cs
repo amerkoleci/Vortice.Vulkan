@@ -29,20 +29,6 @@ namespace Generator
                     }
 
                     var csName = handle.Name;
-
-                    // Remove Vk prefix.
-                    var nameChanged = false;
-                    if (csName.StartsWith("Vk"))
-                    {
-                        csName = csName.Substring(2);
-                        nameChanged = true;
-                    }
-
-                    if (nameChanged)
-                    {
-                        AddCsMapping(handle.Name, csName);
-                    }
-
                     writer.WriteLine("[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
                     using (writer.PushBlock($"public partial struct {csName} : IEquatable<{csName}>"))
                     {

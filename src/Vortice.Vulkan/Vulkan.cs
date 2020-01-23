@@ -6,39 +6,131 @@ using System.Runtime.InteropServices;
 
 namespace Vortice.Vulkan
 {
-    public static partial class Vulkan
+    public static unsafe partial class Vulkan
     {
-        private static readonly ILibraryLoader _loader;
+        private static IntPtr s_vulkanModule = IntPtr.Zero;
+        private static readonly ILibraryLoader _loader = InitializeLoader();
+        private static VkInstance s_loadedInstance = VkInstance.Null;
+        private static VkDevice s_loadedDevice = VkDevice.Null;
+
+        private delegate IntPtr VoidFunction(IntPtr context, string name);
+
+
 
         static Vulkan()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                _loader = new WindowsLoader();
-            }
-            else
-            {
-                _loader = new UnixLoader();
-            }
-
-            //vkGetInstanceProcAddr_ptr = GetProcAddress(nameof(vkGetInstanceProcAddr));
             //vkCreateInstance_ptr = vkGetInstanceProcAddr(IntPtr.Zero, nameof(vkCreateInstance));
             //vkEnumerateInstanceExtensionProperties_ptr = vkGetInstanceProcAddr(IntPtr.Zero, nameof(vkEnumerateInstanceExtensionProperties));
             //vkEnumerateInstanceLayerProperties_ptr = vkGetInstanceProcAddr(IntPtr.Zero, nameof(vkEnumerateInstanceLayerProperties));
             //vkEnumerateInstanceVersion_ptr = vkGetInstanceProcAddr(IntPtr.Zero, nameof(vkEnumerateInstanceVersion));
         }
 
+        public static VkResult Initialize()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                s_vulkanModule = _loader.LoadNativeLibrary("vulkan-1.dll");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.dylib");
+                if (s_vulkanModule == IntPtr.Zero)
+                    s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.1.dylib");
+                if (s_vulkanModule == IntPtr.Zero)
+                    s_vulkanModule = _loader.LoadNativeLibrary("libMoltenVK.dylib");
+            }
+            else
+            {
+                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so");
+                if (s_vulkanModule == IntPtr.Zero)
+                    s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so.1");
+            }
+
+            if (s_vulkanModule == IntPtr.Zero)
+                return VkResult.ErrorInitializationFailed;
+
+#if CALLI_SUPPORT
+            vkGetInstanceProcAddr_ptr = GetProcAddress(nameof(vkGetInstanceProcAddr));
+#else
+            vkGetInstanceProcAddr_ptr = GetProcAddress<vkGetInstanceProcAddrDelegate>(nameof(vkGetInstanceProcAddr));
+#endif
+
+            GenLoadLoader(IntPtr.Zero, vkGetInstanceProcAddr);
+
+            return VkResult.Success;
+        }
+
+        private static ILibraryLoader InitializeLoader()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return new WindowsLoader();
+            }
+            else
+            {
+                return new UnixLoader();
+            }
+        }
+
         private static IntPtr GetProcAddress(string procName)
         {
-            return _loader.GetSymbol(procName);
+            return _loader.GetSymbol(s_vulkanModule, procName);
         }
 
         public static TDelegate GetProcAddress<TDelegate>(string procName) where TDelegate : class
         {
-            var handle = _loader.GetSymbol(procName);
+            var handle = _loader.GetSymbol(s_vulkanModule, procName);
             return handle == IntPtr.Zero
                 ? null
                 : Marshal.GetDelegateForFunctionPointer<TDelegate>(handle);
+        }
+
+        private static void GenLoadLoader(IntPtr context, VoidFunction load)
+        {
+#if CALLI_SUPPORT
+            vkCreateInstance_ptr = load(context, nameof(vkCreateInstance));
+#else
+            vkCreateInstance_ptr = Marshal.GetDelegateForFunctionPointer<PFN_vkCreateInstance>(load(context, nameof(vkCreateInstance)));
+#endif
+        }
+
+        #region Functions
+        // TODO: We have WIP Calli patch, disable for now.
+#if CALLI_SUPPORT
+        private static IntPtr vkGetInstanceProcAddr_ptr;
+        private static IntPtr vkCreateInstance_ptr;
+#else
+        private delegate IntPtr vkGetInstanceProcAddrDelegate(VkInstance instance, byte* name);
+        private delegate VkResult PFN_vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance pInstance);
+
+        private static vkGetInstanceProcAddrDelegate vkGetInstanceProcAddr_ptr;
+        private static PFN_vkCreateInstance vkCreateInstance_ptr;
+#endif
+        #endregion
+
+
+
+        public unsafe static IntPtr vkGetInstanceProcAddr(IntPtr instance, string name)
+        {
+            int byteCount = Interop.GetMaxByteCount(name);
+            var stringPtr = stackalloc byte[byteCount];
+            Interop.StringToPointer(name, stringPtr, byteCount);
+            return vkGetInstanceProcAddr(instance, stringPtr);
+        }
+
+        [Calli]
+        private unsafe static IntPtr vkGetInstanceProcAddr(IntPtr instance, byte* name)
+        {
+#if CALLI_SUPPORT
+            throw new NotImplementedException();
+#else
+            return vkGetInstanceProcAddr_ptr(instance, name);
+#endif
+        }
+
+        public static VkResult vkCreateInstance(VkInstanceCreateInfo createInfo, out VkInstance instance)
+        {
+            return vkCreateInstance_ptr(&createInfo, null, out instance);
         }
 
 #if TODO
@@ -128,25 +220,12 @@ namespace Vortice.Vulkan
             //return new VkInstance(handle);
         }
 
-        private static readonly IntPtr vkGetInstanceProcAddr_ptr;
-        private static readonly IntPtr vkCreateInstance_ptr;
+       
         private static readonly IntPtr vkEnumerateInstanceExtensionProperties_ptr;
         private static readonly IntPtr vkEnumerateInstanceLayerProperties_ptr;
         private static readonly IntPtr vkEnumerateInstanceVersion_ptr;
 
-        private unsafe static IntPtr vkGetInstanceProcAddr(IntPtr instance, string name)
-        {
-            int byteCount = Interop.GetMaxByteCount(name);
-            var stringPtr = stackalloc byte[byteCount];
-            Interop.StringToPointer(name, stringPtr, byteCount);
-            return vkGetInstanceProcAddr(instance, stringPtr);
-        }
-
-        [Calli]
-        private unsafe static IntPtr vkGetInstanceProcAddr(IntPtr instance, byte* layerName)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         [Calli]
         internal unsafe static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, void* allocator, IntPtr* instance)
@@ -179,21 +258,16 @@ namespace Vortice.Vulkan
 
         internal interface ILibraryLoader
         {
-            IntPtr GetSymbol(string name);
+            IntPtr LoadNativeLibrary(string name);
+
+            IntPtr GetSymbol(IntPtr module, string name);
         }
 
         private class WindowsLoader : ILibraryLoader
         {
-            private readonly IntPtr _module;
+            public IntPtr LoadNativeLibrary(string name) => LoadLibrary(name);
 
-            public WindowsLoader()
-            {
-                _module = LoadLibrary("vulkan-1.dll");
-                if (_module == IntPtr.Zero)
-                    throw new PlatformNotSupportedException($"Vulkan is not supported this platform: {RuntimeInformation.OSDescription}");
-            }
-
-            public IntPtr GetSymbol(string name) => GetProcAddress(_module, name);
+            public IntPtr GetSymbol(IntPtr module, string name) => GetProcAddress(module, name);
 
             [DllImport("kernel32")]
             private static extern IntPtr LoadLibrary(string fileName);
@@ -207,45 +281,24 @@ namespace Vortice.Vulkan
 
         private class UnixLoader : ILibraryLoader
         {
-            private readonly IntPtr _module;
+            public IntPtr LoadNativeLibrary(string name) => dlopen(name, RTLD_NOW | RTLD_LOCAL);
 
-            public UnixLoader()
-            {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    _module = Open("libvulkan.dylib", RTLD_NOW | RTLD_LOCAL);
-                    if (_module == IntPtr.Zero)
-                        _module = Open("libvulkan.1.dylib", RTLD_NOW | RTLD_LOCAL);
-                    if (_module == IntPtr.Zero)
-                        _module = Open("libMoltenVK.dylib", RTLD_NOW | RTLD_LOCAL);
-                }
-                else
-                {
-                    _module = Open("libvulkan.so", RTLD_NOW | RTLD_LOCAL);
-                    if (_module == IntPtr.Zero)
-                        _module = Open("libvulkan.so.1", RTLD_NOW | RTLD_LOCAL);
-                }
-
-                if (_module == IntPtr.Zero)
-                    throw new PlatformNotSupportedException($"Vulkan is not supported this platform: {RuntimeInformation.OSDescription}");
-            }
-
-            public IntPtr GetSymbol(string name) => GetSymbol(_module, name);
+            public IntPtr GetSymbol(IntPtr module, string name) => dlsym(module, name);
 
             [DllImport("libdl", EntryPoint = "dlopen")]
-            private static extern IntPtr Open(string fileName, int flags);
+            private static extern IntPtr dlopen(string fileName, int flags);
 
             [DllImport("libdl", EntryPoint = "dlsym")]
-            private static extern IntPtr GetSymbol(IntPtr handle, string name);
+            private static extern IntPtr dlsym(IntPtr handle, string name);
 
             [DllImport("libdl", EntryPoint = "dlclose")]
-            private static extern int Close(IntPtr handle);
+            private static extern int dlclose(IntPtr handle);
 
             [DllImport("libdl", EntryPoint = "dlerror")]
-            public static extern string GetError();
+            private static extern string dlerror();
 
-            public const int RTLD_LOCAL = 0x0000;
-            public const int RTLD_NOW = 0x0002;
+            private const int RTLD_LOCAL = 0x0000;
+            private const int RTLD_NOW = 0x0002;
         }
     }
 }

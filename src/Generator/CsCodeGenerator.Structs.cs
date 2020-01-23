@@ -2,6 +2,7 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System.IO;
+using System.Linq;
 
 namespace Generator
 {
@@ -30,23 +31,15 @@ namespace Generator
                         continue;
                     }
 
-                    if (!structDef.IsBlittable)
+                    if (!string.IsNullOrEmpty(structDef.Alias))
+                    {
                         continue;
+                    }
+
+                    //if (!structDef.IsBlittable)
+                    //    continue;
 
                     var csName = structDef.Name;
-                    var access = structDef.IsBlittable ? "public" : "internal unsafe";
-                    var nameChanged = false;
-                    // Remove Vk prefix if direct marshable.
-                    if (csName.StartsWith("Vk"))
-                    {
-                        csName = csName.Substring(2);
-                        nameChanged = true;
-                    }
-
-                    if (nameChanged)
-                    {
-                        AddCsMapping(structDef.Name, csName);
-                    }
 
                     //var hasFreeMembers = false;
                     //foreach (var member in structDef.Members)
@@ -63,7 +56,7 @@ namespace Generator
                     //}
 
                     //writer.WriteLine("[StructLayout(LayoutKind.Sequential)]");
-                    using (writer.PushBlock($"{access} partial struct {csName}"))
+                    using (writer.PushBlock($"public unsafe partial struct {csName}"))
                     {
                         if (structDef.IsBlittable)
                         {
@@ -73,6 +66,20 @@ namespace Generator
                         {
                             WriteStructureMembers(specs, writer, structDef, true);
                         }
+
+                        //if (HasAnyFieldWithSpecifiedValues(structDef))
+                        //{
+                        //    // Add a helper property which fills in the structure type.
+                        //    using (writer.PushBlock($"public static {structDef.Name} New()"))
+                        //    {
+                        //        writer.WriteLine($"{structDef.Name} ret = new {structDef.Name}();");
+                        //        foreach (var member in structDef.Members.Where(ms => ms.LegalValues != null))
+                        //        {
+                        //            writer.WriteLine($"ret.{member.Name} = {member.Type}.{GetDefaultValueString(member.Type, member.LegalValues)};");
+                        //        }
+                        //        writer.WriteLine("return ret;");
+                        //    }
+                        //}
 
                         //var hasFixedFields = false;
                         //foreach (var member in structDef.Members)
@@ -270,5 +277,16 @@ namespace Generator
             }
         }
 
+        private static string GetDefaultValueString(VulkanTypeSpecification type, string legalValues)
+        {
+            string prefix = GetEnumNamePrefix(type.Name);
+            string prettyName = GetPrettyEnumName(legalValues, prefix);
+            return prettyName;
+        }
+
+        private static bool HasAnyFieldWithSpecifiedValues(VulkanStructDefinition sd)
+        {
+            return sd.Members.Any(ms => ms.LegalValues != null);
+        }
     }
 }

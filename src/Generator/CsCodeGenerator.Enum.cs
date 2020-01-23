@@ -103,14 +103,8 @@ namespace Generator
                     string csName = GetCsTypeName(enumDef.Name);
                     string enumNamePrefix = GetEnumNamePrefix(enumDef.Name);
 
-                    // Remove Vk prefix.
+                    // Rename FlagBits in Flags.
                     var nameChanged = false;
-                    if (csName.StartsWith("Vk"))
-                    {
-                        csName = csName.Substring(2);
-                        nameChanged = true;
-                    }
-
                     if (isBitmask)
                     {
                         csName = csName.Replace("FlagBits", "Flags");
@@ -142,6 +136,14 @@ namespace Generator
 
                         foreach (var value in enumDef.Values)
                         {
+                            if (value.Name == "VK_STENCIL_FRONT_AND_BACK"
+                                || value.Name == "VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT"
+                                || value.Name == "VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT")
+                            {
+                                continue;
+                            }
+
+                            writer.WriteLine("/// <summary>");
                             if (!string.IsNullOrEmpty(value.Comment))
                             {
                                 var commentToWrite = value.Comment;
@@ -151,10 +153,9 @@ namespace Generator
                                     commentToWrite = "The logical device has been lost.";
                                 }
 
-                                writer.WriteLine("/// <summary>");
                                 writer.WriteLine($"/// {commentToWrite}");
-                                writer.WriteLine("/// </summary>");
                             }
+                            writer.WriteLine("/// </summary>");
 
                             string prettyName;
                             if (enumDef.Name == "VkFormat")
@@ -243,6 +244,8 @@ namespace Generator
                             //    prettyName = prettyName.Remove(prettyName.Length - vendor.Length);
                             //}
 
+                            writer.WriteLine($"/// <unmanaged>{value .Name}</unmanaged>");
+                            writer.WriteLine($"/// <unmanaged-short>{value.Name}</unmanaged-short>");
                             writer.WriteLine($"{prettyName} = {value.Value},");
                         }
                     }

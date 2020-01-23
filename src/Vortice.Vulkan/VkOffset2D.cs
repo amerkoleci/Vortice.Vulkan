@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Amer Koleci and contributors.
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
-#if TODO
 namespace Vortice.Vulkan
 {
     public partial struct VkOffset2D
@@ -13,5 +12,3 @@ namespace Vortice.Vulkan
         }
     }
 }
-
-#endif

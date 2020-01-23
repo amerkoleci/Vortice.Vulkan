@@ -56,7 +56,7 @@ namespace Generator
                 string comment = enumElement.Attribute("comment")?.Value;
                 var constant = new VulkanConstantDefinition(name, value, comment);
                 Constants.Add(name, constant);
-               // Console.WriteLine($"Constant parsed - {constant}");
+                // Console.WriteLine($"Constant parsed - {constant}");
             }
         }
 
@@ -165,9 +165,20 @@ namespace Generator
                     continue;
                 }
 
+                var alias = string.Empty;
+                var aliasAttr = typeElement.Attribute("alias");
+                if (aliasAttr != null)
+                {
+                    alias = aliasAttr.Value;
+                }
+
                 string name = typeElement.Attribute("name").Value;
                 var isUnion = categoryAttr.Value == "union";
                 var isBlittable = true;
+                if (isUnion)
+                {
+
+                }
 
                 // TODO: map correctly
                 if (name == "VkAttachmentSampleLocationsEXT"
@@ -247,6 +258,8 @@ namespace Generator
                     }
 
                     var comment = memberElement.Element("comment")?.Value;
+                    string legalValues = memberElement.Attribute("values")?.Value;
+
                     members.Add(new VulkanMemberDefinition(
                         memberName,
                         type,
@@ -256,7 +269,8 @@ namespace Generator
                         elementCountSymbolic,
                         lengthMemberName,
                         nullTerminated,
-                        comment)
+                        comment,
+                        legalValues)
                         );
                 }
 
@@ -275,7 +289,7 @@ namespace Generator
                     }
                 }
 
-                var structDef = new VulkanStructDefinition(name, isUnion, isBlittable, members.ToArray());
+                var structDef = new VulkanStructDefinition(name, isUnion, isBlittable, members.ToArray(), alias);
                 StructuresAndUnions.Add(name, structDef);
 
                 //Console.WriteLine($"Struct parsed - {structDef}");
