@@ -4,7 +4,6 @@
     <RepositoryRootDirectory>$(MSBuildThisFileDirectory)</RepositoryRootDirectory>
     <BinDir>$(RepositoryRootDirectory)bin</BinDir>
     <OutputPath>$([System.IO.Path]::GetFullPath('$(RepositoryRootDirectory)bin\$(Configuration)'))\$(MSBuildProjectName)</OutputPath>
-    <PackageOutputPath>$(BinDir)\$(Configuration)\Packages</PackageOutputPath>
     <LangVersion>8.0</LangVersion>
 
     <DebugType Condition=" '$(Configuration)' == 'Release' ">pdbonly</DebugType>
@@ -22,13 +21,14 @@
     <PackageProjectUrl>https://github.com/amerkoleci/Vortice.Vulkan</PackageProjectUrl>
     <PackageTags>Vortice.Vulkan Vortice graphics gamedev vulkan core standard game</PackageTags>
 
-    <!-- Enable SourceLink support -->
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+    <!-- Packages versions -->
+    <NerdbankGitVersioningVersion>3.1.51-beta</NerdbankGitVersioningVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="all"/>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="$(NerdbankGitVersioningVersion)" PrivateAssets="All" />
   </ItemGroup>
 </Project>

@@ -5,7 +5,6 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Description>Vulkan low level bindings.</Description>
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
-    <VersionPrefix>1.1.121</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
