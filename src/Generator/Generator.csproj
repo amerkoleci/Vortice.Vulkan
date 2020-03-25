@@ -8,10 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="vulkan/*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    
     <Content Include="vk.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CppAst" Version="0.7.3" />
   </ItemGroup>
 
 </Project>

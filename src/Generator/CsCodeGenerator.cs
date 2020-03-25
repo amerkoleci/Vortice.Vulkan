@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using CppAst;
 
 namespace Generator
 {
@@ -90,6 +91,23 @@ namespace Generator
             { "VkDeviceAddress", "IntPtr" },
         };
 
+        public static void Generate(CppCompilation compilation, string outputPath)
+        {
+            foreach (var typedef in compilation.Typedefs)
+            {
+                if (typedef.Name.StartsWith("PFN_"))
+                {
+                    continue;
+                }
+
+                var csElementName = GetCsTypeName(typedef.ElementType.GetDisplayName());
+                AddCsMapping(typedef.Name, csElementName);
+            }
+
+            GenerateConstants(compilation, outputPath);
+            GenerateEnums(compilation, outputPath);
+        }
+
         public static void Generate(VulkanSpecs specs, string outputPath)
         {
             foreach (var typedef in specs.Typedefs.Values)
@@ -104,63 +122,94 @@ namespace Generator
                 }
             }
 
-            GenerateConstants(specs, outputPath);
             GenerateEnums(specs, outputPath);
             GenerateStructAndUnions(specs, outputPath);
             GenerateHandles(specs, outputPath);
         }
 
-        private static void AddCsMapping(string typeName, string csTypeName)
+        public static void AddCsMapping(string typeName, string csTypeName)
         {
             s_csNameMappings[typeName] = csTypeName;
         }
 
-        private static void GenerateConstants(VulkanSpecs specs, string outputPath)
+        private static void GenerateConstants(CppCompilation compilation, string outputPath)
         {
-            using (var writer = new CodeWriter(Path.Combine(outputPath, "Constants.cs")))
+            using var writer = new CodeWriter(Path.Combine(outputPath, "Constants.cs"));
+            writer.WriteLine("/// <summary>");
+            writer.WriteLine("/// Provides Vulkan specific constants for special values, layer names and extension names.");
+            writer.WriteLine("/// </summary>");
+            using (writer.PushBlock("public static partial class Vulkan"))
             {
-                writer.WriteLine("/// <summary>");
-                writer.WriteLine("/// Provides Vulkan specific constants for special values, layer names and extension names.");
-                writer.WriteLine("/// </summary>");
-                using (writer.PushBlock("public static partial class Vulkan"))
+                foreach (var cppMacro in compilation.Macros)
                 {
-                    foreach (var constant in specs.Constants.Values)
+                    if (string.IsNullOrEmpty(cppMacro.Value)
+                        || cppMacro.Name.Equals("VULKAN_H_", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.Equals("VKAPI_CALL", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.Equals("VKAPI_PTR", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.Equals("VULKAN_CORE_H_", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.Equals("VK_TRUE", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.Equals("VK_FALSE", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.Equals("VK_MAKE_VERSION", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.StartsWith("VK_HEADER_VERSION", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.StartsWith("VK_VERSION_", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.StartsWith("VK_API_VERSION_", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.Equals("VK_NULL_HANDLE", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.Equals("VK_DEFINE_HANDLE", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.Equals("VK_DEFINE_NON_DISPATCHABLE_HANDLE", StringComparison.OrdinalIgnoreCase)
+                        )
                     {
-                        if (constant.Name.Equals("VK_TRUE", StringComparison.OrdinalIgnoreCase)
-                            || constant.Name.Equals("VK_FALSE", StringComparison.OrdinalIgnoreCase))
-                        {
-                            continue;
-                        }
-
-                        if (constant.Comment != null)
-                        {
-                            writer.WriteLine("/// <summary>");
-                            writer.WriteLine($"/// {constant.Comment}");
-                            writer.WriteLine("/// </summary>");
-                        }
-
-                        var csDataType = "int";
-                        switch (constant.Type)
-                        {
-                            case VulkanConstantDefinition.ConstantDataType.UInt32:
-                                csDataType = "uint";
-                                break;
-                            case VulkanConstantDefinition.ConstantDataType.UInt64:
-                                csDataType = "ulong";
-                                break;
-                            case VulkanConstantDefinition.ConstantDataType.Float:
-                                csDataType = "float";
-                                break;
-                        }
-
-                        writer.WriteLine($"public const {csDataType} {GetPrettyEnumName(constant.Name, "VK_")} = {NormalizeEnumValue(constant.Value)};");
+                        continue;
                     }
+
+                    var csName = GetPrettyEnumName(cppMacro.Name, "VK_");
+                    var csDataType = "string";
+                    var macroValue = NormalizeEnumValue(cppMacro.Value);
+                    if (macroValue.EndsWith("F", StringComparison.OrdinalIgnoreCase))
+                    {
+                        csDataType = "float";
+                    }
+                    else if (macroValue.EndsWith("U", StringComparison.OrdinalIgnoreCase))
+                    {
+                        csDataType = "uint";
+                    }
+                    else if (macroValue.EndsWith("LL", StringComparison.OrdinalIgnoreCase))
+                    {
+                        csDataType = "ulong";
+                    }
+                    else if (uint.TryParse(macroValue, out _))
+                    {
+                        csDataType = "uint";
+                    }
+
+                    if (cppMacro.Name == "VK_QUEUE_FAMILY_EXTERNAL"
+                        || cppMacro.Name == "VK_QUEUE_FAMILY_FOREIGN_EXT")
+                    {
+                        csDataType = "uint";
+                    }
+                    else if (cppMacro.Name == "VK_LUID_SIZE_KHR"
+                        || cppMacro.Name == "VK_SHADER_UNUSED_NV"
+                        || cppMacro.Name == "VK_QUEUE_FAMILY_EXTERNAL_KHR"
+                        || cppMacro.Name == "VK_MAX_DRIVER_NAME_SIZE_KHR"
+                        || cppMacro.Name == "VK_MAX_DRIVER_INFO_SIZE_KHR"
+                        || cppMacro.Name == "VK_MAX_DEVICE_GROUP_SIZE_KHR"
+                        )
+                    {
+                        csDataType = "uint";
+                        macroValue = GetCsTypeName(cppMacro.Value);
+                    }
+
+                    AddCsMapping(cppMacro.Name, csName);
+
+                    writer.WriteLine("/// <summary>");
+                    writer.WriteLine($"/// {cppMacro.Name} = {cppMacro.Value}");
+                    writer.WriteLine("/// </summary>");
+                    writer.WriteLine($"public const {csDataType} {csName} = {macroValue};");
                 }
             }
         }
 
-        
-        
+
+
         private static string GetCsFieldName(VulkanMemberDefinition member)
         {
             var csFieldName = NormalizeFieldName(member.Name);
@@ -247,7 +296,7 @@ namespace Generator
             }
         }
 
-        
+
         private static void WriteMember(
             VulkanSpecs specs,
             CodeWriter writer,

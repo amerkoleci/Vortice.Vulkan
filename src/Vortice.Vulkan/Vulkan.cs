@@ -90,7 +90,7 @@ namespace Vortice.Vulkan
 #if CALLI_SUPPORT
             vkCreateInstance_ptr = load(context, nameof(vkCreateInstance));
 #else
-            vkCreateInstance_ptr = Marshal.GetDelegateForFunctionPointer<PFN_vkCreateInstance>(load(context, nameof(vkCreateInstance)));
+            //vkCreateInstance_ptr = Marshal.GetDelegateForFunctionPointer<PFN_vkCreateInstance>(load(context, nameof(vkCreateInstance)));
 #endif
         }
 
@@ -101,10 +101,10 @@ namespace Vortice.Vulkan
         private static IntPtr vkCreateInstance_ptr;
 #else
         private delegate IntPtr vkGetInstanceProcAddrDelegate(VkInstance instance, byte* name);
-        private delegate VkResult PFN_vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance pInstance);
+        //private delegate VkResult PFN_vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance pInstance);
 
         private static vkGetInstanceProcAddrDelegate vkGetInstanceProcAddr_ptr;
-        private static PFN_vkCreateInstance vkCreateInstance_ptr;
+        //private static PFN_vkCreateInstance vkCreateInstance_ptr;
 #endif
         #endregion
 
@@ -128,10 +128,10 @@ namespace Vortice.Vulkan
 #endif
         }
 
-        public static VkResult vkCreateInstance(VkInstanceCreateInfo createInfo, out VkInstance instance)
+        /*public static VkResult vkCreateInstance(VkInstanceCreateInfo createInfo, out VkInstance instance)
         {
             return vkCreateInstance_ptr(&createInfo, null, out instance);
-        }
+        }*/
 
 #if TODO
         /// <summary>

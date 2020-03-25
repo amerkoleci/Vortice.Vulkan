@@ -3,6 +3,7 @@
 
 using System;
 using System.IO;
+using CppAst;
 
 namespace Generator
 {
@@ -26,10 +27,25 @@ namespace Generator
                 Directory.CreateDirectory(outputPath);
             }
 
-            var specFile = Path.Combine(AppContext.BaseDirectory, "vk.xml");
-            var spec = new VulkanSpecs(specFile);
-            CsCodeGenerator.Generate(spec, outputPath);
+            var headerFile = Path.Combine(AppContext.BaseDirectory, "vulkan", "vulkan.h");
+            var options = new CppParserOptions
+            {
+                ParseMacros = true
+            };
+            var compilation = CppParser.ParseFile(headerFile, options);
+
+            // Print diagnostic messages
+            if (compilation.HasErrors)
+            {
+                foreach (var message in compilation.Diagnostics.Messages)
+                {
+                    Console.WriteLine(message);
+                }
+            }
+
+            CsCodeGenerator.Generate(compilation, outputPath);
             return 0;
         }
+
     }
 }

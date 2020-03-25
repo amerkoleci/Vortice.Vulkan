@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using CppAst;
 
 namespace Generator
 {
@@ -84,6 +85,59 @@ namespace Generator
             { "VkCoarseSampleOrderTypeNV", "VK_COARSE_SAMPLE_ORDER_TYPE" },
             { "VkCopyAccelerationStructureModeNVX", "VK_COPY_ACCELERATION_STRUCTURE_MODE" },
         };
+
+        public static void GenerateEnums(CppCompilation compilation, string outputPath)
+        {
+            using var writer = new CodeWriter(Path.Combine(outputPath, "Enumerations.cs"), "System");
+            foreach (var cppEnum in compilation.Enums)
+            {
+                var isBitmask = cppEnum.Name.EndsWith("FlagBits");
+                if (isBitmask)
+                {
+                    writer.WriteLine("[Flags]");
+                }
+
+                string csName = GetCsTypeName(cppEnum.Name);
+                string enumNamePrefix = GetEnumNamePrefix(cppEnum.Name);
+
+                // Rename FlagBits in Flags.
+                if (isBitmask)
+                {
+                    csName = csName.Replace("FlagBits", "Flags");
+                    AddCsMapping(cppEnum.Name, csName);
+                }
+
+                using (writer.PushBlock($"public enum {csName}"))
+                {
+                    if (isBitmask && 
+                        !cppEnum.Items.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "None"))
+                    {
+                        writer.WriteLine("None = 0,");
+                    }
+
+
+                    foreach (var enumItem in cppEnum.Items)
+                    {
+                        if (enumItem.Name.EndsWith("_BEGIN_RANGE") ||
+                            enumItem.Name.EndsWith("_END_RANGE") ||
+                            enumItem.Name.EndsWith("_RANGE_SIZE") ||
+                            enumItem.Name.EndsWith("_MAX_ENUM") || 
+                            enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
+                            enumItem.Name == "VK_STENCIL_FRONT_AND_BACK" ||
+                            enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE")
+                        {
+                            continue;
+                        }
+
+                        var enumItemName = GetPrettyEnumName(enumItem.Name, enumNamePrefix);
+                        var enumItemValue = enumItem.Value;
+                        writer.WriteLine($"{enumItemName} = {enumItemValue},");
+                    }
+                }
+
+                writer.WriteLine();
+            }
+        }
 
         private static void GenerateEnums(VulkanSpecs specs, string outputPath)
         {
@@ -244,7 +298,7 @@ namespace Generator
                             //    prettyName = prettyName.Remove(prettyName.Length - vendor.Length);
                             //}
 
-                            writer.WriteLine($"/// <unmanaged>{value .Name}</unmanaged>");
+                            writer.WriteLine($"/// <unmanaged>{value.Name}</unmanaged>");
                             writer.WriteLine($"/// <unmanaged-short>{value.Name}</unmanaged-short>");
                             writer.WriteLine($"{prettyName} = {value.Value},");
                         }
@@ -281,7 +335,7 @@ namespace Generator
             return value.Replace("ULL", "UL");
         }
 
-        private static string GetEnumNamePrefix(string typeName)
+        public static string GetEnumNamePrefix(string typeName)
         {
             if (s_knownEnumPrefixes.TryGetValue(typeName, out string knownValue))
             {
