@@ -129,9 +129,118 @@ namespace Generator
                             continue;
                         }
 
-                        var enumItemName = GetPrettyEnumName(enumItem.Name, enumNamePrefix);
-                        var enumItemValue = enumItem.Value;
-                        writer.WriteLine($"{enumItemName} = {enumItemValue},");
+                        string enumItemName;
+                        if (cppEnum.Name == "VkFormat")
+                        {
+                            enumItemName = enumItem.Name.Substring(enumNamePrefix.Length + 1);
+                            var splits = enumItemName.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+                            if (splits.Length <= 1)
+                            {
+                                enumItemName = char.ToUpperInvariant(enumItemName[0]) + enumItemName.Substring(1).ToLowerInvariant();
+                            }
+                            else
+                            {
+                                var sb = new StringBuilder();
+                                foreach (var part in splits)
+                                {
+                                    if (part.Equals("UNORM", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("UNorm");
+                                    }
+                                    else if (part.Equals("SNORM", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("SNorm");
+                                    }
+                                    else if (part.Equals("UINT", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("UInt");
+                                    }
+                                    else if (part.Equals("SINT", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("SInt");
+                                    }
+                                    else if (part.Equals("PACK8", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("Pack8");
+                                    }
+                                    else if (part.Equals("PACK16", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("Pack16");
+                                    }
+                                    else if (part.Equals("PACK32", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("Pack32");
+                                    }
+                                    else if (part.Equals("USCALED", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("UScaled");
+                                    }
+                                    else if (part.Equals("SSCALED", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("SScaled");
+                                    }
+                                    else if (part.Equals("UFLOAT", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("UFloat");
+                                    }
+                                    else if (part.Equals("SFLOAT", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("SFloat");
+                                    }
+                                    else if (part.Equals("SRGB", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("SRgb");
+                                    }
+                                    else if (part.Equals("BLOCK", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("Block");
+                                    }
+                                    else if (part.Equals("IMG", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("Img");
+                                    }
+                                    else if (part.Equals("2PACK16", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("2Pack16");
+                                    }
+                                    else if (part.Equals("3PACK16", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("3Pack16");
+                                    }
+                                    else if (part.Equals("4PACK16", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("4Pack16");
+                                    }
+                                    else if (part.Equals("2PLANE", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("2Plane");
+                                    }
+                                    else if (part.Equals("3PLANE", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("3Plane");
+                                    }
+                                    else if (part.Equals("4PLANE", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        sb.Append("4Plane");
+                                    }
+                                    else
+                                    {
+                                        sb.Append(part);
+                                    }
+                                }
+
+                                enumItemName = sb.ToString();
+                            }
+                        }
+                        else
+                        {
+                            enumItemName = GetPrettyEnumName(enumItem.Name, enumNamePrefix);
+                        }
+
+                        //writer.WriteLine("/// <summary>");
+                        //writer.WriteLine($"/// {enumItem.Name}");
+                        //writer.WriteLine("/// </summary>");
+                        writer.WriteLine($"{enumItemName} = {enumItem.Value},");
                     }
                 }
 
