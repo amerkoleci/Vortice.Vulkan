@@ -89,9 +89,16 @@ namespace Generator
         public static void GenerateEnums(CppCompilation compilation, string outputPath)
         {
             using var writer = new CodeWriter(Path.Combine(outputPath, "Enumerations.cs"), "System");
+            var createdEnums = new Dictionary<string, string>();
+
             foreach (var cppEnum in compilation.Enums)
             {
-                var isBitmask = cppEnum.Name.EndsWith("FlagBits");
+                var isBitmask = 
+                    cppEnum.Name.EndsWith("FlagBits") ||
+                    cppEnum.Name.EndsWith("FlagBitsEXT") ||
+                    cppEnum.Name.EndsWith("FlagBitsKHR") ||
+                    cppEnum.Name.EndsWith("FlagBitsNV") ||
+                    cppEnum.Name.EndsWith("FlagBitsAMD");
                 if (isBitmask)
                 {
                     writer.WriteLine("[Flags]");
@@ -107,6 +114,7 @@ namespace Generator
                     AddCsMapping(cppEnum.Name, csName);
                 }
 
+                createdEnums.Add(csName, cppEnum.Name);
                 using (writer.PushBlock($"public enum {csName}"))
                 {
                     if (isBitmask && 
@@ -115,13 +123,15 @@ namespace Generator
                         writer.WriteLine("None = 0,");
                     }
 
-
                     foreach (var enumItem in cppEnum.Items)
                     {
                         if (enumItem.Name.EndsWith("_BEGIN_RANGE") ||
                             enumItem.Name.EndsWith("_END_RANGE") ||
                             enumItem.Name.EndsWith("_RANGE_SIZE") ||
-                            enumItem.Name.EndsWith("_MAX_ENUM") || 
+                            enumItem.Name.EndsWith("_MAX_ENUM") ||
+                            enumItem.Name.EndsWith("_MAX_ENUM_EXT") ||
+                            enumItem.Name.EndsWith("_MAX_ENUM_KHR") ||
+                            enumItem.Name.EndsWith("_MAX_ENUM_NV") ||
                             enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
                             enumItem.Name == "VK_STENCIL_FRONT_AND_BACK" ||
                             enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE")
@@ -246,174 +256,43 @@ namespace Generator
 
                 writer.WriteLine();
             }
-        }
 
-        private static void GenerateEnums(VulkanSpecs specs, string outputPath)
-        {
-            // Generate enums
-            using (var writer = new CodeWriter(
-                Path.Combine(outputPath, "Enumerations.cs"),
-                "System"))
+            // Map missing flags with typedefs to VkFlags
+            foreach (var typedef in compilation.Typedefs)
             {
-                foreach (var enumDef in specs.Enums.Values)
+                if (typedef.Name.StartsWith("PFN_")
+                    || typedef.Name.Equals("VkBool32", StringComparison.OrdinalIgnoreCase)
+                    || typedef.Name.Equals("VkFlags", StringComparison.OrdinalIgnoreCase))
                 {
-                    var isBitmask = enumDef.IsBitMask;
-                    if (isBitmask)
+                    continue;
+                }
+
+                if (typedef.ElementType is CppPointerType pointerType)
+                {
+                    continue;
+                }
+
+                if (createdEnums.ContainsKey(typedef.Name))
+                {
+                    continue;
+                }
+
+                if (typedef.Name.EndsWith("Flags", StringComparison.OrdinalIgnoreCase) ||
+                    typedef.Name.EndsWith("FlagsKHR", StringComparison.OrdinalIgnoreCase) ||
+                    typedef.Name.EndsWith("FlagsEXT", StringComparison.OrdinalIgnoreCase) ||
+                    typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase) ||
+                    typedef.Name.EndsWith("FlagsAMD", StringComparison.OrdinalIgnoreCase))
+                {
+                    writer.WriteLine("[Flags]");
+                    using (writer.PushBlock($"public enum {typedef.Name}"))
                     {
-                        writer.WriteLine("[Flags]");
+                        writer.WriteLine("None = 0,");
                     }
-
-                    string csName = GetCsTypeName(enumDef.Name);
-                    string enumNamePrefix = GetEnumNamePrefix(enumDef.Name);
-
-                    // Rename FlagBits in Flags.
-                    var nameChanged = false;
-                    if (isBitmask)
-                    {
-                        csName = csName.Replace("FlagBits", "Flags");
-                        nameChanged = true;
-                    }
-
-                    if (nameChanged)
-                    {
-                        AddCsMapping(enumDef.Name, csName);
-                    }
-
-                    // Detect vendor from name.
-                    //var vendor = string.Empty;
-                    //foreach (var preseve in s_preserveCaps)
-                    //{
-                    //    if (csName.EndsWith(preseve, StringComparison.OrdinalIgnoreCase))
-                    //    {
-                    //        vendor = preseve;
-                    //    }
-                    //}
-
-                    using (writer.PushBlock($"public enum {csName}"))
-                    {
-                        if (isBitmask
-                            && !enumDef.Values.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "None"))
-                        {
-                            writer.WriteLine("None = 0,");
-                        }
-
-                        foreach (var value in enumDef.Values)
-                        {
-                            if (value.Name == "VK_STENCIL_FRONT_AND_BACK"
-                                || value.Name == "VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT"
-                                || value.Name == "VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT")
-                            {
-                                continue;
-                            }
-
-                            writer.WriteLine("/// <summary>");
-                            if (!string.IsNullOrEmpty(value.Comment))
-                            {
-                                var commentToWrite = value.Comment;
-                                // VK_ERROR_DEVICE_LOST is wrong
-                                if (value.Name == "VK_ERROR_DEVICE_LOST")
-                                {
-                                    commentToWrite = "The logical device has been lost.";
-                                }
-
-                                writer.WriteLine($"/// {commentToWrite}");
-                            }
-                            writer.WriteLine("/// </summary>");
-
-                            string prettyName;
-                            if (enumDef.Name == "VkFormat")
-                            {
-                                prettyName = value.Name.Substring(enumNamePrefix.Length + 1);
-                                var splits = prettyName.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
-                                if (splits.Length <= 1)
-                                {
-                                    prettyName = char.ToUpperInvariant(prettyName[0]) + prettyName.Substring(1).ToLowerInvariant();
-                                }
-                                else
-                                {
-                                    var sb = new StringBuilder();
-                                    foreach (var part in splits)
-                                    {
-                                        if (part.Equals("UNORM", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("UNorm");
-                                        }
-                                        else if (part.Equals("SNORM", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("SNorm");
-                                        }
-                                        else if (part.Equals("UINT", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("UInt");
-                                        }
-                                        else if (part.Equals("SINT", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("SInt");
-                                        }
-                                        else if (part.Equals("PACK8", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("Pack8");
-                                        }
-                                        else if (part.Equals("PACK16", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("Pack16");
-                                        }
-                                        else if (part.Equals("PACK32", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("Pack32");
-                                        }
-                                        else if (part.Equals("USCALED", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("UScaled");
-                                        }
-                                        else if (part.Equals("SSCALED", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("SScaled");
-                                        }
-                                        else if (part.Equals("SFLOAT", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("SFloat");
-                                        }
-                                        else if (part.Equals("SRGB", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("SRgb");
-                                        }
-                                        else if (part.Equals("BLOCK", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("Block");
-                                        }
-                                        else if (part.Equals("IMG", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            sb.Append("Img");
-                                        }
-                                        else
-                                        {
-                                            sb.Append(part);
-                                        }
-                                    }
-
-                                    prettyName = sb.ToString();
-                                }
-                            }
-                            else
-                            {
-                                prettyName = GetPrettyEnumName(value.Name, enumNamePrefix);
-                            }
-
-                            // Remove vendor suffix (if any).
-                            //if (!string.IsNullOrEmpty(vendor)
-                            //    && prettyName.EndsWith(vendor, StringComparison.OrdinalIgnoreCase))
-                            //{
-                            //    prettyName = prettyName.Remove(prettyName.Length - vendor.Length);
-                            //}
-
-                            writer.WriteLine($"/// <unmanaged>{value.Name}</unmanaged>");
-                            writer.WriteLine($"/// <unmanaged-short>{value.Name}</unmanaged-short>");
-                            writer.WriteLine($"{prettyName} = {value.Value},");
-                        }
-                    }
-
                     writer.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine("");
                 }
             }
         }

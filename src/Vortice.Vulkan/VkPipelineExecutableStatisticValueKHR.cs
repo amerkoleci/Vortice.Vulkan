@@ -10,7 +10,7 @@ namespace Vortice.Vulkan
     public struct VkPipelineExecutableStatisticValueKHR
     {
         [FieldOffset(0)]
-        public RawBool b32;
+        public VkBool32 b32;
 
         [FieldOffset(0)]
         public long i64;

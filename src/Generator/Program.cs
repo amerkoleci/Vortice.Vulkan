@@ -2,6 +2,7 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using CppAst;
 
@@ -30,7 +31,11 @@ namespace Generator
             var headerFile = Path.Combine(AppContext.BaseDirectory, "vulkan", "vulkan.h");
             var options = new CppParserOptions
             {
-                ParseMacros = true
+                ParseMacros = true,
+                Defines =
+                {
+                    "VK_USE_PLATFORM_ANDROID_KHR"
+                }
             };
             var compilation = CppParser.ParseFile(headerFile, options);
 

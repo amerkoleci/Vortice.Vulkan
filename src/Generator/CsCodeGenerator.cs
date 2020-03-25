@@ -53,7 +53,6 @@ namespace Generator
             { "DWORD", "uint" },
 
             { "VkFlags", "uint" },
-            { "VkBool32", "RawBool" },
             { "VkDeviceSize", "ulong" },
             { "VkSampleMask", "uint" },
 
@@ -87,44 +86,20 @@ namespace Generator
             { "GgpFrameToken", "IntPtr" },
             { "GgpStreamDescriptor", "IntPtr" },
 
+            { "VkAccelerationStructureTypeNV", "VkAccelerationStructureTypeKHR" },
+            { "VkAccelerationStructureMemoryRequirementsTypeNV", "VkAccelerationStructureMemoryRequirementsTypeKHR" },
+            { "VkAccelerationStructureNV", "VkAccelerationStructureKHR" },
+
             // TODO: Until we marshal functions
             { "VkDeviceAddress", "IntPtr" },
         };
 
         public static void Generate(CppCompilation compilation, string outputPath)
         {
-            foreach (var typedef in compilation.Typedefs)
-            {
-                if (typedef.Name.StartsWith("PFN_"))
-                {
-                    continue;
-                }
-
-                var csElementName = GetCsTypeName(typedef.ElementType.GetDisplayName());
-                AddCsMapping(typedef.Name, csElementName);
-            }
-
             GenerateConstants(compilation, outputPath);
             GenerateEnums(compilation, outputPath);
-        }
-
-        public static void Generate(VulkanSpecs specs, string outputPath)
-        {
-            foreach (var typedef in specs.Typedefs.Values)
-            {
-                if (typedef.Requires != null)
-                {
-                    AddCsMapping(typedef.Requires, typedef.Name);
-                }
-                else
-                {
-                    AddCsMapping(typedef.Name, "uint");
-                }
-            }
-
-            GenerateEnums(specs, outputPath);
-            GenerateStructAndUnions(specs, outputPath);
-            GenerateHandles(specs, outputPath);
+            GenerateHandles(compilation, outputPath);
+            GenerateStructAndUnions(compilation, outputPath);
         }
 
         public static void AddCsMapping(string typeName, string csTypeName)
@@ -143,7 +118,7 @@ namespace Generator
                 foreach (var cppMacro in compilation.Macros)
                 {
                     if (string.IsNullOrEmpty(cppMacro.Value)
-                        || cppMacro.Name.Equals("VULKAN_H_", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.EndsWith("_H_", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.Equals("VKAPI_CALL", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.Equals("VKAPI_PTR", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.Equals("VULKAN_CORE_H_", StringComparison.OrdinalIgnoreCase)
@@ -156,6 +131,7 @@ namespace Generator
                         || cppMacro.Name.Equals("VK_NULL_HANDLE", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.Equals("VK_DEFINE_HANDLE", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.Equals("VK_DEFINE_NON_DISPATCHABLE_HANDLE", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.StartsWith("VK_USE_PLATFORM_", StringComparison.OrdinalIgnoreCase)
                         )
                     {
                         continue;
@@ -207,8 +183,6 @@ namespace Generator
                 }
             }
         }
-
-
 
         private static string GetCsFieldName(VulkanMemberDefinition member)
         {
@@ -489,6 +463,132 @@ namespace Generator
 
             return name;
         }
+
+        private static string GetCsTypeName(CppType type, bool isPointer)
+        {
+            if (type is CppPrimitiveType primitiveType)
+            {
+                return GetCsTypeName(primitiveType, isPointer);
+            }
+
+            if (type is CppQualifiedType qualifiedType)
+            {
+                return GetCsTypeName(qualifiedType.ElementType, isPointer);
+            }
+
+            if (type is CppEnum enumType)
+            {
+                var enumCsName = GetCsTypeName(enumType.Name);
+                if (isPointer)
+                    return enumCsName + "*";
+
+                return enumCsName;
+            }
+
+            if (type is CppTypedef typedef)
+            {
+                var typeDefCsName = GetCsTypeName(typedef.Name);
+                if (isPointer)
+                    return typeDefCsName + "*";
+
+                return typeDefCsName;
+            }
+
+            if (type is CppClass @class)
+            {
+                var className = GetCsTypeName(@class.Name);
+                if (isPointer)
+                    return className + "*";
+
+                return className;
+            }
+
+            if (type is CppPointerType pointerType)
+            {
+                return GetCsTypeName(pointerType);
+            }
+
+            if (type is CppArrayType arrayType)
+            {
+                return GetCsTypeName(arrayType.ElementType, isPointer);
+            }
+
+            return string.Empty;
+        }
+
+        private static string GetCsTypeName(CppPrimitiveType primitiveType, bool isPointer)
+        {
+            switch (primitiveType.Kind)
+            {
+                case CppPrimitiveKind.Void:
+                    return isPointer ? "void*" : "void";
+
+                case CppPrimitiveKind.Char:
+                    return isPointer ? "byte*" : "char";
+
+                case CppPrimitiveKind.Bool:
+                    break;
+                case CppPrimitiveKind.WChar:
+                    break;
+                case CppPrimitiveKind.Short:
+                    break;
+                case CppPrimitiveKind.Int:
+                    return isPointer ? "int*" : "int";
+
+                case CppPrimitiveKind.LongLong:
+                    break;
+                case CppPrimitiveKind.UnsignedChar:
+                    break;
+                case CppPrimitiveKind.UnsignedShort:
+                    break;
+                case CppPrimitiveKind.UnsignedInt:
+                    break;
+                case CppPrimitiveKind.UnsignedLongLong:
+                    break;
+                case CppPrimitiveKind.Float:
+                    return isPointer ? "float*" : "float";
+                case CppPrimitiveKind.Double:
+                    break;
+                case CppPrimitiveKind.LongDouble:
+                    break;
+                default:
+                    return string.Empty;
+            }
+
+            return string.Empty;
+        }
+
+        private static string GetCsTypeName(CppPointerType pointerType)
+        {
+            if (pointerType.ElementType is CppQualifiedType qualifiedType)
+            {
+                if (qualifiedType.ElementType is CppPrimitiveType primitiveType)
+                {
+                    return GetCsTypeName(primitiveType, true);
+                }
+                else if (qualifiedType.ElementType is CppClass @classType)
+                {
+                    return GetCsTypeName(@classType, true);
+                }
+                else if (qualifiedType.ElementType is CppPointerType subPointerType)
+                {
+                    return GetCsTypeName(subPointerType, true);
+                }
+                else if (qualifiedType.ElementType is CppTypedef typedef)
+                {
+                    return GetCsTypeName(typedef, true);
+                }
+                else if (qualifiedType.ElementType is CppEnum @enum)
+                {
+                    return GetCsTypeName(@enum, true);
+                }
+
+                return GetCsTypeName(qualifiedType.ElementType, true);
+            }
+
+            return GetCsTypeName(pointerType.ElementType, true);
+        }
+
 
         private static bool CanUseFixed(VulkanTypeSpecification type)
         {

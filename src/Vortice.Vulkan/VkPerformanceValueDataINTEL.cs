@@ -19,7 +19,7 @@ namespace Vortice.Vulkan
         public float ValueFloat;
 
         [FieldOffset(0)]
-        public RawBool ValueBool;
+        public VkBool32 ValueBool;
 
         [FieldOffset(0)]
         public IntPtr ValueString;

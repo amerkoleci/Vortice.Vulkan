@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.7.0" />
+    <PackageReference Include="Vortice.Mathematics" Version="1.2.1" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.7.1" />
     <ProjectReference Include="../Patch/Patch.csproj"
                      ReferenceOutputAssembly="false"
                      SkipGetTargetFrameworkProperties="true"

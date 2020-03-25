@@ -5,18 +5,18 @@ using System;
 
 namespace Vortice.Vulkan
 {
-    internal struct VkAllocationCallbacks
-    {
-        public unsafe void* pUserData;
+    //internal struct VkAllocationCallbacks
+    //{
+    //    public unsafe void* pUserData;
 
-        public IntPtr pfnAllocation;
+    //    public IntPtr pfnAllocation;
 
-        public IntPtr pfnReallocation;
+    //    public IntPtr pfnReallocation;
 
-        public IntPtr pfnFree;
+    //    public IntPtr pfnFree;
 
-        public IntPtr pfnInternalAllocation;
+    //    public IntPtr pfnInternalAllocation;
 
-        public IntPtr pfnInternalFree;
-    }
+    //    public IntPtr pfnInternalFree;
+    //}
 }

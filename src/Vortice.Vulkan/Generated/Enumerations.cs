@@ -2167,7 +2167,6 @@ namespace Vortice.Vulkan
 		BeginRangeKHR = 0,
 		EndRangeKHR = 0,
 		RangeSizeKHR = 1,
-		MaxEnumKHR = 2147483647,
 	}
 
 	public enum VkPresentModeKHR
@@ -2181,11 +2180,12 @@ namespace Vortice.Vulkan
 		BeginRangeKHR = 0,
 		EndRangeKHR = 3,
 		RangeSizeKHR = 4,
-		MaxEnumKHR = 2147483647,
 	}
 
-	public enum VkSurfaceTransformFlagBitsKHR
+	[Flags]
+	public enum VkSurfaceTransformFlagsKHR
 	{
+		None = 0,
 		IdentityKHR = 1,
 		Rotate90KHR = 2,
 		Rotate180KHR = 4,
@@ -2195,42 +2195,45 @@ namespace Vortice.Vulkan
 		HorizontalMirrorRotate180KHR = 64,
 		HorizontalMirrorRotate270KHR = 128,
 		InheritKHR = 256,
-		FlagBitsMaxEnumKHR = 2147483647,
 	}
 
-	public enum VkCompositeAlphaFlagBitsKHR
+	[Flags]
+	public enum VkCompositeAlphaFlagsKHR
 	{
+		None = 0,
 		OpaqueKHR = 1,
 		PreMultipliedKHR = 2,
 		PostMultipliedKHR = 4,
 		InheritKHR = 8,
-		FlagBitsMaxEnumKHR = 2147483647,
 	}
 
-	public enum VkSwapchainCreateFlagBitsKHR
+	[Flags]
+	public enum VkSwapchainCreateFlagsKHR
 	{
+		None = 0,
 		SplitInstanceBindRegionsKHR = 1,
 		ProtectedKHR = 2,
 		MutableFormatKHR = 4,
-		FlagBitsMaxEnumKHR = 2147483647,
 	}
 
-	public enum VkDeviceGroupPresentModeFlagBitsKHR
+	[Flags]
+	public enum VkDeviceGroupPresentModeFlagsKHR
 	{
+		None = 0,
 		LocalKHR = 1,
 		RemoteKHR = 2,
 		SumKHR = 4,
 		LocalMultiDeviceKHR = 8,
-		FlagBitsMaxEnumKHR = 2147483647,
 	}
 
-	public enum VkDisplayPlaneAlphaFlagBitsKHR
+	[Flags]
+	public enum VkDisplayPlaneAlphaFlagsKHR
 	{
+		None = 0,
 		OpaqueKHR = 1,
 		GlobalKHR = 2,
 		PerPixelKHR = 4,
 		PerPixelPremultipliedKHR = 8,
-		FlagBitsMaxEnumKHR = 2147483647,
 	}
 
 	public enum VkPerformanceCounterUnitKHR
@@ -2249,7 +2252,6 @@ namespace Vortice.Vulkan
 		BeginRangeKHR = 0,
 		EndRangeKHR = 10,
 		RangeSizeKHR = 11,
-		MaxEnumKHR = 2147483647,
 	}
 
 	public enum VkPerformanceCounterScopeKHR
@@ -2263,7 +2265,6 @@ namespace Vortice.Vulkan
 		BeginRangeKHR = 0,
 		EndRangeKHR = 2,
 		RangeSizeKHR = 3,
-		MaxEnumKHR = 2147483647,
 	}
 
 	public enum VkPerformanceCounterStorageKHR
@@ -2277,19 +2278,20 @@ namespace Vortice.Vulkan
 		BeginRangeKHR = 0,
 		EndRangeKHR = 5,
 		RangeSizeKHR = 6,
-		MaxEnumKHR = 2147483647,
 	}
 
-	public enum VkPerformanceCounterDescriptionFlagBitsKHR
+	[Flags]
+	public enum VkPerformanceCounterDescriptionFlagsKHR
 	{
+		None = 0,
 		PerformanceImpactingKHR = 1,
 		ConcurrentlyImpactedKHR = 2,
-		FlagBitsMaxEnumKHR = 2147483647,
 	}
 
-	public enum VkAcquireProfilingLockFlagBitsKHR
+	[Flags]
+	public enum VkAcquireProfilingLockFlagsKHR
 	{
-		FlagBitsMaxEnumKHR = 2147483647,
+		None = 0,
 	}
 
 	public enum VkPipelineExecutableStatisticFormatKHR
@@ -2301,7 +2303,6 @@ namespace Vortice.Vulkan
 		BeginRangeKHR = 0,
 		EndRangeKHR = 3,
 		RangeSizeKHR = 4,
-		MaxEnumKHR = 2147483647,
 	}
 
 	public enum VkDebugReportObjectTypeEXT
@@ -2349,17 +2350,17 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 33,
 		RangeSizeEXT = 34,
-		MaxEnumEXT = 2147483647,
 	}
 
-	public enum VkDebugReportFlagBitsEXT
+	[Flags]
+	public enum VkDebugReportFlagsEXT
 	{
+		None = 0,
 		InformationEXT = 1,
 		WarningEXT = 2,
 		PerformanceWarningEXT = 4,
 		ErrorEXT = 8,
 		DebugEXT = 16,
-		FlagBitsMaxEnumEXT = 2147483647,
 	}
 
 	public enum VkRasterizationOrderAMD
@@ -2383,21 +2384,23 @@ namespace Vortice.Vulkan
 		MaxEnumAMD = 2147483647,
 	}
 
-	public enum VkExternalMemoryHandleTypeFlagBitsNV
+	[Flags]
+	public enum VkExternalMemoryHandleTypeFlagsNV
 	{
+		None = 0,
 		OpaqueWin32NV = 1,
 		OpaqueWin32KmtNV = 2,
 		D3d11ImageNV = 4,
 		D3d11ImageKmtNV = 8,
-		FlagBitsMaxEnumNV = 2147483647,
 	}
 
-	public enum VkExternalMemoryFeatureFlagBitsNV
+	[Flags]
+	public enum VkExternalMemoryFeatureFlagsNV
 	{
+		None = 0,
 		DedicatedOnlyNV = 1,
 		ExportableNV = 2,
 		ImportableNV = 4,
-		FlagBitsMaxEnumNV = 2147483647,
 	}
 
 	public enum VkValidationCheckEXT
@@ -2407,19 +2410,20 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 1,
 		RangeSizeEXT = 2,
-		MaxEnumEXT = 2147483647,
 	}
 
-	public enum VkConditionalRenderingFlagBitsEXT
+	[Flags]
+	public enum VkConditionalRenderingFlagsEXT
 	{
+		None = 0,
 		InvertedEXT = 1,
-		FlagBitsMaxEnumEXT = 2147483647,
 	}
 
-	public enum VkSurfaceCounterFlagBitsEXT
+	[Flags]
+	public enum VkSurfaceCounterFlagsEXT
 	{
+		None = 0,
 		VblankEXT = 1,
-		FlagBitsMaxEnumEXT = 2147483647,
 	}
 
 	public enum VkDisplayPowerStateEXT
@@ -2430,7 +2434,6 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 2,
 		RangeSizeEXT = 3,
-		MaxEnumEXT = 2147483647,
 	}
 
 	public enum VkDeviceEventTypeEXT
@@ -2439,7 +2442,6 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 0,
 		RangeSizeEXT = 1,
-		MaxEnumEXT = 2147483647,
 	}
 
 	public enum VkDisplayEventTypeEXT
@@ -2448,7 +2450,6 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 0,
 		RangeSizeEXT = 1,
-		MaxEnumEXT = 2147483647,
 	}
 
 	public enum VkViewportCoordinateSwizzleNV
@@ -2464,7 +2465,6 @@ namespace Vortice.Vulkan
 		BeginRangeNV = 0,
 		EndRangeNV = 7,
 		RangeSizeNV = 8,
-		MaxEnumNV = 2147483647,
 	}
 
 	public enum VkDiscardRectangleModeEXT
@@ -2474,7 +2474,6 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 1,
 		RangeSizeEXT = 2,
-		MaxEnumEXT = 2147483647,
 	}
 
 	public enum VkConservativeRasterizationModeEXT
@@ -2485,24 +2484,25 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 2,
 		RangeSizeEXT = 3,
-		MaxEnumEXT = 2147483647,
 	}
 
-	public enum VkDebugUtilsMessageSeverityFlagBitsEXT
+	[Flags]
+	public enum VkDebugUtilsMessageSeverityFlagsEXT
 	{
+		None = 0,
 		VerboseEXT = 1,
 		InfoEXT = 16,
 		WarningEXT = 256,
 		ErrorEXT = 4096,
-		FlagBitsMaxEnumEXT = 2147483647,
 	}
 
-	public enum VkDebugUtilsMessageTypeFlagBitsEXT
+	[Flags]
+	public enum VkDebugUtilsMessageTypeFlagsEXT
 	{
+		None = 0,
 		GeneralEXT = 1,
 		ValidationEXT = 2,
 		PerformanceEXT = 4,
-		FlagBitsMaxEnumEXT = 2147483647,
 	}
 
 	public enum VkBlendOverlapEXT
@@ -2513,7 +2513,6 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 2,
 		RangeSizeEXT = 3,
-		MaxEnumEXT = 2147483647,
 	}
 
 	public enum VkCoverageModulationModeNV
@@ -2525,7 +2524,6 @@ namespace Vortice.Vulkan
 		BeginRangeNV = 0,
 		EndRangeNV = 3,
 		RangeSizeNV = 4,
-		MaxEnumNV = 2147483647,
 	}
 
 	public enum VkValidationCacheHeaderVersionEXT
@@ -2534,7 +2532,6 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 1,
 		EndRangeEXT = 1,
 		RangeSizeEXT = 1,
-		MaxEnumEXT = 2147483647,
 	}
 
 	public enum VkShadingRatePaletteEntryNV
@@ -2554,7 +2551,6 @@ namespace Vortice.Vulkan
 		BeginRangeNV = 0,
 		EndRangeNV = 11,
 		RangeSizeNV = 12,
-		MaxEnumNV = 2147483647,
 	}
 
 	public enum VkCoarseSampleOrderTypeNV
@@ -2566,7 +2562,6 @@ namespace Vortice.Vulkan
 		BeginRangeNV = 0,
 		EndRangeNV = 3,
 		RangeSizeNV = 4,
-		MaxEnumNV = 2147483647,
 	}
 
 	public enum VkRayTracingShaderGroupTypeKHR
@@ -2580,7 +2575,6 @@ namespace Vortice.Vulkan
 		BeginRangeKHR = 0,
 		EndRangeKHR = 2,
 		RangeSizeKHR = 3,
-		MaxEnumKHR = 2147483647,
 	}
 
 	public enum VkGeometryTypeKHR
@@ -2593,7 +2587,6 @@ namespace Vortice.Vulkan
 		BeginRangeKHR = 0,
 		EndRangeKHR = 1,
 		RangeSizeKHR = 2,
-		MaxEnumKHR = 2147483647,
 	}
 
 	public enum VkAccelerationStructureTypeKHR
@@ -2605,7 +2598,6 @@ namespace Vortice.Vulkan
 		BeginRangeKHR = 0,
 		EndRangeKHR = 1,
 		RangeSizeKHR = 2,
-		MaxEnumKHR = 2147483647,
 	}
 
 	public enum VkCopyAccelerationStructureModeKHR
@@ -2619,7 +2611,6 @@ namespace Vortice.Vulkan
 		BeginRangeKHR = 0,
 		EndRangeKHR = 3,
 		RangeSizeKHR = 4,
-		MaxEnumKHR = 2147483647,
 	}
 
 	public enum VkAccelerationStructureMemoryRequirementsTypeKHR
@@ -2633,20 +2624,22 @@ namespace Vortice.Vulkan
 		BeginRangeKHR = 0,
 		EndRangeKHR = 2,
 		RangeSizeKHR = 3,
-		MaxEnumKHR = 2147483647,
 	}
 
-	public enum VkGeometryFlagBitsKHR
+	[Flags]
+	public enum VkGeometryFlagsKHR
 	{
+		None = 0,
 		OpaqueKHR = 1,
 		NoDuplicateAnyHitInvocationKHR = 2,
 		OpaqueNV = 1,
 		NoDuplicateAnyHitInvocationNV = 2,
-		FlagBitsMaxEnumKHR = 2147483647,
 	}
 
-	public enum VkGeometryInstanceFlagBitsKHR
+	[Flags]
+	public enum VkGeometryInstanceFlagsKHR
 	{
+		None = 0,
 		TriangleFacingCullDisableKHR = 1,
 		TriangleFrontCounterclockwiseKHR = 2,
 		ForceOpaqueKHR = 4,
@@ -2655,11 +2648,12 @@ namespace Vortice.Vulkan
 		TriangleFrontCounterclockwiseNV = 2,
 		ForceOpaqueNV = 4,
 		ForceNoOpaqueNV = 8,
-		FlagBitsMaxEnumKHR = 2147483647,
 	}
 
-	public enum VkBuildAccelerationStructureFlagBitsKHR
+	[Flags]
+	public enum VkBuildAccelerationStructureFlagsKHR
 	{
+		None = 0,
 		AllowUpdateKHR = 1,
 		AllowCompactionKHR = 2,
 		PreferFastTraceKHR = 4,
@@ -2670,7 +2664,6 @@ namespace Vortice.Vulkan
 		PreferFastTraceNV = 4,
 		PreferFastBuildNV = 8,
 		LowMemoryNV = 16,
-		FlagBitsMaxEnumKHR = 2147483647,
 	}
 
 	public enum VkQueueGlobalPriorityEXT
@@ -2682,11 +2675,12 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 128,
 		EndRangeEXT = 1024,
 		RangeSizeEXT = 897,
-		MaxEnumEXT = 2147483647,
 	}
 
-	public enum VkPipelineCompilerControlFlagBitsAMD
+	[Flags]
+	public enum VkPipelineCompilerControlFlagsAMD
 	{
+		None = 0,
 		FlagBitsMaxEnumAMD = 2147483647,
 	}
 
@@ -2699,7 +2693,6 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 3,
 		RangeSizeEXT = 4,
-		MaxEnumEXT = 2147483647,
 	}
 
 	public enum VkMemoryOverallocationBehaviorAMD
@@ -2713,12 +2706,13 @@ namespace Vortice.Vulkan
 		MaxEnumAMD = 2147483647,
 	}
 
-	public enum VkPipelineCreationFeedbackFlagBitsEXT
+	[Flags]
+	public enum VkPipelineCreationFeedbackFlagsEXT
 	{
+		None = 0,
 		ValidEXT = 1,
 		ApplicationPipelineCacheHitEXT = 2,
 		BasePipelineAccelerationEXT = 4,
-		FlagBitsMaxEnumEXT = 2147483647,
 	}
 
 	public enum VkPerformanceConfigurationTypeINTEL
@@ -2772,13 +2766,17 @@ namespace Vortice.Vulkan
 		VK_PERFORMANCE_VALUE_TYPE_MAX_ENUM_INTEL = 2147483647,
 	}
 
-	public enum VkShaderCorePropertiesFlagBitsAMD
+	[Flags]
+	public enum VkShaderCorePropertiesFlagsAMD
 	{
+		None = 0,
 		FlagBitsMaxEnumAMD = 2147483647,
 	}
 
-	public enum VkToolPurposeFlagBitsEXT
+	[Flags]
+	public enum VkToolPurposeFlagsEXT
 	{
+		None = 0,
 		ValidationEXT = 1,
 		ProfilingEXT = 2,
 		TracingEXT = 4,
@@ -2786,7 +2784,6 @@ namespace Vortice.Vulkan
 		ModifyingFeaturesEXT = 16,
 		DebugReportingEXT = 32,
 		DebugMarkersEXT = 64,
-		FlagBitsMaxEnumEXT = 2147483647,
 	}
 
 	public enum VkValidationFeatureEnableEXT
@@ -2798,7 +2795,6 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 3,
 		RangeSizeEXT = 4,
-		MaxEnumEXT = 2147483647,
 	}
 
 	public enum VkValidationFeatureDisableEXT
@@ -2813,7 +2809,6 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 6,
 		RangeSizeEXT = 7,
-		MaxEnumEXT = 2147483647,
 	}
 
 	public enum VkComponentTypeNV
@@ -2832,7 +2827,6 @@ namespace Vortice.Vulkan
 		VK_COMPONENT_TYPE_BEGIN_RANGE_NV = 0,
 		VK_COMPONENT_TYPE_END_RANGE_NV = 10,
 		VK_COMPONENT_TYPE_RANGE_SIZE_NV = 11,
-		VK_COMPONENT_TYPE_MAX_ENUM_NV = 2147483647,
 	}
 
 	public enum VkScopeNV
@@ -2844,7 +2838,6 @@ namespace Vortice.Vulkan
 		VK_SCOPE_BEGIN_RANGE_NV = 1,
 		VK_SCOPE_END_RANGE_NV = 5,
 		VK_SCOPE_RANGE_SIZE_NV = 5,
-		VK_SCOPE_MAX_ENUM_NV = 2147483647,
 	}
 
 	public enum VkCoverageReductionModeNV
@@ -2854,7 +2847,6 @@ namespace Vortice.Vulkan
 		VK_COVERAGE_REDUCTION_MODE_BEGIN_RANGE_NV = 0,
 		VK_COVERAGE_REDUCTION_MODE_END_RANGE_NV = 1,
 		VK_COVERAGE_REDUCTION_MODE_RANGE_SIZE_NV = 2,
-		VK_COVERAGE_REDUCTION_MODE_MAX_ENUM_NV = 2147483647,
 	}
 
 	public enum VkLineRasterizationModeEXT
@@ -2866,7 +2858,6 @@ namespace Vortice.Vulkan
 		BeginRangeEXT = 0,
 		EndRangeEXT = 3,
 		RangeSizeEXT = 4,
-		MaxEnumEXT = 2147483647,
 	}
 
 	public enum VkIndirectCommandsTokenTypeNV
@@ -2882,29 +2873,349 @@ namespace Vortice.Vulkan
 		VK_INDIRECT_COMMANDS_TOKEN_TYPE_BEGIN_RANGE_NV = 0,
 		VK_INDIRECT_COMMANDS_TOKEN_TYPE_END_RANGE_NV = 7,
 		VK_INDIRECT_COMMANDS_TOKEN_TYPE_RANGE_SIZE_NV = 8,
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_MAX_ENUM_NV = 2147483647,
 	}
 
-	public enum VkIndirectStateFlagBitsNV
+	[Flags]
+	public enum VkIndirectStateFlagsNV
 	{
+		None = 0,
 		FlagFrontfaceNV = 1,
-		FlagBitsMaxEnumNV = 2147483647,
 	}
 
-	public enum VkIndirectCommandsLayoutUsageFlagBitsNV
+	[Flags]
+	public enum VkIndirectCommandsLayoutUsageFlagsNV
 	{
+		None = 0,
 		ExplicitPreprocessNV = 1,
 		IndexedSequencesNV = 2,
 		UnorderedSequencesNV = 4,
-		FlagBitsMaxEnumNV = 2147483647,
 	}
 
-	public enum VkDeviceDiagnosticsConfigFlagBitsNV
+	[Flags]
+	public enum VkDeviceDiagnosticsConfigFlagsNV
 	{
+		None = 0,
 		EnableShaderDebugInfoNV = 1,
 		EnableResourceTrackingNV = 2,
 		EnableAutomaticCheckpointsNV = 4,
-		FlagBitsMaxEnumNV = 2147483647,
+	}
+
+	[Flags]
+	public enum VkInstanceCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkDeviceCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkMemoryMapFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkSemaphoreCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkEventCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkQueryPoolCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkBufferViewCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineVertexInputStateCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineInputAssemblyStateCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineTessellationStateCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineViewportStateCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineRasterizationStateCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineMultisampleStateCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineDepthStencilStateCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineColorBlendStateCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineDynamicStateCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineLayoutCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkDescriptorPoolResetFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkCommandPoolTrimFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkDescriptorUpdateTemplateCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkDisplayModeCreateFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkDisplaySurfaceCreateFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPeerMemoryFeatureFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkMemoryAllocateFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkCommandPoolTrimFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkExternalMemoryHandleTypeFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkExternalMemoryFeatureFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkExternalSemaphoreHandleTypeFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkExternalSemaphoreFeatureFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkSemaphoreImportFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkDescriptorUpdateTemplateCreateFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkExternalFenceHandleTypeFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkExternalFenceFeatureFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkFenceImportFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkResolveModeFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkSemaphoreWaitFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineRasterizationStateStreamCreateFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineViewportSwizzleStateCreateFlagsNV
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineDiscardRectangleStateCreateFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineRasterizationConservativeStateCreateFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineRasterizationDepthClipStateCreateFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkDebugUtilsMessengerCallbackDataFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkDebugUtilsMessengerCreateFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineCoverageToColorStateCreateFlagsNV
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineCoverageModulationStateCreateFlagsNV
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkValidationCacheCreateFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkDescriptorBindingFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkGeometryFlagsNV
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkGeometryInstanceFlagsNV
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkBuildAccelerationStructureFlagsNV
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkPipelineCoverageReductionStateCreateFlagsNV
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkHeadlessSurfaceCreateFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkAndroidSurfaceCreateFlagsKHR
+	{
+		None = 0,
 	}
 
 }

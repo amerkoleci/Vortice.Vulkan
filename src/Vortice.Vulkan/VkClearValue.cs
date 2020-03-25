@@ -18,8 +18,8 @@ namespace Vortice.Vulkan
         /// <param name="stencil">The stencil clear value.</param>
         public VkClearDepthStencilValue(float depth, uint stencil)
         {
-            Depth = depth;
-            Stencil = stencil;
+            this.depth = depth;
+            this.stencil = stencil;
         }
     }
 

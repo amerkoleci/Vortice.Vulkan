@@ -7,8 +7,8 @@ namespace Vortice.Vulkan
     {
         public VkOffset2D(int x, int y)
         {
-            X = x;
-            Y = y;
+            this.x = x;
+            this.y = y;
         }
     }
 }

@@ -24,12 +24,12 @@ namespace Vortice.Vulkan
         /// <param name="height">The height component of the extent.</param>
         public VkExtent2D(uint width, uint height)
         {
-            Width = width;
-            Height = height;
+            this.width = width;
+            this.height = height;
         }
 
-        public override string ToString() => $"{Width}x{Height}";
-        public bool Equals(ref VkExtent2D other) => other.Width == Width && other.Height == Height;
+        public override string ToString() => $"{width}x{height}";
+        public bool Equals(ref VkExtent2D other) => other.width == width && other.height == height;
         public bool Equals(VkExtent2D other) => Equals(ref other);
         public override bool Equals(object obj) => obj is VkExtent2D && Equals((VkExtent2D)obj);
 
@@ -41,8 +41,8 @@ namespace Vortice.Vulkan
         {
             unchecked
             {
-                int hashCode = Width.GetHashCode();
-                hashCode = (hashCode * 397) ^ Height.GetHashCode();
+                int hashCode = width.GetHashCode();
+                hashCode = (hashCode * 397) ^ height.GetHashCode();
                 return hashCode;
             }
         }

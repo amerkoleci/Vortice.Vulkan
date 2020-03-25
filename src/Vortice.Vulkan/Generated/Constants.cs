@@ -2230,5 +2230,29 @@ namespace Vortice.Vulkan
 		/// VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config"
 		/// </summary>
 		public const string NVDeviceDiagnosticsConfigExtensionName = "VK_NV_device_diagnostics_config";
+		/// <summary>
+		/// VK_KHR_android_surface = 1
+		/// </summary>
+		public const uint KHRAndroidSurface = 1;
+		/// <summary>
+		/// VK_KHR_ANDROID_SURFACE_SPEC_VERSION = 6
+		/// </summary>
+		public const uint KHRAndroidSurfaceSpecVersion = 6;
+		/// <summary>
+		/// VK_KHR_ANDROID_SURFACE_EXTENSION_NAME = "VK_KHR_android_surface"
+		/// </summary>
+		public const string KHRAndroidSurfaceExtensionName = "VK_KHR_android_surface";
+		/// <summary>
+		/// VK_ANDROID_external_memory_android_hardware_buffer = 1
+		/// </summary>
+		public const uint AndroidExternalMemoryAndroidHardwareBuffer = 1;
+		/// <summary>
+		/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION = 3
+		/// </summary>
+		public const uint AndroidExternalMemoryAndroidHardwareBufferSpecVersion = 3;
+		/// <summary>
+		/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer"
+		/// </summary>
+		public const string AndroidExternalMemoryAndroidHardwareBufferExtensionName = "VK_ANDROID_external_memory_android_hardware_buffer";
 	}
 }

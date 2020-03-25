@@ -11,15 +11,15 @@ namespace Vortice.Vulkan
     /// A boolean value stored on 4 bytes (instead of 1 in .NET).
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Size = 4)]
-    public readonly struct RawBool : IEquatable<RawBool>
+    public readonly struct VkBool32 : IEquatable<VkBool32>
     {
         private readonly int _value;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RawBool" /> class.
+        /// Initializes a new instance of the <see cref="VkBool32" /> class.
         /// </summary>
         /// <param name="boolValue">if set to <c>true</c> [bool value].</param>
-        public RawBool(bool boolValue)
+        public VkBool32(bool boolValue)
         {
             _value = boolValue ? 1 : 0;
         }
@@ -30,10 +30,10 @@ namespace Vortice.Vulkan
         /// <param name="other">The other.</param>
         /// <returns>true if <paramref name="other" /> and this instance are the same type and represent the same value; otherwise, false.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Equals(RawBool other) => _value == other._value;
+        public bool Equals(VkBool32 other) => _value == other._value;
 
         /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is RawBool rawBool && Equals(rawBool);
+        public override bool Equals(object obj) => obj is VkBool32 rawBool && Equals(rawBool);
 
         /// <inheritdoc/>
         public override int GetHashCode() => _value;
@@ -45,7 +45,7 @@ namespace Vortice.Vulkan
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool operator ==(RawBool left, RawBool right) => left.Equals(right);
+        public static bool operator ==(VkBool32 left, VkBool32 right) => left.Equals(right);
 
         /// <summary>
         /// Implements the !=.
@@ -54,23 +54,23 @@ namespace Vortice.Vulkan
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool operator !=(RawBool left, RawBool right) => !left.Equals(right);
+        public static bool operator !=(VkBool32 left, VkBool32 right) => !left.Equals(right);
 
         /// <summary>
-        /// Performs an explicit conversion from <see cref="RawBool"/> to <see cref="bool"/>.
+        /// Performs an explicit conversion from <see cref="VkBool32"/> to <see cref="bool"/>.
         /// </summary>
-        /// <param name="value">The <see cref="RawBool"/> value.</param>
+        /// <param name="value">The <see cref="VkBool32"/> value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator bool(RawBool value) => value._value != 0;
+        public static implicit operator bool(VkBool32 value) => value._value != 0;
 
         /// <summary>
-        /// Performs an explicit conversion from <see cref="bool"/> to <see cref="RawBool"/>.
+        /// Performs an explicit conversion from <see cref="bool"/> to <see cref="VkBool32"/>.
         /// </summary>
         /// <param name="boolValue">The value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator RawBool(bool boolValue)
+        public static implicit operator VkBool32(bool boolValue)
         {
-            return new RawBool(boolValue);
+            return new VkBool32(boolValue);
         }
 
         /// <inheritdoc/>
