@@ -8,7 +8,6 @@
 
     <DebugType Condition=" '$(Configuration)' == 'Release' ">pdbonly</DebugType>
     <DebugType Condition=" '$(Configuration)' == 'Debug' ">Full</DebugType>
-    <DebugSymbols Condition=" '$(Configuration)' == 'Debug' ">true</DebugSymbols>
 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>CS1591;CS1701</NoWarn>
@@ -26,7 +25,7 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
     <!-- Packages versions -->
-    <NerdbankGitVersioningVersion>3.1.51-beta</NerdbankGitVersioningVersion>
+    <NerdbankGitVersioningVersion>3.1.71</NerdbankGitVersioningVersion>
   </PropertyGroup>
 
   <ItemGroup>
