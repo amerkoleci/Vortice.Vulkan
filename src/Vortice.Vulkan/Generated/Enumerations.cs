@@ -3218,4 +3218,28 @@ namespace Vortice.Vulkan
 		None = 0,
 	}
 
+	[Flags]
+	public enum VkIOSSurfaceCreateFlagsMVK
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkMacOSSurfaceCreateFlagsMVK
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkMetalSurfaceCreateFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkViSurfaceCreateFlagsNN
+	{
+		None = 0,
+	}
+
 }

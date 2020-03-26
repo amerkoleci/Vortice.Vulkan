@@ -7,19 +7,34 @@ using static Vortice.Vulkan.Vulkan;
 
 namespace DrawTriangle
 {
-    public static class Program
+    public static unsafe class Program
     {
         public static void Main()
         {
-            var result = Vulkan.Initialize();
+            var result = vkInitialize();
+            var version = vkEnumerateInstanceVersion();
+            var extensions = vkEnumerateInstanceExtensionProperties();
+            var layers = vkEnumerateLayerProperties();
+
+            foreach (var ext in extensions)
+            {
+                var name = ext.GetExtensionName();
+            }
+
+            foreach(var layer in layers)
+            {
+                var name = layer.GetName();
+                var desc = layer.GetDescription();
+            }
 
             var instanceCreateInfo = new VkInstanceCreateInfo
             {
                 sType = VkStructureType.InstanceCreateInfo
             };
 
-            result = vkCreateInstance(instanceCreateInfo, out var instance);
-
+            VkInstance instance;
+            vkCreateInstance(&instanceCreateInfo, null, &instance).CheckResult();
+            vkLoadInstance(instance);
 #if TODO
             var properties = Vulkan.EnumerateInstanceExtensionProperties();
             var layers = Vulkan.EnumerateLayerProperties();

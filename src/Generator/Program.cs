@@ -2,7 +2,6 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using CppAst;
 
@@ -34,7 +33,11 @@ namespace Generator
                 ParseMacros = true,
                 Defines =
                 {
-                    "VK_USE_PLATFORM_ANDROID_KHR"
+                    "VK_USE_PLATFORM_ANDROID_KHR",
+                    "VK_USE_PLATFORM_IOS_MVK",
+                    "VK_USE_PLATFORM_MACOS_MVK",
+                    "VK_USE_PLATFORM_METAL_EXT",
+                    "VK_USE_PLATFORM_VI_NN",
                 }
             };
             var compilation = CppParser.ParseFile(headerFile, options);

@@ -2254,5 +2254,53 @@ namespace Vortice.Vulkan
 		/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer"
 		/// </summary>
 		public const string AndroidExternalMemoryAndroidHardwareBufferExtensionName = "VK_ANDROID_external_memory_android_hardware_buffer";
+		/// <summary>
+		/// VK_MVK_ios_surface = 1
+		/// </summary>
+		public const uint MvkIosSurface = 1;
+		/// <summary>
+		/// VK_MVK_IOS_SURFACE_SPEC_VERSION = 2
+		/// </summary>
+		public const uint MvkIosSurfaceSpecVersion = 2;
+		/// <summary>
+		/// VK_MVK_IOS_SURFACE_EXTENSION_NAME = "VK_MVK_ios_surface"
+		/// </summary>
+		public const string MvkIosSurfaceExtensionName = "VK_MVK_ios_surface";
+		/// <summary>
+		/// VK_MVK_macos_surface = 1
+		/// </summary>
+		public const uint MvkMacosSurface = 1;
+		/// <summary>
+		/// VK_MVK_MACOS_SURFACE_SPEC_VERSION = 2
+		/// </summary>
+		public const uint MvkMacosSurfaceSpecVersion = 2;
+		/// <summary>
+		/// VK_MVK_MACOS_SURFACE_EXTENSION_NAME = "VK_MVK_macos_surface"
+		/// </summary>
+		public const string MvkMacosSurfaceExtensionName = "VK_MVK_macos_surface";
+		/// <summary>
+		/// VK_EXT_metal_surface = 1
+		/// </summary>
+		public const uint EXTMetalSurface = 1;
+		/// <summary>
+		/// VK_EXT_METAL_SURFACE_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTMetalSurfaceSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface"
+		/// </summary>
+		public const string EXTMetalSurfaceExtensionName = "VK_EXT_metal_surface";
+		/// <summary>
+		/// VK_NN_vi_surface = 1
+		/// </summary>
+		public const uint NnViSurface = 1;
+		/// <summary>
+		/// VK_NN_VI_SURFACE_SPEC_VERSION = 1
+		/// </summary>
+		public const uint NnViSurfaceSpecVersion = 1;
+		/// <summary>
+		/// VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface"
+		/// </summary>
+		public const string NnViSurfaceExtensionName = "VK_NN_vi_surface";
 	}
 }

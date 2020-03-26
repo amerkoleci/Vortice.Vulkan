@@ -8,24 +8,14 @@ namespace Vortice.Vulkan
 {
     public static unsafe partial class Vulkan
     {
+        private delegate IntPtr LoadFunction(IntPtr context, string name);
+
         private static IntPtr s_vulkanModule = IntPtr.Zero;
         private static readonly ILibraryLoader _loader = InitializeLoader();
         private static VkInstance s_loadedInstance = VkInstance.Null;
         private static VkDevice s_loadedDevice = VkDevice.Null;
 
-        private delegate IntPtr VoidFunction(IntPtr context, string name);
-
-
-
-        static Vulkan()
-        {
-            //vkCreateInstance_ptr = vkGetInstanceProcAddr(IntPtr.Zero, nameof(vkCreateInstance));
-            //vkEnumerateInstanceExtensionProperties_ptr = vkGetInstanceProcAddr(IntPtr.Zero, nameof(vkEnumerateInstanceExtensionProperties));
-            //vkEnumerateInstanceLayerProperties_ptr = vkGetInstanceProcAddr(IntPtr.Zero, nameof(vkEnumerateInstanceLayerProperties));
-            //vkEnumerateInstanceVersion_ptr = vkGetInstanceProcAddr(IntPtr.Zero, nameof(vkEnumerateInstanceVersion));
-        }
-
-        public static VkResult Initialize()
+        public static VkResult vkInitialize()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -41,13 +31,15 @@ namespace Vortice.Vulkan
             }
             else
             {
-                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so");
+                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so.1");
                 if (s_vulkanModule == IntPtr.Zero)
-                    s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so.1");
+                    s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so");
             }
 
             if (s_vulkanModule == IntPtr.Zero)
+            {
                 return VkResult.ErrorInitializationFailed;
+            }
 
 #if CALLI_SUPPORT
             vkGetInstanceProcAddr_ptr = GetProcAddress(nameof(vkGetInstanceProcAddr));
@@ -59,6 +51,43 @@ namespace Vortice.Vulkan
 
             return VkResult.Success;
         }
+
+        public static void vkLoadInstance(VkInstance instance)
+        {
+            s_loadedInstance = instance;
+            GenLoadInstance(instance.Handle, vkGetInstanceProcAddr);
+            GenLoadDevice(instance.Handle, vkGetInstanceProcAddr);
+        }
+
+        private static void GenLoadLoader(IntPtr context, LoadFunction load)
+        {
+            vkCreateInstance_ptr = LoadCallbackThrow<vkCreateInstanceDelegate>(context, load, "vkCreateInstance");
+            vkEnumerateInstanceExtensionProperties_ptr = LoadCallbackThrow<vkEnumerateInstanceExtensionPropertiesDelegate>(context, load, "vkEnumerateInstanceExtensionProperties");
+            vkEnumerateInstanceLayerProperties_ptr = LoadCallbackThrow<vkEnumerateInstanceLayerPropertiesDelegate>(context, load, "vkEnumerateInstanceLayerProperties");
+            vkEnumerateInstanceVersion_ptr = LoadCallback<vkEnumerateInstanceVersionDelegate>(context, load, "vkEnumerateInstanceVersion");
+        }
+
+#if !CALLI_SUPPORT
+        private static T LoadCallbackThrow<T>(IntPtr context, LoadFunction load, string name)
+        {
+            var functionPtr = load(context, name);
+            if (functionPtr == IntPtr.Zero)
+            {
+                throw new InvalidOperationException($"No function was found with the name {name}.");
+            }
+
+            return Marshal.GetDelegateForFunctionPointer<T>(functionPtr);
+        }
+
+        private static T LoadCallback<T>(IntPtr context, LoadFunction load, string name)
+        {
+            var functionPtr = load(context, name);
+            if (functionPtr == IntPtr.Zero)
+                return default;
+
+            return Marshal.GetDelegateForFunctionPointer<T>(functionPtr);
+        }
+#endif
 
         private static ILibraryLoader InitializeLoader()
         {
@@ -72,12 +101,7 @@ namespace Vortice.Vulkan
             }
         }
 
-        private static IntPtr GetProcAddress(string procName)
-        {
-            return _loader.GetSymbol(s_vulkanModule, procName);
-        }
-
-        public static TDelegate GetProcAddress<TDelegate>(string procName) where TDelegate : class
+        private static TDelegate GetProcAddress<TDelegate>(string procName) where TDelegate : class
         {
             var handle = _loader.GetSymbol(s_vulkanModule, procName);
             return handle == IntPtr.Zero
@@ -85,86 +109,38 @@ namespace Vortice.Vulkan
                 : Marshal.GetDelegateForFunctionPointer<TDelegate>(handle);
         }
 
-        private static void GenLoadLoader(IntPtr context, VoidFunction load)
-        {
-#if CALLI_SUPPORT
-            vkCreateInstance_ptr = load(context, nameof(vkCreateInstance));
-#else
-            //vkCreateInstance_ptr = Marshal.GetDelegateForFunctionPointer<PFN_vkCreateInstance>(load(context, nameof(vkCreateInstance)));
-#endif
-        }
-
-        #region Functions
-        // TODO: We have WIP Calli patch, disable for now.
-#if CALLI_SUPPORT
-        private static IntPtr vkGetInstanceProcAddr_ptr;
-        private static IntPtr vkCreateInstance_ptr;
-#else
-        private delegate IntPtr vkGetInstanceProcAddrDelegate(VkInstance instance, byte* name);
-        //private delegate VkResult PFN_vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance pInstance);
-
-        private static vkGetInstanceProcAddrDelegate vkGetInstanceProcAddr_ptr;
-        //private static PFN_vkCreateInstance vkCreateInstance_ptr;
-#endif
-        #endregion
-
-
-
-        public unsafe static IntPtr vkGetInstanceProcAddr(IntPtr instance, string name)
+        public static IntPtr vkGetInstanceProcAddr(IntPtr instance, string name)
         {
             int byteCount = Interop.GetMaxByteCount(name);
             var stringPtr = stackalloc byte[byteCount];
             Interop.StringToPointer(name, stringPtr, byteCount);
-            return vkGetInstanceProcAddr(instance, stringPtr);
+            return vkGetInstanceProcAddr_ptr(instance, stringPtr);
         }
 
-        [Calli]
-        private unsafe static IntPtr vkGetInstanceProcAddr(IntPtr instance, byte* name)
-        {
-#if CALLI_SUPPORT
-            throw new NotImplementedException();
-#else
-            return vkGetInstanceProcAddr_ptr(instance, name);
-#endif
-        }
-
-        /*public static VkResult vkCreateInstance(VkInstanceCreateInfo createInfo, out VkInstance instance)
-        {
-            return vkCreateInstance_ptr(&createInfo, null, out instance);
-        }*/
-
-#if TODO
         /// <summary>
         /// Returns global extension properties.
         /// </summary>
         /// <param name="layerName">Optional layer name.</param>
         /// <returns></returns>
         /// <exception cref="VkException">Vulkan returns an error code.</exception>
-        public static unsafe ExtensionProperties[] EnumerateInstanceExtensionProperties(string layerName = null)
+        public static unsafe Span<VkExtensionProperties> vkEnumerateInstanceExtensionProperties(string layerName = null)
         {
+            int dstLayerNameByteCount = Interop.GetMaxByteCount(layerName);
+            var dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
+            Interop.StringToPointer(layerName, dstLayerNamePtr, dstLayerNameByteCount);
+
             var nativeStr = string.IsNullOrEmpty(layerName) ? IntPtr.Zero : Marshal.StringToHGlobalAnsi(layerName);
-            try
+            uint count = 0;
+            var result = vkEnumerateInstanceExtensionProperties((byte*)nativeStr, &count, null);
+            result.CheckResult();
+
+            Span<VkExtensionProperties> properties = new VkExtensionProperties[count];
+            fixed (VkExtensionProperties* ptr = properties)
             {
-                int count = 0;
-                var result = vkEnumerateInstanceExtensionProperties((byte*)nativeStr, &count, null);
-                VkException.ThrowForInvalidResult(result);
-
-                var propertiesPtr = stackalloc ExtensionProperties[count];
-                result = vkEnumerateInstanceExtensionProperties((byte*)nativeStr, &count, propertiesPtr);
-                VkException.ThrowForInvalidResult(result);
-
-                var properties = new ExtensionProperties[count];
-                for (int i = 0; i < count; i++)
-                {
-                    properties[i] = ExtensionProperties.FromNative(ref propertiesPtr[i]);
-                }
-
-                return properties;
+                result = vkEnumerateInstanceExtensionProperties((byte*)nativeStr, &count, ptr);
             }
-            finally
-            {
-                Marshal.FreeHGlobal(nativeStr);
-            }
+            result.CheckResult();
+            return properties;
         }
 
         /// <summary>
@@ -172,22 +148,18 @@ namespace Vortice.Vulkan
         /// </summary>
         /// <returns>Properties of available layers.</returns>
         /// <exception cref="VkException">Vulkan returns an error code.</exception>
-        public static unsafe LayerProperties[] EnumerateLayerProperties()
+        public static unsafe Span<VkLayerProperties> vkEnumerateLayerProperties()
         {
-            int count = 0;
+            uint count = 0;
             var result = vkEnumerateInstanceLayerProperties(&count, null);
-            VkException.ThrowForInvalidResult(result);
+            result.CheckResult();
 
-            var nativePropertiesPtr = stackalloc VkLayerProperties[count];
-            result = vkEnumerateInstanceLayerProperties(&count, nativePropertiesPtr);
-            VkException.ThrowForInvalidResult(result);
-
-            var properties = new LayerProperties[count];
-            for (int i = 0; i < count; i++)
+            Span<VkLayerProperties> properties = new VkLayerProperties[(int)count];
+            fixed (VkLayerProperties* ptr = properties)
             {
-                properties[i] = LayerProperties.FromNative(ref nativePropertiesPtr[i]);
+                result = vkEnumerateInstanceLayerProperties(&count, ptr);
             }
-
+            result.CheckResult();
             return properties;
         }
 
@@ -195,66 +167,17 @@ namespace Vortice.Vulkan
         /// Query instance-level version before instance creation.
         /// </summary>
         /// <returns>The version of Vulkan supported by instance-level functionality.</returns>
-        public static unsafe VkVersion EnumerateInstanceVersion()
+        public static unsafe VkVersion vkEnumerateInstanceVersion()
         {
             uint apiVersion;
-            if (vkEnumerateInstanceVersion_ptr != IntPtr.Zero
-                && vkEnumerateInstanceVersion(&apiVersion) == VkResult.Success)
+            if (vkEnumerateInstanceVersion_ptr != null
+                && vkEnumerateInstanceVersion_ptr(&apiVersion) == VkResult.Success)
             {
                 return new VkVersion(apiVersion);
             }
 
             return VkVersion.Version_1_0;
         }
-
-        public unsafe static VkInstance CreateInstance(VkInstanceCreateInfo createInfo)
-        {
-            return default;
-            //createInfo.__MarshalTo(out var nativeCreateInfo);
-
-            //IntPtr handle;
-            //VkResult result = vkCreateInstance(&nativeCreateInfo, null, &handle);
-            ////nativeCreateInfo.Free();
-            //SharpVulkanException.ThrowForInvalidResult(result);
-
-            //return new VkInstance(handle);
-        }
-
-       
-        private static readonly IntPtr vkEnumerateInstanceExtensionProperties_ptr;
-        private static readonly IntPtr vkEnumerateInstanceLayerProperties_ptr;
-        private static readonly IntPtr vkEnumerateInstanceVersion_ptr;
-
-        
-
-        [Calli]
-        internal unsafe static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, void* allocator, IntPtr* instance)
-        {
-            throw new NotImplementedException();
-        }
-
-        [Calli]
-        private unsafe static VkResult vkEnumerateInstanceExtensionProperties(byte* layerName, int* propertyCount, VkExtensionProperties* properties)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        [Calli]
-        private unsafe static VkResult vkEnumerateInstanceLayerProperties(int* pPropertyCount, VkLayerProperties* pProperties)
-        {
-            throw new NotImplementedException();
-        }
-
-        [Calli]
-        private unsafe static VkResult vkEnumerateInstanceVersion(uint* pApiVersion)
-        {
-            throw new NotImplementedException();
-        } 
-#endif
-
-        //private delegate void vkDestroyInstanceDelegate(IntPtr instance, AllocationCallbacks.Native* allocator);
-        //private static readonly vkDestroyInstanceDelegate vkDestroyInstance;
 
         internal interface ILibraryLoader
         {

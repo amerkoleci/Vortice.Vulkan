@@ -98,7 +98,9 @@ namespace Generator
                     cppEnum.Name.EndsWith("FlagBitsEXT") ||
                     cppEnum.Name.EndsWith("FlagBitsKHR") ||
                     cppEnum.Name.EndsWith("FlagBitsNV") ||
-                    cppEnum.Name.EndsWith("FlagBitsAMD");
+                    cppEnum.Name.EndsWith("FlagBitsAMD") ||
+                    cppEnum.Name.EndsWith("FlagBitsMVK") ||
+                    cppEnum.Name.EndsWith("FlagBitsNN");
                 if (isBitmask)
                 {
                     writer.WriteLine("[Flags]");
@@ -281,7 +283,9 @@ namespace Generator
                     typedef.Name.EndsWith("FlagsKHR", StringComparison.OrdinalIgnoreCase) ||
                     typedef.Name.EndsWith("FlagsEXT", StringComparison.OrdinalIgnoreCase) ||
                     typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase) ||
-                    typedef.Name.EndsWith("FlagsAMD", StringComparison.OrdinalIgnoreCase))
+                    typedef.Name.EndsWith("FlagsAMD", StringComparison.OrdinalIgnoreCase) ||
+                    typedef.Name.EndsWith("FlagsMVK", StringComparison.OrdinalIgnoreCase) ||
+                    typedef.Name.EndsWith("FlagsNN", StringComparison.OrdinalIgnoreCase))
                 {
                     writer.WriteLine("[Flags]");
                     using (writer.PushBlock($"public enum {typedef.Name}"))

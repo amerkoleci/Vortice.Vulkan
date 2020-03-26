@@ -115,22 +115,20 @@ namespace Vortice.Vulkan
         /// <summary>
         /// Decodes specified null-terminated UTF-8 bytes into string.
         /// </summary>
-        /// <param name="pointer">Pointer to decode from.</param>
+        /// <param name="ptr">Pointer to decode from.</param>
         /// <returns>
         /// A string that contains the results of decoding the specified sequence of bytes.
         /// </returns>
-        public static string StringFromPointer(byte* pointer)
+        public static string StringFromPointer(byte* ptr)
         {
-            if (pointer == null)
-                return null;
-
-            // Read until null-terminator.
-            byte* walkPtr = pointer;
-            while (*walkPtr != 0)
-                walkPtr++;
+            int length = 0;
+            while (length < 4096 && ptr[length] != 0)
+            {
+                length++;
+            }
 
             // Decode UTF-8 bytes to string.
-            return Encoding.UTF8.GetString(pointer, (int)(walkPtr - pointer));
+            return Encoding.UTF8.GetString(ptr, length);
         }
 
         public static void StringToPointer(string value, byte* dstPointer, int maxByteCount)

@@ -76,7 +76,7 @@ namespace Vortice.Vulkan
     }
 
     /// <summary>
-    /// Structure specifying parameters for creation of <see cref="Instance"/>.
+    /// Structure specifying parameters for creation of <see cref="VkInstance"/>.
     /// </summary>
     public struct InstanceCreateInfo
     {

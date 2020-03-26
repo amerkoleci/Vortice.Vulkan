@@ -4,7 +4,6 @@
 using System;
 using System.Diagnostics;
 
-#if TODO
 namespace Vortice.Vulkan
 {
     /// <summary>
@@ -30,7 +29,7 @@ namespace Vortice.Vulkan
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SharpVulkanException" /> class.
+        /// Initializes a new instance of the <see cref="VkException" /> class.
         /// </summary>
         /// <param name="result">The result code that caused this exception.</param>
         /// <param name="message"></param>
@@ -52,16 +51,5 @@ namespace Vortice.Vulkan
         public VkException(string message, Exception innerException) : base(message, innerException)
         {
         }
-
-        [DebuggerHidden]
-        [DebuggerStepThrough]
-        internal static void ThrowForInvalidResult(VkResult result)
-        {
-            if (result != VkResult.Success)
-            {
-                throw new VkException(result);
-            }
-        }
     }
-} 
-#endif
+}

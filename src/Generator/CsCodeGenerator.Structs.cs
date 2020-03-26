@@ -43,9 +43,8 @@ namespace Generator
                         writer.WriteLine();
                     }
 
-                    if (cppClass.Name == "VkAndroidSurfaceCreateInfoKHR")
+                    if (cppClass.Name == "VkExtensionProperties")
                     {
-
                     }
 
                     foreach (var cppField in cppClass.Fields)
@@ -55,8 +54,12 @@ namespace Generator
                         if (cppField.Type is CppArrayType arrayType)
                         {
                             var canUseFixed = false;
-                            if (arrayType.ElementType is CppTypedef typedef
-                                && typedef.ElementType is CppPrimitiveType primitiveType)
+                            if (arrayType.ElementType is CppPrimitiveType)
+                            {
+                                canUseFixed = true;
+                            }
+                            else if (arrayType.ElementType is CppTypedef typedef
+                                && typedef.ElementType is CppPrimitiveType)
                             {
                                 canUseFixed = true;
                             }
@@ -78,6 +81,11 @@ namespace Generator
                         else
                         {
                             var csFieldType = GetCsTypeName(cppField.Type, false);
+                            if (csFieldName.Equals("specVersion", System.StringComparison.OrdinalIgnoreCase))
+                            {
+                                csFieldType = "VkVersion";
+                            }
+
                             writer.WriteLine($"public {csFieldType} {csFieldName};");
                         }
                     }

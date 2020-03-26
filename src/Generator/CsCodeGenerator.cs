@@ -86,6 +86,8 @@ namespace Generator
             { "GgpFrameToken", "IntPtr" },
             { "GgpStreamDescriptor", "IntPtr" },
 
+            { "VkMemoryRequirements2KHR", "VkMemoryRequirements2" },
+
             { "VkAccelerationStructureTypeNV", "VkAccelerationStructureTypeKHR" },
             { "VkAccelerationStructureMemoryRequirementsTypeNV", "VkAccelerationStructureMemoryRequirementsTypeKHR" },
             { "VkAccelerationStructureNV", "VkAccelerationStructureKHR" },
@@ -100,6 +102,7 @@ namespace Generator
             GenerateEnums(compilation, outputPath);
             GenerateHandles(compilation, outputPath);
             GenerateStructAndUnions(compilation, outputPath);
+            GenerateCommands(compilation, outputPath);
         }
 
         public static void AddCsMapping(string typeName, string csTypeName)
@@ -524,7 +527,7 @@ namespace Generator
                     return isPointer ? "void*" : "void";
 
                 case CppPrimitiveKind.Char:
-                    return isPointer ? "byte*" : "char";
+                    return isPointer ? "byte*" : "byte";
 
                 case CppPrimitiveKind.Bool:
                     break;
