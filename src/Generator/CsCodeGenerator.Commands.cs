@@ -26,6 +26,54 @@ namespace Generator
             "vkSubmitDebugUtilsMessageEXT"
         };
 
+        private static readonly HashSet<string> s_outReturnFunctions = new HashSet<string>
+        {
+            "vkCreateInstance",
+            "vkCreateDevice",
+            "vkGetPhysicalDeviceFeatures",
+            "vkGetPhysicalDeviceFormatProperties",
+            "vkGetPhysicalDeviceImageFormatProperties",
+            "vkGetPhysicalDeviceProperties",
+            "vkGetPhysicalDeviceMemoryProperties",
+            "vkGetDeviceQueue",
+            "vkGetBufferMemoryRequirements",
+            "vkGetImageMemoryRequirements",
+            "vkCreateAndroidSurfaceKHR",
+            "vkCreateWin32SurfaceKHR",
+            "vkCreateFence",
+            "vkCreateSemaphore",
+            "vkCreateEvent",
+            "vkCreateQueryPool",
+            "vkCreateBuffer",
+            "vkCreateBufferView",
+            "vkCreateImage",
+            "vkGetImageSubresourceLayout",
+            "vkCreateImageView",
+            "vkCreateShaderModule",
+            "vkCreatePipelineCache",
+            "vkCreateGraphicsPipelines",
+            "vkCreateComputePipelines",
+            "vkCreatePipelineLayout",
+            "vkCreateSampler",
+            "vkCreateDescriptorSetLayout",
+            "vkCreateDescriptorPool",
+            //"vkAllocateDescriptorSets",
+            "vkCreateFramebuffer",
+            "vkCreateRenderPass",
+            "vkGetRenderAreaGranularity",
+            "vkCreateCommandPool",
+
+            "vkEnumerateInstanceVersion",
+        };
+
+        private static readonly HashSet<string> s_outArrayReturnFunctions = new HashSet<string>
+        {
+            "vkGetPhysicalDeviceQueueFamilyProperties",
+            "vkGetImageSparseMemoryRequirements",
+            "vkGetPhysicalDeviceSparseImageFormatProperties",
+            "vkGetQueryPoolResults"
+        };
+
         private static bool calliFunction = false;
 
         private static void GenerateCommands(CppCompilation compilation, string outputPath)
@@ -34,7 +82,8 @@ namespace Generator
             using var writer = new CodeWriter(Path.Combine(outputPath, "Commands.cs"),
                 "System",
                 "System.Diagnostics",
-                "System.Runtime.InteropServices");
+                "System.Runtime.InteropServices",
+                "Vortice.Mathematics");
 
             var commands = new Dictionary<string, CppFunction>();
             var instanceCommands = new Dictionary<string, CppFunction>();
@@ -42,8 +91,10 @@ namespace Generator
             foreach (var cppFunction in compilation.Functions)
             {
                 var returnType = GetCsTypeName(cppFunction.ReturnType, false);
+                bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
                 var csName = cppFunction.Name;
-                var argumentsString = GetParameterSignature(cppFunction);
+                var argumentsString = GetParameterSignature(cppFunction, canUseOut);
+
                 writer.WriteLine("[UnmanagedFunctionPointer(CallingConvention.StdCall)]");
                 writer.WriteLine($"public unsafe delegate {returnType} {csName}Delegate({argumentsString});");
                 writer.WriteLine();
@@ -86,25 +137,25 @@ namespace Generator
                     }
 
                     var returnType = GetCsTypeName(cppFunction.ReturnType, false);
-                    var argumentsString = GetParameterSignature(cppFunction);
+                    bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
+                    var argumentsString = GetParameterSignature(cppFunction, canUseOut);
 
                     using (writer.PushBlock($"public static {returnType} {cppFunction.Name}({argumentsString})"))
                     {
                         if (returnType != "void")
+                        {
                             writer.Write("return ");
+                        }
 
                         writer.Write($"{command.Key}_ptr(");
                         var index = 0;
                         foreach (var cppParameter in cppFunction.Parameters)
                         {
                             var paramCsName = GetParameterName(cppParameter.Name);
-                            //if (cppParameter.Type is CppPointerType pointerType)
-                            //{
-                            //    if (pointerType.ElementType is CppTypedef typedef)
-                            //    {
-                            //        writer.Write("out ");
-                            //    }
-                            //}
+                            if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out var cppTypeDeclaration))
+                            {
+                                writer.Write("out ");
+                            }
 
                             writer.Write($"{paramCsName}");
                             if (index < cppFunction.Parameters.Count - 1)
@@ -149,7 +200,7 @@ namespace Generator
             return s_instanceFunctions.Contains(name);
         }
 
-        private static string GetParameterSignature(CppFunction cppFunction)
+        private static string GetParameterSignature(CppFunction cppFunction, bool canUseOut)
         {
             var argumentBuilder = new StringBuilder();
             var index = 0;
@@ -160,14 +211,11 @@ namespace Generator
                 var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
                 var paramCsName = GetParameterName(cppParameter.Name);
 
-                //if (cppParameter.Type is CppPointerType pointerType)
-                //{
-                //    if (pointerType.ElementType is CppTypedef typedef)
-                //    {
-                //        argumentBuilder.Append("out ");
-                //        paramCsTypeName = GetCsTypeName(typedef, false);
-                //    }
-                //}
+                if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out var cppTypeDeclaration))
+                {
+                    argumentBuilder.Append("out ");
+                    paramCsTypeName = GetCsTypeName(cppTypeDeclaration, false);
+                }
 
                 argumentBuilder.Append(paramCsTypeName).Append(" ").Append(paramCsName);
                 if (index < cppFunction.Parameters.Count - 1)
@@ -189,7 +237,36 @@ namespace Generator
             if (name == "object")
                 return "@object";
 
+            if (name.StartsWith('p')
+                && char.IsUpper(name[1]))
+            {
+                name = char.ToLower(name[1]) + name.Substring(2);
+                return GetParameterName(name);
+            }
+
             return name;
+        }
+
+        private static bool CanBeUsedAsOutput(CppType type, out CppTypeDeclaration elementTypeDeclaration)
+        {
+            if (type is CppPointerType pointerType)
+            {
+                if (pointerType.ElementType is CppTypedef typedef)
+                {
+                    elementTypeDeclaration = typedef;
+                    return true;
+                }
+                else if (pointerType.ElementType is CppClass cppClass
+                    && cppClass.ClassKind != CppClassKind.Class
+                    && cppClass.SizeOf > 0)
+                {
+                    elementTypeDeclaration = cppClass;
+                    return true;
+                }
+            }
+
+            elementTypeDeclaration = null;
+            return false;
         }
     }
 }

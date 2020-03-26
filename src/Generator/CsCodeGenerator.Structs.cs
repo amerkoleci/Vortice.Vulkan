@@ -3,7 +3,6 @@
 
 using System;
 using System.IO;
-using System.Linq;
 using CppAst;
 
 namespace Generator
@@ -29,7 +28,18 @@ namespace Generator
                     continue;
                 }
 
+                // Mapped to Vortice.Mathematics
+                if (cppClass.Name == "VkOffset2D" ||
+                    cppClass.Name == "VkOffset3D" ||
+                    cppClass.Name == "VkExtent2D" ||
+                    cppClass.Name == "VkExtent3D" ||
+                    cppClass.Name == "VkViewport")
+                {
+                    continue;
+                }
+
                 var isUnion = cppClass.ClassKind == CppClassKind.Union;
+                Console.WriteLine($"Generating struct {cppClass.Name}");
 
                 var csName = cppClass.Name;
                 if (isUnion)

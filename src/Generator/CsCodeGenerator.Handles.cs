@@ -68,41 +68,6 @@ namespace Generator
 
                 writer.WriteLine();
             }
-
-            //foreach (var handle in specs.Handles.Values)
-            //{
-            //    if (handle.Parent != null)
-            //    {
-            //        writer.WriteLine($"/// <summary>");
-            //        writer.WriteLine($"/// A {(handle.Dispatchable ? "dispatchable" : "non-dispatchable")} handle owned by a {handle.Parent}.");
-            //        writer.WriteLine("/// </summary>");
-            //    }
-
-            //    var csName = handle.Name;
-            //    writer.WriteLine("[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
-            //    using (writer.PushBlock($"public partial struct {csName} : IEquatable<{csName}>"))
-            //    {
-            //        string handleType = handle.Dispatchable ? "IntPtr" : "ulong";
-            //        string nullValue = handle.Dispatchable ? "IntPtr.Zero" : "0";
-
-            //        writer.WriteLine($"public readonly {handleType} Handle;");
-
-            //        writer.WriteLine($"public {csName}({handleType} handle) {{ Handle = handle; }}");
-            //        writer.WriteLine($"public static {csName} Null => new {csName}({nullValue});");
-            //        writer.WriteLine($"public static implicit operator {csName}({handleType} handle) => new {csName}(handle);");
-            //        writer.WriteLine($"public static bool operator ==({csName} left, {csName} right) => left.Handle == right.Handle;");
-            //        writer.WriteLine($"public static bool operator !=({csName} left, {csName} right) => left.Handle != right.Handle;");
-            //        writer.WriteLine($"public static bool operator ==({csName} left, {handleType} right) => left.Handle == right;");
-            //        writer.WriteLine($"public static bool operator !=({csName} left, {handleType} right) => left.Handle != right;");
-            //        writer.WriteLine($"public bool Equals(ref {csName} other) => Handle == other.Handle;");
-            //        writer.WriteLine($"public bool Equals({csName} other) => Handle == other.Handle;");
-            //        writer.WriteLine($"public override bool Equals(object obj) => obj is {csName} handle && Equals(ref handle);");
-            //        writer.WriteLine($"public override int GetHashCode() => Handle.GetHashCode();");
-            //        writer.WriteLine($"private string DebuggerDisplay => string.Format(\"{csName} [0x{{0}}]\", Handle.ToString(\"X\"));");
-            //    }
-
-            //    writer.WriteLine();
-            //}
         }
     }
 }

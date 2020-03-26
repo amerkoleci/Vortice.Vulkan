@@ -8,13 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Vortice.Mathematics" Version="1.2.1" />
+    <PackageReference Include="Vortice.Mathematics" Version="1.2.2" />
     <PackageReference Include="System.Memory" Version="4.5.4" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.7.1" />
-    <ProjectReference Include="../Patch/Patch.csproj"
-                     ReferenceOutputAssembly="false"
-                     SkipGetTargetFrameworkProperties="true"
-                     GlobalPropertiesToRemove="TargetFramework" />
+    <ProjectReference Include="../Patch/Patch.csproj" ReferenceOutputAssembly="false" SkipGetTargetFrameworkProperties="true" GlobalPropertiesToRemove="TargetFramework" />
   </ItemGroup>
 
 </Project>

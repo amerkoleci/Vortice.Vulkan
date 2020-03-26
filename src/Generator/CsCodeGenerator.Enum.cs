@@ -93,7 +93,7 @@ namespace Generator
 
             foreach (var cppEnum in compilation.Enums)
             {
-                var isBitmask = 
+                var isBitmask =
                     cppEnum.Name.EndsWith("FlagBits") ||
                     cppEnum.Name.EndsWith("FlagBitsEXT") ||
                     cppEnum.Name.EndsWith("FlagBitsKHR") ||
@@ -119,7 +119,7 @@ namespace Generator
                 createdEnums.Add(csName, cppEnum.Name);
                 using (writer.PushBlock($"public enum {csName}"))
                 {
-                    if (isBitmask && 
+                    if (isBitmask &&
                         !cppEnum.Items.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "None"))
                     {
                         writer.WriteLine("None = 0,");
@@ -359,13 +359,12 @@ namespace Generator
 
             for (int i = 0; i < parts.Count; i++)
             {
-                if (
-                        parts[i] == "Flag"
-                    || parts[i] == "Flags"
-                    || (parts[i] == "K" && (i + 2) < parts.Count && parts[i + 1] == "H" && parts[i + 2] == "R")
-                    || (parts[i] == "A" && (i + 2) < parts.Count && parts[i + 1] == "M" && parts[i + 2] == "D")
-                    || (parts[i] == "E" && (i + 2) < parts.Count && parts[i + 1] == "X" && parts[i + 2] == "T")
-                    || (parts[i] == "Type" && (i + 3) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V" && parts[i + 3] == "X")
+                if (parts[i] == "Flag" ||
+                    parts[i] == "Flags" ||
+                    (parts[i] == "K" && (i + 2) < parts.Count && parts[i + 1] == "H" && parts[i + 2] == "R") ||
+                    (parts[i] == "A" && (i + 2) < parts.Count && parts[i + 1] == "M" && parts[i + 2] == "D") ||
+                    (parts[i] == "E" && (i + 2) < parts.Count && parts[i + 1] == "X" && parts[i + 2] == "T") ||
+                    (parts[i] == "Type" && (i + 3) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V" && parts[i + 3] == "X")
                     )
                 {
                     parts = new List<string>(parts.Take(i));
@@ -388,11 +387,7 @@ namespace Generator
                 return value;
             }
 
-            string[] parts = value.Substring(
-                enumPrefix.Length,
-                value.Length - enumPrefix.Length)
-                .Split(new[] { '_' },
-                StringSplitOptions.RemoveEmptyEntries);
+            string[] parts = value[enumPrefix.Length..].Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
 
             var sb = new StringBuilder();
             foreach (string part in parts)

@@ -58,6 +58,9 @@ namespace Vortice.Vulkan
             s_loadedInstance = instance;
             GenLoadInstance(instance.Handle, vkGetInstanceProcAddr);
             GenLoadDevice(instance.Handle, vkGetInstanceProcAddr);
+
+            // Manually load win32 entries.
+            vkCreateWin32SurfaceKHR_ptr = LoadCallback<vkCreateWin32SurfaceKHRDelegate>(instance.Handle, vkGetInstanceProcAddr, nameof(vkCreateWin32SurfaceKHR));
         }
 
         private static void GenLoadLoader(IntPtr context, LoadFunction load)
@@ -161,9 +164,8 @@ namespace Vortice.Vulkan
         /// <returns>The version of Vulkan supported by instance-level functionality.</returns>
         public static unsafe VkVersion vkEnumerateInstanceVersion()
         {
-            uint apiVersion = 0;
             if (vkEnumerateInstanceVersion_ptr != null
-                && vkEnumerateInstanceVersion_ptr(&apiVersion) == VkResult.Success)
+                && vkEnumerateInstanceVersion_ptr(out var apiVersion) == VkResult.Success)
             {
                 return new VkVersion(apiVersion);
             }

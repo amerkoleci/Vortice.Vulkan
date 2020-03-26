@@ -32,11 +32,6 @@ namespace Generator
             "amd",
         };
 
-        private static readonly HashSet<string> s_fixedCapableTypes = new HashSet<string>()
-        {
-            "byte", "short", "int", "long", "char", "sbyte", "ushort", "uint", "ulong", "float", "double"
-        };
-
         private static readonly Dictionary<string, string> s_csNameMappings = new Dictionary<string, string>()
         {
             { "uint8_t", "byte" },
@@ -55,6 +50,12 @@ namespace Generator
             { "VkFlags", "uint" },
             { "VkDeviceSize", "ulong" },
             { "VkSampleMask", "uint" },
+
+            { "VkOffset2D", "Point" },
+            { "VkOffset3D", "Point3" },
+            { "VkExtent2D", "Size" },
+            { "VkExtent3D", "Size3" },
+            { "VkViewport", "Viewport" },
 
             { "buffer_handle_t", "IntPtr" },
             { "AHardwareBuffer","IntPtr" },
@@ -141,6 +142,7 @@ namespace Generator
                     }
 
                     var csName = GetPrettyEnumName(cppMacro.Name, "VK_");
+
                     var csDataType = "string";
                     var macroValue = NormalizeEnumValue(cppMacro.Value);
                     if (macroValue.EndsWith("F", StringComparison.OrdinalIgnoreCase))
@@ -182,7 +184,14 @@ namespace Generator
                     writer.WriteLine("/// <summary>");
                     writer.WriteLine($"/// {cppMacro.Name} = {cppMacro.Value}");
                     writer.WriteLine("/// </summary>");
-                    writer.WriteLine($"public const {csDataType} {csName} = {macroValue};");
+                    //if (isString)
+                    //{
+                    //    writer.WriteLine($"public static readonly {csDataType} {csName} = {macroValue};");
+                    //}
+                    //else
+                    {
+                        writer.WriteLine($"public const {csDataType} {csName} = {macroValue};");
+                    }
                 }
             }
         }
@@ -276,7 +285,7 @@ namespace Generator
                 case CppPrimitiveKind.WChar:
                     break;
                 case CppPrimitiveKind.Short:
-                    break;
+                    return isPointer ? "short*" : "short";
                 case CppPrimitiveKind.Int:
                     return isPointer ? "int*" : "int";
 
@@ -285,9 +294,10 @@ namespace Generator
                 case CppPrimitiveKind.UnsignedChar:
                     break;
                 case CppPrimitiveKind.UnsignedShort:
-                    break;
+                    return isPointer ? "ushort*" : "ushort";
                 case CppPrimitiveKind.UnsignedInt:
-                    break;
+                    return isPointer ? "uint*" : "uint";
+
                 case CppPrimitiveKind.UnsignedLongLong:
                     break;
                 case CppPrimitiveKind.Float:
@@ -317,7 +327,7 @@ namespace Generator
                 }
                 else if (qualifiedType.ElementType is CppPointerType subPointerType)
                 {
-                    return GetCsTypeName(subPointerType, true);
+                    return GetCsTypeName(subPointerType, true) + "*";
                 }
                 else if (qualifiedType.ElementType is CppTypedef typedef)
                 {
