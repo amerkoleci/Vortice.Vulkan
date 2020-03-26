@@ -2900,6 +2900,16 @@ namespace Vortice.Vulkan
 		EnableAutomaticCheckpointsNV = 4,
 	}
 
+	public enum VkAccelerationStructureBuildTypeKHR
+	{
+		HostKHR = 0,
+		DeviceKHR = 1,
+		HostOrDeviceKHR = 2,
+		BeginRangeKHR = 0,
+		EndRangeKHR = 2,
+		RangeSizeKHR = 3,
+	}
+
 	[Flags]
 	public enum VkInstanceCreateFlags
 	{

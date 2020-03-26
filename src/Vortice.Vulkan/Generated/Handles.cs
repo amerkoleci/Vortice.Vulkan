@@ -789,4 +789,25 @@ namespace Vortice.Vulkan
 		private string DebuggerDisplay => string.Format("VkIndirectCommandsLayoutNV [0x{0}]", Handle.ToString("X"));
 	}
 
+	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	public partial struct VkDeferredOperationKHR : IEquatable<VkDeferredOperationKHR>
+	{
+		public readonly ulong Handle;
+		public VkDeferredOperationKHR(ulong handle) { Handle = handle; }
+		public static VkDeferredOperationKHR Null => new VkDeferredOperationKHR(0);
+		public static implicit operator VkDeferredOperationKHR(ulong handle) => new VkDeferredOperationKHR(handle);
+		public static bool operator ==(VkDeferredOperationKHR left, VkDeferredOperationKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(VkDeferredOperationKHR left, VkDeferredOperationKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(VkDeferredOperationKHR left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkDeferredOperationKHR left, ulong right) => left.Handle != right;
+		public bool Equals(ref VkDeferredOperationKHR other) => Handle == other.Handle;
+		public bool Equals(VkDeferredOperationKHR other) => Handle == other.Handle;
+		public override bool Equals(object obj) => obj is VkDeferredOperationKHR handle && Equals(ref handle);
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkDeferredOperationKHR [0x{0}]", Handle.ToString("X"));
+	}
+
 }

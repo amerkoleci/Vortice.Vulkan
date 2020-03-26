@@ -27,6 +27,11 @@ namespace Vortice.Vulkan
             return Interop.StringFromPointer(properties.layerName);
         }
 
+        public static string GetDeviceName(this VkPhysicalDeviceProperties properties)
+        {
+            return Interop.StringFromPointer(properties.deviceName);
+        }
+
         public static string GetDescription(this VkLayerProperties properties)
         {
             return Interop.StringFromPointer(properties.description);

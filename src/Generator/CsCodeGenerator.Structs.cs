@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Amer Koleci and contributors.
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
+using System;
 using System.IO;
 using System.Linq;
 using CppAst;
@@ -21,18 +22,26 @@ namespace Generator
             // Print All classes, structs
             foreach (var cppClass in compilation.Classes)
             {
-                if (cppClass.ClassKind != CppClassKind.Struct)
+                if (cppClass.ClassKind == CppClassKind.Class ||
+                    cppClass.SizeOf == 0 ||
+                    cppClass.Name.EndsWith("_T"))
+                {
                     continue;
+                }
 
-                if (cppClass.SizeOf == 0)
-                    continue;
-
-                // Handles
-                if (cppClass.Name.EndsWith("_T"))
-                    continue;
+                var isUnion = cppClass.ClassKind == CppClassKind.Union;
 
                 var csName = cppClass.Name;
-                using (writer.PushBlock($"public unsafe partial struct {csName}"))
+                if (isUnion)
+                {
+                    writer.WriteLine("[StructLayout(LayoutKind.Explicit)]");
+                }
+                else
+                {
+                    writer.WriteLine("[StructLayout(LayoutKind.Sequential)]");
+                }
+
+                using (writer.PushBlock($"public partial struct {csName}"))
                 {
                     if (cppClass.SizeOf > 0)
                     {
@@ -43,13 +52,14 @@ namespace Generator
                         writer.WriteLine();
                     }
 
-                    if (cppClass.Name == "VkExtensionProperties")
-                    {
-                    }
-
                     foreach (var cppField in cppClass.Fields)
                     {
                         var csFieldName = NormalizeFieldName(cppField.Name);
+
+                        if (isUnion)
+                        {
+                            writer.WriteLine("[FieldOffset(0)]");
+                        }
 
                         if (cppField.Type is CppArrayType arrayType)
                         {
@@ -67,26 +77,41 @@ namespace Generator
                             if (canUseFixed)
                             {
                                 var csFieldType = GetCsTypeName(arrayType.ElementType, false);
-                                writer.WriteLine($"public fixed {csFieldType} {csFieldName}[{arrayType.Size}];");
+                                writer.WriteLine($"public unsafe fixed {csFieldType} {csFieldName}[{arrayType.Size}];");
                             }
                             else
                             {
+                                var unsafePrefix = string.Empty;
                                 var csFieldType = GetCsTypeName(arrayType.ElementType, false);
+                                if (csFieldType.EndsWith('*'))
+                                {
+                                    unsafePrefix = "unsafe ";
+                                }
+
                                 for (var i = 0; i < arrayType.Size; i++)
                                 {
-                                    writer.WriteLine($"public {csFieldType} {csFieldName}_{i};");
+                                    writer.WriteLine($"public {unsafePrefix}{csFieldType} {csFieldName}_{i};");
                                 }
                             }
                         }
                         else
                         {
                             var csFieldType = GetCsTypeName(cppField.Type, false);
-                            if (csFieldName.Equals("specVersion", System.StringComparison.OrdinalIgnoreCase))
+                            if (csFieldName.Equals("specVersion", StringComparison.OrdinalIgnoreCase) ||
+                                csFieldName.Equals("applicationVersion", StringComparison.OrdinalIgnoreCase) ||
+                                csFieldName.Equals("engineVersion", StringComparison.OrdinalIgnoreCase) ||
+                                csFieldName.Equals("apiVersion", StringComparison.OrdinalIgnoreCase))
                             {
                                 csFieldType = "VkVersion";
                             }
 
-                            writer.WriteLine($"public {csFieldType} {csFieldName};");
+                            var unsafePrefix = string.Empty;
+                            if (csFieldType.EndsWith('*'))
+                            {
+                                unsafePrefix = "unsafe ";
+                            }
+
+                            writer.WriteLine($"public {unsafePrefix}{csFieldType} {csFieldName};");
                         }
                     }
                 }

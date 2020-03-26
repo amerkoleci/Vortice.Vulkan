@@ -18,47 +18,96 @@ namespace DrawTriangle
 
             foreach (var ext in extensions)
             {
-                var name = ext.GetExtensionName();
+                var extName = ext.GetExtensionName();
             }
 
             foreach(var layer in layers)
             {
-                var name = layer.GetName();
-                var desc = layer.GetDescription();
+                var layerName = layer.GetName();
+                var layerDesc = layer.GetDescription();
             }
+
+            VkString name = "01-ClearScreen";
+            VkString engineName = "Vortice";
+
+            var appInfo = new VkApplicationInfo
+            {
+                sType = VkStructureType.ApplicationInfo,
+                pApplicationName = name,
+                applicationVersion = new VkVersion(1, 0, 0),
+                pEngineName = engineName,
+                engineVersion = new VkVersion(1, 0, 0),
+                apiVersion = VkVersion.Version_1_0,
+            };
 
             var instanceCreateInfo = new VkInstanceCreateInfo
             {
-                sType = VkStructureType.InstanceCreateInfo
+                sType = VkStructureType.InstanceCreateInfo,
+                pApplicationInfo = &appInfo
             };
 
             VkInstance instance;
             vkCreateInstance(&instanceCreateInfo, null, &instance).CheckResult();
             vkLoadInstance(instance);
-#if TODO
-            var properties = Vulkan.EnumerateInstanceExtensionProperties();
-            var layers = Vulkan.EnumerateLayerProperties();
-            var v = Vulkan.EnumerateInstanceVersion();
-            var applicationInfo = new ApplicationInfo
+
+            var physicalDevices = vkEnumeratePhysicalDevices(instance);
+            foreach(var physicalDevice in physicalDevices)
             {
-                ApplicationName = "SharpVulkan",
-                ApiVersion = new VkVersion(1, 0, 0),
-                EngineName = "SharpVulkan"
+                VkPhysicalDeviceProperties properties;
+                vkGetPhysicalDeviceProperties(physicalDevice, &properties);
+
+                var deviceName = properties.GetDeviceName();
+            }
+
+            TryGetQueueFamilyIndex(physicalDevices[0], VkQueueFlags.Graphics, out uint graphicsFamilyIndex);
+
+            var priority = 1.0f;
+            var queueCreateInfo = new VkDeviceQueueCreateInfo
+            {
+                sType = VkStructureType.DeviceQueueCreateInfo,
+                queueFamilyIndex = graphicsFamilyIndex,
+                queueCount = 1,
+                pQueuePriorities = &priority
             };
 
-            //var instanceInfo = new InstanceCreateInfo
-            //{
-            //    ApplicationInfo = applicationInfo
-            //};
-
-            var instance = new VkInstance(new VkInstanceCreateInfo
+            var deviceCreateInfo = new VkDeviceCreateInfo
             {
-                sType = VkStructureType.InstanceCreateInfo
-            });
+                sType = VkStructureType.DeviceCreateInfo,
+                pQueueCreateInfos = &queueCreateInfo,
+                queueCreateInfoCount = 1,
+                pEnabledFeatures = null,
+            };
 
+            VkDevice device;
+            result = vkCreateDevice(physicalDevices[0], &deviceCreateInfo, null, &device);
+            if (result != VkResult.Success)
+                throw new Exception($"Failed to create Vulkan Logical Device, {result}");
 
-            //Vulkan.CreateInstance();  
-#endif
+            VkQueue graphicsQueue;
+            vkGetDeviceQueue(device, 0, 0, &graphicsQueue);
+        }
+
+        private static bool TryGetQueueFamilyIndex(
+            VkPhysicalDevice device, VkQueueFlags flag, out uint index)
+        {
+            index = 0;
+
+            uint queueFamilyCount = 0;
+            vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, null);
+
+            VkQueueFamilyProperties* queueFamilies = stackalloc VkQueueFamilyProperties[(int)queueFamilyCount];
+            vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, queueFamilies);
+
+            for (int i = 0; i < queueFamilyCount; i++)
+            {
+                if (queueFamilies[i].queueFlags.HasFlag(flag))
+                {
+                    index = (uint)i;
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

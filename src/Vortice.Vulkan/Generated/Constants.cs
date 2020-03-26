@@ -15,6 +15,10 @@ namespace Vortice.Vulkan
 	public static partial class Vulkan
 	{
 		/// <summary>
+		/// VK_ENABLE_BETA_EXTENSIONS = 1
+		/// </summary>
+		public const uint EnableBetaExtensions = 1;
+		/// <summary>
 		/// VK_LOD_CLAMP_NONE = 1000.0f
 		/// </summary>
 		public const float LodClampNone = 1000.0f;
@@ -2302,5 +2306,41 @@ namespace Vortice.Vulkan
 		/// VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface"
 		/// </summary>
 		public const string NnViSurfaceExtensionName = "VK_NN_vi_surface";
+		/// <summary>
+		/// VK_KHR_deferred_host_operations = 1
+		/// </summary>
+		public const uint KHRDeferredHostOperations = 1;
+		/// <summary>
+		/// VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION = 2
+		/// </summary>
+		public const uint KHRDeferredHostOperationsSpecVersion = 2;
+		/// <summary>
+		/// VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations"
+		/// </summary>
+		public const string KHRDeferredHostOperationsExtensionName = "VK_KHR_deferred_host_operations";
+		/// <summary>
+		/// VK_KHR_pipeline_library = 1
+		/// </summary>
+		public const uint KHRPipelineLibrary = 1;
+		/// <summary>
+		/// VK_KHR_PIPELINE_LIBRARY_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRPipelineLibrarySpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_KHR_pipeline_library"
+		/// </summary>
+		public const string KHRPipelineLibraryExtensionName = "VK_KHR_pipeline_library";
+		/// <summary>
+		/// VK_KHR_ray_tracing = 1
+		/// </summary>
+		public const uint KHRRayTracing = 1;
+		/// <summary>
+		/// VK_KHR_RAY_TRACING_SPEC_VERSION = 8
+		/// </summary>
+		public const uint KHRRayTracingSpecVersion = 8;
+		/// <summary>
+		/// VK_KHR_RAY_TRACING_EXTENSION_NAME = "VK_KHR_ray_tracing"
+		/// </summary>
+		public const string KHRRayTracingExtensionName = "VK_KHR_ray_tracing";
 	}
 }

@@ -3,6 +3,7 @@
 
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Vortice.Mathematics;
 
 namespace Vortice.Vulkan
 {
@@ -26,30 +27,16 @@ namespace Vortice.Vulkan
     /// <summary>
     /// Structure specifying a clear value.
     /// </summary>
-    [StructLayout(LayoutKind.Explicit, Size = 16)]
-    public struct VkClearValue
+    public partial struct VkClearValue
     {
-        /// <summary>
-        /// Specifies the color image clear values to use when clearing a color image or attachment.
-        /// </summary>
-        [FieldOffset(0)]
-        public Vector4 Color;
-
-        /// <summary>
-        /// Specifies the depth and stencil clear values to use when clearing a depth/stencil image
-        /// or attachment.
-        /// </summary>
-        [FieldOffset(0)]
-        public VkClearDepthStencilValue DepthStencil;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="VkClearValue"/> structure.
         /// </summary>
         /// <param name="color">Specifies the color image clear values to use when clearing a color image or attachment.</param>
-        public VkClearValue(Vector4 color)
+        public VkClearValue(Color4 color)
         {
-            Color = color;
-            DepthStencil = default;
+            this.color = new VkClearColorValue(color);
+            depthStencil = default;
         }
 
         /// <summary>
@@ -58,14 +45,14 @@ namespace Vortice.Vulkan
         /// <param name="depthStencil">Specifies the depth and stencil clear values to use when clearing a depth/stencil image or attachment.</param>
         public VkClearValue(VkClearDepthStencilValue depthStencil)
         {
-            Color = default;
-            DepthStencil = depthStencil;
+            color = default;
+            this.depthStencil = depthStencil;
         }
 
         public VkClearValue(float depth, uint stencil)
         {
-            Color = default;
-            DepthStencil = new VkClearDepthStencilValue(depth, stencil);
+            color = default;
+            depthStencil = new VkClearDepthStencilValue(depth, stencil);
         }
     }
 }

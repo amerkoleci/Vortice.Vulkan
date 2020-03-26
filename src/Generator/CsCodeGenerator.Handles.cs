@@ -27,7 +27,7 @@ namespace Generator
                     continue;
                 }
 
-                if (!(typedef.ElementType is CppPointerType pointerType))
+                if (!(typedef.ElementType is CppPointerType))
                 {
                     continue;
                 }

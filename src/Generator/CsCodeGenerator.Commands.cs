@@ -50,16 +50,20 @@ namespace Generator
 
                 commands.Add(csName, cppFunction);
 
-                if (cppFunction.Parameters.Count > 1)
+                if (cppFunction.Parameters.Count > 0)
                 {
                     var firstParameter = cppFunction.Parameters[0];
                     if (firstParameter.Type is CppTypedef typedef)
                     {
-                        if (typedef.Name == "VkInstance" || 
+                        if (typedef.Name == "VkInstance" ||
                             typedef.Name == "VkPhysicalDevice" ||
                             IsInstanceFunction(cppFunction.Name))
                         {
                             instanceCommands.Add(csName, cppFunction);
+                        }
+                        else
+                        {
+                            deviceCommands.Add(csName, cppFunction);
                         }
                     }
                 }
@@ -94,6 +98,14 @@ namespace Generator
                         foreach (var cppParameter in cppFunction.Parameters)
                         {
                             var paramCsName = GetParameterName(cppParameter.Name);
+                            //if (cppParameter.Type is CppPointerType pointerType)
+                            //{
+                            //    if (pointerType.ElementType is CppTypedef typedef)
+                            //    {
+                            //        writer.Write("out ");
+                            //    }
+                            //}
+
                             writer.Write($"{paramCsName}");
                             if (index < cppFunction.Parameters.Count - 1)
                             {
@@ -147,6 +159,16 @@ namespace Generator
                 var direction = string.Empty;
                 var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
                 var paramCsName = GetParameterName(cppParameter.Name);
+
+                //if (cppParameter.Type is CppPointerType pointerType)
+                //{
+                //    if (pointerType.ElementType is CppTypedef typedef)
+                //    {
+                //        argumentBuilder.Append("out ");
+                //        paramCsTypeName = GetCsTypeName(typedef, false);
+                //    }
+                //}
+
                 argumentBuilder.Append(paramCsTypeName).Append(" ").Append(paramCsName);
                 if (index < cppFunction.Parameters.Count - 1)
                 {

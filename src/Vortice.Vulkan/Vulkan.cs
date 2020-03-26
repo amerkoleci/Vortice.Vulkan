@@ -2,6 +2,7 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Vortice.Vulkan
@@ -123,23 +124,18 @@ namespace Vortice.Vulkan
         /// <param name="layerName">Optional layer name.</param>
         /// <returns></returns>
         /// <exception cref="VkException">Vulkan returns an error code.</exception>
-        public static unsafe Span<VkExtensionProperties> vkEnumerateInstanceExtensionProperties(string layerName = null)
+        public static unsafe VkExtensionProperties[] vkEnumerateInstanceExtensionProperties(string layerName = null)
         {
             int dstLayerNameByteCount = Interop.GetMaxByteCount(layerName);
             var dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
             Interop.StringToPointer(layerName, dstLayerNamePtr, dstLayerNameByteCount);
 
-            var nativeStr = string.IsNullOrEmpty(layerName) ? IntPtr.Zero : Marshal.StringToHGlobalAnsi(layerName);
             uint count = 0;
-            var result = vkEnumerateInstanceExtensionProperties((byte*)nativeStr, &count, null);
-            result.CheckResult();
+            vkEnumerateInstanceExtensionProperties(dstLayerNamePtr, &count, null).CheckResult();
 
-            Span<VkExtensionProperties> properties = new VkExtensionProperties[count];
+            var properties = new VkExtensionProperties[count];
             fixed (VkExtensionProperties* ptr = properties)
-            {
-                result = vkEnumerateInstanceExtensionProperties((byte*)nativeStr, &count, ptr);
-            }
-            result.CheckResult();
+                vkEnumerateInstanceExtensionProperties(dstLayerNamePtr, &count, ptr).CheckResult();
             return properties;
         }
 
@@ -148,18 +144,14 @@ namespace Vortice.Vulkan
         /// </summary>
         /// <returns>Properties of available layers.</returns>
         /// <exception cref="VkException">Vulkan returns an error code.</exception>
-        public static unsafe Span<VkLayerProperties> vkEnumerateLayerProperties()
+        public static unsafe VkLayerProperties[] vkEnumerateLayerProperties()
         {
-            uint count = 0;
-            var result = vkEnumerateInstanceLayerProperties(&count, null);
-            result.CheckResult();
+            uint layerCount = 0;
+            vkEnumerateInstanceLayerProperties(&layerCount, null).CheckResult();
 
-            Span<VkLayerProperties> properties = new VkLayerProperties[(int)count];
+            var properties = new VkLayerProperties[layerCount];
             fixed (VkLayerProperties* ptr = properties)
-            {
-                result = vkEnumerateInstanceLayerProperties(&count, ptr);
-            }
-            result.CheckResult();
+                vkEnumerateInstanceLayerProperties(&layerCount, ptr).CheckResult();
             return properties;
         }
 
@@ -169,7 +161,7 @@ namespace Vortice.Vulkan
         /// <returns>The version of Vulkan supported by instance-level functionality.</returns>
         public static unsafe VkVersion vkEnumerateInstanceVersion()
         {
-            uint apiVersion;
+            uint apiVersion = 0;
             if (vkEnumerateInstanceVersion_ptr != null
                 && vkEnumerateInstanceVersion_ptr(&apiVersion) == VkResult.Success)
             {
@@ -179,6 +171,18 @@ namespace Vortice.Vulkan
             return VkVersion.Version_1_0;
         }
 
+        public static unsafe VkPhysicalDevice[] vkEnumeratePhysicalDevices(VkInstance instance)
+        {
+            uint count = 0;
+            vkEnumeratePhysicalDevices(instance, &count, null).CheckResult();
+
+            var physicalDevice = new VkPhysicalDevice[count];
+            fixed (VkPhysicalDevice* ptr = physicalDevice)
+                vkEnumeratePhysicalDevices(instance, &count, ptr).CheckResult();
+            return physicalDevice;
+        }
+
+        #region Nested
         internal interface ILibraryLoader
         {
             IntPtr LoadNativeLibrary(string name);
@@ -222,6 +226,7 @@ namespace Vortice.Vulkan
 
             private const int RTLD_LOCAL = 0x0000;
             private const int RTLD_NOW = 0x0002;
-        }
+        } 
+        #endregion
     }
 }

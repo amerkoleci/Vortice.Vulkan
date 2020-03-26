@@ -13,7 +13,8 @@ using Vortice.Mathematics;
 
 namespace Vortice.Vulkan
 {
-	public unsafe partial struct VkApplicationInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkApplicationInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkApplicationInfo"/> type, in bytes.
@@ -21,15 +22,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public byte* pApplicationName;
-		public uint applicationVersion;
-		public byte* pEngineName;
-		public uint engineVersion;
-		public uint apiVersion;
+		public unsafe void* pNext;
+		public unsafe byte* pApplicationName;
+		public VkVersion applicationVersion;
+		public unsafe byte* pEngineName;
+		public VkVersion engineVersion;
+		public VkVersion apiVersion;
 	}
 
-	public unsafe partial struct VkInstanceCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkInstanceCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkInstanceCreateInfo"/> type, in bytes.
@@ -37,23 +39,24 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkInstanceCreateFlags flags;
-		public VkApplicationInfo* pApplicationInfo;
+		public unsafe VkApplicationInfo* pApplicationInfo;
 		public uint enabledLayerCount;
-		public byte* ppEnabledLayerNames;
+		public unsafe byte* ppEnabledLayerNames;
 		public uint enabledExtensionCount;
-		public byte* ppEnabledExtensionNames;
+		public unsafe byte* ppEnabledExtensionNames;
 	}
 
-	public unsafe partial struct VkAllocationCallbacks
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAllocationCallbacks
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAllocationCallbacks"/> type, in bytes.
 		/// </summary>
 		public static readonly int SizeInBytes = 48;
 
-		public void* pUserData;
+		public unsafe void* pUserData;
 		public IntPtr pfnAllocation;
 		public IntPtr pfnReallocation;
 		public IntPtr pfnFree;
@@ -61,7 +64,8 @@ namespace Vortice.Vulkan
 		public IntPtr pfnInternalFree;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceFeatures"/> type, in bytes.
@@ -125,7 +129,8 @@ namespace Vortice.Vulkan
 		public VkBool32 inheritedQueries;
 	}
 
-	public unsafe partial struct VkFormatProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFormatProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkFormatProperties"/> type, in bytes.
@@ -137,7 +142,8 @@ namespace Vortice.Vulkan
 		public VkFormatFeatureFlags bufferFeatures;
 	}
 
-	public unsafe partial struct VkExtent3D
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExtent3D
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExtent3D"/> type, in bytes.
@@ -149,7 +155,8 @@ namespace Vortice.Vulkan
 		public uint depth;
 	}
 
-	public unsafe partial struct VkImageFormatProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageFormatProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageFormatProperties"/> type, in bytes.
@@ -163,7 +170,8 @@ namespace Vortice.Vulkan
 		public ulong maxResourceSize;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceLimits
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceLimits
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceLimits"/> type, in bytes.
@@ -222,9 +230,9 @@ namespace Vortice.Vulkan
 		public uint maxFragmentDualSrcAttachments;
 		public uint maxFragmentCombinedOutputResources;
 		public uint maxComputeSharedMemorySize;
-		public fixed uint maxComputeWorkGroupCount[3];
+		public unsafe fixed uint maxComputeWorkGroupCount[3];
 		public uint maxComputeWorkGroupInvocations;
-		public fixed uint maxComputeWorkGroupSize[3];
+		public unsafe fixed uint maxComputeWorkGroupSize[3];
 		public uint subPixelPrecisionBits;
 		public uint subTexelPrecisionBits;
 		public uint mipmapPrecisionBits;
@@ -233,10 +241,10 @@ namespace Vortice.Vulkan
 		public float maxSamplerLodBias;
 		public float maxSamplerAnisotropy;
 		public uint maxViewports;
-		public fixed uint maxViewportDimensions[2];
-		public fixed float viewportBoundsRange[2];
+		public unsafe fixed uint maxViewportDimensions[2];
+		public unsafe fixed float viewportBoundsRange[2];
 		public uint viewportSubPixelBits;
-		public UIntPtr minMemoryMapAlignment;
+		public VkPointerSize minMemoryMapAlignment;
 		public ulong minTexelBufferOffsetAlignment;
 		public ulong minUniformBufferOffsetAlignment;
 		public ulong minStorageBufferOffsetAlignment;
@@ -267,8 +275,8 @@ namespace Vortice.Vulkan
 		public uint maxCullDistances;
 		public uint maxCombinedClipAndCullDistances;
 		public uint discreteQueuePriorities;
-		public fixed float pointSizeRange[2];
-		public fixed float lineWidthRange[2];
+		public unsafe fixed float pointSizeRange[2];
+		public unsafe fixed float lineWidthRange[2];
 		public float pointSizeGranularity;
 		public float lineWidthGranularity;
 		public VkBool32 strictLines;
@@ -278,7 +286,8 @@ namespace Vortice.Vulkan
 		public ulong nonCoherentAtomSize;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceSparseProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSparseProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceSparseProperties"/> type, in bytes.
@@ -292,25 +301,27 @@ namespace Vortice.Vulkan
 		public VkBool32 residencyNonResidentStrict;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceProperties"/> type, in bytes.
 		/// </summary>
 		public static readonly int SizeInBytes = 824;
 
-		public uint apiVersion;
+		public VkVersion apiVersion;
 		public uint driverVersion;
 		public uint vendorID;
 		public uint deviceID;
 		public VkPhysicalDeviceType deviceType;
-		public fixed byte deviceName[256];
-		public fixed byte pipelineCacheUUID[16];
+		public unsafe fixed byte deviceName[256];
+		public unsafe fixed byte pipelineCacheUUID[16];
 		public VkPhysicalDeviceLimits limits;
 		public VkPhysicalDeviceSparseProperties sparseProperties;
 	}
 
-	public unsafe partial struct VkQueueFamilyProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkQueueFamilyProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkQueueFamilyProperties"/> type, in bytes.
@@ -323,7 +334,8 @@ namespace Vortice.Vulkan
 		public VkExtent3D minImageTransferGranularity;
 	}
 
-	public unsafe partial struct VkMemoryType
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryType
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryType"/> type, in bytes.
@@ -334,7 +346,8 @@ namespace Vortice.Vulkan
 		public uint heapIndex;
 	}
 
-	public unsafe partial struct VkMemoryHeap
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryHeap
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryHeap"/> type, in bytes.
@@ -345,7 +358,8 @@ namespace Vortice.Vulkan
 		public VkMemoryHeapFlags flags;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceMemoryProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMemoryProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceMemoryProperties"/> type, in bytes.
@@ -404,7 +418,8 @@ namespace Vortice.Vulkan
 		public VkMemoryHeap memoryHeaps_15;
 	}
 
-	public unsafe partial struct VkDeviceQueueCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceQueueCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceQueueCreateInfo"/> type, in bytes.
@@ -412,14 +427,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDeviceQueueCreateFlags flags;
 		public uint queueFamilyIndex;
 		public uint queueCount;
-		public float* pQueuePriorities;
+		public unsafe float* pQueuePriorities;
 	}
 
-	public unsafe partial struct VkDeviceCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceCreateInfo"/> type, in bytes.
@@ -427,42 +443,45 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 72;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDeviceCreateFlags flags;
 		public uint queueCreateInfoCount;
-		public VkDeviceQueueCreateInfo* pQueueCreateInfos;
+		public unsafe VkDeviceQueueCreateInfo* pQueueCreateInfos;
 		public uint enabledLayerCount;
-		public byte* ppEnabledLayerNames;
+		public unsafe byte* ppEnabledLayerNames;
 		public uint enabledExtensionCount;
-		public byte* ppEnabledExtensionNames;
-		public VkPhysicalDeviceFeatures* pEnabledFeatures;
+		public unsafe byte* ppEnabledExtensionNames;
+		public unsafe VkPhysicalDeviceFeatures* pEnabledFeatures;
 	}
 
-	public unsafe partial struct VkExtensionProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExtensionProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExtensionProperties"/> type, in bytes.
 		/// </summary>
 		public static readonly int SizeInBytes = 260;
 
-		public fixed byte extensionName[256];
+		public unsafe fixed byte extensionName[256];
 		public VkVersion specVersion;
 	}
 
-	public unsafe partial struct VkLayerProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkLayerProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkLayerProperties"/> type, in bytes.
 		/// </summary>
 		public static readonly int SizeInBytes = 520;
 
-		public fixed byte layerName[256];
+		public unsafe fixed byte layerName[256];
 		public VkVersion specVersion;
 		public uint implementationVersion;
-		public fixed byte description[256];
+		public unsafe fixed byte description[256];
 	}
 
-	public unsafe partial struct VkSubmitInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubmitInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSubmitInfo"/> type, in bytes.
@@ -470,17 +489,18 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 72;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint waitSemaphoreCount;
-		public VkSemaphore* pWaitSemaphores;
-		public VkPipelineStageFlags* pWaitDstStageMask;
+		public unsafe VkSemaphore* pWaitSemaphores;
+		public unsafe VkPipelineStageFlags* pWaitDstStageMask;
 		public uint commandBufferCount;
-		public VkCommandBuffer* pCommandBuffers;
+		public unsafe VkCommandBuffer* pCommandBuffers;
 		public uint signalSemaphoreCount;
-		public VkSemaphore* pSignalSemaphores;
+		public unsafe VkSemaphore* pSignalSemaphores;
 	}
 
-	public unsafe partial struct VkMemoryAllocateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryAllocateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryAllocateInfo"/> type, in bytes.
@@ -488,12 +508,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong allocationSize;
 		public uint memoryTypeIndex;
 	}
 
-	public unsafe partial struct VkMappedMemoryRange
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMappedMemoryRange
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMappedMemoryRange"/> type, in bytes.
@@ -501,13 +522,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDeviceMemory memory;
 		public ulong offset;
 		public ulong size;
 	}
 
-	public unsafe partial struct VkMemoryRequirements
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryRequirements
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryRequirements"/> type, in bytes.
@@ -519,7 +541,8 @@ namespace Vortice.Vulkan
 		public uint memoryTypeBits;
 	}
 
-	public unsafe partial struct VkSparseImageFormatProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSparseImageFormatProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSparseImageFormatProperties"/> type, in bytes.
@@ -531,7 +554,8 @@ namespace Vortice.Vulkan
 		public VkSparseImageFormatFlags flags;
 	}
 
-	public unsafe partial struct VkSparseImageMemoryRequirements
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSparseImageMemoryRequirements
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSparseImageMemoryRequirements"/> type, in bytes.
@@ -545,7 +569,8 @@ namespace Vortice.Vulkan
 		public ulong imageMipTailStride;
 	}
 
-	public unsafe partial struct VkSparseMemoryBind
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSparseMemoryBind
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSparseMemoryBind"/> type, in bytes.
@@ -559,7 +584,8 @@ namespace Vortice.Vulkan
 		public VkSparseMemoryBindFlags flags;
 	}
 
-	public unsafe partial struct VkSparseBufferMemoryBindInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSparseBufferMemoryBindInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSparseBufferMemoryBindInfo"/> type, in bytes.
@@ -568,10 +594,11 @@ namespace Vortice.Vulkan
 
 		public VkBuffer buffer;
 		public uint bindCount;
-		public VkSparseMemoryBind* pBinds;
+		public unsafe VkSparseMemoryBind* pBinds;
 	}
 
-	public unsafe partial struct VkSparseImageOpaqueMemoryBindInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSparseImageOpaqueMemoryBindInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSparseImageOpaqueMemoryBindInfo"/> type, in bytes.
@@ -580,10 +607,11 @@ namespace Vortice.Vulkan
 
 		public VkImage image;
 		public uint bindCount;
-		public VkSparseMemoryBind* pBinds;
+		public unsafe VkSparseMemoryBind* pBinds;
 	}
 
-	public unsafe partial struct VkImageSubresource
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageSubresource
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageSubresource"/> type, in bytes.
@@ -595,7 +623,8 @@ namespace Vortice.Vulkan
 		public uint arrayLayer;
 	}
 
-	public unsafe partial struct VkOffset3D
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkOffset3D
 	{
 		/// <summary>
 		/// The size of the <see cref="VkOffset3D"/> type, in bytes.
@@ -607,7 +636,8 @@ namespace Vortice.Vulkan
 		public int z;
 	}
 
-	public unsafe partial struct VkSparseImageMemoryBind
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSparseImageMemoryBind
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSparseImageMemoryBind"/> type, in bytes.
@@ -622,7 +652,8 @@ namespace Vortice.Vulkan
 		public VkSparseMemoryBindFlags flags;
 	}
 
-	public unsafe partial struct VkSparseImageMemoryBindInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSparseImageMemoryBindInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSparseImageMemoryBindInfo"/> type, in bytes.
@@ -631,10 +662,11 @@ namespace Vortice.Vulkan
 
 		public VkImage image;
 		public uint bindCount;
-		public VkSparseImageMemoryBind* pBinds;
+		public unsafe VkSparseImageMemoryBind* pBinds;
 	}
 
-	public unsafe partial struct VkBindSparseInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBindSparseInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBindSparseInfo"/> type, in bytes.
@@ -642,20 +674,21 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 96;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint waitSemaphoreCount;
-		public VkSemaphore* pWaitSemaphores;
+		public unsafe VkSemaphore* pWaitSemaphores;
 		public uint bufferBindCount;
-		public VkSparseBufferMemoryBindInfo* pBufferBinds;
+		public unsafe VkSparseBufferMemoryBindInfo* pBufferBinds;
 		public uint imageOpaqueBindCount;
-		public VkSparseImageOpaqueMemoryBindInfo* pImageOpaqueBinds;
+		public unsafe VkSparseImageOpaqueMemoryBindInfo* pImageOpaqueBinds;
 		public uint imageBindCount;
-		public VkSparseImageMemoryBindInfo* pImageBinds;
+		public unsafe VkSparseImageMemoryBindInfo* pImageBinds;
 		public uint signalSemaphoreCount;
-		public VkSemaphore* pSignalSemaphores;
+		public unsafe VkSemaphore* pSignalSemaphores;
 	}
 
-	public unsafe partial struct VkFenceCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFenceCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkFenceCreateInfo"/> type, in bytes.
@@ -663,11 +696,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkFenceCreateFlags flags;
 	}
 
-	public unsafe partial struct VkSemaphoreCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSemaphoreCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSemaphoreCreateInfo"/> type, in bytes.
@@ -675,11 +709,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSemaphoreCreateFlags flags;
 	}
 
-	public unsafe partial struct VkEventCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkEventCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkEventCreateInfo"/> type, in bytes.
@@ -687,11 +722,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkEventCreateFlags flags;
 	}
 
-	public unsafe partial struct VkQueryPoolCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkQueryPoolCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkQueryPoolCreateInfo"/> type, in bytes.
@@ -699,14 +735,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkQueryPoolCreateFlags flags;
 		public VkQueryType queryType;
 		public uint queryCount;
 		public VkQueryPipelineStatisticFlags pipelineStatistics;
 	}
 
-	public unsafe partial struct VkBufferCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBufferCreateInfo"/> type, in bytes.
@@ -714,16 +751,17 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBufferCreateFlags flags;
 		public ulong size;
 		public VkBufferUsageFlags usage;
 		public VkSharingMode sharingMode;
 		public uint queueFamilyIndexCount;
-		public uint* pQueueFamilyIndices;
+		public unsafe uint* pQueueFamilyIndices;
 	}
 
-	public unsafe partial struct VkBufferViewCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferViewCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBufferViewCreateInfo"/> type, in bytes.
@@ -731,7 +769,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBufferViewCreateFlags flags;
 		public VkBuffer buffer;
 		public VkFormat format;
@@ -739,7 +777,8 @@ namespace Vortice.Vulkan
 		public ulong range;
 	}
 
-	public unsafe partial struct VkImageCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageCreateInfo"/> type, in bytes.
@@ -747,7 +786,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 88;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageCreateFlags flags;
 		public VkImageType imageType;
 		public VkFormat format;
@@ -759,11 +798,12 @@ namespace Vortice.Vulkan
 		public VkImageUsageFlags usage;
 		public VkSharingMode sharingMode;
 		public uint queueFamilyIndexCount;
-		public uint* pQueueFamilyIndices;
+		public unsafe uint* pQueueFamilyIndices;
 		public VkImageLayout initialLayout;
 	}
 
-	public unsafe partial struct VkSubresourceLayout
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubresourceLayout
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSubresourceLayout"/> type, in bytes.
@@ -777,7 +817,8 @@ namespace Vortice.Vulkan
 		public ulong depthPitch;
 	}
 
-	public unsafe partial struct VkComponentMapping
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkComponentMapping
 	{
 		/// <summary>
 		/// The size of the <see cref="VkComponentMapping"/> type, in bytes.
@@ -790,7 +831,8 @@ namespace Vortice.Vulkan
 		public VkComponentSwizzle a;
 	}
 
-	public unsafe partial struct VkImageSubresourceRange
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageSubresourceRange
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageSubresourceRange"/> type, in bytes.
@@ -804,7 +846,8 @@ namespace Vortice.Vulkan
 		public uint layerCount;
 	}
 
-	public unsafe partial struct VkImageViewCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageViewCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageViewCreateInfo"/> type, in bytes.
@@ -812,7 +855,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 80;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageViewCreateFlags flags;
 		public VkImage image;
 		public VkImageViewType viewType;
@@ -821,7 +864,8 @@ namespace Vortice.Vulkan
 		public VkImageSubresourceRange subresourceRange;
 	}
 
-	public unsafe partial struct VkShaderModuleCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkShaderModuleCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkShaderModuleCreateInfo"/> type, in bytes.
@@ -829,13 +873,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkShaderModuleCreateFlags flags;
-		public UIntPtr codeSize;
-		public uint* pCode;
+		public VkPointerSize codeSize;
+		public unsafe uint* pCode;
 	}
 
-	public unsafe partial struct VkPipelineCacheCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineCacheCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineCacheCreateInfo"/> type, in bytes.
@@ -843,13 +888,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineCacheCreateFlags flags;
-		public UIntPtr initialDataSize;
-		public void* pInitialData;
+		public VkPointerSize initialDataSize;
+		public unsafe void* pInitialData;
 	}
 
-	public unsafe partial struct VkSpecializationMapEntry
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSpecializationMapEntry
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSpecializationMapEntry"/> type, in bytes.
@@ -858,10 +904,11 @@ namespace Vortice.Vulkan
 
 		public uint constantID;
 		public uint offset;
-		public UIntPtr size;
+		public VkPointerSize size;
 	}
 
-	public unsafe partial struct VkSpecializationInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSpecializationInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSpecializationInfo"/> type, in bytes.
@@ -869,12 +916,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public uint mapEntryCount;
-		public VkSpecializationMapEntry* pMapEntries;
-		public UIntPtr dataSize;
-		public void* pData;
+		public unsafe VkSpecializationMapEntry* pMapEntries;
+		public VkPointerSize dataSize;
+		public unsafe void* pData;
 	}
 
-	public unsafe partial struct VkPipelineShaderStageCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineShaderStageCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineShaderStageCreateInfo"/> type, in bytes.
@@ -882,15 +930,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineShaderStageCreateFlags flags;
 		public VkShaderStageFlags stage;
 		public VkShaderModule module;
-		public byte* pName;
-		public VkSpecializationInfo* pSpecializationInfo;
+		public unsafe byte* pName;
+		public unsafe VkSpecializationInfo* pSpecializationInfo;
 	}
 
-	public unsafe partial struct VkVertexInputBindingDescription
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVertexInputBindingDescription
 	{
 		/// <summary>
 		/// The size of the <see cref="VkVertexInputBindingDescription"/> type, in bytes.
@@ -902,7 +951,8 @@ namespace Vortice.Vulkan
 		public VkVertexInputRate inputRate;
 	}
 
-	public unsafe partial struct VkVertexInputAttributeDescription
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVertexInputAttributeDescription
 	{
 		/// <summary>
 		/// The size of the <see cref="VkVertexInputAttributeDescription"/> type, in bytes.
@@ -915,7 +965,8 @@ namespace Vortice.Vulkan
 		public uint offset;
 	}
 
-	public unsafe partial struct VkPipelineVertexInputStateCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineVertexInputStateCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineVertexInputStateCreateInfo"/> type, in bytes.
@@ -923,15 +974,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineVertexInputStateCreateFlags flags;
 		public uint vertexBindingDescriptionCount;
-		public VkVertexInputBindingDescription* pVertexBindingDescriptions;
+		public unsafe VkVertexInputBindingDescription* pVertexBindingDescriptions;
 		public uint vertexAttributeDescriptionCount;
-		public VkVertexInputAttributeDescription* pVertexAttributeDescriptions;
+		public unsafe VkVertexInputAttributeDescription* pVertexAttributeDescriptions;
 	}
 
-	public unsafe partial struct VkPipelineInputAssemblyStateCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineInputAssemblyStateCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineInputAssemblyStateCreateInfo"/> type, in bytes.
@@ -939,13 +991,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineInputAssemblyStateCreateFlags flags;
 		public VkPrimitiveTopology topology;
 		public VkBool32 primitiveRestartEnable;
 	}
 
-	public unsafe partial struct VkPipelineTessellationStateCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineTessellationStateCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineTessellationStateCreateInfo"/> type, in bytes.
@@ -953,12 +1006,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineTessellationStateCreateFlags flags;
 		public uint patchControlPoints;
 	}
 
-	public unsafe partial struct VkViewport
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkViewport
 	{
 		/// <summary>
 		/// The size of the <see cref="VkViewport"/> type, in bytes.
@@ -973,7 +1027,8 @@ namespace Vortice.Vulkan
 		public float maxDepth;
 	}
 
-	public unsafe partial struct VkOffset2D
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkOffset2D
 	{
 		/// <summary>
 		/// The size of the <see cref="VkOffset2D"/> type, in bytes.
@@ -984,7 +1039,8 @@ namespace Vortice.Vulkan
 		public int y;
 	}
 
-	public unsafe partial struct VkExtent2D
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExtent2D
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExtent2D"/> type, in bytes.
@@ -995,7 +1051,8 @@ namespace Vortice.Vulkan
 		public uint height;
 	}
 
-	public unsafe partial struct VkRect2D
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRect2D
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRect2D"/> type, in bytes.
@@ -1006,7 +1063,8 @@ namespace Vortice.Vulkan
 		public VkExtent2D extent;
 	}
 
-	public unsafe partial struct VkPipelineViewportStateCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineViewportStateCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineViewportStateCreateInfo"/> type, in bytes.
@@ -1014,15 +1072,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineViewportStateCreateFlags flags;
 		public uint viewportCount;
-		public VkViewport* pViewports;
+		public unsafe VkViewport* pViewports;
 		public uint scissorCount;
-		public VkRect2D* pScissors;
+		public unsafe VkRect2D* pScissors;
 	}
 
-	public unsafe partial struct VkPipelineRasterizationStateCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineRasterizationStateCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineRasterizationStateCreateInfo"/> type, in bytes.
@@ -1030,7 +1089,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineRasterizationStateCreateFlags flags;
 		public VkBool32 depthClampEnable;
 		public VkBool32 rasterizerDiscardEnable;
@@ -1044,7 +1103,8 @@ namespace Vortice.Vulkan
 		public float lineWidth;
 	}
 
-	public unsafe partial struct VkPipelineMultisampleStateCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineMultisampleStateCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineMultisampleStateCreateInfo"/> type, in bytes.
@@ -1052,17 +1112,18 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineMultisampleStateCreateFlags flags;
 		public VkSampleCountFlags rasterizationSamples;
 		public VkBool32 sampleShadingEnable;
 		public float minSampleShading;
-		public uint* pSampleMask;
+		public unsafe uint* pSampleMask;
 		public VkBool32 alphaToCoverageEnable;
 		public VkBool32 alphaToOneEnable;
 	}
 
-	public unsafe partial struct VkStencilOpState
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkStencilOpState
 	{
 		/// <summary>
 		/// The size of the <see cref="VkStencilOpState"/> type, in bytes.
@@ -1078,7 +1139,8 @@ namespace Vortice.Vulkan
 		public uint reference;
 	}
 
-	public unsafe partial struct VkPipelineDepthStencilStateCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineDepthStencilStateCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineDepthStencilStateCreateInfo"/> type, in bytes.
@@ -1086,7 +1148,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 104;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineDepthStencilStateCreateFlags flags;
 		public VkBool32 depthTestEnable;
 		public VkBool32 depthWriteEnable;
@@ -1099,7 +1161,8 @@ namespace Vortice.Vulkan
 		public float maxDepthBounds;
 	}
 
-	public unsafe partial struct VkPipelineColorBlendAttachmentState
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineColorBlendAttachmentState
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineColorBlendAttachmentState"/> type, in bytes.
@@ -1116,7 +1179,8 @@ namespace Vortice.Vulkan
 		public VkColorComponentFlags colorWriteMask;
 	}
 
-	public unsafe partial struct VkPipelineColorBlendStateCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineColorBlendStateCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineColorBlendStateCreateInfo"/> type, in bytes.
@@ -1124,16 +1188,17 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineColorBlendStateCreateFlags flags;
 		public VkBool32 logicOpEnable;
 		public VkLogicOp logicOp;
 		public uint attachmentCount;
-		public VkPipelineColorBlendAttachmentState* pAttachments;
-		public fixed float blendConstants[4];
+		public unsafe VkPipelineColorBlendAttachmentState* pAttachments;
+		public unsafe fixed float blendConstants[4];
 	}
 
-	public unsafe partial struct VkPipelineDynamicStateCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineDynamicStateCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineDynamicStateCreateInfo"/> type, in bytes.
@@ -1141,13 +1206,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineDynamicStateCreateFlags flags;
 		public uint dynamicStateCount;
-		public VkDynamicState* pDynamicStates;
+		public unsafe VkDynamicState* pDynamicStates;
 	}
 
-	public unsafe partial struct VkGraphicsPipelineCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkGraphicsPipelineCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkGraphicsPipelineCreateInfo"/> type, in bytes.
@@ -1155,19 +1221,19 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 144;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineCreateFlags flags;
 		public uint stageCount;
-		public VkPipelineShaderStageCreateInfo* pStages;
-		public VkPipelineVertexInputStateCreateInfo* pVertexInputState;
-		public VkPipelineInputAssemblyStateCreateInfo* pInputAssemblyState;
-		public VkPipelineTessellationStateCreateInfo* pTessellationState;
-		public VkPipelineViewportStateCreateInfo* pViewportState;
-		public VkPipelineRasterizationStateCreateInfo* pRasterizationState;
-		public VkPipelineMultisampleStateCreateInfo* pMultisampleState;
-		public VkPipelineDepthStencilStateCreateInfo* pDepthStencilState;
-		public VkPipelineColorBlendStateCreateInfo* pColorBlendState;
-		public VkPipelineDynamicStateCreateInfo* pDynamicState;
+		public unsafe VkPipelineShaderStageCreateInfo* pStages;
+		public unsafe VkPipelineVertexInputStateCreateInfo* pVertexInputState;
+		public unsafe VkPipelineInputAssemblyStateCreateInfo* pInputAssemblyState;
+		public unsafe VkPipelineTessellationStateCreateInfo* pTessellationState;
+		public unsafe VkPipelineViewportStateCreateInfo* pViewportState;
+		public unsafe VkPipelineRasterizationStateCreateInfo* pRasterizationState;
+		public unsafe VkPipelineMultisampleStateCreateInfo* pMultisampleState;
+		public unsafe VkPipelineDepthStencilStateCreateInfo* pDepthStencilState;
+		public unsafe VkPipelineColorBlendStateCreateInfo* pColorBlendState;
+		public unsafe VkPipelineDynamicStateCreateInfo* pDynamicState;
 		public VkPipelineLayout layout;
 		public VkRenderPass renderPass;
 		public uint subpass;
@@ -1175,7 +1241,8 @@ namespace Vortice.Vulkan
 		public int basePipelineIndex;
 	}
 
-	public unsafe partial struct VkComputePipelineCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkComputePipelineCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkComputePipelineCreateInfo"/> type, in bytes.
@@ -1183,7 +1250,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 96;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineCreateFlags flags;
 		public VkPipelineShaderStageCreateInfo stage;
 		public VkPipelineLayout layout;
@@ -1191,7 +1258,8 @@ namespace Vortice.Vulkan
 		public int basePipelineIndex;
 	}
 
-	public unsafe partial struct VkPushConstantRange
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPushConstantRange
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPushConstantRange"/> type, in bytes.
@@ -1203,7 +1271,8 @@ namespace Vortice.Vulkan
 		public uint size;
 	}
 
-	public unsafe partial struct VkPipelineLayoutCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineLayoutCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineLayoutCreateInfo"/> type, in bytes.
@@ -1211,15 +1280,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineLayoutCreateFlags flags;
 		public uint setLayoutCount;
-		public VkDescriptorSetLayout* pSetLayouts;
+		public unsafe VkDescriptorSetLayout* pSetLayouts;
 		public uint pushConstantRangeCount;
-		public VkPushConstantRange* pPushConstantRanges;
+		public unsafe VkPushConstantRange* pPushConstantRanges;
 	}
 
-	public unsafe partial struct VkSamplerCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSamplerCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSamplerCreateInfo"/> type, in bytes.
@@ -1227,7 +1297,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 80;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSamplerCreateFlags flags;
 		public VkFilter magFilter;
 		public VkFilter minFilter;
@@ -1246,7 +1316,8 @@ namespace Vortice.Vulkan
 		public VkBool32 unnormalizedCoordinates;
 	}
 
-	public unsafe partial struct VkDescriptorSetLayoutBinding
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorSetLayoutBinding
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorSetLayoutBinding"/> type, in bytes.
@@ -1257,10 +1328,11 @@ namespace Vortice.Vulkan
 		public VkDescriptorType descriptorType;
 		public uint descriptorCount;
 		public VkShaderStageFlags stageFlags;
-		public VkSampler* pImmutableSamplers;
+		public unsafe VkSampler* pImmutableSamplers;
 	}
 
-	public unsafe partial struct VkDescriptorSetLayoutCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorSetLayoutCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorSetLayoutCreateInfo"/> type, in bytes.
@@ -1268,13 +1340,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDescriptorSetLayoutCreateFlags flags;
 		public uint bindingCount;
-		public VkDescriptorSetLayoutBinding* pBindings;
+		public unsafe VkDescriptorSetLayoutBinding* pBindings;
 	}
 
-	public unsafe partial struct VkDescriptorPoolSize
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorPoolSize
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorPoolSize"/> type, in bytes.
@@ -1285,7 +1358,8 @@ namespace Vortice.Vulkan
 		public uint descriptorCount;
 	}
 
-	public unsafe partial struct VkDescriptorPoolCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorPoolCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorPoolCreateInfo"/> type, in bytes.
@@ -1293,14 +1367,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDescriptorPoolCreateFlags flags;
 		public uint maxSets;
 		public uint poolSizeCount;
-		public VkDescriptorPoolSize* pPoolSizes;
+		public unsafe VkDescriptorPoolSize* pPoolSizes;
 	}
 
-	public unsafe partial struct VkDescriptorSetAllocateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorSetAllocateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorSetAllocateInfo"/> type, in bytes.
@@ -1308,13 +1383,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDescriptorPool descriptorPool;
 		public uint descriptorSetCount;
-		public VkDescriptorSetLayout* pSetLayouts;
+		public unsafe VkDescriptorSetLayout* pSetLayouts;
 	}
 
-	public unsafe partial struct VkDescriptorImageInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorImageInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorImageInfo"/> type, in bytes.
@@ -1326,7 +1402,8 @@ namespace Vortice.Vulkan
 		public VkImageLayout imageLayout;
 	}
 
-	public unsafe partial struct VkDescriptorBufferInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorBufferInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorBufferInfo"/> type, in bytes.
@@ -1338,7 +1415,8 @@ namespace Vortice.Vulkan
 		public ulong range;
 	}
 
-	public unsafe partial struct VkWriteDescriptorSet
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkWriteDescriptorSet
 	{
 		/// <summary>
 		/// The size of the <see cref="VkWriteDescriptorSet"/> type, in bytes.
@@ -1346,18 +1424,19 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDescriptorSet dstSet;
 		public uint dstBinding;
 		public uint dstArrayElement;
 		public uint descriptorCount;
 		public VkDescriptorType descriptorType;
-		public VkDescriptorImageInfo* pImageInfo;
-		public VkDescriptorBufferInfo* pBufferInfo;
-		public VkBufferView* pTexelBufferView;
+		public unsafe VkDescriptorImageInfo* pImageInfo;
+		public unsafe VkDescriptorBufferInfo* pBufferInfo;
+		public unsafe VkBufferView* pTexelBufferView;
 	}
 
-	public unsafe partial struct VkCopyDescriptorSet
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCopyDescriptorSet
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCopyDescriptorSet"/> type, in bytes.
@@ -1365,7 +1444,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDescriptorSet srcSet;
 		public uint srcBinding;
 		public uint srcArrayElement;
@@ -1375,7 +1454,8 @@ namespace Vortice.Vulkan
 		public uint descriptorCount;
 	}
 
-	public unsafe partial struct VkFramebufferCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFramebufferCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkFramebufferCreateInfo"/> type, in bytes.
@@ -1383,17 +1463,18 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkFramebufferCreateFlags flags;
 		public VkRenderPass renderPass;
 		public uint attachmentCount;
-		public VkImageView* pAttachments;
+		public unsafe VkImageView* pAttachments;
 		public uint width;
 		public uint height;
 		public uint layers;
 	}
 
-	public unsafe partial struct VkAttachmentDescription
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAttachmentDescription
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAttachmentDescription"/> type, in bytes.
@@ -1411,7 +1492,8 @@ namespace Vortice.Vulkan
 		public VkImageLayout finalLayout;
 	}
 
-	public unsafe partial struct VkAttachmentReference
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAttachmentReference
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAttachmentReference"/> type, in bytes.
@@ -1422,7 +1504,8 @@ namespace Vortice.Vulkan
 		public VkImageLayout layout;
 	}
 
-	public unsafe partial struct VkSubpassDescription
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubpassDescription
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSubpassDescription"/> type, in bytes.
@@ -1432,16 +1515,17 @@ namespace Vortice.Vulkan
 		public VkSubpassDescriptionFlags flags;
 		public VkPipelineBindPoint pipelineBindPoint;
 		public uint inputAttachmentCount;
-		public VkAttachmentReference* pInputAttachments;
+		public unsafe VkAttachmentReference* pInputAttachments;
 		public uint colorAttachmentCount;
-		public VkAttachmentReference* pColorAttachments;
-		public VkAttachmentReference* pResolveAttachments;
-		public VkAttachmentReference* pDepthStencilAttachment;
+		public unsafe VkAttachmentReference* pColorAttachments;
+		public unsafe VkAttachmentReference* pResolveAttachments;
+		public unsafe VkAttachmentReference* pDepthStencilAttachment;
 		public uint preserveAttachmentCount;
-		public uint* pPreserveAttachments;
+		public unsafe uint* pPreserveAttachments;
 	}
 
-	public unsafe partial struct VkSubpassDependency
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubpassDependency
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSubpassDependency"/> type, in bytes.
@@ -1457,7 +1541,8 @@ namespace Vortice.Vulkan
 		public VkDependencyFlags dependencyFlags;
 	}
 
-	public unsafe partial struct VkRenderPassCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderPassCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRenderPassCreateInfo"/> type, in bytes.
@@ -1465,17 +1550,18 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkRenderPassCreateFlags flags;
 		public uint attachmentCount;
-		public VkAttachmentDescription* pAttachments;
+		public unsafe VkAttachmentDescription* pAttachments;
 		public uint subpassCount;
-		public VkSubpassDescription* pSubpasses;
+		public unsafe VkSubpassDescription* pSubpasses;
 		public uint dependencyCount;
-		public VkSubpassDependency* pDependencies;
+		public unsafe VkSubpassDependency* pDependencies;
 	}
 
-	public unsafe partial struct VkCommandPoolCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCommandPoolCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCommandPoolCreateInfo"/> type, in bytes.
@@ -1483,12 +1569,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkCommandPoolCreateFlags flags;
 		public uint queueFamilyIndex;
 	}
 
-	public unsafe partial struct VkCommandBufferAllocateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCommandBufferAllocateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCommandBufferAllocateInfo"/> type, in bytes.
@@ -1496,13 +1583,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkCommandPool commandPool;
 		public VkCommandBufferLevel level;
 		public uint commandBufferCount;
 	}
 
-	public unsafe partial struct VkCommandBufferInheritanceInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCommandBufferInheritanceInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCommandBufferInheritanceInfo"/> type, in bytes.
@@ -1510,7 +1598,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkRenderPass renderPass;
 		public uint subpass;
 		public VkFramebuffer framebuffer;
@@ -1519,7 +1607,8 @@ namespace Vortice.Vulkan
 		public VkQueryPipelineStatisticFlags pipelineStatistics;
 	}
 
-	public unsafe partial struct VkCommandBufferBeginInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCommandBufferBeginInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCommandBufferBeginInfo"/> type, in bytes.
@@ -1527,12 +1616,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkCommandBufferUsageFlags flags;
-		public VkCommandBufferInheritanceInfo* pInheritanceInfo;
+		public unsafe VkCommandBufferInheritanceInfo* pInheritanceInfo;
 	}
 
-	public unsafe partial struct VkBufferCopy
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferCopy
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBufferCopy"/> type, in bytes.
@@ -1544,7 +1634,8 @@ namespace Vortice.Vulkan
 		public ulong size;
 	}
 
-	public unsafe partial struct VkImageSubresourceLayers
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageSubresourceLayers
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageSubresourceLayers"/> type, in bytes.
@@ -1557,7 +1648,8 @@ namespace Vortice.Vulkan
 		public uint layerCount;
 	}
 
-	public unsafe partial struct VkImageCopy
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageCopy
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageCopy"/> type, in bytes.
@@ -1571,7 +1663,8 @@ namespace Vortice.Vulkan
 		public VkExtent3D extent;
 	}
 
-	public unsafe partial struct VkImageBlit
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageBlit
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageBlit"/> type, in bytes.
@@ -1586,7 +1679,8 @@ namespace Vortice.Vulkan
 		public VkOffset3D dstOffsets_1;
 	}
 
-	public unsafe partial struct VkBufferImageCopy
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferImageCopy
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBufferImageCopy"/> type, in bytes.
@@ -1601,7 +1695,24 @@ namespace Vortice.Vulkan
 		public VkExtent3D imageExtent;
 	}
 
-	public unsafe partial struct VkClearDepthStencilValue
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct VkClearColorValue
+	{
+		/// <summary>
+		/// The size of the <see cref="VkClearColorValue"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 16;
+
+		[FieldOffset(0)]
+		public unsafe fixed float float32[4];
+		[FieldOffset(0)]
+		public unsafe fixed int int32[4];
+		[FieldOffset(0)]
+		public unsafe fixed uint uint32[4];
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkClearDepthStencilValue
 	{
 		/// <summary>
 		/// The size of the <see cref="VkClearDepthStencilValue"/> type, in bytes.
@@ -1612,7 +1723,22 @@ namespace Vortice.Vulkan
 		public uint stencil;
 	}
 
-	public unsafe partial struct VkClearAttachment
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct VkClearValue
+	{
+		/// <summary>
+		/// The size of the <see cref="VkClearValue"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 16;
+
+		[FieldOffset(0)]
+		public VkClearColorValue color;
+		[FieldOffset(0)]
+		public VkClearDepthStencilValue depthStencil;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkClearAttachment
 	{
 		/// <summary>
 		/// The size of the <see cref="VkClearAttachment"/> type, in bytes.
@@ -1624,7 +1750,8 @@ namespace Vortice.Vulkan
 		public VkClearValue clearValue;
 	}
 
-	public unsafe partial struct VkClearRect
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkClearRect
 	{
 		/// <summary>
 		/// The size of the <see cref="VkClearRect"/> type, in bytes.
@@ -1636,7 +1763,8 @@ namespace Vortice.Vulkan
 		public uint layerCount;
 	}
 
-	public unsafe partial struct VkImageResolve
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageResolve
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageResolve"/> type, in bytes.
@@ -1650,7 +1778,8 @@ namespace Vortice.Vulkan
 		public VkExtent3D extent;
 	}
 
-	public unsafe partial struct VkMemoryBarrier
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryBarrier
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryBarrier"/> type, in bytes.
@@ -1658,12 +1787,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkAccessFlags srcAccessMask;
 		public VkAccessFlags dstAccessMask;
 	}
 
-	public unsafe partial struct VkBufferMemoryBarrier
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferMemoryBarrier
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBufferMemoryBarrier"/> type, in bytes.
@@ -1671,7 +1801,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkAccessFlags srcAccessMask;
 		public VkAccessFlags dstAccessMask;
 		public uint srcQueueFamilyIndex;
@@ -1681,7 +1811,8 @@ namespace Vortice.Vulkan
 		public ulong size;
 	}
 
-	public unsafe partial struct VkImageMemoryBarrier
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageMemoryBarrier
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageMemoryBarrier"/> type, in bytes.
@@ -1689,7 +1820,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 72;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkAccessFlags srcAccessMask;
 		public VkAccessFlags dstAccessMask;
 		public VkImageLayout oldLayout;
@@ -1700,7 +1831,8 @@ namespace Vortice.Vulkan
 		public VkImageSubresourceRange subresourceRange;
 	}
 
-	public unsafe partial struct VkRenderPassBeginInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderPassBeginInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRenderPassBeginInfo"/> type, in bytes.
@@ -1708,15 +1840,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkRenderPass renderPass;
 		public VkFramebuffer framebuffer;
 		public VkRect2D renderArea;
 		public uint clearValueCount;
-		public VkClearValue* pClearValues;
+		public unsafe VkClearValue* pClearValues;
 	}
 
-	public unsafe partial struct VkDispatchIndirectCommand
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDispatchIndirectCommand
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDispatchIndirectCommand"/> type, in bytes.
@@ -1728,7 +1861,8 @@ namespace Vortice.Vulkan
 		public uint z;
 	}
 
-	public unsafe partial struct VkDrawIndexedIndirectCommand
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDrawIndexedIndirectCommand
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDrawIndexedIndirectCommand"/> type, in bytes.
@@ -1742,7 +1876,8 @@ namespace Vortice.Vulkan
 		public uint firstInstance;
 	}
 
-	public unsafe partial struct VkDrawIndirectCommand
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDrawIndirectCommand
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDrawIndirectCommand"/> type, in bytes.
@@ -1755,7 +1890,8 @@ namespace Vortice.Vulkan
 		public uint firstInstance;
 	}
 
-	public unsafe partial struct VkBaseOutStructure
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBaseOutStructure
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBaseOutStructure"/> type, in bytes.
@@ -1763,10 +1899,11 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 16;
 
 		public VkStructureType sType;
-		public VkBaseOutStructure* pNext;
+		public unsafe VkBaseOutStructure* pNext;
 	}
 
-	public unsafe partial struct VkBaseInStructure
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBaseInStructure
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBaseInStructure"/> type, in bytes.
@@ -1774,10 +1911,11 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 16;
 
 		public VkStructureType sType;
-		public VkBaseInStructure* pNext;
+		public unsafe VkBaseInStructure* pNext;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceSubgroupProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSubgroupProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceSubgroupProperties"/> type, in bytes.
@@ -1785,14 +1923,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint subgroupSize;
 		public VkShaderStageFlags supportedStages;
 		public VkSubgroupFeatureFlags supportedOperations;
 		public VkBool32 quadOperationsInAllStages;
 	}
 
-	public unsafe partial struct VkBindBufferMemoryInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBindBufferMemoryInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBindBufferMemoryInfo"/> type, in bytes.
@@ -1800,13 +1939,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBuffer buffer;
 		public VkDeviceMemory memory;
 		public ulong memoryOffset;
 	}
 
-	public unsafe partial struct VkBindImageMemoryInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBindImageMemoryInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBindImageMemoryInfo"/> type, in bytes.
@@ -1814,13 +1954,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImage image;
 		public VkDeviceMemory memory;
 		public ulong memoryOffset;
 	}
 
-	public unsafe partial struct VkPhysicalDevice16BitStorageFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevice16BitStorageFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDevice16BitStorageFeatures"/> type, in bytes.
@@ -1828,14 +1969,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 storageBuffer16BitAccess;
 		public VkBool32 uniformAndStorageBuffer16BitAccess;
 		public VkBool32 storagePushConstant16;
 		public VkBool32 storageInputOutput16;
 	}
 
-	public unsafe partial struct VkMemoryDedicatedRequirements
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryDedicatedRequirements
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryDedicatedRequirements"/> type, in bytes.
@@ -1843,12 +1985,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 prefersDedicatedAllocation;
 		public VkBool32 requiresDedicatedAllocation;
 	}
 
-	public unsafe partial struct VkMemoryDedicatedAllocateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryDedicatedAllocateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryDedicatedAllocateInfo"/> type, in bytes.
@@ -1856,12 +1999,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImage image;
 		public VkBuffer buffer;
 	}
 
-	public unsafe partial struct VkMemoryAllocateFlagsInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryAllocateFlagsInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryAllocateFlagsInfo"/> type, in bytes.
@@ -1869,12 +2013,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkMemoryAllocateFlags flags;
 		public uint deviceMask;
 	}
 
-	public unsafe partial struct VkDeviceGroupRenderPassBeginInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceGroupRenderPassBeginInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceGroupRenderPassBeginInfo"/> type, in bytes.
@@ -1882,13 +2027,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint deviceMask;
 		public uint deviceRenderAreaCount;
-		public VkRect2D* pDeviceRenderAreas;
+		public unsafe VkRect2D* pDeviceRenderAreas;
 	}
 
-	public unsafe partial struct VkDeviceGroupCommandBufferBeginInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceGroupCommandBufferBeginInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceGroupCommandBufferBeginInfo"/> type, in bytes.
@@ -1896,11 +2042,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint deviceMask;
 	}
 
-	public unsafe partial struct VkDeviceGroupSubmitInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceGroupSubmitInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceGroupSubmitInfo"/> type, in bytes.
@@ -1908,16 +2055,17 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint waitSemaphoreCount;
-		public uint* pWaitSemaphoreDeviceIndices;
+		public unsafe uint* pWaitSemaphoreDeviceIndices;
 		public uint commandBufferCount;
-		public uint* pCommandBufferDeviceMasks;
+		public unsafe uint* pCommandBufferDeviceMasks;
 		public uint signalSemaphoreCount;
-		public uint* pSignalSemaphoreDeviceIndices;
+		public unsafe uint* pSignalSemaphoreDeviceIndices;
 	}
 
-	public unsafe partial struct VkDeviceGroupBindSparseInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceGroupBindSparseInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceGroupBindSparseInfo"/> type, in bytes.
@@ -1925,12 +2073,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint resourceDeviceIndex;
 		public uint memoryDeviceIndex;
 	}
 
-	public unsafe partial struct VkBindBufferMemoryDeviceGroupInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBindBufferMemoryDeviceGroupInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBindBufferMemoryDeviceGroupInfo"/> type, in bytes.
@@ -1938,12 +2087,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint deviceIndexCount;
-		public uint* pDeviceIndices;
+		public unsafe uint* pDeviceIndices;
 	}
 
-	public unsafe partial struct VkBindImageMemoryDeviceGroupInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBindImageMemoryDeviceGroupInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBindImageMemoryDeviceGroupInfo"/> type, in bytes.
@@ -1951,14 +2101,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint deviceIndexCount;
-		public uint* pDeviceIndices;
+		public unsafe uint* pDeviceIndices;
 		public uint splitInstanceBindRegionCount;
-		public VkRect2D* pSplitInstanceBindRegions;
+		public unsafe VkRect2D* pSplitInstanceBindRegions;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceGroupProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceGroupProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceGroupProperties"/> type, in bytes.
@@ -1966,7 +2117,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 288;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint physicalDeviceCount;
 		public VkPhysicalDevice physicalDevices_0;
 		public VkPhysicalDevice physicalDevices_1;
@@ -2003,7 +2154,8 @@ namespace Vortice.Vulkan
 		public VkBool32 subsetAllocation;
 	}
 
-	public unsafe partial struct VkDeviceGroupDeviceCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceGroupDeviceCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceGroupDeviceCreateInfo"/> type, in bytes.
@@ -2011,12 +2163,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint physicalDeviceCount;
-		public VkPhysicalDevice* pPhysicalDevices;
+		public unsafe VkPhysicalDevice* pPhysicalDevices;
 	}
 
-	public unsafe partial struct VkBufferMemoryRequirementsInfo2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferMemoryRequirementsInfo2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBufferMemoryRequirementsInfo2"/> type, in bytes.
@@ -2024,11 +2177,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBuffer buffer;
 	}
 
-	public unsafe partial struct VkImageMemoryRequirementsInfo2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageMemoryRequirementsInfo2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageMemoryRequirementsInfo2"/> type, in bytes.
@@ -2036,11 +2190,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImage image;
 	}
 
-	public unsafe partial struct VkImageSparseMemoryRequirementsInfo2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageSparseMemoryRequirementsInfo2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageSparseMemoryRequirementsInfo2"/> type, in bytes.
@@ -2048,11 +2203,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImage image;
 	}
 
-	public unsafe partial struct VkMemoryRequirements2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryRequirements2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryRequirements2"/> type, in bytes.
@@ -2060,11 +2216,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkMemoryRequirements memoryRequirements;
 	}
 
-	public unsafe partial struct VkSparseImageMemoryRequirements2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSparseImageMemoryRequirements2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSparseImageMemoryRequirements2"/> type, in bytes.
@@ -2072,11 +2229,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSparseImageMemoryRequirements memoryRequirements;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceFeatures2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFeatures2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceFeatures2"/> type, in bytes.
@@ -2084,11 +2242,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 240;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPhysicalDeviceFeatures features;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceProperties2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceProperties2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceProperties2"/> type, in bytes.
@@ -2096,11 +2255,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 840;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPhysicalDeviceProperties properties;
 	}
 
-	public unsafe partial struct VkFormatProperties2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFormatProperties2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkFormatProperties2"/> type, in bytes.
@@ -2108,11 +2268,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkFormatProperties formatProperties;
 	}
 
-	public unsafe partial struct VkImageFormatProperties2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageFormatProperties2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageFormatProperties2"/> type, in bytes.
@@ -2120,11 +2281,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageFormatProperties imageFormatProperties;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceImageFormatInfo2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceImageFormatInfo2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceImageFormatInfo2"/> type, in bytes.
@@ -2132,7 +2294,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkFormat format;
 		public VkImageType type;
 		public VkImageTiling tiling;
@@ -2140,7 +2302,8 @@ namespace Vortice.Vulkan
 		public VkImageCreateFlags flags;
 	}
 
-	public unsafe partial struct VkQueueFamilyProperties2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkQueueFamilyProperties2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkQueueFamilyProperties2"/> type, in bytes.
@@ -2148,11 +2311,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkQueueFamilyProperties queueFamilyProperties;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceMemoryProperties2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMemoryProperties2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceMemoryProperties2"/> type, in bytes.
@@ -2160,11 +2324,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 536;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPhysicalDeviceMemoryProperties memoryProperties;
 	}
 
-	public unsafe partial struct VkSparseImageFormatProperties2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSparseImageFormatProperties2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSparseImageFormatProperties2"/> type, in bytes.
@@ -2172,11 +2337,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSparseImageFormatProperties properties;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceSparseImageFormatInfo2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSparseImageFormatInfo2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceSparseImageFormatInfo2"/> type, in bytes.
@@ -2184,7 +2350,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkFormat format;
 		public VkImageType type;
 		public VkSampleCountFlags samples;
@@ -2192,7 +2358,8 @@ namespace Vortice.Vulkan
 		public VkImageTiling tiling;
 	}
 
-	public unsafe partial struct VkPhysicalDevicePointClippingProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePointClippingProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDevicePointClippingProperties"/> type, in bytes.
@@ -2200,11 +2367,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPointClippingBehavior pointClippingBehavior;
 	}
 
-	public unsafe partial struct VkInputAttachmentAspectReference
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkInputAttachmentAspectReference
 	{
 		/// <summary>
 		/// The size of the <see cref="VkInputAttachmentAspectReference"/> type, in bytes.
@@ -2216,7 +2384,8 @@ namespace Vortice.Vulkan
 		public VkImageAspectFlags aspectMask;
 	}
 
-	public unsafe partial struct VkRenderPassInputAttachmentAspectCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderPassInputAttachmentAspectCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRenderPassInputAttachmentAspectCreateInfo"/> type, in bytes.
@@ -2224,12 +2393,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint aspectReferenceCount;
-		public VkInputAttachmentAspectReference* pAspectReferences;
+		public unsafe VkInputAttachmentAspectReference* pAspectReferences;
 	}
 
-	public unsafe partial struct VkImageViewUsageCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageViewUsageCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageViewUsageCreateInfo"/> type, in bytes.
@@ -2237,11 +2407,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageUsageFlags usage;
 	}
 
-	public unsafe partial struct VkPipelineTessellationDomainOriginStateCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineTessellationDomainOriginStateCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineTessellationDomainOriginStateCreateInfo"/> type, in bytes.
@@ -2249,11 +2420,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkTessellationDomainOrigin domainOrigin;
 	}
 
-	public unsafe partial struct VkRenderPassMultiviewCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderPassMultiviewCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRenderPassMultiviewCreateInfo"/> type, in bytes.
@@ -2261,16 +2433,17 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint subpassCount;
-		public uint* pViewMasks;
+		public unsafe uint* pViewMasks;
 		public uint dependencyCount;
-		public int* pViewOffsets;
+		public unsafe int* pViewOffsets;
 		public uint correlationMaskCount;
-		public uint* pCorrelationMasks;
+		public unsafe uint* pCorrelationMasks;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceMultiviewFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMultiviewFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceMultiviewFeatures"/> type, in bytes.
@@ -2278,13 +2451,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 multiview;
 		public VkBool32 multiviewGeometryShader;
 		public VkBool32 multiviewTessellationShader;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceMultiviewProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMultiviewProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceMultiviewProperties"/> type, in bytes.
@@ -2292,12 +2466,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxMultiviewViewCount;
 		public uint maxMultiviewInstanceIndex;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceVariablePointersFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceVariablePointersFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceVariablePointersFeatures"/> type, in bytes.
@@ -2305,12 +2480,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 variablePointersStorageBuffer;
 		public VkBool32 variablePointers;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceProtectedMemoryFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceProtectedMemoryFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceProtectedMemoryFeatures"/> type, in bytes.
@@ -2318,11 +2494,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 protectedMemory;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceProtectedMemoryProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceProtectedMemoryProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceProtectedMemoryProperties"/> type, in bytes.
@@ -2330,11 +2507,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 protectedNoFault;
 	}
 
-	public unsafe partial struct VkDeviceQueueInfo2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceQueueInfo2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceQueueInfo2"/> type, in bytes.
@@ -2342,13 +2520,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDeviceQueueCreateFlags flags;
 		public uint queueFamilyIndex;
 		public uint queueIndex;
 	}
 
-	public unsafe partial struct VkProtectedSubmitInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkProtectedSubmitInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkProtectedSubmitInfo"/> type, in bytes.
@@ -2356,11 +2535,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 protectedSubmit;
 	}
 
-	public unsafe partial struct VkSamplerYcbcrConversionCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSamplerYcbcrConversionCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSamplerYcbcrConversionCreateInfo"/> type, in bytes.
@@ -2368,7 +2548,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkFormat format;
 		public VkSamplerYcbcrModelConversion ycbcrModel;
 		public VkSamplerYcbcrRange ycbcrRange;
@@ -2379,7 +2559,8 @@ namespace Vortice.Vulkan
 		public VkBool32 forceExplicitReconstruction;
 	}
 
-	public unsafe partial struct VkSamplerYcbcrConversionInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSamplerYcbcrConversionInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSamplerYcbcrConversionInfo"/> type, in bytes.
@@ -2387,11 +2568,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSamplerYcbcrConversion conversion;
 	}
 
-	public unsafe partial struct VkBindImagePlaneMemoryInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBindImagePlaneMemoryInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBindImagePlaneMemoryInfo"/> type, in bytes.
@@ -2399,11 +2581,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageAspectFlags planeAspect;
 	}
 
-	public unsafe partial struct VkImagePlaneMemoryRequirementsInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImagePlaneMemoryRequirementsInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImagePlaneMemoryRequirementsInfo"/> type, in bytes.
@@ -2411,11 +2594,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageAspectFlags planeAspect;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceSamplerYcbcrConversionFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSamplerYcbcrConversionFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceSamplerYcbcrConversionFeatures"/> type, in bytes.
@@ -2423,11 +2607,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 samplerYcbcrConversion;
 	}
 
-	public unsafe partial struct VkSamplerYcbcrConversionImageFormatProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSamplerYcbcrConversionImageFormatProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSamplerYcbcrConversionImageFormatProperties"/> type, in bytes.
@@ -2435,11 +2620,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint combinedImageSamplerDescriptorCount;
 	}
 
-	public unsafe partial struct VkDescriptorUpdateTemplateEntry
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorUpdateTemplateEntry
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorUpdateTemplateEntry"/> type, in bytes.
@@ -2450,11 +2636,12 @@ namespace Vortice.Vulkan
 		public uint dstArrayElement;
 		public uint descriptorCount;
 		public VkDescriptorType descriptorType;
-		public UIntPtr offset;
-		public UIntPtr stride;
+		public VkPointerSize offset;
+		public VkPointerSize stride;
 	}
 
-	public unsafe partial struct VkDescriptorUpdateTemplateCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorUpdateTemplateCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorUpdateTemplateCreateInfo"/> type, in bytes.
@@ -2462,10 +2649,10 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 72;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDescriptorUpdateTemplateCreateFlags flags;
 		public uint descriptorUpdateEntryCount;
-		public VkDescriptorUpdateTemplateEntry* pDescriptorUpdateEntries;
+		public unsafe VkDescriptorUpdateTemplateEntry* pDescriptorUpdateEntries;
 		public VkDescriptorUpdateTemplateType templateType;
 		public VkDescriptorSetLayout descriptorSetLayout;
 		public VkPipelineBindPoint pipelineBindPoint;
@@ -2473,7 +2660,8 @@ namespace Vortice.Vulkan
 		public uint set;
 	}
 
-	public unsafe partial struct VkExternalMemoryProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExternalMemoryProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExternalMemoryProperties"/> type, in bytes.
@@ -2485,7 +2673,8 @@ namespace Vortice.Vulkan
 		public VkExternalMemoryHandleTypeFlags compatibleHandleTypes;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceExternalImageFormatInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceExternalImageFormatInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceExternalImageFormatInfo"/> type, in bytes.
@@ -2493,11 +2682,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalMemoryHandleTypeFlags handleType;
 	}
 
-	public unsafe partial struct VkExternalImageFormatProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExternalImageFormatProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExternalImageFormatProperties"/> type, in bytes.
@@ -2505,11 +2695,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalMemoryProperties externalMemoryProperties;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceExternalBufferInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceExternalBufferInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceExternalBufferInfo"/> type, in bytes.
@@ -2517,13 +2708,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBufferCreateFlags flags;
 		public VkBufferUsageFlags usage;
 		public VkExternalMemoryHandleTypeFlags handleType;
 	}
 
-	public unsafe partial struct VkExternalBufferProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExternalBufferProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExternalBufferProperties"/> type, in bytes.
@@ -2531,11 +2723,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalMemoryProperties externalMemoryProperties;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceIDProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceIDProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceIDProperties"/> type, in bytes.
@@ -2543,15 +2736,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public fixed byte deviceUUID[16];
-		public fixed byte driverUUID[16];
-		public fixed byte deviceLUID[8];
+		public unsafe void* pNext;
+		public unsafe fixed byte deviceUUID[16];
+		public unsafe fixed byte driverUUID[16];
+		public unsafe fixed byte deviceLUID[8];
 		public uint deviceNodeMask;
 		public VkBool32 deviceLUIDValid;
 	}
 
-	public unsafe partial struct VkExternalMemoryImageCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExternalMemoryImageCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExternalMemoryImageCreateInfo"/> type, in bytes.
@@ -2559,11 +2753,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalMemoryHandleTypeFlags handleTypes;
 	}
 
-	public unsafe partial struct VkExternalMemoryBufferCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExternalMemoryBufferCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExternalMemoryBufferCreateInfo"/> type, in bytes.
@@ -2571,11 +2766,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalMemoryHandleTypeFlags handleTypes;
 	}
 
-	public unsafe partial struct VkExportMemoryAllocateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExportMemoryAllocateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExportMemoryAllocateInfo"/> type, in bytes.
@@ -2583,11 +2779,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalMemoryHandleTypeFlags handleTypes;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceExternalFenceInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceExternalFenceInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceExternalFenceInfo"/> type, in bytes.
@@ -2595,11 +2792,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalFenceHandleTypeFlags handleType;
 	}
 
-	public unsafe partial struct VkExternalFenceProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExternalFenceProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExternalFenceProperties"/> type, in bytes.
@@ -2607,13 +2805,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalFenceHandleTypeFlags exportFromImportedHandleTypes;
 		public VkExternalFenceHandleTypeFlags compatibleHandleTypes;
 		public VkExternalFenceFeatureFlags externalFenceFeatures;
 	}
 
-	public unsafe partial struct VkExportFenceCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExportFenceCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExportFenceCreateInfo"/> type, in bytes.
@@ -2621,11 +2820,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalFenceHandleTypeFlags handleTypes;
 	}
 
-	public unsafe partial struct VkExportSemaphoreCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExportSemaphoreCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExportSemaphoreCreateInfo"/> type, in bytes.
@@ -2633,11 +2833,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalSemaphoreHandleTypeFlags handleTypes;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceExternalSemaphoreInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceExternalSemaphoreInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceExternalSemaphoreInfo"/> type, in bytes.
@@ -2645,11 +2846,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalSemaphoreHandleTypeFlags handleType;
 	}
 
-	public unsafe partial struct VkExternalSemaphoreProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExternalSemaphoreProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExternalSemaphoreProperties"/> type, in bytes.
@@ -2657,13 +2859,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalSemaphoreHandleTypeFlags exportFromImportedHandleTypes;
 		public VkExternalSemaphoreHandleTypeFlags compatibleHandleTypes;
 		public VkExternalSemaphoreFeatureFlags externalSemaphoreFeatures;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceMaintenance3Properties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMaintenance3Properties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceMaintenance3Properties"/> type, in bytes.
@@ -2671,12 +2874,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxPerSetDescriptors;
 		public ulong maxMemoryAllocationSize;
 	}
 
-	public unsafe partial struct VkDescriptorSetLayoutSupport
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorSetLayoutSupport
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorSetLayoutSupport"/> type, in bytes.
@@ -2684,11 +2888,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 supported;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderDrawParametersFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderDrawParametersFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderDrawParametersFeatures"/> type, in bytes.
@@ -2696,11 +2901,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 shaderDrawParameters;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceVulkan11Features
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceVulkan11Features
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceVulkan11Features"/> type, in bytes.
@@ -2708,7 +2914,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 storageBuffer16BitAccess;
 		public VkBool32 uniformAndStorageBuffer16BitAccess;
 		public VkBool32 storagePushConstant16;
@@ -2723,7 +2929,8 @@ namespace Vortice.Vulkan
 		public VkBool32 shaderDrawParameters;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceVulkan11Properties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceVulkan11Properties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceVulkan11Properties"/> type, in bytes.
@@ -2731,10 +2938,10 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 112;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public fixed byte deviceUUID[16];
-		public fixed byte driverUUID[16];
-		public fixed byte deviceLUID[8];
+		public unsafe void* pNext;
+		public unsafe fixed byte deviceUUID[16];
+		public unsafe fixed byte driverUUID[16];
+		public unsafe fixed byte deviceLUID[8];
 		public uint deviceNodeMask;
 		public VkBool32 deviceLUIDValid;
 		public uint subgroupSize;
@@ -2749,7 +2956,8 @@ namespace Vortice.Vulkan
 		public ulong maxMemoryAllocationSize;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceVulkan12Features
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceVulkan12Features
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceVulkan12Features"/> type, in bytes.
@@ -2757,7 +2965,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 208;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 samplerMirrorClampToEdge;
 		public VkBool32 drawIndirectCount;
 		public VkBool32 storageBuffer8BitAccess;
@@ -2807,7 +3015,8 @@ namespace Vortice.Vulkan
 		public VkBool32 subgroupBroadcastDynamicId;
 	}
 
-	public unsafe partial struct VkConformanceVersion
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkConformanceVersion
 	{
 		/// <summary>
 		/// The size of the <see cref="VkConformanceVersion"/> type, in bytes.
@@ -2820,7 +3029,8 @@ namespace Vortice.Vulkan
 		public byte patch;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceVulkan12Properties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceVulkan12Properties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceVulkan12Properties"/> type, in bytes.
@@ -2828,10 +3038,10 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 736;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDriverId driverID;
-		public fixed byte driverName[256];
-		public fixed byte driverInfo[256];
+		public unsafe fixed byte driverName[256];
+		public unsafe fixed byte driverInfo[256];
 		public VkConformanceVersion conformanceVersion;
 		public VkShaderFloatControlsIndependence denormBehaviorIndependence;
 		public VkShaderFloatControlsIndependence roundingModeIndependence;
@@ -2883,7 +3093,8 @@ namespace Vortice.Vulkan
 		public VkSampleCountFlags framebufferIntegerColorSampleCounts;
 	}
 
-	public unsafe partial struct VkImageFormatListCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageFormatListCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageFormatListCreateInfo"/> type, in bytes.
@@ -2891,12 +3102,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint viewFormatCount;
-		public VkFormat* pViewFormats;
+		public unsafe VkFormat* pViewFormats;
 	}
 
-	public unsafe partial struct VkAttachmentDescription2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAttachmentDescription2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAttachmentDescription2"/> type, in bytes.
@@ -2904,7 +3116,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkAttachmentDescriptionFlags flags;
 		public VkFormat format;
 		public VkSampleCountFlags samples;
@@ -2916,7 +3128,8 @@ namespace Vortice.Vulkan
 		public VkImageLayout finalLayout;
 	}
 
-	public unsafe partial struct VkAttachmentReference2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAttachmentReference2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAttachmentReference2"/> type, in bytes.
@@ -2924,13 +3137,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint attachment;
 		public VkImageLayout layout;
 		public VkImageAspectFlags aspectMask;
 	}
 
-	public unsafe partial struct VkSubpassDescription2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubpassDescription2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSubpassDescription2"/> type, in bytes.
@@ -2938,21 +3152,22 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 88;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSubpassDescriptionFlags flags;
 		public VkPipelineBindPoint pipelineBindPoint;
 		public uint viewMask;
 		public uint inputAttachmentCount;
-		public VkAttachmentReference2* pInputAttachments;
+		public unsafe VkAttachmentReference2* pInputAttachments;
 		public uint colorAttachmentCount;
-		public VkAttachmentReference2* pColorAttachments;
-		public VkAttachmentReference2* pResolveAttachments;
-		public VkAttachmentReference2* pDepthStencilAttachment;
+		public unsafe VkAttachmentReference2* pColorAttachments;
+		public unsafe VkAttachmentReference2* pResolveAttachments;
+		public unsafe VkAttachmentReference2* pDepthStencilAttachment;
 		public uint preserveAttachmentCount;
-		public uint* pPreserveAttachments;
+		public unsafe uint* pPreserveAttachments;
 	}
 
-	public unsafe partial struct VkSubpassDependency2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubpassDependency2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSubpassDependency2"/> type, in bytes.
@@ -2960,7 +3175,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint srcSubpass;
 		public uint dstSubpass;
 		public VkPipelineStageFlags srcStageMask;
@@ -2971,7 +3186,8 @@ namespace Vortice.Vulkan
 		public int viewOffset;
 	}
 
-	public unsafe partial struct VkRenderPassCreateInfo2
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderPassCreateInfo2
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRenderPassCreateInfo2"/> type, in bytes.
@@ -2979,19 +3195,20 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 80;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkRenderPassCreateFlags flags;
 		public uint attachmentCount;
-		public VkAttachmentDescription2* pAttachments;
+		public unsafe VkAttachmentDescription2* pAttachments;
 		public uint subpassCount;
-		public VkSubpassDescription2* pSubpasses;
+		public unsafe VkSubpassDescription2* pSubpasses;
 		public uint dependencyCount;
-		public VkSubpassDependency2* pDependencies;
+		public unsafe VkSubpassDependency2* pDependencies;
 		public uint correlatedViewMaskCount;
-		public uint* pCorrelatedViewMasks;
+		public unsafe uint* pCorrelatedViewMasks;
 	}
 
-	public unsafe partial struct VkSubpassBeginInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubpassBeginInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSubpassBeginInfo"/> type, in bytes.
@@ -2999,11 +3216,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSubpassContents contents;
 	}
 
-	public unsafe partial struct VkSubpassEndInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubpassEndInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSubpassEndInfo"/> type, in bytes.
@@ -3011,10 +3229,11 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 16;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 	}
 
-	public unsafe partial struct VkPhysicalDevice8BitStorageFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevice8BitStorageFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDevice8BitStorageFeatures"/> type, in bytes.
@@ -3022,13 +3241,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 storageBuffer8BitAccess;
 		public VkBool32 uniformAndStorageBuffer8BitAccess;
 		public VkBool32 storagePushConstant8;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceDriverProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDriverProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceDriverProperties"/> type, in bytes.
@@ -3036,14 +3256,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 536;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDriverId driverID;
-		public fixed byte driverName[256];
-		public fixed byte driverInfo[256];
+		public unsafe fixed byte driverName[256];
+		public unsafe fixed byte driverInfo[256];
 		public VkConformanceVersion conformanceVersion;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderAtomicInt64Features
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderAtomicInt64Features
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderAtomicInt64Features"/> type, in bytes.
@@ -3051,12 +3272,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 shaderBufferInt64Atomics;
 		public VkBool32 shaderSharedInt64Atomics;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderFloat16Int8Features
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderFloat16Int8Features
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderFloat16Int8Features"/> type, in bytes.
@@ -3064,12 +3286,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 shaderFloat16;
 		public VkBool32 shaderInt8;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceFloatControlsProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFloatControlsProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceFloatControlsProperties"/> type, in bytes.
@@ -3077,7 +3300,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 88;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkShaderFloatControlsIndependence denormBehaviorIndependence;
 		public VkShaderFloatControlsIndependence roundingModeIndependence;
 		public VkBool32 shaderSignedZeroInfNanPreserveFloat16;
@@ -3097,7 +3320,8 @@ namespace Vortice.Vulkan
 		public VkBool32 shaderRoundingModeRTZFloat64;
 	}
 
-	public unsafe partial struct VkDescriptorSetLayoutBindingFlagsCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorSetLayoutBindingFlagsCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorSetLayoutBindingFlagsCreateInfo"/> type, in bytes.
@@ -3105,12 +3329,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint bindingCount;
-		public VkDescriptorBindingFlags* pBindingFlags;
+		public unsafe VkDescriptorBindingFlags* pBindingFlags;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceDescriptorIndexingFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDescriptorIndexingFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceDescriptorIndexingFeatures"/> type, in bytes.
@@ -3118,7 +3343,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 96;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 shaderInputAttachmentArrayDynamicIndexing;
 		public VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
 		public VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
@@ -3141,7 +3366,8 @@ namespace Vortice.Vulkan
 		public VkBool32 runtimeDescriptorArray;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceDescriptorIndexingProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDescriptorIndexingProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceDescriptorIndexingProperties"/> type, in bytes.
@@ -3149,7 +3375,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 112;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxUpdateAfterBindDescriptorsInAllPools;
 		public VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
 		public VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
@@ -3175,7 +3401,8 @@ namespace Vortice.Vulkan
 		public uint maxDescriptorSetUpdateAfterBindInputAttachments;
 	}
 
-	public unsafe partial struct VkDescriptorSetVariableDescriptorCountAllocateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorSetVariableDescriptorCountAllocateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorSetVariableDescriptorCountAllocateInfo"/> type, in bytes.
@@ -3183,12 +3410,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint descriptorSetCount;
-		public uint* pDescriptorCounts;
+		public unsafe uint* pDescriptorCounts;
 	}
 
-	public unsafe partial struct VkDescriptorSetVariableDescriptorCountLayoutSupport
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorSetVariableDescriptorCountLayoutSupport
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorSetVariableDescriptorCountLayoutSupport"/> type, in bytes.
@@ -3196,11 +3424,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxVariableDescriptorCount;
 	}
 
-	public unsafe partial struct VkSubpassDescriptionDepthStencilResolve
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubpassDescriptionDepthStencilResolve
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSubpassDescriptionDepthStencilResolve"/> type, in bytes.
@@ -3208,13 +3437,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkResolveModeFlags depthResolveMode;
 		public VkResolveModeFlags stencilResolveMode;
-		public VkAttachmentReference2* pDepthStencilResolveAttachment;
+		public unsafe VkAttachmentReference2* pDepthStencilResolveAttachment;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceDepthStencilResolveProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDepthStencilResolveProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceDepthStencilResolveProperties"/> type, in bytes.
@@ -3222,14 +3452,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkResolveModeFlags supportedDepthResolveModes;
 		public VkResolveModeFlags supportedStencilResolveModes;
 		public VkBool32 independentResolveNone;
 		public VkBool32 independentResolve;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceScalarBlockLayoutFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceScalarBlockLayoutFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceScalarBlockLayoutFeatures"/> type, in bytes.
@@ -3237,11 +3468,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 scalarBlockLayout;
 	}
 
-	public unsafe partial struct VkImageStencilUsageCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageStencilUsageCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageStencilUsageCreateInfo"/> type, in bytes.
@@ -3249,11 +3481,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageUsageFlags stencilUsage;
 	}
 
-	public unsafe partial struct VkSamplerReductionModeCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSamplerReductionModeCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSamplerReductionModeCreateInfo"/> type, in bytes.
@@ -3261,11 +3494,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSamplerReductionMode reductionMode;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceSamplerFilterMinmaxProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSamplerFilterMinmaxProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceSamplerFilterMinmaxProperties"/> type, in bytes.
@@ -3273,12 +3507,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 filterMinmaxSingleComponentFormats;
 		public VkBool32 filterMinmaxImageComponentMapping;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceVulkanMemoryModelFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceVulkanMemoryModelFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceVulkanMemoryModelFeatures"/> type, in bytes.
@@ -3286,13 +3521,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 vulkanMemoryModel;
 		public VkBool32 vulkanMemoryModelDeviceScope;
 		public VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceImagelessFramebufferFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceImagelessFramebufferFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceImagelessFramebufferFeatures"/> type, in bytes.
@@ -3300,11 +3536,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 imagelessFramebuffer;
 	}
 
-	public unsafe partial struct VkFramebufferAttachmentImageInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFramebufferAttachmentImageInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkFramebufferAttachmentImageInfo"/> type, in bytes.
@@ -3312,17 +3549,18 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageCreateFlags flags;
 		public VkImageUsageFlags usage;
 		public uint width;
 		public uint height;
 		public uint layerCount;
 		public uint viewFormatCount;
-		public VkFormat* pViewFormats;
+		public unsafe VkFormat* pViewFormats;
 	}
 
-	public unsafe partial struct VkFramebufferAttachmentsCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFramebufferAttachmentsCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkFramebufferAttachmentsCreateInfo"/> type, in bytes.
@@ -3330,12 +3568,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint attachmentImageInfoCount;
-		public VkFramebufferAttachmentImageInfo* pAttachmentImageInfos;
+		public unsafe VkFramebufferAttachmentImageInfo* pAttachmentImageInfos;
 	}
 
-	public unsafe partial struct VkRenderPassAttachmentBeginInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderPassAttachmentBeginInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRenderPassAttachmentBeginInfo"/> type, in bytes.
@@ -3343,12 +3582,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint attachmentCount;
-		public VkImageView* pAttachments;
+		public unsafe VkImageView* pAttachments;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceUniformBufferStandardLayoutFeatures"/> type, in bytes.
@@ -3356,11 +3596,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 uniformBufferStandardLayout;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures"/> type, in bytes.
@@ -3368,11 +3609,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 shaderSubgroupExtendedTypes;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures"/> type, in bytes.
@@ -3380,11 +3622,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 separateDepthStencilLayouts;
 	}
 
-	public unsafe partial struct VkAttachmentReferenceStencilLayout
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAttachmentReferenceStencilLayout
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAttachmentReferenceStencilLayout"/> type, in bytes.
@@ -3392,11 +3635,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageLayout stencilLayout;
 	}
 
-	public unsafe partial struct VkAttachmentDescriptionStencilLayout
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAttachmentDescriptionStencilLayout
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAttachmentDescriptionStencilLayout"/> type, in bytes.
@@ -3404,12 +3648,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageLayout stencilInitialLayout;
 		public VkImageLayout stencilFinalLayout;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceHostQueryResetFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceHostQueryResetFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceHostQueryResetFeatures"/> type, in bytes.
@@ -3417,11 +3662,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 hostQueryReset;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceTimelineSemaphoreFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceTimelineSemaphoreFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceTimelineSemaphoreFeatures"/> type, in bytes.
@@ -3429,11 +3675,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 timelineSemaphore;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceTimelineSemaphoreProperties
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceTimelineSemaphoreProperties
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceTimelineSemaphoreProperties"/> type, in bytes.
@@ -3441,11 +3688,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong maxTimelineSemaphoreValueDifference;
 	}
 
-	public unsafe partial struct VkSemaphoreTypeCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSemaphoreTypeCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSemaphoreTypeCreateInfo"/> type, in bytes.
@@ -3453,12 +3701,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSemaphoreType semaphoreType;
 		public ulong initialValue;
 	}
 
-	public unsafe partial struct VkTimelineSemaphoreSubmitInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkTimelineSemaphoreSubmitInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkTimelineSemaphoreSubmitInfo"/> type, in bytes.
@@ -3466,14 +3715,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint waitSemaphoreValueCount;
-		public ulong* pWaitSemaphoreValues;
+		public unsafe ulong* pWaitSemaphoreValues;
 		public uint signalSemaphoreValueCount;
-		public ulong* pSignalSemaphoreValues;
+		public unsafe ulong* pSignalSemaphoreValues;
 	}
 
-	public unsafe partial struct VkSemaphoreWaitInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSemaphoreWaitInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSemaphoreWaitInfo"/> type, in bytes.
@@ -3481,14 +3731,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSemaphoreWaitFlags flags;
 		public uint semaphoreCount;
-		public VkSemaphore* pSemaphores;
-		public ulong* pValues;
+		public unsafe VkSemaphore* pSemaphores;
+		public unsafe ulong* pValues;
 	}
 
-	public unsafe partial struct VkSemaphoreSignalInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSemaphoreSignalInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSemaphoreSignalInfo"/> type, in bytes.
@@ -3496,12 +3747,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSemaphore semaphore;
 		public ulong value;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressFeatures
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceBufferDeviceAddressFeatures
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceBufferDeviceAddressFeatures"/> type, in bytes.
@@ -3509,13 +3761,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 bufferDeviceAddress;
 		public VkBool32 bufferDeviceAddressCaptureReplay;
 		public VkBool32 bufferDeviceAddressMultiDevice;
 	}
 
-	public unsafe partial struct VkBufferDeviceAddressInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferDeviceAddressInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBufferDeviceAddressInfo"/> type, in bytes.
@@ -3523,11 +3776,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBuffer buffer;
 	}
 
-	public unsafe partial struct VkBufferOpaqueCaptureAddressCreateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferOpaqueCaptureAddressCreateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBufferOpaqueCaptureAddressCreateInfo"/> type, in bytes.
@@ -3535,11 +3789,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong opaqueCaptureAddress;
 	}
 
-	public unsafe partial struct VkMemoryOpaqueCaptureAddressAllocateInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryOpaqueCaptureAddressAllocateInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryOpaqueCaptureAddressAllocateInfo"/> type, in bytes.
@@ -3547,11 +3802,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong opaqueCaptureAddress;
 	}
 
-	public unsafe partial struct VkDeviceMemoryOpaqueCaptureAddressInfo
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceMemoryOpaqueCaptureAddressInfo
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceMemoryOpaqueCaptureAddressInfo"/> type, in bytes.
@@ -3559,11 +3815,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDeviceMemory memory;
 	}
 
-	public unsafe partial struct VkSurfaceCapabilitiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSurfaceCapabilitiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSurfaceCapabilitiesKHR"/> type, in bytes.
@@ -3582,7 +3839,8 @@ namespace Vortice.Vulkan
 		public VkImageUsageFlags supportedUsageFlags;
 	}
 
-	public unsafe partial struct VkSurfaceFormatKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSurfaceFormatKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSurfaceFormatKHR"/> type, in bytes.
@@ -3593,7 +3851,8 @@ namespace Vortice.Vulkan
 		public VkColorSpaceKHR colorSpace;
 	}
 
-	public unsafe partial struct VkSwapchainCreateInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSwapchainCreateInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSwapchainCreateInfoKHR"/> type, in bytes.
@@ -3601,7 +3860,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 104;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSwapchainCreateFlagsKHR flags;
 		public VkSurfaceKHR surface;
 		public uint minImageCount;
@@ -3612,7 +3871,7 @@ namespace Vortice.Vulkan
 		public VkImageUsageFlags imageUsage;
 		public VkSharingMode imageSharingMode;
 		public uint queueFamilyIndexCount;
-		public uint* pQueueFamilyIndices;
+		public unsafe uint* pQueueFamilyIndices;
 		public VkSurfaceTransformFlagsKHR preTransform;
 		public VkCompositeAlphaFlagsKHR compositeAlpha;
 		public VkPresentModeKHR presentMode;
@@ -3620,7 +3879,8 @@ namespace Vortice.Vulkan
 		public VkSwapchainKHR oldSwapchain;
 	}
 
-	public unsafe partial struct VkPresentInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPresentInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPresentInfoKHR"/> type, in bytes.
@@ -3628,16 +3888,17 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint waitSemaphoreCount;
-		public VkSemaphore* pWaitSemaphores;
+		public unsafe VkSemaphore* pWaitSemaphores;
 		public uint swapchainCount;
-		public VkSwapchainKHR* pSwapchains;
-		public uint* pImageIndices;
-		public VkResult* pResults;
+		public unsafe VkSwapchainKHR* pSwapchains;
+		public unsafe uint* pImageIndices;
+		public unsafe VkResult* pResults;
 	}
 
-	public unsafe partial struct VkImageSwapchainCreateInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageSwapchainCreateInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageSwapchainCreateInfoKHR"/> type, in bytes.
@@ -3645,11 +3906,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSwapchainKHR swapchain;
 	}
 
-	public unsafe partial struct VkBindImageMemorySwapchainInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBindImageMemorySwapchainInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBindImageMemorySwapchainInfoKHR"/> type, in bytes.
@@ -3657,12 +3919,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSwapchainKHR swapchain;
 		public uint imageIndex;
 	}
 
-	public unsafe partial struct VkAcquireNextImageInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAcquireNextImageInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAcquireNextImageInfoKHR"/> type, in bytes.
@@ -3670,7 +3933,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSwapchainKHR swapchain;
 		public ulong timeout;
 		public VkSemaphore semaphore;
@@ -3678,7 +3941,8 @@ namespace Vortice.Vulkan
 		public uint deviceMask;
 	}
 
-	public unsafe partial struct VkDeviceGroupPresentCapabilitiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceGroupPresentCapabilitiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceGroupPresentCapabilitiesKHR"/> type, in bytes.
@@ -3686,12 +3950,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 152;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public fixed uint presentMask[32];
+		public unsafe void* pNext;
+		public unsafe fixed uint presentMask[32];
 		public VkDeviceGroupPresentModeFlagsKHR modes;
 	}
 
-	public unsafe partial struct VkDeviceGroupPresentInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceGroupPresentInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceGroupPresentInfoKHR"/> type, in bytes.
@@ -3699,13 +3964,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint swapchainCount;
-		public uint* pDeviceMasks;
+		public unsafe uint* pDeviceMasks;
 		public VkDeviceGroupPresentModeFlagsKHR mode;
 	}
 
-	public unsafe partial struct VkDeviceGroupSwapchainCreateInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceGroupSwapchainCreateInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceGroupSwapchainCreateInfoKHR"/> type, in bytes.
@@ -3713,11 +3979,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDeviceGroupPresentModeFlagsKHR modes;
 	}
 
-	public unsafe partial struct VkDisplayPropertiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayPropertiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayPropertiesKHR"/> type, in bytes.
@@ -3725,7 +3992,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkDisplayKHR display;
-		public byte* displayName;
+		public unsafe byte* displayName;
 		public VkExtent2D physicalDimensions;
 		public VkExtent2D physicalResolution;
 		public VkSurfaceTransformFlagsKHR supportedTransforms;
@@ -3733,7 +4000,8 @@ namespace Vortice.Vulkan
 		public VkBool32 persistentContent;
 	}
 
-	public unsafe partial struct VkDisplayModeParametersKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayModeParametersKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayModeParametersKHR"/> type, in bytes.
@@ -3744,7 +4012,8 @@ namespace Vortice.Vulkan
 		public uint refreshRate;
 	}
 
-	public unsafe partial struct VkDisplayModePropertiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayModePropertiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayModePropertiesKHR"/> type, in bytes.
@@ -3755,7 +4024,8 @@ namespace Vortice.Vulkan
 		public VkDisplayModeParametersKHR parameters;
 	}
 
-	public unsafe partial struct VkDisplayModeCreateInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayModeCreateInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayModeCreateInfoKHR"/> type, in bytes.
@@ -3763,12 +4033,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDisplayModeCreateFlagsKHR flags;
 		public VkDisplayModeParametersKHR parameters;
 	}
 
-	public unsafe partial struct VkDisplayPlaneCapabilitiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayPlaneCapabilitiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayPlaneCapabilitiesKHR"/> type, in bytes.
@@ -3786,7 +4057,8 @@ namespace Vortice.Vulkan
 		public VkExtent2D maxDstExtent;
 	}
 
-	public unsafe partial struct VkDisplayPlanePropertiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayPlanePropertiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayPlanePropertiesKHR"/> type, in bytes.
@@ -3797,7 +4069,8 @@ namespace Vortice.Vulkan
 		public uint currentStackIndex;
 	}
 
-	public unsafe partial struct VkDisplaySurfaceCreateInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplaySurfaceCreateInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplaySurfaceCreateInfoKHR"/> type, in bytes.
@@ -3805,7 +4078,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDisplaySurfaceCreateFlagsKHR flags;
 		public VkDisplayModeKHR displayMode;
 		public uint planeIndex;
@@ -3816,7 +4089,8 @@ namespace Vortice.Vulkan
 		public VkExtent2D imageExtent;
 	}
 
-	public unsafe partial struct VkDisplayPresentInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayPresentInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayPresentInfoKHR"/> type, in bytes.
@@ -3824,13 +4098,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkRect2D srcRect;
 		public VkRect2D dstRect;
 		public VkBool32 persistent;
 	}
 
-	public unsafe partial struct VkImportMemoryFdInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImportMemoryFdInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImportMemoryFdInfoKHR"/> type, in bytes.
@@ -3838,12 +4113,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalMemoryHandleTypeFlags handleType;
 		public int fd;
 	}
 
-	public unsafe partial struct VkMemoryFdPropertiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryFdPropertiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryFdPropertiesKHR"/> type, in bytes.
@@ -3851,11 +4127,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint memoryTypeBits;
 	}
 
-	public unsafe partial struct VkMemoryGetFdInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryGetFdInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryGetFdInfoKHR"/> type, in bytes.
@@ -3863,12 +4140,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDeviceMemory memory;
 		public VkExternalMemoryHandleTypeFlags handleType;
 	}
 
-	public unsafe partial struct VkImportSemaphoreFdInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImportSemaphoreFdInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImportSemaphoreFdInfoKHR"/> type, in bytes.
@@ -3876,14 +4154,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSemaphore semaphore;
 		public VkSemaphoreImportFlags flags;
 		public VkExternalSemaphoreHandleTypeFlags handleType;
 		public int fd;
 	}
 
-	public unsafe partial struct VkSemaphoreGetFdInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSemaphoreGetFdInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSemaphoreGetFdInfoKHR"/> type, in bytes.
@@ -3891,12 +4170,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSemaphore semaphore;
 		public VkExternalSemaphoreHandleTypeFlags handleType;
 	}
 
-	public unsafe partial struct VkPhysicalDevicePushDescriptorPropertiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePushDescriptorPropertiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDevicePushDescriptorPropertiesKHR"/> type, in bytes.
@@ -3904,11 +4184,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxPushDescriptors;
 	}
 
-	public unsafe partial struct VkRectLayerKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRectLayerKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRectLayerKHR"/> type, in bytes.
@@ -3920,7 +4201,8 @@ namespace Vortice.Vulkan
 		public uint layer;
 	}
 
-	public unsafe partial struct VkPresentRegionKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPresentRegionKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPresentRegionKHR"/> type, in bytes.
@@ -3928,10 +4210,11 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 16;
 
 		public uint rectangleCount;
-		public VkRectLayerKHR* pRectangles;
+		public unsafe VkRectLayerKHR* pRectangles;
 	}
 
-	public unsafe partial struct VkPresentRegionsKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPresentRegionsKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPresentRegionsKHR"/> type, in bytes.
@@ -3939,12 +4222,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint swapchainCount;
-		public VkPresentRegionKHR* pRegions;
+		public unsafe VkPresentRegionKHR* pRegions;
 	}
 
-	public unsafe partial struct VkSharedPresentSurfaceCapabilitiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSharedPresentSurfaceCapabilitiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSharedPresentSurfaceCapabilitiesKHR"/> type, in bytes.
@@ -3952,11 +4236,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageUsageFlags sharedPresentSupportedUsageFlags;
 	}
 
-	public unsafe partial struct VkImportFenceFdInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImportFenceFdInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImportFenceFdInfoKHR"/> type, in bytes.
@@ -3964,14 +4249,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkFence fence;
 		public VkFenceImportFlags flags;
 		public VkExternalFenceHandleTypeFlags handleType;
 		public int fd;
 	}
 
-	public unsafe partial struct VkFenceGetFdInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFenceGetFdInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkFenceGetFdInfoKHR"/> type, in bytes.
@@ -3979,12 +4265,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkFence fence;
 		public VkExternalFenceHandleTypeFlags handleType;
 	}
 
-	public unsafe partial struct VkPhysicalDevicePerformanceQueryFeaturesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePerformanceQueryFeaturesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDevicePerformanceQueryFeaturesKHR"/> type, in bytes.
@@ -3992,12 +4279,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 performanceCounterQueryPools;
 		public VkBool32 performanceCounterMultipleQueryPools;
 	}
 
-	public unsafe partial struct VkPhysicalDevicePerformanceQueryPropertiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePerformanceQueryPropertiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDevicePerformanceQueryPropertiesKHR"/> type, in bytes.
@@ -4005,11 +4293,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 allowCommandBufferQueryCopies;
 	}
 
-	public unsafe partial struct VkPerformanceCounterKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPerformanceCounterKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPerformanceCounterKHR"/> type, in bytes.
@@ -4017,14 +4306,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPerformanceCounterUnitKHR unit;
 		public VkPerformanceCounterScopeKHR scope;
 		public VkPerformanceCounterStorageKHR storage;
-		public fixed byte uuid[16];
+		public unsafe fixed byte uuid[16];
 	}
 
-	public unsafe partial struct VkPerformanceCounterDescriptionKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPerformanceCounterDescriptionKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPerformanceCounterDescriptionKHR"/> type, in bytes.
@@ -4032,14 +4322,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 792;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPerformanceCounterDescriptionFlagsKHR flags;
-		public fixed byte name[256];
-		public fixed byte category[256];
-		public fixed byte description[256];
+		public unsafe fixed byte name[256];
+		public unsafe fixed byte category[256];
+		public unsafe fixed byte description[256];
 	}
 
-	public unsafe partial struct VkQueryPoolPerformanceCreateInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkQueryPoolPerformanceCreateInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkQueryPoolPerformanceCreateInfoKHR"/> type, in bytes.
@@ -4047,13 +4338,36 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint queueFamilyIndex;
 		public uint counterIndexCount;
-		public uint* pCounterIndices;
+		public unsafe uint* pCounterIndices;
 	}
 
-	public unsafe partial struct VkAcquireProfilingLockInfoKHR
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct VkPerformanceCounterResultKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkPerformanceCounterResultKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 8;
+
+		[FieldOffset(0)]
+		public int int32;
+		[FieldOffset(0)]
+		public long int64;
+		[FieldOffset(0)]
+		public uint uint32;
+		[FieldOffset(0)]
+		public ulong uint64;
+		[FieldOffset(0)]
+		public float float32;
+		[FieldOffset(0)]
+		public double float64;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAcquireProfilingLockInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAcquireProfilingLockInfoKHR"/> type, in bytes.
@@ -4061,12 +4375,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkAcquireProfilingLockFlagsKHR flags;
 		public ulong timeout;
 	}
 
-	public unsafe partial struct VkPerformanceQuerySubmitInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPerformanceQuerySubmitInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPerformanceQuerySubmitInfoKHR"/> type, in bytes.
@@ -4074,11 +4389,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint counterPassIndex;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceSurfaceInfo2KHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSurfaceInfo2KHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceSurfaceInfo2KHR"/> type, in bytes.
@@ -4086,11 +4402,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSurfaceKHR surface;
 	}
 
-	public unsafe partial struct VkSurfaceCapabilities2KHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSurfaceCapabilities2KHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSurfaceCapabilities2KHR"/> type, in bytes.
@@ -4098,11 +4415,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 72;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSurfaceCapabilitiesKHR surfaceCapabilities;
 	}
 
-	public unsafe partial struct VkSurfaceFormat2KHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSurfaceFormat2KHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSurfaceFormat2KHR"/> type, in bytes.
@@ -4110,11 +4428,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSurfaceFormatKHR surfaceFormat;
 	}
 
-	public unsafe partial struct VkDisplayProperties2KHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayProperties2KHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayProperties2KHR"/> type, in bytes.
@@ -4122,11 +4441,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDisplayPropertiesKHR displayProperties;
 	}
 
-	public unsafe partial struct VkDisplayPlaneProperties2KHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayPlaneProperties2KHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayPlaneProperties2KHR"/> type, in bytes.
@@ -4134,11 +4454,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDisplayPlanePropertiesKHR displayPlaneProperties;
 	}
 
-	public unsafe partial struct VkDisplayModeProperties2KHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayModeProperties2KHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayModeProperties2KHR"/> type, in bytes.
@@ -4146,11 +4467,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDisplayModePropertiesKHR displayModeProperties;
 	}
 
-	public unsafe partial struct VkDisplayPlaneInfo2KHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayPlaneInfo2KHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayPlaneInfo2KHR"/> type, in bytes.
@@ -4158,12 +4480,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDisplayModeKHR mode;
 		public uint planeIndex;
 	}
 
-	public unsafe partial struct VkDisplayPlaneCapabilities2KHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayPlaneCapabilities2KHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayPlaneCapabilities2KHR"/> type, in bytes.
@@ -4171,11 +4494,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 88;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDisplayPlaneCapabilitiesKHR capabilities;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderClockFeaturesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderClockFeaturesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderClockFeaturesKHR"/> type, in bytes.
@@ -4183,12 +4507,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 shaderSubgroupClock;
 		public VkBool32 shaderDeviceClock;
 	}
 
-	public unsafe partial struct VkSurfaceProtectedCapabilitiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSurfaceProtectedCapabilitiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSurfaceProtectedCapabilitiesKHR"/> type, in bytes.
@@ -4196,11 +4521,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 supportsProtected;
 	}
 
-	public unsafe partial struct VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR"/> type, in bytes.
@@ -4208,11 +4534,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 pipelineExecutableInfo;
 	}
 
-	public unsafe partial struct VkPipelineInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineInfoKHR"/> type, in bytes.
@@ -4220,11 +4547,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipeline pipeline;
 	}
 
-	public unsafe partial struct VkPipelineExecutablePropertiesKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineExecutablePropertiesKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineExecutablePropertiesKHR"/> type, in bytes.
@@ -4232,14 +4560,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 536;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkShaderStageFlags stages;
-		public fixed byte name[256];
-		public fixed byte description[256];
+		public unsafe fixed byte name[256];
+		public unsafe fixed byte description[256];
 		public uint subgroupSize;
 	}
 
-	public unsafe partial struct VkPipelineExecutableInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineExecutableInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineExecutableInfoKHR"/> type, in bytes.
@@ -4247,12 +4576,31 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipeline pipeline;
 		public uint executableIndex;
 	}
 
-	public unsafe partial struct VkPipelineExecutableStatisticKHR
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct VkPipelineExecutableStatisticValueKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkPipelineExecutableStatisticValueKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 8;
+
+		[FieldOffset(0)]
+		public VkBool32 b32;
+		[FieldOffset(0)]
+		public long i64;
+		[FieldOffset(0)]
+		public ulong u64;
+		[FieldOffset(0)]
+		public double f64;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineExecutableStatisticKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineExecutableStatisticKHR"/> type, in bytes.
@@ -4260,14 +4608,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 544;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public fixed byte name[256];
-		public fixed byte description[256];
+		public unsafe void* pNext;
+		public unsafe fixed byte name[256];
+		public unsafe fixed byte description[256];
 		public VkPipelineExecutableStatisticFormatKHR format;
 		public VkPipelineExecutableStatisticValueKHR value;
 	}
 
-	public unsafe partial struct VkPipelineExecutableInternalRepresentationKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineExecutableInternalRepresentationKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineExecutableInternalRepresentationKHR"/> type, in bytes.
@@ -4275,15 +4624,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 552;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public fixed byte name[256];
-		public fixed byte description[256];
+		public unsafe void* pNext;
+		public unsafe fixed byte name[256];
+		public unsafe fixed byte description[256];
 		public VkBool32 isText;
-		public UIntPtr dataSize;
-		public void* pData;
+		public VkPointerSize dataSize;
+		public unsafe void* pData;
 	}
 
-	public unsafe partial struct VkDebugReportCallbackCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugReportCallbackCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDebugReportCallbackCreateInfoEXT"/> type, in bytes.
@@ -4291,13 +4641,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDebugReportFlagsEXT flags;
 		public IntPtr pfnCallback;
-		public void* pUserData;
+		public unsafe void* pUserData;
 	}
 
-	public unsafe partial struct VkPipelineRasterizationStateRasterizationOrderAMD
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineRasterizationStateRasterizationOrderAMD
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineRasterizationStateRasterizationOrderAMD"/> type, in bytes.
@@ -4305,11 +4656,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkRasterizationOrderAMD rasterizationOrder;
 	}
 
-	public unsafe partial struct VkDebugMarkerObjectNameInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugMarkerObjectNameInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDebugMarkerObjectNameInfoEXT"/> type, in bytes.
@@ -4317,13 +4669,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDebugReportObjectTypeEXT objectType;
 		public ulong @object;
-		public byte* pObjectName;
+		public unsafe byte* pObjectName;
 	}
 
-	public unsafe partial struct VkDebugMarkerObjectTagInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugMarkerObjectTagInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDebugMarkerObjectTagInfoEXT"/> type, in bytes.
@@ -4331,15 +4684,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDebugReportObjectTypeEXT objectType;
 		public ulong @object;
 		public ulong tagName;
-		public UIntPtr tagSize;
-		public void* pTag;
+		public VkPointerSize tagSize;
+		public unsafe void* pTag;
 	}
 
-	public unsafe partial struct VkDebugMarkerMarkerInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugMarkerMarkerInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDebugMarkerMarkerInfoEXT"/> type, in bytes.
@@ -4347,12 +4701,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public byte* pMarkerName;
-		public fixed float color[4];
+		public unsafe void* pNext;
+		public unsafe byte* pMarkerName;
+		public unsafe fixed float color[4];
 	}
 
-	public unsafe partial struct VkDedicatedAllocationImageCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDedicatedAllocationImageCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDedicatedAllocationImageCreateInfoNV"/> type, in bytes.
@@ -4360,11 +4715,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 dedicatedAllocation;
 	}
 
-	public unsafe partial struct VkDedicatedAllocationBufferCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDedicatedAllocationBufferCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDedicatedAllocationBufferCreateInfoNV"/> type, in bytes.
@@ -4372,11 +4728,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 dedicatedAllocation;
 	}
 
-	public unsafe partial struct VkDedicatedAllocationMemoryAllocateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDedicatedAllocationMemoryAllocateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDedicatedAllocationMemoryAllocateInfoNV"/> type, in bytes.
@@ -4384,12 +4741,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImage image;
 		public VkBuffer buffer;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceTransformFeedbackFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceTransformFeedbackFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceTransformFeedbackFeaturesEXT"/> type, in bytes.
@@ -4397,12 +4755,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 transformFeedback;
 		public VkBool32 geometryStreams;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceTransformFeedbackPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceTransformFeedbackPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceTransformFeedbackPropertiesEXT"/> type, in bytes.
@@ -4410,7 +4769,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxTransformFeedbackStreams;
 		public uint maxTransformFeedbackBuffers;
 		public ulong maxTransformFeedbackBufferSize;
@@ -4423,7 +4782,8 @@ namespace Vortice.Vulkan
 		public VkBool32 transformFeedbackDraw;
 	}
 
-	public unsafe partial struct VkPipelineRasterizationStateStreamCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineRasterizationStateStreamCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineRasterizationStateStreamCreateInfoEXT"/> type, in bytes.
@@ -4431,12 +4791,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineRasterizationStateStreamCreateFlagsEXT flags;
 		public uint rasterizationStream;
 	}
 
-	public unsafe partial struct VkImageViewHandleInfoNVX
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageViewHandleInfoNVX
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageViewHandleInfoNVX"/> type, in bytes.
@@ -4444,13 +4805,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageView imageView;
 		public VkDescriptorType descriptorType;
 		public VkSampler sampler;
 	}
 
-	public unsafe partial struct VkTextureLODGatherFormatPropertiesAMD
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkTextureLODGatherFormatPropertiesAMD
 	{
 		/// <summary>
 		/// The size of the <see cref="VkTextureLODGatherFormatPropertiesAMD"/> type, in bytes.
@@ -4458,11 +4820,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 supportsTextureGatherLODBiasAMD;
 	}
 
-	public unsafe partial struct VkShaderResourceUsageAMD
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkShaderResourceUsageAMD
 	{
 		/// <summary>
 		/// The size of the <see cref="VkShaderResourceUsageAMD"/> type, in bytes.
@@ -4472,11 +4835,12 @@ namespace Vortice.Vulkan
 		public uint numUsedVgprs;
 		public uint numUsedSgprs;
 		public uint ldsSizePerLocalWorkGroup;
-		public UIntPtr ldsUsageSizeInBytes;
-		public UIntPtr scratchMemUsageInBytes;
+		public VkPointerSize ldsUsageSizeInBytes;
+		public VkPointerSize scratchMemUsageInBytes;
 	}
 
-	public unsafe partial struct VkShaderStatisticsInfoAMD
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkShaderStatisticsInfoAMD
 	{
 		/// <summary>
 		/// The size of the <see cref="VkShaderStatisticsInfoAMD"/> type, in bytes.
@@ -4489,10 +4853,11 @@ namespace Vortice.Vulkan
 		public uint numPhysicalSgprs;
 		public uint numAvailableVgprs;
 		public uint numAvailableSgprs;
-		public fixed uint computeWorkGroupSize[3];
+		public unsafe fixed uint computeWorkGroupSize[3];
 	}
 
-	public unsafe partial struct VkPhysicalDeviceCornerSampledImageFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceCornerSampledImageFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceCornerSampledImageFeaturesNV"/> type, in bytes.
@@ -4500,11 +4865,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 cornerSampledImage;
 	}
 
-	public unsafe partial struct VkExternalImageFormatPropertiesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExternalImageFormatPropertiesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExternalImageFormatPropertiesNV"/> type, in bytes.
@@ -4517,7 +4883,8 @@ namespace Vortice.Vulkan
 		public VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes;
 	}
 
-	public unsafe partial struct VkExternalMemoryImageCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExternalMemoryImageCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExternalMemoryImageCreateInfoNV"/> type, in bytes.
@@ -4525,11 +4892,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalMemoryHandleTypeFlagsNV handleTypes;
 	}
 
-	public unsafe partial struct VkExportMemoryAllocateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExportMemoryAllocateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExportMemoryAllocateInfoNV"/> type, in bytes.
@@ -4537,11 +4905,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalMemoryHandleTypeFlagsNV handleTypes;
 	}
 
-	public unsafe partial struct VkValidationFlagsEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkValidationFlagsEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkValidationFlagsEXT"/> type, in bytes.
@@ -4549,12 +4918,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint disabledValidationCheckCount;
-		public VkValidationCheckEXT* pDisabledValidationChecks;
+		public unsafe VkValidationCheckEXT* pDisabledValidationChecks;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT"/> type, in bytes.
@@ -4562,11 +4932,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 textureCompressionASTC_HDR;
 	}
 
-	public unsafe partial struct VkImageViewASTCDecodeModeEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageViewASTCDecodeModeEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageViewASTCDecodeModeEXT"/> type, in bytes.
@@ -4574,11 +4945,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkFormat decodeMode;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceASTCDecodeFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceASTCDecodeFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceASTCDecodeFeaturesEXT"/> type, in bytes.
@@ -4586,11 +4958,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 decodeModeSharedExponent;
 	}
 
-	public unsafe partial struct VkConditionalRenderingBeginInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkConditionalRenderingBeginInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkConditionalRenderingBeginInfoEXT"/> type, in bytes.
@@ -4598,13 +4971,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBuffer buffer;
 		public ulong offset;
 		public VkConditionalRenderingFlagsEXT flags;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceConditionalRenderingFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceConditionalRenderingFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceConditionalRenderingFeaturesEXT"/> type, in bytes.
@@ -4612,12 +4986,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 conditionalRendering;
 		public VkBool32 inheritedConditionalRendering;
 	}
 
-	public unsafe partial struct VkCommandBufferInheritanceConditionalRenderingInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCommandBufferInheritanceConditionalRenderingInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCommandBufferInheritanceConditionalRenderingInfoEXT"/> type, in bytes.
@@ -4625,11 +5000,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 conditionalRenderingEnable;
 	}
 
-	public unsafe partial struct VkViewportWScalingNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkViewportWScalingNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkViewportWScalingNV"/> type, in bytes.
@@ -4640,7 +5016,8 @@ namespace Vortice.Vulkan
 		public float ycoeff;
 	}
 
-	public unsafe partial struct VkPipelineViewportWScalingStateCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineViewportWScalingStateCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineViewportWScalingStateCreateInfoNV"/> type, in bytes.
@@ -4648,13 +5025,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 viewportWScalingEnable;
 		public uint viewportCount;
-		public VkViewportWScalingNV* pViewportWScalings;
+		public unsafe VkViewportWScalingNV* pViewportWScalings;
 	}
 
-	public unsafe partial struct VkSurfaceCapabilities2EXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSurfaceCapabilities2EXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSurfaceCapabilities2EXT"/> type, in bytes.
@@ -4662,7 +5040,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 72;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint minImageCount;
 		public uint maxImageCount;
 		public VkExtent2D currentExtent;
@@ -4676,7 +5054,8 @@ namespace Vortice.Vulkan
 		public VkSurfaceCounterFlagsEXT supportedSurfaceCounters;
 	}
 
-	public unsafe partial struct VkDisplayPowerInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayPowerInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayPowerInfoEXT"/> type, in bytes.
@@ -4684,11 +5063,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDisplayPowerStateEXT powerState;
 	}
 
-	public unsafe partial struct VkDeviceEventInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceEventInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceEventInfoEXT"/> type, in bytes.
@@ -4696,11 +5076,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDeviceEventTypeEXT deviceEvent;
 	}
 
-	public unsafe partial struct VkDisplayEventInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayEventInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayEventInfoEXT"/> type, in bytes.
@@ -4708,11 +5089,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDisplayEventTypeEXT displayEvent;
 	}
 
-	public unsafe partial struct VkSwapchainCounterCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSwapchainCounterCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSwapchainCounterCreateInfoEXT"/> type, in bytes.
@@ -4720,11 +5102,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSurfaceCounterFlagsEXT surfaceCounters;
 	}
 
-	public unsafe partial struct VkRefreshCycleDurationGOOGLE
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRefreshCycleDurationGOOGLE
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRefreshCycleDurationGOOGLE"/> type, in bytes.
@@ -4734,7 +5117,8 @@ namespace Vortice.Vulkan
 		public ulong refreshDuration;
 	}
 
-	public unsafe partial struct VkPastPresentationTimingGOOGLE
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPastPresentationTimingGOOGLE
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPastPresentationTimingGOOGLE"/> type, in bytes.
@@ -4748,7 +5132,8 @@ namespace Vortice.Vulkan
 		public ulong presentMargin;
 	}
 
-	public unsafe partial struct VkPresentTimeGOOGLE
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPresentTimeGOOGLE
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPresentTimeGOOGLE"/> type, in bytes.
@@ -4759,7 +5144,8 @@ namespace Vortice.Vulkan
 		public ulong desiredPresentTime;
 	}
 
-	public unsafe partial struct VkPresentTimesInfoGOOGLE
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPresentTimesInfoGOOGLE
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPresentTimesInfoGOOGLE"/> type, in bytes.
@@ -4767,12 +5153,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint swapchainCount;
-		public VkPresentTimeGOOGLE* pTimes;
+		public unsafe VkPresentTimeGOOGLE* pTimes;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX"/> type, in bytes.
@@ -4780,11 +5167,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 perViewPositionAllComponents;
 	}
 
-	public unsafe partial struct VkViewportSwizzleNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkViewportSwizzleNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkViewportSwizzleNV"/> type, in bytes.
@@ -4797,7 +5185,8 @@ namespace Vortice.Vulkan
 		public VkViewportCoordinateSwizzleNV w;
 	}
 
-	public unsafe partial struct VkPipelineViewportSwizzleStateCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineViewportSwizzleStateCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineViewportSwizzleStateCreateInfoNV"/> type, in bytes.
@@ -4805,13 +5194,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineViewportSwizzleStateCreateFlagsNV flags;
 		public uint viewportCount;
-		public VkViewportSwizzleNV* pViewportSwizzles;
+		public unsafe VkViewportSwizzleNV* pViewportSwizzles;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceDiscardRectanglePropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDiscardRectanglePropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceDiscardRectanglePropertiesEXT"/> type, in bytes.
@@ -4819,11 +5209,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxDiscardRectangles;
 	}
 
-	public unsafe partial struct VkPipelineDiscardRectangleStateCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineDiscardRectangleStateCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineDiscardRectangleStateCreateInfoEXT"/> type, in bytes.
@@ -4831,14 +5222,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineDiscardRectangleStateCreateFlagsEXT flags;
 		public VkDiscardRectangleModeEXT discardRectangleMode;
 		public uint discardRectangleCount;
-		public VkRect2D* pDiscardRectangles;
+		public unsafe VkRect2D* pDiscardRectangles;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceConservativeRasterizationPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceConservativeRasterizationPropertiesEXT"/> type, in bytes.
@@ -4846,7 +5238,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public float primitiveOverestimationSize;
 		public float maxExtraPrimitiveOverestimationSize;
 		public float extraPrimitiveOverestimationSizeGranularity;
@@ -4858,7 +5250,8 @@ namespace Vortice.Vulkan
 		public VkBool32 conservativeRasterizationPostDepthCoverage;
 	}
 
-	public unsafe partial struct VkPipelineRasterizationConservativeStateCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineRasterizationConservativeStateCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineRasterizationConservativeStateCreateInfoEXT"/> type, in bytes.
@@ -4866,13 +5259,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineRasterizationConservativeStateCreateFlagsEXT flags;
 		public VkConservativeRasterizationModeEXT conservativeRasterizationMode;
 		public float extraPrimitiveOverestimationSize;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceDepthClipEnableFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDepthClipEnableFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceDepthClipEnableFeaturesEXT"/> type, in bytes.
@@ -4880,11 +5274,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 depthClipEnable;
 	}
 
-	public unsafe partial struct VkPipelineRasterizationDepthClipStateCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineRasterizationDepthClipStateCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineRasterizationDepthClipStateCreateInfoEXT"/> type, in bytes.
@@ -4892,12 +5287,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags;
 		public VkBool32 depthClipEnable;
 	}
 
-	public unsafe partial struct VkXYColorEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkXYColorEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkXYColorEXT"/> type, in bytes.
@@ -4908,7 +5304,8 @@ namespace Vortice.Vulkan
 		public float y;
 	}
 
-	public unsafe partial struct VkHdrMetadataEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkHdrMetadataEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkHdrMetadataEXT"/> type, in bytes.
@@ -4916,7 +5313,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkXYColorEXT displayPrimaryRed;
 		public VkXYColorEXT displayPrimaryGreen;
 		public VkXYColorEXT displayPrimaryBlue;
@@ -4927,7 +5324,8 @@ namespace Vortice.Vulkan
 		public float maxFrameAverageLightLevel;
 	}
 
-	public unsafe partial struct VkDebugUtilsObjectNameInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugUtilsObjectNameInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDebugUtilsObjectNameInfoEXT"/> type, in bytes.
@@ -4935,13 +5333,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkObjectType objectType;
 		public ulong objectHandle;
-		public byte* pObjectName;
+		public unsafe byte* pObjectName;
 	}
 
-	public unsafe partial struct VkDebugUtilsObjectTagInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugUtilsObjectTagInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDebugUtilsObjectTagInfoEXT"/> type, in bytes.
@@ -4949,15 +5348,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkObjectType objectType;
 		public ulong objectHandle;
 		public ulong tagName;
-		public UIntPtr tagSize;
-		public void* pTag;
+		public VkPointerSize tagSize;
+		public unsafe void* pTag;
 	}
 
-	public unsafe partial struct VkDebugUtilsLabelEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugUtilsLabelEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDebugUtilsLabelEXT"/> type, in bytes.
@@ -4965,12 +5365,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public byte* pLabelName;
-		public fixed float color[4];
+		public unsafe void* pNext;
+		public unsafe byte* pLabelName;
+		public unsafe fixed float color[4];
 	}
 
-	public unsafe partial struct VkDebugUtilsMessengerCallbackDataEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugUtilsMessengerCallbackDataEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDebugUtilsMessengerCallbackDataEXT"/> type, in bytes.
@@ -4978,20 +5379,21 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 96;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDebugUtilsMessengerCallbackDataFlagsEXT flags;
-		public byte* pMessageIdName;
+		public unsafe byte* pMessageIdName;
 		public int messageIdNumber;
-		public byte* pMessage;
+		public unsafe byte* pMessage;
 		public uint queueLabelCount;
-		public VkDebugUtilsLabelEXT* pQueueLabels;
+		public unsafe VkDebugUtilsLabelEXT* pQueueLabels;
 		public uint cmdBufLabelCount;
-		public VkDebugUtilsLabelEXT* pCmdBufLabels;
+		public unsafe VkDebugUtilsLabelEXT* pCmdBufLabels;
 		public uint objectCount;
-		public VkDebugUtilsObjectNameInfoEXT* pObjects;
+		public unsafe VkDebugUtilsObjectNameInfoEXT* pObjects;
 	}
 
-	public unsafe partial struct VkDebugUtilsMessengerCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugUtilsMessengerCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDebugUtilsMessengerCreateInfoEXT"/> type, in bytes.
@@ -4999,15 +5401,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDebugUtilsMessengerCreateFlagsEXT flags;
 		public VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
 		public VkDebugUtilsMessageTypeFlagsEXT messageType;
 		public IntPtr pfnUserCallback;
-		public void* pUserData;
+		public unsafe void* pUserData;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceInlineUniformBlockFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceInlineUniformBlockFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceInlineUniformBlockFeaturesEXT"/> type, in bytes.
@@ -5015,12 +5418,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 inlineUniformBlock;
 		public VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceInlineUniformBlockPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceInlineUniformBlockPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceInlineUniformBlockPropertiesEXT"/> type, in bytes.
@@ -5028,7 +5432,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxInlineUniformBlockSize;
 		public uint maxPerStageDescriptorInlineUniformBlocks;
 		public uint maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks;
@@ -5036,7 +5440,8 @@ namespace Vortice.Vulkan
 		public uint maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
 	}
 
-	public unsafe partial struct VkWriteDescriptorSetInlineUniformBlockEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkWriteDescriptorSetInlineUniformBlockEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkWriteDescriptorSetInlineUniformBlockEXT"/> type, in bytes.
@@ -5044,12 +5449,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint dataSize;
-		public void* pData;
+		public unsafe void* pData;
 	}
 
-	public unsafe partial struct VkDescriptorPoolInlineUniformBlockCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorPoolInlineUniformBlockCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDescriptorPoolInlineUniformBlockCreateInfoEXT"/> type, in bytes.
@@ -5057,11 +5463,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxInlineUniformBlockBindings;
 	}
 
-	public unsafe partial struct VkSampleLocationEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSampleLocationEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSampleLocationEXT"/> type, in bytes.
@@ -5072,7 +5479,8 @@ namespace Vortice.Vulkan
 		public float y;
 	}
 
-	public unsafe partial struct VkSampleLocationsInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSampleLocationsInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSampleLocationsInfoEXT"/> type, in bytes.
@@ -5080,14 +5488,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSampleCountFlags sampleLocationsPerPixel;
 		public VkExtent2D sampleLocationGridSize;
 		public uint sampleLocationsCount;
-		public VkSampleLocationEXT* pSampleLocations;
+		public unsafe VkSampleLocationEXT* pSampleLocations;
 	}
 
-	public unsafe partial struct VkAttachmentSampleLocationsEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAttachmentSampleLocationsEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAttachmentSampleLocationsEXT"/> type, in bytes.
@@ -5098,7 +5507,8 @@ namespace Vortice.Vulkan
 		public VkSampleLocationsInfoEXT sampleLocationsInfo;
 	}
 
-	public unsafe partial struct VkSubpassSampleLocationsEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubpassSampleLocationsEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSubpassSampleLocationsEXT"/> type, in bytes.
@@ -5109,7 +5519,8 @@ namespace Vortice.Vulkan
 		public VkSampleLocationsInfoEXT sampleLocationsInfo;
 	}
 
-	public unsafe partial struct VkRenderPassSampleLocationsBeginInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderPassSampleLocationsBeginInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRenderPassSampleLocationsBeginInfoEXT"/> type, in bytes.
@@ -5117,14 +5528,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint attachmentInitialSampleLocationsCount;
-		public VkAttachmentSampleLocationsEXT* pAttachmentInitialSampleLocations;
+		public unsafe VkAttachmentSampleLocationsEXT* pAttachmentInitialSampleLocations;
 		public uint postSubpassSampleLocationsCount;
-		public VkSubpassSampleLocationsEXT* pPostSubpassSampleLocations;
+		public unsafe VkSubpassSampleLocationsEXT* pPostSubpassSampleLocations;
 	}
 
-	public unsafe partial struct VkPipelineSampleLocationsStateCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineSampleLocationsStateCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineSampleLocationsStateCreateInfoEXT"/> type, in bytes.
@@ -5132,12 +5544,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 sampleLocationsEnable;
 		public VkSampleLocationsInfoEXT sampleLocationsInfo;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceSampleLocationsPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSampleLocationsPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceSampleLocationsPropertiesEXT"/> type, in bytes.
@@ -5145,15 +5558,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSampleCountFlags sampleLocationSampleCounts;
 		public VkExtent2D maxSampleLocationGridSize;
-		public fixed float sampleLocationCoordinateRange[2];
+		public unsafe fixed float sampleLocationCoordinateRange[2];
 		public uint sampleLocationSubPixelBits;
 		public VkBool32 variableSampleLocations;
 	}
 
-	public unsafe partial struct VkMultisamplePropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMultisamplePropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMultisamplePropertiesEXT"/> type, in bytes.
@@ -5161,11 +5575,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExtent2D maxSampleLocationGridSize;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT"/> type, in bytes.
@@ -5173,11 +5588,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 advancedBlendCoherentOperations;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT"/> type, in bytes.
@@ -5185,7 +5601,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint advancedBlendMaxColorAttachments;
 		public VkBool32 advancedBlendIndependentBlend;
 		public VkBool32 advancedBlendNonPremultipliedSrcColor;
@@ -5194,7 +5610,8 @@ namespace Vortice.Vulkan
 		public VkBool32 advancedBlendAllOperations;
 	}
 
-	public unsafe partial struct VkPipelineColorBlendAdvancedStateCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineColorBlendAdvancedStateCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineColorBlendAdvancedStateCreateInfoEXT"/> type, in bytes.
@@ -5202,13 +5619,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 srcPremultiplied;
 		public VkBool32 dstPremultiplied;
 		public VkBlendOverlapEXT blendOverlap;
 	}
 
-	public unsafe partial struct VkPipelineCoverageToColorStateCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineCoverageToColorStateCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineCoverageToColorStateCreateInfoNV"/> type, in bytes.
@@ -5216,13 +5634,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineCoverageToColorStateCreateFlagsNV flags;
 		public VkBool32 coverageToColorEnable;
 		public uint coverageToColorLocation;
 	}
 
-	public unsafe partial struct VkPipelineCoverageModulationStateCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineCoverageModulationStateCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineCoverageModulationStateCreateInfoNV"/> type, in bytes.
@@ -5230,15 +5649,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineCoverageModulationStateCreateFlagsNV flags;
 		public VkCoverageModulationModeNV coverageModulationMode;
 		public VkBool32 coverageModulationTableEnable;
 		public uint coverageModulationTableCount;
-		public float* pCoverageModulationTable;
+		public unsafe float* pCoverageModulationTable;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderSMBuiltinsPropertiesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderSMBuiltinsPropertiesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderSMBuiltinsPropertiesNV"/> type, in bytes.
@@ -5246,12 +5666,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint shaderSMCount;
 		public uint shaderWarpsPerSM;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderSMBuiltinsFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderSMBuiltinsFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderSMBuiltinsFeaturesNV"/> type, in bytes.
@@ -5259,11 +5680,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 shaderSMBuiltins;
 	}
 
-	public unsafe partial struct VkDrmFormatModifierPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDrmFormatModifierPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDrmFormatModifierPropertiesEXT"/> type, in bytes.
@@ -5275,7 +5697,8 @@ namespace Vortice.Vulkan
 		public VkFormatFeatureFlags drmFormatModifierTilingFeatures;
 	}
 
-	public unsafe partial struct VkDrmFormatModifierPropertiesListEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDrmFormatModifierPropertiesListEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDrmFormatModifierPropertiesListEXT"/> type, in bytes.
@@ -5283,12 +5706,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint drmFormatModifierCount;
-		public VkDrmFormatModifierPropertiesEXT* pDrmFormatModifierProperties;
+		public unsafe VkDrmFormatModifierPropertiesEXT* pDrmFormatModifierProperties;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceImageDrmFormatModifierInfoEXT"/> type, in bytes.
@@ -5296,14 +5720,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong drmFormatModifier;
 		public VkSharingMode sharingMode;
 		public uint queueFamilyIndexCount;
-		public uint* pQueueFamilyIndices;
+		public unsafe uint* pQueueFamilyIndices;
 	}
 
-	public unsafe partial struct VkImageDrmFormatModifierListCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageDrmFormatModifierListCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageDrmFormatModifierListCreateInfoEXT"/> type, in bytes.
@@ -5311,12 +5736,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint drmFormatModifierCount;
-		public ulong* pDrmFormatModifiers;
+		public unsafe ulong* pDrmFormatModifiers;
 	}
 
-	public unsafe partial struct VkImageDrmFormatModifierExplicitCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageDrmFormatModifierExplicitCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageDrmFormatModifierExplicitCreateInfoEXT"/> type, in bytes.
@@ -5324,13 +5750,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong drmFormatModifier;
 		public uint drmFormatModifierPlaneCount;
-		public VkSubresourceLayout* pPlaneLayouts;
+		public unsafe VkSubresourceLayout* pPlaneLayouts;
 	}
 
-	public unsafe partial struct VkImageDrmFormatModifierPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageDrmFormatModifierPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImageDrmFormatModifierPropertiesEXT"/> type, in bytes.
@@ -5338,11 +5765,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong drmFormatModifier;
 	}
 
-	public unsafe partial struct VkValidationCacheCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkValidationCacheCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkValidationCacheCreateInfoEXT"/> type, in bytes.
@@ -5350,13 +5778,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkValidationCacheCreateFlagsEXT flags;
-		public UIntPtr initialDataSize;
-		public void* pInitialData;
+		public VkPointerSize initialDataSize;
+		public unsafe void* pInitialData;
 	}
 
-	public unsafe partial struct VkShaderModuleValidationCacheCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkShaderModuleValidationCacheCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkShaderModuleValidationCacheCreateInfoEXT"/> type, in bytes.
@@ -5364,11 +5793,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkValidationCacheEXT validationCache;
 	}
 
-	public unsafe partial struct VkShadingRatePaletteNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkShadingRatePaletteNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkShadingRatePaletteNV"/> type, in bytes.
@@ -5376,10 +5806,11 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 16;
 
 		public uint shadingRatePaletteEntryCount;
-		public VkShadingRatePaletteEntryNV* pShadingRatePaletteEntries;
+		public unsafe VkShadingRatePaletteEntryNV* pShadingRatePaletteEntries;
 	}
 
-	public unsafe partial struct VkPipelineViewportShadingRateImageStateCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineViewportShadingRateImageStateCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineViewportShadingRateImageStateCreateInfoNV"/> type, in bytes.
@@ -5387,13 +5818,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 shadingRateImageEnable;
 		public uint viewportCount;
-		public VkShadingRatePaletteNV* pShadingRatePalettes;
+		public unsafe VkShadingRatePaletteNV* pShadingRatePalettes;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShadingRateImageFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShadingRateImageFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShadingRateImageFeaturesNV"/> type, in bytes.
@@ -5401,12 +5833,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 shadingRateImage;
 		public VkBool32 shadingRateCoarseSampleOrder;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShadingRateImagePropertiesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShadingRateImagePropertiesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShadingRateImagePropertiesNV"/> type, in bytes.
@@ -5414,13 +5847,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExtent2D shadingRateTexelSize;
 		public uint shadingRatePaletteSize;
 		public uint shadingRateMaxCoarseSamples;
 	}
 
-	public unsafe partial struct VkCoarseSampleLocationNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCoarseSampleLocationNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCoarseSampleLocationNV"/> type, in bytes.
@@ -5432,7 +5866,8 @@ namespace Vortice.Vulkan
 		public uint sample;
 	}
 
-	public unsafe partial struct VkCoarseSampleOrderCustomNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCoarseSampleOrderCustomNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCoarseSampleOrderCustomNV"/> type, in bytes.
@@ -5442,10 +5877,11 @@ namespace Vortice.Vulkan
 		public VkShadingRatePaletteEntryNV shadingRate;
 		public uint sampleCount;
 		public uint sampleLocationCount;
-		public VkCoarseSampleLocationNV* pSampleLocations;
+		public unsafe VkCoarseSampleLocationNV* pSampleLocations;
 	}
 
-	public unsafe partial struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineViewportCoarseSampleOrderStateCreateInfoNV"/> type, in bytes.
@@ -5453,13 +5889,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkCoarseSampleOrderTypeNV sampleOrderType;
 		public uint customSampleOrderCount;
-		public VkCoarseSampleOrderCustomNV* pCustomSampleOrders;
+		public unsafe VkCoarseSampleOrderCustomNV* pCustomSampleOrders;
 	}
 
-	public unsafe partial struct VkRayTracingShaderGroupCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRayTracingShaderGroupCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRayTracingShaderGroupCreateInfoNV"/> type, in bytes.
@@ -5467,7 +5904,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkRayTracingShaderGroupTypeKHR type;
 		public uint generalShader;
 		public uint closestHitShader;
@@ -5475,7 +5912,8 @@ namespace Vortice.Vulkan
 		public uint intersectionShader;
 	}
 
-	public unsafe partial struct VkRayTracingPipelineCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRayTracingPipelineCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRayTracingPipelineCreateInfoNV"/> type, in bytes.
@@ -5483,19 +5921,20 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 80;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineCreateFlags flags;
 		public uint stageCount;
-		public VkPipelineShaderStageCreateInfo* pStages;
+		public unsafe VkPipelineShaderStageCreateInfo* pStages;
 		public uint groupCount;
-		public VkRayTracingShaderGroupCreateInfoNV* pGroups;
+		public unsafe VkRayTracingShaderGroupCreateInfoNV* pGroups;
 		public uint maxRecursionDepth;
 		public VkPipelineLayout layout;
 		public VkPipeline basePipelineHandle;
 		public int basePipelineIndex;
 	}
 
-	public unsafe partial struct VkGeometryTrianglesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkGeometryTrianglesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkGeometryTrianglesNV"/> type, in bytes.
@@ -5503,7 +5942,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 96;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBuffer vertexData;
 		public ulong vertexOffset;
 		public uint vertexCount;
@@ -5517,7 +5956,8 @@ namespace Vortice.Vulkan
 		public ulong transformOffset;
 	}
 
-	public unsafe partial struct VkGeometryAABBNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkGeometryAABBNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkGeometryAABBNV"/> type, in bytes.
@@ -5525,14 +5965,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBuffer aabbData;
 		public uint numAABBs;
 		public uint stride;
 		public ulong offset;
 	}
 
-	public unsafe partial struct VkGeometryDataNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkGeometryDataNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkGeometryDataNV"/> type, in bytes.
@@ -5543,7 +5984,8 @@ namespace Vortice.Vulkan
 		public VkGeometryAABBNV aabbs;
 	}
 
-	public unsafe partial struct VkGeometryNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkGeometryNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkGeometryNV"/> type, in bytes.
@@ -5551,13 +5993,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 168;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkGeometryTypeKHR geometryType;
 		public VkGeometryDataNV geometry;
 		public VkGeometryFlagsKHR flags;
 	}
 
-	public unsafe partial struct VkAccelerationStructureInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAccelerationStructureInfoNV"/> type, in bytes.
@@ -5565,15 +6008,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkAccelerationStructureTypeKHR type;
 		public VkBuildAccelerationStructureFlagsNV flags;
 		public uint instanceCount;
 		public uint geometryCount;
-		public VkGeometryNV* pGeometries;
+		public unsafe VkGeometryNV* pGeometries;
 	}
 
-	public unsafe partial struct VkAccelerationStructureCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAccelerationStructureCreateInfoNV"/> type, in bytes.
@@ -5581,12 +6025,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong compactedSize;
 		public VkAccelerationStructureInfoNV info;
 	}
 
-	public unsafe partial struct VkBindAccelerationStructureMemoryInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBindAccelerationStructureMemoryInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBindAccelerationStructureMemoryInfoKHR"/> type, in bytes.
@@ -5594,15 +6039,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkAccelerationStructureKHR accelerationStructure;
 		public VkDeviceMemory memory;
 		public ulong memoryOffset;
 		public uint deviceIndexCount;
-		public uint* pDeviceIndices;
+		public unsafe uint* pDeviceIndices;
 	}
 
-	public unsafe partial struct VkWriteDescriptorSetAccelerationStructureKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkWriteDescriptorSetAccelerationStructureKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkWriteDescriptorSetAccelerationStructureKHR"/> type, in bytes.
@@ -5610,12 +6056,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint accelerationStructureCount;
-		public VkAccelerationStructureKHR* pAccelerationStructures;
+		public unsafe VkAccelerationStructureKHR* pAccelerationStructures;
 	}
 
-	public unsafe partial struct VkAccelerationStructureMemoryRequirementsInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureMemoryRequirementsInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAccelerationStructureMemoryRequirementsInfoNV"/> type, in bytes.
@@ -5623,12 +6070,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkAccelerationStructureMemoryRequirementsTypeKHR type;
 		public VkAccelerationStructureKHR accelerationStructure;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceRayTracingPropertiesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceRayTracingPropertiesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceRayTracingPropertiesNV"/> type, in bytes.
@@ -5636,7 +6084,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 64;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint shaderGroupHandleSize;
 		public uint maxRecursionDepth;
 		public uint maxShaderGroupStride;
@@ -5647,7 +6095,8 @@ namespace Vortice.Vulkan
 		public uint maxDescriptorSetAccelerationStructures;
 	}
 
-	public unsafe partial struct VkTransformMatrixKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkTransformMatrixKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkTransformMatrixKHR"/> type, in bytes.
@@ -5659,7 +6108,8 @@ namespace Vortice.Vulkan
 		public float matrix_2;
 	}
 
-	public unsafe partial struct VkAabbPositionsKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAabbPositionsKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAabbPositionsKHR"/> type, in bytes.
@@ -5674,7 +6124,8 @@ namespace Vortice.Vulkan
 		public float maxZ;
 	}
 
-	public unsafe partial struct VkAccelerationStructureInstanceKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureInstanceKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAccelerationStructureInstanceKHR"/> type, in bytes.
@@ -5689,7 +6140,8 @@ namespace Vortice.Vulkan
 		public ulong accelerationStructureReference;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV"/> type, in bytes.
@@ -5697,11 +6149,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 representativeFragmentTest;
 	}
 
-	public unsafe partial struct VkPipelineRepresentativeFragmentTestStateCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineRepresentativeFragmentTestStateCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineRepresentativeFragmentTestStateCreateInfoNV"/> type, in bytes.
@@ -5709,11 +6162,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 representativeFragmentTestEnable;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceImageViewImageFormatInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceImageViewImageFormatInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceImageViewImageFormatInfoEXT"/> type, in bytes.
@@ -5721,11 +6175,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkImageViewType imageViewType;
 	}
 
-	public unsafe partial struct VkFilterCubicImageViewImageFormatPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFilterCubicImageViewImageFormatPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkFilterCubicImageViewImageFormatPropertiesEXT"/> type, in bytes.
@@ -5733,12 +6188,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 filterCubic;
 		public VkBool32 filterCubicMinmax;
 	}
 
-	public unsafe partial struct VkDeviceQueueGlobalPriorityCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceQueueGlobalPriorityCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceQueueGlobalPriorityCreateInfoEXT"/> type, in bytes.
@@ -5746,11 +6202,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkQueueGlobalPriorityEXT globalPriority;
 	}
 
-	public unsafe partial struct VkImportMemoryHostPointerInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImportMemoryHostPointerInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImportMemoryHostPointerInfoEXT"/> type, in bytes.
@@ -5758,12 +6215,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExternalMemoryHandleTypeFlags handleType;
-		public void* pHostPointer;
+		public unsafe void* pHostPointer;
 	}
 
-	public unsafe partial struct VkMemoryHostPointerPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryHostPointerPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryHostPointerPropertiesEXT"/> type, in bytes.
@@ -5771,11 +6229,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint memoryTypeBits;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceExternalMemoryHostPropertiesEXT"/> type, in bytes.
@@ -5783,11 +6242,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong minImportedHostPointerAlignment;
 	}
 
-	public unsafe partial struct VkPipelineCompilerControlCreateInfoAMD
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineCompilerControlCreateInfoAMD
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineCompilerControlCreateInfoAMD"/> type, in bytes.
@@ -5795,11 +6255,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineCompilerControlFlagsAMD compilerControlFlags;
 	}
 
-	public unsafe partial struct VkCalibratedTimestampInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCalibratedTimestampInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCalibratedTimestampInfoEXT"/> type, in bytes.
@@ -5807,11 +6268,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkTimeDomainEXT timeDomain;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderCorePropertiesAMD
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderCorePropertiesAMD
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderCorePropertiesAMD"/> type, in bytes.
@@ -5819,7 +6281,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 72;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint shaderEngineCount;
 		public uint shaderArraysPerEngineCount;
 		public uint computeUnitsPerShaderArray;
@@ -5836,7 +6298,8 @@ namespace Vortice.Vulkan
 		public uint vgprAllocationGranularity;
 	}
 
-	public unsafe partial struct VkDeviceMemoryOverallocationCreateInfoAMD
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceMemoryOverallocationCreateInfoAMD
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceMemoryOverallocationCreateInfoAMD"/> type, in bytes.
@@ -5844,11 +6307,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkMemoryOverallocationBehaviorAMD overallocationBehavior;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT"/> type, in bytes.
@@ -5856,11 +6320,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxVertexAttribDivisor;
 	}
 
-	public unsafe partial struct VkVertexInputBindingDivisorDescriptionEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVertexInputBindingDivisorDescriptionEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkVertexInputBindingDivisorDescriptionEXT"/> type, in bytes.
@@ -5871,7 +6336,8 @@ namespace Vortice.Vulkan
 		public uint divisor;
 	}
 
-	public unsafe partial struct VkPipelineVertexInputDivisorStateCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineVertexInputDivisorStateCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineVertexInputDivisorStateCreateInfoEXT"/> type, in bytes.
@@ -5879,12 +6345,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint vertexBindingDivisorCount;
-		public VkVertexInputBindingDivisorDescriptionEXT* pVertexBindingDivisors;
+		public unsafe VkVertexInputBindingDivisorDescriptionEXT* pVertexBindingDivisors;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT"/> type, in bytes.
@@ -5892,12 +6359,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 vertexAttributeInstanceRateDivisor;
 		public VkBool32 vertexAttributeInstanceRateZeroDivisor;
 	}
 
-	public unsafe partial struct VkPipelineCreationFeedbackEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineCreationFeedbackEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineCreationFeedbackEXT"/> type, in bytes.
@@ -5908,7 +6376,8 @@ namespace Vortice.Vulkan
 		public ulong duration;
 	}
 
-	public unsafe partial struct VkPipelineCreationFeedbackCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineCreationFeedbackCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineCreationFeedbackCreateInfoEXT"/> type, in bytes.
@@ -5916,13 +6385,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public VkPipelineCreationFeedbackEXT* pPipelineCreationFeedback;
+		public unsafe void* pNext;
+		public unsafe VkPipelineCreationFeedbackEXT* pPipelineCreationFeedback;
 		public uint pipelineStageCreationFeedbackCount;
-		public VkPipelineCreationFeedbackEXT* pPipelineStageCreationFeedbacks;
+		public unsafe VkPipelineCreationFeedbackEXT* pPipelineStageCreationFeedbacks;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceComputeShaderDerivativesFeaturesNV"/> type, in bytes.
@@ -5930,12 +6400,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 computeDerivativeGroupQuads;
 		public VkBool32 computeDerivativeGroupLinear;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceMeshShaderFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMeshShaderFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceMeshShaderFeaturesNV"/> type, in bytes.
@@ -5943,12 +6414,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 taskShader;
 		public VkBool32 meshShader;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceMeshShaderPropertiesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMeshShaderPropertiesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceMeshShaderPropertiesNV"/> type, in bytes.
@@ -5956,14 +6428,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 88;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxDrawMeshTasksCount;
 		public uint maxTaskWorkGroupInvocations;
-		public fixed uint maxTaskWorkGroupSize[3];
+		public unsafe fixed uint maxTaskWorkGroupSize[3];
 		public uint maxTaskTotalMemorySize;
 		public uint maxTaskOutputCount;
 		public uint maxMeshWorkGroupInvocations;
-		public fixed uint maxMeshWorkGroupSize[3];
+		public unsafe fixed uint maxMeshWorkGroupSize[3];
 		public uint maxMeshTotalMemorySize;
 		public uint maxMeshOutputVertices;
 		public uint maxMeshOutputPrimitives;
@@ -5972,7 +6444,8 @@ namespace Vortice.Vulkan
 		public uint meshOutputPerPrimitiveGranularity;
 	}
 
-	public unsafe partial struct VkDrawMeshTasksIndirectCommandNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDrawMeshTasksIndirectCommandNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDrawMeshTasksIndirectCommandNV"/> type, in bytes.
@@ -5983,7 +6456,8 @@ namespace Vortice.Vulkan
 		public uint firstTask;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV"/> type, in bytes.
@@ -5991,11 +6465,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 fragmentShaderBarycentric;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderImageFootprintFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderImageFootprintFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderImageFootprintFeaturesNV"/> type, in bytes.
@@ -6003,11 +6478,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 imageFootprint;
 	}
 
-	public unsafe partial struct VkPipelineViewportExclusiveScissorStateCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineViewportExclusiveScissorStateCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineViewportExclusiveScissorStateCreateInfoNV"/> type, in bytes.
@@ -6015,12 +6491,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint exclusiveScissorCount;
-		public VkRect2D* pExclusiveScissors;
+		public unsafe VkRect2D* pExclusiveScissors;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceExclusiveScissorFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceExclusiveScissorFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceExclusiveScissorFeaturesNV"/> type, in bytes.
@@ -6028,11 +6505,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 exclusiveScissor;
 	}
 
-	public unsafe partial struct VkQueueFamilyCheckpointPropertiesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkQueueFamilyCheckpointPropertiesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkQueueFamilyCheckpointPropertiesNV"/> type, in bytes.
@@ -6040,11 +6518,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineStageFlags checkpointExecutionStageMask;
 	}
 
-	public unsafe partial struct VkCheckpointDataNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCheckpointDataNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCheckpointDataNV"/> type, in bytes.
@@ -6052,12 +6531,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineStageFlags stage;
-		public void* pCheckpointMarker;
+		public unsafe void* pCheckpointMarker;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL"/> type, in bytes.
@@ -6065,11 +6545,32 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 shaderIntegerFunctions2;
 	}
 
-	public unsafe partial struct VkPerformanceValueINTEL
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct VkPerformanceValueDataINTEL
+	{
+		/// <summary>
+		/// The size of the <see cref="VkPerformanceValueDataINTEL"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 8;
+
+		[FieldOffset(0)]
+		public uint value32;
+		[FieldOffset(0)]
+		public ulong value64;
+		[FieldOffset(0)]
+		public float valueFloat;
+		[FieldOffset(0)]
+		public VkBool32 valueBool;
+		[FieldOffset(0)]
+		public unsafe byte* valueString;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPerformanceValueINTEL
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPerformanceValueINTEL"/> type, in bytes.
@@ -6080,7 +6581,8 @@ namespace Vortice.Vulkan
 		public VkPerformanceValueDataINTEL data;
 	}
 
-	public unsafe partial struct VkInitializePerformanceApiInfoINTEL
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkInitializePerformanceApiInfoINTEL
 	{
 		/// <summary>
 		/// The size of the <see cref="VkInitializePerformanceApiInfoINTEL"/> type, in bytes.
@@ -6088,11 +6590,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public void* pUserData;
+		public unsafe void* pNext;
+		public unsafe void* pUserData;
 	}
 
-	public unsafe partial struct VkQueryPoolPerformanceQueryCreateInfoINTEL
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkQueryPoolPerformanceQueryCreateInfoINTEL
 	{
 		/// <summary>
 		/// The size of the <see cref="VkQueryPoolPerformanceQueryCreateInfoINTEL"/> type, in bytes.
@@ -6100,11 +6603,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkQueryPoolSamplingModeINTEL performanceCountersSampling;
 	}
 
-	public unsafe partial struct VkPerformanceMarkerInfoINTEL
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPerformanceMarkerInfoINTEL
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPerformanceMarkerInfoINTEL"/> type, in bytes.
@@ -6112,11 +6616,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong marker;
 	}
 
-	public unsafe partial struct VkPerformanceStreamMarkerInfoINTEL
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPerformanceStreamMarkerInfoINTEL
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPerformanceStreamMarkerInfoINTEL"/> type, in bytes.
@@ -6124,11 +6629,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint marker;
 	}
 
-	public unsafe partial struct VkPerformanceOverrideInfoINTEL
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPerformanceOverrideInfoINTEL
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPerformanceOverrideInfoINTEL"/> type, in bytes.
@@ -6136,13 +6642,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPerformanceOverrideTypeINTEL type;
 		public VkBool32 enable;
 		public ulong parameter;
 	}
 
-	public unsafe partial struct VkPerformanceConfigurationAcquireInfoINTEL
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPerformanceConfigurationAcquireInfoINTEL
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPerformanceConfigurationAcquireInfoINTEL"/> type, in bytes.
@@ -6150,11 +6657,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPerformanceConfigurationTypeINTEL type;
 	}
 
-	public unsafe partial struct VkPhysicalDevicePCIBusInfoPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePCIBusInfoPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDevicePCIBusInfoPropertiesEXT"/> type, in bytes.
@@ -6162,14 +6670,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint pciDomain;
 		public uint pciBus;
 		public uint pciDevice;
 		public uint pciFunction;
 	}
 
-	public unsafe partial struct VkDisplayNativeHdrSurfaceCapabilitiesAMD
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayNativeHdrSurfaceCapabilitiesAMD
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDisplayNativeHdrSurfaceCapabilitiesAMD"/> type, in bytes.
@@ -6177,11 +6686,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 localDimmingSupport;
 	}
 
-	public unsafe partial struct VkSwapchainDisplayNativeHdrCreateInfoAMD
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSwapchainDisplayNativeHdrCreateInfoAMD
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSwapchainDisplayNativeHdrCreateInfoAMD"/> type, in bytes.
@@ -6189,11 +6699,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 localDimmingEnable;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceFragmentDensityMapFeaturesEXT"/> type, in bytes.
@@ -6201,13 +6712,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 fragmentDensityMap;
 		public VkBool32 fragmentDensityMapDynamic;
 		public VkBool32 fragmentDensityMapNonSubsampledImages;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceFragmentDensityMapPropertiesEXT"/> type, in bytes.
@@ -6215,13 +6727,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkExtent2D minFragmentDensityTexelSize;
 		public VkExtent2D maxFragmentDensityTexelSize;
 		public VkBool32 fragmentDensityInvocations;
 	}
 
-	public unsafe partial struct VkRenderPassFragmentDensityMapCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderPassFragmentDensityMapCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRenderPassFragmentDensityMapCreateInfoEXT"/> type, in bytes.
@@ -6229,11 +6742,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkAttachmentReference fragmentDensityMapAttachment;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceSubgroupSizeControlFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSubgroupSizeControlFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceSubgroupSizeControlFeaturesEXT"/> type, in bytes.
@@ -6241,12 +6755,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 subgroupSizeControl;
 		public VkBool32 computeFullSubgroups;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceSubgroupSizeControlPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSubgroupSizeControlPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceSubgroupSizeControlPropertiesEXT"/> type, in bytes.
@@ -6254,14 +6769,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint minSubgroupSize;
 		public uint maxSubgroupSize;
 		public uint maxComputeWorkgroupSubgroups;
 		public VkShaderStageFlags requiredSubgroupSizeStages;
 	}
 
-	public unsafe partial struct VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT"/> type, in bytes.
@@ -6269,11 +6785,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint requiredSubgroupSize;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderCoreProperties2AMD
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderCoreProperties2AMD
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderCoreProperties2AMD"/> type, in bytes.
@@ -6281,12 +6798,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkShaderCorePropertiesFlagsAMD shaderCoreFeatures;
 		public uint activeComputeUnitCount;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceCoherentMemoryFeaturesAMD
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceCoherentMemoryFeaturesAMD
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceCoherentMemoryFeaturesAMD"/> type, in bytes.
@@ -6294,11 +6812,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 deviceCoherentMemory;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceMemoryBudgetPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMemoryBudgetPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceMemoryBudgetPropertiesEXT"/> type, in bytes.
@@ -6306,7 +6825,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 272;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong heapBudget_0;
 		public ulong heapBudget_1;
 		public ulong heapBudget_2;
@@ -6341,7 +6860,8 @@ namespace Vortice.Vulkan
 		public ulong heapUsage_15;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceMemoryPriorityFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMemoryPriorityFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceMemoryPriorityFeaturesEXT"/> type, in bytes.
@@ -6349,11 +6869,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 memoryPriority;
 	}
 
-	public unsafe partial struct VkMemoryPriorityAllocateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryPriorityAllocateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryPriorityAllocateInfoEXT"/> type, in bytes.
@@ -6361,11 +6882,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public float priority;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV"/> type, in bytes.
@@ -6373,11 +6895,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 dedicatedAllocationImageAliasing;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceBufferDeviceAddressFeaturesEXT"/> type, in bytes.
@@ -6385,13 +6908,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 bufferDeviceAddress;
 		public VkBool32 bufferDeviceAddressCaptureReplay;
 		public VkBool32 bufferDeviceAddressMultiDevice;
 	}
 
-	public unsafe partial struct VkBufferDeviceAddressCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferDeviceAddressCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBufferDeviceAddressCreateInfoEXT"/> type, in bytes.
@@ -6399,11 +6923,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public IntPtr deviceAddress;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceToolPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceToolPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceToolPropertiesEXT"/> type, in bytes.
@@ -6411,15 +6936,16 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 1048;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public fixed byte name[256];
-		public fixed byte version[256];
+		public unsafe void* pNext;
+		public unsafe fixed byte name[256];
+		public unsafe fixed byte version[256];
 		public VkToolPurposeFlagsEXT purposes;
-		public fixed byte description[256];
-		public fixed byte layer[256];
+		public unsafe fixed byte description[256];
+		public unsafe fixed byte layer[256];
 	}
 
-	public unsafe partial struct VkValidationFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkValidationFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkValidationFeaturesEXT"/> type, in bytes.
@@ -6427,14 +6953,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint enabledValidationFeatureCount;
-		public VkValidationFeatureEnableEXT* pEnabledValidationFeatures;
+		public unsafe VkValidationFeatureEnableEXT* pEnabledValidationFeatures;
 		public uint disabledValidationFeatureCount;
-		public VkValidationFeatureDisableEXT* pDisabledValidationFeatures;
+		public unsafe VkValidationFeatureDisableEXT* pDisabledValidationFeatures;
 	}
 
-	public unsafe partial struct VkCooperativeMatrixPropertiesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCooperativeMatrixPropertiesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCooperativeMatrixPropertiesNV"/> type, in bytes.
@@ -6442,7 +6969,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint MSize;
 		public uint NSize;
 		public uint KSize;
@@ -6453,7 +6980,8 @@ namespace Vortice.Vulkan
 		public VkScopeNV scope;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceCooperativeMatrixFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceCooperativeMatrixFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceCooperativeMatrixFeaturesNV"/> type, in bytes.
@@ -6461,12 +6989,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 cooperativeMatrix;
 		public VkBool32 cooperativeMatrixRobustBufferAccess;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceCooperativeMatrixPropertiesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceCooperativeMatrixPropertiesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceCooperativeMatrixPropertiesNV"/> type, in bytes.
@@ -6474,11 +7003,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkShaderStageFlags cooperativeMatrixSupportedStages;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceCoverageReductionModeFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceCoverageReductionModeFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceCoverageReductionModeFeaturesNV"/> type, in bytes.
@@ -6486,11 +7016,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 coverageReductionMode;
 	}
 
-	public unsafe partial struct VkPipelineCoverageReductionStateCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineCoverageReductionStateCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineCoverageReductionStateCreateInfoNV"/> type, in bytes.
@@ -6498,12 +7029,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineCoverageReductionStateCreateFlagsNV flags;
 		public VkCoverageReductionModeNV coverageReductionMode;
 	}
 
-	public unsafe partial struct VkFramebufferMixedSamplesCombinationNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFramebufferMixedSamplesCombinationNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkFramebufferMixedSamplesCombinationNV"/> type, in bytes.
@@ -6511,14 +7043,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkCoverageReductionModeNV coverageReductionMode;
 		public VkSampleCountFlags rasterizationSamples;
 		public VkSampleCountFlags depthStencilSamples;
 		public VkSampleCountFlags colorSamples;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT"/> type, in bytes.
@@ -6526,13 +7059,14 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 fragmentShaderSampleInterlock;
 		public VkBool32 fragmentShaderPixelInterlock;
 		public VkBool32 fragmentShaderShadingRateInterlock;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceYcbcrImageArraysFeaturesEXT"/> type, in bytes.
@@ -6540,11 +7074,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 ycbcrImageArrays;
 	}
 
-	public unsafe partial struct VkHeadlessSurfaceCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkHeadlessSurfaceCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkHeadlessSurfaceCreateInfoEXT"/> type, in bytes.
@@ -6552,11 +7087,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkHeadlessSurfaceCreateFlagsEXT flags;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceLineRasterizationFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceLineRasterizationFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceLineRasterizationFeaturesEXT"/> type, in bytes.
@@ -6564,7 +7100,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 rectangularLines;
 		public VkBool32 bresenhamLines;
 		public VkBool32 smoothLines;
@@ -6573,7 +7109,8 @@ namespace Vortice.Vulkan
 		public VkBool32 stippledSmoothLines;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceLineRasterizationPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceLineRasterizationPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceLineRasterizationPropertiesEXT"/> type, in bytes.
@@ -6581,11 +7118,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint lineSubPixelPrecisionBits;
 	}
 
-	public unsafe partial struct VkPipelineRasterizationLineStateCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineRasterizationLineStateCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPipelineRasterizationLineStateCreateInfoEXT"/> type, in bytes.
@@ -6593,14 +7131,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkLineRasterizationModeEXT lineRasterizationMode;
 		public VkBool32 stippledLineEnable;
 		public uint lineStippleFactor;
 		public ushort lineStipplePattern;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceIndexTypeUint8FeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceIndexTypeUint8FeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceIndexTypeUint8FeaturesEXT"/> type, in bytes.
@@ -6608,11 +7147,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 indexTypeUint8;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT"/> type, in bytes.
@@ -6620,11 +7160,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 shaderDemoteToHelperInvocation;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV"/> type, in bytes.
@@ -6632,7 +7173,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint maxGraphicsShaderGroupCount;
 		public uint maxIndirectSequenceCount;
 		public uint maxIndirectCommandsTokenCount;
@@ -6644,7 +7185,8 @@ namespace Vortice.Vulkan
 		public uint minIndirectCommandsBufferOffsetAlignment;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV"/> type, in bytes.
@@ -6652,11 +7194,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 deviceGeneratedCommands;
 	}
 
-	public unsafe partial struct VkGraphicsShaderGroupCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkGraphicsShaderGroupCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkGraphicsShaderGroupCreateInfoNV"/> type, in bytes.
@@ -6664,14 +7207,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint stageCount;
-		public VkPipelineShaderStageCreateInfo* pStages;
-		public VkPipelineVertexInputStateCreateInfo* pVertexInputState;
-		public VkPipelineTessellationStateCreateInfo* pTessellationState;
+		public unsafe VkPipelineShaderStageCreateInfo* pStages;
+		public unsafe VkPipelineVertexInputStateCreateInfo* pVertexInputState;
+		public unsafe VkPipelineTessellationStateCreateInfo* pTessellationState;
 	}
 
-	public unsafe partial struct VkGraphicsPipelineShaderGroupsCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkGraphicsPipelineShaderGroupsCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkGraphicsPipelineShaderGroupsCreateInfoNV"/> type, in bytes.
@@ -6679,14 +7223,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public uint groupCount;
-		public VkGraphicsShaderGroupCreateInfoNV* pGroups;
+		public unsafe VkGraphicsShaderGroupCreateInfoNV* pGroups;
 		public uint pipelineCount;
-		public VkPipeline* pPipelines;
+		public unsafe VkPipeline* pPipelines;
 	}
 
-	public unsafe partial struct VkBindShaderGroupIndirectCommandNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBindShaderGroupIndirectCommandNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBindShaderGroupIndirectCommandNV"/> type, in bytes.
@@ -6696,7 +7241,8 @@ namespace Vortice.Vulkan
 		public uint groupIndex;
 	}
 
-	public unsafe partial struct VkBindIndexBufferIndirectCommandNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBindIndexBufferIndirectCommandNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBindIndexBufferIndirectCommandNV"/> type, in bytes.
@@ -6708,7 +7254,8 @@ namespace Vortice.Vulkan
 		public VkIndexType indexType;
 	}
 
-	public unsafe partial struct VkBindVertexBufferIndirectCommandNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBindVertexBufferIndirectCommandNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkBindVertexBufferIndirectCommandNV"/> type, in bytes.
@@ -6720,7 +7267,8 @@ namespace Vortice.Vulkan
 		public uint stride;
 	}
 
-	public unsafe partial struct VkSetStateFlagsIndirectCommandNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSetStateFlagsIndirectCommandNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkSetStateFlagsIndirectCommandNV"/> type, in bytes.
@@ -6730,7 +7278,8 @@ namespace Vortice.Vulkan
 		public uint data;
 	}
 
-	public unsafe partial struct VkIndirectCommandsStreamNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkIndirectCommandsStreamNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkIndirectCommandsStreamNV"/> type, in bytes.
@@ -6741,7 +7290,8 @@ namespace Vortice.Vulkan
 		public ulong offset;
 	}
 
-	public unsafe partial struct VkIndirectCommandsLayoutTokenNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkIndirectCommandsLayoutTokenNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkIndirectCommandsLayoutTokenNV"/> type, in bytes.
@@ -6749,7 +7299,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 88;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkIndirectCommandsTokenTypeNV tokenType;
 		public uint stream;
 		public uint offset;
@@ -6761,11 +7311,12 @@ namespace Vortice.Vulkan
 		public uint pushconstantSize;
 		public VkIndirectStateFlagsNV indirectStateFlags;
 		public uint indexTypeCount;
-		public VkIndexType* pIndexTypes;
-		public uint* pIndexTypeValues;
+		public unsafe VkIndexType* pIndexTypes;
+		public unsafe uint* pIndexTypeValues;
 	}
 
-	public unsafe partial struct VkIndirectCommandsLayoutCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkIndirectCommandsLayoutCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkIndirectCommandsLayoutCreateInfoNV"/> type, in bytes.
@@ -6773,16 +7324,17 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 56;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkIndirectCommandsLayoutUsageFlagsNV flags;
 		public VkPipelineBindPoint pipelineBindPoint;
 		public uint tokenCount;
-		public VkIndirectCommandsLayoutTokenNV* pTokens;
+		public unsafe VkIndirectCommandsLayoutTokenNV* pTokens;
 		public uint streamCount;
-		public uint* pStreamStrides;
+		public unsafe uint* pStreamStrides;
 	}
 
-	public unsafe partial struct VkGeneratedCommandsInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkGeneratedCommandsInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkGeneratedCommandsInfoNV"/> type, in bytes.
@@ -6790,12 +7342,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 120;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineBindPoint pipelineBindPoint;
 		public VkPipeline pipeline;
 		public VkIndirectCommandsLayoutNV indirectCommandsLayout;
 		public uint streamCount;
-		public VkIndirectCommandsStreamNV* pStreams;
+		public unsafe VkIndirectCommandsStreamNV* pStreams;
 		public uint sequencesCount;
 		public VkBuffer preprocessBuffer;
 		public ulong preprocessOffset;
@@ -6806,7 +7358,8 @@ namespace Vortice.Vulkan
 		public ulong sequencesIndexOffset;
 	}
 
-	public unsafe partial struct VkGeneratedCommandsMemoryRequirementsInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkGeneratedCommandsMemoryRequirementsInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkGeneratedCommandsMemoryRequirementsInfoNV"/> type, in bytes.
@@ -6814,14 +7367,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkPipelineBindPoint pipelineBindPoint;
 		public VkPipeline pipeline;
 		public VkIndirectCommandsLayoutNV indirectCommandsLayout;
 		public uint maxSequencesCount;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT"/> type, in bytes.
@@ -6829,11 +7383,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 texelBufferAlignment;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT"/> type, in bytes.
@@ -6841,14 +7396,15 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 48;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong storageTexelBufferOffsetAlignmentBytes;
 		public VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
 		public ulong uniformTexelBufferOffsetAlignmentBytes;
 		public VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
 	}
 
-	public unsafe partial struct VkRenderPassTransformBeginInfoQCOM
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderPassTransformBeginInfoQCOM
 	{
 		/// <summary>
 		/// The size of the <see cref="VkRenderPassTransformBeginInfoQCOM"/> type, in bytes.
@@ -6856,11 +7412,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSurfaceTransformFlagsKHR transform;
 	}
 
-	public unsafe partial struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM
 	{
 		/// <summary>
 		/// The size of the <see cref="VkCommandBufferInheritanceRenderPassTransformInfoQCOM"/> type, in bytes.
@@ -6868,12 +7425,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 40;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkSurfaceTransformFlagsKHR transform;
 		public VkRect2D renderArea;
 	}
 
-	public unsafe partial struct VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT"/> type, in bytes.
@@ -6881,11 +7439,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 pipelineCreationCacheControl;
 	}
 
-	public unsafe partial struct VkPhysicalDeviceDiagnosticsConfigFeaturesNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDiagnosticsConfigFeaturesNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkPhysicalDeviceDiagnosticsConfigFeaturesNV"/> type, in bytes.
@@ -6893,11 +7452,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkBool32 diagnosticsConfig;
 	}
 
-	public unsafe partial struct VkDeviceDiagnosticsConfigCreateInfoNV
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceDiagnosticsConfigCreateInfoNV
 	{
 		/// <summary>
 		/// The size of the <see cref="VkDeviceDiagnosticsConfigCreateInfoNV"/> type, in bytes.
@@ -6905,11 +7465,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDeviceDiagnosticsConfigFlagsNV flags;
 	}
 
-	public unsafe partial struct VkAndroidSurfaceCreateInfoKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAndroidSurfaceCreateInfoKHR
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAndroidSurfaceCreateInfoKHR"/> type, in bytes.
@@ -6917,12 +7478,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkAndroidSurfaceCreateFlagsKHR flags;
-		public IntPtr* window;
+		public unsafe IntPtr* window;
 	}
 
-	public unsafe partial struct VkAndroidHardwareBufferUsageANDROID
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAndroidHardwareBufferUsageANDROID
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAndroidHardwareBufferUsageANDROID"/> type, in bytes.
@@ -6930,11 +7492,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong androidHardwareBufferUsage;
 	}
 
-	public unsafe partial struct VkAndroidHardwareBufferPropertiesANDROID
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAndroidHardwareBufferPropertiesANDROID
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAndroidHardwareBufferPropertiesANDROID"/> type, in bytes.
@@ -6942,12 +7505,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong allocationSize;
 		public uint memoryTypeBits;
 	}
 
-	public unsafe partial struct VkAndroidHardwareBufferFormatPropertiesANDROID
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAndroidHardwareBufferFormatPropertiesANDROID
 	{
 		/// <summary>
 		/// The size of the <see cref="VkAndroidHardwareBufferFormatPropertiesANDROID"/> type, in bytes.
@@ -6955,7 +7519,7 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 72;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkFormat format;
 		public ulong externalFormat;
 		public VkFormatFeatureFlags formatFeatures;
@@ -6966,7 +7530,8 @@ namespace Vortice.Vulkan
 		public VkChromaLocation suggestedYChromaOffset;
 	}
 
-	public unsafe partial struct VkImportAndroidHardwareBufferInfoANDROID
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImportAndroidHardwareBufferInfoANDROID
 	{
 		/// <summary>
 		/// The size of the <see cref="VkImportAndroidHardwareBufferInfoANDROID"/> type, in bytes.
@@ -6974,11 +7539,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
-		public IntPtr* buffer;
+		public unsafe void* pNext;
+		public unsafe IntPtr* buffer;
 	}
 
-	public unsafe partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMemoryGetAndroidHardwareBufferInfoANDROID"/> type, in bytes.
@@ -6986,11 +7552,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkDeviceMemory memory;
 	}
 
-	public unsafe partial struct VkExternalFormatANDROID
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExternalFormatANDROID
 	{
 		/// <summary>
 		/// The size of the <see cref="VkExternalFormatANDROID"/> type, in bytes.
@@ -6998,11 +7565,12 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 24;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public ulong externalFormat;
 	}
 
-	public unsafe partial struct VkIOSSurfaceCreateInfoMVK
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkIOSSurfaceCreateInfoMVK
 	{
 		/// <summary>
 		/// The size of the <see cref="VkIOSSurfaceCreateInfoMVK"/> type, in bytes.
@@ -7010,12 +7578,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkIOSSurfaceCreateFlagsMVK flags;
-		public void* pView;
+		public unsafe void* pView;
 	}
 
-	public unsafe partial struct VkMacOSSurfaceCreateInfoMVK
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMacOSSurfaceCreateInfoMVK
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMacOSSurfaceCreateInfoMVK"/> type, in bytes.
@@ -7023,12 +7592,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkMacOSSurfaceCreateFlagsMVK flags;
-		public void* pView;
+		public unsafe void* pView;
 	}
 
-	public unsafe partial struct VkMetalSurfaceCreateInfoEXT
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMetalSurfaceCreateInfoEXT
 	{
 		/// <summary>
 		/// The size of the <see cref="VkMetalSurfaceCreateInfoEXT"/> type, in bytes.
@@ -7036,12 +7606,13 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkMetalSurfaceCreateFlagsEXT flags;
-		public IntPtr* pLayer;
+		public unsafe IntPtr* pLayer;
 	}
 
-	public unsafe partial struct VkViSurfaceCreateInfoNN
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkViSurfaceCreateInfoNN
 	{
 		/// <summary>
 		/// The size of the <see cref="VkViSurfaceCreateInfoNN"/> type, in bytes.
@@ -7049,9 +7620,423 @@ namespace Vortice.Vulkan
 		public static readonly int SizeInBytes = 32;
 
 		public VkStructureType sType;
-		public void* pNext;
+		public unsafe void* pNext;
 		public VkViSurfaceCreateFlagsNN flags;
-		public void* window;
+		public unsafe void* window;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeferredOperationInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkDeferredOperationInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 24;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkDeferredOperationKHR operationHandle;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineLibraryCreateInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkPipelineLibraryCreateInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 32;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint libraryCount;
+		public unsafe VkPipeline* pLibraries;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct VkDeviceOrHostAddressKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkDeviceOrHostAddressKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 8;
+
+		[FieldOffset(0)]
+		public IntPtr deviceAddress;
+		[FieldOffset(0)]
+		public unsafe void* hostAddress;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct VkDeviceOrHostAddressConstKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkDeviceOrHostAddressConstKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 8;
+
+		[FieldOffset(0)]
+		public IntPtr deviceAddress;
+		[FieldOffset(0)]
+		public unsafe void* hostAddress;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureBuildOffsetInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureBuildOffsetInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 16;
+
+		public uint primitiveCount;
+		public uint primitiveOffset;
+		public uint firstVertex;
+		public uint transformOffset;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRayTracingShaderGroupCreateInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkRayTracingShaderGroupCreateInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 48;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkRayTracingShaderGroupTypeKHR type;
+		public uint generalShader;
+		public uint closestHitShader;
+		public uint anyHitShader;
+		public uint intersectionShader;
+		public unsafe void* pShaderGroupCaptureReplayHandle;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRayTracingPipelineInterfaceCreateInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkRayTracingPipelineInterfaceCreateInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 32;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint maxPayloadSize;
+		public uint maxAttributeSize;
+		public uint maxCallableSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRayTracingPipelineCreateInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkRayTracingPipelineCreateInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 120;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkPipelineCreateFlags flags;
+		public uint stageCount;
+		public unsafe VkPipelineShaderStageCreateInfo* pStages;
+		public uint groupCount;
+		public unsafe VkRayTracingShaderGroupCreateInfoKHR* pGroups;
+		public uint maxRecursionDepth;
+		public VkPipelineLibraryCreateInfoKHR libraries;
+		public unsafe VkRayTracingPipelineInterfaceCreateInfoKHR* pLibraryInterface;
+		public VkPipelineLayout layout;
+		public VkPipeline basePipelineHandle;
+		public int basePipelineIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureGeometryTrianglesDataKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureGeometryTrianglesDataKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 64;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkFormat vertexFormat;
+		public VkDeviceOrHostAddressConstKHR vertexData;
+		public ulong vertexStride;
+		public VkIndexType indexType;
+		public VkDeviceOrHostAddressConstKHR indexData;
+		public VkDeviceOrHostAddressConstKHR transformData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureGeometryAabbsDataKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureGeometryAabbsDataKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 32;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkDeviceOrHostAddressConstKHR data;
+		public ulong stride;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureGeometryInstancesDataKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureGeometryInstancesDataKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 32;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 arrayOfPointers;
+		public VkDeviceOrHostAddressConstKHR data;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct VkAccelerationStructureGeometryDataKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureGeometryDataKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 64;
+
+		[FieldOffset(0)]
+		public VkAccelerationStructureGeometryTrianglesDataKHR triangles;
+		[FieldOffset(0)]
+		public VkAccelerationStructureGeometryAabbsDataKHR aabbs;
+		[FieldOffset(0)]
+		public VkAccelerationStructureGeometryInstancesDataKHR instances;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureGeometryKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureGeometryKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 96;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkGeometryTypeKHR geometryType;
+		public VkAccelerationStructureGeometryDataKHR geometry;
+		public VkGeometryFlagsKHR flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureBuildGeometryInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureBuildGeometryInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 72;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkAccelerationStructureTypeKHR type;
+		public VkBuildAccelerationStructureFlagsKHR flags;
+		public VkBool32 update;
+		public VkAccelerationStructureKHR srcAccelerationStructure;
+		public VkAccelerationStructureKHR dstAccelerationStructure;
+		public VkBool32 geometryArrayOfPointers;
+		public uint geometryCount;
+		public unsafe VkAccelerationStructureGeometryKHR* ppGeometries;
+		public VkDeviceOrHostAddressKHR scratchData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureCreateGeometryTypeInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureCreateGeometryTypeInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 40;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkGeometryTypeKHR geometryType;
+		public uint maxPrimitiveCount;
+		public VkIndexType indexType;
+		public uint maxVertexCount;
+		public VkFormat vertexFormat;
+		public VkBool32 allowsTransforms;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureCreateInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureCreateInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 56;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public ulong compactedSize;
+		public VkAccelerationStructureTypeKHR type;
+		public VkBuildAccelerationStructureFlagsKHR flags;
+		public uint maxGeometryCount;
+		public unsafe VkAccelerationStructureCreateGeometryTypeInfoKHR* pGeometryInfos;
+		public IntPtr deviceAddress;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureMemoryRequirementsInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureMemoryRequirementsInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 32;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkAccelerationStructureMemoryRequirementsTypeKHR type;
+		public VkAccelerationStructureBuildTypeKHR buildType;
+		public VkAccelerationStructureKHR accelerationStructure;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceRayTracingFeaturesKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkPhysicalDeviceRayTracingFeaturesKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 56;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 rayTracing;
+		public VkBool32 rayTracingShaderGroupHandleCaptureReplay;
+		public VkBool32 rayTracingShaderGroupHandleCaptureReplayMixed;
+		public VkBool32 rayTracingAccelerationStructureCaptureReplay;
+		public VkBool32 rayTracingIndirectTraceRays;
+		public VkBool32 rayTracingIndirectAccelerationStructureBuild;
+		public VkBool32 rayTracingHostAccelerationStructureCommands;
+		public VkBool32 rayQuery;
+		public VkBool32 rayTracingPrimitiveCulling;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceRayTracingPropertiesKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkPhysicalDeviceRayTracingPropertiesKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 64;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint shaderGroupHandleSize;
+		public uint maxRecursionDepth;
+		public uint maxShaderGroupStride;
+		public uint shaderGroupBaseAlignment;
+		public ulong maxGeometryCount;
+		public ulong maxInstanceCount;
+		public ulong maxPrimitiveCount;
+		public uint maxDescriptorSetAccelerationStructures;
+		public uint shaderGroupHandleCaptureReplaySize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureDeviceAddressInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureDeviceAddressInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 24;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkAccelerationStructureKHR accelerationStructure;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureVersionKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkAccelerationStructureVersionKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 24;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public unsafe byte* versionData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkStridedBufferRegionKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkStridedBufferRegionKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 32;
+
+		public VkBuffer buffer;
+		public ulong offset;
+		public ulong stride;
+		public ulong size;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkTraceRaysIndirectCommandKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkTraceRaysIndirectCommandKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 12;
+
+		public uint width;
+		public uint height;
+		public uint depth;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCopyAccelerationStructureToMemoryInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkCopyAccelerationStructureToMemoryInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 40;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkAccelerationStructureKHR src;
+		public VkDeviceOrHostAddressKHR dst;
+		public VkCopyAccelerationStructureModeKHR mode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCopyMemoryToAccelerationStructureInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkCopyMemoryToAccelerationStructureInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 40;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkDeviceOrHostAddressConstKHR src;
+		public VkAccelerationStructureKHR dst;
+		public VkCopyAccelerationStructureModeKHR mode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCopyAccelerationStructureInfoKHR
+	{
+		/// <summary>
+		/// The size of the <see cref="VkCopyAccelerationStructureInfoKHR"/> type, in bytes.
+		/// </summary>
+		public static readonly int SizeInBytes = 40;
+
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkAccelerationStructureKHR src;
+		public VkAccelerationStructureKHR dst;
+		public VkCopyAccelerationStructureModeKHR mode;
 	}
 
 }

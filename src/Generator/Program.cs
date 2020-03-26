@@ -38,6 +38,9 @@ namespace Generator
                     "VK_USE_PLATFORM_MACOS_MVK",
                     "VK_USE_PLATFORM_METAL_EXT",
                     "VK_USE_PLATFORM_VI_NN",
+                    //"VK_USE_PLATFORM_WAYLAND_KHR",
+                    //"VK_USE_PLATFORM_WIN32_KHR",
+                    "VK_ENABLE_BETA_EXTENSIONS"
                 }
             };
             var compilation = CppParser.ParseFile(headerFile, options);
