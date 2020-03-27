@@ -986,18 +986,6 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkRect2D
-	{
-		/// <summary>
-		/// The size of the <see cref="VkRect2D"/> type, in bytes.
-		/// </summary>
-		public static readonly int SizeInBytes = 16;
-
-		public Point offset;
-		public Size extent;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPipelineViewportStateCreateInfo
 	{
 		/// <summary>
@@ -1011,7 +999,7 @@ namespace Vortice.Vulkan
 		public uint viewportCount;
 		public unsafe Viewport* pViewports;
 		public uint scissorCount;
-		public unsafe VkRect2D* pScissors;
+		public unsafe Rectangle* pScissors;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1692,7 +1680,7 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public static readonly int SizeInBytes = 24;
 
-		public VkRect2D rect;
+		public Rectangle rect;
 		public uint baseArrayLayer;
 		public uint layerCount;
 	}
@@ -1777,7 +1765,7 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkRenderPass renderPass;
 		public VkFramebuffer framebuffer;
-		public VkRect2D renderArea;
+		public Rectangle renderArea;
 		public uint clearValueCount;
 		public unsafe VkClearValue* pClearValues;
 	}
@@ -1964,7 +1952,7 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public uint deviceMask;
 		public uint deviceRenderAreaCount;
-		public unsafe VkRect2D* pDeviceRenderAreas;
+		public unsafe Rectangle* pDeviceRenderAreas;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2039,7 +2027,7 @@ namespace Vortice.Vulkan
 		public uint deviceIndexCount;
 		public unsafe uint* pDeviceIndices;
 		public uint splitInstanceBindRegionCount;
-		public unsafe VkRect2D* pSplitInstanceBindRegions;
+		public unsafe Rectangle* pSplitInstanceBindRegions;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4033,8 +4021,8 @@ namespace Vortice.Vulkan
 
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkRect2D srcRect;
-		public VkRect2D dstRect;
+		public Rectangle srcRect;
+		public Rectangle dstRect;
 		public VkBool32 persistent;
 	}
 
@@ -5160,7 +5148,7 @@ namespace Vortice.Vulkan
 		public VkPipelineDiscardRectangleStateCreateFlagsEXT flags;
 		public VkDiscardRectangleModeEXT discardRectangleMode;
 		public uint discardRectangleCount;
-		public unsafe VkRect2D* pDiscardRectangles;
+		public unsafe Rectangle* pDiscardRectangles;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6427,7 +6415,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public uint exclusiveScissorCount;
-		public unsafe VkRect2D* pExclusiveScissors;
+		public unsafe Rectangle* pExclusiveScissors;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7361,7 +7349,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkSurfaceTransformFlagsKHR transform;
-		public VkRect2D renderArea;
+		public Rectangle renderArea;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

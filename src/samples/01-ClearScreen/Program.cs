@@ -24,13 +24,8 @@ namespace DrawTriangle
         {
             index = 0;
 
-            uint queueFamilyCount = 0;
-            vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, null);
-
-            VkQueueFamilyProperties* queueFamilies = stackalloc VkQueueFamilyProperties[(int)queueFamilyCount];
-            vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, queueFamilies);
-
-            for (int i = 0; i < queueFamilyCount; i++)
+            ReadOnlySpan<VkQueueFamilyProperties > queueFamilies = vkGetPhysicalDeviceQueueFamilyProperties(device);
+            for (int i = 0; i < queueFamilies.Length; i++)
             {
                 if (queueFamilies[i].queueFlags.HasFlag(flag))
                 {
@@ -56,7 +51,7 @@ namespace DrawTriangle
 
                 var version = vkEnumerateInstanceVersion();
                 var queryExtensions = vkEnumerateInstanceExtensionProperties();
-                var queryLayers = vkEnumerateLayerProperties();
+                var queryLayers = vkEnumerateInstanceLayerProperties();
 
                 VkString name = "01-ClearScreen";
                 var appInfo = new VkApplicationInfo

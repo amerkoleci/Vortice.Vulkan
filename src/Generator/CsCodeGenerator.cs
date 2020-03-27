@@ -56,6 +56,7 @@ namespace Generator
             { "VkExtent2D", "Size" },
             { "VkExtent3D", "Size3" },
             { "VkViewport", "Viewport" },
+            { "VkRect2D", "Rectangle" },
 
             { "buffer_handle_t", "IntPtr" },
             { "AHardwareBuffer","IntPtr" },
@@ -104,6 +105,7 @@ namespace Generator
             GenerateHandles(compilation, outputPath);
             GenerateStructAndUnions(compilation, outputPath);
             GenerateCommands(compilation, outputPath);
+            GenerateHelperCommands(compilation, outputPath);
         }
 
         public static void AddCsMapping(string typeName, string csTypeName)
@@ -176,7 +178,7 @@ namespace Generator
                         )
                     {
                         csDataType = "uint";
-                        macroValue = GetCsTypeName(cppMacro.Value);
+                        macroValue = GetCsCleanName(cppMacro.Value);
                     }
 
                     AddCsMapping(cppMacro.Name, csName);
@@ -204,11 +206,11 @@ namespace Generator
             return name;
         }
 
-        private static string GetCsTypeName(string name)
+        private static string GetCsCleanName(string name)
         {
             if (s_csNameMappings.TryGetValue(name, out string mappedName))
             {
-                return GetCsTypeName(mappedName);
+                return GetCsCleanName(mappedName);
             }
             else if (name.StartsWith("PFN"))
             {
@@ -218,7 +220,7 @@ namespace Generator
             return name;
         }
 
-        private static string GetCsTypeName(CppType type, bool isPointer)
+        private static string GetCsTypeName(CppType type, bool isPointer = false)
         {
             if (type is CppPrimitiveType primitiveType)
             {
@@ -232,7 +234,7 @@ namespace Generator
 
             if (type is CppEnum enumType)
             {
-                var enumCsName = GetCsTypeName(enumType.Name);
+                var enumCsName = GetCsCleanName(enumType.Name);
                 if (isPointer)
                     return enumCsName + "*";
 
@@ -241,7 +243,7 @@ namespace Generator
 
             if (type is CppTypedef typedef)
             {
-                var typeDefCsName = GetCsTypeName(typedef.Name);
+                var typeDefCsName = GetCsCleanName(typedef.Name);
                 if (isPointer)
                     return typeDefCsName + "*";
 
@@ -250,7 +252,7 @@ namespace Generator
 
             if (type is CppClass @class)
             {
-                var className = GetCsTypeName(@class.Name);
+                var className = GetCsCleanName(@class.Name);
                 if (isPointer)
                     return className + "*";
 

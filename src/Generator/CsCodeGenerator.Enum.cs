@@ -106,7 +106,7 @@ namespace Generator
                     writer.WriteLine("[Flags]");
                 }
 
-                string csName = GetCsTypeName(cppEnum.Name);
+                string csName = GetCsCleanName(cppEnum.Name);
                 string enumNamePrefix = GetEnumNamePrefix(cppEnum.Name);
 
                 // Rename FlagBits in Flags.

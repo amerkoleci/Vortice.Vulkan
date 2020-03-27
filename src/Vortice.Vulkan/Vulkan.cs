@@ -61,6 +61,7 @@ namespace Vortice.Vulkan
 
             // Manually load win32 entries.
             vkCreateWin32SurfaceKHR_ptr = LoadCallback<vkCreateWin32SurfaceKHRDelegate>(instance.Handle, vkGetInstanceProcAddr, nameof(vkCreateWin32SurfaceKHR));
+            vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = LoadCallback<vkGetPhysicalDeviceWin32PresentationSupportKHRDelegate>(instance.Handle, vkGetInstanceProcAddr, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
         }
 
         private static void GenLoadLoader(IntPtr context, LoadFunction load)
@@ -122,12 +123,12 @@ namespace Vortice.Vulkan
         }
 
         /// <summary>
-        /// Returns global extension properties.
+        /// Returns up to requested number of global extension properties
         /// </summary>
-        /// <param name="layerName">Optional layer name.</param>
-        /// <returns></returns>
+        /// <param name="layerName">Is either null/empty or a string naming the layer to retrieve extensions from.</param>
+        /// <returns>A <see cref="ReadOnlySpan{VkExtensionProperties}"/> </returns>
         /// <exception cref="VkException">Vulkan returns an error code.</exception>
-        public static unsafe VkExtensionProperties[] vkEnumerateInstanceExtensionProperties(string layerName = null)
+        public static unsafe ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties(string layerName = null)
         {
             int dstLayerNameByteCount = Interop.GetMaxByteCount(layerName);
             var dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
@@ -136,25 +137,36 @@ namespace Vortice.Vulkan
             uint count = 0;
             vkEnumerateInstanceExtensionProperties(dstLayerNamePtr, &count, null).CheckResult();
 
-            var properties = new VkExtensionProperties[count];
+            ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[count];
             fixed (VkExtensionProperties* ptr = properties)
+            {
                 vkEnumerateInstanceExtensionProperties(dstLayerNamePtr, &count, ptr).CheckResult();
+            }
+
             return properties;
         }
 
         /// <summary>
-        /// Returns global layer properties.
+        /// Returns properties of available physical device extensions
         /// </summary>
-        /// <returns>Properties of available layers.</returns>
+        /// <param name="physicalDevice">The <see cref="VkPhysicalDevice"/> that will be queried.</param>
+        /// <param name="layerName">Is either null/empty or a string naming the layer to retrieve extensions from.</param>
+        /// <returns>A <see cref="ReadOnlySpan{VkExtensionProperties}"/>.</returns>
         /// <exception cref="VkException">Vulkan returns an error code.</exception>
-        public static unsafe VkLayerProperties[] vkEnumerateLayerProperties()
+        public static ReadOnlySpan<VkExtensionProperties> vkEnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName = "")
         {
-            uint layerCount = 0;
-            vkEnumerateInstanceLayerProperties(&layerCount, null).CheckResult();
+            int dstLayerNameByteCount = Interop.GetMaxByteCount(layerName);
+            var dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
+            Interop.StringToPointer(layerName, dstLayerNamePtr, dstLayerNameByteCount);
 
-            var properties = new VkLayerProperties[layerCount];
-            fixed (VkLayerProperties* ptr = properties)
-                vkEnumerateInstanceLayerProperties(&layerCount, ptr).CheckResult();
+            uint propertyCount = 0;
+            vkEnumerateDeviceExtensionProperties(physicalDevice, dstLayerNamePtr, &propertyCount, null).CheckResult();
+
+            ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[propertyCount];
+            fixed (VkExtensionProperties* propertiesPtr = properties)
+            {
+                vkEnumerateDeviceExtensionProperties(physicalDevice, dstLayerNamePtr, &propertyCount, propertiesPtr).CheckResult();
+            }
             return properties;
         }
 
@@ -171,17 +183,6 @@ namespace Vortice.Vulkan
             }
 
             return VkVersion.Version_1_0;
-        }
-
-        public static unsafe VkPhysicalDevice[] vkEnumeratePhysicalDevices(VkInstance instance)
-        {
-            uint count = 0;
-            vkEnumeratePhysicalDevices(instance, &count, null).CheckResult();
-
-            var physicalDevice = new VkPhysicalDevice[count];
-            fixed (VkPhysicalDevice* ptr = physicalDevice)
-                vkEnumeratePhysicalDevices(instance, &count, ptr).CheckResult();
-            return physicalDevice;
         }
 
         #region Nested

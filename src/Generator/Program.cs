@@ -54,6 +54,25 @@ namespace Generator
                 }
             }
 
+            bool generateFuncFile = false;
+            if (generateFuncFile)
+            {
+                File.Delete("Vk.txt");
+                foreach (var func in compilation.Functions)
+                {
+                    var signature = new System.Text.StringBuilder();
+                    var argSignature = CsCodeGenerator.GetParameterSignature(func, true);
+                    signature
+                        .Append(func.ReturnType.GetDisplayName())
+                        .Append(" ")
+                        .Append(func.Name)
+                        .Append("(")
+                        .Append(argSignature)
+                        .Append(")");
+                    File.AppendAllText("Vk.txt", signature.ToString() + Environment.NewLine);
+                }
+            }
+
             CsCodeGenerator.Generate(compilation, outputPath);
             return 0;
         }

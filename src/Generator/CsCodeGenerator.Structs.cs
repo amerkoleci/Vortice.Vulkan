@@ -33,7 +33,8 @@ namespace Generator
                     cppClass.Name == "VkOffset3D" ||
                     cppClass.Name == "VkExtent2D" ||
                     cppClass.Name == "VkExtent3D" ||
-                    cppClass.Name == "VkViewport")
+                    cppClass.Name == "VkViewport" ||
+                    cppClass.Name == "VkRect2D")
                 {
                     continue;
                 }

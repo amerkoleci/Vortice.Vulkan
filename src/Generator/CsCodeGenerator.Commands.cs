@@ -64,14 +64,32 @@ namespace Generator
             "vkCreateCommandPool",
 
             "vkEnumerateInstanceVersion",
-        };
+            "vkGetDeviceGroupPeerMemoryFeaturesKHR",
+            "vkGetImageMemoryRequirements2",
+            "vkGetBufferMemoryRequirements2",
+            "vkGetPhysicalDeviceFeatures2",
+            "vkGetPhysicalDeviceProperties2",
+            "vkGetPhysicalDeviceFormatProperties2",
+            "vkGetPhysicalDeviceImageFormatProperties2",
+            "vkGetPhysicalDeviceMemoryProperties2",
+            "vkGetDeviceQueue2",
+            "vkCreateSamplerYcbcrConversion",
+            "vkCreateDescriptorUpdateTemplate",
+            "vkGetPhysicalDeviceExternalBufferProperties",
+            "vkGetPhysicalDeviceExternalFenceProperties",
+            "VkDescriptorSetLayoutSupport",
+            "vkCreateRenderPass2",
+            "vkGetPhysicalDeviceSurfaceSupportKHR",
+            "vkGetPhysicalDeviceSurfaceCapabilitiesKHR",
 
-        private static readonly HashSet<string> s_outArrayReturnFunctions = new HashSet<string>
-        {
-            "vkGetPhysicalDeviceQueueFamilyProperties",
-            "vkGetImageSparseMemoryRequirements",
-            "vkGetPhysicalDeviceSparseImageFormatProperties",
-            "vkGetQueryPoolResults"
+            "vkCreateSwapchainKHR",
+            "vkAcquireNextImageKHR",
+            "vkGetDeviceGroupPresentCapabilitiesKHR",
+            "vkAcquireNextImage2KHR",
+
+            "vkCreateDisplayModeKHR",
+            "vkGetDisplayPlaneCapabilitiesKHR",
+            "vkCreateDisplayPlaneSurfaceKHR",
         };
 
         private static bool calliFunction = false;
@@ -195,17 +213,56 @@ namespace Generator
             }
         }
 
+        private static void EmitInvoke(
+            CodeWriter writer,
+            CppFunction function,
+            List<string> parameters,
+            bool handleCheckResult = true)
+        {
+            var postCall = string.Empty;
+            if (handleCheckResult)
+            {
+                var hasResultReturn = GetCsTypeName(function.ReturnType) == "VkResult";
+                if (hasResultReturn)
+                {
+                    postCall = ".CheckResult()";
+                }
+            }
+
+            var index = 0;
+            var callArgumentStringBuilder = new StringBuilder();
+            foreach (var parameterName in parameters)
+            {
+                callArgumentStringBuilder.Append(parameterName);
+
+                if (index < parameters.Count - 1)
+                {
+                    callArgumentStringBuilder.Append(", ");
+                }
+
+                index++;
+            }
+
+            var callArgumentString = callArgumentStringBuilder.ToString();
+            writer.WriteLine($"{function.Name}({callArgumentString}){postCall};");
+        }
+
         private static bool IsInstanceFunction(string name)
         {
             return s_instanceFunctions.Contains(name);
         }
 
-        private static string GetParameterSignature(CppFunction cppFunction, bool canUseOut)
+        public static string GetParameterSignature(CppFunction cppFunction, bool canUseOut)
+        {
+            return GetParameterSignature(cppFunction.Parameters, canUseOut);
+        }
+
+        private static string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut)
         {
             var argumentBuilder = new StringBuilder();
             var index = 0;
 
-            foreach (var cppParameter in cppFunction.Parameters)
+            foreach (var cppParameter in parameters)
             {
                 var direction = string.Empty;
                 var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
@@ -218,7 +275,7 @@ namespace Generator
                 }
 
                 argumentBuilder.Append(paramCsTypeName).Append(" ").Append(paramCsName);
-                if (index < cppFunction.Parameters.Count - 1)
+                if (index < parameters.Count - 1)
                 {
                     argumentBuilder.Append(", ");
                 }
