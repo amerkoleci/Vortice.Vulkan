@@ -13,6 +13,10 @@ namespace Vortice.Vulkan
     [StructLayout(LayoutKind.Sequential, Size = 4)]
     public readonly struct VkBool32 : IEquatable<VkBool32>
     {
+        public static readonly VkBool32 True = new VkBool32(true);
+        public static readonly VkBool32 False = new VkBool32(false);
+
+
         private readonly int _value;
 
         /// <summary>

@@ -6,9 +6,6 @@
     <OutputPath>$([System.IO.Path]::GetFullPath('$(RepositoryRootDirectory)bin\$(Configuration)'))\$(MSBuildProjectName)</OutputPath>
     <LangVersion>8.0</LangVersion>
 
-    <DebugType Condition=" '$(Configuration)' == 'Release' ">pdbonly</DebugType>
-    <DebugType Condition=" '$(Configuration)' == 'Debug' ">Full</DebugType>
-
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>CS1591;CS1701</NoWarn>
     

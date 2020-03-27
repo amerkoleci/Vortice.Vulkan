@@ -22,7 +22,6 @@ namespace Vortice
             Width = width;
             Height = height;
 
-
             var x = 0;
             var y = 0;
             WindowStyles style = 0;

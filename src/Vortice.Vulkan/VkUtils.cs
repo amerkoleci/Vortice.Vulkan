@@ -19,22 +19,22 @@ namespace Vortice.Vulkan
 
         public static string GetExtensionName(this VkExtensionProperties properties)
         {
-            return Interop.StringFromPointer(properties.extensionName);
+            return Interop.GetString(properties.extensionName);
         }
 
         public static string GetName(this VkLayerProperties properties)
         {
-            return Interop.StringFromPointer(properties.layerName);
+            return Interop.GetString(properties.layerName);
         }
 
         public static string GetDeviceName(this VkPhysicalDeviceProperties properties)
         {
-            return Interop.StringFromPointer(properties.deviceName);
+            return Interop.GetString(properties.deviceName);
         }
 
         public static string GetDescription(this VkLayerProperties properties)
         {
-            return Interop.StringFromPointer(properties.description);
+            return Interop.GetString(properties.description);
         }
 
         public static VkMemoryType GetMemoryType(this VkPhysicalDeviceMemoryProperties memoryProperties, uint index)

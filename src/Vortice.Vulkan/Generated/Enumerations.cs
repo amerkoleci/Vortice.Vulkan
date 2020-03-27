@@ -2164,9 +2164,6 @@ namespace Vortice.Vulkan
 		DisplayNativeAMD = 1000213000,
 		VK_COLORSPACE_SRGB_NONLINEAR_KHR = 0,
 		DciP3LinearEXT = 1000104003,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 0,
-		RangeSizeKHR = 1,
 	}
 
 	public enum VkPresentModeKHR
@@ -2177,9 +2174,6 @@ namespace Vortice.Vulkan
 		FifoRelaxedKHR = 3,
 		SharedDemandRefreshKHR = 1000111000,
 		SharedContinuousRefreshKHR = 1000111001,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 3,
-		RangeSizeKHR = 4,
 	}
 
 	[Flags]
@@ -2249,9 +2243,6 @@ namespace Vortice.Vulkan
 		AmpsKHR = 8,
 		HertzKHR = 9,
 		CyclesKHR = 10,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 10,
-		RangeSizeKHR = 11,
 	}
 
 	public enum VkPerformanceCounterScopeKHR
@@ -2262,9 +2253,6 @@ namespace Vortice.Vulkan
 		VK_QUERY_SCOPE_COMMAND_BUFFER_KHR = 0,
 		VK_QUERY_SCOPE_RENDER_PASS_KHR = 1,
 		VK_QUERY_SCOPE_COMMAND_KHR = 2,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 2,
-		RangeSizeKHR = 3,
 	}
 
 	public enum VkPerformanceCounterStorageKHR
@@ -2275,9 +2263,6 @@ namespace Vortice.Vulkan
 		Uint64KHR = 3,
 		Float32KHR = 4,
 		Float64KHR = 5,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 5,
-		RangeSizeKHR = 6,
 	}
 
 	[Flags]
@@ -2300,9 +2285,6 @@ namespace Vortice.Vulkan
 		Int64KHR = 1,
 		Uint64KHR = 2,
 		Float64KHR = 3,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 3,
-		RangeSizeKHR = 4,
 	}
 
 	public enum VkDebugReportObjectTypeEXT
@@ -2347,9 +2329,6 @@ namespace Vortice.Vulkan
 		DescriptorUpdateTemplateKHREXT = 1000085000,
 		SamplerYcbcrConversionKHREXT = 1000156000,
 		AccelerationStructureNVEXT = 1000165000,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 33,
-		RangeSizeEXT = 34,
 	}
 
 	[Flags]
@@ -2367,10 +2346,6 @@ namespace Vortice.Vulkan
 	{
 		StrictAMD = 0,
 		RelaxedAMD = 1,
-		BeginRangeAMD = 0,
-		EndRangeAMD = 1,
-		RangeSizeAMD = 2,
-		MaxEnumAMD = 2147483647,
 	}
 
 	public enum VkShaderInfoTypeAMD
@@ -2378,10 +2353,6 @@ namespace Vortice.Vulkan
 		StatisticsAMD = 0,
 		BinaryAMD = 1,
 		DisassemblyAMD = 2,
-		BeginRangeAMD = 0,
-		EndRangeAMD = 2,
-		RangeSizeAMD = 3,
-		MaxEnumAMD = 2147483647,
 	}
 
 	[Flags]
@@ -2407,9 +2378,6 @@ namespace Vortice.Vulkan
 	{
 		AllEXT = 0,
 		ShadersEXT = 1,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 1,
-		RangeSizeEXT = 2,
 	}
 
 	[Flags]
@@ -2431,25 +2399,16 @@ namespace Vortice.Vulkan
 		OffEXT = 0,
 		SuspendEXT = 1,
 		OnEXT = 2,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 2,
-		RangeSizeEXT = 3,
 	}
 
 	public enum VkDeviceEventTypeEXT
 	{
 		DisplayHotplugEXT = 0,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 0,
-		RangeSizeEXT = 1,
 	}
 
 	public enum VkDisplayEventTypeEXT
 	{
 		FirstPixelOutEXT = 0,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 0,
-		RangeSizeEXT = 1,
 	}
 
 	public enum VkViewportCoordinateSwizzleNV
@@ -2462,18 +2421,12 @@ namespace Vortice.Vulkan
 		NegativeZNV = 5,
 		PositiveWNV = 6,
 		NegativeWNV = 7,
-		BeginRangeNV = 0,
-		EndRangeNV = 7,
-		RangeSizeNV = 8,
 	}
 
 	public enum VkDiscardRectangleModeEXT
 	{
 		InclusiveEXT = 0,
 		ExclusiveEXT = 1,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 1,
-		RangeSizeEXT = 2,
 	}
 
 	public enum VkConservativeRasterizationModeEXT
@@ -2481,9 +2434,6 @@ namespace Vortice.Vulkan
 		DisabledEXT = 0,
 		OverestimateEXT = 1,
 		UnderestimateEXT = 2,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 2,
-		RangeSizeEXT = 3,
 	}
 
 	[Flags]
@@ -2510,9 +2460,6 @@ namespace Vortice.Vulkan
 		UncorrelatedEXT = 0,
 		DisjointEXT = 1,
 		ConjointEXT = 2,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 2,
-		RangeSizeEXT = 3,
 	}
 
 	public enum VkCoverageModulationModeNV
@@ -2521,17 +2468,11 @@ namespace Vortice.Vulkan
 		RgbNV = 1,
 		AlphaNV = 2,
 		RgbaNV = 3,
-		BeginRangeNV = 0,
-		EndRangeNV = 3,
-		RangeSizeNV = 4,
 	}
 
 	public enum VkValidationCacheHeaderVersionEXT
 	{
 		OneEXT = 1,
-		BeginRangeEXT = 1,
-		EndRangeEXT = 1,
-		RangeSizeEXT = 1,
 	}
 
 	public enum VkShadingRatePaletteEntryNV
@@ -2548,9 +2489,6 @@ namespace Vortice.Vulkan
 		OneInvocationPer4x2Pixels = 9,
 		OneInvocationPer2x4Pixels = 10,
 		OneInvocationPer4x4Pixels = 11,
-		BeginRangeNV = 0,
-		EndRangeNV = 11,
-		RangeSizeNV = 12,
 	}
 
 	public enum VkCoarseSampleOrderTypeNV
@@ -2559,9 +2497,6 @@ namespace Vortice.Vulkan
 		CustomNV = 1,
 		PixelMajorNV = 2,
 		SampleMajorNV = 3,
-		BeginRangeNV = 0,
-		EndRangeNV = 3,
-		RangeSizeNV = 4,
 	}
 
 	public enum VkRayTracingShaderGroupTypeKHR
@@ -2572,9 +2507,6 @@ namespace Vortice.Vulkan
 		General = 0,
 		TrianglesHitGroup = 1,
 		ProceduralHitGroup = 2,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 2,
-		RangeSizeKHR = 3,
 	}
 
 	public enum VkGeometryTypeKHR
@@ -2584,9 +2516,6 @@ namespace Vortice.Vulkan
 		InstancesKHR = 1000150000,
 		Triangles = 0,
 		AabbsNV = 1,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 1,
-		RangeSizeKHR = 2,
 	}
 
 	public enum VkAccelerationStructureTypeKHR
@@ -2595,9 +2524,6 @@ namespace Vortice.Vulkan
 		BottomLevelKHR = 1,
 		TopLevel = 0,
 		BottomLevel = 1,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 1,
-		RangeSizeKHR = 2,
 	}
 
 	public enum VkCopyAccelerationStructureModeKHR
@@ -2608,9 +2534,6 @@ namespace Vortice.Vulkan
 		DeserializeKHR = 3,
 		Clone = 0,
 		Compact = 1,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 3,
-		RangeSizeKHR = 4,
 	}
 
 	public enum VkAccelerationStructureMemoryRequirementsTypeKHR
@@ -2621,9 +2544,6 @@ namespace Vortice.Vulkan
 		Object = 0,
 		BuildScratch = 1,
 		UpdateScratch = 2,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 2,
-		RangeSizeKHR = 3,
 	}
 
 	[Flags]
@@ -2672,16 +2592,12 @@ namespace Vortice.Vulkan
 		MediumEXT = 256,
 		HighEXT = 512,
 		RealtimeEXT = 1024,
-		BeginRangeEXT = 128,
-		EndRangeEXT = 1024,
-		RangeSizeEXT = 897,
 	}
 
 	[Flags]
 	public enum VkPipelineCompilerControlFlagsAMD
 	{
 		None = 0,
-		FlagBitsMaxEnumAMD = 2147483647,
 	}
 
 	public enum VkTimeDomainEXT
@@ -2690,9 +2606,6 @@ namespace Vortice.Vulkan
 		ClockMonotonicEXT = 1,
 		ClockMonotonicRawEXT = 2,
 		QueryPerformanceCounterEXT = 3,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 3,
-		RangeSizeEXT = 4,
 	}
 
 	public enum VkMemoryOverallocationBehaviorAMD
@@ -2700,10 +2613,6 @@ namespace Vortice.Vulkan
 		DefaultAMD = 0,
 		AllowedAMD = 1,
 		DisallowedAMD = 2,
-		BeginRangeAMD = 0,
-		EndRangeAMD = 2,
-		RangeSizeAMD = 3,
-		MaxEnumAMD = 2147483647,
 	}
 
 	[Flags]
@@ -2770,7 +2679,6 @@ namespace Vortice.Vulkan
 	public enum VkShaderCorePropertiesFlagsAMD
 	{
 		None = 0,
-		FlagBitsMaxEnumAMD = 2147483647,
 	}
 
 	[Flags]
@@ -2792,9 +2700,6 @@ namespace Vortice.Vulkan
 		GpuAssistedReserveBindingSlotEXT = 1,
 		BestPracticesEXT = 2,
 		DebugPrintfEXT = 3,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 3,
-		RangeSizeEXT = 4,
 	}
 
 	public enum VkValidationFeatureDisableEXT
@@ -2806,9 +2711,6 @@ namespace Vortice.Vulkan
 		ObjectLifetimesEXT = 4,
 		CoreChecksEXT = 5,
 		UniqueHandlesEXT = 6,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 6,
-		RangeSizeEXT = 7,
 	}
 
 	public enum VkComponentTypeNV
@@ -2824,9 +2726,6 @@ namespace Vortice.Vulkan
 		VK_COMPONENT_TYPE_UINT16_NV = 8,
 		VK_COMPONENT_TYPE_UINT32_NV = 9,
 		VK_COMPONENT_TYPE_UINT64_NV = 10,
-		VK_COMPONENT_TYPE_BEGIN_RANGE_NV = 0,
-		VK_COMPONENT_TYPE_END_RANGE_NV = 10,
-		VK_COMPONENT_TYPE_RANGE_SIZE_NV = 11,
 	}
 
 	public enum VkScopeNV
@@ -2835,18 +2734,12 @@ namespace Vortice.Vulkan
 		VK_SCOPE_WORKGROUP_NV = 2,
 		VK_SCOPE_SUBGROUP_NV = 3,
 		VK_SCOPE_QUEUE_FAMILY_NV = 5,
-		VK_SCOPE_BEGIN_RANGE_NV = 1,
-		VK_SCOPE_END_RANGE_NV = 5,
-		VK_SCOPE_RANGE_SIZE_NV = 5,
 	}
 
 	public enum VkCoverageReductionModeNV
 	{
 		VK_COVERAGE_REDUCTION_MODE_MERGE_NV = 0,
 		VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV = 1,
-		VK_COVERAGE_REDUCTION_MODE_BEGIN_RANGE_NV = 0,
-		VK_COVERAGE_REDUCTION_MODE_END_RANGE_NV = 1,
-		VK_COVERAGE_REDUCTION_MODE_RANGE_SIZE_NV = 2,
 	}
 
 	public enum VkLineRasterizationModeEXT
@@ -2855,9 +2748,6 @@ namespace Vortice.Vulkan
 		RectangularEXT = 1,
 		BresenhamEXT = 2,
 		RectangularSmoothEXT = 3,
-		BeginRangeEXT = 0,
-		EndRangeEXT = 3,
-		RangeSizeEXT = 4,
 	}
 
 	public enum VkIndirectCommandsTokenTypeNV
@@ -2870,9 +2760,6 @@ namespace Vortice.Vulkan
 		VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV = 5,
 		VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV = 6,
 		VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV = 7,
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_BEGIN_RANGE_NV = 0,
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_END_RANGE_NV = 7,
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_RANGE_SIZE_NV = 8,
 	}
 
 	[Flags]
@@ -2905,9 +2792,6 @@ namespace Vortice.Vulkan
 		HostKHR = 0,
 		DeviceKHR = 1,
 		HostOrDeviceKHR = 2,
-		BeginRangeKHR = 0,
-		EndRangeKHR = 2,
-		RangeSizeKHR = 3,
 	}
 
 	[Flags]

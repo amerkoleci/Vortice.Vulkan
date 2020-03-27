@@ -185,6 +185,191 @@ namespace Vortice.Vulkan
             return VkVersion.Version_1_0;
         }
 
+        public static VkResult vkCreateShaderModule(VkDevice device, byte[] bytecode, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
+        {
+            fixed (byte* bytecodePtr = bytecode)
+            {
+                var createInfo = new VkShaderModuleCreateInfo
+                {
+                    sType = VkStructureType.ShaderModuleCreateInfo,
+                    codeSize = new VkPointerSize((uint)bytecode.Length),
+                    pCode = (uint*)bytecodePtr
+                };
+
+                return vkCreateShaderModule(device, &createInfo, allocator, out shaderModule);
+            }
+        }
+
+        public static VkResult vkCreateGraphicsPipeline(VkDevice device, VkPipelineCache pipelineCache, VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
+        {
+            VkPipeline pinPipeline;
+            var result = vkCreateGraphicsPipelines(device, pipelineCache, 1, &createInfo, null, &pinPipeline);
+            pipeline = pinPipeline;
+            return result;
+        }
+
+        public static VkResult vkCreateGraphicsPipelines(
+            VkDevice device,
+            VkPipelineCache pipelineCache,
+            ReadOnlySpan<VkGraphicsPipelineCreateInfo> createInfos,
+            Span<VkPipeline> pipelines)
+        {
+            fixed (VkGraphicsPipelineCreateInfo* createInfosPtr = createInfos)
+            {
+                fixed (VkPipeline* pipelinesPtr = pipelines)
+                {
+                    return vkCreateGraphicsPipelines(device, pipelineCache, (uint)createInfos.Length, createInfosPtr, null, pipelinesPtr);
+                }
+            }
+        }
+
+        public static VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
+        {
+            VkPipeline pinPipeline;
+            var result = vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, &pinPipeline);
+            pipeline = pinPipeline;
+            return result;
+        }
+
+        public static VkResult vkCreateComputePipelines(
+            VkDevice device,
+            VkPipelineCache pipelineCache,
+            ReadOnlySpan<VkComputePipelineCreateInfo> createInfos,
+            Span<VkPipeline> pipelines)
+        {
+            fixed (VkComputePipelineCreateInfo* createInfosPtr = createInfos)
+            {
+                fixed (VkPipeline* pipelinesPtr = pipelines)
+                {
+                    return vkCreateComputePipelines(device, pipelineCache, (uint)createInfos.Length, createInfosPtr, null, pipelinesPtr);
+                }
+            }
+        }
+
+        public static Span<T> vkMapMemory<T>(VkDevice device, VkBuffer buffer, VkDeviceMemory memory, ulong offset = 0, ulong size = WholeSize, VkMemoryMapFlags flags = VkMemoryMapFlags.None) where T : unmanaged
+        {
+            void* pData;
+            vkMapMemory(device, memory, offset, size, flags, &pData).CheckResult();
+
+            if (size == WholeSize)
+            {
+                vkGetBufferMemoryRequirements(device, buffer, out var memoryRequirements);
+                return new Span<T>(pData, (int)memoryRequirements.size);
+            }
+
+            return new Span<T>(pData, (int)size);
+        }
+
+        public static Span<T> vkMapMemory<T>(VkDevice device, VkImage image, VkDeviceMemory memory, ulong offset = 0, ulong size = WholeSize, VkMemoryMapFlags flags = VkMemoryMapFlags.None) where T : unmanaged
+        {
+            void* pData;
+            vkMapMemory(device, memory, offset, size, flags, &pData).CheckResult();
+
+
+            if (size == WholeSize)
+            {
+                vkGetImageMemoryRequirements(device, image, out var memoryRequirements);
+                return new Span<T>(pData, (int)memoryRequirements.size);
+            }
+
+            return new Span<T>(pData, (int)size);
+        }
+
+        public static void vkUpdateDescriptorSets(VkDevice device, VkWriteDescriptorSet writeDescriptorSet)
+        {
+            vkUpdateDescriptorSets(device, 1, &writeDescriptorSet, 0, null);
+        }
+
+        public static void vkUpdateDescriptorSets(VkDevice device, VkWriteDescriptorSet writeDescriptorSet, VkCopyDescriptorSet copyDescriptorSet)
+        {
+            vkUpdateDescriptorSets(device, 1, &writeDescriptorSet, 1, &copyDescriptorSet);
+        }
+
+        public static void vkUpdateDescriptorSets(VkDevice device, ReadOnlySpan<VkWriteDescriptorSet> writeDescriptorSets)
+        {
+            fixed (VkWriteDescriptorSet* writeDescriptorSetsPtr = writeDescriptorSets)
+            {
+                vkUpdateDescriptorSets(device, (uint)writeDescriptorSets.Length, writeDescriptorSetsPtr, 0, null);
+            }
+        }
+
+        public static void vkUpdateDescriptorSets(VkDevice device, ReadOnlySpan<VkWriteDescriptorSet> writeDescriptorSets, ReadOnlySpan<VkCopyDescriptorSet> copyDescriptorSets)
+        {
+            fixed (VkWriteDescriptorSet* writeDescriptorSetsPtr = writeDescriptorSets)
+            {
+                fixed (VkCopyDescriptorSet* copyDescriptorSetsPtr = copyDescriptorSets)
+                {
+                    vkUpdateDescriptorSets(device, (uint)writeDescriptorSets.Length, writeDescriptorSetsPtr, (uint)copyDescriptorSets.Length, copyDescriptorSetsPtr);
+                }
+            }
+        }
+
+        public static void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* descriptorSets)
+        {
+            vkCmdBindDescriptorSets(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, descriptorSets, 0, null);
+        }
+
+        public static void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, VkDescriptorSet descriptorSet)
+        {
+            vkCmdBindDescriptorSets(commandBuffer, pipelineBindPoint, layout, firstSet, 1, &descriptorSet, 0, null);
+        }
+
+        public static void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, ReadOnlySpan<VkDescriptorSet> descriptorSets)
+        {
+            fixed (VkDescriptorSet* descriptorSetsPtr = descriptorSets)
+            {
+                vkCmdBindDescriptorSets(commandBuffer, pipelineBindPoint, layout, firstSet, (uint)descriptorSets.Length, descriptorSetsPtr, 0, null);
+            }
+        }
+
+        public static void vkCmdBindDescriptorSets(
+            VkCommandBuffer commandBuffer,
+            VkPipelineBindPoint pipelineBindPoint,
+            VkPipelineLayout layout,
+            uint firstSet,
+            ReadOnlySpan<VkDescriptorSet> descriptorSets,
+            ReadOnlySpan<uint> dynamicOffsets)
+        {
+            fixed (VkDescriptorSet* descriptorSetsPtr = descriptorSets)
+            {
+                fixed (uint* dynamicOffsetsPtr = dynamicOffsets)
+                {
+                    vkCmdBindDescriptorSets(commandBuffer, pipelineBindPoint, layout, firstSet, (uint)descriptorSets.Length, descriptorSetsPtr, (uint)dynamicOffsets.Length, dynamicOffsetsPtr);
+                }
+            }
+        }
+
+        public static void vkCmdBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, VkBuffer buffer, ulong offset = 0)
+        {
+            vkCmdBindVertexBuffers(commandBuffer, firstBinding, 1, &buffer, &offset);
+        }
+
+        public static void vkCmdBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, ReadOnlySpan<VkBuffer> buffers, ReadOnlySpan<ulong> offsets)
+        {
+            fixed (VkBuffer* buffersPtr = buffers)
+            {
+                fixed (ulong* offsetPtr = offsets)
+                {
+                    vkCmdBindVertexBuffers(commandBuffer, firstBinding, (uint)buffers.Length, buffersPtr, offsetPtr);
+                }
+            }
+        }
+
+
+
+        public static void vkCmdExecuteCommands(VkCommandBuffer commandBuffer, VkCommandBuffer secondaryCommandBuffer)
+        {
+            vkCmdExecuteCommands(commandBuffer, 1, &secondaryCommandBuffer);
+        }
+
+        public static void vkCmdExecuteCommands(VkCommandBuffer commandBuffer, ReadOnlySpan<VkCommandBuffer> secondaryCommandBuffers)
+        {
+            fixed (VkCommandBuffer* commandBuffersPtr = secondaryCommandBuffers)
+            {
+                vkCmdExecuteCommands(commandBuffer, (uint)secondaryCommandBuffers.Length, commandBuffersPtr);
+            }
+        }
+
         #region Nested
         internal interface ILibraryLoader
         {
@@ -229,7 +414,7 @@ namespace Vortice.Vulkan
 
             private const int RTLD_LOCAL = 0x0000;
             private const int RTLD_NOW = 0x0002;
-        } 
+        }
         #endregion
     }
 }

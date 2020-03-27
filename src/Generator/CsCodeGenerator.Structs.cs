@@ -9,6 +9,8 @@ namespace Generator
 {
     public static partial class CsCodeGenerator
     {
+        private static bool generateSizeOfStructs = false;
+
         private static void GenerateStructAndUnions(CppCompilation compilation, string outputPath)
         {
             // Generate Structures
@@ -54,7 +56,7 @@ namespace Generator
 
                 using (writer.PushBlock($"public partial struct {csName}"))
                 {
-                    if (cppClass.SizeOf > 0)
+                    if (generateSizeOfStructs && cppClass.SizeOf > 0)
                     {
                         writer.WriteLine("/// <summary>");
                         writer.WriteLine($"/// The size of the <see cref=\"{csName}\"/> type, in bytes.");

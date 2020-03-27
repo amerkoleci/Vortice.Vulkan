@@ -130,10 +130,23 @@ namespace Generator
                         if (enumItem.Name.EndsWith("_BEGIN_RANGE") ||
                             enumItem.Name.EndsWith("_END_RANGE") ||
                             enumItem.Name.EndsWith("_RANGE_SIZE") ||
+                            enumItem.Name.EndsWith("_BEGIN_RANGE_EXT") ||
+                            enumItem.Name.EndsWith("_BEGIN_RANGE_KHR") ||
+                            enumItem.Name.EndsWith("_BEGIN_RANGE_NV") ||
+                            enumItem.Name.EndsWith("_BEGIN_RANGE_AMD") ||
+                            enumItem.Name.EndsWith("_END_RANGE_EXT") ||
+                            enumItem.Name.EndsWith("_END_RANGE_KHR") ||
+                            enumItem.Name.EndsWith("_END_RANGE_NV") ||
+                            enumItem.Name.EndsWith("_END_RANGE_AMD") ||
+                            enumItem.Name.EndsWith("_RANGE_SIZE_EXT") ||
+                            enumItem.Name.EndsWith("_RANGE_SIZE_KHR") ||
+                            enumItem.Name.EndsWith("_RANGE_SIZE_NV") ||
+                            enumItem.Name.EndsWith("_RANGE_SIZE_AMD") ||
                             enumItem.Name.EndsWith("_MAX_ENUM") ||
                             enumItem.Name.EndsWith("_MAX_ENUM_EXT") ||
                             enumItem.Name.EndsWith("_MAX_ENUM_KHR") ||
                             enumItem.Name.EndsWith("_MAX_ENUM_NV") ||
+                            enumItem.Name.EndsWith("_MAX_ENUM_AMD") ||
                             enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
                             enumItem.Name == "VK_STENCIL_FRONT_AND_BACK" ||
                             enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE")

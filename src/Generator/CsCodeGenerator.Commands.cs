@@ -36,6 +36,7 @@ namespace Generator
             "vkGetPhysicalDeviceProperties",
             "vkGetPhysicalDeviceMemoryProperties",
             "vkGetDeviceQueue",
+            "vkGetDeviceMemoryCommitment",
             "vkGetBufferMemoryRequirements",
             "vkGetImageMemoryRequirements",
             "vkCreateAndroidSurfaceKHR",
@@ -51,8 +52,8 @@ namespace Generator
             "vkCreateImageView",
             "vkCreateShaderModule",
             "vkCreatePipelineCache",
-            "vkCreateGraphicsPipelines",
-            "vkCreateComputePipelines",
+            //"vkCreateGraphicsPipelines",
+            //"vkCreateComputePipelines",
             "vkCreatePipelineLayout",
             "vkCreateSampler",
             "vkCreateDescriptorSetLayout",
@@ -77,7 +78,8 @@ namespace Generator
             "vkCreateDescriptorUpdateTemplate",
             "vkGetPhysicalDeviceExternalBufferProperties",
             "vkGetPhysicalDeviceExternalFenceProperties",
-            "VkDescriptorSetLayoutSupport",
+            "vkGetPhysicalDeviceExternalSemaphoreProperties",
+            "vkGetDescriptorSetLayoutSupport",
             "vkCreateRenderPass2",
             "vkGetPhysicalDeviceSurfaceSupportKHR",
             "vkGetPhysicalDeviceSurfaceCapabilitiesKHR",
@@ -85,11 +87,27 @@ namespace Generator
             "vkCreateSwapchainKHR",
             "vkAcquireNextImageKHR",
             "vkGetDeviceGroupPresentCapabilitiesKHR",
+            "vkGetDeviceGroupSurfacePresentModesKHR",
             "vkAcquireNextImage2KHR",
 
             "vkCreateDisplayModeKHR",
             "vkGetDisplayPlaneCapabilitiesKHR",
             "vkCreateDisplayPlaneSurfaceKHR",
+            "vkCreateSharedSwapchainsKHR",
+
+            "vkGetPhysicalDeviceFeatures2KHR",
+            "vkGetPhysicalDeviceProperties2KHR",
+            "vkGetPhysicalDeviceFormatProperties2KHR",
+            "vkGetPhysicalDeviceImageFormatProperties2KHR",
+            "vkGetPhysicalDeviceMemoryProperties2KHR",
+            "vkGetDeviceGroupPeerMemoryFeaturesKHR",
+            "vkGetPhysicalDeviceExternalBufferPropertiesKHR",
+            //"vkGetMemoryFdKHR",
+            //"vkGetMemoryFdPropertiesKHR",
+            "vkGetPhysicalDeviceExternalSemaphorePropertiesKHR",
+            //"vkGetSemaphoreFdKHR",
+
+            "vkCreateDebugUtilsMessengerEXT"
         };
 
         private static bool calliFunction = false;
@@ -313,11 +331,17 @@ namespace Generator
                     elementTypeDeclaration = typedef;
                     return true;
                 }
-                else if (pointerType.ElementType is CppClass cppClass
-                    && cppClass.ClassKind != CppClassKind.Class
-                    && cppClass.SizeOf > 0)
+                else if (pointerType.ElementType is CppClass @class
+                    && @class.ClassKind != CppClassKind.Class
+                    && @class.SizeOf > 0)
                 {
-                    elementTypeDeclaration = cppClass;
+                    elementTypeDeclaration = @class;
+                    return true;
+                }
+                else if (pointerType.ElementType is CppEnum @enum
+                    && @enum.SizeOf > 0)
+                {
+                    elementTypeDeclaration = @enum;
                     return true;
                 }
             }

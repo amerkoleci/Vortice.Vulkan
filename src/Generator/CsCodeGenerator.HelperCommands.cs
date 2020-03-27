@@ -22,24 +22,42 @@ namespace Generator
             "vkEnumerateDeviceLayerProperties",
 
             "vkQueueSubmit",
+            "vkFlushMappedMemoryRanges",
+            "vkInvalidateMappedMemoryRanges",
 
-            //"vkGetImageSparseMemoryRequirements",
-            //"vkGetPhysicalDeviceSparseImageFormatProperties",
+            "vkGetImageSparseMemoryRequirements",
+            "vkGetPhysicalDeviceSparseImageFormatProperties",
+            "vkQueueBindSparse",
+            "vkResetFences",
+            "vkWaitForFences",
             //"vkGetQueryPoolResults",
 
-            //"vkBindBufferMemory2",
-            //"vkBindImageMemory2",
-            //"vkEnumeratePhysicalDeviceGroups",
-            //"vkGetImageSparseMemoryRequirements2",
-            //"vkGetPhysicalDeviceQueueFamilyProperties2",
-            //"vkGetPhysicalDeviceSparseImageFormatProperties2",
+            "vkMergePipelineCaches",
+            "vkFreeDescriptorSets",
+            //"vkUpdateDescriptorSets",
+
+            "vkCmdSetViewport",
+            "vkCmdSetScissor",
+            //"vkCmdBindDescriptorSets",
+
+            "vkBindBufferMemory2",
+            "vkBindImageMemory2",
+            "vkGetImageSparseMemoryRequirements2",
+            "vkGetPhysicalDeviceQueueFamilyProperties2",
+            "vkGetPhysicalDeviceSparseImageFormatProperties2",
 
             "vkGetPhysicalDeviceSurfaceFormatsKHR",
-            //"vkGetPhysicalDeviceSurfacePresentModesKHR",
-            //"vkGetSwapchainImagesKHR",
-            //"vkGetPhysicalDeviceDisplayPropertiesKHR",
-            //"vkGetPhysicalDeviceDisplayPlanePropertiesKHR",
-            //"vkGetDisplayPlaneSupportedDisplaysKHR",
+            "vkGetPhysicalDeviceSurfacePresentModesKHR",
+            "vkGetSwapchainImagesKHR",
+            "vkGetPhysicalDevicePresentRectanglesKHR",
+            "vkGetPhysicalDeviceDisplayPropertiesKHR",
+            "vkGetPhysicalDeviceDisplayPlanePropertiesKHR",
+            "vkGetDisplayPlaneSupportedDisplaysKHR",
+            "vkGetDisplayModePropertiesKHR",
+
+            "vkGetPhysicalDeviceQueueFamilyProperties2KHR",
+            "vkGetPhysicalDeviceSparseImageFormatProperties2KHR",
+            "vkEnumeratePhysicalDeviceGroupsKHR",
         };
 
         private static void GenerateHelperCommands(CppCompilation compilation, string outputPath)
@@ -61,7 +79,7 @@ namespace Generator
                         continue;
                     }
 
-                    if (function.Name == "vkQueueSubmit")
+                    if (function.Name == "vkGetPhysicalDeviceSurfacePresentModesKHR")
                     {
 
                     }
@@ -92,7 +110,8 @@ namespace Generator
                         }
 
                         if (parameter.Type is CppPointerType pointerType
-                            && pointerType.ElementType is CppQualifiedType qualifiedType)
+                            && pointerType.ElementType is CppQualifiedType qualifiedType
+                            && !string.IsNullOrEmpty(countParameterName))
                         {
                             returnVariableName = GetParameterName(parameter.Name);
                             returnArrayTypeName = GetCsTypeName(qualifiedType);
@@ -125,25 +144,11 @@ namespace Generator
 
                             if (index == countArgumentArrayIndex)
                             {
-                                var singleName = GetSingleName(returnVariableName);
-                                argumentsSingleElementBuilder
-                                    .Append(returnArrayTypeName)
-                                    .Append(" ")
-                                    .Append(singleName)
-                                    .Append(", ");
-
-                                invokeSingleElementParameters.Add("1");
-                                invokeSingleElementParameters.Add($"&{singleName}");
-
-                                // Array invoke
-                                argumentsReadOnlySpanBuilder
-                                    .Append($"ReadOnlySpan<{returnArrayTypeName}>")
-                                    .Append(" ")
-                                    .Append(returnVariableName)
-                                    .Append(", ");
-
-                                invokeElementsParameters.Add($"({csCountParameterType}){returnVariableName}.Length");
-                                invokeElementsParameters.Add($"{returnVariableName}Ptr");
+                                AppendCountParameter(false,
+                                    argumentsSingleElementBuilder, argumentsReadOnlySpanBuilder,
+                                    invokeSingleElementParameters, invokeElementsParameters,
+                                    returnArrayTypeName, returnVariableName,
+                                    csCountParameterType);
                             }
 
                             argumentsSingleElementBuilder.Append(argumentSignature);
@@ -157,6 +162,16 @@ namespace Generator
                             invokeSingleElementParameters.Add(paramCsName);
                             invokeElementsParameters.Add(paramCsName);
                             index++;
+                        }
+
+                        // Functions like vkFlushMappedMemoryRanges
+                        if (newParameters.Count == countArgumentArrayIndex)
+                        {
+                            AppendCountParameter(true,
+                                    argumentsSingleElementBuilder, argumentsReadOnlySpanBuilder,
+                                    invokeSingleElementParameters, invokeElementsParameters,
+                                    returnArrayTypeName, returnVariableName,
+                                    csCountParameterType);
                         }
 
                         // Single element function.
@@ -224,6 +239,46 @@ namespace Generator
                     writer.WriteLine();
                 }
             }
+        }
+
+        private static void AppendCountParameter(
+            bool singleElement,
+            StringBuilder argumentsSingleElementBuilder,
+            StringBuilder argumentsReadOnlySpanBuilder,
+            List<string> invokeSingleElementParameters,
+            List<string> invokeElementsParameters,
+            string returnArrayTypeName,
+            string returnVariableName,
+            string csCountParameterType)
+        {
+            var singleName = GetSingleName(returnVariableName);
+            if (singleElement)
+            {
+                argumentsSingleElementBuilder.Append(", ");
+                argumentsReadOnlySpanBuilder.Append(", ");
+            }
+
+            argumentsSingleElementBuilder
+                .Append(returnArrayTypeName)
+                .Append(" ")
+                .Append(singleName);
+
+            // Array invoke
+            argumentsReadOnlySpanBuilder
+                .Append($"ReadOnlySpan<{returnArrayTypeName}>")
+                .Append(" ")
+                .Append(returnVariableName);
+
+            if (!singleElement)
+            {
+                argumentsSingleElementBuilder.Append(", ");
+                argumentsReadOnlySpanBuilder.Append(", ");
+            }
+
+            invokeSingleElementParameters.Add("1");
+            invokeSingleElementParameters.Add($"&{singleName}");
+            invokeElementsParameters.Add($"({csCountParameterType}){returnVariableName}.Length");
+            invokeElementsParameters.Add($"{returnVariableName}Ptr");
         }
 
         private static string GetSingleName(string name)
