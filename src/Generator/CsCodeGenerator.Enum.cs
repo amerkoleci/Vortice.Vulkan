@@ -75,7 +75,6 @@ namespace Generator
             {  "VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV", "TrianglesHitGroup" },
             {  "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV", "ProceduralHitGroup" },
         };
-
         private static readonly Dictionary<string, string> s_knownEnumPrefixes = new Dictionary<string, string>
         {
             { "VkResult", "VK" },
@@ -84,6 +83,24 @@ namespace Generator
             { "VkShadingRatePaletteEntryNV", "VK_SHADING_RATE_PALETTE_ENTRY" },
             { "VkCoarseSampleOrderTypeNV", "VK_COARSE_SAMPLE_ORDER_TYPE" },
             { "VkCopyAccelerationStructureModeNVX", "VK_COPY_ACCELERATION_STRUCTURE_MODE" },
+        };
+
+        private static readonly HashSet<string> s_ignoredParts = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "flags",
+            "bit",
+            //"nv",
+        };
+
+
+        private static readonly HashSet<string> s_preserveCaps = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "khr",
+            "khx",
+            "ext",
+            "nv",
+            "nvx",
+            "amd",
         };
 
         public static void GenerateEnums(CppCompilation compilation, string outputPath)
@@ -282,7 +299,7 @@ namespace Generator
                     continue;
                 }
 
-                if (typedef.ElementType is CppPointerType pointerType)
+                if (typedef.ElementType is CppPointerType)
                 {
                     continue;
                 }
@@ -306,10 +323,6 @@ namespace Generator
                         writer.WriteLine("None = 0,");
                     }
                     writer.WriteLine();
-                }
-                else
-                {
-                    Console.WriteLine("");
                 }
             }
         }

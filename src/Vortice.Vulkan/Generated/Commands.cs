@@ -840,6 +840,9 @@ namespace Vortice.Vulkan
 	public unsafe delegate uint vkGetImageViewHandleNVXDelegate(VkDevice device, VkImageViewHandleInfoNVX* info);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate VkResult vkGetImageViewAddressNVXDelegate(VkDevice device, VkImageView imageView, VkImageViewAddressPropertiesNVX* properties);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
 	public unsafe delegate void vkCmdDrawIndirectCountAMDDelegate(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
@@ -2842,6 +2845,12 @@ namespace Vortice.Vulkan
 			return vkGetImageViewHandleNVX_ptr(device, info);
 		}
 
+		private static vkGetImageViewAddressNVXDelegate vkGetImageViewAddressNVX_ptr;
+		public static VkResult vkGetImageViewAddressNVX(VkDevice device, VkImageView imageView, VkImageViewAddressPropertiesNVX* properties)
+		{
+			return vkGetImageViewAddressNVX_ptr(device, imageView, properties);
+		}
+
 		private static vkCmdDrawIndirectCountAMDDelegate vkCmdDrawIndirectCountAMD_ptr;
 		public static void vkCmdDrawIndirectCountAMD(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 		{
@@ -3845,6 +3854,7 @@ namespace Vortice.Vulkan
 			vkCmdEndQueryIndexedEXT_ptr = LoadCallback<vkCmdEndQueryIndexedEXTDelegate>(context, load, "vkCmdEndQueryIndexedEXT");
 			vkCmdDrawIndirectByteCountEXT_ptr = LoadCallback<vkCmdDrawIndirectByteCountEXTDelegate>(context, load, "vkCmdDrawIndirectByteCountEXT");
 			vkGetImageViewHandleNVX_ptr = LoadCallback<vkGetImageViewHandleNVXDelegate>(context, load, "vkGetImageViewHandleNVX");
+			vkGetImageViewAddressNVX_ptr = LoadCallback<vkGetImageViewAddressNVXDelegate>(context, load, "vkGetImageViewAddressNVX");
 			vkCmdDrawIndirectCountAMD_ptr = LoadCallback<vkCmdDrawIndirectCountAMDDelegate>(context, load, "vkCmdDrawIndirectCountAMD");
 			vkCmdDrawIndexedIndirectCountAMD_ptr = LoadCallback<vkCmdDrawIndexedIndirectCountAMDDelegate>(context, load, "vkCmdDrawIndexedIndirectCountAMD");
 			vkGetShaderInfoAMD_ptr = LoadCallback<vkGetShaderInfoAMDDelegate>(context, load, "vkGetShaderInfoAMD");

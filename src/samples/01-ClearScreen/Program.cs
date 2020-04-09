@@ -68,7 +68,9 @@ namespace DrawTriangle
             private VkQueue graphicsQueue;
             private VkQueue presentQueue;
             private VkSwapchainKHR swapchain;
-            private VkImage[] swapChainImages;
+            private VkImageView[] swapChainImageViews;
+            private VkSemaphore imageAvailableSemaphore;
+            private VkSemaphore renderFinishedSemaphore;
 
             protected override void Initialize()
             {
@@ -192,25 +194,17 @@ namespace DrawTriangle
                 vkGetDeviceQueue(device, queueFamilies.graphicsFamily, 0, out graphicsQueue);
                 vkGetDeviceQueue(device, queueFamilies.presentFamily, 0, out presentQueue);
 
-                CreateSwapChain();
+                CreateSwapchain();
+                CreateSyncPrimitives();
             }
 
             protected override void OnTick()
             {
-                vkAcquireNextImageKHR(device, swapchain, ulong.MaxValue, VkSemaphore.Null, VkFence.Null, out var imageIndex);
-
-                var lswapchain = swapchain;
-                var presentInfo = new VkPresentInfoKHR
-                {
-                    sType = VkStructureType.PresentInfoKHR,
-                    pImageIndices = &imageIndex,
-                    swapchainCount = 1,
-                    pSwapchains = &lswapchain
-                };
-                vkQueuePresentKHR(presentQueue, &presentInfo);
+                vkAcquireNextImageKHR(device, swapchain, ulong.MaxValue, imageAvailableSemaphore, VkFence.Null, out var imageIndex);
+                vkQueuePresentKHR(presentQueue, renderFinishedSemaphore, swapchain, imageIndex);
             }
 
-            private void CreateSwapChain()
+            private void CreateSwapchain()
             {
                 SwapChainSupportDetails swapChainSupport = QuerySwapChainSupport(physicalDevice, surface);
 
@@ -244,7 +238,33 @@ namespace DrawTriangle
                 };
 
                 vkCreateSwapchainKHR(device, &createInfo, null, out swapchain).CheckResult();
-                swapChainImages = vkGetSwapchainImagesKHR(device, swapchain).ToArray();
+                var swapChainImages = vkGetSwapchainImagesKHR(device, swapchain);
+                swapChainImageViews = new VkImageView[swapChainImages.Length];
+
+                for (var i = 0; i < swapChainImages.Length; i++)
+                {
+                    var viewCreateInfo = new VkImageViewCreateInfo(
+                        swapChainImages[i],
+                        VkImageViewType.Image2D,
+                        surfaceFormat.format,
+                        VkComponentMapping.Identity,
+                        new VkImageSubresourceRange(VkImageAspectFlags.Color, 0, 1, 0, 1)
+                        );
+
+                    vkCreateImageView(device, &viewCreateInfo, null, out swapChainImageViews[i]).CheckResult();
+                }
+            }
+
+            private void CreateSyncPrimitives()
+            {
+                var semaphoreInfo = new VkSemaphoreCreateInfo
+                {
+                    sType = VkStructureType.SemaphoreCreateInfo
+                };
+
+
+                vkCreateSemaphore(device, &semaphoreInfo, null, out imageAvailableSemaphore).CheckResult();
+                vkCreateSemaphore(device, &semaphoreInfo, null, out renderFinishedSemaphore).CheckResult();
             }
 
             private Size ChooseSwapExtent(in VkSurfaceCapabilitiesKHR capabilities)
@@ -299,7 +319,7 @@ namespace DrawTriangle
             return (graphicsFamily, presentFamily);
         }
 
-        ref struct SwapChainSupportDetails
+        private ref struct SwapChainSupportDetails
         {
             public VkSurfaceCapabilitiesKHR Capabilities;
             public ReadOnlySpan<VkSurfaceFormatKHR> Formats;

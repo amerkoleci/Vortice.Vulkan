@@ -16,21 +16,6 @@ namespace Generator
             "event",
         };
 
-        private static readonly HashSet<string> s_ignoredParts = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-        {
-            "flags",
-            "bit"
-        };
-
-        private static readonly HashSet<string> s_preserveCaps = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-        {
-            "khr",
-            "khx",
-            "ext",
-            "nv",
-            "nvx",
-            "amd",
-        };
 
         private static readonly Dictionary<string, string> s_csNameMappings = new Dictionary<string, string>()
         {

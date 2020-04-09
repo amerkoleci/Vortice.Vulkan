@@ -259,6 +259,7 @@ namespace Vortice.Vulkan
 		PhysicalDeviceTransformFeedbackPropertiesEXT = 1000028001,
 		PipelineRasterizationStateStreamCreateInfoEXT = 1000028002,
 		ImageViewHandleInfoNVX = 1000030000,
+		ImageViewAddressPropertiesNVX = 1000030001,
 		TextureLodGatherFormatPropertiesAMD = 1000041000,
 		StreamDescriptorSurfaceCreateInfoGgp = 1000049000,
 		PhysicalDeviceCornerSampledImageFeaturesNV = 1000050000,
@@ -362,7 +363,6 @@ namespace Vortice.Vulkan
 		AccelerationStructureGeometryInstancesDataKHR = 1000150004,
 		AccelerationStructureGeometryTrianglesDataKHR = 1000150005,
 		AccelerationStructureGeometryKHR = 1000150006,
-		AccelerationStructureInfoKHR = 1000150007,
 		AccelerationStructureMemoryRequirementsInfoKHR = 1000150008,
 		AccelerationStructureVersionKHR = 1000150009,
 		CopyAccelerationStructureInfoKHR = 1000150010,
@@ -1238,6 +1238,7 @@ namespace Vortice.Vulkan
 	{
 		Store = 0,
 		DontCare = 1,
+		NoneQcom = 1000301000,
 	}
 
 	public enum VkPipelineBindPoint

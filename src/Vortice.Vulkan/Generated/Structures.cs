@@ -3289,6 +3289,15 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageViewAddressPropertiesNVX
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public IntPtr deviceAddress;
+		public ulong size;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkTextureLODGatherFormatPropertiesAMD
 	{
 		public VkStructureType sType;

@@ -955,9 +955,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint NVXImageViewHandle = 1;
 		/// <summary>
-		/// VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION = 1
+		/// VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION = 2
 		/// </summary>
-		public const uint NVXImageViewHandleSpecVersion = 1;
+		public const uint NVXImageViewHandleSpecVersion = 2;
 		/// <summary>
 		/// VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME = "VK_NVX_image_view_handle"
 		/// </summary>
@@ -1379,9 +1379,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTDebugUtils = 1;
 		/// <summary>
-		/// VK_EXT_DEBUG_UTILS_SPEC_VERSION = 1
+		/// VK_EXT_DEBUG_UTILS_SPEC_VERSION = 2
 		/// </summary>
-		public const uint EXTDebugUtilsSpecVersion = 1;
+		public const uint EXTDebugUtilsSpecVersion = 2;
 		/// <summary>
 		/// VK_EXT_DEBUG_UTILS_EXTENSION_NAME = "VK_EXT_debug_utils"
 		/// </summary>
@@ -2234,6 +2234,18 @@ namespace Vortice.Vulkan
 		/// VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config"
 		/// </summary>
 		public const string NVDeviceDiagnosticsConfigExtensionName = "VK_NV_device_diagnostics_config";
+		/// <summary>
+		/// VK_QCOM_render_pass_store_ops = 1
+		/// </summary>
+		public const uint QcomRenderPassStoreOps = 1;
+		/// <summary>
+		/// VK_QCOM_render_pass_store_ops_SPEC_VERSION = 2
+		/// </summary>
+		public const uint QcomRenderPassStoreOpsSpecVersion = 2;
+		/// <summary>
+		/// VK_QCOM_render_pass_store_ops_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops"
+		/// </summary>
+		public const string QcomRenderPassStoreOpsExtensionName = "VK_QCOM_render_pass_store_ops";
 		/// <summary>
 		/// VK_KHR_android_surface = 1
 		/// </summary>

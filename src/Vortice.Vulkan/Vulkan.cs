@@ -370,6 +370,30 @@ namespace Vortice.Vulkan
             }
         }
 
+        public static VkResult vkQueuePresentKHR(VkQueue queue, VkSemaphore waitSemaphore, VkSwapchainKHR swapchain, uint imageIndex)
+        {
+            var presentInfo = new VkPresentInfoKHR
+            {
+                sType = VkStructureType.PresentInfoKHR,
+                pNext = null
+            };
+
+            if (waitSemaphore != VkSemaphore.Null)
+            {
+                presentInfo.waitSemaphoreCount = 1u;
+                presentInfo.pWaitSemaphores = &waitSemaphore;
+            }
+
+            if (swapchain != VkSwapchainKHR.Null)
+            {
+                presentInfo.swapchainCount = 1u;
+                presentInfo.pSwapchains = &swapchain;
+                presentInfo.pImageIndices = &imageIndex;
+            }
+
+            return vkQueuePresentKHR(queue, &presentInfo);
+        }
+
         #region Nested
         internal interface ILibraryLoader
         {
