@@ -793,6 +793,27 @@ namespace Vortice.Vulkan
 	/// A non-dispatchable handle.
 	/// </summary>
 	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	public partial struct VkPrivateDataSlotEXT : IEquatable<VkPrivateDataSlotEXT>
+	{
+		public readonly ulong Handle;
+		public VkPrivateDataSlotEXT(ulong handle) { Handle = handle; }
+		public static VkPrivateDataSlotEXT Null => new VkPrivateDataSlotEXT(0);
+		public static implicit operator VkPrivateDataSlotEXT(ulong handle) => new VkPrivateDataSlotEXT(handle);
+		public static bool operator ==(VkPrivateDataSlotEXT left, VkPrivateDataSlotEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(VkPrivateDataSlotEXT left, VkPrivateDataSlotEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(VkPrivateDataSlotEXT left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkPrivateDataSlotEXT left, ulong right) => left.Handle != right;
+		public bool Equals(ref VkPrivateDataSlotEXT other) => Handle == other.Handle;
+		public bool Equals(VkPrivateDataSlotEXT other) => Handle == other.Handle;
+		public override bool Equals(object obj) => obj is VkPrivateDataSlotEXT handle && Equals(ref handle);
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkPrivateDataSlotEXT [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
 	public partial struct VkDeferredOperationKHR : IEquatable<VkDeferredOperationKHR>
 	{
 		public readonly ulong Handle;

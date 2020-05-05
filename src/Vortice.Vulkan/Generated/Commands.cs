@@ -1104,6 +1104,18 @@ namespace Vortice.Vulkan
 	public unsafe delegate void vkDestroyIndirectCommandsLayoutNVDelegate(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, VkAllocationCallbacks* allocator);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate VkResult vkCreatePrivateDataSlotEXTDelegate(VkDevice device, VkPrivateDataSlotCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkPrivateDataSlotEXT* privateDataSlot);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkDestroyPrivateDataSlotEXTDelegate(VkDevice device, VkPrivateDataSlotEXT privateDataSlot, VkAllocationCallbacks* allocator);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate VkResult vkSetPrivateDataEXTDelegate(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlotEXT privateDataSlot, ulong data);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkGetPrivateDataEXTDelegate(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlotEXT privateDataSlot, ulong* data);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
 	public unsafe delegate VkResult vkCreateAndroidSurfaceKHRDelegate(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
@@ -3373,6 +3385,30 @@ namespace Vortice.Vulkan
 			vkDestroyIndirectCommandsLayoutNV_ptr(device, indirectCommandsLayout, allocator);
 		}
 
+		private static vkCreatePrivateDataSlotEXTDelegate vkCreatePrivateDataSlotEXT_ptr;
+		public static VkResult vkCreatePrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkPrivateDataSlotEXT* privateDataSlot)
+		{
+			return vkCreatePrivateDataSlotEXT_ptr(device, createInfo, allocator, privateDataSlot);
+		}
+
+		private static vkDestroyPrivateDataSlotEXTDelegate vkDestroyPrivateDataSlotEXT_ptr;
+		public static void vkDestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotEXT privateDataSlot, VkAllocationCallbacks* allocator)
+		{
+			vkDestroyPrivateDataSlotEXT_ptr(device, privateDataSlot, allocator);
+		}
+
+		private static vkSetPrivateDataEXTDelegate vkSetPrivateDataEXT_ptr;
+		public static VkResult vkSetPrivateDataEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlotEXT privateDataSlot, ulong data)
+		{
+			return vkSetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, data);
+		}
+
+		private static vkGetPrivateDataEXTDelegate vkGetPrivateDataEXT_ptr;
+		public static void vkGetPrivateDataEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlotEXT privateDataSlot, ulong* data)
+		{
+			vkGetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, data);
+		}
+
 		private static vkCreateAndroidSurfaceKHRDelegate vkCreateAndroidSurfaceKHR_ptr;
 		public static VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 		{
@@ -3922,6 +3958,10 @@ namespace Vortice.Vulkan
 			vkCmdBindPipelineShaderGroupNV_ptr = LoadCallback<vkCmdBindPipelineShaderGroupNVDelegate>(context, load, "vkCmdBindPipelineShaderGroupNV");
 			vkCreateIndirectCommandsLayoutNV_ptr = LoadCallback<vkCreateIndirectCommandsLayoutNVDelegate>(context, load, "vkCreateIndirectCommandsLayoutNV");
 			vkDestroyIndirectCommandsLayoutNV_ptr = LoadCallback<vkDestroyIndirectCommandsLayoutNVDelegate>(context, load, "vkDestroyIndirectCommandsLayoutNV");
+			vkCreatePrivateDataSlotEXT_ptr = LoadCallback<vkCreatePrivateDataSlotEXTDelegate>(context, load, "vkCreatePrivateDataSlotEXT");
+			vkDestroyPrivateDataSlotEXT_ptr = LoadCallback<vkDestroyPrivateDataSlotEXTDelegate>(context, load, "vkDestroyPrivateDataSlotEXT");
+			vkSetPrivateDataEXT_ptr = LoadCallback<vkSetPrivateDataEXTDelegate>(context, load, "vkSetPrivateDataEXT");
+			vkGetPrivateDataEXT_ptr = LoadCallback<vkGetPrivateDataEXTDelegate>(context, load, "vkGetPrivateDataEXT");
 			vkGetAndroidHardwareBufferPropertiesANDROID_ptr = LoadCallback<vkGetAndroidHardwareBufferPropertiesANDROIDDelegate>(context, load, "vkGetAndroidHardwareBufferPropertiesANDROID");
 			vkGetMemoryAndroidHardwareBufferANDROID_ptr = LoadCallback<vkGetMemoryAndroidHardwareBufferANDROIDDelegate>(context, load, "vkGetMemoryAndroidHardwareBufferANDROID");
 			vkCreateDeferredOperationKHR_ptr = LoadCallback<vkCreateDeferredOperationKHRDelegate>(context, load, "vkCreateDeferredOperationKHR");

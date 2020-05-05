@@ -57,12 +57,12 @@ namespace Vortice.Vulkan
 		OperationDeferredKHR = 1000268002,
 		OperationNotDeferredKHR = 1000268003,
 		PipelineCompileRequiredEXT = 1000297000,
-		ErrorOutOfPoolMemoryKHR = -1000069000,
-		ErrorInvalidExternalHandleKHR = -1000072003,
-		ErrorFragmentationEXT = -1000161000,
-		ErrorInvalidDeviceAddressEXT = -1000257000,
-		ErrorInvalidOpaqueCaptureAddressKHR = -1000257000,
-		ErrorPipelineCompileRequiredEXT = 1000297000,
+		ErrorOutOfPoolMemoryKHR = ErrorOutOfPoolMemory,
+		ErrorInvalidExternalHandleKHR = ErrorInvalidExternalHandle,
+		ErrorFragmentationEXT = ErrorFragmentation,
+		ErrorInvalidDeviceAddressEXT = ErrorInvalidOpaqueCaptureAddress,
+		ErrorInvalidOpaqueCaptureAddressKHR = ErrorInvalidOpaqueCaptureAddress,
+		ErrorPipelineCompileRequiredEXT = PipelineCompileRequiredEXT,
 	}
 
 	public enum VkStructureType
@@ -425,13 +425,13 @@ namespace Vortice.Vulkan
 		PhysicalDeviceExclusiveScissorFeaturesNV = 1000205002,
 		CheckpointDataNV = 1000206000,
 		QueueFamilyCheckpointPropertiesNV = 1000206001,
-		PhysicalDeviceShaderIntegerFunctions2FeaturesIntel = 1000209000,
-		QueryPoolPerformanceQueryCreateInfoIntel = 1000210000,
-		InitializePerformanceApiInfoIntel = 1000210001,
-		PerformanceMarkerInfoIntel = 1000210002,
-		PerformanceStreamMarkerInfoIntel = 1000210003,
-		PerformanceOverrideInfoIntel = 1000210004,
-		PerformanceConfigurationAcquireInfoIntel = 1000210005,
+		PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL = 1000209000,
+		QueryPoolPerformanceQueryCreateInfoINTEL = 1000210000,
+		InitializePerformanceApiInfoINTEL = 1000210001,
+		PerformanceMarkerInfoINTEL = 1000210002,
+		PerformanceStreamMarkerInfoINTEL = 1000210003,
+		PerformanceOverrideInfoINTEL = 1000210004,
+		PerformanceConfigurationAcquireInfoINTEL = 1000210005,
 		PhysicalDevicePciBusInfoPropertiesEXT = 1000212000,
 		DisplayNativeHdrSurfaceCapabilitiesAMD = 1000213000,
 		SwapchainDisplayNativeHdrCreateInfoAMD = 1000213001,
@@ -490,126 +490,133 @@ namespace Vortice.Vulkan
 		PhysicalDeviceTexelBufferAlignmentPropertiesEXT = 1000281001,
 		CommandBufferInheritanceRenderPassTransformInfoQcom = 1000282000,
 		RenderPassTransformBeginInfoQcom = 1000282001,
+		PhysicalDeviceRobustness2FeaturesEXT = 1000286000,
+		PhysicalDeviceRobustness2PropertiesEXT = 1000286001,
+		SamplerCustomBorderColorCreateInfoEXT = 1000287000,
+		PhysicalDeviceCustomBorderColorPropertiesEXT = 1000287001,
+		PhysicalDeviceCustomBorderColorFeaturesEXT = 1000287002,
 		PipelineLibraryCreateInfoKHR = 1000290000,
+		PhysicalDevicePrivateDataFeaturesEXT = 1000295000,
+		DevicePrivateDataCreateInfoEXT = 1000295001,
+		PrivateDataSlotCreateInfoEXT = 1000295002,
 		PhysicalDevicePipelineCreationCacheControlFeaturesEXT = 1000297000,
 		PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 		DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
-		PhysicalDeviceVariablePointerFeatures = 1000120000,
-		PhysicalDeviceShaderDrawParameterFeatures = 1000063000,
-		DebugReportCreateInfoEXT = 1000011000,
-		RenderPassMultiviewCreateInfoKHR = 1000053000,
-		PhysicalDeviceMultiviewFeaturesKHR = 1000053001,
-		PhysicalDeviceMultiviewPropertiesKHR = 1000053002,
-		PhysicalDeviceFeatures2KHR = 1000059000,
-		PhysicalDeviceProperties2KHR = 1000059001,
-		FormatProperties2KHR = 1000059002,
-		ImageFormatProperties2KHR = 1000059003,
-		PhysicalDeviceImageFormatInfo2KHR = 1000059004,
-		QueueFamilyProperties2KHR = 1000059005,
-		PhysicalDeviceMemoryProperties2KHR = 1000059006,
-		SparseImageFormatProperties2KHR = 1000059007,
-		PhysicalDeviceSparseImageFormatInfo2KHR = 1000059008,
-		MemoryAllocateInfoKHR = 1000060000,
-		DeviceGroupRenderPassBeginInfoKHR = 1000060003,
-		DeviceGroupCommandBufferBeginInfoKHR = 1000060004,
-		DeviceGroupSubmitInfoKHR = 1000060005,
-		DeviceGroupBindSparseInfoKHR = 1000060006,
-		BindBufferMemoryDeviceGroupInfoKHR = 1000060013,
-		BindImageMemoryDeviceGroupInfoKHR = 1000060014,
-		PhysicalDeviceGroupPropertiesKHR = 1000070000,
-		DeviceGroupDeviceCreateInfoKHR = 1000070001,
-		PhysicalDeviceExternalImageFormatInfoKHR = 1000071000,
-		ExternalImageFormatPropertiesKHR = 1000071001,
-		PhysicalDeviceExternalBufferInfoKHR = 1000071002,
-		ExternalBufferPropertiesKHR = 1000071003,
-		PhysicalDeviceIdPropertiesKHR = 1000071004,
-		ExternalMemoryBufferCreateInfoKHR = 1000072000,
-		ExternalMemoryImageCreateInfoKHR = 1000072001,
-		ExportMemoryAllocateInfoKHR = 1000072002,
-		PhysicalDeviceExternalSemaphoreInfoKHR = 1000076000,
-		ExternalSemaphorePropertiesKHR = 1000076001,
-		ExportSemaphoreCreateInfoKHR = 1000077000,
-		PhysicalDeviceShaderFloat16Int8FeaturesKHR = 1000082000,
-		PhysicalDeviceFloat16Int8FeaturesKHR = 1000082000,
-		PhysicalDevice16bitStorageFeaturesKHR = 1000083000,
-		DescriptorUpdateTemplateCreateInfoKHR = 1000085000,
-		SurfaceCapabilities2EXT = 1000090000,
-		PhysicalDeviceImagelessFramebufferFeaturesKHR = 1000108000,
-		FramebufferAttachmentsCreateInfoKHR = 1000108001,
-		FramebufferAttachmentImageInfoKHR = 1000108002,
-		RenderPassAttachmentBeginInfoKHR = 1000108003,
-		AttachmentDescription2KHR = 1000109000,
-		AttachmentReference2KHR = 1000109001,
-		SubpassDescription2KHR = 1000109002,
-		SubpassDependency2KHR = 1000109003,
-		RenderPassCreateInfo2KHR = 1000109004,
-		SubpassBeginInfoKHR = 1000109005,
-		SubpassEndInfoKHR = 1000109006,
-		PhysicalDeviceExternalFenceInfoKHR = 1000112000,
-		ExternalFencePropertiesKHR = 1000112001,
-		ExportFenceCreateInfoKHR = 1000113000,
-		PhysicalDevicePointClippingPropertiesKHR = 1000117000,
-		RenderPassInputAttachmentAspectCreateInfoKHR = 1000117001,
-		ImageViewUsageCreateInfoKHR = 1000117002,
-		PipelineTessellationDomainOriginStateCreateInfoKHR = 1000117003,
-		PhysicalDeviceVariablePointerFeaturesKHR = 1000120000,
-		PhysicalDeviceVariablePointersFeaturesKHR = 1000120000,
-		MemoryDedicatedRequirementsKHR = 1000127000,
-		MemoryDedicatedAllocateInfoKHR = 1000127001,
-		PhysicalDeviceSamplerFilterMinmaxPropertiesEXT = 1000130000,
-		SamplerReductionModeCreateInfoEXT = 1000130001,
-		BufferMemoryRequirementsInfo2KHR = 1000146000,
-		ImageMemoryRequirementsInfo2KHR = 1000146001,
-		ImageSparseMemoryRequirementsInfo2KHR = 1000146002,
-		MemoryRequirements2KHR = 1000146003,
-		SparseImageMemoryRequirements2KHR = 1000146004,
-		ImageFormatListCreateInfoKHR = 1000147000,
-		SamplerYcbcrConversionCreateInfoKHR = 1000156000,
-		SamplerYcbcrConversionInfoKHR = 1000156001,
-		BindImagePlaneMemoryInfoKHR = 1000156002,
-		ImagePlaneMemoryRequirementsInfoKHR = 1000156003,
-		PhysicalDeviceSamplerYcbcrConversionFeaturesKHR = 1000156004,
-		SamplerYcbcrConversionImageFormatPropertiesKHR = 1000156005,
-		BindBufferMemoryInfoKHR = 1000157000,
-		BindImageMemoryInfoKHR = 1000157001,
-		DescriptorSetLayoutBindingCreateInfoEXT = 1000161000,
-		PhysicalDeviceDescriptorIndexingFeaturesEXT = 1000161001,
-		PhysicalDeviceDescriptorIndexingPropertiesEXT = 1000161002,
-		DescriptorSetVariableDescriptorCountAllocateInfoEXT = 1000161003,
-		DescriptorSetVariableDescriptorCountLayoutSupportEXT = 1000161004,
-		BindAccelerationStructureMemoryInfoNV = 1000165006,
-		WriteDescriptorSetAccelerationStructureNV = 1000165007,
-		PhysicalDeviceMaintenance3PropertiesKHR = 1000168000,
-		DescriptorSetLayoutSupportKHR = 1000168001,
-		PhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR = 1000175000,
-		PhysicalDevice8bitStorageFeaturesKHR = 1000177000,
-		PhysicalDeviceShaderAtomicInt64FeaturesKHR = 1000180000,
-		PhysicalDeviceDriverPropertiesKHR = 1000196000,
-		PhysicalDeviceFloatControlsPropertiesKHR = 1000197000,
-		PhysicalDeviceDepthStencilResolvePropertiesKHR = 1000199000,
-		SubpassDescriptionDepthStencilResolveKHR = 1000199001,
-		PhysicalDeviceTimelineSemaphoreFeaturesKHR = 1000207000,
-		PhysicalDeviceTimelineSemaphorePropertiesKHR = 1000207001,
-		SemaphoreTypeCreateInfoKHR = 1000207002,
-		TimelineSemaphoreSubmitInfoKHR = 1000207003,
-		SemaphoreWaitInfoKHR = 1000207004,
-		SemaphoreSignalInfoKHR = 1000207005,
-		QueryPoolCreateInfoIntel = 1000210000,
-		PhysicalDeviceVulkanMemoryModelFeaturesKHR = 1000211000,
-		PhysicalDeviceScalarBlockLayoutFeaturesEXT = 1000221000,
-		PhysicalDeviceSeparateDepthStencilLayoutsFeaturesKHR = 1000241000,
-		AttachmentReferenceStencilLayoutKHR = 1000241001,
-		AttachmentDescriptionStencilLayoutKHR = 1000241002,
-		PhysicalDeviceBufferAddressFeaturesEXT = 1000244000,
-		BufferDeviceAddressInfoEXT = 1000244001,
-		ImageStencilUsageCreateInfoEXT = 1000246000,
-		PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR = 1000253000,
-		PhysicalDeviceBufferDeviceAddressFeaturesKHR = 1000257000,
-		BufferDeviceAddressInfoKHR = 1000244001,
-		BufferOpaqueCaptureAddressCreateInfoKHR = 1000257002,
-		MemoryOpaqueCaptureAddressAllocateInfoKHR = 1000257003,
-		DeviceMemoryOpaqueCaptureAddressInfoKHR = 1000257004,
-		PhysicalDeviceHostQueryResetFeaturesEXT = 1000261000,
+		PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
+		PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
+		DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
+		RenderPassMultiviewCreateInfoKHR = RenderPassMultiviewCreateInfo,
+		PhysicalDeviceMultiviewFeaturesKHR = PhysicalDeviceMultiviewFeatures,
+		PhysicalDeviceMultiviewPropertiesKHR = PhysicalDeviceMultiviewProperties,
+		PhysicalDeviceFeatures2KHR = PhysicalDeviceFeatures2,
+		PhysicalDeviceProperties2KHR = PhysicalDeviceProperties2,
+		FormatProperties2KHR = FormatProperties2,
+		ImageFormatProperties2KHR = ImageFormatProperties2,
+		PhysicalDeviceImageFormatInfo2KHR = PhysicalDeviceImageFormatInfo2,
+		QueueFamilyProperties2KHR = QueueFamilyProperties2,
+		PhysicalDeviceMemoryProperties2KHR = PhysicalDeviceMemoryProperties2,
+		SparseImageFormatProperties2KHR = SparseImageFormatProperties2,
+		PhysicalDeviceSparseImageFormatInfo2KHR = PhysicalDeviceSparseImageFormatInfo2,
+		MemoryAllocateInfoKHR = MemoryAllocateFlagsInfo,
+		DeviceGroupRenderPassBeginInfoKHR = DeviceGroupRenderPassBeginInfo,
+		DeviceGroupCommandBufferBeginInfoKHR = DeviceGroupCommandBufferBeginInfo,
+		DeviceGroupSubmitInfoKHR = DeviceGroupSubmitInfo,
+		DeviceGroupBindSparseInfoKHR = DeviceGroupBindSparseInfo,
+		BindBufferMemoryDeviceGroupInfoKHR = BindBufferMemoryDeviceGroupInfo,
+		BindImageMemoryDeviceGroupInfoKHR = BindImageMemoryDeviceGroupInfo,
+		PhysicalDeviceGroupPropertiesKHR = PhysicalDeviceGroupProperties,
+		DeviceGroupDeviceCreateInfoKHR = DeviceGroupDeviceCreateInfo,
+		PhysicalDeviceExternalImageFormatInfoKHR = PhysicalDeviceExternalImageFormatInfo,
+		ExternalImageFormatPropertiesKHR = ExternalImageFormatProperties,
+		PhysicalDeviceExternalBufferInfoKHR = PhysicalDeviceExternalBufferInfo,
+		ExternalBufferPropertiesKHR = ExternalBufferProperties,
+		PhysicalDeviceIdPropertiesKHR = PhysicalDeviceIdProperties,
+		ExternalMemoryBufferCreateInfoKHR = ExternalMemoryBufferCreateInfo,
+		ExternalMemoryImageCreateInfoKHR = ExternalMemoryImageCreateInfo,
+		ExportMemoryAllocateInfoKHR = ExportMemoryAllocateInfo,
+		PhysicalDeviceExternalSemaphoreInfoKHR = PhysicalDeviceExternalSemaphoreInfo,
+		ExternalSemaphorePropertiesKHR = ExternalSemaphoreProperties,
+		ExportSemaphoreCreateInfoKHR = ExportSemaphoreCreateInfo,
+		PhysicalDeviceShaderFloat16Int8FeaturesKHR = PhysicalDeviceShaderFloat16Int8Features,
+		PhysicalDeviceFloat16Int8FeaturesKHR = PhysicalDeviceShaderFloat16Int8Features,
+		PhysicalDevice16bitStorageFeaturesKHR = PhysicalDevice16bitStorageFeatures,
+		DescriptorUpdateTemplateCreateInfoKHR = DescriptorUpdateTemplateCreateInfo,
+		PhysicalDeviceImagelessFramebufferFeaturesKHR = PhysicalDeviceImagelessFramebufferFeatures,
+		FramebufferAttachmentsCreateInfoKHR = FramebufferAttachmentsCreateInfo,
+		FramebufferAttachmentImageInfoKHR = FramebufferAttachmentImageInfo,
+		RenderPassAttachmentBeginInfoKHR = RenderPassAttachmentBeginInfo,
+		AttachmentDescription2KHR = AttachmentDescription2,
+		AttachmentReference2KHR = AttachmentReference2,
+		SubpassDescription2KHR = SubpassDescription2,
+		SubpassDependency2KHR = SubpassDependency2,
+		RenderPassCreateInfo2KHR = RenderPassCreateInfo2,
+		SubpassBeginInfoKHR = SubpassBeginInfo,
+		SubpassEndInfoKHR = SubpassEndInfo,
+		PhysicalDeviceExternalFenceInfoKHR = PhysicalDeviceExternalFenceInfo,
+		ExternalFencePropertiesKHR = ExternalFenceProperties,
+		ExportFenceCreateInfoKHR = ExportFenceCreateInfo,
+		PhysicalDevicePointClippingPropertiesKHR = PhysicalDevicePointClippingProperties,
+		RenderPassInputAttachmentAspectCreateInfoKHR = RenderPassInputAttachmentAspectCreateInfo,
+		ImageViewUsageCreateInfoKHR = ImageViewUsageCreateInfo,
+		PipelineTessellationDomainOriginStateCreateInfoKHR = PipelineTessellationDomainOriginStateCreateInfo,
+		PhysicalDeviceVariablePointersFeaturesKHR = PhysicalDeviceVariablePointersFeatures,
+		PhysicalDeviceVariablePointerFeaturesKHR = PhysicalDeviceVariablePointersFeaturesKHR,
+		MemoryDedicatedRequirementsKHR = MemoryDedicatedRequirements,
+		MemoryDedicatedAllocateInfoKHR = MemoryDedicatedAllocateInfo,
+		PhysicalDeviceSamplerFilterMinmaxPropertiesEXT = PhysicalDeviceSamplerFilterMinmaxProperties,
+		SamplerReductionModeCreateInfoEXT = SamplerReductionModeCreateInfo,
+		BufferMemoryRequirementsInfo2KHR = BufferMemoryRequirementsInfo2,
+		ImageMemoryRequirementsInfo2KHR = ImageMemoryRequirementsInfo2,
+		ImageSparseMemoryRequirementsInfo2KHR = ImageSparseMemoryRequirementsInfo2,
+		MemoryRequirements2KHR = MemoryRequirements2,
+		SparseImageMemoryRequirements2KHR = SparseImageMemoryRequirements2,
+		ImageFormatListCreateInfoKHR = ImageFormatListCreateInfo,
+		SamplerYcbcrConversionCreateInfoKHR = SamplerYcbcrConversionCreateInfo,
+		SamplerYcbcrConversionInfoKHR = SamplerYcbcrConversionInfo,
+		BindImagePlaneMemoryInfoKHR = BindImagePlaneMemoryInfo,
+		ImagePlaneMemoryRequirementsInfoKHR = ImagePlaneMemoryRequirementsInfo,
+		PhysicalDeviceSamplerYcbcrConversionFeaturesKHR = PhysicalDeviceSamplerYcbcrConversionFeatures,
+		SamplerYcbcrConversionImageFormatPropertiesKHR = SamplerYcbcrConversionImageFormatProperties,
+		BindBufferMemoryInfoKHR = BindBufferMemoryInfo,
+		BindImageMemoryInfoKHR = BindImageMemoryInfo,
+		DescriptorSetLayoutBindingCreateInfoEXT = DescriptorSetLayoutBindingCreateInfo,
+		PhysicalDeviceDescriptorIndexingFeaturesEXT = PhysicalDeviceDescriptorIndexingFeatures,
+		PhysicalDeviceDescriptorIndexingPropertiesEXT = PhysicalDeviceDescriptorIndexingProperties,
+		DescriptorSetVariableDescriptorCountAllocateInfoEXT = DescriptorSetVariableDescriptorCountAllocateInfo,
+		DescriptorSetVariableDescriptorCountLayoutSupportEXT = DescriptorSetVariableDescriptorCountLayoutSupport,
+		BindAccelerationStructureMemoryInfoNV = BindAccelerationStructureMemoryInfoKHR,
+		WriteDescriptorSetAccelerationStructureNV = WriteDescriptorSetAccelerationStructureKHR,
+		PhysicalDeviceMaintenance3PropertiesKHR = PhysicalDeviceMaintenance3Properties,
+		DescriptorSetLayoutSupportKHR = DescriptorSetLayoutSupport,
+		PhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR = PhysicalDeviceShaderSubgroupExtendedTypesFeatures,
+		PhysicalDevice8bitStorageFeaturesKHR = PhysicalDevice8bitStorageFeatures,
+		PhysicalDeviceShaderAtomicInt64FeaturesKHR = PhysicalDeviceShaderAtomicInt64Features,
+		PhysicalDeviceDriverPropertiesKHR = PhysicalDeviceDriverProperties,
+		PhysicalDeviceFloatControlsPropertiesKHR = PhysicalDeviceFloatControlsProperties,
+		PhysicalDeviceDepthStencilResolvePropertiesKHR = PhysicalDeviceDepthStencilResolveProperties,
+		SubpassDescriptionDepthStencilResolveKHR = SubpassDescriptionDepthStencilResolve,
+		PhysicalDeviceTimelineSemaphoreFeaturesKHR = PhysicalDeviceTimelineSemaphoreFeatures,
+		PhysicalDeviceTimelineSemaphorePropertiesKHR = PhysicalDeviceTimelineSemaphoreProperties,
+		SemaphoreTypeCreateInfoKHR = SemaphoreTypeCreateInfo,
+		TimelineSemaphoreSubmitInfoKHR = TimelineSemaphoreSubmitInfo,
+		SemaphoreWaitInfoKHR = SemaphoreWaitInfo,
+		SemaphoreSignalInfoKHR = SemaphoreSignalInfo,
+		QueryPoolCreateInfoINTEL = QueryPoolPerformanceQueryCreateInfoINTEL,
+		PhysicalDeviceVulkanMemoryModelFeaturesKHR = PhysicalDeviceVulkanMemoryModelFeatures,
+		PhysicalDeviceScalarBlockLayoutFeaturesEXT = PhysicalDeviceScalarBlockLayoutFeatures,
+		PhysicalDeviceSeparateDepthStencilLayoutsFeaturesKHR = PhysicalDeviceSeparateDepthStencilLayoutsFeatures,
+		AttachmentReferenceStencilLayoutKHR = AttachmentReferenceStencilLayout,
+		AttachmentDescriptionStencilLayoutKHR = AttachmentDescriptionStencilLayout,
+		PhysicalDeviceBufferAddressFeaturesEXT = PhysicalDeviceBufferDeviceAddressFeaturesEXT,
+		BufferDeviceAddressInfoEXT = BufferDeviceAddressInfo,
+		ImageStencilUsageCreateInfoEXT = ImageStencilUsageCreateInfo,
+		PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR = PhysicalDeviceUniformBufferStandardLayoutFeatures,
+		PhysicalDeviceBufferDeviceAddressFeaturesKHR = PhysicalDeviceBufferDeviceAddressFeatures,
+		BufferDeviceAddressInfoKHR = BufferDeviceAddressInfo,
+		BufferOpaqueCaptureAddressCreateInfoKHR = BufferOpaqueCaptureAddressCreateInfo,
+		MemoryOpaqueCaptureAddressAllocateInfoKHR = MemoryOpaqueCaptureAddressAllocateInfo,
+		DeviceMemoryOpaqueCaptureAddressInfoKHR = DeviceMemoryOpaqueCaptureAddressInfo,
+		PhysicalDeviceHostQueryResetFeaturesEXT = PhysicalDeviceHostQueryResetFeatures,
 	}
 
 	public enum VkSystemAllocationScope
@@ -869,40 +876,40 @@ namespace Vortice.Vulkan
 		ASTC10x10SFloatBlockEXT = 1000066011,
 		ASTC12x10SFloatBlockEXT = 1000066012,
 		ASTC12x12SFloatBlockEXT = 1000066013,
-		G8B8G8R8422UNormKHR = 1000156000,
-		B8G8R8G8422UNormKHR = 1000156001,
-		G8B8R83Plane420UNormKHR = 1000156002,
-		G8B8R82Plane420UNormKHR = 1000156003,
-		G8B8R83Plane422UNormKHR = 1000156004,
-		G8B8R82Plane422UNormKHR = 1000156005,
-		G8B8R83Plane444UNormKHR = 1000156006,
-		R10X6UNormPack16KHR = 1000156007,
-		R10X6G10X6UNorm2Pack16KHR = 1000156008,
-		R10X6G10X6B10X6A10X6UNorm4Pack16KHR = 1000156009,
-		G10X6B10X6G10X6R10X6422UNorm4Pack16KHR = 1000156010,
-		B10X6G10X6R10X6G10X6422UNorm4Pack16KHR = 1000156011,
-		G10X6B10X6R10X63Plane420UNorm3Pack16KHR = 1000156012,
-		G10X6B10X6R10X62Plane420UNorm3Pack16KHR = 1000156013,
-		G10X6B10X6R10X63Plane422UNorm3Pack16KHR = 1000156014,
-		G10X6B10X6R10X62Plane422UNorm3Pack16KHR = 1000156015,
-		G10X6B10X6R10X63Plane444UNorm3Pack16KHR = 1000156016,
-		R12X4UNormPack16KHR = 1000156017,
-		R12X4G12X4UNorm2Pack16KHR = 1000156018,
-		R12X4G12X4B12X4A12X4UNorm4Pack16KHR = 1000156019,
-		G12X4B12X4G12X4R12X4422UNorm4Pack16KHR = 1000156020,
-		B12X4G12X4R12X4G12X4422UNorm4Pack16KHR = 1000156021,
-		G12X4B12X4R12X43Plane420UNorm3Pack16KHR = 1000156022,
-		G12X4B12X4R12X42Plane420UNorm3Pack16KHR = 1000156023,
-		G12X4B12X4R12X43Plane422UNorm3Pack16KHR = 1000156024,
-		G12X4B12X4R12X42Plane422UNorm3Pack16KHR = 1000156025,
-		G12X4B12X4R12X43Plane444UNorm3Pack16KHR = 1000156026,
-		G16B16G16R16422UNormKHR = 1000156027,
-		B16G16R16G16422UNormKHR = 1000156028,
-		G16B16R163Plane420UNormKHR = 1000156029,
-		G16B16R162Plane420UNormKHR = 1000156030,
-		G16B16R163Plane422UNormKHR = 1000156031,
-		G16B16R162Plane422UNormKHR = 1000156032,
-		G16B16R163Plane444UNormKHR = 1000156033,
+		G8B8G8R8422UNormKHR = G8B8G8R8422UNorm,
+		B8G8R8G8422UNormKHR = B8G8R8G8422UNorm,
+		G8B8R83Plane420UNormKHR = G8B8R83Plane420UNorm,
+		G8B8R82Plane420UNormKHR = G8B8R82Plane420UNorm,
+		G8B8R83Plane422UNormKHR = G8B8R83Plane422UNorm,
+		G8B8R82Plane422UNormKHR = G8B8R82Plane422UNorm,
+		G8B8R83Plane444UNormKHR = G8B8R83Plane444UNorm,
+		R10X6UNormPack16KHR = R10X6UNormPack16,
+		R10X6G10X6UNorm2Pack16KHR = R10X6G10X6UNorm2Pack16,
+		R10X6G10X6B10X6A10X6UNorm4Pack16KHR = R10X6G10X6B10X6A10X6UNorm4Pack16,
+		G10X6B10X6G10X6R10X6422UNorm4Pack16KHR = G10X6B10X6G10X6R10X6422UNorm4Pack16,
+		B10X6G10X6R10X6G10X6422UNorm4Pack16KHR = B10X6G10X6R10X6G10X6422UNorm4Pack16,
+		G10X6B10X6R10X63Plane420UNorm3Pack16KHR = G10X6B10X6R10X63Plane420UNorm3Pack16,
+		G10X6B10X6R10X62Plane420UNorm3Pack16KHR = G10X6B10X6R10X62Plane420UNorm3Pack16,
+		G10X6B10X6R10X63Plane422UNorm3Pack16KHR = G10X6B10X6R10X63Plane422UNorm3Pack16,
+		G10X6B10X6R10X62Plane422UNorm3Pack16KHR = G10X6B10X6R10X62Plane422UNorm3Pack16,
+		G10X6B10X6R10X63Plane444UNorm3Pack16KHR = G10X6B10X6R10X63Plane444UNorm3Pack16,
+		R12X4UNormPack16KHR = R12X4UNormPack16,
+		R12X4G12X4UNorm2Pack16KHR = R12X4G12X4UNorm2Pack16,
+		R12X4G12X4B12X4A12X4UNorm4Pack16KHR = R12X4G12X4B12X4A12X4UNorm4Pack16,
+		G12X4B12X4G12X4R12X4422UNorm4Pack16KHR = G12X4B12X4G12X4R12X4422UNorm4Pack16,
+		B12X4G12X4R12X4G12X4422UNorm4Pack16KHR = B12X4G12X4R12X4G12X4422UNorm4Pack16,
+		G12X4B12X4R12X43Plane420UNorm3Pack16KHR = G12X4B12X4R12X43Plane420UNorm3Pack16,
+		G12X4B12X4R12X42Plane420UNorm3Pack16KHR = G12X4B12X4R12X42Plane420UNorm3Pack16,
+		G12X4B12X4R12X43Plane422UNorm3Pack16KHR = G12X4B12X4R12X43Plane422UNorm3Pack16,
+		G12X4B12X4R12X42Plane422UNorm3Pack16KHR = G12X4B12X4R12X42Plane422UNorm3Pack16,
+		G12X4B12X4R12X43Plane444UNorm3Pack16KHR = G12X4B12X4R12X43Plane444UNorm3Pack16,
+		G16B16G16R16422UNormKHR = G16B16G16R16422UNorm,
+		B16G16R16G16422UNormKHR = B16G16R16G16422UNorm,
+		G16B16R163Plane420UNormKHR = G16B16R163Plane420UNorm,
+		G16B16R162Plane420UNormKHR = G16B16R162Plane420UNorm,
+		G16B16R163Plane422UNormKHR = G16B16R163Plane422UNorm,
+		G16B16R162Plane422UNormKHR = G16B16R162Plane422UNorm,
+		G16B16R163Plane444UNormKHR = G16B16R163Plane444UNorm,
 	}
 
 	public enum VkImageType
@@ -937,8 +944,8 @@ namespace Vortice.Vulkan
 		PerformanceQueryKHR = 1000116000,
 		AccelerationStructureCompactedSizeKHR = 1000165000,
 		AccelerationStructureSerializationSizeKHR = 1000150000,
-		PerformanceQueryIntel = 1000210000,
-		AccelerationStructureCompactedSizeNV = 1000165000,
+		PerformanceQueryINTEL = 1000210000,
+		AccelerationStructureCompactedSizeNV = AccelerationStructureCompactedSizeKHR,
 	}
 
 	public enum VkSharingMode
@@ -968,12 +975,12 @@ namespace Vortice.Vulkan
 		SharedPresentKHR = 1000111000,
 		ShadingRateOptimalNV = 1000164003,
 		FragmentDensityMapOptimalEXT = 1000218000,
-		DepthReadOnlyStencilAttachmentOptimalKHR = 1000117000,
-		DepthAttachmentStencilReadOnlyOptimalKHR = 1000117001,
-		DepthAttachmentOptimalKHR = 1000241000,
-		DepthReadOnlyOptimalKHR = 1000241001,
-		StencilAttachmentOptimalKHR = 1000241002,
-		StencilReadOnlyOptimalKHR = 1000241003,
+		DepthReadOnlyStencilAttachmentOptimalKHR = DepthReadOnlyStencilAttachmentOptimal,
+		DepthAttachmentStencilReadOnlyOptimalKHR = DepthAttachmentStencilReadOnlyOptimal,
+		DepthAttachmentOptimalKHR = DepthAttachmentOptimal,
+		DepthReadOnlyOptimalKHR = DepthReadOnlyOptimal,
+		StencilAttachmentOptimalKHR = StencilAttachmentOptimal,
+		StencilReadOnlyOptimalKHR = StencilReadOnlyOptimal,
 	}
 
 	public enum VkImageViewType
@@ -1180,7 +1187,7 @@ namespace Vortice.Vulkan
 		Nearest = 0,
 		Linear = 1,
 		CubicImg = 1000015000,
-		CubicEXT = 1000015000,
+		CubicEXT = CubicImg,
 	}
 
 	public enum VkSamplerMipmapMode
@@ -1196,7 +1203,7 @@ namespace Vortice.Vulkan
 		ClampToEdge = 2,
 		ClampToBorder = 3,
 		MirrorClampToEdge = 4,
-		MirrorClampToEdgeKHR = 4,
+		MirrorClampToEdgeKHR = MirrorClampToEdge,
 	}
 
 	public enum VkBorderColor
@@ -1207,6 +1214,8 @@ namespace Vortice.Vulkan
 		IntOpaqueBlack = 3,
 		FloatOpaqueWhite = 4,
 		IntOpaqueWhite = 5,
+		FloatCustomEXT = 1000287003,
+		IntCustomEXT = 1000287004,
 	}
 
 	public enum VkDescriptorType
@@ -1224,7 +1233,7 @@ namespace Vortice.Vulkan
 		InputAttachment = 10,
 		InlineUniformBlockEXT = 1000138000,
 		AccelerationStructureKHR = 1000165000,
-		AccelerationStructureNV = 1000165000,
+		AccelerationStructureNV = AccelerationStructureKHR,
 	}
 
 	public enum VkAttachmentLoadOp
@@ -1246,7 +1255,7 @@ namespace Vortice.Vulkan
 		Graphics = 0,
 		Compute = 1,
 		RayTracingKHR = 1000165000,
-		RayTracingNV = 1000165000,
+		RayTracingNV = RayTracingKHR,
 	}
 
 	public enum VkCommandBufferLevel
@@ -1261,7 +1270,7 @@ namespace Vortice.Vulkan
 		Uint32 = 1,
 		NoneKHR = 1000165000,
 		Uint8EXT = 1000265000,
-		NoneNV = 1000165000,
+		NoneNV = NoneKHR,
 	}
 
 	public enum VkSubpassContents
@@ -1308,12 +1317,13 @@ namespace Vortice.Vulkan
 		DebugUtilsMessengerEXT = 1000128000,
 		AccelerationStructureKHR = 1000165000,
 		ValidationCacheEXT = 1000160000,
-		PerformanceConfigurationIntel = 1000210000,
+		PerformanceConfigurationINTEL = 1000210000,
 		DeferredOperationKHR = 1000268000,
 		IndirectCommandsLayoutNV = 1000277000,
-		DescriptorUpdateTemplateKHR = 1000085000,
-		SamplerYcbcrConversionKHR = 1000156000,
-		AccelerationStructureNV = 1000165000,
+		PrivateDataSlotEXT = 1000295000,
+		DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate,
+		SamplerYcbcrConversionKHR = SamplerYcbcrConversion,
+		AccelerationStructureNV = AccelerationStructureKHR,
 	}
 
 	public enum VkVendorId
@@ -1354,17 +1364,17 @@ namespace Vortice.Vulkan
 		SampledImageFilterCubicImg = 8192,
 		AccelerationStructureVertexBufferKHR = 536870912,
 		FragmentDensityMapEXT = 16777216,
-		TransferSrcKHR = 16384,
-		TransferDstKHR = 32768,
-		SampledImageFilterMinmaxEXT = 65536,
-		MidpointChromaSamplesKHR = 131072,
-		SampledImageYcbcrConversionLinearFilterKHR = 262144,
-		SampledImageYcbcrConversionSeparateReconstructionFilterKHR = 524288,
-		SampledImageYcbcrConversionChromaReconstructionExplicitKHR = 1048576,
-		SampledImageYcbcrConversionChromaReconstructionExplicitForceableKHR = 2097152,
-		DisjointKHR = 4194304,
-		CositedChromaSamplesKHR = 8388608,
-		SampledImageFilterCubicEXT = 8192,
+		TransferSrcKHR = TransferSrc,
+		TransferDstKHR = TransferDst,
+		SampledImageFilterMinmaxEXT = SampledImageFilterMinmax,
+		MidpointChromaSamplesKHR = MidpointChromaSamples,
+		SampledImageYcbcrConversionLinearFilterKHR = SampledImageYcbcrConversionLinearFilter,
+		SampledImageYcbcrConversionSeparateReconstructionFilterKHR = SampledImageYcbcrConversionSeparateReconstructionFilter,
+		SampledImageYcbcrConversionChromaReconstructionExplicitKHR = SampledImageYcbcrConversionChromaReconstructionExplicit,
+		SampledImageYcbcrConversionChromaReconstructionExplicitForceableKHR = SampledImageYcbcrConversionChromaReconstructionExplicitForceable,
+		DisjointKHR = Disjoint,
+		CositedChromaSamplesKHR = CositedChromaSamples,
+		SampledImageFilterCubicEXT = SampledImageFilterCubicImg,
 	}
 
 	[Flags]
@@ -1402,12 +1412,12 @@ namespace Vortice.Vulkan
 		CornerSampledNV = 8192,
 		SampleLocationsCompatibleDepthEXT = 4096,
 		SubsampledEXT = 16384,
-		SplitInstanceBindRegionsKHR = 64,
-		_2dArrayCompatibleKHR = 32,
-		BlockTexelViewCompatibleKHR = 128,
-		ExtendedUsageKHR = 256,
-		DisjointKHR = 512,
-		AliasKHR = 1024,
+		SplitInstanceBindRegionsKHR = SplitInstanceBindRegions,
+		_2dArrayCompatibleKHR = _2dArrayCompatible,
+		BlockTexelViewCompatibleKHR = BlockTexelViewCompatible,
+		ExtendedUsageKHR = ExtendedUsage,
+		DisjointKHR = Disjoint,
+		AliasKHR = Alias,
 	}
 
 	[Flags]
@@ -1454,7 +1464,7 @@ namespace Vortice.Vulkan
 		None = 0,
 		DeviceLocal = 1,
 		MultiInstance = 2,
-		MultiInstanceKHR = 2,
+		MultiInstanceKHR = MultiInstance,
 	}
 
 	[Flags]
@@ -1494,8 +1504,8 @@ namespace Vortice.Vulkan
 		MeshShaderNV = 1048576,
 		FragmentDensityProcessEXT = 8388608,
 		CommandPreprocessNV = 131072,
-		RayTracingShaderNV = 2097152,
-		AccelerationStructureBuildNV = 33554432,
+		RayTracingShaderNV = RayTracingShaderKHR,
+		AccelerationStructureBuildNV = AccelerationStructureBuildKHR,
 	}
 
 	[Flags]
@@ -1513,9 +1523,9 @@ namespace Vortice.Vulkan
 		MemoryPlane1EXT = 256,
 		MemoryPlane2EXT = 512,
 		MemoryPlane3EXT = 1024,
-		Plane0KHR = 16,
-		Plane1KHR = 32,
-		Plane2KHR = 64,
+		Plane0KHR = Plane0,
+		Plane1KHR = Plane1,
+		Plane2KHR = Plane2,
 	}
 
 	[Flags]
@@ -1577,8 +1587,8 @@ namespace Vortice.Vulkan
 		SparseAliased = 4,
 		Protected = 8,
 		DeviceAddressCaptureReplay = 16,
-		DeviceAddressCaptureReplayEXT = 16,
-		DeviceAddressCaptureReplayKHR = 16,
+		DeviceAddressCaptureReplayEXT = DeviceAddressCaptureReplay,
+		DeviceAddressCaptureReplayKHR = DeviceAddressCaptureReplay,
 	}
 
 	[Flags]
@@ -1599,9 +1609,9 @@ namespace Vortice.Vulkan
 		TransformFeedbackCounterBufferEXT = 4096,
 		ConditionalRenderingEXT = 512,
 		RayTracingKHR = 1024,
-		RayTracingNV = 1024,
-		ShaderDeviceAddressEXT = 131072,
-		ShaderDeviceAddressKHR = 131072,
+		RayTracingNV = RayTracingKHR,
+		ShaderDeviceAddressEXT = ShaderDeviceAddress,
+		ShaderDeviceAddressKHR = ShaderDeviceAddress,
 	}
 
 	[Flags]
@@ -1646,8 +1656,8 @@ namespace Vortice.Vulkan
 		LibraryKHR = 2048,
 		FailOnPipelineCompileRequiredEXT = 256,
 		EarlyReturnOnFailureEXT = 512,
-		ViewIndexFromDeviceIndexKHR = 8,
-		DispatchBaseKHR = 16,
+		ViewIndexFromDeviceIndexKHR = ViewIndexFromDeviceIndex,
+		DispatchBaseKHR = DispatchBase,
 	}
 
 	[Flags]
@@ -1678,12 +1688,12 @@ namespace Vortice.Vulkan
 		CallableKHR = 8192,
 		TaskNV = 64,
 		MeshNV = 128,
-		RaygenNV = 256,
-		AnyHitNV = 512,
-		ClosestHitNV = 1024,
-		MissNV = 2048,
-		IntersectionNV = 4096,
-		CallableNV = 8192,
+		RaygenNV = RaygenKHR,
+		AnyHitNV = AnyHitKHR,
+		ClosestHitNV = ClosestHitKHR,
+		MissNV = MissKHR,
+		IntersectionNV = IntersectionKHR,
+		CallableNV = CallableKHR,
 	}
 
 	[Flags]
@@ -1719,7 +1729,7 @@ namespace Vortice.Vulkan
 		None = 0,
 		UpdateAfterBindPool = 2,
 		PushDescriptorKHR = 1,
-		UpdateAfterBindPoolEXT = 2,
+		UpdateAfterBindPoolEXT = UpdateAfterBindPool,
 	}
 
 	[Flags]
@@ -1728,7 +1738,7 @@ namespace Vortice.Vulkan
 		None = 0,
 		FreeDescriptorSet = 1,
 		UpdateAfterBind = 2,
-		UpdateAfterBindEXT = 2,
+		UpdateAfterBindEXT = UpdateAfterBind,
 	}
 
 	[Flags]
@@ -1736,7 +1746,7 @@ namespace Vortice.Vulkan
 	{
 		None = 0,
 		Imageless = 1,
-		ImagelessKHR = 1,
+		ImagelessKHR = Imageless,
 	}
 
 	[Flags]
@@ -1759,6 +1769,8 @@ namespace Vortice.Vulkan
 		None = 0,
 		PerViewAttributesNVX = 1,
 		PerViewPositionXOnlyNVX = 2,
+		FragmentRegionQcom = 4,
+		ShaderResolveQcom = 8,
 	}
 
 	[Flags]
@@ -1793,8 +1805,8 @@ namespace Vortice.Vulkan
 		FragmentDensityMapReadEXT = 16777216,
 		CommandPreprocessReadNV = 131072,
 		CommandPreprocessWriteNV = 262144,
-		AccelerationStructureReadNV = 2097152,
-		AccelerationStructureWriteNV = 4194304,
+		AccelerationStructureReadNV = AccelerationStructureReadKHR,
+		AccelerationStructureWriteNV = AccelerationStructureWriteKHR,
 	}
 
 	[Flags]
@@ -1804,8 +1816,8 @@ namespace Vortice.Vulkan
 		ByRegion = 1,
 		DeviceGroup = 4,
 		ViewLocal = 2,
-		ViewLocalKHR = 2,
-		DeviceGroupKHR = 4,
+		ViewLocalKHR = ViewLocal,
+		DeviceGroupKHR = DeviceGroup,
 	}
 
 	[Flags]
@@ -1860,16 +1872,16 @@ namespace Vortice.Vulkan
 	{
 		AllClipPlanes = 0,
 		UserClipPlanesOnly = 1,
-		AllClipPlanesKHR = 0,
-		UserClipPlanesOnlyKHR = 1,
+		AllClipPlanesKHR = AllClipPlanes,
+		UserClipPlanesOnlyKHR = UserClipPlanesOnly,
 	}
 
 	public enum VkTessellationDomainOrigin
 	{
 		UpperLeft = 0,
 		LowerLeft = 1,
-		UpperLeftKHR = 0,
-		LowerLeftKHR = 1,
+		UpperLeftKHR = UpperLeft,
+		LowerLeftKHR = LowerLeft,
 	}
 
 	public enum VkSamplerYcbcrModelConversion
@@ -1879,34 +1891,34 @@ namespace Vortice.Vulkan
 		Ycbcr709 = 2,
 		Ycbcr601 = 3,
 		Ycbcr2020 = 4,
-		RgbIdentityKHR = 0,
-		YcbcrIdentityKHR = 1,
-		Ycbcr709KHR = 2,
-		Ycbcr601KHR = 3,
-		Ycbcr2020KHR = 4,
+		RgbIdentityKHR = RgbIdentity,
+		YcbcrIdentityKHR = YcbcrIdentity,
+		Ycbcr709KHR = Ycbcr709,
+		Ycbcr601KHR = Ycbcr601,
+		Ycbcr2020KHR = Ycbcr2020,
 	}
 
 	public enum VkSamplerYcbcrRange
 	{
 		ItuFull = 0,
 		ItuNarrow = 1,
-		ItuFullKHR = 0,
-		ItuNarrowKHR = 1,
+		ItuFullKHR = ItuFull,
+		ItuNarrowKHR = ItuNarrow,
 	}
 
 	public enum VkChromaLocation
 	{
 		CositedEven = 0,
 		Midpoint = 1,
-		CositedEvenKHR = 0,
-		MidpointKHR = 1,
+		CositedEvenKHR = CositedEven,
+		MidpointKHR = Midpoint,
 	}
 
 	public enum VkDescriptorUpdateTemplateType
 	{
 		DescriptorSet = 0,
 		PushDescriptorsKHR = 1,
-		DescriptorSetKHR = 0,
+		DescriptorSetKHR = DescriptorSet,
 	}
 
 	[Flags]
@@ -1932,10 +1944,10 @@ namespace Vortice.Vulkan
 		CopyDst = 2,
 		GenericSrc = 4,
 		GenericDst = 8,
-		CopySrcKHR = 1,
-		CopyDstKHR = 2,
-		GenericSrcKHR = 4,
-		GenericDstKHR = 8,
+		CopySrcKHR = CopySrc,
+		CopyDstKHR = CopyDst,
+		GenericSrcKHR = GenericSrc,
+		GenericDstKHR = GenericDst,
 	}
 
 	[Flags]
@@ -1945,9 +1957,9 @@ namespace Vortice.Vulkan
 		DeviceMask = 1,
 		DeviceAddress = 2,
 		DeviceAddressCaptureReplay = 4,
-		DeviceMaskKHR = 1,
-		DeviceAddressKHR = 2,
-		DeviceAddressCaptureReplayKHR = 4,
+		DeviceMaskKHR = DeviceMask,
+		DeviceAddressKHR = DeviceAddress,
+		DeviceAddressCaptureReplayKHR = DeviceAddressCaptureReplay,
 	}
 
 	[Flags]
@@ -1965,13 +1977,13 @@ namespace Vortice.Vulkan
 		AndroidHardwareBufferAndroid = 1024,
 		HostAllocationEXT = 128,
 		HostMappedForeignMemoryEXT = 256,
-		OpaqueFdKHR = 1,
-		OpaqueWin32KHR = 2,
-		OpaqueWin32KmtKHR = 4,
-		D3d11TextureKHR = 8,
-		D3d11TextureKmtKHR = 16,
-		D3d12HeapKHR = 32,
-		D3d12ResourceKHR = 64,
+		OpaqueFdKHR = OpaqueFd,
+		OpaqueWin32KHR = OpaqueWin32,
+		OpaqueWin32KmtKHR = OpaqueWin32Kmt,
+		D3d11TextureKHR = D3d11Texture,
+		D3d11TextureKmtKHR = D3d11TextureKmt,
+		D3d12HeapKHR = D3d12Heap,
+		D3d12ResourceKHR = D3d12Resource,
 	}
 
 	[Flags]
@@ -1981,9 +1993,9 @@ namespace Vortice.Vulkan
 		DedicatedOnly = 1,
 		Exportable = 2,
 		Importable = 4,
-		DedicatedOnlyKHR = 1,
-		ExportableKHR = 2,
-		ImportableKHR = 4,
+		DedicatedOnlyKHR = DedicatedOnly,
+		ExportableKHR = Exportable,
+		ImportableKHR = Importable,
 	}
 
 	[Flags]
@@ -1994,10 +2006,10 @@ namespace Vortice.Vulkan
 		OpaqueWin32 = 2,
 		OpaqueWin32Kmt = 4,
 		SyncFd = 8,
-		OpaqueFdKHR = 1,
-		OpaqueWin32KHR = 2,
-		OpaqueWin32KmtKHR = 4,
-		SyncFdKHR = 8,
+		OpaqueFdKHR = OpaqueFd,
+		OpaqueWin32KHR = OpaqueWin32,
+		OpaqueWin32KmtKHR = OpaqueWin32Kmt,
+		SyncFdKHR = SyncFd,
 	}
 
 	[Flags]
@@ -2006,8 +2018,8 @@ namespace Vortice.Vulkan
 		None = 0,
 		Exportable = 1,
 		Importable = 2,
-		ExportableKHR = 1,
-		ImportableKHR = 2,
+		ExportableKHR = Exportable,
+		ImportableKHR = Importable,
 	}
 
 	[Flags]
@@ -2015,7 +2027,7 @@ namespace Vortice.Vulkan
 	{
 		None = 0,
 		Temporary = 1,
-		TemporaryKHR = 1,
+		TemporaryKHR = Temporary,
 	}
 
 	[Flags]
@@ -2023,7 +2035,7 @@ namespace Vortice.Vulkan
 	{
 		None = 0,
 		Temporary = 1,
-		TemporaryKHR = 1,
+		TemporaryKHR = Temporary,
 	}
 
 	[Flags]
@@ -2035,11 +2047,11 @@ namespace Vortice.Vulkan
 		OpaqueWin32Kmt = 4,
 		D3d12Fence = 8,
 		SyncFd = 16,
-		OpaqueFdKHR = 1,
-		OpaqueWin32KHR = 2,
-		OpaqueWin32KmtKHR = 4,
-		D3d12FenceKHR = 8,
-		SyncFdKHR = 16,
+		OpaqueFdKHR = OpaqueFd,
+		OpaqueWin32KHR = OpaqueWin32,
+		OpaqueWin32KmtKHR = OpaqueWin32Kmt,
+		D3d12FenceKHR = D3d12Fence,
+		SyncFdKHR = SyncFd,
 	}
 
 	[Flags]
@@ -2048,8 +2060,8 @@ namespace Vortice.Vulkan
 		None = 0,
 		Exportable = 1,
 		Importable = 2,
-		ExportableKHR = 1,
-		ImportableKHR = 2,
+		ExportableKHR = Exportable,
+		ImportableKHR = Importable,
 	}
 
 	public enum VkDriverId
@@ -2058,26 +2070,26 @@ namespace Vortice.Vulkan
 		AMDOpenSource = 2,
 		MesaRadv = 3,
 		NvidiaProprietary = 4,
-		IntelProprietaryWindows = 5,
-		IntelOpenSourceMesa = 6,
+		INTELProprietaryWindows = 5,
+		INTELOpenSourceMesa = 6,
 		ImaginationProprietary = 7,
 		QualcommProprietary = 8,
 		ArmProprietary = 9,
 		GoogleSwiftshader = 10,
 		GgpProprietary = 11,
 		BroadcomProprietary = 12,
-		AMDProprietaryKHR = 1,
-		AMDOpenSourceKHR = 2,
-		MesaRadvKHR = 3,
-		NvidiaProprietaryKHR = 4,
-		IntelProprietaryWindowsKHR = 5,
-		IntelOpenSourceMesaKHR = 6,
-		ImaginationProprietaryKHR = 7,
-		QualcommProprietaryKHR = 8,
-		ArmProprietaryKHR = 9,
-		GoogleSwiftshaderKHR = 10,
-		GgpProprietaryKHR = 11,
-		BroadcomProprietaryKHR = 12,
+		AMDProprietaryKHR = AMDProprietary,
+		AMDOpenSourceKHR = AMDOpenSource,
+		MesaRadvKHR = MesaRadv,
+		NvidiaProprietaryKHR = NvidiaProprietary,
+		INTELProprietaryWindowsKHR = INTELProprietaryWindows,
+		INTELOpenSourceMesaKHR = INTELOpenSourceMesa,
+		ImaginationProprietaryKHR = ImaginationProprietary,
+		QualcommProprietaryKHR = QualcommProprietary,
+		ArmProprietaryKHR = ArmProprietary,
+		GoogleSwiftshaderKHR = GoogleSwiftshader,
+		GgpProprietaryKHR = GgpProprietary,
+		BroadcomProprietaryKHR = BroadcomProprietary,
 	}
 
 	public enum VkShaderFloatControlsIndependence
@@ -2085,9 +2097,9 @@ namespace Vortice.Vulkan
 		_32Only = 0,
 		All = 1,
 		None = 2,
-		_32OnlyKHR = 0,
-		AllKHR = 1,
-		NoneKHR = 2,
+		_32OnlyKHR = _32Only,
+		AllKHR = All,
+		NoneKHR = None,
 	}
 
 	public enum VkSamplerReductionMode
@@ -2095,17 +2107,17 @@ namespace Vortice.Vulkan
 		WeightedAverage = 0,
 		Min = 1,
 		Max = 2,
-		WeightedAverageEXT = 0,
-		MinEXT = 1,
-		MaxEXT = 2,
+		WeightedAverageEXT = WeightedAverage,
+		MinEXT = Min,
+		MaxEXT = Max,
 	}
 
 	public enum VkSemaphoreType
 	{
 		Binary = 0,
 		Timeline = 1,
-		BinaryKHR = 0,
-		TimelineKHR = 1,
+		BinaryKHR = Binary,
+		TimelineKHR = Timeline,
 	}
 
 	[Flags]
@@ -2116,11 +2128,11 @@ namespace Vortice.Vulkan
 		Average = 2,
 		Min = 4,
 		Max = 8,
-		NoneKHR = 0,
-		SampleZeroKHR = 1,
-		AverageKHR = 2,
-		MinKHR = 4,
-		MaxKHR = 8,
+		NoneKHR = None,
+		SampleZeroKHR = SampleZero,
+		AverageKHR = Average,
+		MinKHR = Min,
+		MaxKHR = Max,
 	}
 
 	[Flags]
@@ -2131,10 +2143,10 @@ namespace Vortice.Vulkan
 		UpdateUnusedWhilePending = 2,
 		PartiallyBound = 4,
 		VariableDescriptorCount = 8,
-		UpdateAfterBindEXT = 1,
-		UpdateUnusedWhilePendingEXT = 2,
-		PartiallyBoundEXT = 4,
-		VariableDescriptorCountEXT = 8,
+		UpdateAfterBindEXT = UpdateAfterBind,
+		UpdateUnusedWhilePendingEXT = UpdateUnusedWhilePending,
+		PartiallyBoundEXT = PartiallyBound,
+		VariableDescriptorCountEXT = VariableDescriptorCount,
 	}
 
 	[Flags]
@@ -2142,7 +2154,17 @@ namespace Vortice.Vulkan
 	{
 		None = 0,
 		Any = 1,
-		AnyKHR = 1,
+		AnyKHR = Any,
+	}
+
+	public enum VkPresentModeKHR
+	{
+		ImmediateKHR = 0,
+		MailboxKHR = 1,
+		FifoKHR = 2,
+		FifoRelaxedKHR = 3,
+		SharedDemandRefreshKHR = 1000111000,
+		SharedContinuousRefreshKHR = 1000111001,
 	}
 
 	public enum VkColorSpaceKHR
@@ -2163,18 +2185,8 @@ namespace Vortice.Vulkan
 		PassThroughEXT = 1000104013,
 		ExtendedSrgbNonlinearEXT = 1000104014,
 		DisplayNativeAMD = 1000213000,
-		VK_COLORSPACE_SRGB_NONLINEAR_KHR = 0,
-		DciP3LinearEXT = 1000104003,
-	}
-
-	public enum VkPresentModeKHR
-	{
-		ImmediateKHR = 0,
-		MailboxKHR = 1,
-		FifoKHR = 2,
-		FifoRelaxedKHR = 3,
-		SharedDemandRefreshKHR = 1000111000,
-		SharedContinuousRefreshKHR = 1000111001,
+		SrgbNonLinearKHR = SrgbNonlinearKHR,
+		DciP3LinearEXT = DisplayP3LinearEXT,
 	}
 
 	[Flags]
@@ -2251,9 +2263,9 @@ namespace Vortice.Vulkan
 		CommandBufferKHR = 0,
 		RenderPassKHR = 1,
 		CommandKHR = 2,
-		VK_QUERY_SCOPE_COMMAND_BUFFER_KHR = 0,
-		VK_QUERY_SCOPE_RENDER_PASS_KHR = 1,
-		VK_QUERY_SCOPE_COMMAND_KHR = 2,
+		QueryScopeCommandBufferKHR = CommandBufferKHR,
+		QueryScopeRenderPassKHR = RenderPassKHR,
+		QueryScopeCommandKHR = CommandKHR,
 	}
 
 	public enum VkPerformanceCounterStorageKHR
@@ -2325,11 +2337,11 @@ namespace Vortice.Vulkan
 		SamplerYcbcrConversionEXT = 1000156000,
 		DescriptorUpdateTemplateEXT = 1000085000,
 		AccelerationStructureKHREXT = 1000165000,
-		DebugReportEXT = 28,
-		ValidationCacheEXT = 33,
-		DescriptorUpdateTemplateKHREXT = 1000085000,
-		SamplerYcbcrConversionKHREXT = 1000156000,
-		AccelerationStructureNVEXT = 1000165000,
+		DebugReportEXT = DebugReportCallbackEXTEXT,
+		ValidationCacheEXT = ValidationCacheEXTEXT,
+		DescriptorUpdateTemplateKHREXT = DescriptorUpdateTemplateEXT,
+		SamplerYcbcrConversionKHREXT = SamplerYcbcrConversionEXT,
+		AccelerationStructureNVEXT = AccelerationStructureKHREXT,
 	}
 
 	[Flags]
@@ -2505,9 +2517,9 @@ namespace Vortice.Vulkan
 		GeneralKHR = 0,
 		TrianglesHitGroupKHR = 1,
 		ProceduralHitGroupKHR = 2,
-		General = 0,
-		TrianglesHitGroup = 1,
-		ProceduralHitGroup = 2,
+		General = GeneralKHR,
+		TrianglesHitGroup = TrianglesHitGroupKHR,
+		ProceduralHitGroup = ProceduralHitGroupKHR,
 	}
 
 	public enum VkGeometryTypeKHR
@@ -2515,16 +2527,16 @@ namespace Vortice.Vulkan
 		TrianglesKHR = 0,
 		AabbsKHR = 1,
 		InstancesKHR = 1000150000,
-		Triangles = 0,
-		AabbsNV = 1,
+		Triangles = TrianglesKHR,
+		AabbsNV = AabbsKHR,
 	}
 
 	public enum VkAccelerationStructureTypeKHR
 	{
 		TopLevelKHR = 0,
 		BottomLevelKHR = 1,
-		TopLevel = 0,
-		BottomLevel = 1,
+		TopLevel = TopLevelKHR,
+		BottomLevel = BottomLevelKHR,
 	}
 
 	public enum VkCopyAccelerationStructureModeKHR
@@ -2533,8 +2545,8 @@ namespace Vortice.Vulkan
 		CompactKHR = 1,
 		SerializeKHR = 2,
 		DeserializeKHR = 3,
-		Clone = 0,
-		Compact = 1,
+		Clone = CloneKHR,
+		Compact = CompactKHR,
 	}
 
 	public enum VkAccelerationStructureMemoryRequirementsTypeKHR
@@ -2542,9 +2554,9 @@ namespace Vortice.Vulkan
 		ObjectKHR = 0,
 		BuildScratchKHR = 1,
 		UpdateScratchKHR = 2,
-		Object = 0,
-		BuildScratch = 1,
-		UpdateScratch = 2,
+		Object = ObjectKHR,
+		BuildScratch = BuildScratchKHR,
+		UpdateScratch = UpdateScratchKHR,
 	}
 
 	[Flags]
@@ -2553,8 +2565,8 @@ namespace Vortice.Vulkan
 		None = 0,
 		OpaqueKHR = 1,
 		NoDuplicateAnyHitInvocationKHR = 2,
-		OpaqueNV = 1,
-		NoDuplicateAnyHitInvocationNV = 2,
+		OpaqueNV = OpaqueKHR,
+		NoDuplicateAnyHitInvocationNV = NoDuplicateAnyHitInvocationKHR,
 	}
 
 	[Flags]
@@ -2565,10 +2577,10 @@ namespace Vortice.Vulkan
 		TriangleFrontCounterclockwiseKHR = 2,
 		ForceOpaqueKHR = 4,
 		ForceNoOpaqueKHR = 8,
-		TriangleCullDisableNV = 1,
-		TriangleFrontCounterclockwiseNV = 2,
-		ForceOpaqueNV = 4,
-		ForceNoOpaqueNV = 8,
+		TriangleCullDisableNV = TriangleFacingCullDisableKHR,
+		TriangleFrontCounterclockwiseNV = TriangleFrontCounterclockwiseKHR,
+		ForceOpaqueNV = ForceOpaqueKHR,
+		ForceNoOpaqueNV = ForceNoOpaqueKHR,
 	}
 
 	[Flags]
@@ -2580,11 +2592,11 @@ namespace Vortice.Vulkan
 		PreferFastTraceKHR = 4,
 		PreferFastBuildKHR = 8,
 		LowMemoryKHR = 16,
-		AllowUpdateNV = 1,
-		AllowCompactionNV = 2,
-		PreferFastTraceNV = 4,
-		PreferFastBuildNV = 8,
-		LowMemoryNV = 16,
+		AllowUpdateNV = AllowUpdateKHR,
+		AllowCompactionNV = AllowCompactionKHR,
+		PreferFastTraceNV = PreferFastTraceKHR,
+		PreferFastBuildNV = PreferFastBuildKHR,
+		LowMemoryNV = LowMemoryKHR,
 	}
 
 	public enum VkQueueGlobalPriorityEXT
@@ -2627,53 +2639,33 @@ namespace Vortice.Vulkan
 
 	public enum VkPerformanceConfigurationTypeINTEL
 	{
-		VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL = 0,
-		VK_PERFORMANCE_CONFIGURATION_TYPE_BEGIN_RANGE_INTEL = 0,
-		VK_PERFORMANCE_CONFIGURATION_TYPE_END_RANGE_INTEL = 0,
-		VK_PERFORMANCE_CONFIGURATION_TYPE_RANGE_SIZE_INTEL = 1,
-		VK_PERFORMANCE_CONFIGURATION_TYPE_MAX_ENUM_INTEL = 2147483647,
+		CommandQueueMetricsDiscoveryActivatedIntel = 0,
 	}
 
 	public enum VkQueryPoolSamplingModeINTEL
 	{
-		VK_QUERY_POOL_SAMPLING_MODE_MANUAL_INTEL = 0,
-		VK_QUERY_POOL_SAMPLING_MODE_BEGIN_RANGE_INTEL = 0,
-		VK_QUERY_POOL_SAMPLING_MODE_END_RANGE_INTEL = 0,
-		VK_QUERY_POOL_SAMPLING_MODE_RANGE_SIZE_INTEL = 1,
-		VK_QUERY_POOL_SAMPLING_MODE_MAX_ENUM_INTEL = 2147483647,
+		ModeManualINTEL = 0,
 	}
 
 	public enum VkPerformanceOverrideTypeINTEL
 	{
-		VK_PERFORMANCE_OVERRIDE_TYPE_NULL_HARDWARE_INTEL = 0,
-		VK_PERFORMANCE_OVERRIDE_TYPE_FLUSH_GPU_CACHES_INTEL = 1,
-		VK_PERFORMANCE_OVERRIDE_TYPE_BEGIN_RANGE_INTEL = 0,
-		VK_PERFORMANCE_OVERRIDE_TYPE_END_RANGE_INTEL = 1,
-		VK_PERFORMANCE_OVERRIDE_TYPE_RANGE_SIZE_INTEL = 2,
-		VK_PERFORMANCE_OVERRIDE_TYPE_MAX_ENUM_INTEL = 2147483647,
+		TypeNullHardwareINTEL = 0,
+		TypeFlushGpuCachesINTEL = 1,
 	}
 
 	public enum VkPerformanceParameterTypeINTEL
 	{
-		VK_PERFORMANCE_PARAMETER_TYPE_HW_COUNTERS_SUPPORTED_INTEL = 0,
-		VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL = 1,
-		VK_PERFORMANCE_PARAMETER_TYPE_BEGIN_RANGE_INTEL = 0,
-		VK_PERFORMANCE_PARAMETER_TYPE_END_RANGE_INTEL = 1,
-		VK_PERFORMANCE_PARAMETER_TYPE_RANGE_SIZE_INTEL = 2,
-		VK_PERFORMANCE_PARAMETER_TYPE_MAX_ENUM_INTEL = 2147483647,
+		TypeHwCountersSupportedINTEL = 0,
+		TypeStreamMarkerValidBitsINTEL = 1,
 	}
 
 	public enum VkPerformanceValueTypeINTEL
 	{
-		VK_PERFORMANCE_VALUE_TYPE_UINT32_INTEL = 0,
-		VK_PERFORMANCE_VALUE_TYPE_UINT64_INTEL = 1,
-		VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL = 2,
-		VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL = 3,
-		VK_PERFORMANCE_VALUE_TYPE_STRING_INTEL = 4,
-		VK_PERFORMANCE_VALUE_TYPE_BEGIN_RANGE_INTEL = 0,
-		VK_PERFORMANCE_VALUE_TYPE_END_RANGE_INTEL = 4,
-		VK_PERFORMANCE_VALUE_TYPE_RANGE_SIZE_INTEL = 5,
-		VK_PERFORMANCE_VALUE_TYPE_MAX_ENUM_INTEL = 2147483647,
+		TypeUint32INTEL = 0,
+		TypeUint64INTEL = 1,
+		TypeFloatINTEL = 2,
+		TypeBoolINTEL = 3,
+		TypeStringINTEL = 4,
 	}
 
 	[Flags]
@@ -2716,31 +2708,31 @@ namespace Vortice.Vulkan
 
 	public enum VkComponentTypeNV
 	{
-		VK_COMPONENT_TYPE_FLOAT16_NV = 0,
-		VK_COMPONENT_TYPE_FLOAT32_NV = 1,
-		VK_COMPONENT_TYPE_FLOAT64_NV = 2,
-		VK_COMPONENT_TYPE_SINT8_NV = 3,
-		VK_COMPONENT_TYPE_SINT16_NV = 4,
-		VK_COMPONENT_TYPE_SINT32_NV = 5,
-		VK_COMPONENT_TYPE_SINT64_NV = 6,
-		VK_COMPONENT_TYPE_UINT8_NV = 7,
-		VK_COMPONENT_TYPE_UINT16_NV = 8,
-		VK_COMPONENT_TYPE_UINT32_NV = 9,
-		VK_COMPONENT_TYPE_UINT64_NV = 10,
+		TypeFloat16NV = 0,
+		TypeFloat32NV = 1,
+		TypeFloat64NV = 2,
+		TypeSint8NV = 3,
+		TypeSint16NV = 4,
+		TypeSint32NV = 5,
+		TypeSint64NV = 6,
+		TypeUint8NV = 7,
+		TypeUint16NV = 8,
+		TypeUint32NV = 9,
+		TypeUint64NV = 10,
 	}
 
 	public enum VkScopeNV
 	{
-		VK_SCOPE_DEVICE_NV = 1,
-		VK_SCOPE_WORKGROUP_NV = 2,
-		VK_SCOPE_SUBGROUP_NV = 3,
-		VK_SCOPE_QUEUE_FAMILY_NV = 5,
+		ScopeDeviceNV = 1,
+		ScopeWorkgroupNV = 2,
+		ScopeSubgroupNV = 3,
+		ScopeQueueFamilyNV = 5,
 	}
 
 	public enum VkCoverageReductionModeNV
 	{
-		VK_COVERAGE_REDUCTION_MODE_MERGE_NV = 0,
-		VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV = 1,
+		ModeMergeNV = 0,
+		ModeTruncateNV = 1,
 	}
 
 	public enum VkLineRasterizationModeEXT
@@ -2753,14 +2745,14 @@ namespace Vortice.Vulkan
 
 	public enum VkIndirectCommandsTokenTypeNV
 	{
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV = 0,
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV = 1,
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV = 2,
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV = 3,
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV = 4,
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV = 5,
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV = 6,
-		VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV = 7,
+		TypeShaderGroupNV = 0,
+		TypeStateNV = 1,
+		TypeIndexBufferNV = 2,
+		TypeVertexBufferNV = 3,
+		TypePushConstantNV = 4,
+		TypeDrawIndexedNV = 5,
+		TypeDrawNV = 6,
+		TypeDrawTasksNV = 7,
 	}
 
 	[Flags]
@@ -2777,6 +2769,12 @@ namespace Vortice.Vulkan
 		ExplicitPreprocessNV = 1,
 		IndexedSequencesNV = 2,
 		UnorderedSequencesNV = 4,
+	}
+
+	[Flags]
+	public enum VkPrivateDataSlotCreateFlagsEXT
+	{
+		None = 0,
 	}
 
 	[Flags]

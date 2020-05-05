@@ -1647,6 +1647,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXTFilterCubicExtensionName = "VK_EXT_filter_cubic";
 		/// <summary>
+		/// VK_QCOM_render_pass_shader_resolve = 1
+		/// </summary>
+		public const uint QcomRenderPassShaderResolve = 1;
+		/// <summary>
+		/// VK_QCOM_RENDER_PASS_SHADER_RESOLVE_SPEC_VERSION = 4
+		/// </summary>
+		public const uint QcomRenderPassShaderResolveSpecVersion = 4;
+		/// <summary>
+		/// VK_QCOM_RENDER_PASS_SHADER_RESOLVE_EXTENSION_NAME = "VK_QCOM_render_pass_shader_resolve"
+		/// </summary>
+		public const string QcomRenderPassShaderResolveExtensionName = "VK_QCOM_render_pass_shader_resolve";
+		/// <summary>
 		/// VK_EXT_global_priority = 1
 		/// </summary>
 		public const uint EXTGlobalPriority = 1;
@@ -1841,27 +1853,27 @@ namespace Vortice.Vulkan
 		/// <summary>
 		/// VK_INTEL_shader_integer_functions2 = 1
 		/// </summary>
-		public const uint IntelShaderIntegerFunctions2 = 1;
+		public const uint INTELShaderIntegerFunctions2 = 1;
 		/// <summary>
 		/// VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_SPEC_VERSION = 1
 		/// </summary>
-		public const uint IntelShaderIntegerFunctions2SpecVersion = 1;
+		public const uint INTELShaderIntegerFunctions2SpecVersion = 1;
 		/// <summary>
 		/// VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_EXTENSION_NAME = "VK_INTEL_shader_integer_functions2"
 		/// </summary>
-		public const string IntelShaderIntegerFunctions2ExtensionName = "VK_INTEL_shader_integer_functions2";
+		public const string INTELShaderIntegerFunctions2ExtensionName = "VK_INTEL_shader_integer_functions2";
 		/// <summary>
 		/// VK_INTEL_performance_query = 1
 		/// </summary>
-		public const uint IntelPerformanceQuery = 1;
+		public const uint INTELPerformanceQuery = 1;
 		/// <summary>
 		/// VK_INTEL_PERFORMANCE_QUERY_SPEC_VERSION = 2
 		/// </summary>
-		public const uint IntelPerformanceQuerySpecVersion = 2;
+		public const uint INTELPerformanceQuerySpecVersion = 2;
 		/// <summary>
 		/// VK_INTEL_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_INTEL_performance_query"
 		/// </summary>
-		public const string IntelPerformanceQueryExtensionName = "VK_INTEL_performance_query";
+		public const string INTELPerformanceQueryExtensionName = "VK_INTEL_performance_query";
 		/// <summary>
 		/// VK_EXT_pci_bus_info = 1
 		/// </summary>
@@ -2199,6 +2211,30 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string QcomRenderPassTransformExtensionName = "VK_QCOM_render_pass_transform";
 		/// <summary>
+		/// VK_EXT_robustness2 = 1
+		/// </summary>
+		public const uint EXTRobustness2 = 1;
+		/// <summary>
+		/// VK_EXT_ROBUSTNESS_2_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTRobustness2SpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_ROBUSTNESS_2_EXTENSION_NAME = "VK_EXT_robustness2"
+		/// </summary>
+		public const string EXTRobustness2ExtensionName = "VK_EXT_robustness2";
+		/// <summary>
+		/// VK_EXT_custom_border_color = 1
+		/// </summary>
+		public const uint EXTCustomBorderColor = 1;
+		/// <summary>
+		/// VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION = 12
+		/// </summary>
+		public const uint EXTCustomBorderColorSpecVersion = 12;
+		/// <summary>
+		/// VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME = "VK_EXT_custom_border_color"
+		/// </summary>
+		public const string EXTCustomBorderColorExtensionName = "VK_EXT_custom_border_color";
+		/// <summary>
 		/// VK_GOOGLE_user_type = 1
 		/// </summary>
 		public const uint GoogleUserType = 1;
@@ -2210,6 +2246,18 @@ namespace Vortice.Vulkan
 		/// VK_GOOGLE_USER_TYPE_EXTENSION_NAME = "VK_GOOGLE_user_type"
 		/// </summary>
 		public const string GoogleUserTypeExtensionName = "VK_GOOGLE_user_type";
+		/// <summary>
+		/// VK_EXT_private_data = 1
+		/// </summary>
+		public const uint EXTPrivateData = 1;
+		/// <summary>
+		/// VK_EXT_PRIVATE_DATA_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTPrivateDataSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_PRIVATE_DATA_EXTENSION_NAME = "VK_EXT_private_data"
+		/// </summary>
+		public const string EXTPrivateDataExtensionName = "VK_EXT_private_data";
 		/// <summary>
 		/// VK_EXT_pipeline_creation_cache_control = 1
 		/// </summary>

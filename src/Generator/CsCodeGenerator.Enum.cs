@@ -32,13 +32,15 @@ namespace Generator
             {  "VK_IMAGE_TYPE_3D", "Image3D" },
 
             // VkImageViewType
-            {  "VK_IMAGE_VIEW_TYPE_1D", "Image1D" },
-            {  "VK_IMAGE_VIEW_TYPE_2D", "Image2D" },
-            {  "VK_IMAGE_VIEW_TYPE_3D", "Image3D" },
-            {  "VK_IMAGE_VIEW_TYPE_CUBE", "ImageCube" },
-            {  "VK_IMAGE_VIEW_TYPE_1D_ARRAY", "Image1DArray" },
-            {  "VK_IMAGE_VIEW_TYPE_2D_ARRAY", "Image2DArray" },
-            {  "VK_IMAGE_VIEW_TYPE_CUBE_ARRAY", "ImageCubeArray" },
+            { "VK_IMAGE_VIEW_TYPE_1D", "Image1D" },
+            { "VK_IMAGE_VIEW_TYPE_2D", "Image2D" },
+            { "VK_IMAGE_VIEW_TYPE_3D", "Image3D" },
+            { "VK_IMAGE_VIEW_TYPE_CUBE", "ImageCube" },
+            { "VK_IMAGE_VIEW_TYPE_1D_ARRAY", "Image1DArray" },
+            { "VK_IMAGE_VIEW_TYPE_2D_ARRAY", "Image2DArray" },
+            { "VK_IMAGE_VIEW_TYPE_CUBE_ARRAY", "ImageCubeArray" },
+
+            { "VK_COLORSPACE_SRGB_NONLINEAR_KHR", "SrgbNonLinearKHR" },
 
             // VkShadingRatePaletteEntryNV
             {  "VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV", "SixteenInvocationsPerPixel" },
@@ -71,9 +73,17 @@ namespace Generator
             {  "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV", "UpdateScratch" },
 
             // VkRayTracingShaderGroupTypeNV
-            {  "VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV", "General" },
-            {  "VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV", "TrianglesHitGroup" },
-            {  "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV", "ProceduralHitGroup" },
+            { "VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV", "General" },
+            { "VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV", "TrianglesHitGroup" },
+            { "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV", "ProceduralHitGroup" },
+
+            // VkPerformanceCounterScopeKHR
+            { "VK_QUERY_SCOPE_COMMAND_BUFFER_KHR", "QueryScopeCommandBufferKHR" },
+            { "VK_QUERY_SCOPE_RENDER_PASS_KHR", "QueryScopeRenderPassKHR" },
+            { "VK_QUERY_SCOPE_COMMAND_KHR", "QueryScopeCommandKHR" },
+
+            // VkPerformanceConfigurationTypeINTEL
+            { "VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL", "CommandQueueMetricsDiscoveryActivatedIntel" },
         };
         private static readonly Dictionary<string, string> s_knownEnumPrefixes = new Dictionary<string, string>
         {
@@ -101,6 +111,7 @@ namespace Generator
             "nv",
             "nvx",
             "amd",
+            "intel"
         };
 
         public static void GenerateEnums(CppCompilation compilation, string outputPath)
@@ -164,6 +175,7 @@ namespace Generator
                             enumItem.Name.EndsWith("_MAX_ENUM_KHR") ||
                             enumItem.Name.EndsWith("_MAX_ENUM_NV") ||
                             enumItem.Name.EndsWith("_MAX_ENUM_AMD") ||
+                            enumItem.Name.EndsWith("_MAX_ENUM_INTEL") ||
                             enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
                             enumItem.Name == "VK_STENCIL_FRONT_AND_BACK" ||
                             enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE")
@@ -171,118 +183,25 @@ namespace Generator
                             continue;
                         }
 
-                        string enumItemName;
-                        if (cppEnum.Name == "VkFormat")
-                        {
-                            enumItemName = enumItem.Name.Substring(enumNamePrefix.Length + 1);
-                            var splits = enumItemName.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
-                            if (splits.Length <= 1)
-                            {
-                                enumItemName = char.ToUpperInvariant(enumItemName[0]) + enumItemName.Substring(1).ToLowerInvariant();
-                            }
-                            else
-                            {
-                                var sb = new StringBuilder();
-                                foreach (var part in splits)
-                                {
-                                    if (part.Equals("UNORM", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("UNorm");
-                                    }
-                                    else if (part.Equals("SNORM", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("SNorm");
-                                    }
-                                    else if (part.Equals("UINT", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("UInt");
-                                    }
-                                    else if (part.Equals("SINT", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("SInt");
-                                    }
-                                    else if (part.Equals("PACK8", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("Pack8");
-                                    }
-                                    else if (part.Equals("PACK16", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("Pack16");
-                                    }
-                                    else if (part.Equals("PACK32", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("Pack32");
-                                    }
-                                    else if (part.Equals("USCALED", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("UScaled");
-                                    }
-                                    else if (part.Equals("SSCALED", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("SScaled");
-                                    }
-                                    else if (part.Equals("UFLOAT", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("UFloat");
-                                    }
-                                    else if (part.Equals("SFLOAT", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("SFloat");
-                                    }
-                                    else if (part.Equals("SRGB", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("SRgb");
-                                    }
-                                    else if (part.Equals("BLOCK", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("Block");
-                                    }
-                                    else if (part.Equals("IMG", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("Img");
-                                    }
-                                    else if (part.Equals("2PACK16", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("2Pack16");
-                                    }
-                                    else if (part.Equals("3PACK16", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("3Pack16");
-                                    }
-                                    else if (part.Equals("4PACK16", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("4Pack16");
-                                    }
-                                    else if (part.Equals("2PLANE", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("2Plane");
-                                    }
-                                    else if (part.Equals("3PLANE", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("3Plane");
-                                    }
-                                    else if (part.Equals("4PLANE", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        sb.Append("4Plane");
-                                    }
-                                    else
-                                    {
-                                        sb.Append(part);
-                                    }
-                                }
-
-                                enumItemName = sb.ToString();
-                            }
-                        }
-                        else
-                        {
-                            enumItemName = GetPrettyEnumName(enumItem.Name, enumNamePrefix);
-                        }
+                        var enumItemName = GetEnumItemName(cppEnum, enumItem.Name, enumNamePrefix);
 
                         //writer.WriteLine("/// <summary>");
                         //writer.WriteLine($"/// {enumItem.Name}");
                         //writer.WriteLine("/// </summary>");
-                        writer.WriteLine($"{enumItemName} = {enumItem.Value},");
+                        if (enumItem.ValueExpression is CppRawExpression rawExpression)
+                        {
+                            var enumValueName = GetEnumItemName(cppEnum, rawExpression.Text, enumNamePrefix);
+                            if (enumItemName == "SurfaceCapabilities2EXT")
+                            {
+                                continue;
+                            }
+
+                            writer.WriteLine($"{enumItemName} = {enumValueName},");
+                        }
+                        else
+                        {
+                            writer.WriteLine($"{enumItemName} = {enumItem.Value},");
+                        }
                     }
                 }
 
@@ -325,6 +244,119 @@ namespace Generator
                     writer.WriteLine();
                 }
             }
+        }
+
+        private static string GetEnumItemName(CppEnum @enum, string cppEnumItemName, string enumNamePrefix)
+        {
+            string enumItemName;
+            if (@enum.Name == "VkFormat")
+            {
+                enumItemName = cppEnumItemName.Substring(enumNamePrefix.Length + 1);
+                var splits = enumItemName.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+                if (splits.Length <= 1)
+                {
+                    enumItemName = char.ToUpperInvariant(enumItemName[0]) + enumItemName.Substring(1).ToLowerInvariant();
+                }
+                else
+                {
+                    var sb = new StringBuilder();
+                    foreach (var part in splits)
+                    {
+                        if (part.Equals("UNORM", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("UNorm");
+                        }
+                        else if (part.Equals("SNORM", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("SNorm");
+                        }
+                        else if (part.Equals("UINT", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("UInt");
+                        }
+                        else if (part.Equals("SINT", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("SInt");
+                        }
+                        else if (part.Equals("PACK8", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("Pack8");
+                        }
+                        else if (part.Equals("PACK16", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("Pack16");
+                        }
+                        else if (part.Equals("PACK32", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("Pack32");
+                        }
+                        else if (part.Equals("USCALED", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("UScaled");
+                        }
+                        else if (part.Equals("SSCALED", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("SScaled");
+                        }
+                        else if (part.Equals("UFLOAT", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("UFloat");
+                        }
+                        else if (part.Equals("SFLOAT", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("SFloat");
+                        }
+                        else if (part.Equals("SRGB", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("SRgb");
+                        }
+                        else if (part.Equals("BLOCK", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("Block");
+                        }
+                        else if (part.Equals("IMG", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("Img");
+                        }
+                        else if (part.Equals("2PACK16", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("2Pack16");
+                        }
+                        else if (part.Equals("3PACK16", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("3Pack16");
+                        }
+                        else if (part.Equals("4PACK16", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("4Pack16");
+                        }
+                        else if (part.Equals("2PLANE", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("2Plane");
+                        }
+                        else if (part.Equals("3PLANE", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("3Plane");
+                        }
+                        else if (part.Equals("4PLANE", StringComparison.OrdinalIgnoreCase))
+                        {
+                            sb.Append("4Plane");
+                        }
+                        else
+                        {
+                            sb.Append(part);
+                        }
+                    }
+
+                    enumItemName = sb.ToString();
+                }
+            }
+            else
+            {
+                enumItemName = GetPrettyEnumName(cppEnumItemName, enumNamePrefix);
+            }
+
+            return enumItemName;
         }
 
         private static string NormalizeEnumValue(string value)
@@ -390,7 +422,12 @@ namespace Generator
                     (parts[i] == "K" && (i + 2) < parts.Count && parts[i + 1] == "H" && parts[i + 2] == "R") ||
                     (parts[i] == "A" && (i + 2) < parts.Count && parts[i + 1] == "M" && parts[i + 2] == "D") ||
                     (parts[i] == "E" && (i + 2) < parts.Count && parts[i + 1] == "X" && parts[i + 2] == "T") ||
-                    (parts[i] == "Type" && (i + 3) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V" && parts[i + 3] == "X")
+                    (parts[i] == "Type" && (i + 2) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V") ||
+                    (parts[i] == "Type" && (i + 3) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V" && parts[i + 3] == "X") ||
+                    (parts[i] == "Scope" && (i + 2) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V") ||
+                    (parts[i] == "Mode" && (i + 2) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V") ||
+                    (parts[i] == "Mode" && (i + 5) < parts.Count && parts[i + 1] == "I" && parts[i + 2] == "N" && parts[i + 3] == "T" && parts[i + 4] == "E" && parts[i + 5] == "L") ||
+                    (parts[i] == "Type" && (i + 5) < parts.Count && parts[i + 1] == "I" && parts[i + 2] == "N" && parts[i + 3] == "T" && parts[i + 4] == "E" && parts[i + 5] == "L")
                     )
                 {
                     parts = new List<string>(parts.Take(i));

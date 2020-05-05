@@ -3631,6 +3631,15 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugUtilsLabelEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public unsafe byte* pLabelName;
+		public unsafe fixed float color[4];
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkDebugUtilsObjectNameInfoEXT
 	{
 		public VkStructureType sType;
@@ -3638,27 +3647,6 @@ namespace Vortice.Vulkan
 		public VkObjectType objectType;
 		public ulong objectHandle;
 		public unsafe byte* pObjectName;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDebugUtilsObjectTagInfoEXT
-	{
-		public VkStructureType sType;
-		public unsafe void* pNext;
-		public VkObjectType objectType;
-		public ulong objectHandle;
-		public ulong tagName;
-		public VkPointerSize tagSize;
-		public unsafe void* pTag;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDebugUtilsLabelEXT
-	{
-		public VkStructureType sType;
-		public unsafe void* pNext;
-		public unsafe byte* pLabelName;
-		public unsafe fixed float color[4];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3676,6 +3664,18 @@ namespace Vortice.Vulkan
 		public unsafe VkDebugUtilsLabelEXT* pCmdBufLabels;
 		public uint objectCount;
 		public unsafe VkDebugUtilsObjectNameInfoEXT* pObjects;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugUtilsObjectTagInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkObjectType objectType;
+		public ulong objectHandle;
+		public ulong tagName;
+		public VkPointerSize tagSize;
+		public unsafe void* pTag;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4144,14 +4144,6 @@ namespace Vortice.Vulkan
 		public ulong maxInstanceCount;
 		public ulong maxTriangleCount;
 		public uint maxDescriptorSetAccelerationStructures;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkTransformMatrixKHR
-	{
-		public float matrix_0;
-		public float matrix_1;
-		public float matrix_2;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5029,6 +5021,75 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkSurfaceTransformFlagsKHR transform;
 		public Rectangle renderArea;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceRobustness2FeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 robustBufferAccess2;
+		public VkBool32 robustImageAccess2;
+		public VkBool32 nullDescriptor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceRobustness2PropertiesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public ulong robustStorageBufferAccessSizeAlignment;
+		public ulong robustUniformBufferAccessSizeAlignment;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSamplerCustomBorderColorCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkClearColorValue customBorderColor;
+		public VkFormat format;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceCustomBorderColorPropertiesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint maxCustomBorderColorSamplers;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceCustomBorderColorFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 customBorderColors;
+		public VkBool32 customBorderColorWithoutFormat;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePrivateDataFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 privateData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDevicePrivateDataCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint privateDataSlotRequestCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPrivateDataSlotCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkPrivateDataSlotCreateFlagsEXT flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
