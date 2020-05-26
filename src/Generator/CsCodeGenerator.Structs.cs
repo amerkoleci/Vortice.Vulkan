@@ -37,7 +37,8 @@ namespace Generator
                     cppClass.Name == "VkExtent3D" ||
                     cppClass.Name == "VkViewport" ||
                     cppClass.Name == "VkRect2D" ||
-                    cppClass.Name == "VkTransformMatrixKHR")
+                    cppClass.Name == "VkTransformMatrixKHR" ||
+                    cppClass.Name == "VkAccelerationStructureInstanceKHR")
                 {
                     continue;
                 }

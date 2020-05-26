@@ -4158,17 +4158,6 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkAccelerationStructureInstanceKHR
-	{
-		public VkTransformMatrixKHR transform;
-		public uint instanceCustomIndex;
-		public uint mask;
-		public uint instanceShaderBindingTableRecordOffset;
-		public VkGeometryInstanceFlagsKHR flags;
-		public ulong accelerationStructureReference;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV
 	{
 		public VkStructureType sType;
