@@ -55,6 +55,11 @@ namespace Generator
             {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X4_PIXELS_NV", "OneInvocationPer2x4Pixels" },
             {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X4_PIXELS_NV", "OneInvocationPer4x4Pixels" },
 
+            // VkDriverId
+            { "VK_DRIVER_ID_GOOGLE_SWIFTSHADER", "GoogleSwiftShader" },
+            { "VK_DRIVER_ID_GOOGLE_SWIFTSHADER_KHR", "GoogleSwiftShaderKHR" },
+            { "VK_DRIVER_ID_MESA_LLVMPIPE", "MesaLLVMPipe" },
+
             // VkGeometryTypeNV
             {  "VK_GEOMETRY_TYPE_TRIANGLES_NV", "Triangles" },
             {  "VK_GEOMETRY_TYPE_AABBS_NVX", "AABBs" },

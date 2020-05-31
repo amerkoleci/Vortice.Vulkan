@@ -1332,6 +1332,7 @@ namespace Vortice.Vulkan
 		Vsi = 65538,
 		Kazan = 65539,
 		Codeplay = 65540,
+		Mesa = 65541,
 	}
 
 	[Flags]
@@ -2075,9 +2076,10 @@ namespace Vortice.Vulkan
 		ImaginationProprietary = 7,
 		QualcommProprietary = 8,
 		ArmProprietary = 9,
-		GoogleSwiftshader = 10,
+		GoogleSwiftShader = 10,
 		GgpProprietary = 11,
 		BroadcomProprietary = 12,
+		MesaLLVMPipe = 13,
 		AMDProprietaryKHR = AMDProprietary,
 		AMDOpenSourceKHR = AMDOpenSource,
 		MesaRadvKHR = MesaRadv,
@@ -2087,7 +2089,7 @@ namespace Vortice.Vulkan
 		ImaginationProprietaryKHR = ImaginationProprietary,
 		QualcommProprietaryKHR = QualcommProprietary,
 		ArmProprietaryKHR = ArmProprietary,
-		GoogleSwiftshaderKHR = GoogleSwiftshader,
+		GoogleSwiftShaderKHR = GoogleSwiftShader,
 		GgpProprietaryKHR = GgpProprietary,
 		BroadcomProprietaryKHR = BroadcomProprietary,
 	}

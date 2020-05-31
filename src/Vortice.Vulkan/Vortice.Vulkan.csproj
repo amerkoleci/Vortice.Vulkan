@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <VersionPrefix>1.2.140</VersionPrefix>
+    <VersionPrefix>1.2.141</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
     <BuildNumber>001</BuildNumber>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
