@@ -361,10 +361,14 @@ namespace Generator
 
         private static string NormalizeEnumValue(string value)
         {
-            if (value == "(~0U)"
-                || value == "(~0ULL)")
+            if (value == "(~0U)")
             {
                 return "~0u";
+            }
+
+            if (value == "(~0ULL)")
+            {
+                return "~0ul";
             }
 
             if (value == "(~0U-1)")

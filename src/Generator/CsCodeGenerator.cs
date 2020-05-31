@@ -136,13 +136,13 @@ namespace Generator
                     {
                         csDataType = "float";
                     }
+                    else if (macroValue.EndsWith("UL", StringComparison.OrdinalIgnoreCase))
+                    {
+                        csDataType = "ulong";
+                    }
                     else if (macroValue.EndsWith("U", StringComparison.OrdinalIgnoreCase))
                     {
                         csDataType = "uint";
-                    }
-                    else if (macroValue.EndsWith("LL", StringComparison.OrdinalIgnoreCase))
-                    {
-                        csDataType = "ulong";
                     }
                     else if (uint.TryParse(macroValue, out _))
                     {

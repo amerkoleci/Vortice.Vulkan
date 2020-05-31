@@ -33,7 +33,7 @@ namespace Vortice.Vulkan
 		/// <summary>
 		/// VK_WHOLE_SIZE = (~0ULL)
 		/// </summary>
-		public const uint WholeSize = ~0u;
+		public const ulong WholeSize = ~0ul;
 		/// <summary>
 		/// VK_ATTACHMENT_UNUSED = (~0U)
 		/// </summary>
