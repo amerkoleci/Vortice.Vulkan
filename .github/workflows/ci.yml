@@ -1,6 +1,10 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore:
+    - 'README.md'
+  pull_request:
 
 jobs:
   build:
