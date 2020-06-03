@@ -208,6 +208,11 @@ namespace Generator
                             writer.WriteLine($"{enumItemName} = {enumItem.Value},");
                         }
                     }
+
+                    if(csName == "VkColorComponentFlags")
+                    {
+                        writer.WriteLine($"All = R | G | B | A");
+                    }
                 }
 
                 writer.WriteLine();

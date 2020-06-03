@@ -1714,6 +1714,7 @@ namespace Vortice.Vulkan
 		G = 2,
 		B = 4,
 		A = 8,
+		All = R | G | B | A
 	}
 
 	[Flags]
