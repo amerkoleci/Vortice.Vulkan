@@ -2,6 +2,7 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -42,12 +43,7 @@ namespace Vortice.Vulkan
                 return VkResult.ErrorInitializationFailed;
             }
 
-#if CALLI_SUPPORT
             vkGetInstanceProcAddr_ptr = GetProcAddress(nameof(vkGetInstanceProcAddr));
-#else
-            vkGetInstanceProcAddr_ptr = GetProcAddress<vkGetInstanceProcAddrDelegate>(nameof(vkGetInstanceProcAddr));
-#endif
-
             GenLoadLoader(IntPtr.Zero, vkGetInstanceProcAddr);
 
             return VkResult.Success;
@@ -66,14 +62,13 @@ namespace Vortice.Vulkan
 
         private static void GenLoadLoader(IntPtr context, LoadFunction load)
         {
-            vkCreateInstance_ptr = LoadCallbackThrow<vkCreateInstanceDelegate>(context, load, "vkCreateInstance");
-            vkEnumerateInstanceExtensionProperties_ptr = LoadCallbackThrow<vkEnumerateInstanceExtensionPropertiesDelegate>(context, load, "vkEnumerateInstanceExtensionProperties");
-            vkEnumerateInstanceLayerProperties_ptr = LoadCallbackThrow<vkEnumerateInstanceLayerPropertiesDelegate>(context, load, "vkEnumerateInstanceLayerProperties");
-            vkEnumerateInstanceVersion_ptr = LoadCallback<vkEnumerateInstanceVersionDelegate>(context, load, "vkEnumerateInstanceVersion");
+            vkCreateInstance_ptr = LoadCallbackThrow(context, load, "vkCreateInstance");
+            vkEnumerateInstanceExtensionProperties_ptr = LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
+            vkEnumerateInstanceLayerProperties_ptr = LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
+            vkEnumerateInstanceVersion_ptr = load(context, "vkEnumerateInstanceVersion");
         }
 
-#if !CALLI_SUPPORT
-        private static T LoadCallbackThrow<T>(IntPtr context, LoadFunction load, string name)
+        private static IntPtr LoadCallbackThrow(IntPtr context, LoadFunction load, string name)
         {
             var functionPtr = load(context, name);
             if (functionPtr == IntPtr.Zero)
@@ -81,9 +76,10 @@ namespace Vortice.Vulkan
                 throw new InvalidOperationException($"No function was found with the name {name}.");
             }
 
-            return Marshal.GetDelegateForFunctionPointer<T>(functionPtr);
+            return functionPtr;
         }
 
+#if !CALLI_SUPPORT
         private static T LoadCallback<T>(IntPtr context, LoadFunction load, string name)
         {
             var functionPtr = load(context, name);
@@ -106,20 +102,14 @@ namespace Vortice.Vulkan
             }
         }
 
-        private static TDelegate GetProcAddress<TDelegate>(string procName) where TDelegate : class
-        {
-            var handle = _loader.GetSymbol(s_vulkanModule, procName);
-            return handle == IntPtr.Zero
-                ? null
-                : Marshal.GetDelegateForFunctionPointer<TDelegate>(handle);
-        }
+        private static IntPtr GetProcAddress(string procName) => _loader.GetSymbol(s_vulkanModule, procName);
 
         public static IntPtr vkGetInstanceProcAddr(IntPtr instance, string name)
         {
             int byteCount = Interop.GetMaxByteCount(name);
             var stringPtr = stackalloc byte[byteCount];
             Interop.StringToPointer(name, stringPtr, byteCount);
-            return vkGetInstanceProcAddr_ptr(instance, stringPtr);
+            return vkGetInstanceProcAddr(instance, stringPtr);
         }
 
         /// <summary>
@@ -176,8 +166,8 @@ namespace Vortice.Vulkan
         /// <returns>The version of Vulkan supported by instance-level functionality.</returns>
         public static unsafe VkVersion vkEnumerateInstanceVersion()
         {
-            if (vkEnumerateInstanceVersion_ptr != null
-                && vkEnumerateInstanceVersion_ptr(out var apiVersion) == VkResult.Success)
+            if (vkEnumerateInstanceVersion_ptr != IntPtr.Zero
+                && vkEnumerateInstanceVersion(out var apiVersion) == VkResult.Success)
             {
                 return new VkVersion(apiVersion);
             }
@@ -397,14 +387,14 @@ namespace Vortice.Vulkan
         #region Nested
         internal interface ILibraryLoader
         {
-            IntPtr LoadNativeLibrary(string name);
+            IntPtr LoadNativeLibrary(string libraryName);
 
             IntPtr GetSymbol(IntPtr module, string name);
         }
 
         private class WindowsLoader : ILibraryLoader
         {
-            public IntPtr LoadNativeLibrary(string name) => LoadLibrary(name);
+            public IntPtr LoadNativeLibrary(string libraryName) => LoadLibrary(libraryName);
 
             public IntPtr GetSymbol(IntPtr module, string name) => GetProcAddress(module, name);
 
@@ -420,7 +410,22 @@ namespace Vortice.Vulkan
 
         private class UnixLoader : ILibraryLoader
         {
-            public IntPtr LoadNativeLibrary(string name) => dlopen(name, RTLD_NOW | RTLD_LOCAL);
+            public IntPtr LoadNativeLibrary(string libraryName)
+            {
+                dlerror();
+                IntPtr handle = dlopen(libraryName, RTLD_NOW);
+                if (handle == IntPtr.Zero && !Path.IsPathRooted(libraryName))
+                {
+                    string baseDir = AppContext.BaseDirectory;
+                    if (!string.IsNullOrWhiteSpace(baseDir))
+                    {
+                        string localPath = Path.Combine(baseDir, libraryName);
+                        handle = dlopen(localPath, RTLD_NOW);
+                    }
+                }
+
+                return handle;
+            }
 
             public IntPtr GetSymbol(IntPtr module, string name) => dlsym(module, name);
 
@@ -436,7 +441,6 @@ namespace Vortice.Vulkan
             [DllImport("libdl", EntryPoint = "dlerror")]
             private static extern string dlerror();
 
-            private const int RTLD_LOCAL = 0x0000;
             private const int RTLD_NOW = 0x0002;
         }
         #endregion

@@ -110,7 +110,7 @@ namespace Generator
             "vkCreateDebugUtilsMessengerEXT"
         };
 
-        private static bool calliFunction = false;
+        private static bool disableCalliFunction = false;
 
         private static void GenerateCommands(CppCompilation compilation, string outputPath)
         {
@@ -131,9 +131,12 @@ namespace Generator
                 var csName = cppFunction.Name;
                 var argumentsString = GetParameterSignature(cppFunction, canUseOut);
 
-                writer.WriteLine("[UnmanagedFunctionPointer(CallingConvention.StdCall)]");
-                writer.WriteLine($"public unsafe delegate {returnType} {csName}Delegate({argumentsString});");
-                writer.WriteLine();
+                if (disableCalliFunction)
+                {
+                    writer.WriteLine("[UnmanagedFunctionPointer(CallingConvention.StdCall)]");
+                    writer.WriteLine($"public unsafe delegate {returnType} {csName}Delegate({argumentsString});");
+                    writer.WriteLine();
+                }
 
                 commands.Add(csName, cppFunction);
 
@@ -162,14 +165,14 @@ namespace Generator
                 {
                     var cppFunction = command.Value;
 
-                    if (calliFunction)
+                    if (disableCalliFunction)
                     {
-                        writer.WriteLine($"private static IntPtr {command.Key}_ptr;");
-                        writer.WriteLine($"[Calli]");
+                        writer.WriteLine($"private static {command.Key}Delegate {command.Key}_ptr;");
                     }
                     else
                     {
-                        writer.WriteLine($"private static {command.Key}Delegate {command.Key}_ptr;");
+                        writer.WriteLine($"private static IntPtr {command.Key}_ptr;");
+                        writer.WriteLine($"[Calli]");
                     }
 
                     var returnType = GetCsTypeName(cppFunction.ReturnType, false);
@@ -178,31 +181,38 @@ namespace Generator
 
                     using (writer.PushBlock($"public static {returnType} {cppFunction.Name}({argumentsString})"))
                     {
-                        if (returnType != "void")
+                        if (disableCalliFunction)
                         {
-                            writer.Write("return ");
-                        }
-
-                        writer.Write($"{command.Key}_ptr(");
-                        var index = 0;
-                        foreach (var cppParameter in cppFunction.Parameters)
-                        {
-                            var paramCsName = GetParameterName(cppParameter.Name);
-                            if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out var cppTypeDeclaration))
+                            if (returnType != "void")
                             {
-                                writer.Write("out ");
+                                writer.Write("return ");
                             }
 
-                            writer.Write($"{paramCsName}");
-                            if (index < cppFunction.Parameters.Count - 1)
+                            writer.Write($"{command.Key}_ptr(");
+                            var index = 0;
+                            foreach (var cppParameter in cppFunction.Parameters)
                             {
-                                writer.Write(", ");
+                                var paramCsName = GetParameterName(cppParameter.Name);
+                                if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out var cppTypeDeclaration))
+                                {
+                                    writer.Write("out ");
+                                }
+
+                                writer.Write($"{paramCsName}");
+                                if (index < cppFunction.Parameters.Count - 1)
+                                {
+                                    writer.Write(", ");
+                                }
+
+                                index++;
                             }
 
-                            index++;
+                            writer.WriteLine($");");
                         }
-
-                        writer.WriteLine($");");
+                        else
+                        {
+                            writer.WriteLine("throw new NotImplementedException();");
+                        }
                     }
                     writer.WriteLine();
                 }
@@ -219,13 +229,13 @@ namespace Generator
                 foreach (var instanceCommand in commands)
                 {
                     var commandName = instanceCommand.Key;
-                    if (calliFunction)
+                    if (disableCalliFunction)
                     {
-
+                        writer.WriteLine($"{commandName}_ptr = LoadCallback<{commandName}Delegate>(context, load, \"{commandName}\");");
                     }
                     else
                     {
-                        writer.WriteLine($"{commandName}_ptr = LoadCallback<{commandName}Delegate>(context, load, \"{commandName}\");");
+                        writer.WriteLine($"{commandName}_ptr = load(context, \"{commandName}\");");
                     }
                 }
             }

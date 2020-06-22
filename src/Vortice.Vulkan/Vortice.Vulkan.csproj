@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <VersionPrefix>1.2.145</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
-    <BuildNumber>002</BuildNumber>
+    <BuildNumber>003</BuildNumber>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>portable</DebugType>
     <Description>Vulkan low level bindings.</Description>
@@ -21,5 +21,14 @@
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.7.1" />
     <ProjectReference Include="../Patch/Patch.csproj" ReferenceOutputAssembly="false" SkipGetTargetFrameworkProperties="true" GlobalPropertiesToRemove="TargetFramework" />
   </ItemGroup>
+
+  <PropertyGroup>
+    <PatcherExecutable>$(BinDir)\$(Configuration)\Patch\netcoreapp3.1\Patch.dll</PatcherExecutable>
+  </PropertyGroup>
+
+  <Target Name="PathDll" AfterTargets="Build">
+    <Message Text="Patch dll." />
+    <Exec Command='dotnet "$(PatcherExecutable)" --input "$(TargetPath)"' />
+  </Target>
 
 </Project>
