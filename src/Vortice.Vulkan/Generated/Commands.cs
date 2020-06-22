@@ -1086,6 +1086,42 @@ namespace Vortice.Vulkan
 	public unsafe delegate void vkResetQueryPoolEXTDelegate(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdSetCullModeEXTDelegate(VkCommandBuffer commandBuffer, VkCullModeFlags cullMode);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdSetFrontFaceEXTDelegate(VkCommandBuffer commandBuffer, VkFrontFace frontFace);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdSetPrimitiveTopologyEXTDelegate(VkCommandBuffer commandBuffer, VkPrimitiveTopology primitiveTopology);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdSetViewportWithCountEXTDelegate(VkCommandBuffer commandBuffer, uint viewportCount, Viewport* viewports);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdSetScissorWithCountEXTDelegate(VkCommandBuffer commandBuffer, uint scissorCount, Rectangle* scissors);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdBindVertexBuffers2EXTDelegate(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ulong* offsets, ulong* sizes, ulong* strides);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdSetDepthTestEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdSetDepthWriteEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdSetDepthCompareOpEXTDelegate(VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdSetDepthBoundsTestEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdSetStencilTestEnableEXTDelegate(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	public unsafe delegate void vkCmdSetStencilOpEXTDelegate(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp);
+
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
 	public unsafe delegate void vkGetGeneratedCommandsMemoryRequirementsNVDelegate(VkDevice device, VkGeneratedCommandsMemoryRequirementsInfoNV* info, VkMemoryRequirements2* memoryRequirements);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
@@ -3349,6 +3385,78 @@ namespace Vortice.Vulkan
 			vkResetQueryPoolEXT_ptr(device, queryPool, firstQuery, queryCount);
 		}
 
+		private static vkCmdSetCullModeEXTDelegate vkCmdSetCullModeEXT_ptr;
+		public static void vkCmdSetCullModeEXT(VkCommandBuffer commandBuffer, VkCullModeFlags cullMode)
+		{
+			vkCmdSetCullModeEXT_ptr(commandBuffer, cullMode);
+		}
+
+		private static vkCmdSetFrontFaceEXTDelegate vkCmdSetFrontFaceEXT_ptr;
+		public static void vkCmdSetFrontFaceEXT(VkCommandBuffer commandBuffer, VkFrontFace frontFace)
+		{
+			vkCmdSetFrontFaceEXT_ptr(commandBuffer, frontFace);
+		}
+
+		private static vkCmdSetPrimitiveTopologyEXTDelegate vkCmdSetPrimitiveTopologyEXT_ptr;
+		public static void vkCmdSetPrimitiveTopologyEXT(VkCommandBuffer commandBuffer, VkPrimitiveTopology primitiveTopology)
+		{
+			vkCmdSetPrimitiveTopologyEXT_ptr(commandBuffer, primitiveTopology);
+		}
+
+		private static vkCmdSetViewportWithCountEXTDelegate vkCmdSetViewportWithCountEXT_ptr;
+		public static void vkCmdSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, Viewport* viewports)
+		{
+			vkCmdSetViewportWithCountEXT_ptr(commandBuffer, viewportCount, viewports);
+		}
+
+		private static vkCmdSetScissorWithCountEXTDelegate vkCmdSetScissorWithCountEXT_ptr;
+		public static void vkCmdSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, Rectangle* scissors)
+		{
+			vkCmdSetScissorWithCountEXT_ptr(commandBuffer, scissorCount, scissors);
+		}
+
+		private static vkCmdBindVertexBuffers2EXTDelegate vkCmdBindVertexBuffers2EXT_ptr;
+		public static void vkCmdBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ulong* offsets, ulong* sizes, ulong* strides)
+		{
+			vkCmdBindVertexBuffers2EXT_ptr(commandBuffer, firstBinding, bindingCount, buffers, offsets, sizes, strides);
+		}
+
+		private static vkCmdSetDepthTestEnableEXTDelegate vkCmdSetDepthTestEnableEXT_ptr;
+		public static void vkCmdSetDepthTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable)
+		{
+			vkCmdSetDepthTestEnableEXT_ptr(commandBuffer, depthTestEnable);
+		}
+
+		private static vkCmdSetDepthWriteEnableEXTDelegate vkCmdSetDepthWriteEnableEXT_ptr;
+		public static void vkCmdSetDepthWriteEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable)
+		{
+			vkCmdSetDepthWriteEnableEXT_ptr(commandBuffer, depthWriteEnable);
+		}
+
+		private static vkCmdSetDepthCompareOpEXTDelegate vkCmdSetDepthCompareOpEXT_ptr;
+		public static void vkCmdSetDepthCompareOpEXT(VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp)
+		{
+			vkCmdSetDepthCompareOpEXT_ptr(commandBuffer, depthCompareOp);
+		}
+
+		private static vkCmdSetDepthBoundsTestEnableEXTDelegate vkCmdSetDepthBoundsTestEnableEXT_ptr;
+		public static void vkCmdSetDepthBoundsTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable)
+		{
+			vkCmdSetDepthBoundsTestEnableEXT_ptr(commandBuffer, depthBoundsTestEnable);
+		}
+
+		private static vkCmdSetStencilTestEnableEXTDelegate vkCmdSetStencilTestEnableEXT_ptr;
+		public static void vkCmdSetStencilTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable)
+		{
+			vkCmdSetStencilTestEnableEXT_ptr(commandBuffer, stencilTestEnable);
+		}
+
+		private static vkCmdSetStencilOpEXTDelegate vkCmdSetStencilOpEXT_ptr;
+		public static void vkCmdSetStencilOpEXT(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp)
+		{
+			vkCmdSetStencilOpEXT_ptr(commandBuffer, faceMask, failOp, passOp, depthFailOp, compareOp);
+		}
+
 		private static vkGetGeneratedCommandsMemoryRequirementsNVDelegate vkGetGeneratedCommandsMemoryRequirementsNV_ptr;
 		public static void vkGetGeneratedCommandsMemoryRequirementsNV(VkDevice device, VkGeneratedCommandsMemoryRequirementsInfoNV* info, VkMemoryRequirements2* memoryRequirements)
 		{
@@ -3952,6 +4060,18 @@ namespace Vortice.Vulkan
 			vkGetBufferDeviceAddressEXT_ptr = LoadCallback<vkGetBufferDeviceAddressEXTDelegate>(context, load, "vkGetBufferDeviceAddressEXT");
 			vkCmdSetLineStippleEXT_ptr = LoadCallback<vkCmdSetLineStippleEXTDelegate>(context, load, "vkCmdSetLineStippleEXT");
 			vkResetQueryPoolEXT_ptr = LoadCallback<vkResetQueryPoolEXTDelegate>(context, load, "vkResetQueryPoolEXT");
+			vkCmdSetCullModeEXT_ptr = LoadCallback<vkCmdSetCullModeEXTDelegate>(context, load, "vkCmdSetCullModeEXT");
+			vkCmdSetFrontFaceEXT_ptr = LoadCallback<vkCmdSetFrontFaceEXTDelegate>(context, load, "vkCmdSetFrontFaceEXT");
+			vkCmdSetPrimitiveTopologyEXT_ptr = LoadCallback<vkCmdSetPrimitiveTopologyEXTDelegate>(context, load, "vkCmdSetPrimitiveTopologyEXT");
+			vkCmdSetViewportWithCountEXT_ptr = LoadCallback<vkCmdSetViewportWithCountEXTDelegate>(context, load, "vkCmdSetViewportWithCountEXT");
+			vkCmdSetScissorWithCountEXT_ptr = LoadCallback<vkCmdSetScissorWithCountEXTDelegate>(context, load, "vkCmdSetScissorWithCountEXT");
+			vkCmdBindVertexBuffers2EXT_ptr = LoadCallback<vkCmdBindVertexBuffers2EXTDelegate>(context, load, "vkCmdBindVertexBuffers2EXT");
+			vkCmdSetDepthTestEnableEXT_ptr = LoadCallback<vkCmdSetDepthTestEnableEXTDelegate>(context, load, "vkCmdSetDepthTestEnableEXT");
+			vkCmdSetDepthWriteEnableEXT_ptr = LoadCallback<vkCmdSetDepthWriteEnableEXTDelegate>(context, load, "vkCmdSetDepthWriteEnableEXT");
+			vkCmdSetDepthCompareOpEXT_ptr = LoadCallback<vkCmdSetDepthCompareOpEXTDelegate>(context, load, "vkCmdSetDepthCompareOpEXT");
+			vkCmdSetDepthBoundsTestEnableEXT_ptr = LoadCallback<vkCmdSetDepthBoundsTestEnableEXTDelegate>(context, load, "vkCmdSetDepthBoundsTestEnableEXT");
+			vkCmdSetStencilTestEnableEXT_ptr = LoadCallback<vkCmdSetStencilTestEnableEXTDelegate>(context, load, "vkCmdSetStencilTestEnableEXT");
+			vkCmdSetStencilOpEXT_ptr = LoadCallback<vkCmdSetStencilOpEXTDelegate>(context, load, "vkCmdSetStencilOpEXT");
 			vkGetGeneratedCommandsMemoryRequirementsNV_ptr = LoadCallback<vkGetGeneratedCommandsMemoryRequirementsNVDelegate>(context, load, "vkGetGeneratedCommandsMemoryRequirementsNV");
 			vkCmdPreprocessGeneratedCommandsNV_ptr = LoadCallback<vkCmdPreprocessGeneratedCommandsNVDelegate>(context, load, "vkCmdPreprocessGeneratedCommandsNV");
 			vkCmdExecuteGeneratedCommandsNV_ptr = LoadCallback<vkCmdExecuteGeneratedCommandsNVDelegate>(context, load, "vkCmdExecuteGeneratedCommandsNV");

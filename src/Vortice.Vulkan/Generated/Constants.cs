@@ -19,41 +19,33 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EnableBetaExtensions = 1;
 		/// <summary>
-		/// VK_LOD_CLAMP_NONE = 1000.0f
-		/// </summary>
-		public const float LodClampNone = 1000.0f;
-		/// <summary>
-		/// VK_REMAINING_MIP_LEVELS = (~0U)
-		/// </summary>
-		public const uint RemainingMipLevels = ~0u;
-		/// <summary>
-		/// VK_REMAINING_ARRAY_LAYERS = (~0U)
-		/// </summary>
-		public const uint RemainingArrayLayers = ~0u;
-		/// <summary>
-		/// VK_WHOLE_SIZE = (~0ULL)
-		/// </summary>
-		public const ulong WholeSize = ~0ul;
-		/// <summary>
 		/// VK_ATTACHMENT_UNUSED = (~0U)
 		/// </summary>
 		public const uint AttachmentUnused = ~0u;
+		/// <summary>
+		/// VK_LOD_CLAMP_NONE = 1000.0f
+		/// </summary>
+		public const float LodClampNone = 1000.0f;
 		/// <summary>
 		/// VK_QUEUE_FAMILY_IGNORED = (~0U)
 		/// </summary>
 		public const uint QueueFamilyIgnored = ~0u;
 		/// <summary>
+		/// VK_REMAINING_ARRAY_LAYERS = (~0U)
+		/// </summary>
+		public const uint RemainingArrayLayers = ~0u;
+		/// <summary>
+		/// VK_REMAINING_MIP_LEVELS = (~0U)
+		/// </summary>
+		public const uint RemainingMipLevels = ~0u;
+		/// <summary>
 		/// VK_SUBPASS_EXTERNAL = (~0U)
 		/// </summary>
 		public const uint SubpassExternal = ~0u;
 		/// <summary>
-		/// VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256
+		/// VK_WHOLE_SIZE = (~0ULL)
 		/// </summary>
-		public const uint MaxPhysicalDeviceNameSize = 256;
-		/// <summary>
-		/// VK_UUID_SIZE = 16
-		/// </summary>
-		public const uint UuidSize = 16;
+		public const ulong WholeSize = ~0ul;
 		/// <summary>
 		/// VK_MAX_MEMORY_TYPES = 32
 		/// </summary>
@@ -62,6 +54,14 @@ namespace Vortice.Vulkan
 		/// VK_MAX_MEMORY_HEAPS = 16
 		/// </summary>
 		public const uint MaxMemoryHeaps = 16;
+		/// <summary>
+		/// VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256
+		/// </summary>
+		public const uint MaxPhysicalDeviceNameSize = 256;
+		/// <summary>
+		/// VK_UUID_SIZE = 16
+		/// </summary>
+		public const uint UuidSize = 16;
 		/// <summary>
 		/// VK_MAX_EXTENSION_NAME_SIZE = 256
 		/// </summary>
@@ -2163,6 +2163,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXTIndexTypeUint8ExtensionName = "VK_EXT_index_type_uint8";
 		/// <summary>
+		/// VK_EXT_extended_dynamic_state = 1
+		/// </summary>
+		public const uint EXTExtendedDynamicState = 1;
+		/// <summary>
+		/// VK_EXT_EXTENDED_DYNAMIC_STATE_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTExtendedDynamicStateSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_extended_dynamic_state"
+		/// </summary>
+		public const string EXTExtendedDynamicStateExtensionName = "VK_EXT_extended_dynamic_state";
+		/// <summary>
 		/// VK_EXT_shader_demote_to_helper_invocation = 1
 		/// </summary>
 		public const uint EXTShaderDemoteToHelperInvocation = 1;
@@ -2371,9 +2383,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint KHRDeferredHostOperations = 1;
 		/// <summary>
-		/// VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION = 2
+		/// VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION = 3
 		/// </summary>
-		public const uint KHRDeferredHostOperationsSpecVersion = 2;
+		public const uint KHRDeferredHostOperationsSpecVersion = 3;
 		/// <summary>
 		/// VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations"
 		/// </summary>

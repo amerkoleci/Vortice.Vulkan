@@ -13,6 +13,48 @@ using System.Diagnostics;
 namespace Vortice.Vulkan
 {
 	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	public partial struct VkBuffer : IEquatable<VkBuffer>
+	{
+		public readonly ulong Handle;
+		public VkBuffer(ulong handle) { Handle = handle; }
+		public static VkBuffer Null => new VkBuffer(0);
+		public static implicit operator VkBuffer(ulong handle) => new VkBuffer(handle);
+		public static bool operator ==(VkBuffer left, VkBuffer right) => left.Handle == right.Handle;
+		public static bool operator !=(VkBuffer left, VkBuffer right) => left.Handle != right.Handle;
+		public static bool operator ==(VkBuffer left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkBuffer left, ulong right) => left.Handle != right;
+		public bool Equals(ref VkBuffer other) => Handle == other.Handle;
+		public bool Equals(VkBuffer other) => Handle == other.Handle;
+		public override bool Equals(object obj) => obj is VkBuffer handle && Equals(ref handle);
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkBuffer [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	public partial struct VkImage : IEquatable<VkImage>
+	{
+		public readonly ulong Handle;
+		public VkImage(ulong handle) { Handle = handle; }
+		public static VkImage Null => new VkImage(0);
+		public static implicit operator VkImage(ulong handle) => new VkImage(handle);
+		public static bool operator ==(VkImage left, VkImage right) => left.Handle == right.Handle;
+		public static bool operator !=(VkImage left, VkImage right) => left.Handle != right.Handle;
+		public static bool operator ==(VkImage left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkImage left, ulong right) => left.Handle != right;
+		public bool Equals(ref VkImage other) => Handle == other.Handle;
+		public bool Equals(VkImage other) => Handle == other.Handle;
+		public override bool Equals(object obj) => obj is VkImage handle && Equals(ref handle);
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkImage [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
 	/// A dispatchable handle.
 	/// </summary>
 	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
@@ -184,48 +226,6 @@ namespace Vortice.Vulkan
 	/// A non-dispatchable handle.
 	/// </summary>
 	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
-	public partial struct VkBuffer : IEquatable<VkBuffer>
-	{
-		public readonly ulong Handle;
-		public VkBuffer(ulong handle) { Handle = handle; }
-		public static VkBuffer Null => new VkBuffer(0);
-		public static implicit operator VkBuffer(ulong handle) => new VkBuffer(handle);
-		public static bool operator ==(VkBuffer left, VkBuffer right) => left.Handle == right.Handle;
-		public static bool operator !=(VkBuffer left, VkBuffer right) => left.Handle != right.Handle;
-		public static bool operator ==(VkBuffer left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkBuffer left, ulong right) => left.Handle != right;
-		public bool Equals(ref VkBuffer other) => Handle == other.Handle;
-		public bool Equals(VkBuffer other) => Handle == other.Handle;
-		public override bool Equals(object obj) => obj is VkBuffer handle && Equals(ref handle);
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkBuffer [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
-	public partial struct VkImage : IEquatable<VkImage>
-	{
-		public readonly ulong Handle;
-		public VkImage(ulong handle) { Handle = handle; }
-		public static VkImage Null => new VkImage(0);
-		public static implicit operator VkImage(ulong handle) => new VkImage(handle);
-		public static bool operator ==(VkImage left, VkImage right) => left.Handle == right.Handle;
-		public static bool operator !=(VkImage left, VkImage right) => left.Handle != right.Handle;
-		public static bool operator ==(VkImage left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkImage left, ulong right) => left.Handle != right;
-		public bool Equals(ref VkImage other) => Handle == other.Handle;
-		public bool Equals(VkImage other) => Handle == other.Handle;
-		public override bool Equals(object obj) => obj is VkImage handle && Equals(ref handle);
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkImage [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
 	public partial struct VkEvent : IEquatable<VkEvent>
 	{
 		public readonly ulong Handle;
@@ -373,27 +373,6 @@ namespace Vortice.Vulkan
 	/// A non-dispatchable handle.
 	/// </summary>
 	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
-	public partial struct VkRenderPass : IEquatable<VkRenderPass>
-	{
-		public readonly ulong Handle;
-		public VkRenderPass(ulong handle) { Handle = handle; }
-		public static VkRenderPass Null => new VkRenderPass(0);
-		public static implicit operator VkRenderPass(ulong handle) => new VkRenderPass(handle);
-		public static bool operator ==(VkRenderPass left, VkRenderPass right) => left.Handle == right.Handle;
-		public static bool operator !=(VkRenderPass left, VkRenderPass right) => left.Handle != right.Handle;
-		public static bool operator ==(VkRenderPass left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkRenderPass left, ulong right) => left.Handle != right;
-		public bool Equals(ref VkRenderPass other) => Handle == other.Handle;
-		public bool Equals(VkRenderPass other) => Handle == other.Handle;
-		public override bool Equals(object obj) => obj is VkRenderPass handle && Equals(ref handle);
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkRenderPass [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
 	public partial struct VkPipeline : IEquatable<VkPipeline>
 	{
 		public readonly ulong Handle;
@@ -409,6 +388,27 @@ namespace Vortice.Vulkan
 		public override bool Equals(object obj) => obj is VkPipeline handle && Equals(ref handle);
 		public override int GetHashCode() => Handle.GetHashCode();
 		private string DebuggerDisplay => string.Format("VkPipeline [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	public partial struct VkRenderPass : IEquatable<VkRenderPass>
+	{
+		public readonly ulong Handle;
+		public VkRenderPass(ulong handle) { Handle = handle; }
+		public static VkRenderPass Null => new VkRenderPass(0);
+		public static implicit operator VkRenderPass(ulong handle) => new VkRenderPass(handle);
+		public static bool operator ==(VkRenderPass left, VkRenderPass right) => left.Handle == right.Handle;
+		public static bool operator !=(VkRenderPass left, VkRenderPass right) => left.Handle != right.Handle;
+		public static bool operator ==(VkRenderPass left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkRenderPass left, ulong right) => left.Handle != right;
+		public bool Equals(ref VkRenderPass other) => Handle == other.Handle;
+		public bool Equals(VkRenderPass other) => Handle == other.Handle;
+		public override bool Equals(object obj) => obj is VkRenderPass handle && Equals(ref handle);
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkRenderPass [0x{0}]", Handle.ToString("X"));
 	}
 
 	/// <summary>
@@ -457,27 +457,6 @@ namespace Vortice.Vulkan
 	/// A non-dispatchable handle.
 	/// </summary>
 	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
-	public partial struct VkDescriptorPool : IEquatable<VkDescriptorPool>
-	{
-		public readonly ulong Handle;
-		public VkDescriptorPool(ulong handle) { Handle = handle; }
-		public static VkDescriptorPool Null => new VkDescriptorPool(0);
-		public static implicit operator VkDescriptorPool(ulong handle) => new VkDescriptorPool(handle);
-		public static bool operator ==(VkDescriptorPool left, VkDescriptorPool right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDescriptorPool left, VkDescriptorPool right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDescriptorPool left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDescriptorPool left, ulong right) => left.Handle != right;
-		public bool Equals(ref VkDescriptorPool other) => Handle == other.Handle;
-		public bool Equals(VkDescriptorPool other) => Handle == other.Handle;
-		public override bool Equals(object obj) => obj is VkDescriptorPool handle && Equals(ref handle);
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDescriptorPool [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
 	public partial struct VkDescriptorSet : IEquatable<VkDescriptorSet>
 	{
 		public readonly ulong Handle;
@@ -493,6 +472,27 @@ namespace Vortice.Vulkan
 		public override bool Equals(object obj) => obj is VkDescriptorSet handle && Equals(ref handle);
 		public override int GetHashCode() => Handle.GetHashCode();
 		private string DebuggerDisplay => string.Format("VkDescriptorSet [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	public partial struct VkDescriptorPool : IEquatable<VkDescriptorPool>
+	{
+		public readonly ulong Handle;
+		public VkDescriptorPool(ulong handle) { Handle = handle; }
+		public static VkDescriptorPool Null => new VkDescriptorPool(0);
+		public static implicit operator VkDescriptorPool(ulong handle) => new VkDescriptorPool(handle);
+		public static bool operator ==(VkDescriptorPool left, VkDescriptorPool right) => left.Handle == right.Handle;
+		public static bool operator !=(VkDescriptorPool left, VkDescriptorPool right) => left.Handle != right.Handle;
+		public static bool operator ==(VkDescriptorPool left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkDescriptorPool left, ulong right) => left.Handle != right;
+		public bool Equals(ref VkDescriptorPool other) => Handle == other.Handle;
+		public bool Equals(VkDescriptorPool other) => Handle == other.Handle;
+		public override bool Equals(object obj) => obj is VkDescriptorPool handle && Equals(ref handle);
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkDescriptorPool [0x{0}]", Handle.ToString("X"));
 	}
 
 	/// <summary>

@@ -14,6 +14,106 @@ using Vortice.Mathematics;
 namespace Vortice.Vulkan
 {
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBaseInStructure
+	{
+		public VkStructureType sType;
+		public unsafe VkBaseInStructure* pNext;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBaseOutStructure
+	{
+		public VkStructureType sType;
+		public unsafe VkBaseOutStructure* pNext;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferMemoryBarrier
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkAccessFlags srcAccessMask;
+		public VkAccessFlags dstAccessMask;
+		public uint srcQueueFamilyIndex;
+		public uint dstQueueFamilyIndex;
+		public VkBuffer buffer;
+		public ulong offset;
+		public ulong size;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDispatchIndirectCommand
+	{
+		public uint x;
+		public uint y;
+		public uint z;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDrawIndexedIndirectCommand
+	{
+		public uint indexCount;
+		public uint instanceCount;
+		public uint firstIndex;
+		public int vertexOffset;
+		public uint firstInstance;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDrawIndirectCommand
+	{
+		public uint vertexCount;
+		public uint instanceCount;
+		public uint firstVertex;
+		public uint firstInstance;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageSubresourceRange
+	{
+		public VkImageAspectFlags aspectMask;
+		public uint baseMipLevel;
+		public uint levelCount;
+		public uint baseArrayLayer;
+		public uint layerCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageMemoryBarrier
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkAccessFlags srcAccessMask;
+		public VkAccessFlags dstAccessMask;
+		public VkImageLayout oldLayout;
+		public VkImageLayout newLayout;
+		public uint srcQueueFamilyIndex;
+		public uint dstQueueFamilyIndex;
+		public VkImage image;
+		public VkImageSubresourceRange subresourceRange;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryBarrier
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkAccessFlags srcAccessMask;
+		public VkAccessFlags dstAccessMask;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAllocationCallbacks
+	{
+		public unsafe void* pUserData;
+		public IntPtr pfnAllocation;
+		public IntPtr pfnReallocation;
+		public IntPtr pfnFree;
+		public IntPtr pfnInternalAllocation;
+		public IntPtr pfnInternalFree;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkApplicationInfo
 	{
 		public VkStructureType sType;
@@ -23,6 +123,24 @@ namespace Vortice.Vulkan
 		public unsafe byte* pEngineName;
 		public VkVersion engineVersion;
 		public VkVersion apiVersion;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFormatProperties
+	{
+		public VkFormatFeatureFlags linearTilingFeatures;
+		public VkFormatFeatureFlags optimalTilingFeatures;
+		public VkFormatFeatureFlags bufferFeatures;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageFormatProperties
+	{
+		public Size3 maxExtent;
+		public uint maxMipLevels;
+		public uint maxArrayLayers;
+		public VkSampleCountFlags sampleCounts;
+		public ulong maxResourceSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -39,14 +157,17 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkAllocationCallbacks
+	public partial struct VkMemoryHeap
 	{
-		public unsafe void* pUserData;
-		public IntPtr pfnAllocation;
-		public IntPtr pfnReallocation;
-		public IntPtr pfnFree;
-		public IntPtr pfnInternalAllocation;
-		public IntPtr pfnInternalFree;
+		public ulong size;
+		public VkMemoryHeapFlags flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryType
+	{
+		public VkMemoryPropertyFlags propertyFlags;
+		public uint heapIndex;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -107,24 +228,6 @@ namespace Vortice.Vulkan
 		public VkBool32 sparseResidencyAliased;
 		public VkBool32 variableMultisampleRate;
 		public VkBool32 inheritedQueries;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkFormatProperties
-	{
-		public VkFormatFeatureFlags linearTilingFeatures;
-		public VkFormatFeatureFlags optimalTilingFeatures;
-		public VkFormatFeatureFlags bufferFeatures;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkImageFormatProperties
-	{
-		public Size3 maxExtent;
-		public uint maxMipLevels;
-		public uint maxArrayLayers;
-		public VkSampleCountFlags sampleCounts;
-		public ulong maxResourceSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -239,53 +342,6 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkPhysicalDeviceSparseProperties
-	{
-		public VkBool32 residencyStandard2DBlockShape;
-		public VkBool32 residencyStandard2DMultisampleBlockShape;
-		public VkBool32 residencyStandard3DBlockShape;
-		public VkBool32 residencyAlignedMipSize;
-		public VkBool32 residencyNonResidentStrict;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkPhysicalDeviceProperties
-	{
-		public VkVersion apiVersion;
-		public uint driverVersion;
-		public uint vendorID;
-		public uint deviceID;
-		public VkPhysicalDeviceType deviceType;
-		public unsafe fixed byte deviceName[256];
-		public unsafe fixed byte pipelineCacheUUID[16];
-		public VkPhysicalDeviceLimits limits;
-		public VkPhysicalDeviceSparseProperties sparseProperties;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkQueueFamilyProperties
-	{
-		public VkQueueFlags queueFlags;
-		public uint queueCount;
-		public uint timestampValidBits;
-		public Size3 minImageTransferGranularity;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkMemoryType
-	{
-		public VkMemoryPropertyFlags propertyFlags;
-		public uint heapIndex;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkMemoryHeap
-	{
-		public ulong size;
-		public VkMemoryHeapFlags flags;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceMemoryProperties
 	{
 		public uint memoryTypeCount;
@@ -338,6 +394,39 @@ namespace Vortice.Vulkan
 		public VkMemoryHeap memoryHeaps_13;
 		public VkMemoryHeap memoryHeaps_14;
 		public VkMemoryHeap memoryHeaps_15;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSparseProperties
+	{
+		public VkBool32 residencyStandard2DBlockShape;
+		public VkBool32 residencyStandard2DMultisampleBlockShape;
+		public VkBool32 residencyStandard3DBlockShape;
+		public VkBool32 residencyAlignedMipSize;
+		public VkBool32 residencyNonResidentStrict;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceProperties
+	{
+		public VkVersion apiVersion;
+		public uint driverVersion;
+		public uint vendorID;
+		public uint deviceID;
+		public VkPhysicalDeviceType deviceType;
+		public unsafe fixed byte deviceName[256];
+		public unsafe fixed byte pipelineCacheUUID[16];
+		public VkPhysicalDeviceLimits limits;
+		public VkPhysicalDeviceSparseProperties sparseProperties;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkQueueFamilyProperties
+	{
+		public VkQueueFlags queueFlags;
+		public uint queueCount;
+		public uint timestampValidBits;
+		public Size3 minImageTransferGranularity;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -397,15 +486,6 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkMemoryAllocateInfo
-	{
-		public VkStructureType sType;
-		public unsafe void* pNext;
-		public ulong allocationSize;
-		public uint memoryTypeIndex;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkMappedMemoryRange
 	{
 		public VkStructureType sType;
@@ -416,29 +496,20 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryAllocateInfo
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public ulong allocationSize;
+		public uint memoryTypeIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkMemoryRequirements
 	{
 		public ulong size;
 		public ulong alignment;
 		public uint memoryTypeBits;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkSparseImageFormatProperties
-	{
-		public VkImageAspectFlags aspectMask;
-		public Size3 imageGranularity;
-		public VkSparseImageFormatFlags flags;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkSparseImageMemoryRequirements
-	{
-		public VkSparseImageFormatProperties formatProperties;
-		public uint imageMipTailFirstLod;
-		public ulong imageMipTailSize;
-		public ulong imageMipTailOffset;
-		public ulong imageMipTailStride;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -509,6 +580,24 @@ namespace Vortice.Vulkan
 		public unsafe VkSparseImageMemoryBindInfo* pImageBinds;
 		public uint signalSemaphoreCount;
 		public unsafe VkSemaphore* pSignalSemaphores;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSparseImageFormatProperties
+	{
+		public VkImageAspectFlags aspectMask;
+		public Size3 imageGranularity;
+		public VkSparseImageFormatFlags flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSparseImageMemoryRequirements
+	{
+		public VkSparseImageFormatProperties formatProperties;
+		public uint imageMipTailFirstLod;
+		public ulong imageMipTailSize;
+		public ulong imageMipTailOffset;
+		public ulong imageMipTailStride;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -611,16 +700,6 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkImageSubresourceRange
-	{
-		public VkImageAspectFlags aspectMask;
-		public uint baseMipLevel;
-		public uint levelCount;
-		public uint baseArrayLayer;
-		public uint layerCount;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkImageViewCreateInfo
 	{
 		public VkStructureType sType;
@@ -680,6 +759,18 @@ namespace Vortice.Vulkan
 		public VkShaderModule module;
 		public unsafe byte* pName;
 		public unsafe VkSpecializationInfo* pSpecializationInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkComputePipelineCreateInfo
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkPipelineCreateFlags flags;
+		public VkPipelineShaderStageCreateInfo stage;
+		public VkPipelineLayout layout;
+		public VkPipeline basePipelineHandle;
+		public int basePipelineIndex;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -864,18 +955,6 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkComputePipelineCreateInfo
-	{
-		public VkStructureType sType;
-		public unsafe void* pNext;
-		public VkPipelineCreateFlags flags;
-		public VkPipelineShaderStageCreateInfo stage;
-		public VkPipelineLayout layout;
-		public VkPipeline basePipelineHandle;
-		public int basePipelineIndex;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPushConstantRange
 	{
 		public VkShaderStageFlags stageFlags;
@@ -919,23 +998,33 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDescriptorSetLayoutBinding
-	{
-		public uint binding;
-		public VkDescriptorType descriptorType;
-		public uint descriptorCount;
-		public VkShaderStageFlags stageFlags;
-		public unsafe VkSampler* pImmutableSamplers;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDescriptorSetLayoutCreateInfo
+	public partial struct VkCopyDescriptorSet
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkDescriptorSetLayoutCreateFlags flags;
-		public uint bindingCount;
-		public unsafe VkDescriptorSetLayoutBinding* pBindings;
+		public VkDescriptorSet srcSet;
+		public uint srcBinding;
+		public uint srcArrayElement;
+		public VkDescriptorSet dstSet;
+		public uint dstBinding;
+		public uint dstArrayElement;
+		public uint descriptorCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorBufferInfo
+	{
+		public VkBuffer buffer;
+		public ulong offset;
+		public ulong range;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDescriptorImageInfo
+	{
+		public VkSampler sampler;
+		public VkImageView imageView;
+		public VkImageLayout imageLayout;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -967,19 +1056,23 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDescriptorImageInfo
+	public partial struct VkDescriptorSetLayoutBinding
 	{
-		public VkSampler sampler;
-		public VkImageView imageView;
-		public VkImageLayout imageLayout;
+		public uint binding;
+		public VkDescriptorType descriptorType;
+		public uint descriptorCount;
+		public VkShaderStageFlags stageFlags;
+		public unsafe VkSampler* pImmutableSamplers;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDescriptorBufferInfo
+	public partial struct VkDescriptorSetLayoutCreateInfo
 	{
-		public VkBuffer buffer;
-		public ulong offset;
-		public ulong range;
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkDescriptorSetLayoutCreateFlags flags;
+		public uint bindingCount;
+		public unsafe VkDescriptorSetLayoutBinding* pBindings;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -995,34 +1088,6 @@ namespace Vortice.Vulkan
 		public unsafe VkDescriptorImageInfo* pImageInfo;
 		public unsafe VkDescriptorBufferInfo* pBufferInfo;
 		public unsafe VkBufferView* pTexelBufferView;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkCopyDescriptorSet
-	{
-		public VkStructureType sType;
-		public unsafe void* pNext;
-		public VkDescriptorSet srcSet;
-		public uint srcBinding;
-		public uint srcArrayElement;
-		public VkDescriptorSet dstSet;
-		public uint dstBinding;
-		public uint dstArrayElement;
-		public uint descriptorCount;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkFramebufferCreateInfo
-	{
-		public VkStructureType sType;
-		public unsafe void* pNext;
-		public VkFramebufferCreateFlags flags;
-		public VkRenderPass renderPass;
-		public uint attachmentCount;
-		public unsafe VkImageView* pAttachments;
-		public uint width;
-		public uint height;
-		public uint layers;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1044,6 +1109,20 @@ namespace Vortice.Vulkan
 	{
 		public uint attachment;
 		public VkImageLayout layout;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFramebufferCreateInfo
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkFramebufferCreateFlags flags;
+		public VkRenderPass renderPass;
+		public uint attachmentCount;
+		public unsafe VkImageView* pAttachments;
+		public uint width;
+		public uint height;
+		public uint layers;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1146,27 +1225,6 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkImageCopy
-	{
-		public VkImageSubresourceLayers srcSubresource;
-		public Point3 srcOffset;
-		public VkImageSubresourceLayers dstSubresource;
-		public Point3 dstOffset;
-		public Size3 extent;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkImageBlit
-	{
-		public VkImageSubresourceLayers srcSubresource;
-		public Point3 srcOffsets_0;
-		public Point3 srcOffsets_1;
-		public VkImageSubresourceLayers dstSubresource;
-		public Point3 dstOffsets_0;
-		public Point3 dstOffsets_1;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkBufferImageCopy
 	{
 		public ulong bufferOffset;
@@ -1221,7 +1279,18 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkImageResolve
+	public partial struct VkImageBlit
+	{
+		public VkImageSubresourceLayers srcSubresource;
+		public Point3 srcOffsets_0;
+		public Point3 srcOffsets_1;
+		public VkImageSubresourceLayers dstSubresource;
+		public Point3 dstOffsets_0;
+		public Point3 dstOffsets_1;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageCopy
 	{
 		public VkImageSubresourceLayers srcSubresource;
 		public Point3 srcOffset;
@@ -1231,41 +1300,13 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkMemoryBarrier
+	public partial struct VkImageResolve
 	{
-		public VkStructureType sType;
-		public unsafe void* pNext;
-		public VkAccessFlags srcAccessMask;
-		public VkAccessFlags dstAccessMask;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkBufferMemoryBarrier
-	{
-		public VkStructureType sType;
-		public unsafe void* pNext;
-		public VkAccessFlags srcAccessMask;
-		public VkAccessFlags dstAccessMask;
-		public uint srcQueueFamilyIndex;
-		public uint dstQueueFamilyIndex;
-		public VkBuffer buffer;
-		public ulong offset;
-		public ulong size;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkImageMemoryBarrier
-	{
-		public VkStructureType sType;
-		public unsafe void* pNext;
-		public VkAccessFlags srcAccessMask;
-		public VkAccessFlags dstAccessMask;
-		public VkImageLayout oldLayout;
-		public VkImageLayout newLayout;
-		public uint srcQueueFamilyIndex;
-		public uint dstQueueFamilyIndex;
-		public VkImage image;
-		public VkImageSubresourceRange subresourceRange;
+		public VkImageSubresourceLayers srcSubresource;
+		public Point3 srcOffset;
+		public VkImageSubresourceLayers dstSubresource;
+		public Point3 dstOffset;
+		public Size3 extent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1278,47 +1319,6 @@ namespace Vortice.Vulkan
 		public Rectangle renderArea;
 		public uint clearValueCount;
 		public unsafe VkClearValue* pClearValues;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDispatchIndirectCommand
-	{
-		public uint x;
-		public uint y;
-		public uint z;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDrawIndexedIndirectCommand
-	{
-		public uint indexCount;
-		public uint instanceCount;
-		public uint firstIndex;
-		public int vertexOffset;
-		public uint firstInstance;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDrawIndirectCommand
-	{
-		public uint vertexCount;
-		public uint instanceCount;
-		public uint firstVertex;
-		public uint firstInstance;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkBaseOutStructure
-	{
-		public VkStructureType sType;
-		public unsafe VkBaseOutStructure* pNext;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkBaseInStructure
-	{
-		public VkStructureType sType;
-		public unsafe VkBaseInStructure* pNext;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2746,29 +2746,10 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDisplayPropertiesKHR
-	{
-		public VkDisplayKHR display;
-		public unsafe byte* displayName;
-		public Size physicalDimensions;
-		public Size physicalResolution;
-		public VkSurfaceTransformFlagsKHR supportedTransforms;
-		public VkBool32 planeReorderPossible;
-		public VkBool32 persistentContent;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkDisplayModeParametersKHR
 	{
 		public Size visibleRegion;
 		public uint refreshRate;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDisplayModePropertiesKHR
-	{
-		public VkDisplayModeKHR displayMode;
-		public VkDisplayModeParametersKHR parameters;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2777,6 +2758,13 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkDisplayModeCreateFlagsKHR flags;
+		public VkDisplayModeParametersKHR parameters;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayModePropertiesKHR
+	{
+		public VkDisplayModeKHR displayMode;
 		public VkDisplayModeParametersKHR parameters;
 	}
 
@@ -2799,6 +2787,18 @@ namespace Vortice.Vulkan
 	{
 		public VkDisplayKHR currentDisplay;
 		public uint currentStackIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDisplayPropertiesKHR
+	{
+		public VkDisplayKHR display;
+		public unsafe byte* displayName;
+		public Size physicalDimensions;
+		public Size physicalResolution;
+		public VkSurfaceTransformFlagsKHR supportedTransforms;
+		public VkBool32 planeReorderPossible;
+		public VkBool32 persistentContent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3667,18 +3667,6 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkDebugUtilsObjectTagInfoEXT
-	{
-		public VkStructureType sType;
-		public unsafe void* pNext;
-		public VkObjectType objectType;
-		public ulong objectHandle;
-		public ulong tagName;
-		public VkPointerSize tagSize;
-		public unsafe void* pTag;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkDebugUtilsMessengerCreateInfoEXT
 	{
 		public VkStructureType sType;
@@ -3688,6 +3676,18 @@ namespace Vortice.Vulkan
 		public VkDebugUtilsMessageTypeFlagsEXT messageType;
 		public IntPtr pfnUserCallback;
 		public unsafe void* pUserData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDebugUtilsObjectTagInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkObjectType objectType;
+		public ulong objectHandle;
+		public ulong tagName;
+		public VkPointerSize tagSize;
+		public unsafe void* pTag;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4821,6 +4821,14 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkBool32 indexTypeUint8;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceExtendedDynamicStateFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 extendedDynamicState;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

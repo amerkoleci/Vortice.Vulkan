@@ -11,11 +11,6 @@ using System;
 
 namespace Vortice.Vulkan
 {
-	public enum VkPipelineCacheHeaderVersion
-	{
-		One = 1,
-	}
-
 	public enum VkResult
 	{
 		Success = 0,
@@ -470,6 +465,7 @@ namespace Vortice.Vulkan
 		PipelineRasterizationLineStateCreateInfoEXT = 1000259001,
 		PhysicalDeviceLineRasterizationPropertiesEXT = 1000259002,
 		PhysicalDeviceIndexTypeUint8FeaturesEXT = 1000265000,
+		PhysicalDeviceExtendedDynamicStateFeaturesEXT = 1000267000,
 		DeferredOperationInfoKHR = 1000268000,
 		PhysicalDevicePipelineExecutablePropertiesFeaturesKHR = 1000269000,
 		PipelineInfoKHR = 1000269001,
@@ -617,6 +613,96 @@ namespace Vortice.Vulkan
 		MemoryOpaqueCaptureAddressAllocateInfoKHR = MemoryOpaqueCaptureAddressAllocateInfo,
 		DeviceMemoryOpaqueCaptureAddressInfoKHR = DeviceMemoryOpaqueCaptureAddressInfo,
 		PhysicalDeviceHostQueryResetFeaturesEXT = PhysicalDeviceHostQueryResetFeatures,
+	}
+
+	public enum VkImageLayout
+	{
+		Undefined = 0,
+		General = 1,
+		ColorAttachmentOptimal = 2,
+		DepthStencilAttachmentOptimal = 3,
+		DepthStencilReadOnlyOptimal = 4,
+		ShaderReadOnlyOptimal = 5,
+		TransferSrcOptimal = 6,
+		TransferDstOptimal = 7,
+		Preinitialized = 8,
+		DepthReadOnlyStencilAttachmentOptimal = 1000117000,
+		DepthAttachmentStencilReadOnlyOptimal = 1000117001,
+		DepthAttachmentOptimal = 1000241000,
+		DepthReadOnlyOptimal = 1000241001,
+		StencilAttachmentOptimal = 1000241002,
+		StencilReadOnlyOptimal = 1000241003,
+		PresentSrcKHR = 1000001002,
+		SharedPresentKHR = 1000111000,
+		ShadingRateOptimalNV = 1000164003,
+		FragmentDensityMapOptimalEXT = 1000218000,
+		DepthReadOnlyStencilAttachmentOptimalKHR = DepthReadOnlyStencilAttachmentOptimal,
+		DepthAttachmentStencilReadOnlyOptimalKHR = DepthAttachmentStencilReadOnlyOptimal,
+		DepthAttachmentOptimalKHR = DepthAttachmentOptimal,
+		DepthReadOnlyOptimalKHR = DepthReadOnlyOptimal,
+		StencilAttachmentOptimalKHR = StencilAttachmentOptimal,
+		StencilReadOnlyOptimalKHR = StencilReadOnlyOptimal,
+	}
+
+	public enum VkObjectType
+	{
+		Unknown = 0,
+		Instance = 1,
+		PhysicalDevice = 2,
+		Device = 3,
+		Queue = 4,
+		Semaphore = 5,
+		CommandBuffer = 6,
+		Fence = 7,
+		DeviceMemory = 8,
+		Buffer = 9,
+		Image = 10,
+		Event = 11,
+		QueryPool = 12,
+		BufferView = 13,
+		ImageView = 14,
+		ShaderModule = 15,
+		PipelineCache = 16,
+		PipelineLayout = 17,
+		RenderPass = 18,
+		Pipeline = 19,
+		DescriptorSetLayout = 20,
+		Sampler = 21,
+		DescriptorPool = 22,
+		DescriptorSet = 23,
+		Framebuffer = 24,
+		CommandPool = 25,
+		SamplerYcbcrConversion = 1000156000,
+		DescriptorUpdateTemplate = 1000085000,
+		SurfaceKHR = 1000000000,
+		SwapchainKHR = 1000001000,
+		DisplayKHR = 1000002000,
+		DisplayModeKHR = 1000002001,
+		DebugReportCallbackEXT = 1000011000,
+		DebugUtilsMessengerEXT = 1000128000,
+		AccelerationStructureKHR = 1000165000,
+		ValidationCacheEXT = 1000160000,
+		PerformanceConfigurationINTEL = 1000210000,
+		DeferredOperationKHR = 1000268000,
+		IndirectCommandsLayoutNV = 1000277000,
+		PrivateDataSlotEXT = 1000295000,
+		DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate,
+		SamplerYcbcrConversionKHR = SamplerYcbcrConversion,
+		AccelerationStructureNV = AccelerationStructureKHR,
+	}
+
+	public enum VkVendorId
+	{
+		Viv = 65537,
+		Vsi = 65538,
+		Kazan = 65539,
+		Codeplay = 65540,
+		Mesa = 65541,
+	}
+
+	public enum VkPipelineCacheHeaderVersion
+	{
+		One = 1,
 	}
 
 	public enum VkSystemAllocationScope
@@ -912,18 +998,18 @@ namespace Vortice.Vulkan
 		G16B16R163Plane444UNormKHR = G16B16R163Plane444UNorm,
 	}
 
-	public enum VkImageType
-	{
-		Image1D = 0,
-		Image2D = 1,
-		Image3D = 2,
-	}
-
 	public enum VkImageTiling
 	{
 		Optimal = 0,
 		Linear = 1,
 		DrmFormatModifierEXT = 1000158000,
+	}
+
+	public enum VkImageType
+	{
+		Image1D = 0,
+		Image2D = 1,
+		Image3D = 2,
 	}
 
 	public enum VkPhysicalDeviceType
@@ -954,46 +1040,6 @@ namespace Vortice.Vulkan
 		Concurrent = 1,
 	}
 
-	public enum VkImageLayout
-	{
-		Undefined = 0,
-		General = 1,
-		ColorAttachmentOptimal = 2,
-		DepthStencilAttachmentOptimal = 3,
-		DepthStencilReadOnlyOptimal = 4,
-		ShaderReadOnlyOptimal = 5,
-		TransferSrcOptimal = 6,
-		TransferDstOptimal = 7,
-		Preinitialized = 8,
-		DepthReadOnlyStencilAttachmentOptimal = 1000117000,
-		DepthAttachmentStencilReadOnlyOptimal = 1000117001,
-		DepthAttachmentOptimal = 1000241000,
-		DepthReadOnlyOptimal = 1000241001,
-		StencilAttachmentOptimal = 1000241002,
-		StencilReadOnlyOptimal = 1000241003,
-		PresentSrcKHR = 1000001002,
-		SharedPresentKHR = 1000111000,
-		ShadingRateOptimalNV = 1000164003,
-		FragmentDensityMapOptimalEXT = 1000218000,
-		DepthReadOnlyStencilAttachmentOptimalKHR = DepthReadOnlyStencilAttachmentOptimal,
-		DepthAttachmentStencilReadOnlyOptimalKHR = DepthAttachmentStencilReadOnlyOptimal,
-		DepthAttachmentOptimalKHR = DepthAttachmentOptimal,
-		DepthReadOnlyOptimalKHR = DepthReadOnlyOptimal,
-		StencilAttachmentOptimalKHR = StencilAttachmentOptimal,
-		StencilReadOnlyOptimalKHR = StencilReadOnlyOptimal,
-	}
-
-	public enum VkImageViewType
-	{
-		Image1D = 0,
-		Image2D = 1,
-		Image3D = 2,
-		ImageCube = 3,
-		Image1DArray = 4,
-		Image2DArray = 5,
-		ImageCubeArray = 6,
-	}
-
 	public enum VkComponentSwizzle
 	{
 		Identity = 0,
@@ -1005,83 +1051,15 @@ namespace Vortice.Vulkan
 		A = 6,
 	}
 
-	public enum VkVertexInputRate
+	public enum VkImageViewType
 	{
-		Vertex = 0,
-		Instance = 1,
-	}
-
-	public enum VkPrimitiveTopology
-	{
-		PointList = 0,
-		LineList = 1,
-		LineStrip = 2,
-		TriangleList = 3,
-		TriangleStrip = 4,
-		TriangleFan = 5,
-		LineListWithAdjacency = 6,
-		LineStripWithAdjacency = 7,
-		TriangleListWithAdjacency = 8,
-		TriangleStripWithAdjacency = 9,
-		PatchList = 10,
-	}
-
-	public enum VkPolygonMode
-	{
-		Fill = 0,
-		Line = 1,
-		Point = 2,
-		FillRectangleNV = 1000153000,
-	}
-
-	public enum VkFrontFace
-	{
-		CounterClockwise = 0,
-		Clockwise = 1,
-	}
-
-	public enum VkCompareOp
-	{
-		Never = 0,
-		Less = 1,
-		Equal = 2,
-		LessOrEqual = 3,
-		Greater = 4,
-		NotEqual = 5,
-		GreaterOrEqual = 6,
-		Always = 7,
-	}
-
-	public enum VkStencilOp
-	{
-		Keep = 0,
-		Zero = 1,
-		Replace = 2,
-		IncrementAndClamp = 3,
-		DecrementAndClamp = 4,
-		Invert = 5,
-		IncrementAndWrap = 6,
-		DecrementAndWrap = 7,
-	}
-
-	public enum VkLogicOp
-	{
-		Clear = 0,
-		And = 1,
-		AndReverse = 2,
-		Copy = 3,
-		AndInverted = 4,
-		NoOp = 5,
-		Xor = 6,
-		Or = 7,
-		Nor = 8,
-		Equivalent = 9,
-		Invert = 10,
-		OrReverse = 11,
-		CopyInverted = 12,
-		OrInverted = 13,
-		Nand = 14,
-		Set = 15,
+		Image1D = 0,
+		Image2D = 1,
+		Image3D = 2,
+		ImageCube = 3,
+		Image1DArray = 4,
+		Image2DArray = 5,
+		ImageCubeArray = 6,
 	}
 
 	public enum VkBlendFactor
@@ -1162,6 +1140,18 @@ namespace Vortice.Vulkan
 		BlueEXT = 1000148045,
 	}
 
+	public enum VkCompareOp
+	{
+		Never = 0,
+		Less = 1,
+		Equal = 2,
+		LessOrEqual = 3,
+		Greater = 4,
+		NotEqual = 5,
+		GreaterOrEqual = 6,
+		Always = 7,
+	}
+
 	public enum VkDynamicState
 	{
 		Viewport = 0,
@@ -1180,30 +1170,85 @@ namespace Vortice.Vulkan
 		ViewportCoarseSampleOrderNV = 1000164006,
 		ExclusiveScissorNV = 1000205001,
 		LineStippleEXT = 1000259000,
+		CullModeEXT = 1000267000,
+		FrontFaceEXT = 1000267001,
+		PrimitiveTopologyEXT = 1000267002,
+		ViewportWithCountEXT = 1000267003,
+		ScissorWithCountEXT = 1000267004,
+		VertexInputBindingStrideEXT = 1000267005,
+		DepthTestEnableEXT = 1000267006,
+		DepthWriteEnableEXT = 1000267007,
+		DepthCompareOpEXT = 1000267008,
+		DepthBoundsTestEnableEXT = 1000267009,
+		StencilTestEnableEXT = 1000267010,
+		StencilOpEXT = 1000267011,
 	}
 
-	public enum VkFilter
+	public enum VkFrontFace
 	{
-		Nearest = 0,
-		Linear = 1,
-		CubicImg = 1000015000,
-		CubicEXT = CubicImg,
+		CounterClockwise = 0,
+		Clockwise = 1,
 	}
 
-	public enum VkSamplerMipmapMode
+	public enum VkVertexInputRate
 	{
-		Nearest = 0,
-		Linear = 1,
+		Vertex = 0,
+		Instance = 1,
 	}
 
-	public enum VkSamplerAddressMode
+	public enum VkPrimitiveTopology
 	{
-		Repeat = 0,
-		MirroredRepeat = 1,
-		ClampToEdge = 2,
-		ClampToBorder = 3,
-		MirrorClampToEdge = 4,
-		MirrorClampToEdgeKHR = MirrorClampToEdge,
+		PointList = 0,
+		LineList = 1,
+		LineStrip = 2,
+		TriangleList = 3,
+		TriangleStrip = 4,
+		TriangleFan = 5,
+		LineListWithAdjacency = 6,
+		LineStripWithAdjacency = 7,
+		TriangleListWithAdjacency = 8,
+		TriangleStripWithAdjacency = 9,
+		PatchList = 10,
+	}
+
+	public enum VkPolygonMode
+	{
+		Fill = 0,
+		Line = 1,
+		Point = 2,
+		FillRectangleNV = 1000153000,
+	}
+
+	public enum VkStencilOp
+	{
+		Keep = 0,
+		Zero = 1,
+		Replace = 2,
+		IncrementAndClamp = 3,
+		DecrementAndClamp = 4,
+		Invert = 5,
+		IncrementAndWrap = 6,
+		DecrementAndWrap = 7,
+	}
+
+	public enum VkLogicOp
+	{
+		Clear = 0,
+		And = 1,
+		AndReverse = 2,
+		Copy = 3,
+		AndInverted = 4,
+		NoOp = 5,
+		Xor = 6,
+		Or = 7,
+		Nor = 8,
+		Equivalent = 9,
+		Invert = 10,
+		OrReverse = 11,
+		CopyInverted = 12,
+		OrInverted = 13,
+		Nand = 14,
+		Set = 15,
 	}
 
 	public enum VkBorderColor
@@ -1216,6 +1261,30 @@ namespace Vortice.Vulkan
 		IntOpaqueWhite = 5,
 		FloatCustomEXT = 1000287003,
 		IntCustomEXT = 1000287004,
+	}
+
+	public enum VkFilter
+	{
+		Nearest = 0,
+		Linear = 1,
+		CubicImg = 1000015000,
+		CubicEXT = CubicImg,
+	}
+
+	public enum VkSamplerAddressMode
+	{
+		Repeat = 0,
+		MirroredRepeat = 1,
+		ClampToEdge = 2,
+		ClampToBorder = 3,
+		MirrorClampToEdge = 4,
+		MirrorClampToEdgeKHR = MirrorClampToEdge,
+	}
+
+	public enum VkSamplerMipmapMode
+	{
+		Nearest = 0,
+		Linear = 1,
 	}
 
 	public enum VkDescriptorType
@@ -1279,60 +1348,60 @@ namespace Vortice.Vulkan
 		SecondaryCommandBuffers = 1,
 	}
 
-	public enum VkObjectType
+	[Flags]
+	public enum VkAccessFlags
 	{
-		Unknown = 0,
-		Instance = 1,
-		PhysicalDevice = 2,
-		Device = 3,
-		Queue = 4,
-		Semaphore = 5,
-		CommandBuffer = 6,
-		Fence = 7,
-		DeviceMemory = 8,
-		Buffer = 9,
-		Image = 10,
-		Event = 11,
-		QueryPool = 12,
-		BufferView = 13,
-		ImageView = 14,
-		ShaderModule = 15,
-		PipelineCache = 16,
-		PipelineLayout = 17,
-		RenderPass = 18,
-		Pipeline = 19,
-		DescriptorSetLayout = 20,
-		Sampler = 21,
-		DescriptorPool = 22,
-		DescriptorSet = 23,
-		Framebuffer = 24,
-		CommandPool = 25,
-		SamplerYcbcrConversion = 1000156000,
-		DescriptorUpdateTemplate = 1000085000,
-		SurfaceKHR = 1000000000,
-		SwapchainKHR = 1000001000,
-		DisplayKHR = 1000002000,
-		DisplayModeKHR = 1000002001,
-		DebugReportCallbackEXT = 1000011000,
-		DebugUtilsMessengerEXT = 1000128000,
-		AccelerationStructureKHR = 1000165000,
-		ValidationCacheEXT = 1000160000,
-		PerformanceConfigurationINTEL = 1000210000,
-		DeferredOperationKHR = 1000268000,
-		IndirectCommandsLayoutNV = 1000277000,
-		PrivateDataSlotEXT = 1000295000,
-		DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate,
-		SamplerYcbcrConversionKHR = SamplerYcbcrConversion,
-		AccelerationStructureNV = AccelerationStructureKHR,
+		None = 0,
+		IndirectCommandRead = 1,
+		IndexRead = 2,
+		VertexAttributeRead = 4,
+		UniformRead = 8,
+		InputAttachmentRead = 16,
+		ShaderRead = 32,
+		ShaderWrite = 64,
+		ColorAttachmentRead = 128,
+		ColorAttachmentWrite = 256,
+		DepthStencilAttachmentRead = 512,
+		DepthStencilAttachmentWrite = 1024,
+		TransferRead = 2048,
+		TransferWrite = 4096,
+		HostRead = 8192,
+		HostWrite = 16384,
+		MemoryRead = 32768,
+		MemoryWrite = 65536,
+		TransformFeedbackWriteEXT = 33554432,
+		TransformFeedbackCounterReadEXT = 67108864,
+		TransformFeedbackCounterWriteEXT = 134217728,
+		ConditionalRenderingReadEXT = 1048576,
+		ColorAttachmentReadNoncoherentEXT = 524288,
+		AccelerationStructureReadKHR = 2097152,
+		AccelerationStructureWriteKHR = 4194304,
+		ShadingRateImageReadNV = 8388608,
+		FragmentDensityMapReadEXT = 16777216,
+		CommandPreprocessReadNV = 131072,
+		CommandPreprocessWriteNV = 262144,
+		AccelerationStructureReadNV = AccelerationStructureReadKHR,
+		AccelerationStructureWriteNV = AccelerationStructureWriteKHR,
 	}
 
-	public enum VkVendorId
+	[Flags]
+	public enum VkImageAspectFlags
 	{
-		Viv = 65537,
-		Vsi = 65538,
-		Kazan = 65539,
-		Codeplay = 65540,
-		Mesa = 65541,
+		None = 0,
+		Color = 1,
+		Depth = 2,
+		Stencil = 4,
+		Metadata = 8,
+		Plane0 = 16,
+		Plane1 = 32,
+		Plane2 = 64,
+		MemoryPlane0EXT = 128,
+		MemoryPlane1EXT = 256,
+		MemoryPlane2EXT = 512,
+		MemoryPlane3EXT = 1024,
+		Plane0KHR = Plane0,
+		Plane1KHR = Plane1,
+		Plane2KHR = Plane2,
 	}
 
 	[Flags]
@@ -1379,22 +1448,6 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
-	public enum VkImageUsageFlags
-	{
-		None = 0,
-		TransferSrc = 1,
-		TransferDst = 2,
-		Sampled = 4,
-		Storage = 8,
-		ColorAttachment = 16,
-		DepthStencilAttachment = 32,
-		TransientAttachment = 64,
-		InputAttachment = 128,
-		ShadingRateImageNV = 256,
-		FragmentDensityMapEXT = 512,
-	}
-
-	[Flags]
 	public enum VkImageCreateFlags
 	{
 		None = 0,
@@ -1435,14 +1488,28 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
-	public enum VkQueueFlags
+	public enum VkImageUsageFlags
 	{
 		None = 0,
-		Graphics = 1,
-		Compute = 2,
-		Transfer = 4,
-		SparseBinding = 8,
-		Protected = 16,
+		TransferSrc = 1,
+		TransferDst = 2,
+		Sampled = 4,
+		Storage = 8,
+		ColorAttachment = 16,
+		DepthStencilAttachment = 32,
+		TransientAttachment = 64,
+		InputAttachment = 128,
+		ShadingRateImageNV = 256,
+		FragmentDensityMapEXT = 512,
+	}
+
+	[Flags]
+	public enum VkMemoryHeapFlags
+	{
+		None = 0,
+		DeviceLocal = 1,
+		MultiInstance = 2,
+		MultiInstanceKHR = MultiInstance,
 	}
 
 	[Flags]
@@ -1460,12 +1527,14 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
-	public enum VkMemoryHeapFlags
+	public enum VkQueueFlags
 	{
 		None = 0,
-		DeviceLocal = 1,
-		MultiInstance = 2,
-		MultiInstanceKHR = MultiInstance,
+		Graphics = 1,
+		Compute = 2,
+		Transfer = 4,
+		SparseBinding = 8,
+		Protected = 16,
 	}
 
 	[Flags]
@@ -1510,23 +1579,10 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
-	public enum VkImageAspectFlags
+	public enum VkSparseMemoryBindFlags
 	{
 		None = 0,
-		Color = 1,
-		Depth = 2,
-		Stencil = 4,
-		Metadata = 8,
-		Plane0 = 16,
-		Plane1 = 32,
-		Plane2 = 64,
-		MemoryPlane0EXT = 128,
-		MemoryPlane1EXT = 256,
-		MemoryPlane2EXT = 512,
-		MemoryPlane3EXT = 1024,
-		Plane0KHR = Plane0,
-		Plane1KHR = Plane1,
-		Plane2KHR = Plane2,
+		Metadata = 1,
 	}
 
 	[Flags]
@@ -1536,13 +1592,6 @@ namespace Vortice.Vulkan
 		SingleMiptail = 1,
 		AlignedMipSize = 2,
 		NonstandardBlockSize = 4,
-	}
-
-	[Flags]
-	public enum VkSparseMemoryBindFlags
-	{
-		None = 0,
-		Metadata = 1,
 	}
 
 	[Flags]
@@ -1636,6 +1685,17 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
+	public enum VkColorComponentFlags
+	{
+		None = 0,
+		R = 1,
+		G = 2,
+		B = 4,
+		A = 8,
+		All = R | G | B | A
+	}
+
+	[Flags]
 	public enum VkPipelineCreateFlags
 	{
 		None = 0,
@@ -1707,22 +1767,20 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
-	public enum VkColorComponentFlags
-	{
-		None = 0,
-		R = 1,
-		G = 2,
-		B = 4,
-		A = 8,
-		All = R | G | B | A
-	}
-
-	[Flags]
 	public enum VkSamplerCreateFlags
 	{
 		None = 0,
 		SubsampledEXT = 1,
 		SubsampledCoarseReconstructionEXT = 2,
+	}
+
+	[Flags]
+	public enum VkDescriptorPoolCreateFlags
+	{
+		None = 0,
+		FreeDescriptorSet = 1,
+		UpdateAfterBind = 2,
+		UpdateAfterBindEXT = UpdateAfterBind,
 	}
 
 	[Flags]
@@ -1735,12 +1793,21 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
-	public enum VkDescriptorPoolCreateFlags
+	public enum VkAttachmentDescriptionFlags
 	{
 		None = 0,
-		FreeDescriptorSet = 1,
-		UpdateAfterBind = 2,
-		UpdateAfterBindEXT = UpdateAfterBind,
+		MayAlias = 1,
+	}
+
+	[Flags]
+	public enum VkDependencyFlags
+	{
+		None = 0,
+		ByRegion = 1,
+		DeviceGroup = 4,
+		ViewLocal = 2,
+		ViewLocalKHR = ViewLocal,
+		DeviceGroupKHR = DeviceGroup,
 	}
 
 	[Flags]
@@ -1759,13 +1826,6 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
-	public enum VkAttachmentDescriptionFlags
-	{
-		None = 0,
-		MayAlias = 1,
-	}
-
-	[Flags]
 	public enum VkSubpassDescriptionFlags
 	{
 		None = 0,
@@ -1773,53 +1833,6 @@ namespace Vortice.Vulkan
 		PerViewPositionXOnlyNVX = 2,
 		FragmentRegionQcom = 4,
 		ShaderResolveQcom = 8,
-	}
-
-	[Flags]
-	public enum VkAccessFlags
-	{
-		None = 0,
-		IndirectCommandRead = 1,
-		IndexRead = 2,
-		VertexAttributeRead = 4,
-		UniformRead = 8,
-		InputAttachmentRead = 16,
-		ShaderRead = 32,
-		ShaderWrite = 64,
-		ColorAttachmentRead = 128,
-		ColorAttachmentWrite = 256,
-		DepthStencilAttachmentRead = 512,
-		DepthStencilAttachmentWrite = 1024,
-		TransferRead = 2048,
-		TransferWrite = 4096,
-		HostRead = 8192,
-		HostWrite = 16384,
-		MemoryRead = 32768,
-		MemoryWrite = 65536,
-		TransformFeedbackWriteEXT = 33554432,
-		TransformFeedbackCounterReadEXT = 67108864,
-		TransformFeedbackCounterWriteEXT = 134217728,
-		ConditionalRenderingReadEXT = 1048576,
-		ColorAttachmentReadNoncoherentEXT = 524288,
-		AccelerationStructureReadKHR = 2097152,
-		AccelerationStructureWriteKHR = 4194304,
-		ShadingRateImageReadNV = 8388608,
-		FragmentDensityMapReadEXT = 16777216,
-		CommandPreprocessReadNV = 131072,
-		CommandPreprocessWriteNV = 262144,
-		AccelerationStructureReadNV = AccelerationStructureReadKHR,
-		AccelerationStructureWriteNV = AccelerationStructureWriteKHR,
-	}
-
-	[Flags]
-	public enum VkDependencyFlags
-	{
-		None = 0,
-		ByRegion = 1,
-		DeviceGroup = 4,
-		ViewLocal = 2,
-		ViewLocalKHR = ViewLocal,
-		DeviceGroupKHR = DeviceGroup,
 	}
 
 	[Flags]
