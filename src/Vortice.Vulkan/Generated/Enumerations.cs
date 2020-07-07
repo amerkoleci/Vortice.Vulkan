@@ -498,6 +498,9 @@ namespace Vortice.Vulkan
 		PhysicalDevicePipelineCreationCacheControlFeaturesEXT = 1000297000,
 		PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 		DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
+		PhysicalDeviceFragmentDensityMap2FeaturesEXT = 1000332000,
+		PhysicalDeviceFragmentDensityMap2PropertiesEXT = 1000332001,
+		DirectfbSurfaceCreateInfoEXT = 1000346000,
 		PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 		PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 		DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
@@ -1669,6 +1672,7 @@ namespace Vortice.Vulkan
 	{
 		None = 0,
 		FragmentDensityMapDynamicEXT = 1,
+		FragmentDensityMapDeferredEXT = 2,
 	}
 
 	[Flags]

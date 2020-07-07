@@ -5114,6 +5114,25 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFragmentDensityMap2FeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 fragmentDensityMapDeferred;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFragmentDensityMap2PropertiesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 subsampledLoads;
+		public VkBool32 subsampledCoarseReconstructionEarlyAccess;
+		public uint maxSubsampledArrayLayers;
+		public uint maxDescriptorSetSubsampledSamplers;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkAndroidSurfaceCreateInfoKHR
 	{
 		public VkStructureType sType;

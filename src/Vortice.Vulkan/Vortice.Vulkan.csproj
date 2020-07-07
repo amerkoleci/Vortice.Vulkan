@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <VersionPrefix>1.2.145</VersionPrefix>
+    <VersionPrefix>1.2.146</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
-    <BuildNumber>003</BuildNumber>
+    <BuildNumber>001</BuildNumber>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>portable</DebugType>
     <Description>Vulkan low level bindings.</Description>

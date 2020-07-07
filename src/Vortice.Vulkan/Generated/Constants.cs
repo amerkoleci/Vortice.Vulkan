@@ -2307,6 +2307,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string QcomRenderPassStoreOpsExtensionName = "VK_QCOM_render_pass_store_ops";
 		/// <summary>
+		/// VK_EXT_fragment_density_map2 = 1
+		/// </summary>
+		public const uint EXTFragmentDensityMap2 = 1;
+		/// <summary>
+		/// VK_EXT_FRAGMENT_DENSITY_MAP_2_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTFragmentDensityMap2SpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_FRAGMENT_DENSITY_MAP_2_EXTENSION_NAME = "VK_EXT_fragment_density_map2"
+		/// </summary>
+		public const string EXTFragmentDensityMap2ExtensionName = "VK_EXT_fragment_density_map2";
+		/// <summary>
 		/// VK_KHR_android_surface = 1
 		/// </summary>
 		public const uint KHRAndroidSurface = 1;
