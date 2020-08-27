@@ -464,6 +464,7 @@ namespace Vortice.Vulkan
 		PhysicalDeviceLineRasterizationFeaturesEXT = 1000259000,
 		PipelineRasterizationLineStateCreateInfoEXT = 1000259001,
 		PhysicalDeviceLineRasterizationPropertiesEXT = 1000259002,
+		PhysicalDeviceShaderAtomicFloatFeaturesEXT = 1000260000,
 		PhysicalDeviceIndexTypeUint8FeaturesEXT = 1000265000,
 		PhysicalDeviceExtendedDynamicStateFeaturesEXT = 1000267000,
 		DeferredOperationInfoKHR = 1000268000,
@@ -500,6 +501,8 @@ namespace Vortice.Vulkan
 		DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
 		PhysicalDeviceFragmentDensityMap2FeaturesEXT = 1000332000,
 		PhysicalDeviceFragmentDensityMap2PropertiesEXT = 1000332001,
+		PhysicalDeviceImageRobustnessFeaturesEXT = 1000335000,
+		PhysicalDevice4444FormatsFeaturesEXT = 1000340000,
 		DirectfbSurfaceCreateInfoEXT = 1000346000,
 		PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 		PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
@@ -965,6 +968,8 @@ namespace Vortice.Vulkan
 		ASTC10x10SFloatBlockEXT = 1000066011,
 		ASTC12x10SFloatBlockEXT = 1000066012,
 		ASTC12x12SFloatBlockEXT = 1000066013,
+		A4R4G4B4UNormPack16EXT = 1000340000,
+		A4B4G4R4UNormPack16EXT = 1000340001,
 		G8B8G8R8422UNormKHR = G8B8G8R8422UNorm,
 		B8G8R8G8422UNormKHR = B8G8R8G8422UNorm,
 		G8B8R83Plane420UNormKHR = G8B8R83Plane420UNorm,
@@ -2066,6 +2071,7 @@ namespace Vortice.Vulkan
 		OpaqueWin32Kmt = 4,
 		D3d12Fence = 8,
 		SyncFd = 16,
+		D3d11Fence = D3d12Fence,
 		OpaqueFdKHR = OpaqueFd,
 		OpaqueWin32KHR = OpaqueWin32,
 		OpaqueWin32KmtKHR = OpaqueWin32Kmt,
@@ -2098,6 +2104,7 @@ namespace Vortice.Vulkan
 		GgpProprietary = 11,
 		BroadcomProprietary = 12,
 		MesaLLVMPipe = 13,
+		Moltenvk = 14,
 		AMDProprietaryKHR = AMDProprietary,
 		AMDOpenSourceKHR = AMDOpenSource,
 		MesaRadvKHR = MesaRadv,
@@ -2179,17 +2186,17 @@ namespace Vortice.Vulkan
 
 	public enum VkPresentModeKHR
 	{
-		ImmediateKHR = 0,
-		MailboxKHR = 1,
-		FifoKHR = 2,
-		FifoRelaxedKHR = 3,
-		SharedDemandRefreshKHR = 1000111000,
-		SharedContinuousRefreshKHR = 1000111001,
+		Immediate = 0,
+		Mailbox = 1,
+		Fifo = 2,
+		FifoRelaxed = 3,
+		SharedDemandRefresh = 1000111000,
+		SharedContinuousRefresh = 1000111001,
 	}
 
 	public enum VkColorSpaceKHR
 	{
-		SrgbNonlinearKHR = 0,
+		SrgbNonlinear = 0,
 		DisplayP3NonlinearEXT = 1000104001,
 		ExtendedSrgbLinearEXT = 1000104002,
 		DisplayP3LinearEXT = 1000104003,
@@ -2205,7 +2212,7 @@ namespace Vortice.Vulkan
 		PassThroughEXT = 1000104013,
 		ExtendedSrgbNonlinearEXT = 1000104014,
 		DisplayNativeAMD = 1000213000,
-		SrgbNonLinearKHR = SrgbNonlinearKHR,
+		SrgbNonLinear = SrgbNonlinear,
 		DciP3LinearEXT = DisplayP3LinearEXT,
 	}
 
@@ -2213,97 +2220,97 @@ namespace Vortice.Vulkan
 	public enum VkSurfaceTransformFlagsKHR
 	{
 		None = 0,
-		IdentityKHR = 1,
-		Rotate90KHR = 2,
-		Rotate180KHR = 4,
-		Rotate270KHR = 8,
-		HorizontalMirrorKHR = 16,
-		HorizontalMirrorRotate90KHR = 32,
-		HorizontalMirrorRotate180KHR = 64,
-		HorizontalMirrorRotate270KHR = 128,
-		InheritKHR = 256,
+		Identity = 1,
+		Rotate90 = 2,
+		Rotate180 = 4,
+		Rotate270 = 8,
+		HorizontalMirror = 16,
+		HorizontalMirrorRotate90 = 32,
+		HorizontalMirrorRotate180 = 64,
+		HorizontalMirrorRotate270 = 128,
+		Inherit = 256,
 	}
 
 	[Flags]
 	public enum VkCompositeAlphaFlagsKHR
 	{
 		None = 0,
-		OpaqueKHR = 1,
-		PreMultipliedKHR = 2,
-		PostMultipliedKHR = 4,
-		InheritKHR = 8,
+		Opaque = 1,
+		PreMultiplied = 2,
+		PostMultiplied = 4,
+		Inherit = 8,
 	}
 
 	[Flags]
 	public enum VkSwapchainCreateFlagsKHR
 	{
 		None = 0,
-		SplitInstanceBindRegionsKHR = 1,
-		ProtectedKHR = 2,
-		MutableFormatKHR = 4,
+		SplitInstanceBindRegions = 1,
+		Protected = 2,
+		MutableFormat = 4,
 	}
 
 	[Flags]
 	public enum VkDeviceGroupPresentModeFlagsKHR
 	{
 		None = 0,
-		LocalKHR = 1,
-		RemoteKHR = 2,
-		SumKHR = 4,
-		LocalMultiDeviceKHR = 8,
+		Local = 1,
+		Remote = 2,
+		Sum = 4,
+		LocalMultiDevice = 8,
 	}
 
 	[Flags]
 	public enum VkDisplayPlaneAlphaFlagsKHR
 	{
 		None = 0,
-		OpaqueKHR = 1,
-		GlobalKHR = 2,
-		PerPixelKHR = 4,
-		PerPixelPremultipliedKHR = 8,
+		Opaque = 1,
+		Global = 2,
+		PerPixel = 4,
+		PerPixelPremultiplied = 8,
 	}
 
 	public enum VkPerformanceCounterUnitKHR
 	{
-		GenericKHR = 0,
-		PercentageKHR = 1,
-		NanosecondsKHR = 2,
-		BytesKHR = 3,
-		BytesPerSecondKHR = 4,
-		KelvinKHR = 5,
-		WattsKHR = 6,
-		VoltsKHR = 7,
-		AmpsKHR = 8,
-		HertzKHR = 9,
-		CyclesKHR = 10,
+		Generic = 0,
+		Percentage = 1,
+		Nanoseconds = 2,
+		Bytes = 3,
+		BytesPerSecond = 4,
+		Kelvin = 5,
+		Watts = 6,
+		Volts = 7,
+		Amps = 8,
+		Hertz = 9,
+		Cycles = 10,
 	}
 
 	public enum VkPerformanceCounterScopeKHR
 	{
-		CommandBufferKHR = 0,
-		RenderPassKHR = 1,
-		CommandKHR = 2,
-		QueryScopeCommandBufferKHR = CommandBufferKHR,
-		QueryScopeRenderPassKHR = RenderPassKHR,
-		QueryScopeCommandKHR = CommandKHR,
+		CommandBuffer = 0,
+		RenderPass = 1,
+		Command = 2,
+		QueryScopeCommandBuffer = CommandBuffer,
+		QueryScopeRenderPass = RenderPass,
+		QueryScopeCommand = Command,
 	}
 
 	public enum VkPerformanceCounterStorageKHR
 	{
-		Int32KHR = 0,
-		Int64KHR = 1,
-		Uint32KHR = 2,
-		Uint64KHR = 3,
-		Float32KHR = 4,
-		Float64KHR = 5,
+		Int32 = 0,
+		Int64 = 1,
+		Uint32 = 2,
+		Uint64 = 3,
+		Float32 = 4,
+		Float64 = 5,
 	}
 
 	[Flags]
 	public enum VkPerformanceCounterDescriptionFlagsKHR
 	{
 		None = 0,
-		PerformanceImpactingKHR = 1,
-		ConcurrentlyImpactedKHR = 2,
+		PerformanceImpacting = 1,
+		ConcurrentlyImpacted = 2,
 	}
 
 	[Flags]
@@ -2314,65 +2321,65 @@ namespace Vortice.Vulkan
 
 	public enum VkPipelineExecutableStatisticFormatKHR
 	{
-		Bool32KHR = 0,
-		Int64KHR = 1,
-		Uint64KHR = 2,
-		Float64KHR = 3,
+		Bool32 = 0,
+		Int64 = 1,
+		Uint64 = 2,
+		Float64 = 3,
 	}
 
 	public enum VkDebugReportObjectTypeEXT
 	{
-		UnknownEXT = 0,
-		InstanceEXT = 1,
-		PhysicalDeviceEXT = 2,
-		DeviceEXT = 3,
-		QueueEXT = 4,
-		SemaphoreEXT = 5,
-		CommandBufferEXT = 6,
-		FenceEXT = 7,
-		DeviceMemoryEXT = 8,
-		BufferEXT = 9,
-		ImageEXT = 10,
-		EventEXT = 11,
-		QueryPoolEXT = 12,
-		BufferViewEXT = 13,
-		ImageViewEXT = 14,
-		ShaderModuleEXT = 15,
-		PipelineCacheEXT = 16,
-		PipelineLayoutEXT = 17,
-		RenderPassEXT = 18,
-		PipelineEXT = 19,
-		DescriptorSetLayoutEXT = 20,
-		SamplerEXT = 21,
-		DescriptorPoolEXT = 22,
-		DescriptorSetEXT = 23,
-		FramebufferEXT = 24,
-		CommandPoolEXT = 25,
-		SurfaceKHREXT = 26,
-		SwapchainKHREXT = 27,
-		DebugReportCallbackEXTEXT = 28,
-		DisplayKHREXT = 29,
-		DisplayModeKHREXT = 30,
-		ValidationCacheEXTEXT = 33,
-		SamplerYcbcrConversionEXT = 1000156000,
-		DescriptorUpdateTemplateEXT = 1000085000,
-		AccelerationStructureKHREXT = 1000165000,
-		DebugReportEXT = DebugReportCallbackEXTEXT,
-		ValidationCacheEXT = ValidationCacheEXTEXT,
-		DescriptorUpdateTemplateKHREXT = DescriptorUpdateTemplateEXT,
-		SamplerYcbcrConversionKHREXT = SamplerYcbcrConversionEXT,
-		AccelerationStructureNVEXT = AccelerationStructureKHREXT,
+		Unknown = 0,
+		Instance = 1,
+		PhysicalDevice = 2,
+		Device = 3,
+		Queue = 4,
+		Semaphore = 5,
+		CommandBuffer = 6,
+		Fence = 7,
+		DeviceMemory = 8,
+		Buffer = 9,
+		Image = 10,
+		Event = 11,
+		QueryPool = 12,
+		BufferView = 13,
+		ImageView = 14,
+		ShaderModule = 15,
+		PipelineCache = 16,
+		PipelineLayout = 17,
+		RenderPass = 18,
+		Pipeline = 19,
+		DescriptorSetLayout = 20,
+		Sampler = 21,
+		DescriptorPool = 22,
+		DescriptorSet = 23,
+		Framebuffer = 24,
+		CommandPool = 25,
+		SurfaceKHR = 26,
+		SwapchainKHR = 27,
+		DebugReportCallbackEXT = 28,
+		DisplayKHR = 29,
+		DisplayModeKHR = 30,
+		ValidationCacheEXT = 33,
+		SamplerYcbcrConversion = 1000156000,
+		DescriptorUpdateTemplate = 1000085000,
+		AccelerationStructureKHR = 1000165000,
+		DebugReport = DebugReportCallbackEXT,
+		ValidationCache = ValidationCacheEXT,
+		DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate,
+		SamplerYcbcrConversionKHR = SamplerYcbcrConversion,
+		AccelerationStructureNV = AccelerationStructureKHR,
 	}
 
 	[Flags]
 	public enum VkDebugReportFlagsEXT
 	{
 		None = 0,
-		InformationEXT = 1,
-		WarningEXT = 2,
-		PerformanceWarningEXT = 4,
-		ErrorEXT = 8,
-		DebugEXT = 16,
+		Information = 1,
+		Warning = 2,
+		PerformanceWarning = 4,
+		Error = 8,
+		Debug = 16,
 	}
 
 	public enum VkRasterizationOrderAMD
@@ -2392,125 +2399,125 @@ namespace Vortice.Vulkan
 	public enum VkExternalMemoryHandleTypeFlagsNV
 	{
 		None = 0,
-		OpaqueWin32NV = 1,
-		OpaqueWin32KmtNV = 2,
-		D3d11ImageNV = 4,
-		D3d11ImageKmtNV = 8,
+		OpaqueWin32 = 1,
+		OpaqueWin32Kmt = 2,
+		D3d11Image = 4,
+		D3d11ImageKmt = 8,
 	}
 
 	[Flags]
 	public enum VkExternalMemoryFeatureFlagsNV
 	{
 		None = 0,
-		DedicatedOnlyNV = 1,
-		ExportableNV = 2,
-		ImportableNV = 4,
+		DedicatedOnly = 1,
+		Exportable = 2,
+		Importable = 4,
 	}
 
 	public enum VkValidationCheckEXT
 	{
-		AllEXT = 0,
-		ShadersEXT = 1,
+		All = 0,
+		Shaders = 1,
 	}
 
 	[Flags]
 	public enum VkConditionalRenderingFlagsEXT
 	{
 		None = 0,
-		InvertedEXT = 1,
+		Inverted = 1,
 	}
 
 	[Flags]
 	public enum VkSurfaceCounterFlagsEXT
 	{
 		None = 0,
-		VblankEXT = 1,
+		Vblank = 1,
 	}
 
 	public enum VkDisplayPowerStateEXT
 	{
-		OffEXT = 0,
-		SuspendEXT = 1,
-		OnEXT = 2,
+		Off = 0,
+		Suspend = 1,
+		On = 2,
 	}
 
 	public enum VkDeviceEventTypeEXT
 	{
-		DisplayHotplugEXT = 0,
+		DisplayHotplug = 0,
 	}
 
 	public enum VkDisplayEventTypeEXT
 	{
-		FirstPixelOutEXT = 0,
+		FirstPixelOut = 0,
 	}
 
 	public enum VkViewportCoordinateSwizzleNV
 	{
-		PositiveXNV = 0,
-		NegativeXNV = 1,
-		PositiveYNV = 2,
-		NegativeYNV = 3,
-		PositiveZNV = 4,
-		NegativeZNV = 5,
-		PositiveWNV = 6,
-		NegativeWNV = 7,
+		PositiveX = 0,
+		NegativeX = 1,
+		PositiveY = 2,
+		NegativeY = 3,
+		PositiveZ = 4,
+		NegativeZ = 5,
+		PositiveW = 6,
+		NegativeW = 7,
 	}
 
 	public enum VkDiscardRectangleModeEXT
 	{
-		InclusiveEXT = 0,
-		ExclusiveEXT = 1,
+		Inclusive = 0,
+		Exclusive = 1,
 	}
 
 	public enum VkConservativeRasterizationModeEXT
 	{
-		DisabledEXT = 0,
-		OverestimateEXT = 1,
-		UnderestimateEXT = 2,
+		Disabled = 0,
+		Overestimate = 1,
+		Underestimate = 2,
 	}
 
 	[Flags]
 	public enum VkDebugUtilsMessageSeverityFlagsEXT
 	{
 		None = 0,
-		VerboseEXT = 1,
-		InfoEXT = 16,
-		WarningEXT = 256,
-		ErrorEXT = 4096,
+		Verbose = 1,
+		Info = 16,
+		Warning = 256,
+		Error = 4096,
 	}
 
 	[Flags]
 	public enum VkDebugUtilsMessageTypeFlagsEXT
 	{
 		None = 0,
-		GeneralEXT = 1,
-		ValidationEXT = 2,
-		PerformanceEXT = 4,
+		General = 1,
+		Validation = 2,
+		Performance = 4,
 	}
 
 	public enum VkBlendOverlapEXT
 	{
-		UncorrelatedEXT = 0,
-		DisjointEXT = 1,
-		ConjointEXT = 2,
+		Uncorrelated = 0,
+		Disjoint = 1,
+		Conjoint = 2,
 	}
 
 	public enum VkCoverageModulationModeNV
 	{
-		NoneNV = 0,
-		RgbNV = 1,
-		AlphaNV = 2,
-		RgbaNV = 3,
+		None = 0,
+		Rgb = 1,
+		Alpha = 2,
+		Rgba = 3,
 	}
 
 	public enum VkValidationCacheHeaderVersionEXT
 	{
-		OneEXT = 1,
+		One = 1,
 	}
 
 	public enum VkShadingRatePaletteEntryNV
 	{
-		NoInvocationsNV = 0,
+		NoInvocations = 0,
 		SixteenInvocationsPerPixel = 1,
 		EightInvocationsPerPixel = 2,
 		FourInvocationsPerPixel = 3,
@@ -2526,105 +2533,94 @@ namespace Vortice.Vulkan
 
 	public enum VkCoarseSampleOrderTypeNV
 	{
-		DefaultNV = 0,
-		CustomNV = 1,
-		PixelMajorNV = 2,
-		SampleMajorNV = 3,
+		Default = 0,
+		Custom = 1,
+		PixelMajor = 2,
+		SampleMajor = 3,
 	}
 
 	public enum VkRayTracingShaderGroupTypeKHR
 	{
-		GeneralKHR = 0,
-		TrianglesHitGroupKHR = 1,
-		ProceduralHitGroupKHR = 2,
-		General = GeneralKHR,
-		TrianglesHitGroup = TrianglesHitGroupKHR,
-		ProceduralHitGroup = ProceduralHitGroupKHR,
+		General = 0,
+		TrianglesHitGroup = 1,
+		ProceduralHitGroup = 2,
 	}
 
 	public enum VkGeometryTypeKHR
 	{
-		TrianglesKHR = 0,
-		AabbsKHR = 1,
-		InstancesKHR = 1000150000,
-		Triangles = TrianglesKHR,
-		AabbsNV = AabbsKHR,
+		Triangles = 0,
+		Aabbs = 1,
+		Instances = 1000150000,
+		AabbsNV = Aabbs,
 	}
 
 	public enum VkAccelerationStructureTypeKHR
 	{
-		TopLevelKHR = 0,
-		BottomLevelKHR = 1,
-		TopLevel = TopLevelKHR,
-		BottomLevel = BottomLevelKHR,
+		TopLevel = 0,
+		BottomLevel = 1,
 	}
 
 	public enum VkCopyAccelerationStructureModeKHR
 	{
-		CloneKHR = 0,
-		CompactKHR = 1,
-		SerializeKHR = 2,
-		DeserializeKHR = 3,
-		Clone = CloneKHR,
-		Compact = CompactKHR,
+		Clone = 0,
+		Compact = 1,
+		Serialize = 2,
+		Deserialize = 3,
 	}
 
 	public enum VkAccelerationStructureMemoryRequirementsTypeKHR
 	{
-		ObjectKHR = 0,
-		BuildScratchKHR = 1,
-		UpdateScratchKHR = 2,
-		Object = ObjectKHR,
-		BuildScratch = BuildScratchKHR,
-		UpdateScratch = UpdateScratchKHR,
+		Object = 0,
+		BuildScratch = 1,
+		UpdateScratch = 2,
 	}
 
 	[Flags]
 	public enum VkGeometryFlagsKHR
 	{
 		None = 0,
-		OpaqueKHR = 1,
-		NoDuplicateAnyHitInvocationKHR = 2,
-		OpaqueNV = OpaqueKHR,
-		NoDuplicateAnyHitInvocationNV = NoDuplicateAnyHitInvocationKHR,
+		Opaque = 1,
+		NoDuplicateAnyHitInvocation = 2,
+		OpaqueNV = Opaque,
+		NoDuplicateAnyHitInvocationNV = NoDuplicateAnyHitInvocation,
 	}
 
 	[Flags]
 	public enum VkGeometryInstanceFlagsKHR
 	{
 		None = 0,
-		TriangleFacingCullDisableKHR = 1,
-		TriangleFrontCounterclockwiseKHR = 2,
-		ForceOpaqueKHR = 4,
-		ForceNoOpaqueKHR = 8,
-		TriangleCullDisableNV = TriangleFacingCullDisableKHR,
-		TriangleFrontCounterclockwiseNV = TriangleFrontCounterclockwiseKHR,
-		ForceOpaqueNV = ForceOpaqueKHR,
-		ForceNoOpaqueNV = ForceNoOpaqueKHR,
+		TriangleFacingCullDisable = 1,
+		TriangleFrontCounterclockwise = 2,
+		ForceOpaque = 4,
+		ForceNoOpaque = 8,
+		TriangleCullDisableNV = TriangleFacingCullDisable,
+		TriangleFrontCounterclockwiseNV = TriangleFrontCounterclockwise,
+		ForceOpaqueNV = ForceOpaque,
+		ForceNoOpaqueNV = ForceNoOpaque,
 	}
 
 	[Flags]
 	public enum VkBuildAccelerationStructureFlagsKHR
 	{
 		None = 0,
-		AllowUpdateKHR = 1,
-		AllowCompactionKHR = 2,
-		PreferFastTraceKHR = 4,
-		PreferFastBuildKHR = 8,
-		LowMemoryKHR = 16,
-		AllowUpdateNV = AllowUpdateKHR,
-		AllowCompactionNV = AllowCompactionKHR,
-		PreferFastTraceNV = PreferFastTraceKHR,
-		PreferFastBuildNV = PreferFastBuildKHR,
-		LowMemoryNV = LowMemoryKHR,
+		AllowUpdate = 1,
+		AllowCompaction = 2,
+		PreferFastTrace = 4,
+		PreferFastBuild = 8,
+		LowMemory = 16,
+		AllowUpdateNV = AllowUpdate,
+		AllowCompactionNV = AllowCompaction,
+		PreferFastTraceNV = PreferFastTrace,
+		PreferFastBuildNV = PreferFastBuild,
+		LowMemoryNV = LowMemory,
 	}
 
 	public enum VkQueueGlobalPriorityEXT
 	{
-		LowEXT = 128,
-		MediumEXT = 256,
-		HighEXT = 512,
-		RealtimeEXT = 1024,
+		Low = 128,
+		Medium = 256,
+		High = 512,
+		Realtime = 1024,
 	}
 
 	[Flags]
@@ -2635,10 +2631,10 @@ namespace Vortice.Vulkan
 
 	public enum VkTimeDomainEXT
 	{
-		DeviceEXT = 0,
-		ClockMonotonicEXT = 1,
-		ClockMonotonicRawEXT = 2,
-		QueryPerformanceCounterEXT = 3,
+		Device = 0,
+		ClockMonotonic = 1,
+		ClockMonotonicRaw = 2,
+		QueryPerformanceCounter = 3,
 	}
 
 	public enum VkMemoryOverallocationBehaviorAMD
@@ -2652,9 +2648,9 @@ namespace Vortice.Vulkan
 	public enum VkPipelineCreationFeedbackFlagsEXT
 	{
 		None = 0,
-		ValidEXT = 1,
-		ApplicationPipelineCacheHitEXT = 2,
-		BasePipelineAccelerationEXT = 4,
+		Valid = 1,
+		ApplicationPipelineCacheHit = 2,
+		BasePipelineAcceleration = 4,
 	}
 
 	public enum VkPerformanceConfigurationTypeINTEL
@@ -2698,97 +2694,98 @@ namespace Vortice.Vulkan
 	public enum VkToolPurposeFlagsEXT
 	{
 		None = 0,
-		ValidationEXT = 1,
-		ProfilingEXT = 2,
-		TracingEXT = 4,
-		AdditionalFeaturesEXT = 8,
-		ModifyingFeaturesEXT = 16,
-		DebugReportingEXT = 32,
-		DebugMarkersEXT = 64,
+		Validation = 1,
+		Profiling = 2,
+		Tracing = 4,
+		AdditionalFeatures = 8,
+		ModifyingFeatures = 16,
+		DebugReporting = 32,
+		DebugMarkers = 64,
 	}
 
 	public enum VkValidationFeatureEnableEXT
 	{
-		GpuAssistedEXT = 0,
-		GpuAssistedReserveBindingSlotEXT = 1,
-		BestPracticesEXT = 2,
-		DebugPrintfEXT = 3,
+		GpuAssisted = 0,
+		GpuAssistedReserveBindingSlot = 1,
+		BestPractices = 2,
+		DebugPrintf = 3,
+		SynchronizationValidation = 4,
 	}
 
 	public enum VkValidationFeatureDisableEXT
 	{
-		AllEXT = 0,
-		ShadersEXT = 1,
-		ThreadSafetyEXT = 2,
-		ApiParametersEXT = 3,
-		ObjectLifetimesEXT = 4,
-		CoreChecksEXT = 5,
-		UniqueHandlesEXT = 6,
+		All = 0,
+		Shaders = 1,
+		ThreadSafety = 2,
+		ApiParameters = 3,
+		ObjectLifetimes = 4,
+		CoreChecks = 5,
+		UniqueHandles = 6,
 	}
 
 	public enum VkComponentTypeNV
 	{
-		TypeFloat16NV = 0,
-		TypeFloat32NV = 1,
-		TypeFloat64NV = 2,
-		TypeSint8NV = 3,
-		TypeSint16NV = 4,
-		TypeSint32NV = 5,
-		TypeSint64NV = 6,
-		TypeUint8NV = 7,
-		TypeUint16NV = 8,
-		TypeUint32NV = 9,
-		TypeUint64NV = 10,
+		TypeFloat16 = 0,
+		TypeFloat32 = 1,
+		TypeFloat64 = 2,
+		TypeSint8 = 3,
+		TypeSint16 = 4,
+		TypeSint32 = 5,
+		TypeSint64 = 6,
+		TypeUint8 = 7,
+		TypeUint16 = 8,
+		TypeUint32 = 9,
+		TypeUint64 = 10,
 	}
 
 	public enum VkScopeNV
 	{
-		ScopeDeviceNV = 1,
-		ScopeWorkgroupNV = 2,
-		ScopeSubgroupNV = 3,
-		ScopeQueueFamilyNV = 5,
+		ScopeDevice = 1,
+		ScopeWorkgroup = 2,
+		ScopeSubgroup = 3,
+		ScopeQueueFamily = 5,
 	}
 
 	public enum VkCoverageReductionModeNV
 	{
-		ModeMergeNV = 0,
-		ModeTruncateNV = 1,
+		ModeMerge = 0,
+		ModeTruncate = 1,
 	}
 
 	public enum VkLineRasterizationModeEXT
 	{
-		DefaultEXT = 0,
-		RectangularEXT = 1,
-		BresenhamEXT = 2,
-		RectangularSmoothEXT = 3,
+		Default = 0,
+		Rectangular = 1,
+		Bresenham = 2,
+		RectangularSmooth = 3,
 	}
 
 	public enum VkIndirectCommandsTokenTypeNV
 	{
-		TypeShaderGroupNV = 0,
-		TypeStateNV = 1,
-		TypeIndexBufferNV = 2,
-		TypeVertexBufferNV = 3,
-		TypePushConstantNV = 4,
-		TypeDrawIndexedNV = 5,
-		TypeDrawNV = 6,
-		TypeDrawTasksNV = 7,
+		TypeShaderGroup = 0,
+		TypeState = 1,
+		TypeIndexBuffer = 2,
+		TypeVertexBuffer = 3,
+		TypePushConstant = 4,
+		TypeDrawIndexed = 5,
+		TypeDraw = 6,
+		TypeDrawTasks = 7,
 	}
 
 	[Flags]
 	public enum VkIndirectStateFlagsNV
 	{
 		None = 0,
-		FlagFrontfaceNV = 1,
+		FlagFrontface = 1,
 	}
 
 	[Flags]
 	public enum VkIndirectCommandsLayoutUsageFlagsNV
 	{
 		None = 0,
-		ExplicitPreprocessNV = 1,
-		IndexedSequencesNV = 2,
-		UnorderedSequencesNV = 4,
+		ExplicitPreprocess = 1,
+		IndexedSequences = 2,
+		UnorderedSequences = 4,
 	}
 
 	[Flags]
@@ -2801,16 +2798,16 @@ namespace Vortice.Vulkan
 	public enum VkDeviceDiagnosticsConfigFlagsNV
 	{
 		None = 0,
-		EnableShaderDebugInfoNV = 1,
-		EnableResourceTrackingNV = 2,
-		EnableAutomaticCheckpointsNV = 4,
+		EnableShaderDebugInfo = 1,
+		EnableResourceTracking = 2,
+		EnableAutomaticCheckpoints = 4,
 	}
 
 	public enum VkAccelerationStructureBuildTypeKHR
 	{
-		HostKHR = 0,
-		DeviceKHR = 1,
-		HostOrDeviceKHR = 2,
+		Host = 0,
+		Device = 1,
+		HostOrDevice = 2,
 	}
 
 	[Flags]

@@ -63,6 +63,7 @@ namespace Generator
             "vkCreateRenderPass",
             "vkGetRenderAreaGranularity",
             "vkCreateCommandPool",
+            //"vkAllocateCommandBuffers",
 
             "vkEnumerateInstanceVersion",
             "vkGetDeviceGroupPeerMemoryFeaturesKHR",

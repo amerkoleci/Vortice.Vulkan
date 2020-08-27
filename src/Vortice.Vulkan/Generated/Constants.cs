@@ -2059,9 +2059,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTValidationFeatures = 1;
 		/// <summary>
-		/// VK_EXT_VALIDATION_FEATURES_SPEC_VERSION = 3
+		/// VK_EXT_VALIDATION_FEATURES_SPEC_VERSION = 4
 		/// </summary>
-		public const uint EXTValidationFeaturesSpecVersion = 3;
+		public const uint EXTValidationFeaturesSpecVersion = 4;
 		/// <summary>
 		/// VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME = "VK_EXT_validation_features"
 		/// </summary>
@@ -2138,6 +2138,18 @@ namespace Vortice.Vulkan
 		/// VK_EXT_LINE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_line_rasterization"
 		/// </summary>
 		public const string EXTLineRasterizationExtensionName = "VK_EXT_line_rasterization";
+		/// <summary>
+		/// VK_EXT_shader_atomic_float = 1
+		/// </summary>
+		public const uint EXTShaderAtomicFloat = 1;
+		/// <summary>
+		/// VK_EXT_SHADER_ATOMIC_FLOAT_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTShaderAtomicFloatSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_SHADER_ATOMIC_FLOAT_EXTENSION_NAME = "VK_EXT_shader_atomic_float"
+		/// </summary>
+		public const string EXTShaderAtomicFloatExtensionName = "VK_EXT_shader_atomic_float";
 		/// <summary>
 		/// VK_EXT_host_query_reset = 1
 		/// </summary>
@@ -2319,6 +2331,30 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXTFragmentDensityMap2ExtensionName = "VK_EXT_fragment_density_map2";
 		/// <summary>
+		/// VK_EXT_image_robustness = 1
+		/// </summary>
+		public const uint EXTImageRobustness = 1;
+		/// <summary>
+		/// VK_EXT_IMAGE_ROBUSTNESS_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTImageRobustnessSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_IMAGE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_image_robustness"
+		/// </summary>
+		public const string EXTImageRobustnessExtensionName = "VK_EXT_image_robustness";
+		/// <summary>
+		/// VK_EXT_4444_formats = 1
+		/// </summary>
+		public const uint EXT4444Formats = 1;
+		/// <summary>
+		/// VK_EXT_4444_FORMATS_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXT4444FormatsSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_4444_FORMATS_EXTENSION_NAME = "VK_EXT_4444_formats"
+		/// </summary>
+		public const string EXT4444FormatsExtensionName = "VK_EXT_4444_formats";
+		/// <summary>
 		/// VK_KHR_android_surface = 1
 		/// </summary>
 		public const uint KHRAndroidSurface = 1;
@@ -2347,9 +2383,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint MvkIosSurface = 1;
 		/// <summary>
-		/// VK_MVK_IOS_SURFACE_SPEC_VERSION = 2
+		/// VK_MVK_IOS_SURFACE_SPEC_VERSION = 3
 		/// </summary>
-		public const uint MvkIosSurfaceSpecVersion = 2;
+		public const uint MvkIosSurfaceSpecVersion = 3;
 		/// <summary>
 		/// VK_MVK_IOS_SURFACE_EXTENSION_NAME = "VK_MVK_ios_surface"
 		/// </summary>
@@ -2359,9 +2395,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint MvkMacosSurface = 1;
 		/// <summary>
-		/// VK_MVK_MACOS_SURFACE_SPEC_VERSION = 2
+		/// VK_MVK_MACOS_SURFACE_SPEC_VERSION = 3
 		/// </summary>
-		public const uint MvkMacosSurfaceSpecVersion = 2;
+		public const uint MvkMacosSurfaceSpecVersion = 3;
 		/// <summary>
 		/// VK_MVK_MACOS_SURFACE_EXTENSION_NAME = "VK_MVK_macos_surface"
 		/// </summary>

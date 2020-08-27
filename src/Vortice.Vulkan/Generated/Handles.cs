@@ -15,7 +15,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkBuffer : IEquatable<VkBuffer>
 	{
 		public readonly ulong Handle;
@@ -36,7 +36,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkImage : IEquatable<VkImage>
 	{
 		public readonly ulong Handle;
@@ -57,7 +57,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkInstance : IEquatable<VkInstance>
 	{
 		public readonly IntPtr Handle;
@@ -78,7 +78,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkPhysicalDevice : IEquatable<VkPhysicalDevice>
 	{
 		public readonly IntPtr Handle;
@@ -99,7 +99,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDevice : IEquatable<VkDevice>
 	{
 		public readonly IntPtr Handle;
@@ -120,7 +120,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkQueue : IEquatable<VkQueue>
 	{
 		public readonly IntPtr Handle;
@@ -141,7 +141,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkSemaphore : IEquatable<VkSemaphore>
 	{
 		public readonly ulong Handle;
@@ -162,7 +162,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkCommandBuffer : IEquatable<VkCommandBuffer>
 	{
 		public readonly IntPtr Handle;
@@ -183,7 +183,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkFence : IEquatable<VkFence>
 	{
 		public readonly ulong Handle;
@@ -204,7 +204,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDeviceMemory : IEquatable<VkDeviceMemory>
 	{
 		public readonly ulong Handle;
@@ -225,7 +225,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkEvent : IEquatable<VkEvent>
 	{
 		public readonly ulong Handle;
@@ -246,7 +246,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkQueryPool : IEquatable<VkQueryPool>
 	{
 		public readonly ulong Handle;
@@ -267,7 +267,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkBufferView : IEquatable<VkBufferView>
 	{
 		public readonly ulong Handle;
@@ -288,7 +288,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkImageView : IEquatable<VkImageView>
 	{
 		public readonly ulong Handle;
@@ -309,7 +309,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkShaderModule : IEquatable<VkShaderModule>
 	{
 		public readonly ulong Handle;
@@ -330,7 +330,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkPipelineCache : IEquatable<VkPipelineCache>
 	{
 		public readonly ulong Handle;
@@ -351,7 +351,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkPipelineLayout : IEquatable<VkPipelineLayout>
 	{
 		public readonly ulong Handle;
@@ -372,7 +372,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkPipeline : IEquatable<VkPipeline>
 	{
 		public readonly ulong Handle;
@@ -393,7 +393,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkRenderPass : IEquatable<VkRenderPass>
 	{
 		public readonly ulong Handle;
@@ -414,7 +414,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDescriptorSetLayout : IEquatable<VkDescriptorSetLayout>
 	{
 		public readonly ulong Handle;
@@ -435,7 +435,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkSampler : IEquatable<VkSampler>
 	{
 		public readonly ulong Handle;
@@ -456,7 +456,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDescriptorSet : IEquatable<VkDescriptorSet>
 	{
 		public readonly ulong Handle;
@@ -477,7 +477,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDescriptorPool : IEquatable<VkDescriptorPool>
 	{
 		public readonly ulong Handle;
@@ -498,7 +498,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkFramebuffer : IEquatable<VkFramebuffer>
 	{
 		public readonly ulong Handle;
@@ -519,7 +519,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkCommandPool : IEquatable<VkCommandPool>
 	{
 		public readonly ulong Handle;
@@ -540,7 +540,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkSamplerYcbcrConversion : IEquatable<VkSamplerYcbcrConversion>
 	{
 		public readonly ulong Handle;
@@ -561,7 +561,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDescriptorUpdateTemplate : IEquatable<VkDescriptorUpdateTemplate>
 	{
 		public readonly ulong Handle;
@@ -582,7 +582,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkSurfaceKHR : IEquatable<VkSurfaceKHR>
 	{
 		public readonly ulong Handle;
@@ -603,7 +603,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkSwapchainKHR : IEquatable<VkSwapchainKHR>
 	{
 		public readonly ulong Handle;
@@ -624,7 +624,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDisplayKHR : IEquatable<VkDisplayKHR>
 	{
 		public readonly ulong Handle;
@@ -645,7 +645,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDisplayModeKHR : IEquatable<VkDisplayModeKHR>
 	{
 		public readonly ulong Handle;
@@ -666,7 +666,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDebugReportCallbackEXT : IEquatable<VkDebugReportCallbackEXT>
 	{
 		public readonly ulong Handle;
@@ -687,7 +687,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDebugUtilsMessengerEXT : IEquatable<VkDebugUtilsMessengerEXT>
 	{
 		public readonly ulong Handle;
@@ -708,7 +708,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkValidationCacheEXT : IEquatable<VkValidationCacheEXT>
 	{
 		public readonly ulong Handle;
@@ -729,7 +729,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkAccelerationStructureKHR : IEquatable<VkAccelerationStructureKHR>
 	{
 		public readonly ulong Handle;
@@ -750,7 +750,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkPerformanceConfigurationINTEL : IEquatable<VkPerformanceConfigurationINTEL>
 	{
 		public readonly ulong Handle;
@@ -771,7 +771,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkIndirectCommandsLayoutNV : IEquatable<VkIndirectCommandsLayoutNV>
 	{
 		public readonly ulong Handle;
@@ -792,7 +792,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkPrivateDataSlotEXT : IEquatable<VkPrivateDataSlotEXT>
 	{
 		public readonly ulong Handle;
@@ -813,7 +813,7 @@ namespace Vortice.Vulkan
 	/// <summary>
 	/// A non-dispatchable handle.
 	/// </summary>
-	[DebuggerDisplay("{{DebuggerDisplay,nq}}")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDeferredOperationKHR : IEquatable<VkDeferredOperationKHR>
 	{
 		public readonly ulong Handle;

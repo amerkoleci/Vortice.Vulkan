@@ -149,6 +149,22 @@ namespace Generator
                     AddCsMapping(cppEnum.Name, csName);
                 }
 
+                // Remove extension suffix from enum item values
+                string extensionPrefix = "";
+
+                if (csName.EndsWith("EXT"))
+                {
+                    extensionPrefix = "EXT";
+                }
+                else if (csName.EndsWith("NV"))
+                {
+                    extensionPrefix = "NV";
+                }
+                else if (csName.EndsWith("KHR"))
+                {
+                    extensionPrefix = "KHR";
+                }
+
                 createdEnums.Add(csName, cppEnum.Name);
                 using (writer.PushBlock($"public enum {csName}"))
                 {
@@ -190,6 +206,11 @@ namespace Generator
 
                         var enumItemName = GetEnumItemName(cppEnum, enumItem.Name, enumNamePrefix);
 
+                        if (!string.IsNullOrEmpty(extensionPrefix) && enumItemName.EndsWith(extensionPrefix))
+                        {
+                            enumItemName = enumItemName.Remove(enumItemName.Length - extensionPrefix.Length);
+                        }
+
                         //writer.WriteLine("/// <summary>");
                         //writer.WriteLine($"/// {enumItem.Name}");
                         //writer.WriteLine("/// </summary>");
@@ -201,6 +222,15 @@ namespace Generator
                                 continue;
                             }
 
+                            if (!string.IsNullOrEmpty(extensionPrefix) && enumValueName.EndsWith(extensionPrefix))
+                            {
+                                enumValueName = enumValueName.Remove(enumValueName.Length - extensionPrefix.Length);
+
+                                if (enumItemName == enumValueName)
+                                    continue;
+                            }
+
+
                             writer.WriteLine($"{enumItemName} = {enumValueName},");
                         }
                         else
@@ -209,7 +239,7 @@ namespace Generator
                         }
                     }
 
-                    if(csName == "VkColorComponentFlags")
+                    if (csName == "VkColorComponentFlags")
                     {
                         writer.WriteLine($"All = R | G | B | A");
                     }

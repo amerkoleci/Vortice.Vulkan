@@ -4816,6 +4816,25 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 shaderBufferFloat32Atomics;
+		public VkBool32 shaderBufferFloat32AtomicAdd;
+		public VkBool32 shaderBufferFloat64Atomics;
+		public VkBool32 shaderBufferFloat64AtomicAdd;
+		public VkBool32 shaderSharedFloat32Atomics;
+		public VkBool32 shaderSharedFloat32AtomicAdd;
+		public VkBool32 shaderSharedFloat64Atomics;
+		public VkBool32 shaderSharedFloat64AtomicAdd;
+		public VkBool32 shaderImageFloat32Atomics;
+		public VkBool32 shaderImageFloat32AtomicAdd;
+		public VkBool32 sparseImageFloat32Atomics;
+		public VkBool32 sparseImageFloat32AtomicAdd;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceIndexTypeUint8FeaturesEXT
 	{
 		public VkStructureType sType;
@@ -5130,6 +5149,23 @@ namespace Vortice.Vulkan
 		public VkBool32 subsampledCoarseReconstructionEarlyAccess;
 		public uint maxSubsampledArrayLayers;
 		public uint maxDescriptorSetSubsampledSamplers;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceImageRobustnessFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 robustImageAccess;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevice4444FormatsFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 formatA4R4G4B4;
+		public VkBool32 formatA4B4G4R4;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

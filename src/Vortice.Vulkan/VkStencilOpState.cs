@@ -4,7 +4,7 @@
 namespace Vortice.Vulkan
 {
     /// <summary>
-    /// sStructure specifying stencil operation state
+    /// Structure specifying stencil operation state
     /// </summary>
     public partial struct VkStencilOpState
     {

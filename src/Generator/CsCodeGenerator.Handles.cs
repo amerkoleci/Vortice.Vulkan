@@ -44,7 +44,7 @@ namespace Generator
                 writer.WriteLine($"/// <summary>");
                 writer.WriteLine($"/// A {(isDispatchable ? "dispatchable" : "non-dispatchable")} handle.");
                 writer.WriteLine("/// </summary>");
-                writer.WriteLine("[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
+                writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
                 using (writer.PushBlock($"public partial struct {csName} : IEquatable<{csName}>"))
                 {
                     string handleType = isDispatchable ? "IntPtr" : "ulong";

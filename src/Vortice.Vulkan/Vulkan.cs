@@ -345,8 +345,6 @@ namespace Vortice.Vulkan
             }
         }
 
-
-
         public static void vkCmdExecuteCommands(VkCommandBuffer commandBuffer, VkCommandBuffer secondaryCommandBuffer)
         {
             vkCmdExecuteCommands(commandBuffer, 1, &secondaryCommandBuffer);
@@ -382,6 +380,77 @@ namespace Vortice.Vulkan
             }
 
             return vkQueuePresentKHR(queue, &presentInfo);
+        }
+
+
+
+        [Calli]
+        public static VkResult vkAllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, out VkCommandBuffer commandBuffers)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void vkFreeCommandBuffers(VkDevice device, VkCommandPool commandPool, VkCommandBuffer commandBuffer)
+        {
+            vkFreeCommandBuffers(device, commandPool, 1u, &commandBuffer);
+        }
+
+        public static VkResult vkCreateSemaphore(VkDevice device, out VkSemaphore semaphore)
+        {
+            VkSemaphoreCreateInfo createInfo = new VkSemaphoreCreateInfo
+            {
+                sType = VkStructureType.SemaphoreCreateInfo,
+                pNext = null,
+                flags = VkSemaphoreCreateFlags.None
+            };
+
+            return vkCreateSemaphore(device, &createInfo, null, out semaphore);
+        }
+
+        public static VkResult vkCreateTypedSemaphore(VkDevice device, VkSemaphoreType type, ulong initialValue, out VkSemaphore semaphore)
+        {
+            VkSemaphoreTypeCreateInfo typeCreateiInfo = new VkSemaphoreTypeCreateInfo
+            {
+                sType = VkStructureType.SemaphoreTypeCreateInfo,
+                pNext = null,
+                semaphoreType = type,
+                initialValue = initialValue
+            };
+
+            VkSemaphoreCreateInfo createInfo = new VkSemaphoreCreateInfo
+            {
+                sType = VkStructureType.SemaphoreCreateInfo,
+                pNext = &typeCreateiInfo,
+                flags = VkSemaphoreCreateFlags.None
+            };
+
+            return vkCreateSemaphore(device, &createInfo, null, out semaphore);
+        }
+
+        public static VkResult vkCreateFramebuffer(
+            VkDevice device,
+            VkRenderPass renderPass,
+            ReadOnlySpan<VkImageView> attachments,
+            uint width, 
+            uint height,
+            uint layers,
+            out VkFramebuffer framebuffer)
+        {
+            fixed (VkImageView* attachmentsPtr = attachments)
+            {
+                VkFramebufferCreateInfo createInfo = new VkFramebufferCreateInfo
+                {
+                    sType = VkStructureType.FramebufferCreateInfo,
+                    renderPass = renderPass,
+                    attachmentCount = (uint)attachments.Length,
+                    pAttachments = attachmentsPtr,
+                    width = width,
+                    height = height,
+                    layers = layers
+                };
+
+                return vkCreateFramebuffer(device, &createInfo, null, out framebuffer);
+            }
         }
 
         #region Nested
