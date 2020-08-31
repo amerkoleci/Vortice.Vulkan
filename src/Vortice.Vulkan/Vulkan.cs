@@ -13,7 +13,6 @@ namespace Vortice.Vulkan
         private delegate IntPtr LoadFunction(IntPtr context, string name);
 
         private static IntPtr s_vulkanModule = IntPtr.Zero;
-        private static readonly ILibraryLoader _loader = InitializeLoader();
         private static VkInstance s_loadedInstance = VkInstance.Null;
         private static VkDevice s_loadedDevice = VkDevice.Null;
 
@@ -21,21 +20,26 @@ namespace Vortice.Vulkan
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                s_vulkanModule = _loader.LoadNativeLibrary("vulkan-1.dll");
+                s_vulkanModule = Kernel32.LoadLibrary("vulkan-1.dll");
+                vkGetInstanceProcAddr_ptr = Kernel32.GetProcAddress(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.dylib");
+                s_vulkanModule = Libdl.dlopen("libvulkan.dylib", Libdl.RTLD_NOW | Libdl.RTLD_LOCAL);
                 if (s_vulkanModule == IntPtr.Zero)
-                    s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.1.dylib");
+                    s_vulkanModule = Libdl.dlopen("libvulkan.1.dylib", Libdl.RTLD_NOW | Libdl.RTLD_LOCAL);
                 if (s_vulkanModule == IntPtr.Zero)
-                    s_vulkanModule = _loader.LoadNativeLibrary("libMoltenVK.dylib");
+                    s_vulkanModule = Libdl.dlopen("libMoltenVK.dylib", Libdl.RTLD_NOW | Libdl.RTLD_LOCAL);
+
+                vkGetInstanceProcAddr_ptr = Libdl.dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
             else
             {
-                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so.1");
+                s_vulkanModule = Libdl.dlopen("libvulkan.so.1", Libdl.RTLD_NOW | Libdl.RTLD_LOCAL);
                 if (s_vulkanModule == IntPtr.Zero)
-                    s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so");
+                    s_vulkanModule = Libdl.dlopen("libvulkan.so", Libdl.RTLD_NOW | Libdl.RTLD_LOCAL);
+
+                vkGetInstanceProcAddr_ptr = Libdl.dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
 
             if (s_vulkanModule == IntPtr.Zero)
@@ -43,7 +47,7 @@ namespace Vortice.Vulkan
                 return VkResult.ErrorInitializationFailed;
             }
 
-            vkGetInstanceProcAddr_ptr = GetProcAddress(nameof(vkGetInstanceProcAddr));
+            
             GenLoadLoader(IntPtr.Zero, vkGetInstanceProcAddr);
 
             return VkResult.Success;
@@ -89,20 +93,6 @@ namespace Vortice.Vulkan
             return Marshal.GetDelegateForFunctionPointer<T>(functionPtr);
         }
 #endif
-
-        private static ILibraryLoader InitializeLoader()
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return new WindowsLoader();
-            }
-            else
-            {
-                return new UnixLoader();
-            }
-        }
-
-        private static IntPtr GetProcAddress(string procName) => _loader.GetSymbol(s_vulkanModule, procName);
 
         public static IntPtr vkGetInstanceProcAddr(IntPtr instance, string name)
         {
@@ -454,63 +444,28 @@ namespace Vortice.Vulkan
         }
 
         #region Nested
-        internal interface ILibraryLoader
+        private static class Kernel32
         {
-            IntPtr LoadNativeLibrary(string libraryName);
+            [DllImport("kernel32")]
+            public static extern IntPtr LoadLibrary(string fileName);
 
-            IntPtr GetSymbol(IntPtr module, string name);
+            [DllImport("kernel32")]
+            public static extern IntPtr GetProcAddress(IntPtr module, string procName);
         }
 
-        private class WindowsLoader : ILibraryLoader
+        private static class Libdl
         {
-            public IntPtr LoadNativeLibrary(string libraryName) => LoadLibrary(libraryName);
+            [DllImport("libdl")]
+            public static extern IntPtr dlopen(string fileName, int flags);
 
-            public IntPtr GetSymbol(IntPtr module, string name) => GetProcAddress(module, name);
+            [DllImport("libdl")]
+            public static extern IntPtr dlsym(IntPtr handle, string name);
 
-            [DllImport("kernel32")]
-            private static extern IntPtr LoadLibrary(string fileName);
+            [DllImport("libdl")]
+            public static extern int dlclose(IntPtr handle);
 
-            [DllImport("kernel32")]
-            private static extern IntPtr GetProcAddress(IntPtr module, string procName);
-
-            [DllImport("kernel32")]
-            private static extern int FreeLibrary(IntPtr module);
-        }
-
-        private class UnixLoader : ILibraryLoader
-        {
-            public IntPtr LoadNativeLibrary(string libraryName)
-            {
-                dlerror();
-                IntPtr handle = dlopen(libraryName, RTLD_NOW);
-                if (handle == IntPtr.Zero && !Path.IsPathRooted(libraryName))
-                {
-                    string baseDir = AppContext.BaseDirectory;
-                    if (!string.IsNullOrWhiteSpace(baseDir))
-                    {
-                        string localPath = Path.Combine(baseDir, libraryName);
-                        handle = dlopen(localPath, RTLD_NOW);
-                    }
-                }
-
-                return handle;
-            }
-
-            public IntPtr GetSymbol(IntPtr module, string name) => dlsym(module, name);
-
-            [DllImport("libdl", EntryPoint = "dlopen")]
-            private static extern IntPtr dlopen(string fileName, int flags);
-
-            [DllImport("libdl", EntryPoint = "dlsym")]
-            private static extern IntPtr dlsym(IntPtr handle, string name);
-
-            [DllImport("libdl", EntryPoint = "dlclose")]
-            private static extern int dlclose(IntPtr handle);
-
-            [DllImport("libdl", EntryPoint = "dlerror")]
-            private static extern string dlerror();
-
-            private const int RTLD_NOW = 0x0002;
+            public const int RTLD_NOW = 0;
+            public const int RTLD_LOCAL = (1 << 2);
         }
         #endregion
     }
