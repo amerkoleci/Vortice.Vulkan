@@ -5,6 +5,8 @@ using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using static Vortice.Vulkan.Vulkan.Kernel32;
+using static Vortice.Vulkan.Vulkan.Libdl;
 
 namespace Vortice.Vulkan
 {
@@ -20,34 +22,37 @@ namespace Vortice.Vulkan
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                s_vulkanModule = Kernel32.LoadLibrary("vulkan-1.dll");
-                vkGetInstanceProcAddr_ptr = Kernel32.GetProcAddress(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+                s_vulkanModule = LoadLibrary("vulkan-1.dll");
+                if (s_vulkanModule == IntPtr.Zero)
+                    return VkResult.ErrorInitializationFailed;
+
+                vkGetInstanceProcAddr_ptr = GetProcAddress(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                s_vulkanModule = Libdl.dlopen("libvulkan.dylib", Libdl.RTLD_NOW | Libdl.RTLD_LOCAL);
+                s_vulkanModule = dlopen("libvulkan.dylib", RTLD_NOW);
                 if (s_vulkanModule == IntPtr.Zero)
-                    s_vulkanModule = Libdl.dlopen("libvulkan.1.dylib", Libdl.RTLD_NOW | Libdl.RTLD_LOCAL);
+                    s_vulkanModule = dlopen("libvulkan.1.dylib", RTLD_NOW);
                 if (s_vulkanModule == IntPtr.Zero)
-                    s_vulkanModule = Libdl.dlopen("libMoltenVK.dylib", Libdl.RTLD_NOW | Libdl.RTLD_LOCAL);
+                    s_vulkanModule = dlopen("libMoltenVK.dylib", RTLD_NOW);
 
-                vkGetInstanceProcAddr_ptr = Libdl.dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+                if (s_vulkanModule == IntPtr.Zero)
+                    return VkResult.ErrorInitializationFailed;
+
+                vkGetInstanceProcAddr_ptr = dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
             else
             {
-                s_vulkanModule = Libdl.dlopen("libvulkan.so.1", Libdl.RTLD_NOW | Libdl.RTLD_LOCAL);
+                s_vulkanModule = dlopen("libvulkan.so.1", RTLD_NOW);
                 if (s_vulkanModule == IntPtr.Zero)
-                    s_vulkanModule = Libdl.dlopen("libvulkan.so", Libdl.RTLD_NOW | Libdl.RTLD_LOCAL);
+                    s_vulkanModule = dlopen("libvulkan.so", RTLD_NOW);
 
-                vkGetInstanceProcAddr_ptr = Libdl.dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+                if (s_vulkanModule == IntPtr.Zero)
+                    return VkResult.ErrorInitializationFailed;
+
+                vkGetInstanceProcAddr_ptr = dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
 
-            if (s_vulkanModule == IntPtr.Zero)
-            {
-                return VkResult.ErrorInitializationFailed;
-            }
-
-            
             GenLoadLoader(IntPtr.Zero, vkGetInstanceProcAddr);
 
             return VkResult.Success;
@@ -444,7 +449,7 @@ namespace Vortice.Vulkan
         }
 
         #region Nested
-        private static class Kernel32
+        internal static class Kernel32
         {
             [DllImport("kernel32")]
             public static extern IntPtr LoadLibrary(string fileName);
@@ -453,7 +458,7 @@ namespace Vortice.Vulkan
             public static extern IntPtr GetProcAddress(IntPtr module, string procName);
         }
 
-        private static class Libdl
+        internal static class Libdl
         {
             [DllImport("libdl")]
             public static extern IntPtr dlopen(string fileName, int flags);
@@ -464,8 +469,7 @@ namespace Vortice.Vulkan
             [DllImport("libdl")]
             public static extern int dlclose(IntPtr handle);
 
-            public const int RTLD_NOW = 0;
-            public const int RTLD_LOCAL = (1 << 2);
+            public const int RTLD_NOW = 0x002;
         }
         #endregion
     }
