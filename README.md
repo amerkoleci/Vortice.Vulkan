@@ -23,3 +23,6 @@ Other similar projects:
 Projects using Vortice.Vulkan:
 
 - [Stride Game Engine (formerly Xenko)](https://stride3d.net/)
+
+## Sponsors
+To further help development of these bindings consider [sponsoring](https://github.com/sponsors/amerkoleci) my profile in order to allow faster issue triaging and new features to be implemented.
