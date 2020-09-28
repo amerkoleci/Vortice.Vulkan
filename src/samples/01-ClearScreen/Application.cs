@@ -4,7 +4,6 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Vortice.Mathematics;
 using Vortice.Win32;
 using static Vortice.Win32.Kernel32;
 using static Vortice.Win32.User32;
@@ -47,7 +46,7 @@ namespace Vortice
             Message msg = default;
             while (msg.Value != (uint)WindowMessage.Quit)
             {
-                if (!_paused)
+                //if (!_paused)
                 {
                     const uint PM_REMOVE = 1;
                     if (PeekMessage(out msg, IntPtr.Zero, 0, 0, PM_REMOVE))
@@ -60,26 +59,26 @@ namespace Vortice
                         OnTick();
                     }
                 }
-                else
-                {
-                    var ret = GetMessage(out msg, IntPtr.Zero, 0, 0);
-                    if (ret == 0)
-                    {
-                        //_exitRequested = true;
-                        break;
-                    }
-                    else if (ret == -1)
-                    {
-                        //Log.Error("[Win32] - Failed to get message");
-                        //_exitRequested = true;
-                        break;
-                    }
-                    else
-                    {
-                        TranslateMessage(ref msg);
-                        DispatchMessage(ref msg);
-                    }
-                }
+                //else
+                //{
+                //    var ret = GetMessage(out msg, IntPtr.Zero, 0, 0);
+                //    if (ret == 0)
+                //    {
+                //        //_exitRequested = true;
+                //        break;
+                //    }
+                //    else if (ret == -1)
+                //    {
+                //        //Log.Error("[Win32] - Failed to get message");
+                //        //_exitRequested = true;
+                //        break;
+                //    }
+                //    else
+                //    {
+                //        TranslateMessage(ref msg);
+                //        DispatchMessage(ref msg);
+                //    }
+                //}
             }
         }
 

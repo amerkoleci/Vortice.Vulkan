@@ -36,13 +36,6 @@ namespace Generator
             { "VkDeviceSize", "ulong" },
             { "VkSampleMask", "uint" },
 
-            { "VkOffset2D", "Point" },
-            { "VkOffset3D", "Point3" },
-            { "VkExtent2D", "Size" },
-            { "VkExtent3D", "Size3" },
-            { "VkViewport", "Viewport" },
-            { "VkRect2D", "Rectangle" },
-
             { "buffer_handle_t", "IntPtr" },
             { "AHardwareBuffer","IntPtr" },
             { "ANativeWindow", "IntPtr" },

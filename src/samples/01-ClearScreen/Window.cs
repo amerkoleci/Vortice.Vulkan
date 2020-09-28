@@ -2,6 +2,7 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
+using Vortice.Vulkan;
 using Vortice.Win32;
 using static Vortice.Win32.User32;
 
@@ -11,16 +12,9 @@ namespace Vortice
     {
         private const int CW_USEDEFAULT = unchecked((int)0x80000000);
 
-        public string Title { get; private set; }
-        public int Width { get; private set; }
-        public int Height { get; private set; }
-        public IntPtr Handle { get; private set; }
-
         public Window(string title, int width, int height)
         {
             Title = title;
-            Width = width;
-            Height = height;
 
             var x = 0;
             var y = 0;
@@ -39,14 +33,14 @@ namespace Vortice
             //}
             //else
             {
-                if (Width > 0 && Height > 0)
+                if (width > 0 && height > 0)
                 {
                     var screenWidth = GetSystemMetrics(SystemMetrics.SM_CXSCREEN);
                     var screenHeight = GetSystemMetrics(SystemMetrics.SM_CYSCREEN);
 
                     // Place the window in the middle of the screen.WS_EX_APPWINDOW
-                    x = (screenWidth - Width) / 2;
-                    y = (screenHeight - Height) / 2;
+                    x = (screenWidth - width) / 2;
+                    y = (screenHeight - height) / 2;
                 }
 
                 if (resizable)
@@ -65,9 +59,11 @@ namespace Vortice
             int windowWidth;
             int windowHeight;
 
-            if (Width > 0 && Height > 0)
+            RawRect rect = default;
+
+            if (width > 0 && height > 0)
             {
-                var rect = new RawRect(0, 0, Width, Height);
+                rect = new RawRect(0, 0, width, height);
 
                 // Adjust according to window styles
                 AdjustWindowRectEx(
@@ -105,8 +101,13 @@ namespace Vortice
 
             ShowWindow(hwnd, ShowWindowCommand.Normal);
             Handle = hwnd;
-            Width = windowWidth;
-            Height = windowHeight;
+
+            GetClientRect(hwnd, out rect);
+            Extent = new VkExtent2D(rect.Right - rect.Left, rect.Bottom - rect.Top);
         }
+
+        public string Title { get; }
+        public VkExtent2D Extent { get; }
+        public IntPtr Handle { get; }
     }
 }

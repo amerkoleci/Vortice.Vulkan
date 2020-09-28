@@ -16,8 +16,7 @@ namespace Generator
             // Generate Structures
             using var writer = new CodeWriter(Path.Combine(outputPath, "Structures.cs"),
                 "System",
-                "System.Runtime.InteropServices",
-                "Vortice.Mathematics"
+                "System.Runtime.InteropServices"
                 );
 
             // Print All classes, structs
@@ -31,13 +30,7 @@ namespace Generator
                 }
 
                 // Mapped to Vortice.Mathematics
-                if (cppClass.Name == "VkOffset2D" ||
-                    cppClass.Name == "VkOffset3D" ||
-                    cppClass.Name == "VkExtent2D" ||
-                    cppClass.Name == "VkExtent3D" ||
-                    cppClass.Name == "VkViewport" ||
-                    cppClass.Name == "VkRect2D" ||
-                    cppClass.Name == "VkTransformMatrixKHR" ||
+                if (cppClass.Name == "VkTransformMatrixKHR" ||
                     cppClass.Name == "VkAccelerationStructureInstanceKHR")
                 {
                     continue;

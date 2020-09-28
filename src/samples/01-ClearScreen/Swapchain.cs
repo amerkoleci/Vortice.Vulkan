@@ -1,5 +1,4 @@
 ﻿using System;
-using Vortice.Mathematics;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 
@@ -9,14 +8,14 @@ namespace Vortice
     {
         public readonly GraphicsDevice Device;
         public readonly Window Window;
-        private Size _extent;
+        private VkExtent2D _extent;
         private VkImageView[] _swapChainImageViews;
         private VkFramebuffer[] _framebuffers;
 
         public VkSwapchainKHR Handle;
         public int ImageCount => _swapChainImageViews.Length;
         public VkRenderPass RenderPass;
-        public Size Extent => _extent;
+        public VkExtent2D Extent => _extent;
         public VkFramebuffer[] Framebuffers => _framebuffers;
 
         public Swapchain(GraphicsDevice device, Window window)
@@ -68,12 +67,12 @@ namespace Vortice
                     swapChainImages[i],
                     VkImageViewType.Image2D,
                     surfaceFormat.format,
-                    VkComponentMapping.Identity,
+                    VkComponentMapping.Rgba,
                     new VkImageSubresourceRange(VkImageAspectFlags.Color, 0, 1, 0, 1)
                     );
 
                 vkCreateImageView(Device.VkDevice, &viewCreateInfo, null, out _swapChainImageViews[i]).CheckResult();
-                vkCreateFramebuffer(Device.VkDevice, RenderPass, new[] { _swapChainImageViews[i] }, (uint)_extent.Width, (uint)_extent.Height, 1u, out _framebuffers[i]);
+                vkCreateFramebuffer(Device.VkDevice, RenderPass, new[] { _swapChainImageViews[i] }, _extent.width, _extent.height, 1u, out _framebuffers[i]);
             }
         }
 
@@ -116,31 +115,45 @@ namespace Vortice
                 pColorAttachments = &colorAttachmentRef
             };
 
-            VkSubpassDependency dependency = new VkSubpassDependency
+            VkSubpassDependency[] dependencies = new VkSubpassDependency[2];
+
+            dependencies[0] = new VkSubpassDependency
             {
                 srcSubpass = SubpassExternal,
                 dstSubpass = 0,
-                srcStageMask = VkPipelineStageFlags.ColorAttachmentOutput,
+                srcStageMask = VkPipelineStageFlags.BottomOfPipe,
                 dstStageMask = VkPipelineStageFlags.ColorAttachmentOutput,
-
-                // Since we changed the image layout, we need to make the memory visible to
-                // color attachment to modify.
-                srcAccessMask = 0,
-                dstAccessMask = VkAccessFlags.ColorAttachmentRead | VkAccessFlags.ColorAttachmentWrite
+                srcAccessMask = VkAccessFlags.MemoryRead,
+                dstAccessMask = VkAccessFlags.ColorAttachmentRead | VkAccessFlags.ColorAttachmentWrite,
+                dependencyFlags = VkDependencyFlags.ByRegion
             };
 
-            VkRenderPassCreateInfo createInfo = new VkRenderPassCreateInfo
+            dependencies[1] = new VkSubpassDependency
             {
-                sType = VkStructureType.RenderPassCreateInfo,
-                attachmentCount = 1,
-                pAttachments = &attachment,
-                subpassCount = 1,
-                pSubpasses = &subpass,
-                dependencyCount = 1,
-                pDependencies = &dependency
+                srcSubpass = 0,
+                dstSubpass = SubpassExternal,
+                srcStageMask = VkPipelineStageFlags.ColorAttachmentOutput,
+                dstStageMask = VkPipelineStageFlags.BottomOfPipe,
+                srcAccessMask = VkAccessFlags.ColorAttachmentRead | VkAccessFlags.ColorAttachmentWrite,
+                dstAccessMask = VkAccessFlags.MemoryRead,
+                dependencyFlags = VkDependencyFlags.ByRegion
             };
 
-            vkCreateRenderPass(Device, &createInfo, null, out RenderPass).CheckResult();
+            fixed (VkSubpassDependency* dependenciesPtr = &dependencies[0])
+            {
+                VkRenderPassCreateInfo createInfo = new VkRenderPassCreateInfo
+                {
+                    sType = VkStructureType.RenderPassCreateInfo,
+                    attachmentCount = 1,
+                    pAttachments = &attachment,
+                    subpassCount = 1,
+                    pSubpasses = &subpass,
+                    dependencyCount = 2,
+                    pDependencies = dependenciesPtr
+                };
+
+                vkCreateRenderPass(Device, &createInfo, null, out RenderPass).CheckResult();
+            }
         }
 
         private ref struct SwapChainSupportDetails
@@ -150,18 +163,18 @@ namespace Vortice
             public ReadOnlySpan<VkPresentModeKHR> PresentModes;
         };
 
-        private Size ChooseSwapExtent(in VkSurfaceCapabilitiesKHR capabilities)
+        private VkExtent2D ChooseSwapExtent(in VkSurfaceCapabilitiesKHR capabilities)
         {
-            if (capabilities.currentExtent.Width > 0)
+            if (capabilities.currentExtent.width > 0)
             {
                 return capabilities.currentExtent;
             }
             else
             {
-                Size actualExtent = new Size(Window.Width, Window.Height);
+                VkExtent2D actualExtent = Window.Extent;
 
-                actualExtent.Width = Math.Max(capabilities.minImageExtent.Width, Math.Min(capabilities.maxImageExtent.Width, actualExtent.Width));
-                actualExtent.Height = Math.Max(capabilities.minImageExtent.Height, Math.Min(capabilities.maxImageExtent.Height, actualExtent.Height));
+                actualExtent.width = Math.Max(capabilities.minImageExtent.width, Math.Min(capabilities.maxImageExtent.width, actualExtent.width));
+                actualExtent.height = Math.Max(capabilities.minImageExtent.height, Math.Min(capabilities.maxImageExtent.height, actualExtent.height));
 
                 return actualExtent;
             }
@@ -179,10 +192,18 @@ namespace Vortice
 
         private static VkSurfaceFormatKHR ChooseSwapSurfaceFormat(ReadOnlySpan<VkSurfaceFormatKHR> availableFormats)
         {
+            // If the surface format list only includes one entry with VK_FORMAT_UNDEFINED,
+            // there is no preferred format, so we assume VK_FORMAT_B8G8R8A8_UNORM
+            if ((availableFormats.Length == 1) && (availableFormats[0].format == VkFormat.Undefined))
+            {
+                return new VkSurfaceFormatKHR(VkFormat.B8G8R8A8UNorm, availableFormats[0].colorSpace);
+            }
+
+            // iterate over the list of available surface format and
+            // check for the presence of VK_FORMAT_B8G8R8A8_UNORM
             foreach (var availableFormat in availableFormats)
             {
-                if (availableFormat.format == VkFormat.B8G8R8A8SRgb &&
-                    availableFormat.colorSpace == VkColorSpaceKHR.SrgbNonlinear)
+                if (availableFormat.format == VkFormat.B8G8R8A8UNorm)
                 {
                     return availableFormat;
                 }

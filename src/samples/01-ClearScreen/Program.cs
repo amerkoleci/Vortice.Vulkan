@@ -1,14 +1,9 @@
 ﻿// Copyright (c) Amer Koleci and contributors.
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 using Vortice;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
-using Vortice.Mathematics;
 
 namespace DrawTriangle
 {
@@ -29,6 +24,7 @@ namespace DrawTriangle
         class TestApp : Application
         {
             private GraphicsDevice _graphicsDevice;
+            private float _green = 0.0f;
 
             public override string Name => "01-ClearScreen";
 
@@ -52,9 +48,14 @@ namespace DrawTriangle
                 _graphicsDevice.RenderFrame(OnDraw);
             }
 
-            private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, Size size)
+            private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, VkExtent2D size)
             {
-                VkClearValue clearValue = new VkClearValue(new Color4(0.1f, 0.1f, 0.2f, 1.0f));
+                float g = _green + 0.001f;
+                if (g > 1.0f)
+                    g = 0.0f;
+                _green = g;
+
+                VkClearValue clearValue = new VkClearValue(1.0f, _green, 0.0f, 1.0f);
 
                 // Begin the render pass.
                 VkRenderPassBeginInfo renderPassBeginInfo = new VkRenderPassBeginInfo
@@ -62,12 +63,11 @@ namespace DrawTriangle
                     sType = VkStructureType.RenderPassBeginInfo,
                     renderPass = _graphicsDevice.Swapchain.RenderPass,
                     framebuffer = framebuffer,
-                    renderArea = new Rectangle(size.Width, size.Height),
+                    renderArea = new VkRect2D(size),
                     clearValueCount = 1,
                     pClearValues = &clearValue
                 };
                 vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
-
                 vkCmdEndRenderPass(commandBuffer);
             }
         }

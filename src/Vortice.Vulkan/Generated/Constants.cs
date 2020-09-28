@@ -819,6 +819,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string KHRShaderNonSemanticInfoExtensionName = "VK_KHR_shader_non_semantic_info";
 		/// <summary>
+		/// VK_KHR_copy_commands2 = 1
+		/// </summary>
+		public const uint KHRCopyCommands2 = 1;
+		/// <summary>
+		/// VK_KHR_COPY_COMMANDS_2_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRCopyCommands2SpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_COPY_COMMANDS_2_EXTENSION_NAME = "VK_KHR_copy_commands2"
+		/// </summary>
+		public const string KHRCopyCommands2ExtensionName = "VK_KHR_copy_commands2";
+		/// <summary>
 		/// VK_EXT_debug_report = 1
 		/// </summary>
 		public const uint EXTDebugReport = 1;
@@ -1983,6 +1995,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string AMDDeviceCoherentMemoryExtensionName = "VK_AMD_device_coherent_memory";
 		/// <summary>
+		/// VK_EXT_shader_image_atomic_int64 = 1
+		/// </summary>
+		public const uint EXTShaderImageAtomicInt64 = 1;
+		/// <summary>
+		/// VK_EXT_SHADER_IMAGE_ATOMIC_INT64_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTShaderImageAtomicInt64SpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_SHADER_IMAGE_ATOMIC_INT64_EXTENSION_NAME = "VK_EXT_shader_image_atomic_int64"
+		/// </summary>
+		public const string EXTShaderImageAtomicInt64ExtensionName = "VK_EXT_shader_image_atomic_int64";
+		/// <summary>
 		/// VK_EXT_memory_budget = 1
 		/// </summary>
 		public const uint EXTMemoryBudget = 1;
@@ -2426,6 +2450,18 @@ namespace Vortice.Vulkan
 		/// VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface"
 		/// </summary>
 		public const string NnViSurfaceExtensionName = "VK_NN_vi_surface";
+		/// <summary>
+		/// VK_KHR_portability_subset = 1
+		/// </summary>
+		public const uint KHRPortabilitySubset = 1;
+		/// <summary>
+		/// VK_KHR_PORTABILITY_SUBSET_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRPortabilitySubsetSpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME = "VK_KHR_portability_subset"
+		/// </summary>
+		public const string KHRPortabilitySubsetExtensionName = "VK_KHR_portability_subset";
 		/// <summary>
 		/// VK_KHR_deferred_host_operations = 1
 		/// </summary>

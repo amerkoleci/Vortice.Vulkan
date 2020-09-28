@@ -10,7 +10,6 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Vortice.Mathematics;
 
 namespace Vortice.Vulkan
 {
@@ -606,7 +605,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetRenderAreaGranularity_ptr;
 		[Calli]
-		public static void vkGetRenderAreaGranularity(VkDevice device, VkRenderPass renderPass, out Size granularity)
+		public static void vkGetRenderAreaGranularity(VkDevice device, VkRenderPass renderPass, out VkExtent2D granularity)
 		{
 			throw new NotImplementedException();
 		}
@@ -676,14 +675,14 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetViewport_ptr;
 		[Calli]
-		public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, Viewport* viewports)
+		public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewport* viewports)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkCmdSetScissor_ptr;
 		[Calli]
-		public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, Rectangle* scissors)
+		public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, VkRect2D* scissors)
 		{
 			throw new NotImplementedException();
 		}
@@ -1348,7 +1347,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetPhysicalDevicePresentRectanglesKHR_ptr;
 		[Calli]
-		public static VkResult vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, Rectangle* rects)
+		public static VkResult vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, VkRect2D* rects)
 		{
 			throw new NotImplementedException();
 		}
@@ -1836,6 +1835,48 @@ namespace Vortice.Vulkan
 			throw new NotImplementedException();
 		}
 
+		private static IntPtr vkCmdCopyBuffer2KHR_ptr;
+		[Calli]
+		public static void vkCmdCopyBuffer2KHR(VkCommandBuffer commandBuffer, VkCopyBufferInfo2KHR* copyBufferInfo)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdCopyImage2KHR_ptr;
+		[Calli]
+		public static void vkCmdCopyImage2KHR(VkCommandBuffer commandBuffer, VkCopyImageInfo2KHR* copyImageInfo)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdCopyBufferToImage2KHR_ptr;
+		[Calli]
+		public static void vkCmdCopyBufferToImage2KHR(VkCommandBuffer commandBuffer, VkCopyBufferToImageInfo2KHR* copyBufferToImageInfo)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdCopyImageToBuffer2KHR_ptr;
+		[Calli]
+		public static void vkCmdCopyImageToBuffer2KHR(VkCommandBuffer commandBuffer, VkCopyImageToBufferInfo2KHR* copyImageToBufferInfo)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdBlitImage2KHR_ptr;
+		[Calli]
+		public static void vkCmdBlitImage2KHR(VkCommandBuffer commandBuffer, VkBlitImageInfo2KHR* blitImageInfo)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdResolveImage2KHR_ptr;
+		[Calli]
+		public static void vkCmdResolveImage2KHR(VkCommandBuffer commandBuffer, VkResolveImageInfo2KHR* resolveImageInfo)
+		{
+			throw new NotImplementedException();
+		}
+
 		private static IntPtr vkCreateDebugReportCallbackEXT_ptr;
 		[Calli]
 		public static VkResult vkCreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkDebugReportCallbackEXT* callback)
@@ -2055,7 +2096,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetDiscardRectangleEXT_ptr;
 		[Calli]
-		public static void vkCmdSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, Rectangle* discardRectangles)
+		public static void vkCmdSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D* discardRectangles)
 		{
 			throw new NotImplementedException();
 		}
@@ -2377,7 +2418,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetExclusiveScissorNV_ptr;
 		[Calli]
-		public static void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, Rectangle* exclusiveScissors)
+		public static void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D* exclusiveScissors)
 		{
 			throw new NotImplementedException();
 		}
@@ -2538,14 +2579,14 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetViewportWithCountEXT_ptr;
 		[Calli]
-		public static void vkCmdSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, Viewport* viewports)
+		public static void vkCmdSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport* viewports)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkCmdSetScissorWithCountEXT_ptr;
 		[Calli]
-		public static void vkCmdSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, Rectangle* scissors)
+		public static void vkCmdSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D* scissors)
 		{
 			throw new NotImplementedException();
 		}
@@ -3168,6 +3209,12 @@ namespace Vortice.Vulkan
 			vkGetPipelineExecutablePropertiesKHR_ptr = load(context, "vkGetPipelineExecutablePropertiesKHR");
 			vkGetPipelineExecutableStatisticsKHR_ptr = load(context, "vkGetPipelineExecutableStatisticsKHR");
 			vkGetPipelineExecutableInternalRepresentationsKHR_ptr = load(context, "vkGetPipelineExecutableInternalRepresentationsKHR");
+			vkCmdCopyBuffer2KHR_ptr = load(context, "vkCmdCopyBuffer2KHR");
+			vkCmdCopyImage2KHR_ptr = load(context, "vkCmdCopyImage2KHR");
+			vkCmdCopyBufferToImage2KHR_ptr = load(context, "vkCmdCopyBufferToImage2KHR");
+			vkCmdCopyImageToBuffer2KHR_ptr = load(context, "vkCmdCopyImageToBuffer2KHR");
+			vkCmdBlitImage2KHR_ptr = load(context, "vkCmdBlitImage2KHR");
+			vkCmdResolveImage2KHR_ptr = load(context, "vkCmdResolveImage2KHR");
 			vkDebugMarkerSetObjectTagEXT_ptr = load(context, "vkDebugMarkerSetObjectTagEXT");
 			vkDebugMarkerSetObjectNameEXT_ptr = load(context, "vkDebugMarkerSetObjectNameEXT");
 			vkCmdDebugMarkerBeginEXT_ptr = load(context, "vkCmdDebugMarkerBeginEXT");

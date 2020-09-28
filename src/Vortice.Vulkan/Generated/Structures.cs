@@ -9,10 +9,46 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Vortice.Mathematics;
 
 namespace Vortice.Vulkan
 {
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExtent2D
+	{
+		public uint width;
+		public uint height;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkExtent3D
+	{
+		public uint width;
+		public uint height;
+		public uint depth;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkOffset2D
+	{
+		public int x;
+		public int y;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkOffset3D
+	{
+		public int x;
+		public int y;
+		public int z;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRect2D
+	{
+		public VkOffset2D offset;
+		public VkExtent2D extent;
+	}
+
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkBaseInStructure
 	{
@@ -136,7 +172,7 @@ namespace Vortice.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkImageFormatProperties
 	{
-		public Size3 maxExtent;
+		public VkExtent3D maxExtent;
 		public uint maxMipLevels;
 		public uint maxArrayLayers;
 		public VkSampleCountFlags sampleCounts;
@@ -426,7 +462,7 @@ namespace Vortice.Vulkan
 		public VkQueueFlags queueFlags;
 		public uint queueCount;
 		public uint timestampValidBits;
-		public Size3 minImageTransferGranularity;
+		public VkExtent3D minImageTransferGranularity;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -550,8 +586,8 @@ namespace Vortice.Vulkan
 	public partial struct VkSparseImageMemoryBind
 	{
 		public VkImageSubresource subresource;
-		public Point3 offset;
-		public Size3 extent;
+		public VkOffset3D offset;
+		public VkExtent3D extent;
 		public VkDeviceMemory memory;
 		public ulong memoryOffset;
 		public VkSparseMemoryBindFlags flags;
@@ -586,7 +622,7 @@ namespace Vortice.Vulkan
 	public partial struct VkSparseImageFormatProperties
 	{
 		public VkImageAspectFlags aspectMask;
-		public Size3 imageGranularity;
+		public VkExtent3D imageGranularity;
 		public VkSparseImageFormatFlags flags;
 	}
 
@@ -668,7 +704,7 @@ namespace Vortice.Vulkan
 		public VkImageCreateFlags flags;
 		public VkImageType imageType;
 		public VkFormat format;
-		public Size3 extent;
+		public VkExtent3D extent;
 		public uint mipLevels;
 		public uint arrayLayers;
 		public VkSampleCountFlags samples;
@@ -822,15 +858,26 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkViewport
+	{
+		public float x;
+		public float y;
+		public float width;
+		public float height;
+		public float minDepth;
+		public float maxDepth;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPipelineViewportStateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkPipelineViewportStateCreateFlags flags;
 		public uint viewportCount;
-		public unsafe Viewport* pViewports;
+		public unsafe VkViewport* pViewports;
 		public uint scissorCount;
-		public unsafe Rectangle* pScissors;
+		public unsafe VkRect2D* pScissors;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1231,8 +1278,8 @@ namespace Vortice.Vulkan
 		public uint bufferRowLength;
 		public uint bufferImageHeight;
 		public VkImageSubresourceLayers imageSubresource;
-		public Point3 imageOffset;
-		public Size3 imageExtent;
+		public VkOffset3D imageOffset;
+		public VkExtent3D imageExtent;
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
@@ -1273,7 +1320,7 @@ namespace Vortice.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkClearRect
 	{
-		public Rectangle rect;
+		public VkRect2D rect;
 		public uint baseArrayLayer;
 		public uint layerCount;
 	}
@@ -1282,31 +1329,31 @@ namespace Vortice.Vulkan
 	public partial struct VkImageBlit
 	{
 		public VkImageSubresourceLayers srcSubresource;
-		public Point3 srcOffsets_0;
-		public Point3 srcOffsets_1;
+		public VkOffset3D srcOffsets_0;
+		public VkOffset3D srcOffsets_1;
 		public VkImageSubresourceLayers dstSubresource;
-		public Point3 dstOffsets_0;
-		public Point3 dstOffsets_1;
+		public VkOffset3D dstOffsets_0;
+		public VkOffset3D dstOffsets_1;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkImageCopy
 	{
 		public VkImageSubresourceLayers srcSubresource;
-		public Point3 srcOffset;
+		public VkOffset3D srcOffset;
 		public VkImageSubresourceLayers dstSubresource;
-		public Point3 dstOffset;
-		public Size3 extent;
+		public VkOffset3D dstOffset;
+		public VkExtent3D extent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkImageResolve
 	{
 		public VkImageSubresourceLayers srcSubresource;
-		public Point3 srcOffset;
+		public VkOffset3D srcOffset;
 		public VkImageSubresourceLayers dstSubresource;
-		public Point3 dstOffset;
-		public Size3 extent;
+		public VkOffset3D dstOffset;
+		public VkExtent3D extent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1316,7 +1363,7 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkRenderPass renderPass;
 		public VkFramebuffer framebuffer;
-		public Rectangle renderArea;
+		public VkRect2D renderArea;
 		public uint clearValueCount;
 		public unsafe VkClearValue* pClearValues;
 	}
@@ -1397,7 +1444,7 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public uint deviceMask;
 		public uint deviceRenderAreaCount;
-		public unsafe Rectangle* pDeviceRenderAreas;
+		public unsafe VkRect2D* pDeviceRenderAreas;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1447,7 +1494,7 @@ namespace Vortice.Vulkan
 		public uint deviceIndexCount;
 		public unsafe uint* pDeviceIndices;
 		public uint splitInstanceBindRegionCount;
-		public unsafe Rectangle* pSplitInstanceBindRegions;
+		public unsafe VkRect2D* pSplitInstanceBindRegions;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2636,9 +2683,9 @@ namespace Vortice.Vulkan
 	{
 		public uint minImageCount;
 		public uint maxImageCount;
-		public Size currentExtent;
-		public Size minImageExtent;
-		public Size maxImageExtent;
+		public VkExtent2D currentExtent;
+		public VkExtent2D minImageExtent;
+		public VkExtent2D maxImageExtent;
 		public uint maxImageArrayLayers;
 		public VkSurfaceTransformFlagsKHR supportedTransforms;
 		public VkSurfaceTransformFlagsKHR currentTransform;
@@ -2663,7 +2710,7 @@ namespace Vortice.Vulkan
 		public uint minImageCount;
 		public VkFormat imageFormat;
 		public VkColorSpaceKHR imageColorSpace;
-		public Size imageExtent;
+		public VkExtent2D imageExtent;
 		public uint imageArrayLayers;
 		public VkImageUsageFlags imageUsage;
 		public VkSharingMode imageSharingMode;
@@ -2748,7 +2795,7 @@ namespace Vortice.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkDisplayModeParametersKHR
 	{
-		public Size visibleRegion;
+		public VkExtent2D visibleRegion;
 		public uint refreshRate;
 	}
 
@@ -2772,14 +2819,14 @@ namespace Vortice.Vulkan
 	public partial struct VkDisplayPlaneCapabilitiesKHR
 	{
 		public VkDisplayPlaneAlphaFlagsKHR supportedAlpha;
-		public Point minSrcPosition;
-		public Point maxSrcPosition;
-		public Size minSrcExtent;
-		public Size maxSrcExtent;
-		public Point minDstPosition;
-		public Point maxDstPosition;
-		public Size minDstExtent;
-		public Size maxDstExtent;
+		public VkOffset2D minSrcPosition;
+		public VkOffset2D maxSrcPosition;
+		public VkExtent2D minSrcExtent;
+		public VkExtent2D maxSrcExtent;
+		public VkOffset2D minDstPosition;
+		public VkOffset2D maxDstPosition;
+		public VkExtent2D minDstExtent;
+		public VkExtent2D maxDstExtent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2794,8 +2841,8 @@ namespace Vortice.Vulkan
 	{
 		public VkDisplayKHR display;
 		public unsafe byte* displayName;
-		public Size physicalDimensions;
-		public Size physicalResolution;
+		public VkExtent2D physicalDimensions;
+		public VkExtent2D physicalResolution;
 		public VkSurfaceTransformFlagsKHR supportedTransforms;
 		public VkBool32 planeReorderPossible;
 		public VkBool32 persistentContent;
@@ -2813,7 +2860,7 @@ namespace Vortice.Vulkan
 		public VkSurfaceTransformFlagsKHR transform;
 		public float globalAlpha;
 		public VkDisplayPlaneAlphaFlagsKHR alphaMode;
-		public Size imageExtent;
+		public VkExtent2D imageExtent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2821,8 +2868,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public Rectangle srcRect;
-		public Rectangle dstRect;
+		public VkRect2D srcRect;
+		public VkRect2D dstRect;
 		public VkBool32 persistent;
 	}
 
@@ -2883,8 +2930,8 @@ namespace Vortice.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkRectLayerKHR
 	{
-		public Point offset;
-		public Size extent;
+		public VkOffset2D offset;
+		public VkExtent2D extent;
 		public uint layer;
 	}
 
@@ -3170,6 +3217,141 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferCopy2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public ulong srcOffset;
+		public ulong dstOffset;
+		public ulong size;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCopyBufferInfo2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBuffer srcBuffer;
+		public VkBuffer dstBuffer;
+		public uint regionCount;
+		public unsafe VkBufferCopy2KHR* pRegions;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageCopy2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkImageSubresourceLayers srcSubresource;
+		public VkOffset3D srcOffset;
+		public VkImageSubresourceLayers dstSubresource;
+		public VkOffset3D dstOffset;
+		public VkExtent3D extent;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCopyImageInfo2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkImage srcImage;
+		public VkImageLayout srcImageLayout;
+		public VkImage dstImage;
+		public VkImageLayout dstImageLayout;
+		public uint regionCount;
+		public unsafe VkImageCopy2KHR* pRegions;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferImageCopy2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public ulong bufferOffset;
+		public uint bufferRowLength;
+		public uint bufferImageHeight;
+		public VkImageSubresourceLayers imageSubresource;
+		public VkOffset3D imageOffset;
+		public VkExtent3D imageExtent;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCopyBufferToImageInfo2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBuffer srcBuffer;
+		public VkImage dstImage;
+		public VkImageLayout dstImageLayout;
+		public uint regionCount;
+		public unsafe VkBufferImageCopy2KHR* pRegions;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCopyImageToBufferInfo2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkImage srcImage;
+		public VkImageLayout srcImageLayout;
+		public VkBuffer dstBuffer;
+		public uint regionCount;
+		public unsafe VkBufferImageCopy2KHR* pRegions;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageBlit2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkImageSubresourceLayers srcSubresource;
+		public VkOffset3D srcOffsets_0;
+		public VkOffset3D srcOffsets_1;
+		public VkImageSubresourceLayers dstSubresource;
+		public VkOffset3D dstOffsets_0;
+		public VkOffset3D dstOffsets_1;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBlitImageInfo2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkImage srcImage;
+		public VkImageLayout srcImageLayout;
+		public VkImage dstImage;
+		public VkImageLayout dstImageLayout;
+		public uint regionCount;
+		public unsafe VkImageBlit2KHR* pRegions;
+		public VkFilter filter;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageResolve2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkImageSubresourceLayers srcSubresource;
+		public VkOffset3D srcOffset;
+		public VkImageSubresourceLayers dstSubresource;
+		public VkOffset3D dstOffset;
+		public VkExtent3D extent;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkResolveImageInfo2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkImage srcImage;
+		public VkImageLayout srcImageLayout;
+		public VkImage dstImage;
+		public VkImageLayout dstImageLayout;
+		public uint regionCount;
+		public unsafe VkImageResolve2KHR* pRegions;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkDebugReportCallbackCreateInfoEXT
 	{
 		public VkStructureType sType;
@@ -3444,9 +3626,9 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public uint minImageCount;
 		public uint maxImageCount;
-		public Size currentExtent;
-		public Size minImageExtent;
-		public Size maxImageExtent;
+		public VkExtent2D currentExtent;
+		public VkExtent2D minImageExtent;
+		public VkExtent2D maxImageExtent;
 		public uint maxImageArrayLayers;
 		public VkSurfaceTransformFlagsKHR supportedTransforms;
 		public VkSurfaceTransformFlagsKHR currentTransform;
@@ -3562,7 +3744,7 @@ namespace Vortice.Vulkan
 		public VkPipelineDiscardRectangleStateCreateFlagsEXT flags;
 		public VkDiscardRectangleModeEXT discardRectangleMode;
 		public uint discardRectangleCount;
-		public unsafe Rectangle* pDiscardRectangles;
+		public unsafe VkRect2D* pDiscardRectangles;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3741,7 +3923,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkSampleCountFlags sampleLocationsPerPixel;
-		public Size sampleLocationGridSize;
+		public VkExtent2D sampleLocationGridSize;
 		public uint sampleLocationsCount;
 		public unsafe VkSampleLocationEXT* pSampleLocations;
 	}
@@ -3786,7 +3968,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkSampleCountFlags sampleLocationSampleCounts;
-		public Size maxSampleLocationGridSize;
+		public VkExtent2D maxSampleLocationGridSize;
 		public unsafe fixed float sampleLocationCoordinateRange[2];
 		public uint sampleLocationSubPixelBits;
 		public VkBool32 variableSampleLocations;
@@ -3797,7 +3979,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public Size maxSampleLocationGridSize;
+		public VkExtent2D maxSampleLocationGridSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3974,7 +4156,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public Size shadingRateTexelSize;
+		public VkExtent2D shadingRateTexelSize;
 		public uint shadingRatePaletteSize;
 		public uint shadingRateMaxCoarseSamples;
 	}
@@ -4385,7 +4567,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public uint exclusiveScissorCount;
-		public unsafe Rectangle* pExclusiveScissors;
+		public unsafe VkRect2D* pExclusiveScissors;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4535,8 +4717,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public Size minFragmentDensityTexelSize;
-		public Size maxFragmentDensityTexelSize;
+		public VkExtent2D minFragmentDensityTexelSize;
+		public VkExtent2D maxFragmentDensityTexelSize;
 		public VkBool32 fragmentDensityInvocations;
 	}
 
@@ -4591,6 +4773,15 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkBool32 deviceCoherentMemory;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 shaderImageInt64Atomics;
+		public VkBool32 sparseImageInt64Atomics;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5036,7 +5227,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkSurfaceTransformFlagsKHR transform;
-		public Rectangle renderArea;
+		public VkRect2D renderArea;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5267,6 +5458,36 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkViSurfaceCreateFlagsNN flags;
 		public unsafe void* window;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePortabilitySubsetFeaturesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 constantAlphaColorBlendFactors;
+		public VkBool32 events;
+		public VkBool32 imageViewFormatReinterpretation;
+		public VkBool32 imageViewFormatSwizzle;
+		public VkBool32 imageView2DOn3DImage;
+		public VkBool32 multisampleArrayImage;
+		public VkBool32 mutableComparisonSamplers;
+		public VkBool32 pointPolygons;
+		public VkBool32 samplerMipLodBias;
+		public VkBool32 separateStencilMaskRef;
+		public VkBool32 shaderSampleRateInterpolationFunctions;
+		public VkBool32 tessellationIsolines;
+		public VkBool32 tessellationPointMode;
+		public VkBool32 triangleFans;
+		public VkBool32 vertexAttributeAccessBeyondStride;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePortabilitySubsetPropertiesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint minVertexInputBindingStrideAlignment;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

@@ -119,8 +119,8 @@ namespace Generator
             using var writer = new CodeWriter(Path.Combine(outputPath, "Commands.cs"),
                 "System",
                 "System.Diagnostics",
-                "System.Runtime.InteropServices",
-                "Vortice.Mathematics");
+                "System.Runtime.InteropServices"
+                );
 
             var commands = new Dictionary<string, CppFunction>();
             var instanceCommands = new Dictionary<string, CppFunction>();
