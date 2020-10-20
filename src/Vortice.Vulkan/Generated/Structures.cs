@@ -13,40 +13,40 @@ using System.Runtime.InteropServices;
 namespace Vortice.Vulkan
 {
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkExtent2D
+	public readonly partial struct VkExtent2D
 	{
-		public uint width;
-		public uint height;
+		public readonly uint width;
+		public readonly uint height;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkExtent3D
+	public readonly partial struct VkExtent3D
 	{
-		public uint width;
-		public uint height;
-		public uint depth;
+		public readonly uint width;
+		public readonly uint height;
+		public readonly uint depth;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkOffset2D
+	public readonly partial struct VkOffset2D
 	{
-		public int x;
-		public int y;
+		public readonly int x;
+		public readonly int y;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkOffset3D
+	public readonly partial struct VkOffset3D
 	{
-		public int x;
-		public int y;
-		public int z;
+		public readonly int x;
+		public readonly int y;
+		public readonly int z;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkRect2D
+	public readonly partial struct VkRect2D
 	{
-		public VkOffset2D offset;
-		public VkExtent2D extent;
+		public readonly VkOffset2D offset;
+		public readonly VkExtent2D extent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -858,14 +858,14 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkViewport
+	public readonly partial struct VkViewport
 	{
-		public float x;
-		public float y;
-		public float width;
-		public float height;
-		public float minDepth;
-		public float maxDepth;
+		public readonly float x;
+		public readonly float y;
+		public readonly float width;
+		public readonly float height;
+		public readonly float minDepth;
+		public readonly float maxDepth;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1294,10 +1294,10 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkClearDepthStencilValue
+	public readonly partial struct VkClearDepthStencilValue
 	{
-		public float depth;
-		public uint stencil;
+		public readonly float depth;
+		public readonly uint stencil;
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
@@ -3134,6 +3134,76 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkBool32 shaderSubgroupClock;
 		public VkBool32 shaderDeviceClock;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderTerminateInvocationFeaturesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 shaderTerminateInvocation;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkFragmentShadingRateAttachmentInfoKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public unsafe VkAttachmentReference2* pFragmentShadingRateAttachment;
+		public VkExtent2D shadingRateAttachmentTexelSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineFragmentShadingRateStateCreateInfoKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkExtent2D fragmentSize;
+		public VkFragmentShadingRateCombinerOpKHR combinerOps_0;
+		public VkFragmentShadingRateCombinerOpKHR combinerOps_1;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFragmentShadingRateFeaturesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 pipelineFragmentShadingRate;
+		public VkBool32 primitiveFragmentShadingRate;
+		public VkBool32 attachmentFragmentShadingRate;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkExtent2D minFragmentShadingRateAttachmentTexelSize;
+		public VkExtent2D maxFragmentShadingRateAttachmentTexelSize;
+		public uint maxFragmentShadingRateAttachmentTexelSizeAspectRatio;
+		public VkBool32 primitiveFragmentShadingRateWithMultipleViewports;
+		public VkBool32 layeredShadingRateAttachments;
+		public VkBool32 fragmentShadingRateNonTrivialCombinerOps;
+		public VkExtent2D maxFragmentSize;
+		public uint maxFragmentSizeAspectRatio;
+		public uint maxFragmentShadingRateCoverageSamples;
+		public VkSampleCountFlags maxFragmentShadingRateRasterizationSamples;
+		public VkBool32 fragmentShadingRateWithShaderDepthStencilWrites;
+		public VkBool32 fragmentShadingRateWithSampleMask;
+		public VkBool32 fragmentShadingRateWithShaderSampleMask;
+		public VkBool32 fragmentShadingRateWithConservativeRasterization;
+		public VkBool32 fragmentShadingRateWithFragmentShaderInterlock;
+		public VkBool32 fragmentShadingRateWithCustomSampleLocations;
+		public VkBool32 fragmentShadingRateStrictMultiplyCombiner;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFragmentShadingRateKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkSampleCountFlags sampleCounts;
+		public VkExtent2D fragmentSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5228,6 +5298,38 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkSurfaceTransformFlagsKHR transform;
 		public VkRect2D renderArea;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDeviceMemoryReportFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 deviceMemoryReport;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceMemoryReportCallbackDataEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkDeviceMemoryReportFlagsEXT flags;
+		public VkDeviceMemoryReportEventTypeEXT type;
+		public ulong memoryObjectId;
+		public ulong size;
+		public VkObjectType objectType;
+		public ulong objectHandle;
+		public uint heapIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDeviceDeviceMemoryReportCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkDeviceMemoryReportFlagsEXT flags;
+		public IntPtr pfnUserCallback;
+		public unsafe void* pUserData;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

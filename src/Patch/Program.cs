@@ -16,10 +16,10 @@ namespace Patch
         public sealed class Options
         {
             [Option('i', "input", Default = null, Required = true, HelpText = "Input dll to patch.")]
-            public string Input { get; set; }
+            public string? Input { get; set; }
 
             [Option('o', "output", Default = null, Required = false, HelpText = "Output path.")]
-            public string Output { get; set; }
+            public string? Output { get; set; }
         }
 
         public static void Main(string[] args)
@@ -30,8 +30,8 @@ namespace Patch
 
         public static void Run(Options opts)
         {
-            var inputPath = opts.Input;
-            var outputPath = opts.Output;
+            string? inputPath = opts.Input;
+            string? outputPath = opts.Output;
             bool copiedToTemp = false;
             if (string.IsNullOrEmpty(outputPath))
             {
@@ -55,17 +55,17 @@ namespace Patch
             }
         }
 
-        private static TypeReference s_calliTargetRef;
+        private static TypeReference? s_calliTargetRef;
         //private static MethodReference s_stringToHGlobalUtf8Ref;
         //private static MethodDefinition s_freeHGlobalRef;
         //private static TypeReference s_stringHandleRef;
 
 
-        private static void Patch(string inputPath, string outputPath)
+        private static void Patch(string? inputPath, string? outputPath)
         {
             using (var assembly = AssemblyDefinition.ReadAssembly(inputPath))
             {
-                var mainModule = assembly.Modules[0];
+                ModuleDefinition? mainModule = assembly.Modules[0];
 
                 s_calliTargetRef = mainModule.GetType("CalliAttribute");
                 //var interopClass = mainModule.GetType("SharpVulkan.Interop");
@@ -73,11 +73,11 @@ namespace Patch
                 //s_freeHGlobalRef = interopClass.Methods.Single(md => md.Name == "FreeHGlobal");
                 //s_stringHandleRef = mainModule.GetType("SharpVulkan.InteropStringHandle");
 
-                foreach (var type in mainModule.Types)
+                foreach (TypeDefinition? type in mainModule.Types)
                 {
-                    foreach (var method in type.Methods)
+                    foreach (MethodDefinition? method in type.Methods)
                     {
-                        var calliAttribute = method.CustomAttributes.FirstOrDefault(attribute => attribute.AttributeType == s_calliTargetRef);
+                        CustomAttribute? calliAttribute = method.CustomAttributes.FirstOrDefault(attribute => attribute.AttributeType == s_calliTargetRef);
                         if (calliAttribute != null)
                         {
                             ProcessCalliMethod(method);
@@ -92,14 +92,14 @@ namespace Patch
 
         private static void ProcessCalliMethod(MethodDefinition method)
         {
-            var il = method.Body.GetILProcessor();
+            ILProcessor? il = method.Body.GetILProcessor();
             il.Body.Instructions.Clear();
 
             //var stringParams = new List<VariableDefinition>();
             for (int i = 0; i < method.Parameters.Count; i++)
             {
                 EmitLoadArgument(il, i);
-                var parameterType = method.Parameters[i].ParameterType;
+                TypeReference? parameterType = method.Parameters[i].ParameterType;
                 if (parameterType.FullName == "System.String")
                 {
                     throw new NotImplementedException("String are not supported");

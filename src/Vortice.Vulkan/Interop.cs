@@ -2,15 +2,13 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 
-using System;
-using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Vortice.Vulkan
 {
     public unsafe static class Interop
     {
-        internal static int GetMaxByteCount(string value)
+        internal static int GetMaxByteCount(string? value)
         {
             return value == null
                 ? 0
@@ -29,7 +27,7 @@ namespace Vortice.Vulkan
             return Encoding.UTF8.GetString(ptr, length);
         }
 
-        internal static void StringToPointer(string value, byte* dstPointer, int maxByteCount)
+        internal static void StringToPointer(string? value, byte* dstPointer, int maxByteCount)
         {
             if (value == null)
                 return;

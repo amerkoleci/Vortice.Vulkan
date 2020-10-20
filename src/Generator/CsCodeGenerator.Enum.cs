@@ -431,7 +431,7 @@ namespace Generator
 
         public static string GetEnumNamePrefix(string typeName)
         {
-            if (s_knownEnumPrefixes.TryGetValue(typeName, out string knownValue))
+            if (s_knownEnumPrefixes.TryGetValue(typeName, out string? knownValue))
             {
                 return knownValue;
             }
@@ -484,7 +484,7 @@ namespace Generator
 
         private static string GetPrettyEnumName(string value, string enumPrefix)
         {
-            if (s_knownEnumValueNames.TryGetValue(value, out string knownName))
+            if (s_knownEnumValueNames.TryGetValue(value, out string? knownName))
             {
                 return knownName;
             }

@@ -6,7 +6,7 @@ namespace Vortice.Vulkan
     /// <summary>
     /// Structure specifying a clear depth stencil value.
     /// </summary>
-    public partial struct VkClearDepthStencilValue
+    public readonly partial struct VkClearDepthStencilValue
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VkClearDepthStencilValue"/> structure.

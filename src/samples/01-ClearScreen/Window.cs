@@ -8,91 +8,87 @@ using static Vortice.Win32.User32;
 
 namespace Vortice
 {
+    [Flags]
+    public enum WindowFlags
+    {
+        None = 0,
+        Fullscreen = 1 << 0,
+        FullscreenDesktop = 1 << 1,
+        Hidden = 1 << 2,
+        Borderless = 1 << 3,
+        Resizable = 1 << 4,
+        Minimized = 1 << 5,
+        Maximized = 1 << 6,
+        HighDpi = 1 << 7,
+    }
+
     public sealed class Window
     {
+        internal static readonly string WndClassName = "VorticeWindow";
         private const int CW_USEDEFAULT = unchecked((int)0x80000000);
+        private WindowStyles _windowStyle = 0;
+        private WindowStyles _windowWindowedStyle = 0;
+        //private readonly WindowStyles _windowFullscreenStyle = WindowStyles.WS_CLIPSIBLINGS | WindowStyles.WS_GROUP | WindowStyles.WS_TABSTOP;
 
-        public Window(string title, int width, int height)
+        public unsafe Window(string title, int width, int height, WindowFlags flags = WindowFlags.None)
         {
             Title = title;
 
-            var x = 0;
-            var y = 0;
-            WindowStyles style = 0;
-            WindowExStyles styleEx = 0;
-            const bool resizable = true;
+            int x = CW_USEDEFAULT;
+            int y = CW_USEDEFAULT;
+            bool resizable = (flags & WindowFlags.Resizable) != WindowFlags.None;
 
-            // Setup the screen settings depending on whether it is running in full screen or in windowed mode.
-            //if (fullscreen)
-            //{
-            //style = User32.WindowStyles.WS_POPUP | User32.WindowStyles.WS_VISIBLE;
-            //styleEx = User32.WindowStyles.WS_EX_APPWINDOW;
+            _windowWindowedStyle = WindowStyles.WS_CAPTION | WindowStyles.WS_SYSMENU | WindowStyles.WS_MINIMIZEBOX | WindowStyles.WS_CLIPSIBLINGS | WindowStyles.WS_BORDER | WindowStyles.WS_DLGFRAME | WindowStyles.WS_THICKFRAME | WindowStyles.WS_GROUP | WindowStyles.WS_TABSTOP;
 
-            //width = screenWidth;
-            //height = screenHeight;
-            //}
-            //else
+            if (resizable)
             {
-                if (width > 0 && height > 0)
+                _windowWindowedStyle |= WindowStyles.WS_SIZEBOX | WindowStyles.WS_MAXIMIZEBOX;
+            }
+
+            _windowStyle = _windowWindowedStyle;
+
+            RawRect windowRect = new RawRect(0, 0, width, height);
+
+            // Adjust according to window styles
+            AdjustWindowRectEx(ref windowRect, _windowStyle, false, WindowExStyles.WS_EX_OVERLAPPEDWINDOW);
+
+            int windowWidth = windowRect.Right - windowRect.Left;
+            int windowHeight = windowRect.Bottom - windowRect.Top;
+
+            bool centerWindow = true;
+            if (centerWindow)
+            {
+                if (windowWidth > 0 && windowHeight > 0)
                 {
-                    var screenWidth = GetSystemMetrics(SystemMetrics.SM_CXSCREEN);
-                    var screenHeight = GetSystemMetrics(SystemMetrics.SM_CYSCREEN);
+                    int screenWidth = GetSystemMetrics(SystemMetrics.SM_CXSCREEN);
+                    int screenHeight = GetSystemMetrics(SystemMetrics.SM_CYSCREEN);
 
                     // Place the window in the middle of the screen.WS_EX_APPWINDOW
-                    x = (screenWidth - width) / 2;
-                    y = (screenHeight - height) / 2;
+                    x = (screenWidth - windowWidth) / 2;
+                    y = (screenHeight - windowHeight) / 2;
                 }
-
-                if (resizable)
-                {
-                    style = WindowStyles.WS_OVERLAPPEDWINDOW;
-                }
-                else
-                {
-                    style = WindowStyles.WS_POPUP | WindowStyles.WS_BORDER | WindowStyles.WS_CAPTION | WindowStyles.WS_SYSMENU;
-                }
-
-                styleEx = WindowExStyles.WS_EX_APPWINDOW | WindowExStyles.WS_EX_WINDOWEDGE;
             }
-            style |= WindowStyles.WS_CLIPCHILDREN | WindowStyles.WS_CLIPSIBLINGS;
 
-            int windowWidth;
-            int windowHeight;
-
-            RawRect rect = default;
-
-            if (width > 0 && height > 0)
+            IntPtr hwnd;
+            fixed (char* lpWndClassName = WndClassName)
             {
-                rect = new RawRect(0, 0, width, height);
-
-                // Adjust according to window styles
-                AdjustWindowRectEx(
-                    ref rect,
-                    style,
-                    false,
-                    styleEx);
-
-                windowWidth = rect.Right - rect.Left;
-                windowHeight = rect.Bottom - rect.Top;
+                fixed (char* lpWindowName = Title)
+                {
+                    hwnd = CreateWindowExW(
+                        (uint)WindowExStyles.WS_EX_OVERLAPPEDWINDOW,
+                        (ushort*)lpWndClassName,
+                        (ushort*)lpWindowName,
+                        (uint)_windowStyle,
+                    x,
+                    y,
+                    windowWidth,
+                    windowHeight,
+                    IntPtr.Zero,
+                    IntPtr.Zero,
+                    IntPtr.Zero,
+                    null);
+                }
             }
-            else
-            {
-                x = y = windowWidth = windowHeight = CW_USEDEFAULT;
-            }
-
-            var hwnd = CreateWindowEx(
-                (int)styleEx,
-                Application.WndClassName,
-                Title,
-                (int)style,
-                x,
-                y,
-                windowWidth,
-                windowHeight,
-                IntPtr.Zero,
-                IntPtr.Zero,
-                IntPtr.Zero,
-                IntPtr.Zero);
 
             if (hwnd == IntPtr.Zero)
             {
@@ -102,8 +98,8 @@ namespace Vortice
             ShowWindow(hwnd, ShowWindowCommand.Normal);
             Handle = hwnd;
 
-            GetClientRect(hwnd, out rect);
-            Extent = new VkExtent2D(rect.Right - rect.Left, rect.Bottom - rect.Top);
+            GetClientRect(hwnd, out windowRect);
+            Extent = new VkExtent2D(windowRect.Right - windowRect.Left, windowRect.Bottom - windowRect.Top);
         }
 
         public string Title { get; }

@@ -15,7 +15,7 @@ namespace Vortice
         private static readonly string[] s_RequestedValidationLayers = new[] { "VK_LAYER_KHRONOS_validation" };
 
         public readonly VkInstance VkInstance;
-        private vkDebugUtilsMessengerCallbackEXT _debugMessengerCallbackFunc;
+        private vkDebugUtilsMessengerCallbackEXT? _debugMessengerCallbackFunc;
         private readonly VkDebugUtilsMessengerEXT _debugMessenger = VkDebugUtilsMessengerEXT.Null;
         internal readonly VkSurfaceKHR _surface;
         public readonly VkPhysicalDevice PhysicalDevice;
@@ -28,7 +28,7 @@ namespace Vortice
         private readonly List<VkSemaphore> _recycledSemaphores = new List<VkSemaphore>();
 
 
-        public GraphicsDevice(string applicationName, bool enableValidation, Window window)
+        public GraphicsDevice(string applicationName, bool enableValidation, Window? window)
         {
             VkString name = applicationName;
             var appInfo = new VkApplicationInfo
@@ -41,7 +41,7 @@ namespace Vortice
                 apiVersion = vkEnumerateInstanceVersion()
             };
 
-            var instanceExtensions = new List<string>
+            List<string> instanceExtensions = new List<string>
             {
                 KHRSurfaceExtensionName
             };
@@ -51,7 +51,7 @@ namespace Vortice
                 instanceExtensions.Add(KHRWin32SurfaceExtensionName);
             }
 
-            var instanceLayers = new List<string>();
+            List<string> instanceLayers = new List<string>();
             if (enableValidation)
             {
                 FindValidationLayers(instanceLayers);
@@ -116,7 +116,7 @@ namespace Vortice
                 }
             }
 
-            foreach (var extension in instanceExtensions)
+            foreach (string extension in instanceExtensions)
             {
                 Log.Info($"Instance extension '{extension}'");
             }
@@ -255,10 +255,9 @@ namespace Vortice
             }
         }
 
-        public void RenderFrame(Action<VkCommandBuffer, VkFramebuffer, VkExtent2D> draw, [CallerMemberName] string frameName = null)
+        public void RenderFrame(Action<VkCommandBuffer, VkFramebuffer, VkExtent2D> draw, [CallerMemberName] string? frameName = null)
         {
-            uint swapchainIndex;
-            VkResult result = AcquireNextImage(out swapchainIndex);
+            VkResult result = AcquireNextImage(out uint swapchainIndex);
 
             // Handle outdated error in acquire.
             if (result == VkResult.SuboptimalKHR || result == VkResult.ErrorOutOfDateKHR)
@@ -378,13 +377,13 @@ namespace Vortice
         public static implicit operator VkDevice(GraphicsDevice device) => device.VkDevice;
 
         #region Private Methods
-        private VkSurfaceKHR CreateSurface(Window window)
+        private VkSurfaceKHR CreateSurface(Window? window)
         {
             var surfaceCreateInfo = new VkWin32SurfaceCreateInfoKHR
             {
                 sType = VkStructureType.Win32SurfaceCreateInfoKHR,
                 hinstance = GetModuleHandle(null),
-                hwnd = window.Handle
+                hwnd = window!.Handle
             };
 
             vkCreateWin32SurfaceKHR(VkInstance, &surfaceCreateInfo, null, out VkSurfaceKHR surface).CheckResult();

@@ -23,7 +23,7 @@ namespace DrawTriangle
 
         class TestApp : Application
         {
-            private GraphicsDevice _graphicsDevice;
+            private GraphicsDevice? _graphicsDevice;
             private float _green = 0.0f;
 
             public override string Name => "01-ClearScreen";
@@ -38,14 +38,14 @@ namespace DrawTriangle
 
             public override void Dispose()
             {
-                _graphicsDevice.Dispose();
+                _graphicsDevice!.Dispose();
 
                 base.Dispose();
             }
 
             protected override void OnTick()
             {
-                _graphicsDevice.RenderFrame(OnDraw);
+                _graphicsDevice!.RenderFrame(OnDraw);
             }
 
             private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, VkExtent2D size)
@@ -61,7 +61,7 @@ namespace DrawTriangle
                 VkRenderPassBeginInfo renderPassBeginInfo = new VkRenderPassBeginInfo
                 {
                     sType = VkStructureType.RenderPassBeginInfo,
-                    renderPass = _graphicsDevice.Swapchain.RenderPass,
+                    renderPass = _graphicsDevice!.Swapchain.RenderPass,
                     framebuffer = framebuffer,
                     renderArea = new VkRect2D(size),
                     clearValueCount = 1,

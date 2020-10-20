@@ -5,7 +5,7 @@ using System;
 
 namespace Vortice.Vulkan
 {
-    public struct VkVersion : IEquatable<VkVersion>, IComparable<VkVersion>
+    public readonly struct VkVersion : IEquatable<VkVersion>, IComparable<VkVersion>
     {
         private readonly uint _value;
 

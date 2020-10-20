@@ -65,8 +65,11 @@ namespace Vortice.Vulkan
             GenLoadDevice(instance.Handle, vkGetInstanceProcAddr);
 
             // Manually load win32 entries.
-            vkCreateWin32SurfaceKHR_ptr = LoadCallback<vkCreateWin32SurfaceKHRDelegate>(instance.Handle, vkGetInstanceProcAddr, nameof(vkCreateWin32SurfaceKHR));
-            vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = LoadCallback<vkGetPhysicalDeviceWin32PresentationSupportKHRDelegate>(instance.Handle, vkGetInstanceProcAddr, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                vkCreateWin32SurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWin32SurfaceKHR));
+                vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
+            }
         }
 
         private static void GenLoadLoader(IntPtr context, LoadFunction load)
@@ -79,7 +82,7 @@ namespace Vortice.Vulkan
 
         private static IntPtr LoadCallbackThrow(IntPtr context, LoadFunction load, string name)
         {
-            var functionPtr = load(context, name);
+            IntPtr functionPtr = load(context, name);
             if (functionPtr == IntPtr.Zero)
             {
                 throw new InvalidOperationException($"No function was found with the name {name}.");
@@ -87,17 +90,6 @@ namespace Vortice.Vulkan
 
             return functionPtr;
         }
-
-#if !CALLI_SUPPORT
-        private static T LoadCallback<T>(IntPtr context, LoadFunction load, string name)
-        {
-            var functionPtr = load(context, name);
-            if (functionPtr == IntPtr.Zero)
-                return default;
-
-            return Marshal.GetDelegateForFunctionPointer<T>(functionPtr);
-        }
-#endif
 
         public static IntPtr vkGetInstanceProcAddr(IntPtr instance, string name)
         {
@@ -113,10 +105,10 @@ namespace Vortice.Vulkan
         /// <param name="layerName">Is either null/empty or a string naming the layer to retrieve extensions from.</param>
         /// <returns>A <see cref="ReadOnlySpan{VkExtensionProperties}"/> </returns>
         /// <exception cref="VkException">Vulkan returns an error code.</exception>
-        public static unsafe ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties(string layerName = null)
+        public static unsafe ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties(string? layerName = null)
         {
             int dstLayerNameByteCount = Interop.GetMaxByteCount(layerName);
-            var dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
+            byte* dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
             Interop.StringToPointer(layerName, dstLayerNamePtr, dstLayerNameByteCount);
 
             uint count = 0;

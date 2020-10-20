@@ -18,8 +18,8 @@ namespace Vortice.Vulkan
             vkAllocationFunction alloc, 
             vkReallocationFunction realloc,
             vkFreeFunction free,
-            vkInternalAllocationNotification internalAlloc = null,
-            vkInternalFreeNotification internalFree = null,
+            vkInternalAllocationNotification? internalAlloc = null,
+            vkInternalFreeNotification? internalFree = null,
             void* userData = default)
         {
             pfnAllocation = Marshal.GetFunctionPointerForDelegate(alloc);

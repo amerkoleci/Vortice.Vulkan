@@ -7,18 +7,15 @@ namespace Vortice
     public unsafe sealed class Swapchain : IDisposable
     {
         public readonly GraphicsDevice Device;
-        public readonly Window Window;
-        private VkExtent2D _extent;
+        public readonly Window? Window;
         private VkImageView[] _swapChainImageViews;
-        private VkFramebuffer[] _framebuffers;
-
         public VkSwapchainKHR Handle;
         public int ImageCount => _swapChainImageViews.Length;
         public VkRenderPass RenderPass;
-        public VkExtent2D Extent => _extent;
-        public VkFramebuffer[] Framebuffers => _framebuffers;
+        public VkExtent2D Extent { get; }
+        public VkFramebuffer[] Framebuffers { get; }
 
-        public Swapchain(GraphicsDevice device, Window window)
+        public Swapchain(GraphicsDevice device, Window? window)
         {
             Device = device;
             Window = window;
@@ -27,7 +24,7 @@ namespace Vortice
 
             VkSurfaceFormatKHR surfaceFormat = ChooseSwapSurfaceFormat(swapChainSupport.Formats);
             VkPresentModeKHR presentMode = ChooseSwapPresentMode(swapChainSupport.PresentModes);
-            _extent = ChooseSwapExtent(swapChainSupport.Capabilities);
+            Extent = ChooseSwapExtent(swapChainSupport.Capabilities);
 
             CreateRenderPass(surfaceFormat.format);
 
@@ -45,7 +42,7 @@ namespace Vortice
                 minImageCount = imageCount,
                 imageFormat = surfaceFormat.format,
                 imageColorSpace = surfaceFormat.colorSpace,
-                imageExtent = _extent,
+                imageExtent = Extent,
                 imageArrayLayers = 1,
                 imageUsage = VkImageUsageFlags.ColorAttachment,
                 imageSharingMode = VkSharingMode.Exclusive,
@@ -57,11 +54,11 @@ namespace Vortice
             };
 
             vkCreateSwapchainKHR(device.VkDevice, &createInfo, null, out Handle).CheckResult();
-            var swapChainImages = vkGetSwapchainImagesKHR(device.VkDevice, Handle);
+            ReadOnlySpan<VkImage> swapChainImages = vkGetSwapchainImagesKHR(device.VkDevice, Handle);
             _swapChainImageViews = new VkImageView[swapChainImages.Length];
-            _framebuffers = new VkFramebuffer[swapChainImages.Length];
+            Framebuffers = new VkFramebuffer[swapChainImages.Length];
 
-            for (var i = 0; i < swapChainImages.Length; i++)
+            for (int i = 0; i < swapChainImages.Length; i++)
             {
                 var viewCreateInfo = new VkImageViewCreateInfo(
                     swapChainImages[i],
@@ -72,20 +69,20 @@ namespace Vortice
                     );
 
                 vkCreateImageView(Device.VkDevice, &viewCreateInfo, null, out _swapChainImageViews[i]).CheckResult();
-                vkCreateFramebuffer(Device.VkDevice, RenderPass, new[] { _swapChainImageViews[i] }, _extent.width, _extent.height, 1u, out _framebuffers[i]);
+                vkCreateFramebuffer(Device.VkDevice, RenderPass, new[] { _swapChainImageViews[i] }, Extent.width, Extent.height, 1u, out Framebuffers[i]);
             }
         }
 
         public void Dispose()
         {
-            for (var i = 0; i < _swapChainImageViews.Length; i++)
+            for (int i = 0; i < _swapChainImageViews.Length; i++)
             {
                 vkDestroyImageView(Device, _swapChainImageViews[i], null);
             }
 
-            for (var i = 0; i < _framebuffers.Length; i++)
+            for (int i = 0; i < Framebuffers.Length; i++)
             {
-                vkDestroyFramebuffer(Device, _framebuffers[i], null);
+                vkDestroyFramebuffer(Device, Framebuffers[i], null);
             }
 
             vkDestroyRenderPass(Device, RenderPass, null);
@@ -171,10 +168,12 @@ namespace Vortice
             }
             else
             {
-                VkExtent2D actualExtent = Window.Extent;
+                VkExtent2D actualExtent = Window!.Extent;
 
-                actualExtent.width = Math.Max(capabilities.minImageExtent.width, Math.Min(capabilities.maxImageExtent.width, actualExtent.width));
-                actualExtent.height = Math.Max(capabilities.minImageExtent.height, Math.Min(capabilities.maxImageExtent.height, actualExtent.height));
+                actualExtent = new VkExtent2D(
+                    Math.Max(capabilities.minImageExtent.width, Math.Min(capabilities.maxImageExtent.width, actualExtent.width)),
+                    Math.Max(capabilities.minImageExtent.height, Math.Min(capabilities.maxImageExtent.height, actualExtent.height))
+                    );
 
                 return actualExtent;
             }
@@ -201,7 +200,7 @@ namespace Vortice
 
             // iterate over the list of available surface format and
             // check for the presence of VK_FORMAT_B8G8R8A8_UNORM
-            foreach (var availableFormat in availableFormats)
+            foreach (VkSurfaceFormatKHR availableFormat in availableFormats)
             {
                 if (availableFormat.format == VkFormat.B8G8R8A8UNorm)
                 {
@@ -214,7 +213,7 @@ namespace Vortice
 
         private static VkPresentModeKHR ChooseSwapPresentMode(ReadOnlySpan<VkPresentModeKHR> availablePresentModes)
         {
-            foreach (var availablePresentMode in availablePresentModes)
+            foreach (VkPresentModeKHR availablePresentMode in availablePresentModes)
             {
                 if (availablePresentMode == VkPresentModeKHR.Mailbox)
                 {

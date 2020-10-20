@@ -8,8 +8,6 @@
 // ------------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 
 namespace Vortice.Vulkan
 {
@@ -1793,6 +1791,20 @@ namespace Vortice.Vulkan
 			throw new NotImplementedException();
 		}
 
+		private static IntPtr vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr;
+		[Calli]
+		public static VkResult vkGetPhysicalDeviceFragmentShadingRatesKHR(VkPhysicalDevice physicalDevice, uint* fragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR* fragmentShadingRates)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdSetFragmentShadingRateKHR_ptr;
+		[Calli]
+		public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D* fragmentSize, VkFragmentShadingRateCombinerOpKHR combinerOps)
+		{
+			throw new NotImplementedException();
+		}
+
 		private static IntPtr vkGetBufferDeviceAddressKHR_ptr;
 		[Calli]
 		public static IntPtr vkGetBufferDeviceAddressKHR(VkDevice device, VkBufferDeviceAddressInfo* info)
@@ -2979,6 +2991,7 @@ namespace Vortice.Vulkan
 			vkGetPhysicalDeviceDisplayPlaneProperties2KHR_ptr = load(context, "vkGetPhysicalDeviceDisplayPlaneProperties2KHR");
 			vkGetDisplayModeProperties2KHR_ptr = load(context, "vkGetDisplayModeProperties2KHR");
 			vkGetDisplayPlaneCapabilities2KHR_ptr = load(context, "vkGetDisplayPlaneCapabilities2KHR");
+			vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr = load(context, "vkGetPhysicalDeviceFragmentShadingRatesKHR");
 			vkCreateDebugReportCallbackEXT_ptr = load(context, "vkCreateDebugReportCallbackEXT");
 			vkDestroyDebugReportCallbackEXT_ptr = load(context, "vkDestroyDebugReportCallbackEXT");
 			vkDebugReportMessageEXT_ptr = load(context, "vkDebugReportMessageEXT");
@@ -3203,6 +3216,7 @@ namespace Vortice.Vulkan
 			vkGetSemaphoreCounterValueKHR_ptr = load(context, "vkGetSemaphoreCounterValueKHR");
 			vkWaitSemaphoresKHR_ptr = load(context, "vkWaitSemaphoresKHR");
 			vkSignalSemaphoreKHR_ptr = load(context, "vkSignalSemaphoreKHR");
+			vkCmdSetFragmentShadingRateKHR_ptr = load(context, "vkCmdSetFragmentShadingRateKHR");
 			vkGetBufferDeviceAddressKHR_ptr = load(context, "vkGetBufferDeviceAddressKHR");
 			vkGetBufferOpaqueCaptureAddressKHR_ptr = load(context, "vkGetBufferOpaqueCaptureAddressKHR");
 			vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr = load(context, "vkGetDeviceMemoryOpaqueCaptureAddressKHR");

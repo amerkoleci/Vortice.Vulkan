@@ -21,12 +21,6 @@ namespace Vortice.Vulkan
         public IntPtr hwnd;
     }
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public unsafe delegate VkResult vkCreateWin32SurfaceKHRDelegate(VkInstance instance, VkWin32SurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, out VkSurfaceKHR pSurface);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public unsafe delegate VkBool32 vkGetPhysicalDeviceWin32PresentationSupportKHRDelegate(VkPhysicalDevice physicalDevice, uint queueFamilyIndex);
-
     public static partial class Vulkan
     {
         /// <summary>
@@ -34,16 +28,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public static readonly VkString KHRWin32SurfaceExtensionName = "VK_KHR_win32_surface";
 
-        private static vkCreateWin32SurfaceKHRDelegate vkCreateWin32SurfaceKHR_ptr;
+        private static IntPtr vkCreateWin32SurfaceKHR_ptr;
+        [Calli]
         public static unsafe VkResult vkCreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, out VkSurfaceKHR pSurface)
         {
-            return vkCreateWin32SurfaceKHR_ptr(instance, pCreateInfo, pAllocator, out pSurface);
+            throw new NotImplementedException();
         }
 
-        private static vkGetPhysicalDeviceWin32PresentationSupportKHRDelegate vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr;
+        private static IntPtr vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr;
+        [Calli]
         public static unsafe VkBool32 vkGetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex)
         {
-            return vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex);
+            throw new NotImplementedException();
         }
     }
 }

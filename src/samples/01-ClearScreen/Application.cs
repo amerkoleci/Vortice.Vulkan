@@ -12,8 +12,7 @@ namespace Vortice
 {
     public abstract class Application : IDisposable
     {
-        internal static readonly string WndClassName = "VorticeWindow";
-        private WNDPROC _wndProc;
+        private WNDPROC? _wndProc;
 
         private bool _paused;
 
@@ -23,7 +22,7 @@ namespace Vortice
 
         public abstract string Name { get; }
 
-        public Window MainWindow { get; private set; }
+        public Window? MainWindow { get; private set; }
 
         public virtual void Dispose()
         {
@@ -107,7 +106,7 @@ namespace Vortice
                 CursorHandle = LoadCursor(IntPtr.Zero, SystemCursor.IDC_ARROW),
                 BackgroundBrushHandle = IntPtr.Zero,
                 IconHandle = IntPtr.Zero,
-                ClassName = WndClassName,
+                ClassName = Window.WndClassName,
             };
 
             var atom = RegisterClassEx(ref wndClassEx);

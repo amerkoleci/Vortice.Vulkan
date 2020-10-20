@@ -2,13 +2,15 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
+using System.Globalization;
+using System.Text;
 
 namespace Vortice.Vulkan
 {
     /// <summary>
     /// Structure specifying a two-dimensional subregion.
     /// </summary>
-    public partial struct VkRect2D : IEquatable<VkRect2D>
+    public partial struct VkRect2D : IEquatable<VkRect2D>, IFormattable
     {
         /// <summary>
         /// An <see cref="VkRect2D"/> with all of its components set to zero.
@@ -85,56 +87,12 @@ namespace Vortice.Vulkan
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="VkRect2D"/> is equal to this instance.
-        /// </summary>
-        /// <param name="other">The <see cref="VkRect2D"/> to compare with this instance.</param>
-        /// <returns>
-        /// <c>true</c> if the specified <see cref="VkRect2D"/> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
-        public bool Equals(ref VkRect2D other) => other.offset.Equals(ref offset) && other.extent.Equals(ref extent);
-
-        /// <summary>
-        /// Determines whether the specified <see cref="VkRect2D"/> is equal to this instance.
-        /// </summary>
-        /// <param name="other">The <see cref="VkRect2D"/> to compare with this instance.</param>
-        /// <returns>
-        /// <c>true</c> if the specified <see cref="VkRect2D"/> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
-        public bool Equals(VkRect2D other) => Equals(ref other);
-
-        /// <summary>
-        /// Determines whether the specified <see cref="object"/> is equal to this instance.
-        /// </summary>
-        /// <param name="obj">The <see cref="object"/> to compare with this instance.</param>
-        /// <returns>
-        /// <c>true</c> if the specified <see cref="object"/> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
-        public override bool Equals(object obj) => obj is VkRect2D extent && Equals(ref extent);
-
-        /// <summary>
-        /// Returns the hash code for this instance.
-        /// </summary>
-        /// <returns>The hash code.</returns>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = offset.GetHashCode();
-                hashCode = (hashCode * 397) ^ extent.GetHashCode();
-                return hashCode;
-            }
-        }
-
-        /// <inheritdoc/>
-        public override string ToString() => $"{{X={offset.x}, Y={offset.y}, Width={extent.width}, Height={extent.height}}}";
-
-        /// <summary>
         /// Returns a boolean indicating whether the two given rects are equal.
         /// </summary>
         /// <param name="left">The first rect to compare.</param>
         /// <param name="right">The second rect to compare.</param>
         /// <returns><c>true</c> if the rects are equal; <c>false</c> otherwise.</returns>
-        public static bool operator ==(VkRect2D left, VkRect2D right) => left.Equals(ref right);
+        public static bool operator ==(VkRect2D left, VkRect2D right) => left.Equals(right);
 
         /// <summary>
         /// Returns a boolean indicating whether the two given rects are not equal.
@@ -144,6 +102,53 @@ namespace Vortice.Vulkan
         /// <returns>
         /// <c>true</c> if the rects are not equal; <c>false</c> if they are equal.
         /// </returns>
-        public static bool operator !=(VkRect2D left, VkRect2D right) => !left.Equals(ref right);
+        public static bool operator !=(VkRect2D left, VkRect2D right) => !left.Equals(right);
+
+        /// <summary>
+        /// Determines whether the specified <see cref="VkRect2D"/> is equal to this instance.
+        /// </summary>
+        /// <param name="other">The <see cref="VkRect2D"/> to compare with this instance.</param>
+        /// <returns>
+        /// <c>true</c> if the specified <see cref="VkRect2D"/> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public bool Equals(VkRect2D other) => other.offset.Equals(offset) && other.extent.Equals(extent);
+
+        /// <summary>
+        /// Determines whether the specified <see cref="object"/> is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="object"/> to compare with this instance.</param>
+        /// <returns>
+        /// <c>true</c> if the specified <see cref="object"/> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public override bool Equals(object? obj) => obj is VkRect2D extent && Equals(extent);
+
+        /// <inheritdoc/>
+        public override int GetHashCode()
+        {
+            var hashCode = new HashCode();
+            {
+                hashCode.Add(offset);
+                hashCode.Add(extent);
+            }
+            return hashCode.ToHashCode();
+        }
+
+
+
+        /// <inheritdoc/>
+        public override string ToString() => ToString(format: null, formatProvider: null);
+
+        /// <inheritdoc />
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            string? separator = NumberFormatInfo.GetInstance(formatProvider).NumberGroupSeparator;
+
+            return new StringBuilder()
+                .Append('<')
+                .Append(offset.ToString(format, formatProvider)).Append(separator).Append(' ')
+                .Append(extent.ToString(format, formatProvider))
+                .Append('>')
+                .ToString();
+        }
     }
 }

@@ -373,7 +373,6 @@ namespace Vortice.Vulkan
 		PhysicalDeviceShaderSmBuiltinsFeaturesNV = 1000154000,
 		PhysicalDeviceShaderSmBuiltinsPropertiesNV = 1000154001,
 		DrmFormatModifierPropertiesListEXT = 1000158000,
-		DrmFormatModifierPropertiesEXT = 1000158001,
 		PhysicalDeviceImageDrmFormatModifierInfoEXT = 1000158002,
 		ImageDrmFormatModifierListCreateInfoEXT = 1000158003,
 		ImageDrmFormatModifierExplicitCreateInfoEXT = 1000158004,
@@ -433,6 +432,7 @@ namespace Vortice.Vulkan
 		DisplayNativeHdrSurfaceCapabilitiesAMD = 1000213000,
 		SwapchainDisplayNativeHdrCreateInfoAMD = 1000213001,
 		ImagepipeSurfaceCreateInfoFuchsia = 1000214000,
+		PhysicalDeviceShaderTerminateInvocationFeaturesKHR = 1000215000,
 		MetalSurfaceCreateInfoEXT = 1000217000,
 		PhysicalDeviceFragmentDensityMapFeaturesEXT = 1000218000,
 		PhysicalDeviceFragmentDensityMapPropertiesEXT = 1000218001,
@@ -440,6 +440,11 @@ namespace Vortice.Vulkan
 		PhysicalDeviceSubgroupSizeControlPropertiesEXT = 1000225000,
 		PipelineShaderStageRequiredSubgroupSizeCreateInfoEXT = 1000225001,
 		PhysicalDeviceSubgroupSizeControlFeaturesEXT = 1000225002,
+		FragmentShadingRateAttachmentInfoKHR = 1000226000,
+		PipelineFragmentShadingRateStateCreateInfoKHR = 1000226001,
+		PhysicalDeviceFragmentShadingRatePropertiesKHR = 1000226002,
+		PhysicalDeviceFragmentShadingRateFeaturesKHR = 1000226003,
+		PhysicalDeviceFragmentShadingRateKHR = 1000226004,
 		PhysicalDeviceShaderCoreProperties2AMD = 1000227000,
 		PhysicalDeviceCoherentMemoryFeaturesAMD = 1000229000,
 		PhysicalDeviceShaderImageAtomicInt64FeaturesEXT = 1000234000,
@@ -490,6 +495,9 @@ namespace Vortice.Vulkan
 		PhysicalDeviceTexelBufferAlignmentPropertiesEXT = 1000281001,
 		CommandBufferInheritanceRenderPassTransformInfoQcom = 1000282000,
 		RenderPassTransformBeginInfoQcom = 1000282001,
+		PhysicalDeviceDeviceMemoryReportFeaturesEXT = 1000284000,
+		DeviceDeviceMemoryReportCreateInfoEXT = 1000284001,
+		DeviceMemoryReportCallbackDataEXT = 1000284002,
 		PhysicalDeviceRobustness2FeaturesEXT = 1000286000,
 		PhysicalDeviceRobustness2PropertiesEXT = 1000286001,
 		SamplerCustomBorderColorCreateInfoEXT = 1000287000,
@@ -658,6 +666,7 @@ namespace Vortice.Vulkan
 		FragmentDensityMapOptimalEXT = 1000218000,
 		DepthReadOnlyStencilAttachmentOptimalKHR = DepthReadOnlyStencilAttachmentOptimal,
 		DepthAttachmentStencilReadOnlyOptimalKHR = DepthAttachmentStencilReadOnlyOptimal,
+		FragmentShadingRateAttachmentOptimalKHR = ShadingRateOptimalNV,
 		DepthAttachmentOptimalKHR = DepthAttachmentOptimal,
 		DepthReadOnlyOptimalKHR = DepthReadOnlyOptimal,
 		StencilAttachmentOptimalKHR = StencilAttachmentOptimal,
@@ -1191,6 +1200,7 @@ namespace Vortice.Vulkan
 		ViewportShadingRatePaletteNV = 1000164004,
 		ViewportCoarseSampleOrderNV = 1000164006,
 		ExclusiveScissorNV = 1000205001,
+		FragmentShadingRateKHR = 1000226000,
 		LineStippleEXT = 1000259000,
 		CullModeEXT = 1000267000,
 		FrontFaceEXT = 1000267001,
@@ -1404,6 +1414,7 @@ namespace Vortice.Vulkan
 		CommandPreprocessWriteNV = 262144,
 		AccelerationStructureReadNV = AccelerationStructureReadKHR,
 		AccelerationStructureWriteNV = AccelerationStructureWriteKHR,
+		FragmentShadingRateAttachmentReadKHR = ShadingRateImageReadNV,
 	}
 
 	[Flags]
@@ -1456,6 +1467,7 @@ namespace Vortice.Vulkan
 		SampledImageFilterCubicImg = 8192,
 		AccelerationStructureVertexBufferKHR = 536870912,
 		FragmentDensityMapEXT = 16777216,
+		FragmentShadingRateAttachmentKHR = 1073741824,
 		TransferSrcKHR = TransferSrc,
 		TransferDstKHR = TransferDst,
 		SampledImageFilterMinmaxEXT = SampledImageFilterMinmax,
@@ -1523,6 +1535,7 @@ namespace Vortice.Vulkan
 		InputAttachment = 128,
 		ShadingRateImageNV = 256,
 		FragmentDensityMapEXT = 512,
+		FragmentShadingRateAttachmentKHR = ShadingRateImageNV,
 	}
 
 	[Flags]
@@ -1598,6 +1611,7 @@ namespace Vortice.Vulkan
 		CommandPreprocessNV = 131072,
 		RayTracingShaderNV = RayTracingShaderKHR,
 		AccelerationStructureBuildNV = AccelerationStructureBuildKHR,
+		FragmentShadingRateAttachmentKHR = ShadingRateImageNV,
 	}
 
 	[Flags]
@@ -2333,6 +2347,15 @@ namespace Vortice.Vulkan
 		None = 0,
 	}
 
+	public enum VkFragmentShadingRateCombinerOpKHR
+	{
+		Keep = 0,
+		Replace = 1,
+		Min = 2,
+		Max = 3,
+		Mul = 4,
+	}
+
 	public enum VkPipelineExecutableStatisticFormatKHR
 	{
 		Bool32 = 0,
@@ -2802,6 +2825,15 @@ namespace Vortice.Vulkan
 		UnorderedSequences = 4,
 	}
 
+	public enum VkDeviceMemoryReportEventTypeEXT
+	{
+		Allocate = 0,
+		Free = 1,
+		Import = 2,
+		Unimport = 3,
+		AllocationFailed = 4,
+	}
+
 	[Flags]
 	public enum VkPrivateDataSlotCreateFlagsEXT
 	{
@@ -3132,6 +3164,12 @@ namespace Vortice.Vulkan
 
 	[Flags]
 	public enum VkHeadlessSurfaceCreateFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkDeviceMemoryReportFlagsEXT
 	{
 		None = 0,
 	}

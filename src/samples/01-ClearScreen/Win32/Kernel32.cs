@@ -20,7 +20,7 @@ namespace Vortice.Win32
         public static extern bool FreeLibrary([In] IntPtr hModule);
 
         [DllImport(Name)]
-        public static extern IntPtr GetModuleHandle(string lpModuleName);
+        public static extern IntPtr GetModuleHandle(string? lpModuleName);
 
         [DllImport(Name)]
         public static extern IntPtr GetCurrentProcess();

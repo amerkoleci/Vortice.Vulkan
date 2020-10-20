@@ -109,7 +109,7 @@ namespace Generator
                         || cppMacro.Name.Equals("VK_TRUE", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.Equals("VK_FALSE", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.Equals("VK_MAKE_VERSION", StringComparison.OrdinalIgnoreCase)
-                        || cppMacro.Name.StartsWith("VK_HEADER_VERSION", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.StartsWith("VK_ENABLE_BETA_EXTENSIONS", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.StartsWith("VK_VERSION_", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.StartsWith("VK_API_VERSION_", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.Equals("VK_NULL_HANDLE", StringComparison.OrdinalIgnoreCase)
@@ -121,9 +121,10 @@ namespace Generator
                         continue;
                     }
 
-                    var csName = GetPrettyEnumName(cppMacro.Name, "VK_");
+                    string csName = GetPrettyEnumName(cppMacro.Name, "VK_");
 
-                    var csDataType = "string";
+                    string modifier = "const";
+                    string csDataType = "string";
                     var macroValue = NormalizeEnumValue(cppMacro.Value);
                     if (macroValue.EndsWith("F", StringComparison.OrdinalIgnoreCase))
                     {
@@ -162,15 +163,22 @@ namespace Generator
                     AddCsMapping(cppMacro.Name, csName);
 
                     writer.WriteLine("/// <summary>");
+                    if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE")
+                    {
+                        modifier = "static readonly";
+                        csDataType = "VkVersion";
+                        
+                    }
+
                     writer.WriteLine($"/// {cppMacro.Name} = {cppMacro.Value}");
                     writer.WriteLine("/// </summary>");
-                    //if (isString)
-                    //{
-                    //    writer.WriteLine($"public static readonly {csDataType} {csName} = {macroValue};");
-                    //}
-                    //else
+                    if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE")
                     {
-                        writer.WriteLine($"public const {csDataType} {csName} = {macroValue};");
+                        writer.WriteLine($"public {modifier} {csDataType} {csName} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, HeaderVersion);");
+                    }
+                    else
+                    {
+                        writer.WriteLine($"public {modifier} {csDataType} {csName} = {macroValue};");
                     }
                 }
             }
@@ -186,7 +194,7 @@ namespace Generator
 
         private static string GetCsCleanName(string name)
         {
-            if (s_csNameMappings.TryGetValue(name, out string mappedName))
+            if (s_csNameMappings.TryGetValue(name, out string? mappedName))
             {
                 return GetCsCleanName(mappedName);
             }
@@ -198,7 +206,7 @@ namespace Generator
             return name;
         }
 
-        private static string GetCsTypeName(CppType type, bool isPointer = false)
+        private static string GetCsTypeName(CppType? type, bool isPointer = false)
         {
             if (type is CppPrimitiveType primitiveType)
             {

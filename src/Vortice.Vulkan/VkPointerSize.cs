@@ -12,7 +12,7 @@ namespace Vortice.Vulkan
     /// <para>Equivalent to C/C++ size_t type.</para>
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct VkPointerSize : IEquatable<VkPointerSize>
+    public readonly struct VkPointerSize : IEquatable<VkPointerSize>
     {
         private readonly UIntPtr _value;
 

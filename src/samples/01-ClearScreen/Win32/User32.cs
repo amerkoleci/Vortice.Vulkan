@@ -392,7 +392,7 @@ namespace Vortice.Win32
 
     internal static class User32
     {
-        public const string LibraryName = "user32.dll";
+        public const string LibraryName = "user32";
 
         [DllImport(LibraryName, CharSet = CharSet.Unicode)]
         public static extern ushort RegisterClassEx([In] ref WNDCLASSEX lpwcx);
@@ -487,18 +487,14 @@ namespace Vortice.Win32
         [DllImport(LibraryName, ExactSpelling = true)]
         public static extern bool AdjustWindowRectEx([In] [Out] ref RawRect lpRect, WindowStyles dwStyle, bool bMenu, WindowExStyles exStyle);
 
-        [DllImport(LibraryName, CharSet = CharSet.Unicode)]
-        public static extern IntPtr CreateWindowEx(
-            int exStyle,
-            string className,
-            string windowName,
-            int style,
-            int x, int y,
-            int width, int height,
-            IntPtr hwndParent,
-            IntPtr Menu,
-            IntPtr Instance,
-            IntPtr pvParam);
+        [DllImport(LibraryName, ExactSpelling = true)]
+        public unsafe static extern IntPtr CreateWindowExW(
+            uint exStyle,
+            ushort* className,
+            ushort* windowName,
+            uint style,
+            int x, int y, int width, int height,
+            IntPtr hWndParent, IntPtr hMenu, IntPtr hInstance, void* lpParam);
 
         [return: MarshalAs(UnmanagedType.Bool)]
         [DllImport(LibraryName, ExactSpelling = true)]

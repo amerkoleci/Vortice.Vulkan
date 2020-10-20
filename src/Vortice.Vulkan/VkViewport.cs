@@ -8,7 +8,7 @@ namespace Vortice.Vulkan
     /// <summary>
     /// Structure specifying a viewport.
     /// </summary>
-    public partial struct VkViewport : IEquatable<VkViewport>
+    public readonly partial struct VkViewport : IEquatable<VkViewport>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VkViewport"/> struct.
@@ -94,22 +94,19 @@ namespace Vortice.Vulkan
         /// </returns>
         public override bool Equals(object obj) => obj is VkViewport viewport && Equals(ref viewport);
 
-        /// <summary>
-        /// Returns the hash code for this instance.
-        /// </summary>
-        /// <returns>The hash code.</returns>
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
-            unchecked
+            var hashCode = new HashCode();
             {
-                int hashCode = x.GetHashCode();
-                hashCode = (hashCode * 397) ^ y.GetHashCode();
-                hashCode = (hashCode * 397) ^ width.GetHashCode();
-                hashCode = (hashCode * 397) ^ height.GetHashCode();
-                hashCode = (hashCode * 397) ^ minDepth.GetHashCode();
-                hashCode = (hashCode * 397) ^ maxDepth.GetHashCode();
-                return hashCode;
+                hashCode.Add(x);
+                hashCode.Add(y);
+                hashCode.Add(width);
+                hashCode.Add(height);
+                hashCode.Add(minDepth);
+                hashCode.Add(maxDepth);
             }
+            return hashCode.ToHashCode();
         }
 
         /// <inheritdoc/>

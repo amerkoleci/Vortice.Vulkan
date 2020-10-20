@@ -117,9 +117,7 @@ namespace Generator
         {
             // Generate Functions
             using var writer = new CodeWriter(Path.Combine(outputPath, "Commands.cs"),
-                "System",
-                "System.Diagnostics",
-                "System.Runtime.InteropServices"
+                "System"
                 );
 
             var commands = new Dictionary<string, CppFunction>();
@@ -297,7 +295,7 @@ namespace Generator
                 var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
                 var paramCsName = GetParameterName(cppParameter.Name);
 
-                if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out var cppTypeDeclaration))
+                if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
                 {
                     argumentBuilder.Append("out ");
                     paramCsTypeName = GetCsTypeName(cppTypeDeclaration, false);
@@ -333,7 +331,7 @@ namespace Generator
             return name;
         }
 
-        private static bool CanBeUsedAsOutput(CppType type, out CppTypeDeclaration elementTypeDeclaration)
+        private static bool CanBeUsedAsOutput(CppType type, out CppTypeDeclaration? elementTypeDeclaration)
         {
             if (type is CppPointerType pointerType)
             {

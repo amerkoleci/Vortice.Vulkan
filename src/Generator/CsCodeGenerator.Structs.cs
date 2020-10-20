@@ -36,10 +36,10 @@ namespace Generator
                     continue;
                 }
 
-                var isUnion = cppClass.ClassKind == CppClassKind.Union;
+                bool isUnion = cppClass.ClassKind == CppClassKind.Union;
                 Console.WriteLine($"Generating struct {cppClass.Name}");
 
-                var csName = cppClass.Name;
+                string csName = cppClass.Name;
                 if (isUnion)
                 {
                     writer.WriteLine("[StructLayout(LayoutKind.Explicit)]");
@@ -49,7 +49,21 @@ namespace Generator
                     writer.WriteLine("[StructLayout(LayoutKind.Sequential)]");
                 }
 
-                using (writer.PushBlock($"public partial struct {csName}"))
+                bool isReadOnly = false;
+                string modifier = "partial";
+                if (csName == "VkOffset2D"
+                    || csName == "VkOffset3D"
+                    || csName == "VkExtent2D"
+                    || csName == "VkExtent3D"
+                    || csName == "VkRect2D"
+                    || csName == "VkViewport"
+                    || csName == "VkClearDepthStencilValue")
+                {
+                    modifier = "readonly partial";
+                    isReadOnly = true;
+                }
+
+                using (writer.PushBlock($"public {modifier} struct {csName}"))
                 {
                     if (generateSizeOfStructs && cppClass.SizeOf > 0)
                     {
@@ -60,9 +74,9 @@ namespace Generator
                         writer.WriteLine();
                     }
 
-                    foreach (var cppField in cppClass.Fields)
+                    foreach (CppField cppField in cppClass.Fields)
                     {
-                        var csFieldName = NormalizeFieldName(cppField.Name);
+                        string csFieldName = NormalizeFieldName(cppField.Name);
 
                         if (isUnion)
                         {
@@ -71,7 +85,7 @@ namespace Generator
 
                         if (cppField.Type is CppArrayType arrayType)
                         {
-                            var canUseFixed = false;
+                            bool canUseFixed = false;
                             if (arrayType.ElementType is CppPrimitiveType)
                             {
                                 canUseFixed = true;
@@ -104,7 +118,7 @@ namespace Generator
                         }
                         else
                         {
-                            var csFieldType = GetCsTypeName(cppField.Type, false);
+                            string csFieldType = GetCsTypeName(cppField.Type, false);
                             if (csFieldName.Equals("specVersion", StringComparison.OrdinalIgnoreCase) ||
                                 csFieldName.Equals("applicationVersion", StringComparison.OrdinalIgnoreCase) ||
                                 csFieldName.Equals("engineVersion", StringComparison.OrdinalIgnoreCase) ||
@@ -113,13 +127,13 @@ namespace Generator
                                 csFieldType = "VkVersion";
                             }
 
-                            var unsafePrefix = string.Empty;
+                            string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
                             if (csFieldType.EndsWith('*'))
                             {
-                                unsafePrefix = "unsafe ";
+                                fieldPrefix += "unsafe ";
                             }
 
-                            writer.WriteLine($"public {unsafePrefix}{csFieldType} {csFieldName};");
+                            writer.WriteLine($"public {fieldPrefix}{csFieldType} {csFieldName};");
                         }
                     }
                 }

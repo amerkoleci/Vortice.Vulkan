@@ -15,9 +15,13 @@ namespace Vortice.Vulkan
 	public static partial class Vulkan
 	{
 		/// <summary>
-		/// VK_ENABLE_BETA_EXTENSIONS = 1
+		/// VK_HEADER_VERSION = 158
 		/// </summary>
-		public const uint EnableBetaExtensions = 1;
+		public const uint HeaderVersion = 158;
+		/// <summary>
+		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_VERSION(1,2,VK_HEADER_VERSION)
+		/// </summary>
+		public static readonly VkVersion HeaderVersionComplete = new VkVersion(1, 2, HeaderVersion);
 		/// <summary>
 		/// VK_ATTACHMENT_UNUSED = (~0U)
 		/// </summary>
@@ -734,6 +738,30 @@ namespace Vortice.Vulkan
 		/// VK_KHR_VULKAN_MEMORY_MODEL_EXTENSION_NAME = "VK_KHR_vulkan_memory_model"
 		/// </summary>
 		public const string KHRVulkanMemoryModelExtensionName = "VK_KHR_vulkan_memory_model";
+		/// <summary>
+		/// VK_KHR_shader_terminate_invocation = 1
+		/// </summary>
+		public const uint KHRShaderTerminateInvocation = 1;
+		/// <summary>
+		/// VK_KHR_SHADER_TERMINATE_INVOCATION_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRShaderTerminateInvocationSpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_SHADER_TERMINATE_INVOCATION_EXTENSION_NAME = "VK_KHR_shader_terminate_invocation"
+		/// </summary>
+		public const string KHRShaderTerminateInvocationExtensionName = "VK_KHR_shader_terminate_invocation";
+		/// <summary>
+		/// VK_KHR_fragment_shading_rate = 1
+		/// </summary>
+		public const uint KHRFragmentShadingRate = 1;
+		/// <summary>
+		/// VK_KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRFragmentShadingRateSpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME = "VK_KHR_fragment_shading_rate"
+		/// </summary>
+		public const string KHRFragmentShadingRateExtensionName = "VK_KHR_fragment_shading_rate";
 		/// <summary>
 		/// VK_KHR_spirv_1_4 = 1
 		/// </summary>
@@ -2258,6 +2286,18 @@ namespace Vortice.Vulkan
 		/// VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform"
 		/// </summary>
 		public const string QcomRenderPassTransformExtensionName = "VK_QCOM_render_pass_transform";
+		/// <summary>
+		/// VK_EXT_device_memory_report = 1
+		/// </summary>
+		public const uint EXTDeviceMemoryReport = 1;
+		/// <summary>
+		/// VK_EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTDeviceMemoryReportSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_DEVICE_MEMORY_REPORT_EXTENSION_NAME = "VK_EXT_device_memory_report"
+		/// </summary>
+		public const string EXTDeviceMemoryReportExtensionName = "VK_EXT_device_memory_report";
 		/// <summary>
 		/// VK_EXT_robustness2 = 1
 		/// </summary>
