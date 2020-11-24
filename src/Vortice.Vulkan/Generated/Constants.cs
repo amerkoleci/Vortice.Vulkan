@@ -15,9 +15,9 @@ namespace Vortice.Vulkan
 	public static partial class Vulkan
 	{
 		/// <summary>
-		/// VK_HEADER_VERSION = 158
+		/// VK_HEADER_VERSION = 162
 		/// </summary>
-		public const uint HeaderVersion = 158;
+		public const uint HeaderVersion = 162;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_VERSION(1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -823,6 +823,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string KHRBufferDeviceAddressExtensionName = "VK_KHR_buffer_device_address";
 		/// <summary>
+		/// VK_KHR_deferred_host_operations = 1
+		/// </summary>
+		public const uint KHRDeferredHostOperations = 1;
+		/// <summary>
+		/// VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION = 4
+		/// </summary>
+		public const uint KHRDeferredHostOperationsSpecVersion = 4;
+		/// <summary>
+		/// VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations"
+		/// </summary>
+		public const string KHRDeferredHostOperationsExtensionName = "VK_KHR_deferred_host_operations";
+		/// <summary>
 		/// VK_KHR_pipeline_executable_properties = 1
 		/// </summary>
 		public const uint KHRPipelineExecutableProperties = 1;
@@ -834,6 +846,18 @@ namespace Vortice.Vulkan
 		/// VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME = "VK_KHR_pipeline_executable_properties"
 		/// </summary>
 		public const string KHRPipelineExecutablePropertiesExtensionName = "VK_KHR_pipeline_executable_properties";
+		/// <summary>
+		/// VK_KHR_pipeline_library = 1
+		/// </summary>
+		public const uint KHRPipelineLibrary = 1;
+		/// <summary>
+		/// VK_KHR_PIPELINE_LIBRARY_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRPipelineLibrarySpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_KHR_pipeline_library"
+		/// </summary>
+		public const string KHRPipelineLibraryExtensionName = "VK_KHR_pipeline_library";
 		/// <summary>
 		/// VK_KHR_shader_non_semantic_info = 1
 		/// </summary>
@@ -2383,6 +2407,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string QcomRenderPassStoreOpsExtensionName = "VK_QCOM_render_pass_store_ops";
 		/// <summary>
+		/// VK_NV_fragment_shading_rate_enums = 1
+		/// </summary>
+		public const uint NVFragmentShadingRateEnums = 1;
+		/// <summary>
+		/// VK_NV_FRAGMENT_SHADING_RATE_ENUMS_SPEC_VERSION = 1
+		/// </summary>
+		public const uint NVFragmentShadingRateEnumsSpecVersion = 1;
+		/// <summary>
+		/// VK_NV_FRAGMENT_SHADING_RATE_ENUMS_EXTENSION_NAME = "VK_NV_fragment_shading_rate_enums"
+		/// </summary>
+		public const string NVFragmentShadingRateEnumsExtensionName = "VK_NV_fragment_shading_rate_enums";
+		/// <summary>
 		/// VK_EXT_fragment_density_map2 = 1
 		/// </summary>
 		public const uint EXTFragmentDensityMap2 = 1;
@@ -2394,6 +2430,18 @@ namespace Vortice.Vulkan
 		/// VK_EXT_FRAGMENT_DENSITY_MAP_2_EXTENSION_NAME = "VK_EXT_fragment_density_map2"
 		/// </summary>
 		public const string EXTFragmentDensityMap2ExtensionName = "VK_EXT_fragment_density_map2";
+		/// <summary>
+		/// VK_QCOM_rotated_copy_commands = 1
+		/// </summary>
+		public const uint QcomRotatedCopyCommands = 1;
+		/// <summary>
+		/// VK_QCOM_rotated_copy_commands_SPEC_VERSION = 0
+		/// </summary>
+		public const uint QcomRotatedCopyCommandsSpecVersion = 0;
+		/// <summary>
+		/// VK_QCOM_rotated_copy_commands_EXTENSION_NAME = "VK_QCOM_rotated_copy_commands"
+		/// </summary>
+		public const string QcomRotatedCopyCommandsExtensionName = "VK_QCOM_rotated_copy_commands";
 		/// <summary>
 		/// VK_EXT_image_robustness = 1
 		/// </summary>
@@ -2418,6 +2466,42 @@ namespace Vortice.Vulkan
 		/// VK_EXT_4444_FORMATS_EXTENSION_NAME = "VK_EXT_4444_formats"
 		/// </summary>
 		public const string EXT4444FormatsExtensionName = "VK_EXT_4444_formats";
+		/// <summary>
+		/// VK_KHR_acceleration_structure = 1
+		/// </summary>
+		public const uint KHRAccelerationStructure = 1;
+		/// <summary>
+		/// VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION = 11
+		/// </summary>
+		public const uint KHRAccelerationStructureSpecVersion = 11;
+		/// <summary>
+		/// VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME = "VK_KHR_acceleration_structure"
+		/// </summary>
+		public const string KHRAccelerationStructureExtensionName = "VK_KHR_acceleration_structure";
+		/// <summary>
+		/// VK_KHR_ray_tracing_pipeline = 1
+		/// </summary>
+		public const uint KHRRayTracingPipeline = 1;
+		/// <summary>
+		/// VK_KHR_RAY_TRACING_PIPELINE_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRRayTracingPipelineSpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_RAY_TRACING_PIPELINE_EXTENSION_NAME = "VK_KHR_ray_tracing_pipeline"
+		/// </summary>
+		public const string KHRRayTracingPipelineExtensionName = "VK_KHR_ray_tracing_pipeline";
+		/// <summary>
+		/// VK_KHR_ray_query = 1
+		/// </summary>
+		public const uint KHRRayQuery = 1;
+		/// <summary>
+		/// VK_KHR_RAY_QUERY_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRRayQuerySpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_RAY_QUERY_EXTENSION_NAME = "VK_KHR_ray_query"
+		/// </summary>
+		public const string KHRRayQueryExtensionName = "VK_KHR_ray_query";
 		/// <summary>
 		/// VK_KHR_android_surface = 1
 		/// </summary>
@@ -2502,41 +2586,5 @@ namespace Vortice.Vulkan
 		/// VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME = "VK_KHR_portability_subset"
 		/// </summary>
 		public const string KHRPortabilitySubsetExtensionName = "VK_KHR_portability_subset";
-		/// <summary>
-		/// VK_KHR_deferred_host_operations = 1
-		/// </summary>
-		public const uint KHRDeferredHostOperations = 1;
-		/// <summary>
-		/// VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION = 3
-		/// </summary>
-		public const uint KHRDeferredHostOperationsSpecVersion = 3;
-		/// <summary>
-		/// VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations"
-		/// </summary>
-		public const string KHRDeferredHostOperationsExtensionName = "VK_KHR_deferred_host_operations";
-		/// <summary>
-		/// VK_KHR_pipeline_library = 1
-		/// </summary>
-		public const uint KHRPipelineLibrary = 1;
-		/// <summary>
-		/// VK_KHR_PIPELINE_LIBRARY_SPEC_VERSION = 1
-		/// </summary>
-		public const uint KHRPipelineLibrarySpecVersion = 1;
-		/// <summary>
-		/// VK_KHR_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_KHR_pipeline_library"
-		/// </summary>
-		public const string KHRPipelineLibraryExtensionName = "VK_KHR_pipeline_library";
-		/// <summary>
-		/// VK_KHR_ray_tracing = 1
-		/// </summary>
-		public const uint KHRRayTracing = 1;
-		/// <summary>
-		/// VK_KHR_RAY_TRACING_SPEC_VERSION = 8
-		/// </summary>
-		public const uint KHRRayTracingSpecVersion = 8;
-		/// <summary>
-		/// VK_KHR_RAY_TRACING_EXTENSION_NAME = "VK_KHR_ray_tracing"
-		/// </summary>
-		public const string KHRRayTracingExtensionName = "VK_KHR_ray_tracing";
 	}
 }

@@ -30,7 +30,7 @@ namespace Patch
 
         public static void Run(Options opts)
         {
-            string? inputPath = opts.Input;
+            string inputPath = opts.Input!;
             string? outputPath = opts.Output;
             bool copiedToTemp = false;
             if (string.IsNullOrEmpty(outputPath))
@@ -50,7 +50,7 @@ namespace Patch
             {
                 if (copiedToTemp)
                 {
-                    File.Delete(inputPath);
+                    File.Delete(inputPath!);
                 }
             }
         }

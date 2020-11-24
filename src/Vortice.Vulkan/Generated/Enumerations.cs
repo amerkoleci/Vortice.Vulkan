@@ -43,7 +43,6 @@ namespace Vortice.Vulkan
 		ErrorIncompatibleDisplayKHR = -1000003001,
 		ErrorValidationFailedEXT = -1000011001,
 		ErrorInvalidShaderNV = -1000012000,
-		ErrorIncompatibleVersionKHR = -1000150000,
 		ErrorInvalidDrmFormatModifierPlaneLayoutEXT = -1000158000,
 		ErrorNotPermittedEXT = -1000174001,
 		ErrorFullScreenExclusiveModeLostEXT = -1000255000,
@@ -349,26 +348,27 @@ namespace Vortice.Vulkan
 		PhysicalDeviceBlendOperationAdvancedPropertiesEXT = 1000148001,
 		PipelineColorBlendAdvancedStateCreateInfoEXT = 1000148002,
 		PipelineCoverageToColorStateCreateInfoNV = 1000149000,
-		BindAccelerationStructureMemoryInfoKHR = 1000165006,
-		WriteDescriptorSetAccelerationStructureKHR = 1000165007,
+		WriteDescriptorSetAccelerationStructureKHR = 1000150007,
 		AccelerationStructureBuildGeometryInfoKHR = 1000150000,
-		AccelerationStructureCreateGeometryTypeInfoKHR = 1000150001,
 		AccelerationStructureDeviceAddressInfoKHR = 1000150002,
 		AccelerationStructureGeometryAabbsDataKHR = 1000150003,
 		AccelerationStructureGeometryInstancesDataKHR = 1000150004,
 		AccelerationStructureGeometryTrianglesDataKHR = 1000150005,
 		AccelerationStructureGeometryKHR = 1000150006,
-		AccelerationStructureMemoryRequirementsInfoKHR = 1000150008,
-		AccelerationStructureVersionKHR = 1000150009,
+		AccelerationStructureVersionInfoKHR = 1000150009,
 		CopyAccelerationStructureInfoKHR = 1000150010,
 		CopyAccelerationStructureToMemoryInfoKHR = 1000150011,
 		CopyMemoryToAccelerationStructureInfoKHR = 1000150012,
-		PhysicalDeviceRayTracingFeaturesKHR = 1000150013,
-		PhysicalDeviceRayTracingPropertiesKHR = 1000150014,
+		PhysicalDeviceAccelerationStructureFeaturesKHR = 1000150013,
+		PhysicalDeviceAccelerationStructurePropertiesKHR = 1000150014,
+		AccelerationStructureCreateInfoKHR = 1000150017,
+		AccelerationStructureBuildSizesInfoKHR = 1000150020,
+		PhysicalDeviceRayTracingPipelineFeaturesKHR = 1000347000,
+		PhysicalDeviceRayTracingPipelinePropertiesKHR = 1000347001,
 		RayTracingPipelineCreateInfoKHR = 1000150015,
 		RayTracingShaderGroupCreateInfoKHR = 1000150016,
-		AccelerationStructureCreateInfoKHR = 1000150017,
 		RayTracingPipelineInterfaceCreateInfoKHR = 1000150018,
+		PhysicalDeviceRayQueryFeaturesKHR = 1000348013,
 		PipelineCoverageModulationStateCreateInfoNV = 1000152000,
 		PhysicalDeviceShaderSmBuiltinsFeaturesNV = 1000154000,
 		PhysicalDeviceShaderSmBuiltinsPropertiesNV = 1000154001,
@@ -390,6 +390,8 @@ namespace Vortice.Vulkan
 		GeometryNV = 1000165003,
 		GeometryTrianglesNV = 1000165004,
 		GeometryAabbNV = 1000165005,
+		BindAccelerationStructureMemoryInfoNV = 1000165006,
+		WriteDescriptorSetAccelerationStructureNV = 1000165007,
 		AccelerationStructureMemoryRequirementsInfoNV = 1000165008,
 		PhysicalDeviceRayTracingPropertiesNV = 1000165009,
 		RayTracingShaderGroupCreateInfoNV = 1000165011,
@@ -475,7 +477,6 @@ namespace Vortice.Vulkan
 		PhysicalDeviceShaderAtomicFloatFeaturesEXT = 1000260000,
 		PhysicalDeviceIndexTypeUint8FeaturesEXT = 1000265000,
 		PhysicalDeviceExtendedDynamicStateFeaturesEXT = 1000267000,
-		DeferredOperationInfoKHR = 1000268000,
 		PhysicalDevicePipelineExecutablePropertiesFeaturesKHR = 1000269000,
 		PipelineInfoKHR = 1000269001,
 		PipelineExecutablePropertiesKHR = 1000269002,
@@ -510,8 +511,12 @@ namespace Vortice.Vulkan
 		PhysicalDevicePipelineCreationCacheControlFeaturesEXT = 1000297000,
 		PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 		DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
+		PhysicalDeviceFragmentShadingRateEnumsPropertiesNV = 1000326000,
+		PhysicalDeviceFragmentShadingRateEnumsFeaturesNV = 1000326001,
+		PipelineFragmentShadingRateEnumStateCreateInfoNV = 1000326002,
 		PhysicalDeviceFragmentDensityMap2FeaturesEXT = 1000332000,
 		PhysicalDeviceFragmentDensityMap2PropertiesEXT = 1000332001,
+		CopyCommandTransformInfoQcom = 1000333000,
 		PhysicalDeviceImageRobustnessFeaturesEXT = 1000335000,
 		CopyBufferInfo2KHR = 1000337000,
 		CopyImageInfo2KHR = 1000337001,
@@ -608,8 +613,6 @@ namespace Vortice.Vulkan
 		PhysicalDeviceDescriptorIndexingPropertiesEXT = PhysicalDeviceDescriptorIndexingProperties,
 		DescriptorSetVariableDescriptorCountAllocateInfoEXT = DescriptorSetVariableDescriptorCountAllocateInfo,
 		DescriptorSetVariableDescriptorCountLayoutSupportEXT = DescriptorSetVariableDescriptorCountLayoutSupport,
-		BindAccelerationStructureMemoryInfoNV = BindAccelerationStructureMemoryInfoKHR,
-		WriteDescriptorSetAccelerationStructureNV = WriteDescriptorSetAccelerationStructureKHR,
 		PhysicalDeviceMaintenance3PropertiesKHR = PhysicalDeviceMaintenance3Properties,
 		DescriptorSetLayoutSupportKHR = DescriptorSetLayoutSupport,
 		PhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR = PhysicalDeviceShaderSubgroupExtendedTypesFeatures,
@@ -709,15 +712,15 @@ namespace Vortice.Vulkan
 		DisplayModeKHR = 1000002001,
 		DebugReportCallbackEXT = 1000011000,
 		DebugUtilsMessengerEXT = 1000128000,
-		AccelerationStructureKHR = 1000165000,
+		AccelerationStructureKHR = 1000150000,
 		ValidationCacheEXT = 1000160000,
+		AccelerationStructureNV = 1000165000,
 		PerformanceConfigurationINTEL = 1000210000,
 		DeferredOperationKHR = 1000268000,
 		IndirectCommandsLayoutNV = 1000277000,
 		PrivateDataSlotEXT = 1000295000,
 		DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate,
 		SamplerYcbcrConversionKHR = SamplerYcbcrConversion,
-		AccelerationStructureNV = AccelerationStructureKHR,
 	}
 
 	public enum VkVendorId
@@ -1059,10 +1062,10 @@ namespace Vortice.Vulkan
 		Timestamp = 2,
 		TransformFeedbackStreamEXT = 1000028004,
 		PerformanceQueryKHR = 1000116000,
-		AccelerationStructureCompactedSizeKHR = 1000165000,
-		AccelerationStructureSerializationSizeKHR = 1000150000,
+		AccelerationStructureCompactedSizeKHR = 1000150000,
+		AccelerationStructureSerializationSizeKHR = 1000150001,
+		AccelerationStructureCompactedSizeNV = 1000165000,
 		PerformanceQueryINTEL = 1000210000,
-		AccelerationStructureCompactedSizeNV = AccelerationStructureCompactedSizeKHR,
 	}
 
 	public enum VkSharingMode
@@ -1197,6 +1200,7 @@ namespace Vortice.Vulkan
 		ViewportWScalingNV = 1000087000,
 		DiscardRectangleEXT = 1000099000,
 		SampleLocationsEXT = 1000143000,
+		RayTracingPipelineStackSizeKHR = 1000347000,
 		ViewportShadingRatePaletteNV = 1000164004,
 		ViewportCoarseSampleOrderNV = 1000164006,
 		ExclusiveScissorNV = 1000205001,
@@ -1333,8 +1337,8 @@ namespace Vortice.Vulkan
 		StorageBufferDynamic = 9,
 		InputAttachment = 10,
 		InlineUniformBlockEXT = 1000138000,
-		AccelerationStructureKHR = 1000165000,
-		AccelerationStructureNV = AccelerationStructureKHR,
+		AccelerationStructureKHR = 1000150000,
+		AccelerationStructureNV = 1000165000,
 	}
 
 	public enum VkAttachmentLoadOp
@@ -1602,8 +1606,8 @@ namespace Vortice.Vulkan
 		AllCommands = 65536,
 		TransformFeedbackEXT = 16777216,
 		ConditionalRenderingEXT = 262144,
-		RayTracingShaderKHR = 2097152,
 		AccelerationStructureBuildKHR = 33554432,
+		RayTracingShaderKHR = 2097152,
 		ShadingRateImageNV = 4194304,
 		TaskShaderNV = 524288,
 		MeshShaderNV = 1048576,
@@ -1694,8 +1698,10 @@ namespace Vortice.Vulkan
 		TransformFeedbackBufferEXT = 2048,
 		TransformFeedbackCounterBufferEXT = 4096,
 		ConditionalRenderingEXT = 512,
-		RayTracingKHR = 1024,
-		RayTracingNV = RayTracingKHR,
+		AccelerationStructureBuildInputReadOnlyKHR = 524288,
+		AccelerationStructureStorageKHR = 1048576,
+		ShaderBindingTableKHR = 1024,
+		RayTracingNV = ShaderBindingTableKHR,
 		ShaderDeviceAddressEXT = ShaderDeviceAddress,
 		ShaderDeviceAddressKHR = ShaderDeviceAddress,
 	}
@@ -1747,6 +1753,7 @@ namespace Vortice.Vulkan
 		RayTracingNoNullIntersectionShadersKHR = 131072,
 		RayTracingSkipTrianglesKHR = 4096,
 		RayTracingSkipAabbsKHR = 8192,
+		RayTracingShaderGroupHandleCaptureReplayKHR = 524288,
 		DeferCompileNV = 32,
 		CaptureStatisticsKHR = 64,
 		CaptureInternalRepresentationsKHR = 128,
@@ -2400,12 +2407,12 @@ namespace Vortice.Vulkan
 		ValidationCacheEXT = 33,
 		SamplerYcbcrConversion = 1000156000,
 		DescriptorUpdateTemplate = 1000085000,
-		AccelerationStructureKHR = 1000165000,
+		AccelerationStructureKHR = 1000150000,
+		AccelerationStructureNV = 1000165000,
 		DebugReport = DebugReportCallbackEXT,
 		ValidationCache = ValidationCacheEXT,
 		DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate,
 		SamplerYcbcrConversionKHR = SamplerYcbcrConversion,
-		AccelerationStructureNV = AccelerationStructureKHR,
 	}
 
 	[Flags]
@@ -2587,7 +2594,7 @@ namespace Vortice.Vulkan
 	{
 		Triangles = 0,
 		Aabbs = 1,
-		Instances = 1000150000,
+		Instances = 2,
 		AabbsNV = Aabbs,
 	}
 
@@ -2595,6 +2602,7 @@ namespace Vortice.Vulkan
 	{
 		TopLevel = 0,
 		BottomLevel = 1,
+		Generic = 2,
 	}
 
 	public enum VkCopyAccelerationStructureModeKHR
@@ -2849,11 +2857,60 @@ namespace Vortice.Vulkan
 		EnableAutomaticCheckpoints = 4,
 	}
 
+	public enum VkFragmentShadingRateTypeNV
+	{
+		TypeFragmentSize = 0,
+		TypeEnums = 1,
+	}
+
+	public enum VkFragmentShadingRateNV
+	{
+		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_ = 0,
+		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_ = 1,
+		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_ = 4,
+		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X2_PIXELS_ = 5,
+		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X4_PIXELS_ = 6,
+		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X2_PIXELS_ = 9,
+		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X4_PIXELS_ = 10,
+		VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_ = 11,
+		VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_ = 12,
+		VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_ = 13,
+		VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_ = 14,
+		VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_ = 15,
+	}
+
+	public enum VkBuildAccelerationStructureModeKHR
+	{
+		Build = 0,
+		Update = 1,
+	}
+
 	public enum VkAccelerationStructureBuildTypeKHR
 	{
 		Host = 0,
 		Device = 1,
 		HostOrDevice = 2,
+	}
+
+	public enum VkAccelerationStructureCompatibilityKHR
+	{
+		Compatible = 0,
+		Incompatible = 1,
+	}
+
+	[Flags]
+	public enum VkAccelerationStructureCreateFlagsKHR
+	{
+		None = 0,
+		DeviceAddressCaptureReplay = 1,
+	}
+
+	public enum VkShaderGroupShaderKHR
+	{
+		General = 0,
+		ClosestHit = 1,
+		AnyHit = 2,
+		Intersection = 3,
 	}
 
 	[Flags]

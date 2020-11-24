@@ -1826,6 +1826,41 @@ namespace Vortice.Vulkan
 			throw new NotImplementedException();
 		}
 
+		private static IntPtr vkCreateDeferredOperationKHR_ptr;
+		[Calli]
+		public static VkResult vkCreateDeferredOperationKHR(VkDevice device, VkAllocationCallbacks* allocator, VkDeferredOperationKHR* deferredOperation)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkDestroyDeferredOperationKHR_ptr;
+		[Calli]
+		public static void vkDestroyDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR operation, VkAllocationCallbacks* allocator)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkGetDeferredOperationMaxConcurrencyKHR_ptr;
+		[Calli]
+		public static uint vkGetDeferredOperationMaxConcurrencyKHR(VkDevice device, VkDeferredOperationKHR operation)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkGetDeferredOperationResultKHR_ptr;
+		[Calli]
+		public static VkResult vkGetDeferredOperationResultKHR(VkDevice device, VkDeferredOperationKHR operation)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkDeferredOperationJoinKHR_ptr;
+		[Calli]
+		public static VkResult vkDeferredOperationJoinKHR(VkDevice device, VkDeferredOperationKHR operation)
+		{
+			throw new NotImplementedException();
+		}
+
 		private static IntPtr vkGetPipelineExecutablePropertiesKHR_ptr;
 		[Calli]
 		public static VkResult vkGetPipelineExecutablePropertiesKHR(VkDevice device, VkPipelineInfoKHR* pipelineInfo, uint* executableCount, VkPipelineExecutablePropertiesKHR* properties)
@@ -2274,13 +2309,6 @@ namespace Vortice.Vulkan
 			throw new NotImplementedException();
 		}
 
-		private static IntPtr vkDestroyAccelerationStructureKHR_ptr;
-		[Calli]
-		public static void vkDestroyAccelerationStructureKHR(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator)
-		{
-			throw new NotImplementedException();
-		}
-
 		private static IntPtr vkDestroyAccelerationStructureNV_ptr;
 		[Calli]
 		public static void vkDestroyAccelerationStructureNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator)
@@ -2295,16 +2323,9 @@ namespace Vortice.Vulkan
 			throw new NotImplementedException();
 		}
 
-		private static IntPtr vkBindAccelerationStructureMemoryKHR_ptr;
-		[Calli]
-		public static VkResult vkBindAccelerationStructureMemoryKHR(VkDevice device, uint bindInfoCount, VkBindAccelerationStructureMemoryInfoKHR* bindInfos)
-		{
-			throw new NotImplementedException();
-		}
-
 		private static IntPtr vkBindAccelerationStructureMemoryNV_ptr;
 		[Calli]
-		public static VkResult vkBindAccelerationStructureMemoryNV(VkDevice device, uint bindInfoCount, VkBindAccelerationStructureMemoryInfoKHR* bindInfos)
+		public static VkResult vkBindAccelerationStructureMemoryNV(VkDevice device, uint bindInfoCount, VkBindAccelerationStructureMemoryInfoNV* bindInfos)
 		{
 			throw new NotImplementedException();
 		}
@@ -2354,13 +2375,6 @@ namespace Vortice.Vulkan
 		private static IntPtr vkGetAccelerationStructureHandleNV_ptr;
 		[Calli]
 		public static VkResult vkGetAccelerationStructureHandleNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkPointerSize dataSize, void* data)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCmdWriteAccelerationStructuresPropertiesKHR_ptr;
-		[Calli]
-		public static void vkCmdWriteAccelerationStructuresPropertiesKHR(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery)
 		{
 			throw new NotImplementedException();
 		}
@@ -2722,6 +2736,167 @@ namespace Vortice.Vulkan
 			throw new NotImplementedException();
 		}
 
+		private static IntPtr vkCmdSetFragmentShadingRateEnumNV_ptr;
+		[Calli]
+		public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCreateAccelerationStructureKHR_ptr;
+		[Calli]
+		public static VkResult vkCreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkDestroyAccelerationStructureKHR_ptr;
+		[Calli]
+		public static void vkDestroyAccelerationStructureKHR(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdBuildAccelerationStructuresKHR_ptr;
+		[Calli]
+		public static void vkCmdBuildAccelerationStructuresKHR(VkCommandBuffer commandBuffer, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildRangeInfoKHR** ppBuildRangeInfos)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdBuildAccelerationStructuresIndirectKHR_ptr;
+		[Calli]
+		public static void vkCmdBuildAccelerationStructuresIndirectKHR(VkCommandBuffer commandBuffer, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, IntPtr* indirectDeviceAddresses, uint* indirectStrides, uint** ppMaxPrimitiveCounts)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkBuildAccelerationStructuresKHR_ptr;
+		[Calli]
+		public static VkResult vkBuildAccelerationStructuresKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildRangeInfoKHR** ppBuildRangeInfos)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCopyAccelerationStructureKHR_ptr;
+		[Calli]
+		public static VkResult vkCopyAccelerationStructureKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyAccelerationStructureInfoKHR* info)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCopyAccelerationStructureToMemoryKHR_ptr;
+		[Calli]
+		public static VkResult vkCopyAccelerationStructureToMemoryKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyAccelerationStructureToMemoryInfoKHR* info)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCopyMemoryToAccelerationStructureKHR_ptr;
+		[Calli]
+		public static VkResult vkCopyMemoryToAccelerationStructureKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyMemoryToAccelerationStructureInfoKHR* info)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkWriteAccelerationStructuresPropertiesKHR_ptr;
+		[Calli]
+		public static VkResult vkWriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkPointerSize dataSize, void* data, VkPointerSize stride)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdCopyAccelerationStructureKHR_ptr;
+		[Calli]
+		public static void vkCmdCopyAccelerationStructureKHR(VkCommandBuffer commandBuffer, VkCopyAccelerationStructureInfoKHR* info)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdCopyAccelerationStructureToMemoryKHR_ptr;
+		[Calli]
+		public static void vkCmdCopyAccelerationStructureToMemoryKHR(VkCommandBuffer commandBuffer, VkCopyAccelerationStructureToMemoryInfoKHR* info)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdCopyMemoryToAccelerationStructureKHR_ptr;
+		[Calli]
+		public static void vkCmdCopyMemoryToAccelerationStructureKHR(VkCommandBuffer commandBuffer, VkCopyMemoryToAccelerationStructureInfoKHR* info)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkGetAccelerationStructureDeviceAddressKHR_ptr;
+		[Calli]
+		public static IntPtr vkGetAccelerationStructureDeviceAddressKHR(VkDevice device, VkAccelerationStructureDeviceAddressInfoKHR* info)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdWriteAccelerationStructuresPropertiesKHR_ptr;
+		[Calli]
+		public static void vkCmdWriteAccelerationStructuresPropertiesKHR(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkGetDeviceAccelerationStructureCompatibilityKHR_ptr;
+		[Calli]
+		public static void vkGetDeviceAccelerationStructureCompatibilityKHR(VkDevice device, VkAccelerationStructureVersionInfoKHR* versionInfo, VkAccelerationStructureCompatibilityKHR* compatibility)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkGetAccelerationStructureBuildSizesKHR_ptr;
+		[Calli]
+		public static void vkGetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, uint* maxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdTraceRaysKHR_ptr;
+		[Calli]
+		public static void vkCmdTraceRaysKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, uint width, uint height, uint depth)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCreateRayTracingPipelinesKHR_ptr;
+		[Calli]
+		public static VkResult vkCreateRayTracingPipelinesKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr;
+		[Calli]
+		public static VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, VkPointerSize dataSize, void* data)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdTraceRaysIndirectKHR_ptr;
+		[Calli]
+		public static void vkCmdTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, IntPtr indirectDeviceAddress)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkGetRayTracingShaderGroupStackSizeKHR_ptr;
+		[Calli]
+		public static ulong vkGetRayTracingShaderGroupStackSizeKHR(VkDevice device, VkPipeline pipeline, uint group, VkShaderGroupShaderKHR groupShader)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdSetRayTracingPipelineStackSizeKHR_ptr;
+		[Calli]
+		public static void vkCmdSetRayTracingPipelineStackSizeKHR(VkCommandBuffer commandBuffer, uint pipelineStackSize)
+		{
+			throw new NotImplementedException();
+		}
+
 		private static IntPtr vkCreateAndroidSurfaceKHR_ptr;
 		[Calli]
 		public static VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
@@ -2767,167 +2942,6 @@ namespace Vortice.Vulkan
 		private static IntPtr vkCreateViSurfaceNN_ptr;
 		[Calli]
 		public static VkResult vkCreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCreateDeferredOperationKHR_ptr;
-		[Calli]
-		public static VkResult vkCreateDeferredOperationKHR(VkDevice device, VkAllocationCallbacks* allocator, VkDeferredOperationKHR* deferredOperation)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkDestroyDeferredOperationKHR_ptr;
-		[Calli]
-		public static void vkDestroyDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR operation, VkAllocationCallbacks* allocator)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkGetDeferredOperationMaxConcurrencyKHR_ptr;
-		[Calli]
-		public static uint vkGetDeferredOperationMaxConcurrencyKHR(VkDevice device, VkDeferredOperationKHR operation)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkGetDeferredOperationResultKHR_ptr;
-		[Calli]
-		public static VkResult vkGetDeferredOperationResultKHR(VkDevice device, VkDeferredOperationKHR operation)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkDeferredOperationJoinKHR_ptr;
-		[Calli]
-		public static VkResult vkDeferredOperationJoinKHR(VkDevice device, VkDeferredOperationKHR operation)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCreateAccelerationStructureKHR_ptr;
-		[Calli]
-		public static VkResult vkCreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkGetAccelerationStructureMemoryRequirementsKHR_ptr;
-		[Calli]
-		public static void vkGetAccelerationStructureMemoryRequirementsKHR(VkDevice device, VkAccelerationStructureMemoryRequirementsInfoKHR* info, VkMemoryRequirements2* memoryRequirements)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCmdBuildAccelerationStructureKHR_ptr;
-		[Calli]
-		public static void vkCmdBuildAccelerationStructureKHR(VkCommandBuffer commandBuffer, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildOffsetInfoKHR** ppOffsetInfos)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCmdBuildAccelerationStructureIndirectKHR_ptr;
-		[Calli]
-		public static void vkCmdBuildAccelerationStructureIndirectKHR(VkCommandBuffer commandBuffer, VkAccelerationStructureBuildGeometryInfoKHR* info, VkBuffer indirectBuffer, ulong indirectOffset, uint indirectStride)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkBuildAccelerationStructureKHR_ptr;
-		[Calli]
-		public static VkResult vkBuildAccelerationStructureKHR(VkDevice device, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildOffsetInfoKHR** ppOffsetInfos)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCopyAccelerationStructureKHR_ptr;
-		[Calli]
-		public static VkResult vkCopyAccelerationStructureKHR(VkDevice device, VkCopyAccelerationStructureInfoKHR* info)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCopyAccelerationStructureToMemoryKHR_ptr;
-		[Calli]
-		public static VkResult vkCopyAccelerationStructureToMemoryKHR(VkDevice device, VkCopyAccelerationStructureToMemoryInfoKHR* info)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCopyMemoryToAccelerationStructureKHR_ptr;
-		[Calli]
-		public static VkResult vkCopyMemoryToAccelerationStructureKHR(VkDevice device, VkCopyMemoryToAccelerationStructureInfoKHR* info)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkWriteAccelerationStructuresPropertiesKHR_ptr;
-		[Calli]
-		public static VkResult vkWriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkPointerSize dataSize, void* data, VkPointerSize stride)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCmdCopyAccelerationStructureKHR_ptr;
-		[Calli]
-		public static void vkCmdCopyAccelerationStructureKHR(VkCommandBuffer commandBuffer, VkCopyAccelerationStructureInfoKHR* info)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCmdCopyAccelerationStructureToMemoryKHR_ptr;
-		[Calli]
-		public static void vkCmdCopyAccelerationStructureToMemoryKHR(VkCommandBuffer commandBuffer, VkCopyAccelerationStructureToMemoryInfoKHR* info)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCmdCopyMemoryToAccelerationStructureKHR_ptr;
-		[Calli]
-		public static void vkCmdCopyMemoryToAccelerationStructureKHR(VkCommandBuffer commandBuffer, VkCopyMemoryToAccelerationStructureInfoKHR* info)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCmdTraceRaysKHR_ptr;
-		[Calli]
-		public static void vkCmdTraceRaysKHR(VkCommandBuffer commandBuffer, VkStridedBufferRegionKHR* raygenShaderBindingTable, VkStridedBufferRegionKHR* missShaderBindingTable, VkStridedBufferRegionKHR* hitShaderBindingTable, VkStridedBufferRegionKHR* callableShaderBindingTable, uint width, uint height, uint depth)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCreateRayTracingPipelinesKHR_ptr;
-		[Calli]
-		public static VkResult vkCreateRayTracingPipelinesKHR(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkGetAccelerationStructureDeviceAddressKHR_ptr;
-		[Calli]
-		public static IntPtr vkGetAccelerationStructureDeviceAddressKHR(VkDevice device, VkAccelerationStructureDeviceAddressInfoKHR* info)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr;
-		[Calli]
-		public static VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, VkPointerSize dataSize, void* data)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkCmdTraceRaysIndirectKHR_ptr;
-		[Calli]
-		public static void vkCmdTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, VkStridedBufferRegionKHR* raygenShaderBindingTable, VkStridedBufferRegionKHR* missShaderBindingTable, VkStridedBufferRegionKHR* hitShaderBindingTable, VkStridedBufferRegionKHR* callableShaderBindingTable, VkBuffer buffer, ulong offset)
-		{
-			throw new NotImplementedException();
-		}
-
-		private static IntPtr vkGetDeviceAccelerationStructureCompatibilityKHR_ptr;
-		[Calli]
-		public static VkResult vkGetDeviceAccelerationStructureCompatibilityKHR(VkDevice device, VkAccelerationStructureVersionKHR* version)
 		{
 			throw new NotImplementedException();
 		}
@@ -3220,6 +3234,11 @@ namespace Vortice.Vulkan
 			vkGetBufferDeviceAddressKHR_ptr = load(context, "vkGetBufferDeviceAddressKHR");
 			vkGetBufferOpaqueCaptureAddressKHR_ptr = load(context, "vkGetBufferOpaqueCaptureAddressKHR");
 			vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr = load(context, "vkGetDeviceMemoryOpaqueCaptureAddressKHR");
+			vkCreateDeferredOperationKHR_ptr = load(context, "vkCreateDeferredOperationKHR");
+			vkDestroyDeferredOperationKHR_ptr = load(context, "vkDestroyDeferredOperationKHR");
+			vkGetDeferredOperationMaxConcurrencyKHR_ptr = load(context, "vkGetDeferredOperationMaxConcurrencyKHR");
+			vkGetDeferredOperationResultKHR_ptr = load(context, "vkGetDeferredOperationResultKHR");
+			vkDeferredOperationJoinKHR_ptr = load(context, "vkDeferredOperationJoinKHR");
 			vkGetPipelineExecutablePropertiesKHR_ptr = load(context, "vkGetPipelineExecutablePropertiesKHR");
 			vkGetPipelineExecutableStatisticsKHR_ptr = load(context, "vkGetPipelineExecutableStatisticsKHR");
 			vkGetPipelineExecutableInternalRepresentationsKHR_ptr = load(context, "vkGetPipelineExecutableInternalRepresentationsKHR");
@@ -3266,10 +3285,8 @@ namespace Vortice.Vulkan
 			vkCmdSetViewportShadingRatePaletteNV_ptr = load(context, "vkCmdSetViewportShadingRatePaletteNV");
 			vkCmdSetCoarseSampleOrderNV_ptr = load(context, "vkCmdSetCoarseSampleOrderNV");
 			vkCreateAccelerationStructureNV_ptr = load(context, "vkCreateAccelerationStructureNV");
-			vkDestroyAccelerationStructureKHR_ptr = load(context, "vkDestroyAccelerationStructureKHR");
 			vkDestroyAccelerationStructureNV_ptr = load(context, "vkDestroyAccelerationStructureNV");
 			vkGetAccelerationStructureMemoryRequirementsNV_ptr = load(context, "vkGetAccelerationStructureMemoryRequirementsNV");
-			vkBindAccelerationStructureMemoryKHR_ptr = load(context, "vkBindAccelerationStructureMemoryKHR");
 			vkBindAccelerationStructureMemoryNV_ptr = load(context, "vkBindAccelerationStructureMemoryNV");
 			vkCmdBuildAccelerationStructureNV_ptr = load(context, "vkCmdBuildAccelerationStructureNV");
 			vkCmdCopyAccelerationStructureNV_ptr = load(context, "vkCmdCopyAccelerationStructureNV");
@@ -3278,7 +3295,6 @@ namespace Vortice.Vulkan
 			vkGetRayTracingShaderGroupHandlesKHR_ptr = load(context, "vkGetRayTracingShaderGroupHandlesKHR");
 			vkGetRayTracingShaderGroupHandlesNV_ptr = load(context, "vkGetRayTracingShaderGroupHandlesNV");
 			vkGetAccelerationStructureHandleNV_ptr = load(context, "vkGetAccelerationStructureHandleNV");
-			vkCmdWriteAccelerationStructuresPropertiesKHR_ptr = load(context, "vkCmdWriteAccelerationStructuresPropertiesKHR");
 			vkCmdWriteAccelerationStructuresPropertiesNV_ptr = load(context, "vkCmdWriteAccelerationStructuresPropertiesNV");
 			vkCompileDeferredNV_ptr = load(context, "vkCompileDeferredNV");
 			vkGetMemoryHostPointerPropertiesEXT_ptr = load(context, "vkGetMemoryHostPointerPropertiesEXT");
@@ -3325,18 +3341,12 @@ namespace Vortice.Vulkan
 			vkDestroyPrivateDataSlotEXT_ptr = load(context, "vkDestroyPrivateDataSlotEXT");
 			vkSetPrivateDataEXT_ptr = load(context, "vkSetPrivateDataEXT");
 			vkGetPrivateDataEXT_ptr = load(context, "vkGetPrivateDataEXT");
-			vkGetAndroidHardwareBufferPropertiesANDROID_ptr = load(context, "vkGetAndroidHardwareBufferPropertiesANDROID");
-			vkGetMemoryAndroidHardwareBufferANDROID_ptr = load(context, "vkGetMemoryAndroidHardwareBufferANDROID");
-			vkCreateDeferredOperationKHR_ptr = load(context, "vkCreateDeferredOperationKHR");
-			vkDestroyDeferredOperationKHR_ptr = load(context, "vkDestroyDeferredOperationKHR");
-			vkGetDeferredOperationMaxConcurrencyKHR_ptr = load(context, "vkGetDeferredOperationMaxConcurrencyKHR");
-			vkGetDeferredOperationResultKHR_ptr = load(context, "vkGetDeferredOperationResultKHR");
-			vkDeferredOperationJoinKHR_ptr = load(context, "vkDeferredOperationJoinKHR");
+			vkCmdSetFragmentShadingRateEnumNV_ptr = load(context, "vkCmdSetFragmentShadingRateEnumNV");
 			vkCreateAccelerationStructureKHR_ptr = load(context, "vkCreateAccelerationStructureKHR");
-			vkGetAccelerationStructureMemoryRequirementsKHR_ptr = load(context, "vkGetAccelerationStructureMemoryRequirementsKHR");
-			vkCmdBuildAccelerationStructureKHR_ptr = load(context, "vkCmdBuildAccelerationStructureKHR");
-			vkCmdBuildAccelerationStructureIndirectKHR_ptr = load(context, "vkCmdBuildAccelerationStructureIndirectKHR");
-			vkBuildAccelerationStructureKHR_ptr = load(context, "vkBuildAccelerationStructureKHR");
+			vkDestroyAccelerationStructureKHR_ptr = load(context, "vkDestroyAccelerationStructureKHR");
+			vkCmdBuildAccelerationStructuresKHR_ptr = load(context, "vkCmdBuildAccelerationStructuresKHR");
+			vkCmdBuildAccelerationStructuresIndirectKHR_ptr = load(context, "vkCmdBuildAccelerationStructuresIndirectKHR");
+			vkBuildAccelerationStructuresKHR_ptr = load(context, "vkBuildAccelerationStructuresKHR");
 			vkCopyAccelerationStructureKHR_ptr = load(context, "vkCopyAccelerationStructureKHR");
 			vkCopyAccelerationStructureToMemoryKHR_ptr = load(context, "vkCopyAccelerationStructureToMemoryKHR");
 			vkCopyMemoryToAccelerationStructureKHR_ptr = load(context, "vkCopyMemoryToAccelerationStructureKHR");
@@ -3344,12 +3354,18 @@ namespace Vortice.Vulkan
 			vkCmdCopyAccelerationStructureKHR_ptr = load(context, "vkCmdCopyAccelerationStructureKHR");
 			vkCmdCopyAccelerationStructureToMemoryKHR_ptr = load(context, "vkCmdCopyAccelerationStructureToMemoryKHR");
 			vkCmdCopyMemoryToAccelerationStructureKHR_ptr = load(context, "vkCmdCopyMemoryToAccelerationStructureKHR");
+			vkGetAccelerationStructureDeviceAddressKHR_ptr = load(context, "vkGetAccelerationStructureDeviceAddressKHR");
+			vkCmdWriteAccelerationStructuresPropertiesKHR_ptr = load(context, "vkCmdWriteAccelerationStructuresPropertiesKHR");
+			vkGetDeviceAccelerationStructureCompatibilityKHR_ptr = load(context, "vkGetDeviceAccelerationStructureCompatibilityKHR");
+			vkGetAccelerationStructureBuildSizesKHR_ptr = load(context, "vkGetAccelerationStructureBuildSizesKHR");
 			vkCmdTraceRaysKHR_ptr = load(context, "vkCmdTraceRaysKHR");
 			vkCreateRayTracingPipelinesKHR_ptr = load(context, "vkCreateRayTracingPipelinesKHR");
-			vkGetAccelerationStructureDeviceAddressKHR_ptr = load(context, "vkGetAccelerationStructureDeviceAddressKHR");
 			vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr = load(context, "vkGetRayTracingCaptureReplayShaderGroupHandlesKHR");
 			vkCmdTraceRaysIndirectKHR_ptr = load(context, "vkCmdTraceRaysIndirectKHR");
-			vkGetDeviceAccelerationStructureCompatibilityKHR_ptr = load(context, "vkGetDeviceAccelerationStructureCompatibilityKHR");
+			vkGetRayTracingShaderGroupStackSizeKHR_ptr = load(context, "vkGetRayTracingShaderGroupStackSizeKHR");
+			vkCmdSetRayTracingPipelineStackSizeKHR_ptr = load(context, "vkCmdSetRayTracingPipelineStackSizeKHR");
+			vkGetAndroidHardwareBufferPropertiesANDROID_ptr = load(context, "vkGetAndroidHardwareBufferPropertiesANDROID");
+			vkGetMemoryAndroidHardwareBufferANDROID_ptr = load(context, "vkGetMemoryAndroidHardwareBufferANDROID");
 		}
 	}
 }

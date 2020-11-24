@@ -14,12 +14,12 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
-    - name: Install .NET Core
+    - name: Install .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.100
+        dotnet-version: 5.0.100
 
     - name: Pack
       run: dotnet pack src --configuration Release --output build/packages

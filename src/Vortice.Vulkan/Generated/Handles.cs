@@ -667,6 +667,27 @@ namespace Vortice.Vulkan
 	/// A non-dispatchable handle.
 	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public partial struct VkDeferredOperationKHR : IEquatable<VkDeferredOperationKHR>
+	{
+		public readonly ulong Handle;
+		public VkDeferredOperationKHR(ulong handle) { Handle = handle; }
+		public static VkDeferredOperationKHR Null => new VkDeferredOperationKHR(0);
+		public static implicit operator VkDeferredOperationKHR(ulong handle) => new VkDeferredOperationKHR(handle);
+		public static bool operator ==(VkDeferredOperationKHR left, VkDeferredOperationKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(VkDeferredOperationKHR left, VkDeferredOperationKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(VkDeferredOperationKHR left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkDeferredOperationKHR left, ulong right) => left.Handle != right;
+		public bool Equals(ref VkDeferredOperationKHR other) => Handle == other.Handle;
+		public bool Equals(VkDeferredOperationKHR other) => Handle == other.Handle;
+		public override bool Equals(object obj) => obj is VkDeferredOperationKHR handle && Equals(ref handle);
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkDeferredOperationKHR [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public partial struct VkDebugReportCallbackEXT : IEquatable<VkDebugReportCallbackEXT>
 	{
 		public readonly ulong Handle;
@@ -730,21 +751,21 @@ namespace Vortice.Vulkan
 	/// A non-dispatchable handle.
 	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public partial struct VkAccelerationStructureKHR : IEquatable<VkAccelerationStructureKHR>
+	public partial struct VkAccelerationStructureNV : IEquatable<VkAccelerationStructureNV>
 	{
 		public readonly ulong Handle;
-		public VkAccelerationStructureKHR(ulong handle) { Handle = handle; }
-		public static VkAccelerationStructureKHR Null => new VkAccelerationStructureKHR(0);
-		public static implicit operator VkAccelerationStructureKHR(ulong handle) => new VkAccelerationStructureKHR(handle);
-		public static bool operator ==(VkAccelerationStructureKHR left, VkAccelerationStructureKHR right) => left.Handle == right.Handle;
-		public static bool operator !=(VkAccelerationStructureKHR left, VkAccelerationStructureKHR right) => left.Handle != right.Handle;
-		public static bool operator ==(VkAccelerationStructureKHR left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkAccelerationStructureKHR left, ulong right) => left.Handle != right;
-		public bool Equals(ref VkAccelerationStructureKHR other) => Handle == other.Handle;
-		public bool Equals(VkAccelerationStructureKHR other) => Handle == other.Handle;
-		public override bool Equals(object obj) => obj is VkAccelerationStructureKHR handle && Equals(ref handle);
+		public VkAccelerationStructureNV(ulong handle) { Handle = handle; }
+		public static VkAccelerationStructureNV Null => new VkAccelerationStructureNV(0);
+		public static implicit operator VkAccelerationStructureNV(ulong handle) => new VkAccelerationStructureNV(handle);
+		public static bool operator ==(VkAccelerationStructureNV left, VkAccelerationStructureNV right) => left.Handle == right.Handle;
+		public static bool operator !=(VkAccelerationStructureNV left, VkAccelerationStructureNV right) => left.Handle != right.Handle;
+		public static bool operator ==(VkAccelerationStructureNV left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkAccelerationStructureNV left, ulong right) => left.Handle != right;
+		public bool Equals(ref VkAccelerationStructureNV other) => Handle == other.Handle;
+		public bool Equals(VkAccelerationStructureNV other) => Handle == other.Handle;
+		public override bool Equals(object obj) => obj is VkAccelerationStructureNV handle && Equals(ref handle);
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkAccelerationStructureKHR [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("VkAccelerationStructureNV [0x{0}]", Handle.ToString("X"));
 	}
 
 	/// <summary>
@@ -814,21 +835,21 @@ namespace Vortice.Vulkan
 	/// A non-dispatchable handle.
 	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public partial struct VkDeferredOperationKHR : IEquatable<VkDeferredOperationKHR>
+	public partial struct VkAccelerationStructureKHR : IEquatable<VkAccelerationStructureKHR>
 	{
 		public readonly ulong Handle;
-		public VkDeferredOperationKHR(ulong handle) { Handle = handle; }
-		public static VkDeferredOperationKHR Null => new VkDeferredOperationKHR(0);
-		public static implicit operator VkDeferredOperationKHR(ulong handle) => new VkDeferredOperationKHR(handle);
-		public static bool operator ==(VkDeferredOperationKHR left, VkDeferredOperationKHR right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDeferredOperationKHR left, VkDeferredOperationKHR right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDeferredOperationKHR left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDeferredOperationKHR left, ulong right) => left.Handle != right;
-		public bool Equals(ref VkDeferredOperationKHR other) => Handle == other.Handle;
-		public bool Equals(VkDeferredOperationKHR other) => Handle == other.Handle;
-		public override bool Equals(object obj) => obj is VkDeferredOperationKHR handle && Equals(ref handle);
+		public VkAccelerationStructureKHR(ulong handle) { Handle = handle; }
+		public static VkAccelerationStructureKHR Null => new VkAccelerationStructureKHR(0);
+		public static implicit operator VkAccelerationStructureKHR(ulong handle) => new VkAccelerationStructureKHR(handle);
+		public static bool operator ==(VkAccelerationStructureKHR left, VkAccelerationStructureKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(VkAccelerationStructureKHR left, VkAccelerationStructureKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(VkAccelerationStructureKHR left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkAccelerationStructureKHR left, ulong right) => left.Handle != right;
+		public bool Equals(ref VkAccelerationStructureKHR other) => Handle == other.Handle;
+		public bool Equals(VkAccelerationStructureKHR other) => Handle == other.Handle;
+		public override bool Equals(object obj) => obj is VkAccelerationStructureKHR handle && Equals(ref handle);
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDeferredOperationKHR [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("VkAccelerationStructureKHR [0x{0}]", Handle.ToString("X"));
 	}
 
 }
