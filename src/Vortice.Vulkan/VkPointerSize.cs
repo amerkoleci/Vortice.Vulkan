@@ -84,7 +84,7 @@ namespace Vortice.Vulkan
         public override string ToString() => _value.ToString();
 
         /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is VkPointerSize other && Equals(other);
+        public override bool Equals(object? obj) => obj is VkPointerSize other && Equals(other);
 
         /// <inheritdoc/>
         public bool Equals(VkPointerSize other) => _value == other._value;

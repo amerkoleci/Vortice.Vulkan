@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <PatcherExecutable>$(BinDir)\$(Configuration)\Patch\net5.0\Patch.dll</PatcherExecutable>
+    <PatcherExecutable>$(RepositoryRootDirectory)bin/Patch/$(Configuration)/net5.0/Patch.dll</PatcherExecutable>
   </PropertyGroup>
 
   <Target Name="PathDll" AfterTargets="Build">

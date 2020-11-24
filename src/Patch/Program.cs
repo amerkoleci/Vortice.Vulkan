@@ -31,6 +31,12 @@ namespace Patch
         public static void Run(Options opts)
         {
             string inputPath = opts.Input!;
+
+            if (string.IsNullOrEmpty(inputPath) || !File.Exists(inputPath))
+            {
+                return;
+            }
+
             string? outputPath = opts.Output;
             bool copiedToTemp = false;
             if (string.IsNullOrEmpty(outputPath))

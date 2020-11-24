@@ -37,7 +37,7 @@ namespace Vortice.Vulkan
         public bool Equals(VkBool32 other) => _value == other._value;
 
         /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is VkBool32 rawBool && Equals(rawBool);
+        public override bool Equals(object? obj) => obj is VkBool32 rawBool && Equals(rawBool);
 
         /// <inheritdoc/>
         public override int GetHashCode() => _value;

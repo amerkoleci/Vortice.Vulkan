@@ -68,11 +68,11 @@ namespace Vortice.Vulkan
         /// <returns>
         /// <c>true</c> if the specified <see cref="VkViewport"/> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public bool Equals(ref VkViewport other) => 
-            x == other.x 
-            && y == other.y 
-            && width == other.width 
-            && height == other.height 
+        public bool Equals(ref VkViewport other) =>
+            x == other.x
+            && y == other.y
+            && width == other.width
+            && height == other.height
             && minDepth == other.minDepth
             && maxDepth == other.maxDepth;
 
@@ -92,7 +92,7 @@ namespace Vortice.Vulkan
         /// <returns>
         /// <c>true</c> if the specified <see cref="object"/> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object obj) => obj is VkViewport viewport && Equals(ref viewport);
+        public override bool Equals(object? obj) => obj is VkViewport viewport && Equals(ref viewport);
 
         /// <inheritdoc/>
         public override int GetHashCode()
