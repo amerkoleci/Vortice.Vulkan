@@ -2,8 +2,6 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
-using System.IO;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Vortice.Mathematics;
 using static Vortice.Vulkan.Vulkan.Kernel32;
@@ -184,12 +182,21 @@ namespace Vortice.Vulkan
             }
         }
 
+        [Calli]
+        public static VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines)
+        {
+            throw new NotImplementedException();
+        }
+
+        [Calli]
+        public static VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines)
+        {
+            throw new NotImplementedException();
+        }
+
         public static VkResult vkCreateGraphicsPipeline(VkDevice device, VkPipelineCache pipelineCache, VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
         {
-            VkPipeline pinPipeline;
-            var result = vkCreateGraphicsPipelines(device, pipelineCache, 1, &createInfo, null, &pinPipeline);
-            pipeline = pinPipeline;
-            return result;
+            return vkCreateGraphicsPipelines(device, pipelineCache, 1, &createInfo, null, out pipeline);
         }
 
         public static VkResult vkCreateGraphicsPipelines(
@@ -209,10 +216,7 @@ namespace Vortice.Vulkan
 
         public static VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
         {
-            VkPipeline pinPipeline;
-            VkResult result = vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, &pinPipeline);
-            pipeline = pinPipeline;
-            return result;
+            return vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, out pipeline);
         }
 
         public static VkResult vkCreateComputePipelines(
@@ -375,7 +379,32 @@ namespace Vortice.Vulkan
             return vkQueuePresentKHR(queue, &presentInfo);
         }
 
+        [Calli]
+        public static VkResult vkCreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkImageView* view)
+        {
+            throw new NotImplementedException();
+        }
 
+        public static VkResult vkCreateCommandPool(VkDevice device, uint queueFamilyIndex, out VkCommandPool commandPool)
+        {
+            VkCommandPoolCreateInfo createInfo = new VkCommandPoolCreateInfo
+            {
+                sType = VkStructureType.CommandPoolCreateInfo,
+                queueFamilyIndex = queueFamilyIndex
+            };
+            return vkCreateCommandPool(device, &createInfo, null, out commandPool);
+        }
+
+        public static VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateFlags flags, uint queueFamilyIndex, out VkCommandPool commandPool)
+        {
+            VkCommandPoolCreateInfo createInfo = new VkCommandPoolCreateInfo
+            {
+                sType = VkStructureType.CommandPoolCreateInfo,
+                flags = flags,
+                queueFamilyIndex = queueFamilyIndex
+            };
+            return vkCreateCommandPool(device, &createInfo, null, out commandPool);
+        }
 
         [Calli]
         public static VkResult vkAllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, out VkCommandBuffer commandBuffers)
@@ -386,6 +415,17 @@ namespace Vortice.Vulkan
         public static void vkFreeCommandBuffers(VkDevice device, VkCommandPool commandPool, VkCommandBuffer commandBuffer)
         {
             vkFreeCommandBuffers(device, commandPool, 1u, &commandBuffer);
+        }
+
+        public static VkResult vkBeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferUsageFlags flags)
+        {
+            VkCommandBufferBeginInfo beginInfo = new VkCommandBufferBeginInfo
+            {
+                sType = VkStructureType.CommandBufferBeginInfo,
+                flags = VkCommandBufferUsageFlags.OneTimeSubmit
+            };
+
+            return vkBeginCommandBuffer(commandBuffer, &beginInfo);
         }
 
         public static VkResult vkCreateSemaphore(VkDevice device, out VkSemaphore semaphore)
@@ -469,6 +509,12 @@ namespace Vortice.Vulkan
 
                 return vkCreateFramebuffer(device, &createInfo, null, out framebuffer);
             }
+        }
+
+        [Calli]
+        public static VkResult vkAllocateDescriptorSets(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, out VkDescriptorSet descriptorSets)
+        {
+            throw new NotImplementedException();
         }
 
         #region Nested

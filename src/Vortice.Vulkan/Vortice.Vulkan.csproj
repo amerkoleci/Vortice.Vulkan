@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
-    <VersionPrefix>1.2.166.2</VersionPrefix>
+    <VersionPrefix>1.2.166.3</VersionPrefix>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
     <DebugType>portable</DebugType>
     <Description>Vulkan low level bindings.</Description>
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>

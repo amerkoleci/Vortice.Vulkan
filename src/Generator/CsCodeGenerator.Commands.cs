@@ -45,6 +45,7 @@ namespace Generator
             "vkCreateXlibSurfaceKHR",
             "vkCreateWaylandSurfaceKHR",
             "vkCreateMetalSurfaceEXT",
+            "vkCreateIOSSurfaceMVK",
             "vkCreateMacOSSurfaceMVK",
             "vkCreateFence",
             "vkCreateSemaphore",

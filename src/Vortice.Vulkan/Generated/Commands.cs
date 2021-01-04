@@ -2935,7 +2935,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCreateIOSSurfaceMVK_ptr;
 		[Calli]
-		public static VkResult vkCreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+		public static VkResult vkCreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 		{
 			throw new NotImplementedException();
 		}

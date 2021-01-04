@@ -27,9 +27,9 @@ namespace Generator
             {  "VK_SAMPLE_COUNT_64_BIT", "Count64" },
 
             // VkImageType
-            {  "VK_IMAGE_TYPE_1D", "Image1D" },
-            {  "VK_IMAGE_TYPE_2D", "Image2D" },
-            {  "VK_IMAGE_TYPE_3D", "Image3D" },
+            { "VK_IMAGE_TYPE_1D", "Image1D" },
+            { "VK_IMAGE_TYPE_2D", "Image2D" },
+            { "VK_IMAGE_TYPE_3D", "Image3D" },
 
             // VkImageViewType
             { "VK_IMAGE_VIEW_TYPE_1D", "Image1D" },
@@ -40,6 +40,15 @@ namespace Generator
             { "VK_IMAGE_VIEW_TYPE_2D_ARRAY", "Image2DArray" },
             { "VK_IMAGE_VIEW_TYPE_CUBE_ARRAY", "ImageCubeArray" },
 
+            // VkColorSpaceKHR
+            { "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR", "SrgbNonLinearKHR" },
+            { "VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT", "DisplayP3NonLinearEXT" },
+            { "VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT", "DciP3NonLinearEXT" },
+            { "VK_COLOR_SPACE_BT709_NONLINEAR_EXT", "Bt709NonLinearEXT" },
+            { "VK_COLOR_SPACE_DOLBYVISION_EXT", "DolbyVisionEXT" },
+            { "VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT", "AdobeRgbLinearEXT" },
+            { "VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT", "AdobeRgbNonLinearEXT" },
+            { "VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT", "ExtendedSrgbNonLinearEXT" },
             { "VK_COLORSPACE_SRGB_NONLINEAR_KHR", "SrgbNonLinearKHR" },
 
             // VkShadingRatePaletteEntryNV

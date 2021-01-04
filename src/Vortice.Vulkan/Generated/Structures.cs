@@ -5855,7 +5855,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkMetalSurfaceCreateFlagsEXT flags;
-		public unsafe IntPtr* pLayer;
+		public IntPtr pLayer;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
