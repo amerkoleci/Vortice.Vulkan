@@ -5772,7 +5772,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkAndroidSurfaceCreateFlagsKHR flags;
-		public unsafe IntPtr* window;
+		public IntPtr window;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

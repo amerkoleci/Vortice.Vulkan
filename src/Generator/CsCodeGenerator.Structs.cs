@@ -86,6 +86,11 @@ namespace Generator
                             writer.WriteLine("[FieldOffset(0)]");
                         }
 
+                        if (cppClass.Name == "VkAndroidSurfaceCreateInfoKHR")
+                        {
+
+                        }
+
                         if (cppField.Type is CppArrayType arrayType)
                         {
                             bool canUseFixed = false;
@@ -128,6 +133,15 @@ namespace Generator
                                 csFieldName.Equals("apiVersion", StringComparison.OrdinalIgnoreCase))
                             {
                                 csFieldType = "VkVersion";
+                            }
+
+                            if (cppField.Type.ToString() == "ANativeWindow*")
+                            {
+                                csFieldType = "IntPtr";
+                            }
+                            else if (cppField.Type.ToString() == "CAMetalLayer*")
+                            {
+                                csFieldType = "IntPtr";
                             }
 
                             string fieldPrefix = isReadOnly ? "readonly " : string.Empty;

@@ -65,12 +65,18 @@ namespace Vortice.Vulkan
             GenLoadInstance(instance.Handle, vkGetInstanceProcAddr);
             GenLoadDevice(instance.Handle, vkGetInstanceProcAddr);
 
-            // Manually load win32 entries.
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                vkCreateWin32SurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWin32SurfaceKHR));
-                vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
-            }
+            // Manually loaded entries.
+            vkCreateWin32SurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWin32SurfaceKHR));
+            vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
+
+            vkCreateXcbSurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXcbSurfaceKHR));
+            vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXcbPresentationSupportKHR));
+
+            vkCreateXlibSurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXlibSurfaceKHR));
+            vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXlibPresentationSupportKHR));
+
+            vkCreateWaylandSurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWaylandSurfaceKHR));
+            vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWaylandPresentationSupportKHR));
         }
 
         private static void GenLoadLoader(IntPtr context, LoadFunction load)
@@ -418,7 +424,7 @@ namespace Vortice.Vulkan
             VkDevice device,
             VkRenderPass renderPass,
             ReadOnlySpan<VkImageView> attachments,
-            uint width, 
+            uint width,
             uint height,
             uint layers,
             out VkFramebuffer framebuffer)

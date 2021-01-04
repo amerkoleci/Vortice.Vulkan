@@ -29,8 +29,7 @@ namespace Generator
                 Directory.CreateDirectory(outputPath);
             }
 
-            var test = IntPtr.Size;
-            var headerFile = Path.Combine(AppContext.BaseDirectory, "vulkan", "vulkan.h");
+            string? headerFile = Path.Combine(AppContext.BaseDirectory, "vulkan", "vulkan.h");
             var options = new CppParserOptions
             {
                 ParseMacros = true,

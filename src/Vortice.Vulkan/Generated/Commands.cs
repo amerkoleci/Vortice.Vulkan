@@ -163,7 +163,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkAllocateMemory_ptr;
 		[Calli]
-		public static VkResult vkAllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, VkDeviceMemory* memory)
+		public static VkResult vkAllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, out VkDeviceMemory memory)
 		{
 			throw new NotImplementedException();
 		}
@@ -2942,14 +2942,14 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCreateMacOSSurfaceMVK_ptr;
 		[Calli]
-		public static VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+		public static VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkCreateMetalSurfaceEXT_ptr;
 		[Calli]
-		public static VkResult vkCreateMetalSurfaceEXT(VkInstance instance, VkMetalSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+		public static VkResult vkCreateMetalSurfaceEXT(VkInstance instance, VkMetalSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 		{
 			throw new NotImplementedException();
 		}

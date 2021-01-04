@@ -436,7 +436,7 @@ namespace Vortice
                 bool hasLayer = false;
                 for (int j = 0; j < availableLayers.Length; j++)
                 {
-                    if (s_RequestedValidationLayers[i] == availableLayers[j].GetName())
+                    if (s_RequestedValidationLayers[i] == availableLayers[j].GetLayerName())
                     {
                         hasLayer = true;
                         break;

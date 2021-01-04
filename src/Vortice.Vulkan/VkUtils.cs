@@ -22,7 +22,7 @@ namespace Vortice.Vulkan
             return Interop.GetString(properties.extensionName);
         }
 
-        public static string GetName(this VkLayerProperties properties)
+        public static string GetLayerName(this VkLayerProperties properties)
         {
             return Interop.GetString(properties.layerName);
         }
