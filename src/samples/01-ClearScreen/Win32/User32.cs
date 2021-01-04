@@ -3,7 +3,7 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Vortice.Vulkan;
+using Vortice.Mathematics;
 
 namespace Vortice.Win32
 {
@@ -366,7 +366,7 @@ namespace Vortice.Win32
         public IntPtr WParam;
         public IntPtr LParam;
         public uint Time;
-        public VkOffset2D Point;
+        public Point Point;
     }
 
     public delegate IntPtr WNDPROC(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
@@ -398,7 +398,7 @@ namespace Vortice.Win32
         public static extern ushort RegisterClassEx([In] ref WNDCLASSEX lpwcx);
 
         [return: MarshalAs(UnmanagedType.Bool)]
-        [DllImport(LibraryName)]
+        [DllImport(LibraryName, CharSet = CharSet.Unicode)]
         public static extern bool UnregisterClass(string lpClassName, IntPtr hInstance);
 
         [DllImport(LibraryName, CharSet = CharSet.Unicode)]
@@ -488,7 +488,7 @@ namespace Vortice.Win32
         public static extern bool AdjustWindowRectEx([In] [Out] ref RawRect lpRect, WindowStyles dwStyle, bool bMenu, WindowExStyles exStyle);
 
         [DllImport(LibraryName, ExactSpelling = true)]
-        public unsafe static extern IntPtr CreateWindowExW(
+        public static extern unsafe IntPtr CreateWindowExW(
             uint exStyle,
             ushort* className,
             ushort* windowName,

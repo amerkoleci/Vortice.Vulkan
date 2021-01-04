@@ -16,11 +16,12 @@ namespace Generator
             // Generate Structures
             using var writer = new CodeWriter(Path.Combine(outputPath, "Structures.cs"),
                 "System",
-                "System.Runtime.InteropServices"
+                "System.Runtime.InteropServices",
+                "Vortice.Mathematics"
                 );
 
             // Print All classes, structs
-            foreach (var cppClass in compilation.Classes)
+            foreach (CppClass? cppClass in compilation.Classes)
             {
                 if (cppClass.ClassKind == CppClassKind.Class ||
                     cppClass.SizeOf == 0 ||
@@ -30,8 +31,16 @@ namespace Generator
                 }
 
                 // Mapped to Vortice.Mathematics
-                if (cppClass.Name == "VkTransformMatrixKHR" ||
-                    cppClass.Name == "VkAccelerationStructureInstanceKHR")
+                if (cppClass.Name == "VkOffset2D"
+                    || cppClass.Name == "VkOffset3D"
+                    || cppClass.Name == "VkExtent2D"
+                    || cppClass.Name == "VkExtent3D"
+                    || cppClass.Name == "VkRect2D"
+                    || cppClass.Name == "VkViewport"
+                    || cppClass.Name == "VkClearColorValue"
+                    || cppClass.Name == "VkTransformMatrixKHR"
+                    || cppClass.Name == "VkAccelerationStructureInstanceKHR"
+                    )
                 {
                     continue;
                 }
@@ -51,13 +60,7 @@ namespace Generator
 
                 bool isReadOnly = false;
                 string modifier = "partial";
-                if (csName == "VkOffset2D"
-                    || csName == "VkOffset3D"
-                    || csName == "VkExtent2D"
-                    || csName == "VkExtent3D"
-                    || csName == "VkRect2D"
-                    || csName == "VkViewport"
-                    || csName == "VkClearDepthStencilValue")
+                if (csName == "VkClearDepthStencilValue")
                 {
                     modifier = "readonly partial";
                     isReadOnly = true;

@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Vortice.Mathematics;
 using static Vortice.Vulkan.Vulkan.Kernel32;
 using static Vortice.Vulkan.Vulkan.Libdl;
 
@@ -94,7 +95,7 @@ namespace Vortice.Vulkan
         public static IntPtr vkGetInstanceProcAddr(IntPtr instance, string name)
         {
             int byteCount = Interop.GetMaxByteCount(name);
-            var stringPtr = stackalloc byte[byteCount];
+            byte* stringPtr = stackalloc byte[byteCount];
             Interop.StringToPointer(name, stringPtr, byteCount);
             return vkGetInstanceProcAddr(instance, stringPtr);
         }
@@ -133,7 +134,7 @@ namespace Vortice.Vulkan
         public static ReadOnlySpan<VkExtensionProperties> vkEnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName = "")
         {
             int dstLayerNameByteCount = Interop.GetMaxByteCount(layerName);
-            var dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
+            byte* dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
             Interop.StringToPointer(layerName, dstLayerNamePtr, dstLayerNameByteCount);
 
             uint propertyCount = 0;
@@ -154,7 +155,7 @@ namespace Vortice.Vulkan
         public static unsafe VkVersion vkEnumerateInstanceVersion()
         {
             if (vkEnumerateInstanceVersion_ptr != IntPtr.Zero
-                && vkEnumerateInstanceVersion(out var apiVersion) == VkResult.Success)
+                && vkEnumerateInstanceVersion(out uint apiVersion) == VkResult.Success)
             {
                 return new VkVersion(apiVersion);
             }
@@ -203,7 +204,7 @@ namespace Vortice.Vulkan
         public static VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
         {
             VkPipeline pinPipeline;
-            var result = vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, &pinPipeline);
+            VkResult result = vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, &pinPipeline);
             pipeline = pinPipeline;
             return result;
         }
@@ -230,7 +231,7 @@ namespace Vortice.Vulkan
 
             if (size == WholeSize)
             {
-                vkGetBufferMemoryRequirements(device, buffer, out var memoryRequirements);
+                vkGetBufferMemoryRequirements(device, buffer, out VkMemoryRequirements memoryRequirements);
                 return new Span<T>(pData, (int)memoryRequirements.size);
             }
 
@@ -242,10 +243,9 @@ namespace Vortice.Vulkan
             void* pData;
             vkMapMemory(device, memory, offset, size, flags, &pData).CheckResult();
 
-
             if (size == WholeSize)
             {
-                vkGetImageMemoryRequirements(device, image, out var memoryRequirements);
+                vkGetImageMemoryRequirements(device, image, out VkMemoryRequirements memoryRequirements);
                 return new Span<T>(pData, (int)memoryRequirements.size);
             }
 
@@ -433,6 +433,31 @@ namespace Vortice.Vulkan
                     pAttachments = attachmentsPtr,
                     width = width,
                     height = height,
+                    layers = layers
+                };
+
+                return vkCreateFramebuffer(device, &createInfo, null, out framebuffer);
+            }
+        }
+
+        public static VkResult vkCreateFramebuffer(
+            VkDevice device,
+            VkRenderPass renderPass,
+            ReadOnlySpan<VkImageView> attachments,
+            in Size extent,
+            uint layers,
+            out VkFramebuffer framebuffer)
+        {
+            fixed (VkImageView* attachmentsPtr = attachments)
+            {
+                VkFramebufferCreateInfo createInfo = new VkFramebufferCreateInfo
+                {
+                    sType = VkStructureType.FramebufferCreateInfo,
+                    renderPass = renderPass,
+                    attachmentCount = (uint)attachments.Length,
+                    pAttachments = attachmentsPtr,
+                    width = (uint)extent.Width,
+                    height = (uint)extent.Height,
                     layers = layers
                 };
 

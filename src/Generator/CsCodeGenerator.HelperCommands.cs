@@ -66,7 +66,8 @@ namespace Generator
             using var writer = new CodeWriter(Path.Combine(outputPath, "VkHelpers.cs"),
                 "System",
                 "System.Diagnostics",
-                "System.Runtime.InteropServices"
+                "System.Runtime.InteropServices",
+                "Vortice.Mathematics"
                 );
 
             using (writer.PushBlock($"unsafe partial class Vulkan"))

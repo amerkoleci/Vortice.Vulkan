@@ -1,10 +1,11 @@
 ﻿using System;
+using Vortice.Mathematics;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 
 namespace Vortice
 {
-    public unsafe sealed class Swapchain : IDisposable
+    public sealed unsafe class Swapchain : IDisposable
     {
         public readonly GraphicsDevice Device;
         public readonly Window? Window;
@@ -12,7 +13,7 @@ namespace Vortice
         public VkSwapchainKHR Handle;
         public int ImageCount => _swapChainImageViews.Length;
         public VkRenderPass RenderPass;
-        public VkExtent2D Extent { get; }
+        public Size Extent { get; }
         public VkFramebuffer[] Framebuffers { get; }
 
         public Swapchain(GraphicsDevice device, Window? window)
@@ -69,7 +70,7 @@ namespace Vortice
                     );
 
                 vkCreateImageView(Device.VkDevice, &viewCreateInfo, null, out _swapChainImageViews[i]).CheckResult();
-                vkCreateFramebuffer(Device.VkDevice, RenderPass, new[] { _swapChainImageViews[i] }, Extent.width, Extent.height, 1u, out Framebuffers[i]);
+                vkCreateFramebuffer(Device.VkDevice, RenderPass, new[] { _swapChainImageViews[i] }, Extent, 1u, out Framebuffers[i]);
             }
         }
 
@@ -160,23 +161,11 @@ namespace Vortice
             public ReadOnlySpan<VkPresentModeKHR> PresentModes;
         };
 
-        private VkExtent2D ChooseSwapExtent(in VkSurfaceCapabilitiesKHR capabilities)
+        private Size ChooseSwapExtent(in VkSurfaceCapabilitiesKHR capabilities)
         {
-            if (capabilities.currentExtent.width > 0)
-            {
-                return capabilities.currentExtent;
-            }
-            else
-            {
-                VkExtent2D actualExtent = Window!.Extent;
-
-                actualExtent = new VkExtent2D(
-                    Math.Max(capabilities.minImageExtent.width, Math.Min(capabilities.maxImageExtent.width, actualExtent.width)),
-                    Math.Max(capabilities.minImageExtent.height, Math.Min(capabilities.maxImageExtent.height, actualExtent.height))
-                    );
-
-                return actualExtent;
-            }
+            Size actualExtent = Window!.Extent;
+            actualExtent = Size.Max(capabilities.minImageExtent, Size.Min(capabilities.maxImageExtent, actualExtent));
+            return actualExtent;
         }
 
         private static SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device, VkSurfaceKHR surface)

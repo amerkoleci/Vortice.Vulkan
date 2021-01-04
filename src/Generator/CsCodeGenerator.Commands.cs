@@ -117,7 +117,8 @@ namespace Generator
         {
             // Generate Functions
             using var writer = new CodeWriter(Path.Combine(outputPath, "Commands.cs"),
-                "System"
+                "System",
+                "Vortice.Mathematics"
                 );
 
             var commands = new Dictionary<string, CppFunction>();

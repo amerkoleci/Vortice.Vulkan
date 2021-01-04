@@ -15,9 +15,9 @@ namespace Vortice.Vulkan
 	public static partial class Vulkan
 	{
 		/// <summary>
-		/// VK_HEADER_VERSION = 162
+		/// VK_HEADER_VERSION = 166
 		/// </summary>
-		public const uint HeaderVersion = 162;
+		public const uint HeaderVersion = 166;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_VERSION(1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -2466,6 +2466,30 @@ namespace Vortice.Vulkan
 		/// VK_EXT_4444_FORMATS_EXTENSION_NAME = "VK_EXT_4444_formats"
 		/// </summary>
 		public const string EXT4444FormatsExtensionName = "VK_EXT_4444_formats";
+		/// <summary>
+		/// VK_NV_acquire_winrt_display = 1
+		/// </summary>
+		public const uint NVAcquireWinrtDisplay = 1;
+		/// <summary>
+		/// VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION = 1
+		/// </summary>
+		public const uint NVAcquireWinrtDisplaySpecVersion = 1;
+		/// <summary>
+		/// VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME = "VK_NV_acquire_winrt_display"
+		/// </summary>
+		public const string NVAcquireWinrtDisplayExtensionName = "VK_NV_acquire_winrt_display";
+		/// <summary>
+		/// VK_VALVE_mutable_descriptor_type = 1
+		/// </summary>
+		public const uint ValveMutableDescriptorType = 1;
+		/// <summary>
+		/// VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1
+		/// </summary>
+		public const uint ValveMutableDescriptorTypeSpecVersion = 1;
+		/// <summary>
+		/// VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_VALVE_mutable_descriptor_type"
+		/// </summary>
+		public const string ValveMutableDescriptorTypeExtensionName = "VK_VALVE_mutable_descriptor_type";
 		/// <summary>
 		/// VK_KHR_acceleration_structure = 1
 		/// </summary>

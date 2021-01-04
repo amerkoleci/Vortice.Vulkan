@@ -8,6 +8,7 @@
 // ------------------------------------------------------------------------------
 
 using System;
+using Vortice.Mathematics;
 
 namespace Vortice.Vulkan
 {
@@ -603,7 +604,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetRenderAreaGranularity_ptr;
 		[Calli]
-		public static void vkGetRenderAreaGranularity(VkDevice device, VkRenderPass renderPass, out VkExtent2D granularity)
+		public static void vkGetRenderAreaGranularity(VkDevice device, VkRenderPass renderPass, out Size granularity)
 		{
 			throw new NotImplementedException();
 		}
@@ -673,14 +674,14 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetViewport_ptr;
 		[Calli]
-		public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewport* viewports)
+		public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, Viewport* viewports)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkCmdSetScissor_ptr;
 		[Calli]
-		public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, VkRect2D* scissors)
+		public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, Rectangle* scissors)
 		{
 			throw new NotImplementedException();
 		}
@@ -1345,7 +1346,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetPhysicalDevicePresentRectanglesKHR_ptr;
 		[Calli]
-		public static VkResult vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, VkRect2D* rects)
+		public static VkResult vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, Rectangle* rects)
 		{
 			throw new NotImplementedException();
 		}
@@ -1800,7 +1801,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetFragmentShadingRateKHR_ptr;
 		[Calli]
-		public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D* fragmentSize, VkFragmentShadingRateCombinerOpKHR combinerOps)
+		public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, Size* fragmentSize, VkFragmentShadingRateCombinerOpKHR combinerOps)
 		{
 			throw new NotImplementedException();
 		}
@@ -2143,7 +2144,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetDiscardRectangleEXT_ptr;
 		[Calli]
-		public static void vkCmdSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D* discardRectangles)
+		public static void vkCmdSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, Rectangle* discardRectangles)
 		{
 			throw new NotImplementedException();
 		}
@@ -2444,7 +2445,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetExclusiveScissorNV_ptr;
 		[Calli]
-		public static void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D* exclusiveScissors)
+		public static void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, Rectangle* exclusiveScissors)
 		{
 			throw new NotImplementedException();
 		}
@@ -2605,14 +2606,14 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetViewportWithCountEXT_ptr;
 		[Calli]
-		public static void vkCmdSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport* viewports)
+		public static void vkCmdSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, Viewport* viewports)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkCmdSetScissorWithCountEXT_ptr;
 		[Calli]
-		public static void vkCmdSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D* scissors)
+		public static void vkCmdSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, Rectangle* scissors)
 		{
 			throw new NotImplementedException();
 		}
@@ -2739,6 +2740,20 @@ namespace Vortice.Vulkan
 		private static IntPtr vkCmdSetFragmentShadingRateEnumNV_ptr;
 		[Calli]
 		public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkAcquireWinrtDisplayNV_ptr;
+		[Calli]
+		public static VkResult vkAcquireWinrtDisplayNV(VkPhysicalDevice physicalDevice, VkDisplayKHR display)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkGetWinrtDisplayNV_ptr;
+		[Calli]
+		public static VkResult vkGetWinrtDisplayNV(VkPhysicalDevice physicalDevice, uint deviceRelativeId, VkDisplayKHR* display)
 		{
 			throw new NotImplementedException();
 		}
@@ -3029,6 +3044,8 @@ namespace Vortice.Vulkan
 			vkGetPhysicalDeviceCooperativeMatrixPropertiesNV_ptr = load(context, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
 			vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr = load(context, "vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV");
 			vkCreateHeadlessSurfaceEXT_ptr = load(context, "vkCreateHeadlessSurfaceEXT");
+			vkAcquireWinrtDisplayNV_ptr = load(context, "vkAcquireWinrtDisplayNV");
+			vkGetWinrtDisplayNV_ptr = load(context, "vkGetWinrtDisplayNV");
 			vkCreateAndroidSurfaceKHR_ptr = load(context, "vkCreateAndroidSurfaceKHR");
 			vkCreateIOSSurfaceMVK_ptr = load(context, "vkCreateIOSSurfaceMVK");
 			vkCreateMacOSSurfaceMVK_ptr = load(context, "vkCreateMacOSSurfaceMVK");

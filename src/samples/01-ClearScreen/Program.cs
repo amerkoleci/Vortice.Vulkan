@@ -2,6 +2,7 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using Vortice;
+using Vortice.Mathematics;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 
@@ -48,7 +49,7 @@ namespace DrawTriangle
                 _graphicsDevice!.RenderFrame(OnDraw);
             }
 
-            private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, VkExtent2D size)
+            private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, Size size)
             {
                 float g = _green + 0.001f;
                 if (g > 1.0f)
@@ -63,7 +64,7 @@ namespace DrawTriangle
                     sType = VkStructureType.RenderPassBeginInfo,
                     renderPass = _graphicsDevice!.Swapchain.RenderPass,
                     framebuffer = framebuffer,
-                    renderArea = new VkRect2D(size),
+                    renderArea = new Rectangle(size),
                     clearValueCount = 1,
                     pClearValues = &clearValue
                 };

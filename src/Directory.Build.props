@@ -1,12 +1,12 @@
 <Project>
   <PropertyGroup>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
-    <RepositoryRootDirectory>$(MSBuildThisFileDirectory)</RepositoryRootDirectory>
+    <RepositoryRootDirectory>$(MSBuildThisFileDirectory)../</RepositoryRootDirectory>
     <BinDir>$(RepositoryRootDirectory)bin</BinDir>
-    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)bin/obj/$(MSBuildProjectName)/</BaseIntermediateOutputPath>
-    <BaseOutputPath>$(MSBuildThisFileDirectory)bin/$(MSBuildProjectName)</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)../bin/obj/$(MSBuildProjectName)/</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)../bin/$(MSBuildProjectName)</BaseOutputPath>
 
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -15,7 +15,7 @@
     <Authors>Amer Koleci</Authors>
     <Product>Vortice.Vulkan</Product>
     <Company>Amer Koleci</Company>
-    <Copyright>Copyright © 2019-2020 Amer Koleci and contributors.</Copyright>
+    <Copyright>Copyright © 2019-2021 Amer Koleci and contributors.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/amerkoleci/Vortice.Vulkan</PackageProjectUrl>
@@ -24,4 +24,9 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Vortice.Mathematics" Version="1.3.3" />
+  </ItemGroup>
+
 </Project>

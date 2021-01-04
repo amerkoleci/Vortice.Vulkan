@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Vortice.Mathematics;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 using static Vortice.Win32.Kernel32;
@@ -255,7 +256,7 @@ namespace Vortice
             }
         }
 
-        public void RenderFrame(Action<VkCommandBuffer, VkFramebuffer, VkExtent2D> draw, [CallerMemberName] string? frameName = null)
+        public void RenderFrame(Action<VkCommandBuffer, VkFramebuffer, Size> draw, [CallerMemberName] string? frameName = null)
         {
             VkResult result = AcquireNextImage(out uint swapchainIndex);
 
@@ -395,7 +396,7 @@ namespace Vortice
             VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
             IntPtr userData)
         {
-            var message = Interop.GetString(pCallbackData->pMessage);
+            string? message = Interop.GetString(pCallbackData->pMessage);
             if (messageTypes == VkDebugUtilsMessageTypeFlagsEXT.Validation)
             {
                 if (messageSeverity == VkDebugUtilsMessageSeverityFlagsEXT.Error)
@@ -428,17 +429,19 @@ namespace Vortice
 
         private static void FindValidationLayers(List<string> appendTo)
         {
-            var availableLayers = vkEnumerateInstanceLayerProperties();
+            ReadOnlySpan<VkLayerProperties> availableLayers = vkEnumerateInstanceLayerProperties();
 
             for (int i = 0; i < s_RequestedValidationLayers.Length; i++)
             {
-                var hasLayer = false;
+                bool hasLayer = false;
                 for (int j = 0; j < availableLayers.Length; j++)
+                {
                     if (s_RequestedValidationLayers[i] == availableLayers[j].GetName())
                     {
                         hasLayer = true;
                         break;
                     }
+                }
 
                 if (hasLayer)
                 {

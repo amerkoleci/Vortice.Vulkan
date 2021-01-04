@@ -10,6 +10,7 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Vortice.Mathematics;
 
 namespace Vortice.Vulkan
 {
@@ -197,27 +198,27 @@ namespace Vortice.Vulkan
 			}
 		}
 
-		public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, VkViewport viewport)
+		public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, Viewport viewport)
 		{
 			vkCmdSetViewport(commandBuffer, firstViewport, 1, &viewport);
 		}
 
-		public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, ReadOnlySpan<VkViewport> viewports)
+		public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, ReadOnlySpan<Viewport> viewports)
 		{
-			fixed (VkViewport* viewportsPtr = viewports)
+			fixed (Viewport* viewportsPtr = viewports)
 			{
 				vkCmdSetViewport(commandBuffer, firstViewport, (uint)viewports.Length, viewportsPtr);
 			}
 		}
 
-		public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, VkRect2D scissor)
+		public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, Rectangle scissor)
 		{
 			vkCmdSetScissor(commandBuffer, firstScissor, 1, &scissor);
 		}
 
-		public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, ReadOnlySpan<VkRect2D> scissors)
+		public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, ReadOnlySpan<Rectangle> scissors)
 		{
-			fixed (VkRect2D* scissorsPtr = scissors)
+			fixed (Rectangle* scissorsPtr = scissors)
 			{
 				vkCmdSetScissor(commandBuffer, firstScissor, (uint)scissors.Length, scissorsPtr);
 			}
@@ -327,13 +328,13 @@ namespace Vortice.Vulkan
 			return swapchainImages;
 		}
 
-		public static ReadOnlySpan<VkRect2D> vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface)
+		public static ReadOnlySpan<Rectangle> vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface)
 		{
 			uint rectCount = 0;
 			vkGetPhysicalDevicePresentRectanglesKHR(physicalDevice, surface, &rectCount, null).CheckResult();
 
-			ReadOnlySpan<VkRect2D> rects = new VkRect2D[rectCount];
-			fixed (VkRect2D* rectsPtr = rects)
+			ReadOnlySpan<Rectangle> rects = new Rectangle[rectCount];
+			fixed (Rectangle* rectsPtr = rects)
 			{
 				vkGetPhysicalDevicePresentRectanglesKHR(physicalDevice, surface, &rectCount, rectsPtr).CheckResult();
 			}

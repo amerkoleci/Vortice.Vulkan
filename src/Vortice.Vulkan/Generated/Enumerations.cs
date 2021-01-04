@@ -531,6 +531,8 @@ namespace Vortice.Vulkan
 		ImageResolve2KHR = 1000337010,
 		PhysicalDevice4444FormatsFeaturesEXT = 1000340000,
 		DirectfbSurfaceCreateInfoEXT = 1000346000,
+		PhysicalDeviceMutableDescriptorTypeFeaturesValve = 1000351000,
+		MutableDescriptorTypeCreateInfoValve = 1000351002,
 		PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 		PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 		DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
@@ -730,6 +732,7 @@ namespace Vortice.Vulkan
 		Kazan = 65539,
 		Codeplay = 65540,
 		Mesa = 65541,
+		Pocl = 65542,
 	}
 
 	public enum VkPipelineCacheHeaderVersion
@@ -1339,6 +1342,7 @@ namespace Vortice.Vulkan
 		InlineUniformBlockEXT = 1000138000,
 		AccelerationStructureKHR = 1000150000,
 		AccelerationStructureNV = 1000165000,
+		MutableValve = 1000351000,
 	}
 
 	public enum VkAttachmentLoadOp
@@ -1824,6 +1828,7 @@ namespace Vortice.Vulkan
 		None = 0,
 		FreeDescriptorSet = 1,
 		UpdateAfterBind = 2,
+		HostOnlyValve = 4,
 		UpdateAfterBindEXT = UpdateAfterBind,
 	}
 
@@ -1833,6 +1838,7 @@ namespace Vortice.Vulkan
 		None = 0,
 		UpdateAfterBindPool = 2,
 		PushDescriptorKHR = 1,
+		HostOnlyPoolValve = 4,
 		UpdateAfterBindPoolEXT = UpdateAfterBindPool,
 	}
 
