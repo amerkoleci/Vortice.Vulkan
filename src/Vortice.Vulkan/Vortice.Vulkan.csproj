@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
-    <VersionPrefix>1.2.166.3</VersionPrefix>
+    <VersionPrefix>1.2.166.4</VersionPrefix>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
     <DebugType>portable</DebugType>

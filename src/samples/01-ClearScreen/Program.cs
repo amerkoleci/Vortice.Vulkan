@@ -69,6 +69,7 @@ namespace DrawTriangle
                     pClearValues = &clearValue
                 };
                 vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
+                vkCmdSetBlendConstants(commandBuffer, new Color4(1.0f, 1.0f, 1.0f, 1.0f));
                 vkCmdEndRenderPass(commandBuffer);
             }
         }

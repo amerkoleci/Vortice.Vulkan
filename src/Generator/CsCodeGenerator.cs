@@ -260,7 +260,7 @@ namespace Generator
 
             if (type is CppArrayType arrayType)
             {
-                return GetCsTypeName(arrayType.ElementType, isPointer);
+                return GetCsTypeName(arrayType.ElementType, true);
             }
 
             return string.Empty;

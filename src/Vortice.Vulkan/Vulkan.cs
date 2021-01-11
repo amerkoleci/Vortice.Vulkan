@@ -2,6 +2,7 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Vortice.Mathematics;
 using static Vortice.Vulkan.Vulkan.Kernel32;
@@ -515,6 +516,47 @@ namespace Vortice.Vulkan
         public static VkResult vkAllocateDescriptorSets(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, out VkDescriptorSet descriptorSets)
         {
             throw new NotImplementedException();
+        }
+
+        public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float red, float green, float blue, float alpha)
+        {
+            float[] blendConstants = new[] { red, green, blue, alpha };
+            fixed (float* blendConstantsPtr = &blendConstants[0])
+            {
+                vkCmdSetBlendConstants(commandBuffer, blendConstantsPtr);
+            }
+        }
+
+        public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, Color4 blendConstants)
+        {
+            vkCmdSetBlendConstants(commandBuffer, (float*)Unsafe.AsPointer(ref blendConstants));
+        }
+
+        public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, Size* fragmentSize, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
+        {
+            fixed (VkFragmentShadingRateCombinerOpKHR* combinerOpsPtr = &combinerOps[0])
+            {
+                vkCmdSetFragmentShadingRateKHR(commandBuffer, fragmentSize, combinerOpsPtr);
+            }
+        }
+
+        public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, Size[] fragmentSize, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
+        {
+            fixed (Size* fragmentSizePtr = &fragmentSize[0])
+            {
+                fixed (VkFragmentShadingRateCombinerOpKHR* combinerOpsPtr = &combinerOps[0])
+                {
+                    vkCmdSetFragmentShadingRateKHR(commandBuffer, fragmentSizePtr, combinerOpsPtr);
+                }
+            }
+        }
+
+        public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
+        {
+            fixed (VkFragmentShadingRateCombinerOpKHR* combinerOpsPtr = &combinerOps[0])
+            {
+                vkCmdSetFragmentShadingRateEnumNV(commandBuffer, shadingRate, combinerOpsPtr);
+            }
         }
 
         #region Nested

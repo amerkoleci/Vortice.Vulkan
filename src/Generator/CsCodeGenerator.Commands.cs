@@ -117,8 +117,6 @@ namespace Generator
             "vkCreateDebugUtilsMessengerEXT"
         };
 
-        private static bool disableCalliFunction = false;
-
         private static void GenerateCommands(CppCompilation compilation, string outputPath)
         {
             // Generate Functions
@@ -130,19 +128,12 @@ namespace Generator
             var commands = new Dictionary<string, CppFunction>();
             var instanceCommands = new Dictionary<string, CppFunction>();
             var deviceCommands = new Dictionary<string, CppFunction>();
-            foreach (var cppFunction in compilation.Functions)
+            foreach (CppFunction? cppFunction in compilation.Functions)
             {
-                var returnType = GetCsTypeName(cppFunction.ReturnType, false);
+                string? returnType = GetCsTypeName(cppFunction.ReturnType, false);
                 bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
-                var csName = cppFunction.Name;
-                var argumentsString = GetParameterSignature(cppFunction, canUseOut);
-
-                if (disableCalliFunction)
-                {
-                    writer.WriteLine("[UnmanagedFunctionPointer(CallingConvention.StdCall)]");
-                    writer.WriteLine($"public unsafe delegate {returnType} {csName}Delegate({argumentsString});");
-                    writer.WriteLine();
-                }
+                string? csName = cppFunction.Name;
+                string? argumentsString = GetParameterSignature(cppFunction, canUseOut);
 
                 commands.Add(csName, cppFunction);
 
@@ -167,19 +158,17 @@ namespace Generator
 
             using (writer.PushBlock($"unsafe partial class Vulkan"))
             {
-                foreach (var command in commands)
+                foreach (KeyValuePair<string, CppFunction> command in commands)
                 {
-                    var cppFunction = command.Value;
+                    CppFunction cppFunction = command.Value;
 
-                    if (disableCalliFunction)
+                    if(cppFunction.Name == "vkCmdSetBlendConstants")
                     {
-                        writer.WriteLine($"private static {command.Key}Delegate {command.Key}_ptr;");
+
                     }
-                    else
-                    {
-                        writer.WriteLine($"private static IntPtr {command.Key}_ptr;");
-                        writer.WriteLine($"[Calli]");
-                    }
+
+                    writer.WriteLine($"private static IntPtr {command.Key}_ptr;");
+                    writer.WriteLine($"[Calli]");
 
                     var returnType = GetCsTypeName(cppFunction.ReturnType, false);
                     bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
@@ -187,38 +176,7 @@ namespace Generator
 
                     using (writer.PushBlock($"public static {returnType} {cppFunction.Name}({argumentsString})"))
                     {
-                        if (disableCalliFunction)
-                        {
-                            if (returnType != "void")
-                            {
-                                writer.Write("return ");
-                            }
-
-                            writer.Write($"{command.Key}_ptr(");
-                            var index = 0;
-                            foreach (var cppParameter in cppFunction.Parameters)
-                            {
-                                var paramCsName = GetParameterName(cppParameter.Name);
-                                if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out var cppTypeDeclaration))
-                                {
-                                    writer.Write("out ");
-                                }
-
-                                writer.Write($"{paramCsName}");
-                                if (index < cppFunction.Parameters.Count - 1)
-                                {
-                                    writer.Write(", ");
-                                }
-
-                                index++;
-                            }
-
-                            writer.WriteLine($");");
-                        }
-                        else
-                        {
-                            writer.WriteLine("throw new NotImplementedException();");
-                        }
+                        writer.WriteLine("throw new NotImplementedException();");
                     }
                     writer.WriteLine();
                 }
@@ -235,14 +193,7 @@ namespace Generator
                 foreach (var instanceCommand in commands)
                 {
                     var commandName = instanceCommand.Key;
-                    if (disableCalliFunction)
-                    {
-                        writer.WriteLine($"{commandName}_ptr = LoadCallback<{commandName}Delegate>(context, load, \"{commandName}\");");
-                    }
-                    else
-                    {
-                        writer.WriteLine($"{commandName}_ptr = load(context, \"{commandName}\");");
-                    }
+                    writer.WriteLine($"{commandName}_ptr = load(context, nameof({commandName}));");
                 }
             }
         }
@@ -263,7 +214,7 @@ namespace Generator
                 }
             }
 
-            var index = 0;
+            int index = 0;
             var callArgumentStringBuilder = new StringBuilder();
             foreach (var parameterName in parameters)
             {
@@ -277,7 +228,7 @@ namespace Generator
                 index++;
             }
 
-            var callArgumentString = callArgumentStringBuilder.ToString();
+            string callArgumentString = callArgumentStringBuilder.ToString();
             writer.WriteLine($"{function.Name}({callArgumentString}){postCall};");
         }
 
@@ -296,9 +247,9 @@ namespace Generator
             var argumentBuilder = new StringBuilder();
             var index = 0;
 
-            foreach (var cppParameter in parameters)
+            foreach (CppParameter cppParameter in parameters)
             {
-                var direction = string.Empty;
+                string direction = string.Empty;
                 var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
                 var paramCsName = GetParameterName(cppParameter.Name);
 
