@@ -128,13 +128,16 @@ namespace Vortice
             var physicalDevices = vkEnumeratePhysicalDevices(VkInstance);
             foreach (var physicalDevice in physicalDevices)
             {
-                vkGetPhysicalDeviceProperties(physicalDevice, out var properties);
-                var deviceName = properties.GetDeviceName();
+                //vkGetPhysicalDeviceProperties(physicalDevice, out var properties);
+                //var deviceName = properties.GetDeviceName();
             }
 
             PhysicalDevice = physicalDevices[0];
+            vkGetPhysicalDeviceProperties(PhysicalDevice, out VkPhysicalDeviceProperties properties);
 
             var queueFamilies = FindQueueFamilies(PhysicalDevice, _surface);
+
+            var availableDeviceExtensions = vkEnumerateDeviceExtensionProperties(PhysicalDevice);
 
             var priority = 1.0f;
             var queueCreateInfo = new VkDeviceQueueCreateInfo
@@ -149,17 +152,77 @@ namespace Vortice
             {
                 KHRSwapchainExtensionName
             };
+
+            if (CheckDeviceExtensionSupport(KHRSpirv14ExtensionName, availableDeviceExtensions))
+            {
+                deviceExtensions.Add(KHRSpirv14ExtensionName);
+            }
+
+            if (CheckDeviceExtensionSupport(KHRFragmentShadingRateExtensionName, availableDeviceExtensions))
+            {
+                deviceExtensions.Add(KHRFragmentShadingRateExtensionName);
+            }
+
+            if (CheckDeviceExtensionSupport(NVMeshShaderExtensionName, availableDeviceExtensions))
+            {
+                deviceExtensions.Add(NVMeshShaderExtensionName);
+            }
+
+            VkPhysicalDeviceVulkan11Features features_1_1 = new VkPhysicalDeviceVulkan11Features
+            {
+                sType = VkStructureType.PhysicalDeviceVulkan11Features
+            };
+
+            VkPhysicalDeviceVulkan12Features features_1_2 = new VkPhysicalDeviceVulkan12Features
+            {
+                sType = VkStructureType.PhysicalDeviceVulkan12Features
+            };
+
+            VkPhysicalDeviceFeatures2 deviceFeatures2 = new VkPhysicalDeviceFeatures2
+            {
+                sType = VkStructureType.PhysicalDeviceFeatures2
+            };
+
+            deviceFeatures2.pNext = &features_1_1;
+            features_1_1.pNext = &features_1_2;
+
+            void** features_chain = &features_1_2.pNext;
+
+            VkPhysicalDevice8BitStorageFeatures storage_8bit_features = default;
+            if (properties.apiVersion <= VkVersion.Version_1_2)
+            {
+                if (CheckDeviceExtensionSupport(KHR8bitStorageExtensionName, availableDeviceExtensions))
+                {
+                    deviceExtensions.Add(KHR8bitStorageExtensionName);
+                    storage_8bit_features.sType = VkStructureType.PhysicalDevice8bitStorageFeatures;
+                    *features_chain = &storage_8bit_features;
+                    features_chain = &storage_8bit_features.pNext;
+                }
+            }
+
+            VkPhysicalDeviceAccelerationStructureFeaturesKHR acceleration_structure_features = default;
+            if (CheckDeviceExtensionSupport(KHRAccelerationStructureExtensionName, availableDeviceExtensions))
+            {
+                deviceExtensions.Add(KHRAccelerationStructureExtensionName);
+                acceleration_structure_features.sType = VkStructureType.PhysicalDeviceAccelerationStructureFeaturesKHR;
+                *features_chain = &acceleration_structure_features;
+                features_chain = &acceleration_structure_features.pNext;
+            }
+
+            vkGetPhysicalDeviceFeatures2(PhysicalDevice, out deviceFeatures2);
+
+            using var deviceExtensionNames = new VkStringArray(deviceExtensions);
+
             var deviceCreateInfo = new VkDeviceCreateInfo
             {
                 sType = VkStructureType.DeviceCreateInfo,
-                pQueueCreateInfos = &queueCreateInfo,
+                pNext = &deviceFeatures2,
                 queueCreateInfoCount = 1,
+                pQueueCreateInfos = &queueCreateInfo,
+                enabledExtensionCount = deviceExtensionNames.Length,
+                ppEnabledExtensionNames = deviceExtensionNames,
                 pEnabledFeatures = null,
             };
-
-            using var deviceExtensionNames = new VkStringArray(deviceExtensions);
-            deviceCreateInfo.enabledExtensionCount = deviceExtensionNames.Length;
-            deviceCreateInfo.ppEnabledExtensionNames = deviceExtensionNames;
 
             result = vkCreateDevice(PhysicalDevice, &deviceCreateInfo, null, out VkDevice);
             if (result != VkResult.Success)
@@ -193,6 +256,17 @@ namespace Vortice
                 };
                 vkAllocateCommandBuffers(VkDevice, &commandBufferInfo, out _perFrame[i].PrimaryCommandBuffer).CheckResult();
             }
+        }
+
+        private static bool CheckDeviceExtensionSupport(string extensionName, ReadOnlySpan<VkExtensionProperties> availableDeviceExtensions)
+        {
+            foreach (VkExtensionProperties property in availableDeviceExtensions)
+            {
+                if (string.Equals(property.GetExtensionName(), extensionName, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+
+            return false;
         }
 
         public void Dispose()
@@ -457,12 +531,12 @@ namespace Vortice
         static (uint graphicsFamily, uint presentFamily) FindQueueFamilies(
             VkPhysicalDevice device, VkSurfaceKHR surface)
         {
-            var queueFamilies = vkGetPhysicalDeviceQueueFamilyProperties(device);
+            ReadOnlySpan<VkQueueFamilyProperties> queueFamilies = vkGetPhysicalDeviceQueueFamilyProperties(device);
 
             uint graphicsFamily = QueueFamilyIgnored;
             uint presentFamily = QueueFamilyIgnored;
             uint i = 0;
-            foreach (var queueFamily in queueFamilies)
+            foreach (VkQueueFamilyProperties queueFamily in queueFamilies)
             {
                 if ((queueFamily.queueFlags & VkQueueFlags.Graphics) != VkQueueFlags.None)
                 {

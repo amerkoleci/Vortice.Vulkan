@@ -11,6 +11,7 @@ namespace Vortice.Vulkan
 
         public static readonly VkVersion Version_1_0 = new VkVersion(1, 0, 0);
         public static readonly VkVersion Version_1_1 = new VkVersion(1, 1, 0);
+        public static readonly VkVersion Version_1_2 = new VkVersion(1, 2, 0);
 
         public VkVersion(uint value)
         {

@@ -15,9 +15,9 @@ namespace Vortice.Vulkan
 	public static partial class Vulkan
 	{
 		/// <summary>
-		/// VK_HEADER_VERSION = 166
+		/// VK_HEADER_VERSION = 167
 		/// </summary>
-		public const uint HeaderVersion = 166;
+		public const uint HeaderVersion = 167;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_VERSION(1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -2315,9 +2315,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTDeviceMemoryReport = 1;
 		/// <summary>
-		/// VK_EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION = 1
+		/// VK_EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION = 2
 		/// </summary>
-		public const uint EXTDeviceMemoryReportSpecVersion = 1;
+		public const uint EXTDeviceMemoryReportSpecVersion = 2;
 		/// <summary>
 		/// VK_EXT_DEVICE_MEMORY_REPORT_EXTENSION_NAME = "VK_EXT_device_memory_report"
 		/// </summary>

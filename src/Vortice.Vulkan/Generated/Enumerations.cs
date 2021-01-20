@@ -2870,18 +2870,18 @@ namespace Vortice.Vulkan
 
 	public enum VkFragmentShadingRateNV
 	{
-		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_ = 0,
-		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_ = 1,
-		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_ = 4,
-		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X2_PIXELS_ = 5,
-		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X4_PIXELS_ = 6,
-		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X2_PIXELS_ = 9,
-		VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X4_PIXELS_ = 10,
-		VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_ = 11,
-		VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_ = 12,
-		VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_ = 13,
-		VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_ = 14,
-		VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_ = 15,
+		OneInvocationPerPixel = 0,
+		OneInvocationPer1x2Pixels = 1,
+		OneInvocationPer2x1Pixels = 4,
+		OneInvocationPer2x2Pixels = 5,
+		OneInvocationPer2x4Pixels = 6,
+		OneInvocationPer4x2Pixels = 9,
+		OneInvocationPer4x4Pixels = 10,
+		TwoInvocationsPerPixel = 11,
+		FourInvocationsPerPixel = 12,
+		EightInvocationsPerPixel = 13,
+		SixteenInvocationsPerPixel = 14,
+		NoInvocations = 15,
 	}
 
 	public enum VkBuildAccelerationStructureModeKHR
