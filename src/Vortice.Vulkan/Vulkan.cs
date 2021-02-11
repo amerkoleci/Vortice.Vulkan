@@ -520,16 +520,14 @@ namespace Vortice.Vulkan
 
         public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float red, float green, float blue, float alpha)
         {
-            float[] blendConstants = new[] { red, green, blue, alpha };
-            fixed (float* blendConstantsPtr = &blendConstants[0])
-            {
-                vkCmdSetBlendConstants(commandBuffer, blendConstantsPtr);
-            }
+            var blendConstantsArray = stackalloc float[] { red, green, blue, alpha };
+            vkCmdSetBlendConstants(commandBuffer, blendConstantsArray);
         }
 
         public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, Color4 blendConstants)
         {
-            vkCmdSetBlendConstants(commandBuffer, (float*)Unsafe.AsPointer(ref blendConstants));
+            var blendConstantsArray = stackalloc float[] { blendConstants.R, blendConstants.G, blendConstants.B, blendConstants.A };
+            vkCmdSetBlendConstants(commandBuffer, blendConstantsArray);
         }
 
         public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, Size* fragmentSize, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
