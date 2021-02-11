@@ -243,10 +243,13 @@ namespace Vortice.Vulkan
             if (size == WholeSize)
             {
                 vkGetBufferMemoryRequirements(device, buffer, out VkMemoryRequirements memoryRequirements);
-                return new Span<T>(pData, (int)memoryRequirements.size);
+                size = memoryRequirements.size;
             }
 
-            return new Span<T>(pData, (int)size);
+            int oneItemSize = sizeof(T);
+            int spanLength = (int)size / oneItemSize;
+
+            return new Span<T>(pData, spanLength);
         }
 
         public static Span<T> vkMapMemory<T>(VkDevice device, VkImage image, VkDeviceMemory memory, ulong offset = 0, ulong size = WholeSize, VkMemoryMapFlags flags = VkMemoryMapFlags.None) where T : unmanaged
@@ -257,10 +260,13 @@ namespace Vortice.Vulkan
             if (size == WholeSize)
             {
                 vkGetImageMemoryRequirements(device, image, out VkMemoryRequirements memoryRequirements);
-                return new Span<T>(pData, (int)memoryRequirements.size);
+                size = memoryRequirements.size;
             }
 
-            return new Span<T>(pData, (int)size);
+            int oneItemSize = sizeof(T);
+            int spanLength = (int)size / oneItemSize;
+
+            return new Span<T>(pData, spanLength);
         }
 
         public static void vkUpdateDescriptorSets(VkDevice device, VkWriteDescriptorSet writeDescriptorSet)
@@ -520,16 +526,14 @@ namespace Vortice.Vulkan
 
         public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float red, float green, float blue, float alpha)
         {
-            float[] blendConstants = new[] { red, green, blue, alpha };
-            fixed (float* blendConstantsPtr = &blendConstants[0])
-            {
-                vkCmdSetBlendConstants(commandBuffer, blendConstantsPtr);
-            }
+            var blendConstantsArray = stackalloc float[] { red, green, blue, alpha };
+            vkCmdSetBlendConstants(commandBuffer, blendConstantsArray);
         }
 
         public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, Color4 blendConstants)
         {
-            vkCmdSetBlendConstants(commandBuffer, (float*)Unsafe.AsPointer(ref blendConstants));
+            var blendConstantsArray = stackalloc float[] { blendConstants.R, blendConstants.G, blendConstants.B, blendConstants.A };
+            vkCmdSetBlendConstants(commandBuffer, blendConstantsArray);
         }
 
         public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, Size* fragmentSize, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
