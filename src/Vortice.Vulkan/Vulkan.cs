@@ -243,10 +243,13 @@ namespace Vortice.Vulkan
             if (size == WholeSize)
             {
                 vkGetBufferMemoryRequirements(device, buffer, out VkMemoryRequirements memoryRequirements);
-                return new Span<T>(pData, (int)memoryRequirements.size);
+                size = memoryRequirements.size;
             }
 
-            return new Span<T>(pData, (int)size);
+            int oneItemSize = sizeof(T);
+            int spanLength = (int)size / oneItemSize;
+
+            return new Span<T>(pData, spanLength);
         }
 
         public static Span<T> vkMapMemory<T>(VkDevice device, VkImage image, VkDeviceMemory memory, ulong offset = 0, ulong size = WholeSize, VkMemoryMapFlags flags = VkMemoryMapFlags.None) where T : unmanaged
@@ -257,10 +260,13 @@ namespace Vortice.Vulkan
             if (size == WholeSize)
             {
                 vkGetImageMemoryRequirements(device, image, out VkMemoryRequirements memoryRequirements);
-                return new Span<T>(pData, (int)memoryRequirements.size);
+                size = memoryRequirements.size;
             }
 
-            return new Span<T>(pData, (int)size);
+            int oneItemSize = sizeof(T);
+            int spanLength = (int)size / oneItemSize;
+
+            return new Span<T>(pData, spanLength);
         }
 
         public static void vkUpdateDescriptorSets(VkDevice device, VkWriteDescriptorSet writeDescriptorSet)
