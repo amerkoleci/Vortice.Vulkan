@@ -3238,6 +3238,25 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 shaderZeroInitializeWorkgroupMemory;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 workgroupMemoryExplicitLayout;
+		public VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout;
+		public VkBool32 workgroupMemoryExplicitLayout8BitAccess;
+		public VkBool32 workgroupMemoryExplicitLayout16BitAccess;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkBufferCopy2KHR
 	{
 		public VkStructureType sType;

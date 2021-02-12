@@ -15,9 +15,9 @@ namespace Vortice.Vulkan
 	public static partial class Vulkan
 	{
 		/// <summary>
-		/// VK_HEADER_VERSION = 167
+		/// VK_HEADER_VERSION = 169
 		/// </summary>
-		public const uint HeaderVersion = 167;
+		public const uint HeaderVersion = 169;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_VERSION(1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -870,6 +870,30 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_NON_SEMANTIC_INFO_EXTENSION_NAME = "VK_KHR_shader_non_semantic_info"
 		/// </summary>
 		public const string KHRShaderNonSemanticInfoExtensionName = "VK_KHR_shader_non_semantic_info";
+		/// <summary>
+		/// VK_KHR_zero_initialize_workgroup_memory = 1
+		/// </summary>
+		public const uint KHRZeroInitializeWorkgroupMemory = 1;
+		/// <summary>
+		/// VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRZeroInitializeWorkgroupMemorySpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_EXTENSION_NAME = "VK_KHR_zero_initialize_workgroup_memory"
+		/// </summary>
+		public const string KHRZeroInitializeWorkgroupMemoryExtensionName = "VK_KHR_zero_initialize_workgroup_memory";
+		/// <summary>
+		/// VK_KHR_workgroup_memory_explicit_layout = 1
+		/// </summary>
+		public const uint KHRWorkgroupMemoryExplicitLayout = 1;
+		/// <summary>
+		/// VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRWorkgroupMemoryExplicitLayoutSpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_EXTENSION_NAME = "VK_KHR_workgroup_memory_explicit_layout"
+		/// </summary>
+		public const string KHRWorkgroupMemoryExplicitLayoutExtensionName = "VK_KHR_workgroup_memory_explicit_layout";
 		/// <summary>
 		/// VK_KHR_copy_commands2 = 1
 		/// </summary>
@@ -2435,11 +2459,11 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint QcomRotatedCopyCommands = 1;
 		/// <summary>
-		/// VK_QCOM_rotated_copy_commands_SPEC_VERSION = 0
+		/// VK_QCOM_ROTATED_COPY_COMMANDS_SPEC_VERSION = 0
 		/// </summary>
 		public const uint QcomRotatedCopyCommandsSpecVersion = 0;
 		/// <summary>
-		/// VK_QCOM_rotated_copy_commands_EXTENSION_NAME = "VK_QCOM_rotated_copy_commands"
+		/// VK_QCOM_ROTATED_COPY_COMMANDS_EXTENSION_NAME = "VK_QCOM_rotated_copy_commands"
 		/// </summary>
 		public const string QcomRotatedCopyCommandsExtensionName = "VK_QCOM_rotated_copy_commands";
 		/// <summary>
