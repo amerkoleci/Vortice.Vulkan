@@ -1,6 +1,8 @@
 <Project>
   <PropertyGroup>
     <RepositoryRootDirectory>$(MSBuildThisFileDirectory)../</RepositoryRootDirectory>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)../bin/obj/$(MSBuildProjectName)/</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)../bin/$(MSBuildProjectName)</BaseOutputPath>
     
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>9.0</LangVersion>
