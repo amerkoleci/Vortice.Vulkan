@@ -33,6 +33,7 @@ namespace Generator
             { "DWORD", "uint" },
 
             { "VkFlags", "uint" },
+            { "VkFlags64", "ulong" },
             { "VkDeviceSize", "ulong" },
             { "VkSampleMask", "uint" },
 
@@ -107,7 +108,7 @@ namespace Generator
             writer.WriteLine("/// </summary>");
             using (writer.PushBlock("public static partial class Vulkan"))
             {
-                foreach (var cppMacro in compilation.Macros)
+                foreach (CppMacro cppMacro in compilation.Macros)
                 {
                     if (string.IsNullOrEmpty(cppMacro.Value)
                         || cppMacro.Name.EndsWith("_H_", StringComparison.OrdinalIgnoreCase)

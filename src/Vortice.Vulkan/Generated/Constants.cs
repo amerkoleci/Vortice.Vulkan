@@ -15,9 +15,9 @@ namespace Vortice.Vulkan
 	public static partial class Vulkan
 	{
 		/// <summary>
-		/// VK_HEADER_VERSION = 169
+		/// VK_HEADER_VERSION = 170
 		/// </summary>
-		public const uint HeaderVersion = 169;
+		public const uint HeaderVersion = 170;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_VERSION(1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -870,6 +870,18 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_NON_SEMANTIC_INFO_EXTENSION_NAME = "VK_KHR_shader_non_semantic_info"
 		/// </summary>
 		public const string KHRShaderNonSemanticInfoExtensionName = "VK_KHR_shader_non_semantic_info";
+		/// <summary>
+		/// VK_KHR_synchronization2 = 1
+		/// </summary>
+		public const uint KHRSynchronization2 = 1;
+		/// <summary>
+		/// VK_KHR_SYNCHRONIZATION_2_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRSynchronization2SpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2"
+		/// </summary>
+		public const string KHRSynchronization2ExtensionName = "VK_KHR_synchronization2";
 		/// <summary>
 		/// VK_KHR_zero_initialize_workgroup_memory = 1
 		/// </summary>

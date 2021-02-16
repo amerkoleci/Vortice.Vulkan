@@ -89,10 +89,7 @@ namespace Generator
             WriteLine("}");
         }
 
-        public IDisposable PushBlock(string marker = "{")
-        {
-            return new CodeBlock(this, marker);
-        }
+        public IDisposable PushBlock(string marker = "{") => new CodeBlock(this, marker);
 
         public void Indent(int count = 1)
         {

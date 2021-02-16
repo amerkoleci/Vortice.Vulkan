@@ -1883,6 +1883,62 @@ namespace Vortice.Vulkan
 			throw new NotImplementedException();
 		}
 
+		private static IntPtr vkCmdSetEvent2KHR_ptr;
+		[Calli]
+		public static void vkCmdSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfoKHR* dependencyInfo)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdResetEvent2KHR_ptr;
+		[Calli]
+		public static void vkCmdResetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2KHR stageMask)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdWaitEvents2KHR_ptr;
+		[Calli]
+		public static void vkCmdWaitEvents2KHR(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkDependencyInfoKHR* dependencyInfos)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdPipelineBarrier2KHR_ptr;
+		[Calli]
+		public static void vkCmdPipelineBarrier2KHR(VkCommandBuffer commandBuffer, VkDependencyInfoKHR* dependencyInfo)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdWriteTimestamp2KHR_ptr;
+		[Calli]
+		public static void vkCmdWriteTimestamp2KHR(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkQueryPool queryPool, uint query)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkQueueSubmit2KHR_ptr;
+		[Calli]
+		public static VkResult vkQueueSubmit2KHR(VkQueue queue, uint submitCount, VkSubmitInfo2KHR* submits, VkFence fence)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkCmdWriteBufferMarker2AMD_ptr;
+		[Calli]
+		public static void vkCmdWriteBufferMarker2AMD(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkBuffer dstBuffer, ulong dstOffset, uint marker)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static IntPtr vkGetQueueCheckpointData2NV_ptr;
+		[Calli]
+		public static void vkGetQueueCheckpointData2NV(VkQueue queue, uint* checkpointDataCount, VkCheckpointData2NV* checkpointData)
+		{
+			throw new NotImplementedException();
+		}
+
 		private static IntPtr vkCmdCopyBuffer2KHR_ptr;
 		[Calli]
 		public static void vkCmdCopyBuffer2KHR(VkCommandBuffer commandBuffer, VkCopyBufferInfo2KHR* copyBufferInfo)
@@ -3259,6 +3315,14 @@ namespace Vortice.Vulkan
 			vkGetPipelineExecutablePropertiesKHR_ptr = load(context, nameof(vkGetPipelineExecutablePropertiesKHR));
 			vkGetPipelineExecutableStatisticsKHR_ptr = load(context, nameof(vkGetPipelineExecutableStatisticsKHR));
 			vkGetPipelineExecutableInternalRepresentationsKHR_ptr = load(context, nameof(vkGetPipelineExecutableInternalRepresentationsKHR));
+			vkCmdSetEvent2KHR_ptr = load(context, nameof(vkCmdSetEvent2KHR));
+			vkCmdResetEvent2KHR_ptr = load(context, nameof(vkCmdResetEvent2KHR));
+			vkCmdWaitEvents2KHR_ptr = load(context, nameof(vkCmdWaitEvents2KHR));
+			vkCmdPipelineBarrier2KHR_ptr = load(context, nameof(vkCmdPipelineBarrier2KHR));
+			vkCmdWriteTimestamp2KHR_ptr = load(context, nameof(vkCmdWriteTimestamp2KHR));
+			vkQueueSubmit2KHR_ptr = load(context, nameof(vkQueueSubmit2KHR));
+			vkCmdWriteBufferMarker2AMD_ptr = load(context, nameof(vkCmdWriteBufferMarker2AMD));
+			vkGetQueueCheckpointData2NV_ptr = load(context, nameof(vkGetQueueCheckpointData2NV));
 			vkCmdCopyBuffer2KHR_ptr = load(context, nameof(vkCmdCopyBuffer2KHR));
 			vkCmdCopyImage2KHR_ptr = load(context, nameof(vkCmdCopyImage2KHR));
 			vkCmdCopyBufferToImage2KHR_ptr = load(context, nameof(vkCmdCopyBufferToImage2KHR));

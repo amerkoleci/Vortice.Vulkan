@@ -147,10 +147,9 @@ namespace Generator
             using var writer = new CodeWriter(Path.Combine(outputPath, "Enumerations.cs"), "System");
             var createdEnums = new Dictionary<string, string>();
 
-            foreach (var cppEnum in compilation.Enums)
+            foreach (CppEnum cppEnum in compilation.Enums)
             {
-                var isBitmask =
-                    cppEnum.Name.EndsWith("FlagBits") ||
+                bool isBitmask = cppEnum.Name.EndsWith("FlagBits") ||
                     cppEnum.Name.EndsWith("FlagBitsEXT") ||
                     cppEnum.Name.EndsWith("FlagBitsKHR") ||
                     cppEnum.Name.EndsWith("FlagBitsNV") ||
@@ -239,7 +238,7 @@ namespace Generator
                         //writer.WriteLine("/// </summary>");
                         if (enumItem.ValueExpression is CppRawExpression rawExpression)
                         {
-                            var enumValueName = GetEnumItemName(cppEnum, rawExpression.Text, enumNamePrefix);
+                            string enumValueName = GetEnumItemName(cppEnum, rawExpression.Text, enumNamePrefix);
                             if (enumItemName == "SurfaceCapabilities2EXT")
                             {
                                 continue;
@@ -253,7 +252,6 @@ namespace Generator
                                     continue;
                             }
 
-
                             writer.WriteLine($"{enumItemName} = {enumValueName},");
                         }
                         else
@@ -264,7 +262,7 @@ namespace Generator
 
                     if (csName == "VkColorComponentFlags")
                     {
-                        writer.WriteLine($"All = R | G | B | A");
+                        writer.WriteLine("All = R | G | B | A");
                     }
                 }
 
@@ -272,7 +270,7 @@ namespace Generator
             }
 
             // Map missing flags with typedefs to VkFlags
-            foreach (var typedef in compilation.Typedefs)
+            foreach (CppTypedef typedef in compilation.Typedefs)
             {
                 if (typedef.Name.StartsWith("PFN_")
                     || typedef.Name.Equals("VkBool32", StringComparison.OrdinalIgnoreCase)
@@ -306,6 +304,62 @@ namespace Generator
                     }
                     writer.WriteLine();
                 }
+            }
+
+            // Defined with specs 1.2.170 => VK_KHR_synchronization2
+            string lastCreatedEnum = string.Empty;
+            foreach (CppField cppField in compilation.Fields)
+            {
+                string? fieldType = GetCsTypeName(cppField.Type, false);
+
+                if (!createdEnums.ContainsKey(fieldType))
+                {
+                    if (!string.IsNullOrEmpty(lastCreatedEnum))
+                    {
+                        writer.EndBlock();
+                        writer.WriteLine();
+                    }
+
+                    createdEnums.Add(fieldType, fieldType);
+                    lastCreatedEnum = fieldType;
+
+                    string baseType = "uint";
+                    if (cppField.Type is CppQualifiedType qualifiedType)
+                    {
+                        if (qualifiedType.ElementType is CppTypedef typedef)
+                        {
+                            baseType = GetCsTypeName(typedef.ElementType, false);
+                        }
+                        else
+                        {
+                            baseType = GetCsTypeName(qualifiedType.ElementType, false);
+                        }
+                    }
+
+                    writer.WriteLine("[Flags]");
+                    writer.BeginBlock($"public enum {fieldType} : {baseType}");
+                }
+
+                string csFieldName = string.Empty;
+                if (cppField.Name.StartsWith("VK_PIPELINE_STAGE_2"))
+                {
+                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_PIPELINE_STAGE_2");
+                }
+                else if (cppField.Name.StartsWith("VK_ACCESS_2"))
+                {
+                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_ACCESS_2");
+                }
+                else
+                {
+                    csFieldName = NormalizeFieldName(cppField.Name);
+                }
+                
+                writer.WriteLine($"{csFieldName} = {cppField.InitValue},");
+            }
+
+            if (!string.IsNullOrEmpty(lastCreatedEnum))
+            {
+                writer.EndBlock();
             }
         }
 
@@ -544,6 +598,5 @@ namespace Generator
             string prettyName = sb.ToString();
             return (char.IsNumber(prettyName[0])) ? "_" + prettyName : prettyName;
         }
-
     }
 }

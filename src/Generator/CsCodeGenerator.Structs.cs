@@ -79,79 +79,84 @@ namespace Generator
 
                     foreach (CppField cppField in cppClass.Fields)
                     {
-                        string csFieldName = NormalizeFieldName(cppField.Name);
-
-                        if (isUnion)
-                        {
-                            writer.WriteLine("[FieldOffset(0)]");
-                        }
-
-                        if (cppField.Type is CppArrayType arrayType)
-                        {
-                            bool canUseFixed = false;
-                            if (arrayType.ElementType is CppPrimitiveType)
-                            {
-                                canUseFixed = true;
-                            }
-                            else if (arrayType.ElementType is CppTypedef typedef
-                                && typedef.ElementType is CppPrimitiveType)
-                            {
-                                canUseFixed = true;
-                            }
-
-                            if (canUseFixed)
-                            {
-                                var csFieldType = GetCsTypeName(arrayType.ElementType, false);
-                                writer.WriteLine($"public unsafe fixed {csFieldType} {csFieldName}[{arrayType.Size}];");
-                            }
-                            else
-                            {
-                                var unsafePrefix = string.Empty;
-                                var csFieldType = GetCsTypeName(arrayType.ElementType, false);
-                                if (csFieldType.EndsWith('*'))
-                                {
-                                    unsafePrefix = "unsafe ";
-                                }
-
-                                for (var i = 0; i < arrayType.Size; i++)
-                                {
-                                    writer.WriteLine($"public {unsafePrefix}{csFieldType} {csFieldName}_{i};");
-                                }
-                            }
-                        }
-                        else
-                        {
-                            string csFieldType = GetCsTypeName(cppField.Type, false);
-                            if (csFieldName.Equals("specVersion", StringComparison.OrdinalIgnoreCase) ||
-                                csFieldName.Equals("applicationVersion", StringComparison.OrdinalIgnoreCase) ||
-                                csFieldName.Equals("engineVersion", StringComparison.OrdinalIgnoreCase) ||
-                                csFieldName.Equals("apiVersion", StringComparison.OrdinalIgnoreCase))
-                            {
-                                csFieldType = "VkVersion";
-                            }
-
-                            if (cppField.Type.ToString() == "ANativeWindow*")
-                            {
-                                csFieldType = "IntPtr";
-                            }
-                            else if (cppField.Type.ToString() == "CAMetalLayer*"
-                                || cppField.Type.ToString() == "const CAMetalLayer*")
-                            {
-                                csFieldType = "IntPtr";
-                            }
-
-                            string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
-                            if (csFieldType.EndsWith('*'))
-                            {
-                                fieldPrefix += "unsafe ";
-                            }
-
-                            writer.WriteLine($"public {fieldPrefix}{csFieldType} {csFieldName};");
-                        }
+                        WriteField(writer, cppField, isUnion, isReadOnly);
                     }
                 }
 
                 writer.WriteLine();
+            }
+        }
+
+        private static void WriteField(CodeWriter writer, CppField field, bool isUnion = false, bool isReadOnly = false)
+        {
+            string csFieldName = NormalizeFieldName(field.Name);
+
+            if (isUnion)
+            {
+                writer.WriteLine("[FieldOffset(0)]");
+            }
+
+            if (field.Type is CppArrayType arrayType)
+            {
+                bool canUseFixed = false;
+                if (arrayType.ElementType is CppPrimitiveType)
+                {
+                    canUseFixed = true;
+                }
+                else if (arrayType.ElementType is CppTypedef typedef
+                    && typedef.ElementType is CppPrimitiveType)
+                {
+                    canUseFixed = true;
+                }
+
+                if (canUseFixed)
+                {
+                    string csFieldType = GetCsTypeName(arrayType.ElementType, false);
+                    writer.WriteLine($"public unsafe fixed {csFieldType} {csFieldName}[{arrayType.Size}];");
+                }
+                else
+                {
+                    string unsafePrefix = string.Empty;
+                    string csFieldType = GetCsTypeName(arrayType.ElementType, false);
+                    if (csFieldType.EndsWith('*'))
+                    {
+                        unsafePrefix = "unsafe ";
+                    }
+
+                    for (int i = 0; i < arrayType.Size; i++)
+                    {
+                        writer.WriteLine($"public {unsafePrefix}{csFieldType} {csFieldName}_{i};");
+                    }
+                }
+            }
+            else
+            {
+                string csFieldType = GetCsTypeName(field.Type, false);
+                if (csFieldName.Equals("specVersion", StringComparison.OrdinalIgnoreCase) ||
+                    csFieldName.Equals("applicationVersion", StringComparison.OrdinalIgnoreCase) ||
+                    csFieldName.Equals("engineVersion", StringComparison.OrdinalIgnoreCase) ||
+                    csFieldName.Equals("apiVersion", StringComparison.OrdinalIgnoreCase))
+                {
+                    csFieldType = "VkVersion";
+                }
+
+                if (field.Type.ToString() == "ANativeWindow*")
+                {
+                    csFieldType = "IntPtr";
+                }
+                else if (field.Type.ToString() == "CAMetalLayer*"
+                    || field.Type.ToString() == "const CAMetalLayer*")
+                {
+                    csFieldType = "IntPtr";
+                }
+
+                string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
+                if (csFieldType.EndsWith('*'))
+                {
+                    fieldPrefix += "unsafe ";
+                }
+
+                writer.WriteLine($"public {fieldPrefix}{csFieldType} {csFieldName};");
             }
         }
     }

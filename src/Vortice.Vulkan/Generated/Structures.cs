@@ -3238,6 +3238,123 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryBarrier2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkPipelineStageFlags2KHR srcStageMask;
+		public VkAccessFlags2KHR srcAccessMask;
+		public VkPipelineStageFlags2KHR dstStageMask;
+		public VkAccessFlags2KHR dstAccessMask;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkBufferMemoryBarrier2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkPipelineStageFlags2KHR srcStageMask;
+		public VkAccessFlags2KHR srcAccessMask;
+		public VkPipelineStageFlags2KHR dstStageMask;
+		public VkAccessFlags2KHR dstAccessMask;
+		public uint srcQueueFamilyIndex;
+		public uint dstQueueFamilyIndex;
+		public VkBuffer buffer;
+		public ulong offset;
+		public ulong size;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageMemoryBarrier2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkPipelineStageFlags2KHR srcStageMask;
+		public VkAccessFlags2KHR srcAccessMask;
+		public VkPipelineStageFlags2KHR dstStageMask;
+		public VkAccessFlags2KHR dstAccessMask;
+		public VkImageLayout oldLayout;
+		public VkImageLayout newLayout;
+		public uint srcQueueFamilyIndex;
+		public uint dstQueueFamilyIndex;
+		public VkImage image;
+		public VkImageSubresourceRange subresourceRange;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkDependencyInfoKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkDependencyFlags dependencyFlags;
+		public uint memoryBarrierCount;
+		public unsafe VkMemoryBarrier2KHR* pMemoryBarriers;
+		public uint bufferMemoryBarrierCount;
+		public unsafe VkBufferMemoryBarrier2KHR* pBufferMemoryBarriers;
+		public uint imageMemoryBarrierCount;
+		public unsafe VkImageMemoryBarrier2KHR* pImageMemoryBarriers;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSemaphoreSubmitInfoKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkSemaphore semaphore;
+		public ulong value;
+		public VkPipelineStageFlags2KHR stageMask;
+		public uint deviceIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCommandBufferSubmitInfoKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkCommandBuffer commandBuffer;
+		public uint deviceMask;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubmitInfo2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkSubmitFlagsKHR flags;
+		public uint waitSemaphoreInfoCount;
+		public unsafe VkSemaphoreSubmitInfoKHR* pWaitSemaphoreInfos;
+		public uint commandBufferInfoCount;
+		public unsafe VkCommandBufferSubmitInfoKHR* pCommandBufferInfos;
+		public uint signalSemaphoreInfoCount;
+		public unsafe VkSemaphoreSubmitInfoKHR* pSignalSemaphoreInfos;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSynchronization2FeaturesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 synchronization2;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkQueueFamilyCheckpointProperties2NV
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkPipelineStageFlags2KHR checkpointExecutionStageMask;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCheckpointData2NV
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkPipelineStageFlags2KHR stage;
+		public unsafe void* pCheckpointMarker;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR
 	{
 		public VkStructureType sType;

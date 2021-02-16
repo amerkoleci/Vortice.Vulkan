@@ -511,6 +511,16 @@ namespace Vortice.Vulkan
 		PhysicalDevicePipelineCreationCacheControlFeaturesEXT = 1000297000,
 		PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 		DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
+		MemoryBarrier2KHR = 1000314000,
+		BufferMemoryBarrier2KHR = 1000314001,
+		ImageMemoryBarrier2KHR = 1000314002,
+		DependencyInfoKHR = 1000314003,
+		SubmitInfo2KHR = 1000314004,
+		SemaphoreSubmitInfoKHR = 1000314005,
+		CommandBufferSubmitInfoKHR = 1000314006,
+		PhysicalDeviceSynchronization2FeaturesKHR = 1000314007,
+		QueueFamilyCheckpointProperties2NV = 1000314008,
+		CheckpointData2NV = 1000314009,
 		PhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR = 1000325000,
 		PhysicalDeviceFragmentShadingRateEnumsPropertiesNV = 1000326000,
 		PhysicalDeviceFragmentShadingRateEnumsFeaturesNV = 1000326001,
@@ -671,6 +681,8 @@ namespace Vortice.Vulkan
 		SharedPresentKHR = 1000111000,
 		ShadingRateOptimalNV = 1000164003,
 		FragmentDensityMapOptimalEXT = 1000218000,
+		ReadOnlyOptimalKHR = 1000314000,
+		AttachmentOptimalKHR = 1000314001,
 		DepthReadOnlyStencilAttachmentOptimalKHR = DepthReadOnlyStencilAttachmentOptimal,
 		DepthAttachmentStencilReadOnlyOptimalKHR = DepthAttachmentStencilReadOnlyOptimal,
 		FragmentShadingRateAttachmentOptimalKHR = ShadingRateOptimalNV,
@@ -1422,6 +1434,7 @@ namespace Vortice.Vulkan
 		FragmentDensityMapReadEXT = 16777216,
 		CommandPreprocessReadNV = 131072,
 		CommandPreprocessWriteNV = 262144,
+		NoneKHR = 0,
 		AccelerationStructureReadNV = AccelerationStructureReadKHR,
 		AccelerationStructureWriteNV = AccelerationStructureWriteKHR,
 		FragmentShadingRateAttachmentReadKHR = ShadingRateImageReadNV,
@@ -1619,6 +1632,7 @@ namespace Vortice.Vulkan
 		MeshShaderNV = 1048576,
 		FragmentDensityProcessEXT = 8388608,
 		CommandPreprocessNV = 131072,
+		NoneKHR = 0,
 		RayTracingShaderNV = RayTracingShaderKHR,
 		AccelerationStructureBuildNV = AccelerationStructureBuildKHR,
 		FragmentShadingRateAttachmentKHR = ShadingRateImageNV,
@@ -1645,6 +1659,13 @@ namespace Vortice.Vulkan
 	{
 		None = 0,
 		Signaled = 1,
+	}
+
+	[Flags]
+	public enum VkEventCreateFlags
+	{
+		None = 0,
+		DeviceOnlyKHR = 1,
 	}
 
 	[Flags]
@@ -2378,6 +2399,13 @@ namespace Vortice.Vulkan
 		Float64 = 3,
 	}
 
+	[Flags]
+	public enum VkSubmitFlagsKHR
+	{
+		None = 0,
+		Protected = 1,
+	}
+
 	public enum VkDebugReportObjectTypeEXT
 	{
 		Unknown = 0,
@@ -2945,12 +2973,6 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
-	public enum VkEventCreateFlags
-	{
-		None = 0,
-	}
-
-	[Flags]
 	public enum VkQueryPoolCreateFlags
 	{
 		None = 0,
@@ -3268,4 +3290,86 @@ namespace Vortice.Vulkan
 		None = 0,
 	}
 
+	[Flags]
+	public enum VkPipelineStageFlags2KHR : ulong
+	{
+		NoneKHR = 0,
+		TopOfPipeKHR = 1,
+		DrawIndirectKHR = 2,
+		VertexInputKHR = 4,
+		VertexShaderKHR = 8,
+		TessellationControlShaderKHR = 16,
+		TessellationEvaluationShaderKHR = 32,
+		GeometryShaderKHR = 64,
+		FragmentShaderKHR = 128,
+		EarlyFragmentTestsKHR = 256,
+		LateFragmentTestsKHR = 512,
+		ColorAttachmentOutputKHR = 1024,
+		ComputeShaderKHR = 2048,
+		AllTransferKHR = 4096,
+		TransferKHR = 4096,
+		BottomOfPipeKHR = 8192,
+		HostKHR = 16384,
+		AllGraphicsKHR = 32768,
+		AllCommandsKHR = 65536,
+		CopyKHR = 4294967296,
+		ResolveKHR = 8589934592,
+		BlitKHR = 17179869184,
+		ClearKHR = 34359738368,
+		IndexInputKHR = 68719476736,
+		VertexAttributeInputKHR = 137438953472,
+		PreRasterizationShadersKHR = 274877906944,
+		TransformFeedbackEXT = 16777216,
+		ConditionalRenderingEXT = 262144,
+		CommandPreprocessNV = 131072,
+		FragmentShadingRateAttachmentKHR = 4194304,
+		ShadingRateImageNV = 4194304,
+		AccelerationStructureBuildKHR = 33554432,
+		RayTracingShaderKHR = 2097152,
+		RayTracingShaderNV = 2097152,
+		AccelerationStructureBuildNV = 33554432,
+		FragmentDensityProcessEXT = 8388608,
+		TaskShaderNV = 524288,
+		MeshShaderNV = 1048576,
+	}
+
+	[Flags]
+	public enum VkAccessFlags2KHR : ulong
+	{
+		NoneKHR = 0,
+		IndirectCommandReadKHR = 1,
+		IndexReadKHR = 2,
+		VertexAttributeReadKHR = 4,
+		UniformReadKHR = 8,
+		InputAttachmentReadKHR = 16,
+		ShaderReadKHR = 32,
+		ShaderWriteKHR = 64,
+		ColorAttachmentReadKHR = 128,
+		ColorAttachmentWriteKHR = 256,
+		DepthStencilAttachmentReadKHR = 512,
+		DepthStencilAttachmentWriteKHR = 1024,
+		TransferReadKHR = 2048,
+		TransferWriteKHR = 4096,
+		HostReadKHR = 8192,
+		HostWriteKHR = 16384,
+		MemoryReadKHR = 32768,
+		MemoryWriteKHR = 65536,
+		ShaderSampledReadKHR = 4294967296,
+		ShaderStorageReadKHR = 8589934592,
+		ShaderStorageWriteKHR = 17179869184,
+		TransformFeedbackWriteEXT = 33554432,
+		TransformFeedbackCounterReadEXT = 67108864,
+		TransformFeedbackCounterWriteEXT = 134217728,
+		ConditionalRenderingReadEXT = 1048576,
+		CommandPreprocessReadNV = 131072,
+		CommandPreprocessWriteNV = 262144,
+		FragmentShadingRateAttachmentReadKHR = 8388608,
+		ShadingRateImageReadNV = 8388608,
+		AccelerationStructureReadKHR = 2097152,
+		AccelerationStructureWriteKHR = 4194304,
+		AccelerationStructureReadNV = 2097152,
+		AccelerationStructureWriteNV = 4194304,
+		FragmentDensityMapReadEXT = 16777216,
+		ColorAttachmentReadNoncoherentEXT = 524288,
+	}
 }

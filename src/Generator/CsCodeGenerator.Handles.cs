@@ -1,11 +1,7 @@
 ﻿// Copyright (c) Amer Koleci and contributors.
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using CppAst;
 
 namespace Generator
@@ -20,7 +16,7 @@ namespace Generator
                 "System.Diagnostics"
                 );
 
-            foreach (var typedef in compilation.Typedefs)
+            foreach (CppTypedef typedef in compilation.Typedefs)
             {
                 if (typedef.Name.StartsWith("PFN_"))
                 {
