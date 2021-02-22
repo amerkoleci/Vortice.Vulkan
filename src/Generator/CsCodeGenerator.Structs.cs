@@ -3,6 +3,7 @@
 
 using System;
 using System.IO;
+using System.Text;
 using CppAst;
 
 namespace Generator
@@ -39,7 +40,10 @@ namespace Generator
                 }
 
                 bool isUnion = cppClass.ClassKind == CppClassKind.Union;
-                Console.WriteLine($"Generating struct {cppClass.Name}");
+                if (cppClass.Name == "VkAllocationCallbacks")
+                {
+
+                }
 
                 string csName = cppClass.Name;
                 if (isUnion)
@@ -124,6 +128,30 @@ namespace Generator
             }
             else
             {
+                // VkAllocationCallbacks members
+                if (field.Type is CppTypedef typedef &&
+                    typedef.ElementType is CppPointerType pointerType &&
+                    pointerType.ElementType is CppFunctionType functionType)
+                {
+                    StringBuilder builder = new StringBuilder();
+                    foreach(CppParameter parameter in functionType.Parameters)
+                    {
+                        string paramCsType = GetCsTypeName(parameter.Type, false);
+                        builder.Append(paramCsType).Append(", ");
+                    }
+
+                    string returnCsName = GetCsTypeName(functionType.ReturnType, false);
+                    builder.Append(returnCsName);
+
+                    writer.WriteLine("#if NETSTANDARD2_0");
+                    writer.WriteLine($"public IntPtr {csFieldName};");
+                    writer.WriteLine("#else");
+                    writer.WriteLine($"public unsafe delegate* unmanaged<{builder.ToString()}> {csFieldName};");
+                    writer.WriteLine("#endif");
+
+                    return;
+                }
+
                 string csFieldType = GetCsTypeName(field.Type, false);
                 if (csFieldName.Equals("specVersion", StringComparison.OrdinalIgnoreCase) ||
                     csFieldName.Equals("applicationVersion", StringComparison.OrdinalIgnoreCase) ||

@@ -49,7 +49,7 @@ namespace Vortice
                 preTransform = swapChainSupport.Capabilities.currentTransform,
                 compositeAlpha = VkCompositeAlphaFlagsKHR.Opaque,
                 presentMode = presentMode,
-                clipped = true,
+                clipped = VK_TRUE,
                 oldSwapchain = VkSwapchainKHR.Null
             };
 

@@ -158,12 +158,12 @@ namespace Vortice.Vulkan
 			}
 		}
 
-		public static VkResult vkWaitForFences(VkDevice device, VkFence fence, VkBool32 waitAll, ulong timeout)
+		public static VkResult vkWaitForFences(VkDevice device, VkFence fence, uint waitAll, ulong timeout)
 		{
 			return vkWaitForFences(device, 1, &fence, waitAll, timeout);
 		}
 
-		public static VkResult vkWaitForFences(VkDevice device, ReadOnlySpan<VkFence> fences, VkBool32 waitAll, ulong timeout)
+		public static VkResult vkWaitForFences(VkDevice device, ReadOnlySpan<VkFence> fences, uint waitAll, ulong timeout)
 		{
 			fixed (VkFence* fencesPtr = fences)
 			{

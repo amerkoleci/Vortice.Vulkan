@@ -16,7 +16,6 @@ namespace Generator
             "event",
         };
 
-
         private static readonly Dictionary<string, string> s_csNameMappings = new Dictionary<string, string>()
         {
             { "uint8_t", "byte" },
@@ -29,13 +28,14 @@ namespace Generator
             { "int64_t", "long" },
             { "int64_t*", "long*" },
             { "char", "byte" },
-            { "size_t", "VkPointerSize" },
+            { "size_t", "nuint" },
             { "DWORD", "uint" },
 
             { "VkFlags", "uint" },
             { "VkFlags64", "ulong" },
             { "VkDeviceSize", "ulong" },
             { "VkSampleMask", "uint" },
+            { "VkBool32", "uint" },
 
             { "buffer_handle_t", "IntPtr" },
             { "AHardwareBuffer","IntPtr" },

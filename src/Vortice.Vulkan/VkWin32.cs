@@ -23,9 +23,9 @@ namespace Vortice.Vulkan
     public static partial class Vulkan
     {
         /// <summary>
-		/// VK_KHR_WIN32_SURFACE_EXTENSION_NAME = "VK_KHR_win32_surface"
-		/// </summary>
-		public static readonly VkString KHRWin32SurfaceExtensionName = "VK_KHR_win32_surface";
+        /// VK_KHR_WIN32_SURFACE_EXTENSION_NAME = "VK_KHR_win32_surface"
+        /// </summary>
+        public static readonly VkString KHRWin32SurfaceExtensionName = new VkString("VK_KHR_win32_surface");
 
         private static IntPtr vkCreateWin32SurfaceKHR_ptr;
         [Calli]
@@ -36,7 +36,7 @@ namespace Vortice.Vulkan
 
         private static IntPtr vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr;
         [Calli]
-        public static unsafe VkBool32 vkGetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex)
+        public static unsafe uint vkGetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex)
         {
             throw new NotImplementedException();
         }

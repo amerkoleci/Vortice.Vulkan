@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{065268A8
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.ShaderCompiler", "Vortice.ShaderCompiler\Vortice.ShaderCompiler.csproj", "{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{5A10816D-90A4-4AEA-B06E-6A463DA4A891}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A10816D-90A4-4AEA-B06E-6A463DA4A891}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A10816D-90A4-4AEA-B06E-6A463DA4A891}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

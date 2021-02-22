@@ -18,6 +18,12 @@ namespace Vortice.Vulkan
         private static VkInstance s_loadedInstance = VkInstance.Null;
         private static readonly VkDevice s_loadedDevice = VkDevice.Null;
 
+        public const uint True = 1;
+        public const uint False = 1;
+
+        public const uint VK_TRUE = 1;
+        public const uint VK_FALSE = 0;
+
         public static VkResult vkInitialize()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -168,6 +174,33 @@ namespace Vortice.Vulkan
             return VkVersion.Version_1_0;
         }
 
+        public static VkResult vkCreateShaderModule(VkDevice device, nuint codeSize, byte* code, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
+        {
+            var createInfo = new VkShaderModuleCreateInfo
+            {
+                sType = VkStructureType.ShaderModuleCreateInfo,
+                codeSize = codeSize,
+                pCode = (uint*)code
+            };
+
+            return vkCreateShaderModule(device, &createInfo, allocator, out shaderModule);
+        }
+
+        public static VkResult vkCreateShaderModule(VkDevice device, Span<byte> code, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
+        {
+            fixed (byte* codePtr = code)
+            {
+                var createInfo = new VkShaderModuleCreateInfo
+                {
+                    sType = VkStructureType.ShaderModuleCreateInfo,
+                    codeSize = (nuint)code.Length,
+                    pCode = (uint*)codePtr
+                };
+
+                return vkCreateShaderModule(device, &createInfo, allocator, out shaderModule);
+            }
+        }
+
         public static VkResult vkCreateShaderModule(VkDevice device, byte[] bytecode, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
         {
             fixed (byte* bytecodePtr = bytecode)
@@ -175,7 +208,7 @@ namespace Vortice.Vulkan
                 var createInfo = new VkShaderModuleCreateInfo
                 {
                     sType = VkStructureType.ShaderModuleCreateInfo,
-                    codeSize = new VkPointerSize((uint)bytecode.Length),
+                    codeSize = (nuint)bytecode.Length,
                     pCode = (uint*)bytecodePtr
                 };
 

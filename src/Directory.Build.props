@@ -9,9 +9,12 @@
     <Nullable>enable</Nullable>
 
     <DebugType>embedded</DebugType>
-
+    <DebugSymbols Condition=" '$(Configuration)'=='Debug' ">true</DebugSymbols>
+    
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>CS1591;CS1701</NoWarn>
+    
+    <VersionPrefix>1.2.170.2</VersionPrefix>
     
     <Authors>Amer Koleci</Authors>
     <Product>Vortice.Vulkan</Product>

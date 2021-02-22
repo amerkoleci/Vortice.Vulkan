@@ -19,34 +19,34 @@ namespace Vortice.Vulkan
         /// </summary>
         public int Size { get; private set; }
 
-
-        public VkString(string? str) 
+        public VkString(string? str)
         {
             if (str == null)
                 return; // Preserve Size as 0
 
-            var data = Encoding.UTF8.GetBytes(str + '\0'); // Vulkan expects '\0' terminated UTF8 string
-
+            byte[]? data = Encoding.UTF8.GetBytes(str + '\0'); // Vulkan expects '\0' terminated UTF8 string
             _handle = GCHandle.Alloc(data, GCHandleType.Pinned);
 
-            Size = data.Length; // note that empty string will have Size set to 1 because of added '\0'
+            // note that empty string will have Size set to 1 because of added '\0'
+            Size = data.Length; 
         }
 
-        ~VkString() => this.DisposeInt();
+        ~VkString() => Dispose(disposing: false);
 
         public void Dispose()
         {
-            DisposeInt();
-            GC.SuppressFinalize(this); // Remove from finalizer queue
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
 
-        private void DisposeInt()
+        private void Dispose(bool disposing)
         {
-            if (Size == 0) // Already disposed or not allocated?
+            // Already disposed or not allocated?
+            if (Size == 0)
                 return;
 
             _handle.Free();
-            Size = 0; // This will also mark the VkString as disposed
+            Size = 0;
         }
 
         public unsafe byte* Pointer
@@ -79,14 +79,14 @@ namespace Vortice.Vulkan
         private readonly VkString[] _data;
         private bool _disposed;
 
-        public VkStringArray(string[] array) 
+        public VkStringArray(string[] array)
             : this(array.Length)
         {
             for (int i = 0; i < array.Length; i++)
                 this[i] = array[i];
         }
 
-        public VkStringArray(List<string> array) 
+        public VkStringArray(List<string> array)
             : this(array.Count)
         {
             for (int i = 0; i < array.Count; i++)

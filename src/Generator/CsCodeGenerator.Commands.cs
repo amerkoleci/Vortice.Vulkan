@@ -161,7 +161,7 @@ namespace Generator
                 {
                     CppFunction cppFunction = command.Value;
 
-                    if(cppFunction.Name == "vkCmdSetBlendConstants")
+                    if (cppFunction.Name == "vkCmdSetBlendConstants")
                     {
 
                     }
@@ -258,7 +258,7 @@ namespace Generator
                     paramCsTypeName = GetCsTypeName(cppTypeDeclaration, false);
                 }
 
-                argumentBuilder.Append(paramCsTypeName).Append(" ").Append(paramCsName);
+                argumentBuilder.Append(paramCsTypeName).Append(' ').Append(paramCsName);
                 if (index < parameters.Count - 1)
                 {
                     argumentBuilder.Append(", ");

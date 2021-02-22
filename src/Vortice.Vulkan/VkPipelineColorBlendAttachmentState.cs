@@ -18,7 +18,7 @@ namespace Vortice.Vulkan
             VkBlendOp alphaBlendOp = VkBlendOp.Add,
             VkColorComponentFlags colorWriteMask = VkColorComponentFlags.All)
         {
-            this.blendEnable = blendEnable;
+            this.blendEnable = blendEnable ? 1 : 0;
             this.srcColorBlendFactor = srcColorBlendFactor;
             this.dstColorBlendFactor = dstColorBlendFactor;
             this.colorBlendOp = colorBlendOp;

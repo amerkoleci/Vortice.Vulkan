@@ -142,11 +142,31 @@ namespace Vortice.Vulkan
 	public partial struct VkAllocationCallbacks
 	{
 		public unsafe void* pUserData;
+		#if NETSTANDARD2_0
 		public IntPtr pfnAllocation;
+		#else
+		public unsafe delegate* unmanaged<void*, nuint, nuint, VkSystemAllocationScope, void*> pfnAllocation;
+		#endif
+		#if NETSTANDARD2_0
 		public IntPtr pfnReallocation;
+		#else
+		public unsafe delegate* unmanaged<void*, void*, nuint, nuint, VkSystemAllocationScope, void*> pfnReallocation;
+		#endif
+		#if NETSTANDARD2_0
 		public IntPtr pfnFree;
+		#else
+		public unsafe delegate* unmanaged<void*, void*, void> pfnFree;
+		#endif
+		#if NETSTANDARD2_0
 		public IntPtr pfnInternalAllocation;
+		#else
+		public unsafe delegate* unmanaged<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalAllocation;
+		#endif
+		#if NETSTANDARD2_0
 		public IntPtr pfnInternalFree;
+		#else
+		public unsafe delegate* unmanaged<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalFree;
+		#endif
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -209,61 +229,61 @@ namespace Vortice.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceFeatures
 	{
-		public VkBool32 robustBufferAccess;
-		public VkBool32 fullDrawIndexUint32;
-		public VkBool32 imageCubeArray;
-		public VkBool32 independentBlend;
-		public VkBool32 geometryShader;
-		public VkBool32 tessellationShader;
-		public VkBool32 sampleRateShading;
-		public VkBool32 dualSrcBlend;
-		public VkBool32 logicOp;
-		public VkBool32 multiDrawIndirect;
-		public VkBool32 drawIndirectFirstInstance;
-		public VkBool32 depthClamp;
-		public VkBool32 depthBiasClamp;
-		public VkBool32 fillModeNonSolid;
-		public VkBool32 depthBounds;
-		public VkBool32 wideLines;
-		public VkBool32 largePoints;
-		public VkBool32 alphaToOne;
-		public VkBool32 multiViewport;
-		public VkBool32 samplerAnisotropy;
-		public VkBool32 textureCompressionETC2;
-		public VkBool32 textureCompressionASTC_LDR;
-		public VkBool32 textureCompressionBC;
-		public VkBool32 occlusionQueryPrecise;
-		public VkBool32 pipelineStatisticsQuery;
-		public VkBool32 vertexPipelineStoresAndAtomics;
-		public VkBool32 fragmentStoresAndAtomics;
-		public VkBool32 shaderTessellationAndGeometryPointSize;
-		public VkBool32 shaderImageGatherExtended;
-		public VkBool32 shaderStorageImageExtendedFormats;
-		public VkBool32 shaderStorageImageMultisample;
-		public VkBool32 shaderStorageImageReadWithoutFormat;
-		public VkBool32 shaderStorageImageWriteWithoutFormat;
-		public VkBool32 shaderUniformBufferArrayDynamicIndexing;
-		public VkBool32 shaderSampledImageArrayDynamicIndexing;
-		public VkBool32 shaderStorageBufferArrayDynamicIndexing;
-		public VkBool32 shaderStorageImageArrayDynamicIndexing;
-		public VkBool32 shaderClipDistance;
-		public VkBool32 shaderCullDistance;
-		public VkBool32 shaderFloat64;
-		public VkBool32 shaderInt64;
-		public VkBool32 shaderInt16;
-		public VkBool32 shaderResourceResidency;
-		public VkBool32 shaderResourceMinLod;
-		public VkBool32 sparseBinding;
-		public VkBool32 sparseResidencyBuffer;
-		public VkBool32 sparseResidencyImage2D;
-		public VkBool32 sparseResidencyImage3D;
-		public VkBool32 sparseResidency2Samples;
-		public VkBool32 sparseResidency4Samples;
-		public VkBool32 sparseResidency8Samples;
-		public VkBool32 sparseResidency16Samples;
-		public VkBool32 sparseResidencyAliased;
-		public VkBool32 variableMultisampleRate;
-		public VkBool32 inheritedQueries;
+		public uint robustBufferAccess;
+		public uint fullDrawIndexUint32;
+		public uint imageCubeArray;
+		public uint independentBlend;
+		public uint geometryShader;
+		public uint tessellationShader;
+		public uint sampleRateShading;
+		public uint dualSrcBlend;
+		public uint logicOp;
+		public uint multiDrawIndirect;
+		public uint drawIndirectFirstInstance;
+		public uint depthClamp;
+		public uint depthBiasClamp;
+		public uint fillModeNonSolid;
+		public uint depthBounds;
+		public uint wideLines;
+		public uint largePoints;
+		public uint alphaToOne;
+		public uint multiViewport;
+		public uint samplerAnisotropy;
+		public uint textureCompressionETC2;
+		public uint textureCompressionASTC_LDR;
+		public uint textureCompressionBC;
+		public uint occlusionQueryPrecise;
+		public uint pipelineStatisticsQuery;
+		public uint vertexPipelineStoresAndAtomics;
+		public uint fragmentStoresAndAtomics;
+		public uint shaderTessellationAndGeometryPointSize;
+		public uint shaderImageGatherExtended;
+		public uint shaderStorageImageExtendedFormats;
+		public uint shaderStorageImageMultisample;
+		public uint shaderStorageImageReadWithoutFormat;
+		public uint shaderStorageImageWriteWithoutFormat;
+		public uint shaderUniformBufferArrayDynamicIndexing;
+		public uint shaderSampledImageArrayDynamicIndexing;
+		public uint shaderStorageBufferArrayDynamicIndexing;
+		public uint shaderStorageImageArrayDynamicIndexing;
+		public uint shaderClipDistance;
+		public uint shaderCullDistance;
+		public uint shaderFloat64;
+		public uint shaderInt64;
+		public uint shaderInt16;
+		public uint shaderResourceResidency;
+		public uint shaderResourceMinLod;
+		public uint sparseBinding;
+		public uint sparseResidencyBuffer;
+		public uint sparseResidencyImage2D;
+		public uint sparseResidencyImage3D;
+		public uint sparseResidency2Samples;
+		public uint sparseResidency4Samples;
+		public uint sparseResidency8Samples;
+		public uint sparseResidency16Samples;
+		public uint sparseResidencyAliased;
+		public uint variableMultisampleRate;
+		public uint inheritedQueries;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -335,7 +355,7 @@ namespace Vortice.Vulkan
 		public unsafe fixed uint maxViewportDimensions[2];
 		public unsafe fixed float viewportBoundsRange[2];
 		public uint viewportSubPixelBits;
-		public VkPointerSize minMemoryMapAlignment;
+		public nuint minMemoryMapAlignment;
 		public ulong minTexelBufferOffsetAlignment;
 		public ulong minUniformBufferOffsetAlignment;
 		public ulong minStorageBufferOffsetAlignment;
@@ -360,7 +380,7 @@ namespace Vortice.Vulkan
 		public VkSampleCountFlags sampledImageStencilSampleCounts;
 		public VkSampleCountFlags storageImageSampleCounts;
 		public uint maxSampleMaskWords;
-		public VkBool32 timestampComputeAndGraphics;
+		public uint timestampComputeAndGraphics;
 		public float timestampPeriod;
 		public uint maxClipDistances;
 		public uint maxCullDistances;
@@ -370,8 +390,8 @@ namespace Vortice.Vulkan
 		public unsafe fixed float lineWidthRange[2];
 		public float pointSizeGranularity;
 		public float lineWidthGranularity;
-		public VkBool32 strictLines;
-		public VkBool32 standardSampleLocations;
+		public uint strictLines;
+		public uint standardSampleLocations;
 		public ulong optimalBufferCopyOffsetAlignment;
 		public ulong optimalBufferCopyRowPitchAlignment;
 		public ulong nonCoherentAtomSize;
@@ -435,11 +455,11 @@ namespace Vortice.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceSparseProperties
 	{
-		public VkBool32 residencyStandard2DBlockShape;
-		public VkBool32 residencyStandard2DMultisampleBlockShape;
-		public VkBool32 residencyStandard3DBlockShape;
-		public VkBool32 residencyAlignedMipSize;
-		public VkBool32 residencyNonResidentStrict;
+		public uint residencyStandard2DBlockShape;
+		public uint residencyStandard2DMultisampleBlockShape;
+		public uint residencyStandard3DBlockShape;
+		public uint residencyAlignedMipSize;
+		public uint residencyNonResidentStrict;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -754,7 +774,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkShaderModuleCreateFlags flags;
-		public VkPointerSize codeSize;
+		public nuint codeSize;
 		public unsafe uint* pCode;
 	}
 
@@ -764,7 +784,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkPipelineCacheCreateFlags flags;
-		public VkPointerSize initialDataSize;
+		public nuint initialDataSize;
 		public unsafe void* pInitialData;
 	}
 
@@ -773,7 +793,7 @@ namespace Vortice.Vulkan
 	{
 		public uint constantID;
 		public uint offset;
-		public VkPointerSize size;
+		public nuint size;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -781,7 +801,7 @@ namespace Vortice.Vulkan
 	{
 		public uint mapEntryCount;
 		public unsafe VkSpecializationMapEntry* pMapEntries;
-		public VkPointerSize dataSize;
+		public nuint dataSize;
 		public unsafe void* pData;
 	}
 
@@ -845,7 +865,7 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkPipelineInputAssemblyStateCreateFlags flags;
 		public VkPrimitiveTopology topology;
-		public VkBool32 primitiveRestartEnable;
+		public uint primitiveRestartEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -886,12 +906,12 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkPipelineRasterizationStateCreateFlags flags;
-		public VkBool32 depthClampEnable;
-		public VkBool32 rasterizerDiscardEnable;
+		public uint depthClampEnable;
+		public uint rasterizerDiscardEnable;
 		public VkPolygonMode polygonMode;
 		public VkCullModeFlags cullMode;
 		public VkFrontFace frontFace;
-		public VkBool32 depthBiasEnable;
+		public uint depthBiasEnable;
 		public float depthBiasConstantFactor;
 		public float depthBiasClamp;
 		public float depthBiasSlopeFactor;
@@ -905,11 +925,11 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkPipelineMultisampleStateCreateFlags flags;
 		public VkSampleCountFlags rasterizationSamples;
-		public VkBool32 sampleShadingEnable;
+		public uint sampleShadingEnable;
 		public float minSampleShading;
 		public unsafe uint* pSampleMask;
-		public VkBool32 alphaToCoverageEnable;
-		public VkBool32 alphaToOneEnable;
+		public uint alphaToCoverageEnable;
+		public uint alphaToOneEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -930,11 +950,11 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkPipelineDepthStencilStateCreateFlags flags;
-		public VkBool32 depthTestEnable;
-		public VkBool32 depthWriteEnable;
+		public uint depthTestEnable;
+		public uint depthWriteEnable;
 		public VkCompareOp depthCompareOp;
-		public VkBool32 depthBoundsTestEnable;
-		public VkBool32 stencilTestEnable;
+		public uint depthBoundsTestEnable;
+		public uint stencilTestEnable;
 		public VkStencilOpState front;
 		public VkStencilOpState back;
 		public float minDepthBounds;
@@ -944,7 +964,7 @@ namespace Vortice.Vulkan
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPipelineColorBlendAttachmentState
 	{
-		public VkBool32 blendEnable;
+		public uint blendEnable;
 		public VkBlendFactor srcColorBlendFactor;
 		public VkBlendFactor dstColorBlendFactor;
 		public VkBlendOp colorBlendOp;
@@ -960,7 +980,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkPipelineColorBlendStateCreateFlags flags;
-		public VkBool32 logicOpEnable;
+		public uint logicOpEnable;
 		public VkLogicOp logicOp;
 		public uint attachmentCount;
 		public unsafe VkPipelineColorBlendAttachmentState* pAttachments;
@@ -1034,14 +1054,14 @@ namespace Vortice.Vulkan
 		public VkSamplerAddressMode addressModeV;
 		public VkSamplerAddressMode addressModeW;
 		public float mipLodBias;
-		public VkBool32 anisotropyEnable;
+		public uint anisotropyEnable;
 		public float maxAnisotropy;
-		public VkBool32 compareEnable;
+		public uint compareEnable;
 		public VkCompareOp compareOp;
 		public float minLod;
 		public float maxLod;
 		public VkBorderColor borderColor;
-		public VkBool32 unnormalizedCoordinates;
+		public uint unnormalizedCoordinates;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1240,7 +1260,7 @@ namespace Vortice.Vulkan
 		public VkRenderPass renderPass;
 		public uint subpass;
 		public VkFramebuffer framebuffer;
-		public VkBool32 occlusionQueryEnable;
+		public uint occlusionQueryEnable;
 		public VkQueryControlFlags queryFlags;
 		public VkQueryPipelineStatisticFlags pipelineStatistics;
 	}
@@ -1365,7 +1385,7 @@ namespace Vortice.Vulkan
 		public uint subgroupSize;
 		public VkShaderStageFlags supportedStages;
 		public VkSubgroupFeatureFlags supportedOperations;
-		public VkBool32 quadOperationsInAllStages;
+		public uint quadOperationsInAllStages;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1393,10 +1413,10 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 storageBuffer16BitAccess;
-		public VkBool32 uniformAndStorageBuffer16BitAccess;
-		public VkBool32 storagePushConstant16;
-		public VkBool32 storageInputOutput16;
+		public uint storageBuffer16BitAccess;
+		public uint uniformAndStorageBuffer16BitAccess;
+		public uint storagePushConstant16;
+		public uint storageInputOutput16;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1404,8 +1424,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 prefersDedicatedAllocation;
-		public VkBool32 requiresDedicatedAllocation;
+		public uint prefersDedicatedAllocation;
+		public uint requiresDedicatedAllocation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1524,7 +1544,7 @@ namespace Vortice.Vulkan
 		public VkPhysicalDevice physicalDevices_29;
 		public VkPhysicalDevice physicalDevices_30;
 		public VkPhysicalDevice physicalDevices_31;
-		public VkBool32 subsetAllocation;
+		public uint subsetAllocation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1715,9 +1735,9 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 multiview;
-		public VkBool32 multiviewGeometryShader;
-		public VkBool32 multiviewTessellationShader;
+		public uint multiview;
+		public uint multiviewGeometryShader;
+		public uint multiviewTessellationShader;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1734,8 +1754,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 variablePointersStorageBuffer;
-		public VkBool32 variablePointers;
+		public uint variablePointersStorageBuffer;
+		public uint variablePointers;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1743,7 +1763,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 protectedMemory;
+		public uint protectedMemory;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1751,7 +1771,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 protectedNoFault;
+		public uint protectedNoFault;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1769,7 +1789,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 protectedSubmit;
+		public uint protectedSubmit;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1784,7 +1804,7 @@ namespace Vortice.Vulkan
 		public VkChromaLocation xChromaOffset;
 		public VkChromaLocation yChromaOffset;
 		public VkFilter chromaFilter;
-		public VkBool32 forceExplicitReconstruction;
+		public uint forceExplicitReconstruction;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1816,7 +1836,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 samplerYcbcrConversion;
+		public uint samplerYcbcrConversion;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1834,8 +1854,8 @@ namespace Vortice.Vulkan
 		public uint dstArrayElement;
 		public uint descriptorCount;
 		public VkDescriptorType descriptorType;
-		public VkPointerSize offset;
-		public VkPointerSize stride;
+		public nuint offset;
+		public nuint stride;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1904,7 +1924,7 @@ namespace Vortice.Vulkan
 		public unsafe fixed byte driverUUID[16];
 		public unsafe fixed byte deviceLUID[8];
 		public uint deviceNodeMask;
-		public VkBool32 deviceLUIDValid;
+		public uint deviceLUIDValid;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1997,7 +2017,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 supported;
+		public uint supported;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2005,7 +2025,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderDrawParameters;
+		public uint shaderDrawParameters;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2013,18 +2033,18 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 storageBuffer16BitAccess;
-		public VkBool32 uniformAndStorageBuffer16BitAccess;
-		public VkBool32 storagePushConstant16;
-		public VkBool32 storageInputOutput16;
-		public VkBool32 multiview;
-		public VkBool32 multiviewGeometryShader;
-		public VkBool32 multiviewTessellationShader;
-		public VkBool32 variablePointersStorageBuffer;
-		public VkBool32 variablePointers;
-		public VkBool32 protectedMemory;
-		public VkBool32 samplerYcbcrConversion;
-		public VkBool32 shaderDrawParameters;
+		public uint storageBuffer16BitAccess;
+		public uint uniformAndStorageBuffer16BitAccess;
+		public uint storagePushConstant16;
+		public uint storageInputOutput16;
+		public uint multiview;
+		public uint multiviewGeometryShader;
+		public uint multiviewTessellationShader;
+		public uint variablePointersStorageBuffer;
+		public uint variablePointers;
+		public uint protectedMemory;
+		public uint samplerYcbcrConversion;
+		public uint shaderDrawParameters;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2036,15 +2056,15 @@ namespace Vortice.Vulkan
 		public unsafe fixed byte driverUUID[16];
 		public unsafe fixed byte deviceLUID[8];
 		public uint deviceNodeMask;
-		public VkBool32 deviceLUIDValid;
+		public uint deviceLUIDValid;
 		public uint subgroupSize;
 		public VkShaderStageFlags subgroupSupportedStages;
 		public VkSubgroupFeatureFlags subgroupSupportedOperations;
-		public VkBool32 subgroupQuadOperationsInAllStages;
+		public uint subgroupQuadOperationsInAllStages;
 		public VkPointClippingBehavior pointClippingBehavior;
 		public uint maxMultiviewViewCount;
 		public uint maxMultiviewInstanceIndex;
-		public VkBool32 protectedNoFault;
+		public uint protectedNoFault;
 		public uint maxPerSetDescriptors;
 		public ulong maxMemoryAllocationSize;
 	}
@@ -2054,53 +2074,53 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 samplerMirrorClampToEdge;
-		public VkBool32 drawIndirectCount;
-		public VkBool32 storageBuffer8BitAccess;
-		public VkBool32 uniformAndStorageBuffer8BitAccess;
-		public VkBool32 storagePushConstant8;
-		public VkBool32 shaderBufferInt64Atomics;
-		public VkBool32 shaderSharedInt64Atomics;
-		public VkBool32 shaderFloat16;
-		public VkBool32 shaderInt8;
-		public VkBool32 descriptorIndexing;
-		public VkBool32 shaderInputAttachmentArrayDynamicIndexing;
-		public VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
-		public VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
-		public VkBool32 shaderUniformBufferArrayNonUniformIndexing;
-		public VkBool32 shaderSampledImageArrayNonUniformIndexing;
-		public VkBool32 shaderStorageBufferArrayNonUniformIndexing;
-		public VkBool32 shaderStorageImageArrayNonUniformIndexing;
-		public VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
-		public VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
-		public VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
-		public VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingSampledImageUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageImageUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingUpdateUnusedWhilePending;
-		public VkBool32 descriptorBindingPartiallyBound;
-		public VkBool32 descriptorBindingVariableDescriptorCount;
-		public VkBool32 runtimeDescriptorArray;
-		public VkBool32 samplerFilterMinmax;
-		public VkBool32 scalarBlockLayout;
-		public VkBool32 imagelessFramebuffer;
-		public VkBool32 uniformBufferStandardLayout;
-		public VkBool32 shaderSubgroupExtendedTypes;
-		public VkBool32 separateDepthStencilLayouts;
-		public VkBool32 hostQueryReset;
-		public VkBool32 timelineSemaphore;
-		public VkBool32 bufferDeviceAddress;
-		public VkBool32 bufferDeviceAddressCaptureReplay;
-		public VkBool32 bufferDeviceAddressMultiDevice;
-		public VkBool32 vulkanMemoryModel;
-		public VkBool32 vulkanMemoryModelDeviceScope;
-		public VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
-		public VkBool32 shaderOutputViewportIndex;
-		public VkBool32 shaderOutputLayer;
-		public VkBool32 subgroupBroadcastDynamicId;
+		public uint samplerMirrorClampToEdge;
+		public uint drawIndirectCount;
+		public uint storageBuffer8BitAccess;
+		public uint uniformAndStorageBuffer8BitAccess;
+		public uint storagePushConstant8;
+		public uint shaderBufferInt64Atomics;
+		public uint shaderSharedInt64Atomics;
+		public uint shaderFloat16;
+		public uint shaderInt8;
+		public uint descriptorIndexing;
+		public uint shaderInputAttachmentArrayDynamicIndexing;
+		public uint shaderUniformTexelBufferArrayDynamicIndexing;
+		public uint shaderStorageTexelBufferArrayDynamicIndexing;
+		public uint shaderUniformBufferArrayNonUniformIndexing;
+		public uint shaderSampledImageArrayNonUniformIndexing;
+		public uint shaderStorageBufferArrayNonUniformIndexing;
+		public uint shaderStorageImageArrayNonUniformIndexing;
+		public uint shaderInputAttachmentArrayNonUniformIndexing;
+		public uint shaderUniformTexelBufferArrayNonUniformIndexing;
+		public uint shaderStorageTexelBufferArrayNonUniformIndexing;
+		public uint descriptorBindingUniformBufferUpdateAfterBind;
+		public uint descriptorBindingSampledImageUpdateAfterBind;
+		public uint descriptorBindingStorageImageUpdateAfterBind;
+		public uint descriptorBindingStorageBufferUpdateAfterBind;
+		public uint descriptorBindingUniformTexelBufferUpdateAfterBind;
+		public uint descriptorBindingStorageTexelBufferUpdateAfterBind;
+		public uint descriptorBindingUpdateUnusedWhilePending;
+		public uint descriptorBindingPartiallyBound;
+		public uint descriptorBindingVariableDescriptorCount;
+		public uint runtimeDescriptorArray;
+		public uint samplerFilterMinmax;
+		public uint scalarBlockLayout;
+		public uint imagelessFramebuffer;
+		public uint uniformBufferStandardLayout;
+		public uint shaderSubgroupExtendedTypes;
+		public uint separateDepthStencilLayouts;
+		public uint hostQueryReset;
+		public uint timelineSemaphore;
+		public uint bufferDeviceAddress;
+		public uint bufferDeviceAddressCaptureReplay;
+		public uint bufferDeviceAddressMultiDevice;
+		public uint vulkanMemoryModel;
+		public uint vulkanMemoryModelDeviceScope;
+		public uint vulkanMemoryModelAvailabilityVisibilityChains;
+		public uint shaderOutputViewportIndex;
+		public uint shaderOutputLayer;
+		public uint subgroupBroadcastDynamicId;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2123,29 +2143,29 @@ namespace Vortice.Vulkan
 		public VkConformanceVersion conformanceVersion;
 		public VkShaderFloatControlsIndependence denormBehaviorIndependence;
 		public VkShaderFloatControlsIndependence roundingModeIndependence;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat16;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat32;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat64;
-		public VkBool32 shaderDenormPreserveFloat16;
-		public VkBool32 shaderDenormPreserveFloat32;
-		public VkBool32 shaderDenormPreserveFloat64;
-		public VkBool32 shaderDenormFlushToZeroFloat16;
-		public VkBool32 shaderDenormFlushToZeroFloat32;
-		public VkBool32 shaderDenormFlushToZeroFloat64;
-		public VkBool32 shaderRoundingModeRTEFloat16;
-		public VkBool32 shaderRoundingModeRTEFloat32;
-		public VkBool32 shaderRoundingModeRTEFloat64;
-		public VkBool32 shaderRoundingModeRTZFloat16;
-		public VkBool32 shaderRoundingModeRTZFloat32;
-		public VkBool32 shaderRoundingModeRTZFloat64;
+		public uint shaderSignedZeroInfNanPreserveFloat16;
+		public uint shaderSignedZeroInfNanPreserveFloat32;
+		public uint shaderSignedZeroInfNanPreserveFloat64;
+		public uint shaderDenormPreserveFloat16;
+		public uint shaderDenormPreserveFloat32;
+		public uint shaderDenormPreserveFloat64;
+		public uint shaderDenormFlushToZeroFloat16;
+		public uint shaderDenormFlushToZeroFloat32;
+		public uint shaderDenormFlushToZeroFloat64;
+		public uint shaderRoundingModeRTEFloat16;
+		public uint shaderRoundingModeRTEFloat32;
+		public uint shaderRoundingModeRTEFloat64;
+		public uint shaderRoundingModeRTZFloat16;
+		public uint shaderRoundingModeRTZFloat32;
+		public uint shaderRoundingModeRTZFloat64;
 		public uint maxUpdateAfterBindDescriptorsInAllPools;
-		public VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
-		public VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
-		public VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
-		public VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
-		public VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
-		public VkBool32 robustBufferAccessUpdateAfterBind;
-		public VkBool32 quadDivergentImplicitLod;
+		public uint shaderUniformBufferArrayNonUniformIndexingNative;
+		public uint shaderSampledImageArrayNonUniformIndexingNative;
+		public uint shaderStorageBufferArrayNonUniformIndexingNative;
+		public uint shaderStorageImageArrayNonUniformIndexingNative;
+		public uint shaderInputAttachmentArrayNonUniformIndexingNative;
+		public uint robustBufferAccessUpdateAfterBind;
+		public uint quadDivergentImplicitLod;
 		public uint maxPerStageDescriptorUpdateAfterBindSamplers;
 		public uint maxPerStageDescriptorUpdateAfterBindUniformBuffers;
 		public uint maxPerStageDescriptorUpdateAfterBindStorageBuffers;
@@ -2163,10 +2183,10 @@ namespace Vortice.Vulkan
 		public uint maxDescriptorSetUpdateAfterBindInputAttachments;
 		public VkResolveModeFlags supportedDepthResolveModes;
 		public VkResolveModeFlags supportedStencilResolveModes;
-		public VkBool32 independentResolveNone;
-		public VkBool32 independentResolve;
-		public VkBool32 filterMinmaxSingleComponentFormats;
-		public VkBool32 filterMinmaxImageComponentMapping;
+		public uint independentResolveNone;
+		public uint independentResolve;
+		public uint filterMinmaxSingleComponentFormats;
+		public uint filterMinmaxImageComponentMapping;
 		public ulong maxTimelineSemaphoreValueDifference;
 		public VkSampleCountFlags framebufferIntegerColorSampleCounts;
 	}
@@ -2275,9 +2295,9 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 storageBuffer8BitAccess;
-		public VkBool32 uniformAndStorageBuffer8BitAccess;
-		public VkBool32 storagePushConstant8;
+		public uint storageBuffer8BitAccess;
+		public uint uniformAndStorageBuffer8BitAccess;
+		public uint storagePushConstant8;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2296,8 +2316,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderBufferInt64Atomics;
-		public VkBool32 shaderSharedInt64Atomics;
+		public uint shaderBufferInt64Atomics;
+		public uint shaderSharedInt64Atomics;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2305,8 +2325,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderFloat16;
-		public VkBool32 shaderInt8;
+		public uint shaderFloat16;
+		public uint shaderInt8;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2316,21 +2336,21 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkShaderFloatControlsIndependence denormBehaviorIndependence;
 		public VkShaderFloatControlsIndependence roundingModeIndependence;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat16;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat32;
-		public VkBool32 shaderSignedZeroInfNanPreserveFloat64;
-		public VkBool32 shaderDenormPreserveFloat16;
-		public VkBool32 shaderDenormPreserveFloat32;
-		public VkBool32 shaderDenormPreserveFloat64;
-		public VkBool32 shaderDenormFlushToZeroFloat16;
-		public VkBool32 shaderDenormFlushToZeroFloat32;
-		public VkBool32 shaderDenormFlushToZeroFloat64;
-		public VkBool32 shaderRoundingModeRTEFloat16;
-		public VkBool32 shaderRoundingModeRTEFloat32;
-		public VkBool32 shaderRoundingModeRTEFloat64;
-		public VkBool32 shaderRoundingModeRTZFloat16;
-		public VkBool32 shaderRoundingModeRTZFloat32;
-		public VkBool32 shaderRoundingModeRTZFloat64;
+		public uint shaderSignedZeroInfNanPreserveFloat16;
+		public uint shaderSignedZeroInfNanPreserveFloat32;
+		public uint shaderSignedZeroInfNanPreserveFloat64;
+		public uint shaderDenormPreserveFloat16;
+		public uint shaderDenormPreserveFloat32;
+		public uint shaderDenormPreserveFloat64;
+		public uint shaderDenormFlushToZeroFloat16;
+		public uint shaderDenormFlushToZeroFloat32;
+		public uint shaderDenormFlushToZeroFloat64;
+		public uint shaderRoundingModeRTEFloat16;
+		public uint shaderRoundingModeRTEFloat32;
+		public uint shaderRoundingModeRTEFloat64;
+		public uint shaderRoundingModeRTZFloat16;
+		public uint shaderRoundingModeRTZFloat32;
+		public uint shaderRoundingModeRTZFloat64;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2347,26 +2367,26 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderInputAttachmentArrayDynamicIndexing;
-		public VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
-		public VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
-		public VkBool32 shaderUniformBufferArrayNonUniformIndexing;
-		public VkBool32 shaderSampledImageArrayNonUniformIndexing;
-		public VkBool32 shaderStorageBufferArrayNonUniformIndexing;
-		public VkBool32 shaderStorageImageArrayNonUniformIndexing;
-		public VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
-		public VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
-		public VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
-		public VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingSampledImageUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageImageUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
-		public VkBool32 descriptorBindingUpdateUnusedWhilePending;
-		public VkBool32 descriptorBindingPartiallyBound;
-		public VkBool32 descriptorBindingVariableDescriptorCount;
-		public VkBool32 runtimeDescriptorArray;
+		public uint shaderInputAttachmentArrayDynamicIndexing;
+		public uint shaderUniformTexelBufferArrayDynamicIndexing;
+		public uint shaderStorageTexelBufferArrayDynamicIndexing;
+		public uint shaderUniformBufferArrayNonUniformIndexing;
+		public uint shaderSampledImageArrayNonUniformIndexing;
+		public uint shaderStorageBufferArrayNonUniformIndexing;
+		public uint shaderStorageImageArrayNonUniformIndexing;
+		public uint shaderInputAttachmentArrayNonUniformIndexing;
+		public uint shaderUniformTexelBufferArrayNonUniformIndexing;
+		public uint shaderStorageTexelBufferArrayNonUniformIndexing;
+		public uint descriptorBindingUniformBufferUpdateAfterBind;
+		public uint descriptorBindingSampledImageUpdateAfterBind;
+		public uint descriptorBindingStorageImageUpdateAfterBind;
+		public uint descriptorBindingStorageBufferUpdateAfterBind;
+		public uint descriptorBindingUniformTexelBufferUpdateAfterBind;
+		public uint descriptorBindingStorageTexelBufferUpdateAfterBind;
+		public uint descriptorBindingUpdateUnusedWhilePending;
+		public uint descriptorBindingPartiallyBound;
+		public uint descriptorBindingVariableDescriptorCount;
+		public uint runtimeDescriptorArray;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2375,13 +2395,13 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public uint maxUpdateAfterBindDescriptorsInAllPools;
-		public VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
-		public VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
-		public VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
-		public VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
-		public VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
-		public VkBool32 robustBufferAccessUpdateAfterBind;
-		public VkBool32 quadDivergentImplicitLod;
+		public uint shaderUniformBufferArrayNonUniformIndexingNative;
+		public uint shaderSampledImageArrayNonUniformIndexingNative;
+		public uint shaderStorageBufferArrayNonUniformIndexingNative;
+		public uint shaderStorageImageArrayNonUniformIndexingNative;
+		public uint shaderInputAttachmentArrayNonUniformIndexingNative;
+		public uint robustBufferAccessUpdateAfterBind;
+		public uint quadDivergentImplicitLod;
 		public uint maxPerStageDescriptorUpdateAfterBindSamplers;
 		public uint maxPerStageDescriptorUpdateAfterBindUniformBuffers;
 		public uint maxPerStageDescriptorUpdateAfterBindStorageBuffers;
@@ -2433,8 +2453,8 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkResolveModeFlags supportedDepthResolveModes;
 		public VkResolveModeFlags supportedStencilResolveModes;
-		public VkBool32 independentResolveNone;
-		public VkBool32 independentResolve;
+		public uint independentResolveNone;
+		public uint independentResolve;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2442,7 +2462,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 scalarBlockLayout;
+		public uint scalarBlockLayout;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2466,8 +2486,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 filterMinmaxSingleComponentFormats;
-		public VkBool32 filterMinmaxImageComponentMapping;
+		public uint filterMinmaxSingleComponentFormats;
+		public uint filterMinmaxImageComponentMapping;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2475,9 +2495,9 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 vulkanMemoryModel;
-		public VkBool32 vulkanMemoryModelDeviceScope;
-		public VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
+		public uint vulkanMemoryModel;
+		public uint vulkanMemoryModelDeviceScope;
+		public uint vulkanMemoryModelAvailabilityVisibilityChains;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2485,7 +2505,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 imagelessFramebuffer;
+		public uint imagelessFramebuffer;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2525,7 +2545,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 uniformBufferStandardLayout;
+		public uint uniformBufferStandardLayout;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2533,7 +2553,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderSubgroupExtendedTypes;
+		public uint shaderSubgroupExtendedTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2541,7 +2561,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 separateDepthStencilLayouts;
+		public uint separateDepthStencilLayouts;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2566,7 +2586,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 hostQueryReset;
+		public uint hostQueryReset;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2574,7 +2594,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 timelineSemaphore;
+		public uint timelineSemaphore;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2630,9 +2650,9 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 bufferDeviceAddress;
-		public VkBool32 bufferDeviceAddressCaptureReplay;
-		public VkBool32 bufferDeviceAddressMultiDevice;
+		public uint bufferDeviceAddress;
+		public uint bufferDeviceAddressCaptureReplay;
+		public uint bufferDeviceAddressMultiDevice;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2708,7 +2728,7 @@ namespace Vortice.Vulkan
 		public VkSurfaceTransformFlagsKHR preTransform;
 		public VkCompositeAlphaFlagsKHR compositeAlpha;
 		public VkPresentModeKHR presentMode;
-		public VkBool32 clipped;
+		public uint clipped;
 		public VkSwapchainKHR oldSwapchain;
 	}
 
@@ -2833,8 +2853,8 @@ namespace Vortice.Vulkan
 		public VkExtent2D physicalDimensions;
 		public VkExtent2D physicalResolution;
 		public VkSurfaceTransformFlagsKHR supportedTransforms;
-		public VkBool32 planeReorderPossible;
-		public VkBool32 persistentContent;
+		public uint planeReorderPossible;
+		public uint persistentContent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2859,7 +2879,7 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkRect2D srcRect;
 		public VkRect2D dstRect;
-		public VkBool32 persistent;
+		public uint persistent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2973,8 +2993,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 performanceCounterQueryPools;
-		public VkBool32 performanceCounterMultipleQueryPools;
+		public uint performanceCounterQueryPools;
+		public uint performanceCounterMultipleQueryPools;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -2982,7 +3002,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 allowCommandBufferQueryCopies;
+		public uint allowCommandBufferQueryCopies;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3121,8 +3141,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderSubgroupClock;
-		public VkBool32 shaderDeviceClock;
+		public uint shaderSubgroupClock;
+		public uint shaderDeviceClock;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3130,7 +3150,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderTerminateInvocation;
+		public uint shaderTerminateInvocation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3157,9 +3177,9 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 pipelineFragmentShadingRate;
-		public VkBool32 primitiveFragmentShadingRate;
-		public VkBool32 attachmentFragmentShadingRate;
+		public uint pipelineFragmentShadingRate;
+		public uint primitiveFragmentShadingRate;
+		public uint attachmentFragmentShadingRate;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3170,20 +3190,20 @@ namespace Vortice.Vulkan
 		public VkExtent2D minFragmentShadingRateAttachmentTexelSize;
 		public VkExtent2D maxFragmentShadingRateAttachmentTexelSize;
 		public uint maxFragmentShadingRateAttachmentTexelSizeAspectRatio;
-		public VkBool32 primitiveFragmentShadingRateWithMultipleViewports;
-		public VkBool32 layeredShadingRateAttachments;
-		public VkBool32 fragmentShadingRateNonTrivialCombinerOps;
+		public uint primitiveFragmentShadingRateWithMultipleViewports;
+		public uint layeredShadingRateAttachments;
+		public uint fragmentShadingRateNonTrivialCombinerOps;
 		public VkExtent2D maxFragmentSize;
 		public uint maxFragmentSizeAspectRatio;
 		public uint maxFragmentShadingRateCoverageSamples;
 		public VkSampleCountFlags maxFragmentShadingRateRasterizationSamples;
-		public VkBool32 fragmentShadingRateWithShaderDepthStencilWrites;
-		public VkBool32 fragmentShadingRateWithSampleMask;
-		public VkBool32 fragmentShadingRateWithShaderSampleMask;
-		public VkBool32 fragmentShadingRateWithConservativeRasterization;
-		public VkBool32 fragmentShadingRateWithFragmentShaderInterlock;
-		public VkBool32 fragmentShadingRateWithCustomSampleLocations;
-		public VkBool32 fragmentShadingRateStrictMultiplyCombiner;
+		public uint fragmentShadingRateWithShaderDepthStencilWrites;
+		public uint fragmentShadingRateWithSampleMask;
+		public uint fragmentShadingRateWithShaderSampleMask;
+		public uint fragmentShadingRateWithConservativeRasterization;
+		public uint fragmentShadingRateWithFragmentShaderInterlock;
+		public uint fragmentShadingRateWithCustomSampleLocations;
+		public uint fragmentShadingRateStrictMultiplyCombiner;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3200,7 +3220,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 supportsProtected;
+		public uint supportsProtected;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3208,7 +3228,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 pipelineExecutableInfo;
+		public uint pipelineExecutableInfo;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3243,7 +3263,7 @@ namespace Vortice.Vulkan
 	public partial struct VkPipelineExecutableStatisticValueKHR
 	{
 		[FieldOffset(0)]
-		public VkBool32 b32;
+		public uint b32;
 		[FieldOffset(0)]
 		public long i64;
 		[FieldOffset(0)]
@@ -3270,8 +3290,8 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public unsafe fixed byte name[256];
 		public unsafe fixed byte description[256];
-		public VkBool32 isText;
-		public VkPointerSize dataSize;
+		public uint isText;
+		public nuint dataSize;
 		public unsafe void* pData;
 	}
 
@@ -3381,7 +3401,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 synchronization2;
+		public uint synchronization2;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3406,7 +3426,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderZeroInitializeWorkgroupMemory;
+		public uint shaderZeroInitializeWorkgroupMemory;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3414,10 +3434,10 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 workgroupMemoryExplicitLayout;
-		public VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout;
-		public VkBool32 workgroupMemoryExplicitLayout8BitAccess;
-		public VkBool32 workgroupMemoryExplicitLayout16BitAccess;
+		public uint workgroupMemoryExplicitLayout;
+		public uint workgroupMemoryExplicitLayoutScalarBlockLayout;
+		public uint workgroupMemoryExplicitLayout8BitAccess;
+		public uint workgroupMemoryExplicitLayout16BitAccess;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3561,7 +3581,11 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkDebugReportFlagsEXT flags;
+		#if NETSTANDARD2_0
 		public IntPtr pfnCallback;
+		#else
+		public unsafe delegate* unmanaged<VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void*, uint> pfnCallback;
+		#endif
 		public unsafe void* pUserData;
 	}
 
@@ -3591,7 +3615,7 @@ namespace Vortice.Vulkan
 		public VkDebugReportObjectTypeEXT objectType;
 		public ulong @object;
 		public ulong tagName;
-		public VkPointerSize tagSize;
+		public nuint tagSize;
 		public unsafe void* pTag;
 	}
 
@@ -3609,7 +3633,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 dedicatedAllocation;
+		public uint dedicatedAllocation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3617,7 +3641,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 dedicatedAllocation;
+		public uint dedicatedAllocation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3634,8 +3658,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 transformFeedback;
-		public VkBool32 geometryStreams;
+		public uint transformFeedback;
+		public uint geometryStreams;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3649,10 +3673,10 @@ namespace Vortice.Vulkan
 		public uint maxTransformFeedbackStreamDataSize;
 		public uint maxTransformFeedbackBufferDataSize;
 		public uint maxTransformFeedbackBufferDataStride;
-		public VkBool32 transformFeedbackQueries;
-		public VkBool32 transformFeedbackStreamsLinesTriangles;
-		public VkBool32 transformFeedbackRasterizationStreamSelect;
-		public VkBool32 transformFeedbackDraw;
+		public uint transformFeedbackQueries;
+		public uint transformFeedbackStreamsLinesTriangles;
+		public uint transformFeedbackRasterizationStreamSelect;
+		public uint transformFeedbackDraw;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3688,7 +3712,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 supportsTextureGatherLODBiasAMD;
+		public uint supportsTextureGatherLODBiasAMD;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3697,8 +3721,8 @@ namespace Vortice.Vulkan
 		public uint numUsedVgprs;
 		public uint numUsedSgprs;
 		public uint ldsSizePerLocalWorkGroup;
-		public VkPointerSize ldsUsageSizeInBytes;
-		public VkPointerSize scratchMemUsageInBytes;
+		public nuint ldsUsageSizeInBytes;
+		public nuint scratchMemUsageInBytes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3718,7 +3742,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 cornerSampledImage;
+		public uint cornerSampledImage;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3760,7 +3784,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 textureCompressionASTC_HDR;
+		public uint textureCompressionASTC_HDR;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3776,7 +3800,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 decodeModeSharedExponent;
+		public uint decodeModeSharedExponent;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3794,8 +3818,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 conditionalRendering;
-		public VkBool32 inheritedConditionalRendering;
+		public uint conditionalRendering;
+		public uint inheritedConditionalRendering;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3803,7 +3827,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 conditionalRenderingEnable;
+		public uint conditionalRenderingEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3818,7 +3842,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 viewportWScalingEnable;
+		public uint viewportWScalingEnable;
 		public uint viewportCount;
 		public unsafe VkViewportWScalingNV* pViewportWScalings;
 	}
@@ -3910,7 +3934,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 perViewPositionAllComponents;
+		public uint perViewPositionAllComponents;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3959,12 +3983,12 @@ namespace Vortice.Vulkan
 		public float primitiveOverestimationSize;
 		public float maxExtraPrimitiveOverestimationSize;
 		public float extraPrimitiveOverestimationSizeGranularity;
-		public VkBool32 primitiveUnderestimation;
-		public VkBool32 conservativePointAndLineRasterization;
-		public VkBool32 degenerateTrianglesRasterized;
-		public VkBool32 degenerateLinesRasterized;
-		public VkBool32 fullyCoveredFragmentShaderInputVariable;
-		public VkBool32 conservativeRasterizationPostDepthCoverage;
+		public uint primitiveUnderestimation;
+		public uint conservativePointAndLineRasterization;
+		public uint degenerateTrianglesRasterized;
+		public uint degenerateLinesRasterized;
+		public uint fullyCoveredFragmentShaderInputVariable;
+		public uint conservativeRasterizationPostDepthCoverage;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3982,7 +4006,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 depthClipEnable;
+		public uint depthClipEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3991,7 +4015,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags;
-		public VkBool32 depthClipEnable;
+		public uint depthClipEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4060,7 +4084,11 @@ namespace Vortice.Vulkan
 		public VkDebugUtilsMessengerCreateFlagsEXT flags;
 		public VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
 		public VkDebugUtilsMessageTypeFlagsEXT messageType;
+		#if NETSTANDARD2_0
 		public IntPtr pfnUserCallback;
+		#else
+		public unsafe delegate* unmanaged<VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void*, uint> pfnUserCallback;
+		#endif
 		public unsafe void* pUserData;
 	}
 
@@ -4072,7 +4100,7 @@ namespace Vortice.Vulkan
 		public VkObjectType objectType;
 		public ulong objectHandle;
 		public ulong tagName;
-		public VkPointerSize tagSize;
+		public nuint tagSize;
 		public unsafe void* pTag;
 	}
 
@@ -4081,8 +4109,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 inlineUniformBlock;
-		public VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
+		public uint inlineUniformBlock;
+		public uint descriptorBindingInlineUniformBlockUpdateAfterBind;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4162,7 +4190,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 sampleLocationsEnable;
+		public uint sampleLocationsEnable;
 		public VkSampleLocationsInfoEXT sampleLocationsInfo;
 	}
 
@@ -4175,7 +4203,7 @@ namespace Vortice.Vulkan
 		public VkExtent2D maxSampleLocationGridSize;
 		public unsafe fixed float sampleLocationCoordinateRange[2];
 		public uint sampleLocationSubPixelBits;
-		public VkBool32 variableSampleLocations;
+		public uint variableSampleLocations;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4191,7 +4219,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 advancedBlendCoherentOperations;
+		public uint advancedBlendCoherentOperations;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4200,11 +4228,11 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public uint advancedBlendMaxColorAttachments;
-		public VkBool32 advancedBlendIndependentBlend;
-		public VkBool32 advancedBlendNonPremultipliedSrcColor;
-		public VkBool32 advancedBlendNonPremultipliedDstColor;
-		public VkBool32 advancedBlendCorrelatedOverlap;
-		public VkBool32 advancedBlendAllOperations;
+		public uint advancedBlendIndependentBlend;
+		public uint advancedBlendNonPremultipliedSrcColor;
+		public uint advancedBlendNonPremultipliedDstColor;
+		public uint advancedBlendCorrelatedOverlap;
+		public uint advancedBlendAllOperations;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4212,8 +4240,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 srcPremultiplied;
-		public VkBool32 dstPremultiplied;
+		public uint srcPremultiplied;
+		public uint dstPremultiplied;
 		public VkBlendOverlapEXT blendOverlap;
 	}
 
@@ -4223,7 +4251,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkPipelineCoverageToColorStateCreateFlagsNV flags;
-		public VkBool32 coverageToColorEnable;
+		public uint coverageToColorEnable;
 		public uint coverageToColorLocation;
 	}
 
@@ -4234,7 +4262,7 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkPipelineCoverageModulationStateCreateFlagsNV flags;
 		public VkCoverageModulationModeNV coverageModulationMode;
-		public VkBool32 coverageModulationTableEnable;
+		public uint coverageModulationTableEnable;
 		public uint coverageModulationTableCount;
 		public unsafe float* pCoverageModulationTable;
 	}
@@ -4253,7 +4281,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderSMBuiltins;
+		public uint shaderSMBuiltins;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4317,7 +4345,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkValidationCacheCreateFlagsEXT flags;
-		public VkPointerSize initialDataSize;
+		public nuint initialDataSize;
 		public unsafe void* pInitialData;
 	}
 
@@ -4341,7 +4369,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shadingRateImageEnable;
+		public uint shadingRateImageEnable;
 		public uint viewportCount;
 		public unsafe VkShadingRatePaletteNV* pShadingRatePalettes;
 	}
@@ -4351,8 +4379,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shadingRateImage;
-		public VkBool32 shadingRateCoarseSampleOrder;
+		public uint shadingRateImage;
+		public uint shadingRateCoarseSampleOrder;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4548,7 +4576,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 representativeFragmentTest;
+		public uint representativeFragmentTest;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4556,7 +4584,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 representativeFragmentTestEnable;
+		public uint representativeFragmentTestEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4572,8 +4600,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 filterCubic;
-		public VkBool32 filterCubicMinmax;
+		public uint filterCubic;
+		public uint filterCubicMinmax;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4683,8 +4711,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 vertexAttributeInstanceRateDivisor;
-		public VkBool32 vertexAttributeInstanceRateZeroDivisor;
+		public uint vertexAttributeInstanceRateDivisor;
+		public uint vertexAttributeInstanceRateZeroDivisor;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4709,8 +4737,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 computeDerivativeGroupQuads;
-		public VkBool32 computeDerivativeGroupLinear;
+		public uint computeDerivativeGroupQuads;
+		public uint computeDerivativeGroupLinear;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4718,8 +4746,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 taskShader;
-		public VkBool32 meshShader;
+		public uint taskShader;
+		public uint meshShader;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4754,7 +4782,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 fragmentShaderBarycentric;
+		public uint fragmentShaderBarycentric;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4762,7 +4790,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 imageFootprint;
+		public uint imageFootprint;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4779,7 +4807,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 exclusiveScissor;
+		public uint exclusiveScissor;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4804,7 +4832,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderIntegerFunctions2;
+		public uint shaderIntegerFunctions2;
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
@@ -4817,7 +4845,7 @@ namespace Vortice.Vulkan
 		[FieldOffset(0)]
 		public float valueFloat;
 		[FieldOffset(0)]
-		public VkBool32 valueBool;
+		public uint valueBool;
 		[FieldOffset(0)]
 		public unsafe byte* valueString;
 	}
@@ -4867,7 +4895,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkPerformanceOverrideTypeINTEL type;
-		public VkBool32 enable;
+		public uint enable;
 		public ulong parameter;
 	}
 
@@ -4895,7 +4923,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 localDimmingSupport;
+		public uint localDimmingSupport;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4903,7 +4931,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 localDimmingEnable;
+		public uint localDimmingEnable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4911,9 +4939,9 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 fragmentDensityMap;
-		public VkBool32 fragmentDensityMapDynamic;
-		public VkBool32 fragmentDensityMapNonSubsampledImages;
+		public uint fragmentDensityMap;
+		public uint fragmentDensityMapDynamic;
+		public uint fragmentDensityMapNonSubsampledImages;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4923,7 +4951,7 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkExtent2D minFragmentDensityTexelSize;
 		public VkExtent2D maxFragmentDensityTexelSize;
-		public VkBool32 fragmentDensityInvocations;
+		public uint fragmentDensityInvocations;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4939,8 +4967,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 subgroupSizeControl;
-		public VkBool32 computeFullSubgroups;
+		public uint subgroupSizeControl;
+		public uint computeFullSubgroups;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4976,7 +5004,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 deviceCoherentMemory;
+		public uint deviceCoherentMemory;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4984,8 +5012,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderImageInt64Atomics;
-		public VkBool32 sparseImageInt64Atomics;
+		public uint shaderImageInt64Atomics;
+		public uint sparseImageInt64Atomics;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5032,7 +5060,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 memoryPriority;
+		public uint memoryPriority;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5048,7 +5076,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 dedicatedAllocationImageAliasing;
+		public uint dedicatedAllocationImageAliasing;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5056,9 +5084,9 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 bufferDeviceAddress;
-		public VkBool32 bufferDeviceAddressCaptureReplay;
-		public VkBool32 bufferDeviceAddressMultiDevice;
+		public uint bufferDeviceAddress;
+		public uint bufferDeviceAddressCaptureReplay;
+		public uint bufferDeviceAddressMultiDevice;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5112,8 +5140,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 cooperativeMatrix;
-		public VkBool32 cooperativeMatrixRobustBufferAccess;
+		public uint cooperativeMatrix;
+		public uint cooperativeMatrixRobustBufferAccess;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5129,7 +5157,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 coverageReductionMode;
+		public uint coverageReductionMode;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5157,9 +5185,9 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 fragmentShaderSampleInterlock;
-		public VkBool32 fragmentShaderPixelInterlock;
-		public VkBool32 fragmentShaderShadingRateInterlock;
+		public uint fragmentShaderSampleInterlock;
+		public uint fragmentShaderPixelInterlock;
+		public uint fragmentShaderShadingRateInterlock;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5167,7 +5195,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 ycbcrImageArrays;
+		public uint ycbcrImageArrays;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5183,12 +5211,12 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 rectangularLines;
-		public VkBool32 bresenhamLines;
-		public VkBool32 smoothLines;
-		public VkBool32 stippledRectangularLines;
-		public VkBool32 stippledBresenhamLines;
-		public VkBool32 stippledSmoothLines;
+		public uint rectangularLines;
+		public uint bresenhamLines;
+		public uint smoothLines;
+		public uint stippledRectangularLines;
+		public uint stippledBresenhamLines;
+		public uint stippledSmoothLines;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5205,7 +5233,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkLineRasterizationModeEXT lineRasterizationMode;
-		public VkBool32 stippledLineEnable;
+		public uint stippledLineEnable;
 		public uint lineStippleFactor;
 		public ushort lineStipplePattern;
 	}
@@ -5215,18 +5243,18 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderBufferFloat32Atomics;
-		public VkBool32 shaderBufferFloat32AtomicAdd;
-		public VkBool32 shaderBufferFloat64Atomics;
-		public VkBool32 shaderBufferFloat64AtomicAdd;
-		public VkBool32 shaderSharedFloat32Atomics;
-		public VkBool32 shaderSharedFloat32AtomicAdd;
-		public VkBool32 shaderSharedFloat64Atomics;
-		public VkBool32 shaderSharedFloat64AtomicAdd;
-		public VkBool32 shaderImageFloat32Atomics;
-		public VkBool32 shaderImageFloat32AtomicAdd;
-		public VkBool32 sparseImageFloat32Atomics;
-		public VkBool32 sparseImageFloat32AtomicAdd;
+		public uint shaderBufferFloat32Atomics;
+		public uint shaderBufferFloat32AtomicAdd;
+		public uint shaderBufferFloat64Atomics;
+		public uint shaderBufferFloat64AtomicAdd;
+		public uint shaderSharedFloat32Atomics;
+		public uint shaderSharedFloat32AtomicAdd;
+		public uint shaderSharedFloat64Atomics;
+		public uint shaderSharedFloat64AtomicAdd;
+		public uint shaderImageFloat32Atomics;
+		public uint shaderImageFloat32AtomicAdd;
+		public uint sparseImageFloat32Atomics;
+		public uint sparseImageFloat32AtomicAdd;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5234,7 +5262,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 indexTypeUint8;
+		public uint indexTypeUint8;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5242,7 +5270,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 extendedDynamicState;
+		public uint extendedDynamicState;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5250,7 +5278,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 shaderDemoteToHelperInvocation;
+		public uint shaderDemoteToHelperInvocation;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5274,7 +5302,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 deviceGeneratedCommands;
+		public uint deviceGeneratedCommands;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5343,7 +5371,7 @@ namespace Vortice.Vulkan
 		public uint stream;
 		public uint offset;
 		public uint vertexBindingUnit;
-		public VkBool32 vertexDynamicStride;
+		public uint vertexDynamicStride;
 		public VkPipelineLayout pushconstantPipelineLayout;
 		public VkShaderStageFlags pushconstantShaderStageFlags;
 		public uint pushconstantOffset;
@@ -5403,7 +5431,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 texelBufferAlignment;
+		public uint texelBufferAlignment;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5412,9 +5440,9 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public ulong storageTexelBufferOffsetAlignmentBytes;
-		public VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
+		public uint storageTexelBufferOffsetSingleTexelAlignment;
 		public ulong uniformTexelBufferOffsetAlignmentBytes;
-		public VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
+		public uint uniformTexelBufferOffsetSingleTexelAlignment;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5439,7 +5467,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 deviceMemoryReport;
+		public uint deviceMemoryReport;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5462,7 +5490,11 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkDeviceMemoryReportFlagsEXT flags;
+		#if NETSTANDARD2_0
 		public IntPtr pfnUserCallback;
+		#else
+		public unsafe delegate* unmanaged<VkDeviceMemoryReportCallbackDataEXT*, void*, void> pfnUserCallback;
+		#endif
 		public unsafe void* pUserData;
 	}
 
@@ -5471,9 +5503,9 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 robustBufferAccess2;
-		public VkBool32 robustImageAccess2;
-		public VkBool32 nullDescriptor;
+		public uint robustBufferAccess2;
+		public uint robustImageAccess2;
+		public uint nullDescriptor;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5507,8 +5539,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 customBorderColors;
-		public VkBool32 customBorderColorWithoutFormat;
+		public uint customBorderColors;
+		public uint customBorderColorWithoutFormat;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5516,7 +5548,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 privateData;
+		public uint privateData;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5540,7 +5572,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 pipelineCreationCacheControl;
+		public uint pipelineCreationCacheControl;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5548,7 +5580,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 diagnosticsConfig;
+		public uint diagnosticsConfig;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5564,9 +5596,9 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 fragmentShadingRateEnums;
-		public VkBool32 supersampleFragmentShadingRates;
-		public VkBool32 noInvocationFragmentShadingRates;
+		public uint fragmentShadingRateEnums;
+		public uint supersampleFragmentShadingRates;
+		public uint noInvocationFragmentShadingRates;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5593,7 +5625,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 fragmentDensityMapDeferred;
+		public uint fragmentDensityMapDeferred;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5601,8 +5633,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 subsampledLoads;
-		public VkBool32 subsampledCoarseReconstructionEarlyAccess;
+		public uint subsampledLoads;
+		public uint subsampledCoarseReconstructionEarlyAccess;
 		public uint maxSubsampledArrayLayers;
 		public uint maxDescriptorSetSubsampledSamplers;
 	}
@@ -5620,7 +5652,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 robustImageAccess;
+		public uint robustImageAccess;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5628,8 +5660,8 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 formatA4R4G4B4;
-		public VkBool32 formatA4B4G4R4;
+		public uint formatA4R4G4B4;
+		public uint formatA4B4G4R4;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5637,7 +5669,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 mutableDescriptorType;
+		public uint mutableDescriptorType;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5711,7 +5743,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 arrayOfPointers;
+		public uint arrayOfPointers;
 		public VkDeviceOrHostAddressConstKHR data;
 	}
 
@@ -5779,11 +5811,11 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 accelerationStructure;
-		public VkBool32 accelerationStructureCaptureReplay;
-		public VkBool32 accelerationStructureIndirectBuild;
-		public VkBool32 accelerationStructureHostCommands;
-		public VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind;
+		public uint accelerationStructure;
+		public uint accelerationStructureCaptureReplay;
+		public uint accelerationStructureIndirectBuild;
+		public uint accelerationStructureHostCommands;
+		public uint descriptorBindingAccelerationStructureUpdateAfterBind;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5903,11 +5935,11 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 rayTracingPipeline;
-		public VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplay;
-		public VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplayMixed;
-		public VkBool32 rayTracingPipelineTraceRaysIndirect;
-		public VkBool32 rayTraversalPrimitiveCulling;
+		public uint rayTracingPipeline;
+		public uint rayTracingPipelineShaderGroupHandleCaptureReplay;
+		public uint rayTracingPipelineShaderGroupHandleCaptureReplayMixed;
+		public uint rayTracingPipelineTraceRaysIndirect;
+		public uint rayTraversalPrimitiveCulling;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5946,7 +5978,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 rayQuery;
+		public uint rayQuery;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6055,21 +6087,21 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkBool32 constantAlphaColorBlendFactors;
-		public VkBool32 events;
-		public VkBool32 imageViewFormatReinterpretation;
-		public VkBool32 imageViewFormatSwizzle;
-		public VkBool32 imageView2DOn3DImage;
-		public VkBool32 multisampleArrayImage;
-		public VkBool32 mutableComparisonSamplers;
-		public VkBool32 pointPolygons;
-		public VkBool32 samplerMipLodBias;
-		public VkBool32 separateStencilMaskRef;
-		public VkBool32 shaderSampleRateInterpolationFunctions;
-		public VkBool32 tessellationIsolines;
-		public VkBool32 tessellationPointMode;
-		public VkBool32 triangleFans;
-		public VkBool32 vertexAttributeAccessBeyondStride;
+		public uint constantAlphaColorBlendFactors;
+		public uint events;
+		public uint imageViewFormatReinterpretation;
+		public uint imageViewFormatSwizzle;
+		public uint imageView2DOn3DImage;
+		public uint multisampleArrayImage;
+		public uint mutableComparisonSamplers;
+		public uint pointPolygons;
+		public uint samplerMipLodBias;
+		public uint separateStencilMaskRef;
+		public uint shaderSampleRateInterpolationFunctions;
+		public uint tessellationIsolines;
+		public uint tessellationPointMode;
+		public uint triangleFans;
+		public uint vertexAttributeAccessBeyondStride;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

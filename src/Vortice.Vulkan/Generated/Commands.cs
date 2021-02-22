@@ -288,7 +288,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkWaitForFences_ptr;
 		[Calli]
-		public static VkResult vkWaitForFences(VkDevice device, uint fenceCount, VkFence* fences, VkBool32 waitAll, ulong timeout)
+		public static VkResult vkWaitForFences(VkDevice device, uint fenceCount, VkFence* fences, uint waitAll, ulong timeout)
 		{
 			throw new NotImplementedException();
 		}
@@ -358,7 +358,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetQueryPoolResults_ptr;
 		[Calli]
-		public static VkResult vkGetQueryPoolResults(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount, VkPointerSize dataSize, void* data, ulong stride, VkQueryResultFlags flags)
+		public static VkResult vkGetQueryPoolResults(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount, nuint dataSize, void* data, ulong stride, VkQueryResultFlags flags)
 		{
 			throw new NotImplementedException();
 		}
@@ -456,7 +456,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetPipelineCacheData_ptr;
 		[Calli]
-		public static VkResult vkGetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, VkPointerSize* dataSize, void* data)
+		public static VkResult vkGetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, nuint* dataSize, void* data)
 		{
 			throw new NotImplementedException();
 		}
@@ -1268,7 +1268,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetPhysicalDeviceSurfaceSupportKHR_ptr;
 		[Calli]
-		public static VkResult vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, out VkBool32 supported)
+		public static VkResult vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, out uint supported)
 		{
 			throw new NotImplementedException();
 		}
@@ -1996,7 +1996,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkDebugReportMessageEXT_ptr;
 		[Calli]
-		public static void vkDebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, VkPointerSize location, int messageCode, byte* layerPrefix, byte* message)
+		public static void vkDebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, byte* message)
 		{
 			throw new NotImplementedException();
 		}
@@ -2108,7 +2108,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetShaderInfoAMD_ptr;
 		[Calli]
-		public static VkResult vkGetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, VkPointerSize* infoSize, void* info)
+		public static VkResult vkGetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info)
 		{
 			throw new NotImplementedException();
 		}
@@ -2332,7 +2332,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetValidationCacheDataEXT_ptr;
 		[Calli]
-		public static VkResult vkGetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, VkPointerSize* dataSize, void* data)
+		public static VkResult vkGetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, nuint* dataSize, void* data)
 		{
 			throw new NotImplementedException();
 		}
@@ -2388,7 +2388,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdBuildAccelerationStructureNV_ptr;
 		[Calli]
-		public static void vkCmdBuildAccelerationStructureNV(VkCommandBuffer commandBuffer, VkAccelerationStructureInfoNV* info, VkBuffer instanceData, ulong instanceOffset, VkBool32 update, VkAccelerationStructureKHR dst, VkAccelerationStructureKHR src, VkBuffer scratch, ulong scratchOffset)
+		public static void vkCmdBuildAccelerationStructureNV(VkCommandBuffer commandBuffer, VkAccelerationStructureInfoNV* info, VkBuffer instanceData, ulong instanceOffset, uint update, VkAccelerationStructureKHR dst, VkAccelerationStructureKHR src, VkBuffer scratch, ulong scratchOffset)
 		{
 			throw new NotImplementedException();
 		}
@@ -2416,21 +2416,21 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetRayTracingShaderGroupHandlesKHR_ptr;
 		[Calli]
-		public static VkResult vkGetRayTracingShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, VkPointerSize dataSize, void* data)
+		public static VkResult vkGetRayTracingShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkGetRayTracingShaderGroupHandlesNV_ptr;
 		[Calli]
-		public static VkResult vkGetRayTracingShaderGroupHandlesNV(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, VkPointerSize dataSize, void* data)
+		public static VkResult vkGetRayTracingShaderGroupHandlesNV(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkGetAccelerationStructureHandleNV_ptr;
 		[Calli]
-		public static VkResult vkGetAccelerationStructureHandleNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkPointerSize dataSize, void* data)
+		public static VkResult vkGetAccelerationStructureHandleNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, nuint dataSize, void* data)
 		{
 			throw new NotImplementedException();
 		}
@@ -2584,7 +2584,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkSetLocalDimmingAMD_ptr;
 		[Calli]
-		public static void vkSetLocalDimmingAMD(VkDevice device, VkSwapchainKHR swapChain, VkBool32 localDimmingEnable)
+		public static void vkSetLocalDimmingAMD(VkDevice device, VkSwapchainKHR swapChain, uint localDimmingEnable)
 		{
 			throw new NotImplementedException();
 		}
@@ -2682,14 +2682,14 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetDepthTestEnableEXT_ptr;
 		[Calli]
-		public static void vkCmdSetDepthTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable)
+		public static void vkCmdSetDepthTestEnableEXT(VkCommandBuffer commandBuffer, uint depthTestEnable)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkCmdSetDepthWriteEnableEXT_ptr;
 		[Calli]
-		public static void vkCmdSetDepthWriteEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable)
+		public static void vkCmdSetDepthWriteEnableEXT(VkCommandBuffer commandBuffer, uint depthWriteEnable)
 		{
 			throw new NotImplementedException();
 		}
@@ -2703,14 +2703,14 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetDepthBoundsTestEnableEXT_ptr;
 		[Calli]
-		public static void vkCmdSetDepthBoundsTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable)
+		public static void vkCmdSetDepthBoundsTestEnableEXT(VkCommandBuffer commandBuffer, uint depthBoundsTestEnable)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkCmdSetStencilTestEnableEXT_ptr;
 		[Calli]
-		public static void vkCmdSetStencilTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable)
+		public static void vkCmdSetStencilTestEnableEXT(VkCommandBuffer commandBuffer, uint stencilTestEnable)
 		{
 			throw new NotImplementedException();
 		}
@@ -2738,7 +2738,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdExecuteGeneratedCommandsNV_ptr;
 		[Calli]
-		public static void vkCmdExecuteGeneratedCommandsNV(VkCommandBuffer commandBuffer, VkBool32 isPreprocessed, VkGeneratedCommandsInfoNV* generatedCommandsInfo)
+		public static void vkCmdExecuteGeneratedCommandsNV(VkCommandBuffer commandBuffer, uint isPreprocessed, VkGeneratedCommandsInfoNV* generatedCommandsInfo)
 		{
 			throw new NotImplementedException();
 		}
@@ -2871,7 +2871,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkWriteAccelerationStructuresPropertiesKHR_ptr;
 		[Calli]
-		public static VkResult vkWriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkPointerSize dataSize, void* data, VkPointerSize stride)
+		public static VkResult vkWriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, nuint dataSize, void* data, nuint stride)
 		{
 			throw new NotImplementedException();
 		}
@@ -2941,7 +2941,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr;
 		[Calli]
-		public static VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, VkPointerSize dataSize, void* data)
+		public static VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 		{
 			throw new NotImplementedException();
 		}
