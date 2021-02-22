@@ -8,7 +8,6 @@
 // ------------------------------------------------------------------------------
 
 using System;
-using Vortice.Mathematics;
 
 namespace Vortice.Vulkan
 {
@@ -604,7 +603,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetRenderAreaGranularity_ptr;
 		[Calli]
-		public static void vkGetRenderAreaGranularity(VkDevice device, VkRenderPass renderPass, out Size granularity)
+		public static void vkGetRenderAreaGranularity(VkDevice device, VkRenderPass renderPass, out VkExtent2D granularity)
 		{
 			throw new NotImplementedException();
 		}
@@ -674,14 +673,14 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetViewport_ptr;
 		[Calli]
-		public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, Viewport* viewports)
+		public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewport* viewports)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkCmdSetScissor_ptr;
 		[Calli]
-		public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, Rectangle* scissors)
+		public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, VkRect2D* scissors)
 		{
 			throw new NotImplementedException();
 		}
@@ -1346,7 +1345,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetPhysicalDevicePresentRectanglesKHR_ptr;
 		[Calli]
-		public static VkResult vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, Rectangle* rects)
+		public static VkResult vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, VkRect2D* rects)
 		{
 			throw new NotImplementedException();
 		}
@@ -1801,7 +1800,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetFragmentShadingRateKHR_ptr;
 		[Calli]
-		public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, Size* fragmentSize, VkFragmentShadingRateCombinerOpKHR* combinerOps)
+		public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D* fragmentSize, VkFragmentShadingRateCombinerOpKHR* combinerOps)
 		{
 			throw new NotImplementedException();
 		}
@@ -2200,7 +2199,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetDiscardRectangleEXT_ptr;
 		[Calli]
-		public static void vkCmdSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, Rectangle* discardRectangles)
+		public static void vkCmdSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D* discardRectangles)
 		{
 			throw new NotImplementedException();
 		}
@@ -2501,7 +2500,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetExclusiveScissorNV_ptr;
 		[Calli]
-		public static void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, Rectangle* exclusiveScissors)
+		public static void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D* exclusiveScissors)
 		{
 			throw new NotImplementedException();
 		}
@@ -2662,14 +2661,14 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetViewportWithCountEXT_ptr;
 		[Calli]
-		public static void vkCmdSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, Viewport* viewports)
+		public static void vkCmdSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport* viewports)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkCmdSetScissorWithCountEXT_ptr;
 		[Calli]
-		public static void vkCmdSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, Rectangle* scissors)
+		public static void vkCmdSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D* scissors)
 		{
 			throw new NotImplementedException();
 		}

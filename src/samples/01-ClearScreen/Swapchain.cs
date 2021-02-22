@@ -1,5 +1,4 @@
 ﻿using System;
-using Vortice.Mathematics;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 
@@ -9,11 +8,11 @@ namespace Vortice
     {
         public readonly GraphicsDevice Device;
         public readonly Window? Window;
-        private VkImageView[] _swapChainImageViews;
+        private readonly VkImageView[] _swapChainImageViews;
         public VkSwapchainKHR Handle;
         public int ImageCount => _swapChainImageViews.Length;
         public VkRenderPass RenderPass;
-        public Size Extent { get; }
+        public VkExtent2D Extent { get; }
         public VkFramebuffer[] Framebuffers { get; }
 
         public Swapchain(GraphicsDevice device, Window? window)
@@ -161,11 +160,23 @@ namespace Vortice
             public ReadOnlySpan<VkPresentModeKHR> PresentModes;
         };
 
-        private Size ChooseSwapExtent(in VkSurfaceCapabilitiesKHR capabilities)
+        private VkExtent2D ChooseSwapExtent(VkSurfaceCapabilitiesKHR capabilities)
         {
-            Size actualExtent = Window!.Extent;
-            actualExtent = Size.Max(capabilities.minImageExtent, Size.Min(capabilities.maxImageExtent, actualExtent));
-            return actualExtent;
+            if (capabilities.currentExtent.width > 0)
+            {
+                return capabilities.currentExtent;
+            }
+            else
+            {
+                VkExtent2D actualExtent = Window!.Extent;
+
+                actualExtent = new VkExtent2D(
+                    Math.Max(capabilities.minImageExtent.width, Math.Min(capabilities.maxImageExtent.width, actualExtent.width)),
+                    Math.Max(capabilities.minImageExtent.height, Math.Min(capabilities.maxImageExtent.height, actualExtent.height))
+                    );
+
+                return actualExtent;
+            }
         }
 
         private static SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device, VkSurfaceKHR surface)

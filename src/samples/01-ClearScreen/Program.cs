@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Amer Koleci and contributors.
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
+using System.Numerics;
 using Vortice;
-using Vortice.Mathematics;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 
@@ -49,7 +49,7 @@ namespace DrawTriangle
                 _graphicsDevice!.RenderFrame(OnDraw);
             }
 
-            private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, Size size)
+            private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, VkExtent2D size)
             {
                 float g = _green + 0.001f;
                 if (g > 1.0f)
@@ -64,12 +64,12 @@ namespace DrawTriangle
                     sType = VkStructureType.RenderPassBeginInfo,
                     renderPass = _graphicsDevice!.Swapchain.RenderPass,
                     framebuffer = framebuffer,
-                    renderArea = new Rectangle(size),
+                    renderArea = new VkRect2D(size),
                     clearValueCount = 1,
                     pClearValues = &clearValue
                 };
                 vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
-                vkCmdSetBlendConstants(commandBuffer, new Color4(1.0f, 1.0f, 1.0f, 1.0f));
+                vkCmdSetBlendConstants(commandBuffer, new Vector4(1.0f, 1.0f, 1.0f, 1.0f));
                 vkCmdEndRenderPass(commandBuffer);
             }
         }

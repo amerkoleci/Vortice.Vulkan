@@ -2,7 +2,6 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
-using Vortice.Mathematics;
 using Vortice.Vulkan;
 using Vortice.Win32;
 using static Vortice.Win32.User32;
@@ -100,11 +99,11 @@ namespace Vortice
             Handle = hwnd;
 
             GetClientRect(hwnd, out windowRect);
-            Extent = new Size(windowRect.Right - windowRect.Left, windowRect.Bottom - windowRect.Top);
+            Extent = new VkExtent2D(windowRect.Right - windowRect.Left, windowRect.Bottom - windowRect.Top);
         }
 
         public string Title { get; }
-        public Size Extent { get; }
+        public VkExtent2D Extent { get; }
         public IntPtr Handle { get; }
     }
 }

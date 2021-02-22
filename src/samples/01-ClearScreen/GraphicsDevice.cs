@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Vortice.Mathematics;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 using static Vortice.Win32.Kernel32;
@@ -330,7 +329,7 @@ namespace Vortice
             }
         }
 
-        public void RenderFrame(Action<VkCommandBuffer, VkFramebuffer, Size> draw, [CallerMemberName] string? frameName = null)
+        public void RenderFrame(Action<VkCommandBuffer, VkFramebuffer, VkExtent2D> draw, [CallerMemberName] string? frameName = null)
         {
             VkResult result = AcquireNextImage(out uint swapchainIndex);
 

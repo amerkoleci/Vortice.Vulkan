@@ -2,9 +2,9 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Vortice.Mathematics;
 using static Vortice.Vulkan.Vulkan.Kernel32;
 using static Vortice.Vulkan.Vulkan.Libdl;
 
@@ -16,7 +16,7 @@ namespace Vortice.Vulkan
 
         private static IntPtr s_vulkanModule = IntPtr.Zero;
         private static VkInstance s_loadedInstance = VkInstance.Null;
-        private static VkDevice s_loadedDevice = VkDevice.Null;
+        private static readonly VkDevice s_loadedDevice = VkDevice.Null;
 
         public static VkResult vkInitialize()
         {
@@ -111,7 +111,7 @@ namespace Vortice.Vulkan
         /// <param name="layerName">Is either null/empty or a string naming the layer to retrieve extensions from.</param>
         /// <returns>A <see cref="ReadOnlySpan{VkExtensionProperties}"/> </returns>
         /// <exception cref="VkException">Vulkan returns an error code.</exception>
-        public static unsafe ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties(string? layerName = null)
+        public static ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties(string? layerName = null)
         {
             int dstLayerNameByteCount = Interop.GetMaxByteCount(layerName);
             byte* dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
@@ -157,7 +157,7 @@ namespace Vortice.Vulkan
         /// Query instance-level version before instance creation.
         /// </summary>
         /// <returns>The version of Vulkan supported by instance-level functionality.</returns>
-        public static unsafe VkVersion vkEnumerateInstanceVersion()
+        public static VkVersion vkEnumerateInstanceVersion()
         {
             if (vkEnumerateInstanceVersion_ptr != IntPtr.Zero
                 && vkEnumerateInstanceVersion(out uint apiVersion) == VkResult.Success)
@@ -497,7 +497,7 @@ namespace Vortice.Vulkan
             VkDevice device,
             VkRenderPass renderPass,
             ReadOnlySpan<VkImageView> attachments,
-            in Size extent,
+            in VkExtent2D extent,
             uint layers,
             out VkFramebuffer framebuffer)
         {
@@ -509,8 +509,8 @@ namespace Vortice.Vulkan
                     renderPass = renderPass,
                     attachmentCount = (uint)attachments.Length,
                     pAttachments = attachmentsPtr,
-                    width = (uint)extent.Width,
-                    height = (uint)extent.Height,
+                    width = extent.width,
+                    height = extent.height,
                     layers = layers
                 };
 
@@ -524,19 +524,41 @@ namespace Vortice.Vulkan
             throw new NotImplementedException();
         }
 
+        public static void vkCmdSetViewport<T>(VkCommandBuffer commandBuffer, uint firstViewport, T viewport) where T : unmanaged
+        {
+#if DEBUG
+            if (sizeof(T) != sizeof(VkViewport))
+            {
+                throw new ArgumentException($"Type T must have same size and layout as {nameof(VkViewport)}", nameof(viewport));
+            }
+#endif
+            vkCmdSetViewport(commandBuffer, firstViewport, 1, (VkViewport*)&viewport);
+        }
+
+        public static void vkCmdSetViewport<T>(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, T* viewports) where T : unmanaged
+        {
+#if DEBUG
+            if (sizeof(T) != sizeof(VkViewport))
+            {
+                throw new ArgumentException($"Type T must have same size and layout as {nameof(VkViewport)}", nameof(viewports));
+            }
+#endif
+
+            vkCmdSetViewport(commandBuffer, firstViewport, viewportCount, (VkViewport*)viewports);
+        }
+
         public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float red, float green, float blue, float alpha)
         {
-            var blendConstantsArray = stackalloc float[] { red, green, blue, alpha };
+            float* blendConstantsArray = stackalloc float[] { red, green, blue, alpha };
             vkCmdSetBlendConstants(commandBuffer, blendConstantsArray);
         }
 
-        public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, Color4 blendConstants)
+        public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, Vector4 blendConstants)
         {
-            var blendConstantsArray = stackalloc float[] { blendConstants.R, blendConstants.G, blendConstants.B, blendConstants.A };
-            vkCmdSetBlendConstants(commandBuffer, blendConstantsArray);
+            vkCmdSetBlendConstants(commandBuffer, &blendConstants.X);
         }
 
-        public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, Size* fragmentSize, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
+        public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D* fragmentSize, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
         {
             fixed (VkFragmentShadingRateCombinerOpKHR* combinerOpsPtr = &combinerOps[0])
             {
@@ -544,9 +566,9 @@ namespace Vortice.Vulkan
             }
         }
 
-        public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, Size[] fragmentSize, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
+        public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D[] fragmentSize, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
         {
-            fixed (Size* fragmentSizePtr = &fragmentSize[0])
+            fixed (VkExtent2D* fragmentSizePtr = &fragmentSize[0])
             {
                 fixed (VkFragmentShadingRateCombinerOpKHR* combinerOpsPtr = &combinerOps[0])
                 {

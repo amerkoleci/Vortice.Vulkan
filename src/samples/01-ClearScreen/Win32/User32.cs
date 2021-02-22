@@ -3,7 +3,7 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Vortice.Mathematics;
+using Vortice.Vulkan;
 
 namespace Vortice.Win32
 {
@@ -366,7 +366,7 @@ namespace Vortice.Win32
         public IntPtr WParam;
         public IntPtr LParam;
         public uint Time;
-        public Point Point;
+        public VkOffset2D Point;
     }
 
     public delegate IntPtr WNDPROC(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);

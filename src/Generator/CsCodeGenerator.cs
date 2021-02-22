@@ -70,12 +70,12 @@ namespace Generator
             { "VkMemoryRequirements2KHR", "VkMemoryRequirements2" },
 
             // Vortice.Mathematics types.
-            { "VkOffset2D", "Point" },
-            { "VkOffset3D", "Point3" },
-            { "VkExtent2D", "Size" },
-            { "VkExtent3D", "Size3" },
-            { "VkRect2D", "Rectangle" },
-            { "VkViewport", "Viewport" },
+            //{ "VkOffset2D", "Point" },
+            //{ "VkOffset3D", "Point3" },
+            //{ "VkExtent2D", "Size" },
+            //{ "VkExtent3D", "Size3" },
+            //{ "VkRect2D", "Rectangle" },
+            //{ "VkViewport", "Viewport" },
 
             { "VkAccelerationStructureTypeNV", "VkAccelerationStructureTypeKHR" },
             { "VkAccelerationStructureMemoryRequirementsTypeNV", "VkAccelerationStructureMemoryRequirementsTypeKHR" },
