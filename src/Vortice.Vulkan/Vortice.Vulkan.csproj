@@ -4,6 +4,7 @@
     <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
     <Description>Vulkan low level bindings.</Description>
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
+    <VersionPrefix>1.2.170.2</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
