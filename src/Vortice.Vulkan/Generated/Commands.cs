@@ -288,7 +288,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkWaitForFences_ptr;
 		[Calli]
-		public static VkResult vkWaitForFences(VkDevice device, uint fenceCount, VkFence* fences, uint waitAll, ulong timeout)
+		public static VkResult vkWaitForFences(VkDevice device, uint fenceCount, VkFence* fences, VkBool32 waitAll, ulong timeout)
 		{
 			throw new NotImplementedException();
 		}
@@ -1268,7 +1268,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkGetPhysicalDeviceSurfaceSupportKHR_ptr;
 		[Calli]
-		public static VkResult vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, out uint supported)
+		public static VkResult vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, out VkBool32 supported)
 		{
 			throw new NotImplementedException();
 		}
@@ -2388,7 +2388,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdBuildAccelerationStructureNV_ptr;
 		[Calli]
-		public static void vkCmdBuildAccelerationStructureNV(VkCommandBuffer commandBuffer, VkAccelerationStructureInfoNV* info, VkBuffer instanceData, ulong instanceOffset, uint update, VkAccelerationStructureKHR dst, VkAccelerationStructureKHR src, VkBuffer scratch, ulong scratchOffset)
+		public static void vkCmdBuildAccelerationStructureNV(VkCommandBuffer commandBuffer, VkAccelerationStructureInfoNV* info, VkBuffer instanceData, ulong instanceOffset, VkBool32 update, VkAccelerationStructureKHR dst, VkAccelerationStructureKHR src, VkBuffer scratch, ulong scratchOffset)
 		{
 			throw new NotImplementedException();
 		}
@@ -2584,7 +2584,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkSetLocalDimmingAMD_ptr;
 		[Calli]
-		public static void vkSetLocalDimmingAMD(VkDevice device, VkSwapchainKHR swapChain, uint localDimmingEnable)
+		public static void vkSetLocalDimmingAMD(VkDevice device, VkSwapchainKHR swapChain, VkBool32 localDimmingEnable)
 		{
 			throw new NotImplementedException();
 		}
@@ -2682,14 +2682,14 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetDepthTestEnableEXT_ptr;
 		[Calli]
-		public static void vkCmdSetDepthTestEnableEXT(VkCommandBuffer commandBuffer, uint depthTestEnable)
+		public static void vkCmdSetDepthTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkCmdSetDepthWriteEnableEXT_ptr;
 		[Calli]
-		public static void vkCmdSetDepthWriteEnableEXT(VkCommandBuffer commandBuffer, uint depthWriteEnable)
+		public static void vkCmdSetDepthWriteEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable)
 		{
 			throw new NotImplementedException();
 		}
@@ -2703,14 +2703,14 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdSetDepthBoundsTestEnableEXT_ptr;
 		[Calli]
-		public static void vkCmdSetDepthBoundsTestEnableEXT(VkCommandBuffer commandBuffer, uint depthBoundsTestEnable)
+		public static void vkCmdSetDepthBoundsTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable)
 		{
 			throw new NotImplementedException();
 		}
 
 		private static IntPtr vkCmdSetStencilTestEnableEXT_ptr;
 		[Calli]
-		public static void vkCmdSetStencilTestEnableEXT(VkCommandBuffer commandBuffer, uint stencilTestEnable)
+		public static void vkCmdSetStencilTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable)
 		{
 			throw new NotImplementedException();
 		}
@@ -2738,7 +2738,7 @@ namespace Vortice.Vulkan
 
 		private static IntPtr vkCmdExecuteGeneratedCommandsNV_ptr;
 		[Calli]
-		public static void vkCmdExecuteGeneratedCommandsNV(VkCommandBuffer commandBuffer, uint isPreprocessed, VkGeneratedCommandsInfoNV* generatedCommandsInfo)
+		public static void vkCmdExecuteGeneratedCommandsNV(VkCommandBuffer commandBuffer, VkBool32 isPreprocessed, VkGeneratedCommandsInfoNV* generatedCommandsInfo)
 		{
 			throw new NotImplementedException();
 		}

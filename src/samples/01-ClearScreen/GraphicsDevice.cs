@@ -297,7 +297,6 @@ namespace Vortice
 					vkDestroySemaphore(VkDevice, _perFrame[i].SwapchainReleaseSemaphore, null);
 					_perFrame[i].SwapchainReleaseSemaphore = VkSemaphore.Null;
 				}
-
 			}
 
 			foreach (VkSemaphore semaphore in _recycledSemaphores)
@@ -419,7 +418,7 @@ namespace Vortice
 
 			if (_perFrame[imageIndex].QueueSubmitFence != VkFence.Null)
 			{
-				vkWaitForFences(VkDevice, _perFrame[imageIndex].QueueSubmitFence, VK_TRUE, ulong.MaxValue);
+				vkWaitForFences(VkDevice, _perFrame[imageIndex].QueueSubmitFence, true, ulong.MaxValue);
 				vkResetFences(VkDevice, _perFrame[imageIndex].QueueSubmitFence);
 			}
 
@@ -541,8 +540,8 @@ namespace Vortice
 					graphicsFamily = i;
 				}
 
-				vkGetPhysicalDeviceSurfaceSupportKHR(device, i, surface, out uint presentSupport);
-				if (presentSupport == 1)
+				vkGetPhysicalDeviceSurfaceSupportKHR(device, i, surface, out VkBool32 presentSupport);
+				if (presentSupport)
 				{
 					presentFamily = i;
 				}

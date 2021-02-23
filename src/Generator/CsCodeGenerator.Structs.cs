@@ -137,16 +137,23 @@ namespace Generator
                     foreach(CppParameter parameter in functionType.Parameters)
                     {
                         string paramCsType = GetCsTypeName(parameter.Type, false);
+                        // Otherwise we get interop issues with non blittable types
+                        if (paramCsType == "VkBool32")
+                            paramCsType = "uint";
                         builder.Append(paramCsType).Append(", ");
                     }
 
                     string returnCsName = GetCsTypeName(functionType.ReturnType, false);
+                    // Otherwise we get interop issues with non blittable types
+                    if (returnCsName == "VkBool32")
+                        returnCsName = "uint";
+
                     builder.Append(returnCsName);
 
                     writer.WriteLine("#if NETSTANDARD2_0");
                     writer.WriteLine($"public IntPtr {csFieldName};");
                     writer.WriteLine("#else");
-                    writer.WriteLine($"public unsafe delegate* unmanaged<{builder.ToString()}> {csFieldName};");
+                    writer.WriteLine($"public unsafe delegate* unmanaged<{builder}> {csFieldName};");
                     writer.WriteLine("#endif");
 
                     return;

@@ -49,7 +49,7 @@ namespace Vortice
                 preTransform = swapChainSupport.Capabilities.currentTransform,
                 compositeAlpha = VkCompositeAlphaFlagsKHR.Opaque,
                 presentMode = presentMode,
-                clipped = VK_TRUE,
+                clipped = true,
                 oldSwapchain = VkSwapchainKHR.Null
             };
 
@@ -85,7 +85,7 @@ namespace Vortice
                 vkDestroyFramebuffer(Device, Framebuffers[i], null);
             }
 
-            vkDestroyRenderPass(Device, RenderPass, null);
+            //vkDestroyRenderPass(Device, RenderPass, null);
 
             if (Handle != VkSwapchainKHR.Null)
             {

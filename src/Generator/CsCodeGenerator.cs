@@ -35,7 +35,7 @@ namespace Generator
             { "VkFlags64", "ulong" },
             { "VkDeviceSize", "ulong" },
             { "VkSampleMask", "uint" },
-            { "VkBool32", "uint" },
+            //{ "VkBool32", "uint" },
 
             { "buffer_handle_t", "IntPtr" },
             { "AHardwareBuffer","IntPtr" },
