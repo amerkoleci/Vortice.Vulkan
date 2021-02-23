@@ -12,7 +12,7 @@ namespace Vortice
 {
 	public unsafe sealed class GraphicsDevice : IDisposable
 	{
-		private static readonly VkString s_EngineName = "Vortice";
+		private static readonly VkString s_EngineName = new VkString( "Vortice");
 		private static readonly string[] s_RequestedValidationLayers = new[] { "VK_LAYER_KHRONOS_validation" };
 
 		public readonly VkInstance VkInstance;
@@ -26,7 +26,6 @@ namespace Vortice
 		private PerFrame[] _perFrame;
 
 		private readonly List<VkSemaphore> _recycledSemaphores = new List<VkSemaphore>();
-
 
 		public GraphicsDevice(string applicationName, bool enableValidation, Window? window)
 		{

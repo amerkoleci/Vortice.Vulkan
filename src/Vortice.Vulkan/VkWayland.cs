@@ -25,7 +25,7 @@ namespace Vortice.Vulkan
 		/// <summary>
 		/// VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME = "VK_KHR_wayland_surface"
 		/// </summary>
-		public static readonly VkString KHRWaylandSurfaceExtensionName = "VK_KHR_wayland_surface";
+		public static readonly string KHRWaylandSurfaceExtensionName = "VK_KHR_wayland_surface";
 
 		private static IntPtr vkCreateWaylandSurfaceKHR_ptr;
 		[Calli]

@@ -26,7 +26,7 @@ namespace Vortice.Vulkan
 		/// <summary>
 		/// VK_KHR_XCB_SURFACE_EXTENSION_NAME = "VK_KHR_xcb_surface"
 		/// </summary>
-		public static readonly VkString KHRXcbSurfaceExtensionName = "VK_KHR_xcb_surface";
+		public static readonly string KHRXcbSurfaceExtensionName = "VK_KHR_xcb_surface";
 
 		private static IntPtr vkCreateXcbSurfaceKHR_ptr;
 		[Calli]
