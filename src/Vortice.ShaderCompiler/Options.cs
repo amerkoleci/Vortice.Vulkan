@@ -55,7 +55,10 @@ namespace Vortice.ShaderCompiler
 
         public void AddMacroDefinition(string name, string? value = null)
         {
-            shaderc_compile_options_add_macro_definition(_handle, name, (nuint)name.Length, value, string.IsNullOrEmpty(value) ? 0 : (nuint)value.Length);
+            shaderc_compile_options_add_macro_definition(_handle,
+                name,
+                (nuint)name.Length,
+                value, string.IsNullOrEmpty(value) ? 0 : (nuint)value!.Length);
         }
 
         public void SetSourceLanguage(SourceLanguage language)

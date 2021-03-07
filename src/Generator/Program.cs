@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using CppAst;
-using Microsoft.Win32;
 
 namespace Generator
 {
@@ -42,6 +41,7 @@ namespace Generator
                     "VK_USE_PLATFORM_VI_NN",
                     //"VK_USE_PLATFORM_WAYLAND_KHR",
                     //"VK_USE_PLATFORM_WIN32_KHR",
+                    //"VK_USE_PLATFORM_SCREEN_QNX",
                     "VK_ENABLE_BETA_EXTENSIONS"
                 }
             };

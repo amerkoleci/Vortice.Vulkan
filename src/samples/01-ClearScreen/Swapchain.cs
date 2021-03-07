@@ -85,7 +85,7 @@ namespace Vortice
                 vkDestroyFramebuffer(Device, Framebuffers[i], null);
             }
 
-            //vkDestroyRenderPass(Device, RenderPass, null);
+            vkDestroyRenderPass(Device, RenderPass, null);
 
             if (Handle != VkSwapchainKHR.Null)
             {

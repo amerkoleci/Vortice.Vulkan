@@ -22,7 +22,7 @@
     <PatcherExecutable>$(RepositoryRootDirectory)bin/Patch/$(Configuration)/net5.0/Patch.dll</PatcherExecutable>
   </PropertyGroup>
 
-  <Target Name="PathDll" AfterTargets="Build">
+  <Target Name="PathDll" AfterTargets="PostBuildEvent">
     <Message Text="Patch dll." />
     <Exec Command="dotnet &quot;$(PatcherExecutable)&quot; --input &quot;$(TargetPath)&quot;" />
   </Target>

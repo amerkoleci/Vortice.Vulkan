@@ -24,7 +24,7 @@ namespace Vortice.Vulkan
         /// <param name="boolValue">if set to <c>true</c> [bool value].</param>
         public VkBool32(bool boolValue)
         {
-            _value = boolValue ? 1 : 0;
+            _value = boolValue ? 1u : 0u;
         }
 
         /// <summary>

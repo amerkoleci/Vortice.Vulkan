@@ -15,9 +15,9 @@ namespace Vortice.Vulkan
 	public static partial class Vulkan
 	{
 		/// <summary>
-		/// VK_HEADER_VERSION = 170
+		/// VK_HEADER_VERSION = 171
 		/// </summary>
-		public const uint HeaderVersion = 170;
+		public const uint HeaderVersion = 171;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_VERSION(1,2,VK_HEADER_VERSION)
 		/// </summary>

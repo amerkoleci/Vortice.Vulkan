@@ -545,6 +545,7 @@ namespace Vortice.Vulkan
 		DirectfbSurfaceCreateInfoEXT = 1000346000,
 		PhysicalDeviceMutableDescriptorTypeFeaturesValve = 1000351000,
 		MutableDescriptorTypeCreateInfoValve = 1000351002,
+		ScreenSurfaceCreateInfoQnx = 1000378000,
 		PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 		PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 		DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,

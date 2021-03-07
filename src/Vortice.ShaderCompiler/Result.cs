@@ -26,7 +26,7 @@ namespace Vortice.ShaderCompiler
         /// Returns a null-terminated string that contains any error messages generated
         /// during the compilation.
         /// </summary>
-        public string ErrorMessage => Marshal.PtrToStringAnsi(shaderc_result_get_error_message(_handle));
+        public string? ErrorMessage => Marshal.PtrToStringAnsi(shaderc_result_get_error_message(_handle));
 
         public unsafe byte* GetBytes() => shaderc_result_get_bytes(_handle);
 
