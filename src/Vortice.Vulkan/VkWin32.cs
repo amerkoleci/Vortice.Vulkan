@@ -20,18 +20,18 @@ namespace Vortice.Vulkan
         public IntPtr hwnd;
     }
 
-    public static partial class Vulkan
+    public static unsafe partial class Vulkan
     {
         /// <summary>
         /// VK_KHR_WIN32_SURFACE_EXTENSION_NAME = "VK_KHR_win32_surface"
         /// </summary>
         public static readonly string KHRWin32SurfaceExtensionName = "VK_KHR_win32_surface";
 
-        private static IntPtr vkCreateWin32SurfaceKHR_ptr;
-        [Calli]
+        private static delegate* unmanaged[Stdcall]<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateWin32SurfaceKHR_ptr;
+
         public static unsafe VkResult vkCreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, out VkSurfaceKHR pSurface)
         {
-            throw new NotImplementedException();
+            return vkCreateWin32SurfaceKHR_ptr(instance, pCreateInfo, pAllocator, out pSurface);
         }
 
         private static IntPtr vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr;

@@ -18,12 +18,12 @@ namespace Generator
                 outputPath = args[0];
             }
 
-            if (File.Exists(outputPath))
+            if (!Path.IsPathRooted(outputPath))
             {
-                Console.Error.WriteLine("The given path is a file, not a folder.");
-                return 1;
+                outputPath = Path.Combine(AppContext.BaseDirectory, outputPath);
             }
-            else if (!Directory.Exists(outputPath))
+
+            if (!Directory.Exists(outputPath))
             {
                 Directory.CreateDirectory(outputPath);
             }
