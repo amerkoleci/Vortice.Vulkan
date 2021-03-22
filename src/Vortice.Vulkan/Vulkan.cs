@@ -71,7 +71,7 @@ namespace Vortice.Vulkan
             GenLoadDevice(instance.Handle, vkGetInstanceProcAddr);
 
             // Manually loaded entries.
-            vkCreateWin32SurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWin32SurfaceKHR));
+            vkCreateWin32SurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWin32SurfaceKHR));
             vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
 
             vkCreateXcbSurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXcbSurfaceKHR));

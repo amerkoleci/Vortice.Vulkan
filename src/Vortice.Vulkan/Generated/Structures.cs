@@ -142,31 +142,11 @@ namespace Vortice.Vulkan
 	public partial struct VkAllocationCallbacks
 	{
 		public unsafe void* pUserData;
-		#if NETSTANDARD2_0
-		public unsafe delegate* unmanaged[Stdcall]<void*, nuint, nuint, VkSystemAllocationScope, void*> pfnAllocation;
-		#else
 		public unsafe delegate* unmanaged<void*, nuint, nuint, VkSystemAllocationScope, void*> pfnAllocation;
-		#endif
-		#if NETSTANDARD2_0
-		public unsafe delegate* unmanaged[Stdcall]<void*, void*, nuint, nuint, VkSystemAllocationScope, void*> pfnReallocation;
-		#else
 		public unsafe delegate* unmanaged<void*, void*, nuint, nuint, VkSystemAllocationScope, void*> pfnReallocation;
-		#endif
-		#if NETSTANDARD2_0
-		public unsafe delegate* unmanaged[Stdcall]<void*, void*, void> pfnFree;
-		#else
 		public unsafe delegate* unmanaged<void*, void*, void> pfnFree;
-		#endif
-		#if NETSTANDARD2_0
-		public unsafe delegate* unmanaged[Stdcall]<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalAllocation;
-		#else
 		public unsafe delegate* unmanaged<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalAllocation;
-		#endif
-		#if NETSTANDARD2_0
-		public unsafe delegate* unmanaged[Stdcall]<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalFree;
-		#else
 		public unsafe delegate* unmanaged<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalFree;
-		#endif
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3581,11 +3561,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkDebugReportFlagsEXT flags;
-		#if NETSTANDARD2_0
-		public unsafe delegate* unmanaged[Stdcall]<VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void*, uint> pfnCallback;
-		#else
 		public unsafe delegate* unmanaged<VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void*, uint> pfnCallback;
-		#endif
 		public unsafe void* pUserData;
 	}
 
@@ -4084,11 +4060,7 @@ namespace Vortice.Vulkan
 		public VkDebugUtilsMessengerCreateFlagsEXT flags;
 		public VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
 		public VkDebugUtilsMessageTypeFlagsEXT messageType;
-		#if NETSTANDARD2_0
-		public unsafe delegate* unmanaged[Stdcall]<VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void*, uint> pfnUserCallback;
-		#else
 		public unsafe delegate* unmanaged<VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void*, uint> pfnUserCallback;
-		#endif
 		public unsafe void* pUserData;
 	}
 
@@ -5490,11 +5462,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkDeviceMemoryReportFlagsEXT flags;
-		#if NETSTANDARD2_0
-		public unsafe delegate* unmanaged[Stdcall]<VkDeviceMemoryReportCallbackDataEXT*, void*, void> pfnUserCallback;
-		#else
 		public unsafe delegate* unmanaged<VkDeviceMemoryReportCallbackDataEXT*, void*, void> pfnUserCallback;
-		#endif
 		public unsafe void* pUserData;
 	}
 
