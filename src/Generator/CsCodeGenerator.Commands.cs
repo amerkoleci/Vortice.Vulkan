@@ -117,6 +117,38 @@ namespace Generator
             "vkCreateDebugUtilsMessengerEXT"
         };
 
+        private static string GetFunctionPointerSignature(CppFunction function, bool allowNonBlittable = true)
+        {
+            bool canUseOut = s_outReturnFunctions.Contains(function.Name);
+
+            StringBuilder builder = new();
+            foreach (CppParameter parameter in function.Parameters)
+            {
+                string paramCsType = GetCsTypeName(parameter.Type, false);
+
+                if (canUseOut &&
+                    CanBeUsedAsOutput(parameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
+                {
+                    builder.Append("out ");
+                    paramCsType = GetCsTypeName(cppTypeDeclaration, false);
+                }
+
+                builder.Append(paramCsType).Append(", ");
+            }
+
+            string returnCsName = GetCsTypeName(function.ReturnType, false);
+            if (!allowNonBlittable)
+            {
+                // Otherwise we get interop issues with non blittable types
+                if (returnCsName == "VkBool32")
+                    returnCsName = "uint";
+            }
+
+            builder.Append(returnCsName);
+
+            return $"delegate* unmanaged<{builder}>";
+        }
+
         private static void GenerateCommands(CppCompilation compilation, string outputPath)
         {
             // Generate Functions
@@ -161,22 +193,49 @@ namespace Generator
                 {
                     CppFunction cppFunction = command.Value;
 
-                    if (cppFunction.Name == "vkCmdSetBlendConstants")
+                    if (cppFunction.Name == "vkGetInstanceProcAddr")
                     {
-
+                        continue;
                     }
 
-                    writer.WriteLine($"private static IntPtr {command.Key}_ptr;");
-                    writer.WriteLine($"[Calli]");
+                    string functionPointerSignature = GetFunctionPointerSignature(cppFunction);
+                    writer.WriteLine($"private static {functionPointerSignature} {command.Key}_ptr;");
 
-                    var returnType = GetCsTypeName(cppFunction.ReturnType, false);
+                    string returnCsName = GetCsTypeName(cppFunction.ReturnType, false);
                     bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
                     var argumentsString = GetParameterSignature(cppFunction, canUseOut);
 
-                    using (writer.PushBlock($"public static {returnType} {cppFunction.Name}({argumentsString})"))
+                    using (writer.PushBlock($"public static {returnCsName} {cppFunction.Name}({argumentsString})"))
                     {
-                        writer.WriteLine("throw new NotImplementedException();");
+                        if (returnCsName != "void")
+                        {
+                            writer.Write("return ");
+                        }
+
+                        writer.Write($"{command.Key}_ptr(");
+                        int index = 0;
+                        foreach (CppParameter cppParameter in cppFunction.Parameters)
+                        {
+                            string paramCsName = GetParameterName(cppParameter.Name);
+
+                            if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
+                            {
+                                writer.Write("out ");
+                            }
+
+                            writer.Write($"{paramCsName}");
+
+                            if (index < cppFunction.Parameters.Count - 1)
+                            {
+                                writer.Write(", ");
+                            }
+
+                            index++;
+                        }
+
+                        writer.WriteLine(");");
                     }
+
                     writer.WriteLine();
                 }
 
@@ -189,19 +248,21 @@ namespace Generator
         {
             using (writer.PushBlock($"private static void {name}(IntPtr context, LoadFunction load)"))
             {
-                foreach (var instanceCommand in commands)
+                foreach (KeyValuePair<string, CppFunction> instanceCommand in commands)
                 {
-                    var commandName = instanceCommand.Key;
-                    writer.WriteLine($"{commandName}_ptr = load(context, nameof({commandName}));");
+                    string commandName = instanceCommand.Key;
+                    if (commandName == "vkGetInstanceProcAddr")
+                    {
+                        continue;
+                    }
+
+                    string functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value);
+                    writer.WriteLine($"{commandName}_ptr = ({functionPointerSignature}) load(context, nameof({commandName}));");
                 }
             }
         }
 
-        private static void EmitInvoke(
-            CodeWriter writer,
-            CppFunction function,
-            List<string> parameters,
-            bool handleCheckResult = true)
+        private static void EmitInvoke(CodeWriter writer, CppFunction function, List<string> parameters, bool handleCheckResult = true)
         {
             var postCall = string.Empty;
             if (handleCheckResult)
@@ -215,7 +276,7 @@ namespace Generator
 
             int index = 0;
             var callArgumentStringBuilder = new StringBuilder();
-            foreach (var parameterName in parameters)
+            foreach (string? parameterName in parameters)
             {
                 callArgumentStringBuilder.Append(parameterName);
 
@@ -244,7 +305,7 @@ namespace Generator
         private static string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut)
         {
             var argumentBuilder = new StringBuilder();
-            var index = 0;
+            int index = 0;
 
             foreach (CppParameter cppParameter in parameters)
             {

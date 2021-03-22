@@ -20,25 +20,24 @@ namespace Vortice.Vulkan
 		public IntPtr surface;
 	}
 
-	public static partial class Vulkan
+	public static unsafe partial class Vulkan
 	{
 		/// <summary>
 		/// VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME = "VK_KHR_wayland_surface"
 		/// </summary>
 		public static readonly string KHRWaylandSurfaceExtensionName = "VK_KHR_wayland_surface";
 
-		private static IntPtr vkCreateWaylandSurfaceKHR_ptr;
-		[Calli]
+		private static delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateWaylandSurfaceKHR_ptr;
+		private static delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, VkBool32> vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr;
+
 		public static unsafe VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, out VkSurfaceKHR pSurface)
 		{
-			throw new NotImplementedException();
-		}
+            return vkCreateWaylandSurfaceKHR_ptr(instance, pCreateInfo, pAllocator, out pSurface);
+        }
 
-		private static IntPtr vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr;
-		[Calli]
-		public static unsafe uint vkGetPhysicalDeviceWaylandPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display)
+		public static unsafe VkBool32 vkGetPhysicalDeviceWaylandPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display)
 		{
-			throw new NotImplementedException();
-		}
+            return vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex, display);
+        }
 	}
 }

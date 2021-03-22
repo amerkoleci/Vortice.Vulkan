@@ -21,25 +21,24 @@ namespace Vortice.Vulkan
 		public IntPtr window;
 	}
 
-	public static partial class Vulkan
+	public static unsafe partial class Vulkan
 	{
 		/// <summary>
 		/// VK_KHR_XLIB_SURFACE_EXTENSION_NAME = "VK_KHR_xlib_surface"
 		/// </summary>
 		public static readonly string KHRXlibSurfaceExtensionName = "VK_KHR_xlib_surface";
 
-		private static IntPtr vkCreateXlibSurfaceKHR_ptr;
-		[Calli]
+		private static delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateXlibSurfaceKHR_ptr;
+		private static delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32> vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr;
+
 		public static unsafe VkResult vkCreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, out VkSurfaceKHR pSurface)
 		{
-			throw new NotImplementedException();
-		}
+            return vkCreateXlibSurfaceKHR_ptr(instance, pCreateInfo, pAllocator, out pSurface);
+        }
 
-		private static IntPtr vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr;
-		[Calli]
-		public static unsafe uint vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display, uint visualId)
+		public static unsafe VkBool32 vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display, uint visualId)
 		{
-			throw new NotImplementedException();
-		}
+            return vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex, display, visualId);
+        }
 	}
 }

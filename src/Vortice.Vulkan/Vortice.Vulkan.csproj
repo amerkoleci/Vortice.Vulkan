@@ -10,21 +10,4 @@
     <None Include="..\..\LICENSE" PackagePath="" Pack="true" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Memory" Version="4.5.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="../Patch/Patch.csproj" ReferenceOutputAssembly="false" SkipGetTargetFrameworkProperties="true" GlobalPropertiesToRemove="TargetFramework" />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <PatcherExecutable>$(RepositoryRootDirectory)bin/Patch/$(Configuration)/net5.0/Patch.dll</PatcherExecutable>
-  </PropertyGroup>
-
-  <Target Name="PathDll" AfterTargets="PostBuildEvent">
-    <Message Text="Patch dll." />
-    <Exec Command="dotnet &quot;$(PatcherExecutable)&quot; --input &quot;$(TargetPath)&quot;" />
-  </Target>
-
 </Project>

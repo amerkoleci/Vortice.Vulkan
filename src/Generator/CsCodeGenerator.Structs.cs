@@ -133,7 +133,7 @@ namespace Generator
                     typedef.ElementType is CppPointerType pointerType &&
                     pointerType.ElementType is CppFunctionType functionType)
                 {
-                    StringBuilder builder = new StringBuilder();
+                    StringBuilder builder = new();
                     foreach(CppParameter parameter in functionType.Parameters)
                     {
                         string paramCsType = GetCsTypeName(parameter.Type, false);

@@ -3,7 +3,6 @@
 
 using System;
 using System.Numerics;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using static Vortice.Vulkan.Vulkan.Kernel32;
 using static Vortice.Vulkan.Vulkan.Libdl;
@@ -12,7 +11,7 @@ namespace Vortice.Vulkan
 {
     public static unsafe partial class Vulkan
     {
-        private delegate IntPtr LoadFunction(IntPtr context, string name);
+        private delegate delegate* unmanaged<void> LoadFunction(IntPtr context, string name);
 
         private static IntPtr s_vulkanModule = IntPtr.Zero;
         private static VkInstance s_loadedInstance = VkInstance.Null;
@@ -32,7 +31,7 @@ namespace Vortice.Vulkan
                 if (s_vulkanModule == IntPtr.Zero)
                     return VkResult.ErrorInitializationFailed;
 
-                vkGetInstanceProcAddr_ptr = GetProcAddress(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+                vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, byte*, delegate* unmanaged<void>>)GetProcAddress(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
@@ -45,7 +44,7 @@ namespace Vortice.Vulkan
                 if (s_vulkanModule == IntPtr.Zero)
                     return VkResult.ErrorInitializationFailed;
 
-                vkGetInstanceProcAddr_ptr = dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+                vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, byte*, delegate* unmanaged<void>>)dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
             else
             {
@@ -56,7 +55,7 @@ namespace Vortice.Vulkan
                 if (s_vulkanModule == IntPtr.Zero)
                     return VkResult.ErrorInitializationFailed;
 
-                vkGetInstanceProcAddr_ptr = dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+                vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, byte*, delegate* unmanaged<void>>)dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
 
             GenLoadLoader(IntPtr.Zero, vkGetInstanceProcAddr);
@@ -72,30 +71,30 @@ namespace Vortice.Vulkan
 
             // Manually loaded entries.
             vkCreateWin32SurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWin32SurfaceKHR));
-            vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
+            vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
 
-            vkCreateXcbSurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXcbSurfaceKHR));
-            vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXcbPresentationSupportKHR));
+            vkCreateXcbSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXcbSurfaceKHR));
+            vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXcbPresentationSupportKHR));
 
-            vkCreateXlibSurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXlibSurfaceKHR));
-            vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXlibPresentationSupportKHR));
+            vkCreateXlibSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXlibSurfaceKHR));
+            vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXlibPresentationSupportKHR));
 
-            vkCreateWaylandSurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWaylandSurfaceKHR));
-            vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWaylandPresentationSupportKHR));
+            vkCreateWaylandSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWaylandSurfaceKHR));
+            vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWaylandPresentationSupportKHR));
         }
 
         private static void GenLoadLoader(IntPtr context, LoadFunction load)
         {
-            vkCreateInstance_ptr = LoadCallbackThrow(context, load, "vkCreateInstance");
-            vkEnumerateInstanceExtensionProperties_ptr = LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
-            vkEnumerateInstanceLayerProperties_ptr = LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
-            vkEnumerateInstanceVersion_ptr = load(context, "vkEnumerateInstanceVersion");
+            vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
+            vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<byte*, uint*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
+            vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<uint*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
+            vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<out uint, VkResult>)load(context, "vkEnumerateInstanceVersion");
         }
 
-        private static IntPtr LoadCallbackThrow(IntPtr context, LoadFunction load, string name)
+        private static delegate* unmanaged<void> LoadCallbackThrow(IntPtr context, LoadFunction load, string name)
         {
-            IntPtr functionPtr = load(context, name);
-            if (functionPtr == IntPtr.Zero)
+            delegate* unmanaged<void> functionPtr = load(context, name);
+            if (functionPtr == null)
             {
                 throw new InvalidOperationException($"No function was found with the name {name}.");
             }
@@ -103,17 +102,18 @@ namespace Vortice.Vulkan
             return functionPtr;
         }
 
-        public static IntPtr vkGetInstanceProcAddr(IntPtr instance, string name)
+        private static delegate* unmanaged<VkInstance, byte*, delegate* unmanaged<void>> vkGetInstanceProcAddr_ptr;
+        public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, byte* name)
+        {
+            return vkGetInstanceProcAddr_ptr(instance, name);
+        }
+
+        public static delegate* unmanaged<void> vkGetInstanceProcAddr(IntPtr instance, string name)
         {
             int byteCount = Interop.GetMaxByteCount(name);
             byte* stringPtr = stackalloc byte[byteCount];
             Interop.StringToPointer(name, stringPtr, byteCount);
             return vkGetInstanceProcAddr(instance, stringPtr);
-        }
-
-        public static T vkGetInstanceProcAddr<T>(IntPtr instance, string name)
-        {
-            return Marshal.GetDelegateForFunctionPointer<T>(vkGetInstanceProcAddr(instance, name));
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Vortice.Vulkan
         /// <returns>The version of Vulkan supported by instance-level functionality.</returns>
         public static VkVersion vkEnumerateInstanceVersion()
         {
-            if (vkEnumerateInstanceVersion_ptr != IntPtr.Zero
+            if (vkEnumerateInstanceVersion_ptr != null
                 && vkEnumerateInstanceVersion(out uint apiVersion) == VkResult.Success)
             {
                 return new VkVersion(apiVersion);
@@ -221,21 +221,9 @@ namespace Vortice.Vulkan
             }
         }
 
-        [Calli]
-        public static VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines)
+        public static VkResult vkCreateGraphicsPipeline(VkDevice device, VkPipelineCache pipelineCache, VkGraphicsPipelineCreateInfo createInfo, VkPipeline* pipeline)
         {
-            throw new NotImplementedException();
-        }
-
-        [Calli]
-        public static VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static VkResult vkCreateGraphicsPipeline(VkDevice device, VkPipelineCache pipelineCache, VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
-        {
-            return vkCreateGraphicsPipelines(device, pipelineCache, 1, &createInfo, null, out pipeline);
+            return vkCreateGraphicsPipelines_ptr(device, pipelineCache, 1, &createInfo, null, pipeline);
         }
 
         public static VkResult vkCreateGraphicsPipelines(
@@ -253,9 +241,9 @@ namespace Vortice.Vulkan
             }
         }
 
-        public static VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
+        public static VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, VkComputePipelineCreateInfo createInfo, VkPipeline* pipeline)
         {
-            return vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, out pipeline);
+            return vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, pipeline);
         }
 
         public static VkResult vkCreateComputePipelines(
@@ -424,12 +412,6 @@ namespace Vortice.Vulkan
             return vkQueuePresentKHR(queue, &presentInfo);
         }
 
-        [Calli]
-        public static VkResult vkCreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkImageView* view)
-        {
-            throw new NotImplementedException();
-        }
-
         public static VkResult vkCreateCommandPool(VkDevice device, uint queueFamilyIndex, out VkCommandPool commandPool)
         {
             VkCommandPoolCreateInfo createInfo = new VkCommandPoolCreateInfo
@@ -449,12 +431,6 @@ namespace Vortice.Vulkan
                 queueFamilyIndex = queueFamilyIndex
             };
             return vkCreateCommandPool(device, &createInfo, null, out commandPool);
-        }
-
-        [Calli]
-        public static VkResult vkAllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, out VkCommandBuffer commandBuffers)
-        {
-            throw new NotImplementedException();
         }
 
         public static void vkFreeCommandBuffers(VkDevice device, VkCommandPool commandPool, VkCommandBuffer commandBuffer)
@@ -554,12 +530,6 @@ namespace Vortice.Vulkan
 
                 return vkCreateFramebuffer(device, &createInfo, null, out framebuffer);
             }
-        }
-
-        [Calli]
-        public static VkResult vkAllocateDescriptorSets(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, out VkDescriptorSet descriptorSets)
-        {
-            throw new NotImplementedException();
         }
 
         public static void vkCmdSetViewport<T>(VkCommandBuffer commandBuffer, uint firstViewport, T viewport) where T : unmanaged

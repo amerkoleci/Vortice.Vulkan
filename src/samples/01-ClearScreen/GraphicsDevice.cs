@@ -136,8 +136,10 @@ namespace Vortice
 
             var availableDeviceExtensions = vkEnumerateDeviceExtensionProperties(PhysicalDevice);
 
-            var priority = 1.0f;
-            var queueCreateInfo = new VkDeviceQueueCreateInfo
+            var supportPresent = vkGetPhysicalDeviceWin32PresentationSupportKHR(PhysicalDevice, queueFamilies.graphicsFamily);
+
+            float priority = 1.0f;
+            VkDeviceQueueCreateInfo queueCreateInfo = new VkDeviceQueueCreateInfo
             {
                 sType = VkStructureType.DeviceQueueCreateInfo,
                 queueFamilyIndex = queueFamilies.graphicsFamily,
@@ -260,7 +262,10 @@ namespace Vortice
                     level = VkCommandBufferLevel.Primary,
                     commandBufferCount = 1
                 };
-                vkAllocateCommandBuffers(VkDevice, &commandBufferInfo, out _perFrame[i].PrimaryCommandBuffer).CheckResult();
+
+                VkCommandBuffer commandBuffer;
+                vkAllocateCommandBuffers(VkDevice, &commandBufferInfo, &commandBuffer).CheckResult();
+                _perFrame[i].PrimaryCommandBuffer = commandBuffer;
             }
         }
 

@@ -136,11 +136,11 @@ namespace Generator
                         var invokeSingleElementParameters = new List<string>();
                         var invokeElementsParameters = new List<string>();
 
-                        foreach (var cppParameter in newParameters)
+                        foreach (CppParameter cppParameter in newParameters)
                         {
-                            var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
-                            var paramCsName = GetParameterName(cppParameter.Name);
-                            var argumentSignature = $"{paramCsTypeName} {paramCsName}";
+                            string paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+                            string paramCsName = GetParameterName(cppParameter.Name);
+                            string argumentSignature = $"{paramCsTypeName} {paramCsName}";
 
                             if (index == countArgumentArrayIndex)
                             {
