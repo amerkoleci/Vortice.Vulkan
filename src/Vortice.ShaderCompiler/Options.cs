@@ -8,14 +8,14 @@ namespace Vortice.ShaderCompiler
 {
     public class Options : IDisposable
     {
-        private IntPtr _handle;
+        private nint _handle;
 
         public Options()
             : this(shaderc_compile_options_initialize())
         {
         }
 
-        private Options(IntPtr handle)
+        private Options(nint handle)
         {
             _handle = handle;
             if (_handle == IntPtr.Zero)
@@ -39,7 +39,7 @@ namespace Vortice.ShaderCompiler
 
         protected virtual void Dispose(bool disposing)
         {
-            if (_handle == IntPtr.Zero)
+            if (_handle == 0)
                 return;
 
             if (disposing)

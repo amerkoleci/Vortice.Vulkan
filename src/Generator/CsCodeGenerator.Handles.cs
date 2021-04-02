@@ -43,19 +43,12 @@ namespace Generator
                 writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
                 using (writer.PushBlock($"public readonly partial struct {csName} : IEquatable<{csName}>"))
                 {
-                    string handleType = isDispatchable ? "IntPtr" : "ulong";
-                    string nullValue = isDispatchable ? "IntPtr.Zero" : "0";
+                    string handleType = isDispatchable ? "nint" : "ulong";
+                    string nullValue = "0";
 
                     writer.WriteLine($"public {csName}({handleType} handle) {{ Handle = handle; }}");
                     writer.WriteLine($"public {handleType} Handle {{ get; }}");
-                    if (isDispatchable)
-                    {
-                        writer.WriteLine($"public bool IsNull => Handle == IntPtr.Zero;");
-                    }
-                    else
-                    {
-                        writer.WriteLine($"public bool IsNull => Handle == 0;");
-                    }
+                    writer.WriteLine($"public bool IsNull => Handle == 0;");
 
                     writer.WriteLine($"public static {csName} Null => new {csName}({nullValue});");
                     writer.WriteLine($"public static implicit operator {csName}({handleType} handle) => new {csName}(handle);");

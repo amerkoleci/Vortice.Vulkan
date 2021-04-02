@@ -9,9 +9,9 @@ namespace Vortice.ShaderCompiler
 {
     public class Result : IDisposable
     {
-        private IntPtr _handle;
+        private nint _handle;
 
-        internal Result(IntPtr handle)
+        internal Result(nint handle)
         {
             _handle = handle;
         }
@@ -48,7 +48,7 @@ namespace Vortice.ShaderCompiler
 
         protected virtual void Dispose(bool disposing)
         {
-            if (_handle == IntPtr.Zero)
+            if (_handle == 0)
                 return;
 
             if (disposing)

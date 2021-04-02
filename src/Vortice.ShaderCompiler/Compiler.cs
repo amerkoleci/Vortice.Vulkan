@@ -8,12 +8,12 @@ namespace Vortice.ShaderCompiler
 {
     public class Compiler : IDisposable
     {
-        private IntPtr _handle;
+        private nint _handle;
 
         public Compiler(Options? options = null)
         {
             _handle = shaderc_compiler_initialize();
-            if (_handle == IntPtr.Zero)
+            if (_handle == 0)
             {
                 throw new Exception("Cannot initialize native handle");
             }
@@ -36,7 +36,7 @@ namespace Vortice.ShaderCompiler
 
         protected virtual void Dispose(bool disposing)
         {
-            if (_handle == IntPtr.Zero)
+            if (_handle == 0)
                 return;
 
             if (disposing)

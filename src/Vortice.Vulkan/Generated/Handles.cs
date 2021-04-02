@@ -64,15 +64,15 @@ namespace Vortice.Vulkan
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct VkInstance : IEquatable<VkInstance>
 	{
-		public VkInstance(IntPtr handle) { Handle = handle; }
-		public IntPtr Handle { get; }
-		public bool IsNull => Handle == IntPtr.Zero;
-		public static VkInstance Null => new VkInstance(IntPtr.Zero);
-		public static implicit operator VkInstance(IntPtr handle) => new VkInstance(handle);
+		public VkInstance(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkInstance Null => new VkInstance(0);
+		public static implicit operator VkInstance(nint handle) => new VkInstance(handle);
 		public static bool operator ==(VkInstance left, VkInstance right) => left.Handle == right.Handle;
 		public static bool operator !=(VkInstance left, VkInstance right) => left.Handle != right.Handle;
-		public static bool operator ==(VkInstance left, IntPtr right) => left.Handle == right;
-		public static bool operator !=(VkInstance left, IntPtr right) => left.Handle != right;
+		public static bool operator ==(VkInstance left, nint right) => left.Handle == right;
+		public static bool operator !=(VkInstance left, nint right) => left.Handle != right;
 		public bool Equals(VkInstance other) => Handle == other.Handle;
 		/// <inheritdoc/>
 		public override bool Equals(object obj) => obj is VkInstance handle && Equals(handle);
@@ -87,15 +87,15 @@ namespace Vortice.Vulkan
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct VkPhysicalDevice : IEquatable<VkPhysicalDevice>
 	{
-		public VkPhysicalDevice(IntPtr handle) { Handle = handle; }
-		public IntPtr Handle { get; }
-		public bool IsNull => Handle == IntPtr.Zero;
-		public static VkPhysicalDevice Null => new VkPhysicalDevice(IntPtr.Zero);
-		public static implicit operator VkPhysicalDevice(IntPtr handle) => new VkPhysicalDevice(handle);
+		public VkPhysicalDevice(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkPhysicalDevice Null => new VkPhysicalDevice(0);
+		public static implicit operator VkPhysicalDevice(nint handle) => new VkPhysicalDevice(handle);
 		public static bool operator ==(VkPhysicalDevice left, VkPhysicalDevice right) => left.Handle == right.Handle;
 		public static bool operator !=(VkPhysicalDevice left, VkPhysicalDevice right) => left.Handle != right.Handle;
-		public static bool operator ==(VkPhysicalDevice left, IntPtr right) => left.Handle == right;
-		public static bool operator !=(VkPhysicalDevice left, IntPtr right) => left.Handle != right;
+		public static bool operator ==(VkPhysicalDevice left, nint right) => left.Handle == right;
+		public static bool operator !=(VkPhysicalDevice left, nint right) => left.Handle != right;
 		public bool Equals(VkPhysicalDevice other) => Handle == other.Handle;
 		/// <inheritdoc/>
 		public override bool Equals(object obj) => obj is VkPhysicalDevice handle && Equals(handle);
@@ -110,15 +110,15 @@ namespace Vortice.Vulkan
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct VkDevice : IEquatable<VkDevice>
 	{
-		public VkDevice(IntPtr handle) { Handle = handle; }
-		public IntPtr Handle { get; }
-		public bool IsNull => Handle == IntPtr.Zero;
-		public static VkDevice Null => new VkDevice(IntPtr.Zero);
-		public static implicit operator VkDevice(IntPtr handle) => new VkDevice(handle);
+		public VkDevice(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkDevice Null => new VkDevice(0);
+		public static implicit operator VkDevice(nint handle) => new VkDevice(handle);
 		public static bool operator ==(VkDevice left, VkDevice right) => left.Handle == right.Handle;
 		public static bool operator !=(VkDevice left, VkDevice right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDevice left, IntPtr right) => left.Handle == right;
-		public static bool operator !=(VkDevice left, IntPtr right) => left.Handle != right;
+		public static bool operator ==(VkDevice left, nint right) => left.Handle == right;
+		public static bool operator !=(VkDevice left, nint right) => left.Handle != right;
 		public bool Equals(VkDevice other) => Handle == other.Handle;
 		/// <inheritdoc/>
 		public override bool Equals(object obj) => obj is VkDevice handle && Equals(handle);
@@ -133,15 +133,15 @@ namespace Vortice.Vulkan
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct VkQueue : IEquatable<VkQueue>
 	{
-		public VkQueue(IntPtr handle) { Handle = handle; }
-		public IntPtr Handle { get; }
-		public bool IsNull => Handle == IntPtr.Zero;
-		public static VkQueue Null => new VkQueue(IntPtr.Zero);
-		public static implicit operator VkQueue(IntPtr handle) => new VkQueue(handle);
+		public VkQueue(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkQueue Null => new VkQueue(0);
+		public static implicit operator VkQueue(nint handle) => new VkQueue(handle);
 		public static bool operator ==(VkQueue left, VkQueue right) => left.Handle == right.Handle;
 		public static bool operator !=(VkQueue left, VkQueue right) => left.Handle != right.Handle;
-		public static bool operator ==(VkQueue left, IntPtr right) => left.Handle == right;
-		public static bool operator !=(VkQueue left, IntPtr right) => left.Handle != right;
+		public static bool operator ==(VkQueue left, nint right) => left.Handle == right;
+		public static bool operator !=(VkQueue left, nint right) => left.Handle != right;
 		public bool Equals(VkQueue other) => Handle == other.Handle;
 		/// <inheritdoc/>
 		public override bool Equals(object obj) => obj is VkQueue handle && Equals(handle);
@@ -179,15 +179,15 @@ namespace Vortice.Vulkan
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct VkCommandBuffer : IEquatable<VkCommandBuffer>
 	{
-		public VkCommandBuffer(IntPtr handle) { Handle = handle; }
-		public IntPtr Handle { get; }
-		public bool IsNull => Handle == IntPtr.Zero;
-		public static VkCommandBuffer Null => new VkCommandBuffer(IntPtr.Zero);
-		public static implicit operator VkCommandBuffer(IntPtr handle) => new VkCommandBuffer(handle);
+		public VkCommandBuffer(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkCommandBuffer Null => new VkCommandBuffer(0);
+		public static implicit operator VkCommandBuffer(nint handle) => new VkCommandBuffer(handle);
 		public static bool operator ==(VkCommandBuffer left, VkCommandBuffer right) => left.Handle == right.Handle;
 		public static bool operator !=(VkCommandBuffer left, VkCommandBuffer right) => left.Handle != right.Handle;
-		public static bool operator ==(VkCommandBuffer left, IntPtr right) => left.Handle == right;
-		public static bool operator !=(VkCommandBuffer left, IntPtr right) => left.Handle != right;
+		public static bool operator ==(VkCommandBuffer left, nint right) => left.Handle == right;
+		public static bool operator !=(VkCommandBuffer left, nint right) => left.Handle != right;
 		public bool Equals(VkCommandBuffer other) => Handle == other.Handle;
 		/// <inheritdoc/>
 		public override bool Equals(object obj) => obj is VkCommandBuffer handle && Equals(handle);
