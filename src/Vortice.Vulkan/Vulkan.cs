@@ -11,7 +11,7 @@ namespace Vortice.Vulkan
 {
     public static unsafe partial class Vulkan
     {
-        private delegate delegate* unmanaged<void> LoadFunction(IntPtr context, string name);
+        private delegate delegate* unmanaged[Stdcall]<void> LoadFunction(IntPtr context, string name);
 
         private static IntPtr s_vulkanModule = IntPtr.Zero;
         private static VkInstance s_loadedInstance = VkInstance.Null;
@@ -31,7 +31,7 @@ namespace Vortice.Vulkan
                 if (s_vulkanModule == IntPtr.Zero)
                     return VkResult.ErrorInitializationFailed;
 
-                vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, byte*, delegate* unmanaged<void>>)GetProcAddress(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+                vkGetInstanceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>>)GetProcAddress(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
@@ -44,7 +44,7 @@ namespace Vortice.Vulkan
                 if (s_vulkanModule == IntPtr.Zero)
                     return VkResult.ErrorInitializationFailed;
 
-                vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, byte*, delegate* unmanaged<void>>)dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+                vkGetInstanceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>>)dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
             else
             {
@@ -55,7 +55,7 @@ namespace Vortice.Vulkan
                 if (s_vulkanModule == IntPtr.Zero)
                     return VkResult.ErrorInitializationFailed;
 
-                vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, byte*, delegate* unmanaged<void>>)dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+                vkGetInstanceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>>)dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
             }
 
             GenLoadLoader(IntPtr.Zero, vkGetInstanceProcAddr);
@@ -70,6 +70,19 @@ namespace Vortice.Vulkan
             GenLoadDevice(instance.Handle, vkGetInstanceProcAddr);
 
             // Manually loaded entries.
+#if NETSTANDARD2_0
+            vkCreateWin32SurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWin32SurfaceKHR));
+            vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
+
+            vkCreateXcbSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXcbSurfaceKHR));
+            vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXcbPresentationSupportKHR));
+
+            vkCreateXlibSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXlibSurfaceKHR));
+            vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXlibPresentationSupportKHR));
+
+            vkCreateWaylandSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWaylandSurfaceKHR));
+            vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWaylandPresentationSupportKHR));
+#else
             vkCreateWin32SurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWin32SurfaceKHR));
             vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
 
@@ -81,19 +94,27 @@ namespace Vortice.Vulkan
 
             vkCreateWaylandSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWaylandSurfaceKHR));
             vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWaylandPresentationSupportKHR));
+#endif
         }
 
         private static void GenLoadLoader(IntPtr context, LoadFunction load)
         {
+#if NETSTANDARD2_0
+vkCreateInstance_ptr = (delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
+            vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged[Stdcall]<byte*, uint*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
+            vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged[Stdcall]<uint*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
+            vkEnumerateInstanceVersion_ptr = (delegate* unmanaged[Stdcall]<out uint, VkResult>)load(context, "vkEnumerateInstanceVersion");
+#else
             vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
             vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<byte*, uint*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
             vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<uint*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
             vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<out uint, VkResult>)load(context, "vkEnumerateInstanceVersion");
+#endif
         }
 
-        private static delegate* unmanaged<void> LoadCallbackThrow(IntPtr context, LoadFunction load, string name)
+        private static delegate* unmanaged[Stdcall]<void> LoadCallbackThrow(IntPtr context, LoadFunction load, string name)
         {
-            delegate* unmanaged<void> functionPtr = load(context, name);
+            delegate* unmanaged[Stdcall]<void> functionPtr = load(context, name);
             if (functionPtr == null)
             {
                 throw new InvalidOperationException($"No function was found with the name {name}.");
@@ -102,13 +123,13 @@ namespace Vortice.Vulkan
             return functionPtr;
         }
 
-        private static delegate* unmanaged<VkInstance, byte*, delegate* unmanaged<void>> vkGetInstanceProcAddr_ptr;
-        public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, byte* name)
+        private static delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr_ptr;
+        public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(VkInstance instance, byte* name)
         {
             return vkGetInstanceProcAddr_ptr(instance, name);
         }
 
-        public static delegate* unmanaged<void> vkGetInstanceProcAddr(IntPtr instance, string name)
+        public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(IntPtr instance, string name)
         {
             int byteCount = Interop.GetMaxByteCount(name);
             byte* stringPtr = stackalloc byte[byteCount];

@@ -13,2569 +13,4281 @@ namespace Vortice.Vulkan
 {
 	unsafe partial class Vulkan
 	{
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult> vkCreateInstance_ptr;
+		#else
 		private static delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult> vkCreateInstance_ptr;
+		#endif
 		public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance)
 		{
 			return vkCreateInstance_ptr(createInfo, allocator, out instance);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkAllocationCallbacks*, void> vkDestroyInstance_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void> vkDestroyInstance_ptr;
+		#endif
 		public static void vkDestroyInstance(VkInstance instance, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyInstance_ptr(instance, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, uint*, VkPhysicalDevice*, VkResult> vkEnumeratePhysicalDevices_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, uint*, VkPhysicalDevice*, VkResult> vkEnumeratePhysicalDevices_ptr;
+		#endif
 		public static VkResult vkEnumeratePhysicalDevices(VkInstance instance, uint* physicalDeviceCount, VkPhysicalDevice* physicalDevices)
 		{
 			return vkEnumeratePhysicalDevices_ptr(instance, physicalDeviceCount, physicalDevices);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceFeatures, void> vkGetPhysicalDeviceFeatures_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceFeatures, void> vkGetPhysicalDeviceFeatures_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceFeatures(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceFeatures features)
 		{
 			vkGetPhysicalDeviceFeatures_ptr(physicalDevice, out features);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, out VkFormatProperties, void> vkGetPhysicalDeviceFormatProperties_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkFormat, out VkFormatProperties, void> vkGetPhysicalDeviceFormatProperties_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, out VkFormatProperties formatProperties)
 		{
 			vkGetPhysicalDeviceFormatProperties_ptr(physicalDevice, format, out formatProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, out VkImageFormatProperties, VkResult> vkGetPhysicalDeviceImageFormatProperties_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, out VkImageFormatProperties, VkResult> vkGetPhysicalDeviceImageFormatProperties_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, out VkImageFormatProperties imageFormatProperties)
 		{
 			return vkGetPhysicalDeviceImageFormatProperties_ptr(physicalDevice, format, type, tiling, usage, flags, out imageFormatProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceProperties, void> vkGetPhysicalDeviceProperties_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceProperties, void> vkGetPhysicalDeviceProperties_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceProperties properties)
 		{
 			vkGetPhysicalDeviceProperties_ptr(physicalDevice, out properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkQueueFamilyProperties*, void> vkGetPhysicalDeviceQueueFamilyProperties_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties*, void> vkGetPhysicalDeviceQueueFamilyProperties_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, VkQueueFamilyProperties* queueFamilyProperties)
 		{
 			vkGetPhysicalDeviceQueueFamilyProperties_ptr(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void> vkGetPhysicalDeviceMemoryProperties_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void> vkGetPhysicalDeviceMemoryProperties_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceMemoryProperties(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties memoryProperties)
 		{
 			vkGetPhysicalDeviceMemoryProperties_ptr(physicalDevice, out memoryProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, byte*, IntPtr> vkGetDeviceProcAddr_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, byte*, IntPtr> vkGetDeviceProcAddr_ptr;
+		#endif
 		public static IntPtr vkGetDeviceProcAddr(VkDevice device, byte* name)
 		{
 			return vkGetDeviceProcAddr_ptr(device, name);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult> vkCreateDevice_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult> vkCreateDevice_ptr;
+		#endif
 		public static VkResult vkCreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDevice device)
 		{
 			return vkCreateDevice_ptr(physicalDevice, createInfo, allocator, out device);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAllocationCallbacks*, void> vkDestroyDevice_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAllocationCallbacks*, void> vkDestroyDevice_ptr;
+		#endif
 		public static void vkDestroyDevice(VkDevice device, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyDevice_ptr(device, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<byte*, uint*, VkExtensionProperties*, VkResult> vkEnumerateInstanceExtensionProperties_ptr;
+		#else
 		private static delegate* unmanaged<byte*, uint*, VkExtensionProperties*, VkResult> vkEnumerateInstanceExtensionProperties_ptr;
+		#endif
 		public static VkResult vkEnumerateInstanceExtensionProperties(byte* layerName, uint* propertyCount, VkExtensionProperties* properties)
 		{
 			return vkEnumerateInstanceExtensionProperties_ptr(layerName, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, byte*, uint*, VkExtensionProperties*, VkResult> vkEnumerateDeviceExtensionProperties_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, byte*, uint*, VkExtensionProperties*, VkResult> vkEnumerateDeviceExtensionProperties_ptr;
+		#endif
 		public static VkResult vkEnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, byte* layerName, uint* propertyCount, VkExtensionProperties* properties)
 		{
 			return vkEnumerateDeviceExtensionProperties_ptr(physicalDevice, layerName, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<uint*, VkLayerProperties*, VkResult> vkEnumerateInstanceLayerProperties_ptr;
+		#else
 		private static delegate* unmanaged<uint*, VkLayerProperties*, VkResult> vkEnumerateInstanceLayerProperties_ptr;
+		#endif
 		public static VkResult vkEnumerateInstanceLayerProperties(uint* propertyCount, VkLayerProperties* properties)
 		{
 			return vkEnumerateInstanceLayerProperties_ptr(propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkLayerProperties*, VkResult> vkEnumerateDeviceLayerProperties_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkLayerProperties*, VkResult> vkEnumerateDeviceLayerProperties_ptr;
+		#endif
 		public static VkResult vkEnumerateDeviceLayerProperties(VkPhysicalDevice physicalDevice, uint* propertyCount, VkLayerProperties* properties)
 		{
 			return vkEnumerateDeviceLayerProperties_ptr(physicalDevice, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, uint, out VkQueue, void> vkGetDeviceQueue_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, uint, out VkQueue, void> vkGetDeviceQueue_ptr;
+		#endif
 		public static void vkGetDeviceQueue(VkDevice device, uint queueFamilyIndex, uint queueIndex, out VkQueue queue)
 		{
 			vkGetDeviceQueue_ptr(device, queueFamilyIndex, queueIndex, out queue);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkQueue, uint, VkSubmitInfo*, VkFence, VkResult> vkQueueSubmit_ptr;
+		#else
 		private static delegate* unmanaged<VkQueue, uint, VkSubmitInfo*, VkFence, VkResult> vkQueueSubmit_ptr;
+		#endif
 		public static VkResult vkQueueSubmit(VkQueue queue, uint submitCount, VkSubmitInfo* submits, VkFence fence)
 		{
 			return vkQueueSubmit_ptr(queue, submitCount, submits, fence);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkQueue, VkResult> vkQueueWaitIdle_ptr;
+		#else
 		private static delegate* unmanaged<VkQueue, VkResult> vkQueueWaitIdle_ptr;
+		#endif
 		public static VkResult vkQueueWaitIdle(VkQueue queue)
 		{
 			return vkQueueWaitIdle_ptr(queue);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkResult> vkDeviceWaitIdle_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkResult> vkDeviceWaitIdle_ptr;
+		#endif
 		public static VkResult vkDeviceWaitIdle(VkDevice device)
 		{
 			return vkDeviceWaitIdle_ptr(device);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, out VkDeviceMemory, VkResult> vkAllocateMemory_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, out VkDeviceMemory, VkResult> vkAllocateMemory_ptr;
+		#endif
 		public static VkResult vkAllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, out VkDeviceMemory memory)
 		{
 			return vkAllocateMemory_ptr(device, allocateInfo, allocator, out memory);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void> vkFreeMemory_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void> vkFreeMemory_ptr;
+		#endif
 		public static void vkFreeMemory(VkDevice device, VkDeviceMemory memory, VkAllocationCallbacks* allocator)
 		{
 			vkFreeMemory_ptr(device, memory, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void*, VkResult> vkMapMemory_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void*, VkResult> vkMapMemory_ptr;
+		#endif
 		public static VkResult vkMapMemory(VkDevice device, VkDeviceMemory memory, ulong offset, ulong size, VkMemoryMapFlags flags, void* ppData)
 		{
 			return vkMapMemory_ptr(device, memory, offset, size, flags, ppData);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, void> vkUnmapMemory_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeviceMemory, void> vkUnmapMemory_ptr;
+		#endif
 		public static void vkUnmapMemory(VkDevice device, VkDeviceMemory memory)
 		{
 			vkUnmapMemory_ptr(device, memory);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkFlushMappedMemoryRanges_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkFlushMappedMemoryRanges_ptr;
+		#endif
 		public static VkResult vkFlushMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange* memoryRanges)
 		{
 			return vkFlushMappedMemoryRanges_ptr(device, memoryRangeCount, memoryRanges);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkInvalidateMappedMemoryRanges_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkInvalidateMappedMemoryRanges_ptr;
+		#endif
 		public static VkResult vkInvalidateMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange* memoryRanges)
 		{
 			return vkInvalidateMappedMemoryRanges_ptr(device, memoryRangeCount, memoryRanges);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, out ulong, void> vkGetDeviceMemoryCommitment_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeviceMemory, out ulong, void> vkGetDeviceMemoryCommitment_ptr;
+		#endif
 		public static void vkGetDeviceMemoryCommitment(VkDevice device, VkDeviceMemory memory, out ulong committedMemoryInBytes)
 		{
 			vkGetDeviceMemoryCommitment_ptr(device, memory, out committedMemoryInBytes);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult> vkBindBufferMemory_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult> vkBindBufferMemory_ptr;
+		#endif
 		public static VkResult vkBindBufferMemory(VkDevice device, VkBuffer buffer, VkDeviceMemory memory, ulong memoryOffset)
 		{
 			return vkBindBufferMemory_ptr(device, buffer, memory, memoryOffset);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult> vkBindImageMemory_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult> vkBindImageMemory_ptr;
+		#endif
 		public static VkResult vkBindImageMemory(VkDevice device, VkImage image, VkDeviceMemory memory, ulong memoryOffset)
 		{
 			return vkBindImageMemory_ptr(device, image, memory, memoryOffset);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBuffer, out VkMemoryRequirements, void> vkGetBufferMemoryRequirements_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBuffer, out VkMemoryRequirements, void> vkGetBufferMemoryRequirements_ptr;
+		#endif
 		public static void vkGetBufferMemoryRequirements(VkDevice device, VkBuffer buffer, out VkMemoryRequirements memoryRequirements)
 		{
 			vkGetBufferMemoryRequirements_ptr(device, buffer, out memoryRequirements);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImage, out VkMemoryRequirements, void> vkGetImageMemoryRequirements_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImage, out VkMemoryRequirements, void> vkGetImageMemoryRequirements_ptr;
+		#endif
 		public static void vkGetImageMemoryRequirements(VkDevice device, VkImage image, out VkMemoryRequirements memoryRequirements)
 		{
 			vkGetImageMemoryRequirements_ptr(device, image, out memoryRequirements);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void> vkGetImageSparseMemoryRequirements_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void> vkGetImageSparseMemoryRequirements_ptr;
+		#endif
 		public static void vkGetImageSparseMemoryRequirements(VkDevice device, VkImage image, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements* sparseMemoryRequirements)
 		{
 			vkGetImageSparseMemoryRequirements_ptr(device, image, sparseMemoryRequirementCount, sparseMemoryRequirements);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, VkImageType, VkSampleCountFlags, VkImageUsageFlags, VkImageTiling, uint*, VkSparseImageFormatProperties*, void> vkGetPhysicalDeviceSparseImageFormatProperties_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkSampleCountFlags, VkImageUsageFlags, VkImageTiling, uint*, VkSparseImageFormatProperties*, void> vkGetPhysicalDeviceSparseImageFormatProperties_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, uint* propertyCount, VkSparseImageFormatProperties* properties)
 		{
 			vkGetPhysicalDeviceSparseImageFormatProperties_ptr(physicalDevice, format, type, samples, usage, tiling, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkQueue, uint, VkBindSparseInfo*, VkFence, VkResult> vkQueueBindSparse_ptr;
+		#else
 		private static delegate* unmanaged<VkQueue, uint, VkBindSparseInfo*, VkFence, VkResult> vkQueueBindSparse_ptr;
+		#endif
 		public static VkResult vkQueueBindSparse(VkQueue queue, uint bindInfoCount, VkBindSparseInfo* bindInfo, VkFence fence)
 		{
 			return vkQueueBindSparse_ptr(queue, bindInfoCount, bindInfo, fence);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, out VkFence, VkResult> vkCreateFence_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, out VkFence, VkResult> vkCreateFence_ptr;
+		#endif
 		public static VkResult vkCreateFence(VkDevice device, VkFenceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFence fence)
 		{
 			return vkCreateFence_ptr(device, createInfo, allocator, out fence);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkFence, VkAllocationCallbacks*, void> vkDestroyFence_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkFence, VkAllocationCallbacks*, void> vkDestroyFence_ptr;
+		#endif
 		public static void vkDestroyFence(VkDevice device, VkFence fence, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyFence_ptr(device, fence, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkFence*, VkResult> vkResetFences_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkFence*, VkResult> vkResetFences_ptr;
+		#endif
 		public static VkResult vkResetFences(VkDevice device, uint fenceCount, VkFence* fences)
 		{
 			return vkResetFences_ptr(device, fenceCount, fences);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkFence, VkResult> vkGetFenceStatus_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkFence, VkResult> vkGetFenceStatus_ptr;
+		#endif
 		public static VkResult vkGetFenceStatus(VkDevice device, VkFence fence)
 		{
 			return vkGetFenceStatus_ptr(device, fence);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult> vkWaitForFences_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult> vkWaitForFences_ptr;
+		#endif
 		public static VkResult vkWaitForFences(VkDevice device, uint fenceCount, VkFence* fences, VkBool32 waitAll, ulong timeout)
 		{
 			return vkWaitForFences_ptr(device, fenceCount, fences, waitAll, timeout);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, out VkSemaphore, VkResult> vkCreateSemaphore_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, out VkSemaphore, VkResult> vkCreateSemaphore_ptr;
+		#endif
 		public static VkResult vkCreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore)
 		{
 			return vkCreateSemaphore_ptr(device, createInfo, allocator, out semaphore);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSemaphore, VkAllocationCallbacks*, void> vkDestroySemaphore_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSemaphore, VkAllocationCallbacks*, void> vkDestroySemaphore_ptr;
+		#endif
 		public static void vkDestroySemaphore(VkDevice device, VkSemaphore semaphore, VkAllocationCallbacks* allocator)
 		{
 			vkDestroySemaphore_ptr(device, semaphore, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, out VkEvent, VkResult> vkCreateEvent_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, out VkEvent, VkResult> vkCreateEvent_ptr;
+		#endif
 		public static VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkEvent @event)
 		{
 			return vkCreateEvent_ptr(device, createInfo, allocator, out @event);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkEvent, VkAllocationCallbacks*, void> vkDestroyEvent_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkEvent, VkAllocationCallbacks*, void> vkDestroyEvent_ptr;
+		#endif
 		public static void vkDestroyEvent(VkDevice device, VkEvent @event, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyEvent_ptr(device, @event, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkEvent, VkResult> vkGetEventStatus_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkEvent, VkResult> vkGetEventStatus_ptr;
+		#endif
 		public static VkResult vkGetEventStatus(VkDevice device, VkEvent @event)
 		{
 			return vkGetEventStatus_ptr(device, @event);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkEvent, VkResult> vkSetEvent_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkEvent, VkResult> vkSetEvent_ptr;
+		#endif
 		public static VkResult vkSetEvent(VkDevice device, VkEvent @event)
 		{
 			return vkSetEvent_ptr(device, @event);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkEvent, VkResult> vkResetEvent_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkEvent, VkResult> vkResetEvent_ptr;
+		#endif
 		public static VkResult vkResetEvent(VkDevice device, VkEvent @event)
 		{
 			return vkResetEvent_ptr(device, @event);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, out VkQueryPool, VkResult> vkCreateQueryPool_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, out VkQueryPool, VkResult> vkCreateQueryPool_ptr;
+		#endif
 		public static VkResult vkCreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkQueryPool queryPool)
 		{
 			return vkCreateQueryPool_ptr(device, createInfo, allocator, out queryPool);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkQueryPool, VkAllocationCallbacks*, void> vkDestroyQueryPool_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkQueryPool, VkAllocationCallbacks*, void> vkDestroyQueryPool_ptr;
+		#endif
 		public static void vkDestroyQueryPool(VkDevice device, VkQueryPool queryPool, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyQueryPool_ptr(device, queryPool, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkQueryPool, uint, uint, nuint, void*, ulong, VkQueryResultFlags, VkResult> vkGetQueryPoolResults_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, nuint, void*, ulong, VkQueryResultFlags, VkResult> vkGetQueryPoolResults_ptr;
+		#endif
 		public static VkResult vkGetQueryPoolResults(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount, nuint dataSize, void* data, ulong stride, VkQueryResultFlags flags)
 		{
 			return vkGetQueryPoolResults_ptr(device, queryPool, firstQuery, queryCount, dataSize, data, stride, flags);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, out VkBuffer, VkResult> vkCreateBuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, out VkBuffer, VkResult> vkCreateBuffer_ptr;
+		#endif
 		public static VkResult vkCreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBuffer buffer)
 		{
 			return vkCreateBuffer_ptr(device, createInfo, allocator, out buffer);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBuffer, VkAllocationCallbacks*, void> vkDestroyBuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void> vkDestroyBuffer_ptr;
+		#endif
 		public static void vkDestroyBuffer(VkDevice device, VkBuffer buffer, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyBuffer_ptr(device, buffer, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, out VkBufferView, VkResult> vkCreateBufferView_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, out VkBufferView, VkResult> vkCreateBufferView_ptr;
+		#endif
 		public static VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBufferView view)
 		{
 			return vkCreateBufferView_ptr(device, createInfo, allocator, out view);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferView, VkAllocationCallbacks*, void> vkDestroyBufferView_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBufferView, VkAllocationCallbacks*, void> vkDestroyBufferView_ptr;
+		#endif
 		public static void vkDestroyBufferView(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyBufferView_ptr(device, bufferView, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, out VkImage, VkResult> vkCreateImage_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, out VkImage, VkResult> vkCreateImage_ptr;
+		#endif
 		public static VkResult vkCreateImage(VkDevice device, VkImageCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImage image)
 		{
 			return vkCreateImage_ptr(device, createInfo, allocator, out image);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkAllocationCallbacks*, void> vkDestroyImage_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImage, VkAllocationCallbacks*, void> vkDestroyImage_ptr;
+		#endif
 		public static void vkDestroyImage(VkDevice device, VkImage image, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyImage_ptr(device, image, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkImageSubresource*, out VkSubresourceLayout, void> vkGetImageSubresourceLayout_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource*, out VkSubresourceLayout, void> vkGetImageSubresourceLayout_ptr;
+		#endif
 		public static void vkGetImageSubresourceLayout(VkDevice device, VkImage image, VkImageSubresource* subresource, out VkSubresourceLayout layout)
 		{
 			vkGetImageSubresourceLayout_ptr(device, image, subresource, out layout);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, out VkImageView, VkResult> vkCreateImageView_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, out VkImageView, VkResult> vkCreateImageView_ptr;
+		#endif
 		public static VkResult vkCreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImageView view)
 		{
 			return vkCreateImageView_ptr(device, createInfo, allocator, out view);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImageView, VkAllocationCallbacks*, void> vkDestroyImageView_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImageView, VkAllocationCallbacks*, void> vkDestroyImageView_ptr;
+		#endif
 		public static void vkDestroyImageView(VkDevice device, VkImageView imageView, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyImageView_ptr(device, imageView, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, out VkShaderModule, VkResult> vkCreateShaderModule_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, out VkShaderModule, VkResult> vkCreateShaderModule_ptr;
+		#endif
 		public static VkResult vkCreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
 		{
 			return vkCreateShaderModule_ptr(device, createInfo, allocator, out shaderModule);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkShaderModule, VkAllocationCallbacks*, void> vkDestroyShaderModule_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkShaderModule, VkAllocationCallbacks*, void> vkDestroyShaderModule_ptr;
+		#endif
 		public static void vkDestroyShaderModule(VkDevice device, VkShaderModule shaderModule, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyShaderModule_ptr(device, shaderModule, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, out VkPipelineCache, VkResult> vkCreatePipelineCache_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, out VkPipelineCache, VkResult> vkCreatePipelineCache_ptr;
+		#endif
 		public static VkResult vkCreatePipelineCache(VkDevice device, VkPipelineCacheCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineCache pipelineCache)
 		{
 			return vkCreatePipelineCache_ptr(device, createInfo, allocator, out pipelineCache);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void> vkDestroyPipelineCache_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void> vkDestroyPipelineCache_ptr;
+		#endif
 		public static void vkDestroyPipelineCache(VkDevice device, VkPipelineCache pipelineCache, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyPipelineCache_ptr(device, pipelineCache, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, nuint*, void*, VkResult> vkGetPipelineCacheData_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineCache, nuint*, void*, VkResult> vkGetPipelineCacheData_ptr;
+		#endif
 		public static VkResult vkGetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, nuint* dataSize, void* data)
 		{
 			return vkGetPipelineCacheData_ptr(device, pipelineCache, dataSize, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult> vkMergePipelineCaches_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult> vkMergePipelineCaches_ptr;
+		#endif
 		public static VkResult vkMergePipelineCaches(VkDevice device, VkPipelineCache dstCache, uint srcCacheCount, VkPipelineCache* srcCaches)
 		{
 			return vkMergePipelineCaches_ptr(device, dstCache, srcCacheCount, srcCaches);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateGraphicsPipelines_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateGraphicsPipelines_ptr;
+		#endif
 		public static VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 		{
 			return vkCreateGraphicsPipelines_ptr(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, uint, VkComputePipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateComputePipelines_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkComputePipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateComputePipelines_ptr;
+		#endif
 		public static VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 		{
 			return vkCreateComputePipelines_ptr(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, VkAllocationCallbacks*, void> vkDestroyPipeline_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipeline, VkAllocationCallbacks*, void> vkDestroyPipeline_ptr;
+		#endif
 		public static void vkDestroyPipeline(VkDevice device, VkPipeline pipeline, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyPipeline_ptr(device, pipeline, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, out VkPipelineLayout, VkResult> vkCreatePipelineLayout_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, out VkPipelineLayout, VkResult> vkCreatePipelineLayout_ptr;
+		#endif
 		public static VkResult vkCreatePipelineLayout(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineLayout pipelineLayout)
 		{
 			return vkCreatePipelineLayout_ptr(device, createInfo, allocator, out pipelineLayout);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineLayout, VkAllocationCallbacks*, void> vkDestroyPipelineLayout_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineLayout, VkAllocationCallbacks*, void> vkDestroyPipelineLayout_ptr;
+		#endif
 		public static void vkDestroyPipelineLayout(VkDevice device, VkPipelineLayout pipelineLayout, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyPipelineLayout_ptr(device, pipelineLayout, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, out VkSampler, VkResult> vkCreateSampler_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, out VkSampler, VkResult> vkCreateSampler_ptr;
+		#endif
 		public static VkResult vkCreateSampler(VkDevice device, VkSamplerCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSampler sampler)
 		{
 			return vkCreateSampler_ptr(device, createInfo, allocator, out sampler);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSampler, VkAllocationCallbacks*, void> vkDestroySampler_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSampler, VkAllocationCallbacks*, void> vkDestroySampler_ptr;
+		#endif
 		public static void vkDestroySampler(VkDevice device, VkSampler sampler, VkAllocationCallbacks* allocator)
 		{
 			vkDestroySampler_ptr(device, sampler, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, out VkDescriptorSetLayout, VkResult> vkCreateDescriptorSetLayout_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, out VkDescriptorSetLayout, VkResult> vkCreateDescriptorSetLayout_ptr;
+		#endif
 		public static VkResult vkCreateDescriptorSetLayout(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorSetLayout setLayout)
 		{
 			return vkCreateDescriptorSetLayout_ptr(device, createInfo, allocator, out setLayout);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayout, VkAllocationCallbacks*, void> vkDestroyDescriptorSetLayout_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorSetLayout, VkAllocationCallbacks*, void> vkDestroyDescriptorSetLayout_ptr;
+		#endif
 		public static void vkDestroyDescriptorSetLayout(VkDevice device, VkDescriptorSetLayout descriptorSetLayout, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyDescriptorSetLayout_ptr(device, descriptorSetLayout, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, out VkDescriptorPool, VkResult> vkCreateDescriptorPool_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, out VkDescriptorPool, VkResult> vkCreateDescriptorPool_ptr;
+		#endif
 		public static VkResult vkCreateDescriptorPool(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorPool descriptorPool)
 		{
 			return vkCreateDescriptorPool_ptr(device, createInfo, allocator, out descriptorPool);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorPool, VkAllocationCallbacks*, void> vkDestroyDescriptorPool_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorPool, VkAllocationCallbacks*, void> vkDestroyDescriptorPool_ptr;
+		#endif
 		public static void vkDestroyDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyDescriptorPool_ptr(device, descriptorPool, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorPool, VkDescriptorPoolResetFlags, VkResult> vkResetDescriptorPool_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorPool, VkDescriptorPoolResetFlags, VkResult> vkResetDescriptorPool_ptr;
+		#endif
 		public static VkResult vkResetDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkDescriptorPoolResetFlags flags)
 		{
 			return vkResetDescriptorPool_ptr(device, descriptorPool, flags);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetAllocateInfo*, VkDescriptorSet*, VkResult> vkAllocateDescriptorSets_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorSetAllocateInfo*, VkDescriptorSet*, VkResult> vkAllocateDescriptorSets_ptr;
+		#endif
 		public static VkResult vkAllocateDescriptorSets(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, VkDescriptorSet* descriptorSets)
 		{
 			return vkAllocateDescriptorSets_ptr(device, allocateInfo, descriptorSets);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult> vkFreeDescriptorSets_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult> vkFreeDescriptorSets_ptr;
+		#endif
 		public static VkResult vkFreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, VkDescriptorSet* descriptorSets)
 		{
 			return vkFreeDescriptorSets_ptr(device, descriptorPool, descriptorSetCount, descriptorSets);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkWriteDescriptorSet*, uint, VkCopyDescriptorSet*, void> vkUpdateDescriptorSets_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkWriteDescriptorSet*, uint, VkCopyDescriptorSet*, void> vkUpdateDescriptorSets_ptr;
+		#endif
 		public static void vkUpdateDescriptorSets(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet* descriptorCopies)
 		{
 			vkUpdateDescriptorSets_ptr(device, descriptorWriteCount, descriptorWrites, descriptorCopyCount, descriptorCopies);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, out VkFramebuffer, VkResult> vkCreateFramebuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, out VkFramebuffer, VkResult> vkCreateFramebuffer_ptr;
+		#endif
 		public static VkResult vkCreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer)
 		{
 			return vkCreateFramebuffer_ptr(device, createInfo, allocator, out framebuffer);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkFramebuffer, VkAllocationCallbacks*, void> vkDestroyFramebuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkFramebuffer, VkAllocationCallbacks*, void> vkDestroyFramebuffer_ptr;
+		#endif
 		public static void vkDestroyFramebuffer(VkDevice device, VkFramebuffer framebuffer, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyFramebuffer_ptr(device, framebuffer, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, out VkRenderPass, VkResult> vkCreateRenderPass_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, out VkRenderPass, VkResult> vkCreateRenderPass_ptr;
+		#endif
 		public static VkResult vkCreateRenderPass(VkDevice device, VkRenderPassCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass)
 		{
 			return vkCreateRenderPass_ptr(device, createInfo, allocator, out renderPass);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkRenderPass, VkAllocationCallbacks*, void> vkDestroyRenderPass_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkRenderPass, VkAllocationCallbacks*, void> vkDestroyRenderPass_ptr;
+		#endif
 		public static void vkDestroyRenderPass(VkDevice device, VkRenderPass renderPass, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyRenderPass_ptr(device, renderPass, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkRenderPass, out VkExtent2D, void> vkGetRenderAreaGranularity_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkRenderPass, out VkExtent2D, void> vkGetRenderAreaGranularity_ptr;
+		#endif
 		public static void vkGetRenderAreaGranularity(VkDevice device, VkRenderPass renderPass, out VkExtent2D granularity)
 		{
 			vkGetRenderAreaGranularity_ptr(device, renderPass, out granularity);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, out VkCommandPool, VkResult> vkCreateCommandPool_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, out VkCommandPool, VkResult> vkCreateCommandPool_ptr;
+		#endif
 		public static VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool)
 		{
 			return vkCreateCommandPool_ptr(device, createInfo, allocator, out commandPool);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkCommandPool, VkAllocationCallbacks*, void> vkDestroyCommandPool_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkCommandPool, VkAllocationCallbacks*, void> vkDestroyCommandPool_ptr;
+		#endif
 		public static void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyCommandPool_ptr(device, commandPool, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkCommandPool, VkCommandPoolResetFlags, VkResult> vkResetCommandPool_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolResetFlags, VkResult> vkResetCommandPool_ptr;
+		#endif
 		public static VkResult vkResetCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags)
 		{
 			return vkResetCommandPool_ptr(device, commandPool, flags);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkCommandBufferAllocateInfo*, VkCommandBuffer*, VkResult> vkAllocateCommandBuffers_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkCommandBufferAllocateInfo*, VkCommandBuffer*, VkResult> vkAllocateCommandBuffers_ptr;
+		#endif
 		public static VkResult vkAllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, VkCommandBuffer* commandBuffers)
 		{
 			return vkAllocateCommandBuffers_ptr(device, allocateInfo, commandBuffers);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkCommandPool, uint, VkCommandBuffer*, void> vkFreeCommandBuffers_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkCommandPool, uint, VkCommandBuffer*, void> vkFreeCommandBuffers_ptr;
+		#endif
 		public static void vkFreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* commandBuffers)
 		{
 			vkFreeCommandBuffers_ptr(device, commandPool, commandBufferCount, commandBuffers);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCommandBufferBeginInfo*, VkResult> vkBeginCommandBuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCommandBufferBeginInfo*, VkResult> vkBeginCommandBuffer_ptr;
+		#endif
 		public static VkResult vkBeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* beginInfo)
 		{
 			return vkBeginCommandBuffer_ptr(commandBuffer, beginInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkResult> vkEndCommandBuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkResult> vkEndCommandBuffer_ptr;
+		#endif
 		public static VkResult vkEndCommandBuffer(VkCommandBuffer commandBuffer)
 		{
 			return vkEndCommandBuffer_ptr(commandBuffer);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCommandBufferResetFlags, VkResult> vkResetCommandBuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCommandBufferResetFlags, VkResult> vkResetCommandBuffer_ptr;
+		#endif
 		public static VkResult vkResetCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags)
 		{
 			return vkResetCommandBuffer_ptr(commandBuffer, flags);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void> vkCmdBindPipeline_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void> vkCmdBindPipeline_ptr;
+		#endif
 		public static void vkCmdBindPipeline(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline)
 		{
 			vkCmdBindPipeline_ptr(commandBuffer, pipelineBindPoint, pipeline);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkViewport*, void> vkCmdSetViewport_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewport*, void> vkCmdSetViewport_ptr;
+		#endif
 		public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewport* viewports)
 		{
 			vkCmdSetViewport_ptr(commandBuffer, firstViewport, viewportCount, viewports);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetScissor_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetScissor_ptr;
+		#endif
 		public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, VkRect2D* scissors)
 		{
 			vkCmdSetScissor_ptr(commandBuffer, firstScissor, scissorCount, scissors);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, float, void> vkCmdSetLineWidth_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, float, void> vkCmdSetLineWidth_ptr;
+		#endif
 		public static void vkCmdSetLineWidth(VkCommandBuffer commandBuffer, float lineWidth)
 		{
 			vkCmdSetLineWidth_ptr(commandBuffer, lineWidth);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, float, float, float, void> vkCmdSetDepthBias_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, float, float, float, void> vkCmdSetDepthBias_ptr;
+		#endif
 		public static void vkCmdSetDepthBias(VkCommandBuffer commandBuffer, float depthBiasConstantFactor, float depthBiasClamp, float depthBiasSlopeFactor)
 		{
 			vkCmdSetDepthBias_ptr(commandBuffer, depthBiasConstantFactor, depthBiasClamp, depthBiasSlopeFactor);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, float*, void> vkCmdSetBlendConstants_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, float*, void> vkCmdSetBlendConstants_ptr;
+		#endif
 		public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float* blendConstants)
 		{
 			vkCmdSetBlendConstants_ptr(commandBuffer, blendConstants);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, float, float, void> vkCmdSetDepthBounds_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, float, float, void> vkCmdSetDepthBounds_ptr;
+		#endif
 		public static void vkCmdSetDepthBounds(VkCommandBuffer commandBuffer, float minDepthBounds, float maxDepthBounds)
 		{
 			vkCmdSetDepthBounds_ptr(commandBuffer, minDepthBounds, maxDepthBounds);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilCompareMask_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilCompareMask_ptr;
+		#endif
 		public static void vkCmdSetStencilCompareMask(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint compareMask)
 		{
 			vkCmdSetStencilCompareMask_ptr(commandBuffer, faceMask, compareMask);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilWriteMask_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilWriteMask_ptr;
+		#endif
 		public static void vkCmdSetStencilWriteMask(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint writeMask)
 		{
 			vkCmdSetStencilWriteMask_ptr(commandBuffer, faceMask, writeMask);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilReference_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilReference_ptr;
+		#endif
 		public static void vkCmdSetStencilReference(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint reference)
 		{
 			vkCmdSetStencilReference_ptr(commandBuffer, faceMask, reference);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkDescriptorSet*, uint, uint*, void> vkCmdBindDescriptorSets_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkDescriptorSet*, uint, uint*, void> vkCmdBindDescriptorSets_ptr;
+		#endif
 		public static void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* descriptorSets, uint dynamicOffsetCount, uint* dynamicOffsets)
 		{
 			vkCmdBindDescriptorSets_ptr(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, descriptorSets, dynamicOffsetCount, dynamicOffsets);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkIndexType, void> vkCmdBindIndexBuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkIndexType, void> vkCmdBindIndexBuffer_ptr;
+		#endif
 		public static void vkCmdBindIndexBuffer(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkIndexType indexType)
 		{
 			vkCmdBindIndexBuffer_ptr(commandBuffer, buffer, offset, indexType);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdBindVertexBuffers_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdBindVertexBuffers_ptr;
+		#endif
 		public static void vkCmdBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ulong* offsets)
 		{
 			vkCmdBindVertexBuffers_ptr(commandBuffer, firstBinding, bindingCount, buffers, offsets);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, uint, void> vkCmdDraw_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, void> vkCmdDraw_ptr;
+		#endif
 		public static void vkCmdDraw(VkCommandBuffer commandBuffer, uint vertexCount, uint instanceCount, uint firstVertex, uint firstInstance)
 		{
 			vkCmdDraw_ptr(commandBuffer, vertexCount, instanceCount, firstVertex, firstInstance);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, int, uint, void> vkCmdDrawIndexed_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, int, uint, void> vkCmdDrawIndexed_ptr;
+		#endif
 		public static void vkCmdDrawIndexed(VkCommandBuffer commandBuffer, uint indexCount, uint instanceCount, uint firstIndex, int vertexOffset, uint firstInstance)
 		{
 			vkCmdDrawIndexed_ptr(commandBuffer, indexCount, instanceCount, firstIndex, vertexOffset, firstInstance);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirect_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirect_ptr;
+		#endif
 		public static void vkCmdDrawIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, uint drawCount, uint stride)
 		{
 			vkCmdDrawIndirect_ptr(commandBuffer, buffer, offset, drawCount, stride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirect_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirect_ptr;
+		#endif
 		public static void vkCmdDrawIndexedIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, uint drawCount, uint stride)
 		{
 			vkCmdDrawIndexedIndirect_ptr(commandBuffer, buffer, offset, drawCount, stride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, void> vkCmdDispatch_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void> vkCmdDispatch_ptr;
+		#endif
 		public static void vkCmdDispatch(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ)
 		{
 			vkCmdDispatch_ptr(commandBuffer, groupCountX, groupCountY, groupCountZ);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, void> vkCmdDispatchIndirect_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, void> vkCmdDispatchIndirect_ptr;
+		#endif
 		public static void vkCmdDispatchIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset)
 		{
 			vkCmdDispatchIndirect_ptr(commandBuffer, buffer, offset);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, VkBuffer, uint, VkBufferCopy*, void> vkCmdCopyBuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, VkBuffer, uint, VkBufferCopy*, void> vkCmdCopyBuffer_ptr;
+		#endif
 		public static void vkCmdCopyBuffer(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkBuffer dstBuffer, uint regionCount, VkBufferCopy* regions)
 		{
 			vkCmdCopyBuffer_ptr(commandBuffer, srcBuffer, dstBuffer, regionCount, regions);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageCopy*, void> vkCmdCopyImage_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageCopy*, void> vkCmdCopyImage_ptr;
+		#endif
 		public static void vkCmdCopyImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageCopy* regions)
 		{
 			vkCmdCopyImage_ptr(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, regions);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageBlit*, VkFilter, void> vkCmdBlitImage_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageBlit*, VkFilter, void> vkCmdBlitImage_ptr;
+		#endif
 		public static void vkCmdBlitImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageBlit* regions, VkFilter filter)
 		{
 			vkCmdBlitImage_ptr(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, regions, filter);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, VkImage, VkImageLayout, uint, VkBufferImageCopy*, void> vkCmdCopyBufferToImage_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, VkImage, VkImageLayout, uint, VkBufferImageCopy*, void> vkCmdCopyBufferToImage_ptr;
+		#endif
 		public static void vkCmdCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkBufferImageCopy* regions)
 		{
 			vkCmdCopyBufferToImage_ptr(commandBuffer, srcBuffer, dstImage, dstImageLayout, regionCount, regions);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkBuffer, uint, VkBufferImageCopy*, void> vkCmdCopyImageToBuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkBuffer, uint, VkBufferImageCopy*, void> vkCmdCopyImageToBuffer_ptr;
+		#endif
 		public static void vkCmdCopyImageToBuffer(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkBuffer dstBuffer, uint regionCount, VkBufferImageCopy* regions)
 		{
 			vkCmdCopyImageToBuffer_ptr(commandBuffer, srcImage, srcImageLayout, dstBuffer, regionCount, regions);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, ulong, void*, void> vkCmdUpdateBuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, void*, void> vkCmdUpdateBuffer_ptr;
+		#endif
 		public static void vkCmdUpdateBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong dataSize, void* data)
 		{
 			vkCmdUpdateBuffer_ptr(commandBuffer, dstBuffer, dstOffset, dataSize, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, ulong, uint, void> vkCmdFillBuffer_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, uint, void> vkCmdFillBuffer_ptr;
+		#endif
 		public static void vkCmdFillBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong size, uint data)
 		{
 			vkCmdFillBuffer_ptr(commandBuffer, dstBuffer, dstOffset, size, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkClearColorValue*, uint, VkImageSubresourceRange*, void> vkCmdClearColorImage_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkClearColorValue*, uint, VkImageSubresourceRange*, void> vkCmdClearColorImage_ptr;
+		#endif
 		public static void vkCmdClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* color, uint rangeCount, VkImageSubresourceRange* ranges)
 		{
 			vkCmdClearColorImage_ptr(commandBuffer, image, imageLayout, color, rangeCount, ranges);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkClearDepthStencilValue*, uint, VkImageSubresourceRange*, void> vkCmdClearDepthStencilImage_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkClearDepthStencilValue*, uint, VkImageSubresourceRange*, void> vkCmdClearDepthStencilImage_ptr;
+		#endif
 		public static void vkCmdClearDepthStencilImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearDepthStencilValue* depthStencil, uint rangeCount, VkImageSubresourceRange* ranges)
 		{
 			vkCmdClearDepthStencilImage_ptr(commandBuffer, image, imageLayout, depthStencil, rangeCount, ranges);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkClearAttachment*, uint, VkClearRect*, void> vkCmdClearAttachments_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, VkClearAttachment*, uint, VkClearRect*, void> vkCmdClearAttachments_ptr;
+		#endif
 		public static void vkCmdClearAttachments(VkCommandBuffer commandBuffer, uint attachmentCount, VkClearAttachment* attachments, uint rectCount, VkClearRect* rects)
 		{
 			vkCmdClearAttachments_ptr(commandBuffer, attachmentCount, attachments, rectCount, rects);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageResolve*, void> vkCmdResolveImage_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageResolve*, void> vkCmdResolveImage_ptr;
+		#endif
 		public static void vkCmdResolveImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageResolve* regions)
 		{
 			vkCmdResolveImage_ptr(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, regions);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void> vkCmdSetEvent_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void> vkCmdSetEvent_ptr;
+		#endif
 		public static void vkCmdSetEvent(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask)
 		{
 			vkCmdSetEvent_ptr(commandBuffer, @event, stageMask);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void> vkCmdResetEvent_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void> vkCmdResetEvent_ptr;
+		#endif
 		public static void vkCmdResetEvent(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask)
 		{
 			vkCmdResetEvent_ptr(commandBuffer, @event, stageMask);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkEvent*, VkPipelineStageFlags, VkPipelineStageFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void> vkCmdWaitEvents_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkPipelineStageFlags, VkPipelineStageFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void> vkCmdWaitEvents_ptr;
+		#endif
 		public static void vkCmdWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers)
 		{
 			vkCmdWaitEvents_ptr(commandBuffer, eventCount, events, srcStageMask, dstStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineStageFlags, VkPipelineStageFlags, VkDependencyFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void> vkCmdPipelineBarrier_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkPipelineStageFlags, VkDependencyFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void> vkCmdPipelineBarrier_ptr;
+		#endif
 		public static void vkCmdPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers)
 		{
 			vkCmdPipelineBarrier_ptr(commandBuffer, srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, void> vkCmdBeginQuery_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, void> vkCmdBeginQuery_ptr;
+		#endif
 		public static void vkCmdBeginQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags)
 		{
 			vkCmdBeginQuery_ptr(commandBuffer, queryPool, query, flags);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, void> vkCmdEndQuery_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, void> vkCmdEndQuery_ptr;
+		#endif
 		public static void vkCmdEndQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query)
 		{
 			vkCmdEndQuery_ptr(commandBuffer, queryPool, query);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, uint, void> vkCmdResetQueryPool_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, void> vkCmdResetQueryPool_ptr;
+		#endif
 		public static void vkCmdResetQueryPool(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount)
 		{
 			vkCmdResetQueryPool_ptr(commandBuffer, queryPool, firstQuery, queryCount);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineStageFlags, VkQueryPool, uint, void> vkCmdWriteTimestamp_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkQueryPool, uint, void> vkCmdWriteTimestamp_ptr;
+		#endif
 		public static void vkCmdWriteTimestamp(VkCommandBuffer commandBuffer, VkPipelineStageFlags pipelineStage, VkQueryPool queryPool, uint query)
 		{
 			vkCmdWriteTimestamp_ptr(commandBuffer, pipelineStage, queryPool, query);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, uint, VkBuffer, ulong, ulong, VkQueryResultFlags, void> vkCmdCopyQueryPoolResults_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, VkBuffer, ulong, ulong, VkQueryResultFlags, void> vkCmdCopyQueryPoolResults_ptr;
+		#endif
 		public static void vkCmdCopyQueryPoolResults(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount, VkBuffer dstBuffer, ulong dstOffset, ulong stride, VkQueryResultFlags flags)
 		{
 			vkCmdCopyQueryPoolResults_ptr(commandBuffer, queryPool, firstQuery, queryCount, dstBuffer, dstOffset, stride, flags);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineLayout, VkShaderStageFlags, uint, uint, void*, void> vkCmdPushConstants_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPipelineLayout, VkShaderStageFlags, uint, uint, void*, void> vkCmdPushConstants_ptr;
+		#endif
 		public static void vkCmdPushConstants(VkCommandBuffer commandBuffer, VkPipelineLayout layout, VkShaderStageFlags stageFlags, uint offset, uint size, void* values)
 		{
 			vkCmdPushConstants_ptr(commandBuffer, layout, stageFlags, offset, size, values);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassContents, void> vkCmdBeginRenderPass_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassContents, void> vkCmdBeginRenderPass_ptr;
+		#endif
 		public static void vkCmdBeginRenderPass(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* renderPassBegin, VkSubpassContents contents)
 		{
 			vkCmdBeginRenderPass_ptr(commandBuffer, renderPassBegin, contents);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSubpassContents, void> vkCmdNextSubpass_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkSubpassContents, void> vkCmdNextSubpass_ptr;
+		#endif
 		public static void vkCmdNextSubpass(VkCommandBuffer commandBuffer, VkSubpassContents contents)
 		{
 			vkCmdNextSubpass_ptr(commandBuffer, contents);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, void> vkCmdEndRenderPass_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndRenderPass_ptr;
+		#endif
 		public static void vkCmdEndRenderPass(VkCommandBuffer commandBuffer)
 		{
 			vkCmdEndRenderPass_ptr(commandBuffer);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkCommandBuffer*, void> vkCmdExecuteCommands_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, VkCommandBuffer*, void> vkCmdExecuteCommands_ptr;
+		#endif
 		public static void vkCmdExecuteCommands(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer* commandBuffers)
 		{
 			vkCmdExecuteCommands_ptr(commandBuffer, commandBufferCount, commandBuffers);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<out uint, VkResult> vkEnumerateInstanceVersion_ptr;
+		#else
 		private static delegate* unmanaged<out uint, VkResult> vkEnumerateInstanceVersion_ptr;
+		#endif
 		public static VkResult vkEnumerateInstanceVersion(out uint apiVersion)
 		{
 			return vkEnumerateInstanceVersion_ptr(out apiVersion);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2_ptr;
+		#endif
 		public static VkResult vkBindBufferMemory2(VkDevice device, uint bindInfoCount, VkBindBufferMemoryInfo* bindInfos)
 		{
 			return vkBindBufferMemory2_ptr(device, bindInfoCount, bindInfos);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2_ptr;
+		#endif
 		public static VkResult vkBindImageMemory2(VkDevice device, uint bindInfoCount, VkBindImageMemoryInfo* bindInfos)
 		{
 			return vkBindImageMemory2_ptr(device, bindInfoCount, bindInfos);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, uint, uint, VkPeerMemoryFeatureFlags*, void> vkGetDeviceGroupPeerMemoryFeatures_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, uint, uint, VkPeerMemoryFeatureFlags*, void> vkGetDeviceGroupPeerMemoryFeatures_ptr;
+		#endif
 		public static void vkGetDeviceGroupPeerMemoryFeatures(VkDevice device, uint heapIndex, uint localDeviceIndex, uint remoteDeviceIndex, VkPeerMemoryFeatureFlags* peerMemoryFeatures)
 		{
 			vkGetDeviceGroupPeerMemoryFeatures_ptr(device, heapIndex, localDeviceIndex, remoteDeviceIndex, peerMemoryFeatures);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void> vkCmdSetDeviceMask_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetDeviceMask_ptr;
+		#endif
 		public static void vkCmdSetDeviceMask(VkCommandBuffer commandBuffer, uint deviceMask)
 		{
 			vkCmdSetDeviceMask_ptr(commandBuffer, deviceMask);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void> vkCmdDispatchBase_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void> vkCmdDispatchBase_ptr;
+		#endif
 		public static void vkCmdDispatchBase(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ)
 		{
 			vkCmdDispatchBase_ptr(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult> vkEnumeratePhysicalDeviceGroups_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult> vkEnumeratePhysicalDeviceGroups_ptr;
+		#endif
 		public static VkResult vkEnumeratePhysicalDeviceGroups(VkInstance instance, uint* physicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* physicalDeviceGroupProperties)
 		{
 			return vkEnumeratePhysicalDeviceGroups_ptr(instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImageMemoryRequirementsInfo2*, out VkMemoryRequirements2, void> vkGetImageMemoryRequirements2_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, out VkMemoryRequirements2, void> vkGetImageMemoryRequirements2_ptr;
+		#endif
 		public static void vkGetImageMemoryRequirements2(VkDevice device, VkImageMemoryRequirementsInfo2* info, out VkMemoryRequirements2 memoryRequirements)
 		{
 			vkGetImageMemoryRequirements2_ptr(device, info, out memoryRequirements);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferMemoryRequirementsInfo2*, out VkMemoryRequirements2, void> vkGetBufferMemoryRequirements2_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, out VkMemoryRequirements2, void> vkGetBufferMemoryRequirements2_ptr;
+		#endif
 		public static void vkGetBufferMemoryRequirements2(VkDevice device, VkBufferMemoryRequirementsInfo2* info, out VkMemoryRequirements2 memoryRequirements)
 		{
 			vkGetBufferMemoryRequirements2_ptr(device, info, out memoryRequirements);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetImageSparseMemoryRequirements2_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetImageSparseMemoryRequirements2_ptr;
+		#endif
 		public static void vkGetImageSparseMemoryRequirements2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements)
 		{
 			vkGetImageSparseMemoryRequirements2_ptr(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceFeatures2, void> vkGetPhysicalDeviceFeatures2_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceFeatures2, void> vkGetPhysicalDeviceFeatures2_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceFeatures2(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceFeatures2 features)
 		{
 			vkGetPhysicalDeviceFeatures2_ptr(physicalDevice, out features);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceProperties2, void> vkGetPhysicalDeviceProperties2_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceProperties2, void> vkGetPhysicalDeviceProperties2_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceProperties2(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceProperties2 properties)
 		{
 			vkGetPhysicalDeviceProperties2_ptr(physicalDevice, out properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, out VkFormatProperties2, void> vkGetPhysicalDeviceFormatProperties2_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkFormat, out VkFormatProperties2, void> vkGetPhysicalDeviceFormatProperties2_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceFormatProperties2(VkPhysicalDevice physicalDevice, VkFormat format, out VkFormatProperties2 formatProperties)
 		{
 			vkGetPhysicalDeviceFormatProperties2_ptr(physicalDevice, format, out formatProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, out VkImageFormatProperties2, VkResult> vkGetPhysicalDeviceImageFormatProperties2_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, out VkImageFormatProperties2, VkResult> vkGetPhysicalDeviceImageFormatProperties2_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2* imageFormatInfo, out VkImageFormatProperties2 imageFormatProperties)
 		{
 			return vkGetPhysicalDeviceImageFormatProperties2_ptr(physicalDevice, imageFormatInfo, out imageFormatProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void> vkGetPhysicalDeviceQueueFamilyProperties2_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void> vkGetPhysicalDeviceQueueFamilyProperties2_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, VkQueueFamilyProperties2* queueFamilyProperties)
 		{
 			vkGetPhysicalDeviceQueueFamilyProperties2_ptr(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties2, void> vkGetPhysicalDeviceMemoryProperties2_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties2, void> vkGetPhysicalDeviceMemoryProperties2_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceMemoryProperties2(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties2 memoryProperties)
 		{
 			vkGetPhysicalDeviceMemoryProperties2_ptr(physicalDevice, out memoryProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void> vkGetPhysicalDeviceSparseImageFormatProperties2_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void> vkGetPhysicalDeviceSparseImageFormatProperties2_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, VkSparseImageFormatProperties2* properties)
 		{
 			vkGetPhysicalDeviceSparseImageFormatProperties2_ptr(physicalDevice, formatInfo, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void> vkTrimCommandPool_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void> vkTrimCommandPool_ptr;
+		#endif
 		public static void vkTrimCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlags flags)
 		{
 			vkTrimCommandPool_ptr(device, commandPool, flags);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceQueueInfo2*, out VkQueue, void> vkGetDeviceQueue2_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeviceQueueInfo2*, out VkQueue, void> vkGetDeviceQueue2_ptr;
+		#endif
 		public static void vkGetDeviceQueue2(VkDevice device, VkDeviceQueueInfo2* queueInfo, out VkQueue queue)
 		{
 			vkGetDeviceQueue2_ptr(device, queueInfo, out queue);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, out VkSamplerYcbcrConversion, VkResult> vkCreateSamplerYcbcrConversion_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, out VkSamplerYcbcrConversion, VkResult> vkCreateSamplerYcbcrConversion_ptr;
+		#endif
 		public static VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion)
 		{
 			return vkCreateSamplerYcbcrConversion_ptr(device, createInfo, allocator, out ycbcrConversion);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void> vkDestroySamplerYcbcrConversion_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void> vkDestroySamplerYcbcrConversion_ptr;
+		#endif
 		public static void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator)
 		{
 			vkDestroySamplerYcbcrConversion_ptr(device, ycbcrConversion, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, out VkDescriptorUpdateTemplate, VkResult> vkCreateDescriptorUpdateTemplate_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, out VkDescriptorUpdateTemplate, VkResult> vkCreateDescriptorUpdateTemplate_ptr;
+		#endif
 		public static VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate)
 		{
 			return vkCreateDescriptorUpdateTemplate_ptr(device, createInfo, allocator, out descriptorUpdateTemplate);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void> vkDestroyDescriptorUpdateTemplate_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void> vkDestroyDescriptorUpdateTemplate_ptr;
+		#endif
 		public static void vkDestroyDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyDescriptorUpdateTemplate_ptr(device, descriptorUpdateTemplate, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void> vkUpdateDescriptorSetWithTemplate_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void> vkUpdateDescriptorSetWithTemplate_ptr;
+		#endif
 		public static void vkUpdateDescriptorSetWithTemplate(VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, void* data)
 		{
 			vkUpdateDescriptorSetWithTemplate_ptr(device, descriptorSet, descriptorUpdateTemplate, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, out VkExternalBufferProperties, void> vkGetPhysicalDeviceExternalBufferProperties_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, out VkExternalBufferProperties, void> vkGetPhysicalDeviceExternalBufferProperties_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceExternalBufferProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* externalBufferInfo, out VkExternalBufferProperties externalBufferProperties)
 		{
 			vkGetPhysicalDeviceExternalBufferProperties_ptr(physicalDevice, externalBufferInfo, out externalBufferProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, out VkExternalFenceProperties, void> vkGetPhysicalDeviceExternalFenceProperties_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, out VkExternalFenceProperties, void> vkGetPhysicalDeviceExternalFenceProperties_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceExternalFenceProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* externalFenceInfo, out VkExternalFenceProperties externalFenceProperties)
 		{
 			vkGetPhysicalDeviceExternalFenceProperties_ptr(physicalDevice, externalFenceInfo, out externalFenceProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, out VkExternalSemaphoreProperties, void> vkGetPhysicalDeviceExternalSemaphoreProperties_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, out VkExternalSemaphoreProperties, void> vkGetPhysicalDeviceExternalSemaphoreProperties_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceExternalSemaphoreProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* externalSemaphoreInfo, out VkExternalSemaphoreProperties externalSemaphoreProperties)
 		{
 			vkGetPhysicalDeviceExternalSemaphoreProperties_ptr(physicalDevice, externalSemaphoreInfo, out externalSemaphoreProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayoutCreateInfo*, out VkDescriptorSetLayoutSupport, void> vkGetDescriptorSetLayoutSupport_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, out VkDescriptorSetLayoutSupport, void> vkGetDescriptorSetLayoutSupport_ptr;
+		#endif
 		public static void vkGetDescriptorSetLayoutSupport(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, out VkDescriptorSetLayoutSupport support)
 		{
 			vkGetDescriptorSetLayoutSupport_ptr(device, createInfo, out support);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCount_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCount_ptr;
+		#endif
 		public static void vkCmdDrawIndirectCount(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 		{
 			vkCmdDrawIndirectCount_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCount_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCount_ptr;
+		#endif
 		public static void vkCmdDrawIndexedIndirectCount(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 		{
 			vkCmdDrawIndexedIndirectCount_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, out VkRenderPass, VkResult> vkCreateRenderPass2_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, out VkRenderPass, VkResult> vkCreateRenderPass2_ptr;
+		#endif
 		public static VkResult vkCreateRenderPass2(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass)
 		{
 			return vkCreateRenderPass2_ptr(device, createInfo, allocator, out renderPass);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void> vkCmdBeginRenderPass2_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void> vkCmdBeginRenderPass2_ptr;
+		#endif
 		public static void vkCmdBeginRenderPass2(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* renderPassBegin, VkSubpassBeginInfo* subpassBeginInfo)
 		{
 			vkCmdBeginRenderPass2_ptr(commandBuffer, renderPassBegin, subpassBeginInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void> vkCmdNextSubpass2_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void> vkCmdNextSubpass2_ptr;
+		#endif
 		public static void vkCmdNextSubpass2(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* subpassBeginInfo, VkSubpassEndInfo* subpassEndInfo)
 		{
 			vkCmdNextSubpass2_ptr(commandBuffer, subpassBeginInfo, subpassEndInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSubpassEndInfo*, void> vkCmdEndRenderPass2_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkSubpassEndInfo*, void> vkCmdEndRenderPass2_ptr;
+		#endif
 		public static void vkCmdEndRenderPass2(VkCommandBuffer commandBuffer, VkSubpassEndInfo* subpassEndInfo)
 		{
 			vkCmdEndRenderPass2_ptr(commandBuffer, subpassEndInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkQueryPool, uint, uint, void> vkResetQueryPool_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, void> vkResetQueryPool_ptr;
+		#endif
 		public static void vkResetQueryPool(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount)
 		{
 			vkResetQueryPool_ptr(device, queryPool, firstQuery, queryCount);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSemaphore, ulong*, VkResult> vkGetSemaphoreCounterValue_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSemaphore, ulong*, VkResult> vkGetSemaphoreCounterValue_ptr;
+		#endif
 		public static VkResult vkGetSemaphoreCounterValue(VkDevice device, VkSemaphore semaphore, ulong* value)
 		{
 			return vkGetSemaphoreCounterValue_ptr(device, semaphore, value);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult> vkWaitSemaphores_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult> vkWaitSemaphores_ptr;
+		#endif
 		public static VkResult vkWaitSemaphores(VkDevice device, VkSemaphoreWaitInfo* waitInfo, ulong timeout)
 		{
 			return vkWaitSemaphores_ptr(device, waitInfo, timeout);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreSignalInfo*, VkResult> vkSignalSemaphore_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult> vkSignalSemaphore_ptr;
+		#endif
 		public static VkResult vkSignalSemaphore(VkDevice device, VkSemaphoreSignalInfo* signalInfo)
 		{
 			return vkSignalSemaphore_ptr(device, signalInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr> vkGetBufferDeviceAddress_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, IntPtr> vkGetBufferDeviceAddress_ptr;
+		#endif
 		public static IntPtr vkGetBufferDeviceAddress(VkDevice device, VkBufferDeviceAddressInfo* info)
 		{
 			return vkGetBufferDeviceAddress_ptr(device, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferOpaqueCaptureAddress_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferOpaqueCaptureAddress_ptr;
+		#endif
 		public static ulong vkGetBufferOpaqueCaptureAddress(VkDevice device, VkBufferDeviceAddressInfo* info)
 		{
 			return vkGetBufferOpaqueCaptureAddress_ptr(device, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong> vkGetDeviceMemoryOpaqueCaptureAddress_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong> vkGetDeviceMemoryOpaqueCaptureAddress_ptr;
+		#endif
 		public static ulong vkGetDeviceMemoryOpaqueCaptureAddress(VkDevice device, VkDeviceMemoryOpaqueCaptureAddressInfo* info)
 		{
 			return vkGetDeviceMemoryOpaqueCaptureAddress_ptr(device, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void> vkDestroySurfaceKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void> vkDestroySurfaceKHR_ptr;
+		#endif
 		public static void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* allocator)
 		{
 			vkDestroySurfaceKHR_ptr(instance, surface, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, VkSurfaceKHR, out VkBool32, VkResult> vkGetPhysicalDeviceSurfaceSupportKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint, VkSurfaceKHR, out VkBool32, VkResult> vkGetPhysicalDeviceSurfaceSupportKHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, out VkBool32 supported)
 		{
 			return vkGetPhysicalDeviceSurfaceSupportKHR_ptr(physicalDevice, queueFamilyIndex, surface, out supported);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSurfaceKHR, out VkSurfaceCapabilitiesKHR, VkResult> vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, out VkSurfaceCapabilitiesKHR, VkResult> vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, out VkSurfaceCapabilitiesKHR surfaceCapabilities)
 		{
 			return vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr(physicalDevice, surface, out surfaceCapabilities);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSurfaceKHR, uint*, VkSurfaceFormatKHR*, VkResult> vkGetPhysicalDeviceSurfaceFormatsKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkSurfaceFormatKHR*, VkResult> vkGetPhysicalDeviceSurfaceFormatsKHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* surfaceFormatCount, VkSurfaceFormatKHR* surfaceFormats)
 		{
 			return vkGetPhysicalDeviceSurfaceFormatsKHR_ptr(physicalDevice, surface, surfaceFormatCount, surfaceFormats);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSurfaceKHR, uint*, VkPresentModeKHR*, VkResult> vkGetPhysicalDeviceSurfacePresentModesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkPresentModeKHR*, VkResult> vkGetPhysicalDeviceSurfacePresentModesKHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* presentModeCount, VkPresentModeKHR* presentModes)
 		{
 			return vkGetPhysicalDeviceSurfacePresentModesKHR_ptr(physicalDevice, surface, presentModeCount, presentModes);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult> vkCreateSwapchainKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult> vkCreateSwapchainKHR_ptr;
+		#endif
 		public static VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain)
 		{
 			return vkCreateSwapchainKHR_ptr(device, createInfo, allocator, out swapchain);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkAllocationCallbacks*, void> vkDestroySwapchainKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkAllocationCallbacks*, void> vkDestroySwapchainKHR_ptr;
+		#endif
 		public static void vkDestroySwapchainKHR(VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* allocator)
 		{
 			vkDestroySwapchainKHR_ptr(device, swapchain, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult> vkGetSwapchainImagesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult> vkGetSwapchainImagesKHR_ptr;
+		#endif
 		public static VkResult vkGetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, uint* swapchainImageCount, VkImage* swapchainImages)
 		{
 			return vkGetSwapchainImagesKHR_ptr(device, swapchain, swapchainImageCount, swapchainImages);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, ulong, VkSemaphore, VkFence, out uint, VkResult> vkAcquireNextImageKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, VkSemaphore, VkFence, out uint, VkResult> vkAcquireNextImageKHR_ptr;
+		#endif
 		public static VkResult vkAcquireNextImageKHR(VkDevice device, VkSwapchainKHR swapchain, ulong timeout, VkSemaphore semaphore, VkFence fence, out uint imageIndex)
 		{
 			return vkAcquireNextImageKHR_ptr(device, swapchain, timeout, semaphore, fence, out imageIndex);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkQueue, VkPresentInfoKHR*, VkResult> vkQueuePresentKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkQueue, VkPresentInfoKHR*, VkResult> vkQueuePresentKHR_ptr;
+		#endif
 		public static VkResult vkQueuePresentKHR(VkQueue queue, VkPresentInfoKHR* presentInfo)
 		{
 			return vkQueuePresentKHR_ptr(queue, presentInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, out VkDeviceGroupPresentCapabilitiesKHR, VkResult> vkGetDeviceGroupPresentCapabilitiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, out VkDeviceGroupPresentCapabilitiesKHR, VkResult> vkGetDeviceGroupPresentCapabilitiesKHR_ptr;
+		#endif
 		public static VkResult vkGetDeviceGroupPresentCapabilitiesKHR(VkDevice device, out VkDeviceGroupPresentCapabilitiesKHR deviceGroupPresentCapabilities)
 		{
 			return vkGetDeviceGroupPresentCapabilitiesKHR_ptr(device, out deviceGroupPresentCapabilities);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSurfaceKHR, out VkDeviceGroupPresentModeFlagsKHR, VkResult> vkGetDeviceGroupSurfacePresentModesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSurfaceKHR, out VkDeviceGroupPresentModeFlagsKHR, VkResult> vkGetDeviceGroupSurfacePresentModesKHR_ptr;
+		#endif
 		public static VkResult vkGetDeviceGroupSurfacePresentModesKHR(VkDevice device, VkSurfaceKHR surface, out VkDeviceGroupPresentModeFlagsKHR modes)
 		{
 			return vkGetDeviceGroupSurfacePresentModesKHR_ptr(device, surface, out modes);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSurfaceKHR, uint*, VkRect2D*, VkResult> vkGetPhysicalDevicePresentRectanglesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkRect2D*, VkResult> vkGetPhysicalDevicePresentRectanglesKHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, VkRect2D* rects)
 		{
 			return vkGetPhysicalDevicePresentRectanglesKHR_ptr(physicalDevice, surface, rectCount, rects);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAcquireNextImageInfoKHR*, out uint, VkResult> vkAcquireNextImage2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAcquireNextImageInfoKHR*, out uint, VkResult> vkAcquireNextImage2KHR_ptr;
+		#endif
 		public static VkResult vkAcquireNextImage2KHR(VkDevice device, VkAcquireNextImageInfoKHR* acquireInfo, out uint imageIndex)
 		{
 			return vkAcquireNextImage2KHR_ptr(device, acquireInfo, out imageIndex);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkDisplayPropertiesKHR*, VkResult> vkGetPhysicalDeviceDisplayPropertiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPropertiesKHR*, VkResult> vkGetPhysicalDeviceDisplayPropertiesKHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPropertiesKHR* properties)
 		{
 			return vkGetPhysicalDeviceDisplayPropertiesKHR_ptr(physicalDevice, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkDisplayPlanePropertiesKHR*, VkResult> vkGetPhysicalDeviceDisplayPlanePropertiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPlanePropertiesKHR*, VkResult> vkGetPhysicalDeviceDisplayPlanePropertiesKHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPlanePropertiesKHR* properties)
 		{
 			return vkGetPhysicalDeviceDisplayPlanePropertiesKHR_ptr(physicalDevice, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, uint*, VkDisplayKHR*, VkResult> vkGetDisplayPlaneSupportedDisplaysKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkDisplayKHR*, VkResult> vkGetDisplayPlaneSupportedDisplaysKHR_ptr;
+		#endif
 		public static VkResult vkGetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, uint* displayCount, VkDisplayKHR* displays)
 		{
 			return vkGetDisplayPlaneSupportedDisplaysKHR_ptr(physicalDevice, planeIndex, displayCount, displays);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModePropertiesKHR*, VkResult> vkGetDisplayModePropertiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModePropertiesKHR*, VkResult> vkGetDisplayModePropertiesKHR_ptr;
+		#endif
 		public static VkResult vkGetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, VkDisplayModePropertiesKHR* properties)
 		{
 			return vkGetDisplayModePropertiesKHR_ptr(physicalDevice, display, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkDisplayModeCreateInfoKHR*, VkAllocationCallbacks*, out VkDisplayModeKHR, VkResult> vkCreateDisplayModeKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkDisplayModeCreateInfoKHR*, VkAllocationCallbacks*, out VkDisplayModeKHR, VkResult> vkCreateDisplayModeKHR_ptr;
+		#endif
 		public static VkResult vkCreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkDisplayModeKHR mode)
 		{
 			return vkCreateDisplayModeKHR_ptr(physicalDevice, display, createInfo, allocator, out mode);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayModeKHR, uint, out VkDisplayPlaneCapabilitiesKHR, VkResult> vkGetDisplayPlaneCapabilitiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkDisplayModeKHR, uint, out VkDisplayPlaneCapabilitiesKHR, VkResult> vkGetDisplayPlaneCapabilitiesKHR_ptr;
+		#endif
 		public static VkResult vkGetDisplayPlaneCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkDisplayModeKHR mode, uint planeIndex, out VkDisplayPlaneCapabilitiesKHR capabilities)
 		{
 			return vkGetDisplayPlaneCapabilitiesKHR_ptr(physicalDevice, mode, planeIndex, out capabilities);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateDisplayPlaneSurfaceKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateDisplayPlaneSurfaceKHR_ptr;
+		#endif
 		public static VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 		{
 			return vkCreateDisplayPlaneSurfaceKHR_ptr(instance, createInfo, allocator, out surface);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult> vkCreateSharedSwapchainsKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult> vkCreateSharedSwapchainsKHR_ptr;
+		#endif
 		public static VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* createInfos, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchains)
 		{
 			return vkCreateSharedSwapchainsKHR_ptr(device, swapchainCount, createInfos, allocator, out swapchains);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceFeatures2, void> vkGetPhysicalDeviceFeatures2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceFeatures2, void> vkGetPhysicalDeviceFeatures2KHR_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceFeatures2KHR(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceFeatures2 features)
 		{
 			vkGetPhysicalDeviceFeatures2KHR_ptr(physicalDevice, out features);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceProperties2, void> vkGetPhysicalDeviceProperties2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceProperties2, void> vkGetPhysicalDeviceProperties2KHR_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceProperties2KHR(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceProperties2 properties)
 		{
 			vkGetPhysicalDeviceProperties2KHR_ptr(physicalDevice, out properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, out VkFormatProperties2, void> vkGetPhysicalDeviceFormatProperties2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkFormat, out VkFormatProperties2, void> vkGetPhysicalDeviceFormatProperties2KHR_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkFormat format, out VkFormatProperties2 formatProperties)
 		{
 			vkGetPhysicalDeviceFormatProperties2KHR_ptr(physicalDevice, format, out formatProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, out VkImageFormatProperties2, VkResult> vkGetPhysicalDeviceImageFormatProperties2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, out VkImageFormatProperties2, VkResult> vkGetPhysicalDeviceImageFormatProperties2KHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2* imageFormatInfo, out VkImageFormatProperties2 imageFormatProperties)
 		{
 			return vkGetPhysicalDeviceImageFormatProperties2KHR_ptr(physicalDevice, imageFormatInfo, out imageFormatProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void> vkGetPhysicalDeviceQueueFamilyProperties2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void> vkGetPhysicalDeviceQueueFamilyProperties2KHR_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceQueueFamilyProperties2KHR(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, VkQueueFamilyProperties2* queueFamilyProperties)
 		{
 			vkGetPhysicalDeviceQueueFamilyProperties2KHR_ptr(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties2, void> vkGetPhysicalDeviceMemoryProperties2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties2, void> vkGetPhysicalDeviceMemoryProperties2KHR_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceMemoryProperties2KHR(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties2 memoryProperties)
 		{
 			vkGetPhysicalDeviceMemoryProperties2KHR_ptr(physicalDevice, out memoryProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void> vkGetPhysicalDeviceSparseImageFormatProperties2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void> vkGetPhysicalDeviceSparseImageFormatProperties2KHR_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, VkSparseImageFormatProperties2* properties)
 		{
 			vkGetPhysicalDeviceSparseImageFormatProperties2KHR_ptr(physicalDevice, formatInfo, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, uint, uint, out VkPeerMemoryFeatureFlags, void> vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, uint, uint, out VkPeerMemoryFeatureFlags, void> vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr;
+		#endif
 		public static void vkGetDeviceGroupPeerMemoryFeaturesKHR(VkDevice device, uint heapIndex, uint localDeviceIndex, uint remoteDeviceIndex, out VkPeerMemoryFeatureFlags peerMemoryFeatures)
 		{
 			vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr(device, heapIndex, localDeviceIndex, remoteDeviceIndex, out peerMemoryFeatures);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void> vkCmdSetDeviceMaskKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetDeviceMaskKHR_ptr;
+		#endif
 		public static void vkCmdSetDeviceMaskKHR(VkCommandBuffer commandBuffer, uint deviceMask)
 		{
 			vkCmdSetDeviceMaskKHR_ptr(commandBuffer, deviceMask);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void> vkCmdDispatchBaseKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void> vkCmdDispatchBaseKHR_ptr;
+		#endif
 		public static void vkCmdDispatchBaseKHR(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ)
 		{
 			vkCmdDispatchBaseKHR_ptr(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void> vkTrimCommandPoolKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void> vkTrimCommandPoolKHR_ptr;
+		#endif
 		public static void vkTrimCommandPoolKHR(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlags flags)
 		{
 			vkTrimCommandPoolKHR_ptr(device, commandPool, flags);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult> vkEnumeratePhysicalDeviceGroupsKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult> vkEnumeratePhysicalDeviceGroupsKHR_ptr;
+		#endif
 		public static VkResult vkEnumeratePhysicalDeviceGroupsKHR(VkInstance instance, uint* physicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* physicalDeviceGroupProperties)
 		{
 			return vkEnumeratePhysicalDeviceGroupsKHR_ptr(instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, out VkExternalBufferProperties, void> vkGetPhysicalDeviceExternalBufferPropertiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, out VkExternalBufferProperties, void> vkGetPhysicalDeviceExternalBufferPropertiesKHR_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceExternalBufferPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* externalBufferInfo, out VkExternalBufferProperties externalBufferProperties)
 		{
 			vkGetPhysicalDeviceExternalBufferPropertiesKHR_ptr(physicalDevice, externalBufferInfo, out externalBufferProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkMemoryGetFdInfoKHR*, int*, VkResult> vkGetMemoryFdKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkMemoryGetFdInfoKHR*, int*, VkResult> vkGetMemoryFdKHR_ptr;
+		#endif
 		public static VkResult vkGetMemoryFdKHR(VkDevice device, VkMemoryGetFdInfoKHR* getFdInfo, int* fd)
 		{
 			return vkGetMemoryFdKHR_ptr(device, getFdInfo, fd);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkExternalMemoryHandleTypeFlags, int, VkMemoryFdPropertiesKHR*, VkResult> vkGetMemoryFdPropertiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, int, VkMemoryFdPropertiesKHR*, VkResult> vkGetMemoryFdPropertiesKHR_ptr;
+		#endif
 		public static VkResult vkGetMemoryFdPropertiesKHR(VkDevice device, VkExternalMemoryHandleTypeFlags handleType, int fd, VkMemoryFdPropertiesKHR* memoryFdProperties)
 		{
 			return vkGetMemoryFdPropertiesKHR_ptr(device, handleType, fd, memoryFdProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, out VkExternalSemaphoreProperties, void> vkGetPhysicalDeviceExternalSemaphorePropertiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, out VkExternalSemaphoreProperties, void> vkGetPhysicalDeviceExternalSemaphorePropertiesKHR_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* externalSemaphoreInfo, out VkExternalSemaphoreProperties externalSemaphoreProperties)
 		{
 			vkGetPhysicalDeviceExternalSemaphorePropertiesKHR_ptr(physicalDevice, externalSemaphoreInfo, out externalSemaphoreProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImportSemaphoreFdInfoKHR*, VkResult> vkImportSemaphoreFdKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImportSemaphoreFdInfoKHR*, VkResult> vkImportSemaphoreFdKHR_ptr;
+		#endif
 		public static VkResult vkImportSemaphoreFdKHR(VkDevice device, VkImportSemaphoreFdInfoKHR* importSemaphoreFdInfo)
 		{
 			return vkImportSemaphoreFdKHR_ptr(device, importSemaphoreFdInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreGetFdInfoKHR*, int*, VkResult> vkGetSemaphoreFdKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSemaphoreGetFdInfoKHR*, int*, VkResult> vkGetSemaphoreFdKHR_ptr;
+		#endif
 		public static VkResult vkGetSemaphoreFdKHR(VkDevice device, VkSemaphoreGetFdInfoKHR* getFdInfo, int* fd)
 		{
 			return vkGetSemaphoreFdKHR_ptr(device, getFdInfo, fd);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkWriteDescriptorSet*, void> vkCmdPushDescriptorSetKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkWriteDescriptorSet*, void> vkCmdPushDescriptorSetKHR_ptr;
+		#endif
 		public static void vkCmdPushDescriptorSetKHR(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites)
 		{
 			vkCmdPushDescriptorSetKHR_ptr(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, descriptorWrites);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDescriptorUpdateTemplate, VkPipelineLayout, uint, void*, void> vkCmdPushDescriptorSetWithTemplateKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkDescriptorUpdateTemplate, VkPipelineLayout, uint, void*, void> vkCmdPushDescriptorSetWithTemplateKHR_ptr;
+		#endif
 		public static void vkCmdPushDescriptorSetWithTemplateKHR(VkCommandBuffer commandBuffer, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkPipelineLayout layout, uint set, void* data)
 		{
 			vkCmdPushDescriptorSetWithTemplateKHR_ptr(commandBuffer, descriptorUpdateTemplate, layout, set, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult> vkCreateDescriptorUpdateTemplateKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult> vkCreateDescriptorUpdateTemplateKHR_ptr;
+		#endif
 		public static VkResult vkCreateDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
 		{
 			return vkCreateDescriptorUpdateTemplateKHR_ptr(device, createInfo, allocator, descriptorUpdateTemplate);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void> vkDestroyDescriptorUpdateTemplateKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void> vkDestroyDescriptorUpdateTemplateKHR_ptr;
+		#endif
 		public static void vkDestroyDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyDescriptorUpdateTemplateKHR_ptr(device, descriptorUpdateTemplate, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void> vkUpdateDescriptorSetWithTemplateKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void> vkUpdateDescriptorSetWithTemplateKHR_ptr;
+		#endif
 		public static void vkUpdateDescriptorSetWithTemplateKHR(VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, void* data)
 		{
 			vkUpdateDescriptorSetWithTemplateKHR_ptr(device, descriptorSet, descriptorUpdateTemplate, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult> vkCreateRenderPass2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult> vkCreateRenderPass2KHR_ptr;
+		#endif
 		public static VkResult vkCreateRenderPass2KHR(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkAllocationCallbacks* allocator, VkRenderPass* renderPass)
 		{
 			return vkCreateRenderPass2KHR_ptr(device, createInfo, allocator, renderPass);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void> vkCmdBeginRenderPass2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void> vkCmdBeginRenderPass2KHR_ptr;
+		#endif
 		public static void vkCmdBeginRenderPass2KHR(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* renderPassBegin, VkSubpassBeginInfo* subpassBeginInfo)
 		{
 			vkCmdBeginRenderPass2KHR_ptr(commandBuffer, renderPassBegin, subpassBeginInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void> vkCmdNextSubpass2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void> vkCmdNextSubpass2KHR_ptr;
+		#endif
 		public static void vkCmdNextSubpass2KHR(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* subpassBeginInfo, VkSubpassEndInfo* subpassEndInfo)
 		{
 			vkCmdNextSubpass2KHR_ptr(commandBuffer, subpassBeginInfo, subpassEndInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSubpassEndInfo*, void> vkCmdEndRenderPass2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkSubpassEndInfo*, void> vkCmdEndRenderPass2KHR_ptr;
+		#endif
 		public static void vkCmdEndRenderPass2KHR(VkCommandBuffer commandBuffer, VkSubpassEndInfo* subpassEndInfo)
 		{
 			vkCmdEndRenderPass2KHR_ptr(commandBuffer, subpassEndInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkResult> vkGetSwapchainStatusKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult> vkGetSwapchainStatusKHR_ptr;
+		#endif
 		public static VkResult vkGetSwapchainStatusKHR(VkDevice device, VkSwapchainKHR swapchain)
 		{
 			return vkGetSwapchainStatusKHR_ptr(device, swapchain);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, VkExternalFenceProperties*, void> vkGetPhysicalDeviceExternalFencePropertiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, VkExternalFenceProperties*, void> vkGetPhysicalDeviceExternalFencePropertiesKHR_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceExternalFencePropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* externalFenceInfo, VkExternalFenceProperties* externalFenceProperties)
 		{
 			vkGetPhysicalDeviceExternalFencePropertiesKHR_ptr(physicalDevice, externalFenceInfo, externalFenceProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImportFenceFdInfoKHR*, VkResult> vkImportFenceFdKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImportFenceFdInfoKHR*, VkResult> vkImportFenceFdKHR_ptr;
+		#endif
 		public static VkResult vkImportFenceFdKHR(VkDevice device, VkImportFenceFdInfoKHR* importFenceFdInfo)
 		{
 			return vkImportFenceFdKHR_ptr(device, importFenceFdInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkFenceGetFdInfoKHR*, int*, VkResult> vkGetFenceFdKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkFenceGetFdInfoKHR*, int*, VkResult> vkGetFenceFdKHR_ptr;
+		#endif
 		public static VkResult vkGetFenceFdKHR(VkDevice device, VkFenceGetFdInfoKHR* getFdInfo, int* fd)
 		{
 			return vkGetFenceFdKHR_ptr(device, getFdInfo, fd);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, uint*, VkPerformanceCounterKHR*, VkPerformanceCounterDescriptionKHR*, VkResult> vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkPerformanceCounterKHR*, VkPerformanceCounterDescriptionKHR*, VkResult> vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_ptr;
+		#endif
 		public static VkResult vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* counterCount, VkPerformanceCounterKHR* counters, VkPerformanceCounterDescriptionKHR* counterDescriptions)
 		{
 			return vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_ptr(physicalDevice, queueFamilyIndex, counterCount, counters, counterDescriptions);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkQueryPoolPerformanceCreateInfoKHR*, uint*, void> vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkQueryPoolPerformanceCreateInfoKHR*, uint*, void> vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(VkPhysicalDevice physicalDevice, VkQueryPoolPerformanceCreateInfoKHR* performanceQueryCreateInfo, uint* numPasses)
 		{
 			vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_ptr(physicalDevice, performanceQueryCreateInfo, numPasses);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAcquireProfilingLockInfoKHR*, VkResult> vkAcquireProfilingLockKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAcquireProfilingLockInfoKHR*, VkResult> vkAcquireProfilingLockKHR_ptr;
+		#endif
 		public static VkResult vkAcquireProfilingLockKHR(VkDevice device, VkAcquireProfilingLockInfoKHR* info)
 		{
 			return vkAcquireProfilingLockKHR_ptr(device, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, void> vkReleaseProfilingLockKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, void> vkReleaseProfilingLockKHR_ptr;
+		#endif
 		public static void vkReleaseProfilingLockKHR(VkDevice device)
 		{
 			vkReleaseProfilingLockKHR_ptr(device);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkSurfaceCapabilities2KHR*, VkResult> vkGetPhysicalDeviceSurfaceCapabilities2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkSurfaceCapabilities2KHR*, VkResult> vkGetPhysicalDeviceSurfaceCapabilities2KHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, VkSurfaceCapabilities2KHR* surfaceCapabilities)
 		{
 			return vkGetPhysicalDeviceSurfaceCapabilities2KHR_ptr(physicalDevice, surfaceInfo, surfaceCapabilities);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkSurfaceFormat2KHR*, VkResult> vkGetPhysicalDeviceSurfaceFormats2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkSurfaceFormat2KHR*, VkResult> vkGetPhysicalDeviceSurfaceFormats2KHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* surfaceFormatCount, VkSurfaceFormat2KHR* surfaceFormats)
 		{
 			return vkGetPhysicalDeviceSurfaceFormats2KHR_ptr(physicalDevice, surfaceInfo, surfaceFormatCount, surfaceFormats);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkDisplayProperties2KHR*, VkResult> vkGetPhysicalDeviceDisplayProperties2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayProperties2KHR*, VkResult> vkGetPhysicalDeviceDisplayProperties2KHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceDisplayProperties2KHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayProperties2KHR* properties)
 		{
 			return vkGetPhysicalDeviceDisplayProperties2KHR_ptr(physicalDevice, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkDisplayPlaneProperties2KHR*, VkResult> vkGetPhysicalDeviceDisplayPlaneProperties2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPlaneProperties2KHR*, VkResult> vkGetPhysicalDeviceDisplayPlaneProperties2KHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceDisplayPlaneProperties2KHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPlaneProperties2KHR* properties)
 		{
 			return vkGetPhysicalDeviceDisplayPlaneProperties2KHR_ptr(physicalDevice, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModeProperties2KHR*, VkResult> vkGetDisplayModeProperties2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModeProperties2KHR*, VkResult> vkGetDisplayModeProperties2KHR_ptr;
+		#endif
 		public static VkResult vkGetDisplayModeProperties2KHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, VkDisplayModeProperties2KHR* properties)
 		{
 			return vkGetDisplayModeProperties2KHR_ptr(physicalDevice, display, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayPlaneInfo2KHR*, VkDisplayPlaneCapabilities2KHR*, VkResult> vkGetDisplayPlaneCapabilities2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkDisplayPlaneInfo2KHR*, VkDisplayPlaneCapabilities2KHR*, VkResult> vkGetDisplayPlaneCapabilities2KHR_ptr;
+		#endif
 		public static VkResult vkGetDisplayPlaneCapabilities2KHR(VkPhysicalDevice physicalDevice, VkDisplayPlaneInfo2KHR* displayPlaneInfo, VkDisplayPlaneCapabilities2KHR* capabilities)
 		{
 			return vkGetDisplayPlaneCapabilities2KHR_ptr(physicalDevice, displayPlaneInfo, capabilities);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2KHR_ptr;
+		#endif
 		public static void vkGetImageMemoryRequirements2KHR(VkDevice device, VkImageMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements)
 		{
 			vkGetImageMemoryRequirements2KHR_ptr(device, info, memoryRequirements);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2KHR_ptr;
+		#endif
 		public static void vkGetBufferMemoryRequirements2KHR(VkDevice device, VkBufferMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements)
 		{
 			vkGetBufferMemoryRequirements2KHR_ptr(device, info, memoryRequirements);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetImageSparseMemoryRequirements2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetImageSparseMemoryRequirements2KHR_ptr;
+		#endif
 		public static void vkGetImageSparseMemoryRequirements2KHR(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements)
 		{
 			vkGetImageSparseMemoryRequirements2KHR_ptr(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult> vkCreateSamplerYcbcrConversionKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult> vkCreateSamplerYcbcrConversionKHR_ptr;
+		#endif
 		public static VkResult vkCreateSamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion)
 		{
 			return vkCreateSamplerYcbcrConversionKHR_ptr(device, createInfo, allocator, ycbcrConversion);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void> vkDestroySamplerYcbcrConversionKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void> vkDestroySamplerYcbcrConversionKHR_ptr;
+		#endif
 		public static void vkDestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator)
 		{
 			vkDestroySamplerYcbcrConversionKHR_ptr(device, ycbcrConversion, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2KHR_ptr;
+		#endif
 		public static VkResult vkBindBufferMemory2KHR(VkDevice device, uint bindInfoCount, VkBindBufferMemoryInfo* bindInfos)
 		{
 			return vkBindBufferMemory2KHR_ptr(device, bindInfoCount, bindInfos);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2KHR_ptr;
+		#endif
 		public static VkResult vkBindImageMemory2KHR(VkDevice device, uint bindInfoCount, VkBindImageMemoryInfo* bindInfos)
 		{
 			return vkBindImageMemory2KHR_ptr(device, bindInfoCount, bindInfos);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkDescriptorSetLayoutSupport*, void> vkGetDescriptorSetLayoutSupportKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkDescriptorSetLayoutSupport*, void> vkGetDescriptorSetLayoutSupportKHR_ptr;
+		#endif
 		public static void vkGetDescriptorSetLayoutSupportKHR(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkDescriptorSetLayoutSupport* support)
 		{
 			vkGetDescriptorSetLayoutSupportKHR_ptr(device, createInfo, support);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCountKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCountKHR_ptr;
+		#endif
 		public static void vkCmdDrawIndirectCountKHR(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 		{
 			vkCmdDrawIndirectCountKHR_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCountKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCountKHR_ptr;
+		#endif
 		public static void vkCmdDrawIndexedIndirectCountKHR(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 		{
 			vkCmdDrawIndexedIndirectCountKHR_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSemaphore, ulong*, VkResult> vkGetSemaphoreCounterValueKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSemaphore, ulong*, VkResult> vkGetSemaphoreCounterValueKHR_ptr;
+		#endif
 		public static VkResult vkGetSemaphoreCounterValueKHR(VkDevice device, VkSemaphore semaphore, ulong* value)
 		{
 			return vkGetSemaphoreCounterValueKHR_ptr(device, semaphore, value);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult> vkWaitSemaphoresKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult> vkWaitSemaphoresKHR_ptr;
+		#endif
 		public static VkResult vkWaitSemaphoresKHR(VkDevice device, VkSemaphoreWaitInfo* waitInfo, ulong timeout)
 		{
 			return vkWaitSemaphoresKHR_ptr(device, waitInfo, timeout);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreSignalInfo*, VkResult> vkSignalSemaphoreKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult> vkSignalSemaphoreKHR_ptr;
+		#endif
 		public static VkResult vkSignalSemaphoreKHR(VkDevice device, VkSemaphoreSignalInfo* signalInfo)
 		{
 			return vkSignalSemaphoreKHR_ptr(device, signalInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkPhysicalDeviceFragmentShadingRateKHR*, VkResult> vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceFragmentShadingRateKHR*, VkResult> vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceFragmentShadingRatesKHR(VkPhysicalDevice physicalDevice, uint* fragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR* fragmentShadingRates)
 		{
 			return vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr(physicalDevice, fragmentShadingRateCount, fragmentShadingRates);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkExtent2D*, VkFragmentShadingRateCombinerOpKHR*, void> vkCmdSetFragmentShadingRateKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkExtent2D*, VkFragmentShadingRateCombinerOpKHR*, void> vkCmdSetFragmentShadingRateKHR_ptr;
+		#endif
 		public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D* fragmentSize, VkFragmentShadingRateCombinerOpKHR* combinerOps)
 		{
 			vkCmdSetFragmentShadingRateKHR_ptr(commandBuffer, fragmentSize, combinerOps);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr> vkGetBufferDeviceAddressKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, IntPtr> vkGetBufferDeviceAddressKHR_ptr;
+		#endif
 		public static IntPtr vkGetBufferDeviceAddressKHR(VkDevice device, VkBufferDeviceAddressInfo* info)
 		{
 			return vkGetBufferDeviceAddressKHR_ptr(device, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferOpaqueCaptureAddressKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferOpaqueCaptureAddressKHR_ptr;
+		#endif
 		public static ulong vkGetBufferOpaqueCaptureAddressKHR(VkDevice device, VkBufferDeviceAddressInfo* info)
 		{
 			return vkGetBufferOpaqueCaptureAddressKHR_ptr(device, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong> vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong> vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr;
+		#endif
 		public static ulong vkGetDeviceMemoryOpaqueCaptureAddressKHR(VkDevice device, VkDeviceMemoryOpaqueCaptureAddressInfo* info)
 		{
 			return vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr(device, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAllocationCallbacks*, VkDeferredOperationKHR*, VkResult> vkCreateDeferredOperationKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAllocationCallbacks*, VkDeferredOperationKHR*, VkResult> vkCreateDeferredOperationKHR_ptr;
+		#endif
 		public static VkResult vkCreateDeferredOperationKHR(VkDevice device, VkAllocationCallbacks* allocator, VkDeferredOperationKHR* deferredOperation)
 		{
 			return vkCreateDeferredOperationKHR_ptr(device, allocator, deferredOperation);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkAllocationCallbacks*, void> vkDestroyDeferredOperationKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkAllocationCallbacks*, void> vkDestroyDeferredOperationKHR_ptr;
+		#endif
 		public static void vkDestroyDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR operation, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyDeferredOperationKHR_ptr(device, operation, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, uint> vkGetDeferredOperationMaxConcurrencyKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, uint> vkGetDeferredOperationMaxConcurrencyKHR_ptr;
+		#endif
 		public static uint vkGetDeferredOperationMaxConcurrencyKHR(VkDevice device, VkDeferredOperationKHR operation)
 		{
 			return vkGetDeferredOperationMaxConcurrencyKHR_ptr(device, operation);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkResult> vkGetDeferredOperationResultKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkResult> vkGetDeferredOperationResultKHR_ptr;
+		#endif
 		public static VkResult vkGetDeferredOperationResultKHR(VkDevice device, VkDeferredOperationKHR operation)
 		{
 			return vkGetDeferredOperationResultKHR_ptr(device, operation);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkResult> vkDeferredOperationJoinKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkResult> vkDeferredOperationJoinKHR_ptr;
+		#endif
 		public static VkResult vkDeferredOperationJoinKHR(VkDevice device, VkDeferredOperationKHR operation)
 		{
 			return vkDeferredOperationJoinKHR_ptr(device, operation);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineInfoKHR*, uint*, VkPipelineExecutablePropertiesKHR*, VkResult> vkGetPipelineExecutablePropertiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineInfoKHR*, uint*, VkPipelineExecutablePropertiesKHR*, VkResult> vkGetPipelineExecutablePropertiesKHR_ptr;
+		#endif
 		public static VkResult vkGetPipelineExecutablePropertiesKHR(VkDevice device, VkPipelineInfoKHR* pipelineInfo, uint* executableCount, VkPipelineExecutablePropertiesKHR* properties)
 		{
 			return vkGetPipelineExecutablePropertiesKHR_ptr(device, pipelineInfo, executableCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableStatisticKHR*, VkResult> vkGetPipelineExecutableStatisticsKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableStatisticKHR*, VkResult> vkGetPipelineExecutableStatisticsKHR_ptr;
+		#endif
 		public static VkResult vkGetPipelineExecutableStatisticsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* statisticCount, VkPipelineExecutableStatisticKHR* statistics)
 		{
 			return vkGetPipelineExecutableStatisticsKHR_ptr(device, executableInfo, statisticCount, statistics);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableInternalRepresentationKHR*, VkResult> vkGetPipelineExecutableInternalRepresentationsKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableInternalRepresentationKHR*, VkResult> vkGetPipelineExecutableInternalRepresentationsKHR_ptr;
+		#endif
 		public static VkResult vkGetPipelineExecutableInternalRepresentationsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* internalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* internalRepresentations)
 		{
 			return vkGetPipelineExecutableInternalRepresentationsKHR_ptr(device, executableInfo, internalRepresentationCount, internalRepresentations);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkEvent, VkDependencyInfoKHR*, void> vkCmdSetEvent2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfoKHR*, void> vkCmdSetEvent2KHR_ptr;
+		#endif
 		public static void vkCmdSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfoKHR* dependencyInfo)
 		{
 			vkCmdSetEvent2KHR_ptr(commandBuffer, @event, dependencyInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkEvent, VkPipelineStageFlags2KHR, void> vkCmdResetEvent2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags2KHR, void> vkCmdResetEvent2KHR_ptr;
+		#endif
 		public static void vkCmdResetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2KHR stageMask)
 		{
 			vkCmdResetEvent2KHR_ptr(commandBuffer, @event, stageMask);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkEvent*, VkDependencyInfoKHR*, void> vkCmdWaitEvents2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkDependencyInfoKHR*, void> vkCmdWaitEvents2KHR_ptr;
+		#endif
 		public static void vkCmdWaitEvents2KHR(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkDependencyInfoKHR* dependencyInfos)
 		{
 			vkCmdWaitEvents2KHR_ptr(commandBuffer, eventCount, events, dependencyInfos);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDependencyInfoKHR*, void> vkCmdPipelineBarrier2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkDependencyInfoKHR*, void> vkCmdPipelineBarrier2KHR_ptr;
+		#endif
 		public static void vkCmdPipelineBarrier2KHR(VkCommandBuffer commandBuffer, VkDependencyInfoKHR* dependencyInfo)
 		{
 			vkCmdPipelineBarrier2KHR_ptr(commandBuffer, dependencyInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineStageFlags2KHR, VkQueryPool, uint, void> vkCmdWriteTimestamp2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags2KHR, VkQueryPool, uint, void> vkCmdWriteTimestamp2KHR_ptr;
+		#endif
 		public static void vkCmdWriteTimestamp2KHR(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkQueryPool queryPool, uint query)
 		{
 			vkCmdWriteTimestamp2KHR_ptr(commandBuffer, stage, queryPool, query);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkQueue, uint, VkSubmitInfo2KHR*, VkFence, VkResult> vkQueueSubmit2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkQueue, uint, VkSubmitInfo2KHR*, VkFence, VkResult> vkQueueSubmit2KHR_ptr;
+		#endif
 		public static VkResult vkQueueSubmit2KHR(VkQueue queue, uint submitCount, VkSubmitInfo2KHR* submits, VkFence fence)
 		{
 			return vkQueueSubmit2KHR_ptr(queue, submitCount, submits, fence);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineStageFlags2KHR, VkBuffer, ulong, uint, void> vkCmdWriteBufferMarker2AMD_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags2KHR, VkBuffer, ulong, uint, void> vkCmdWriteBufferMarker2AMD_ptr;
+		#endif
 		public static void vkCmdWriteBufferMarker2AMD(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkBuffer dstBuffer, ulong dstOffset, uint marker)
 		{
 			vkCmdWriteBufferMarker2AMD_ptr(commandBuffer, stage, dstBuffer, dstOffset, marker);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkQueue, uint*, VkCheckpointData2NV*, void> vkGetQueueCheckpointData2NV_ptr;
+		#else
 		private static delegate* unmanaged<VkQueue, uint*, VkCheckpointData2NV*, void> vkGetQueueCheckpointData2NV_ptr;
+		#endif
 		public static void vkGetQueueCheckpointData2NV(VkQueue queue, uint* checkpointDataCount, VkCheckpointData2NV* checkpointData)
 		{
 			vkGetQueueCheckpointData2NV_ptr(queue, checkpointDataCount, checkpointData);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyBufferInfo2KHR*, void> vkCmdCopyBuffer2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCopyBufferInfo2KHR*, void> vkCmdCopyBuffer2KHR_ptr;
+		#endif
 		public static void vkCmdCopyBuffer2KHR(VkCommandBuffer commandBuffer, VkCopyBufferInfo2KHR* copyBufferInfo)
 		{
 			vkCmdCopyBuffer2KHR_ptr(commandBuffer, copyBufferInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyImageInfo2KHR*, void> vkCmdCopyImage2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCopyImageInfo2KHR*, void> vkCmdCopyImage2KHR_ptr;
+		#endif
 		public static void vkCmdCopyImage2KHR(VkCommandBuffer commandBuffer, VkCopyImageInfo2KHR* copyImageInfo)
 		{
 			vkCmdCopyImage2KHR_ptr(commandBuffer, copyImageInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyBufferToImageInfo2KHR*, void> vkCmdCopyBufferToImage2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCopyBufferToImageInfo2KHR*, void> vkCmdCopyBufferToImage2KHR_ptr;
+		#endif
 		public static void vkCmdCopyBufferToImage2KHR(VkCommandBuffer commandBuffer, VkCopyBufferToImageInfo2KHR* copyBufferToImageInfo)
 		{
 			vkCmdCopyBufferToImage2KHR_ptr(commandBuffer, copyBufferToImageInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyImageToBufferInfo2KHR*, void> vkCmdCopyImageToBuffer2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCopyImageToBufferInfo2KHR*, void> vkCmdCopyImageToBuffer2KHR_ptr;
+		#endif
 		public static void vkCmdCopyImageToBuffer2KHR(VkCommandBuffer commandBuffer, VkCopyImageToBufferInfo2KHR* copyImageToBufferInfo)
 		{
 			vkCmdCopyImageToBuffer2KHR_ptr(commandBuffer, copyImageToBufferInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBlitImageInfo2KHR*, void> vkCmdBlitImage2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBlitImageInfo2KHR*, void> vkCmdBlitImage2KHR_ptr;
+		#endif
 		public static void vkCmdBlitImage2KHR(VkCommandBuffer commandBuffer, VkBlitImageInfo2KHR* blitImageInfo)
 		{
 			vkCmdBlitImage2KHR_ptr(commandBuffer, blitImageInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkResolveImageInfo2KHR*, void> vkCmdResolveImage2KHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkResolveImageInfo2KHR*, void> vkCmdResolveImage2KHR_ptr;
+		#endif
 		public static void vkCmdResolveImage2KHR(VkCommandBuffer commandBuffer, VkResolveImageInfo2KHR* resolveImageInfo)
 		{
 			vkCmdResolveImage2KHR_ptr(commandBuffer, resolveImageInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult> vkCreateDebugReportCallbackEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult> vkCreateDebugReportCallbackEXT_ptr;
+		#endif
 		public static VkResult vkCreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkDebugReportCallbackEXT* callback)
 		{
 			return vkCreateDebugReportCallbackEXT_ptr(instance, createInfo, allocator, callback);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void> vkDestroyDebugReportCallbackEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void> vkDestroyDebugReportCallbackEXT_ptr;
+		#endif
 		public static void vkDestroyDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackEXT callback, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyDebugReportCallbackEXT_ptr(instance, callback, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void> vkDebugReportMessageEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void> vkDebugReportMessageEXT_ptr;
+		#endif
 		public static void vkDebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, byte* message)
 		{
 			vkDebugReportMessageEXT_ptr(instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDebugMarkerObjectTagInfoEXT*, VkResult> vkDebugMarkerSetObjectTagEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDebugMarkerObjectTagInfoEXT*, VkResult> vkDebugMarkerSetObjectTagEXT_ptr;
+		#endif
 		public static VkResult vkDebugMarkerSetObjectTagEXT(VkDevice device, VkDebugMarkerObjectTagInfoEXT* tagInfo)
 		{
 			return vkDebugMarkerSetObjectTagEXT_ptr(device, tagInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDebugMarkerObjectNameInfoEXT*, VkResult> vkDebugMarkerSetObjectNameEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDebugMarkerObjectNameInfoEXT*, VkResult> vkDebugMarkerSetObjectNameEXT_ptr;
+		#endif
 		public static VkResult vkDebugMarkerSetObjectNameEXT(VkDevice device, VkDebugMarkerObjectNameInfoEXT* nameInfo)
 		{
 			return vkDebugMarkerSetObjectNameEXT_ptr(device, nameInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void> vkCmdDebugMarkerBeginEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void> vkCmdDebugMarkerBeginEXT_ptr;
+		#endif
 		public static void vkCmdDebugMarkerBeginEXT(VkCommandBuffer commandBuffer, VkDebugMarkerMarkerInfoEXT* markerInfo)
 		{
 			vkCmdDebugMarkerBeginEXT_ptr(commandBuffer, markerInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, void> vkCmdDebugMarkerEndEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, void> vkCmdDebugMarkerEndEXT_ptr;
+		#endif
 		public static void vkCmdDebugMarkerEndEXT(VkCommandBuffer commandBuffer)
 		{
 			vkCmdDebugMarkerEndEXT_ptr(commandBuffer);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void> vkCmdDebugMarkerInsertEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void> vkCmdDebugMarkerInsertEXT_ptr;
+		#endif
 		public static void vkCmdDebugMarkerInsertEXT(VkCommandBuffer commandBuffer, VkDebugMarkerMarkerInfoEXT* markerInfo)
 		{
 			vkCmdDebugMarkerInsertEXT_ptr(commandBuffer, markerInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, void> vkCmdBindTransformFeedbackBuffersEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, void> vkCmdBindTransformFeedbackBuffersEXT_ptr;
+		#endif
 		public static void vkCmdBindTransformFeedbackBuffersEXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ulong* offsets, ulong* sizes)
 		{
 			vkCmdBindTransformFeedbackBuffersEXT_ptr(commandBuffer, firstBinding, bindingCount, buffers, offsets, sizes);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdBeginTransformFeedbackEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdBeginTransformFeedbackEXT_ptr;
+		#endif
 		public static void vkCmdBeginTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, ulong* counterBufferOffsets)
 		{
 			vkCmdBeginTransformFeedbackEXT_ptr(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, counterBufferOffsets);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdEndTransformFeedbackEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdEndTransformFeedbackEXT_ptr;
+		#endif
 		public static void vkCmdEndTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, ulong* counterBufferOffsets)
 		{
 			vkCmdEndTransformFeedbackEXT_ptr(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, counterBufferOffsets);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, uint, void> vkCmdBeginQueryIndexedEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, uint, void> vkCmdBeginQueryIndexedEXT_ptr;
+		#endif
 		public static void vkCmdBeginQueryIndexedEXT(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags, uint index)
 		{
 			vkCmdBeginQueryIndexedEXT_ptr(commandBuffer, queryPool, query, flags, index);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, uint, void> vkCmdEndQueryIndexedEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, void> vkCmdEndQueryIndexedEXT_ptr;
+		#endif
 		public static void vkCmdEndQueryIndexedEXT(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, uint index)
 		{
 			vkCmdEndQueryIndexedEXT_ptr(commandBuffer, queryPool, query, index);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectByteCountEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectByteCountEXT_ptr;
+		#endif
 		public static void vkCmdDrawIndirectByteCountEXT(VkCommandBuffer commandBuffer, uint instanceCount, uint firstInstance, VkBuffer counterBuffer, ulong counterBufferOffset, uint counterOffset, uint vertexStride)
 		{
 			vkCmdDrawIndirectByteCountEXT_ptr(commandBuffer, instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImageViewHandleInfoNVX*, uint> vkGetImageViewHandleNVX_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImageViewHandleInfoNVX*, uint> vkGetImageViewHandleNVX_ptr;
+		#endif
 		public static uint vkGetImageViewHandleNVX(VkDevice device, VkImageViewHandleInfoNVX* info)
 		{
 			return vkGetImageViewHandleNVX_ptr(device, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImageView, VkImageViewAddressPropertiesNVX*, VkResult> vkGetImageViewAddressNVX_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImageView, VkImageViewAddressPropertiesNVX*, VkResult> vkGetImageViewAddressNVX_ptr;
+		#endif
 		public static VkResult vkGetImageViewAddressNVX(VkDevice device, VkImageView imageView, VkImageViewAddressPropertiesNVX* properties)
 		{
 			return vkGetImageViewAddressNVX_ptr(device, imageView, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCountAMD_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCountAMD_ptr;
+		#endif
 		public static void vkCmdDrawIndirectCountAMD(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 		{
 			vkCmdDrawIndirectCountAMD_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCountAMD_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCountAMD_ptr;
+		#endif
 		public static void vkCmdDrawIndexedIndirectCountAMD(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 		{
 			vkCmdDrawIndexedIndirectCountAMD_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, VkShaderStageFlags, VkShaderInfoTypeAMD, nuint*, void*, VkResult> vkGetShaderInfoAMD_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipeline, VkShaderStageFlags, VkShaderInfoTypeAMD, nuint*, void*, VkResult> vkGetShaderInfoAMD_ptr;
+		#endif
 		public static VkResult vkGetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info)
 		{
 			return vkGetShaderInfoAMD_ptr(device, pipeline, shaderStage, infoType, infoSize, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkExternalMemoryHandleTypeFlagsNV, VkExternalImageFormatPropertiesNV*, VkResult> vkGetPhysicalDeviceExternalImageFormatPropertiesNV_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkExternalMemoryHandleTypeFlagsNV, VkExternalImageFormatPropertiesNV*, VkResult> vkGetPhysicalDeviceExternalImageFormatPropertiesNV_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceExternalImageFormatPropertiesNV(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkExternalMemoryHandleTypeFlagsNV externalHandleType, VkExternalImageFormatPropertiesNV* externalImageFormatProperties)
 		{
 			return vkGetPhysicalDeviceExternalImageFormatPropertiesNV_ptr(physicalDevice, format, type, tiling, usage, flags, externalHandleType, externalImageFormatProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkConditionalRenderingBeginInfoEXT*, void> vkCmdBeginConditionalRenderingEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkConditionalRenderingBeginInfoEXT*, void> vkCmdBeginConditionalRenderingEXT_ptr;
+		#endif
 		public static void vkCmdBeginConditionalRenderingEXT(VkCommandBuffer commandBuffer, VkConditionalRenderingBeginInfoEXT* conditionalRenderingBegin)
 		{
 			vkCmdBeginConditionalRenderingEXT_ptr(commandBuffer, conditionalRenderingBegin);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, void> vkCmdEndConditionalRenderingEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndConditionalRenderingEXT_ptr;
+		#endif
 		public static void vkCmdEndConditionalRenderingEXT(VkCommandBuffer commandBuffer)
 		{
 			vkCmdEndConditionalRenderingEXT_ptr(commandBuffer);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkViewportWScalingNV*, void> vkCmdSetViewportWScalingNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewportWScalingNV*, void> vkCmdSetViewportWScalingNV_ptr;
+		#endif
 		public static void vkCmdSetViewportWScalingNV(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewportWScalingNV* viewportWScalings)
 		{
 			vkCmdSetViewportWScalingNV_ptr(commandBuffer, firstViewport, viewportCount, viewportWScalings);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkResult> vkReleaseDisplayEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkResult> vkReleaseDisplayEXT_ptr;
+		#endif
 		public static VkResult vkReleaseDisplayEXT(VkPhysicalDevice physicalDevice, VkDisplayKHR display)
 		{
 			return vkReleaseDisplayEXT_ptr(physicalDevice, display);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilities2EXT*, VkResult> vkGetPhysicalDeviceSurfaceCapabilities2EXT_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilities2EXT*, VkResult> vkGetPhysicalDeviceSurfaceCapabilities2EXT_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceSurfaceCapabilities2EXT(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilities2EXT* surfaceCapabilities)
 		{
 			return vkGetPhysicalDeviceSurfaceCapabilities2EXT_ptr(physicalDevice, surface, surfaceCapabilities);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDisplayKHR, VkDisplayPowerInfoEXT*, VkResult> vkDisplayPowerControlEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDisplayKHR, VkDisplayPowerInfoEXT*, VkResult> vkDisplayPowerControlEXT_ptr;
+		#endif
 		public static VkResult vkDisplayPowerControlEXT(VkDevice device, VkDisplayKHR display, VkDisplayPowerInfoEXT* displayPowerInfo)
 		{
 			return vkDisplayPowerControlEXT_ptr(device, display, displayPowerInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult> vkRegisterDeviceEventEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeviceEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult> vkRegisterDeviceEventEXT_ptr;
+		#endif
 		public static VkResult vkRegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, VkAllocationCallbacks* allocator, VkFence* fence)
 		{
 			return vkRegisterDeviceEventEXT_ptr(device, deviceEventInfo, allocator, fence);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDisplayKHR, VkDisplayEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult> vkRegisterDisplayEventEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDisplayKHR, VkDisplayEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult> vkRegisterDisplayEventEXT_ptr;
+		#endif
 		public static VkResult vkRegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, VkAllocationCallbacks* allocator, VkFence* fence)
 		{
 			return vkRegisterDisplayEventEXT_ptr(device, display, displayEventInfo, allocator, fence);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkSurfaceCounterFlagsEXT, ulong*, VkResult> vkGetSwapchainCounterEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkSurfaceCounterFlagsEXT, ulong*, VkResult> vkGetSwapchainCounterEXT_ptr;
+		#endif
 		public static VkResult vkGetSwapchainCounterEXT(VkDevice device, VkSwapchainKHR swapchain, VkSurfaceCounterFlagsEXT counter, ulong* counterValue)
 		{
 			return vkGetSwapchainCounterEXT_ptr(device, swapchain, counter, counterValue);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkRefreshCycleDurationGOOGLE*, VkResult> vkGetRefreshCycleDurationGOOGLE_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkRefreshCycleDurationGOOGLE*, VkResult> vkGetRefreshCycleDurationGOOGLE_ptr;
+		#endif
 		public static VkResult vkGetRefreshCycleDurationGOOGLE(VkDevice device, VkSwapchainKHR swapchain, VkRefreshCycleDurationGOOGLE* displayTimingProperties)
 		{
 			return vkGetRefreshCycleDurationGOOGLE_ptr(device, swapchain, displayTimingProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, uint*, VkPastPresentationTimingGOOGLE*, VkResult> vkGetPastPresentationTimingGOOGLE_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkPastPresentationTimingGOOGLE*, VkResult> vkGetPastPresentationTimingGOOGLE_ptr;
+		#endif
 		public static VkResult vkGetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, uint* presentationTimingCount, VkPastPresentationTimingGOOGLE* presentationTimings)
 		{
 			return vkGetPastPresentationTimingGOOGLE_ptr(device, swapchain, presentationTimingCount, presentationTimings);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetDiscardRectangleEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetDiscardRectangleEXT_ptr;
+		#endif
 		public static void vkCmdSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D* discardRectangles)
 		{
 			vkCmdSetDiscardRectangleEXT_ptr(commandBuffer, firstDiscardRectangle, discardRectangleCount, discardRectangles);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkSwapchainKHR*, VkHdrMetadataEXT*, void> vkSetHdrMetadataEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkSwapchainKHR*, VkHdrMetadataEXT*, void> vkSetHdrMetadataEXT_ptr;
+		#endif
 		public static void vkSetHdrMetadataEXT(VkDevice device, uint swapchainCount, VkSwapchainKHR* swapchains, VkHdrMetadataEXT* metadata)
 		{
 			vkSetHdrMetadataEXT_ptr(device, swapchainCount, swapchains, metadata);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDebugUtilsObjectNameInfoEXT*, VkResult> vkSetDebugUtilsObjectNameEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDebugUtilsObjectNameInfoEXT*, VkResult> vkSetDebugUtilsObjectNameEXT_ptr;
+		#endif
 		public static VkResult vkSetDebugUtilsObjectNameEXT(VkDevice device, VkDebugUtilsObjectNameInfoEXT* nameInfo)
 		{
 			return vkSetDebugUtilsObjectNameEXT_ptr(device, nameInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDebugUtilsObjectTagInfoEXT*, VkResult> vkSetDebugUtilsObjectTagEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDebugUtilsObjectTagInfoEXT*, VkResult> vkSetDebugUtilsObjectTagEXT_ptr;
+		#endif
 		public static VkResult vkSetDebugUtilsObjectTagEXT(VkDevice device, VkDebugUtilsObjectTagInfoEXT* tagInfo)
 		{
 			return vkSetDebugUtilsObjectTagEXT_ptr(device, tagInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkQueue, VkDebugUtilsLabelEXT*, void> vkQueueBeginDebugUtilsLabelEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkQueue, VkDebugUtilsLabelEXT*, void> vkQueueBeginDebugUtilsLabelEXT_ptr;
+		#endif
 		public static void vkQueueBeginDebugUtilsLabelEXT(VkQueue queue, VkDebugUtilsLabelEXT* labelInfo)
 		{
 			vkQueueBeginDebugUtilsLabelEXT_ptr(queue, labelInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkQueue, void> vkQueueEndDebugUtilsLabelEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkQueue, void> vkQueueEndDebugUtilsLabelEXT_ptr;
+		#endif
 		public static void vkQueueEndDebugUtilsLabelEXT(VkQueue queue)
 		{
 			vkQueueEndDebugUtilsLabelEXT_ptr(queue);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkQueue, VkDebugUtilsLabelEXT*, void> vkQueueInsertDebugUtilsLabelEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkQueue, VkDebugUtilsLabelEXT*, void> vkQueueInsertDebugUtilsLabelEXT_ptr;
+		#endif
 		public static void vkQueueInsertDebugUtilsLabelEXT(VkQueue queue, VkDebugUtilsLabelEXT* labelInfo)
 		{
 			vkQueueInsertDebugUtilsLabelEXT_ptr(queue, labelInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDebugUtilsLabelEXT*, void> vkCmdBeginDebugUtilsLabelEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkDebugUtilsLabelEXT*, void> vkCmdBeginDebugUtilsLabelEXT_ptr;
+		#endif
 		public static void vkCmdBeginDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, VkDebugUtilsLabelEXT* labelInfo)
 		{
 			vkCmdBeginDebugUtilsLabelEXT_ptr(commandBuffer, labelInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, void> vkCmdEndDebugUtilsLabelEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndDebugUtilsLabelEXT_ptr;
+		#endif
 		public static void vkCmdEndDebugUtilsLabelEXT(VkCommandBuffer commandBuffer)
 		{
 			vkCmdEndDebugUtilsLabelEXT_ptr(commandBuffer);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDebugUtilsLabelEXT*, void> vkCmdInsertDebugUtilsLabelEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkDebugUtilsLabelEXT*, void> vkCmdInsertDebugUtilsLabelEXT_ptr;
+		#endif
 		public static void vkCmdInsertDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, VkDebugUtilsLabelEXT* labelInfo)
 		{
 			vkCmdInsertDebugUtilsLabelEXT_ptr(commandBuffer, labelInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, out VkDebugUtilsMessengerEXT, VkResult> vkCreateDebugUtilsMessengerEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, out VkDebugUtilsMessengerEXT, VkResult> vkCreateDebugUtilsMessengerEXT_ptr;
+		#endif
 		public static VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkDebugUtilsMessengerEXT messenger)
 		{
 			return vkCreateDebugUtilsMessengerEXT_ptr(instance, createInfo, allocator, out messenger);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void> vkDestroyDebugUtilsMessengerEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void> vkDestroyDebugUtilsMessengerEXT_ptr;
+		#endif
 		public static void vkDestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT messenger, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyDebugUtilsMessengerEXT_ptr(instance, messenger, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void> vkSubmitDebugUtilsMessageEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void> vkSubmitDebugUtilsMessageEXT_ptr;
+		#endif
 		public static void vkSubmitDebugUtilsMessageEXT(VkInstance instance, VkDebugUtilsMessageSeverityFlagsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageTypes, VkDebugUtilsMessengerCallbackDataEXT* callbackData)
 		{
 			vkSubmitDebugUtilsMessageEXT_ptr(instance, messageSeverity, messageTypes, callbackData);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSampleLocationsInfoEXT*, void> vkCmdSetSampleLocationsEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkSampleLocationsInfoEXT*, void> vkCmdSetSampleLocationsEXT_ptr;
+		#endif
 		public static void vkCmdSetSampleLocationsEXT(VkCommandBuffer commandBuffer, VkSampleLocationsInfoEXT* sampleLocationsInfo)
 		{
 			vkCmdSetSampleLocationsEXT_ptr(commandBuffer, sampleLocationsInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSampleCountFlags, VkMultisamplePropertiesEXT*, void> vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkSampleCountFlags, VkMultisamplePropertiesEXT*, void> vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr;
+		#endif
 		public static void vkGetPhysicalDeviceMultisamplePropertiesEXT(VkPhysicalDevice physicalDevice, VkSampleCountFlags samples, VkMultisamplePropertiesEXT* multisampleProperties)
 		{
 			vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr(physicalDevice, samples, multisampleProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkImageDrmFormatModifierPropertiesEXT*, VkResult> vkGetImageDrmFormatModifierPropertiesEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkImage, VkImageDrmFormatModifierPropertiesEXT*, VkResult> vkGetImageDrmFormatModifierPropertiesEXT_ptr;
+		#endif
 		public static VkResult vkGetImageDrmFormatModifierPropertiesEXT(VkDevice device, VkImage image, VkImageDrmFormatModifierPropertiesEXT* properties)
 		{
 			return vkGetImageDrmFormatModifierPropertiesEXT_ptr(device, image, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkValidationCacheCreateInfoEXT*, VkAllocationCallbacks*, VkValidationCacheEXT*, VkResult> vkCreateValidationCacheEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkValidationCacheCreateInfoEXT*, VkAllocationCallbacks*, VkValidationCacheEXT*, VkResult> vkCreateValidationCacheEXT_ptr;
+		#endif
 		public static VkResult vkCreateValidationCacheEXT(VkDevice device, VkValidationCacheCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkValidationCacheEXT* validationCache)
 		{
 			return vkCreateValidationCacheEXT_ptr(device, createInfo, allocator, validationCache);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkValidationCacheEXT, VkAllocationCallbacks*, void> vkDestroyValidationCacheEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkValidationCacheEXT, VkAllocationCallbacks*, void> vkDestroyValidationCacheEXT_ptr;
+		#endif
 		public static void vkDestroyValidationCacheEXT(VkDevice device, VkValidationCacheEXT validationCache, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyValidationCacheEXT_ptr(device, validationCache, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkValidationCacheEXT, uint, VkValidationCacheEXT*, VkResult> vkMergeValidationCachesEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkValidationCacheEXT, uint, VkValidationCacheEXT*, VkResult> vkMergeValidationCachesEXT_ptr;
+		#endif
 		public static VkResult vkMergeValidationCachesEXT(VkDevice device, VkValidationCacheEXT dstCache, uint srcCacheCount, VkValidationCacheEXT* srcCaches)
 		{
 			return vkMergeValidationCachesEXT_ptr(device, dstCache, srcCacheCount, srcCaches);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkValidationCacheEXT, nuint*, void*, VkResult> vkGetValidationCacheDataEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkValidationCacheEXT, nuint*, void*, VkResult> vkGetValidationCacheDataEXT_ptr;
+		#endif
 		public static VkResult vkGetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, nuint* dataSize, void* data)
 		{
 			return vkGetValidationCacheDataEXT_ptr(device, validationCache, dataSize, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImageView, VkImageLayout, void> vkCmdBindShadingRateImageNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkImageView, VkImageLayout, void> vkCmdBindShadingRateImageNV_ptr;
+		#endif
 		public static void vkCmdBindShadingRateImageNV(VkCommandBuffer commandBuffer, VkImageView imageView, VkImageLayout imageLayout)
 		{
 			vkCmdBindShadingRateImageNV_ptr(commandBuffer, imageView, imageLayout);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkShadingRatePaletteNV*, void> vkCmdSetViewportShadingRatePaletteNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkShadingRatePaletteNV*, void> vkCmdSetViewportShadingRatePaletteNV_ptr;
+		#endif
 		public static void vkCmdSetViewportShadingRatePaletteNV(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkShadingRatePaletteNV* shadingRatePalettes)
 		{
 			vkCmdSetViewportShadingRatePaletteNV_ptr(commandBuffer, firstViewport, viewportCount, shadingRatePalettes);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCoarseSampleOrderTypeNV, uint, VkCoarseSampleOrderCustomNV*, void> vkCmdSetCoarseSampleOrderNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCoarseSampleOrderTypeNV, uint, VkCoarseSampleOrderCustomNV*, void> vkCmdSetCoarseSampleOrderNV_ptr;
+		#endif
 		public static void vkCmdSetCoarseSampleOrderNV(VkCommandBuffer commandBuffer, VkCoarseSampleOrderTypeNV sampleOrderType, uint customSampleOrderCount, VkCoarseSampleOrderCustomNV* customSampleOrders)
 		{
 			vkCmdSetCoarseSampleOrderNV_ptr(commandBuffer, sampleOrderType, customSampleOrderCount, customSampleOrders);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoNV*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureNV_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoNV*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureNV_ptr;
+		#endif
 		public static VkResult vkCreateAccelerationStructureNV(VkDevice device, VkAccelerationStructureCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
 		{
 			return vkCreateAccelerationStructureNV_ptr(device, createInfo, allocator, accelerationStructure);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void> vkDestroyAccelerationStructureNV_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void> vkDestroyAccelerationStructureNV_ptr;
+		#endif
 		public static void vkDestroyAccelerationStructureNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyAccelerationStructureNV_ptr(device, accelerationStructure, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void> vkGetAccelerationStructureMemoryRequirementsNV_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAccelerationStructureMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void> vkGetAccelerationStructureMemoryRequirementsNV_ptr;
+		#endif
 		public static void vkGetAccelerationStructureMemoryRequirementsNV(VkDevice device, VkAccelerationStructureMemoryRequirementsInfoNV* info, VkMemoryRequirements2* memoryRequirements)
 		{
 			vkGetAccelerationStructureMemoryRequirementsNV_ptr(device, info, memoryRequirements);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkBindAccelerationStructureMemoryInfoNV*, VkResult> vkBindAccelerationStructureMemoryNV_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkBindAccelerationStructureMemoryInfoNV*, VkResult> vkBindAccelerationStructureMemoryNV_ptr;
+		#endif
 		public static VkResult vkBindAccelerationStructureMemoryNV(VkDevice device, uint bindInfoCount, VkBindAccelerationStructureMemoryInfoNV* bindInfos)
 		{
 			return vkBindAccelerationStructureMemoryNV_ptr(device, bindInfoCount, bindInfos);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkAccelerationStructureInfoNV*, VkBuffer, ulong, VkBool32, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkBuffer, ulong, void> vkCmdBuildAccelerationStructureNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkAccelerationStructureInfoNV*, VkBuffer, ulong, VkBool32, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkBuffer, ulong, void> vkCmdBuildAccelerationStructureNV_ptr;
+		#endif
 		public static void vkCmdBuildAccelerationStructureNV(VkCommandBuffer commandBuffer, VkAccelerationStructureInfoNV* info, VkBuffer instanceData, ulong instanceOffset, VkBool32 update, VkAccelerationStructureKHR dst, VkAccelerationStructureKHR src, VkBuffer scratch, ulong scratchOffset)
 		{
 			vkCmdBuildAccelerationStructureNV_ptr(commandBuffer, info, instanceData, instanceOffset, update, dst, src, scratch, scratchOffset);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkCopyAccelerationStructureModeKHR, void> vkCmdCopyAccelerationStructureNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkCopyAccelerationStructureModeKHR, void> vkCmdCopyAccelerationStructureNV_ptr;
+		#endif
 		public static void vkCmdCopyAccelerationStructureNV(VkCommandBuffer commandBuffer, VkAccelerationStructureKHR dst, VkAccelerationStructureKHR src, VkCopyAccelerationStructureModeKHR mode)
 		{
 			vkCmdCopyAccelerationStructureNV_ptr(commandBuffer, dst, src, mode);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, uint, uint, uint, void> vkCmdTraceRaysNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, uint, uint, uint, void> vkCmdTraceRaysNV_ptr;
+		#endif
 		public static void vkCmdTraceRaysNV(VkCommandBuffer commandBuffer, VkBuffer raygenShaderBindingTableBuffer, ulong raygenShaderBindingOffset, VkBuffer missShaderBindingTableBuffer, ulong missShaderBindingOffset, ulong missShaderBindingStride, VkBuffer hitShaderBindingTableBuffer, ulong hitShaderBindingOffset, ulong hitShaderBindingStride, VkBuffer callableShaderBindingTableBuffer, ulong callableShaderBindingOffset, ulong callableShaderBindingStride, uint width, uint height, uint depth)
 		{
 			vkCmdTraceRaysNV_ptr(commandBuffer, raygenShaderBindingTableBuffer, raygenShaderBindingOffset, missShaderBindingTableBuffer, missShaderBindingOffset, missShaderBindingStride, hitShaderBindingTableBuffer, hitShaderBindingOffset, hitShaderBindingStride, callableShaderBindingTableBuffer, callableShaderBindingOffset, callableShaderBindingStride, width, height, depth);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoNV*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateRayTracingPipelinesNV_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoNV*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateRayTracingPipelinesNV_ptr;
+		#endif
 		public static VkResult vkCreateRayTracingPipelinesNV(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoNV* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 		{
 			return vkCreateRayTracingPipelinesNV_ptr(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingShaderGroupHandlesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingShaderGroupHandlesKHR_ptr;
+		#endif
 		public static VkResult vkGetRayTracingShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 		{
 			return vkGetRayTracingShaderGroupHandlesKHR_ptr(device, pipeline, firstGroup, groupCount, dataSize, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingShaderGroupHandlesNV_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingShaderGroupHandlesNV_ptr;
+		#endif
 		public static VkResult vkGetRayTracingShaderGroupHandlesNV(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 		{
 			return vkGetRayTracingShaderGroupHandlesNV_ptr(device, pipeline, firstGroup, groupCount, dataSize, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureKHR, nuint, void*, VkResult> vkGetAccelerationStructureHandleNV_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, nuint, void*, VkResult> vkGetAccelerationStructureHandleNV_ptr;
+		#endif
 		public static VkResult vkGetAccelerationStructureHandleNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, nuint dataSize, void* data)
 		{
 			return vkGetAccelerationStructureHandleNV_ptr(device, accelerationStructure, dataSize, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void> vkCmdWriteAccelerationStructuresPropertiesNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void> vkCmdWriteAccelerationStructuresPropertiesNV_ptr;
+		#endif
 		public static void vkCmdWriteAccelerationStructuresPropertiesNV(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery)
 		{
 			vkCmdWriteAccelerationStructuresPropertiesNV_ptr(commandBuffer, accelerationStructureCount, accelerationStructures, queryType, queryPool, firstQuery);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, VkResult> vkCompileDeferredNV_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipeline, uint, VkResult> vkCompileDeferredNV_ptr;
+		#endif
 		public static VkResult vkCompileDeferredNV(VkDevice device, VkPipeline pipeline, uint shader)
 		{
 			return vkCompileDeferredNV_ptr(device, pipeline, shader);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryHostPointerPropertiesEXT*, VkResult> vkGetMemoryHostPointerPropertiesEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryHostPointerPropertiesEXT*, VkResult> vkGetMemoryHostPointerPropertiesEXT_ptr;
+		#endif
 		public static VkResult vkGetMemoryHostPointerPropertiesEXT(VkDevice device, VkExternalMemoryHandleTypeFlags handleType, void* hostPointer, VkMemoryHostPointerPropertiesEXT* memoryHostPointerProperties)
 		{
 			return vkGetMemoryHostPointerPropertiesEXT_ptr(device, handleType, hostPointer, memoryHostPointerProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineStageFlags, VkBuffer, ulong, uint, void> vkCmdWriteBufferMarkerAMD_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkBuffer, ulong, uint, void> vkCmdWriteBufferMarkerAMD_ptr;
+		#endif
 		public static void vkCmdWriteBufferMarkerAMD(VkCommandBuffer commandBuffer, VkPipelineStageFlags pipelineStage, VkBuffer dstBuffer, ulong dstOffset, uint marker)
 		{
 			vkCmdWriteBufferMarkerAMD_ptr(commandBuffer, pipelineStage, dstBuffer, dstOffset, marker);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkTimeDomainEXT*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainEXT*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, uint* timeDomainCount, VkTimeDomainEXT* timeDomains)
 		{
 			return vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr(physicalDevice, timeDomainCount, timeDomains);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkCalibratedTimestampInfoEXT*, ulong*, ulong*, VkResult> vkGetCalibratedTimestampsEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoEXT*, ulong*, ulong*, VkResult> vkGetCalibratedTimestampsEXT_ptr;
+		#endif
 		public static VkResult vkGetCalibratedTimestampsEXT(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoEXT* timestampInfos, ulong* timestamps, ulong* maxDeviation)
 		{
 			return vkGetCalibratedTimestampsEXT_ptr(device, timestampCount, timestampInfos, timestamps, maxDeviation);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, void> vkCmdDrawMeshTasksNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, void> vkCmdDrawMeshTasksNV_ptr;
+		#endif
 		public static void vkCmdDrawMeshTasksNV(VkCommandBuffer commandBuffer, uint taskCount, uint firstTask)
 		{
 			vkCmdDrawMeshTasksNV_ptr(commandBuffer, taskCount, firstTask);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectNV_ptr;
+		#endif
 		public static void vkCmdDrawMeshTasksIndirectNV(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, uint drawCount, uint stride)
 		{
 			vkCmdDrawMeshTasksIndirectNV_ptr(commandBuffer, buffer, offset, drawCount, stride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectCountNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectCountNV_ptr;
+		#endif
 		public static void vkCmdDrawMeshTasksIndirectCountNV(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 		{
 			vkCmdDrawMeshTasksIndirectCountNV_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetExclusiveScissorNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetExclusiveScissorNV_ptr;
+		#endif
 		public static void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D* exclusiveScissors)
 		{
 			vkCmdSetExclusiveScissorNV_ptr(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, exclusiveScissors);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, void*, void> vkCmdSetCheckpointNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, void*, void> vkCmdSetCheckpointNV_ptr;
+		#endif
 		public static void vkCmdSetCheckpointNV(VkCommandBuffer commandBuffer, void* checkpointMarker)
 		{
 			vkCmdSetCheckpointNV_ptr(commandBuffer, checkpointMarker);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkQueue, uint*, VkCheckpointDataNV*, void> vkGetQueueCheckpointDataNV_ptr;
+		#else
 		private static delegate* unmanaged<VkQueue, uint*, VkCheckpointDataNV*, void> vkGetQueueCheckpointDataNV_ptr;
+		#endif
 		public static void vkGetQueueCheckpointDataNV(VkQueue queue, uint* checkpointDataCount, VkCheckpointDataNV* checkpointData)
 		{
 			vkGetQueueCheckpointDataNV_ptr(queue, checkpointDataCount, checkpointData);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkInitializePerformanceApiInfoINTEL*, VkResult> vkInitializePerformanceApiINTEL_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkInitializePerformanceApiInfoINTEL*, VkResult> vkInitializePerformanceApiINTEL_ptr;
+		#endif
 		public static VkResult vkInitializePerformanceApiINTEL(VkDevice device, VkInitializePerformanceApiInfoINTEL* initializeInfo)
 		{
 			return vkInitializePerformanceApiINTEL_ptr(device, initializeInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, void> vkUninitializePerformanceApiINTEL_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, void> vkUninitializePerformanceApiINTEL_ptr;
+		#endif
 		public static void vkUninitializePerformanceApiINTEL(VkDevice device)
 		{
 			vkUninitializePerformanceApiINTEL_ptr(device);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPerformanceMarkerInfoINTEL*, VkResult> vkCmdSetPerformanceMarkerINTEL_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPerformanceMarkerInfoINTEL*, VkResult> vkCmdSetPerformanceMarkerINTEL_ptr;
+		#endif
 		public static VkResult vkCmdSetPerformanceMarkerINTEL(VkCommandBuffer commandBuffer, VkPerformanceMarkerInfoINTEL* markerInfo)
 		{
 			return vkCmdSetPerformanceMarkerINTEL_ptr(commandBuffer, markerInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPerformanceStreamMarkerInfoINTEL*, VkResult> vkCmdSetPerformanceStreamMarkerINTEL_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPerformanceStreamMarkerInfoINTEL*, VkResult> vkCmdSetPerformanceStreamMarkerINTEL_ptr;
+		#endif
 		public static VkResult vkCmdSetPerformanceStreamMarkerINTEL(VkCommandBuffer commandBuffer, VkPerformanceStreamMarkerInfoINTEL* markerInfo)
 		{
 			return vkCmdSetPerformanceStreamMarkerINTEL_ptr(commandBuffer, markerInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPerformanceOverrideInfoINTEL*, VkResult> vkCmdSetPerformanceOverrideINTEL_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPerformanceOverrideInfoINTEL*, VkResult> vkCmdSetPerformanceOverrideINTEL_ptr;
+		#endif
 		public static VkResult vkCmdSetPerformanceOverrideINTEL(VkCommandBuffer commandBuffer, VkPerformanceOverrideInfoINTEL* overrideInfo)
 		{
 			return vkCmdSetPerformanceOverrideINTEL_ptr(commandBuffer, overrideInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPerformanceConfigurationAcquireInfoINTEL*, VkPerformanceConfigurationINTEL*, VkResult> vkAcquirePerformanceConfigurationINTEL_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPerformanceConfigurationAcquireInfoINTEL*, VkPerformanceConfigurationINTEL*, VkResult> vkAcquirePerformanceConfigurationINTEL_ptr;
+		#endif
 		public static VkResult vkAcquirePerformanceConfigurationINTEL(VkDevice device, VkPerformanceConfigurationAcquireInfoINTEL* acquireInfo, VkPerformanceConfigurationINTEL* configuration)
 		{
 			return vkAcquirePerformanceConfigurationINTEL_ptr(device, acquireInfo, configuration);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPerformanceConfigurationINTEL, VkResult> vkReleasePerformanceConfigurationINTEL_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPerformanceConfigurationINTEL, VkResult> vkReleasePerformanceConfigurationINTEL_ptr;
+		#endif
 		public static VkResult vkReleasePerformanceConfigurationINTEL(VkDevice device, VkPerformanceConfigurationINTEL configuration)
 		{
 			return vkReleasePerformanceConfigurationINTEL_ptr(device, configuration);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkQueue, VkPerformanceConfigurationINTEL, VkResult> vkQueueSetPerformanceConfigurationINTEL_ptr;
+		#else
 		private static delegate* unmanaged<VkQueue, VkPerformanceConfigurationINTEL, VkResult> vkQueueSetPerformanceConfigurationINTEL_ptr;
+		#endif
 		public static VkResult vkQueueSetPerformanceConfigurationINTEL(VkQueue queue, VkPerformanceConfigurationINTEL configuration)
 		{
 			return vkQueueSetPerformanceConfigurationINTEL_ptr(queue, configuration);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPerformanceParameterTypeINTEL, VkPerformanceValueINTEL*, VkResult> vkGetPerformanceParameterINTEL_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPerformanceParameterTypeINTEL, VkPerformanceValueINTEL*, VkResult> vkGetPerformanceParameterINTEL_ptr;
+		#endif
 		public static VkResult vkGetPerformanceParameterINTEL(VkDevice device, VkPerformanceParameterTypeINTEL parameter, VkPerformanceValueINTEL* value)
 		{
 			return vkGetPerformanceParameterINTEL_ptr(device, parameter, value);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkBool32, void> vkSetLocalDimmingAMD_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkBool32, void> vkSetLocalDimmingAMD_ptr;
+		#endif
 		public static void vkSetLocalDimmingAMD(VkDevice device, VkSwapchainKHR swapChain, VkBool32 localDimmingEnable)
 		{
 			vkSetLocalDimmingAMD_ptr(device, swapChain, localDimmingEnable);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr> vkGetBufferDeviceAddressEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, IntPtr> vkGetBufferDeviceAddressEXT_ptr;
+		#endif
 		public static IntPtr vkGetBufferDeviceAddressEXT(VkDevice device, VkBufferDeviceAddressInfo* info)
 		{
 			return vkGetBufferDeviceAddressEXT_ptr(device, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkPhysicalDeviceToolPropertiesEXT*, VkResult> vkGetPhysicalDeviceToolPropertiesEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceToolPropertiesEXT*, VkResult> vkGetPhysicalDeviceToolPropertiesEXT_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, uint* toolCount, VkPhysicalDeviceToolPropertiesEXT* toolProperties)
 		{
 			return vkGetPhysicalDeviceToolPropertiesEXT_ptr(physicalDevice, toolCount, toolProperties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesNV*, VkResult> vkGetPhysicalDeviceCooperativeMatrixPropertiesNV_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesNV*, VkResult> vkGetPhysicalDeviceCooperativeMatrixPropertiesNV_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeMatrixPropertiesNV* properties)
 		{
 			return vkGetPhysicalDeviceCooperativeMatrixPropertiesNV_ptr(physicalDevice, propertyCount, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkFramebufferMixedSamplesCombinationNV*, VkResult> vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint*, VkFramebufferMixedSamplesCombinationNV*, VkResult> vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr;
+		#endif
 		public static VkResult vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(VkPhysicalDevice physicalDevice, uint* combinationCount, VkFramebufferMixedSamplesCombinationNV* combinations)
 		{
 			return vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr(physicalDevice, combinationCount, combinations);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateHeadlessSurfaceEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateHeadlessSurfaceEXT_ptr;
+		#endif
 		public static VkResult vkCreateHeadlessSurfaceEXT(VkInstance instance, VkHeadlessSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 		{
 			return vkCreateHeadlessSurfaceEXT_ptr(instance, createInfo, allocator, surface);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, ushort, void> vkCmdSetLineStippleEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, ushort, void> vkCmdSetLineStippleEXT_ptr;
+		#endif
 		public static void vkCmdSetLineStippleEXT(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern)
 		{
 			vkCmdSetLineStippleEXT_ptr(commandBuffer, lineStippleFactor, lineStipplePattern);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkQueryPool, uint, uint, void> vkResetQueryPoolEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, void> vkResetQueryPoolEXT_ptr;
+		#endif
 		public static void vkResetQueryPoolEXT(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount)
 		{
 			vkResetQueryPoolEXT_ptr(device, queryPool, firstQuery, queryCount);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCullModeFlags, void> vkCmdSetCullModeEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCullModeFlags, void> vkCmdSetCullModeEXT_ptr;
+		#endif
 		public static void vkCmdSetCullModeEXT(VkCommandBuffer commandBuffer, VkCullModeFlags cullMode)
 		{
 			vkCmdSetCullModeEXT_ptr(commandBuffer, cullMode);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkFrontFace, void> vkCmdSetFrontFaceEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkFrontFace, void> vkCmdSetFrontFaceEXT_ptr;
+		#endif
 		public static void vkCmdSetFrontFaceEXT(VkCommandBuffer commandBuffer, VkFrontFace frontFace)
 		{
 			vkCmdSetFrontFaceEXT_ptr(commandBuffer, frontFace);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPrimitiveTopology, void> vkCmdSetPrimitiveTopologyEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPrimitiveTopology, void> vkCmdSetPrimitiveTopologyEXT_ptr;
+		#endif
 		public static void vkCmdSetPrimitiveTopologyEXT(VkCommandBuffer commandBuffer, VkPrimitiveTopology primitiveTopology)
 		{
 			vkCmdSetPrimitiveTopologyEXT_ptr(commandBuffer, primitiveTopology);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkViewport*, void> vkCmdSetViewportWithCountEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, VkViewport*, void> vkCmdSetViewportWithCountEXT_ptr;
+		#endif
 		public static void vkCmdSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport* viewports)
 		{
 			vkCmdSetViewportWithCountEXT_ptr(commandBuffer, viewportCount, viewports);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkRect2D*, void> vkCmdSetScissorWithCountEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, VkRect2D*, void> vkCmdSetScissorWithCountEXT_ptr;
+		#endif
 		public static void vkCmdSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D* scissors)
 		{
 			vkCmdSetScissorWithCountEXT_ptr(commandBuffer, scissorCount, scissors);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, ulong*, void> vkCmdBindVertexBuffers2EXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, ulong*, void> vkCmdBindVertexBuffers2EXT_ptr;
+		#endif
 		public static void vkCmdBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ulong* offsets, ulong* sizes, ulong* strides)
 		{
 			vkCmdBindVertexBuffers2EXT_ptr(commandBuffer, firstBinding, bindingCount, buffers, offsets, sizes, strides);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetDepthTestEnableEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthTestEnableEXT_ptr;
+		#endif
 		public static void vkCmdSetDepthTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable)
 		{
 			vkCmdSetDepthTestEnableEXT_ptr(commandBuffer, depthTestEnable);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetDepthWriteEnableEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthWriteEnableEXT_ptr;
+		#endif
 		public static void vkCmdSetDepthWriteEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable)
 		{
 			vkCmdSetDepthWriteEnableEXT_ptr(commandBuffer, depthWriteEnable);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCompareOp, void> vkCmdSetDepthCompareOpEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCompareOp, void> vkCmdSetDepthCompareOpEXT_ptr;
+		#endif
 		public static void vkCmdSetDepthCompareOpEXT(VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp)
 		{
 			vkCmdSetDepthCompareOpEXT_ptr(commandBuffer, depthCompareOp);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBoundsTestEnableEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBoundsTestEnableEXT_ptr;
+		#endif
 		public static void vkCmdSetDepthBoundsTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable)
 		{
 			vkCmdSetDepthBoundsTestEnableEXT_ptr(commandBuffer, depthBoundsTestEnable);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetStencilTestEnableEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetStencilTestEnableEXT_ptr;
+		#endif
 		public static void vkCmdSetStencilTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable)
 		{
 			vkCmdSetStencilTestEnableEXT_ptr(commandBuffer, stencilTestEnable);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStencilFaceFlags, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void> vkCmdSetStencilOpEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void> vkCmdSetStencilOpEXT_ptr;
+		#endif
 		public static void vkCmdSetStencilOpEXT(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp)
 		{
 			vkCmdSetStencilOpEXT_ptr(commandBuffer, faceMask, failOp, passOp, depthFailOp, compareOp);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void> vkGetGeneratedCommandsMemoryRequirementsNV_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void> vkGetGeneratedCommandsMemoryRequirementsNV_ptr;
+		#endif
 		public static void vkGetGeneratedCommandsMemoryRequirementsNV(VkDevice device, VkGeneratedCommandsMemoryRequirementsInfoNV* info, VkMemoryRequirements2* memoryRequirements)
 		{
 			vkGetGeneratedCommandsMemoryRequirementsNV_ptr(device, info, memoryRequirements);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkGeneratedCommandsInfoNV*, void> vkCmdPreprocessGeneratedCommandsNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkGeneratedCommandsInfoNV*, void> vkCmdPreprocessGeneratedCommandsNV_ptr;
+		#endif
 		public static void vkCmdPreprocessGeneratedCommandsNV(VkCommandBuffer commandBuffer, VkGeneratedCommandsInfoNV* generatedCommandsInfo)
 		{
 			vkCmdPreprocessGeneratedCommandsNV_ptr(commandBuffer, generatedCommandsInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, VkGeneratedCommandsInfoNV*, void> vkCmdExecuteGeneratedCommandsNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkBool32, VkGeneratedCommandsInfoNV*, void> vkCmdExecuteGeneratedCommandsNV_ptr;
+		#endif
 		public static void vkCmdExecuteGeneratedCommandsNV(VkCommandBuffer commandBuffer, VkBool32 isPreprocessed, VkGeneratedCommandsInfoNV* generatedCommandsInfo)
 		{
 			vkCmdExecuteGeneratedCommandsNV_ptr(commandBuffer, isPreprocessed, generatedCommandsInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, uint, void> vkCmdBindPipelineShaderGroupNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, uint, void> vkCmdBindPipelineShaderGroupNV_ptr;
+		#endif
 		public static void vkCmdBindPipelineShaderGroupNV(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline, uint groupIndex)
 		{
 			vkCmdBindPipelineShaderGroupNV_ptr(commandBuffer, pipelineBindPoint, pipeline, groupIndex);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkIndirectCommandsLayoutCreateInfoNV*, VkAllocationCallbacks*, VkIndirectCommandsLayoutNV*, VkResult> vkCreateIndirectCommandsLayoutNV_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoNV*, VkAllocationCallbacks*, VkIndirectCommandsLayoutNV*, VkResult> vkCreateIndirectCommandsLayoutNV_ptr;
+		#endif
 		public static VkResult vkCreateIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkIndirectCommandsLayoutNV* indirectCommandsLayout)
 		{
 			return vkCreateIndirectCommandsLayoutNV_ptr(device, createInfo, allocator, indirectCommandsLayout);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkIndirectCommandsLayoutNV, VkAllocationCallbacks*, void> vkDestroyIndirectCommandsLayoutNV_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutNV, VkAllocationCallbacks*, void> vkDestroyIndirectCommandsLayoutNV_ptr;
+		#endif
 		public static void vkDestroyIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyIndirectCommandsLayoutNV_ptr(device, indirectCommandsLayout, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPrivateDataSlotCreateInfoEXT*, VkAllocationCallbacks*, VkPrivateDataSlotEXT*, VkResult> vkCreatePrivateDataSlotEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfoEXT*, VkAllocationCallbacks*, VkPrivateDataSlotEXT*, VkResult> vkCreatePrivateDataSlotEXT_ptr;
+		#endif
 		public static VkResult vkCreatePrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkPrivateDataSlotEXT* privateDataSlot)
 		{
 			return vkCreatePrivateDataSlotEXT_ptr(device, createInfo, allocator, privateDataSlot);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPrivateDataSlotEXT, VkAllocationCallbacks*, void> vkDestroyPrivateDataSlotEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPrivateDataSlotEXT, VkAllocationCallbacks*, void> vkDestroyPrivateDataSlotEXT_ptr;
+		#endif
 		public static void vkDestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotEXT privateDataSlot, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyPrivateDataSlotEXT_ptr(device, privateDataSlot, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkObjectType, ulong, VkPrivateDataSlotEXT, ulong, VkResult> vkSetPrivateDataEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlotEXT, ulong, VkResult> vkSetPrivateDataEXT_ptr;
+		#endif
 		public static VkResult vkSetPrivateDataEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlotEXT privateDataSlot, ulong data)
 		{
 			return vkSetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkObjectType, ulong, VkPrivateDataSlotEXT, ulong*, void> vkGetPrivateDataEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlotEXT, ulong*, void> vkGetPrivateDataEXT_ptr;
+		#endif
 		public static void vkGetPrivateDataEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlotEXT privateDataSlot, ulong* data)
 		{
 			vkGetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void> vkCmdSetFragmentShadingRateEnumNV_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void> vkCmdSetFragmentShadingRateEnumNV_ptr;
+		#endif
 		public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR* combinerOps)
 		{
 			vkCmdSetFragmentShadingRateEnumNV_ptr(commandBuffer, shadingRate, combinerOps);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkResult> vkAcquireWinrtDisplayNV_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkResult> vkAcquireWinrtDisplayNV_ptr;
+		#endif
 		public static VkResult vkAcquireWinrtDisplayNV(VkPhysicalDevice physicalDevice, VkDisplayKHR display)
 		{
 			return vkAcquireWinrtDisplayNV_ptr(physicalDevice, display);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, VkDisplayKHR*, VkResult> vkGetWinrtDisplayNV_ptr;
+		#else
 		private static delegate* unmanaged<VkPhysicalDevice, uint, VkDisplayKHR*, VkResult> vkGetWinrtDisplayNV_ptr;
+		#endif
 		public static VkResult vkGetWinrtDisplayNV(VkPhysicalDevice physicalDevice, uint deviceRelativeId, VkDisplayKHR* display)
 		{
 			return vkGetWinrtDisplayNV_ptr(physicalDevice, deviceRelativeId, display);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
+		#endif
 		public static VkResult vkCreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
 		{
 			return vkCreateAccelerationStructureKHR_ptr(device, createInfo, allocator, accelerationStructure);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void> vkDestroyAccelerationStructureKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void> vkDestroyAccelerationStructureKHR_ptr;
+		#endif
 		public static void vkDestroyAccelerationStructureKHR(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator)
 		{
 			vkDestroyAccelerationStructureKHR_ptr(device, accelerationStructure, allocator);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void> vkCmdBuildAccelerationStructuresKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void> vkCmdBuildAccelerationStructuresKHR_ptr;
+		#endif
 		public static void vkCmdBuildAccelerationStructuresKHR(VkCommandBuffer commandBuffer, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildRangeInfoKHR** ppBuildRangeInfos)
 		{
 			vkCmdBuildAccelerationStructuresKHR_ptr(commandBuffer, infoCount, infos, ppBuildRangeInfos);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, IntPtr*, uint*, uint**, void> vkCmdBuildAccelerationStructuresIndirectKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, IntPtr*, uint*, uint**, void> vkCmdBuildAccelerationStructuresIndirectKHR_ptr;
+		#endif
 		public static void vkCmdBuildAccelerationStructuresIndirectKHR(VkCommandBuffer commandBuffer, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, IntPtr* indirectDeviceAddresses, uint* indirectStrides, uint** ppMaxPrimitiveCounts)
 		{
 			vkCmdBuildAccelerationStructuresIndirectKHR_ptr(commandBuffer, infoCount, infos, indirectDeviceAddresses, indirectStrides, ppMaxPrimitiveCounts);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, VkResult> vkBuildAccelerationStructuresKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, VkResult> vkBuildAccelerationStructuresKHR_ptr;
+		#endif
 		public static VkResult vkBuildAccelerationStructuresKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildRangeInfoKHR** ppBuildRangeInfos)
 		{
 			return vkBuildAccelerationStructuresKHR_ptr(device, deferredOperation, infoCount, infos, ppBuildRangeInfos);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureInfoKHR*, VkResult> vkCopyAccelerationStructureKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureInfoKHR*, VkResult> vkCopyAccelerationStructureKHR_ptr;
+		#endif
 		public static VkResult vkCopyAccelerationStructureKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyAccelerationStructureInfoKHR* info)
 		{
 			return vkCopyAccelerationStructureKHR_ptr(device, deferredOperation, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureToMemoryInfoKHR*, VkResult> vkCopyAccelerationStructureToMemoryKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureToMemoryInfoKHR*, VkResult> vkCopyAccelerationStructureToMemoryKHR_ptr;
+		#endif
 		public static VkResult vkCopyAccelerationStructureToMemoryKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyAccelerationStructureToMemoryInfoKHR* info)
 		{
 			return vkCopyAccelerationStructureToMemoryKHR_ptr(device, deferredOperation, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToAccelerationStructureInfoKHR*, VkResult> vkCopyMemoryToAccelerationStructureKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToAccelerationStructureInfoKHR*, VkResult> vkCopyMemoryToAccelerationStructureKHR_ptr;
+		#endif
 		public static VkResult vkCopyMemoryToAccelerationStructureKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyMemoryToAccelerationStructureInfoKHR* info)
 		{
 			return vkCopyMemoryToAccelerationStructureKHR_ptr(device, deferredOperation, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, uint, VkAccelerationStructureKHR*, VkQueryType, nuint, void*, nuint, VkResult> vkWriteAccelerationStructuresPropertiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, uint, VkAccelerationStructureKHR*, VkQueryType, nuint, void*, nuint, VkResult> vkWriteAccelerationStructuresPropertiesKHR_ptr;
+		#endif
 		public static VkResult vkWriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, nuint dataSize, void* data, nuint stride)
 		{
 			return vkWriteAccelerationStructuresPropertiesKHR_ptr(device, accelerationStructureCount, accelerationStructures, queryType, dataSize, data, stride);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyAccelerationStructureInfoKHR*, void> vkCmdCopyAccelerationStructureKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCopyAccelerationStructureInfoKHR*, void> vkCmdCopyAccelerationStructureKHR_ptr;
+		#endif
 		public static void vkCmdCopyAccelerationStructureKHR(VkCommandBuffer commandBuffer, VkCopyAccelerationStructureInfoKHR* info)
 		{
 			vkCmdCopyAccelerationStructureKHR_ptr(commandBuffer, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyAccelerationStructureToMemoryInfoKHR*, void> vkCmdCopyAccelerationStructureToMemoryKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCopyAccelerationStructureToMemoryInfoKHR*, void> vkCmdCopyAccelerationStructureToMemoryKHR_ptr;
+		#endif
 		public static void vkCmdCopyAccelerationStructureToMemoryKHR(VkCommandBuffer commandBuffer, VkCopyAccelerationStructureToMemoryInfoKHR* info)
 		{
 			vkCmdCopyAccelerationStructureToMemoryKHR_ptr(commandBuffer, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyMemoryToAccelerationStructureInfoKHR*, void> vkCmdCopyMemoryToAccelerationStructureKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkCopyMemoryToAccelerationStructureInfoKHR*, void> vkCmdCopyMemoryToAccelerationStructureKHR_ptr;
+		#endif
 		public static void vkCmdCopyMemoryToAccelerationStructureKHR(VkCommandBuffer commandBuffer, VkCopyMemoryToAccelerationStructureInfoKHR* info)
 		{
 			vkCmdCopyMemoryToAccelerationStructureKHR_ptr(commandBuffer, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureDeviceAddressInfoKHR*, IntPtr> vkGetAccelerationStructureDeviceAddressKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAccelerationStructureDeviceAddressInfoKHR*, IntPtr> vkGetAccelerationStructureDeviceAddressKHR_ptr;
+		#endif
 		public static IntPtr vkGetAccelerationStructureDeviceAddressKHR(VkDevice device, VkAccelerationStructureDeviceAddressInfoKHR* info)
 		{
 			return vkGetAccelerationStructureDeviceAddressKHR_ptr(device, info);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void> vkCmdWriteAccelerationStructuresPropertiesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void> vkCmdWriteAccelerationStructuresPropertiesKHR_ptr;
+		#endif
 		public static void vkCmdWriteAccelerationStructuresPropertiesKHR(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery)
 		{
 			vkCmdWriteAccelerationStructuresPropertiesKHR_ptr(commandBuffer, accelerationStructureCount, accelerationStructures, queryType, queryPool, firstQuery);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureVersionInfoKHR*, VkAccelerationStructureCompatibilityKHR*, void> vkGetDeviceAccelerationStructureCompatibilityKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAccelerationStructureVersionInfoKHR*, VkAccelerationStructureCompatibilityKHR*, void> vkGetDeviceAccelerationStructureCompatibilityKHR_ptr;
+		#endif
 		public static void vkGetDeviceAccelerationStructureCompatibilityKHR(VkDevice device, VkAccelerationStructureVersionInfoKHR* versionInfo, VkAccelerationStructureCompatibilityKHR* compatibility)
 		{
 			vkGetDeviceAccelerationStructureCompatibilityKHR_ptr(device, versionInfo, compatibility);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureBuildTypeKHR, VkAccelerationStructureBuildGeometryInfoKHR*, uint*, VkAccelerationStructureBuildSizesInfoKHR*, void> vkGetAccelerationStructureBuildSizesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkAccelerationStructureBuildTypeKHR, VkAccelerationStructureBuildGeometryInfoKHR*, uint*, VkAccelerationStructureBuildSizesInfoKHR*, void> vkGetAccelerationStructureBuildSizesKHR_ptr;
+		#endif
 		public static void vkGetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, uint* maxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo)
 		{
 			vkGetAccelerationStructureBuildSizesKHR_ptr(device, buildType, buildInfo, maxPrimitiveCounts, sizeInfo);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, uint, uint, uint, void> vkCmdTraceRaysKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, uint, uint, uint, void> vkCmdTraceRaysKHR_ptr;
+		#endif
 		public static void vkCmdTraceRaysKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, uint width, uint height, uint depth)
 		{
 			vkCmdTraceRaysKHR_ptr(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, hitShaderBindingTable, callableShaderBindingTable, width, height, depth);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoKHR*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateRayTracingPipelinesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoKHR*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateRayTracingPipelinesKHR_ptr;
+		#endif
 		public static VkResult vkCreateRayTracingPipelinesKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 		{
 			return vkCreateRayTracingPipelinesKHR_ptr(device, deferredOperation, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr;
+		#endif
 		public static VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 		{
 			return vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr(device, pipeline, firstGroup, groupCount, dataSize, data);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, IntPtr, void> vkCmdTraceRaysIndirectKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, IntPtr, void> vkCmdTraceRaysIndirectKHR_ptr;
+		#endif
 		public static void vkCmdTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, IntPtr indirectDeviceAddress)
 		{
 			vkCmdTraceRaysIndirectKHR_ptr(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, hitShaderBindingTable, callableShaderBindingTable, indirectDeviceAddress);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, VkShaderGroupShaderKHR, ulong> vkGetRayTracingShaderGroupStackSizeKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkPipeline, uint, VkShaderGroupShaderKHR, ulong> vkGetRayTracingShaderGroupStackSizeKHR_ptr;
+		#endif
 		public static ulong vkGetRayTracingShaderGroupStackSizeKHR(VkDevice device, VkPipeline pipeline, uint group, VkShaderGroupShaderKHR groupShader)
 		{
 			return vkGetRayTracingShaderGroupStackSizeKHR_ptr(device, pipeline, group, groupShader);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void> vkCmdSetRayTracingPipelineStackSizeKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetRayTracingPipelineStackSizeKHR_ptr;
+		#endif
 		public static void vkCmdSetRayTracingPipelineStackSizeKHR(VkCommandBuffer commandBuffer, uint pipelineStackSize)
 		{
 			vkCmdSetRayTracingPipelineStackSizeKHR_ptr(commandBuffer, pipelineStackSize);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateAndroidSurfaceKHR_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateAndroidSurfaceKHR_ptr;
+		#endif
 		public static VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 		{
 			return vkCreateAndroidSurfaceKHR_ptr(instance, createInfo, allocator, out surface);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult> vkGetAndroidHardwareBufferPropertiesANDROID_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult> vkGetAndroidHardwareBufferPropertiesANDROID_ptr;
+		#endif
 		public static VkResult vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, IntPtr* buffer, VkAndroidHardwareBufferPropertiesANDROID* properties)
 		{
 			return vkGetAndroidHardwareBufferPropertiesANDROID_ptr(device, buffer, properties);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_ptr;
+		#else
 		private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_ptr;
+		#endif
 		public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, IntPtr* buffer)
 		{
 			return vkGetMemoryAndroidHardwareBufferANDROID_ptr(device, info, buffer);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateIOSSurfaceMVK_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateIOSSurfaceMVK_ptr;
+		#endif
 		public static VkResult vkCreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 		{
 			return vkCreateIOSSurfaceMVK_ptr(instance, createInfo, allocator, out surface);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateMacOSSurfaceMVK_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateMacOSSurfaceMVK_ptr;
+		#endif
 		public static VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 		{
 			return vkCreateMacOSSurfaceMVK_ptr(instance, createInfo, allocator, out surface);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateMetalSurfaceEXT_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateMetalSurfaceEXT_ptr;
+		#endif
 		public static VkResult vkCreateMetalSurfaceEXT(VkInstance instance, VkMetalSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 		{
 			return vkCreateMetalSurfaceEXT_ptr(instance, createInfo, allocator, out surface);
 		}
 
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateViSurfaceNN_ptr;
+		#else
 		private static delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateViSurfaceNN_ptr;
+		#endif
 		public static VkResult vkCreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 		{
 			return vkCreateViSurfaceNN_ptr(instance, createInfo, allocator, surface);
@@ -2583,433 +4295,2129 @@ namespace Vortice.Vulkan
 
 		private static void GenLoadInstance(IntPtr context, LoadFunction load)
 		{
+			#if NETSTANDARD2_0
+			vkDestroyInstance_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyInstance));
+			#else
 			vkDestroyInstance_ptr = (delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyInstance));
+			#endif
+			#if NETSTANDARD2_0
+			vkEnumeratePhysicalDevices_ptr = (delegate* unmanaged[Stdcall]<VkInstance, uint*, VkPhysicalDevice*, VkResult>) load(context, nameof(vkEnumeratePhysicalDevices));
+			#else
 			vkEnumeratePhysicalDevices_ptr = (delegate* unmanaged<VkInstance, uint*, VkPhysicalDevice*, VkResult>) load(context, nameof(vkEnumeratePhysicalDevices));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceFeatures_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceFeatures, void>) load(context, nameof(vkGetPhysicalDeviceFeatures));
+			#else
 			vkGetPhysicalDeviceFeatures_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceFeatures, void>) load(context, nameof(vkGetPhysicalDeviceFeatures));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceFormatProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, out VkFormatProperties, void>) load(context, nameof(vkGetPhysicalDeviceFormatProperties));
+			#else
 			vkGetPhysicalDeviceFormatProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, out VkFormatProperties, void>) load(context, nameof(vkGetPhysicalDeviceFormatProperties));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceImageFormatProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, out VkImageFormatProperties, VkResult>) load(context, nameof(vkGetPhysicalDeviceImageFormatProperties));
+			#else
 			vkGetPhysicalDeviceImageFormatProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, out VkImageFormatProperties, VkResult>) load(context, nameof(vkGetPhysicalDeviceImageFormatProperties));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceProperties, void>) load(context, nameof(vkGetPhysicalDeviceProperties));
+			#else
 			vkGetPhysicalDeviceProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceProperties, void>) load(context, nameof(vkGetPhysicalDeviceProperties));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceQueueFamilyProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkQueueFamilyProperties*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyProperties));
+			#else
 			vkGetPhysicalDeviceQueueFamilyProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyProperties));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceMemoryProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties));
+			#else
 			vkGetPhysicalDeviceMemoryProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeviceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkDevice, byte*, IntPtr>) load(context, nameof(vkGetDeviceProcAddr));
+			#else
 			vkGetDeviceProcAddr_ptr = (delegate* unmanaged<VkDevice, byte*, IntPtr>) load(context, nameof(vkGetDeviceProcAddr));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateDevice_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult>) load(context, nameof(vkCreateDevice));
+			#else
 			vkCreateDevice_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult>) load(context, nameof(vkCreateDevice));
+			#endif
+			#if NETSTANDARD2_0
+			vkEnumerateDeviceExtensionProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, byte*, uint*, VkExtensionProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceExtensionProperties));
+			#else
 			vkEnumerateDeviceExtensionProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, byte*, uint*, VkExtensionProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceExtensionProperties));
+			#endif
+			#if NETSTANDARD2_0
+			vkEnumerateDeviceLayerProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkLayerProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceLayerProperties));
+			#else
 			vkEnumerateDeviceLayerProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkLayerProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceLayerProperties));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceSparseImageFormatProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, VkImageType, VkSampleCountFlags, VkImageUsageFlags, VkImageTiling, uint*, VkSparseImageFormatProperties*, void>) load(context, nameof(vkGetPhysicalDeviceSparseImageFormatProperties));
+			#else
 			vkGetPhysicalDeviceSparseImageFormatProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkSampleCountFlags, VkImageUsageFlags, VkImageTiling, uint*, VkSparseImageFormatProperties*, void>) load(context, nameof(vkGetPhysicalDeviceSparseImageFormatProperties));
+			#endif
+			#if NETSTANDARD2_0
+			vkEnumeratePhysicalDeviceGroups_ptr = (delegate* unmanaged[Stdcall]<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>) load(context, nameof(vkEnumeratePhysicalDeviceGroups));
+			#else
 			vkEnumeratePhysicalDeviceGroups_ptr = (delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>) load(context, nameof(vkEnumeratePhysicalDeviceGroups));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceFeatures2_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceFeatures2, void>) load(context, nameof(vkGetPhysicalDeviceFeatures2));
+			#else
 			vkGetPhysicalDeviceFeatures2_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceFeatures2, void>) load(context, nameof(vkGetPhysicalDeviceFeatures2));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceProperties2_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceProperties2, void>) load(context, nameof(vkGetPhysicalDeviceProperties2));
+			#else
 			vkGetPhysicalDeviceProperties2_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceProperties2, void>) load(context, nameof(vkGetPhysicalDeviceProperties2));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceFormatProperties2_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, out VkFormatProperties2, void>) load(context, nameof(vkGetPhysicalDeviceFormatProperties2));
+			#else
 			vkGetPhysicalDeviceFormatProperties2_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, out VkFormatProperties2, void>) load(context, nameof(vkGetPhysicalDeviceFormatProperties2));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceImageFormatProperties2_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, out VkImageFormatProperties2, VkResult>) load(context, nameof(vkGetPhysicalDeviceImageFormatProperties2));
+			#else
 			vkGetPhysicalDeviceImageFormatProperties2_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, out VkImageFormatProperties2, VkResult>) load(context, nameof(vkGetPhysicalDeviceImageFormatProperties2));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceQueueFamilyProperties2_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyProperties2));
+			#else
 			vkGetPhysicalDeviceQueueFamilyProperties2_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyProperties2));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceMemoryProperties2_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties2, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties2));
+			#else
 			vkGetPhysicalDeviceMemoryProperties2_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties2, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties2));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceSparseImageFormatProperties2_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void>) load(context, nameof(vkGetPhysicalDeviceSparseImageFormatProperties2));
+			#else
 			vkGetPhysicalDeviceSparseImageFormatProperties2_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void>) load(context, nameof(vkGetPhysicalDeviceSparseImageFormatProperties2));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceExternalBufferProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, out VkExternalBufferProperties, void>) load(context, nameof(vkGetPhysicalDeviceExternalBufferProperties));
+			#else
 			vkGetPhysicalDeviceExternalBufferProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, out VkExternalBufferProperties, void>) load(context, nameof(vkGetPhysicalDeviceExternalBufferProperties));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceExternalFenceProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, out VkExternalFenceProperties, void>) load(context, nameof(vkGetPhysicalDeviceExternalFenceProperties));
+			#else
 			vkGetPhysicalDeviceExternalFenceProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, out VkExternalFenceProperties, void>) load(context, nameof(vkGetPhysicalDeviceExternalFenceProperties));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceExternalSemaphoreProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, out VkExternalSemaphoreProperties, void>) load(context, nameof(vkGetPhysicalDeviceExternalSemaphoreProperties));
+			#else
 			vkGetPhysicalDeviceExternalSemaphoreProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, out VkExternalSemaphoreProperties, void>) load(context, nameof(vkGetPhysicalDeviceExternalSemaphoreProperties));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroySurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySurfaceKHR));
+			#else
 			vkDestroySurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySurfaceKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceSurfaceSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, VkSurfaceKHR, out VkBool32, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceSupportKHR));
+			#else
 			vkGetPhysicalDeviceSurfaceSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, VkSurfaceKHR, out VkBool32, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceSupportKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSurfaceKHR, out VkSurfaceCapabilitiesKHR, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceCapabilitiesKHR));
+			#else
 			vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, out VkSurfaceCapabilitiesKHR, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceCapabilitiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceSurfaceFormatsKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSurfaceKHR, uint*, VkSurfaceFormatKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceFormatsKHR));
+			#else
 			vkGetPhysicalDeviceSurfaceFormatsKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkSurfaceFormatKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceFormatsKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceSurfacePresentModesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSurfaceKHR, uint*, VkPresentModeKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfacePresentModesKHR));
+			#else
 			vkGetPhysicalDeviceSurfacePresentModesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkPresentModeKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfacePresentModesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDevicePresentRectanglesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSurfaceKHR, uint*, VkRect2D*, VkResult>) load(context, nameof(vkGetPhysicalDevicePresentRectanglesKHR));
+			#else
 			vkGetPhysicalDevicePresentRectanglesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkRect2D*, VkResult>) load(context, nameof(vkGetPhysicalDevicePresentRectanglesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceDisplayPropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkDisplayPropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceDisplayPropertiesKHR));
+			#else
 			vkGetPhysicalDeviceDisplayPropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceDisplayPropertiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceDisplayPlanePropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkDisplayPlanePropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceDisplayPlanePropertiesKHR));
+			#else
 			vkGetPhysicalDeviceDisplayPlanePropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPlanePropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceDisplayPlanePropertiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDisplayPlaneSupportedDisplaysKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, uint*, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetDisplayPlaneSupportedDisplaysKHR));
+			#else
 			vkGetDisplayPlaneSupportedDisplaysKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetDisplayPlaneSupportedDisplaysKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDisplayModePropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModePropertiesKHR*, VkResult>) load(context, nameof(vkGetDisplayModePropertiesKHR));
+			#else
 			vkGetDisplayModePropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModePropertiesKHR*, VkResult>) load(context, nameof(vkGetDisplayModePropertiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateDisplayModeKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkDisplayModeCreateInfoKHR*, VkAllocationCallbacks*, out VkDisplayModeKHR, VkResult>) load(context, nameof(vkCreateDisplayModeKHR));
+			#else
 			vkCreateDisplayModeKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkDisplayModeCreateInfoKHR*, VkAllocationCallbacks*, out VkDisplayModeKHR, VkResult>) load(context, nameof(vkCreateDisplayModeKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDisplayPlaneCapabilitiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayModeKHR, uint, out VkDisplayPlaneCapabilitiesKHR, VkResult>) load(context, nameof(vkGetDisplayPlaneCapabilitiesKHR));
+			#else
 			vkGetDisplayPlaneCapabilitiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayModeKHR, uint, out VkDisplayPlaneCapabilitiesKHR, VkResult>) load(context, nameof(vkGetDisplayPlaneCapabilitiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateDisplayPlaneSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateDisplayPlaneSurfaceKHR));
+			#else
 			vkCreateDisplayPlaneSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateDisplayPlaneSurfaceKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceFeatures2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceFeatures2, void>) load(context, nameof(vkGetPhysicalDeviceFeatures2KHR));
+			#else
 			vkGetPhysicalDeviceFeatures2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceFeatures2, void>) load(context, nameof(vkGetPhysicalDeviceFeatures2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceProperties2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceProperties2, void>) load(context, nameof(vkGetPhysicalDeviceProperties2KHR));
+			#else
 			vkGetPhysicalDeviceProperties2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceProperties2, void>) load(context, nameof(vkGetPhysicalDeviceProperties2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceFormatProperties2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, out VkFormatProperties2, void>) load(context, nameof(vkGetPhysicalDeviceFormatProperties2KHR));
+			#else
 			vkGetPhysicalDeviceFormatProperties2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, out VkFormatProperties2, void>) load(context, nameof(vkGetPhysicalDeviceFormatProperties2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceImageFormatProperties2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, out VkImageFormatProperties2, VkResult>) load(context, nameof(vkGetPhysicalDeviceImageFormatProperties2KHR));
+			#else
 			vkGetPhysicalDeviceImageFormatProperties2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, out VkImageFormatProperties2, VkResult>) load(context, nameof(vkGetPhysicalDeviceImageFormatProperties2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceQueueFamilyProperties2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyProperties2KHR));
+			#else
 			vkGetPhysicalDeviceQueueFamilyProperties2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyProperties2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceMemoryProperties2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties2, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties2KHR));
+			#else
 			vkGetPhysicalDeviceMemoryProperties2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties2, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceSparseImageFormatProperties2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void>) load(context, nameof(vkGetPhysicalDeviceSparseImageFormatProperties2KHR));
+			#else
 			vkGetPhysicalDeviceSparseImageFormatProperties2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void>) load(context, nameof(vkGetPhysicalDeviceSparseImageFormatProperties2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkEnumeratePhysicalDeviceGroupsKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>) load(context, nameof(vkEnumeratePhysicalDeviceGroupsKHR));
+			#else
 			vkEnumeratePhysicalDeviceGroupsKHR_ptr = (delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>) load(context, nameof(vkEnumeratePhysicalDeviceGroupsKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceExternalBufferPropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, out VkExternalBufferProperties, void>) load(context, nameof(vkGetPhysicalDeviceExternalBufferPropertiesKHR));
+			#else
 			vkGetPhysicalDeviceExternalBufferPropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, out VkExternalBufferProperties, void>) load(context, nameof(vkGetPhysicalDeviceExternalBufferPropertiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceExternalSemaphorePropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, out VkExternalSemaphoreProperties, void>) load(context, nameof(vkGetPhysicalDeviceExternalSemaphorePropertiesKHR));
+			#else
 			vkGetPhysicalDeviceExternalSemaphorePropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, out VkExternalSemaphoreProperties, void>) load(context, nameof(vkGetPhysicalDeviceExternalSemaphorePropertiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceExternalFencePropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, VkExternalFenceProperties*, void>) load(context, nameof(vkGetPhysicalDeviceExternalFencePropertiesKHR));
+			#else
 			vkGetPhysicalDeviceExternalFencePropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, VkExternalFenceProperties*, void>) load(context, nameof(vkGetPhysicalDeviceExternalFencePropertiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, uint*, VkPerformanceCounterKHR*, VkPerformanceCounterDescriptionKHR*, VkResult>) load(context, nameof(vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR));
+			#else
 			vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkPerformanceCounterKHR*, VkPerformanceCounterDescriptionKHR*, VkResult>) load(context, nameof(vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkQueryPoolPerformanceCreateInfoKHR*, uint*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR));
+			#else
 			vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkQueryPoolPerformanceCreateInfoKHR*, uint*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceSurfaceCapabilities2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkSurfaceCapabilities2KHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceCapabilities2KHR));
+			#else
 			vkGetPhysicalDeviceSurfaceCapabilities2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkSurfaceCapabilities2KHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceCapabilities2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceSurfaceFormats2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkSurfaceFormat2KHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceFormats2KHR));
+			#else
 			vkGetPhysicalDeviceSurfaceFormats2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkSurfaceFormat2KHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceFormats2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceDisplayProperties2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkDisplayProperties2KHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceDisplayProperties2KHR));
+			#else
 			vkGetPhysicalDeviceDisplayProperties2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayProperties2KHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceDisplayProperties2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceDisplayPlaneProperties2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkDisplayPlaneProperties2KHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceDisplayPlaneProperties2KHR));
+			#else
 			vkGetPhysicalDeviceDisplayPlaneProperties2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPlaneProperties2KHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceDisplayPlaneProperties2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDisplayModeProperties2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModeProperties2KHR*, VkResult>) load(context, nameof(vkGetDisplayModeProperties2KHR));
+			#else
 			vkGetDisplayModeProperties2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModeProperties2KHR*, VkResult>) load(context, nameof(vkGetDisplayModeProperties2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDisplayPlaneCapabilities2KHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayPlaneInfo2KHR*, VkDisplayPlaneCapabilities2KHR*, VkResult>) load(context, nameof(vkGetDisplayPlaneCapabilities2KHR));
+			#else
 			vkGetDisplayPlaneCapabilities2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayPlaneInfo2KHR*, VkDisplayPlaneCapabilities2KHR*, VkResult>) load(context, nameof(vkGetDisplayPlaneCapabilities2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkPhysicalDeviceFragmentShadingRateKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceFragmentShadingRatesKHR));
+			#else
 			vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceFragmentShadingRateKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceFragmentShadingRatesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateDebugReportCallbackEXT_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>) load(context, nameof(vkCreateDebugReportCallbackEXT));
+			#else
 			vkCreateDebugReportCallbackEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>) load(context, nameof(vkCreateDebugReportCallbackEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyDebugReportCallbackEXT_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDebugReportCallbackEXT));
+			#else
 			vkDestroyDebugReportCallbackEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDebugReportCallbackEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkDebugReportMessageEXT_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void>) load(context, nameof(vkDebugReportMessageEXT));
+			#else
 			vkDebugReportMessageEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void>) load(context, nameof(vkDebugReportMessageEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceExternalImageFormatPropertiesNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkExternalMemoryHandleTypeFlagsNV, VkExternalImageFormatPropertiesNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceExternalImageFormatPropertiesNV));
+			#else
 			vkGetPhysicalDeviceExternalImageFormatPropertiesNV_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkExternalMemoryHandleTypeFlagsNV, VkExternalImageFormatPropertiesNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceExternalImageFormatPropertiesNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkReleaseDisplayEXT_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkResult>) load(context, nameof(vkReleaseDisplayEXT));
+			#else
 			vkReleaseDisplayEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkResult>) load(context, nameof(vkReleaseDisplayEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceSurfaceCapabilities2EXT_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilities2EXT*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceCapabilities2EXT));
+			#else
 			vkGetPhysicalDeviceSurfaceCapabilities2EXT_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilities2EXT*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceCapabilities2EXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkSetDebugUtilsObjectNameEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDebugUtilsObjectNameInfoEXT*, VkResult>) load(context, nameof(vkSetDebugUtilsObjectNameEXT));
+			#else
 			vkSetDebugUtilsObjectNameEXT_ptr = (delegate* unmanaged<VkDevice, VkDebugUtilsObjectNameInfoEXT*, VkResult>) load(context, nameof(vkSetDebugUtilsObjectNameEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkSetDebugUtilsObjectTagEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDebugUtilsObjectTagInfoEXT*, VkResult>) load(context, nameof(vkSetDebugUtilsObjectTagEXT));
+			#else
 			vkSetDebugUtilsObjectTagEXT_ptr = (delegate* unmanaged<VkDevice, VkDebugUtilsObjectTagInfoEXT*, VkResult>) load(context, nameof(vkSetDebugUtilsObjectTagEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkQueueBeginDebugUtilsLabelEXT_ptr = (delegate* unmanaged[Stdcall]<VkQueue, VkDebugUtilsLabelEXT*, void>) load(context, nameof(vkQueueBeginDebugUtilsLabelEXT));
+			#else
 			vkQueueBeginDebugUtilsLabelEXT_ptr = (delegate* unmanaged<VkQueue, VkDebugUtilsLabelEXT*, void>) load(context, nameof(vkQueueBeginDebugUtilsLabelEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkQueueEndDebugUtilsLabelEXT_ptr = (delegate* unmanaged[Stdcall]<VkQueue, void>) load(context, nameof(vkQueueEndDebugUtilsLabelEXT));
+			#else
 			vkQueueEndDebugUtilsLabelEXT_ptr = (delegate* unmanaged<VkQueue, void>) load(context, nameof(vkQueueEndDebugUtilsLabelEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkQueueInsertDebugUtilsLabelEXT_ptr = (delegate* unmanaged[Stdcall]<VkQueue, VkDebugUtilsLabelEXT*, void>) load(context, nameof(vkQueueInsertDebugUtilsLabelEXT));
+			#else
 			vkQueueInsertDebugUtilsLabelEXT_ptr = (delegate* unmanaged<VkQueue, VkDebugUtilsLabelEXT*, void>) load(context, nameof(vkQueueInsertDebugUtilsLabelEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBeginDebugUtilsLabelEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDebugUtilsLabelEXT*, void>) load(context, nameof(vkCmdBeginDebugUtilsLabelEXT));
+			#else
 			vkCmdBeginDebugUtilsLabelEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkDebugUtilsLabelEXT*, void>) load(context, nameof(vkCmdBeginDebugUtilsLabelEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdEndDebugUtilsLabelEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, void>) load(context, nameof(vkCmdEndDebugUtilsLabelEXT));
+			#else
 			vkCmdEndDebugUtilsLabelEXT_ptr = (delegate* unmanaged<VkCommandBuffer, void>) load(context, nameof(vkCmdEndDebugUtilsLabelEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdInsertDebugUtilsLabelEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDebugUtilsLabelEXT*, void>) load(context, nameof(vkCmdInsertDebugUtilsLabelEXT));
+			#else
 			vkCmdInsertDebugUtilsLabelEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkDebugUtilsLabelEXT*, void>) load(context, nameof(vkCmdInsertDebugUtilsLabelEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateDebugUtilsMessengerEXT_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, out VkDebugUtilsMessengerEXT, VkResult>) load(context, nameof(vkCreateDebugUtilsMessengerEXT));
+			#else
 			vkCreateDebugUtilsMessengerEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, out VkDebugUtilsMessengerEXT, VkResult>) load(context, nameof(vkCreateDebugUtilsMessengerEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyDebugUtilsMessengerEXT_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDebugUtilsMessengerEXT));
+			#else
 			vkDestroyDebugUtilsMessengerEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDebugUtilsMessengerEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkSubmitDebugUtilsMessageEXT_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void>) load(context, nameof(vkSubmitDebugUtilsMessageEXT));
+			#else
 			vkSubmitDebugUtilsMessageEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void>) load(context, nameof(vkSubmitDebugUtilsMessageEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkSampleCountFlags, VkMultisamplePropertiesEXT*, void>) load(context, nameof(vkGetPhysicalDeviceMultisamplePropertiesEXT));
+			#else
 			vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSampleCountFlags, VkMultisamplePropertiesEXT*, void>) load(context, nameof(vkGetPhysicalDeviceMultisamplePropertiesEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkTimeDomainEXT*, VkResult>) load(context, nameof(vkGetPhysicalDeviceCalibrateableTimeDomainsEXT));
+			#else
 			vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainEXT*, VkResult>) load(context, nameof(vkGetPhysicalDeviceCalibrateableTimeDomainsEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceToolPropertiesEXT_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkPhysicalDeviceToolPropertiesEXT*, VkResult>) load(context, nameof(vkGetPhysicalDeviceToolPropertiesEXT));
+			#else
 			vkGetPhysicalDeviceToolPropertiesEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceToolPropertiesEXT*, VkResult>) load(context, nameof(vkGetPhysicalDeviceToolPropertiesEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceCooperativeMatrixPropertiesNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceCooperativeMatrixPropertiesNV));
+			#else
 			vkGetPhysicalDeviceCooperativeMatrixPropertiesNV_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceCooperativeMatrixPropertiesNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint*, VkFramebufferMixedSamplesCombinationNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV));
+			#else
 			vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkFramebufferMixedSamplesCombinationNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateHeadlessSurfaceEXT_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateHeadlessSurfaceEXT));
+			#else
 			vkCreateHeadlessSurfaceEXT_ptr = (delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateHeadlessSurfaceEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkAcquireWinrtDisplayNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkResult>) load(context, nameof(vkAcquireWinrtDisplayNV));
+			#else
 			vkAcquireWinrtDisplayNV_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkResult>) load(context, nameof(vkAcquireWinrtDisplayNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetWinrtDisplayNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetWinrtDisplayNV));
+			#else
 			vkGetWinrtDisplayNV_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetWinrtDisplayNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateAndroidSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateAndroidSurfaceKHR));
+			#else
 			vkCreateAndroidSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateAndroidSurfaceKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateIOSSurfaceMVK_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateIOSSurfaceMVK));
+			#else
 			vkCreateIOSSurfaceMVK_ptr = (delegate* unmanaged<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateIOSSurfaceMVK));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateMacOSSurfaceMVK_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateMacOSSurfaceMVK));
+			#else
 			vkCreateMacOSSurfaceMVK_ptr = (delegate* unmanaged<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateMacOSSurfaceMVK));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateMetalSurfaceEXT_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateMetalSurfaceEXT));
+			#else
 			vkCreateMetalSurfaceEXT_ptr = (delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateMetalSurfaceEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateViSurfaceNN_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateViSurfaceNN));
+			#else
 			vkCreateViSurfaceNN_ptr = (delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateViSurfaceNN));
+			#endif
 		}
 		private static void GenLoadDevice(IntPtr context, LoadFunction load)
 		{
+			#if NETSTANDARD2_0
+			vkDestroyDevice_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDevice));
+			#else
 			vkDestroyDevice_ptr = (delegate* unmanaged<VkDevice, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDevice));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeviceQueue_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, uint, out VkQueue, void>) load(context, nameof(vkGetDeviceQueue));
+			#else
 			vkGetDeviceQueue_ptr = (delegate* unmanaged<VkDevice, uint, uint, out VkQueue, void>) load(context, nameof(vkGetDeviceQueue));
+			#endif
+			#if NETSTANDARD2_0
+			vkQueueSubmit_ptr = (delegate* unmanaged[Stdcall]<VkQueue, uint, VkSubmitInfo*, VkFence, VkResult>) load(context, nameof(vkQueueSubmit));
+			#else
 			vkQueueSubmit_ptr = (delegate* unmanaged<VkQueue, uint, VkSubmitInfo*, VkFence, VkResult>) load(context, nameof(vkQueueSubmit));
+			#endif
+			#if NETSTANDARD2_0
+			vkQueueWaitIdle_ptr = (delegate* unmanaged[Stdcall]<VkQueue, VkResult>) load(context, nameof(vkQueueWaitIdle));
+			#else
 			vkQueueWaitIdle_ptr = (delegate* unmanaged<VkQueue, VkResult>) load(context, nameof(vkQueueWaitIdle));
+			#endif
+			#if NETSTANDARD2_0
+			vkDeviceWaitIdle_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkResult>) load(context, nameof(vkDeviceWaitIdle));
+			#else
 			vkDeviceWaitIdle_ptr = (delegate* unmanaged<VkDevice, VkResult>) load(context, nameof(vkDeviceWaitIdle));
+			#endif
+			#if NETSTANDARD2_0
+			vkAllocateMemory_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, out VkDeviceMemory, VkResult>) load(context, nameof(vkAllocateMemory));
+			#else
 			vkAllocateMemory_ptr = (delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, out VkDeviceMemory, VkResult>) load(context, nameof(vkAllocateMemory));
+			#endif
+			#if NETSTANDARD2_0
+			vkFreeMemory_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void>) load(context, nameof(vkFreeMemory));
+			#else
 			vkFreeMemory_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void>) load(context, nameof(vkFreeMemory));
+			#endif
+			#if NETSTANDARD2_0
+			vkMapMemory_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void*, VkResult>) load(context, nameof(vkMapMemory));
+			#else
 			vkMapMemory_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void*, VkResult>) load(context, nameof(vkMapMemory));
+			#endif
+			#if NETSTANDARD2_0
+			vkUnmapMemory_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, void>) load(context, nameof(vkUnmapMemory));
+			#else
 			vkUnmapMemory_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, void>) load(context, nameof(vkUnmapMemory));
+			#endif
+			#if NETSTANDARD2_0
+			vkFlushMappedMemoryRanges_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkMappedMemoryRange*, VkResult>) load(context, nameof(vkFlushMappedMemoryRanges));
+			#else
 			vkFlushMappedMemoryRanges_ptr = (delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>) load(context, nameof(vkFlushMappedMemoryRanges));
+			#endif
+			#if NETSTANDARD2_0
+			vkInvalidateMappedMemoryRanges_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkMappedMemoryRange*, VkResult>) load(context, nameof(vkInvalidateMappedMemoryRanges));
+			#else
 			vkInvalidateMappedMemoryRanges_ptr = (delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>) load(context, nameof(vkInvalidateMappedMemoryRanges));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeviceMemoryCommitment_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, out ulong, void>) load(context, nameof(vkGetDeviceMemoryCommitment));
+			#else
 			vkGetDeviceMemoryCommitment_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, out ulong, void>) load(context, nameof(vkGetDeviceMemoryCommitment));
+			#endif
+			#if NETSTANDARD2_0
+			vkBindBufferMemory_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult>) load(context, nameof(vkBindBufferMemory));
+			#else
 			vkBindBufferMemory_ptr = (delegate* unmanaged<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult>) load(context, nameof(vkBindBufferMemory));
+			#endif
+			#if NETSTANDARD2_0
+			vkBindImageMemory_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult>) load(context, nameof(vkBindImageMemory));
+			#else
 			vkBindImageMemory_ptr = (delegate* unmanaged<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult>) load(context, nameof(vkBindImageMemory));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetBufferMemoryRequirements_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBuffer, out VkMemoryRequirements, void>) load(context, nameof(vkGetBufferMemoryRequirements));
+			#else
 			vkGetBufferMemoryRequirements_ptr = (delegate* unmanaged<VkDevice, VkBuffer, out VkMemoryRequirements, void>) load(context, nameof(vkGetBufferMemoryRequirements));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetImageMemoryRequirements_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImage, out VkMemoryRequirements, void>) load(context, nameof(vkGetImageMemoryRequirements));
+			#else
 			vkGetImageMemoryRequirements_ptr = (delegate* unmanaged<VkDevice, VkImage, out VkMemoryRequirements, void>) load(context, nameof(vkGetImageMemoryRequirements));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetImageSparseMemoryRequirements_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void>) load(context, nameof(vkGetImageSparseMemoryRequirements));
+			#else
 			vkGetImageSparseMemoryRequirements_ptr = (delegate* unmanaged<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void>) load(context, nameof(vkGetImageSparseMemoryRequirements));
+			#endif
+			#if NETSTANDARD2_0
+			vkQueueBindSparse_ptr = (delegate* unmanaged[Stdcall]<VkQueue, uint, VkBindSparseInfo*, VkFence, VkResult>) load(context, nameof(vkQueueBindSparse));
+			#else
 			vkQueueBindSparse_ptr = (delegate* unmanaged<VkQueue, uint, VkBindSparseInfo*, VkFence, VkResult>) load(context, nameof(vkQueueBindSparse));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateFence_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, out VkFence, VkResult>) load(context, nameof(vkCreateFence));
+			#else
 			vkCreateFence_ptr = (delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, out VkFence, VkResult>) load(context, nameof(vkCreateFence));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyFence_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkFence, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyFence));
+			#else
 			vkDestroyFence_ptr = (delegate* unmanaged<VkDevice, VkFence, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyFence));
+			#endif
+			#if NETSTANDARD2_0
+			vkResetFences_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkFence*, VkResult>) load(context, nameof(vkResetFences));
+			#else
 			vkResetFences_ptr = (delegate* unmanaged<VkDevice, uint, VkFence*, VkResult>) load(context, nameof(vkResetFences));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetFenceStatus_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkFence, VkResult>) load(context, nameof(vkGetFenceStatus));
+			#else
 			vkGetFenceStatus_ptr = (delegate* unmanaged<VkDevice, VkFence, VkResult>) load(context, nameof(vkGetFenceStatus));
+			#endif
+			#if NETSTANDARD2_0
+			vkWaitForFences_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult>) load(context, nameof(vkWaitForFences));
+			#else
 			vkWaitForFences_ptr = (delegate* unmanaged<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult>) load(context, nameof(vkWaitForFences));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateSemaphore_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, out VkSemaphore, VkResult>) load(context, nameof(vkCreateSemaphore));
+			#else
 			vkCreateSemaphore_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, out VkSemaphore, VkResult>) load(context, nameof(vkCreateSemaphore));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroySemaphore_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphore, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySemaphore));
+			#else
 			vkDestroySemaphore_ptr = (delegate* unmanaged<VkDevice, VkSemaphore, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySemaphore));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateEvent_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, out VkEvent, VkResult>) load(context, nameof(vkCreateEvent));
+			#else
 			vkCreateEvent_ptr = (delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, out VkEvent, VkResult>) load(context, nameof(vkCreateEvent));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyEvent_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkEvent, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyEvent));
+			#else
 			vkDestroyEvent_ptr = (delegate* unmanaged<VkDevice, VkEvent, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyEvent));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetEventStatus_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkEvent, VkResult>) load(context, nameof(vkGetEventStatus));
+			#else
 			vkGetEventStatus_ptr = (delegate* unmanaged<VkDevice, VkEvent, VkResult>) load(context, nameof(vkGetEventStatus));
+			#endif
+			#if NETSTANDARD2_0
+			vkSetEvent_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkEvent, VkResult>) load(context, nameof(vkSetEvent));
+			#else
 			vkSetEvent_ptr = (delegate* unmanaged<VkDevice, VkEvent, VkResult>) load(context, nameof(vkSetEvent));
+			#endif
+			#if NETSTANDARD2_0
+			vkResetEvent_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkEvent, VkResult>) load(context, nameof(vkResetEvent));
+			#else
 			vkResetEvent_ptr = (delegate* unmanaged<VkDevice, VkEvent, VkResult>) load(context, nameof(vkResetEvent));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateQueryPool_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, out VkQueryPool, VkResult>) load(context, nameof(vkCreateQueryPool));
+			#else
 			vkCreateQueryPool_ptr = (delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, out VkQueryPool, VkResult>) load(context, nameof(vkCreateQueryPool));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyQueryPool_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkQueryPool, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyQueryPool));
+			#else
 			vkDestroyQueryPool_ptr = (delegate* unmanaged<VkDevice, VkQueryPool, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyQueryPool));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetQueryPoolResults_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkQueryPool, uint, uint, nuint, void*, ulong, VkQueryResultFlags, VkResult>) load(context, nameof(vkGetQueryPoolResults));
+			#else
 			vkGetQueryPoolResults_ptr = (delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, nuint, void*, ulong, VkQueryResultFlags, VkResult>) load(context, nameof(vkGetQueryPoolResults));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateBuffer_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, out VkBuffer, VkResult>) load(context, nameof(vkCreateBuffer));
+			#else
 			vkCreateBuffer_ptr = (delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, out VkBuffer, VkResult>) load(context, nameof(vkCreateBuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyBuffer_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBuffer, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyBuffer));
+			#else
 			vkDestroyBuffer_ptr = (delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyBuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateBufferView_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, out VkBufferView, VkResult>) load(context, nameof(vkCreateBufferView));
+			#else
 			vkCreateBufferView_ptr = (delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, out VkBufferView, VkResult>) load(context, nameof(vkCreateBufferView));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyBufferView_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferView, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyBufferView));
+			#else
 			vkDestroyBufferView_ptr = (delegate* unmanaged<VkDevice, VkBufferView, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyBufferView));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateImage_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, out VkImage, VkResult>) load(context, nameof(vkCreateImage));
+			#else
 			vkCreateImage_ptr = (delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, out VkImage, VkResult>) load(context, nameof(vkCreateImage));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyImage_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyImage));
+			#else
 			vkDestroyImage_ptr = (delegate* unmanaged<VkDevice, VkImage, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyImage));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetImageSubresourceLayout_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkImageSubresource*, out VkSubresourceLayout, void>) load(context, nameof(vkGetImageSubresourceLayout));
+			#else
 			vkGetImageSubresourceLayout_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource*, out VkSubresourceLayout, void>) load(context, nameof(vkGetImageSubresourceLayout));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateImageView_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, out VkImageView, VkResult>) load(context, nameof(vkCreateImageView));
+			#else
 			vkCreateImageView_ptr = (delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, out VkImageView, VkResult>) load(context, nameof(vkCreateImageView));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyImageView_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageView, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyImageView));
+			#else
 			vkDestroyImageView_ptr = (delegate* unmanaged<VkDevice, VkImageView, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyImageView));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateShaderModule_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, out VkShaderModule, VkResult>) load(context, nameof(vkCreateShaderModule));
+			#else
 			vkCreateShaderModule_ptr = (delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, out VkShaderModule, VkResult>) load(context, nameof(vkCreateShaderModule));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyShaderModule_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkShaderModule, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyShaderModule));
+			#else
 			vkDestroyShaderModule_ptr = (delegate* unmanaged<VkDevice, VkShaderModule, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyShaderModule));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreatePipelineCache_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, out VkPipelineCache, VkResult>) load(context, nameof(vkCreatePipelineCache));
+			#else
 			vkCreatePipelineCache_ptr = (delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, out VkPipelineCache, VkResult>) load(context, nameof(vkCreatePipelineCache));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyPipelineCache_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPipelineCache));
+			#else
 			vkDestroyPipelineCache_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPipelineCache));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPipelineCacheData_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, nuint*, void*, VkResult>) load(context, nameof(vkGetPipelineCacheData));
+			#else
 			vkGetPipelineCacheData_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, nuint*, void*, VkResult>) load(context, nameof(vkGetPipelineCacheData));
+			#endif
+			#if NETSTANDARD2_0
+			vkMergePipelineCaches_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult>) load(context, nameof(vkMergePipelineCaches));
+			#else
 			vkMergePipelineCaches_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult>) load(context, nameof(vkMergePipelineCaches));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateGraphicsPipelines_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateGraphicsPipelines));
+			#else
 			vkCreateGraphicsPipelines_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateGraphicsPipelines));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateComputePipelines_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, uint, VkComputePipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateComputePipelines));
+			#else
 			vkCreateComputePipelines_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkComputePipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateComputePipelines));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyPipeline_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPipeline));
+			#else
 			vkDestroyPipeline_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPipeline));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreatePipelineLayout_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, out VkPipelineLayout, VkResult>) load(context, nameof(vkCreatePipelineLayout));
+			#else
 			vkCreatePipelineLayout_ptr = (delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, out VkPipelineLayout, VkResult>) load(context, nameof(vkCreatePipelineLayout));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyPipelineLayout_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineLayout, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPipelineLayout));
+			#else
 			vkDestroyPipelineLayout_ptr = (delegate* unmanaged<VkDevice, VkPipelineLayout, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPipelineLayout));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateSampler_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, out VkSampler, VkResult>) load(context, nameof(vkCreateSampler));
+			#else
 			vkCreateSampler_ptr = (delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, out VkSampler, VkResult>) load(context, nameof(vkCreateSampler));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroySampler_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSampler, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySampler));
+			#else
 			vkDestroySampler_ptr = (delegate* unmanaged<VkDevice, VkSampler, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySampler));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateDescriptorSetLayout_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, out VkDescriptorSetLayout, VkResult>) load(context, nameof(vkCreateDescriptorSetLayout));
+			#else
 			vkCreateDescriptorSetLayout_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, out VkDescriptorSetLayout, VkResult>) load(context, nameof(vkCreateDescriptorSetLayout));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyDescriptorSetLayout_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayout, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDescriptorSetLayout));
+			#else
 			vkDestroyDescriptorSetLayout_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetLayout, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDescriptorSetLayout));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateDescriptorPool_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, out VkDescriptorPool, VkResult>) load(context, nameof(vkCreateDescriptorPool));
+			#else
 			vkCreateDescriptorPool_ptr = (delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, out VkDescriptorPool, VkResult>) load(context, nameof(vkCreateDescriptorPool));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyDescriptorPool_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorPool, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDescriptorPool));
+			#else
 			vkDestroyDescriptorPool_ptr = (delegate* unmanaged<VkDevice, VkDescriptorPool, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDescriptorPool));
+			#endif
+			#if NETSTANDARD2_0
+			vkResetDescriptorPool_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorPool, VkDescriptorPoolResetFlags, VkResult>) load(context, nameof(vkResetDescriptorPool));
+			#else
 			vkResetDescriptorPool_ptr = (delegate* unmanaged<VkDevice, VkDescriptorPool, VkDescriptorPoolResetFlags, VkResult>) load(context, nameof(vkResetDescriptorPool));
+			#endif
+			#if NETSTANDARD2_0
+			vkAllocateDescriptorSets_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetAllocateInfo*, VkDescriptorSet*, VkResult>) load(context, nameof(vkAllocateDescriptorSets));
+			#else
 			vkAllocateDescriptorSets_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetAllocateInfo*, VkDescriptorSet*, VkResult>) load(context, nameof(vkAllocateDescriptorSets));
+			#endif
+			#if NETSTANDARD2_0
+			vkFreeDescriptorSets_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult>) load(context, nameof(vkFreeDescriptorSets));
+			#else
 			vkFreeDescriptorSets_ptr = (delegate* unmanaged<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult>) load(context, nameof(vkFreeDescriptorSets));
+			#endif
+			#if NETSTANDARD2_0
+			vkUpdateDescriptorSets_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkWriteDescriptorSet*, uint, VkCopyDescriptorSet*, void>) load(context, nameof(vkUpdateDescriptorSets));
+			#else
 			vkUpdateDescriptorSets_ptr = (delegate* unmanaged<VkDevice, uint, VkWriteDescriptorSet*, uint, VkCopyDescriptorSet*, void>) load(context, nameof(vkUpdateDescriptorSets));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateFramebuffer_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, out VkFramebuffer, VkResult>) load(context, nameof(vkCreateFramebuffer));
+			#else
 			vkCreateFramebuffer_ptr = (delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, out VkFramebuffer, VkResult>) load(context, nameof(vkCreateFramebuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyFramebuffer_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkFramebuffer, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyFramebuffer));
+			#else
 			vkDestroyFramebuffer_ptr = (delegate* unmanaged<VkDevice, VkFramebuffer, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyFramebuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateRenderPass_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, out VkRenderPass, VkResult>) load(context, nameof(vkCreateRenderPass));
+			#else
 			vkCreateRenderPass_ptr = (delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, out VkRenderPass, VkResult>) load(context, nameof(vkCreateRenderPass));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyRenderPass_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkRenderPass, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyRenderPass));
+			#else
 			vkDestroyRenderPass_ptr = (delegate* unmanaged<VkDevice, VkRenderPass, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyRenderPass));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetRenderAreaGranularity_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkRenderPass, out VkExtent2D, void>) load(context, nameof(vkGetRenderAreaGranularity));
+			#else
 			vkGetRenderAreaGranularity_ptr = (delegate* unmanaged<VkDevice, VkRenderPass, out VkExtent2D, void>) load(context, nameof(vkGetRenderAreaGranularity));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateCommandPool_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, out VkCommandPool, VkResult>) load(context, nameof(vkCreateCommandPool));
+			#else
 			vkCreateCommandPool_ptr = (delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, out VkCommandPool, VkResult>) load(context, nameof(vkCreateCommandPool));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyCommandPool_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkCommandPool, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyCommandPool));
+			#else
 			vkDestroyCommandPool_ptr = (delegate* unmanaged<VkDevice, VkCommandPool, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyCommandPool));
+			#endif
+			#if NETSTANDARD2_0
+			vkResetCommandPool_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkCommandPool, VkCommandPoolResetFlags, VkResult>) load(context, nameof(vkResetCommandPool));
+			#else
 			vkResetCommandPool_ptr = (delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolResetFlags, VkResult>) load(context, nameof(vkResetCommandPool));
+			#endif
+			#if NETSTANDARD2_0
+			vkAllocateCommandBuffers_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkCommandBufferAllocateInfo*, VkCommandBuffer*, VkResult>) load(context, nameof(vkAllocateCommandBuffers));
+			#else
 			vkAllocateCommandBuffers_ptr = (delegate* unmanaged<VkDevice, VkCommandBufferAllocateInfo*, VkCommandBuffer*, VkResult>) load(context, nameof(vkAllocateCommandBuffers));
+			#endif
+			#if NETSTANDARD2_0
+			vkFreeCommandBuffers_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkCommandPool, uint, VkCommandBuffer*, void>) load(context, nameof(vkFreeCommandBuffers));
+			#else
 			vkFreeCommandBuffers_ptr = (delegate* unmanaged<VkDevice, VkCommandPool, uint, VkCommandBuffer*, void>) load(context, nameof(vkFreeCommandBuffers));
+			#endif
+			#if NETSTANDARD2_0
+			vkBeginCommandBuffer_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCommandBufferBeginInfo*, VkResult>) load(context, nameof(vkBeginCommandBuffer));
+			#else
 			vkBeginCommandBuffer_ptr = (delegate* unmanaged<VkCommandBuffer, VkCommandBufferBeginInfo*, VkResult>) load(context, nameof(vkBeginCommandBuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkEndCommandBuffer_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkResult>) load(context, nameof(vkEndCommandBuffer));
+			#else
 			vkEndCommandBuffer_ptr = (delegate* unmanaged<VkCommandBuffer, VkResult>) load(context, nameof(vkEndCommandBuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkResetCommandBuffer_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCommandBufferResetFlags, VkResult>) load(context, nameof(vkResetCommandBuffer));
+			#else
 			vkResetCommandBuffer_ptr = (delegate* unmanaged<VkCommandBuffer, VkCommandBufferResetFlags, VkResult>) load(context, nameof(vkResetCommandBuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBindPipeline_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void>) load(context, nameof(vkCmdBindPipeline));
+			#else
 			vkCmdBindPipeline_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void>) load(context, nameof(vkCmdBindPipeline));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetViewport_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkViewport*, void>) load(context, nameof(vkCmdSetViewport));
+			#else
 			vkCmdSetViewport_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewport*, void>) load(context, nameof(vkCmdSetViewport));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetScissor_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkRect2D*, void>) load(context, nameof(vkCmdSetScissor));
+			#else
 			vkCmdSetScissor_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void>) load(context, nameof(vkCmdSetScissor));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetLineWidth_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, float, void>) load(context, nameof(vkCmdSetLineWidth));
+			#else
 			vkCmdSetLineWidth_ptr = (delegate* unmanaged<VkCommandBuffer, float, void>) load(context, nameof(vkCmdSetLineWidth));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetDepthBias_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, float, float, float, void>) load(context, nameof(vkCmdSetDepthBias));
+			#else
 			vkCmdSetDepthBias_ptr = (delegate* unmanaged<VkCommandBuffer, float, float, float, void>) load(context, nameof(vkCmdSetDepthBias));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetBlendConstants_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, float*, void>) load(context, nameof(vkCmdSetBlendConstants));
+			#else
 			vkCmdSetBlendConstants_ptr = (delegate* unmanaged<VkCommandBuffer, float*, void>) load(context, nameof(vkCmdSetBlendConstants));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetDepthBounds_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, float, float, void>) load(context, nameof(vkCmdSetDepthBounds));
+			#else
 			vkCmdSetDepthBounds_ptr = (delegate* unmanaged<VkCommandBuffer, float, float, void>) load(context, nameof(vkCmdSetDepthBounds));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetStencilCompareMask_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStencilFaceFlags, uint, void>) load(context, nameof(vkCmdSetStencilCompareMask));
+			#else
 			vkCmdSetStencilCompareMask_ptr = (delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void>) load(context, nameof(vkCmdSetStencilCompareMask));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetStencilWriteMask_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStencilFaceFlags, uint, void>) load(context, nameof(vkCmdSetStencilWriteMask));
+			#else
 			vkCmdSetStencilWriteMask_ptr = (delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void>) load(context, nameof(vkCmdSetStencilWriteMask));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetStencilReference_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStencilFaceFlags, uint, void>) load(context, nameof(vkCmdSetStencilReference));
+			#else
 			vkCmdSetStencilReference_ptr = (delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void>) load(context, nameof(vkCmdSetStencilReference));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBindDescriptorSets_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkDescriptorSet*, uint, uint*, void>) load(context, nameof(vkCmdBindDescriptorSets));
+			#else
 			vkCmdBindDescriptorSets_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkDescriptorSet*, uint, uint*, void>) load(context, nameof(vkCmdBindDescriptorSets));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBindIndexBuffer_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkIndexType, void>) load(context, nameof(vkCmdBindIndexBuffer));
+			#else
 			vkCmdBindIndexBuffer_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkIndexType, void>) load(context, nameof(vkCmdBindIndexBuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBindVertexBuffers_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void>) load(context, nameof(vkCmdBindVertexBuffers));
+			#else
 			vkCmdBindVertexBuffers_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void>) load(context, nameof(vkCmdBindVertexBuffers));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDraw_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, uint, void>) load(context, nameof(vkCmdDraw));
+			#else
 			vkCmdDraw_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, void>) load(context, nameof(vkCmdDraw));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawIndexed_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, int, uint, void>) load(context, nameof(vkCmdDrawIndexed));
+			#else
 			vkCmdDrawIndexed_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, uint, int, uint, void>) load(context, nameof(vkCmdDrawIndexed));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawIndirect_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirect));
+			#else
 			vkCmdDrawIndirect_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirect));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawIndexedIndirect_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndexedIndirect));
+			#else
 			vkCmdDrawIndexedIndirect_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndexedIndirect));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDispatch_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, void>) load(context, nameof(vkCmdDispatch));
+			#else
 			vkCmdDispatch_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void>) load(context, nameof(vkCmdDispatch));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDispatchIndirect_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, void>) load(context, nameof(vkCmdDispatchIndirect));
+			#else
 			vkCmdDispatchIndirect_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, void>) load(context, nameof(vkCmdDispatchIndirect));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyBuffer_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, VkBuffer, uint, VkBufferCopy*, void>) load(context, nameof(vkCmdCopyBuffer));
+			#else
 			vkCmdCopyBuffer_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, VkBuffer, uint, VkBufferCopy*, void>) load(context, nameof(vkCmdCopyBuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyImage_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageCopy*, void>) load(context, nameof(vkCmdCopyImage));
+			#else
 			vkCmdCopyImage_ptr = (delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageCopy*, void>) load(context, nameof(vkCmdCopyImage));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBlitImage_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageBlit*, VkFilter, void>) load(context, nameof(vkCmdBlitImage));
+			#else
 			vkCmdBlitImage_ptr = (delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageBlit*, VkFilter, void>) load(context, nameof(vkCmdBlitImage));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyBufferToImage_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, VkImage, VkImageLayout, uint, VkBufferImageCopy*, void>) load(context, nameof(vkCmdCopyBufferToImage));
+			#else
 			vkCmdCopyBufferToImage_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, VkImage, VkImageLayout, uint, VkBufferImageCopy*, void>) load(context, nameof(vkCmdCopyBufferToImage));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyImageToBuffer_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkBuffer, uint, VkBufferImageCopy*, void>) load(context, nameof(vkCmdCopyImageToBuffer));
+			#else
 			vkCmdCopyImageToBuffer_ptr = (delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkBuffer, uint, VkBufferImageCopy*, void>) load(context, nameof(vkCmdCopyImageToBuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdUpdateBuffer_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, ulong, void*, void>) load(context, nameof(vkCmdUpdateBuffer));
+			#else
 			vkCmdUpdateBuffer_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, void*, void>) load(context, nameof(vkCmdUpdateBuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdFillBuffer_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, ulong, uint, void>) load(context, nameof(vkCmdFillBuffer));
+			#else
 			vkCmdFillBuffer_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, uint, void>) load(context, nameof(vkCmdFillBuffer));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdClearColorImage_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkClearColorValue*, uint, VkImageSubresourceRange*, void>) load(context, nameof(vkCmdClearColorImage));
+			#else
 			vkCmdClearColorImage_ptr = (delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkClearColorValue*, uint, VkImageSubresourceRange*, void>) load(context, nameof(vkCmdClearColorImage));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdClearDepthStencilImage_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkClearDepthStencilValue*, uint, VkImageSubresourceRange*, void>) load(context, nameof(vkCmdClearDepthStencilImage));
+			#else
 			vkCmdClearDepthStencilImage_ptr = (delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkClearDepthStencilValue*, uint, VkImageSubresourceRange*, void>) load(context, nameof(vkCmdClearDepthStencilImage));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdClearAttachments_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkClearAttachment*, uint, VkClearRect*, void>) load(context, nameof(vkCmdClearAttachments));
+			#else
 			vkCmdClearAttachments_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkClearAttachment*, uint, VkClearRect*, void>) load(context, nameof(vkCmdClearAttachments));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdResolveImage_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageResolve*, void>) load(context, nameof(vkCmdResolveImage));
+			#else
 			vkCmdResolveImage_ptr = (delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageResolve*, void>) load(context, nameof(vkCmdResolveImage));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetEvent_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void>) load(context, nameof(vkCmdSetEvent));
+			#else
 			vkCmdSetEvent_ptr = (delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void>) load(context, nameof(vkCmdSetEvent));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdResetEvent_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void>) load(context, nameof(vkCmdResetEvent));
+			#else
 			vkCmdResetEvent_ptr = (delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void>) load(context, nameof(vkCmdResetEvent));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdWaitEvents_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkEvent*, VkPipelineStageFlags, VkPipelineStageFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void>) load(context, nameof(vkCmdWaitEvents));
+			#else
 			vkCmdWaitEvents_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkPipelineStageFlags, VkPipelineStageFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void>) load(context, nameof(vkCmdWaitEvents));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdPipelineBarrier_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineStageFlags, VkPipelineStageFlags, VkDependencyFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void>) load(context, nameof(vkCmdPipelineBarrier));
+			#else
 			vkCmdPipelineBarrier_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkPipelineStageFlags, VkDependencyFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void>) load(context, nameof(vkCmdPipelineBarrier));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBeginQuery_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, void>) load(context, nameof(vkCmdBeginQuery));
+			#else
 			vkCmdBeginQuery_ptr = (delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, void>) load(context, nameof(vkCmdBeginQuery));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdEndQuery_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, void>) load(context, nameof(vkCmdEndQuery));
+			#else
 			vkCmdEndQuery_ptr = (delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, void>) load(context, nameof(vkCmdEndQuery));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdResetQueryPool_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, uint, void>) load(context, nameof(vkCmdResetQueryPool));
+			#else
 			vkCmdResetQueryPool_ptr = (delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, void>) load(context, nameof(vkCmdResetQueryPool));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdWriteTimestamp_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineStageFlags, VkQueryPool, uint, void>) load(context, nameof(vkCmdWriteTimestamp));
+			#else
 			vkCmdWriteTimestamp_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkQueryPool, uint, void>) load(context, nameof(vkCmdWriteTimestamp));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyQueryPoolResults_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, uint, VkBuffer, ulong, ulong, VkQueryResultFlags, void>) load(context, nameof(vkCmdCopyQueryPoolResults));
+			#else
 			vkCmdCopyQueryPoolResults_ptr = (delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, VkBuffer, ulong, ulong, VkQueryResultFlags, void>) load(context, nameof(vkCmdCopyQueryPoolResults));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdPushConstants_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineLayout, VkShaderStageFlags, uint, uint, void*, void>) load(context, nameof(vkCmdPushConstants));
+			#else
 			vkCmdPushConstants_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineLayout, VkShaderStageFlags, uint, uint, void*, void>) load(context, nameof(vkCmdPushConstants));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBeginRenderPass_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassContents, void>) load(context, nameof(vkCmdBeginRenderPass));
+			#else
 			vkCmdBeginRenderPass_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassContents, void>) load(context, nameof(vkCmdBeginRenderPass));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdNextSubpass_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSubpassContents, void>) load(context, nameof(vkCmdNextSubpass));
+			#else
 			vkCmdNextSubpass_ptr = (delegate* unmanaged<VkCommandBuffer, VkSubpassContents, void>) load(context, nameof(vkCmdNextSubpass));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdEndRenderPass_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, void>) load(context, nameof(vkCmdEndRenderPass));
+			#else
 			vkCmdEndRenderPass_ptr = (delegate* unmanaged<VkCommandBuffer, void>) load(context, nameof(vkCmdEndRenderPass));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdExecuteCommands_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkCommandBuffer*, void>) load(context, nameof(vkCmdExecuteCommands));
+			#else
 			vkCmdExecuteCommands_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkCommandBuffer*, void>) load(context, nameof(vkCmdExecuteCommands));
+			#endif
+			#if NETSTANDARD2_0
+			vkBindBufferMemory2_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult>) load(context, nameof(vkBindBufferMemory2));
+			#else
 			vkBindBufferMemory2_ptr = (delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult>) load(context, nameof(vkBindBufferMemory2));
+			#endif
+			#if NETSTANDARD2_0
+			vkBindImageMemory2_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkBindImageMemoryInfo*, VkResult>) load(context, nameof(vkBindImageMemory2));
+			#else
 			vkBindImageMemory2_ptr = (delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult>) load(context, nameof(vkBindImageMemory2));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeviceGroupPeerMemoryFeatures_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, uint, uint, VkPeerMemoryFeatureFlags*, void>) load(context, nameof(vkGetDeviceGroupPeerMemoryFeatures));
+			#else
 			vkGetDeviceGroupPeerMemoryFeatures_ptr = (delegate* unmanaged<VkDevice, uint, uint, uint, VkPeerMemoryFeatureFlags*, void>) load(context, nameof(vkGetDeviceGroupPeerMemoryFeatures));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetDeviceMask_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetDeviceMask));
+			#else
 			vkCmdSetDeviceMask_ptr = (delegate* unmanaged<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetDeviceMask));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDispatchBase_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void>) load(context, nameof(vkCmdDispatchBase));
+			#else
 			vkCmdDispatchBase_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void>) load(context, nameof(vkCmdDispatchBase));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetImageMemoryRequirements2_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageMemoryRequirementsInfo2*, out VkMemoryRequirements2, void>) load(context, nameof(vkGetImageMemoryRequirements2));
+			#else
 			vkGetImageMemoryRequirements2_ptr = (delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, out VkMemoryRequirements2, void>) load(context, nameof(vkGetImageMemoryRequirements2));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetBufferMemoryRequirements2_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferMemoryRequirementsInfo2*, out VkMemoryRequirements2, void>) load(context, nameof(vkGetBufferMemoryRequirements2));
+			#else
 			vkGetBufferMemoryRequirements2_ptr = (delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, out VkMemoryRequirements2, void>) load(context, nameof(vkGetBufferMemoryRequirements2));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetImageSparseMemoryRequirements2_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetImageSparseMemoryRequirements2));
+			#else
 			vkGetImageSparseMemoryRequirements2_ptr = (delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetImageSparseMemoryRequirements2));
+			#endif
+			#if NETSTANDARD2_0
+			vkTrimCommandPool_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void>) load(context, nameof(vkTrimCommandPool));
+			#else
 			vkTrimCommandPool_ptr = (delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void>) load(context, nameof(vkTrimCommandPool));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeviceQueue2_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceQueueInfo2*, out VkQueue, void>) load(context, nameof(vkGetDeviceQueue2));
+			#else
 			vkGetDeviceQueue2_ptr = (delegate* unmanaged<VkDevice, VkDeviceQueueInfo2*, out VkQueue, void>) load(context, nameof(vkGetDeviceQueue2));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateSamplerYcbcrConversion_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, out VkSamplerYcbcrConversion, VkResult>) load(context, nameof(vkCreateSamplerYcbcrConversion));
+			#else
 			vkCreateSamplerYcbcrConversion_ptr = (delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, out VkSamplerYcbcrConversion, VkResult>) load(context, nameof(vkCreateSamplerYcbcrConversion));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroySamplerYcbcrConversion_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySamplerYcbcrConversion));
+			#else
 			vkDestroySamplerYcbcrConversion_ptr = (delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySamplerYcbcrConversion));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateDescriptorUpdateTemplate_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, out VkDescriptorUpdateTemplate, VkResult>) load(context, nameof(vkCreateDescriptorUpdateTemplate));
+			#else
 			vkCreateDescriptorUpdateTemplate_ptr = (delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, out VkDescriptorUpdateTemplate, VkResult>) load(context, nameof(vkCreateDescriptorUpdateTemplate));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyDescriptorUpdateTemplate_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDescriptorUpdateTemplate));
+			#else
 			vkDestroyDescriptorUpdateTemplate_ptr = (delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDescriptorUpdateTemplate));
+			#endif
+			#if NETSTANDARD2_0
+			vkUpdateDescriptorSetWithTemplate_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void>) load(context, nameof(vkUpdateDescriptorSetWithTemplate));
+			#else
 			vkUpdateDescriptorSetWithTemplate_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void>) load(context, nameof(vkUpdateDescriptorSetWithTemplate));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDescriptorSetLayoutSupport_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayoutCreateInfo*, out VkDescriptorSetLayoutSupport, void>) load(context, nameof(vkGetDescriptorSetLayoutSupport));
+			#else
 			vkGetDescriptorSetLayoutSupport_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, out VkDescriptorSetLayoutSupport, void>) load(context, nameof(vkGetDescriptorSetLayoutSupport));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawIndirectCount_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectCount));
+			#else
 			vkCmdDrawIndirectCount_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectCount));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawIndexedIndirectCount_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndexedIndirectCount));
+			#else
 			vkCmdDrawIndexedIndirectCount_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndexedIndirectCount));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateRenderPass2_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, out VkRenderPass, VkResult>) load(context, nameof(vkCreateRenderPass2));
+			#else
 			vkCreateRenderPass2_ptr = (delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, out VkRenderPass, VkResult>) load(context, nameof(vkCreateRenderPass2));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBeginRenderPass2_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void>) load(context, nameof(vkCmdBeginRenderPass2));
+			#else
 			vkCmdBeginRenderPass2_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void>) load(context, nameof(vkCmdBeginRenderPass2));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdNextSubpass2_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void>) load(context, nameof(vkCmdNextSubpass2));
+			#else
 			vkCmdNextSubpass2_ptr = (delegate* unmanaged<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void>) load(context, nameof(vkCmdNextSubpass2));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdEndRenderPass2_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSubpassEndInfo*, void>) load(context, nameof(vkCmdEndRenderPass2));
+			#else
 			vkCmdEndRenderPass2_ptr = (delegate* unmanaged<VkCommandBuffer, VkSubpassEndInfo*, void>) load(context, nameof(vkCmdEndRenderPass2));
+			#endif
+			#if NETSTANDARD2_0
+			vkResetQueryPool_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkQueryPool, uint, uint, void>) load(context, nameof(vkResetQueryPool));
+			#else
 			vkResetQueryPool_ptr = (delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, void>) load(context, nameof(vkResetQueryPool));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetSemaphoreCounterValue_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphore, ulong*, VkResult>) load(context, nameof(vkGetSemaphoreCounterValue));
+			#else
 			vkGetSemaphoreCounterValue_ptr = (delegate* unmanaged<VkDevice, VkSemaphore, ulong*, VkResult>) load(context, nameof(vkGetSemaphoreCounterValue));
+			#endif
+			#if NETSTANDARD2_0
+			vkWaitSemaphores_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult>) load(context, nameof(vkWaitSemaphores));
+			#else
 			vkWaitSemaphores_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult>) load(context, nameof(vkWaitSemaphores));
+			#endif
+			#if NETSTANDARD2_0
+			vkSignalSemaphore_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreSignalInfo*, VkResult>) load(context, nameof(vkSignalSemaphore));
+			#else
 			vkSignalSemaphore_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult>) load(context, nameof(vkSignalSemaphore));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetBufferDeviceAddress_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr>) load(context, nameof(vkGetBufferDeviceAddress));
+			#else
 			vkGetBufferDeviceAddress_ptr = (delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, IntPtr>) load(context, nameof(vkGetBufferDeviceAddress));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetBufferOpaqueCaptureAddress_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferOpaqueCaptureAddress));
+			#else
 			vkGetBufferOpaqueCaptureAddress_ptr = (delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferOpaqueCaptureAddress));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeviceMemoryOpaqueCaptureAddress_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong>) load(context, nameof(vkGetDeviceMemoryOpaqueCaptureAddress));
+			#else
 			vkGetDeviceMemoryOpaqueCaptureAddress_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong>) load(context, nameof(vkGetDeviceMemoryOpaqueCaptureAddress));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateSwapchainKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult>) load(context, nameof(vkCreateSwapchainKHR));
+			#else
 			vkCreateSwapchainKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult>) load(context, nameof(vkCreateSwapchainKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroySwapchainKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySwapchainKHR));
+			#else
 			vkDestroySwapchainKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySwapchainKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetSwapchainImagesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult>) load(context, nameof(vkGetSwapchainImagesKHR));
+			#else
 			vkGetSwapchainImagesKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult>) load(context, nameof(vkGetSwapchainImagesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkAcquireNextImageKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, ulong, VkSemaphore, VkFence, out uint, VkResult>) load(context, nameof(vkAcquireNextImageKHR));
+			#else
 			vkAcquireNextImageKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, VkSemaphore, VkFence, out uint, VkResult>) load(context, nameof(vkAcquireNextImageKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkQueuePresentKHR_ptr = (delegate* unmanaged[Stdcall]<VkQueue, VkPresentInfoKHR*, VkResult>) load(context, nameof(vkQueuePresentKHR));
+			#else
 			vkQueuePresentKHR_ptr = (delegate* unmanaged<VkQueue, VkPresentInfoKHR*, VkResult>) load(context, nameof(vkQueuePresentKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeviceGroupPresentCapabilitiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, out VkDeviceGroupPresentCapabilitiesKHR, VkResult>) load(context, nameof(vkGetDeviceGroupPresentCapabilitiesKHR));
+			#else
 			vkGetDeviceGroupPresentCapabilitiesKHR_ptr = (delegate* unmanaged<VkDevice, out VkDeviceGroupPresentCapabilitiesKHR, VkResult>) load(context, nameof(vkGetDeviceGroupPresentCapabilitiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeviceGroupSurfacePresentModesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSurfaceKHR, out VkDeviceGroupPresentModeFlagsKHR, VkResult>) load(context, nameof(vkGetDeviceGroupSurfacePresentModesKHR));
+			#else
 			vkGetDeviceGroupSurfacePresentModesKHR_ptr = (delegate* unmanaged<VkDevice, VkSurfaceKHR, out VkDeviceGroupPresentModeFlagsKHR, VkResult>) load(context, nameof(vkGetDeviceGroupSurfacePresentModesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkAcquireNextImage2KHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAcquireNextImageInfoKHR*, out uint, VkResult>) load(context, nameof(vkAcquireNextImage2KHR));
+			#else
 			vkAcquireNextImage2KHR_ptr = (delegate* unmanaged<VkDevice, VkAcquireNextImageInfoKHR*, out uint, VkResult>) load(context, nameof(vkAcquireNextImage2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateSharedSwapchainsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult>) load(context, nameof(vkCreateSharedSwapchainsKHR));
+			#else
 			vkCreateSharedSwapchainsKHR_ptr = (delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult>) load(context, nameof(vkCreateSharedSwapchainsKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, uint, uint, out VkPeerMemoryFeatureFlags, void>) load(context, nameof(vkGetDeviceGroupPeerMemoryFeaturesKHR));
+			#else
 			vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr = (delegate* unmanaged<VkDevice, uint, uint, uint, out VkPeerMemoryFeatureFlags, void>) load(context, nameof(vkGetDeviceGroupPeerMemoryFeaturesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetDeviceMaskKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetDeviceMaskKHR));
+			#else
 			vkCmdSetDeviceMaskKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetDeviceMaskKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDispatchBaseKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void>) load(context, nameof(vkCmdDispatchBaseKHR));
+			#else
 			vkCmdDispatchBaseKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void>) load(context, nameof(vkCmdDispatchBaseKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkTrimCommandPoolKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void>) load(context, nameof(vkTrimCommandPoolKHR));
+			#else
 			vkTrimCommandPoolKHR_ptr = (delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void>) load(context, nameof(vkTrimCommandPoolKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetMemoryFdKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkMemoryGetFdInfoKHR*, int*, VkResult>) load(context, nameof(vkGetMemoryFdKHR));
+			#else
 			vkGetMemoryFdKHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetFdInfoKHR*, int*, VkResult>) load(context, nameof(vkGetMemoryFdKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetMemoryFdPropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkExternalMemoryHandleTypeFlags, int, VkMemoryFdPropertiesKHR*, VkResult>) load(context, nameof(vkGetMemoryFdPropertiesKHR));
+			#else
 			vkGetMemoryFdPropertiesKHR_ptr = (delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, int, VkMemoryFdPropertiesKHR*, VkResult>) load(context, nameof(vkGetMemoryFdPropertiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkImportSemaphoreFdKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImportSemaphoreFdInfoKHR*, VkResult>) load(context, nameof(vkImportSemaphoreFdKHR));
+			#else
 			vkImportSemaphoreFdKHR_ptr = (delegate* unmanaged<VkDevice, VkImportSemaphoreFdInfoKHR*, VkResult>) load(context, nameof(vkImportSemaphoreFdKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetSemaphoreFdKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreGetFdInfoKHR*, int*, VkResult>) load(context, nameof(vkGetSemaphoreFdKHR));
+			#else
 			vkGetSemaphoreFdKHR_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreGetFdInfoKHR*, int*, VkResult>) load(context, nameof(vkGetSemaphoreFdKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdPushDescriptorSetKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkWriteDescriptorSet*, void>) load(context, nameof(vkCmdPushDescriptorSetKHR));
+			#else
 			vkCmdPushDescriptorSetKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkWriteDescriptorSet*, void>) load(context, nameof(vkCmdPushDescriptorSetKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdPushDescriptorSetWithTemplateKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDescriptorUpdateTemplate, VkPipelineLayout, uint, void*, void>) load(context, nameof(vkCmdPushDescriptorSetWithTemplateKHR));
+			#else
 			vkCmdPushDescriptorSetWithTemplateKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkDescriptorUpdateTemplate, VkPipelineLayout, uint, void*, void>) load(context, nameof(vkCmdPushDescriptorSetWithTemplateKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateDescriptorUpdateTemplateKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>) load(context, nameof(vkCreateDescriptorUpdateTemplateKHR));
+			#else
 			vkCreateDescriptorUpdateTemplateKHR_ptr = (delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>) load(context, nameof(vkCreateDescriptorUpdateTemplateKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyDescriptorUpdateTemplateKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDescriptorUpdateTemplateKHR));
+			#else
 			vkDestroyDescriptorUpdateTemplateKHR_ptr = (delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDescriptorUpdateTemplateKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkUpdateDescriptorSetWithTemplateKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void>) load(context, nameof(vkUpdateDescriptorSetWithTemplateKHR));
+			#else
 			vkUpdateDescriptorSetWithTemplateKHR_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void>) load(context, nameof(vkUpdateDescriptorSetWithTemplateKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateRenderPass2KHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>) load(context, nameof(vkCreateRenderPass2KHR));
+			#else
 			vkCreateRenderPass2KHR_ptr = (delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>) load(context, nameof(vkCreateRenderPass2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBeginRenderPass2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void>) load(context, nameof(vkCmdBeginRenderPass2KHR));
+			#else
 			vkCmdBeginRenderPass2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void>) load(context, nameof(vkCmdBeginRenderPass2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdNextSubpass2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void>) load(context, nameof(vkCmdNextSubpass2KHR));
+			#else
 			vkCmdNextSubpass2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void>) load(context, nameof(vkCmdNextSubpass2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdEndRenderPass2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSubpassEndInfo*, void>) load(context, nameof(vkCmdEndRenderPass2KHR));
+			#else
 			vkCmdEndRenderPass2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkSubpassEndInfo*, void>) load(context, nameof(vkCmdEndRenderPass2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetSwapchainStatusKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkResult>) load(context, nameof(vkGetSwapchainStatusKHR));
+			#else
 			vkGetSwapchainStatusKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult>) load(context, nameof(vkGetSwapchainStatusKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkImportFenceFdKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImportFenceFdInfoKHR*, VkResult>) load(context, nameof(vkImportFenceFdKHR));
+			#else
 			vkImportFenceFdKHR_ptr = (delegate* unmanaged<VkDevice, VkImportFenceFdInfoKHR*, VkResult>) load(context, nameof(vkImportFenceFdKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetFenceFdKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkFenceGetFdInfoKHR*, int*, VkResult>) load(context, nameof(vkGetFenceFdKHR));
+			#else
 			vkGetFenceFdKHR_ptr = (delegate* unmanaged<VkDevice, VkFenceGetFdInfoKHR*, int*, VkResult>) load(context, nameof(vkGetFenceFdKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkAcquireProfilingLockKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAcquireProfilingLockInfoKHR*, VkResult>) load(context, nameof(vkAcquireProfilingLockKHR));
+			#else
 			vkAcquireProfilingLockKHR_ptr = (delegate* unmanaged<VkDevice, VkAcquireProfilingLockInfoKHR*, VkResult>) load(context, nameof(vkAcquireProfilingLockKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkReleaseProfilingLockKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, void>) load(context, nameof(vkReleaseProfilingLockKHR));
+			#else
 			vkReleaseProfilingLockKHR_ptr = (delegate* unmanaged<VkDevice, void>) load(context, nameof(vkReleaseProfilingLockKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetImageMemoryRequirements2KHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetImageMemoryRequirements2KHR));
+			#else
 			vkGetImageMemoryRequirements2KHR_ptr = (delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetImageMemoryRequirements2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetBufferMemoryRequirements2KHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetBufferMemoryRequirements2KHR));
+			#else
 			vkGetBufferMemoryRequirements2KHR_ptr = (delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetBufferMemoryRequirements2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetImageSparseMemoryRequirements2KHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetImageSparseMemoryRequirements2KHR));
+			#else
 			vkGetImageSparseMemoryRequirements2KHR_ptr = (delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetImageSparseMemoryRequirements2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateSamplerYcbcrConversionKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>) load(context, nameof(vkCreateSamplerYcbcrConversionKHR));
+			#else
 			vkCreateSamplerYcbcrConversionKHR_ptr = (delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>) load(context, nameof(vkCreateSamplerYcbcrConversionKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroySamplerYcbcrConversionKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySamplerYcbcrConversionKHR));
+			#else
 			vkDestroySamplerYcbcrConversionKHR_ptr = (delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySamplerYcbcrConversionKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkBindBufferMemory2KHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult>) load(context, nameof(vkBindBufferMemory2KHR));
+			#else
 			vkBindBufferMemory2KHR_ptr = (delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult>) load(context, nameof(vkBindBufferMemory2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkBindImageMemory2KHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkBindImageMemoryInfo*, VkResult>) load(context, nameof(vkBindImageMemory2KHR));
+			#else
 			vkBindImageMemory2KHR_ptr = (delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult>) load(context, nameof(vkBindImageMemory2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDescriptorSetLayoutSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkDescriptorSetLayoutSupport*, void>) load(context, nameof(vkGetDescriptorSetLayoutSupportKHR));
+			#else
 			vkGetDescriptorSetLayoutSupportKHR_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkDescriptorSetLayoutSupport*, void>) load(context, nameof(vkGetDescriptorSetLayoutSupportKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawIndirectCountKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectCountKHR));
+			#else
 			vkCmdDrawIndirectCountKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectCountKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawIndexedIndirectCountKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndexedIndirectCountKHR));
+			#else
 			vkCmdDrawIndexedIndirectCountKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndexedIndirectCountKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetSemaphoreCounterValueKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphore, ulong*, VkResult>) load(context, nameof(vkGetSemaphoreCounterValueKHR));
+			#else
 			vkGetSemaphoreCounterValueKHR_ptr = (delegate* unmanaged<VkDevice, VkSemaphore, ulong*, VkResult>) load(context, nameof(vkGetSemaphoreCounterValueKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkWaitSemaphoresKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult>) load(context, nameof(vkWaitSemaphoresKHR));
+			#else
 			vkWaitSemaphoresKHR_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult>) load(context, nameof(vkWaitSemaphoresKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkSignalSemaphoreKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreSignalInfo*, VkResult>) load(context, nameof(vkSignalSemaphoreKHR));
+			#else
 			vkSignalSemaphoreKHR_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult>) load(context, nameof(vkSignalSemaphoreKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetFragmentShadingRateKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkExtent2D*, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateKHR));
+			#else
 			vkCmdSetFragmentShadingRateKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkExtent2D*, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetBufferDeviceAddressKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr>) load(context, nameof(vkGetBufferDeviceAddressKHR));
+			#else
 			vkGetBufferDeviceAddressKHR_ptr = (delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, IntPtr>) load(context, nameof(vkGetBufferDeviceAddressKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetBufferOpaqueCaptureAddressKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferOpaqueCaptureAddressKHR));
+			#else
 			vkGetBufferOpaqueCaptureAddressKHR_ptr = (delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferOpaqueCaptureAddressKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong>) load(context, nameof(vkGetDeviceMemoryOpaqueCaptureAddressKHR));
+			#else
 			vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong>) load(context, nameof(vkGetDeviceMemoryOpaqueCaptureAddressKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateDeferredOperationKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAllocationCallbacks*, VkDeferredOperationKHR*, VkResult>) load(context, nameof(vkCreateDeferredOperationKHR));
+			#else
 			vkCreateDeferredOperationKHR_ptr = (delegate* unmanaged<VkDevice, VkAllocationCallbacks*, VkDeferredOperationKHR*, VkResult>) load(context, nameof(vkCreateDeferredOperationKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyDeferredOperationKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDeferredOperationKHR));
+			#else
 			vkDestroyDeferredOperationKHR_ptr = (delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDeferredOperationKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeferredOperationMaxConcurrencyKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, uint>) load(context, nameof(vkGetDeferredOperationMaxConcurrencyKHR));
+			#else
 			vkGetDeferredOperationMaxConcurrencyKHR_ptr = (delegate* unmanaged<VkDevice, VkDeferredOperationKHR, uint>) load(context, nameof(vkGetDeferredOperationMaxConcurrencyKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeferredOperationResultKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkResult>) load(context, nameof(vkGetDeferredOperationResultKHR));
+			#else
 			vkGetDeferredOperationResultKHR_ptr = (delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkResult>) load(context, nameof(vkGetDeferredOperationResultKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkDeferredOperationJoinKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkResult>) load(context, nameof(vkDeferredOperationJoinKHR));
+			#else
 			vkDeferredOperationJoinKHR_ptr = (delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkResult>) load(context, nameof(vkDeferredOperationJoinKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPipelineExecutablePropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineInfoKHR*, uint*, VkPipelineExecutablePropertiesKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutablePropertiesKHR));
+			#else
 			vkGetPipelineExecutablePropertiesKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineInfoKHR*, uint*, VkPipelineExecutablePropertiesKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutablePropertiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPipelineExecutableStatisticsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableStatisticKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutableStatisticsKHR));
+			#else
 			vkGetPipelineExecutableStatisticsKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableStatisticKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutableStatisticsKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPipelineExecutableInternalRepresentationsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableInternalRepresentationKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutableInternalRepresentationsKHR));
+			#else
 			vkGetPipelineExecutableInternalRepresentationsKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableInternalRepresentationKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutableInternalRepresentationsKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetEvent2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkEvent, VkDependencyInfoKHR*, void>) load(context, nameof(vkCmdSetEvent2KHR));
+			#else
 			vkCmdSetEvent2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfoKHR*, void>) load(context, nameof(vkCmdSetEvent2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdResetEvent2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkEvent, VkPipelineStageFlags2KHR, void>) load(context, nameof(vkCmdResetEvent2KHR));
+			#else
 			vkCmdResetEvent2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags2KHR, void>) load(context, nameof(vkCmdResetEvent2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdWaitEvents2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkEvent*, VkDependencyInfoKHR*, void>) load(context, nameof(vkCmdWaitEvents2KHR));
+			#else
 			vkCmdWaitEvents2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkDependencyInfoKHR*, void>) load(context, nameof(vkCmdWaitEvents2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdPipelineBarrier2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDependencyInfoKHR*, void>) load(context, nameof(vkCmdPipelineBarrier2KHR));
+			#else
 			vkCmdPipelineBarrier2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkDependencyInfoKHR*, void>) load(context, nameof(vkCmdPipelineBarrier2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdWriteTimestamp2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineStageFlags2KHR, VkQueryPool, uint, void>) load(context, nameof(vkCmdWriteTimestamp2KHR));
+			#else
 			vkCmdWriteTimestamp2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags2KHR, VkQueryPool, uint, void>) load(context, nameof(vkCmdWriteTimestamp2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkQueueSubmit2KHR_ptr = (delegate* unmanaged[Stdcall]<VkQueue, uint, VkSubmitInfo2KHR*, VkFence, VkResult>) load(context, nameof(vkQueueSubmit2KHR));
+			#else
 			vkQueueSubmit2KHR_ptr = (delegate* unmanaged<VkQueue, uint, VkSubmitInfo2KHR*, VkFence, VkResult>) load(context, nameof(vkQueueSubmit2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdWriteBufferMarker2AMD_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineStageFlags2KHR, VkBuffer, ulong, uint, void>) load(context, nameof(vkCmdWriteBufferMarker2AMD));
+			#else
 			vkCmdWriteBufferMarker2AMD_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags2KHR, VkBuffer, ulong, uint, void>) load(context, nameof(vkCmdWriteBufferMarker2AMD));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetQueueCheckpointData2NV_ptr = (delegate* unmanaged[Stdcall]<VkQueue, uint*, VkCheckpointData2NV*, void>) load(context, nameof(vkGetQueueCheckpointData2NV));
+			#else
 			vkGetQueueCheckpointData2NV_ptr = (delegate* unmanaged<VkQueue, uint*, VkCheckpointData2NV*, void>) load(context, nameof(vkGetQueueCheckpointData2NV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyBuffer2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyBufferInfo2KHR*, void>) load(context, nameof(vkCmdCopyBuffer2KHR));
+			#else
 			vkCmdCopyBuffer2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkCopyBufferInfo2KHR*, void>) load(context, nameof(vkCmdCopyBuffer2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyImage2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyImageInfo2KHR*, void>) load(context, nameof(vkCmdCopyImage2KHR));
+			#else
 			vkCmdCopyImage2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkCopyImageInfo2KHR*, void>) load(context, nameof(vkCmdCopyImage2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyBufferToImage2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyBufferToImageInfo2KHR*, void>) load(context, nameof(vkCmdCopyBufferToImage2KHR));
+			#else
 			vkCmdCopyBufferToImage2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkCopyBufferToImageInfo2KHR*, void>) load(context, nameof(vkCmdCopyBufferToImage2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyImageToBuffer2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyImageToBufferInfo2KHR*, void>) load(context, nameof(vkCmdCopyImageToBuffer2KHR));
+			#else
 			vkCmdCopyImageToBuffer2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkCopyImageToBufferInfo2KHR*, void>) load(context, nameof(vkCmdCopyImageToBuffer2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBlitImage2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBlitImageInfo2KHR*, void>) load(context, nameof(vkCmdBlitImage2KHR));
+			#else
 			vkCmdBlitImage2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkBlitImageInfo2KHR*, void>) load(context, nameof(vkCmdBlitImage2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdResolveImage2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkResolveImageInfo2KHR*, void>) load(context, nameof(vkCmdResolveImage2KHR));
+			#else
 			vkCmdResolveImage2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkResolveImageInfo2KHR*, void>) load(context, nameof(vkCmdResolveImage2KHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkDebugMarkerSetObjectTagEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDebugMarkerObjectTagInfoEXT*, VkResult>) load(context, nameof(vkDebugMarkerSetObjectTagEXT));
+			#else
 			vkDebugMarkerSetObjectTagEXT_ptr = (delegate* unmanaged<VkDevice, VkDebugMarkerObjectTagInfoEXT*, VkResult>) load(context, nameof(vkDebugMarkerSetObjectTagEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkDebugMarkerSetObjectNameEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDebugMarkerObjectNameInfoEXT*, VkResult>) load(context, nameof(vkDebugMarkerSetObjectNameEXT));
+			#else
 			vkDebugMarkerSetObjectNameEXT_ptr = (delegate* unmanaged<VkDevice, VkDebugMarkerObjectNameInfoEXT*, VkResult>) load(context, nameof(vkDebugMarkerSetObjectNameEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDebugMarkerBeginEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void>) load(context, nameof(vkCmdDebugMarkerBeginEXT));
+			#else
 			vkCmdDebugMarkerBeginEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void>) load(context, nameof(vkCmdDebugMarkerBeginEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDebugMarkerEndEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, void>) load(context, nameof(vkCmdDebugMarkerEndEXT));
+			#else
 			vkCmdDebugMarkerEndEXT_ptr = (delegate* unmanaged<VkCommandBuffer, void>) load(context, nameof(vkCmdDebugMarkerEndEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDebugMarkerInsertEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void>) load(context, nameof(vkCmdDebugMarkerInsertEXT));
+			#else
 			vkCmdDebugMarkerInsertEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void>) load(context, nameof(vkCmdDebugMarkerInsertEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBindTransformFeedbackBuffersEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, void>) load(context, nameof(vkCmdBindTransformFeedbackBuffersEXT));
+			#else
 			vkCmdBindTransformFeedbackBuffersEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, void>) load(context, nameof(vkCmdBindTransformFeedbackBuffersEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBeginTransformFeedbackEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void>) load(context, nameof(vkCmdBeginTransformFeedbackEXT));
+			#else
 			vkCmdBeginTransformFeedbackEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void>) load(context, nameof(vkCmdBeginTransformFeedbackEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdEndTransformFeedbackEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void>) load(context, nameof(vkCmdEndTransformFeedbackEXT));
+			#else
 			vkCmdEndTransformFeedbackEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void>) load(context, nameof(vkCmdEndTransformFeedbackEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBeginQueryIndexedEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, uint, void>) load(context, nameof(vkCmdBeginQueryIndexedEXT));
+			#else
 			vkCmdBeginQueryIndexedEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, uint, void>) load(context, nameof(vkCmdBeginQueryIndexedEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdEndQueryIndexedEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkQueryPool, uint, uint, void>) load(context, nameof(vkCmdEndQueryIndexedEXT));
+			#else
 			vkCmdEndQueryIndexedEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, void>) load(context, nameof(vkCmdEndQueryIndexedEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawIndirectByteCountEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectByteCountEXT));
+			#else
 			vkCmdDrawIndirectByteCountEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectByteCountEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetImageViewHandleNVX_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageViewHandleInfoNVX*, uint>) load(context, nameof(vkGetImageViewHandleNVX));
+			#else
 			vkGetImageViewHandleNVX_ptr = (delegate* unmanaged<VkDevice, VkImageViewHandleInfoNVX*, uint>) load(context, nameof(vkGetImageViewHandleNVX));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetImageViewAddressNVX_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageView, VkImageViewAddressPropertiesNVX*, VkResult>) load(context, nameof(vkGetImageViewAddressNVX));
+			#else
 			vkGetImageViewAddressNVX_ptr = (delegate* unmanaged<VkDevice, VkImageView, VkImageViewAddressPropertiesNVX*, VkResult>) load(context, nameof(vkGetImageViewAddressNVX));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawIndirectCountAMD_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectCountAMD));
+			#else
 			vkCmdDrawIndirectCountAMD_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectCountAMD));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawIndexedIndirectCountAMD_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndexedIndirectCountAMD));
+			#else
 			vkCmdDrawIndexedIndirectCountAMD_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndexedIndirectCountAMD));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetShaderInfoAMD_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, VkShaderStageFlags, VkShaderInfoTypeAMD, nuint*, void*, VkResult>) load(context, nameof(vkGetShaderInfoAMD));
+			#else
 			vkGetShaderInfoAMD_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkShaderStageFlags, VkShaderInfoTypeAMD, nuint*, void*, VkResult>) load(context, nameof(vkGetShaderInfoAMD));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBeginConditionalRenderingEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkConditionalRenderingBeginInfoEXT*, void>) load(context, nameof(vkCmdBeginConditionalRenderingEXT));
+			#else
 			vkCmdBeginConditionalRenderingEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkConditionalRenderingBeginInfoEXT*, void>) load(context, nameof(vkCmdBeginConditionalRenderingEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdEndConditionalRenderingEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, void>) load(context, nameof(vkCmdEndConditionalRenderingEXT));
+			#else
 			vkCmdEndConditionalRenderingEXT_ptr = (delegate* unmanaged<VkCommandBuffer, void>) load(context, nameof(vkCmdEndConditionalRenderingEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetViewportWScalingNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkViewportWScalingNV*, void>) load(context, nameof(vkCmdSetViewportWScalingNV));
+			#else
 			vkCmdSetViewportWScalingNV_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewportWScalingNV*, void>) load(context, nameof(vkCmdSetViewportWScalingNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkDisplayPowerControlEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDisplayKHR, VkDisplayPowerInfoEXT*, VkResult>) load(context, nameof(vkDisplayPowerControlEXT));
+			#else
 			vkDisplayPowerControlEXT_ptr = (delegate* unmanaged<VkDevice, VkDisplayKHR, VkDisplayPowerInfoEXT*, VkResult>) load(context, nameof(vkDisplayPowerControlEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkRegisterDeviceEventEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult>) load(context, nameof(vkRegisterDeviceEventEXT));
+			#else
 			vkRegisterDeviceEventEXT_ptr = (delegate* unmanaged<VkDevice, VkDeviceEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult>) load(context, nameof(vkRegisterDeviceEventEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkRegisterDisplayEventEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDisplayKHR, VkDisplayEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult>) load(context, nameof(vkRegisterDisplayEventEXT));
+			#else
 			vkRegisterDisplayEventEXT_ptr = (delegate* unmanaged<VkDevice, VkDisplayKHR, VkDisplayEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult>) load(context, nameof(vkRegisterDisplayEventEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetSwapchainCounterEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkSurfaceCounterFlagsEXT, ulong*, VkResult>) load(context, nameof(vkGetSwapchainCounterEXT));
+			#else
 			vkGetSwapchainCounterEXT_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkSurfaceCounterFlagsEXT, ulong*, VkResult>) load(context, nameof(vkGetSwapchainCounterEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetRefreshCycleDurationGOOGLE_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkRefreshCycleDurationGOOGLE*, VkResult>) load(context, nameof(vkGetRefreshCycleDurationGOOGLE));
+			#else
 			vkGetRefreshCycleDurationGOOGLE_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkRefreshCycleDurationGOOGLE*, VkResult>) load(context, nameof(vkGetRefreshCycleDurationGOOGLE));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPastPresentationTimingGOOGLE_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, uint*, VkPastPresentationTimingGOOGLE*, VkResult>) load(context, nameof(vkGetPastPresentationTimingGOOGLE));
+			#else
 			vkGetPastPresentationTimingGOOGLE_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkPastPresentationTimingGOOGLE*, VkResult>) load(context, nameof(vkGetPastPresentationTimingGOOGLE));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetDiscardRectangleEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkRect2D*, void>) load(context, nameof(vkCmdSetDiscardRectangleEXT));
+			#else
 			vkCmdSetDiscardRectangleEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void>) load(context, nameof(vkCmdSetDiscardRectangleEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkSetHdrMetadataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkSwapchainKHR*, VkHdrMetadataEXT*, void>) load(context, nameof(vkSetHdrMetadataEXT));
+			#else
 			vkSetHdrMetadataEXT_ptr = (delegate* unmanaged<VkDevice, uint, VkSwapchainKHR*, VkHdrMetadataEXT*, void>) load(context, nameof(vkSetHdrMetadataEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetSampleLocationsEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSampleLocationsInfoEXT*, void>) load(context, nameof(vkCmdSetSampleLocationsEXT));
+			#else
 			vkCmdSetSampleLocationsEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkSampleLocationsInfoEXT*, void>) load(context, nameof(vkCmdSetSampleLocationsEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetImageDrmFormatModifierPropertiesEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkImageDrmFormatModifierPropertiesEXT*, VkResult>) load(context, nameof(vkGetImageDrmFormatModifierPropertiesEXT));
+			#else
 			vkGetImageDrmFormatModifierPropertiesEXT_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageDrmFormatModifierPropertiesEXT*, VkResult>) load(context, nameof(vkGetImageDrmFormatModifierPropertiesEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateValidationCacheEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkValidationCacheCreateInfoEXT*, VkAllocationCallbacks*, VkValidationCacheEXT*, VkResult>) load(context, nameof(vkCreateValidationCacheEXT));
+			#else
 			vkCreateValidationCacheEXT_ptr = (delegate* unmanaged<VkDevice, VkValidationCacheCreateInfoEXT*, VkAllocationCallbacks*, VkValidationCacheEXT*, VkResult>) load(context, nameof(vkCreateValidationCacheEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyValidationCacheEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkValidationCacheEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyValidationCacheEXT));
+			#else
 			vkDestroyValidationCacheEXT_ptr = (delegate* unmanaged<VkDevice, VkValidationCacheEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyValidationCacheEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkMergeValidationCachesEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkValidationCacheEXT, uint, VkValidationCacheEXT*, VkResult>) load(context, nameof(vkMergeValidationCachesEXT));
+			#else
 			vkMergeValidationCachesEXT_ptr = (delegate* unmanaged<VkDevice, VkValidationCacheEXT, uint, VkValidationCacheEXT*, VkResult>) load(context, nameof(vkMergeValidationCachesEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetValidationCacheDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkValidationCacheEXT, nuint*, void*, VkResult>) load(context, nameof(vkGetValidationCacheDataEXT));
+			#else
 			vkGetValidationCacheDataEXT_ptr = (delegate* unmanaged<VkDevice, VkValidationCacheEXT, nuint*, void*, VkResult>) load(context, nameof(vkGetValidationCacheDataEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBindShadingRateImageNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImageView, VkImageLayout, void>) load(context, nameof(vkCmdBindShadingRateImageNV));
+			#else
 			vkCmdBindShadingRateImageNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkImageView, VkImageLayout, void>) load(context, nameof(vkCmdBindShadingRateImageNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetViewportShadingRatePaletteNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkShadingRatePaletteNV*, void>) load(context, nameof(vkCmdSetViewportShadingRatePaletteNV));
+			#else
 			vkCmdSetViewportShadingRatePaletteNV_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkShadingRatePaletteNV*, void>) load(context, nameof(vkCmdSetViewportShadingRatePaletteNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetCoarseSampleOrderNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCoarseSampleOrderTypeNV, uint, VkCoarseSampleOrderCustomNV*, void>) load(context, nameof(vkCmdSetCoarseSampleOrderNV));
+			#else
 			vkCmdSetCoarseSampleOrderNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkCoarseSampleOrderTypeNV, uint, VkCoarseSampleOrderCustomNV*, void>) load(context, nameof(vkCmdSetCoarseSampleOrderNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateAccelerationStructureNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoNV*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureNV));
+			#else
 			vkCreateAccelerationStructureNV_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoNV*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyAccelerationStructureNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyAccelerationStructureNV));
+			#else
 			vkDestroyAccelerationStructureNV_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyAccelerationStructureNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetAccelerationStructureMemoryRequirementsNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetAccelerationStructureMemoryRequirementsNV));
+			#else
 			vkGetAccelerationStructureMemoryRequirementsNV_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetAccelerationStructureMemoryRequirementsNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkBindAccelerationStructureMemoryNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkBindAccelerationStructureMemoryInfoNV*, VkResult>) load(context, nameof(vkBindAccelerationStructureMemoryNV));
+			#else
 			vkBindAccelerationStructureMemoryNV_ptr = (delegate* unmanaged<VkDevice, uint, VkBindAccelerationStructureMemoryInfoNV*, VkResult>) load(context, nameof(vkBindAccelerationStructureMemoryNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBuildAccelerationStructureNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkAccelerationStructureInfoNV*, VkBuffer, ulong, VkBool32, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkBuffer, ulong, void>) load(context, nameof(vkCmdBuildAccelerationStructureNV));
+			#else
 			vkCmdBuildAccelerationStructureNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkAccelerationStructureInfoNV*, VkBuffer, ulong, VkBool32, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkBuffer, ulong, void>) load(context, nameof(vkCmdBuildAccelerationStructureNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyAccelerationStructureNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkCopyAccelerationStructureModeKHR, void>) load(context, nameof(vkCmdCopyAccelerationStructureNV));
+			#else
 			vkCmdCopyAccelerationStructureNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkCopyAccelerationStructureModeKHR, void>) load(context, nameof(vkCmdCopyAccelerationStructureNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdTraceRaysNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, uint, uint, uint, void>) load(context, nameof(vkCmdTraceRaysNV));
+			#else
 			vkCmdTraceRaysNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, uint, uint, uint, void>) load(context, nameof(vkCmdTraceRaysNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateRayTracingPipelinesNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoNV*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateRayTracingPipelinesNV));
+			#else
 			vkCreateRayTracingPipelinesNV_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoNV*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateRayTracingPipelinesNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetRayTracingShaderGroupHandlesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>) load(context, nameof(vkGetRayTracingShaderGroupHandlesKHR));
+			#else
 			vkGetRayTracingShaderGroupHandlesKHR_ptr = (delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>) load(context, nameof(vkGetRayTracingShaderGroupHandlesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetRayTracingShaderGroupHandlesNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>) load(context, nameof(vkGetRayTracingShaderGroupHandlesNV));
+			#else
 			vkGetRayTracingShaderGroupHandlesNV_ptr = (delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>) load(context, nameof(vkGetRayTracingShaderGroupHandlesNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetAccelerationStructureHandleNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureKHR, nuint, void*, VkResult>) load(context, nameof(vkGetAccelerationStructureHandleNV));
+			#else
 			vkGetAccelerationStructureHandleNV_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, nuint, void*, VkResult>) load(context, nameof(vkGetAccelerationStructureHandleNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdWriteAccelerationStructuresPropertiesNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void>) load(context, nameof(vkCmdWriteAccelerationStructuresPropertiesNV));
+			#else
 			vkCmdWriteAccelerationStructuresPropertiesNV_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void>) load(context, nameof(vkCmdWriteAccelerationStructuresPropertiesNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCompileDeferredNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, VkResult>) load(context, nameof(vkCompileDeferredNV));
+			#else
 			vkCompileDeferredNV_ptr = (delegate* unmanaged<VkDevice, VkPipeline, uint, VkResult>) load(context, nameof(vkCompileDeferredNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetMemoryHostPointerPropertiesEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryHostPointerPropertiesEXT*, VkResult>) load(context, nameof(vkGetMemoryHostPointerPropertiesEXT));
+			#else
 			vkGetMemoryHostPointerPropertiesEXT_ptr = (delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryHostPointerPropertiesEXT*, VkResult>) load(context, nameof(vkGetMemoryHostPointerPropertiesEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdWriteBufferMarkerAMD_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineStageFlags, VkBuffer, ulong, uint, void>) load(context, nameof(vkCmdWriteBufferMarkerAMD));
+			#else
 			vkCmdWriteBufferMarkerAMD_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkBuffer, ulong, uint, void>) load(context, nameof(vkCmdWriteBufferMarkerAMD));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetCalibratedTimestampsEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkCalibratedTimestampInfoEXT*, ulong*, ulong*, VkResult>) load(context, nameof(vkGetCalibratedTimestampsEXT));
+			#else
 			vkGetCalibratedTimestampsEXT_ptr = (delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoEXT*, ulong*, ulong*, VkResult>) load(context, nameof(vkGetCalibratedTimestampsEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawMeshTasksNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksNV));
+			#else
 			vkCmdDrawMeshTasksNV_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawMeshTasksIndirectNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectNV));
+			#else
 			vkCmdDrawMeshTasksIndirectNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawMeshTasksIndirectCountNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectCountNV));
+			#else
 			vkCmdDrawMeshTasksIndirectCountNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectCountNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetExclusiveScissorNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkRect2D*, void>) load(context, nameof(vkCmdSetExclusiveScissorNV));
+			#else
 			vkCmdSetExclusiveScissorNV_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void>) load(context, nameof(vkCmdSetExclusiveScissorNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetCheckpointNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, void*, void>) load(context, nameof(vkCmdSetCheckpointNV));
+			#else
 			vkCmdSetCheckpointNV_ptr = (delegate* unmanaged<VkCommandBuffer, void*, void>) load(context, nameof(vkCmdSetCheckpointNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetQueueCheckpointDataNV_ptr = (delegate* unmanaged[Stdcall]<VkQueue, uint*, VkCheckpointDataNV*, void>) load(context, nameof(vkGetQueueCheckpointDataNV));
+			#else
 			vkGetQueueCheckpointDataNV_ptr = (delegate* unmanaged<VkQueue, uint*, VkCheckpointDataNV*, void>) load(context, nameof(vkGetQueueCheckpointDataNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkInitializePerformanceApiINTEL_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkInitializePerformanceApiInfoINTEL*, VkResult>) load(context, nameof(vkInitializePerformanceApiINTEL));
+			#else
 			vkInitializePerformanceApiINTEL_ptr = (delegate* unmanaged<VkDevice, VkInitializePerformanceApiInfoINTEL*, VkResult>) load(context, nameof(vkInitializePerformanceApiINTEL));
+			#endif
+			#if NETSTANDARD2_0
+			vkUninitializePerformanceApiINTEL_ptr = (delegate* unmanaged[Stdcall]<VkDevice, void>) load(context, nameof(vkUninitializePerformanceApiINTEL));
+			#else
 			vkUninitializePerformanceApiINTEL_ptr = (delegate* unmanaged<VkDevice, void>) load(context, nameof(vkUninitializePerformanceApiINTEL));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetPerformanceMarkerINTEL_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPerformanceMarkerInfoINTEL*, VkResult>) load(context, nameof(vkCmdSetPerformanceMarkerINTEL));
+			#else
 			vkCmdSetPerformanceMarkerINTEL_ptr = (delegate* unmanaged<VkCommandBuffer, VkPerformanceMarkerInfoINTEL*, VkResult>) load(context, nameof(vkCmdSetPerformanceMarkerINTEL));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetPerformanceStreamMarkerINTEL_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPerformanceStreamMarkerInfoINTEL*, VkResult>) load(context, nameof(vkCmdSetPerformanceStreamMarkerINTEL));
+			#else
 			vkCmdSetPerformanceStreamMarkerINTEL_ptr = (delegate* unmanaged<VkCommandBuffer, VkPerformanceStreamMarkerInfoINTEL*, VkResult>) load(context, nameof(vkCmdSetPerformanceStreamMarkerINTEL));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetPerformanceOverrideINTEL_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPerformanceOverrideInfoINTEL*, VkResult>) load(context, nameof(vkCmdSetPerformanceOverrideINTEL));
+			#else
 			vkCmdSetPerformanceOverrideINTEL_ptr = (delegate* unmanaged<VkCommandBuffer, VkPerformanceOverrideInfoINTEL*, VkResult>) load(context, nameof(vkCmdSetPerformanceOverrideINTEL));
+			#endif
+			#if NETSTANDARD2_0
+			vkAcquirePerformanceConfigurationINTEL_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPerformanceConfigurationAcquireInfoINTEL*, VkPerformanceConfigurationINTEL*, VkResult>) load(context, nameof(vkAcquirePerformanceConfigurationINTEL));
+			#else
 			vkAcquirePerformanceConfigurationINTEL_ptr = (delegate* unmanaged<VkDevice, VkPerformanceConfigurationAcquireInfoINTEL*, VkPerformanceConfigurationINTEL*, VkResult>) load(context, nameof(vkAcquirePerformanceConfigurationINTEL));
+			#endif
+			#if NETSTANDARD2_0
+			vkReleasePerformanceConfigurationINTEL_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPerformanceConfigurationINTEL, VkResult>) load(context, nameof(vkReleasePerformanceConfigurationINTEL));
+			#else
 			vkReleasePerformanceConfigurationINTEL_ptr = (delegate* unmanaged<VkDevice, VkPerformanceConfigurationINTEL, VkResult>) load(context, nameof(vkReleasePerformanceConfigurationINTEL));
+			#endif
+			#if NETSTANDARD2_0
+			vkQueueSetPerformanceConfigurationINTEL_ptr = (delegate* unmanaged[Stdcall]<VkQueue, VkPerformanceConfigurationINTEL, VkResult>) load(context, nameof(vkQueueSetPerformanceConfigurationINTEL));
+			#else
 			vkQueueSetPerformanceConfigurationINTEL_ptr = (delegate* unmanaged<VkQueue, VkPerformanceConfigurationINTEL, VkResult>) load(context, nameof(vkQueueSetPerformanceConfigurationINTEL));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPerformanceParameterINTEL_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPerformanceParameterTypeINTEL, VkPerformanceValueINTEL*, VkResult>) load(context, nameof(vkGetPerformanceParameterINTEL));
+			#else
 			vkGetPerformanceParameterINTEL_ptr = (delegate* unmanaged<VkDevice, VkPerformanceParameterTypeINTEL, VkPerformanceValueINTEL*, VkResult>) load(context, nameof(vkGetPerformanceParameterINTEL));
+			#endif
+			#if NETSTANDARD2_0
+			vkSetLocalDimmingAMD_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkBool32, void>) load(context, nameof(vkSetLocalDimmingAMD));
+			#else
 			vkSetLocalDimmingAMD_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkBool32, void>) load(context, nameof(vkSetLocalDimmingAMD));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetBufferDeviceAddressEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr>) load(context, nameof(vkGetBufferDeviceAddressEXT));
+			#else
 			vkGetBufferDeviceAddressEXT_ptr = (delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, IntPtr>) load(context, nameof(vkGetBufferDeviceAddressEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetLineStippleEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, ushort, void>) load(context, nameof(vkCmdSetLineStippleEXT));
+			#else
 			vkCmdSetLineStippleEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, ushort, void>) load(context, nameof(vkCmdSetLineStippleEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkResetQueryPoolEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkQueryPool, uint, uint, void>) load(context, nameof(vkResetQueryPoolEXT));
+			#else
 			vkResetQueryPoolEXT_ptr = (delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, void>) load(context, nameof(vkResetQueryPoolEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetCullModeEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCullModeFlags, void>) load(context, nameof(vkCmdSetCullModeEXT));
+			#else
 			vkCmdSetCullModeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkCullModeFlags, void>) load(context, nameof(vkCmdSetCullModeEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetFrontFaceEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkFrontFace, void>) load(context, nameof(vkCmdSetFrontFaceEXT));
+			#else
 			vkCmdSetFrontFaceEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkFrontFace, void>) load(context, nameof(vkCmdSetFrontFaceEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetPrimitiveTopologyEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPrimitiveTopology, void>) load(context, nameof(vkCmdSetPrimitiveTopologyEXT));
+			#else
 			vkCmdSetPrimitiveTopologyEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkPrimitiveTopology, void>) load(context, nameof(vkCmdSetPrimitiveTopologyEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetViewportWithCountEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkViewport*, void>) load(context, nameof(vkCmdSetViewportWithCountEXT));
+			#else
 			vkCmdSetViewportWithCountEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkViewport*, void>) load(context, nameof(vkCmdSetViewportWithCountEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetScissorWithCountEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkRect2D*, void>) load(context, nameof(vkCmdSetScissorWithCountEXT));
+			#else
 			vkCmdSetScissorWithCountEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkRect2D*, void>) load(context, nameof(vkCmdSetScissorWithCountEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBindVertexBuffers2EXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, ulong*, void>) load(context, nameof(vkCmdBindVertexBuffers2EXT));
+			#else
 			vkCmdBindVertexBuffers2EXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, ulong*, void>) load(context, nameof(vkCmdBindVertexBuffers2EXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetDepthTestEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthTestEnableEXT));
+			#else
 			vkCmdSetDepthTestEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthTestEnableEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetDepthWriteEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthWriteEnableEXT));
+			#else
 			vkCmdSetDepthWriteEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthWriteEnableEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetDepthCompareOpEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCompareOp, void>) load(context, nameof(vkCmdSetDepthCompareOpEXT));
+			#else
 			vkCmdSetDepthCompareOpEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkCompareOp, void>) load(context, nameof(vkCmdSetDepthCompareOpEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetDepthBoundsTestEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthBoundsTestEnableEXT));
+			#else
 			vkCmdSetDepthBoundsTestEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthBoundsTestEnableEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetStencilTestEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetStencilTestEnableEXT));
+			#else
 			vkCmdSetStencilTestEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetStencilTestEnableEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetStencilOpEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStencilFaceFlags, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void>) load(context, nameof(vkCmdSetStencilOpEXT));
+			#else
 			vkCmdSetStencilOpEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void>) load(context, nameof(vkCmdSetStencilOpEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetGeneratedCommandsMemoryRequirementsNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetGeneratedCommandsMemoryRequirementsNV));
+			#else
 			vkGetGeneratedCommandsMemoryRequirementsNV_ptr = (delegate* unmanaged<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetGeneratedCommandsMemoryRequirementsNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdPreprocessGeneratedCommandsNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkGeneratedCommandsInfoNV*, void>) load(context, nameof(vkCmdPreprocessGeneratedCommandsNV));
+			#else
 			vkCmdPreprocessGeneratedCommandsNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkGeneratedCommandsInfoNV*, void>) load(context, nameof(vkCmdPreprocessGeneratedCommandsNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdExecuteGeneratedCommandsNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, VkGeneratedCommandsInfoNV*, void>) load(context, nameof(vkCmdExecuteGeneratedCommandsNV));
+			#else
 			vkCmdExecuteGeneratedCommandsNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, VkGeneratedCommandsInfoNV*, void>) load(context, nameof(vkCmdExecuteGeneratedCommandsNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBindPipelineShaderGroupNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, uint, void>) load(context, nameof(vkCmdBindPipelineShaderGroupNV));
+			#else
 			vkCmdBindPipelineShaderGroupNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, uint, void>) load(context, nameof(vkCmdBindPipelineShaderGroupNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateIndirectCommandsLayoutNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkIndirectCommandsLayoutCreateInfoNV*, VkAllocationCallbacks*, VkIndirectCommandsLayoutNV*, VkResult>) load(context, nameof(vkCreateIndirectCommandsLayoutNV));
+			#else
 			vkCreateIndirectCommandsLayoutNV_ptr = (delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoNV*, VkAllocationCallbacks*, VkIndirectCommandsLayoutNV*, VkResult>) load(context, nameof(vkCreateIndirectCommandsLayoutNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyIndirectCommandsLayoutNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkIndirectCommandsLayoutNV, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyIndirectCommandsLayoutNV));
+			#else
 			vkDestroyIndirectCommandsLayoutNV_ptr = (delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutNV, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyIndirectCommandsLayoutNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreatePrivateDataSlotEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPrivateDataSlotCreateInfoEXT*, VkAllocationCallbacks*, VkPrivateDataSlotEXT*, VkResult>) load(context, nameof(vkCreatePrivateDataSlotEXT));
+			#else
 			vkCreatePrivateDataSlotEXT_ptr = (delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfoEXT*, VkAllocationCallbacks*, VkPrivateDataSlotEXT*, VkResult>) load(context, nameof(vkCreatePrivateDataSlotEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyPrivateDataSlotEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPrivateDataSlotEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPrivateDataSlotEXT));
+			#else
 			vkDestroyPrivateDataSlotEXT_ptr = (delegate* unmanaged<VkDevice, VkPrivateDataSlotEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPrivateDataSlotEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkSetPrivateDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkObjectType, ulong, VkPrivateDataSlotEXT, ulong, VkResult>) load(context, nameof(vkSetPrivateDataEXT));
+			#else
 			vkSetPrivateDataEXT_ptr = (delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlotEXT, ulong, VkResult>) load(context, nameof(vkSetPrivateDataEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPrivateDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkObjectType, ulong, VkPrivateDataSlotEXT, ulong*, void>) load(context, nameof(vkGetPrivateDataEXT));
+			#else
 			vkGetPrivateDataEXT_ptr = (delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlotEXT, ulong*, void>) load(context, nameof(vkGetPrivateDataEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetFragmentShadingRateEnumNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateEnumNV));
+			#else
 			vkCmdSetFragmentShadingRateEnumNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateEnumNV));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));
+			#else
 			vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyAccelerationStructureKHR));
+			#else
 			vkDestroyAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyAccelerationStructureKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBuildAccelerationStructuresKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void>) load(context, nameof(vkCmdBuildAccelerationStructuresKHR));
+			#else
 			vkCmdBuildAccelerationStructuresKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void>) load(context, nameof(vkCmdBuildAccelerationStructuresKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBuildAccelerationStructuresIndirectKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, IntPtr*, uint*, uint**, void>) load(context, nameof(vkCmdBuildAccelerationStructuresIndirectKHR));
+			#else
 			vkCmdBuildAccelerationStructuresIndirectKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, IntPtr*, uint*, uint**, void>) load(context, nameof(vkCmdBuildAccelerationStructuresIndirectKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkBuildAccelerationStructuresKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, VkResult>) load(context, nameof(vkBuildAccelerationStructuresKHR));
+			#else
 			vkBuildAccelerationStructuresKHR_ptr = (delegate* unmanaged<VkDevice, VkDeferredOperationKHR, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, VkResult>) load(context, nameof(vkBuildAccelerationStructuresKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCopyAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureInfoKHR*, VkResult>) load(context, nameof(vkCopyAccelerationStructureKHR));
+			#else
 			vkCopyAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureInfoKHR*, VkResult>) load(context, nameof(vkCopyAccelerationStructureKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCopyAccelerationStructureToMemoryKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureToMemoryInfoKHR*, VkResult>) load(context, nameof(vkCopyAccelerationStructureToMemoryKHR));
+			#else
 			vkCopyAccelerationStructureToMemoryKHR_ptr = (delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureToMemoryInfoKHR*, VkResult>) load(context, nameof(vkCopyAccelerationStructureToMemoryKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCopyMemoryToAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToAccelerationStructureInfoKHR*, VkResult>) load(context, nameof(vkCopyMemoryToAccelerationStructureKHR));
+			#else
 			vkCopyMemoryToAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToAccelerationStructureInfoKHR*, VkResult>) load(context, nameof(vkCopyMemoryToAccelerationStructureKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkWriteAccelerationStructuresPropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkAccelerationStructureKHR*, VkQueryType, nuint, void*, nuint, VkResult>) load(context, nameof(vkWriteAccelerationStructuresPropertiesKHR));
+			#else
 			vkWriteAccelerationStructuresPropertiesKHR_ptr = (delegate* unmanaged<VkDevice, uint, VkAccelerationStructureKHR*, VkQueryType, nuint, void*, nuint, VkResult>) load(context, nameof(vkWriteAccelerationStructuresPropertiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyAccelerationStructureInfoKHR*, void>) load(context, nameof(vkCmdCopyAccelerationStructureKHR));
+			#else
 			vkCmdCopyAccelerationStructureKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkCopyAccelerationStructureInfoKHR*, void>) load(context, nameof(vkCmdCopyAccelerationStructureKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyAccelerationStructureToMemoryKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyAccelerationStructureToMemoryInfoKHR*, void>) load(context, nameof(vkCmdCopyAccelerationStructureToMemoryKHR));
+			#else
 			vkCmdCopyAccelerationStructureToMemoryKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkCopyAccelerationStructureToMemoryInfoKHR*, void>) load(context, nameof(vkCmdCopyAccelerationStructureToMemoryKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCopyMemoryToAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyMemoryToAccelerationStructureInfoKHR*, void>) load(context, nameof(vkCmdCopyMemoryToAccelerationStructureKHR));
+			#else
 			vkCmdCopyMemoryToAccelerationStructureKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkCopyMemoryToAccelerationStructureInfoKHR*, void>) load(context, nameof(vkCmdCopyMemoryToAccelerationStructureKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetAccelerationStructureDeviceAddressKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureDeviceAddressInfoKHR*, IntPtr>) load(context, nameof(vkGetAccelerationStructureDeviceAddressKHR));
+			#else
 			vkGetAccelerationStructureDeviceAddressKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureDeviceAddressInfoKHR*, IntPtr>) load(context, nameof(vkGetAccelerationStructureDeviceAddressKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdWriteAccelerationStructuresPropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void>) load(context, nameof(vkCmdWriteAccelerationStructuresPropertiesKHR));
+			#else
 			vkCmdWriteAccelerationStructuresPropertiesKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void>) load(context, nameof(vkCmdWriteAccelerationStructuresPropertiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDeviceAccelerationStructureCompatibilityKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureVersionInfoKHR*, VkAccelerationStructureCompatibilityKHR*, void>) load(context, nameof(vkGetDeviceAccelerationStructureCompatibilityKHR));
+			#else
 			vkGetDeviceAccelerationStructureCompatibilityKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureVersionInfoKHR*, VkAccelerationStructureCompatibilityKHR*, void>) load(context, nameof(vkGetDeviceAccelerationStructureCompatibilityKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetAccelerationStructureBuildSizesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureBuildTypeKHR, VkAccelerationStructureBuildGeometryInfoKHR*, uint*, VkAccelerationStructureBuildSizesInfoKHR*, void>) load(context, nameof(vkGetAccelerationStructureBuildSizesKHR));
+			#else
 			vkGetAccelerationStructureBuildSizesKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureBuildTypeKHR, VkAccelerationStructureBuildGeometryInfoKHR*, uint*, VkAccelerationStructureBuildSizesInfoKHR*, void>) load(context, nameof(vkGetAccelerationStructureBuildSizesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdTraceRaysKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, uint, uint, uint, void>) load(context, nameof(vkCmdTraceRaysKHR));
+			#else
 			vkCmdTraceRaysKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, uint, uint, uint, void>) load(context, nameof(vkCmdTraceRaysKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateRayTracingPipelinesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoKHR*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateRayTracingPipelinesKHR));
+			#else
 			vkCreateRayTracingPipelinesKHR_ptr = (delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoKHR*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateRayTracingPipelinesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>) load(context, nameof(vkGetRayTracingCaptureReplayShaderGroupHandlesKHR));
+			#else
 			vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr = (delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>) load(context, nameof(vkGetRayTracingCaptureReplayShaderGroupHandlesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdTraceRaysIndirectKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, IntPtr, void>) load(context, nameof(vkCmdTraceRaysIndirectKHR));
+			#else
 			vkCmdTraceRaysIndirectKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, IntPtr, void>) load(context, nameof(vkCmdTraceRaysIndirectKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetRayTracingShaderGroupStackSizeKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, VkShaderGroupShaderKHR, ulong>) load(context, nameof(vkGetRayTracingShaderGroupStackSizeKHR));
+			#else
 			vkGetRayTracingShaderGroupStackSizeKHR_ptr = (delegate* unmanaged<VkDevice, VkPipeline, uint, VkShaderGroupShaderKHR, ulong>) load(context, nameof(vkGetRayTracingShaderGroupStackSizeKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetRayTracingPipelineStackSizeKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetRayTracingPipelineStackSizeKHR));
+			#else
 			vkCmdSetRayTracingPipelineStackSizeKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetRayTracingPipelineStackSizeKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged[Stdcall]<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
+			#else
 			vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
+			#else
 			vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
+			#endif
 		}
 	}
 }

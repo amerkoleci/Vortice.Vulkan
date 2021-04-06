@@ -6,39 +6,44 @@ using System.Runtime.InteropServices;
 
 namespace Vortice.Vulkan
 {
-	[Flags]
-	public enum VkXlibSurfaceCreateFlagsKHR
-	{
-		None = 0,
-	}
+    [Flags]
+    public enum VkXlibSurfaceCreateFlagsKHR
+    {
+        None = 0,
+    }
 
-	public struct VkXlibSurfaceCreateInfoKHR
-	{
-		public VkStructureType sType;
-		public unsafe void* pNext;
-		public VkXcbSurfaceCreateFlagsKHR flags;
-		public IntPtr display;
-		public IntPtr window;
-	}
+    public struct VkXlibSurfaceCreateInfoKHR
+    {
+        public VkStructureType sType;
+        public unsafe void* pNext;
+        public VkXcbSurfaceCreateFlagsKHR flags;
+        public IntPtr display;
+        public IntPtr window;
+    }
 
-	public static unsafe partial class Vulkan
-	{
-		/// <summary>
-		/// VK_KHR_XLIB_SURFACE_EXTENSION_NAME = "VK_KHR_xlib_surface"
-		/// </summary>
-		public static readonly string KHRXlibSurfaceExtensionName = "VK_KHR_xlib_surface";
+    public static unsafe partial class Vulkan
+    {
+        /// <summary>
+        /// VK_KHR_XLIB_SURFACE_EXTENSION_NAME = "VK_KHR_xlib_surface"
+        /// </summary>
+        public static readonly string KHRXlibSurfaceExtensionName = "VK_KHR_xlib_surface";
 
-		private static delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateXlibSurfaceKHR_ptr;
-		private static delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32> vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr;
+#if NETSTANDARD2_0
+        private static delegate* unmanaged[Stdcall]<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateXlibSurfaceKHR_ptr;
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, uint, VkBool32> vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr;
+#else
+        private static delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateXlibSurfaceKHR_ptr;
+        private static delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32> vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr;
+#endif
 
-		public static unsafe VkResult vkCreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, out VkSurfaceKHR pSurface)
-		{
+        public static unsafe VkResult vkCreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, out VkSurfaceKHR pSurface)
+        {
             return vkCreateXlibSurfaceKHR_ptr(instance, pCreateInfo, pAllocator, out pSurface);
         }
 
-		public static unsafe VkBool32 vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display, uint visualId)
-		{
+        public static unsafe VkBool32 vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display, uint visualId)
+        {
             return vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex, display, visualId);
         }
-	}
+    }
 }

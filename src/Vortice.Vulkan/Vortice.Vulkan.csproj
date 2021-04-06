@@ -1,13 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
     <Description>Vulkan low level bindings.</Description>
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\..\LICENSE" PackagePath="" Pack="true" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Memory" Version="4.5.4" />
   </ItemGroup>
 
 </Project>

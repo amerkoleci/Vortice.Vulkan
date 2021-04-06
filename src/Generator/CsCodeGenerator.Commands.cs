@@ -117,7 +117,7 @@ namespace Generator
             "vkCreateDebugUtilsMessengerEXT"
         };
 
-        private static string GetFunctionPointerSignature(CppFunction function, bool allowNonBlittable = true)
+        private static string GetFunctionPointerSignature(bool netstandard, CppFunction function, bool allowNonBlittable = true)
         {
             bool canUseOut = s_outReturnFunctions.Contains(function.Name);
 
@@ -145,6 +145,11 @@ namespace Generator
             }
 
             builder.Append(returnCsName);
+
+            if (netstandard)
+            {
+                return $"delegate* unmanaged[Stdcall]<{builder}>";
+            }
 
             return $"delegate* unmanaged<{builder}>";
         }
@@ -198,8 +203,13 @@ namespace Generator
                         continue;
                     }
 
-                    string functionPointerSignature = GetFunctionPointerSignature(cppFunction);
+                    string functionPointerSignatureNS = GetFunctionPointerSignature(true, cppFunction);
+                    string functionPointerSignature = GetFunctionPointerSignature(false, cppFunction);
+                    writer.WriteLine("#if NETSTANDARD2_0");
+                    writer.WriteLine($"private static {functionPointerSignatureNS} {command.Key}_ptr;");
+                    writer.WriteLine("#else");
                     writer.WriteLine($"private static {functionPointerSignature} {command.Key}_ptr;");
+                    writer.WriteLine("#endif");
 
                     string returnCsName = GetCsTypeName(cppFunction.ReturnType, false);
                     bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
@@ -256,8 +266,14 @@ namespace Generator
                         continue;
                     }
 
-                    string functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value);
+                    string functionPointerSignatureNS = GetFunctionPointerSignature(true, instanceCommand.Value);
+                    string functionPointerSignature = GetFunctionPointerSignature(false, instanceCommand.Value);
+
+                    writer.WriteLine("#if NETSTANDARD2_0");
+                    writer.WriteLine($"{commandName}_ptr = ({functionPointerSignatureNS}) load(context, nameof({commandName}));");
+                    writer.WriteLine("#else");
                     writer.WriteLine($"{commandName}_ptr = ({functionPointerSignature}) load(context, nameof({commandName}));");
+                    writer.WriteLine("#endif");
                 }
             }
         }

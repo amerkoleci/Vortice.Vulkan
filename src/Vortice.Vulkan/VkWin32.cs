@@ -27,8 +27,13 @@ namespace Vortice.Vulkan
         /// </summary>
         public static readonly string KHRWin32SurfaceExtensionName = "VK_KHR_win32_surface";
 
+#if NETSTANDARD2_0
+        private static delegate* unmanaged[Stdcall]<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateWin32SurfaceKHR_ptr;
+        private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, VkBool32> vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr;
+#else
         private static delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateWin32SurfaceKHR_ptr;
         private static delegate* unmanaged<VkPhysicalDevice, uint, VkBool32> vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr;
+#endif
 
         public static unsafe VkResult vkCreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, out VkSurfaceKHR pSurface)
         {

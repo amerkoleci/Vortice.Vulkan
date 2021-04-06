@@ -5,8 +5,7 @@
 [![Build status](https://github.com/amerkoleci/Vortice.Vulkan/workflows/ci/badge.svg)](https://github.com/amerkoleci/Vortice.Vulkan/actions)
 [![NuGet](https://img.shields.io/nuget/v/Vortice.Vulkan.svg)](https://www.nuget.org/packages/Vortice.Vulkan)
 
-**Vortice.Vulkan** is a Net5 low-level bindings for [Vulkan](https://www.khronos.org/vulkan/) API. 
-The latest version supporting netstandard 2.0 is [v1.3.5](https://www.nuget.org/packages/Vortice.Vulkan/1.3.5).
+**Vortice.Vulkan** is a .NET Standard 2.0 and .NET5 low-level bindings for [Vulkan](https://www.khronos.org/vulkan/) API. 
 
 ## Credits
 

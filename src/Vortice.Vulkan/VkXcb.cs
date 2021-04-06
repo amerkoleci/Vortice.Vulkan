@@ -28,8 +28,13 @@ namespace Vortice.Vulkan
         /// </summary>
         public static readonly string KHRXcbSurfaceExtensionName = "VK_KHR_xcb_surface";
 
+#if NETSTANDARD2_0
+        private static delegate* unmanaged[Stdcall]<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateXcbSurfaceKHR_ptr;
+        private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, uint, VkBool32> vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr;
+#else
         private static delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateXcbSurfaceKHR_ptr;
         private static delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32> vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr;
+#endif
 
         public static unsafe VkResult vkCreateXcbSurfaceKHR(VkInstance instance, VkXcbSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, out VkSurfaceKHR pSurface)
         {

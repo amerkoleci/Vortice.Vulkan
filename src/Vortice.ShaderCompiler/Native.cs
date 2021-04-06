@@ -8,7 +8,7 @@ namespace Vortice.ShaderCompiler
 {
     internal static unsafe class Native
     {
-        private static readonly nint s_NativeLibrary = LoadNativeLibrary();
+        private static readonly IntPtr s_NativeLibrary = LoadNativeLibrary();
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate nint PFN_InitializeFunc();
@@ -250,38 +250,26 @@ namespace Vortice.ShaderCompiler
         private static readonly PFN_shaderc_parse_version_profile shaderc_parse_version_profile_ = LoadFunction<PFN_shaderc_parse_version_profile>("shaderc_parse_version_profile");
         public static bool shaderc_parse_version_profile(string str, int* version, Profile* profile) => shaderc_parse_version_profile_(str, version, profile) == 1;
 
-        #region NativeLibrary Logic
-        private static nint LoadNativeLibrary()
+        private static IntPtr LoadNativeLibrary()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return NativeLibrary.Load("shaderc_shared.dll");
+                return LibraryLoader.LoadLocalLibrary("shaderc_shared.dll");
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                return NativeLibrary.Load("libshaderc_shared.so");
+                return LibraryLoader.LoadLocalLibrary("libshaderc_shared.so");
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                return NativeLibrary.Load("libshaderc_shared.dylib");
+                return LibraryLoader.LoadLocalLibrary("libshaderc_shared.dylib");
             }
             else
             {
-                return NativeLibrary.Load("shaderc_shared");
+                return LibraryLoader.LoadLocalLibrary("shaderc_shared");
             }
         }
 
-        private static T LoadFunction<T>(string function)
-        {
-            IntPtr handle = NativeLibrary.GetExport(s_NativeLibrary, function);
-
-            if (handle == IntPtr.Zero)
-            {
-                throw new EntryPointNotFoundException(function);
-            }
-
-            return Marshal.GetDelegateForFunctionPointer<T>(handle);
-        }
-        #endregion
+        private static T LoadFunction<T>(string name) => LibraryLoader.LoadFunction<T>(s_NativeLibrary, name);
     }
 }
