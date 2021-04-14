@@ -246,6 +246,25 @@ namespace Vortice.Vulkan
 		DebugMarkerObjectNameInfoEXT = 1000022000,
 		DebugMarkerObjectTagInfoEXT = 1000022001,
 		DebugMarkerMarkerInfoEXT = 1000022002,
+		VideoProfileKHR = 1000023000,
+		VideoCapabilitiesKHR = 1000023001,
+		VideoPictureResourceKHR = 1000023002,
+		VideoGetMemoryPropertiesKHR = 1000023003,
+		VideoBindMemoryKHR = 1000023004,
+		VideoSessionCreateInfoKHR = 1000023005,
+		VideoSessionParametersCreateInfoKHR = 1000023006,
+		VideoSessionParametersUpdateInfoKHR = 1000023007,
+		VideoBeginCodingInfoKHR = 1000023008,
+		VideoEndCodingInfoKHR = 1000023009,
+		VideoCodingControlInfoKHR = 1000023010,
+		VideoReferenceSlotKHR = 1000023011,
+		VideoQueueFamilyProperties2KHR = 1000023012,
+		VideoProfilesKHR = 1000023013,
+		PhysicalDeviceVideoFormatInfoKHR = 1000023014,
+		VideoFormatPropertiesKHR = 1000023015,
+		VideoDecodeInfoKHR = 1000024000,
+		VideoEncodeInfoKHR = 1000299000,
+		VideoEncodeRateControlInfoKHR = 1000299001,
 		DedicatedAllocationImageCreateInfoNV = 1000026000,
 		DedicatedAllocationBufferCreateInfoNV = 1000026001,
 		DedicatedAllocationMemoryAllocateInfoNV = 1000026002,
@@ -254,6 +273,23 @@ namespace Vortice.Vulkan
 		PipelineRasterizationStateStreamCreateInfoEXT = 1000028002,
 		ImageViewHandleInfoNVX = 1000030000,
 		ImageViewAddressPropertiesNVX = 1000030001,
+		VideoEncodeH264CapabilitiesEXT = 1000038000,
+		VideoEncodeH264SessionCreateInfoEXT = 1000038001,
+		VideoEncodeH264SessionParametersCreateInfoEXT = 1000038002,
+		VideoEncodeH264SessionParametersAddInfoEXT = 1000038003,
+		VideoEncodeH264VclFrameInfoEXT = 1000038004,
+		VideoEncodeH264DpbSlotInfoEXT = 1000038005,
+		VideoEncodeH264NaluSliceEXT = 1000038006,
+		VideoEncodeH264EmitPictureParametersEXT = 1000038007,
+		VideoEncodeH264ProfileEXT = 1000038008,
+		VideoDecodeH264CapabilitiesEXT = 1000040000,
+		VideoDecodeH264SessionCreateInfoEXT = 1000040001,
+		VideoDecodeH264PictureInfoEXT = 1000040002,
+		VideoDecodeH264MvcEXT = 1000040003,
+		VideoDecodeH264ProfileEXT = 1000040004,
+		VideoDecodeH264SessionParametersCreateInfoEXT = 1000040005,
+		VideoDecodeH264SessionParametersAddInfoEXT = 1000040006,
+		VideoDecodeH264DpbSlotInfoEXT = 1000040007,
 		TextureLodGatherFormatPropertiesAMD = 1000041000,
 		StreamDescriptorSurfaceCreateInfoGgp = 1000049000,
 		PhysicalDeviceCornerSampledImageFeaturesNV = 1000050000,
@@ -408,6 +444,13 @@ namespace Vortice.Vulkan
 		PipelineCompilerControlCreateInfoAMD = 1000183000,
 		CalibratedTimestampInfoEXT = 1000184000,
 		PhysicalDeviceShaderCorePropertiesAMD = 1000185000,
+		VideoDecodeH265CapabilitiesEXT = 1000187000,
+		VideoDecodeH265SessionCreateInfoEXT = 1000187001,
+		VideoDecodeH265SessionParametersCreateInfoEXT = 1000187002,
+		VideoDecodeH265SessionParametersAddInfoEXT = 1000187003,
+		VideoDecodeH265ProfileEXT = 1000187004,
+		VideoDecodeH265PictureInfoEXT = 1000187005,
+		VideoDecodeH265DpbSlotInfoEXT = 1000187006,
 		DeviceMemoryOverallocationCreateInfoAMD = 1000189000,
 		PhysicalDeviceVertexAttributeDivisorPropertiesEXT = 1000190000,
 		PipelineVertexInputDivisorStateCreateInfoEXT = 1000190001,
@@ -492,6 +535,8 @@ namespace Vortice.Vulkan
 		GeneratedCommandsInfoNV = 1000277005,
 		GeneratedCommandsMemoryRequirementsInfoNV = 1000277006,
 		PhysicalDeviceDeviceGeneratedCommandsFeaturesNV = 1000277007,
+		PhysicalDeviceInheritedViewportScissorFeaturesNV = 1000278000,
+		CommandBufferInheritanceViewportScissorInfoNV = 1000278001,
 		PhysicalDeviceTexelBufferAlignmentFeaturesEXT = 1000281000,
 		PhysicalDeviceTexelBufferAlignmentPropertiesEXT = 1000281001,
 		CommandBufferInheritanceRenderPassTransformInfoQcom = 1000282000,
@@ -525,6 +570,7 @@ namespace Vortice.Vulkan
 		PhysicalDeviceFragmentShadingRateEnumsPropertiesNV = 1000326000,
 		PhysicalDeviceFragmentShadingRateEnumsFeaturesNV = 1000326001,
 		PipelineFragmentShadingRateEnumStateCreateInfoNV = 1000326002,
+		PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT = 1000330000,
 		PhysicalDeviceFragmentDensityMap2FeaturesEXT = 1000332000,
 		PhysicalDeviceFragmentDensityMap2PropertiesEXT = 1000332001,
 		CopyCommandTransformInfoQcom = 1000333000,
@@ -545,12 +591,17 @@ namespace Vortice.Vulkan
 		DirectfbSurfaceCreateInfoEXT = 1000346000,
 		PhysicalDeviceMutableDescriptorTypeFeaturesValve = 1000351000,
 		MutableDescriptorTypeCreateInfoValve = 1000351002,
+		PhysicalDeviceVertexInputDynamicStateFeaturesEXT = 1000352000,
+		VertexInputBindingDescription2EXT = 1000352001,
+		VertexInputAttributeDescription2EXT = 1000352002,
 		ImportMemoryZirconHandleInfoFuchsia = 1000364000,
 		MemoryZirconHandlePropertiesFuchsia = 1000364001,
 		MemoryGetZirconHandleInfoFuchsia = 1000364002,
 		ImportSemaphoreZirconHandleInfoFuchsia = 1000365000,
 		SemaphoreGetZirconHandleInfoFuchsia = 1000365001,
 		ScreenSurfaceCreateInfoQnx = 1000378000,
+		PhysicalDeviceColorWriteEnableFeaturesEXT = 1000381000,
+		PipelineColorWriteCreateInfoEXT = 1000381001,
 		PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 		PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 		DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
@@ -684,6 +735,12 @@ namespace Vortice.Vulkan
 		StencilAttachmentOptimal = 1000241002,
 		StencilReadOnlyOptimal = 1000241003,
 		PresentSrcKHR = 1000001002,
+		VideoDecodeDstKHR = 1000024000,
+		VideoDecodeSrcKHR = 1000024001,
+		VideoDecodeDpbKHR = 1000024002,
+		VideoEncodeDstKHR = 1000299000,
+		VideoEncodeSrcKHR = 1000299001,
+		VideoEncodeDpbKHR = 1000299002,
 		SharedPresentKHR = 1000111000,
 		ShadingRateOptimalNV = 1000164003,
 		FragmentDensityMapOptimalEXT = 1000218000,
@@ -733,6 +790,8 @@ namespace Vortice.Vulkan
 		DisplayKHR = 1000002000,
 		DisplayModeKHR = 1000002001,
 		DebugReportCallbackEXT = 1000011000,
+		VideoSessionKHR = 1000023000,
+		VideoSessionParametersKHR = 1000023001,
 		DebugUtilsMessengerEXT = 1000128000,
 		AccelerationStructureKHR = 1000150000,
 		ValidationCacheEXT = 1000160000,
@@ -1017,6 +1076,10 @@ namespace Vortice.Vulkan
 		ASTC10x10SFloatBlockEXT = 1000066011,
 		ASTC12x10SFloatBlockEXT = 1000066012,
 		ASTC12x12SFloatBlockEXT = 1000066013,
+		G8B8R82Plane444UNormEXT = 1000330000,
+		G10X6B10X6R10X62Plane444UNorm3Pack16EXT = 1000330001,
+		G12X4B12X4R12X42Plane444UNorm3Pack16EXT = 1000330002,
+		G16B16R162Plane444UNormEXT = 1000330003,
 		A4R4G4B4UNormPack16EXT = 1000340000,
 		A4B4G4R4UNormPack16EXT = 1000340001,
 		G8B8G8R8422UNormKHR = G8B8G8R8422UNorm,
@@ -1083,6 +1146,8 @@ namespace Vortice.Vulkan
 		Occlusion = 0,
 		PipelineStatistics = 1,
 		Timestamp = 2,
+		ResultStatusOnlyKHR = 1000023000,
+		VideoEncodeBitstreamBufferRangeKHR = 1000299000,
 		TransformFeedbackStreamEXT = 1000028004,
 		PerformanceQueryKHR = 1000116000,
 		AccelerationStructureCompactedSizeKHR = 1000150000,
@@ -1241,6 +1306,8 @@ namespace Vortice.Vulkan
 		DepthBoundsTestEnableEXT = 1000267009,
 		StencilTestEnableEXT = 1000267010,
 		StencilOpEXT = 1000267011,
+		VertexInputEXT = 1000352000,
+		ColorWriteEnableEXT = 1000381000,
 	}
 
 	public enum VkFrontFace
@@ -1494,6 +1561,10 @@ namespace Vortice.Vulkan
 		CositedChromaSamples = 8388608,
 		SampledImageFilterMinmax = 65536,
 		SampledImageFilterCubicImg = 8192,
+		VideoDecodeOutputKHR = 33554432,
+		VideoDecodeDpbKHR = 67108864,
+		VideoEncodeInputKHR = 134217728,
+		VideoEncodeDpbKHR = 268435456,
 		AccelerationStructureVertexBufferKHR = 536870912,
 		FragmentDensityMapEXT = 16777216,
 		FragmentShadingRateAttachmentKHR = 1073741824,
@@ -1562,6 +1633,12 @@ namespace Vortice.Vulkan
 		DepthStencilAttachment = 32,
 		TransientAttachment = 64,
 		InputAttachment = 128,
+		VideoDecodeDstKHR = 1024,
+		VideoDecodeSrcKHR = 2048,
+		VideoDecodeDpbKHR = 4096,
+		VideoEncodeDstKHR = 8192,
+		VideoEncodeSrcKHR = 16384,
+		VideoEncodeDpbKHR = 32768,
 		ShadingRateImageNV = 256,
 		FragmentDensityMapEXT = 512,
 		FragmentShadingRateAttachmentKHR = ShadingRateImageNV,
@@ -1599,6 +1676,8 @@ namespace Vortice.Vulkan
 		Transfer = 4,
 		SparseBinding = 8,
 		Protected = 16,
+		VideoDecodeKHR = 32,
+		VideoEncodeKHR = 64,
 	}
 
 	[Flags]
@@ -1699,6 +1778,7 @@ namespace Vortice.Vulkan
 		Wait = 2,
 		WithAvailability = 4,
 		Partial = 8,
+		WithStatusKHR = 16,
 	}
 
 	[Flags]
@@ -1728,6 +1808,10 @@ namespace Vortice.Vulkan
 		VertexBuffer = 128,
 		IndirectBuffer = 256,
 		ShaderDeviceAddress = 131072,
+		VideoDecodeSrcKHR = 8192,
+		VideoDecodeDstKHR = 16384,
+		VideoEncodeDstKHR = 32768,
+		VideoEncodeSrcKHR = 65536,
 		TransformFeedbackBufferEXT = 2048,
 		TransformFeedbackCounterBufferEXT = 4096,
 		ConditionalRenderingEXT = 512,
@@ -2177,6 +2261,7 @@ namespace Vortice.Vulkan
 		BroadcomProprietary = 12,
 		MesaLLVMPipe = 13,
 		Moltenvk = 14,
+		CoreaviProprietary = 15,
 		AMDProprietaryKHR = AMDProprietary,
 		AMDOpenSourceKHR = AMDOpenSource,
 		MesaRadvKHR = MesaRadv,
@@ -2956,6 +3041,343 @@ namespace Vortice.Vulkan
 		Intersection = 3,
 	}
 
+	public enum VkQueryResultStatusKHR
+	{
+		Error = -1,
+		NotReady = 0,
+		Complete = 1,
+	}
+
+	[Flags]
+	public enum VkVideoCodecOperationFlagsKHR
+	{
+		None = 0,
+		Invalid = 0,
+		EncodeH264EXT = 65536,
+		DecodeH264EXT = 1,
+		DecodeH265EXT = 2,
+	}
+
+	[Flags]
+	public enum VkVideoChromaSubsamplingFlagsKHR
+	{
+		None = 0,
+		Invalid = 0,
+		Monochrome = 1,
+		_420 = 2,
+		_422 = 4,
+		_444 = 8,
+	}
+
+	[Flags]
+	public enum VkVideoComponentBitDepthFlagsKHR
+	{
+		None = 0,
+		Invalid = 0,
+		_8 = 1,
+		_10 = 4,
+		_12 = 16,
+	}
+
+	[Flags]
+	public enum VkVideoCapabilitiesFlagsKHR
+	{
+		None = 0,
+		ProtectedContent = 1,
+		SeparateReferenceImages = 2,
+	}
+
+	[Flags]
+	public enum VkVideoSessionCreateFlagsKHR
+	{
+		None = 0,
+		Default = 0,
+		ProtectedContent = 1,
+	}
+
+	[Flags]
+	public enum VkVideoCodingControlFlagsKHR
+	{
+		None = 0,
+		Default = 0,
+		Reset = 1,
+	}
+
+	[Flags]
+	public enum VkVideoCodingQualityPresetFlagsKHR
+	{
+		None = 0,
+		Default = 0,
+		Normal = 1,
+		Power = 2,
+		Quality = 4,
+	}
+
+	[Flags]
+	public enum VkVideoDecodeFlagsKHR
+	{
+		None = 0,
+		Default = 0,
+		Reserved0 = 1,
+	}
+
+	[Flags]
+	public enum VkVideoEncodeFlagsKHR
+	{
+		None = 0,
+		Default = 0,
+		Reserved0 = 1,
+	}
+
+	[Flags]
+	public enum VkVideoEncodeRateControlFlagsKHR
+	{
+		None = 0,
+		Default = 0,
+		Reset = 1,
+	}
+
+	[Flags]
+	public enum VkVideoEncodeRateControlModeFlagsKHR
+	{
+		None = 0,
+		Cbr = 1,
+		Vbr = 2,
+	}
+
+	public enum StdVideoH264ChromaFormatIdc
+	{
+		std_video_h264_chroma_format_idc_monochrome = 0,
+		std_video_h264_chroma_format_idc_420 = 1,
+		std_video_h264_chroma_format_idc_422 = 2,
+		std_video_h264_chroma_format_idc_444 = 3,
+	}
+
+	public enum StdVideoH264ProfileIdc
+	{
+		std_video_h264_profile_idc_baseline = 66,
+		std_video_h264_profile_idc_main = 77,
+		std_video_h264_profile_idc_high = 100,
+		std_video_h264_profile_idc_high_444_predictive = 244,
+		std_video_h264_profile_idc_invalid = 2147483647,
+	}
+
+	public enum StdVideoH264Level
+	{
+		std_video_h264_level_1_0 = 0,
+		std_video_h264_level_1_1 = 1,
+		std_video_h264_level_1_2 = 2,
+		std_video_h264_level_1_3 = 3,
+		std_video_h264_level_2_0 = 4,
+		std_video_h264_level_2_1 = 5,
+		std_video_h264_level_2_2 = 6,
+		std_video_h264_level_3_0 = 7,
+		std_video_h264_level_3_1 = 8,
+		std_video_h264_level_3_2 = 9,
+		std_video_h264_level_4_0 = 10,
+		std_video_h264_level_4_1 = 11,
+		std_video_h264_level_4_2 = 12,
+		std_video_h264_level_5_0 = 13,
+		std_video_h264_level_5_1 = 14,
+		std_video_h264_level_5_2 = 15,
+		std_video_h264_level_6_0 = 16,
+		std_video_h264_level_6_1 = 17,
+		std_video_h264_level_6_2 = 18,
+		std_video_h264_level_invalid = 2147483647,
+	}
+
+	public enum StdVideoH264PocType
+	{
+		std_video_h264_poc_type_0 = 0,
+		std_video_h264_poc_type_1 = 1,
+		std_video_h264_poc_type_2 = 2,
+		std_video_h264_poc_type_invalid = 2147483647,
+	}
+
+	public enum StdVideoH264AspectRatioIdc
+	{
+		std_video_h264_aspect_ratio_idc_unspecified = 0,
+		std_video_h264_aspect_ratio_idc_square = 1,
+		std_video_h264_aspect_ratio_idc_12_11 = 2,
+		std_video_h264_aspect_ratio_idc_10_11 = 3,
+		std_video_h264_aspect_ratio_idc_16_11 = 4,
+		std_video_h264_aspect_ratio_idc_40_33 = 5,
+		std_video_h264_aspect_ratio_idc_24_11 = 6,
+		std_video_h264_aspect_ratio_idc_20_11 = 7,
+		std_video_h264_aspect_ratio_idc_32_11 = 8,
+		std_video_h264_aspect_ratio_idc_80_33 = 9,
+		std_video_h264_aspect_ratio_idc_18_11 = 10,
+		std_video_h264_aspect_ratio_idc_15_11 = 11,
+		std_video_h264_aspect_ratio_idc_64_33 = 12,
+		std_video_h264_aspect_ratio_idc_160_99 = 13,
+		std_video_h264_aspect_ratio_idc_4_3 = 14,
+		std_video_h264_aspect_ratio_idc_3_2 = 15,
+		std_video_h264_aspect_ratio_idc_2_1 = 16,
+		std_video_h264_aspect_ratio_idc_extended_sar = 255,
+		std_video_h264_aspect_ratio_idc_invalid = 2147483647,
+	}
+
+	public enum StdVideoH264WeightedBiPredIdc
+	{
+		std_video_h264_default_weighted_b_slices_prediction_idc = 0,
+		std_video_h264_explicit_weighted_b_slices_prediction_idc = 1,
+		std_video_h264_implicit_weighted_b_slices_prediction_idc = 2,
+		std_video_h264_invalid_weighted_b_slices_prediction_idc = 2147483647,
+	}
+
+	public enum StdVideoH264ModificationOfPicNumsIdc
+	{
+		std_video_h264_modification_of_pic_nums_idc_short_term_subtract = 0,
+		std_video_h264_modification_of_pic_nums_idc_short_term_add = 1,
+		std_video_h264_modification_of_pic_nums_idc_long_term = 2,
+		std_video_h264_modification_of_pic_nums_idc_end = 3,
+		std_video_h264_modification_of_pic_nums_idc_invalid = 2147483647,
+	}
+
+	public enum StdVideoH264MemMgmtControlOp
+	{
+		std_video_h264_mem_mgmt_control_op_end = 0,
+		std_video_h264_mem_mgmt_control_op_unmark_short_term = 1,
+		std_video_h264_mem_mgmt_control_op_unmark_long_term = 2,
+		std_video_h264_mem_mgmt_control_op_mark_long_term = 3,
+		std_video_h264_mem_mgmt_control_op_set_max_long_term_index = 4,
+		std_video_h264_mem_mgmt_control_op_unmark_all = 5,
+		std_video_h264_mem_mgmt_control_op_mark_current_as_long_term = 6,
+		std_video_h264_mem_mgmt_control_op_invalid = 2147483647,
+	}
+
+	public enum StdVideoH264CabacInitIdc
+	{
+		std_video_h264_cabac_init_idc_0 = 0,
+		std_video_h264_cabac_init_idc_1 = 1,
+		std_video_h264_cabac_init_idc_2 = 2,
+		std_video_h264_cabac_init_idc_invalid = 2147483647,
+	}
+
+	public enum StdVideoH264DisableDeblockingFilterIdc
+	{
+		std_video_h264_disable_deblocking_filter_idc_disabled = 0,
+		std_video_h264_disable_deblocking_filter_idc_enabled = 1,
+		std_video_h264_disable_deblocking_filter_idc_partial = 2,
+		std_video_h264_disable_deblocking_filter_idc_invalid = 2147483647,
+	}
+
+	public enum StdVideoH264PictureType
+	{
+		std_video_h264_picture_type_i = 0,
+		std_video_h264_picture_type_p = 1,
+		std_video_h264_picture_type_b = 2,
+		std_video_h264_picture_type_invalid = 2147483647,
+	}
+
+	public enum StdVideoH264SliceType
+	{
+		std_video_h264_slice_type_i = 0,
+		std_video_h264_slice_type_p = 1,
+		std_video_h264_slice_type_b = 2,
+		std_video_h264_slice_type_invalid = 2147483647,
+	}
+
+	public enum StdVideoH264NonVclNaluType
+	{
+		std_video_h264_non_vcl_nalu_type_sps = 0,
+		std_video_h264_non_vcl_nalu_type_pps = 1,
+		std_video_h264_non_vcl_nalu_type_aud = 2,
+		std_video_h264_non_vcl_nalu_type_prefix = 3,
+		std_video_h264_non_vcl_nalu_type_end_of_sequence = 4,
+		std_video_h264_non_vcl_nalu_type_end_of_stream = 5,
+		std_video_h264_non_vcl_nalu_type_precoded = 6,
+		std_video_h264_non_vcl_nalu_type_invalid = 2147483647,
+	}
+
+	[Flags]
+	public enum VkVideoEncodeH264CapabilitiesFlagsEXT
+	{
+		None = 0,
+		VK_VIDEO_ENCODE_H264_CAPABILITY_CABAC_BIT_ = 1,
+		VK_VIDEO_ENCODE_H264_CAPABILITY_CAVLC_BIT_ = 2,
+		VK_VIDEO_ENCODE_H264_CAPABILITY_WEIGHTED_BI_PRED_IMPLICIT_BIT_ = 4,
+		VK_VIDEO_ENCODE_H264_CAPABILITY_TRANSFORM_8X8_BIT_ = 8,
+		VK_VIDEO_ENCODE_H264_CAPABILITY_CHROMA_QP_OFFSET_BIT_ = 16,
+		VK_VIDEO_ENCODE_H264_CAPABILITY_SECOND_CHROMA_QP_OFFSET_BIT_ = 32,
+		VK_VIDEO_ENCODE_H264_CAPABILITY_DEBLOCKING_FILTER_DISABLED_BIT_ = 64,
+		VK_VIDEO_ENCODE_H264_CAPABILITY_DEBLOCKING_FILTER_ENABLED_BIT_ = 128,
+		VK_VIDEO_ENCODE_H264_CAPABILITY_DEBLOCKING_FILTER_PARTIAL_BIT_ = 256,
+		VK_VIDEO_ENCODE_H264_CAPABILITY_MULTIPLE_SLICE_PER_FRAME_BIT_ = 512,
+		VK_VIDEO_ENCODE_H264_CAPABILITY_EVENLY_DISTRIBUTED_SLICE_SIZE_BIT_ = 1024,
+	}
+
+	[Flags]
+	public enum VkVideoEncodeH264InputModeFlagsEXT
+	{
+		None = 0,
+		Frame = 1,
+		Slice = 2,
+		NonVcl = 4,
+	}
+
+	[Flags]
+	public enum VkVideoEncodeH264OutputModeFlagsEXT
+	{
+		None = 0,
+		Frame = 1,
+		Slice = 2,
+		NonVcl = 4,
+	}
+
+	[Flags]
+	public enum VkVideoEncodeH264CreateFlagsEXT
+	{
+		None = 0,
+		Default = 0,
+		Reserved0 = 1,
+	}
+
+	[Flags]
+	public enum VkVideoDecodeH264FieldLayoutFlagsEXT
+	{
+		None = 0,
+		VK_VIDEO_DECODE_H264_PROGRESSIVE_PICTURES_ONLY_ = 0,
+		LineInterlacedPlane = 1,
+		SeparateInterlacedPlane = 2,
+	}
+
+	public enum StdVideoH265ChromaFormatIdc
+	{
+		std_video_h265_chroma_format_idc_monochrome = 0,
+		std_video_h265_chroma_format_idc_420 = 1,
+		std_video_h265_chroma_format_idc_422 = 2,
+		std_video_h265_chroma_format_idc_444 = 3,
+	}
+
+	public enum StdVideoH265ProfileIdc
+	{
+		std_video_h265_profile_idc_main = 1,
+		std_video_h265_profile_idc_main_10 = 2,
+		std_video_h265_profile_idc_main_still_picture = 3,
+		std_video_h265_profile_idc_format_range_extensions = 4,
+		std_video_h265_profile_idc_scc_extensions = 9,
+		std_video_h265_profile_idc_invalid = 2147483647,
+	}
+
+	public enum StdVideoH265Level
+	{
+		std_video_h265_level_1_0 = 0,
+		std_video_h265_level_2_0 = 1,
+		std_video_h265_level_2_1 = 2,
+		std_video_h265_level_3_0 = 3,
+		std_video_h265_level_3_1 = 4,
+		std_video_h265_level_4_0 = 5,
+		std_video_h265_level_4_1 = 6,
+		std_video_h265_level_5_0 = 7,
+		std_video_h265_level_5_1 = 8,
+		std_video_h265_level_5_2 = 9,
+		std_video_h265_level_6_0 = 10,
+		std_video_h265_level_6_1 = 11,
+		std_video_h265_level_6_2 = 12,
+		std_video_h265_level_invalid = 2147483647,
+	}
+
 	[Flags]
 	public enum VkInstanceCreateFlags
 	{
@@ -3299,6 +3721,30 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
+	public enum VkVideoBeginCodingFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkVideoEndCodingFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkVideoDecodeH264CreateFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkVideoDecodeH265CreateFlagsEXT
+	{
+		None = 0,
+	}
+
+	[Flags]
 	public enum VkPipelineStageFlags2KHR : ulong
 	{
 		NoneKHR = 0,
@@ -3327,8 +3773,8 @@ namespace Vortice.Vulkan
 		IndexInputKHR = 68719476736,
 		VertexAttributeInputKHR = 137438953472,
 		PreRasterizationShadersKHR = 274877906944,
-		Reserved26KHR = 67108864,
-		Reserved27KHR = 134217728,
+		VideoDecodeKHR = 67108864,
+		VideoEncodeKHR = 134217728,
 		TransformFeedbackEXT = 16777216,
 		ConditionalRenderingEXT = 262144,
 		CommandPreprocessNV = 131072,
@@ -3341,6 +3787,7 @@ namespace Vortice.Vulkan
 		FragmentDensityProcessEXT = 8388608,
 		TaskShaderNV = 524288,
 		MeshShaderNV = 1048576,
+		VK_PIPELINE_STAGE_FLAG_BITS_2KHR_MAX_ENUM_KHR = 9223372036854775807,
 	}
 
 	[Flags]
@@ -3367,10 +3814,10 @@ namespace Vortice.Vulkan
 		ShaderSampledReadKHR = 4294967296,
 		ShaderStorageReadKHR = 8589934592,
 		ShaderStorageWriteKHR = 17179869184,
-		ReservedRead35KHR = 34359738368,
-		ReservedWrite36KHR = 68719476736,
-		ReservedRead37KHR = 137438953472,
-		ReservedWrite38KHR = 274877906944,
+		VideoDecodeReadKHR = 34359738368,
+		VideoDecodeWriteKHR = 68719476736,
+		VideoEncodeReadKHR = 137438953472,
+		VideoEncodeWriteKHR = 274877906944,
 		TransformFeedbackWriteEXT = 33554432,
 		TransformFeedbackCounterReadEXT = 67108864,
 		TransformFeedbackCounterWriteEXT = 134217728,
@@ -3385,5 +3832,6 @@ namespace Vortice.Vulkan
 		AccelerationStructureWriteNV = 4194304,
 		FragmentDensityMapReadEXT = 16777216,
 		ColorAttachmentReadNoncoherentEXT = 524288,
+		VK_ACCESS_FLAG_BITS_2KHR_MAX_ENUM_KHR = 9223372036854775807,
 	}
 }

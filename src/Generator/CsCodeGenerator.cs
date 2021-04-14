@@ -83,6 +83,9 @@ namespace Generator
 
             // TODO: Until we marshal functions
             { "VkDeviceAddress", "IntPtr" },
+
+            { "VkPipelineStageFlagBits2KHR", "VkPipelineStageFlags2KHR" },
+            { "VkAccessFlagBits2KHR", "VkAccessFlags2KHR" },
         };
 
         public static void Generate(CppCompilation compilation, string outputPath)
@@ -118,6 +121,8 @@ namespace Generator
                         || cppMacro.Name.Equals("VK_TRUE", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.Equals("VK_FALSE", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.Equals("VK_MAKE_VERSION", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.Equals("VK_MAKE_API_VERSION", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.Equals("VK_MAKE_VIDEO_STD_VERSION", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.StartsWith("VK_ENABLE_BETA_EXTENSIONS", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.StartsWith("VK_VERSION_", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.StartsWith("VK_API_VERSION_", StringComparison.OrdinalIgnoreCase)
@@ -172,18 +177,31 @@ namespace Generator
                     AddCsMapping(cppMacro.Name, csName);
 
                     writer.WriteLine("/// <summary>");
-                    if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE")
+                    if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE" ||
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9" ||
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION" ||
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5" ||
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION")
                     {
                         modifier = "static readonly";
                         csDataType = "VkVersion";
-                        
                     }
 
                     writer.WriteLine($"/// {cppMacro.Name} = {cppMacro.Value}");
                     writer.WriteLine("/// </summary>");
                     if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE")
                     {
-                        writer.WriteLine($"public {modifier} {csDataType} {csName} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, HeaderVersion);");
+                        writer.WriteLine($"public {modifier} {csDataType} {csName} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]}, HeaderVersion);");
+                    }
+                    else if (cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9" ||
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5")
+                    {
+                        writer.WriteLine($"public {modifier} {csDataType} {csName} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]});");
+                    }
+                    else if (cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION" ||
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION")
+                    {
+                        writer.WriteLine($"public {modifier} {csDataType} {csName} = {GetPrettyEnumName(cppMacro.Tokens[0].ToString(), "VK_")};");
                     }
                     else
                     {

@@ -53,8 +53,16 @@ namespace Generator
             {
                 foreach (var message in compilation.Diagnostics.Messages)
                 {
-                    Console.WriteLine(message);
+                    if (message.Type == CppLogMessageType.Error)
+                    {
+                        var currentColor = Console.ForegroundColor;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(message);
+                        Console.ForegroundColor = currentColor;
+                    }
                 }
+
+                return 0;
             }
 
             bool generateFuncFile = false;

@@ -4004,6 +4004,26 @@ namespace Vortice.Vulkan
 		}
 
 		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkVertexInputBindingDescription2EXT*, uint, VkVertexInputAttributeDescription2EXT*, void> vkCmdSetVertexInputEXT_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, uint, VkVertexInputBindingDescription2EXT*, uint, VkVertexInputAttributeDescription2EXT*, void> vkCmdSetVertexInputEXT_ptr;
+		#endif
+		public static void vkCmdSetVertexInputEXT(VkCommandBuffer commandBuffer, uint vertexBindingDescriptionCount, VkVertexInputBindingDescription2EXT* vertexBindingDescriptions, uint vertexAttributeDescriptionCount, VkVertexInputAttributeDescription2EXT* vertexAttributeDescriptions)
+		{
+			vkCmdSetVertexInputEXT_ptr(commandBuffer, vertexBindingDescriptionCount, vertexBindingDescriptions, vertexAttributeDescriptionCount, vertexAttributeDescriptions);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkBool32*, void> vkCmdSetColorWriteEnableEXT_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, uint, VkBool32*, void> vkCmdSetColorWriteEnableEXT_ptr;
+		#endif
+		public static void vkCmdSetColorWriteEnableEXT(VkCommandBuffer commandBuffer, uint attachmentCount, VkBool32* colorWriteEnables)
+		{
+			vkCmdSetColorWriteEnableEXT_ptr(commandBuffer, attachmentCount, colorWriteEnables);
+		}
+
+		#if NETSTANDARD2_0
 		private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
 		#else
 		private static delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
@@ -4291,6 +4311,146 @@ namespace Vortice.Vulkan
 		public static VkResult vkCreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 		{
 			return vkCreateViSurfaceNN_ptr(instance, createInfo, allocator, surface);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkVideoProfileKHR*, VkVideoCapabilitiesKHR*, VkResult> vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkPhysicalDevice, VkVideoProfileKHR*, VkVideoCapabilitiesKHR*, VkResult> vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr;
+		#endif
+		public static VkResult vkGetPhysicalDeviceVideoCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkVideoProfileKHR* videoProfile, VkVideoCapabilitiesKHR* capabilities)
+		{
+			return vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr(physicalDevice, videoProfile, capabilities);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceVideoFormatInfoKHR*, uint*, VkVideoFormatPropertiesKHR*, VkResult> vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoFormatInfoKHR*, uint*, VkVideoFormatPropertiesKHR*, VkResult> vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr;
+		#endif
+		public static VkResult vkGetPhysicalDeviceVideoFormatPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceVideoFormatInfoKHR* videoFormatInfo, uint* videoFormatPropertyCount, VkVideoFormatPropertiesKHR* videoFormatProperties)
+		{
+			return vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr(physicalDevice, videoFormatInfo, videoFormatPropertyCount, videoFormatProperties);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult> vkCreateVideoSessionKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult> vkCreateVideoSessionKHR_ptr;
+		#endif
+		public static VkResult vkCreateVideoSessionKHR(VkDevice device, VkVideoSessionCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkVideoSessionKHR* videoSession)
+		{
+			return vkCreateVideoSessionKHR_ptr(device, createInfo, allocator, videoSession);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void> vkDestroyVideoSessionKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void> vkDestroyVideoSessionKHR_ptr;
+		#endif
+		public static void vkDestroyVideoSessionKHR(VkDevice device, VkVideoSessionKHR videoSession, VkAllocationCallbacks* allocator)
+		{
+			vkDestroyVideoSessionKHR_ptr(device, videoSession, allocator);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, uint*, VkVideoGetMemoryPropertiesKHR*, VkResult> vkGetVideoSessionMemoryRequirementsKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkDevice, VkVideoSessionKHR, uint*, VkVideoGetMemoryPropertiesKHR*, VkResult> vkGetVideoSessionMemoryRequirementsKHR_ptr;
+		#endif
+		public static VkResult vkGetVideoSessionMemoryRequirementsKHR(VkDevice device, VkVideoSessionKHR videoSession, uint* videoSessionMemoryRequirementsCount, VkVideoGetMemoryPropertiesKHR* videoSessionMemoryRequirements)
+		{
+			return vkGetVideoSessionMemoryRequirementsKHR_ptr(device, videoSession, videoSessionMemoryRequirementsCount, videoSessionMemoryRequirements);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, uint, VkVideoBindMemoryKHR*, VkResult> vkBindVideoSessionMemoryKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkDevice, VkVideoSessionKHR, uint, VkVideoBindMemoryKHR*, VkResult> vkBindVideoSessionMemoryKHR_ptr;
+		#endif
+		public static VkResult vkBindVideoSessionMemoryKHR(VkDevice device, VkVideoSessionKHR videoSession, uint videoSessionBindMemoryCount, VkVideoBindMemoryKHR* videoSessionBindMemories)
+		{
+			return vkBindVideoSessionMemoryKHR_ptr(device, videoSession, videoSessionBindMemoryCount, videoSessionBindMemories);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionParametersCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionParametersKHR*, VkResult> vkCreateVideoSessionParametersKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkDevice, VkVideoSessionParametersCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionParametersKHR*, VkResult> vkCreateVideoSessionParametersKHR_ptr;
+		#endif
+		public static VkResult vkCreateVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkVideoSessionParametersKHR* videoSessionParameters)
+		{
+			return vkCreateVideoSessionParametersKHR_ptr(device, createInfo, allocator, videoSessionParameters);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionParametersKHR, VkVideoSessionParametersUpdateInfoKHR*, VkResult> vkUpdateVideoSessionParametersKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkDevice, VkVideoSessionParametersKHR, VkVideoSessionParametersUpdateInfoKHR*, VkResult> vkUpdateVideoSessionParametersKHR_ptr;
+		#endif
+		public static VkResult vkUpdateVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkVideoSessionParametersUpdateInfoKHR* updateInfo)
+		{
+			return vkUpdateVideoSessionParametersKHR_ptr(device, videoSessionParameters, updateInfo);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionParametersKHR, VkAllocationCallbacks*, void> vkDestroyVideoSessionParametersKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkDevice, VkVideoSessionParametersKHR, VkAllocationCallbacks*, void> vkDestroyVideoSessionParametersKHR_ptr;
+		#endif
+		public static void vkDestroyVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkAllocationCallbacks* allocator)
+		{
+			vkDestroyVideoSessionParametersKHR_ptr(device, videoSessionParameters, allocator);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoBeginCodingInfoKHR*, void> vkCmdBeginVideoCodingKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, VkVideoBeginCodingInfoKHR*, void> vkCmdBeginVideoCodingKHR_ptr;
+		#endif
+		public static void vkCmdBeginVideoCodingKHR(VkCommandBuffer commandBuffer, VkVideoBeginCodingInfoKHR* beginInfo)
+		{
+			vkCmdBeginVideoCodingKHR_ptr(commandBuffer, beginInfo);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoEndCodingInfoKHR*, void> vkCmdEndVideoCodingKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, VkVideoEndCodingInfoKHR*, void> vkCmdEndVideoCodingKHR_ptr;
+		#endif
+		public static void vkCmdEndVideoCodingKHR(VkCommandBuffer commandBuffer, VkVideoEndCodingInfoKHR* endCodingInfo)
+		{
+			vkCmdEndVideoCodingKHR_ptr(commandBuffer, endCodingInfo);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoCodingControlInfoKHR*, void> vkCmdControlVideoCodingKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, VkVideoCodingControlInfoKHR*, void> vkCmdControlVideoCodingKHR_ptr;
+		#endif
+		public static void vkCmdControlVideoCodingKHR(VkCommandBuffer commandBuffer, VkVideoCodingControlInfoKHR* codingControlInfo)
+		{
+			vkCmdControlVideoCodingKHR_ptr(commandBuffer, codingControlInfo);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoDecodeInfoKHR*, void> vkCmdDecodeVideoKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, VkVideoDecodeInfoKHR*, void> vkCmdDecodeVideoKHR_ptr;
+		#endif
+		public static void vkCmdDecodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoDecodeInfoKHR* frameInfo)
+		{
+			vkCmdDecodeVideoKHR_ptr(commandBuffer, frameInfo);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoEncodeInfoKHR*, void> vkCmdEncodeVideoKHR_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void> vkCmdEncodeVideoKHR_ptr;
+		#endif
+		public static void vkCmdEncodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoEncodeInfoKHR* encodeInfo)
+		{
+			vkCmdEncodeVideoKHR_ptr(commandBuffer, encodeInfo);
 		}
 
 		private static void GenLoadInstance(IntPtr context, LoadFunction load)
@@ -4729,6 +4889,16 @@ namespace Vortice.Vulkan
 			vkCreateViSurfaceNN_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateViSurfaceNN));
 			#else
 			vkCreateViSurfaceNN_ptr = (delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateViSurfaceNN));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkVideoProfileKHR*, VkVideoCapabilitiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoCapabilitiesKHR));
+			#else
+			vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkVideoProfileKHR*, VkVideoCapabilitiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoCapabilitiesKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceVideoFormatInfoKHR*, uint*, VkVideoFormatPropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoFormatPropertiesKHR));
+			#else
+			vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoFormatInfoKHR*, uint*, VkVideoFormatPropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoFormatPropertiesKHR));
 			#endif
 		}
 		private static void GenLoadDevice(IntPtr context, LoadFunction load)
@@ -6299,6 +6469,16 @@ namespace Vortice.Vulkan
 			vkCmdSetFragmentShadingRateEnumNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateEnumNV));
 			#endif
 			#if NETSTANDARD2_0
+			vkCmdSetVertexInputEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkVertexInputBindingDescription2EXT*, uint, VkVertexInputAttributeDescription2EXT*, void>) load(context, nameof(vkCmdSetVertexInputEXT));
+			#else
+			vkCmdSetVertexInputEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkVertexInputBindingDescription2EXT*, uint, VkVertexInputAttributeDescription2EXT*, void>) load(context, nameof(vkCmdSetVertexInputEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetColorWriteEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkBool32*, void>) load(context, nameof(vkCmdSetColorWriteEnableEXT));
+			#else
+			vkCmdSetColorWriteEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkBool32*, void>) load(context, nameof(vkCmdSetColorWriteEnableEXT));
+			#endif
+			#if NETSTANDARD2_0
 			vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));
 			#else
 			vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));
@@ -6417,6 +6597,66 @@ namespace Vortice.Vulkan
 			vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
 			#else
 			vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateVideoSessionKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult>) load(context, nameof(vkCreateVideoSessionKHR));
+			#else
+			vkCreateVideoSessionKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult>) load(context, nameof(vkCreateVideoSessionKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyVideoSessionKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyVideoSessionKHR));
+			#else
+			vkDestroyVideoSessionKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyVideoSessionKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetVideoSessionMemoryRequirementsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, uint*, VkVideoGetMemoryPropertiesKHR*, VkResult>) load(context, nameof(vkGetVideoSessionMemoryRequirementsKHR));
+			#else
+			vkGetVideoSessionMemoryRequirementsKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoSessionKHR, uint*, VkVideoGetMemoryPropertiesKHR*, VkResult>) load(context, nameof(vkGetVideoSessionMemoryRequirementsKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkBindVideoSessionMemoryKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, uint, VkVideoBindMemoryKHR*, VkResult>) load(context, nameof(vkBindVideoSessionMemoryKHR));
+			#else
+			vkBindVideoSessionMemoryKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoSessionKHR, uint, VkVideoBindMemoryKHR*, VkResult>) load(context, nameof(vkBindVideoSessionMemoryKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateVideoSessionParametersKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionParametersCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionParametersKHR*, VkResult>) load(context, nameof(vkCreateVideoSessionParametersKHR));
+			#else
+			vkCreateVideoSessionParametersKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoSessionParametersCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionParametersKHR*, VkResult>) load(context, nameof(vkCreateVideoSessionParametersKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkUpdateVideoSessionParametersKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionParametersKHR, VkVideoSessionParametersUpdateInfoKHR*, VkResult>) load(context, nameof(vkUpdateVideoSessionParametersKHR));
+			#else
+			vkUpdateVideoSessionParametersKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoSessionParametersKHR, VkVideoSessionParametersUpdateInfoKHR*, VkResult>) load(context, nameof(vkUpdateVideoSessionParametersKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyVideoSessionParametersKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionParametersKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyVideoSessionParametersKHR));
+			#else
+			vkDestroyVideoSessionParametersKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoSessionParametersKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyVideoSessionParametersKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdBeginVideoCodingKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoBeginCodingInfoKHR*, void>) load(context, nameof(vkCmdBeginVideoCodingKHR));
+			#else
+			vkCmdBeginVideoCodingKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkVideoBeginCodingInfoKHR*, void>) load(context, nameof(vkCmdBeginVideoCodingKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdEndVideoCodingKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoEndCodingInfoKHR*, void>) load(context, nameof(vkCmdEndVideoCodingKHR));
+			#else
+			vkCmdEndVideoCodingKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkVideoEndCodingInfoKHR*, void>) load(context, nameof(vkCmdEndVideoCodingKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdControlVideoCodingKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoCodingControlInfoKHR*, void>) load(context, nameof(vkCmdControlVideoCodingKHR));
+			#else
+			vkCmdControlVideoCodingKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkVideoCodingControlInfoKHR*, void>) load(context, nameof(vkCmdControlVideoCodingKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDecodeVideoKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoDecodeInfoKHR*, void>) load(context, nameof(vkCmdDecodeVideoKHR));
+			#else
+			vkCmdDecodeVideoKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkVideoDecodeInfoKHR*, void>) load(context, nameof(vkCmdDecodeVideoKHR));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdEncodeVideoKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoEncodeInfoKHR*, void>) load(context, nameof(vkCmdEncodeVideoKHR));
+			#else
+			vkCmdEncodeVideoKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void>) load(context, nameof(vkCmdEncodeVideoKHR));
 			#endif
 		}
 	}

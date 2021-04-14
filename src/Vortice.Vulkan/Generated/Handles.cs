@@ -932,4 +932,50 @@ namespace Vortice.Vulkan
 		private string DebuggerDisplay => string.Format("VkAccelerationStructureKHR [0x{0}]", Handle.ToString("X"));
 	}
 
+	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct VkVideoSessionKHR : IEquatable<VkVideoSessionKHR>
+	{
+		public VkVideoSessionKHR(ulong handle) { Handle = handle; }
+		public ulong Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkVideoSessionKHR Null => new VkVideoSessionKHR(0);
+		public static implicit operator VkVideoSessionKHR(ulong handle) => new VkVideoSessionKHR(handle);
+		public static bool operator ==(VkVideoSessionKHR left, VkVideoSessionKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(VkVideoSessionKHR left, VkVideoSessionKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(VkVideoSessionKHR left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkVideoSessionKHR left, ulong right) => left.Handle != right;
+		public bool Equals(VkVideoSessionKHR other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is VkVideoSessionKHR handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkVideoSessionKHR [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct VkVideoSessionParametersKHR : IEquatable<VkVideoSessionParametersKHR>
+	{
+		public VkVideoSessionParametersKHR(ulong handle) { Handle = handle; }
+		public ulong Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkVideoSessionParametersKHR Null => new VkVideoSessionParametersKHR(0);
+		public static implicit operator VkVideoSessionParametersKHR(ulong handle) => new VkVideoSessionParametersKHR(handle);
+		public static bool operator ==(VkVideoSessionParametersKHR left, VkVideoSessionParametersKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(VkVideoSessionParametersKHR left, VkVideoSessionParametersKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(VkVideoSessionParametersKHR left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkVideoSessionParametersKHR left, ulong right) => left.Handle != right;
+		public bool Equals(VkVideoSessionParametersKHR other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is VkVideoSessionParametersKHR handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkVideoSessionParametersKHR [0x{0}]", Handle.ToString("X"));
+	}
+
 }

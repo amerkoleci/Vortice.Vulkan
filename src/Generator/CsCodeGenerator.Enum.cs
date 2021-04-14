@@ -188,12 +188,15 @@ namespace Generator
                 }
 
                 createdEnums.Add(csName, cppEnum.Name);
+
+                bool noneAdded = false;
                 using (writer.PushBlock($"public enum {csName}"))
                 {
                     if (isBitmask &&
                         !cppEnum.Items.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "None"))
                     {
                         writer.WriteLine("None = 0,");
+                        noneAdded = true;
                     }
 
                     foreach (var enumItem in cppEnum.Items)
@@ -231,6 +234,11 @@ namespace Generator
                         if (!string.IsNullOrEmpty(extensionPrefix) && enumItemName.EndsWith(extensionPrefix))
                         {
                             enumItemName = enumItemName.Remove(enumItemName.Length - extensionPrefix.Length);
+                        }
+
+                        if(enumItemName == "None" && noneAdded)
+                        {
+                            continue;
                         }
 
                         //writer.WriteLine("/// <summary>");
