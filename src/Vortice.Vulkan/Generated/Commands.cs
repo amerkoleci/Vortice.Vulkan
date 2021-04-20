@@ -4014,6 +4014,56 @@ namespace Vortice.Vulkan
 		}
 
 		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void> vkCmdSetPatchControlPointsEXT_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetPatchControlPointsEXT_ptr;
+		#endif
+		public static void vkCmdSetPatchControlPointsEXT(VkCommandBuffer commandBuffer, uint patchControlPoints)
+		{
+			vkCmdSetPatchControlPointsEXT_ptr(commandBuffer, patchControlPoints);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetRasterizerDiscardEnableEXT_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetRasterizerDiscardEnableEXT_ptr;
+		#endif
+		public static void vkCmdSetRasterizerDiscardEnableEXT(VkCommandBuffer commandBuffer, VkBool32 rasterizerDiscardEnable)
+		{
+			vkCmdSetRasterizerDiscardEnableEXT_ptr(commandBuffer, rasterizerDiscardEnable);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBiasEnableEXT_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBiasEnableEXT_ptr;
+		#endif
+		public static void vkCmdSetDepthBiasEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBiasEnable)
+		{
+			vkCmdSetDepthBiasEnableEXT_ptr(commandBuffer, depthBiasEnable);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkLogicOp, void> vkCmdSetLogicOpEXT_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, VkLogicOp, void> vkCmdSetLogicOpEXT_ptr;
+		#endif
+		public static void vkCmdSetLogicOpEXT(VkCommandBuffer commandBuffer, VkLogicOp logicOp)
+		{
+			vkCmdSetLogicOpEXT_ptr(commandBuffer, logicOp);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetPrimitiveRestartEnableEXT_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetPrimitiveRestartEnableEXT_ptr;
+		#endif
+		public static void vkCmdSetPrimitiveRestartEnableEXT(VkCommandBuffer commandBuffer, VkBool32 primitiveRestartEnable)
+		{
+			vkCmdSetPrimitiveRestartEnableEXT_ptr(commandBuffer, primitiveRestartEnable);
+		}
+
+		#if NETSTANDARD2_0
 		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkBool32*, void> vkCmdSetColorWriteEnableEXT_ptr;
 		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, VkBool32*, void> vkCmdSetColorWriteEnableEXT_ptr;
@@ -6472,6 +6522,31 @@ namespace Vortice.Vulkan
 			vkCmdSetVertexInputEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkVertexInputBindingDescription2EXT*, uint, VkVertexInputAttributeDescription2EXT*, void>) load(context, nameof(vkCmdSetVertexInputEXT));
 			#else
 			vkCmdSetVertexInputEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkVertexInputBindingDescription2EXT*, uint, VkVertexInputAttributeDescription2EXT*, void>) load(context, nameof(vkCmdSetVertexInputEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetPatchControlPointsEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetPatchControlPointsEXT));
+			#else
+			vkCmdSetPatchControlPointsEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetPatchControlPointsEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetRasterizerDiscardEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetRasterizerDiscardEnableEXT));
+			#else
+			vkCmdSetRasterizerDiscardEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetRasterizerDiscardEnableEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetDepthBiasEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthBiasEnableEXT));
+			#else
+			vkCmdSetDepthBiasEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthBiasEnableEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetLogicOpEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkLogicOp, void>) load(context, nameof(vkCmdSetLogicOpEXT));
+			#else
+			vkCmdSetLogicOpEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkLogicOp, void>) load(context, nameof(vkCmdSetLogicOpEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSetPrimitiveRestartEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetPrimitiveRestartEnableEXT));
+			#else
+			vkCmdSetPrimitiveRestartEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetPrimitiveRestartEnableEXT));
 			#endif
 			#if NETSTANDARD2_0
 			vkCmdSetColorWriteEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkBool32*, void>) load(context, nameof(vkCmdSetColorWriteEnableEXT));

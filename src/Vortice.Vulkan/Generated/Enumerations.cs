@@ -599,6 +599,7 @@ namespace Vortice.Vulkan
 		MemoryGetZirconHandleInfoFuchsia = 1000364002,
 		ImportSemaphoreZirconHandleInfoFuchsia = 1000365000,
 		SemaphoreGetZirconHandleInfoFuchsia = 1000365001,
+		PhysicalDeviceExtendedDynamicState2FeaturesEXT = 1000377000,
 		ScreenSurfaceCreateInfoQnx = 1000378000,
 		PhysicalDeviceColorWriteEnableFeaturesEXT = 1000381000,
 		PipelineColorWriteCreateInfoEXT = 1000381001,
@@ -1307,6 +1308,11 @@ namespace Vortice.Vulkan
 		StencilTestEnableEXT = 1000267010,
 		StencilOpEXT = 1000267011,
 		VertexInputEXT = 1000352000,
+		PatchControlPointsEXT = 1000377000,
+		RasterizerDiscardEnableEXT = 1000377001,
+		DepthBiasEnableEXT = 1000377002,
+		LogicOpEXT = 1000377003,
+		PrimitiveRestartEnableEXT = 1000377004,
 		ColorWriteEnableEXT = 1000381000,
 	}
 

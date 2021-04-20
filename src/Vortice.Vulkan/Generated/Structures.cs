@@ -5745,6 +5745,16 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 extendedDynamicState2;
+		public VkBool32 extendedDynamicState2LogicOp;
+		public VkBool32 extendedDynamicState2PatchControlPoints;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceColorWriteEnableFeaturesEXT
 	{
 		public VkStructureType sType;

@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 175
+		/// VK_HEADER_VERSION = 176
 		/// </summary>
-		public const uint HeaderVersion = 175;
+		public const uint HeaderVersion = 176;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -927,9 +927,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTDebugReport = 1;
 		/// <summary>
-		/// VK_EXT_DEBUG_REPORT_SPEC_VERSION = 9
+		/// VK_EXT_DEBUG_REPORT_SPEC_VERSION = 10
 		/// </summary>
-		public const uint EXTDebugReportSpecVersion = 9;
+		public const uint EXTDebugReportSpecVersion = 10;
 		/// <summary>
 		/// VK_EXT_DEBUG_REPORT_EXTENSION_NAME = "VK_EXT_debug_report"
 		/// </summary>
@@ -1815,9 +1815,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTCalibratedTimestamps = 1;
 		/// <summary>
-		/// VK_EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION = 1
+		/// VK_EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION = 2
 		/// </summary>
-		public const uint EXTCalibratedTimestampsSpecVersion = 1;
+		public const uint EXTCalibratedTimestampsSpecVersion = 2;
 		/// <summary>
 		/// VK_EXT_CALIBRATED_TIMESTAMPS_EXTENSION_NAME = "VK_EXT_calibrated_timestamps"
 		/// </summary>
@@ -2499,9 +2499,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint QcomRotatedCopyCommands = 1;
 		/// <summary>
-		/// VK_QCOM_ROTATED_COPY_COMMANDS_SPEC_VERSION = 0
+		/// VK_QCOM_ROTATED_COPY_COMMANDS_SPEC_VERSION = 1
 		/// </summary>
-		public const uint QcomRotatedCopyCommandsSpecVersion = 0;
+		public const uint QcomRotatedCopyCommandsSpecVersion = 1;
 		/// <summary>
 		/// VK_QCOM_ROTATED_COPY_COMMANDS_EXTENSION_NAME = "VK_QCOM_rotated_copy_commands"
 		/// </summary>
@@ -2566,6 +2566,18 @@ namespace Vortice.Vulkan
 		/// VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_vertex_input_dynamic_state"
 		/// </summary>
 		public const string EXTVertexInputDynamicStateExtensionName = "VK_EXT_vertex_input_dynamic_state";
+		/// <summary>
+		/// VK_EXT_extended_dynamic_state2 = 1
+		/// </summary>
+		public const uint EXTExtendedDynamicState2 = 1;
+		/// <summary>
+		/// VK_EXT_EXTENDED_DYNAMIC_STATE_2_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTExtendedDynamicState2SpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME = "VK_EXT_extended_dynamic_state2"
+		/// </summary>
+		public const string EXTExtendedDynamicState2ExtensionName = "VK_EXT_extended_dynamic_state2";
 		/// <summary>
 		/// VK_EXT_color_write_enable = 1
 		/// </summary>
@@ -2727,9 +2739,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint KHRVideoEncodeQueue = 1;
 		/// <summary>
-		/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 1
+		/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 2
 		/// </summary>
-		public const uint KHRVideoEncodeQueueSpecVersion = 1;
+		public const uint KHRVideoEncodeQueueSpecVersion = 2;
 		/// <summary>
 		/// VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue"
 		/// </summary>
