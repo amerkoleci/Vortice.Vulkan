@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 176
+		/// VK_HEADER_VERSION = 177
 		/// </summary>
-		public const uint HeaderVersion = 176;
+		public const uint HeaderVersion = 177;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -2231,6 +2231,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXTYcbcrImageArraysExtensionName = "VK_EXT_ycbcr_image_arrays";
 		/// <summary>
+		/// VK_EXT_provoking_vertex = 1
+		/// </summary>
+		public const uint EXTProvokingVertex = 1;
+		/// <summary>
+		/// VK_EXT_PROVOKING_VERTEX_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTProvokingVertexSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_PROVOKING_VERTEX_EXTENSION_NAME = "VK_EXT_provoking_vertex"
+		/// </summary>
+		public const string EXTProvokingVertexExtensionName = "VK_EXT_provoking_vertex";
+		/// <summary>
 		/// VK_EXT_headless_surface = 1
 		/// </summary>
 		public const uint EXTHeadlessSurface = 1;
@@ -2451,11 +2463,11 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint QcomRenderPassStoreOps = 1;
 		/// <summary>
-		/// VK_QCOM_render_pass_store_ops_SPEC_VERSION = 2
+		/// VK_QCOM_RENDER_PASS_STORE_OPS_SPEC_VERSION = 2
 		/// </summary>
 		public const uint QcomRenderPassStoreOpsSpecVersion = 2;
 		/// <summary>
-		/// VK_QCOM_render_pass_store_ops_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops"
+		/// VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops"
 		/// </summary>
 		public const string QcomRenderPassStoreOpsExtensionName = "VK_QCOM_render_pass_store_ops";
 		/// <summary>

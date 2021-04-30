@@ -510,6 +510,9 @@ namespace Vortice.Vulkan
 		FramebufferMixedSamplesCombinationNV = 1000250002,
 		PhysicalDeviceFragmentShaderInterlockFeaturesEXT = 1000251000,
 		PhysicalDeviceYcbcrImageArraysFeaturesEXT = 1000252000,
+		PhysicalDeviceProvokingVertexFeaturesEXT = 1000254000,
+		PipelineRasterizationProvokingVertexStateCreateInfoEXT = 1000254001,
+		PhysicalDeviceProvokingVertexPropertiesEXT = 1000254002,
 		SurfaceFullScreenExclusiveInfoEXT = 1000255000,
 		SurfaceCapabilitiesFullScreenExclusiveEXT = 1000255002,
 		SurfaceFullScreenExclusiveWin32InfoEXT = 1000255001,
@@ -2931,6 +2934,12 @@ namespace Vortice.Vulkan
 		ModeTruncate = 1,
 	}
 
+	public enum VkProvokingVertexModeEXT
+	{
+		FirstVertex = 0,
+		LastVertex = 1,
+	}
+
 	public enum VkLineRasterizationModeEXT
 	{
 		Default = 0,
@@ -3793,7 +3802,6 @@ namespace Vortice.Vulkan
 		FragmentDensityProcessEXT = 8388608,
 		TaskShaderNV = 524288,
 		MeshShaderNV = 1048576,
-		VK_PIPELINE_STAGE_FLAG_BITS_2KHR_MAX_ENUM_KHR = 9223372036854775807,
 	}
 
 	[Flags]
@@ -3838,6 +3846,5 @@ namespace Vortice.Vulkan
 		AccelerationStructureWriteNV = 4194304,
 		FragmentDensityMapReadEXT = 16777216,
 		ColorAttachmentReadNoncoherentEXT = 524288,
-		VK_ACCESS_FLAG_BITS_2KHR_MAX_ENUM_KHR = 9223372036854775807,
 	}
 }

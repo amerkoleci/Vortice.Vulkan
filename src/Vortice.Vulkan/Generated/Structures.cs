@@ -5199,6 +5199,32 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceProvokingVertexFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 provokingVertexLast;
+		public VkBool32 transformFeedbackPreservesProvokingVertex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceProvokingVertexPropertiesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 provokingVertexModePerPipeline;
+		public VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineRasterizationProvokingVertexStateCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkProvokingVertexModeEXT provokingVertexMode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkHeadlessSurfaceCreateInfoEXT
 	{
 		public VkStructureType sType;
