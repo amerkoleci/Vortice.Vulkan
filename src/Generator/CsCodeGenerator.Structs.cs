@@ -151,7 +151,7 @@ namespace Generator
                     builder.Append(returnCsName);
 
                     writer.WriteLine("#if NETSTANDARD2_0");
-                    writer.WriteLine($"public unsafe delegate* unmanaged[Stdcall]<{builder}> {csFieldName};");
+                    writer.WriteLine($"public IntPtr {csFieldName};");
                     writer.WriteLine("#else");
                     writer.WriteLine($"public unsafe delegate* unmanaged<{builder}> {csFieldName};");
                     writer.WriteLine("#endif");
