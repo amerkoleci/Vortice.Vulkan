@@ -20,7 +20,7 @@ namespace Vortice.Vulkan
        byte* pMessage,
        void* pUserData);
 
-    public unsafe delegate VkBool32 PFN_vkDebugUtilsMessengerCallbackEXT(
+    public unsafe delegate uint PFN_vkDebugUtilsMessengerCallbackEXT(
         VkDebugUtilsMessageSeverityFlagsEXT messageSeverity,
         VkDebugUtilsMessageTypeFlagsEXT messageTypes,
         VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,

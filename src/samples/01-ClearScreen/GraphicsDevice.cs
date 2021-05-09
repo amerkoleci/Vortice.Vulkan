@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Vortice.ShaderCompiler;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 using static Vortice.Win32.Kernel32;
@@ -16,6 +15,11 @@ namespace Vortice
         private static readonly string[] s_RequestedValidationLayers = new[] { "VK_LAYER_KHRONOS_validation" };
 
         public readonly VkInstance VkInstance;
+
+#if !NET5_0
+        private readonly PFN_vkDebugUtilsMessengerCallbackEXT DebugMessagerCallbackDelegate = DebugMessengerCallback;
+#endif
+
         private readonly VkDebugUtilsMessengerEXT _debugMessenger = VkDebugUtilsMessengerEXT.Null;
         internal readonly VkSurfaceKHR _surface;
         public readonly VkPhysicalDevice PhysicalDevice;
@@ -87,7 +91,11 @@ namespace Vortice
             {
                 debugUtilsCreateInfo.messageSeverity = VkDebugUtilsMessageSeverityFlagsEXT.Error | VkDebugUtilsMessageSeverityFlagsEXT.Warning;
                 debugUtilsCreateInfo.messageType = VkDebugUtilsMessageTypeFlagsEXT.Validation | VkDebugUtilsMessageTypeFlagsEXT.Performance;
+#if NET5_0
                 debugUtilsCreateInfo.pfnUserCallback = &DebugMessengerCallback;
+#else
+                debugUtilsCreateInfo.pfnUserCallback = Marshal.GetFunctionPointerForDelegate(DebugMessagerCallbackDelegate);
+#endif
 
                 instanceCreateInfo.pNext = &debugUtilsCreateInfo;
             }
@@ -475,7 +483,9 @@ namespace Vortice
             return surface;
         }
 
+#if NET5_0
         [UnmanagedCallersOnly]
+#endif
         private static uint DebugMessengerCallback(VkDebugUtilsMessageSeverityFlagsEXT messageSeverity,
             VkDebugUtilsMessageTypeFlagsEXT messageTypes,
             VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
