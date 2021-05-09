@@ -200,6 +200,46 @@ vkCreateInstance_ptr = (delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAl
             return VkVersion.Version_1_0;
         }
 
+        public static VkResult vkAllocateCommandBuffer(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, out VkCommandBuffer commandBuffer)
+        {
+            fixed (VkCommandBuffer* ptr = &commandBuffer)
+            {
+                return vkAllocateCommandBuffers(device, allocateInfo, ptr);
+            }
+        }
+
+        public static VkResult vkAllocateCommandBuffer(VkDevice device, VkCommandPool commandPool, out VkCommandBuffer commandBuffer)
+        {
+            VkCommandBufferAllocateInfo allocateInfo = new()
+            {
+                sType = VkStructureType.CommandBufferAllocateInfo,
+                commandPool = commandPool,
+                level = VkCommandBufferLevel.Primary,
+                commandBufferCount = 1
+            };
+
+            fixed (VkCommandBuffer* ptr = &commandBuffer)
+            {
+                return vkAllocateCommandBuffers(device, &allocateInfo, ptr);
+            }
+        }
+
+        public static VkResult vkAllocateCommandBuffer(VkDevice device, VkCommandPool commandPool, VkCommandBufferLevel level, out VkCommandBuffer commandBuffer)
+        {
+            VkCommandBufferAllocateInfo allocateInfo = new()
+            {
+                sType = VkStructureType.CommandBufferAllocateInfo,
+                commandPool = commandPool,
+                level = level,
+                commandBufferCount = 1
+            };
+
+            fixed (VkCommandBuffer* ptr = &commandBuffer)
+            {
+                return vkAllocateCommandBuffers(device, &allocateInfo, ptr);
+            }
+        }
+
         public static VkResult vkCreateShaderModule(VkDevice device, nuint codeSize, byte* code, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
         {
             var createInfo = new VkShaderModuleCreateInfo
@@ -242,6 +282,22 @@ vkCreateInstance_ptr = (delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAl
             }
         }
 
+        public static VkResult vkCreateGraphicsPipeline(VkDevice device, VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
+        {
+            fixed (VkPipeline* pipelinePtr = &pipeline)
+            {
+                return vkCreateGraphicsPipelines(device, VkPipelineCache.Null, 1, &createInfo, null, pipelinePtr);
+            }
+        }
+
+        public static VkResult vkCreateGraphicsPipeline(VkDevice device, VkPipelineCache pipelineCache, VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
+        {
+            fixed (VkPipeline* pipelinePtr = &pipeline)
+            {
+                return vkCreateGraphicsPipelines(device, pipelineCache, 1, &createInfo, null, pipelinePtr);
+            }
+        }
+
         public static VkResult vkCreateGraphicsPipeline(VkDevice device, VkPipelineCache pipelineCache, VkGraphicsPipelineCreateInfo createInfo, VkPipeline* pipeline)
         {
             return vkCreateGraphicsPipelines_ptr(device, pipelineCache, 1, &createInfo, null, pipeline);
@@ -259,6 +315,22 @@ vkCreateInstance_ptr = (delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAl
                 {
                     return vkCreateGraphicsPipelines(device, pipelineCache, (uint)createInfos.Length, createInfosPtr, null, pipelinesPtr);
                 }
+            }
+        }
+
+        public static VkResult vkCreateComputePipeline(VkDevice device, VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
+        {
+            fixed (VkPipeline* pipelinePtr = &pipeline)
+            {
+                return vkCreateComputePipelines(device, VkPipelineCache.Null, 1, &createInfo, null, pipelinePtr);
+            }
+        }
+
+        public static VkResult vkCreateComputePipeline(VkDevice device, VkPipelineCache pipelineCache, VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
+        {
+            fixed (VkPipeline* pipelinePtr = &pipeline)
+            {
+                return vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, pipelinePtr);
             }
         }
 

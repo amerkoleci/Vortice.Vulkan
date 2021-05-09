@@ -263,17 +263,7 @@ namespace Vortice
                 };
                 vkCreateCommandPool(VkDevice, &poolCreateInfo, null, out _perFrame[i].PrimaryCommandPool).CheckResult();
 
-                VkCommandBufferAllocateInfo commandBufferInfo = new VkCommandBufferAllocateInfo
-                {
-                    sType = VkStructureType.CommandBufferAllocateInfo,
-                    commandPool = _perFrame[i].PrimaryCommandPool,
-                    level = VkCommandBufferLevel.Primary,
-                    commandBufferCount = 1
-                };
-
-                VkCommandBuffer commandBuffer;
-                vkAllocateCommandBuffers(VkDevice, &commandBufferInfo, &commandBuffer).CheckResult();
-                _perFrame[i].PrimaryCommandBuffer = commandBuffer;
+                vkAllocateCommandBuffer(VkDevice, _perFrame[i].PrimaryCommandPool, out _perFrame[i].PrimaryCommandBuffer).CheckResult();
             }
         }
 
