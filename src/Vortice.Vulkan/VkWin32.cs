@@ -2,6 +2,7 @@
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Vortice.Vulkan
 {
@@ -18,6 +19,16 @@ namespace Vortice.Vulkan
         public VkWin32SurfaceCreateFlagsKHR flags;
         public IntPtr hinstance;
         public IntPtr hwnd;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct VkImportMemoryWin32HandleInfoKHR
+    {
+        public VkStructureType sType;
+        public unsafe void* pNext;
+        public VkExternalMemoryHandleTypeFlags handleType;
+        public IntPtr handle;
+        public IntPtr name;
     }
 
     public static unsafe partial class Vulkan
