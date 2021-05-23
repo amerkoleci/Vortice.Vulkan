@@ -3689,6 +3689,43 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCuModuleCreateInfoNVX
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public nuint dataSize;
+		public unsafe void* pData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCuFunctionCreateInfoNVX
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkCuModuleNVX module;
+		public unsafe byte* pName;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCuLaunchInfoNVX
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkCuFunctionNVX function;
+		public uint gridDimX;
+		public uint gridDimY;
+		public uint gridDimZ;
+		public uint blockDimX;
+		public uint blockDimY;
+		public uint blockDimZ;
+		public uint sharedMemBytes;
+		public nuint paramCount;
+		public unsafe void** pParams;
+		public nuint extraCount;
+		public unsafe void** pExtras;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkImageViewHandleInfoNVX
 	{
 		public VkStructureType sType;

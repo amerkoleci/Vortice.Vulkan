@@ -775,6 +775,52 @@ namespace Vortice.Vulkan
 	/// A non-dispatchable handle.
 	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct VkCuModuleNVX : IEquatable<VkCuModuleNVX>
+	{
+		public VkCuModuleNVX(ulong handle) { Handle = handle; }
+		public ulong Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkCuModuleNVX Null => new VkCuModuleNVX(0);
+		public static implicit operator VkCuModuleNVX(ulong handle) => new VkCuModuleNVX(handle);
+		public static bool operator ==(VkCuModuleNVX left, VkCuModuleNVX right) => left.Handle == right.Handle;
+		public static bool operator !=(VkCuModuleNVX left, VkCuModuleNVX right) => left.Handle != right.Handle;
+		public static bool operator ==(VkCuModuleNVX left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkCuModuleNVX left, ulong right) => left.Handle != right;
+		public bool Equals(VkCuModuleNVX other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is VkCuModuleNVX handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkCuModuleNVX [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct VkCuFunctionNVX : IEquatable<VkCuFunctionNVX>
+	{
+		public VkCuFunctionNVX(ulong handle) { Handle = handle; }
+		public ulong Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkCuFunctionNVX Null => new VkCuFunctionNVX(0);
+		public static implicit operator VkCuFunctionNVX(ulong handle) => new VkCuFunctionNVX(handle);
+		public static bool operator ==(VkCuFunctionNVX left, VkCuFunctionNVX right) => left.Handle == right.Handle;
+		public static bool operator !=(VkCuFunctionNVX left, VkCuFunctionNVX right) => left.Handle != right.Handle;
+		public static bool operator ==(VkCuFunctionNVX left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkCuFunctionNVX left, ulong right) => left.Handle != right;
+		public bool Equals(VkCuFunctionNVX other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is VkCuFunctionNVX handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkCuFunctionNVX [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct VkDebugUtilsMessengerEXT : IEquatable<VkDebugUtilsMessengerEXT>
 	{
 		public VkDebugUtilsMessengerEXT(ulong handle) { Handle = handle; }

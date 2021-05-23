@@ -2954,6 +2954,56 @@ namespace Vortice.Vulkan
 		}
 
 		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkCuModuleCreateInfoNVX*, VkAllocationCallbacks*, VkCuModuleNVX*, VkResult> vkCreateCuModuleNVX_ptr;
+		#else
+		private static delegate* unmanaged<VkDevice, VkCuModuleCreateInfoNVX*, VkAllocationCallbacks*, VkCuModuleNVX*, VkResult> vkCreateCuModuleNVX_ptr;
+		#endif
+		public static VkResult vkCreateCuModuleNVX(VkDevice device, VkCuModuleCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, VkCuModuleNVX* module)
+		{
+			return vkCreateCuModuleNVX_ptr(device, createInfo, allocator, module);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkCuFunctionCreateInfoNVX*, VkAllocationCallbacks*, VkCuFunctionNVX*, VkResult> vkCreateCuFunctionNVX_ptr;
+		#else
+		private static delegate* unmanaged<VkDevice, VkCuFunctionCreateInfoNVX*, VkAllocationCallbacks*, VkCuFunctionNVX*, VkResult> vkCreateCuFunctionNVX_ptr;
+		#endif
+		public static VkResult vkCreateCuFunctionNVX(VkDevice device, VkCuFunctionCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, VkCuFunctionNVX* function)
+		{
+			return vkCreateCuFunctionNVX_ptr(device, createInfo, allocator, function);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkCuModuleNVX, VkAllocationCallbacks*, void> vkDestroyCuModuleNVX_ptr;
+		#else
+		private static delegate* unmanaged<VkDevice, VkCuModuleNVX, VkAllocationCallbacks*, void> vkDestroyCuModuleNVX_ptr;
+		#endif
+		public static void vkDestroyCuModuleNVX(VkDevice device, VkCuModuleNVX module, VkAllocationCallbacks* allocator)
+		{
+			vkDestroyCuModuleNVX_ptr(device, module, allocator);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkCuFunctionNVX, VkAllocationCallbacks*, void> vkDestroyCuFunctionNVX_ptr;
+		#else
+		private static delegate* unmanaged<VkDevice, VkCuFunctionNVX, VkAllocationCallbacks*, void> vkDestroyCuFunctionNVX_ptr;
+		#endif
+		public static void vkDestroyCuFunctionNVX(VkDevice device, VkCuFunctionNVX function, VkAllocationCallbacks* allocator)
+		{
+			vkDestroyCuFunctionNVX_ptr(device, function, allocator);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCuLaunchInfoNVX*, void> vkCmdCuLaunchKernelNVX_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, VkCuLaunchInfoNVX*, void> vkCmdCuLaunchKernelNVX_ptr;
+		#endif
+		public static void vkCmdCuLaunchKernelNVX(VkCommandBuffer commandBuffer, VkCuLaunchInfoNVX* launchInfo)
+		{
+			vkCmdCuLaunchKernelNVX_ptr(commandBuffer, launchInfo);
+		}
+
+		#if NETSTANDARD2_0
 		private static delegate* unmanaged[Stdcall]<VkDevice, VkImageViewHandleInfoNVX*, uint> vkGetImageViewHandleNVX_ptr;
 		#else
 		private static delegate* unmanaged<VkDevice, VkImageViewHandleInfoNVX*, uint> vkGetImageViewHandleNVX_ptr;
@@ -6102,6 +6152,31 @@ namespace Vortice.Vulkan
 			vkCmdDrawIndirectByteCountEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectByteCountEXT));
 			#else
 			vkCmdDrawIndirectByteCountEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectByteCountEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateCuModuleNVX_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkCuModuleCreateInfoNVX*, VkAllocationCallbacks*, VkCuModuleNVX*, VkResult>) load(context, nameof(vkCreateCuModuleNVX));
+			#else
+			vkCreateCuModuleNVX_ptr = (delegate* unmanaged<VkDevice, VkCuModuleCreateInfoNVX*, VkAllocationCallbacks*, VkCuModuleNVX*, VkResult>) load(context, nameof(vkCreateCuModuleNVX));
+			#endif
+			#if NETSTANDARD2_0
+			vkCreateCuFunctionNVX_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkCuFunctionCreateInfoNVX*, VkAllocationCallbacks*, VkCuFunctionNVX*, VkResult>) load(context, nameof(vkCreateCuFunctionNVX));
+			#else
+			vkCreateCuFunctionNVX_ptr = (delegate* unmanaged<VkDevice, VkCuFunctionCreateInfoNVX*, VkAllocationCallbacks*, VkCuFunctionNVX*, VkResult>) load(context, nameof(vkCreateCuFunctionNVX));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyCuModuleNVX_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkCuModuleNVX, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyCuModuleNVX));
+			#else
+			vkDestroyCuModuleNVX_ptr = (delegate* unmanaged<VkDevice, VkCuModuleNVX, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyCuModuleNVX));
+			#endif
+			#if NETSTANDARD2_0
+			vkDestroyCuFunctionNVX_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkCuFunctionNVX, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyCuFunctionNVX));
+			#else
+			vkDestroyCuFunctionNVX_ptr = (delegate* unmanaged<VkDevice, VkCuFunctionNVX, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyCuFunctionNVX));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdCuLaunchKernelNVX_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCuLaunchInfoNVX*, void>) load(context, nameof(vkCmdCuLaunchKernelNVX));
+			#else
+			vkCmdCuLaunchKernelNVX_ptr = (delegate* unmanaged<VkCommandBuffer, VkCuLaunchInfoNVX*, void>) load(context, nameof(vkCmdCuLaunchKernelNVX));
 			#endif
 			#if NETSTANDARD2_0
 			vkGetImageViewHandleNVX_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageViewHandleInfoNVX*, uint>) load(context, nameof(vkGetImageViewHandleNVX));

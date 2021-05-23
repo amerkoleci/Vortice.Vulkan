@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 177
+		/// VK_HEADER_VERSION = 178
 		/// </summary>
-		public const uint HeaderVersion = 177;
+		public const uint HeaderVersion = 178;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -1054,6 +1054,18 @@ namespace Vortice.Vulkan
 		/// VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME = "VK_EXT_transform_feedback"
 		/// </summary>
 		public const string EXTTransformFeedbackExtensionName = "VK_EXT_transform_feedback";
+		/// <summary>
+		/// VK_NVX_binary_import = 1
+		/// </summary>
+		public const uint NVXBinaryImport = 1;
+		/// <summary>
+		/// VK_NVX_BINARY_IMPORT_SPEC_VERSION = 1
+		/// </summary>
+		public const uint NVXBinaryImportSpecVersion = 1;
+		/// <summary>
+		/// VK_NVX_BINARY_IMPORT_EXTENSION_NAME = "VK_NVX_binary_import"
+		/// </summary>
+		public const string NVXBinaryImportExtensionName = "VK_NVX_binary_import";
 		/// <summary>
 		/// VK_NVX_image_view_handle = 1
 		/// </summary>
