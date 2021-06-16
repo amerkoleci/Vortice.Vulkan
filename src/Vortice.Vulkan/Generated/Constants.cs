@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 178
+		/// VK_HEADER_VERSION = 181
 		/// </summary>
-		public const uint HeaderVersion = 178;
+		public const uint HeaderVersion = 181;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -886,6 +886,18 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2"
 		/// </summary>
 		public const string KHRSynchronization2ExtensionName = "VK_KHR_synchronization2";
+		/// <summary>
+		/// VK_KHR_shader_subgroup_uniform_control_flow = 1
+		/// </summary>
+		public const uint KHRShaderSubgroupUniformControlFlow = 1;
+		/// <summary>
+		/// VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRShaderSubgroupUniformControlFlowSpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_EXTENSION_NAME = "VK_KHR_shader_subgroup_uniform_control_flow"
+		/// </summary>
+		public const string KHRShaderSubgroupUniformControlFlowExtensionName = "VK_KHR_shader_subgroup_uniform_control_flow";
 		/// <summary>
 		/// VK_KHR_zero_initialize_workgroup_memory = 1
 		/// </summary>
@@ -2187,9 +2199,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTValidationFeatures = 1;
 		/// <summary>
-		/// VK_EXT_VALIDATION_FEATURES_SPEC_VERSION = 4
+		/// VK_EXT_VALIDATION_FEATURES_SPEC_VERSION = 5
 		/// </summary>
-		public const uint EXTValidationFeaturesSpecVersion = 4;
+		public const uint EXTValidationFeaturesSpecVersion = 5;
 		/// <summary>
 		/// VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME = "VK_EXT_validation_features"
 		/// </summary>
@@ -2614,6 +2626,22 @@ namespace Vortice.Vulkan
 		/// VK_EXT_COLOR_WRITE_ENABLE_EXTENSION_NAME = "VK_EXT_color_write_enable"
 		/// </summary>
 		public const string EXTColorWriteEnableExtensionName = "VK_EXT_color_write_enable";
+		/// <summary>
+		/// VK_EXT_global_priority_query = 1
+		/// </summary>
+		public const uint EXTGlobalPriorityQuery = 1;
+		/// <summary>
+		/// VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = 16U
+		/// </summary>
+		public const uint MaxGlobalPrioritySizeEXT = 16U;
+		/// <summary>
+		/// VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTGlobalPriorityQuerySpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query"
+		/// </summary>
+		public const string EXTGlobalPriorityQueryExtensionName = "VK_EXT_global_priority_query";
 		/// <summary>
 		/// VK_KHR_acceleration_structure = 1
 		/// </summary>

@@ -3422,6 +3422,14 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 shaderSubgroupUniformControlFlow;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR
 	{
 		public VkStructureType sType;
@@ -5832,6 +5840,38 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public uint attachmentCount;
 		public unsafe VkBool32* pColorWriteEnables;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceGlobalPriorityQueryFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 globalPriorityQuery;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkQueueFamilyGlobalPriorityPropertiesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint priorityCount;
+		public VkQueueGlobalPriorityEXT priorities_0;
+		public VkQueueGlobalPriorityEXT priorities_1;
+		public VkQueueGlobalPriorityEXT priorities_2;
+		public VkQueueGlobalPriorityEXT priorities_3;
+		public VkQueueGlobalPriorityEXT priorities_4;
+		public VkQueueGlobalPriorityEXT priorities_5;
+		public VkQueueGlobalPriorityEXT priorities_6;
+		public VkQueueGlobalPriorityEXT priorities_7;
+		public VkQueueGlobalPriorityEXT priorities_8;
+		public VkQueueGlobalPriorityEXT priorities_9;
+		public VkQueueGlobalPriorityEXT priorities_10;
+		public VkQueueGlobalPriorityEXT priorities_11;
+		public VkQueueGlobalPriorityEXT priorities_12;
+		public VkQueueGlobalPriorityEXT priorities_13;
+		public VkQueueGlobalPriorityEXT priorities_14;
+		public VkQueueGlobalPriorityEXT priorities_15;
 	}
 
 	[StructLayout(LayoutKind.Explicit)]

@@ -572,6 +572,7 @@ namespace Vortice.Vulkan
 		PhysicalDeviceSynchronization2FeaturesKHR = 1000314007,
 		QueueFamilyCheckpointProperties2NV = 1000314008,
 		CheckpointData2NV = 1000314009,
+		PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR = 1000323000,
 		PhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR = 1000325000,
 		PhysicalDeviceFragmentShadingRateEnumsPropertiesNV = 1000326000,
 		PhysicalDeviceFragmentShadingRateEnumsFeaturesNV = 1000326001,
@@ -609,6 +610,8 @@ namespace Vortice.Vulkan
 		ScreenSurfaceCreateInfoQnx = 1000378000,
 		PhysicalDeviceColorWriteEnableFeaturesEXT = 1000381000,
 		PipelineColorWriteCreateInfoEXT = 1000381001,
+		PhysicalDeviceGlobalPriorityQueryFeaturesEXT = 1000388000,
+		QueueFamilyGlobalPriorityPropertiesEXT = 1000388001,
 		PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 		PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 		DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
@@ -746,8 +749,8 @@ namespace Vortice.Vulkan
 		VideoDecodeSrcKHR = 1000024001,
 		VideoDecodeDpbKHR = 1000024002,
 		SharedPresentKHR = 1000111000,
-		ShadingRateOptimalNV = 1000164003,
 		FragmentDensityMapOptimalEXT = 1000218000,
+		FragmentShadingRateAttachmentOptimalKHR = 1000164003,
 		VideoEncodeDstKHR = 1000299000,
 		VideoEncodeSrcKHR = 1000299001,
 		VideoEncodeDpbKHR = 1000299002,
@@ -755,7 +758,7 @@ namespace Vortice.Vulkan
 		AttachmentOptimalKHR = 1000314001,
 		DepthReadOnlyStencilAttachmentOptimalKHR = DepthReadOnlyStencilAttachmentOptimal,
 		DepthAttachmentStencilReadOnlyOptimalKHR = DepthAttachmentStencilReadOnlyOptimal,
-		FragmentShadingRateAttachmentOptimalKHR = ShadingRateOptimalNV,
+		ShadingRateOptimalNV = FragmentShadingRateAttachmentOptimalKHR,
 		DepthAttachmentOptimalKHR = DepthAttachmentOptimal,
 		DepthReadOnlyOptimalKHR = DepthReadOnlyOptimal,
 		StencilAttachmentOptimalKHR = StencilAttachmentOptimal,
@@ -1517,14 +1520,14 @@ namespace Vortice.Vulkan
 		ColorAttachmentReadNoncoherentEXT = 524288,
 		AccelerationStructureReadKHR = 2097152,
 		AccelerationStructureWriteKHR = 4194304,
-		ShadingRateImageReadNV = 8388608,
 		FragmentDensityMapReadEXT = 16777216,
+		FragmentShadingRateAttachmentReadKHR = 8388608,
 		CommandPreprocessReadNV = 131072,
 		CommandPreprocessWriteNV = 262144,
 		NoneKHR = 0,
+		ShadingRateImageReadNV = FragmentShadingRateAttachmentReadKHR,
 		AccelerationStructureReadNV = AccelerationStructureReadKHR,
 		AccelerationStructureWriteNV = AccelerationStructureWriteKHR,
-		FragmentShadingRateAttachmentReadKHR = ShadingRateImageReadNV,
 	}
 
 	[Flags]
@@ -1650,12 +1653,12 @@ namespace Vortice.Vulkan
 		VideoDecodeDstKHR = 1024,
 		VideoDecodeSrcKHR = 2048,
 		VideoDecodeDpbKHR = 4096,
-		ShadingRateImageNV = 256,
 		FragmentDensityMapEXT = 512,
+		FragmentShadingRateAttachmentKHR = 256,
 		VideoEncodeDstKHR = 8192,
 		VideoEncodeSrcKHR = 16384,
 		VideoEncodeDpbKHR = 32768,
-		FragmentShadingRateAttachmentKHR = ShadingRateImageNV,
+		ShadingRateImageNV = FragmentShadingRateAttachmentKHR,
 	}
 
 	[Flags]
@@ -1726,15 +1729,15 @@ namespace Vortice.Vulkan
 		ConditionalRenderingEXT = 262144,
 		AccelerationStructureBuildKHR = 33554432,
 		RayTracingShaderKHR = 2097152,
-		ShadingRateImageNV = 4194304,
 		TaskShaderNV = 524288,
 		MeshShaderNV = 1048576,
 		FragmentDensityProcessEXT = 8388608,
+		FragmentShadingRateAttachmentKHR = 4194304,
 		CommandPreprocessNV = 131072,
 		NoneKHR = 0,
+		ShadingRateImageNV = FragmentShadingRateAttachmentKHR,
 		RayTracingShaderNV = RayTracingShaderKHR,
 		AccelerationStructureBuildNV = AccelerationStructureBuildKHR,
-		FragmentShadingRateAttachmentKHR = ShadingRateImageNV,
 	}
 
 	[Flags]
@@ -2911,6 +2914,7 @@ namespace Vortice.Vulkan
 		ObjectLifetimes = 4,
 		CoreChecks = 5,
 		UniqueHandles = 6,
+		ShaderValidationCache = 7,
 	}
 
 	public enum VkComponentTypeNV
