@@ -3984,6 +3984,26 @@ namespace Vortice.Vulkan
 		}
 
 		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, int, VkDisplayKHR, VkResult> vkAcquireDrmDisplayEXT_ptr;
+		#else
+		private static delegate* unmanaged<VkPhysicalDevice, int, VkDisplayKHR, VkResult> vkAcquireDrmDisplayEXT_ptr;
+		#endif
+		public static VkResult vkAcquireDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, VkDisplayKHR display)
+		{
+			return vkAcquireDrmDisplayEXT_ptr(physicalDevice, drmFd, display);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, int, uint, VkDisplayKHR*, VkResult> vkGetDrmDisplayEXT_ptr;
+		#else
+		private static delegate* unmanaged<VkPhysicalDevice, int, uint, VkDisplayKHR*, VkResult> vkGetDrmDisplayEXT_ptr;
+		#endif
+		public static VkResult vkGetDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, uint connectorId, VkDisplayKHR* display)
+		{
+			return vkGetDrmDisplayEXT_ptr(physicalDevice, drmFd, connectorId, display);
+		}
+
+		#if NETSTANDARD2_0
 		private static delegate* unmanaged[Stdcall]<VkDevice, VkPrivateDataSlotCreateInfoEXT*, VkAllocationCallbacks*, VkPrivateDataSlotEXT*, VkResult> vkCreatePrivateDataSlotEXT_ptr;
 		#else
 		private static delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfoEXT*, VkAllocationCallbacks*, VkPrivateDataSlotEXT*, VkResult> vkCreatePrivateDataSlotEXT_ptr;
@@ -4064,6 +4084,26 @@ namespace Vortice.Vulkan
 		}
 
 		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkRenderPass, VkExtent2D*, VkResult> vkGetSubpassShadingMaxWorkgroupSizeHUAWEI_ptr;
+		#else
+		private static delegate* unmanaged<VkRenderPass, VkExtent2D*, VkResult> vkGetSubpassShadingMaxWorkgroupSizeHUAWEI_ptr;
+		#endif
+		public static VkResult vkGetSubpassShadingMaxWorkgroupSizeHUAWEI(VkRenderPass renderpass, VkExtent2D* maxWorkgroupSize)
+		{
+			return vkGetSubpassShadingMaxWorkgroupSizeHUAWEI_ptr(renderpass, maxWorkgroupSize);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, void> vkCmdSubpassShadingHUAWEI_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, void> vkCmdSubpassShadingHUAWEI_ptr;
+		#endif
+		public static void vkCmdSubpassShadingHUAWEI(VkCommandBuffer commandBuffer)
+		{
+			vkCmdSubpassShadingHUAWEI_ptr(commandBuffer);
+		}
+
+		#if NETSTANDARD2_0
 		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void> vkCmdSetPatchControlPointsEXT_ptr;
 		#else
 		private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetPatchControlPointsEXT_ptr;
@@ -4121,6 +4161,26 @@ namespace Vortice.Vulkan
 		public static void vkCmdSetColorWriteEnableEXT(VkCommandBuffer commandBuffer, uint attachmentCount, VkBool32* colorWriteEnables)
 		{
 			vkCmdSetColorWriteEnableEXT_ptr(commandBuffer, attachmentCount, colorWriteEnables);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkMultiDrawInfoEXT*, uint, uint, uint, void> vkCmdDrawMultiEXT_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawInfoEXT*, uint, uint, uint, void> vkCmdDrawMultiEXT_ptr;
+		#endif
+		public static void vkCmdDrawMultiEXT(VkCommandBuffer commandBuffer, uint drawCount, VkMultiDrawInfoEXT* vertexInfo, uint instanceCount, uint firstInstance, uint stride)
+		{
+			vkCmdDrawMultiEXT_ptr(commandBuffer, drawCount, vertexInfo, instanceCount, firstInstance, stride);
+		}
+
+		#if NETSTANDARD2_0
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkMultiDrawIndexedInfoEXT*, uint, uint, uint, int*, void> vkCmdDrawMultiIndexedEXT_ptr;
+		#else
+		private static delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawIndexedInfoEXT*, uint, uint, uint, int*, void> vkCmdDrawMultiIndexedEXT_ptr;
+		#endif
+		public static void vkCmdDrawMultiIndexedEXT(VkCommandBuffer commandBuffer, uint drawCount, VkMultiDrawIndexedInfoEXT* indexInfo, uint instanceCount, uint firstInstance, uint stride, int* vertexOffset)
+		{
+			vkCmdDrawMultiIndexedEXT_ptr(commandBuffer, drawCount, indexInfo, instanceCount, firstInstance, stride, vertexOffset);
 		}
 
 		#if NETSTANDARD2_0
@@ -4954,6 +5014,16 @@ namespace Vortice.Vulkan
 			vkCreateHeadlessSurfaceEXT_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateHeadlessSurfaceEXT));
 			#else
 			vkCreateHeadlessSurfaceEXT_ptr = (delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateHeadlessSurfaceEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkAcquireDrmDisplayEXT_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, int, VkDisplayKHR, VkResult>) load(context, nameof(vkAcquireDrmDisplayEXT));
+			#else
+			vkAcquireDrmDisplayEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, int, VkDisplayKHR, VkResult>) load(context, nameof(vkAcquireDrmDisplayEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkGetDrmDisplayEXT_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, int, uint, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetDrmDisplayEXT));
+			#else
+			vkGetDrmDisplayEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, int, uint, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetDrmDisplayEXT));
 			#endif
 			#if NETSTANDARD2_0
 			vkAcquireWinrtDisplayNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkResult>) load(context, nameof(vkAcquireWinrtDisplayNV));
@@ -6599,6 +6669,16 @@ namespace Vortice.Vulkan
 			vkCmdSetVertexInputEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkVertexInputBindingDescription2EXT*, uint, VkVertexInputAttributeDescription2EXT*, void>) load(context, nameof(vkCmdSetVertexInputEXT));
 			#endif
 			#if NETSTANDARD2_0
+			vkGetSubpassShadingMaxWorkgroupSizeHUAWEI_ptr = (delegate* unmanaged[Stdcall]<VkRenderPass, VkExtent2D*, VkResult>) load(context, nameof(vkGetSubpassShadingMaxWorkgroupSizeHUAWEI));
+			#else
+			vkGetSubpassShadingMaxWorkgroupSizeHUAWEI_ptr = (delegate* unmanaged<VkRenderPass, VkExtent2D*, VkResult>) load(context, nameof(vkGetSubpassShadingMaxWorkgroupSizeHUAWEI));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdSubpassShadingHUAWEI_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, void>) load(context, nameof(vkCmdSubpassShadingHUAWEI));
+			#else
+			vkCmdSubpassShadingHUAWEI_ptr = (delegate* unmanaged<VkCommandBuffer, void>) load(context, nameof(vkCmdSubpassShadingHUAWEI));
+			#endif
+			#if NETSTANDARD2_0
 			vkCmdSetPatchControlPointsEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetPatchControlPointsEXT));
 			#else
 			vkCmdSetPatchControlPointsEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetPatchControlPointsEXT));
@@ -6627,6 +6707,16 @@ namespace Vortice.Vulkan
 			vkCmdSetColorWriteEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkBool32*, void>) load(context, nameof(vkCmdSetColorWriteEnableEXT));
 			#else
 			vkCmdSetColorWriteEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkBool32*, void>) load(context, nameof(vkCmdSetColorWriteEnableEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawMultiEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkMultiDrawInfoEXT*, uint, uint, uint, void>) load(context, nameof(vkCmdDrawMultiEXT));
+			#else
+			vkCmdDrawMultiEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawInfoEXT*, uint, uint, uint, void>) load(context, nameof(vkCmdDrawMultiEXT));
+			#endif
+			#if NETSTANDARD2_0
+			vkCmdDrawMultiIndexedEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkMultiDrawIndexedInfoEXT*, uint, uint, uint, int*, void>) load(context, nameof(vkCmdDrawMultiIndexedEXT));
+			#else
+			vkCmdDrawMultiIndexedEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawIndexedInfoEXT*, uint, uint, uint, int*, void>) load(context, nameof(vkCmdDrawMultiIndexedEXT));
 			#endif
 			#if NETSTANDARD2_0
 			vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));

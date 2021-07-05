@@ -577,6 +577,9 @@ namespace Vortice.Vulkan
 		PhysicalDeviceFragmentShadingRateEnumsPropertiesNV = 1000326000,
 		PhysicalDeviceFragmentShadingRateEnumsFeaturesNV = 1000326001,
 		PipelineFragmentShadingRateEnumStateCreateInfoNV = 1000326002,
+		AccelerationStructureGeometryMotionTrianglesDataNV = 1000327000,
+		PhysicalDeviceRayTracingMotionBlurFeaturesNV = 1000327001,
+		AccelerationStructureMotionInfoNV = 1000327002,
 		PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT = 1000330000,
 		PhysicalDeviceFragmentDensityMap2FeaturesEXT = 1000332000,
 		PhysicalDeviceFragmentDensityMap2PropertiesEXT = 1000332001,
@@ -601,17 +604,23 @@ namespace Vortice.Vulkan
 		PhysicalDeviceVertexInputDynamicStateFeaturesEXT = 1000352000,
 		VertexInputBindingDescription2EXT = 1000352001,
 		VertexInputAttributeDescription2EXT = 1000352002,
+		PhysicalDeviceDrmPropertiesEXT = 1000353000,
 		ImportMemoryZirconHandleInfoFuchsia = 1000364000,
 		MemoryZirconHandlePropertiesFuchsia = 1000364001,
 		MemoryGetZirconHandleInfoFuchsia = 1000364002,
 		ImportSemaphoreZirconHandleInfoFuchsia = 1000365000,
 		SemaphoreGetZirconHandleInfoFuchsia = 1000365001,
+		SubpassShadingPipelineCreateInfoHuawei = 1000369000,
+		PhysicalDeviceSubpassShadingFeaturesHuawei = 1000369001,
+		PhysicalDeviceSubpassShadingPropertiesHuawei = 1000369002,
 		PhysicalDeviceExtendedDynamicState2FeaturesEXT = 1000377000,
 		ScreenSurfaceCreateInfoQnx = 1000378000,
 		PhysicalDeviceColorWriteEnableFeaturesEXT = 1000381000,
 		PipelineColorWriteCreateInfoEXT = 1000381001,
 		PhysicalDeviceGlobalPriorityQueryFeaturesEXT = 1000388000,
 		QueueFamilyGlobalPriorityPropertiesEXT = 1000388001,
+		PhysicalDeviceMultiDrawFeaturesEXT = 1000392000,
+		PhysicalDeviceMultiDrawPropertiesEXT = 1000392001,
 		PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 		PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 		DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
@@ -1468,6 +1477,7 @@ namespace Vortice.Vulkan
 		Graphics = 0,
 		Compute = 1,
 		RayTracingKHR = 1000165000,
+		SubpassShadingHuawei = 1000369003,
 		RayTracingNV = RayTracingKHR,
 	}
 
@@ -1895,6 +1905,7 @@ namespace Vortice.Vulkan
 		LibraryKHR = 2048,
 		FailOnPipelineCompileRequiredEXT = 256,
 		EarlyReturnOnFailureEXT = 512,
+		RayTracingAllowMotionNV = 1048576,
 		ViewIndexFromDeviceIndexKHR = ViewIndexFromDeviceIndex,
 		DispatchBaseKHR = DispatchBase,
 	}
@@ -1927,6 +1938,7 @@ namespace Vortice.Vulkan
 		CallableKHR = 8192,
 		TaskNV = 64,
 		MeshNV = 128,
+		SubpassShadingHuawei = 16384,
 		RaygenNV = RaygenKHR,
 		AnyHitNV = AnyHitKHR,
 		ClosestHitNV = ClosestHitKHR,
@@ -2801,6 +2813,7 @@ namespace Vortice.Vulkan
 		PreferFastTrace = 4,
 		PreferFastBuild = 8,
 		LowMemory = 16,
+		MotionNV = 32,
 		AllowUpdateNV = AllowUpdate,
 		AllowCompactionNV = AllowCompaction,
 		PreferFastTraceNV = PreferFastTrace,
@@ -3034,6 +3047,13 @@ namespace Vortice.Vulkan
 		NoInvocations = 15,
 	}
 
+	public enum VkAccelerationStructureMotionInstanceTypeNV
+	{
+		TypeStatic = 0,
+		TypeMatrixMotion = 1,
+		TypeSrtMotion = 2,
+	}
+
 	public enum VkBuildAccelerationStructureModeKHR
 	{
 		Build = 0,
@@ -3058,6 +3078,7 @@ namespace Vortice.Vulkan
 	{
 		None = 0,
 		DeviceAddressCaptureReplay = 1,
+		MotionNV = 4,
 	}
 
 	public enum VkShaderGroupShaderKHR
@@ -3718,6 +3739,18 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
+	public enum VkAccelerationStructureMotionInfoFlagsNV
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkAccelerationStructureMotionInstanceFlagsNV
+	{
+		None = 0,
+	}
+
+	[Flags]
 	public enum VkAndroidSurfaceCreateFlagsKHR
 	{
 		None = 0,
@@ -3814,6 +3847,7 @@ namespace Vortice.Vulkan
 		FragmentDensityProcessEXT = 8388608,
 		TaskShaderNV = 524288,
 		MeshShaderNV = 1048576,
+		SubpassShadingHuawei = 549755813888,
 	}
 
 	[Flags]

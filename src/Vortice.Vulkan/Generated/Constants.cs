@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 181
+		/// VK_HEADER_VERSION = 183
 		/// </summary>
-		public const uint HeaderVersion = 181;
+		public const uint HeaderVersion = 183;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -2411,6 +2411,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXTDeviceMemoryReportExtensionName = "VK_EXT_device_memory_report";
 		/// <summary>
+		/// VK_EXT_acquire_drm_display = 1
+		/// </summary>
+		public const uint EXTAcquireDrmDisplay = 1;
+		/// <summary>
+		/// VK_EXT_ACQUIRE_DRM_DISPLAY_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTAcquireDrmDisplaySpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_ACQUIRE_DRM_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_drm_display"
+		/// </summary>
+		public const string EXTAcquireDrmDisplayExtensionName = "VK_EXT_acquire_drm_display";
+		/// <summary>
 		/// VK_EXT_robustness2 = 1
 		/// </summary>
 		public const uint EXTRobustness2 = 1;
@@ -2506,6 +2518,18 @@ namespace Vortice.Vulkan
 		/// VK_NV_FRAGMENT_SHADING_RATE_ENUMS_EXTENSION_NAME = "VK_NV_fragment_shading_rate_enums"
 		/// </summary>
 		public const string NVFragmentShadingRateEnumsExtensionName = "VK_NV_fragment_shading_rate_enums";
+		/// <summary>
+		/// VK_NV_ray_tracing_motion_blur = 1
+		/// </summary>
+		public const uint NVRayTracingMotionBlur = 1;
+		/// <summary>
+		/// VK_NV_RAY_TRACING_MOTION_BLUR_SPEC_VERSION = 1
+		/// </summary>
+		public const uint NVRayTracingMotionBlurSpecVersion = 1;
+		/// <summary>
+		/// VK_NV_RAY_TRACING_MOTION_BLUR_EXTENSION_NAME = "VK_NV_ray_tracing_motion_blur"
+		/// </summary>
+		public const string NVRayTracingMotionBlurExtensionName = "VK_NV_ray_tracing_motion_blur";
 		/// <summary>
 		/// VK_EXT_ycbcr_2plane_444_formats = 1
 		/// </summary>
@@ -2603,6 +2627,30 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXTVertexInputDynamicStateExtensionName = "VK_EXT_vertex_input_dynamic_state";
 		/// <summary>
+		/// VK_EXT_physical_device_drm = 1
+		/// </summary>
+		public const uint EXTPhysicalDeviceDrm = 1;
+		/// <summary>
+		/// VK_EXT_PHYSICAL_DEVICE_DRM_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTPhysicalDeviceDrmSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_PHYSICAL_DEVICE_DRM_EXTENSION_NAME = "VK_EXT_physical_device_drm"
+		/// </summary>
+		public const string EXTPhysicalDeviceDrmExtensionName = "VK_EXT_physical_device_drm";
+		/// <summary>
+		/// VK_HUAWEI_subpass_shading = 1
+		/// </summary>
+		public const uint HuaweiSubpassShading = 1;
+		/// <summary>
+		/// VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 0
+		/// </summary>
+		public const uint HuaweiSubpassShadingSpecVersion = 0;
+		/// <summary>
+		/// VK_HUAWEI_SUBPASS_SHADING_EXTENSION_NAME = "VK_HUAWEI_subpass_shading"
+		/// </summary>
+		public const string HuaweiSubpassShadingExtensionName = "VK_HUAWEI_subpass_shading";
+		/// <summary>
 		/// VK_EXT_extended_dynamic_state2 = 1
 		/// </summary>
 		public const uint EXTExtendedDynamicState2 = 1;
@@ -2642,6 +2690,18 @@ namespace Vortice.Vulkan
 		/// VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query"
 		/// </summary>
 		public const string EXTGlobalPriorityQueryExtensionName = "VK_EXT_global_priority_query";
+		/// <summary>
+		/// VK_EXT_multi_draw = 1
+		/// </summary>
+		public const uint EXTMultiDraw = 1;
+		/// <summary>
+		/// VK_EXT_MULTI_DRAW_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTMultiDrawSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_MULTI_DRAW_EXTENSION_NAME = "VK_EXT_multi_draw"
+		/// </summary>
+		public const string EXTMultiDrawExtensionName = "VK_EXT_multi_draw";
 		/// <summary>
 		/// VK_KHR_acceleration_structure = 1
 		/// </summary>

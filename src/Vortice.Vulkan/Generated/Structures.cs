@@ -5709,6 +5709,105 @@ namespace Vortice.Vulkan
 		public VkFragmentShadingRateCombinerOpKHR combinerOps_1;
 	}
 
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct VkDeviceOrHostAddressConstKHR
+	{
+		[FieldOffset(0)]
+		public IntPtr deviceAddress;
+		[FieldOffset(0)]
+		public unsafe void* hostAddress;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureGeometryMotionTrianglesDataNV
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkDeviceOrHostAddressConstKHR vertexData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureMotionInfoNV
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint maxInstances;
+		public VkAccelerationStructureMotionInfoFlagsNV flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureMatrixMotionInstanceNV
+	{
+		public VkTransformMatrixKHR transformT0;
+		public VkTransformMatrixKHR transformT1;
+		public uint instanceCustomIndex;
+		public uint mask;
+		public uint instanceShaderBindingTableRecordOffset;
+		public VkGeometryInstanceFlagsKHR flags;
+		public ulong accelerationStructureReference;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSRTDataNV
+	{
+		public float sx;
+		public float a;
+		public float b;
+		public float pvx;
+		public float sy;
+		public float c;
+		public float pvy;
+		public float sz;
+		public float pvz;
+		public float qx;
+		public float qy;
+		public float qz;
+		public float qw;
+		public float tx;
+		public float ty;
+		public float tz;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureSRTMotionInstanceNV
+	{
+		public VkSRTDataNV transformT0;
+		public VkSRTDataNV transformT1;
+		public uint instanceCustomIndex;
+		public uint mask;
+		public uint instanceShaderBindingTableRecordOffset;
+		public VkGeometryInstanceFlagsKHR flags;
+		public ulong accelerationStructureReference;
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct VkAccelerationStructureMotionInstanceDataNV
+	{
+		[FieldOffset(0)]
+		public VkAccelerationStructureInstanceKHR staticInstance;
+		[FieldOffset(0)]
+		public VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance;
+		[FieldOffset(0)]
+		public VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureMotionInstanceNV
+	{
+		public VkAccelerationStructureMotionInstanceTypeNV type;
+		public VkAccelerationStructureMotionInstanceFlagsNV flags;
+		public VkAccelerationStructureMotionInstanceDataNV data;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceRayTracingMotionBlurFeaturesNV
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 rayTracingMotionBlur;
+		public VkBool32 rayTracingMotionBlurPipelineTraceRaysIndirect;
+	}
+
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT
 	{
@@ -5816,6 +5915,44 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDrmPropertiesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 hasPrimary;
+		public VkBool32 hasRender;
+		public long primaryMajor;
+		public long primaryMinor;
+		public long renderMajor;
+		public long renderMinor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubpassShadingPipelineCreateInfoHUAWEI
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkRenderPass renderPass;
+		public uint subpass;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSubpassShadingFeaturesHUAWEI
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 subpassShading;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceSubpassShadingPropertiesHUAWEI
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint maxSubpassShadingWorkgroupSizeAspectRatio;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT
 	{
 		public VkStructureType sType;
@@ -5874,17 +6011,39 @@ namespace Vortice.Vulkan
 		public VkQueueGlobalPriorityEXT priorities_15;
 	}
 
-	[StructLayout(LayoutKind.Explicit)]
-	public partial struct VkDeviceOrHostAddressKHR
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMultiDrawFeaturesEXT
 	{
-		[FieldOffset(0)]
-		public IntPtr deviceAddress;
-		[FieldOffset(0)]
-		public unsafe void* hostAddress;
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 multiDraw;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceMultiDrawPropertiesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint maxMultiDrawCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMultiDrawInfoEXT
+	{
+		public uint firstVertex;
+		public uint vertexCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMultiDrawIndexedInfoEXT
+	{
+		public uint firstIndex;
+		public uint indexCount;
+		public int vertexOffset;
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
-	public partial struct VkDeviceOrHostAddressConstKHR
+	public partial struct VkDeviceOrHostAddressKHR
 	{
 		[FieldOffset(0)]
 		public IntPtr deviceAddress;
