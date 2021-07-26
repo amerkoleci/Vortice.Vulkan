@@ -7,6 +7,9 @@
 
 **Vortice.Vulkan** is a .NET Standard 2.0 and .NET5 low-level bindings for [Vulkan](https://www.khronos.org/vulkan/) API. 
 
+## Sponsors
+To further help development of these bindings library or other projects, please consider [SPONSOR](https://github.com/sponsors/amerkoleci) my profile in order to allow faster issue triaging and new features to be implemented.
+
 ## Credits
 
 Vortice.Vulkan development, contributions and bugfixes by:
@@ -23,6 +26,3 @@ Other similar projects:
 Projects using Vortice.Vulkan:
 
 - [Stride Game Engine (formerly Xenko)](https://stride3d.net/)
-
-## Sponsors
-To further help development of these bindings consider [sponsoring](https://github.com/sponsors/amerkoleci) my profile in order to allow faster issue triaging and new features to be implemented.
