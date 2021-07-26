@@ -139,33 +139,43 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineCacheHeaderVersionOne
+	{
+		public uint headerSize;
+		public VkPipelineCacheHeaderVersion headerVersion;
+		public uint vendorID;
+		public uint deviceID;
+		public unsafe fixed byte pipelineCacheUUID[16];
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkAllocationCallbacks
 	{
 		public unsafe void* pUserData;
-		#if NETSTANDARD2_0
-		public IntPtr pfnAllocation;
-		#else
+		#if NET5_0_OR_GREATER
 		public unsafe delegate* unmanaged<void*, nuint, nuint, VkSystemAllocationScope, void*> pfnAllocation;
-		#endif
-		#if NETSTANDARD2_0
-		public IntPtr pfnReallocation;
 		#else
+		public IntPtr pfnAllocation;
+		#endif
+		#if NET5_0_OR_GREATER
 		public unsafe delegate* unmanaged<void*, void*, nuint, nuint, VkSystemAllocationScope, void*> pfnReallocation;
-		#endif
-		#if NETSTANDARD2_0
-		public IntPtr pfnFree;
 		#else
+		public IntPtr pfnReallocation;
+		#endif
+		#if NET5_0_OR_GREATER
 		public unsafe delegate* unmanaged<void*, void*, void> pfnFree;
-		#endif
-		#if NETSTANDARD2_0
-		public IntPtr pfnInternalAllocation;
 		#else
+		public IntPtr pfnFree;
+		#endif
+		#if NET5_0_OR_GREATER
 		public unsafe delegate* unmanaged<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalAllocation;
-		#endif
-		#if NETSTANDARD2_0
-		public IntPtr pfnInternalFree;
 		#else
+		public IntPtr pfnInternalAllocation;
+		#endif
+		#if NET5_0_OR_GREATER
 		public unsafe delegate* unmanaged<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalFree;
+		#else
+		public IntPtr pfnInternalFree;
 		#endif
 	}
 
@@ -3224,6 +3234,14 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePresentWaitFeaturesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 presentWait;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR
 	{
 		public VkStructureType sType;
@@ -3302,6 +3320,23 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public uint libraryCount;
 		public unsafe VkPipeline* pLibraries;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPresentIdKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint swapchainCount;
+		public unsafe ulong* pPresentIds;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePresentIdFeaturesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 presentId;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3589,10 +3624,10 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkDebugReportFlagsEXT flags;
-		#if NETSTANDARD2_0
-		public IntPtr pfnCallback;
-		#else
+		#if NET5_0_OR_GREATER
 		public unsafe delegate* unmanaged<VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void*, uint> pfnCallback;
+		#else
+		public IntPtr pfnCallback;
 		#endif
 		public unsafe void* pUserData;
 	}
@@ -4129,10 +4164,10 @@ namespace Vortice.Vulkan
 		public VkDebugUtilsMessengerCreateFlagsEXT flags;
 		public VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
 		public VkDebugUtilsMessageTypeFlagsEXT messageType;
-		#if NETSTANDARD2_0
-		public IntPtr pfnUserCallback;
-		#else
+		#if NET5_0_OR_GREATER
 		public unsafe delegate* unmanaged<VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void*, uint> pfnUserCallback;
+		#else
+		public IntPtr pfnUserCallback;
 		#endif
 		public unsafe void* pUserData;
 	}
@@ -5345,6 +5380,25 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 shaderBufferFloat16Atomics;
+		public VkBool32 shaderBufferFloat16AtomicAdd;
+		public VkBool32 shaderBufferFloat16AtomicMinMax;
+		public VkBool32 shaderBufferFloat32AtomicMinMax;
+		public VkBool32 shaderBufferFloat64AtomicMinMax;
+		public VkBool32 shaderSharedFloat16Atomics;
+		public VkBool32 shaderSharedFloat16AtomicAdd;
+		public VkBool32 shaderSharedFloat16AtomicMinMax;
+		public VkBool32 shaderSharedFloat32AtomicMinMax;
+		public VkBool32 shaderSharedFloat64AtomicMinMax;
+		public VkBool32 shaderImageFloat32AtomicMinMax;
+		public VkBool32 sparseImageFloat32AtomicMinMax;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT
 	{
 		public VkStructureType sType;
@@ -5579,10 +5633,10 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkDeviceMemoryReportFlagsEXT flags;
-		#if NETSTANDARD2_0
-		public IntPtr pfnUserCallback;
-		#else
+		#if NET5_0_OR_GREATER
 		public unsafe delegate* unmanaged<VkDeviceMemoryReportCallbackDataEXT*, void*, void> pfnUserCallback;
+		#else
+		public IntPtr pfnUserCallback;
 		#endif
 		public unsafe void* pUserData;
 	}
@@ -5950,6 +6004,31 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public uint maxSubpassShadingWorkgroupSizeAspectRatio;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceInvocationMaskFeaturesHUAWEI
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 invocationMask;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMemoryGetRemoteAddressInfoNV
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkDeviceMemory memory;
+		public VkExternalMemoryHandleTypeFlags handleType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceExternalMemoryRDMAFeaturesNV
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 externalMemoryRDMA;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

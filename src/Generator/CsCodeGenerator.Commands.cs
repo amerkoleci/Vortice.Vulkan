@@ -205,10 +205,10 @@ namespace Generator
 
                     string functionPointerSignatureNS = GetFunctionPointerSignature(true, cppFunction);
                     string functionPointerSignature = GetFunctionPointerSignature(false, cppFunction);
-                    writer.WriteLine("#if NETSTANDARD2_0");
-                    writer.WriteLine($"private static {functionPointerSignatureNS} {command.Key}_ptr;");
-                    writer.WriteLine("#else");
+                    writer.WriteLine("#if NET5_0_OR_GREATER");
                     writer.WriteLine($"private static {functionPointerSignature} {command.Key}_ptr;");
+                    writer.WriteLine("#else");
+                    writer.WriteLine($"private static {functionPointerSignatureNS} {command.Key}_ptr;");
                     writer.WriteLine("#endif");
 
                     string returnCsName = GetCsTypeName(cppFunction.ReturnType, false);
@@ -269,10 +269,10 @@ namespace Generator
                     string functionPointerSignatureNS = GetFunctionPointerSignature(true, instanceCommand.Value);
                     string functionPointerSignature = GetFunctionPointerSignature(false, instanceCommand.Value);
 
-                    writer.WriteLine("#if NETSTANDARD2_0");
-                    writer.WriteLine($"{commandName}_ptr = ({functionPointerSignatureNS}) load(context, nameof({commandName}));");
-                    writer.WriteLine("#else");
+                    writer.WriteLine("#if NET5_0_OR_GREATER");
                     writer.WriteLine($"{commandName}_ptr = ({functionPointerSignature}) load(context, nameof({commandName}));");
+                    writer.WriteLine("#else");
+                    writer.WriteLine($"{commandName}_ptr = ({functionPointerSignatureNS}) load(context, nameof({commandName}));");
                     writer.WriteLine("#endif");
                 }
             }

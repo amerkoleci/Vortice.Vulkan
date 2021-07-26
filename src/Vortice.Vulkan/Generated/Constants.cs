@@ -19,13 +19,17 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 183
+		/// VK_HEADER_VERSION = 185
 		/// </summary>
-		public const uint HeaderVersion = 183;
+		public const uint HeaderVersion = 185;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
 		public static readonly VkVersion HeaderVersionComplete = new VkVersion(0, 1, 2, HeaderVersion);
+		/// <summary>
+		/// VK_UUID_SIZE = 16U
+		/// </summary>
+		public const uint UuidSize = 16U;
 		/// <summary>
 		/// VK_ATTACHMENT_UNUSED = (~0U)
 		/// </summary>
@@ -66,10 +70,6 @@ namespace Vortice.Vulkan
 		/// VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256U
 		/// </summary>
 		public const uint MaxPhysicalDeviceNameSize = 256U;
-		/// <summary>
-		/// VK_UUID_SIZE = 16U
-		/// </summary>
-		public const uint UuidSize = 16U;
 		/// <summary>
 		/// VK_MAX_EXTENSION_NAME_SIZE = 256U
 		/// </summary>
@@ -803,6 +803,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string KHRSeparateDepthStencilLayoutsExtensionName = "VK_KHR_separate_depth_stencil_layouts";
 		/// <summary>
+		/// VK_KHR_present_wait = 1
+		/// </summary>
+		public const uint KHRPresentWait = 1;
+		/// <summary>
+		/// VK_KHR_PRESENT_WAIT_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRPresentWaitSpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_PRESENT_WAIT_EXTENSION_NAME = "VK_KHR_present_wait"
+		/// </summary>
+		public const string KHRPresentWaitExtensionName = "VK_KHR_present_wait";
+		/// <summary>
 		/// VK_KHR_uniform_buffer_standard_layout = 1
 		/// </summary>
 		public const uint KHRUniformBufferStandardLayout = 1;
@@ -874,6 +886,18 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_NON_SEMANTIC_INFO_EXTENSION_NAME = "VK_KHR_shader_non_semantic_info"
 		/// </summary>
 		public const string KHRShaderNonSemanticInfoExtensionName = "VK_KHR_shader_non_semantic_info";
+		/// <summary>
+		/// VK_KHR_present_id = 1
+		/// </summary>
+		public const uint KHRPresentId = 1;
+		/// <summary>
+		/// VK_KHR_PRESENT_ID_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRPresentIdSpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_PRESENT_ID_EXTENSION_NAME = "VK_KHR_present_id"
+		/// </summary>
+		public const string KHRPresentIdExtensionName = "VK_KHR_present_id";
 		/// <summary>
 		/// VK_KHR_synchronization2 = 1
 		/// </summary>
@@ -2339,6 +2363,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXTExtendedDynamicStateExtensionName = "VK_EXT_extended_dynamic_state";
 		/// <summary>
+		/// VK_EXT_shader_atomic_float2 = 1
+		/// </summary>
+		public const uint EXTShaderAtomicFloat2 = 1;
+		/// <summary>
+		/// VK_EXT_SHADER_ATOMIC_FLOAT_2_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTShaderAtomicFloat2SpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_SHADER_ATOMIC_FLOAT_2_EXTENSION_NAME = "VK_EXT_shader_atomic_float2"
+		/// </summary>
+		public const string EXTShaderAtomicFloat2ExtensionName = "VK_EXT_shader_atomic_float2";
+		/// <summary>
 		/// VK_EXT_shader_demote_to_helper_invocation = 1
 		/// </summary>
 		public const uint EXTShaderDemoteToHelperInvocation = 1;
@@ -2643,13 +2679,37 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint HuaweiSubpassShading = 1;
 		/// <summary>
-		/// VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 0
+		/// VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 2
 		/// </summary>
-		public const uint HuaweiSubpassShadingSpecVersion = 0;
+		public const uint HuaweiSubpassShadingSpecVersion = 2;
 		/// <summary>
 		/// VK_HUAWEI_SUBPASS_SHADING_EXTENSION_NAME = "VK_HUAWEI_subpass_shading"
 		/// </summary>
 		public const string HuaweiSubpassShadingExtensionName = "VK_HUAWEI_subpass_shading";
+		/// <summary>
+		/// VK_HUAWEI_invocation_mask = 1
+		/// </summary>
+		public const uint HuaweiInvocationMask = 1;
+		/// <summary>
+		/// VK_HUAWEI_INVOCATION_MASK_SPEC_VERSION = 1
+		/// </summary>
+		public const uint HuaweiInvocationMaskSpecVersion = 1;
+		/// <summary>
+		/// VK_HUAWEI_INVOCATION_MASK_EXTENSION_NAME = "VK_HUAWEI_invocation_mask"
+		/// </summary>
+		public const string HuaweiInvocationMaskExtensionName = "VK_HUAWEI_invocation_mask";
+		/// <summary>
+		/// VK_NV_external_memory_rdma = 1
+		/// </summary>
+		public const uint NVExternalMemoryRdma = 1;
+		/// <summary>
+		/// VK_NV_EXTERNAL_MEMORY_RDMA_SPEC_VERSION = 1
+		/// </summary>
+		public const uint NVExternalMemoryRdmaSpecVersion = 1;
+		/// <summary>
+		/// VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma"
+		/// </summary>
+		public const string NVExternalMemoryRdmaExtensionName = "VK_NV_external_memory_rdma";
 		/// <summary>
 		/// VK_EXT_extended_dynamic_state2 = 1
 		/// </summary>

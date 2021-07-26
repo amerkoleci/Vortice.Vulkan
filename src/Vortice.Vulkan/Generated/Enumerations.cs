@@ -503,6 +503,7 @@ namespace Vortice.Vulkan
 		BufferDeviceAddressCreateInfoEXT = 1000244002,
 		PhysicalDeviceToolPropertiesEXT = 1000245000,
 		ValidationFeaturesEXT = 1000247000,
+		PhysicalDevicePresentWaitFeaturesKHR = 1000248000,
 		PhysicalDeviceCooperativeMatrixFeaturesNV = 1000249000,
 		CooperativeMatrixPropertiesNV = 1000249001,
 		PhysicalDeviceCooperativeMatrixPropertiesNV = 1000249002,
@@ -530,6 +531,7 @@ namespace Vortice.Vulkan
 		PipelineExecutableInfoKHR = 1000269003,
 		PipelineExecutableStatisticKHR = 1000269004,
 		PipelineExecutableInternalRepresentationKHR = 1000269005,
+		PhysicalDeviceShaderAtomicFloat2FeaturesEXT = 1000273000,
 		PhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT = 1000276000,
 		PhysicalDeviceDeviceGeneratedCommandsPropertiesNV = 1000277000,
 		GraphicsShaderGroupCreateInfoNV = 1000277001,
@@ -554,6 +556,8 @@ namespace Vortice.Vulkan
 		PhysicalDeviceCustomBorderColorPropertiesEXT = 1000287001,
 		PhysicalDeviceCustomBorderColorFeaturesEXT = 1000287002,
 		PipelineLibraryCreateInfoKHR = 1000290000,
+		PresentIdKHR = 1000294000,
+		PhysicalDevicePresentIdFeaturesKHR = 1000294001,
 		PhysicalDevicePrivateDataFeaturesEXT = 1000295000,
 		DevicePrivateDataCreateInfoEXT = 1000295001,
 		PrivateDataSlotCreateInfoEXT = 1000295002,
@@ -613,6 +617,9 @@ namespace Vortice.Vulkan
 		SubpassShadingPipelineCreateInfoHuawei = 1000369000,
 		PhysicalDeviceSubpassShadingFeaturesHuawei = 1000369001,
 		PhysicalDeviceSubpassShadingPropertiesHuawei = 1000369002,
+		PhysicalDeviceInvocationMaskFeaturesHuawei = 1000370000,
+		MemoryGetRemoteAddressInfoNV = 1000371000,
+		PhysicalDeviceExternalMemoryRdmaFeaturesNV = 1000371001,
 		PhysicalDeviceExtendedDynamicState2FeaturesEXT = 1000377000,
 		ScreenSurfaceCreateInfoQnx = 1000378000,
 		PhysicalDeviceColorWriteEnableFeaturesEXT = 1000381000,
@@ -825,6 +832,11 @@ namespace Vortice.Vulkan
 		SamplerYcbcrConversionKHR = SamplerYcbcrConversion,
 	}
 
+	public enum VkPipelineCacheHeaderVersion
+	{
+		One = 1,
+	}
+
 	public enum VkVendorId
 	{
 		Viv = 65537,
@@ -833,11 +845,6 @@ namespace Vortice.Vulkan
 		Codeplay = 65540,
 		Mesa = 65541,
 		Pocl = 65542,
-	}
-
-	public enum VkPipelineCacheHeaderVersion
-	{
-		One = 1,
 	}
 
 	public enum VkSystemAllocationScope
@@ -1668,6 +1675,7 @@ namespace Vortice.Vulkan
 		VideoEncodeDstKHR = 8192,
 		VideoEncodeSrcKHR = 16384,
 		VideoEncodeDpbKHR = 32768,
+		InvocationMaskHuawei = 262144,
 		ShadingRateImageNV = FragmentShadingRateAttachmentKHR,
 	}
 
@@ -1692,6 +1700,7 @@ namespace Vortice.Vulkan
 		Protected = 32,
 		DeviceCoherentAMD = 64,
 		DeviceUncachedAMD = 128,
+		RdmaCapableNV = 256,
 	}
 
 	[Flags]
@@ -2185,6 +2194,7 @@ namespace Vortice.Vulkan
 		HostAllocationEXT = 128,
 		HostMappedForeignMemoryEXT = 256,
 		ZirconVmoFuchsia = 2048,
+		RdmaAddressNV = 4096,
 		OpaqueFdKHR = OpaqueFd,
 		OpaqueWin32KHR = OpaqueWin32,
 		OpaqueWin32KmtKHR = OpaqueWin32Kmt,
@@ -3848,6 +3858,7 @@ namespace Vortice.Vulkan
 		TaskShaderNV = 524288,
 		MeshShaderNV = 1048576,
 		SubpassShadingHuawei = 549755813888,
+		InvocationMaskHuawei = 1099511627776,
 	}
 
 	[Flags]
@@ -3892,5 +3903,6 @@ namespace Vortice.Vulkan
 		AccelerationStructureWriteNV = 4194304,
 		FragmentDensityMapReadEXT = 16777216,
 		ColorAttachmentReadNoncoherentEXT = 524288,
+		InvocationMaskReadHuawei = 549755813888,
 	}
 }

@@ -16,7 +16,7 @@ namespace Vortice
 
         public readonly VkInstance VkInstance;
 
-#if !NET5_0
+#if !NET5_0_OR_GREATER
         private readonly PFN_vkDebugUtilsMessengerCallbackEXT DebugMessagerCallbackDelegate = DebugMessengerCallback;
 #endif
 
@@ -91,7 +91,7 @@ namespace Vortice
             {
                 debugUtilsCreateInfo.messageSeverity = VkDebugUtilsMessageSeverityFlagsEXT.Error | VkDebugUtilsMessageSeverityFlagsEXT.Warning;
                 debugUtilsCreateInfo.messageType = VkDebugUtilsMessageTypeFlagsEXT.Validation | VkDebugUtilsMessageTypeFlagsEXT.Performance;
-#if NET5_0
+#if NET5_0_OR_GREATER
                 debugUtilsCreateInfo.pfnUserCallback = &DebugMessengerCallback;
 #else
                 debugUtilsCreateInfo.pfnUserCallback = Marshal.GetFunctionPointerForDelegate(DebugMessagerCallbackDelegate);

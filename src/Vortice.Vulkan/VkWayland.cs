@@ -27,12 +27,12 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public static readonly string KHRWaylandSurfaceExtensionName = "VK_KHR_wayland_surface";
 
-#if NETSTANDARD2_0
-        private static delegate* unmanaged[Stdcall]<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateWaylandSurfaceKHR_ptr;
-		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, VkBool32> vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr;
-#else
+#if NET5_0_OR_GREATER
         private static delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateWaylandSurfaceKHR_ptr;
 		private static delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, VkBool32> vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr;
+#else
+        private static delegate* unmanaged[Stdcall]<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateWaylandSurfaceKHR_ptr;
+		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, VkBool32> vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr;
 #endif
 
         public static unsafe VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, out VkSurfaceKHR pSurface)

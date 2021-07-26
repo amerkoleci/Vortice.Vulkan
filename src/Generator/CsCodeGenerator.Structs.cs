@@ -150,10 +150,10 @@ namespace Generator
 
                     builder.Append(returnCsName);
 
-                    writer.WriteLine("#if NETSTANDARD2_0");
-                    writer.WriteLine($"public IntPtr {csFieldName};");
-                    writer.WriteLine("#else");
+                    writer.WriteLine("#if NET5_0_OR_GREATER");
                     writer.WriteLine($"public unsafe delegate* unmanaged<{builder}> {csFieldName};");
+                    writer.WriteLine("#else");
+                    writer.WriteLine($"public IntPtr {csFieldName};");
                     writer.WriteLine("#endif");
                     return;
                 }

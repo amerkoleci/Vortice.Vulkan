@@ -80,7 +80,7 @@ namespace Vortice.ShaderCompiler
             }
 
             IntPtr handle;
-#if NETSTANDARD2_0
+#if !NET5_0_OR_GREATER
             handle = LoadPlatformLibrary(libraryPath);
 #else
             handle = NativeLibrary.Load(libraryPath);
@@ -94,7 +94,7 @@ namespace Vortice.ShaderCompiler
 
         public static T LoadFunction<T>(IntPtr library, string name)
         {
-#if NETSTANDARD2_0
+#if !NET5_0_OR_GREATER
             IntPtr symbol = GetSymbol(library, name);
 #else
             IntPtr symbol = NativeLibrary.GetExport(library, name);
@@ -106,7 +106,7 @@ namespace Vortice.ShaderCompiler
             return Marshal.GetDelegateForFunctionPointer<T>(symbol);
         }
 
-#if NETSTANDARD2_0
+#if !NET5_0_OR_GREATER
         private static IntPtr LoadPlatformLibrary(string libraryName)
         {
             if (string.IsNullOrEmpty(libraryName))

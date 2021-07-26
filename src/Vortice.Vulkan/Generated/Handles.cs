@@ -959,6 +959,29 @@ namespace Vortice.Vulkan
 	/// A non-dispatchable handle.
 	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct VkRemoteAddressNV : IEquatable<VkRemoteAddressNV>
+	{
+		public VkRemoteAddressNV(ulong handle) { Handle = handle; }
+		public ulong Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkRemoteAddressNV Null => new VkRemoteAddressNV(0);
+		public static implicit operator VkRemoteAddressNV(ulong handle) => new VkRemoteAddressNV(handle);
+		public static bool operator ==(VkRemoteAddressNV left, VkRemoteAddressNV right) => left.Handle == right.Handle;
+		public static bool operator !=(VkRemoteAddressNV left, VkRemoteAddressNV right) => left.Handle != right.Handle;
+		public static bool operator ==(VkRemoteAddressNV left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkRemoteAddressNV left, ulong right) => left.Handle != right;
+		public bool Equals(VkRemoteAddressNV other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is VkRemoteAddressNV handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkRemoteAddressNV [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// A non-dispatchable handle.
+	/// </summary>
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct VkAccelerationStructureKHR : IEquatable<VkAccelerationStructureKHR>
 	{
 		public VkAccelerationStructureKHR(ulong handle) { Handle = handle; }
