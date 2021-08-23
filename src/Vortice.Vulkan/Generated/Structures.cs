@@ -6539,7 +6539,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkVideoCapabilitiesFlagsKHR capabilityFlags;
+		public VkVideoCapabilityFlagsKHR capabilityFlags;
 		public ulong minBitstreamBufferOffsetAlignment;
 		public ulong minBitstreamBufferSizeAlignment;
 		public VkExtent2D videoPictureExtentGranularity;
@@ -6980,7 +6980,7 @@ namespace Vortice.Vulkan
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public VkVideoEncodeH264CapabilitiesFlagsEXT flags;
+		public VkVideoEncodeH264CapabilityFlagsEXT flags;
 		public VkVideoEncodeH264InputModeFlagsEXT inputModeFlags;
 		public VkVideoEncodeH264OutputModeFlagsEXT outputModeFlags;
 		public VkExtent2D minPictureSizeInMbs;
@@ -7162,7 +7162,7 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public StdVideoH264ProfileIdc stdProfileIdc;
-		public VkVideoDecodeH264FieldLayoutFlagsEXT fieldLayout;
+		public VkVideoDecodeH264PictureLayoutFlagsEXT pictureLayout;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

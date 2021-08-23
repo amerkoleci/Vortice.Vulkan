@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 185
+		/// VK_HEADER_VERSION = 189
 		/// </summary>
-		public const uint HeaderVersion = 185;
+		public const uint HeaderVersion = 189;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -2763,13 +2763,25 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXTMultiDrawExtensionName = "VK_EXT_multi_draw";
 		/// <summary>
+		/// VK_EXT_load_store_op_none = 1
+		/// </summary>
+		public const uint EXTLoadStoreOpNone = 1;
+		/// <summary>
+		/// VK_EXT_LOAD_STORE_OP_NONE_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTLoadStoreOpNoneSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_EXT_load_store_op_none"
+		/// </summary>
+		public const string EXTLoadStoreOpNoneExtensionName = "VK_EXT_load_store_op_none";
+		/// <summary>
 		/// VK_KHR_acceleration_structure = 1
 		/// </summary>
 		public const uint KHRAccelerationStructure = 1;
 		/// <summary>
-		/// VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION = 11
+		/// VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION = 12
 		/// </summary>
-		public const uint KHRAccelerationStructureSpecVersion = 11;
+		public const uint KHRAccelerationStructureSpecVersion = 12;
 		/// <summary>
 		/// VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME = "VK_KHR_acceleration_structure"
 		/// </summary>
@@ -2875,9 +2887,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint KHRVideoQueue = 1;
 		/// <summary>
-		/// VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 1
+		/// VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 2
 		/// </summary>
-		public const uint KHRVideoQueueSpecVersion = 1;
+		public const uint KHRVideoQueueSpecVersion = 2;
 		/// <summary>
 		/// VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue"
 		/// </summary>
@@ -2935,9 +2947,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string StdVulkanVideoCodecH264ExtensionName = "VK_STD_vulkan_video_codec_h264";
 		/// <summary>
-		/// VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 1
+		/// VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 2
 		/// </summary>
-		public const uint EXTVideoEncodeH264SpecVersion = 1;
+		public const uint EXTVideoEncodeH264SpecVersion = 2;
 		/// <summary>
 		/// VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264"
 		/// </summary>
@@ -2947,9 +2959,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTVideoDecodeH264 = 1;
 		/// <summary>
-		/// VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 1
+		/// VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 3
 		/// </summary>
-		public const uint EXTVideoDecodeH264SpecVersion = 1;
+		public const uint EXTVideoDecodeH264SpecVersion = 3;
 		/// <summary>
 		/// VK_EXT_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_EXT_video_decode_h264"
 		/// </summary>

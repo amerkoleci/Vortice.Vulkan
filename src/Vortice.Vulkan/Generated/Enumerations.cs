@@ -1470,13 +1470,15 @@ namespace Vortice.Vulkan
 		Load = 0,
 		Clear = 1,
 		DontCare = 2,
+		NoneEXT = 1000400000,
 	}
 
 	public enum VkAttachmentStoreOp
 	{
 		Store = 0,
 		DontCare = 1,
-		NoneQcom = 1000301000,
+		NoneEXT = 1000301000,
+		NoneQcom = NoneEXT,
 	}
 
 	public enum VkPipelineBindPoint
@@ -2302,6 +2304,7 @@ namespace Vortice.Vulkan
 		Moltenvk = 14,
 		CoreaviProprietary = 15,
 		JuiceProprietary = 16,
+		VerisiliconProprietary = 17,
 		AMDProprietaryKHR = AMDProprietary,
 		AMDOpenSourceKHR = AMDOpenSource,
 		MesaRadvKHR = MesaRadv,
@@ -2805,9 +2808,10 @@ namespace Vortice.Vulkan
 	{
 		None = 0,
 		TriangleFacingCullDisable = 1,
-		TriangleFrontCounterclockwise = 2,
+		TriangleFlipFacing = 2,
 		ForceOpaque = 4,
 		ForceNoOpaque = 8,
+		TriangleFrontCounterclockwise = TriangleFlipFacing,
 		TriangleCullDisableNV = TriangleFacingCullDisable,
 		TriangleFrontCounterclockwiseNV = TriangleFrontCounterclockwise,
 		ForceOpaqueNV = ForceOpaque,
@@ -3138,7 +3142,7 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
-	public enum VkVideoCapabilitiesFlagsKHR
+	public enum VkVideoCapabilityFlagsKHR
 	{
 		None = 0,
 		ProtectedContent = 1,
@@ -3349,20 +3353,20 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
-	public enum VkVideoEncodeH264CapabilitiesFlagsEXT
+	public enum VkVideoEncodeH264CapabilityFlagsEXT
 	{
 		None = 0,
-		VK_VIDEO_ENCODE_H264_CAPABILITY_CABAC_BIT_ = 1,
-		VK_VIDEO_ENCODE_H264_CAPABILITY_CAVLC_BIT_ = 2,
-		VK_VIDEO_ENCODE_H264_CAPABILITY_WEIGHTED_BI_PRED_IMPLICIT_BIT_ = 4,
-		VK_VIDEO_ENCODE_H264_CAPABILITY_TRANSFORM_8X8_BIT_ = 8,
-		VK_VIDEO_ENCODE_H264_CAPABILITY_CHROMA_QP_OFFSET_BIT_ = 16,
-		VK_VIDEO_ENCODE_H264_CAPABILITY_SECOND_CHROMA_QP_OFFSET_BIT_ = 32,
-		VK_VIDEO_ENCODE_H264_CAPABILITY_DEBLOCKING_FILTER_DISABLED_BIT_ = 64,
-		VK_VIDEO_ENCODE_H264_CAPABILITY_DEBLOCKING_FILTER_ENABLED_BIT_ = 128,
-		VK_VIDEO_ENCODE_H264_CAPABILITY_DEBLOCKING_FILTER_PARTIAL_BIT_ = 256,
-		VK_VIDEO_ENCODE_H264_CAPABILITY_MULTIPLE_SLICE_PER_FRAME_BIT_ = 512,
-		VK_VIDEO_ENCODE_H264_CAPABILITY_EVENLY_DISTRIBUTED_SLICE_SIZE_BIT_ = 1024,
+		Cabac = 1,
+		Cavlc = 2,
+		WeightedBiPredImplicit = 4,
+		Transform8x8 = 8,
+		ChromaQpOffset = 16,
+		SecondChromaQpOffset = 32,
+		DeblockingFilterDisabled = 64,
+		DeblockingFilterEnabled = 128,
+		DeblockingFilterPartial = 256,
+		MultipleSlicePerFrame = 512,
+		EvenlyDistributedSliceSize = 1024,
 	}
 
 	[Flags]
@@ -3392,12 +3396,12 @@ namespace Vortice.Vulkan
 	}
 
 	[Flags]
-	public enum VkVideoDecodeH264FieldLayoutFlagsEXT
+	public enum VkVideoDecodeH264PictureLayoutFlagsEXT
 	{
 		None = 0,
-		VK_VIDEO_DECODE_H264_PROGRESSIVE_PICTURES_ONLY_ = 0,
-		LineInterlacedPlane = 1,
-		SeparateInterlacedPlane = 2,
+		Progressive = 0,
+		InterlacedInterleavedLines = 1,
+		InterlacedSeparatePlanes = 2,
 	}
 
 	public enum StdVideoH265ChromaFormatIdc

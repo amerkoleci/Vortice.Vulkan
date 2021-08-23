@@ -42,6 +42,11 @@ namespace Vortice.Vulkan
             return (&memoryProperties.memoryTypes_0)[index];
         }
 
+        public static VkMemoryHeap GetMemoryHeap(this VkPhysicalDeviceMemoryProperties memoryProperties, uint index)
+        {
+            return (&memoryProperties.memoryHeaps_0)[index];
+        }
+
         public static uint IndexOf(this VkPhysicalDeviceMemoryProperties memoryProperties, int memoryTypeBits, VkMemoryPropertyFlags properties)
         {
             uint count = memoryProperties.memoryTypeCount;

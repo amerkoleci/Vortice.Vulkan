@@ -18,10 +18,7 @@ namespace DrawTriangle
 #endif
 		public static void Main()
 		{
-
-
-
-			string vertexShader = @"
+            string vertexShader = @"
 #version 450
 
 layout (location = 0) in vec3 inPos;
@@ -48,13 +45,13 @@ void main()
 	gl_Position = ubo.projectionMatrix * ubo.viewMatrix * ubo.modelMatrix * vec4(inPos.xyz, 1.0);
 }
 ";
-			using Compiler compiler = new Compiler();
-			using (var compilationResult = compiler.Compile(vertexShader, string.Empty, ShaderKind.VertexShader))
-			{
-				//vkCreateShaderModule(VkDevice, compilationResult.GetBytecode(), null, out VkShaderModule module).CheckResult();
-			}
+            //using Compiler compiler = new Compiler();
+            //using (var compilationResult = compiler.Compile(vertexShader, string.Empty, ShaderKind.VertexShader))
+            //{
+            //    //vkCreateShaderModule(VkDevice, compilationResult.GetBytecode(), null, out VkShaderModule module).CheckResult();
+            //} 
 
-			using var testApp = new TestApp();
+            using var testApp = new TestApp();
 			testApp.Run();
 		}
 

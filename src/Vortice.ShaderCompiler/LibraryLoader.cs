@@ -25,65 +25,98 @@ namespace Vortice.ShaderCompiler
 
         public static IntPtr LoadLocalLibrary(string libraryName)
         {
-            if (!libraryName.EndsWith(Extension, StringComparison.OrdinalIgnoreCase))
-                libraryName += Extension;
-
-
-            var osPlatform = GetOSPlatform();
-            var architecture = GetArchitecture();
-
-            var libraryPath = GetNativeAssemblyPath(osPlatform, architecture, libraryName);
-
-            static string GetOSPlatform()
-            {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                    return "win";
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                    return "linux";
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                    return "osx";
-
-                throw new ArgumentException("Unsupported OS platform.");
-            }
-
-            static string GetArchitecture()
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.X86: return "x86";
-                    case Architecture.X64: return "x64";
-                    case Architecture.Arm: return "arm";
-                    case Architecture.Arm64: return "arm64";
-                }
-
-                throw new ArgumentException("Unsupported architecture.");
-            }
-
-            static string GetNativeAssemblyPath(string osPlatform, string architecture, string libraryName)
-            {
-                var assemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-                var paths = new[]
-                {
-                    Path.Combine(assemblyLocation, libraryName),
-                    Path.Combine(assemblyLocation, "runtimes", osPlatform, "native", libraryName),
-                    Path.Combine(assemblyLocation, "runtimes", $"{osPlatform}-{architecture}", "native", libraryName),
-                };
-
-                foreach (var path in paths)
-                {
-                    if (File.Exists(path))
-                        return path;
-                }
-
-                return libraryName;
-            }
-
-            IntPtr handle;
 #if !NET5_0_OR_GREATER
-            handle = LoadPlatformLibrary(libraryPath);
+            var libraryPath = GetLibraryPath(libraryName);
+
+            static string GetLibraryPath(string libraryName)
+            {
+                var arch = PlatformConfiguration.Is64Bit
+                    ? PlatformConfiguration.IsArm ? "arm64" : "x64"
+                    : PlatformConfiguration.IsArm ? "arm" : "x86";
+
+                var libWithExt = libraryName;
+                if (!libraryName.EndsWith(Extension, StringComparison.OrdinalIgnoreCase))
+                    libWithExt += Extension;
+
+                // 1. try alongside managed assembly
+                var path = typeof(LibraryLoader).Assembly.Location;
+                if (!string.IsNullOrEmpty(path))
+                {
+                    path = Path.GetDirectoryName(path);
+                    if (CheckLibraryPath(path, arch, libWithExt, out var localLib))
+                        return localLib;
+                }
+
+                // 2. try current directory
+                if (CheckLibraryPath(Directory.GetCurrentDirectory(), arch, libWithExt, out var lib))
+                    return lib;
+
+                // 3. try app domain
+                try
+                {
+                    if (AppDomain.CurrentDomain is AppDomain domain)
+                    {
+                        // 3.1 RelativeSearchPath
+                        if (CheckLibraryPath(domain.RelativeSearchPath, arch, libWithExt, out lib))
+                            return lib;
+
+                        // 3.2 BaseDirectory
+                        if (CheckLibraryPath(domain.BaseDirectory, arch, libWithExt, out lib))
+                            return lib;
+                    }
+                }
+                catch
+                {
+                    // no-op as there may not be any domain or path
+                }
+
+                // 4. use PATH or default loading mechanism
+                return libWithExt;
+            }
+
+            static bool CheckLibraryPath(string root, string arch, string libWithExt, out string? foundPath)
+            {
+                if (!string.IsNullOrEmpty(root))
+                {
+                    // a. in specific platform sub dir
+                    if (!string.IsNullOrEmpty(PlatformConfiguration.LinuxFlavor))
+                    {
+                        var muslLib = Path.Combine(root, PlatformConfiguration.LinuxFlavor + "-" + arch, libWithExt);
+                        if (File.Exists(muslLib))
+                        {
+                            foundPath = muslLib;
+                            return true;
+                        }
+                    }
+
+                    // b. in generic platform sub dir
+                    var searchLib = Path.Combine(root, arch, libWithExt);
+                    if (File.Exists(searchLib))
+                    {
+                        foundPath = searchLib;
+                        return true;
+                    }
+
+                    // c. in root
+                    searchLib = Path.Combine(root, libWithExt);
+                    if (File.Exists(searchLib))
+                    {
+                        foundPath = searchLib;
+                        return true;
+                    }
+                }
+
+                // d. nothing
+                foundPath = null;
+                return false;
+            }
+
+            IntPtr handle = LoadPlatformLibrary(libraryPath);
 #else
-            handle = NativeLibrary.Load(libraryPath);
+            IntPtr handle = NativeLibrary.Load(
+                libraryName,
+                Assembly.GetExecutingAssembly(),
+                DllImportSearchPath.SafeDirectories);
 #endif
 
             if (handle == IntPtr.Zero)
