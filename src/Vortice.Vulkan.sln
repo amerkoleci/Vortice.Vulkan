@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{065268A8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.ShaderCompiler", "Vortice.ShaderCompiler\Vortice.ShaderCompiler.csproj", "{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{253C0AE5-70CF-4519-A8B6-4395B5ABD4DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vortice.ShaderCompiler.Test", "Vortice.ShaderCompiler.Test\Vortice.ShaderCompiler.Test.csproj", "{898042D9-7E34-40AE-ACC6-A43B25907CFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,12 +47,17 @@ Global
 		{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{898042D9-7E34-40AE-ACC6-A43B25907CFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{898042D9-7E34-40AE-ACC6-A43B25907CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{898042D9-7E34-40AE-ACC6-A43B25907CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{898042D9-7E34-40AE-ACC6-A43B25907CFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5A10816D-90A4-4AEA-B06E-6A463DA4A891} = {08F6AF96-809B-45C5-BE6C-5BAB7D9AFB60}
+		{898042D9-7E34-40AE-ACC6-A43B25907CFA} = {253C0AE5-70CF-4519-A8B6-4395B5ABD4DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF0375B3-E304-4A53-8E5F-FC9D23743647}
