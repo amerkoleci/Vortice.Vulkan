@@ -543,6 +543,8 @@ namespace Vortice.Vulkan
 		PhysicalDeviceDeviceGeneratedCommandsFeaturesNV = 1000277007,
 		PhysicalDeviceInheritedViewportScissorFeaturesNV = 1000278000,
 		CommandBufferInheritanceViewportScissorInfoNV = 1000278001,
+		PhysicalDeviceShaderIntegerDotProductFeaturesKHR = 1000280000,
+		PhysicalDeviceShaderIntegerDotProductPropertiesKHR = 1000280001,
 		PhysicalDeviceTexelBufferAlignmentFeaturesEXT = 1000281000,
 		PhysicalDeviceTexelBufferAlignmentPropertiesEXT = 1000281001,
 		CommandBufferInheritanceRenderPassTransformInfoQcom = 1000282000,
@@ -609,6 +611,7 @@ namespace Vortice.Vulkan
 		VertexInputBindingDescription2EXT = 1000352001,
 		VertexInputAttributeDescription2EXT = 1000352002,
 		PhysicalDeviceDrmPropertiesEXT = 1000353000,
+		PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT = 1000356000,
 		ImportMemoryZirconHandleInfoFuchsia = 1000364000,
 		MemoryZirconHandlePropertiesFuchsia = 1000364001,
 		MemoryGetZirconHandleInfoFuchsia = 1000364002,
@@ -1867,12 +1870,6 @@ namespace Vortice.Vulkan
 		None = 0,
 		FragmentDensityMapDynamicEXT = 1,
 		FragmentDensityMapDeferredEXT = 2,
-	}
-
-	[Flags]
-	public enum VkShaderModuleCreateFlags
-	{
-		None = 0,
 	}
 
 	[Flags]
@@ -3472,6 +3469,12 @@ namespace Vortice.Vulkan
 
 	[Flags]
 	public enum VkBufferViewCreateFlags
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkShaderModuleCreateFlags
 	{
 		None = 0,
 	}

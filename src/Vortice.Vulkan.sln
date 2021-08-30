@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.ShaderCompiler", "V
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{253C0AE5-70CF-4519-A8B6-4395B5ABD4DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vortice.ShaderCompiler.Test", "Vortice.ShaderCompiler.Test\Vortice.ShaderCompiler.Test.csproj", "{898042D9-7E34-40AE-ACC6-A43B25907CFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vortice.ShaderCompiler.Test", "tests\Vortice.ShaderCompiler.Test\Vortice.ShaderCompiler.Test.csproj", "{898042D9-7E34-40AE-ACC6-A43B25907CFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

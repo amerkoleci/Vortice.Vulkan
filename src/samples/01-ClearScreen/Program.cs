@@ -45,11 +45,11 @@ void main()
 	gl_Position = ubo.projectionMatrix * ubo.viewMatrix * ubo.modelMatrix * vec4(inPos.xyz, 1.0);
 }
 ";
-            //using Compiler compiler = new Compiler();
-            //using (var compilationResult = compiler.Compile(vertexShader, string.Empty, ShaderKind.VertexShader))
-            //{
-            //    //vkCreateShaderModule(VkDevice, compilationResult.GetBytecode(), null, out VkShaderModule module).CheckResult();
-            //} 
+            using Compiler compiler = new Compiler();
+            using (var compilationResult = compiler.Compile(vertexShader, string.Empty, ShaderKind.VertexShader))
+            {
+                //vkCreateShaderModule(VkDevice, compilationResult.GetBytecode(), null, out VkShaderModule module).CheckResult();
+            }
 
             using var testApp = new TestApp();
 			testApp.Run();

@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 189
+		/// VK_HEADER_VERSION = 190
 		/// </summary>
-		public const uint HeaderVersion = 189;
+		public const uint HeaderVersion = 190;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -862,6 +862,18 @@ namespace Vortice.Vulkan
 		/// VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME = "VK_KHR_pipeline_executable_properties"
 		/// </summary>
 		public const string KHRPipelineExecutablePropertiesExtensionName = "VK_KHR_pipeline_executable_properties";
+		/// <summary>
+		/// VK_KHR_shader_integer_dot_product = 1
+		/// </summary>
+		public const uint KHRShaderIntegerDotProduct = 1;
+		/// <summary>
+		/// VK_KHR_SHADER_INTEGER_DOT_PRODUCT_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRShaderIntegerDotProductSpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_SHADER_INTEGER_DOT_PRODUCT_EXTENSION_NAME = "VK_KHR_shader_integer_dot_product"
+		/// </summary>
+		public const string KHRShaderIntegerDotProductExtensionName = "VK_KHR_shader_integer_dot_product";
 		/// <summary>
 		/// VK_KHR_pipeline_library = 1
 		/// </summary>
@@ -2674,6 +2686,18 @@ namespace Vortice.Vulkan
 		/// VK_EXT_PHYSICAL_DEVICE_DRM_EXTENSION_NAME = "VK_EXT_physical_device_drm"
 		/// </summary>
 		public const string EXTPhysicalDeviceDrmExtensionName = "VK_EXT_physical_device_drm";
+		/// <summary>
+		/// VK_EXT_primitive_topology_list_restart = 1
+		/// </summary>
+		public const uint EXTPrimitiveTopologyListRestart = 1;
+		/// <summary>
+		/// VK_EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTPrimitiveTopologyListRestartSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_EXTENSION_NAME = "VK_EXT_primitive_topology_list_restart"
+		/// </summary>
+		public const string EXTPrimitiveTopologyListRestartExtensionName = "VK_EXT_primitive_topology_list_restart";
 		/// <summary>
 		/// VK_HUAWEI_subpass_shading = 1
 		/// </summary>
