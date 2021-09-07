@@ -4214,6 +4214,16 @@ namespace Vortice.Vulkan
 		}
 
 		#if NET5_0_OR_GREATER
+		private static delegate* unmanaged<VkDevice, VkDeviceMemory, float, void> vkSetDeviceMemoryPriorityEXT_ptr;
+		#else
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, float, void> vkSetDeviceMemoryPriorityEXT_ptr;
+		#endif
+		public static void vkSetDeviceMemoryPriorityEXT(VkDevice device, VkDeviceMemory memory, float priority)
+		{
+			vkSetDeviceMemoryPriorityEXT_ptr(device, memory, priority);
+		}
+
+		#if NET5_0_OR_GREATER
 		private static delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
 		#else
 		private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
@@ -6762,6 +6772,11 @@ namespace Vortice.Vulkan
 			vkCmdDrawMultiIndexedEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawIndexedInfoEXT*, uint, uint, uint, int*, void>) load(context, nameof(vkCmdDrawMultiIndexedEXT));
 			#else
 			vkCmdDrawMultiIndexedEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, VkMultiDrawIndexedInfoEXT*, uint, uint, uint, int*, void>) load(context, nameof(vkCmdDrawMultiIndexedEXT));
+			#endif
+			#if NET5_0_OR_GREATER
+			vkSetDeviceMemoryPriorityEXT_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, float, void>) load(context, nameof(vkSetDeviceMemoryPriorityEXT));
+			#else
+			vkSetDeviceMemoryPriorityEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, float, void>) load(context, nameof(vkSetDeviceMemoryPriorityEXT));
 			#endif
 			#if NET5_0_OR_GREATER
 			vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));

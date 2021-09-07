@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 190
+		/// VK_HEADER_VERSION = 191
 		/// </summary>
-		public const uint HeaderVersion = 190;
+		public const uint HeaderVersion = 191;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -2798,6 +2798,18 @@ namespace Vortice.Vulkan
 		/// VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_EXT_load_store_op_none"
 		/// </summary>
 		public const string EXTLoadStoreOpNoneExtensionName = "VK_EXT_load_store_op_none";
+		/// <summary>
+		/// VK_EXT_pageable_device_local_memory = 1
+		/// </summary>
+		public const uint EXTPageableDeviceLocalMemory = 1;
+		/// <summary>
+		/// VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTPageableDeviceLocalMemorySpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory"
+		/// </summary>
+		public const string EXTPageableDeviceLocalMemoryExtensionName = "VK_EXT_pageable_device_local_memory";
 		/// <summary>
 		/// VK_KHR_acceleration_structure = 1
 		/// </summary>

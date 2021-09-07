@@ -6175,6 +6175,14 @@ namespace Vortice.Vulkan
 		public int vertexOffset;
 	}
 
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 pageableDeviceLocalMemory;
+	}
+
 	[StructLayout(LayoutKind.Explicit)]
 	public partial struct VkDeviceOrHostAddressKHR
 	{

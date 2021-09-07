@@ -631,6 +631,7 @@ namespace Vortice.Vulkan
 		QueueFamilyGlobalPriorityPropertiesEXT = 1000388001,
 		PhysicalDeviceMultiDrawFeaturesEXT = 1000392000,
 		PhysicalDeviceMultiDrawPropertiesEXT = 1000392001,
+		PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT = 1000412000,
 		PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 		PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 		DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
@@ -3166,7 +3167,6 @@ namespace Vortice.Vulkan
 	public enum VkVideoCodingQualityPresetFlagsKHR
 	{
 		None = 0,
-		Default = 0,
 		Normal = 1,
 		Power = 2,
 		Quality = 4,
