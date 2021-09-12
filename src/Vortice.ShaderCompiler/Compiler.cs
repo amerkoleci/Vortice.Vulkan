@@ -22,6 +22,7 @@ namespace Vortice.ShaderCompiler
         }
 
         public Options Options { get; }
+        public IIncluder? Includer;
 
         /// <summary>
         /// Finalizes an instance of the <see cref="Compiler" /> class.
@@ -41,6 +42,7 @@ namespace Vortice.ShaderCompiler
 
             if (disposing)
             {
+                Includer?.Dispose(Options);
                 Options.Dispose();
                 shaderc_compiler_release(_handle);
             }
@@ -48,6 +50,7 @@ namespace Vortice.ShaderCompiler
 
         public Result Compile(string source, string fileName, ShaderKind shaderKind, string entryPoint = "main")
         {
+            Includer?.Activate(Options);
             return new Result(shaderc_compile_into_spv(_handle, source, (nuint)source.Length, (byte)shaderKind, fileName, entryPoint, Options.Handle));
         }
 
