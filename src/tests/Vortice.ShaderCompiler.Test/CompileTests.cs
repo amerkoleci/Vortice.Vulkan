@@ -1,4 +1,4 @@
-// Copyright (c) Amer Koleci and contributors.
+// Copyright (c) Amer Koleci and Contributors.
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
@@ -6,7 +6,7 @@ using System.IO;
 using Vortice.ShaderCompiler;
 using Xunit;
 
-namespace Vortice.Dxc.Test
+namespace Vortice.ShaderCompiler.Test
 {
     public class CompileTests
     {
@@ -20,7 +20,6 @@ namespace Vortice.Dxc.Test
 
             using (var compiler = new Compiler())
             {
-                compiler.Includer = new Includer(Path.GetDirectoryName(shaderSourceFile)!);
                 using (var result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
                 {
                     Assert.Equal(CompilationStatus.Success, result.Status);
@@ -47,6 +46,26 @@ namespace Vortice.Dxc.Test
                     var shaderCode = result.GetBytecode().ToArray();
 
                     Assert.Contains("error: 'out_var_ThisIsAnError' : undeclared identifier", result.ErrorMessage);
+                }
+            }
+        }
+
+        [Fact]
+        public void IncludeFileTest()
+        {
+            string shaderSourceFile = Path.Combine(AssetsPath, "TriangleVertexWithInclude.glsl");
+            string shaderSource = File.ReadAllText(shaderSourceFile);
+
+            using (var compiler = new Compiler())
+            {
+                compiler.Includer = new Includer(Path.GetDirectoryName(shaderSourceFile)!);
+                using (var result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
+                {
+                    Assert.Equal(CompilationStatus.Success, result.Status);
+
+                    var shaderCode = result.GetBytecode().ToArray();
+
+                    Assert.True(shaderCode.Length > 0);
                 }
             }
         }

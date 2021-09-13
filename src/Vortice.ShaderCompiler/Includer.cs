@@ -1,4 +1,4 @@
-// Copyright (c) Amer Koleci and contributors.
+// Copyright (c) Amer Koleci and Contributors.
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
@@ -15,7 +15,7 @@ namespace Vortice.ShaderCompiler
         void Dispose(Options options);
     }
 
-    public class Includer : IIncluder
+    public unsafe class Includer : IIncluder
     {
         public string RootPath;
 
@@ -58,7 +58,7 @@ namespace Vortice.ShaderCompiler
 #pragma warning restore CS8600
 
 #pragma warning disable CS8602
-            if (!includer._shadercIncludeResults.TryGetValue(requested_source, out var includeResultPtr))
+            if (!includer._shadercIncludeResults.TryGetValue(requested_source, out IntPtr includeResultPtr))
 #pragma warning restore CS8602
             {
                 Native.shaderc_include_result includeResult = new();
@@ -69,7 +69,7 @@ namespace Vortice.ShaderCompiler
                     if (includer._sourceToPath.ContainsKey(requesting_source)) {
                         rootPath = Path.GetDirectoryName(includer._sourceToPath[requesting_source]);
                     }
-                    path = Path.Join(rootPath, path);
+                    path = Path.Combine(rootPath, path);
                 }
                 includeResult.content = File.ReadAllText(path);
                 includeResult.content_length = (UIntPtr)includeResult.content.Length;

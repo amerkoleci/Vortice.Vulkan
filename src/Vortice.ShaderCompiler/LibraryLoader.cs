@@ -63,17 +63,20 @@ namespace Vortice.ShaderCompiler
             {
                 var assemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-                var paths = new[]
+                string[] paths = new[]
                 {
                     Path.Combine(assemblyLocation, libraryName),
                     Path.Combine(assemblyLocation, "runtimes", osPlatform, "native", libraryName),
                     Path.Combine(assemblyLocation, "runtimes", $"{osPlatform}-{architecture}", "native", libraryName),
+                    Path.Combine(assemblyLocation, "native", $"{osPlatform}-{architecture}", libraryName),
                 };
 
-                foreach (var path in paths)
+                foreach (string path in paths)
                 {
                     if (File.Exists(path))
+                    {
                         return path;
+                    }
                 }
 
                 return libraryName;
