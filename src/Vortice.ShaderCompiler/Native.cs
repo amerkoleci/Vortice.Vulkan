@@ -81,6 +81,45 @@ namespace Vortice.ShaderCompiler
             shaderc_compile_options_set_forced_version_profile_(options, version, profile);
         }
 
+        /// <summary>An include result. https://github.com/google/shaderc/blob/c42db5815fad0424f0f1311de1eec92cdd77203d/libshaderc/include/shaderc/shaderc.h#L325</summary>
+        [StructLayout(LayoutKind.Sequential, Pack = 0)]
+        public struct shaderc_include_result
+        {
+            /// <summary>
+            /// The name of the source file.  The name should be fully resolved
+            /// in the sense that it should be a unique name in the context of the
+            /// includer.  For example, if the includer maps source names to files in
+            /// a filesystem, then this name should be the absolute path of the file.
+            /// For a failed inclusion, this string is empty.
+            /// </summary>
+            [MarshalAs(UnmanagedType.LPStr)] public string source_name;
+            public UIntPtr source_name_length;
+            /// <summary>
+            /// The text contents of the source file in the normal case.
+            /// For a failed inclusion, this contains the error message.
+            /// </summary>
+            [MarshalAs(UnmanagedType.LPStr)] public string content;
+            public UIntPtr content_length;
+            /// <summary>
+            /// User data to be passed along with this request.
+            /// </summary>
+            public void* user_data;
+        }
+        /// <returns>shaderc_include_result</returns>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate nint PFN_shaderc_include_resolve_fn(void* user_data, [MarshalAs(UnmanagedType.LPStr)] string requested_source, int type, [MarshalAs(UnmanagedType.LPStr)] string requesting_source, UIntPtr include_depth);
+        /// <param name="user_data">User data</param>
+        /// <param name="include_result">shaderc_include_result</param>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void PFN_shaderc_include_result_release_fn(void* user_data, nint include_result);
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private delegate void PFN_shaderc_compile_options_set_include_callbacks(nint options, PFN_shaderc_include_resolve_fn resolver, PFN_shaderc_include_result_release_fn result_releaser, void* user_data);
+        private static readonly PFN_shaderc_compile_options_set_include_callbacks shaderc_compile_options_set_include_callbacks_ = LoadFunction<PFN_shaderc_compile_options_set_include_callbacks>("shaderc_compile_options_set_include_callbacks");
+        public static void shaderc_compile_options_set_include_callbacks(nint options, PFN_shaderc_include_resolve_fn resolver, PFN_shaderc_include_result_release_fn result_releaser, void* user_data)
+        {
+            shaderc_compile_options_set_include_callbacks_(options, resolver, result_releaser, user_data);
+        }
+
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate nint PFN_shaderc_compile_options_set_suppress_warnings(nint options);
         private static readonly PFN_shaderc_compile_options_set_suppress_warnings shaderc_compile_options_set_suppress_warnings_ = LoadFunction<PFN_shaderc_compile_options_set_suppress_warnings>("shaderc_compile_options_set_suppress_warnings");

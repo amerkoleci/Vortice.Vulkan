@@ -20,6 +20,7 @@ namespace Vortice.Dxc.Test
 
             using (var compiler = new Compiler())
             {
+                compiler.Includer = new Includer(Path.GetDirectoryName(shaderSourceFile)!);
                 using (var result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
                 {
                     Assert.Equal(CompilationStatus.Success, result.Status);

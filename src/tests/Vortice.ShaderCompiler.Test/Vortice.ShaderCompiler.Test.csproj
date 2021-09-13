@@ -20,11 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Vortice.ShaderCompiler\Vortice.ShaderCompiler.csproj" />
+    <ProjectReference Include="..\..\Vortice.ShaderCompiler\Vortice.ShaderCompiler.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\*">
+    <Content Include="Assets\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
