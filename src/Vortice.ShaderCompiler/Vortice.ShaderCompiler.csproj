@@ -25,11 +25,6 @@
       <PackagePath>runtimes/linux-x64/native</PackagePath>
       <Pack>true</Pack>
     </Content>
-    <Content Include="$(MSBuildThisFileDirectory)native\linux-x64\libshaderc_shared.so.1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <PackagePath>runtimes/linux-x64/native</PackagePath>
-      <Pack>true</Pack>
-    </Content>
     <!--<Content Include="$(MSBuildThisFileDirectory)native\osx-x64\libshaderc_shared.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackagePath>runtimes/osx-x64/native</PackagePath>
