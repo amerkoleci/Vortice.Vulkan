@@ -1,4 +1,4 @@
-﻿// Copyright (c) Amer Koleci and contributors.
+﻿// Copyright (c) Amer Koleci and Contributors
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
@@ -10,7 +10,7 @@ namespace Vortice.Vulkan
 {
     public sealed class VkString : IDisposable
     {
-        private GCHandle _handle;
+        private readonly GCHandle _handle;
 
         /// <summary>
         /// Size of the byte array that is created from the string.

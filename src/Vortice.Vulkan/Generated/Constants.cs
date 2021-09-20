@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 191
+		/// VK_HEADER_VERSION = 192
 		/// </summary>
-		public const uint HeaderVersion = 191;
+		public const uint HeaderVersion = 192;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -211,11 +211,11 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint KHRMaintenance1 = 1;
 		/// <summary>
-		/// VK_KHR_MAINTENANCE1_SPEC_VERSION = 2
+		/// VK_KHR_MAINTENANCE_1_SPEC_VERSION = 2
 		/// </summary>
 		public const uint KHRMaintenance1SpecVersion = 2;
 		/// <summary>
-		/// VK_KHR_MAINTENANCE1_EXTENSION_NAME = "VK_KHR_maintenance1"
+		/// VK_KHR_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_maintenance1"
 		/// </summary>
 		public const string KHRMaintenance1ExtensionName = "VK_KHR_maintenance1";
 		/// <summary>
@@ -463,11 +463,11 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint KHRMaintenance2 = 1;
 		/// <summary>
-		/// VK_KHR_MAINTENANCE2_SPEC_VERSION = 1
+		/// VK_KHR_MAINTENANCE_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRMaintenance2SpecVersion = 1;
 		/// <summary>
-		/// VK_KHR_MAINTENANCE2_EXTENSION_NAME = "VK_KHR_maintenance2"
+		/// VK_KHR_MAINTENANCE_2_EXTENSION_NAME = "VK_KHR_maintenance2"
 		/// </summary>
 		public const string KHRMaintenance2ExtensionName = "VK_KHR_maintenance2";
 		/// <summary>
@@ -595,11 +595,11 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint KHRMaintenance3 = 1;
 		/// <summary>
-		/// VK_KHR_MAINTENANCE3_SPEC_VERSION = 1
+		/// VK_KHR_MAINTENANCE_3_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRMaintenance3SpecVersion = 1;
 		/// <summary>
-		/// VK_KHR_MAINTENANCE3_EXTENSION_NAME = "VK_KHR_maintenance3"
+		/// VK_KHR_MAINTENANCE_3_EXTENSION_NAME = "VK_KHR_maintenance3"
 		/// </summary>
 		public const string KHRMaintenance3ExtensionName = "VK_KHR_maintenance3";
 		/// <summary>
@@ -1419,11 +1419,11 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint NVViewportArray2 = 1;
 		/// <summary>
-		/// VK_NV_VIEWPORT_ARRAY2_SPEC_VERSION = 1
+		/// VK_NV_VIEWPORT_ARRAY_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVViewportArray2SpecVersion = 1;
 		/// <summary>
-		/// VK_NV_VIEWPORT_ARRAY2_EXTENSION_NAME = "VK_NV_viewport_array2"
+		/// VK_NV_VIEWPORT_ARRAY_2_EXTENSION_NAME = "VK_NV_viewport_array2"
 		/// </summary>
 		public const string NVViewportArray2ExtensionName = "VK_NV_viewport_array2";
 		/// <summary>
@@ -2091,11 +2091,11 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint GoogleHlslFunctionality1 = 1;
 		/// <summary>
-		/// VK_GOOGLE_HLSL_FUNCTIONALITY1_SPEC_VERSION = 1
+		/// VK_GOOGLE_HLSL_FUNCTIONALITY_1_SPEC_VERSION = 1
 		/// </summary>
 		public const uint GoogleHlslFunctionality1SpecVersion = 1;
 		/// <summary>
-		/// VK_GOOGLE_HLSL_FUNCTIONALITY1_EXTENSION_NAME = "VK_GOOGLE_hlsl_functionality1"
+		/// VK_GOOGLE_HLSL_FUNCTIONALITY_1_EXTENSION_NAME = "VK_GOOGLE_hlsl_functionality1"
 		/// </summary>
 		public const string GoogleHlslFunctionality1ExtensionName = "VK_GOOGLE_hlsl_functionality1";
 		/// <summary>

@@ -1,7 +1,8 @@
-﻿// Copyright (c) Amer Koleci and contributors.
+﻿// Copyright (c) Amer Koleci and Contributors
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
+using System.Drawing;
 
 namespace Vortice.Vulkan
 {
@@ -74,5 +75,19 @@ namespace Vortice.Vulkan
         /// True if the current left is unequal to the <paramref name="right"/> parameter; otherwise, false.
         /// </returns>
         public static bool operator !=(VkExtent2D left, VkExtent2D right) => !left.Equals(right);
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cre ="VkExtent2D"/> to <see cref="Size" />.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator Size(VkExtent2D value) => new((int)value.width, (int)value.height);
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cre ="Size"/> to <see cref="VkExtent2D" />.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator VkExtent2D(Size value) => new(value.Width, value.Height);
     }
 }

@@ -1,9 +1,8 @@
-﻿// Copyright (c) Amer Koleci and contributors.
+﻿// Copyright (c) Amer Koleci and Contributors
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using System.Drawing;
 
 namespace Vortice.Vulkan
 {
@@ -125,5 +124,19 @@ namespace Vortice.Vulkan
         /// True if the current left is unequal to the <paramref name="right"/> parameter; otherwise, false.
         /// </returns>
         public static bool operator !=(VkRect2D left, VkRect2D right) => !left.Equals(right);
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cre ="VkRect2D"/> to <see cref="Rectangle" />.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator Rectangle(VkRect2D value) => new(value.offset.x, value.offset.y, (int)value.extent.width, (int)value.extent.height);
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cre ="Rectangle"/> to <see cref="VkRect2D" />.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator VkRect2D(Rectangle value) => new(value.X, value.Y, value.Width, value.Height);
     }
 }
