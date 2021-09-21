@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.Vulkan", "Vortice.Vulkan\Vortice.Vulkan.csproj", "{4C0E11CB-B3EA-4117-9504-A35361A86238}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.Vulkan", "src\Vortice.Vulkan\Vortice.Vulkan.csproj", "{4C0E11CB-B3EA-4117-9504-A35361A86238}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generator", "Generator\Generator.csproj", "{7AC14871-D8A0-4E20-B7EF-2BA5F028440C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generator", "src\Generator\Generator.csproj", "{7AC14871-D8A0-4E20-B7EF-2BA5F028440C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{08F6AF96-809B-45C5-BE6C-5BAB7D9AFB60}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-ClearScreen", "samples\01-ClearScreen\01-ClearScreen.csproj", "{5A10816D-90A4-4AEA-B06E-6A463DA4A891}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-ClearScreen", "src\samples\01-ClearScreen\01-ClearScreen.csproj", "{5A10816D-90A4-4AEA-B06E-6A463DA4A891}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{065268A8-16E6-4CFF-8F67-3FD99155877F}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,11 +19,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{065268A8
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.ShaderCompiler", "Vortice.ShaderCompiler\Vortice.ShaderCompiler.csproj", "{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.ShaderCompiler", "src\Vortice.ShaderCompiler\Vortice.ShaderCompiler.csproj", "{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{253C0AE5-70CF-4519-A8B6-4395B5ABD4DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vortice.ShaderCompiler.Test", "tests\Vortice.ShaderCompiler.Test\Vortice.ShaderCompiler.Test.csproj", "{898042D9-7E34-40AE-ACC6-A43B25907CFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vortice.ShaderCompiler.Test", "src\tests\Vortice.ShaderCompiler.Test\Vortice.ShaderCompiler.Test.csproj", "{898042D9-7E34-40AE-ACC6-A43B25907CFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
