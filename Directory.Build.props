@@ -1,5 +1,6 @@
 <Project>
   <PropertyGroup>
+    <BinDir>$(MSBuildThisFileDirectory)/bin</BinDir>
     <BaseOutputPath Condition=" '$(BaseOutputPath)' == '' ">$(BinDir)\$(MSBuildProjectName)\</BaseOutputPath>
     
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
