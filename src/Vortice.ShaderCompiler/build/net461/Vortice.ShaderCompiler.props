@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_Vortice_ShaderCompiler_IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</_Vortice_ShaderCompiler_IsWindows>
+    <_Vortice_ShaderCompiler_IsMacOS Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</_Vortice_ShaderCompiler_IsMacOS>
+    <_Vortice_ShaderCompiler_IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</_Vortice_ShaderCompiler_IsLinux>
+
+    <_Vortice_ShaderCompiler_NativeRuntime Condition=" '$(_Vortice_ShaderCompiler_NativeRuntime)' == '' And '$(_Vortice_ShaderCompiler_IsMacOS)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">osx-x64</_Vortice_ShaderCompiler_NativeRuntime>
+    <_Vortice_ShaderCompiler_NativeRuntime Condition=" '$(_Vortice_ShaderCompiler_NativeRuntime)' == '' And '$(_Vortice_ShaderCompiler_IsLinux)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">linux-x64</_Vortice_ShaderCompiler_NativeRuntime>
+    <_Vortice_ShaderCompiler_NativeRuntime Condition=" '$(_Vortice_ShaderCompiler_NativeRuntime)' == '' And '$(_Vortice_ShaderCompiler_IsWindows)' == 'true' And ('$(Prefer32Bit)' == 'true' Or '$(PlatformTarget)' == 'x86')">win-x86</_Vortice_ShaderCompiler_NativeRuntime>
+    <_Vortice_ShaderCompiler_NativeRuntime Condition=" '$(_Vortice_ShaderCompiler_NativeRuntime)' == '' And '$(_Vortice_ShaderCompiler_IsWindows)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">win-x64</_Vortice_ShaderCompiler_NativeRuntime>
+
+    <_Vortice_ShaderCompiler_NativeLibName Condition="'$(_Vortice_ShaderCompiler_NativeRuntime)' == 'win-x86'">shaderc_shared.dll</_Vortice_ShaderCompiler_NativeLibName>
+    <_Vortice_ShaderCompiler_NativeLibName Condition="'$(_Vortice_ShaderCompiler_NativeRuntime)' == 'win-x64'">shaderc_shared.dll</_Vortice_ShaderCompiler_NativeLibName>
+    <_Vortice_ShaderCompiler_NativeLibName Condition="'$(_Vortice_ShaderCompiler_NativeRuntime)' == 'osx-x64'">libshaderc_shared.dylib</_Vortice_ShaderCompiler_NativeLibName>
+    <_Vortice_ShaderCompiler_NativeLibName Condition="'$(_Vortice_ShaderCompiler_NativeRuntime)' == 'linux-x64'">libshaderc_shared.so</_Vortice_ShaderCompiler_NativeLibName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Condition="'$(_Vortice_ShaderCompiler_NativeRuntime)' != ''" Include="$(MSBuildThisFileDirectory)..\..\runtimes\$(_Vortice_ShaderCompiler_NativeRuntime)\native\$(_Vortice_ShaderCompiler_NativeLibName)">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </Content>
+  </ItemGroup>
+</Project>

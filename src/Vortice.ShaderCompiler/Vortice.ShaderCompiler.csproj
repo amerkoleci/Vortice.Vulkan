@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;netcoreapp3.1;net5.0</TargetFrameworks>
     <Description>https://github.com/google/shaderc bindings.</Description>
-    <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
+    <IncludeContentInPack>true</IncludeContentInPack>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,16 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)native\win-x64\shaderc_shared.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <PackagePath>runtimes/win-x64/native</PackagePath>
-      <Pack>true</Pack>
-    </Content>
-    <Content Include="$(MSBuildThisFileDirectory)native\linux-x64\libshaderc_shared.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <PackagePath>runtimes/linux-x64/native</PackagePath>
-      <Pack>true</Pack>
-    </Content>
+    <Content Include="build\net461\Vortice.ShaderCompiler.props" PackagePath="build\net461\Vortice.ShaderCompiler.props" />
+    <Content Include="runtimes\win-x64\native\shaderc_shared.dll" PackagePath="runtimes\win-x64\native\shaderc_shared.dll" />
+    <Content Include="runtimes\linux-x64\native\libshaderc_shared.so" PackagePath="runtimes\linux-x64\native\libshaderc_shared.so" />
     <!--<Content Include="$(MSBuildThisFileDirectory)native\osx-x64\libshaderc_shared.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackagePath>runtimes/osx-x64/native</PackagePath>
