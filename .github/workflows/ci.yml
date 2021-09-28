@@ -29,22 +29,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      with:
-        fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
 
     - name: Install .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-        
-    - name: Version
-      uses: aarnott/nbgv@v0.4.0
-      with:
-        setAllVars: true
 
     - name: Pack
       run: dotnet pack Vortice.Vulkan.sln --configuration Release --output build/packages
 
     - name: Publish to NuGet
       if: github.event_name == 'push'
-      run: dotnet nuget push build/packages/**/*.nupkg -s nuget.org -k ${{secrets.NUGET_TOKEN}}
+      run: dotnet nuget push build/packages/**/*.nupkg -s "https://api.nuget.org/v3/index.json" -k ${{secrets.NUGET_TOKEN}} --skip-duplicate

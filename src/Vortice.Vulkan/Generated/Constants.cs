@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 192
+		/// VK_HEADER_VERSION = 193
 		/// </summary>
-		public const uint HeaderVersion = 192;
+		public const uint HeaderVersion = 193;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>

@@ -17,9 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{065268A8
 		Directory.Build.targets = Directory.Build.targets
 		global.json = global.json
 		LICENSE = LICENSE
-		NuGet.Config = NuGet.Config
 		README.md = README.md
-		version.json = version.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.ShaderCompiler", "src\Vortice.ShaderCompiler\Vortice.ShaderCompiler.csproj", "{F05A7F03-AB20-41C9-B1B8-F0D3A32D6B19}"
