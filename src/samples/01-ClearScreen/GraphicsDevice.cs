@@ -456,9 +456,6 @@ namespace Vortice
 
         public static implicit operator VkDevice(GraphicsDevice device) => device.VkDevice;
 
-        [DllImport("kernel32")]
-        private static extern IntPtr GetModuleHandle(string? lpModuleName);
-
         #region Private Methods
         private VkSurfaceKHR CreateSurface(GameWindow window)
         {
