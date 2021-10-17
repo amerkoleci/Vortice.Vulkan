@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
-using static Vortice.Win32.Kernel32;
+using System.Collections.Generic;
+using OpenTK.Windowing.GraphicsLibraryFramework;
+using OpenTK.Windowing.Desktop;
 
 namespace Vortice
 {
@@ -16,22 +17,18 @@ namespace Vortice
 
         public readonly VkInstance VkInstance;
 
-#if !NET5_0_OR_GREATER
-        private readonly PFN_vkDebugUtilsMessengerCallbackEXT DebugMessagerCallbackDelegate = DebugMessengerCallback;
-#endif
-
         private readonly VkDebugUtilsMessengerEXT _debugMessenger = VkDebugUtilsMessengerEXT.Null;
         internal readonly VkSurfaceKHR _surface;
         public readonly VkPhysicalDevice PhysicalDevice;
         public readonly VkDevice VkDevice;
         public readonly VkQueue GraphicsQueue;
         public readonly VkQueue PresentQueue;
-        public readonly Swapchain Swapchain;
+        public readonly SwapChain Swapchain;
         private PerFrame[] _perFrame;
 
         private readonly List<VkSemaphore> _recycledSemaphores = new List<VkSemaphore>();
 
-        public GraphicsDevice(string applicationName, bool enableValidation, Window? window)
+        public GraphicsDevice(string applicationName, bool enableValidation, GameWindow window)
         {
             VkString name = applicationName;
             var appInfo = new VkApplicationInfo
@@ -44,14 +41,18 @@ namespace Vortice
                 apiVersion = vkEnumerateInstanceVersion()
             };
 
-            List<string> instanceExtensions = new List<string>
-            {
-                KHRSurfaceExtensionName
-            };
+            List<string> instanceExtensions = new List<string>();
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            instanceExtensions.AddRange(GLFW.GetRequiredInstanceExtensions());
+
+            // if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            // {
+            //     instanceExtensions.Add(KHRWin32SurfaceExtensionName);
+            // }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                instanceExtensions.Add(KHRWin32SurfaceExtensionName);
+                instanceExtensions.Add(KHRXlibSurfaceExtensionName);
             }
 
             List<string> instanceLayers = new List<string>();
@@ -91,11 +92,7 @@ namespace Vortice
             {
                 debugUtilsCreateInfo.messageSeverity = VkDebugUtilsMessageSeverityFlagsEXT.Error | VkDebugUtilsMessageSeverityFlagsEXT.Warning;
                 debugUtilsCreateInfo.messageType = VkDebugUtilsMessageTypeFlagsEXT.Validation | VkDebugUtilsMessageTypeFlagsEXT.Performance;
-#if NET5_0_OR_GREATER
                 debugUtilsCreateInfo.pfnUserCallback = &DebugMessengerCallback;
-#else
-                debugUtilsCreateInfo.pfnUserCallback = Marshal.GetFunctionPointerForDelegate(DebugMessagerCallbackDelegate);
-#endif
 
                 instanceCreateInfo.pNext = &debugUtilsCreateInfo;
             }
@@ -144,7 +141,7 @@ namespace Vortice
 
             var availableDeviceExtensions = vkEnumerateDeviceExtensionProperties(PhysicalDevice);
 
-            var supportPresent = vkGetPhysicalDeviceWin32PresentationSupportKHR(PhysicalDevice, queueFamilies.graphicsFamily);
+            // var supportPresent = vkGetPhysicalDeviceWin32PresentationSupportKHR(PhysicalDevice, queueFamilies.graphicsFamily);
 
             float priority = 1.0f;
             VkDeviceQueueCreateInfo queueCreateInfo = new VkDeviceQueueCreateInfo
@@ -248,7 +245,7 @@ namespace Vortice
             vkGetDeviceQueue(VkDevice, queueFamilies.presentFamily, 0, out PresentQueue);
 
             // Create swap chain
-            Swapchain = new Swapchain(this, window);
+            Swapchain = new SwapChain(this, window);
             _perFrame = new PerFrame[Swapchain.ImageCount];
             for (var i = 0; i < _perFrame.Length; i++)
             {
@@ -459,18 +456,14 @@ namespace Vortice
 
         public static implicit operator VkDevice(GraphicsDevice device) => device.VkDevice;
 
-        #region Private Methods
-        private VkSurfaceKHR CreateSurface(Window? window)
-        {
-            var surfaceCreateInfo = new VkWin32SurfaceCreateInfoKHR
-            {
-                sType = VkStructureType.Win32SurfaceCreateInfoKHR,
-                hinstance = GetModuleHandle(null),
-                hwnd = window!.Handle
-            };
+        [DllImport("kernel32")]
+        private static extern IntPtr GetModuleHandle(string? lpModuleName);
 
-            vkCreateWin32SurfaceKHR(VkInstance, &surfaceCreateInfo, null, out VkSurfaceKHR surface).CheckResult();
-            return surface;
+        #region Private Methods
+        private VkSurfaceKHR CreateSurface(GameWindow window)
+        {
+            GLFW.CreateWindowSurface(new VkHandle(VkInstance.Handle), (Window*)window.Context.WindowPtr, null, out var handle);
+            return new VkSurfaceKHR((ulong)handle.Handle);
         }
 
 #if NET5_0

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net461;netcoreapp3.1;net5.0</TargetFrameworks>
+    <TargetFrameworks>net5.0</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IsPackable>false</IsPackable>
     <RootNamespace>Vortice</RootNamespace>
@@ -9,5 +9,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Vortice.ShaderCompiler\Vortice.ShaderCompiler.csproj" />
     <ProjectReference Include="..\..\Vortice.Vulkan\Vortice.Vulkan.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenTK.Windowing.Desktop" Version="5.0.0-pre.6" />
   </ItemGroup>
 </Project>

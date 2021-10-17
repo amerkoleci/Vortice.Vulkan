@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using Vortice.Vulkan;
-using static Vortice.Vulkan.Vulkan;
 
 namespace Vortice
 {
