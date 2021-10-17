@@ -45,16 +45,6 @@ namespace Vortice
 
             instanceExtensions.AddRange(GLFW.GetRequiredInstanceExtensions());
 
-            // if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            // {
-            //     instanceExtensions.Add(KHRWin32SurfaceExtensionName);
-            // }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                instanceExtensions.Add(KHRXlibSurfaceExtensionName);
-            }
-
             List<string> instanceLayers = new List<string>();
             if (enableValidation)
             {
