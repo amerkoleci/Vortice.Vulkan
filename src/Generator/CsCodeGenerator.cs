@@ -10,13 +10,13 @@ namespace Generator
 {
     public static partial class CsCodeGenerator
     {
-        private static readonly HashSet<string> s_keywords = new HashSet<string>
+        private static readonly HashSet<string> s_keywords = new()
         {
             "object",
             "event",
         };
 
-        private static readonly Dictionary<string, string> s_csNameMappings = new Dictionary<string, string>()
+        private static readonly Dictionary<string, string> s_csNameMappings = new()
         {
             { "uint8_t", "byte" },
             { "uint16_t", "ushort" },
@@ -86,6 +86,7 @@ namespace Generator
 
             { "VkPipelineStageFlagBits2KHR", "VkPipelineStageFlags2KHR" },
             { "VkAccessFlagBits2KHR", "VkAccessFlags2KHR" },
+            { "VkFormatFeatureFlagBits2KHR", "VkFormatFeatureFlags2KHR" },
         };
 
         public static void Generate(CppCompilation compilation, string outputPath)
@@ -144,7 +145,7 @@ namespace Generator
 
                     string modifier = "const";
                     string csDataType = "string";
-                    var macroValue = NormalizeEnumValue(cppMacro.Value);
+                    string macroValue = NormalizeEnumValue(cppMacro.Value);
                     if (macroValue.EndsWith("F", StringComparison.OrdinalIgnoreCase))
                     {
                         csDataType = "float";

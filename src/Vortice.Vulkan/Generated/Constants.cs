@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 193
+		/// VK_HEADER_VERSION = 196
 		/// </summary>
-		public const uint HeaderVersion = 193;
+		public const uint HeaderVersion = 196;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -759,9 +759,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint KHRFragmentShadingRate = 1;
 		/// <summary>
-		/// VK_KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION = 1
+		/// VK_KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION = 2
 		/// </summary>
-		public const uint KHRFragmentShadingRateSpecVersion = 1;
+		public const uint KHRFragmentShadingRateSpecVersion = 2;
 		/// <summary>
 		/// VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME = "VK_KHR_fragment_shading_rate"
 		/// </summary>
@@ -970,6 +970,30 @@ namespace Vortice.Vulkan
 		/// VK_KHR_COPY_COMMANDS_2_EXTENSION_NAME = "VK_KHR_copy_commands2"
 		/// </summary>
 		public const string KHRCopyCommands2ExtensionName = "VK_KHR_copy_commands2";
+		/// <summary>
+		/// VK_KHR_format_feature_flags2 = 1
+		/// </summary>
+		public const uint KHRFormatFeatureFlags2 = 1;
+		/// <summary>
+		/// VK_KHR_FORMAT_FEATURE_FLAGS_2_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRFormatFeature2SpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME = "VK_KHR_format_feature_flags2"
+		/// </summary>
+		public const string KHRFormatFeature2ExtensionName = "VK_KHR_format_feature_flags2";
+		/// <summary>
+		/// VK_KHR_maintenance4 = 1
+		/// </summary>
+		public const uint KHRMaintenance4 = 1;
+		/// <summary>
+		/// VK_KHR_MAINTENANCE_4_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRMaintenance4SpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4"
+		/// </summary>
+		public const string KHRMaintenance4ExtensionName = "VK_KHR_maintenance4";
 		/// <summary>
 		/// VK_EXT_debug_report = 1
 		/// </summary>
@@ -1711,9 +1735,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTImageDrmFormatModifier = 1;
 		/// <summary>
-		/// VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION = 1
+		/// VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION = 2
 		/// </summary>
-		public const uint EXTImageDrmFormatModifierSpecVersion = 1;
+		public const uint EXTImageDrmFormatModifierSpecVersion = 2;
 		/// <summary>
 		/// VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME = "VK_EXT_image_drm_format_modifier"
 		/// </summary>
@@ -2067,9 +2091,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTFragmentDensityMap = 1;
 		/// <summary>
-		/// VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION = 1
+		/// VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION = 2
 		/// </summary>
-		public const uint EXTFragmentDensityMapSpecVersion = 1;
+		public const uint EXTFragmentDensityMapSpecVersion = 2;
 		/// <summary>
 		/// VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME = "VK_EXT_fragment_density_map"
 		/// </summary>
@@ -2639,6 +2663,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXT4444FormatsExtensionName = "VK_EXT_4444_formats";
 		/// <summary>
+		/// VK_EXT_rgba10x6_formats = 1
+		/// </summary>
+		public const uint EXTRgba10x6Formats = 1;
+		/// <summary>
+		/// VK_EXT_RGBA10X6_FORMATS_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTRgba10x6FormatsSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_RGBA10X6_FORMATS_EXTENSION_NAME = "VK_EXT_rgba10x6_formats"
+		/// </summary>
+		public const string EXTRgba10x6FormatsExtensionName = "VK_EXT_rgba10x6_formats";
+		/// <summary>
 		/// VK_NV_acquire_winrt_display = 1
 		/// </summary>
 		public const uint NVAcquireWinrtDisplay = 1;
@@ -2799,6 +2835,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXTLoadStoreOpNoneExtensionName = "VK_EXT_load_store_op_none";
 		/// <summary>
+		/// VK_EXT_border_color_swizzle = 1
+		/// </summary>
+		public const uint EXTBorderColorSwizzle = 1;
+		/// <summary>
+		/// VK_EXT_BORDER_COLOR_SWIZZLE_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTBorderColorSwizzleSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_BORDER_COLOR_SWIZZLE_EXTENSION_NAME = "VK_EXT_border_color_swizzle"
+		/// </summary>
+		public const string EXTBorderColorSwizzleExtensionName = "VK_EXT_border_color_swizzle";
+		/// <summary>
 		/// VK_EXT_pageable_device_local_memory = 1
 		/// </summary>
 		public const uint EXTPageableDeviceLocalMemory = 1;
@@ -2815,9 +2863,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint KHRAccelerationStructure = 1;
 		/// <summary>
-		/// VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION = 12
+		/// VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION = 13
 		/// </summary>
-		public const uint KHRAccelerationStructureSpecVersion = 12;
+		public const uint KHRAccelerationStructureSpecVersion = 13;
 		/// <summary>
 		/// VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME = "VK_KHR_acceleration_structure"
 		/// </summary>
@@ -2863,9 +2911,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint AndroidExternalMemoryAndroidHardwareBuffer = 1;
 		/// <summary>
-		/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION = 3
+		/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION = 4
 		/// </summary>
-		public const uint AndroidExternalMemoryAndroidHardwareBufferSpecVersion = 3;
+		public const uint AndroidExternalMemoryAndroidHardwareBufferSpecVersion = 4;
 		/// <summary>
 		/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer"
 		/// </summary>
@@ -2935,9 +2983,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint KHRVideoDecodeQueue = 1;
 		/// <summary>
-		/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 1
+		/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 2
 		/// </summary>
-		public const uint KHRVideoDecodeQueueSpecVersion = 1;
+		public const uint KHRVideoDecodeQueueSpecVersion = 2;
 		/// <summary>
 		/// VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue"
 		/// </summary>
@@ -2959,9 +3007,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint KHRVideoEncodeQueue = 1;
 		/// <summary>
-		/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 2
+		/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 3
 		/// </summary>
-		public const uint KHRVideoEncodeQueueSpecVersion = 2;
+		public const uint KHRVideoEncodeQueueSpecVersion = 3;
 		/// <summary>
 		/// VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue"
 		/// </summary>
@@ -2991,6 +3039,30 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXTVideoEncodeH264ExtensionName = "VK_EXT_video_encode_h264";
 		/// <summary>
+		/// VK_EXT_video_encode_h265 = 1
+		/// </summary>
+		public const uint EXTVideoEncodeH265 = 1;
+		/// <summary>
+		/// VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5 = VK_MAKE_VIDEO_STD_VERSION(0,5,0)
+		/// </summary>
+		public static readonly VkVersion StdVulkanVideoCodecH265ApiVersion05 = new VkVersion(0, 5, 0);
+		/// <summary>
+		/// VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5
+		/// </summary>
+		public static readonly VkVersion StdVulkanVideoCodecH265SpecVersion = StdVulkanVideoCodecH265ApiVersion05;
+		/// <summary>
+		/// VK_STD_VULKAN_VIDEO_CODEC_H265_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265"
+		/// </summary>
+		public const string StdVulkanVideoCodecH265ExtensionName = "VK_STD_vulkan_video_codec_h265";
+		/// <summary>
+		/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 2
+		/// </summary>
+		public const uint EXTVideoEncodeH265SpecVersion = 2;
+		/// <summary>
+		/// VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265"
+		/// </summary>
+		public const string EXTVideoEncodeH265ExtensionName = "VK_EXT_video_encode_h265";
+		/// <summary>
 		/// VK_EXT_video_decode_h264 = 1
 		/// </summary>
 		public const uint EXTVideoDecodeH264 = 1;
@@ -3006,18 +3078,6 @@ namespace Vortice.Vulkan
 		/// VK_EXT_video_decode_h265 = 1
 		/// </summary>
 		public const uint EXTVideoDecodeH265 = 1;
-		/// <summary>
-		/// VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5 = VK_MAKE_VIDEO_STD_VERSION(0,5,0)
-		/// </summary>
-		public static readonly VkVersion StdVulkanVideoCodecH265ApiVersion05 = new VkVersion(0, 5, 0);
-		/// <summary>
-		/// VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5
-		/// </summary>
-		public static readonly VkVersion StdVulkanVideoCodecH265SpecVersion = StdVulkanVideoCodecH265ApiVersion05;
-		/// <summary>
-		/// VK_STD_VULKAN_VIDEO_CODEC_H265_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265"
-		/// </summary>
-		public const string StdVulkanVideoCodecH265ExtensionName = "VK_STD_vulkan_video_codec_h265";
 		/// <summary>
 		/// VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 1
 		/// </summary>

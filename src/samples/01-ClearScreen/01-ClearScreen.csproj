@@ -7,7 +7,6 @@
     <RootNamespace>Vortice</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Vortice.ShaderCompiler\Vortice.ShaderCompiler.csproj" />
     <ProjectReference Include="..\..\Vortice.Vulkan\Vortice.Vulkan.csproj" />
   </ItemGroup>
 </Project>

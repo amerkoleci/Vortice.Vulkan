@@ -199,7 +199,7 @@ namespace Generator
                         noneAdded = true;
                     }
 
-                    foreach (var enumItem in cppEnum.Items)
+                    foreach (CppEnumItem enumItem in cppEnum.Items)
                     {
                         if (enumItem.Name.EndsWith("_BEGIN_RANGE") ||
                             enumItem.Name.EndsWith("_END_RANGE") ||
@@ -229,14 +229,14 @@ namespace Generator
                             continue;
                         }
 
-                        var enumItemName = GetEnumItemName(cppEnum, enumItem.Name, enumNamePrefix);
+                        string enumItemName = GetEnumItemName(cppEnum, enumItem.Name, enumNamePrefix);
 
                         if (!string.IsNullOrEmpty(extensionPrefix) && enumItemName.EndsWith(extensionPrefix))
                         {
                             enumItemName = enumItemName.Remove(enumItemName.Length - extensionPrefix.Length);
                         }
 
-                        if(enumItemName == "None" && noneAdded)
+                        if (enumItemName == "None" && noneAdded)
                         {
                             continue;
                         }
@@ -319,6 +319,7 @@ namespace Generator
             foreach (CppField cppField in compilation.Fields)
             {
                 string? fieldType = GetCsTypeName(cppField.Type, false);
+                string createdEnumName;
 
                 if (!createdEnums.ContainsKey(fieldType))
                 {
@@ -346,6 +347,11 @@ namespace Generator
 
                     writer.WriteLine("[Flags]");
                     writer.BeginBlock($"public enum {fieldType} : {baseType}");
+                    createdEnumName = fieldType;
+                }
+                else
+                {
+                    createdEnumName = createdEnums[fieldType];
                 }
 
                 string csFieldName = string.Empty;
@@ -357,11 +363,22 @@ namespace Generator
                 {
                     csFieldName = GetPrettyEnumName(cppField.Name, "VK_ACCESS_2");
                 }
+                else if (cppField.Name.StartsWith("VK_FORMAT_FEATURE_2"))
+                {
+                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_FORMAT_FEATURE_2");
+                }
                 else
                 {
                     csFieldName = NormalizeFieldName(cppField.Name);
                 }
-                
+
+                // Remove vendor suffix from enum value if enum already contains it
+                if (csFieldName.EndsWith("KHR", StringComparison.Ordinal) &&
+                    createdEnumName.EndsWith("KHR", StringComparison.Ordinal))
+                {
+                    csFieldName = csFieldName.Substring(0, csFieldName.Length - 3);
+                }
+
                 writer.WriteLine($"{csFieldName} = {cppField.InitValue},");
             }
 

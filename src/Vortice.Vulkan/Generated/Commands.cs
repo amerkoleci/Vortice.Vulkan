@@ -2824,6 +2824,36 @@ namespace Vortice.Vulkan
 		}
 
 		#if NET5_0_OR_GREATER
+		private static delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirementsKHR*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirementsKHR_ptr;
+		#else
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceBufferMemoryRequirementsKHR*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirementsKHR_ptr;
+		#endif
+		public static void vkGetDeviceBufferMemoryRequirementsKHR(VkDevice device, VkDeviceBufferMemoryRequirementsKHR* info, VkMemoryRequirements2* memoryRequirements)
+		{
+			vkGetDeviceBufferMemoryRequirementsKHR_ptr(device, info, memoryRequirements);
+		}
+
+		#if NET5_0_OR_GREATER
+		private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirementsKHR*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirementsKHR_ptr;
+		#else
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceImageMemoryRequirementsKHR*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirementsKHR_ptr;
+		#endif
+		public static void vkGetDeviceImageMemoryRequirementsKHR(VkDevice device, VkDeviceImageMemoryRequirementsKHR* info, VkMemoryRequirements2* memoryRequirements)
+		{
+			vkGetDeviceImageMemoryRequirementsKHR_ptr(device, info, memoryRequirements);
+		}
+
+		#if NET5_0_OR_GREATER
+		private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirementsKHR*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetDeviceImageSparseMemoryRequirementsKHR_ptr;
+		#else
+		private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceImageMemoryRequirementsKHR*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetDeviceImageSparseMemoryRequirementsKHR_ptr;
+		#endif
+		public static void vkGetDeviceImageSparseMemoryRequirementsKHR(VkDevice device, VkDeviceImageMemoryRequirementsKHR* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements)
+		{
+			vkGetDeviceImageSparseMemoryRequirementsKHR_ptr(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
+		}
+
+		#if NET5_0_OR_GREATER
 		private static delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult> vkCreateDebugReportCallbackEXT_ptr;
 		#else
 		private static delegate* unmanaged[Stdcall]<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult> vkCreateDebugReportCallbackEXT_ptr;
@@ -6212,6 +6242,21 @@ namespace Vortice.Vulkan
 			vkCmdResolveImage2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkResolveImageInfo2KHR*, void>) load(context, nameof(vkCmdResolveImage2KHR));
 			#else
 			vkCmdResolveImage2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkResolveImageInfo2KHR*, void>) load(context, nameof(vkCmdResolveImage2KHR));
+			#endif
+			#if NET5_0_OR_GREATER
+			vkGetDeviceBufferMemoryRequirementsKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirementsKHR*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceBufferMemoryRequirementsKHR));
+			#else
+			vkGetDeviceBufferMemoryRequirementsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceBufferMemoryRequirementsKHR*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceBufferMemoryRequirementsKHR));
+			#endif
+			#if NET5_0_OR_GREATER
+			vkGetDeviceImageMemoryRequirementsKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirementsKHR*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageMemoryRequirementsKHR));
+			#else
+			vkGetDeviceImageMemoryRequirementsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceImageMemoryRequirementsKHR*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageMemoryRequirementsKHR));
+			#endif
+			#if NET5_0_OR_GREATER
+			vkGetDeviceImageSparseMemoryRequirementsKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirementsKHR*, uint*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageSparseMemoryRequirementsKHR));
+			#else
+			vkGetDeviceImageSparseMemoryRequirementsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceImageMemoryRequirementsKHR*, uint*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageSparseMemoryRequirementsKHR));
 			#endif
 			#if NET5_0_OR_GREATER
 			vkDebugMarkerSetObjectTagEXT_ptr = (delegate* unmanaged<VkDevice, VkDebugMarkerObjectTagInfoEXT*, VkResult>) load(context, nameof(vkDebugMarkerSetObjectTagEXT));
