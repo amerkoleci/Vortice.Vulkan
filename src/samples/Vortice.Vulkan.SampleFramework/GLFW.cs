@@ -199,6 +199,9 @@ namespace Vortice.Vulkan
         public delegate int glfwWindowShouldClose_t(GLFWwindow* window);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void glfwGetWindowSize_t(GLFWwindow* window, out int width, out int height);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void glfwPollEvents_t();
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -215,8 +218,9 @@ namespace Vortice.Vulkan
 
         private static readonly glfwInitHint_t s_glfwWindowHint;
         private static readonly glfwCreateWindow_t s_glfwCreateWindow;
-        private static readonly glfwGetPrimaryMonitor_t s_glfwGetPrimaryMonitor;
         private static readonly glfwWindowShouldClose_t s_glfwWindowShouldClose;
+        private static readonly glfwGetWindowSize_t s_glfwGetWindowSize;
+        private static readonly glfwGetPrimaryMonitor_t s_glfwGetPrimaryMonitor;
         private static readonly glfwPollEvents_t s_glfwPollEvents;
         private static readonly glfwGetRequiredInstanceExtensions_t s_glfwGetRequiredInstanceExtensions;
         private static readonly glfwCreateWindowSurface_t s_glfwCreateWindowSurface;
@@ -247,10 +251,12 @@ namespace Vortice.Vulkan
                 Marshal.FreeHGlobal(ptr);
             }
         }
+        public static bool glfwWindowShouldClose(GLFWwindow* window) => s_glfwWindowShouldClose(window) == GLFW_TRUE;
+
+        public static void glfwGetWindowSize(GLFWwindow* window, out int width, out int height) => s_glfwGetWindowSize(window, out width, out height);
 
         public static GLFWmonitor* glfwGetPrimaryMonitor() => s_glfwGetPrimaryMonitor();
 
-        public static bool glfwWindowShouldClose(GLFWwindow* window) => s_glfwWindowShouldClose(window) == GLFW_TRUE;
 
         public static void glfwPollEvents() => s_glfwPollEvents();
 
@@ -288,6 +294,7 @@ namespace Vortice.Vulkan
             s_glfwCreateWindow = LoadFunction<glfwCreateWindow_t>(nameof(glfwCreateWindow));
             s_glfwGetPrimaryMonitor = LoadFunction<glfwGetPrimaryMonitor_t>(nameof(glfwGetPrimaryMonitor));
             s_glfwWindowShouldClose = LoadFunction<glfwWindowShouldClose_t>(nameof(glfwWindowShouldClose));
+            s_glfwGetWindowSize = LoadFunction<glfwGetWindowSize_t>(nameof(glfwGetWindowSize));
 
             s_glfwPollEvents = LoadFunction<glfwPollEvents_t>(nameof(glfwPollEvents));
 

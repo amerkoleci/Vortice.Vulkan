@@ -58,7 +58,7 @@ namespace Vortice.Vulkan
                 }
                 else
                 {
-                    glfwWindowHint(WindowHintBool.Decorated, false);
+                    glfwWindowHint(WindowHintBool.Decorated, true);
                 }
 
                 if ((flags & WindowFlags.Resizable) != WindowFlags.None)
@@ -85,8 +85,8 @@ namespace Vortice.Vulkan
             _window = glfwCreateWindow(width, height, title, monitor, null);
             //Handle = hwnd;
 
-            //GetClientRect(hwnd, out windowRect);
-            //Extent = new VkExtent2D(windowRect.Right - windowRect.Left, windowRect.Bottom - windowRect.Top);
+            glfwGetWindowSize(_window, out width, out height);
+            Extent = new VkExtent2D(width, height);
         }
 
         public string Title { get; }
