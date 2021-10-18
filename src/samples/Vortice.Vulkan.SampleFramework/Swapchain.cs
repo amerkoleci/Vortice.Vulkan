@@ -2,7 +2,7 @@
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 
-namespace Vortice
+namespace Vortice.Vulkan
 {
     public sealed unsafe class Swapchain : IDisposable
     {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29920.165
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31808.319
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.Vulkan", "src\Vortice.Vulkan\Vortice.Vulkan.csproj", "{4C0E11CB-B3EA-4117-9504-A35361A86238}"
 EndProject
@@ -25,6 +25,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{253C0AE5-70CF-4519-A8B6-4395B5ABD4DA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.ShaderCompiler.Test", "src\tests\Vortice.ShaderCompiler.Test\Vortice.ShaderCompiler.Test.csproj", "{898042D9-7E34-40AE-ACC6-A43B25907CFA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.Vulkan.SampleFramework", "src\samples\Vortice.Vulkan.SampleFramework\Vortice.Vulkan.SampleFramework.csproj", "{DDF1A64E-1B31-44C3-9B08-FDBD16661FD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{898042D9-7E34-40AE-ACC6-A43B25907CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{898042D9-7E34-40AE-ACC6-A43B25907CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{898042D9-7E34-40AE-ACC6-A43B25907CFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDF1A64E-1B31-44C3-9B08-FDBD16661FD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDF1A64E-1B31-44C3-9B08-FDBD16661FD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDF1A64E-1B31-44C3-9B08-FDBD16661FD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDF1A64E-1B31-44C3-9B08-FDBD16661FD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5A10816D-90A4-4AEA-B06E-6A463DA4A891} = {08F6AF96-809B-45C5-BE6C-5BAB7D9AFB60}
 		{898042D9-7E34-40AE-ACC6-A43B25907CFA} = {253C0AE5-70CF-4519-A8B6-4395B5ABD4DA}
+		{DDF1A64E-1B31-44C3-9B08-FDBD16661FD8} = {08F6AF96-809B-45C5-BE6C-5BAB7D9AFB60}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF0375B3-E304-4A53-8E5F-FC9D23743647}

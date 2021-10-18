@@ -5,9 +5,9 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
-using static Vortice.Win32.Kernel32;
+using static Vortice.Vulkan.GLFW;
 
-namespace Vortice
+namespace Vortice.Vulkan
 {
     public unsafe sealed class GraphicsDevice : IDisposable
     {
@@ -29,9 +29,9 @@ namespace Vortice
         public readonly Swapchain Swapchain;
         private PerFrame[] _perFrame;
 
-        private readonly List<VkSemaphore> _recycledSemaphores = new List<VkSemaphore>();
+        private readonly List<VkSemaphore> _recycledSemaphores = new();
 
-        public GraphicsDevice(string applicationName, bool enableValidation, Window? window)
+        public GraphicsDevice(string applicationName, bool enableValidation, Window window)
         {
             VkString name = applicationName;
             var appInfo = new VkApplicationInfo
@@ -44,15 +44,8 @@ namespace Vortice
                 apiVersion = vkEnumerateInstanceVersion()
             };
 
-            List<string> instanceExtensions = new List<string>
-            {
-                KHRSurfaceExtensionName
-            };
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                instanceExtensions.Add(KHRWin32SurfaceExtensionName);
-            }
+            List<string> instanceExtensions = new();
+            instanceExtensions.AddRange(glfwGetRequiredInstanceExtensions());
 
             List<string> instanceLayers = new List<string>();
             if (enableValidation)
@@ -65,7 +58,7 @@ namespace Vortice
                 instanceExtensions.Add(EXTDebugUtilsExtensionName);
             }
 
-            using var vkInstanceExtensions = new VkStringArray(instanceExtensions);
+            using VkStringArray vkInstanceExtensions = new(instanceExtensions);
 
             var instanceCreateInfo = new VkInstanceCreateInfo
             {
@@ -460,16 +453,9 @@ namespace Vortice
         public static implicit operator VkDevice(GraphicsDevice device) => device.VkDevice;
 
         #region Private Methods
-        private VkSurfaceKHR CreateSurface(Window? window)
+        private VkSurfaceKHR CreateSurface(Window window)
         {
-            var surfaceCreateInfo = new VkWin32SurfaceCreateInfoKHR
-            {
-                sType = VkStructureType.Win32SurfaceCreateInfoKHR,
-                hinstance = GetModuleHandle(null),
-                hwnd = window!.Handle
-            };
-
-            vkCreateWin32SurfaceKHR(VkInstance, &surfaceCreateInfo, null, out VkSurfaceKHR surface).CheckResult();
+            window.CreateSurface(VkInstance, out VkSurfaceKHR surface).CheckResult();
             return surface;
         }
 

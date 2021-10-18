@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 
-namespace Vortice
+namespace Vortice.Vulkan
 {
     public static class Log
     {

@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFrameworks>net461;netcoreapp3.1;net5.0</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IsPackable>false</IsPackable>
-    <RootNamespace>Vortice</RootNamespace>
+    <RootNamespace>Vortice.Vulkan</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vortice.Vulkan.SampleFramework\Vortice.Vulkan.SampleFramework.csproj" />
+    <ProjectReference Include="..\..\Vortice.Vulkan\Vortice.Vulkan.csproj" />
+    <PackageReference Include="Ultz.Native.GLFW" Version="3.3.3.1" />
   </ItemGroup>
 </Project>

@@ -5,10 +5,11 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 
-namespace Vortice.ShaderCompiler
+namespace Vortice.Vulkan
 {
-    internal static class LibraryLoader
+    public static class LibraryLoader
     {
         static LibraryLoader()
         {
@@ -22,7 +23,7 @@ namespace Vortice.ShaderCompiler
 
         public static string Extension { get; }
 
-        public static IntPtr LoadLocalLibrary(string libraryName)
+        public static IntPtr LoadLibrary(string libraryName)
         {
             if (!libraryName.EndsWith(Extension, StringComparison.OrdinalIgnoreCase))
                 libraryName += Extension;

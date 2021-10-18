@@ -17,7 +17,7 @@ namespace DrawTriangle
 #endif
 		public static void Main()
 		{
-            using var testApp = new TestApp();
+            using TestApp testApp = new TestApp();
 			testApp.Run();
 		}
 
