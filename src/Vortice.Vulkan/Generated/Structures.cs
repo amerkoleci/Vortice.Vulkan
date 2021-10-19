@@ -5895,18 +5895,6 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkAccelerationStructureMatrixMotionInstanceNV
-	{
-		public VkTransformMatrixKHR transformT0;
-		public VkTransformMatrixKHR transformT1;
-		public uint instanceCustomIndex;
-		public uint mask;
-		public uint instanceShaderBindingTableRecordOffset;
-		public VkGeometryInstanceFlagsKHR flags;
-		public ulong accelerationStructureReference;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkSRTDataNV
 	{
 		public float sx;
@@ -5925,18 +5913,6 @@ namespace Vortice.Vulkan
 		public float tx;
 		public float ty;
 		public float tz;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkAccelerationStructureSRTMotionInstanceNV
-	{
-		public VkSRTDataNV transformT0;
-		public VkSRTDataNV transformT1;
-		public uint instanceCustomIndex;
-		public uint mask;
-		public uint instanceShaderBindingTableRecordOffset;
-		public VkGeometryInstanceFlagsKHR flags;
-		public ulong accelerationStructureReference;
 	}
 
 	[StructLayout(LayoutKind.Explicit)]

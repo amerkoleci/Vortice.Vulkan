@@ -34,6 +34,8 @@ namespace Generator
                 if (cppClass.Name == "VkClearColorValue"
                     || cppClass.Name == "VkTransformMatrixKHR"
                     || cppClass.Name == "VkAccelerationStructureInstanceKHR"
+                    || cppClass.Name == "VkAccelerationStructureSRTMotionInstanceNV"
+                    || cppClass.Name == "VkAccelerationStructureMatrixMotionInstanceNV"
                     )
                 {
                     continue;
