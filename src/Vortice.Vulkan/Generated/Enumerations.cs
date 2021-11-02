@@ -302,6 +302,15 @@ namespace Vortice.Vulkan
 		VideoDecodeH264SessionParametersAddInfoEXT = 1000040006,
 		VideoDecodeH264DpbSlotInfoEXT = 1000040007,
 		TextureLodGatherFormatPropertiesAMD = 1000041000,
+		RenderingInfoKHR = 1000044000,
+		RenderingAttachmentInfoKHR = 1000044001,
+		PipelineRenderingCreateInfoKHR = 1000044002,
+		PhysicalDeviceDynamicRenderingFeaturesKHR = 1000044003,
+		CommandBufferInheritanceRenderingInfoKHR = 1000044004,
+		RenderingFragmentShadingRateAttachmentInfoKHR = 1000044006,
+		RenderingFragmentDensityMapAttachmentInfoEXT = 1000044007,
+		AttachmentSampleCountInfoAMD = 1000044008,
+		MultiviewPerViewAttributesInfoNVX = 1000044009,
 		StreamDescriptorSurfaceCreateInfoGgp = 1000049000,
 		PhysicalDeviceCornerSampledImageFeaturesNV = 1000050000,
 		ExternalMemoryImageCreateInfoNV = 1000056000,
@@ -665,6 +674,7 @@ namespace Vortice.Vulkan
 		PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 		PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 		DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
+		AttachmentSampleCountInfoNV = AttachmentSampleCountInfoAMD,
 		RenderPassMultiviewCreateInfoKHR = RenderPassMultiviewCreateInfo,
 		PhysicalDeviceMultiviewFeaturesKHR = PhysicalDeviceMultiviewFeatures,
 		PhysicalDeviceMultiviewPropertiesKHR = PhysicalDeviceMultiviewProperties,
@@ -1512,8 +1522,9 @@ namespace Vortice.Vulkan
 	{
 		Store = 0,
 		DontCare = 1,
-		NoneEXT = 1000301000,
-		NoneQcom = NoneEXT,
+		NoneKHR = 1000301000,
+		NoneQcom = NoneKHR,
+		NoneEXT = NoneKHR,
 	}
 
 	public enum VkPipelineBindPoint
@@ -1931,6 +1942,8 @@ namespace Vortice.Vulkan
 		Derivative = 4,
 		ViewIndexFromDeviceIndex = 8,
 		DispatchBase = 16,
+		RasterizationStateCreateFragmentShadingRateAttachmentKHR = 2097152,
+		RasterizationStateCreateFragmentDensityMapAttachmentKHR = 4194304,
 		RayTracingNoNullAnyHitShadersKHR = 16384,
 		RayTracingNoNullClosestHitShadersKHR = 32768,
 		RayTracingNoNullMissShadersKHR = 65536,
@@ -2499,6 +2512,15 @@ namespace Vortice.Vulkan
 		Global = 2,
 		PerPixel = 4,
 		PerPixelPremultiplied = 8,
+	}
+
+	[Flags]
+	public enum VkRenderingFlagsKHR
+	{
+		None = 0,
+		ContentsSecondaryCommandBuffers = 1,
+		Suspending = 2,
+		Resuming = 4,
 	}
 
 	public enum VkPerformanceCounterUnitKHR
@@ -3242,147 +3264,149 @@ namespace Vortice.Vulkan
 
 	public enum StdVideoH264ChromaFormatIdc
 	{
-		std_video_h264_chroma_format_idc_monochrome = 0,
-		std_video_h264_chroma_format_idc_420 = 1,
-		std_video_h264_chroma_format_idc_422 = 2,
-		std_video_h264_chroma_format_idc_444 = 3,
+		Monochrome = 0,
+		_420 = 1,
+		_422 = 2,
+		_444 = 3,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH264ProfileIdc
 	{
-		std_video_h264_profile_idc_baseline = 66,
-		std_video_h264_profile_idc_main = 77,
-		std_video_h264_profile_idc_high = 100,
-		std_video_h264_profile_idc_high_444_predictive = 244,
-		std_video_h264_profile_idc_invalid = 2147483647,
+		Baseline = 66,
+		Main = 77,
+		High = 100,
+		High444Predictive = 244,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH264Level
 	{
-		std_video_h264_level_1_0 = 0,
-		std_video_h264_level_1_1 = 1,
-		std_video_h264_level_1_2 = 2,
-		std_video_h264_level_1_3 = 3,
-		std_video_h264_level_2_0 = 4,
-		std_video_h264_level_2_1 = 5,
-		std_video_h264_level_2_2 = 6,
-		std_video_h264_level_3_0 = 7,
-		std_video_h264_level_3_1 = 8,
-		std_video_h264_level_3_2 = 9,
-		std_video_h264_level_4_0 = 10,
-		std_video_h264_level_4_1 = 11,
-		std_video_h264_level_4_2 = 12,
-		std_video_h264_level_5_0 = 13,
-		std_video_h264_level_5_1 = 14,
-		std_video_h264_level_5_2 = 15,
-		std_video_h264_level_6_0 = 16,
-		std_video_h264_level_6_1 = 17,
-		std_video_h264_level_6_2 = 18,
-		std_video_h264_level_invalid = 2147483647,
+		_10 = 0,
+		_11 = 1,
+		_12 = 2,
+		_13 = 3,
+		_20 = 4,
+		_21 = 5,
+		_22 = 6,
+		_30 = 7,
+		_31 = 8,
+		_32 = 9,
+		_40 = 10,
+		_41 = 11,
+		_42 = 12,
+		_50 = 13,
+		_51 = 14,
+		_52 = 15,
+		_60 = 16,
+		_61 = 17,
+		_62 = 18,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH264PocType
 	{
-		std_video_h264_poc_type_0 = 0,
-		std_video_h264_poc_type_1 = 1,
-		std_video_h264_poc_type_2 = 2,
-		std_video_h264_poc_type_invalid = 2147483647,
+		_0 = 0,
+		_1 = 1,
+		_2 = 2,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH264AspectRatioIdc
 	{
-		std_video_h264_aspect_ratio_idc_unspecified = 0,
-		std_video_h264_aspect_ratio_idc_square = 1,
-		std_video_h264_aspect_ratio_idc_12_11 = 2,
-		std_video_h264_aspect_ratio_idc_10_11 = 3,
-		std_video_h264_aspect_ratio_idc_16_11 = 4,
-		std_video_h264_aspect_ratio_idc_40_33 = 5,
-		std_video_h264_aspect_ratio_idc_24_11 = 6,
-		std_video_h264_aspect_ratio_idc_20_11 = 7,
-		std_video_h264_aspect_ratio_idc_32_11 = 8,
-		std_video_h264_aspect_ratio_idc_80_33 = 9,
-		std_video_h264_aspect_ratio_idc_18_11 = 10,
-		std_video_h264_aspect_ratio_idc_15_11 = 11,
-		std_video_h264_aspect_ratio_idc_64_33 = 12,
-		std_video_h264_aspect_ratio_idc_160_99 = 13,
-		std_video_h264_aspect_ratio_idc_4_3 = 14,
-		std_video_h264_aspect_ratio_idc_3_2 = 15,
-		std_video_h264_aspect_ratio_idc_2_1 = 16,
-		std_video_h264_aspect_ratio_idc_extended_sar = 255,
-		std_video_h264_aspect_ratio_idc_invalid = 2147483647,
+		Unspecified = 0,
+		Square = 1,
+		_1211 = 2,
+		_1011 = 3,
+		_1611 = 4,
+		_4033 = 5,
+		_2411 = 6,
+		_2011 = 7,
+		_3211 = 8,
+		_8033 = 9,
+		_1811 = 10,
+		_1511 = 11,
+		_6433 = 12,
+		_16099 = 13,
+		_43 = 14,
+		_32 = 15,
+		_21 = 16,
+		ExtendedSar = 255,
+		Invalid = 2147483647,
 	}
 
-	public enum StdVideoH264WeightedBiPredIdc
+	public enum StdVideoH264WeightedBipredIdc
 	{
-		std_video_h264_default_weighted_b_slices_prediction_idc = 0,
-		std_video_h264_explicit_weighted_b_slices_prediction_idc = 1,
-		std_video_h264_implicit_weighted_b_slices_prediction_idc = 2,
-		std_video_h264_invalid_weighted_b_slices_prediction_idc = 2147483647,
+		Default = 0,
+		Explicit = 1,
+		Implicit = 2,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH264ModificationOfPicNumsIdc
 	{
-		std_video_h264_modification_of_pic_nums_idc_short_term_subtract = 0,
-		std_video_h264_modification_of_pic_nums_idc_short_term_add = 1,
-		std_video_h264_modification_of_pic_nums_idc_long_term = 2,
-		std_video_h264_modification_of_pic_nums_idc_end = 3,
-		std_video_h264_modification_of_pic_nums_idc_invalid = 2147483647,
+		ShortTermSubtract = 0,
+		ShortTermAdd = 1,
+		LongTerm = 2,
+		End = 3,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH264MemMgmtControlOp
 	{
-		std_video_h264_mem_mgmt_control_op_end = 0,
-		std_video_h264_mem_mgmt_control_op_unmark_short_term = 1,
-		std_video_h264_mem_mgmt_control_op_unmark_long_term = 2,
-		std_video_h264_mem_mgmt_control_op_mark_long_term = 3,
-		std_video_h264_mem_mgmt_control_op_set_max_long_term_index = 4,
-		std_video_h264_mem_mgmt_control_op_unmark_all = 5,
-		std_video_h264_mem_mgmt_control_op_mark_current_as_long_term = 6,
-		std_video_h264_mem_mgmt_control_op_invalid = 2147483647,
+		End = 0,
+		UnmarkShortTerm = 1,
+		UnmarkLongTerm = 2,
+		MarkLongTerm = 3,
+		SetMaxLongTermIndex = 4,
+		UnmarkAll = 5,
+		MarkCurrentAsLongTerm = 6,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH264CabacInitIdc
 	{
-		std_video_h264_cabac_init_idc_0 = 0,
-		std_video_h264_cabac_init_idc_1 = 1,
-		std_video_h264_cabac_init_idc_2 = 2,
-		std_video_h264_cabac_init_idc_invalid = 2147483647,
+		_0 = 0,
+		_1 = 1,
+		_2 = 2,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH264DisableDeblockingFilterIdc
 	{
-		std_video_h264_disable_deblocking_filter_idc_disabled = 0,
-		std_video_h264_disable_deblocking_filter_idc_enabled = 1,
-		std_video_h264_disable_deblocking_filter_idc_partial = 2,
-		std_video_h264_disable_deblocking_filter_idc_invalid = 2147483647,
-	}
-
-	public enum StdVideoH264PictureType
-	{
-		std_video_h264_picture_type_i = 0,
-		std_video_h264_picture_type_p = 1,
-		std_video_h264_picture_type_b = 2,
-		std_video_h264_picture_type_invalid = 2147483647,
+		Disabled = 0,
+		Enabled = 1,
+		Partial = 2,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH264SliceType
 	{
-		std_video_h264_slice_type_i = 0,
-		std_video_h264_slice_type_p = 1,
-		std_video_h264_slice_type_b = 2,
-		std_video_h264_slice_type_invalid = 2147483647,
+		P = 0,
+		B = 1,
+		I = 2,
+		Invalid = 2147483647,
+	}
+
+	public enum StdVideoH264PictureType
+	{
+		P = 0,
+		B = 1,
+		I = 2,
+		Idr = 5,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH264NonVclNaluType
 	{
-		std_video_h264_non_vcl_nalu_type_sps = 0,
-		std_video_h264_non_vcl_nalu_type_pps = 1,
-		std_video_h264_non_vcl_nalu_type_aud = 2,
-		std_video_h264_non_vcl_nalu_type_prefix = 3,
-		std_video_h264_non_vcl_nalu_type_end_of_sequence = 4,
-		std_video_h264_non_vcl_nalu_type_end_of_stream = 5,
-		std_video_h264_non_vcl_nalu_type_precoded = 6,
-		std_video_h264_non_vcl_nalu_type_invalid = 2147483647,
+		Sps = 0,
+		Pps = 1,
+		Aud = 2,
+		Prefix = 3,
+		EndOfSequence = 4,
+		EndOfStream = 5,
+		Precoded = 6,
+		Invalid = 2147483647,
 	}
 
 	[Flags]
@@ -3430,70 +3454,56 @@ namespace Vortice.Vulkan
 
 	public enum StdVideoH265ChromaFormatIdc
 	{
-		std_video_h265_chroma_format_idc_monochrome = 0,
-		std_video_h265_chroma_format_idc_420 = 1,
-		std_video_h265_chroma_format_idc_422 = 2,
-		std_video_h265_chroma_format_idc_444 = 3,
+		Monochrome = 0,
+		_420 = 1,
+		_422 = 2,
+		_444 = 3,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH265ProfileIdc
 	{
-		std_video_h265_profile_idc_main = 1,
-		std_video_h265_profile_idc_main_10 = 2,
-		std_video_h265_profile_idc_main_still_picture = 3,
-		std_video_h265_profile_idc_format_range_extensions = 4,
-		std_video_h265_profile_idc_scc_extensions = 9,
-		std_video_h265_profile_idc_invalid = 2147483647,
+		Main = 1,
+		Main10 = 2,
+		MainStillPicture = 3,
+		FormatRangeExtensions = 4,
+		SccExtensions = 9,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH265Level
 	{
-		std_video_h265_level_1_0 = 0,
-		std_video_h265_level_2_0 = 1,
-		std_video_h265_level_2_1 = 2,
-		std_video_h265_level_3_0 = 3,
-		std_video_h265_level_3_1 = 4,
-		std_video_h265_level_4_0 = 5,
-		std_video_h265_level_4_1 = 6,
-		std_video_h265_level_5_0 = 7,
-		std_video_h265_level_5_1 = 8,
-		std_video_h265_level_5_2 = 9,
-		std_video_h265_level_6_0 = 10,
-		std_video_h265_level_6_1 = 11,
-		std_video_h265_level_6_2 = 12,
-		std_video_h265_level_invalid = 2147483647,
+		_10 = 0,
+		_20 = 1,
+		_21 = 2,
+		_30 = 3,
+		_31 = 4,
+		_40 = 5,
+		_41 = 6,
+		_50 = 7,
+		_51 = 8,
+		_52 = 9,
+		_60 = 10,
+		_61 = 11,
+		_62 = 12,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH265SliceType
 	{
-		std_video_h265_slice_type_b = 0,
-		std_video_h265_slice_type_p = 1,
-		std_video_h265_slice_type_i = 2,
-		std_video_h265_slice_type_invalid = 2147483647,
+		B = 0,
+		P = 1,
+		I = 2,
+		Invalid = 2147483647,
 	}
 
 	public enum StdVideoH265PictureType
 	{
-		std_video_h265_picture_type_i = 0,
-		std_video_h265_picture_type_p = 1,
-		std_video_h265_picture_type_b = 2,
-		std_video_h265_picture_type_idr = 3,
-		std_video_h265_picture_type_invalid = 2147483647,
-	}
-
-	[Flags]
-	public enum VkVideoEncodeH265CapabilityFlagsEXT
-	{
-		None = 0,
-		WeightedBiPredImplicit = 1,
-		Transform8x8 = 2,
-		ChromaQpOffset = 4,
-		SecondChromaQpOffset = 8,
-		DeblockingFilterDisabled = 16,
-		DeblockingFilterEnabled = 32,
-		DeblockingFilterPartial = 64,
-		MultipleSlicePerFrame = 128,
-		EvenlyDistributedSliceSize = 256,
+		P = 0,
+		B = 1,
+		I = 2,
+		Idr = 3,
+		Invalid = 2147483647,
 	}
 
 	[Flags]
@@ -3522,6 +3532,14 @@ namespace Vortice.Vulkan
 		_16 = 2,
 		_32 = 4,
 		_64 = 8,
+	}
+
+	public enum StdVideoDecodeH264FieldOrderCount
+	{
+		Top = 0,
+		Bottom = 1,
+		ListSize = 2,
+		Invalid = 2147483647,
 	}
 
 	[Flags]
@@ -3901,6 +3919,12 @@ namespace Vortice.Vulkan
 
 	[Flags]
 	public enum VkVideoEndCodingFlagsKHR
+	{
+		None = 0,
+	}
+
+	[Flags]
+	public enum VkVideoEncodeH265CapabilityFlagsEXT
 	{
 		None = 0,
 	}

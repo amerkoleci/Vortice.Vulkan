@@ -2893,6 +2893,108 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderingAttachmentInfoKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkImageView imageView;
+		public VkImageLayout imageLayout;
+		public VkResolveModeFlags resolveMode;
+		public VkImageView resolveImageView;
+		public VkImageLayout resolveImageLayout;
+		public VkAttachmentLoadOp loadOp;
+		public VkAttachmentStoreOp storeOp;
+		public VkClearValue clearValue;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderingInfoKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkRenderingFlagsKHR flags;
+		public VkRect2D renderArea;
+		public uint layerCount;
+		public uint viewMask;
+		public uint colorAttachmentCount;
+		public unsafe VkRenderingAttachmentInfoKHR* pColorAttachments;
+		public unsafe VkRenderingAttachmentInfoKHR* pDepthAttachment;
+		public unsafe VkRenderingAttachmentInfoKHR* pStencilAttachment;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineRenderingCreateInfoKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint viewMask;
+		public uint colorAttachmentCount;
+		public unsafe VkFormat* pColorAttachmentFormats;
+		public VkFormat depthAttachmentFormat;
+		public VkFormat stencilAttachmentFormat;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDynamicRenderingFeaturesKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 dynamicRendering;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkCommandBufferInheritanceRenderingInfoKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkRenderingFlagsKHR flags;
+		public uint viewMask;
+		public uint colorAttachmentCount;
+		public unsafe VkFormat* pColorAttachmentFormats;
+		public VkFormat depthAttachmentFormat;
+		public VkFormat stencilAttachmentFormat;
+		public VkSampleCountFlags rasterizationSamples;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderingFragmentShadingRateAttachmentInfoKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkImageView imageView;
+		public VkImageLayout imageLayout;
+		public VkExtent2D shadingRateAttachmentTexelSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkRenderingFragmentDensityMapAttachmentInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkImageView imageView;
+		public VkImageLayout imageLayout;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAttachmentSampleCountInfoAMD
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint colorAttachmentCount;
+		public unsafe VkSampleCountFlags* pColorAttachmentSamples;
+		public VkSampleCountFlags depthStencilAttachmentSamples;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkMultiviewPerViewAttributesInfoNVX
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 perViewAttributes;
+		public VkBool32 perViewAttributesPositionXOnly;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkImportMemoryFdInfoKHR
 	{
 		public VkStructureType sType;
@@ -6928,8 +7030,8 @@ namespace Vortice.Vulkan
 		public byte matrix_coefficients;
 		public uint num_units_in_tick;
 		public uint time_scale;
-		public StdVideoH264HrdParameters hrd_parameters;
-		public byte num_reorder_frames;
+		public unsafe StdVideoH264HrdParameters* pHrdParameters;
+		public byte max_num_reorder_frames;
 		public byte max_dec_frame_buffering;
 		public StdVideoH264SpsVuiFlags flags;
 	}
@@ -6947,12 +7049,11 @@ namespace Vortice.Vulkan
 		public uint mb_adaptive_frame_field_flag;
 		public uint frame_mbs_only_flag;
 		public uint delta_pic_order_always_zero_flag;
-		public uint residual_colour_transform_flag;
+		public uint separate_colour_plane_flag;
 		public uint gaps_in_frame_num_value_allowed_flag;
-		public uint first_picture_after_seek_flag;
 		public uint qpprime_y_zero_transform_bypass_flag;
 		public uint frame_cropping_flag;
-		public uint scaling_matrix_present_flag;
+		public uint seq_scaling_matrix_present_flag;
 		public uint vui_parameters_present_flag;
 	}
 
@@ -6994,7 +7095,7 @@ namespace Vortice.Vulkan
 		public uint frame_crop_top_offset;
 		public uint frame_crop_bottom_offset;
 		public StdVideoH264SpsFlags flags;
-		public unsafe fixed int offset_for_ref_frame[255];
+		public unsafe int* pOffsetForRefFrame;
 		public unsafe StdVideoH264ScalingLists* pScalingLists;
 		public unsafe StdVideoH264SequenceParameterSetVui* pSequenceParameterSetVui;
 	}
@@ -7010,7 +7111,7 @@ namespace Vortice.Vulkan
 		public uint weighted_pred_flag;
 		public uint pic_order_present_flag;
 		public uint entropy_coding_mode_flag;
-		public uint scaling_matrix_present_flag;
+		public uint pic_scaling_matrix_present_flag;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7020,7 +7121,7 @@ namespace Vortice.Vulkan
 		public byte pic_parameter_set_id;
 		public byte num_ref_idx_l0_default_active_minus1;
 		public byte num_ref_idx_l1_default_active_minus1;
-		public StdVideoH264WeightedBiPredIdc weighted_bipred_idc;
+		public StdVideoH264WeightedBipredIdc weighted_bipred_idc;
 		public sbyte pic_init_qp_minus26;
 		public sbyte pic_init_qs_minus26;
 		public sbyte chroma_qp_index_offset;
@@ -7246,9 +7347,9 @@ namespace Vortice.Vulkan
 		public uint vcl_hrd_parameters_present_flag;
 		public uint sub_pic_hrd_params_present_flag;
 		public uint sub_pic_cpb_params_in_pic_timing_sei_flag;
-		public byte fixed_pic_rate_general_flag;
-		public byte fixed_pic_rate_within_cvs_flag;
-		public byte low_delay_hrd_flag;
+		public uint fixed_pic_rate_general_flag;
+		public uint fixed_pic_rate_within_cvs_flag;
+		public uint low_delay_hrd_flag;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7265,20 +7366,20 @@ namespace Vortice.Vulkan
 		public byte dpb_output_delay_length_minus1;
 		public unsafe fixed byte cpb_cnt_minus1[7];
 		public unsafe fixed ushort elemental_duration_in_tc_minus1[7];
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersNal_0;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersNal_1;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersNal_2;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersNal_3;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersNal_4;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersNal_5;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersNal_6;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersVcl_0;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersVcl_1;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersVcl_2;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersVcl_3;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersVcl_4;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersVcl_5;
-		public unsafe StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersVcl_6;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_0;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_1;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_2;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_3;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_4;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_5;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_6;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_0;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_1;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_2;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_3;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_4;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_5;
+		public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_6;
 		public StdVideoH265HrdFlags flags;
 	}
 
@@ -7300,7 +7401,7 @@ namespace Vortice.Vulkan
 		public uint vps_time_scale;
 		public uint vps_num_ticks_poc_diff_one_minus1;
 		public unsafe StdVideoH265DecPicBufMgr* pDecPicBufMgr;
-		public unsafe StdVideoH265HrdParameters* hrd_parameters;
+		public unsafe StdVideoH265HrdParameters* pHrdParameters;
 		public StdVideoH265VpsFlags flags;
 	}
 
@@ -7373,7 +7474,7 @@ namespace Vortice.Vulkan
 		public uint vui_num_units_in_tick;
 		public uint vui_time_scale;
 		public uint vui_num_ticks_poc_diff_one_minus1;
-		public unsafe StdVideoH265HrdParameters* hrd_parameters;
+		public unsafe StdVideoH265HrdParameters* pHrdParameters;
 		public ushort min_spatial_segmentation_idc;
 		public byte max_bytes_per_pic_denom;
 		public byte max_bits_per_min_cu_denom;
@@ -7554,6 +7655,7 @@ namespace Vortice.Vulkan
 		public uint collocated_from_l0_flag;
 		public uint slice_loop_filter_across_slices_enabled_flag;
 		public uint bLastSliceInPic;
+		public uint reservedBits;
 		public ushort luma_weight_l0_flag;
 		public ushort chroma_weight_l0_flag;
 		public ushort luma_weight_l1_flag;

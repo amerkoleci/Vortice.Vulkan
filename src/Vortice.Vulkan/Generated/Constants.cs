@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 196
+		/// VK_HEADER_VERSION = 197
 		/// </summary>
-		public const uint HeaderVersion = 196;
+		public const uint HeaderVersion = 197;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -158,6 +158,18 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_EXTENSION_NAME = "VK_KHR_sampler_mirror_clamp_to_edge"
 		/// </summary>
 		public const string KHRSamplerMirrorClampToEdgeExtensionName = "VK_KHR_sampler_mirror_clamp_to_edge";
+		/// <summary>
+		/// VK_KHR_dynamic_rendering = 1
+		/// </summary>
+		public const uint KHRDynamicRendering = 1;
+		/// <summary>
+		/// VK_KHR_DYNAMIC_RENDERING_SPEC_VERSION = 1
+		/// </summary>
+		public const uint KHRDynamicRenderingSpecVersion = 1;
+		/// <summary>
+		/// VK_KHR_DYNAMIC_RENDERING_EXTENSION_NAME = "VK_KHR_dynamic_rendering"
+		/// </summary>
+		public const string KHRDynamicRenderingExtensionName = "VK_KHR_dynamic_rendering";
 		/// <summary>
 		/// VK_KHR_multiview = 1
 		/// </summary>
@@ -3019,17 +3031,37 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTVideoEncodeH264 = 1;
 		/// <summary>
-		/// VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9 = VK_MAKE_VIDEO_STD_VERSION(0,9,0)
+		/// VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5 = VK_MAKE_VIDEO_STD_VERSION(0,9,5)
 		/// </summary>
-		public static readonly VkVersion StdVulkanVideoCodecH264ApiVersion09 = new VkVersion(0, 9, 0);
+		public static readonly VkVersion StdVulkanVideoCodecH264ApiVersion095 = new VkVersion(0, 9, 5);
 		/// <summary>
-		/// VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9
+		/// VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5
 		/// </summary>
-		public static readonly VkVersion StdVulkanVideoCodecH264SpecVersion = StdVulkanVideoCodecH264ApiVersion09;
+		public static readonly VkVersion StdVulkanVideoCodecH264SpecVersion = StdVulkanVideoCodecH264ApiVersion095;
 		/// <summary>
 		/// VK_STD_VULKAN_VIDEO_CODEC_H264_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264"
 		/// </summary>
 		public const string StdVulkanVideoCodecH264ExtensionName = "VK_STD_vulkan_video_codec_h264";
+		/// <summary>
+		/// STD_VIDEO_H264_CPB_CNT_LIST_SIZE = 32
+		/// </summary>
+		public const uint VideoH264CpbCntListSize = 32;
+		/// <summary>
+		/// STD_VIDEO_H264_SCALING_LIST_4X4_NUM_LISTS = 6
+		/// </summary>
+		public const uint VideoH264ScalingList4x4NumLists = 6;
+		/// <summary>
+		/// STD_VIDEO_H264_SCALING_LIST_4X4_NUM_ELEMENTS = 16
+		/// </summary>
+		public const uint VideoH264ScalingList4x4NumElements = 16;
+		/// <summary>
+		/// STD_VIDEO_H264_SCALING_LIST_8X8_NUM_LISTS = 2
+		/// </summary>
+		public const uint VideoH264ScalingList8x8NumLists = 2;
+		/// <summary>
+		/// STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS = 64
+		/// </summary>
+		public const uint VideoH264ScalingList8x8NumElements = 64;
 		/// <summary>
 		/// VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 2
 		/// </summary>
@@ -3043,17 +3075,89 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTVideoEncodeH265 = 1;
 		/// <summary>
-		/// VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5 = VK_MAKE_VIDEO_STD_VERSION(0,5,0)
+		/// VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5 = VK_MAKE_VIDEO_STD_VERSION(0,9,5)
 		/// </summary>
-		public static readonly VkVersion StdVulkanVideoCodecH265ApiVersion05 = new VkVersion(0, 5, 0);
+		public static readonly VkVersion StdVulkanVideoCodecH265ApiVersion095 = new VkVersion(0, 9, 5);
 		/// <summary>
-		/// VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5
+		/// VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5
 		/// </summary>
-		public static readonly VkVersion StdVulkanVideoCodecH265SpecVersion = StdVulkanVideoCodecH265ApiVersion05;
+		public static readonly VkVersion StdVulkanVideoCodecH265SpecVersion = StdVulkanVideoCodecH265ApiVersion095;
 		/// <summary>
 		/// VK_STD_VULKAN_VIDEO_CODEC_H265_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265"
 		/// </summary>
 		public const string StdVulkanVideoCodecH265ExtensionName = "VK_STD_vulkan_video_codec_h265";
+		/// <summary>
+		/// STD_VIDEO_H265_CPB_CNT_LIST_SIZE = 32
+		/// </summary>
+		public const uint VideoH265CpbCntListSize = 32;
+		/// <summary>
+		/// STD_VIDEO_H265_SUBLAYERS_MINUS1_LIST_SIZE = 7
+		/// </summary>
+		public const uint VideoH265SublayersMinus1ListSize = 7;
+		/// <summary>
+		/// STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS = 6
+		/// </summary>
+		public const uint VideoH265ScalingList4x4NumLists = 6;
+		/// <summary>
+		/// STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS = 16
+		/// </summary>
+		public const uint VideoH265ScalingList4x4NumElements = 16;
+		/// <summary>
+		/// STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS = 6
+		/// </summary>
+		public const uint VideoH265ScalingList8x8NumLists = 6;
+		/// <summary>
+		/// STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64
+		/// </summary>
+		public const uint VideoH265ScalingList8x8NumElements = 64;
+		/// <summary>
+		/// STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS = 6
+		/// </summary>
+		public const uint VideoH265ScalingList16x16NumLists = 6;
+		/// <summary>
+		/// STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS = 64
+		/// </summary>
+		public const uint VideoH265ScalingList16x16NumElements = 64;
+		/// <summary>
+		/// STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS = 2
+		/// </summary>
+		public const uint VideoH265ScalingList32x32NumLists = 2;
+		/// <summary>
+		/// STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS = 64
+		/// </summary>
+		public const uint VideoH265ScalingList32x32NumElements = 64;
+		/// <summary>
+		/// STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE = 6
+		/// </summary>
+		public const uint VideoH265ChromaQpOffsetListSize = 6;
+		/// <summary>
+		/// STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19
+		/// </summary>
+		public const uint VideoH265ChromaQpOffsetTileColsListSize = 19;
+		/// <summary>
+		/// STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE = 21
+		/// </summary>
+		public const uint VideoH265ChromaQpOffsetTileRowsListSize = 21;
+		/// <summary>
+		/// STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE = 3
+		/// </summary>
+		public const uint VideoH265PredictorPaletteComponentsListSize = 3;
+		/// <summary>
+		/// STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128
+		/// </summary>
+		public const uint VideoH265PredictorPaletteCompEntriesListSize = 128;
+		/// <summary>
+		/// STD_VIDEO_ENCODE_H265_LUMA_LIST_SIZE = 15
+		/// </summary>
+		public const uint VideoEncodeH265LumaListSize = 15;
+		/// <summary>
+		/// STD_VIDEO_ENCODE_H265_CHROMA_LIST_SIZE = 15
+		/// </summary>
+		public const uint VideoEncodeH265ChromaListSize = 15;
+		/// <summary>
+		/// STD_VIDEO_ENCODE_H265_CHROMA_LISTS_NUM = 2
+		/// </summary>
+		public const uint VideoEncodeH265ChromaListsNum = 2;
 		/// <summary>
 		/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 2
 		/// </summary>
@@ -3067,6 +3171,10 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint EXTVideoDecodeH264 = 1;
 		/// <summary>
+		/// STD_VIDEO_DECODE_H264_MVC_REF_LIST_SIZE = 15
+		/// </summary>
+		public const uint VideoDecodeH264MvcRefListSize = 15;
+		/// <summary>
 		/// VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 3
 		/// </summary>
 		public const uint EXTVideoDecodeH264SpecVersion = 3;
@@ -3078,6 +3186,10 @@ namespace Vortice.Vulkan
 		/// VK_EXT_video_decode_h265 = 1
 		/// </summary>
 		public const uint EXTVideoDecodeH265 = 1;
+		/// <summary>
+		/// STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8
+		/// </summary>
+		public const uint VideoDecodeH265RefPicSetListSize = 8;
 		/// <summary>
 		/// VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 1
 		/// </summary>

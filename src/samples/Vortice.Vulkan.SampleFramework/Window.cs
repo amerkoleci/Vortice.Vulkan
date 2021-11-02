@@ -49,7 +49,6 @@ namespace Vortice.Vulkan
                 fullscreen = true;
             }
 
-
             if (!fullscreen)
             {
                 if ((flags & WindowFlags.Borderless) != WindowFlags.None)

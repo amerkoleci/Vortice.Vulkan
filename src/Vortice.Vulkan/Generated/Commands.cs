@@ -2004,6 +2004,26 @@ namespace Vortice.Vulkan
 		}
 
 		#if NET5_0_OR_GREATER
+		private static delegate* unmanaged<VkCommandBuffer, VkRenderingInfoKHR*, void> vkCmdBeginRenderingKHR_ptr;
+		#else
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkRenderingInfoKHR*, void> vkCmdBeginRenderingKHR_ptr;
+		#endif
+		public static void vkCmdBeginRenderingKHR(VkCommandBuffer commandBuffer, VkRenderingInfoKHR* renderingInfo)
+		{
+			vkCmdBeginRenderingKHR_ptr(commandBuffer, renderingInfo);
+		}
+
+		#if NET5_0_OR_GREATER
+		private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndRenderingKHR_ptr;
+		#else
+		private static delegate* unmanaged[Stdcall]<VkCommandBuffer, void> vkCmdEndRenderingKHR_ptr;
+		#endif
+		public static void vkCmdEndRenderingKHR(VkCommandBuffer commandBuffer)
+		{
+			vkCmdEndRenderingKHR_ptr(commandBuffer);
+		}
+
+		#if NET5_0_OR_GREATER
 		private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceFeatures2, void> vkGetPhysicalDeviceFeatures2KHR_ptr;
 		#else
 		private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceFeatures2, void> vkGetPhysicalDeviceFeatures2KHR_ptr;
@@ -5932,6 +5952,16 @@ namespace Vortice.Vulkan
 			vkCreateSharedSwapchainsKHR_ptr = (delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult>) load(context, nameof(vkCreateSharedSwapchainsKHR));
 			#else
 			vkCreateSharedSwapchainsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult>) load(context, nameof(vkCreateSharedSwapchainsKHR));
+			#endif
+			#if NET5_0_OR_GREATER
+			vkCmdBeginRenderingKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderingInfoKHR*, void>) load(context, nameof(vkCmdBeginRenderingKHR));
+			#else
+			vkCmdBeginRenderingKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkRenderingInfoKHR*, void>) load(context, nameof(vkCmdBeginRenderingKHR));
+			#endif
+			#if NET5_0_OR_GREATER
+			vkCmdEndRenderingKHR_ptr = (delegate* unmanaged<VkCommandBuffer, void>) load(context, nameof(vkCmdEndRenderingKHR));
+			#else
+			vkCmdEndRenderingKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, void>) load(context, nameof(vkCmdEndRenderingKHR));
 			#endif
 			#if NET5_0_OR_GREATER
 			vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr = (delegate* unmanaged<VkDevice, uint, uint, uint, out VkPeerMemoryFeatureFlags, void>) load(context, nameof(vkGetDeviceGroupPeerMemoryFeaturesKHR));

@@ -187,7 +187,9 @@ namespace Generator
                         cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9" ||
                         cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION" ||
                         cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5" ||
-                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION")
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION" ||
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5" ||
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5")
                     {
                         modifier = "static readonly";
                         csDataType = "VkVersion";
@@ -200,7 +202,9 @@ namespace Generator
                         writer.WriteLine($"public {modifier} {csDataType} {csName} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]}, HeaderVersion);");
                     }
                     else if (cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9" ||
-                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5")
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5" ||
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5" ||
+                        cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5")
                     {
                         writer.WriteLine($"public {modifier} {csDataType} {csName} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]});");
                     }
@@ -208,6 +212,12 @@ namespace Generator
                         cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION")
                     {
                         writer.WriteLine($"public {modifier} {csDataType} {csName} = {GetPrettyEnumName(cppMacro.Tokens[0].ToString(), "VK_")};");
+                    }
+                    else if (cppMacro.Name.StartsWith("STD_VIDEO_"))
+                    {
+                        csName = GetPrettyEnumName(cppMacro.Name, "STD_");
+
+                        writer.WriteLine($"public {modifier} {csDataType} {csName} = {macroValue};");
                     }
                     else
                     {
