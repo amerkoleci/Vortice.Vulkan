@@ -459,7 +459,7 @@ namespace Vortice.Vulkan
             return surface;
         }
 
-#if NET5_0
+#if NET5_0_OR_GREATER
         [UnmanagedCallersOnly]
 #endif
         private static uint DebugMessengerCallback(VkDebugUtilsMessageSeverityFlagsEXT messageSeverity,
