@@ -6098,6 +6098,16 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 rasterizationOrderColorAttachmentAccess;
+		public VkBool32 rasterizationOrderDepthAttachmentAccess;
+		public VkBool32 rasterizationOrderStencilAttachmentAccess;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT
 	{
 		public VkStructureType sType;
@@ -6170,6 +6180,22 @@ namespace Vortice.Vulkan
 		public long primaryMinor;
 		public long renderMajor;
 		public long renderMinor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceDepthClipControlFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 depthClipControl;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPipelineViewportDepthClipControlCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 negativeOneToOne;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6288,6 +6314,22 @@ namespace Vortice.Vulkan
 		public VkQueueGlobalPriorityEXT priorities_13;
 		public VkQueueGlobalPriorityEXT priorities_14;
 		public VkQueueGlobalPriorityEXT priorities_15;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceImageViewMinLodFeaturesEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 minLod;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkImageViewMinLodCreateInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public float minLod;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

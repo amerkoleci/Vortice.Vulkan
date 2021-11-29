@@ -142,8 +142,10 @@ namespace Generator
             "ext",
             "nv",
             "nvx",
+            "nvidia",
             "amd",
-            "intel"
+            "intel",
+            "arm",
         };
 
         public static void GenerateEnums(CppCompilation compilation, string outputPath)

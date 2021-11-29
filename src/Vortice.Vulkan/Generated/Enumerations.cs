@@ -625,6 +625,7 @@ namespace Vortice.Vulkan
 		BufferImageCopy2KHR = 1000337009,
 		ImageResolve2KHR = 1000337010,
 		PhysicalDevice4444FormatsFeaturesEXT = 1000340000,
+		PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM = 1000342000,
 		PhysicalDeviceRgba10x6FormatsFeaturesEXT = 1000344000,
 		DirectfbSurfaceCreateInfoEXT = 1000346000,
 		PhysicalDeviceMutableDescriptorTypeFeaturesValve = 1000351000,
@@ -633,6 +634,8 @@ namespace Vortice.Vulkan
 		VertexInputBindingDescription2EXT = 1000352001,
 		VertexInputAttributeDescription2EXT = 1000352002,
 		PhysicalDeviceDrmPropertiesEXT = 1000353000,
+		PhysicalDeviceDepthClipControlFeaturesEXT = 1000355000,
+		PipelineViewportDepthClipControlCreateInfoEXT = 1000355001,
 		PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT = 1000356000,
 		FormatProperties3KHR = 1000360000,
 		ImportMemoryZirconHandleInfoFuchsia = 1000364000,
@@ -662,6 +665,8 @@ namespace Vortice.Vulkan
 		PipelineColorWriteCreateInfoEXT = 1000381001,
 		PhysicalDeviceGlobalPriorityQueryFeaturesEXT = 1000388000,
 		QueueFamilyGlobalPriorityPropertiesEXT = 1000388001,
+		PhysicalDeviceImageViewMinLodFeaturesEXT = 1000391000,
+		ImageViewMinLodCreateInfoEXT = 1000391001,
 		PhysicalDeviceMultiDrawFeaturesEXT = 1000392000,
 		PhysicalDeviceMultiDrawPropertiesEXT = 1000392001,
 		PhysicalDeviceBorderColorSwizzleFeaturesEXT = 1000411000,
@@ -1942,8 +1947,8 @@ namespace Vortice.Vulkan
 		Derivative = 4,
 		ViewIndexFromDeviceIndex = 8,
 		DispatchBase = 16,
-		RasterizationStateCreateFragmentShadingRateAttachmentKHR = 2097152,
-		RasterizationStateCreateFragmentDensityMapAttachmentKHR = 4194304,
+		RenderingFragmentShadingRateAttachmentKHR = 2097152,
+		RenderingFragmentDensityMapAttachmentEXT = 4194304,
 		RayTracingNoNullAnyHitShadersKHR = 16384,
 		RayTracingNoNullClosestHitShadersKHR = 32768,
 		RayTracingNoNullMissShadersKHR = 65536,
@@ -1959,6 +1964,8 @@ namespace Vortice.Vulkan
 		FailOnPipelineCompileRequiredEXT = 256,
 		EarlyReturnOnFailureEXT = 512,
 		RayTracingAllowMotionNV = 1048576,
+		RasterizationStateCreateFragmentShadingRateAttachmentKHR = RenderingFragmentShadingRateAttachmentKHR,
+		RasterizationStateCreateFragmentDensityMapAttachmentKHR = RenderingFragmentDensityMapAttachmentEXT,
 		ViewIndexFromDeviceIndexKHR = ViewIndexFromDeviceIndex,
 		DispatchBaseKHR = DispatchBase,
 	}
@@ -2007,6 +2014,21 @@ namespace Vortice.Vulkan
 		Front = 1,
 		Back = 2,
 		FrontAndBack = 3,
+	}
+
+	[Flags]
+	public enum VkPipelineDepthStencilStateCreateFlags
+	{
+		None = 0,
+		RasterizationOrderAttachmentDepthAccessARM = 1,
+		RasterizationOrderAttachmentStencilAccessARM = 2,
+	}
+
+	[Flags]
+	public enum VkPipelineColorBlendStateCreateFlags
+	{
+		None = 0,
+		RasterizationOrderAttachmentAccessARM = 1,
 	}
 
 	[Flags]
@@ -2078,6 +2100,9 @@ namespace Vortice.Vulkan
 		PerViewPositionXOnlyNVX = 2,
 		FragmentRegionQcom = 4,
 		ShaderResolveQcom = 8,
+		RasterizationOrderAttachmentColorAccessARM = 16,
+		RasterizationOrderAttachmentDepthAccessARM = 32,
+		RasterizationOrderAttachmentStencilAccessARM = 64,
 	}
 
 	[Flags]
@@ -2333,12 +2358,12 @@ namespace Vortice.Vulkan
 		AMDProprietary = 1,
 		AMDOpenSource = 2,
 		MesaRadv = 3,
-		NvidiaProprietary = 4,
+		NVIDIAProprietary = 4,
 		INTELProprietaryWindows = 5,
 		INTELOpenSourceMesa = 6,
 		ImaginationProprietary = 7,
 		QualcommProprietary = 8,
-		ArmProprietary = 9,
+		ARMProprietary = 9,
 		GoogleSwiftShader = 10,
 		GgpProprietary = 11,
 		BroadcomProprietary = 12,
@@ -2350,15 +2375,16 @@ namespace Vortice.Vulkan
 		MesaTurnip = 18,
 		MesaV3dv = 19,
 		MesaPanvk = 20,
+		SamsungProprietary = 21,
 		AMDProprietaryKHR = AMDProprietary,
 		AMDOpenSourceKHR = AMDOpenSource,
 		MesaRadvKHR = MesaRadv,
-		NvidiaProprietaryKHR = NvidiaProprietary,
+		NVIDIAProprietaryKHR = NVIDIAProprietary,
 		INTELProprietaryWindowsKHR = INTELProprietaryWindows,
 		INTELOpenSourceMesaKHR = INTELOpenSourceMesa,
 		ImaginationProprietaryKHR = ImaginationProprietary,
 		QualcommProprietaryKHR = QualcommProprietary,
-		ArmProprietaryKHR = ArmProprietary,
+		ARMProprietaryKHR = ARMProprietary,
 		GoogleSwiftShaderKHR = GoogleSwiftShader,
 		GgpProprietaryKHR = GgpProprietary,
 		BroadcomProprietaryKHR = BroadcomProprietary,
@@ -3625,18 +3651,6 @@ namespace Vortice.Vulkan
 
 	[Flags]
 	public enum VkPipelineMultisampleStateCreateFlags
-	{
-		None = 0,
-	}
-
-	[Flags]
-	public enum VkPipelineDepthStencilStateCreateFlags
-	{
-		None = 0,
-	}
-
-	[Flags]
-	public enum VkPipelineColorBlendStateCreateFlags
 	{
 		None = 0,
 	}

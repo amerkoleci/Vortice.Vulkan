@@ -19,9 +19,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint Use64PtrDefines = 1;
 		/// <summary>
-		/// VK_HEADER_VERSION = 198
+		/// VK_HEADER_VERSION = 200
 		/// </summary>
-		public const uint HeaderVersion = 198;
+		public const uint HeaderVersion = 200;
 		/// <summary>
 		/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
 		/// </summary>
@@ -999,9 +999,9 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const uint KHRMaintenance4 = 1;
 		/// <summary>
-		/// VK_KHR_MAINTENANCE_4_SPEC_VERSION = 1
+		/// VK_KHR_MAINTENANCE_4_SPEC_VERSION = 2
 		/// </summary>
-		public const uint KHRMaintenance4SpecVersion = 1;
+		public const uint KHRMaintenance4SpecVersion = 2;
 		/// <summary>
 		/// VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4"
 		/// </summary>
@@ -2675,6 +2675,18 @@ namespace Vortice.Vulkan
 		/// </summary>
 		public const string EXT4444FormatsExtensionName = "VK_EXT_4444_formats";
 		/// <summary>
+		/// VK_ARM_rasterization_order_attachment_access = 1
+		/// </summary>
+		public const uint ARMRasterizationOrderAttachmentAccess = 1;
+		/// <summary>
+		/// VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_SPEC_VERSION = 1
+		/// </summary>
+		public const uint ARMRasterizationOrderAttachmentAccessSpecVersion = 1;
+		/// <summary>
+		/// VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXTENSION_NAME = "VK_ARM_rasterization_order_attachment_access"
+		/// </summary>
+		public const string ARMRasterizationOrderAttachmentAccessExtensionName = "VK_ARM_rasterization_order_attachment_access";
+		/// <summary>
 		/// VK_EXT_rgba10x6_formats = 1
 		/// </summary>
 		public const uint EXTRgba10x6Formats = 1;
@@ -2734,6 +2746,18 @@ namespace Vortice.Vulkan
 		/// VK_EXT_PHYSICAL_DEVICE_DRM_EXTENSION_NAME = "VK_EXT_physical_device_drm"
 		/// </summary>
 		public const string EXTPhysicalDeviceDrmExtensionName = "VK_EXT_physical_device_drm";
+		/// <summary>
+		/// VK_EXT_depth_clip_control = 1
+		/// </summary>
+		public const uint EXTDepthClipControl = 1;
+		/// <summary>
+		/// VK_EXT_DEPTH_CLIP_CONTROL_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTDepthClipControlSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_DEPTH_CLIP_CONTROL_EXTENSION_NAME = "VK_EXT_depth_clip_control"
+		/// </summary>
+		public const string EXTDepthClipControlExtensionName = "VK_EXT_depth_clip_control";
 		/// <summary>
 		/// VK_EXT_primitive_topology_list_restart = 1
 		/// </summary>
@@ -2822,6 +2846,18 @@ namespace Vortice.Vulkan
 		/// VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query"
 		/// </summary>
 		public const string EXTGlobalPriorityQueryExtensionName = "VK_EXT_global_priority_query";
+		/// <summary>
+		/// VK_EXT_image_view_min_lod = 1
+		/// </summary>
+		public const uint EXTImageViewMinLod = 1;
+		/// <summary>
+		/// VK_EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION = 1
+		/// </summary>
+		public const uint EXTImageViewMinLodSpecVersion = 1;
+		/// <summary>
+		/// VK_EXT_IMAGE_VIEW_MIN_LOD_EXTENSION_NAME = "VK_EXT_image_view_min_lod"
+		/// </summary>
+		public const string EXTImageViewMinLodExtensionName = "VK_EXT_image_view_min_lod";
 		/// <summary>
 		/// VK_EXT_multi_draw = 1
 		/// </summary>
