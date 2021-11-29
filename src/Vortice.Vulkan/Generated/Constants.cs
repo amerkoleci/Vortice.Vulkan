@@ -15,10 +15,6 @@ namespace Vortice.Vulkan
 	public static partial class Vulkan
 	{
 		/// <summary>
-		/// VK_USE_64_BIT_PTR_DEFINES = 1
-		/// </summary>
-		public const uint Use64PtrDefines = 1;
-		/// <summary>
 		/// VK_HEADER_VERSION = 200
 		/// </summary>
 		public const uint HeaderVersion = 200;
@@ -106,6 +102,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SURFACE_SPEC_VERSION = 25
 		/// </summary>
 		public const uint KHRSurfaceSpecVersion = 25;
+		public const string VK_KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface";
 		/// <summary>
 		/// VK_KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface"
 		/// </summary>
@@ -118,6 +115,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SWAPCHAIN_SPEC_VERSION = 70
 		/// </summary>
 		public const uint KHRSwapchainSpecVersion = 70;
+		public const string VK_KHR_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_swapchain";
 		/// <summary>
 		/// VK_KHR_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_swapchain"
 		/// </summary>
@@ -130,6 +128,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_DISPLAY_SPEC_VERSION = 23
 		/// </summary>
 		public const uint KHRDisplaySpecVersion = 23;
+		public const string VK_KHR_DISPLAY_EXTENSION_NAME = "VK_KHR_display";
 		/// <summary>
 		/// VK_KHR_DISPLAY_EXTENSION_NAME = "VK_KHR_display"
 		/// </summary>
@@ -142,6 +141,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION = 10
 		/// </summary>
 		public const uint KHRDisplaySwapchainSpecVersion = 10;
+		public const string VK_KHR_DISPLAY_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_display_swapchain";
 		/// <summary>
 		/// VK_KHR_DISPLAY_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_display_swapchain"
 		/// </summary>
@@ -154,6 +154,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION = 3
 		/// </summary>
 		public const uint KHRSamplerMirrorClampToEdgeSpecVersion = 3;
+		public const string VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_EXTENSION_NAME = "VK_KHR_sampler_mirror_clamp_to_edge";
 		/// <summary>
 		/// VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_EXTENSION_NAME = "VK_KHR_sampler_mirror_clamp_to_edge"
 		/// </summary>
@@ -166,6 +167,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_DYNAMIC_RENDERING_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRDynamicRenderingSpecVersion = 1;
+		public const string VK_KHR_DYNAMIC_RENDERING_EXTENSION_NAME = "VK_KHR_dynamic_rendering";
 		/// <summary>
 		/// VK_KHR_DYNAMIC_RENDERING_EXTENSION_NAME = "VK_KHR_dynamic_rendering"
 		/// </summary>
@@ -178,6 +180,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_MULTIVIEW_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRMultiviewSpecVersion = 1;
+		public const string VK_KHR_MULTIVIEW_EXTENSION_NAME = "VK_KHR_multiview";
 		/// <summary>
 		/// VK_KHR_MULTIVIEW_EXTENSION_NAME = "VK_KHR_multiview"
 		/// </summary>
@@ -190,6 +193,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_SPEC_VERSION = 2
 		/// </summary>
 		public const uint KHRGetPhysicalDeviceProperties2SpecVersion = 2;
+		public const string VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_physical_device_properties2";
 		/// <summary>
 		/// VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_physical_device_properties2"
 		/// </summary>
@@ -202,6 +206,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_DEVICE_GROUP_SPEC_VERSION = 4
 		/// </summary>
 		public const uint KHRDeviceGroupSpecVersion = 4;
+		public const string VK_KHR_DEVICE_GROUP_EXTENSION_NAME = "VK_KHR_device_group";
 		/// <summary>
 		/// VK_KHR_DEVICE_GROUP_EXTENSION_NAME = "VK_KHR_device_group"
 		/// </summary>
@@ -214,6 +219,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_DRAW_PARAMETERS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRShaderDrawParametersSpecVersion = 1;
+		public const string VK_KHR_SHADER_DRAW_PARAMETERS_EXTENSION_NAME = "VK_KHR_shader_draw_parameters";
 		/// <summary>
 		/// VK_KHR_SHADER_DRAW_PARAMETERS_EXTENSION_NAME = "VK_KHR_shader_draw_parameters"
 		/// </summary>
@@ -226,6 +232,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_MAINTENANCE_1_SPEC_VERSION = 2
 		/// </summary>
 		public const uint KHRMaintenance1SpecVersion = 2;
+		public const string VK_KHR_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_maintenance1";
 		/// <summary>
 		/// VK_KHR_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_maintenance1"
 		/// </summary>
@@ -238,6 +245,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_DEVICE_GROUP_CREATION_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRDeviceGroupCreationSpecVersion = 1;
+		public const string VK_KHR_DEVICE_GROUP_CREATION_EXTENSION_NAME = "VK_KHR_device_group_creation";
 		/// <summary>
 		/// VK_KHR_DEVICE_GROUP_CREATION_EXTENSION_NAME = "VK_KHR_device_group_creation"
 		/// </summary>
@@ -254,6 +262,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRExternalMemoryCapabilitiesSpecVersion = 1;
+		public const string VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_memory_capabilities";
 		/// <summary>
 		/// VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_memory_capabilities"
 		/// </summary>
@@ -270,6 +279,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_EXTERNAL_MEMORY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRExternalMemorySpecVersion = 1;
+		public const string VK_KHR_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_KHR_external_memory";
 		/// <summary>
 		/// VK_KHR_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_KHR_external_memory"
 		/// </summary>
@@ -286,6 +296,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRExternalMemoryFdSpecVersion = 1;
+		public const string VK_KHR_EXTERNAL_MEMORY_FD_EXTENSION_NAME = "VK_KHR_external_memory_fd";
 		/// <summary>
 		/// VK_KHR_EXTERNAL_MEMORY_FD_EXTENSION_NAME = "VK_KHR_external_memory_fd"
 		/// </summary>
@@ -298,6 +309,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRExternalSemaphoreCapabilitiesSpecVersion = 1;
+		public const string VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_semaphore_capabilities";
 		/// <summary>
 		/// VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_semaphore_capabilities"
 		/// </summary>
@@ -310,6 +322,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_EXTERNAL_SEMAPHORE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRExternalSemaphoreSpecVersion = 1;
+		public const string VK_KHR_EXTERNAL_SEMAPHORE_EXTENSION_NAME = "VK_KHR_external_semaphore";
 		/// <summary>
 		/// VK_KHR_EXTERNAL_SEMAPHORE_EXTENSION_NAME = "VK_KHR_external_semaphore"
 		/// </summary>
@@ -322,6 +335,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_EXTERNAL_SEMAPHORE_FD_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRExternalSemaphoreFdSpecVersion = 1;
+		public const string VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME = "VK_KHR_external_semaphore_fd";
 		/// <summary>
 		/// VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME = "VK_KHR_external_semaphore_fd"
 		/// </summary>
@@ -334,6 +348,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_PUSH_DESCRIPTOR_SPEC_VERSION = 2
 		/// </summary>
 		public const uint KHRPushDescriptorSpecVersion = 2;
+		public const string VK_KHR_PUSH_DESCRIPTOR_EXTENSION_NAME = "VK_KHR_push_descriptor";
 		/// <summary>
 		/// VK_KHR_PUSH_DESCRIPTOR_EXTENSION_NAME = "VK_KHR_push_descriptor"
 		/// </summary>
@@ -346,6 +361,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_FLOAT16_INT8_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRShaderFloat16Int8SpecVersion = 1;
+		public const string VK_KHR_SHADER_FLOAT16_INT8_EXTENSION_NAME = "VK_KHR_shader_float16_int8";
 		/// <summary>
 		/// VK_KHR_SHADER_FLOAT16_INT8_EXTENSION_NAME = "VK_KHR_shader_float16_int8"
 		/// </summary>
@@ -358,6 +374,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_16BIT_STORAGE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHR16bitStorageSpecVersion = 1;
+		public const string VK_KHR_16BIT_STORAGE_EXTENSION_NAME = "VK_KHR_16bit_storage";
 		/// <summary>
 		/// VK_KHR_16BIT_STORAGE_EXTENSION_NAME = "VK_KHR_16bit_storage"
 		/// </summary>
@@ -370,6 +387,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_INCREMENTAL_PRESENT_SPEC_VERSION = 2
 		/// </summary>
 		public const uint KHRIncrementalPresentSpecVersion = 2;
+		public const string VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME = "VK_KHR_incremental_present";
 		/// <summary>
 		/// VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME = "VK_KHR_incremental_present"
 		/// </summary>
@@ -382,6 +400,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRDescriptorUpdateTemplateSpecVersion = 1;
+		public const string VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_EXTENSION_NAME = "VK_KHR_descriptor_update_template";
 		/// <summary>
 		/// VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_EXTENSION_NAME = "VK_KHR_descriptor_update_template"
 		/// </summary>
@@ -394,6 +413,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRImagelessFramebufferSpecVersion = 1;
+		public const string VK_KHR_IMAGELESS_FRAMEBUFFER_EXTENSION_NAME = "VK_KHR_imageless_framebuffer";
 		/// <summary>
 		/// VK_KHR_IMAGELESS_FRAMEBUFFER_EXTENSION_NAME = "VK_KHR_imageless_framebuffer"
 		/// </summary>
@@ -406,6 +426,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_CREATE_RENDERPASS_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRCreateRenderpass2SpecVersion = 1;
+		public const string VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME = "VK_KHR_create_renderpass2";
 		/// <summary>
 		/// VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME = "VK_KHR_create_renderpass2"
 		/// </summary>
@@ -418,6 +439,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRSharedPresentableImageSpecVersion = 1;
+		public const string VK_KHR_SHARED_PRESENTABLE_IMAGE_EXTENSION_NAME = "VK_KHR_shared_presentable_image";
 		/// <summary>
 		/// VK_KHR_SHARED_PRESENTABLE_IMAGE_EXTENSION_NAME = "VK_KHR_shared_presentable_image"
 		/// </summary>
@@ -430,6 +452,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_EXTERNAL_FENCE_CAPABILITIES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRExternalFenceCapabilitiesSpecVersion = 1;
+		public const string VK_KHR_EXTERNAL_FENCE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_fence_capabilities";
 		/// <summary>
 		/// VK_KHR_EXTERNAL_FENCE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_fence_capabilities"
 		/// </summary>
@@ -442,6 +465,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_EXTERNAL_FENCE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRExternalFenceSpecVersion = 1;
+		public const string VK_KHR_EXTERNAL_FENCE_EXTENSION_NAME = "VK_KHR_external_fence";
 		/// <summary>
 		/// VK_KHR_EXTERNAL_FENCE_EXTENSION_NAME = "VK_KHR_external_fence"
 		/// </summary>
@@ -454,6 +478,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_EXTERNAL_FENCE_FD_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRExternalFenceFdSpecVersion = 1;
+		public const string VK_KHR_EXTERNAL_FENCE_FD_EXTENSION_NAME = "VK_KHR_external_fence_fd";
 		/// <summary>
 		/// VK_KHR_EXTERNAL_FENCE_FD_EXTENSION_NAME = "VK_KHR_external_fence_fd"
 		/// </summary>
@@ -466,6 +491,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_PERFORMANCE_QUERY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRPerformanceQuerySpecVersion = 1;
+		public const string VK_KHR_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_KHR_performance_query";
 		/// <summary>
 		/// VK_KHR_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_KHR_performance_query"
 		/// </summary>
@@ -478,6 +504,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_MAINTENANCE_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRMaintenance2SpecVersion = 1;
+		public const string VK_KHR_MAINTENANCE_2_EXTENSION_NAME = "VK_KHR_maintenance2";
 		/// <summary>
 		/// VK_KHR_MAINTENANCE_2_EXTENSION_NAME = "VK_KHR_maintenance2"
 		/// </summary>
@@ -490,6 +517,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_GET_SURFACE_CAPABILITIES_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRGetSurfaceCapabilities2SpecVersion = 1;
+		public const string VK_KHR_GET_SURFACE_CAPABILITIES_2_EXTENSION_NAME = "VK_KHR_get_surface_capabilities2";
 		/// <summary>
 		/// VK_KHR_GET_SURFACE_CAPABILITIES_2_EXTENSION_NAME = "VK_KHR_get_surface_capabilities2"
 		/// </summary>
@@ -502,6 +530,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_VARIABLE_POINTERS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRVariablePointersSpecVersion = 1;
+		public const string VK_KHR_VARIABLE_POINTERS_EXTENSION_NAME = "VK_KHR_variable_pointers";
 		/// <summary>
 		/// VK_KHR_VARIABLE_POINTERS_EXTENSION_NAME = "VK_KHR_variable_pointers"
 		/// </summary>
@@ -514,6 +543,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_GET_DISPLAY_PROPERTIES_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRGetDisplayProperties2SpecVersion = 1;
+		public const string VK_KHR_GET_DISPLAY_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_display_properties2";
 		/// <summary>
 		/// VK_KHR_GET_DISPLAY_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_display_properties2"
 		/// </summary>
@@ -526,6 +556,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_DEDICATED_ALLOCATION_SPEC_VERSION = 3
 		/// </summary>
 		public const uint KHRDedicatedAllocationSpecVersion = 3;
+		public const string VK_KHR_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_KHR_dedicated_allocation";
 		/// <summary>
 		/// VK_KHR_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_KHR_dedicated_allocation"
 		/// </summary>
@@ -538,6 +569,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRStorageBufferStorageClassSpecVersion = 1;
+		public const string VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_EXTENSION_NAME = "VK_KHR_storage_buffer_storage_class";
 		/// <summary>
 		/// VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_EXTENSION_NAME = "VK_KHR_storage_buffer_storage_class"
 		/// </summary>
@@ -550,6 +582,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_RELAXED_BLOCK_LAYOUT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRRelaxedBlockLayoutSpecVersion = 1;
+		public const string VK_KHR_RELAXED_BLOCK_LAYOUT_EXTENSION_NAME = "VK_KHR_relaxed_block_layout";
 		/// <summary>
 		/// VK_KHR_RELAXED_BLOCK_LAYOUT_EXTENSION_NAME = "VK_KHR_relaxed_block_layout"
 		/// </summary>
@@ -562,6 +595,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_GET_MEMORY_REQUIREMENTS_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRGetMemoryRequirements2SpecVersion = 1;
+		public const string VK_KHR_GET_MEMORY_REQUIREMENTS_2_EXTENSION_NAME = "VK_KHR_get_memory_requirements2";
 		/// <summary>
 		/// VK_KHR_GET_MEMORY_REQUIREMENTS_2_EXTENSION_NAME = "VK_KHR_get_memory_requirements2"
 		/// </summary>
@@ -574,6 +608,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_IMAGE_FORMAT_LIST_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRImageFormatListSpecVersion = 1;
+		public const string VK_KHR_IMAGE_FORMAT_LIST_EXTENSION_NAME = "VK_KHR_image_format_list";
 		/// <summary>
 		/// VK_KHR_IMAGE_FORMAT_LIST_EXTENSION_NAME = "VK_KHR_image_format_list"
 		/// </summary>
@@ -586,6 +621,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION = 14
 		/// </summary>
 		public const uint KHRSamplerYcbcrConversionSpecVersion = 14;
+		public const string VK_KHR_SAMPLER_YCBCR_CONVERSION_EXTENSION_NAME = "VK_KHR_sampler_ycbcr_conversion";
 		/// <summary>
 		/// VK_KHR_SAMPLER_YCBCR_CONVERSION_EXTENSION_NAME = "VK_KHR_sampler_ycbcr_conversion"
 		/// </summary>
@@ -598,6 +634,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_BIND_MEMORY_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRBindMemory2SpecVersion = 1;
+		public const string VK_KHR_BIND_MEMORY_2_EXTENSION_NAME = "VK_KHR_bind_memory2";
 		/// <summary>
 		/// VK_KHR_BIND_MEMORY_2_EXTENSION_NAME = "VK_KHR_bind_memory2"
 		/// </summary>
@@ -610,6 +647,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_MAINTENANCE_3_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRMaintenance3SpecVersion = 1;
+		public const string VK_KHR_MAINTENANCE_3_EXTENSION_NAME = "VK_KHR_maintenance3";
 		/// <summary>
 		/// VK_KHR_MAINTENANCE_3_EXTENSION_NAME = "VK_KHR_maintenance3"
 		/// </summary>
@@ -622,6 +660,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_DRAW_INDIRECT_COUNT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRDrawIndirectCountSpecVersion = 1;
+		public const string VK_KHR_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_KHR_draw_indirect_count";
 		/// <summary>
 		/// VK_KHR_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_KHR_draw_indirect_count"
 		/// </summary>
@@ -634,6 +673,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRShaderSubgroupExtendedTypesSpecVersion = 1;
+		public const string VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_EXTENSION_NAME = "VK_KHR_shader_subgroup_extended_types";
 		/// <summary>
 		/// VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_EXTENSION_NAME = "VK_KHR_shader_subgroup_extended_types"
 		/// </summary>
@@ -646,6 +686,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_8BIT_STORAGE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHR8bitStorageSpecVersion = 1;
+		public const string VK_KHR_8BIT_STORAGE_EXTENSION_NAME = "VK_KHR_8bit_storage";
 		/// <summary>
 		/// VK_KHR_8BIT_STORAGE_EXTENSION_NAME = "VK_KHR_8bit_storage"
 		/// </summary>
@@ -658,6 +699,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_ATOMIC_INT64_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRShaderAtomicInt64SpecVersion = 1;
+		public const string VK_KHR_SHADER_ATOMIC_INT64_EXTENSION_NAME = "VK_KHR_shader_atomic_int64";
 		/// <summary>
 		/// VK_KHR_SHADER_ATOMIC_INT64_EXTENSION_NAME = "VK_KHR_shader_atomic_int64"
 		/// </summary>
@@ -670,6 +712,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_CLOCK_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRShaderClockSpecVersion = 1;
+		public const string VK_KHR_SHADER_CLOCK_EXTENSION_NAME = "VK_KHR_shader_clock";
 		/// <summary>
 		/// VK_KHR_SHADER_CLOCK_EXTENSION_NAME = "VK_KHR_shader_clock"
 		/// </summary>
@@ -682,6 +725,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_DRIVER_PROPERTIES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRDriverPropertiesSpecVersion = 1;
+		public const string VK_KHR_DRIVER_PROPERTIES_EXTENSION_NAME = "VK_KHR_driver_properties";
 		/// <summary>
 		/// VK_KHR_DRIVER_PROPERTIES_EXTENSION_NAME = "VK_KHR_driver_properties"
 		/// </summary>
@@ -702,6 +746,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION = 4
 		/// </summary>
 		public const uint KHRShaderFloatControlsSpecVersion = 4;
+		public const string VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME = "VK_KHR_shader_float_controls";
 		/// <summary>
 		/// VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME = "VK_KHR_shader_float_controls"
 		/// </summary>
@@ -714,6 +759,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRDepthStencilResolveSpecVersion = 1;
+		public const string VK_KHR_DEPTH_STENCIL_RESOLVE_EXTENSION_NAME = "VK_KHR_depth_stencil_resolve";
 		/// <summary>
 		/// VK_KHR_DEPTH_STENCIL_RESOLVE_EXTENSION_NAME = "VK_KHR_depth_stencil_resolve"
 		/// </summary>
@@ -726,6 +772,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRSwapchainMutableFormatSpecVersion = 1;
+		public const string VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_EXTENSION_NAME = "VK_KHR_swapchain_mutable_format";
 		/// <summary>
 		/// VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_EXTENSION_NAME = "VK_KHR_swapchain_mutable_format"
 		/// </summary>
@@ -738,6 +785,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_TIMELINE_SEMAPHORE_SPEC_VERSION = 2
 		/// </summary>
 		public const uint KHRTimelineSemaphoreSpecVersion = 2;
+		public const string VK_KHR_TIMELINE_SEMAPHORE_EXTENSION_NAME = "VK_KHR_timeline_semaphore";
 		/// <summary>
 		/// VK_KHR_TIMELINE_SEMAPHORE_EXTENSION_NAME = "VK_KHR_timeline_semaphore"
 		/// </summary>
@@ -750,6 +798,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION = 3
 		/// </summary>
 		public const uint KHRVulkanMemoryModelSpecVersion = 3;
+		public const string VK_KHR_VULKAN_MEMORY_MODEL_EXTENSION_NAME = "VK_KHR_vulkan_memory_model";
 		/// <summary>
 		/// VK_KHR_VULKAN_MEMORY_MODEL_EXTENSION_NAME = "VK_KHR_vulkan_memory_model"
 		/// </summary>
@@ -762,6 +811,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_TERMINATE_INVOCATION_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRShaderTerminateInvocationSpecVersion = 1;
+		public const string VK_KHR_SHADER_TERMINATE_INVOCATION_EXTENSION_NAME = "VK_KHR_shader_terminate_invocation";
 		/// <summary>
 		/// VK_KHR_SHADER_TERMINATE_INVOCATION_EXTENSION_NAME = "VK_KHR_shader_terminate_invocation"
 		/// </summary>
@@ -774,6 +824,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION = 2
 		/// </summary>
 		public const uint KHRFragmentShadingRateSpecVersion = 2;
+		public const string VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME = "VK_KHR_fragment_shading_rate";
 		/// <summary>
 		/// VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME = "VK_KHR_fragment_shading_rate"
 		/// </summary>
@@ -786,6 +837,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SPIRV_1_4_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRSpirv14SpecVersion = 1;
+		public const string VK_KHR_SPIRV_1_4_EXTENSION_NAME = "VK_KHR_spirv_1_4";
 		/// <summary>
 		/// VK_KHR_SPIRV_1_4_EXTENSION_NAME = "VK_KHR_spirv_1_4"
 		/// </summary>
@@ -798,6 +850,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SURFACE_PROTECTED_CAPABILITIES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRSurfaceProtectedCapabilitiesSpecVersion = 1;
+		public const string VK_KHR_SURFACE_PROTECTED_CAPABILITIES_EXTENSION_NAME = "VK_KHR_surface_protected_capabilities";
 		/// <summary>
 		/// VK_KHR_SURFACE_PROTECTED_CAPABILITIES_EXTENSION_NAME = "VK_KHR_surface_protected_capabilities"
 		/// </summary>
@@ -810,6 +863,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRSeparateDepthStencilLayoutsSpecVersion = 1;
+		public const string VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_EXTENSION_NAME = "VK_KHR_separate_depth_stencil_layouts";
 		/// <summary>
 		/// VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_EXTENSION_NAME = "VK_KHR_separate_depth_stencil_layouts"
 		/// </summary>
@@ -822,6 +876,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_PRESENT_WAIT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRPresentWaitSpecVersion = 1;
+		public const string VK_KHR_PRESENT_WAIT_EXTENSION_NAME = "VK_KHR_present_wait";
 		/// <summary>
 		/// VK_KHR_PRESENT_WAIT_EXTENSION_NAME = "VK_KHR_present_wait"
 		/// </summary>
@@ -834,6 +889,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRUniformBufferStandardLayoutSpecVersion = 1;
+		public const string VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_EXTENSION_NAME = "VK_KHR_uniform_buffer_standard_layout";
 		/// <summary>
 		/// VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_EXTENSION_NAME = "VK_KHR_uniform_buffer_standard_layout"
 		/// </summary>
@@ -846,6 +902,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRBufferDeviceAddressSpecVersion = 1;
+		public const string VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_KHR_buffer_device_address";
 		/// <summary>
 		/// VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_KHR_buffer_device_address"
 		/// </summary>
@@ -858,6 +915,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION = 4
 		/// </summary>
 		public const uint KHRDeferredHostOperationsSpecVersion = 4;
+		public const string VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations";
 		/// <summary>
 		/// VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations"
 		/// </summary>
@@ -870,6 +928,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRPipelineExecutablePropertiesSpecVersion = 1;
+		public const string VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME = "VK_KHR_pipeline_executable_properties";
 		/// <summary>
 		/// VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME = "VK_KHR_pipeline_executable_properties"
 		/// </summary>
@@ -882,6 +941,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_INTEGER_DOT_PRODUCT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRShaderIntegerDotProductSpecVersion = 1;
+		public const string VK_KHR_SHADER_INTEGER_DOT_PRODUCT_EXTENSION_NAME = "VK_KHR_shader_integer_dot_product";
 		/// <summary>
 		/// VK_KHR_SHADER_INTEGER_DOT_PRODUCT_EXTENSION_NAME = "VK_KHR_shader_integer_dot_product"
 		/// </summary>
@@ -894,6 +954,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_PIPELINE_LIBRARY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRPipelineLibrarySpecVersion = 1;
+		public const string VK_KHR_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_KHR_pipeline_library";
 		/// <summary>
 		/// VK_KHR_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_KHR_pipeline_library"
 		/// </summary>
@@ -906,6 +967,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_NON_SEMANTIC_INFO_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRShaderNonSemanticInfoSpecVersion = 1;
+		public const string VK_KHR_SHADER_NON_SEMANTIC_INFO_EXTENSION_NAME = "VK_KHR_shader_non_semantic_info";
 		/// <summary>
 		/// VK_KHR_SHADER_NON_SEMANTIC_INFO_EXTENSION_NAME = "VK_KHR_shader_non_semantic_info"
 		/// </summary>
@@ -918,6 +980,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_PRESENT_ID_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRPresentIdSpecVersion = 1;
+		public const string VK_KHR_PRESENT_ID_EXTENSION_NAME = "VK_KHR_present_id";
 		/// <summary>
 		/// VK_KHR_PRESENT_ID_EXTENSION_NAME = "VK_KHR_present_id"
 		/// </summary>
@@ -930,6 +993,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SYNCHRONIZATION_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRSynchronization2SpecVersion = 1;
+		public const string VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2";
 		/// <summary>
 		/// VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2"
 		/// </summary>
@@ -942,6 +1006,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRShaderSubgroupUniformControlFlowSpecVersion = 1;
+		public const string VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_EXTENSION_NAME = "VK_KHR_shader_subgroup_uniform_control_flow";
 		/// <summary>
 		/// VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_EXTENSION_NAME = "VK_KHR_shader_subgroup_uniform_control_flow"
 		/// </summary>
@@ -954,6 +1019,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRZeroInitializeWorkgroupMemorySpecVersion = 1;
+		public const string VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_EXTENSION_NAME = "VK_KHR_zero_initialize_workgroup_memory";
 		/// <summary>
 		/// VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_EXTENSION_NAME = "VK_KHR_zero_initialize_workgroup_memory"
 		/// </summary>
@@ -966,6 +1032,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRWorkgroupMemoryExplicitLayoutSpecVersion = 1;
+		public const string VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_EXTENSION_NAME = "VK_KHR_workgroup_memory_explicit_layout";
 		/// <summary>
 		/// VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_EXTENSION_NAME = "VK_KHR_workgroup_memory_explicit_layout"
 		/// </summary>
@@ -978,6 +1045,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_COPY_COMMANDS_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRCopyCommands2SpecVersion = 1;
+		public const string VK_KHR_COPY_COMMANDS_2_EXTENSION_NAME = "VK_KHR_copy_commands2";
 		/// <summary>
 		/// VK_KHR_COPY_COMMANDS_2_EXTENSION_NAME = "VK_KHR_copy_commands2"
 		/// </summary>
@@ -990,6 +1058,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_FORMAT_FEATURE_FLAGS_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRFormatFeature2SpecVersion = 1;
+		public const string VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME = "VK_KHR_format_feature_flags2";
 		/// <summary>
 		/// VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME = "VK_KHR_format_feature_flags2"
 		/// </summary>
@@ -1002,6 +1071,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_MAINTENANCE_4_SPEC_VERSION = 2
 		/// </summary>
 		public const uint KHRMaintenance4SpecVersion = 2;
+		public const string VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4";
 		/// <summary>
 		/// VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4"
 		/// </summary>
@@ -1014,6 +1084,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DEBUG_REPORT_SPEC_VERSION = 10
 		/// </summary>
 		public const uint EXTDebugReportSpecVersion = 10;
+		public const string VK_EXT_DEBUG_REPORT_EXTENSION_NAME = "VK_EXT_debug_report";
 		/// <summary>
 		/// VK_EXT_DEBUG_REPORT_EXTENSION_NAME = "VK_EXT_debug_report"
 		/// </summary>
@@ -1026,6 +1097,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_GLSL_SHADER_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVGlslShaderSpecVersion = 1;
+		public const string VK_NV_GLSL_SHADER_EXTENSION_NAME = "VK_NV_glsl_shader";
 		/// <summary>
 		/// VK_NV_GLSL_SHADER_EXTENSION_NAME = "VK_NV_glsl_shader"
 		/// </summary>
@@ -1038,6 +1110,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTDepthRangeUnrestrictedSpecVersion = 1;
+		public const string VK_EXT_DEPTH_RANGE_UNRESTRICTED_EXTENSION_NAME = "VK_EXT_depth_range_unrestricted";
 		/// <summary>
 		/// VK_EXT_DEPTH_RANGE_UNRESTRICTED_EXTENSION_NAME = "VK_EXT_depth_range_unrestricted"
 		/// </summary>
@@ -1050,6 +1123,7 @@ namespace Vortice.Vulkan
 		/// VK_IMG_FILTER_CUBIC_SPEC_VERSION = 1
 		/// </summary>
 		public const uint ImgFilterCubicSpecVersion = 1;
+		public const string VK_IMG_FILTER_CUBIC_EXTENSION_NAME = "VK_IMG_filter_cubic";
 		/// <summary>
 		/// VK_IMG_FILTER_CUBIC_EXTENSION_NAME = "VK_IMG_filter_cubic"
 		/// </summary>
@@ -1062,6 +1136,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_RASTERIZATION_ORDER_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDRasterizationOrderSpecVersion = 1;
+		public const string VK_AMD_RASTERIZATION_ORDER_EXTENSION_NAME = "VK_AMD_rasterization_order";
 		/// <summary>
 		/// VK_AMD_RASTERIZATION_ORDER_EXTENSION_NAME = "VK_AMD_rasterization_order"
 		/// </summary>
@@ -1074,6 +1149,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_SHADER_TRINARY_MINMAX_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDShaderTrinaryMinmaxSpecVersion = 1;
+		public const string VK_AMD_SHADER_TRINARY_MINMAX_EXTENSION_NAME = "VK_AMD_shader_trinary_minmax";
 		/// <summary>
 		/// VK_AMD_SHADER_TRINARY_MINMAX_EXTENSION_NAME = "VK_AMD_shader_trinary_minmax"
 		/// </summary>
@@ -1086,6 +1162,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDShaderExplicitVertexParameterSpecVersion = 1;
+		public const string VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_EXTENSION_NAME = "VK_AMD_shader_explicit_vertex_parameter";
 		/// <summary>
 		/// VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_EXTENSION_NAME = "VK_AMD_shader_explicit_vertex_parameter"
 		/// </summary>
@@ -1098,6 +1175,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DEBUG_MARKER_SPEC_VERSION = 4
 		/// </summary>
 		public const uint EXTDebugMarkerSpecVersion = 4;
+		public const string VK_EXT_DEBUG_MARKER_EXTENSION_NAME = "VK_EXT_debug_marker";
 		/// <summary>
 		/// VK_EXT_DEBUG_MARKER_EXTENSION_NAME = "VK_EXT_debug_marker"
 		/// </summary>
@@ -1110,6 +1188,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_GCN_SHADER_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDGcnShaderSpecVersion = 1;
+		public const string VK_AMD_GCN_SHADER_EXTENSION_NAME = "VK_AMD_gcn_shader";
 		/// <summary>
 		/// VK_AMD_GCN_SHADER_EXTENSION_NAME = "VK_AMD_gcn_shader"
 		/// </summary>
@@ -1122,6 +1201,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_DEDICATED_ALLOCATION_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVDedicatedAllocationSpecVersion = 1;
+		public const string VK_NV_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_NV_dedicated_allocation";
 		/// <summary>
 		/// VK_NV_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_NV_dedicated_allocation"
 		/// </summary>
@@ -1134,6 +1214,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_TRANSFORM_FEEDBACK_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTTransformFeedbackSpecVersion = 1;
+		public const string VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME = "VK_EXT_transform_feedback";
 		/// <summary>
 		/// VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME = "VK_EXT_transform_feedback"
 		/// </summary>
@@ -1146,6 +1227,7 @@ namespace Vortice.Vulkan
 		/// VK_NVX_BINARY_IMPORT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVXBinaryImportSpecVersion = 1;
+		public const string VK_NVX_BINARY_IMPORT_EXTENSION_NAME = "VK_NVX_binary_import";
 		/// <summary>
 		/// VK_NVX_BINARY_IMPORT_EXTENSION_NAME = "VK_NVX_binary_import"
 		/// </summary>
@@ -1158,6 +1240,7 @@ namespace Vortice.Vulkan
 		/// VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION = 2
 		/// </summary>
 		public const uint NVXImageViewHandleSpecVersion = 2;
+		public const string VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME = "VK_NVX_image_view_handle";
 		/// <summary>
 		/// VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME = "VK_NVX_image_view_handle"
 		/// </summary>
@@ -1170,6 +1253,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION = 2
 		/// </summary>
 		public const uint AMDDrawIndirectCountSpecVersion = 2;
+		public const string VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_AMD_draw_indirect_count";
 		/// <summary>
 		/// VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_AMD_draw_indirect_count"
 		/// </summary>
@@ -1182,6 +1266,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDNegativeViewportHeightSpecVersion = 1;
+		public const string VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_EXTENSION_NAME = "VK_AMD_negative_viewport_height";
 		/// <summary>
 		/// VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_EXTENSION_NAME = "VK_AMD_negative_viewport_height"
 		/// </summary>
@@ -1194,6 +1279,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_GPU_SHADER_HALF_FLOAT_SPEC_VERSION = 2
 		/// </summary>
 		public const uint AMDGpuShaderHalfFloatSpecVersion = 2;
+		public const string VK_AMD_GPU_SHADER_HALF_FLOAT_EXTENSION_NAME = "VK_AMD_gpu_shader_half_float";
 		/// <summary>
 		/// VK_AMD_GPU_SHADER_HALF_FLOAT_EXTENSION_NAME = "VK_AMD_gpu_shader_half_float"
 		/// </summary>
@@ -1206,6 +1292,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_SHADER_BALLOT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDShaderBallotSpecVersion = 1;
+		public const string VK_AMD_SHADER_BALLOT_EXTENSION_NAME = "VK_AMD_shader_ballot";
 		/// <summary>
 		/// VK_AMD_SHADER_BALLOT_EXTENSION_NAME = "VK_AMD_shader_ballot"
 		/// </summary>
@@ -1218,6 +1305,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_TEXTURE_GATHER_BIAS_LOD_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDTextureGatherBiasLodSpecVersion = 1;
+		public const string VK_AMD_TEXTURE_GATHER_BIAS_LOD_EXTENSION_NAME = "VK_AMD_texture_gather_bias_lod";
 		/// <summary>
 		/// VK_AMD_TEXTURE_GATHER_BIAS_LOD_EXTENSION_NAME = "VK_AMD_texture_gather_bias_lod"
 		/// </summary>
@@ -1230,6 +1318,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_SHADER_INFO_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDShaderInfoSpecVersion = 1;
+		public const string VK_AMD_SHADER_INFO_EXTENSION_NAME = "VK_AMD_shader_info";
 		/// <summary>
 		/// VK_AMD_SHADER_INFO_EXTENSION_NAME = "VK_AMD_shader_info"
 		/// </summary>
@@ -1242,6 +1331,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDShaderImageLoadStoreLodSpecVersion = 1;
+		public const string VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_EXTENSION_NAME = "VK_AMD_shader_image_load_store_lod";
 		/// <summary>
 		/// VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_EXTENSION_NAME = "VK_AMD_shader_image_load_store_lod"
 		/// </summary>
@@ -1254,6 +1344,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION = 2
 		/// </summary>
 		public const uint NVCornerSampledImageSpecVersion = 2;
+		public const string VK_NV_CORNER_SAMPLED_IMAGE_EXTENSION_NAME = "VK_NV_corner_sampled_image";
 		/// <summary>
 		/// VK_NV_CORNER_SAMPLED_IMAGE_EXTENSION_NAME = "VK_NV_corner_sampled_image"
 		/// </summary>
@@ -1266,6 +1357,7 @@ namespace Vortice.Vulkan
 		/// VK_IMG_FORMAT_PVRTC_SPEC_VERSION = 1
 		/// </summary>
 		public const uint ImgFormatPvrtcSpecVersion = 1;
+		public const string VK_IMG_FORMAT_PVRTC_EXTENSION_NAME = "VK_IMG_format_pvrtc";
 		/// <summary>
 		/// VK_IMG_FORMAT_PVRTC_EXTENSION_NAME = "VK_IMG_format_pvrtc"
 		/// </summary>
@@ -1278,6 +1370,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVExternalMemoryCapabilitiesSpecVersion = 1;
+		public const string VK_NV_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_NV_external_memory_capabilities";
 		/// <summary>
 		/// VK_NV_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_NV_external_memory_capabilities"
 		/// </summary>
@@ -1290,6 +1383,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_EXTERNAL_MEMORY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVExternalMemorySpecVersion = 1;
+		public const string VK_NV_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_NV_external_memory";
 		/// <summary>
 		/// VK_NV_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_NV_external_memory"
 		/// </summary>
@@ -1302,6 +1396,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_VALIDATION_FLAGS_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTValidationSpecVersion = 2;
+		public const string VK_EXT_VALIDATION_FLAGS_EXTENSION_NAME = "VK_EXT_validation_flags";
 		/// <summary>
 		/// VK_EXT_VALIDATION_FLAGS_EXTENSION_NAME = "VK_EXT_validation_flags"
 		/// </summary>
@@ -1314,6 +1409,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SHADER_SUBGROUP_BALLOT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTShaderSubgroupBallotSpecVersion = 1;
+		public const string VK_EXT_SHADER_SUBGROUP_BALLOT_EXTENSION_NAME = "VK_EXT_shader_subgroup_ballot";
 		/// <summary>
 		/// VK_EXT_SHADER_SUBGROUP_BALLOT_EXTENSION_NAME = "VK_EXT_shader_subgroup_ballot"
 		/// </summary>
@@ -1326,6 +1422,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SHADER_SUBGROUP_VOTE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTShaderSubgroupVoteSpecVersion = 1;
+		public const string VK_EXT_SHADER_SUBGROUP_VOTE_EXTENSION_NAME = "VK_EXT_shader_subgroup_vote";
 		/// <summary>
 		/// VK_EXT_SHADER_SUBGROUP_VOTE_EXTENSION_NAME = "VK_EXT_shader_subgroup_vote"
 		/// </summary>
@@ -1338,6 +1435,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTTextureCompressionAstcHdrSpecVersion = 1;
+		public const string VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_EXTENSION_NAME = "VK_EXT_texture_compression_astc_hdr";
 		/// <summary>
 		/// VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_EXTENSION_NAME = "VK_EXT_texture_compression_astc_hdr"
 		/// </summary>
@@ -1350,6 +1448,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_ASTC_DECODE_MODE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTAstcDecodeModeSpecVersion = 1;
+		public const string VK_EXT_ASTC_DECODE_MODE_EXTENSION_NAME = "VK_EXT_astc_decode_mode";
 		/// <summary>
 		/// VK_EXT_ASTC_DECODE_MODE_EXTENSION_NAME = "VK_EXT_astc_decode_mode"
 		/// </summary>
@@ -1362,6 +1461,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_CONDITIONAL_RENDERING_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTConditionalRenderingSpecVersion = 2;
+		public const string VK_EXT_CONDITIONAL_RENDERING_EXTENSION_NAME = "VK_EXT_conditional_rendering";
 		/// <summary>
 		/// VK_EXT_CONDITIONAL_RENDERING_EXTENSION_NAME = "VK_EXT_conditional_rendering"
 		/// </summary>
@@ -1374,6 +1474,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_CLIP_SPACE_W_SCALING_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVClipSpaceWScalingSpecVersion = 1;
+		public const string VK_NV_CLIP_SPACE_W_SCALING_EXTENSION_NAME = "VK_NV_clip_space_w_scaling";
 		/// <summary>
 		/// VK_NV_CLIP_SPACE_W_SCALING_EXTENSION_NAME = "VK_NV_clip_space_w_scaling"
 		/// </summary>
@@ -1386,6 +1487,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DIRECT_MODE_DISPLAY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTDirectModeDisplaySpecVersion = 1;
+		public const string VK_EXT_DIRECT_MODE_DISPLAY_EXTENSION_NAME = "VK_EXT_direct_mode_display";
 		/// <summary>
 		/// VK_EXT_DIRECT_MODE_DISPLAY_EXTENSION_NAME = "VK_EXT_direct_mode_display"
 		/// </summary>
@@ -1398,6 +1500,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DISPLAY_SURFACE_COUNTER_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTDisplaySurfaceCounterSpecVersion = 1;
+		public const string VK_EXT_DISPLAY_SURFACE_COUNTER_EXTENSION_NAME = "VK_EXT_display_surface_counter";
 		/// <summary>
 		/// VK_EXT_DISPLAY_SURFACE_COUNTER_EXTENSION_NAME = "VK_EXT_display_surface_counter"
 		/// </summary>
@@ -1410,6 +1513,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DISPLAY_CONTROL_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTDisplayControlSpecVersion = 1;
+		public const string VK_EXT_DISPLAY_CONTROL_EXTENSION_NAME = "VK_EXT_display_control";
 		/// <summary>
 		/// VK_EXT_DISPLAY_CONTROL_EXTENSION_NAME = "VK_EXT_display_control"
 		/// </summary>
@@ -1422,6 +1526,7 @@ namespace Vortice.Vulkan
 		/// VK_GOOGLE_DISPLAY_TIMING_SPEC_VERSION = 1
 		/// </summary>
 		public const uint GoogleDisplayTimingSpecVersion = 1;
+		public const string VK_GOOGLE_DISPLAY_TIMING_EXTENSION_NAME = "VK_GOOGLE_display_timing";
 		/// <summary>
 		/// VK_GOOGLE_DISPLAY_TIMING_EXTENSION_NAME = "VK_GOOGLE_display_timing"
 		/// </summary>
@@ -1434,6 +1539,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVSampleMaskOverrideCoverageSpecVersion = 1;
+		public const string VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_EXTENSION_NAME = "VK_NV_sample_mask_override_coverage";
 		/// <summary>
 		/// VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_EXTENSION_NAME = "VK_NV_sample_mask_override_coverage"
 		/// </summary>
@@ -1446,6 +1552,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_GEOMETRY_SHADER_PASSTHROUGH_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVGeometryShaderPassthroughSpecVersion = 1;
+		public const string VK_NV_GEOMETRY_SHADER_PASSTHROUGH_EXTENSION_NAME = "VK_NV_geometry_shader_passthrough";
 		/// <summary>
 		/// VK_NV_GEOMETRY_SHADER_PASSTHROUGH_EXTENSION_NAME = "VK_NV_geometry_shader_passthrough"
 		/// </summary>
@@ -1458,6 +1565,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_VIEWPORT_ARRAY_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVViewportArray2SpecVersion = 1;
+		public const string VK_NV_VIEWPORT_ARRAY_2_EXTENSION_NAME = "VK_NV_viewport_array2";
 		/// <summary>
 		/// VK_NV_VIEWPORT_ARRAY_2_EXTENSION_NAME = "VK_NV_viewport_array2"
 		/// </summary>
@@ -1470,6 +1578,7 @@ namespace Vortice.Vulkan
 		/// VK_NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVXMultiviewPerViewAttributesSpecVersion = 1;
+		public const string VK_NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_EXTENSION_NAME = "VK_NVX_multiview_per_view_attributes";
 		/// <summary>
 		/// VK_NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_EXTENSION_NAME = "VK_NVX_multiview_per_view_attributes"
 		/// </summary>
@@ -1482,6 +1591,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_VIEWPORT_SWIZZLE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVViewportSwizzleSpecVersion = 1;
+		public const string VK_NV_VIEWPORT_SWIZZLE_EXTENSION_NAME = "VK_NV_viewport_swizzle";
 		/// <summary>
 		/// VK_NV_VIEWPORT_SWIZZLE_EXTENSION_NAME = "VK_NV_viewport_swizzle"
 		/// </summary>
@@ -1494,6 +1604,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTDiscardRectanglesSpecVersion = 1;
+		public const string VK_EXT_DISCARD_RECTANGLES_EXTENSION_NAME = "VK_EXT_discard_rectangles";
 		/// <summary>
 		/// VK_EXT_DISCARD_RECTANGLES_EXTENSION_NAME = "VK_EXT_discard_rectangles"
 		/// </summary>
@@ -1506,6 +1617,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_CONSERVATIVE_RASTERIZATION_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTConservativeRasterizationSpecVersion = 1;
+		public const string VK_EXT_CONSERVATIVE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_conservative_rasterization";
 		/// <summary>
 		/// VK_EXT_CONSERVATIVE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_conservative_rasterization"
 		/// </summary>
@@ -1518,6 +1630,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DEPTH_CLIP_ENABLE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTDepthClipEnableSpecVersion = 1;
+		public const string VK_EXT_DEPTH_CLIP_ENABLE_EXTENSION_NAME = "VK_EXT_depth_clip_enable";
 		/// <summary>
 		/// VK_EXT_DEPTH_CLIP_ENABLE_EXTENSION_NAME = "VK_EXT_depth_clip_enable"
 		/// </summary>
@@ -1530,6 +1643,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION = 4
 		/// </summary>
 		public const uint EXTSwapchainColorSpaceSpecVersion = 4;
+		public const string VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME = "VK_EXT_swapchain_colorspace";
 		/// <summary>
 		/// VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME = "VK_EXT_swapchain_colorspace"
 		/// </summary>
@@ -1542,6 +1656,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_HDR_METADATA_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTHdrMetadataSpecVersion = 2;
+		public const string VK_EXT_HDR_METADATA_EXTENSION_NAME = "VK_EXT_hdr_metadata";
 		/// <summary>
 		/// VK_EXT_HDR_METADATA_EXTENSION_NAME = "VK_EXT_hdr_metadata"
 		/// </summary>
@@ -1554,6 +1669,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_EXTERNAL_MEMORY_DMA_BUF_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTExternalMemoryDmaBufSpecVersion = 1;
+		public const string VK_EXT_EXTERNAL_MEMORY_DMA_BUF_EXTENSION_NAME = "VK_EXT_external_memory_dma_buf";
 		/// <summary>
 		/// VK_EXT_EXTERNAL_MEMORY_DMA_BUF_EXTENSION_NAME = "VK_EXT_external_memory_dma_buf"
 		/// </summary>
@@ -1566,6 +1682,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTQueueFamilyForeignSpecVersion = 1;
+		public const string VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME = "VK_EXT_queue_family_foreign";
 		/// <summary>
 		/// VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME = "VK_EXT_queue_family_foreign"
 		/// </summary>
@@ -1582,6 +1699,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DEBUG_UTILS_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTDebugUtilsSpecVersion = 2;
+		public const string VK_EXT_DEBUG_UTILS_EXTENSION_NAME = "VK_EXT_debug_utils";
 		/// <summary>
 		/// VK_EXT_DEBUG_UTILS_EXTENSION_NAME = "VK_EXT_debug_utils"
 		/// </summary>
@@ -1594,6 +1712,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTSamplerFilterMinmaxSpecVersion = 2;
+		public const string VK_EXT_SAMPLER_FILTER_MINMAX_EXTENSION_NAME = "VK_EXT_sampler_filter_minmax";
 		/// <summary>
 		/// VK_EXT_SAMPLER_FILTER_MINMAX_EXTENSION_NAME = "VK_EXT_sampler_filter_minmax"
 		/// </summary>
@@ -1606,6 +1725,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_GPU_SHADER_INT16_SPEC_VERSION = 2
 		/// </summary>
 		public const uint AMDGpuShaderInt16SpecVersion = 2;
+		public const string VK_AMD_GPU_SHADER_INT16_EXTENSION_NAME = "VK_AMD_gpu_shader_int16";
 		/// <summary>
 		/// VK_AMD_GPU_SHADER_INT16_EXTENSION_NAME = "VK_AMD_gpu_shader_int16"
 		/// </summary>
@@ -1618,6 +1738,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_MIXED_ATTACHMENT_SAMPLES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDMixedAttachmentSamplesSpecVersion = 1;
+		public const string VK_AMD_MIXED_ATTACHMENT_SAMPLES_EXTENSION_NAME = "VK_AMD_mixed_attachment_samples";
 		/// <summary>
 		/// VK_AMD_MIXED_ATTACHMENT_SAMPLES_EXTENSION_NAME = "VK_AMD_mixed_attachment_samples"
 		/// </summary>
@@ -1630,6 +1751,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_SHADER_FRAGMENT_MASK_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDShaderFragmentMaskSpecVersion = 1;
+		public const string VK_AMD_SHADER_FRAGMENT_MASK_EXTENSION_NAME = "VK_AMD_shader_fragment_mask";
 		/// <summary>
 		/// VK_AMD_SHADER_FRAGMENT_MASK_EXTENSION_NAME = "VK_AMD_shader_fragment_mask"
 		/// </summary>
@@ -1642,6 +1764,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_INLINE_UNIFORM_BLOCK_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTInlineUniformBlockSpecVersion = 1;
+		public const string VK_EXT_INLINE_UNIFORM_BLOCK_EXTENSION_NAME = "VK_EXT_inline_uniform_block";
 		/// <summary>
 		/// VK_EXT_INLINE_UNIFORM_BLOCK_EXTENSION_NAME = "VK_EXT_inline_uniform_block"
 		/// </summary>
@@ -1654,6 +1777,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SHADER_STENCIL_EXPORT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTShaderStencilExportSpecVersion = 1;
+		public const string VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME = "VK_EXT_shader_stencil_export";
 		/// <summary>
 		/// VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME = "VK_EXT_shader_stencil_export"
 		/// </summary>
@@ -1666,6 +1790,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SAMPLE_LOCATIONS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTSampleLocationsSpecVersion = 1;
+		public const string VK_EXT_SAMPLE_LOCATIONS_EXTENSION_NAME = "VK_EXT_sample_locations";
 		/// <summary>
 		/// VK_EXT_SAMPLE_LOCATIONS_EXTENSION_NAME = "VK_EXT_sample_locations"
 		/// </summary>
@@ -1678,6 +1803,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTBlendOperationAdvancedSpecVersion = 2;
+		public const string VK_EXT_BLEND_OPERATION_ADVANCED_EXTENSION_NAME = "VK_EXT_blend_operation_advanced";
 		/// <summary>
 		/// VK_EXT_BLEND_OPERATION_ADVANCED_EXTENSION_NAME = "VK_EXT_blend_operation_advanced"
 		/// </summary>
@@ -1690,6 +1816,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_FRAGMENT_COVERAGE_TO_COLOR_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVFragmentCoverageToColorSpecVersion = 1;
+		public const string VK_NV_FRAGMENT_COVERAGE_TO_COLOR_EXTENSION_NAME = "VK_NV_fragment_coverage_to_color";
 		/// <summary>
 		/// VK_NV_FRAGMENT_COVERAGE_TO_COLOR_EXTENSION_NAME = "VK_NV_fragment_coverage_to_color"
 		/// </summary>
@@ -1702,6 +1829,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_FRAMEBUFFER_MIXED_SAMPLES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVFramebufferMixedSamplesSpecVersion = 1;
+		public const string VK_NV_FRAMEBUFFER_MIXED_SAMPLES_EXTENSION_NAME = "VK_NV_framebuffer_mixed_samples";
 		/// <summary>
 		/// VK_NV_FRAMEBUFFER_MIXED_SAMPLES_EXTENSION_NAME = "VK_NV_framebuffer_mixed_samples"
 		/// </summary>
@@ -1714,6 +1842,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_FILL_RECTANGLE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVFillRectangleSpecVersion = 1;
+		public const string VK_NV_FILL_RECTANGLE_EXTENSION_NAME = "VK_NV_fill_rectangle";
 		/// <summary>
 		/// VK_NV_FILL_RECTANGLE_EXTENSION_NAME = "VK_NV_fill_rectangle"
 		/// </summary>
@@ -1726,6 +1855,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_SHADER_SM_BUILTINS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVShaderSmBuiltinsSpecVersion = 1;
+		public const string VK_NV_SHADER_SM_BUILTINS_EXTENSION_NAME = "VK_NV_shader_sm_builtins";
 		/// <summary>
 		/// VK_NV_SHADER_SM_BUILTINS_EXTENSION_NAME = "VK_NV_shader_sm_builtins"
 		/// </summary>
@@ -1738,6 +1868,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_POST_DEPTH_COVERAGE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTPostDepthCoverageSpecVersion = 1;
+		public const string VK_EXT_POST_DEPTH_COVERAGE_EXTENSION_NAME = "VK_EXT_post_depth_coverage";
 		/// <summary>
 		/// VK_EXT_POST_DEPTH_COVERAGE_EXTENSION_NAME = "VK_EXT_post_depth_coverage"
 		/// </summary>
@@ -1750,6 +1881,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTImageDrmFormatModifierSpecVersion = 2;
+		public const string VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME = "VK_EXT_image_drm_format_modifier";
 		/// <summary>
 		/// VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME = "VK_EXT_image_drm_format_modifier"
 		/// </summary>
@@ -1762,6 +1894,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_VALIDATION_CACHE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTValidationCacheSpecVersion = 1;
+		public const string VK_EXT_VALIDATION_CACHE_EXTENSION_NAME = "VK_EXT_validation_cache";
 		/// <summary>
 		/// VK_EXT_VALIDATION_CACHE_EXTENSION_NAME = "VK_EXT_validation_cache"
 		/// </summary>
@@ -1774,6 +1907,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DESCRIPTOR_INDEXING_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTDescriptorIndexingSpecVersion = 2;
+		public const string VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME = "VK_EXT_descriptor_indexing";
 		/// <summary>
 		/// VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME = "VK_EXT_descriptor_indexing"
 		/// </summary>
@@ -1786,6 +1920,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTShaderViewportIndexLayerSpecVersion = 1;
+		public const string VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_EXTENSION_NAME = "VK_EXT_shader_viewport_index_layer";
 		/// <summary>
 		/// VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_EXTENSION_NAME = "VK_EXT_shader_viewport_index_layer"
 		/// </summary>
@@ -1798,6 +1933,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_SHADING_RATE_IMAGE_SPEC_VERSION = 3
 		/// </summary>
 		public const uint NVShadingRateImageSpecVersion = 3;
+		public const string VK_NV_SHADING_RATE_IMAGE_EXTENSION_NAME = "VK_NV_shading_rate_image";
 		/// <summary>
 		/// VK_NV_SHADING_RATE_IMAGE_EXTENSION_NAME = "VK_NV_shading_rate_image"
 		/// </summary>
@@ -1810,6 +1946,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_RAY_TRACING_SPEC_VERSION = 3
 		/// </summary>
 		public const uint NVRayTracingSpecVersion = 3;
+		public const string VK_NV_RAY_TRACING_EXTENSION_NAME = "VK_NV_ray_tracing";
 		/// <summary>
 		/// VK_NV_RAY_TRACING_EXTENSION_NAME = "VK_NV_ray_tracing"
 		/// </summary>
@@ -1830,6 +1967,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION = 2
 		/// </summary>
 		public const uint NVRepresentativeFragmentTestSpecVersion = 2;
+		public const string VK_NV_REPRESENTATIVE_FRAGMENT_TEST_EXTENSION_NAME = "VK_NV_representative_fragment_test";
 		/// <summary>
 		/// VK_NV_REPRESENTATIVE_FRAGMENT_TEST_EXTENSION_NAME = "VK_NV_representative_fragment_test"
 		/// </summary>
@@ -1842,6 +1980,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_FILTER_CUBIC_SPEC_VERSION = 3
 		/// </summary>
 		public const uint EXTFilterCubicSpecVersion = 3;
+		public const string VK_EXT_FILTER_CUBIC_EXTENSION_NAME = "VK_EXT_filter_cubic";
 		/// <summary>
 		/// VK_EXT_FILTER_CUBIC_EXTENSION_NAME = "VK_EXT_filter_cubic"
 		/// </summary>
@@ -1854,6 +1993,7 @@ namespace Vortice.Vulkan
 		/// VK_QCOM_RENDER_PASS_SHADER_RESOLVE_SPEC_VERSION = 4
 		/// </summary>
 		public const uint QcomRenderPassShaderResolveSpecVersion = 4;
+		public const string VK_QCOM_RENDER_PASS_SHADER_RESOLVE_EXTENSION_NAME = "VK_QCOM_render_pass_shader_resolve";
 		/// <summary>
 		/// VK_QCOM_RENDER_PASS_SHADER_RESOLVE_EXTENSION_NAME = "VK_QCOM_render_pass_shader_resolve"
 		/// </summary>
@@ -1866,6 +2006,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_GLOBAL_PRIORITY_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTGlobalPrioritySpecVersion = 2;
+		public const string VK_EXT_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_EXT_global_priority";
 		/// <summary>
 		/// VK_EXT_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_EXT_global_priority"
 		/// </summary>
@@ -1878,6 +2019,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTExternalMemoryHostSpecVersion = 1;
+		public const string VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME = "VK_EXT_external_memory_host";
 		/// <summary>
 		/// VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME = "VK_EXT_external_memory_host"
 		/// </summary>
@@ -1890,6 +2032,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_BUFFER_MARKER_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDBufferMarkerSpecVersion = 1;
+		public const string VK_AMD_BUFFER_MARKER_EXTENSION_NAME = "VK_AMD_buffer_marker";
 		/// <summary>
 		/// VK_AMD_BUFFER_MARKER_EXTENSION_NAME = "VK_AMD_buffer_marker"
 		/// </summary>
@@ -1902,6 +2045,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_PIPELINE_COMPILER_CONTROL_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDPipelineCompilerControlSpecVersion = 1;
+		public const string VK_AMD_PIPELINE_COMPILER_CONTROL_EXTENSION_NAME = "VK_AMD_pipeline_compiler_control";
 		/// <summary>
 		/// VK_AMD_PIPELINE_COMPILER_CONTROL_EXTENSION_NAME = "VK_AMD_pipeline_compiler_control"
 		/// </summary>
@@ -1914,6 +2058,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTCalibratedTimestampsSpecVersion = 2;
+		public const string VK_EXT_CALIBRATED_TIMESTAMPS_EXTENSION_NAME = "VK_EXT_calibrated_timestamps";
 		/// <summary>
 		/// VK_EXT_CALIBRATED_TIMESTAMPS_EXTENSION_NAME = "VK_EXT_calibrated_timestamps"
 		/// </summary>
@@ -1926,6 +2071,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION = 2
 		/// </summary>
 		public const uint AMDShaderCorePropertiesSpecVersion = 2;
+		public const string VK_AMD_SHADER_CORE_PROPERTIES_EXTENSION_NAME = "VK_AMD_shader_core_properties";
 		/// <summary>
 		/// VK_AMD_SHADER_CORE_PROPERTIES_EXTENSION_NAME = "VK_AMD_shader_core_properties"
 		/// </summary>
@@ -1938,6 +2084,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDMemoryOverallocationBehaviorSpecVersion = 1;
+		public const string VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_EXTENSION_NAME = "VK_AMD_memory_overallocation_behavior";
 		/// <summary>
 		/// VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_EXTENSION_NAME = "VK_AMD_memory_overallocation_behavior"
 		/// </summary>
@@ -1950,6 +2097,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION = 3
 		/// </summary>
 		public const uint EXTVertexAttributeDivisorSpecVersion = 3;
+		public const string VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME = "VK_EXT_vertex_attribute_divisor";
 		/// <summary>
 		/// VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME = "VK_EXT_vertex_attribute_divisor"
 		/// </summary>
@@ -1962,6 +2110,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_PIPELINE_CREATION_FEEDBACK_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTPipelineCreationFeedbackSpecVersion = 1;
+		public const string VK_EXT_PIPELINE_CREATION_FEEDBACK_EXTENSION_NAME = "VK_EXT_pipeline_creation_feedback";
 		/// <summary>
 		/// VK_EXT_PIPELINE_CREATION_FEEDBACK_EXTENSION_NAME = "VK_EXT_pipeline_creation_feedback"
 		/// </summary>
@@ -1974,6 +2123,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVShaderSubgroupPartitionedSpecVersion = 1;
+		public const string VK_NV_SHADER_SUBGROUP_PARTITIONED_EXTENSION_NAME = "VK_NV_shader_subgroup_partitioned";
 		/// <summary>
 		/// VK_NV_SHADER_SUBGROUP_PARTITIONED_EXTENSION_NAME = "VK_NV_shader_subgroup_partitioned"
 		/// </summary>
@@ -1986,6 +2136,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVComputeShaderDerivativesSpecVersion = 1;
+		public const string VK_NV_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME = "VK_NV_compute_shader_derivatives";
 		/// <summary>
 		/// VK_NV_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME = "VK_NV_compute_shader_derivatives"
 		/// </summary>
@@ -1998,6 +2149,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_MESH_SHADER_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVMeshShaderSpecVersion = 1;
+		public const string VK_NV_MESH_SHADER_EXTENSION_NAME = "VK_NV_mesh_shader";
 		/// <summary>
 		/// VK_NV_MESH_SHADER_EXTENSION_NAME = "VK_NV_mesh_shader"
 		/// </summary>
@@ -2010,6 +2162,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVFragmentShaderBarycentricSpecVersion = 1;
+		public const string VK_NV_FRAGMENT_SHADER_BARYCENTRIC_EXTENSION_NAME = "VK_NV_fragment_shader_barycentric";
 		/// <summary>
 		/// VK_NV_FRAGMENT_SHADER_BARYCENTRIC_EXTENSION_NAME = "VK_NV_fragment_shader_barycentric"
 		/// </summary>
@@ -2022,6 +2175,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_SHADER_IMAGE_FOOTPRINT_SPEC_VERSION = 2
 		/// </summary>
 		public const uint NVShaderImageFootprintSpecVersion = 2;
+		public const string VK_NV_SHADER_IMAGE_FOOTPRINT_EXTENSION_NAME = "VK_NV_shader_image_footprint";
 		/// <summary>
 		/// VK_NV_SHADER_IMAGE_FOOTPRINT_EXTENSION_NAME = "VK_NV_shader_image_footprint"
 		/// </summary>
@@ -2034,6 +2188,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVScissorExclusiveSpecVersion = 1;
+		public const string VK_NV_SCISSOR_EXCLUSIVE_EXTENSION_NAME = "VK_NV_scissor_exclusive";
 		/// <summary>
 		/// VK_NV_SCISSOR_EXCLUSIVE_EXTENSION_NAME = "VK_NV_scissor_exclusive"
 		/// </summary>
@@ -2046,6 +2201,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_SPEC_VERSION = 2
 		/// </summary>
 		public const uint NVDeviceDiagnosticCheckpointsSpecVersion = 2;
+		public const string VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_EXTENSION_NAME = "VK_NV_device_diagnostic_checkpoints";
 		/// <summary>
 		/// VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_EXTENSION_NAME = "VK_NV_device_diagnostic_checkpoints"
 		/// </summary>
@@ -2058,6 +2214,7 @@ namespace Vortice.Vulkan
 		/// VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint INTELShaderIntegerFunctions2SpecVersion = 1;
+		public const string VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_EXTENSION_NAME = "VK_INTEL_shader_integer_functions2";
 		/// <summary>
 		/// VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_EXTENSION_NAME = "VK_INTEL_shader_integer_functions2"
 		/// </summary>
@@ -2070,6 +2227,7 @@ namespace Vortice.Vulkan
 		/// VK_INTEL_PERFORMANCE_QUERY_SPEC_VERSION = 2
 		/// </summary>
 		public const uint INTELPerformanceQuerySpecVersion = 2;
+		public const string VK_INTEL_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_INTEL_performance_query";
 		/// <summary>
 		/// VK_INTEL_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_INTEL_performance_query"
 		/// </summary>
@@ -2082,6 +2240,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_PCI_BUS_INFO_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTPciBusInfoSpecVersion = 2;
+		public const string VK_EXT_PCI_BUS_INFO_EXTENSION_NAME = "VK_EXT_pci_bus_info";
 		/// <summary>
 		/// VK_EXT_PCI_BUS_INFO_EXTENSION_NAME = "VK_EXT_pci_bus_info"
 		/// </summary>
@@ -2094,6 +2253,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDDisplayNativeHdrSpecVersion = 1;
+		public const string VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME = "VK_AMD_display_native_hdr";
 		/// <summary>
 		/// VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME = "VK_AMD_display_native_hdr"
 		/// </summary>
@@ -2106,6 +2266,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTFragmentDensityMapSpecVersion = 2;
+		public const string VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME = "VK_EXT_fragment_density_map";
 		/// <summary>
 		/// VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME = "VK_EXT_fragment_density_map"
 		/// </summary>
@@ -2118,6 +2279,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SCALAR_BLOCK_LAYOUT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTScalarBlockLayoutSpecVersion = 1;
+		public const string VK_EXT_SCALAR_BLOCK_LAYOUT_EXTENSION_NAME = "VK_EXT_scalar_block_layout";
 		/// <summary>
 		/// VK_EXT_SCALAR_BLOCK_LAYOUT_EXTENSION_NAME = "VK_EXT_scalar_block_layout"
 		/// </summary>
@@ -2130,6 +2292,7 @@ namespace Vortice.Vulkan
 		/// VK_GOOGLE_HLSL_FUNCTIONALITY_1_SPEC_VERSION = 1
 		/// </summary>
 		public const uint GoogleHlslFunctionality1SpecVersion = 1;
+		public const string VK_GOOGLE_HLSL_FUNCTIONALITY_1_EXTENSION_NAME = "VK_GOOGLE_hlsl_functionality1";
 		/// <summary>
 		/// VK_GOOGLE_HLSL_FUNCTIONALITY_1_EXTENSION_NAME = "VK_GOOGLE_hlsl_functionality1"
 		/// </summary>
@@ -2142,6 +2305,7 @@ namespace Vortice.Vulkan
 		/// VK_GOOGLE_DECORATE_STRING_SPEC_VERSION = 1
 		/// </summary>
 		public const uint GoogleDecorateStringSpecVersion = 1;
+		public const string VK_GOOGLE_DECORATE_STRING_EXTENSION_NAME = "VK_GOOGLE_decorate_string";
 		/// <summary>
 		/// VK_GOOGLE_DECORATE_STRING_EXTENSION_NAME = "VK_GOOGLE_decorate_string"
 		/// </summary>
@@ -2154,6 +2318,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SUBGROUP_SIZE_CONTROL_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTSubgroupSizeControlSpecVersion = 2;
+		public const string VK_EXT_SUBGROUP_SIZE_CONTROL_EXTENSION_NAME = "VK_EXT_subgroup_size_control";
 		/// <summary>
 		/// VK_EXT_SUBGROUP_SIZE_CONTROL_EXTENSION_NAME = "VK_EXT_subgroup_size_control"
 		/// </summary>
@@ -2166,6 +2331,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_SHADER_CORE_PROPERTIES_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDShaderCoreProperties2SpecVersion = 1;
+		public const string VK_AMD_SHADER_CORE_PROPERTIES_2_EXTENSION_NAME = "VK_AMD_shader_core_properties2";
 		/// <summary>
 		/// VK_AMD_SHADER_CORE_PROPERTIES_2_EXTENSION_NAME = "VK_AMD_shader_core_properties2"
 		/// </summary>
@@ -2178,6 +2344,7 @@ namespace Vortice.Vulkan
 		/// VK_AMD_DEVICE_COHERENT_MEMORY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint AMDDeviceCoherentMemorySpecVersion = 1;
+		public const string VK_AMD_DEVICE_COHERENT_MEMORY_EXTENSION_NAME = "VK_AMD_device_coherent_memory";
 		/// <summary>
 		/// VK_AMD_DEVICE_COHERENT_MEMORY_EXTENSION_NAME = "VK_AMD_device_coherent_memory"
 		/// </summary>
@@ -2190,6 +2357,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SHADER_IMAGE_ATOMIC_INT64_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTShaderImageAtomicInt64SpecVersion = 1;
+		public const string VK_EXT_SHADER_IMAGE_ATOMIC_INT64_EXTENSION_NAME = "VK_EXT_shader_image_atomic_int64";
 		/// <summary>
 		/// VK_EXT_SHADER_IMAGE_ATOMIC_INT64_EXTENSION_NAME = "VK_EXT_shader_image_atomic_int64"
 		/// </summary>
@@ -2202,6 +2370,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_MEMORY_BUDGET_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTMemoryBudgetSpecVersion = 1;
+		public const string VK_EXT_MEMORY_BUDGET_EXTENSION_NAME = "VK_EXT_memory_budget";
 		/// <summary>
 		/// VK_EXT_MEMORY_BUDGET_EXTENSION_NAME = "VK_EXT_memory_budget"
 		/// </summary>
@@ -2214,6 +2383,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_MEMORY_PRIORITY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTMemoryPrioritySpecVersion = 1;
+		public const string VK_EXT_MEMORY_PRIORITY_EXTENSION_NAME = "VK_EXT_memory_priority";
 		/// <summary>
 		/// VK_EXT_MEMORY_PRIORITY_EXTENSION_NAME = "VK_EXT_memory_priority"
 		/// </summary>
@@ -2226,6 +2396,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVDedicatedAllocationImageAliasingSpecVersion = 1;
+		public const string VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_EXTENSION_NAME = "VK_NV_dedicated_allocation_image_aliasing";
 		/// <summary>
 		/// VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_EXTENSION_NAME = "VK_NV_dedicated_allocation_image_aliasing"
 		/// </summary>
@@ -2238,6 +2409,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTBufferDeviceAddressSpecVersion = 2;
+		public const string VK_EXT_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_EXT_buffer_device_address";
 		/// <summary>
 		/// VK_EXT_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_EXT_buffer_device_address"
 		/// </summary>
@@ -2250,6 +2422,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_TOOLING_INFO_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTToolingInfoSpecVersion = 1;
+		public const string VK_EXT_TOOLING_INFO_EXTENSION_NAME = "VK_EXT_tooling_info";
 		/// <summary>
 		/// VK_EXT_TOOLING_INFO_EXTENSION_NAME = "VK_EXT_tooling_info"
 		/// </summary>
@@ -2262,6 +2435,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SEPARATE_STENCIL_USAGE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTSeparateStencilUsageSpecVersion = 1;
+		public const string VK_EXT_SEPARATE_STENCIL_USAGE_EXTENSION_NAME = "VK_EXT_separate_stencil_usage";
 		/// <summary>
 		/// VK_EXT_SEPARATE_STENCIL_USAGE_EXTENSION_NAME = "VK_EXT_separate_stencil_usage"
 		/// </summary>
@@ -2274,6 +2448,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_VALIDATION_FEATURES_SPEC_VERSION = 5
 		/// </summary>
 		public const uint EXTValidationFeaturesSpecVersion = 5;
+		public const string VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME = "VK_EXT_validation_features";
 		/// <summary>
 		/// VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME = "VK_EXT_validation_features"
 		/// </summary>
@@ -2286,6 +2461,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVCooperativeMatrixSpecVersion = 1;
+		public const string VK_NV_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_NV_cooperative_matrix";
 		/// <summary>
 		/// VK_NV_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_NV_cooperative_matrix"
 		/// </summary>
@@ -2298,6 +2474,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_COVERAGE_REDUCTION_MODE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVCoverageReductionModeSpecVersion = 1;
+		public const string VK_NV_COVERAGE_REDUCTION_MODE_EXTENSION_NAME = "VK_NV_coverage_reduction_mode";
 		/// <summary>
 		/// VK_NV_COVERAGE_REDUCTION_MODE_EXTENSION_NAME = "VK_NV_coverage_reduction_mode"
 		/// </summary>
@@ -2310,6 +2487,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_FRAGMENT_SHADER_INTERLOCK_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTFragmentShaderInterlockSpecVersion = 1;
+		public const string VK_EXT_FRAGMENT_SHADER_INTERLOCK_EXTENSION_NAME = "VK_EXT_fragment_shader_interlock";
 		/// <summary>
 		/// VK_EXT_FRAGMENT_SHADER_INTERLOCK_EXTENSION_NAME = "VK_EXT_fragment_shader_interlock"
 		/// </summary>
@@ -2322,6 +2500,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTYcbcrImageArraysSpecVersion = 1;
+		public const string VK_EXT_YCBCR_IMAGE_ARRAYS_EXTENSION_NAME = "VK_EXT_ycbcr_image_arrays";
 		/// <summary>
 		/// VK_EXT_YCBCR_IMAGE_ARRAYS_EXTENSION_NAME = "VK_EXT_ycbcr_image_arrays"
 		/// </summary>
@@ -2334,6 +2513,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_PROVOKING_VERTEX_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTProvokingVertexSpecVersion = 1;
+		public const string VK_EXT_PROVOKING_VERTEX_EXTENSION_NAME = "VK_EXT_provoking_vertex";
 		/// <summary>
 		/// VK_EXT_PROVOKING_VERTEX_EXTENSION_NAME = "VK_EXT_provoking_vertex"
 		/// </summary>
@@ -2346,6 +2526,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_HEADLESS_SURFACE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTHeadlessSurfaceSpecVersion = 1;
+		public const string VK_EXT_HEADLESS_SURFACE_EXTENSION_NAME = "VK_EXT_headless_surface";
 		/// <summary>
 		/// VK_EXT_HEADLESS_SURFACE_EXTENSION_NAME = "VK_EXT_headless_surface"
 		/// </summary>
@@ -2358,6 +2539,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_LINE_RASTERIZATION_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTLineRasterizationSpecVersion = 1;
+		public const string VK_EXT_LINE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_line_rasterization";
 		/// <summary>
 		/// VK_EXT_LINE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_line_rasterization"
 		/// </summary>
@@ -2370,6 +2552,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SHADER_ATOMIC_FLOAT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTShaderAtomicFloatSpecVersion = 1;
+		public const string VK_EXT_SHADER_ATOMIC_FLOAT_EXTENSION_NAME = "VK_EXT_shader_atomic_float";
 		/// <summary>
 		/// VK_EXT_SHADER_ATOMIC_FLOAT_EXTENSION_NAME = "VK_EXT_shader_atomic_float"
 		/// </summary>
@@ -2382,6 +2565,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_HOST_QUERY_RESET_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTHostQueryResetSpecVersion = 1;
+		public const string VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME = "VK_EXT_host_query_reset";
 		/// <summary>
 		/// VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME = "VK_EXT_host_query_reset"
 		/// </summary>
@@ -2394,6 +2578,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_INDEX_TYPE_UINT8_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTIndexTypeUint8SpecVersion = 1;
+		public const string VK_EXT_INDEX_TYPE_UINT8_EXTENSION_NAME = "VK_EXT_index_type_uint8";
 		/// <summary>
 		/// VK_EXT_INDEX_TYPE_UINT8_EXTENSION_NAME = "VK_EXT_index_type_uint8"
 		/// </summary>
@@ -2406,6 +2591,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_EXTENDED_DYNAMIC_STATE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTExtendedDynamicStateSpecVersion = 1;
+		public const string VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_extended_dynamic_state";
 		/// <summary>
 		/// VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_extended_dynamic_state"
 		/// </summary>
@@ -2418,6 +2604,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SHADER_ATOMIC_FLOAT_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTShaderAtomicFloat2SpecVersion = 1;
+		public const string VK_EXT_SHADER_ATOMIC_FLOAT_2_EXTENSION_NAME = "VK_EXT_shader_atomic_float2";
 		/// <summary>
 		/// VK_EXT_SHADER_ATOMIC_FLOAT_2_EXTENSION_NAME = "VK_EXT_shader_atomic_float2"
 		/// </summary>
@@ -2430,6 +2617,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTShaderDemoteToHelperInvocationSpecVersion = 1;
+		public const string VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_EXTENSION_NAME = "VK_EXT_shader_demote_to_helper_invocation";
 		/// <summary>
 		/// VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_EXTENSION_NAME = "VK_EXT_shader_demote_to_helper_invocation"
 		/// </summary>
@@ -2442,6 +2630,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_DEVICE_GENERATED_COMMANDS_SPEC_VERSION = 3
 		/// </summary>
 		public const uint NVDeviceGeneratedCommandsSpecVersion = 3;
+		public const string VK_NV_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME = "VK_NV_device_generated_commands";
 		/// <summary>
 		/// VK_NV_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME = "VK_NV_device_generated_commands"
 		/// </summary>
@@ -2454,6 +2643,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_INHERITED_VIEWPORT_SCISSOR_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVInheritedViewportScissorSpecVersion = 1;
+		public const string VK_NV_INHERITED_VIEWPORT_SCISSOR_EXTENSION_NAME = "VK_NV_inherited_viewport_scissor";
 		/// <summary>
 		/// VK_NV_INHERITED_VIEWPORT_SCISSOR_EXTENSION_NAME = "VK_NV_inherited_viewport_scissor"
 		/// </summary>
@@ -2466,6 +2656,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTTexelBufferAlignmentSpecVersion = 1;
+		public const string VK_EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION_NAME = "VK_EXT_texel_buffer_alignment";
 		/// <summary>
 		/// VK_EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION_NAME = "VK_EXT_texel_buffer_alignment"
 		/// </summary>
@@ -2478,6 +2669,7 @@ namespace Vortice.Vulkan
 		/// VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 2
 		/// </summary>
 		public const uint QcomRenderPassTransformSpecVersion = 2;
+		public const string VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform";
 		/// <summary>
 		/// VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform"
 		/// </summary>
@@ -2490,6 +2682,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTDeviceMemoryReportSpecVersion = 2;
+		public const string VK_EXT_DEVICE_MEMORY_REPORT_EXTENSION_NAME = "VK_EXT_device_memory_report";
 		/// <summary>
 		/// VK_EXT_DEVICE_MEMORY_REPORT_EXTENSION_NAME = "VK_EXT_device_memory_report"
 		/// </summary>
@@ -2502,6 +2695,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_ACQUIRE_DRM_DISPLAY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTAcquireDrmDisplaySpecVersion = 1;
+		public const string VK_EXT_ACQUIRE_DRM_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_drm_display";
 		/// <summary>
 		/// VK_EXT_ACQUIRE_DRM_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_drm_display"
 		/// </summary>
@@ -2514,6 +2708,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_ROBUSTNESS_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTRobustness2SpecVersion = 1;
+		public const string VK_EXT_ROBUSTNESS_2_EXTENSION_NAME = "VK_EXT_robustness2";
 		/// <summary>
 		/// VK_EXT_ROBUSTNESS_2_EXTENSION_NAME = "VK_EXT_robustness2"
 		/// </summary>
@@ -2526,6 +2721,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION = 12
 		/// </summary>
 		public const uint EXTCustomBorderColorSpecVersion = 12;
+		public const string VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME = "VK_EXT_custom_border_color";
 		/// <summary>
 		/// VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME = "VK_EXT_custom_border_color"
 		/// </summary>
@@ -2538,6 +2734,7 @@ namespace Vortice.Vulkan
 		/// VK_GOOGLE_USER_TYPE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint GoogleUserTypeSpecVersion = 1;
+		public const string VK_GOOGLE_USER_TYPE_EXTENSION_NAME = "VK_GOOGLE_user_type";
 		/// <summary>
 		/// VK_GOOGLE_USER_TYPE_EXTENSION_NAME = "VK_GOOGLE_user_type"
 		/// </summary>
@@ -2550,6 +2747,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_PRIVATE_DATA_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTPrivateDataSpecVersion = 1;
+		public const string VK_EXT_PRIVATE_DATA_EXTENSION_NAME = "VK_EXT_private_data";
 		/// <summary>
 		/// VK_EXT_PRIVATE_DATA_EXTENSION_NAME = "VK_EXT_private_data"
 		/// </summary>
@@ -2562,6 +2760,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION = 3
 		/// </summary>
 		public const uint EXTPipelineCreationCacheControlSpecVersion = 3;
+		public const string VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME = "VK_EXT_pipeline_creation_cache_control";
 		/// <summary>
 		/// VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME = "VK_EXT_pipeline_creation_cache_control"
 		/// </summary>
@@ -2574,6 +2773,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVDeviceDiagnosticsConfigSpecVersion = 1;
+		public const string VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config";
 		/// <summary>
 		/// VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config"
 		/// </summary>
@@ -2586,6 +2786,7 @@ namespace Vortice.Vulkan
 		/// VK_QCOM_RENDER_PASS_STORE_OPS_SPEC_VERSION = 2
 		/// </summary>
 		public const uint QcomRenderPassStoreOpsSpecVersion = 2;
+		public const string VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops";
 		/// <summary>
 		/// VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops"
 		/// </summary>
@@ -2598,6 +2799,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_FRAGMENT_SHADING_RATE_ENUMS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVFragmentShadingRateEnumsSpecVersion = 1;
+		public const string VK_NV_FRAGMENT_SHADING_RATE_ENUMS_EXTENSION_NAME = "VK_NV_fragment_shading_rate_enums";
 		/// <summary>
 		/// VK_NV_FRAGMENT_SHADING_RATE_ENUMS_EXTENSION_NAME = "VK_NV_fragment_shading_rate_enums"
 		/// </summary>
@@ -2610,6 +2812,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_RAY_TRACING_MOTION_BLUR_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVRayTracingMotionBlurSpecVersion = 1;
+		public const string VK_NV_RAY_TRACING_MOTION_BLUR_EXTENSION_NAME = "VK_NV_ray_tracing_motion_blur";
 		/// <summary>
 		/// VK_NV_RAY_TRACING_MOTION_BLUR_EXTENSION_NAME = "VK_NV_ray_tracing_motion_blur"
 		/// </summary>
@@ -2622,6 +2825,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_YCBCR_2PLANE_444_FORMATS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTYcbcr2plane444FormatsSpecVersion = 1;
+		public const string VK_EXT_YCBCR_2PLANE_444_FORMATS_EXTENSION_NAME = "VK_EXT_ycbcr_2plane_444_formats";
 		/// <summary>
 		/// VK_EXT_YCBCR_2PLANE_444_FORMATS_EXTENSION_NAME = "VK_EXT_ycbcr_2plane_444_formats"
 		/// </summary>
@@ -2634,6 +2838,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_FRAGMENT_DENSITY_MAP_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTFragmentDensityMap2SpecVersion = 1;
+		public const string VK_EXT_FRAGMENT_DENSITY_MAP_2_EXTENSION_NAME = "VK_EXT_fragment_density_map2";
 		/// <summary>
 		/// VK_EXT_FRAGMENT_DENSITY_MAP_2_EXTENSION_NAME = "VK_EXT_fragment_density_map2"
 		/// </summary>
@@ -2646,6 +2851,7 @@ namespace Vortice.Vulkan
 		/// VK_QCOM_ROTATED_COPY_COMMANDS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint QcomRotatedCopyCommandsSpecVersion = 1;
+		public const string VK_QCOM_ROTATED_COPY_COMMANDS_EXTENSION_NAME = "VK_QCOM_rotated_copy_commands";
 		/// <summary>
 		/// VK_QCOM_ROTATED_COPY_COMMANDS_EXTENSION_NAME = "VK_QCOM_rotated_copy_commands"
 		/// </summary>
@@ -2658,6 +2864,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_IMAGE_ROBUSTNESS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTImageRobustnessSpecVersion = 1;
+		public const string VK_EXT_IMAGE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_image_robustness";
 		/// <summary>
 		/// VK_EXT_IMAGE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_image_robustness"
 		/// </summary>
@@ -2670,6 +2877,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_4444_FORMATS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXT4444FormatsSpecVersion = 1;
+		public const string VK_EXT_4444_FORMATS_EXTENSION_NAME = "VK_EXT_4444_formats";
 		/// <summary>
 		/// VK_EXT_4444_FORMATS_EXTENSION_NAME = "VK_EXT_4444_formats"
 		/// </summary>
@@ -2682,6 +2890,7 @@ namespace Vortice.Vulkan
 		/// VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint ARMRasterizationOrderAttachmentAccessSpecVersion = 1;
+		public const string VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXTENSION_NAME = "VK_ARM_rasterization_order_attachment_access";
 		/// <summary>
 		/// VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXTENSION_NAME = "VK_ARM_rasterization_order_attachment_access"
 		/// </summary>
@@ -2694,6 +2903,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_RGBA10X6_FORMATS_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTRgba10x6FormatsSpecVersion = 1;
+		public const string VK_EXT_RGBA10X6_FORMATS_EXTENSION_NAME = "VK_EXT_rgba10x6_formats";
 		/// <summary>
 		/// VK_EXT_RGBA10X6_FORMATS_EXTENSION_NAME = "VK_EXT_rgba10x6_formats"
 		/// </summary>
@@ -2706,6 +2916,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVAcquireWinrtDisplaySpecVersion = 1;
+		public const string VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME = "VK_NV_acquire_winrt_display";
 		/// <summary>
 		/// VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME = "VK_NV_acquire_winrt_display"
 		/// </summary>
@@ -2718,6 +2929,7 @@ namespace Vortice.Vulkan
 		/// VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint ValveMutableDescriptorTypeSpecVersion = 1;
+		public const string VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_VALVE_mutable_descriptor_type";
 		/// <summary>
 		/// VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_VALVE_mutable_descriptor_type"
 		/// </summary>
@@ -2730,6 +2942,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTVertexInputDynamicStateSpecVersion = 2;
+		public const string VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_vertex_input_dynamic_state";
 		/// <summary>
 		/// VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_vertex_input_dynamic_state"
 		/// </summary>
@@ -2742,6 +2955,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_PHYSICAL_DEVICE_DRM_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTPhysicalDeviceDrmSpecVersion = 1;
+		public const string VK_EXT_PHYSICAL_DEVICE_DRM_EXTENSION_NAME = "VK_EXT_physical_device_drm";
 		/// <summary>
 		/// VK_EXT_PHYSICAL_DEVICE_DRM_EXTENSION_NAME = "VK_EXT_physical_device_drm"
 		/// </summary>
@@ -2754,6 +2968,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_DEPTH_CLIP_CONTROL_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTDepthClipControlSpecVersion = 1;
+		public const string VK_EXT_DEPTH_CLIP_CONTROL_EXTENSION_NAME = "VK_EXT_depth_clip_control";
 		/// <summary>
 		/// VK_EXT_DEPTH_CLIP_CONTROL_EXTENSION_NAME = "VK_EXT_depth_clip_control"
 		/// </summary>
@@ -2766,6 +2981,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTPrimitiveTopologyListRestartSpecVersion = 1;
+		public const string VK_EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_EXTENSION_NAME = "VK_EXT_primitive_topology_list_restart";
 		/// <summary>
 		/// VK_EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_EXTENSION_NAME = "VK_EXT_primitive_topology_list_restart"
 		/// </summary>
@@ -2778,6 +2994,7 @@ namespace Vortice.Vulkan
 		/// VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 2
 		/// </summary>
 		public const uint HuaweiSubpassShadingSpecVersion = 2;
+		public const string VK_HUAWEI_SUBPASS_SHADING_EXTENSION_NAME = "VK_HUAWEI_subpass_shading";
 		/// <summary>
 		/// VK_HUAWEI_SUBPASS_SHADING_EXTENSION_NAME = "VK_HUAWEI_subpass_shading"
 		/// </summary>
@@ -2790,6 +3007,7 @@ namespace Vortice.Vulkan
 		/// VK_HUAWEI_INVOCATION_MASK_SPEC_VERSION = 1
 		/// </summary>
 		public const uint HuaweiInvocationMaskSpecVersion = 1;
+		public const string VK_HUAWEI_INVOCATION_MASK_EXTENSION_NAME = "VK_HUAWEI_invocation_mask";
 		/// <summary>
 		/// VK_HUAWEI_INVOCATION_MASK_EXTENSION_NAME = "VK_HUAWEI_invocation_mask"
 		/// </summary>
@@ -2802,6 +3020,7 @@ namespace Vortice.Vulkan
 		/// VK_NV_EXTERNAL_MEMORY_RDMA_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NVExternalMemoryRdmaSpecVersion = 1;
+		public const string VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma";
 		/// <summary>
 		/// VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma"
 		/// </summary>
@@ -2814,6 +3033,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_EXTENDED_DYNAMIC_STATE_2_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTExtendedDynamicState2SpecVersion = 1;
+		public const string VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME = "VK_EXT_extended_dynamic_state2";
 		/// <summary>
 		/// VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME = "VK_EXT_extended_dynamic_state2"
 		/// </summary>
@@ -2826,6 +3046,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_COLOR_WRITE_ENABLE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTColorWriteEnableSpecVersion = 1;
+		public const string VK_EXT_COLOR_WRITE_ENABLE_EXTENSION_NAME = "VK_EXT_color_write_enable";
 		/// <summary>
 		/// VK_EXT_COLOR_WRITE_ENABLE_EXTENSION_NAME = "VK_EXT_color_write_enable"
 		/// </summary>
@@ -2842,6 +3063,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTGlobalPriorityQuerySpecVersion = 1;
+		public const string VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query";
 		/// <summary>
 		/// VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query"
 		/// </summary>
@@ -2854,6 +3076,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTImageViewMinLodSpecVersion = 1;
+		public const string VK_EXT_IMAGE_VIEW_MIN_LOD_EXTENSION_NAME = "VK_EXT_image_view_min_lod";
 		/// <summary>
 		/// VK_EXT_IMAGE_VIEW_MIN_LOD_EXTENSION_NAME = "VK_EXT_image_view_min_lod"
 		/// </summary>
@@ -2866,6 +3089,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_MULTI_DRAW_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTMultiDrawSpecVersion = 1;
+		public const string VK_EXT_MULTI_DRAW_EXTENSION_NAME = "VK_EXT_multi_draw";
 		/// <summary>
 		/// VK_EXT_MULTI_DRAW_EXTENSION_NAME = "VK_EXT_multi_draw"
 		/// </summary>
@@ -2878,6 +3102,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_LOAD_STORE_OP_NONE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTLoadStoreOpNoneSpecVersion = 1;
+		public const string VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_EXT_load_store_op_none";
 		/// <summary>
 		/// VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_EXT_load_store_op_none"
 		/// </summary>
@@ -2890,6 +3115,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_BORDER_COLOR_SWIZZLE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTBorderColorSwizzleSpecVersion = 1;
+		public const string VK_EXT_BORDER_COLOR_SWIZZLE_EXTENSION_NAME = "VK_EXT_border_color_swizzle";
 		/// <summary>
 		/// VK_EXT_BORDER_COLOR_SWIZZLE_EXTENSION_NAME = "VK_EXT_border_color_swizzle"
 		/// </summary>
@@ -2902,6 +3128,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTPageableDeviceLocalMemorySpecVersion = 1;
+		public const string VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory";
 		/// <summary>
 		/// VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory"
 		/// </summary>
@@ -2914,6 +3141,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION = 13
 		/// </summary>
 		public const uint KHRAccelerationStructureSpecVersion = 13;
+		public const string VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME = "VK_KHR_acceleration_structure";
 		/// <summary>
 		/// VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME = "VK_KHR_acceleration_structure"
 		/// </summary>
@@ -2926,6 +3154,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_RAY_TRACING_PIPELINE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRRayTracingPipelineSpecVersion = 1;
+		public const string VK_KHR_RAY_TRACING_PIPELINE_EXTENSION_NAME = "VK_KHR_ray_tracing_pipeline";
 		/// <summary>
 		/// VK_KHR_RAY_TRACING_PIPELINE_EXTENSION_NAME = "VK_KHR_ray_tracing_pipeline"
 		/// </summary>
@@ -2938,6 +3167,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_RAY_QUERY_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRRayQuerySpecVersion = 1;
+		public const string VK_KHR_RAY_QUERY_EXTENSION_NAME = "VK_KHR_ray_query";
 		/// <summary>
 		/// VK_KHR_RAY_QUERY_EXTENSION_NAME = "VK_KHR_ray_query"
 		/// </summary>
@@ -2950,6 +3180,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_ANDROID_SURFACE_SPEC_VERSION = 6
 		/// </summary>
 		public const uint KHRAndroidSurfaceSpecVersion = 6;
+		public const string VK_KHR_ANDROID_SURFACE_EXTENSION_NAME = "VK_KHR_android_surface";
 		/// <summary>
 		/// VK_KHR_ANDROID_SURFACE_EXTENSION_NAME = "VK_KHR_android_surface"
 		/// </summary>
@@ -2962,6 +3193,7 @@ namespace Vortice.Vulkan
 		/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION = 4
 		/// </summary>
 		public const uint AndroidExternalMemoryAndroidHardwareBufferSpecVersion = 4;
+		public const string VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer";
 		/// <summary>
 		/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer"
 		/// </summary>
@@ -2969,27 +3201,29 @@ namespace Vortice.Vulkan
 		/// <summary>
 		/// VK_MVK_ios_surface = 1
 		/// </summary>
-		public const uint MvkIosSurface = 1;
+		public const uint MVKIosSurface = 1;
 		/// <summary>
 		/// VK_MVK_IOS_SURFACE_SPEC_VERSION = 3
 		/// </summary>
-		public const uint MvkIosSurfaceSpecVersion = 3;
+		public const uint MVKIosSurfaceSpecVersion = 3;
+		public const string VK_MVK_IOS_SURFACE_EXTENSION_NAME = "VK_MVK_ios_surface";
 		/// <summary>
 		/// VK_MVK_IOS_SURFACE_EXTENSION_NAME = "VK_MVK_ios_surface"
 		/// </summary>
-		public const string MvkIosSurfaceExtensionName = "VK_MVK_ios_surface";
+		public const string MVKIosSurfaceExtensionName = "VK_MVK_ios_surface";
 		/// <summary>
 		/// VK_MVK_macos_surface = 1
 		/// </summary>
-		public const uint MvkMacosSurface = 1;
+		public const uint MVKMacosSurface = 1;
 		/// <summary>
 		/// VK_MVK_MACOS_SURFACE_SPEC_VERSION = 3
 		/// </summary>
-		public const uint MvkMacosSurfaceSpecVersion = 3;
+		public const uint MVKMacosSurfaceSpecVersion = 3;
+		public const string VK_MVK_MACOS_SURFACE_EXTENSION_NAME = "VK_MVK_macos_surface";
 		/// <summary>
 		/// VK_MVK_MACOS_SURFACE_EXTENSION_NAME = "VK_MVK_macos_surface"
 		/// </summary>
-		public const string MvkMacosSurfaceExtensionName = "VK_MVK_macos_surface";
+		public const string MVKMacosSurfaceExtensionName = "VK_MVK_macos_surface";
 		/// <summary>
 		/// VK_EXT_metal_surface = 1
 		/// </summary>
@@ -2998,6 +3232,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_METAL_SURFACE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTMetalSurfaceSpecVersion = 1;
+		public const string VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface";
 		/// <summary>
 		/// VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface"
 		/// </summary>
@@ -3010,6 +3245,7 @@ namespace Vortice.Vulkan
 		/// VK_NN_VI_SURFACE_SPEC_VERSION = 1
 		/// </summary>
 		public const uint NnViSurfaceSpecVersion = 1;
+		public const string VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface";
 		/// <summary>
 		/// VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface"
 		/// </summary>
@@ -3022,6 +3258,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 2
 		/// </summary>
 		public const uint KHRVideoQueueSpecVersion = 2;
+		public const string VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue";
 		/// <summary>
 		/// VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue"
 		/// </summary>
@@ -3034,6 +3271,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 2
 		/// </summary>
 		public const uint KHRVideoDecodeQueueSpecVersion = 2;
+		public const string VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue";
 		/// <summary>
 		/// VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue"
 		/// </summary>
@@ -3046,6 +3284,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_PORTABILITY_SUBSET_SPEC_VERSION = 1
 		/// </summary>
 		public const uint KHRPortabilitySubsetSpecVersion = 1;
+		public const string VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME = "VK_KHR_portability_subset";
 		/// <summary>
 		/// VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME = "VK_KHR_portability_subset"
 		/// </summary>
@@ -3058,6 +3297,7 @@ namespace Vortice.Vulkan
 		/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 3
 		/// </summary>
 		public const uint KHRVideoEncodeQueueSpecVersion = 3;
+		public const string VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
 		/// <summary>
 		/// VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue"
 		/// </summary>
@@ -3074,6 +3314,7 @@ namespace Vortice.Vulkan
 		/// VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5
 		/// </summary>
 		public static readonly VkVersion StdVulkanVideoCodecH264SpecVersion = StdVulkanVideoCodecH264ApiVersion095;
+		public const string VK_STD_VULKAN_VIDEO_CODEC_H264_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264";
 		/// <summary>
 		/// VK_STD_VULKAN_VIDEO_CODEC_H264_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264"
 		/// </summary>
@@ -3102,6 +3343,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTVideoEncodeH264SpecVersion = 2;
+		public const string VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264";
 		/// <summary>
 		/// VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264"
 		/// </summary>
@@ -3118,6 +3360,7 @@ namespace Vortice.Vulkan
 		/// VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5
 		/// </summary>
 		public static readonly VkVersion StdVulkanVideoCodecH265SpecVersion = StdVulkanVideoCodecH265ApiVersion095;
+		public const string VK_STD_VULKAN_VIDEO_CODEC_H265_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265";
 		/// <summary>
 		/// VK_STD_VULKAN_VIDEO_CODEC_H265_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265"
 		/// </summary>
@@ -3198,6 +3441,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 2
 		/// </summary>
 		public const uint EXTVideoEncodeH265SpecVersion = 2;
+		public const string VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265";
 		/// <summary>
 		/// VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265"
 		/// </summary>
@@ -3214,6 +3458,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 3
 		/// </summary>
 		public const uint EXTVideoDecodeH264SpecVersion = 3;
+		public const string VK_EXT_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_EXT_video_decode_h264";
 		/// <summary>
 		/// VK_EXT_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_EXT_video_decode_h264"
 		/// </summary>
@@ -3230,6 +3475,7 @@ namespace Vortice.Vulkan
 		/// VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 1
 		/// </summary>
 		public const uint EXTVideoDecodeH265SpecVersion = 1;
+		public const string VK_EXT_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_EXT_video_decode_h265";
 		/// <summary>
 		/// VK_EXT_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_EXT_video_decode_h265"
 		/// </summary>

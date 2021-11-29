@@ -38,7 +38,7 @@ namespace Generator
             //{ "VkBool32", "uint" },
 
             { "buffer_handle_t", "IntPtr" },
-            { "AHardwareBuffer","IntPtr" },
+            { "AHardwareBuffer", "IntPtr" },
             { "ANativeWindow", "IntPtr" },
 
             { "MirConnection", "IntPtr" },
@@ -136,6 +136,7 @@ namespace Generator
                         || cppMacro.Name.StartsWith("VK_KHR_MAINTENANCE3_", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.StartsWith("VK_NV_VIEWPORT_ARRAY2_", StringComparison.OrdinalIgnoreCase)
                         || cppMacro.Name.StartsWith("VK_GOOGLE_HLSL_FUNCTIONALITY1_", StringComparison.OrdinalIgnoreCase)
+                        || cppMacro.Name.StartsWith("VK_USE_64_BIT_PTR_DEFINES", StringComparison.OrdinalIgnoreCase)
                         )
                     {
                         continue;
@@ -181,6 +182,11 @@ namespace Generator
                     }
 
                     AddCsMapping(cppMacro.Name, csName);
+
+                    if (cppMacro.Name.EndsWith("_EXTENSION_NAME", StringComparison.OrdinalIgnoreCase))
+                    {
+                        writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = {macroValue};");
+                    }
 
                     writer.WriteLine("/// <summary>");
                     if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE" ||

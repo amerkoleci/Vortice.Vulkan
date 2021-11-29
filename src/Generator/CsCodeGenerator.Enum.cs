@@ -146,6 +146,7 @@ namespace Generator
             "amd",
             "intel",
             "arm",
+            "mvk",
         };
 
         public static void GenerateEnums(CppCompilation compilation, string outputPath)
