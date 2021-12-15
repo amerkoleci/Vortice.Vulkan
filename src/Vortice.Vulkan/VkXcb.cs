@@ -23,6 +23,8 @@ namespace Vortice.Vulkan
 
     public static unsafe partial class Vulkan
     {
+        public static readonly string VK_KHR_XCB_SURFACE_EXTENSION_NAME = "VK_KHR_xcb_surface";
+
         /// <summary>
         /// VK_KHR_XCB_SURFACE_EXTENSION_NAME = "VK_KHR_xcb_surface"
         /// </summary>
