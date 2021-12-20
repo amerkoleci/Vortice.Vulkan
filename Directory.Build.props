@@ -15,7 +15,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>CS1591;CS1701</NoWarn>
 
-    <Version>1.4.6</Version>
+    <Version>1.4.7</Version>
     <!-- <Version>1.4.0-beta1</Version> -->
     
     <Authors>Amer Koleci</Authors>

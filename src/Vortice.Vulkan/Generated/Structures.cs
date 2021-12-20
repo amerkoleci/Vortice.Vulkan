@@ -6389,6 +6389,39 @@ namespace Vortice.Vulkan
 		public VkBool32 pageableDeviceLocalMemory;
 	}
 
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 fragmentDensityMapOffset;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkExtent2D fragmentDensityOffsetGranularity;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkSubpassFragmentDensityMapOffsetEndInfoQCOM
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint fragmentDensityOffsetCount;
+		public unsafe VkOffset2D* pFragmentDensityOffsets;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 linearColorAttachment;
+	}
+
 	[StructLayout(LayoutKind.Explicit)]
 	public partial struct VkDeviceOrHostAddressKHR
 	{
@@ -6790,6 +6823,14 @@ namespace Vortice.Vulkan
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkQueueFamilyQueryResultStatusProperties2KHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public VkBool32 supported;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkVideoQueueFamilyProperties2KHR
 	{
 		public VkStructureType sType;
@@ -7012,6 +7053,20 @@ namespace Vortice.Vulkan
 		public unsafe VkVideoReferenceSlotKHR* pSetupReferenceSlot;
 		public uint referenceSlotCount;
 		public unsafe VkVideoReferenceSlotKHR* pReferenceSlots;
+		public uint precedingExternallyEncodedBytes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVideoEncodeRateControlLayerInfoKHR
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint averageBitrate;
+		public uint maxBitrate;
+		public uint frameRateNumerator;
+		public uint frameRateDenominator;
+		public uint virtualBufferSizeInMs;
+		public uint initialVirtualBufferSizeInMs;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7021,11 +7076,8 @@ namespace Vortice.Vulkan
 		public unsafe void* pNext;
 		public VkVideoEncodeRateControlFlagsKHR flags;
 		public VkVideoEncodeRateControlModeFlagsKHR rateControlMode;
-		public uint averageBitrate;
-		public ushort peakToAverageBitrateRatio;
-		public ushort frameRateNumerator;
-		public ushort frameRateDenominator;
-		public uint virtualBufferSizeInMs;
+		public byte layerCount;
+		public unsafe VkVideoEncodeRateControlLayerInfoKHR* pLayerConfigs;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7326,9 +7378,6 @@ namespace Vortice.Vulkan
 		public unsafe VkVideoEncodeH264DpbSlotInfoEXT* pRefFinalList0Entries;
 		public byte refFinalList1EntryCount;
 		public unsafe VkVideoEncodeH264DpbSlotInfoEXT* pRefFinalList1Entries;
-		public uint precedingNaluBytes;
-		public byte minQp;
-		public byte maxQp;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7362,6 +7411,50 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public StdVideoH264ProfileIdc stdProfileIdc;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVideoEncodeH264RateControlInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint gopFrameCount;
+		public uint idrPeriod;
+		public uint consecutiveBFrameCount;
+		public VkVideoEncodeH264RateControlStructureFlagsEXT rateControlStructure;
+		public byte temporalLayerCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVideoEncodeH264QpEXT
+	{
+		public int qpI;
+		public int qpP;
+		public int qpB;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVideoEncodeH264FrameSizeEXT
+	{
+		public uint frameISize;
+		public uint framePSize;
+		public uint frameBSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVideoEncodeH264RateControlLayerInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public byte temporalLayerId;
+		public VkBool32 useInitialRcQp;
+		public VkVideoEncodeH264QpEXT initialRcQp;
+		public VkBool32 useMinQp;
+		public VkVideoEncodeH264QpEXT minQp;
+		public VkBool32 useMaxQp;
+		public VkVideoEncodeH264QpEXT maxQp;
+		public VkBool32 useMaxFrameSize;
+		public VkVideoEncodeH264FrameSizeEXT maxFrameSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7958,6 +8051,50 @@ namespace Vortice.Vulkan
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public StdVideoH265ProfileIdc stdProfileIdc;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVideoEncodeH265RateControlInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public uint gopFrameCount;
+		public uint idrPeriod;
+		public uint consecutiveBFrameCount;
+		public VkVideoEncodeH265RateControlStructureFlagsEXT rateControlStructure;
+		public byte subLayerCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVideoEncodeH265QpEXT
+	{
+		public int qpI;
+		public int qpP;
+		public int qpB;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVideoEncodeH265FrameSizeEXT
+	{
+		public uint frameISize;
+		public uint framePSize;
+		public uint frameBSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkVideoEncodeH265RateControlLayerInfoEXT
+	{
+		public VkStructureType sType;
+		public unsafe void* pNext;
+		public byte temporalId;
+		public VkBool32 useInitialRcQp;
+		public VkVideoEncodeH265QpEXT initialRcQp;
+		public VkBool32 useMinQp;
+		public VkVideoEncodeH265QpEXT minQp;
+		public VkBool32 useMaxQp;
+		public VkVideoEncodeH265QpEXT maxQp;
+		public VkBool32 useMaxFrameSize;
+		public VkVideoEncodeH265FrameSizeEXT maxFrameSize;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

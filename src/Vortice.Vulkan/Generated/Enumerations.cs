@@ -262,6 +262,7 @@ namespace Vortice.Vulkan
 		VideoProfilesKHR = 1000023013,
 		PhysicalDeviceVideoFormatInfoKHR = 1000023014,
 		VideoFormatPropertiesKHR = 1000023015,
+		QueueFamilyQueryResultStatusProperties2KHR = 1000023016,
 		VideoDecodeInfoKHR = 1000024000,
 		DedicatedAllocationImageCreateInfoNV = 1000026000,
 		DedicatedAllocationBufferCreateInfoNV = 1000026001,
@@ -283,6 +284,8 @@ namespace Vortice.Vulkan
 		VideoEncodeH264NaluSliceEXT = 1000038006,
 		VideoEncodeH264EmitPictureParametersEXT = 1000038007,
 		VideoEncodeH264ProfileEXT = 1000038008,
+		VideoEncodeH264RateControlInfoEXT = 1000038009,
+		VideoEncodeH264RateControlLayerInfoEXT = 1000038010,
 		VideoEncodeH265CapabilitiesEXT = 1000039000,
 		VideoEncodeH265SessionCreateInfoEXT = 1000039001,
 		VideoEncodeH265SessionParametersCreateInfoEXT = 1000039002,
@@ -293,6 +296,8 @@ namespace Vortice.Vulkan
 		VideoEncodeH265EmitPictureParametersEXT = 1000039007,
 		VideoEncodeH265ProfileEXT = 1000039008,
 		VideoEncodeH265ReferenceListsEXT = 1000039009,
+		VideoEncodeH265RateControlInfoEXT = 1000039010,
+		VideoEncodeH265RateControlLayerInfoEXT = 1000039011,
 		VideoDecodeH264CapabilitiesEXT = 1000040000,
 		VideoDecodeH264SessionCreateInfoEXT = 1000040001,
 		VideoDecodeH264PictureInfoEXT = 1000040002,
@@ -587,6 +592,7 @@ namespace Vortice.Vulkan
 		PhysicalDevicePipelineCreationCacheControlFeaturesEXT = 1000297000,
 		VideoEncodeInfoKHR = 1000299000,
 		VideoEncodeRateControlInfoKHR = 1000299001,
+		VideoEncodeRateControlLayerInfoKHR = 1000299002,
 		PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 		DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
 		MemoryBarrier2KHR = 1000314000,
@@ -676,6 +682,10 @@ namespace Vortice.Vulkan
 		PhysicalDeviceMaintenance4PropertiesKHR = 1000413001,
 		DeviceBufferMemoryRequirementsKHR = 1000413002,
 		DeviceImageMemoryRequirementsKHR = 1000413003,
+		PhysicalDeviceFragmentDensityMapOffsetFeaturesQcom = 1000425000,
+		PhysicalDeviceFragmentDensityMapOffsetPropertiesQcom = 1000425001,
+		SubpassFragmentDensityMapOffsetEndInfoQcom = 1000425002,
+		PhysicalDeviceLinearColorAttachmentFeaturesNV = 1000430000,
 		PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 		PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 		DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
@@ -1615,6 +1625,7 @@ namespace Vortice.Vulkan
 		MemoryPlane1EXT = 256,
 		MemoryPlane2EXT = 512,
 		MemoryPlane3EXT = 1024,
+		NoneKHR = 0,
 		Plane0KHR = Plane0,
 		Plane1KHR = Plane1,
 		Plane2KHR = Plane2,
@@ -1687,6 +1698,7 @@ namespace Vortice.Vulkan
 		CornerSampledNV = 8192,
 		SampleLocationsCompatibleDepthEXT = 4096,
 		SubsampledEXT = 16384,
+		FragmentDensityMapOffsetQcom = 32768,
 		SplitInstanceBindRegionsKHR = SplitInstanceBindRegions,
 		_2dArrayCompatibleKHR = _2dArrayCompatible,
 		BlockTexelViewCompatibleKHR = BlockTexelViewCompatible,
@@ -3277,7 +3289,7 @@ namespace Vortice.Vulkan
 	{
 		None = 0,
 		Default = 0,
-		Reset = 1,
+		Reserved0 = 1,
 	}
 
 	[Flags]
@@ -3478,6 +3490,15 @@ namespace Vortice.Vulkan
 		Reserved0 = 1,
 	}
 
+	[Flags]
+	public enum VkVideoEncodeH264RateControlStructureFlagsEXT
+	{
+		None = 0,
+		Unknown = 0,
+		Flat = 1,
+		Dyadic = 2,
+	}
+
 	public enum StdVideoH265ChromaFormatIdc
 	{
 		Monochrome = 0,
@@ -3560,11 +3581,19 @@ namespace Vortice.Vulkan
 		_64 = 8,
 	}
 
+	[Flags]
+	public enum VkVideoEncodeH265RateControlStructureFlagsEXT
+	{
+		None = 0,
+		Unknown = 0,
+		Flat = 1,
+		Dyadic = 2,
+	}
+
 	public enum StdVideoDecodeH264FieldOrderCount
 	{
 		Top = 0,
 		Bottom = 1,
-		ListSize = 2,
 		Invalid = 2147483647,
 	}
 
@@ -4090,5 +4119,6 @@ namespace Vortice.Vulkan
 		FragmentShadingRateAttachment = 1073741824,
 		VideoEncodeInput = 134217728,
 		VideoEncodeDpb = 268435456,
+		LinearColorAttachmentNV = 274877906944,
 	}
 }
