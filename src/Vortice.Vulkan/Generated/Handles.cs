@@ -10,1041 +10,1040 @@
 using System;
 using System.Diagnostics;
 
-namespace Vortice.Vulkan
+namespace Vortice.Vulkan;
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkBuffer : IEquatable<VkBuffer>
 {
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkBuffer : IEquatable<VkBuffer>
-	{
-		public VkBuffer(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkBuffer Null => new VkBuffer(0);
-		public static implicit operator VkBuffer(ulong handle) => new VkBuffer(handle);
-		public static bool operator ==(VkBuffer left, VkBuffer right) => left.Handle == right.Handle;
-		public static bool operator !=(VkBuffer left, VkBuffer right) => left.Handle != right.Handle;
-		public static bool operator ==(VkBuffer left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkBuffer left, ulong right) => left.Handle != right;
-		public bool Equals(VkBuffer other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkBuffer handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkBuffer [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkImage : IEquatable<VkImage>
-	{
-		public VkImage(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkImage Null => new VkImage(0);
-		public static implicit operator VkImage(ulong handle) => new VkImage(handle);
-		public static bool operator ==(VkImage left, VkImage right) => left.Handle == right.Handle;
-		public static bool operator !=(VkImage left, VkImage right) => left.Handle != right.Handle;
-		public static bool operator ==(VkImage left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkImage left, ulong right) => left.Handle != right;
-		public bool Equals(VkImage other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkImage handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkImage [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkInstance : IEquatable<VkInstance>
-	{
-		public VkInstance(nint handle) { Handle = handle; }
-		public nint Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkInstance Null => new VkInstance(0);
-		public static implicit operator VkInstance(nint handle) => new VkInstance(handle);
-		public static bool operator ==(VkInstance left, VkInstance right) => left.Handle == right.Handle;
-		public static bool operator !=(VkInstance left, VkInstance right) => left.Handle != right.Handle;
-		public static bool operator ==(VkInstance left, nint right) => left.Handle == right;
-		public static bool operator !=(VkInstance left, nint right) => left.Handle != right;
-		public bool Equals(VkInstance other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkInstance handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkInstance [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkPhysicalDevice : IEquatable<VkPhysicalDevice>
-	{
-		public VkPhysicalDevice(nint handle) { Handle = handle; }
-		public nint Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkPhysicalDevice Null => new VkPhysicalDevice(0);
-		public static implicit operator VkPhysicalDevice(nint handle) => new VkPhysicalDevice(handle);
-		public static bool operator ==(VkPhysicalDevice left, VkPhysicalDevice right) => left.Handle == right.Handle;
-		public static bool operator !=(VkPhysicalDevice left, VkPhysicalDevice right) => left.Handle != right.Handle;
-		public static bool operator ==(VkPhysicalDevice left, nint right) => left.Handle == right;
-		public static bool operator !=(VkPhysicalDevice left, nint right) => left.Handle != right;
-		public bool Equals(VkPhysicalDevice other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkPhysicalDevice handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkPhysicalDevice [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkDevice : IEquatable<VkDevice>
-	{
-		public VkDevice(nint handle) { Handle = handle; }
-		public nint Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkDevice Null => new VkDevice(0);
-		public static implicit operator VkDevice(nint handle) => new VkDevice(handle);
-		public static bool operator ==(VkDevice left, VkDevice right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDevice left, VkDevice right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDevice left, nint right) => left.Handle == right;
-		public static bool operator !=(VkDevice left, nint right) => left.Handle != right;
-		public bool Equals(VkDevice other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkDevice handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDevice [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkQueue : IEquatable<VkQueue>
-	{
-		public VkQueue(nint handle) { Handle = handle; }
-		public nint Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkQueue Null => new VkQueue(0);
-		public static implicit operator VkQueue(nint handle) => new VkQueue(handle);
-		public static bool operator ==(VkQueue left, VkQueue right) => left.Handle == right.Handle;
-		public static bool operator !=(VkQueue left, VkQueue right) => left.Handle != right.Handle;
-		public static bool operator ==(VkQueue left, nint right) => left.Handle == right;
-		public static bool operator !=(VkQueue left, nint right) => left.Handle != right;
-		public bool Equals(VkQueue other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkQueue handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkQueue [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkSemaphore : IEquatable<VkSemaphore>
-	{
-		public VkSemaphore(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkSemaphore Null => new VkSemaphore(0);
-		public static implicit operator VkSemaphore(ulong handle) => new VkSemaphore(handle);
-		public static bool operator ==(VkSemaphore left, VkSemaphore right) => left.Handle == right.Handle;
-		public static bool operator !=(VkSemaphore left, VkSemaphore right) => left.Handle != right.Handle;
-		public static bool operator ==(VkSemaphore left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkSemaphore left, ulong right) => left.Handle != right;
-		public bool Equals(VkSemaphore other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkSemaphore handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkSemaphore [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkCommandBuffer : IEquatable<VkCommandBuffer>
-	{
-		public VkCommandBuffer(nint handle) { Handle = handle; }
-		public nint Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkCommandBuffer Null => new VkCommandBuffer(0);
-		public static implicit operator VkCommandBuffer(nint handle) => new VkCommandBuffer(handle);
-		public static bool operator ==(VkCommandBuffer left, VkCommandBuffer right) => left.Handle == right.Handle;
-		public static bool operator !=(VkCommandBuffer left, VkCommandBuffer right) => left.Handle != right.Handle;
-		public static bool operator ==(VkCommandBuffer left, nint right) => left.Handle == right;
-		public static bool operator !=(VkCommandBuffer left, nint right) => left.Handle != right;
-		public bool Equals(VkCommandBuffer other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkCommandBuffer handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkCommandBuffer [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkFence : IEquatable<VkFence>
-	{
-		public VkFence(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkFence Null => new VkFence(0);
-		public static implicit operator VkFence(ulong handle) => new VkFence(handle);
-		public static bool operator ==(VkFence left, VkFence right) => left.Handle == right.Handle;
-		public static bool operator !=(VkFence left, VkFence right) => left.Handle != right.Handle;
-		public static bool operator ==(VkFence left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkFence left, ulong right) => left.Handle != right;
-		public bool Equals(VkFence other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkFence handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkFence [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkDeviceMemory : IEquatable<VkDeviceMemory>
-	{
-		public VkDeviceMemory(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkDeviceMemory Null => new VkDeviceMemory(0);
-		public static implicit operator VkDeviceMemory(ulong handle) => new VkDeviceMemory(handle);
-		public static bool operator ==(VkDeviceMemory left, VkDeviceMemory right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDeviceMemory left, VkDeviceMemory right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDeviceMemory left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDeviceMemory left, ulong right) => left.Handle != right;
-		public bool Equals(VkDeviceMemory other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkDeviceMemory handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDeviceMemory [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkEvent : IEquatable<VkEvent>
-	{
-		public VkEvent(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkEvent Null => new VkEvent(0);
-		public static implicit operator VkEvent(ulong handle) => new VkEvent(handle);
-		public static bool operator ==(VkEvent left, VkEvent right) => left.Handle == right.Handle;
-		public static bool operator !=(VkEvent left, VkEvent right) => left.Handle != right.Handle;
-		public static bool operator ==(VkEvent left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkEvent left, ulong right) => left.Handle != right;
-		public bool Equals(VkEvent other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkEvent handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkEvent [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkQueryPool : IEquatable<VkQueryPool>
-	{
-		public VkQueryPool(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkQueryPool Null => new VkQueryPool(0);
-		public static implicit operator VkQueryPool(ulong handle) => new VkQueryPool(handle);
-		public static bool operator ==(VkQueryPool left, VkQueryPool right) => left.Handle == right.Handle;
-		public static bool operator !=(VkQueryPool left, VkQueryPool right) => left.Handle != right.Handle;
-		public static bool operator ==(VkQueryPool left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkQueryPool left, ulong right) => left.Handle != right;
-		public bool Equals(VkQueryPool other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkQueryPool handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkQueryPool [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkBufferView : IEquatable<VkBufferView>
-	{
-		public VkBufferView(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkBufferView Null => new VkBufferView(0);
-		public static implicit operator VkBufferView(ulong handle) => new VkBufferView(handle);
-		public static bool operator ==(VkBufferView left, VkBufferView right) => left.Handle == right.Handle;
-		public static bool operator !=(VkBufferView left, VkBufferView right) => left.Handle != right.Handle;
-		public static bool operator ==(VkBufferView left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkBufferView left, ulong right) => left.Handle != right;
-		public bool Equals(VkBufferView other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkBufferView handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkBufferView [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkImageView : IEquatable<VkImageView>
-	{
-		public VkImageView(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkImageView Null => new VkImageView(0);
-		public static implicit operator VkImageView(ulong handle) => new VkImageView(handle);
-		public static bool operator ==(VkImageView left, VkImageView right) => left.Handle == right.Handle;
-		public static bool operator !=(VkImageView left, VkImageView right) => left.Handle != right.Handle;
-		public static bool operator ==(VkImageView left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkImageView left, ulong right) => left.Handle != right;
-		public bool Equals(VkImageView other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkImageView handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkImageView [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkShaderModule : IEquatable<VkShaderModule>
-	{
-		public VkShaderModule(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkShaderModule Null => new VkShaderModule(0);
-		public static implicit operator VkShaderModule(ulong handle) => new VkShaderModule(handle);
-		public static bool operator ==(VkShaderModule left, VkShaderModule right) => left.Handle == right.Handle;
-		public static bool operator !=(VkShaderModule left, VkShaderModule right) => left.Handle != right.Handle;
-		public static bool operator ==(VkShaderModule left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkShaderModule left, ulong right) => left.Handle != right;
-		public bool Equals(VkShaderModule other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkShaderModule handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkShaderModule [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkPipelineCache : IEquatable<VkPipelineCache>
-	{
-		public VkPipelineCache(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkPipelineCache Null => new VkPipelineCache(0);
-		public static implicit operator VkPipelineCache(ulong handle) => new VkPipelineCache(handle);
-		public static bool operator ==(VkPipelineCache left, VkPipelineCache right) => left.Handle == right.Handle;
-		public static bool operator !=(VkPipelineCache left, VkPipelineCache right) => left.Handle != right.Handle;
-		public static bool operator ==(VkPipelineCache left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkPipelineCache left, ulong right) => left.Handle != right;
-		public bool Equals(VkPipelineCache other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkPipelineCache handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkPipelineCache [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkPipelineLayout : IEquatable<VkPipelineLayout>
-	{
-		public VkPipelineLayout(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkPipelineLayout Null => new VkPipelineLayout(0);
-		public static implicit operator VkPipelineLayout(ulong handle) => new VkPipelineLayout(handle);
-		public static bool operator ==(VkPipelineLayout left, VkPipelineLayout right) => left.Handle == right.Handle;
-		public static bool operator !=(VkPipelineLayout left, VkPipelineLayout right) => left.Handle != right.Handle;
-		public static bool operator ==(VkPipelineLayout left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkPipelineLayout left, ulong right) => left.Handle != right;
-		public bool Equals(VkPipelineLayout other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkPipelineLayout handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkPipelineLayout [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkPipeline : IEquatable<VkPipeline>
-	{
-		public VkPipeline(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkPipeline Null => new VkPipeline(0);
-		public static implicit operator VkPipeline(ulong handle) => new VkPipeline(handle);
-		public static bool operator ==(VkPipeline left, VkPipeline right) => left.Handle == right.Handle;
-		public static bool operator !=(VkPipeline left, VkPipeline right) => left.Handle != right.Handle;
-		public static bool operator ==(VkPipeline left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkPipeline left, ulong right) => left.Handle != right;
-		public bool Equals(VkPipeline other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkPipeline handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkPipeline [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkRenderPass : IEquatable<VkRenderPass>
-	{
-		public VkRenderPass(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkRenderPass Null => new VkRenderPass(0);
-		public static implicit operator VkRenderPass(ulong handle) => new VkRenderPass(handle);
-		public static bool operator ==(VkRenderPass left, VkRenderPass right) => left.Handle == right.Handle;
-		public static bool operator !=(VkRenderPass left, VkRenderPass right) => left.Handle != right.Handle;
-		public static bool operator ==(VkRenderPass left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkRenderPass left, ulong right) => left.Handle != right;
-		public bool Equals(VkRenderPass other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkRenderPass handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkRenderPass [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkDescriptorSetLayout : IEquatable<VkDescriptorSetLayout>
-	{
-		public VkDescriptorSetLayout(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkDescriptorSetLayout Null => new VkDescriptorSetLayout(0);
-		public static implicit operator VkDescriptorSetLayout(ulong handle) => new VkDescriptorSetLayout(handle);
-		public static bool operator ==(VkDescriptorSetLayout left, VkDescriptorSetLayout right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDescriptorSetLayout left, VkDescriptorSetLayout right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDescriptorSetLayout left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDescriptorSetLayout left, ulong right) => left.Handle != right;
-		public bool Equals(VkDescriptorSetLayout other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkDescriptorSetLayout handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDescriptorSetLayout [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkSampler : IEquatable<VkSampler>
-	{
-		public VkSampler(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkSampler Null => new VkSampler(0);
-		public static implicit operator VkSampler(ulong handle) => new VkSampler(handle);
-		public static bool operator ==(VkSampler left, VkSampler right) => left.Handle == right.Handle;
-		public static bool operator !=(VkSampler left, VkSampler right) => left.Handle != right.Handle;
-		public static bool operator ==(VkSampler left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkSampler left, ulong right) => left.Handle != right;
-		public bool Equals(VkSampler other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkSampler handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkSampler [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkDescriptorSet : IEquatable<VkDescriptorSet>
-	{
-		public VkDescriptorSet(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkDescriptorSet Null => new VkDescriptorSet(0);
-		public static implicit operator VkDescriptorSet(ulong handle) => new VkDescriptorSet(handle);
-		public static bool operator ==(VkDescriptorSet left, VkDescriptorSet right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDescriptorSet left, VkDescriptorSet right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDescriptorSet left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDescriptorSet left, ulong right) => left.Handle != right;
-		public bool Equals(VkDescriptorSet other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkDescriptorSet handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDescriptorSet [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkDescriptorPool : IEquatable<VkDescriptorPool>
-	{
-		public VkDescriptorPool(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkDescriptorPool Null => new VkDescriptorPool(0);
-		public static implicit operator VkDescriptorPool(ulong handle) => new VkDescriptorPool(handle);
-		public static bool operator ==(VkDescriptorPool left, VkDescriptorPool right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDescriptorPool left, VkDescriptorPool right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDescriptorPool left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDescriptorPool left, ulong right) => left.Handle != right;
-		public bool Equals(VkDescriptorPool other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkDescriptorPool handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDescriptorPool [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkFramebuffer : IEquatable<VkFramebuffer>
-	{
-		public VkFramebuffer(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkFramebuffer Null => new VkFramebuffer(0);
-		public static implicit operator VkFramebuffer(ulong handle) => new VkFramebuffer(handle);
-		public static bool operator ==(VkFramebuffer left, VkFramebuffer right) => left.Handle == right.Handle;
-		public static bool operator !=(VkFramebuffer left, VkFramebuffer right) => left.Handle != right.Handle;
-		public static bool operator ==(VkFramebuffer left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkFramebuffer left, ulong right) => left.Handle != right;
-		public bool Equals(VkFramebuffer other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkFramebuffer handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkFramebuffer [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkCommandPool : IEquatable<VkCommandPool>
-	{
-		public VkCommandPool(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkCommandPool Null => new VkCommandPool(0);
-		public static implicit operator VkCommandPool(ulong handle) => new VkCommandPool(handle);
-		public static bool operator ==(VkCommandPool left, VkCommandPool right) => left.Handle == right.Handle;
-		public static bool operator !=(VkCommandPool left, VkCommandPool right) => left.Handle != right.Handle;
-		public static bool operator ==(VkCommandPool left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkCommandPool left, ulong right) => left.Handle != right;
-		public bool Equals(VkCommandPool other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkCommandPool handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkCommandPool [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkSamplerYcbcrConversion : IEquatable<VkSamplerYcbcrConversion>
-	{
-		public VkSamplerYcbcrConversion(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkSamplerYcbcrConversion Null => new VkSamplerYcbcrConversion(0);
-		public static implicit operator VkSamplerYcbcrConversion(ulong handle) => new VkSamplerYcbcrConversion(handle);
-		public static bool operator ==(VkSamplerYcbcrConversion left, VkSamplerYcbcrConversion right) => left.Handle == right.Handle;
-		public static bool operator !=(VkSamplerYcbcrConversion left, VkSamplerYcbcrConversion right) => left.Handle != right.Handle;
-		public static bool operator ==(VkSamplerYcbcrConversion left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkSamplerYcbcrConversion left, ulong right) => left.Handle != right;
-		public bool Equals(VkSamplerYcbcrConversion other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkSamplerYcbcrConversion handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkSamplerYcbcrConversion [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkDescriptorUpdateTemplate : IEquatable<VkDescriptorUpdateTemplate>
-	{
-		public VkDescriptorUpdateTemplate(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkDescriptorUpdateTemplate Null => new VkDescriptorUpdateTemplate(0);
-		public static implicit operator VkDescriptorUpdateTemplate(ulong handle) => new VkDescriptorUpdateTemplate(handle);
-		public static bool operator ==(VkDescriptorUpdateTemplate left, VkDescriptorUpdateTemplate right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDescriptorUpdateTemplate left, VkDescriptorUpdateTemplate right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDescriptorUpdateTemplate left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDescriptorUpdateTemplate left, ulong right) => left.Handle != right;
-		public bool Equals(VkDescriptorUpdateTemplate other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkDescriptorUpdateTemplate handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDescriptorUpdateTemplate [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkSurfaceKHR : IEquatable<VkSurfaceKHR>
-	{
-		public VkSurfaceKHR(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkSurfaceKHR Null => new VkSurfaceKHR(0);
-		public static implicit operator VkSurfaceKHR(ulong handle) => new VkSurfaceKHR(handle);
-		public static bool operator ==(VkSurfaceKHR left, VkSurfaceKHR right) => left.Handle == right.Handle;
-		public static bool operator !=(VkSurfaceKHR left, VkSurfaceKHR right) => left.Handle != right.Handle;
-		public static bool operator ==(VkSurfaceKHR left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkSurfaceKHR left, ulong right) => left.Handle != right;
-		public bool Equals(VkSurfaceKHR other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkSurfaceKHR handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkSurfaceKHR [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkSwapchainKHR : IEquatable<VkSwapchainKHR>
-	{
-		public VkSwapchainKHR(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkSwapchainKHR Null => new VkSwapchainKHR(0);
-		public static implicit operator VkSwapchainKHR(ulong handle) => new VkSwapchainKHR(handle);
-		public static bool operator ==(VkSwapchainKHR left, VkSwapchainKHR right) => left.Handle == right.Handle;
-		public static bool operator !=(VkSwapchainKHR left, VkSwapchainKHR right) => left.Handle != right.Handle;
-		public static bool operator ==(VkSwapchainKHR left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkSwapchainKHR left, ulong right) => left.Handle != right;
-		public bool Equals(VkSwapchainKHR other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkSwapchainKHR handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkSwapchainKHR [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkDisplayKHR : IEquatable<VkDisplayKHR>
-	{
-		public VkDisplayKHR(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkDisplayKHR Null => new VkDisplayKHR(0);
-		public static implicit operator VkDisplayKHR(ulong handle) => new VkDisplayKHR(handle);
-		public static bool operator ==(VkDisplayKHR left, VkDisplayKHR right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDisplayKHR left, VkDisplayKHR right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDisplayKHR left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDisplayKHR left, ulong right) => left.Handle != right;
-		public bool Equals(VkDisplayKHR other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkDisplayKHR handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDisplayKHR [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkDisplayModeKHR : IEquatable<VkDisplayModeKHR>
-	{
-		public VkDisplayModeKHR(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkDisplayModeKHR Null => new VkDisplayModeKHR(0);
-		public static implicit operator VkDisplayModeKHR(ulong handle) => new VkDisplayModeKHR(handle);
-		public static bool operator ==(VkDisplayModeKHR left, VkDisplayModeKHR right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDisplayModeKHR left, VkDisplayModeKHR right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDisplayModeKHR left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDisplayModeKHR left, ulong right) => left.Handle != right;
-		public bool Equals(VkDisplayModeKHR other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkDisplayModeKHR handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDisplayModeKHR [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkDeferredOperationKHR : IEquatable<VkDeferredOperationKHR>
-	{
-		public VkDeferredOperationKHR(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkDeferredOperationKHR Null => new VkDeferredOperationKHR(0);
-		public static implicit operator VkDeferredOperationKHR(ulong handle) => new VkDeferredOperationKHR(handle);
-		public static bool operator ==(VkDeferredOperationKHR left, VkDeferredOperationKHR right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDeferredOperationKHR left, VkDeferredOperationKHR right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDeferredOperationKHR left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDeferredOperationKHR left, ulong right) => left.Handle != right;
-		public bool Equals(VkDeferredOperationKHR other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkDeferredOperationKHR handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDeferredOperationKHR [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkDebugReportCallbackEXT : IEquatable<VkDebugReportCallbackEXT>
-	{
-		public VkDebugReportCallbackEXT(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkDebugReportCallbackEXT Null => new VkDebugReportCallbackEXT(0);
-		public static implicit operator VkDebugReportCallbackEXT(ulong handle) => new VkDebugReportCallbackEXT(handle);
-		public static bool operator ==(VkDebugReportCallbackEXT left, VkDebugReportCallbackEXT right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDebugReportCallbackEXT left, VkDebugReportCallbackEXT right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDebugReportCallbackEXT left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDebugReportCallbackEXT left, ulong right) => left.Handle != right;
-		public bool Equals(VkDebugReportCallbackEXT other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkDebugReportCallbackEXT handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDebugReportCallbackEXT [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkCuModuleNVX : IEquatable<VkCuModuleNVX>
-	{
-		public VkCuModuleNVX(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkCuModuleNVX Null => new VkCuModuleNVX(0);
-		public static implicit operator VkCuModuleNVX(ulong handle) => new VkCuModuleNVX(handle);
-		public static bool operator ==(VkCuModuleNVX left, VkCuModuleNVX right) => left.Handle == right.Handle;
-		public static bool operator !=(VkCuModuleNVX left, VkCuModuleNVX right) => left.Handle != right.Handle;
-		public static bool operator ==(VkCuModuleNVX left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkCuModuleNVX left, ulong right) => left.Handle != right;
-		public bool Equals(VkCuModuleNVX other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkCuModuleNVX handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkCuModuleNVX [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkCuFunctionNVX : IEquatable<VkCuFunctionNVX>
-	{
-		public VkCuFunctionNVX(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkCuFunctionNVX Null => new VkCuFunctionNVX(0);
-		public static implicit operator VkCuFunctionNVX(ulong handle) => new VkCuFunctionNVX(handle);
-		public static bool operator ==(VkCuFunctionNVX left, VkCuFunctionNVX right) => left.Handle == right.Handle;
-		public static bool operator !=(VkCuFunctionNVX left, VkCuFunctionNVX right) => left.Handle != right.Handle;
-		public static bool operator ==(VkCuFunctionNVX left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkCuFunctionNVX left, ulong right) => left.Handle != right;
-		public bool Equals(VkCuFunctionNVX other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkCuFunctionNVX handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkCuFunctionNVX [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkDebugUtilsMessengerEXT : IEquatable<VkDebugUtilsMessengerEXT>
-	{
-		public VkDebugUtilsMessengerEXT(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkDebugUtilsMessengerEXT Null => new VkDebugUtilsMessengerEXT(0);
-		public static implicit operator VkDebugUtilsMessengerEXT(ulong handle) => new VkDebugUtilsMessengerEXT(handle);
-		public static bool operator ==(VkDebugUtilsMessengerEXT left, VkDebugUtilsMessengerEXT right) => left.Handle == right.Handle;
-		public static bool operator !=(VkDebugUtilsMessengerEXT left, VkDebugUtilsMessengerEXT right) => left.Handle != right.Handle;
-		public static bool operator ==(VkDebugUtilsMessengerEXT left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkDebugUtilsMessengerEXT left, ulong right) => left.Handle != right;
-		public bool Equals(VkDebugUtilsMessengerEXT other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkDebugUtilsMessengerEXT handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkDebugUtilsMessengerEXT [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkValidationCacheEXT : IEquatable<VkValidationCacheEXT>
-	{
-		public VkValidationCacheEXT(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkValidationCacheEXT Null => new VkValidationCacheEXT(0);
-		public static implicit operator VkValidationCacheEXT(ulong handle) => new VkValidationCacheEXT(handle);
-		public static bool operator ==(VkValidationCacheEXT left, VkValidationCacheEXT right) => left.Handle == right.Handle;
-		public static bool operator !=(VkValidationCacheEXT left, VkValidationCacheEXT right) => left.Handle != right.Handle;
-		public static bool operator ==(VkValidationCacheEXT left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkValidationCacheEXT left, ulong right) => left.Handle != right;
-		public bool Equals(VkValidationCacheEXT other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkValidationCacheEXT handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkValidationCacheEXT [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkAccelerationStructureNV : IEquatable<VkAccelerationStructureNV>
-	{
-		public VkAccelerationStructureNV(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkAccelerationStructureNV Null => new VkAccelerationStructureNV(0);
-		public static implicit operator VkAccelerationStructureNV(ulong handle) => new VkAccelerationStructureNV(handle);
-		public static bool operator ==(VkAccelerationStructureNV left, VkAccelerationStructureNV right) => left.Handle == right.Handle;
-		public static bool operator !=(VkAccelerationStructureNV left, VkAccelerationStructureNV right) => left.Handle != right.Handle;
-		public static bool operator ==(VkAccelerationStructureNV left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkAccelerationStructureNV left, ulong right) => left.Handle != right;
-		public bool Equals(VkAccelerationStructureNV other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkAccelerationStructureNV handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkAccelerationStructureNV [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkPerformanceConfigurationINTEL : IEquatable<VkPerformanceConfigurationINTEL>
-	{
-		public VkPerformanceConfigurationINTEL(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkPerformanceConfigurationINTEL Null => new VkPerformanceConfigurationINTEL(0);
-		public static implicit operator VkPerformanceConfigurationINTEL(ulong handle) => new VkPerformanceConfigurationINTEL(handle);
-		public static bool operator ==(VkPerformanceConfigurationINTEL left, VkPerformanceConfigurationINTEL right) => left.Handle == right.Handle;
-		public static bool operator !=(VkPerformanceConfigurationINTEL left, VkPerformanceConfigurationINTEL right) => left.Handle != right.Handle;
-		public static bool operator ==(VkPerformanceConfigurationINTEL left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkPerformanceConfigurationINTEL left, ulong right) => left.Handle != right;
-		public bool Equals(VkPerformanceConfigurationINTEL other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkPerformanceConfigurationINTEL handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkPerformanceConfigurationINTEL [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkIndirectCommandsLayoutNV : IEquatable<VkIndirectCommandsLayoutNV>
-	{
-		public VkIndirectCommandsLayoutNV(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkIndirectCommandsLayoutNV Null => new VkIndirectCommandsLayoutNV(0);
-		public static implicit operator VkIndirectCommandsLayoutNV(ulong handle) => new VkIndirectCommandsLayoutNV(handle);
-		public static bool operator ==(VkIndirectCommandsLayoutNV left, VkIndirectCommandsLayoutNV right) => left.Handle == right.Handle;
-		public static bool operator !=(VkIndirectCommandsLayoutNV left, VkIndirectCommandsLayoutNV right) => left.Handle != right.Handle;
-		public static bool operator ==(VkIndirectCommandsLayoutNV left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkIndirectCommandsLayoutNV left, ulong right) => left.Handle != right;
-		public bool Equals(VkIndirectCommandsLayoutNV other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkIndirectCommandsLayoutNV handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkIndirectCommandsLayoutNV [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkPrivateDataSlotEXT : IEquatable<VkPrivateDataSlotEXT>
-	{
-		public VkPrivateDataSlotEXT(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkPrivateDataSlotEXT Null => new VkPrivateDataSlotEXT(0);
-		public static implicit operator VkPrivateDataSlotEXT(ulong handle) => new VkPrivateDataSlotEXT(handle);
-		public static bool operator ==(VkPrivateDataSlotEXT left, VkPrivateDataSlotEXT right) => left.Handle == right.Handle;
-		public static bool operator !=(VkPrivateDataSlotEXT left, VkPrivateDataSlotEXT right) => left.Handle != right.Handle;
-		public static bool operator ==(VkPrivateDataSlotEXT left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkPrivateDataSlotEXT left, ulong right) => left.Handle != right;
-		public bool Equals(VkPrivateDataSlotEXT other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkPrivateDataSlotEXT handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkPrivateDataSlotEXT [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkRemoteAddressNV : IEquatable<VkRemoteAddressNV>
-	{
-		public VkRemoteAddressNV(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkRemoteAddressNV Null => new VkRemoteAddressNV(0);
-		public static implicit operator VkRemoteAddressNV(ulong handle) => new VkRemoteAddressNV(handle);
-		public static bool operator ==(VkRemoteAddressNV left, VkRemoteAddressNV right) => left.Handle == right.Handle;
-		public static bool operator !=(VkRemoteAddressNV left, VkRemoteAddressNV right) => left.Handle != right.Handle;
-		public static bool operator ==(VkRemoteAddressNV left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkRemoteAddressNV left, ulong right) => left.Handle != right;
-		public bool Equals(VkRemoteAddressNV other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkRemoteAddressNV handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkRemoteAddressNV [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkAccelerationStructureKHR : IEquatable<VkAccelerationStructureKHR>
-	{
-		public VkAccelerationStructureKHR(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkAccelerationStructureKHR Null => new VkAccelerationStructureKHR(0);
-		public static implicit operator VkAccelerationStructureKHR(ulong handle) => new VkAccelerationStructureKHR(handle);
-		public static bool operator ==(VkAccelerationStructureKHR left, VkAccelerationStructureKHR right) => left.Handle == right.Handle;
-		public static bool operator !=(VkAccelerationStructureKHR left, VkAccelerationStructureKHR right) => left.Handle != right.Handle;
-		public static bool operator ==(VkAccelerationStructureKHR left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkAccelerationStructureKHR left, ulong right) => left.Handle != right;
-		public bool Equals(VkAccelerationStructureKHR other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkAccelerationStructureKHR handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkAccelerationStructureKHR [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkVideoSessionKHR : IEquatable<VkVideoSessionKHR>
-	{
-		public VkVideoSessionKHR(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkVideoSessionKHR Null => new VkVideoSessionKHR(0);
-		public static implicit operator VkVideoSessionKHR(ulong handle) => new VkVideoSessionKHR(handle);
-		public static bool operator ==(VkVideoSessionKHR left, VkVideoSessionKHR right) => left.Handle == right.Handle;
-		public static bool operator !=(VkVideoSessionKHR left, VkVideoSessionKHR right) => left.Handle != right.Handle;
-		public static bool operator ==(VkVideoSessionKHR left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkVideoSessionKHR left, ulong right) => left.Handle != right;
-		public bool Equals(VkVideoSessionKHR other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkVideoSessionKHR handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkVideoSessionKHR [0x{0}]", Handle.ToString("X"));
-	}
-
-	/// <summary>
-	/// A non-dispatchable handle.
-	/// </summary>
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct VkVideoSessionParametersKHR : IEquatable<VkVideoSessionParametersKHR>
-	{
-		public VkVideoSessionParametersKHR(ulong handle) { Handle = handle; }
-		public ulong Handle { get; }
-		public bool IsNull => Handle == 0;
-		public static VkVideoSessionParametersKHR Null => new VkVideoSessionParametersKHR(0);
-		public static implicit operator VkVideoSessionParametersKHR(ulong handle) => new VkVideoSessionParametersKHR(handle);
-		public static bool operator ==(VkVideoSessionParametersKHR left, VkVideoSessionParametersKHR right) => left.Handle == right.Handle;
-		public static bool operator !=(VkVideoSessionParametersKHR left, VkVideoSessionParametersKHR right) => left.Handle != right.Handle;
-		public static bool operator ==(VkVideoSessionParametersKHR left, ulong right) => left.Handle == right;
-		public static bool operator !=(VkVideoSessionParametersKHR left, ulong right) => left.Handle != right;
-		public bool Equals(VkVideoSessionParametersKHR other) => Handle == other.Handle;
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is VkVideoSessionParametersKHR handle && Equals(handle);
-		/// <inheritdoc/>
-		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("VkVideoSessionParametersKHR [0x{0}]", Handle.ToString("X"));
-	}
-
+	public VkBuffer(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkBuffer Null => new VkBuffer(0);
+	public static implicit operator VkBuffer(ulong handle) => new VkBuffer(handle);
+	public static bool operator ==(VkBuffer left, VkBuffer right) => left.Handle == right.Handle;
+	public static bool operator !=(VkBuffer left, VkBuffer right) => left.Handle != right.Handle;
+	public static bool operator ==(VkBuffer left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkBuffer left, ulong right) => left.Handle != right;
+	public bool Equals(VkBuffer other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkBuffer handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkBuffer [0x{0}]", Handle.ToString("X"));
 }
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkImage : IEquatable<VkImage>
+{
+	public VkImage(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkImage Null => new VkImage(0);
+	public static implicit operator VkImage(ulong handle) => new VkImage(handle);
+	public static bool operator ==(VkImage left, VkImage right) => left.Handle == right.Handle;
+	public static bool operator !=(VkImage left, VkImage right) => left.Handle != right.Handle;
+	public static bool operator ==(VkImage left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkImage left, ulong right) => left.Handle != right;
+	public bool Equals(VkImage other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkImage handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkImage [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkInstance : IEquatable<VkInstance>
+{
+	public VkInstance(nint handle) { Handle = handle; }
+	public nint Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkInstance Null => new VkInstance(0);
+	public static implicit operator VkInstance(nint handle) => new VkInstance(handle);
+	public static bool operator ==(VkInstance left, VkInstance right) => left.Handle == right.Handle;
+	public static bool operator !=(VkInstance left, VkInstance right) => left.Handle != right.Handle;
+	public static bool operator ==(VkInstance left, nint right) => left.Handle == right;
+	public static bool operator !=(VkInstance left, nint right) => left.Handle != right;
+	public bool Equals(VkInstance other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkInstance handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkInstance [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkPhysicalDevice : IEquatable<VkPhysicalDevice>
+{
+	public VkPhysicalDevice(nint handle) { Handle = handle; }
+	public nint Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkPhysicalDevice Null => new VkPhysicalDevice(0);
+	public static implicit operator VkPhysicalDevice(nint handle) => new VkPhysicalDevice(handle);
+	public static bool operator ==(VkPhysicalDevice left, VkPhysicalDevice right) => left.Handle == right.Handle;
+	public static bool operator !=(VkPhysicalDevice left, VkPhysicalDevice right) => left.Handle != right.Handle;
+	public static bool operator ==(VkPhysicalDevice left, nint right) => left.Handle == right;
+	public static bool operator !=(VkPhysicalDevice left, nint right) => left.Handle != right;
+	public bool Equals(VkPhysicalDevice other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkPhysicalDevice handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkPhysicalDevice [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDevice : IEquatable<VkDevice>
+{
+	public VkDevice(nint handle) { Handle = handle; }
+	public nint Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkDevice Null => new VkDevice(0);
+	public static implicit operator VkDevice(nint handle) => new VkDevice(handle);
+	public static bool operator ==(VkDevice left, VkDevice right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDevice left, VkDevice right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDevice left, nint right) => left.Handle == right;
+	public static bool operator !=(VkDevice left, nint right) => left.Handle != right;
+	public bool Equals(VkDevice other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkDevice handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkDevice [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkQueue : IEquatable<VkQueue>
+{
+	public VkQueue(nint handle) { Handle = handle; }
+	public nint Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkQueue Null => new VkQueue(0);
+	public static implicit operator VkQueue(nint handle) => new VkQueue(handle);
+	public static bool operator ==(VkQueue left, VkQueue right) => left.Handle == right.Handle;
+	public static bool operator !=(VkQueue left, VkQueue right) => left.Handle != right.Handle;
+	public static bool operator ==(VkQueue left, nint right) => left.Handle == right;
+	public static bool operator !=(VkQueue left, nint right) => left.Handle != right;
+	public bool Equals(VkQueue other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkQueue handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkQueue [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkSemaphore : IEquatable<VkSemaphore>
+{
+	public VkSemaphore(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkSemaphore Null => new VkSemaphore(0);
+	public static implicit operator VkSemaphore(ulong handle) => new VkSemaphore(handle);
+	public static bool operator ==(VkSemaphore left, VkSemaphore right) => left.Handle == right.Handle;
+	public static bool operator !=(VkSemaphore left, VkSemaphore right) => left.Handle != right.Handle;
+	public static bool operator ==(VkSemaphore left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkSemaphore left, ulong right) => left.Handle != right;
+	public bool Equals(VkSemaphore other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkSemaphore handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkSemaphore [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkCommandBuffer : IEquatable<VkCommandBuffer>
+{
+	public VkCommandBuffer(nint handle) { Handle = handle; }
+	public nint Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkCommandBuffer Null => new VkCommandBuffer(0);
+	public static implicit operator VkCommandBuffer(nint handle) => new VkCommandBuffer(handle);
+	public static bool operator ==(VkCommandBuffer left, VkCommandBuffer right) => left.Handle == right.Handle;
+	public static bool operator !=(VkCommandBuffer left, VkCommandBuffer right) => left.Handle != right.Handle;
+	public static bool operator ==(VkCommandBuffer left, nint right) => left.Handle == right;
+	public static bool operator !=(VkCommandBuffer left, nint right) => left.Handle != right;
+	public bool Equals(VkCommandBuffer other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkCommandBuffer handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkCommandBuffer [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkFence : IEquatable<VkFence>
+{
+	public VkFence(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkFence Null => new VkFence(0);
+	public static implicit operator VkFence(ulong handle) => new VkFence(handle);
+	public static bool operator ==(VkFence left, VkFence right) => left.Handle == right.Handle;
+	public static bool operator !=(VkFence left, VkFence right) => left.Handle != right.Handle;
+	public static bool operator ==(VkFence left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkFence left, ulong right) => left.Handle != right;
+	public bool Equals(VkFence other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkFence handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkFence [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDeviceMemory : IEquatable<VkDeviceMemory>
+{
+	public VkDeviceMemory(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkDeviceMemory Null => new VkDeviceMemory(0);
+	public static implicit operator VkDeviceMemory(ulong handle) => new VkDeviceMemory(handle);
+	public static bool operator ==(VkDeviceMemory left, VkDeviceMemory right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDeviceMemory left, VkDeviceMemory right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDeviceMemory left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkDeviceMemory left, ulong right) => left.Handle != right;
+	public bool Equals(VkDeviceMemory other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkDeviceMemory handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkDeviceMemory [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkEvent : IEquatable<VkEvent>
+{
+	public VkEvent(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkEvent Null => new VkEvent(0);
+	public static implicit operator VkEvent(ulong handle) => new VkEvent(handle);
+	public static bool operator ==(VkEvent left, VkEvent right) => left.Handle == right.Handle;
+	public static bool operator !=(VkEvent left, VkEvent right) => left.Handle != right.Handle;
+	public static bool operator ==(VkEvent left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkEvent left, ulong right) => left.Handle != right;
+	public bool Equals(VkEvent other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkEvent handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkEvent [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkQueryPool : IEquatable<VkQueryPool>
+{
+	public VkQueryPool(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkQueryPool Null => new VkQueryPool(0);
+	public static implicit operator VkQueryPool(ulong handle) => new VkQueryPool(handle);
+	public static bool operator ==(VkQueryPool left, VkQueryPool right) => left.Handle == right.Handle;
+	public static bool operator !=(VkQueryPool left, VkQueryPool right) => left.Handle != right.Handle;
+	public static bool operator ==(VkQueryPool left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkQueryPool left, ulong right) => left.Handle != right;
+	public bool Equals(VkQueryPool other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkQueryPool handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkQueryPool [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkBufferView : IEquatable<VkBufferView>
+{
+	public VkBufferView(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkBufferView Null => new VkBufferView(0);
+	public static implicit operator VkBufferView(ulong handle) => new VkBufferView(handle);
+	public static bool operator ==(VkBufferView left, VkBufferView right) => left.Handle == right.Handle;
+	public static bool operator !=(VkBufferView left, VkBufferView right) => left.Handle != right.Handle;
+	public static bool operator ==(VkBufferView left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkBufferView left, ulong right) => left.Handle != right;
+	public bool Equals(VkBufferView other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkBufferView handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkBufferView [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkImageView : IEquatable<VkImageView>
+{
+	public VkImageView(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkImageView Null => new VkImageView(0);
+	public static implicit operator VkImageView(ulong handle) => new VkImageView(handle);
+	public static bool operator ==(VkImageView left, VkImageView right) => left.Handle == right.Handle;
+	public static bool operator !=(VkImageView left, VkImageView right) => left.Handle != right.Handle;
+	public static bool operator ==(VkImageView left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkImageView left, ulong right) => left.Handle != right;
+	public bool Equals(VkImageView other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkImageView handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkImageView [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkShaderModule : IEquatable<VkShaderModule>
+{
+	public VkShaderModule(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkShaderModule Null => new VkShaderModule(0);
+	public static implicit operator VkShaderModule(ulong handle) => new VkShaderModule(handle);
+	public static bool operator ==(VkShaderModule left, VkShaderModule right) => left.Handle == right.Handle;
+	public static bool operator !=(VkShaderModule left, VkShaderModule right) => left.Handle != right.Handle;
+	public static bool operator ==(VkShaderModule left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkShaderModule left, ulong right) => left.Handle != right;
+	public bool Equals(VkShaderModule other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkShaderModule handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkShaderModule [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkPipelineCache : IEquatable<VkPipelineCache>
+{
+	public VkPipelineCache(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkPipelineCache Null => new VkPipelineCache(0);
+	public static implicit operator VkPipelineCache(ulong handle) => new VkPipelineCache(handle);
+	public static bool operator ==(VkPipelineCache left, VkPipelineCache right) => left.Handle == right.Handle;
+	public static bool operator !=(VkPipelineCache left, VkPipelineCache right) => left.Handle != right.Handle;
+	public static bool operator ==(VkPipelineCache left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkPipelineCache left, ulong right) => left.Handle != right;
+	public bool Equals(VkPipelineCache other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkPipelineCache handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkPipelineCache [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkPipelineLayout : IEquatable<VkPipelineLayout>
+{
+	public VkPipelineLayout(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkPipelineLayout Null => new VkPipelineLayout(0);
+	public static implicit operator VkPipelineLayout(ulong handle) => new VkPipelineLayout(handle);
+	public static bool operator ==(VkPipelineLayout left, VkPipelineLayout right) => left.Handle == right.Handle;
+	public static bool operator !=(VkPipelineLayout left, VkPipelineLayout right) => left.Handle != right.Handle;
+	public static bool operator ==(VkPipelineLayout left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkPipelineLayout left, ulong right) => left.Handle != right;
+	public bool Equals(VkPipelineLayout other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkPipelineLayout handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkPipelineLayout [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkPipeline : IEquatable<VkPipeline>
+{
+	public VkPipeline(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkPipeline Null => new VkPipeline(0);
+	public static implicit operator VkPipeline(ulong handle) => new VkPipeline(handle);
+	public static bool operator ==(VkPipeline left, VkPipeline right) => left.Handle == right.Handle;
+	public static bool operator !=(VkPipeline left, VkPipeline right) => left.Handle != right.Handle;
+	public static bool operator ==(VkPipeline left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkPipeline left, ulong right) => left.Handle != right;
+	public bool Equals(VkPipeline other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkPipeline handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkPipeline [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkRenderPass : IEquatable<VkRenderPass>
+{
+	public VkRenderPass(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkRenderPass Null => new VkRenderPass(0);
+	public static implicit operator VkRenderPass(ulong handle) => new VkRenderPass(handle);
+	public static bool operator ==(VkRenderPass left, VkRenderPass right) => left.Handle == right.Handle;
+	public static bool operator !=(VkRenderPass left, VkRenderPass right) => left.Handle != right.Handle;
+	public static bool operator ==(VkRenderPass left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkRenderPass left, ulong right) => left.Handle != right;
+	public bool Equals(VkRenderPass other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkRenderPass handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkRenderPass [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDescriptorSetLayout : IEquatable<VkDescriptorSetLayout>
+{
+	public VkDescriptorSetLayout(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkDescriptorSetLayout Null => new VkDescriptorSetLayout(0);
+	public static implicit operator VkDescriptorSetLayout(ulong handle) => new VkDescriptorSetLayout(handle);
+	public static bool operator ==(VkDescriptorSetLayout left, VkDescriptorSetLayout right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDescriptorSetLayout left, VkDescriptorSetLayout right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDescriptorSetLayout left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkDescriptorSetLayout left, ulong right) => left.Handle != right;
+	public bool Equals(VkDescriptorSetLayout other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkDescriptorSetLayout handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkDescriptorSetLayout [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkSampler : IEquatable<VkSampler>
+{
+	public VkSampler(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkSampler Null => new VkSampler(0);
+	public static implicit operator VkSampler(ulong handle) => new VkSampler(handle);
+	public static bool operator ==(VkSampler left, VkSampler right) => left.Handle == right.Handle;
+	public static bool operator !=(VkSampler left, VkSampler right) => left.Handle != right.Handle;
+	public static bool operator ==(VkSampler left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkSampler left, ulong right) => left.Handle != right;
+	public bool Equals(VkSampler other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkSampler handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkSampler [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDescriptorSet : IEquatable<VkDescriptorSet>
+{
+	public VkDescriptorSet(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkDescriptorSet Null => new VkDescriptorSet(0);
+	public static implicit operator VkDescriptorSet(ulong handle) => new VkDescriptorSet(handle);
+	public static bool operator ==(VkDescriptorSet left, VkDescriptorSet right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDescriptorSet left, VkDescriptorSet right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDescriptorSet left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkDescriptorSet left, ulong right) => left.Handle != right;
+	public bool Equals(VkDescriptorSet other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkDescriptorSet handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkDescriptorSet [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDescriptorPool : IEquatable<VkDescriptorPool>
+{
+	public VkDescriptorPool(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkDescriptorPool Null => new VkDescriptorPool(0);
+	public static implicit operator VkDescriptorPool(ulong handle) => new VkDescriptorPool(handle);
+	public static bool operator ==(VkDescriptorPool left, VkDescriptorPool right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDescriptorPool left, VkDescriptorPool right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDescriptorPool left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkDescriptorPool left, ulong right) => left.Handle != right;
+	public bool Equals(VkDescriptorPool other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkDescriptorPool handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkDescriptorPool [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkFramebuffer : IEquatable<VkFramebuffer>
+{
+	public VkFramebuffer(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkFramebuffer Null => new VkFramebuffer(0);
+	public static implicit operator VkFramebuffer(ulong handle) => new VkFramebuffer(handle);
+	public static bool operator ==(VkFramebuffer left, VkFramebuffer right) => left.Handle == right.Handle;
+	public static bool operator !=(VkFramebuffer left, VkFramebuffer right) => left.Handle != right.Handle;
+	public static bool operator ==(VkFramebuffer left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkFramebuffer left, ulong right) => left.Handle != right;
+	public bool Equals(VkFramebuffer other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkFramebuffer handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkFramebuffer [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkCommandPool : IEquatable<VkCommandPool>
+{
+	public VkCommandPool(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkCommandPool Null => new VkCommandPool(0);
+	public static implicit operator VkCommandPool(ulong handle) => new VkCommandPool(handle);
+	public static bool operator ==(VkCommandPool left, VkCommandPool right) => left.Handle == right.Handle;
+	public static bool operator !=(VkCommandPool left, VkCommandPool right) => left.Handle != right.Handle;
+	public static bool operator ==(VkCommandPool left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkCommandPool left, ulong right) => left.Handle != right;
+	public bool Equals(VkCommandPool other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkCommandPool handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkCommandPool [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkSamplerYcbcrConversion : IEquatable<VkSamplerYcbcrConversion>
+{
+	public VkSamplerYcbcrConversion(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkSamplerYcbcrConversion Null => new VkSamplerYcbcrConversion(0);
+	public static implicit operator VkSamplerYcbcrConversion(ulong handle) => new VkSamplerYcbcrConversion(handle);
+	public static bool operator ==(VkSamplerYcbcrConversion left, VkSamplerYcbcrConversion right) => left.Handle == right.Handle;
+	public static bool operator !=(VkSamplerYcbcrConversion left, VkSamplerYcbcrConversion right) => left.Handle != right.Handle;
+	public static bool operator ==(VkSamplerYcbcrConversion left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkSamplerYcbcrConversion left, ulong right) => left.Handle != right;
+	public bool Equals(VkSamplerYcbcrConversion other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkSamplerYcbcrConversion handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkSamplerYcbcrConversion [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDescriptorUpdateTemplate : IEquatable<VkDescriptorUpdateTemplate>
+{
+	public VkDescriptorUpdateTemplate(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkDescriptorUpdateTemplate Null => new VkDescriptorUpdateTemplate(0);
+	public static implicit operator VkDescriptorUpdateTemplate(ulong handle) => new VkDescriptorUpdateTemplate(handle);
+	public static bool operator ==(VkDescriptorUpdateTemplate left, VkDescriptorUpdateTemplate right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDescriptorUpdateTemplate left, VkDescriptorUpdateTemplate right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDescriptorUpdateTemplate left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkDescriptorUpdateTemplate left, ulong right) => left.Handle != right;
+	public bool Equals(VkDescriptorUpdateTemplate other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkDescriptorUpdateTemplate handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkDescriptorUpdateTemplate [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkSurfaceKHR : IEquatable<VkSurfaceKHR>
+{
+	public VkSurfaceKHR(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkSurfaceKHR Null => new VkSurfaceKHR(0);
+	public static implicit operator VkSurfaceKHR(ulong handle) => new VkSurfaceKHR(handle);
+	public static bool operator ==(VkSurfaceKHR left, VkSurfaceKHR right) => left.Handle == right.Handle;
+	public static bool operator !=(VkSurfaceKHR left, VkSurfaceKHR right) => left.Handle != right.Handle;
+	public static bool operator ==(VkSurfaceKHR left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkSurfaceKHR left, ulong right) => left.Handle != right;
+	public bool Equals(VkSurfaceKHR other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkSurfaceKHR handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkSurfaceKHR [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkSwapchainKHR : IEquatable<VkSwapchainKHR>
+{
+	public VkSwapchainKHR(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkSwapchainKHR Null => new VkSwapchainKHR(0);
+	public static implicit operator VkSwapchainKHR(ulong handle) => new VkSwapchainKHR(handle);
+	public static bool operator ==(VkSwapchainKHR left, VkSwapchainKHR right) => left.Handle == right.Handle;
+	public static bool operator !=(VkSwapchainKHR left, VkSwapchainKHR right) => left.Handle != right.Handle;
+	public static bool operator ==(VkSwapchainKHR left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkSwapchainKHR left, ulong right) => left.Handle != right;
+	public bool Equals(VkSwapchainKHR other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkSwapchainKHR handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkSwapchainKHR [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDisplayKHR : IEquatable<VkDisplayKHR>
+{
+	public VkDisplayKHR(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkDisplayKHR Null => new VkDisplayKHR(0);
+	public static implicit operator VkDisplayKHR(ulong handle) => new VkDisplayKHR(handle);
+	public static bool operator ==(VkDisplayKHR left, VkDisplayKHR right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDisplayKHR left, VkDisplayKHR right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDisplayKHR left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkDisplayKHR left, ulong right) => left.Handle != right;
+	public bool Equals(VkDisplayKHR other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkDisplayKHR handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkDisplayKHR [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDisplayModeKHR : IEquatable<VkDisplayModeKHR>
+{
+	public VkDisplayModeKHR(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkDisplayModeKHR Null => new VkDisplayModeKHR(0);
+	public static implicit operator VkDisplayModeKHR(ulong handle) => new VkDisplayModeKHR(handle);
+	public static bool operator ==(VkDisplayModeKHR left, VkDisplayModeKHR right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDisplayModeKHR left, VkDisplayModeKHR right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDisplayModeKHR left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkDisplayModeKHR left, ulong right) => left.Handle != right;
+	public bool Equals(VkDisplayModeKHR other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkDisplayModeKHR handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkDisplayModeKHR [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDeferredOperationKHR : IEquatable<VkDeferredOperationKHR>
+{
+	public VkDeferredOperationKHR(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkDeferredOperationKHR Null => new VkDeferredOperationKHR(0);
+	public static implicit operator VkDeferredOperationKHR(ulong handle) => new VkDeferredOperationKHR(handle);
+	public static bool operator ==(VkDeferredOperationKHR left, VkDeferredOperationKHR right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDeferredOperationKHR left, VkDeferredOperationKHR right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDeferredOperationKHR left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkDeferredOperationKHR left, ulong right) => left.Handle != right;
+	public bool Equals(VkDeferredOperationKHR other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkDeferredOperationKHR handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkDeferredOperationKHR [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDebugReportCallbackEXT : IEquatable<VkDebugReportCallbackEXT>
+{
+	public VkDebugReportCallbackEXT(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkDebugReportCallbackEXT Null => new VkDebugReportCallbackEXT(0);
+	public static implicit operator VkDebugReportCallbackEXT(ulong handle) => new VkDebugReportCallbackEXT(handle);
+	public static bool operator ==(VkDebugReportCallbackEXT left, VkDebugReportCallbackEXT right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDebugReportCallbackEXT left, VkDebugReportCallbackEXT right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDebugReportCallbackEXT left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkDebugReportCallbackEXT left, ulong right) => left.Handle != right;
+	public bool Equals(VkDebugReportCallbackEXT other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkDebugReportCallbackEXT handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkDebugReportCallbackEXT [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkCuModuleNVX : IEquatable<VkCuModuleNVX>
+{
+	public VkCuModuleNVX(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkCuModuleNVX Null => new VkCuModuleNVX(0);
+	public static implicit operator VkCuModuleNVX(ulong handle) => new VkCuModuleNVX(handle);
+	public static bool operator ==(VkCuModuleNVX left, VkCuModuleNVX right) => left.Handle == right.Handle;
+	public static bool operator !=(VkCuModuleNVX left, VkCuModuleNVX right) => left.Handle != right.Handle;
+	public static bool operator ==(VkCuModuleNVX left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkCuModuleNVX left, ulong right) => left.Handle != right;
+	public bool Equals(VkCuModuleNVX other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkCuModuleNVX handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkCuModuleNVX [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkCuFunctionNVX : IEquatable<VkCuFunctionNVX>
+{
+	public VkCuFunctionNVX(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkCuFunctionNVX Null => new VkCuFunctionNVX(0);
+	public static implicit operator VkCuFunctionNVX(ulong handle) => new VkCuFunctionNVX(handle);
+	public static bool operator ==(VkCuFunctionNVX left, VkCuFunctionNVX right) => left.Handle == right.Handle;
+	public static bool operator !=(VkCuFunctionNVX left, VkCuFunctionNVX right) => left.Handle != right.Handle;
+	public static bool operator ==(VkCuFunctionNVX left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkCuFunctionNVX left, ulong right) => left.Handle != right;
+	public bool Equals(VkCuFunctionNVX other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkCuFunctionNVX handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkCuFunctionNVX [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDebugUtilsMessengerEXT : IEquatable<VkDebugUtilsMessengerEXT>
+{
+	public VkDebugUtilsMessengerEXT(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkDebugUtilsMessengerEXT Null => new VkDebugUtilsMessengerEXT(0);
+	public static implicit operator VkDebugUtilsMessengerEXT(ulong handle) => new VkDebugUtilsMessengerEXT(handle);
+	public static bool operator ==(VkDebugUtilsMessengerEXT left, VkDebugUtilsMessengerEXT right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDebugUtilsMessengerEXT left, VkDebugUtilsMessengerEXT right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDebugUtilsMessengerEXT left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkDebugUtilsMessengerEXT left, ulong right) => left.Handle != right;
+	public bool Equals(VkDebugUtilsMessengerEXT other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkDebugUtilsMessengerEXT handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkDebugUtilsMessengerEXT [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkValidationCacheEXT : IEquatable<VkValidationCacheEXT>
+{
+	public VkValidationCacheEXT(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkValidationCacheEXT Null => new VkValidationCacheEXT(0);
+	public static implicit operator VkValidationCacheEXT(ulong handle) => new VkValidationCacheEXT(handle);
+	public static bool operator ==(VkValidationCacheEXT left, VkValidationCacheEXT right) => left.Handle == right.Handle;
+	public static bool operator !=(VkValidationCacheEXT left, VkValidationCacheEXT right) => left.Handle != right.Handle;
+	public static bool operator ==(VkValidationCacheEXT left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkValidationCacheEXT left, ulong right) => left.Handle != right;
+	public bool Equals(VkValidationCacheEXT other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkValidationCacheEXT handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkValidationCacheEXT [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkAccelerationStructureNV : IEquatable<VkAccelerationStructureNV>
+{
+	public VkAccelerationStructureNV(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkAccelerationStructureNV Null => new VkAccelerationStructureNV(0);
+	public static implicit operator VkAccelerationStructureNV(ulong handle) => new VkAccelerationStructureNV(handle);
+	public static bool operator ==(VkAccelerationStructureNV left, VkAccelerationStructureNV right) => left.Handle == right.Handle;
+	public static bool operator !=(VkAccelerationStructureNV left, VkAccelerationStructureNV right) => left.Handle != right.Handle;
+	public static bool operator ==(VkAccelerationStructureNV left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkAccelerationStructureNV left, ulong right) => left.Handle != right;
+	public bool Equals(VkAccelerationStructureNV other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkAccelerationStructureNV handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkAccelerationStructureNV [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkPerformanceConfigurationINTEL : IEquatable<VkPerformanceConfigurationINTEL>
+{
+	public VkPerformanceConfigurationINTEL(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkPerformanceConfigurationINTEL Null => new VkPerformanceConfigurationINTEL(0);
+	public static implicit operator VkPerformanceConfigurationINTEL(ulong handle) => new VkPerformanceConfigurationINTEL(handle);
+	public static bool operator ==(VkPerformanceConfigurationINTEL left, VkPerformanceConfigurationINTEL right) => left.Handle == right.Handle;
+	public static bool operator !=(VkPerformanceConfigurationINTEL left, VkPerformanceConfigurationINTEL right) => left.Handle != right.Handle;
+	public static bool operator ==(VkPerformanceConfigurationINTEL left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkPerformanceConfigurationINTEL left, ulong right) => left.Handle != right;
+	public bool Equals(VkPerformanceConfigurationINTEL other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkPerformanceConfigurationINTEL handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkPerformanceConfigurationINTEL [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkIndirectCommandsLayoutNV : IEquatable<VkIndirectCommandsLayoutNV>
+{
+	public VkIndirectCommandsLayoutNV(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkIndirectCommandsLayoutNV Null => new VkIndirectCommandsLayoutNV(0);
+	public static implicit operator VkIndirectCommandsLayoutNV(ulong handle) => new VkIndirectCommandsLayoutNV(handle);
+	public static bool operator ==(VkIndirectCommandsLayoutNV left, VkIndirectCommandsLayoutNV right) => left.Handle == right.Handle;
+	public static bool operator !=(VkIndirectCommandsLayoutNV left, VkIndirectCommandsLayoutNV right) => left.Handle != right.Handle;
+	public static bool operator ==(VkIndirectCommandsLayoutNV left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkIndirectCommandsLayoutNV left, ulong right) => left.Handle != right;
+	public bool Equals(VkIndirectCommandsLayoutNV other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkIndirectCommandsLayoutNV handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkIndirectCommandsLayoutNV [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkPrivateDataSlotEXT : IEquatable<VkPrivateDataSlotEXT>
+{
+	public VkPrivateDataSlotEXT(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkPrivateDataSlotEXT Null => new VkPrivateDataSlotEXT(0);
+	public static implicit operator VkPrivateDataSlotEXT(ulong handle) => new VkPrivateDataSlotEXT(handle);
+	public static bool operator ==(VkPrivateDataSlotEXT left, VkPrivateDataSlotEXT right) => left.Handle == right.Handle;
+	public static bool operator !=(VkPrivateDataSlotEXT left, VkPrivateDataSlotEXT right) => left.Handle != right.Handle;
+	public static bool operator ==(VkPrivateDataSlotEXT left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkPrivateDataSlotEXT left, ulong right) => left.Handle != right;
+	public bool Equals(VkPrivateDataSlotEXT other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkPrivateDataSlotEXT handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkPrivateDataSlotEXT [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkRemoteAddressNV : IEquatable<VkRemoteAddressNV>
+{
+	public VkRemoteAddressNV(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkRemoteAddressNV Null => new VkRemoteAddressNV(0);
+	public static implicit operator VkRemoteAddressNV(ulong handle) => new VkRemoteAddressNV(handle);
+	public static bool operator ==(VkRemoteAddressNV left, VkRemoteAddressNV right) => left.Handle == right.Handle;
+	public static bool operator !=(VkRemoteAddressNV left, VkRemoteAddressNV right) => left.Handle != right.Handle;
+	public static bool operator ==(VkRemoteAddressNV left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkRemoteAddressNV left, ulong right) => left.Handle != right;
+	public bool Equals(VkRemoteAddressNV other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkRemoteAddressNV handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkRemoteAddressNV [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkAccelerationStructureKHR : IEquatable<VkAccelerationStructureKHR>
+{
+	public VkAccelerationStructureKHR(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkAccelerationStructureKHR Null => new VkAccelerationStructureKHR(0);
+	public static implicit operator VkAccelerationStructureKHR(ulong handle) => new VkAccelerationStructureKHR(handle);
+	public static bool operator ==(VkAccelerationStructureKHR left, VkAccelerationStructureKHR right) => left.Handle == right.Handle;
+	public static bool operator !=(VkAccelerationStructureKHR left, VkAccelerationStructureKHR right) => left.Handle != right.Handle;
+	public static bool operator ==(VkAccelerationStructureKHR left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkAccelerationStructureKHR left, ulong right) => left.Handle != right;
+	public bool Equals(VkAccelerationStructureKHR other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkAccelerationStructureKHR handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkAccelerationStructureKHR [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkVideoSessionKHR : IEquatable<VkVideoSessionKHR>
+{
+	public VkVideoSessionKHR(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkVideoSessionKHR Null => new VkVideoSessionKHR(0);
+	public static implicit operator VkVideoSessionKHR(ulong handle) => new VkVideoSessionKHR(handle);
+	public static bool operator ==(VkVideoSessionKHR left, VkVideoSessionKHR right) => left.Handle == right.Handle;
+	public static bool operator !=(VkVideoSessionKHR left, VkVideoSessionKHR right) => left.Handle != right.Handle;
+	public static bool operator ==(VkVideoSessionKHR left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkVideoSessionKHR left, ulong right) => left.Handle != right;
+	public bool Equals(VkVideoSessionKHR other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkVideoSessionKHR handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkVideoSessionKHR [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkVideoSessionParametersKHR : IEquatable<VkVideoSessionParametersKHR>
+{
+	public VkVideoSessionParametersKHR(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkVideoSessionParametersKHR Null => new VkVideoSessionParametersKHR(0);
+	public static implicit operator VkVideoSessionParametersKHR(ulong handle) => new VkVideoSessionParametersKHR(handle);
+	public static bool operator ==(VkVideoSessionParametersKHR left, VkVideoSessionParametersKHR right) => left.Handle == right.Handle;
+	public static bool operator !=(VkVideoSessionParametersKHR left, VkVideoSessionParametersKHR right) => left.Handle != right.Handle;
+	public static bool operator ==(VkVideoSessionParametersKHR left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkVideoSessionParametersKHR left, ulong right) => left.Handle != right;
+	public bool Equals(VkVideoSessionParametersKHR other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkVideoSessionParametersKHR handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkVideoSessionParametersKHR [0x{0}]", Handle.ToString("X"));
+}
+

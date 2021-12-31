@@ -1,76 +1,82 @@
-﻿// Copyright (c) Amer Koleci and contributors.
-// Distributed under the MIT license. See the LICENSE file in the project root for more information.
+// Copyright © Amer Koleci and Contributors.
+// Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Numerics;
-using Vortice;
 using Vortice.Vulkan;
+using Vortice.Vulkan.Vma;
 using static Vortice.Vulkan.Vulkan;
 
-namespace DrawTriangle
+namespace DrawTriangle;
+
+public static unsafe class Program
 {
-	public static unsafe class Program
-	{
 #if DEBUG
-		private static bool EnableValidationLayers = true;
+    private static bool EnableValidationLayers = true;
 #else
 		private static bool EnableValidationLayers = false;
 #endif
-		public static void Main()
-		{
-            using TestApp testApp = new TestApp();
-			testApp.Run();
-		}
+    public static void Main()
+    {
+        using TestApp testApp = new TestApp();
+        testApp.Run();
+    }
 
-		class TestApp : Application
-		{
-			private GraphicsDevice? _graphicsDevice;
-			private float _green = 0.0f;
+    class TestApp : Application
+    {
+        private GraphicsDevice? _graphicsDevice;
+        private Allocator _allocator;
+        private float _green = 0.0f;
 
-			public override string Name => "01-ClearScreen";
+        public override string Name => "01-ClearScreen";
 
-			protected override void Initialize()
-			{
-				// Need to initialize 
-				vkInitialize().CheckResult();
+        protected override void Initialize()
+        {
+            // Need to initialize 
+            vkInitialize().CheckResult();
 
-				_graphicsDevice = new GraphicsDevice(Name, EnableValidationLayers, MainWindow);
-			}
+            _graphicsDevice = new GraphicsDevice(Name, EnableValidationLayers, MainWindow);
 
-			public override void Dispose()
-			{
-				_graphicsDevice!.Dispose();
+            var allocatorCreateInfo = new AllocatorCreateInfo
+            {
+                PhysicalDevice = _graphicsDevice.PhysicalDevice
+            };
+            _allocator = new Allocator(allocatorCreateInfo);
+        }
 
-				base.Dispose();
-			}
+        public override void Dispose()
+        {
+            _graphicsDevice!.Dispose();
 
-			protected override void OnTick()
-			{
-				_graphicsDevice!.RenderFrame(OnDraw);
-			}
+            base.Dispose();
+        }
 
-			private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, VkExtent2D size)
-			{
-				float g = _green + 0.001f;
-				if (g > 1.0f)
-					g = 0.0f;
-				_green = g;
+        protected override void OnTick()
+        {
+            _graphicsDevice!.RenderFrame(OnDraw);
+        }
 
-				VkClearValue clearValue = new VkClearValue(1.0f, _green, 0.0f, 1.0f);
+        private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, VkExtent2D size)
+        {
+            float g = _green + 0.001f;
+            if (g > 1.0f)
+                g = 0.0f;
+            _green = g;
 
-				// Begin the render pass.
-				VkRenderPassBeginInfo renderPassBeginInfo = new VkRenderPassBeginInfo
-				{
-					sType = VkStructureType.RenderPassBeginInfo,
-					renderPass = _graphicsDevice!.Swapchain.RenderPass,
-					framebuffer = framebuffer,
-					renderArea = new VkRect2D(size),
-					clearValueCount = 1,
-					pClearValues = &clearValue
-				};
-				vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
-				vkCmdSetBlendConstants(commandBuffer, new Vector4(1.0f, 1.0f, 1.0f, 1.0f));
-				vkCmdEndRenderPass(commandBuffer);
-			}
-		}
-	}
+            VkClearValue clearValue = new VkClearValue(1.0f, _green, 0.0f, 1.0f);
+
+            // Begin the render pass.
+            VkRenderPassBeginInfo renderPassBeginInfo = new VkRenderPassBeginInfo
+            {
+                sType = VkStructureType.RenderPassBeginInfo,
+                renderPass = _graphicsDevice!.Swapchain.RenderPass,
+                framebuffer = framebuffer,
+                renderArea = new VkRect2D(size),
+                clearValueCount = 1,
+                pClearValues = &clearValue
+            };
+            vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
+            vkCmdSetBlendConstants(commandBuffer, new Vector4(1.0f, 1.0f, 1.0f, 1.0f));
+            vkCmdEndRenderPass(commandBuffer);
+        }
+    }
 }

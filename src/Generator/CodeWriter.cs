@@ -1,4 +1,4 @@
-﻿// Copyright (c) Amer Koleci and contributors.
+// Copyright (c) Amer Koleci and contributors.
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
@@ -44,12 +44,12 @@ namespace Generator
                 _writer.WriteLine();
             }
 
-            BeginBlock("namespace Vortice.Vulkan");
+            _writer.WriteLine("namespace Vortice.Vulkan;");
+            _writer.WriteLine();
         }
 
         public void Dispose()
         {
-            EndBlock();
             _writer.Dispose();
         }
 
