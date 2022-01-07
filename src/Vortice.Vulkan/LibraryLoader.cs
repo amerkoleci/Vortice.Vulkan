@@ -1,207 +1,182 @@
-﻿// Copyright (c) Amer Koleci and contributors.
-// Distributed under the MIT license. See the LICENSE file in the project root for more information.
+﻿// Copyright © Amer Koleci and Contributors.
+// Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using System;
-using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 
-namespace Vortice.Vulkan
+namespace Vortice.Vulkan;
+
+public static class LibraryLoader
 {
-    public static class LibraryLoader
+    private static string GetOSPlatform()
     {
-        static LibraryLoader()
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            return "win";
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            return "linux";
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            return "osx";
+
+        throw new ArgumentException("Unsupported OS platform.");
+    }
+
+    private static string GetArchitecture()
+    {
+        switch (RuntimeInformation.ProcessArchitecture)
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                Extension = ".dll";
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                Extension = ".dylib";
-            else
-                Extension = ".so";
+            case Architecture.X86: return "x86";
+            case Architecture.X64: return "x64";
+            case Architecture.Arm: return "arm";
+            case Architecture.Arm64: return "arm64";
         }
 
-        public static string Extension { get; }
+        throw new ArgumentException("Unsupported architecture.");
+    }
 
-        public static IntPtr LoadLibrary(string libraryName)
+    public static IntPtr LoadLibrary(string libraryName)
+    {
+        var ss = IntPtr.Size == 8;
+        string libraryPath = GetNativeAssemblyPath(libraryName);
+
+        IntPtr handle = LoadPlatformLibrary(libraryPath);
+        if (handle == IntPtr.Zero)
+            throw new DllNotFoundException($"Unable to load library '{libraryName}'.");
+
+        return handle;
+
+        static string GetNativeAssemblyPath(string libraryName)
         {
-            if (!libraryName.EndsWith(Extension, StringComparison.OrdinalIgnoreCase))
-                libraryName += Extension;
+            string osPlatform = GetOSPlatform();
+            string architecture = GetArchitecture();
 
+            string assemblyLocation = Assembly.GetExecutingAssembly() != null ? Assembly.GetExecutingAssembly().Location : typeof(LibraryLoader).Assembly.Location;
+            assemblyLocation = Path.GetDirectoryName(assemblyLocation);
 
-            var osPlatform = GetOSPlatform();
-            var architecture = GetArchitecture();
-
-            var libraryPath = GetNativeAssemblyPath(osPlatform, architecture, libraryName);
-
-            static string GetOSPlatform()
+            string[] paths = new[]
             {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                    return "win";
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                    return "linux";
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                    return "osx";
+                Path.Combine(assemblyLocation, libraryName),
+                Path.Combine(assemblyLocation, "runtimes", osPlatform, "native", libraryName),
+                Path.Combine(assemblyLocation, "runtimes", $"{osPlatform}-{architecture}", "native", libraryName),
+                Path.Combine(assemblyLocation, "native", $"{osPlatform}-{architecture}", libraryName),
+            };
 
-                throw new ArgumentException("Unsupported OS platform.");
-            }
-
-            static string GetArchitecture()
+            foreach (string path in paths)
             {
-                switch (RuntimeInformation.ProcessArchitecture)
+                if (File.Exists(path))
                 {
-                    case Architecture.X86: return "x86";
-                    case Architecture.X64: return "x64";
-                    case Architecture.Arm: return "arm";
-                    case Architecture.Arm64: return "arm64";
+                    return path;
                 }
-
-                throw new ArgumentException("Unsupported architecture.");
             }
 
-            static string GetNativeAssemblyPath(string osPlatform, string architecture, string libraryName)
-            {
-                var assemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            return libraryName;
+        }
+    }
 
-                string[] paths = new[]
-                {
-                    Path.Combine(assemblyLocation, libraryName),
-                    Path.Combine(assemblyLocation, "runtimes", osPlatform, "native", libraryName),
-                    Path.Combine(assemblyLocation, "runtimes", $"{osPlatform}-{architecture}", "native", libraryName),
-                    Path.Combine(assemblyLocation, "native", $"{osPlatform}-{architecture}", libraryName),
-                };
-
-                foreach (string path in paths)
-                {
-                    if (File.Exists(path))
-                    {
-                        return path;
-                    }
-                }
-
-                return libraryName;
-            }
-
-            IntPtr handle;
-#if !NET5_0_OR_GREATER
-            handle = LoadPlatformLibrary(libraryPath);
+    public static T LoadFunction<T>(IntPtr library, string name)
+    {
+#if NET5_0_OR_GREATER
+        IntPtr symbol = NativeLibrary.GetExport(library, name);
 #else
-            handle = NativeLibrary.Load(libraryPath);
+        IntPtr symbol = GetSymbol(library, name);
+
+        if (symbol == IntPtr.Zero)
+            throw new EntryPointNotFoundException($"Unable to load symbol '{name}'.");
 #endif
 
-            if (handle == IntPtr.Zero)
-                throw new DllNotFoundException($"Unable to load library '{libraryName}'.");
+        return Marshal.GetDelegateForFunctionPointer<T>(symbol);
+    }
 
-            return handle;
-        }
-
-        public static T LoadFunction<T>(IntPtr library, string name)
-        {
-#if !NET5_0_OR_GREATER
-            IntPtr symbol = GetSymbol(library, name);
+    private static IntPtr LoadPlatformLibrary(string libraryName)
+    {
+#if NET5_0_OR_GREATER
+        return NativeLibrary.Load(libraryName);
 #else
-            IntPtr symbol = NativeLibrary.GetExport(library, name);
-#endif
+        IntPtr handle;
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            handle = Win32.LoadLibrary(libraryName);
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            handle = Linux.dlopen(libraryName);
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            handle = Mac.dlopen(libraryName);
+        else
+            throw new PlatformNotSupportedException($"Current platform is unknown, unable to load library '{libraryName}'.");
 
-            if (symbol == IntPtr.Zero)
-                throw new EntryPointNotFoundException($"Unable to load symbol '{name}'.");
-
-            return Marshal.GetDelegateForFunctionPointer<T>(symbol);
-        }
-
-#if !NET5_0_OR_GREATER
-        private static IntPtr LoadPlatformLibrary(string libraryName)
-        {
-            if (string.IsNullOrEmpty(libraryName))
-                throw new ArgumentNullException(nameof(libraryName));
-
-            IntPtr handle;
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                handle = Win32.LoadLibrary(libraryName);
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                handle = Linux.dlopen(libraryName);
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                handle = Mac.dlopen(libraryName);
-            else
-                throw new PlatformNotSupportedException($"Current platform is unknown, unable to load library '{libraryName}'.");
-
-            return handle;
-        }
-
-        private static IntPtr GetSymbol(IntPtr library, string symbolName)
-        {
-            if (string.IsNullOrEmpty(symbolName))
-                throw new ArgumentNullException(nameof(symbolName));
-
-            IntPtr handle;
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                handle = Win32.GetProcAddress(library, symbolName);
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                handle = Linux.dlsym(library, symbolName);
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                handle = Mac.dlsym(library, symbolName);
-            else
-                throw new PlatformNotSupportedException($"Current platform is unknown, unable to load symbol '{symbolName}' from library {library}.");
-
-            return handle;
-        }
-
-
-#pragma warning disable IDE1006 // Naming Styles
-        private static class Mac
-        {
-            private const string SystemLibrary = "/usr/lib/libSystem.dylib";
-
-            private const int RTLD_LAZY = 1;
-            private const int RTLD_NOW = 2;
-
-            public static IntPtr dlopen(string path, bool lazy = true) =>
-                dlopen(path, lazy ? RTLD_LAZY : RTLD_NOW);
-
-            [DllImport(SystemLibrary)]
-            public static extern IntPtr dlopen(string path, int mode);
-
-            [DllImport(SystemLibrary)]
-            public static extern IntPtr dlsym(IntPtr handle, string symbol);
-
-            [DllImport(SystemLibrary)]
-            public static extern void dlclose(IntPtr handle);
-        }
-
-        private static class Linux
-        {
-            private const string SystemLibrary = "libdl.so";
-
-            private const int RTLD_LAZY = 1;
-            private const int RTLD_NOW = 2;
-
-            public static IntPtr dlopen(string path, bool lazy = true) =>
-                dlopen(path, lazy ? RTLD_LAZY : RTLD_NOW);
-
-            [DllImport(SystemLibrary)]
-            public static extern IntPtr dlopen(string path, int mode);
-
-            [DllImport(SystemLibrary)]
-            public static extern IntPtr dlsym(IntPtr handle, string symbol);
-
-            [DllImport(SystemLibrary)]
-            public static extern void dlclose(IntPtr handle);
-        }
-
-        private static class Win32
-        {
-            private const string SystemLibrary = "Kernel32.dll";
-
-            [DllImport(SystemLibrary, SetLastError = true, CharSet = CharSet.Ansi)]
-            public static extern IntPtr LoadLibrary(string lpFileName);
-
-            [DllImport(SystemLibrary, SetLastError = true, CharSet = CharSet.Ansi)]
-            public static extern IntPtr GetProcAddress(IntPtr hModule, string lpProcName);
-
-            [DllImport(SystemLibrary, SetLastError = true, CharSet = CharSet.Ansi)]
-            public static extern void FreeLibrary(IntPtr hModule);
-        }
-#pragma warning restore IDE1006 // Naming Styles
+        return handle;
 #endif
     }
+
+    public static IntPtr GetSymbol(IntPtr library, string symbolName)
+    {
+#if NET5_0_OR_GREATER
+        return NativeLibrary.GetExport(library, symbolName);
+#else
+        if (string.IsNullOrEmpty(symbolName))
+            throw new ArgumentNullException(nameof(symbolName));
+
+        IntPtr handle;
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            handle = Win32.GetProcAddress(library, symbolName);
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            handle = Linux.dlsym(library, symbolName);
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            handle = Mac.dlsym(library, symbolName);
+        else
+            throw new PlatformNotSupportedException($"Current platform is unknown, unable to load symbol '{symbolName}' from library {library}.");
+
+        return handle;
+#endif
+    }
+
+#if !NET5_0_OR_GREATER
+#pragma warning disable IDE1006 // Naming Styles
+    private static class Mac
+    {
+        private const string SystemLibrary = "/usr/lib/libSystem.dylib";
+
+        private const int RTLD_LAZY = 1;
+        private const int RTLD_NOW = 2;
+
+        public static IntPtr dlopen(string path, bool lazy = true) =>
+            dlopen(path, lazy ? RTLD_LAZY : RTLD_NOW);
+
+        [DllImport(SystemLibrary)]
+        public static extern IntPtr dlopen(string path, int mode);
+
+        [DllImport(SystemLibrary)]
+        public static extern IntPtr dlsym(IntPtr handle, string symbol);
+
+        [DllImport(SystemLibrary)]
+        public static extern void dlclose(IntPtr handle);
+    }
+
+    private static class Linux
+    {
+        private const string SystemLibrary = "libdl.so";
+
+        private const int RTLD_LAZY = 1;
+        private const int RTLD_NOW = 2;
+
+        public static IntPtr dlopen(string path, bool lazy = true) =>
+            dlopen(path, lazy ? RTLD_LAZY : RTLD_NOW);
+
+        [DllImport(SystemLibrary)]
+        public static extern IntPtr dlopen(string path, int mode);
+
+        [DllImport(SystemLibrary)]
+        public static extern IntPtr dlsym(IntPtr handle, string symbol);
+
+        [DllImport(SystemLibrary)]
+        public static extern void dlclose(IntPtr handle);
+    }
+
+    private static class Win32
+    {
+        [DllImport("kernel32")]
+        public static extern IntPtr LoadLibrary(string fileName);
+
+        [DllImport("kernel32")]
+        public static extern IntPtr GetProcAddress(IntPtr module, string procName);
+    }
+#pragma warning restore IDE1006 // Naming Styles
+#endif
 }

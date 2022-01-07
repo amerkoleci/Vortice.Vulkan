@@ -1,4 +1,4 @@
-﻿// Copyright (c) Amer Koleci and contributors.
+// Copyright (c) Amer Koleci and contributors.
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System.Collections.Generic;
@@ -154,10 +154,11 @@ namespace Generator
             return $"delegate* unmanaged<{builder}>";
         }
 
-        private static void GenerateCommands(CppCompilation compilation, string outputPath)
+        private static void GenerateCommands(CppCompilation compilation, string outputPath, bool netStandard)
         {
             // Generate Functions
-            using var writer = new CodeWriter(Path.Combine(outputPath, "Commands.cs"),
+            string fileName = netStandard ? "Commands.NetStandard.cs" : "Commands.cs";
+            using var writer = new CodeWriter(Path.Combine(outputPath, fileName),
                 "System"
                 );
 
@@ -192,6 +193,15 @@ namespace Generator
                 }
             }
 
+            if (netStandard)
+            {
+                writer.WriteLine($"#if !NET5_0_OR_GREATER");
+            }
+            else
+            {
+                writer.WriteLine($"#if NET5_0_OR_GREATER");
+            }
+
             using (writer.PushBlock($"unsafe partial class Vulkan"))
             {
                 foreach (KeyValuePair<string, CppFunction> command in commands)
@@ -205,11 +215,14 @@ namespace Generator
 
                     string functionPointerSignatureNS = GetFunctionPointerSignature(true, cppFunction);
                     string functionPointerSignature = GetFunctionPointerSignature(false, cppFunction);
-                    writer.WriteLine("#if NET5_0_OR_GREATER");
-                    writer.WriteLine($"private static {functionPointerSignature} {command.Key}_ptr;");
-                    writer.WriteLine("#else");
-                    writer.WriteLine($"private static {functionPointerSignatureNS} {command.Key}_ptr;");
-                    writer.WriteLine("#endif");
+                    if (netStandard)
+                    {
+                        writer.WriteLine($"private static {functionPointerSignatureNS} {command.Key}_ptr;");
+                    }
+                    else
+                    {
+                        writer.WriteLine($"private static {functionPointerSignature} {command.Key}_ptr;");
+                    }
 
                     string returnCsName = GetCsTypeName(cppFunction.ReturnType, false);
                     bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
@@ -249,12 +262,14 @@ namespace Generator
                     writer.WriteLine();
                 }
 
-                WriteCommands(writer, "GenLoadInstance", instanceCommands);
-                WriteCommands(writer, "GenLoadDevice", deviceCommands);
+                WriteCommands(writer, "GenLoadInstance", instanceCommands, netStandard);
+                WriteCommands(writer, "GenLoadDevice", deviceCommands, netStandard);
             }
+
+            writer.WriteLine($"#endif");
         }
 
-        private static void WriteCommands(CodeWriter writer, string name, Dictionary<string, CppFunction> commands)
+        private static void WriteCommands(CodeWriter writer, string name, Dictionary<string, CppFunction> commands, bool netStandard)
         {
             using (writer.PushBlock($"private static void {name}(IntPtr context, LoadFunction load)"))
             {
@@ -266,14 +281,8 @@ namespace Generator
                         continue;
                     }
 
-                    string functionPointerSignatureNS = GetFunctionPointerSignature(true, instanceCommand.Value);
-                    string functionPointerSignature = GetFunctionPointerSignature(false, instanceCommand.Value);
-
-                    writer.WriteLine("#if NET5_0_OR_GREATER");
+                    string functionPointerSignature = GetFunctionPointerSignature(netStandard, instanceCommand.Value);
                     writer.WriteLine($"{commandName}_ptr = ({functionPointerSignature}) load(context, nameof({commandName}));");
-                    writer.WriteLine("#else");
-                    writer.WriteLine($"{commandName}_ptr = ({functionPointerSignatureNS}) load(context, nameof({commandName}));");
-                    writer.WriteLine("#endif");
                 }
             }
         }

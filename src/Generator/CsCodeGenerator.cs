@@ -1,4 +1,4 @@
-﻿// Copyright (c) Amer Koleci and contributors.
+// Copyright (c) Amer Koleci and contributors.
 // Distributed under the MIT license. See the LICENSE file in the project root for more information.
 
 using System;
@@ -95,7 +95,8 @@ namespace Generator
             GenerateEnums(compilation, outputPath);
             GenerateHandles(compilation, outputPath);
             GenerateStructAndUnions(compilation, outputPath);
-            GenerateCommands(compilation, outputPath);
+            GenerateCommands(compilation, outputPath, true);
+            GenerateCommands(compilation, outputPath, false);
             GenerateHelperCommands(compilation, outputPath);
         }
 
