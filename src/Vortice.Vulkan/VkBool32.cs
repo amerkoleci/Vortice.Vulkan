@@ -70,7 +70,7 @@ public readonly struct VkBool32 : IEquatable<VkBool32>
     /// </summary>
     /// <param name="boolValue">The value.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator VkBool32(bool boolValue) => new VkBool32(boolValue);
+    public static implicit operator VkBool32(bool boolValue) => new(boolValue);
 
     /// <inheritdoc/>
     public override string ToString() => _value != 0 ? "True" : "False";

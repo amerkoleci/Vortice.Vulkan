@@ -203,9 +203,6 @@ public static unsafe class GLFW
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate byte** glfwGetRequiredInstanceExtensions_t(out int count);
 
-    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    private delegate int glfwCreateWindowSurface_t(VkInstance instance, GLFWwindow* window, void* allocator, out VkSurfaceKHR surface);
-
     private static delegate* unmanaged[Cdecl]<int> s_glfwInit;
 
     private static readonly glfwTerminate_t s_glfwTerminate;
@@ -220,7 +217,7 @@ public static unsafe class GLFW
     private static readonly glfwGetPrimaryMonitor_t s_glfwGetPrimaryMonitor;
     private static readonly glfwPollEvents_t s_glfwPollEvents;
     private static readonly glfwGetRequiredInstanceExtensions_t s_glfwGetRequiredInstanceExtensions;
-    private static readonly glfwCreateWindowSurface_t s_glfwCreateWindowSurface;
+    private static readonly delegate* unmanaged[Cdecl]<VkInstance, GLFWwindow*, void*, VkSurfaceKHR*, int> s_glfwCreateWindowSurface;
 
     public static bool glfwInit() => s_glfwInit() == GLFW_TRUE;
     public static void glfwTerminate() => s_glfwTerminate();
@@ -272,9 +269,9 @@ public static unsafe class GLFW
         return array;
     }
 
-    public static VkResult glfwCreateWindowSurface(VkInstance instance, GLFWwindow* window, void* allocator, out VkSurfaceKHR surface)
+    public static VkResult glfwCreateWindowSurface(VkInstance instance, GLFWwindow* window, void* allocator, VkSurfaceKHR* pSurface)
     {
-        return (VkResult)s_glfwCreateWindowSurface(instance, window, allocator, out surface);
+        return (VkResult)s_glfwCreateWindowSurface(instance, window, allocator, pSurface);
     }
 
     static GLFW()
@@ -297,7 +294,7 @@ public static unsafe class GLFW
 
         // Vulkan
         s_glfwGetRequiredInstanceExtensions = LoadFunction<glfwGetRequiredInstanceExtensions_t>(nameof(glfwGetRequiredInstanceExtensions));
-        s_glfwCreateWindowSurface = LoadFunction<glfwCreateWindowSurface_t>(nameof(glfwCreateWindowSurface));
+        s_glfwCreateWindowSurface = (delegate* unmanaged[Cdecl]<VkInstance, GLFWwindow*, void*, VkSurfaceKHR*, int>)GetSymbol(nameof(glfwCreateWindowSurface));
     }
 
     private static IntPtr LoadGLFWLibrary()

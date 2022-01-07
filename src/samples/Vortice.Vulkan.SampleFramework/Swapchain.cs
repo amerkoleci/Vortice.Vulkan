@@ -8,20 +8,23 @@ namespace Vortice.Vulkan;
 public sealed unsafe class Swapchain : IDisposable
 {
     public readonly GraphicsDevice Device;
-    public readonly Window? Window;
+    public readonly Window Window;
     private readonly VkImageView[] _swapChainImageViews;
+    private readonly VkSurfaceKHR _surface;
+
     public VkSwapchainKHR Handle;
     public int ImageCount => _swapChainImageViews.Length;
     public VkRenderPass RenderPass;
     public VkExtent2D Extent { get; }
     public VkFramebuffer[] Framebuffers { get; }
 
-    public Swapchain(GraphicsDevice device, Window? window)
+    public Swapchain(GraphicsDevice device, VkSurfaceKHR surface, Window window)
     {
         Device = device;
+        _surface = surface;
         Window = window;
 
-        SwapChainSupportDetails swapChainSupport = QuerySwapChainSupport(device.PhysicalDevice, device._surface);
+        SwapChainSupportDetails swapChainSupport = QuerySwapChainSupport(device.PhysicalDevice, surface);
 
         VkSurfaceFormatKHR surfaceFormat = ChooseSwapSurfaceFormat(swapChainSupport.Formats);
         VkPresentModeKHR presentMode = ChooseSwapPresentMode(swapChainSupport.PresentModes);
@@ -39,7 +42,7 @@ public sealed unsafe class Swapchain : IDisposable
         var createInfo = new VkSwapchainCreateInfoKHR
         {
             sType = VkStructureType.SwapchainCreateInfoKHR,
-            surface = device._surface,
+            surface = surface,
             minImageCount = imageCount,
             imageFormat = surfaceFormat.format,
             imageColorSpace = surfaceFormat.colorSpace,
@@ -91,6 +94,11 @@ public sealed unsafe class Swapchain : IDisposable
         if (Handle != VkSwapchainKHR.Null)
         {
             vkDestroySwapchainKHR(Device, Handle, null);
+        }
+
+        if (_surface != VkSurfaceKHR.Null)
+        {
+            vkDestroySurfaceKHR(Device.VkInstance, _surface, null);
         }
     }
 
@@ -169,7 +177,7 @@ public sealed unsafe class Swapchain : IDisposable
         }
         else
         {
-            VkExtent2D actualExtent = Window!.Extent;
+            VkExtent2D actualExtent = Window.Extent;
 
             actualExtent = new VkExtent2D(
                 Math.Max(capabilities.minImageExtent.width, Math.Min(capabilities.maxImageExtent.width, actualExtent.width)),

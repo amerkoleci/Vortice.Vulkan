@@ -93,8 +93,5 @@ public sealed unsafe class Window
 
     public bool ShoudClose => glfwWindowShouldClose(_window);
 
-    public VkResult CreateSurface(VkInstance instance, out VkSurfaceKHR surface)
-    {
-        return glfwCreateWindowSurface(instance, _window, null, out surface);
-    }
+    public VkResult CreateSurface(VkInstance instance, VkSurfaceKHR* surface) => glfwCreateWindowSurface(instance, _window, null, surface);
 }

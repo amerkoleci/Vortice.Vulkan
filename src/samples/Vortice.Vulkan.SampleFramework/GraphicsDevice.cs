@@ -21,7 +21,6 @@ public unsafe sealed class GraphicsDevice : IDisposable
 #endif
 
     private readonly VkDebugUtilsMessengerEXT _debugMessenger = VkDebugUtilsMessengerEXT.Null;
-    internal readonly VkSurfaceKHR _surface;
     public readonly VkPhysicalDevice PhysicalDevice;
     public readonly VkDevice VkDevice;
     public readonly VkQueue GraphicsQueue;
@@ -85,7 +84,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             debugUtilsCreateInfo.messageSeverity = VkDebugUtilsMessageSeverityFlagsEXT.Error | VkDebugUtilsMessageSeverityFlagsEXT.Warning;
             debugUtilsCreateInfo.messageType = VkDebugUtilsMessageTypeFlagsEXT.Validation | VkDebugUtilsMessageTypeFlagsEXT.Performance;
 #if NET5_0_OR_GREATER
-                debugUtilsCreateInfo.pfnUserCallback = &DebugMessengerCallback;
+            debugUtilsCreateInfo.pfnUserCallback = &DebugMessengerCallback;
 #else
             debugUtilsCreateInfo.pfnUserCallback = Marshal.GetFunctionPointerForDelegate(DebugMessagerCallbackDelegate);
 #endif
@@ -120,7 +119,8 @@ public unsafe sealed class GraphicsDevice : IDisposable
             Log.Info($"Instance extension '{extension}'");
         }
 
-        _surface = CreateSurface(window);
+        VkSurfaceKHR surface;
+        window.CreateSurface(VkInstance, &surface).CheckResult();
 
         // Find physical device, setup queue's and create device.
         var physicalDevices = vkEnumeratePhysicalDevices(VkInstance);
@@ -133,7 +133,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         PhysicalDevice = physicalDevices[0];
         vkGetPhysicalDeviceProperties(PhysicalDevice, out VkPhysicalDeviceProperties properties);
 
-        var queueFamilies = FindQueueFamilies(PhysicalDevice, _surface);
+        var queueFamilies = FindQueueFamilies(PhysicalDevice, surface);
 
         var availableDeviceExtensions = vkEnumerateDeviceExtensionProperties(PhysicalDevice);
 
@@ -241,7 +241,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         vkGetDeviceQueue(VkDevice, queueFamilies.presentFamily, 0, out PresentQueue);
 
         // Create swap chain
-        Swapchain = new Swapchain(this, window);
+        Swapchain = new Swapchain(this, surface, window);
         _perFrame = new PerFrame[Swapchain.ImageCount];
         for (var i = 0; i < _perFrame.Length; i++)
         {
@@ -313,11 +313,6 @@ public unsafe sealed class GraphicsDevice : IDisposable
         if (VkDevice != VkDevice.Null)
         {
             vkDestroyDevice(VkDevice, null);
-        }
-
-        if (_surface != VkSurfaceKHR.Null)
-        {
-            vkDestroySurfaceKHR(VkInstance, _surface, null);
         }
 
         if (_debugMessenger != VkDebugUtilsMessengerEXT.Null)
@@ -453,11 +448,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
     public static implicit operator VkDevice(GraphicsDevice device) => device.VkDevice;
 
     #region Private Methods
-    private VkSurfaceKHR CreateSurface(Window window)
-    {
-        window.CreateSurface(VkInstance, out VkSurfaceKHR surface).CheckResult();
-        return surface;
-    }
+    
 
 #if NET5_0_OR_GREATER
         [UnmanagedCallersOnly]
