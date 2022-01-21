@@ -12,36 +12,24 @@ on:
       - '*.md'
       - 'LICENSE'
 
-env:
-  DOTNET_CLI_TELEMETRY_OPTOUT: false
-
 jobs:
-  CheckSkipCI:
-    runs-on: ubuntu-latest
-    if: |
-      !contains(github.event.head_commit.message, '[skip ci]') &&
-      !contains(github.event.pull_request.title, '[skip ci]') &&
-      !contains(github.event.head_commit.message, '[skip-ci]') &&
-      !contains(github.event.pull_request.title, '[skip-ci]')
-    steps:
-      - run: exit 0
-
   build:
     runs-on: windows-latest
-    needs: [CheckSkipCI]
 
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Setup .NET 6.0
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.100
+        dotnet-version: 6.0.x
 
     - name: Pack
       run: dotnet pack Vortice.Vulkan.sln --configuration Release --output build/packages
 
     - name: Publish to NuGet
       if: github.event_name == 'push'
-      run: dotnet nuget push build/packages/**/*.nupkg -s "https://api.nuget.org/v3/index.json" -k ${{secrets.NUGET_TOKEN}} --skip-duplicate
+      run: dotnet nuget push build/packages/**/*.nupkg -k ${{secrets.NUGET_TOKEN}} --skip-duplicate --source https://api.nuget.org/v3/index.json
