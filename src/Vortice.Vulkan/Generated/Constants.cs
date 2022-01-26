@@ -15,13 +15,13 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 203
+	/// VK_HEADER_VERSION = 204
 	/// </summary>
-	public const uint HeaderVersion = 203;
+	public const uint HeaderVersion = 204;
 	/// <summary>
-	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,2,VK_HEADER_VERSION)
+	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
-	public static readonly VkVersion HeaderVersionComplete = new VkVersion(0, 1, 2, HeaderVersion);
+	public static readonly VkVersion HeaderVersionComplete = new VkVersion(0, 1, 3, HeaderVersion);
 	/// <summary>
 	/// VK_UUID_SIZE = 16U
 	/// </summary>
@@ -717,6 +717,23 @@ public static partial class Vulkan
 	/// VK_KHR_SHADER_CLOCK_EXTENSION_NAME = "VK_KHR_shader_clock"
 	/// </summary>
 	public const string KHRShaderClockExtensionName = "VK_KHR_shader_clock";
+	/// <summary>
+	/// VK_KHR_global_priority = 1
+	/// </summary>
+	public const uint KHRGlobalPriority = 1;
+	/// <summary>
+	/// VK_MAX_GLOBAL_PRIORITY_SIZE_KHR = 16U
+	/// </summary>
+	public const uint MaxGlobalPrioritySizeKHR = 16U;
+	/// <summary>
+	/// VK_KHR_GLOBAL_PRIORITY_SPEC_VERSION = 1
+	/// </summary>
+	public const uint KHRGlobalPrioritySpecVersion = 1;
+	public const string VK_KHR_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_KHR_global_priority";
+	/// <summary>
+	/// VK_KHR_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_KHR_global_priority"
+	/// </summary>
+	public const string KHRGlobalPriorityExtensionName = "VK_KHR_global_priority";
 	/// <summary>
 	/// VK_KHR_driver_properties = 1
 	/// </summary>
@@ -3056,10 +3073,6 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint EXTGlobalPriorityQuery = 1;
 	/// <summary>
-	/// VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = 16U
-	/// </summary>
-	public const uint MaxGlobalPrioritySizeEXT = 16U;
-	/// <summary>
 	/// VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION = 1
 	/// </summary>
 	public const uint EXTGlobalPriorityQuerySpecVersion = 1;
@@ -3068,6 +3081,10 @@ public static partial class Vulkan
 	/// VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query"
 	/// </summary>
 	public const string EXTGlobalPriorityQueryExtensionName = "VK_EXT_global_priority_query";
+	/// <summary>
+	/// VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = VK_MAX_GLOBAL_PRIORITY_SIZE_KHR
+	/// </summary>
+	public const uint MaxGlobalPrioritySizeEXT = MaxGlobalPrioritySizeKHR;
 	/// <summary>
 	/// VK_EXT_image_view_min_lod = 1
 	/// </summary>

@@ -1,18 +1,14 @@
-﻿// Copyright (c) Amer Koleci and contributors.
-// Distributed under the MIT license. See the LICENSE file in the project root for more information.
+﻿// Copyright © Amer Koleci and Contributors.
+// Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
 using CppAst;
 
-namespace Generator
+namespace Generator;
+
+public static partial class CsCodeGenerator
 {
-    public static partial class CsCodeGenerator
-    {
-        private static readonly Dictionary<string, string> s_knownEnumValueNames = new Dictionary<string, string>
+    private static readonly Dictionary<string, string> s_knownEnumValueNames = new Dictionary<string, string>
         {
             {  "VK_STENCIL_FRONT_AND_BACK", "FrontAndBack" },
             {  "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO", "MemoryAllocateFlagsInfo" },
@@ -117,7 +113,7 @@ namespace Generator
             { "VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR", "RasterizationStateCreateFragmentShadingRateAttachmentKHR" },
             { "VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT", "RasterizationStateCreateFragmentDensityMapAttachmentKHR" },
         };
-        private static readonly Dictionary<string, string> s_knownEnumPrefixes = new Dictionary<string, string>
+    private static readonly Dictionary<string, string> s_knownEnumPrefixes = new Dictionary<string, string>
         {
             { "VkResult", "VK" },
             { "VkViewportCoordinateSwizzleNV", "VK_VIEWPORT_COORDINATE_SWIZZLE" },
@@ -127,7 +123,7 @@ namespace Generator
             { "VkCopyAccelerationStructureModeNVX", "VK_COPY_ACCELERATION_STRUCTURE_MODE" },
         };
 
-        private static readonly HashSet<string> s_ignoredParts = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    private static readonly HashSet<string> s_ignoredParts = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
             "flags",
             "bit",
@@ -135,7 +131,7 @@ namespace Generator
         };
 
 
-        private static readonly HashSet<string> s_preserveCaps = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    private static readonly HashSet<string> s_preserveCaps = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
             "khr",
             "khx",
@@ -149,486 +145,492 @@ namespace Generator
             "mvk",
         };
 
-        public static void GenerateEnums(CppCompilation compilation, string outputPath)
+    public static void GenerateEnums(CppCompilation compilation, string outputPath)
+    {
+        using var writer = new CodeWriter(Path.Combine(outputPath, "Enumerations.cs"), "System");
+        var createdEnums = new Dictionary<string, string>();
+
+        foreach (CppEnum cppEnum in compilation.Enums)
         {
-            using var writer = new CodeWriter(Path.Combine(outputPath, "Enumerations.cs"), "System");
-            var createdEnums = new Dictionary<string, string>();
-
-            foreach (CppEnum cppEnum in compilation.Enums)
+            bool isBitmask =
+                cppEnum.Name.EndsWith("FlagBits2") ||
+                cppEnum.Name.EndsWith("FlagBits") ||
+                cppEnum.Name.EndsWith("FlagBitsEXT") ||
+                cppEnum.Name.EndsWith("FlagBitsKHR") ||
+                cppEnum.Name.EndsWith("FlagBitsNV") ||
+                cppEnum.Name.EndsWith("FlagBitsAMD") ||
+                cppEnum.Name.EndsWith("FlagBitsMVK") ||
+                cppEnum.Name.EndsWith("FlagBitsNN");
+            if (isBitmask)
             {
-                bool isBitmask = cppEnum.Name.EndsWith("FlagBits") ||
-                    cppEnum.Name.EndsWith("FlagBitsEXT") ||
-                    cppEnum.Name.EndsWith("FlagBitsKHR") ||
-                    cppEnum.Name.EndsWith("FlagBitsNV") ||
-                    cppEnum.Name.EndsWith("FlagBitsAMD") ||
-                    cppEnum.Name.EndsWith("FlagBitsMVK") ||
-                    cppEnum.Name.EndsWith("FlagBitsNN");
-                if (isBitmask)
+                writer.WriteLine("[Flags]");
+            }
+
+            string csName = GetCsCleanName(cppEnum.Name);
+            string enumNamePrefix = GetEnumNamePrefix(cppEnum.Name);
+
+            // Rename FlagBits in Flags.
+            if (isBitmask)
+            {
+                csName = csName.Replace("FlagBits", "Flags");
+                AddCsMapping(cppEnum.Name, csName);
+            }
+
+            // Remove extension suffix from enum item values
+            string extensionPrefix = "";
+
+            if (csName.EndsWith("EXT"))
+            {
+                extensionPrefix = "EXT";
+            }
+            else if (csName.EndsWith("NV"))
+            {
+                extensionPrefix = "NV";
+            }
+            else if (csName.EndsWith("KHR"))
+            {
+                extensionPrefix = "KHR";
+            }
+
+            createdEnums.Add(csName, cppEnum.Name);
+
+            bool noneAdded = false;
+            using (writer.PushBlock($"public enum {csName}"))
+            {
+                if (isBitmask &&
+                    !cppEnum.Items.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "None"))
                 {
-                    writer.WriteLine("[Flags]");
+                    writer.WriteLine("None = 0,");
+                    noneAdded = true;
                 }
 
-                string csName = GetCsCleanName(cppEnum.Name);
-                string enumNamePrefix = GetEnumNamePrefix(cppEnum.Name);
-
-                // Rename FlagBits in Flags.
-                if (isBitmask)
+                foreach (CppEnumItem enumItem in cppEnum.Items)
                 {
-                    csName = csName.Replace("FlagBits", "Flags");
-                    AddCsMapping(cppEnum.Name, csName);
-                }
-
-                // Remove extension suffix from enum item values
-                string extensionPrefix = "";
-
-                if (csName.EndsWith("EXT"))
-                {
-                    extensionPrefix = "EXT";
-                }
-                else if (csName.EndsWith("NV"))
-                {
-                    extensionPrefix = "NV";
-                }
-                else if (csName.EndsWith("KHR"))
-                {
-                    extensionPrefix = "KHR";
-                }
-
-                createdEnums.Add(csName, cppEnum.Name);
-
-                bool noneAdded = false;
-                using (writer.PushBlock($"public enum {csName}"))
-                {
-                    if (isBitmask &&
-                        !cppEnum.Items.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "None"))
+                    if (enumItem.Name.EndsWith("_BEGIN_RANGE") ||
+                        enumItem.Name.EndsWith("_END_RANGE") ||
+                        enumItem.Name.EndsWith("_RANGE_SIZE") ||
+                        enumItem.Name.EndsWith("_BEGIN_RANGE_EXT") ||
+                        enumItem.Name.EndsWith("_BEGIN_RANGE_KHR") ||
+                        enumItem.Name.EndsWith("_BEGIN_RANGE_NV") ||
+                        enumItem.Name.EndsWith("_BEGIN_RANGE_AMD") ||
+                        enumItem.Name.EndsWith("_END_RANGE_EXT") ||
+                        enumItem.Name.EndsWith("_END_RANGE_KHR") ||
+                        enumItem.Name.EndsWith("_END_RANGE_NV") ||
+                        enumItem.Name.EndsWith("_END_RANGE_AMD") ||
+                        enumItem.Name.EndsWith("_RANGE_SIZE_EXT") ||
+                        enumItem.Name.EndsWith("_RANGE_SIZE_KHR") ||
+                        enumItem.Name.EndsWith("_RANGE_SIZE_NV") ||
+                        enumItem.Name.EndsWith("_RANGE_SIZE_AMD") ||
+                        enumItem.Name.EndsWith("_MAX_ENUM") ||
+                        enumItem.Name.EndsWith("_MAX_ENUM_EXT") ||
+                        enumItem.Name.EndsWith("_MAX_ENUM_KHR") ||
+                        enumItem.Name.EndsWith("_MAX_ENUM_NV") ||
+                        enumItem.Name.EndsWith("_MAX_ENUM_AMD") ||
+                        enumItem.Name.EndsWith("_MAX_ENUM_INTEL") ||
+                        enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
+                        enumItem.Name == "VK_STENCIL_FRONT_AND_BACK" ||
+                        enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE")
                     {
-                        writer.WriteLine("None = 0,");
-                        noneAdded = true;
+                        continue;
                     }
 
-                    foreach (CppEnumItem enumItem in cppEnum.Items)
+                    string enumItemName = GetEnumItemName(cppEnum, enumItem.Name, enumNamePrefix);
+
+                    if (!string.IsNullOrEmpty(extensionPrefix) && enumItemName.EndsWith(extensionPrefix))
                     {
-                        if (enumItem.Name.EndsWith("_BEGIN_RANGE") ||
-                            enumItem.Name.EndsWith("_END_RANGE") ||
-                            enumItem.Name.EndsWith("_RANGE_SIZE") ||
-                            enumItem.Name.EndsWith("_BEGIN_RANGE_EXT") ||
-                            enumItem.Name.EndsWith("_BEGIN_RANGE_KHR") ||
-                            enumItem.Name.EndsWith("_BEGIN_RANGE_NV") ||
-                            enumItem.Name.EndsWith("_BEGIN_RANGE_AMD") ||
-                            enumItem.Name.EndsWith("_END_RANGE_EXT") ||
-                            enumItem.Name.EndsWith("_END_RANGE_KHR") ||
-                            enumItem.Name.EndsWith("_END_RANGE_NV") ||
-                            enumItem.Name.EndsWith("_END_RANGE_AMD") ||
-                            enumItem.Name.EndsWith("_RANGE_SIZE_EXT") ||
-                            enumItem.Name.EndsWith("_RANGE_SIZE_KHR") ||
-                            enumItem.Name.EndsWith("_RANGE_SIZE_NV") ||
-                            enumItem.Name.EndsWith("_RANGE_SIZE_AMD") ||
-                            enumItem.Name.EndsWith("_MAX_ENUM") ||
-                            enumItem.Name.EndsWith("_MAX_ENUM_EXT") ||
-                            enumItem.Name.EndsWith("_MAX_ENUM_KHR") ||
-                            enumItem.Name.EndsWith("_MAX_ENUM_NV") ||
-                            enumItem.Name.EndsWith("_MAX_ENUM_AMD") ||
-                            enumItem.Name.EndsWith("_MAX_ENUM_INTEL") ||
-                            enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
-                            enumItem.Name == "VK_STENCIL_FRONT_AND_BACK" ||
-                            enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE")
+                        enumItemName = enumItemName.Remove(enumItemName.Length - extensionPrefix.Length);
+                    }
+
+                    if (enumItemName == "None" && noneAdded)
+                    {
+                        continue;
+                    }
+
+                    //writer.WriteLine("/// <summary>");
+                    //writer.WriteLine($"/// {enumItem.Name}");
+                    //writer.WriteLine("/// </summary>");
+                    if (enumItem.ValueExpression is CppRawExpression rawExpression)
+                    {
+                        string enumValueName = GetEnumItemName(cppEnum, rawExpression.Text, enumNamePrefix);
+                        if (enumItemName == "SurfaceCapabilities2EXT")
                         {
                             continue;
                         }
 
-                        string enumItemName = GetEnumItemName(cppEnum, enumItem.Name, enumNamePrefix);
-
-                        if (!string.IsNullOrEmpty(extensionPrefix) && enumItemName.EndsWith(extensionPrefix))
+                        if (!string.IsNullOrEmpty(extensionPrefix) && enumValueName.EndsWith(extensionPrefix))
                         {
-                            enumItemName = enumItemName.Remove(enumItemName.Length - extensionPrefix.Length);
-                        }
+                            enumValueName = enumValueName.Remove(enumValueName.Length - extensionPrefix.Length);
 
-                        if (enumItemName == "None" && noneAdded)
-                        {
-                            continue;
-                        }
-
-                        //writer.WriteLine("/// <summary>");
-                        //writer.WriteLine($"/// {enumItem.Name}");
-                        //writer.WriteLine("/// </summary>");
-                        if (enumItem.ValueExpression is CppRawExpression rawExpression)
-                        {
-                            string enumValueName = GetEnumItemName(cppEnum, rawExpression.Text, enumNamePrefix);
-                            if (enumItemName == "SurfaceCapabilities2EXT")
-                            {
+                            if (enumItemName == enumValueName)
                                 continue;
-                            }
-
-                            if (!string.IsNullOrEmpty(extensionPrefix) && enumValueName.EndsWith(extensionPrefix))
-                            {
-                                enumValueName = enumValueName.Remove(enumValueName.Length - extensionPrefix.Length);
-
-                                if (enumItemName == enumValueName)
-                                    continue;
-                            }
-
-                            writer.WriteLine($"{enumItemName} = {enumValueName},");
                         }
-                        else
-                        {
-                            writer.WriteLine($"{enumItemName} = {enumItem.Value},");
-                        }
+
+                        writer.WriteLine($"{enumItemName} = {enumValueName},");
                     }
-
-                    if (csName == "VkColorComponentFlags")
+                    else
                     {
-                        writer.WriteLine("All = R | G | B | A");
+                        writer.WriteLine($"{enumItemName} = {enumItem.Value},");
                     }
                 }
 
+                if (csName == "VkColorComponentFlags")
+                {
+                    writer.WriteLine("All = R | G | B | A");
+                }
+            }
+
+            writer.WriteLine();
+        }
+
+        // Map missing flags with typedefs to VkFlags
+        foreach (CppTypedef typedef in compilation.Typedefs)
+        {
+            if (typedef.Name.StartsWith("PFN_")
+                || typedef.Name.Equals("VkBool32", StringComparison.OrdinalIgnoreCase)
+                || typedef.Name.Equals("VkFlags", StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            if (typedef.ElementType is CppPointerType)
+            {
+                continue;
+            }
+
+            if (createdEnums.ContainsKey(typedef.Name))
+            {
+                continue;
+            }
+
+            if (typedef.Name.EndsWith("Flags", StringComparison.OrdinalIgnoreCase) ||
+                typedef.Name.EndsWith("FlagsKHR", StringComparison.OrdinalIgnoreCase) ||
+                typedef.Name.EndsWith("FlagsEXT", StringComparison.OrdinalIgnoreCase) ||
+                typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase) ||
+                typedef.Name.EndsWith("FlagsAMD", StringComparison.OrdinalIgnoreCase) ||
+                typedef.Name.EndsWith("FlagsMVK", StringComparison.OrdinalIgnoreCase) ||
+                typedef.Name.EndsWith("FlagsNN", StringComparison.OrdinalIgnoreCase))
+            {
+                writer.WriteLine("[Flags]");
+                using (writer.PushBlock($"public enum {typedef.Name}"))
+                {
+                    writer.WriteLine("None = 0,");
+                }
                 writer.WriteLine();
-            }
-
-            // Map missing flags with typedefs to VkFlags
-            foreach (CppTypedef typedef in compilation.Typedefs)
-            {
-                if (typedef.Name.StartsWith("PFN_")
-                    || typedef.Name.Equals("VkBool32", StringComparison.OrdinalIgnoreCase)
-                    || typedef.Name.Equals("VkFlags", StringComparison.OrdinalIgnoreCase))
-                {
-                    continue;
-                }
-
-                if (typedef.ElementType is CppPointerType)
-                {
-                    continue;
-                }
-
-                if (createdEnums.ContainsKey(typedef.Name))
-                {
-                    continue;
-                }
-
-                if (typedef.Name.EndsWith("Flags", StringComparison.OrdinalIgnoreCase) ||
-                    typedef.Name.EndsWith("FlagsKHR", StringComparison.OrdinalIgnoreCase) ||
-                    typedef.Name.EndsWith("FlagsEXT", StringComparison.OrdinalIgnoreCase) ||
-                    typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase) ||
-                    typedef.Name.EndsWith("FlagsAMD", StringComparison.OrdinalIgnoreCase) ||
-                    typedef.Name.EndsWith("FlagsMVK", StringComparison.OrdinalIgnoreCase) ||
-                    typedef.Name.EndsWith("FlagsNN", StringComparison.OrdinalIgnoreCase))
-                {
-                    writer.WriteLine("[Flags]");
-                    using (writer.PushBlock($"public enum {typedef.Name}"))
-                    {
-                        writer.WriteLine("None = 0,");
-                    }
-                    writer.WriteLine();
-                }
-            }
-
-            // Defined with specs 1.2.170 => VK_KHR_synchronization2
-            string lastCreatedEnum = string.Empty;
-            foreach (CppField cppField in compilation.Fields)
-            {
-                string? fieldType = GetCsTypeName(cppField.Type, false);
-                string createdEnumName;
-
-                if (!createdEnums.ContainsKey(fieldType))
-                {
-                    if (!string.IsNullOrEmpty(lastCreatedEnum))
-                    {
-                        writer.EndBlock();
-                        writer.WriteLine();
-                    }
-
-                    createdEnums.Add(fieldType, fieldType);
-                    lastCreatedEnum = fieldType;
-
-                    string baseType = "uint";
-                    if (cppField.Type is CppQualifiedType qualifiedType)
-                    {
-                        if (qualifiedType.ElementType is CppTypedef typedef)
-                        {
-                            baseType = GetCsTypeName(typedef.ElementType, false);
-                        }
-                        else
-                        {
-                            baseType = GetCsTypeName(qualifiedType.ElementType, false);
-                        }
-                    }
-
-                    writer.WriteLine("[Flags]");
-                    writer.BeginBlock($"public enum {fieldType} : {baseType}");
-                    createdEnumName = fieldType;
-                }
-                else
-                {
-                    createdEnumName = createdEnums[fieldType];
-                }
-
-                string csFieldName = string.Empty;
-                if (cppField.Name.StartsWith("VK_PIPELINE_STAGE_2"))
-                {
-                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_PIPELINE_STAGE_2");
-                }
-                else if (cppField.Name.StartsWith("VK_ACCESS_2"))
-                {
-                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_ACCESS_2");
-                }
-                else if (cppField.Name.StartsWith("VK_FORMAT_FEATURE_2"))
-                {
-                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_FORMAT_FEATURE_2");
-                }
-                else
-                {
-                    csFieldName = NormalizeFieldName(cppField.Name);
-                }
-
-                // Remove vendor suffix from enum value if enum already contains it
-                if (csFieldName.EndsWith("KHR", StringComparison.Ordinal) &&
-                    createdEnumName.EndsWith("KHR", StringComparison.Ordinal))
-                {
-                    csFieldName = csFieldName.Substring(0, csFieldName.Length - 3);
-                }
-
-                writer.WriteLine($"{csFieldName} = {cppField.InitValue},");
-            }
-
-            if (!string.IsNullOrEmpty(lastCreatedEnum))
-            {
-                writer.EndBlock();
             }
         }
 
-        private static string GetEnumItemName(CppEnum @enum, string cppEnumItemName, string enumNamePrefix)
+        // Defined with specs 1.2.170 => VK_KHR_synchronization2
+        string lastCreatedEnum = string.Empty;
+        foreach (CppField cppField in compilation.Fields)
         {
-            string enumItemName;
-            if (@enum.Name == "VkFormat")
-            {
-                enumItemName = cppEnumItemName.Substring(enumNamePrefix.Length + 1);
-                var splits = enumItemName.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
-                if (splits.Length <= 1)
-                {
-                    enumItemName = char.ToUpperInvariant(enumItemName[0]) + enumItemName.Substring(1).ToLowerInvariant();
-                }
-                else
-                {
-                    var sb = new StringBuilder();
-                    foreach (var part in splits)
-                    {
-                        if (part.Equals("UNORM", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("UNorm");
-                        }
-                        else if (part.Equals("SNORM", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("SNorm");
-                        }
-                        else if (part.Equals("UINT", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("UInt");
-                        }
-                        else if (part.Equals("SINT", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("SInt");
-                        }
-                        else if (part.Equals("PACK8", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("Pack8");
-                        }
-                        else if (part.Equals("PACK16", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("Pack16");
-                        }
-                        else if (part.Equals("PACK32", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("Pack32");
-                        }
-                        else if (part.Equals("USCALED", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("UScaled");
-                        }
-                        else if (part.Equals("SSCALED", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("SScaled");
-                        }
-                        else if (part.Equals("UFLOAT", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("UFloat");
-                        }
-                        else if (part.Equals("SFLOAT", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("SFloat");
-                        }
-                        else if (part.Equals("SRGB", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("SRgb");
-                        }
-                        else if (part.Equals("BLOCK", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("Block");
-                        }
-                        else if (part.Equals("IMG", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("Img");
-                        }
-                        else if (part.Equals("2PACK16", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("2Pack16");
-                        }
-                        else if (part.Equals("3PACK16", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("3Pack16");
-                        }
-                        else if (part.Equals("4PACK16", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("4Pack16");
-                        }
-                        else if (part.Equals("2PLANE", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("2Plane");
-                        }
-                        else if (part.Equals("3PLANE", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("3Plane");
-                        }
-                        else if (part.Equals("4PLANE", StringComparison.OrdinalIgnoreCase))
-                        {
-                            sb.Append("4Plane");
-                        }
-                        else
-                        {
-                            sb.Append(part);
-                        }
-                    }
+            string? fieldType = GetCsTypeName(cppField.Type, false);
+            string createdEnumName;
 
-                    enumItemName = sb.ToString();
+            if (!createdEnums.ContainsKey(fieldType))
+            {
+                if (!string.IsNullOrEmpty(lastCreatedEnum))
+                {
+                    writer.EndBlock();
+                    writer.WriteLine();
                 }
+
+                createdEnums.Add(fieldType, fieldType);
+                lastCreatedEnum = fieldType;
+
+                string baseType = "uint";
+                if (cppField.Type is CppQualifiedType qualifiedType)
+                {
+                    if (qualifiedType.ElementType is CppTypedef typedef)
+                    {
+                        baseType = GetCsTypeName(typedef.ElementType, false);
+                    }
+                    else
+                    {
+                        baseType = GetCsTypeName(qualifiedType.ElementType, false);
+                    }
+                }
+
+                if (fieldType.EndsWith("FlagBits2"))
+                {
+                    fieldType = fieldType.Replace("FlagBits2", "Flags2");
+                }
+
+                writer.WriteLine("[Flags]");
+                writer.BeginBlock($"public enum {fieldType} : {baseType}");
+                createdEnumName = fieldType;
             }
             else
             {
-                enumItemName = GetPrettyEnumName(cppEnumItemName, enumNamePrefix);
+                createdEnumName = createdEnums[fieldType];
             }
 
-            return enumItemName;
+            string csFieldName = string.Empty;
+            if (cppField.Name.StartsWith("VK_PIPELINE_STAGE_2"))
+            {
+                csFieldName = GetPrettyEnumName(cppField.Name, "VK_PIPELINE_STAGE_2");
+            }
+            else if (cppField.Name.StartsWith("VK_ACCESS_2"))
+            {
+                csFieldName = GetPrettyEnumName(cppField.Name, "VK_ACCESS_2");
+            }
+            else if (cppField.Name.StartsWith("VK_FORMAT_FEATURE_2"))
+            {
+                csFieldName = GetPrettyEnumName(cppField.Name, "VK_FORMAT_FEATURE_2");
+            }
+            else
+            {
+                csFieldName = NormalizeFieldName(cppField.Name);
+            }
+
+            // Remove vendor suffix from enum value if enum already contains it
+            if (csFieldName.EndsWith("KHR", StringComparison.Ordinal) &&
+                createdEnumName.EndsWith("KHR", StringComparison.Ordinal))
+            {
+                csFieldName = csFieldName.Substring(0, csFieldName.Length - 3);
+            }
+
+            writer.WriteLine($"{csFieldName} = {cppField.InitValue},");
         }
 
-        private static string NormalizeEnumValue(string value)
+        if (!string.IsNullOrEmpty(lastCreatedEnum))
         {
-            if (value == "(~0U)")
-            {
-                return "~0u";
-            }
-
-            if (value == "(~0ULL)")
-            {
-                return "~0ul";
-            }
-
-            if (value == "(~0U-1)")
-            {
-                return "~0u - 1";
-            }
-
-            if (value == "(~0U-2)")
-            {
-                return "~0u - 2";
-            }
-
-            if (value == "(~0U-3)")
-            {
-                return "~0u - 3";
-            }
-
-            return value.Replace("ULL", "UL");
+            writer.EndBlock();
         }
+    }
 
-        public static string GetEnumNamePrefix(string typeName)
+    private static string GetEnumItemName(CppEnum @enum, string cppEnumItemName, string enumNamePrefix)
+    {
+        string enumItemName;
+        if (@enum.Name == "VkFormat")
         {
-            if (s_knownEnumPrefixes.TryGetValue(typeName, out string? knownValue))
+            enumItemName = cppEnumItemName.Substring(enumNamePrefix.Length + 1);
+            var splits = enumItemName.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+            if (splits.Length <= 1)
             {
-                return knownValue;
+                enumItemName = char.ToUpperInvariant(enumItemName[0]) + enumItemName.Substring(1).ToLowerInvariant();
             }
-
-            List<string> parts = new List<string>(4);
-            int chunkStart = 0;
-            for (int i = 0; i < typeName.Length; i++)
+            else
             {
-                if (char.IsUpper(typeName[i]))
+                var sb = new StringBuilder();
+                foreach (var part in splits)
                 {
-                    if (chunkStart != i)
+                    if (part.Equals("UNORM", StringComparison.OrdinalIgnoreCase))
                     {
-                        parts.Add(typeName.Substring(chunkStart, i - chunkStart));
+                        sb.Append("UNorm");
                     }
-
-                    chunkStart = i;
-                    if (i == typeName.Length - 1)
+                    else if (part.Equals("SNORM", StringComparison.OrdinalIgnoreCase))
                     {
-                        parts.Add(typeName.Substring(i, 1));
+                        sb.Append("SNorm");
+                    }
+                    else if (part.Equals("UINT", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("UInt");
+                    }
+                    else if (part.Equals("SINT", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("SInt");
+                    }
+                    else if (part.Equals("PACK8", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Pack8");
+                    }
+                    else if (part.Equals("PACK16", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Pack16");
+                    }
+                    else if (part.Equals("PACK32", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Pack32");
+                    }
+                    else if (part.Equals("USCALED", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("UScaled");
+                    }
+                    else if (part.Equals("SSCALED", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("SScaled");
+                    }
+                    else if (part.Equals("UFLOAT", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("UFloat");
+                    }
+                    else if (part.Equals("SFLOAT", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("SFloat");
+                    }
+                    else if (part.Equals("SRGB", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("SRgb");
+                    }
+                    else if (part.Equals("BLOCK", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Block");
+                    }
+                    else if (part.Equals("IMG", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Img");
+                    }
+                    else if (part.Equals("2PACK16", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("2Pack16");
+                    }
+                    else if (part.Equals("3PACK16", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("3Pack16");
+                    }
+                    else if (part.Equals("4PACK16", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("4Pack16");
+                    }
+                    else if (part.Equals("2PLANE", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("2Plane");
+                    }
+                    else if (part.Equals("3PLANE", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("3Plane");
+                    }
+                    else if (part.Equals("4PLANE", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("4Plane");
+                    }
+                    else
+                    {
+                        sb.Append(part);
                     }
                 }
-                else if (i == typeName.Length - 1)
-                {
-                    parts.Add(typeName.Substring(chunkStart, typeName.Length - chunkStart));
-                }
-            }
 
-            for (int i = 0; i < parts.Count; i++)
-            {
-                if (parts[i] == "Flag" ||
-                    parts[i] == "Flags" ||
-                    (parts[i] == "K" && (i + 2) < parts.Count && parts[i + 1] == "H" && parts[i + 2] == "R") ||
-                    (parts[i] == "A" && (i + 2) < parts.Count && parts[i + 1] == "M" && parts[i + 2] == "D") ||
-                    (parts[i] == "E" && (i + 2) < parts.Count && parts[i + 1] == "X" && parts[i + 2] == "T") ||
-                    (parts[i] == "Type" && (i + 2) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V") ||
-                    (parts[i] == "Type" && (i + 3) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V" && parts[i + 3] == "X") ||
-                    (parts[i] == "Scope" && (i + 2) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V") ||
-                    (parts[i] == "Mode" && (i + 2) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V") ||
-                    (parts[i] == "Mode" && (i + 5) < parts.Count && parts[i + 1] == "I" && parts[i + 2] == "N" && parts[i + 3] == "T" && parts[i + 4] == "E" && parts[i + 5] == "L") ||
-                    (parts[i] == "Type" && (i + 5) < parts.Count && parts[i + 1] == "I" && parts[i + 2] == "N" && parts[i + 3] == "T" && parts[i + 4] == "E" && parts[i + 5] == "L")
-                    )
-                {
-                    parts = new List<string>(parts.Take(i));
-                    break;
-                }
+                enumItemName = sb.ToString();
             }
-
-            return string.Join("_", parts.Select(s => s.ToUpper()));
         }
-
-        private static string GetPrettyEnumName(string value, string enumPrefix)
+        else
         {
-            if (s_knownEnumValueNames.TryGetValue(value, out string? knownName))
-            {
-                return knownName;
-            }
-
-            if (value.IndexOf(enumPrefix) != 0)
-            {
-                return value;
-            }
-
-            string[] parts = value[enumPrefix.Length..].Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
-
-            var sb = new StringBuilder();
-            foreach (string part in parts)
-            {
-                if (s_ignoredParts.Contains(part))
-                {
-                    continue;
-                }
-
-                if (s_preserveCaps.Contains(part))
-                {
-                    sb.Append(part);
-                }
-                else
-                {
-                    sb.Append(char.ToUpper(part[0]));
-                    for (int i = 1; i < part.Length; i++)
-                    {
-                        sb.Append(char.ToLower(part[i]));
-                    }
-                }
-            }
-
-            string prettyName = sb.ToString();
-            return (char.IsNumber(prettyName[0])) ? "_" + prettyName : prettyName;
+            enumItemName = GetPrettyEnumName(cppEnumItemName, enumNamePrefix);
         }
+
+        return enumItemName;
+    }
+
+    private static string NormalizeEnumValue(string value)
+    {
+        if (value == "(~0U)")
+        {
+            return "~0u";
+        }
+
+        if (value == "(~0ULL)")
+        {
+            return "~0ul";
+        }
+
+        if (value == "(~0U-1)")
+        {
+            return "~0u - 1";
+        }
+
+        if (value == "(~0U-2)")
+        {
+            return "~0u - 2";
+        }
+
+        if (value == "(~0U-3)")
+        {
+            return "~0u - 3";
+        }
+
+        return value.Replace("ULL", "UL");
+    }
+
+    public static string GetEnumNamePrefix(string typeName)
+    {
+        if (s_knownEnumPrefixes.TryGetValue(typeName, out string? knownValue))
+        {
+            return knownValue;
+        }
+
+        List<string> parts = new(4);
+        int chunkStart = 0;
+        for (int i = 0; i < typeName.Length; i++)
+        {
+            if (char.IsUpper(typeName[i]))
+            {
+                if (chunkStart != i)
+                {
+                    parts.Add(typeName.Substring(chunkStart, i - chunkStart));
+                }
+
+                chunkStart = i;
+                if (i == typeName.Length - 1)
+                {
+                    parts.Add(typeName.Substring(i, 1));
+                }
+            }
+            else if (i == typeName.Length - 1)
+            {
+                parts.Add(typeName.Substring(chunkStart, typeName.Length - chunkStart));
+            }
+        }
+
+        for (int i = 0; i < parts.Count; i++)
+        {
+            if (parts[i] == "Flag" ||
+                parts[i] == "Flags" ||
+                (parts[i] == "K" && (i + 2) < parts.Count && parts[i + 1] == "H" && parts[i + 2] == "R") ||
+                (parts[i] == "A" && (i + 2) < parts.Count && parts[i + 1] == "M" && parts[i + 2] == "D") ||
+                (parts[i] == "E" && (i + 2) < parts.Count && parts[i + 1] == "X" && parts[i + 2] == "T") ||
+                (parts[i] == "Type" && (i + 2) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V") ||
+                (parts[i] == "Type" && (i + 3) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V" && parts[i + 3] == "X") ||
+                (parts[i] == "Scope" && (i + 2) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V") ||
+                (parts[i] == "Mode" && (i + 2) < parts.Count && parts[i + 1] == "N" && parts[i + 2] == "V") ||
+                (parts[i] == "Mode" && (i + 5) < parts.Count && parts[i + 1] == "I" && parts[i + 2] == "N" && parts[i + 3] == "T" && parts[i + 4] == "E" && parts[i + 5] == "L") ||
+                (parts[i] == "Type" && (i + 5) < parts.Count && parts[i + 1] == "I" && parts[i + 2] == "N" && parts[i + 3] == "T" && parts[i + 4] == "E" && parts[i + 5] == "L")
+                )
+            {
+                parts = new List<string>(parts.Take(i));
+                break;
+            }
+        }
+
+        return string.Join("_", parts.Select(s => s.ToUpper()));
+    }
+
+    private static string GetPrettyEnumName(string value, string enumPrefix)
+    {
+        if (s_knownEnumValueNames.TryGetValue(value, out string? knownName))
+        {
+            return knownName;
+        }
+
+        if (value.IndexOf(enumPrefix) != 0)
+        {
+            return value;
+        }
+
+        string[] parts = value[enumPrefix.Length..].Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+
+        var sb = new StringBuilder();
+        foreach (string part in parts)
+        {
+            if (s_ignoredParts.Contains(part))
+            {
+                continue;
+            }
+
+            if (s_preserveCaps.Contains(part))
+            {
+                sb.Append(part);
+            }
+            else
+            {
+                sb.Append(char.ToUpper(part[0]));
+                for (int i = 1; i < part.Length; i++)
+                {
+                    sb.Append(char.ToLower(part[i]));
+                }
+            }
+        }
+
+        string prettyName = sb.ToString();
+        return (char.IsNumber(prettyName[0])) ? "_" + prettyName : prettyName;
     }
 }

@@ -637,6 +637,29 @@ public readonly partial struct VkDescriptorUpdateTemplate : IEquatable<VkDescrip
 /// A non-dispatchable handle.
 /// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkPrivateDataSlot : IEquatable<VkPrivateDataSlot>
+{
+	public VkPrivateDataSlot(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkPrivateDataSlot Null => new VkPrivateDataSlot(0);
+	public static implicit operator VkPrivateDataSlot(ulong handle) => new VkPrivateDataSlot(handle);
+	public static bool operator ==(VkPrivateDataSlot left, VkPrivateDataSlot right) => left.Handle == right.Handle;
+	public static bool operator !=(VkPrivateDataSlot left, VkPrivateDataSlot right) => left.Handle != right.Handle;
+	public static bool operator ==(VkPrivateDataSlot left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkPrivateDataSlot left, ulong right) => left.Handle != right;
+	public bool Equals(VkPrivateDataSlot other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object obj) => obj is VkPrivateDataSlot handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => string.Format("VkPrivateDataSlot [0x{0}]", Handle.ToString("X"));
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VkSurfaceKHR : IEquatable<VkSurfaceKHR>
 {
 	public VkSurfaceKHR(ulong handle) { Handle = handle; }
@@ -930,29 +953,6 @@ public readonly partial struct VkIndirectCommandsLayoutNV : IEquatable<VkIndirec
 	/// <inheritdoc/>
 	public override int GetHashCode() => Handle.GetHashCode();
 	private string DebuggerDisplay => string.Format("VkIndirectCommandsLayoutNV [0x{0}]", Handle.ToString("X"));
-}
-
-/// <summary>
-/// A non-dispatchable handle.
-/// </summary>
-[DebuggerDisplay("{DebuggerDisplay,nq}")]
-public readonly partial struct VkPrivateDataSlotEXT : IEquatable<VkPrivateDataSlotEXT>
-{
-	public VkPrivateDataSlotEXT(ulong handle) { Handle = handle; }
-	public ulong Handle { get; }
-	public bool IsNull => Handle == 0;
-	public static VkPrivateDataSlotEXT Null => new VkPrivateDataSlotEXT(0);
-	public static implicit operator VkPrivateDataSlotEXT(ulong handle) => new VkPrivateDataSlotEXT(handle);
-	public static bool operator ==(VkPrivateDataSlotEXT left, VkPrivateDataSlotEXT right) => left.Handle == right.Handle;
-	public static bool operator !=(VkPrivateDataSlotEXT left, VkPrivateDataSlotEXT right) => left.Handle != right.Handle;
-	public static bool operator ==(VkPrivateDataSlotEXT left, ulong right) => left.Handle == right;
-	public static bool operator !=(VkPrivateDataSlotEXT left, ulong right) => left.Handle != right;
-	public bool Equals(VkPrivateDataSlotEXT other) => Handle == other.Handle;
-	/// <inheritdoc/>
-	public override bool Equals(object obj) => obj is VkPrivateDataSlotEXT handle && Equals(handle);
-	/// <inheritdoc/>
-	public override int GetHashCode() => Handle.GetHashCode();
-	private string DebuggerDisplay => string.Format("VkPrivateDataSlotEXT [0x{0}]", Handle.ToString("X"));
 }
 
 /// <summary>

@@ -223,6 +223,12 @@ public static partial class CsCodeGenerator
 
                     writer.WriteLine($"public {modifier} {csDataType} {csName} = {macroValue};");
                 }
+                else if (cppMacro.Name == "VK_MAX_GLOBAL_PRIORITY_SIZE_EXT")
+                {
+                    csDataType = "uint";
+                    macroValue = "MaxGlobalPrioritySizeKHR";
+                    writer.WriteLine($"public {modifier} {csDataType} {csName} = {macroValue};");
+                }
                 else
                 {
                     writer.WriteLine($"public {modifier} {csDataType} {csName} = {macroValue};");
