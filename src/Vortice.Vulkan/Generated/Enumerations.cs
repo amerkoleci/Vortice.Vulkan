@@ -346,7 +346,7 @@ public enum VkStructureType
 	VideoEncodeH265SessionParametersAddInfoEXT = 1000039003,
 	VideoEncodeH265VclFrameInfoEXT = 1000039004,
 	VideoEncodeH265DpbSlotInfoEXT = 1000039005,
-	VideoEncodeH265NaluSliceEXT = 1000039006,
+	VideoEncodeH265NaluSliceSegmentEXT = 1000039006,
 	VideoEncodeH265EmitPictureParametersEXT = 1000039007,
 	VideoEncodeH265ProfileEXT = 1000039008,
 	VideoEncodeH265ReferenceListsEXT = 1000039009,
@@ -1710,7 +1710,6 @@ public enum VkAccessFlags
 [Flags]
 public enum VkImageAspectFlags
 {
-	None = 0,
 	Color = 1,
 	Depth = 2,
 	Stencil = 4,
@@ -1718,14 +1717,15 @@ public enum VkImageAspectFlags
 	Plane0 = 16,
 	Plane1 = 32,
 	Plane2 = 64,
+	None = 0,
 	MemoryPlane0EXT = 128,
 	MemoryPlane1EXT = 256,
 	MemoryPlane2EXT = 512,
 	MemoryPlane3EXT = 1024,
-	NoneKHR = 0,
 	Plane0KHR = Plane0,
 	Plane1KHR = Plane1,
 	Plane2KHR = Plane2,
+	NoneKHR = None,
 }
 
 [Flags]
@@ -3678,7 +3678,7 @@ public enum VkVideoEncodeH265InputModeFlagsEXT
 {
 	None = 0,
 	Frame = 1,
-	Slice = 2,
+	SliceSegment = 2,
 	NonVcl = 4,
 }
 
@@ -3687,7 +3687,7 @@ public enum VkVideoEncodeH265OutputModeFlagsEXT
 {
 	None = 0,
 	Frame = 1,
-	Slice = 2,
+	SliceSegment = 2,
 	NonVcl = 4,
 }
 

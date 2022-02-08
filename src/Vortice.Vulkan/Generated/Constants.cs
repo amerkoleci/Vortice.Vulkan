@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 204
+	/// VK_HEADER_VERSION = 205
 	/// </summary>
-	public const uint HeaderVersion = 204;
+	public const uint HeaderVersion = 205;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -3510,9 +3510,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VideoEncodeH265ChromaListsNum = 2;
 	/// <summary>
-	/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 3
+	/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 4
 	/// </summary>
-	public const uint EXTVideoEncodeH265SpecVersion = 3;
+	public const uint EXTVideoEncodeH265SpecVersion = 4;
 	public const string VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265";
 	/// <summary>
 	/// VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265"

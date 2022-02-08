@@ -7848,7 +7848,7 @@ public partial struct StdVideoH265PictureParameterSet
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct StdVideoEncodeH265SliceHeaderFlags
+public partial struct StdVideoEncodeH265SliceSegmentHeaderFlags
 {
 	public uint first_slice_segment_in_pic_flag;
 	public uint no_output_of_prior_pics_flag;
@@ -7872,7 +7872,7 @@ public partial struct StdVideoEncodeH265SliceHeaderFlags
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct StdVideoEncodeH265SliceHeader
+public partial struct StdVideoEncodeH265SliceSegmentHeader
 {
 	public StdVideoH265SliceType slice_type;
 	public byte slice_pic_parameter_set_id;
@@ -7959,7 +7959,7 @@ public partial struct StdVideoEncodeH265SliceHeader
 	public sbyte slice_act_y_qp_offset;
 	public sbyte slice_act_cb_qp_offset;
 	public sbyte slice_act_cr_qp_offset;
-	public StdVideoEncodeH265SliceHeaderFlags flags;
+	public StdVideoEncodeH265SliceSegmentHeaderFlags flags;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -8086,13 +8086,13 @@ public partial struct VkVideoEncodeH265ReferenceListsEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoEncodeH265NaluSliceEXT
+public partial struct VkVideoEncodeH265NaluSliceSegmentEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint ctbCount;
 	public unsafe VkVideoEncodeH265ReferenceListsEXT* pReferenceFinalLists;
-	public unsafe StdVideoEncodeH265SliceHeader* pSliceHeaderStd;
+	public unsafe StdVideoEncodeH265SliceSegmentHeader* pSliceSegmentHeaderStd;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -8101,8 +8101,8 @@ public partial struct VkVideoEncodeH265VclFrameInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe VkVideoEncodeH265ReferenceListsEXT* pReferenceFinalLists;
-	public uint naluSliceEntryCount;
-	public unsafe VkVideoEncodeH265NaluSliceEXT* pNaluSliceEntries;
+	public uint naluSliceSegmentEntryCount;
+	public unsafe VkVideoEncodeH265NaluSliceSegmentEXT* pNaluSliceSegmentEntries;
 	public unsafe StdVideoEncodeH265PictureInfo* pCurrentPictureInfo;
 }
 
