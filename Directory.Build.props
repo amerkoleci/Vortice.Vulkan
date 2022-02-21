@@ -15,13 +15,12 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>CS1591;CS1701</NoWarn>
 
-    <Version>1.5.1</Version>
-    <!-- <Version>1.4.0-beta1</Version> -->
+    <Version>1.5.2</Version>
     
     <Authors>Amer Koleci</Authors>
     <Product>Vortice.Vulkan</Product>
     <Company>Amer Koleci</Company>
-    <Copyright>Copyright © 2019-2022 Amer Koleci and Contributors</Copyright>
+    <Copyright>Copyright © 2022 Amer Koleci and Contributors</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/amerkoleci/Vortice.Vulkan</PackageProjectUrl>

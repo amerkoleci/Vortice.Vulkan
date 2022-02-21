@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 205
+	/// VK_HEADER_VERSION = 206
 	/// </summary>
-	public const uint HeaderVersion = 205;
+	public const uint HeaderVersion = 206;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -3350,9 +3350,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint KHRVideoEncodeQueue = 1;
 	/// <summary>
-	/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 3
+	/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 4
 	/// </summary>
-	public const uint KHRVideoEncodeQueueSpecVersion = 3;
+	public const uint KHRVideoEncodeQueueSpecVersion = 4;
 	public const string VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
 	/// <summary>
 	/// VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue"
@@ -3404,9 +3404,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint vulkan_video_codec_h264std_encode = 1;
 	/// <summary>
-	/// VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 3
+	/// VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 5
 	/// </summary>
-	public const uint EXTVideoEncodeH264SpecVersion = 3;
+	public const uint EXTVideoEncodeH264SpecVersion = 5;
 	public const string VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264";
 	/// <summary>
 	/// VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264"
@@ -3510,9 +3510,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VideoEncodeH265ChromaListsNum = 2;
 	/// <summary>
-	/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 4
+	/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 5
 	/// </summary>
-	public const uint EXTVideoEncodeH265SpecVersion = 4;
+	public const uint EXTVideoEncodeH265SpecVersion = 5;
 	public const string VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265";
 	/// <summary>
 	/// VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265"

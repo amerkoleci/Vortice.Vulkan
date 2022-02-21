@@ -7131,6 +7131,18 @@ public partial struct VkVideoEncodeInfoKHR
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkVideoEncodeCapabilitiesKHR
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkVideoEncodeCapabilityFlagsKHR flags;
+	public VkVideoEncodeRateControlModeFlagsKHR rateControlModes;
+	public byte rateControlLayerCount;
+	public byte qualityLevelCount;
+	public VkExtent2D inputImageDataFillAlignment;
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkVideoEncodeRateControlLayerInfoKHR
 {
 	public VkStructureType sType;
@@ -7301,11 +7313,9 @@ public partial struct StdVideoH264PictureParameterSet
 [StructLayout(LayoutKind.Sequential)]
 public partial struct StdVideoEncodeH264SliceHeaderFlags
 {
-	public uint idr_flag;
-	public uint is_reference_flag;
+	public uint direct_spatial_mv_pred_flag;
 	public uint num_ref_idx_active_override_flag;
 	public uint no_output_of_prior_pics_flag;
-	public uint long_term_reference_flag;
 	public uint adaptive_ref_pic_marking_mode_flag;
 	public uint no_prior_references_available_flag;
 }
@@ -7316,6 +7326,12 @@ public partial struct StdVideoEncodeH264PictureInfoFlags
 	public uint idr_flag;
 	public uint is_reference_flag;
 	public uint long_term_reference_flag;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoEncodeH264ReferenceInfoFlags
+{
+	public uint is_long_term;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -7360,8 +7376,16 @@ public partial struct StdVideoEncodeH264PictureInfo
 {
 	public StdVideoEncodeH264PictureInfoFlags flags;
 	public StdVideoH264PictureType pictureType;
-	public uint frameNum;
-	public uint pictureOrderCount;
+	public uint frame_num;
+	public int PicOrderCnt;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoEncodeH264ReferenceInfo
+{
+	public StdVideoEncodeH264ReferenceInfoFlags flags;
+	public uint FrameNum;
+	public int PicOrderCnt;
 	public ushort long_term_pic_num;
 	public ushort long_term_frame_idx;
 }
@@ -7370,6 +7394,7 @@ public partial struct StdVideoEncodeH264PictureInfo
 public partial struct StdVideoEncodeH264SliceHeader
 {
 	public StdVideoEncodeH264SliceHeaderFlags flags;
+	public uint first_mb_in_slice;
 	public StdVideoH264SliceType slice_type;
 	public byte seq_parameter_set_id;
 	public byte pic_parameter_set_id;
@@ -7380,7 +7405,6 @@ public partial struct StdVideoEncodeH264SliceHeader
 	public StdVideoH264DisableDeblockingFilterIdc disable_deblocking_filter_idc;
 	public sbyte slice_alpha_c0_offset_div2;
 	public sbyte slice_beta_offset_div2;
-	public unsafe StdVideoEncodeH264RefMemMgmtCtrlOperations* pMemMgmtCtrlOperations;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -7391,13 +7415,14 @@ public partial struct VkVideoEncodeH264CapabilitiesEXT
 	public VkVideoEncodeH264CapabilityFlagsEXT flags;
 	public VkVideoEncodeH264InputModeFlagsEXT inputModeFlags;
 	public VkVideoEncodeH264OutputModeFlagsEXT outputModeFlags;
-	public VkExtent2D minPictureSizeInMbs;
-	public VkExtent2D maxPictureSizeInMbs;
-	public VkExtent2D inputImageDataAlignment;
-	public byte maxNumL0ReferenceForP;
-	public byte maxNumL0ReferenceForB;
-	public byte maxNumL1Reference;
-	public byte qualityLevelCount;
+	public byte maxPPictureL0ReferenceCount;
+	public byte maxBPictureL0ReferenceCount;
+	public byte maxL1ReferenceCount;
+	public VkBool32 motionVectorsOverPicBoundariesFlag;
+	public uint maxBytesPerPicDenom;
+	public uint maxBitsPerMbDenom;
+	public uint log2MaxMvLengthHorizontal;
+	public uint log2MaxMvLengthVertical;
 	public VkExtensionProperties stdExtensionVersion;
 }
 
@@ -7438,7 +7463,19 @@ public partial struct VkVideoEncodeH264DpbSlotInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public sbyte slotIndex;
-	public unsafe StdVideoEncodeH264PictureInfo* pStdPictureInfo;
+	public unsafe StdVideoEncodeH264ReferenceInfo* pStdReferenceInfo;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkVideoEncodeH264ReferenceListsEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public byte referenceList0EntryCount;
+	public unsafe VkVideoEncodeH264DpbSlotInfoEXT* pReferenceList0Entries;
+	public byte referenceList1EntryCount;
+	public unsafe VkVideoEncodeH264DpbSlotInfoEXT* pReferenceList1Entries;
+	public unsafe StdVideoEncodeH264RefMemMgmtCtrlOperations* pMemMgmtCtrlOperations;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -7446,12 +7483,9 @@ public partial struct VkVideoEncodeH264NaluSliceEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public unsafe StdVideoEncodeH264SliceHeader* pSliceHeaderStd;
 	public uint mbCount;
-	public byte refFinalList0EntryCount;
-	public unsafe VkVideoEncodeH264DpbSlotInfoEXT* pRefFinalList0Entries;
-	public byte refFinalList1EntryCount;
-	public unsafe VkVideoEncodeH264DpbSlotInfoEXT* pRefFinalList1Entries;
+	public unsafe VkVideoEncodeH264ReferenceListsEXT* pReferenceFinalLists;
+	public unsafe StdVideoEncodeH264SliceHeader* pSliceHeaderStd;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -7459,13 +7493,10 @@ public partial struct VkVideoEncodeH264VclFrameInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public byte refDefaultFinalList0EntryCount;
-	public unsafe VkVideoEncodeH264DpbSlotInfoEXT* pRefDefaultFinalList0Entries;
-	public byte refDefaultFinalList1EntryCount;
-	public unsafe VkVideoEncodeH264DpbSlotInfoEXT* pRefDefaultFinalList1Entries;
+	public unsafe VkVideoEncodeH264ReferenceListsEXT* pReferenceFinalLists;
 	public uint naluSliceEntryCount;
 	public unsafe VkVideoEncodeH264NaluSliceEXT* pNaluSliceEntries;
-	public unsafe VkVideoEncodeH264DpbSlotInfoEXT* pCurrentPictureInfo;
+	public unsafe StdVideoEncodeH264PictureInfo* pCurrentPictureInfo;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -7951,7 +7982,6 @@ public partial struct StdVideoEncodeH265SliceSegmentHeader
 	public unsafe sbyte* delta_chroma_offset_l1_13;
 	public unsafe sbyte* delta_chroma_offset_l1_14;
 	public byte MaxNumMergeCand;
-	public sbyte slice_qp_delta;
 	public sbyte slice_cb_qp_offset;
 	public sbyte slice_cr_qp_offset;
 	public sbyte slice_beta_offset_div2;
@@ -8022,12 +8052,22 @@ public partial struct VkVideoEncodeH265CapabilitiesEXT
 	public VkVideoEncodeH265InputModeFlagsEXT inputModeFlags;
 	public VkVideoEncodeH265OutputModeFlagsEXT outputModeFlags;
 	public VkVideoEncodeH265CtbSizeFlagsEXT ctbSizes;
-	public VkExtent2D inputImageDataAlignment;
-	public byte maxNumL0ReferenceForP;
-	public byte maxNumL0ReferenceForB;
-	public byte maxNumL1Reference;
-	public byte maxNumSubLayers;
-	public byte qualityLevelCount;
+	public VkVideoEncodeH265TransformBlockSizeFlagsEXT transformBlockSizes;
+	public byte maxPPictureL0ReferenceCount;
+	public byte maxBPictureL0ReferenceCount;
+	public byte maxL1ReferenceCount;
+	public byte maxSubLayersCount;
+	public byte minLog2MinLumaCodingBlockSizeMinus3;
+	public byte maxLog2MinLumaCodingBlockSizeMinus3;
+	public byte minLog2MinLumaTransformBlockSizeMinus2;
+	public byte maxLog2MinLumaTransformBlockSizeMinus2;
+	public byte minMaxTransformHierarchyDepthInter;
+	public byte maxMaxTransformHierarchyDepthInter;
+	public byte minMaxTransformHierarchyDepthIntra;
+	public byte maxMaxTransformHierarchyDepthIntra;
+	public byte maxDiffCuQpDeltaDepth;
+	public byte minMaxNumMergeCand;
+	public byte maxMaxNumMergeCand;
 	public VkExtensionProperties stdExtensionVersion;
 }
 

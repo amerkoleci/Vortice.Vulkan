@@ -340,6 +340,7 @@ public enum VkStructureType
 	VideoEncodeH264ProfileEXT = 1000038008,
 	VideoEncodeH264RateControlInfoEXT = 1000038009,
 	VideoEncodeH264RateControlLayerInfoEXT = 1000038010,
+	VideoEncodeH264ReferenceListsEXT = 1000038011,
 	VideoEncodeH265CapabilitiesEXT = 1000039000,
 	VideoEncodeH265SessionCreateInfoEXT = 1000039001,
 	VideoEncodeH265SessionParametersCreateInfoEXT = 1000039002,
@@ -625,6 +626,7 @@ public enum VkStructureType
 	VideoEncodeInfoKHR = 1000299000,
 	VideoEncodeRateControlInfoKHR = 1000299001,
 	VideoEncodeRateControlLayerInfoKHR = 1000299002,
+	VideoEncodeCapabilitiesKHR = 1000299003,
 	PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 	DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
 	QueueFamilyCheckpointProperties2NV = 1000314008,
@@ -2602,12 +2604,6 @@ public enum VkToolPurposeFlags
 }
 
 [Flags]
-public enum VkPrivateDataSlotCreateFlags
-{
-	None = 0,
-}
-
-[Flags]
 public enum VkSubmitFlags
 {
 	None = 0,
@@ -3405,11 +3401,11 @@ public enum VkVideoEncodeFlagsKHR
 }
 
 [Flags]
-public enum VkVideoEncodeRateControlFlagsKHR
+public enum VkVideoEncodeCapabilityFlagsKHR
 {
 	None = 0,
 	Default = 0,
-	Reserved0 = 1,
+	PrecedingExternallyEncodedBytes = 1,
 }
 
 [Flags]
@@ -3418,6 +3414,14 @@ public enum VkVideoEncodeRateControlModeFlagsKHR
 	None = 0,
 	Cbr = 1,
 	Vbr = 2,
+}
+
+[Flags]
+public enum VkVideoEncodeRateControlFlagsKHR
+{
+	None = 0,
+	Default = 0,
+	Reserved0 = 1,
 }
 
 public enum StdVideoH264ChromaFormatIdc
@@ -3571,17 +3575,29 @@ public enum StdVideoH264NonVclNaluType
 public enum VkVideoEncodeH264CapabilityFlagsEXT
 {
 	None = 0,
-	Cabac = 1,
-	Cavlc = 2,
-	WeightedBiPredImplicit = 4,
-	Transform8x8 = 8,
-	ChromaQpOffset = 16,
-	SecondChromaQpOffset = 32,
-	DeblockingFilterDisabled = 64,
-	DeblockingFilterEnabled = 128,
-	DeblockingFilterPartial = 256,
-	MultipleSlicePerFrame = 512,
-	EvenlyDistributedSliceSize = 1024,
+	Direct8x8Inference = 1,
+	SeparateColourPlane = 2,
+	QpprimeYZeroTransformBypass = 4,
+	ScalingLists = 8,
+	HrdCompliance = 16,
+	ChromaQpOffset = 32,
+	SecondChromaQpOffset = 64,
+	PicInitQpMinus26 = 128,
+	WeightedPred = 256,
+	WeightedBipredExplicit = 512,
+	WeightedBipredImplicit = 1024,
+	WeightedPredNoTable = 2048,
+	Transform8x8 = 4096,
+	Cabac = 8192,
+	Cavlc = 16384,
+	DeblockingFilterDisabled = 32768,
+	DeblockingFilterEnabled = 65536,
+	DeblockingFilterPartial = 131072,
+	DisableDirectSpatialMvPred = 262144,
+	MultipleSlicePerFrame = 524288,
+	SliceMbCount = 1048576,
+	RowUnalignedSlice = 2097152,
+	DifferentSliceType = 4194304,
 }
 
 [Flags]
@@ -3674,6 +3690,36 @@ public enum StdVideoH265PictureType
 }
 
 [Flags]
+public enum VkVideoEncodeH265CapabilityFlagsEXT
+{
+	None = 0,
+	SeparateColourPlane = 1,
+	ScalingLists = 2,
+	SampleAdaptiveOffsetEnabled = 4,
+	PcmEnable = 8,
+	SpsTemporalMvpEnabled = 16,
+	HrdCompliance = 32,
+	InitQpMinus26 = 64,
+	Log2ParallelMergeLevelMinus2 = 128,
+	SignDataHidingEnabled = 256,
+	TransformSkipEnabled = 512,
+	PpsSliceChromaQpOffsetsPresent = 1024,
+	WeightedPred = 2048,
+	WeightedBipred = 4096,
+	WeightedPredNoTable = 8192,
+	TransquantBypassEnabled = 16384,
+	EntropyCodingSyncEnabled = 32768,
+	DeblockingFilterOverrideEnabled = 65536,
+	MultipleTilePerFrame = 131072,
+	MultipleSlicePerTile = 262144,
+	MultipleTilePerSlice = 524288,
+	SliceSegmentCtbCount = 1048576,
+	RowUnalignedSliceSegment = 2097152,
+	DependentSliceSegment = 4194304,
+	DifferentSliceType = 8388608,
+}
+
+[Flags]
 public enum VkVideoEncodeH265InputModeFlagsEXT
 {
 	None = 0,
@@ -3695,10 +3741,19 @@ public enum VkVideoEncodeH265OutputModeFlagsEXT
 public enum VkVideoEncodeH265CtbSizeFlagsEXT
 {
 	None = 0,
-	_8 = 1,
-	_16 = 2,
-	_32 = 4,
-	_64 = 8,
+	_16 = 1,
+	_32 = 2,
+	_64 = 4,
+}
+
+[Flags]
+public enum VkVideoEncodeH265TransformBlockSizeFlagsEXT
+{
+	None = 0,
+	_4 = 1,
+	_8 = 2,
+	_16 = 4,
+	_32 = 8,
 }
 
 [Flags]
@@ -3830,6 +3885,12 @@ public enum VkCommandPoolTrimFlags
 
 [Flags]
 public enum VkDescriptorUpdateTemplateCreateFlags
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkPrivateDataSlotCreateFlags
 {
 	None = 0,
 }
@@ -4112,12 +4173,6 @@ public enum VkVideoBeginCodingFlagsKHR
 
 [Flags]
 public enum VkVideoEndCodingFlagsKHR
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkVideoEncodeH265CapabilityFlagsEXT
 {
 	None = 0,
 }

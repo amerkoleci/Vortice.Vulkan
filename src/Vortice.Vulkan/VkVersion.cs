@@ -3,9 +3,9 @@
 
 namespace Vortice.Vulkan;
 
-public readonly struct VkVersion : IEquatable<VkVersion>, IComparable<VkVersion>
+public readonly struct VkVersion : IComparable, IComparable<VkVersion>, IEquatable<VkVersion>, IFormattable
 {
-    private readonly uint _value;
+    public readonly uint Value;
 
     public static readonly VkVersion Version_1_0 = new(0, 1, 0, 0);
     public static readonly VkVersion Version_1_1 = new(0, 1, 1, 0);
@@ -14,34 +14,64 @@ public readonly struct VkVersion : IEquatable<VkVersion>, IComparable<VkVersion>
 
     public VkVersion(uint value)
     {
-        _value = value;
+        Value = value;
     }
 
     public VkVersion(uint variant, uint major, uint minor, uint patch)
     {
-        _value = (variant << 29) | (major << 22) | (minor << 12) | patch;
+        Value = (variant << 29) | (major << 22) | (minor << 12) | patch;
     }
 
     public VkVersion(uint major, uint minor, uint patch)
     {
-        _value = (major << 22) | (minor << 12) | patch;
+        Value = (major << 22) | (minor << 12) | patch;
     }
 
-    public uint Variant => _value >> 29;
+    public uint Variant => Value >> 29;
 
-    public uint Major => ((_value >> 22) & 0x7Fu);
+    public uint Major => ((Value >> 22) & 0x7Fu);
 
-    public uint Minor => ((_value >> 12) & 0x3FFu);
+    public uint Minor => ((Value >> 12) & 0x3FFu);
 
-    public uint Patch => _value & 0xfffu;
+    public uint Patch => Value & 0xfffu;
 
-    public static implicit operator uint(VkVersion version)
+    public static bool operator ==(VkVersion left, VkVersion right) => left.Value == right.Value;
+
+    public static bool operator !=(VkVersion left, VkVersion right) => left.Value != right.Value;
+
+    public static bool operator <(VkVersion left, VkVersion right) => left.Value < right.Value;
+
+    public static bool operator <=(VkVersion left, VkVersion right) => left.Value <= right.Value;
+
+    public static bool operator >(VkVersion left, VkVersion right) => left.Value > right.Value;
+
+    public static bool operator >=(VkVersion left, VkVersion right) => left.Value >= right.Value;
+
+
+    public static implicit operator uint(VkVersion version) => version.Value;
+
+    public int CompareTo(object? obj)
     {
-        return version._value;
+        if (obj is VkVersion other)
+        {
+            return CompareTo(other);
+        }
+
+        throw new ArgumentException($"obj is not an instance of {nameof(VkVersion)}.");
     }
+
+    public int CompareTo(VkVersion other) => Value.CompareTo(other.Value);
+
+    public override bool Equals(object? obj) => (obj is VkVersion other) && Equals(other);
+
+    public bool Equals(VkVersion other) => Value == other.Value;
+
+    public override int GetHashCode() => Value.GetHashCode();
 
     public override string ToString() => $"{Variant}.{Major}.{Minor}.{Patch}";
 
-    public bool Equals(VkVersion other) => _value == other._value;
-    public int CompareTo(VkVersion other) => _value.CompareTo(other._value);
+    public string ToString(string? format, IFormatProvider? formatProvider)
+    {
+        return $"{Variant.ToString(format, formatProvider)}.{Major.ToString(format, formatProvider)}.{Minor.ToString(format, formatProvider)}.{Patch.ToString(format, formatProvider)}";
+    }
 }
