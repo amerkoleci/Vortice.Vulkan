@@ -92,14 +92,14 @@ public static unsafe partial class Vulkan
     private static void GenLoadLoader(IntPtr context, LoadFunction load)
     {
 #if NET5_0_OR_GREATER
-            vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
-            vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<byte*, uint*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
-            vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<uint*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
-            vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<out uint, VkResult>)load(context, "vkEnumerateInstanceVersion");
+        vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
+        vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<byte*, int*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
+        vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<int*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
+        vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<out uint, VkResult>)load(context, "vkEnumerateInstanceVersion");
 #else
         vkCreateInstance_ptr = (delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
-        vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged[Stdcall]<byte*, uint*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
-        vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged[Stdcall]<uint*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
+        vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged[Stdcall]<byte*, int*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
+        vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged[Stdcall]<int*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
         vkEnumerateInstanceVersion_ptr = (delegate* unmanaged[Stdcall]<out uint, VkResult>)load(context, "vkEnumerateInstanceVersion");
 #endif
     }
@@ -141,7 +141,7 @@ public static unsafe partial class Vulkan
         byte* dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
         Interop.StringToPointer(layerName, dstLayerNamePtr, dstLayerNameByteCount);
 
-        uint count = 0;
+        int count = 0;
         vkEnumerateInstanceExtensionProperties(dstLayerNamePtr, &count, null).CheckResult();
 
         ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[count];
@@ -166,7 +166,7 @@ public static unsafe partial class Vulkan
         byte* dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
         Interop.StringToPointer(layerName, dstLayerNamePtr, dstLayerNameByteCount);
 
-        uint propertyCount = 0;
+        int propertyCount = 0;
         vkEnumerateDeviceExtensionProperties(physicalDevice, dstLayerNamePtr, &propertyCount, null).CheckResult();
 
         ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[propertyCount];
@@ -305,7 +305,7 @@ public static unsafe partial class Vulkan
         {
             fixed (VkPipeline* pipelinesPtr = pipelines)
             {
-                return vkCreateGraphicsPipelines(device, pipelineCache, (uint)createInfos.Length, createInfosPtr, null, pipelinesPtr);
+                return vkCreateGraphicsPipelines(device, pipelineCache, createInfos.Length, createInfosPtr, null, pipelinesPtr);
             }
         }
     }
@@ -341,7 +341,7 @@ public static unsafe partial class Vulkan
         {
             fixed (VkPipeline* pipelinesPtr = pipelines)
             {
-                return vkCreateComputePipelines(device, pipelineCache, (uint)createInfos.Length, createInfosPtr, null, pipelinesPtr);
+                return vkCreateComputePipelines(device, pipelineCache, createInfos.Length, createInfosPtr, null, pipelinesPtr);
             }
         }
     }
@@ -394,7 +394,7 @@ public static unsafe partial class Vulkan
     {
         fixed (VkWriteDescriptorSet* writeDescriptorSetsPtr = writeDescriptorSets)
         {
-            vkUpdateDescriptorSets(device, (uint)writeDescriptorSets.Length, writeDescriptorSetsPtr, 0, null);
+            vkUpdateDescriptorSets(device, (int)writeDescriptorSets.Length, writeDescriptorSetsPtr, 0, null);
         }
     }
 
@@ -404,12 +404,12 @@ public static unsafe partial class Vulkan
         {
             fixed (VkCopyDescriptorSet* copyDescriptorSetsPtr = copyDescriptorSets)
             {
-                vkUpdateDescriptorSets(device, (uint)writeDescriptorSets.Length, writeDescriptorSetsPtr, (uint)copyDescriptorSets.Length, copyDescriptorSetsPtr);
+                vkUpdateDescriptorSets(device, writeDescriptorSets.Length, writeDescriptorSetsPtr, (int)copyDescriptorSets.Length, copyDescriptorSetsPtr);
             }
         }
     }
 
-    public static void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* descriptorSets)
+    public static void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, int descriptorSetCount, VkDescriptorSet* descriptorSets)
     {
         vkCmdBindDescriptorSets(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, descriptorSets, 0, null);
     }
@@ -423,7 +423,7 @@ public static unsafe partial class Vulkan
     {
         fixed (VkDescriptorSet* descriptorSetsPtr = descriptorSets)
         {
-            vkCmdBindDescriptorSets(commandBuffer, pipelineBindPoint, layout, firstSet, (uint)descriptorSets.Length, descriptorSetsPtr, 0, null);
+            vkCmdBindDescriptorSets(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSets.Length, descriptorSetsPtr, 0, null);
         }
     }
 
@@ -439,7 +439,7 @@ public static unsafe partial class Vulkan
         {
             fixed (uint* dynamicOffsetsPtr = dynamicOffsets)
             {
-                vkCmdBindDescriptorSets(commandBuffer, pipelineBindPoint, layout, firstSet, (uint)descriptorSets.Length, descriptorSetsPtr, (uint)dynamicOffsets.Length, dynamicOffsetsPtr);
+                vkCmdBindDescriptorSets(commandBuffer, pipelineBindPoint, layout, firstSet, (int)descriptorSets.Length, descriptorSetsPtr, dynamicOffsets.Length, dynamicOffsetsPtr);
             }
         }
     }
@@ -455,7 +455,7 @@ public static unsafe partial class Vulkan
         {
             fixed (ulong* offsetPtr = offsets)
             {
-                vkCmdBindVertexBuffers(commandBuffer, firstBinding, (uint)buffers.Length, buffersPtr, offsetPtr);
+                vkCmdBindVertexBuffers(commandBuffer, firstBinding, buffers.Length, buffersPtr, offsetPtr);
             }
         }
     }
@@ -469,7 +469,7 @@ public static unsafe partial class Vulkan
     {
         fixed (VkCommandBuffer* commandBuffersPtr = secondaryCommandBuffers)
         {
-            vkCmdExecuteCommands(commandBuffer, (uint)secondaryCommandBuffers.Length, commandBuffersPtr);
+            vkCmdExecuteCommands(commandBuffer, secondaryCommandBuffers.Length, commandBuffersPtr);
         }
     }
 
@@ -520,7 +520,7 @@ public static unsafe partial class Vulkan
 
     public static void vkFreeCommandBuffers(VkDevice device, VkCommandPool commandPool, VkCommandBuffer commandBuffer)
     {
-        vkFreeCommandBuffers(device, commandPool, 1u, &commandBuffer);
+        vkFreeCommandBuffers(device, commandPool, 1, &commandBuffer);
     }
 
     public static VkResult vkBeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferUsageFlags flags)

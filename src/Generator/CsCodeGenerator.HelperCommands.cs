@@ -8,53 +8,53 @@ namespace Generator;
 
 public static partial class CsCodeGenerator
 {
-    private static readonly HashSet<string> s_outArrayReturnFunctions = new HashSet<string>
-        {
-            "vkEnumeratePhysicalDevices",
-            "vkGetPhysicalDeviceQueueFamilyProperties",
-            // "vkEnumerateInstanceExtensionProperties",
-            //"vkEnumerateDeviceExtensionProperties",
-            "vkEnumerateInstanceLayerProperties",
-            "vkEnumerateDeviceLayerProperties",
+    private static readonly HashSet<string> s_outArrayReturnFunctions = new()
+    {
+        "vkEnumeratePhysicalDevices",
+        "vkGetPhysicalDeviceQueueFamilyProperties",
+        // "vkEnumerateInstanceExtensionProperties",
+        //"vkEnumerateDeviceExtensionProperties",
+        "vkEnumerateInstanceLayerProperties",
+        "vkEnumerateDeviceLayerProperties",
 
-            "vkQueueSubmit",
-            "vkFlushMappedMemoryRanges",
-            "vkInvalidateMappedMemoryRanges",
+        "vkQueueSubmit",
+        "vkFlushMappedMemoryRanges",
+        "vkInvalidateMappedMemoryRanges",
 
-            "vkGetImageSparseMemoryRequirements",
-            "vkGetPhysicalDeviceSparseImageFormatProperties",
-            "vkQueueBindSparse",
-            "vkResetFences",
-            "vkWaitForFences",
-            //"vkGetQueryPoolResults",
+        "vkGetImageSparseMemoryRequirements",
+        "vkGetPhysicalDeviceSparseImageFormatProperties",
+        "vkQueueBindSparse",
+        "vkResetFences",
+        "vkWaitForFences",
+        //"vkGetQueryPoolResults",
 
-            "vkMergePipelineCaches",
-            "vkFreeDescriptorSets",
-            //"vkUpdateDescriptorSets",
+        "vkMergePipelineCaches",
+        "vkFreeDescriptorSets",
+        //"vkUpdateDescriptorSets",
 
-            "vkCmdSetViewport",
-            "vkCmdSetScissor",
-            //"vkCmdBindDescriptorSets",
+        "vkCmdSetViewport",
+        "vkCmdSetScissor",
+        //"vkCmdBindDescriptorSets",
 
-            "vkBindBufferMemory2",
-            "vkBindImageMemory2",
-            "vkGetImageSparseMemoryRequirements2",
-            "vkGetPhysicalDeviceQueueFamilyProperties2",
-            "vkGetPhysicalDeviceSparseImageFormatProperties2",
+        "vkBindBufferMemory2",
+        "vkBindImageMemory2",
+        "vkGetImageSparseMemoryRequirements2",
+        "vkGetPhysicalDeviceQueueFamilyProperties2",
+        "vkGetPhysicalDeviceSparseImageFormatProperties2",
 
-            "vkGetPhysicalDeviceSurfaceFormatsKHR",
-            "vkGetPhysicalDeviceSurfacePresentModesKHR",
-            "vkGetSwapchainImagesKHR",
-            "vkGetPhysicalDevicePresentRectanglesKHR",
-            "vkGetPhysicalDeviceDisplayPropertiesKHR",
-            "vkGetPhysicalDeviceDisplayPlanePropertiesKHR",
-            "vkGetDisplayPlaneSupportedDisplaysKHR",
-            "vkGetDisplayModePropertiesKHR",
+        "vkGetPhysicalDeviceSurfaceFormatsKHR",
+        "vkGetPhysicalDeviceSurfacePresentModesKHR",
+        "vkGetSwapchainImagesKHR",
+        "vkGetPhysicalDevicePresentRectanglesKHR",
+        "vkGetPhysicalDeviceDisplayPropertiesKHR",
+        "vkGetPhysicalDeviceDisplayPlanePropertiesKHR",
+        "vkGetDisplayPlaneSupportedDisplaysKHR",
+        "vkGetDisplayModePropertiesKHR",
 
-            "vkGetPhysicalDeviceQueueFamilyProperties2KHR",
-            "vkGetPhysicalDeviceSparseImageFormatProperties2KHR",
-            "vkEnumeratePhysicalDeviceGroupsKHR",
-        };
+        "vkGetPhysicalDeviceQueueFamilyProperties2KHR",
+        "vkGetPhysicalDeviceSparseImageFormatProperties2KHR",
+        "vkEnumeratePhysicalDeviceGroupsKHR",
+    };
 
     private static void GenerateHelperCommands(CppCompilation compilation, string outputPath)
     {
@@ -68,16 +68,11 @@ public static partial class CsCodeGenerator
         using (writer.PushBlock($"unsafe partial class Vulkan"))
         {
             // Generate methods with array calls
-            foreach (var function in compilation.Functions)
+            foreach (CppFunction function in compilation.Functions)
             {
                 if (!s_outArrayReturnFunctions.Contains(function.Name))
                 {
                     continue;
-                }
-
-                if (function.Name == "vkGetPhysicalDeviceSurfacePresentModesKHR")
-                {
-
                 }
 
                 // Find count and array return type.
@@ -119,7 +114,7 @@ public static partial class CsCodeGenerator
                     newParameters.Add(parameter);
                 }
 
-                var csCountParameterType = "uint";
+                var csCountParameterType = "int";
                 if (!hasArrayReturn)
                 {
                     // Calls without return array.
@@ -201,7 +196,7 @@ public static partial class CsCodeGenerator
                 }
                 else
                 {
-                    var argumentsString = GetParameterSignature(newParameters, false);
+                    var argumentsString = GetParameterSignature(newParameters, false, function.Name);
                     var returnType = $"ReadOnlySpan<{returnArrayTypeName}>";
 
                     using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsString})"))
@@ -210,10 +205,10 @@ public static partial class CsCodeGenerator
                         writer.WriteLine($"{csCountParameterType} {countParameterName} = 0;");
 
                         var invokeParameters = new List<string>(newParameters.Select(item => GetParameterName(item.Name)))
-                            {
-                                $"&{countParameterName}",
-                                "null"
-                            };
+                        {
+                            $"&{countParameterName}",
+                            "null"
+                        };
 
                         EmitInvoke(writer, function, invokeParameters);
 
@@ -273,7 +268,15 @@ public static partial class CsCodeGenerator
 
         invokeSingleElementParameters.Add("1");
         invokeSingleElementParameters.Add($"&{singleName}");
-        invokeElementsParameters.Add($"({csCountParameterType}){returnVariableName}.Length");
+        if (csCountParameterType != "int")
+        {
+            invokeElementsParameters.Add($"({csCountParameterType}){returnVariableName}.Length");
+        }
+        else
+        {
+            invokeElementsParameters.Add($"{returnVariableName}.Length");
+        }
+
         invokeElementsParameters.Add($"{returnVariableName}Ptr");
     }
 

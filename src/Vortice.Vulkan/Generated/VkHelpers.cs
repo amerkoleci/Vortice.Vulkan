@@ -17,7 +17,7 @@ unsafe partial class Vulkan
 {
 	public static ReadOnlySpan<VkPhysicalDevice> vkEnumeratePhysicalDevices(VkInstance instance)
 	{
-		uint physicalDeviceCount = 0;
+		int physicalDeviceCount = 0;
 		vkEnumeratePhysicalDevices(instance, &physicalDeviceCount, null).CheckResult();
 
 		ReadOnlySpan<VkPhysicalDevice> physicalDevices = new VkPhysicalDevice[physicalDeviceCount];
@@ -30,7 +30,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkQueueFamilyProperties> vkGetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice)
 	{
-		uint queueFamilyPropertyCount = 0;
+		int queueFamilyPropertyCount = 0;
 		vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, &queueFamilyPropertyCount, null);
 
 		ReadOnlySpan<VkQueueFamilyProperties> queueFamilyProperties = new VkQueueFamilyProperties[queueFamilyPropertyCount];
@@ -43,7 +43,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkLayerProperties> vkEnumerateInstanceLayerProperties()
 	{
-		uint propertyCount = 0;
+		int propertyCount = 0;
 		vkEnumerateInstanceLayerProperties(&propertyCount, null).CheckResult();
 
 		ReadOnlySpan<VkLayerProperties> properties = new VkLayerProperties[propertyCount];
@@ -56,7 +56,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkLayerProperties> vkEnumerateDeviceLayerProperties(VkPhysicalDevice physicalDevice)
 	{
-		uint propertyCount = 0;
+		int propertyCount = 0;
 		vkEnumerateDeviceLayerProperties(physicalDevice, &propertyCount, null).CheckResult();
 
 		ReadOnlySpan<VkLayerProperties> properties = new VkLayerProperties[propertyCount];
@@ -76,7 +76,7 @@ unsafe partial class Vulkan
 	{
 		fixed (VkSubmitInfo* submitsPtr = submits)
 		{
-			return vkQueueSubmit(queue, (uint)submits.Length, submitsPtr, fence);
+			return vkQueueSubmit(queue, submits.Length, submitsPtr, fence);
 		}
 	}
 
@@ -89,7 +89,7 @@ unsafe partial class Vulkan
 	{
 		fixed (VkMappedMemoryRange* memoryRangesPtr = memoryRanges)
 		{
-			return vkFlushMappedMemoryRanges(device, (uint)memoryRanges.Length, memoryRangesPtr);
+			return vkFlushMappedMemoryRanges(device, memoryRanges.Length, memoryRangesPtr);
 		}
 	}
 
@@ -102,13 +102,13 @@ unsafe partial class Vulkan
 	{
 		fixed (VkMappedMemoryRange* memoryRangesPtr = memoryRanges)
 		{
-			return vkInvalidateMappedMemoryRanges(device, (uint)memoryRanges.Length, memoryRangesPtr);
+			return vkInvalidateMappedMemoryRanges(device, memoryRanges.Length, memoryRangesPtr);
 		}
 	}
 
 	public static ReadOnlySpan<VkSparseImageMemoryRequirements> vkGetImageSparseMemoryRequirements(VkDevice device, VkImage image)
 	{
-		uint sparseMemoryRequirementCount = 0;
+		int sparseMemoryRequirementCount = 0;
 		vkGetImageSparseMemoryRequirements(device, image, &sparseMemoryRequirementCount, null);
 
 		ReadOnlySpan<VkSparseImageMemoryRequirements> sparseMemoryRequirements = new VkSparseImageMemoryRequirements[sparseMemoryRequirementCount];
@@ -121,7 +121,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkSparseImageFormatProperties> vkGetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling)
 	{
-		uint propertyCount = 0;
+		int propertyCount = 0;
 		vkGetPhysicalDeviceSparseImageFormatProperties(physicalDevice, format, type, samples, usage, tiling, &propertyCount, null);
 
 		ReadOnlySpan<VkSparseImageFormatProperties> properties = new VkSparseImageFormatProperties[propertyCount];
@@ -141,7 +141,7 @@ unsafe partial class Vulkan
 	{
 		fixed (VkBindSparseInfo* bindInfoPtr = bindInfo)
 		{
-			return vkQueueBindSparse(queue, (uint)bindInfo.Length, bindInfoPtr, fence);
+			return vkQueueBindSparse(queue, bindInfo.Length, bindInfoPtr, fence);
 		}
 	}
 
@@ -154,7 +154,7 @@ unsafe partial class Vulkan
 	{
 		fixed (VkFence* fencesPtr = fences)
 		{
-			return vkResetFences(device, (uint)fences.Length, fencesPtr);
+			return vkResetFences(device, fences.Length, fencesPtr);
 		}
 	}
 
@@ -167,7 +167,7 @@ unsafe partial class Vulkan
 	{
 		fixed (VkFence* fencesPtr = fences)
 		{
-			return vkWaitForFences(device, (uint)fences.Length, fencesPtr, waitAll, timeout);
+			return vkWaitForFences(device, fences.Length, fencesPtr, waitAll, timeout);
 		}
 	}
 
@@ -180,7 +180,7 @@ unsafe partial class Vulkan
 	{
 		fixed (VkPipelineCache* srcCachesPtr = srcCaches)
 		{
-			return vkMergePipelineCaches(device, dstCache, (uint)srcCaches.Length, srcCachesPtr);
+			return vkMergePipelineCaches(device, dstCache, srcCaches.Length, srcCachesPtr);
 		}
 	}
 
@@ -193,7 +193,7 @@ unsafe partial class Vulkan
 	{
 		fixed (VkDescriptorSet* descriptorSetsPtr = descriptorSets)
 		{
-			return vkFreeDescriptorSets(device, descriptorPool, (uint)descriptorSets.Length, descriptorSetsPtr);
+			return vkFreeDescriptorSets(device, descriptorPool, descriptorSets.Length, descriptorSetsPtr);
 		}
 	}
 
@@ -206,7 +206,7 @@ unsafe partial class Vulkan
 	{
 		fixed (VkViewport* viewportsPtr = viewports)
 		{
-			vkCmdSetViewport(commandBuffer, firstViewport, (uint)viewports.Length, viewportsPtr);
+			vkCmdSetViewport(commandBuffer, firstViewport, viewports.Length, viewportsPtr);
 		}
 	}
 
@@ -219,7 +219,7 @@ unsafe partial class Vulkan
 	{
 		fixed (VkRect2D* scissorsPtr = scissors)
 		{
-			vkCmdSetScissor(commandBuffer, firstScissor, (uint)scissors.Length, scissorsPtr);
+			vkCmdSetScissor(commandBuffer, firstScissor, scissors.Length, scissorsPtr);
 		}
 	}
 
@@ -232,7 +232,7 @@ unsafe partial class Vulkan
 	{
 		fixed (VkBindBufferMemoryInfo* bindInfosPtr = bindInfos)
 		{
-			return vkBindBufferMemory2(device, (uint)bindInfos.Length, bindInfosPtr);
+			return vkBindBufferMemory2(device, bindInfos.Length, bindInfosPtr);
 		}
 	}
 
@@ -245,13 +245,13 @@ unsafe partial class Vulkan
 	{
 		fixed (VkBindImageMemoryInfo* bindInfosPtr = bindInfos)
 		{
-			return vkBindImageMemory2(device, (uint)bindInfos.Length, bindInfosPtr);
+			return vkBindImageMemory2(device, bindInfos.Length, bindInfosPtr);
 		}
 	}
 
 	public static ReadOnlySpan<VkSparseImageMemoryRequirements2> vkGetImageSparseMemoryRequirements2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info)
 	{
-		uint sparseMemoryRequirementCount = 0;
+		int sparseMemoryRequirementCount = 0;
 		vkGetImageSparseMemoryRequirements2(device, info, &sparseMemoryRequirementCount, null);
 
 		ReadOnlySpan<VkSparseImageMemoryRequirements2> sparseMemoryRequirements = new VkSparseImageMemoryRequirements2[sparseMemoryRequirementCount];
@@ -264,7 +264,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkQueueFamilyProperties2> vkGetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice)
 	{
-		uint queueFamilyPropertyCount = 0;
+		int queueFamilyPropertyCount = 0;
 		vkGetPhysicalDeviceQueueFamilyProperties2(physicalDevice, &queueFamilyPropertyCount, null);
 
 		ReadOnlySpan<VkQueueFamilyProperties2> queueFamilyProperties = new VkQueueFamilyProperties2[queueFamilyPropertyCount];
@@ -277,7 +277,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkSparseImageFormatProperties2> vkGetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo)
 	{
-		uint propertyCount = 0;
+		int propertyCount = 0;
 		vkGetPhysicalDeviceSparseImageFormatProperties2(physicalDevice, formatInfo, &propertyCount, null);
 
 		ReadOnlySpan<VkSparseImageFormatProperties2> properties = new VkSparseImageFormatProperties2[propertyCount];
@@ -290,7 +290,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkSurfaceFormatKHR> vkGetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface)
 	{
-		uint surfaceFormatCount = 0;
+		int surfaceFormatCount = 0;
 		vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, &surfaceFormatCount, null).CheckResult();
 
 		ReadOnlySpan<VkSurfaceFormatKHR> surfaceFormats = new VkSurfaceFormatKHR[surfaceFormatCount];
@@ -303,7 +303,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkPresentModeKHR> vkGetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface)
 	{
-		uint presentModeCount = 0;
+		int presentModeCount = 0;
 		vkGetPhysicalDeviceSurfacePresentModesKHR(physicalDevice, surface, &presentModeCount, null).CheckResult();
 
 		ReadOnlySpan<VkPresentModeKHR> presentModes = new VkPresentModeKHR[presentModeCount];
@@ -316,7 +316,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkImage> vkGetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain)
 	{
-		uint swapchainImageCount = 0;
+		int swapchainImageCount = 0;
 		vkGetSwapchainImagesKHR(device, swapchain, &swapchainImageCount, null).CheckResult();
 
 		ReadOnlySpan<VkImage> swapchainImages = new VkImage[swapchainImageCount];
@@ -329,7 +329,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkRect2D> vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface)
 	{
-		uint rectCount = 0;
+		int rectCount = 0;
 		vkGetPhysicalDevicePresentRectanglesKHR(physicalDevice, surface, &rectCount, null).CheckResult();
 
 		ReadOnlySpan<VkRect2D> rects = new VkRect2D[rectCount];
@@ -342,7 +342,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkDisplayPropertiesKHR> vkGetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice)
 	{
-		uint propertyCount = 0;
+		int propertyCount = 0;
 		vkGetPhysicalDeviceDisplayPropertiesKHR(physicalDevice, &propertyCount, null).CheckResult();
 
 		ReadOnlySpan<VkDisplayPropertiesKHR> properties = new VkDisplayPropertiesKHR[propertyCount];
@@ -355,7 +355,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkDisplayPlanePropertiesKHR> vkGetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice)
 	{
-		uint propertyCount = 0;
+		int propertyCount = 0;
 		vkGetPhysicalDeviceDisplayPlanePropertiesKHR(physicalDevice, &propertyCount, null).CheckResult();
 
 		ReadOnlySpan<VkDisplayPlanePropertiesKHR> properties = new VkDisplayPlanePropertiesKHR[propertyCount];
@@ -368,7 +368,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkDisplayKHR> vkGetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex)
 	{
-		uint displayCount = 0;
+		int displayCount = 0;
 		vkGetDisplayPlaneSupportedDisplaysKHR(physicalDevice, planeIndex, &displayCount, null).CheckResult();
 
 		ReadOnlySpan<VkDisplayKHR> displays = new VkDisplayKHR[displayCount];
@@ -381,7 +381,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkDisplayModePropertiesKHR> vkGetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display)
 	{
-		uint propertyCount = 0;
+		int propertyCount = 0;
 		vkGetDisplayModePropertiesKHR(physicalDevice, display, &propertyCount, null).CheckResult();
 
 		ReadOnlySpan<VkDisplayModePropertiesKHR> properties = new VkDisplayModePropertiesKHR[propertyCount];
@@ -394,7 +394,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkQueueFamilyProperties2> vkGetPhysicalDeviceQueueFamilyProperties2KHR(VkPhysicalDevice physicalDevice)
 	{
-		uint queueFamilyPropertyCount = 0;
+		int queueFamilyPropertyCount = 0;
 		vkGetPhysicalDeviceQueueFamilyProperties2KHR(physicalDevice, &queueFamilyPropertyCount, null);
 
 		ReadOnlySpan<VkQueueFamilyProperties2> queueFamilyProperties = new VkQueueFamilyProperties2[queueFamilyPropertyCount];
@@ -407,7 +407,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkSparseImageFormatProperties2> vkGetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo)
 	{
-		uint propertyCount = 0;
+		int propertyCount = 0;
 		vkGetPhysicalDeviceSparseImageFormatProperties2KHR(physicalDevice, formatInfo, &propertyCount, null);
 
 		ReadOnlySpan<VkSparseImageFormatProperties2> properties = new VkSparseImageFormatProperties2[propertyCount];
@@ -420,7 +420,7 @@ unsafe partial class Vulkan
 
 	public static ReadOnlySpan<VkPhysicalDeviceGroupProperties> vkEnumeratePhysicalDeviceGroupsKHR(VkInstance instance)
 	{
-		uint physicalDeviceGroupCount = 0;
+		int physicalDeviceGroupCount = 0;
 		vkEnumeratePhysicalDeviceGroupsKHR(instance, &physicalDeviceGroupCount, null).CheckResult();
 
 		ReadOnlySpan<VkPhysicalDeviceGroupProperties> physicalDeviceGroupProperties = new VkPhysicalDeviceGroupProperties[physicalDeviceGroupCount];

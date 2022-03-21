@@ -8,112 +8,112 @@ namespace Generator;
 
 public static partial class CsCodeGenerator
 {
-    private static readonly HashSet<string> s_instanceFunctions = new HashSet<string>
-        {
-            "vkGetDeviceProcAddr",
-            "vkCmdBeginDebugUtilsLabelEXT",
-            "vkCmdEndDebugUtilsLabelEXT",
-            "vkCmdInsertDebugUtilsLabelEXT",
-            "vkCreateDebugUtilsMessengerEXT",
-            "vkDestroyDebugUtilsMessengerEXT",
-            "vkQueueBeginDebugUtilsLabelEXT",
-            "vkQueueEndDebugUtilsLabelEXT",
-            "vkQueueInsertDebugUtilsLabelEXT",
-            "vkSetDebugUtilsObjectNameEXT",
-            "vkSetDebugUtilsObjectTagEXT",
-            "vkSubmitDebugUtilsMessageEXT"
-        };
+    private static readonly HashSet<string> s_instanceFunctions = new()
+    {
+        "vkGetDeviceProcAddr",
+        "vkCmdBeginDebugUtilsLabelEXT",
+        "vkCmdEndDebugUtilsLabelEXT",
+        "vkCmdInsertDebugUtilsLabelEXT",
+        "vkCreateDebugUtilsMessengerEXT",
+        "vkDestroyDebugUtilsMessengerEXT",
+        "vkQueueBeginDebugUtilsLabelEXT",
+        "vkQueueEndDebugUtilsLabelEXT",
+        "vkQueueInsertDebugUtilsLabelEXT",
+        "vkSetDebugUtilsObjectNameEXT",
+        "vkSetDebugUtilsObjectTagEXT",
+        "vkSubmitDebugUtilsMessageEXT"
+    };
 
-    private static readonly HashSet<string> s_outReturnFunctions = new HashSet<string>
-        {
-            "vkCreateInstance",
-            "vkCreateDevice",
-            "vkGetPhysicalDeviceFeatures",
-            "vkGetPhysicalDeviceFormatProperties",
-            "vkGetPhysicalDeviceImageFormatProperties",
-            "vkGetPhysicalDeviceProperties",
-            "vkGetPhysicalDeviceMemoryProperties",
-            "vkGetDeviceQueue",
-            "vkGetDeviceMemoryCommitment",
-            "vkGetBufferMemoryRequirements",
-            "vkGetImageMemoryRequirements",
-            "vkAllocateMemory",
-            "vkCreateAndroidSurfaceKHR",
-            "vkCreateWin32SurfaceKHR",
-            "vkCreateXlibSurfaceKHR",
-            "vkCreateWaylandSurfaceKHR",
-            "vkCreateMetalSurfaceEXT",
-            "vkCreateIOSSurfaceMVK",
-            "vkCreateMacOSSurfaceMVK",
-            "vkCreateFence",
-            "vkCreateSemaphore",
-            "vkCreateEvent",
-            "vkCreateQueryPool",
-            "vkCreateBuffer",
-            "vkCreateBufferView",
-            "vkCreateImage",
-            "vkGetImageSubresourceLayout",
-            "vkCreateImageView",
-            "vkCreateShaderModule",
-            "vkCreatePipelineCache",
-            //"vkCreateGraphicsPipelines",
-            //"vkCreateComputePipelines",
-            "vkCreatePipelineLayout",
-            "vkCreateSampler",
-            "vkCreateDescriptorSetLayout",
-            "vkCreateDescriptorPool",
-            //"vkAllocateDescriptorSets",
-            "vkCreateFramebuffer",
-            "vkCreateRenderPass",
-            "vkGetRenderAreaGranularity",
-            "vkCreateCommandPool",
-            //"vkAllocateCommandBuffers",
+    private static readonly HashSet<string> s_outReturnFunctions = new()
+    {
+        "vkCreateInstance",
+        "vkCreateDevice",
+        "vkGetPhysicalDeviceFeatures",
+        "vkGetPhysicalDeviceFormatProperties",
+        "vkGetPhysicalDeviceImageFormatProperties",
+        "vkGetPhysicalDeviceProperties",
+        "vkGetPhysicalDeviceMemoryProperties",
+        "vkGetDeviceQueue",
+        "vkGetDeviceMemoryCommitment",
+        "vkGetBufferMemoryRequirements",
+        "vkGetImageMemoryRequirements",
+        "vkAllocateMemory",
+        "vkCreateAndroidSurfaceKHR",
+        "vkCreateWin32SurfaceKHR",
+        "vkCreateXlibSurfaceKHR",
+        "vkCreateWaylandSurfaceKHR",
+        "vkCreateMetalSurfaceEXT",
+        "vkCreateIOSSurfaceMVK",
+        "vkCreateMacOSSurfaceMVK",
+        "vkCreateFence",
+        "vkCreateSemaphore",
+        "vkCreateEvent",
+        "vkCreateQueryPool",
+        "vkCreateBuffer",
+        "vkCreateBufferView",
+        "vkCreateImage",
+        "vkGetImageSubresourceLayout",
+        "vkCreateImageView",
+        "vkCreateShaderModule",
+        "vkCreatePipelineCache",
+        //"vkCreateGraphicsPipelines",
+        //"vkCreateComputePipelines",
+        "vkCreatePipelineLayout",
+        "vkCreateSampler",
+        "vkCreateDescriptorSetLayout",
+        "vkCreateDescriptorPool",
+        //"vkAllocateDescriptorSets",
+        "vkCreateFramebuffer",
+        "vkCreateRenderPass",
+        "vkGetRenderAreaGranularity",
+        "vkCreateCommandPool",
+        //"vkAllocateCommandBuffers",
 
-            "vkEnumerateInstanceVersion",
-            "vkGetDeviceGroupPeerMemoryFeaturesKHR",
-            "vkGetImageMemoryRequirements2",
-            "vkGetBufferMemoryRequirements2",
-            "vkGetPhysicalDeviceFeatures2",
-            "vkGetPhysicalDeviceProperties2",
-            "vkGetPhysicalDeviceFormatProperties2",
-            "vkGetPhysicalDeviceImageFormatProperties2",
-            "vkGetPhysicalDeviceMemoryProperties2",
-            "vkGetDeviceQueue2",
-            "vkCreateSamplerYcbcrConversion",
-            "vkCreateDescriptorUpdateTemplate",
-            "vkGetPhysicalDeviceExternalBufferProperties",
-            "vkGetPhysicalDeviceExternalFenceProperties",
-            "vkGetPhysicalDeviceExternalSemaphoreProperties",
-            "vkGetDescriptorSetLayoutSupport",
-            "vkCreateRenderPass2",
-            "vkGetPhysicalDeviceSurfaceSupportKHR",
-            "vkGetPhysicalDeviceSurfaceCapabilitiesKHR",
+        "vkEnumerateInstanceVersion",
+        "vkGetDeviceGroupPeerMemoryFeaturesKHR",
+        "vkGetImageMemoryRequirements2",
+        "vkGetBufferMemoryRequirements2",
+        "vkGetPhysicalDeviceFeatures2",
+        "vkGetPhysicalDeviceProperties2",
+        "vkGetPhysicalDeviceFormatProperties2",
+        "vkGetPhysicalDeviceImageFormatProperties2",
+        "vkGetPhysicalDeviceMemoryProperties2",
+        "vkGetDeviceQueue2",
+        "vkCreateSamplerYcbcrConversion",
+        "vkCreateDescriptorUpdateTemplate",
+        "vkGetPhysicalDeviceExternalBufferProperties",
+        "vkGetPhysicalDeviceExternalFenceProperties",
+        "vkGetPhysicalDeviceExternalSemaphoreProperties",
+        "vkGetDescriptorSetLayoutSupport",
+        "vkCreateRenderPass2",
+        "vkGetPhysicalDeviceSurfaceSupportKHR",
+        "vkGetPhysicalDeviceSurfaceCapabilitiesKHR",
 
-            "vkCreateSwapchainKHR",
-            "vkAcquireNextImageKHR",
-            "vkGetDeviceGroupPresentCapabilitiesKHR",
-            "vkGetDeviceGroupSurfacePresentModesKHR",
-            "vkAcquireNextImage2KHR",
+        "vkCreateSwapchainKHR",
+        "vkAcquireNextImageKHR",
+        "vkGetDeviceGroupPresentCapabilitiesKHR",
+        "vkGetDeviceGroupSurfacePresentModesKHR",
+        "vkAcquireNextImage2KHR",
 
-            "vkCreateDisplayModeKHR",
-            "vkGetDisplayPlaneCapabilitiesKHR",
-            "vkCreateDisplayPlaneSurfaceKHR",
-            "vkCreateSharedSwapchainsKHR",
+        "vkCreateDisplayModeKHR",
+        "vkGetDisplayPlaneCapabilitiesKHR",
+        "vkCreateDisplayPlaneSurfaceKHR",
+        "vkCreateSharedSwapchainsKHR",
 
-            "vkGetPhysicalDeviceFeatures2KHR",
-            "vkGetPhysicalDeviceProperties2KHR",
-            "vkGetPhysicalDeviceFormatProperties2KHR",
-            "vkGetPhysicalDeviceImageFormatProperties2KHR",
-            "vkGetPhysicalDeviceMemoryProperties2KHR",
-            "vkGetDeviceGroupPeerMemoryFeaturesKHR",
-            "vkGetPhysicalDeviceExternalBufferPropertiesKHR",
-            //"vkGetMemoryFdKHR",
-            //"vkGetMemoryFdPropertiesKHR",
-            "vkGetPhysicalDeviceExternalSemaphorePropertiesKHR",
-            //"vkGetSemaphoreFdKHR",
+        "vkGetPhysicalDeviceFeatures2KHR",
+        "vkGetPhysicalDeviceProperties2KHR",
+        "vkGetPhysicalDeviceFormatProperties2KHR",
+        "vkGetPhysicalDeviceImageFormatProperties2KHR",
+        "vkGetPhysicalDeviceMemoryProperties2KHR",
+        "vkGetDeviceGroupPeerMemoryFeaturesKHR",
+        "vkGetPhysicalDeviceExternalBufferPropertiesKHR",
+        //"vkGetMemoryFdKHR",
+        //"vkGetMemoryFdPropertiesKHR",
+        "vkGetPhysicalDeviceExternalSemaphorePropertiesKHR",
+        //"vkGetSemaphoreFdKHR",
 
-            "vkCreateDebugUtilsMessengerEXT"
-        };
+        "vkCreateDebugUtilsMessengerEXT"
+    };
 
     private static string GetFunctionPointerSignature(bool netstandard, CppFunction function, bool allowNonBlittable = true)
     {
@@ -129,6 +129,19 @@ public static partial class CsCodeGenerator
             {
                 builder.Append("out ");
                 paramCsType = GetCsTypeName(cppTypeDeclaration, false);
+            }
+
+            if (parameter.Name.EndsWith("Count"))
+            {
+                if (function.Name.StartsWith("vkEnumerate") ||
+                    function.Name.StartsWith("vkGet"))
+                {
+                    paramCsType = "int*";
+                }
+                else
+                {
+                    paramCsType = "int";
+                }
             }
 
             builder.Append(paramCsType).Append(", ");
@@ -168,7 +181,7 @@ public static partial class CsCodeGenerator
             string? returnType = GetCsTypeName(cppFunction.ReturnType, false);
             bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
             string? csName = cppFunction.Name;
-            string? argumentsString = GetParameterSignature(cppFunction, canUseOut);
+            string argumentsString = GetParameterSignature(cppFunction, canUseOut);
 
             commands.Add(csName, cppFunction);
 
@@ -322,10 +335,10 @@ public static partial class CsCodeGenerator
 
     public static string GetParameterSignature(CppFunction cppFunction, bool canUseOut)
     {
-        return GetParameterSignature(cppFunction.Parameters, canUseOut);
+        return GetParameterSignature(cppFunction.Parameters, canUseOut, cppFunction.Name);
     }
 
-    private static string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut)
+    private static string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, string functionName)
     {
         var argumentBuilder = new StringBuilder();
         int index = 0;
@@ -333,8 +346,21 @@ public static partial class CsCodeGenerator
         foreach (CppParameter cppParameter in parameters)
         {
             string direction = string.Empty;
-            var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
-            var paramCsName = GetParameterName(cppParameter.Name);
+            string paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+            string paramCsName = GetParameterName(cppParameter.Name);
+
+            if (cppParameter.Name.EndsWith("Count"))
+            {
+                if (functionName.StartsWith("vkEnumerate") ||
+                    functionName.StartsWith("vkGet"))
+                {
+                    paramCsTypeName = "int*";
+                }
+                else
+                {
+                    paramCsTypeName = "int";
+                }
+            }
 
             if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
             {
