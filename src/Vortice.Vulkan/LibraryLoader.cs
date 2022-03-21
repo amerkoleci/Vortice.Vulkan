@@ -35,7 +35,6 @@ public static class LibraryLoader
 
     public static IntPtr LoadLibrary(string libraryName)
     {
-        var ss = IntPtr.Size == 8;
         string libraryPath = GetNativeAssemblyPath(libraryName);
 
         IntPtr handle = LoadPlatformLibrary(libraryPath);

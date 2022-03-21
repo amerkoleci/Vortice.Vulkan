@@ -2792,6 +2792,18 @@ unsafe partial class Vulkan
 		vkSetDeviceMemoryPriorityEXT_ptr(device, memory, priority);
 	}
 
+	private static delegate* unmanaged<VkDevice, VkDescriptorSetBindingReferenceVALVE*, VkDescriptorSetLayoutHostMappingInfoVALVE*, void> vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr;
+	public static void vkGetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device, VkDescriptorSetBindingReferenceVALVE* bindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE* hostMapping)
+	{
+		vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr(device, bindingReference, hostMapping);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkDescriptorSet, void*, void> vkGetDescriptorSetHostMappingVALVE_ptr;
+	public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void* ppData)
+	{
+		vkGetDescriptorSetHostMappingVALVE_ptr(device, descriptorSet, ppData);
+	}
+
 	private static delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
 	public static VkResult vkCreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
 	{
@@ -3521,6 +3533,8 @@ unsafe partial class Vulkan
 		vkCmdDrawMultiEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawInfoEXT*, uint, uint, uint, void>) load(context, nameof(vkCmdDrawMultiEXT));
 		vkCmdDrawMultiIndexedEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawIndexedInfoEXT*, uint, uint, uint, int*, void>) load(context, nameof(vkCmdDrawMultiIndexedEXT));
 		vkSetDeviceMemoryPriorityEXT_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, float, void>) load(context, nameof(vkSetDeviceMemoryPriorityEXT));
+		vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetBindingReferenceVALVE*, VkDescriptorSetLayoutHostMappingInfoVALVE*, void>) load(context, nameof(vkGetDescriptorSetLayoutHostMappingInfoVALVE));
+		vkGetDescriptorSetHostMappingVALVE_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSet, void*, void>) load(context, nameof(vkGetDescriptorSetHostMappingVALVE));
 		vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));
 		vkDestroyAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyAccelerationStructureKHR));
 		vkCmdBuildAccelerationStructuresKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void>) load(context, nameof(vkCmdBuildAccelerationStructuresKHR));

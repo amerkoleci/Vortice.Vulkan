@@ -318,6 +318,7 @@ public enum VkStructureType
 	VideoFormatPropertiesKHR = 1000023015,
 	QueueFamilyQueryResultStatusProperties2KHR = 1000023016,
 	VideoDecodeInfoKHR = 1000024000,
+	VideoDecodeCapabilitiesKHR = 1000024001,
 	DedicatedAllocationImageCreateInfoNV = 1000026000,
 	DedicatedAllocationBufferCreateInfoNV = 1000026001,
 	DedicatedAllocationMemoryAllocateInfoNV = 1000026002,
@@ -688,6 +689,9 @@ public enum VkStructureType
 	PhysicalDeviceBorderColorSwizzleFeaturesEXT = 1000411000,
 	SamplerBorderColorComponentMappingCreateInfoEXT = 1000411001,
 	PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT = 1000412000,
+	PhysicalDeviceDescriptorSetHostMappingFeaturesValve = 1000420000,
+	DescriptorSetBindingReferenceValve = 1000420001,
+	DescriptorSetLayoutHostMappingInfoValve = 1000420002,
 	PhysicalDeviceFragmentDensityMapOffsetFeaturesQcom = 1000425000,
 	PhysicalDeviceFragmentDensityMapOffsetPropertiesQcom = 1000425001,
 	SubpassFragmentDensityMapOffsetEndInfoQcom = 1000425002,
@@ -1841,6 +1845,13 @@ public enum VkImageUsageFlags
 	VideoEncodeDpbKHR = 32768,
 	InvocationMaskHuawei = 262144,
 	ShadingRateImageNV = FragmentShadingRateAttachmentKHR,
+}
+
+[Flags]
+public enum VkInstanceCreateFlags
+{
+	None = 0,
+	EnumeratePortabilityKHR = 1,
 }
 
 [Flags]
@@ -3385,6 +3396,15 @@ public enum VkVideoCodingQualityPresetFlagsKHR
 }
 
 [Flags]
+public enum VkVideoDecodeCapabilityFlagsKHR
+{
+	None = 0,
+	Default = 0,
+	DpbAndOutputCoincide = 1,
+	DpbAndOutputDistinct = 2,
+}
+
+[Flags]
 public enum VkVideoDecodeFlagsKHR
 {
 	None = 0,
@@ -3779,12 +3799,6 @@ public enum VkVideoDecodeH264PictureLayoutFlagsEXT
 	Progressive = 0,
 	InterlacedInterleavedLines = 1,
 	InterlacedSeparatePlanes = 2,
-}
-
-[Flags]
-public enum VkInstanceCreateFlags
-{
-	None = 0,
 }
 
 [Flags]

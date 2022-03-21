@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 206
+	/// VK_HEADER_VERSION = 208
 	/// </summary>
-	public const uint HeaderVersion = 206;
+	public const uint HeaderVersion = 208;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -1080,6 +1080,19 @@ public static partial class Vulkan
 	/// VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME = "VK_KHR_format_feature_flags2"
 	/// </summary>
 	public const string KHRFormatFeature2ExtensionName = "VK_KHR_format_feature_flags2";
+	/// <summary>
+	/// VK_KHR_portability_enumeration = 1
+	/// </summary>
+	public const uint KHRPortabilityEnumeration = 1;
+	/// <summary>
+	/// VK_KHR_PORTABILITY_ENUMERATION_SPEC_VERSION = 1
+	/// </summary>
+	public const uint KHRPortabilityEnumerationSpecVersion = 1;
+	public const string VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME = "VK_KHR_portability_enumeration";
+	/// <summary>
+	/// VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME = "VK_KHR_portability_enumeration"
+	/// </summary>
+	public const string KHRPortabilityEnumerationExtensionName = "VK_KHR_portability_enumeration";
 	/// <summary>
 	/// VK_KHR_maintenance4 = 1
 	/// </summary>
@@ -3151,6 +3164,19 @@ public static partial class Vulkan
 	/// </summary>
 	public const string EXTPageableDeviceLocalMemoryExtensionName = "VK_EXT_pageable_device_local_memory";
 	/// <summary>
+	/// VK_VALVE_descriptor_set_host_mapping = 1
+	/// </summary>
+	public const uint ValveDescriptorSetHostMapping = 1;
+	/// <summary>
+	/// VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_SPEC_VERSION = 1
+	/// </summary>
+	public const uint ValveDescriptorSetHostMappingSpecVersion = 1;
+	public const string VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_EXTENSION_NAME = "VK_VALVE_descriptor_set_host_mapping";
+	/// <summary>
+	/// VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_EXTENSION_NAME = "VK_VALVE_descriptor_set_host_mapping"
+	/// </summary>
+	public const string ValveDescriptorSetHostMappingExtensionName = "VK_VALVE_descriptor_set_host_mapping";
+	/// <summary>
 	/// VK_QCOM_fragment_density_map_offset = 1
 	/// </summary>
 	public const uint QcomFragmentDensityMapOffset = 1;
@@ -3246,9 +3272,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint AndroidExternalMemoryAndroidHardwareBuffer = 1;
 	/// <summary>
-	/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION = 4
+	/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION = 5
 	/// </summary>
-	public const uint AndroidExternalMemoryAndroidHardwareBufferSpecVersion = 4;
+	public const uint AndroidExternalMemoryAndroidHardwareBufferSpecVersion = 5;
 	public const string VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer";
 	/// <summary>
 	/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer"
@@ -3324,9 +3350,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint KHRVideoDecodeQueue = 1;
 	/// <summary>
-	/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 2
+	/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 3
 	/// </summary>
-	public const uint KHRVideoDecodeQueueSpecVersion = 2;
+	public const uint KHRVideoDecodeQueueSpecVersion = 3;
 	public const string VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue";
 	/// <summary>
 	/// VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue"

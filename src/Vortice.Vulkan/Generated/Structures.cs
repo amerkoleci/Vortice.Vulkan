@@ -6464,6 +6464,32 @@ public partial struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 descriptorSetHostMapping;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDescriptorSetBindingReferenceVALVE
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkDescriptorSetLayout descriptorSetLayout;
+	public uint binding;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDescriptorSetLayoutHostMappingInfoVALVE
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public nuint descriptorOffset;
+	public uint descriptorSize;
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM
 {
 	public VkStructureType sType;
@@ -7063,6 +7089,14 @@ public partial struct VkVideoCodingControlInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkVideoCodingControlFlagsKHR flags;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkVideoDecodeCapabilitiesKHR
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkVideoDecodeCapabilityFlagsKHR flags;
 }
 
 [StructLayout(LayoutKind.Sequential)]
