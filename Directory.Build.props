@@ -15,7 +15,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>CS1591;CS1701</NoWarn>
 
-    <Version>1.5.4</Version>
+    <Version>1.5.5</Version>
     
     <Authors>Amer Koleci</Authors>
     <Product>Vortice.Vulkan</Product>

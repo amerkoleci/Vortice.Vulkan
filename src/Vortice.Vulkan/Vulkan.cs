@@ -95,12 +95,12 @@ public static unsafe partial class Vulkan
         vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
         vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<byte*, int*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
         vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<int*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
-        vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<out uint, VkResult>)load(context, "vkEnumerateInstanceVersion");
+        vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<uint*, VkResult>)load(context, "vkEnumerateInstanceVersion");
 #else
         vkCreateInstance_ptr = (delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
         vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged[Stdcall]<byte*, int*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
         vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged[Stdcall]<int*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
-        vkEnumerateInstanceVersion_ptr = (delegate* unmanaged[Stdcall]<out uint, VkResult>)load(context, "vkEnumerateInstanceVersion");
+        vkEnumerateInstanceVersion_ptr = (delegate* unmanaged[Stdcall]<uint*, VkResult>)load(context, "vkEnumerateInstanceVersion");
 #endif
     }
 
@@ -183,8 +183,9 @@ public static unsafe partial class Vulkan
     /// <returns>The version of Vulkan supported by instance-level functionality.</returns>
     public static VkVersion vkEnumerateInstanceVersion()
     {
+        uint apiVersion;
         if (vkEnumerateInstanceVersion_ptr != null
-            && vkEnumerateInstanceVersion(out uint apiVersion) == VkResult.Success)
+            && vkEnumerateInstanceVersion(&apiVersion) == VkResult.Success)
         {
             return new VkVersion(apiVersion);
         }

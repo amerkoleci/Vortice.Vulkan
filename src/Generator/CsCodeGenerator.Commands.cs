@@ -69,29 +69,16 @@ public static partial class CsCodeGenerator
         "vkCreateCommandPool",
         //"vkAllocateCommandBuffers",
 
-        "vkEnumerateInstanceVersion",
         "vkGetDeviceGroupPeerMemoryFeaturesKHR",
-        "vkGetImageMemoryRequirements2",
-        "vkGetBufferMemoryRequirements2",
-        "vkGetPhysicalDeviceFeatures2",
-        "vkGetPhysicalDeviceProperties2",
-        "vkGetPhysicalDeviceFormatProperties2",
-        "vkGetPhysicalDeviceImageFormatProperties2",
-        "vkGetPhysicalDeviceMemoryProperties2",
         "vkGetDeviceQueue2",
         "vkCreateSamplerYcbcrConversion",
         "vkCreateDescriptorUpdateTemplate",
-        "vkGetPhysicalDeviceExternalBufferProperties",
-        "vkGetPhysicalDeviceExternalFenceProperties",
-        "vkGetPhysicalDeviceExternalSemaphoreProperties",
-        "vkGetDescriptorSetLayoutSupport",
         "vkCreateRenderPass2",
         "vkGetPhysicalDeviceSurfaceSupportKHR",
         "vkGetPhysicalDeviceSurfaceCapabilitiesKHR",
 
         "vkCreateSwapchainKHR",
         "vkAcquireNextImageKHR",
-        "vkGetDeviceGroupPresentCapabilitiesKHR",
         "vkGetDeviceGroupSurfacePresentModesKHR",
         "vkAcquireNextImage2KHR",
 
@@ -99,18 +86,6 @@ public static partial class CsCodeGenerator
         "vkGetDisplayPlaneCapabilitiesKHR",
         "vkCreateDisplayPlaneSurfaceKHR",
         "vkCreateSharedSwapchainsKHR",
-
-        "vkGetPhysicalDeviceFeatures2KHR",
-        "vkGetPhysicalDeviceProperties2KHR",
-        "vkGetPhysicalDeviceFormatProperties2KHR",
-        "vkGetPhysicalDeviceImageFormatProperties2KHR",
-        "vkGetPhysicalDeviceMemoryProperties2KHR",
-        "vkGetDeviceGroupPeerMemoryFeaturesKHR",
-        "vkGetPhysicalDeviceExternalBufferPropertiesKHR",
-        //"vkGetMemoryFdKHR",
-        //"vkGetMemoryFdPropertiesKHR",
-        "vkGetPhysicalDeviceExternalSemaphorePropertiesKHR",
-        //"vkGetSemaphoreFdKHR",
 
         "vkCreateDebugUtilsMessengerEXT"
     };

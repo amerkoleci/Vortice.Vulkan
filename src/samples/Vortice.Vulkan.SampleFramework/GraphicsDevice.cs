@@ -218,7 +218,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             features_chain = &acceleration_structure_features.pNext;
         }
 
-        vkGetPhysicalDeviceFeatures2(PhysicalDevice, out deviceFeatures2);
+        vkGetPhysicalDeviceFeatures2(PhysicalDevice, &deviceFeatures2);
 
         using var deviceExtensionNames = new VkStringArray(enabledExtensions);
 
