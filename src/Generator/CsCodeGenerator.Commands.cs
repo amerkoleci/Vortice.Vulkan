@@ -194,7 +194,8 @@ public static partial class CsCodeGenerator
             {
                 CppFunction cppFunction = command.Value;
 
-                if (cppFunction.Name == "vkGetInstanceProcAddr")
+                if (cppFunction.Name == "vkGetInstanceProcAddr" ||
+                    cppFunction.Name == "vkGetDeviceProcAddr")
                 {
                     continue;
                 }
@@ -262,7 +263,8 @@ public static partial class CsCodeGenerator
             foreach (KeyValuePair<string, CppFunction> instanceCommand in commands)
             {
                 string commandName = instanceCommand.Key;
-                if (commandName == "vkGetInstanceProcAddr")
+                if (commandName == "vkGetInstanceProcAddr" ||
+                    commandName == "vkGetDeviceProcAddr")
                 {
                     continue;
                 }
@@ -347,6 +349,13 @@ public static partial class CsCodeGenerator
             if (index < parameters.Count - 1)
             {
                 argumentBuilder.Append(", ");
+            }
+            else
+            {
+                if (paramCsTypeName == "VkAllocationCallbacks*")
+                {
+                    argumentBuilder.Append(" = default");
+                }
             }
 
             index++;

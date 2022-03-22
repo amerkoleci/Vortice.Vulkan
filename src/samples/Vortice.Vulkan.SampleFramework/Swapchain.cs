@@ -81,24 +81,24 @@ public sealed unsafe class Swapchain : IDisposable
     {
         for (int i = 0; i < _swapChainImageViews.Length; i++)
         {
-            vkDestroyImageView(Device, _swapChainImageViews[i], null);
+            vkDestroyImageView(Device, _swapChainImageViews[i]);
         }
 
         for (int i = 0; i < Framebuffers.Length; i++)
         {
-            vkDestroyFramebuffer(Device, Framebuffers[i], null);
+            vkDestroyFramebuffer(Device, Framebuffers[i]);
         }
 
-        vkDestroyRenderPass(Device, RenderPass, null);
+        vkDestroyRenderPass(Device, RenderPass);
 
         if (Handle != VkSwapchainKHR.Null)
         {
-            vkDestroySwapchainKHR(Device, Handle, null);
+            vkDestroySwapchainKHR(Device, Handle);
         }
 
         if (_surface != VkSurfaceKHR.Null)
         {
-            vkDestroySurfaceKHR(Device.VkInstance, _surface, null);
+            vkDestroySurfaceKHR(Device.VkInstance, _surface);
         }
     }
 
@@ -125,7 +125,7 @@ public sealed unsafe class Swapchain : IDisposable
 
         dependencies[0] = new VkSubpassDependency
         {
-            srcSubpass = SubpassExternal,
+            srcSubpass = VK_SUBPASS_EXTERNAL,
             dstSubpass = 0,
             srcStageMask = VkPipelineStageFlags.BottomOfPipe,
             dstStageMask = VkPipelineStageFlags.ColorAttachmentOutput,
@@ -137,7 +137,7 @@ public sealed unsafe class Swapchain : IDisposable
         dependencies[1] = new VkSubpassDependency
         {
             srcSubpass = 0,
-            dstSubpass = SubpassExternal,
+            dstSubpass = VK_SUBPASS_EXTERNAL,
             srcStageMask = VkPipelineStageFlags.ColorAttachmentOutput,
             dstStageMask = VkPipelineStageFlags.BottomOfPipe,
             srcAccessMask = VkAccessFlags.ColorAttachmentRead | VkAccessFlags.ColorAttachmentWrite,

@@ -16,7 +16,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
     public readonly VkInstance VkInstance;
 
-#if !NET5_0_OR_GREATER
+#if !NET6_0_OR_GREATER
     private readonly PFN_vkDebugUtilsMessengerCallbackEXT DebugMessagerCallbackDelegate = DebugMessengerCallback;
 #endif
 
@@ -40,7 +40,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             applicationVersion = new VkVersion(1, 0, 0),
             pEngineName = s_EngineName,
             engineVersion = new VkVersion(1, 0, 0),
-            apiVersion = vkEnumerateInstanceVersion()
+            apiVersion = VkVersion.Version_1_2
         };
 
         List<string> instanceExtensions = new();
@@ -54,7 +54,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
         if (instanceLayers.Count > 0)
         {
-            instanceExtensions.Add(EXTDebugUtilsExtensionName);
+            instanceExtensions.Add(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
         }
 
         using VkStringArray vkInstanceExtensions = new(instanceExtensions);
@@ -83,7 +83,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         {
             debugUtilsCreateInfo.messageSeverity = VkDebugUtilsMessageSeverityFlagsEXT.Error | VkDebugUtilsMessageSeverityFlagsEXT.Warning;
             debugUtilsCreateInfo.messageType = VkDebugUtilsMessageTypeFlagsEXT.Validation | VkDebugUtilsMessageTypeFlagsEXT.Performance;
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
             debugUtilsCreateInfo.pfnUserCallback = &DebugMessengerCallback;
 #else
             debugUtilsCreateInfo.pfnUserCallback = Marshal.GetFunctionPointerForDelegate(DebugMessagerCallbackDelegate);
@@ -98,7 +98,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             throw new InvalidOperationException($"Failed to create vulkan instance: {result}");
         }
 
-        vkLoadInstance(VkInstance);
+        vkLoadInstanceOnly(VkInstance);
 
         if (instanceLayers.Count > 0)
         {
@@ -148,10 +148,10 @@ public unsafe sealed class GraphicsDevice : IDisposable
             pQueuePriorities = &priority
         };
 
-        List<string> enabledExtensions = new List<string>
-            {
-                KHRSwapchainExtensionName
-            };
+        List<string> enabledExtensions = new()
+        {
+            VK_KHR_SWAPCHAIN_EXTENSION_NAME
+        };
 
         VkPhysicalDeviceVulkan11Features features_1_1 = new VkPhysicalDeviceVulkan11Features
         {
@@ -176,43 +176,43 @@ public unsafe sealed class GraphicsDevice : IDisposable
         VkPhysicalDevice8BitStorageFeatures storage_8bit_features = default;
         if (properties.apiVersion <= VkVersion.Version_1_2)
         {
-            if (CheckDeviceExtensionSupport(KHR8bitStorageExtensionName, availableDeviceExtensions))
+            if (CheckDeviceExtensionSupport(VK_KHR_8BIT_STORAGE_EXTENSION_NAME, availableDeviceExtensions))
             {
-                enabledExtensions.Add(KHR8bitStorageExtensionName);
+                enabledExtensions.Add(VK_KHR_8BIT_STORAGE_EXTENSION_NAME);
                 storage_8bit_features.sType = VkStructureType.PhysicalDevice8bitStorageFeatures;
                 *features_chain = &storage_8bit_features;
                 features_chain = &storage_8bit_features.pNext;
             }
         }
 
-        if (CheckDeviceExtensionSupport(KHRSpirv14ExtensionName, availableDeviceExtensions))
+        if (CheckDeviceExtensionSupport(VK_KHR_SPIRV_1_4_EXTENSION_NAME, availableDeviceExtensions))
         {
-            // Required for VK_KHR_ray_tracing_pipeline
-            enabledExtensions.Add(KHRSpirv14ExtensionName);
-
             // Required by VK_KHR_spirv_1_4
-            enabledExtensions.Add(KHRShaderFloatControlsExtensionName);
+            enabledExtensions.Add(VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME);
+
+            // Required for VK_KHR_ray_tracing_pipeline
+            enabledExtensions.Add(VK_KHR_SPIRV_1_4_EXTENSION_NAME);
         }
 
-        if (CheckDeviceExtensionSupport(KHRBufferDeviceAddressExtensionName, availableDeviceExtensions))
+        if (CheckDeviceExtensionSupport(VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME, availableDeviceExtensions))
         {
             // Required by VK_KHR_acceleration_structure
-            enabledExtensions.Add(KHRBufferDeviceAddressExtensionName);
+            enabledExtensions.Add(VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME);
         }
 
-        if (CheckDeviceExtensionSupport(EXTDescriptorIndexingExtensionName, availableDeviceExtensions))
+        if (CheckDeviceExtensionSupport(VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME, availableDeviceExtensions))
         {
             // Required by VK_KHR_acceleration_structure
-            enabledExtensions.Add(EXTDescriptorIndexingExtensionName);
+            enabledExtensions.Add(VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME);
         }
 
         VkPhysicalDeviceAccelerationStructureFeaturesKHR acceleration_structure_features = default;
-        if (CheckDeviceExtensionSupport(KHRAccelerationStructureExtensionName, availableDeviceExtensions))
+        if (CheckDeviceExtensionSupport(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME, availableDeviceExtensions))
         {
             // Required by VK_KHR_acceleration_structure
-            enabledExtensions.Add(KHRDeferredHostOperationsExtensionName);
+            enabledExtensions.Add(VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME);
 
-            enabledExtensions.Add(KHRAccelerationStructureExtensionName);
+            enabledExtensions.Add(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME);
             acceleration_structure_features.sType = VkStructureType.PhysicalDeviceAccelerationStructureFeaturesKHR;
             *features_chain = &acceleration_structure_features;
             features_chain = &acceleration_structure_features.pNext;
@@ -236,6 +236,8 @@ public unsafe sealed class GraphicsDevice : IDisposable
         result = vkCreateDevice(PhysicalDevice, &deviceCreateInfo, null, out VkDevice);
         if (result != VkResult.Success)
             throw new Exception($"Failed to create Vulkan Logical Device, {result}");
+
+        vkLoadDevice(VkDevice);
 
         vkGetDeviceQueue(VkDevice, queueFamilies.graphicsFamily, 0, out GraphicsQueue);
         vkGetDeviceQueue(VkDevice, queueFamilies.presentFamily, 0, out PresentQueue);
@@ -280,7 +282,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
         for (var i = 0; i < _perFrame.Length; i++)
         {
-            vkDestroyFence(VkDevice, _perFrame[i].QueueSubmitFence, null);
+            vkDestroyFence(VkDevice, _perFrame[i].QueueSubmitFence);
 
             if (_perFrame[i].PrimaryCommandBuffer != IntPtr.Zero)
             {
@@ -289,40 +291,40 @@ public unsafe sealed class GraphicsDevice : IDisposable
                 _perFrame[i].PrimaryCommandBuffer = IntPtr.Zero;
             }
 
-            vkDestroyCommandPool(VkDevice, _perFrame[i].PrimaryCommandPool, null);
+            vkDestroyCommandPool(VkDevice, _perFrame[i].PrimaryCommandPool);
 
             if (_perFrame[i].SwapchainAcquireSemaphore != VkSemaphore.Null)
             {
-                vkDestroySemaphore(VkDevice, _perFrame[i].SwapchainAcquireSemaphore, null);
+                vkDestroySemaphore(VkDevice, _perFrame[i].SwapchainAcquireSemaphore);
                 _perFrame[i].SwapchainAcquireSemaphore = VkSemaphore.Null;
             }
 
             if (_perFrame[i].SwapchainReleaseSemaphore != VkSemaphore.Null)
             {
-                vkDestroySemaphore(VkDevice, _perFrame[i].SwapchainReleaseSemaphore, null);
+                vkDestroySemaphore(VkDevice, _perFrame[i].SwapchainReleaseSemaphore);
                 _perFrame[i].SwapchainReleaseSemaphore = VkSemaphore.Null;
             }
         }
 
         foreach (VkSemaphore semaphore in _recycledSemaphores)
         {
-            vkDestroySemaphore(VkDevice, semaphore, null);
+            vkDestroySemaphore(VkDevice, semaphore);
         }
         _recycledSemaphores.Clear();
 
         if (VkDevice != VkDevice.Null)
         {
-            vkDestroyDevice(VkDevice, null);
+            vkDestroyDevice(VkDevice);
         }
 
         if (_debugMessenger != VkDebugUtilsMessengerEXT.Null)
         {
-            vkDestroyDebugUtilsMessengerEXT(VkInstance, _debugMessenger, null);
+            vkDestroyDebugUtilsMessengerEXT(VkInstance, _debugMessenger);
         }
 
         if (VkInstance != VkInstance.Null)
         {
-            vkDestroyInstance(VkInstance, null);
+            vkDestroyInstance(VkInstance);
         }
     }
 
@@ -448,17 +450,15 @@ public unsafe sealed class GraphicsDevice : IDisposable
     public static implicit operator VkDevice(GraphicsDevice device) => device.VkDevice;
 
     #region Private Methods
-    
-
-#if NET5_0_OR_GREATER
-        [UnmanagedCallersOnly]
+#if NET6_0_OR_GREATER
+    [UnmanagedCallersOnly]
 #endif
     private static uint DebugMessengerCallback(VkDebugUtilsMessageSeverityFlagsEXT messageSeverity,
         VkDebugUtilsMessageTypeFlagsEXT messageTypes,
         VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
         void* userData)
     {
-        string? message = Interop.GetString(pCallbackData->pMessage);
+        string message = Interop.GetString(pCallbackData->pMessage);
         if (messageTypes == VkDebugUtilsMessageTypeFlagsEXT.Validation)
         {
             if (messageSeverity == VkDebugUtilsMessageSeverityFlagsEXT.Error)
@@ -521,8 +521,8 @@ public unsafe sealed class GraphicsDevice : IDisposable
     {
         ReadOnlySpan<VkQueueFamilyProperties> queueFamilies = vkGetPhysicalDeviceQueueFamilyProperties(device);
 
-        uint graphicsFamily = QueueFamilyIgnored;
-        uint presentFamily = QueueFamilyIgnored;
+        uint graphicsFamily = VK_QUEUE_FAMILY_IGNORED;
+        uint presentFamily = VK_QUEUE_FAMILY_IGNORED;
         uint i = 0;
         foreach (VkQueueFamilyProperties queueFamily in queueFamilies)
         {
@@ -537,8 +537,8 @@ public unsafe sealed class GraphicsDevice : IDisposable
                 presentFamily = i;
             }
 
-            if (graphicsFamily != QueueFamilyIgnored
-                && presentFamily != QueueFamilyIgnored)
+            if (graphicsFamily != VK_QUEUE_FAMILY_IGNORED
+                && presentFamily != VK_QUEUE_FAMILY_IGNORED)
             {
                 break;
             }

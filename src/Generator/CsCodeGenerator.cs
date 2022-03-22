@@ -140,7 +140,7 @@ public static partial class CsCodeGenerator
                     continue;
                 }
 
-                string csName = GetPrettyEnumName(cppMacro.Name, "VK_");
+                //string csName = GetPrettyEnumName(cppMacro.Name, "VK_");
 
                 string modifier = "const";
                 string csDataType = "string";
@@ -176,15 +176,10 @@ public static partial class CsCodeGenerator
                     )
                 {
                     csDataType = "uint";
-                    macroValue = GetCsCleanName(cppMacro.Value);
+                    macroValue = cppMacro.Value;
                 }
 
-                AddCsMapping(cppMacro.Name, csName);
-
-                if (cppMacro.Name.EndsWith("_EXTENSION_NAME", StringComparison.OrdinalIgnoreCase))
-                {
-                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = {macroValue};");
-                }
+                //AddCsMapping(cppMacro.Name, csName);
 
                 writer.WriteLine("/// <summary>");
                 if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE" ||
@@ -203,35 +198,33 @@ public static partial class CsCodeGenerator
                 writer.WriteLine("/// </summary>");
                 if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE")
                 {
-                    writer.WriteLine($"public {modifier} {csDataType} {csName} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]}, HeaderVersion);");
+                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]}, VK_HEADER_VERSION);");
                 }
                 else if (cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5")
                 {
-                    writer.WriteLine($"public {modifier} {csDataType} {csName} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]});");
+                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]});");
                 }
                 else if (cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION")
                 {
-                    writer.WriteLine($"public {modifier} {csDataType} {csName} = {GetPrettyEnumName(cppMacro.Tokens[0].ToString(), "VK_")};");
+                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = {cppMacro.Tokens[0]};");
                 }
                 else if (cppMacro.Name.StartsWith("STD_VIDEO_"))
                 {
-                    csName = GetPrettyEnumName(cppMacro.Name, "STD_");
-
-                    writer.WriteLine($"public {modifier} {csDataType} {csName} = {macroValue};");
+                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = {macroValue};");
                 }
                 else if (cppMacro.Name == "VK_MAX_GLOBAL_PRIORITY_SIZE_EXT")
                 {
                     csDataType = "uint";
-                    macroValue = "MaxGlobalPrioritySizeKHR";
-                    writer.WriteLine($"public {modifier} {csDataType} {csName} = {macroValue};");
+                    macroValue = "VK_MAX_GLOBAL_PRIORITY_SIZE_KHR";
+                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = {macroValue};");
                 }
                 else
                 {
-                    writer.WriteLine($"public {modifier} {csDataType} {csName} = {macroValue};");
+                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = {macroValue};");
                 }
             }
         }

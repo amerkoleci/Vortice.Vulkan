@@ -21,7 +21,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkInstance, VkAllocationCallbacks*, void> vkDestroyInstance_ptr;
-	public static void vkDestroyInstance(VkInstance instance, VkAllocationCallbacks* allocator)
+	public static void vkDestroyInstance(VkInstance instance, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyInstance_ptr(instance, allocator);
 	}
@@ -68,12 +68,6 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceMemoryProperties_ptr(physicalDevice, out memoryProperties);
 	}
 
-	private static delegate* unmanaged[Stdcall]<VkDevice, byte*, IntPtr> vkGetDeviceProcAddr_ptr;
-	public static IntPtr vkGetDeviceProcAddr(VkDevice device, byte* name)
-	{
-		return vkGetDeviceProcAddr_ptr(device, name);
-	}
-
 	private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult> vkCreateDevice_ptr;
 	public static VkResult vkCreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDevice device)
 	{
@@ -81,7 +75,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkAllocationCallbacks*, void> vkDestroyDevice_ptr;
-	public static void vkDestroyDevice(VkDevice device, VkAllocationCallbacks* allocator)
+	public static void vkDestroyDevice(VkDevice device, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDevice_ptr(device, allocator);
 	}
@@ -141,7 +135,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void> vkFreeMemory_ptr;
-	public static void vkFreeMemory(VkDevice device, VkDeviceMemory memory, VkAllocationCallbacks* allocator)
+	public static void vkFreeMemory(VkDevice device, VkDeviceMemory memory, VkAllocationCallbacks* allocator = default)
 	{
 		vkFreeMemory_ptr(device, memory, allocator);
 	}
@@ -225,7 +219,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkFence, VkAllocationCallbacks*, void> vkDestroyFence_ptr;
-	public static void vkDestroyFence(VkDevice device, VkFence fence, VkAllocationCallbacks* allocator)
+	public static void vkDestroyFence(VkDevice device, VkFence fence, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyFence_ptr(device, fence, allocator);
 	}
@@ -255,7 +249,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkSemaphore, VkAllocationCallbacks*, void> vkDestroySemaphore_ptr;
-	public static void vkDestroySemaphore(VkDevice device, VkSemaphore semaphore, VkAllocationCallbacks* allocator)
+	public static void vkDestroySemaphore(VkDevice device, VkSemaphore semaphore, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySemaphore_ptr(device, semaphore, allocator);
 	}
@@ -267,7 +261,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkEvent, VkAllocationCallbacks*, void> vkDestroyEvent_ptr;
-	public static void vkDestroyEvent(VkDevice device, VkEvent @event, VkAllocationCallbacks* allocator)
+	public static void vkDestroyEvent(VkDevice device, VkEvent @event, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyEvent_ptr(device, @event, allocator);
 	}
@@ -297,7 +291,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkQueryPool, VkAllocationCallbacks*, void> vkDestroyQueryPool_ptr;
-	public static void vkDestroyQueryPool(VkDevice device, VkQueryPool queryPool, VkAllocationCallbacks* allocator)
+	public static void vkDestroyQueryPool(VkDevice device, VkQueryPool queryPool, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyQueryPool_ptr(device, queryPool, allocator);
 	}
@@ -315,7 +309,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkBuffer, VkAllocationCallbacks*, void> vkDestroyBuffer_ptr;
-	public static void vkDestroyBuffer(VkDevice device, VkBuffer buffer, VkAllocationCallbacks* allocator)
+	public static void vkDestroyBuffer(VkDevice device, VkBuffer buffer, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyBuffer_ptr(device, buffer, allocator);
 	}
@@ -327,7 +321,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferView, VkAllocationCallbacks*, void> vkDestroyBufferView_ptr;
-	public static void vkDestroyBufferView(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* allocator)
+	public static void vkDestroyBufferView(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyBufferView_ptr(device, bufferView, allocator);
 	}
@@ -339,7 +333,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkAllocationCallbacks*, void> vkDestroyImage_ptr;
-	public static void vkDestroyImage(VkDevice device, VkImage image, VkAllocationCallbacks* allocator)
+	public static void vkDestroyImage(VkDevice device, VkImage image, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyImage_ptr(device, image, allocator);
 	}
@@ -357,7 +351,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkImageView, VkAllocationCallbacks*, void> vkDestroyImageView_ptr;
-	public static void vkDestroyImageView(VkDevice device, VkImageView imageView, VkAllocationCallbacks* allocator)
+	public static void vkDestroyImageView(VkDevice device, VkImageView imageView, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyImageView_ptr(device, imageView, allocator);
 	}
@@ -369,7 +363,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkShaderModule, VkAllocationCallbacks*, void> vkDestroyShaderModule_ptr;
-	public static void vkDestroyShaderModule(VkDevice device, VkShaderModule shaderModule, VkAllocationCallbacks* allocator)
+	public static void vkDestroyShaderModule(VkDevice device, VkShaderModule shaderModule, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyShaderModule_ptr(device, shaderModule, allocator);
 	}
@@ -381,7 +375,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void> vkDestroyPipelineCache_ptr;
-	public static void vkDestroyPipelineCache(VkDevice device, VkPipelineCache pipelineCache, VkAllocationCallbacks* allocator)
+	public static void vkDestroyPipelineCache(VkDevice device, VkPipelineCache pipelineCache, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyPipelineCache_ptr(device, pipelineCache, allocator);
 	}
@@ -411,7 +405,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, VkAllocationCallbacks*, void> vkDestroyPipeline_ptr;
-	public static void vkDestroyPipeline(VkDevice device, VkPipeline pipeline, VkAllocationCallbacks* allocator)
+	public static void vkDestroyPipeline(VkDevice device, VkPipeline pipeline, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyPipeline_ptr(device, pipeline, allocator);
 	}
@@ -423,7 +417,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineLayout, VkAllocationCallbacks*, void> vkDestroyPipelineLayout_ptr;
-	public static void vkDestroyPipelineLayout(VkDevice device, VkPipelineLayout pipelineLayout, VkAllocationCallbacks* allocator)
+	public static void vkDestroyPipelineLayout(VkDevice device, VkPipelineLayout pipelineLayout, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyPipelineLayout_ptr(device, pipelineLayout, allocator);
 	}
@@ -435,7 +429,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkSampler, VkAllocationCallbacks*, void> vkDestroySampler_ptr;
-	public static void vkDestroySampler(VkDevice device, VkSampler sampler, VkAllocationCallbacks* allocator)
+	public static void vkDestroySampler(VkDevice device, VkSampler sampler, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySampler_ptr(device, sampler, allocator);
 	}
@@ -447,7 +441,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayout, VkAllocationCallbacks*, void> vkDestroyDescriptorSetLayout_ptr;
-	public static void vkDestroyDescriptorSetLayout(VkDevice device, VkDescriptorSetLayout descriptorSetLayout, VkAllocationCallbacks* allocator)
+	public static void vkDestroyDescriptorSetLayout(VkDevice device, VkDescriptorSetLayout descriptorSetLayout, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDescriptorSetLayout_ptr(device, descriptorSetLayout, allocator);
 	}
@@ -459,7 +453,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorPool, VkAllocationCallbacks*, void> vkDestroyDescriptorPool_ptr;
-	public static void vkDestroyDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkAllocationCallbacks* allocator)
+	public static void vkDestroyDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDescriptorPool_ptr(device, descriptorPool, allocator);
 	}
@@ -495,7 +489,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkFramebuffer, VkAllocationCallbacks*, void> vkDestroyFramebuffer_ptr;
-	public static void vkDestroyFramebuffer(VkDevice device, VkFramebuffer framebuffer, VkAllocationCallbacks* allocator)
+	public static void vkDestroyFramebuffer(VkDevice device, VkFramebuffer framebuffer, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyFramebuffer_ptr(device, framebuffer, allocator);
 	}
@@ -507,7 +501,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkRenderPass, VkAllocationCallbacks*, void> vkDestroyRenderPass_ptr;
-	public static void vkDestroyRenderPass(VkDevice device, VkRenderPass renderPass, VkAllocationCallbacks* allocator)
+	public static void vkDestroyRenderPass(VkDevice device, VkRenderPass renderPass, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyRenderPass_ptr(device, renderPass, allocator);
 	}
@@ -525,7 +519,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkCommandPool, VkAllocationCallbacks*, void> vkDestroyCommandPool_ptr;
-	public static void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* allocator)
+	public static void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyCommandPool_ptr(device, commandPool, allocator);
 	}
@@ -951,7 +945,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void> vkDestroySamplerYcbcrConversion_ptr;
-	public static void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator)
+	public static void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySamplerYcbcrConversion_ptr(device, ycbcrConversion, allocator);
 	}
@@ -963,7 +957,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void> vkDestroyDescriptorUpdateTemplate_ptr;
-	public static void vkDestroyDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator)
+	public static void vkDestroyDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDescriptorUpdateTemplate_ptr(device, descriptorUpdateTemplate, allocator);
 	}
@@ -1089,7 +1083,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void> vkDestroyPrivateDataSlot_ptr;
-	public static void vkDestroyPrivateDataSlot(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator)
+	public static void vkDestroyPrivateDataSlot(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyPrivateDataSlot_ptr(device, privateDataSlot, allocator);
 	}
@@ -1299,7 +1293,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void> vkDestroySurfaceKHR_ptr;
-	public static void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* allocator)
+	public static void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySurfaceKHR_ptr(instance, surface, allocator);
 	}
@@ -1335,7 +1329,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkAllocationCallbacks*, void> vkDestroySwapchainKHR_ptr;
-	public static void vkDestroySwapchainKHR(VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* allocator)
+	public static void vkDestroySwapchainKHR(VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySwapchainKHR_ptr(device, swapchain, allocator);
 	}
@@ -1569,7 +1563,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void> vkDestroyDescriptorUpdateTemplateKHR_ptr;
-	public static void vkDestroyDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator)
+	public static void vkDestroyDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDescriptorUpdateTemplateKHR_ptr(device, descriptorUpdateTemplate, allocator);
 	}
@@ -1713,7 +1707,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void> vkDestroySamplerYcbcrConversionKHR_ptr;
-	public static void vkDestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator)
+	public static void vkDestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySamplerYcbcrConversionKHR_ptr(device, ycbcrConversion, allocator);
 	}
@@ -1809,7 +1803,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkAllocationCallbacks*, void> vkDestroyDeferredOperationKHR_ptr;
-	public static void vkDestroyDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR operation, VkAllocationCallbacks* allocator)
+	public static void vkDestroyDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR operation, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDeferredOperationKHR_ptr(device, operation, allocator);
 	}
@@ -1959,7 +1953,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void> vkDestroyDebugReportCallbackEXT_ptr;
-	public static void vkDestroyDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackEXT callback, VkAllocationCallbacks* allocator)
+	public static void vkDestroyDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackEXT callback, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDebugReportCallbackEXT_ptr(instance, callback, allocator);
 	}
@@ -2049,13 +2043,13 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkCuModuleNVX, VkAllocationCallbacks*, void> vkDestroyCuModuleNVX_ptr;
-	public static void vkDestroyCuModuleNVX(VkDevice device, VkCuModuleNVX module, VkAllocationCallbacks* allocator)
+	public static void vkDestroyCuModuleNVX(VkDevice device, VkCuModuleNVX module, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyCuModuleNVX_ptr(device, module, allocator);
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkCuFunctionNVX, VkAllocationCallbacks*, void> vkDestroyCuFunctionNVX_ptr;
-	public static void vkDestroyCuFunctionNVX(VkDevice device, VkCuFunctionNVX function, VkAllocationCallbacks* allocator)
+	public static void vkDestroyCuFunctionNVX(VkDevice device, VkCuFunctionNVX function, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyCuFunctionNVX_ptr(device, function, allocator);
 	}
@@ -2235,7 +2229,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void> vkDestroyDebugUtilsMessengerEXT_ptr;
-	public static void vkDestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT messenger, VkAllocationCallbacks* allocator)
+	public static void vkDestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT messenger, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDebugUtilsMessengerEXT_ptr(instance, messenger, allocator);
 	}
@@ -2271,7 +2265,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkValidationCacheEXT, VkAllocationCallbacks*, void> vkDestroyValidationCacheEXT_ptr;
-	public static void vkDestroyValidationCacheEXT(VkDevice device, VkValidationCacheEXT validationCache, VkAllocationCallbacks* allocator)
+	public static void vkDestroyValidationCacheEXT(VkDevice device, VkValidationCacheEXT validationCache, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyValidationCacheEXT_ptr(device, validationCache, allocator);
 	}
@@ -2313,7 +2307,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void> vkDestroyAccelerationStructureNV_ptr;
-	public static void vkDestroyAccelerationStructureNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator)
+	public static void vkDestroyAccelerationStructureNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyAccelerationStructureNV_ptr(device, accelerationStructure, allocator);
 	}
@@ -2649,7 +2643,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkIndirectCommandsLayoutNV, VkAllocationCallbacks*, void> vkDestroyIndirectCommandsLayoutNV_ptr;
-	public static void vkDestroyIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, VkAllocationCallbacks* allocator)
+	public static void vkDestroyIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyIndirectCommandsLayoutNV_ptr(device, indirectCommandsLayout, allocator);
 	}
@@ -2673,7 +2667,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void> vkDestroyPrivateDataSlotEXT_ptr;
-	public static void vkDestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator)
+	public static void vkDestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyPrivateDataSlotEXT_ptr(device, privateDataSlot, allocator);
 	}
@@ -2811,7 +2805,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void> vkDestroyAccelerationStructureKHR_ptr;
-	public static void vkDestroyAccelerationStructureKHR(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator)
+	public static void vkDestroyAccelerationStructureKHR(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyAccelerationStructureKHR_ptr(device, accelerationStructure, allocator);
 	}
@@ -2997,7 +2991,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void> vkDestroyVideoSessionKHR_ptr;
-	public static void vkDestroyVideoSessionKHR(VkDevice device, VkVideoSessionKHR videoSession, VkAllocationCallbacks* allocator)
+	public static void vkDestroyVideoSessionKHR(VkDevice device, VkVideoSessionKHR videoSession, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyVideoSessionKHR_ptr(device, videoSession, allocator);
 	}
@@ -3027,7 +3021,7 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionParametersKHR, VkAllocationCallbacks*, void> vkDestroyVideoSessionParametersKHR_ptr;
-	public static void vkDestroyVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkAllocationCallbacks* allocator)
+	public static void vkDestroyVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyVideoSessionParametersKHR_ptr(device, videoSessionParameters, allocator);
 	}
@@ -3072,7 +3066,6 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceProperties, void>) load(context, nameof(vkGetPhysicalDeviceProperties));
 		vkGetPhysicalDeviceQueueFamilyProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, int*, VkQueueFamilyProperties*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyProperties));
 		vkGetPhysicalDeviceMemoryProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties));
-		vkGetDeviceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkDevice, byte*, IntPtr>) load(context, nameof(vkGetDeviceProcAddr));
 		vkCreateDevice_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult>) load(context, nameof(vkCreateDevice));
 		vkEnumerateDeviceExtensionProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, byte*, int*, VkExtensionProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceExtensionProperties));
 		vkEnumerateDeviceLayerProperties_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, int*, VkLayerProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceLayerProperties));

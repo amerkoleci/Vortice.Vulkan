@@ -1,9 +1,7 @@
 // Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using System;
 using System.Numerics;
-using System.Runtime.InteropServices;
 using static Vortice.Vulkan.Vulkan.Kernel32;
 using static Vortice.Vulkan.Vulkan.Libdl;
 
@@ -15,10 +13,7 @@ public static unsafe partial class Vulkan
 
     private static IntPtr s_vulkanModule = IntPtr.Zero;
     private static VkInstance s_loadedInstance = VkInstance.Null;
-    private static readonly VkDevice s_loadedDevice = VkDevice.Null;
-
-    public const uint True = 1;
-    public const uint False = 1;
+    private static VkDevice s_loadedDevice = VkDevice.Null;
 
     public const uint VK_TRUE = 1;
     public const uint VK_FALSE = 0;
@@ -65,28 +60,44 @@ public static unsafe partial class Vulkan
 
     public static void vkLoadInstance(VkInstance instance)
     {
+        vkLoadInstanceOnly(instance);
+        GenLoadDevice(instance.Handle, vkGetInstanceProcAddr);
+    }
+
+    public static void vkLoadInstanceOnly(VkInstance instance)
+    {
         s_loadedInstance = instance;
         GenLoadInstance(instance.Handle, vkGetInstanceProcAddr);
-        GenLoadDevice(instance.Handle, vkGetInstanceProcAddr);
+
+        vkGetDeviceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkDevice, byte*, delegate* unmanaged[Stdcall]<void>>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetDeviceProcAddr));
 
         // Manually loaded entries.
-#if NET5_0_OR_GREATER
         LoadWin32(instance);
         LoadXcb(instance);
 
+#if NET6_0_OR_GREATER
         vkCreateXlibSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXlibSurfaceKHR));
         vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXlibPresentationSupportKHR));
 
         vkCreateWaylandSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWaylandSurfaceKHR));
         vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWaylandPresentationSupportKHR));
 #else
-        
         vkCreateXlibSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXlibSurfaceKHR));
         vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXlibPresentationSupportKHR));
 
         vkCreateWaylandSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWaylandSurfaceKHR));
         vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWaylandPresentationSupportKHR));
 #endif
+    }
+
+    public static void vkLoadDevice(VkDevice device)
+    {
+        s_loadedDevice = device;
+        GenLoadDevice(device.Handle, vkGetDeviceProcAddr);
+
+        // Manually loaded entries.
+        LoadWin32(device);
+        //LoadXcb(device);
     }
 
     private static void GenLoadLoader(IntPtr context, LoadFunction load)
@@ -127,6 +138,20 @@ public static unsafe partial class Vulkan
         byte* stringPtr = stackalloc byte[byteCount];
         Interop.StringToPointer(name, stringPtr, byteCount);
         return vkGetInstanceProcAddr(instance, stringPtr);
+    }
+
+    private static delegate* unmanaged[Stdcall]<VkDevice, byte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr_ptr;
+    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, byte* name)
+    {
+        return vkGetDeviceProcAddr_ptr(device, name);
+    }
+
+    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(IntPtr device, string name)
+    {
+        int byteCount = Interop.GetMaxByteCount(name);
+        byte* stringPtr = stackalloc byte[byteCount];
+        Interop.StringToPointer(name, stringPtr, byteCount);
+        return vkGetDeviceProcAddr(device, stringPtr);
     }
 
     /// <summary>
@@ -347,12 +372,12 @@ public static unsafe partial class Vulkan
         }
     }
 
-    public static Span<T> vkMapMemory<T>(VkDevice device, VkBuffer buffer, VkDeviceMemory memory, ulong offset = 0, ulong size = WholeSize, VkMemoryMapFlags flags = VkMemoryMapFlags.None) where T : unmanaged
+    public static Span<T> vkMapMemory<T>(VkDevice device, VkBuffer buffer, VkDeviceMemory memory, ulong offset = 0, ulong size = VK_WHOLE_SIZE, VkMemoryMapFlags flags = VkMemoryMapFlags.None) where T : unmanaged
     {
         void* pData;
         vkMapMemory(device, memory, offset, size, flags, &pData).CheckResult();
 
-        if (size == WholeSize)
+        if (size == VK_WHOLE_SIZE)
         {
             vkGetBufferMemoryRequirements(device, buffer, out VkMemoryRequirements memoryRequirements);
             size = memoryRequirements.size;
@@ -364,12 +389,12 @@ public static unsafe partial class Vulkan
         return new Span<T>(pData, spanLength);
     }
 
-    public static Span<T> vkMapMemory<T>(VkDevice device, VkImage image, VkDeviceMemory memory, ulong offset = 0, ulong size = WholeSize, VkMemoryMapFlags flags = VkMemoryMapFlags.None) where T : unmanaged
+    public static Span<T> vkMapMemory<T>(VkDevice device, VkImage image, VkDeviceMemory memory, ulong offset = 0, ulong size = VK_WHOLE_SIZE, VkMemoryMapFlags flags = VkMemoryMapFlags.None) where T : unmanaged
     {
         void* pData;
         vkMapMemory(device, memory, offset, size, flags, &pData).CheckResult();
 
-        if (size == WholeSize)
+        if (size == VK_WHOLE_SIZE)
         {
             vkGetImageMemoryRequirements(device, image, out VkMemoryRequirements memoryRequirements);
             size = memoryRequirements.size;
@@ -679,7 +704,7 @@ public static unsafe partial class Vulkan
         }
     }
 
-    #region Nested
+#region Nested
     internal static class Kernel32
     {
         [DllImport("kernel32")]
@@ -702,5 +727,5 @@ public static unsafe partial class Vulkan
 
         public const int RTLD_NOW = 0x002;
     }
-    #endregion
+#endregion
 }

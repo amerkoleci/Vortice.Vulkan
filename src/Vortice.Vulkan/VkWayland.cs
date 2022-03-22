@@ -27,7 +27,7 @@ public static unsafe partial class Vulkan
     /// </summary>
     public static readonly string KHRWaylandSurfaceExtensionName = "VK_KHR_wayland_surface";
 
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
     private static delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateWaylandSurfaceKHR_ptr;
     private static delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, VkBool32> vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr;
 #else

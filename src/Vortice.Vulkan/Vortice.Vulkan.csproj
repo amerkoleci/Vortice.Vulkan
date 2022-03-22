@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <None Include="..\..\LICENSE" PackagePath="" Pack="true" />
+
+    <Using Include="System.Runtime.InteropServices" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">

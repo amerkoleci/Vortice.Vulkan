@@ -1,22 +1,21 @@
-﻿// Copyright (c) Amer Koleci and Contributors
-// Distributed under the MIT license. See the LICENSE file in the project root for more information.
+﻿// Copyright © Amer Koleci and Contributors.
+// Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-namespace Vortice.Vulkan
+namespace Vortice.Vulkan;
+
+/// <summary>
+/// Structure specifying an image subresource layers.
+/// </summary>
+public partial struct VkImageSubresourceLayers
 {
-    /// <summary>
-    /// Structure specifying an image subresource layers.
-    /// </summary>
-    public partial struct VkImageSubresourceLayers
+    public VkImageSubresourceLayers(
+        VkImageAspectFlags aspectMask,
+        uint mipLevel,
+        uint baseArrayLayer, uint layerCount)
     {
-        public VkImageSubresourceLayers(
-            VkImageAspectFlags aspectMask,
-            uint mipLevel,
-            uint baseArrayLayer, uint layerCount)
-        {
-            this.aspectMask = aspectMask;
-            this.mipLevel = mipLevel;
-            this.baseArrayLayer = baseArrayLayer;
-            this.layerCount = layerCount;
-        }
+        this.aspectMask = aspectMask;
+        this.mipLevel = mipLevel;
+        this.baseArrayLayer = baseArrayLayer;
+        this.layerCount = layerCount;
     }
 }

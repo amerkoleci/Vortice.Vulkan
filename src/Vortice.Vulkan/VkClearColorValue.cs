@@ -67,5 +67,5 @@ public unsafe partial struct VkClearColorValue
     /// </summary>
     /// <param name="value">The value.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator VkClearColorValue(Vector4 value) => new VkClearColorValue(value.X, value.Y, value.Z, value.W);
+    public static implicit operator VkClearColorValue(Vector4 value) => new(value.X, value.Y, value.Z, value.W);
 }

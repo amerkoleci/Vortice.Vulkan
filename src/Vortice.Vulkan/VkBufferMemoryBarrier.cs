@@ -1,32 +1,33 @@
-﻿// Copyright (c) Amer Koleci and Contributors
-// Distributed under the MIT license. See the LICENSE file in the project root for more information.
+﻿// Copyright © Amer Koleci and Contributors.
+// Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-namespace Vortice.Vulkan
+using static Vortice.Vulkan.Vulkan;
+
+namespace Vortice.Vulkan;
+
+/// <summary>
+/// Structure specifying a buffer memory barrier.
+/// </summary>
+public unsafe partial struct VkBufferMemoryBarrier
 {
-    /// <summary>
-    /// Structure specifying a buffer memory barrier.
-    /// </summary>
-    public partial struct VkBufferMemoryBarrier
+    public VkBufferMemoryBarrier(
+        VkBuffer buffer,
+        VkAccessFlags srcAccessMask,
+        VkAccessFlags dstAccessMask,
+        ulong offset = 0,
+        ulong size = VK_WHOLE_SIZE,
+        uint srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
+        uint dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
+        void* pNext = default)
     {
-        public unsafe VkBufferMemoryBarrier(
-            VkBuffer buffer,
-            VkAccessFlags srcAccessMask,
-            VkAccessFlags dstAccessMask,
-            ulong offset = 0,
-            ulong size = Vulkan.WholeSize,
-            uint srcQueueFamilyIndex = Vulkan.QueueFamilyIgnored,
-            uint dstQueueFamilyIndex = Vulkan.QueueFamilyIgnored,
-            void* pNext = default)
-        {
-            sType = VkStructureType.BufferMemoryBarrier;
-            this.pNext = pNext;
-            this.srcAccessMask = srcAccessMask;
-            this.dstAccessMask = dstAccessMask;
-            this.srcQueueFamilyIndex = srcQueueFamilyIndex;
-            this.dstQueueFamilyIndex = dstQueueFamilyIndex;
-            this.buffer = buffer;
-            this.offset = offset;
-            this.size = size;
-        }
+        sType = VkStructureType.BufferMemoryBarrier;
+        this.pNext = pNext;
+        this.srcAccessMask = srcAccessMask;
+        this.dstAccessMask = dstAccessMask;
+        this.srcQueueFamilyIndex = srcQueueFamilyIndex;
+        this.dstQueueFamilyIndex = dstQueueFamilyIndex;
+        this.buffer = buffer;
+        this.offset = offset;
+        this.size = size;
     }
 }

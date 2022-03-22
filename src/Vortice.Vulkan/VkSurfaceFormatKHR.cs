@@ -1,22 +1,21 @@
-﻿// Copyright (c) Amer Koleci and Contributors
-// Distributed under the MIT license. See the LICENSE file in the project root for more information.
+﻿// Copyright © Amer Koleci and Contributors.
+// Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-namespace Vortice.Vulkan
+namespace Vortice.Vulkan;
+
+/// <summary>
+/// Structure describing a supported swapchain format-color space pair.
+/// </summary>
+public partial struct VkSurfaceFormatKHR
 {
     /// <summary>
-    /// Structure describing a supported swapchain format-color space pair.
+    /// Initializes a new instance of the <see cref="VkSurfaceFormatKHR"/> struct.
     /// </summary>
-    public partial struct VkSurfaceFormatKHR
+    /// <param name="format">Is the <see cref="VkFormat"/> that is compatible with the specified surface.</param>
+    /// <param name="colorSpace">Is a presentation <see cref="VkColorSpaceKHR"/> that is compatible with the surface.</param>
+    public VkSurfaceFormatKHR(VkFormat format, VkColorSpaceKHR colorSpace)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="VkSurfaceFormatKHR"/> struct.
-        /// </summary>
-        /// <param name="format">Is the <see cref="VkFormat"/> that is compatible with the specified surface.</param>
-        /// <param name="colorSpace">Is a presentation <see cref="VkColorSpaceKHR"/> that is compatible with the surface.</param>
-        public VkSurfaceFormatKHR(VkFormat format, VkColorSpaceKHR colorSpace)
-        {
-            this.format = format;
-            this.colorSpace = colorSpace;
-        }
+        this.format = format;
+        this.colorSpace = colorSpace;
     }
 }

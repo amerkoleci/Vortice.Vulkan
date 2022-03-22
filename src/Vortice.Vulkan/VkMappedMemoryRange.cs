@@ -1,24 +1,25 @@
-﻿// Copyright (c) Amer Koleci and contributors.
-// Distributed under the MIT license. See the LICENSE file in the project root for more information.
+﻿// Copyright © Amer Koleci and Contributors.
+// Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-namespace Vortice.Vulkan
+using static Vortice.Vulkan.Vulkan;
+
+namespace Vortice.Vulkan;
+
+/// <summary>
+/// Structure specifying a mapped memory range.
+/// </summary>
+public partial struct VkMappedMemoryRange
 {
-    /// <summary>
-    /// Structure specifying a mapped memory range.
-    /// </summary>
-    public partial struct VkMappedMemoryRange
+    public unsafe VkMappedMemoryRange(
+        VkDeviceMemory memory,
+        ulong offset = 0,
+        ulong size = VK_WHOLE_SIZE,
+        void* pNext = default)
     {
-        public unsafe VkMappedMemoryRange(
-            VkDeviceMemory memory,
-            ulong offset = 0,
-            ulong size = Vulkan.WholeSize,
-            void* pNext = default)
-        {
-            sType = VkStructureType.MappedMemoryRange;
-            this.pNext = pNext;
-            this.memory = memory;
-            this.offset = offset;
-            this.size = size;
-        }
+        sType = VkStructureType.MappedMemoryRange;
+        this.pNext = pNext;
+        this.memory = memory;
+        this.offset = offset;
+        this.size = size;
     }
 }

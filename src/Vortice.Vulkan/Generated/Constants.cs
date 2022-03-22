@@ -17,3377 +17,3127 @@ public static partial class Vulkan
 	/// <summary>
 	/// VK_HEADER_VERSION = 208
 	/// </summary>
-	public const uint HeaderVersion = 208;
+	public const uint VK_HEADER_VERSION = 208;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
-	public static readonly VkVersion HeaderVersionComplete = new VkVersion(0, 1, 3, HeaderVersion);
+	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <summary>
 	/// VK_UUID_SIZE = 16U
 	/// </summary>
-	public const uint UuidSize = 16U;
+	public const uint VK_UUID_SIZE = 16U;
 	/// <summary>
 	/// VK_ATTACHMENT_UNUSED = (~0U)
 	/// </summary>
-	public const uint AttachmentUnused = ~0u;
+	public const uint VK_ATTACHMENT_UNUSED = ~0u;
 	/// <summary>
 	/// VK_LOD_CLAMP_NONE = 1000.0F
 	/// </summary>
-	public const float LodClampNone = 1000.0F;
+	public const float VK_LOD_CLAMP_NONE = 1000.0F;
 	/// <summary>
 	/// VK_QUEUE_FAMILY_IGNORED = (~0U)
 	/// </summary>
-	public const uint QueueFamilyIgnored = ~0u;
+	public const uint VK_QUEUE_FAMILY_IGNORED = ~0u;
 	/// <summary>
 	/// VK_REMAINING_ARRAY_LAYERS = (~0U)
 	/// </summary>
-	public const uint RemainingArrayLayers = ~0u;
+	public const uint VK_REMAINING_ARRAY_LAYERS = ~0u;
 	/// <summary>
 	/// VK_REMAINING_MIP_LEVELS = (~0U)
 	/// </summary>
-	public const uint RemainingMipLevels = ~0u;
+	public const uint VK_REMAINING_MIP_LEVELS = ~0u;
 	/// <summary>
 	/// VK_SUBPASS_EXTERNAL = (~0U)
 	/// </summary>
-	public const uint SubpassExternal = ~0u;
+	public const uint VK_SUBPASS_EXTERNAL = ~0u;
 	/// <summary>
 	/// VK_WHOLE_SIZE = (~0ULL)
 	/// </summary>
-	public const ulong WholeSize = ~0ul;
+	public const ulong VK_WHOLE_SIZE = ~0ul;
 	/// <summary>
 	/// VK_MAX_MEMORY_TYPES = 32U
 	/// </summary>
-	public const uint MaxMemoryTypes = 32U;
+	public const uint VK_MAX_MEMORY_TYPES = 32U;
 	/// <summary>
 	/// VK_MAX_MEMORY_HEAPS = 16U
 	/// </summary>
-	public const uint MaxMemoryHeaps = 16U;
+	public const uint VK_MAX_MEMORY_HEAPS = 16U;
 	/// <summary>
 	/// VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256U
 	/// </summary>
-	public const uint MaxPhysicalDeviceNameSize = 256U;
+	public const uint VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256U;
 	/// <summary>
 	/// VK_MAX_EXTENSION_NAME_SIZE = 256U
 	/// </summary>
-	public const uint MaxExtensionNameSize = 256U;
+	public const uint VK_MAX_EXTENSION_NAME_SIZE = 256U;
 	/// <summary>
 	/// VK_MAX_DESCRIPTION_SIZE = 256U
 	/// </summary>
-	public const uint MaxDescriptionSize = 256U;
+	public const uint VK_MAX_DESCRIPTION_SIZE = 256U;
 	/// <summary>
 	/// VK_MAX_DEVICE_GROUP_SIZE = 32U
 	/// </summary>
-	public const uint MaxDeviceGroupSize = 32U;
+	public const uint VK_MAX_DEVICE_GROUP_SIZE = 32U;
 	/// <summary>
 	/// VK_LUID_SIZE = 8U
 	/// </summary>
-	public const uint LuidSize = 8U;
+	public const uint VK_LUID_SIZE = 8U;
 	/// <summary>
 	/// VK_QUEUE_FAMILY_EXTERNAL = (~1U)
 	/// </summary>
-	public const uint QueueFamilyExternal = (~1U);
+	public const uint VK_QUEUE_FAMILY_EXTERNAL = (~1U);
 	/// <summary>
 	/// VK_MAX_DRIVER_NAME_SIZE = 256U
 	/// </summary>
-	public const uint MaxDriverNameSize = 256U;
+	public const uint VK_MAX_DRIVER_NAME_SIZE = 256U;
 	/// <summary>
 	/// VK_MAX_DRIVER_INFO_SIZE = 256U
 	/// </summary>
-	public const uint MaxDriverInfoSize = 256U;
+	public const uint VK_MAX_DRIVER_INFO_SIZE = 256U;
 	/// <summary>
 	/// VK_KHR_surface = 1
 	/// </summary>
-	public const uint KHRSurface = 1;
+	public const uint VK_KHR_surface = 1;
 	/// <summary>
 	/// VK_KHR_SURFACE_SPEC_VERSION = 25
 	/// </summary>
-	public const uint KHRSurfaceSpecVersion = 25;
-	public const string VK_KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface";
+	public const uint VK_KHR_SURFACE_SPEC_VERSION = 25;
 	/// <summary>
 	/// VK_KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface"
 	/// </summary>
-	public const string KHRSurfaceExtensionName = "VK_KHR_surface";
+	public const string VK_KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface";
 	/// <summary>
 	/// VK_KHR_swapchain = 1
 	/// </summary>
-	public const uint KHRSwapchain = 1;
+	public const uint VK_KHR_swapchain = 1;
 	/// <summary>
 	/// VK_KHR_SWAPCHAIN_SPEC_VERSION = 70
 	/// </summary>
-	public const uint KHRSwapchainSpecVersion = 70;
-	public const string VK_KHR_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_swapchain";
+	public const uint VK_KHR_SWAPCHAIN_SPEC_VERSION = 70;
 	/// <summary>
 	/// VK_KHR_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_swapchain"
 	/// </summary>
-	public const string KHRSwapchainExtensionName = "VK_KHR_swapchain";
+	public const string VK_KHR_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_swapchain";
 	/// <summary>
 	/// VK_KHR_display = 1
 	/// </summary>
-	public const uint KHRDisplay = 1;
+	public const uint VK_KHR_display = 1;
 	/// <summary>
 	/// VK_KHR_DISPLAY_SPEC_VERSION = 23
 	/// </summary>
-	public const uint KHRDisplaySpecVersion = 23;
-	public const string VK_KHR_DISPLAY_EXTENSION_NAME = "VK_KHR_display";
+	public const uint VK_KHR_DISPLAY_SPEC_VERSION = 23;
 	/// <summary>
 	/// VK_KHR_DISPLAY_EXTENSION_NAME = "VK_KHR_display"
 	/// </summary>
-	public const string KHRDisplayExtensionName = "VK_KHR_display";
+	public const string VK_KHR_DISPLAY_EXTENSION_NAME = "VK_KHR_display";
 	/// <summary>
 	/// VK_KHR_display_swapchain = 1
 	/// </summary>
-	public const uint KHRDisplaySwapchain = 1;
+	public const uint VK_KHR_display_swapchain = 1;
 	/// <summary>
 	/// VK_KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION = 10
 	/// </summary>
-	public const uint KHRDisplaySwapchainSpecVersion = 10;
-	public const string VK_KHR_DISPLAY_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_display_swapchain";
+	public const uint VK_KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION = 10;
 	/// <summary>
 	/// VK_KHR_DISPLAY_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_display_swapchain"
 	/// </summary>
-	public const string KHRDisplaySwapchainExtensionName = "VK_KHR_display_swapchain";
+	public const string VK_KHR_DISPLAY_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_display_swapchain";
 	/// <summary>
 	/// VK_KHR_sampler_mirror_clamp_to_edge = 1
 	/// </summary>
-	public const uint KHRSamplerMirrorClampToEdge = 1;
+	public const uint VK_KHR_sampler_mirror_clamp_to_edge = 1;
 	/// <summary>
 	/// VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION = 3
 	/// </summary>
-	public const uint KHRSamplerMirrorClampToEdgeSpecVersion = 3;
-	public const string VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_EXTENSION_NAME = "VK_KHR_sampler_mirror_clamp_to_edge";
+	public const uint VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_EXTENSION_NAME = "VK_KHR_sampler_mirror_clamp_to_edge"
 	/// </summary>
-	public const string KHRSamplerMirrorClampToEdgeExtensionName = "VK_KHR_sampler_mirror_clamp_to_edge";
+	public const string VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_EXTENSION_NAME = "VK_KHR_sampler_mirror_clamp_to_edge";
 	/// <summary>
 	/// VK_KHR_dynamic_rendering = 1
 	/// </summary>
-	public const uint KHRDynamicRendering = 1;
+	public const uint VK_KHR_dynamic_rendering = 1;
 	/// <summary>
 	/// VK_KHR_DYNAMIC_RENDERING_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRDynamicRenderingSpecVersion = 1;
-	public const string VK_KHR_DYNAMIC_RENDERING_EXTENSION_NAME = "VK_KHR_dynamic_rendering";
+	public const uint VK_KHR_DYNAMIC_RENDERING_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_DYNAMIC_RENDERING_EXTENSION_NAME = "VK_KHR_dynamic_rendering"
 	/// </summary>
-	public const string KHRDynamicRenderingExtensionName = "VK_KHR_dynamic_rendering";
+	public const string VK_KHR_DYNAMIC_RENDERING_EXTENSION_NAME = "VK_KHR_dynamic_rendering";
 	/// <summary>
 	/// VK_KHR_multiview = 1
 	/// </summary>
-	public const uint KHRMultiview = 1;
+	public const uint VK_KHR_multiview = 1;
 	/// <summary>
 	/// VK_KHR_MULTIVIEW_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRMultiviewSpecVersion = 1;
-	public const string VK_KHR_MULTIVIEW_EXTENSION_NAME = "VK_KHR_multiview";
+	public const uint VK_KHR_MULTIVIEW_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_MULTIVIEW_EXTENSION_NAME = "VK_KHR_multiview"
 	/// </summary>
-	public const string KHRMultiviewExtensionName = "VK_KHR_multiview";
+	public const string VK_KHR_MULTIVIEW_EXTENSION_NAME = "VK_KHR_multiview";
 	/// <summary>
 	/// VK_KHR_get_physical_device_properties2 = 1
 	/// </summary>
-	public const uint KHRGetPhysicalDeviceProperties2 = 1;
+	public const uint VK_KHR_get_physical_device_properties2 = 1;
 	/// <summary>
 	/// VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_SPEC_VERSION = 2
 	/// </summary>
-	public const uint KHRGetPhysicalDeviceProperties2SpecVersion = 2;
-	public const string VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_physical_device_properties2";
+	public const uint VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_physical_device_properties2"
 	/// </summary>
-	public const string KHRGetPhysicalDeviceProperties2ExtensionName = "VK_KHR_get_physical_device_properties2";
+	public const string VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_physical_device_properties2";
 	/// <summary>
 	/// VK_KHR_device_group = 1
 	/// </summary>
-	public const uint KHRDeviceGroup = 1;
+	public const uint VK_KHR_device_group = 1;
 	/// <summary>
 	/// VK_KHR_DEVICE_GROUP_SPEC_VERSION = 4
 	/// </summary>
-	public const uint KHRDeviceGroupSpecVersion = 4;
-	public const string VK_KHR_DEVICE_GROUP_EXTENSION_NAME = "VK_KHR_device_group";
+	public const uint VK_KHR_DEVICE_GROUP_SPEC_VERSION = 4;
 	/// <summary>
 	/// VK_KHR_DEVICE_GROUP_EXTENSION_NAME = "VK_KHR_device_group"
 	/// </summary>
-	public const string KHRDeviceGroupExtensionName = "VK_KHR_device_group";
+	public const string VK_KHR_DEVICE_GROUP_EXTENSION_NAME = "VK_KHR_device_group";
 	/// <summary>
 	/// VK_KHR_shader_draw_parameters = 1
 	/// </summary>
-	public const uint KHRShaderDrawParameters = 1;
+	public const uint VK_KHR_shader_draw_parameters = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_DRAW_PARAMETERS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRShaderDrawParametersSpecVersion = 1;
-	public const string VK_KHR_SHADER_DRAW_PARAMETERS_EXTENSION_NAME = "VK_KHR_shader_draw_parameters";
+	public const uint VK_KHR_SHADER_DRAW_PARAMETERS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_DRAW_PARAMETERS_EXTENSION_NAME = "VK_KHR_shader_draw_parameters"
 	/// </summary>
-	public const string KHRShaderDrawParametersExtensionName = "VK_KHR_shader_draw_parameters";
+	public const string VK_KHR_SHADER_DRAW_PARAMETERS_EXTENSION_NAME = "VK_KHR_shader_draw_parameters";
 	/// <summary>
 	/// VK_KHR_maintenance1 = 1
 	/// </summary>
-	public const uint KHRMaintenance1 = 1;
+	public const uint VK_KHR_maintenance1 = 1;
 	/// <summary>
 	/// VK_KHR_MAINTENANCE_1_SPEC_VERSION = 2
 	/// </summary>
-	public const uint KHRMaintenance1SpecVersion = 2;
-	public const string VK_KHR_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_maintenance1";
+	public const uint VK_KHR_MAINTENANCE_1_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_KHR_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_maintenance1"
 	/// </summary>
-	public const string KHRMaintenance1ExtensionName = "VK_KHR_maintenance1";
+	public const string VK_KHR_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_maintenance1";
 	/// <summary>
 	/// VK_KHR_device_group_creation = 1
 	/// </summary>
-	public const uint KHRDeviceGroupCreation = 1;
+	public const uint VK_KHR_device_group_creation = 1;
 	/// <summary>
 	/// VK_KHR_DEVICE_GROUP_CREATION_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRDeviceGroupCreationSpecVersion = 1;
-	public const string VK_KHR_DEVICE_GROUP_CREATION_EXTENSION_NAME = "VK_KHR_device_group_creation";
+	public const uint VK_KHR_DEVICE_GROUP_CREATION_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_DEVICE_GROUP_CREATION_EXTENSION_NAME = "VK_KHR_device_group_creation"
 	/// </summary>
-	public const string KHRDeviceGroupCreationExtensionName = "VK_KHR_device_group_creation";
+	public const string VK_KHR_DEVICE_GROUP_CREATION_EXTENSION_NAME = "VK_KHR_device_group_creation";
 	/// <summary>
 	/// VK_MAX_DEVICE_GROUP_SIZE_KHR = VK_MAX_DEVICE_GROUP_SIZE
 	/// </summary>
-	public const uint MaxDeviceGroupSizeKHR = MaxDeviceGroupSize;
+	public const uint VK_MAX_DEVICE_GROUP_SIZE_KHR = VK_MAX_DEVICE_GROUP_SIZE;
 	/// <summary>
 	/// VK_KHR_external_memory_capabilities = 1
 	/// </summary>
-	public const uint KHRExternalMemoryCapabilities = 1;
+	public const uint VK_KHR_external_memory_capabilities = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRExternalMemoryCapabilitiesSpecVersion = 1;
-	public const string VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_memory_capabilities";
+	public const uint VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_memory_capabilities"
 	/// </summary>
-	public const string KHRExternalMemoryCapabilitiesExtensionName = "VK_KHR_external_memory_capabilities";
+	public const string VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_memory_capabilities";
 	/// <summary>
 	/// VK_LUID_SIZE_KHR = VK_LUID_SIZE
 	/// </summary>
-	public const uint LuidSizeKHR = LuidSize;
+	public const uint VK_LUID_SIZE_KHR = VK_LUID_SIZE;
 	/// <summary>
 	/// VK_KHR_external_memory = 1
 	/// </summary>
-	public const uint KHRExternalMemory = 1;
+	public const uint VK_KHR_external_memory = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_MEMORY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRExternalMemorySpecVersion = 1;
-	public const string VK_KHR_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_KHR_external_memory";
+	public const uint VK_KHR_EXTERNAL_MEMORY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_KHR_external_memory"
 	/// </summary>
-	public const string KHRExternalMemoryExtensionName = "VK_KHR_external_memory";
+	public const string VK_KHR_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_KHR_external_memory";
 	/// <summary>
 	/// VK_QUEUE_FAMILY_EXTERNAL_KHR = VK_QUEUE_FAMILY_EXTERNAL
 	/// </summary>
-	public const uint QueueFamilyExternalKHR = QueueFamilyExternal;
+	public const uint VK_QUEUE_FAMILY_EXTERNAL_KHR = VK_QUEUE_FAMILY_EXTERNAL;
 	/// <summary>
 	/// VK_KHR_external_memory_fd = 1
 	/// </summary>
-	public const uint KHRExternalMemoryFd = 1;
+	public const uint VK_KHR_external_memory_fd = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRExternalMemoryFdSpecVersion = 1;
-	public const string VK_KHR_EXTERNAL_MEMORY_FD_EXTENSION_NAME = "VK_KHR_external_memory_fd";
+	public const uint VK_KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_MEMORY_FD_EXTENSION_NAME = "VK_KHR_external_memory_fd"
 	/// </summary>
-	public const string KHRExternalMemoryFdExtensionName = "VK_KHR_external_memory_fd";
+	public const string VK_KHR_EXTERNAL_MEMORY_FD_EXTENSION_NAME = "VK_KHR_external_memory_fd";
 	/// <summary>
 	/// VK_KHR_external_semaphore_capabilities = 1
 	/// </summary>
-	public const uint KHRExternalSemaphoreCapabilities = 1;
+	public const uint VK_KHR_external_semaphore_capabilities = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRExternalSemaphoreCapabilitiesSpecVersion = 1;
-	public const string VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_semaphore_capabilities";
+	public const uint VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_semaphore_capabilities"
 	/// </summary>
-	public const string KHRExternalSemaphoreCapabilitiesExtensionName = "VK_KHR_external_semaphore_capabilities";
+	public const string VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_semaphore_capabilities";
 	/// <summary>
 	/// VK_KHR_external_semaphore = 1
 	/// </summary>
-	public const uint KHRExternalSemaphore = 1;
+	public const uint VK_KHR_external_semaphore = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_SEMAPHORE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRExternalSemaphoreSpecVersion = 1;
-	public const string VK_KHR_EXTERNAL_SEMAPHORE_EXTENSION_NAME = "VK_KHR_external_semaphore";
+	public const uint VK_KHR_EXTERNAL_SEMAPHORE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_SEMAPHORE_EXTENSION_NAME = "VK_KHR_external_semaphore"
 	/// </summary>
-	public const string KHRExternalSemaphoreExtensionName = "VK_KHR_external_semaphore";
+	public const string VK_KHR_EXTERNAL_SEMAPHORE_EXTENSION_NAME = "VK_KHR_external_semaphore";
 	/// <summary>
 	/// VK_KHR_external_semaphore_fd = 1
 	/// </summary>
-	public const uint KHRExternalSemaphoreFd = 1;
+	public const uint VK_KHR_external_semaphore_fd = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_SEMAPHORE_FD_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRExternalSemaphoreFdSpecVersion = 1;
-	public const string VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME = "VK_KHR_external_semaphore_fd";
+	public const uint VK_KHR_EXTERNAL_SEMAPHORE_FD_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME = "VK_KHR_external_semaphore_fd"
 	/// </summary>
-	public const string KHRExternalSemaphoreFdExtensionName = "VK_KHR_external_semaphore_fd";
+	public const string VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME = "VK_KHR_external_semaphore_fd";
 	/// <summary>
 	/// VK_KHR_push_descriptor = 1
 	/// </summary>
-	public const uint KHRPushDescriptor = 1;
+	public const uint VK_KHR_push_descriptor = 1;
 	/// <summary>
 	/// VK_KHR_PUSH_DESCRIPTOR_SPEC_VERSION = 2
 	/// </summary>
-	public const uint KHRPushDescriptorSpecVersion = 2;
-	public const string VK_KHR_PUSH_DESCRIPTOR_EXTENSION_NAME = "VK_KHR_push_descriptor";
+	public const uint VK_KHR_PUSH_DESCRIPTOR_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_KHR_PUSH_DESCRIPTOR_EXTENSION_NAME = "VK_KHR_push_descriptor"
 	/// </summary>
-	public const string KHRPushDescriptorExtensionName = "VK_KHR_push_descriptor";
+	public const string VK_KHR_PUSH_DESCRIPTOR_EXTENSION_NAME = "VK_KHR_push_descriptor";
 	/// <summary>
 	/// VK_KHR_shader_float16_int8 = 1
 	/// </summary>
-	public const uint KHRShaderFloat16Int8 = 1;
+	public const uint VK_KHR_shader_float16_int8 = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_FLOAT16_INT8_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRShaderFloat16Int8SpecVersion = 1;
-	public const string VK_KHR_SHADER_FLOAT16_INT8_EXTENSION_NAME = "VK_KHR_shader_float16_int8";
+	public const uint VK_KHR_SHADER_FLOAT16_INT8_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_FLOAT16_INT8_EXTENSION_NAME = "VK_KHR_shader_float16_int8"
 	/// </summary>
-	public const string KHRShaderFloat16Int8ExtensionName = "VK_KHR_shader_float16_int8";
+	public const string VK_KHR_SHADER_FLOAT16_INT8_EXTENSION_NAME = "VK_KHR_shader_float16_int8";
 	/// <summary>
 	/// VK_KHR_16bit_storage = 1
 	/// </summary>
-	public const uint KHR16bitStorage = 1;
+	public const uint VK_KHR_16bit_storage = 1;
 	/// <summary>
 	/// VK_KHR_16BIT_STORAGE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHR16bitStorageSpecVersion = 1;
-	public const string VK_KHR_16BIT_STORAGE_EXTENSION_NAME = "VK_KHR_16bit_storage";
+	public const uint VK_KHR_16BIT_STORAGE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_16BIT_STORAGE_EXTENSION_NAME = "VK_KHR_16bit_storage"
 	/// </summary>
-	public const string KHR16bitStorageExtensionName = "VK_KHR_16bit_storage";
+	public const string VK_KHR_16BIT_STORAGE_EXTENSION_NAME = "VK_KHR_16bit_storage";
 	/// <summary>
 	/// VK_KHR_incremental_present = 1
 	/// </summary>
-	public const uint KHRIncrementalPresent = 1;
+	public const uint VK_KHR_incremental_present = 1;
 	/// <summary>
 	/// VK_KHR_INCREMENTAL_PRESENT_SPEC_VERSION = 2
 	/// </summary>
-	public const uint KHRIncrementalPresentSpecVersion = 2;
-	public const string VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME = "VK_KHR_incremental_present";
+	public const uint VK_KHR_INCREMENTAL_PRESENT_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME = "VK_KHR_incremental_present"
 	/// </summary>
-	public const string KHRIncrementalPresentExtensionName = "VK_KHR_incremental_present";
+	public const string VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME = "VK_KHR_incremental_present";
 	/// <summary>
 	/// VK_KHR_descriptor_update_template = 1
 	/// </summary>
-	public const uint KHRDescriptorUpdateTemplate = 1;
+	public const uint VK_KHR_descriptor_update_template = 1;
 	/// <summary>
 	/// VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRDescriptorUpdateTemplateSpecVersion = 1;
-	public const string VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_EXTENSION_NAME = "VK_KHR_descriptor_update_template";
+	public const uint VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_EXTENSION_NAME = "VK_KHR_descriptor_update_template"
 	/// </summary>
-	public const string KHRDescriptorUpdateTemplateExtensionName = "VK_KHR_descriptor_update_template";
+	public const string VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_EXTENSION_NAME = "VK_KHR_descriptor_update_template";
 	/// <summary>
 	/// VK_KHR_imageless_framebuffer = 1
 	/// </summary>
-	public const uint KHRImagelessFramebuffer = 1;
+	public const uint VK_KHR_imageless_framebuffer = 1;
 	/// <summary>
 	/// VK_KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRImagelessFramebufferSpecVersion = 1;
-	public const string VK_KHR_IMAGELESS_FRAMEBUFFER_EXTENSION_NAME = "VK_KHR_imageless_framebuffer";
+	public const uint VK_KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_IMAGELESS_FRAMEBUFFER_EXTENSION_NAME = "VK_KHR_imageless_framebuffer"
 	/// </summary>
-	public const string KHRImagelessFramebufferExtensionName = "VK_KHR_imageless_framebuffer";
+	public const string VK_KHR_IMAGELESS_FRAMEBUFFER_EXTENSION_NAME = "VK_KHR_imageless_framebuffer";
 	/// <summary>
 	/// VK_KHR_create_renderpass2 = 1
 	/// </summary>
-	public const uint KHRCreateRenderpass2 = 1;
+	public const uint VK_KHR_create_renderpass2 = 1;
 	/// <summary>
 	/// VK_KHR_CREATE_RENDERPASS_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRCreateRenderpass2SpecVersion = 1;
-	public const string VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME = "VK_KHR_create_renderpass2";
+	public const uint VK_KHR_CREATE_RENDERPASS_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME = "VK_KHR_create_renderpass2"
 	/// </summary>
-	public const string KHRCreateRenderpass2ExtensionName = "VK_KHR_create_renderpass2";
+	public const string VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME = "VK_KHR_create_renderpass2";
 	/// <summary>
 	/// VK_KHR_shared_presentable_image = 1
 	/// </summary>
-	public const uint KHRSharedPresentableImage = 1;
+	public const uint VK_KHR_shared_presentable_image = 1;
 	/// <summary>
 	/// VK_KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRSharedPresentableImageSpecVersion = 1;
-	public const string VK_KHR_SHARED_PRESENTABLE_IMAGE_EXTENSION_NAME = "VK_KHR_shared_presentable_image";
+	public const uint VK_KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SHARED_PRESENTABLE_IMAGE_EXTENSION_NAME = "VK_KHR_shared_presentable_image"
 	/// </summary>
-	public const string KHRSharedPresentableImageExtensionName = "VK_KHR_shared_presentable_image";
+	public const string VK_KHR_SHARED_PRESENTABLE_IMAGE_EXTENSION_NAME = "VK_KHR_shared_presentable_image";
 	/// <summary>
 	/// VK_KHR_external_fence_capabilities = 1
 	/// </summary>
-	public const uint KHRExternalFenceCapabilities = 1;
+	public const uint VK_KHR_external_fence_capabilities = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_FENCE_CAPABILITIES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRExternalFenceCapabilitiesSpecVersion = 1;
-	public const string VK_KHR_EXTERNAL_FENCE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_fence_capabilities";
+	public const uint VK_KHR_EXTERNAL_FENCE_CAPABILITIES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_FENCE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_fence_capabilities"
 	/// </summary>
-	public const string KHRExternalFenceCapabilitiesExtensionName = "VK_KHR_external_fence_capabilities";
+	public const string VK_KHR_EXTERNAL_FENCE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_fence_capabilities";
 	/// <summary>
 	/// VK_KHR_external_fence = 1
 	/// </summary>
-	public const uint KHRExternalFence = 1;
+	public const uint VK_KHR_external_fence = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_FENCE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRExternalFenceSpecVersion = 1;
-	public const string VK_KHR_EXTERNAL_FENCE_EXTENSION_NAME = "VK_KHR_external_fence";
+	public const uint VK_KHR_EXTERNAL_FENCE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_FENCE_EXTENSION_NAME = "VK_KHR_external_fence"
 	/// </summary>
-	public const string KHRExternalFenceExtensionName = "VK_KHR_external_fence";
+	public const string VK_KHR_EXTERNAL_FENCE_EXTENSION_NAME = "VK_KHR_external_fence";
 	/// <summary>
 	/// VK_KHR_external_fence_fd = 1
 	/// </summary>
-	public const uint KHRExternalFenceFd = 1;
+	public const uint VK_KHR_external_fence_fd = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_FENCE_FD_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRExternalFenceFdSpecVersion = 1;
-	public const string VK_KHR_EXTERNAL_FENCE_FD_EXTENSION_NAME = "VK_KHR_external_fence_fd";
+	public const uint VK_KHR_EXTERNAL_FENCE_FD_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_EXTERNAL_FENCE_FD_EXTENSION_NAME = "VK_KHR_external_fence_fd"
 	/// </summary>
-	public const string KHRExternalFenceFdExtensionName = "VK_KHR_external_fence_fd";
+	public const string VK_KHR_EXTERNAL_FENCE_FD_EXTENSION_NAME = "VK_KHR_external_fence_fd";
 	/// <summary>
 	/// VK_KHR_performance_query = 1
 	/// </summary>
-	public const uint KHRPerformanceQuery = 1;
+	public const uint VK_KHR_performance_query = 1;
 	/// <summary>
 	/// VK_KHR_PERFORMANCE_QUERY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRPerformanceQuerySpecVersion = 1;
-	public const string VK_KHR_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_KHR_performance_query";
+	public const uint VK_KHR_PERFORMANCE_QUERY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_KHR_performance_query"
 	/// </summary>
-	public const string KHRPerformanceQueryExtensionName = "VK_KHR_performance_query";
+	public const string VK_KHR_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_KHR_performance_query";
 	/// <summary>
 	/// VK_KHR_maintenance2 = 1
 	/// </summary>
-	public const uint KHRMaintenance2 = 1;
+	public const uint VK_KHR_maintenance2 = 1;
 	/// <summary>
 	/// VK_KHR_MAINTENANCE_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRMaintenance2SpecVersion = 1;
-	public const string VK_KHR_MAINTENANCE_2_EXTENSION_NAME = "VK_KHR_maintenance2";
+	public const uint VK_KHR_MAINTENANCE_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_MAINTENANCE_2_EXTENSION_NAME = "VK_KHR_maintenance2"
 	/// </summary>
-	public const string KHRMaintenance2ExtensionName = "VK_KHR_maintenance2";
+	public const string VK_KHR_MAINTENANCE_2_EXTENSION_NAME = "VK_KHR_maintenance2";
 	/// <summary>
 	/// VK_KHR_get_surface_capabilities2 = 1
 	/// </summary>
-	public const uint KHRGetSurfaceCapabilities2 = 1;
+	public const uint VK_KHR_get_surface_capabilities2 = 1;
 	/// <summary>
 	/// VK_KHR_GET_SURFACE_CAPABILITIES_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRGetSurfaceCapabilities2SpecVersion = 1;
-	public const string VK_KHR_GET_SURFACE_CAPABILITIES_2_EXTENSION_NAME = "VK_KHR_get_surface_capabilities2";
+	public const uint VK_KHR_GET_SURFACE_CAPABILITIES_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_GET_SURFACE_CAPABILITIES_2_EXTENSION_NAME = "VK_KHR_get_surface_capabilities2"
 	/// </summary>
-	public const string KHRGetSurfaceCapabilities2ExtensionName = "VK_KHR_get_surface_capabilities2";
+	public const string VK_KHR_GET_SURFACE_CAPABILITIES_2_EXTENSION_NAME = "VK_KHR_get_surface_capabilities2";
 	/// <summary>
 	/// VK_KHR_variable_pointers = 1
 	/// </summary>
-	public const uint KHRVariablePointers = 1;
+	public const uint VK_KHR_variable_pointers = 1;
 	/// <summary>
 	/// VK_KHR_VARIABLE_POINTERS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRVariablePointersSpecVersion = 1;
-	public const string VK_KHR_VARIABLE_POINTERS_EXTENSION_NAME = "VK_KHR_variable_pointers";
+	public const uint VK_KHR_VARIABLE_POINTERS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_VARIABLE_POINTERS_EXTENSION_NAME = "VK_KHR_variable_pointers"
 	/// </summary>
-	public const string KHRVariablePointersExtensionName = "VK_KHR_variable_pointers";
+	public const string VK_KHR_VARIABLE_POINTERS_EXTENSION_NAME = "VK_KHR_variable_pointers";
 	/// <summary>
 	/// VK_KHR_get_display_properties2 = 1
 	/// </summary>
-	public const uint KHRGetDisplayProperties2 = 1;
+	public const uint VK_KHR_get_display_properties2 = 1;
 	/// <summary>
 	/// VK_KHR_GET_DISPLAY_PROPERTIES_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRGetDisplayProperties2SpecVersion = 1;
-	public const string VK_KHR_GET_DISPLAY_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_display_properties2";
+	public const uint VK_KHR_GET_DISPLAY_PROPERTIES_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_GET_DISPLAY_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_display_properties2"
 	/// </summary>
-	public const string KHRGetDisplayProperties2ExtensionName = "VK_KHR_get_display_properties2";
+	public const string VK_KHR_GET_DISPLAY_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_display_properties2";
 	/// <summary>
 	/// VK_KHR_dedicated_allocation = 1
 	/// </summary>
-	public const uint KHRDedicatedAllocation = 1;
+	public const uint VK_KHR_dedicated_allocation = 1;
 	/// <summary>
 	/// VK_KHR_DEDICATED_ALLOCATION_SPEC_VERSION = 3
 	/// </summary>
-	public const uint KHRDedicatedAllocationSpecVersion = 3;
-	public const string VK_KHR_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_KHR_dedicated_allocation";
+	public const uint VK_KHR_DEDICATED_ALLOCATION_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_KHR_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_KHR_dedicated_allocation"
 	/// </summary>
-	public const string KHRDedicatedAllocationExtensionName = "VK_KHR_dedicated_allocation";
+	public const string VK_KHR_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_KHR_dedicated_allocation";
 	/// <summary>
 	/// VK_KHR_storage_buffer_storage_class = 1
 	/// </summary>
-	public const uint KHRStorageBufferStorageClass = 1;
+	public const uint VK_KHR_storage_buffer_storage_class = 1;
 	/// <summary>
 	/// VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRStorageBufferStorageClassSpecVersion = 1;
-	public const string VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_EXTENSION_NAME = "VK_KHR_storage_buffer_storage_class";
+	public const uint VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_EXTENSION_NAME = "VK_KHR_storage_buffer_storage_class"
 	/// </summary>
-	public const string KHRStorageBufferStorageClassExtensionName = "VK_KHR_storage_buffer_storage_class";
+	public const string VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_EXTENSION_NAME = "VK_KHR_storage_buffer_storage_class";
 	/// <summary>
 	/// VK_KHR_relaxed_block_layout = 1
 	/// </summary>
-	public const uint KHRRelaxedBlockLayout = 1;
+	public const uint VK_KHR_relaxed_block_layout = 1;
 	/// <summary>
 	/// VK_KHR_RELAXED_BLOCK_LAYOUT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRRelaxedBlockLayoutSpecVersion = 1;
-	public const string VK_KHR_RELAXED_BLOCK_LAYOUT_EXTENSION_NAME = "VK_KHR_relaxed_block_layout";
+	public const uint VK_KHR_RELAXED_BLOCK_LAYOUT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_RELAXED_BLOCK_LAYOUT_EXTENSION_NAME = "VK_KHR_relaxed_block_layout"
 	/// </summary>
-	public const string KHRRelaxedBlockLayoutExtensionName = "VK_KHR_relaxed_block_layout";
+	public const string VK_KHR_RELAXED_BLOCK_LAYOUT_EXTENSION_NAME = "VK_KHR_relaxed_block_layout";
 	/// <summary>
 	/// VK_KHR_get_memory_requirements2 = 1
 	/// </summary>
-	public const uint KHRGetMemoryRequirements2 = 1;
+	public const uint VK_KHR_get_memory_requirements2 = 1;
 	/// <summary>
 	/// VK_KHR_GET_MEMORY_REQUIREMENTS_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRGetMemoryRequirements2SpecVersion = 1;
-	public const string VK_KHR_GET_MEMORY_REQUIREMENTS_2_EXTENSION_NAME = "VK_KHR_get_memory_requirements2";
+	public const uint VK_KHR_GET_MEMORY_REQUIREMENTS_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_GET_MEMORY_REQUIREMENTS_2_EXTENSION_NAME = "VK_KHR_get_memory_requirements2"
 	/// </summary>
-	public const string KHRGetMemoryRequirements2ExtensionName = "VK_KHR_get_memory_requirements2";
+	public const string VK_KHR_GET_MEMORY_REQUIREMENTS_2_EXTENSION_NAME = "VK_KHR_get_memory_requirements2";
 	/// <summary>
 	/// VK_KHR_image_format_list = 1
 	/// </summary>
-	public const uint KHRImageFormatList = 1;
+	public const uint VK_KHR_image_format_list = 1;
 	/// <summary>
 	/// VK_KHR_IMAGE_FORMAT_LIST_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRImageFormatListSpecVersion = 1;
-	public const string VK_KHR_IMAGE_FORMAT_LIST_EXTENSION_NAME = "VK_KHR_image_format_list";
+	public const uint VK_KHR_IMAGE_FORMAT_LIST_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_IMAGE_FORMAT_LIST_EXTENSION_NAME = "VK_KHR_image_format_list"
 	/// </summary>
-	public const string KHRImageFormatListExtensionName = "VK_KHR_image_format_list";
+	public const string VK_KHR_IMAGE_FORMAT_LIST_EXTENSION_NAME = "VK_KHR_image_format_list";
 	/// <summary>
 	/// VK_KHR_sampler_ycbcr_conversion = 1
 	/// </summary>
-	public const uint KHRSamplerYcbcrConversion = 1;
+	public const uint VK_KHR_sampler_ycbcr_conversion = 1;
 	/// <summary>
 	/// VK_KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION = 14
 	/// </summary>
-	public const uint KHRSamplerYcbcrConversionSpecVersion = 14;
-	public const string VK_KHR_SAMPLER_YCBCR_CONVERSION_EXTENSION_NAME = "VK_KHR_sampler_ycbcr_conversion";
+	public const uint VK_KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION = 14;
 	/// <summary>
 	/// VK_KHR_SAMPLER_YCBCR_CONVERSION_EXTENSION_NAME = "VK_KHR_sampler_ycbcr_conversion"
 	/// </summary>
-	public const string KHRSamplerYcbcrConversionExtensionName = "VK_KHR_sampler_ycbcr_conversion";
+	public const string VK_KHR_SAMPLER_YCBCR_CONVERSION_EXTENSION_NAME = "VK_KHR_sampler_ycbcr_conversion";
 	/// <summary>
 	/// VK_KHR_bind_memory2 = 1
 	/// </summary>
-	public const uint KHRBindMemory2 = 1;
+	public const uint VK_KHR_bind_memory2 = 1;
 	/// <summary>
 	/// VK_KHR_BIND_MEMORY_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRBindMemory2SpecVersion = 1;
-	public const string VK_KHR_BIND_MEMORY_2_EXTENSION_NAME = "VK_KHR_bind_memory2";
+	public const uint VK_KHR_BIND_MEMORY_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_BIND_MEMORY_2_EXTENSION_NAME = "VK_KHR_bind_memory2"
 	/// </summary>
-	public const string KHRBindMemory2ExtensionName = "VK_KHR_bind_memory2";
+	public const string VK_KHR_BIND_MEMORY_2_EXTENSION_NAME = "VK_KHR_bind_memory2";
 	/// <summary>
 	/// VK_KHR_maintenance3 = 1
 	/// </summary>
-	public const uint KHRMaintenance3 = 1;
+	public const uint VK_KHR_maintenance3 = 1;
 	/// <summary>
 	/// VK_KHR_MAINTENANCE_3_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRMaintenance3SpecVersion = 1;
-	public const string VK_KHR_MAINTENANCE_3_EXTENSION_NAME = "VK_KHR_maintenance3";
+	public const uint VK_KHR_MAINTENANCE_3_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_MAINTENANCE_3_EXTENSION_NAME = "VK_KHR_maintenance3"
 	/// </summary>
-	public const string KHRMaintenance3ExtensionName = "VK_KHR_maintenance3";
+	public const string VK_KHR_MAINTENANCE_3_EXTENSION_NAME = "VK_KHR_maintenance3";
 	/// <summary>
 	/// VK_KHR_draw_indirect_count = 1
 	/// </summary>
-	public const uint KHRDrawIndirectCount = 1;
+	public const uint VK_KHR_draw_indirect_count = 1;
 	/// <summary>
 	/// VK_KHR_DRAW_INDIRECT_COUNT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRDrawIndirectCountSpecVersion = 1;
-	public const string VK_KHR_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_KHR_draw_indirect_count";
+	public const uint VK_KHR_DRAW_INDIRECT_COUNT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_KHR_draw_indirect_count"
 	/// </summary>
-	public const string KHRDrawIndirectCountExtensionName = "VK_KHR_draw_indirect_count";
+	public const string VK_KHR_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_KHR_draw_indirect_count";
 	/// <summary>
 	/// VK_KHR_shader_subgroup_extended_types = 1
 	/// </summary>
-	public const uint KHRShaderSubgroupExtendedTypes = 1;
+	public const uint VK_KHR_shader_subgroup_extended_types = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRShaderSubgroupExtendedTypesSpecVersion = 1;
-	public const string VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_EXTENSION_NAME = "VK_KHR_shader_subgroup_extended_types";
+	public const uint VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_EXTENSION_NAME = "VK_KHR_shader_subgroup_extended_types"
 	/// </summary>
-	public const string KHRShaderSubgroupExtendedTypesExtensionName = "VK_KHR_shader_subgroup_extended_types";
+	public const string VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_EXTENSION_NAME = "VK_KHR_shader_subgroup_extended_types";
 	/// <summary>
 	/// VK_KHR_8bit_storage = 1
 	/// </summary>
-	public const uint KHR8bitStorage = 1;
+	public const uint VK_KHR_8bit_storage = 1;
 	/// <summary>
 	/// VK_KHR_8BIT_STORAGE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHR8bitStorageSpecVersion = 1;
-	public const string VK_KHR_8BIT_STORAGE_EXTENSION_NAME = "VK_KHR_8bit_storage";
+	public const uint VK_KHR_8BIT_STORAGE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_8BIT_STORAGE_EXTENSION_NAME = "VK_KHR_8bit_storage"
 	/// </summary>
-	public const string KHR8bitStorageExtensionName = "VK_KHR_8bit_storage";
+	public const string VK_KHR_8BIT_STORAGE_EXTENSION_NAME = "VK_KHR_8bit_storage";
 	/// <summary>
 	/// VK_KHR_shader_atomic_int64 = 1
 	/// </summary>
-	public const uint KHRShaderAtomicInt64 = 1;
+	public const uint VK_KHR_shader_atomic_int64 = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_ATOMIC_INT64_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRShaderAtomicInt64SpecVersion = 1;
-	public const string VK_KHR_SHADER_ATOMIC_INT64_EXTENSION_NAME = "VK_KHR_shader_atomic_int64";
+	public const uint VK_KHR_SHADER_ATOMIC_INT64_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_ATOMIC_INT64_EXTENSION_NAME = "VK_KHR_shader_atomic_int64"
 	/// </summary>
-	public const string KHRShaderAtomicInt64ExtensionName = "VK_KHR_shader_atomic_int64";
+	public const string VK_KHR_SHADER_ATOMIC_INT64_EXTENSION_NAME = "VK_KHR_shader_atomic_int64";
 	/// <summary>
 	/// VK_KHR_shader_clock = 1
 	/// </summary>
-	public const uint KHRShaderClock = 1;
+	public const uint VK_KHR_shader_clock = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_CLOCK_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRShaderClockSpecVersion = 1;
-	public const string VK_KHR_SHADER_CLOCK_EXTENSION_NAME = "VK_KHR_shader_clock";
+	public const uint VK_KHR_SHADER_CLOCK_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_CLOCK_EXTENSION_NAME = "VK_KHR_shader_clock"
 	/// </summary>
-	public const string KHRShaderClockExtensionName = "VK_KHR_shader_clock";
+	public const string VK_KHR_SHADER_CLOCK_EXTENSION_NAME = "VK_KHR_shader_clock";
 	/// <summary>
 	/// VK_KHR_global_priority = 1
 	/// </summary>
-	public const uint KHRGlobalPriority = 1;
+	public const uint VK_KHR_global_priority = 1;
 	/// <summary>
 	/// VK_MAX_GLOBAL_PRIORITY_SIZE_KHR = 16U
 	/// </summary>
-	public const uint MaxGlobalPrioritySizeKHR = 16U;
+	public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_KHR = 16U;
 	/// <summary>
 	/// VK_KHR_GLOBAL_PRIORITY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRGlobalPrioritySpecVersion = 1;
-	public const string VK_KHR_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_KHR_global_priority";
+	public const uint VK_KHR_GLOBAL_PRIORITY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_KHR_global_priority"
 	/// </summary>
-	public const string KHRGlobalPriorityExtensionName = "VK_KHR_global_priority";
+	public const string VK_KHR_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_KHR_global_priority";
 	/// <summary>
 	/// VK_KHR_driver_properties = 1
 	/// </summary>
-	public const uint KHRDriverProperties = 1;
+	public const uint VK_KHR_driver_properties = 1;
 	/// <summary>
 	/// VK_KHR_DRIVER_PROPERTIES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRDriverPropertiesSpecVersion = 1;
-	public const string VK_KHR_DRIVER_PROPERTIES_EXTENSION_NAME = "VK_KHR_driver_properties";
+	public const uint VK_KHR_DRIVER_PROPERTIES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_DRIVER_PROPERTIES_EXTENSION_NAME = "VK_KHR_driver_properties"
 	/// </summary>
-	public const string KHRDriverPropertiesExtensionName = "VK_KHR_driver_properties";
+	public const string VK_KHR_DRIVER_PROPERTIES_EXTENSION_NAME = "VK_KHR_driver_properties";
 	/// <summary>
 	/// VK_MAX_DRIVER_NAME_SIZE_KHR = VK_MAX_DRIVER_NAME_SIZE
 	/// </summary>
-	public const uint MaxDriverNameSizeKHR = MaxDriverNameSize;
+	public const uint VK_MAX_DRIVER_NAME_SIZE_KHR = VK_MAX_DRIVER_NAME_SIZE;
 	/// <summary>
 	/// VK_MAX_DRIVER_INFO_SIZE_KHR = VK_MAX_DRIVER_INFO_SIZE
 	/// </summary>
-	public const uint MaxDriverInfoSizeKHR = MaxDriverInfoSize;
+	public const uint VK_MAX_DRIVER_INFO_SIZE_KHR = VK_MAX_DRIVER_INFO_SIZE;
 	/// <summary>
 	/// VK_KHR_shader_float_controls = 1
 	/// </summary>
-	public const uint KHRShaderFloatControls = 1;
+	public const uint VK_KHR_shader_float_controls = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION = 4
 	/// </summary>
-	public const uint KHRShaderFloatControlsSpecVersion = 4;
-	public const string VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME = "VK_KHR_shader_float_controls";
+	public const uint VK_KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION = 4;
 	/// <summary>
 	/// VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME = "VK_KHR_shader_float_controls"
 	/// </summary>
-	public const string KHRShaderFloatControlsExtensionName = "VK_KHR_shader_float_controls";
+	public const string VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME = "VK_KHR_shader_float_controls";
 	/// <summary>
 	/// VK_KHR_depth_stencil_resolve = 1
 	/// </summary>
-	public const uint KHRDepthStencilResolve = 1;
+	public const uint VK_KHR_depth_stencil_resolve = 1;
 	/// <summary>
 	/// VK_KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRDepthStencilResolveSpecVersion = 1;
-	public const string VK_KHR_DEPTH_STENCIL_RESOLVE_EXTENSION_NAME = "VK_KHR_depth_stencil_resolve";
+	public const uint VK_KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_DEPTH_STENCIL_RESOLVE_EXTENSION_NAME = "VK_KHR_depth_stencil_resolve"
 	/// </summary>
-	public const string KHRDepthStencilResolveExtensionName = "VK_KHR_depth_stencil_resolve";
+	public const string VK_KHR_DEPTH_STENCIL_RESOLVE_EXTENSION_NAME = "VK_KHR_depth_stencil_resolve";
 	/// <summary>
 	/// VK_KHR_swapchain_mutable_format = 1
 	/// </summary>
-	public const uint KHRSwapchainMutableFormat = 1;
+	public const uint VK_KHR_swapchain_mutable_format = 1;
 	/// <summary>
 	/// VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRSwapchainMutableFormatSpecVersion = 1;
-	public const string VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_EXTENSION_NAME = "VK_KHR_swapchain_mutable_format";
+	public const uint VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_EXTENSION_NAME = "VK_KHR_swapchain_mutable_format"
 	/// </summary>
-	public const string KHRSwapchainMutableFormatExtensionName = "VK_KHR_swapchain_mutable_format";
+	public const string VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_EXTENSION_NAME = "VK_KHR_swapchain_mutable_format";
 	/// <summary>
 	/// VK_KHR_timeline_semaphore = 1
 	/// </summary>
-	public const uint KHRTimelineSemaphore = 1;
+	public const uint VK_KHR_timeline_semaphore = 1;
 	/// <summary>
 	/// VK_KHR_TIMELINE_SEMAPHORE_SPEC_VERSION = 2
 	/// </summary>
-	public const uint KHRTimelineSemaphoreSpecVersion = 2;
-	public const string VK_KHR_TIMELINE_SEMAPHORE_EXTENSION_NAME = "VK_KHR_timeline_semaphore";
+	public const uint VK_KHR_TIMELINE_SEMAPHORE_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_KHR_TIMELINE_SEMAPHORE_EXTENSION_NAME = "VK_KHR_timeline_semaphore"
 	/// </summary>
-	public const string KHRTimelineSemaphoreExtensionName = "VK_KHR_timeline_semaphore";
+	public const string VK_KHR_TIMELINE_SEMAPHORE_EXTENSION_NAME = "VK_KHR_timeline_semaphore";
 	/// <summary>
 	/// VK_KHR_vulkan_memory_model = 1
 	/// </summary>
-	public const uint KHRVulkanMemoryModel = 1;
+	public const uint VK_KHR_vulkan_memory_model = 1;
 	/// <summary>
 	/// VK_KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION = 3
 	/// </summary>
-	public const uint KHRVulkanMemoryModelSpecVersion = 3;
-	public const string VK_KHR_VULKAN_MEMORY_MODEL_EXTENSION_NAME = "VK_KHR_vulkan_memory_model";
+	public const uint VK_KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_KHR_VULKAN_MEMORY_MODEL_EXTENSION_NAME = "VK_KHR_vulkan_memory_model"
 	/// </summary>
-	public const string KHRVulkanMemoryModelExtensionName = "VK_KHR_vulkan_memory_model";
+	public const string VK_KHR_VULKAN_MEMORY_MODEL_EXTENSION_NAME = "VK_KHR_vulkan_memory_model";
 	/// <summary>
 	/// VK_KHR_shader_terminate_invocation = 1
 	/// </summary>
-	public const uint KHRShaderTerminateInvocation = 1;
+	public const uint VK_KHR_shader_terminate_invocation = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_TERMINATE_INVOCATION_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRShaderTerminateInvocationSpecVersion = 1;
-	public const string VK_KHR_SHADER_TERMINATE_INVOCATION_EXTENSION_NAME = "VK_KHR_shader_terminate_invocation";
+	public const uint VK_KHR_SHADER_TERMINATE_INVOCATION_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_TERMINATE_INVOCATION_EXTENSION_NAME = "VK_KHR_shader_terminate_invocation"
 	/// </summary>
-	public const string KHRShaderTerminateInvocationExtensionName = "VK_KHR_shader_terminate_invocation";
+	public const string VK_KHR_SHADER_TERMINATE_INVOCATION_EXTENSION_NAME = "VK_KHR_shader_terminate_invocation";
 	/// <summary>
 	/// VK_KHR_fragment_shading_rate = 1
 	/// </summary>
-	public const uint KHRFragmentShadingRate = 1;
+	public const uint VK_KHR_fragment_shading_rate = 1;
 	/// <summary>
 	/// VK_KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION = 2
 	/// </summary>
-	public const uint KHRFragmentShadingRateSpecVersion = 2;
-	public const string VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME = "VK_KHR_fragment_shading_rate";
+	public const uint VK_KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME = "VK_KHR_fragment_shading_rate"
 	/// </summary>
-	public const string KHRFragmentShadingRateExtensionName = "VK_KHR_fragment_shading_rate";
+	public const string VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME = "VK_KHR_fragment_shading_rate";
 	/// <summary>
 	/// VK_KHR_spirv_1_4 = 1
 	/// </summary>
-	public const uint KHRSpirv14 = 1;
+	public const uint VK_KHR_spirv_1_4 = 1;
 	/// <summary>
 	/// VK_KHR_SPIRV_1_4_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRSpirv14SpecVersion = 1;
-	public const string VK_KHR_SPIRV_1_4_EXTENSION_NAME = "VK_KHR_spirv_1_4";
+	public const uint VK_KHR_SPIRV_1_4_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SPIRV_1_4_EXTENSION_NAME = "VK_KHR_spirv_1_4"
 	/// </summary>
-	public const string KHRSpirv14ExtensionName = "VK_KHR_spirv_1_4";
+	public const string VK_KHR_SPIRV_1_4_EXTENSION_NAME = "VK_KHR_spirv_1_4";
 	/// <summary>
 	/// VK_KHR_surface_protected_capabilities = 1
 	/// </summary>
-	public const uint KHRSurfaceProtectedCapabilities = 1;
+	public const uint VK_KHR_surface_protected_capabilities = 1;
 	/// <summary>
 	/// VK_KHR_SURFACE_PROTECTED_CAPABILITIES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRSurfaceProtectedCapabilitiesSpecVersion = 1;
-	public const string VK_KHR_SURFACE_PROTECTED_CAPABILITIES_EXTENSION_NAME = "VK_KHR_surface_protected_capabilities";
+	public const uint VK_KHR_SURFACE_PROTECTED_CAPABILITIES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SURFACE_PROTECTED_CAPABILITIES_EXTENSION_NAME = "VK_KHR_surface_protected_capabilities"
 	/// </summary>
-	public const string KHRSurfaceProtectedCapabilitiesExtensionName = "VK_KHR_surface_protected_capabilities";
+	public const string VK_KHR_SURFACE_PROTECTED_CAPABILITIES_EXTENSION_NAME = "VK_KHR_surface_protected_capabilities";
 	/// <summary>
 	/// VK_KHR_separate_depth_stencil_layouts = 1
 	/// </summary>
-	public const uint KHRSeparateDepthStencilLayouts = 1;
+	public const uint VK_KHR_separate_depth_stencil_layouts = 1;
 	/// <summary>
 	/// VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRSeparateDepthStencilLayoutsSpecVersion = 1;
-	public const string VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_EXTENSION_NAME = "VK_KHR_separate_depth_stencil_layouts";
+	public const uint VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_EXTENSION_NAME = "VK_KHR_separate_depth_stencil_layouts"
 	/// </summary>
-	public const string KHRSeparateDepthStencilLayoutsExtensionName = "VK_KHR_separate_depth_stencil_layouts";
+	public const string VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_EXTENSION_NAME = "VK_KHR_separate_depth_stencil_layouts";
 	/// <summary>
 	/// VK_KHR_present_wait = 1
 	/// </summary>
-	public const uint KHRPresentWait = 1;
+	public const uint VK_KHR_present_wait = 1;
 	/// <summary>
 	/// VK_KHR_PRESENT_WAIT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRPresentWaitSpecVersion = 1;
-	public const string VK_KHR_PRESENT_WAIT_EXTENSION_NAME = "VK_KHR_present_wait";
+	public const uint VK_KHR_PRESENT_WAIT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_PRESENT_WAIT_EXTENSION_NAME = "VK_KHR_present_wait"
 	/// </summary>
-	public const string KHRPresentWaitExtensionName = "VK_KHR_present_wait";
+	public const string VK_KHR_PRESENT_WAIT_EXTENSION_NAME = "VK_KHR_present_wait";
 	/// <summary>
 	/// VK_KHR_uniform_buffer_standard_layout = 1
 	/// </summary>
-	public const uint KHRUniformBufferStandardLayout = 1;
+	public const uint VK_KHR_uniform_buffer_standard_layout = 1;
 	/// <summary>
 	/// VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRUniformBufferStandardLayoutSpecVersion = 1;
-	public const string VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_EXTENSION_NAME = "VK_KHR_uniform_buffer_standard_layout";
+	public const uint VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_EXTENSION_NAME = "VK_KHR_uniform_buffer_standard_layout"
 	/// </summary>
-	public const string KHRUniformBufferStandardLayoutExtensionName = "VK_KHR_uniform_buffer_standard_layout";
+	public const string VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_EXTENSION_NAME = "VK_KHR_uniform_buffer_standard_layout";
 	/// <summary>
 	/// VK_KHR_buffer_device_address = 1
 	/// </summary>
-	public const uint KHRBufferDeviceAddress = 1;
+	public const uint VK_KHR_buffer_device_address = 1;
 	/// <summary>
 	/// VK_KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRBufferDeviceAddressSpecVersion = 1;
-	public const string VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_KHR_buffer_device_address";
+	public const uint VK_KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_KHR_buffer_device_address"
 	/// </summary>
-	public const string KHRBufferDeviceAddressExtensionName = "VK_KHR_buffer_device_address";
+	public const string VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_KHR_buffer_device_address";
 	/// <summary>
 	/// VK_KHR_deferred_host_operations = 1
 	/// </summary>
-	public const uint KHRDeferredHostOperations = 1;
+	public const uint VK_KHR_deferred_host_operations = 1;
 	/// <summary>
 	/// VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION = 4
 	/// </summary>
-	public const uint KHRDeferredHostOperationsSpecVersion = 4;
-	public const string VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations";
+	public const uint VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION = 4;
 	/// <summary>
 	/// VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations"
 	/// </summary>
-	public const string KHRDeferredHostOperationsExtensionName = "VK_KHR_deferred_host_operations";
+	public const string VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations";
 	/// <summary>
 	/// VK_KHR_pipeline_executable_properties = 1
 	/// </summary>
-	public const uint KHRPipelineExecutableProperties = 1;
+	public const uint VK_KHR_pipeline_executable_properties = 1;
 	/// <summary>
 	/// VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRPipelineExecutablePropertiesSpecVersion = 1;
-	public const string VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME = "VK_KHR_pipeline_executable_properties";
+	public const uint VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME = "VK_KHR_pipeline_executable_properties"
 	/// </summary>
-	public const string KHRPipelineExecutablePropertiesExtensionName = "VK_KHR_pipeline_executable_properties";
+	public const string VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME = "VK_KHR_pipeline_executable_properties";
 	/// <summary>
 	/// VK_KHR_shader_integer_dot_product = 1
 	/// </summary>
-	public const uint KHRShaderIntegerDotProduct = 1;
+	public const uint VK_KHR_shader_integer_dot_product = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_INTEGER_DOT_PRODUCT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRShaderIntegerDotProductSpecVersion = 1;
-	public const string VK_KHR_SHADER_INTEGER_DOT_PRODUCT_EXTENSION_NAME = "VK_KHR_shader_integer_dot_product";
+	public const uint VK_KHR_SHADER_INTEGER_DOT_PRODUCT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_INTEGER_DOT_PRODUCT_EXTENSION_NAME = "VK_KHR_shader_integer_dot_product"
 	/// </summary>
-	public const string KHRShaderIntegerDotProductExtensionName = "VK_KHR_shader_integer_dot_product";
+	public const string VK_KHR_SHADER_INTEGER_DOT_PRODUCT_EXTENSION_NAME = "VK_KHR_shader_integer_dot_product";
 	/// <summary>
 	/// VK_KHR_pipeline_library = 1
 	/// </summary>
-	public const uint KHRPipelineLibrary = 1;
+	public const uint VK_KHR_pipeline_library = 1;
 	/// <summary>
 	/// VK_KHR_PIPELINE_LIBRARY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRPipelineLibrarySpecVersion = 1;
-	public const string VK_KHR_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_KHR_pipeline_library";
+	public const uint VK_KHR_PIPELINE_LIBRARY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_KHR_pipeline_library"
 	/// </summary>
-	public const string KHRPipelineLibraryExtensionName = "VK_KHR_pipeline_library";
+	public const string VK_KHR_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_KHR_pipeline_library";
 	/// <summary>
 	/// VK_KHR_shader_non_semantic_info = 1
 	/// </summary>
-	public const uint KHRShaderNonSemanticInfo = 1;
+	public const uint VK_KHR_shader_non_semantic_info = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_NON_SEMANTIC_INFO_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRShaderNonSemanticInfoSpecVersion = 1;
-	public const string VK_KHR_SHADER_NON_SEMANTIC_INFO_EXTENSION_NAME = "VK_KHR_shader_non_semantic_info";
+	public const uint VK_KHR_SHADER_NON_SEMANTIC_INFO_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_NON_SEMANTIC_INFO_EXTENSION_NAME = "VK_KHR_shader_non_semantic_info"
 	/// </summary>
-	public const string KHRShaderNonSemanticInfoExtensionName = "VK_KHR_shader_non_semantic_info";
+	public const string VK_KHR_SHADER_NON_SEMANTIC_INFO_EXTENSION_NAME = "VK_KHR_shader_non_semantic_info";
 	/// <summary>
 	/// VK_KHR_present_id = 1
 	/// </summary>
-	public const uint KHRPresentId = 1;
+	public const uint VK_KHR_present_id = 1;
 	/// <summary>
 	/// VK_KHR_PRESENT_ID_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRPresentIdSpecVersion = 1;
-	public const string VK_KHR_PRESENT_ID_EXTENSION_NAME = "VK_KHR_present_id";
+	public const uint VK_KHR_PRESENT_ID_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_PRESENT_ID_EXTENSION_NAME = "VK_KHR_present_id"
 	/// </summary>
-	public const string KHRPresentIdExtensionName = "VK_KHR_present_id";
+	public const string VK_KHR_PRESENT_ID_EXTENSION_NAME = "VK_KHR_present_id";
 	/// <summary>
 	/// VK_KHR_synchronization2 = 1
 	/// </summary>
-	public const uint KHRSynchronization2 = 1;
+	public const uint VK_KHR_synchronization2 = 1;
 	/// <summary>
 	/// VK_KHR_SYNCHRONIZATION_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRSynchronization2SpecVersion = 1;
-	public const string VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2";
+	public const uint VK_KHR_SYNCHRONIZATION_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2"
 	/// </summary>
-	public const string KHRSynchronization2ExtensionName = "VK_KHR_synchronization2";
+	public const string VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2";
 	/// <summary>
 	/// VK_KHR_shader_subgroup_uniform_control_flow = 1
 	/// </summary>
-	public const uint KHRShaderSubgroupUniformControlFlow = 1;
+	public const uint VK_KHR_shader_subgroup_uniform_control_flow = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRShaderSubgroupUniformControlFlowSpecVersion = 1;
-	public const string VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_EXTENSION_NAME = "VK_KHR_shader_subgroup_uniform_control_flow";
+	public const uint VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_EXTENSION_NAME = "VK_KHR_shader_subgroup_uniform_control_flow"
 	/// </summary>
-	public const string KHRShaderSubgroupUniformControlFlowExtensionName = "VK_KHR_shader_subgroup_uniform_control_flow";
+	public const string VK_KHR_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_EXTENSION_NAME = "VK_KHR_shader_subgroup_uniform_control_flow";
 	/// <summary>
 	/// VK_KHR_zero_initialize_workgroup_memory = 1
 	/// </summary>
-	public const uint KHRZeroInitializeWorkgroupMemory = 1;
+	public const uint VK_KHR_zero_initialize_workgroup_memory = 1;
 	/// <summary>
 	/// VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRZeroInitializeWorkgroupMemorySpecVersion = 1;
-	public const string VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_EXTENSION_NAME = "VK_KHR_zero_initialize_workgroup_memory";
+	public const uint VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_EXTENSION_NAME = "VK_KHR_zero_initialize_workgroup_memory"
 	/// </summary>
-	public const string KHRZeroInitializeWorkgroupMemoryExtensionName = "VK_KHR_zero_initialize_workgroup_memory";
+	public const string VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_EXTENSION_NAME = "VK_KHR_zero_initialize_workgroup_memory";
 	/// <summary>
 	/// VK_KHR_workgroup_memory_explicit_layout = 1
 	/// </summary>
-	public const uint KHRWorkgroupMemoryExplicitLayout = 1;
+	public const uint VK_KHR_workgroup_memory_explicit_layout = 1;
 	/// <summary>
 	/// VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRWorkgroupMemoryExplicitLayoutSpecVersion = 1;
-	public const string VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_EXTENSION_NAME = "VK_KHR_workgroup_memory_explicit_layout";
+	public const uint VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_EXTENSION_NAME = "VK_KHR_workgroup_memory_explicit_layout"
 	/// </summary>
-	public const string KHRWorkgroupMemoryExplicitLayoutExtensionName = "VK_KHR_workgroup_memory_explicit_layout";
+	public const string VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_EXTENSION_NAME = "VK_KHR_workgroup_memory_explicit_layout";
 	/// <summary>
 	/// VK_KHR_copy_commands2 = 1
 	/// </summary>
-	public const uint KHRCopyCommands2 = 1;
+	public const uint VK_KHR_copy_commands2 = 1;
 	/// <summary>
 	/// VK_KHR_COPY_COMMANDS_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRCopyCommands2SpecVersion = 1;
-	public const string VK_KHR_COPY_COMMANDS_2_EXTENSION_NAME = "VK_KHR_copy_commands2";
+	public const uint VK_KHR_COPY_COMMANDS_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_COPY_COMMANDS_2_EXTENSION_NAME = "VK_KHR_copy_commands2"
 	/// </summary>
-	public const string KHRCopyCommands2ExtensionName = "VK_KHR_copy_commands2";
+	public const string VK_KHR_COPY_COMMANDS_2_EXTENSION_NAME = "VK_KHR_copy_commands2";
 	/// <summary>
 	/// VK_KHR_format_feature_flags2 = 1
 	/// </summary>
-	public const uint KHRFormatFeatureFlags2 = 1;
+	public const uint VK_KHR_format_feature_flags2 = 1;
 	/// <summary>
 	/// VK_KHR_FORMAT_FEATURE_FLAGS_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRFormatFeature2SpecVersion = 1;
-	public const string VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME = "VK_KHR_format_feature_flags2";
+	public const uint VK_KHR_FORMAT_FEATURE_FLAGS_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME = "VK_KHR_format_feature_flags2"
 	/// </summary>
-	public const string KHRFormatFeature2ExtensionName = "VK_KHR_format_feature_flags2";
+	public const string VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME = "VK_KHR_format_feature_flags2";
 	/// <summary>
 	/// VK_KHR_portability_enumeration = 1
 	/// </summary>
-	public const uint KHRPortabilityEnumeration = 1;
+	public const uint VK_KHR_portability_enumeration = 1;
 	/// <summary>
 	/// VK_KHR_PORTABILITY_ENUMERATION_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRPortabilityEnumerationSpecVersion = 1;
-	public const string VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME = "VK_KHR_portability_enumeration";
+	public const uint VK_KHR_PORTABILITY_ENUMERATION_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME = "VK_KHR_portability_enumeration"
 	/// </summary>
-	public const string KHRPortabilityEnumerationExtensionName = "VK_KHR_portability_enumeration";
+	public const string VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME = "VK_KHR_portability_enumeration";
 	/// <summary>
 	/// VK_KHR_maintenance4 = 1
 	/// </summary>
-	public const uint KHRMaintenance4 = 1;
+	public const uint VK_KHR_maintenance4 = 1;
 	/// <summary>
 	/// VK_KHR_MAINTENANCE_4_SPEC_VERSION = 2
 	/// </summary>
-	public const uint KHRMaintenance4SpecVersion = 2;
-	public const string VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4";
+	public const uint VK_KHR_MAINTENANCE_4_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4"
 	/// </summary>
-	public const string KHRMaintenance4ExtensionName = "VK_KHR_maintenance4";
+	public const string VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4";
 	/// <summary>
 	/// VK_EXT_debug_report = 1
 	/// </summary>
-	public const uint EXTDebugReport = 1;
+	public const uint VK_EXT_debug_report = 1;
 	/// <summary>
 	/// VK_EXT_DEBUG_REPORT_SPEC_VERSION = 10
 	/// </summary>
-	public const uint EXTDebugReportSpecVersion = 10;
-	public const string VK_EXT_DEBUG_REPORT_EXTENSION_NAME = "VK_EXT_debug_report";
+	public const uint VK_EXT_DEBUG_REPORT_SPEC_VERSION = 10;
 	/// <summary>
 	/// VK_EXT_DEBUG_REPORT_EXTENSION_NAME = "VK_EXT_debug_report"
 	/// </summary>
-	public const string EXTDebugReportExtensionName = "VK_EXT_debug_report";
+	public const string VK_EXT_DEBUG_REPORT_EXTENSION_NAME = "VK_EXT_debug_report";
 	/// <summary>
 	/// VK_NV_glsl_shader = 1
 	/// </summary>
-	public const uint NVGlslShader = 1;
+	public const uint VK_NV_glsl_shader = 1;
 	/// <summary>
 	/// VK_NV_GLSL_SHADER_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVGlslShaderSpecVersion = 1;
-	public const string VK_NV_GLSL_SHADER_EXTENSION_NAME = "VK_NV_glsl_shader";
+	public const uint VK_NV_GLSL_SHADER_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_GLSL_SHADER_EXTENSION_NAME = "VK_NV_glsl_shader"
 	/// </summary>
-	public const string NVGlslShaderExtensionName = "VK_NV_glsl_shader";
+	public const string VK_NV_GLSL_SHADER_EXTENSION_NAME = "VK_NV_glsl_shader";
 	/// <summary>
 	/// VK_EXT_depth_range_unrestricted = 1
 	/// </summary>
-	public const uint EXTDepthRangeUnrestricted = 1;
+	public const uint VK_EXT_depth_range_unrestricted = 1;
 	/// <summary>
 	/// VK_EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTDepthRangeUnrestrictedSpecVersion = 1;
-	public const string VK_EXT_DEPTH_RANGE_UNRESTRICTED_EXTENSION_NAME = "VK_EXT_depth_range_unrestricted";
+	public const uint VK_EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_DEPTH_RANGE_UNRESTRICTED_EXTENSION_NAME = "VK_EXT_depth_range_unrestricted"
 	/// </summary>
-	public const string EXTDepthRangeUnrestrictedExtensionName = "VK_EXT_depth_range_unrestricted";
+	public const string VK_EXT_DEPTH_RANGE_UNRESTRICTED_EXTENSION_NAME = "VK_EXT_depth_range_unrestricted";
 	/// <summary>
 	/// VK_IMG_filter_cubic = 1
 	/// </summary>
-	public const uint ImgFilterCubic = 1;
+	public const uint VK_IMG_filter_cubic = 1;
 	/// <summary>
 	/// VK_IMG_FILTER_CUBIC_SPEC_VERSION = 1
 	/// </summary>
-	public const uint ImgFilterCubicSpecVersion = 1;
-	public const string VK_IMG_FILTER_CUBIC_EXTENSION_NAME = "VK_IMG_filter_cubic";
+	public const uint VK_IMG_FILTER_CUBIC_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_IMG_FILTER_CUBIC_EXTENSION_NAME = "VK_IMG_filter_cubic"
 	/// </summary>
-	public const string ImgFilterCubicExtensionName = "VK_IMG_filter_cubic";
+	public const string VK_IMG_FILTER_CUBIC_EXTENSION_NAME = "VK_IMG_filter_cubic";
 	/// <summary>
 	/// VK_AMD_rasterization_order = 1
 	/// </summary>
-	public const uint AMDRasterizationOrder = 1;
+	public const uint VK_AMD_rasterization_order = 1;
 	/// <summary>
 	/// VK_AMD_RASTERIZATION_ORDER_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDRasterizationOrderSpecVersion = 1;
-	public const string VK_AMD_RASTERIZATION_ORDER_EXTENSION_NAME = "VK_AMD_rasterization_order";
+	public const uint VK_AMD_RASTERIZATION_ORDER_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_RASTERIZATION_ORDER_EXTENSION_NAME = "VK_AMD_rasterization_order"
 	/// </summary>
-	public const string AMDRasterizationOrderExtensionName = "VK_AMD_rasterization_order";
+	public const string VK_AMD_RASTERIZATION_ORDER_EXTENSION_NAME = "VK_AMD_rasterization_order";
 	/// <summary>
 	/// VK_AMD_shader_trinary_minmax = 1
 	/// </summary>
-	public const uint AMDShaderTrinaryMinmax = 1;
+	public const uint VK_AMD_shader_trinary_minmax = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_TRINARY_MINMAX_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDShaderTrinaryMinmaxSpecVersion = 1;
-	public const string VK_AMD_SHADER_TRINARY_MINMAX_EXTENSION_NAME = "VK_AMD_shader_trinary_minmax";
+	public const uint VK_AMD_SHADER_TRINARY_MINMAX_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_TRINARY_MINMAX_EXTENSION_NAME = "VK_AMD_shader_trinary_minmax"
 	/// </summary>
-	public const string AMDShaderTrinaryMinmaxExtensionName = "VK_AMD_shader_trinary_minmax";
+	public const string VK_AMD_SHADER_TRINARY_MINMAX_EXTENSION_NAME = "VK_AMD_shader_trinary_minmax";
 	/// <summary>
 	/// VK_AMD_shader_explicit_vertex_parameter = 1
 	/// </summary>
-	public const uint AMDShaderExplicitVertexParameter = 1;
+	public const uint VK_AMD_shader_explicit_vertex_parameter = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDShaderExplicitVertexParameterSpecVersion = 1;
-	public const string VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_EXTENSION_NAME = "VK_AMD_shader_explicit_vertex_parameter";
+	public const uint VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_EXTENSION_NAME = "VK_AMD_shader_explicit_vertex_parameter"
 	/// </summary>
-	public const string AMDShaderExplicitVertexParameterExtensionName = "VK_AMD_shader_explicit_vertex_parameter";
+	public const string VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_EXTENSION_NAME = "VK_AMD_shader_explicit_vertex_parameter";
 	/// <summary>
 	/// VK_EXT_debug_marker = 1
 	/// </summary>
-	public const uint EXTDebugMarker = 1;
+	public const uint VK_EXT_debug_marker = 1;
 	/// <summary>
 	/// VK_EXT_DEBUG_MARKER_SPEC_VERSION = 4
 	/// </summary>
-	public const uint EXTDebugMarkerSpecVersion = 4;
-	public const string VK_EXT_DEBUG_MARKER_EXTENSION_NAME = "VK_EXT_debug_marker";
+	public const uint VK_EXT_DEBUG_MARKER_SPEC_VERSION = 4;
 	/// <summary>
 	/// VK_EXT_DEBUG_MARKER_EXTENSION_NAME = "VK_EXT_debug_marker"
 	/// </summary>
-	public const string EXTDebugMarkerExtensionName = "VK_EXT_debug_marker";
+	public const string VK_EXT_DEBUG_MARKER_EXTENSION_NAME = "VK_EXT_debug_marker";
 	/// <summary>
 	/// VK_AMD_gcn_shader = 1
 	/// </summary>
-	public const uint AMDGcnShader = 1;
+	public const uint VK_AMD_gcn_shader = 1;
 	/// <summary>
 	/// VK_AMD_GCN_SHADER_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDGcnShaderSpecVersion = 1;
-	public const string VK_AMD_GCN_SHADER_EXTENSION_NAME = "VK_AMD_gcn_shader";
+	public const uint VK_AMD_GCN_SHADER_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_GCN_SHADER_EXTENSION_NAME = "VK_AMD_gcn_shader"
 	/// </summary>
-	public const string AMDGcnShaderExtensionName = "VK_AMD_gcn_shader";
+	public const string VK_AMD_GCN_SHADER_EXTENSION_NAME = "VK_AMD_gcn_shader";
 	/// <summary>
 	/// VK_NV_dedicated_allocation = 1
 	/// </summary>
-	public const uint NVDedicatedAllocation = 1;
+	public const uint VK_NV_dedicated_allocation = 1;
 	/// <summary>
 	/// VK_NV_DEDICATED_ALLOCATION_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVDedicatedAllocationSpecVersion = 1;
-	public const string VK_NV_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_NV_dedicated_allocation";
+	public const uint VK_NV_DEDICATED_ALLOCATION_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_NV_dedicated_allocation"
 	/// </summary>
-	public const string NVDedicatedAllocationExtensionName = "VK_NV_dedicated_allocation";
+	public const string VK_NV_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_NV_dedicated_allocation";
 	/// <summary>
 	/// VK_EXT_transform_feedback = 1
 	/// </summary>
-	public const uint EXTTransformFeedback = 1;
+	public const uint VK_EXT_transform_feedback = 1;
 	/// <summary>
 	/// VK_EXT_TRANSFORM_FEEDBACK_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTTransformFeedbackSpecVersion = 1;
-	public const string VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME = "VK_EXT_transform_feedback";
+	public const uint VK_EXT_TRANSFORM_FEEDBACK_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME = "VK_EXT_transform_feedback"
 	/// </summary>
-	public const string EXTTransformFeedbackExtensionName = "VK_EXT_transform_feedback";
+	public const string VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME = "VK_EXT_transform_feedback";
 	/// <summary>
 	/// VK_NVX_binary_import = 1
 	/// </summary>
-	public const uint NVXBinaryImport = 1;
+	public const uint VK_NVX_binary_import = 1;
 	/// <summary>
 	/// VK_NVX_BINARY_IMPORT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVXBinaryImportSpecVersion = 1;
-	public const string VK_NVX_BINARY_IMPORT_EXTENSION_NAME = "VK_NVX_binary_import";
+	public const uint VK_NVX_BINARY_IMPORT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NVX_BINARY_IMPORT_EXTENSION_NAME = "VK_NVX_binary_import"
 	/// </summary>
-	public const string NVXBinaryImportExtensionName = "VK_NVX_binary_import";
+	public const string VK_NVX_BINARY_IMPORT_EXTENSION_NAME = "VK_NVX_binary_import";
 	/// <summary>
 	/// VK_NVX_image_view_handle = 1
 	/// </summary>
-	public const uint NVXImageViewHandle = 1;
+	public const uint VK_NVX_image_view_handle = 1;
 	/// <summary>
 	/// VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION = 2
 	/// </summary>
-	public const uint NVXImageViewHandleSpecVersion = 2;
-	public const string VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME = "VK_NVX_image_view_handle";
+	public const uint VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME = "VK_NVX_image_view_handle"
 	/// </summary>
-	public const string NVXImageViewHandleExtensionName = "VK_NVX_image_view_handle";
+	public const string VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME = "VK_NVX_image_view_handle";
 	/// <summary>
 	/// VK_AMD_draw_indirect_count = 1
 	/// </summary>
-	public const uint AMDDrawIndirectCount = 1;
+	public const uint VK_AMD_draw_indirect_count = 1;
 	/// <summary>
 	/// VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION = 2
 	/// </summary>
-	public const uint AMDDrawIndirectCountSpecVersion = 2;
-	public const string VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_AMD_draw_indirect_count";
+	public const uint VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_AMD_draw_indirect_count"
 	/// </summary>
-	public const string AMDDrawIndirectCountExtensionName = "VK_AMD_draw_indirect_count";
+	public const string VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_AMD_draw_indirect_count";
 	/// <summary>
 	/// VK_AMD_negative_viewport_height = 1
 	/// </summary>
-	public const uint AMDNegativeViewportHeight = 1;
+	public const uint VK_AMD_negative_viewport_height = 1;
 	/// <summary>
 	/// VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDNegativeViewportHeightSpecVersion = 1;
-	public const string VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_EXTENSION_NAME = "VK_AMD_negative_viewport_height";
+	public const uint VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_EXTENSION_NAME = "VK_AMD_negative_viewport_height"
 	/// </summary>
-	public const string AMDNegativeViewportHeightExtensionName = "VK_AMD_negative_viewport_height";
+	public const string VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_EXTENSION_NAME = "VK_AMD_negative_viewport_height";
 	/// <summary>
 	/// VK_AMD_gpu_shader_half_float = 1
 	/// </summary>
-	public const uint AMDGpuShaderHalfFloat = 1;
+	public const uint VK_AMD_gpu_shader_half_float = 1;
 	/// <summary>
 	/// VK_AMD_GPU_SHADER_HALF_FLOAT_SPEC_VERSION = 2
 	/// </summary>
-	public const uint AMDGpuShaderHalfFloatSpecVersion = 2;
-	public const string VK_AMD_GPU_SHADER_HALF_FLOAT_EXTENSION_NAME = "VK_AMD_gpu_shader_half_float";
+	public const uint VK_AMD_GPU_SHADER_HALF_FLOAT_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_AMD_GPU_SHADER_HALF_FLOAT_EXTENSION_NAME = "VK_AMD_gpu_shader_half_float"
 	/// </summary>
-	public const string AMDGpuShaderHalfFloatExtensionName = "VK_AMD_gpu_shader_half_float";
+	public const string VK_AMD_GPU_SHADER_HALF_FLOAT_EXTENSION_NAME = "VK_AMD_gpu_shader_half_float";
 	/// <summary>
 	/// VK_AMD_shader_ballot = 1
 	/// </summary>
-	public const uint AMDShaderBallot = 1;
+	public const uint VK_AMD_shader_ballot = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_BALLOT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDShaderBallotSpecVersion = 1;
-	public const string VK_AMD_SHADER_BALLOT_EXTENSION_NAME = "VK_AMD_shader_ballot";
+	public const uint VK_AMD_SHADER_BALLOT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_BALLOT_EXTENSION_NAME = "VK_AMD_shader_ballot"
 	/// </summary>
-	public const string AMDShaderBallotExtensionName = "VK_AMD_shader_ballot";
+	public const string VK_AMD_SHADER_BALLOT_EXTENSION_NAME = "VK_AMD_shader_ballot";
 	/// <summary>
 	/// VK_AMD_texture_gather_bias_lod = 1
 	/// </summary>
-	public const uint AMDTextureGatherBiasLod = 1;
+	public const uint VK_AMD_texture_gather_bias_lod = 1;
 	/// <summary>
 	/// VK_AMD_TEXTURE_GATHER_BIAS_LOD_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDTextureGatherBiasLodSpecVersion = 1;
-	public const string VK_AMD_TEXTURE_GATHER_BIAS_LOD_EXTENSION_NAME = "VK_AMD_texture_gather_bias_lod";
+	public const uint VK_AMD_TEXTURE_GATHER_BIAS_LOD_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_TEXTURE_GATHER_BIAS_LOD_EXTENSION_NAME = "VK_AMD_texture_gather_bias_lod"
 	/// </summary>
-	public const string AMDTextureGatherBiasLodExtensionName = "VK_AMD_texture_gather_bias_lod";
+	public const string VK_AMD_TEXTURE_GATHER_BIAS_LOD_EXTENSION_NAME = "VK_AMD_texture_gather_bias_lod";
 	/// <summary>
 	/// VK_AMD_shader_info = 1
 	/// </summary>
-	public const uint AMDShaderInfo = 1;
+	public const uint VK_AMD_shader_info = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_INFO_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDShaderInfoSpecVersion = 1;
-	public const string VK_AMD_SHADER_INFO_EXTENSION_NAME = "VK_AMD_shader_info";
+	public const uint VK_AMD_SHADER_INFO_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_INFO_EXTENSION_NAME = "VK_AMD_shader_info"
 	/// </summary>
-	public const string AMDShaderInfoExtensionName = "VK_AMD_shader_info";
+	public const string VK_AMD_SHADER_INFO_EXTENSION_NAME = "VK_AMD_shader_info";
 	/// <summary>
 	/// VK_AMD_shader_image_load_store_lod = 1
 	/// </summary>
-	public const uint AMDShaderImageLoadStoreLod = 1;
+	public const uint VK_AMD_shader_image_load_store_lod = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDShaderImageLoadStoreLodSpecVersion = 1;
-	public const string VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_EXTENSION_NAME = "VK_AMD_shader_image_load_store_lod";
+	public const uint VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_EXTENSION_NAME = "VK_AMD_shader_image_load_store_lod"
 	/// </summary>
-	public const string AMDShaderImageLoadStoreLodExtensionName = "VK_AMD_shader_image_load_store_lod";
+	public const string VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_EXTENSION_NAME = "VK_AMD_shader_image_load_store_lod";
 	/// <summary>
 	/// VK_NV_corner_sampled_image = 1
 	/// </summary>
-	public const uint NVCornerSampledImage = 1;
+	public const uint VK_NV_corner_sampled_image = 1;
 	/// <summary>
 	/// VK_NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION = 2
 	/// </summary>
-	public const uint NVCornerSampledImageSpecVersion = 2;
-	public const string VK_NV_CORNER_SAMPLED_IMAGE_EXTENSION_NAME = "VK_NV_corner_sampled_image";
+	public const uint VK_NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_NV_CORNER_SAMPLED_IMAGE_EXTENSION_NAME = "VK_NV_corner_sampled_image"
 	/// </summary>
-	public const string NVCornerSampledImageExtensionName = "VK_NV_corner_sampled_image";
+	public const string VK_NV_CORNER_SAMPLED_IMAGE_EXTENSION_NAME = "VK_NV_corner_sampled_image";
 	/// <summary>
 	/// VK_IMG_format_pvrtc = 1
 	/// </summary>
-	public const uint ImgFormatPvrtc = 1;
+	public const uint VK_IMG_format_pvrtc = 1;
 	/// <summary>
 	/// VK_IMG_FORMAT_PVRTC_SPEC_VERSION = 1
 	/// </summary>
-	public const uint ImgFormatPvrtcSpecVersion = 1;
-	public const string VK_IMG_FORMAT_PVRTC_EXTENSION_NAME = "VK_IMG_format_pvrtc";
+	public const uint VK_IMG_FORMAT_PVRTC_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_IMG_FORMAT_PVRTC_EXTENSION_NAME = "VK_IMG_format_pvrtc"
 	/// </summary>
-	public const string ImgFormatPvrtcExtensionName = "VK_IMG_format_pvrtc";
+	public const string VK_IMG_FORMAT_PVRTC_EXTENSION_NAME = "VK_IMG_format_pvrtc";
 	/// <summary>
 	/// VK_NV_external_memory_capabilities = 1
 	/// </summary>
-	public const uint NVExternalMemoryCapabilities = 1;
+	public const uint VK_NV_external_memory_capabilities = 1;
 	/// <summary>
 	/// VK_NV_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVExternalMemoryCapabilitiesSpecVersion = 1;
-	public const string VK_NV_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_NV_external_memory_capabilities";
+	public const uint VK_NV_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_NV_external_memory_capabilities"
 	/// </summary>
-	public const string NVExternalMemoryCapabilitiesExtensionName = "VK_NV_external_memory_capabilities";
+	public const string VK_NV_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_NV_external_memory_capabilities";
 	/// <summary>
 	/// VK_NV_external_memory = 1
 	/// </summary>
-	public const uint NVExternalMemory = 1;
+	public const uint VK_NV_external_memory = 1;
 	/// <summary>
 	/// VK_NV_EXTERNAL_MEMORY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVExternalMemorySpecVersion = 1;
-	public const string VK_NV_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_NV_external_memory";
+	public const uint VK_NV_EXTERNAL_MEMORY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_NV_external_memory"
 	/// </summary>
-	public const string NVExternalMemoryExtensionName = "VK_NV_external_memory";
+	public const string VK_NV_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_NV_external_memory";
 	/// <summary>
 	/// VK_EXT_validation_flags = 1
 	/// </summary>
-	public const uint EXTValidation = 1;
+	public const uint VK_EXT_validation_flags = 1;
 	/// <summary>
 	/// VK_EXT_VALIDATION_FLAGS_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTValidationSpecVersion = 2;
-	public const string VK_EXT_VALIDATION_FLAGS_EXTENSION_NAME = "VK_EXT_validation_flags";
+	public const uint VK_EXT_VALIDATION_FLAGS_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_VALIDATION_FLAGS_EXTENSION_NAME = "VK_EXT_validation_flags"
 	/// </summary>
-	public const string EXTValidationExtensionName = "VK_EXT_validation_flags";
+	public const string VK_EXT_VALIDATION_FLAGS_EXTENSION_NAME = "VK_EXT_validation_flags";
 	/// <summary>
 	/// VK_EXT_shader_subgroup_ballot = 1
 	/// </summary>
-	public const uint EXTShaderSubgroupBallot = 1;
+	public const uint VK_EXT_shader_subgroup_ballot = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_SUBGROUP_BALLOT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTShaderSubgroupBallotSpecVersion = 1;
-	public const string VK_EXT_SHADER_SUBGROUP_BALLOT_EXTENSION_NAME = "VK_EXT_shader_subgroup_ballot";
+	public const uint VK_EXT_SHADER_SUBGROUP_BALLOT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_SUBGROUP_BALLOT_EXTENSION_NAME = "VK_EXT_shader_subgroup_ballot"
 	/// </summary>
-	public const string EXTShaderSubgroupBallotExtensionName = "VK_EXT_shader_subgroup_ballot";
+	public const string VK_EXT_SHADER_SUBGROUP_BALLOT_EXTENSION_NAME = "VK_EXT_shader_subgroup_ballot";
 	/// <summary>
 	/// VK_EXT_shader_subgroup_vote = 1
 	/// </summary>
-	public const uint EXTShaderSubgroupVote = 1;
+	public const uint VK_EXT_shader_subgroup_vote = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_SUBGROUP_VOTE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTShaderSubgroupVoteSpecVersion = 1;
-	public const string VK_EXT_SHADER_SUBGROUP_VOTE_EXTENSION_NAME = "VK_EXT_shader_subgroup_vote";
+	public const uint VK_EXT_SHADER_SUBGROUP_VOTE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_SUBGROUP_VOTE_EXTENSION_NAME = "VK_EXT_shader_subgroup_vote"
 	/// </summary>
-	public const string EXTShaderSubgroupVoteExtensionName = "VK_EXT_shader_subgroup_vote";
+	public const string VK_EXT_SHADER_SUBGROUP_VOTE_EXTENSION_NAME = "VK_EXT_shader_subgroup_vote";
 	/// <summary>
 	/// VK_EXT_texture_compression_astc_hdr = 1
 	/// </summary>
-	public const uint EXTTextureCompressionAstcHdr = 1;
+	public const uint VK_EXT_texture_compression_astc_hdr = 1;
 	/// <summary>
 	/// VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTTextureCompressionAstcHdrSpecVersion = 1;
-	public const string VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_EXTENSION_NAME = "VK_EXT_texture_compression_astc_hdr";
+	public const uint VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_EXTENSION_NAME = "VK_EXT_texture_compression_astc_hdr"
 	/// </summary>
-	public const string EXTTextureCompressionAstcHdrExtensionName = "VK_EXT_texture_compression_astc_hdr";
+	public const string VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_EXTENSION_NAME = "VK_EXT_texture_compression_astc_hdr";
 	/// <summary>
 	/// VK_EXT_astc_decode_mode = 1
 	/// </summary>
-	public const uint EXTAstcDecodeMode = 1;
+	public const uint VK_EXT_astc_decode_mode = 1;
 	/// <summary>
 	/// VK_EXT_ASTC_DECODE_MODE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTAstcDecodeModeSpecVersion = 1;
-	public const string VK_EXT_ASTC_DECODE_MODE_EXTENSION_NAME = "VK_EXT_astc_decode_mode";
+	public const uint VK_EXT_ASTC_DECODE_MODE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_ASTC_DECODE_MODE_EXTENSION_NAME = "VK_EXT_astc_decode_mode"
 	/// </summary>
-	public const string EXTAstcDecodeModeExtensionName = "VK_EXT_astc_decode_mode";
+	public const string VK_EXT_ASTC_DECODE_MODE_EXTENSION_NAME = "VK_EXT_astc_decode_mode";
 	/// <summary>
 	/// VK_EXT_conditional_rendering = 1
 	/// </summary>
-	public const uint EXTConditionalRendering = 1;
+	public const uint VK_EXT_conditional_rendering = 1;
 	/// <summary>
 	/// VK_EXT_CONDITIONAL_RENDERING_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTConditionalRenderingSpecVersion = 2;
-	public const string VK_EXT_CONDITIONAL_RENDERING_EXTENSION_NAME = "VK_EXT_conditional_rendering";
+	public const uint VK_EXT_CONDITIONAL_RENDERING_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_CONDITIONAL_RENDERING_EXTENSION_NAME = "VK_EXT_conditional_rendering"
 	/// </summary>
-	public const string EXTConditionalRenderingExtensionName = "VK_EXT_conditional_rendering";
+	public const string VK_EXT_CONDITIONAL_RENDERING_EXTENSION_NAME = "VK_EXT_conditional_rendering";
 	/// <summary>
 	/// VK_NV_clip_space_w_scaling = 1
 	/// </summary>
-	public const uint NVClipSpaceWScaling = 1;
+	public const uint VK_NV_clip_space_w_scaling = 1;
 	/// <summary>
 	/// VK_NV_CLIP_SPACE_W_SCALING_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVClipSpaceWScalingSpecVersion = 1;
-	public const string VK_NV_CLIP_SPACE_W_SCALING_EXTENSION_NAME = "VK_NV_clip_space_w_scaling";
+	public const uint VK_NV_CLIP_SPACE_W_SCALING_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_CLIP_SPACE_W_SCALING_EXTENSION_NAME = "VK_NV_clip_space_w_scaling"
 	/// </summary>
-	public const string NVClipSpaceWScalingExtensionName = "VK_NV_clip_space_w_scaling";
+	public const string VK_NV_CLIP_SPACE_W_SCALING_EXTENSION_NAME = "VK_NV_clip_space_w_scaling";
 	/// <summary>
 	/// VK_EXT_direct_mode_display = 1
 	/// </summary>
-	public const uint EXTDirectModeDisplay = 1;
+	public const uint VK_EXT_direct_mode_display = 1;
 	/// <summary>
 	/// VK_EXT_DIRECT_MODE_DISPLAY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTDirectModeDisplaySpecVersion = 1;
-	public const string VK_EXT_DIRECT_MODE_DISPLAY_EXTENSION_NAME = "VK_EXT_direct_mode_display";
+	public const uint VK_EXT_DIRECT_MODE_DISPLAY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_DIRECT_MODE_DISPLAY_EXTENSION_NAME = "VK_EXT_direct_mode_display"
 	/// </summary>
-	public const string EXTDirectModeDisplayExtensionName = "VK_EXT_direct_mode_display";
+	public const string VK_EXT_DIRECT_MODE_DISPLAY_EXTENSION_NAME = "VK_EXT_direct_mode_display";
 	/// <summary>
 	/// VK_EXT_display_surface_counter = 1
 	/// </summary>
-	public const uint EXTDisplaySurfaceCounter = 1;
+	public const uint VK_EXT_display_surface_counter = 1;
 	/// <summary>
 	/// VK_EXT_DISPLAY_SURFACE_COUNTER_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTDisplaySurfaceCounterSpecVersion = 1;
-	public const string VK_EXT_DISPLAY_SURFACE_COUNTER_EXTENSION_NAME = "VK_EXT_display_surface_counter";
+	public const uint VK_EXT_DISPLAY_SURFACE_COUNTER_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_DISPLAY_SURFACE_COUNTER_EXTENSION_NAME = "VK_EXT_display_surface_counter"
 	/// </summary>
-	public const string EXTDisplaySurfaceCounterExtensionName = "VK_EXT_display_surface_counter";
+	public const string VK_EXT_DISPLAY_SURFACE_COUNTER_EXTENSION_NAME = "VK_EXT_display_surface_counter";
 	/// <summary>
 	/// VK_EXT_display_control = 1
 	/// </summary>
-	public const uint EXTDisplayControl = 1;
+	public const uint VK_EXT_display_control = 1;
 	/// <summary>
 	/// VK_EXT_DISPLAY_CONTROL_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTDisplayControlSpecVersion = 1;
-	public const string VK_EXT_DISPLAY_CONTROL_EXTENSION_NAME = "VK_EXT_display_control";
+	public const uint VK_EXT_DISPLAY_CONTROL_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_DISPLAY_CONTROL_EXTENSION_NAME = "VK_EXT_display_control"
 	/// </summary>
-	public const string EXTDisplayControlExtensionName = "VK_EXT_display_control";
+	public const string VK_EXT_DISPLAY_CONTROL_EXTENSION_NAME = "VK_EXT_display_control";
 	/// <summary>
 	/// VK_GOOGLE_display_timing = 1
 	/// </summary>
-	public const uint GoogleDisplayTiming = 1;
+	public const uint VK_GOOGLE_display_timing = 1;
 	/// <summary>
 	/// VK_GOOGLE_DISPLAY_TIMING_SPEC_VERSION = 1
 	/// </summary>
-	public const uint GoogleDisplayTimingSpecVersion = 1;
-	public const string VK_GOOGLE_DISPLAY_TIMING_EXTENSION_NAME = "VK_GOOGLE_display_timing";
+	public const uint VK_GOOGLE_DISPLAY_TIMING_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_GOOGLE_DISPLAY_TIMING_EXTENSION_NAME = "VK_GOOGLE_display_timing"
 	/// </summary>
-	public const string GoogleDisplayTimingExtensionName = "VK_GOOGLE_display_timing";
+	public const string VK_GOOGLE_DISPLAY_TIMING_EXTENSION_NAME = "VK_GOOGLE_display_timing";
 	/// <summary>
 	/// VK_NV_sample_mask_override_coverage = 1
 	/// </summary>
-	public const uint NVSampleMaskOverrideCoverage = 1;
+	public const uint VK_NV_sample_mask_override_coverage = 1;
 	/// <summary>
 	/// VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVSampleMaskOverrideCoverageSpecVersion = 1;
-	public const string VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_EXTENSION_NAME = "VK_NV_sample_mask_override_coverage";
+	public const uint VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_EXTENSION_NAME = "VK_NV_sample_mask_override_coverage"
 	/// </summary>
-	public const string NVSampleMaskOverrideCoverageExtensionName = "VK_NV_sample_mask_override_coverage";
+	public const string VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_EXTENSION_NAME = "VK_NV_sample_mask_override_coverage";
 	/// <summary>
 	/// VK_NV_geometry_shader_passthrough = 1
 	/// </summary>
-	public const uint NVGeometryShaderPassthrough = 1;
+	public const uint VK_NV_geometry_shader_passthrough = 1;
 	/// <summary>
 	/// VK_NV_GEOMETRY_SHADER_PASSTHROUGH_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVGeometryShaderPassthroughSpecVersion = 1;
-	public const string VK_NV_GEOMETRY_SHADER_PASSTHROUGH_EXTENSION_NAME = "VK_NV_geometry_shader_passthrough";
+	public const uint VK_NV_GEOMETRY_SHADER_PASSTHROUGH_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_GEOMETRY_SHADER_PASSTHROUGH_EXTENSION_NAME = "VK_NV_geometry_shader_passthrough"
 	/// </summary>
-	public const string NVGeometryShaderPassthroughExtensionName = "VK_NV_geometry_shader_passthrough";
+	public const string VK_NV_GEOMETRY_SHADER_PASSTHROUGH_EXTENSION_NAME = "VK_NV_geometry_shader_passthrough";
 	/// <summary>
 	/// VK_NV_viewport_array2 = 1
 	/// </summary>
-	public const uint NVViewportArray2 = 1;
+	public const uint VK_NV_viewport_array2 = 1;
 	/// <summary>
 	/// VK_NV_VIEWPORT_ARRAY_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVViewportArray2SpecVersion = 1;
-	public const string VK_NV_VIEWPORT_ARRAY_2_EXTENSION_NAME = "VK_NV_viewport_array2";
+	public const uint VK_NV_VIEWPORT_ARRAY_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_VIEWPORT_ARRAY_2_EXTENSION_NAME = "VK_NV_viewport_array2"
 	/// </summary>
-	public const string NVViewportArray2ExtensionName = "VK_NV_viewport_array2";
+	public const string VK_NV_VIEWPORT_ARRAY_2_EXTENSION_NAME = "VK_NV_viewport_array2";
 	/// <summary>
 	/// VK_NVX_multiview_per_view_attributes = 1
 	/// </summary>
-	public const uint NVXMultiviewPerViewAttributes = 1;
+	public const uint VK_NVX_multiview_per_view_attributes = 1;
 	/// <summary>
 	/// VK_NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVXMultiviewPerViewAttributesSpecVersion = 1;
-	public const string VK_NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_EXTENSION_NAME = "VK_NVX_multiview_per_view_attributes";
+	public const uint VK_NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_EXTENSION_NAME = "VK_NVX_multiview_per_view_attributes"
 	/// </summary>
-	public const string NVXMultiviewPerViewAttributesExtensionName = "VK_NVX_multiview_per_view_attributes";
+	public const string VK_NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_EXTENSION_NAME = "VK_NVX_multiview_per_view_attributes";
 	/// <summary>
 	/// VK_NV_viewport_swizzle = 1
 	/// </summary>
-	public const uint NVViewportSwizzle = 1;
+	public const uint VK_NV_viewport_swizzle = 1;
 	/// <summary>
 	/// VK_NV_VIEWPORT_SWIZZLE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVViewportSwizzleSpecVersion = 1;
-	public const string VK_NV_VIEWPORT_SWIZZLE_EXTENSION_NAME = "VK_NV_viewport_swizzle";
+	public const uint VK_NV_VIEWPORT_SWIZZLE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_VIEWPORT_SWIZZLE_EXTENSION_NAME = "VK_NV_viewport_swizzle"
 	/// </summary>
-	public const string NVViewportSwizzleExtensionName = "VK_NV_viewport_swizzle";
+	public const string VK_NV_VIEWPORT_SWIZZLE_EXTENSION_NAME = "VK_NV_viewport_swizzle";
 	/// <summary>
 	/// VK_EXT_discard_rectangles = 1
 	/// </summary>
-	public const uint EXTDiscardRectangles = 1;
+	public const uint VK_EXT_discard_rectangles = 1;
 	/// <summary>
 	/// VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTDiscardRectanglesSpecVersion = 1;
-	public const string VK_EXT_DISCARD_RECTANGLES_EXTENSION_NAME = "VK_EXT_discard_rectangles";
+	public const uint VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_DISCARD_RECTANGLES_EXTENSION_NAME = "VK_EXT_discard_rectangles"
 	/// </summary>
-	public const string EXTDiscardRectanglesExtensionName = "VK_EXT_discard_rectangles";
+	public const string VK_EXT_DISCARD_RECTANGLES_EXTENSION_NAME = "VK_EXT_discard_rectangles";
 	/// <summary>
 	/// VK_EXT_conservative_rasterization = 1
 	/// </summary>
-	public const uint EXTConservativeRasterization = 1;
+	public const uint VK_EXT_conservative_rasterization = 1;
 	/// <summary>
 	/// VK_EXT_CONSERVATIVE_RASTERIZATION_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTConservativeRasterizationSpecVersion = 1;
-	public const string VK_EXT_CONSERVATIVE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_conservative_rasterization";
+	public const uint VK_EXT_CONSERVATIVE_RASTERIZATION_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_CONSERVATIVE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_conservative_rasterization"
 	/// </summary>
-	public const string EXTConservativeRasterizationExtensionName = "VK_EXT_conservative_rasterization";
+	public const string VK_EXT_CONSERVATIVE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_conservative_rasterization";
 	/// <summary>
 	/// VK_EXT_depth_clip_enable = 1
 	/// </summary>
-	public const uint EXTDepthClipEnable = 1;
+	public const uint VK_EXT_depth_clip_enable = 1;
 	/// <summary>
 	/// VK_EXT_DEPTH_CLIP_ENABLE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTDepthClipEnableSpecVersion = 1;
-	public const string VK_EXT_DEPTH_CLIP_ENABLE_EXTENSION_NAME = "VK_EXT_depth_clip_enable";
+	public const uint VK_EXT_DEPTH_CLIP_ENABLE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_DEPTH_CLIP_ENABLE_EXTENSION_NAME = "VK_EXT_depth_clip_enable"
 	/// </summary>
-	public const string EXTDepthClipEnableExtensionName = "VK_EXT_depth_clip_enable";
+	public const string VK_EXT_DEPTH_CLIP_ENABLE_EXTENSION_NAME = "VK_EXT_depth_clip_enable";
 	/// <summary>
 	/// VK_EXT_swapchain_colorspace = 1
 	/// </summary>
-	public const uint EXTSwapchainColorspace = 1;
+	public const uint VK_EXT_swapchain_colorspace = 1;
 	/// <summary>
 	/// VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION = 4
 	/// </summary>
-	public const uint EXTSwapchainColorSpaceSpecVersion = 4;
-	public const string VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME = "VK_EXT_swapchain_colorspace";
+	public const uint VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION = 4;
 	/// <summary>
 	/// VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME = "VK_EXT_swapchain_colorspace"
 	/// </summary>
-	public const string EXTSwapchainColorSpaceExtensionName = "VK_EXT_swapchain_colorspace";
+	public const string VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME = "VK_EXT_swapchain_colorspace";
 	/// <summary>
 	/// VK_EXT_hdr_metadata = 1
 	/// </summary>
-	public const uint EXTHdrMetadata = 1;
+	public const uint VK_EXT_hdr_metadata = 1;
 	/// <summary>
 	/// VK_EXT_HDR_METADATA_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTHdrMetadataSpecVersion = 2;
-	public const string VK_EXT_HDR_METADATA_EXTENSION_NAME = "VK_EXT_hdr_metadata";
+	public const uint VK_EXT_HDR_METADATA_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_HDR_METADATA_EXTENSION_NAME = "VK_EXT_hdr_metadata"
 	/// </summary>
-	public const string EXTHdrMetadataExtensionName = "VK_EXT_hdr_metadata";
+	public const string VK_EXT_HDR_METADATA_EXTENSION_NAME = "VK_EXT_hdr_metadata";
 	/// <summary>
 	/// VK_EXT_external_memory_dma_buf = 1
 	/// </summary>
-	public const uint EXTExternalMemoryDmaBuf = 1;
+	public const uint VK_EXT_external_memory_dma_buf = 1;
 	/// <summary>
 	/// VK_EXT_EXTERNAL_MEMORY_DMA_BUF_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTExternalMemoryDmaBufSpecVersion = 1;
-	public const string VK_EXT_EXTERNAL_MEMORY_DMA_BUF_EXTENSION_NAME = "VK_EXT_external_memory_dma_buf";
+	public const uint VK_EXT_EXTERNAL_MEMORY_DMA_BUF_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_EXTERNAL_MEMORY_DMA_BUF_EXTENSION_NAME = "VK_EXT_external_memory_dma_buf"
 	/// </summary>
-	public const string EXTExternalMemoryDmaBufExtensionName = "VK_EXT_external_memory_dma_buf";
+	public const string VK_EXT_EXTERNAL_MEMORY_DMA_BUF_EXTENSION_NAME = "VK_EXT_external_memory_dma_buf";
 	/// <summary>
 	/// VK_EXT_queue_family_foreign = 1
 	/// </summary>
-	public const uint EXTQueueFamilyForeign = 1;
+	public const uint VK_EXT_queue_family_foreign = 1;
 	/// <summary>
 	/// VK_EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTQueueFamilyForeignSpecVersion = 1;
-	public const string VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME = "VK_EXT_queue_family_foreign";
+	public const uint VK_EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME = "VK_EXT_queue_family_foreign"
 	/// </summary>
-	public const string EXTQueueFamilyForeignExtensionName = "VK_EXT_queue_family_foreign";
+	public const string VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME = "VK_EXT_queue_family_foreign";
 	/// <summary>
 	/// VK_QUEUE_FAMILY_FOREIGN_EXT = (~2U)
 	/// </summary>
-	public const uint QueueFamilyForeignEXT = (~2U);
+	public const uint VK_QUEUE_FAMILY_FOREIGN_EXT = (~2U);
 	/// <summary>
 	/// VK_EXT_debug_utils = 1
 	/// </summary>
-	public const uint EXTDebugUtils = 1;
+	public const uint VK_EXT_debug_utils = 1;
 	/// <summary>
 	/// VK_EXT_DEBUG_UTILS_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTDebugUtilsSpecVersion = 2;
-	public const string VK_EXT_DEBUG_UTILS_EXTENSION_NAME = "VK_EXT_debug_utils";
+	public const uint VK_EXT_DEBUG_UTILS_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_DEBUG_UTILS_EXTENSION_NAME = "VK_EXT_debug_utils"
 	/// </summary>
-	public const string EXTDebugUtilsExtensionName = "VK_EXT_debug_utils";
+	public const string VK_EXT_DEBUG_UTILS_EXTENSION_NAME = "VK_EXT_debug_utils";
 	/// <summary>
 	/// VK_EXT_sampler_filter_minmax = 1
 	/// </summary>
-	public const uint EXTSamplerFilterMinmax = 1;
+	public const uint VK_EXT_sampler_filter_minmax = 1;
 	/// <summary>
 	/// VK_EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTSamplerFilterMinmaxSpecVersion = 2;
-	public const string VK_EXT_SAMPLER_FILTER_MINMAX_EXTENSION_NAME = "VK_EXT_sampler_filter_minmax";
+	public const uint VK_EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_SAMPLER_FILTER_MINMAX_EXTENSION_NAME = "VK_EXT_sampler_filter_minmax"
 	/// </summary>
-	public const string EXTSamplerFilterMinmaxExtensionName = "VK_EXT_sampler_filter_minmax";
+	public const string VK_EXT_SAMPLER_FILTER_MINMAX_EXTENSION_NAME = "VK_EXT_sampler_filter_minmax";
 	/// <summary>
 	/// VK_AMD_gpu_shader_int16 = 1
 	/// </summary>
-	public const uint AMDGpuShaderInt16 = 1;
+	public const uint VK_AMD_gpu_shader_int16 = 1;
 	/// <summary>
 	/// VK_AMD_GPU_SHADER_INT16_SPEC_VERSION = 2
 	/// </summary>
-	public const uint AMDGpuShaderInt16SpecVersion = 2;
-	public const string VK_AMD_GPU_SHADER_INT16_EXTENSION_NAME = "VK_AMD_gpu_shader_int16";
+	public const uint VK_AMD_GPU_SHADER_INT16_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_AMD_GPU_SHADER_INT16_EXTENSION_NAME = "VK_AMD_gpu_shader_int16"
 	/// </summary>
-	public const string AMDGpuShaderInt16ExtensionName = "VK_AMD_gpu_shader_int16";
+	public const string VK_AMD_GPU_SHADER_INT16_EXTENSION_NAME = "VK_AMD_gpu_shader_int16";
 	/// <summary>
 	/// VK_AMD_mixed_attachment_samples = 1
 	/// </summary>
-	public const uint AMDMixedAttachmentSamples = 1;
+	public const uint VK_AMD_mixed_attachment_samples = 1;
 	/// <summary>
 	/// VK_AMD_MIXED_ATTACHMENT_SAMPLES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDMixedAttachmentSamplesSpecVersion = 1;
-	public const string VK_AMD_MIXED_ATTACHMENT_SAMPLES_EXTENSION_NAME = "VK_AMD_mixed_attachment_samples";
+	public const uint VK_AMD_MIXED_ATTACHMENT_SAMPLES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_MIXED_ATTACHMENT_SAMPLES_EXTENSION_NAME = "VK_AMD_mixed_attachment_samples"
 	/// </summary>
-	public const string AMDMixedAttachmentSamplesExtensionName = "VK_AMD_mixed_attachment_samples";
+	public const string VK_AMD_MIXED_ATTACHMENT_SAMPLES_EXTENSION_NAME = "VK_AMD_mixed_attachment_samples";
 	/// <summary>
 	/// VK_AMD_shader_fragment_mask = 1
 	/// </summary>
-	public const uint AMDShaderFragmentMask = 1;
+	public const uint VK_AMD_shader_fragment_mask = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_FRAGMENT_MASK_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDShaderFragmentMaskSpecVersion = 1;
-	public const string VK_AMD_SHADER_FRAGMENT_MASK_EXTENSION_NAME = "VK_AMD_shader_fragment_mask";
+	public const uint VK_AMD_SHADER_FRAGMENT_MASK_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_FRAGMENT_MASK_EXTENSION_NAME = "VK_AMD_shader_fragment_mask"
 	/// </summary>
-	public const string AMDShaderFragmentMaskExtensionName = "VK_AMD_shader_fragment_mask";
+	public const string VK_AMD_SHADER_FRAGMENT_MASK_EXTENSION_NAME = "VK_AMD_shader_fragment_mask";
 	/// <summary>
 	/// VK_EXT_inline_uniform_block = 1
 	/// </summary>
-	public const uint EXTInlineUniformBlock = 1;
+	public const uint VK_EXT_inline_uniform_block = 1;
 	/// <summary>
 	/// VK_EXT_INLINE_UNIFORM_BLOCK_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTInlineUniformBlockSpecVersion = 1;
-	public const string VK_EXT_INLINE_UNIFORM_BLOCK_EXTENSION_NAME = "VK_EXT_inline_uniform_block";
+	public const uint VK_EXT_INLINE_UNIFORM_BLOCK_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_INLINE_UNIFORM_BLOCK_EXTENSION_NAME = "VK_EXT_inline_uniform_block"
 	/// </summary>
-	public const string EXTInlineUniformBlockExtensionName = "VK_EXT_inline_uniform_block";
+	public const string VK_EXT_INLINE_UNIFORM_BLOCK_EXTENSION_NAME = "VK_EXT_inline_uniform_block";
 	/// <summary>
 	/// VK_EXT_shader_stencil_export = 1
 	/// </summary>
-	public const uint EXTShaderStencilExport = 1;
+	public const uint VK_EXT_shader_stencil_export = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_STENCIL_EXPORT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTShaderStencilExportSpecVersion = 1;
-	public const string VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME = "VK_EXT_shader_stencil_export";
+	public const uint VK_EXT_SHADER_STENCIL_EXPORT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME = "VK_EXT_shader_stencil_export"
 	/// </summary>
-	public const string EXTShaderStencilExportExtensionName = "VK_EXT_shader_stencil_export";
+	public const string VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME = "VK_EXT_shader_stencil_export";
 	/// <summary>
 	/// VK_EXT_sample_locations = 1
 	/// </summary>
-	public const uint EXTSampleLocations = 1;
+	public const uint VK_EXT_sample_locations = 1;
 	/// <summary>
 	/// VK_EXT_SAMPLE_LOCATIONS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTSampleLocationsSpecVersion = 1;
-	public const string VK_EXT_SAMPLE_LOCATIONS_EXTENSION_NAME = "VK_EXT_sample_locations";
+	public const uint VK_EXT_SAMPLE_LOCATIONS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_SAMPLE_LOCATIONS_EXTENSION_NAME = "VK_EXT_sample_locations"
 	/// </summary>
-	public const string EXTSampleLocationsExtensionName = "VK_EXT_sample_locations";
+	public const string VK_EXT_SAMPLE_LOCATIONS_EXTENSION_NAME = "VK_EXT_sample_locations";
 	/// <summary>
 	/// VK_EXT_blend_operation_advanced = 1
 	/// </summary>
-	public const uint EXTBlendOperationAdvanced = 1;
+	public const uint VK_EXT_blend_operation_advanced = 1;
 	/// <summary>
 	/// VK_EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTBlendOperationAdvancedSpecVersion = 2;
-	public const string VK_EXT_BLEND_OPERATION_ADVANCED_EXTENSION_NAME = "VK_EXT_blend_operation_advanced";
+	public const uint VK_EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_BLEND_OPERATION_ADVANCED_EXTENSION_NAME = "VK_EXT_blend_operation_advanced"
 	/// </summary>
-	public const string EXTBlendOperationAdvancedExtensionName = "VK_EXT_blend_operation_advanced";
+	public const string VK_EXT_BLEND_OPERATION_ADVANCED_EXTENSION_NAME = "VK_EXT_blend_operation_advanced";
 	/// <summary>
 	/// VK_NV_fragment_coverage_to_color = 1
 	/// </summary>
-	public const uint NVFragmentCoverageToColor = 1;
+	public const uint VK_NV_fragment_coverage_to_color = 1;
 	/// <summary>
 	/// VK_NV_FRAGMENT_COVERAGE_TO_COLOR_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVFragmentCoverageToColorSpecVersion = 1;
-	public const string VK_NV_FRAGMENT_COVERAGE_TO_COLOR_EXTENSION_NAME = "VK_NV_fragment_coverage_to_color";
+	public const uint VK_NV_FRAGMENT_COVERAGE_TO_COLOR_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_FRAGMENT_COVERAGE_TO_COLOR_EXTENSION_NAME = "VK_NV_fragment_coverage_to_color"
 	/// </summary>
-	public const string NVFragmentCoverageToColorExtensionName = "VK_NV_fragment_coverage_to_color";
+	public const string VK_NV_FRAGMENT_COVERAGE_TO_COLOR_EXTENSION_NAME = "VK_NV_fragment_coverage_to_color";
 	/// <summary>
 	/// VK_NV_framebuffer_mixed_samples = 1
 	/// </summary>
-	public const uint NVFramebufferMixedSamples = 1;
+	public const uint VK_NV_framebuffer_mixed_samples = 1;
 	/// <summary>
 	/// VK_NV_FRAMEBUFFER_MIXED_SAMPLES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVFramebufferMixedSamplesSpecVersion = 1;
-	public const string VK_NV_FRAMEBUFFER_MIXED_SAMPLES_EXTENSION_NAME = "VK_NV_framebuffer_mixed_samples";
+	public const uint VK_NV_FRAMEBUFFER_MIXED_SAMPLES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_FRAMEBUFFER_MIXED_SAMPLES_EXTENSION_NAME = "VK_NV_framebuffer_mixed_samples"
 	/// </summary>
-	public const string NVFramebufferMixedSamplesExtensionName = "VK_NV_framebuffer_mixed_samples";
+	public const string VK_NV_FRAMEBUFFER_MIXED_SAMPLES_EXTENSION_NAME = "VK_NV_framebuffer_mixed_samples";
 	/// <summary>
 	/// VK_NV_fill_rectangle = 1
 	/// </summary>
-	public const uint NVFillRectangle = 1;
+	public const uint VK_NV_fill_rectangle = 1;
 	/// <summary>
 	/// VK_NV_FILL_RECTANGLE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVFillRectangleSpecVersion = 1;
-	public const string VK_NV_FILL_RECTANGLE_EXTENSION_NAME = "VK_NV_fill_rectangle";
+	public const uint VK_NV_FILL_RECTANGLE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_FILL_RECTANGLE_EXTENSION_NAME = "VK_NV_fill_rectangle"
 	/// </summary>
-	public const string NVFillRectangleExtensionName = "VK_NV_fill_rectangle";
+	public const string VK_NV_FILL_RECTANGLE_EXTENSION_NAME = "VK_NV_fill_rectangle";
 	/// <summary>
 	/// VK_NV_shader_sm_builtins = 1
 	/// </summary>
-	public const uint NVShaderSmBuiltins = 1;
+	public const uint VK_NV_shader_sm_builtins = 1;
 	/// <summary>
 	/// VK_NV_SHADER_SM_BUILTINS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVShaderSmBuiltinsSpecVersion = 1;
-	public const string VK_NV_SHADER_SM_BUILTINS_EXTENSION_NAME = "VK_NV_shader_sm_builtins";
+	public const uint VK_NV_SHADER_SM_BUILTINS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_SHADER_SM_BUILTINS_EXTENSION_NAME = "VK_NV_shader_sm_builtins"
 	/// </summary>
-	public const string NVShaderSmBuiltinsExtensionName = "VK_NV_shader_sm_builtins";
+	public const string VK_NV_SHADER_SM_BUILTINS_EXTENSION_NAME = "VK_NV_shader_sm_builtins";
 	/// <summary>
 	/// VK_EXT_post_depth_coverage = 1
 	/// </summary>
-	public const uint EXTPostDepthCoverage = 1;
+	public const uint VK_EXT_post_depth_coverage = 1;
 	/// <summary>
 	/// VK_EXT_POST_DEPTH_COVERAGE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTPostDepthCoverageSpecVersion = 1;
-	public const string VK_EXT_POST_DEPTH_COVERAGE_EXTENSION_NAME = "VK_EXT_post_depth_coverage";
+	public const uint VK_EXT_POST_DEPTH_COVERAGE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_POST_DEPTH_COVERAGE_EXTENSION_NAME = "VK_EXT_post_depth_coverage"
 	/// </summary>
-	public const string EXTPostDepthCoverageExtensionName = "VK_EXT_post_depth_coverage";
+	public const string VK_EXT_POST_DEPTH_COVERAGE_EXTENSION_NAME = "VK_EXT_post_depth_coverage";
 	/// <summary>
 	/// VK_EXT_image_drm_format_modifier = 1
 	/// </summary>
-	public const uint EXTImageDrmFormatModifier = 1;
+	public const uint VK_EXT_image_drm_format_modifier = 1;
 	/// <summary>
 	/// VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTImageDrmFormatModifierSpecVersion = 2;
-	public const string VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME = "VK_EXT_image_drm_format_modifier";
+	public const uint VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME = "VK_EXT_image_drm_format_modifier"
 	/// </summary>
-	public const string EXTImageDrmFormatModifierExtensionName = "VK_EXT_image_drm_format_modifier";
+	public const string VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME = "VK_EXT_image_drm_format_modifier";
 	/// <summary>
 	/// VK_EXT_validation_cache = 1
 	/// </summary>
-	public const uint EXTValidationCache = 1;
+	public const uint VK_EXT_validation_cache = 1;
 	/// <summary>
 	/// VK_EXT_VALIDATION_CACHE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTValidationCacheSpecVersion = 1;
-	public const string VK_EXT_VALIDATION_CACHE_EXTENSION_NAME = "VK_EXT_validation_cache";
+	public const uint VK_EXT_VALIDATION_CACHE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_VALIDATION_CACHE_EXTENSION_NAME = "VK_EXT_validation_cache"
 	/// </summary>
-	public const string EXTValidationCacheExtensionName = "VK_EXT_validation_cache";
+	public const string VK_EXT_VALIDATION_CACHE_EXTENSION_NAME = "VK_EXT_validation_cache";
 	/// <summary>
 	/// VK_EXT_descriptor_indexing = 1
 	/// </summary>
-	public const uint EXTDescriptorIndexing = 1;
+	public const uint VK_EXT_descriptor_indexing = 1;
 	/// <summary>
 	/// VK_EXT_DESCRIPTOR_INDEXING_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTDescriptorIndexingSpecVersion = 2;
-	public const string VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME = "VK_EXT_descriptor_indexing";
+	public const uint VK_EXT_DESCRIPTOR_INDEXING_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME = "VK_EXT_descriptor_indexing"
 	/// </summary>
-	public const string EXTDescriptorIndexingExtensionName = "VK_EXT_descriptor_indexing";
+	public const string VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME = "VK_EXT_descriptor_indexing";
 	/// <summary>
 	/// VK_EXT_shader_viewport_index_layer = 1
 	/// </summary>
-	public const uint EXTShaderViewportIndexLayer = 1;
+	public const uint VK_EXT_shader_viewport_index_layer = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTShaderViewportIndexLayerSpecVersion = 1;
-	public const string VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_EXTENSION_NAME = "VK_EXT_shader_viewport_index_layer";
+	public const uint VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_EXTENSION_NAME = "VK_EXT_shader_viewport_index_layer"
 	/// </summary>
-	public const string EXTShaderViewportIndexLayerExtensionName = "VK_EXT_shader_viewport_index_layer";
+	public const string VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_EXTENSION_NAME = "VK_EXT_shader_viewport_index_layer";
 	/// <summary>
 	/// VK_NV_shading_rate_image = 1
 	/// </summary>
-	public const uint NVShadingRateImage = 1;
+	public const uint VK_NV_shading_rate_image = 1;
 	/// <summary>
 	/// VK_NV_SHADING_RATE_IMAGE_SPEC_VERSION = 3
 	/// </summary>
-	public const uint NVShadingRateImageSpecVersion = 3;
-	public const string VK_NV_SHADING_RATE_IMAGE_EXTENSION_NAME = "VK_NV_shading_rate_image";
+	public const uint VK_NV_SHADING_RATE_IMAGE_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_NV_SHADING_RATE_IMAGE_EXTENSION_NAME = "VK_NV_shading_rate_image"
 	/// </summary>
-	public const string NVShadingRateImageExtensionName = "VK_NV_shading_rate_image";
+	public const string VK_NV_SHADING_RATE_IMAGE_EXTENSION_NAME = "VK_NV_shading_rate_image";
 	/// <summary>
 	/// VK_NV_ray_tracing = 1
 	/// </summary>
-	public const uint NVRayTracing = 1;
+	public const uint VK_NV_ray_tracing = 1;
 	/// <summary>
 	/// VK_NV_RAY_TRACING_SPEC_VERSION = 3
 	/// </summary>
-	public const uint NVRayTracingSpecVersion = 3;
-	public const string VK_NV_RAY_TRACING_EXTENSION_NAME = "VK_NV_ray_tracing";
+	public const uint VK_NV_RAY_TRACING_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_NV_RAY_TRACING_EXTENSION_NAME = "VK_NV_ray_tracing"
 	/// </summary>
-	public const string NVRayTracingExtensionName = "VK_NV_ray_tracing";
+	public const string VK_NV_RAY_TRACING_EXTENSION_NAME = "VK_NV_ray_tracing";
 	/// <summary>
 	/// VK_SHADER_UNUSED_KHR = (~0U)
 	/// </summary>
-	public const uint ShaderUnusedKHR = ~0u;
+	public const uint VK_SHADER_UNUSED_KHR = ~0u;
 	/// <summary>
 	/// VK_SHADER_UNUSED_NV = VK_SHADER_UNUSED_KHR
 	/// </summary>
-	public const uint ShaderUnusedNV = ShaderUnusedKHR;
+	public const uint VK_SHADER_UNUSED_NV = VK_SHADER_UNUSED_KHR;
 	/// <summary>
 	/// VK_NV_representative_fragment_test = 1
 	/// </summary>
-	public const uint NVRepresentativeFragmentTest = 1;
+	public const uint VK_NV_representative_fragment_test = 1;
 	/// <summary>
 	/// VK_NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION = 2
 	/// </summary>
-	public const uint NVRepresentativeFragmentTestSpecVersion = 2;
-	public const string VK_NV_REPRESENTATIVE_FRAGMENT_TEST_EXTENSION_NAME = "VK_NV_representative_fragment_test";
+	public const uint VK_NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_NV_REPRESENTATIVE_FRAGMENT_TEST_EXTENSION_NAME = "VK_NV_representative_fragment_test"
 	/// </summary>
-	public const string NVRepresentativeFragmentTestExtensionName = "VK_NV_representative_fragment_test";
+	public const string VK_NV_REPRESENTATIVE_FRAGMENT_TEST_EXTENSION_NAME = "VK_NV_representative_fragment_test";
 	/// <summary>
 	/// VK_EXT_filter_cubic = 1
 	/// </summary>
-	public const uint EXTFilterCubic = 1;
+	public const uint VK_EXT_filter_cubic = 1;
 	/// <summary>
 	/// VK_EXT_FILTER_CUBIC_SPEC_VERSION = 3
 	/// </summary>
-	public const uint EXTFilterCubicSpecVersion = 3;
-	public const string VK_EXT_FILTER_CUBIC_EXTENSION_NAME = "VK_EXT_filter_cubic";
+	public const uint VK_EXT_FILTER_CUBIC_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_EXT_FILTER_CUBIC_EXTENSION_NAME = "VK_EXT_filter_cubic"
 	/// </summary>
-	public const string EXTFilterCubicExtensionName = "VK_EXT_filter_cubic";
+	public const string VK_EXT_FILTER_CUBIC_EXTENSION_NAME = "VK_EXT_filter_cubic";
 	/// <summary>
 	/// VK_QCOM_render_pass_shader_resolve = 1
 	/// </summary>
-	public const uint QcomRenderPassShaderResolve = 1;
+	public const uint VK_QCOM_render_pass_shader_resolve = 1;
 	/// <summary>
 	/// VK_QCOM_RENDER_PASS_SHADER_RESOLVE_SPEC_VERSION = 4
 	/// </summary>
-	public const uint QcomRenderPassShaderResolveSpecVersion = 4;
-	public const string VK_QCOM_RENDER_PASS_SHADER_RESOLVE_EXTENSION_NAME = "VK_QCOM_render_pass_shader_resolve";
+	public const uint VK_QCOM_RENDER_PASS_SHADER_RESOLVE_SPEC_VERSION = 4;
 	/// <summary>
 	/// VK_QCOM_RENDER_PASS_SHADER_RESOLVE_EXTENSION_NAME = "VK_QCOM_render_pass_shader_resolve"
 	/// </summary>
-	public const string QcomRenderPassShaderResolveExtensionName = "VK_QCOM_render_pass_shader_resolve";
+	public const string VK_QCOM_RENDER_PASS_SHADER_RESOLVE_EXTENSION_NAME = "VK_QCOM_render_pass_shader_resolve";
 	/// <summary>
 	/// VK_EXT_global_priority = 1
 	/// </summary>
-	public const uint EXTGlobalPriority = 1;
+	public const uint VK_EXT_global_priority = 1;
 	/// <summary>
 	/// VK_EXT_GLOBAL_PRIORITY_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTGlobalPrioritySpecVersion = 2;
-	public const string VK_EXT_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_EXT_global_priority";
+	public const uint VK_EXT_GLOBAL_PRIORITY_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_EXT_global_priority"
 	/// </summary>
-	public const string EXTGlobalPriorityExtensionName = "VK_EXT_global_priority";
+	public const string VK_EXT_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_EXT_global_priority";
 	/// <summary>
 	/// VK_EXT_external_memory_host = 1
 	/// </summary>
-	public const uint EXTExternalMemoryHost = 1;
+	public const uint VK_EXT_external_memory_host = 1;
 	/// <summary>
 	/// VK_EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTExternalMemoryHostSpecVersion = 1;
-	public const string VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME = "VK_EXT_external_memory_host";
+	public const uint VK_EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME = "VK_EXT_external_memory_host"
 	/// </summary>
-	public const string EXTExternalMemoryHostExtensionName = "VK_EXT_external_memory_host";
+	public const string VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME = "VK_EXT_external_memory_host";
 	/// <summary>
 	/// VK_AMD_buffer_marker = 1
 	/// </summary>
-	public const uint AMDBufferMarker = 1;
+	public const uint VK_AMD_buffer_marker = 1;
 	/// <summary>
 	/// VK_AMD_BUFFER_MARKER_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDBufferMarkerSpecVersion = 1;
-	public const string VK_AMD_BUFFER_MARKER_EXTENSION_NAME = "VK_AMD_buffer_marker";
+	public const uint VK_AMD_BUFFER_MARKER_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_BUFFER_MARKER_EXTENSION_NAME = "VK_AMD_buffer_marker"
 	/// </summary>
-	public const string AMDBufferMarkerExtensionName = "VK_AMD_buffer_marker";
+	public const string VK_AMD_BUFFER_MARKER_EXTENSION_NAME = "VK_AMD_buffer_marker";
 	/// <summary>
 	/// VK_AMD_pipeline_compiler_control = 1
 	/// </summary>
-	public const uint AMDPipelineCompilerControl = 1;
+	public const uint VK_AMD_pipeline_compiler_control = 1;
 	/// <summary>
 	/// VK_AMD_PIPELINE_COMPILER_CONTROL_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDPipelineCompilerControlSpecVersion = 1;
-	public const string VK_AMD_PIPELINE_COMPILER_CONTROL_EXTENSION_NAME = "VK_AMD_pipeline_compiler_control";
+	public const uint VK_AMD_PIPELINE_COMPILER_CONTROL_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_PIPELINE_COMPILER_CONTROL_EXTENSION_NAME = "VK_AMD_pipeline_compiler_control"
 	/// </summary>
-	public const string AMDPipelineCompilerControlExtensionName = "VK_AMD_pipeline_compiler_control";
+	public const string VK_AMD_PIPELINE_COMPILER_CONTROL_EXTENSION_NAME = "VK_AMD_pipeline_compiler_control";
 	/// <summary>
 	/// VK_EXT_calibrated_timestamps = 1
 	/// </summary>
-	public const uint EXTCalibratedTimestamps = 1;
+	public const uint VK_EXT_calibrated_timestamps = 1;
 	/// <summary>
 	/// VK_EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTCalibratedTimestampsSpecVersion = 2;
-	public const string VK_EXT_CALIBRATED_TIMESTAMPS_EXTENSION_NAME = "VK_EXT_calibrated_timestamps";
+	public const uint VK_EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_CALIBRATED_TIMESTAMPS_EXTENSION_NAME = "VK_EXT_calibrated_timestamps"
 	/// </summary>
-	public const string EXTCalibratedTimestampsExtensionName = "VK_EXT_calibrated_timestamps";
+	public const string VK_EXT_CALIBRATED_TIMESTAMPS_EXTENSION_NAME = "VK_EXT_calibrated_timestamps";
 	/// <summary>
 	/// VK_AMD_shader_core_properties = 1
 	/// </summary>
-	public const uint AMDShaderCoreProperties = 1;
+	public const uint VK_AMD_shader_core_properties = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION = 2
 	/// </summary>
-	public const uint AMDShaderCorePropertiesSpecVersion = 2;
-	public const string VK_AMD_SHADER_CORE_PROPERTIES_EXTENSION_NAME = "VK_AMD_shader_core_properties";
+	public const uint VK_AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_AMD_SHADER_CORE_PROPERTIES_EXTENSION_NAME = "VK_AMD_shader_core_properties"
 	/// </summary>
-	public const string AMDShaderCorePropertiesExtensionName = "VK_AMD_shader_core_properties";
+	public const string VK_AMD_SHADER_CORE_PROPERTIES_EXTENSION_NAME = "VK_AMD_shader_core_properties";
 	/// <summary>
 	/// VK_AMD_memory_overallocation_behavior = 1
 	/// </summary>
-	public const uint AMDMemoryOverallocationBehavior = 1;
+	public const uint VK_AMD_memory_overallocation_behavior = 1;
 	/// <summary>
 	/// VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDMemoryOverallocationBehaviorSpecVersion = 1;
-	public const string VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_EXTENSION_NAME = "VK_AMD_memory_overallocation_behavior";
+	public const uint VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_EXTENSION_NAME = "VK_AMD_memory_overallocation_behavior"
 	/// </summary>
-	public const string AMDMemoryOverallocationBehaviorExtensionName = "VK_AMD_memory_overallocation_behavior";
+	public const string VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_EXTENSION_NAME = "VK_AMD_memory_overallocation_behavior";
 	/// <summary>
 	/// VK_EXT_vertex_attribute_divisor = 1
 	/// </summary>
-	public const uint EXTVertexAttributeDivisor = 1;
+	public const uint VK_EXT_vertex_attribute_divisor = 1;
 	/// <summary>
 	/// VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION = 3
 	/// </summary>
-	public const uint EXTVertexAttributeDivisorSpecVersion = 3;
-	public const string VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME = "VK_EXT_vertex_attribute_divisor";
+	public const uint VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME = "VK_EXT_vertex_attribute_divisor"
 	/// </summary>
-	public const string EXTVertexAttributeDivisorExtensionName = "VK_EXT_vertex_attribute_divisor";
+	public const string VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME = "VK_EXT_vertex_attribute_divisor";
 	/// <summary>
 	/// VK_EXT_pipeline_creation_feedback = 1
 	/// </summary>
-	public const uint EXTPipelineCreationFeedback = 1;
+	public const uint VK_EXT_pipeline_creation_feedback = 1;
 	/// <summary>
 	/// VK_EXT_PIPELINE_CREATION_FEEDBACK_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTPipelineCreationFeedbackSpecVersion = 1;
-	public const string VK_EXT_PIPELINE_CREATION_FEEDBACK_EXTENSION_NAME = "VK_EXT_pipeline_creation_feedback";
+	public const uint VK_EXT_PIPELINE_CREATION_FEEDBACK_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_PIPELINE_CREATION_FEEDBACK_EXTENSION_NAME = "VK_EXT_pipeline_creation_feedback"
 	/// </summary>
-	public const string EXTPipelineCreationFeedbackExtensionName = "VK_EXT_pipeline_creation_feedback";
+	public const string VK_EXT_PIPELINE_CREATION_FEEDBACK_EXTENSION_NAME = "VK_EXT_pipeline_creation_feedback";
 	/// <summary>
 	/// VK_NV_shader_subgroup_partitioned = 1
 	/// </summary>
-	public const uint NVShaderSubgroupPartitioned = 1;
+	public const uint VK_NV_shader_subgroup_partitioned = 1;
 	/// <summary>
 	/// VK_NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVShaderSubgroupPartitionedSpecVersion = 1;
-	public const string VK_NV_SHADER_SUBGROUP_PARTITIONED_EXTENSION_NAME = "VK_NV_shader_subgroup_partitioned";
+	public const uint VK_NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_SHADER_SUBGROUP_PARTITIONED_EXTENSION_NAME = "VK_NV_shader_subgroup_partitioned"
 	/// </summary>
-	public const string NVShaderSubgroupPartitionedExtensionName = "VK_NV_shader_subgroup_partitioned";
+	public const string VK_NV_SHADER_SUBGROUP_PARTITIONED_EXTENSION_NAME = "VK_NV_shader_subgroup_partitioned";
 	/// <summary>
 	/// VK_NV_compute_shader_derivatives = 1
 	/// </summary>
-	public const uint NVComputeShaderDerivatives = 1;
+	public const uint VK_NV_compute_shader_derivatives = 1;
 	/// <summary>
 	/// VK_NV_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVComputeShaderDerivativesSpecVersion = 1;
-	public const string VK_NV_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME = "VK_NV_compute_shader_derivatives";
+	public const uint VK_NV_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME = "VK_NV_compute_shader_derivatives"
 	/// </summary>
-	public const string NVComputeShaderDerivativesExtensionName = "VK_NV_compute_shader_derivatives";
+	public const string VK_NV_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME = "VK_NV_compute_shader_derivatives";
 	/// <summary>
 	/// VK_NV_mesh_shader = 1
 	/// </summary>
-	public const uint NVMeshShader = 1;
+	public const uint VK_NV_mesh_shader = 1;
 	/// <summary>
 	/// VK_NV_MESH_SHADER_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVMeshShaderSpecVersion = 1;
-	public const string VK_NV_MESH_SHADER_EXTENSION_NAME = "VK_NV_mesh_shader";
+	public const uint VK_NV_MESH_SHADER_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_MESH_SHADER_EXTENSION_NAME = "VK_NV_mesh_shader"
 	/// </summary>
-	public const string NVMeshShaderExtensionName = "VK_NV_mesh_shader";
+	public const string VK_NV_MESH_SHADER_EXTENSION_NAME = "VK_NV_mesh_shader";
 	/// <summary>
 	/// VK_NV_fragment_shader_barycentric = 1
 	/// </summary>
-	public const uint NVFragmentShaderBarycentric = 1;
+	public const uint VK_NV_fragment_shader_barycentric = 1;
 	/// <summary>
 	/// VK_NV_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVFragmentShaderBarycentricSpecVersion = 1;
-	public const string VK_NV_FRAGMENT_SHADER_BARYCENTRIC_EXTENSION_NAME = "VK_NV_fragment_shader_barycentric";
+	public const uint VK_NV_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_FRAGMENT_SHADER_BARYCENTRIC_EXTENSION_NAME = "VK_NV_fragment_shader_barycentric"
 	/// </summary>
-	public const string NVFragmentShaderBarycentricExtensionName = "VK_NV_fragment_shader_barycentric";
+	public const string VK_NV_FRAGMENT_SHADER_BARYCENTRIC_EXTENSION_NAME = "VK_NV_fragment_shader_barycentric";
 	/// <summary>
 	/// VK_NV_shader_image_footprint = 1
 	/// </summary>
-	public const uint NVShaderImageFootprint = 1;
+	public const uint VK_NV_shader_image_footprint = 1;
 	/// <summary>
 	/// VK_NV_SHADER_IMAGE_FOOTPRINT_SPEC_VERSION = 2
 	/// </summary>
-	public const uint NVShaderImageFootprintSpecVersion = 2;
-	public const string VK_NV_SHADER_IMAGE_FOOTPRINT_EXTENSION_NAME = "VK_NV_shader_image_footprint";
+	public const uint VK_NV_SHADER_IMAGE_FOOTPRINT_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_NV_SHADER_IMAGE_FOOTPRINT_EXTENSION_NAME = "VK_NV_shader_image_footprint"
 	/// </summary>
-	public const string NVShaderImageFootprintExtensionName = "VK_NV_shader_image_footprint";
+	public const string VK_NV_SHADER_IMAGE_FOOTPRINT_EXTENSION_NAME = "VK_NV_shader_image_footprint";
 	/// <summary>
 	/// VK_NV_scissor_exclusive = 1
 	/// </summary>
-	public const uint NVScissorExclusive = 1;
+	public const uint VK_NV_scissor_exclusive = 1;
 	/// <summary>
 	/// VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVScissorExclusiveSpecVersion = 1;
-	public const string VK_NV_SCISSOR_EXCLUSIVE_EXTENSION_NAME = "VK_NV_scissor_exclusive";
+	public const uint VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_SCISSOR_EXCLUSIVE_EXTENSION_NAME = "VK_NV_scissor_exclusive"
 	/// </summary>
-	public const string NVScissorExclusiveExtensionName = "VK_NV_scissor_exclusive";
+	public const string VK_NV_SCISSOR_EXCLUSIVE_EXTENSION_NAME = "VK_NV_scissor_exclusive";
 	/// <summary>
 	/// VK_NV_device_diagnostic_checkpoints = 1
 	/// </summary>
-	public const uint NVDeviceDiagnosticCheckpoints = 1;
+	public const uint VK_NV_device_diagnostic_checkpoints = 1;
 	/// <summary>
 	/// VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_SPEC_VERSION = 2
 	/// </summary>
-	public const uint NVDeviceDiagnosticCheckpointsSpecVersion = 2;
-	public const string VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_EXTENSION_NAME = "VK_NV_device_diagnostic_checkpoints";
+	public const uint VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_EXTENSION_NAME = "VK_NV_device_diagnostic_checkpoints"
 	/// </summary>
-	public const string NVDeviceDiagnosticCheckpointsExtensionName = "VK_NV_device_diagnostic_checkpoints";
+	public const string VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_EXTENSION_NAME = "VK_NV_device_diagnostic_checkpoints";
 	/// <summary>
 	/// VK_INTEL_shader_integer_functions2 = 1
 	/// </summary>
-	public const uint INTELShaderIntegerFunctions2 = 1;
+	public const uint VK_INTEL_shader_integer_functions2 = 1;
 	/// <summary>
 	/// VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint INTELShaderIntegerFunctions2SpecVersion = 1;
-	public const string VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_EXTENSION_NAME = "VK_INTEL_shader_integer_functions2";
+	public const uint VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_EXTENSION_NAME = "VK_INTEL_shader_integer_functions2"
 	/// </summary>
-	public const string INTELShaderIntegerFunctions2ExtensionName = "VK_INTEL_shader_integer_functions2";
+	public const string VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_EXTENSION_NAME = "VK_INTEL_shader_integer_functions2";
 	/// <summary>
 	/// VK_INTEL_performance_query = 1
 	/// </summary>
-	public const uint INTELPerformanceQuery = 1;
+	public const uint VK_INTEL_performance_query = 1;
 	/// <summary>
 	/// VK_INTEL_PERFORMANCE_QUERY_SPEC_VERSION = 2
 	/// </summary>
-	public const uint INTELPerformanceQuerySpecVersion = 2;
-	public const string VK_INTEL_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_INTEL_performance_query";
+	public const uint VK_INTEL_PERFORMANCE_QUERY_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_INTEL_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_INTEL_performance_query"
 	/// </summary>
-	public const string INTELPerformanceQueryExtensionName = "VK_INTEL_performance_query";
+	public const string VK_INTEL_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_INTEL_performance_query";
 	/// <summary>
 	/// VK_EXT_pci_bus_info = 1
 	/// </summary>
-	public const uint EXTPciBusInfo = 1;
+	public const uint VK_EXT_pci_bus_info = 1;
 	/// <summary>
 	/// VK_EXT_PCI_BUS_INFO_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTPciBusInfoSpecVersion = 2;
-	public const string VK_EXT_PCI_BUS_INFO_EXTENSION_NAME = "VK_EXT_pci_bus_info";
+	public const uint VK_EXT_PCI_BUS_INFO_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_PCI_BUS_INFO_EXTENSION_NAME = "VK_EXT_pci_bus_info"
 	/// </summary>
-	public const string EXTPciBusInfoExtensionName = "VK_EXT_pci_bus_info";
+	public const string VK_EXT_PCI_BUS_INFO_EXTENSION_NAME = "VK_EXT_pci_bus_info";
 	/// <summary>
 	/// VK_AMD_display_native_hdr = 1
 	/// </summary>
-	public const uint AMDDisplayNativeHdr = 1;
+	public const uint VK_AMD_display_native_hdr = 1;
 	/// <summary>
 	/// VK_AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDDisplayNativeHdrSpecVersion = 1;
-	public const string VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME = "VK_AMD_display_native_hdr";
+	public const uint VK_AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME = "VK_AMD_display_native_hdr"
 	/// </summary>
-	public const string AMDDisplayNativeHdrExtensionName = "VK_AMD_display_native_hdr";
+	public const string VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME = "VK_AMD_display_native_hdr";
 	/// <summary>
 	/// VK_EXT_fragment_density_map = 1
 	/// </summary>
-	public const uint EXTFragmentDensityMap = 1;
+	public const uint VK_EXT_fragment_density_map = 1;
 	/// <summary>
 	/// VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTFragmentDensityMapSpecVersion = 2;
-	public const string VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME = "VK_EXT_fragment_density_map";
+	public const uint VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME = "VK_EXT_fragment_density_map"
 	/// </summary>
-	public const string EXTFragmentDensityMapExtensionName = "VK_EXT_fragment_density_map";
+	public const string VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME = "VK_EXT_fragment_density_map";
 	/// <summary>
 	/// VK_EXT_scalar_block_layout = 1
 	/// </summary>
-	public const uint EXTScalarBlockLayout = 1;
+	public const uint VK_EXT_scalar_block_layout = 1;
 	/// <summary>
 	/// VK_EXT_SCALAR_BLOCK_LAYOUT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTScalarBlockLayoutSpecVersion = 1;
-	public const string VK_EXT_SCALAR_BLOCK_LAYOUT_EXTENSION_NAME = "VK_EXT_scalar_block_layout";
+	public const uint VK_EXT_SCALAR_BLOCK_LAYOUT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_SCALAR_BLOCK_LAYOUT_EXTENSION_NAME = "VK_EXT_scalar_block_layout"
 	/// </summary>
-	public const string EXTScalarBlockLayoutExtensionName = "VK_EXT_scalar_block_layout";
+	public const string VK_EXT_SCALAR_BLOCK_LAYOUT_EXTENSION_NAME = "VK_EXT_scalar_block_layout";
 	/// <summary>
 	/// VK_GOOGLE_hlsl_functionality1 = 1
 	/// </summary>
-	public const uint GoogleHlslFunctionality1 = 1;
+	public const uint VK_GOOGLE_hlsl_functionality1 = 1;
 	/// <summary>
 	/// VK_GOOGLE_HLSL_FUNCTIONALITY_1_SPEC_VERSION = 1
 	/// </summary>
-	public const uint GoogleHlslFunctionality1SpecVersion = 1;
-	public const string VK_GOOGLE_HLSL_FUNCTIONALITY_1_EXTENSION_NAME = "VK_GOOGLE_hlsl_functionality1";
+	public const uint VK_GOOGLE_HLSL_FUNCTIONALITY_1_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_GOOGLE_HLSL_FUNCTIONALITY_1_EXTENSION_NAME = "VK_GOOGLE_hlsl_functionality1"
 	/// </summary>
-	public const string GoogleHlslFunctionality1ExtensionName = "VK_GOOGLE_hlsl_functionality1";
+	public const string VK_GOOGLE_HLSL_FUNCTIONALITY_1_EXTENSION_NAME = "VK_GOOGLE_hlsl_functionality1";
 	/// <summary>
 	/// VK_GOOGLE_decorate_string = 1
 	/// </summary>
-	public const uint GoogleDecorateString = 1;
+	public const uint VK_GOOGLE_decorate_string = 1;
 	/// <summary>
 	/// VK_GOOGLE_DECORATE_STRING_SPEC_VERSION = 1
 	/// </summary>
-	public const uint GoogleDecorateStringSpecVersion = 1;
-	public const string VK_GOOGLE_DECORATE_STRING_EXTENSION_NAME = "VK_GOOGLE_decorate_string";
+	public const uint VK_GOOGLE_DECORATE_STRING_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_GOOGLE_DECORATE_STRING_EXTENSION_NAME = "VK_GOOGLE_decorate_string"
 	/// </summary>
-	public const string GoogleDecorateStringExtensionName = "VK_GOOGLE_decorate_string";
+	public const string VK_GOOGLE_DECORATE_STRING_EXTENSION_NAME = "VK_GOOGLE_decorate_string";
 	/// <summary>
 	/// VK_EXT_subgroup_size_control = 1
 	/// </summary>
-	public const uint EXTSubgroupSizeControl = 1;
+	public const uint VK_EXT_subgroup_size_control = 1;
 	/// <summary>
 	/// VK_EXT_SUBGROUP_SIZE_CONTROL_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTSubgroupSizeControlSpecVersion = 2;
-	public const string VK_EXT_SUBGROUP_SIZE_CONTROL_EXTENSION_NAME = "VK_EXT_subgroup_size_control";
+	public const uint VK_EXT_SUBGROUP_SIZE_CONTROL_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_SUBGROUP_SIZE_CONTROL_EXTENSION_NAME = "VK_EXT_subgroup_size_control"
 	/// </summary>
-	public const string EXTSubgroupSizeControlExtensionName = "VK_EXT_subgroup_size_control";
+	public const string VK_EXT_SUBGROUP_SIZE_CONTROL_EXTENSION_NAME = "VK_EXT_subgroup_size_control";
 	/// <summary>
 	/// VK_AMD_shader_core_properties2 = 1
 	/// </summary>
-	public const uint AMDShaderCoreProperties2 = 1;
+	public const uint VK_AMD_shader_core_properties2 = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_CORE_PROPERTIES_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDShaderCoreProperties2SpecVersion = 1;
-	public const string VK_AMD_SHADER_CORE_PROPERTIES_2_EXTENSION_NAME = "VK_AMD_shader_core_properties2";
+	public const uint VK_AMD_SHADER_CORE_PROPERTIES_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_SHADER_CORE_PROPERTIES_2_EXTENSION_NAME = "VK_AMD_shader_core_properties2"
 	/// </summary>
-	public const string AMDShaderCoreProperties2ExtensionName = "VK_AMD_shader_core_properties2";
+	public const string VK_AMD_SHADER_CORE_PROPERTIES_2_EXTENSION_NAME = "VK_AMD_shader_core_properties2";
 	/// <summary>
 	/// VK_AMD_device_coherent_memory = 1
 	/// </summary>
-	public const uint AMDDeviceCoherentMemory = 1;
+	public const uint VK_AMD_device_coherent_memory = 1;
 	/// <summary>
 	/// VK_AMD_DEVICE_COHERENT_MEMORY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint AMDDeviceCoherentMemorySpecVersion = 1;
-	public const string VK_AMD_DEVICE_COHERENT_MEMORY_EXTENSION_NAME = "VK_AMD_device_coherent_memory";
+	public const uint VK_AMD_DEVICE_COHERENT_MEMORY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_AMD_DEVICE_COHERENT_MEMORY_EXTENSION_NAME = "VK_AMD_device_coherent_memory"
 	/// </summary>
-	public const string AMDDeviceCoherentMemoryExtensionName = "VK_AMD_device_coherent_memory";
+	public const string VK_AMD_DEVICE_COHERENT_MEMORY_EXTENSION_NAME = "VK_AMD_device_coherent_memory";
 	/// <summary>
 	/// VK_EXT_shader_image_atomic_int64 = 1
 	/// </summary>
-	public const uint EXTShaderImageAtomicInt64 = 1;
+	public const uint VK_EXT_shader_image_atomic_int64 = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_IMAGE_ATOMIC_INT64_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTShaderImageAtomicInt64SpecVersion = 1;
-	public const string VK_EXT_SHADER_IMAGE_ATOMIC_INT64_EXTENSION_NAME = "VK_EXT_shader_image_atomic_int64";
+	public const uint VK_EXT_SHADER_IMAGE_ATOMIC_INT64_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_IMAGE_ATOMIC_INT64_EXTENSION_NAME = "VK_EXT_shader_image_atomic_int64"
 	/// </summary>
-	public const string EXTShaderImageAtomicInt64ExtensionName = "VK_EXT_shader_image_atomic_int64";
+	public const string VK_EXT_SHADER_IMAGE_ATOMIC_INT64_EXTENSION_NAME = "VK_EXT_shader_image_atomic_int64";
 	/// <summary>
 	/// VK_EXT_memory_budget = 1
 	/// </summary>
-	public const uint EXTMemoryBudget = 1;
+	public const uint VK_EXT_memory_budget = 1;
 	/// <summary>
 	/// VK_EXT_MEMORY_BUDGET_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTMemoryBudgetSpecVersion = 1;
-	public const string VK_EXT_MEMORY_BUDGET_EXTENSION_NAME = "VK_EXT_memory_budget";
+	public const uint VK_EXT_MEMORY_BUDGET_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_MEMORY_BUDGET_EXTENSION_NAME = "VK_EXT_memory_budget"
 	/// </summary>
-	public const string EXTMemoryBudgetExtensionName = "VK_EXT_memory_budget";
+	public const string VK_EXT_MEMORY_BUDGET_EXTENSION_NAME = "VK_EXT_memory_budget";
 	/// <summary>
 	/// VK_EXT_memory_priority = 1
 	/// </summary>
-	public const uint EXTMemoryPriority = 1;
+	public const uint VK_EXT_memory_priority = 1;
 	/// <summary>
 	/// VK_EXT_MEMORY_PRIORITY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTMemoryPrioritySpecVersion = 1;
-	public const string VK_EXT_MEMORY_PRIORITY_EXTENSION_NAME = "VK_EXT_memory_priority";
+	public const uint VK_EXT_MEMORY_PRIORITY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_MEMORY_PRIORITY_EXTENSION_NAME = "VK_EXT_memory_priority"
 	/// </summary>
-	public const string EXTMemoryPriorityExtensionName = "VK_EXT_memory_priority";
+	public const string VK_EXT_MEMORY_PRIORITY_EXTENSION_NAME = "VK_EXT_memory_priority";
 	/// <summary>
 	/// VK_NV_dedicated_allocation_image_aliasing = 1
 	/// </summary>
-	public const uint NVDedicatedAllocationImageAliasing = 1;
+	public const uint VK_NV_dedicated_allocation_image_aliasing = 1;
 	/// <summary>
 	/// VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVDedicatedAllocationImageAliasingSpecVersion = 1;
-	public const string VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_EXTENSION_NAME = "VK_NV_dedicated_allocation_image_aliasing";
+	public const uint VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_EXTENSION_NAME = "VK_NV_dedicated_allocation_image_aliasing"
 	/// </summary>
-	public const string NVDedicatedAllocationImageAliasingExtensionName = "VK_NV_dedicated_allocation_image_aliasing";
+	public const string VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_EXTENSION_NAME = "VK_NV_dedicated_allocation_image_aliasing";
 	/// <summary>
 	/// VK_EXT_buffer_device_address = 1
 	/// </summary>
-	public const uint EXTBufferDeviceAddress = 1;
+	public const uint VK_EXT_buffer_device_address = 1;
 	/// <summary>
 	/// VK_EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTBufferDeviceAddressSpecVersion = 2;
-	public const string VK_EXT_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_EXT_buffer_device_address";
+	public const uint VK_EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_EXT_buffer_device_address"
 	/// </summary>
-	public const string EXTBufferDeviceAddressExtensionName = "VK_EXT_buffer_device_address";
+	public const string VK_EXT_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_EXT_buffer_device_address";
 	/// <summary>
 	/// VK_EXT_tooling_info = 1
 	/// </summary>
-	public const uint EXTToolingInfo = 1;
+	public const uint VK_EXT_tooling_info = 1;
 	/// <summary>
 	/// VK_EXT_TOOLING_INFO_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTToolingInfoSpecVersion = 1;
-	public const string VK_EXT_TOOLING_INFO_EXTENSION_NAME = "VK_EXT_tooling_info";
+	public const uint VK_EXT_TOOLING_INFO_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_TOOLING_INFO_EXTENSION_NAME = "VK_EXT_tooling_info"
 	/// </summary>
-	public const string EXTToolingInfoExtensionName = "VK_EXT_tooling_info";
+	public const string VK_EXT_TOOLING_INFO_EXTENSION_NAME = "VK_EXT_tooling_info";
 	/// <summary>
 	/// VK_EXT_separate_stencil_usage = 1
 	/// </summary>
-	public const uint EXTSeparateStencilUsage = 1;
+	public const uint VK_EXT_separate_stencil_usage = 1;
 	/// <summary>
 	/// VK_EXT_SEPARATE_STENCIL_USAGE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTSeparateStencilUsageSpecVersion = 1;
-	public const string VK_EXT_SEPARATE_STENCIL_USAGE_EXTENSION_NAME = "VK_EXT_separate_stencil_usage";
+	public const uint VK_EXT_SEPARATE_STENCIL_USAGE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_SEPARATE_STENCIL_USAGE_EXTENSION_NAME = "VK_EXT_separate_stencil_usage"
 	/// </summary>
-	public const string EXTSeparateStencilUsageExtensionName = "VK_EXT_separate_stencil_usage";
+	public const string VK_EXT_SEPARATE_STENCIL_USAGE_EXTENSION_NAME = "VK_EXT_separate_stencil_usage";
 	/// <summary>
 	/// VK_EXT_validation_features = 1
 	/// </summary>
-	public const uint EXTValidationFeatures = 1;
+	public const uint VK_EXT_validation_features = 1;
 	/// <summary>
 	/// VK_EXT_VALIDATION_FEATURES_SPEC_VERSION = 5
 	/// </summary>
-	public const uint EXTValidationFeaturesSpecVersion = 5;
-	public const string VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME = "VK_EXT_validation_features";
+	public const uint VK_EXT_VALIDATION_FEATURES_SPEC_VERSION = 5;
 	/// <summary>
 	/// VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME = "VK_EXT_validation_features"
 	/// </summary>
-	public const string EXTValidationFeaturesExtensionName = "VK_EXT_validation_features";
+	public const string VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME = "VK_EXT_validation_features";
 	/// <summary>
 	/// VK_NV_cooperative_matrix = 1
 	/// </summary>
-	public const uint NVCooperativeMatrix = 1;
+	public const uint VK_NV_cooperative_matrix = 1;
 	/// <summary>
 	/// VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVCooperativeMatrixSpecVersion = 1;
-	public const string VK_NV_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_NV_cooperative_matrix";
+	public const uint VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_NV_cooperative_matrix"
 	/// </summary>
-	public const string NVCooperativeMatrixExtensionName = "VK_NV_cooperative_matrix";
+	public const string VK_NV_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_NV_cooperative_matrix";
 	/// <summary>
 	/// VK_NV_coverage_reduction_mode = 1
 	/// </summary>
-	public const uint NVCoverageReductionMode = 1;
+	public const uint VK_NV_coverage_reduction_mode = 1;
 	/// <summary>
 	/// VK_NV_COVERAGE_REDUCTION_MODE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVCoverageReductionModeSpecVersion = 1;
-	public const string VK_NV_COVERAGE_REDUCTION_MODE_EXTENSION_NAME = "VK_NV_coverage_reduction_mode";
+	public const uint VK_NV_COVERAGE_REDUCTION_MODE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_COVERAGE_REDUCTION_MODE_EXTENSION_NAME = "VK_NV_coverage_reduction_mode"
 	/// </summary>
-	public const string NVCoverageReductionModeExtensionName = "VK_NV_coverage_reduction_mode";
+	public const string VK_NV_COVERAGE_REDUCTION_MODE_EXTENSION_NAME = "VK_NV_coverage_reduction_mode";
 	/// <summary>
 	/// VK_EXT_fragment_shader_interlock = 1
 	/// </summary>
-	public const uint EXTFragmentShaderInterlock = 1;
+	public const uint VK_EXT_fragment_shader_interlock = 1;
 	/// <summary>
 	/// VK_EXT_FRAGMENT_SHADER_INTERLOCK_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTFragmentShaderInterlockSpecVersion = 1;
-	public const string VK_EXT_FRAGMENT_SHADER_INTERLOCK_EXTENSION_NAME = "VK_EXT_fragment_shader_interlock";
+	public const uint VK_EXT_FRAGMENT_SHADER_INTERLOCK_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_FRAGMENT_SHADER_INTERLOCK_EXTENSION_NAME = "VK_EXT_fragment_shader_interlock"
 	/// </summary>
-	public const string EXTFragmentShaderInterlockExtensionName = "VK_EXT_fragment_shader_interlock";
+	public const string VK_EXT_FRAGMENT_SHADER_INTERLOCK_EXTENSION_NAME = "VK_EXT_fragment_shader_interlock";
 	/// <summary>
 	/// VK_EXT_ycbcr_image_arrays = 1
 	/// </summary>
-	public const uint EXTYcbcrImageArrays = 1;
+	public const uint VK_EXT_ycbcr_image_arrays = 1;
 	/// <summary>
 	/// VK_EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTYcbcrImageArraysSpecVersion = 1;
-	public const string VK_EXT_YCBCR_IMAGE_ARRAYS_EXTENSION_NAME = "VK_EXT_ycbcr_image_arrays";
+	public const uint VK_EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_YCBCR_IMAGE_ARRAYS_EXTENSION_NAME = "VK_EXT_ycbcr_image_arrays"
 	/// </summary>
-	public const string EXTYcbcrImageArraysExtensionName = "VK_EXT_ycbcr_image_arrays";
+	public const string VK_EXT_YCBCR_IMAGE_ARRAYS_EXTENSION_NAME = "VK_EXT_ycbcr_image_arrays";
 	/// <summary>
 	/// VK_EXT_provoking_vertex = 1
 	/// </summary>
-	public const uint EXTProvokingVertex = 1;
+	public const uint VK_EXT_provoking_vertex = 1;
 	/// <summary>
 	/// VK_EXT_PROVOKING_VERTEX_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTProvokingVertexSpecVersion = 1;
-	public const string VK_EXT_PROVOKING_VERTEX_EXTENSION_NAME = "VK_EXT_provoking_vertex";
+	public const uint VK_EXT_PROVOKING_VERTEX_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_PROVOKING_VERTEX_EXTENSION_NAME = "VK_EXT_provoking_vertex"
 	/// </summary>
-	public const string EXTProvokingVertexExtensionName = "VK_EXT_provoking_vertex";
+	public const string VK_EXT_PROVOKING_VERTEX_EXTENSION_NAME = "VK_EXT_provoking_vertex";
 	/// <summary>
 	/// VK_EXT_headless_surface = 1
 	/// </summary>
-	public const uint EXTHeadlessSurface = 1;
+	public const uint VK_EXT_headless_surface = 1;
 	/// <summary>
 	/// VK_EXT_HEADLESS_SURFACE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTHeadlessSurfaceSpecVersion = 1;
-	public const string VK_EXT_HEADLESS_SURFACE_EXTENSION_NAME = "VK_EXT_headless_surface";
+	public const uint VK_EXT_HEADLESS_SURFACE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_HEADLESS_SURFACE_EXTENSION_NAME = "VK_EXT_headless_surface"
 	/// </summary>
-	public const string EXTHeadlessSurfaceExtensionName = "VK_EXT_headless_surface";
+	public const string VK_EXT_HEADLESS_SURFACE_EXTENSION_NAME = "VK_EXT_headless_surface";
 	/// <summary>
 	/// VK_EXT_line_rasterization = 1
 	/// </summary>
-	public const uint EXTLineRasterization = 1;
+	public const uint VK_EXT_line_rasterization = 1;
 	/// <summary>
 	/// VK_EXT_LINE_RASTERIZATION_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTLineRasterizationSpecVersion = 1;
-	public const string VK_EXT_LINE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_line_rasterization";
+	public const uint VK_EXT_LINE_RASTERIZATION_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_LINE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_line_rasterization"
 	/// </summary>
-	public const string EXTLineRasterizationExtensionName = "VK_EXT_line_rasterization";
+	public const string VK_EXT_LINE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_line_rasterization";
 	/// <summary>
 	/// VK_EXT_shader_atomic_float = 1
 	/// </summary>
-	public const uint EXTShaderAtomicFloat = 1;
+	public const uint VK_EXT_shader_atomic_float = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_ATOMIC_FLOAT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTShaderAtomicFloatSpecVersion = 1;
-	public const string VK_EXT_SHADER_ATOMIC_FLOAT_EXTENSION_NAME = "VK_EXT_shader_atomic_float";
+	public const uint VK_EXT_SHADER_ATOMIC_FLOAT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_ATOMIC_FLOAT_EXTENSION_NAME = "VK_EXT_shader_atomic_float"
 	/// </summary>
-	public const string EXTShaderAtomicFloatExtensionName = "VK_EXT_shader_atomic_float";
+	public const string VK_EXT_SHADER_ATOMIC_FLOAT_EXTENSION_NAME = "VK_EXT_shader_atomic_float";
 	/// <summary>
 	/// VK_EXT_host_query_reset = 1
 	/// </summary>
-	public const uint EXTHostQueryReset = 1;
+	public const uint VK_EXT_host_query_reset = 1;
 	/// <summary>
 	/// VK_EXT_HOST_QUERY_RESET_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTHostQueryResetSpecVersion = 1;
-	public const string VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME = "VK_EXT_host_query_reset";
+	public const uint VK_EXT_HOST_QUERY_RESET_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME = "VK_EXT_host_query_reset"
 	/// </summary>
-	public const string EXTHostQueryResetExtensionName = "VK_EXT_host_query_reset";
+	public const string VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME = "VK_EXT_host_query_reset";
 	/// <summary>
 	/// VK_EXT_index_type_uint8 = 1
 	/// </summary>
-	public const uint EXTIndexTypeUint8 = 1;
+	public const uint VK_EXT_index_type_uint8 = 1;
 	/// <summary>
 	/// VK_EXT_INDEX_TYPE_UINT8_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTIndexTypeUint8SpecVersion = 1;
-	public const string VK_EXT_INDEX_TYPE_UINT8_EXTENSION_NAME = "VK_EXT_index_type_uint8";
+	public const uint VK_EXT_INDEX_TYPE_UINT8_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_INDEX_TYPE_UINT8_EXTENSION_NAME = "VK_EXT_index_type_uint8"
 	/// </summary>
-	public const string EXTIndexTypeUint8ExtensionName = "VK_EXT_index_type_uint8";
+	public const string VK_EXT_INDEX_TYPE_UINT8_EXTENSION_NAME = "VK_EXT_index_type_uint8";
 	/// <summary>
 	/// VK_EXT_extended_dynamic_state = 1
 	/// </summary>
-	public const uint EXTExtendedDynamicState = 1;
+	public const uint VK_EXT_extended_dynamic_state = 1;
 	/// <summary>
 	/// VK_EXT_EXTENDED_DYNAMIC_STATE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTExtendedDynamicStateSpecVersion = 1;
-	public const string VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_extended_dynamic_state";
+	public const uint VK_EXT_EXTENDED_DYNAMIC_STATE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_extended_dynamic_state"
 	/// </summary>
-	public const string EXTExtendedDynamicStateExtensionName = "VK_EXT_extended_dynamic_state";
+	public const string VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_extended_dynamic_state";
 	/// <summary>
 	/// VK_EXT_shader_atomic_float2 = 1
 	/// </summary>
-	public const uint EXTShaderAtomicFloat2 = 1;
+	public const uint VK_EXT_shader_atomic_float2 = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_ATOMIC_FLOAT_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTShaderAtomicFloat2SpecVersion = 1;
-	public const string VK_EXT_SHADER_ATOMIC_FLOAT_2_EXTENSION_NAME = "VK_EXT_shader_atomic_float2";
+	public const uint VK_EXT_SHADER_ATOMIC_FLOAT_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_ATOMIC_FLOAT_2_EXTENSION_NAME = "VK_EXT_shader_atomic_float2"
 	/// </summary>
-	public const string EXTShaderAtomicFloat2ExtensionName = "VK_EXT_shader_atomic_float2";
+	public const string VK_EXT_SHADER_ATOMIC_FLOAT_2_EXTENSION_NAME = "VK_EXT_shader_atomic_float2";
 	/// <summary>
 	/// VK_EXT_shader_demote_to_helper_invocation = 1
 	/// </summary>
-	public const uint EXTShaderDemoteToHelperInvocation = 1;
+	public const uint VK_EXT_shader_demote_to_helper_invocation = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTShaderDemoteToHelperInvocationSpecVersion = 1;
-	public const string VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_EXTENSION_NAME = "VK_EXT_shader_demote_to_helper_invocation";
+	public const uint VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_EXTENSION_NAME = "VK_EXT_shader_demote_to_helper_invocation"
 	/// </summary>
-	public const string EXTShaderDemoteToHelperInvocationExtensionName = "VK_EXT_shader_demote_to_helper_invocation";
+	public const string VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_EXTENSION_NAME = "VK_EXT_shader_demote_to_helper_invocation";
 	/// <summary>
 	/// VK_NV_device_generated_commands = 1
 	/// </summary>
-	public const uint NVDeviceGeneratedCommands = 1;
+	public const uint VK_NV_device_generated_commands = 1;
 	/// <summary>
 	/// VK_NV_DEVICE_GENERATED_COMMANDS_SPEC_VERSION = 3
 	/// </summary>
-	public const uint NVDeviceGeneratedCommandsSpecVersion = 3;
-	public const string VK_NV_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME = "VK_NV_device_generated_commands";
+	public const uint VK_NV_DEVICE_GENERATED_COMMANDS_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_NV_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME = "VK_NV_device_generated_commands"
 	/// </summary>
-	public const string NVDeviceGeneratedCommandsExtensionName = "VK_NV_device_generated_commands";
+	public const string VK_NV_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME = "VK_NV_device_generated_commands";
 	/// <summary>
 	/// VK_NV_inherited_viewport_scissor = 1
 	/// </summary>
-	public const uint NVInheritedViewportScissor = 1;
+	public const uint VK_NV_inherited_viewport_scissor = 1;
 	/// <summary>
 	/// VK_NV_INHERITED_VIEWPORT_SCISSOR_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVInheritedViewportScissorSpecVersion = 1;
-	public const string VK_NV_INHERITED_VIEWPORT_SCISSOR_EXTENSION_NAME = "VK_NV_inherited_viewport_scissor";
+	public const uint VK_NV_INHERITED_VIEWPORT_SCISSOR_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_INHERITED_VIEWPORT_SCISSOR_EXTENSION_NAME = "VK_NV_inherited_viewport_scissor"
 	/// </summary>
-	public const string NVInheritedViewportScissorExtensionName = "VK_NV_inherited_viewport_scissor";
+	public const string VK_NV_INHERITED_VIEWPORT_SCISSOR_EXTENSION_NAME = "VK_NV_inherited_viewport_scissor";
 	/// <summary>
 	/// VK_EXT_texel_buffer_alignment = 1
 	/// </summary>
-	public const uint EXTTexelBufferAlignment = 1;
+	public const uint VK_EXT_texel_buffer_alignment = 1;
 	/// <summary>
 	/// VK_EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTTexelBufferAlignmentSpecVersion = 1;
-	public const string VK_EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION_NAME = "VK_EXT_texel_buffer_alignment";
+	public const uint VK_EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION_NAME = "VK_EXT_texel_buffer_alignment"
 	/// </summary>
-	public const string EXTTexelBufferAlignmentExtensionName = "VK_EXT_texel_buffer_alignment";
+	public const string VK_EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION_NAME = "VK_EXT_texel_buffer_alignment";
 	/// <summary>
 	/// VK_QCOM_render_pass_transform = 1
 	/// </summary>
-	public const uint QcomRenderPassTransform = 1;
+	public const uint VK_QCOM_render_pass_transform = 1;
 	/// <summary>
 	/// VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 2
 	/// </summary>
-	public const uint QcomRenderPassTransformSpecVersion = 2;
-	public const string VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform";
+	public const uint VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform"
 	/// </summary>
-	public const string QcomRenderPassTransformExtensionName = "VK_QCOM_render_pass_transform";
+	public const string VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform";
 	/// <summary>
 	/// VK_EXT_device_memory_report = 1
 	/// </summary>
-	public const uint EXTDeviceMemoryReport = 1;
+	public const uint VK_EXT_device_memory_report = 1;
 	/// <summary>
 	/// VK_EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTDeviceMemoryReportSpecVersion = 2;
-	public const string VK_EXT_DEVICE_MEMORY_REPORT_EXTENSION_NAME = "VK_EXT_device_memory_report";
+	public const uint VK_EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_DEVICE_MEMORY_REPORT_EXTENSION_NAME = "VK_EXT_device_memory_report"
 	/// </summary>
-	public const string EXTDeviceMemoryReportExtensionName = "VK_EXT_device_memory_report";
+	public const string VK_EXT_DEVICE_MEMORY_REPORT_EXTENSION_NAME = "VK_EXT_device_memory_report";
 	/// <summary>
 	/// VK_EXT_acquire_drm_display = 1
 	/// </summary>
-	public const uint EXTAcquireDrmDisplay = 1;
+	public const uint VK_EXT_acquire_drm_display = 1;
 	/// <summary>
 	/// VK_EXT_ACQUIRE_DRM_DISPLAY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTAcquireDrmDisplaySpecVersion = 1;
-	public const string VK_EXT_ACQUIRE_DRM_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_drm_display";
+	public const uint VK_EXT_ACQUIRE_DRM_DISPLAY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_ACQUIRE_DRM_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_drm_display"
 	/// </summary>
-	public const string EXTAcquireDrmDisplayExtensionName = "VK_EXT_acquire_drm_display";
+	public const string VK_EXT_ACQUIRE_DRM_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_drm_display";
 	/// <summary>
 	/// VK_EXT_robustness2 = 1
 	/// </summary>
-	public const uint EXTRobustness2 = 1;
+	public const uint VK_EXT_robustness2 = 1;
 	/// <summary>
 	/// VK_EXT_ROBUSTNESS_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTRobustness2SpecVersion = 1;
-	public const string VK_EXT_ROBUSTNESS_2_EXTENSION_NAME = "VK_EXT_robustness2";
+	public const uint VK_EXT_ROBUSTNESS_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_ROBUSTNESS_2_EXTENSION_NAME = "VK_EXT_robustness2"
 	/// </summary>
-	public const string EXTRobustness2ExtensionName = "VK_EXT_robustness2";
+	public const string VK_EXT_ROBUSTNESS_2_EXTENSION_NAME = "VK_EXT_robustness2";
 	/// <summary>
 	/// VK_EXT_custom_border_color = 1
 	/// </summary>
-	public const uint EXTCustomBorderColor = 1;
+	public const uint VK_EXT_custom_border_color = 1;
 	/// <summary>
 	/// VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION = 12
 	/// </summary>
-	public const uint EXTCustomBorderColorSpecVersion = 12;
-	public const string VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME = "VK_EXT_custom_border_color";
+	public const uint VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION = 12;
 	/// <summary>
 	/// VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME = "VK_EXT_custom_border_color"
 	/// </summary>
-	public const string EXTCustomBorderColorExtensionName = "VK_EXT_custom_border_color";
+	public const string VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME = "VK_EXT_custom_border_color";
 	/// <summary>
 	/// VK_GOOGLE_user_type = 1
 	/// </summary>
-	public const uint GoogleUserType = 1;
+	public const uint VK_GOOGLE_user_type = 1;
 	/// <summary>
 	/// VK_GOOGLE_USER_TYPE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint GoogleUserTypeSpecVersion = 1;
-	public const string VK_GOOGLE_USER_TYPE_EXTENSION_NAME = "VK_GOOGLE_user_type";
+	public const uint VK_GOOGLE_USER_TYPE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_GOOGLE_USER_TYPE_EXTENSION_NAME = "VK_GOOGLE_user_type"
 	/// </summary>
-	public const string GoogleUserTypeExtensionName = "VK_GOOGLE_user_type";
+	public const string VK_GOOGLE_USER_TYPE_EXTENSION_NAME = "VK_GOOGLE_user_type";
 	/// <summary>
 	/// VK_EXT_private_data = 1
 	/// </summary>
-	public const uint EXTPrivateData = 1;
+	public const uint VK_EXT_private_data = 1;
 	/// <summary>
 	/// VK_EXT_PRIVATE_DATA_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTPrivateDataSpecVersion = 1;
-	public const string VK_EXT_PRIVATE_DATA_EXTENSION_NAME = "VK_EXT_private_data";
+	public const uint VK_EXT_PRIVATE_DATA_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_PRIVATE_DATA_EXTENSION_NAME = "VK_EXT_private_data"
 	/// </summary>
-	public const string EXTPrivateDataExtensionName = "VK_EXT_private_data";
+	public const string VK_EXT_PRIVATE_DATA_EXTENSION_NAME = "VK_EXT_private_data";
 	/// <summary>
 	/// VK_EXT_pipeline_creation_cache_control = 1
 	/// </summary>
-	public const uint EXTPipelineCreationCacheControl = 1;
+	public const uint VK_EXT_pipeline_creation_cache_control = 1;
 	/// <summary>
 	/// VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION = 3
 	/// </summary>
-	public const uint EXTPipelineCreationCacheControlSpecVersion = 3;
-	public const string VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME = "VK_EXT_pipeline_creation_cache_control";
+	public const uint VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME = "VK_EXT_pipeline_creation_cache_control"
 	/// </summary>
-	public const string EXTPipelineCreationCacheControlExtensionName = "VK_EXT_pipeline_creation_cache_control";
+	public const string VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME = "VK_EXT_pipeline_creation_cache_control";
 	/// <summary>
 	/// VK_NV_device_diagnostics_config = 1
 	/// </summary>
-	public const uint NVDeviceDiagnosticsConfig = 1;
+	public const uint VK_NV_device_diagnostics_config = 1;
 	/// <summary>
 	/// VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVDeviceDiagnosticsConfigSpecVersion = 1;
-	public const string VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config";
+	public const uint VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config"
 	/// </summary>
-	public const string NVDeviceDiagnosticsConfigExtensionName = "VK_NV_device_diagnostics_config";
+	public const string VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config";
 	/// <summary>
 	/// VK_QCOM_render_pass_store_ops = 1
 	/// </summary>
-	public const uint QcomRenderPassStoreOps = 1;
+	public const uint VK_QCOM_render_pass_store_ops = 1;
 	/// <summary>
 	/// VK_QCOM_RENDER_PASS_STORE_OPS_SPEC_VERSION = 2
 	/// </summary>
-	public const uint QcomRenderPassStoreOpsSpecVersion = 2;
-	public const string VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops";
+	public const uint VK_QCOM_RENDER_PASS_STORE_OPS_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops"
 	/// </summary>
-	public const string QcomRenderPassStoreOpsExtensionName = "VK_QCOM_render_pass_store_ops";
+	public const string VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops";
 	/// <summary>
 	/// VK_NV_fragment_shading_rate_enums = 1
 	/// </summary>
-	public const uint NVFragmentShadingRateEnums = 1;
+	public const uint VK_NV_fragment_shading_rate_enums = 1;
 	/// <summary>
 	/// VK_NV_FRAGMENT_SHADING_RATE_ENUMS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVFragmentShadingRateEnumsSpecVersion = 1;
-	public const string VK_NV_FRAGMENT_SHADING_RATE_ENUMS_EXTENSION_NAME = "VK_NV_fragment_shading_rate_enums";
+	public const uint VK_NV_FRAGMENT_SHADING_RATE_ENUMS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_FRAGMENT_SHADING_RATE_ENUMS_EXTENSION_NAME = "VK_NV_fragment_shading_rate_enums"
 	/// </summary>
-	public const string NVFragmentShadingRateEnumsExtensionName = "VK_NV_fragment_shading_rate_enums";
+	public const string VK_NV_FRAGMENT_SHADING_RATE_ENUMS_EXTENSION_NAME = "VK_NV_fragment_shading_rate_enums";
 	/// <summary>
 	/// VK_NV_ray_tracing_motion_blur = 1
 	/// </summary>
-	public const uint NVRayTracingMotionBlur = 1;
+	public const uint VK_NV_ray_tracing_motion_blur = 1;
 	/// <summary>
 	/// VK_NV_RAY_TRACING_MOTION_BLUR_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVRayTracingMotionBlurSpecVersion = 1;
-	public const string VK_NV_RAY_TRACING_MOTION_BLUR_EXTENSION_NAME = "VK_NV_ray_tracing_motion_blur";
+	public const uint VK_NV_RAY_TRACING_MOTION_BLUR_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_RAY_TRACING_MOTION_BLUR_EXTENSION_NAME = "VK_NV_ray_tracing_motion_blur"
 	/// </summary>
-	public const string NVRayTracingMotionBlurExtensionName = "VK_NV_ray_tracing_motion_blur";
+	public const string VK_NV_RAY_TRACING_MOTION_BLUR_EXTENSION_NAME = "VK_NV_ray_tracing_motion_blur";
 	/// <summary>
 	/// VK_EXT_ycbcr_2plane_444_formats = 1
 	/// </summary>
-	public const uint EXTYcbcr2plane444Formats = 1;
+	public const uint VK_EXT_ycbcr_2plane_444_formats = 1;
 	/// <summary>
 	/// VK_EXT_YCBCR_2PLANE_444_FORMATS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTYcbcr2plane444FormatsSpecVersion = 1;
-	public const string VK_EXT_YCBCR_2PLANE_444_FORMATS_EXTENSION_NAME = "VK_EXT_ycbcr_2plane_444_formats";
+	public const uint VK_EXT_YCBCR_2PLANE_444_FORMATS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_YCBCR_2PLANE_444_FORMATS_EXTENSION_NAME = "VK_EXT_ycbcr_2plane_444_formats"
 	/// </summary>
-	public const string EXTYcbcr2plane444FormatsExtensionName = "VK_EXT_ycbcr_2plane_444_formats";
+	public const string VK_EXT_YCBCR_2PLANE_444_FORMATS_EXTENSION_NAME = "VK_EXT_ycbcr_2plane_444_formats";
 	/// <summary>
 	/// VK_EXT_fragment_density_map2 = 1
 	/// </summary>
-	public const uint EXTFragmentDensityMap2 = 1;
+	public const uint VK_EXT_fragment_density_map2 = 1;
 	/// <summary>
 	/// VK_EXT_FRAGMENT_DENSITY_MAP_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTFragmentDensityMap2SpecVersion = 1;
-	public const string VK_EXT_FRAGMENT_DENSITY_MAP_2_EXTENSION_NAME = "VK_EXT_fragment_density_map2";
+	public const uint VK_EXT_FRAGMENT_DENSITY_MAP_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_FRAGMENT_DENSITY_MAP_2_EXTENSION_NAME = "VK_EXT_fragment_density_map2"
 	/// </summary>
-	public const string EXTFragmentDensityMap2ExtensionName = "VK_EXT_fragment_density_map2";
+	public const string VK_EXT_FRAGMENT_DENSITY_MAP_2_EXTENSION_NAME = "VK_EXT_fragment_density_map2";
 	/// <summary>
 	/// VK_QCOM_rotated_copy_commands = 1
 	/// </summary>
-	public const uint QcomRotatedCopyCommands = 1;
+	public const uint VK_QCOM_rotated_copy_commands = 1;
 	/// <summary>
 	/// VK_QCOM_ROTATED_COPY_COMMANDS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint QcomRotatedCopyCommandsSpecVersion = 1;
-	public const string VK_QCOM_ROTATED_COPY_COMMANDS_EXTENSION_NAME = "VK_QCOM_rotated_copy_commands";
+	public const uint VK_QCOM_ROTATED_COPY_COMMANDS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_QCOM_ROTATED_COPY_COMMANDS_EXTENSION_NAME = "VK_QCOM_rotated_copy_commands"
 	/// </summary>
-	public const string QcomRotatedCopyCommandsExtensionName = "VK_QCOM_rotated_copy_commands";
+	public const string VK_QCOM_ROTATED_COPY_COMMANDS_EXTENSION_NAME = "VK_QCOM_rotated_copy_commands";
 	/// <summary>
 	/// VK_EXT_image_robustness = 1
 	/// </summary>
-	public const uint EXTImageRobustness = 1;
+	public const uint VK_EXT_image_robustness = 1;
 	/// <summary>
 	/// VK_EXT_IMAGE_ROBUSTNESS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTImageRobustnessSpecVersion = 1;
-	public const string VK_EXT_IMAGE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_image_robustness";
+	public const uint VK_EXT_IMAGE_ROBUSTNESS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_IMAGE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_image_robustness"
 	/// </summary>
-	public const string EXTImageRobustnessExtensionName = "VK_EXT_image_robustness";
+	public const string VK_EXT_IMAGE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_image_robustness";
 	/// <summary>
 	/// VK_EXT_4444_formats = 1
 	/// </summary>
-	public const uint EXT4444Formats = 1;
+	public const uint VK_EXT_4444_formats = 1;
 	/// <summary>
 	/// VK_EXT_4444_FORMATS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXT4444FormatsSpecVersion = 1;
-	public const string VK_EXT_4444_FORMATS_EXTENSION_NAME = "VK_EXT_4444_formats";
+	public const uint VK_EXT_4444_FORMATS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_4444_FORMATS_EXTENSION_NAME = "VK_EXT_4444_formats"
 	/// </summary>
-	public const string EXT4444FormatsExtensionName = "VK_EXT_4444_formats";
+	public const string VK_EXT_4444_FORMATS_EXTENSION_NAME = "VK_EXT_4444_formats";
 	/// <summary>
 	/// VK_ARM_rasterization_order_attachment_access = 1
 	/// </summary>
-	public const uint ARMRasterizationOrderAttachmentAccess = 1;
+	public const uint VK_ARM_rasterization_order_attachment_access = 1;
 	/// <summary>
 	/// VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint ARMRasterizationOrderAttachmentAccessSpecVersion = 1;
-	public const string VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXTENSION_NAME = "VK_ARM_rasterization_order_attachment_access";
+	public const uint VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXTENSION_NAME = "VK_ARM_rasterization_order_attachment_access"
 	/// </summary>
-	public const string ARMRasterizationOrderAttachmentAccessExtensionName = "VK_ARM_rasterization_order_attachment_access";
+	public const string VK_ARM_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXTENSION_NAME = "VK_ARM_rasterization_order_attachment_access";
 	/// <summary>
 	/// VK_EXT_rgba10x6_formats = 1
 	/// </summary>
-	public const uint EXTRgba10x6Formats = 1;
+	public const uint VK_EXT_rgba10x6_formats = 1;
 	/// <summary>
 	/// VK_EXT_RGBA10X6_FORMATS_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTRgba10x6FormatsSpecVersion = 1;
-	public const string VK_EXT_RGBA10X6_FORMATS_EXTENSION_NAME = "VK_EXT_rgba10x6_formats";
+	public const uint VK_EXT_RGBA10X6_FORMATS_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_RGBA10X6_FORMATS_EXTENSION_NAME = "VK_EXT_rgba10x6_formats"
 	/// </summary>
-	public const string EXTRgba10x6FormatsExtensionName = "VK_EXT_rgba10x6_formats";
+	public const string VK_EXT_RGBA10X6_FORMATS_EXTENSION_NAME = "VK_EXT_rgba10x6_formats";
 	/// <summary>
 	/// VK_NV_acquire_winrt_display = 1
 	/// </summary>
-	public const uint NVAcquireWinrtDisplay = 1;
+	public const uint VK_NV_acquire_winrt_display = 1;
 	/// <summary>
 	/// VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVAcquireWinrtDisplaySpecVersion = 1;
-	public const string VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME = "VK_NV_acquire_winrt_display";
+	public const uint VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME = "VK_NV_acquire_winrt_display"
 	/// </summary>
-	public const string NVAcquireWinrtDisplayExtensionName = "VK_NV_acquire_winrt_display";
+	public const string VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME = "VK_NV_acquire_winrt_display";
 	/// <summary>
 	/// VK_VALVE_mutable_descriptor_type = 1
 	/// </summary>
-	public const uint ValveMutableDescriptorType = 1;
+	public const uint VK_VALVE_mutable_descriptor_type = 1;
 	/// <summary>
 	/// VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint ValveMutableDescriptorTypeSpecVersion = 1;
-	public const string VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_VALVE_mutable_descriptor_type";
+	public const uint VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_VALVE_mutable_descriptor_type"
 	/// </summary>
-	public const string ValveMutableDescriptorTypeExtensionName = "VK_VALVE_mutable_descriptor_type";
+	public const string VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_VALVE_mutable_descriptor_type";
 	/// <summary>
 	/// VK_EXT_vertex_input_dynamic_state = 1
 	/// </summary>
-	public const uint EXTVertexInputDynamicState = 1;
+	public const uint VK_EXT_vertex_input_dynamic_state = 1;
 	/// <summary>
 	/// VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_SPEC_VERSION = 2
 	/// </summary>
-	public const uint EXTVertexInputDynamicStateSpecVersion = 2;
-	public const string VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_vertex_input_dynamic_state";
+	public const uint VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_vertex_input_dynamic_state"
 	/// </summary>
-	public const string EXTVertexInputDynamicStateExtensionName = "VK_EXT_vertex_input_dynamic_state";
+	public const string VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_vertex_input_dynamic_state";
 	/// <summary>
 	/// VK_EXT_physical_device_drm = 1
 	/// </summary>
-	public const uint EXTPhysicalDeviceDrm = 1;
+	public const uint VK_EXT_physical_device_drm = 1;
 	/// <summary>
 	/// VK_EXT_PHYSICAL_DEVICE_DRM_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTPhysicalDeviceDrmSpecVersion = 1;
-	public const string VK_EXT_PHYSICAL_DEVICE_DRM_EXTENSION_NAME = "VK_EXT_physical_device_drm";
+	public const uint VK_EXT_PHYSICAL_DEVICE_DRM_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_PHYSICAL_DEVICE_DRM_EXTENSION_NAME = "VK_EXT_physical_device_drm"
 	/// </summary>
-	public const string EXTPhysicalDeviceDrmExtensionName = "VK_EXT_physical_device_drm";
+	public const string VK_EXT_PHYSICAL_DEVICE_DRM_EXTENSION_NAME = "VK_EXT_physical_device_drm";
 	/// <summary>
 	/// VK_EXT_depth_clip_control = 1
 	/// </summary>
-	public const uint EXTDepthClipControl = 1;
+	public const uint VK_EXT_depth_clip_control = 1;
 	/// <summary>
 	/// VK_EXT_DEPTH_CLIP_CONTROL_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTDepthClipControlSpecVersion = 1;
-	public const string VK_EXT_DEPTH_CLIP_CONTROL_EXTENSION_NAME = "VK_EXT_depth_clip_control";
+	public const uint VK_EXT_DEPTH_CLIP_CONTROL_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_DEPTH_CLIP_CONTROL_EXTENSION_NAME = "VK_EXT_depth_clip_control"
 	/// </summary>
-	public const string EXTDepthClipControlExtensionName = "VK_EXT_depth_clip_control";
+	public const string VK_EXT_DEPTH_CLIP_CONTROL_EXTENSION_NAME = "VK_EXT_depth_clip_control";
 	/// <summary>
 	/// VK_EXT_primitive_topology_list_restart = 1
 	/// </summary>
-	public const uint EXTPrimitiveTopologyListRestart = 1;
+	public const uint VK_EXT_primitive_topology_list_restart = 1;
 	/// <summary>
 	/// VK_EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTPrimitiveTopologyListRestartSpecVersion = 1;
-	public const string VK_EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_EXTENSION_NAME = "VK_EXT_primitive_topology_list_restart";
+	public const uint VK_EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_EXTENSION_NAME = "VK_EXT_primitive_topology_list_restart"
 	/// </summary>
-	public const string EXTPrimitiveTopologyListRestartExtensionName = "VK_EXT_primitive_topology_list_restart";
+	public const string VK_EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_EXTENSION_NAME = "VK_EXT_primitive_topology_list_restart";
 	/// <summary>
 	/// VK_HUAWEI_subpass_shading = 1
 	/// </summary>
-	public const uint HuaweiSubpassShading = 1;
+	public const uint VK_HUAWEI_subpass_shading = 1;
 	/// <summary>
 	/// VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 2
 	/// </summary>
-	public const uint HuaweiSubpassShadingSpecVersion = 2;
-	public const string VK_HUAWEI_SUBPASS_SHADING_EXTENSION_NAME = "VK_HUAWEI_subpass_shading";
+	public const uint VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_HUAWEI_SUBPASS_SHADING_EXTENSION_NAME = "VK_HUAWEI_subpass_shading"
 	/// </summary>
-	public const string HuaweiSubpassShadingExtensionName = "VK_HUAWEI_subpass_shading";
+	public const string VK_HUAWEI_SUBPASS_SHADING_EXTENSION_NAME = "VK_HUAWEI_subpass_shading";
 	/// <summary>
 	/// VK_HUAWEI_invocation_mask = 1
 	/// </summary>
-	public const uint HuaweiInvocationMask = 1;
+	public const uint VK_HUAWEI_invocation_mask = 1;
 	/// <summary>
 	/// VK_HUAWEI_INVOCATION_MASK_SPEC_VERSION = 1
 	/// </summary>
-	public const uint HuaweiInvocationMaskSpecVersion = 1;
-	public const string VK_HUAWEI_INVOCATION_MASK_EXTENSION_NAME = "VK_HUAWEI_invocation_mask";
+	public const uint VK_HUAWEI_INVOCATION_MASK_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_HUAWEI_INVOCATION_MASK_EXTENSION_NAME = "VK_HUAWEI_invocation_mask"
 	/// </summary>
-	public const string HuaweiInvocationMaskExtensionName = "VK_HUAWEI_invocation_mask";
+	public const string VK_HUAWEI_INVOCATION_MASK_EXTENSION_NAME = "VK_HUAWEI_invocation_mask";
 	/// <summary>
 	/// VK_NV_external_memory_rdma = 1
 	/// </summary>
-	public const uint NVExternalMemoryRdma = 1;
+	public const uint VK_NV_external_memory_rdma = 1;
 	/// <summary>
 	/// VK_NV_EXTERNAL_MEMORY_RDMA_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVExternalMemoryRdmaSpecVersion = 1;
-	public const string VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma";
+	public const uint VK_NV_EXTERNAL_MEMORY_RDMA_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma"
 	/// </summary>
-	public const string NVExternalMemoryRdmaExtensionName = "VK_NV_external_memory_rdma";
+	public const string VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma";
 	/// <summary>
 	/// VK_EXT_extended_dynamic_state2 = 1
 	/// </summary>
-	public const uint EXTExtendedDynamicState2 = 1;
+	public const uint VK_EXT_extended_dynamic_state2 = 1;
 	/// <summary>
 	/// VK_EXT_EXTENDED_DYNAMIC_STATE_2_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTExtendedDynamicState2SpecVersion = 1;
-	public const string VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME = "VK_EXT_extended_dynamic_state2";
+	public const uint VK_EXT_EXTENDED_DYNAMIC_STATE_2_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME = "VK_EXT_extended_dynamic_state2"
 	/// </summary>
-	public const string EXTExtendedDynamicState2ExtensionName = "VK_EXT_extended_dynamic_state2";
+	public const string VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME = "VK_EXT_extended_dynamic_state2";
 	/// <summary>
 	/// VK_EXT_color_write_enable = 1
 	/// </summary>
-	public const uint EXTColorWriteEnable = 1;
+	public const uint VK_EXT_color_write_enable = 1;
 	/// <summary>
 	/// VK_EXT_COLOR_WRITE_ENABLE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTColorWriteEnableSpecVersion = 1;
-	public const string VK_EXT_COLOR_WRITE_ENABLE_EXTENSION_NAME = "VK_EXT_color_write_enable";
+	public const uint VK_EXT_COLOR_WRITE_ENABLE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_COLOR_WRITE_ENABLE_EXTENSION_NAME = "VK_EXT_color_write_enable"
 	/// </summary>
-	public const string EXTColorWriteEnableExtensionName = "VK_EXT_color_write_enable";
+	public const string VK_EXT_COLOR_WRITE_ENABLE_EXTENSION_NAME = "VK_EXT_color_write_enable";
 	/// <summary>
 	/// VK_EXT_global_priority_query = 1
 	/// </summary>
-	public const uint EXTGlobalPriorityQuery = 1;
+	public const uint VK_EXT_global_priority_query = 1;
 	/// <summary>
 	/// VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTGlobalPriorityQuerySpecVersion = 1;
-	public const string VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query";
+	public const uint VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query"
 	/// </summary>
-	public const string EXTGlobalPriorityQueryExtensionName = "VK_EXT_global_priority_query";
+	public const string VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME = "VK_EXT_global_priority_query";
 	/// <summary>
 	/// VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = VK_MAX_GLOBAL_PRIORITY_SIZE_KHR
 	/// </summary>
-	public const uint MaxGlobalPrioritySizeEXT = MaxGlobalPrioritySizeKHR;
+	public const uint VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = VK_MAX_GLOBAL_PRIORITY_SIZE_KHR;
 	/// <summary>
 	/// VK_EXT_image_view_min_lod = 1
 	/// </summary>
-	public const uint EXTImageViewMinLod = 1;
+	public const uint VK_EXT_image_view_min_lod = 1;
 	/// <summary>
 	/// VK_EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTImageViewMinLodSpecVersion = 1;
-	public const string VK_EXT_IMAGE_VIEW_MIN_LOD_EXTENSION_NAME = "VK_EXT_image_view_min_lod";
+	public const uint VK_EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_IMAGE_VIEW_MIN_LOD_EXTENSION_NAME = "VK_EXT_image_view_min_lod"
 	/// </summary>
-	public const string EXTImageViewMinLodExtensionName = "VK_EXT_image_view_min_lod";
+	public const string VK_EXT_IMAGE_VIEW_MIN_LOD_EXTENSION_NAME = "VK_EXT_image_view_min_lod";
 	/// <summary>
 	/// VK_EXT_multi_draw = 1
 	/// </summary>
-	public const uint EXTMultiDraw = 1;
+	public const uint VK_EXT_multi_draw = 1;
 	/// <summary>
 	/// VK_EXT_MULTI_DRAW_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTMultiDrawSpecVersion = 1;
-	public const string VK_EXT_MULTI_DRAW_EXTENSION_NAME = "VK_EXT_multi_draw";
+	public const uint VK_EXT_MULTI_DRAW_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_MULTI_DRAW_EXTENSION_NAME = "VK_EXT_multi_draw"
 	/// </summary>
-	public const string EXTMultiDrawExtensionName = "VK_EXT_multi_draw";
+	public const string VK_EXT_MULTI_DRAW_EXTENSION_NAME = "VK_EXT_multi_draw";
 	/// <summary>
 	/// VK_EXT_load_store_op_none = 1
 	/// </summary>
-	public const uint EXTLoadStoreOpNone = 1;
+	public const uint VK_EXT_load_store_op_none = 1;
 	/// <summary>
 	/// VK_EXT_LOAD_STORE_OP_NONE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTLoadStoreOpNoneSpecVersion = 1;
-	public const string VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_EXT_load_store_op_none";
+	public const uint VK_EXT_LOAD_STORE_OP_NONE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_EXT_load_store_op_none"
 	/// </summary>
-	public const string EXTLoadStoreOpNoneExtensionName = "VK_EXT_load_store_op_none";
+	public const string VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_EXT_load_store_op_none";
 	/// <summary>
 	/// VK_EXT_border_color_swizzle = 1
 	/// </summary>
-	public const uint EXTBorderColorSwizzle = 1;
+	public const uint VK_EXT_border_color_swizzle = 1;
 	/// <summary>
 	/// VK_EXT_BORDER_COLOR_SWIZZLE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTBorderColorSwizzleSpecVersion = 1;
-	public const string VK_EXT_BORDER_COLOR_SWIZZLE_EXTENSION_NAME = "VK_EXT_border_color_swizzle";
+	public const uint VK_EXT_BORDER_COLOR_SWIZZLE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_BORDER_COLOR_SWIZZLE_EXTENSION_NAME = "VK_EXT_border_color_swizzle"
 	/// </summary>
-	public const string EXTBorderColorSwizzleExtensionName = "VK_EXT_border_color_swizzle";
+	public const string VK_EXT_BORDER_COLOR_SWIZZLE_EXTENSION_NAME = "VK_EXT_border_color_swizzle";
 	/// <summary>
 	/// VK_EXT_pageable_device_local_memory = 1
 	/// </summary>
-	public const uint EXTPageableDeviceLocalMemory = 1;
+	public const uint VK_EXT_pageable_device_local_memory = 1;
 	/// <summary>
 	/// VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTPageableDeviceLocalMemorySpecVersion = 1;
-	public const string VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory";
+	public const uint VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory"
 	/// </summary>
-	public const string EXTPageableDeviceLocalMemoryExtensionName = "VK_EXT_pageable_device_local_memory";
+	public const string VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory";
 	/// <summary>
 	/// VK_VALVE_descriptor_set_host_mapping = 1
 	/// </summary>
-	public const uint ValveDescriptorSetHostMapping = 1;
+	public const uint VK_VALVE_descriptor_set_host_mapping = 1;
 	/// <summary>
 	/// VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_SPEC_VERSION = 1
 	/// </summary>
-	public const uint ValveDescriptorSetHostMappingSpecVersion = 1;
-	public const string VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_EXTENSION_NAME = "VK_VALVE_descriptor_set_host_mapping";
+	public const uint VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_EXTENSION_NAME = "VK_VALVE_descriptor_set_host_mapping"
 	/// </summary>
-	public const string ValveDescriptorSetHostMappingExtensionName = "VK_VALVE_descriptor_set_host_mapping";
+	public const string VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_EXTENSION_NAME = "VK_VALVE_descriptor_set_host_mapping";
 	/// <summary>
 	/// VK_QCOM_fragment_density_map_offset = 1
 	/// </summary>
-	public const uint QcomFragmentDensityMapOffset = 1;
+	public const uint VK_QCOM_fragment_density_map_offset = 1;
 	/// <summary>
 	/// VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 1
 	/// </summary>
-	public const uint QcomFragmentDensityMapOffsetSpecVersion = 1;
-	public const string VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_QCOM_fragment_density_map_offset";
+	public const uint VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_QCOM_fragment_density_map_offset"
 	/// </summary>
-	public const string QcomFragmentDensityMapOffsetExtensionName = "VK_QCOM_fragment_density_map_offset";
+	public const string VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_QCOM_fragment_density_map_offset";
 	/// <summary>
 	/// VK_NV_linear_color_attachment = 1
 	/// </summary>
-	public const uint NVLinearColorAttachment = 1;
+	public const uint VK_NV_linear_color_attachment = 1;
 	/// <summary>
 	/// VK_NV_LINEAR_COLOR_ATTACHMENT_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NVLinearColorAttachmentSpecVersion = 1;
-	public const string VK_NV_LINEAR_COLOR_ATTACHMENT_EXTENSION_NAME = "VK_NV_linear_color_attachment";
+	public const uint VK_NV_LINEAR_COLOR_ATTACHMENT_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NV_LINEAR_COLOR_ATTACHMENT_EXTENSION_NAME = "VK_NV_linear_color_attachment"
 	/// </summary>
-	public const string NVLinearColorAttachmentExtensionName = "VK_NV_linear_color_attachment";
+	public const string VK_NV_LINEAR_COLOR_ATTACHMENT_EXTENSION_NAME = "VK_NV_linear_color_attachment";
 	/// <summary>
 	/// VK_GOOGLE_surfaceless_query = 1
 	/// </summary>
-	public const uint GoogleSurfacelessQuery = 1;
+	public const uint VK_GOOGLE_surfaceless_query = 1;
 	/// <summary>
 	/// VK_GOOGLE_SURFACELESS_QUERY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint GoogleSurfacelessQuerySpecVersion = 1;
-	public const string VK_GOOGLE_SURFACELESS_QUERY_EXTENSION_NAME = "VK_GOOGLE_surfaceless_query";
+	public const uint VK_GOOGLE_SURFACELESS_QUERY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_GOOGLE_SURFACELESS_QUERY_EXTENSION_NAME = "VK_GOOGLE_surfaceless_query"
 	/// </summary>
-	public const string GoogleSurfacelessQueryExtensionName = "VK_GOOGLE_surfaceless_query";
+	public const string VK_GOOGLE_SURFACELESS_QUERY_EXTENSION_NAME = "VK_GOOGLE_surfaceless_query";
 	/// <summary>
 	/// VK_KHR_acceleration_structure = 1
 	/// </summary>
-	public const uint KHRAccelerationStructure = 1;
+	public const uint VK_KHR_acceleration_structure = 1;
 	/// <summary>
 	/// VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION = 13
 	/// </summary>
-	public const uint KHRAccelerationStructureSpecVersion = 13;
-	public const string VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME = "VK_KHR_acceleration_structure";
+	public const uint VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION = 13;
 	/// <summary>
 	/// VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME = "VK_KHR_acceleration_structure"
 	/// </summary>
-	public const string KHRAccelerationStructureExtensionName = "VK_KHR_acceleration_structure";
+	public const string VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME = "VK_KHR_acceleration_structure";
 	/// <summary>
 	/// VK_KHR_ray_tracing_pipeline = 1
 	/// </summary>
-	public const uint KHRRayTracingPipeline = 1;
+	public const uint VK_KHR_ray_tracing_pipeline = 1;
 	/// <summary>
 	/// VK_KHR_RAY_TRACING_PIPELINE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRRayTracingPipelineSpecVersion = 1;
-	public const string VK_KHR_RAY_TRACING_PIPELINE_EXTENSION_NAME = "VK_KHR_ray_tracing_pipeline";
+	public const uint VK_KHR_RAY_TRACING_PIPELINE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_RAY_TRACING_PIPELINE_EXTENSION_NAME = "VK_KHR_ray_tracing_pipeline"
 	/// </summary>
-	public const string KHRRayTracingPipelineExtensionName = "VK_KHR_ray_tracing_pipeline";
+	public const string VK_KHR_RAY_TRACING_PIPELINE_EXTENSION_NAME = "VK_KHR_ray_tracing_pipeline";
 	/// <summary>
 	/// VK_KHR_ray_query = 1
 	/// </summary>
-	public const uint KHRRayQuery = 1;
+	public const uint VK_KHR_ray_query = 1;
 	/// <summary>
 	/// VK_KHR_RAY_QUERY_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRRayQuerySpecVersion = 1;
-	public const string VK_KHR_RAY_QUERY_EXTENSION_NAME = "VK_KHR_ray_query";
+	public const uint VK_KHR_RAY_QUERY_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_RAY_QUERY_EXTENSION_NAME = "VK_KHR_ray_query"
 	/// </summary>
-	public const string KHRRayQueryExtensionName = "VK_KHR_ray_query";
+	public const string VK_KHR_RAY_QUERY_EXTENSION_NAME = "VK_KHR_ray_query";
 	/// <summary>
 	/// VK_KHR_android_surface = 1
 	/// </summary>
-	public const uint KHRAndroidSurface = 1;
+	public const uint VK_KHR_android_surface = 1;
 	/// <summary>
 	/// VK_KHR_ANDROID_SURFACE_SPEC_VERSION = 6
 	/// </summary>
-	public const uint KHRAndroidSurfaceSpecVersion = 6;
-	public const string VK_KHR_ANDROID_SURFACE_EXTENSION_NAME = "VK_KHR_android_surface";
+	public const uint VK_KHR_ANDROID_SURFACE_SPEC_VERSION = 6;
 	/// <summary>
 	/// VK_KHR_ANDROID_SURFACE_EXTENSION_NAME = "VK_KHR_android_surface"
 	/// </summary>
-	public const string KHRAndroidSurfaceExtensionName = "VK_KHR_android_surface";
+	public const string VK_KHR_ANDROID_SURFACE_EXTENSION_NAME = "VK_KHR_android_surface";
 	/// <summary>
 	/// VK_ANDROID_external_memory_android_hardware_buffer = 1
 	/// </summary>
-	public const uint AndroidExternalMemoryAndroidHardwareBuffer = 1;
+	public const uint VK_ANDROID_external_memory_android_hardware_buffer = 1;
 	/// <summary>
 	/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION = 5
 	/// </summary>
-	public const uint AndroidExternalMemoryAndroidHardwareBufferSpecVersion = 5;
-	public const string VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer";
+	public const uint VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION = 5;
 	/// <summary>
 	/// VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer"
 	/// </summary>
-	public const string AndroidExternalMemoryAndroidHardwareBufferExtensionName = "VK_ANDROID_external_memory_android_hardware_buffer";
+	public const string VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer";
 	/// <summary>
 	/// VK_MVK_ios_surface = 1
 	/// </summary>
-	public const uint MVKIosSurface = 1;
+	public const uint VK_MVK_ios_surface = 1;
 	/// <summary>
 	/// VK_MVK_IOS_SURFACE_SPEC_VERSION = 3
 	/// </summary>
-	public const uint MVKIosSurfaceSpecVersion = 3;
-	public const string VK_MVK_IOS_SURFACE_EXTENSION_NAME = "VK_MVK_ios_surface";
+	public const uint VK_MVK_IOS_SURFACE_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_MVK_IOS_SURFACE_EXTENSION_NAME = "VK_MVK_ios_surface"
 	/// </summary>
-	public const string MVKIosSurfaceExtensionName = "VK_MVK_ios_surface";
+	public const string VK_MVK_IOS_SURFACE_EXTENSION_NAME = "VK_MVK_ios_surface";
 	/// <summary>
 	/// VK_MVK_macos_surface = 1
 	/// </summary>
-	public const uint MVKMacosSurface = 1;
+	public const uint VK_MVK_macos_surface = 1;
 	/// <summary>
 	/// VK_MVK_MACOS_SURFACE_SPEC_VERSION = 3
 	/// </summary>
-	public const uint MVKMacosSurfaceSpecVersion = 3;
-	public const string VK_MVK_MACOS_SURFACE_EXTENSION_NAME = "VK_MVK_macos_surface";
+	public const uint VK_MVK_MACOS_SURFACE_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_MVK_MACOS_SURFACE_EXTENSION_NAME = "VK_MVK_macos_surface"
 	/// </summary>
-	public const string MVKMacosSurfaceExtensionName = "VK_MVK_macos_surface";
+	public const string VK_MVK_MACOS_SURFACE_EXTENSION_NAME = "VK_MVK_macos_surface";
 	/// <summary>
 	/// VK_EXT_metal_surface = 1
 	/// </summary>
-	public const uint EXTMetalSurface = 1;
+	public const uint VK_EXT_metal_surface = 1;
 	/// <summary>
 	/// VK_EXT_METAL_SURFACE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTMetalSurfaceSpecVersion = 1;
-	public const string VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface";
+	public const uint VK_EXT_METAL_SURFACE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface"
 	/// </summary>
-	public const string EXTMetalSurfaceExtensionName = "VK_EXT_metal_surface";
+	public const string VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface";
 	/// <summary>
 	/// VK_NN_vi_surface = 1
 	/// </summary>
-	public const uint NnViSurface = 1;
+	public const uint VK_NN_vi_surface = 1;
 	/// <summary>
 	/// VK_NN_VI_SURFACE_SPEC_VERSION = 1
 	/// </summary>
-	public const uint NnViSurfaceSpecVersion = 1;
-	public const string VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface";
+	public const uint VK_NN_VI_SURFACE_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface"
 	/// </summary>
-	public const string NnViSurfaceExtensionName = "VK_NN_vi_surface";
+	public const string VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface";
 	/// <summary>
 	/// VK_KHR_video_queue = 1
 	/// </summary>
-	public const uint KHRVideoQueue = 1;
+	public const uint VK_KHR_video_queue = 1;
 	/// <summary>
 	/// VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 2
 	/// </summary>
-	public const uint KHRVideoQueueSpecVersion = 2;
-	public const string VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue";
+	public const uint VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue"
 	/// </summary>
-	public const string KHRVideoQueueExtensionName = "VK_KHR_video_queue";
+	public const string VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue";
 	/// <summary>
 	/// VK_KHR_video_decode_queue = 1
 	/// </summary>
-	public const uint KHRVideoDecodeQueue = 1;
+	public const uint VK_KHR_video_decode_queue = 1;
 	/// <summary>
 	/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 3
 	/// </summary>
-	public const uint KHRVideoDecodeQueueSpecVersion = 3;
-	public const string VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue";
+	public const uint VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue"
 	/// </summary>
-	public const string KHRVideoDecodeQueueExtensionName = "VK_KHR_video_decode_queue";
+	public const string VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue";
 	/// <summary>
 	/// VK_KHR_portability_subset = 1
 	/// </summary>
-	public const uint KHRPortabilitySubset = 1;
+	public const uint VK_KHR_portability_subset = 1;
 	/// <summary>
 	/// VK_KHR_PORTABILITY_SUBSET_SPEC_VERSION = 1
 	/// </summary>
-	public const uint KHRPortabilitySubsetSpecVersion = 1;
-	public const string VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME = "VK_KHR_portability_subset";
+	public const uint VK_KHR_PORTABILITY_SUBSET_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME = "VK_KHR_portability_subset"
 	/// </summary>
-	public const string KHRPortabilitySubsetExtensionName = "VK_KHR_portability_subset";
+	public const string VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME = "VK_KHR_portability_subset";
 	/// <summary>
 	/// VK_KHR_video_encode_queue = 1
 	/// </summary>
-	public const uint KHRVideoEncodeQueue = 1;
+	public const uint VK_KHR_video_encode_queue = 1;
 	/// <summary>
 	/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 4
 	/// </summary>
-	public const uint KHRVideoEncodeQueueSpecVersion = 4;
-	public const string VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
+	public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 4;
 	/// <summary>
 	/// VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue"
 	/// </summary>
-	public const string KHRVideoEncodeQueueExtensionName = "VK_KHR_video_encode_queue";
+	public const string VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
 	/// <summary>
 	/// VK_EXT_video_encode_h264 = 1
 	/// </summary>
-	public const uint EXTVideoEncodeH264 = 1;
+	public const uint VK_EXT_video_encode_h264 = 1;
 	/// <summary>
 	/// vulkan_video_codec_h264std = 1
 	/// </summary>
@@ -3395,36 +3145,35 @@ public static partial class Vulkan
 	/// <summary>
 	/// VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5 = VK_MAKE_VIDEO_STD_VERSION(0,9,5)
 	/// </summary>
-	public static readonly VkVersion StdVulkanVideoCodecH264ApiVersion095 = new VkVersion(0, 9, 5);
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5 = new VkVersion(0, 9, 5);
 	/// <summary>
 	/// STD_VIDEO_H264_CPB_CNT_LIST_SIZE = 32
 	/// </summary>
-	public const uint VideoH264CpbCntListSize = 32;
+	public const uint STD_VIDEO_H264_CPB_CNT_LIST_SIZE = 32;
 	/// <summary>
 	/// STD_VIDEO_H264_SCALING_LIST_4X4_NUM_LISTS = 6
 	/// </summary>
-	public const uint VideoH264ScalingList4x4NumLists = 6;
+	public const uint STD_VIDEO_H264_SCALING_LIST_4X4_NUM_LISTS = 6;
 	/// <summary>
 	/// STD_VIDEO_H264_SCALING_LIST_4X4_NUM_ELEMENTS = 16
 	/// </summary>
-	public const uint VideoH264ScalingList4x4NumElements = 16;
+	public const uint STD_VIDEO_H264_SCALING_LIST_4X4_NUM_ELEMENTS = 16;
 	/// <summary>
 	/// STD_VIDEO_H264_SCALING_LIST_8X8_NUM_LISTS = 2
 	/// </summary>
-	public const uint VideoH264ScalingList8x8NumLists = 2;
+	public const uint STD_VIDEO_H264_SCALING_LIST_8X8_NUM_LISTS = 2;
 	/// <summary>
 	/// STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS = 64
 	/// </summary>
-	public const uint VideoH264ScalingList8x8NumElements = 64;
+	public const uint STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
 	/// <summary>
 	/// VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5
 	/// </summary>
-	public static readonly VkVersion StdVulkanVideoCodecH264SpecVersion = StdVulkanVideoCodecH264ApiVersion095;
-	public const string VK_STD_VULKAN_VIDEO_CODEC_H264_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264";
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5;
 	/// <summary>
 	/// VK_STD_VULKAN_VIDEO_CODEC_H264_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264"
 	/// </summary>
-	public const string StdVulkanVideoCodecH264ExtensionName = "VK_STD_vulkan_video_codec_h264";
+	public const string VK_STD_VULKAN_VIDEO_CODEC_H264_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264";
 	/// <summary>
 	/// vulkan_video_codec_h264std_encode = 1
 	/// </summary>
@@ -3432,16 +3181,15 @@ public static partial class Vulkan
 	/// <summary>
 	/// VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 5
 	/// </summary>
-	public const uint EXTVideoEncodeH264SpecVersion = 5;
-	public const string VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264";
+	public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 5;
 	/// <summary>
 	/// VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264"
 	/// </summary>
-	public const string EXTVideoEncodeH264ExtensionName = "VK_EXT_video_encode_h264";
+	public const string VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264";
 	/// <summary>
 	/// VK_EXT_video_encode_h265 = 1
 	/// </summary>
-	public const uint EXTVideoEncodeH265 = 1;
+	public const uint VK_EXT_video_encode_h265 = 1;
 	/// <summary>
 	/// vulkan_video_codec_h265std = 1
 	/// </summary>
@@ -3449,76 +3197,75 @@ public static partial class Vulkan
 	/// <summary>
 	/// VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5 = VK_MAKE_VIDEO_STD_VERSION(0,9,5)
 	/// </summary>
-	public static readonly VkVersion StdVulkanVideoCodecH265ApiVersion095 = new VkVersion(0, 9, 5);
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5 = new VkVersion(0, 9, 5);
 	/// <summary>
 	/// STD_VIDEO_H265_SUBLAYERS_MINUS1_LIST_SIZE = 7
 	/// </summary>
-	public const uint VideoH265SublayersMinus1ListSize = 7;
+	public const uint STD_VIDEO_H265_SUBLAYERS_MINUS1_LIST_SIZE = 7;
 	/// <summary>
 	/// STD_VIDEO_H265_CPB_CNT_LIST_SIZE = 32
 	/// </summary>
-	public const uint VideoH265CpbCntListSize = 32;
+	public const uint STD_VIDEO_H265_CPB_CNT_LIST_SIZE = 32;
 	/// <summary>
 	/// STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS = 6
 	/// </summary>
-	public const uint VideoH265ScalingList4x4NumLists = 6;
+	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS = 6;
 	/// <summary>
 	/// STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS = 16
 	/// </summary>
-	public const uint VideoH265ScalingList4x4NumElements = 16;
+	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS = 16;
 	/// <summary>
 	/// STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS = 6
 	/// </summary>
-	public const uint VideoH265ScalingList8x8NumLists = 6;
+	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS = 6;
 	/// <summary>
 	/// STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64
 	/// </summary>
-	public const uint VideoH265ScalingList8x8NumElements = 64;
+	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
 	/// <summary>
 	/// STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS = 6
 	/// </summary>
-	public const uint VideoH265ScalingList16x16NumLists = 6;
+	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS = 6;
 	/// <summary>
 	/// STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS = 64
 	/// </summary>
-	public const uint VideoH265ScalingList16x16NumElements = 64;
+	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS = 64;
 	/// <summary>
 	/// STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS = 2
 	/// </summary>
-	public const uint VideoH265ScalingList32x32NumLists = 2;
+	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS = 2;
 	/// <summary>
 	/// STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS = 64
 	/// </summary>
-	public const uint VideoH265ScalingList32x32NumElements = 64;
+	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS = 64;
 	/// <summary>
 	/// STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE = 3
 	/// </summary>
-	public const uint VideoH265PredictorPaletteComponentsListSize = 3;
+	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE = 3;
 	/// <summary>
 	/// STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128
 	/// </summary>
-	public const uint VideoH265PredictorPaletteCompEntriesListSize = 128;
+	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128;
 	/// <summary>
 	/// STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19
 	/// </summary>
-	public const uint VideoH265ChromaQpOffsetTileColsListSize = 19;
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19;
 	/// <summary>
 	/// STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE = 21
 	/// </summary>
-	public const uint VideoH265ChromaQpOffsetTileRowsListSize = 21;
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE = 21;
 	/// <summary>
 	/// STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE = 6
 	/// </summary>
-	public const uint VideoH265ChromaQpOffsetListSize = 6;
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE = 6;
 	/// <summary>
 	/// VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5
 	/// </summary>
-	public static readonly VkVersion StdVulkanVideoCodecH265SpecVersion = StdVulkanVideoCodecH265ApiVersion095;
-	public const string VK_STD_VULKAN_VIDEO_CODEC_H265_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265";
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5;
 	/// <summary>
 	/// VK_STD_VULKAN_VIDEO_CODEC_H265_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265"
 	/// </summary>
-	public const string StdVulkanVideoCodecH265ExtensionName = "VK_STD_vulkan_video_codec_h265";
+	public const string VK_STD_VULKAN_VIDEO_CODEC_H265_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265";
 	/// <summary>
 	/// vulkan_video_codec_h265std_encode = 1
 	/// </summary>
@@ -3526,28 +3273,27 @@ public static partial class Vulkan
 	/// <summary>
 	/// STD_VIDEO_ENCODE_H265_LUMA_LIST_SIZE = 15
 	/// </summary>
-	public const uint VideoEncodeH265LumaListSize = 15;
+	public const uint STD_VIDEO_ENCODE_H265_LUMA_LIST_SIZE = 15;
 	/// <summary>
 	/// STD_VIDEO_ENCODE_H265_CHROMA_LIST_SIZE = 15
 	/// </summary>
-	public const uint VideoEncodeH265ChromaListSize = 15;
+	public const uint STD_VIDEO_ENCODE_H265_CHROMA_LIST_SIZE = 15;
 	/// <summary>
 	/// STD_VIDEO_ENCODE_H265_CHROMA_LISTS_NUM = 2
 	/// </summary>
-	public const uint VideoEncodeH265ChromaListsNum = 2;
+	public const uint STD_VIDEO_ENCODE_H265_CHROMA_LISTS_NUM = 2;
 	/// <summary>
 	/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 5
 	/// </summary>
-	public const uint EXTVideoEncodeH265SpecVersion = 5;
-	public const string VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265";
+	public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 5;
 	/// <summary>
 	/// VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265"
 	/// </summary>
-	public const string EXTVideoEncodeH265ExtensionName = "VK_EXT_video_encode_h265";
+	public const string VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265";
 	/// <summary>
 	/// VK_EXT_video_decode_h264 = 1
 	/// </summary>
-	public const uint EXTVideoDecodeH264 = 1;
+	public const uint VK_EXT_video_decode_h264 = 1;
 	/// <summary>
 	/// vulkan_video_codec_h264std_decode = 1
 	/// </summary>
@@ -3555,24 +3301,23 @@ public static partial class Vulkan
 	/// <summary>
 	/// STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE = 2
 	/// </summary>
-	public const uint VideoDecodeH264FieldOrderCountListSize = 2;
+	public const uint STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE = 2;
 	/// <summary>
 	/// STD_VIDEO_DECODE_H264_MVC_REF_LIST_SIZE = 15
 	/// </summary>
-	public const uint VideoDecodeH264MvcRefListSize = 15;
+	public const uint STD_VIDEO_DECODE_H264_MVC_REF_LIST_SIZE = 15;
 	/// <summary>
 	/// VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 3
 	/// </summary>
-	public const uint EXTVideoDecodeH264SpecVersion = 3;
-	public const string VK_EXT_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_EXT_video_decode_h264";
+	public const uint VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_EXT_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_EXT_video_decode_h264"
 	/// </summary>
-	public const string EXTVideoDecodeH264ExtensionName = "VK_EXT_video_decode_h264";
+	public const string VK_EXT_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_EXT_video_decode_h264";
 	/// <summary>
 	/// VK_EXT_video_decode_h265 = 1
 	/// </summary>
-	public const uint EXTVideoDecodeH265 = 1;
+	public const uint VK_EXT_video_decode_h265 = 1;
 	/// <summary>
 	/// vulkan_video_codec_h265std_decode = 1
 	/// </summary>
@@ -3580,14 +3325,13 @@ public static partial class Vulkan
 	/// <summary>
 	/// STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8
 	/// </summary>
-	public const uint VideoDecodeH265RefPicSetListSize = 8;
+	public const uint STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8;
 	/// <summary>
 	/// VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 1
 	/// </summary>
-	public const uint EXTVideoDecodeH265SpecVersion = 1;
-	public const string VK_EXT_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_EXT_video_decode_h265";
+	public const uint VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 1;
 	/// <summary>
 	/// VK_EXT_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_EXT_video_decode_h265"
 	/// </summary>
-	public const string EXTVideoDecodeH265ExtensionName = "VK_EXT_video_decode_h265";
+	public const string VK_EXT_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_EXT_video_decode_h265";
 }

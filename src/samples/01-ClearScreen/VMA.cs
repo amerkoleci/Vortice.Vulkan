@@ -56,7 +56,7 @@ namespace Vortice.Vulkan.Vma
         private readonly ulong _preferredLargeHeapBlockSize;
 
         // Default pools.
-        private readonly BlockVector[] _blockVectors = new BlockVector[MaxMemoryTypes];
+        private readonly BlockVector[] _blockVectors = new BlockVector[VK_MAX_MEMORY_TYPES];
 
         public Allocator(in AllocatorCreateInfo createInfo)
         {
