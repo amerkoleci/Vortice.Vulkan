@@ -3,15 +3,6 @@
 
 namespace Vortice.Vulkan;
 
-public unsafe partial struct SECURITY_ATTRIBUTES
-{
-    public uint nLength;
-
-    public void* lpSecurityDescriptor;
-
-    public VkBool32 bInheritHandle;
-}
-
 [Flags]
 public enum VkWin32SurfaceCreateFlagsKHR
 {
@@ -23,8 +14,8 @@ public unsafe struct VkWin32SurfaceCreateInfoKHR
     public VkStructureType sType;
     public void* pNext;
     public VkWin32SurfaceCreateFlagsKHR flags;
-    public nint hinstance;
-    public nint hwnd;
+    public IntPtr hinstance;
+    public IntPtr hwnd;
 }
 
 public unsafe struct VkImportMemoryWin32HandleInfoKHR
@@ -40,9 +31,9 @@ public unsafe struct VkExportMemoryWin32HandleInfoKHR
 {
     public VkStructureType sType;
     public void* pNext;
-    public SECURITY_ATTRIBUTES* pAttributes;
+    public IntPtr* pAttributes;
     public uint dwAccess;
-    public nint name;
+    public ushort* name;
 }
 
 public unsafe struct VkMemoryWin32HandlePropertiesKHR

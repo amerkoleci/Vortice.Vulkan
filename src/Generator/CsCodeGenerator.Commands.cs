@@ -90,7 +90,7 @@ public static partial class CsCodeGenerator
         "vkCreateDebugUtilsMessengerEXT"
     };
 
-    private static string GetFunctionPointerSignature(bool netstandard, CppFunction function, bool allowNonBlittable = true)
+    private static string GetFunctionPointerSignature(CppFunction function, bool allowNonBlittable = true)
     {
         bool canUseOut = s_outReturnFunctions.Contains(function.Name);
 
@@ -132,19 +132,14 @@ public static partial class CsCodeGenerator
 
         builder.Append(returnCsName);
 
-        if (netstandard)
-        {
-            return $"delegate* unmanaged[Stdcall]<{builder}>";
-        }
-
-        return $"delegate* unmanaged<{builder}>";
+        //return $"delegate* unmanaged<{builder}>";
+        return $"delegate* unmanaged[Stdcall]<{builder}>";
     }
 
-    private static void GenerateCommands(CppCompilation compilation, string outputPath, bool netStandard)
+    private static void GenerateCommands(CppCompilation compilation, string outputPath)
     {
         // Generate Functions
-        string fileName = netStandard ? "Commands.NetStandard.cs" : "Commands.cs";
-        using var writer = new CodeWriter(Path.Combine(outputPath, fileName),
+        using var writer = new CodeWriter(Path.Combine(outputPath, "Commands.cs"),
             "System"
             );
 
@@ -179,15 +174,6 @@ public static partial class CsCodeGenerator
             }
         }
 
-        if (netStandard)
-        {
-            writer.WriteLine($"#if !NET5_0_OR_GREATER");
-        }
-        else
-        {
-            writer.WriteLine($"#if NET5_0_OR_GREATER");
-        }
-
         using (writer.PushBlock($"unsafe partial class Vulkan"))
         {
             foreach (KeyValuePair<string, CppFunction> command in commands)
@@ -200,16 +186,8 @@ public static partial class CsCodeGenerator
                     continue;
                 }
 
-                string functionPointerSignatureNS = GetFunctionPointerSignature(true, cppFunction);
-                string functionPointerSignature = GetFunctionPointerSignature(false, cppFunction);
-                if (netStandard)
-                {
-                    writer.WriteLine($"private static {functionPointerSignatureNS} {command.Key}_ptr;");
-                }
-                else
-                {
-                    writer.WriteLine($"private static {functionPointerSignature} {command.Key}_ptr;");
-                }
+                string functionPointerSignature = GetFunctionPointerSignature(cppFunction);
+                writer.WriteLine($"private static {functionPointerSignature} {command.Key}_ptr;");
 
                 string returnCsName = GetCsTypeName(cppFunction.ReturnType, false);
                 bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
@@ -249,14 +227,12 @@ public static partial class CsCodeGenerator
                 writer.WriteLine();
             }
 
-            WriteCommands(writer, "GenLoadInstance", instanceCommands, netStandard);
-            WriteCommands(writer, "GenLoadDevice", deviceCommands, netStandard);
+            WriteCommands(writer, "GenLoadInstance", instanceCommands);
+            WriteCommands(writer, "GenLoadDevice", deviceCommands);
         }
-
-        writer.WriteLine($"#endif");
     }
 
-    private static void WriteCommands(CodeWriter writer, string name, Dictionary<string, CppFunction> commands, bool netStandard)
+    private static void WriteCommands(CodeWriter writer, string name, Dictionary<string, CppFunction> commands)
     {
         using (writer.PushBlock($"private static void {name}(IntPtr context, LoadFunction load)"))
         {
@@ -269,7 +245,7 @@ public static partial class CsCodeGenerator
                     continue;
                 }
 
-                string functionPointerSignature = GetFunctionPointerSignature(netStandard, instanceCommand.Value);
+                string functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value);
                 writer.WriteLine($"{commandName}_ptr = ({functionPointerSignature}) load(context, nameof({commandName}));");
             }
         }

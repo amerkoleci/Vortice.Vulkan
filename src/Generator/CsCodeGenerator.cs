@@ -92,8 +92,7 @@ public static partial class CsCodeGenerator
         GenerateEnums(compilation, outputPath);
         GenerateHandles(compilation, outputPath);
         GenerateStructAndUnions(compilation, outputPath);
-        GenerateCommands(compilation, outputPath, true);
-        GenerateCommands(compilation, outputPath, false);
+        GenerateCommands(compilation, outputPath);
         GenerateHelperCommands(compilation, outputPath);
     }
 

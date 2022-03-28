@@ -74,20 +74,8 @@ public static unsafe partial class Vulkan
         // Manually loaded entries.
         LoadWin32(instance);
         LoadXcb(instance);
-
-#if NET6_0_OR_GREATER
-        vkCreateXlibSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXlibSurfaceKHR));
-        vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXlibPresentationSupportKHR));
-
-        vkCreateWaylandSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWaylandSurfaceKHR));
-        vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWaylandPresentationSupportKHR));
-#else
-        vkCreateXlibSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXlibSurfaceKHR));
-        vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXlibPresentationSupportKHR));
-
-        vkCreateWaylandSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWaylandSurfaceKHR));
-        vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWaylandPresentationSupportKHR));
-#endif
+        LoadXlib(instance);
+        LoadWayland(instance);
     }
 
     public static void vkLoadDevice(VkDevice device)
@@ -102,17 +90,10 @@ public static unsafe partial class Vulkan
 
     private static void GenLoadLoader(IntPtr context, LoadFunction load)
     {
-#if NET5_0_OR_GREATER
-        vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
-        vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<byte*, int*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
-        vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<int*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
-        vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<uint*, VkResult>)load(context, "vkEnumerateInstanceVersion");
-#else
         vkCreateInstance_ptr = (delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
         vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged[Stdcall]<byte*, int*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
         vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged[Stdcall]<int*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
         vkEnumerateInstanceVersion_ptr = (delegate* unmanaged[Stdcall]<uint*, VkResult>)load(context, "vkEnumerateInstanceVersion");
-#endif
     }
 
     private static delegate* unmanaged[Stdcall]<void> LoadCallbackThrow(IntPtr context, LoadFunction load, string name)
