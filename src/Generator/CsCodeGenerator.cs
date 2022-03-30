@@ -182,12 +182,14 @@ public static partial class CsCodeGenerator
 
                 writer.WriteLine("/// <summary>");
                 if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5")
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_6" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_6" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_0_9_6" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_SPEC_VERSION" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_6" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_SPEC_VERSION")
                 {
                     modifier = "static readonly";
                     csDataType = "VkVersion";
@@ -199,17 +201,13 @@ public static partial class CsCodeGenerator
                 {
                     writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]}, VK_HEADER_VERSION);");
                 }
-                else if (cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_5" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_API_VERSION_0_9_5" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_API_VERSION_0_9_5")
+                else if (
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_6" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_6" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_0_9_6" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_6")
                 {
                     writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]});");
-                }
-                else if (cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_SPEC_VERSION" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_SPEC_VERSION")
-                {
-                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = {cppMacro.Tokens[0]};");
                 }
                 else if (cppMacro.Name.StartsWith("STD_VIDEO_"))
                 {

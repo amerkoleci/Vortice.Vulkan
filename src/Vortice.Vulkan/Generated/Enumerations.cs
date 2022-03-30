@@ -331,37 +331,34 @@ public enum VkStructureType
 	ImageViewHandleInfoNVX = 1000030000,
 	ImageViewAddressPropertiesNVX = 1000030001,
 	VideoEncodeH264CapabilitiesEXT = 1000038000,
-	VideoEncodeH264SessionCreateInfoEXT = 1000038001,
-	VideoEncodeH264SessionParametersCreateInfoEXT = 1000038002,
-	VideoEncodeH264SessionParametersAddInfoEXT = 1000038003,
-	VideoEncodeH264VclFrameInfoEXT = 1000038004,
-	VideoEncodeH264DpbSlotInfoEXT = 1000038005,
-	VideoEncodeH264NaluSliceEXT = 1000038006,
-	VideoEncodeH264EmitPictureParametersEXT = 1000038007,
-	VideoEncodeH264ProfileEXT = 1000038008,
-	VideoEncodeH264RateControlInfoEXT = 1000038009,
-	VideoEncodeH264RateControlLayerInfoEXT = 1000038010,
-	VideoEncodeH264ReferenceListsEXT = 1000038011,
+	VideoEncodeH264SessionParametersCreateInfoEXT = 1000038001,
+	VideoEncodeH264SessionParametersAddInfoEXT = 1000038002,
+	VideoEncodeH264VclFrameInfoEXT = 1000038003,
+	VideoEncodeH264DpbSlotInfoEXT = 1000038004,
+	VideoEncodeH264NaluSliceEXT = 1000038005,
+	VideoEncodeH264EmitPictureParametersEXT = 1000038006,
+	VideoEncodeH264ProfileEXT = 1000038007,
+	VideoEncodeH264RateControlInfoEXT = 1000038008,
+	VideoEncodeH264RateControlLayerInfoEXT = 1000038009,
+	VideoEncodeH264ReferenceListsEXT = 1000038010,
 	VideoEncodeH265CapabilitiesEXT = 1000039000,
-	VideoEncodeH265SessionCreateInfoEXT = 1000039001,
-	VideoEncodeH265SessionParametersCreateInfoEXT = 1000039002,
-	VideoEncodeH265SessionParametersAddInfoEXT = 1000039003,
-	VideoEncodeH265VclFrameInfoEXT = 1000039004,
-	VideoEncodeH265DpbSlotInfoEXT = 1000039005,
-	VideoEncodeH265NaluSliceSegmentEXT = 1000039006,
-	VideoEncodeH265EmitPictureParametersEXT = 1000039007,
-	VideoEncodeH265ProfileEXT = 1000039008,
-	VideoEncodeH265ReferenceListsEXT = 1000039009,
-	VideoEncodeH265RateControlInfoEXT = 1000039010,
-	VideoEncodeH265RateControlLayerInfoEXT = 1000039011,
+	VideoEncodeH265SessionParametersCreateInfoEXT = 1000039001,
+	VideoEncodeH265SessionParametersAddInfoEXT = 1000039002,
+	VideoEncodeH265VclFrameInfoEXT = 1000039003,
+	VideoEncodeH265DpbSlotInfoEXT = 1000039004,
+	VideoEncodeH265NaluSliceSegmentEXT = 1000039005,
+	VideoEncodeH265EmitPictureParametersEXT = 1000039006,
+	VideoEncodeH265ProfileEXT = 1000039007,
+	VideoEncodeH265ReferenceListsEXT = 1000039008,
+	VideoEncodeH265RateControlInfoEXT = 1000039009,
+	VideoEncodeH265RateControlLayerInfoEXT = 1000039010,
 	VideoDecodeH264CapabilitiesEXT = 1000040000,
-	VideoDecodeH264SessionCreateInfoEXT = 1000040001,
-	VideoDecodeH264PictureInfoEXT = 1000040002,
-	VideoDecodeH264MvcEXT = 1000040003,
-	VideoDecodeH264ProfileEXT = 1000040004,
-	VideoDecodeH264SessionParametersCreateInfoEXT = 1000040005,
-	VideoDecodeH264SessionParametersAddInfoEXT = 1000040006,
-	VideoDecodeH264DpbSlotInfoEXT = 1000040007,
+	VideoDecodeH264PictureInfoEXT = 1000040001,
+	VideoDecodeH264MvcEXT = 1000040002,
+	VideoDecodeH264ProfileEXT = 1000040003,
+	VideoDecodeH264SessionParametersCreateInfoEXT = 1000040004,
+	VideoDecodeH264SessionParametersAddInfoEXT = 1000040005,
+	VideoDecodeH264DpbSlotInfoEXT = 1000040006,
 	TextureLodGatherFormatPropertiesAMD = 1000041000,
 	RenderingFragmentShadingRateAttachmentInfoKHR = 1000044006,
 	RenderingFragmentDensityMapAttachmentInfoEXT = 1000044007,
@@ -517,12 +514,11 @@ public enum VkStructureType
 	CalibratedTimestampInfoEXT = 1000184000,
 	PhysicalDeviceShaderCorePropertiesAMD = 1000185000,
 	VideoDecodeH265CapabilitiesEXT = 1000187000,
-	VideoDecodeH265SessionCreateInfoEXT = 1000187001,
-	VideoDecodeH265SessionParametersCreateInfoEXT = 1000187002,
-	VideoDecodeH265SessionParametersAddInfoEXT = 1000187003,
-	VideoDecodeH265ProfileEXT = 1000187004,
-	VideoDecodeH265PictureInfoEXT = 1000187005,
-	VideoDecodeH265DpbSlotInfoEXT = 1000187006,
+	VideoDecodeH265SessionParametersCreateInfoEXT = 1000187001,
+	VideoDecodeH265SessionParametersAddInfoEXT = 1000187002,
+	VideoDecodeH265ProfileEXT = 1000187003,
+	VideoDecodeH265PictureInfoEXT = 1000187004,
+	VideoDecodeH265DpbSlotInfoEXT = 1000187005,
 	DeviceQueueGlobalPriorityCreateInfoKHR = 1000174000,
 	PhysicalDeviceGlobalPriorityQueryFeaturesKHR = 1000388000,
 	QueueFamilyGlobalPriorityPropertiesKHR = 1000388001,
@@ -632,6 +628,9 @@ public enum VkStructureType
 	DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
 	QueueFamilyCheckpointProperties2NV = 1000314008,
 	CheckpointData2NV = 1000314009,
+	PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT = 1000320000,
+	PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT = 1000320001,
+	GraphicsPipelineLibraryCreateInfoEXT = 1000320002,
 	PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR = 1000323000,
 	PhysicalDeviceFragmentShadingRateEnumsPropertiesNV = 1000326000,
 	PhysicalDeviceFragmentShadingRateEnumsFeaturesNV = 1000326001,
@@ -682,6 +681,7 @@ public enum VkStructureType
 	ScreenSurfaceCreateInfoQnx = 1000378000,
 	PhysicalDeviceColorWriteEnableFeaturesEXT = 1000381000,
 	PipelineColorWriteCreateInfoEXT = 1000381001,
+	PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT = 1000382000,
 	PhysicalDeviceImageViewMinLodFeaturesEXT = 1000391000,
 	ImageViewMinLodCreateInfoEXT = 1000391001,
 	PhysicalDeviceMultiDrawFeaturesEXT = 1000392000,
@@ -1328,6 +1328,7 @@ public enum VkQueryType
 	AccelerationStructureCompactedSizeNV = 1000165000,
 	PerformanceQueryINTEL = 1000210000,
 	VideoEncodeBitstreamBufferRangeKHR = 1000299000,
+	PrimitivesGeneratedEXT = 1000382000,
 }
 
 public enum VkSharingMode
@@ -2087,6 +2088,8 @@ public enum VkPipelineCreateFlags
 	CaptureInternalRepresentationsKHR = 128,
 	IndirectBindableNV = 262144,
 	LibraryKHR = 2048,
+	RetainLinkTimeOptimizationInfoEXT = 8388608,
+	LinkTimeOptimizationEXT = 1024,
 	RayTracingAllowMotionNV = 1048576,
 	RasterizationStateCreateFragmentShadingRateAttachmentKHR = RenderingFragmentShadingRateAttachmentKHR,
 	RasterizationStateCreateFragmentDensityMapAttachmentKHR = RenderingFragmentDensityMapAttachmentEXT,
@@ -2157,6 +2160,13 @@ public enum VkPipelineColorBlendStateCreateFlags
 {
 	None = 0,
 	RasterizationOrderAttachmentAccessARM = 1,
+}
+
+[Flags]
+public enum VkPipelineLayoutCreateFlags
+{
+	None = 0,
+	IndependentSetsEXT = 2,
 }
 
 [Flags]
@@ -3259,6 +3269,16 @@ public enum VkDeviceDiagnosticsConfigFlagsNV
 	EnableAutomaticCheckpoints = 4,
 }
 
+[Flags]
+public enum VkGraphicsPipelineLibraryFlagsEXT
+{
+	None = 0,
+	VertexInputInterface = 1,
+	PreRasterizationShaders = 2,
+	FragmentShader = 4,
+	FragmentOutputInterface = 8,
+}
+
 public enum VkFragmentShadingRateTypeNV
 {
 	TypeFragmentSize = 0,
@@ -3639,14 +3659,6 @@ public enum VkVideoEncodeH264OutputModeFlagsEXT
 }
 
 [Flags]
-public enum VkVideoEncodeH264CreateFlagsEXT
-{
-	None = 0,
-	Default = 0,
-	Reserved0 = 1,
-}
-
-[Flags]
 public enum VkVideoEncodeH264RateControlStructureFlagsEXT
 {
 	None = 0,
@@ -3875,12 +3887,6 @@ public enum VkPipelineMultisampleStateCreateFlags
 
 [Flags]
 public enum VkPipelineDynamicStateCreateFlags
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkPipelineLayoutCreateFlags
 {
 	None = 0,
 }
@@ -4187,24 +4193,6 @@ public enum VkVideoBeginCodingFlagsKHR
 
 [Flags]
 public enum VkVideoEndCodingFlagsKHR
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkVideoEncodeH265CreateFlagsEXT
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkVideoDecodeH264CreateFlagsEXT
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkVideoDecodeH265CreateFlagsEXT
 {
 	None = 0,
 }

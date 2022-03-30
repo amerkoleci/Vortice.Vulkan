@@ -109,7 +109,7 @@ public enum WindowHintBool
     Hovered = 0x0002000B,
 
     /// <summary>
-    /// Specifies whether the window will be given input focus when <see cref="GLFW.ShowWindow"/> is called.
+    /// Specifies whether the window will be given input focus when <see cref="GLFW.glfwShowWindow"/> is called.
     /// Possible values are <c>true</c> and <c>false</c>.
     /// </summary>
     FocusOnShow = 0x0002000C,
@@ -198,6 +198,9 @@ public static unsafe class GLFW
     public delegate void glfwGetWindowSize_t(GLFWwindow* window, out int width, out int height);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate void glfwShowWindow_t(GLFWwindow* window);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void glfwPollEvents_t();
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -214,6 +217,7 @@ public static unsafe class GLFW
     private static readonly glfwCreateWindow_t s_glfwCreateWindow;
     private static readonly glfwWindowShouldClose_t s_glfwWindowShouldClose;
     private static readonly glfwGetWindowSize_t s_glfwGetWindowSize;
+    private static readonly glfwShowWindow_t s_glfwShowWindow;
     private static readonly glfwGetPrimaryMonitor_t s_glfwGetPrimaryMonitor;
     private static readonly glfwPollEvents_t s_glfwPollEvents;
     private static readonly glfwGetRequiredInstanceExtensions_t s_glfwGetRequiredInstanceExtensions;
@@ -248,6 +252,7 @@ public static unsafe class GLFW
     public static bool glfwWindowShouldClose(GLFWwindow* window) => s_glfwWindowShouldClose(window) == GLFW_TRUE;
 
     public static void glfwGetWindowSize(GLFWwindow* window, out int width, out int height) => s_glfwGetWindowSize(window, out width, out height);
+    public static void glfwShowWindow(GLFWwindow* window) => glfwShowWindow(window);
 
     public static GLFWmonitor* glfwGetPrimaryMonitor() => s_glfwGetPrimaryMonitor();
 
@@ -289,6 +294,7 @@ public static unsafe class GLFW
         s_glfwGetPrimaryMonitor = LoadFunction<glfwGetPrimaryMonitor_t>(nameof(glfwGetPrimaryMonitor));
         s_glfwWindowShouldClose = LoadFunction<glfwWindowShouldClose_t>(nameof(glfwWindowShouldClose));
         s_glfwGetWindowSize = LoadFunction<glfwGetWindowSize_t>(nameof(glfwGetWindowSize));
+        s_glfwShowWindow = LoadFunction<glfwShowWindow_t>(nameof(glfwShowWindow));
 
         s_glfwPollEvents = LoadFunction<glfwPollEvents_t>(nameof(glfwPollEvents));
 
@@ -333,7 +339,7 @@ public readonly partial struct GLFWmonitor : IEquatable<GLFWmonitor>
     public static bool operator !=(GLFWmonitor left, nint right) => left.Handle != right;
     public bool Equals(GLFWmonitor other) => Handle == other.Handle;
     /// <inheritdoc/>
-    public override bool Equals(object obj) => obj is GLFWmonitor handle && Equals(handle);
+    public override bool Equals(object? obj) => obj is GLFWmonitor handle && Equals(handle);
     /// <inheritdoc/>
     public override int GetHashCode() => Handle.GetHashCode();
     private string DebuggerDisplay => string.Format("GLFWmonitor [0x{0}]", Handle.ToString("X"));
@@ -353,7 +359,7 @@ public readonly partial struct GLFWwindow : IEquatable<GLFWwindow>
     public static bool operator !=(GLFWwindow left, nint right) => left.Handle != right;
     public bool Equals(GLFWwindow other) => Handle == other.Handle;
     /// <inheritdoc/>
-    public override bool Equals(object obj) => obj is GLFWwindow handle && Equals(handle);
+    public override bool Equals(object? obj) => obj is GLFWwindow handle && Equals(handle);
     /// <inheritdoc/>
     public override int GetHashCode() => Handle.GetHashCode();
     private string DebuggerDisplay => string.Format("GLFWwindow [0x{0}]", Handle.ToString("X"));
