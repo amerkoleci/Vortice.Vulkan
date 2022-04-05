@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 210
+	/// VK_HEADER_VERSION = 211
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 210;
+	public const uint VK_HEADER_VERSION = 211;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -2919,6 +2919,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_EXT_MULTI_DRAW_EXTENSION_NAME = "VK_EXT_multi_draw";
 	/// <summary>
+	/// VK_EXT_image_2d_view_of_3d = 1
+	/// </summary>
+	public const uint VK_EXT_image_2d_view_of_3d = 1;
+	/// <summary>
+	/// VK_EXT_IMAGE_2D_VIEW_OF_3D_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_IMAGE_2D_VIEW_OF_3D_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_IMAGE_2D_VIEW_OF_3D_EXTENSION_NAME = "VK_EXT_image_2d_view_of_3d"
+	/// </summary>
+	public const string VK_EXT_IMAGE_2D_VIEW_OF_3D_EXTENSION_NAME = "VK_EXT_image_2d_view_of_3d";
+	/// <summary>
 	/// VK_EXT_load_store_op_none = 1
 	/// </summary>
 	public const uint VK_EXT_load_store_op_none = 1;
@@ -3127,9 +3139,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_KHR_video_decode_queue = 1;
 	/// <summary>
-	/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 3
+	/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 4
 	/// </summary>
-	public const uint VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 3;
+	public const uint VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 4;
 	/// <summary>
 	/// VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue"
 	/// </summary>
@@ -3151,9 +3163,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_KHR_video_encode_queue = 1;
 	/// <summary>
-	/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 4
+	/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 5
 	/// </summary>
-	public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 4;
+	public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 5;
 	/// <summary>
 	/// VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue"
 	/// </summary>
@@ -3315,9 +3327,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_encode";
 	/// <summary>
-	/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 6
+	/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 7
 	/// </summary>
-	public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 6;
+	public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 7;
 	/// <summary>
 	/// VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265"
 	/// </summary>
@@ -3351,9 +3363,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264_decode";
 	/// <summary>
-	/// VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 4
+	/// VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 5
 	/// </summary>
-	public const uint VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 4;
+	public const uint VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 5;
 	/// <summary>
 	/// VK_EXT_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_EXT_video_decode_h264"
 	/// </summary>
@@ -3383,9 +3395,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_decode";
 	/// <summary>
-	/// VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 2
+	/// VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 3
 	/// </summary>
-	public const uint VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 2;
+	public const uint VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 3;
 	/// <summary>
 	/// VK_EXT_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_EXT_video_decode_h265"
 	/// </summary>

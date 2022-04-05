@@ -20,7 +20,7 @@
     <Authors>Amer Koleci</Authors>
     <Product>Vortice.Vulkan</Product>
     <Company>Amer Koleci</Company>
-    <Copyright>Copyright © 2022 Amer Koleci and Contributors</Copyright>
+    <Copyright>Copyright © Amer Koleci and Contributors</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/amerkoleci/Vortice.Vulkan</PackageProjectUrl>

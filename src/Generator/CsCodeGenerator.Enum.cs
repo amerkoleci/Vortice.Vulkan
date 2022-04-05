@@ -8,142 +8,173 @@ namespace Generator;
 
 public static partial class CsCodeGenerator
 {
-    private static readonly Dictionary<string, string> s_knownEnumValueNames = new Dictionary<string, string>
-        {
-            {  "VK_STENCIL_FRONT_AND_BACK", "FrontAndBack" },
-            {  "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO", "MemoryAllocateFlagsInfo" },
+    private static readonly Dictionary<string, string> s_knownEnumValueNames = new()
+    {
+        // VkStructureType
+        { "VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK", "MacOSSurfaceCreateInfoMVK" },
+        { "VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD", "TextureLODGatherFormatPropertiesAMD" },
+        { "VK_STRUCTURE_TYPE_PRESENT_ID_KHR", "PresentIdKHR" },
+        { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES", "PhysicalDeviceTextureCompressionASTCHDRFeatures" },
+        { "VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR", "AndroidSurfaceCreateInfoKHR" },
+        { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT", "PhysicalDeviceRGBA10X6FormatsFeaturesEXT" },
+        { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_FEATURES_KHR", "PhysicalDevicePresentIdFeaturesKHR" },
+        { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES", "PhysicalDevice8BitStorageFeatures" },
+        { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES", "PhysicalDevice16BitStorageFeatures" },
+        //{ "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_RDMA_FEATURES_NV", "PhysicalDeviceExternalMemoryRDMAFeaturesNV" },
 
-            // VkSampleCountFlagBits
-            {  "VK_SAMPLE_COUNT_1_BIT", "Count1" },
-            {  "VK_SAMPLE_COUNT_2_BIT", "Count2" },
-            {  "VK_SAMPLE_COUNT_4_BIT", "Count4" },
-            {  "VK_SAMPLE_COUNT_8_BIT", "Count8" },
-            {  "VK_SAMPLE_COUNT_16_BIT", "Count16" },
-            {  "VK_SAMPLE_COUNT_32_BIT", "Count32" },
-            {  "VK_SAMPLE_COUNT_64_BIT", "Count64" },
+        {  "VK_STENCIL_FRONT_AND_BACK", "FrontAndBack" },
+        {  "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO", "MemoryAllocateFlagsInfo" },
 
-            // VkImageType
-            { "VK_IMAGE_TYPE_1D", "Image1D" },
-            { "VK_IMAGE_TYPE_2D", "Image2D" },
-            { "VK_IMAGE_TYPE_3D", "Image3D" },
+        // VkSampleCountFlagBits
+        {  "VK_SAMPLE_COUNT_1_BIT", "Count1" },
+        {  "VK_SAMPLE_COUNT_2_BIT", "Count2" },
+        {  "VK_SAMPLE_COUNT_4_BIT", "Count4" },
+        {  "VK_SAMPLE_COUNT_8_BIT", "Count8" },
+        {  "VK_SAMPLE_COUNT_16_BIT", "Count16" },
+        {  "VK_SAMPLE_COUNT_32_BIT", "Count32" },
+        {  "VK_SAMPLE_COUNT_64_BIT", "Count64" },
 
-            // VkImageViewType
-            { "VK_IMAGE_VIEW_TYPE_1D", "Image1D" },
-            { "VK_IMAGE_VIEW_TYPE_2D", "Image2D" },
-            { "VK_IMAGE_VIEW_TYPE_3D", "Image3D" },
-            { "VK_IMAGE_VIEW_TYPE_CUBE", "ImageCube" },
-            { "VK_IMAGE_VIEW_TYPE_1D_ARRAY", "Image1DArray" },
-            { "VK_IMAGE_VIEW_TYPE_2D_ARRAY", "Image2DArray" },
-            { "VK_IMAGE_VIEW_TYPE_CUBE_ARRAY", "ImageCubeArray" },
+        // VkImageType
+        { "VK_IMAGE_TYPE_1D", "Image1D" },
+        { "VK_IMAGE_TYPE_2D", "Image2D" },
+        { "VK_IMAGE_TYPE_3D", "Image3D" },
 
-            // VkColorSpaceKHR
-            { "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR", "SrgbNonLinearKHR" },
-            { "VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT", "DisplayP3NonLinearEXT" },
-            { "VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT", "DciP3NonLinearEXT" },
-            { "VK_COLOR_SPACE_BT709_NONLINEAR_EXT", "Bt709NonLinearEXT" },
-            { "VK_COLOR_SPACE_DOLBYVISION_EXT", "DolbyVisionEXT" },
-            { "VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT", "AdobeRgbLinearEXT" },
-            { "VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT", "AdobeRgbNonLinearEXT" },
-            { "VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT", "ExtendedSrgbNonLinearEXT" },
-            { "VK_COLORSPACE_SRGB_NONLINEAR_KHR", "SrgbNonLinearKHR" },
+        // VkImageViewType
+        { "VK_IMAGE_VIEW_TYPE_1D", "Image1D" },
+        { "VK_IMAGE_VIEW_TYPE_2D", "Image2D" },
+        { "VK_IMAGE_VIEW_TYPE_3D", "Image3D" },
+        { "VK_IMAGE_VIEW_TYPE_CUBE", "ImageCube" },
+        { "VK_IMAGE_VIEW_TYPE_1D_ARRAY", "Image1DArray" },
+        { "VK_IMAGE_VIEW_TYPE_2D_ARRAY", "Image2DArray" },
+        { "VK_IMAGE_VIEW_TYPE_CUBE_ARRAY", "ImageCubeArray" },
 
-            // VkShadingRatePaletteEntryNV
-            {  "VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV", "SixteenInvocationsPerPixel" },
-            {  "VK_SHADING_RATE_PALETTE_ENTRY_8_INVOCATIONS_PER_PIXEL_NV", "EightInvocationsPerPixel" },
-            {  "VK_SHADING_RATE_PALETTE_ENTRY_4_INVOCATIONS_PER_PIXEL_NV", "FourInvocationsPerPixel" },
-            {  "VK_SHADING_RATE_PALETTE_ENTRY_2_INVOCATIONS_PER_PIXEL_NV", "TwoInvocationsPerPixel" },
-            {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_PIXEL_NV", "OneInvocationPerPixel" },
-            {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X1_PIXELS_NV", "OneInvocationPer2x1Pixels" },
-            {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_1X2_PIXELS_NV", "OneInvocationPer1x2Pixels" },
-            {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X2_PIXELS_NV", "OneInvocationPer2x2Pixels" },
-            {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X2_PIXELS_NV", "OneInvocationPer4x2Pixels" },
-            {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X4_PIXELS_NV", "OneInvocationPer2x4Pixels" },
-            {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X4_PIXELS_NV", "OneInvocationPer4x4Pixels" },
+        // VkColorSpaceKHR
+        { "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR", "SrgbNonLinearKHR" },
+        { "VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT", "DisplayP3NonLinearEXT" },
+        { "VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT", "DciP3NonLinearEXT" },
+        { "VK_COLOR_SPACE_BT709_NONLINEAR_EXT", "Bt709NonLinearEXT" },
+        { "VK_COLOR_SPACE_DOLBYVISION_EXT", "DolbyVisionEXT" },
+        { "VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT", "AdobeRgbLinearEXT" },
+        { "VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT", "AdobeRgbNonLinearEXT" },
+        { "VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT", "ExtendedSrgbNonLinearEXT" },
+        { "VK_COLORSPACE_SRGB_NONLINEAR_KHR", "SrgbNonLinearKHR" },
 
-            // VkFragmentShadingRateNV
-            {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV", "OneInvocationPerPixel" },
-            {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV", "OneInvocationPer1x2Pixels" },
-            {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_NV", "OneInvocationPer2x1Pixels" },
-            {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X2_PIXELS_NV", "OneInvocationPer2x2Pixels" },
-            {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X4_PIXELS_NV", "OneInvocationPer2x4Pixels" },
-            {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X2_PIXELS_NV", "OneInvocationPer4x2Pixels" },
-            {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X4_PIXELS_NV", "OneInvocationPer4x4Pixels" },
-            {  "VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV", "TwoInvocationsPerPixel" },
-            {  "VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV", "FourInvocationsPerPixel" },
-            {  "VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV", "EightInvocationsPerPixel" },
-            {  "VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV", "SixteenInvocationsPerPixel" },
-            {  "VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV", "NoInvocations" },
+        // VkShadingRatePaletteEntryNV
+        {  "VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV", "SixteenInvocationsPerPixel" },
+        {  "VK_SHADING_RATE_PALETTE_ENTRY_8_INVOCATIONS_PER_PIXEL_NV", "EightInvocationsPerPixel" },
+        {  "VK_SHADING_RATE_PALETTE_ENTRY_4_INVOCATIONS_PER_PIXEL_NV", "FourInvocationsPerPixel" },
+        {  "VK_SHADING_RATE_PALETTE_ENTRY_2_INVOCATIONS_PER_PIXEL_NV", "TwoInvocationsPerPixel" },
+        {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_PIXEL_NV", "OneInvocationPerPixel" },
+        {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X1_PIXELS_NV", "OneInvocationPer2x1Pixels" },
+        {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_1X2_PIXELS_NV", "OneInvocationPer1x2Pixels" },
+        {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X2_PIXELS_NV", "OneInvocationPer2x2Pixels" },
+        {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X2_PIXELS_NV", "OneInvocationPer4x2Pixels" },
+        {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X4_PIXELS_NV", "OneInvocationPer2x4Pixels" },
+        {  "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X4_PIXELS_NV", "OneInvocationPer4x4Pixels" },
 
-            // VkDriverId
-            { "VK_DRIVER_ID_GOOGLE_SWIFTSHADER", "GoogleSwiftShader" },
-            { "VK_DRIVER_ID_GOOGLE_SWIFTSHADER_KHR", "GoogleSwiftShaderKHR" },
-            { "VK_DRIVER_ID_MESA_LLVMPIPE", "MesaLLVMPipe" },
+        // VkFragmentShadingRateNV
+        {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV", "OneInvocationPerPixel" },
+        {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV", "OneInvocationPer1x2Pixels" },
+        {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_NV", "OneInvocationPer2x1Pixels" },
+        {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X2_PIXELS_NV", "OneInvocationPer2x2Pixels" },
+        {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X4_PIXELS_NV", "OneInvocationPer2x4Pixels" },
+        {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X2_PIXELS_NV", "OneInvocationPer4x2Pixels" },
+        {  "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X4_PIXELS_NV", "OneInvocationPer4x4Pixels" },
+        {  "VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV", "TwoInvocationsPerPixel" },
+        {  "VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV", "FourInvocationsPerPixel" },
+        {  "VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV", "EightInvocationsPerPixel" },
+        {  "VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV", "SixteenInvocationsPerPixel" },
+        {  "VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV", "NoInvocations" },
 
-            // VkGeometryTypeNV
-            {  "VK_GEOMETRY_TYPE_TRIANGLES_NV", "Triangles" },
-            {  "VK_GEOMETRY_TYPE_AABBS_NVX", "AABBs" },
+        // VkDriverId
+        { "VK_DRIVER_ID_GOOGLE_SWIFTSHADER", "GoogleSwiftShader" },
+        { "VK_DRIVER_ID_GOOGLE_SWIFTSHADER_KHR", "GoogleSwiftShaderKHR" },
+        { "VK_DRIVER_ID_MESA_LLVMPIPE", "MesaLLVMPipe" },
 
-            // VkCopyAccelerationStructureModeNV
-            {  "VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV", "Clone" },
-            {  "VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV", "Compact" },
+        // VkGeometryTypeNV
+        {  "VK_GEOMETRY_TYPE_TRIANGLES_NV", "Triangles" },
+        {  "VK_GEOMETRY_TYPE_AABBS_NVX", "AABBs" },
 
-            // VkAccelerationStructureTypeNV
-            {  "VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV", "TopLevel" },
-            {  "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV", "BottomLevel" },
+        // VkCopyAccelerationStructureModeNV
+        {  "VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV", "Clone" },
+        {  "VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV", "Compact" },
 
-            // VkAccelerationStructureMemoryRequirementsTypeNV
-            {  "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV", "Object" },
-            {  "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV", "BuildScratch" },
-            {  "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV", "UpdateScratch" },
+        // VkAccelerationStructureTypeNV
+        {  "VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV", "TopLevel" },
+        {  "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV", "BottomLevel" },
 
-            // VkRayTracingShaderGroupTypeNV
-            { "VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV", "General" },
-            { "VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV", "TrianglesHitGroup" },
-            { "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV", "ProceduralHitGroup" },
+        // VkAccelerationStructureMemoryRequirementsTypeNV
+        {  "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV", "Object" },
+        {  "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV", "BuildScratch" },
+        {  "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV", "UpdateScratch" },
 
-            // VkPerformanceCounterScopeKHR
-            { "VK_QUERY_SCOPE_COMMAND_BUFFER_KHR", "QueryScopeCommandBufferKHR" },
-            { "VK_QUERY_SCOPE_RENDER_PASS_KHR", "QueryScopeRenderPassKHR" },
-            { "VK_QUERY_SCOPE_COMMAND_KHR", "QueryScopeCommandKHR" },
+        // VkRayTracingShaderGroupTypeNV
+        { "VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV", "General" },
+        { "VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV", "TrianglesHitGroup" },
+        { "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV", "ProceduralHitGroup" },
 
-            // VkPerformanceConfigurationTypeINTEL
-            { "VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL", "CommandQueueMetricsDiscoveryActivatedIntel" },
+        // VkPerformanceCounterScopeKHR
+        { "VK_QUERY_SCOPE_COMMAND_BUFFER_KHR", "QueryScopeCommandBufferKHR" },
+        { "VK_QUERY_SCOPE_RENDER_PASS_KHR", "QueryScopeRenderPassKHR" },
+        { "VK_QUERY_SCOPE_COMMAND_KHR", "QueryScopeCommandKHR" },
 
-            // VkPipelineCreateFlags
-            { "VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR", "RasterizationStateCreateFragmentShadingRateAttachmentKHR" },
-            { "VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT", "RasterizationStateCreateFragmentDensityMapAttachmentKHR" },
-        };
-    private static readonly Dictionary<string, string> s_knownEnumPrefixes = new Dictionary<string, string>
-        {
-            { "VkResult", "VK" },
-            { "VkViewportCoordinateSwizzleNV", "VK_VIEWPORT_COORDINATE_SWIZZLE" },
-            { "VkCoverageModulationModeNV", "VK_COVERAGE_MODULATION_MODE" },
-            { "VkShadingRatePaletteEntryNV", "VK_SHADING_RATE_PALETTE_ENTRY" },
-            { "VkCoarseSampleOrderTypeNV", "VK_COARSE_SAMPLE_ORDER_TYPE" },
-            { "VkCopyAccelerationStructureModeNVX", "VK_COPY_ACCELERATION_STRUCTURE_MODE" },
-        };
+        // VkPerformanceConfigurationTypeINTEL
+        { "VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL", "CommandQueueMetricsDiscoveryActivatedIntel" },
 
-    private static readonly HashSet<string> s_ignoredParts = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-        {
-            "flags",
-            "bit",
-            //"nv",
-        };
+        // VkPipelineCreateFlags
+        { "VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR", "RasterizationStateCreateFragmentShadingRateAttachmentKHR" },
+        { "VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT", "RasterizationStateCreateFragmentDensityMapAttachmentKHR" },
+    };
+
+    private static readonly Dictionary<string, string> s_knownEnumPrefixes = new()
+    {
+        { "VkResult", "VK" },
+        { "VkViewportCoordinateSwizzleNV", "VK_VIEWPORT_COORDINATE_SWIZZLE" },
+        { "VkCoverageModulationModeNV", "VK_COVERAGE_MODULATION_MODE" },
+        { "VkShadingRatePaletteEntryNV", "VK_SHADING_RATE_PALETTE_ENTRY" },
+        { "VkCoarseSampleOrderTypeNV", "VK_COARSE_SAMPLE_ORDER_TYPE" },
+        { "VkCopyAccelerationStructureModeNVX", "VK_COPY_ACCELERATION_STRUCTURE_MODE" },
+    };
+
+    private static readonly HashSet<string> s_ignoredParts = new(StringComparer.OrdinalIgnoreCase)
+    {
+        //"flags",
+        "bit",
+        //"nv",
+    };
 
 
-    private static readonly HashSet<string> s_preserveCaps = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-        {
-            "khr",
-            "khx",
-            "ext",
-            "nv",
-            "nvx",
-            "nvidia",
-            "amd",
-            "intel",
-            "arm",
-            "mvk",
-        };
+    private static readonly HashSet<string> s_preserveCaps = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "khr",
+        "khx",
+        "ext",
+        "nv",
+        "nvx",
+        "nvidia",
+        "amd",
+        "intel",
+        "arm",
+        "mvk",
+        "nn",
+        //"android",
+        "google",
+        "fuchsia",
+        "huawei",
+        "valve",
+        "qcom",
+        "macos",
+        "ios",
+        "id",
+        "pci",
+        "bit",
+        "astc",
+        "aabb",
+        "sm",
+        "rdma",
+        "2d",
+        "3d",
+    };
 
     public static void GenerateEnums(CppCompilation compilation, string outputPath)
     {
@@ -161,6 +192,7 @@ public static partial class CsCodeGenerator
                 cppEnum.Name.EndsWith("FlagBitsAMD") ||
                 cppEnum.Name.EndsWith("FlagBitsMVK") ||
                 cppEnum.Name.EndsWith("FlagBitsNN");
+
             if (isBitmask)
             {
                 writer.WriteLine("[Flags]");
@@ -190,6 +222,18 @@ public static partial class CsCodeGenerator
             else if (csName.EndsWith("KHR"))
             {
                 extensionPrefix = "KHR";
+            }
+            else if (csName.EndsWith("NN"))
+            {
+                extensionPrefix = "NN";
+            }
+            else if (csName.EndsWith("GGP"))
+            {
+                extensionPrefix = "GGP";
+            }
+            else if (csName.EndsWith("ANDROID"))
+            {
+                extensionPrefix = "ANDROID";
             }
 
             createdEnums.Add(csName, cppEnum.Name);
@@ -227,7 +271,7 @@ public static partial class CsCodeGenerator
                         enumItem.Name.EndsWith("_MAX_ENUM_NV") ||
                         enumItem.Name.EndsWith("_MAX_ENUM_AMD") ||
                         enumItem.Name.EndsWith("_MAX_ENUM_INTEL") ||
-                        enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
+                        //enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
                         enumItem.Name == "VK_STENCIL_FRONT_AND_BACK" ||
                         enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE")
                     {

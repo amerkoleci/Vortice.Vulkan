@@ -15,7 +15,8 @@ public static partial class CsCodeGenerator
         // Generate Structures
         using var writer = new CodeWriter(Path.Combine(outputPath, "Structures.cs"),
             "System",
-            "System.Runtime.InteropServices"
+            "System.Runtime.InteropServices",
+            "System.Runtime.CompilerServices"
             );
 
         // Print All classes, structs
@@ -40,9 +41,10 @@ public static partial class CsCodeGenerator
             }
 
             bool isUnion = cppClass.ClassKind == CppClassKind.Union;
-            if (cppClass.Name == "VkAllocationCallbacks")
+            bool hasSType = false;
+            if (cppClass.Fields.FirstOrDefault(item => item.Name == "sType") != null)
             {
-
+                hasSType = true;
             }
 
             string csName = cppClass.Name;
@@ -63,6 +65,14 @@ public static partial class CsCodeGenerator
                 isReadOnly = true;
             }
 
+            bool handleSType = false;
+            if (hasSType &&
+                csName != "VkBaseInStructure" &&
+                csName != "VkBaseOutStructure")
+            {
+                handleSType = true;
+            }
+
             using (writer.PushBlock($"public {modifier} struct {csName}"))
             {
                 if (generateSizeOfStructs && cppClass.SizeOf > 0)
@@ -76,7 +86,31 @@ public static partial class CsCodeGenerator
 
                 foreach (CppField cppField in cppClass.Fields)
                 {
-                    WriteField(writer, cppField, isUnion, isReadOnly);
+                    WriteField(writer, cppField, handleSType, isUnion, isReadOnly);
+                }
+
+                if (handleSType)
+                {
+                    string structureTypeValue = csName;
+                    if (structureTypeValue.StartsWith("Vk"))
+                    {
+                        structureTypeValue = structureTypeValue.Substring(2);
+                    }
+                    if (structureTypeValue.EndsWith("ANDROID"))
+                    {
+                        structureTypeValue = structureTypeValue.Replace("ANDROID", "Android");
+                    }
+
+                    using (writer.PushBlock($"public {csName}()"))
+                    {
+                        writer.WriteLine("#if NET6_0_OR_GREATER");
+                        writer.WriteLine("Unsafe.SkipInit(out this);");
+                        writer.WriteLine($"sType = VkStructureType.{structureTypeValue};");
+                        writer.WriteLine("#else");
+                        writer.WriteLine("this = default;");
+                        writer.WriteLine($"sType = VkStructureType.{structureTypeValue};");
+                        writer.WriteLine("#endif");
+                    }
                 }
             }
 
@@ -84,7 +118,7 @@ public static partial class CsCodeGenerator
         }
     }
 
-    private static void WriteField(CodeWriter writer, CppField field, bool isUnion = false, bool isReadOnly = false)
+    private static void WriteField(CodeWriter writer, CppField field, bool handleSType, bool isUnion = false, bool isReadOnly = false)
     {
         string csFieldName = NormalizeFieldName(field.Name);
 
@@ -150,7 +184,7 @@ public static partial class CsCodeGenerator
 
                 builder.Append(returnCsName);
 
-                writer.WriteLine("#if NET5_0_OR_GREATER");
+                writer.WriteLine("#if NET6_0_OR_GREATER");
                 writer.WriteLine($"public unsafe delegate* unmanaged<{builder}> {csFieldName};");
                 writer.WriteLine("#else");
                 writer.WriteLine($"public IntPtr {csFieldName};");

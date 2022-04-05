@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/amerkoleci/Vortice.Vulkan/blob/master/LICENSE)
 [![Build status](https://github.com/amerkoleci/Vortice.Vulkan/workflows/Build/badge.svg)](https://github.com/amerkoleci/Vortice.Vulkan/actions)
-[![Vulkan](https://img.shields.io/badge/vulkan-1.3.210-brightgreen.svg)](https://www.khronos.org/vulkan/)
+[![Vulkan](https://img.shields.io/badge/vulkan-1.3.211-brightgreen.svg)](https://www.khronos.org/vulkan/)
 [![NuGet](https://img.shields.io/nuget/v/Vortice.Vulkan.svg)](https://www.nuget.org/packages/Vortice.Vulkan)
 
 **Vortice.Vulkan** is a .NET Standard 2.0 and .NET 6.0 low-level bindings for [Vulkan](https://www.khronos.org/vulkan/) API. 
@@ -22,6 +22,7 @@ Other similar projects:
 
 - [vk](https://github.com/mellinoe/vk)
 - [VulkanCore](https://github.com/discosultan/VulkanCore)
+- [Silk.NET](https://github.com/dotnet/Silk.NET)
 
 Projects using Vortice.Vulkan:
 

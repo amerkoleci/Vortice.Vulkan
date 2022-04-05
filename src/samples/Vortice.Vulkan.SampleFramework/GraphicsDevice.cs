@@ -35,7 +35,6 @@ public unsafe sealed class GraphicsDevice : IDisposable
         VkString name = applicationName;
         var appInfo = new VkApplicationInfo
         {
-            sType = VkStructureType.ApplicationInfo,
             pApplicationName = name,
             applicationVersion = new VkVersion(1, 0, 0),
             pEngineName = s_EngineName,
@@ -61,13 +60,12 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
         var instanceCreateInfo = new VkInstanceCreateInfo
         {
-            sType = VkStructureType.InstanceCreateInfo,
             pApplicationInfo = &appInfo,
             enabledExtensionCount = vkInstanceExtensions.Length,
             ppEnabledExtensionNames = vkInstanceExtensions
         };
 
-        using var vkLayerNames = new VkStringArray(instanceLayers);
+        using VkStringArray vkLayerNames = new(instanceLayers);
         if (instanceLayers.Count > 0)
         {
             instanceCreateInfo.enabledLayerCount = vkLayerNames.Length;
@@ -179,7 +177,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             if (CheckDeviceExtensionSupport(VK_KHR_8BIT_STORAGE_EXTENSION_NAME, availableDeviceExtensions))
             {
                 enabledExtensions.Add(VK_KHR_8BIT_STORAGE_EXTENSION_NAME);
-                storage_8bit_features.sType = VkStructureType.PhysicalDevice8bitStorageFeatures;
+                //storage_8bit_features.sType = VkStructureType.PhysicalDevice8bitStorageFeatures;
                 *features_chain = &storage_8bit_features;
                 features_chain = &storage_8bit_features.pNext;
             }
@@ -222,9 +220,8 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
         using var deviceExtensionNames = new VkStringArray(enabledExtensions);
 
-        var deviceCreateInfo = new VkDeviceCreateInfo
+        VkDeviceCreateInfo deviceCreateInfo = new()
         {
-            sType = VkStructureType.DeviceCreateInfo,
             pNext = &deviceFeatures2,
             queueCreateInfoCount = 1,
             pQueueCreateInfos = &queueCreateInfo,
