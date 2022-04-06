@@ -78,13 +78,8 @@ public partial struct VkBufferMemoryBarrier
 	public ulong size;
 	public VkBufferMemoryBarrier()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BufferMemoryBarrier;
-		#else
-		this = default;
-		sType = VkStructureType.BufferMemoryBarrier;
-		#endif
 	}
 }
 
@@ -140,13 +135,8 @@ public partial struct VkImageMemoryBarrier
 	public VkImageSubresourceRange subresourceRange;
 	public VkImageMemoryBarrier()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageMemoryBarrier;
-		#else
-		this = default;
-		sType = VkStructureType.ImageMemoryBarrier;
-		#endif
 	}
 }
 
@@ -159,13 +149,8 @@ public partial struct VkMemoryBarrier
 	public VkAccessFlags dstAccessMask;
 	public VkMemoryBarrier()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryBarrier;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryBarrier;
-		#endif
 	}
 }
 
@@ -222,13 +207,8 @@ public partial struct VkApplicationInfo
 	public VkVersion apiVersion;
 	public VkApplicationInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ApplicationInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ApplicationInfo;
-		#endif
 	}
 }
 
@@ -263,13 +243,8 @@ public partial struct VkInstanceCreateInfo
 	public unsafe byte** ppEnabledExtensionNames;
 	public VkInstanceCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.InstanceCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.InstanceCreateInfo;
-		#endif
 	}
 }
 
@@ -557,13 +532,8 @@ public partial struct VkDeviceQueueCreateInfo
 	public unsafe float* pQueuePriorities;
 	public VkDeviceQueueCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceQueueCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceQueueCreateInfo;
-		#endif
 	}
 }
 
@@ -582,13 +552,8 @@ public partial struct VkDeviceCreateInfo
 	public unsafe VkPhysicalDeviceFeatures* pEnabledFeatures;
 	public VkDeviceCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceCreateInfo;
-		#endif
 	}
 }
 
@@ -622,13 +587,8 @@ public partial struct VkSubmitInfo
 	public unsafe VkSemaphore* pSignalSemaphores;
 	public VkSubmitInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SubmitInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SubmitInfo;
-		#endif
 	}
 }
 
@@ -642,13 +602,8 @@ public partial struct VkMappedMemoryRange
 	public ulong size;
 	public VkMappedMemoryRange()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MappedMemoryRange;
-		#else
-		this = default;
-		sType = VkStructureType.MappedMemoryRange;
-		#endif
 	}
 }
 
@@ -661,13 +616,8 @@ public partial struct VkMemoryAllocateInfo
 	public uint memoryTypeIndex;
 	public VkMemoryAllocateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryAllocateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryAllocateInfo;
-		#endif
 	}
 }
 
@@ -749,13 +699,8 @@ public partial struct VkBindSparseInfo
 	public unsafe VkSemaphore* pSignalSemaphores;
 	public VkBindSparseInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BindSparseInfo;
-		#else
-		this = default;
-		sType = VkStructureType.BindSparseInfo;
-		#endif
 	}
 }
 
@@ -785,13 +730,8 @@ public partial struct VkFenceCreateInfo
 	public VkFenceCreateFlags flags;
 	public VkFenceCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.FenceCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.FenceCreateInfo;
-		#endif
 	}
 }
 
@@ -803,13 +743,8 @@ public partial struct VkSemaphoreCreateInfo
 	public VkSemaphoreCreateFlags flags;
 	public VkSemaphoreCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SemaphoreCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SemaphoreCreateInfo;
-		#endif
 	}
 }
 
@@ -821,13 +756,8 @@ public partial struct VkEventCreateInfo
 	public VkEventCreateFlags flags;
 	public VkEventCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.EventCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.EventCreateInfo;
-		#endif
 	}
 }
 
@@ -842,13 +772,8 @@ public partial struct VkQueryPoolCreateInfo
 	public VkQueryPipelineStatisticFlags pipelineStatistics;
 	public VkQueryPoolCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.QueryPoolCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.QueryPoolCreateInfo;
-		#endif
 	}
 }
 
@@ -865,13 +790,8 @@ public partial struct VkBufferCreateInfo
 	public unsafe uint* pQueueFamilyIndices;
 	public VkBufferCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BufferCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.BufferCreateInfo;
-		#endif
 	}
 }
 
@@ -887,13 +807,8 @@ public partial struct VkBufferViewCreateInfo
 	public ulong range;
 	public VkBufferViewCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BufferViewCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.BufferViewCreateInfo;
-		#endif
 	}
 }
 
@@ -917,13 +832,8 @@ public partial struct VkImageCreateInfo
 	public VkImageLayout initialLayout;
 	public VkImageCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ImageCreateInfo;
-		#endif
 	}
 }
 
@@ -959,13 +869,8 @@ public partial struct VkImageViewCreateInfo
 	public VkImageSubresourceRange subresourceRange;
 	public VkImageViewCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageViewCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ImageViewCreateInfo;
-		#endif
 	}
 }
 
@@ -979,13 +884,8 @@ public partial struct VkShaderModuleCreateInfo
 	public unsafe uint* pCode;
 	public VkShaderModuleCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ShaderModuleCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ShaderModuleCreateInfo;
-		#endif
 	}
 }
 
@@ -999,13 +899,8 @@ public partial struct VkPipelineCacheCreateInfo
 	public unsafe void* pInitialData;
 	public VkPipelineCacheCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineCacheCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineCacheCreateInfo;
-		#endif
 	}
 }
 
@@ -1038,13 +933,8 @@ public partial struct VkPipelineShaderStageCreateInfo
 	public unsafe VkSpecializationInfo* pSpecializationInfo;
 	public VkPipelineShaderStageCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineShaderStageCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineShaderStageCreateInfo;
-		#endif
 	}
 }
 
@@ -1060,13 +950,8 @@ public partial struct VkComputePipelineCreateInfo
 	public int basePipelineIndex;
 	public VkComputePipelineCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ComputePipelineCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ComputePipelineCreateInfo;
-		#endif
 	}
 }
 
@@ -1099,13 +984,8 @@ public partial struct VkPipelineVertexInputStateCreateInfo
 	public unsafe VkVertexInputAttributeDescription* pVertexAttributeDescriptions;
 	public VkPipelineVertexInputStateCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineVertexInputStateCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineVertexInputStateCreateInfo;
-		#endif
 	}
 }
 
@@ -1119,13 +999,8 @@ public partial struct VkPipelineInputAssemblyStateCreateInfo
 	public VkBool32 primitiveRestartEnable;
 	public VkPipelineInputAssemblyStateCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineInputAssemblyStateCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineInputAssemblyStateCreateInfo;
-		#endif
 	}
 }
 
@@ -1138,13 +1013,8 @@ public partial struct VkPipelineTessellationStateCreateInfo
 	public uint patchControlPoints;
 	public VkPipelineTessellationStateCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineTessellationStateCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineTessellationStateCreateInfo;
-		#endif
 	}
 }
 
@@ -1171,13 +1041,8 @@ public partial struct VkPipelineViewportStateCreateInfo
 	public unsafe VkRect2D* pScissors;
 	public VkPipelineViewportStateCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineViewportStateCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineViewportStateCreateInfo;
-		#endif
 	}
 }
 
@@ -1199,13 +1064,8 @@ public partial struct VkPipelineRasterizationStateCreateInfo
 	public float lineWidth;
 	public VkPipelineRasterizationStateCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineRasterizationStateCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineRasterizationStateCreateInfo;
-		#endif
 	}
 }
 
@@ -1223,13 +1083,8 @@ public partial struct VkPipelineMultisampleStateCreateInfo
 	public VkBool32 alphaToOneEnable;
 	public VkPipelineMultisampleStateCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineMultisampleStateCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineMultisampleStateCreateInfo;
-		#endif
 	}
 }
 
@@ -1262,13 +1117,8 @@ public partial struct VkPipelineDepthStencilStateCreateInfo
 	public float maxDepthBounds;
 	public VkPipelineDepthStencilStateCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
-		#endif
 	}
 }
 
@@ -1298,13 +1148,8 @@ public partial struct VkPipelineColorBlendStateCreateInfo
 	public unsafe fixed float blendConstants[4];
 	public VkPipelineColorBlendStateCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineColorBlendStateCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineColorBlendStateCreateInfo;
-		#endif
 	}
 }
 
@@ -1318,13 +1163,8 @@ public partial struct VkPipelineDynamicStateCreateInfo
 	public unsafe VkDynamicState* pDynamicStates;
 	public VkPipelineDynamicStateCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineDynamicStateCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineDynamicStateCreateInfo;
-		#endif
 	}
 }
 
@@ -1352,13 +1192,8 @@ public partial struct VkGraphicsPipelineCreateInfo
 	public int basePipelineIndex;
 	public VkGraphicsPipelineCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.GraphicsPipelineCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.GraphicsPipelineCreateInfo;
-		#endif
 	}
 }
 
@@ -1382,13 +1217,8 @@ public partial struct VkPipelineLayoutCreateInfo
 	public unsafe VkPushConstantRange* pPushConstantRanges;
 	public VkPipelineLayoutCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineLayoutCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineLayoutCreateInfo;
-		#endif
 	}
 }
 
@@ -1415,13 +1245,8 @@ public partial struct VkSamplerCreateInfo
 	public VkBool32 unnormalizedCoordinates;
 	public VkSamplerCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SamplerCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SamplerCreateInfo;
-		#endif
 	}
 }
 
@@ -1439,13 +1264,8 @@ public partial struct VkCopyDescriptorSet
 	public uint descriptorCount;
 	public VkCopyDescriptorSet()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CopyDescriptorSet;
-		#else
-		this = default;
-		sType = VkStructureType.CopyDescriptorSet;
-		#endif
 	}
 }
 
@@ -1483,13 +1303,8 @@ public partial struct VkDescriptorPoolCreateInfo
 	public unsafe VkDescriptorPoolSize* pPoolSizes;
 	public VkDescriptorPoolCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DescriptorPoolCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DescriptorPoolCreateInfo;
-		#endif
 	}
 }
 
@@ -1503,13 +1318,8 @@ public partial struct VkDescriptorSetAllocateInfo
 	public unsafe VkDescriptorSetLayout* pSetLayouts;
 	public VkDescriptorSetAllocateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DescriptorSetAllocateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DescriptorSetAllocateInfo;
-		#endif
 	}
 }
 
@@ -1533,13 +1343,8 @@ public partial struct VkDescriptorSetLayoutCreateInfo
 	public unsafe VkDescriptorSetLayoutBinding* pBindings;
 	public VkDescriptorSetLayoutCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DescriptorSetLayoutCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DescriptorSetLayoutCreateInfo;
-		#endif
 	}
 }
 
@@ -1558,13 +1363,8 @@ public partial struct VkWriteDescriptorSet
 	public unsafe VkBufferView* pTexelBufferView;
 	public VkWriteDescriptorSet()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.WriteDescriptorSet;
-		#else
-		this = default;
-		sType = VkStructureType.WriteDescriptorSet;
-		#endif
 	}
 }
 
@@ -1603,13 +1403,8 @@ public partial struct VkFramebufferCreateInfo
 	public uint layers;
 	public VkFramebufferCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.FramebufferCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.FramebufferCreateInfo;
-		#endif
 	}
 }
 
@@ -1654,13 +1449,8 @@ public partial struct VkRenderPassCreateInfo
 	public unsafe VkSubpassDependency* pDependencies;
 	public VkRenderPassCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderPassCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.RenderPassCreateInfo;
-		#endif
 	}
 }
 
@@ -1673,13 +1463,8 @@ public partial struct VkCommandPoolCreateInfo
 	public uint queueFamilyIndex;
 	public VkCommandPoolCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CommandPoolCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.CommandPoolCreateInfo;
-		#endif
 	}
 }
 
@@ -1693,13 +1478,8 @@ public partial struct VkCommandBufferAllocateInfo
 	public uint commandBufferCount;
 	public VkCommandBufferAllocateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CommandBufferAllocateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.CommandBufferAllocateInfo;
-		#endif
 	}
 }
 
@@ -1716,13 +1496,8 @@ public partial struct VkCommandBufferInheritanceInfo
 	public VkQueryPipelineStatisticFlags pipelineStatistics;
 	public VkCommandBufferInheritanceInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CommandBufferInheritanceInfo;
-		#else
-		this = default;
-		sType = VkStructureType.CommandBufferInheritanceInfo;
-		#endif
 	}
 }
 
@@ -1735,13 +1510,8 @@ public partial struct VkCommandBufferBeginInfo
 	public unsafe VkCommandBufferInheritanceInfo* pInheritanceInfo;
 	public VkCommandBufferBeginInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CommandBufferBeginInfo;
-		#else
-		this = default;
-		sType = VkStructureType.CommandBufferBeginInfo;
-		#endif
 	}
 }
 
@@ -1848,13 +1618,8 @@ public partial struct VkRenderPassBeginInfo
 	public unsafe VkClearValue* pClearValues;
 	public VkRenderPassBeginInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderPassBeginInfo;
-		#else
-		this = default;
-		sType = VkStructureType.RenderPassBeginInfo;
-		#endif
 	}
 }
 
@@ -1869,13 +1634,8 @@ public partial struct VkPhysicalDeviceSubgroupProperties
 	public VkBool32 quadOperationsInAllStages;
 	public VkPhysicalDeviceSubgroupProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSubgroupProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSubgroupProperties;
-		#endif
 	}
 }
 
@@ -1889,13 +1649,8 @@ public partial struct VkBindBufferMemoryInfo
 	public ulong memoryOffset;
 	public VkBindBufferMemoryInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BindBufferMemoryInfo;
-		#else
-		this = default;
-		sType = VkStructureType.BindBufferMemoryInfo;
-		#endif
 	}
 }
 
@@ -1909,13 +1664,8 @@ public partial struct VkBindImageMemoryInfo
 	public ulong memoryOffset;
 	public VkBindImageMemoryInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BindImageMemoryInfo;
-		#else
-		this = default;
-		sType = VkStructureType.BindImageMemoryInfo;
-		#endif
 	}
 }
 
@@ -1930,13 +1680,8 @@ public partial struct VkPhysicalDevice16BitStorageFeatures
 	public VkBool32 storageInputOutput16;
 	public VkPhysicalDevice16BitStorageFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevice16BitStorageFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevice16BitStorageFeatures;
-		#endif
 	}
 }
 
@@ -1949,13 +1694,8 @@ public partial struct VkMemoryDedicatedRequirements
 	public VkBool32 requiresDedicatedAllocation;
 	public VkMemoryDedicatedRequirements()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryDedicatedRequirements;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryDedicatedRequirements;
-		#endif
 	}
 }
 
@@ -1968,13 +1708,8 @@ public partial struct VkMemoryDedicatedAllocateInfo
 	public VkBuffer buffer;
 	public VkMemoryDedicatedAllocateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryDedicatedAllocateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryDedicatedAllocateInfo;
-		#endif
 	}
 }
 
@@ -1987,13 +1722,8 @@ public partial struct VkMemoryAllocateFlagsInfo
 	public uint deviceMask;
 	public VkMemoryAllocateFlagsInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryAllocateFlagsInfo;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryAllocateFlagsInfo;
-		#endif
 	}
 }
 
@@ -2007,13 +1737,8 @@ public partial struct VkDeviceGroupRenderPassBeginInfo
 	public unsafe VkRect2D* pDeviceRenderAreas;
 	public VkDeviceGroupRenderPassBeginInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceGroupRenderPassBeginInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceGroupRenderPassBeginInfo;
-		#endif
 	}
 }
 
@@ -2025,13 +1750,8 @@ public partial struct VkDeviceGroupCommandBufferBeginInfo
 	public uint deviceMask;
 	public VkDeviceGroupCommandBufferBeginInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceGroupCommandBufferBeginInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceGroupCommandBufferBeginInfo;
-		#endif
 	}
 }
 
@@ -2048,13 +1768,8 @@ public partial struct VkDeviceGroupSubmitInfo
 	public unsafe uint* pSignalSemaphoreDeviceIndices;
 	public VkDeviceGroupSubmitInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceGroupSubmitInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceGroupSubmitInfo;
-		#endif
 	}
 }
 
@@ -2067,13 +1782,8 @@ public partial struct VkDeviceGroupBindSparseInfo
 	public uint memoryDeviceIndex;
 	public VkDeviceGroupBindSparseInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceGroupBindSparseInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceGroupBindSparseInfo;
-		#endif
 	}
 }
 
@@ -2086,13 +1796,8 @@ public partial struct VkBindBufferMemoryDeviceGroupInfo
 	public unsafe uint* pDeviceIndices;
 	public VkBindBufferMemoryDeviceGroupInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BindBufferMemoryDeviceGroupInfo;
-		#else
-		this = default;
-		sType = VkStructureType.BindBufferMemoryDeviceGroupInfo;
-		#endif
 	}
 }
 
@@ -2107,13 +1812,8 @@ public partial struct VkBindImageMemoryDeviceGroupInfo
 	public unsafe VkRect2D* pSplitInstanceBindRegions;
 	public VkBindImageMemoryDeviceGroupInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BindImageMemoryDeviceGroupInfo;
-		#else
-		this = default;
-		sType = VkStructureType.BindImageMemoryDeviceGroupInfo;
-		#endif
 	}
 }
 
@@ -2158,13 +1858,8 @@ public partial struct VkPhysicalDeviceGroupProperties
 	public VkBool32 subsetAllocation;
 	public VkPhysicalDeviceGroupProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceGroupProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceGroupProperties;
-		#endif
 	}
 }
 
@@ -2177,13 +1872,8 @@ public partial struct VkDeviceGroupDeviceCreateInfo
 	public unsafe VkPhysicalDevice* pPhysicalDevices;
 	public VkDeviceGroupDeviceCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceGroupDeviceCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceGroupDeviceCreateInfo;
-		#endif
 	}
 }
 
@@ -2195,13 +1885,8 @@ public partial struct VkBufferMemoryRequirementsInfo2
 	public VkBuffer buffer;
 	public VkBufferMemoryRequirementsInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BufferMemoryRequirementsInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.BufferMemoryRequirementsInfo2;
-		#endif
 	}
 }
 
@@ -2213,13 +1898,8 @@ public partial struct VkImageMemoryRequirementsInfo2
 	public VkImage image;
 	public VkImageMemoryRequirementsInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageMemoryRequirementsInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.ImageMemoryRequirementsInfo2;
-		#endif
 	}
 }
 
@@ -2231,13 +1911,8 @@ public partial struct VkImageSparseMemoryRequirementsInfo2
 	public VkImage image;
 	public VkImageSparseMemoryRequirementsInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageSparseMemoryRequirementsInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.ImageSparseMemoryRequirementsInfo2;
-		#endif
 	}
 }
 
@@ -2249,13 +1924,8 @@ public partial struct VkMemoryRequirements2
 	public VkMemoryRequirements memoryRequirements;
 	public VkMemoryRequirements2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryRequirements2;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryRequirements2;
-		#endif
 	}
 }
 
@@ -2267,13 +1937,8 @@ public partial struct VkSparseImageMemoryRequirements2
 	public VkSparseImageMemoryRequirements memoryRequirements;
 	public VkSparseImageMemoryRequirements2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SparseImageMemoryRequirements2;
-		#else
-		this = default;
-		sType = VkStructureType.SparseImageMemoryRequirements2;
-		#endif
 	}
 }
 
@@ -2285,13 +1950,8 @@ public partial struct VkPhysicalDeviceFeatures2
 	public VkPhysicalDeviceFeatures features;
 	public VkPhysicalDeviceFeatures2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFeatures2;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFeatures2;
-		#endif
 	}
 }
 
@@ -2303,13 +1963,8 @@ public partial struct VkPhysicalDeviceProperties2
 	public VkPhysicalDeviceProperties properties;
 	public VkPhysicalDeviceProperties2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceProperties2;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceProperties2;
-		#endif
 	}
 }
 
@@ -2321,13 +1976,8 @@ public partial struct VkFormatProperties2
 	public VkFormatProperties formatProperties;
 	public VkFormatProperties2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.FormatProperties2;
-		#else
-		this = default;
-		sType = VkStructureType.FormatProperties2;
-		#endif
 	}
 }
 
@@ -2339,13 +1989,8 @@ public partial struct VkImageFormatProperties2
 	public VkImageFormatProperties imageFormatProperties;
 	public VkImageFormatProperties2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageFormatProperties2;
-		#else
-		this = default;
-		sType = VkStructureType.ImageFormatProperties2;
-		#endif
 	}
 }
 
@@ -2361,13 +2006,8 @@ public partial struct VkPhysicalDeviceImageFormatInfo2
 	public VkImageCreateFlags flags;
 	public VkPhysicalDeviceImageFormatInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceImageFormatInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceImageFormatInfo2;
-		#endif
 	}
 }
 
@@ -2379,13 +2019,8 @@ public partial struct VkQueueFamilyProperties2
 	public VkQueueFamilyProperties queueFamilyProperties;
 	public VkQueueFamilyProperties2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.QueueFamilyProperties2;
-		#else
-		this = default;
-		sType = VkStructureType.QueueFamilyProperties2;
-		#endif
 	}
 }
 
@@ -2397,13 +2032,8 @@ public partial struct VkPhysicalDeviceMemoryProperties2
 	public VkPhysicalDeviceMemoryProperties memoryProperties;
 	public VkPhysicalDeviceMemoryProperties2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMemoryProperties2;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMemoryProperties2;
-		#endif
 	}
 }
 
@@ -2415,13 +2045,8 @@ public partial struct VkSparseImageFormatProperties2
 	public VkSparseImageFormatProperties properties;
 	public VkSparseImageFormatProperties2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SparseImageFormatProperties2;
-		#else
-		this = default;
-		sType = VkStructureType.SparseImageFormatProperties2;
-		#endif
 	}
 }
 
@@ -2437,13 +2062,8 @@ public partial struct VkPhysicalDeviceSparseImageFormatInfo2
 	public VkImageTiling tiling;
 	public VkPhysicalDeviceSparseImageFormatInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSparseImageFormatInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSparseImageFormatInfo2;
-		#endif
 	}
 }
 
@@ -2455,13 +2075,8 @@ public partial struct VkPhysicalDevicePointClippingProperties
 	public VkPointClippingBehavior pointClippingBehavior;
 	public VkPhysicalDevicePointClippingProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePointClippingProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePointClippingProperties;
-		#endif
 	}
 }
 
@@ -2482,13 +2097,8 @@ public partial struct VkRenderPassInputAttachmentAspectCreateInfo
 	public unsafe VkInputAttachmentAspectReference* pAspectReferences;
 	public VkRenderPassInputAttachmentAspectCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderPassInputAttachmentAspectCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.RenderPassInputAttachmentAspectCreateInfo;
-		#endif
 	}
 }
 
@@ -2500,13 +2110,8 @@ public partial struct VkImageViewUsageCreateInfo
 	public VkImageUsageFlags usage;
 	public VkImageViewUsageCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageViewUsageCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ImageViewUsageCreateInfo;
-		#endif
 	}
 }
 
@@ -2518,13 +2123,8 @@ public partial struct VkPipelineTessellationDomainOriginStateCreateInfo
 	public VkTessellationDomainOrigin domainOrigin;
 	public VkPipelineTessellationDomainOriginStateCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineTessellationDomainOriginStateCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineTessellationDomainOriginStateCreateInfo;
-		#endif
 	}
 }
 
@@ -2541,13 +2141,8 @@ public partial struct VkRenderPassMultiviewCreateInfo
 	public unsafe uint* pCorrelationMasks;
 	public VkRenderPassMultiviewCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderPassMultiviewCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.RenderPassMultiviewCreateInfo;
-		#endif
 	}
 }
 
@@ -2561,13 +2156,8 @@ public partial struct VkPhysicalDeviceMultiviewFeatures
 	public VkBool32 multiviewTessellationShader;
 	public VkPhysicalDeviceMultiviewFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMultiviewFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMultiviewFeatures;
-		#endif
 	}
 }
 
@@ -2580,13 +2170,8 @@ public partial struct VkPhysicalDeviceMultiviewProperties
 	public uint maxMultiviewInstanceIndex;
 	public VkPhysicalDeviceMultiviewProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMultiviewProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMultiviewProperties;
-		#endif
 	}
 }
 
@@ -2599,13 +2184,8 @@ public partial struct VkPhysicalDeviceVariablePointersFeatures
 	public VkBool32 variablePointers;
 	public VkPhysicalDeviceVariablePointersFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVariablePointersFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVariablePointersFeatures;
-		#endif
 	}
 }
 
@@ -2617,13 +2197,8 @@ public partial struct VkPhysicalDeviceProtectedMemoryFeatures
 	public VkBool32 protectedMemory;
 	public VkPhysicalDeviceProtectedMemoryFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceProtectedMemoryFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceProtectedMemoryFeatures;
-		#endif
 	}
 }
 
@@ -2635,13 +2210,8 @@ public partial struct VkPhysicalDeviceProtectedMemoryProperties
 	public VkBool32 protectedNoFault;
 	public VkPhysicalDeviceProtectedMemoryProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceProtectedMemoryProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceProtectedMemoryProperties;
-		#endif
 	}
 }
 
@@ -2655,13 +2225,8 @@ public partial struct VkDeviceQueueInfo2
 	public uint queueIndex;
 	public VkDeviceQueueInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceQueueInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceQueueInfo2;
-		#endif
 	}
 }
 
@@ -2673,13 +2238,8 @@ public partial struct VkProtectedSubmitInfo
 	public VkBool32 protectedSubmit;
 	public VkProtectedSubmitInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ProtectedSubmitInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ProtectedSubmitInfo;
-		#endif
 	}
 }
 
@@ -2698,13 +2258,8 @@ public partial struct VkSamplerYcbcrConversionCreateInfo
 	public VkBool32 forceExplicitReconstruction;
 	public VkSamplerYcbcrConversionCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SamplerYcbcrConversionCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SamplerYcbcrConversionCreateInfo;
-		#endif
 	}
 }
 
@@ -2716,13 +2271,8 @@ public partial struct VkSamplerYcbcrConversionInfo
 	public VkSamplerYcbcrConversion conversion;
 	public VkSamplerYcbcrConversionInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SamplerYcbcrConversionInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SamplerYcbcrConversionInfo;
-		#endif
 	}
 }
 
@@ -2734,13 +2284,8 @@ public partial struct VkBindImagePlaneMemoryInfo
 	public VkImageAspectFlags planeAspect;
 	public VkBindImagePlaneMemoryInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BindImagePlaneMemoryInfo;
-		#else
-		this = default;
-		sType = VkStructureType.BindImagePlaneMemoryInfo;
-		#endif
 	}
 }
 
@@ -2752,13 +2297,8 @@ public partial struct VkImagePlaneMemoryRequirementsInfo
 	public VkImageAspectFlags planeAspect;
 	public VkImagePlaneMemoryRequirementsInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImagePlaneMemoryRequirementsInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ImagePlaneMemoryRequirementsInfo;
-		#endif
 	}
 }
 
@@ -2770,13 +2310,8 @@ public partial struct VkPhysicalDeviceSamplerYcbcrConversionFeatures
 	public VkBool32 samplerYcbcrConversion;
 	public VkPhysicalDeviceSamplerYcbcrConversionFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSamplerYcbcrConversionFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSamplerYcbcrConversionFeatures;
-		#endif
 	}
 }
 
@@ -2788,13 +2323,8 @@ public partial struct VkSamplerYcbcrConversionImageFormatProperties
 	public uint combinedImageSamplerDescriptorCount;
 	public VkSamplerYcbcrConversionImageFormatProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SamplerYcbcrConversionImageFormatProperties;
-		#else
-		this = default;
-		sType = VkStructureType.SamplerYcbcrConversionImageFormatProperties;
-		#endif
 	}
 }
 
@@ -2824,13 +2354,8 @@ public partial struct VkDescriptorUpdateTemplateCreateInfo
 	public uint set;
 	public VkDescriptorUpdateTemplateCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DescriptorUpdateTemplateCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DescriptorUpdateTemplateCreateInfo;
-		#endif
 	}
 }
 
@@ -2850,13 +2375,8 @@ public partial struct VkPhysicalDeviceExternalImageFormatInfo
 	public VkExternalMemoryHandleTypeFlags handleType;
 	public VkPhysicalDeviceExternalImageFormatInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceExternalImageFormatInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceExternalImageFormatInfo;
-		#endif
 	}
 }
 
@@ -2868,13 +2388,8 @@ public partial struct VkExternalImageFormatProperties
 	public VkExternalMemoryProperties externalMemoryProperties;
 	public VkExternalImageFormatProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExternalImageFormatProperties;
-		#else
-		this = default;
-		sType = VkStructureType.ExternalImageFormatProperties;
-		#endif
 	}
 }
 
@@ -2888,13 +2403,8 @@ public partial struct VkPhysicalDeviceExternalBufferInfo
 	public VkExternalMemoryHandleTypeFlags handleType;
 	public VkPhysicalDeviceExternalBufferInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceExternalBufferInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceExternalBufferInfo;
-		#endif
 	}
 }
 
@@ -2906,13 +2416,8 @@ public partial struct VkExternalBufferProperties
 	public VkExternalMemoryProperties externalMemoryProperties;
 	public VkExternalBufferProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExternalBufferProperties;
-		#else
-		this = default;
-		sType = VkStructureType.ExternalBufferProperties;
-		#endif
 	}
 }
 
@@ -2928,13 +2433,8 @@ public partial struct VkPhysicalDeviceIDProperties
 	public VkBool32 deviceLUIDValid;
 	public VkPhysicalDeviceIDProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceIDProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceIDProperties;
-		#endif
 	}
 }
 
@@ -2946,13 +2446,8 @@ public partial struct VkExternalMemoryImageCreateInfo
 	public VkExternalMemoryHandleTypeFlags handleTypes;
 	public VkExternalMemoryImageCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExternalMemoryImageCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ExternalMemoryImageCreateInfo;
-		#endif
 	}
 }
 
@@ -2964,13 +2459,8 @@ public partial struct VkExternalMemoryBufferCreateInfo
 	public VkExternalMemoryHandleTypeFlags handleTypes;
 	public VkExternalMemoryBufferCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExternalMemoryBufferCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ExternalMemoryBufferCreateInfo;
-		#endif
 	}
 }
 
@@ -2982,13 +2472,8 @@ public partial struct VkExportMemoryAllocateInfo
 	public VkExternalMemoryHandleTypeFlags handleTypes;
 	public VkExportMemoryAllocateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExportMemoryAllocateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ExportMemoryAllocateInfo;
-		#endif
 	}
 }
 
@@ -3000,13 +2485,8 @@ public partial struct VkPhysicalDeviceExternalFenceInfo
 	public VkExternalFenceHandleTypeFlags handleType;
 	public VkPhysicalDeviceExternalFenceInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceExternalFenceInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceExternalFenceInfo;
-		#endif
 	}
 }
 
@@ -3020,13 +2500,8 @@ public partial struct VkExternalFenceProperties
 	public VkExternalFenceFeatureFlags externalFenceFeatures;
 	public VkExternalFenceProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExternalFenceProperties;
-		#else
-		this = default;
-		sType = VkStructureType.ExternalFenceProperties;
-		#endif
 	}
 }
 
@@ -3038,13 +2513,8 @@ public partial struct VkExportFenceCreateInfo
 	public VkExternalFenceHandleTypeFlags handleTypes;
 	public VkExportFenceCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExportFenceCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ExportFenceCreateInfo;
-		#endif
 	}
 }
 
@@ -3056,13 +2526,8 @@ public partial struct VkExportSemaphoreCreateInfo
 	public VkExternalSemaphoreHandleTypeFlags handleTypes;
 	public VkExportSemaphoreCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExportSemaphoreCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ExportSemaphoreCreateInfo;
-		#endif
 	}
 }
 
@@ -3074,13 +2539,8 @@ public partial struct VkPhysicalDeviceExternalSemaphoreInfo
 	public VkExternalSemaphoreHandleTypeFlags handleType;
 	public VkPhysicalDeviceExternalSemaphoreInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceExternalSemaphoreInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceExternalSemaphoreInfo;
-		#endif
 	}
 }
 
@@ -3094,13 +2554,8 @@ public partial struct VkExternalSemaphoreProperties
 	public VkExternalSemaphoreFeatureFlags externalSemaphoreFeatures;
 	public VkExternalSemaphoreProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExternalSemaphoreProperties;
-		#else
-		this = default;
-		sType = VkStructureType.ExternalSemaphoreProperties;
-		#endif
 	}
 }
 
@@ -3113,13 +2568,8 @@ public partial struct VkPhysicalDeviceMaintenance3Properties
 	public ulong maxMemoryAllocationSize;
 	public VkPhysicalDeviceMaintenance3Properties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMaintenance3Properties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMaintenance3Properties;
-		#endif
 	}
 }
 
@@ -3131,13 +2581,8 @@ public partial struct VkDescriptorSetLayoutSupport
 	public VkBool32 supported;
 	public VkDescriptorSetLayoutSupport()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DescriptorSetLayoutSupport;
-		#else
-		this = default;
-		sType = VkStructureType.DescriptorSetLayoutSupport;
-		#endif
 	}
 }
 
@@ -3149,13 +2594,8 @@ public partial struct VkPhysicalDeviceShaderDrawParametersFeatures
 	public VkBool32 shaderDrawParameters;
 	public VkPhysicalDeviceShaderDrawParametersFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderDrawParametersFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderDrawParametersFeatures;
-		#endif
 	}
 }
 
@@ -3178,13 +2618,8 @@ public partial struct VkPhysicalDeviceVulkan11Features
 	public VkBool32 shaderDrawParameters;
 	public VkPhysicalDeviceVulkan11Features()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVulkan11Features;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVulkan11Features;
-		#endif
 	}
 }
 
@@ -3210,13 +2645,8 @@ public partial struct VkPhysicalDeviceVulkan11Properties
 	public ulong maxMemoryAllocationSize;
 	public VkPhysicalDeviceVulkan11Properties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVulkan11Properties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVulkan11Properties;
-		#endif
 	}
 }
 
@@ -3274,13 +2704,8 @@ public partial struct VkPhysicalDeviceVulkan12Features
 	public VkBool32 subgroupBroadcastDynamicId;
 	public VkPhysicalDeviceVulkan12Features()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVulkan12Features;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVulkan12Features;
-		#endif
 	}
 }
 
@@ -3352,13 +2777,8 @@ public partial struct VkPhysicalDeviceVulkan12Properties
 	public VkSampleCountFlags framebufferIntegerColorSampleCounts;
 	public VkPhysicalDeviceVulkan12Properties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVulkan12Properties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVulkan12Properties;
-		#endif
 	}
 }
 
@@ -3371,13 +2791,8 @@ public partial struct VkImageFormatListCreateInfo
 	public unsafe VkFormat* pViewFormats;
 	public VkImageFormatListCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageFormatListCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ImageFormatListCreateInfo;
-		#endif
 	}
 }
 
@@ -3397,13 +2812,8 @@ public partial struct VkAttachmentDescription2
 	public VkImageLayout finalLayout;
 	public VkAttachmentDescription2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AttachmentDescription2;
-		#else
-		this = default;
-		sType = VkStructureType.AttachmentDescription2;
-		#endif
 	}
 }
 
@@ -3417,13 +2827,8 @@ public partial struct VkAttachmentReference2
 	public VkImageAspectFlags aspectMask;
 	public VkAttachmentReference2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AttachmentReference2;
-		#else
-		this = default;
-		sType = VkStructureType.AttachmentReference2;
-		#endif
 	}
 }
 
@@ -3445,13 +2850,8 @@ public partial struct VkSubpassDescription2
 	public unsafe uint* pPreserveAttachments;
 	public VkSubpassDescription2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SubpassDescription2;
-		#else
-		this = default;
-		sType = VkStructureType.SubpassDescription2;
-		#endif
 	}
 }
 
@@ -3470,13 +2870,8 @@ public partial struct VkSubpassDependency2
 	public int viewOffset;
 	public VkSubpassDependency2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SubpassDependency2;
-		#else
-		this = default;
-		sType = VkStructureType.SubpassDependency2;
-		#endif
 	}
 }
 
@@ -3496,13 +2891,8 @@ public partial struct VkRenderPassCreateInfo2
 	public unsafe uint* pCorrelatedViewMasks;
 	public VkRenderPassCreateInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderPassCreateInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.RenderPassCreateInfo2;
-		#endif
 	}
 }
 
@@ -3514,13 +2904,8 @@ public partial struct VkSubpassBeginInfo
 	public VkSubpassContents contents;
 	public VkSubpassBeginInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SubpassBeginInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SubpassBeginInfo;
-		#endif
 	}
 }
 
@@ -3531,13 +2916,8 @@ public partial struct VkSubpassEndInfo
 	public unsafe void* pNext;
 	public VkSubpassEndInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SubpassEndInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SubpassEndInfo;
-		#endif
 	}
 }
 
@@ -3551,13 +2931,8 @@ public partial struct VkPhysicalDevice8BitStorageFeatures
 	public VkBool32 storagePushConstant8;
 	public VkPhysicalDevice8BitStorageFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevice8BitStorageFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevice8BitStorageFeatures;
-		#endif
 	}
 }
 
@@ -3572,13 +2947,8 @@ public partial struct VkPhysicalDeviceDriverProperties
 	public VkConformanceVersion conformanceVersion;
 	public VkPhysicalDeviceDriverProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDriverProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDriverProperties;
-		#endif
 	}
 }
 
@@ -3591,13 +2961,8 @@ public partial struct VkPhysicalDeviceShaderAtomicInt64Features
 	public VkBool32 shaderSharedInt64Atomics;
 	public VkPhysicalDeviceShaderAtomicInt64Features()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderAtomicInt64Features;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderAtomicInt64Features;
-		#endif
 	}
 }
 
@@ -3610,13 +2975,8 @@ public partial struct VkPhysicalDeviceShaderFloat16Int8Features
 	public VkBool32 shaderInt8;
 	public VkPhysicalDeviceShaderFloat16Int8Features()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderFloat16Int8Features;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderFloat16Int8Features;
-		#endif
 	}
 }
 
@@ -3644,13 +3004,8 @@ public partial struct VkPhysicalDeviceFloatControlsProperties
 	public VkBool32 shaderRoundingModeRTZFloat64;
 	public VkPhysicalDeviceFloatControlsProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFloatControlsProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFloatControlsProperties;
-		#endif
 	}
 }
 
@@ -3663,13 +3018,8 @@ public partial struct VkDescriptorSetLayoutBindingFlagsCreateInfo
 	public unsafe VkDescriptorBindingFlags* pBindingFlags;
 	public VkDescriptorSetLayoutBindingFlagsCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DescriptorSetLayoutBindingFlagsCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DescriptorSetLayoutBindingFlagsCreateInfo;
-		#endif
 	}
 }
 
@@ -3700,13 +3050,8 @@ public partial struct VkPhysicalDeviceDescriptorIndexingFeatures
 	public VkBool32 runtimeDescriptorArray;
 	public VkPhysicalDeviceDescriptorIndexingFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDescriptorIndexingFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDescriptorIndexingFeatures;
-		#endif
 	}
 }
 
@@ -3740,13 +3085,8 @@ public partial struct VkPhysicalDeviceDescriptorIndexingProperties
 	public uint maxDescriptorSetUpdateAfterBindInputAttachments;
 	public VkPhysicalDeviceDescriptorIndexingProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDescriptorIndexingProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDescriptorIndexingProperties;
-		#endif
 	}
 }
 
@@ -3759,13 +3099,8 @@ public partial struct VkDescriptorSetVariableDescriptorCountAllocateInfo
 	public unsafe uint* pDescriptorCounts;
 	public VkDescriptorSetVariableDescriptorCountAllocateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DescriptorSetVariableDescriptorCountAllocateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DescriptorSetVariableDescriptorCountAllocateInfo;
-		#endif
 	}
 }
 
@@ -3777,13 +3112,8 @@ public partial struct VkDescriptorSetVariableDescriptorCountLayoutSupport
 	public uint maxVariableDescriptorCount;
 	public VkDescriptorSetVariableDescriptorCountLayoutSupport()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DescriptorSetVariableDescriptorCountLayoutSupport;
-		#else
-		this = default;
-		sType = VkStructureType.DescriptorSetVariableDescriptorCountLayoutSupport;
-		#endif
 	}
 }
 
@@ -3797,13 +3127,8 @@ public partial struct VkSubpassDescriptionDepthStencilResolve
 	public unsafe VkAttachmentReference2* pDepthStencilResolveAttachment;
 	public VkSubpassDescriptionDepthStencilResolve()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SubpassDescriptionDepthStencilResolve;
-		#else
-		this = default;
-		sType = VkStructureType.SubpassDescriptionDepthStencilResolve;
-		#endif
 	}
 }
 
@@ -3818,13 +3143,8 @@ public partial struct VkPhysicalDeviceDepthStencilResolveProperties
 	public VkBool32 independentResolve;
 	public VkPhysicalDeviceDepthStencilResolveProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDepthStencilResolveProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDepthStencilResolveProperties;
-		#endif
 	}
 }
 
@@ -3836,13 +3156,8 @@ public partial struct VkPhysicalDeviceScalarBlockLayoutFeatures
 	public VkBool32 scalarBlockLayout;
 	public VkPhysicalDeviceScalarBlockLayoutFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceScalarBlockLayoutFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceScalarBlockLayoutFeatures;
-		#endif
 	}
 }
 
@@ -3854,13 +3169,8 @@ public partial struct VkImageStencilUsageCreateInfo
 	public VkImageUsageFlags stencilUsage;
 	public VkImageStencilUsageCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageStencilUsageCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.ImageStencilUsageCreateInfo;
-		#endif
 	}
 }
 
@@ -3872,13 +3182,8 @@ public partial struct VkSamplerReductionModeCreateInfo
 	public VkSamplerReductionMode reductionMode;
 	public VkSamplerReductionModeCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SamplerReductionModeCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SamplerReductionModeCreateInfo;
-		#endif
 	}
 }
 
@@ -3891,13 +3196,8 @@ public partial struct VkPhysicalDeviceSamplerFilterMinmaxProperties
 	public VkBool32 filterMinmaxImageComponentMapping;
 	public VkPhysicalDeviceSamplerFilterMinmaxProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSamplerFilterMinmaxProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSamplerFilterMinmaxProperties;
-		#endif
 	}
 }
 
@@ -3911,13 +3211,8 @@ public partial struct VkPhysicalDeviceVulkanMemoryModelFeatures
 	public VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
 	public VkPhysicalDeviceVulkanMemoryModelFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVulkanMemoryModelFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVulkanMemoryModelFeatures;
-		#endif
 	}
 }
 
@@ -3929,13 +3224,8 @@ public partial struct VkPhysicalDeviceImagelessFramebufferFeatures
 	public VkBool32 imagelessFramebuffer;
 	public VkPhysicalDeviceImagelessFramebufferFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceImagelessFramebufferFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceImagelessFramebufferFeatures;
-		#endif
 	}
 }
 
@@ -3953,13 +3243,8 @@ public partial struct VkFramebufferAttachmentImageInfo
 	public unsafe VkFormat* pViewFormats;
 	public VkFramebufferAttachmentImageInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.FramebufferAttachmentImageInfo;
-		#else
-		this = default;
-		sType = VkStructureType.FramebufferAttachmentImageInfo;
-		#endif
 	}
 }
 
@@ -3972,13 +3257,8 @@ public partial struct VkFramebufferAttachmentsCreateInfo
 	public unsafe VkFramebufferAttachmentImageInfo* pAttachmentImageInfos;
 	public VkFramebufferAttachmentsCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.FramebufferAttachmentsCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.FramebufferAttachmentsCreateInfo;
-		#endif
 	}
 }
 
@@ -3991,13 +3271,8 @@ public partial struct VkRenderPassAttachmentBeginInfo
 	public unsafe VkImageView* pAttachments;
 	public VkRenderPassAttachmentBeginInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderPassAttachmentBeginInfo;
-		#else
-		this = default;
-		sType = VkStructureType.RenderPassAttachmentBeginInfo;
-		#endif
 	}
 }
 
@@ -4009,13 +3284,8 @@ public partial struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures
 	public VkBool32 uniformBufferStandardLayout;
 	public VkPhysicalDeviceUniformBufferStandardLayoutFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceUniformBufferStandardLayoutFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceUniformBufferStandardLayoutFeatures;
-		#endif
 	}
 }
 
@@ -4027,13 +3297,8 @@ public partial struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures
 	public VkBool32 shaderSubgroupExtendedTypes;
 	public VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderSubgroupExtendedTypesFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderSubgroupExtendedTypesFeatures;
-		#endif
 	}
 }
 
@@ -4045,13 +3310,8 @@ public partial struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures
 	public VkBool32 separateDepthStencilLayouts;
 	public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSeparateDepthStencilLayoutsFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSeparateDepthStencilLayoutsFeatures;
-		#endif
 	}
 }
 
@@ -4063,13 +3323,8 @@ public partial struct VkAttachmentReferenceStencilLayout
 	public VkImageLayout stencilLayout;
 	public VkAttachmentReferenceStencilLayout()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AttachmentReferenceStencilLayout;
-		#else
-		this = default;
-		sType = VkStructureType.AttachmentReferenceStencilLayout;
-		#endif
 	}
 }
 
@@ -4082,13 +3337,8 @@ public partial struct VkAttachmentDescriptionStencilLayout
 	public VkImageLayout stencilFinalLayout;
 	public VkAttachmentDescriptionStencilLayout()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AttachmentDescriptionStencilLayout;
-		#else
-		this = default;
-		sType = VkStructureType.AttachmentDescriptionStencilLayout;
-		#endif
 	}
 }
 
@@ -4100,13 +3350,8 @@ public partial struct VkPhysicalDeviceHostQueryResetFeatures
 	public VkBool32 hostQueryReset;
 	public VkPhysicalDeviceHostQueryResetFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceHostQueryResetFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceHostQueryResetFeatures;
-		#endif
 	}
 }
 
@@ -4118,13 +3363,8 @@ public partial struct VkPhysicalDeviceTimelineSemaphoreFeatures
 	public VkBool32 timelineSemaphore;
 	public VkPhysicalDeviceTimelineSemaphoreFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceTimelineSemaphoreFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceTimelineSemaphoreFeatures;
-		#endif
 	}
 }
 
@@ -4136,13 +3376,8 @@ public partial struct VkPhysicalDeviceTimelineSemaphoreProperties
 	public ulong maxTimelineSemaphoreValueDifference;
 	public VkPhysicalDeviceTimelineSemaphoreProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceTimelineSemaphoreProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceTimelineSemaphoreProperties;
-		#endif
 	}
 }
 
@@ -4155,13 +3390,8 @@ public partial struct VkSemaphoreTypeCreateInfo
 	public ulong initialValue;
 	public VkSemaphoreTypeCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SemaphoreTypeCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SemaphoreTypeCreateInfo;
-		#endif
 	}
 }
 
@@ -4176,13 +3406,8 @@ public partial struct VkTimelineSemaphoreSubmitInfo
 	public unsafe ulong* pSignalSemaphoreValues;
 	public VkTimelineSemaphoreSubmitInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.TimelineSemaphoreSubmitInfo;
-		#else
-		this = default;
-		sType = VkStructureType.TimelineSemaphoreSubmitInfo;
-		#endif
 	}
 }
 
@@ -4197,13 +3422,8 @@ public partial struct VkSemaphoreWaitInfo
 	public unsafe ulong* pValues;
 	public VkSemaphoreWaitInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SemaphoreWaitInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SemaphoreWaitInfo;
-		#endif
 	}
 }
 
@@ -4216,13 +3436,8 @@ public partial struct VkSemaphoreSignalInfo
 	public ulong value;
 	public VkSemaphoreSignalInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SemaphoreSignalInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SemaphoreSignalInfo;
-		#endif
 	}
 }
 
@@ -4236,13 +3451,8 @@ public partial struct VkPhysicalDeviceBufferDeviceAddressFeatures
 	public VkBool32 bufferDeviceAddressMultiDevice;
 	public VkPhysicalDeviceBufferDeviceAddressFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceBufferDeviceAddressFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceBufferDeviceAddressFeatures;
-		#endif
 	}
 }
 
@@ -4254,13 +3464,8 @@ public partial struct VkBufferDeviceAddressInfo
 	public VkBuffer buffer;
 	public VkBufferDeviceAddressInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BufferDeviceAddressInfo;
-		#else
-		this = default;
-		sType = VkStructureType.BufferDeviceAddressInfo;
-		#endif
 	}
 }
 
@@ -4272,13 +3477,8 @@ public partial struct VkBufferOpaqueCaptureAddressCreateInfo
 	public ulong opaqueCaptureAddress;
 	public VkBufferOpaqueCaptureAddressCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BufferOpaqueCaptureAddressCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.BufferOpaqueCaptureAddressCreateInfo;
-		#endif
 	}
 }
 
@@ -4290,13 +3490,8 @@ public partial struct VkMemoryOpaqueCaptureAddressAllocateInfo
 	public ulong opaqueCaptureAddress;
 	public VkMemoryOpaqueCaptureAddressAllocateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryOpaqueCaptureAddressAllocateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryOpaqueCaptureAddressAllocateInfo;
-		#endif
 	}
 }
 
@@ -4308,13 +3503,8 @@ public partial struct VkDeviceMemoryOpaqueCaptureAddressInfo
 	public VkDeviceMemory memory;
 	public VkDeviceMemoryOpaqueCaptureAddressInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceMemoryOpaqueCaptureAddressInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceMemoryOpaqueCaptureAddressInfo;
-		#endif
 	}
 }
 
@@ -4340,13 +3530,8 @@ public partial struct VkPhysicalDeviceVulkan13Features
 	public VkBool32 maintenance4;
 	public VkPhysicalDeviceVulkan13Features()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVulkan13Features;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVulkan13Features;
-		#endif
 	}
 }
 
@@ -4402,13 +3587,8 @@ public partial struct VkPhysicalDeviceVulkan13Properties
 	public ulong maxBufferSize;
 	public VkPhysicalDeviceVulkan13Properties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVulkan13Properties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVulkan13Properties;
-		#endif
 	}
 }
 
@@ -4429,13 +3609,8 @@ public partial struct VkPipelineCreationFeedbackCreateInfo
 	public unsafe VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks;
 	public VkPipelineCreationFeedbackCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineCreationFeedbackCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineCreationFeedbackCreateInfo;
-		#endif
 	}
 }
 
@@ -4447,13 +3622,8 @@ public partial struct VkPhysicalDeviceShaderTerminateInvocationFeatures
 	public VkBool32 shaderTerminateInvocation;
 	public VkPhysicalDeviceShaderTerminateInvocationFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderTerminateInvocationFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderTerminateInvocationFeatures;
-		#endif
 	}
 }
 
@@ -4469,13 +3639,8 @@ public partial struct VkPhysicalDeviceToolProperties
 	public unsafe fixed byte layer[256];
 	public VkPhysicalDeviceToolProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceToolProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceToolProperties;
-		#endif
 	}
 }
 
@@ -4487,13 +3652,8 @@ public partial struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures
 	public VkBool32 shaderDemoteToHelperInvocation;
 	public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderDemoteToHelperInvocationFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderDemoteToHelperInvocationFeatures;
-		#endif
 	}
 }
 
@@ -4505,13 +3665,8 @@ public partial struct VkPhysicalDevicePrivateDataFeatures
 	public VkBool32 privateData;
 	public VkPhysicalDevicePrivateDataFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePrivateDataFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePrivateDataFeatures;
-		#endif
 	}
 }
 
@@ -4523,13 +3678,8 @@ public partial struct VkDevicePrivateDataCreateInfo
 	public uint privateDataSlotRequestCount;
 	public VkDevicePrivateDataCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DevicePrivateDataCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DevicePrivateDataCreateInfo;
-		#endif
 	}
 }
 
@@ -4541,13 +3691,8 @@ public partial struct VkPrivateDataSlotCreateInfo
 	public VkPrivateDataSlotCreateFlags flags;
 	public VkPrivateDataSlotCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PrivateDataSlotCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PrivateDataSlotCreateInfo;
-		#endif
 	}
 }
 
@@ -4559,13 +3704,8 @@ public partial struct VkPhysicalDevicePipelineCreationCacheControlFeatures
 	public VkBool32 pipelineCreationCacheControl;
 	public VkPhysicalDevicePipelineCreationCacheControlFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePipelineCreationCacheControlFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePipelineCreationCacheControlFeatures;
-		#endif
 	}
 }
 
@@ -4580,13 +3720,8 @@ public partial struct VkMemoryBarrier2
 	public VkAccessFlags2 dstAccessMask;
 	public VkMemoryBarrier2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryBarrier2;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryBarrier2;
-		#endif
 	}
 }
 
@@ -4606,13 +3741,8 @@ public partial struct VkBufferMemoryBarrier2
 	public ulong size;
 	public VkBufferMemoryBarrier2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BufferMemoryBarrier2;
-		#else
-		this = default;
-		sType = VkStructureType.BufferMemoryBarrier2;
-		#endif
 	}
 }
 
@@ -4633,13 +3763,8 @@ public partial struct VkImageMemoryBarrier2
 	public VkImageSubresourceRange subresourceRange;
 	public VkImageMemoryBarrier2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageMemoryBarrier2;
-		#else
-		this = default;
-		sType = VkStructureType.ImageMemoryBarrier2;
-		#endif
 	}
 }
 
@@ -4657,13 +3782,8 @@ public partial struct VkDependencyInfo
 	public unsafe VkImageMemoryBarrier2* pImageMemoryBarriers;
 	public VkDependencyInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DependencyInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DependencyInfo;
-		#endif
 	}
 }
 
@@ -4678,13 +3798,8 @@ public partial struct VkSemaphoreSubmitInfo
 	public uint deviceIndex;
 	public VkSemaphoreSubmitInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SemaphoreSubmitInfo;
-		#else
-		this = default;
-		sType = VkStructureType.SemaphoreSubmitInfo;
-		#endif
 	}
 }
 
@@ -4697,13 +3812,8 @@ public partial struct VkCommandBufferSubmitInfo
 	public uint deviceMask;
 	public VkCommandBufferSubmitInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CommandBufferSubmitInfo;
-		#else
-		this = default;
-		sType = VkStructureType.CommandBufferSubmitInfo;
-		#endif
 	}
 }
 
@@ -4721,13 +3831,8 @@ public partial struct VkSubmitInfo2
 	public unsafe VkSemaphoreSubmitInfo* pSignalSemaphoreInfos;
 	public VkSubmitInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SubmitInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.SubmitInfo2;
-		#endif
 	}
 }
 
@@ -4739,13 +3844,8 @@ public partial struct VkPhysicalDeviceSynchronization2Features
 	public VkBool32 synchronization2;
 	public VkPhysicalDeviceSynchronization2Features()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSynchronization2Features;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSynchronization2Features;
-		#endif
 	}
 }
 
@@ -4757,13 +3857,8 @@ public partial struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures
 	public VkBool32 shaderZeroInitializeWorkgroupMemory;
 	public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures;
-		#endif
 	}
 }
 
@@ -4775,13 +3870,8 @@ public partial struct VkPhysicalDeviceImageRobustnessFeatures
 	public VkBool32 robustImageAccess;
 	public VkPhysicalDeviceImageRobustnessFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceImageRobustnessFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceImageRobustnessFeatures;
-		#endif
 	}
 }
 
@@ -4795,13 +3885,8 @@ public partial struct VkBufferCopy2
 	public ulong size;
 	public VkBufferCopy2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BufferCopy2;
-		#else
-		this = default;
-		sType = VkStructureType.BufferCopy2;
-		#endif
 	}
 }
 
@@ -4816,13 +3901,8 @@ public partial struct VkCopyBufferInfo2
 	public unsafe VkBufferCopy2* pRegions;
 	public VkCopyBufferInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CopyBufferInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.CopyBufferInfo2;
-		#endif
 	}
 }
 
@@ -4838,13 +3918,8 @@ public partial struct VkImageCopy2
 	public VkExtent3D extent;
 	public VkImageCopy2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageCopy2;
-		#else
-		this = default;
-		sType = VkStructureType.ImageCopy2;
-		#endif
 	}
 }
 
@@ -4861,13 +3936,8 @@ public partial struct VkCopyImageInfo2
 	public unsafe VkImageCopy2* pRegions;
 	public VkCopyImageInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CopyImageInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.CopyImageInfo2;
-		#endif
 	}
 }
 
@@ -4884,13 +3954,8 @@ public partial struct VkBufferImageCopy2
 	public VkExtent3D imageExtent;
 	public VkBufferImageCopy2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BufferImageCopy2;
-		#else
-		this = default;
-		sType = VkStructureType.BufferImageCopy2;
-		#endif
 	}
 }
 
@@ -4906,13 +3971,8 @@ public partial struct VkCopyBufferToImageInfo2
 	public unsafe VkBufferImageCopy2* pRegions;
 	public VkCopyBufferToImageInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CopyBufferToImageInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.CopyBufferToImageInfo2;
-		#endif
 	}
 }
 
@@ -4928,13 +3988,8 @@ public partial struct VkCopyImageToBufferInfo2
 	public unsafe VkBufferImageCopy2* pRegions;
 	public VkCopyImageToBufferInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CopyImageToBufferInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.CopyImageToBufferInfo2;
-		#endif
 	}
 }
 
@@ -4951,13 +4006,8 @@ public partial struct VkImageBlit2
 	public VkOffset3D dstOffsets_1;
 	public VkImageBlit2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageBlit2;
-		#else
-		this = default;
-		sType = VkStructureType.ImageBlit2;
-		#endif
 	}
 }
 
@@ -4975,13 +4025,8 @@ public partial struct VkBlitImageInfo2
 	public VkFilter filter;
 	public VkBlitImageInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BlitImageInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.BlitImageInfo2;
-		#endif
 	}
 }
 
@@ -4997,13 +4042,8 @@ public partial struct VkImageResolve2
 	public VkExtent3D extent;
 	public VkImageResolve2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageResolve2;
-		#else
-		this = default;
-		sType = VkStructureType.ImageResolve2;
-		#endif
 	}
 }
 
@@ -5020,13 +4060,8 @@ public partial struct VkResolveImageInfo2
 	public unsafe VkImageResolve2* pRegions;
 	public VkResolveImageInfo2()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ResolveImageInfo2;
-		#else
-		this = default;
-		sType = VkStructureType.ResolveImageInfo2;
-		#endif
 	}
 }
 
@@ -5039,13 +4074,8 @@ public partial struct VkPhysicalDeviceSubgroupSizeControlFeatures
 	public VkBool32 computeFullSubgroups;
 	public VkPhysicalDeviceSubgroupSizeControlFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSubgroupSizeControlFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSubgroupSizeControlFeatures;
-		#endif
 	}
 }
 
@@ -5060,13 +4090,8 @@ public partial struct VkPhysicalDeviceSubgroupSizeControlProperties
 	public VkShaderStageFlags requiredSubgroupSizeStages;
 	public VkPhysicalDeviceSubgroupSizeControlProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSubgroupSizeControlProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSubgroupSizeControlProperties;
-		#endif
 	}
 }
 
@@ -5078,13 +4103,8 @@ public partial struct VkPipelineShaderStageRequiredSubgroupSizeCreateInfo
 	public uint requiredSubgroupSize;
 	public VkPipelineShaderStageRequiredSubgroupSizeCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineShaderStageRequiredSubgroupSizeCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineShaderStageRequiredSubgroupSizeCreateInfo;
-		#endif
 	}
 }
 
@@ -5097,13 +4117,8 @@ public partial struct VkPhysicalDeviceInlineUniformBlockFeatures
 	public VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
 	public VkPhysicalDeviceInlineUniformBlockFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceInlineUniformBlockFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceInlineUniformBlockFeatures;
-		#endif
 	}
 }
 
@@ -5119,13 +4134,8 @@ public partial struct VkPhysicalDeviceInlineUniformBlockProperties
 	public uint maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
 	public VkPhysicalDeviceInlineUniformBlockProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceInlineUniformBlockProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceInlineUniformBlockProperties;
-		#endif
 	}
 }
 
@@ -5138,13 +4148,8 @@ public partial struct VkWriteDescriptorSetInlineUniformBlock
 	public unsafe void* pData;
 	public VkWriteDescriptorSetInlineUniformBlock()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.WriteDescriptorSetInlineUniformBlock;
-		#else
-		this = default;
-		sType = VkStructureType.WriteDescriptorSetInlineUniformBlock;
-		#endif
 	}
 }
 
@@ -5156,13 +4161,8 @@ public partial struct VkDescriptorPoolInlineUniformBlockCreateInfo
 	public uint maxInlineUniformBlockBindings;
 	public VkDescriptorPoolInlineUniformBlockCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DescriptorPoolInlineUniformBlockCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.DescriptorPoolInlineUniformBlockCreateInfo;
-		#endif
 	}
 }
 
@@ -5174,13 +4174,8 @@ public partial struct VkPhysicalDeviceTextureCompressionASTCHDRFeatures
 	public VkBool32 textureCompressionASTC_HDR;
 	public VkPhysicalDeviceTextureCompressionASTCHDRFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceTextureCompressionASTCHDRFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceTextureCompressionASTCHDRFeatures;
-		#endif
 	}
 }
 
@@ -5199,13 +4194,8 @@ public partial struct VkRenderingAttachmentInfo
 	public VkClearValue clearValue;
 	public VkRenderingAttachmentInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderingAttachmentInfo;
-		#else
-		this = default;
-		sType = VkStructureType.RenderingAttachmentInfo;
-		#endif
 	}
 }
 
@@ -5224,13 +4214,8 @@ public partial struct VkRenderingInfo
 	public unsafe VkRenderingAttachmentInfo* pStencilAttachment;
 	public VkRenderingInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderingInfo;
-		#else
-		this = default;
-		sType = VkStructureType.RenderingInfo;
-		#endif
 	}
 }
 
@@ -5246,13 +4231,8 @@ public partial struct VkPipelineRenderingCreateInfo
 	public VkFormat stencilAttachmentFormat;
 	public VkPipelineRenderingCreateInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineRenderingCreateInfo;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineRenderingCreateInfo;
-		#endif
 	}
 }
 
@@ -5264,13 +4244,8 @@ public partial struct VkPhysicalDeviceDynamicRenderingFeatures
 	public VkBool32 dynamicRendering;
 	public VkPhysicalDeviceDynamicRenderingFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDynamicRenderingFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDynamicRenderingFeatures;
-		#endif
 	}
 }
 
@@ -5288,13 +4263,8 @@ public partial struct VkCommandBufferInheritanceRenderingInfo
 	public VkSampleCountFlags rasterizationSamples;
 	public VkCommandBufferInheritanceRenderingInfo()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CommandBufferInheritanceRenderingInfo;
-		#else
-		this = default;
-		sType = VkStructureType.CommandBufferInheritanceRenderingInfo;
-		#endif
 	}
 }
 
@@ -5306,13 +4276,8 @@ public partial struct VkPhysicalDeviceShaderIntegerDotProductFeatures
 	public VkBool32 shaderIntegerDotProduct;
 	public VkPhysicalDeviceShaderIntegerDotProductFeatures()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductFeatures;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductFeatures;
-		#endif
 	}
 }
 
@@ -5353,13 +4318,8 @@ public partial struct VkPhysicalDeviceShaderIntegerDotProductProperties
 	public VkBool32 integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated;
 	public VkPhysicalDeviceShaderIntegerDotProductProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductProperties;
-		#endif
 	}
 }
 
@@ -5374,13 +4334,8 @@ public partial struct VkPhysicalDeviceTexelBufferAlignmentProperties
 	public VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
 	public VkPhysicalDeviceTexelBufferAlignmentProperties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentProperties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentProperties;
-		#endif
 	}
 }
 
@@ -5394,13 +4349,8 @@ public partial struct VkFormatProperties3
 	public VkFormatFeatureFlags2 bufferFeatures;
 	public VkFormatProperties3()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.FormatProperties3;
-		#else
-		this = default;
-		sType = VkStructureType.FormatProperties3;
-		#endif
 	}
 }
 
@@ -5412,13 +4362,8 @@ public partial struct VkPhysicalDeviceMaintenance4Features
 	public VkBool32 maintenance4;
 	public VkPhysicalDeviceMaintenance4Features()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMaintenance4Features;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMaintenance4Features;
-		#endif
 	}
 }
 
@@ -5430,13 +4375,8 @@ public partial struct VkPhysicalDeviceMaintenance4Properties
 	public ulong maxBufferSize;
 	public VkPhysicalDeviceMaintenance4Properties()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMaintenance4Properties;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMaintenance4Properties;
-		#endif
 	}
 }
 
@@ -5448,13 +4388,8 @@ public partial struct VkDeviceBufferMemoryRequirements
 	public unsafe VkBufferCreateInfo* pCreateInfo;
 	public VkDeviceBufferMemoryRequirements()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceBufferMemoryRequirements;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceBufferMemoryRequirements;
-		#endif
 	}
 }
 
@@ -5467,13 +4402,8 @@ public partial struct VkDeviceImageMemoryRequirements
 	public VkImageAspectFlags planeAspect;
 	public VkDeviceImageMemoryRequirements()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceImageMemoryRequirements;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceImageMemoryRequirements;
-		#endif
 	}
 }
 
@@ -5522,13 +4452,8 @@ public partial struct VkSwapchainCreateInfoKHR
 	public VkSwapchainKHR oldSwapchain;
 	public VkSwapchainCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SwapchainCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.SwapchainCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -5545,13 +4470,8 @@ public partial struct VkPresentInfoKHR
 	public unsafe VkResult* pResults;
 	public VkPresentInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PresentInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PresentInfoKHR;
-		#endif
 	}
 }
 
@@ -5563,13 +4483,8 @@ public partial struct VkImageSwapchainCreateInfoKHR
 	public VkSwapchainKHR swapchain;
 	public VkImageSwapchainCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageSwapchainCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.ImageSwapchainCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -5582,13 +4497,8 @@ public partial struct VkBindImageMemorySwapchainInfoKHR
 	public uint imageIndex;
 	public VkBindImageMemorySwapchainInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BindImageMemorySwapchainInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.BindImageMemorySwapchainInfoKHR;
-		#endif
 	}
 }
 
@@ -5604,13 +4514,8 @@ public partial struct VkAcquireNextImageInfoKHR
 	public uint deviceMask;
 	public VkAcquireNextImageInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AcquireNextImageInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AcquireNextImageInfoKHR;
-		#endif
 	}
 }
 
@@ -5623,13 +4528,8 @@ public partial struct VkDeviceGroupPresentCapabilitiesKHR
 	public VkDeviceGroupPresentModeFlagsKHR modes;
 	public VkDeviceGroupPresentCapabilitiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceGroupPresentCapabilitiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceGroupPresentCapabilitiesKHR;
-		#endif
 	}
 }
 
@@ -5643,13 +4543,8 @@ public partial struct VkDeviceGroupPresentInfoKHR
 	public VkDeviceGroupPresentModeFlagsKHR mode;
 	public VkDeviceGroupPresentInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceGroupPresentInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceGroupPresentInfoKHR;
-		#endif
 	}
 }
 
@@ -5661,13 +4556,8 @@ public partial struct VkDeviceGroupSwapchainCreateInfoKHR
 	public VkDeviceGroupPresentModeFlagsKHR modes;
 	public VkDeviceGroupSwapchainCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceGroupSwapchainCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceGroupSwapchainCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -5687,13 +4577,8 @@ public partial struct VkDisplayModeCreateInfoKHR
 	public VkDisplayModeParametersKHR parameters;
 	public VkDisplayModeCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DisplayModeCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.DisplayModeCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -5752,13 +4637,8 @@ public partial struct VkDisplaySurfaceCreateInfoKHR
 	public VkExtent2D imageExtent;
 	public VkDisplaySurfaceCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DisplaySurfaceCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.DisplaySurfaceCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -5772,13 +4652,8 @@ public partial struct VkDisplayPresentInfoKHR
 	public VkBool32 persistent;
 	public VkDisplayPresentInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DisplayPresentInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.DisplayPresentInfoKHR;
-		#endif
 	}
 }
 
@@ -5792,13 +4667,8 @@ public partial struct VkRenderingFragmentShadingRateAttachmentInfoKHR
 	public VkExtent2D shadingRateAttachmentTexelSize;
 	public VkRenderingFragmentShadingRateAttachmentInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderingFragmentShadingRateAttachmentInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.RenderingFragmentShadingRateAttachmentInfoKHR;
-		#endif
 	}
 }
 
@@ -5811,13 +4681,8 @@ public partial struct VkRenderingFragmentDensityMapAttachmentInfoEXT
 	public VkImageLayout imageLayout;
 	public VkRenderingFragmentDensityMapAttachmentInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderingFragmentDensityMapAttachmentInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.RenderingFragmentDensityMapAttachmentInfoEXT;
-		#endif
 	}
 }
 
@@ -5831,13 +4696,8 @@ public partial struct VkAttachmentSampleCountInfoAMD
 	public VkSampleCountFlags depthStencilAttachmentSamples;
 	public VkAttachmentSampleCountInfoAMD()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AttachmentSampleCountInfoAMD;
-		#else
-		this = default;
-		sType = VkStructureType.AttachmentSampleCountInfoAMD;
-		#endif
 	}
 }
 
@@ -5850,13 +4710,8 @@ public partial struct VkMultiviewPerViewAttributesInfoNVX
 	public VkBool32 perViewAttributesPositionXOnly;
 	public VkMultiviewPerViewAttributesInfoNVX()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MultiviewPerViewAttributesInfoNVX;
-		#else
-		this = default;
-		sType = VkStructureType.MultiviewPerViewAttributesInfoNVX;
-		#endif
 	}
 }
 
@@ -5869,13 +4724,8 @@ public partial struct VkImportMemoryFdInfoKHR
 	public int fd;
 	public VkImportMemoryFdInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImportMemoryFdInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.ImportMemoryFdInfoKHR;
-		#endif
 	}
 }
 
@@ -5887,13 +4737,8 @@ public partial struct VkMemoryFdPropertiesKHR
 	public uint memoryTypeBits;
 	public VkMemoryFdPropertiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryFdPropertiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryFdPropertiesKHR;
-		#endif
 	}
 }
 
@@ -5906,13 +4751,8 @@ public partial struct VkMemoryGetFdInfoKHR
 	public VkExternalMemoryHandleTypeFlags handleType;
 	public VkMemoryGetFdInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryGetFdInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryGetFdInfoKHR;
-		#endif
 	}
 }
 
@@ -5927,13 +4767,8 @@ public partial struct VkImportSemaphoreFdInfoKHR
 	public int fd;
 	public VkImportSemaphoreFdInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImportSemaphoreFdInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.ImportSemaphoreFdInfoKHR;
-		#endif
 	}
 }
 
@@ -5946,13 +4781,8 @@ public partial struct VkSemaphoreGetFdInfoKHR
 	public VkExternalSemaphoreHandleTypeFlags handleType;
 	public VkSemaphoreGetFdInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SemaphoreGetFdInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.SemaphoreGetFdInfoKHR;
-		#endif
 	}
 }
 
@@ -5964,13 +4794,8 @@ public partial struct VkPhysicalDevicePushDescriptorPropertiesKHR
 	public uint maxPushDescriptors;
 	public VkPhysicalDevicePushDescriptorPropertiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePushDescriptorPropertiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePushDescriptorPropertiesKHR;
-		#endif
 	}
 }
 
@@ -5998,13 +4823,8 @@ public partial struct VkPresentRegionsKHR
 	public unsafe VkPresentRegionKHR* pRegions;
 	public VkPresentRegionsKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PresentRegionsKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PresentRegionsKHR;
-		#endif
 	}
 }
 
@@ -6016,13 +4836,8 @@ public partial struct VkSharedPresentSurfaceCapabilitiesKHR
 	public VkImageUsageFlags sharedPresentSupportedUsageFlags;
 	public VkSharedPresentSurfaceCapabilitiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SharedPresentSurfaceCapabilitiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.SharedPresentSurfaceCapabilitiesKHR;
-		#endif
 	}
 }
 
@@ -6037,13 +4852,8 @@ public partial struct VkImportFenceFdInfoKHR
 	public int fd;
 	public VkImportFenceFdInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImportFenceFdInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.ImportFenceFdInfoKHR;
-		#endif
 	}
 }
 
@@ -6056,13 +4866,8 @@ public partial struct VkFenceGetFdInfoKHR
 	public VkExternalFenceHandleTypeFlags handleType;
 	public VkFenceGetFdInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.FenceGetFdInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.FenceGetFdInfoKHR;
-		#endif
 	}
 }
 
@@ -6075,13 +4880,8 @@ public partial struct VkPhysicalDevicePerformanceQueryFeaturesKHR
 	public VkBool32 performanceCounterMultipleQueryPools;
 	public VkPhysicalDevicePerformanceQueryFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePerformanceQueryFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePerformanceQueryFeaturesKHR;
-		#endif
 	}
 }
 
@@ -6093,13 +4893,8 @@ public partial struct VkPhysicalDevicePerformanceQueryPropertiesKHR
 	public VkBool32 allowCommandBufferQueryCopies;
 	public VkPhysicalDevicePerformanceQueryPropertiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePerformanceQueryPropertiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePerformanceQueryPropertiesKHR;
-		#endif
 	}
 }
 
@@ -6114,13 +4909,8 @@ public partial struct VkPerformanceCounterKHR
 	public unsafe fixed byte uuid[16];
 	public VkPerformanceCounterKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PerformanceCounterKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PerformanceCounterKHR;
-		#endif
 	}
 }
 
@@ -6135,13 +4925,8 @@ public partial struct VkPerformanceCounterDescriptionKHR
 	public unsafe fixed byte description[256];
 	public VkPerformanceCounterDescriptionKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PerformanceCounterDescriptionKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PerformanceCounterDescriptionKHR;
-		#endif
 	}
 }
 
@@ -6155,13 +4940,8 @@ public partial struct VkQueryPoolPerformanceCreateInfoKHR
 	public unsafe uint* pCounterIndices;
 	public VkQueryPoolPerformanceCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.QueryPoolPerformanceCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.QueryPoolPerformanceCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -6191,13 +4971,8 @@ public partial struct VkAcquireProfilingLockInfoKHR
 	public ulong timeout;
 	public VkAcquireProfilingLockInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AcquireProfilingLockInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AcquireProfilingLockInfoKHR;
-		#endif
 	}
 }
 
@@ -6209,13 +4984,8 @@ public partial struct VkPerformanceQuerySubmitInfoKHR
 	public uint counterPassIndex;
 	public VkPerformanceQuerySubmitInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PerformanceQuerySubmitInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PerformanceQuerySubmitInfoKHR;
-		#endif
 	}
 }
 
@@ -6227,13 +4997,8 @@ public partial struct VkPhysicalDeviceSurfaceInfo2KHR
 	public VkSurfaceKHR surface;
 	public VkPhysicalDeviceSurfaceInfo2KHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSurfaceInfo2KHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSurfaceInfo2KHR;
-		#endif
 	}
 }
 
@@ -6245,13 +5010,8 @@ public partial struct VkSurfaceCapabilities2KHR
 	public VkSurfaceCapabilitiesKHR surfaceCapabilities;
 	public VkSurfaceCapabilities2KHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SurfaceCapabilities2KHR;
-		#else
-		this = default;
-		sType = VkStructureType.SurfaceCapabilities2KHR;
-		#endif
 	}
 }
 
@@ -6263,13 +5023,8 @@ public partial struct VkSurfaceFormat2KHR
 	public VkSurfaceFormatKHR surfaceFormat;
 	public VkSurfaceFormat2KHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SurfaceFormat2KHR;
-		#else
-		this = default;
-		sType = VkStructureType.SurfaceFormat2KHR;
-		#endif
 	}
 }
 
@@ -6281,13 +5036,8 @@ public partial struct VkDisplayProperties2KHR
 	public VkDisplayPropertiesKHR displayProperties;
 	public VkDisplayProperties2KHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DisplayProperties2KHR;
-		#else
-		this = default;
-		sType = VkStructureType.DisplayProperties2KHR;
-		#endif
 	}
 }
 
@@ -6299,13 +5049,8 @@ public partial struct VkDisplayPlaneProperties2KHR
 	public VkDisplayPlanePropertiesKHR displayPlaneProperties;
 	public VkDisplayPlaneProperties2KHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DisplayPlaneProperties2KHR;
-		#else
-		this = default;
-		sType = VkStructureType.DisplayPlaneProperties2KHR;
-		#endif
 	}
 }
 
@@ -6317,13 +5062,8 @@ public partial struct VkDisplayModeProperties2KHR
 	public VkDisplayModePropertiesKHR displayModeProperties;
 	public VkDisplayModeProperties2KHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DisplayModeProperties2KHR;
-		#else
-		this = default;
-		sType = VkStructureType.DisplayModeProperties2KHR;
-		#endif
 	}
 }
 
@@ -6336,13 +5076,8 @@ public partial struct VkDisplayPlaneInfo2KHR
 	public uint planeIndex;
 	public VkDisplayPlaneInfo2KHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DisplayPlaneInfo2KHR;
-		#else
-		this = default;
-		sType = VkStructureType.DisplayPlaneInfo2KHR;
-		#endif
 	}
 }
 
@@ -6354,13 +5089,8 @@ public partial struct VkDisplayPlaneCapabilities2KHR
 	public VkDisplayPlaneCapabilitiesKHR capabilities;
 	public VkDisplayPlaneCapabilities2KHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DisplayPlaneCapabilities2KHR;
-		#else
-		this = default;
-		sType = VkStructureType.DisplayPlaneCapabilities2KHR;
-		#endif
 	}
 }
 
@@ -6373,13 +5103,8 @@ public partial struct VkPhysicalDeviceShaderClockFeaturesKHR
 	public VkBool32 shaderDeviceClock;
 	public VkPhysicalDeviceShaderClockFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderClockFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderClockFeaturesKHR;
-		#endif
 	}
 }
 
@@ -6391,13 +5116,8 @@ public partial struct VkDeviceQueueGlobalPriorityCreateInfoKHR
 	public VkQueueGlobalPriorityKHR globalPriority;
 	public VkDeviceQueueGlobalPriorityCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceQueueGlobalPriorityCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceQueueGlobalPriorityCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -6409,13 +5129,8 @@ public partial struct VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR
 	public VkBool32 globalPriorityQuery;
 	public VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceGlobalPriorityQueryFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceGlobalPriorityQueryFeaturesKHR;
-		#endif
 	}
 }
 
@@ -6443,13 +5158,8 @@ public partial struct VkQueueFamilyGlobalPriorityPropertiesKHR
 	public VkQueueGlobalPriorityKHR priorities_15;
 	public VkQueueFamilyGlobalPriorityPropertiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.QueueFamilyGlobalPriorityPropertiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.QueueFamilyGlobalPriorityPropertiesKHR;
-		#endif
 	}
 }
 
@@ -6462,13 +5172,8 @@ public partial struct VkFragmentShadingRateAttachmentInfoKHR
 	public VkExtent2D shadingRateAttachmentTexelSize;
 	public VkFragmentShadingRateAttachmentInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.FragmentShadingRateAttachmentInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.FragmentShadingRateAttachmentInfoKHR;
-		#endif
 	}
 }
 
@@ -6482,13 +5187,8 @@ public partial struct VkPipelineFragmentShadingRateStateCreateInfoKHR
 	public VkFragmentShadingRateCombinerOpKHR combinerOps_1;
 	public VkPipelineFragmentShadingRateStateCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineFragmentShadingRateStateCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineFragmentShadingRateStateCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -6502,13 +5202,8 @@ public partial struct VkPhysicalDeviceFragmentShadingRateFeaturesKHR
 	public VkBool32 attachmentFragmentShadingRate;
 	public VkPhysicalDeviceFragmentShadingRateFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentShadingRateFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentShadingRateFeaturesKHR;
-		#endif
 	}
 }
 
@@ -6536,13 +5231,8 @@ public partial struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 	public VkBool32 fragmentShadingRateStrictMultiplyCombiner;
 	public VkPhysicalDeviceFragmentShadingRatePropertiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentShadingRatePropertiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentShadingRatePropertiesKHR;
-		#endif
 	}
 }
 
@@ -6555,13 +5245,8 @@ public partial struct VkPhysicalDeviceFragmentShadingRateKHR
 	public VkExtent2D fragmentSize;
 	public VkPhysicalDeviceFragmentShadingRateKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentShadingRateKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentShadingRateKHR;
-		#endif
 	}
 }
 
@@ -6573,13 +5258,8 @@ public partial struct VkSurfaceProtectedCapabilitiesKHR
 	public VkBool32 supportsProtected;
 	public VkSurfaceProtectedCapabilitiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SurfaceProtectedCapabilitiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.SurfaceProtectedCapabilitiesKHR;
-		#endif
 	}
 }
 
@@ -6591,13 +5271,8 @@ public partial struct VkPhysicalDevicePresentWaitFeaturesKHR
 	public VkBool32 presentWait;
 	public VkPhysicalDevicePresentWaitFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePresentWaitFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePresentWaitFeaturesKHR;
-		#endif
 	}
 }
 
@@ -6609,13 +5284,8 @@ public partial struct VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR
 	public VkBool32 pipelineExecutableInfo;
 	public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePipelineExecutablePropertiesFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePipelineExecutablePropertiesFeaturesKHR;
-		#endif
 	}
 }
 
@@ -6627,13 +5297,8 @@ public partial struct VkPipelineInfoKHR
 	public VkPipeline pipeline;
 	public VkPipelineInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineInfoKHR;
-		#endif
 	}
 }
 
@@ -6648,13 +5313,8 @@ public partial struct VkPipelineExecutablePropertiesKHR
 	public uint subgroupSize;
 	public VkPipelineExecutablePropertiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineExecutablePropertiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineExecutablePropertiesKHR;
-		#endif
 	}
 }
 
@@ -6667,13 +5327,8 @@ public partial struct VkPipelineExecutableInfoKHR
 	public uint executableIndex;
 	public VkPipelineExecutableInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineExecutableInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineExecutableInfoKHR;
-		#endif
 	}
 }
 
@@ -6701,13 +5356,8 @@ public partial struct VkPipelineExecutableStatisticKHR
 	public VkPipelineExecutableStatisticValueKHR value;
 	public VkPipelineExecutableStatisticKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineExecutableStatisticKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineExecutableStatisticKHR;
-		#endif
 	}
 }
 
@@ -6723,13 +5373,8 @@ public partial struct VkPipelineExecutableInternalRepresentationKHR
 	public unsafe void* pData;
 	public VkPipelineExecutableInternalRepresentationKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineExecutableInternalRepresentationKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineExecutableInternalRepresentationKHR;
-		#endif
 	}
 }
 
@@ -6742,13 +5387,8 @@ public partial struct VkPipelineLibraryCreateInfoKHR
 	public unsafe VkPipeline* pLibraries;
 	public VkPipelineLibraryCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineLibraryCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineLibraryCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -6761,13 +5401,8 @@ public partial struct VkPresentIdKHR
 	public unsafe ulong* pPresentIds;
 	public VkPresentIdKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PresentIdKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PresentIdKHR;
-		#endif
 	}
 }
 
@@ -6779,13 +5414,8 @@ public partial struct VkPhysicalDevicePresentIdFeaturesKHR
 	public VkBool32 presentId;
 	public VkPhysicalDevicePresentIdFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePresentIdFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePresentIdFeaturesKHR;
-		#endif
 	}
 }
 
@@ -6797,13 +5427,8 @@ public partial struct VkQueueFamilyCheckpointProperties2NV
 	public VkPipelineStageFlags2 checkpointExecutionStageMask;
 	public VkQueueFamilyCheckpointProperties2NV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.QueueFamilyCheckpointProperties2NV;
-		#else
-		this = default;
-		sType = VkStructureType.QueueFamilyCheckpointProperties2NV;
-		#endif
 	}
 }
 
@@ -6816,13 +5441,8 @@ public partial struct VkCheckpointData2NV
 	public unsafe void* pCheckpointMarker;
 	public VkCheckpointData2NV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CheckpointData2NV;
-		#else
-		this = default;
-		sType = VkStructureType.CheckpointData2NV;
-		#endif
 	}
 }
 
@@ -6834,13 +5454,8 @@ public partial struct VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKH
 	public VkBool32 shaderSubgroupUniformControlFlow;
 	public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR;
-		#endif
 	}
 }
 
@@ -6855,13 +5470,8 @@ public partial struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR
 	public VkBool32 workgroupMemoryExplicitLayout16BitAccess;
 	public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR;
-		#endif
 	}
 }
 
@@ -6879,13 +5489,8 @@ public partial struct VkDebugReportCallbackCreateInfoEXT
 	public unsafe void* pUserData;
 	public VkDebugReportCallbackCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DebugReportCallbackCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DebugReportCallbackCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -6897,13 +5502,8 @@ public partial struct VkPipelineRasterizationStateRasterizationOrderAMD
 	public VkRasterizationOrderAMD rasterizationOrder;
 	public VkPipelineRasterizationStateRasterizationOrderAMD()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineRasterizationStateRasterizationOrderAMD;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineRasterizationStateRasterizationOrderAMD;
-		#endif
 	}
 }
 
@@ -6917,13 +5517,8 @@ public partial struct VkDebugMarkerObjectNameInfoEXT
 	public unsafe byte* pObjectName;
 	public VkDebugMarkerObjectNameInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DebugMarkerObjectNameInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DebugMarkerObjectNameInfoEXT;
-		#endif
 	}
 }
 
@@ -6939,13 +5534,8 @@ public partial struct VkDebugMarkerObjectTagInfoEXT
 	public unsafe void* pTag;
 	public VkDebugMarkerObjectTagInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DebugMarkerObjectTagInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DebugMarkerObjectTagInfoEXT;
-		#endif
 	}
 }
 
@@ -6958,13 +5548,8 @@ public partial struct VkDebugMarkerMarkerInfoEXT
 	public unsafe fixed float color[4];
 	public VkDebugMarkerMarkerInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DebugMarkerMarkerInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DebugMarkerMarkerInfoEXT;
-		#endif
 	}
 }
 
@@ -6976,13 +5561,8 @@ public partial struct VkDedicatedAllocationImageCreateInfoNV
 	public VkBool32 dedicatedAllocation;
 	public VkDedicatedAllocationImageCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DedicatedAllocationImageCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.DedicatedAllocationImageCreateInfoNV;
-		#endif
 	}
 }
 
@@ -6994,13 +5574,8 @@ public partial struct VkDedicatedAllocationBufferCreateInfoNV
 	public VkBool32 dedicatedAllocation;
 	public VkDedicatedAllocationBufferCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DedicatedAllocationBufferCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.DedicatedAllocationBufferCreateInfoNV;
-		#endif
 	}
 }
 
@@ -7013,13 +5588,8 @@ public partial struct VkDedicatedAllocationMemoryAllocateInfoNV
 	public VkBuffer buffer;
 	public VkDedicatedAllocationMemoryAllocateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DedicatedAllocationMemoryAllocateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.DedicatedAllocationMemoryAllocateInfoNV;
-		#endif
 	}
 }
 
@@ -7032,13 +5602,8 @@ public partial struct VkPhysicalDeviceTransformFeedbackFeaturesEXT
 	public VkBool32 geometryStreams;
 	public VkPhysicalDeviceTransformFeedbackFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceTransformFeedbackFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceTransformFeedbackFeaturesEXT;
-		#endif
 	}
 }
 
@@ -7059,13 +5624,8 @@ public partial struct VkPhysicalDeviceTransformFeedbackPropertiesEXT
 	public VkBool32 transformFeedbackDraw;
 	public VkPhysicalDeviceTransformFeedbackPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceTransformFeedbackPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceTransformFeedbackPropertiesEXT;
-		#endif
 	}
 }
 
@@ -7078,13 +5638,8 @@ public partial struct VkPipelineRasterizationStateStreamCreateInfoEXT
 	public uint rasterizationStream;
 	public VkPipelineRasterizationStateStreamCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineRasterizationStateStreamCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineRasterizationStateStreamCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -7097,13 +5652,8 @@ public partial struct VkCuModuleCreateInfoNVX
 	public unsafe void* pData;
 	public VkCuModuleCreateInfoNVX()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CuModuleCreateInfoNVX;
-		#else
-		this = default;
-		sType = VkStructureType.CuModuleCreateInfoNVX;
-		#endif
 	}
 }
 
@@ -7116,13 +5666,8 @@ public partial struct VkCuFunctionCreateInfoNVX
 	public unsafe byte* pName;
 	public VkCuFunctionCreateInfoNVX()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CuFunctionCreateInfoNVX;
-		#else
-		this = default;
-		sType = VkStructureType.CuFunctionCreateInfoNVX;
-		#endif
 	}
 }
 
@@ -7145,13 +5690,8 @@ public partial struct VkCuLaunchInfoNVX
 	public unsafe void** pExtras;
 	public VkCuLaunchInfoNVX()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CuLaunchInfoNVX;
-		#else
-		this = default;
-		sType = VkStructureType.CuLaunchInfoNVX;
-		#endif
 	}
 }
 
@@ -7165,13 +5705,8 @@ public partial struct VkImageViewHandleInfoNVX
 	public VkSampler sampler;
 	public VkImageViewHandleInfoNVX()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageViewHandleInfoNVX;
-		#else
-		this = default;
-		sType = VkStructureType.ImageViewHandleInfoNVX;
-		#endif
 	}
 }
 
@@ -7184,13 +5719,8 @@ public partial struct VkImageViewAddressPropertiesNVX
 	public ulong size;
 	public VkImageViewAddressPropertiesNVX()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageViewAddressPropertiesNVX;
-		#else
-		this = default;
-		sType = VkStructureType.ImageViewAddressPropertiesNVX;
-		#endif
 	}
 }
 
@@ -7202,13 +5732,8 @@ public partial struct VkTextureLODGatherFormatPropertiesAMD
 	public VkBool32 supportsTextureGatherLODBiasAMD;
 	public VkTextureLODGatherFormatPropertiesAMD()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.TextureLODGatherFormatPropertiesAMD;
-		#else
-		this = default;
-		sType = VkStructureType.TextureLODGatherFormatPropertiesAMD;
-		#endif
 	}
 }
 
@@ -7242,13 +5767,8 @@ public partial struct VkPhysicalDeviceCornerSampledImageFeaturesNV
 	public VkBool32 cornerSampledImage;
 	public VkPhysicalDeviceCornerSampledImageFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceCornerSampledImageFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceCornerSampledImageFeaturesNV;
-		#endif
 	}
 }
 
@@ -7269,13 +5789,8 @@ public partial struct VkExternalMemoryImageCreateInfoNV
 	public VkExternalMemoryHandleTypeFlagsNV handleTypes;
 	public VkExternalMemoryImageCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExternalMemoryImageCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.ExternalMemoryImageCreateInfoNV;
-		#endif
 	}
 }
 
@@ -7287,13 +5802,8 @@ public partial struct VkExportMemoryAllocateInfoNV
 	public VkExternalMemoryHandleTypeFlagsNV handleTypes;
 	public VkExportMemoryAllocateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExportMemoryAllocateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.ExportMemoryAllocateInfoNV;
-		#endif
 	}
 }
 
@@ -7306,13 +5816,8 @@ public partial struct VkValidationFlagsEXT
 	public unsafe VkValidationCheckEXT* pDisabledValidationChecks;
 	public VkValidationFlagsEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ValidationFlagsEXT;
-		#else
-		this = default;
-		sType = VkStructureType.ValidationFlagsEXT;
-		#endif
 	}
 }
 
@@ -7324,13 +5829,8 @@ public partial struct VkImageViewASTCDecodeModeEXT
 	public VkFormat decodeMode;
 	public VkImageViewASTCDecodeModeEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageViewASTCDecodeModeEXT;
-		#else
-		this = default;
-		sType = VkStructureType.ImageViewASTCDecodeModeEXT;
-		#endif
 	}
 }
 
@@ -7342,13 +5842,8 @@ public partial struct VkPhysicalDeviceASTCDecodeFeaturesEXT
 	public VkBool32 decodeModeSharedExponent;
 	public VkPhysicalDeviceASTCDecodeFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceASTCDecodeFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceASTCDecodeFeaturesEXT;
-		#endif
 	}
 }
 
@@ -7362,13 +5857,8 @@ public partial struct VkConditionalRenderingBeginInfoEXT
 	public VkConditionalRenderingFlagsEXT flags;
 	public VkConditionalRenderingBeginInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ConditionalRenderingBeginInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.ConditionalRenderingBeginInfoEXT;
-		#endif
 	}
 }
 
@@ -7381,13 +5871,8 @@ public partial struct VkPhysicalDeviceConditionalRenderingFeaturesEXT
 	public VkBool32 inheritedConditionalRendering;
 	public VkPhysicalDeviceConditionalRenderingFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceConditionalRenderingFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceConditionalRenderingFeaturesEXT;
-		#endif
 	}
 }
 
@@ -7399,13 +5884,8 @@ public partial struct VkCommandBufferInheritanceConditionalRenderingInfoEXT
 	public VkBool32 conditionalRenderingEnable;
 	public VkCommandBufferInheritanceConditionalRenderingInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CommandBufferInheritanceConditionalRenderingInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.CommandBufferInheritanceConditionalRenderingInfoEXT;
-		#endif
 	}
 }
 
@@ -7426,13 +5906,8 @@ public partial struct VkPipelineViewportWScalingStateCreateInfoNV
 	public unsafe VkViewportWScalingNV* pViewportWScalings;
 	public VkPipelineViewportWScalingStateCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineViewportWScalingStateCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineViewportWScalingStateCreateInfoNV;
-		#endif
 	}
 }
 
@@ -7454,13 +5929,8 @@ public partial struct VkSurfaceCapabilities2EXT
 	public VkSurfaceCounterFlagsEXT supportedSurfaceCounters;
 	public VkSurfaceCapabilities2EXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SurfaceCapabilities2EXT;
-		#else
-		this = default;
-		sType = VkStructureType.SurfaceCapabilities2EXT;
-		#endif
 	}
 }
 
@@ -7472,13 +5942,8 @@ public partial struct VkDisplayPowerInfoEXT
 	public VkDisplayPowerStateEXT powerState;
 	public VkDisplayPowerInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DisplayPowerInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DisplayPowerInfoEXT;
-		#endif
 	}
 }
 
@@ -7490,13 +5955,8 @@ public partial struct VkDeviceEventInfoEXT
 	public VkDeviceEventTypeEXT deviceEvent;
 	public VkDeviceEventInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceEventInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceEventInfoEXT;
-		#endif
 	}
 }
 
@@ -7508,13 +5968,8 @@ public partial struct VkDisplayEventInfoEXT
 	public VkDisplayEventTypeEXT displayEvent;
 	public VkDisplayEventInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DisplayEventInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DisplayEventInfoEXT;
-		#endif
 	}
 }
 
@@ -7526,13 +5981,8 @@ public partial struct VkSwapchainCounterCreateInfoEXT
 	public VkSurfaceCounterFlagsEXT surfaceCounters;
 	public VkSwapchainCounterCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SwapchainCounterCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.SwapchainCounterCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -7568,13 +6018,8 @@ public partial struct VkPresentTimesInfoGOOGLE
 	public unsafe VkPresentTimeGOOGLE* pTimes;
 	public VkPresentTimesInfoGOOGLE()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PresentTimesInfoGOOGLE;
-		#else
-		this = default;
-		sType = VkStructureType.PresentTimesInfoGOOGLE;
-		#endif
 	}
 }
 
@@ -7586,13 +6031,8 @@ public partial struct VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX
 	public VkBool32 perViewPositionAllComponents;
 	public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX;
-		#endif
 	}
 }
 
@@ -7615,13 +6055,8 @@ public partial struct VkPipelineViewportSwizzleStateCreateInfoNV
 	public unsafe VkViewportSwizzleNV* pViewportSwizzles;
 	public VkPipelineViewportSwizzleStateCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineViewportSwizzleStateCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineViewportSwizzleStateCreateInfoNV;
-		#endif
 	}
 }
 
@@ -7633,13 +6068,8 @@ public partial struct VkPhysicalDeviceDiscardRectanglePropertiesEXT
 	public uint maxDiscardRectangles;
 	public VkPhysicalDeviceDiscardRectanglePropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDiscardRectanglePropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDiscardRectanglePropertiesEXT;
-		#endif
 	}
 }
 
@@ -7654,13 +6084,8 @@ public partial struct VkPipelineDiscardRectangleStateCreateInfoEXT
 	public unsafe VkRect2D* pDiscardRectangles;
 	public VkPipelineDiscardRectangleStateCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineDiscardRectangleStateCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineDiscardRectangleStateCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -7680,13 +6105,8 @@ public partial struct VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 	public VkBool32 conservativeRasterizationPostDepthCoverage;
 	public VkPhysicalDeviceConservativeRasterizationPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceConservativeRasterizationPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceConservativeRasterizationPropertiesEXT;
-		#endif
 	}
 }
 
@@ -7700,13 +6120,8 @@ public partial struct VkPipelineRasterizationConservativeStateCreateInfoEXT
 	public float extraPrimitiveOverestimationSize;
 	public VkPipelineRasterizationConservativeStateCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineRasterizationConservativeStateCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineRasterizationConservativeStateCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -7718,13 +6133,8 @@ public partial struct VkPhysicalDeviceDepthClipEnableFeaturesEXT
 	public VkBool32 depthClipEnable;
 	public VkPhysicalDeviceDepthClipEnableFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDepthClipEnableFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDepthClipEnableFeaturesEXT;
-		#endif
 	}
 }
 
@@ -7737,13 +6147,8 @@ public partial struct VkPipelineRasterizationDepthClipStateCreateInfoEXT
 	public VkBool32 depthClipEnable;
 	public VkPipelineRasterizationDepthClipStateCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineRasterizationDepthClipStateCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineRasterizationDepthClipStateCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -7769,13 +6174,8 @@ public partial struct VkHdrMetadataEXT
 	public float maxFrameAverageLightLevel;
 	public VkHdrMetadataEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.HdrMetadataEXT;
-		#else
-		this = default;
-		sType = VkStructureType.HdrMetadataEXT;
-		#endif
 	}
 }
 
@@ -7788,13 +6188,8 @@ public partial struct VkDebugUtilsLabelEXT
 	public unsafe fixed float color[4];
 	public VkDebugUtilsLabelEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DebugUtilsLabelEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DebugUtilsLabelEXT;
-		#endif
 	}
 }
 
@@ -7808,13 +6203,8 @@ public partial struct VkDebugUtilsObjectNameInfoEXT
 	public unsafe byte* pObjectName;
 	public VkDebugUtilsObjectNameInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DebugUtilsObjectNameInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DebugUtilsObjectNameInfoEXT;
-		#endif
 	}
 }
 
@@ -7835,13 +6225,8 @@ public partial struct VkDebugUtilsMessengerCallbackDataEXT
 	public unsafe VkDebugUtilsObjectNameInfoEXT* pObjects;
 	public VkDebugUtilsMessengerCallbackDataEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DebugUtilsMessengerCallbackDataEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DebugUtilsMessengerCallbackDataEXT;
-		#endif
 	}
 }
 
@@ -7861,13 +6246,8 @@ public partial struct VkDebugUtilsMessengerCreateInfoEXT
 	public unsafe void* pUserData;
 	public VkDebugUtilsMessengerCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DebugUtilsMessengerCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DebugUtilsMessengerCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -7883,13 +6263,8 @@ public partial struct VkDebugUtilsObjectTagInfoEXT
 	public unsafe void* pTag;
 	public VkDebugUtilsObjectTagInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DebugUtilsObjectTagInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DebugUtilsObjectTagInfoEXT;
-		#endif
 	}
 }
 
@@ -7911,13 +6286,8 @@ public partial struct VkSampleLocationsInfoEXT
 	public unsafe VkSampleLocationEXT* pSampleLocations;
 	public VkSampleLocationsInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SampleLocationsInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.SampleLocationsInfoEXT;
-		#endif
 	}
 }
 
@@ -7946,13 +6316,8 @@ public partial struct VkRenderPassSampleLocationsBeginInfoEXT
 	public unsafe VkSubpassSampleLocationsEXT* pPostSubpassSampleLocations;
 	public VkRenderPassSampleLocationsBeginInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderPassSampleLocationsBeginInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.RenderPassSampleLocationsBeginInfoEXT;
-		#endif
 	}
 }
 
@@ -7965,13 +6330,8 @@ public partial struct VkPipelineSampleLocationsStateCreateInfoEXT
 	public VkSampleLocationsInfoEXT sampleLocationsInfo;
 	public VkPipelineSampleLocationsStateCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineSampleLocationsStateCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineSampleLocationsStateCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -7987,13 +6347,8 @@ public partial struct VkPhysicalDeviceSampleLocationsPropertiesEXT
 	public VkBool32 variableSampleLocations;
 	public VkPhysicalDeviceSampleLocationsPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSampleLocationsPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSampleLocationsPropertiesEXT;
-		#endif
 	}
 }
 
@@ -8005,13 +6360,8 @@ public partial struct VkMultisamplePropertiesEXT
 	public VkExtent2D maxSampleLocationGridSize;
 	public VkMultisamplePropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MultisamplePropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.MultisamplePropertiesEXT;
-		#endif
 	}
 }
 
@@ -8023,13 +6373,8 @@ public partial struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT
 	public VkBool32 advancedBlendCoherentOperations;
 	public VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceBlendOperationAdvancedFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceBlendOperationAdvancedFeaturesEXT;
-		#endif
 	}
 }
 
@@ -8046,13 +6391,8 @@ public partial struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT
 	public VkBool32 advancedBlendAllOperations;
 	public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceBlendOperationAdvancedPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceBlendOperationAdvancedPropertiesEXT;
-		#endif
 	}
 }
 
@@ -8066,13 +6406,8 @@ public partial struct VkPipelineColorBlendAdvancedStateCreateInfoEXT
 	public VkBlendOverlapEXT blendOverlap;
 	public VkPipelineColorBlendAdvancedStateCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineColorBlendAdvancedStateCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineColorBlendAdvancedStateCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -8086,13 +6421,8 @@ public partial struct VkPipelineCoverageToColorStateCreateInfoNV
 	public uint coverageToColorLocation;
 	public VkPipelineCoverageToColorStateCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineCoverageToColorStateCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineCoverageToColorStateCreateInfoNV;
-		#endif
 	}
 }
 
@@ -8108,13 +6438,8 @@ public partial struct VkPipelineCoverageModulationStateCreateInfoNV
 	public unsafe float* pCoverageModulationTable;
 	public VkPipelineCoverageModulationStateCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineCoverageModulationStateCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineCoverageModulationStateCreateInfoNV;
-		#endif
 	}
 }
 
@@ -8127,13 +6452,8 @@ public partial struct VkPhysicalDeviceShaderSMBuiltinsPropertiesNV
 	public uint shaderWarpsPerSM;
 	public VkPhysicalDeviceShaderSMBuiltinsPropertiesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderSMBuiltinsPropertiesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderSMBuiltinsPropertiesNV;
-		#endif
 	}
 }
 
@@ -8145,13 +6465,8 @@ public partial struct VkPhysicalDeviceShaderSMBuiltinsFeaturesNV
 	public VkBool32 shaderSMBuiltins;
 	public VkPhysicalDeviceShaderSMBuiltinsFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderSMBuiltinsFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderSMBuiltinsFeaturesNV;
-		#endif
 	}
 }
 
@@ -8172,13 +6487,8 @@ public partial struct VkDrmFormatModifierPropertiesListEXT
 	public unsafe VkDrmFormatModifierPropertiesEXT* pDrmFormatModifierProperties;
 	public VkDrmFormatModifierPropertiesListEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DrmFormatModifierPropertiesListEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DrmFormatModifierPropertiesListEXT;
-		#endif
 	}
 }
 
@@ -8193,13 +6503,8 @@ public partial struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT
 	public unsafe uint* pQueueFamilyIndices;
 	public VkPhysicalDeviceImageDrmFormatModifierInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceImageDrmFormatModifierInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceImageDrmFormatModifierInfoEXT;
-		#endif
 	}
 }
 
@@ -8212,13 +6517,8 @@ public partial struct VkImageDrmFormatModifierListCreateInfoEXT
 	public unsafe ulong* pDrmFormatModifiers;
 	public VkImageDrmFormatModifierListCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageDrmFormatModifierListCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.ImageDrmFormatModifierListCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -8232,13 +6532,8 @@ public partial struct VkImageDrmFormatModifierExplicitCreateInfoEXT
 	public unsafe VkSubresourceLayout* pPlaneLayouts;
 	public VkImageDrmFormatModifierExplicitCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageDrmFormatModifierExplicitCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.ImageDrmFormatModifierExplicitCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -8250,13 +6545,8 @@ public partial struct VkImageDrmFormatModifierPropertiesEXT
 	public ulong drmFormatModifier;
 	public VkImageDrmFormatModifierPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageDrmFormatModifierPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.ImageDrmFormatModifierPropertiesEXT;
-		#endif
 	}
 }
 
@@ -8277,13 +6567,8 @@ public partial struct VkDrmFormatModifierPropertiesList2EXT
 	public unsafe VkDrmFormatModifierProperties2EXT* pDrmFormatModifierProperties;
 	public VkDrmFormatModifierPropertiesList2EXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DrmFormatModifierPropertiesList2EXT;
-		#else
-		this = default;
-		sType = VkStructureType.DrmFormatModifierPropertiesList2EXT;
-		#endif
 	}
 }
 
@@ -8297,13 +6582,8 @@ public partial struct VkValidationCacheCreateInfoEXT
 	public unsafe void* pInitialData;
 	public VkValidationCacheCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ValidationCacheCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.ValidationCacheCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -8315,13 +6595,8 @@ public partial struct VkShaderModuleValidationCacheCreateInfoEXT
 	public VkValidationCacheEXT validationCache;
 	public VkShaderModuleValidationCacheCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ShaderModuleValidationCacheCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.ShaderModuleValidationCacheCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -8342,13 +6617,8 @@ public partial struct VkPipelineViewportShadingRateImageStateCreateInfoNV
 	public unsafe VkShadingRatePaletteNV* pShadingRatePalettes;
 	public VkPipelineViewportShadingRateImageStateCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineViewportShadingRateImageStateCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineViewportShadingRateImageStateCreateInfoNV;
-		#endif
 	}
 }
 
@@ -8361,13 +6631,8 @@ public partial struct VkPhysicalDeviceShadingRateImageFeaturesNV
 	public VkBool32 shadingRateCoarseSampleOrder;
 	public VkPhysicalDeviceShadingRateImageFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShadingRateImageFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShadingRateImageFeaturesNV;
-		#endif
 	}
 }
 
@@ -8381,13 +6646,8 @@ public partial struct VkPhysicalDeviceShadingRateImagePropertiesNV
 	public uint shadingRateMaxCoarseSamples;
 	public VkPhysicalDeviceShadingRateImagePropertiesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShadingRateImagePropertiesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShadingRateImagePropertiesNV;
-		#endif
 	}
 }
 
@@ -8418,13 +6678,8 @@ public partial struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV
 	public unsafe VkCoarseSampleOrderCustomNV* pCustomSampleOrders;
 	public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineViewportCoarseSampleOrderStateCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineViewportCoarseSampleOrderStateCreateInfoNV;
-		#endif
 	}
 }
 
@@ -8440,13 +6695,8 @@ public partial struct VkRayTracingShaderGroupCreateInfoNV
 	public uint intersectionShader;
 	public VkRayTracingShaderGroupCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RayTracingShaderGroupCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.RayTracingShaderGroupCreateInfoNV;
-		#endif
 	}
 }
 
@@ -8466,13 +6716,8 @@ public partial struct VkRayTracingPipelineCreateInfoNV
 	public int basePipelineIndex;
 	public VkRayTracingPipelineCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RayTracingPipelineCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.RayTracingPipelineCreateInfoNV;
-		#endif
 	}
 }
 
@@ -8494,13 +6739,8 @@ public partial struct VkGeometryTrianglesNV
 	public ulong transformOffset;
 	public VkGeometryTrianglesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.GeometryTrianglesNV;
-		#else
-		this = default;
-		sType = VkStructureType.GeometryTrianglesNV;
-		#endif
 	}
 }
 
@@ -8515,13 +6755,8 @@ public partial struct VkGeometryAABBNV
 	public ulong offset;
 	public VkGeometryAABBNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.GeometryAABBNV;
-		#else
-		this = default;
-		sType = VkStructureType.GeometryAABBNV;
-		#endif
 	}
 }
 
@@ -8542,13 +6777,8 @@ public partial struct VkGeometryNV
 	public VkGeometryFlagsKHR flags;
 	public VkGeometryNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.GeometryNV;
-		#else
-		this = default;
-		sType = VkStructureType.GeometryNV;
-		#endif
 	}
 }
 
@@ -8564,13 +6794,8 @@ public partial struct VkAccelerationStructureInfoNV
 	public unsafe VkGeometryNV* pGeometries;
 	public VkAccelerationStructureInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureInfoNV;
-		#endif
 	}
 }
 
@@ -8583,13 +6808,8 @@ public partial struct VkAccelerationStructureCreateInfoNV
 	public VkAccelerationStructureInfoNV info;
 	public VkAccelerationStructureCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureCreateInfoNV;
-		#endif
 	}
 }
 
@@ -8605,13 +6825,8 @@ public partial struct VkBindAccelerationStructureMemoryInfoNV
 	public unsafe uint* pDeviceIndices;
 	public VkBindAccelerationStructureMemoryInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BindAccelerationStructureMemoryInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.BindAccelerationStructureMemoryInfoNV;
-		#endif
 	}
 }
 
@@ -8624,13 +6839,8 @@ public partial struct VkWriteDescriptorSetAccelerationStructureNV
 	public unsafe VkAccelerationStructureKHR* pAccelerationStructures;
 	public VkWriteDescriptorSetAccelerationStructureNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.WriteDescriptorSetAccelerationStructureNV;
-		#else
-		this = default;
-		sType = VkStructureType.WriteDescriptorSetAccelerationStructureNV;
-		#endif
 	}
 }
 
@@ -8643,13 +6853,8 @@ public partial struct VkAccelerationStructureMemoryRequirementsInfoNV
 	public VkAccelerationStructureKHR accelerationStructure;
 	public VkAccelerationStructureMemoryRequirementsInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureMemoryRequirementsInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureMemoryRequirementsInfoNV;
-		#endif
 	}
 }
 
@@ -8668,13 +6873,8 @@ public partial struct VkPhysicalDeviceRayTracingPropertiesNV
 	public uint maxDescriptorSetAccelerationStructures;
 	public VkPhysicalDeviceRayTracingPropertiesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceRayTracingPropertiesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceRayTracingPropertiesNV;
-		#endif
 	}
 }
 
@@ -8697,13 +6897,8 @@ public partial struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV
 	public VkBool32 representativeFragmentTest;
 	public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceRepresentativeFragmentTestFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceRepresentativeFragmentTestFeaturesNV;
-		#endif
 	}
 }
 
@@ -8715,13 +6910,8 @@ public partial struct VkPipelineRepresentativeFragmentTestStateCreateInfoNV
 	public VkBool32 representativeFragmentTestEnable;
 	public VkPipelineRepresentativeFragmentTestStateCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineRepresentativeFragmentTestStateCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineRepresentativeFragmentTestStateCreateInfoNV;
-		#endif
 	}
 }
 
@@ -8733,13 +6923,8 @@ public partial struct VkPhysicalDeviceImageViewImageFormatInfoEXT
 	public VkImageViewType imageViewType;
 	public VkPhysicalDeviceImageViewImageFormatInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceImageViewImageFormatInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceImageViewImageFormatInfoEXT;
-		#endif
 	}
 }
 
@@ -8752,13 +6937,8 @@ public partial struct VkFilterCubicImageViewImageFormatPropertiesEXT
 	public VkBool32 filterCubicMinmax;
 	public VkFilterCubicImageViewImageFormatPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.FilterCubicImageViewImageFormatPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.FilterCubicImageViewImageFormatPropertiesEXT;
-		#endif
 	}
 }
 
@@ -8771,13 +6951,8 @@ public partial struct VkImportMemoryHostPointerInfoEXT
 	public unsafe void* pHostPointer;
 	public VkImportMemoryHostPointerInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImportMemoryHostPointerInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.ImportMemoryHostPointerInfoEXT;
-		#endif
 	}
 }
 
@@ -8789,13 +6964,8 @@ public partial struct VkMemoryHostPointerPropertiesEXT
 	public uint memoryTypeBits;
 	public VkMemoryHostPointerPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryHostPointerPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryHostPointerPropertiesEXT;
-		#endif
 	}
 }
 
@@ -8807,13 +6977,8 @@ public partial struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT
 	public ulong minImportedHostPointerAlignment;
 	public VkPhysicalDeviceExternalMemoryHostPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceExternalMemoryHostPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceExternalMemoryHostPropertiesEXT;
-		#endif
 	}
 }
 
@@ -8825,13 +6990,8 @@ public partial struct VkPipelineCompilerControlCreateInfoAMD
 	public VkPipelineCompilerControlFlagsAMD compilerControlFlags;
 	public VkPipelineCompilerControlCreateInfoAMD()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineCompilerControlCreateInfoAMD;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineCompilerControlCreateInfoAMD;
-		#endif
 	}
 }
 
@@ -8843,13 +7003,8 @@ public partial struct VkCalibratedTimestampInfoEXT
 	public VkTimeDomainEXT timeDomain;
 	public VkCalibratedTimestampInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CalibratedTimestampInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.CalibratedTimestampInfoEXT;
-		#endif
 	}
 }
 
@@ -8874,13 +7029,8 @@ public partial struct VkPhysicalDeviceShaderCorePropertiesAMD
 	public uint vgprAllocationGranularity;
 	public VkPhysicalDeviceShaderCorePropertiesAMD()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderCorePropertiesAMD;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderCorePropertiesAMD;
-		#endif
 	}
 }
 
@@ -8892,13 +7042,8 @@ public partial struct VkDeviceMemoryOverallocationCreateInfoAMD
 	public VkMemoryOverallocationBehaviorAMD overallocationBehavior;
 	public VkDeviceMemoryOverallocationCreateInfoAMD()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceMemoryOverallocationCreateInfoAMD;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceMemoryOverallocationCreateInfoAMD;
-		#endif
 	}
 }
 
@@ -8910,13 +7055,8 @@ public partial struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT
 	public uint maxVertexAttribDivisor;
 	public VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorPropertiesEXT;
-		#endif
 	}
 }
 
@@ -8936,13 +7076,8 @@ public partial struct VkPipelineVertexInputDivisorStateCreateInfoEXT
 	public unsafe VkVertexInputBindingDivisorDescriptionEXT* pVertexBindingDivisors;
 	public VkPipelineVertexInputDivisorStateCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineVertexInputDivisorStateCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineVertexInputDivisorStateCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -8955,13 +7090,8 @@ public partial struct VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT
 	public VkBool32 vertexAttributeInstanceRateZeroDivisor;
 	public VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorFeaturesEXT;
-		#endif
 	}
 }
 
@@ -8974,13 +7104,8 @@ public partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesNV
 	public VkBool32 computeDerivativeGroupLinear;
 	public VkPhysicalDeviceComputeShaderDerivativesFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceComputeShaderDerivativesFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceComputeShaderDerivativesFeaturesNV;
-		#endif
 	}
 }
 
@@ -8993,13 +7118,8 @@ public partial struct VkPhysicalDeviceMeshShaderFeaturesNV
 	public VkBool32 meshShader;
 	public VkPhysicalDeviceMeshShaderFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMeshShaderFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMeshShaderFeaturesNV;
-		#endif
 	}
 }
 
@@ -9023,13 +7143,8 @@ public partial struct VkPhysicalDeviceMeshShaderPropertiesNV
 	public uint meshOutputPerPrimitiveGranularity;
 	public VkPhysicalDeviceMeshShaderPropertiesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMeshShaderPropertiesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMeshShaderPropertiesNV;
-		#endif
 	}
 }
 
@@ -9048,13 +7163,8 @@ public partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV
 	public VkBool32 fragmentShaderBarycentric;
 	public VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentShaderBarycentricFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentShaderBarycentricFeaturesNV;
-		#endif
 	}
 }
 
@@ -9066,13 +7176,8 @@ public partial struct VkPhysicalDeviceShaderImageFootprintFeaturesNV
 	public VkBool32 imageFootprint;
 	public VkPhysicalDeviceShaderImageFootprintFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderImageFootprintFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderImageFootprintFeaturesNV;
-		#endif
 	}
 }
 
@@ -9085,13 +7190,8 @@ public partial struct VkPipelineViewportExclusiveScissorStateCreateInfoNV
 	public unsafe VkRect2D* pExclusiveScissors;
 	public VkPipelineViewportExclusiveScissorStateCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineViewportExclusiveScissorStateCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineViewportExclusiveScissorStateCreateInfoNV;
-		#endif
 	}
 }
 
@@ -9103,13 +7203,8 @@ public partial struct VkPhysicalDeviceExclusiveScissorFeaturesNV
 	public VkBool32 exclusiveScissor;
 	public VkPhysicalDeviceExclusiveScissorFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceExclusiveScissorFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceExclusiveScissorFeaturesNV;
-		#endif
 	}
 }
 
@@ -9121,13 +7216,8 @@ public partial struct VkQueueFamilyCheckpointPropertiesNV
 	public VkPipelineStageFlags checkpointExecutionStageMask;
 	public VkQueueFamilyCheckpointPropertiesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.QueueFamilyCheckpointPropertiesNV;
-		#else
-		this = default;
-		sType = VkStructureType.QueueFamilyCheckpointPropertiesNV;
-		#endif
 	}
 }
 
@@ -9140,13 +7230,8 @@ public partial struct VkCheckpointDataNV
 	public unsafe void* pCheckpointMarker;
 	public VkCheckpointDataNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CheckpointDataNV;
-		#else
-		this = default;
-		sType = VkStructureType.CheckpointDataNV;
-		#endif
 	}
 }
 
@@ -9158,13 +7243,8 @@ public partial struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL
 	public VkBool32 shaderIntegerFunctions2;
 	public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL;
-		#endif
 	}
 }
 
@@ -9198,13 +7278,8 @@ public partial struct VkInitializePerformanceApiInfoINTEL
 	public unsafe void* pUserData;
 	public VkInitializePerformanceApiInfoINTEL()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.InitializePerformanceApiInfoINTEL;
-		#else
-		this = default;
-		sType = VkStructureType.InitializePerformanceApiInfoINTEL;
-		#endif
 	}
 }
 
@@ -9216,13 +7291,8 @@ public partial struct VkQueryPoolPerformanceQueryCreateInfoINTEL
 	public VkQueryPoolSamplingModeINTEL performanceCountersSampling;
 	public VkQueryPoolPerformanceQueryCreateInfoINTEL()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.QueryPoolPerformanceQueryCreateInfoINTEL;
-		#else
-		this = default;
-		sType = VkStructureType.QueryPoolPerformanceQueryCreateInfoINTEL;
-		#endif
 	}
 }
 
@@ -9234,13 +7304,8 @@ public partial struct VkPerformanceMarkerInfoINTEL
 	public ulong marker;
 	public VkPerformanceMarkerInfoINTEL()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PerformanceMarkerInfoINTEL;
-		#else
-		this = default;
-		sType = VkStructureType.PerformanceMarkerInfoINTEL;
-		#endif
 	}
 }
 
@@ -9252,13 +7317,8 @@ public partial struct VkPerformanceStreamMarkerInfoINTEL
 	public uint marker;
 	public VkPerformanceStreamMarkerInfoINTEL()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PerformanceStreamMarkerInfoINTEL;
-		#else
-		this = default;
-		sType = VkStructureType.PerformanceStreamMarkerInfoINTEL;
-		#endif
 	}
 }
 
@@ -9272,13 +7332,8 @@ public partial struct VkPerformanceOverrideInfoINTEL
 	public ulong parameter;
 	public VkPerformanceOverrideInfoINTEL()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PerformanceOverrideInfoINTEL;
-		#else
-		this = default;
-		sType = VkStructureType.PerformanceOverrideInfoINTEL;
-		#endif
 	}
 }
 
@@ -9290,13 +7345,8 @@ public partial struct VkPerformanceConfigurationAcquireInfoINTEL
 	public VkPerformanceConfigurationTypeINTEL type;
 	public VkPerformanceConfigurationAcquireInfoINTEL()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PerformanceConfigurationAcquireInfoINTEL;
-		#else
-		this = default;
-		sType = VkStructureType.PerformanceConfigurationAcquireInfoINTEL;
-		#endif
 	}
 }
 
@@ -9311,13 +7361,8 @@ public partial struct VkPhysicalDevicePCIBusInfoPropertiesEXT
 	public uint pciFunction;
 	public VkPhysicalDevicePCIBusInfoPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePCIBusInfoPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePCIBusInfoPropertiesEXT;
-		#endif
 	}
 }
 
@@ -9329,13 +7374,8 @@ public partial struct VkDisplayNativeHdrSurfaceCapabilitiesAMD
 	public VkBool32 localDimmingSupport;
 	public VkDisplayNativeHdrSurfaceCapabilitiesAMD()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DisplayNativeHdrSurfaceCapabilitiesAMD;
-		#else
-		this = default;
-		sType = VkStructureType.DisplayNativeHdrSurfaceCapabilitiesAMD;
-		#endif
 	}
 }
 
@@ -9347,13 +7387,8 @@ public partial struct VkSwapchainDisplayNativeHdrCreateInfoAMD
 	public VkBool32 localDimmingEnable;
 	public VkSwapchainDisplayNativeHdrCreateInfoAMD()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SwapchainDisplayNativeHdrCreateInfoAMD;
-		#else
-		this = default;
-		sType = VkStructureType.SwapchainDisplayNativeHdrCreateInfoAMD;
-		#endif
 	}
 }
 
@@ -9367,13 +7402,8 @@ public partial struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT
 	public VkBool32 fragmentDensityMapNonSubsampledImages;
 	public VkPhysicalDeviceFragmentDensityMapFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentDensityMapFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMapFeaturesEXT;
-		#endif
 	}
 }
 
@@ -9387,13 +7417,8 @@ public partial struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT
 	public VkBool32 fragmentDensityInvocations;
 	public VkPhysicalDeviceFragmentDensityMapPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentDensityMapPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMapPropertiesEXT;
-		#endif
 	}
 }
 
@@ -9405,13 +7430,8 @@ public partial struct VkRenderPassFragmentDensityMapCreateInfoEXT
 	public VkAttachmentReference fragmentDensityMapAttachment;
 	public VkRenderPassFragmentDensityMapCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderPassFragmentDensityMapCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.RenderPassFragmentDensityMapCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -9424,13 +7444,8 @@ public partial struct VkPhysicalDeviceShaderCoreProperties2AMD
 	public uint activeComputeUnitCount;
 	public VkPhysicalDeviceShaderCoreProperties2AMD()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderCoreProperties2AMD;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderCoreProperties2AMD;
-		#endif
 	}
 }
 
@@ -9442,13 +7457,8 @@ public partial struct VkPhysicalDeviceCoherentMemoryFeaturesAMD
 	public VkBool32 deviceCoherentMemory;
 	public VkPhysicalDeviceCoherentMemoryFeaturesAMD()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceCoherentMemoryFeaturesAMD;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceCoherentMemoryFeaturesAMD;
-		#endif
 	}
 }
 
@@ -9461,13 +7471,8 @@ public partial struct VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT
 	public VkBool32 sparseImageInt64Atomics;
 	public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderImageAtomicInt64FeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderImageAtomicInt64FeaturesEXT;
-		#endif
 	}
 }
 
@@ -9510,13 +7515,8 @@ public partial struct VkPhysicalDeviceMemoryBudgetPropertiesEXT
 	public ulong heapUsage_15;
 	public VkPhysicalDeviceMemoryBudgetPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMemoryBudgetPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMemoryBudgetPropertiesEXT;
-		#endif
 	}
 }
 
@@ -9528,13 +7528,8 @@ public partial struct VkPhysicalDeviceMemoryPriorityFeaturesEXT
 	public VkBool32 memoryPriority;
 	public VkPhysicalDeviceMemoryPriorityFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMemoryPriorityFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMemoryPriorityFeaturesEXT;
-		#endif
 	}
 }
 
@@ -9546,13 +7541,8 @@ public partial struct VkMemoryPriorityAllocateInfoEXT
 	public float priority;
 	public VkMemoryPriorityAllocateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryPriorityAllocateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryPriorityAllocateInfoEXT;
-		#endif
 	}
 }
 
@@ -9564,13 +7554,8 @@ public partial struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV
 	public VkBool32 dedicatedAllocationImageAliasing;
 	public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV;
-		#endif
 	}
 }
 
@@ -9584,13 +7569,8 @@ public partial struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT
 	public VkBool32 bufferDeviceAddressMultiDevice;
 	public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceBufferDeviceAddressFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceBufferDeviceAddressFeaturesEXT;
-		#endif
 	}
 }
 
@@ -9602,13 +7582,8 @@ public partial struct VkBufferDeviceAddressCreateInfoEXT
 	public IntPtr deviceAddress;
 	public VkBufferDeviceAddressCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.BufferDeviceAddressCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.BufferDeviceAddressCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -9623,13 +7598,8 @@ public partial struct VkValidationFeaturesEXT
 	public unsafe VkValidationFeatureDisableEXT* pDisabledValidationFeatures;
 	public VkValidationFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ValidationFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.ValidationFeaturesEXT;
-		#endif
 	}
 }
 
@@ -9648,13 +7618,8 @@ public partial struct VkCooperativeMatrixPropertiesNV
 	public VkScopeNV scope;
 	public VkCooperativeMatrixPropertiesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CooperativeMatrixPropertiesNV;
-		#else
-		this = default;
-		sType = VkStructureType.CooperativeMatrixPropertiesNV;
-		#endif
 	}
 }
 
@@ -9667,13 +7632,8 @@ public partial struct VkPhysicalDeviceCooperativeMatrixFeaturesNV
 	public VkBool32 cooperativeMatrixRobustBufferAccess;
 	public VkPhysicalDeviceCooperativeMatrixFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceCooperativeMatrixFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceCooperativeMatrixFeaturesNV;
-		#endif
 	}
 }
 
@@ -9685,13 +7645,8 @@ public partial struct VkPhysicalDeviceCooperativeMatrixPropertiesNV
 	public VkShaderStageFlags cooperativeMatrixSupportedStages;
 	public VkPhysicalDeviceCooperativeMatrixPropertiesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceCooperativeMatrixPropertiesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceCooperativeMatrixPropertiesNV;
-		#endif
 	}
 }
 
@@ -9703,13 +7658,8 @@ public partial struct VkPhysicalDeviceCoverageReductionModeFeaturesNV
 	public VkBool32 coverageReductionMode;
 	public VkPhysicalDeviceCoverageReductionModeFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceCoverageReductionModeFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceCoverageReductionModeFeaturesNV;
-		#endif
 	}
 }
 
@@ -9722,13 +7672,8 @@ public partial struct VkPipelineCoverageReductionStateCreateInfoNV
 	public VkCoverageReductionModeNV coverageReductionMode;
 	public VkPipelineCoverageReductionStateCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineCoverageReductionStateCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineCoverageReductionStateCreateInfoNV;
-		#endif
 	}
 }
 
@@ -9743,13 +7688,8 @@ public partial struct VkFramebufferMixedSamplesCombinationNV
 	public VkSampleCountFlags colorSamples;
 	public VkFramebufferMixedSamplesCombinationNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.FramebufferMixedSamplesCombinationNV;
-		#else
-		this = default;
-		sType = VkStructureType.FramebufferMixedSamplesCombinationNV;
-		#endif
 	}
 }
 
@@ -9763,13 +7703,8 @@ public partial struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT
 	public VkBool32 fragmentShaderShadingRateInterlock;
 	public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentShaderInterlockFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentShaderInterlockFeaturesEXT;
-		#endif
 	}
 }
 
@@ -9781,13 +7716,8 @@ public partial struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT
 	public VkBool32 ycbcrImageArrays;
 	public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceYcbcrImageArraysFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceYcbcrImageArraysFeaturesEXT;
-		#endif
 	}
 }
 
@@ -9800,13 +7730,8 @@ public partial struct VkPhysicalDeviceProvokingVertexFeaturesEXT
 	public VkBool32 transformFeedbackPreservesProvokingVertex;
 	public VkPhysicalDeviceProvokingVertexFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceProvokingVertexFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceProvokingVertexFeaturesEXT;
-		#endif
 	}
 }
 
@@ -9819,13 +7744,8 @@ public partial struct VkPhysicalDeviceProvokingVertexPropertiesEXT
 	public VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex;
 	public VkPhysicalDeviceProvokingVertexPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceProvokingVertexPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceProvokingVertexPropertiesEXT;
-		#endif
 	}
 }
 
@@ -9837,13 +7757,8 @@ public partial struct VkPipelineRasterizationProvokingVertexStateCreateInfoEXT
 	public VkProvokingVertexModeEXT provokingVertexMode;
 	public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineRasterizationProvokingVertexStateCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineRasterizationProvokingVertexStateCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -9855,13 +7770,8 @@ public partial struct VkHeadlessSurfaceCreateInfoEXT
 	public VkHeadlessSurfaceCreateFlagsEXT flags;
 	public VkHeadlessSurfaceCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.HeadlessSurfaceCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.HeadlessSurfaceCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -9878,13 +7788,8 @@ public partial struct VkPhysicalDeviceLineRasterizationFeaturesEXT
 	public VkBool32 stippledSmoothLines;
 	public VkPhysicalDeviceLineRasterizationFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceLineRasterizationFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceLineRasterizationFeaturesEXT;
-		#endif
 	}
 }
 
@@ -9896,13 +7801,8 @@ public partial struct VkPhysicalDeviceLineRasterizationPropertiesEXT
 	public uint lineSubPixelPrecisionBits;
 	public VkPhysicalDeviceLineRasterizationPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceLineRasterizationPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceLineRasterizationPropertiesEXT;
-		#endif
 	}
 }
 
@@ -9917,13 +7817,8 @@ public partial struct VkPipelineRasterizationLineStateCreateInfoEXT
 	public ushort lineStipplePattern;
 	public VkPipelineRasterizationLineStateCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineRasterizationLineStateCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineRasterizationLineStateCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -9946,13 +7841,8 @@ public partial struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 	public VkBool32 sparseImageFloat32AtomicAdd;
 	public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderAtomicFloatFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderAtomicFloatFeaturesEXT;
-		#endif
 	}
 }
 
@@ -9964,13 +7854,8 @@ public partial struct VkPhysicalDeviceIndexTypeUint8FeaturesEXT
 	public VkBool32 indexTypeUint8;
 	public VkPhysicalDeviceIndexTypeUint8FeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceIndexTypeUint8FeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceIndexTypeUint8FeaturesEXT;
-		#endif
 	}
 }
 
@@ -9982,13 +7867,8 @@ public partial struct VkPhysicalDeviceExtendedDynamicStateFeaturesEXT
 	public VkBool32 extendedDynamicState;
 	public VkPhysicalDeviceExtendedDynamicStateFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceExtendedDynamicStateFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceExtendedDynamicStateFeaturesEXT;
-		#endif
 	}
 }
 
@@ -10011,13 +7891,8 @@ public partial struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT
 	public VkBool32 sparseImageFloat32AtomicMinMax;
 	public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceShaderAtomicFloat2FeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceShaderAtomicFloat2FeaturesEXT;
-		#endif
 	}
 }
 
@@ -10037,13 +7912,8 @@ public partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 	public uint minIndirectCommandsBufferOffsetAlignment;
 	public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsPropertiesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsPropertiesNV;
-		#endif
 	}
 }
 
@@ -10055,13 +7925,8 @@ public partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV
 	public VkBool32 deviceGeneratedCommands;
 	public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsFeaturesNV;
-		#endif
 	}
 }
 
@@ -10076,13 +7941,8 @@ public partial struct VkGraphicsShaderGroupCreateInfoNV
 	public unsafe VkPipelineTessellationStateCreateInfo* pTessellationState;
 	public VkGraphicsShaderGroupCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.GraphicsShaderGroupCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.GraphicsShaderGroupCreateInfoNV;
-		#endif
 	}
 }
 
@@ -10097,13 +7957,8 @@ public partial struct VkGraphicsPipelineShaderGroupsCreateInfoNV
 	public unsafe VkPipeline* pPipelines;
 	public VkGraphicsPipelineShaderGroupsCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.GraphicsPipelineShaderGroupsCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.GraphicsPipelineShaderGroupsCreateInfoNV;
-		#endif
 	}
 }
 
@@ -10162,13 +8017,8 @@ public partial struct VkIndirectCommandsLayoutTokenNV
 	public unsafe uint* pIndexTypeValues;
 	public VkIndirectCommandsLayoutTokenNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.IndirectCommandsLayoutTokenNV;
-		#else
-		this = default;
-		sType = VkStructureType.IndirectCommandsLayoutTokenNV;
-		#endif
 	}
 }
 
@@ -10185,13 +8035,8 @@ public partial struct VkIndirectCommandsLayoutCreateInfoNV
 	public unsafe uint* pStreamStrides;
 	public VkIndirectCommandsLayoutCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.IndirectCommandsLayoutCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.IndirectCommandsLayoutCreateInfoNV;
-		#endif
 	}
 }
 
@@ -10215,13 +8060,8 @@ public partial struct VkGeneratedCommandsInfoNV
 	public ulong sequencesIndexOffset;
 	public VkGeneratedCommandsInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.GeneratedCommandsInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.GeneratedCommandsInfoNV;
-		#endif
 	}
 }
 
@@ -10236,13 +8076,8 @@ public partial struct VkGeneratedCommandsMemoryRequirementsInfoNV
 	public uint maxSequencesCount;
 	public VkGeneratedCommandsMemoryRequirementsInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.GeneratedCommandsMemoryRequirementsInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.GeneratedCommandsMemoryRequirementsInfoNV;
-		#endif
 	}
 }
 
@@ -10254,13 +8089,8 @@ public partial struct VkPhysicalDeviceInheritedViewportScissorFeaturesNV
 	public VkBool32 inheritedViewportScissor2D;
 	public VkPhysicalDeviceInheritedViewportScissorFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceInheritedViewportScissorFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceInheritedViewportScissorFeaturesNV;
-		#endif
 	}
 }
 
@@ -10274,13 +8104,8 @@ public partial struct VkCommandBufferInheritanceViewportScissorInfoNV
 	public unsafe VkViewport* pViewportDepths;
 	public VkCommandBufferInheritanceViewportScissorInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CommandBufferInheritanceViewportScissorInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.CommandBufferInheritanceViewportScissorInfoNV;
-		#endif
 	}
 }
 
@@ -10292,13 +8117,8 @@ public partial struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT
 	public VkBool32 texelBufferAlignment;
 	public VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentFeaturesEXT;
-		#endif
 	}
 }
 
@@ -10310,13 +8130,8 @@ public partial struct VkRenderPassTransformBeginInfoQCOM
 	public VkSurfaceTransformFlagsKHR transform;
 	public VkRenderPassTransformBeginInfoQCOM()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RenderPassTransformBeginInfoQCOM;
-		#else
-		this = default;
-		sType = VkStructureType.RenderPassTransformBeginInfoQCOM;
-		#endif
 	}
 }
 
@@ -10329,13 +8144,8 @@ public partial struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM
 	public VkRect2D renderArea;
 	public VkCommandBufferInheritanceRenderPassTransformInfoQCOM()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CommandBufferInheritanceRenderPassTransformInfoQCOM;
-		#else
-		this = default;
-		sType = VkStructureType.CommandBufferInheritanceRenderPassTransformInfoQCOM;
-		#endif
 	}
 }
 
@@ -10347,13 +8157,8 @@ public partial struct VkPhysicalDeviceDeviceMemoryReportFeaturesEXT
 	public VkBool32 deviceMemoryReport;
 	public VkPhysicalDeviceDeviceMemoryReportFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDeviceMemoryReportFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDeviceMemoryReportFeaturesEXT;
-		#endif
 	}
 }
 
@@ -10371,13 +8176,8 @@ public partial struct VkDeviceMemoryReportCallbackDataEXT
 	public uint heapIndex;
 	public VkDeviceMemoryReportCallbackDataEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceMemoryReportCallbackDataEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceMemoryReportCallbackDataEXT;
-		#endif
 	}
 }
 
@@ -10395,13 +8195,8 @@ public partial struct VkDeviceDeviceMemoryReportCreateInfoEXT
 	public unsafe void* pUserData;
 	public VkDeviceDeviceMemoryReportCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceDeviceMemoryReportCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceDeviceMemoryReportCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -10415,13 +8210,8 @@ public partial struct VkPhysicalDeviceRobustness2FeaturesEXT
 	public VkBool32 nullDescriptor;
 	public VkPhysicalDeviceRobustness2FeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceRobustness2FeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceRobustness2FeaturesEXT;
-		#endif
 	}
 }
 
@@ -10434,13 +8224,8 @@ public partial struct VkPhysicalDeviceRobustness2PropertiesEXT
 	public ulong robustUniformBufferAccessSizeAlignment;
 	public VkPhysicalDeviceRobustness2PropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceRobustness2PropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceRobustness2PropertiesEXT;
-		#endif
 	}
 }
 
@@ -10453,13 +8238,8 @@ public partial struct VkSamplerCustomBorderColorCreateInfoEXT
 	public VkFormat format;
 	public VkSamplerCustomBorderColorCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SamplerCustomBorderColorCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.SamplerCustomBorderColorCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -10471,13 +8251,8 @@ public partial struct VkPhysicalDeviceCustomBorderColorPropertiesEXT
 	public uint maxCustomBorderColorSamplers;
 	public VkPhysicalDeviceCustomBorderColorPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceCustomBorderColorPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceCustomBorderColorPropertiesEXT;
-		#endif
 	}
 }
 
@@ -10490,13 +8265,8 @@ public partial struct VkPhysicalDeviceCustomBorderColorFeaturesEXT
 	public VkBool32 customBorderColorWithoutFormat;
 	public VkPhysicalDeviceCustomBorderColorFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceCustomBorderColorFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceCustomBorderColorFeaturesEXT;
-		#endif
 	}
 }
 
@@ -10508,13 +8278,8 @@ public partial struct VkPhysicalDeviceDiagnosticsConfigFeaturesNV
 	public VkBool32 diagnosticsConfig;
 	public VkPhysicalDeviceDiagnosticsConfigFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDiagnosticsConfigFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDiagnosticsConfigFeaturesNV;
-		#endif
 	}
 }
 
@@ -10526,13 +8291,8 @@ public partial struct VkDeviceDiagnosticsConfigCreateInfoNV
 	public VkDeviceDiagnosticsConfigFlagsNV flags;
 	public VkDeviceDiagnosticsConfigCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DeviceDiagnosticsConfigCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.DeviceDiagnosticsConfigCreateInfoNV;
-		#endif
 	}
 }
 
@@ -10544,13 +8304,8 @@ public partial struct VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT
 	public VkBool32 graphicsPipelineLibrary;
 	public VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT;
-		#endif
 	}
 }
 
@@ -10563,13 +8318,8 @@ public partial struct VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT
 	public VkBool32 graphicsPipelineLibraryIndependentInterpolationDecoration;
 	public VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT;
-		#endif
 	}
 }
 
@@ -10581,13 +8331,8 @@ public partial struct VkGraphicsPipelineLibraryCreateInfoEXT
 	public VkGraphicsPipelineLibraryFlagsEXT flags;
 	public VkGraphicsPipelineLibraryCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.GraphicsPipelineLibraryCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.GraphicsPipelineLibraryCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -10601,13 +8346,8 @@ public partial struct VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV
 	public VkBool32 noInvocationFragmentShadingRates;
 	public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentShadingRateEnumsFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentShadingRateEnumsFeaturesNV;
-		#endif
 	}
 }
 
@@ -10619,13 +8359,8 @@ public partial struct VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV
 	public VkSampleCountFlags maxFragmentShadingRateInvocationCount;
 	public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentShadingRateEnumsPropertiesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentShadingRateEnumsPropertiesNV;
-		#endif
 	}
 }
 
@@ -10640,13 +8375,8 @@ public partial struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV
 	public VkFragmentShadingRateCombinerOpKHR combinerOps_1;
 	public VkPipelineFragmentShadingRateEnumStateCreateInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineFragmentShadingRateEnumStateCreateInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineFragmentShadingRateEnumStateCreateInfoNV;
-		#endif
 	}
 }
 
@@ -10667,13 +8397,8 @@ public partial struct VkAccelerationStructureGeometryMotionTrianglesDataNV
 	public VkDeviceOrHostAddressConstKHR vertexData;
 	public VkAccelerationStructureGeometryMotionTrianglesDataNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureGeometryMotionTrianglesDataNV;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureGeometryMotionTrianglesDataNV;
-		#endif
 	}
 }
 
@@ -10686,13 +8411,8 @@ public partial struct VkAccelerationStructureMotionInfoNV
 	public VkAccelerationStructureMotionInfoFlagsNV flags;
 	public VkAccelerationStructureMotionInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureMotionInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureMotionInfoNV;
-		#endif
 	}
 }
 
@@ -10745,13 +8465,8 @@ public partial struct VkPhysicalDeviceRayTracingMotionBlurFeaturesNV
 	public VkBool32 rayTracingMotionBlurPipelineTraceRaysIndirect;
 	public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceRayTracingMotionBlurFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceRayTracingMotionBlurFeaturesNV;
-		#endif
 	}
 }
 
@@ -10763,13 +8478,8 @@ public partial struct VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT
 	public VkBool32 ycbcr2plane444Formats;
 	public VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT;
-		#endif
 	}
 }
 
@@ -10781,13 +8491,8 @@ public partial struct VkPhysicalDeviceFragmentDensityMap2FeaturesEXT
 	public VkBool32 fragmentDensityMapDeferred;
 	public VkPhysicalDeviceFragmentDensityMap2FeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentDensityMap2FeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMap2FeaturesEXT;
-		#endif
 	}
 }
 
@@ -10802,13 +8507,8 @@ public partial struct VkPhysicalDeviceFragmentDensityMap2PropertiesEXT
 	public uint maxDescriptorSetSubsampledSamplers;
 	public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentDensityMap2PropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMap2PropertiesEXT;
-		#endif
 	}
 }
 
@@ -10820,13 +8520,8 @@ public partial struct VkCopyCommandTransformInfoQCOM
 	public VkSurfaceTransformFlagsKHR transform;
 	public VkCopyCommandTransformInfoQCOM()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CopyCommandTransformInfoQCOM;
-		#else
-		this = default;
-		sType = VkStructureType.CopyCommandTransformInfoQCOM;
-		#endif
 	}
 }
 
@@ -10839,13 +8534,8 @@ public partial struct VkPhysicalDevice4444FormatsFeaturesEXT
 	public VkBool32 formatA4B4G4R4;
 	public VkPhysicalDevice4444FormatsFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevice4444FormatsFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevice4444FormatsFeaturesEXT;
-		#endif
 	}
 }
 
@@ -10859,13 +8549,8 @@ public partial struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeatures
 	public VkBool32 rasterizationOrderStencilAttachmentAccess;
 	public VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM;
-		#endif
 	}
 }
 
@@ -10877,13 +8562,8 @@ public partial struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT
 	public VkBool32 formatRgba10x6WithoutYCbCrSampler;
 	public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceRGBA10X6FormatsFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceRGBA10X6FormatsFeaturesEXT;
-		#endif
 	}
 }
 
@@ -10895,13 +8575,8 @@ public partial struct VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE
 	public VkBool32 mutableDescriptorType;
 	public VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMutableDescriptorTypeFeaturesVALVE;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMutableDescriptorTypeFeaturesVALVE;
-		#endif
 	}
 }
 
@@ -10921,13 +8596,8 @@ public partial struct VkMutableDescriptorTypeCreateInfoVALVE
 	public unsafe VkMutableDescriptorTypeListVALVE* pMutableDescriptorTypeLists;
 	public VkMutableDescriptorTypeCreateInfoVALVE()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MutableDescriptorTypeCreateInfoVALVE;
-		#else
-		this = default;
-		sType = VkStructureType.MutableDescriptorTypeCreateInfoVALVE;
-		#endif
 	}
 }
 
@@ -10939,13 +8609,8 @@ public partial struct VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT
 	public VkBool32 vertexInputDynamicState;
 	public VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVertexInputDynamicStateFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVertexInputDynamicStateFeaturesEXT;
-		#endif
 	}
 }
 
@@ -10960,13 +8625,8 @@ public partial struct VkVertexInputBindingDescription2EXT
 	public uint divisor;
 	public VkVertexInputBindingDescription2EXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VertexInputBindingDescription2EXT;
-		#else
-		this = default;
-		sType = VkStructureType.VertexInputBindingDescription2EXT;
-		#endif
 	}
 }
 
@@ -10981,13 +8641,8 @@ public partial struct VkVertexInputAttributeDescription2EXT
 	public uint offset;
 	public VkVertexInputAttributeDescription2EXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VertexInputAttributeDescription2EXT;
-		#else
-		this = default;
-		sType = VkStructureType.VertexInputAttributeDescription2EXT;
-		#endif
 	}
 }
 
@@ -11004,13 +8659,8 @@ public partial struct VkPhysicalDeviceDrmPropertiesEXT
 	public long renderMinor;
 	public VkPhysicalDeviceDrmPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDrmPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDrmPropertiesEXT;
-		#endif
 	}
 }
 
@@ -11022,13 +8672,8 @@ public partial struct VkPhysicalDeviceDepthClipControlFeaturesEXT
 	public VkBool32 depthClipControl;
 	public VkPhysicalDeviceDepthClipControlFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDepthClipControlFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDepthClipControlFeaturesEXT;
-		#endif
 	}
 }
 
@@ -11040,13 +8685,8 @@ public partial struct VkPipelineViewportDepthClipControlCreateInfoEXT
 	public VkBool32 negativeOneToOne;
 	public VkPipelineViewportDepthClipControlCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineViewportDepthClipControlCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineViewportDepthClipControlCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -11059,13 +8699,8 @@ public partial struct VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT
 	public VkBool32 primitiveTopologyPatchListRestart;
 	public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT;
-		#endif
 	}
 }
 
@@ -11078,13 +8713,8 @@ public partial struct VkSubpassShadingPipelineCreateInfoHUAWEI
 	public uint subpass;
 	public VkSubpassShadingPipelineCreateInfoHUAWEI()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SubpassShadingPipelineCreateInfoHUAWEI;
-		#else
-		this = default;
-		sType = VkStructureType.SubpassShadingPipelineCreateInfoHUAWEI;
-		#endif
 	}
 }
 
@@ -11096,13 +8726,8 @@ public partial struct VkPhysicalDeviceSubpassShadingFeaturesHUAWEI
 	public VkBool32 subpassShading;
 	public VkPhysicalDeviceSubpassShadingFeaturesHUAWEI()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSubpassShadingFeaturesHUAWEI;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSubpassShadingFeaturesHUAWEI;
-		#endif
 	}
 }
 
@@ -11114,13 +8739,8 @@ public partial struct VkPhysicalDeviceSubpassShadingPropertiesHUAWEI
 	public uint maxSubpassShadingWorkgroupSizeAspectRatio;
 	public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceSubpassShadingPropertiesHUAWEI;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceSubpassShadingPropertiesHUAWEI;
-		#endif
 	}
 }
 
@@ -11132,13 +8752,8 @@ public partial struct VkPhysicalDeviceInvocationMaskFeaturesHUAWEI
 	public VkBool32 invocationMask;
 	public VkPhysicalDeviceInvocationMaskFeaturesHUAWEI()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceInvocationMaskFeaturesHUAWEI;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceInvocationMaskFeaturesHUAWEI;
-		#endif
 	}
 }
 
@@ -11151,13 +8766,8 @@ public partial struct VkMemoryGetRemoteAddressInfoNV
 	public VkExternalMemoryHandleTypeFlags handleType;
 	public VkMemoryGetRemoteAddressInfoNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryGetRemoteAddressInfoNV;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryGetRemoteAddressInfoNV;
-		#endif
 	}
 }
 
@@ -11169,13 +8779,8 @@ public partial struct VkPhysicalDeviceExternalMemoryRDMAFeaturesNV
 	public VkBool32 externalMemoryRDMA;
 	public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceExternalMemoryRDMAFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceExternalMemoryRDMAFeaturesNV;
-		#endif
 	}
 }
 
@@ -11189,13 +8794,8 @@ public partial struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT
 	public VkBool32 extendedDynamicState2PatchControlPoints;
 	public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceExtendedDynamicState2FeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceExtendedDynamicState2FeaturesEXT;
-		#endif
 	}
 }
 
@@ -11207,13 +8807,8 @@ public partial struct VkPhysicalDeviceColorWriteEnableFeaturesEXT
 	public VkBool32 colorWriteEnable;
 	public VkPhysicalDeviceColorWriteEnableFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceColorWriteEnableFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceColorWriteEnableFeaturesEXT;
-		#endif
 	}
 }
 
@@ -11226,13 +8821,8 @@ public partial struct VkPipelineColorWriteCreateInfoEXT
 	public unsafe VkBool32* pColorWriteEnables;
 	public VkPipelineColorWriteCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PipelineColorWriteCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PipelineColorWriteCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -11246,13 +8836,8 @@ public partial struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT
 	public VkBool32 primitivesGeneratedQueryWithNonZeroStreams;
 	public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT;
-		#endif
 	}
 }
 
@@ -11264,13 +8849,8 @@ public partial struct VkPhysicalDeviceImageViewMinLodFeaturesEXT
 	public VkBool32 minLod;
 	public VkPhysicalDeviceImageViewMinLodFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceImageViewMinLodFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceImageViewMinLodFeaturesEXT;
-		#endif
 	}
 }
 
@@ -11282,13 +8862,8 @@ public partial struct VkImageViewMinLodCreateInfoEXT
 	public float minLod;
 	public VkImageViewMinLodCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImageViewMinLodCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.ImageViewMinLodCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -11300,13 +8875,8 @@ public partial struct VkPhysicalDeviceMultiDrawFeaturesEXT
 	public VkBool32 multiDraw;
 	public VkPhysicalDeviceMultiDrawFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMultiDrawFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMultiDrawFeaturesEXT;
-		#endif
 	}
 }
 
@@ -11318,13 +8888,8 @@ public partial struct VkPhysicalDeviceMultiDrawPropertiesEXT
 	public uint maxMultiDrawCount;
 	public VkPhysicalDeviceMultiDrawPropertiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceMultiDrawPropertiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceMultiDrawPropertiesEXT;
-		#endif
 	}
 }
 
@@ -11352,13 +8917,8 @@ public partial struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT
 	public VkBool32 sampler2DViewOf3D;
 	public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceImage2DViewOf3DFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceImage2DViewOf3DFeaturesEXT;
-		#endif
 	}
 }
 
@@ -11371,13 +8931,8 @@ public partial struct VkPhysicalDeviceBorderColorSwizzleFeaturesEXT
 	public VkBool32 borderColorSwizzleFromImage;
 	public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceBorderColorSwizzleFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceBorderColorSwizzleFeaturesEXT;
-		#endif
 	}
 }
 
@@ -11390,13 +8945,8 @@ public partial struct VkSamplerBorderColorComponentMappingCreateInfoEXT
 	public VkBool32 srgb;
 	public VkSamplerBorderColorComponentMappingCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SamplerBorderColorComponentMappingCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.SamplerBorderColorComponentMappingCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -11408,13 +8958,8 @@ public partial struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT
 	public VkBool32 pageableDeviceLocalMemory;
 	public VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT;
-		#endif
 	}
 }
 
@@ -11426,13 +8971,8 @@ public partial struct VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE
 	public VkBool32 descriptorSetHostMapping;
 	public VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE;
-		#endif
 	}
 }
 
@@ -11445,13 +8985,8 @@ public partial struct VkDescriptorSetBindingReferenceVALVE
 	public uint binding;
 	public VkDescriptorSetBindingReferenceVALVE()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DescriptorSetBindingReferenceVALVE;
-		#else
-		this = default;
-		sType = VkStructureType.DescriptorSetBindingReferenceVALVE;
-		#endif
 	}
 }
 
@@ -11464,13 +8999,8 @@ public partial struct VkDescriptorSetLayoutHostMappingInfoVALVE
 	public uint descriptorSize;
 	public VkDescriptorSetLayoutHostMappingInfoVALVE()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.DescriptorSetLayoutHostMappingInfoVALVE;
-		#else
-		this = default;
-		sType = VkStructureType.DescriptorSetLayoutHostMappingInfoVALVE;
-		#endif
 	}
 }
 
@@ -11482,13 +9012,8 @@ public partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM
 	public VkBool32 fragmentDensityMapOffset;
 	public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM;
-		#endif
 	}
 }
 
@@ -11500,13 +9025,8 @@ public partial struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM
 	public VkExtent2D fragmentDensityOffsetGranularity;
 	public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM;
-		#endif
 	}
 }
 
@@ -11519,13 +9039,8 @@ public partial struct VkSubpassFragmentDensityMapOffsetEndInfoQCOM
 	public unsafe VkOffset2D* pFragmentDensityOffsets;
 	public VkSubpassFragmentDensityMapOffsetEndInfoQCOM()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.SubpassFragmentDensityMapOffsetEndInfoQCOM;
-		#else
-		this = default;
-		sType = VkStructureType.SubpassFragmentDensityMapOffsetEndInfoQCOM;
-		#endif
 	}
 }
 
@@ -11537,13 +9052,8 @@ public partial struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV
 	public VkBool32 linearColorAttachment;
 	public VkPhysicalDeviceLinearColorAttachmentFeaturesNV()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceLinearColorAttachmentFeaturesNV;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceLinearColorAttachmentFeaturesNV;
-		#endif
 	}
 }
 
@@ -11579,13 +9089,8 @@ public partial struct VkAccelerationStructureGeometryTrianglesDataKHR
 	public VkDeviceOrHostAddressConstKHR transformData;
 	public VkAccelerationStructureGeometryTrianglesDataKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureGeometryTrianglesDataKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureGeometryTrianglesDataKHR;
-		#endif
 	}
 }
 
@@ -11598,13 +9103,8 @@ public partial struct VkAccelerationStructureGeometryAabbsDataKHR
 	public ulong stride;
 	public VkAccelerationStructureGeometryAabbsDataKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureGeometryAabbsDataKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureGeometryAabbsDataKHR;
-		#endif
 	}
 }
 
@@ -11617,13 +9117,8 @@ public partial struct VkAccelerationStructureGeometryInstancesDataKHR
 	public VkDeviceOrHostAddressConstKHR data;
 	public VkAccelerationStructureGeometryInstancesDataKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureGeometryInstancesDataKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureGeometryInstancesDataKHR;
-		#endif
 	}
 }
 
@@ -11648,13 +9143,8 @@ public partial struct VkAccelerationStructureGeometryKHR
 	public VkGeometryFlagsKHR flags;
 	public VkAccelerationStructureGeometryKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureGeometryKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureGeometryKHR;
-		#endif
 	}
 }
 
@@ -11674,13 +9164,8 @@ public partial struct VkAccelerationStructureBuildGeometryInfoKHR
 	public VkDeviceOrHostAddressKHR scratchData;
 	public VkAccelerationStructureBuildGeometryInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureBuildGeometryInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureBuildGeometryInfoKHR;
-		#endif
 	}
 }
 
@@ -11697,13 +9182,8 @@ public partial struct VkAccelerationStructureCreateInfoKHR
 	public IntPtr deviceAddress;
 	public VkAccelerationStructureCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -11716,13 +9196,8 @@ public partial struct VkWriteDescriptorSetAccelerationStructureKHR
 	public unsafe VkAccelerationStructureKHR* pAccelerationStructures;
 	public VkWriteDescriptorSetAccelerationStructureKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.WriteDescriptorSetAccelerationStructureKHR;
-		#else
-		this = default;
-		sType = VkStructureType.WriteDescriptorSetAccelerationStructureKHR;
-		#endif
 	}
 }
 
@@ -11738,13 +9213,8 @@ public partial struct VkPhysicalDeviceAccelerationStructureFeaturesKHR
 	public VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind;
 	public VkPhysicalDeviceAccelerationStructureFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceAccelerationStructureFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceAccelerationStructureFeaturesKHR;
-		#endif
 	}
 }
 
@@ -11763,13 +9233,8 @@ public partial struct VkPhysicalDeviceAccelerationStructurePropertiesKHR
 	public uint minAccelerationStructureScratchOffsetAlignment;
 	public VkPhysicalDeviceAccelerationStructurePropertiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceAccelerationStructurePropertiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceAccelerationStructurePropertiesKHR;
-		#endif
 	}
 }
 
@@ -11781,13 +9246,8 @@ public partial struct VkAccelerationStructureDeviceAddressInfoKHR
 	public VkAccelerationStructureKHR accelerationStructure;
 	public VkAccelerationStructureDeviceAddressInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureDeviceAddressInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureDeviceAddressInfoKHR;
-		#endif
 	}
 }
 
@@ -11799,13 +9259,8 @@ public partial struct VkAccelerationStructureVersionInfoKHR
 	public unsafe byte* pVersionData;
 	public VkAccelerationStructureVersionInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureVersionInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureVersionInfoKHR;
-		#endif
 	}
 }
 
@@ -11819,13 +9274,8 @@ public partial struct VkCopyAccelerationStructureToMemoryInfoKHR
 	public VkCopyAccelerationStructureModeKHR mode;
 	public VkCopyAccelerationStructureToMemoryInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CopyAccelerationStructureToMemoryInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.CopyAccelerationStructureToMemoryInfoKHR;
-		#endif
 	}
 }
 
@@ -11839,13 +9289,8 @@ public partial struct VkCopyMemoryToAccelerationStructureInfoKHR
 	public VkCopyAccelerationStructureModeKHR mode;
 	public VkCopyMemoryToAccelerationStructureInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CopyMemoryToAccelerationStructureInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.CopyMemoryToAccelerationStructureInfoKHR;
-		#endif
 	}
 }
 
@@ -11859,13 +9304,8 @@ public partial struct VkCopyAccelerationStructureInfoKHR
 	public VkCopyAccelerationStructureModeKHR mode;
 	public VkCopyAccelerationStructureInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CopyAccelerationStructureInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.CopyAccelerationStructureInfoKHR;
-		#endif
 	}
 }
 
@@ -11879,13 +9319,8 @@ public partial struct VkAccelerationStructureBuildSizesInfoKHR
 	public ulong buildScratchSize;
 	public VkAccelerationStructureBuildSizesInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AccelerationStructureBuildSizesInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AccelerationStructureBuildSizesInfoKHR;
-		#endif
 	}
 }
 
@@ -11902,13 +9337,8 @@ public partial struct VkRayTracingShaderGroupCreateInfoKHR
 	public unsafe void* pShaderGroupCaptureReplayHandle;
 	public VkRayTracingShaderGroupCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RayTracingShaderGroupCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.RayTracingShaderGroupCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -11921,13 +9351,8 @@ public partial struct VkRayTracingPipelineInterfaceCreateInfoKHR
 	public uint maxPipelineRayHitAttributeSize;
 	public VkRayTracingPipelineInterfaceCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RayTracingPipelineInterfaceCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.RayTracingPipelineInterfaceCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -11950,13 +9375,8 @@ public partial struct VkRayTracingPipelineCreateInfoKHR
 	public int basePipelineIndex;
 	public VkRayTracingPipelineCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.RayTracingPipelineCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.RayTracingPipelineCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -11972,13 +9392,8 @@ public partial struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR
 	public VkBool32 rayTraversalPrimitiveCulling;
 	public VkPhysicalDeviceRayTracingPipelineFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceRayTracingPipelineFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceRayTracingPipelineFeaturesKHR;
-		#endif
 	}
 }
 
@@ -11997,13 +9412,8 @@ public partial struct VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 	public uint maxRayHitAttributeSize;
 	public VkPhysicalDeviceRayTracingPipelinePropertiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceRayTracingPipelinePropertiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceRayTracingPipelinePropertiesKHR;
-		#endif
 	}
 }
 
@@ -12031,13 +9441,8 @@ public partial struct VkPhysicalDeviceRayQueryFeaturesKHR
 	public VkBool32 rayQuery;
 	public VkPhysicalDeviceRayQueryFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceRayQueryFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceRayQueryFeaturesKHR;
-		#endif
 	}
 }
 
@@ -12050,13 +9455,8 @@ public partial struct VkAndroidSurfaceCreateInfoKHR
 	public IntPtr window;
 	public VkAndroidSurfaceCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AndroidSurfaceCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.AndroidSurfaceCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -12068,13 +9468,8 @@ public partial struct VkAndroidHardwareBufferUsageANDROID
 	public ulong androidHardwareBufferUsage;
 	public VkAndroidHardwareBufferUsageANDROID()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AndroidHardwareBufferUsageAndroid;
-		#else
-		this = default;
-		sType = VkStructureType.AndroidHardwareBufferUsageAndroid;
-		#endif
 	}
 }
 
@@ -12087,13 +9482,8 @@ public partial struct VkAndroidHardwareBufferPropertiesANDROID
 	public uint memoryTypeBits;
 	public VkAndroidHardwareBufferPropertiesANDROID()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AndroidHardwareBufferPropertiesAndroid;
-		#else
-		this = default;
-		sType = VkStructureType.AndroidHardwareBufferPropertiesAndroid;
-		#endif
 	}
 }
 
@@ -12112,13 +9502,8 @@ public partial struct VkAndroidHardwareBufferFormatPropertiesANDROID
 	public VkChromaLocation suggestedYChromaOffset;
 	public VkAndroidHardwareBufferFormatPropertiesANDROID()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AndroidHardwareBufferFormatPropertiesAndroid;
-		#else
-		this = default;
-		sType = VkStructureType.AndroidHardwareBufferFormatPropertiesAndroid;
-		#endif
 	}
 }
 
@@ -12130,13 +9515,8 @@ public partial struct VkImportAndroidHardwareBufferInfoANDROID
 	public unsafe IntPtr* buffer;
 	public VkImportAndroidHardwareBufferInfoANDROID()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ImportAndroidHardwareBufferInfoAndroid;
-		#else
-		this = default;
-		sType = VkStructureType.ImportAndroidHardwareBufferInfoAndroid;
-		#endif
 	}
 }
 
@@ -12148,13 +9528,8 @@ public partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID
 	public VkDeviceMemory memory;
 	public VkMemoryGetAndroidHardwareBufferInfoANDROID()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MemoryGetAndroidHardwareBufferInfoAndroid;
-		#else
-		this = default;
-		sType = VkStructureType.MemoryGetAndroidHardwareBufferInfoAndroid;
-		#endif
 	}
 }
 
@@ -12166,13 +9541,8 @@ public partial struct VkExternalFormatANDROID
 	public ulong externalFormat;
 	public VkExternalFormatANDROID()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ExternalFormatAndroid;
-		#else
-		this = default;
-		sType = VkStructureType.ExternalFormatAndroid;
-		#endif
 	}
 }
 
@@ -12191,13 +9561,8 @@ public partial struct VkAndroidHardwareBufferFormatProperties2ANDROID
 	public VkChromaLocation suggestedYChromaOffset;
 	public VkAndroidHardwareBufferFormatProperties2ANDROID()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.AndroidHardwareBufferFormatProperties2Android;
-		#else
-		this = default;
-		sType = VkStructureType.AndroidHardwareBufferFormatProperties2Android;
-		#endif
 	}
 }
 
@@ -12210,13 +9575,8 @@ public partial struct VkIOSSurfaceCreateInfoMVK
 	public unsafe void* pView;
 	public VkIOSSurfaceCreateInfoMVK()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.IOSSurfaceCreateInfoMVK;
-		#else
-		this = default;
-		sType = VkStructureType.IOSSurfaceCreateInfoMVK;
-		#endif
 	}
 }
 
@@ -12229,13 +9589,8 @@ public partial struct VkMacOSSurfaceCreateInfoMVK
 	public unsafe void* pView;
 	public VkMacOSSurfaceCreateInfoMVK()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MacOSSurfaceCreateInfoMVK;
-		#else
-		this = default;
-		sType = VkStructureType.MacOSSurfaceCreateInfoMVK;
-		#endif
 	}
 }
 
@@ -12248,13 +9603,8 @@ public partial struct VkMetalSurfaceCreateInfoEXT
 	public IntPtr pLayer;
 	public VkMetalSurfaceCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.MetalSurfaceCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.MetalSurfaceCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -12267,13 +9617,8 @@ public partial struct VkViSurfaceCreateInfoNN
 	public unsafe void* window;
 	public VkViSurfaceCreateInfoNN()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.ViSurfaceCreateInfoNN;
-		#else
-		this = default;
-		sType = VkStructureType.ViSurfaceCreateInfoNN;
-		#endif
 	}
 }
 
@@ -12285,13 +9630,8 @@ public partial struct VkQueueFamilyQueryResultStatusProperties2KHR
 	public VkBool32 supported;
 	public VkQueueFamilyQueryResultStatusProperties2KHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.QueueFamilyQueryResultStatusProperties2KHR;
-		#else
-		this = default;
-		sType = VkStructureType.QueueFamilyQueryResultStatusProperties2KHR;
-		#endif
 	}
 }
 
@@ -12303,13 +9643,8 @@ public partial struct VkVideoQueueFamilyProperties2KHR
 	public VkVideoCodecOperationFlagsKHR videoCodecOperations;
 	public VkVideoQueueFamilyProperties2KHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoQueueFamilyProperties2KHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoQueueFamilyProperties2KHR;
-		#endif
 	}
 }
 
@@ -12324,13 +9659,8 @@ public partial struct VkVideoProfileKHR
 	public VkVideoComponentBitDepthFlagsKHR chromaBitDepth;
 	public VkVideoProfileKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoProfileKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoProfileKHR;
-		#endif
 	}
 }
 
@@ -12343,13 +9673,8 @@ public partial struct VkVideoProfilesKHR
 	public unsafe VkVideoProfileKHR* pProfiles;
 	public VkVideoProfilesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoProfilesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoProfilesKHR;
-		#endif
 	}
 }
 
@@ -12369,13 +9694,8 @@ public partial struct VkVideoCapabilitiesKHR
 	public VkExtensionProperties stdHeaderVersion;
 	public VkVideoCapabilitiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoCapabilitiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoCapabilitiesKHR;
-		#endif
 	}
 }
 
@@ -12388,13 +9708,8 @@ public partial struct VkPhysicalDeviceVideoFormatInfoKHR
 	public unsafe VkVideoProfilesKHR* pVideoProfiles;
 	public VkPhysicalDeviceVideoFormatInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceVideoFormatInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDeviceVideoFormatInfoKHR;
-		#endif
 	}
 }
 
@@ -12406,13 +9721,8 @@ public partial struct VkVideoFormatPropertiesKHR
 	public VkFormat format;
 	public VkVideoFormatPropertiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoFormatPropertiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoFormatPropertiesKHR;
-		#endif
 	}
 }
 
@@ -12427,13 +9737,8 @@ public partial struct VkVideoPictureResourceKHR
 	public VkImageView imageViewBinding;
 	public VkVideoPictureResourceKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoPictureResourceKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoPictureResourceKHR;
-		#endif
 	}
 }
 
@@ -12446,13 +9751,8 @@ public partial struct VkVideoReferenceSlotKHR
 	public unsafe VkVideoPictureResourceKHR* pPictureResource;
 	public VkVideoReferenceSlotKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoReferenceSlotKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoReferenceSlotKHR;
-		#endif
 	}
 }
 
@@ -12465,13 +9765,8 @@ public partial struct VkVideoGetMemoryPropertiesKHR
 	public unsafe VkMemoryRequirements2* pMemoryRequirements;
 	public VkVideoGetMemoryPropertiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoGetMemoryPropertiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoGetMemoryPropertiesKHR;
-		#endif
 	}
 }
 
@@ -12486,13 +9781,8 @@ public partial struct VkVideoBindMemoryKHR
 	public ulong memorySize;
 	public VkVideoBindMemoryKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoBindMemoryKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoBindMemoryKHR;
-		#endif
 	}
 }
 
@@ -12512,13 +9802,8 @@ public partial struct VkVideoSessionCreateInfoKHR
 	public unsafe VkExtensionProperties* pStdHeaderVersion;
 	public VkVideoSessionCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoSessionCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoSessionCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -12531,13 +9816,8 @@ public partial struct VkVideoSessionParametersCreateInfoKHR
 	public VkVideoSessionKHR videoSession;
 	public VkVideoSessionParametersCreateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoSessionParametersCreateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoSessionParametersCreateInfoKHR;
-		#endif
 	}
 }
 
@@ -12549,13 +9829,8 @@ public partial struct VkVideoSessionParametersUpdateInfoKHR
 	public uint updateSequenceCount;
 	public VkVideoSessionParametersUpdateInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoSessionParametersUpdateInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoSessionParametersUpdateInfoKHR;
-		#endif
 	}
 }
 
@@ -12572,13 +9847,8 @@ public partial struct VkVideoBeginCodingInfoKHR
 	public unsafe VkVideoReferenceSlotKHR* pReferenceSlots;
 	public VkVideoBeginCodingInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoBeginCodingInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoBeginCodingInfoKHR;
-		#endif
 	}
 }
 
@@ -12590,13 +9860,8 @@ public partial struct VkVideoEndCodingInfoKHR
 	public VkVideoEndCodingFlagsKHR flags;
 	public VkVideoEndCodingInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEndCodingInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEndCodingInfoKHR;
-		#endif
 	}
 }
 
@@ -12608,13 +9873,8 @@ public partial struct VkVideoCodingControlInfoKHR
 	public VkVideoCodingControlFlagsKHR flags;
 	public VkVideoCodingControlInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoCodingControlInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoCodingControlInfoKHR;
-		#endif
 	}
 }
 
@@ -12626,13 +9886,8 @@ public partial struct VkVideoDecodeCapabilitiesKHR
 	public VkVideoDecodeCapabilityFlagsKHR flags;
 	public VkVideoDecodeCapabilitiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeCapabilitiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeCapabilitiesKHR;
-		#endif
 	}
 }
 
@@ -12651,13 +9906,8 @@ public partial struct VkVideoDecodeInfoKHR
 	public unsafe VkVideoReferenceSlotKHR* pReferenceSlots;
 	public VkVideoDecodeInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeInfoKHR;
-		#endif
 	}
 }
 
@@ -12683,13 +9933,8 @@ public partial struct VkPhysicalDevicePortabilitySubsetFeaturesKHR
 	public VkBool32 vertexAttributeAccessBeyondStride;
 	public VkPhysicalDevicePortabilitySubsetFeaturesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePortabilitySubsetFeaturesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePortabilitySubsetFeaturesKHR;
-		#endif
 	}
 }
 
@@ -12701,13 +9946,8 @@ public partial struct VkPhysicalDevicePortabilitySubsetPropertiesKHR
 	public uint minVertexInputBindingStrideAlignment;
 	public VkPhysicalDevicePortabilitySubsetPropertiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDevicePortabilitySubsetPropertiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.PhysicalDevicePortabilitySubsetPropertiesKHR;
-		#endif
 	}
 }
 
@@ -12728,13 +9968,8 @@ public partial struct VkVideoEncodeInfoKHR
 	public uint precedingExternallyEncodedBytes;
 	public VkVideoEncodeInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeInfoKHR;
-		#endif
 	}
 }
 
@@ -12750,13 +9985,8 @@ public partial struct VkVideoEncodeCapabilitiesKHR
 	public VkExtent2D inputImageDataFillAlignment;
 	public VkVideoEncodeCapabilitiesKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeCapabilitiesKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeCapabilitiesKHR;
-		#endif
 	}
 }
 
@@ -12773,13 +10003,8 @@ public partial struct VkVideoEncodeRateControlLayerInfoKHR
 	public uint initialVirtualBufferSizeInMs;
 	public VkVideoEncodeRateControlLayerInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeRateControlLayerInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeRateControlLayerInfoKHR;
-		#endif
 	}
 }
 
@@ -12794,13 +10019,8 @@ public partial struct VkVideoEncodeRateControlInfoKHR
 	public unsafe VkVideoEncodeRateControlLayerInfoKHR* pLayerConfigs;
 	public VkVideoEncodeRateControlInfoKHR()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeRateControlInfoKHR;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeRateControlInfoKHR;
-		#endif
 	}
 }
 
@@ -13213,13 +10433,8 @@ public partial struct VkVideoEncodeH264CapabilitiesEXT
 	public uint log2MaxMvLengthVertical;
 	public VkVideoEncodeH264CapabilitiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH264CapabilitiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH264CapabilitiesEXT;
-		#endif
 	}
 }
 
@@ -13234,13 +10449,8 @@ public partial struct VkVideoEncodeH264SessionParametersAddInfoEXT
 	public unsafe StdVideoH264PictureParameterSet* pPpsStd;
 	public VkVideoEncodeH264SessionParametersAddInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH264SessionParametersAddInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH264SessionParametersAddInfoEXT;
-		#endif
 	}
 }
 
@@ -13254,13 +10464,8 @@ public partial struct VkVideoEncodeH264SessionParametersCreateInfoEXT
 	public unsafe VkVideoEncodeH264SessionParametersAddInfoEXT* pParametersAddInfo;
 	public VkVideoEncodeH264SessionParametersCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH264SessionParametersCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH264SessionParametersCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -13273,13 +10478,8 @@ public partial struct VkVideoEncodeH264DpbSlotInfoEXT
 	public unsafe StdVideoEncodeH264ReferenceInfo* pStdReferenceInfo;
 	public VkVideoEncodeH264DpbSlotInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH264DpbSlotInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH264DpbSlotInfoEXT;
-		#endif
 	}
 }
 
@@ -13295,13 +10495,8 @@ public partial struct VkVideoEncodeH264ReferenceListsEXT
 	public unsafe StdVideoEncodeH264RefMemMgmtCtrlOperations* pMemMgmtCtrlOperations;
 	public VkVideoEncodeH264ReferenceListsEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH264ReferenceListsEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH264ReferenceListsEXT;
-		#endif
 	}
 }
 
@@ -13315,13 +10510,8 @@ public partial struct VkVideoEncodeH264NaluSliceEXT
 	public unsafe StdVideoEncodeH264SliceHeader* pSliceHeaderStd;
 	public VkVideoEncodeH264NaluSliceEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH264NaluSliceEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH264NaluSliceEXT;
-		#endif
 	}
 }
 
@@ -13336,13 +10526,8 @@ public partial struct VkVideoEncodeH264VclFrameInfoEXT
 	public unsafe StdVideoEncodeH264PictureInfo* pCurrentPictureInfo;
 	public VkVideoEncodeH264VclFrameInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH264VclFrameInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH264VclFrameInfoEXT;
-		#endif
 	}
 }
 
@@ -13357,13 +10542,8 @@ public partial struct VkVideoEncodeH264EmitPictureParametersEXT
 	public unsafe byte* ppsIdEntries;
 	public VkVideoEncodeH264EmitPictureParametersEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH264EmitPictureParametersEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH264EmitPictureParametersEXT;
-		#endif
 	}
 }
 
@@ -13375,13 +10555,8 @@ public partial struct VkVideoEncodeH264ProfileEXT
 	public StdVideoH264ProfileIdc stdProfileIdc;
 	public VkVideoEncodeH264ProfileEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH264ProfileEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH264ProfileEXT;
-		#endif
 	}
 }
 
@@ -13397,13 +10572,8 @@ public partial struct VkVideoEncodeH264RateControlInfoEXT
 	public byte temporalLayerCount;
 	public VkVideoEncodeH264RateControlInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH264RateControlInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH264RateControlInfoEXT;
-		#endif
 	}
 }
 
@@ -13439,13 +10609,8 @@ public partial struct VkVideoEncodeH264RateControlLayerInfoEXT
 	public VkVideoEncodeH264FrameSizeEXT maxFrameSize;
 	public VkVideoEncodeH264RateControlLayerInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH264RateControlLayerInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH264RateControlLayerInfoEXT;
-		#endif
 	}
 }
 
@@ -13971,13 +11136,8 @@ public partial struct VkVideoEncodeH265CapabilitiesEXT
 	public byte maxMaxNumMergeCand;
 	public VkVideoEncodeH265CapabilitiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH265CapabilitiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH265CapabilitiesEXT;
-		#endif
 	}
 }
 
@@ -13994,13 +11154,8 @@ public partial struct VkVideoEncodeH265SessionParametersAddInfoEXT
 	public unsafe StdVideoH265PictureParameterSet* pPpsStd;
 	public VkVideoEncodeH265SessionParametersAddInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH265SessionParametersAddInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH265SessionParametersAddInfoEXT;
-		#endif
 	}
 }
 
@@ -14015,13 +11170,8 @@ public partial struct VkVideoEncodeH265SessionParametersCreateInfoEXT
 	public unsafe VkVideoEncodeH265SessionParametersAddInfoEXT* pParametersAddInfo;
 	public VkVideoEncodeH265SessionParametersCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH265SessionParametersCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH265SessionParametersCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -14034,13 +11184,8 @@ public partial struct VkVideoEncodeH265DpbSlotInfoEXT
 	public unsafe StdVideoEncodeH265ReferenceInfo* pStdReferenceInfo;
 	public VkVideoEncodeH265DpbSlotInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH265DpbSlotInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH265DpbSlotInfoEXT;
-		#endif
 	}
 }
 
@@ -14056,13 +11201,8 @@ public partial struct VkVideoEncodeH265ReferenceListsEXT
 	public unsafe StdVideoEncodeH265ReferenceModifications* pReferenceModifications;
 	public VkVideoEncodeH265ReferenceListsEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH265ReferenceListsEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH265ReferenceListsEXT;
-		#endif
 	}
 }
 
@@ -14076,13 +11216,8 @@ public partial struct VkVideoEncodeH265NaluSliceSegmentEXT
 	public unsafe StdVideoEncodeH265SliceSegmentHeader* pSliceSegmentHeaderStd;
 	public VkVideoEncodeH265NaluSliceSegmentEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH265NaluSliceSegmentEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH265NaluSliceSegmentEXT;
-		#endif
 	}
 }
 
@@ -14097,13 +11232,8 @@ public partial struct VkVideoEncodeH265VclFrameInfoEXT
 	public unsafe StdVideoEncodeH265PictureInfo* pCurrentPictureInfo;
 	public VkVideoEncodeH265VclFrameInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH265VclFrameInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH265VclFrameInfoEXT;
-		#endif
 	}
 }
 
@@ -14120,13 +11250,8 @@ public partial struct VkVideoEncodeH265EmitPictureParametersEXT
 	public unsafe byte* ppsIdEntries;
 	public VkVideoEncodeH265EmitPictureParametersEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH265EmitPictureParametersEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH265EmitPictureParametersEXT;
-		#endif
 	}
 }
 
@@ -14138,13 +11263,8 @@ public partial struct VkVideoEncodeH265ProfileEXT
 	public StdVideoH265ProfileIdc stdProfileIdc;
 	public VkVideoEncodeH265ProfileEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH265ProfileEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH265ProfileEXT;
-		#endif
 	}
 }
 
@@ -14160,13 +11280,8 @@ public partial struct VkVideoEncodeH265RateControlInfoEXT
 	public byte subLayerCount;
 	public VkVideoEncodeH265RateControlInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH265RateControlInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH265RateControlInfoEXT;
-		#endif
 	}
 }
 
@@ -14202,13 +11317,8 @@ public partial struct VkVideoEncodeH265RateControlLayerInfoEXT
 	public VkVideoEncodeH265FrameSizeEXT maxFrameSize;
 	public VkVideoEncodeH265RateControlLayerInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoEncodeH265RateControlLayerInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoEncodeH265RateControlLayerInfoEXT;
-		#endif
 	}
 }
 
@@ -14296,13 +11406,8 @@ public partial struct VkVideoDecodeH264ProfileEXT
 	public VkVideoDecodeH264PictureLayoutFlagsEXT pictureLayout;
 	public VkVideoDecodeH264ProfileEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH264ProfileEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH264ProfileEXT;
-		#endif
 	}
 }
 
@@ -14315,13 +11420,8 @@ public partial struct VkVideoDecodeH264CapabilitiesEXT
 	public VkOffset2D fieldOffsetGranularity;
 	public VkVideoDecodeH264CapabilitiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH264CapabilitiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH264CapabilitiesEXT;
-		#endif
 	}
 }
 
@@ -14336,13 +11436,8 @@ public partial struct VkVideoDecodeH264SessionParametersAddInfoEXT
 	public unsafe StdVideoH264PictureParameterSet* pPpsStd;
 	public VkVideoDecodeH264SessionParametersAddInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH264SessionParametersAddInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH264SessionParametersAddInfoEXT;
-		#endif
 	}
 }
 
@@ -14356,13 +11451,8 @@ public partial struct VkVideoDecodeH264SessionParametersCreateInfoEXT
 	public unsafe VkVideoDecodeH264SessionParametersAddInfoEXT* pParametersAddInfo;
 	public VkVideoDecodeH264SessionParametersCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH264SessionParametersCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH264SessionParametersCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -14376,13 +11466,8 @@ public partial struct VkVideoDecodeH264PictureInfoEXT
 	public unsafe uint* pSlicesDataOffsets;
 	public VkVideoDecodeH264PictureInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH264PictureInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH264PictureInfoEXT;
-		#endif
 	}
 }
 
@@ -14394,13 +11479,8 @@ public partial struct VkVideoDecodeH264MvcEXT
 	public unsafe StdVideoDecodeH264Mvc* pStdMvc;
 	public VkVideoDecodeH264MvcEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH264MvcEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH264MvcEXT;
-		#endif
 	}
 }
 
@@ -14412,13 +11492,8 @@ public partial struct VkVideoDecodeH264DpbSlotInfoEXT
 	public unsafe StdVideoDecodeH264ReferenceInfo* pStdReferenceInfo;
 	public VkVideoDecodeH264DpbSlotInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH264DpbSlotInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH264DpbSlotInfoEXT;
-		#endif
 	}
 }
 
@@ -14470,13 +11545,8 @@ public partial struct VkVideoDecodeH265ProfileEXT
 	public StdVideoH265ProfileIdc stdProfileIdc;
 	public VkVideoDecodeH265ProfileEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH265ProfileEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH265ProfileEXT;
-		#endif
 	}
 }
 
@@ -14488,13 +11558,8 @@ public partial struct VkVideoDecodeH265CapabilitiesEXT
 	public StdVideoH265Level maxLevel;
 	public VkVideoDecodeH265CapabilitiesEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH265CapabilitiesEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH265CapabilitiesEXT;
-		#endif
 	}
 }
 
@@ -14511,13 +11576,8 @@ public partial struct VkVideoDecodeH265SessionParametersAddInfoEXT
 	public unsafe StdVideoH265PictureParameterSet* pPpsStd;
 	public VkVideoDecodeH265SessionParametersAddInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH265SessionParametersAddInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH265SessionParametersAddInfoEXT;
-		#endif
 	}
 }
 
@@ -14532,13 +11592,8 @@ public partial struct VkVideoDecodeH265SessionParametersCreateInfoEXT
 	public unsafe VkVideoDecodeH265SessionParametersAddInfoEXT* pParametersAddInfo;
 	public VkVideoDecodeH265SessionParametersCreateInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH265SessionParametersCreateInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH265SessionParametersCreateInfoEXT;
-		#endif
 	}
 }
 
@@ -14552,13 +11607,8 @@ public partial struct VkVideoDecodeH265PictureInfoEXT
 	public unsafe uint* pSlicesDataOffsets;
 	public VkVideoDecodeH265PictureInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH265PictureInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH265PictureInfoEXT;
-		#endif
 	}
 }
 
@@ -14570,13 +11620,8 @@ public partial struct VkVideoDecodeH265DpbSlotInfoEXT
 	public unsafe StdVideoDecodeH265ReferenceInfo* pStdReferenceInfo;
 	public VkVideoDecodeH265DpbSlotInfoEXT()
 	{
-		#if NET6_0_OR_GREATER
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.VideoDecodeH265DpbSlotInfoEXT;
-		#else
-		this = default;
-		sType = VkStructureType.VideoDecodeH265DpbSlotInfoEXT;
-		#endif
 	}
 }
 

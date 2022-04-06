@@ -103,13 +103,8 @@ public static partial class CsCodeGenerator
 
                     using (writer.PushBlock($"public {csName}()"))
                     {
-                        writer.WriteLine("#if NET6_0_OR_GREATER");
                         writer.WriteLine("Unsafe.SkipInit(out this);");
                         writer.WriteLine($"sType = VkStructureType.{structureTypeValue};");
-                        writer.WriteLine("#else");
-                        writer.WriteLine("this = default;");
-                        writer.WriteLine($"sType = VkStructureType.{structureTypeValue};");
-                        writer.WriteLine("#endif");
                     }
                 }
             }
