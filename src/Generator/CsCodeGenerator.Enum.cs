@@ -178,7 +178,7 @@ public static partial class CsCodeGenerator
 
     public static void GenerateEnums(CppCompilation compilation, string outputPath)
     {
-        using var writer = new CodeWriter(Path.Combine(outputPath, "Enumerations.cs"), "System");
+        using var writer = new CodeWriter(Path.Combine(outputPath, "Enumerations.cs"), false, "System");
         var createdEnums = new Dictionary<string, string>();
 
         foreach (CppEnum cppEnum in compilation.Enums)

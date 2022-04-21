@@ -7,7 +7,6 @@
 // </auto-generated>
 // ------------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
@@ -10831,7 +10830,6 @@ public partial struct StdVideoH265SequenceParameterSet
 	public byte bit_depth_luma_minus8;
 	public byte bit_depth_chroma_minus8;
 	public byte log2_max_pic_order_cnt_lsb_minus4;
-	public unsafe fixed byte sps_max_dec_pic_buffering_minus1[8];
 	public byte log2_min_luma_coding_block_size_minus3;
 	public byte log2_diff_max_min_luma_coding_block_size;
 	public byte log2_min_luma_transform_block_size_minus2;

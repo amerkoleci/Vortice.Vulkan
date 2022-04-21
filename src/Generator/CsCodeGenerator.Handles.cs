@@ -11,7 +11,7 @@ public static partial class CsCodeGenerator
     {
         // Generate Functions
         using var writer = new CodeWriter(Path.Combine(outputPath, "Handles.cs"),
-            "System",
+            true,
             "System.Diagnostics"
             );
 
@@ -57,7 +57,7 @@ public static partial class CsCodeGenerator
                 writer.WriteLine($"public static bool operator !=({csName} left, {handleType} right) => left.Handle != right;");
                 writer.WriteLine($"public bool Equals({csName} other) => Handle == other.Handle;");
                 writer.WriteLine("/// <inheritdoc/>");
-                writer.WriteLine($"public override bool Equals(object obj) => obj is {csName} handle && Equals(handle);");
+                writer.WriteLine($"public override bool Equals(object? obj) => obj is {csName} handle && Equals(handle);");
                 writer.WriteLine("/// <inheritdoc/>");
                 writer.WriteLine($"public override int GetHashCode() => Handle.GetHashCode();");
                 writer.WriteLine($"private string DebuggerDisplay => string.Format(\"{csName} [0x{{0}}]\", Handle.ToString(\"X\"));");

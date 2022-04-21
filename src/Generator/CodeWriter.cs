@@ -12,7 +12,7 @@ public sealed class CodeWriter : IDisposable
 
     public int IndentLevel { get; private set; }
 
-    public CodeWriter(string fileName, params string[] namespaces)
+    public CodeWriter(string fileName, bool enableNullable, params string[] namespaces)
     {
         _indentStrings = new string[10];
         for (int i = 0; i < _indentStrings.Length; i++)
@@ -31,7 +31,13 @@ public sealed class CodeWriter : IDisposable
         _writer.WriteLine("// ------------------------------------------------------------------------------");
         _writer.WriteLine();
 
-        foreach (var ns in namespaces)
+        if (enableNullable)
+        {
+            _writer.WriteLine($"#nullable enable");
+            _writer.WriteLine();
+        }
+
+        foreach (string ns in namespaces)
         {
             _writer.WriteLine($"using {ns};");
         }

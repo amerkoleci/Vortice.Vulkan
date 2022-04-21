@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 211
+	/// VK_HEADER_VERSION = 212
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 211;
+	public const uint VK_HEADER_VERSION = 212;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -3223,9 +3223,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264_encode";
 	/// <summary>
-	/// VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 6
+	/// VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 7
 	/// </summary>
-	public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 6;
+	public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 7;
 	/// <summary>
 	/// VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264"
 	/// </summary>
@@ -3287,10 +3287,6 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128;
 	/// <summary>
-	/// STD_VIDEO_H265_SPS_MAX_SUB_LAYERS = 8
-	/// </summary>
-	public const uint STD_VIDEO_H265_SPS_MAX_SUB_LAYERS = 8;
-	/// <summary>
 	/// STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19
 	/// </summary>
 	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19;
@@ -3315,13 +3311,13 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint vulkan_video_codec_h265std_encode = 1;
 	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_6 = VK_MAKE_VIDEO_STD_VERSION(0,9,6)
+	/// VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_7 = VK_MAKE_VIDEO_STD_VERSION(0,9,7)
 	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_6 = new VkVersion(0, 9, 6);
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_7 = new VkVersion(0, 9, 7);
 	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_6
+	/// VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_7
 	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_6;
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_7;
 	/// <summary>
 	/// VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_encode"
 	/// </summary>
@@ -3379,17 +3375,17 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint vulkan_video_codec_h265std_decode = 1;
 	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_6 = VK_MAKE_VIDEO_STD_VERSION(0,9,6)
+	/// VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_7 = VK_MAKE_VIDEO_STD_VERSION(0,9,7)
 	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_6 = new VkVersion(0, 9, 6);
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_7 = new VkVersion(0, 9, 7);
 	/// <summary>
 	/// STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8
 	/// </summary>
 	public const uint STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8;
 	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_6
+	/// VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_7
 	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_6;
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_7;
 	/// <summary>
 	/// VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_decode"
 	/// </summary>

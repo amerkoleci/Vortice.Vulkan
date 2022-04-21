@@ -140,6 +140,7 @@ public static partial class CsCodeGenerator
     {
         // Generate Functions
         using var writer = new CodeWriter(Path.Combine(outputPath, "Commands.cs"),
+            false,
             "System"
             );
 

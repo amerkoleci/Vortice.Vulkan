@@ -14,7 +14,7 @@ public static partial class CsCodeGenerator
     {
         // Generate Structures
         using var writer = new CodeWriter(Path.Combine(outputPath, "Structures.cs"),
-            "System",
+            false,
             "System.Runtime.InteropServices",
             "System.Runtime.CompilerServices"
             );

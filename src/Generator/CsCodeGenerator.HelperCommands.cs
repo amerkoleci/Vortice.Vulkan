@@ -60,7 +60,7 @@ public static partial class CsCodeGenerator
     {
         // Generate Functions
         using var writer = new CodeWriter(Path.Combine(outputPath, "VkHelpers.cs"),
-            "System",
+            false,
             "System.Diagnostics",
             "System.Runtime.InteropServices"
             );
