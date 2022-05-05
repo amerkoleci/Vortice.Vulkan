@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CppAst" Version="0.8.0-alpha-001" />
+    <PackageReference Include="CppAst" Version="0.8.0" />
   </ItemGroup>
 
 </Project>
