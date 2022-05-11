@@ -28,11 +28,13 @@ public static partial class CsCodeGenerator
         { "size_t", "nuint" },
         { "DWORD", "uint" },
 
-        { "VkFlags", "uint" },
-        { "VkFlags64", "ulong" },
-        { "VkDeviceSize", "ulong" },
-        { "VkSampleMask", "uint" },
+
         //{ "VkBool32", "uint" },
+        { "VkDeviceAddress", "ulong" },
+        { "VkDeviceSize", "ulong" },
+        { "VkFlags", "uint" },
+        { "VkSampleMask", "uint" },
+        { "VkFlags64", "ulong" },
 
         { "buffer_handle_t", "IntPtr" },
         { "AHardwareBuffer", "IntPtr" },
@@ -64,8 +66,6 @@ public static partial class CsCodeGenerator
         { "GgpFrameToken", "IntPtr" },
         { "GgpStreamDescriptor", "IntPtr" },
 
-        { "VkMemoryRequirements2KHR", "VkMemoryRequirements2" },
-
         // Vortice.Mathematics types.
         //{ "VkOffset2D", "Point" },
         //{ "VkOffset3D", "Point3" },
@@ -77,9 +77,6 @@ public static partial class CsCodeGenerator
         { "VkAccelerationStructureTypeNV", "VkAccelerationStructureTypeKHR" },
         { "VkAccelerationStructureMemoryRequirementsTypeNV", "VkAccelerationStructureMemoryRequirementsTypeKHR" },
         { "VkAccelerationStructureNV", "VkAccelerationStructureKHR" },
-
-        // TODO: Until we marshal functions
-        { "VkDeviceAddress", "IntPtr" },
 
         { "VkPipelineStageFlagBits2KHR", "VkPipelineStageFlags2KHR" },
         { "VkAccessFlagBits2KHR", "VkAccessFlags2KHR" },
@@ -267,7 +264,7 @@ public static partial class CsCodeGenerator
 
         if (type is CppEnum enumType)
         {
-            var enumCsName = GetCsCleanName(enumType.Name);
+            string enumCsName = GetCsCleanName(enumType.Name);
             if (isPointer)
                 return enumCsName + "*";
 
@@ -276,7 +273,12 @@ public static partial class CsCodeGenerator
 
         if (type is CppTypedef typedef)
         {
-            var typeDefCsName = GetCsCleanName(typedef.Name);
+            if (typedef.ElementType is CppClass classElementType)
+            {
+                return GetCsTypeName(classElementType, isPointer);
+            }
+
+            string typeDefCsName = GetCsCleanName(typedef.Name);
             if (isPointer)
                 return typeDefCsName + "*";
 

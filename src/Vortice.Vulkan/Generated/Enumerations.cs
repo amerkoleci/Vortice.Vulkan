@@ -51,6 +51,7 @@ public enum VkResult
 	ThreadDoneKHR = 1000268001,
 	OperationDeferredKHR = 1000268002,
 	OperationNotDeferredKHR = 1000268003,
+	ErrorCompressionExhaustedEXT = -1000338000,
 	ErrorOutOfPoolMemoryKHR = ErrorOutOfPoolMemory,
 	ErrorInvalidExternalHandleKHR = ErrorInvalidExternalHandle,
 	ErrorFragmentationEXT = ErrorFragmentation,
@@ -644,6 +645,11 @@ public enum VkStructureType
 	PhysicalDeviceFragmentDensityMap2PropertiesEXT = 1000332001,
 	CopyCommandTransformInfoQCOM = 1000333000,
 	PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR = 1000336000,
+	PhysicalDeviceImageCompressionControlFeaturesEXT = 1000338000,
+	ImageCompressionControlEXT = 1000338001,
+	SubresourceLayout2EXT = 1000338002,
+	ImageSubresource2EXT = 1000338003,
+	ImageCompressionPropertiesEXT = 1000338004,
 	PhysicalDevice4444FormatsFeaturesEXT = 1000340000,
 	PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM = 1000342000,
 	PhysicalDeviceRGBA10X6FormatsFeaturesEXT = 1000344000,
@@ -678,11 +684,14 @@ public enum VkStructureType
 	PhysicalDeviceInvocationMaskFeaturesHUAWEI = 1000370000,
 	MemoryGetRemoteAddressInfoNV = 1000371000,
 	PhysicalDeviceExternalMemoryRDMAFeaturesNV = 1000371001,
+	PipelinePropertiesIdentifierEXT = 1000372000,
+	PhysicalDevicePipelinePropertiesFeaturesEXT = 1000372001,
 	PhysicalDeviceExtendedDynamicState2FeaturesEXT = 1000377000,
 	ScreenSurfaceCreateInfoQnx = 1000378000,
 	PhysicalDeviceColorWriteEnableFeaturesEXT = 1000381000,
 	PipelineColorWriteCreateInfoEXT = 1000381001,
 	PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT = 1000382000,
+	PhysicalDeviceRayTracingMaintenance1FeaturesKHR = 1000386000,
 	PhysicalDeviceImageViewMinLodFeaturesEXT = 1000391000,
 	ImageViewMinLodCreateInfoEXT = 1000391001,
 	PhysicalDeviceMultiDrawFeaturesEXT = 1000392000,
@@ -698,6 +707,11 @@ public enum VkStructureType
 	PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM = 1000425001,
 	SubpassFragmentDensityMapOffsetEndInfoQCOM = 1000425002,
 	PhysicalDeviceLinearColorAttachmentFeaturesNV = 1000430000,
+	PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT = 1000437000,
+	PhysicalDeviceSubpassMergeFeedbackFeaturesEXT = 1000458000,
+	RenderPassCreationControlEXT = 1000458001,
+	RenderPassCreationFeedbackInfoEXT = 1000458002,
+	RenderPassSubpassFeedbackInfoEXT = 1000458003,
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 	DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
@@ -859,6 +873,7 @@ public enum VkStructureType
 	BufferImageCopy2KHR = BufferImageCopy2,
 	ImageResolve2KHR = ImageResolve2,
 	FormatProperties3KHR = FormatProperties3,
+	PipelineInfoEXT = PipelineInfoKHR,
 	PhysicalDeviceGlobalPriorityQueryFeaturesEXT = PhysicalDeviceGlobalPriorityQueryFeaturesKHR,
 	QueueFamilyGlobalPriorityPropertiesEXT = QueueFamilyGlobalPriorityPropertiesKHR,
 	PhysicalDeviceMaintenance4FeaturesKHR = PhysicalDeviceMaintenance4Features,
@@ -1331,6 +1346,8 @@ public enum VkQueryType
 	PerformanceQueryINTEL = 1000210000,
 	VideoEncodeBitstreamBufferRangeKHR = 1000299000,
 	PrimitivesGeneratedEXT = 1000382000,
+	AccelerationStructureSerializationBottomLevelPointersKHR = 1000386000,
+	AccelerationStructureSizeKHR = 1000386001,
 }
 
 public enum VkSharingMode
@@ -3311,6 +3328,64 @@ public enum VkAccelerationStructureMotionInstanceTypeNV
 	TypeSrtMotion = 2,
 }
 
+[Flags]
+public enum VkImageCompressionFlagsEXT
+{
+	None = 0,
+	Default = 0,
+	FixedRateDefault = 1,
+	FixedRateExplicit = 2,
+	Disabled = 4,
+}
+
+[Flags]
+public enum VkImageCompressionFixedRateFlagsEXT
+{
+	None = 0,
+	_1bpc = 1,
+	_2bpc = 2,
+	_3bpc = 4,
+	_4bpc = 8,
+	_5bpc = 16,
+	_6bpc = 32,
+	_7bpc = 64,
+	_8bpc = 128,
+	_9bpc = 256,
+	_10bpc = 512,
+	_11bpc = 1024,
+	_12bpc = 2048,
+	_13bpc = 4096,
+	_14bpc = 8192,
+	_15bpc = 16384,
+	_16bpc = 32768,
+	_17bpc = 65536,
+	_18bpc = 131072,
+	_19bpc = 262144,
+	_20bpc = 524288,
+	_21bpc = 1048576,
+	_22bpc = 2097152,
+	_23bpc = 4194304,
+	_24bpc = 8388608,
+}
+
+public enum VkSubpassMergeStatusEXT
+{
+	Merged = 0,
+	Disallowed = 1,
+	NotMergedSideEffects = 2,
+	NotMergedSamplesMismatch = 3,
+	NotMergedViewsMismatch = 4,
+	NotMergedAliasing = 5,
+	NotMergedDependencies = 6,
+	NotMergedIncompatibleInputAttachment = 7,
+	NotMergedTooManyAttachments = 8,
+	NotMergedInsufficientStorage = 9,
+	NotMergedDepthStencilCount = 10,
+	NotMergedResolveAttachmentReuse = 11,
+	NotMergedSingleSubpass = 12,
+	NotMergedUnspecified = 13,
+}
+
 public enum VkBuildAccelerationStructureModeKHR
 {
 	Build = 0,
@@ -4275,6 +4350,7 @@ public enum VkPipelineStageFlags2 : ulong
 	MeshShaderNV = 1048576,
 	SubpassShadingHUAWEI = 549755813888,
 	InvocationMaskHUAWEI = 1099511627776,
+	AccelerationStructureCopyKHR = 268435456,
 }
 
 [Flags]
@@ -4341,6 +4417,7 @@ public enum VkAccessFlags2 : ulong
 	FragmentDensityMapReadEXT = 16777216,
 	ColorAttachmentReadNoncoherentEXT = 524288,
 	InvocationMaskReadHUAWEI = 549755813888,
+	ShaderBindingTableReadKHR = 1099511627776,
 }
 
 [Flags]

@@ -1051,8 +1051,8 @@ unsafe partial class Vulkan
 		return vkSignalSemaphore_ptr(device, signalInfo);
 	}
 
-	private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr> vkGetBufferDeviceAddress_ptr;
-	public static IntPtr vkGetBufferDeviceAddress(VkDevice device, VkBufferDeviceAddressInfo* info)
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferDeviceAddress_ptr;
+	public static ulong vkGetBufferDeviceAddress(VkDevice device, VkBufferDeviceAddressInfo* info)
 	{
 		return vkGetBufferDeviceAddress_ptr(device, info);
 	}
@@ -1777,8 +1777,8 @@ unsafe partial class Vulkan
 		return vkWaitForPresentKHR_ptr(device, swapchain, presentId, timeout);
 	}
 
-	private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr> vkGetBufferDeviceAddressKHR_ptr;
-	public static IntPtr vkGetBufferDeviceAddressKHR(VkDevice device, VkBufferDeviceAddressInfo* info)
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferDeviceAddressKHR_ptr;
+	public static ulong vkGetBufferDeviceAddressKHR(VkDevice device, VkBufferDeviceAddressInfo* info)
 	{
 		return vkGetBufferDeviceAddressKHR_ptr(device, info);
 	}
@@ -1925,6 +1925,12 @@ unsafe partial class Vulkan
 	public static void vkCmdResolveImage2KHR(VkCommandBuffer commandBuffer, VkResolveImageInfo2* resolveImageInfo)
 	{
 		vkCmdResolveImage2KHR_ptr(commandBuffer, resolveImageInfo);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, ulong, void> vkCmdTraceRaysIndirect2KHR_ptr;
+	public static void vkCmdTraceRaysIndirect2KHR(VkCommandBuffer commandBuffer, ulong indirectDeviceAddress)
+	{
+		vkCmdTraceRaysIndirect2KHR_ptr(commandBuffer, indirectDeviceAddress);
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirementsKHR_ptr;
@@ -2497,8 +2503,8 @@ unsafe partial class Vulkan
 		vkSetLocalDimmingAMD_ptr(device, swapChain, localDimmingEnable);
 	}
 
-	private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr> vkGetBufferDeviceAddressEXT_ptr;
-	public static IntPtr vkGetBufferDeviceAddressEXT(VkDevice device, VkBufferDeviceAddressInfo* info)
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferDeviceAddressEXT_ptr;
+	public static ulong vkGetBufferDeviceAddressEXT(VkDevice device, VkBufferDeviceAddressInfo* info)
 	{
 		return vkGetBufferDeviceAddressEXT_ptr(device, info);
 	}
@@ -2689,6 +2695,12 @@ unsafe partial class Vulkan
 		vkCmdSetFragmentShadingRateEnumNV_ptr(commandBuffer, shadingRate, combinerOps);
 	}
 
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkImageSubresource2EXT*, VkSubresourceLayout2EXT*, void> vkGetImageSubresourceLayout2EXT_ptr;
+	public static void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2EXT* subresource, VkSubresourceLayout2EXT* layout)
+	{
+		vkGetImageSubresourceLayout2EXT_ptr(device, image, subresource, layout);
+	}
+
 	private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkResult> vkAcquireWinrtDisplayNV_ptr;
 	public static VkResult vkAcquireWinrtDisplayNV(VkPhysicalDevice physicalDevice, VkDisplayKHR display)
 	{
@@ -2729,6 +2741,12 @@ unsafe partial class Vulkan
 	public static VkResult vkGetMemoryRemoteAddressNV(VkDevice device, VkMemoryGetRemoteAddressInfoNV* memoryGetRemoteAddressInfo, VkRemoteAddressNV* address)
 	{
 		return vkGetMemoryRemoteAddressNV_ptr(device, memoryGetRemoteAddressInfo, address);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkPipelineInfoKHR*, VkBaseOutStructure*, VkResult> vkGetPipelinePropertiesEXT_ptr;
+	public static VkResult vkGetPipelinePropertiesEXT(VkDevice device, VkPipelineInfoKHR* pipelineInfo, VkBaseOutStructure* pipelineProperties)
+	{
+		return vkGetPipelinePropertiesEXT_ptr(device, pipelineInfo, pipelineProperties);
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void> vkCmdSetPatchControlPointsEXT_ptr;
@@ -2815,8 +2833,8 @@ unsafe partial class Vulkan
 		vkCmdBuildAccelerationStructuresKHR_ptr(commandBuffer, infoCount, infos, ppBuildRangeInfos);
 	}
 
-	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkAccelerationStructureBuildGeometryInfoKHR*, IntPtr*, uint*, uint**, void> vkCmdBuildAccelerationStructuresIndirectKHR_ptr;
-	public static void vkCmdBuildAccelerationStructuresIndirectKHR(VkCommandBuffer commandBuffer, int infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, IntPtr* indirectDeviceAddresses, uint* indirectStrides, uint** ppMaxPrimitiveCounts)
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkAccelerationStructureBuildGeometryInfoKHR*, ulong*, uint*, uint**, void> vkCmdBuildAccelerationStructuresIndirectKHR_ptr;
+	public static void vkCmdBuildAccelerationStructuresIndirectKHR(VkCommandBuffer commandBuffer, int infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, ulong* indirectDeviceAddresses, uint* indirectStrides, uint** ppMaxPrimitiveCounts)
 	{
 		vkCmdBuildAccelerationStructuresIndirectKHR_ptr(commandBuffer, infoCount, infos, indirectDeviceAddresses, indirectStrides, ppMaxPrimitiveCounts);
 	}
@@ -2869,8 +2887,8 @@ unsafe partial class Vulkan
 		vkCmdCopyMemoryToAccelerationStructureKHR_ptr(commandBuffer, info);
 	}
 
-	private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureDeviceAddressInfoKHR*, IntPtr> vkGetAccelerationStructureDeviceAddressKHR_ptr;
-	public static IntPtr vkGetAccelerationStructureDeviceAddressKHR(VkDevice device, VkAccelerationStructureDeviceAddressInfoKHR* info)
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureDeviceAddressInfoKHR*, ulong> vkGetAccelerationStructureDeviceAddressKHR_ptr;
+	public static ulong vkGetAccelerationStructureDeviceAddressKHR(VkDevice device, VkAccelerationStructureDeviceAddressInfoKHR* info)
 	{
 		return vkGetAccelerationStructureDeviceAddressKHR_ptr(device, info);
 	}
@@ -2911,8 +2929,8 @@ unsafe partial class Vulkan
 		return vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr(device, pipeline, firstGroup, groupCount, dataSize, data);
 	}
 
-	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, IntPtr, void> vkCmdTraceRaysIndirectKHR_ptr;
-	public static void vkCmdTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, IntPtr indirectDeviceAddress)
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, ulong, void> vkCmdTraceRaysIndirectKHR_ptr;
+	public static void vkCmdTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, ulong indirectDeviceAddress)
 	{
 		vkCmdTraceRaysIndirectKHR_ptr(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, hitShaderBindingTable, callableShaderBindingTable, indirectDeviceAddress);
 	}
@@ -3297,7 +3315,7 @@ unsafe partial class Vulkan
 		vkGetSemaphoreCounterValue_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphore, ulong*, VkResult>) load(context, nameof(vkGetSemaphoreCounterValue));
 		vkWaitSemaphores_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult>) load(context, nameof(vkWaitSemaphores));
 		vkSignalSemaphore_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreSignalInfo*, VkResult>) load(context, nameof(vkSignalSemaphore));
-		vkGetBufferDeviceAddress_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr>) load(context, nameof(vkGetBufferDeviceAddress));
+		vkGetBufferDeviceAddress_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferDeviceAddress));
 		vkGetBufferOpaqueCaptureAddress_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferOpaqueCaptureAddress));
 		vkGetDeviceMemoryOpaqueCaptureAddress_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong>) load(context, nameof(vkGetDeviceMemoryOpaqueCaptureAddress));
 		vkCreatePrivateDataSlot_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult>) load(context, nameof(vkCreatePrivateDataSlot));
@@ -3384,7 +3402,7 @@ unsafe partial class Vulkan
 		vkSignalSemaphoreKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreSignalInfo*, VkResult>) load(context, nameof(vkSignalSemaphoreKHR));
 		vkCmdSetFragmentShadingRateKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkExtent2D*, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateKHR));
 		vkWaitForPresentKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, ulong, ulong, VkResult>) load(context, nameof(vkWaitForPresentKHR));
-		vkGetBufferDeviceAddressKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr>) load(context, nameof(vkGetBufferDeviceAddressKHR));
+		vkGetBufferDeviceAddressKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferDeviceAddressKHR));
 		vkGetBufferOpaqueCaptureAddressKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferOpaqueCaptureAddressKHR));
 		vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong>) load(context, nameof(vkGetDeviceMemoryOpaqueCaptureAddressKHR));
 		vkCreateDeferredOperationKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAllocationCallbacks*, VkDeferredOperationKHR*, VkResult>) load(context, nameof(vkCreateDeferredOperationKHR));
@@ -3409,6 +3427,7 @@ unsafe partial class Vulkan
 		vkCmdCopyImageToBuffer2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyImageToBufferInfo2*, void>) load(context, nameof(vkCmdCopyImageToBuffer2KHR));
 		vkCmdBlitImage2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBlitImageInfo2*, void>) load(context, nameof(vkCmdBlitImage2KHR));
 		vkCmdResolveImage2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkResolveImageInfo2*, void>) load(context, nameof(vkCmdResolveImage2KHR));
+		vkCmdTraceRaysIndirect2KHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, ulong, void>) load(context, nameof(vkCmdTraceRaysIndirect2KHR));
 		vkGetDeviceBufferMemoryRequirementsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceBufferMemoryRequirementsKHR));
 		vkGetDeviceImageMemoryRequirementsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageMemoryRequirementsKHR));
 		vkGetDeviceImageSparseMemoryRequirementsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceImageMemoryRequirements*, int*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageSparseMemoryRequirementsKHR));
@@ -3485,7 +3504,7 @@ unsafe partial class Vulkan
 		vkQueueSetPerformanceConfigurationINTEL_ptr = (delegate* unmanaged[Stdcall]<VkQueue, VkPerformanceConfigurationINTEL, VkResult>) load(context, nameof(vkQueueSetPerformanceConfigurationINTEL));
 		vkGetPerformanceParameterINTEL_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPerformanceParameterTypeINTEL, VkPerformanceValueINTEL*, VkResult>) load(context, nameof(vkGetPerformanceParameterINTEL));
 		vkSetLocalDimmingAMD_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkBool32, void>) load(context, nameof(vkSetLocalDimmingAMD));
-		vkGetBufferDeviceAddressEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, IntPtr>) load(context, nameof(vkGetBufferDeviceAddressEXT));
+		vkGetBufferDeviceAddressEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferDeviceAddressEXT));
 		vkCmdSetLineStippleEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, ushort, void>) load(context, nameof(vkCmdSetLineStippleEXT));
 		vkResetQueryPoolEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkQueryPool, uint, int, void>) load(context, nameof(vkResetQueryPoolEXT));
 		vkCmdSetCullModeEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCullModeFlags, void>) load(context, nameof(vkCmdSetCullModeEXT));
@@ -3511,11 +3530,13 @@ unsafe partial class Vulkan
 		vkSetPrivateDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong, VkResult>) load(context, nameof(vkSetPrivateDataEXT));
 		vkGetPrivateDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void>) load(context, nameof(vkGetPrivateDataEXT));
 		vkCmdSetFragmentShadingRateEnumNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateEnumNV));
+		vkGetImageSubresourceLayout2EXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkImageSubresource2EXT*, VkSubresourceLayout2EXT*, void>) load(context, nameof(vkGetImageSubresourceLayout2EXT));
 		vkCmdSetVertexInputEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkVertexInputBindingDescription2EXT*, int, VkVertexInputAttributeDescription2EXT*, void>) load(context, nameof(vkCmdSetVertexInputEXT));
 		vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkRenderPass, VkExtent2D*, VkResult>) load(context, nameof(vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI));
 		vkCmdSubpassShadingHUAWEI_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, void>) load(context, nameof(vkCmdSubpassShadingHUAWEI));
 		vkCmdBindInvocationMaskHUAWEI_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkImageView, VkImageLayout, void>) load(context, nameof(vkCmdBindInvocationMaskHUAWEI));
 		vkGetMemoryRemoteAddressNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkMemoryGetRemoteAddressInfoNV*, VkRemoteAddressNV*, VkResult>) load(context, nameof(vkGetMemoryRemoteAddressNV));
+		vkGetPipelinePropertiesEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipelineInfoKHR*, VkBaseOutStructure*, VkResult>) load(context, nameof(vkGetPipelinePropertiesEXT));
 		vkCmdSetPatchControlPointsEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetPatchControlPointsEXT));
 		vkCmdSetRasterizerDiscardEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetRasterizerDiscardEnableEXT));
 		vkCmdSetDepthBiasEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthBiasEnableEXT));
@@ -3530,7 +3551,7 @@ unsafe partial class Vulkan
 		vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));
 		vkDestroyAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyAccelerationStructureKHR));
 		vkCmdBuildAccelerationStructuresKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void>) load(context, nameof(vkCmdBuildAccelerationStructuresKHR));
-		vkCmdBuildAccelerationStructuresIndirectKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkAccelerationStructureBuildGeometryInfoKHR*, IntPtr*, uint*, uint**, void>) load(context, nameof(vkCmdBuildAccelerationStructuresIndirectKHR));
+		vkCmdBuildAccelerationStructuresIndirectKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkAccelerationStructureBuildGeometryInfoKHR*, ulong*, uint*, uint**, void>) load(context, nameof(vkCmdBuildAccelerationStructuresIndirectKHR));
 		vkBuildAccelerationStructuresKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, int, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, VkResult>) load(context, nameof(vkBuildAccelerationStructuresKHR));
 		vkCopyAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureInfoKHR*, VkResult>) load(context, nameof(vkCopyAccelerationStructureKHR));
 		vkCopyAccelerationStructureToMemoryKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureToMemoryInfoKHR*, VkResult>) load(context, nameof(vkCopyAccelerationStructureToMemoryKHR));
@@ -3539,14 +3560,14 @@ unsafe partial class Vulkan
 		vkCmdCopyAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyAccelerationStructureInfoKHR*, void>) load(context, nameof(vkCmdCopyAccelerationStructureKHR));
 		vkCmdCopyAccelerationStructureToMemoryKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyAccelerationStructureToMemoryInfoKHR*, void>) load(context, nameof(vkCmdCopyAccelerationStructureToMemoryKHR));
 		vkCmdCopyMemoryToAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyMemoryToAccelerationStructureInfoKHR*, void>) load(context, nameof(vkCmdCopyMemoryToAccelerationStructureKHR));
-		vkGetAccelerationStructureDeviceAddressKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureDeviceAddressInfoKHR*, IntPtr>) load(context, nameof(vkGetAccelerationStructureDeviceAddressKHR));
+		vkGetAccelerationStructureDeviceAddressKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureDeviceAddressInfoKHR*, ulong>) load(context, nameof(vkGetAccelerationStructureDeviceAddressKHR));
 		vkCmdWriteAccelerationStructuresPropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void>) load(context, nameof(vkCmdWriteAccelerationStructuresPropertiesKHR));
 		vkGetDeviceAccelerationStructureCompatibilityKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureVersionInfoKHR*, VkAccelerationStructureCompatibilityKHR*, void>) load(context, nameof(vkGetDeviceAccelerationStructureCompatibilityKHR));
 		vkGetAccelerationStructureBuildSizesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureBuildTypeKHR, VkAccelerationStructureBuildGeometryInfoKHR*, uint*, VkAccelerationStructureBuildSizesInfoKHR*, void>) load(context, nameof(vkGetAccelerationStructureBuildSizesKHR));
 		vkCmdTraceRaysKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, uint, uint, uint, void>) load(context, nameof(vkCmdTraceRaysKHR));
 		vkCreateRayTracingPipelinesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkPipelineCache, int, VkRayTracingPipelineCreateInfoKHR*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateRayTracingPipelinesKHR));
 		vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, int*, nuint, void*, VkResult>) load(context, nameof(vkGetRayTracingCaptureReplayShaderGroupHandlesKHR));
-		vkCmdTraceRaysIndirectKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, IntPtr, void>) load(context, nameof(vkCmdTraceRaysIndirectKHR));
+		vkCmdTraceRaysIndirectKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, ulong, void>) load(context, nameof(vkCmdTraceRaysIndirectKHR));
 		vkGetRayTracingShaderGroupStackSizeKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, VkShaderGroupShaderKHR, ulong>) load(context, nameof(vkGetRayTracingShaderGroupStackSizeKHR));
 		vkCmdSetRayTracingPipelineStackSizeKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetRayTracingPipelineStackSizeKHR));
 		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged[Stdcall]<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));

@@ -5475,6 +5475,39 @@ public partial struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 rayTracingMaintenance1;
+	public VkBool32 rayTracingPipelineTraceRaysIndirect2;
+	public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.PhysicalDeviceRayTracingMaintenance1FeaturesKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkTraceRaysIndirectCommand2KHR
+{
+	public ulong raygenShaderRecordAddress;
+	public ulong raygenShaderRecordSize;
+	public ulong missShaderBindingTableAddress;
+	public ulong missShaderBindingTableSize;
+	public ulong missShaderBindingTableStride;
+	public ulong hitShaderBindingTableAddress;
+	public ulong hitShaderBindingTableSize;
+	public ulong hitShaderBindingTableStride;
+	public ulong callableShaderBindingTableAddress;
+	public ulong callableShaderBindingTableSize;
+	public ulong callableShaderBindingTableStride;
+	public uint width;
+	public uint height;
+	public uint depth;
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkDebugReportCallbackCreateInfoEXT
 {
 	public VkStructureType sType;
@@ -5714,7 +5747,7 @@ public partial struct VkImageViewAddressPropertiesNVX
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public IntPtr deviceAddress;
+	public ulong deviceAddress;
 	public ulong size;
 	public VkImageViewAddressPropertiesNVX()
 	{
@@ -7578,7 +7611,7 @@ public partial struct VkBufferDeviceAddressCreateInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public IntPtr deviceAddress;
+	public ulong deviceAddress;
 	public VkBufferDeviceAddressCreateInfoEXT()
 	{
 		Unsafe.SkipInit(out this);
@@ -7970,7 +8003,7 @@ public partial struct VkBindShaderGroupIndirectCommandNV
 [StructLayout(LayoutKind.Sequential)]
 public partial struct VkBindIndexBufferIndirectCommandNV
 {
-	public IntPtr bufferAddress;
+	public ulong bufferAddress;
 	public uint size;
 	public VkIndexType indexType;
 }
@@ -7978,7 +8011,7 @@ public partial struct VkBindIndexBufferIndirectCommandNV
 [StructLayout(LayoutKind.Sequential)]
 public partial struct VkBindVertexBufferIndirectCommandNV
 {
-	public IntPtr bufferAddress;
+	public ulong bufferAddress;
 	public uint size;
 	public uint stride;
 }
@@ -8383,7 +8416,7 @@ public partial struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV
 public partial struct VkDeviceOrHostAddressConstKHR
 {
 	[FieldOffset(0)]
-	public IntPtr deviceAddress;
+	public ulong deviceAddress;
 	[FieldOffset(0)]
 	public unsafe void* hostAddress;
 }
@@ -8521,6 +8554,74 @@ public partial struct VkCopyCommandTransformInfoQCOM
 	{
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.CopyCommandTransformInfoQCOM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceImageCompressionControlFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 imageCompressionControl;
+	public VkPhysicalDeviceImageCompressionControlFeaturesEXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.PhysicalDeviceImageCompressionControlFeaturesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkImageCompressionControlEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkImageCompressionFlagsEXT flags;
+	public uint compressionControlPlaneCount;
+	public unsafe VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags;
+	public VkImageCompressionControlEXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.ImageCompressionControlEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkSubresourceLayout2EXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkSubresourceLayout subresourceLayout;
+	public VkSubresourceLayout2EXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.SubresourceLayout2EXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkImageSubresource2EXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkImageSubresource imageSubresource;
+	public VkImageSubresource2EXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.ImageSubresource2EXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkImageCompressionPropertiesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkImageCompressionFlagsEXT imageCompressionFlags;
+	public VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags;
+	public VkImageCompressionPropertiesEXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.ImageCompressionPropertiesEXT;
 	}
 }
 
@@ -8780,6 +8881,32 @@ public partial struct VkPhysicalDeviceExternalMemoryRDMAFeaturesNV
 	{
 		Unsafe.SkipInit(out this);
 		sType = VkStructureType.PhysicalDeviceExternalMemoryRDMAFeaturesNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPipelinePropertiesIdentifierEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public unsafe fixed byte pipelineIdentifier[16];
+	public VkPipelinePropertiesIdentifierEXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.PipelinePropertiesIdentifierEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDevicePipelinePropertiesFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 pipelinePropertiesIdentifier;
+	public VkPhysicalDevicePipelinePropertiesFeaturesEXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.PhysicalDevicePipelinePropertiesFeaturesEXT;
 	}
 }
 
@@ -9056,11 +9183,78 @@ public partial struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV
 	}
 }
 
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 imageCompressionControlSwapchain;
+	public VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 subpassMergeFeedback;
+	public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.PhysicalDeviceSubpassMergeFeedbackFeaturesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkRenderPassCreationControlEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 disallowMerging;
+	public VkRenderPassCreationControlEXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.RenderPassCreationControlEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkRenderPassCreationFeedbackInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint postMergeSubpassCount;
+	public VkRenderPassCreationFeedbackInfoEXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.RenderPassCreationFeedbackInfoEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkRenderPassSubpassFeedbackInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkSubpassMergeStatusEXT subpassMergeStatus;
+	public unsafe fixed byte description[256];
+	public uint postMergeIndex;
+	public VkRenderPassSubpassFeedbackInfoEXT()
+	{
+		Unsafe.SkipInit(out this);
+		sType = VkStructureType.RenderPassSubpassFeedbackInfoEXT;
+	}
+}
+
 [StructLayout(LayoutKind.Explicit)]
 public partial struct VkDeviceOrHostAddressKHR
 {
 	[FieldOffset(0)]
-	public IntPtr deviceAddress;
+	public ulong deviceAddress;
 	[FieldOffset(0)]
 	public unsafe void* hostAddress;
 }
@@ -9178,7 +9372,7 @@ public partial struct VkAccelerationStructureCreateInfoKHR
 	public ulong offset;
 	public ulong size;
 	public VkAccelerationStructureTypeKHR type;
-	public IntPtr deviceAddress;
+	public ulong deviceAddress;
 	public VkAccelerationStructureCreateInfoKHR()
 	{
 		Unsafe.SkipInit(out this);
@@ -9419,7 +9613,7 @@ public partial struct VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 [StructLayout(LayoutKind.Sequential)]
 public partial struct VkStridedDeviceAddressRegionKHR
 {
-	public IntPtr deviceAddress;
+	public ulong deviceAddress;
 	public ulong stride;
 	public ulong size;
 }

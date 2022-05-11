@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 212
+	/// VK_HEADER_VERSION = 213
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 212;
+	public const uint VK_HEADER_VERSION = 213;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -1006,6 +1006,18 @@ public static partial class Vulkan
 	/// VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME = "VK_KHR_format_feature_flags2"
 	/// </summary>
 	public const string VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME = "VK_KHR_format_feature_flags2";
+	/// <summary>
+	/// VK_KHR_ray_tracing_maintenance1 = 1
+	/// </summary>
+	public const uint VK_KHR_ray_tracing_maintenance1 = 1;
+	/// <summary>
+	/// VK_KHR_RAY_TRACING_MAINTENANCE_1_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_KHR_RAY_TRACING_MAINTENANCE_1_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_KHR_RAY_TRACING_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_ray_tracing_maintenance1"
+	/// </summary>
+	public const string VK_KHR_RAY_TRACING_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_ray_tracing_maintenance1";
 	/// <summary>
 	/// VK_KHR_portability_enumeration = 1
 	/// </summary>
@@ -2699,6 +2711,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_EXT_IMAGE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_image_robustness";
 	/// <summary>
+	/// VK_EXT_image_compression_control = 1
+	/// </summary>
+	public const uint VK_EXT_image_compression_control = 1;
+	/// <summary>
+	/// VK_EXT_IMAGE_COMPRESSION_CONTROL_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_IMAGE_COMPRESSION_CONTROL_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_IMAGE_COMPRESSION_CONTROL_EXTENSION_NAME = "VK_EXT_image_compression_control"
+	/// </summary>
+	public const string VK_EXT_IMAGE_COMPRESSION_CONTROL_EXTENSION_NAME = "VK_EXT_image_compression_control";
+	/// <summary>
 	/// VK_EXT_4444_formats = 1
 	/// </summary>
 	public const uint VK_EXT_4444_formats = 1;
@@ -2842,6 +2866,18 @@ public static partial class Vulkan
 	/// VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma"
 	/// </summary>
 	public const string VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma";
+	/// <summary>
+	/// VK_EXT_pipeline_properties = 1
+	/// </summary>
+	public const uint VK_EXT_pipeline_properties = 1;
+	/// <summary>
+	/// VK_EXT_PIPELINE_PROPERTIES_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_PIPELINE_PROPERTIES_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_PIPELINE_PROPERTIES_EXTENSION_NAME = "VK_EXT_pipeline_properties"
+	/// </summary>
+	public const string VK_EXT_PIPELINE_PROPERTIES_EXTENSION_NAME = "VK_EXT_pipeline_properties";
 	/// <summary>
 	/// VK_EXT_extended_dynamic_state2 = 1
 	/// </summary>
@@ -3014,6 +3050,30 @@ public static partial class Vulkan
 	/// VK_GOOGLE_SURFACELESS_QUERY_EXTENSION_NAME = "VK_GOOGLE_surfaceless_query"
 	/// </summary>
 	public const string VK_GOOGLE_SURFACELESS_QUERY_EXTENSION_NAME = "VK_GOOGLE_surfaceless_query";
+	/// <summary>
+	/// VK_EXT_image_compression_control_swapchain = 1
+	/// </summary>
+	public const uint VK_EXT_image_compression_control_swapchain = 1;
+	/// <summary>
+	/// VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_EXTENSION_NAME = "VK_EXT_image_compression_control_swapchain"
+	/// </summary>
+	public const string VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_EXTENSION_NAME = "VK_EXT_image_compression_control_swapchain";
+	/// <summary>
+	/// VK_EXT_subpass_merge_feedback = 1
+	/// </summary>
+	public const uint VK_EXT_subpass_merge_feedback = 1;
+	/// <summary>
+	/// VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_SUBPASS_MERGE_FEEDBACK_EXTENSION_NAME = "VK_EXT_subpass_merge_feedback"
+	/// </summary>
+	public const string VK_EXT_SUBPASS_MERGE_FEEDBACK_EXTENSION_NAME = "VK_EXT_subpass_merge_feedback";
 	/// <summary>
 	/// VK_KHR_acceleration_structure = 1
 	/// </summary>
