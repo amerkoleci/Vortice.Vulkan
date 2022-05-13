@@ -3,10 +3,9 @@
 
 using System.Numerics;
 using Vortice.Vulkan;
-using Vortice.Vulkan.Vma;
 using static Vortice.Vulkan.Vulkan;
 
-namespace DrawTriangle;
+namespace ClearScreen;
 
 public static unsafe class Program
 {
@@ -24,23 +23,12 @@ public static unsafe class Program
     class TestApp : Application
     {
         private GraphicsDevice? _graphicsDevice;
-        private Allocator _allocator;
         private float _green = 0.0f;
-
         public override string Name => "01-ClearScreen";
 
         protected override void Initialize()
         {
-            // Need to initialize 
-            vkInitialize().CheckResult();
-
             _graphicsDevice = new GraphicsDevice(Name, EnableValidationLayers, MainWindow);
-
-            var allocatorCreateInfo = new AllocatorCreateInfo
-            {
-                PhysicalDevice = _graphicsDevice.PhysicalDevice
-            };
-            _allocator = new Allocator(allocatorCreateInfo);
         }
 
         public override void Dispose()

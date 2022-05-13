@@ -2,6 +2,7 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using static Vortice.Vulkan.Vulkan.Kernel32;
 using static Vortice.Vulkan.Vulkan.Libdl;
 
@@ -251,34 +252,23 @@ public static unsafe partial class Vulkan
         return vkCreateShaderModule(device, &createInfo, allocator, out shaderModule);
     }
 
-    public static VkResult vkCreateShaderModule(VkDevice device, Span<byte> code, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
+    public static VkResult vkCreateShaderModule(VkDevice device, ReadOnlySpan<byte> bytecode, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
     {
-        fixed (byte* codePtr = code)
+        var createInfo = new VkShaderModuleCreateInfo
         {
-            var createInfo = new VkShaderModuleCreateInfo
-            {
-                sType = VkStructureType.ShaderModuleCreateInfo,
-                codeSize = (nuint)code.Length,
-                pCode = (uint*)codePtr
-            };
+            sType = VkStructureType.ShaderModuleCreateInfo,
+            codeSize = (nuint)bytecode.Length,
+            pCode = (uint*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(bytecode))
+        };
 
-            return vkCreateShaderModule(device, &createInfo, allocator, out shaderModule);
-        }
+        return vkCreateShaderModule(device, &createInfo, allocator, out shaderModule);
     }
 
     public static VkResult vkCreateShaderModule(VkDevice device, byte[] bytecode, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
     {
-        fixed (byte* bytecodePtr = bytecode)
-        {
-            var createInfo = new VkShaderModuleCreateInfo
-            {
-                sType = VkStructureType.ShaderModuleCreateInfo,
-                codeSize = (nuint)bytecode.Length,
-                pCode = (uint*)bytecodePtr
-            };
+        ReadOnlySpan<byte> span = bytecode.AsSpan();
 
-            return vkCreateShaderModule(device, &createInfo, allocator, out shaderModule);
-        }
+        return vkCreateShaderModule(device, span, allocator, out shaderModule);
     }
 
     public static VkResult vkCreateGraphicsPipeline(VkDevice device, VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
@@ -302,21 +292,6 @@ public static unsafe partial class Vulkan
         return vkCreateGraphicsPipelines_ptr(device, pipelineCache, 1, &createInfo, null, pipeline);
     }
 
-    public static VkResult vkCreateGraphicsPipelines(
-        VkDevice device,
-        VkPipelineCache pipelineCache,
-        ReadOnlySpan<VkGraphicsPipelineCreateInfo> createInfos,
-        Span<VkPipeline> pipelines)
-    {
-        fixed (VkGraphicsPipelineCreateInfo* createInfosPtr = createInfos)
-        {
-            fixed (VkPipeline* pipelinesPtr = pipelines)
-            {
-                return vkCreateGraphicsPipelines(device, pipelineCache, createInfos.Length, createInfosPtr, null, pipelinesPtr);
-            }
-        }
-    }
-
     public static VkResult vkCreateComputePipeline(VkDevice device, VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
     {
         fixed (VkPipeline* pipelinePtr = &pipeline)
@@ -336,55 +311,6 @@ public static unsafe partial class Vulkan
     public static VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, VkComputePipelineCreateInfo createInfo, VkPipeline* pipeline)
     {
         return vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, pipeline);
-    }
-
-    public static VkResult vkCreateComputePipelines(
-        VkDevice device,
-        VkPipelineCache pipelineCache,
-        ReadOnlySpan<VkComputePipelineCreateInfo> createInfos,
-        Span<VkPipeline> pipelines)
-    {
-        fixed (VkComputePipelineCreateInfo* createInfosPtr = createInfos)
-        {
-            fixed (VkPipeline* pipelinesPtr = pipelines)
-            {
-                return vkCreateComputePipelines(device, pipelineCache, createInfos.Length, createInfosPtr, null, pipelinesPtr);
-            }
-        }
-    }
-
-    public static Span<T> vkMapMemory<T>(VkDevice device, VkBuffer buffer, VkDeviceMemory memory, ulong offset = 0, ulong size = VK_WHOLE_SIZE, VkMemoryMapFlags flags = VkMemoryMapFlags.None) where T : unmanaged
-    {
-        void* pData;
-        vkMapMemory(device, memory, offset, size, flags, &pData).CheckResult();
-
-        if (size == VK_WHOLE_SIZE)
-        {
-            vkGetBufferMemoryRequirements(device, buffer, out VkMemoryRequirements memoryRequirements);
-            size = memoryRequirements.size;
-        }
-
-        int oneItemSize = sizeof(T);
-        int spanLength = (int)size / oneItemSize;
-
-        return new Span<T>(pData, spanLength);
-    }
-
-    public static Span<T> vkMapMemory<T>(VkDevice device, VkImage image, VkDeviceMemory memory, ulong offset = 0, ulong size = VK_WHOLE_SIZE, VkMemoryMapFlags flags = VkMemoryMapFlags.None) where T : unmanaged
-    {
-        void* pData;
-        vkMapMemory(device, memory, offset, size, flags, &pData).CheckResult();
-
-        if (size == VK_WHOLE_SIZE)
-        {
-            vkGetImageMemoryRequirements(device, image, out VkMemoryRequirements memoryRequirements);
-            size = memoryRequirements.size;
-        }
-
-        int oneItemSize = sizeof(T);
-        int spanLength = (int)size / oneItemSize;
-
-        return new Span<T>(pData, spanLength);
     }
 
     public static void vkUpdateDescriptorSets(VkDevice device, VkWriteDescriptorSet writeDescriptorSet)
@@ -451,9 +377,9 @@ public static unsafe partial class Vulkan
         }
     }
 
-    public static void vkCmdBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, VkBuffer buffer, ulong offset = 0)
+    public static void vkCmdBindVertexBuffer(VkCommandBuffer commandBuffer, int binding, VkBuffer buffer, ulong offset = 0)
     {
-        vkCmdBindVertexBuffers(commandBuffer, firstBinding, 1, &buffer, &offset);
+        vkCmdBindVertexBuffers(commandBuffer, (uint)binding, 1, &buffer, &offset);
     }
 
     public static void vkCmdBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, ReadOnlySpan<VkBuffer> buffers, ReadOnlySpan<ulong> offsets)
@@ -543,14 +469,26 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkCreateSemaphore(VkDevice device, out VkSemaphore semaphore)
     {
-        VkSemaphoreCreateInfo createInfo = new VkSemaphoreCreateInfo
+        VkSemaphoreCreateInfo createInfo = VkSemaphoreCreateInfo.New();
+        return vkCreateSemaphore(device, &createInfo, null, out semaphore);
+    }
+
+    public static VkResult vkCreateFence(VkDevice device, out VkFence fence)
+    {
+        VkFenceCreateInfo createInfo = VkFenceCreateInfo.New();
+        return vkCreateFence(device, &createInfo, null, out fence);
+    }
+
+    public static VkResult vkCreateFence(VkDevice device, VkFenceCreateFlags flags, out VkFence fence)
+    {
+        VkFenceCreateInfo createInfo = new()
         {
-            sType = VkStructureType.SemaphoreCreateInfo,
+            sType = VkStructureType.FenceCreateInfo,
             pNext = null,
-            flags = VkSemaphoreCreateFlags.None
+            flags = flags
         };
 
-        return vkCreateSemaphore(device, &createInfo, null, out semaphore);
+        return vkCreateFence(device, &createInfo, null, out fence);
     }
 
     public static VkResult vkCreateTypedSemaphore(VkDevice device, VkSemaphoreType type, ulong initialValue, out VkSemaphore semaphore)
@@ -624,6 +562,25 @@ public static unsafe partial class Vulkan
         }
     }
 
+    public static VkResult vkCreatePipelineLayout(
+        VkDevice device,
+        ReadOnlySpan<VkDescriptorSetLayout> setLayouts,
+        ReadOnlySpan<VkPushConstantRange> pushConstantRanges,
+        out VkPipelineLayout pipelineLayout)
+    {
+        VkPipelineLayoutCreateInfo createInfo = new()
+        {
+            sType = VkStructureType.PipelineLayoutCreateInfo,
+            pNext = null,
+            setLayoutCount = (uint)setLayouts.Length,
+            pSetLayouts = (VkDescriptorSetLayout*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(setLayouts)),
+            pushConstantRangeCount = (uint)pushConstantRanges.Length,
+            pPushConstantRanges = (VkPushConstantRange*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(pushConstantRanges)),
+        };
+
+        return vkCreatePipelineLayout(device, &createInfo, null, out pipelineLayout);
+    }
+
     public static void vkCmdSetViewport<T>(VkCommandBuffer commandBuffer, uint firstViewport, T viewport) where T : unmanaged
     {
 #if DEBUG
@@ -685,7 +642,7 @@ public static unsafe partial class Vulkan
         }
     }
 
-#region Nested
+    #region Nested
     internal static class Kernel32
     {
         [DllImport("kernel32")]
@@ -708,5 +665,5 @@ public static unsafe partial class Vulkan
 
         public const int RTLD_NOW = 0x002;
     }
-#endregion
+    #endregion
 }

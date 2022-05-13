@@ -24,7 +24,7 @@ public sealed unsafe class Swapchain : IDisposable
         _surface = surface;
         Window = window;
 
-        SwapChainSupportDetails swapChainSupport = QuerySwapChainSupport(device.PhysicalDevice, surface);
+        SwapChainSupportDetails swapChainSupport = Utils.QuerySwapChainSupport(device.PhysicalDevice, surface);
 
         VkSurfaceFormatKHR surfaceFormat = ChooseSwapSurfaceFormat(swapChainSupport.Formats);
         VkPresentModeKHR presentMode = ChooseSwapPresentMode(swapChainSupport.PresentModes);
@@ -162,12 +162,7 @@ public sealed unsafe class Swapchain : IDisposable
         }
     }
 
-    private ref struct SwapChainSupportDetails
-    {
-        public VkSurfaceCapabilitiesKHR Capabilities;
-        public ReadOnlySpan<VkSurfaceFormatKHR> Formats;
-        public ReadOnlySpan<VkPresentModeKHR> PresentModes;
-    };
+    
 
     private VkExtent2D ChooseSwapExtent(VkSurfaceCapabilitiesKHR capabilities)
     {
@@ -186,16 +181,6 @@ public sealed unsafe class Swapchain : IDisposable
 
             return actualExtent;
         }
-    }
-
-    private static SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device, VkSurfaceKHR surface)
-    {
-        SwapChainSupportDetails details = new SwapChainSupportDetails();
-        vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device, surface, out details.Capabilities).CheckResult();
-
-        details.Formats = vkGetPhysicalDeviceSurfaceFormatsKHR(device, surface);
-        details.PresentModes = vkGetPhysicalDeviceSurfacePresentModesKHR(device, surface);
-        return details;
     }
 
     private static VkSurfaceFormatKHR ChooseSwapSurfaceFormat(ReadOnlySpan<VkSurfaceFormatKHR> availableFormats)

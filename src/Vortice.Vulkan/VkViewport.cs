@@ -64,8 +64,23 @@ public partial struct VkViewport : IEquatable<VkViewport>
     /// <summary>
     /// Initializes a new instance of the <see cref="VkViewport"/> struct.
     /// </summary>
+    /// <param name="extent">The width and height extent of the viewport in pixels.</param>
+    public VkViewport(in VkExtent2D extent)
+    {
+        x = 0.0f;
+        y = 0.0f;
+        width = extent.width;
+        height = extent.height;
+        minDepth = 0.0f;
+        maxDepth = 1.0f;
+    }
+
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="VkViewport"/> struct.
+    /// </summary>
     /// <param name="bounds">A <see cref="VkRect2D"/> that defines the location and size of the viewport in a render target.</param>
-    public VkViewport(VkRect2D bounds)
+    public VkViewport(in VkRect2D bounds)
     {
         x = bounds.offset.x;
         y = bounds.offset.y;
@@ -79,7 +94,7 @@ public partial struct VkViewport : IEquatable<VkViewport>
     /// Initializes a new instance of the <see cref="VkViewport"/> struct.
     /// </summary>
     /// <param name="bounds">A <see cref="Vector4"/> that defines the location and size of the viewport in a render target.</param>
-    public VkViewport(Vector4 bounds)
+    public VkViewport(in Vector4 bounds)
     {
         x = bounds.X;
         y = bounds.Y;

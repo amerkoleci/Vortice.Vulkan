@@ -75,10 +75,11 @@ public partial struct VkBufferMemoryBarrier
 	public VkBuffer buffer;
 	public ulong offset;
 	public ulong size;
-	public VkBufferMemoryBarrier()
+	public static VkBufferMemoryBarrier New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BufferMemoryBarrier;
+		Unsafe.SkipInit(out VkBufferMemoryBarrier instance);
+		instance.sType = VkStructureType.BufferMemoryBarrier;
+		return instance;
 	}
 }
 
@@ -132,10 +133,11 @@ public partial struct VkImageMemoryBarrier
 	public uint dstQueueFamilyIndex;
 	public VkImage image;
 	public VkImageSubresourceRange subresourceRange;
-	public VkImageMemoryBarrier()
+	public static VkImageMemoryBarrier New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageMemoryBarrier;
+		Unsafe.SkipInit(out VkImageMemoryBarrier instance);
+		instance.sType = VkStructureType.ImageMemoryBarrier;
+		return instance;
 	}
 }
 
@@ -146,10 +148,11 @@ public partial struct VkMemoryBarrier
 	public unsafe void* pNext;
 	public VkAccessFlags srcAccessMask;
 	public VkAccessFlags dstAccessMask;
-	public VkMemoryBarrier()
+	public static VkMemoryBarrier New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryBarrier;
+		Unsafe.SkipInit(out VkMemoryBarrier instance);
+		instance.sType = VkStructureType.MemoryBarrier;
+		return instance;
 	}
 }
 
@@ -204,10 +207,11 @@ public partial struct VkApplicationInfo
 	public unsafe byte* pEngineName;
 	public VkVersion engineVersion;
 	public VkVersion apiVersion;
-	public VkApplicationInfo()
+	public static VkApplicationInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ApplicationInfo;
+		Unsafe.SkipInit(out VkApplicationInfo instance);
+		instance.sType = VkStructureType.ApplicationInfo;
+		return instance;
 	}
 }
 
@@ -240,10 +244,11 @@ public partial struct VkInstanceCreateInfo
 	public unsafe byte** ppEnabledLayerNames;
 	public uint enabledExtensionCount;
 	public unsafe byte** ppEnabledExtensionNames;
-	public VkInstanceCreateInfo()
+	public static VkInstanceCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.InstanceCreateInfo;
+		Unsafe.SkipInit(out VkInstanceCreateInfo instance);
+		instance.sType = VkStructureType.InstanceCreateInfo;
+		return instance;
 	}
 }
 
@@ -529,10 +534,11 @@ public partial struct VkDeviceQueueCreateInfo
 	public uint queueFamilyIndex;
 	public uint queueCount;
 	public unsafe float* pQueuePriorities;
-	public VkDeviceQueueCreateInfo()
+	public static VkDeviceQueueCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceQueueCreateInfo;
+		Unsafe.SkipInit(out VkDeviceQueueCreateInfo instance);
+		instance.sType = VkStructureType.DeviceQueueCreateInfo;
+		return instance;
 	}
 }
 
@@ -549,10 +555,11 @@ public partial struct VkDeviceCreateInfo
 	public uint enabledExtensionCount;
 	public unsafe byte** ppEnabledExtensionNames;
 	public unsafe VkPhysicalDeviceFeatures* pEnabledFeatures;
-	public VkDeviceCreateInfo()
+	public static VkDeviceCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceCreateInfo;
+		Unsafe.SkipInit(out VkDeviceCreateInfo instance);
+		instance.sType = VkStructureType.DeviceCreateInfo;
+		return instance;
 	}
 }
 
@@ -584,10 +591,11 @@ public partial struct VkSubmitInfo
 	public unsafe VkCommandBuffer* pCommandBuffers;
 	public uint signalSemaphoreCount;
 	public unsafe VkSemaphore* pSignalSemaphores;
-	public VkSubmitInfo()
+	public static VkSubmitInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SubmitInfo;
+		Unsafe.SkipInit(out VkSubmitInfo instance);
+		instance.sType = VkStructureType.SubmitInfo;
+		return instance;
 	}
 }
 
@@ -599,10 +607,11 @@ public partial struct VkMappedMemoryRange
 	public VkDeviceMemory memory;
 	public ulong offset;
 	public ulong size;
-	public VkMappedMemoryRange()
+	public static VkMappedMemoryRange New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MappedMemoryRange;
+		Unsafe.SkipInit(out VkMappedMemoryRange instance);
+		instance.sType = VkStructureType.MappedMemoryRange;
+		return instance;
 	}
 }
 
@@ -613,10 +622,11 @@ public partial struct VkMemoryAllocateInfo
 	public unsafe void* pNext;
 	public ulong allocationSize;
 	public uint memoryTypeIndex;
-	public VkMemoryAllocateInfo()
+	public static VkMemoryAllocateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryAllocateInfo;
+		Unsafe.SkipInit(out VkMemoryAllocateInfo instance);
+		instance.sType = VkStructureType.MemoryAllocateInfo;
+		return instance;
 	}
 }
 
@@ -696,10 +706,11 @@ public partial struct VkBindSparseInfo
 	public unsafe VkSparseImageMemoryBindInfo* pImageBinds;
 	public uint signalSemaphoreCount;
 	public unsafe VkSemaphore* pSignalSemaphores;
-	public VkBindSparseInfo()
+	public static VkBindSparseInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BindSparseInfo;
+		Unsafe.SkipInit(out VkBindSparseInfo instance);
+		instance.sType = VkStructureType.BindSparseInfo;
+		return instance;
 	}
 }
 
@@ -727,10 +738,11 @@ public partial struct VkFenceCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkFenceCreateFlags flags;
-	public VkFenceCreateInfo()
+	public static VkFenceCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.FenceCreateInfo;
+		Unsafe.SkipInit(out VkFenceCreateInfo instance);
+		instance.sType = VkStructureType.FenceCreateInfo;
+		return instance;
 	}
 }
 
@@ -740,10 +752,11 @@ public partial struct VkSemaphoreCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSemaphoreCreateFlags flags;
-	public VkSemaphoreCreateInfo()
+	public static VkSemaphoreCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SemaphoreCreateInfo;
+		Unsafe.SkipInit(out VkSemaphoreCreateInfo instance);
+		instance.sType = VkStructureType.SemaphoreCreateInfo;
+		return instance;
 	}
 }
 
@@ -753,10 +766,11 @@ public partial struct VkEventCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkEventCreateFlags flags;
-	public VkEventCreateInfo()
+	public static VkEventCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.EventCreateInfo;
+		Unsafe.SkipInit(out VkEventCreateInfo instance);
+		instance.sType = VkStructureType.EventCreateInfo;
+		return instance;
 	}
 }
 
@@ -769,10 +783,11 @@ public partial struct VkQueryPoolCreateInfo
 	public VkQueryType queryType;
 	public uint queryCount;
 	public VkQueryPipelineStatisticFlags pipelineStatistics;
-	public VkQueryPoolCreateInfo()
+	public static VkQueryPoolCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.QueryPoolCreateInfo;
+		Unsafe.SkipInit(out VkQueryPoolCreateInfo instance);
+		instance.sType = VkStructureType.QueryPoolCreateInfo;
+		return instance;
 	}
 }
 
@@ -787,10 +802,11 @@ public partial struct VkBufferCreateInfo
 	public VkSharingMode sharingMode;
 	public uint queueFamilyIndexCount;
 	public unsafe uint* pQueueFamilyIndices;
-	public VkBufferCreateInfo()
+	public static VkBufferCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BufferCreateInfo;
+		Unsafe.SkipInit(out VkBufferCreateInfo instance);
+		instance.sType = VkStructureType.BufferCreateInfo;
+		return instance;
 	}
 }
 
@@ -804,10 +820,11 @@ public partial struct VkBufferViewCreateInfo
 	public VkFormat format;
 	public ulong offset;
 	public ulong range;
-	public VkBufferViewCreateInfo()
+	public static VkBufferViewCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BufferViewCreateInfo;
+		Unsafe.SkipInit(out VkBufferViewCreateInfo instance);
+		instance.sType = VkStructureType.BufferViewCreateInfo;
+		return instance;
 	}
 }
 
@@ -829,10 +846,11 @@ public partial struct VkImageCreateInfo
 	public uint queueFamilyIndexCount;
 	public unsafe uint* pQueueFamilyIndices;
 	public VkImageLayout initialLayout;
-	public VkImageCreateInfo()
+	public static VkImageCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageCreateInfo;
+		Unsafe.SkipInit(out VkImageCreateInfo instance);
+		instance.sType = VkStructureType.ImageCreateInfo;
+		return instance;
 	}
 }
 
@@ -866,10 +884,11 @@ public partial struct VkImageViewCreateInfo
 	public VkFormat format;
 	public VkComponentMapping components;
 	public VkImageSubresourceRange subresourceRange;
-	public VkImageViewCreateInfo()
+	public static VkImageViewCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageViewCreateInfo;
+		Unsafe.SkipInit(out VkImageViewCreateInfo instance);
+		instance.sType = VkStructureType.ImageViewCreateInfo;
+		return instance;
 	}
 }
 
@@ -881,10 +900,11 @@ public partial struct VkShaderModuleCreateInfo
 	public VkShaderModuleCreateFlags flags;
 	public nuint codeSize;
 	public unsafe uint* pCode;
-	public VkShaderModuleCreateInfo()
+	public static VkShaderModuleCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ShaderModuleCreateInfo;
+		Unsafe.SkipInit(out VkShaderModuleCreateInfo instance);
+		instance.sType = VkStructureType.ShaderModuleCreateInfo;
+		return instance;
 	}
 }
 
@@ -896,10 +916,11 @@ public partial struct VkPipelineCacheCreateInfo
 	public VkPipelineCacheCreateFlags flags;
 	public nuint initialDataSize;
 	public unsafe void* pInitialData;
-	public VkPipelineCacheCreateInfo()
+	public static VkPipelineCacheCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineCacheCreateInfo;
+		Unsafe.SkipInit(out VkPipelineCacheCreateInfo instance);
+		instance.sType = VkStructureType.PipelineCacheCreateInfo;
+		return instance;
 	}
 }
 
@@ -930,10 +951,11 @@ public partial struct VkPipelineShaderStageCreateInfo
 	public VkShaderModule module;
 	public unsafe byte* pName;
 	public unsafe VkSpecializationInfo* pSpecializationInfo;
-	public VkPipelineShaderStageCreateInfo()
+	public static VkPipelineShaderStageCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineShaderStageCreateInfo;
+		Unsafe.SkipInit(out VkPipelineShaderStageCreateInfo instance);
+		instance.sType = VkStructureType.PipelineShaderStageCreateInfo;
+		return instance;
 	}
 }
 
@@ -947,10 +969,11 @@ public partial struct VkComputePipelineCreateInfo
 	public VkPipelineLayout layout;
 	public VkPipeline basePipelineHandle;
 	public int basePipelineIndex;
-	public VkComputePipelineCreateInfo()
+	public static VkComputePipelineCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ComputePipelineCreateInfo;
+		Unsafe.SkipInit(out VkComputePipelineCreateInfo instance);
+		instance.sType = VkStructureType.ComputePipelineCreateInfo;
+		return instance;
 	}
 }
 
@@ -981,10 +1004,11 @@ public partial struct VkPipelineVertexInputStateCreateInfo
 	public unsafe VkVertexInputBindingDescription* pVertexBindingDescriptions;
 	public uint vertexAttributeDescriptionCount;
 	public unsafe VkVertexInputAttributeDescription* pVertexAttributeDescriptions;
-	public VkPipelineVertexInputStateCreateInfo()
+	public static VkPipelineVertexInputStateCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineVertexInputStateCreateInfo;
+		Unsafe.SkipInit(out VkPipelineVertexInputStateCreateInfo instance);
+		instance.sType = VkStructureType.PipelineVertexInputStateCreateInfo;
+		return instance;
 	}
 }
 
@@ -996,10 +1020,11 @@ public partial struct VkPipelineInputAssemblyStateCreateInfo
 	public VkPipelineInputAssemblyStateCreateFlags flags;
 	public VkPrimitiveTopology topology;
 	public VkBool32 primitiveRestartEnable;
-	public VkPipelineInputAssemblyStateCreateInfo()
+	public static VkPipelineInputAssemblyStateCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineInputAssemblyStateCreateInfo;
+		Unsafe.SkipInit(out VkPipelineInputAssemblyStateCreateInfo instance);
+		instance.sType = VkStructureType.PipelineInputAssemblyStateCreateInfo;
+		return instance;
 	}
 }
 
@@ -1010,10 +1035,11 @@ public partial struct VkPipelineTessellationStateCreateInfo
 	public unsafe void* pNext;
 	public VkPipelineTessellationStateCreateFlags flags;
 	public uint patchControlPoints;
-	public VkPipelineTessellationStateCreateInfo()
+	public static VkPipelineTessellationStateCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineTessellationStateCreateInfo;
+		Unsafe.SkipInit(out VkPipelineTessellationStateCreateInfo instance);
+		instance.sType = VkStructureType.PipelineTessellationStateCreateInfo;
+		return instance;
 	}
 }
 
@@ -1038,10 +1064,11 @@ public partial struct VkPipelineViewportStateCreateInfo
 	public unsafe VkViewport* pViewports;
 	public uint scissorCount;
 	public unsafe VkRect2D* pScissors;
-	public VkPipelineViewportStateCreateInfo()
+	public static VkPipelineViewportStateCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineViewportStateCreateInfo;
+		Unsafe.SkipInit(out VkPipelineViewportStateCreateInfo instance);
+		instance.sType = VkStructureType.PipelineViewportStateCreateInfo;
+		return instance;
 	}
 }
 
@@ -1061,10 +1088,11 @@ public partial struct VkPipelineRasterizationStateCreateInfo
 	public float depthBiasClamp;
 	public float depthBiasSlopeFactor;
 	public float lineWidth;
-	public VkPipelineRasterizationStateCreateInfo()
+	public static VkPipelineRasterizationStateCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineRasterizationStateCreateInfo;
+		Unsafe.SkipInit(out VkPipelineRasterizationStateCreateInfo instance);
+		instance.sType = VkStructureType.PipelineRasterizationStateCreateInfo;
+		return instance;
 	}
 }
 
@@ -1080,10 +1108,11 @@ public partial struct VkPipelineMultisampleStateCreateInfo
 	public unsafe uint* pSampleMask;
 	public VkBool32 alphaToCoverageEnable;
 	public VkBool32 alphaToOneEnable;
-	public VkPipelineMultisampleStateCreateInfo()
+	public static VkPipelineMultisampleStateCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineMultisampleStateCreateInfo;
+		Unsafe.SkipInit(out VkPipelineMultisampleStateCreateInfo instance);
+		instance.sType = VkStructureType.PipelineMultisampleStateCreateInfo;
+		return instance;
 	}
 }
 
@@ -1114,10 +1143,11 @@ public partial struct VkPipelineDepthStencilStateCreateInfo
 	public VkStencilOpState back;
 	public float minDepthBounds;
 	public float maxDepthBounds;
-	public VkPipelineDepthStencilStateCreateInfo()
+	public static VkPipelineDepthStencilStateCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
+		Unsafe.SkipInit(out VkPipelineDepthStencilStateCreateInfo instance);
+		instance.sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
+		return instance;
 	}
 }
 
@@ -1145,10 +1175,11 @@ public partial struct VkPipelineColorBlendStateCreateInfo
 	public uint attachmentCount;
 	public unsafe VkPipelineColorBlendAttachmentState* pAttachments;
 	public unsafe fixed float blendConstants[4];
-	public VkPipelineColorBlendStateCreateInfo()
+	public static VkPipelineColorBlendStateCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineColorBlendStateCreateInfo;
+		Unsafe.SkipInit(out VkPipelineColorBlendStateCreateInfo instance);
+		instance.sType = VkStructureType.PipelineColorBlendStateCreateInfo;
+		return instance;
 	}
 }
 
@@ -1160,10 +1191,11 @@ public partial struct VkPipelineDynamicStateCreateInfo
 	public VkPipelineDynamicStateCreateFlags flags;
 	public uint dynamicStateCount;
 	public unsafe VkDynamicState* pDynamicStates;
-	public VkPipelineDynamicStateCreateInfo()
+	public static VkPipelineDynamicStateCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineDynamicStateCreateInfo;
+		Unsafe.SkipInit(out VkPipelineDynamicStateCreateInfo instance);
+		instance.sType = VkStructureType.PipelineDynamicStateCreateInfo;
+		return instance;
 	}
 }
 
@@ -1189,10 +1221,11 @@ public partial struct VkGraphicsPipelineCreateInfo
 	public uint subpass;
 	public VkPipeline basePipelineHandle;
 	public int basePipelineIndex;
-	public VkGraphicsPipelineCreateInfo()
+	public static VkGraphicsPipelineCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.GraphicsPipelineCreateInfo;
+		Unsafe.SkipInit(out VkGraphicsPipelineCreateInfo instance);
+		instance.sType = VkStructureType.GraphicsPipelineCreateInfo;
+		return instance;
 	}
 }
 
@@ -1214,10 +1247,11 @@ public partial struct VkPipelineLayoutCreateInfo
 	public unsafe VkDescriptorSetLayout* pSetLayouts;
 	public uint pushConstantRangeCount;
 	public unsafe VkPushConstantRange* pPushConstantRanges;
-	public VkPipelineLayoutCreateInfo()
+	public static VkPipelineLayoutCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineLayoutCreateInfo;
+		Unsafe.SkipInit(out VkPipelineLayoutCreateInfo instance);
+		instance.sType = VkStructureType.PipelineLayoutCreateInfo;
+		return instance;
 	}
 }
 
@@ -1242,10 +1276,11 @@ public partial struct VkSamplerCreateInfo
 	public float maxLod;
 	public VkBorderColor borderColor;
 	public VkBool32 unnormalizedCoordinates;
-	public VkSamplerCreateInfo()
+	public static VkSamplerCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SamplerCreateInfo;
+		Unsafe.SkipInit(out VkSamplerCreateInfo instance);
+		instance.sType = VkStructureType.SamplerCreateInfo;
+		return instance;
 	}
 }
 
@@ -1261,10 +1296,11 @@ public partial struct VkCopyDescriptorSet
 	public uint dstBinding;
 	public uint dstArrayElement;
 	public uint descriptorCount;
-	public VkCopyDescriptorSet()
+	public static VkCopyDescriptorSet New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CopyDescriptorSet;
+		Unsafe.SkipInit(out VkCopyDescriptorSet instance);
+		instance.sType = VkStructureType.CopyDescriptorSet;
+		return instance;
 	}
 }
 
@@ -1300,10 +1336,11 @@ public partial struct VkDescriptorPoolCreateInfo
 	public uint maxSets;
 	public uint poolSizeCount;
 	public unsafe VkDescriptorPoolSize* pPoolSizes;
-	public VkDescriptorPoolCreateInfo()
+	public static VkDescriptorPoolCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DescriptorPoolCreateInfo;
+		Unsafe.SkipInit(out VkDescriptorPoolCreateInfo instance);
+		instance.sType = VkStructureType.DescriptorPoolCreateInfo;
+		return instance;
 	}
 }
 
@@ -1315,10 +1352,11 @@ public partial struct VkDescriptorSetAllocateInfo
 	public VkDescriptorPool descriptorPool;
 	public uint descriptorSetCount;
 	public unsafe VkDescriptorSetLayout* pSetLayouts;
-	public VkDescriptorSetAllocateInfo()
+	public static VkDescriptorSetAllocateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DescriptorSetAllocateInfo;
+		Unsafe.SkipInit(out VkDescriptorSetAllocateInfo instance);
+		instance.sType = VkStructureType.DescriptorSetAllocateInfo;
+		return instance;
 	}
 }
 
@@ -1340,10 +1378,11 @@ public partial struct VkDescriptorSetLayoutCreateInfo
 	public VkDescriptorSetLayoutCreateFlags flags;
 	public uint bindingCount;
 	public unsafe VkDescriptorSetLayoutBinding* pBindings;
-	public VkDescriptorSetLayoutCreateInfo()
+	public static VkDescriptorSetLayoutCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DescriptorSetLayoutCreateInfo;
+		Unsafe.SkipInit(out VkDescriptorSetLayoutCreateInfo instance);
+		instance.sType = VkStructureType.DescriptorSetLayoutCreateInfo;
+		return instance;
 	}
 }
 
@@ -1360,10 +1399,11 @@ public partial struct VkWriteDescriptorSet
 	public unsafe VkDescriptorImageInfo* pImageInfo;
 	public unsafe VkDescriptorBufferInfo* pBufferInfo;
 	public unsafe VkBufferView* pTexelBufferView;
-	public VkWriteDescriptorSet()
+	public static VkWriteDescriptorSet New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.WriteDescriptorSet;
+		Unsafe.SkipInit(out VkWriteDescriptorSet instance);
+		instance.sType = VkStructureType.WriteDescriptorSet;
+		return instance;
 	}
 }
 
@@ -1400,10 +1440,11 @@ public partial struct VkFramebufferCreateInfo
 	public uint width;
 	public uint height;
 	public uint layers;
-	public VkFramebufferCreateInfo()
+	public static VkFramebufferCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.FramebufferCreateInfo;
+		Unsafe.SkipInit(out VkFramebufferCreateInfo instance);
+		instance.sType = VkStructureType.FramebufferCreateInfo;
+		return instance;
 	}
 }
 
@@ -1446,10 +1487,11 @@ public partial struct VkRenderPassCreateInfo
 	public unsafe VkSubpassDescription* pSubpasses;
 	public uint dependencyCount;
 	public unsafe VkSubpassDependency* pDependencies;
-	public VkRenderPassCreateInfo()
+	public static VkRenderPassCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassCreateInfo;
+		Unsafe.SkipInit(out VkRenderPassCreateInfo instance);
+		instance.sType = VkStructureType.RenderPassCreateInfo;
+		return instance;
 	}
 }
 
@@ -1460,10 +1502,11 @@ public partial struct VkCommandPoolCreateInfo
 	public unsafe void* pNext;
 	public VkCommandPoolCreateFlags flags;
 	public uint queueFamilyIndex;
-	public VkCommandPoolCreateInfo()
+	public static VkCommandPoolCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CommandPoolCreateInfo;
+		Unsafe.SkipInit(out VkCommandPoolCreateInfo instance);
+		instance.sType = VkStructureType.CommandPoolCreateInfo;
+		return instance;
 	}
 }
 
@@ -1475,10 +1518,11 @@ public partial struct VkCommandBufferAllocateInfo
 	public VkCommandPool commandPool;
 	public VkCommandBufferLevel level;
 	public uint commandBufferCount;
-	public VkCommandBufferAllocateInfo()
+	public static VkCommandBufferAllocateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CommandBufferAllocateInfo;
+		Unsafe.SkipInit(out VkCommandBufferAllocateInfo instance);
+		instance.sType = VkStructureType.CommandBufferAllocateInfo;
+		return instance;
 	}
 }
 
@@ -1493,10 +1537,11 @@ public partial struct VkCommandBufferInheritanceInfo
 	public VkBool32 occlusionQueryEnable;
 	public VkQueryControlFlags queryFlags;
 	public VkQueryPipelineStatisticFlags pipelineStatistics;
-	public VkCommandBufferInheritanceInfo()
+	public static VkCommandBufferInheritanceInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CommandBufferInheritanceInfo;
+		Unsafe.SkipInit(out VkCommandBufferInheritanceInfo instance);
+		instance.sType = VkStructureType.CommandBufferInheritanceInfo;
+		return instance;
 	}
 }
 
@@ -1507,10 +1552,11 @@ public partial struct VkCommandBufferBeginInfo
 	public unsafe void* pNext;
 	public VkCommandBufferUsageFlags flags;
 	public unsafe VkCommandBufferInheritanceInfo* pInheritanceInfo;
-	public VkCommandBufferBeginInfo()
+	public static VkCommandBufferBeginInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CommandBufferBeginInfo;
+		Unsafe.SkipInit(out VkCommandBufferBeginInfo instance);
+		instance.sType = VkStructureType.CommandBufferBeginInfo;
+		return instance;
 	}
 }
 
@@ -1615,10 +1661,11 @@ public partial struct VkRenderPassBeginInfo
 	public VkRect2D renderArea;
 	public uint clearValueCount;
 	public unsafe VkClearValue* pClearValues;
-	public VkRenderPassBeginInfo()
+	public static VkRenderPassBeginInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassBeginInfo;
+		Unsafe.SkipInit(out VkRenderPassBeginInfo instance);
+		instance.sType = VkStructureType.RenderPassBeginInfo;
+		return instance;
 	}
 }
 
@@ -1631,10 +1678,11 @@ public partial struct VkPhysicalDeviceSubgroupProperties
 	public VkShaderStageFlags supportedStages;
 	public VkSubgroupFeatureFlags supportedOperations;
 	public VkBool32 quadOperationsInAllStages;
-	public VkPhysicalDeviceSubgroupProperties()
+	public static VkPhysicalDeviceSubgroupProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSubgroupProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceSubgroupProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceSubgroupProperties;
+		return instance;
 	}
 }
 
@@ -1646,10 +1694,11 @@ public partial struct VkBindBufferMemoryInfo
 	public VkBuffer buffer;
 	public VkDeviceMemory memory;
 	public ulong memoryOffset;
-	public VkBindBufferMemoryInfo()
+	public static VkBindBufferMemoryInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BindBufferMemoryInfo;
+		Unsafe.SkipInit(out VkBindBufferMemoryInfo instance);
+		instance.sType = VkStructureType.BindBufferMemoryInfo;
+		return instance;
 	}
 }
 
@@ -1661,10 +1710,11 @@ public partial struct VkBindImageMemoryInfo
 	public VkImage image;
 	public VkDeviceMemory memory;
 	public ulong memoryOffset;
-	public VkBindImageMemoryInfo()
+	public static VkBindImageMemoryInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BindImageMemoryInfo;
+		Unsafe.SkipInit(out VkBindImageMemoryInfo instance);
+		instance.sType = VkStructureType.BindImageMemoryInfo;
+		return instance;
 	}
 }
 
@@ -1677,10 +1727,11 @@ public partial struct VkPhysicalDevice16BitStorageFeatures
 	public VkBool32 uniformAndStorageBuffer16BitAccess;
 	public VkBool32 storagePushConstant16;
 	public VkBool32 storageInputOutput16;
-	public VkPhysicalDevice16BitStorageFeatures()
+	public static VkPhysicalDevice16BitStorageFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevice16BitStorageFeatures;
+		Unsafe.SkipInit(out VkPhysicalDevice16BitStorageFeatures instance);
+		instance.sType = VkStructureType.PhysicalDevice16BitStorageFeatures;
+		return instance;
 	}
 }
 
@@ -1691,10 +1742,11 @@ public partial struct VkMemoryDedicatedRequirements
 	public unsafe void* pNext;
 	public VkBool32 prefersDedicatedAllocation;
 	public VkBool32 requiresDedicatedAllocation;
-	public VkMemoryDedicatedRequirements()
+	public static VkMemoryDedicatedRequirements New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryDedicatedRequirements;
+		Unsafe.SkipInit(out VkMemoryDedicatedRequirements instance);
+		instance.sType = VkStructureType.MemoryDedicatedRequirements;
+		return instance;
 	}
 }
 
@@ -1705,10 +1757,11 @@ public partial struct VkMemoryDedicatedAllocateInfo
 	public unsafe void* pNext;
 	public VkImage image;
 	public VkBuffer buffer;
-	public VkMemoryDedicatedAllocateInfo()
+	public static VkMemoryDedicatedAllocateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryDedicatedAllocateInfo;
+		Unsafe.SkipInit(out VkMemoryDedicatedAllocateInfo instance);
+		instance.sType = VkStructureType.MemoryDedicatedAllocateInfo;
+		return instance;
 	}
 }
 
@@ -1719,10 +1772,11 @@ public partial struct VkMemoryAllocateFlagsInfo
 	public unsafe void* pNext;
 	public VkMemoryAllocateFlags flags;
 	public uint deviceMask;
-	public VkMemoryAllocateFlagsInfo()
+	public static VkMemoryAllocateFlagsInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryAllocateFlagsInfo;
+		Unsafe.SkipInit(out VkMemoryAllocateFlagsInfo instance);
+		instance.sType = VkStructureType.MemoryAllocateFlagsInfo;
+		return instance;
 	}
 }
 
@@ -1734,10 +1788,11 @@ public partial struct VkDeviceGroupRenderPassBeginInfo
 	public uint deviceMask;
 	public uint deviceRenderAreaCount;
 	public unsafe VkRect2D* pDeviceRenderAreas;
-	public VkDeviceGroupRenderPassBeginInfo()
+	public static VkDeviceGroupRenderPassBeginInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceGroupRenderPassBeginInfo;
+		Unsafe.SkipInit(out VkDeviceGroupRenderPassBeginInfo instance);
+		instance.sType = VkStructureType.DeviceGroupRenderPassBeginInfo;
+		return instance;
 	}
 }
 
@@ -1747,10 +1802,11 @@ public partial struct VkDeviceGroupCommandBufferBeginInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint deviceMask;
-	public VkDeviceGroupCommandBufferBeginInfo()
+	public static VkDeviceGroupCommandBufferBeginInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceGroupCommandBufferBeginInfo;
+		Unsafe.SkipInit(out VkDeviceGroupCommandBufferBeginInfo instance);
+		instance.sType = VkStructureType.DeviceGroupCommandBufferBeginInfo;
+		return instance;
 	}
 }
 
@@ -1765,10 +1821,11 @@ public partial struct VkDeviceGroupSubmitInfo
 	public unsafe uint* pCommandBufferDeviceMasks;
 	public uint signalSemaphoreCount;
 	public unsafe uint* pSignalSemaphoreDeviceIndices;
-	public VkDeviceGroupSubmitInfo()
+	public static VkDeviceGroupSubmitInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceGroupSubmitInfo;
+		Unsafe.SkipInit(out VkDeviceGroupSubmitInfo instance);
+		instance.sType = VkStructureType.DeviceGroupSubmitInfo;
+		return instance;
 	}
 }
 
@@ -1779,10 +1836,11 @@ public partial struct VkDeviceGroupBindSparseInfo
 	public unsafe void* pNext;
 	public uint resourceDeviceIndex;
 	public uint memoryDeviceIndex;
-	public VkDeviceGroupBindSparseInfo()
+	public static VkDeviceGroupBindSparseInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceGroupBindSparseInfo;
+		Unsafe.SkipInit(out VkDeviceGroupBindSparseInfo instance);
+		instance.sType = VkStructureType.DeviceGroupBindSparseInfo;
+		return instance;
 	}
 }
 
@@ -1793,10 +1851,11 @@ public partial struct VkBindBufferMemoryDeviceGroupInfo
 	public unsafe void* pNext;
 	public uint deviceIndexCount;
 	public unsafe uint* pDeviceIndices;
-	public VkBindBufferMemoryDeviceGroupInfo()
+	public static VkBindBufferMemoryDeviceGroupInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BindBufferMemoryDeviceGroupInfo;
+		Unsafe.SkipInit(out VkBindBufferMemoryDeviceGroupInfo instance);
+		instance.sType = VkStructureType.BindBufferMemoryDeviceGroupInfo;
+		return instance;
 	}
 }
 
@@ -1809,10 +1868,11 @@ public partial struct VkBindImageMemoryDeviceGroupInfo
 	public unsafe uint* pDeviceIndices;
 	public uint splitInstanceBindRegionCount;
 	public unsafe VkRect2D* pSplitInstanceBindRegions;
-	public VkBindImageMemoryDeviceGroupInfo()
+	public static VkBindImageMemoryDeviceGroupInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BindImageMemoryDeviceGroupInfo;
+		Unsafe.SkipInit(out VkBindImageMemoryDeviceGroupInfo instance);
+		instance.sType = VkStructureType.BindImageMemoryDeviceGroupInfo;
+		return instance;
 	}
 }
 
@@ -1855,10 +1915,11 @@ public partial struct VkPhysicalDeviceGroupProperties
 	public VkPhysicalDevice physicalDevices_30;
 	public VkPhysicalDevice physicalDevices_31;
 	public VkBool32 subsetAllocation;
-	public VkPhysicalDeviceGroupProperties()
+	public static VkPhysicalDeviceGroupProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceGroupProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceGroupProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceGroupProperties;
+		return instance;
 	}
 }
 
@@ -1869,10 +1930,11 @@ public partial struct VkDeviceGroupDeviceCreateInfo
 	public unsafe void* pNext;
 	public uint physicalDeviceCount;
 	public unsafe VkPhysicalDevice* pPhysicalDevices;
-	public VkDeviceGroupDeviceCreateInfo()
+	public static VkDeviceGroupDeviceCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceGroupDeviceCreateInfo;
+		Unsafe.SkipInit(out VkDeviceGroupDeviceCreateInfo instance);
+		instance.sType = VkStructureType.DeviceGroupDeviceCreateInfo;
+		return instance;
 	}
 }
 
@@ -1882,10 +1944,11 @@ public partial struct VkBufferMemoryRequirementsInfo2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBuffer buffer;
-	public VkBufferMemoryRequirementsInfo2()
+	public static VkBufferMemoryRequirementsInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BufferMemoryRequirementsInfo2;
+		Unsafe.SkipInit(out VkBufferMemoryRequirementsInfo2 instance);
+		instance.sType = VkStructureType.BufferMemoryRequirementsInfo2;
+		return instance;
 	}
 }
 
@@ -1895,10 +1958,11 @@ public partial struct VkImageMemoryRequirementsInfo2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImage image;
-	public VkImageMemoryRequirementsInfo2()
+	public static VkImageMemoryRequirementsInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageMemoryRequirementsInfo2;
+		Unsafe.SkipInit(out VkImageMemoryRequirementsInfo2 instance);
+		instance.sType = VkStructureType.ImageMemoryRequirementsInfo2;
+		return instance;
 	}
 }
 
@@ -1908,10 +1972,11 @@ public partial struct VkImageSparseMemoryRequirementsInfo2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImage image;
-	public VkImageSparseMemoryRequirementsInfo2()
+	public static VkImageSparseMemoryRequirementsInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageSparseMemoryRequirementsInfo2;
+		Unsafe.SkipInit(out VkImageSparseMemoryRequirementsInfo2 instance);
+		instance.sType = VkStructureType.ImageSparseMemoryRequirementsInfo2;
+		return instance;
 	}
 }
 
@@ -1921,10 +1986,11 @@ public partial struct VkMemoryRequirements2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkMemoryRequirements memoryRequirements;
-	public VkMemoryRequirements2()
+	public static VkMemoryRequirements2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryRequirements2;
+		Unsafe.SkipInit(out VkMemoryRequirements2 instance);
+		instance.sType = VkStructureType.MemoryRequirements2;
+		return instance;
 	}
 }
 
@@ -1934,10 +2000,11 @@ public partial struct VkSparseImageMemoryRequirements2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSparseImageMemoryRequirements memoryRequirements;
-	public VkSparseImageMemoryRequirements2()
+	public static VkSparseImageMemoryRequirements2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SparseImageMemoryRequirements2;
+		Unsafe.SkipInit(out VkSparseImageMemoryRequirements2 instance);
+		instance.sType = VkStructureType.SparseImageMemoryRequirements2;
+		return instance;
 	}
 }
 
@@ -1947,10 +2014,11 @@ public partial struct VkPhysicalDeviceFeatures2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkPhysicalDeviceFeatures features;
-	public VkPhysicalDeviceFeatures2()
+	public static VkPhysicalDeviceFeatures2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFeatures2;
+		Unsafe.SkipInit(out VkPhysicalDeviceFeatures2 instance);
+		instance.sType = VkStructureType.PhysicalDeviceFeatures2;
+		return instance;
 	}
 }
 
@@ -1960,10 +2028,11 @@ public partial struct VkPhysicalDeviceProperties2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkPhysicalDeviceProperties properties;
-	public VkPhysicalDeviceProperties2()
+	public static VkPhysicalDeviceProperties2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceProperties2;
+		Unsafe.SkipInit(out VkPhysicalDeviceProperties2 instance);
+		instance.sType = VkStructureType.PhysicalDeviceProperties2;
+		return instance;
 	}
 }
 
@@ -1973,10 +2042,11 @@ public partial struct VkFormatProperties2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkFormatProperties formatProperties;
-	public VkFormatProperties2()
+	public static VkFormatProperties2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.FormatProperties2;
+		Unsafe.SkipInit(out VkFormatProperties2 instance);
+		instance.sType = VkStructureType.FormatProperties2;
+		return instance;
 	}
 }
 
@@ -1986,10 +2056,11 @@ public partial struct VkImageFormatProperties2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImageFormatProperties imageFormatProperties;
-	public VkImageFormatProperties2()
+	public static VkImageFormatProperties2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageFormatProperties2;
+		Unsafe.SkipInit(out VkImageFormatProperties2 instance);
+		instance.sType = VkStructureType.ImageFormatProperties2;
+		return instance;
 	}
 }
 
@@ -2003,10 +2074,11 @@ public partial struct VkPhysicalDeviceImageFormatInfo2
 	public VkImageTiling tiling;
 	public VkImageUsageFlags usage;
 	public VkImageCreateFlags flags;
-	public VkPhysicalDeviceImageFormatInfo2()
+	public static VkPhysicalDeviceImageFormatInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceImageFormatInfo2;
+		Unsafe.SkipInit(out VkPhysicalDeviceImageFormatInfo2 instance);
+		instance.sType = VkStructureType.PhysicalDeviceImageFormatInfo2;
+		return instance;
 	}
 }
 
@@ -2016,10 +2088,11 @@ public partial struct VkQueueFamilyProperties2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkQueueFamilyProperties queueFamilyProperties;
-	public VkQueueFamilyProperties2()
+	public static VkQueueFamilyProperties2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.QueueFamilyProperties2;
+		Unsafe.SkipInit(out VkQueueFamilyProperties2 instance);
+		instance.sType = VkStructureType.QueueFamilyProperties2;
+		return instance;
 	}
 }
 
@@ -2029,10 +2102,11 @@ public partial struct VkPhysicalDeviceMemoryProperties2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkPhysicalDeviceMemoryProperties memoryProperties;
-	public VkPhysicalDeviceMemoryProperties2()
+	public static VkPhysicalDeviceMemoryProperties2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMemoryProperties2;
+		Unsafe.SkipInit(out VkPhysicalDeviceMemoryProperties2 instance);
+		instance.sType = VkStructureType.PhysicalDeviceMemoryProperties2;
+		return instance;
 	}
 }
 
@@ -2042,10 +2116,11 @@ public partial struct VkSparseImageFormatProperties2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSparseImageFormatProperties properties;
-	public VkSparseImageFormatProperties2()
+	public static VkSparseImageFormatProperties2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SparseImageFormatProperties2;
+		Unsafe.SkipInit(out VkSparseImageFormatProperties2 instance);
+		instance.sType = VkStructureType.SparseImageFormatProperties2;
+		return instance;
 	}
 }
 
@@ -2059,10 +2134,11 @@ public partial struct VkPhysicalDeviceSparseImageFormatInfo2
 	public VkSampleCountFlags samples;
 	public VkImageUsageFlags usage;
 	public VkImageTiling tiling;
-	public VkPhysicalDeviceSparseImageFormatInfo2()
+	public static VkPhysicalDeviceSparseImageFormatInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSparseImageFormatInfo2;
+		Unsafe.SkipInit(out VkPhysicalDeviceSparseImageFormatInfo2 instance);
+		instance.sType = VkStructureType.PhysicalDeviceSparseImageFormatInfo2;
+		return instance;
 	}
 }
 
@@ -2072,10 +2148,11 @@ public partial struct VkPhysicalDevicePointClippingProperties
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkPointClippingBehavior pointClippingBehavior;
-	public VkPhysicalDevicePointClippingProperties()
+	public static VkPhysicalDevicePointClippingProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePointClippingProperties;
+		Unsafe.SkipInit(out VkPhysicalDevicePointClippingProperties instance);
+		instance.sType = VkStructureType.PhysicalDevicePointClippingProperties;
+		return instance;
 	}
 }
 
@@ -2094,10 +2171,11 @@ public partial struct VkRenderPassInputAttachmentAspectCreateInfo
 	public unsafe void* pNext;
 	public uint aspectReferenceCount;
 	public unsafe VkInputAttachmentAspectReference* pAspectReferences;
-	public VkRenderPassInputAttachmentAspectCreateInfo()
+	public static VkRenderPassInputAttachmentAspectCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassInputAttachmentAspectCreateInfo;
+		Unsafe.SkipInit(out VkRenderPassInputAttachmentAspectCreateInfo instance);
+		instance.sType = VkStructureType.RenderPassInputAttachmentAspectCreateInfo;
+		return instance;
 	}
 }
 
@@ -2107,10 +2185,11 @@ public partial struct VkImageViewUsageCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImageUsageFlags usage;
-	public VkImageViewUsageCreateInfo()
+	public static VkImageViewUsageCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageViewUsageCreateInfo;
+		Unsafe.SkipInit(out VkImageViewUsageCreateInfo instance);
+		instance.sType = VkStructureType.ImageViewUsageCreateInfo;
+		return instance;
 	}
 }
 
@@ -2120,10 +2199,11 @@ public partial struct VkPipelineTessellationDomainOriginStateCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkTessellationDomainOrigin domainOrigin;
-	public VkPipelineTessellationDomainOriginStateCreateInfo()
+	public static VkPipelineTessellationDomainOriginStateCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineTessellationDomainOriginStateCreateInfo;
+		Unsafe.SkipInit(out VkPipelineTessellationDomainOriginStateCreateInfo instance);
+		instance.sType = VkStructureType.PipelineTessellationDomainOriginStateCreateInfo;
+		return instance;
 	}
 }
 
@@ -2138,10 +2218,11 @@ public partial struct VkRenderPassMultiviewCreateInfo
 	public unsafe int* pViewOffsets;
 	public uint correlationMaskCount;
 	public unsafe uint* pCorrelationMasks;
-	public VkRenderPassMultiviewCreateInfo()
+	public static VkRenderPassMultiviewCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassMultiviewCreateInfo;
+		Unsafe.SkipInit(out VkRenderPassMultiviewCreateInfo instance);
+		instance.sType = VkStructureType.RenderPassMultiviewCreateInfo;
+		return instance;
 	}
 }
 
@@ -2153,10 +2234,11 @@ public partial struct VkPhysicalDeviceMultiviewFeatures
 	public VkBool32 multiview;
 	public VkBool32 multiviewGeometryShader;
 	public VkBool32 multiviewTessellationShader;
-	public VkPhysicalDeviceMultiviewFeatures()
+	public static VkPhysicalDeviceMultiviewFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMultiviewFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceMultiviewFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceMultiviewFeatures;
+		return instance;
 	}
 }
 
@@ -2167,10 +2249,11 @@ public partial struct VkPhysicalDeviceMultiviewProperties
 	public unsafe void* pNext;
 	public uint maxMultiviewViewCount;
 	public uint maxMultiviewInstanceIndex;
-	public VkPhysicalDeviceMultiviewProperties()
+	public static VkPhysicalDeviceMultiviewProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMultiviewProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceMultiviewProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceMultiviewProperties;
+		return instance;
 	}
 }
 
@@ -2181,10 +2264,11 @@ public partial struct VkPhysicalDeviceVariablePointersFeatures
 	public unsafe void* pNext;
 	public VkBool32 variablePointersStorageBuffer;
 	public VkBool32 variablePointers;
-	public VkPhysicalDeviceVariablePointersFeatures()
+	public static VkPhysicalDeviceVariablePointersFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVariablePointersFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceVariablePointersFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceVariablePointersFeatures;
+		return instance;
 	}
 }
 
@@ -2194,10 +2278,11 @@ public partial struct VkPhysicalDeviceProtectedMemoryFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 protectedMemory;
-	public VkPhysicalDeviceProtectedMemoryFeatures()
+	public static VkPhysicalDeviceProtectedMemoryFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceProtectedMemoryFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceProtectedMemoryFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceProtectedMemoryFeatures;
+		return instance;
 	}
 }
 
@@ -2207,10 +2292,11 @@ public partial struct VkPhysicalDeviceProtectedMemoryProperties
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 protectedNoFault;
-	public VkPhysicalDeviceProtectedMemoryProperties()
+	public static VkPhysicalDeviceProtectedMemoryProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceProtectedMemoryProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceProtectedMemoryProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceProtectedMemoryProperties;
+		return instance;
 	}
 }
 
@@ -2222,10 +2308,11 @@ public partial struct VkDeviceQueueInfo2
 	public VkDeviceQueueCreateFlags flags;
 	public uint queueFamilyIndex;
 	public uint queueIndex;
-	public VkDeviceQueueInfo2()
+	public static VkDeviceQueueInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceQueueInfo2;
+		Unsafe.SkipInit(out VkDeviceQueueInfo2 instance);
+		instance.sType = VkStructureType.DeviceQueueInfo2;
+		return instance;
 	}
 }
 
@@ -2235,10 +2322,11 @@ public partial struct VkProtectedSubmitInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 protectedSubmit;
-	public VkProtectedSubmitInfo()
+	public static VkProtectedSubmitInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ProtectedSubmitInfo;
+		Unsafe.SkipInit(out VkProtectedSubmitInfo instance);
+		instance.sType = VkStructureType.ProtectedSubmitInfo;
+		return instance;
 	}
 }
 
@@ -2255,10 +2343,11 @@ public partial struct VkSamplerYcbcrConversionCreateInfo
 	public VkChromaLocation yChromaOffset;
 	public VkFilter chromaFilter;
 	public VkBool32 forceExplicitReconstruction;
-	public VkSamplerYcbcrConversionCreateInfo()
+	public static VkSamplerYcbcrConversionCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SamplerYcbcrConversionCreateInfo;
+		Unsafe.SkipInit(out VkSamplerYcbcrConversionCreateInfo instance);
+		instance.sType = VkStructureType.SamplerYcbcrConversionCreateInfo;
+		return instance;
 	}
 }
 
@@ -2268,10 +2357,11 @@ public partial struct VkSamplerYcbcrConversionInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSamplerYcbcrConversion conversion;
-	public VkSamplerYcbcrConversionInfo()
+	public static VkSamplerYcbcrConversionInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SamplerYcbcrConversionInfo;
+		Unsafe.SkipInit(out VkSamplerYcbcrConversionInfo instance);
+		instance.sType = VkStructureType.SamplerYcbcrConversionInfo;
+		return instance;
 	}
 }
 
@@ -2281,10 +2371,11 @@ public partial struct VkBindImagePlaneMemoryInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImageAspectFlags planeAspect;
-	public VkBindImagePlaneMemoryInfo()
+	public static VkBindImagePlaneMemoryInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BindImagePlaneMemoryInfo;
+		Unsafe.SkipInit(out VkBindImagePlaneMemoryInfo instance);
+		instance.sType = VkStructureType.BindImagePlaneMemoryInfo;
+		return instance;
 	}
 }
 
@@ -2294,10 +2385,11 @@ public partial struct VkImagePlaneMemoryRequirementsInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImageAspectFlags planeAspect;
-	public VkImagePlaneMemoryRequirementsInfo()
+	public static VkImagePlaneMemoryRequirementsInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImagePlaneMemoryRequirementsInfo;
+		Unsafe.SkipInit(out VkImagePlaneMemoryRequirementsInfo instance);
+		instance.sType = VkStructureType.ImagePlaneMemoryRequirementsInfo;
+		return instance;
 	}
 }
 
@@ -2307,10 +2399,11 @@ public partial struct VkPhysicalDeviceSamplerYcbcrConversionFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 samplerYcbcrConversion;
-	public VkPhysicalDeviceSamplerYcbcrConversionFeatures()
+	public static VkPhysicalDeviceSamplerYcbcrConversionFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSamplerYcbcrConversionFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceSamplerYcbcrConversionFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceSamplerYcbcrConversionFeatures;
+		return instance;
 	}
 }
 
@@ -2320,10 +2413,11 @@ public partial struct VkSamplerYcbcrConversionImageFormatProperties
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint combinedImageSamplerDescriptorCount;
-	public VkSamplerYcbcrConversionImageFormatProperties()
+	public static VkSamplerYcbcrConversionImageFormatProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SamplerYcbcrConversionImageFormatProperties;
+		Unsafe.SkipInit(out VkSamplerYcbcrConversionImageFormatProperties instance);
+		instance.sType = VkStructureType.SamplerYcbcrConversionImageFormatProperties;
+		return instance;
 	}
 }
 
@@ -2351,10 +2445,11 @@ public partial struct VkDescriptorUpdateTemplateCreateInfo
 	public VkPipelineBindPoint pipelineBindPoint;
 	public VkPipelineLayout pipelineLayout;
 	public uint set;
-	public VkDescriptorUpdateTemplateCreateInfo()
+	public static VkDescriptorUpdateTemplateCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DescriptorUpdateTemplateCreateInfo;
+		Unsafe.SkipInit(out VkDescriptorUpdateTemplateCreateInfo instance);
+		instance.sType = VkStructureType.DescriptorUpdateTemplateCreateInfo;
+		return instance;
 	}
 }
 
@@ -2372,10 +2467,11 @@ public partial struct VkPhysicalDeviceExternalImageFormatInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleType;
-	public VkPhysicalDeviceExternalImageFormatInfo()
+	public static VkPhysicalDeviceExternalImageFormatInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceExternalImageFormatInfo;
+		Unsafe.SkipInit(out VkPhysicalDeviceExternalImageFormatInfo instance);
+		instance.sType = VkStructureType.PhysicalDeviceExternalImageFormatInfo;
+		return instance;
 	}
 }
 
@@ -2385,10 +2481,11 @@ public partial struct VkExternalImageFormatProperties
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalMemoryProperties externalMemoryProperties;
-	public VkExternalImageFormatProperties()
+	public static VkExternalImageFormatProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExternalImageFormatProperties;
+		Unsafe.SkipInit(out VkExternalImageFormatProperties instance);
+		instance.sType = VkStructureType.ExternalImageFormatProperties;
+		return instance;
 	}
 }
 
@@ -2400,10 +2497,11 @@ public partial struct VkPhysicalDeviceExternalBufferInfo
 	public VkBufferCreateFlags flags;
 	public VkBufferUsageFlags usage;
 	public VkExternalMemoryHandleTypeFlags handleType;
-	public VkPhysicalDeviceExternalBufferInfo()
+	public static VkPhysicalDeviceExternalBufferInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceExternalBufferInfo;
+		Unsafe.SkipInit(out VkPhysicalDeviceExternalBufferInfo instance);
+		instance.sType = VkStructureType.PhysicalDeviceExternalBufferInfo;
+		return instance;
 	}
 }
 
@@ -2413,10 +2511,11 @@ public partial struct VkExternalBufferProperties
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalMemoryProperties externalMemoryProperties;
-	public VkExternalBufferProperties()
+	public static VkExternalBufferProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExternalBufferProperties;
+		Unsafe.SkipInit(out VkExternalBufferProperties instance);
+		instance.sType = VkStructureType.ExternalBufferProperties;
+		return instance;
 	}
 }
 
@@ -2430,10 +2529,11 @@ public partial struct VkPhysicalDeviceIDProperties
 	public unsafe fixed byte deviceLUID[8];
 	public uint deviceNodeMask;
 	public VkBool32 deviceLUIDValid;
-	public VkPhysicalDeviceIDProperties()
+	public static VkPhysicalDeviceIDProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceIDProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceIDProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceIDProperties;
+		return instance;
 	}
 }
 
@@ -2443,10 +2543,11 @@ public partial struct VkExternalMemoryImageCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleTypes;
-	public VkExternalMemoryImageCreateInfo()
+	public static VkExternalMemoryImageCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExternalMemoryImageCreateInfo;
+		Unsafe.SkipInit(out VkExternalMemoryImageCreateInfo instance);
+		instance.sType = VkStructureType.ExternalMemoryImageCreateInfo;
+		return instance;
 	}
 }
 
@@ -2456,10 +2557,11 @@ public partial struct VkExternalMemoryBufferCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleTypes;
-	public VkExternalMemoryBufferCreateInfo()
+	public static VkExternalMemoryBufferCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExternalMemoryBufferCreateInfo;
+		Unsafe.SkipInit(out VkExternalMemoryBufferCreateInfo instance);
+		instance.sType = VkStructureType.ExternalMemoryBufferCreateInfo;
+		return instance;
 	}
 }
 
@@ -2469,10 +2571,11 @@ public partial struct VkExportMemoryAllocateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleTypes;
-	public VkExportMemoryAllocateInfo()
+	public static VkExportMemoryAllocateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExportMemoryAllocateInfo;
+		Unsafe.SkipInit(out VkExportMemoryAllocateInfo instance);
+		instance.sType = VkStructureType.ExportMemoryAllocateInfo;
+		return instance;
 	}
 }
 
@@ -2482,10 +2585,11 @@ public partial struct VkPhysicalDeviceExternalFenceInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalFenceHandleTypeFlags handleType;
-	public VkPhysicalDeviceExternalFenceInfo()
+	public static VkPhysicalDeviceExternalFenceInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceExternalFenceInfo;
+		Unsafe.SkipInit(out VkPhysicalDeviceExternalFenceInfo instance);
+		instance.sType = VkStructureType.PhysicalDeviceExternalFenceInfo;
+		return instance;
 	}
 }
 
@@ -2497,10 +2601,11 @@ public partial struct VkExternalFenceProperties
 	public VkExternalFenceHandleTypeFlags exportFromImportedHandleTypes;
 	public VkExternalFenceHandleTypeFlags compatibleHandleTypes;
 	public VkExternalFenceFeatureFlags externalFenceFeatures;
-	public VkExternalFenceProperties()
+	public static VkExternalFenceProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExternalFenceProperties;
+		Unsafe.SkipInit(out VkExternalFenceProperties instance);
+		instance.sType = VkStructureType.ExternalFenceProperties;
+		return instance;
 	}
 }
 
@@ -2510,10 +2615,11 @@ public partial struct VkExportFenceCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalFenceHandleTypeFlags handleTypes;
-	public VkExportFenceCreateInfo()
+	public static VkExportFenceCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExportFenceCreateInfo;
+		Unsafe.SkipInit(out VkExportFenceCreateInfo instance);
+		instance.sType = VkStructureType.ExportFenceCreateInfo;
+		return instance;
 	}
 }
 
@@ -2523,10 +2629,11 @@ public partial struct VkExportSemaphoreCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalSemaphoreHandleTypeFlags handleTypes;
-	public VkExportSemaphoreCreateInfo()
+	public static VkExportSemaphoreCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExportSemaphoreCreateInfo;
+		Unsafe.SkipInit(out VkExportSemaphoreCreateInfo instance);
+		instance.sType = VkStructureType.ExportSemaphoreCreateInfo;
+		return instance;
 	}
 }
 
@@ -2536,10 +2643,11 @@ public partial struct VkPhysicalDeviceExternalSemaphoreInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalSemaphoreHandleTypeFlags handleType;
-	public VkPhysicalDeviceExternalSemaphoreInfo()
+	public static VkPhysicalDeviceExternalSemaphoreInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceExternalSemaphoreInfo;
+		Unsafe.SkipInit(out VkPhysicalDeviceExternalSemaphoreInfo instance);
+		instance.sType = VkStructureType.PhysicalDeviceExternalSemaphoreInfo;
+		return instance;
 	}
 }
 
@@ -2551,10 +2659,11 @@ public partial struct VkExternalSemaphoreProperties
 	public VkExternalSemaphoreHandleTypeFlags exportFromImportedHandleTypes;
 	public VkExternalSemaphoreHandleTypeFlags compatibleHandleTypes;
 	public VkExternalSemaphoreFeatureFlags externalSemaphoreFeatures;
-	public VkExternalSemaphoreProperties()
+	public static VkExternalSemaphoreProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExternalSemaphoreProperties;
+		Unsafe.SkipInit(out VkExternalSemaphoreProperties instance);
+		instance.sType = VkStructureType.ExternalSemaphoreProperties;
+		return instance;
 	}
 }
 
@@ -2565,10 +2674,11 @@ public partial struct VkPhysicalDeviceMaintenance3Properties
 	public unsafe void* pNext;
 	public uint maxPerSetDescriptors;
 	public ulong maxMemoryAllocationSize;
-	public VkPhysicalDeviceMaintenance3Properties()
+	public static VkPhysicalDeviceMaintenance3Properties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMaintenance3Properties;
+		Unsafe.SkipInit(out VkPhysicalDeviceMaintenance3Properties instance);
+		instance.sType = VkStructureType.PhysicalDeviceMaintenance3Properties;
+		return instance;
 	}
 }
 
@@ -2578,10 +2688,11 @@ public partial struct VkDescriptorSetLayoutSupport
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 supported;
-	public VkDescriptorSetLayoutSupport()
+	public static VkDescriptorSetLayoutSupport New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DescriptorSetLayoutSupport;
+		Unsafe.SkipInit(out VkDescriptorSetLayoutSupport instance);
+		instance.sType = VkStructureType.DescriptorSetLayoutSupport;
+		return instance;
 	}
 }
 
@@ -2591,10 +2702,11 @@ public partial struct VkPhysicalDeviceShaderDrawParametersFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 shaderDrawParameters;
-	public VkPhysicalDeviceShaderDrawParametersFeatures()
+	public static VkPhysicalDeviceShaderDrawParametersFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderDrawParametersFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderDrawParametersFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderDrawParametersFeatures;
+		return instance;
 	}
 }
 
@@ -2615,10 +2727,11 @@ public partial struct VkPhysicalDeviceVulkan11Features
 	public VkBool32 protectedMemory;
 	public VkBool32 samplerYcbcrConversion;
 	public VkBool32 shaderDrawParameters;
-	public VkPhysicalDeviceVulkan11Features()
+	public static VkPhysicalDeviceVulkan11Features New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVulkan11Features;
+		Unsafe.SkipInit(out VkPhysicalDeviceVulkan11Features instance);
+		instance.sType = VkStructureType.PhysicalDeviceVulkan11Features;
+		return instance;
 	}
 }
 
@@ -2642,10 +2755,11 @@ public partial struct VkPhysicalDeviceVulkan11Properties
 	public VkBool32 protectedNoFault;
 	public uint maxPerSetDescriptors;
 	public ulong maxMemoryAllocationSize;
-	public VkPhysicalDeviceVulkan11Properties()
+	public static VkPhysicalDeviceVulkan11Properties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVulkan11Properties;
+		Unsafe.SkipInit(out VkPhysicalDeviceVulkan11Properties instance);
+		instance.sType = VkStructureType.PhysicalDeviceVulkan11Properties;
+		return instance;
 	}
 }
 
@@ -2701,10 +2815,11 @@ public partial struct VkPhysicalDeviceVulkan12Features
 	public VkBool32 shaderOutputViewportIndex;
 	public VkBool32 shaderOutputLayer;
 	public VkBool32 subgroupBroadcastDynamicId;
-	public VkPhysicalDeviceVulkan12Features()
+	public static VkPhysicalDeviceVulkan12Features New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVulkan12Features;
+		Unsafe.SkipInit(out VkPhysicalDeviceVulkan12Features instance);
+		instance.sType = VkStructureType.PhysicalDeviceVulkan12Features;
+		return instance;
 	}
 }
 
@@ -2774,10 +2889,11 @@ public partial struct VkPhysicalDeviceVulkan12Properties
 	public VkBool32 filterMinmaxImageComponentMapping;
 	public ulong maxTimelineSemaphoreValueDifference;
 	public VkSampleCountFlags framebufferIntegerColorSampleCounts;
-	public VkPhysicalDeviceVulkan12Properties()
+	public static VkPhysicalDeviceVulkan12Properties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVulkan12Properties;
+		Unsafe.SkipInit(out VkPhysicalDeviceVulkan12Properties instance);
+		instance.sType = VkStructureType.PhysicalDeviceVulkan12Properties;
+		return instance;
 	}
 }
 
@@ -2788,10 +2904,11 @@ public partial struct VkImageFormatListCreateInfo
 	public unsafe void* pNext;
 	public uint viewFormatCount;
 	public unsafe VkFormat* pViewFormats;
-	public VkImageFormatListCreateInfo()
+	public static VkImageFormatListCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageFormatListCreateInfo;
+		Unsafe.SkipInit(out VkImageFormatListCreateInfo instance);
+		instance.sType = VkStructureType.ImageFormatListCreateInfo;
+		return instance;
 	}
 }
 
@@ -2809,10 +2926,11 @@ public partial struct VkAttachmentDescription2
 	public VkAttachmentStoreOp stencilStoreOp;
 	public VkImageLayout initialLayout;
 	public VkImageLayout finalLayout;
-	public VkAttachmentDescription2()
+	public static VkAttachmentDescription2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AttachmentDescription2;
+		Unsafe.SkipInit(out VkAttachmentDescription2 instance);
+		instance.sType = VkStructureType.AttachmentDescription2;
+		return instance;
 	}
 }
 
@@ -2824,10 +2942,11 @@ public partial struct VkAttachmentReference2
 	public uint attachment;
 	public VkImageLayout layout;
 	public VkImageAspectFlags aspectMask;
-	public VkAttachmentReference2()
+	public static VkAttachmentReference2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AttachmentReference2;
+		Unsafe.SkipInit(out VkAttachmentReference2 instance);
+		instance.sType = VkStructureType.AttachmentReference2;
+		return instance;
 	}
 }
 
@@ -2847,10 +2966,11 @@ public partial struct VkSubpassDescription2
 	public unsafe VkAttachmentReference2* pDepthStencilAttachment;
 	public uint preserveAttachmentCount;
 	public unsafe uint* pPreserveAttachments;
-	public VkSubpassDescription2()
+	public static VkSubpassDescription2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SubpassDescription2;
+		Unsafe.SkipInit(out VkSubpassDescription2 instance);
+		instance.sType = VkStructureType.SubpassDescription2;
+		return instance;
 	}
 }
 
@@ -2867,10 +2987,11 @@ public partial struct VkSubpassDependency2
 	public VkAccessFlags dstAccessMask;
 	public VkDependencyFlags dependencyFlags;
 	public int viewOffset;
-	public VkSubpassDependency2()
+	public static VkSubpassDependency2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SubpassDependency2;
+		Unsafe.SkipInit(out VkSubpassDependency2 instance);
+		instance.sType = VkStructureType.SubpassDependency2;
+		return instance;
 	}
 }
 
@@ -2888,10 +3009,11 @@ public partial struct VkRenderPassCreateInfo2
 	public unsafe VkSubpassDependency2* pDependencies;
 	public uint correlatedViewMaskCount;
 	public unsafe uint* pCorrelatedViewMasks;
-	public VkRenderPassCreateInfo2()
+	public static VkRenderPassCreateInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassCreateInfo2;
+		Unsafe.SkipInit(out VkRenderPassCreateInfo2 instance);
+		instance.sType = VkStructureType.RenderPassCreateInfo2;
+		return instance;
 	}
 }
 
@@ -2901,10 +3023,11 @@ public partial struct VkSubpassBeginInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSubpassContents contents;
-	public VkSubpassBeginInfo()
+	public static VkSubpassBeginInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SubpassBeginInfo;
+		Unsafe.SkipInit(out VkSubpassBeginInfo instance);
+		instance.sType = VkStructureType.SubpassBeginInfo;
+		return instance;
 	}
 }
 
@@ -2913,10 +3036,11 @@ public partial struct VkSubpassEndInfo
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public VkSubpassEndInfo()
+	public static VkSubpassEndInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SubpassEndInfo;
+		Unsafe.SkipInit(out VkSubpassEndInfo instance);
+		instance.sType = VkStructureType.SubpassEndInfo;
+		return instance;
 	}
 }
 
@@ -2928,10 +3052,11 @@ public partial struct VkPhysicalDevice8BitStorageFeatures
 	public VkBool32 storageBuffer8BitAccess;
 	public VkBool32 uniformAndStorageBuffer8BitAccess;
 	public VkBool32 storagePushConstant8;
-	public VkPhysicalDevice8BitStorageFeatures()
+	public static VkPhysicalDevice8BitStorageFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevice8BitStorageFeatures;
+		Unsafe.SkipInit(out VkPhysicalDevice8BitStorageFeatures instance);
+		instance.sType = VkStructureType.PhysicalDevice8BitStorageFeatures;
+		return instance;
 	}
 }
 
@@ -2944,10 +3069,11 @@ public partial struct VkPhysicalDeviceDriverProperties
 	public unsafe fixed byte driverName[256];
 	public unsafe fixed byte driverInfo[256];
 	public VkConformanceVersion conformanceVersion;
-	public VkPhysicalDeviceDriverProperties()
+	public static VkPhysicalDeviceDriverProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDriverProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceDriverProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceDriverProperties;
+		return instance;
 	}
 }
 
@@ -2958,10 +3084,11 @@ public partial struct VkPhysicalDeviceShaderAtomicInt64Features
 	public unsafe void* pNext;
 	public VkBool32 shaderBufferInt64Atomics;
 	public VkBool32 shaderSharedInt64Atomics;
-	public VkPhysicalDeviceShaderAtomicInt64Features()
+	public static VkPhysicalDeviceShaderAtomicInt64Features New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderAtomicInt64Features;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderAtomicInt64Features instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderAtomicInt64Features;
+		return instance;
 	}
 }
 
@@ -2972,10 +3099,11 @@ public partial struct VkPhysicalDeviceShaderFloat16Int8Features
 	public unsafe void* pNext;
 	public VkBool32 shaderFloat16;
 	public VkBool32 shaderInt8;
-	public VkPhysicalDeviceShaderFloat16Int8Features()
+	public static VkPhysicalDeviceShaderFloat16Int8Features New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderFloat16Int8Features;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderFloat16Int8Features instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderFloat16Int8Features;
+		return instance;
 	}
 }
 
@@ -3001,10 +3129,11 @@ public partial struct VkPhysicalDeviceFloatControlsProperties
 	public VkBool32 shaderRoundingModeRTZFloat16;
 	public VkBool32 shaderRoundingModeRTZFloat32;
 	public VkBool32 shaderRoundingModeRTZFloat64;
-	public VkPhysicalDeviceFloatControlsProperties()
+	public static VkPhysicalDeviceFloatControlsProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFloatControlsProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceFloatControlsProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceFloatControlsProperties;
+		return instance;
 	}
 }
 
@@ -3015,10 +3144,11 @@ public partial struct VkDescriptorSetLayoutBindingFlagsCreateInfo
 	public unsafe void* pNext;
 	public uint bindingCount;
 	public unsafe VkDescriptorBindingFlags* pBindingFlags;
-	public VkDescriptorSetLayoutBindingFlagsCreateInfo()
+	public static VkDescriptorSetLayoutBindingFlagsCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DescriptorSetLayoutBindingFlagsCreateInfo;
+		Unsafe.SkipInit(out VkDescriptorSetLayoutBindingFlagsCreateInfo instance);
+		instance.sType = VkStructureType.DescriptorSetLayoutBindingFlagsCreateInfo;
+		return instance;
 	}
 }
 
@@ -3047,10 +3177,11 @@ public partial struct VkPhysicalDeviceDescriptorIndexingFeatures
 	public VkBool32 descriptorBindingPartiallyBound;
 	public VkBool32 descriptorBindingVariableDescriptorCount;
 	public VkBool32 runtimeDescriptorArray;
-	public VkPhysicalDeviceDescriptorIndexingFeatures()
+	public static VkPhysicalDeviceDescriptorIndexingFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDescriptorIndexingFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceDescriptorIndexingFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceDescriptorIndexingFeatures;
+		return instance;
 	}
 }
 
@@ -3082,10 +3213,11 @@ public partial struct VkPhysicalDeviceDescriptorIndexingProperties
 	public uint maxDescriptorSetUpdateAfterBindSampledImages;
 	public uint maxDescriptorSetUpdateAfterBindStorageImages;
 	public uint maxDescriptorSetUpdateAfterBindInputAttachments;
-	public VkPhysicalDeviceDescriptorIndexingProperties()
+	public static VkPhysicalDeviceDescriptorIndexingProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDescriptorIndexingProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceDescriptorIndexingProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceDescriptorIndexingProperties;
+		return instance;
 	}
 }
 
@@ -3096,10 +3228,11 @@ public partial struct VkDescriptorSetVariableDescriptorCountAllocateInfo
 	public unsafe void* pNext;
 	public uint descriptorSetCount;
 	public unsafe uint* pDescriptorCounts;
-	public VkDescriptorSetVariableDescriptorCountAllocateInfo()
+	public static VkDescriptorSetVariableDescriptorCountAllocateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DescriptorSetVariableDescriptorCountAllocateInfo;
+		Unsafe.SkipInit(out VkDescriptorSetVariableDescriptorCountAllocateInfo instance);
+		instance.sType = VkStructureType.DescriptorSetVariableDescriptorCountAllocateInfo;
+		return instance;
 	}
 }
 
@@ -3109,10 +3242,11 @@ public partial struct VkDescriptorSetVariableDescriptorCountLayoutSupport
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint maxVariableDescriptorCount;
-	public VkDescriptorSetVariableDescriptorCountLayoutSupport()
+	public static VkDescriptorSetVariableDescriptorCountLayoutSupport New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DescriptorSetVariableDescriptorCountLayoutSupport;
+		Unsafe.SkipInit(out VkDescriptorSetVariableDescriptorCountLayoutSupport instance);
+		instance.sType = VkStructureType.DescriptorSetVariableDescriptorCountLayoutSupport;
+		return instance;
 	}
 }
 
@@ -3124,10 +3258,11 @@ public partial struct VkSubpassDescriptionDepthStencilResolve
 	public VkResolveModeFlags depthResolveMode;
 	public VkResolveModeFlags stencilResolveMode;
 	public unsafe VkAttachmentReference2* pDepthStencilResolveAttachment;
-	public VkSubpassDescriptionDepthStencilResolve()
+	public static VkSubpassDescriptionDepthStencilResolve New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SubpassDescriptionDepthStencilResolve;
+		Unsafe.SkipInit(out VkSubpassDescriptionDepthStencilResolve instance);
+		instance.sType = VkStructureType.SubpassDescriptionDepthStencilResolve;
+		return instance;
 	}
 }
 
@@ -3140,10 +3275,11 @@ public partial struct VkPhysicalDeviceDepthStencilResolveProperties
 	public VkResolveModeFlags supportedStencilResolveModes;
 	public VkBool32 independentResolveNone;
 	public VkBool32 independentResolve;
-	public VkPhysicalDeviceDepthStencilResolveProperties()
+	public static VkPhysicalDeviceDepthStencilResolveProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDepthStencilResolveProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceDepthStencilResolveProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceDepthStencilResolveProperties;
+		return instance;
 	}
 }
 
@@ -3153,10 +3289,11 @@ public partial struct VkPhysicalDeviceScalarBlockLayoutFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 scalarBlockLayout;
-	public VkPhysicalDeviceScalarBlockLayoutFeatures()
+	public static VkPhysicalDeviceScalarBlockLayoutFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceScalarBlockLayoutFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceScalarBlockLayoutFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceScalarBlockLayoutFeatures;
+		return instance;
 	}
 }
 
@@ -3166,10 +3303,11 @@ public partial struct VkImageStencilUsageCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImageUsageFlags stencilUsage;
-	public VkImageStencilUsageCreateInfo()
+	public static VkImageStencilUsageCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageStencilUsageCreateInfo;
+		Unsafe.SkipInit(out VkImageStencilUsageCreateInfo instance);
+		instance.sType = VkStructureType.ImageStencilUsageCreateInfo;
+		return instance;
 	}
 }
 
@@ -3179,10 +3317,11 @@ public partial struct VkSamplerReductionModeCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSamplerReductionMode reductionMode;
-	public VkSamplerReductionModeCreateInfo()
+	public static VkSamplerReductionModeCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SamplerReductionModeCreateInfo;
+		Unsafe.SkipInit(out VkSamplerReductionModeCreateInfo instance);
+		instance.sType = VkStructureType.SamplerReductionModeCreateInfo;
+		return instance;
 	}
 }
 
@@ -3193,10 +3332,11 @@ public partial struct VkPhysicalDeviceSamplerFilterMinmaxProperties
 	public unsafe void* pNext;
 	public VkBool32 filterMinmaxSingleComponentFormats;
 	public VkBool32 filterMinmaxImageComponentMapping;
-	public VkPhysicalDeviceSamplerFilterMinmaxProperties()
+	public static VkPhysicalDeviceSamplerFilterMinmaxProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSamplerFilterMinmaxProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceSamplerFilterMinmaxProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceSamplerFilterMinmaxProperties;
+		return instance;
 	}
 }
 
@@ -3208,10 +3348,11 @@ public partial struct VkPhysicalDeviceVulkanMemoryModelFeatures
 	public VkBool32 vulkanMemoryModel;
 	public VkBool32 vulkanMemoryModelDeviceScope;
 	public VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
-	public VkPhysicalDeviceVulkanMemoryModelFeatures()
+	public static VkPhysicalDeviceVulkanMemoryModelFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVulkanMemoryModelFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceVulkanMemoryModelFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceVulkanMemoryModelFeatures;
+		return instance;
 	}
 }
 
@@ -3221,10 +3362,11 @@ public partial struct VkPhysicalDeviceImagelessFramebufferFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 imagelessFramebuffer;
-	public VkPhysicalDeviceImagelessFramebufferFeatures()
+	public static VkPhysicalDeviceImagelessFramebufferFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceImagelessFramebufferFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceImagelessFramebufferFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceImagelessFramebufferFeatures;
+		return instance;
 	}
 }
 
@@ -3240,10 +3382,11 @@ public partial struct VkFramebufferAttachmentImageInfo
 	public uint layerCount;
 	public uint viewFormatCount;
 	public unsafe VkFormat* pViewFormats;
-	public VkFramebufferAttachmentImageInfo()
+	public static VkFramebufferAttachmentImageInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.FramebufferAttachmentImageInfo;
+		Unsafe.SkipInit(out VkFramebufferAttachmentImageInfo instance);
+		instance.sType = VkStructureType.FramebufferAttachmentImageInfo;
+		return instance;
 	}
 }
 
@@ -3254,10 +3397,11 @@ public partial struct VkFramebufferAttachmentsCreateInfo
 	public unsafe void* pNext;
 	public uint attachmentImageInfoCount;
 	public unsafe VkFramebufferAttachmentImageInfo* pAttachmentImageInfos;
-	public VkFramebufferAttachmentsCreateInfo()
+	public static VkFramebufferAttachmentsCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.FramebufferAttachmentsCreateInfo;
+		Unsafe.SkipInit(out VkFramebufferAttachmentsCreateInfo instance);
+		instance.sType = VkStructureType.FramebufferAttachmentsCreateInfo;
+		return instance;
 	}
 }
 
@@ -3268,10 +3412,11 @@ public partial struct VkRenderPassAttachmentBeginInfo
 	public unsafe void* pNext;
 	public uint attachmentCount;
 	public unsafe VkImageView* pAttachments;
-	public VkRenderPassAttachmentBeginInfo()
+	public static VkRenderPassAttachmentBeginInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassAttachmentBeginInfo;
+		Unsafe.SkipInit(out VkRenderPassAttachmentBeginInfo instance);
+		instance.sType = VkStructureType.RenderPassAttachmentBeginInfo;
+		return instance;
 	}
 }
 
@@ -3281,10 +3426,11 @@ public partial struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 uniformBufferStandardLayout;
-	public VkPhysicalDeviceUniformBufferStandardLayoutFeatures()
+	public static VkPhysicalDeviceUniformBufferStandardLayoutFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceUniformBufferStandardLayoutFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceUniformBufferStandardLayoutFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceUniformBufferStandardLayoutFeatures;
+		return instance;
 	}
 }
 
@@ -3294,10 +3440,11 @@ public partial struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 shaderSubgroupExtendedTypes;
-	public VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures()
+	public static VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderSubgroupExtendedTypesFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderSubgroupExtendedTypesFeatures;
+		return instance;
 	}
 }
 
@@ -3307,10 +3454,11 @@ public partial struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 separateDepthStencilLayouts;
-	public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures()
+	public static VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSeparateDepthStencilLayoutsFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceSeparateDepthStencilLayoutsFeatures;
+		return instance;
 	}
 }
 
@@ -3320,10 +3468,11 @@ public partial struct VkAttachmentReferenceStencilLayout
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImageLayout stencilLayout;
-	public VkAttachmentReferenceStencilLayout()
+	public static VkAttachmentReferenceStencilLayout New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AttachmentReferenceStencilLayout;
+		Unsafe.SkipInit(out VkAttachmentReferenceStencilLayout instance);
+		instance.sType = VkStructureType.AttachmentReferenceStencilLayout;
+		return instance;
 	}
 }
 
@@ -3334,10 +3483,11 @@ public partial struct VkAttachmentDescriptionStencilLayout
 	public unsafe void* pNext;
 	public VkImageLayout stencilInitialLayout;
 	public VkImageLayout stencilFinalLayout;
-	public VkAttachmentDescriptionStencilLayout()
+	public static VkAttachmentDescriptionStencilLayout New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AttachmentDescriptionStencilLayout;
+		Unsafe.SkipInit(out VkAttachmentDescriptionStencilLayout instance);
+		instance.sType = VkStructureType.AttachmentDescriptionStencilLayout;
+		return instance;
 	}
 }
 
@@ -3347,10 +3497,11 @@ public partial struct VkPhysicalDeviceHostQueryResetFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 hostQueryReset;
-	public VkPhysicalDeviceHostQueryResetFeatures()
+	public static VkPhysicalDeviceHostQueryResetFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceHostQueryResetFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceHostQueryResetFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceHostQueryResetFeatures;
+		return instance;
 	}
 }
 
@@ -3360,10 +3511,11 @@ public partial struct VkPhysicalDeviceTimelineSemaphoreFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 timelineSemaphore;
-	public VkPhysicalDeviceTimelineSemaphoreFeatures()
+	public static VkPhysicalDeviceTimelineSemaphoreFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceTimelineSemaphoreFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceTimelineSemaphoreFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceTimelineSemaphoreFeatures;
+		return instance;
 	}
 }
 
@@ -3373,10 +3525,11 @@ public partial struct VkPhysicalDeviceTimelineSemaphoreProperties
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public ulong maxTimelineSemaphoreValueDifference;
-	public VkPhysicalDeviceTimelineSemaphoreProperties()
+	public static VkPhysicalDeviceTimelineSemaphoreProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceTimelineSemaphoreProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceTimelineSemaphoreProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceTimelineSemaphoreProperties;
+		return instance;
 	}
 }
 
@@ -3387,10 +3540,11 @@ public partial struct VkSemaphoreTypeCreateInfo
 	public unsafe void* pNext;
 	public VkSemaphoreType semaphoreType;
 	public ulong initialValue;
-	public VkSemaphoreTypeCreateInfo()
+	public static VkSemaphoreTypeCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SemaphoreTypeCreateInfo;
+		Unsafe.SkipInit(out VkSemaphoreTypeCreateInfo instance);
+		instance.sType = VkStructureType.SemaphoreTypeCreateInfo;
+		return instance;
 	}
 }
 
@@ -3403,10 +3557,11 @@ public partial struct VkTimelineSemaphoreSubmitInfo
 	public unsafe ulong* pWaitSemaphoreValues;
 	public uint signalSemaphoreValueCount;
 	public unsafe ulong* pSignalSemaphoreValues;
-	public VkTimelineSemaphoreSubmitInfo()
+	public static VkTimelineSemaphoreSubmitInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.TimelineSemaphoreSubmitInfo;
+		Unsafe.SkipInit(out VkTimelineSemaphoreSubmitInfo instance);
+		instance.sType = VkStructureType.TimelineSemaphoreSubmitInfo;
+		return instance;
 	}
 }
 
@@ -3419,10 +3574,11 @@ public partial struct VkSemaphoreWaitInfo
 	public uint semaphoreCount;
 	public unsafe VkSemaphore* pSemaphores;
 	public unsafe ulong* pValues;
-	public VkSemaphoreWaitInfo()
+	public static VkSemaphoreWaitInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SemaphoreWaitInfo;
+		Unsafe.SkipInit(out VkSemaphoreWaitInfo instance);
+		instance.sType = VkStructureType.SemaphoreWaitInfo;
+		return instance;
 	}
 }
 
@@ -3433,10 +3589,11 @@ public partial struct VkSemaphoreSignalInfo
 	public unsafe void* pNext;
 	public VkSemaphore semaphore;
 	public ulong value;
-	public VkSemaphoreSignalInfo()
+	public static VkSemaphoreSignalInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SemaphoreSignalInfo;
+		Unsafe.SkipInit(out VkSemaphoreSignalInfo instance);
+		instance.sType = VkStructureType.SemaphoreSignalInfo;
+		return instance;
 	}
 }
 
@@ -3448,10 +3605,11 @@ public partial struct VkPhysicalDeviceBufferDeviceAddressFeatures
 	public VkBool32 bufferDeviceAddress;
 	public VkBool32 bufferDeviceAddressCaptureReplay;
 	public VkBool32 bufferDeviceAddressMultiDevice;
-	public VkPhysicalDeviceBufferDeviceAddressFeatures()
+	public static VkPhysicalDeviceBufferDeviceAddressFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceBufferDeviceAddressFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceBufferDeviceAddressFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceBufferDeviceAddressFeatures;
+		return instance;
 	}
 }
 
@@ -3461,10 +3619,11 @@ public partial struct VkBufferDeviceAddressInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBuffer buffer;
-	public VkBufferDeviceAddressInfo()
+	public static VkBufferDeviceAddressInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BufferDeviceAddressInfo;
+		Unsafe.SkipInit(out VkBufferDeviceAddressInfo instance);
+		instance.sType = VkStructureType.BufferDeviceAddressInfo;
+		return instance;
 	}
 }
 
@@ -3474,10 +3633,11 @@ public partial struct VkBufferOpaqueCaptureAddressCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public ulong opaqueCaptureAddress;
-	public VkBufferOpaqueCaptureAddressCreateInfo()
+	public static VkBufferOpaqueCaptureAddressCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BufferOpaqueCaptureAddressCreateInfo;
+		Unsafe.SkipInit(out VkBufferOpaqueCaptureAddressCreateInfo instance);
+		instance.sType = VkStructureType.BufferOpaqueCaptureAddressCreateInfo;
+		return instance;
 	}
 }
 
@@ -3487,10 +3647,11 @@ public partial struct VkMemoryOpaqueCaptureAddressAllocateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public ulong opaqueCaptureAddress;
-	public VkMemoryOpaqueCaptureAddressAllocateInfo()
+	public static VkMemoryOpaqueCaptureAddressAllocateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryOpaqueCaptureAddressAllocateInfo;
+		Unsafe.SkipInit(out VkMemoryOpaqueCaptureAddressAllocateInfo instance);
+		instance.sType = VkStructureType.MemoryOpaqueCaptureAddressAllocateInfo;
+		return instance;
 	}
 }
 
@@ -3500,10 +3661,11 @@ public partial struct VkDeviceMemoryOpaqueCaptureAddressInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDeviceMemory memory;
-	public VkDeviceMemoryOpaqueCaptureAddressInfo()
+	public static VkDeviceMemoryOpaqueCaptureAddressInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceMemoryOpaqueCaptureAddressInfo;
+		Unsafe.SkipInit(out VkDeviceMemoryOpaqueCaptureAddressInfo instance);
+		instance.sType = VkStructureType.DeviceMemoryOpaqueCaptureAddressInfo;
+		return instance;
 	}
 }
 
@@ -3527,10 +3689,11 @@ public partial struct VkPhysicalDeviceVulkan13Features
 	public VkBool32 dynamicRendering;
 	public VkBool32 shaderIntegerDotProduct;
 	public VkBool32 maintenance4;
-	public VkPhysicalDeviceVulkan13Features()
+	public static VkPhysicalDeviceVulkan13Features New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVulkan13Features;
+		Unsafe.SkipInit(out VkPhysicalDeviceVulkan13Features instance);
+		instance.sType = VkStructureType.PhysicalDeviceVulkan13Features;
+		return instance;
 	}
 }
 
@@ -3584,10 +3747,11 @@ public partial struct VkPhysicalDeviceVulkan13Properties
 	public ulong uniformTexelBufferOffsetAlignmentBytes;
 	public VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
 	public ulong maxBufferSize;
-	public VkPhysicalDeviceVulkan13Properties()
+	public static VkPhysicalDeviceVulkan13Properties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVulkan13Properties;
+		Unsafe.SkipInit(out VkPhysicalDeviceVulkan13Properties instance);
+		instance.sType = VkStructureType.PhysicalDeviceVulkan13Properties;
+		return instance;
 	}
 }
 
@@ -3606,10 +3770,11 @@ public partial struct VkPipelineCreationFeedbackCreateInfo
 	public unsafe VkPipelineCreationFeedback* pPipelineCreationFeedback;
 	public uint pipelineStageCreationFeedbackCount;
 	public unsafe VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks;
-	public VkPipelineCreationFeedbackCreateInfo()
+	public static VkPipelineCreationFeedbackCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineCreationFeedbackCreateInfo;
+		Unsafe.SkipInit(out VkPipelineCreationFeedbackCreateInfo instance);
+		instance.sType = VkStructureType.PipelineCreationFeedbackCreateInfo;
+		return instance;
 	}
 }
 
@@ -3619,10 +3784,11 @@ public partial struct VkPhysicalDeviceShaderTerminateInvocationFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 shaderTerminateInvocation;
-	public VkPhysicalDeviceShaderTerminateInvocationFeatures()
+	public static VkPhysicalDeviceShaderTerminateInvocationFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderTerminateInvocationFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderTerminateInvocationFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderTerminateInvocationFeatures;
+		return instance;
 	}
 }
 
@@ -3636,10 +3802,11 @@ public partial struct VkPhysicalDeviceToolProperties
 	public VkToolPurposeFlags purposes;
 	public unsafe fixed byte description[256];
 	public unsafe fixed byte layer[256];
-	public VkPhysicalDeviceToolProperties()
+	public static VkPhysicalDeviceToolProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceToolProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceToolProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceToolProperties;
+		return instance;
 	}
 }
 
@@ -3649,10 +3816,11 @@ public partial struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 shaderDemoteToHelperInvocation;
-	public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures()
+	public static VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderDemoteToHelperInvocationFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderDemoteToHelperInvocationFeatures;
+		return instance;
 	}
 }
 
@@ -3662,10 +3830,11 @@ public partial struct VkPhysicalDevicePrivateDataFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 privateData;
-	public VkPhysicalDevicePrivateDataFeatures()
+	public static VkPhysicalDevicePrivateDataFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePrivateDataFeatures;
+		Unsafe.SkipInit(out VkPhysicalDevicePrivateDataFeatures instance);
+		instance.sType = VkStructureType.PhysicalDevicePrivateDataFeatures;
+		return instance;
 	}
 }
 
@@ -3675,10 +3844,11 @@ public partial struct VkDevicePrivateDataCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint privateDataSlotRequestCount;
-	public VkDevicePrivateDataCreateInfo()
+	public static VkDevicePrivateDataCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DevicePrivateDataCreateInfo;
+		Unsafe.SkipInit(out VkDevicePrivateDataCreateInfo instance);
+		instance.sType = VkStructureType.DevicePrivateDataCreateInfo;
+		return instance;
 	}
 }
 
@@ -3688,10 +3858,11 @@ public partial struct VkPrivateDataSlotCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkPrivateDataSlotCreateFlags flags;
-	public VkPrivateDataSlotCreateInfo()
+	public static VkPrivateDataSlotCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PrivateDataSlotCreateInfo;
+		Unsafe.SkipInit(out VkPrivateDataSlotCreateInfo instance);
+		instance.sType = VkStructureType.PrivateDataSlotCreateInfo;
+		return instance;
 	}
 }
 
@@ -3701,10 +3872,11 @@ public partial struct VkPhysicalDevicePipelineCreationCacheControlFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 pipelineCreationCacheControl;
-	public VkPhysicalDevicePipelineCreationCacheControlFeatures()
+	public static VkPhysicalDevicePipelineCreationCacheControlFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePipelineCreationCacheControlFeatures;
+		Unsafe.SkipInit(out VkPhysicalDevicePipelineCreationCacheControlFeatures instance);
+		instance.sType = VkStructureType.PhysicalDevicePipelineCreationCacheControlFeatures;
+		return instance;
 	}
 }
 
@@ -3717,10 +3889,11 @@ public partial struct VkMemoryBarrier2
 	public VkAccessFlags2 srcAccessMask;
 	public VkPipelineStageFlags2 dstStageMask;
 	public VkAccessFlags2 dstAccessMask;
-	public VkMemoryBarrier2()
+	public static VkMemoryBarrier2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryBarrier2;
+		Unsafe.SkipInit(out VkMemoryBarrier2 instance);
+		instance.sType = VkStructureType.MemoryBarrier2;
+		return instance;
 	}
 }
 
@@ -3738,10 +3911,11 @@ public partial struct VkBufferMemoryBarrier2
 	public VkBuffer buffer;
 	public ulong offset;
 	public ulong size;
-	public VkBufferMemoryBarrier2()
+	public static VkBufferMemoryBarrier2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BufferMemoryBarrier2;
+		Unsafe.SkipInit(out VkBufferMemoryBarrier2 instance);
+		instance.sType = VkStructureType.BufferMemoryBarrier2;
+		return instance;
 	}
 }
 
@@ -3760,10 +3934,11 @@ public partial struct VkImageMemoryBarrier2
 	public uint dstQueueFamilyIndex;
 	public VkImage image;
 	public VkImageSubresourceRange subresourceRange;
-	public VkImageMemoryBarrier2()
+	public static VkImageMemoryBarrier2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageMemoryBarrier2;
+		Unsafe.SkipInit(out VkImageMemoryBarrier2 instance);
+		instance.sType = VkStructureType.ImageMemoryBarrier2;
+		return instance;
 	}
 }
 
@@ -3779,10 +3954,11 @@ public partial struct VkDependencyInfo
 	public unsafe VkBufferMemoryBarrier2* pBufferMemoryBarriers;
 	public uint imageMemoryBarrierCount;
 	public unsafe VkImageMemoryBarrier2* pImageMemoryBarriers;
-	public VkDependencyInfo()
+	public static VkDependencyInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DependencyInfo;
+		Unsafe.SkipInit(out VkDependencyInfo instance);
+		instance.sType = VkStructureType.DependencyInfo;
+		return instance;
 	}
 }
 
@@ -3795,10 +3971,11 @@ public partial struct VkSemaphoreSubmitInfo
 	public ulong value;
 	public VkPipelineStageFlags2 stageMask;
 	public uint deviceIndex;
-	public VkSemaphoreSubmitInfo()
+	public static VkSemaphoreSubmitInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SemaphoreSubmitInfo;
+		Unsafe.SkipInit(out VkSemaphoreSubmitInfo instance);
+		instance.sType = VkStructureType.SemaphoreSubmitInfo;
+		return instance;
 	}
 }
 
@@ -3809,10 +3986,11 @@ public partial struct VkCommandBufferSubmitInfo
 	public unsafe void* pNext;
 	public VkCommandBuffer commandBuffer;
 	public uint deviceMask;
-	public VkCommandBufferSubmitInfo()
+	public static VkCommandBufferSubmitInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CommandBufferSubmitInfo;
+		Unsafe.SkipInit(out VkCommandBufferSubmitInfo instance);
+		instance.sType = VkStructureType.CommandBufferSubmitInfo;
+		return instance;
 	}
 }
 
@@ -3828,10 +4006,11 @@ public partial struct VkSubmitInfo2
 	public unsafe VkCommandBufferSubmitInfo* pCommandBufferInfos;
 	public uint signalSemaphoreInfoCount;
 	public unsafe VkSemaphoreSubmitInfo* pSignalSemaphoreInfos;
-	public VkSubmitInfo2()
+	public static VkSubmitInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SubmitInfo2;
+		Unsafe.SkipInit(out VkSubmitInfo2 instance);
+		instance.sType = VkStructureType.SubmitInfo2;
+		return instance;
 	}
 }
 
@@ -3841,10 +4020,11 @@ public partial struct VkPhysicalDeviceSynchronization2Features
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 synchronization2;
-	public VkPhysicalDeviceSynchronization2Features()
+	public static VkPhysicalDeviceSynchronization2Features New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSynchronization2Features;
+		Unsafe.SkipInit(out VkPhysicalDeviceSynchronization2Features instance);
+		instance.sType = VkStructureType.PhysicalDeviceSynchronization2Features;
+		return instance;
 	}
 }
 
@@ -3854,10 +4034,11 @@ public partial struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 shaderZeroInitializeWorkgroupMemory;
-	public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures()
+	public static VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures;
+		return instance;
 	}
 }
 
@@ -3867,10 +4048,11 @@ public partial struct VkPhysicalDeviceImageRobustnessFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 robustImageAccess;
-	public VkPhysicalDeviceImageRobustnessFeatures()
+	public static VkPhysicalDeviceImageRobustnessFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceImageRobustnessFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceImageRobustnessFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceImageRobustnessFeatures;
+		return instance;
 	}
 }
 
@@ -3882,10 +4064,11 @@ public partial struct VkBufferCopy2
 	public ulong srcOffset;
 	public ulong dstOffset;
 	public ulong size;
-	public VkBufferCopy2()
+	public static VkBufferCopy2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BufferCopy2;
+		Unsafe.SkipInit(out VkBufferCopy2 instance);
+		instance.sType = VkStructureType.BufferCopy2;
+		return instance;
 	}
 }
 
@@ -3898,10 +4081,11 @@ public partial struct VkCopyBufferInfo2
 	public VkBuffer dstBuffer;
 	public uint regionCount;
 	public unsafe VkBufferCopy2* pRegions;
-	public VkCopyBufferInfo2()
+	public static VkCopyBufferInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CopyBufferInfo2;
+		Unsafe.SkipInit(out VkCopyBufferInfo2 instance);
+		instance.sType = VkStructureType.CopyBufferInfo2;
+		return instance;
 	}
 }
 
@@ -3915,10 +4099,11 @@ public partial struct VkImageCopy2
 	public VkImageSubresourceLayers dstSubresource;
 	public VkOffset3D dstOffset;
 	public VkExtent3D extent;
-	public VkImageCopy2()
+	public static VkImageCopy2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageCopy2;
+		Unsafe.SkipInit(out VkImageCopy2 instance);
+		instance.sType = VkStructureType.ImageCopy2;
+		return instance;
 	}
 }
 
@@ -3933,10 +4118,11 @@ public partial struct VkCopyImageInfo2
 	public VkImageLayout dstImageLayout;
 	public uint regionCount;
 	public unsafe VkImageCopy2* pRegions;
-	public VkCopyImageInfo2()
+	public static VkCopyImageInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CopyImageInfo2;
+		Unsafe.SkipInit(out VkCopyImageInfo2 instance);
+		instance.sType = VkStructureType.CopyImageInfo2;
+		return instance;
 	}
 }
 
@@ -3951,10 +4137,11 @@ public partial struct VkBufferImageCopy2
 	public VkImageSubresourceLayers imageSubresource;
 	public VkOffset3D imageOffset;
 	public VkExtent3D imageExtent;
-	public VkBufferImageCopy2()
+	public static VkBufferImageCopy2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BufferImageCopy2;
+		Unsafe.SkipInit(out VkBufferImageCopy2 instance);
+		instance.sType = VkStructureType.BufferImageCopy2;
+		return instance;
 	}
 }
 
@@ -3968,10 +4155,11 @@ public partial struct VkCopyBufferToImageInfo2
 	public VkImageLayout dstImageLayout;
 	public uint regionCount;
 	public unsafe VkBufferImageCopy2* pRegions;
-	public VkCopyBufferToImageInfo2()
+	public static VkCopyBufferToImageInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CopyBufferToImageInfo2;
+		Unsafe.SkipInit(out VkCopyBufferToImageInfo2 instance);
+		instance.sType = VkStructureType.CopyBufferToImageInfo2;
+		return instance;
 	}
 }
 
@@ -3985,10 +4173,11 @@ public partial struct VkCopyImageToBufferInfo2
 	public VkBuffer dstBuffer;
 	public uint regionCount;
 	public unsafe VkBufferImageCopy2* pRegions;
-	public VkCopyImageToBufferInfo2()
+	public static VkCopyImageToBufferInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CopyImageToBufferInfo2;
+		Unsafe.SkipInit(out VkCopyImageToBufferInfo2 instance);
+		instance.sType = VkStructureType.CopyImageToBufferInfo2;
+		return instance;
 	}
 }
 
@@ -4003,10 +4192,11 @@ public partial struct VkImageBlit2
 	public VkImageSubresourceLayers dstSubresource;
 	public VkOffset3D dstOffsets_0;
 	public VkOffset3D dstOffsets_1;
-	public VkImageBlit2()
+	public static VkImageBlit2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageBlit2;
+		Unsafe.SkipInit(out VkImageBlit2 instance);
+		instance.sType = VkStructureType.ImageBlit2;
+		return instance;
 	}
 }
 
@@ -4022,10 +4212,11 @@ public partial struct VkBlitImageInfo2
 	public uint regionCount;
 	public unsafe VkImageBlit2* pRegions;
 	public VkFilter filter;
-	public VkBlitImageInfo2()
+	public static VkBlitImageInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BlitImageInfo2;
+		Unsafe.SkipInit(out VkBlitImageInfo2 instance);
+		instance.sType = VkStructureType.BlitImageInfo2;
+		return instance;
 	}
 }
 
@@ -4039,10 +4230,11 @@ public partial struct VkImageResolve2
 	public VkImageSubresourceLayers dstSubresource;
 	public VkOffset3D dstOffset;
 	public VkExtent3D extent;
-	public VkImageResolve2()
+	public static VkImageResolve2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageResolve2;
+		Unsafe.SkipInit(out VkImageResolve2 instance);
+		instance.sType = VkStructureType.ImageResolve2;
+		return instance;
 	}
 }
 
@@ -4057,10 +4249,11 @@ public partial struct VkResolveImageInfo2
 	public VkImageLayout dstImageLayout;
 	public uint regionCount;
 	public unsafe VkImageResolve2* pRegions;
-	public VkResolveImageInfo2()
+	public static VkResolveImageInfo2 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ResolveImageInfo2;
+		Unsafe.SkipInit(out VkResolveImageInfo2 instance);
+		instance.sType = VkStructureType.ResolveImageInfo2;
+		return instance;
 	}
 }
 
@@ -4071,10 +4264,11 @@ public partial struct VkPhysicalDeviceSubgroupSizeControlFeatures
 	public unsafe void* pNext;
 	public VkBool32 subgroupSizeControl;
 	public VkBool32 computeFullSubgroups;
-	public VkPhysicalDeviceSubgroupSizeControlFeatures()
+	public static VkPhysicalDeviceSubgroupSizeControlFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSubgroupSizeControlFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceSubgroupSizeControlFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceSubgroupSizeControlFeatures;
+		return instance;
 	}
 }
 
@@ -4087,10 +4281,11 @@ public partial struct VkPhysicalDeviceSubgroupSizeControlProperties
 	public uint maxSubgroupSize;
 	public uint maxComputeWorkgroupSubgroups;
 	public VkShaderStageFlags requiredSubgroupSizeStages;
-	public VkPhysicalDeviceSubgroupSizeControlProperties()
+	public static VkPhysicalDeviceSubgroupSizeControlProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSubgroupSizeControlProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceSubgroupSizeControlProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceSubgroupSizeControlProperties;
+		return instance;
 	}
 }
 
@@ -4100,10 +4295,11 @@ public partial struct VkPipelineShaderStageRequiredSubgroupSizeCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint requiredSubgroupSize;
-	public VkPipelineShaderStageRequiredSubgroupSizeCreateInfo()
+	public static VkPipelineShaderStageRequiredSubgroupSizeCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineShaderStageRequiredSubgroupSizeCreateInfo;
+		Unsafe.SkipInit(out VkPipelineShaderStageRequiredSubgroupSizeCreateInfo instance);
+		instance.sType = VkStructureType.PipelineShaderStageRequiredSubgroupSizeCreateInfo;
+		return instance;
 	}
 }
 
@@ -4114,10 +4310,11 @@ public partial struct VkPhysicalDeviceInlineUniformBlockFeatures
 	public unsafe void* pNext;
 	public VkBool32 inlineUniformBlock;
 	public VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
-	public VkPhysicalDeviceInlineUniformBlockFeatures()
+	public static VkPhysicalDeviceInlineUniformBlockFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceInlineUniformBlockFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceInlineUniformBlockFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceInlineUniformBlockFeatures;
+		return instance;
 	}
 }
 
@@ -4131,10 +4328,11 @@ public partial struct VkPhysicalDeviceInlineUniformBlockProperties
 	public uint maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks;
 	public uint maxDescriptorSetInlineUniformBlocks;
 	public uint maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
-	public VkPhysicalDeviceInlineUniformBlockProperties()
+	public static VkPhysicalDeviceInlineUniformBlockProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceInlineUniformBlockProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceInlineUniformBlockProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceInlineUniformBlockProperties;
+		return instance;
 	}
 }
 
@@ -4145,10 +4343,11 @@ public partial struct VkWriteDescriptorSetInlineUniformBlock
 	public unsafe void* pNext;
 	public uint dataSize;
 	public unsafe void* pData;
-	public VkWriteDescriptorSetInlineUniformBlock()
+	public static VkWriteDescriptorSetInlineUniformBlock New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.WriteDescriptorSetInlineUniformBlock;
+		Unsafe.SkipInit(out VkWriteDescriptorSetInlineUniformBlock instance);
+		instance.sType = VkStructureType.WriteDescriptorSetInlineUniformBlock;
+		return instance;
 	}
 }
 
@@ -4158,10 +4357,11 @@ public partial struct VkDescriptorPoolInlineUniformBlockCreateInfo
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint maxInlineUniformBlockBindings;
-	public VkDescriptorPoolInlineUniformBlockCreateInfo()
+	public static VkDescriptorPoolInlineUniformBlockCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DescriptorPoolInlineUniformBlockCreateInfo;
+		Unsafe.SkipInit(out VkDescriptorPoolInlineUniformBlockCreateInfo instance);
+		instance.sType = VkStructureType.DescriptorPoolInlineUniformBlockCreateInfo;
+		return instance;
 	}
 }
 
@@ -4171,10 +4371,11 @@ public partial struct VkPhysicalDeviceTextureCompressionASTCHDRFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 textureCompressionASTC_HDR;
-	public VkPhysicalDeviceTextureCompressionASTCHDRFeatures()
+	public static VkPhysicalDeviceTextureCompressionASTCHDRFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceTextureCompressionASTCHDRFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceTextureCompressionASTCHDRFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceTextureCompressionASTCHDRFeatures;
+		return instance;
 	}
 }
 
@@ -4191,10 +4392,11 @@ public partial struct VkRenderingAttachmentInfo
 	public VkAttachmentLoadOp loadOp;
 	public VkAttachmentStoreOp storeOp;
 	public VkClearValue clearValue;
-	public VkRenderingAttachmentInfo()
+	public static VkRenderingAttachmentInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderingAttachmentInfo;
+		Unsafe.SkipInit(out VkRenderingAttachmentInfo instance);
+		instance.sType = VkStructureType.RenderingAttachmentInfo;
+		return instance;
 	}
 }
 
@@ -4211,10 +4413,11 @@ public partial struct VkRenderingInfo
 	public unsafe VkRenderingAttachmentInfo* pColorAttachments;
 	public unsafe VkRenderingAttachmentInfo* pDepthAttachment;
 	public unsafe VkRenderingAttachmentInfo* pStencilAttachment;
-	public VkRenderingInfo()
+	public static VkRenderingInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderingInfo;
+		Unsafe.SkipInit(out VkRenderingInfo instance);
+		instance.sType = VkStructureType.RenderingInfo;
+		return instance;
 	}
 }
 
@@ -4228,10 +4431,11 @@ public partial struct VkPipelineRenderingCreateInfo
 	public unsafe VkFormat* pColorAttachmentFormats;
 	public VkFormat depthAttachmentFormat;
 	public VkFormat stencilAttachmentFormat;
-	public VkPipelineRenderingCreateInfo()
+	public static VkPipelineRenderingCreateInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineRenderingCreateInfo;
+		Unsafe.SkipInit(out VkPipelineRenderingCreateInfo instance);
+		instance.sType = VkStructureType.PipelineRenderingCreateInfo;
+		return instance;
 	}
 }
 
@@ -4241,10 +4445,11 @@ public partial struct VkPhysicalDeviceDynamicRenderingFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 dynamicRendering;
-	public VkPhysicalDeviceDynamicRenderingFeatures()
+	public static VkPhysicalDeviceDynamicRenderingFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDynamicRenderingFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceDynamicRenderingFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceDynamicRenderingFeatures;
+		return instance;
 	}
 }
 
@@ -4260,10 +4465,11 @@ public partial struct VkCommandBufferInheritanceRenderingInfo
 	public VkFormat depthAttachmentFormat;
 	public VkFormat stencilAttachmentFormat;
 	public VkSampleCountFlags rasterizationSamples;
-	public VkCommandBufferInheritanceRenderingInfo()
+	public static VkCommandBufferInheritanceRenderingInfo New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CommandBufferInheritanceRenderingInfo;
+		Unsafe.SkipInit(out VkCommandBufferInheritanceRenderingInfo instance);
+		instance.sType = VkStructureType.CommandBufferInheritanceRenderingInfo;
+		return instance;
 	}
 }
 
@@ -4273,10 +4479,11 @@ public partial struct VkPhysicalDeviceShaderIntegerDotProductFeatures
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 shaderIntegerDotProduct;
-	public VkPhysicalDeviceShaderIntegerDotProductFeatures()
+	public static VkPhysicalDeviceShaderIntegerDotProductFeatures New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductFeatures;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderIntegerDotProductFeatures instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductFeatures;
+		return instance;
 	}
 }
 
@@ -4315,10 +4522,11 @@ public partial struct VkPhysicalDeviceShaderIntegerDotProductProperties
 	public VkBool32 integerDotProductAccumulatingSaturating64BitUnsignedAccelerated;
 	public VkBool32 integerDotProductAccumulatingSaturating64BitSignedAccelerated;
 	public VkBool32 integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated;
-	public VkPhysicalDeviceShaderIntegerDotProductProperties()
+	public static VkPhysicalDeviceShaderIntegerDotProductProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderIntegerDotProductProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductProperties;
+		return instance;
 	}
 }
 
@@ -4331,10 +4539,11 @@ public partial struct VkPhysicalDeviceTexelBufferAlignmentProperties
 	public VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
 	public ulong uniformTexelBufferOffsetAlignmentBytes;
 	public VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
-	public VkPhysicalDeviceTexelBufferAlignmentProperties()
+	public static VkPhysicalDeviceTexelBufferAlignmentProperties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentProperties;
+		Unsafe.SkipInit(out VkPhysicalDeviceTexelBufferAlignmentProperties instance);
+		instance.sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentProperties;
+		return instance;
 	}
 }
 
@@ -4346,10 +4555,11 @@ public partial struct VkFormatProperties3
 	public VkFormatFeatureFlags2 linearTilingFeatures;
 	public VkFormatFeatureFlags2 optimalTilingFeatures;
 	public VkFormatFeatureFlags2 bufferFeatures;
-	public VkFormatProperties3()
+	public static VkFormatProperties3 New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.FormatProperties3;
+		Unsafe.SkipInit(out VkFormatProperties3 instance);
+		instance.sType = VkStructureType.FormatProperties3;
+		return instance;
 	}
 }
 
@@ -4359,10 +4569,11 @@ public partial struct VkPhysicalDeviceMaintenance4Features
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 maintenance4;
-	public VkPhysicalDeviceMaintenance4Features()
+	public static VkPhysicalDeviceMaintenance4Features New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMaintenance4Features;
+		Unsafe.SkipInit(out VkPhysicalDeviceMaintenance4Features instance);
+		instance.sType = VkStructureType.PhysicalDeviceMaintenance4Features;
+		return instance;
 	}
 }
 
@@ -4372,10 +4583,11 @@ public partial struct VkPhysicalDeviceMaintenance4Properties
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public ulong maxBufferSize;
-	public VkPhysicalDeviceMaintenance4Properties()
+	public static VkPhysicalDeviceMaintenance4Properties New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMaintenance4Properties;
+		Unsafe.SkipInit(out VkPhysicalDeviceMaintenance4Properties instance);
+		instance.sType = VkStructureType.PhysicalDeviceMaintenance4Properties;
+		return instance;
 	}
 }
 
@@ -4385,10 +4597,11 @@ public partial struct VkDeviceBufferMemoryRequirements
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe VkBufferCreateInfo* pCreateInfo;
-	public VkDeviceBufferMemoryRequirements()
+	public static VkDeviceBufferMemoryRequirements New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceBufferMemoryRequirements;
+		Unsafe.SkipInit(out VkDeviceBufferMemoryRequirements instance);
+		instance.sType = VkStructureType.DeviceBufferMemoryRequirements;
+		return instance;
 	}
 }
 
@@ -4399,10 +4612,11 @@ public partial struct VkDeviceImageMemoryRequirements
 	public unsafe void* pNext;
 	public unsafe VkImageCreateInfo* pCreateInfo;
 	public VkImageAspectFlags planeAspect;
-	public VkDeviceImageMemoryRequirements()
+	public static VkDeviceImageMemoryRequirements New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceImageMemoryRequirements;
+		Unsafe.SkipInit(out VkDeviceImageMemoryRequirements instance);
+		instance.sType = VkStructureType.DeviceImageMemoryRequirements;
+		return instance;
 	}
 }
 
@@ -4449,10 +4663,11 @@ public partial struct VkSwapchainCreateInfoKHR
 	public VkPresentModeKHR presentMode;
 	public VkBool32 clipped;
 	public VkSwapchainKHR oldSwapchain;
-	public VkSwapchainCreateInfoKHR()
+	public static VkSwapchainCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SwapchainCreateInfoKHR;
+		Unsafe.SkipInit(out VkSwapchainCreateInfoKHR instance);
+		instance.sType = VkStructureType.SwapchainCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -4467,10 +4682,11 @@ public partial struct VkPresentInfoKHR
 	public unsafe VkSwapchainKHR* pSwapchains;
 	public unsafe uint* pImageIndices;
 	public unsafe VkResult* pResults;
-	public VkPresentInfoKHR()
+	public static VkPresentInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PresentInfoKHR;
+		Unsafe.SkipInit(out VkPresentInfoKHR instance);
+		instance.sType = VkStructureType.PresentInfoKHR;
+		return instance;
 	}
 }
 
@@ -4480,10 +4696,11 @@ public partial struct VkImageSwapchainCreateInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSwapchainKHR swapchain;
-	public VkImageSwapchainCreateInfoKHR()
+	public static VkImageSwapchainCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageSwapchainCreateInfoKHR;
+		Unsafe.SkipInit(out VkImageSwapchainCreateInfoKHR instance);
+		instance.sType = VkStructureType.ImageSwapchainCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -4494,10 +4711,11 @@ public partial struct VkBindImageMemorySwapchainInfoKHR
 	public unsafe void* pNext;
 	public VkSwapchainKHR swapchain;
 	public uint imageIndex;
-	public VkBindImageMemorySwapchainInfoKHR()
+	public static VkBindImageMemorySwapchainInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BindImageMemorySwapchainInfoKHR;
+		Unsafe.SkipInit(out VkBindImageMemorySwapchainInfoKHR instance);
+		instance.sType = VkStructureType.BindImageMemorySwapchainInfoKHR;
+		return instance;
 	}
 }
 
@@ -4511,10 +4729,11 @@ public partial struct VkAcquireNextImageInfoKHR
 	public VkSemaphore semaphore;
 	public VkFence fence;
 	public uint deviceMask;
-	public VkAcquireNextImageInfoKHR()
+	public static VkAcquireNextImageInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AcquireNextImageInfoKHR;
+		Unsafe.SkipInit(out VkAcquireNextImageInfoKHR instance);
+		instance.sType = VkStructureType.AcquireNextImageInfoKHR;
+		return instance;
 	}
 }
 
@@ -4525,10 +4744,11 @@ public partial struct VkDeviceGroupPresentCapabilitiesKHR
 	public unsafe void* pNext;
 	public unsafe fixed uint presentMask[32];
 	public VkDeviceGroupPresentModeFlagsKHR modes;
-	public VkDeviceGroupPresentCapabilitiesKHR()
+	public static VkDeviceGroupPresentCapabilitiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceGroupPresentCapabilitiesKHR;
+		Unsafe.SkipInit(out VkDeviceGroupPresentCapabilitiesKHR instance);
+		instance.sType = VkStructureType.DeviceGroupPresentCapabilitiesKHR;
+		return instance;
 	}
 }
 
@@ -4540,10 +4760,11 @@ public partial struct VkDeviceGroupPresentInfoKHR
 	public uint swapchainCount;
 	public unsafe uint* pDeviceMasks;
 	public VkDeviceGroupPresentModeFlagsKHR mode;
-	public VkDeviceGroupPresentInfoKHR()
+	public static VkDeviceGroupPresentInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceGroupPresentInfoKHR;
+		Unsafe.SkipInit(out VkDeviceGroupPresentInfoKHR instance);
+		instance.sType = VkStructureType.DeviceGroupPresentInfoKHR;
+		return instance;
 	}
 }
 
@@ -4553,10 +4774,11 @@ public partial struct VkDeviceGroupSwapchainCreateInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDeviceGroupPresentModeFlagsKHR modes;
-	public VkDeviceGroupSwapchainCreateInfoKHR()
+	public static VkDeviceGroupSwapchainCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceGroupSwapchainCreateInfoKHR;
+		Unsafe.SkipInit(out VkDeviceGroupSwapchainCreateInfoKHR instance);
+		instance.sType = VkStructureType.DeviceGroupSwapchainCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -4574,10 +4796,11 @@ public partial struct VkDisplayModeCreateInfoKHR
 	public unsafe void* pNext;
 	public VkDisplayModeCreateFlagsKHR flags;
 	public VkDisplayModeParametersKHR parameters;
-	public VkDisplayModeCreateInfoKHR()
+	public static VkDisplayModeCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DisplayModeCreateInfoKHR;
+		Unsafe.SkipInit(out VkDisplayModeCreateInfoKHR instance);
+		instance.sType = VkStructureType.DisplayModeCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -4634,10 +4857,11 @@ public partial struct VkDisplaySurfaceCreateInfoKHR
 	public float globalAlpha;
 	public VkDisplayPlaneAlphaFlagsKHR alphaMode;
 	public VkExtent2D imageExtent;
-	public VkDisplaySurfaceCreateInfoKHR()
+	public static VkDisplaySurfaceCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DisplaySurfaceCreateInfoKHR;
+		Unsafe.SkipInit(out VkDisplaySurfaceCreateInfoKHR instance);
+		instance.sType = VkStructureType.DisplaySurfaceCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -4649,10 +4873,11 @@ public partial struct VkDisplayPresentInfoKHR
 	public VkRect2D srcRect;
 	public VkRect2D dstRect;
 	public VkBool32 persistent;
-	public VkDisplayPresentInfoKHR()
+	public static VkDisplayPresentInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DisplayPresentInfoKHR;
+		Unsafe.SkipInit(out VkDisplayPresentInfoKHR instance);
+		instance.sType = VkStructureType.DisplayPresentInfoKHR;
+		return instance;
 	}
 }
 
@@ -4664,10 +4889,11 @@ public partial struct VkRenderingFragmentShadingRateAttachmentInfoKHR
 	public VkImageView imageView;
 	public VkImageLayout imageLayout;
 	public VkExtent2D shadingRateAttachmentTexelSize;
-	public VkRenderingFragmentShadingRateAttachmentInfoKHR()
+	public static VkRenderingFragmentShadingRateAttachmentInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderingFragmentShadingRateAttachmentInfoKHR;
+		Unsafe.SkipInit(out VkRenderingFragmentShadingRateAttachmentInfoKHR instance);
+		instance.sType = VkStructureType.RenderingFragmentShadingRateAttachmentInfoKHR;
+		return instance;
 	}
 }
 
@@ -4678,10 +4904,11 @@ public partial struct VkRenderingFragmentDensityMapAttachmentInfoEXT
 	public unsafe void* pNext;
 	public VkImageView imageView;
 	public VkImageLayout imageLayout;
-	public VkRenderingFragmentDensityMapAttachmentInfoEXT()
+	public static VkRenderingFragmentDensityMapAttachmentInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderingFragmentDensityMapAttachmentInfoEXT;
+		Unsafe.SkipInit(out VkRenderingFragmentDensityMapAttachmentInfoEXT instance);
+		instance.sType = VkStructureType.RenderingFragmentDensityMapAttachmentInfoEXT;
+		return instance;
 	}
 }
 
@@ -4693,10 +4920,11 @@ public partial struct VkAttachmentSampleCountInfoAMD
 	public uint colorAttachmentCount;
 	public unsafe VkSampleCountFlags* pColorAttachmentSamples;
 	public VkSampleCountFlags depthStencilAttachmentSamples;
-	public VkAttachmentSampleCountInfoAMD()
+	public static VkAttachmentSampleCountInfoAMD New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AttachmentSampleCountInfoAMD;
+		Unsafe.SkipInit(out VkAttachmentSampleCountInfoAMD instance);
+		instance.sType = VkStructureType.AttachmentSampleCountInfoAMD;
+		return instance;
 	}
 }
 
@@ -4707,10 +4935,11 @@ public partial struct VkMultiviewPerViewAttributesInfoNVX
 	public unsafe void* pNext;
 	public VkBool32 perViewAttributes;
 	public VkBool32 perViewAttributesPositionXOnly;
-	public VkMultiviewPerViewAttributesInfoNVX()
+	public static VkMultiviewPerViewAttributesInfoNVX New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MultiviewPerViewAttributesInfoNVX;
+		Unsafe.SkipInit(out VkMultiviewPerViewAttributesInfoNVX instance);
+		instance.sType = VkStructureType.MultiviewPerViewAttributesInfoNVX;
+		return instance;
 	}
 }
 
@@ -4721,10 +4950,11 @@ public partial struct VkImportMemoryFdInfoKHR
 	public unsafe void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleType;
 	public int fd;
-	public VkImportMemoryFdInfoKHR()
+	public static VkImportMemoryFdInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImportMemoryFdInfoKHR;
+		Unsafe.SkipInit(out VkImportMemoryFdInfoKHR instance);
+		instance.sType = VkStructureType.ImportMemoryFdInfoKHR;
+		return instance;
 	}
 }
 
@@ -4734,10 +4964,11 @@ public partial struct VkMemoryFdPropertiesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint memoryTypeBits;
-	public VkMemoryFdPropertiesKHR()
+	public static VkMemoryFdPropertiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryFdPropertiesKHR;
+		Unsafe.SkipInit(out VkMemoryFdPropertiesKHR instance);
+		instance.sType = VkStructureType.MemoryFdPropertiesKHR;
+		return instance;
 	}
 }
 
@@ -4748,10 +4979,11 @@ public partial struct VkMemoryGetFdInfoKHR
 	public unsafe void* pNext;
 	public VkDeviceMemory memory;
 	public VkExternalMemoryHandleTypeFlags handleType;
-	public VkMemoryGetFdInfoKHR()
+	public static VkMemoryGetFdInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryGetFdInfoKHR;
+		Unsafe.SkipInit(out VkMemoryGetFdInfoKHR instance);
+		instance.sType = VkStructureType.MemoryGetFdInfoKHR;
+		return instance;
 	}
 }
 
@@ -4764,10 +4996,11 @@ public partial struct VkImportSemaphoreFdInfoKHR
 	public VkSemaphoreImportFlags flags;
 	public VkExternalSemaphoreHandleTypeFlags handleType;
 	public int fd;
-	public VkImportSemaphoreFdInfoKHR()
+	public static VkImportSemaphoreFdInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImportSemaphoreFdInfoKHR;
+		Unsafe.SkipInit(out VkImportSemaphoreFdInfoKHR instance);
+		instance.sType = VkStructureType.ImportSemaphoreFdInfoKHR;
+		return instance;
 	}
 }
 
@@ -4778,10 +5011,11 @@ public partial struct VkSemaphoreGetFdInfoKHR
 	public unsafe void* pNext;
 	public VkSemaphore semaphore;
 	public VkExternalSemaphoreHandleTypeFlags handleType;
-	public VkSemaphoreGetFdInfoKHR()
+	public static VkSemaphoreGetFdInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SemaphoreGetFdInfoKHR;
+		Unsafe.SkipInit(out VkSemaphoreGetFdInfoKHR instance);
+		instance.sType = VkStructureType.SemaphoreGetFdInfoKHR;
+		return instance;
 	}
 }
 
@@ -4791,10 +5025,11 @@ public partial struct VkPhysicalDevicePushDescriptorPropertiesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint maxPushDescriptors;
-	public VkPhysicalDevicePushDescriptorPropertiesKHR()
+	public static VkPhysicalDevicePushDescriptorPropertiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePushDescriptorPropertiesKHR;
+		Unsafe.SkipInit(out VkPhysicalDevicePushDescriptorPropertiesKHR instance);
+		instance.sType = VkStructureType.PhysicalDevicePushDescriptorPropertiesKHR;
+		return instance;
 	}
 }
 
@@ -4820,10 +5055,11 @@ public partial struct VkPresentRegionsKHR
 	public unsafe void* pNext;
 	public uint swapchainCount;
 	public unsafe VkPresentRegionKHR* pRegions;
-	public VkPresentRegionsKHR()
+	public static VkPresentRegionsKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PresentRegionsKHR;
+		Unsafe.SkipInit(out VkPresentRegionsKHR instance);
+		instance.sType = VkStructureType.PresentRegionsKHR;
+		return instance;
 	}
 }
 
@@ -4833,10 +5069,11 @@ public partial struct VkSharedPresentSurfaceCapabilitiesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImageUsageFlags sharedPresentSupportedUsageFlags;
-	public VkSharedPresentSurfaceCapabilitiesKHR()
+	public static VkSharedPresentSurfaceCapabilitiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SharedPresentSurfaceCapabilitiesKHR;
+		Unsafe.SkipInit(out VkSharedPresentSurfaceCapabilitiesKHR instance);
+		instance.sType = VkStructureType.SharedPresentSurfaceCapabilitiesKHR;
+		return instance;
 	}
 }
 
@@ -4849,10 +5086,11 @@ public partial struct VkImportFenceFdInfoKHR
 	public VkFenceImportFlags flags;
 	public VkExternalFenceHandleTypeFlags handleType;
 	public int fd;
-	public VkImportFenceFdInfoKHR()
+	public static VkImportFenceFdInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImportFenceFdInfoKHR;
+		Unsafe.SkipInit(out VkImportFenceFdInfoKHR instance);
+		instance.sType = VkStructureType.ImportFenceFdInfoKHR;
+		return instance;
 	}
 }
 
@@ -4863,10 +5101,11 @@ public partial struct VkFenceGetFdInfoKHR
 	public unsafe void* pNext;
 	public VkFence fence;
 	public VkExternalFenceHandleTypeFlags handleType;
-	public VkFenceGetFdInfoKHR()
+	public static VkFenceGetFdInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.FenceGetFdInfoKHR;
+		Unsafe.SkipInit(out VkFenceGetFdInfoKHR instance);
+		instance.sType = VkStructureType.FenceGetFdInfoKHR;
+		return instance;
 	}
 }
 
@@ -4877,10 +5116,11 @@ public partial struct VkPhysicalDevicePerformanceQueryFeaturesKHR
 	public unsafe void* pNext;
 	public VkBool32 performanceCounterQueryPools;
 	public VkBool32 performanceCounterMultipleQueryPools;
-	public VkPhysicalDevicePerformanceQueryFeaturesKHR()
+	public static VkPhysicalDevicePerformanceQueryFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePerformanceQueryFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDevicePerformanceQueryFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDevicePerformanceQueryFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -4890,10 +5130,11 @@ public partial struct VkPhysicalDevicePerformanceQueryPropertiesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 allowCommandBufferQueryCopies;
-	public VkPhysicalDevicePerformanceQueryPropertiesKHR()
+	public static VkPhysicalDevicePerformanceQueryPropertiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePerformanceQueryPropertiesKHR;
+		Unsafe.SkipInit(out VkPhysicalDevicePerformanceQueryPropertiesKHR instance);
+		instance.sType = VkStructureType.PhysicalDevicePerformanceQueryPropertiesKHR;
+		return instance;
 	}
 }
 
@@ -4906,10 +5147,11 @@ public partial struct VkPerformanceCounterKHR
 	public VkPerformanceCounterScopeKHR scope;
 	public VkPerformanceCounterStorageKHR storage;
 	public unsafe fixed byte uuid[16];
-	public VkPerformanceCounterKHR()
+	public static VkPerformanceCounterKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PerformanceCounterKHR;
+		Unsafe.SkipInit(out VkPerformanceCounterKHR instance);
+		instance.sType = VkStructureType.PerformanceCounterKHR;
+		return instance;
 	}
 }
 
@@ -4922,10 +5164,11 @@ public partial struct VkPerformanceCounterDescriptionKHR
 	public unsafe fixed byte name[256];
 	public unsafe fixed byte category[256];
 	public unsafe fixed byte description[256];
-	public VkPerformanceCounterDescriptionKHR()
+	public static VkPerformanceCounterDescriptionKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PerformanceCounterDescriptionKHR;
+		Unsafe.SkipInit(out VkPerformanceCounterDescriptionKHR instance);
+		instance.sType = VkStructureType.PerformanceCounterDescriptionKHR;
+		return instance;
 	}
 }
 
@@ -4937,10 +5180,11 @@ public partial struct VkQueryPoolPerformanceCreateInfoKHR
 	public uint queueFamilyIndex;
 	public uint counterIndexCount;
 	public unsafe uint* pCounterIndices;
-	public VkQueryPoolPerformanceCreateInfoKHR()
+	public static VkQueryPoolPerformanceCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.QueryPoolPerformanceCreateInfoKHR;
+		Unsafe.SkipInit(out VkQueryPoolPerformanceCreateInfoKHR instance);
+		instance.sType = VkStructureType.QueryPoolPerformanceCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -4968,10 +5212,11 @@ public partial struct VkAcquireProfilingLockInfoKHR
 	public unsafe void* pNext;
 	public VkAcquireProfilingLockFlagsKHR flags;
 	public ulong timeout;
-	public VkAcquireProfilingLockInfoKHR()
+	public static VkAcquireProfilingLockInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AcquireProfilingLockInfoKHR;
+		Unsafe.SkipInit(out VkAcquireProfilingLockInfoKHR instance);
+		instance.sType = VkStructureType.AcquireProfilingLockInfoKHR;
+		return instance;
 	}
 }
 
@@ -4981,10 +5226,11 @@ public partial struct VkPerformanceQuerySubmitInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint counterPassIndex;
-	public VkPerformanceQuerySubmitInfoKHR()
+	public static VkPerformanceQuerySubmitInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PerformanceQuerySubmitInfoKHR;
+		Unsafe.SkipInit(out VkPerformanceQuerySubmitInfoKHR instance);
+		instance.sType = VkStructureType.PerformanceQuerySubmitInfoKHR;
+		return instance;
 	}
 }
 
@@ -4994,10 +5240,11 @@ public partial struct VkPhysicalDeviceSurfaceInfo2KHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSurfaceKHR surface;
-	public VkPhysicalDeviceSurfaceInfo2KHR()
+	public static VkPhysicalDeviceSurfaceInfo2KHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSurfaceInfo2KHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceSurfaceInfo2KHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceSurfaceInfo2KHR;
+		return instance;
 	}
 }
 
@@ -5007,10 +5254,11 @@ public partial struct VkSurfaceCapabilities2KHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSurfaceCapabilitiesKHR surfaceCapabilities;
-	public VkSurfaceCapabilities2KHR()
+	public static VkSurfaceCapabilities2KHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SurfaceCapabilities2KHR;
+		Unsafe.SkipInit(out VkSurfaceCapabilities2KHR instance);
+		instance.sType = VkStructureType.SurfaceCapabilities2KHR;
+		return instance;
 	}
 }
 
@@ -5020,10 +5268,11 @@ public partial struct VkSurfaceFormat2KHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSurfaceFormatKHR surfaceFormat;
-	public VkSurfaceFormat2KHR()
+	public static VkSurfaceFormat2KHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SurfaceFormat2KHR;
+		Unsafe.SkipInit(out VkSurfaceFormat2KHR instance);
+		instance.sType = VkStructureType.SurfaceFormat2KHR;
+		return instance;
 	}
 }
 
@@ -5033,10 +5282,11 @@ public partial struct VkDisplayProperties2KHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDisplayPropertiesKHR displayProperties;
-	public VkDisplayProperties2KHR()
+	public static VkDisplayProperties2KHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DisplayProperties2KHR;
+		Unsafe.SkipInit(out VkDisplayProperties2KHR instance);
+		instance.sType = VkStructureType.DisplayProperties2KHR;
+		return instance;
 	}
 }
 
@@ -5046,10 +5296,11 @@ public partial struct VkDisplayPlaneProperties2KHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDisplayPlanePropertiesKHR displayPlaneProperties;
-	public VkDisplayPlaneProperties2KHR()
+	public static VkDisplayPlaneProperties2KHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DisplayPlaneProperties2KHR;
+		Unsafe.SkipInit(out VkDisplayPlaneProperties2KHR instance);
+		instance.sType = VkStructureType.DisplayPlaneProperties2KHR;
+		return instance;
 	}
 }
 
@@ -5059,10 +5310,11 @@ public partial struct VkDisplayModeProperties2KHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDisplayModePropertiesKHR displayModeProperties;
-	public VkDisplayModeProperties2KHR()
+	public static VkDisplayModeProperties2KHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DisplayModeProperties2KHR;
+		Unsafe.SkipInit(out VkDisplayModeProperties2KHR instance);
+		instance.sType = VkStructureType.DisplayModeProperties2KHR;
+		return instance;
 	}
 }
 
@@ -5073,10 +5325,11 @@ public partial struct VkDisplayPlaneInfo2KHR
 	public unsafe void* pNext;
 	public VkDisplayModeKHR mode;
 	public uint planeIndex;
-	public VkDisplayPlaneInfo2KHR()
+	public static VkDisplayPlaneInfo2KHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DisplayPlaneInfo2KHR;
+		Unsafe.SkipInit(out VkDisplayPlaneInfo2KHR instance);
+		instance.sType = VkStructureType.DisplayPlaneInfo2KHR;
+		return instance;
 	}
 }
 
@@ -5086,10 +5339,11 @@ public partial struct VkDisplayPlaneCapabilities2KHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDisplayPlaneCapabilitiesKHR capabilities;
-	public VkDisplayPlaneCapabilities2KHR()
+	public static VkDisplayPlaneCapabilities2KHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DisplayPlaneCapabilities2KHR;
+		Unsafe.SkipInit(out VkDisplayPlaneCapabilities2KHR instance);
+		instance.sType = VkStructureType.DisplayPlaneCapabilities2KHR;
+		return instance;
 	}
 }
 
@@ -5100,10 +5354,11 @@ public partial struct VkPhysicalDeviceShaderClockFeaturesKHR
 	public unsafe void* pNext;
 	public VkBool32 shaderSubgroupClock;
 	public VkBool32 shaderDeviceClock;
-	public VkPhysicalDeviceShaderClockFeaturesKHR()
+	public static VkPhysicalDeviceShaderClockFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderClockFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderClockFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderClockFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -5113,10 +5368,11 @@ public partial struct VkDeviceQueueGlobalPriorityCreateInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkQueueGlobalPriorityKHR globalPriority;
-	public VkDeviceQueueGlobalPriorityCreateInfoKHR()
+	public static VkDeviceQueueGlobalPriorityCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceQueueGlobalPriorityCreateInfoKHR;
+		Unsafe.SkipInit(out VkDeviceQueueGlobalPriorityCreateInfoKHR instance);
+		instance.sType = VkStructureType.DeviceQueueGlobalPriorityCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -5126,10 +5382,11 @@ public partial struct VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 globalPriorityQuery;
-	public VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR()
+	public static VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceGlobalPriorityQueryFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceGlobalPriorityQueryFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -5155,10 +5412,11 @@ public partial struct VkQueueFamilyGlobalPriorityPropertiesKHR
 	public VkQueueGlobalPriorityKHR priorities_13;
 	public VkQueueGlobalPriorityKHR priorities_14;
 	public VkQueueGlobalPriorityKHR priorities_15;
-	public VkQueueFamilyGlobalPriorityPropertiesKHR()
+	public static VkQueueFamilyGlobalPriorityPropertiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.QueueFamilyGlobalPriorityPropertiesKHR;
+		Unsafe.SkipInit(out VkQueueFamilyGlobalPriorityPropertiesKHR instance);
+		instance.sType = VkStructureType.QueueFamilyGlobalPriorityPropertiesKHR;
+		return instance;
 	}
 }
 
@@ -5169,10 +5427,11 @@ public partial struct VkFragmentShadingRateAttachmentInfoKHR
 	public unsafe void* pNext;
 	public unsafe VkAttachmentReference2* pFragmentShadingRateAttachment;
 	public VkExtent2D shadingRateAttachmentTexelSize;
-	public VkFragmentShadingRateAttachmentInfoKHR()
+	public static VkFragmentShadingRateAttachmentInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.FragmentShadingRateAttachmentInfoKHR;
+		Unsafe.SkipInit(out VkFragmentShadingRateAttachmentInfoKHR instance);
+		instance.sType = VkStructureType.FragmentShadingRateAttachmentInfoKHR;
+		return instance;
 	}
 }
 
@@ -5184,10 +5443,11 @@ public partial struct VkPipelineFragmentShadingRateStateCreateInfoKHR
 	public VkExtent2D fragmentSize;
 	public VkFragmentShadingRateCombinerOpKHR combinerOps_0;
 	public VkFragmentShadingRateCombinerOpKHR combinerOps_1;
-	public VkPipelineFragmentShadingRateStateCreateInfoKHR()
+	public static VkPipelineFragmentShadingRateStateCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineFragmentShadingRateStateCreateInfoKHR;
+		Unsafe.SkipInit(out VkPipelineFragmentShadingRateStateCreateInfoKHR instance);
+		instance.sType = VkStructureType.PipelineFragmentShadingRateStateCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -5199,10 +5459,11 @@ public partial struct VkPhysicalDeviceFragmentShadingRateFeaturesKHR
 	public VkBool32 pipelineFragmentShadingRate;
 	public VkBool32 primitiveFragmentShadingRate;
 	public VkBool32 attachmentFragmentShadingRate;
-	public VkPhysicalDeviceFragmentShadingRateFeaturesKHR()
+	public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentShadingRateFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentShadingRateFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentShadingRateFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -5228,10 +5489,11 @@ public partial struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 	public VkBool32 fragmentShadingRateWithFragmentShaderInterlock;
 	public VkBool32 fragmentShadingRateWithCustomSampleLocations;
 	public VkBool32 fragmentShadingRateStrictMultiplyCombiner;
-	public VkPhysicalDeviceFragmentShadingRatePropertiesKHR()
+	public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentShadingRatePropertiesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentShadingRatePropertiesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentShadingRatePropertiesKHR;
+		return instance;
 	}
 }
 
@@ -5242,10 +5504,11 @@ public partial struct VkPhysicalDeviceFragmentShadingRateKHR
 	public unsafe void* pNext;
 	public VkSampleCountFlags sampleCounts;
 	public VkExtent2D fragmentSize;
-	public VkPhysicalDeviceFragmentShadingRateKHR()
+	public static VkPhysicalDeviceFragmentShadingRateKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentShadingRateKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentShadingRateKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentShadingRateKHR;
+		return instance;
 	}
 }
 
@@ -5255,10 +5518,11 @@ public partial struct VkSurfaceProtectedCapabilitiesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 supportsProtected;
-	public VkSurfaceProtectedCapabilitiesKHR()
+	public static VkSurfaceProtectedCapabilitiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SurfaceProtectedCapabilitiesKHR;
+		Unsafe.SkipInit(out VkSurfaceProtectedCapabilitiesKHR instance);
+		instance.sType = VkStructureType.SurfaceProtectedCapabilitiesKHR;
+		return instance;
 	}
 }
 
@@ -5268,10 +5532,11 @@ public partial struct VkPhysicalDevicePresentWaitFeaturesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 presentWait;
-	public VkPhysicalDevicePresentWaitFeaturesKHR()
+	public static VkPhysicalDevicePresentWaitFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePresentWaitFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDevicePresentWaitFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDevicePresentWaitFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -5281,10 +5546,11 @@ public partial struct VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 pipelineExecutableInfo;
-	public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR()
+	public static VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePipelineExecutablePropertiesFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDevicePipelineExecutablePropertiesFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -5294,10 +5560,11 @@ public partial struct VkPipelineInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkPipeline pipeline;
-	public VkPipelineInfoKHR()
+	public static VkPipelineInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineInfoKHR;
+		Unsafe.SkipInit(out VkPipelineInfoKHR instance);
+		instance.sType = VkStructureType.PipelineInfoKHR;
+		return instance;
 	}
 }
 
@@ -5310,10 +5577,11 @@ public partial struct VkPipelineExecutablePropertiesKHR
 	public unsafe fixed byte name[256];
 	public unsafe fixed byte description[256];
 	public uint subgroupSize;
-	public VkPipelineExecutablePropertiesKHR()
+	public static VkPipelineExecutablePropertiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineExecutablePropertiesKHR;
+		Unsafe.SkipInit(out VkPipelineExecutablePropertiesKHR instance);
+		instance.sType = VkStructureType.PipelineExecutablePropertiesKHR;
+		return instance;
 	}
 }
 
@@ -5324,10 +5592,11 @@ public partial struct VkPipelineExecutableInfoKHR
 	public unsafe void* pNext;
 	public VkPipeline pipeline;
 	public uint executableIndex;
-	public VkPipelineExecutableInfoKHR()
+	public static VkPipelineExecutableInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineExecutableInfoKHR;
+		Unsafe.SkipInit(out VkPipelineExecutableInfoKHR instance);
+		instance.sType = VkStructureType.PipelineExecutableInfoKHR;
+		return instance;
 	}
 }
 
@@ -5353,10 +5622,11 @@ public partial struct VkPipelineExecutableStatisticKHR
 	public unsafe fixed byte description[256];
 	public VkPipelineExecutableStatisticFormatKHR format;
 	public VkPipelineExecutableStatisticValueKHR value;
-	public VkPipelineExecutableStatisticKHR()
+	public static VkPipelineExecutableStatisticKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineExecutableStatisticKHR;
+		Unsafe.SkipInit(out VkPipelineExecutableStatisticKHR instance);
+		instance.sType = VkStructureType.PipelineExecutableStatisticKHR;
+		return instance;
 	}
 }
 
@@ -5370,10 +5640,11 @@ public partial struct VkPipelineExecutableInternalRepresentationKHR
 	public VkBool32 isText;
 	public nuint dataSize;
 	public unsafe void* pData;
-	public VkPipelineExecutableInternalRepresentationKHR()
+	public static VkPipelineExecutableInternalRepresentationKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineExecutableInternalRepresentationKHR;
+		Unsafe.SkipInit(out VkPipelineExecutableInternalRepresentationKHR instance);
+		instance.sType = VkStructureType.PipelineExecutableInternalRepresentationKHR;
+		return instance;
 	}
 }
 
@@ -5384,10 +5655,11 @@ public partial struct VkPipelineLibraryCreateInfoKHR
 	public unsafe void* pNext;
 	public uint libraryCount;
 	public unsafe VkPipeline* pLibraries;
-	public VkPipelineLibraryCreateInfoKHR()
+	public static VkPipelineLibraryCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineLibraryCreateInfoKHR;
+		Unsafe.SkipInit(out VkPipelineLibraryCreateInfoKHR instance);
+		instance.sType = VkStructureType.PipelineLibraryCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -5398,10 +5670,11 @@ public partial struct VkPresentIdKHR
 	public unsafe void* pNext;
 	public uint swapchainCount;
 	public unsafe ulong* pPresentIds;
-	public VkPresentIdKHR()
+	public static VkPresentIdKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PresentIdKHR;
+		Unsafe.SkipInit(out VkPresentIdKHR instance);
+		instance.sType = VkStructureType.PresentIdKHR;
+		return instance;
 	}
 }
 
@@ -5411,10 +5684,11 @@ public partial struct VkPhysicalDevicePresentIdFeaturesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 presentId;
-	public VkPhysicalDevicePresentIdFeaturesKHR()
+	public static VkPhysicalDevicePresentIdFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePresentIdFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDevicePresentIdFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDevicePresentIdFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -5424,10 +5698,11 @@ public partial struct VkQueueFamilyCheckpointProperties2NV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkPipelineStageFlags2 checkpointExecutionStageMask;
-	public VkQueueFamilyCheckpointProperties2NV()
+	public static VkQueueFamilyCheckpointProperties2NV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.QueueFamilyCheckpointProperties2NV;
+		Unsafe.SkipInit(out VkQueueFamilyCheckpointProperties2NV instance);
+		instance.sType = VkStructureType.QueueFamilyCheckpointProperties2NV;
+		return instance;
 	}
 }
 
@@ -5438,10 +5713,11 @@ public partial struct VkCheckpointData2NV
 	public unsafe void* pNext;
 	public VkPipelineStageFlags2 stage;
 	public unsafe void* pCheckpointMarker;
-	public VkCheckpointData2NV()
+	public static VkCheckpointData2NV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CheckpointData2NV;
+		Unsafe.SkipInit(out VkCheckpointData2NV instance);
+		instance.sType = VkStructureType.CheckpointData2NV;
+		return instance;
 	}
 }
 
@@ -5451,10 +5727,11 @@ public partial struct VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKH
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 shaderSubgroupUniformControlFlow;
-	public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR()
+	public static VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -5467,10 +5744,11 @@ public partial struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR
 	public VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout;
 	public VkBool32 workgroupMemoryExplicitLayout8BitAccess;
 	public VkBool32 workgroupMemoryExplicitLayout16BitAccess;
-	public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR()
+	public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -5481,10 +5759,11 @@ public partial struct VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR
 	public unsafe void* pNext;
 	public VkBool32 rayTracingMaintenance1;
 	public VkBool32 rayTracingPipelineTraceRaysIndirect2;
-	public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR()
+	public static VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceRayTracingMaintenance1FeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceRayTracingMaintenance1FeaturesKHR;
+		return instance;
 	}
 }
 
@@ -5519,10 +5798,11 @@ public partial struct VkDebugReportCallbackCreateInfoEXT
 	public IntPtr pfnCallback;
 	#endif
 	public unsafe void* pUserData;
-	public VkDebugReportCallbackCreateInfoEXT()
+	public static VkDebugReportCallbackCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DebugReportCallbackCreateInfoEXT;
+		Unsafe.SkipInit(out VkDebugReportCallbackCreateInfoEXT instance);
+		instance.sType = VkStructureType.DebugReportCallbackCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -5532,10 +5812,11 @@ public partial struct VkPipelineRasterizationStateRasterizationOrderAMD
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkRasterizationOrderAMD rasterizationOrder;
-	public VkPipelineRasterizationStateRasterizationOrderAMD()
+	public static VkPipelineRasterizationStateRasterizationOrderAMD New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineRasterizationStateRasterizationOrderAMD;
+		Unsafe.SkipInit(out VkPipelineRasterizationStateRasterizationOrderAMD instance);
+		instance.sType = VkStructureType.PipelineRasterizationStateRasterizationOrderAMD;
+		return instance;
 	}
 }
 
@@ -5547,10 +5828,11 @@ public partial struct VkDebugMarkerObjectNameInfoEXT
 	public VkDebugReportObjectTypeEXT objectType;
 	public ulong @object;
 	public unsafe byte* pObjectName;
-	public VkDebugMarkerObjectNameInfoEXT()
+	public static VkDebugMarkerObjectNameInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DebugMarkerObjectNameInfoEXT;
+		Unsafe.SkipInit(out VkDebugMarkerObjectNameInfoEXT instance);
+		instance.sType = VkStructureType.DebugMarkerObjectNameInfoEXT;
+		return instance;
 	}
 }
 
@@ -5564,10 +5846,11 @@ public partial struct VkDebugMarkerObjectTagInfoEXT
 	public ulong tagName;
 	public nuint tagSize;
 	public unsafe void* pTag;
-	public VkDebugMarkerObjectTagInfoEXT()
+	public static VkDebugMarkerObjectTagInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DebugMarkerObjectTagInfoEXT;
+		Unsafe.SkipInit(out VkDebugMarkerObjectTagInfoEXT instance);
+		instance.sType = VkStructureType.DebugMarkerObjectTagInfoEXT;
+		return instance;
 	}
 }
 
@@ -5578,10 +5861,11 @@ public partial struct VkDebugMarkerMarkerInfoEXT
 	public unsafe void* pNext;
 	public unsafe byte* pMarkerName;
 	public unsafe fixed float color[4];
-	public VkDebugMarkerMarkerInfoEXT()
+	public static VkDebugMarkerMarkerInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DebugMarkerMarkerInfoEXT;
+		Unsafe.SkipInit(out VkDebugMarkerMarkerInfoEXT instance);
+		instance.sType = VkStructureType.DebugMarkerMarkerInfoEXT;
+		return instance;
 	}
 }
 
@@ -5591,10 +5875,11 @@ public partial struct VkDedicatedAllocationImageCreateInfoNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 dedicatedAllocation;
-	public VkDedicatedAllocationImageCreateInfoNV()
+	public static VkDedicatedAllocationImageCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DedicatedAllocationImageCreateInfoNV;
+		Unsafe.SkipInit(out VkDedicatedAllocationImageCreateInfoNV instance);
+		instance.sType = VkStructureType.DedicatedAllocationImageCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -5604,10 +5889,11 @@ public partial struct VkDedicatedAllocationBufferCreateInfoNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 dedicatedAllocation;
-	public VkDedicatedAllocationBufferCreateInfoNV()
+	public static VkDedicatedAllocationBufferCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DedicatedAllocationBufferCreateInfoNV;
+		Unsafe.SkipInit(out VkDedicatedAllocationBufferCreateInfoNV instance);
+		instance.sType = VkStructureType.DedicatedAllocationBufferCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -5618,10 +5904,11 @@ public partial struct VkDedicatedAllocationMemoryAllocateInfoNV
 	public unsafe void* pNext;
 	public VkImage image;
 	public VkBuffer buffer;
-	public VkDedicatedAllocationMemoryAllocateInfoNV()
+	public static VkDedicatedAllocationMemoryAllocateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DedicatedAllocationMemoryAllocateInfoNV;
+		Unsafe.SkipInit(out VkDedicatedAllocationMemoryAllocateInfoNV instance);
+		instance.sType = VkStructureType.DedicatedAllocationMemoryAllocateInfoNV;
+		return instance;
 	}
 }
 
@@ -5632,10 +5919,11 @@ public partial struct VkPhysicalDeviceTransformFeedbackFeaturesEXT
 	public unsafe void* pNext;
 	public VkBool32 transformFeedback;
 	public VkBool32 geometryStreams;
-	public VkPhysicalDeviceTransformFeedbackFeaturesEXT()
+	public static VkPhysicalDeviceTransformFeedbackFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceTransformFeedbackFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceTransformFeedbackFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceTransformFeedbackFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -5654,10 +5942,11 @@ public partial struct VkPhysicalDeviceTransformFeedbackPropertiesEXT
 	public VkBool32 transformFeedbackStreamsLinesTriangles;
 	public VkBool32 transformFeedbackRasterizationStreamSelect;
 	public VkBool32 transformFeedbackDraw;
-	public VkPhysicalDeviceTransformFeedbackPropertiesEXT()
+	public static VkPhysicalDeviceTransformFeedbackPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceTransformFeedbackPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceTransformFeedbackPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceTransformFeedbackPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -5668,10 +5957,11 @@ public partial struct VkPipelineRasterizationStateStreamCreateInfoEXT
 	public unsafe void* pNext;
 	public VkPipelineRasterizationStateStreamCreateFlagsEXT flags;
 	public uint rasterizationStream;
-	public VkPipelineRasterizationStateStreamCreateInfoEXT()
+	public static VkPipelineRasterizationStateStreamCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineRasterizationStateStreamCreateInfoEXT;
+		Unsafe.SkipInit(out VkPipelineRasterizationStateStreamCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineRasterizationStateStreamCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -5682,10 +5972,11 @@ public partial struct VkCuModuleCreateInfoNVX
 	public unsafe void* pNext;
 	public nuint dataSize;
 	public unsafe void* pData;
-	public VkCuModuleCreateInfoNVX()
+	public static VkCuModuleCreateInfoNVX New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CuModuleCreateInfoNVX;
+		Unsafe.SkipInit(out VkCuModuleCreateInfoNVX instance);
+		instance.sType = VkStructureType.CuModuleCreateInfoNVX;
+		return instance;
 	}
 }
 
@@ -5696,10 +5987,11 @@ public partial struct VkCuFunctionCreateInfoNVX
 	public unsafe void* pNext;
 	public VkCuModuleNVX module;
 	public unsafe byte* pName;
-	public VkCuFunctionCreateInfoNVX()
+	public static VkCuFunctionCreateInfoNVX New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CuFunctionCreateInfoNVX;
+		Unsafe.SkipInit(out VkCuFunctionCreateInfoNVX instance);
+		instance.sType = VkStructureType.CuFunctionCreateInfoNVX;
+		return instance;
 	}
 }
 
@@ -5720,10 +6012,11 @@ public partial struct VkCuLaunchInfoNVX
 	public unsafe void** pParams;
 	public nuint extraCount;
 	public unsafe void** pExtras;
-	public VkCuLaunchInfoNVX()
+	public static VkCuLaunchInfoNVX New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CuLaunchInfoNVX;
+		Unsafe.SkipInit(out VkCuLaunchInfoNVX instance);
+		instance.sType = VkStructureType.CuLaunchInfoNVX;
+		return instance;
 	}
 }
 
@@ -5735,10 +6028,11 @@ public partial struct VkImageViewHandleInfoNVX
 	public VkImageView imageView;
 	public VkDescriptorType descriptorType;
 	public VkSampler sampler;
-	public VkImageViewHandleInfoNVX()
+	public static VkImageViewHandleInfoNVX New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageViewHandleInfoNVX;
+		Unsafe.SkipInit(out VkImageViewHandleInfoNVX instance);
+		instance.sType = VkStructureType.ImageViewHandleInfoNVX;
+		return instance;
 	}
 }
 
@@ -5749,10 +6043,11 @@ public partial struct VkImageViewAddressPropertiesNVX
 	public unsafe void* pNext;
 	public ulong deviceAddress;
 	public ulong size;
-	public VkImageViewAddressPropertiesNVX()
+	public static VkImageViewAddressPropertiesNVX New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageViewAddressPropertiesNVX;
+		Unsafe.SkipInit(out VkImageViewAddressPropertiesNVX instance);
+		instance.sType = VkStructureType.ImageViewAddressPropertiesNVX;
+		return instance;
 	}
 }
 
@@ -5762,10 +6057,11 @@ public partial struct VkTextureLODGatherFormatPropertiesAMD
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 supportsTextureGatherLODBiasAMD;
-	public VkTextureLODGatherFormatPropertiesAMD()
+	public static VkTextureLODGatherFormatPropertiesAMD New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.TextureLODGatherFormatPropertiesAMD;
+		Unsafe.SkipInit(out VkTextureLODGatherFormatPropertiesAMD instance);
+		instance.sType = VkStructureType.TextureLODGatherFormatPropertiesAMD;
+		return instance;
 	}
 }
 
@@ -5797,10 +6093,11 @@ public partial struct VkPhysicalDeviceCornerSampledImageFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 cornerSampledImage;
-	public VkPhysicalDeviceCornerSampledImageFeaturesNV()
+	public static VkPhysicalDeviceCornerSampledImageFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceCornerSampledImageFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceCornerSampledImageFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceCornerSampledImageFeaturesNV;
+		return instance;
 	}
 }
 
@@ -5819,10 +6116,11 @@ public partial struct VkExternalMemoryImageCreateInfoNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalMemoryHandleTypeFlagsNV handleTypes;
-	public VkExternalMemoryImageCreateInfoNV()
+	public static VkExternalMemoryImageCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExternalMemoryImageCreateInfoNV;
+		Unsafe.SkipInit(out VkExternalMemoryImageCreateInfoNV instance);
+		instance.sType = VkStructureType.ExternalMemoryImageCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -5832,10 +6130,11 @@ public partial struct VkExportMemoryAllocateInfoNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExternalMemoryHandleTypeFlagsNV handleTypes;
-	public VkExportMemoryAllocateInfoNV()
+	public static VkExportMemoryAllocateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExportMemoryAllocateInfoNV;
+		Unsafe.SkipInit(out VkExportMemoryAllocateInfoNV instance);
+		instance.sType = VkStructureType.ExportMemoryAllocateInfoNV;
+		return instance;
 	}
 }
 
@@ -5846,10 +6145,11 @@ public partial struct VkValidationFlagsEXT
 	public unsafe void* pNext;
 	public uint disabledValidationCheckCount;
 	public unsafe VkValidationCheckEXT* pDisabledValidationChecks;
-	public VkValidationFlagsEXT()
+	public static VkValidationFlagsEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ValidationFlagsEXT;
+		Unsafe.SkipInit(out VkValidationFlagsEXT instance);
+		instance.sType = VkStructureType.ValidationFlagsEXT;
+		return instance;
 	}
 }
 
@@ -5859,10 +6159,11 @@ public partial struct VkImageViewASTCDecodeModeEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkFormat decodeMode;
-	public VkImageViewASTCDecodeModeEXT()
+	public static VkImageViewASTCDecodeModeEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageViewASTCDecodeModeEXT;
+		Unsafe.SkipInit(out VkImageViewASTCDecodeModeEXT instance);
+		instance.sType = VkStructureType.ImageViewASTCDecodeModeEXT;
+		return instance;
 	}
 }
 
@@ -5872,10 +6173,11 @@ public partial struct VkPhysicalDeviceASTCDecodeFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 decodeModeSharedExponent;
-	public VkPhysicalDeviceASTCDecodeFeaturesEXT()
+	public static VkPhysicalDeviceASTCDecodeFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceASTCDecodeFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceASTCDecodeFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceASTCDecodeFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -5887,10 +6189,11 @@ public partial struct VkConditionalRenderingBeginInfoEXT
 	public VkBuffer buffer;
 	public ulong offset;
 	public VkConditionalRenderingFlagsEXT flags;
-	public VkConditionalRenderingBeginInfoEXT()
+	public static VkConditionalRenderingBeginInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ConditionalRenderingBeginInfoEXT;
+		Unsafe.SkipInit(out VkConditionalRenderingBeginInfoEXT instance);
+		instance.sType = VkStructureType.ConditionalRenderingBeginInfoEXT;
+		return instance;
 	}
 }
 
@@ -5901,10 +6204,11 @@ public partial struct VkPhysicalDeviceConditionalRenderingFeaturesEXT
 	public unsafe void* pNext;
 	public VkBool32 conditionalRendering;
 	public VkBool32 inheritedConditionalRendering;
-	public VkPhysicalDeviceConditionalRenderingFeaturesEXT()
+	public static VkPhysicalDeviceConditionalRenderingFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceConditionalRenderingFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceConditionalRenderingFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceConditionalRenderingFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -5914,10 +6218,11 @@ public partial struct VkCommandBufferInheritanceConditionalRenderingInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 conditionalRenderingEnable;
-	public VkCommandBufferInheritanceConditionalRenderingInfoEXT()
+	public static VkCommandBufferInheritanceConditionalRenderingInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CommandBufferInheritanceConditionalRenderingInfoEXT;
+		Unsafe.SkipInit(out VkCommandBufferInheritanceConditionalRenderingInfoEXT instance);
+		instance.sType = VkStructureType.CommandBufferInheritanceConditionalRenderingInfoEXT;
+		return instance;
 	}
 }
 
@@ -5936,10 +6241,11 @@ public partial struct VkPipelineViewportWScalingStateCreateInfoNV
 	public VkBool32 viewportWScalingEnable;
 	public uint viewportCount;
 	public unsafe VkViewportWScalingNV* pViewportWScalings;
-	public VkPipelineViewportWScalingStateCreateInfoNV()
+	public static VkPipelineViewportWScalingStateCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineViewportWScalingStateCreateInfoNV;
+		Unsafe.SkipInit(out VkPipelineViewportWScalingStateCreateInfoNV instance);
+		instance.sType = VkStructureType.PipelineViewportWScalingStateCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -5959,10 +6265,11 @@ public partial struct VkSurfaceCapabilities2EXT
 	public VkCompositeAlphaFlagsKHR supportedCompositeAlpha;
 	public VkImageUsageFlags supportedUsageFlags;
 	public VkSurfaceCounterFlagsEXT supportedSurfaceCounters;
-	public VkSurfaceCapabilities2EXT()
+	public static VkSurfaceCapabilities2EXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SurfaceCapabilities2EXT;
+		Unsafe.SkipInit(out VkSurfaceCapabilities2EXT instance);
+		instance.sType = VkStructureType.SurfaceCapabilities2EXT;
+		return instance;
 	}
 }
 
@@ -5972,10 +6279,11 @@ public partial struct VkDisplayPowerInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDisplayPowerStateEXT powerState;
-	public VkDisplayPowerInfoEXT()
+	public static VkDisplayPowerInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DisplayPowerInfoEXT;
+		Unsafe.SkipInit(out VkDisplayPowerInfoEXT instance);
+		instance.sType = VkStructureType.DisplayPowerInfoEXT;
+		return instance;
 	}
 }
 
@@ -5985,10 +6293,11 @@ public partial struct VkDeviceEventInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDeviceEventTypeEXT deviceEvent;
-	public VkDeviceEventInfoEXT()
+	public static VkDeviceEventInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceEventInfoEXT;
+		Unsafe.SkipInit(out VkDeviceEventInfoEXT instance);
+		instance.sType = VkStructureType.DeviceEventInfoEXT;
+		return instance;
 	}
 }
 
@@ -5998,10 +6307,11 @@ public partial struct VkDisplayEventInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDisplayEventTypeEXT displayEvent;
-	public VkDisplayEventInfoEXT()
+	public static VkDisplayEventInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DisplayEventInfoEXT;
+		Unsafe.SkipInit(out VkDisplayEventInfoEXT instance);
+		instance.sType = VkStructureType.DisplayEventInfoEXT;
+		return instance;
 	}
 }
 
@@ -6011,10 +6321,11 @@ public partial struct VkSwapchainCounterCreateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSurfaceCounterFlagsEXT surfaceCounters;
-	public VkSwapchainCounterCreateInfoEXT()
+	public static VkSwapchainCounterCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SwapchainCounterCreateInfoEXT;
+		Unsafe.SkipInit(out VkSwapchainCounterCreateInfoEXT instance);
+		instance.sType = VkStructureType.SwapchainCounterCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -6048,10 +6359,11 @@ public partial struct VkPresentTimesInfoGOOGLE
 	public unsafe void* pNext;
 	public uint swapchainCount;
 	public unsafe VkPresentTimeGOOGLE* pTimes;
-	public VkPresentTimesInfoGOOGLE()
+	public static VkPresentTimesInfoGOOGLE New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PresentTimesInfoGOOGLE;
+		Unsafe.SkipInit(out VkPresentTimesInfoGOOGLE instance);
+		instance.sType = VkStructureType.PresentTimesInfoGOOGLE;
+		return instance;
 	}
 }
 
@@ -6061,10 +6373,11 @@ public partial struct VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 perViewPositionAllComponents;
-	public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX()
+	public static VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX;
+		Unsafe.SkipInit(out VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX instance);
+		instance.sType = VkStructureType.PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX;
+		return instance;
 	}
 }
 
@@ -6085,10 +6398,11 @@ public partial struct VkPipelineViewportSwizzleStateCreateInfoNV
 	public VkPipelineViewportSwizzleStateCreateFlagsNV flags;
 	public uint viewportCount;
 	public unsafe VkViewportSwizzleNV* pViewportSwizzles;
-	public VkPipelineViewportSwizzleStateCreateInfoNV()
+	public static VkPipelineViewportSwizzleStateCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineViewportSwizzleStateCreateInfoNV;
+		Unsafe.SkipInit(out VkPipelineViewportSwizzleStateCreateInfoNV instance);
+		instance.sType = VkStructureType.PipelineViewportSwizzleStateCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -6098,10 +6412,11 @@ public partial struct VkPhysicalDeviceDiscardRectanglePropertiesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint maxDiscardRectangles;
-	public VkPhysicalDeviceDiscardRectanglePropertiesEXT()
+	public static VkPhysicalDeviceDiscardRectanglePropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDiscardRectanglePropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceDiscardRectanglePropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceDiscardRectanglePropertiesEXT;
+		return instance;
 	}
 }
 
@@ -6114,10 +6429,11 @@ public partial struct VkPipelineDiscardRectangleStateCreateInfoEXT
 	public VkDiscardRectangleModeEXT discardRectangleMode;
 	public uint discardRectangleCount;
 	public unsafe VkRect2D* pDiscardRectangles;
-	public VkPipelineDiscardRectangleStateCreateInfoEXT()
+	public static VkPipelineDiscardRectangleStateCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineDiscardRectangleStateCreateInfoEXT;
+		Unsafe.SkipInit(out VkPipelineDiscardRectangleStateCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineDiscardRectangleStateCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -6135,10 +6451,11 @@ public partial struct VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 	public VkBool32 degenerateLinesRasterized;
 	public VkBool32 fullyCoveredFragmentShaderInputVariable;
 	public VkBool32 conservativeRasterizationPostDepthCoverage;
-	public VkPhysicalDeviceConservativeRasterizationPropertiesEXT()
+	public static VkPhysicalDeviceConservativeRasterizationPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceConservativeRasterizationPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceConservativeRasterizationPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceConservativeRasterizationPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -6150,10 +6467,11 @@ public partial struct VkPipelineRasterizationConservativeStateCreateInfoEXT
 	public VkPipelineRasterizationConservativeStateCreateFlagsEXT flags;
 	public VkConservativeRasterizationModeEXT conservativeRasterizationMode;
 	public float extraPrimitiveOverestimationSize;
-	public VkPipelineRasterizationConservativeStateCreateInfoEXT()
+	public static VkPipelineRasterizationConservativeStateCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineRasterizationConservativeStateCreateInfoEXT;
+		Unsafe.SkipInit(out VkPipelineRasterizationConservativeStateCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineRasterizationConservativeStateCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -6163,10 +6481,11 @@ public partial struct VkPhysicalDeviceDepthClipEnableFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 depthClipEnable;
-	public VkPhysicalDeviceDepthClipEnableFeaturesEXT()
+	public static VkPhysicalDeviceDepthClipEnableFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDepthClipEnableFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceDepthClipEnableFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceDepthClipEnableFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -6177,10 +6496,11 @@ public partial struct VkPipelineRasterizationDepthClipStateCreateInfoEXT
 	public unsafe void* pNext;
 	public VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags;
 	public VkBool32 depthClipEnable;
-	public VkPipelineRasterizationDepthClipStateCreateInfoEXT()
+	public static VkPipelineRasterizationDepthClipStateCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineRasterizationDepthClipStateCreateInfoEXT;
+		Unsafe.SkipInit(out VkPipelineRasterizationDepthClipStateCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineRasterizationDepthClipStateCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -6204,10 +6524,11 @@ public partial struct VkHdrMetadataEXT
 	public float minLuminance;
 	public float maxContentLightLevel;
 	public float maxFrameAverageLightLevel;
-	public VkHdrMetadataEXT()
+	public static VkHdrMetadataEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.HdrMetadataEXT;
+		Unsafe.SkipInit(out VkHdrMetadataEXT instance);
+		instance.sType = VkStructureType.HdrMetadataEXT;
+		return instance;
 	}
 }
 
@@ -6218,10 +6539,11 @@ public partial struct VkDebugUtilsLabelEXT
 	public unsafe void* pNext;
 	public unsafe byte* pLabelName;
 	public unsafe fixed float color[4];
-	public VkDebugUtilsLabelEXT()
+	public static VkDebugUtilsLabelEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DebugUtilsLabelEXT;
+		Unsafe.SkipInit(out VkDebugUtilsLabelEXT instance);
+		instance.sType = VkStructureType.DebugUtilsLabelEXT;
+		return instance;
 	}
 }
 
@@ -6233,10 +6555,11 @@ public partial struct VkDebugUtilsObjectNameInfoEXT
 	public VkObjectType objectType;
 	public ulong objectHandle;
 	public unsafe byte* pObjectName;
-	public VkDebugUtilsObjectNameInfoEXT()
+	public static VkDebugUtilsObjectNameInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DebugUtilsObjectNameInfoEXT;
+		Unsafe.SkipInit(out VkDebugUtilsObjectNameInfoEXT instance);
+		instance.sType = VkStructureType.DebugUtilsObjectNameInfoEXT;
+		return instance;
 	}
 }
 
@@ -6255,10 +6578,11 @@ public partial struct VkDebugUtilsMessengerCallbackDataEXT
 	public unsafe VkDebugUtilsLabelEXT* pCmdBufLabels;
 	public uint objectCount;
 	public unsafe VkDebugUtilsObjectNameInfoEXT* pObjects;
-	public VkDebugUtilsMessengerCallbackDataEXT()
+	public static VkDebugUtilsMessengerCallbackDataEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DebugUtilsMessengerCallbackDataEXT;
+		Unsafe.SkipInit(out VkDebugUtilsMessengerCallbackDataEXT instance);
+		instance.sType = VkStructureType.DebugUtilsMessengerCallbackDataEXT;
+		return instance;
 	}
 }
 
@@ -6276,10 +6600,11 @@ public partial struct VkDebugUtilsMessengerCreateInfoEXT
 	public IntPtr pfnUserCallback;
 	#endif
 	public unsafe void* pUserData;
-	public VkDebugUtilsMessengerCreateInfoEXT()
+	public static VkDebugUtilsMessengerCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DebugUtilsMessengerCreateInfoEXT;
+		Unsafe.SkipInit(out VkDebugUtilsMessengerCreateInfoEXT instance);
+		instance.sType = VkStructureType.DebugUtilsMessengerCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -6293,10 +6618,11 @@ public partial struct VkDebugUtilsObjectTagInfoEXT
 	public ulong tagName;
 	public nuint tagSize;
 	public unsafe void* pTag;
-	public VkDebugUtilsObjectTagInfoEXT()
+	public static VkDebugUtilsObjectTagInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DebugUtilsObjectTagInfoEXT;
+		Unsafe.SkipInit(out VkDebugUtilsObjectTagInfoEXT instance);
+		instance.sType = VkStructureType.DebugUtilsObjectTagInfoEXT;
+		return instance;
 	}
 }
 
@@ -6316,10 +6642,11 @@ public partial struct VkSampleLocationsInfoEXT
 	public VkExtent2D sampleLocationGridSize;
 	public uint sampleLocationsCount;
 	public unsafe VkSampleLocationEXT* pSampleLocations;
-	public VkSampleLocationsInfoEXT()
+	public static VkSampleLocationsInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SampleLocationsInfoEXT;
+		Unsafe.SkipInit(out VkSampleLocationsInfoEXT instance);
+		instance.sType = VkStructureType.SampleLocationsInfoEXT;
+		return instance;
 	}
 }
 
@@ -6346,10 +6673,11 @@ public partial struct VkRenderPassSampleLocationsBeginInfoEXT
 	public unsafe VkAttachmentSampleLocationsEXT* pAttachmentInitialSampleLocations;
 	public uint postSubpassSampleLocationsCount;
 	public unsafe VkSubpassSampleLocationsEXT* pPostSubpassSampleLocations;
-	public VkRenderPassSampleLocationsBeginInfoEXT()
+	public static VkRenderPassSampleLocationsBeginInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassSampleLocationsBeginInfoEXT;
+		Unsafe.SkipInit(out VkRenderPassSampleLocationsBeginInfoEXT instance);
+		instance.sType = VkStructureType.RenderPassSampleLocationsBeginInfoEXT;
+		return instance;
 	}
 }
 
@@ -6360,10 +6688,11 @@ public partial struct VkPipelineSampleLocationsStateCreateInfoEXT
 	public unsafe void* pNext;
 	public VkBool32 sampleLocationsEnable;
 	public VkSampleLocationsInfoEXT sampleLocationsInfo;
-	public VkPipelineSampleLocationsStateCreateInfoEXT()
+	public static VkPipelineSampleLocationsStateCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineSampleLocationsStateCreateInfoEXT;
+		Unsafe.SkipInit(out VkPipelineSampleLocationsStateCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineSampleLocationsStateCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -6377,10 +6706,11 @@ public partial struct VkPhysicalDeviceSampleLocationsPropertiesEXT
 	public unsafe fixed float sampleLocationCoordinateRange[2];
 	public uint sampleLocationSubPixelBits;
 	public VkBool32 variableSampleLocations;
-	public VkPhysicalDeviceSampleLocationsPropertiesEXT()
+	public static VkPhysicalDeviceSampleLocationsPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSampleLocationsPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceSampleLocationsPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceSampleLocationsPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -6390,10 +6720,11 @@ public partial struct VkMultisamplePropertiesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExtent2D maxSampleLocationGridSize;
-	public VkMultisamplePropertiesEXT()
+	public static VkMultisamplePropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MultisamplePropertiesEXT;
+		Unsafe.SkipInit(out VkMultisamplePropertiesEXT instance);
+		instance.sType = VkStructureType.MultisamplePropertiesEXT;
+		return instance;
 	}
 }
 
@@ -6403,10 +6734,11 @@ public partial struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 advancedBlendCoherentOperations;
-	public VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT()
+	public static VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceBlendOperationAdvancedFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceBlendOperationAdvancedFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -6421,10 +6753,11 @@ public partial struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT
 	public VkBool32 advancedBlendNonPremultipliedDstColor;
 	public VkBool32 advancedBlendCorrelatedOverlap;
 	public VkBool32 advancedBlendAllOperations;
-	public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT()
+	public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceBlendOperationAdvancedPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceBlendOperationAdvancedPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -6436,10 +6769,11 @@ public partial struct VkPipelineColorBlendAdvancedStateCreateInfoEXT
 	public VkBool32 srcPremultiplied;
 	public VkBool32 dstPremultiplied;
 	public VkBlendOverlapEXT blendOverlap;
-	public VkPipelineColorBlendAdvancedStateCreateInfoEXT()
+	public static VkPipelineColorBlendAdvancedStateCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineColorBlendAdvancedStateCreateInfoEXT;
+		Unsafe.SkipInit(out VkPipelineColorBlendAdvancedStateCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineColorBlendAdvancedStateCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -6451,10 +6785,11 @@ public partial struct VkPipelineCoverageToColorStateCreateInfoNV
 	public VkPipelineCoverageToColorStateCreateFlagsNV flags;
 	public VkBool32 coverageToColorEnable;
 	public uint coverageToColorLocation;
-	public VkPipelineCoverageToColorStateCreateInfoNV()
+	public static VkPipelineCoverageToColorStateCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineCoverageToColorStateCreateInfoNV;
+		Unsafe.SkipInit(out VkPipelineCoverageToColorStateCreateInfoNV instance);
+		instance.sType = VkStructureType.PipelineCoverageToColorStateCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -6468,10 +6803,11 @@ public partial struct VkPipelineCoverageModulationStateCreateInfoNV
 	public VkBool32 coverageModulationTableEnable;
 	public uint coverageModulationTableCount;
 	public unsafe float* pCoverageModulationTable;
-	public VkPipelineCoverageModulationStateCreateInfoNV()
+	public static VkPipelineCoverageModulationStateCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineCoverageModulationStateCreateInfoNV;
+		Unsafe.SkipInit(out VkPipelineCoverageModulationStateCreateInfoNV instance);
+		instance.sType = VkStructureType.PipelineCoverageModulationStateCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -6482,10 +6818,11 @@ public partial struct VkPhysicalDeviceShaderSMBuiltinsPropertiesNV
 	public unsafe void* pNext;
 	public uint shaderSMCount;
 	public uint shaderWarpsPerSM;
-	public VkPhysicalDeviceShaderSMBuiltinsPropertiesNV()
+	public static VkPhysicalDeviceShaderSMBuiltinsPropertiesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderSMBuiltinsPropertiesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderSMBuiltinsPropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderSMBuiltinsPropertiesNV;
+		return instance;
 	}
 }
 
@@ -6495,10 +6832,11 @@ public partial struct VkPhysicalDeviceShaderSMBuiltinsFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 shaderSMBuiltins;
-	public VkPhysicalDeviceShaderSMBuiltinsFeaturesNV()
+	public static VkPhysicalDeviceShaderSMBuiltinsFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderSMBuiltinsFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderSMBuiltinsFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderSMBuiltinsFeaturesNV;
+		return instance;
 	}
 }
 
@@ -6517,10 +6855,11 @@ public partial struct VkDrmFormatModifierPropertiesListEXT
 	public unsafe void* pNext;
 	public uint drmFormatModifierCount;
 	public unsafe VkDrmFormatModifierPropertiesEXT* pDrmFormatModifierProperties;
-	public VkDrmFormatModifierPropertiesListEXT()
+	public static VkDrmFormatModifierPropertiesListEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DrmFormatModifierPropertiesListEXT;
+		Unsafe.SkipInit(out VkDrmFormatModifierPropertiesListEXT instance);
+		instance.sType = VkStructureType.DrmFormatModifierPropertiesListEXT;
+		return instance;
 	}
 }
 
@@ -6533,10 +6872,11 @@ public partial struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT
 	public VkSharingMode sharingMode;
 	public uint queueFamilyIndexCount;
 	public unsafe uint* pQueueFamilyIndices;
-	public VkPhysicalDeviceImageDrmFormatModifierInfoEXT()
+	public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceImageDrmFormatModifierInfoEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceImageDrmFormatModifierInfoEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceImageDrmFormatModifierInfoEXT;
+		return instance;
 	}
 }
 
@@ -6547,10 +6887,11 @@ public partial struct VkImageDrmFormatModifierListCreateInfoEXT
 	public unsafe void* pNext;
 	public uint drmFormatModifierCount;
 	public unsafe ulong* pDrmFormatModifiers;
-	public VkImageDrmFormatModifierListCreateInfoEXT()
+	public static VkImageDrmFormatModifierListCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageDrmFormatModifierListCreateInfoEXT;
+		Unsafe.SkipInit(out VkImageDrmFormatModifierListCreateInfoEXT instance);
+		instance.sType = VkStructureType.ImageDrmFormatModifierListCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -6562,10 +6903,11 @@ public partial struct VkImageDrmFormatModifierExplicitCreateInfoEXT
 	public ulong drmFormatModifier;
 	public uint drmFormatModifierPlaneCount;
 	public unsafe VkSubresourceLayout* pPlaneLayouts;
-	public VkImageDrmFormatModifierExplicitCreateInfoEXT()
+	public static VkImageDrmFormatModifierExplicitCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageDrmFormatModifierExplicitCreateInfoEXT;
+		Unsafe.SkipInit(out VkImageDrmFormatModifierExplicitCreateInfoEXT instance);
+		instance.sType = VkStructureType.ImageDrmFormatModifierExplicitCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -6575,10 +6917,11 @@ public partial struct VkImageDrmFormatModifierPropertiesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public ulong drmFormatModifier;
-	public VkImageDrmFormatModifierPropertiesEXT()
+	public static VkImageDrmFormatModifierPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageDrmFormatModifierPropertiesEXT;
+		Unsafe.SkipInit(out VkImageDrmFormatModifierPropertiesEXT instance);
+		instance.sType = VkStructureType.ImageDrmFormatModifierPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -6597,10 +6940,11 @@ public partial struct VkDrmFormatModifierPropertiesList2EXT
 	public unsafe void* pNext;
 	public uint drmFormatModifierCount;
 	public unsafe VkDrmFormatModifierProperties2EXT* pDrmFormatModifierProperties;
-	public VkDrmFormatModifierPropertiesList2EXT()
+	public static VkDrmFormatModifierPropertiesList2EXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DrmFormatModifierPropertiesList2EXT;
+		Unsafe.SkipInit(out VkDrmFormatModifierPropertiesList2EXT instance);
+		instance.sType = VkStructureType.DrmFormatModifierPropertiesList2EXT;
+		return instance;
 	}
 }
 
@@ -6612,10 +6956,11 @@ public partial struct VkValidationCacheCreateInfoEXT
 	public VkValidationCacheCreateFlagsEXT flags;
 	public nuint initialDataSize;
 	public unsafe void* pInitialData;
-	public VkValidationCacheCreateInfoEXT()
+	public static VkValidationCacheCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ValidationCacheCreateInfoEXT;
+		Unsafe.SkipInit(out VkValidationCacheCreateInfoEXT instance);
+		instance.sType = VkStructureType.ValidationCacheCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -6625,10 +6970,11 @@ public partial struct VkShaderModuleValidationCacheCreateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkValidationCacheEXT validationCache;
-	public VkShaderModuleValidationCacheCreateInfoEXT()
+	public static VkShaderModuleValidationCacheCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ShaderModuleValidationCacheCreateInfoEXT;
+		Unsafe.SkipInit(out VkShaderModuleValidationCacheCreateInfoEXT instance);
+		instance.sType = VkStructureType.ShaderModuleValidationCacheCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -6647,10 +6993,11 @@ public partial struct VkPipelineViewportShadingRateImageStateCreateInfoNV
 	public VkBool32 shadingRateImageEnable;
 	public uint viewportCount;
 	public unsafe VkShadingRatePaletteNV* pShadingRatePalettes;
-	public VkPipelineViewportShadingRateImageStateCreateInfoNV()
+	public static VkPipelineViewportShadingRateImageStateCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineViewportShadingRateImageStateCreateInfoNV;
+		Unsafe.SkipInit(out VkPipelineViewportShadingRateImageStateCreateInfoNV instance);
+		instance.sType = VkStructureType.PipelineViewportShadingRateImageStateCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -6661,10 +7008,11 @@ public partial struct VkPhysicalDeviceShadingRateImageFeaturesNV
 	public unsafe void* pNext;
 	public VkBool32 shadingRateImage;
 	public VkBool32 shadingRateCoarseSampleOrder;
-	public VkPhysicalDeviceShadingRateImageFeaturesNV()
+	public static VkPhysicalDeviceShadingRateImageFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShadingRateImageFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceShadingRateImageFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceShadingRateImageFeaturesNV;
+		return instance;
 	}
 }
 
@@ -6676,10 +7024,11 @@ public partial struct VkPhysicalDeviceShadingRateImagePropertiesNV
 	public VkExtent2D shadingRateTexelSize;
 	public uint shadingRatePaletteSize;
 	public uint shadingRateMaxCoarseSamples;
-	public VkPhysicalDeviceShadingRateImagePropertiesNV()
+	public static VkPhysicalDeviceShadingRateImagePropertiesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShadingRateImagePropertiesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceShadingRateImagePropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceShadingRateImagePropertiesNV;
+		return instance;
 	}
 }
 
@@ -6708,10 +7057,11 @@ public partial struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV
 	public VkCoarseSampleOrderTypeNV sampleOrderType;
 	public uint customSampleOrderCount;
 	public unsafe VkCoarseSampleOrderCustomNV* pCustomSampleOrders;
-	public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV()
+	public static VkPipelineViewportCoarseSampleOrderStateCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineViewportCoarseSampleOrderStateCreateInfoNV;
+		Unsafe.SkipInit(out VkPipelineViewportCoarseSampleOrderStateCreateInfoNV instance);
+		instance.sType = VkStructureType.PipelineViewportCoarseSampleOrderStateCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -6725,10 +7075,11 @@ public partial struct VkRayTracingShaderGroupCreateInfoNV
 	public uint closestHitShader;
 	public uint anyHitShader;
 	public uint intersectionShader;
-	public VkRayTracingShaderGroupCreateInfoNV()
+	public static VkRayTracingShaderGroupCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RayTracingShaderGroupCreateInfoNV;
+		Unsafe.SkipInit(out VkRayTracingShaderGroupCreateInfoNV instance);
+		instance.sType = VkStructureType.RayTracingShaderGroupCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -6746,10 +7097,11 @@ public partial struct VkRayTracingPipelineCreateInfoNV
 	public VkPipelineLayout layout;
 	public VkPipeline basePipelineHandle;
 	public int basePipelineIndex;
-	public VkRayTracingPipelineCreateInfoNV()
+	public static VkRayTracingPipelineCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RayTracingPipelineCreateInfoNV;
+		Unsafe.SkipInit(out VkRayTracingPipelineCreateInfoNV instance);
+		instance.sType = VkStructureType.RayTracingPipelineCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -6769,10 +7121,11 @@ public partial struct VkGeometryTrianglesNV
 	public VkIndexType indexType;
 	public VkBuffer transformData;
 	public ulong transformOffset;
-	public VkGeometryTrianglesNV()
+	public static VkGeometryTrianglesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.GeometryTrianglesNV;
+		Unsafe.SkipInit(out VkGeometryTrianglesNV instance);
+		instance.sType = VkStructureType.GeometryTrianglesNV;
+		return instance;
 	}
 }
 
@@ -6785,10 +7138,11 @@ public partial struct VkGeometryAABBNV
 	public uint numAABBs;
 	public uint stride;
 	public ulong offset;
-	public VkGeometryAABBNV()
+	public static VkGeometryAABBNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.GeometryAABBNV;
+		Unsafe.SkipInit(out VkGeometryAABBNV instance);
+		instance.sType = VkStructureType.GeometryAABBNV;
+		return instance;
 	}
 }
 
@@ -6807,10 +7161,11 @@ public partial struct VkGeometryNV
 	public VkGeometryTypeKHR geometryType;
 	public VkGeometryDataNV geometry;
 	public VkGeometryFlagsKHR flags;
-	public VkGeometryNV()
+	public static VkGeometryNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.GeometryNV;
+		Unsafe.SkipInit(out VkGeometryNV instance);
+		instance.sType = VkStructureType.GeometryNV;
+		return instance;
 	}
 }
 
@@ -6824,10 +7179,11 @@ public partial struct VkAccelerationStructureInfoNV
 	public uint instanceCount;
 	public uint geometryCount;
 	public unsafe VkGeometryNV* pGeometries;
-	public VkAccelerationStructureInfoNV()
+	public static VkAccelerationStructureInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureInfoNV;
+		Unsafe.SkipInit(out VkAccelerationStructureInfoNV instance);
+		instance.sType = VkStructureType.AccelerationStructureInfoNV;
+		return instance;
 	}
 }
 
@@ -6838,10 +7194,11 @@ public partial struct VkAccelerationStructureCreateInfoNV
 	public unsafe void* pNext;
 	public ulong compactedSize;
 	public VkAccelerationStructureInfoNV info;
-	public VkAccelerationStructureCreateInfoNV()
+	public static VkAccelerationStructureCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureCreateInfoNV;
+		Unsafe.SkipInit(out VkAccelerationStructureCreateInfoNV instance);
+		instance.sType = VkStructureType.AccelerationStructureCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -6855,10 +7212,11 @@ public partial struct VkBindAccelerationStructureMemoryInfoNV
 	public ulong memoryOffset;
 	public uint deviceIndexCount;
 	public unsafe uint* pDeviceIndices;
-	public VkBindAccelerationStructureMemoryInfoNV()
+	public static VkBindAccelerationStructureMemoryInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BindAccelerationStructureMemoryInfoNV;
+		Unsafe.SkipInit(out VkBindAccelerationStructureMemoryInfoNV instance);
+		instance.sType = VkStructureType.BindAccelerationStructureMemoryInfoNV;
+		return instance;
 	}
 }
 
@@ -6869,10 +7227,11 @@ public partial struct VkWriteDescriptorSetAccelerationStructureNV
 	public unsafe void* pNext;
 	public uint accelerationStructureCount;
 	public unsafe VkAccelerationStructureKHR* pAccelerationStructures;
-	public VkWriteDescriptorSetAccelerationStructureNV()
+	public static VkWriteDescriptorSetAccelerationStructureNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.WriteDescriptorSetAccelerationStructureNV;
+		Unsafe.SkipInit(out VkWriteDescriptorSetAccelerationStructureNV instance);
+		instance.sType = VkStructureType.WriteDescriptorSetAccelerationStructureNV;
+		return instance;
 	}
 }
 
@@ -6883,10 +7242,11 @@ public partial struct VkAccelerationStructureMemoryRequirementsInfoNV
 	public unsafe void* pNext;
 	public VkAccelerationStructureMemoryRequirementsTypeKHR type;
 	public VkAccelerationStructureKHR accelerationStructure;
-	public VkAccelerationStructureMemoryRequirementsInfoNV()
+	public static VkAccelerationStructureMemoryRequirementsInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureMemoryRequirementsInfoNV;
+		Unsafe.SkipInit(out VkAccelerationStructureMemoryRequirementsInfoNV instance);
+		instance.sType = VkStructureType.AccelerationStructureMemoryRequirementsInfoNV;
+		return instance;
 	}
 }
 
@@ -6903,10 +7263,11 @@ public partial struct VkPhysicalDeviceRayTracingPropertiesNV
 	public ulong maxInstanceCount;
 	public ulong maxTriangleCount;
 	public uint maxDescriptorSetAccelerationStructures;
-	public VkPhysicalDeviceRayTracingPropertiesNV()
+	public static VkPhysicalDeviceRayTracingPropertiesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceRayTracingPropertiesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceRayTracingPropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceRayTracingPropertiesNV;
+		return instance;
 	}
 }
 
@@ -6927,10 +7288,11 @@ public partial struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 representativeFragmentTest;
-	public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV()
+	public static VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceRepresentativeFragmentTestFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceRepresentativeFragmentTestFeaturesNV;
+		return instance;
 	}
 }
 
@@ -6940,10 +7302,11 @@ public partial struct VkPipelineRepresentativeFragmentTestStateCreateInfoNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 representativeFragmentTestEnable;
-	public VkPipelineRepresentativeFragmentTestStateCreateInfoNV()
+	public static VkPipelineRepresentativeFragmentTestStateCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineRepresentativeFragmentTestStateCreateInfoNV;
+		Unsafe.SkipInit(out VkPipelineRepresentativeFragmentTestStateCreateInfoNV instance);
+		instance.sType = VkStructureType.PipelineRepresentativeFragmentTestStateCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -6953,10 +7316,11 @@ public partial struct VkPhysicalDeviceImageViewImageFormatInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImageViewType imageViewType;
-	public VkPhysicalDeviceImageViewImageFormatInfoEXT()
+	public static VkPhysicalDeviceImageViewImageFormatInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceImageViewImageFormatInfoEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceImageViewImageFormatInfoEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceImageViewImageFormatInfoEXT;
+		return instance;
 	}
 }
 
@@ -6967,10 +7331,11 @@ public partial struct VkFilterCubicImageViewImageFormatPropertiesEXT
 	public unsafe void* pNext;
 	public VkBool32 filterCubic;
 	public VkBool32 filterCubicMinmax;
-	public VkFilterCubicImageViewImageFormatPropertiesEXT()
+	public static VkFilterCubicImageViewImageFormatPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.FilterCubicImageViewImageFormatPropertiesEXT;
+		Unsafe.SkipInit(out VkFilterCubicImageViewImageFormatPropertiesEXT instance);
+		instance.sType = VkStructureType.FilterCubicImageViewImageFormatPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -6981,10 +7346,11 @@ public partial struct VkImportMemoryHostPointerInfoEXT
 	public unsafe void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleType;
 	public unsafe void* pHostPointer;
-	public VkImportMemoryHostPointerInfoEXT()
+	public static VkImportMemoryHostPointerInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImportMemoryHostPointerInfoEXT;
+		Unsafe.SkipInit(out VkImportMemoryHostPointerInfoEXT instance);
+		instance.sType = VkStructureType.ImportMemoryHostPointerInfoEXT;
+		return instance;
 	}
 }
 
@@ -6994,10 +7360,11 @@ public partial struct VkMemoryHostPointerPropertiesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint memoryTypeBits;
-	public VkMemoryHostPointerPropertiesEXT()
+	public static VkMemoryHostPointerPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryHostPointerPropertiesEXT;
+		Unsafe.SkipInit(out VkMemoryHostPointerPropertiesEXT instance);
+		instance.sType = VkStructureType.MemoryHostPointerPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -7007,10 +7374,11 @@ public partial struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public ulong minImportedHostPointerAlignment;
-	public VkPhysicalDeviceExternalMemoryHostPropertiesEXT()
+	public static VkPhysicalDeviceExternalMemoryHostPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceExternalMemoryHostPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceExternalMemoryHostPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceExternalMemoryHostPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -7020,10 +7388,11 @@ public partial struct VkPipelineCompilerControlCreateInfoAMD
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkPipelineCompilerControlFlagsAMD compilerControlFlags;
-	public VkPipelineCompilerControlCreateInfoAMD()
+	public static VkPipelineCompilerControlCreateInfoAMD New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineCompilerControlCreateInfoAMD;
+		Unsafe.SkipInit(out VkPipelineCompilerControlCreateInfoAMD instance);
+		instance.sType = VkStructureType.PipelineCompilerControlCreateInfoAMD;
+		return instance;
 	}
 }
 
@@ -7033,10 +7402,11 @@ public partial struct VkCalibratedTimestampInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkTimeDomainEXT timeDomain;
-	public VkCalibratedTimestampInfoEXT()
+	public static VkCalibratedTimestampInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CalibratedTimestampInfoEXT;
+		Unsafe.SkipInit(out VkCalibratedTimestampInfoEXT instance);
+		instance.sType = VkStructureType.CalibratedTimestampInfoEXT;
+		return instance;
 	}
 }
 
@@ -7059,10 +7429,11 @@ public partial struct VkPhysicalDeviceShaderCorePropertiesAMD
 	public uint minVgprAllocation;
 	public uint maxVgprAllocation;
 	public uint vgprAllocationGranularity;
-	public VkPhysicalDeviceShaderCorePropertiesAMD()
+	public static VkPhysicalDeviceShaderCorePropertiesAMD New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderCorePropertiesAMD;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderCorePropertiesAMD instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderCorePropertiesAMD;
+		return instance;
 	}
 }
 
@@ -7072,10 +7443,11 @@ public partial struct VkDeviceMemoryOverallocationCreateInfoAMD
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkMemoryOverallocationBehaviorAMD overallocationBehavior;
-	public VkDeviceMemoryOverallocationCreateInfoAMD()
+	public static VkDeviceMemoryOverallocationCreateInfoAMD New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceMemoryOverallocationCreateInfoAMD;
+		Unsafe.SkipInit(out VkDeviceMemoryOverallocationCreateInfoAMD instance);
+		instance.sType = VkStructureType.DeviceMemoryOverallocationCreateInfoAMD;
+		return instance;
 	}
 }
 
@@ -7085,10 +7457,11 @@ public partial struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint maxVertexAttribDivisor;
-	public VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT()
+	public static VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -7106,10 +7479,11 @@ public partial struct VkPipelineVertexInputDivisorStateCreateInfoEXT
 	public unsafe void* pNext;
 	public uint vertexBindingDivisorCount;
 	public unsafe VkVertexInputBindingDivisorDescriptionEXT* pVertexBindingDivisors;
-	public VkPipelineVertexInputDivisorStateCreateInfoEXT()
+	public static VkPipelineVertexInputDivisorStateCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineVertexInputDivisorStateCreateInfoEXT;
+		Unsafe.SkipInit(out VkPipelineVertexInputDivisorStateCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineVertexInputDivisorStateCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -7120,10 +7494,11 @@ public partial struct VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT
 	public unsafe void* pNext;
 	public VkBool32 vertexAttributeInstanceRateDivisor;
 	public VkBool32 vertexAttributeInstanceRateZeroDivisor;
-	public VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT()
+	public static VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7134,10 +7509,11 @@ public partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesNV
 	public unsafe void* pNext;
 	public VkBool32 computeDerivativeGroupQuads;
 	public VkBool32 computeDerivativeGroupLinear;
-	public VkPhysicalDeviceComputeShaderDerivativesFeaturesNV()
+	public static VkPhysicalDeviceComputeShaderDerivativesFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceComputeShaderDerivativesFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceComputeShaderDerivativesFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceComputeShaderDerivativesFeaturesNV;
+		return instance;
 	}
 }
 
@@ -7148,10 +7524,11 @@ public partial struct VkPhysicalDeviceMeshShaderFeaturesNV
 	public unsafe void* pNext;
 	public VkBool32 taskShader;
 	public VkBool32 meshShader;
-	public VkPhysicalDeviceMeshShaderFeaturesNV()
+	public static VkPhysicalDeviceMeshShaderFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMeshShaderFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceMeshShaderFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceMeshShaderFeaturesNV;
+		return instance;
 	}
 }
 
@@ -7173,10 +7550,11 @@ public partial struct VkPhysicalDeviceMeshShaderPropertiesNV
 	public uint maxMeshMultiviewViewCount;
 	public uint meshOutputPerVertexGranularity;
 	public uint meshOutputPerPrimitiveGranularity;
-	public VkPhysicalDeviceMeshShaderPropertiesNV()
+	public static VkPhysicalDeviceMeshShaderPropertiesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMeshShaderPropertiesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceMeshShaderPropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceMeshShaderPropertiesNV;
+		return instance;
 	}
 }
 
@@ -7193,10 +7571,11 @@ public partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 fragmentShaderBarycentric;
-	public VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV()
+	public static VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentShaderBarycentricFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentShaderBarycentricFeaturesNV;
+		return instance;
 	}
 }
 
@@ -7206,10 +7585,11 @@ public partial struct VkPhysicalDeviceShaderImageFootprintFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 imageFootprint;
-	public VkPhysicalDeviceShaderImageFootprintFeaturesNV()
+	public static VkPhysicalDeviceShaderImageFootprintFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderImageFootprintFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderImageFootprintFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderImageFootprintFeaturesNV;
+		return instance;
 	}
 }
 
@@ -7220,10 +7600,11 @@ public partial struct VkPipelineViewportExclusiveScissorStateCreateInfoNV
 	public unsafe void* pNext;
 	public uint exclusiveScissorCount;
 	public unsafe VkRect2D* pExclusiveScissors;
-	public VkPipelineViewportExclusiveScissorStateCreateInfoNV()
+	public static VkPipelineViewportExclusiveScissorStateCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineViewportExclusiveScissorStateCreateInfoNV;
+		Unsafe.SkipInit(out VkPipelineViewportExclusiveScissorStateCreateInfoNV instance);
+		instance.sType = VkStructureType.PipelineViewportExclusiveScissorStateCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -7233,10 +7614,11 @@ public partial struct VkPhysicalDeviceExclusiveScissorFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 exclusiveScissor;
-	public VkPhysicalDeviceExclusiveScissorFeaturesNV()
+	public static VkPhysicalDeviceExclusiveScissorFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceExclusiveScissorFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceExclusiveScissorFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceExclusiveScissorFeaturesNV;
+		return instance;
 	}
 }
 
@@ -7246,10 +7628,11 @@ public partial struct VkQueueFamilyCheckpointPropertiesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkPipelineStageFlags checkpointExecutionStageMask;
-	public VkQueueFamilyCheckpointPropertiesNV()
+	public static VkQueueFamilyCheckpointPropertiesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.QueueFamilyCheckpointPropertiesNV;
+		Unsafe.SkipInit(out VkQueueFamilyCheckpointPropertiesNV instance);
+		instance.sType = VkStructureType.QueueFamilyCheckpointPropertiesNV;
+		return instance;
 	}
 }
 
@@ -7260,10 +7643,11 @@ public partial struct VkCheckpointDataNV
 	public unsafe void* pNext;
 	public VkPipelineStageFlags stage;
 	public unsafe void* pCheckpointMarker;
-	public VkCheckpointDataNV()
+	public static VkCheckpointDataNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CheckpointDataNV;
+		Unsafe.SkipInit(out VkCheckpointDataNV instance);
+		instance.sType = VkStructureType.CheckpointDataNV;
+		return instance;
 	}
 }
 
@@ -7273,10 +7657,11 @@ public partial struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 shaderIntegerFunctions2;
-	public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL()
+	public static VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL;
+		return instance;
 	}
 }
 
@@ -7308,10 +7693,11 @@ public partial struct VkInitializePerformanceApiInfoINTEL
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe void* pUserData;
-	public VkInitializePerformanceApiInfoINTEL()
+	public static VkInitializePerformanceApiInfoINTEL New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.InitializePerformanceApiInfoINTEL;
+		Unsafe.SkipInit(out VkInitializePerformanceApiInfoINTEL instance);
+		instance.sType = VkStructureType.InitializePerformanceApiInfoINTEL;
+		return instance;
 	}
 }
 
@@ -7321,10 +7707,11 @@ public partial struct VkQueryPoolPerformanceQueryCreateInfoINTEL
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkQueryPoolSamplingModeINTEL performanceCountersSampling;
-	public VkQueryPoolPerformanceQueryCreateInfoINTEL()
+	public static VkQueryPoolPerformanceQueryCreateInfoINTEL New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.QueryPoolPerformanceQueryCreateInfoINTEL;
+		Unsafe.SkipInit(out VkQueryPoolPerformanceQueryCreateInfoINTEL instance);
+		instance.sType = VkStructureType.QueryPoolPerformanceQueryCreateInfoINTEL;
+		return instance;
 	}
 }
 
@@ -7334,10 +7721,11 @@ public partial struct VkPerformanceMarkerInfoINTEL
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public ulong marker;
-	public VkPerformanceMarkerInfoINTEL()
+	public static VkPerformanceMarkerInfoINTEL New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PerformanceMarkerInfoINTEL;
+		Unsafe.SkipInit(out VkPerformanceMarkerInfoINTEL instance);
+		instance.sType = VkStructureType.PerformanceMarkerInfoINTEL;
+		return instance;
 	}
 }
 
@@ -7347,10 +7735,11 @@ public partial struct VkPerformanceStreamMarkerInfoINTEL
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint marker;
-	public VkPerformanceStreamMarkerInfoINTEL()
+	public static VkPerformanceStreamMarkerInfoINTEL New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PerformanceStreamMarkerInfoINTEL;
+		Unsafe.SkipInit(out VkPerformanceStreamMarkerInfoINTEL instance);
+		instance.sType = VkStructureType.PerformanceStreamMarkerInfoINTEL;
+		return instance;
 	}
 }
 
@@ -7362,10 +7751,11 @@ public partial struct VkPerformanceOverrideInfoINTEL
 	public VkPerformanceOverrideTypeINTEL type;
 	public VkBool32 enable;
 	public ulong parameter;
-	public VkPerformanceOverrideInfoINTEL()
+	public static VkPerformanceOverrideInfoINTEL New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PerformanceOverrideInfoINTEL;
+		Unsafe.SkipInit(out VkPerformanceOverrideInfoINTEL instance);
+		instance.sType = VkStructureType.PerformanceOverrideInfoINTEL;
+		return instance;
 	}
 }
 
@@ -7375,10 +7765,11 @@ public partial struct VkPerformanceConfigurationAcquireInfoINTEL
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkPerformanceConfigurationTypeINTEL type;
-	public VkPerformanceConfigurationAcquireInfoINTEL()
+	public static VkPerformanceConfigurationAcquireInfoINTEL New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PerformanceConfigurationAcquireInfoINTEL;
+		Unsafe.SkipInit(out VkPerformanceConfigurationAcquireInfoINTEL instance);
+		instance.sType = VkStructureType.PerformanceConfigurationAcquireInfoINTEL;
+		return instance;
 	}
 }
 
@@ -7391,10 +7782,11 @@ public partial struct VkPhysicalDevicePCIBusInfoPropertiesEXT
 	public uint pciBus;
 	public uint pciDevice;
 	public uint pciFunction;
-	public VkPhysicalDevicePCIBusInfoPropertiesEXT()
+	public static VkPhysicalDevicePCIBusInfoPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePCIBusInfoPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDevicePCIBusInfoPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDevicePCIBusInfoPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -7404,10 +7796,11 @@ public partial struct VkDisplayNativeHdrSurfaceCapabilitiesAMD
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 localDimmingSupport;
-	public VkDisplayNativeHdrSurfaceCapabilitiesAMD()
+	public static VkDisplayNativeHdrSurfaceCapabilitiesAMD New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DisplayNativeHdrSurfaceCapabilitiesAMD;
+		Unsafe.SkipInit(out VkDisplayNativeHdrSurfaceCapabilitiesAMD instance);
+		instance.sType = VkStructureType.DisplayNativeHdrSurfaceCapabilitiesAMD;
+		return instance;
 	}
 }
 
@@ -7417,10 +7810,11 @@ public partial struct VkSwapchainDisplayNativeHdrCreateInfoAMD
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 localDimmingEnable;
-	public VkSwapchainDisplayNativeHdrCreateInfoAMD()
+	public static VkSwapchainDisplayNativeHdrCreateInfoAMD New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SwapchainDisplayNativeHdrCreateInfoAMD;
+		Unsafe.SkipInit(out VkSwapchainDisplayNativeHdrCreateInfoAMD instance);
+		instance.sType = VkStructureType.SwapchainDisplayNativeHdrCreateInfoAMD;
+		return instance;
 	}
 }
 
@@ -7432,10 +7826,11 @@ public partial struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT
 	public VkBool32 fragmentDensityMap;
 	public VkBool32 fragmentDensityMapDynamic;
 	public VkBool32 fragmentDensityMapNonSubsampledImages;
-	public VkPhysicalDeviceFragmentDensityMapFeaturesEXT()
+	public static VkPhysicalDeviceFragmentDensityMapFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMapFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentDensityMapFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentDensityMapFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7447,10 +7842,11 @@ public partial struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT
 	public VkExtent2D minFragmentDensityTexelSize;
 	public VkExtent2D maxFragmentDensityTexelSize;
 	public VkBool32 fragmentDensityInvocations;
-	public VkPhysicalDeviceFragmentDensityMapPropertiesEXT()
+	public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMapPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentDensityMapPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentDensityMapPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -7460,10 +7856,11 @@ public partial struct VkRenderPassFragmentDensityMapCreateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkAttachmentReference fragmentDensityMapAttachment;
-	public VkRenderPassFragmentDensityMapCreateInfoEXT()
+	public static VkRenderPassFragmentDensityMapCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassFragmentDensityMapCreateInfoEXT;
+		Unsafe.SkipInit(out VkRenderPassFragmentDensityMapCreateInfoEXT instance);
+		instance.sType = VkStructureType.RenderPassFragmentDensityMapCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -7474,10 +7871,11 @@ public partial struct VkPhysicalDeviceShaderCoreProperties2AMD
 	public unsafe void* pNext;
 	public VkShaderCorePropertiesFlagsAMD shaderCoreFeatures;
 	public uint activeComputeUnitCount;
-	public VkPhysicalDeviceShaderCoreProperties2AMD()
+	public static VkPhysicalDeviceShaderCoreProperties2AMD New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderCoreProperties2AMD;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderCoreProperties2AMD instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderCoreProperties2AMD;
+		return instance;
 	}
 }
 
@@ -7487,10 +7885,11 @@ public partial struct VkPhysicalDeviceCoherentMemoryFeaturesAMD
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 deviceCoherentMemory;
-	public VkPhysicalDeviceCoherentMemoryFeaturesAMD()
+	public static VkPhysicalDeviceCoherentMemoryFeaturesAMD New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceCoherentMemoryFeaturesAMD;
+		Unsafe.SkipInit(out VkPhysicalDeviceCoherentMemoryFeaturesAMD instance);
+		instance.sType = VkStructureType.PhysicalDeviceCoherentMemoryFeaturesAMD;
+		return instance;
 	}
 }
 
@@ -7501,10 +7900,11 @@ public partial struct VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT
 	public unsafe void* pNext;
 	public VkBool32 shaderImageInt64Atomics;
 	public VkBool32 sparseImageInt64Atomics;
-	public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT()
+	public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderImageAtomicInt64FeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderImageAtomicInt64FeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7545,10 +7945,11 @@ public partial struct VkPhysicalDeviceMemoryBudgetPropertiesEXT
 	public ulong heapUsage_13;
 	public ulong heapUsage_14;
 	public ulong heapUsage_15;
-	public VkPhysicalDeviceMemoryBudgetPropertiesEXT()
+	public static VkPhysicalDeviceMemoryBudgetPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMemoryBudgetPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceMemoryBudgetPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceMemoryBudgetPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -7558,10 +7959,11 @@ public partial struct VkPhysicalDeviceMemoryPriorityFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 memoryPriority;
-	public VkPhysicalDeviceMemoryPriorityFeaturesEXT()
+	public static VkPhysicalDeviceMemoryPriorityFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMemoryPriorityFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceMemoryPriorityFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceMemoryPriorityFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7571,10 +7973,11 @@ public partial struct VkMemoryPriorityAllocateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public float priority;
-	public VkMemoryPriorityAllocateInfoEXT()
+	public static VkMemoryPriorityAllocateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryPriorityAllocateInfoEXT;
+		Unsafe.SkipInit(out VkMemoryPriorityAllocateInfoEXT instance);
+		instance.sType = VkStructureType.MemoryPriorityAllocateInfoEXT;
+		return instance;
 	}
 }
 
@@ -7584,10 +7987,11 @@ public partial struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 dedicatedAllocationImageAliasing;
-	public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV()
+	public static VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV;
+		return instance;
 	}
 }
 
@@ -7599,10 +8003,11 @@ public partial struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT
 	public VkBool32 bufferDeviceAddress;
 	public VkBool32 bufferDeviceAddressCaptureReplay;
 	public VkBool32 bufferDeviceAddressMultiDevice;
-	public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT()
+	public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceBufferDeviceAddressFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceBufferDeviceAddressFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceBufferDeviceAddressFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7612,10 +8017,11 @@ public partial struct VkBufferDeviceAddressCreateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public ulong deviceAddress;
-	public VkBufferDeviceAddressCreateInfoEXT()
+	public static VkBufferDeviceAddressCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.BufferDeviceAddressCreateInfoEXT;
+		Unsafe.SkipInit(out VkBufferDeviceAddressCreateInfoEXT instance);
+		instance.sType = VkStructureType.BufferDeviceAddressCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -7628,10 +8034,11 @@ public partial struct VkValidationFeaturesEXT
 	public unsafe VkValidationFeatureEnableEXT* pEnabledValidationFeatures;
 	public uint disabledValidationFeatureCount;
 	public unsafe VkValidationFeatureDisableEXT* pDisabledValidationFeatures;
-	public VkValidationFeaturesEXT()
+	public static VkValidationFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ValidationFeaturesEXT;
+		Unsafe.SkipInit(out VkValidationFeaturesEXT instance);
+		instance.sType = VkStructureType.ValidationFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7648,10 +8055,11 @@ public partial struct VkCooperativeMatrixPropertiesNV
 	public VkComponentTypeNV CType;
 	public VkComponentTypeNV DType;
 	public VkScopeNV scope;
-	public VkCooperativeMatrixPropertiesNV()
+	public static VkCooperativeMatrixPropertiesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CooperativeMatrixPropertiesNV;
+		Unsafe.SkipInit(out VkCooperativeMatrixPropertiesNV instance);
+		instance.sType = VkStructureType.CooperativeMatrixPropertiesNV;
+		return instance;
 	}
 }
 
@@ -7662,10 +8070,11 @@ public partial struct VkPhysicalDeviceCooperativeMatrixFeaturesNV
 	public unsafe void* pNext;
 	public VkBool32 cooperativeMatrix;
 	public VkBool32 cooperativeMatrixRobustBufferAccess;
-	public VkPhysicalDeviceCooperativeMatrixFeaturesNV()
+	public static VkPhysicalDeviceCooperativeMatrixFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceCooperativeMatrixFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceCooperativeMatrixFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceCooperativeMatrixFeaturesNV;
+		return instance;
 	}
 }
 
@@ -7675,10 +8084,11 @@ public partial struct VkPhysicalDeviceCooperativeMatrixPropertiesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkShaderStageFlags cooperativeMatrixSupportedStages;
-	public VkPhysicalDeviceCooperativeMatrixPropertiesNV()
+	public static VkPhysicalDeviceCooperativeMatrixPropertiesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceCooperativeMatrixPropertiesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceCooperativeMatrixPropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceCooperativeMatrixPropertiesNV;
+		return instance;
 	}
 }
 
@@ -7688,10 +8098,11 @@ public partial struct VkPhysicalDeviceCoverageReductionModeFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 coverageReductionMode;
-	public VkPhysicalDeviceCoverageReductionModeFeaturesNV()
+	public static VkPhysicalDeviceCoverageReductionModeFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceCoverageReductionModeFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceCoverageReductionModeFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceCoverageReductionModeFeaturesNV;
+		return instance;
 	}
 }
 
@@ -7702,10 +8113,11 @@ public partial struct VkPipelineCoverageReductionStateCreateInfoNV
 	public unsafe void* pNext;
 	public VkPipelineCoverageReductionStateCreateFlagsNV flags;
 	public VkCoverageReductionModeNV coverageReductionMode;
-	public VkPipelineCoverageReductionStateCreateInfoNV()
+	public static VkPipelineCoverageReductionStateCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineCoverageReductionStateCreateInfoNV;
+		Unsafe.SkipInit(out VkPipelineCoverageReductionStateCreateInfoNV instance);
+		instance.sType = VkStructureType.PipelineCoverageReductionStateCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -7718,10 +8130,11 @@ public partial struct VkFramebufferMixedSamplesCombinationNV
 	public VkSampleCountFlags rasterizationSamples;
 	public VkSampleCountFlags depthStencilSamples;
 	public VkSampleCountFlags colorSamples;
-	public VkFramebufferMixedSamplesCombinationNV()
+	public static VkFramebufferMixedSamplesCombinationNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.FramebufferMixedSamplesCombinationNV;
+		Unsafe.SkipInit(out VkFramebufferMixedSamplesCombinationNV instance);
+		instance.sType = VkStructureType.FramebufferMixedSamplesCombinationNV;
+		return instance;
 	}
 }
 
@@ -7733,10 +8146,11 @@ public partial struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT
 	public VkBool32 fragmentShaderSampleInterlock;
 	public VkBool32 fragmentShaderPixelInterlock;
 	public VkBool32 fragmentShaderShadingRateInterlock;
-	public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT()
+	public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentShaderInterlockFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentShaderInterlockFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7746,10 +8160,11 @@ public partial struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 ycbcrImageArrays;
-	public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT()
+	public static VkPhysicalDeviceYcbcrImageArraysFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceYcbcrImageArraysFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceYcbcrImageArraysFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceYcbcrImageArraysFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7760,10 +8175,11 @@ public partial struct VkPhysicalDeviceProvokingVertexFeaturesEXT
 	public unsafe void* pNext;
 	public VkBool32 provokingVertexLast;
 	public VkBool32 transformFeedbackPreservesProvokingVertex;
-	public VkPhysicalDeviceProvokingVertexFeaturesEXT()
+	public static VkPhysicalDeviceProvokingVertexFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceProvokingVertexFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceProvokingVertexFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceProvokingVertexFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7774,10 +8190,11 @@ public partial struct VkPhysicalDeviceProvokingVertexPropertiesEXT
 	public unsafe void* pNext;
 	public VkBool32 provokingVertexModePerPipeline;
 	public VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex;
-	public VkPhysicalDeviceProvokingVertexPropertiesEXT()
+	public static VkPhysicalDeviceProvokingVertexPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceProvokingVertexPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceProvokingVertexPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceProvokingVertexPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -7787,10 +8204,11 @@ public partial struct VkPipelineRasterizationProvokingVertexStateCreateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkProvokingVertexModeEXT provokingVertexMode;
-	public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT()
+	public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineRasterizationProvokingVertexStateCreateInfoEXT;
+		Unsafe.SkipInit(out VkPipelineRasterizationProvokingVertexStateCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineRasterizationProvokingVertexStateCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -7800,10 +8218,11 @@ public partial struct VkHeadlessSurfaceCreateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkHeadlessSurfaceCreateFlagsEXT flags;
-	public VkHeadlessSurfaceCreateInfoEXT()
+	public static VkHeadlessSurfaceCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.HeadlessSurfaceCreateInfoEXT;
+		Unsafe.SkipInit(out VkHeadlessSurfaceCreateInfoEXT instance);
+		instance.sType = VkStructureType.HeadlessSurfaceCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -7818,10 +8237,11 @@ public partial struct VkPhysicalDeviceLineRasterizationFeaturesEXT
 	public VkBool32 stippledRectangularLines;
 	public VkBool32 stippledBresenhamLines;
 	public VkBool32 stippledSmoothLines;
-	public VkPhysicalDeviceLineRasterizationFeaturesEXT()
+	public static VkPhysicalDeviceLineRasterizationFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceLineRasterizationFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceLineRasterizationFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceLineRasterizationFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7831,10 +8251,11 @@ public partial struct VkPhysicalDeviceLineRasterizationPropertiesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint lineSubPixelPrecisionBits;
-	public VkPhysicalDeviceLineRasterizationPropertiesEXT()
+	public static VkPhysicalDeviceLineRasterizationPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceLineRasterizationPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceLineRasterizationPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceLineRasterizationPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -7847,10 +8268,11 @@ public partial struct VkPipelineRasterizationLineStateCreateInfoEXT
 	public VkBool32 stippledLineEnable;
 	public uint lineStippleFactor;
 	public ushort lineStipplePattern;
-	public VkPipelineRasterizationLineStateCreateInfoEXT()
+	public static VkPipelineRasterizationLineStateCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineRasterizationLineStateCreateInfoEXT;
+		Unsafe.SkipInit(out VkPipelineRasterizationLineStateCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineRasterizationLineStateCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -7871,10 +8293,11 @@ public partial struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 	public VkBool32 shaderImageFloat32AtomicAdd;
 	public VkBool32 sparseImageFloat32Atomics;
 	public VkBool32 sparseImageFloat32AtomicAdd;
-	public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT()
+	public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderAtomicFloatFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderAtomicFloatFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderAtomicFloatFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7884,10 +8307,11 @@ public partial struct VkPhysicalDeviceIndexTypeUint8FeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 indexTypeUint8;
-	public VkPhysicalDeviceIndexTypeUint8FeaturesEXT()
+	public static VkPhysicalDeviceIndexTypeUint8FeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceIndexTypeUint8FeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceIndexTypeUint8FeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceIndexTypeUint8FeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7897,10 +8321,11 @@ public partial struct VkPhysicalDeviceExtendedDynamicStateFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 extendedDynamicState;
-	public VkPhysicalDeviceExtendedDynamicStateFeaturesEXT()
+	public static VkPhysicalDeviceExtendedDynamicStateFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceExtendedDynamicStateFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceExtendedDynamicStateFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceExtendedDynamicStateFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7921,10 +8346,11 @@ public partial struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT
 	public VkBool32 shaderSharedFloat64AtomicMinMax;
 	public VkBool32 shaderImageFloat32AtomicMinMax;
 	public VkBool32 sparseImageFloat32AtomicMinMax;
-	public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT()
+	public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceShaderAtomicFloat2FeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderAtomicFloat2FeaturesEXT;
+		return instance;
 	}
 }
 
@@ -7942,10 +8368,11 @@ public partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 	public uint minSequencesCountBufferOffsetAlignment;
 	public uint minSequencesIndexBufferOffsetAlignment;
 	public uint minIndirectCommandsBufferOffsetAlignment;
-	public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV()
+	public static VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsPropertiesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsPropertiesNV;
+		return instance;
 	}
 }
 
@@ -7955,10 +8382,11 @@ public partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 deviceGeneratedCommands;
-	public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV()
+	public static VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsFeaturesNV;
+		return instance;
 	}
 }
 
@@ -7971,10 +8399,11 @@ public partial struct VkGraphicsShaderGroupCreateInfoNV
 	public unsafe VkPipelineShaderStageCreateInfo* pStages;
 	public unsafe VkPipelineVertexInputStateCreateInfo* pVertexInputState;
 	public unsafe VkPipelineTessellationStateCreateInfo* pTessellationState;
-	public VkGraphicsShaderGroupCreateInfoNV()
+	public static VkGraphicsShaderGroupCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.GraphicsShaderGroupCreateInfoNV;
+		Unsafe.SkipInit(out VkGraphicsShaderGroupCreateInfoNV instance);
+		instance.sType = VkStructureType.GraphicsShaderGroupCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -7987,10 +8416,11 @@ public partial struct VkGraphicsPipelineShaderGroupsCreateInfoNV
 	public unsafe VkGraphicsShaderGroupCreateInfoNV* pGroups;
 	public uint pipelineCount;
 	public unsafe VkPipeline* pPipelines;
-	public VkGraphicsPipelineShaderGroupsCreateInfoNV()
+	public static VkGraphicsPipelineShaderGroupsCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.GraphicsPipelineShaderGroupsCreateInfoNV;
+		Unsafe.SkipInit(out VkGraphicsPipelineShaderGroupsCreateInfoNV instance);
+		instance.sType = VkStructureType.GraphicsPipelineShaderGroupsCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -8047,10 +8477,11 @@ public partial struct VkIndirectCommandsLayoutTokenNV
 	public uint indexTypeCount;
 	public unsafe VkIndexType* pIndexTypes;
 	public unsafe uint* pIndexTypeValues;
-	public VkIndirectCommandsLayoutTokenNV()
+	public static VkIndirectCommandsLayoutTokenNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.IndirectCommandsLayoutTokenNV;
+		Unsafe.SkipInit(out VkIndirectCommandsLayoutTokenNV instance);
+		instance.sType = VkStructureType.IndirectCommandsLayoutTokenNV;
+		return instance;
 	}
 }
 
@@ -8065,10 +8496,11 @@ public partial struct VkIndirectCommandsLayoutCreateInfoNV
 	public unsafe VkIndirectCommandsLayoutTokenNV* pTokens;
 	public uint streamCount;
 	public unsafe uint* pStreamStrides;
-	public VkIndirectCommandsLayoutCreateInfoNV()
+	public static VkIndirectCommandsLayoutCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.IndirectCommandsLayoutCreateInfoNV;
+		Unsafe.SkipInit(out VkIndirectCommandsLayoutCreateInfoNV instance);
+		instance.sType = VkStructureType.IndirectCommandsLayoutCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -8090,10 +8522,11 @@ public partial struct VkGeneratedCommandsInfoNV
 	public ulong sequencesCountOffset;
 	public VkBuffer sequencesIndexBuffer;
 	public ulong sequencesIndexOffset;
-	public VkGeneratedCommandsInfoNV()
+	public static VkGeneratedCommandsInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.GeneratedCommandsInfoNV;
+		Unsafe.SkipInit(out VkGeneratedCommandsInfoNV instance);
+		instance.sType = VkStructureType.GeneratedCommandsInfoNV;
+		return instance;
 	}
 }
 
@@ -8106,10 +8539,11 @@ public partial struct VkGeneratedCommandsMemoryRequirementsInfoNV
 	public VkPipeline pipeline;
 	public VkIndirectCommandsLayoutNV indirectCommandsLayout;
 	public uint maxSequencesCount;
-	public VkGeneratedCommandsMemoryRequirementsInfoNV()
+	public static VkGeneratedCommandsMemoryRequirementsInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.GeneratedCommandsMemoryRequirementsInfoNV;
+		Unsafe.SkipInit(out VkGeneratedCommandsMemoryRequirementsInfoNV instance);
+		instance.sType = VkStructureType.GeneratedCommandsMemoryRequirementsInfoNV;
+		return instance;
 	}
 }
 
@@ -8119,10 +8553,11 @@ public partial struct VkPhysicalDeviceInheritedViewportScissorFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 inheritedViewportScissor2D;
-	public VkPhysicalDeviceInheritedViewportScissorFeaturesNV()
+	public static VkPhysicalDeviceInheritedViewportScissorFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceInheritedViewportScissorFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceInheritedViewportScissorFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceInheritedViewportScissorFeaturesNV;
+		return instance;
 	}
 }
 
@@ -8134,10 +8569,11 @@ public partial struct VkCommandBufferInheritanceViewportScissorInfoNV
 	public VkBool32 viewportScissor2D;
 	public uint viewportDepthCount;
 	public unsafe VkViewport* pViewportDepths;
-	public VkCommandBufferInheritanceViewportScissorInfoNV()
+	public static VkCommandBufferInheritanceViewportScissorInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CommandBufferInheritanceViewportScissorInfoNV;
+		Unsafe.SkipInit(out VkCommandBufferInheritanceViewportScissorInfoNV instance);
+		instance.sType = VkStructureType.CommandBufferInheritanceViewportScissorInfoNV;
+		return instance;
 	}
 }
 
@@ -8147,10 +8583,11 @@ public partial struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 texelBufferAlignment;
-	public VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT()
+	public static VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8160,10 +8597,11 @@ public partial struct VkRenderPassTransformBeginInfoQCOM
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSurfaceTransformFlagsKHR transform;
-	public VkRenderPassTransformBeginInfoQCOM()
+	public static VkRenderPassTransformBeginInfoQCOM New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassTransformBeginInfoQCOM;
+		Unsafe.SkipInit(out VkRenderPassTransformBeginInfoQCOM instance);
+		instance.sType = VkStructureType.RenderPassTransformBeginInfoQCOM;
+		return instance;
 	}
 }
 
@@ -8174,10 +8612,11 @@ public partial struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM
 	public unsafe void* pNext;
 	public VkSurfaceTransformFlagsKHR transform;
 	public VkRect2D renderArea;
-	public VkCommandBufferInheritanceRenderPassTransformInfoQCOM()
+	public static VkCommandBufferInheritanceRenderPassTransformInfoQCOM New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CommandBufferInheritanceRenderPassTransformInfoQCOM;
+		Unsafe.SkipInit(out VkCommandBufferInheritanceRenderPassTransformInfoQCOM instance);
+		instance.sType = VkStructureType.CommandBufferInheritanceRenderPassTransformInfoQCOM;
+		return instance;
 	}
 }
 
@@ -8187,10 +8626,11 @@ public partial struct VkPhysicalDeviceDeviceMemoryReportFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 deviceMemoryReport;
-	public VkPhysicalDeviceDeviceMemoryReportFeaturesEXT()
+	public static VkPhysicalDeviceDeviceMemoryReportFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDeviceMemoryReportFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceDeviceMemoryReportFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceDeviceMemoryReportFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8206,10 +8646,11 @@ public partial struct VkDeviceMemoryReportCallbackDataEXT
 	public VkObjectType objectType;
 	public ulong objectHandle;
 	public uint heapIndex;
-	public VkDeviceMemoryReportCallbackDataEXT()
+	public static VkDeviceMemoryReportCallbackDataEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceMemoryReportCallbackDataEXT;
+		Unsafe.SkipInit(out VkDeviceMemoryReportCallbackDataEXT instance);
+		instance.sType = VkStructureType.DeviceMemoryReportCallbackDataEXT;
+		return instance;
 	}
 }
 
@@ -8225,10 +8666,11 @@ public partial struct VkDeviceDeviceMemoryReportCreateInfoEXT
 	public IntPtr pfnUserCallback;
 	#endif
 	public unsafe void* pUserData;
-	public VkDeviceDeviceMemoryReportCreateInfoEXT()
+	public static VkDeviceDeviceMemoryReportCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceDeviceMemoryReportCreateInfoEXT;
+		Unsafe.SkipInit(out VkDeviceDeviceMemoryReportCreateInfoEXT instance);
+		instance.sType = VkStructureType.DeviceDeviceMemoryReportCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -8240,10 +8682,11 @@ public partial struct VkPhysicalDeviceRobustness2FeaturesEXT
 	public VkBool32 robustBufferAccess2;
 	public VkBool32 robustImageAccess2;
 	public VkBool32 nullDescriptor;
-	public VkPhysicalDeviceRobustness2FeaturesEXT()
+	public static VkPhysicalDeviceRobustness2FeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceRobustness2FeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceRobustness2FeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceRobustness2FeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8254,10 +8697,11 @@ public partial struct VkPhysicalDeviceRobustness2PropertiesEXT
 	public unsafe void* pNext;
 	public ulong robustStorageBufferAccessSizeAlignment;
 	public ulong robustUniformBufferAccessSizeAlignment;
-	public VkPhysicalDeviceRobustness2PropertiesEXT()
+	public static VkPhysicalDeviceRobustness2PropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceRobustness2PropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceRobustness2PropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceRobustness2PropertiesEXT;
+		return instance;
 	}
 }
 
@@ -8268,10 +8712,11 @@ public partial struct VkSamplerCustomBorderColorCreateInfoEXT
 	public unsafe void* pNext;
 	public VkClearColorValue customBorderColor;
 	public VkFormat format;
-	public VkSamplerCustomBorderColorCreateInfoEXT()
+	public static VkSamplerCustomBorderColorCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SamplerCustomBorderColorCreateInfoEXT;
+		Unsafe.SkipInit(out VkSamplerCustomBorderColorCreateInfoEXT instance);
+		instance.sType = VkStructureType.SamplerCustomBorderColorCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -8281,10 +8726,11 @@ public partial struct VkPhysicalDeviceCustomBorderColorPropertiesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint maxCustomBorderColorSamplers;
-	public VkPhysicalDeviceCustomBorderColorPropertiesEXT()
+	public static VkPhysicalDeviceCustomBorderColorPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceCustomBorderColorPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceCustomBorderColorPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceCustomBorderColorPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -8295,10 +8741,11 @@ public partial struct VkPhysicalDeviceCustomBorderColorFeaturesEXT
 	public unsafe void* pNext;
 	public VkBool32 customBorderColors;
 	public VkBool32 customBorderColorWithoutFormat;
-	public VkPhysicalDeviceCustomBorderColorFeaturesEXT()
+	public static VkPhysicalDeviceCustomBorderColorFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceCustomBorderColorFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceCustomBorderColorFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceCustomBorderColorFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8308,10 +8755,11 @@ public partial struct VkPhysicalDeviceDiagnosticsConfigFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 diagnosticsConfig;
-	public VkPhysicalDeviceDiagnosticsConfigFeaturesNV()
+	public static VkPhysicalDeviceDiagnosticsConfigFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDiagnosticsConfigFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceDiagnosticsConfigFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceDiagnosticsConfigFeaturesNV;
+		return instance;
 	}
 }
 
@@ -8321,10 +8769,11 @@ public partial struct VkDeviceDiagnosticsConfigCreateInfoNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDeviceDiagnosticsConfigFlagsNV flags;
-	public VkDeviceDiagnosticsConfigCreateInfoNV()
+	public static VkDeviceDiagnosticsConfigCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DeviceDiagnosticsConfigCreateInfoNV;
+		Unsafe.SkipInit(out VkDeviceDiagnosticsConfigCreateInfoNV instance);
+		instance.sType = VkStructureType.DeviceDiagnosticsConfigCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -8334,10 +8783,11 @@ public partial struct VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 graphicsPipelineLibrary;
-	public VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT()
+	public static VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8348,10 +8798,11 @@ public partial struct VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT
 	public unsafe void* pNext;
 	public VkBool32 graphicsPipelineLibraryFastLinking;
 	public VkBool32 graphicsPipelineLibraryIndependentInterpolationDecoration;
-	public VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT()
+	public static VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -8361,10 +8812,11 @@ public partial struct VkGraphicsPipelineLibraryCreateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkGraphicsPipelineLibraryFlagsEXT flags;
-	public VkGraphicsPipelineLibraryCreateInfoEXT()
+	public static VkGraphicsPipelineLibraryCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.GraphicsPipelineLibraryCreateInfoEXT;
+		Unsafe.SkipInit(out VkGraphicsPipelineLibraryCreateInfoEXT instance);
+		instance.sType = VkStructureType.GraphicsPipelineLibraryCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -8376,10 +8828,11 @@ public partial struct VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV
 	public VkBool32 fragmentShadingRateEnums;
 	public VkBool32 supersampleFragmentShadingRates;
 	public VkBool32 noInvocationFragmentShadingRates;
-	public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV()
+	public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentShadingRateEnumsFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentShadingRateEnumsFeaturesNV;
+		return instance;
 	}
 }
 
@@ -8389,10 +8842,11 @@ public partial struct VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSampleCountFlags maxFragmentShadingRateInvocationCount;
-	public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV()
+	public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentShadingRateEnumsPropertiesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentShadingRateEnumsPropertiesNV;
+		return instance;
 	}
 }
 
@@ -8405,10 +8859,11 @@ public partial struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV
 	public VkFragmentShadingRateNV shadingRate;
 	public VkFragmentShadingRateCombinerOpKHR combinerOps_0;
 	public VkFragmentShadingRateCombinerOpKHR combinerOps_1;
-	public VkPipelineFragmentShadingRateEnumStateCreateInfoNV()
+	public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineFragmentShadingRateEnumStateCreateInfoNV;
+		Unsafe.SkipInit(out VkPipelineFragmentShadingRateEnumStateCreateInfoNV instance);
+		instance.sType = VkStructureType.PipelineFragmentShadingRateEnumStateCreateInfoNV;
+		return instance;
 	}
 }
 
@@ -8427,10 +8882,11 @@ public partial struct VkAccelerationStructureGeometryMotionTrianglesDataNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDeviceOrHostAddressConstKHR vertexData;
-	public VkAccelerationStructureGeometryMotionTrianglesDataNV()
+	public static VkAccelerationStructureGeometryMotionTrianglesDataNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureGeometryMotionTrianglesDataNV;
+		Unsafe.SkipInit(out VkAccelerationStructureGeometryMotionTrianglesDataNV instance);
+		instance.sType = VkStructureType.AccelerationStructureGeometryMotionTrianglesDataNV;
+		return instance;
 	}
 }
 
@@ -8441,10 +8897,11 @@ public partial struct VkAccelerationStructureMotionInfoNV
 	public unsafe void* pNext;
 	public uint maxInstances;
 	public VkAccelerationStructureMotionInfoFlagsNV flags;
-	public VkAccelerationStructureMotionInfoNV()
+	public static VkAccelerationStructureMotionInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureMotionInfoNV;
+		Unsafe.SkipInit(out VkAccelerationStructureMotionInfoNV instance);
+		instance.sType = VkStructureType.AccelerationStructureMotionInfoNV;
+		return instance;
 	}
 }
 
@@ -8495,10 +8952,11 @@ public partial struct VkPhysicalDeviceRayTracingMotionBlurFeaturesNV
 	public unsafe void* pNext;
 	public VkBool32 rayTracingMotionBlur;
 	public VkBool32 rayTracingMotionBlurPipelineTraceRaysIndirect;
-	public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV()
+	public static VkPhysicalDeviceRayTracingMotionBlurFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceRayTracingMotionBlurFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceRayTracingMotionBlurFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceRayTracingMotionBlurFeaturesNV;
+		return instance;
 	}
 }
 
@@ -8508,10 +8966,11 @@ public partial struct VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 ycbcr2plane444Formats;
-	public VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT()
+	public static VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8521,10 +8980,11 @@ public partial struct VkPhysicalDeviceFragmentDensityMap2FeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 fragmentDensityMapDeferred;
-	public VkPhysicalDeviceFragmentDensityMap2FeaturesEXT()
+	public static VkPhysicalDeviceFragmentDensityMap2FeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMap2FeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentDensityMap2FeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentDensityMap2FeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8537,10 +8997,11 @@ public partial struct VkPhysicalDeviceFragmentDensityMap2PropertiesEXT
 	public VkBool32 subsampledCoarseReconstructionEarlyAccess;
 	public uint maxSubsampledArrayLayers;
 	public uint maxDescriptorSetSubsampledSamplers;
-	public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT()
+	public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMap2PropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentDensityMap2PropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentDensityMap2PropertiesEXT;
+		return instance;
 	}
 }
 
@@ -8550,10 +9011,11 @@ public partial struct VkCopyCommandTransformInfoQCOM
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSurfaceTransformFlagsKHR transform;
-	public VkCopyCommandTransformInfoQCOM()
+	public static VkCopyCommandTransformInfoQCOM New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CopyCommandTransformInfoQCOM;
+		Unsafe.SkipInit(out VkCopyCommandTransformInfoQCOM instance);
+		instance.sType = VkStructureType.CopyCommandTransformInfoQCOM;
+		return instance;
 	}
 }
 
@@ -8563,10 +9025,11 @@ public partial struct VkPhysicalDeviceImageCompressionControlFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 imageCompressionControl;
-	public VkPhysicalDeviceImageCompressionControlFeaturesEXT()
+	public static VkPhysicalDeviceImageCompressionControlFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceImageCompressionControlFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceImageCompressionControlFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceImageCompressionControlFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8578,10 +9041,11 @@ public partial struct VkImageCompressionControlEXT
 	public VkImageCompressionFlagsEXT flags;
 	public uint compressionControlPlaneCount;
 	public unsafe VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags;
-	public VkImageCompressionControlEXT()
+	public static VkImageCompressionControlEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageCompressionControlEXT;
+		Unsafe.SkipInit(out VkImageCompressionControlEXT instance);
+		instance.sType = VkStructureType.ImageCompressionControlEXT;
+		return instance;
 	}
 }
 
@@ -8591,10 +9055,11 @@ public partial struct VkSubresourceLayout2EXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkSubresourceLayout subresourceLayout;
-	public VkSubresourceLayout2EXT()
+	public static VkSubresourceLayout2EXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SubresourceLayout2EXT;
+		Unsafe.SkipInit(out VkSubresourceLayout2EXT instance);
+		instance.sType = VkStructureType.SubresourceLayout2EXT;
+		return instance;
 	}
 }
 
@@ -8604,10 +9069,11 @@ public partial struct VkImageSubresource2EXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImageSubresource imageSubresource;
-	public VkImageSubresource2EXT()
+	public static VkImageSubresource2EXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageSubresource2EXT;
+		Unsafe.SkipInit(out VkImageSubresource2EXT instance);
+		instance.sType = VkStructureType.ImageSubresource2EXT;
+		return instance;
 	}
 }
 
@@ -8618,10 +9084,11 @@ public partial struct VkImageCompressionPropertiesEXT
 	public unsafe void* pNext;
 	public VkImageCompressionFlagsEXT imageCompressionFlags;
 	public VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags;
-	public VkImageCompressionPropertiesEXT()
+	public static VkImageCompressionPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageCompressionPropertiesEXT;
+		Unsafe.SkipInit(out VkImageCompressionPropertiesEXT instance);
+		instance.sType = VkStructureType.ImageCompressionPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -8632,10 +9099,11 @@ public partial struct VkPhysicalDevice4444FormatsFeaturesEXT
 	public unsafe void* pNext;
 	public VkBool32 formatA4R4G4B4;
 	public VkBool32 formatA4B4G4R4;
-	public VkPhysicalDevice4444FormatsFeaturesEXT()
+	public static VkPhysicalDevice4444FormatsFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevice4444FormatsFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDevice4444FormatsFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDevice4444FormatsFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8647,10 +9115,11 @@ public partial struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeatures
 	public VkBool32 rasterizationOrderColorAttachmentAccess;
 	public VkBool32 rasterizationOrderDepthAttachmentAccess;
 	public VkBool32 rasterizationOrderStencilAttachmentAccess;
-	public VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM()
+	public static VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM;
+		Unsafe.SkipInit(out VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM instance);
+		instance.sType = VkStructureType.PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM;
+		return instance;
 	}
 }
 
@@ -8660,10 +9129,11 @@ public partial struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 formatRgba10x6WithoutYCbCrSampler;
-	public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT()
+	public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceRGBA10X6FormatsFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceRGBA10X6FormatsFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8673,10 +9143,11 @@ public partial struct VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 mutableDescriptorType;
-	public VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE()
+	public static VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMutableDescriptorTypeFeaturesVALVE;
+		Unsafe.SkipInit(out VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE instance);
+		instance.sType = VkStructureType.PhysicalDeviceMutableDescriptorTypeFeaturesVALVE;
+		return instance;
 	}
 }
 
@@ -8694,10 +9165,11 @@ public partial struct VkMutableDescriptorTypeCreateInfoVALVE
 	public unsafe void* pNext;
 	public uint mutableDescriptorTypeListCount;
 	public unsafe VkMutableDescriptorTypeListVALVE* pMutableDescriptorTypeLists;
-	public VkMutableDescriptorTypeCreateInfoVALVE()
+	public static VkMutableDescriptorTypeCreateInfoVALVE New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MutableDescriptorTypeCreateInfoVALVE;
+		Unsafe.SkipInit(out VkMutableDescriptorTypeCreateInfoVALVE instance);
+		instance.sType = VkStructureType.MutableDescriptorTypeCreateInfoVALVE;
+		return instance;
 	}
 }
 
@@ -8707,10 +9179,11 @@ public partial struct VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 vertexInputDynamicState;
-	public VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT()
+	public static VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVertexInputDynamicStateFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceVertexInputDynamicStateFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8723,10 +9196,11 @@ public partial struct VkVertexInputBindingDescription2EXT
 	public uint stride;
 	public VkVertexInputRate inputRate;
 	public uint divisor;
-	public VkVertexInputBindingDescription2EXT()
+	public static VkVertexInputBindingDescription2EXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VertexInputBindingDescription2EXT;
+		Unsafe.SkipInit(out VkVertexInputBindingDescription2EXT instance);
+		instance.sType = VkStructureType.VertexInputBindingDescription2EXT;
+		return instance;
 	}
 }
 
@@ -8739,10 +9213,11 @@ public partial struct VkVertexInputAttributeDescription2EXT
 	public uint binding;
 	public VkFormat format;
 	public uint offset;
-	public VkVertexInputAttributeDescription2EXT()
+	public static VkVertexInputAttributeDescription2EXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VertexInputAttributeDescription2EXT;
+		Unsafe.SkipInit(out VkVertexInputAttributeDescription2EXT instance);
+		instance.sType = VkStructureType.VertexInputAttributeDescription2EXT;
+		return instance;
 	}
 }
 
@@ -8757,10 +9232,11 @@ public partial struct VkPhysicalDeviceDrmPropertiesEXT
 	public long primaryMinor;
 	public long renderMajor;
 	public long renderMinor;
-	public VkPhysicalDeviceDrmPropertiesEXT()
+	public static VkPhysicalDeviceDrmPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDrmPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceDrmPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceDrmPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -8770,10 +9246,11 @@ public partial struct VkPhysicalDeviceDepthClipControlFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 depthClipControl;
-	public VkPhysicalDeviceDepthClipControlFeaturesEXT()
+	public static VkPhysicalDeviceDepthClipControlFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDepthClipControlFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceDepthClipControlFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceDepthClipControlFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8783,10 +9260,11 @@ public partial struct VkPipelineViewportDepthClipControlCreateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 negativeOneToOne;
-	public VkPipelineViewportDepthClipControlCreateInfoEXT()
+	public static VkPipelineViewportDepthClipControlCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineViewportDepthClipControlCreateInfoEXT;
+		Unsafe.SkipInit(out VkPipelineViewportDepthClipControlCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineViewportDepthClipControlCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -8797,10 +9275,11 @@ public partial struct VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT
 	public unsafe void* pNext;
 	public VkBool32 primitiveTopologyListRestart;
 	public VkBool32 primitiveTopologyPatchListRestart;
-	public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT()
+	public static VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8811,10 +9290,11 @@ public partial struct VkSubpassShadingPipelineCreateInfoHUAWEI
 	public unsafe void* pNext;
 	public VkRenderPass renderPass;
 	public uint subpass;
-	public VkSubpassShadingPipelineCreateInfoHUAWEI()
+	public static VkSubpassShadingPipelineCreateInfoHUAWEI New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SubpassShadingPipelineCreateInfoHUAWEI;
+		Unsafe.SkipInit(out VkSubpassShadingPipelineCreateInfoHUAWEI instance);
+		instance.sType = VkStructureType.SubpassShadingPipelineCreateInfoHUAWEI;
+		return instance;
 	}
 }
 
@@ -8824,10 +9304,11 @@ public partial struct VkPhysicalDeviceSubpassShadingFeaturesHUAWEI
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 subpassShading;
-	public VkPhysicalDeviceSubpassShadingFeaturesHUAWEI()
+	public static VkPhysicalDeviceSubpassShadingFeaturesHUAWEI New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSubpassShadingFeaturesHUAWEI;
+		Unsafe.SkipInit(out VkPhysicalDeviceSubpassShadingFeaturesHUAWEI instance);
+		instance.sType = VkStructureType.PhysicalDeviceSubpassShadingFeaturesHUAWEI;
+		return instance;
 	}
 }
 
@@ -8837,10 +9318,11 @@ public partial struct VkPhysicalDeviceSubpassShadingPropertiesHUAWEI
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint maxSubpassShadingWorkgroupSizeAspectRatio;
-	public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI()
+	public static VkPhysicalDeviceSubpassShadingPropertiesHUAWEI New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSubpassShadingPropertiesHUAWEI;
+		Unsafe.SkipInit(out VkPhysicalDeviceSubpassShadingPropertiesHUAWEI instance);
+		instance.sType = VkStructureType.PhysicalDeviceSubpassShadingPropertiesHUAWEI;
+		return instance;
 	}
 }
 
@@ -8850,10 +9332,11 @@ public partial struct VkPhysicalDeviceInvocationMaskFeaturesHUAWEI
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 invocationMask;
-	public VkPhysicalDeviceInvocationMaskFeaturesHUAWEI()
+	public static VkPhysicalDeviceInvocationMaskFeaturesHUAWEI New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceInvocationMaskFeaturesHUAWEI;
+		Unsafe.SkipInit(out VkPhysicalDeviceInvocationMaskFeaturesHUAWEI instance);
+		instance.sType = VkStructureType.PhysicalDeviceInvocationMaskFeaturesHUAWEI;
+		return instance;
 	}
 }
 
@@ -8864,10 +9347,11 @@ public partial struct VkMemoryGetRemoteAddressInfoNV
 	public unsafe void* pNext;
 	public VkDeviceMemory memory;
 	public VkExternalMemoryHandleTypeFlags handleType;
-	public VkMemoryGetRemoteAddressInfoNV()
+	public static VkMemoryGetRemoteAddressInfoNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryGetRemoteAddressInfoNV;
+		Unsafe.SkipInit(out VkMemoryGetRemoteAddressInfoNV instance);
+		instance.sType = VkStructureType.MemoryGetRemoteAddressInfoNV;
+		return instance;
 	}
 }
 
@@ -8877,10 +9361,11 @@ public partial struct VkPhysicalDeviceExternalMemoryRDMAFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 externalMemoryRDMA;
-	public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV()
+	public static VkPhysicalDeviceExternalMemoryRDMAFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceExternalMemoryRDMAFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceExternalMemoryRDMAFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceExternalMemoryRDMAFeaturesNV;
+		return instance;
 	}
 }
 
@@ -8890,10 +9375,11 @@ public partial struct VkPipelinePropertiesIdentifierEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe fixed byte pipelineIdentifier[16];
-	public VkPipelinePropertiesIdentifierEXT()
+	public static VkPipelinePropertiesIdentifierEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelinePropertiesIdentifierEXT;
+		Unsafe.SkipInit(out VkPipelinePropertiesIdentifierEXT instance);
+		instance.sType = VkStructureType.PipelinePropertiesIdentifierEXT;
+		return instance;
 	}
 }
 
@@ -8903,10 +9389,11 @@ public partial struct VkPhysicalDevicePipelinePropertiesFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 pipelinePropertiesIdentifier;
-	public VkPhysicalDevicePipelinePropertiesFeaturesEXT()
+	public static VkPhysicalDevicePipelinePropertiesFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePipelinePropertiesFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDevicePipelinePropertiesFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDevicePipelinePropertiesFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8918,10 +9405,11 @@ public partial struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT
 	public VkBool32 extendedDynamicState2;
 	public VkBool32 extendedDynamicState2LogicOp;
 	public VkBool32 extendedDynamicState2PatchControlPoints;
-	public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT()
+	public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceExtendedDynamicState2FeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceExtendedDynamicState2FeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceExtendedDynamicState2FeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8931,10 +9419,11 @@ public partial struct VkPhysicalDeviceColorWriteEnableFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 colorWriteEnable;
-	public VkPhysicalDeviceColorWriteEnableFeaturesEXT()
+	public static VkPhysicalDeviceColorWriteEnableFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceColorWriteEnableFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceColorWriteEnableFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceColorWriteEnableFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8945,10 +9434,11 @@ public partial struct VkPipelineColorWriteCreateInfoEXT
 	public unsafe void* pNext;
 	public uint attachmentCount;
 	public unsafe VkBool32* pColorWriteEnables;
-	public VkPipelineColorWriteCreateInfoEXT()
+	public static VkPipelineColorWriteCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PipelineColorWriteCreateInfoEXT;
+		Unsafe.SkipInit(out VkPipelineColorWriteCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineColorWriteCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -8960,10 +9450,11 @@ public partial struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT
 	public VkBool32 primitivesGeneratedQuery;
 	public VkBool32 primitivesGeneratedQueryWithRasterizerDiscard;
 	public VkBool32 primitivesGeneratedQueryWithNonZeroStreams;
-	public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT()
+	public static VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8973,10 +9464,11 @@ public partial struct VkPhysicalDeviceImageViewMinLodFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 minLod;
-	public VkPhysicalDeviceImageViewMinLodFeaturesEXT()
+	public static VkPhysicalDeviceImageViewMinLodFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceImageViewMinLodFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceImageViewMinLodFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceImageViewMinLodFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -8986,10 +9478,11 @@ public partial struct VkImageViewMinLodCreateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public float minLod;
-	public VkImageViewMinLodCreateInfoEXT()
+	public static VkImageViewMinLodCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImageViewMinLodCreateInfoEXT;
+		Unsafe.SkipInit(out VkImageViewMinLodCreateInfoEXT instance);
+		instance.sType = VkStructureType.ImageViewMinLodCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -8999,10 +9492,11 @@ public partial struct VkPhysicalDeviceMultiDrawFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 multiDraw;
-	public VkPhysicalDeviceMultiDrawFeaturesEXT()
+	public static VkPhysicalDeviceMultiDrawFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMultiDrawFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceMultiDrawFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceMultiDrawFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -9012,10 +9506,11 @@ public partial struct VkPhysicalDeviceMultiDrawPropertiesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint maxMultiDrawCount;
-	public VkPhysicalDeviceMultiDrawPropertiesEXT()
+	public static VkPhysicalDeviceMultiDrawPropertiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceMultiDrawPropertiesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceMultiDrawPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceMultiDrawPropertiesEXT;
+		return instance;
 	}
 }
 
@@ -9041,10 +9536,11 @@ public partial struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT
 	public unsafe void* pNext;
 	public VkBool32 image2DViewOf3D;
 	public VkBool32 sampler2DViewOf3D;
-	public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT()
+	public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceImage2DViewOf3DFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceImage2DViewOf3DFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceImage2DViewOf3DFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -9055,10 +9551,11 @@ public partial struct VkPhysicalDeviceBorderColorSwizzleFeaturesEXT
 	public unsafe void* pNext;
 	public VkBool32 borderColorSwizzle;
 	public VkBool32 borderColorSwizzleFromImage;
-	public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT()
+	public static VkPhysicalDeviceBorderColorSwizzleFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceBorderColorSwizzleFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceBorderColorSwizzleFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceBorderColorSwizzleFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -9069,10 +9566,11 @@ public partial struct VkSamplerBorderColorComponentMappingCreateInfoEXT
 	public unsafe void* pNext;
 	public VkComponentMapping components;
 	public VkBool32 srgb;
-	public VkSamplerBorderColorComponentMappingCreateInfoEXT()
+	public static VkSamplerBorderColorComponentMappingCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SamplerBorderColorComponentMappingCreateInfoEXT;
+		Unsafe.SkipInit(out VkSamplerBorderColorComponentMappingCreateInfoEXT instance);
+		instance.sType = VkStructureType.SamplerBorderColorComponentMappingCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -9082,10 +9580,11 @@ public partial struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 pageableDeviceLocalMemory;
-	public VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT()
+	public static VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -9095,10 +9594,11 @@ public partial struct VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 descriptorSetHostMapping;
-	public VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE()
+	public static VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE;
+		Unsafe.SkipInit(out VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE instance);
+		instance.sType = VkStructureType.PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE;
+		return instance;
 	}
 }
 
@@ -9109,10 +9609,11 @@ public partial struct VkDescriptorSetBindingReferenceVALVE
 	public unsafe void* pNext;
 	public VkDescriptorSetLayout descriptorSetLayout;
 	public uint binding;
-	public VkDescriptorSetBindingReferenceVALVE()
+	public static VkDescriptorSetBindingReferenceVALVE New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DescriptorSetBindingReferenceVALVE;
+		Unsafe.SkipInit(out VkDescriptorSetBindingReferenceVALVE instance);
+		instance.sType = VkStructureType.DescriptorSetBindingReferenceVALVE;
+		return instance;
 	}
 }
 
@@ -9123,10 +9624,11 @@ public partial struct VkDescriptorSetLayoutHostMappingInfoVALVE
 	public unsafe void* pNext;
 	public nuint descriptorOffset;
 	public uint descriptorSize;
-	public VkDescriptorSetLayoutHostMappingInfoVALVE()
+	public static VkDescriptorSetLayoutHostMappingInfoVALVE New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.DescriptorSetLayoutHostMappingInfoVALVE;
+		Unsafe.SkipInit(out VkDescriptorSetLayoutHostMappingInfoVALVE instance);
+		instance.sType = VkStructureType.DescriptorSetLayoutHostMappingInfoVALVE;
+		return instance;
 	}
 }
 
@@ -9136,10 +9638,11 @@ public partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 fragmentDensityMapOffset;
-	public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM()
+	public static VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM;
+		return instance;
 	}
 }
 
@@ -9149,10 +9652,11 @@ public partial struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExtent2D fragmentDensityOffsetGranularity;
-	public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM()
+	public static VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM;
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM;
+		return instance;
 	}
 }
 
@@ -9163,10 +9667,11 @@ public partial struct VkSubpassFragmentDensityMapOffsetEndInfoQCOM
 	public unsafe void* pNext;
 	public uint fragmentDensityOffsetCount;
 	public unsafe VkOffset2D* pFragmentDensityOffsets;
-	public VkSubpassFragmentDensityMapOffsetEndInfoQCOM()
+	public static VkSubpassFragmentDensityMapOffsetEndInfoQCOM New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.SubpassFragmentDensityMapOffsetEndInfoQCOM;
+		Unsafe.SkipInit(out VkSubpassFragmentDensityMapOffsetEndInfoQCOM instance);
+		instance.sType = VkStructureType.SubpassFragmentDensityMapOffsetEndInfoQCOM;
+		return instance;
 	}
 }
 
@@ -9176,10 +9681,11 @@ public partial struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 linearColorAttachment;
-	public VkPhysicalDeviceLinearColorAttachmentFeaturesNV()
+	public static VkPhysicalDeviceLinearColorAttachmentFeaturesNV New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceLinearColorAttachmentFeaturesNV;
+		Unsafe.SkipInit(out VkPhysicalDeviceLinearColorAttachmentFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceLinearColorAttachmentFeaturesNV;
+		return instance;
 	}
 }
 
@@ -9189,10 +9695,11 @@ public partial struct VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEX
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 imageCompressionControlSwapchain;
-	public VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT()
+	public static VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -9202,10 +9709,11 @@ public partial struct VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 subpassMergeFeedback;
-	public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT()
+	public static VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceSubpassMergeFeedbackFeaturesEXT;
+		Unsafe.SkipInit(out VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceSubpassMergeFeedbackFeaturesEXT;
+		return instance;
 	}
 }
 
@@ -9215,10 +9723,11 @@ public partial struct VkRenderPassCreationControlEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 disallowMerging;
-	public VkRenderPassCreationControlEXT()
+	public static VkRenderPassCreationControlEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassCreationControlEXT;
+		Unsafe.SkipInit(out VkRenderPassCreationControlEXT instance);
+		instance.sType = VkStructureType.RenderPassCreationControlEXT;
+		return instance;
 	}
 }
 
@@ -9228,10 +9737,11 @@ public partial struct VkRenderPassCreationFeedbackInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint postMergeSubpassCount;
-	public VkRenderPassCreationFeedbackInfoEXT()
+	public static VkRenderPassCreationFeedbackInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassCreationFeedbackInfoEXT;
+		Unsafe.SkipInit(out VkRenderPassCreationFeedbackInfoEXT instance);
+		instance.sType = VkStructureType.RenderPassCreationFeedbackInfoEXT;
+		return instance;
 	}
 }
 
@@ -9243,10 +9753,11 @@ public partial struct VkRenderPassSubpassFeedbackInfoEXT
 	public VkSubpassMergeStatusEXT subpassMergeStatus;
 	public unsafe fixed byte description[256];
 	public uint postMergeIndex;
-	public VkRenderPassSubpassFeedbackInfoEXT()
+	public static VkRenderPassSubpassFeedbackInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RenderPassSubpassFeedbackInfoEXT;
+		Unsafe.SkipInit(out VkRenderPassSubpassFeedbackInfoEXT instance);
+		instance.sType = VkStructureType.RenderPassSubpassFeedbackInfoEXT;
+		return instance;
 	}
 }
 
@@ -9280,10 +9791,11 @@ public partial struct VkAccelerationStructureGeometryTrianglesDataKHR
 	public VkIndexType indexType;
 	public VkDeviceOrHostAddressConstKHR indexData;
 	public VkDeviceOrHostAddressConstKHR transformData;
-	public VkAccelerationStructureGeometryTrianglesDataKHR()
+	public static VkAccelerationStructureGeometryTrianglesDataKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureGeometryTrianglesDataKHR;
+		Unsafe.SkipInit(out VkAccelerationStructureGeometryTrianglesDataKHR instance);
+		instance.sType = VkStructureType.AccelerationStructureGeometryTrianglesDataKHR;
+		return instance;
 	}
 }
 
@@ -9294,10 +9806,11 @@ public partial struct VkAccelerationStructureGeometryAabbsDataKHR
 	public unsafe void* pNext;
 	public VkDeviceOrHostAddressConstKHR data;
 	public ulong stride;
-	public VkAccelerationStructureGeometryAabbsDataKHR()
+	public static VkAccelerationStructureGeometryAabbsDataKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureGeometryAabbsDataKHR;
+		Unsafe.SkipInit(out VkAccelerationStructureGeometryAabbsDataKHR instance);
+		instance.sType = VkStructureType.AccelerationStructureGeometryAabbsDataKHR;
+		return instance;
 	}
 }
 
@@ -9308,10 +9821,11 @@ public partial struct VkAccelerationStructureGeometryInstancesDataKHR
 	public unsafe void* pNext;
 	public VkBool32 arrayOfPointers;
 	public VkDeviceOrHostAddressConstKHR data;
-	public VkAccelerationStructureGeometryInstancesDataKHR()
+	public static VkAccelerationStructureGeometryInstancesDataKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureGeometryInstancesDataKHR;
+		Unsafe.SkipInit(out VkAccelerationStructureGeometryInstancesDataKHR instance);
+		instance.sType = VkStructureType.AccelerationStructureGeometryInstancesDataKHR;
+		return instance;
 	}
 }
 
@@ -9334,10 +9848,11 @@ public partial struct VkAccelerationStructureGeometryKHR
 	public VkGeometryTypeKHR geometryType;
 	public VkAccelerationStructureGeometryDataKHR geometry;
 	public VkGeometryFlagsKHR flags;
-	public VkAccelerationStructureGeometryKHR()
+	public static VkAccelerationStructureGeometryKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureGeometryKHR;
+		Unsafe.SkipInit(out VkAccelerationStructureGeometryKHR instance);
+		instance.sType = VkStructureType.AccelerationStructureGeometryKHR;
+		return instance;
 	}
 }
 
@@ -9355,10 +9870,11 @@ public partial struct VkAccelerationStructureBuildGeometryInfoKHR
 	public unsafe VkAccelerationStructureGeometryKHR* pGeometries;
 	public unsafe VkAccelerationStructureGeometryKHR** ppGeometries;
 	public VkDeviceOrHostAddressKHR scratchData;
-	public VkAccelerationStructureBuildGeometryInfoKHR()
+	public static VkAccelerationStructureBuildGeometryInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureBuildGeometryInfoKHR;
+		Unsafe.SkipInit(out VkAccelerationStructureBuildGeometryInfoKHR instance);
+		instance.sType = VkStructureType.AccelerationStructureBuildGeometryInfoKHR;
+		return instance;
 	}
 }
 
@@ -9373,10 +9889,11 @@ public partial struct VkAccelerationStructureCreateInfoKHR
 	public ulong size;
 	public VkAccelerationStructureTypeKHR type;
 	public ulong deviceAddress;
-	public VkAccelerationStructureCreateInfoKHR()
+	public static VkAccelerationStructureCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureCreateInfoKHR;
+		Unsafe.SkipInit(out VkAccelerationStructureCreateInfoKHR instance);
+		instance.sType = VkStructureType.AccelerationStructureCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -9387,10 +9904,11 @@ public partial struct VkWriteDescriptorSetAccelerationStructureKHR
 	public unsafe void* pNext;
 	public uint accelerationStructureCount;
 	public unsafe VkAccelerationStructureKHR* pAccelerationStructures;
-	public VkWriteDescriptorSetAccelerationStructureKHR()
+	public static VkWriteDescriptorSetAccelerationStructureKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.WriteDescriptorSetAccelerationStructureKHR;
+		Unsafe.SkipInit(out VkWriteDescriptorSetAccelerationStructureKHR instance);
+		instance.sType = VkStructureType.WriteDescriptorSetAccelerationStructureKHR;
+		return instance;
 	}
 }
 
@@ -9404,10 +9922,11 @@ public partial struct VkPhysicalDeviceAccelerationStructureFeaturesKHR
 	public VkBool32 accelerationStructureIndirectBuild;
 	public VkBool32 accelerationStructureHostCommands;
 	public VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind;
-	public VkPhysicalDeviceAccelerationStructureFeaturesKHR()
+	public static VkPhysicalDeviceAccelerationStructureFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceAccelerationStructureFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceAccelerationStructureFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceAccelerationStructureFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -9424,10 +9943,11 @@ public partial struct VkPhysicalDeviceAccelerationStructurePropertiesKHR
 	public uint maxDescriptorSetAccelerationStructures;
 	public uint maxDescriptorSetUpdateAfterBindAccelerationStructures;
 	public uint minAccelerationStructureScratchOffsetAlignment;
-	public VkPhysicalDeviceAccelerationStructurePropertiesKHR()
+	public static VkPhysicalDeviceAccelerationStructurePropertiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceAccelerationStructurePropertiesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceAccelerationStructurePropertiesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceAccelerationStructurePropertiesKHR;
+		return instance;
 	}
 }
 
@@ -9437,10 +9957,11 @@ public partial struct VkAccelerationStructureDeviceAddressInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkAccelerationStructureKHR accelerationStructure;
-	public VkAccelerationStructureDeviceAddressInfoKHR()
+	public static VkAccelerationStructureDeviceAddressInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureDeviceAddressInfoKHR;
+		Unsafe.SkipInit(out VkAccelerationStructureDeviceAddressInfoKHR instance);
+		instance.sType = VkStructureType.AccelerationStructureDeviceAddressInfoKHR;
+		return instance;
 	}
 }
 
@@ -9450,10 +9971,11 @@ public partial struct VkAccelerationStructureVersionInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe byte* pVersionData;
-	public VkAccelerationStructureVersionInfoKHR()
+	public static VkAccelerationStructureVersionInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureVersionInfoKHR;
+		Unsafe.SkipInit(out VkAccelerationStructureVersionInfoKHR instance);
+		instance.sType = VkStructureType.AccelerationStructureVersionInfoKHR;
+		return instance;
 	}
 }
 
@@ -9465,10 +9987,11 @@ public partial struct VkCopyAccelerationStructureToMemoryInfoKHR
 	public VkAccelerationStructureKHR src;
 	public VkDeviceOrHostAddressKHR dst;
 	public VkCopyAccelerationStructureModeKHR mode;
-	public VkCopyAccelerationStructureToMemoryInfoKHR()
+	public static VkCopyAccelerationStructureToMemoryInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CopyAccelerationStructureToMemoryInfoKHR;
+		Unsafe.SkipInit(out VkCopyAccelerationStructureToMemoryInfoKHR instance);
+		instance.sType = VkStructureType.CopyAccelerationStructureToMemoryInfoKHR;
+		return instance;
 	}
 }
 
@@ -9480,10 +10003,11 @@ public partial struct VkCopyMemoryToAccelerationStructureInfoKHR
 	public VkDeviceOrHostAddressConstKHR src;
 	public VkAccelerationStructureKHR dst;
 	public VkCopyAccelerationStructureModeKHR mode;
-	public VkCopyMemoryToAccelerationStructureInfoKHR()
+	public static VkCopyMemoryToAccelerationStructureInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CopyMemoryToAccelerationStructureInfoKHR;
+		Unsafe.SkipInit(out VkCopyMemoryToAccelerationStructureInfoKHR instance);
+		instance.sType = VkStructureType.CopyMemoryToAccelerationStructureInfoKHR;
+		return instance;
 	}
 }
 
@@ -9495,10 +10019,11 @@ public partial struct VkCopyAccelerationStructureInfoKHR
 	public VkAccelerationStructureKHR src;
 	public VkAccelerationStructureKHR dst;
 	public VkCopyAccelerationStructureModeKHR mode;
-	public VkCopyAccelerationStructureInfoKHR()
+	public static VkCopyAccelerationStructureInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.CopyAccelerationStructureInfoKHR;
+		Unsafe.SkipInit(out VkCopyAccelerationStructureInfoKHR instance);
+		instance.sType = VkStructureType.CopyAccelerationStructureInfoKHR;
+		return instance;
 	}
 }
 
@@ -9510,10 +10035,11 @@ public partial struct VkAccelerationStructureBuildSizesInfoKHR
 	public ulong accelerationStructureSize;
 	public ulong updateScratchSize;
 	public ulong buildScratchSize;
-	public VkAccelerationStructureBuildSizesInfoKHR()
+	public static VkAccelerationStructureBuildSizesInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AccelerationStructureBuildSizesInfoKHR;
+		Unsafe.SkipInit(out VkAccelerationStructureBuildSizesInfoKHR instance);
+		instance.sType = VkStructureType.AccelerationStructureBuildSizesInfoKHR;
+		return instance;
 	}
 }
 
@@ -9528,10 +10054,11 @@ public partial struct VkRayTracingShaderGroupCreateInfoKHR
 	public uint anyHitShader;
 	public uint intersectionShader;
 	public unsafe void* pShaderGroupCaptureReplayHandle;
-	public VkRayTracingShaderGroupCreateInfoKHR()
+	public static VkRayTracingShaderGroupCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RayTracingShaderGroupCreateInfoKHR;
+		Unsafe.SkipInit(out VkRayTracingShaderGroupCreateInfoKHR instance);
+		instance.sType = VkStructureType.RayTracingShaderGroupCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -9542,10 +10069,11 @@ public partial struct VkRayTracingPipelineInterfaceCreateInfoKHR
 	public unsafe void* pNext;
 	public uint maxPipelineRayPayloadSize;
 	public uint maxPipelineRayHitAttributeSize;
-	public VkRayTracingPipelineInterfaceCreateInfoKHR()
+	public static VkRayTracingPipelineInterfaceCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RayTracingPipelineInterfaceCreateInfoKHR;
+		Unsafe.SkipInit(out VkRayTracingPipelineInterfaceCreateInfoKHR instance);
+		instance.sType = VkStructureType.RayTracingPipelineInterfaceCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -9566,10 +10094,11 @@ public partial struct VkRayTracingPipelineCreateInfoKHR
 	public VkPipelineLayout layout;
 	public VkPipeline basePipelineHandle;
 	public int basePipelineIndex;
-	public VkRayTracingPipelineCreateInfoKHR()
+	public static VkRayTracingPipelineCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.RayTracingPipelineCreateInfoKHR;
+		Unsafe.SkipInit(out VkRayTracingPipelineCreateInfoKHR instance);
+		instance.sType = VkStructureType.RayTracingPipelineCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -9583,10 +10112,11 @@ public partial struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR
 	public VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplayMixed;
 	public VkBool32 rayTracingPipelineTraceRaysIndirect;
 	public VkBool32 rayTraversalPrimitiveCulling;
-	public VkPhysicalDeviceRayTracingPipelineFeaturesKHR()
+	public static VkPhysicalDeviceRayTracingPipelineFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceRayTracingPipelineFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceRayTracingPipelineFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceRayTracingPipelineFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -9603,10 +10133,11 @@ public partial struct VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 	public uint maxRayDispatchInvocationCount;
 	public uint shaderGroupHandleAlignment;
 	public uint maxRayHitAttributeSize;
-	public VkPhysicalDeviceRayTracingPipelinePropertiesKHR()
+	public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceRayTracingPipelinePropertiesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceRayTracingPipelinePropertiesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceRayTracingPipelinePropertiesKHR;
+		return instance;
 	}
 }
 
@@ -9632,10 +10163,11 @@ public partial struct VkPhysicalDeviceRayQueryFeaturesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 rayQuery;
-	public VkPhysicalDeviceRayQueryFeaturesKHR()
+	public static VkPhysicalDeviceRayQueryFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceRayQueryFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceRayQueryFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceRayQueryFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -9646,10 +10178,11 @@ public partial struct VkAndroidSurfaceCreateInfoKHR
 	public unsafe void* pNext;
 	public VkAndroidSurfaceCreateFlagsKHR flags;
 	public IntPtr window;
-	public VkAndroidSurfaceCreateInfoKHR()
+	public static VkAndroidSurfaceCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AndroidSurfaceCreateInfoKHR;
+		Unsafe.SkipInit(out VkAndroidSurfaceCreateInfoKHR instance);
+		instance.sType = VkStructureType.AndroidSurfaceCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -9659,10 +10192,11 @@ public partial struct VkAndroidHardwareBufferUsageANDROID
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public ulong androidHardwareBufferUsage;
-	public VkAndroidHardwareBufferUsageANDROID()
+	public static VkAndroidHardwareBufferUsageANDROID New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AndroidHardwareBufferUsageAndroid;
+		Unsafe.SkipInit(out VkAndroidHardwareBufferUsageANDROID instance);
+		instance.sType = VkStructureType.AndroidHardwareBufferUsageAndroid;
+		return instance;
 	}
 }
 
@@ -9673,10 +10207,11 @@ public partial struct VkAndroidHardwareBufferPropertiesANDROID
 	public unsafe void* pNext;
 	public ulong allocationSize;
 	public uint memoryTypeBits;
-	public VkAndroidHardwareBufferPropertiesANDROID()
+	public static VkAndroidHardwareBufferPropertiesANDROID New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AndroidHardwareBufferPropertiesAndroid;
+		Unsafe.SkipInit(out VkAndroidHardwareBufferPropertiesANDROID instance);
+		instance.sType = VkStructureType.AndroidHardwareBufferPropertiesAndroid;
+		return instance;
 	}
 }
 
@@ -9693,10 +10228,11 @@ public partial struct VkAndroidHardwareBufferFormatPropertiesANDROID
 	public VkSamplerYcbcrRange suggestedYcbcrRange;
 	public VkChromaLocation suggestedXChromaOffset;
 	public VkChromaLocation suggestedYChromaOffset;
-	public VkAndroidHardwareBufferFormatPropertiesANDROID()
+	public static VkAndroidHardwareBufferFormatPropertiesANDROID New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AndroidHardwareBufferFormatPropertiesAndroid;
+		Unsafe.SkipInit(out VkAndroidHardwareBufferFormatPropertiesANDROID instance);
+		instance.sType = VkStructureType.AndroidHardwareBufferFormatPropertiesAndroid;
+		return instance;
 	}
 }
 
@@ -9706,10 +10242,11 @@ public partial struct VkImportAndroidHardwareBufferInfoANDROID
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe IntPtr* buffer;
-	public VkImportAndroidHardwareBufferInfoANDROID()
+	public static VkImportAndroidHardwareBufferInfoANDROID New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ImportAndroidHardwareBufferInfoAndroid;
+		Unsafe.SkipInit(out VkImportAndroidHardwareBufferInfoANDROID instance);
+		instance.sType = VkStructureType.ImportAndroidHardwareBufferInfoAndroid;
+		return instance;
 	}
 }
 
@@ -9719,10 +10256,11 @@ public partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDeviceMemory memory;
-	public VkMemoryGetAndroidHardwareBufferInfoANDROID()
+	public static VkMemoryGetAndroidHardwareBufferInfoANDROID New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MemoryGetAndroidHardwareBufferInfoAndroid;
+		Unsafe.SkipInit(out VkMemoryGetAndroidHardwareBufferInfoANDROID instance);
+		instance.sType = VkStructureType.MemoryGetAndroidHardwareBufferInfoAndroid;
+		return instance;
 	}
 }
 
@@ -9732,10 +10270,11 @@ public partial struct VkExternalFormatANDROID
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public ulong externalFormat;
-	public VkExternalFormatANDROID()
+	public static VkExternalFormatANDROID New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ExternalFormatAndroid;
+		Unsafe.SkipInit(out VkExternalFormatANDROID instance);
+		instance.sType = VkStructureType.ExternalFormatAndroid;
+		return instance;
 	}
 }
 
@@ -9752,10 +10291,11 @@ public partial struct VkAndroidHardwareBufferFormatProperties2ANDROID
 	public VkSamplerYcbcrRange suggestedYcbcrRange;
 	public VkChromaLocation suggestedXChromaOffset;
 	public VkChromaLocation suggestedYChromaOffset;
-	public VkAndroidHardwareBufferFormatProperties2ANDROID()
+	public static VkAndroidHardwareBufferFormatProperties2ANDROID New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.AndroidHardwareBufferFormatProperties2Android;
+		Unsafe.SkipInit(out VkAndroidHardwareBufferFormatProperties2ANDROID instance);
+		instance.sType = VkStructureType.AndroidHardwareBufferFormatProperties2Android;
+		return instance;
 	}
 }
 
@@ -9766,10 +10306,11 @@ public partial struct VkIOSSurfaceCreateInfoMVK
 	public unsafe void* pNext;
 	public VkIOSSurfaceCreateFlagsMVK flags;
 	public unsafe void* pView;
-	public VkIOSSurfaceCreateInfoMVK()
+	public static VkIOSSurfaceCreateInfoMVK New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.IOSSurfaceCreateInfoMVK;
+		Unsafe.SkipInit(out VkIOSSurfaceCreateInfoMVK instance);
+		instance.sType = VkStructureType.IOSSurfaceCreateInfoMVK;
+		return instance;
 	}
 }
 
@@ -9780,10 +10321,11 @@ public partial struct VkMacOSSurfaceCreateInfoMVK
 	public unsafe void* pNext;
 	public VkMacOSSurfaceCreateFlagsMVK flags;
 	public unsafe void* pView;
-	public VkMacOSSurfaceCreateInfoMVK()
+	public static VkMacOSSurfaceCreateInfoMVK New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MacOSSurfaceCreateInfoMVK;
+		Unsafe.SkipInit(out VkMacOSSurfaceCreateInfoMVK instance);
+		instance.sType = VkStructureType.MacOSSurfaceCreateInfoMVK;
+		return instance;
 	}
 }
 
@@ -9794,10 +10336,11 @@ public partial struct VkMetalSurfaceCreateInfoEXT
 	public unsafe void* pNext;
 	public VkMetalSurfaceCreateFlagsEXT flags;
 	public IntPtr pLayer;
-	public VkMetalSurfaceCreateInfoEXT()
+	public static VkMetalSurfaceCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.MetalSurfaceCreateInfoEXT;
+		Unsafe.SkipInit(out VkMetalSurfaceCreateInfoEXT instance);
+		instance.sType = VkStructureType.MetalSurfaceCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -9808,10 +10351,11 @@ public partial struct VkViSurfaceCreateInfoNN
 	public unsafe void* pNext;
 	public VkViSurfaceCreateFlagsNN flags;
 	public unsafe void* window;
-	public VkViSurfaceCreateInfoNN()
+	public static VkViSurfaceCreateInfoNN New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.ViSurfaceCreateInfoNN;
+		Unsafe.SkipInit(out VkViSurfaceCreateInfoNN instance);
+		instance.sType = VkStructureType.ViSurfaceCreateInfoNN;
+		return instance;
 	}
 }
 
@@ -9821,10 +10365,11 @@ public partial struct VkQueueFamilyQueryResultStatusProperties2KHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 supported;
-	public VkQueueFamilyQueryResultStatusProperties2KHR()
+	public static VkQueueFamilyQueryResultStatusProperties2KHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.QueueFamilyQueryResultStatusProperties2KHR;
+		Unsafe.SkipInit(out VkQueueFamilyQueryResultStatusProperties2KHR instance);
+		instance.sType = VkStructureType.QueueFamilyQueryResultStatusProperties2KHR;
+		return instance;
 	}
 }
 
@@ -9834,10 +10379,11 @@ public partial struct VkVideoQueueFamilyProperties2KHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkVideoCodecOperationFlagsKHR videoCodecOperations;
-	public VkVideoQueueFamilyProperties2KHR()
+	public static VkVideoQueueFamilyProperties2KHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoQueueFamilyProperties2KHR;
+		Unsafe.SkipInit(out VkVideoQueueFamilyProperties2KHR instance);
+		instance.sType = VkStructureType.VideoQueueFamilyProperties2KHR;
+		return instance;
 	}
 }
 
@@ -9850,10 +10396,11 @@ public partial struct VkVideoProfileKHR
 	public VkVideoChromaSubsamplingFlagsKHR chromaSubsampling;
 	public VkVideoComponentBitDepthFlagsKHR lumaBitDepth;
 	public VkVideoComponentBitDepthFlagsKHR chromaBitDepth;
-	public VkVideoProfileKHR()
+	public static VkVideoProfileKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoProfileKHR;
+		Unsafe.SkipInit(out VkVideoProfileKHR instance);
+		instance.sType = VkStructureType.VideoProfileKHR;
+		return instance;
 	}
 }
 
@@ -9864,10 +10411,11 @@ public partial struct VkVideoProfilesKHR
 	public unsafe void* pNext;
 	public uint profileCount;
 	public unsafe VkVideoProfileKHR* pProfiles;
-	public VkVideoProfilesKHR()
+	public static VkVideoProfilesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoProfilesKHR;
+		Unsafe.SkipInit(out VkVideoProfilesKHR instance);
+		instance.sType = VkStructureType.VideoProfilesKHR;
+		return instance;
 	}
 }
 
@@ -9885,10 +10433,11 @@ public partial struct VkVideoCapabilitiesKHR
 	public uint maxReferencePicturesSlotsCount;
 	public uint maxReferencePicturesActiveCount;
 	public VkExtensionProperties stdHeaderVersion;
-	public VkVideoCapabilitiesKHR()
+	public static VkVideoCapabilitiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoCapabilitiesKHR;
+		Unsafe.SkipInit(out VkVideoCapabilitiesKHR instance);
+		instance.sType = VkStructureType.VideoCapabilitiesKHR;
+		return instance;
 	}
 }
 
@@ -9899,10 +10448,11 @@ public partial struct VkPhysicalDeviceVideoFormatInfoKHR
 	public unsafe void* pNext;
 	public VkImageUsageFlags imageUsage;
 	public unsafe VkVideoProfilesKHR* pVideoProfiles;
-	public VkPhysicalDeviceVideoFormatInfoKHR()
+	public static VkPhysicalDeviceVideoFormatInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDeviceVideoFormatInfoKHR;
+		Unsafe.SkipInit(out VkPhysicalDeviceVideoFormatInfoKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceVideoFormatInfoKHR;
+		return instance;
 	}
 }
 
@@ -9912,10 +10462,11 @@ public partial struct VkVideoFormatPropertiesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkFormat format;
-	public VkVideoFormatPropertiesKHR()
+	public static VkVideoFormatPropertiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoFormatPropertiesKHR;
+		Unsafe.SkipInit(out VkVideoFormatPropertiesKHR instance);
+		instance.sType = VkStructureType.VideoFormatPropertiesKHR;
+		return instance;
 	}
 }
 
@@ -9928,10 +10479,11 @@ public partial struct VkVideoPictureResourceKHR
 	public VkExtent2D codedExtent;
 	public uint baseArrayLayer;
 	public VkImageView imageViewBinding;
-	public VkVideoPictureResourceKHR()
+	public static VkVideoPictureResourceKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoPictureResourceKHR;
+		Unsafe.SkipInit(out VkVideoPictureResourceKHR instance);
+		instance.sType = VkStructureType.VideoPictureResourceKHR;
+		return instance;
 	}
 }
 
@@ -9942,10 +10494,11 @@ public partial struct VkVideoReferenceSlotKHR
 	public unsafe void* pNext;
 	public sbyte slotIndex;
 	public unsafe VkVideoPictureResourceKHR* pPictureResource;
-	public VkVideoReferenceSlotKHR()
+	public static VkVideoReferenceSlotKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoReferenceSlotKHR;
+		Unsafe.SkipInit(out VkVideoReferenceSlotKHR instance);
+		instance.sType = VkStructureType.VideoReferenceSlotKHR;
+		return instance;
 	}
 }
 
@@ -9956,10 +10509,11 @@ public partial struct VkVideoGetMemoryPropertiesKHR
 	public unsafe void* pNext;
 	public uint memoryBindIndex;
 	public unsafe VkMemoryRequirements2* pMemoryRequirements;
-	public VkVideoGetMemoryPropertiesKHR()
+	public static VkVideoGetMemoryPropertiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoGetMemoryPropertiesKHR;
+		Unsafe.SkipInit(out VkVideoGetMemoryPropertiesKHR instance);
+		instance.sType = VkStructureType.VideoGetMemoryPropertiesKHR;
+		return instance;
 	}
 }
 
@@ -9972,10 +10526,11 @@ public partial struct VkVideoBindMemoryKHR
 	public VkDeviceMemory memory;
 	public ulong memoryOffset;
 	public ulong memorySize;
-	public VkVideoBindMemoryKHR()
+	public static VkVideoBindMemoryKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoBindMemoryKHR;
+		Unsafe.SkipInit(out VkVideoBindMemoryKHR instance);
+		instance.sType = VkStructureType.VideoBindMemoryKHR;
+		return instance;
 	}
 }
 
@@ -9993,10 +10548,11 @@ public partial struct VkVideoSessionCreateInfoKHR
 	public uint maxReferencePicturesSlotsCount;
 	public uint maxReferencePicturesActiveCount;
 	public unsafe VkExtensionProperties* pStdHeaderVersion;
-	public VkVideoSessionCreateInfoKHR()
+	public static VkVideoSessionCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoSessionCreateInfoKHR;
+		Unsafe.SkipInit(out VkVideoSessionCreateInfoKHR instance);
+		instance.sType = VkStructureType.VideoSessionCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -10007,10 +10563,11 @@ public partial struct VkVideoSessionParametersCreateInfoKHR
 	public unsafe void* pNext;
 	public VkVideoSessionParametersKHR videoSessionParametersTemplate;
 	public VkVideoSessionKHR videoSession;
-	public VkVideoSessionParametersCreateInfoKHR()
+	public static VkVideoSessionParametersCreateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoSessionParametersCreateInfoKHR;
+		Unsafe.SkipInit(out VkVideoSessionParametersCreateInfoKHR instance);
+		instance.sType = VkStructureType.VideoSessionParametersCreateInfoKHR;
+		return instance;
 	}
 }
 
@@ -10020,10 +10577,11 @@ public partial struct VkVideoSessionParametersUpdateInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint updateSequenceCount;
-	public VkVideoSessionParametersUpdateInfoKHR()
+	public static VkVideoSessionParametersUpdateInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoSessionParametersUpdateInfoKHR;
+		Unsafe.SkipInit(out VkVideoSessionParametersUpdateInfoKHR instance);
+		instance.sType = VkStructureType.VideoSessionParametersUpdateInfoKHR;
+		return instance;
 	}
 }
 
@@ -10038,10 +10596,11 @@ public partial struct VkVideoBeginCodingInfoKHR
 	public VkVideoSessionParametersKHR videoSessionParameters;
 	public uint referenceSlotCount;
 	public unsafe VkVideoReferenceSlotKHR* pReferenceSlots;
-	public VkVideoBeginCodingInfoKHR()
+	public static VkVideoBeginCodingInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoBeginCodingInfoKHR;
+		Unsafe.SkipInit(out VkVideoBeginCodingInfoKHR instance);
+		instance.sType = VkStructureType.VideoBeginCodingInfoKHR;
+		return instance;
 	}
 }
 
@@ -10051,10 +10610,11 @@ public partial struct VkVideoEndCodingInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkVideoEndCodingFlagsKHR flags;
-	public VkVideoEndCodingInfoKHR()
+	public static VkVideoEndCodingInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEndCodingInfoKHR;
+		Unsafe.SkipInit(out VkVideoEndCodingInfoKHR instance);
+		instance.sType = VkStructureType.VideoEndCodingInfoKHR;
+		return instance;
 	}
 }
 
@@ -10064,10 +10624,11 @@ public partial struct VkVideoCodingControlInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkVideoCodingControlFlagsKHR flags;
-	public VkVideoCodingControlInfoKHR()
+	public static VkVideoCodingControlInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoCodingControlInfoKHR;
+		Unsafe.SkipInit(out VkVideoCodingControlInfoKHR instance);
+		instance.sType = VkStructureType.VideoCodingControlInfoKHR;
+		return instance;
 	}
 }
 
@@ -10077,10 +10638,11 @@ public partial struct VkVideoDecodeCapabilitiesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkVideoDecodeCapabilityFlagsKHR flags;
-	public VkVideoDecodeCapabilitiesKHR()
+	public static VkVideoDecodeCapabilitiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeCapabilitiesKHR;
+		Unsafe.SkipInit(out VkVideoDecodeCapabilitiesKHR instance);
+		instance.sType = VkStructureType.VideoDecodeCapabilitiesKHR;
+		return instance;
 	}
 }
 
@@ -10097,10 +10659,11 @@ public partial struct VkVideoDecodeInfoKHR
 	public unsafe VkVideoReferenceSlotKHR* pSetupReferenceSlot;
 	public uint referenceSlotCount;
 	public unsafe VkVideoReferenceSlotKHR* pReferenceSlots;
-	public VkVideoDecodeInfoKHR()
+	public static VkVideoDecodeInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeInfoKHR;
+		Unsafe.SkipInit(out VkVideoDecodeInfoKHR instance);
+		instance.sType = VkStructureType.VideoDecodeInfoKHR;
+		return instance;
 	}
 }
 
@@ -10124,10 +10687,11 @@ public partial struct VkPhysicalDevicePortabilitySubsetFeaturesKHR
 	public VkBool32 tessellationPointMode;
 	public VkBool32 triangleFans;
 	public VkBool32 vertexAttributeAccessBeyondStride;
-	public VkPhysicalDevicePortabilitySubsetFeaturesKHR()
+	public static VkPhysicalDevicePortabilitySubsetFeaturesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePortabilitySubsetFeaturesKHR;
+		Unsafe.SkipInit(out VkPhysicalDevicePortabilitySubsetFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDevicePortabilitySubsetFeaturesKHR;
+		return instance;
 	}
 }
 
@@ -10137,10 +10701,11 @@ public partial struct VkPhysicalDevicePortabilitySubsetPropertiesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint minVertexInputBindingStrideAlignment;
-	public VkPhysicalDevicePortabilitySubsetPropertiesKHR()
+	public static VkPhysicalDevicePortabilitySubsetPropertiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.PhysicalDevicePortabilitySubsetPropertiesKHR;
+		Unsafe.SkipInit(out VkPhysicalDevicePortabilitySubsetPropertiesKHR instance);
+		instance.sType = VkStructureType.PhysicalDevicePortabilitySubsetPropertiesKHR;
+		return instance;
 	}
 }
 
@@ -10159,10 +10724,11 @@ public partial struct VkVideoEncodeInfoKHR
 	public uint referenceSlotCount;
 	public unsafe VkVideoReferenceSlotKHR* pReferenceSlots;
 	public uint precedingExternallyEncodedBytes;
-	public VkVideoEncodeInfoKHR()
+	public static VkVideoEncodeInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeInfoKHR;
+		Unsafe.SkipInit(out VkVideoEncodeInfoKHR instance);
+		instance.sType = VkStructureType.VideoEncodeInfoKHR;
+		return instance;
 	}
 }
 
@@ -10176,10 +10742,11 @@ public partial struct VkVideoEncodeCapabilitiesKHR
 	public byte rateControlLayerCount;
 	public byte qualityLevelCount;
 	public VkExtent2D inputImageDataFillAlignment;
-	public VkVideoEncodeCapabilitiesKHR()
+	public static VkVideoEncodeCapabilitiesKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeCapabilitiesKHR;
+		Unsafe.SkipInit(out VkVideoEncodeCapabilitiesKHR instance);
+		instance.sType = VkStructureType.VideoEncodeCapabilitiesKHR;
+		return instance;
 	}
 }
 
@@ -10194,10 +10761,11 @@ public partial struct VkVideoEncodeRateControlLayerInfoKHR
 	public uint frameRateDenominator;
 	public uint virtualBufferSizeInMs;
 	public uint initialVirtualBufferSizeInMs;
-	public VkVideoEncodeRateControlLayerInfoKHR()
+	public static VkVideoEncodeRateControlLayerInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeRateControlLayerInfoKHR;
+		Unsafe.SkipInit(out VkVideoEncodeRateControlLayerInfoKHR instance);
+		instance.sType = VkStructureType.VideoEncodeRateControlLayerInfoKHR;
+		return instance;
 	}
 }
 
@@ -10210,10 +10778,11 @@ public partial struct VkVideoEncodeRateControlInfoKHR
 	public VkVideoEncodeRateControlModeFlagsKHR rateControlMode;
 	public byte layerCount;
 	public unsafe VkVideoEncodeRateControlLayerInfoKHR* pLayerConfigs;
-	public VkVideoEncodeRateControlInfoKHR()
+	public static VkVideoEncodeRateControlInfoKHR New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeRateControlInfoKHR;
+		Unsafe.SkipInit(out VkVideoEncodeRateControlInfoKHR instance);
+		instance.sType = VkStructureType.VideoEncodeRateControlInfoKHR;
+		return instance;
 	}
 }
 
@@ -10624,10 +11193,11 @@ public partial struct VkVideoEncodeH264CapabilitiesEXT
 	public uint maxBitsPerMbDenom;
 	public uint log2MaxMvLengthHorizontal;
 	public uint log2MaxMvLengthVertical;
-	public VkVideoEncodeH264CapabilitiesEXT()
+	public static VkVideoEncodeH264CapabilitiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH264CapabilitiesEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264CapabilitiesEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264CapabilitiesEXT;
+		return instance;
 	}
 }
 
@@ -10640,10 +11210,11 @@ public partial struct VkVideoEncodeH264SessionParametersAddInfoEXT
 	public unsafe StdVideoH264SequenceParameterSet* pSpsStd;
 	public uint ppsStdCount;
 	public unsafe StdVideoH264PictureParameterSet* pPpsStd;
-	public VkVideoEncodeH264SessionParametersAddInfoEXT()
+	public static VkVideoEncodeH264SessionParametersAddInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH264SessionParametersAddInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264SessionParametersAddInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264SessionParametersAddInfoEXT;
+		return instance;
 	}
 }
 
@@ -10655,10 +11226,11 @@ public partial struct VkVideoEncodeH264SessionParametersCreateInfoEXT
 	public uint maxSpsStdCount;
 	public uint maxPpsStdCount;
 	public unsafe VkVideoEncodeH264SessionParametersAddInfoEXT* pParametersAddInfo;
-	public VkVideoEncodeH264SessionParametersCreateInfoEXT()
+	public static VkVideoEncodeH264SessionParametersCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH264SessionParametersCreateInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264SessionParametersCreateInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264SessionParametersCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -10669,10 +11241,11 @@ public partial struct VkVideoEncodeH264DpbSlotInfoEXT
 	public unsafe void* pNext;
 	public sbyte slotIndex;
 	public unsafe StdVideoEncodeH264ReferenceInfo* pStdReferenceInfo;
-	public VkVideoEncodeH264DpbSlotInfoEXT()
+	public static VkVideoEncodeH264DpbSlotInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH264DpbSlotInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264DpbSlotInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264DpbSlotInfoEXT;
+		return instance;
 	}
 }
 
@@ -10686,10 +11259,11 @@ public partial struct VkVideoEncodeH264ReferenceListsEXT
 	public byte referenceList1EntryCount;
 	public unsafe VkVideoEncodeH264DpbSlotInfoEXT* pReferenceList1Entries;
 	public unsafe StdVideoEncodeH264RefMemMgmtCtrlOperations* pMemMgmtCtrlOperations;
-	public VkVideoEncodeH264ReferenceListsEXT()
+	public static VkVideoEncodeH264ReferenceListsEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH264ReferenceListsEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264ReferenceListsEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264ReferenceListsEXT;
+		return instance;
 	}
 }
 
@@ -10701,10 +11275,11 @@ public partial struct VkVideoEncodeH264NaluSliceEXT
 	public uint mbCount;
 	public unsafe VkVideoEncodeH264ReferenceListsEXT* pReferenceFinalLists;
 	public unsafe StdVideoEncodeH264SliceHeader* pSliceHeaderStd;
-	public VkVideoEncodeH264NaluSliceEXT()
+	public static VkVideoEncodeH264NaluSliceEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH264NaluSliceEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264NaluSliceEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264NaluSliceEXT;
+		return instance;
 	}
 }
 
@@ -10717,10 +11292,11 @@ public partial struct VkVideoEncodeH264VclFrameInfoEXT
 	public uint naluSliceEntryCount;
 	public unsafe VkVideoEncodeH264NaluSliceEXT* pNaluSliceEntries;
 	public unsafe StdVideoEncodeH264PictureInfo* pCurrentPictureInfo;
-	public VkVideoEncodeH264VclFrameInfoEXT()
+	public static VkVideoEncodeH264VclFrameInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH264VclFrameInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264VclFrameInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264VclFrameInfoEXT;
+		return instance;
 	}
 }
 
@@ -10733,10 +11309,11 @@ public partial struct VkVideoEncodeH264EmitPictureParametersEXT
 	public VkBool32 emitSpsEnable;
 	public uint ppsIdEntryCount;
 	public unsafe byte* ppsIdEntries;
-	public VkVideoEncodeH264EmitPictureParametersEXT()
+	public static VkVideoEncodeH264EmitPictureParametersEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH264EmitPictureParametersEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264EmitPictureParametersEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264EmitPictureParametersEXT;
+		return instance;
 	}
 }
 
@@ -10746,10 +11323,11 @@ public partial struct VkVideoEncodeH264ProfileEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public StdVideoH264ProfileIdc stdProfileIdc;
-	public VkVideoEncodeH264ProfileEXT()
+	public static VkVideoEncodeH264ProfileEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH264ProfileEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264ProfileEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264ProfileEXT;
+		return instance;
 	}
 }
 
@@ -10763,10 +11341,11 @@ public partial struct VkVideoEncodeH264RateControlInfoEXT
 	public uint consecutiveBFrameCount;
 	public VkVideoEncodeH264RateControlStructureFlagsEXT rateControlStructure;
 	public byte temporalLayerCount;
-	public VkVideoEncodeH264RateControlInfoEXT()
+	public static VkVideoEncodeH264RateControlInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH264RateControlInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264RateControlInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264RateControlInfoEXT;
+		return instance;
 	}
 }
 
@@ -10800,10 +11379,11 @@ public partial struct VkVideoEncodeH264RateControlLayerInfoEXT
 	public VkVideoEncodeH264QpEXT maxQp;
 	public VkBool32 useMaxFrameSize;
 	public VkVideoEncodeH264FrameSizeEXT maxFrameSize;
-	public VkVideoEncodeH264RateControlLayerInfoEXT()
+	public static VkVideoEncodeH264RateControlLayerInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH264RateControlLayerInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264RateControlLayerInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264RateControlLayerInfoEXT;
+		return instance;
 	}
 }
 
@@ -11326,10 +11906,11 @@ public partial struct VkVideoEncodeH265CapabilitiesEXT
 	public byte maxDiffCuQpDeltaDepth;
 	public byte minMaxNumMergeCand;
 	public byte maxMaxNumMergeCand;
-	public VkVideoEncodeH265CapabilitiesEXT()
+	public static VkVideoEncodeH265CapabilitiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH265CapabilitiesEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265CapabilitiesEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265CapabilitiesEXT;
+		return instance;
 	}
 }
 
@@ -11344,10 +11925,11 @@ public partial struct VkVideoEncodeH265SessionParametersAddInfoEXT
 	public unsafe StdVideoH265SequenceParameterSet* pSpsStd;
 	public uint ppsStdCount;
 	public unsafe StdVideoH265PictureParameterSet* pPpsStd;
-	public VkVideoEncodeH265SessionParametersAddInfoEXT()
+	public static VkVideoEncodeH265SessionParametersAddInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH265SessionParametersAddInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265SessionParametersAddInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265SessionParametersAddInfoEXT;
+		return instance;
 	}
 }
 
@@ -11360,10 +11942,11 @@ public partial struct VkVideoEncodeH265SessionParametersCreateInfoEXT
 	public uint maxSpsStdCount;
 	public uint maxPpsStdCount;
 	public unsafe VkVideoEncodeH265SessionParametersAddInfoEXT* pParametersAddInfo;
-	public VkVideoEncodeH265SessionParametersCreateInfoEXT()
+	public static VkVideoEncodeH265SessionParametersCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH265SessionParametersCreateInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265SessionParametersCreateInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265SessionParametersCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -11374,10 +11957,11 @@ public partial struct VkVideoEncodeH265DpbSlotInfoEXT
 	public unsafe void* pNext;
 	public sbyte slotIndex;
 	public unsafe StdVideoEncodeH265ReferenceInfo* pStdReferenceInfo;
-	public VkVideoEncodeH265DpbSlotInfoEXT()
+	public static VkVideoEncodeH265DpbSlotInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH265DpbSlotInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265DpbSlotInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265DpbSlotInfoEXT;
+		return instance;
 	}
 }
 
@@ -11391,10 +11975,11 @@ public partial struct VkVideoEncodeH265ReferenceListsEXT
 	public byte referenceList1EntryCount;
 	public unsafe VkVideoEncodeH265DpbSlotInfoEXT* pReferenceList1Entries;
 	public unsafe StdVideoEncodeH265ReferenceModifications* pReferenceModifications;
-	public VkVideoEncodeH265ReferenceListsEXT()
+	public static VkVideoEncodeH265ReferenceListsEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH265ReferenceListsEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265ReferenceListsEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265ReferenceListsEXT;
+		return instance;
 	}
 }
 
@@ -11406,10 +11991,11 @@ public partial struct VkVideoEncodeH265NaluSliceSegmentEXT
 	public uint ctbCount;
 	public unsafe VkVideoEncodeH265ReferenceListsEXT* pReferenceFinalLists;
 	public unsafe StdVideoEncodeH265SliceSegmentHeader* pSliceSegmentHeaderStd;
-	public VkVideoEncodeH265NaluSliceSegmentEXT()
+	public static VkVideoEncodeH265NaluSliceSegmentEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH265NaluSliceSegmentEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265NaluSliceSegmentEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265NaluSliceSegmentEXT;
+		return instance;
 	}
 }
 
@@ -11422,10 +12008,11 @@ public partial struct VkVideoEncodeH265VclFrameInfoEXT
 	public uint naluSliceSegmentEntryCount;
 	public unsafe VkVideoEncodeH265NaluSliceSegmentEXT* pNaluSliceSegmentEntries;
 	public unsafe StdVideoEncodeH265PictureInfo* pCurrentPictureInfo;
-	public VkVideoEncodeH265VclFrameInfoEXT()
+	public static VkVideoEncodeH265VclFrameInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH265VclFrameInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265VclFrameInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265VclFrameInfoEXT;
+		return instance;
 	}
 }
 
@@ -11440,10 +12027,11 @@ public partial struct VkVideoEncodeH265EmitPictureParametersEXT
 	public VkBool32 emitSpsEnable;
 	public uint ppsIdEntryCount;
 	public unsafe byte* ppsIdEntries;
-	public VkVideoEncodeH265EmitPictureParametersEXT()
+	public static VkVideoEncodeH265EmitPictureParametersEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH265EmitPictureParametersEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265EmitPictureParametersEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265EmitPictureParametersEXT;
+		return instance;
 	}
 }
 
@@ -11453,10 +12041,11 @@ public partial struct VkVideoEncodeH265ProfileEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public StdVideoH265ProfileIdc stdProfileIdc;
-	public VkVideoEncodeH265ProfileEXT()
+	public static VkVideoEncodeH265ProfileEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH265ProfileEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265ProfileEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265ProfileEXT;
+		return instance;
 	}
 }
 
@@ -11470,10 +12059,11 @@ public partial struct VkVideoEncodeH265RateControlInfoEXT
 	public uint consecutiveBFrameCount;
 	public VkVideoEncodeH265RateControlStructureFlagsEXT rateControlStructure;
 	public byte subLayerCount;
-	public VkVideoEncodeH265RateControlInfoEXT()
+	public static VkVideoEncodeH265RateControlInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH265RateControlInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265RateControlInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265RateControlInfoEXT;
+		return instance;
 	}
 }
 
@@ -11507,10 +12097,11 @@ public partial struct VkVideoEncodeH265RateControlLayerInfoEXT
 	public VkVideoEncodeH265QpEXT maxQp;
 	public VkBool32 useMaxFrameSize;
 	public VkVideoEncodeH265FrameSizeEXT maxFrameSize;
-	public VkVideoEncodeH265RateControlLayerInfoEXT()
+	public static VkVideoEncodeH265RateControlLayerInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoEncodeH265RateControlLayerInfoEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265RateControlLayerInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265RateControlLayerInfoEXT;
+		return instance;
 	}
 }
 
@@ -11596,10 +12187,11 @@ public partial struct VkVideoDecodeH264ProfileEXT
 	public unsafe void* pNext;
 	public StdVideoH264ProfileIdc stdProfileIdc;
 	public VkVideoDecodeH264PictureLayoutFlagsEXT pictureLayout;
-	public VkVideoDecodeH264ProfileEXT()
+	public static VkVideoDecodeH264ProfileEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH264ProfileEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH264ProfileEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH264ProfileEXT;
+		return instance;
 	}
 }
 
@@ -11610,10 +12202,11 @@ public partial struct VkVideoDecodeH264CapabilitiesEXT
 	public unsafe void* pNext;
 	public StdVideoH264Level maxLevel;
 	public VkOffset2D fieldOffsetGranularity;
-	public VkVideoDecodeH264CapabilitiesEXT()
+	public static VkVideoDecodeH264CapabilitiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH264CapabilitiesEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH264CapabilitiesEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH264CapabilitiesEXT;
+		return instance;
 	}
 }
 
@@ -11626,10 +12219,11 @@ public partial struct VkVideoDecodeH264SessionParametersAddInfoEXT
 	public unsafe StdVideoH264SequenceParameterSet* pSpsStd;
 	public uint ppsStdCount;
 	public unsafe StdVideoH264PictureParameterSet* pPpsStd;
-	public VkVideoDecodeH264SessionParametersAddInfoEXT()
+	public static VkVideoDecodeH264SessionParametersAddInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH264SessionParametersAddInfoEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH264SessionParametersAddInfoEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH264SessionParametersAddInfoEXT;
+		return instance;
 	}
 }
 
@@ -11641,10 +12235,11 @@ public partial struct VkVideoDecodeH264SessionParametersCreateInfoEXT
 	public uint maxSpsStdCount;
 	public uint maxPpsStdCount;
 	public unsafe VkVideoDecodeH264SessionParametersAddInfoEXT* pParametersAddInfo;
-	public VkVideoDecodeH264SessionParametersCreateInfoEXT()
+	public static VkVideoDecodeH264SessionParametersCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH264SessionParametersCreateInfoEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH264SessionParametersCreateInfoEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH264SessionParametersCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -11656,10 +12251,11 @@ public partial struct VkVideoDecodeH264PictureInfoEXT
 	public unsafe StdVideoDecodeH264PictureInfo* pStdPictureInfo;
 	public uint slicesCount;
 	public unsafe uint* pSlicesDataOffsets;
-	public VkVideoDecodeH264PictureInfoEXT()
+	public static VkVideoDecodeH264PictureInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH264PictureInfoEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH264PictureInfoEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH264PictureInfoEXT;
+		return instance;
 	}
 }
 
@@ -11669,10 +12265,11 @@ public partial struct VkVideoDecodeH264MvcEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe StdVideoDecodeH264Mvc* pStdMvc;
-	public VkVideoDecodeH264MvcEXT()
+	public static VkVideoDecodeH264MvcEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH264MvcEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH264MvcEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH264MvcEXT;
+		return instance;
 	}
 }
 
@@ -11682,10 +12279,11 @@ public partial struct VkVideoDecodeH264DpbSlotInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe StdVideoDecodeH264ReferenceInfo* pStdReferenceInfo;
-	public VkVideoDecodeH264DpbSlotInfoEXT()
+	public static VkVideoDecodeH264DpbSlotInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH264DpbSlotInfoEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH264DpbSlotInfoEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH264DpbSlotInfoEXT;
+		return instance;
 	}
 }
 
@@ -11735,10 +12333,11 @@ public partial struct VkVideoDecodeH265ProfileEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public StdVideoH265ProfileIdc stdProfileIdc;
-	public VkVideoDecodeH265ProfileEXT()
+	public static VkVideoDecodeH265ProfileEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH265ProfileEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH265ProfileEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH265ProfileEXT;
+		return instance;
 	}
 }
 
@@ -11748,10 +12347,11 @@ public partial struct VkVideoDecodeH265CapabilitiesEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public StdVideoH265Level maxLevel;
-	public VkVideoDecodeH265CapabilitiesEXT()
+	public static VkVideoDecodeH265CapabilitiesEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH265CapabilitiesEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH265CapabilitiesEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH265CapabilitiesEXT;
+		return instance;
 	}
 }
 
@@ -11766,10 +12366,11 @@ public partial struct VkVideoDecodeH265SessionParametersAddInfoEXT
 	public unsafe StdVideoH265SequenceParameterSet* pSpsStd;
 	public uint ppsStdCount;
 	public unsafe StdVideoH265PictureParameterSet* pPpsStd;
-	public VkVideoDecodeH265SessionParametersAddInfoEXT()
+	public static VkVideoDecodeH265SessionParametersAddInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH265SessionParametersAddInfoEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH265SessionParametersAddInfoEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH265SessionParametersAddInfoEXT;
+		return instance;
 	}
 }
 
@@ -11782,10 +12383,11 @@ public partial struct VkVideoDecodeH265SessionParametersCreateInfoEXT
 	public uint maxSpsStdCount;
 	public uint maxPpsStdCount;
 	public unsafe VkVideoDecodeH265SessionParametersAddInfoEXT* pParametersAddInfo;
-	public VkVideoDecodeH265SessionParametersCreateInfoEXT()
+	public static VkVideoDecodeH265SessionParametersCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH265SessionParametersCreateInfoEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH265SessionParametersCreateInfoEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH265SessionParametersCreateInfoEXT;
+		return instance;
 	}
 }
 
@@ -11797,10 +12399,11 @@ public partial struct VkVideoDecodeH265PictureInfoEXT
 	public unsafe StdVideoDecodeH265PictureInfo* pStdPictureInfo;
 	public uint slicesCount;
 	public unsafe uint* pSlicesDataOffsets;
-	public VkVideoDecodeH265PictureInfoEXT()
+	public static VkVideoDecodeH265PictureInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH265PictureInfoEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH265PictureInfoEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH265PictureInfoEXT;
+		return instance;
 	}
 }
 
@@ -11810,10 +12413,11 @@ public partial struct VkVideoDecodeH265DpbSlotInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe StdVideoDecodeH265ReferenceInfo* pStdReferenceInfo;
-	public VkVideoDecodeH265DpbSlotInfoEXT()
+	public static VkVideoDecodeH265DpbSlotInfoEXT New()
 	{
-		Unsafe.SkipInit(out this);
-		sType = VkStructureType.VideoDecodeH265DpbSlotInfoEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH265DpbSlotInfoEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH265DpbSlotInfoEXT;
+		return instance;
 	}
 }
 

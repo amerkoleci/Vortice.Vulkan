@@ -101,10 +101,11 @@ public static partial class CsCodeGenerator
                         structureTypeValue = structureTypeValue.Replace("ANDROID", "Android");
                     }
 
-                    using (writer.PushBlock($"public {csName}()"))
+                    using (writer.PushBlock($"public static {csName} New()"))
                     {
-                        writer.WriteLine("Unsafe.SkipInit(out this);");
-                        writer.WriteLine($"sType = VkStructureType.{structureTypeValue};");
+                        writer.WriteLine($"Unsafe.SkipInit(out {csName} instance);");
+                        writer.WriteLine($"instance.sType = VkStructureType.{structureTypeValue};");
+                        writer.WriteLine($"return instance;");
                     }
                 }
             }
