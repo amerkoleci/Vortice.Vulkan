@@ -532,7 +532,6 @@ public enum VkStructureType
 	PhysicalDeviceComputeShaderDerivativesFeaturesNV = 1000201000,
 	PhysicalDeviceMeshShaderFeaturesNV = 1000202000,
 	PhysicalDeviceMeshShaderPropertiesNV = 1000202001,
-	PhysicalDeviceFragmentShaderBarycentricFeaturesNV = 1000203000,
 	PhysicalDeviceShaderImageFootprintFeaturesNV = 1000204000,
 	PipelineViewportExclusiveScissorStateCreateInfoNV = 1000205000,
 	PhysicalDeviceExclusiveScissorFeaturesNV = 1000205002,
@@ -633,6 +632,9 @@ public enum VkStructureType
 	PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT = 1000320000,
 	PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT = 1000320001,
 	GraphicsPipelineLibraryCreateInfoEXT = 1000320002,
+	PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD = 1000321000,
+	PhysicalDeviceFragmentShaderBarycentricFeaturesKHR = 1000203000,
+	PhysicalDeviceFragmentShaderBarycentricPropertiesKHR = 1000322000,
 	PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR = 1000323000,
 	PhysicalDeviceFragmentShadingRateEnumsPropertiesNV = 1000326000,
 	PhysicalDeviceFragmentShadingRateEnumsFeaturesNV = 1000326001,
@@ -816,6 +818,7 @@ public enum VkStructureType
 	PhysicalDeviceFloatControlsPropertiesKHR = PhysicalDeviceFloatControlsProperties,
 	PhysicalDeviceDepthStencilResolvePropertiesKHR = PhysicalDeviceDepthStencilResolveProperties,
 	SubpassDescriptionDepthStencilResolveKHR = SubpassDescriptionDepthStencilResolve,
+	PhysicalDeviceFragmentShaderBarycentricFeaturesNV = PhysicalDeviceFragmentShaderBarycentricFeaturesKHR,
 	PhysicalDeviceTimelineSemaphoreFeaturesKHR = PhysicalDeviceTimelineSemaphoreFeatures,
 	PhysicalDeviceTimelineSemaphorePropertiesKHR = PhysicalDeviceTimelineSemaphoreProperties,
 	SemaphoreTypeCreateInfoKHR = SemaphoreTypeCreateInfo,
@@ -880,6 +883,11 @@ public enum VkStructureType
 	PhysicalDeviceMaintenance4PropertiesKHR = PhysicalDeviceMaintenance4Properties,
 	DeviceBufferMemoryRequirementsKHR = DeviceBufferMemoryRequirements,
 	DeviceImageMemoryRequirementsKHR = DeviceImageMemoryRequirements,
+}
+
+public enum VkPipelineCacheHeaderVersion
+{
+	One = 1,
 }
 
 public enum VkImageLayout
@@ -973,11 +981,6 @@ public enum VkObjectType
 	DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate,
 	SamplerYcbcrConversionKHR = SamplerYcbcrConversion,
 	PrivateDataSlotEXT = PrivateDataSlot,
-}
-
-public enum VkPipelineCacheHeaderVersion
-{
-	One = 1,
 }
 
 public enum VkVendorId
@@ -3287,6 +3290,7 @@ public enum VkDeviceDiagnosticsConfigFlagsNV
 	EnableShaderDebugInfo = 1,
 	EnableResourceTracking = 2,
 	EnableAutomaticCheckpoints = 4,
+	EnableShaderErrorReporting = 8,
 }
 
 [Flags]

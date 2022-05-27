@@ -458,10 +458,10 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkBeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferUsageFlags flags)
     {
-        VkCommandBufferBeginInfo beginInfo = new VkCommandBufferBeginInfo
+        VkCommandBufferBeginInfo beginInfo = new()
         {
             sType = VkStructureType.CommandBufferBeginInfo,
-            flags = VkCommandBufferUsageFlags.OneTimeSubmit
+            flags = flags
         };
 
         return vkBeginCommandBuffer(commandBuffer, &beginInfo);
@@ -581,6 +581,11 @@ public static unsafe partial class Vulkan
         return vkCreatePipelineLayout(device, &createInfo, null, out pipelineLayout);
     }
 
+    public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, VkViewport viewport)
+    {
+        vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
+    }
+
     public static void vkCmdSetViewport<T>(VkCommandBuffer commandBuffer, uint firstViewport, T viewport) where T : unmanaged
     {
 #if DEBUG
@@ -602,6 +607,11 @@ public static unsafe partial class Vulkan
 #endif
 
         vkCmdSetViewport(commandBuffer, firstViewport, viewportCount, (VkViewport*)viewports);
+    }
+
+    public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, VkRect2D scissor)
+    {
+        vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
     }
 
     public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float red, float green, float blue, float alpha)

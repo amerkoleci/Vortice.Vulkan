@@ -15,17 +15,13 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 213
+	/// VK_HEADER_VERSION = 215
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 213;
+	public const uint VK_HEADER_VERSION = 215;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
-	/// <summary>
-	/// VK_UUID_SIZE = 16U
-	/// </summary>
-	public const uint VK_UUID_SIZE = 16U;
 	/// <summary>
 	/// VK_ATTACHMENT_UNUSED = (~0U)
 	/// </summary>
@@ -59,13 +55,13 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_MAX_MEMORY_TYPES = 32U;
 	/// <summary>
-	/// VK_MAX_MEMORY_HEAPS = 16U
-	/// </summary>
-	public const uint VK_MAX_MEMORY_HEAPS = 16U;
-	/// <summary>
 	/// VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256U
 	/// </summary>
 	public const uint VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256U;
+	/// <summary>
+	/// VK_UUID_SIZE = 16U
+	/// </summary>
+	public const uint VK_UUID_SIZE = 16U;
 	/// <summary>
 	/// VK_MAX_EXTENSION_NAME_SIZE = 256U
 	/// </summary>
@@ -74,6 +70,10 @@ public static partial class Vulkan
 	/// VK_MAX_DESCRIPTION_SIZE = 256U
 	/// </summary>
 	public const uint VK_MAX_DESCRIPTION_SIZE = 256U;
+	/// <summary>
+	/// VK_MAX_MEMORY_HEAPS = 16U
+	/// </summary>
+	public const uint VK_MAX_MEMORY_HEAPS = 16U;
 	/// <summary>
 	/// VK_MAX_DEVICE_GROUP_SIZE = 32U
 	/// </summary>
@@ -946,6 +946,18 @@ public static partial class Vulkan
 	/// VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2"
 	/// </summary>
 	public const string VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME = "VK_KHR_synchronization2";
+	/// <summary>
+	/// VK_KHR_fragment_shader_barycentric = 1
+	/// </summary>
+	public const uint VK_KHR_fragment_shader_barycentric = 1;
+	/// <summary>
+	/// VK_KHR_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_KHR_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_KHR_FRAGMENT_SHADER_BARYCENTRIC_EXTENSION_NAME = "VK_KHR_fragment_shader_barycentric"
+	/// </summary>
+	public const string VK_KHR_FRAGMENT_SHADER_BARYCENTRIC_EXTENSION_NAME = "VK_KHR_fragment_shader_barycentric";
 	/// <summary>
 	/// VK_KHR_shader_subgroup_uniform_control_flow = 1
 	/// </summary>
@@ -2607,9 +2619,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_NV_device_diagnostics_config = 1;
 	/// <summary>
-	/// VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION = 1
+	/// VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION = 2
 	/// </summary>
-	public const uint VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION = 1;
+	public const uint VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config"
 	/// </summary>
@@ -2638,6 +2650,18 @@ public static partial class Vulkan
 	/// VK_EXT_GRAPHICS_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_EXT_graphics_pipeline_library"
 	/// </summary>
 	public const string VK_EXT_GRAPHICS_PIPELINE_LIBRARY_EXTENSION_NAME = "VK_EXT_graphics_pipeline_library";
+	/// <summary>
+	/// VK_AMD_shader_early_and_late_fragment_tests = 1
+	/// </summary>
+	public const uint VK_AMD_shader_early_and_late_fragment_tests = 1;
+	/// <summary>
+	/// VK_AMD_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_AMD_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_AMD_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_EXTENSION_NAME = "VK_AMD_shader_early_and_late_fragment_tests"
+	/// </summary>
+	public const string VK_AMD_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_EXTENSION_NAME = "VK_AMD_shader_early_and_late_fragment_tests";
 	/// <summary>
 	/// VK_NV_fragment_shading_rate_enums = 1
 	/// </summary>

@@ -5722,6 +5722,34 @@ public partial struct VkCheckpointData2NV
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 fragmentShaderBarycentric;
+	public static VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentShaderBarycentricFeaturesKHR;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 triStripVertexOrderIndependentOfProvokingVertex;
+	public static VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceFragmentShaderBarycentricPropertiesKHR;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR
 {
 	public VkStructureType sType;
@@ -7566,20 +7594,6 @@ public partial struct VkDrawMeshTasksIndirectCommandNV
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV
-{
-	public VkStructureType sType;
-	public unsafe void* pNext;
-	public VkBool32 fragmentShaderBarycentric;
-	public static VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV New()
-	{
-		Unsafe.SkipInit(out VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV instance);
-		instance.sType = VkStructureType.PhysicalDeviceFragmentShaderBarycentricFeaturesNV;
-		return instance;
-	}
-}
-
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceShaderImageFootprintFeaturesNV
 {
 	public VkStructureType sType;
@@ -8816,6 +8830,20 @@ public partial struct VkGraphicsPipelineLibraryCreateInfoEXT
 	{
 		Unsafe.SkipInit(out VkGraphicsPipelineLibraryCreateInfoEXT instance);
 		instance.sType = VkStructureType.GraphicsPipelineLibraryCreateInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 shaderEarlyAndLateFragmentTests;
+	public static VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD;
 		return instance;
 	}
 }

@@ -196,39 +196,29 @@ unsafe partial class Vulkan
 		}
 	}
 
-    public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, VkViewport viewport)
-    {
-        vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
-    }
-
-    public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, int firstViewport, VkViewport viewport)
+	public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, VkViewport viewport)
 	{
-		vkCmdSetViewport(commandBuffer, (uint)firstViewport, 1, &viewport);
+		vkCmdSetViewport(commandBuffer, firstViewport, 1, &viewport);
 	}
 
-	public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, int firstViewport, ReadOnlySpan<VkViewport> viewports)
+	public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, ReadOnlySpan<VkViewport> viewports)
 	{
 		fixed (VkViewport* viewportsPtr = viewports)
 		{
-			vkCmdSetViewport(commandBuffer, (uint)firstViewport, viewports.Length, viewportsPtr);
+			vkCmdSetViewport(commandBuffer, firstViewport, viewports.Length, viewportsPtr);
 		}
 	}
 
-    public static void vkCmdSetScissor(VkCommandBuffer commandBuffer,VkRect2D scissor)
-    {
-        vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
-    }
-
-    public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, int firstScissor, VkRect2D scissor)
+	public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, VkRect2D scissor)
 	{
-		vkCmdSetScissor(commandBuffer, (uint)firstScissor, 1, &scissor);
+		vkCmdSetScissor(commandBuffer, firstScissor, 1, &scissor);
 	}
 
-	public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, int firstScissor, ReadOnlySpan<VkRect2D> scissors)
+	public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, ReadOnlySpan<VkRect2D> scissors)
 	{
 		fixed (VkRect2D* scissorsPtr = scissors)
 		{
-			vkCmdSetScissor(commandBuffer, (uint)firstScissor, scissors.Length, scissorsPtr);
+			vkCmdSetScissor(commandBuffer, firstScissor, scissors.Length, scissorsPtr);
 		}
 	}
 
