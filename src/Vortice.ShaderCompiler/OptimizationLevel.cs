@@ -1,21 +1,20 @@
-﻿// Copyright (c) Amer Koleci and contributors.
-// Distributed under the MIT license. See the LICENSE file in the project root for more information.
+﻿// Copyright © Amer Koleci and Contributors.
+// Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-namespace Vortice.ShaderCompiler
+namespace Vortice.ShaderCompiler;
+
+public enum OptimizationLevel
 {
-    public enum OptimizationLevel
-    {
-        /// <summary>
-        /// No optimization
-        /// </summary>
-        Zero,
-        /// <summary>
-        /// Optimize towards reducing code size
-        /// </summary>
-        Size,
-        /// <summary>
-        /// Optimize towards performance.
-        /// </summary>
-        Performance,
-    }
+    /// <summary>
+    /// No optimization
+    /// </summary>
+    Zero,
+    /// <summary>
+    /// Optimize towards reducing code size
+    /// </summary>
+    Size,
+    /// <summary>
+    /// Optimize towards performance.
+    /// </summary>
+    Performance,
 }

@@ -15,16 +15,16 @@ public sealed unsafe class Compiler
     {
         _handle = handle;
 
-        spvc_compiler_create_compiler_options(_handle, out IntPtr optionsPtr).CheckResult();
-        Options = new(optionsPtr);
+        //spvc_compiler_create_compiler_options(_handle, out IntPtr optionsPtr).CheckResult();
+        //Options = new(optionsPtr);
     }
 
-    public Options Options { get; }
+    //public Options Options { get; }
 
     public uint CurrentIdBound => spvc_compiler_get_current_id_bound(_handle);
 
     public void Apply()
     {
-        spvc_compiler_install_compiler_options(_handle, Options.Handle).CheckResult();
+        //spvc_compiler_install_compiler_options(_handle, Options.Handle).CheckResult();
     }
 }

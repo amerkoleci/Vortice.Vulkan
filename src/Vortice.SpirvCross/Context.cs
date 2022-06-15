@@ -15,7 +15,7 @@ public sealed unsafe class Context : IDisposable
     public Context()
     {
         spvc_context_create(out _handle).CheckResult("Cannot create SPIRV-Cross context");
-        _errorCallback = OnErrorCallback;
+        //_errorCallback = OnErrorCallback;
         spvc_context_set_error_callback(_handle, _errorCallback, IntPtr.Zero);
     }
 
@@ -37,6 +37,7 @@ public sealed unsafe class Context : IDisposable
 
         if (disposing)
         {
+            ReleaseAllocations();
             spvc_context_destroy(_handle);
         }
     }

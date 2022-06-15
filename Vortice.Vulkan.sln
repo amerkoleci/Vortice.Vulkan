@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-DrawTriangle", "src\samp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.SpirvCross", "src\Vortice.SpirvCross\Vortice.SpirvCross.csproj", "{33E15D20-A446-4230-8D05-9909C60CEDE7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.VulkanMemoryAllocator", "src\Vortice.VulkanMemoryAllocator\Vortice.VulkanMemoryAllocator.csproj", "{BAAEB581-86EC-4D29-803E-8B9E7CBB54C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{33E15D20-A446-4230-8D05-9909C60CEDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33E15D20-A446-4230-8D05-9909C60CEDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33E15D20-A446-4230-8D05-9909C60CEDE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAAEB581-86EC-4D29-803E-8B9E7CBB54C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAAEB581-86EC-4D29-803E-8B9E7CBB54C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAAEB581-86EC-4D29-803E-8B9E7CBB54C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAAEB581-86EC-4D29-803E-8B9E7CBB54C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

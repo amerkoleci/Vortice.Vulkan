@@ -4,12 +4,22 @@
 #if !NET6_0_OR_GREATER
 namespace Vortice.Vulkan;
 
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 public unsafe delegate void* PFN_vkAllocationFunction(void* pUserData, nuint size, nuint alignment, VkSystemAllocationScope allocationScope);
+
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 public unsafe delegate void PFN_vkFreeFunction(void* pUserData, void* pMemory);
+
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 public unsafe delegate void PFN_vkInternalAllocationNotification(void* pUserData, nuint size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope);
+
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 public unsafe delegate void PFN_vkInternalFreeNotification(void* pUserData, nuint size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope);
+
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 public unsafe delegate void* PFN_vkReallocationFunction(void* pUserData, void* pOriginal, nuint size, nuint alignment, VkSystemAllocationScope allocationScope);
 
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 public unsafe delegate VkBool32 PFN_vkDebugReportCallbackEXT(
    VkDebugReportFlagsEXT flags,
    VkDebugReportObjectTypeEXT objectType,
@@ -20,6 +30,7 @@ public unsafe delegate VkBool32 PFN_vkDebugReportCallbackEXT(
    byte* pMessage,
    void* pUserData);
 
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 public unsafe delegate uint PFN_vkDebugUtilsMessengerCallbackEXT(
     VkDebugUtilsMessageSeverityFlagsEXT messageSeverity,
     VkDebugUtilsMessageTypeFlagsEXT messageTypes,

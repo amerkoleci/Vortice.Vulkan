@@ -68,7 +68,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             applicationVersion = new VkVersion(1, 0, 0),
             pEngineName = s_EngineName,
             engineVersion = new VkVersion(1, 0, 0),
-            apiVersion = VkVersion.Version_1_2
+            apiVersion = VK_HEADER_VERSION_COMPLETE
         };
 
         using VkStringArray vkLayerNames = new(instanceLayers);

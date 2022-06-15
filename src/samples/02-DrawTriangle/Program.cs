@@ -2,10 +2,10 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Numerics;
-using System.Runtime.CompilerServices;
 using Vortice.SpirvCross;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
+using static Vortice.Vulkan.VMA;
 
 namespace DrawTriangle;
 
@@ -31,14 +31,27 @@ public static unsafe class Program
         private VkPipelineLayout _pipelineLayout;
         private VkPipeline _pipeline;
         private VkBuffer _vertexBuffer;
-        private VkDeviceMemory _vertexBufferMemory;
+        private VmaAllocation _vertexBufferMemory;
+        private VmaAllocator _allocator;
 
         protected override void Initialize()
         {
             _graphicsDevice = new GraphicsDevice(Name, EnableValidationLayers, MainWindow);
 
-            VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new();
-            pipelineLayoutCreateInfo.sType = VkStructureType.PipelineLayoutCreateInfo;
+            VmaAllocatorCreateInfo allocatorInfo = new()
+            {
+                //flags = VmaAllocatorCreateFlags.KHRDedicatedAllocation | VmaAllocatorCreateFlags.KHRBindMemory2,
+                physicalDevice = _graphicsDevice.PhysicalDevice,
+                device = _graphicsDevice.VkDevice,
+                instance = _graphicsDevice.VkInstance,
+                vulkanApiVersion = VkVersion.Version_1_2
+            };
+            VkResult result = vmaCreateAllocator(&allocatorInfo, out _allocator);
+
+            VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new()
+            {
+                sType = VkStructureType.PipelineLayoutCreateInfo
+            };
             vkCreatePipelineLayout(_graphicsDevice, &pipelineLayoutCreateInfo, null, out _pipelineLayout).CheckResult();
 
             // Create pipeline
@@ -193,38 +206,28 @@ public static unsafe class Program
                     // Buffer is used as the copy source
                     usage = VkBufferUsageFlags.TransferSrc
                 };
+
                 // Create a host-visible buffer to copy the vertex data to (staging buffer)
-                vkCreateBuffer(_graphicsDevice, &vertexBufferInfo, null, out VkBuffer stagingBuffer).CheckResult();
-
-                vkGetBufferMemoryRequirements(_graphicsDevice, stagingBuffer, out VkMemoryRequirements memReqs);
-
-                VkMemoryAllocateInfo memAlloc = new()
+                VmaAllocationCreateInfo memoryInfo = new()
                 {
-                    sType = VkStructureType.MemoryAllocateInfo,
-                    allocationSize = memReqs.size,
-                    // Request a host visible memory type that can be used to copy our data do
-                    // Also request it to be coherent, so that writes are visible to the GPU right after unmapping the buffer
-                    memoryTypeIndex = _graphicsDevice.GetMemoryTypeIndex(memReqs.memoryTypeBits, VkMemoryPropertyFlags.HostVisible | VkMemoryPropertyFlags.HostCoherent)
+                    flags = VmaAllocationCreateFlags.HostAccessSequentialWrite | VmaAllocationCreateFlags.Mapped,
+                    usage = VmaMemoryUsage.Auto
                 };
-                vkAllocateMemory(_graphicsDevice, &memAlloc, null, out VkDeviceMemory stagingBufferMemory);
+
+                VmaAllocationInfo allocationInfo;
+                vmaCreateBuffer(_allocator, &vertexBufferInfo,
+                    &memoryInfo,
+                    out VkBuffer stagingBuffer,
+                    out VmaAllocation stagingBufferAllocation,
+                    &allocationInfo).CheckResult();
 
                 // Map and copy
-                void* pMappedData;
-                vkMapMemory(_graphicsDevice, stagingBufferMemory, 0, memAlloc.allocationSize, 0, &pMappedData).CheckResult();
+                void* pMappedData = allocationInfo.pMappedData;
                 Span<VertexPositionColor> destinationData = new(pMappedData, sourceData.Length);
-
                 sourceData.CopyTo(destinationData);
-                vkUnmapMemory(_graphicsDevice, stagingBufferMemory);
-                vkBindBufferMemory(_graphicsDevice, stagingBuffer, stagingBufferMemory, 0).CheckResult();
 
                 vertexBufferInfo.usage = VkBufferUsageFlags.VertexBuffer | VkBufferUsageFlags.TransferDst;
-                vkCreateBuffer(_graphicsDevice, &vertexBufferInfo, null, out _vertexBuffer).CheckResult();
-
-                vkGetBufferMemoryRequirements(_graphicsDevice, _vertexBuffer, out memReqs);
-                memAlloc.allocationSize = memReqs.size;
-                memAlloc.memoryTypeIndex = _graphicsDevice.GetMemoryTypeIndex(memReqs.memoryTypeBits, VkMemoryPropertyFlags.DeviceLocal);
-                vkAllocateMemory(_graphicsDevice, &memAlloc, null, out _vertexBufferMemory).CheckResult();
-                vkBindBufferMemory(_graphicsDevice, _vertexBuffer, _vertexBufferMemory, 0).CheckResult();
+                vmaCreateBuffer(_allocator, &vertexBufferInfo, out _vertexBuffer, out _vertexBufferMemory).CheckResult();
 
                 VkCommandBuffer copyCmd = _graphicsDevice.GetCommandBuffer(true);
 
@@ -238,8 +241,7 @@ public static unsafe class Program
                 // Flushing the command buffer will also submit it to the queue and uses a fence to ensure that all commands have been executed before returning
                 _graphicsDevice.FlushCommandBuffer(copyCmd);
 
-                vkDestroyBuffer(_graphicsDevice, stagingBuffer);
-                vkFreeMemory(_graphicsDevice, stagingBufferMemory);
+                vmaDestroyBuffer(_allocator, stagingBuffer, stagingBufferAllocation);
             }
         }
 
@@ -250,8 +252,8 @@ public static unsafe class Program
 
             vkDestroyPipelineLayout(_graphicsDevice, _pipelineLayout);
             vkDestroyPipeline(_graphicsDevice, _pipeline);
-            vkDestroyBuffer(_graphicsDevice, _vertexBuffer);
-            vkFreeMemory(_graphicsDevice, _vertexBufferMemory);
+            vmaDestroyBuffer(_allocator, _vertexBuffer, _vertexBufferMemory);
+            vmaDestroyAllocator(_allocator);
 
             _graphicsDevice.Dispose();
 
@@ -316,10 +318,10 @@ public static unsafe class Program
 
             using Context context = new();
             context.ParseSpirv(vertexBytecode, out SpvcParsedIr parsedIr).CheckResult();
-            Compiler compiler = context.CreateCompiler(Backend.HLSL, parsedIr, CaptureMode.TakeOwnership);
-            compiler.Options.SetUInt(CompilerOption.HLSLShaderModel, 50);
-            compiler.Apply();
-            string test = context.GetLastErrorString();
+            //Compiler compiler = context.CreateCompiler(Backend.HLSL, parsedIr, CaptureMode.TakeOwnership);
+            //compiler.Options.SetUInt(CompilerOption.HLSLShaderModel, 50);
+            //compiler.Apply();
+            //string test = context.GetLastErrorString();
         }
     }
 }

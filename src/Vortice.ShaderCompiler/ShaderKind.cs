@@ -1,48 +1,47 @@
-﻿// Copyright (c) Amer Koleci and contributors.
-// Distributed under the MIT license. See the LICENSE file in the project root for more information.
+﻿// Copyright © Amer Koleci and Contributors.
+// Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-namespace Vortice.ShaderCompiler
+namespace Vortice.ShaderCompiler;
+
+public enum ShaderKind
 {
-    public enum ShaderKind
-    {
-        VertexShader,
-        FragmentShader,
-        ComputeShader,
-        GeometryShader,
-        TessControlShader,
-        TessEvaluationShader,
+    VertexShader,
+    FragmentShader,
+    ComputeShader,
+    GeometryShader,
+    TessControlShader,
+    TessEvaluationShader,
 
-        /// <summary>
-        /// Deduce the shader kind from #pragma annotation in the source code. Compiler will emit error if #pragma annotation is not found.
-        /// </summary>
-        GLSLInferFromSource,
-        // Default shader kinds. Compiler will fall back to compile the source code as
-        // the specified kind of shader when #pragma annotation is not found in the
-        // source code.
-        GLSLDefaultVertexShader,
-        GLSLDefaultFragmentShader,
-        GLSLDefaultComputeShader,
-        GLSLDefaultGeometryShader,
-        GLSLDefaultTessControlShader,
-        GLSLDefaultTessEvaluationShader,
-        SPIRVAssembly,
-        RaygenShader,
-        AnyhitShader,
-        ClosesthitShader,
-        MissShader,
-        IntersectionShader,
-        CallableShader,
+    /// <summary>
+    /// Deduce the shader kind from #pragma annotation in the source code. Compiler will emit error if #pragma annotation is not found.
+    /// </summary>
+    GLSLInferFromSource,
+    // Default shader kinds. Compiler will fall back to compile the source code as
+    // the specified kind of shader when #pragma annotation is not found in the
+    // source code.
+    GLSLDefaultVertexShader,
+    GLSLDefaultFragmentShader,
+    GLSLDefaultComputeShader,
+    GLSLDefaultGeometryShader,
+    GLSLDefaultTessControlShader,
+    GLSLDefaultTessEvaluationShader,
+    SPIRVAssembly,
+    RaygenShader,
+    AnyhitShader,
+    ClosesthitShader,
+    MissShader,
+    IntersectionShader,
+    CallableShader,
 
-        GLSLDefaultRaygenShader,
-        GLSLDefaultAnyhitShader,
-        GLSLDefaultClosesthitShader,
-        GLSLDefaultMissShader,
-        GLSLDefaultIntersectionShader,
-        GLSLDefaultCallableShader,
+    GLSLDefaultRaygenShader,
+    GLSLDefaultAnyhitShader,
+    GLSLDefaultClosesthitShader,
+    GLSLDefaultMissShader,
+    GLSLDefaultIntersectionShader,
+    GLSLDefaultCallableShader,
 
-        TaskShader,
-        MeshShader,
-        GLSLDefaultTaskShader,
-        GLSLDefaultMeshShader,
-    }
+    TaskShader,
+    MeshShader,
+    GLSLDefaultTaskShader,
+    GLSLDefaultMeshShader,
 }

@@ -108,7 +108,8 @@ public static unsafe partial class Vulkan
         return functionPtr;
     }
 
-    private static delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr_ptr;
+    public static delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr_ptr;
+
     public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(VkInstance instance, byte* name)
     {
         return vkGetInstanceProcAddr_ptr(instance, name);
@@ -122,7 +123,7 @@ public static unsafe partial class Vulkan
         return vkGetInstanceProcAddr(instance, stringPtr);
     }
 
-    private static delegate* unmanaged[Stdcall]<VkDevice, byte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr_ptr;
+    public static delegate* unmanaged[Stdcall]<VkDevice, byte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr_ptr;
     public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, byte* name)
     {
         return vkGetDeviceProcAddr_ptr(device, name);

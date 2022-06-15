@@ -2,6 +2,8 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace Vortice.Vulkan;
 
@@ -16,6 +18,7 @@ public static unsafe class VkUtils
             throw new VkException(result, message);
         }
     }
+
 
     public static string GetExtensionName(this VkExtensionProperties properties)
     {

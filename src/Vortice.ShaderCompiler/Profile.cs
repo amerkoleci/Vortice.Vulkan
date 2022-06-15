@@ -1,13 +1,12 @@
-﻿// Copyright (c) Amer Koleci and contributors.
-// Distributed under the MIT license. See the LICENSE file in the project root for more information.
+﻿// Copyright © Amer Koleci and Contributors.
+// Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-namespace Vortice.ShaderCompiler
+namespace Vortice.ShaderCompiler;
+
+public enum Profile
 {
-    public enum Profile
-    {
-        None,
-        Core,
-        Compatibility,
-        Es,
-    }
+    None,
+    Core,
+    Compatibility,
+    Es,
 }
