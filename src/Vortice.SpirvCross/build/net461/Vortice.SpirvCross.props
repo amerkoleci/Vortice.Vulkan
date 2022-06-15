@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_Vortice_SpirvCross_IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</_Vortice_SpirvCross_IsWindows>
+    <_Vortice_SpirvCross_IsMacOS Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</_Vortice_SpirvCross_IsMacOS>
+    <_Vortice_SpirvCross_IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</_Vortice_SpirvCross_IsLinux>
+
+    <_Vortice_SpirvCross_NativeRuntime Condition=" '$(_Vortice_SpirvCross_NativeRuntime)' == '' And '$(_Vortice_SpirvCross_IsMacOS)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">osx-x64</_Vortice_SpirvCross_NativeRuntime>
+    <_Vortice_SpirvCross_NativeRuntime Condition=" '$(_Vortice_SpirvCross_NativeRuntime)' == '' And '$(_Vortice_SpirvCross_IsLinux)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">linux-x64</_Vortice_SpirvCross_NativeRuntime>
+    <_Vortice_SpirvCross_NativeRuntime Condition=" '$(_Vortice_SpirvCross_NativeRuntime)' == '' And '$(_Vortice_SpirvCross_IsWindows)' == 'true' And ('$(Prefer32Bit)' == 'true' Or '$(PlatformTarget)' == 'x86')">win-x86</_Vortice_SpirvCross_NativeRuntime>
+    <_Vortice_SpirvCross_NativeRuntime Condition=" '$(_Vortice_SpirvCross_NativeRuntime)' == '' And '$(_Vortice_SpirvCross_IsWindows)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">win-x64</_Vortice_SpirvCross_NativeRuntime>
+
+    <_Vortice_SpirvCross_NativeLibName Condition="'$(_Vortice_SpirvCross_NativeRuntime)' == 'win-x86'">spirv-cross-c-shared.dll</_Vortice_SpirvCross_NativeLibName>
+    <_Vortice_SpirvCross_NativeLibName Condition="'$(_Vortice_SpirvCross_NativeRuntime)' == 'win-x64'">spirv-cross-c-shared.dll</_Vortice_SpirvCross_NativeLibName>
+    <_Vortice_SpirvCross_NativeLibName Condition="'$(_Vortice_SpirvCross_NativeRuntime)' == 'osx-x64'">libspirv-cross-c-shared.dylib</_Vortice_SpirvCross_NativeLibName>
+    <_Vortice_SpirvCross_NativeLibName Condition="'$(_Vortice_SpirvCross_NativeRuntime)' == 'linux-x64'">libspirv-cross-c-shared.so</_Vortice_SpirvCross_NativeLibName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Condition="'$(_Vortice_SpirvCross_NativeRuntime)' != ''" Include="$(MSBuildThisFileDirectory)..\..\runtimes\$(_Vortice_SpirvCross_NativeRuntime)\native\$(_Vortice_SpirvCross_NativeLibName)">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </Content>
+  </ItemGroup>
+</Project>

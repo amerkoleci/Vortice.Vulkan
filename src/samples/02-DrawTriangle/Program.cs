@@ -3,6 +3,7 @@
 
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using Vortice.SpirvCross;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 
@@ -312,6 +313,13 @@ public static unsafe class Program
         {
             byte[] vertexBytecode = File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Assets", $"{name}.spv"));
             _graphicsDevice.CreateShaderModule(vertexBytecode, out shaderModule).CheckResult();
+
+            using Context context = new();
+            context.ParseSpirv(vertexBytecode, out SpvcParsedIr parsedIr).CheckResult();
+            Compiler compiler = context.CreateCompiler(Backend.HLSL, parsedIr, CaptureMode.TakeOwnership);
+            compiler.Options.SetUInt(CompilerOption.HLSLShaderModel, 50);
+            compiler.Apply();
+            string test = context.GetLastErrorString();
         }
     }
 }

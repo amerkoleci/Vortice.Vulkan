@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.Vulkan.SampleFramew
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-DrawTriangle", "src\samples\02-DrawTriangle\02-DrawTriangle.csproj", "{F3C67C03-920C-414F-8B18-728660045060}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.SpirvCross", "src\Vortice.SpirvCross\Vortice.SpirvCross.csproj", "{33E15D20-A446-4230-8D05-9909C60CEDE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{F3C67C03-920C-414F-8B18-728660045060}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3C67C03-920C-414F-8B18-728660045060}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3C67C03-920C-414F-8B18-728660045060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33E15D20-A446-4230-8D05-9909C60CEDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33E15D20-A446-4230-8D05-9909C60CEDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33E15D20-A446-4230-8D05-9909C60CEDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33E15D20-A446-4230-8D05-9909C60CEDE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

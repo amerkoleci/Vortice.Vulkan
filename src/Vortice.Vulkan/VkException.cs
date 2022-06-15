@@ -4,7 +4,7 @@
 namespace Vortice.Vulkan;
 
 /// <summary>
-/// The exception class for errors that occur in vulka.
+/// The exception class for errors that occur in vulkan.
 /// </summary>
 public sealed class VkException : Exception
 {

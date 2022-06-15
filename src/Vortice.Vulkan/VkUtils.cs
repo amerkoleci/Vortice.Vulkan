@@ -9,11 +9,11 @@ public static unsafe class VkUtils
 {
     [DebuggerHidden]
     [DebuggerStepThrough]
-    public static void CheckResult(this VkResult result)
+    public static void CheckResult(this VkResult result, string message = "Vulkan error occured")
     {
         if (result != VkResult.Success)
         {
-            throw new VkException(result);
+            throw new VkException(result, message);
         }
     }
 

@@ -49,8 +49,8 @@ public static partial class CsCodeGenerator
                 writer.WriteLine($"public {handleType} Handle {{ get; }}");
                 writer.WriteLine($"public bool IsNull => Handle == 0;");
 
-                writer.WriteLine($"public static {csName} Null => new {csName}({nullValue});");
-                writer.WriteLine($"public static implicit operator {csName}({handleType} handle) => new {csName}(handle);");
+                writer.WriteLine($"public static {csName} Null => new({nullValue});");
+                writer.WriteLine($"public static implicit operator {csName}({handleType} handle) => new(handle);");
                 writer.WriteLine($"public static bool operator ==({csName} left, {csName} right) => left.Handle == right.Handle;");
                 writer.WriteLine($"public static bool operator !=({csName} left, {csName} right) => left.Handle != right.Handle;");
                 writer.WriteLine($"public static bool operator ==({csName} left, {handleType} right) => left.Handle == right;");
@@ -60,7 +60,7 @@ public static partial class CsCodeGenerator
                 writer.WriteLine($"public override bool Equals(object? obj) => obj is {csName} handle && Equals(handle);");
                 writer.WriteLine("/// <inheritdoc/>");
                 writer.WriteLine($"public override int GetHashCode() => Handle.GetHashCode();");
-                writer.WriteLine($"private string DebuggerDisplay => string.Format(\"{csName} [0x{{0}}]\", Handle.ToString(\"X\"));");
+                writer.WriteLine($"private string DebuggerDisplay => $\"{{nameof({csName})}} [0x{{Handle.ToString(\"X\")}}]\";");
             }
 
             writer.WriteLine();
