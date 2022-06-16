@@ -2983,6 +2983,12 @@ unsafe partial class Vulkan
 		return vkCreateMetalSurfaceEXT_ptr(instance, createInfo, allocator, out surface);
 	}
 
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkExportMetalObjectsInfoEXT*, void> vkExportMetalObjectsEXT_ptr;
+	public static void vkExportMetalObjectsEXT(VkDevice device, VkExportMetalObjectsInfoEXT* metalObjectsInfo)
+	{
+		vkExportMetalObjectsEXT_ptr(device, metalObjectsInfo);
+	}
+
 	private static delegate* unmanaged[Stdcall]<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateViSurfaceNN_ptr;
 	public static VkResult vkCreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
@@ -3572,6 +3578,7 @@ unsafe partial class Vulkan
 		vkCmdSetRayTracingPipelineStackSizeKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetRayTracingPipelineStackSizeKHR));
 		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged[Stdcall]<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
 		vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
+		vkExportMetalObjectsEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkExportMetalObjectsInfoEXT*, void>) load(context, nameof(vkExportMetalObjectsEXT));
 		vkCreateVideoSessionKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult>) load(context, nameof(vkCreateVideoSessionKHR));
 		vkDestroyVideoSessionKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyVideoSessionKHR));
 		vkGetVideoSessionMemoryRequirementsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, int*, VkVideoGetMemoryPropertiesKHR*, VkResult>) load(context, nameof(vkGetVideoSessionMemoryRequirementsKHR));

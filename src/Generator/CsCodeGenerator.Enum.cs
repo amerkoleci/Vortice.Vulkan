@@ -174,6 +174,7 @@ public static partial class CsCodeGenerator
         "rdma",
         "2d",
         "3d",
+        "io",
     };
 
     public static void GenerateEnums(CppCompilation compilation, string outputPath)

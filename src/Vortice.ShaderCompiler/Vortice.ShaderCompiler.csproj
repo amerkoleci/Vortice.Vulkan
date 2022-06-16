@@ -11,18 +11,13 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Memory" Version="4.5.4" />
+    <PackageReference Include="System.Memory" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="build\net461\Vortice.ShaderCompiler.props" PackagePath="build\net461\Vortice.ShaderCompiler.props" />
-    <Content Include="runtimes\win-x64\native\shaderc_shared.dll" PackagePath="runtimes\win-x64\native\shaderc_shared.dll" />
-    <Content Include="runtimes\linux-x64\native\libshaderc_shared.so" PackagePath="runtimes\linux-x64\native\libshaderc_shared.so" />
-    <!--<Content Include="$(MSBuildThisFileDirectory)native\osx-x64\libshaderc_shared.dylib">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <PackagePath>runtimes/osx-x64/native</PackagePath>
-      <Pack>true</Pack>
-    </Content>-->
+    <Content Include="build\**" PackagePath="build" Pack="true" />
+    <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="lib\**" PackagePath="lib" Pack="true" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,6 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Numerics;
-using Vortice.SpirvCross;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
 using static Vortice.Vulkan.VMA;
@@ -315,13 +314,6 @@ public static unsafe class Program
         {
             byte[] vertexBytecode = File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Assets", $"{name}.spv"));
             _graphicsDevice.CreateShaderModule(vertexBytecode, out shaderModule).CheckResult();
-
-            using Context context = new();
-            context.ParseSpirv(vertexBytecode, out SpvcParsedIr parsedIr).CheckResult();
-            //Compiler compiler = context.CreateCompiler(Backend.HLSL, parsedIr, CaptureMode.TakeOwnership);
-            //compiler.Options.SetUInt(CompilerOption.HLSLShaderModel, 50);
-            //compiler.Apply();
-            //string test = context.GetLastErrorString();
         }
     }
 }

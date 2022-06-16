@@ -627,6 +627,18 @@ public enum VkStructureType
 	VideoEncodeCapabilitiesKHR = 1000299003,
 	PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 	DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
+	ExportMetalObjectCreateInfoEXT = 1000311000,
+	ExportMetalObjectsInfoEXT = 1000311001,
+	ExportMetalDeviceInfoEXT = 1000311002,
+	ExportMetalCommandQueueInfoEXT = 1000311003,
+	ExportMetalBufferInfoEXT = 1000311004,
+	ImportMetalBufferInfoEXT = 1000311005,
+	ExportMetalTextureInfoEXT = 1000311006,
+	ImportMetalTextureInfoEXT = 1000311007,
+	ExportMetalIOSurfaceInfoEXT = 1000311008,
+	ImportMetalIOSurfaceInfoEXT = 1000311009,
+	ExportMetalSharedEventInfoEXT = 1000311010,
+	ImportMetalSharedEventInfoEXT = 1000311011,
 	QueueFamilyCheckpointProperties2NV = 1000314008,
 	CheckpointData2NV = 1000314009,
 	PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT = 1000320000,
@@ -705,6 +717,7 @@ public enum VkStructureType
 	PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE = 1000420000,
 	DescriptorSetBindingReferenceVALVE = 1000420001,
 	DescriptorSetLayoutHostMappingInfoVALVE = 1000420002,
+	PhysicalDeviceNonSeamlessCubeMapFeaturesEXT = 1000422000,
 	PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM = 1000425000,
 	PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM = 1000425001,
 	SubpassFragmentDensityMapOffsetEndInfoQCOM = 1000425002,
@@ -712,8 +725,8 @@ public enum VkStructureType
 	PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT = 1000437000,
 	PhysicalDeviceSubpassMergeFeedbackFeaturesEXT = 1000458000,
 	RenderPassCreationControlEXT = 1000458001,
-	RenderPassCreationFeedbackInfoEXT = 1000458002,
-	RenderPassSubpassFeedbackInfoEXT = 1000458003,
+	RenderPassCreationFeedbackCreateInfoEXT = 1000458002,
+	RenderPassSubpassFeedbackCreateInfoEXT = 1000458003,
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 	DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
@@ -2198,6 +2211,7 @@ public enum VkSamplerCreateFlags
 	None = 0,
 	SubsampledEXT = 1,
 	SubsampledCoarseReconstructionEXT = 2,
+	NonSeamlessCubeMapEXT = 4,
 }
 
 [Flags]
@@ -3423,6 +3437,18 @@ public enum VkShaderGroupShaderKHR
 	ClosestHit = 1,
 	AnyHit = 2,
 	Intersection = 3,
+}
+
+[Flags]
+public enum VkExportMetalObjectTypeFlagsEXT
+{
+	None = 0,
+	MetalDevice = 1,
+	MetalCommandQueue = 2,
+	MetalBuffer = 4,
+	MetalTexture = 8,
+	MetalIosurface = 16,
+	MetalSharedEvent = 32,
 }
 
 public enum VkQueryResultStatusKHR

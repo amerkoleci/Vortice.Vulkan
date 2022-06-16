@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 215
+	/// VK_HEADER_VERSION = 217
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 215;
+	public const uint VK_HEADER_VERSION = 217;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -3039,6 +3039,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_EXTENSION_NAME = "VK_VALVE_descriptor_set_host_mapping";
 	/// <summary>
+	/// VK_EXT_non_seamless_cube_map = 1
+	/// </summary>
+	public const uint VK_EXT_non_seamless_cube_map = 1;
+	/// <summary>
+	/// VK_EXT_NON_SEAMLESS_CUBE_MAP_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_NON_SEAMLESS_CUBE_MAP_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_NON_SEAMLESS_CUBE_MAP_EXTENSION_NAME = "VK_EXT_non_seamless_cube_map"
+	/// </summary>
+	public const string VK_EXT_NON_SEAMLESS_CUBE_MAP_EXTENSION_NAME = "VK_EXT_non_seamless_cube_map";
+	/// <summary>
 	/// VK_QCOM_fragment_density_map_offset = 1
 	/// </summary>
 	public const uint VK_QCOM_fragment_density_map_offset = 1;
@@ -3091,9 +3103,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_EXT_subpass_merge_feedback = 1;
 	/// <summary>
-	/// VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 1
+	/// VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 2
 	/// </summary>
-	public const uint VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 1;
+	public const uint VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_SUBPASS_MERGE_FEEDBACK_EXTENSION_NAME = "VK_EXT_subpass_merge_feedback"
 	/// </summary>
@@ -3194,6 +3206,18 @@ public static partial class Vulkan
 	/// VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface"
 	/// </summary>
 	public const string VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface";
+	/// <summary>
+	/// VK_EXT_metal_objects = 1
+	/// </summary>
+	public const uint VK_EXT_metal_objects = 1;
+	/// <summary>
+	/// VK_EXT_METAL_OBJECTS_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_METAL_OBJECTS_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_METAL_OBJECTS_EXTENSION_NAME = "VK_EXT_metal_objects"
+	/// </summary>
+	public const string VK_EXT_METAL_OBJECTS_EXTENSION_NAME = "VK_EXT_metal_objects";
 	/// <summary>
 	/// VK_NN_vi_surface = 1
 	/// </summary>

@@ -7,6 +7,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Vortice.Vulkan\Vortice.Vulkan.csproj" />
-    <PackageReference Include="Ultz.Native.GLFW" Version="3.3.3.1" />
+    <PackageReference Include="Ultz.Native.GLFW" />
   </ItemGroup>
 </Project>

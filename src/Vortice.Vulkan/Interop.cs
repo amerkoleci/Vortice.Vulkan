@@ -93,40 +93,7 @@ public unsafe static class Interop
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool IsNullRef<T>(in T source) => Unsafe.IsNullRef(ref AsRef(in source));
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<sbyte> GetAsciiSpan(this string? source)
-    {
-        ReadOnlySpan<byte> result;
-
-        if (source is not null)
-        {
-            int maxLength = Encoding.ASCII.GetMaxByteCount(source.Length);
-#if NET6_0_OR_GREATER
-            var bytes = new byte[maxLength + 1];
-            var length = Encoding.ASCII.GetBytes(source, bytes);
-            result = bytes.AsSpan(0, length);
-#else
-            byte* bytes = stackalloc byte[maxLength + 1];
-            fixed (char* namePtr = source)
-            {
-                Encoding.ASCII.GetBytes(namePtr, source.Length, bytes, maxLength);
-            }
-            bytes[maxLength] = 0;
-            result = new(bytes, source.Length);
-#endif
-            return result.As<byte, sbyte>();
-        }
-
-        return default;
-
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<sbyte> GetAsciiSpan(sbyte* source, int maxLength = -1) => GetAsciiSpan(source, maxLength);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<sbyte> GetAsciiSpan(in sbyte source, int maxLength = -1) => GetAsciiSpan(in source, maxLength);
-
+    
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static ReadOnlySpan<sbyte> GetUtf8Span(this string? source)
     {

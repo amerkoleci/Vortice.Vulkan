@@ -9,7 +9,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Assets\*.spv" CopyToOutputDirectory="Always" />
-    <ProjectReference Include="..\..\Vortice.SpirvCross\Vortice.SpirvCross.csproj" />
     <ProjectReference Include="..\..\Vortice.VulkanMemoryAllocator\Vortice.VulkanMemoryAllocator.csproj" />
     
     <ProjectReference Include="..\Vortice.Vulkan.SampleFramework\Vortice.Vulkan.SampleFramework.csproj" />

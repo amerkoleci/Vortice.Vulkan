@@ -9661,6 +9661,20 @@ public partial struct VkDescriptorSetLayoutHostMappingInfoVALVE
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 nonSeamlessCubeMap;
+	public static VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceNonSeamlessCubeMapFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM
 {
 	public VkStructureType sType;
@@ -9762,13 +9776,19 @@ public partial struct VkRenderPassCreationControlEXT
 [StructLayout(LayoutKind.Sequential)]
 public partial struct VkRenderPassCreationFeedbackInfoEXT
 {
+	public uint postMergeSubpassCount;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkRenderPassCreationFeedbackCreateInfoEXT
+{
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public uint postMergeSubpassCount;
-	public static VkRenderPassCreationFeedbackInfoEXT New()
+	public unsafe VkRenderPassCreationFeedbackInfoEXT* pRenderPassFeedback;
+	public static VkRenderPassCreationFeedbackCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkRenderPassCreationFeedbackInfoEXT instance);
-		instance.sType = VkStructureType.RenderPassCreationFeedbackInfoEXT;
+		Unsafe.SkipInit(out VkRenderPassCreationFeedbackCreateInfoEXT instance);
+		instance.sType = VkStructureType.RenderPassCreationFeedbackCreateInfoEXT;
 		return instance;
 	}
 }
@@ -9776,15 +9796,21 @@ public partial struct VkRenderPassCreationFeedbackInfoEXT
 [StructLayout(LayoutKind.Sequential)]
 public partial struct VkRenderPassSubpassFeedbackInfoEXT
 {
-	public VkStructureType sType;
-	public unsafe void* pNext;
 	public VkSubpassMergeStatusEXT subpassMergeStatus;
 	public unsafe fixed byte description[256];
 	public uint postMergeIndex;
-	public static VkRenderPassSubpassFeedbackInfoEXT New()
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkRenderPassSubpassFeedbackCreateInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public unsafe VkRenderPassSubpassFeedbackInfoEXT* pSubpassFeedback;
+	public static VkRenderPassSubpassFeedbackCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkRenderPassSubpassFeedbackInfoEXT instance);
-		instance.sType = VkStructureType.RenderPassSubpassFeedbackInfoEXT;
+		Unsafe.SkipInit(out VkRenderPassSubpassFeedbackCreateInfoEXT instance);
+		instance.sType = VkStructureType.RenderPassSubpassFeedbackCreateInfoEXT;
 		return instance;
 	}
 }
@@ -10368,6 +10394,183 @@ public partial struct VkMetalSurfaceCreateInfoEXT
 	{
 		Unsafe.SkipInit(out VkMetalSurfaceCreateInfoEXT instance);
 		instance.sType = VkStructureType.MetalSurfaceCreateInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkExportMetalObjectCreateInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkExportMetalObjectTypeFlagsEXT exportObjectType;
+	public static VkExportMetalObjectCreateInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkExportMetalObjectCreateInfoEXT instance);
+		instance.sType = VkStructureType.ExportMetalObjectCreateInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkExportMetalObjectsInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public static VkExportMetalObjectsInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkExportMetalObjectsInfoEXT instance);
+		instance.sType = VkStructureType.ExportMetalObjectsInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkExportMetalDeviceInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public MTLDevice_id mtlDevice;
+	public static VkExportMetalDeviceInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkExportMetalDeviceInfoEXT instance);
+		instance.sType = VkStructureType.ExportMetalDeviceInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkExportMetalCommandQueueInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkQueue queue;
+	public MTLCommandQueue_id mtlCommandQueue;
+	public static VkExportMetalCommandQueueInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkExportMetalCommandQueueInfoEXT instance);
+		instance.sType = VkStructureType.ExportMetalCommandQueueInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkExportMetalBufferInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkDeviceMemory memory;
+	public MTLBuffer_id mtlBuffer;
+	public static VkExportMetalBufferInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkExportMetalBufferInfoEXT instance);
+		instance.sType = VkStructureType.ExportMetalBufferInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkImportMetalBufferInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public MTLBuffer_id mtlBuffer;
+	public static VkImportMetalBufferInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkImportMetalBufferInfoEXT instance);
+		instance.sType = VkStructureType.ImportMetalBufferInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkExportMetalTextureInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkImage image;
+	public VkImageView imageView;
+	public VkBufferView bufferView;
+	public VkImageAspectFlags plane;
+	public MTLTexture_id mtlTexture;
+	public static VkExportMetalTextureInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkExportMetalTextureInfoEXT instance);
+		instance.sType = VkStructureType.ExportMetalTextureInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkImportMetalTextureInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkImageAspectFlags plane;
+	public MTLTexture_id mtlTexture;
+	public static VkImportMetalTextureInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkImportMetalTextureInfoEXT instance);
+		instance.sType = VkStructureType.ImportMetalTextureInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkExportMetalIOSurfaceInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkImage image;
+	public IOSurfaceRef ioSurface;
+	public static VkExportMetalIOSurfaceInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkExportMetalIOSurfaceInfoEXT instance);
+		instance.sType = VkStructureType.ExportMetalIOSurfaceInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkImportMetalIOSurfaceInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public IOSurfaceRef ioSurface;
+	public static VkImportMetalIOSurfaceInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkImportMetalIOSurfaceInfoEXT instance);
+		instance.sType = VkStructureType.ImportMetalIOSurfaceInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkExportMetalSharedEventInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkSemaphore semaphore;
+	public VkEvent @event;
+	public MTLSharedEvent_id mtlSharedEvent;
+	public static VkExportMetalSharedEventInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkExportMetalSharedEventInfoEXT instance);
+		instance.sType = VkStructureType.ExportMetalSharedEventInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkImportMetalSharedEventInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public MTLSharedEvent_id mtlSharedEvent;
+	public static VkImportMetalSharedEventInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkImportMetalSharedEventInfoEXT instance);
+		instance.sType = VkStructureType.ImportMetalSharedEventInfoEXT;
 		return instance;
 	}
 }
