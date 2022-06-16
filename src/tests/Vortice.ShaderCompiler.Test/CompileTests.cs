@@ -1,19 +1,16 @@
 // Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using System;
-using System.IO;
-using Vortice.ShaderCompiler;
-using Xunit;
+using NUnit.Framework;
 
 namespace Vortice.ShaderCompiler.Test;
 
-[TestFixture]
+[TestFixture(TestOf = typeof(Compiler))]
 public class CompileTests
 {
     private string AssetsPath = Path.Combine(AppContext.BaseDirectory, "Assets");
 
-    [Fact]
+    [TestCase]
     public void SingleFileTest()
     {
         string shaderSourceFile = Path.Combine(AssetsPath, "TriangleVertex.glsl");
@@ -23,7 +20,7 @@ public class CompileTests
         {
             using (var result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
             {
-                Assert.Equal(CompilationStatus.Success, result.Status);
+                Assert.AreEqual(CompilationStatus.Success, result.Status);
 
                 var shaderCode = result.GetBytecode().ToArray();
 
@@ -32,7 +29,7 @@ public class CompileTests
         }
     }
 
-    [Fact]
+    [TestCase]
     public void ErrorTest()
     {
         string shaderSourceFile = Path.Combine(AssetsPath, "TriangleVertexError.glsl");
@@ -42,16 +39,16 @@ public class CompileTests
         {
             using (var result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
             {
-                Assert.Equal(CompilationStatus.compilationError, result.Status);
+                Assert.AreEqual(CompilationStatus.compilationError, result.Status);
 
                 var shaderCode = result.GetBytecode().ToArray();
 
-                Assert.Contains("error: 'out_var_ThisIsAnError' : undeclared identifier", result.ErrorMessage);
+                Assert.IsTrue(result.ErrorMessage.Contains("error: 'out_var_ThisIsAnError' : undeclared identifier"));
             }
         }
     }
 
-    [Fact]
+    [TestCase]
     public void IncludeFileTest()
     {
         string shaderSourceFile = Path.Combine(AssetsPath, "TriangleVertexWithInclude.glsl");
@@ -60,9 +57,9 @@ public class CompileTests
         using (var compiler = new Compiler())
         {
             compiler.Includer = new Includer(Path.GetDirectoryName(shaderSourceFile)!);
-            using (var result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
+            using (Result result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
             {
-                Assert.Equal(CompilationStatus.Success, result.Status);
+                Assert.AreEqual(CompilationStatus.Success, result.Status);
 
                 var shaderCode = result.GetBytecode().ToArray();
 

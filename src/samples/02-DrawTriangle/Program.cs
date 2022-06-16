@@ -4,7 +4,6 @@
 using System.Numerics;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
-using static Vortice.Vulkan.VMA;
 
 namespace DrawTriangle;
 
@@ -30,22 +29,11 @@ public static unsafe class Program
         private VkPipelineLayout _pipelineLayout;
         private VkPipeline _pipeline;
         private VkBuffer _vertexBuffer;
-        private VmaAllocation _vertexBufferMemory;
-        private VmaAllocator _allocator;
+        private VkDeviceMemory _vertexBufferMemory;
 
         protected override void Initialize()
         {
             _graphicsDevice = new GraphicsDevice(Name, EnableValidationLayers, MainWindow);
-
-            VmaAllocatorCreateInfo allocatorInfo = new()
-            {
-                //flags = VmaAllocatorCreateFlags.KHRDedicatedAllocation | VmaAllocatorCreateFlags.KHRBindMemory2,
-                physicalDevice = _graphicsDevice.PhysicalDevice,
-                device = _graphicsDevice.VkDevice,
-                instance = _graphicsDevice.VkInstance,
-                vulkanApiVersion = VkVersion.Version_1_2
-            };
-            VkResult result = vmaCreateAllocator(&allocatorInfo, out _allocator);
 
             VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new()
             {
@@ -207,26 +195,36 @@ public static unsafe class Program
                 };
 
                 // Create a host-visible buffer to copy the vertex data to (staging buffer)
-                VmaAllocationCreateInfo memoryInfo = new()
-                {
-                    flags = VmaAllocationCreateFlags.HostAccessSequentialWrite | VmaAllocationCreateFlags.Mapped,
-                    usage = VmaMemoryUsage.Auto
-                };
+                vkCreateBuffer(_graphicsDevice, &vertexBufferInfo, null, out VkBuffer stagingBuffer).CheckResult();
 
-                VmaAllocationInfo allocationInfo;
-                vmaCreateBuffer(_allocator, &vertexBufferInfo,
-                    &memoryInfo,
-                    out VkBuffer stagingBuffer,
-                    out VmaAllocation stagingBufferAllocation,
-                    &allocationInfo).CheckResult();
+                vkGetBufferMemoryRequirements(_graphicsDevice, stagingBuffer, out VkMemoryRequirements memReqs);
+
+                VkMemoryAllocateInfo memAlloc = new()
+                {
+                    sType = VkStructureType.MemoryAllocateInfo,
+                    allocationSize = memReqs.size,
+                    // Request a host visible memory type that can be used to copy our data do
+                    // Also request it to be coherent, so that writes are visible to the GPU right after unmapping the buffer
+                    memoryTypeIndex = _graphicsDevice.GetMemoryTypeIndex(memReqs.memoryTypeBits, VkMemoryPropertyFlags.HostVisible | VkMemoryPropertyFlags.HostCoherent)
+                };
+                vkAllocateMemory(_graphicsDevice, &memAlloc, null, out VkDeviceMemory stagingBufferMemory);
 
                 // Map and copy
-                void* pMappedData = allocationInfo.pMappedData;
+                void* pMappedData;
+                vkMapMemory(_graphicsDevice, stagingBufferMemory, 0, memAlloc.allocationSize, 0, &pMappedData).CheckResult();
                 Span<VertexPositionColor> destinationData = new(pMappedData, sourceData.Length);
                 sourceData.CopyTo(destinationData);
+                vkUnmapMemory(_graphicsDevice, stagingBufferMemory);
+                vkBindBufferMemory(_graphicsDevice, stagingBuffer, stagingBufferMemory, 0).CheckResult();
 
                 vertexBufferInfo.usage = VkBufferUsageFlags.VertexBuffer | VkBufferUsageFlags.TransferDst;
-                vmaCreateBuffer(_allocator, &vertexBufferInfo, out _vertexBuffer, out _vertexBufferMemory).CheckResult();
+                vkCreateBuffer(_graphicsDevice, &vertexBufferInfo, null, out _vertexBuffer).CheckResult();
+
+                vkGetBufferMemoryRequirements(_graphicsDevice, _vertexBuffer, out memReqs);
+                memAlloc.allocationSize = memReqs.size;
+                memAlloc.memoryTypeIndex = _graphicsDevice.GetMemoryTypeIndex(memReqs.memoryTypeBits, VkMemoryPropertyFlags.DeviceLocal);
+                vkAllocateMemory(_graphicsDevice, &memAlloc, null, out _vertexBufferMemory).CheckResult();
+                vkBindBufferMemory(_graphicsDevice, _vertexBuffer, _vertexBufferMemory, 0).CheckResult();
 
                 VkCommandBuffer copyCmd = _graphicsDevice.GetCommandBuffer(true);
 
@@ -240,7 +238,8 @@ public static unsafe class Program
                 // Flushing the command buffer will also submit it to the queue and uses a fence to ensure that all commands have been executed before returning
                 _graphicsDevice.FlushCommandBuffer(copyCmd);
 
-                vmaDestroyBuffer(_allocator, stagingBuffer, stagingBufferAllocation);
+                vkDestroyBuffer(_graphicsDevice, stagingBuffer);
+                vkFreeMemory(_graphicsDevice, stagingBufferMemory);
             }
         }
 
@@ -251,8 +250,8 @@ public static unsafe class Program
 
             vkDestroyPipelineLayout(_graphicsDevice, _pipelineLayout);
             vkDestroyPipeline(_graphicsDevice, _pipeline);
-            vmaDestroyBuffer(_allocator, _vertexBuffer, _vertexBufferMemory);
-            vmaDestroyAllocator(_allocator);
+            vkDestroyBuffer(_graphicsDevice, _vertexBuffer);
+            vkFreeMemory(_graphicsDevice, _vertexBufferMemory);
 
             _graphicsDevice.Dispose();
 
