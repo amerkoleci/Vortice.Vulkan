@@ -9426,6 +9426,49 @@ public partial struct VkPhysicalDevicePipelinePropertiesFeaturesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 multisampledRenderToSingleSampled;
+	public static VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkSubpassResolvePerformanceQueryEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 optimal;
+	public static VkSubpassResolvePerformanceQueryEXT New()
+	{
+		Unsafe.SkipInit(out VkSubpassResolvePerformanceQueryEXT instance);
+		instance.sType = VkStructureType.SubpassResolvePerformanceQueryEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkMultisampledRenderToSingleSampledInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 multisampledRenderToSingleSampledEnable;
+	public VkSampleCountFlags rasterizationSamples;
+	public static VkMultisampledRenderToSingleSampledInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkMultisampledRenderToSingleSampledInfoEXT instance);
+		instance.sType = VkStructureType.MultisampledRenderToSingleSampledInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT
 {
 	public VkStructureType sType;
@@ -9811,6 +9854,64 @@ public partial struct VkRenderPassSubpassFeedbackCreateInfoEXT
 	{
 		Unsafe.SkipInit(out VkRenderPassSubpassFeedbackCreateInfoEXT instance);
 		instance.sType = VkStructureType.RenderPassSubpassFeedbackCreateInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 shaderModuleIdentifier;
+	public static VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderModuleIdentifierFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public unsafe fixed byte shaderModuleIdentifierAlgorithmUUID[16];
+	public static VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderModuleIdentifierPropertiesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPipelineShaderStageModuleIdentifierCreateInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint identifierSize;
+	public unsafe byte* pIdentifier;
+	public static VkPipelineShaderStageModuleIdentifierCreateInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkPipelineShaderStageModuleIdentifierCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineShaderStageModuleIdentifierCreateInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkShaderModuleIdentifierEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint identifierSize;
+	public unsafe fixed byte identifier[32];
+	public static VkShaderModuleIdentifierEXT New()
+	{
+		Unsafe.SkipInit(out VkShaderModuleIdentifierEXT instance);
+		instance.sType = VkStructureType.ShaderModuleIdentifierEXT;
 		return instance;
 	}
 }
@@ -10595,7 +10696,7 @@ public partial struct VkQueueFamilyQueryResultStatusProperties2KHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public VkBool32 supported;
+	public VkBool32 queryResultStatusSupport;
 	public static VkQueueFamilyQueryResultStatusProperties2KHR New()
 	{
 		Unsafe.SkipInit(out VkQueueFamilyQueryResultStatusProperties2KHR instance);
@@ -10678,7 +10779,6 @@ public partial struct VkPhysicalDeviceVideoFormatInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImageUsageFlags imageUsage;
-	public unsafe VkVideoProfilesKHR* pVideoProfiles;
 	public static VkPhysicalDeviceVideoFormatInfoKHR New()
 	{
 		Unsafe.SkipInit(out VkPhysicalDeviceVideoFormatInfoKHR instance);
@@ -10693,6 +10793,11 @@ public partial struct VkVideoFormatPropertiesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkFormat format;
+	public VkComponentMapping componentMapping;
+	public VkImageCreateFlags imageCreateFlags;
+	public VkImageType imageType;
+	public VkImageTiling imageTiling;
+	public VkImageUsageFlags imageUsageFlags;
 	public static VkVideoFormatPropertiesKHR New()
 	{
 		Unsafe.SkipInit(out VkVideoFormatPropertiesKHR instance);

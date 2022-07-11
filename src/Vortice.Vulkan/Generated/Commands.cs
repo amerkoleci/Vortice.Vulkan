@@ -2815,6 +2815,18 @@ unsafe partial class Vulkan
 		vkGetDescriptorSetHostMappingVALVE_ptr(device, descriptorSet, ppData);
 	}
 
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkShaderModule, VkShaderModuleIdentifierEXT*, void> vkGetShaderModuleIdentifierEXT_ptr;
+	public static void vkGetShaderModuleIdentifierEXT(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* identifier)
+	{
+		vkGetShaderModuleIdentifierEXT_ptr(device, shaderModule, identifier);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkShaderModuleCreateInfo*, VkShaderModuleIdentifierEXT*, void> vkGetShaderModuleCreateInfoIdentifierEXT_ptr;
+	public static void vkGetShaderModuleCreateInfoIdentifierEXT(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkShaderModuleIdentifierEXT* identifier)
+	{
+		vkGetShaderModuleCreateInfoIdentifierEXT_ptr(device, createInfo, identifier);
+	}
+
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
 	public static VkResult vkCreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
 	{
@@ -3554,6 +3566,8 @@ unsafe partial class Vulkan
 		vkSetDeviceMemoryPriorityEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, float, void>) load(context, nameof(vkSetDeviceMemoryPriorityEXT));
 		vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetBindingReferenceVALVE*, VkDescriptorSetLayoutHostMappingInfoVALVE*, void>) load(context, nameof(vkGetDescriptorSetLayoutHostMappingInfoVALVE));
 		vkGetDescriptorSetHostMappingVALVE_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSet, void*, void>) load(context, nameof(vkGetDescriptorSetHostMappingVALVE));
+		vkGetShaderModuleIdentifierEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkShaderModule, VkShaderModuleIdentifierEXT*, void>) load(context, nameof(vkGetShaderModuleIdentifierEXT));
+		vkGetShaderModuleCreateInfoIdentifierEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkShaderModuleCreateInfo*, VkShaderModuleIdentifierEXT*, void>) load(context, nameof(vkGetShaderModuleCreateInfoIdentifierEXT));
 		vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));
 		vkDestroyAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyAccelerationStructureKHR));
 		vkCmdBuildAccelerationStructuresKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void>) load(context, nameof(vkCmdBuildAccelerationStructuresKHR));

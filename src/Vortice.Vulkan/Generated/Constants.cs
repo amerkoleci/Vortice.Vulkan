@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 217
+	/// VK_HEADER_VERSION = 220
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 217;
+	public const uint VK_HEADER_VERSION = 220;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -2903,6 +2903,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_EXT_PIPELINE_PROPERTIES_EXTENSION_NAME = "VK_EXT_pipeline_properties";
 	/// <summary>
+	/// VK_EXT_multisampled_render_to_single_sampled = 1
+	/// </summary>
+	public const uint VK_EXT_multisampled_render_to_single_sampled = 1;
+	/// <summary>
+	/// VK_EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_EXTENSION_NAME = "VK_EXT_multisampled_render_to_single_sampled"
+	/// </summary>
+	public const string VK_EXT_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_EXTENSION_NAME = "VK_EXT_multisampled_render_to_single_sampled";
+	/// <summary>
 	/// VK_EXT_extended_dynamic_state2 = 1
 	/// </summary>
 	public const uint VK_EXT_extended_dynamic_state2 = 1;
@@ -3111,6 +3123,22 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_EXT_SUBPASS_MERGE_FEEDBACK_EXTENSION_NAME = "VK_EXT_subpass_merge_feedback";
 	/// <summary>
+	/// VK_EXT_shader_module_identifier = 1
+	/// </summary>
+	public const uint VK_EXT_shader_module_identifier = 1;
+	/// <summary>
+	/// VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT = 32U
+	/// </summary>
+	public const uint VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT = 32U;
+	/// <summary>
+	/// VK_EXT_SHADER_MODULE_IDENTIFIER_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_SHADER_MODULE_IDENTIFIER_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_SHADER_MODULE_IDENTIFIER_EXTENSION_NAME = "VK_EXT_shader_module_identifier"
+	/// </summary>
+	public const string VK_EXT_SHADER_MODULE_IDENTIFIER_EXTENSION_NAME = "VK_EXT_shader_module_identifier";
+	/// <summary>
 	/// VK_KHR_acceleration_structure = 1
 	/// </summary>
 	public const uint VK_KHR_acceleration_structure = 1;
@@ -3235,9 +3263,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_KHR_video_queue = 1;
 	/// <summary>
-	/// VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 3
+	/// VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 4
 	/// </summary>
-	public const uint VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 3;
+	public const uint VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 4;
 	/// <summary>
 	/// VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue"
 	/// </summary>
