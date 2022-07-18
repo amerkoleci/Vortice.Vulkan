@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 220
+	/// VK_HEADER_VERSION = 221
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 220;
+	public const uint VK_HEADER_VERSION = 221;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -1402,6 +1402,18 @@ public static partial class Vulkan
 	/// VK_EXT_ASTC_DECODE_MODE_EXTENSION_NAME = "VK_EXT_astc_decode_mode"
 	/// </summary>
 	public const string VK_EXT_ASTC_DECODE_MODE_EXTENSION_NAME = "VK_EXT_astc_decode_mode";
+	/// <summary>
+	/// VK_EXT_pipeline_robustness = 1
+	/// </summary>
+	public const uint VK_EXT_pipeline_robustness = 1;
+	/// <summary>
+	/// VK_EXT_PIPELINE_ROBUSTNESS_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_PIPELINE_ROBUSTNESS_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_PIPELINE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_pipeline_robustness"
+	/// </summary>
+	public const string VK_EXT_PIPELINE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_pipeline_robustness";
 	/// <summary>
 	/// VK_EXT_conditional_rendering = 1
 	/// </summary>

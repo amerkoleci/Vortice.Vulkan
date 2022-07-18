@@ -6210,6 +6210,54 @@ public partial struct VkPhysicalDeviceASTCDecodeFeaturesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDevicePipelineRobustnessFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 pipelineRobustness;
+	public static VkPhysicalDevicePipelineRobustnessFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDevicePipelineRobustnessFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDevicePipelineRobustnessFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDevicePipelineRobustnessPropertiesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessStorageBuffers;
+	public VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessUniformBuffers;
+	public VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessVertexInputs;
+	public VkPipelineRobustnessImageBehaviorEXT defaultRobustnessImages;
+	public static VkPhysicalDevicePipelineRobustnessPropertiesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDevicePipelineRobustnessPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDevicePipelineRobustnessPropertiesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPipelineRobustnessCreateInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkPipelineRobustnessBufferBehaviorEXT storageBuffers;
+	public VkPipelineRobustnessBufferBehaviorEXT uniformBuffers;
+	public VkPipelineRobustnessBufferBehaviorEXT vertexInputs;
+	public VkPipelineRobustnessImageBehaviorEXT images;
+	public static VkPipelineRobustnessCreateInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkPipelineRobustnessCreateInfoEXT instance);
+		instance.sType = VkStructureType.PipelineRobustnessCreateInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkConditionalRenderingBeginInfoEXT
 {
 	public VkStructureType sType;

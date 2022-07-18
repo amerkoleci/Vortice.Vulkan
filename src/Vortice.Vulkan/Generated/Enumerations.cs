@@ -382,6 +382,9 @@ public enum VkStructureType
 	ViSurfaceCreateInfoNN = 1000062000,
 	ImageViewASTCDecodeModeEXT = 1000067000,
 	PhysicalDeviceASTCDecodeFeaturesEXT = 1000067001,
+	PipelineRobustnessCreateInfoEXT = 1000068000,
+	PhysicalDevicePipelineRobustnessFeaturesEXT = 1000068001,
+	PhysicalDevicePipelineRobustnessPropertiesEXT = 1000068002,
 	ImportMemoryWin32HandleInfoKHR = 1000073000,
 	ExportMemoryWin32HandleInfoKHR = 1000073001,
 	MemoryWin32HandlePropertiesKHR = 1000073002,
@@ -1636,8 +1639,8 @@ public enum VkFilter
 {
 	Nearest = 0,
 	Linear = 1,
-	CubicImg = 1000015000,
-	CubicEXT = CubicImg,
+	CubicEXT = 1000015000,
+	CubicImg = CubicEXT,
 }
 
 public enum VkSamplerAddressMode
@@ -1810,14 +1813,15 @@ public enum VkFormatFeatureFlags
 	Disjoint = 4194304,
 	CositedChromaSamples = 8388608,
 	SampledImageFilterMinmax = 65536,
-	SampledImageFilterCubicImg = 8192,
 	VideoDecodeOutputKHR = 33554432,
 	VideoDecodeDpbKHR = 67108864,
 	AccelerationStructureVertexBufferKHR = 536870912,
+	SampledImageFilterCubicEXT = 8192,
 	FragmentDensityMapEXT = 16777216,
 	FragmentShadingRateAttachmentKHR = 1073741824,
 	VideoEncodeInputKHR = 134217728,
 	VideoEncodeDpbKHR = 268435456,
+	SampledImageFilterCubicImg = SampledImageFilterCubicEXT,
 	TransferSrcKHR = TransferSrc,
 	TransferDstKHR = TransferDst,
 	SampledImageFilterMinmaxEXT = SampledImageFilterMinmax,
@@ -1828,7 +1832,6 @@ public enum VkFormatFeatureFlags
 	SampledImageYcbcrConversionChromaReconstructionExplicitForceableKHR = SampledImageYcbcrConversionChromaReconstructionExplicitForceable,
 	DisjointKHR = Disjoint,
 	CositedChromaSamplesKHR = CositedChromaSamples,
-	SampledImageFilterCubicEXT = SampledImageFilterCubicImg,
 }
 
 [Flags]
@@ -2953,6 +2956,22 @@ public enum VkValidationCheckEXT
 {
 	All = 0,
 	Shaders = 1,
+}
+
+public enum VkPipelineRobustnessBufferBehaviorEXT
+{
+	DeviceDefault = 0,
+	Disabled = 1,
+	RobustBufferAccess = 2,
+	RobustBufferAccess2 = 3,
+}
+
+public enum VkPipelineRobustnessImageBehaviorEXT
+{
+	DeviceDefault = 0,
+	Disabled = 1,
+	RobustImageAccess = 2,
+	RobustImageAccess2 = 3,
 }
 
 [Flags]
