@@ -5,7 +5,7 @@
 [![Vulkan](https://img.shields.io/badge/vulkan-1.3.221-brightgreen.svg)](https://www.khronos.org/vulkan/)
 [![NuGet](https://img.shields.io/nuget/v/Vortice.Vulkan.svg)](https://www.nuget.org/packages/Vortice.Vulkan)
 
-**Vortice.Vulkan** is a .NET Standard 2.0 and .NET 6.0 low-level bindings for [Vulkan](https://www.khronos.org/vulkan/) API. 
+**Vortice.Vulkan** is a .NET Standard 2.0 and .NET 6.0 low-level bindings for [Vulkan](https://www.khronos.org/vulkan/), [VulkanMemoryAllocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator) and [shaderc](https://github.com/google/shaderc).
 
 ## Sponsors
 To further help development of these bindings library or other projects, please consider [SPONSOR](https://github.com/sponsors/amerkoleci) my profile in order to allow faster issue triaging and new features to be implemented.
