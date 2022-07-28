@@ -4,6 +4,8 @@
     <TargetFrameworks>netstandard2.0;net6.0;</TargetFrameworks>
     <Description>Vulkan low level bindings.</Description>
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
+    <VersionPrefix>1.5.16</VersionPrefix>
+    <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +17,7 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="System.Memory" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" />
+    <PackageReference Include="Microsoft.Bcl.HashCode" />
   </ItemGroup>
 
 </Project>

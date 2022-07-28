@@ -83,7 +83,7 @@ public static partial class CsCodeGenerator
                 var hasArrayReturn = false;
                 var countArgumentArrayIndex = 0;
 
-                foreach (var parameter in function.Parameters)
+                foreach (CppParameter parameter in function.Parameters)
                 {
                     if (parameter.Name.EndsWith("count", StringComparison.OrdinalIgnoreCase))
                     {
@@ -91,7 +91,7 @@ public static partial class CsCodeGenerator
                         continue;
                     }
 
-                    if (CanBeUsedAsOutput(parameter.Type, out var cppTypeDeclaration))
+                    if (CanBeUsedAsOutput(parameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
                     {
                         returnVariableName = GetParameterName(parameter.Name);
                         returnArrayTypeName = GetCsTypeName(cppTypeDeclaration);
@@ -118,14 +118,14 @@ public static partial class CsCodeGenerator
                 if (!hasArrayReturn)
                 {
                     // Calls without return array.
-                    var returnType = GetCsTypeName(function.ReturnType);
+                    string returnType = GetCsTypeName(function.ReturnType);
 
-                    var argumentsSingleElementBuilder = new StringBuilder();
-                    var argumentsReadOnlySpanBuilder = new StringBuilder();
-                    var index = 0;
+                    StringBuilder argumentsSingleElementBuilder = new();
+                    StringBuilder argumentsReadOnlySpanBuilder = new();
 
-                    var invokeSingleElementParameters = new List<string>();
-                    var invokeElementsParameters = new List<string>();
+                    int index = 0;
+                    List<string> invokeSingleElementParameters = new();
+                    List<string> invokeElementsParameters = new();
 
                     foreach (CppParameter cppParameter in newParameters)
                     {

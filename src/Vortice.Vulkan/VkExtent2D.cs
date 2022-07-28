@@ -44,13 +44,7 @@ public partial struct VkExtent2D : IEquatable<VkExtent2D>
     public bool Equals(VkExtent2D other) => width == other.width && height == other.height;
 
     /// <inheritdoc/>
-    public override int GetHashCode()
-    {
-        unchecked
-        {
-            return (width.GetHashCode() * 397) ^ height.GetHashCode();
-        }
-    }
+    public override int GetHashCode() => HashCode.Combine(width, height);
 
     /// <inheritdoc/>
     public override readonly string ToString() => $"{{Width={width},Height={height}}}";

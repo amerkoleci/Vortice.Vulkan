@@ -582,9 +582,31 @@ public static unsafe partial class Vulkan
         return vkCreatePipelineLayout(device, &createInfo, null, out pipelineLayout);
     }
 
+    public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, float x, float y, float width, float height, float minDepth = 0.0f, float maxDepth = 1.0f)
+    {
+        VkViewport viewport = new(x, y, width, height, minDepth, maxDepth);
+        vkCmdSetViewport_ptr(commandBuffer, 0, 1, &viewport);
+    }
+
     public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, VkViewport viewport)
     {
-        vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
+        vkCmdSetViewport_ptr(commandBuffer, 0, 1, &viewport);
+    }
+
+    public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, VkViewport[] viewports)
+    {
+        fixed (VkViewport* viewportsPtr = viewports)
+        {
+            vkCmdSetViewport_ptr(commandBuffer, 0, viewports.Length, viewportsPtr);
+        }
+    }
+
+    public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, ReadOnlySpan<VkViewport> viewports)
+    {
+        fixed (VkViewport* viewportsPtr = viewports)
+        {
+            vkCmdSetViewport_ptr(commandBuffer, 0, viewports.Length, viewportsPtr);
+        }
     }
 
     public static void vkCmdSetViewport<T>(VkCommandBuffer commandBuffer, uint firstViewport, T viewport) where T : unmanaged
@@ -595,10 +617,10 @@ public static unsafe partial class Vulkan
             throw new ArgumentException($"Type T must have same size and layout as {nameof(VkViewport)}", nameof(viewport));
         }
 #endif
-        vkCmdSetViewport(commandBuffer, firstViewport, 1, (VkViewport*)&viewport);
+        vkCmdSetViewport_ptr(commandBuffer, firstViewport, 1, (VkViewport*)&viewport);
     }
 
-    public static void vkCmdSetViewport<T>(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, T* viewports) where T : unmanaged
+    public static void vkCmdSetViewport<T>(VkCommandBuffer commandBuffer, uint firstViewport, int viewportCount, T* viewports) where T : unmanaged
     {
 #if DEBUG
         if (sizeof(T) != sizeof(VkViewport))
@@ -607,12 +629,41 @@ public static unsafe partial class Vulkan
         }
 #endif
 
-        vkCmdSetViewport(commandBuffer, firstViewport, viewportCount, (VkViewport*)viewports);
+        vkCmdSetViewport_ptr(commandBuffer, firstViewport, viewportCount, (VkViewport*)viewports);
+    }
+
+    public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, int x, int y, int width, int height)
+    {
+        VkRect2D scissor = new(x, y, width, height);
+        vkCmdSetScissor_ptr(commandBuffer, 0, 1, &scissor);
     }
 
     public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, VkRect2D scissor)
     {
-        vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
+        vkCmdSetScissor_ptr(commandBuffer, 0, 1, &scissor);
+    }
+
+    public static void vkCmdSetScissor<T>(VkCommandBuffer commandBuffer, uint firstScissor, T scissor) where T : unmanaged
+    {
+#if DEBUG
+        if (sizeof(T) != sizeof(VkRect2D))
+        {
+            throw new ArgumentException($"Type T must have same size and layout as {nameof(VkRect2D)}", nameof(scissor));
+        }
+#endif
+        vkCmdSetScissor_ptr(commandBuffer, firstScissor, 1, (VkRect2D*)&scissor);
+    }
+
+    public static void vkCmdSetScissor<T>(VkCommandBuffer commandBuffer, uint firstScissor, int scissorCount, T* scissorRects) where T : unmanaged
+    {
+#if DEBUG
+        if (sizeof(T) != sizeof(VkRect2D))
+        {
+            throw new ArgumentException($"Type T must have same size and layout as {nameof(VkRect2D)}", nameof(scissorRects));
+        }
+#endif
+
+        vkCmdSetScissor_ptr(commandBuffer, firstScissor, scissorCount, (VkRect2D*)scissorRects);
     }
 
     public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float red, float green, float blue, float alpha)

@@ -121,19 +121,7 @@ public partial struct VkViewport : IEquatable<VkViewport>
     }
 
     /// <inheritdoc/>
-    public override int GetHashCode()
-    {
-        unchecked
-        {
-            int hashCode = x.GetHashCode();
-            hashCode = (hashCode * 397) ^ y.GetHashCode();
-            hashCode = (hashCode * 397) ^ width.GetHashCode();
-            hashCode = (hashCode * 397) ^ height.GetHashCode();
-            hashCode = (hashCode * 397) ^ minDepth.GetHashCode();
-            hashCode = (hashCode * 397) ^ maxDepth.GetHashCode();
-            return hashCode;
-        }
-    }
+    public override int GetHashCode() => HashCode.Combine(x, y, width, height, minDepth, maxDepth);
 
     /// <inheritdoc/>
     public override readonly string ToString() => $"{{X={x},Y={y},Width={width},Height={height},MinDepth={minDepth},MaxDepth={maxDepth}}}";

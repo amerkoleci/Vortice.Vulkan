@@ -46,16 +46,7 @@ public partial struct VkExtent3D : IEquatable<VkExtent3D>
     public bool Equals(VkExtent3D other) => width == other.width && height == other.height && depth == other.depth;
 
     /// <inheritdoc/>
-    public override int GetHashCode()
-    {
-        unchecked
-        {
-            int hashCode = width.GetHashCode();
-            hashCode = (hashCode * 397) ^ height.GetHashCode();
-            hashCode = (hashCode * 397) ^ depth.GetHashCode();
-            return hashCode;
-        }
-    }
+    public override int GetHashCode() => HashCode.Combine(width, height, depth);
 
     /// <inheritdoc/>
     public override readonly string ToString() => $"{{Width={width},Height={height},Depth={depth}}}";

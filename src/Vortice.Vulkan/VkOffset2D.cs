@@ -28,13 +28,7 @@ public partial struct VkOffset2D : IEquatable<VkOffset2D>
     public bool Equals(VkOffset2D other) => x == other.x && y == other.y;
 
     /// <inheritdoc/>
-    public override int GetHashCode()
-    {
-        unchecked
-        {
-            return (x * 397) ^ y;
-        }
-    }
+    public override int GetHashCode() => HashCode.Combine(x, y);
 
     /// <inheritdoc/>
     public override readonly string ToString() => $"{{X={x},Y={y}}}";

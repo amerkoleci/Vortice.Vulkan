@@ -279,7 +279,7 @@ public static partial class CsCodeGenerator
         }
 
         string callArgumentString = callArgumentStringBuilder.ToString();
-        writer.WriteLine($"{function.Name}({callArgumentString}){postCall};");
+        writer.WriteLine($"{function.Name}_ptr({callArgumentString}){postCall};");
     }
 
     private static bool IsInstanceFunction(string name)

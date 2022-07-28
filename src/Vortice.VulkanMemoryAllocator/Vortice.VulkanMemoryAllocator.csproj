@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net6.0;</TargetFrameworks>
-    <Description>https://github.com/google/shaderc bindings.</Description>
+    <Description>VulkanMemoryAllocator bindings.</Description>
     <IncludeContentInPack>true</IncludeContentInPack>
-    <VersionPrefix>1.5.15</VersionPrefix>
-    <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
+    <RootNamespace>Vortice.Vulkan</RootNamespace>
+    <VersionPrefix>1.0.4</VersionPrefix>
+    <VersionSuffix Condition="'$(VersionSuffix)' == ''">beta</VersionSuffix>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,10 @@
     <Content Include="build\**" PackagePath="build" Pack="true" />
     <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="lib\**" PackagePath="lib" Pack="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vortice.Vulkan\Vortice.Vulkan.csproj" />
   </ItemGroup>
 
 </Project>

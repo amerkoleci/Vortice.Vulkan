@@ -13,7 +13,7 @@ public unsafe partial struct VkRect2D : IEquatable<VkRect2D>
     /// <summary>
     /// An <see cref="VkRect2D"/> with all of its components set to zero.
     /// </summary>
-    public static readonly VkRect2D Zero = new VkRect2D(VkOffset2D.Zero, VkExtent2D.Zero);
+    public static readonly VkRect2D Zero = new(VkOffset2D.Zero, VkExtent2D.Zero);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="VkRect2D"/> structure.
@@ -91,15 +91,7 @@ public unsafe partial struct VkRect2D : IEquatable<VkRect2D>
     public bool Equals(VkRect2D other) => offset.Equals(other.offset) && extent.Equals(other.extent);
 
     /// <inheritdoc/>
-    public override int GetHashCode()
-    {
-        unchecked
-        {
-            int hashCode = offset.GetHashCode();
-            hashCode = (hashCode * 397) ^ extent.GetHashCode();
-            return hashCode;
-        }
-    }
+    public override int GetHashCode() => HashCode.Combine(offset, extent);
 
     /// <inheritdoc/>
     public override readonly string ToString() => $"{{Offset={offset},Extent={extent}}}";

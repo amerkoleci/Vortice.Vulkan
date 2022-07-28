@@ -7,8 +7,6 @@
 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>CS1591;CS1701</NoWarn>
-
-    <Version>1.5.15</Version>
   </PropertyGroup>
 
   <PropertyGroup>
