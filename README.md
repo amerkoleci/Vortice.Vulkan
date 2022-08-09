@@ -1,6 +1,6 @@
 # Vortice.Vulkan
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/amerkoleci/Vortice.Vulkan/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/amerkoleci/Vortice.Vulkan/blob/main/LICENSE)
 [![Build status](https://github.com/amerkoleci/Vortice.Vulkan/workflows/Build/badge.svg)](https://github.com/amerkoleci/Vortice.Vulkan/actions)
 [![Vulkan](https://img.shields.io/badge/vulkan-1.3.221-brightgreen.svg)](https://www.khronos.org/vulkan/)
 [![NuGet](https://img.shields.io/nuget/v/Vortice.Vulkan.svg)](https://www.nuget.org/packages/Vortice.Vulkan)
