@@ -2827,6 +2827,18 @@ unsafe partial class Vulkan
 		vkGetShaderModuleCreateInfoIdentifierEXT_ptr(device, createInfo, identifier);
 	}
 
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkFramebuffer, int*, VkTilePropertiesQCOM*, VkResult> vkGetFramebufferTilePropertiesQCOM_ptr;
+	public static VkResult vkGetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, int* propertiesCount, VkTilePropertiesQCOM* properties)
+	{
+		return vkGetFramebufferTilePropertiesQCOM_ptr(device, framebuffer, propertiesCount, properties);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkRenderingInfo*, VkTilePropertiesQCOM*, VkResult> vkGetDynamicRenderingTilePropertiesQCOM_ptr;
+	public static VkResult vkGetDynamicRenderingTilePropertiesQCOM(VkDevice device, VkRenderingInfo* renderingInfo, VkTilePropertiesQCOM* properties)
+	{
+		return vkGetDynamicRenderingTilePropertiesQCOM_ptr(device, renderingInfo, properties);
+	}
+
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
 	public static VkResult vkCreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
 	{
@@ -3007,8 +3019,8 @@ unsafe partial class Vulkan
 		return vkCreateViSurfaceNN_ptr(instance, createInfo, allocator, surface);
 	}
 
-	private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkVideoProfileKHR*, VkVideoCapabilitiesKHR*, VkResult> vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr;
-	public static VkResult vkGetPhysicalDeviceVideoCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkVideoProfileKHR* videoProfile, VkVideoCapabilitiesKHR* capabilities)
+	private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkVideoProfileInfoKHR*, VkVideoCapabilitiesKHR*, VkResult> vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr;
+	public static VkResult vkGetPhysicalDeviceVideoCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkVideoProfileInfoKHR* videoProfile, VkVideoCapabilitiesKHR* capabilities)
 	{
 		return vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr(physicalDevice, videoProfile, capabilities);
 	}
@@ -3031,16 +3043,16 @@ unsafe partial class Vulkan
 		vkDestroyVideoSessionKHR_ptr(device, videoSession, allocator);
 	}
 
-	private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, int*, VkVideoGetMemoryPropertiesKHR*, VkResult> vkGetVideoSessionMemoryRequirementsKHR_ptr;
-	public static VkResult vkGetVideoSessionMemoryRequirementsKHR(VkDevice device, VkVideoSessionKHR videoSession, int* videoSessionMemoryRequirementsCount, VkVideoGetMemoryPropertiesKHR* videoSessionMemoryRequirements)
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, int*, VkVideoSessionMemoryRequirementsKHR*, VkResult> vkGetVideoSessionMemoryRequirementsKHR_ptr;
+	public static VkResult vkGetVideoSessionMemoryRequirementsKHR(VkDevice device, VkVideoSessionKHR videoSession, int* memoryRequirementsCount, VkVideoSessionMemoryRequirementsKHR* memoryRequirements)
 	{
-		return vkGetVideoSessionMemoryRequirementsKHR_ptr(device, videoSession, videoSessionMemoryRequirementsCount, videoSessionMemoryRequirements);
+		return vkGetVideoSessionMemoryRequirementsKHR_ptr(device, videoSession, memoryRequirementsCount, memoryRequirements);
 	}
 
-	private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, int, VkVideoBindMemoryKHR*, VkResult> vkBindVideoSessionMemoryKHR_ptr;
-	public static VkResult vkBindVideoSessionMemoryKHR(VkDevice device, VkVideoSessionKHR videoSession, int videoSessionBindMemoryCount, VkVideoBindMemoryKHR* videoSessionBindMemories)
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, int, VkBindVideoSessionMemoryInfoKHR*, VkResult> vkBindVideoSessionMemoryKHR_ptr;
+	public static VkResult vkBindVideoSessionMemoryKHR(VkDevice device, VkVideoSessionKHR videoSession, int bindSessionMemoryInfoCount, VkBindVideoSessionMemoryInfoKHR* bindSessionMemoryInfos)
 	{
-		return vkBindVideoSessionMemoryKHR_ptr(device, videoSession, videoSessionBindMemoryCount, videoSessionBindMemories);
+		return vkBindVideoSessionMemoryKHR_ptr(device, videoSession, bindSessionMemoryInfoCount, bindSessionMemoryInfos);
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionParametersCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionParametersKHR*, VkResult> vkCreateVideoSessionParametersKHR_ptr;
@@ -3182,7 +3194,7 @@ unsafe partial class Vulkan
 		vkCreateMacOSSurfaceMVK_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateMacOSSurfaceMVK));
 		vkCreateMetalSurfaceEXT_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateMetalSurfaceEXT));
 		vkCreateViSurfaceNN_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateViSurfaceNN));
-		vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkVideoProfileKHR*, VkVideoCapabilitiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoCapabilitiesKHR));
+		vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkVideoProfileInfoKHR*, VkVideoCapabilitiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoCapabilitiesKHR));
 		vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceVideoFormatInfoKHR*, int*, VkVideoFormatPropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoFormatPropertiesKHR));
 	}
 	private static void GenLoadDevice(IntPtr context, LoadFunction load)
@@ -3568,6 +3580,8 @@ unsafe partial class Vulkan
 		vkGetDescriptorSetHostMappingVALVE_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSet, void*, void>) load(context, nameof(vkGetDescriptorSetHostMappingVALVE));
 		vkGetShaderModuleIdentifierEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkShaderModule, VkShaderModuleIdentifierEXT*, void>) load(context, nameof(vkGetShaderModuleIdentifierEXT));
 		vkGetShaderModuleCreateInfoIdentifierEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkShaderModuleCreateInfo*, VkShaderModuleIdentifierEXT*, void>) load(context, nameof(vkGetShaderModuleCreateInfoIdentifierEXT));
+		vkGetFramebufferTilePropertiesQCOM_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkFramebuffer, int*, VkTilePropertiesQCOM*, VkResult>) load(context, nameof(vkGetFramebufferTilePropertiesQCOM));
+		vkGetDynamicRenderingTilePropertiesQCOM_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkRenderingInfo*, VkTilePropertiesQCOM*, VkResult>) load(context, nameof(vkGetDynamicRenderingTilePropertiesQCOM));
 		vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));
 		vkDestroyAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyAccelerationStructureKHR));
 		vkCmdBuildAccelerationStructuresKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void>) load(context, nameof(vkCmdBuildAccelerationStructuresKHR));
@@ -3595,8 +3609,8 @@ unsafe partial class Vulkan
 		vkExportMetalObjectsEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkExportMetalObjectsInfoEXT*, void>) load(context, nameof(vkExportMetalObjectsEXT));
 		vkCreateVideoSessionKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult>) load(context, nameof(vkCreateVideoSessionKHR));
 		vkDestroyVideoSessionKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyVideoSessionKHR));
-		vkGetVideoSessionMemoryRequirementsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, int*, VkVideoGetMemoryPropertiesKHR*, VkResult>) load(context, nameof(vkGetVideoSessionMemoryRequirementsKHR));
-		vkBindVideoSessionMemoryKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, int, VkVideoBindMemoryKHR*, VkResult>) load(context, nameof(vkBindVideoSessionMemoryKHR));
+		vkGetVideoSessionMemoryRequirementsKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, int*, VkVideoSessionMemoryRequirementsKHR*, VkResult>) load(context, nameof(vkGetVideoSessionMemoryRequirementsKHR));
+		vkBindVideoSessionMemoryKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionKHR, int, VkBindVideoSessionMemoryInfoKHR*, VkResult>) load(context, nameof(vkBindVideoSessionMemoryKHR));
 		vkCreateVideoSessionParametersKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionParametersCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionParametersKHR*, VkResult>) load(context, nameof(vkCreateVideoSessionParametersKHR));
 		vkUpdateVideoSessionParametersKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionParametersKHR, VkVideoSessionParametersUpdateInfoKHR*, VkResult>) load(context, nameof(vkUpdateVideoSessionParametersKHR));
 		vkDestroyVideoSessionParametersKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkVideoSessionParametersKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyVideoSessionParametersKHR));

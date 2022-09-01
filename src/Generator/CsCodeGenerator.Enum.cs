@@ -175,6 +175,7 @@ public static partial class CsCodeGenerator
         "2d",
         "3d",
         "io",
+        "sec",
     };
 
     public static void GenerateEnums(CppCompilation compilation, string outputPath)

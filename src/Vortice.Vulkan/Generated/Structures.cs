@@ -9169,6 +9169,20 @@ public partial struct VkImageCompressionPropertiesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 attachmentFeedbackLoopLayout;
+	public static VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDevice4444FormatsFeaturesEXT
 {
 	public VkStructureType sType;
@@ -9184,17 +9198,17 @@ public partial struct VkPhysicalDevice4444FormatsFeaturesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM
+public partial struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 rasterizationOrderColorAttachmentAccess;
 	public VkBool32 rasterizationOrderDepthAttachmentAccess;
 	public VkBool32 rasterizationOrderStencilAttachmentAccess;
-	public static VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM New()
+	public static VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM instance);
-		instance.sType = VkStructureType.PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM;
+		Unsafe.SkipInit(out VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT;
 		return instance;
 	}
 }
@@ -9837,6 +9851,55 @@ public partial struct VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEX
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkImageViewSampleWeightCreateInfoQCOM
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkOffset2D filterCenter;
+	public VkExtent2D filterSize;
+	public uint numPhases;
+	public static VkImageViewSampleWeightCreateInfoQCOM New()
+	{
+		Unsafe.SkipInit(out VkImageViewSampleWeightCreateInfoQCOM instance);
+		instance.sType = VkStructureType.ImageViewSampleWeightCreateInfoQCOM;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceImageProcessingFeaturesQCOM
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 textureSampleWeighted;
+	public VkBool32 textureBoxFilter;
+	public VkBool32 textureBlockMatch;
+	public static VkPhysicalDeviceImageProcessingFeaturesQCOM New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceImageProcessingFeaturesQCOM instance);
+		instance.sType = VkStructureType.PhysicalDeviceImageProcessingFeaturesQCOM;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceImageProcessingPropertiesQCOM
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint maxWeightFilterPhases;
+	public VkExtent2D maxWeightFilterDimension;
+	public VkExtent2D maxBlockMatchRegion;
+	public VkExtent2D maxBoxFilterBlockSize;
+	public static VkPhysicalDeviceImageProcessingPropertiesQCOM New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceImageProcessingPropertiesQCOM instance);
+		instance.sType = VkStructureType.PhysicalDeviceImageProcessingPropertiesQCOM;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT
 {
 	public VkStructureType sType;
@@ -9960,6 +10023,65 @@ public partial struct VkShaderModuleIdentifierEXT
 	{
 		Unsafe.SkipInit(out VkShaderModuleIdentifierEXT instance);
 		instance.sType = VkStructureType.ShaderModuleIdentifierEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceTilePropertiesFeaturesQCOM
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 tileProperties;
+	public static VkPhysicalDeviceTilePropertiesFeaturesQCOM New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceTilePropertiesFeaturesQCOM instance);
+		instance.sType = VkStructureType.PhysicalDeviceTilePropertiesFeaturesQCOM;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkTilePropertiesQCOM
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkExtent3D tileSize;
+	public VkExtent2D apronSize;
+	public VkOffset2D origin;
+	public static VkTilePropertiesQCOM New()
+	{
+		Unsafe.SkipInit(out VkTilePropertiesQCOM instance);
+		instance.sType = VkStructureType.TilePropertiesQCOM;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceAmigoProfilingFeaturesSEC
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 amigoProfiling;
+	public static VkPhysicalDeviceAmigoProfilingFeaturesSEC New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceAmigoProfilingFeaturesSEC instance);
+		instance.sType = VkStructureType.PhysicalDeviceAmigoProfilingFeaturesSEC;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkAmigoProfilingSubmitInfoSEC
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public ulong firstDrawTimestamp;
+	public ulong swapBufferTimestamp;
+	public static VkAmigoProfilingSubmitInfoSEC New()
+	{
+		Unsafe.SkipInit(out VkAmigoProfilingSubmitInfoSEC instance);
+		instance.sType = VkStructureType.AmigoProfilingSubmitInfoSEC;
 		return instance;
 	}
 }
@@ -10740,35 +10862,35 @@ public partial struct VkViSurfaceCreateInfoNN
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkQueueFamilyQueryResultStatusProperties2KHR
+public partial struct VkQueueFamilyQueryResultStatusPropertiesKHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 queryResultStatusSupport;
-	public static VkQueueFamilyQueryResultStatusProperties2KHR New()
+	public static VkQueueFamilyQueryResultStatusPropertiesKHR New()
 	{
-		Unsafe.SkipInit(out VkQueueFamilyQueryResultStatusProperties2KHR instance);
-		instance.sType = VkStructureType.QueueFamilyQueryResultStatusProperties2KHR;
+		Unsafe.SkipInit(out VkQueueFamilyQueryResultStatusPropertiesKHR instance);
+		instance.sType = VkStructureType.QueueFamilyQueryResultStatusPropertiesKHR;
 		return instance;
 	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoQueueFamilyProperties2KHR
+public partial struct VkQueueFamilyVideoPropertiesKHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkVideoCodecOperationFlagsKHR videoCodecOperations;
-	public static VkVideoQueueFamilyProperties2KHR New()
+	public static VkQueueFamilyVideoPropertiesKHR New()
 	{
-		Unsafe.SkipInit(out VkVideoQueueFamilyProperties2KHR instance);
-		instance.sType = VkStructureType.VideoQueueFamilyProperties2KHR;
+		Unsafe.SkipInit(out VkQueueFamilyVideoPropertiesKHR instance);
+		instance.sType = VkStructureType.QueueFamilyVideoPropertiesKHR;
 		return instance;
 	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoProfileKHR
+public partial struct VkVideoProfileInfoKHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
@@ -10776,25 +10898,25 @@ public partial struct VkVideoProfileKHR
 	public VkVideoChromaSubsamplingFlagsKHR chromaSubsampling;
 	public VkVideoComponentBitDepthFlagsKHR lumaBitDepth;
 	public VkVideoComponentBitDepthFlagsKHR chromaBitDepth;
-	public static VkVideoProfileKHR New()
+	public static VkVideoProfileInfoKHR New()
 	{
-		Unsafe.SkipInit(out VkVideoProfileKHR instance);
-		instance.sType = VkStructureType.VideoProfileKHR;
+		Unsafe.SkipInit(out VkVideoProfileInfoKHR instance);
+		instance.sType = VkStructureType.VideoProfileInfoKHR;
 		return instance;
 	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoProfilesKHR
+public partial struct VkVideoProfileListInfoKHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint profileCount;
-	public unsafe VkVideoProfileKHR* pProfiles;
-	public static VkVideoProfilesKHR New()
+	public unsafe VkVideoProfileInfoKHR* pProfiles;
+	public static VkVideoProfileListInfoKHR New()
 	{
-		Unsafe.SkipInit(out VkVideoProfilesKHR instance);
-		instance.sType = VkStructureType.VideoProfilesKHR;
+		Unsafe.SkipInit(out VkVideoProfileListInfoKHR instance);
+		instance.sType = VkStructureType.VideoProfileListInfoKHR;
 		return instance;
 	}
 }
@@ -10855,7 +10977,7 @@ public partial struct VkVideoFormatPropertiesKHR
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoPictureResourceKHR
+public partial struct VkVideoPictureResourceInfoKHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
@@ -10863,46 +10985,46 @@ public partial struct VkVideoPictureResourceKHR
 	public VkExtent2D codedExtent;
 	public uint baseArrayLayer;
 	public VkImageView imageViewBinding;
-	public static VkVideoPictureResourceKHR New()
+	public static VkVideoPictureResourceInfoKHR New()
 	{
-		Unsafe.SkipInit(out VkVideoPictureResourceKHR instance);
-		instance.sType = VkStructureType.VideoPictureResourceKHR;
+		Unsafe.SkipInit(out VkVideoPictureResourceInfoKHR instance);
+		instance.sType = VkStructureType.VideoPictureResourceInfoKHR;
 		return instance;
 	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoReferenceSlotKHR
+public partial struct VkVideoReferenceSlotInfoKHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public sbyte slotIndex;
-	public unsafe VkVideoPictureResourceKHR* pPictureResource;
-	public static VkVideoReferenceSlotKHR New()
+	public unsafe VkVideoPictureResourceInfoKHR* pPictureResource;
+	public static VkVideoReferenceSlotInfoKHR New()
 	{
-		Unsafe.SkipInit(out VkVideoReferenceSlotKHR instance);
-		instance.sType = VkStructureType.VideoReferenceSlotKHR;
+		Unsafe.SkipInit(out VkVideoReferenceSlotInfoKHR instance);
+		instance.sType = VkStructureType.VideoReferenceSlotInfoKHR;
 		return instance;
 	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoGetMemoryPropertiesKHR
+public partial struct VkVideoSessionMemoryRequirementsKHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint memoryBindIndex;
-	public unsafe VkMemoryRequirements2* pMemoryRequirements;
-	public static VkVideoGetMemoryPropertiesKHR New()
+	public VkMemoryRequirements memoryRequirements;
+	public static VkVideoSessionMemoryRequirementsKHR New()
 	{
-		Unsafe.SkipInit(out VkVideoGetMemoryPropertiesKHR instance);
-		instance.sType = VkStructureType.VideoGetMemoryPropertiesKHR;
+		Unsafe.SkipInit(out VkVideoSessionMemoryRequirementsKHR instance);
+		instance.sType = VkStructureType.VideoSessionMemoryRequirementsKHR;
 		return instance;
 	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoBindMemoryKHR
+public partial struct VkBindVideoSessionMemoryInfoKHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
@@ -10910,10 +11032,10 @@ public partial struct VkVideoBindMemoryKHR
 	public VkDeviceMemory memory;
 	public ulong memoryOffset;
 	public ulong memorySize;
-	public static VkVideoBindMemoryKHR New()
+	public static VkBindVideoSessionMemoryInfoKHR New()
 	{
-		Unsafe.SkipInit(out VkVideoBindMemoryKHR instance);
-		instance.sType = VkStructureType.VideoBindMemoryKHR;
+		Unsafe.SkipInit(out VkBindVideoSessionMemoryInfoKHR instance);
+		instance.sType = VkStructureType.BindVideoSessionMemoryInfoKHR;
 		return instance;
 	}
 }
@@ -10925,7 +11047,7 @@ public partial struct VkVideoSessionCreateInfoKHR
 	public unsafe void* pNext;
 	public uint queueFamilyIndex;
 	public VkVideoSessionCreateFlagsKHR flags;
-	public unsafe VkVideoProfileKHR* pVideoProfile;
+	public unsafe VkVideoProfileInfoKHR* pVideoProfile;
 	public VkFormat pictureFormat;
 	public VkExtent2D maxCodedExtent;
 	public VkFormat referencePicturesFormat;
@@ -10945,6 +11067,7 @@ public partial struct VkVideoSessionParametersCreateInfoKHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
+	public VkVideoSessionParametersCreateFlagsKHR flags;
 	public VkVideoSessionParametersKHR videoSessionParametersTemplate;
 	public VkVideoSessionKHR videoSession;
 	public static VkVideoSessionParametersCreateInfoKHR New()
@@ -10975,11 +11098,10 @@ public partial struct VkVideoBeginCodingInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkVideoBeginCodingFlagsKHR flags;
-	public VkVideoCodingQualityPresetFlagsKHR codecQualityPreset;
 	public VkVideoSessionKHR videoSession;
 	public VkVideoSessionParametersKHR videoSessionParameters;
 	public uint referenceSlotCount;
-	public unsafe VkVideoReferenceSlotKHR* pReferenceSlots;
+	public unsafe VkVideoReferenceSlotInfoKHR* pReferenceSlots;
 	public static VkVideoBeginCodingInfoKHR New()
 	{
 		Unsafe.SkipInit(out VkVideoBeginCodingInfoKHR instance);
@@ -11039,10 +11161,10 @@ public partial struct VkVideoDecodeInfoKHR
 	public VkBuffer srcBuffer;
 	public ulong srcBufferOffset;
 	public ulong srcBufferRange;
-	public VkVideoPictureResourceKHR dstPictureResource;
-	public unsafe VkVideoReferenceSlotKHR* pSetupReferenceSlot;
+	public VkVideoPictureResourceInfoKHR dstPictureResource;
+	public unsafe VkVideoReferenceSlotInfoKHR* pSetupReferenceSlot;
 	public uint referenceSlotCount;
-	public unsafe VkVideoReferenceSlotKHR* pReferenceSlots;
+	public unsafe VkVideoReferenceSlotInfoKHR* pReferenceSlots;
 	public static VkVideoDecodeInfoKHR New()
 	{
 		Unsafe.SkipInit(out VkVideoDecodeInfoKHR instance);
@@ -11103,10 +11225,10 @@ public partial struct VkVideoEncodeInfoKHR
 	public VkBuffer dstBitstreamBuffer;
 	public ulong dstBitstreamBufferOffset;
 	public ulong dstBitstreamBufferMaxRange;
-	public VkVideoPictureResourceKHR srcPictureResource;
-	public unsafe VkVideoReferenceSlotKHR* pSetupReferenceSlot;
+	public VkVideoPictureResourceInfoKHR srcPictureResource;
+	public unsafe VkVideoReferenceSlotInfoKHR* pSetupReferenceSlot;
 	public uint referenceSlotCount;
-	public unsafe VkVideoReferenceSlotKHR* pReferenceSlots;
+	public unsafe VkVideoReferenceSlotInfoKHR* pReferenceSlots;
 	public uint precedingExternallyEncodedBytes;
 	public static VkVideoEncodeInfoKHR New()
 	{
@@ -11634,7 +11756,7 @@ public partial struct VkVideoEncodeH264DpbSlotInfoEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoEncodeH264ReferenceListsEXT
+public partial struct VkVideoEncodeH264ReferenceListsInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
@@ -11643,26 +11765,26 @@ public partial struct VkVideoEncodeH264ReferenceListsEXT
 	public byte referenceList1EntryCount;
 	public unsafe VkVideoEncodeH264DpbSlotInfoEXT* pReferenceList1Entries;
 	public unsafe StdVideoEncodeH264RefMemMgmtCtrlOperations* pMemMgmtCtrlOperations;
-	public static VkVideoEncodeH264ReferenceListsEXT New()
+	public static VkVideoEncodeH264ReferenceListsInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkVideoEncodeH264ReferenceListsEXT instance);
-		instance.sType = VkStructureType.VideoEncodeH264ReferenceListsEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264ReferenceListsInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264ReferenceListsInfoEXT;
 		return instance;
 	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoEncodeH264NaluSliceEXT
+public partial struct VkVideoEncodeH264NaluSliceInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint mbCount;
-	public unsafe VkVideoEncodeH264ReferenceListsEXT* pReferenceFinalLists;
+	public unsafe VkVideoEncodeH264ReferenceListsInfoEXT* pReferenceFinalLists;
 	public unsafe StdVideoEncodeH264SliceHeader* pSliceHeaderStd;
-	public static VkVideoEncodeH264NaluSliceEXT New()
+	public static VkVideoEncodeH264NaluSliceInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkVideoEncodeH264NaluSliceEXT instance);
-		instance.sType = VkStructureType.VideoEncodeH264NaluSliceEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264NaluSliceInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264NaluSliceInfoEXT;
 		return instance;
 	}
 }
@@ -11672,9 +11794,9 @@ public partial struct VkVideoEncodeH264VclFrameInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public unsafe VkVideoEncodeH264ReferenceListsEXT* pReferenceFinalLists;
+	public unsafe VkVideoEncodeH264ReferenceListsInfoEXT* pReferenceFinalLists;
 	public uint naluSliceEntryCount;
-	public unsafe VkVideoEncodeH264NaluSliceEXT* pNaluSliceEntries;
+	public unsafe VkVideoEncodeH264NaluSliceInfoEXT* pNaluSliceEntries;
 	public unsafe StdVideoEncodeH264PictureInfo* pCurrentPictureInfo;
 	public static VkVideoEncodeH264VclFrameInfoEXT New()
 	{
@@ -11685,7 +11807,7 @@ public partial struct VkVideoEncodeH264VclFrameInfoEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoEncodeH264EmitPictureParametersEXT
+public partial struct VkVideoEncodeH264EmitPictureParametersInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
@@ -11693,24 +11815,24 @@ public partial struct VkVideoEncodeH264EmitPictureParametersEXT
 	public VkBool32 emitSpsEnable;
 	public uint ppsIdEntryCount;
 	public unsafe byte* ppsIdEntries;
-	public static VkVideoEncodeH264EmitPictureParametersEXT New()
+	public static VkVideoEncodeH264EmitPictureParametersInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkVideoEncodeH264EmitPictureParametersEXT instance);
-		instance.sType = VkStructureType.VideoEncodeH264EmitPictureParametersEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264EmitPictureParametersInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264EmitPictureParametersInfoEXT;
 		return instance;
 	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoEncodeH264ProfileEXT
+public partial struct VkVideoEncodeH264ProfileInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public StdVideoH264ProfileIdc stdProfileIdc;
-	public static VkVideoEncodeH264ProfileEXT New()
+	public static VkVideoEncodeH264ProfileInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkVideoEncodeH264ProfileEXT instance);
-		instance.sType = VkStructureType.VideoEncodeH264ProfileEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH264ProfileInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH264ProfileInfoEXT;
 		return instance;
 	}
 }
@@ -11723,7 +11845,7 @@ public partial struct VkVideoEncodeH264RateControlInfoEXT
 	public uint gopFrameCount;
 	public uint idrPeriod;
 	public uint consecutiveBFrameCount;
-	public VkVideoEncodeH264RateControlStructureFlagsEXT rateControlStructure;
+	public VkVideoEncodeH264RateControlStructureEXT rateControlStructure;
 	public byte temporalLayerCount;
 	public static VkVideoEncodeH264RateControlInfoEXT New()
 	{
@@ -12350,7 +12472,7 @@ public partial struct VkVideoEncodeH265DpbSlotInfoEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoEncodeH265ReferenceListsEXT
+public partial struct VkVideoEncodeH265ReferenceListsInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
@@ -12359,26 +12481,26 @@ public partial struct VkVideoEncodeH265ReferenceListsEXT
 	public byte referenceList1EntryCount;
 	public unsafe VkVideoEncodeH265DpbSlotInfoEXT* pReferenceList1Entries;
 	public unsafe StdVideoEncodeH265ReferenceModifications* pReferenceModifications;
-	public static VkVideoEncodeH265ReferenceListsEXT New()
+	public static VkVideoEncodeH265ReferenceListsInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkVideoEncodeH265ReferenceListsEXT instance);
-		instance.sType = VkStructureType.VideoEncodeH265ReferenceListsEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265ReferenceListsInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265ReferenceListsInfoEXT;
 		return instance;
 	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoEncodeH265NaluSliceSegmentEXT
+public partial struct VkVideoEncodeH265NaluSliceSegmentInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint ctbCount;
-	public unsafe VkVideoEncodeH265ReferenceListsEXT* pReferenceFinalLists;
+	public unsafe VkVideoEncodeH265ReferenceListsInfoEXT* pReferenceFinalLists;
 	public unsafe StdVideoEncodeH265SliceSegmentHeader* pSliceSegmentHeaderStd;
-	public static VkVideoEncodeH265NaluSliceSegmentEXT New()
+	public static VkVideoEncodeH265NaluSliceSegmentInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkVideoEncodeH265NaluSliceSegmentEXT instance);
-		instance.sType = VkStructureType.VideoEncodeH265NaluSliceSegmentEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265NaluSliceSegmentInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265NaluSliceSegmentInfoEXT;
 		return instance;
 	}
 }
@@ -12388,9 +12510,9 @@ public partial struct VkVideoEncodeH265VclFrameInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public unsafe VkVideoEncodeH265ReferenceListsEXT* pReferenceFinalLists;
+	public unsafe VkVideoEncodeH265ReferenceListsInfoEXT* pReferenceFinalLists;
 	public uint naluSliceSegmentEntryCount;
-	public unsafe VkVideoEncodeH265NaluSliceSegmentEXT* pNaluSliceSegmentEntries;
+	public unsafe VkVideoEncodeH265NaluSliceSegmentInfoEXT* pNaluSliceSegmentEntries;
 	public unsafe StdVideoEncodeH265PictureInfo* pCurrentPictureInfo;
 	public static VkVideoEncodeH265VclFrameInfoEXT New()
 	{
@@ -12401,7 +12523,7 @@ public partial struct VkVideoEncodeH265VclFrameInfoEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoEncodeH265EmitPictureParametersEXT
+public partial struct VkVideoEncodeH265EmitPictureParametersInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
@@ -12411,24 +12533,24 @@ public partial struct VkVideoEncodeH265EmitPictureParametersEXT
 	public VkBool32 emitSpsEnable;
 	public uint ppsIdEntryCount;
 	public unsafe byte* ppsIdEntries;
-	public static VkVideoEncodeH265EmitPictureParametersEXT New()
+	public static VkVideoEncodeH265EmitPictureParametersInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkVideoEncodeH265EmitPictureParametersEXT instance);
-		instance.sType = VkStructureType.VideoEncodeH265EmitPictureParametersEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265EmitPictureParametersInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265EmitPictureParametersInfoEXT;
 		return instance;
 	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoEncodeH265ProfileEXT
+public partial struct VkVideoEncodeH265ProfileInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public StdVideoH265ProfileIdc stdProfileIdc;
-	public static VkVideoEncodeH265ProfileEXT New()
+	public static VkVideoEncodeH265ProfileInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkVideoEncodeH265ProfileEXT instance);
-		instance.sType = VkStructureType.VideoEncodeH265ProfileEXT;
+		Unsafe.SkipInit(out VkVideoEncodeH265ProfileInfoEXT instance);
+		instance.sType = VkStructureType.VideoEncodeH265ProfileInfoEXT;
 		return instance;
 	}
 }
@@ -12441,7 +12563,7 @@ public partial struct VkVideoEncodeH265RateControlInfoEXT
 	public uint gopFrameCount;
 	public uint idrPeriod;
 	public uint consecutiveBFrameCount;
-	public VkVideoEncodeH265RateControlStructureFlagsEXT rateControlStructure;
+	public VkVideoEncodeH265RateControlStructureEXT rateControlStructure;
 	public byte subLayerCount;
 	public static VkVideoEncodeH265RateControlInfoEXT New()
 	{
@@ -12565,16 +12687,16 @@ public partial struct StdVideoDecodeH264Mvc
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoDecodeH264ProfileEXT
+public partial struct VkVideoDecodeH264ProfileInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public StdVideoH264ProfileIdc stdProfileIdc;
 	public VkVideoDecodeH264PictureLayoutFlagsEXT pictureLayout;
-	public static VkVideoDecodeH264ProfileEXT New()
+	public static VkVideoDecodeH264ProfileInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkVideoDecodeH264ProfileEXT instance);
-		instance.sType = VkStructureType.VideoDecodeH264ProfileEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH264ProfileInfoEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH264ProfileInfoEXT;
 		return instance;
 	}
 }
@@ -12644,15 +12766,15 @@ public partial struct VkVideoDecodeH264PictureInfoEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoDecodeH264MvcEXT
+public partial struct VkVideoDecodeH264MvcInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe StdVideoDecodeH264Mvc* pStdMvc;
-	public static VkVideoDecodeH264MvcEXT New()
+	public static VkVideoDecodeH264MvcInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkVideoDecodeH264MvcEXT instance);
-		instance.sType = VkStructureType.VideoDecodeH264MvcEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH264MvcInfoEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH264MvcInfoEXT;
 		return instance;
 	}
 }
@@ -12712,15 +12834,15 @@ public partial struct StdVideoDecodeH265ReferenceInfo
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoDecodeH265ProfileEXT
+public partial struct VkVideoDecodeH265ProfileInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public StdVideoH265ProfileIdc stdProfileIdc;
-	public static VkVideoDecodeH265ProfileEXT New()
+	public static VkVideoDecodeH265ProfileInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkVideoDecodeH265ProfileEXT instance);
-		instance.sType = VkStructureType.VideoDecodeH265ProfileEXT;
+		Unsafe.SkipInit(out VkVideoDecodeH265ProfileInfoEXT instance);
+		instance.sType = VkStructureType.VideoDecodeH265ProfileInfoEXT;
 		return instance;
 	}
 }
