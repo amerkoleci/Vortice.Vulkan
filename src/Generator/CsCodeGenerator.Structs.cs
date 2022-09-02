@@ -16,7 +16,8 @@ public static partial class CsCodeGenerator
         using var writer = new CodeWriter(Path.Combine(outputPath, "Structures.cs"),
             false,
             "System.Runtime.InteropServices",
-            "System.Runtime.CompilerServices"
+            "System.Runtime.CompilerServices",
+            "System.Diagnostics.CodeAnalysis"
             );
 
         // Print All classes, structs
@@ -143,16 +144,59 @@ public static partial class CsCodeGenerator
             }
             else
             {
-                string unsafePrefix = string.Empty;
-                string csFieldType = GetCsTypeName(arrayType.ElementType, false);
-                if (csFieldType.EndsWith('*'))
+                string csFieldType;
+                if (arrayType.ElementType is CppArrayType elementArrayType)
                 {
-                    unsafePrefix = "unsafe ";
+                    // vk-video madness
+                    csFieldType = GetCsTypeName(elementArrayType.ElementType, false);
+                    writer.WriteLine($"public unsafe fixed {csFieldType} {csFieldName}[{arrayType.Size} * {elementArrayType.Size}];");
                 }
-
-                for (int i = 0; i < arrayType.Size; i++)
+                else
                 {
-                    writer.WriteLine($"public {unsafePrefix}{csFieldType} {csFieldName}_{i};");
+                    csFieldType = GetCsTypeName(arrayType.ElementType, false);
+
+                    writer.WriteLine($"public {csFieldName}__FixedBuffer {csFieldName};");
+                    writer.WriteLine();
+
+                    using (writer.PushBlock($"public unsafe struct {csFieldName}__FixedBuffer"))
+                    {
+                        for (int i = 0; i < arrayType.Size; i++)
+                        {
+                            writer.WriteLine($"public {csFieldType} e{i};");
+                        }
+                        writer.WriteLine();
+
+                        writer.WriteLine("[UnscopedRef]");
+                        using (writer.PushBlock($"public ref {csFieldType} this[int index]"))
+                        {
+                            writer.WriteLine("[MethodImpl(MethodImplOptions.AggressiveInlining)]");
+                            using (writer.PushBlock("get"))
+                            {
+                                if (csFieldType.EndsWith('*'))
+                                {
+                                    using (writer.PushBlock($"fixed ({csFieldType}* pThis = &e0)"))
+                                    {
+                                        writer.WriteLine($"return ref pThis[index];");
+                                    }
+                                }
+                                else
+                                {
+                                    writer.WriteLine($"return ref AsSpan()[index];");
+                                }
+                            }
+                        }
+                        writer.WriteLine();
+
+                        if (!csFieldType.EndsWith('*'))
+                        {
+                            writer.WriteLine("[UnscopedRef]");
+                            writer.WriteLine("[MethodImpl(MethodImplOptions.AggressiveInlining)]");
+                            using (writer.PushBlock($"public Span<{csFieldType}> AsSpan()"))
+                            {
+                                writer.WriteLine($"return MemoryMarshal.CreateSpan(ref e0, {arrayType.Size});");
+                            }
+                        }
+                    }
                 }
             }
         }

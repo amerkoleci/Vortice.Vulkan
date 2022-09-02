@@ -326,6 +326,7 @@ public enum VkStructureType
 	QueueFamilyQueryResultStatusPropertiesKHR = 1000023016,
 	VideoDecodeInfoKHR = 1000024000,
 	VideoDecodeCapabilitiesKHR = 1000024001,
+	VideoDecodeUsageInfoKHR = 1000024002,
 	DedicatedAllocationImageCreateInfoNV = 1000026000,
 	DedicatedAllocationBufferCreateInfoNV = 1000026001,
 	DedicatedAllocationMemoryAllocateInfoNV = 1000026002,
@@ -634,6 +635,7 @@ public enum VkStructureType
 	VideoEncodeRateControlInfoKHR = 1000299001,
 	VideoEncodeRateControlLayerInfoKHR = 1000299002,
 	VideoEncodeCapabilitiesKHR = 1000299003,
+	VideoEncodeUsageInfoKHR = 1000299004,
 	PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 	DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
 	ExportMetalObjectCreateInfoEXT = 1000311000,
@@ -663,6 +665,8 @@ public enum VkStructureType
 	AccelerationStructureGeometryMotionTrianglesDataNV = 1000327000,
 	PhysicalDeviceRayTracingMotionBlurFeaturesNV = 1000327001,
 	AccelerationStructureMotionInfoNV = 1000327002,
+	PhysicalDeviceMeshShaderFeaturesEXT = 1000328000,
+	PhysicalDeviceMeshShaderPropertiesEXT = 1000328001,
 	PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT = 1000330000,
 	PhysicalDeviceFragmentDensityMap2FeaturesEXT = 1000332000,
 	PhysicalDeviceFragmentDensityMap2PropertiesEXT = 1000332001,
@@ -729,6 +733,7 @@ public enum VkStructureType
 	PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE = 1000420000,
 	DescriptorSetBindingReferenceVALVE = 1000420001,
 	DescriptorSetLayoutHostMappingInfoVALVE = 1000420002,
+	PhysicalDeviceDepthClampZeroOneFeaturesEXT = 1000421000,
 	PhysicalDeviceNonSeamlessCubeMapFeaturesEXT = 1000422000,
 	PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM = 1000425000,
 	PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM = 1000425001,
@@ -1387,6 +1392,7 @@ public enum VkQueryType
 	AccelerationStructureCompactedSizeNV = 1000165000,
 	PerformanceQueryINTEL = 1000210000,
 	VideoEncodeBitstreamBufferRangeKHR = 1000299000,
+	MeshPrimitivesGeneratedEXT = 1000328000,
 	PrimitivesGeneratedEXT = 1000382000,
 	AccelerationStructureSerializationBottomLevelPointersKHR = 1000386000,
 	AccelerationStructureSizeKHR = 1000386001,
@@ -1992,14 +1998,16 @@ public enum VkPipelineStageFlags
 	ConditionalRenderingEXT = 262144,
 	AccelerationStructureBuildKHR = 33554432,
 	RayTracingShaderKHR = 2097152,
-	TaskShaderNV = 524288,
-	MeshShaderNV = 1048576,
 	FragmentDensityProcessEXT = 8388608,
 	FragmentShadingRateAttachmentKHR = 4194304,
 	CommandPreprocessNV = 131072,
+	TaskShaderEXT = 524288,
+	MeshShaderEXT = 1048576,
 	ShadingRateImageNV = FragmentShadingRateAttachmentKHR,
 	RayTracingShaderNV = RayTracingShaderKHR,
 	AccelerationStructureBuildNV = AccelerationStructureBuildKHR,
+	TaskShaderNV = TaskShaderEXT,
+	MeshShaderNV = MeshShaderEXT,
 	NoneKHR = None,
 }
 
@@ -2049,6 +2057,8 @@ public enum VkQueryPipelineStatisticFlags
 	TessellationControlShaderPatches = 256,
 	TessellationEvaluationShaderInvocations = 512,
 	ComputeShaderInvocations = 1024,
+	TaskShaderInvocationsEXT = 2048,
+	MeshShaderInvocationsEXT = 4096,
 }
 
 [Flags]
@@ -2197,8 +2207,8 @@ public enum VkShaderStageFlags
 	MissKHR = 2048,
 	IntersectionKHR = 4096,
 	CallableKHR = 8192,
-	TaskNV = 64,
-	MeshNV = 128,
+	TaskEXT = 64,
+	MeshEXT = 128,
 	SubpassShadingHUAWEI = 16384,
 	RaygenNV = RaygenKHR,
 	AnyHitNV = AnyHitKHR,
@@ -2206,6 +2216,8 @@ public enum VkShaderStageFlags
 	MissNV = MissKHR,
 	IntersectionNV = IntersectionKHR,
 	CallableNV = CallableKHR,
+	TaskNV = TaskEXT,
+	MeshNV = MeshEXT,
 }
 
 [Flags]
@@ -3329,6 +3341,7 @@ public enum VkIndirectCommandsTokenTypeNV
 	TypeDrawIndexed = 5,
 	TypeDraw = 6,
 	TypeDrawTasks = 7,
+	TypeDrawMeshTasks = 1000328000,
 }
 
 [Flags]
@@ -3581,6 +3594,25 @@ public enum VkVideoDecodeCapabilityFlagsKHR
 }
 
 [Flags]
+public enum VkVideoDecodeUsageFlagsKHR
+{
+	None = 0,
+	Default = 0,
+	Transcoding = 1,
+	Offline = 2,
+	Streaming = 4,
+}
+
+public enum VkVideoEncodeTuningModeKHR
+{
+	Default = 0,
+	HighQuality = 1,
+	LowLatency = 2,
+	UltraLowLatency = 3,
+	Lossless = 4,
+}
+
+[Flags]
 public enum VkVideoEncodeCapabilityFlagsKHR
 {
 	None = 0,
@@ -3593,6 +3625,27 @@ public enum VkVideoEncodeRateControlModeFlagsKHR
 	None = 0,
 	Cbr = 1,
 	Vbr = 2,
+}
+
+[Flags]
+public enum VkVideoEncodeUsageFlagsKHR
+{
+	None = 0,
+	Default = 0,
+	Transcoding = 1,
+	Streaming = 2,
+	Recording = 4,
+	Conferencing = 8,
+}
+
+[Flags]
+public enum VkVideoEncodeContentFlagsKHR
+{
+	None = 0,
+	Default = 0,
+	Camera = 1,
+	Desktop = 2,
+	Rendered = 4,
 }
 
 public enum StdVideoH264ChromaFormatIdc
@@ -4421,6 +4474,8 @@ public enum VkPipelineStageFlags2 : ulong
 	FragmentDensityProcessEXT = 8388608,
 	TaskShaderNV = 524288,
 	MeshShaderNV = 1048576,
+	TaskShaderEXT = 524288,
+	MeshShaderEXT = 1048576,
 	SubpassShadingHUAWEI = 549755813888,
 	InvocationMaskHUAWEI = 1099511627776,
 	AccelerationStructureCopyKHR = 268435456,

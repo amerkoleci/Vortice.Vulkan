@@ -438,13 +438,13 @@ public unsafe sealed class GraphicsDevice : IDisposable
         vkGetPhysicalDeviceMemoryProperties(PhysicalDevice, out VkPhysicalDeviceMemoryProperties deviceMemoryProperties);
 
         // Iterate over all memory types available for the device used in this example
-        for (uint i = 0; i < deviceMemoryProperties.memoryTypeCount; i++)
+        for (int i = 0; i < deviceMemoryProperties.memoryTypeCount; i++)
         {
             if ((typeBits & 1) == 1)
             {
-                if ((deviceMemoryProperties.GetMemoryType(i).propertyFlags & properties) == properties)
+                if ((deviceMemoryProperties.memoryTypes[i].propertyFlags & properties) == properties)
                 {
-                    return i;
+                    return (uint)i;
                 }
             }
             typeBits >>= 1;

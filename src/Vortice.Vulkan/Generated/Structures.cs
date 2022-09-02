@@ -9,6 +9,7 @@
 
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Vortice.Vulkan;
 
@@ -441,55 +442,99 @@ public partial struct VkPhysicalDeviceLimits
 public partial struct VkPhysicalDeviceMemoryProperties
 {
 	public uint memoryTypeCount;
-	public VkMemoryType memoryTypes_0;
-	public VkMemoryType memoryTypes_1;
-	public VkMemoryType memoryTypes_2;
-	public VkMemoryType memoryTypes_3;
-	public VkMemoryType memoryTypes_4;
-	public VkMemoryType memoryTypes_5;
-	public VkMemoryType memoryTypes_6;
-	public VkMemoryType memoryTypes_7;
-	public VkMemoryType memoryTypes_8;
-	public VkMemoryType memoryTypes_9;
-	public VkMemoryType memoryTypes_10;
-	public VkMemoryType memoryTypes_11;
-	public VkMemoryType memoryTypes_12;
-	public VkMemoryType memoryTypes_13;
-	public VkMemoryType memoryTypes_14;
-	public VkMemoryType memoryTypes_15;
-	public VkMemoryType memoryTypes_16;
-	public VkMemoryType memoryTypes_17;
-	public VkMemoryType memoryTypes_18;
-	public VkMemoryType memoryTypes_19;
-	public VkMemoryType memoryTypes_20;
-	public VkMemoryType memoryTypes_21;
-	public VkMemoryType memoryTypes_22;
-	public VkMemoryType memoryTypes_23;
-	public VkMemoryType memoryTypes_24;
-	public VkMemoryType memoryTypes_25;
-	public VkMemoryType memoryTypes_26;
-	public VkMemoryType memoryTypes_27;
-	public VkMemoryType memoryTypes_28;
-	public VkMemoryType memoryTypes_29;
-	public VkMemoryType memoryTypes_30;
-	public VkMemoryType memoryTypes_31;
+	public memoryTypes__FixedBuffer memoryTypes;
+
+	public unsafe struct memoryTypes__FixedBuffer
+	{
+		public VkMemoryType e0;
+		public VkMemoryType e1;
+		public VkMemoryType e2;
+		public VkMemoryType e3;
+		public VkMemoryType e4;
+		public VkMemoryType e5;
+		public VkMemoryType e6;
+		public VkMemoryType e7;
+		public VkMemoryType e8;
+		public VkMemoryType e9;
+		public VkMemoryType e10;
+		public VkMemoryType e11;
+		public VkMemoryType e12;
+		public VkMemoryType e13;
+		public VkMemoryType e14;
+		public VkMemoryType e15;
+		public VkMemoryType e16;
+		public VkMemoryType e17;
+		public VkMemoryType e18;
+		public VkMemoryType e19;
+		public VkMemoryType e20;
+		public VkMemoryType e21;
+		public VkMemoryType e22;
+		public VkMemoryType e23;
+		public VkMemoryType e24;
+		public VkMemoryType e25;
+		public VkMemoryType e26;
+		public VkMemoryType e27;
+		public VkMemoryType e28;
+		public VkMemoryType e29;
+		public VkMemoryType e30;
+		public VkMemoryType e31;
+
+		[UnscopedRef]
+		public ref VkMemoryType this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<VkMemoryType> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 32);
+		}
+	}
 	public uint memoryHeapCount;
-	public VkMemoryHeap memoryHeaps_0;
-	public VkMemoryHeap memoryHeaps_1;
-	public VkMemoryHeap memoryHeaps_2;
-	public VkMemoryHeap memoryHeaps_3;
-	public VkMemoryHeap memoryHeaps_4;
-	public VkMemoryHeap memoryHeaps_5;
-	public VkMemoryHeap memoryHeaps_6;
-	public VkMemoryHeap memoryHeaps_7;
-	public VkMemoryHeap memoryHeaps_8;
-	public VkMemoryHeap memoryHeaps_9;
-	public VkMemoryHeap memoryHeaps_10;
-	public VkMemoryHeap memoryHeaps_11;
-	public VkMemoryHeap memoryHeaps_12;
-	public VkMemoryHeap memoryHeaps_13;
-	public VkMemoryHeap memoryHeaps_14;
-	public VkMemoryHeap memoryHeaps_15;
+	public memoryHeaps__FixedBuffer memoryHeaps;
+
+	public unsafe struct memoryHeaps__FixedBuffer
+	{
+		public VkMemoryHeap e0;
+		public VkMemoryHeap e1;
+		public VkMemoryHeap e2;
+		public VkMemoryHeap e3;
+		public VkMemoryHeap e4;
+		public VkMemoryHeap e5;
+		public VkMemoryHeap e6;
+		public VkMemoryHeap e7;
+		public VkMemoryHeap e8;
+		public VkMemoryHeap e9;
+		public VkMemoryHeap e10;
+		public VkMemoryHeap e11;
+		public VkMemoryHeap e12;
+		public VkMemoryHeap e13;
+		public VkMemoryHeap e14;
+		public VkMemoryHeap e15;
+
+		[UnscopedRef]
+		public ref VkMemoryHeap this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<VkMemoryHeap> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 16);
+		}
+	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -1624,11 +1669,55 @@ public partial struct VkClearRect
 public partial struct VkImageBlit
 {
 	public VkImageSubresourceLayers srcSubresource;
-	public VkOffset3D srcOffsets_0;
-	public VkOffset3D srcOffsets_1;
+	public srcOffsets__FixedBuffer srcOffsets;
+
+	public unsafe struct srcOffsets__FixedBuffer
+	{
+		public VkOffset3D e0;
+		public VkOffset3D e1;
+
+		[UnscopedRef]
+		public ref VkOffset3D this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<VkOffset3D> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 2);
+		}
+	}
 	public VkImageSubresourceLayers dstSubresource;
-	public VkOffset3D dstOffsets_0;
-	public VkOffset3D dstOffsets_1;
+	public dstOffsets__FixedBuffer dstOffsets;
+
+	public unsafe struct dstOffsets__FixedBuffer
+	{
+		public VkOffset3D e0;
+		public VkOffset3D e1;
+
+		[UnscopedRef]
+		public ref VkOffset3D this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<VkOffset3D> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 2);
+		}
+	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -1882,38 +1971,60 @@ public partial struct VkPhysicalDeviceGroupProperties
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint physicalDeviceCount;
-	public VkPhysicalDevice physicalDevices_0;
-	public VkPhysicalDevice physicalDevices_1;
-	public VkPhysicalDevice physicalDevices_2;
-	public VkPhysicalDevice physicalDevices_3;
-	public VkPhysicalDevice physicalDevices_4;
-	public VkPhysicalDevice physicalDevices_5;
-	public VkPhysicalDevice physicalDevices_6;
-	public VkPhysicalDevice physicalDevices_7;
-	public VkPhysicalDevice physicalDevices_8;
-	public VkPhysicalDevice physicalDevices_9;
-	public VkPhysicalDevice physicalDevices_10;
-	public VkPhysicalDevice physicalDevices_11;
-	public VkPhysicalDevice physicalDevices_12;
-	public VkPhysicalDevice physicalDevices_13;
-	public VkPhysicalDevice physicalDevices_14;
-	public VkPhysicalDevice physicalDevices_15;
-	public VkPhysicalDevice physicalDevices_16;
-	public VkPhysicalDevice physicalDevices_17;
-	public VkPhysicalDevice physicalDevices_18;
-	public VkPhysicalDevice physicalDevices_19;
-	public VkPhysicalDevice physicalDevices_20;
-	public VkPhysicalDevice physicalDevices_21;
-	public VkPhysicalDevice physicalDevices_22;
-	public VkPhysicalDevice physicalDevices_23;
-	public VkPhysicalDevice physicalDevices_24;
-	public VkPhysicalDevice physicalDevices_25;
-	public VkPhysicalDevice physicalDevices_26;
-	public VkPhysicalDevice physicalDevices_27;
-	public VkPhysicalDevice physicalDevices_28;
-	public VkPhysicalDevice physicalDevices_29;
-	public VkPhysicalDevice physicalDevices_30;
-	public VkPhysicalDevice physicalDevices_31;
+	public physicalDevices__FixedBuffer physicalDevices;
+
+	public unsafe struct physicalDevices__FixedBuffer
+	{
+		public VkPhysicalDevice e0;
+		public VkPhysicalDevice e1;
+		public VkPhysicalDevice e2;
+		public VkPhysicalDevice e3;
+		public VkPhysicalDevice e4;
+		public VkPhysicalDevice e5;
+		public VkPhysicalDevice e6;
+		public VkPhysicalDevice e7;
+		public VkPhysicalDevice e8;
+		public VkPhysicalDevice e9;
+		public VkPhysicalDevice e10;
+		public VkPhysicalDevice e11;
+		public VkPhysicalDevice e12;
+		public VkPhysicalDevice e13;
+		public VkPhysicalDevice e14;
+		public VkPhysicalDevice e15;
+		public VkPhysicalDevice e16;
+		public VkPhysicalDevice e17;
+		public VkPhysicalDevice e18;
+		public VkPhysicalDevice e19;
+		public VkPhysicalDevice e20;
+		public VkPhysicalDevice e21;
+		public VkPhysicalDevice e22;
+		public VkPhysicalDevice e23;
+		public VkPhysicalDevice e24;
+		public VkPhysicalDevice e25;
+		public VkPhysicalDevice e26;
+		public VkPhysicalDevice e27;
+		public VkPhysicalDevice e28;
+		public VkPhysicalDevice e29;
+		public VkPhysicalDevice e30;
+		public VkPhysicalDevice e31;
+
+		[UnscopedRef]
+		public ref VkPhysicalDevice this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<VkPhysicalDevice> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 32);
+		}
+	}
 	public VkBool32 subsetAllocation;
 	public static VkPhysicalDeviceGroupProperties New()
 	{
@@ -4187,11 +4298,55 @@ public partial struct VkImageBlit2
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkImageSubresourceLayers srcSubresource;
-	public VkOffset3D srcOffsets_0;
-	public VkOffset3D srcOffsets_1;
+	public srcOffsets__FixedBuffer srcOffsets;
+
+	public unsafe struct srcOffsets__FixedBuffer
+	{
+		public VkOffset3D e0;
+		public VkOffset3D e1;
+
+		[UnscopedRef]
+		public ref VkOffset3D this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<VkOffset3D> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 2);
+		}
+	}
 	public VkImageSubresourceLayers dstSubresource;
-	public VkOffset3D dstOffsets_0;
-	public VkOffset3D dstOffsets_1;
+	public dstOffsets__FixedBuffer dstOffsets;
+
+	public unsafe struct dstOffsets__FixedBuffer
+	{
+		public VkOffset3D e0;
+		public VkOffset3D e1;
+
+		[UnscopedRef]
+		public ref VkOffset3D this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<VkOffset3D> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 2);
+		}
+	}
 	public static VkImageBlit2 New()
 	{
 		Unsafe.SkipInit(out VkImageBlit2 instance);
@@ -5396,22 +5551,44 @@ public partial struct VkQueueFamilyGlobalPriorityPropertiesKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint priorityCount;
-	public VkQueueGlobalPriorityKHR priorities_0;
-	public VkQueueGlobalPriorityKHR priorities_1;
-	public VkQueueGlobalPriorityKHR priorities_2;
-	public VkQueueGlobalPriorityKHR priorities_3;
-	public VkQueueGlobalPriorityKHR priorities_4;
-	public VkQueueGlobalPriorityKHR priorities_5;
-	public VkQueueGlobalPriorityKHR priorities_6;
-	public VkQueueGlobalPriorityKHR priorities_7;
-	public VkQueueGlobalPriorityKHR priorities_8;
-	public VkQueueGlobalPriorityKHR priorities_9;
-	public VkQueueGlobalPriorityKHR priorities_10;
-	public VkQueueGlobalPriorityKHR priorities_11;
-	public VkQueueGlobalPriorityKHR priorities_12;
-	public VkQueueGlobalPriorityKHR priorities_13;
-	public VkQueueGlobalPriorityKHR priorities_14;
-	public VkQueueGlobalPriorityKHR priorities_15;
+	public priorities__FixedBuffer priorities;
+
+	public unsafe struct priorities__FixedBuffer
+	{
+		public VkQueueGlobalPriorityKHR e0;
+		public VkQueueGlobalPriorityKHR e1;
+		public VkQueueGlobalPriorityKHR e2;
+		public VkQueueGlobalPriorityKHR e3;
+		public VkQueueGlobalPriorityKHR e4;
+		public VkQueueGlobalPriorityKHR e5;
+		public VkQueueGlobalPriorityKHR e6;
+		public VkQueueGlobalPriorityKHR e7;
+		public VkQueueGlobalPriorityKHR e8;
+		public VkQueueGlobalPriorityKHR e9;
+		public VkQueueGlobalPriorityKHR e10;
+		public VkQueueGlobalPriorityKHR e11;
+		public VkQueueGlobalPriorityKHR e12;
+		public VkQueueGlobalPriorityKHR e13;
+		public VkQueueGlobalPriorityKHR e14;
+		public VkQueueGlobalPriorityKHR e15;
+
+		[UnscopedRef]
+		public ref VkQueueGlobalPriorityKHR this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<VkQueueGlobalPriorityKHR> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 16);
+		}
+	}
 	public static VkQueueFamilyGlobalPriorityPropertiesKHR New()
 	{
 		Unsafe.SkipInit(out VkQueueFamilyGlobalPriorityPropertiesKHR instance);
@@ -5441,8 +5618,30 @@ public partial struct VkPipelineFragmentShadingRateStateCreateInfoKHR
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkExtent2D fragmentSize;
-	public VkFragmentShadingRateCombinerOpKHR combinerOps_0;
-	public VkFragmentShadingRateCombinerOpKHR combinerOps_1;
+	public combinerOps__FixedBuffer combinerOps;
+
+	public unsafe struct combinerOps__FixedBuffer
+	{
+		public VkFragmentShadingRateCombinerOpKHR e0;
+		public VkFragmentShadingRateCombinerOpKHR e1;
+
+		[UnscopedRef]
+		public ref VkFragmentShadingRateCombinerOpKHR this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<VkFragmentShadingRateCombinerOpKHR> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 2);
+		}
+	}
 	public static VkPipelineFragmentShadingRateStateCreateInfoKHR New()
 	{
 		Unsafe.SkipInit(out VkPipelineFragmentShadingRateStateCreateInfoKHR instance);
@@ -7975,38 +8174,82 @@ public partial struct VkPhysicalDeviceMemoryBudgetPropertiesEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public ulong heapBudget_0;
-	public ulong heapBudget_1;
-	public ulong heapBudget_2;
-	public ulong heapBudget_3;
-	public ulong heapBudget_4;
-	public ulong heapBudget_5;
-	public ulong heapBudget_6;
-	public ulong heapBudget_7;
-	public ulong heapBudget_8;
-	public ulong heapBudget_9;
-	public ulong heapBudget_10;
-	public ulong heapBudget_11;
-	public ulong heapBudget_12;
-	public ulong heapBudget_13;
-	public ulong heapBudget_14;
-	public ulong heapBudget_15;
-	public ulong heapUsage_0;
-	public ulong heapUsage_1;
-	public ulong heapUsage_2;
-	public ulong heapUsage_3;
-	public ulong heapUsage_4;
-	public ulong heapUsage_5;
-	public ulong heapUsage_6;
-	public ulong heapUsage_7;
-	public ulong heapUsage_8;
-	public ulong heapUsage_9;
-	public ulong heapUsage_10;
-	public ulong heapUsage_11;
-	public ulong heapUsage_12;
-	public ulong heapUsage_13;
-	public ulong heapUsage_14;
-	public ulong heapUsage_15;
+	public heapBudget__FixedBuffer heapBudget;
+
+	public unsafe struct heapBudget__FixedBuffer
+	{
+		public ulong e0;
+		public ulong e1;
+		public ulong e2;
+		public ulong e3;
+		public ulong e4;
+		public ulong e5;
+		public ulong e6;
+		public ulong e7;
+		public ulong e8;
+		public ulong e9;
+		public ulong e10;
+		public ulong e11;
+		public ulong e12;
+		public ulong e13;
+		public ulong e14;
+		public ulong e15;
+
+		[UnscopedRef]
+		public ref ulong this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<ulong> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 16);
+		}
+	}
+	public heapUsage__FixedBuffer heapUsage;
+
+	public unsafe struct heapUsage__FixedBuffer
+	{
+		public ulong e0;
+		public ulong e1;
+		public ulong e2;
+		public ulong e3;
+		public ulong e4;
+		public ulong e5;
+		public ulong e6;
+		public ulong e7;
+		public ulong e8;
+		public ulong e9;
+		public ulong e10;
+		public ulong e11;
+		public ulong e12;
+		public ulong e13;
+		public ulong e14;
+		public ulong e15;
+
+		[UnscopedRef]
+		public ref ulong this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<ulong> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 16);
+		}
+	}
 	public static VkPhysicalDeviceMemoryBudgetPropertiesEXT New()
 	{
 		Unsafe.SkipInit(out VkPhysicalDeviceMemoryBudgetPropertiesEXT instance);
@@ -8933,8 +9176,30 @@ public partial struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV
 	public unsafe void* pNext;
 	public VkFragmentShadingRateTypeNV shadingRateType;
 	public VkFragmentShadingRateNV shadingRate;
-	public VkFragmentShadingRateCombinerOpKHR combinerOps_0;
-	public VkFragmentShadingRateCombinerOpKHR combinerOps_1;
+	public combinerOps__FixedBuffer combinerOps;
+
+	public unsafe struct combinerOps__FixedBuffer
+	{
+		public VkFragmentShadingRateCombinerOpKHR e0;
+		public VkFragmentShadingRateCombinerOpKHR e1;
+
+		[UnscopedRef]
+		public ref VkFragmentShadingRateCombinerOpKHR this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				return ref AsSpan()[index];
+			}
+		}
+
+		[UnscopedRef]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Span<VkFragmentShadingRateCombinerOpKHR> AsSpan()
+		{
+			return MemoryMarshal.CreateSpan(ref e0, 2);
+		}
+	}
 	public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV New()
 	{
 		Unsafe.SkipInit(out VkPipelineFragmentShadingRateEnumStateCreateInfoNV instance);
@@ -9766,6 +10031,20 @@ public partial struct VkDescriptorSetLayoutHostMappingInfoVALVE
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceDepthClampZeroOneFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 depthClampZeroOne;
+	public static VkPhysicalDeviceDepthClampZeroOneFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceDepthClampZeroOneFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceDepthClampZeroOneFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT
 {
 	public VkStructureType sType;
@@ -10497,6 +10776,73 @@ public partial struct VkPhysicalDeviceRayQueryFeaturesKHR
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceMeshShaderFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 taskShader;
+	public VkBool32 meshShader;
+	public VkBool32 multiviewMeshShader;
+	public VkBool32 primitiveFragmentShadingRateMeshShader;
+	public VkBool32 meshShaderQueries;
+	public static VkPhysicalDeviceMeshShaderFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceMeshShaderFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceMeshShaderFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceMeshShaderPropertiesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint maxTaskWorkGroupTotalCount;
+	public unsafe fixed uint maxTaskWorkGroupCount[3];
+	public uint maxTaskWorkGroupInvocations;
+	public unsafe fixed uint maxTaskWorkGroupSize[3];
+	public uint maxTaskPayloadSize;
+	public uint maxTaskSharedMemorySize;
+	public uint maxTaskPayloadAndSharedMemorySize;
+	public uint maxMeshWorkGroupTotalCount;
+	public unsafe fixed uint maxMeshWorkGroupCount[3];
+	public uint maxMeshWorkGroupInvocations;
+	public unsafe fixed uint maxMeshWorkGroupSize[3];
+	public uint maxMeshSharedMemorySize;
+	public uint maxMeshPayloadAndSharedMemorySize;
+	public uint maxMeshOutputMemorySize;
+	public uint maxMeshPayloadAndOutputMemorySize;
+	public uint maxMeshOutputComponents;
+	public uint maxMeshOutputVertices;
+	public uint maxMeshOutputPrimitives;
+	public uint maxMeshOutputLayers;
+	public uint maxMeshMultiviewViewCount;
+	public uint meshOutputPerVertexGranularity;
+	public uint meshOutputPerPrimitiveGranularity;
+	public uint maxPreferredTaskWorkGroupInvocations;
+	public uint maxPreferredMeshWorkGroupInvocations;
+	public VkBool32 prefersLocalInvocationVertexOutput;
+	public VkBool32 prefersLocalInvocationPrimitiveOutput;
+	public VkBool32 prefersCompactVertexOutput;
+	public VkBool32 prefersCompactPrimitiveOutput;
+	public static VkPhysicalDeviceMeshShaderPropertiesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceMeshShaderPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceMeshShaderPropertiesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDrawMeshTasksIndirectCommandEXT
+{
+	public uint groupCountX;
+	public uint groupCountY;
+	public uint groupCountZ;
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkAndroidSurfaceCreateInfoKHR
 {
 	public VkStructureType sType;
@@ -11153,6 +11499,20 @@ public partial struct VkVideoDecodeCapabilitiesKHR
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkVideoDecodeUsageInfoKHR
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkVideoDecodeUsageFlagsKHR videoUsageHints;
+	public static VkVideoDecodeUsageInfoKHR New()
+	{
+		Unsafe.SkipInit(out VkVideoDecodeUsageInfoKHR instance);
+		instance.sType = VkStructureType.VideoDecodeUsageInfoKHR;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkVideoDecodeInfoKHR
 {
 	public VkStructureType sType;
@@ -11252,6 +11612,22 @@ public partial struct VkVideoEncodeCapabilitiesKHR
 	{
 		Unsafe.SkipInit(out VkVideoEncodeCapabilitiesKHR instance);
 		instance.sType = VkStructureType.VideoEncodeCapabilitiesKHR;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkVideoEncodeUsageInfoKHR
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkVideoEncodeUsageFlagsKHR videoUsageHints;
+	public VkVideoEncodeContentFlagsKHR videoContentHints;
+	public VkVideoEncodeTuningModeKHR tuningMode;
+	public static VkVideoEncodeUsageInfoKHR New()
+	{
+		Unsafe.SkipInit(out VkVideoEncodeUsageInfoKHR instance);
+		instance.sType = VkStructureType.VideoEncodeUsageInfoKHR;
 		return instance;
 	}
 }
@@ -11368,14 +11744,8 @@ public partial struct StdVideoH264ScalingLists
 {
 	public byte scaling_list_present_mask;
 	public byte use_default_scaling_matrix_mask;
-	public unsafe byte* ScalingList4x4_0;
-	public unsafe byte* ScalingList4x4_1;
-	public unsafe byte* ScalingList4x4_2;
-	public unsafe byte* ScalingList4x4_3;
-	public unsafe byte* ScalingList4x4_4;
-	public unsafe byte* ScalingList4x4_5;
-	public unsafe byte* ScalingList8x8_0;
-	public unsafe byte* ScalingList8x8_1;
+	public unsafe fixed byte ScalingList4x4[6 * 16];
+	public unsafe fixed byte ScalingList8x8[2 * 64];
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -11453,136 +11823,12 @@ public partial struct StdVideoEncodeH264WeightTable
 	public byte chroma_log2_weight_denom;
 	public unsafe fixed sbyte luma_weight_l0[32];
 	public unsafe fixed sbyte luma_offset_l0[32];
-	public unsafe sbyte* chroma_weight_l0_0;
-	public unsafe sbyte* chroma_weight_l0_1;
-	public unsafe sbyte* chroma_weight_l0_2;
-	public unsafe sbyte* chroma_weight_l0_3;
-	public unsafe sbyte* chroma_weight_l0_4;
-	public unsafe sbyte* chroma_weight_l0_5;
-	public unsafe sbyte* chroma_weight_l0_6;
-	public unsafe sbyte* chroma_weight_l0_7;
-	public unsafe sbyte* chroma_weight_l0_8;
-	public unsafe sbyte* chroma_weight_l0_9;
-	public unsafe sbyte* chroma_weight_l0_10;
-	public unsafe sbyte* chroma_weight_l0_11;
-	public unsafe sbyte* chroma_weight_l0_12;
-	public unsafe sbyte* chroma_weight_l0_13;
-	public unsafe sbyte* chroma_weight_l0_14;
-	public unsafe sbyte* chroma_weight_l0_15;
-	public unsafe sbyte* chroma_weight_l0_16;
-	public unsafe sbyte* chroma_weight_l0_17;
-	public unsafe sbyte* chroma_weight_l0_18;
-	public unsafe sbyte* chroma_weight_l0_19;
-	public unsafe sbyte* chroma_weight_l0_20;
-	public unsafe sbyte* chroma_weight_l0_21;
-	public unsafe sbyte* chroma_weight_l0_22;
-	public unsafe sbyte* chroma_weight_l0_23;
-	public unsafe sbyte* chroma_weight_l0_24;
-	public unsafe sbyte* chroma_weight_l0_25;
-	public unsafe sbyte* chroma_weight_l0_26;
-	public unsafe sbyte* chroma_weight_l0_27;
-	public unsafe sbyte* chroma_weight_l0_28;
-	public unsafe sbyte* chroma_weight_l0_29;
-	public unsafe sbyte* chroma_weight_l0_30;
-	public unsafe sbyte* chroma_weight_l0_31;
-	public unsafe sbyte* chroma_offset_l0_0;
-	public unsafe sbyte* chroma_offset_l0_1;
-	public unsafe sbyte* chroma_offset_l0_2;
-	public unsafe sbyte* chroma_offset_l0_3;
-	public unsafe sbyte* chroma_offset_l0_4;
-	public unsafe sbyte* chroma_offset_l0_5;
-	public unsafe sbyte* chroma_offset_l0_6;
-	public unsafe sbyte* chroma_offset_l0_7;
-	public unsafe sbyte* chroma_offset_l0_8;
-	public unsafe sbyte* chroma_offset_l0_9;
-	public unsafe sbyte* chroma_offset_l0_10;
-	public unsafe sbyte* chroma_offset_l0_11;
-	public unsafe sbyte* chroma_offset_l0_12;
-	public unsafe sbyte* chroma_offset_l0_13;
-	public unsafe sbyte* chroma_offset_l0_14;
-	public unsafe sbyte* chroma_offset_l0_15;
-	public unsafe sbyte* chroma_offset_l0_16;
-	public unsafe sbyte* chroma_offset_l0_17;
-	public unsafe sbyte* chroma_offset_l0_18;
-	public unsafe sbyte* chroma_offset_l0_19;
-	public unsafe sbyte* chroma_offset_l0_20;
-	public unsafe sbyte* chroma_offset_l0_21;
-	public unsafe sbyte* chroma_offset_l0_22;
-	public unsafe sbyte* chroma_offset_l0_23;
-	public unsafe sbyte* chroma_offset_l0_24;
-	public unsafe sbyte* chroma_offset_l0_25;
-	public unsafe sbyte* chroma_offset_l0_26;
-	public unsafe sbyte* chroma_offset_l0_27;
-	public unsafe sbyte* chroma_offset_l0_28;
-	public unsafe sbyte* chroma_offset_l0_29;
-	public unsafe sbyte* chroma_offset_l0_30;
-	public unsafe sbyte* chroma_offset_l0_31;
+	public unsafe fixed sbyte chroma_weight_l0[32 * 2];
+	public unsafe fixed sbyte chroma_offset_l0[32 * 2];
 	public unsafe fixed sbyte luma_weight_l1[32];
 	public unsafe fixed sbyte luma_offset_l1[32];
-	public unsafe sbyte* chroma_weight_l1_0;
-	public unsafe sbyte* chroma_weight_l1_1;
-	public unsafe sbyte* chroma_weight_l1_2;
-	public unsafe sbyte* chroma_weight_l1_3;
-	public unsafe sbyte* chroma_weight_l1_4;
-	public unsafe sbyte* chroma_weight_l1_5;
-	public unsafe sbyte* chroma_weight_l1_6;
-	public unsafe sbyte* chroma_weight_l1_7;
-	public unsafe sbyte* chroma_weight_l1_8;
-	public unsafe sbyte* chroma_weight_l1_9;
-	public unsafe sbyte* chroma_weight_l1_10;
-	public unsafe sbyte* chroma_weight_l1_11;
-	public unsafe sbyte* chroma_weight_l1_12;
-	public unsafe sbyte* chroma_weight_l1_13;
-	public unsafe sbyte* chroma_weight_l1_14;
-	public unsafe sbyte* chroma_weight_l1_15;
-	public unsafe sbyte* chroma_weight_l1_16;
-	public unsafe sbyte* chroma_weight_l1_17;
-	public unsafe sbyte* chroma_weight_l1_18;
-	public unsafe sbyte* chroma_weight_l1_19;
-	public unsafe sbyte* chroma_weight_l1_20;
-	public unsafe sbyte* chroma_weight_l1_21;
-	public unsafe sbyte* chroma_weight_l1_22;
-	public unsafe sbyte* chroma_weight_l1_23;
-	public unsafe sbyte* chroma_weight_l1_24;
-	public unsafe sbyte* chroma_weight_l1_25;
-	public unsafe sbyte* chroma_weight_l1_26;
-	public unsafe sbyte* chroma_weight_l1_27;
-	public unsafe sbyte* chroma_weight_l1_28;
-	public unsafe sbyte* chroma_weight_l1_29;
-	public unsafe sbyte* chroma_weight_l1_30;
-	public unsafe sbyte* chroma_weight_l1_31;
-	public unsafe sbyte* chroma_offset_l1_0;
-	public unsafe sbyte* chroma_offset_l1_1;
-	public unsafe sbyte* chroma_offset_l1_2;
-	public unsafe sbyte* chroma_offset_l1_3;
-	public unsafe sbyte* chroma_offset_l1_4;
-	public unsafe sbyte* chroma_offset_l1_5;
-	public unsafe sbyte* chroma_offset_l1_6;
-	public unsafe sbyte* chroma_offset_l1_7;
-	public unsafe sbyte* chroma_offset_l1_8;
-	public unsafe sbyte* chroma_offset_l1_9;
-	public unsafe sbyte* chroma_offset_l1_10;
-	public unsafe sbyte* chroma_offset_l1_11;
-	public unsafe sbyte* chroma_offset_l1_12;
-	public unsafe sbyte* chroma_offset_l1_13;
-	public unsafe sbyte* chroma_offset_l1_14;
-	public unsafe sbyte* chroma_offset_l1_15;
-	public unsafe sbyte* chroma_offset_l1_16;
-	public unsafe sbyte* chroma_offset_l1_17;
-	public unsafe sbyte* chroma_offset_l1_18;
-	public unsafe sbyte* chroma_offset_l1_19;
-	public unsafe sbyte* chroma_offset_l1_20;
-	public unsafe sbyte* chroma_offset_l1_21;
-	public unsafe sbyte* chroma_offset_l1_22;
-	public unsafe sbyte* chroma_offset_l1_23;
-	public unsafe sbyte* chroma_offset_l1_24;
-	public unsafe sbyte* chroma_offset_l1_25;
-	public unsafe sbyte* chroma_offset_l1_26;
-	public unsafe sbyte* chroma_offset_l1_27;
-	public unsafe sbyte* chroma_offset_l1_28;
-	public unsafe sbyte* chroma_offset_l1_29;
-	public unsafe sbyte* chroma_offset_l1_30;
-	public unsafe sbyte* chroma_offset_l1_31;
+	public unsafe fixed sbyte chroma_weight_l1[32 * 2];
+	public unsafe fixed sbyte chroma_offset_l1[32 * 2];
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -11938,20 +12184,58 @@ public partial struct StdVideoH265HrdParameters
 	public byte dpb_output_delay_length_minus1;
 	public unsafe fixed byte cpb_cnt_minus1[7];
 	public unsafe fixed ushort elemental_duration_in_tc_minus1[7];
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_0;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_1;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_2;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_3;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_4;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_5;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal_6;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_0;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_1;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_2;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_3;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_4;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_5;
-	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl_6;
+	public pSubLayerHrdParametersNal__FixedBuffer pSubLayerHrdParametersNal;
+
+	public unsafe struct pSubLayerHrdParametersNal__FixedBuffer
+	{
+		public StdVideoH265SubLayerHrdParameters* e0;
+		public StdVideoH265SubLayerHrdParameters* e1;
+		public StdVideoH265SubLayerHrdParameters* e2;
+		public StdVideoH265SubLayerHrdParameters* e3;
+		public StdVideoH265SubLayerHrdParameters* e4;
+		public StdVideoH265SubLayerHrdParameters* e5;
+		public StdVideoH265SubLayerHrdParameters* e6;
+
+		[UnscopedRef]
+		public ref StdVideoH265SubLayerHrdParameters* this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				fixed (StdVideoH265SubLayerHrdParameters** pThis = &e0)
+				{
+					return ref pThis[index];
+				}
+			}
+		}
+
+	}
+	public pSubLayerHrdParametersVcl__FixedBuffer pSubLayerHrdParametersVcl;
+
+	public unsafe struct pSubLayerHrdParametersVcl__FixedBuffer
+	{
+		public StdVideoH265SubLayerHrdParameters* e0;
+		public StdVideoH265SubLayerHrdParameters* e1;
+		public StdVideoH265SubLayerHrdParameters* e2;
+		public StdVideoH265SubLayerHrdParameters* e3;
+		public StdVideoH265SubLayerHrdParameters* e4;
+		public StdVideoH265SubLayerHrdParameters* e5;
+		public StdVideoH265SubLayerHrdParameters* e6;
+
+		[UnscopedRef]
+		public ref StdVideoH265SubLayerHrdParameters* this[int index]
+		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get
+			{
+				fixed (StdVideoH265SubLayerHrdParameters** pThis = &e0)
+				{
+					return ref pThis[index];
+				}
+			}
+		}
+
+	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -11979,26 +12263,10 @@ public partial struct StdVideoH265VideoParameterSet
 [StructLayout(LayoutKind.Sequential)]
 public partial struct StdVideoH265ScalingLists
 {
-	public unsafe byte* ScalingList4x4_0;
-	public unsafe byte* ScalingList4x4_1;
-	public unsafe byte* ScalingList4x4_2;
-	public unsafe byte* ScalingList4x4_3;
-	public unsafe byte* ScalingList4x4_4;
-	public unsafe byte* ScalingList4x4_5;
-	public unsafe byte* ScalingList8x8_0;
-	public unsafe byte* ScalingList8x8_1;
-	public unsafe byte* ScalingList8x8_2;
-	public unsafe byte* ScalingList8x8_3;
-	public unsafe byte* ScalingList8x8_4;
-	public unsafe byte* ScalingList8x8_5;
-	public unsafe byte* ScalingList16x16_0;
-	public unsafe byte* ScalingList16x16_1;
-	public unsafe byte* ScalingList16x16_2;
-	public unsafe byte* ScalingList16x16_3;
-	public unsafe byte* ScalingList16x16_4;
-	public unsafe byte* ScalingList16x16_5;
-	public unsafe byte* ScalingList32x32_0;
-	public unsafe byte* ScalingList32x32_1;
+	public unsafe fixed byte ScalingList4x4[6 * 16];
+	public unsafe fixed byte ScalingList8x8[6 * 64];
+	public unsafe fixed byte ScalingList16x16[6 * 64];
+	public unsafe fixed byte ScalingList32x32[2 * 64];
 	public unsafe fixed byte ScalingListDCCoef16x16[6];
 	public unsafe fixed byte ScalingListDCCoef32x32[2];
 }
@@ -12057,9 +12325,7 @@ public partial struct StdVideoH265SequenceParameterSetVui
 [StructLayout(LayoutKind.Sequential)]
 public partial struct StdVideoH265PredictorPaletteEntries
 {
-	public unsafe ushort* PredictorPaletteEntries_0;
-	public unsafe ushort* PredictorPaletteEntries_1;
-	public unsafe ushort* PredictorPaletteEntries_2;
+	public unsafe fixed ushort PredictorPaletteEntries[3 * 128];
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -12226,68 +12492,12 @@ public partial struct StdVideoEncodeH265WeightTable
 	public sbyte delta_chroma_log2_weight_denom;
 	public unsafe fixed sbyte delta_luma_weight_l0[15];
 	public unsafe fixed sbyte luma_offset_l0[15];
-	public unsafe sbyte* delta_chroma_weight_l0_0;
-	public unsafe sbyte* delta_chroma_weight_l0_1;
-	public unsafe sbyte* delta_chroma_weight_l0_2;
-	public unsafe sbyte* delta_chroma_weight_l0_3;
-	public unsafe sbyte* delta_chroma_weight_l0_4;
-	public unsafe sbyte* delta_chroma_weight_l0_5;
-	public unsafe sbyte* delta_chroma_weight_l0_6;
-	public unsafe sbyte* delta_chroma_weight_l0_7;
-	public unsafe sbyte* delta_chroma_weight_l0_8;
-	public unsafe sbyte* delta_chroma_weight_l0_9;
-	public unsafe sbyte* delta_chroma_weight_l0_10;
-	public unsafe sbyte* delta_chroma_weight_l0_11;
-	public unsafe sbyte* delta_chroma_weight_l0_12;
-	public unsafe sbyte* delta_chroma_weight_l0_13;
-	public unsafe sbyte* delta_chroma_weight_l0_14;
-	public unsafe sbyte* delta_chroma_offset_l0_0;
-	public unsafe sbyte* delta_chroma_offset_l0_1;
-	public unsafe sbyte* delta_chroma_offset_l0_2;
-	public unsafe sbyte* delta_chroma_offset_l0_3;
-	public unsafe sbyte* delta_chroma_offset_l0_4;
-	public unsafe sbyte* delta_chroma_offset_l0_5;
-	public unsafe sbyte* delta_chroma_offset_l0_6;
-	public unsafe sbyte* delta_chroma_offset_l0_7;
-	public unsafe sbyte* delta_chroma_offset_l0_8;
-	public unsafe sbyte* delta_chroma_offset_l0_9;
-	public unsafe sbyte* delta_chroma_offset_l0_10;
-	public unsafe sbyte* delta_chroma_offset_l0_11;
-	public unsafe sbyte* delta_chroma_offset_l0_12;
-	public unsafe sbyte* delta_chroma_offset_l0_13;
-	public unsafe sbyte* delta_chroma_offset_l0_14;
+	public unsafe fixed sbyte delta_chroma_weight_l0[15 * 2];
+	public unsafe fixed sbyte delta_chroma_offset_l0[15 * 2];
 	public unsafe fixed sbyte delta_luma_weight_l1[15];
 	public unsafe fixed sbyte luma_offset_l1[15];
-	public unsafe sbyte* delta_chroma_weight_l1_0;
-	public unsafe sbyte* delta_chroma_weight_l1_1;
-	public unsafe sbyte* delta_chroma_weight_l1_2;
-	public unsafe sbyte* delta_chroma_weight_l1_3;
-	public unsafe sbyte* delta_chroma_weight_l1_4;
-	public unsafe sbyte* delta_chroma_weight_l1_5;
-	public unsafe sbyte* delta_chroma_weight_l1_6;
-	public unsafe sbyte* delta_chroma_weight_l1_7;
-	public unsafe sbyte* delta_chroma_weight_l1_8;
-	public unsafe sbyte* delta_chroma_weight_l1_9;
-	public unsafe sbyte* delta_chroma_weight_l1_10;
-	public unsafe sbyte* delta_chroma_weight_l1_11;
-	public unsafe sbyte* delta_chroma_weight_l1_12;
-	public unsafe sbyte* delta_chroma_weight_l1_13;
-	public unsafe sbyte* delta_chroma_weight_l1_14;
-	public unsafe sbyte* delta_chroma_offset_l1_0;
-	public unsafe sbyte* delta_chroma_offset_l1_1;
-	public unsafe sbyte* delta_chroma_offset_l1_2;
-	public unsafe sbyte* delta_chroma_offset_l1_3;
-	public unsafe sbyte* delta_chroma_offset_l1_4;
-	public unsafe sbyte* delta_chroma_offset_l1_5;
-	public unsafe sbyte* delta_chroma_offset_l1_6;
-	public unsafe sbyte* delta_chroma_offset_l1_7;
-	public unsafe sbyte* delta_chroma_offset_l1_8;
-	public unsafe sbyte* delta_chroma_offset_l1_9;
-	public unsafe sbyte* delta_chroma_offset_l1_10;
-	public unsafe sbyte* delta_chroma_offset_l1_11;
-	public unsafe sbyte* delta_chroma_offset_l1_12;
-	public unsafe sbyte* delta_chroma_offset_l1_13;
-	public unsafe sbyte* delta_chroma_offset_l1_14;
+	public unsafe fixed sbyte delta_chroma_weight_l1[15 * 2];
+	public unsafe fixed sbyte delta_chroma_offset_l1[15 * 2];
 }
 
 [StructLayout(LayoutKind.Sequential)]

@@ -2971,6 +2971,24 @@ unsafe partial class Vulkan
 		vkCmdSetRayTracingPipelineStackSizeKHR_ptr(commandBuffer, pipelineStackSize);
 	}
 
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, void> vkCmdDrawMeshTasksEXT_ptr;
+	public static void vkCmdDrawMeshTasksEXT(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ)
+	{
+		vkCmdDrawMeshTasksEXT_ptr(commandBuffer, groupCountX, groupCountY, groupCountZ);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, int, uint, void> vkCmdDrawMeshTasksIndirectEXT_ptr;
+	public static void vkCmdDrawMeshTasksIndirectEXT(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, int drawCount, uint stride)
+	{
+		vkCmdDrawMeshTasksIndirectEXT_ptr(commandBuffer, buffer, offset, drawCount, stride);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, int, uint, void> vkCmdDrawMeshTasksIndirectCountEXT_ptr;
+	public static void vkCmdDrawMeshTasksIndirectCountEXT(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, int maxDrawCount, uint stride)
+	{
+		vkCmdDrawMeshTasksIndirectCountEXT_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+	}
+
 	private static delegate* unmanaged[Stdcall]<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateAndroidSurfaceKHR_ptr;
 	public static VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
@@ -3604,6 +3622,9 @@ unsafe partial class Vulkan
 		vkCmdTraceRaysIndirectKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, ulong, void>) load(context, nameof(vkCmdTraceRaysIndirectKHR));
 		vkGetRayTracingShaderGroupStackSizeKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPipeline, uint, VkShaderGroupShaderKHR, ulong>) load(context, nameof(vkGetRayTracingShaderGroupStackSizeKHR));
 		vkCmdSetRayTracingPipelineStackSizeKHR_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetRayTracingPipelineStackSizeKHR));
+		vkCmdDrawMeshTasksEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksEXT));
+		vkCmdDrawMeshTasksIndirectEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, int, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectEXT));
+		vkCmdDrawMeshTasksIndirectCountEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, int, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectCountEXT));
 		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged[Stdcall]<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
 		vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
 		vkExportMetalObjectsEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkExportMetalObjectsInfoEXT*, void>) load(context, nameof(vkExportMetalObjectsEXT));

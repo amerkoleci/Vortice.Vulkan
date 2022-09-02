@@ -40,23 +40,13 @@ public static unsafe class VkUtils
         return Interop.GetString(properties.description);
     }
 
-    public static VkMemoryType GetMemoryType(this VkPhysicalDeviceMemoryProperties memoryProperties, uint index)
-    {
-        return (&memoryProperties.memoryTypes_0)[index];
-    }
-
-    public static VkMemoryHeap GetMemoryHeap(this VkPhysicalDeviceMemoryProperties memoryProperties, uint index)
-    {
-        return (&memoryProperties.memoryHeaps_0)[index];
-    }
-
     public static uint IndexOf(this VkPhysicalDeviceMemoryProperties memoryProperties, int memoryTypeBits, VkMemoryPropertyFlags properties)
     {
         uint count = memoryProperties.memoryTypeCount;
         for (uint i = 0; i < count; i++)
         {
             if ((memoryTypeBits & 1) == 1 &&
-                ((&memoryProperties.memoryTypes_0)[i].propertyFlags & properties) == properties)
+                (memoryProperties.memoryTypes[(int)i].propertyFlags & properties) == properties)
             {
                 return i;
             }

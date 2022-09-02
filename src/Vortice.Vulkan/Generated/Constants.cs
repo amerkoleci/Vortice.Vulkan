@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 225
+	/// VK_HEADER_VERSION = 226
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 225;
+	public const uint VK_HEADER_VERSION = 226;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -3075,6 +3075,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_EXTENSION_NAME = "VK_VALVE_descriptor_set_host_mapping";
 	/// <summary>
+	/// VK_EXT_depth_clamp_zero_one = 1
+	/// </summary>
+	public const uint VK_EXT_depth_clamp_zero_one = 1;
+	/// <summary>
+	/// VK_EXT_DEPTH_CLAMP_ZERO_ONE_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_DEPTH_CLAMP_ZERO_ONE_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_DEPTH_CLAMP_ZERO_ONE_EXTENSION_NAME = "VK_EXT_depth_clamp_zero_one"
+	/// </summary>
+	public const string VK_EXT_DEPTH_CLAMP_ZERO_ONE_EXTENSION_NAME = "VK_EXT_depth_clamp_zero_one";
+	/// <summary>
 	/// VK_EXT_non_seamless_cube_map = 1
 	/// </summary>
 	public const uint VK_EXT_non_seamless_cube_map = 1;
@@ -3247,6 +3259,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_KHR_RAY_QUERY_EXTENSION_NAME = "VK_KHR_ray_query";
 	/// <summary>
+	/// VK_EXT_mesh_shader = 1
+	/// </summary>
+	public const uint VK_EXT_mesh_shader = 1;
+	/// <summary>
+	/// VK_EXT_MESH_SHADER_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_MESH_SHADER_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_MESH_SHADER_EXTENSION_NAME = "VK_EXT_mesh_shader"
+	/// </summary>
+	public const string VK_EXT_MESH_SHADER_EXTENSION_NAME = "VK_EXT_mesh_shader";
+	/// <summary>
 	/// VK_KHR_android_surface = 1
 	/// </summary>
 	public const uint VK_KHR_android_surface = 1;
@@ -3347,9 +3371,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_KHR_video_decode_queue = 1;
 	/// <summary>
-	/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 5
+	/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 6
 	/// </summary>
-	public const uint VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 5;
+	public const uint VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 6;
 	/// <summary>
 	/// VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue"
 	/// </summary>
@@ -3371,9 +3395,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_KHR_video_encode_queue = 1;
 	/// <summary>
-	/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 6
+	/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 7
 	/// </summary>
-	public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 6;
+	public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 7;
 	/// <summary>
 	/// VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue"
 	/// </summary>
