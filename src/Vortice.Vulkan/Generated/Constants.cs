@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 226
+	/// VK_HEADER_VERSION = 228
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 226;
+	public const uint VK_HEADER_VERSION = 228;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -3127,9 +3127,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_GOOGLE_surfaceless_query = 1;
 	/// <summary>
-	/// VK_GOOGLE_SURFACELESS_QUERY_SPEC_VERSION = 1
+	/// VK_GOOGLE_SURFACELESS_QUERY_SPEC_VERSION = 2
 	/// </summary>
-	public const uint VK_GOOGLE_SURFACELESS_QUERY_SPEC_VERSION = 1;
+	public const uint VK_GOOGLE_SURFACELESS_QUERY_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_GOOGLE_SURFACELESS_QUERY_EXTENSION_NAME = "VK_GOOGLE_surfaceless_query"
 	/// </summary>
@@ -3199,6 +3199,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_EXT_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXTENSION_NAME = "VK_EXT_rasterization_order_attachment_access";
 	/// <summary>
+	/// VK_EXT_legacy_dithering = 1
+	/// </summary>
+	public const uint VK_EXT_legacy_dithering = 1;
+	/// <summary>
+	/// VK_EXT_LEGACY_DITHERING_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_LEGACY_DITHERING_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_LEGACY_DITHERING_EXTENSION_NAME = "VK_EXT_legacy_dithering"
+	/// </summary>
+	public const string VK_EXT_LEGACY_DITHERING_EXTENSION_NAME = "VK_EXT_legacy_dithering";
+	/// <summary>
 	/// VK_QCOM_tile_properties = 1
 	/// </summary>
 	public const uint VK_QCOM_tile_properties = 1;
@@ -3222,6 +3234,18 @@ public static partial class Vulkan
 	/// VK_SEC_AMIGO_PROFILING_EXTENSION_NAME = "VK_SEC_amigo_profiling"
 	/// </summary>
 	public const string VK_SEC_AMIGO_PROFILING_EXTENSION_NAME = "VK_SEC_amigo_profiling";
+	/// <summary>
+	/// VK_EXT_mutable_descriptor_type = 1
+	/// </summary>
+	public const uint VK_EXT_mutable_descriptor_type = 1;
+	/// <summary>
+	/// VK_EXT_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_EXT_mutable_descriptor_type"
+	/// </summary>
+	public const string VK_EXT_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_EXT_mutable_descriptor_type";
 	/// <summary>
 	/// VK_KHR_acceleration_structure = 1
 	/// </summary>

@@ -9493,37 +9493,37 @@ public partial struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE
+public partial struct VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkBool32 mutableDescriptorType;
-	public static VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE New()
+	public static VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT New()
 	{
-		Unsafe.SkipInit(out VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE instance);
-		instance.sType = VkStructureType.PhysicalDeviceMutableDescriptorTypeFeaturesVALVE;
+		Unsafe.SkipInit(out VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceMutableDescriptorTypeFeaturesEXT;
 		return instance;
 	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkMutableDescriptorTypeListVALVE
+public partial struct VkMutableDescriptorTypeListEXT
 {
 	public uint descriptorTypeCount;
 	public unsafe VkDescriptorType* pDescriptorTypes;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VkMutableDescriptorTypeCreateInfoVALVE
+public partial struct VkMutableDescriptorTypeCreateInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public uint mutableDescriptorTypeListCount;
-	public unsafe VkMutableDescriptorTypeListVALVE* pMutableDescriptorTypeLists;
-	public static VkMutableDescriptorTypeCreateInfoVALVE New()
+	public unsafe VkMutableDescriptorTypeListEXT* pMutableDescriptorTypeLists;
+	public static VkMutableDescriptorTypeCreateInfoEXT New()
 	{
-		Unsafe.SkipInit(out VkMutableDescriptorTypeCreateInfoVALVE instance);
-		instance.sType = VkStructureType.MutableDescriptorTypeCreateInfoVALVE;
+		Unsafe.SkipInit(out VkMutableDescriptorTypeCreateInfoEXT instance);
+		instance.sType = VkStructureType.MutableDescriptorTypeCreateInfoEXT;
 		return instance;
 	}
 }
@@ -10302,6 +10302,20 @@ public partial struct VkShaderModuleIdentifierEXT
 	{
 		Unsafe.SkipInit(out VkShaderModuleIdentifierEXT instance);
 		instance.sType = VkStructureType.ShaderModuleIdentifierEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceLegacyDitheringFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 legacyDithering;
+	public static VkPhysicalDeviceLegacyDitheringFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceLegacyDitheringFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceLegacyDitheringFeaturesEXT;
 		return instance;
 	}
 }

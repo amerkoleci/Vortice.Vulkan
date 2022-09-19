@@ -681,8 +681,6 @@ public enum VkStructureType
 	PhysicalDevice4444FormatsFeaturesEXT = 1000340000,
 	PhysicalDeviceRGBA10X6FormatsFeaturesEXT = 1000344000,
 	DirectfbSurfaceCreateInfoEXT = 1000346000,
-	PhysicalDeviceMutableDescriptorTypeFeaturesVALVE = 1000351000,
-	MutableDescriptorTypeCreateInfoVALVE = 1000351002,
 	PhysicalDeviceVertexInputDynamicStateFeaturesEXT = 1000352000,
 	VertexInputBindingDescription2EXT = 1000352001,
 	VertexInputAttributeDescription2EXT = 1000352002,
@@ -752,10 +750,13 @@ public enum VkStructureType
 	PipelineShaderStageModuleIdentifierCreateInfoEXT = 1000462002,
 	ShaderModuleIdentifierEXT = 1000462003,
 	PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT = 1000342000,
+	PhysicalDeviceLegacyDitheringFeaturesEXT = 1000465000,
 	PhysicalDeviceTilePropertiesFeaturesQCOM = 1000484000,
 	TilePropertiesQCOM = 1000484001,
 	PhysicalDeviceAmigoProfilingFeaturesSEC = 1000485000,
 	AmigoProfilingSubmitInfoSEC = 1000485001,
+	PhysicalDeviceMutableDescriptorTypeFeaturesEXT = 1000351000,
+	MutableDescriptorTypeCreateInfoEXT = 1000351002,
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 	DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
@@ -918,6 +919,8 @@ public enum VkStructureType
 	BufferImageCopy2KHR = BufferImageCopy2,
 	ImageResolve2KHR = ImageResolve2,
 	PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM = PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT,
+	PhysicalDeviceMutableDescriptorTypeFeaturesVALVE = PhysicalDeviceMutableDescriptorTypeFeaturesEXT,
+	MutableDescriptorTypeCreateInfoVALVE = MutableDescriptorTypeCreateInfoEXT,
 	FormatProperties3KHR = FormatProperties3,
 	PipelineInfoEXT = PipelineInfoKHR,
 	PhysicalDeviceGlobalPriorityQueryFeaturesEXT = PhysicalDeviceGlobalPriorityQueryFeaturesKHR,
@@ -1691,10 +1694,11 @@ public enum VkDescriptorType
 	InlineUniformBlock = 1000138000,
 	AccelerationStructureKHR = 1000150000,
 	AccelerationStructureNV = 1000165000,
-	MutableVALVE = 1000351000,
 	SampleWeightImageQCOM = 1000440000,
 	BlockMatchImageQCOM = 1000440001,
+	MutableEXT = 1000351000,
 	InlineUniformBlockEXT = InlineUniformBlock,
+	MutableVALVE = MutableEXT,
 }
 
 public enum VkAttachmentLoadOp
@@ -2270,8 +2274,9 @@ public enum VkDescriptorPoolCreateFlags
 	None = 0,
 	FreeDescriptorSet = 1,
 	UpdateAfterBind = 2,
-	HostOnlyVALVE = 4,
+	HostOnlyEXT = 4,
 	UpdateAfterBindEXT = UpdateAfterBind,
+	HostOnlyVALVE = HostOnlyEXT,
 }
 
 [Flags]
@@ -2280,8 +2285,9 @@ public enum VkDescriptorSetLayoutCreateFlags
 	None = 0,
 	UpdateAfterBindPool = 2,
 	PushDescriptorKHR = 1,
-	HostOnlyPoolVALVE = 4,
+	HostOnlyPoolEXT = 4,
 	UpdateAfterBindPoolEXT = UpdateAfterBindPool,
+	HostOnlyPoolVALVE = HostOnlyPoolEXT,
 }
 
 [Flags]
@@ -2329,6 +2335,7 @@ public enum VkSubpassDescriptionFlags
 	RasterizationOrderAttachmentColorAccessEXT = 16,
 	RasterizationOrderAttachmentDepthAccessEXT = 32,
 	RasterizationOrderAttachmentStencilAccessEXT = 64,
+	EnableLegacyDitheringEXT = 128,
 	RasterizationOrderAttachmentColorAccessARM = RasterizationOrderAttachmentColorAccessEXT,
 	RasterizationOrderAttachmentDepthAccessARM = RasterizationOrderAttachmentDepthAccessEXT,
 	RasterizationOrderAttachmentStencilAccessARM = RasterizationOrderAttachmentStencilAccessEXT,
@@ -2731,6 +2738,7 @@ public enum VkRenderingFlags
 	ContentsSecondaryCommandBuffers = 1,
 	Suspending = 2,
 	Resuming = 4,
+	EnableLegacyDitheringEXT = 8,
 	ContentsSecondaryCommandBuffersKHR = ContentsSecondaryCommandBuffers,
 	SuspendingKHR = Suspending,
 	ResumingKHR = Resuming,
