@@ -362,7 +362,6 @@ public enum VkStructureType
 	VideoEncodeH265RateControlLayerInfoEXT = 1000039010,
 	VideoDecodeH264CapabilitiesEXT = 1000040000,
 	VideoDecodeH264PictureInfoEXT = 1000040001,
-	VideoDecodeH264MvcInfoEXT = 1000040002,
 	VideoDecodeH264ProfileInfoEXT = 1000040003,
 	VideoDecodeH264SessionParametersCreateInfoEXT = 1000040004,
 	VideoDecodeH264SessionParametersAddInfoEXT = 1000040005,
@@ -629,6 +628,9 @@ public enum VkStructureType
 	PhysicalDeviceCustomBorderColorPropertiesEXT = 1000287001,
 	PhysicalDeviceCustomBorderColorFeaturesEXT = 1000287002,
 	PipelineLibraryCreateInfoKHR = 1000290000,
+	PhysicalDevicePresentBarrierFeaturesNV = 1000292000,
+	SurfaceCapabilitiesPresentBarrierNV = 1000292001,
+	SwapchainPresentBarrierCreateInfoNV = 1000292002,
 	PresentIdKHR = 1000294000,
 	PhysicalDevicePresentIdFeaturesKHR = 1000294001,
 	VideoEncodeInfoKHR = 1000299000,
@@ -679,12 +681,17 @@ public enum VkStructureType
 	ImageCompressionPropertiesEXT = 1000338004,
 	PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT = 1000339000,
 	PhysicalDevice4444FormatsFeaturesEXT = 1000340000,
+	PhysicalDeviceFaultFeaturesEXT = 1000341000,
+	DeviceFaultCountsEXT = 1000341001,
+	DeviceFaultInfoEXT = 1000341002,
 	PhysicalDeviceRGBA10X6FormatsFeaturesEXT = 1000344000,
 	DirectfbSurfaceCreateInfoEXT = 1000346000,
 	PhysicalDeviceVertexInputDynamicStateFeaturesEXT = 1000352000,
 	VertexInputBindingDescription2EXT = 1000352001,
 	VertexInputAttributeDescription2EXT = 1000352002,
 	PhysicalDeviceDrmPropertiesEXT = 1000353000,
+	PhysicalDeviceAddressBindingReportFeaturesEXT = 1000354000,
+	DeviceAddressBindingCallbackDataEXT = 1000354001,
 	PhysicalDeviceDepthClipControlFeaturesEXT = 1000355000,
 	PipelineViewportDepthClipControlCreateInfoEXT = 1000355001,
 	PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT = 1000356000,
@@ -725,6 +732,16 @@ public enum VkStructureType
 	PhysicalDeviceMultiDrawFeaturesEXT = 1000392000,
 	PhysicalDeviceMultiDrawPropertiesEXT = 1000392001,
 	PhysicalDeviceImage2DViewOf3DFeaturesEXT = 1000393000,
+	MicromapBuildInfoEXT = 1000396000,
+	MicromapVersionInfoEXT = 1000396001,
+	CopyMicromapInfoEXT = 1000396002,
+	CopyMicromapToMemoryInfoEXT = 1000396003,
+	CopyMemoryToMicromapInfoEXT = 1000396004,
+	PhysicalDeviceOpacityMicromapFeaturesEXT = 1000396005,
+	PhysicalDeviceOpacityMicromapPropertiesEXT = 1000396006,
+	MicromapCreateInfoEXT = 1000396007,
+	MicromapBuildSizesInfoEXT = 1000396008,
+	AccelerationStructureTrianglesOpacityMicromapEXT = 1000396009,
 	PhysicalDeviceBorderColorSwizzleFeaturesEXT = 1000411000,
 	SamplerBorderColorComponentMappingCreateInfoEXT = 1000411001,
 	PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT = 1000412000,
@@ -741,6 +758,8 @@ public enum VkStructureType
 	PhysicalDeviceImageProcessingFeaturesQCOM = 1000440000,
 	PhysicalDeviceImageProcessingPropertiesQCOM = 1000440001,
 	ImageViewSampleWeightCreateInfoQCOM = 1000440002,
+	PhysicalDeviceExtendedDynamicState3FeaturesEXT = 1000455000,
+	PhysicalDeviceExtendedDynamicState3PropertiesEXT = 1000455001,
 	PhysicalDeviceSubpassMergeFeedbackFeaturesEXT = 1000458000,
 	RenderPassCreationControlEXT = 1000458001,
 	RenderPassCreationFeedbackCreateInfoEXT = 1000458002,
@@ -750,7 +769,15 @@ public enum VkStructureType
 	PipelineShaderStageModuleIdentifierCreateInfoEXT = 1000462002,
 	ShaderModuleIdentifierEXT = 1000462003,
 	PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT = 1000342000,
+	PhysicalDeviceOpticalFlowFeaturesNV = 1000464000,
+	PhysicalDeviceOpticalFlowPropertiesNV = 1000464001,
+	OpticalFlowImageFormatInfoNV = 1000464002,
+	OpticalFlowImageFormatPropertiesNV = 1000464003,
+	OpticalFlowSessionCreateInfoNV = 1000464004,
+	OpticalFlowExecuteInfoNV = 1000464005,
+	OpticalFlowSessionCreatePrivateDataInfoNV = 1000464010,
 	PhysicalDeviceLegacyDitheringFeaturesEXT = 1000465000,
+	PhysicalDevicePipelineProtectedAccessFeaturesEXT = 1000466000,
 	PhysicalDeviceTilePropertiesFeaturesQCOM = 1000484000,
 	TilePropertiesQCOM = 1000484001,
 	PhysicalDeviceAmigoProfilingFeaturesSEC = 1000485000,
@@ -1025,6 +1052,8 @@ public enum VkObjectType
 	DeferredOperationKHR = 1000268000,
 	IndirectCommandsLayoutNV = 1000277000,
 	BufferCollectionFUCHSIA = 1000366000,
+	MicromapEXT = 1000396000,
+	OpticalFlowSessionNV = 1000464000,
 	DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate,
 	SamplerYcbcrConversionKHR = SamplerYcbcrConversion,
 	PrivateDataSlotEXT = PrivateDataSlot,
@@ -1303,6 +1332,7 @@ public enum VkFormat
 	PVRTC14BPPSRgbBlockImg = 1000054005,
 	PVRTC22BPPSRgbBlockImg = 1000054006,
 	PVRTC24BPPSRgbBlockImg = 1000054007,
+	R16G16S105NV = 1000464000,
 	ASTC4x4SFloatBlockEXT = ASTC4x4SFloatBlock,
 	ASTC5x4SFloatBlockEXT = ASTC5x4SFloatBlock,
 	ASTC5x5SFloatBlockEXT = ASTC5x5SFloatBlock,
@@ -1399,6 +1429,8 @@ public enum VkQueryType
 	PrimitivesGeneratedEXT = 1000382000,
 	AccelerationStructureSerializationBottomLevelPointersKHR = 1000386000,
 	AccelerationStructureSizeKHR = 1000386001,
+	MicromapSerializationSizeEXT = 1000396000,
+	MicromapCompactedSizeEXT = 1000396001,
 }
 
 public enum VkSharingMode
@@ -1558,6 +1590,37 @@ public enum VkDynamicState
 	PatchControlPointsEXT = 1000377000,
 	LogicOpEXT = 1000377003,
 	ColorWriteEnableEXT = 1000381000,
+	TessellationDomainOriginEXT = 1000455002,
+	DepthClampEnableEXT = 1000455003,
+	PolygonModeEXT = 1000455004,
+	RasterizationSamplesEXT = 1000455005,
+	SampleMaskEXT = 1000455006,
+	AlphaToCoverageEnableEXT = 1000455007,
+	AlphaToOneEnableEXT = 1000455008,
+	LogicOpEnableEXT = 1000455009,
+	ColorBlendEnableEXT = 1000455010,
+	ColorBlendEquationEXT = 1000455011,
+	ColorWriteMaskEXT = 1000455012,
+	RasterizationStreamEXT = 1000455013,
+	ConservativeRasterizationModeEXT = 1000455014,
+	ExtraPrimitiveOverestimationSizeEXT = 1000455015,
+	DepthClipEnableEXT = 1000455016,
+	SampleLocationsEnableEXT = 1000455017,
+	ColorBlendAdvancedEXT = 1000455018,
+	ProvokingVertexModeEXT = 1000455019,
+	LineRasterizationModeEXT = 1000455020,
+	LineStippleEnableEXT = 1000455021,
+	DepthClipNegativeOneToOneEXT = 1000455022,
+	ViewportWScalingEnableNV = 1000455023,
+	ViewportSwizzleNV = 1000455024,
+	CoverageToColorEnableNV = 1000455025,
+	CoverageToColorLocationNV = 1000455026,
+	CoverageModulationModeNV = 1000455027,
+	CoverageModulationTableEnableNV = 1000455028,
+	CoverageModulationTableNV = 1000455029,
+	ShadingRateImageEnableNV = 1000455030,
+	RepresentativeFragmentTestEnableNV = 1000455031,
+	CoverageReductionModeNV = 1000455032,
 	CullModeEXT = CullMode,
 	FrontFaceEXT = FrontFace,
 	PrimitiveTopologyEXT = PrimitiveTopology,
@@ -1867,7 +1930,7 @@ public enum VkImageCreateFlags
 	CubeCompatible = 16,
 	Alias = 1024,
 	SplitInstanceBindRegions = 64,
-	_2DArrayCompatible = 32,
+	Array2DCompatible = 32,
 	BlockTexelViewCompatible = 128,
 	ExtendedUsage = 256,
 	Protected = 2048,
@@ -1876,10 +1939,10 @@ public enum VkImageCreateFlags
 	SampleLocationsCompatibleDepthEXT = 4096,
 	SubsampledEXT = 16384,
 	MultisampledRenderToSingleSampledEXT = 262144,
-	_2DViewCompatibleEXT = 131072,
+	View2DCompatibleEXT = 131072,
 	FragmentDensityMapOffsetQCOM = 32768,
 	SplitInstanceBindRegionsKHR = SplitInstanceBindRegions,
-	_2DArrayCompatibleKHR = _2DArrayCompatible,
+	Array2DCompatibleKHR = Array2DCompatible,
 	BlockTexelViewCompatibleKHR = BlockTexelViewCompatible,
 	ExtendedUsageKHR = ExtendedUsage,
 	DisjointKHR = Disjoint,
@@ -1968,6 +2031,7 @@ public enum VkQueueFlags
 	Protected = 16,
 	VideoDecodeKHR = 32,
 	VideoEncodeKHR = 64,
+	OpticalFlowNV = 256,
 }
 
 [Flags]
@@ -2069,7 +2133,7 @@ public enum VkQueryPipelineStatisticFlags
 public enum VkQueryResultFlags
 {
 	None = 0,
-	_64 = 1,
+	Bit64 = 1,
 	Wait = 2,
 	WithAvailability = 4,
 	Partial = 8,
@@ -2113,6 +2177,8 @@ public enum VkBufferUsageFlags
 	ShaderBindingTableKHR = 1024,
 	VideoEncodeDstKHR = 32768,
 	VideoEncodeSrcKHR = 65536,
+	MicromapBuildInputReadOnlyEXT = 8388608,
+	MicromapStorageEXT = 16777216,
 	RayTracingNV = ShaderBindingTableKHR,
 	ShaderDeviceAddressEXT = ShaderDeviceAddress,
 	ShaderDeviceAddressKHR = ShaderDeviceAddress,
@@ -2175,6 +2241,9 @@ public enum VkPipelineCreateFlags
 	RayTracingAllowMotionNV = 1048576,
 	ColorAttachmentFeedbackLoopEXT = 33554432,
 	DepthStencilAttachmentFeedbackLoopEXT = 67108864,
+	RayTracingOpacityMicromapEXT = 16777216,
+	NoProtectedAccessEXT = 134217728,
+	ProtectedAccessOnlyEXT = 1073741824,
 	RasterizationStateCreateFragmentShadingRateAttachmentKHR = RenderingFragmentShadingRateAttachmentKHR,
 	RasterizationStateCreateFragmentDensityMapAttachmentKHR = RenderingFragmentDensityMapAttachmentEXT,
 	ViewIndexFromDeviceIndexKHR = ViewIndexFromDeviceIndex,
@@ -2630,10 +2699,10 @@ public enum VkDriverId
 
 public enum VkShaderFloatControlsIndependence
 {
-	_32Only = 0,
+	Bit32Only = 0,
 	All = 1,
 	None = 2,
-	_32OnlyKHR = _32Only,
+	Bit32OnlyKHR = Bit32Only,
 	AllKHR = All,
 	NoneKHR = None,
 }
@@ -3092,6 +3161,7 @@ public enum VkDebugUtilsMessageTypeFlagsEXT
 	General = 1,
 	Validation = 2,
 	Performance = 4,
+	DeviceAddressBinding = 8,
 }
 
 public enum VkBlendOverlapEXT
@@ -3193,6 +3263,8 @@ public enum VkGeometryInstanceFlagsKHR
 	TriangleFlipFacing = 2,
 	ForceOpaque = 4,
 	ForceNoOpaque = 8,
+	ForceOpacityMicromap2StateEXT = 16,
+	DisableOpacityMicromapsEXT = 32,
 	TriangleFrontCounterclockwise = TriangleFlipFacing,
 	TriangleCullDisableNV = TriangleFacingCullDisable,
 	TriangleFrontCounterclockwiseNV = TriangleFrontCounterclockwise,
@@ -3210,6 +3282,9 @@ public enum VkBuildAccelerationStructureFlagsKHR
 	PreferFastBuild = 8,
 	LowMemory = 16,
 	MotionNV = 32,
+	AllowOpacityMicromapUpdateEXT = 64,
+	AllowDisableOpacityMicromapsEXT = 128,
+	AllowOpacityMicromapDataUpdateEXT = 256,
 	AllowUpdateNV = AllowUpdate,
 	AllowCompactionNV = AllowCompaction,
 	PreferFastTraceNV = PreferFastTrace,
@@ -3440,30 +3515,120 @@ public enum VkImageCompressionFlagsEXT
 public enum VkImageCompressionFixedRateFlagsEXT
 {
 	None = 0,
-	_1bpc = 1,
-	_2bpc = 2,
-	_3bpc = 4,
-	_4bpc = 8,
-	_5bpc = 16,
-	_6bpc = 32,
-	_7bpc = 64,
-	_8bpc = 128,
-	_9bpc = 256,
-	_10bpc = 512,
-	_11bpc = 1024,
-	_12bpc = 2048,
-	_13bpc = 4096,
-	_14bpc = 8192,
-	_15bpc = 16384,
-	_16bpc = 32768,
-	_17bpc = 65536,
-	_18bpc = 131072,
-	_19bpc = 262144,
-	_20bpc = 524288,
-	_21bpc = 1048576,
-	_22bpc = 2097152,
-	_23bpc = 4194304,
-	_24bpc = 8388608,
+	Rate1bpc = 1,
+	Rate2bpc = 2,
+	Rate3bpc = 4,
+	Rate4bpc = 8,
+	Rate5bpc = 16,
+	Rate6bpc = 32,
+	Rate7bpc = 64,
+	Rate8bpc = 128,
+	Rate9bpc = 256,
+	Rate10bpc = 512,
+	Rate11bpc = 1024,
+	Rate12bpc = 2048,
+	Rate13bpc = 4096,
+	Rate14bpc = 8192,
+	Rate15bpc = 16384,
+	Rate16bpc = 32768,
+	Rate17bpc = 65536,
+	Rate18bpc = 131072,
+	Rate19bpc = 262144,
+	Rate20bpc = 524288,
+	Rate21bpc = 1048576,
+	Rate22bpc = 2097152,
+	Rate23bpc = 4194304,
+	Rate24bpc = 8388608,
+}
+
+public enum VkDeviceFaultAddressTypeEXT
+{
+	None = 0,
+	ReadInvalid = 1,
+	WriteInvalid = 2,
+	ExecuteInvalid = 3,
+	InstructionPointerUnknown = 4,
+	InstructionPointerInvalid = 5,
+	InstructionPointerFault = 6,
+}
+
+public enum VkDeviceFaultVendorBinaryHeaderVersionEXT
+{
+	One = 1,
+}
+
+public enum VkDeviceAddressBindingTypeEXT
+{
+	Bind = 0,
+	Unbind = 1,
+}
+
+[Flags]
+public enum VkDeviceAddressBindingFlagsEXT
+{
+	None = 0,
+	InternalObject = 1,
+}
+
+public enum VkMicromapTypeEXT
+{
+	OpacityMicromap = 0,
+}
+
+public enum VkBuildMicromapModeEXT
+{
+	Build = 0,
+}
+
+public enum VkCopyMicromapModeEXT
+{
+	Clone = 0,
+	Serialize = 1,
+	Deserialize = 2,
+	Compact = 3,
+}
+
+public enum VkOpacityMicromapFormatEXT
+{
+	State2 = 1,
+	State4 = 2,
+}
+
+public enum VkOpacityMicromapSpecialIndexEXT
+{
+	FullyTransparent = -1,
+	FullyOpaque = -2,
+	FullyUnknownTransparent = -3,
+	FullyUnknownOpaque = -4,
+}
+
+public enum VkAccelerationStructureCompatibilityKHR
+{
+	Compatible = 0,
+	Incompatible = 1,
+}
+
+public enum VkAccelerationStructureBuildTypeKHR
+{
+	Host = 0,
+	Device = 1,
+	HostOrDevice = 2,
+}
+
+[Flags]
+public enum VkBuildMicromapFlagsEXT
+{
+	None = 0,
+	PreferFastTrace = 1,
+	PreferFastBuild = 2,
+	AllowCompaction = 4,
+}
+
+[Flags]
+public enum VkMicromapCreateFlagsEXT
+{
+	None = 0,
+	DeviceAddressCaptureReplay = 1,
 }
 
 public enum VkSubpassMergeStatusEXT
@@ -3484,23 +3649,72 @@ public enum VkSubpassMergeStatusEXT
 	NotMergedUnspecified = 13,
 }
 
+public enum VkOpticalFlowPerformanceLevelNV
+{
+	Unknown = 0,
+	Slow = 1,
+	Medium = 2,
+	Fast = 3,
+}
+
+public enum VkOpticalFlowSessionBindingPointNV
+{
+	Unknown = 0,
+	Input = 1,
+	Reference = 2,
+	Hint = 3,
+	FlowVector = 4,
+	BackwardFlowVector = 5,
+	Cost = 6,
+	BackwardCost = 7,
+	GlobalFlow = 8,
+}
+
+[Flags]
+public enum VkOpticalFlowGridSizeFlagsNV
+{
+	None = 0,
+	Unknown = 0,
+	Size1x1 = 1,
+	Size2x2 = 2,
+	Size4x4 = 4,
+	Size8x8 = 8,
+}
+
+[Flags]
+public enum VkOpticalFlowUsageFlagsNV
+{
+	None = 0,
+	Unknown = 0,
+	Input = 1,
+	Output = 2,
+	Hint = 4,
+	Cost = 8,
+	GlobalFlow = 16,
+}
+
+[Flags]
+public enum VkOpticalFlowSessionCreateFlagsNV
+{
+	None = 0,
+	EnableHint = 1,
+	EnableCost = 2,
+	EnableGlobalFlow = 4,
+	AllowRegions = 8,
+	BothDirections = 16,
+}
+
+[Flags]
+public enum VkOpticalFlowExecuteFlagsNV
+{
+	None = 0,
+	DisableTemporalHints = 1,
+}
+
 public enum VkBuildAccelerationStructureModeKHR
 {
 	Build = 0,
 	Update = 1,
-}
-
-public enum VkAccelerationStructureBuildTypeKHR
-{
-	Host = 0,
-	Device = 1,
-	HostOrDevice = 2,
-}
-
-public enum VkAccelerationStructureCompatibilityKHR
-{
-	Compatible = 0,
-	Incompatible = 1,
 }
 
 [Flags]
@@ -3554,9 +3768,9 @@ public enum VkVideoChromaSubsamplingFlagsKHR
 	None = 0,
 	Invalid = 0,
 	Monochrome = 1,
-	_420 = 2,
-	_422 = 4,
-	_444 = 8,
+	Subsampling420 = 2,
+	Subsampling422 = 4,
+	Subsampling444 = 8,
 }
 
 [Flags]
@@ -3564,9 +3778,9 @@ public enum VkVideoComponentBitDepthFlagsKHR
 {
 	None = 0,
 	Invalid = 0,
-	_8 = 1,
-	_10 = 4,
-	_12 = 16,
+	Depth8 = 1,
+	Depth10 = 4,
+	Depth12 = 16,
 }
 
 [Flags]
@@ -3659,9 +3873,9 @@ public enum VkVideoEncodeContentFlagsKHR
 public enum StdVideoH264ChromaFormatIdc
 {
 	Monochrome = 0,
-	_420 = 1,
-	_422 = 2,
-	_444 = 3,
+	Idc420 = 1,
+	Idc422 = 2,
+	Idc444 = 3,
 	Invalid = 2147483647,
 }
 
@@ -3674,35 +3888,35 @@ public enum StdVideoH264ProfileIdc
 	Invalid = 2147483647,
 }
 
-public enum StdVideoH264Level
+public enum StdVideoH264LevelIdc
 {
-	_10 = 0,
-	_11 = 1,
-	_12 = 2,
-	_13 = 3,
-	_20 = 4,
-	_21 = 5,
-	_22 = 6,
-	_30 = 7,
-	_31 = 8,
-	_32 = 9,
-	_40 = 10,
-	_41 = 11,
-	_42 = 12,
-	_50 = 13,
-	_51 = 14,
-	_52 = 15,
-	_60 = 16,
-	_61 = 17,
-	_62 = 18,
+	Idc10 = 0,
+	Idc11 = 1,
+	Idc12 = 2,
+	Idc13 = 3,
+	Idc20 = 4,
+	Idc21 = 5,
+	Idc22 = 6,
+	Idc30 = 7,
+	Idc31 = 8,
+	Idc32 = 9,
+	Idc40 = 10,
+	Idc41 = 11,
+	Idc42 = 12,
+	Idc50 = 13,
+	Idc51 = 14,
+	Idc52 = 15,
+	Idc60 = 16,
+	Idc61 = 17,
+	Idc62 = 18,
 	Invalid = 2147483647,
 }
 
 public enum StdVideoH264PocType
 {
-	_0 = 0,
-	_1 = 1,
-	_2 = 2,
+	Type0 = 0,
+	Type1 = 1,
+	Type2 = 2,
 	Invalid = 2147483647,
 }
 
@@ -3710,21 +3924,21 @@ public enum StdVideoH264AspectRatioIdc
 {
 	Unspecified = 0,
 	Square = 1,
-	_1211 = 2,
-	_1011 = 3,
-	_1611 = 4,
-	_4033 = 5,
-	_2411 = 6,
-	_2011 = 7,
-	_3211 = 8,
-	_8033 = 9,
-	_1811 = 10,
-	_1511 = 11,
-	_6433 = 12,
-	_16099 = 13,
-	_43 = 14,
-	_32 = 15,
-	_21 = 16,
+	Idc1211 = 2,
+	Idc1011 = 3,
+	Idc1611 = 4,
+	Idc4033 = 5,
+	Idc2411 = 6,
+	Idc2011 = 7,
+	Idc3211 = 8,
+	Idc8033 = 9,
+	Idc1811 = 10,
+	Idc1511 = 11,
+	Idc6433 = 12,
+	Idc16099 = 13,
+	Idc43 = 14,
+	Idc32 = 15,
+	Idc21 = 16,
 	ExtendedSar = 255,
 	Invalid = 2147483647,
 }
@@ -3760,9 +3974,9 @@ public enum StdVideoH264MemMgmtControlOp
 
 public enum StdVideoH264CabacInitIdc
 {
-	_0 = 0,
-	_1 = 1,
-	_2 = 2,
+	Idc0 = 0,
+	Idc1 = 1,
+	Idc2 = 2,
 	Invalid = 2147483647,
 }
 
@@ -3862,9 +4076,9 @@ public enum VkVideoEncodeH264OutputModeFlagsEXT
 public enum StdVideoH265ChromaFormatIdc
 {
 	Monochrome = 0,
-	_420 = 1,
-	_422 = 2,
-	_444 = 3,
+	Idc420 = 1,
+	Idc422 = 2,
+	Idc444 = 3,
 	Invalid = 2147483647,
 }
 
@@ -3878,21 +4092,21 @@ public enum StdVideoH265ProfileIdc
 	Invalid = 2147483647,
 }
 
-public enum StdVideoH265Level
+public enum StdVideoH265LevelIdc
 {
-	_10 = 0,
-	_20 = 1,
-	_21 = 2,
-	_30 = 3,
-	_31 = 4,
-	_40 = 5,
-	_41 = 6,
-	_50 = 7,
-	_51 = 8,
-	_52 = 9,
-	_60 = 10,
-	_61 = 11,
-	_62 = 12,
+	Idc10 = 0,
+	Idc20 = 1,
+	Idc21 = 2,
+	Idc30 = 3,
+	Idc31 = 4,
+	Idc40 = 5,
+	Idc41 = 6,
+	Idc50 = 7,
+	Idc51 = 8,
+	Idc52 = 9,
+	Idc60 = 10,
+	Idc61 = 11,
+	Idc62 = 12,
 	Invalid = 2147483647,
 }
 
@@ -3910,6 +4124,29 @@ public enum StdVideoH265PictureType
 	B = 1,
 	I = 2,
 	Idr = 3,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH265AspectRatioIdc
+{
+	Unspecified = 0,
+	Square = 1,
+	Idc1211 = 2,
+	Idc1011 = 3,
+	Idc1611 = 4,
+	Idc4033 = 5,
+	Idc2411 = 6,
+	Idc2011 = 7,
+	Idc3211 = 8,
+	Idc8033 = 9,
+	Idc1811 = 10,
+	Idc1511 = 11,
+	Idc6433 = 12,
+	Idc16099 = 13,
+	Idc43 = 14,
+	Idc32 = 15,
+	Idc21 = 16,
+	ExtendedSar = 255,
 	Invalid = 2147483647,
 }
 
@@ -3974,19 +4211,19 @@ public enum VkVideoEncodeH265OutputModeFlagsEXT
 public enum VkVideoEncodeH265CtbSizeFlagsEXT
 {
 	None = 0,
-	_16 = 1,
-	_32 = 2,
-	_64 = 4,
+	Size16 = 1,
+	Size32 = 2,
+	Size64 = 4,
 }
 
 [Flags]
 public enum VkVideoEncodeH265TransformBlockSizeFlagsEXT
 {
 	None = 0,
-	_4 = 1,
-	_8 = 2,
-	_16 = 4,
-	_32 = 8,
+	Size4 = 1,
+	Size8 = 2,
+	Size16 = 4,
+	Size32 = 8,
 }
 
 public enum StdVideoDecodeH264FieldOrderCount
@@ -4487,6 +4724,8 @@ public enum VkPipelineStageFlags2 : ulong
 	SubpassShadingHUAWEI = 549755813888,
 	InvocationMaskHUAWEI = 1099511627776,
 	AccelerationStructureCopyKHR = 268435456,
+	MicromapBuildEXT = 1073741824,
+	OpticalFlowNV = 536870912,
 }
 
 [Flags]
@@ -4554,6 +4793,10 @@ public enum VkAccessFlags2 : ulong
 	ColorAttachmentReadNoncoherentEXT = 524288,
 	InvocationMaskReadHUAWEI = 549755813888,
 	ShaderBindingTableReadKHR = 1099511627776,
+	MicromapReadEXT = 17592186044416,
+	MicromapWriteEXT = 35184372088832,
+	OpticalFlowReadNV = 4398046511104,
+	OpticalFlowWriteNV = 8796093022208,
 }
 
 [Flags]
@@ -4625,4 +4868,7 @@ public enum VkFormatFeatureFlags2 : ulong
 	WeightSampledImageQCOM = 34359738368,
 	BlockMatchingQCOM = 68719476736,
 	BoxFilterSampledQCOM = 137438953472,
+	OpticalFlowImageNV = 1099511627776,
+	OpticalFlowVectorNV = 2199023255552,
+	OpticalFlowCostNV = 4398046511104,
 }

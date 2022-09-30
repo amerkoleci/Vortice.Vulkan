@@ -983,6 +983,52 @@ public readonly partial struct VkRemoteAddressNV : IEquatable<VkRemoteAddressNV>
 /// A non-dispatchable handle.
 /// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkMicromapEXT : IEquatable<VkMicromapEXT>
+{
+	public VkMicromapEXT(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkMicromapEXT Null => new(0);
+	public static implicit operator VkMicromapEXT(ulong handle) => new(handle);
+	public static bool operator ==(VkMicromapEXT left, VkMicromapEXT right) => left.Handle == right.Handle;
+	public static bool operator !=(VkMicromapEXT left, VkMicromapEXT right) => left.Handle != right.Handle;
+	public static bool operator ==(VkMicromapEXT left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkMicromapEXT left, ulong right) => left.Handle != right;
+	public bool Equals(VkMicromapEXT other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkMicromapEXT handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkMicromapEXT)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkOpticalFlowSessionNV : IEquatable<VkOpticalFlowSessionNV>
+{
+	public VkOpticalFlowSessionNV(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public static VkOpticalFlowSessionNV Null => new(0);
+	public static implicit operator VkOpticalFlowSessionNV(ulong handle) => new(handle);
+	public static bool operator ==(VkOpticalFlowSessionNV left, VkOpticalFlowSessionNV right) => left.Handle == right.Handle;
+	public static bool operator !=(VkOpticalFlowSessionNV left, VkOpticalFlowSessionNV right) => left.Handle != right.Handle;
+	public static bool operator ==(VkOpticalFlowSessionNV left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkOpticalFlowSessionNV left, ulong right) => left.Handle != right;
+	public bool Equals(VkOpticalFlowSessionNV other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkOpticalFlowSessionNV handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkOpticalFlowSessionNV)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VkAccelerationStructureKHR : IEquatable<VkAccelerationStructureKHR>
 {
 	public VkAccelerationStructureKHR(ulong handle) { Handle = handle; }

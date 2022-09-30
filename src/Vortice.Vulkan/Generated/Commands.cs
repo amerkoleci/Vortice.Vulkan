@@ -2701,6 +2701,12 @@ unsafe partial class Vulkan
 		vkGetImageSubresourceLayout2EXT_ptr(device, image, subresource, layout);
 	}
 
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceFaultCountsEXT*, VkDeviceFaultInfoEXT*, VkResult> vkGetDeviceFaultInfoEXT_ptr;
+	public static VkResult vkGetDeviceFaultInfoEXT(VkDevice device, VkDeviceFaultCountsEXT* faultCounts, VkDeviceFaultInfoEXT* faultInfo)
+	{
+		return vkGetDeviceFaultInfoEXT_ptr(device, faultCounts, faultInfo);
+	}
+
 	private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkResult> vkAcquireWinrtDisplayNV_ptr;
 	public static VkResult vkAcquireWinrtDisplayNV(VkPhysicalDevice physicalDevice, VkDisplayKHR display)
 	{
@@ -2797,6 +2803,90 @@ unsafe partial class Vulkan
 		vkCmdDrawMultiIndexedEXT_ptr(commandBuffer, drawCount, indexInfo, instanceCount, firstInstance, stride, vertexOffset);
 	}
 
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkMicromapCreateInfoEXT*, VkAllocationCallbacks*, VkMicromapEXT*, VkResult> vkCreateMicromapEXT_ptr;
+	public static VkResult vkCreateMicromapEXT(VkDevice device, VkMicromapCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkMicromapEXT* micromap)
+	{
+		return vkCreateMicromapEXT_ptr(device, createInfo, allocator, micromap);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkMicromapEXT, VkAllocationCallbacks*, void> vkDestroyMicromapEXT_ptr;
+	public static void vkDestroyMicromapEXT(VkDevice device, VkMicromapEXT micromap, VkAllocationCallbacks* allocator = default)
+	{
+		vkDestroyMicromapEXT_ptr(device, micromap, allocator);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkMicromapBuildInfoEXT*, void> vkCmdBuildMicromapsEXT_ptr;
+	public static void vkCmdBuildMicromapsEXT(VkCommandBuffer commandBuffer, int infoCount, VkMicromapBuildInfoEXT* infos)
+	{
+		vkCmdBuildMicromapsEXT_ptr(commandBuffer, infoCount, infos);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, int, VkMicromapBuildInfoEXT*, VkResult> vkBuildMicromapsEXT_ptr;
+	public static VkResult vkBuildMicromapsEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, int infoCount, VkMicromapBuildInfoEXT* infos)
+	{
+		return vkBuildMicromapsEXT_ptr(device, deferredOperation, infoCount, infos);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyMicromapInfoEXT*, VkResult> vkCopyMicromapEXT_ptr;
+	public static VkResult vkCopyMicromapEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyMicromapInfoEXT* info)
+	{
+		return vkCopyMicromapEXT_ptr(device, deferredOperation, info);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyMicromapToMemoryInfoEXT*, VkResult> vkCopyMicromapToMemoryEXT_ptr;
+	public static VkResult vkCopyMicromapToMemoryEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyMicromapToMemoryInfoEXT* info)
+	{
+		return vkCopyMicromapToMemoryEXT_ptr(device, deferredOperation, info);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToMicromapInfoEXT*, VkResult> vkCopyMemoryToMicromapEXT_ptr;
+	public static VkResult vkCopyMemoryToMicromapEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyMemoryToMicromapInfoEXT* info)
+	{
+		return vkCopyMemoryToMicromapEXT_ptr(device, deferredOperation, info);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, int, VkMicromapEXT*, VkQueryType, nuint, void*, nuint, VkResult> vkWriteMicromapsPropertiesEXT_ptr;
+	public static VkResult vkWriteMicromapsPropertiesEXT(VkDevice device, int micromapCount, VkMicromapEXT* micromaps, VkQueryType queryType, nuint dataSize, void* data, nuint stride)
+	{
+		return vkWriteMicromapsPropertiesEXT_ptr(device, micromapCount, micromaps, queryType, dataSize, data, stride);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyMicromapInfoEXT*, void> vkCmdCopyMicromapEXT_ptr;
+	public static void vkCmdCopyMicromapEXT(VkCommandBuffer commandBuffer, VkCopyMicromapInfoEXT* info)
+	{
+		vkCmdCopyMicromapEXT_ptr(commandBuffer, info);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyMicromapToMemoryInfoEXT*, void> vkCmdCopyMicromapToMemoryEXT_ptr;
+	public static void vkCmdCopyMicromapToMemoryEXT(VkCommandBuffer commandBuffer, VkCopyMicromapToMemoryInfoEXT* info)
+	{
+		vkCmdCopyMicromapToMemoryEXT_ptr(commandBuffer, info);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyMemoryToMicromapInfoEXT*, void> vkCmdCopyMemoryToMicromapEXT_ptr;
+	public static void vkCmdCopyMemoryToMicromapEXT(VkCommandBuffer commandBuffer, VkCopyMemoryToMicromapInfoEXT* info)
+	{
+		vkCmdCopyMemoryToMicromapEXT_ptr(commandBuffer, info);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkMicromapEXT*, VkQueryType, VkQueryPool, uint, void> vkCmdWriteMicromapsPropertiesEXT_ptr;
+	public static void vkCmdWriteMicromapsPropertiesEXT(VkCommandBuffer commandBuffer, int micromapCount, VkMicromapEXT* micromaps, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery)
+	{
+		vkCmdWriteMicromapsPropertiesEXT_ptr(commandBuffer, micromapCount, micromaps, queryType, queryPool, firstQuery);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkMicromapVersionInfoEXT*, VkAccelerationStructureCompatibilityKHR*, void> vkGetDeviceMicromapCompatibilityEXT_ptr;
+	public static void vkGetDeviceMicromapCompatibilityEXT(VkDevice device, VkMicromapVersionInfoEXT* versionInfo, VkAccelerationStructureCompatibilityKHR* compatibility)
+	{
+		vkGetDeviceMicromapCompatibilityEXT_ptr(device, versionInfo, compatibility);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureBuildTypeKHR, VkMicromapBuildInfoEXT*, VkMicromapBuildSizesInfoEXT*, void> vkGetMicromapBuildSizesEXT_ptr;
+	public static void vkGetMicromapBuildSizesEXT(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkMicromapBuildInfoEXT* buildInfo, VkMicromapBuildSizesInfoEXT* sizeInfo)
+	{
+		vkGetMicromapBuildSizesEXT_ptr(device, buildType, buildInfo, sizeInfo);
+	}
+
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, float, void> vkSetDeviceMemoryPriorityEXT_ptr;
 	public static void vkSetDeviceMemoryPriorityEXT(VkDevice device, VkDeviceMemory memory, float priority)
 	{
@@ -2815,6 +2905,192 @@ unsafe partial class Vulkan
 		vkGetDescriptorSetHostMappingVALVE_ptr(device, descriptorSet, ppData);
 	}
 
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkTessellationDomainOrigin, void> vkCmdSetTessellationDomainOriginEXT_ptr;
+	public static void vkCmdSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin)
+	{
+		vkCmdSetTessellationDomainOriginEXT_ptr(commandBuffer, domainOrigin);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetDepthClampEnableEXT_ptr;
+	public static void vkCmdSetDepthClampEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClampEnable)
+	{
+		vkCmdSetDepthClampEnableEXT_ptr(commandBuffer, depthClampEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPolygonMode, void> vkCmdSetPolygonModeEXT_ptr;
+	public static void vkCmdSetPolygonModeEXT(VkCommandBuffer commandBuffer, VkPolygonMode polygonMode)
+	{
+		vkCmdSetPolygonModeEXT_ptr(commandBuffer, polygonMode);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSampleCountFlags, void> vkCmdSetRasterizationSamplesEXT_ptr;
+	public static void vkCmdSetRasterizationSamplesEXT(VkCommandBuffer commandBuffer, VkSampleCountFlags rasterizationSamples)
+	{
+		vkCmdSetRasterizationSamplesEXT_ptr(commandBuffer, rasterizationSamples);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSampleCountFlags, uint*, void> vkCmdSetSampleMaskEXT_ptr;
+	public static void vkCmdSetSampleMaskEXT(VkCommandBuffer commandBuffer, VkSampleCountFlags samples, uint* sampleMask)
+	{
+		vkCmdSetSampleMaskEXT_ptr(commandBuffer, samples, sampleMask);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetAlphaToCoverageEnableEXT_ptr;
+	public static void vkCmdSetAlphaToCoverageEnableEXT(VkCommandBuffer commandBuffer, VkBool32 alphaToCoverageEnable)
+	{
+		vkCmdSetAlphaToCoverageEnableEXT_ptr(commandBuffer, alphaToCoverageEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetAlphaToOneEnableEXT_ptr;
+	public static void vkCmdSetAlphaToOneEnableEXT(VkCommandBuffer commandBuffer, VkBool32 alphaToOneEnable)
+	{
+		vkCmdSetAlphaToOneEnableEXT_ptr(commandBuffer, alphaToOneEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetLogicOpEnableEXT_ptr;
+	public static void vkCmdSetLogicOpEnableEXT(VkCommandBuffer commandBuffer, VkBool32 logicOpEnable)
+	{
+		vkCmdSetLogicOpEnableEXT_ptr(commandBuffer, logicOpEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, int, VkBool32*, void> vkCmdSetColorBlendEnableEXT_ptr;
+	public static void vkCmdSetColorBlendEnableEXT(VkCommandBuffer commandBuffer, uint firstAttachment, int attachmentCount, VkBool32* colorBlendEnables)
+	{
+		vkCmdSetColorBlendEnableEXT_ptr(commandBuffer, firstAttachment, attachmentCount, colorBlendEnables);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, int, VkColorBlendEquationEXT*, void> vkCmdSetColorBlendEquationEXT_ptr;
+	public static void vkCmdSetColorBlendEquationEXT(VkCommandBuffer commandBuffer, uint firstAttachment, int attachmentCount, VkColorBlendEquationEXT* colorBlendEquations)
+	{
+		vkCmdSetColorBlendEquationEXT_ptr(commandBuffer, firstAttachment, attachmentCount, colorBlendEquations);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, int, VkColorComponentFlags*, void> vkCmdSetColorWriteMaskEXT_ptr;
+	public static void vkCmdSetColorWriteMaskEXT(VkCommandBuffer commandBuffer, uint firstAttachment, int attachmentCount, VkColorComponentFlags* colorWriteMasks)
+	{
+		vkCmdSetColorWriteMaskEXT_ptr(commandBuffer, firstAttachment, attachmentCount, colorWriteMasks);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void> vkCmdSetRasterizationStreamEXT_ptr;
+	public static void vkCmdSetRasterizationStreamEXT(VkCommandBuffer commandBuffer, uint rasterizationStream)
+	{
+		vkCmdSetRasterizationStreamEXT_ptr(commandBuffer, rasterizationStream);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkConservativeRasterizationModeEXT, void> vkCmdSetConservativeRasterizationModeEXT_ptr;
+	public static void vkCmdSetConservativeRasterizationModeEXT(VkCommandBuffer commandBuffer, VkConservativeRasterizationModeEXT conservativeRasterizationMode)
+	{
+		vkCmdSetConservativeRasterizationModeEXT_ptr(commandBuffer, conservativeRasterizationMode);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, float, void> vkCmdSetExtraPrimitiveOverestimationSizeEXT_ptr;
+	public static void vkCmdSetExtraPrimitiveOverestimationSizeEXT(VkCommandBuffer commandBuffer, float extraPrimitiveOverestimationSize)
+	{
+		vkCmdSetExtraPrimitiveOverestimationSizeEXT_ptr(commandBuffer, extraPrimitiveOverestimationSize);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetDepthClipEnableEXT_ptr;
+	public static void vkCmdSetDepthClipEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClipEnable)
+	{
+		vkCmdSetDepthClipEnableEXT_ptr(commandBuffer, depthClipEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetSampleLocationsEnableEXT_ptr;
+	public static void vkCmdSetSampleLocationsEnableEXT(VkCommandBuffer commandBuffer, VkBool32 sampleLocationsEnable)
+	{
+		vkCmdSetSampleLocationsEnableEXT_ptr(commandBuffer, sampleLocationsEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, int, VkColorBlendAdvancedEXT*, void> vkCmdSetColorBlendAdvancedEXT_ptr;
+	public static void vkCmdSetColorBlendAdvancedEXT(VkCommandBuffer commandBuffer, uint firstAttachment, int attachmentCount, VkColorBlendAdvancedEXT* colorBlendAdvanced)
+	{
+		vkCmdSetColorBlendAdvancedEXT_ptr(commandBuffer, firstAttachment, attachmentCount, colorBlendAdvanced);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkProvokingVertexModeEXT, void> vkCmdSetProvokingVertexModeEXT_ptr;
+	public static void vkCmdSetProvokingVertexModeEXT(VkCommandBuffer commandBuffer, VkProvokingVertexModeEXT provokingVertexMode)
+	{
+		vkCmdSetProvokingVertexModeEXT_ptr(commandBuffer, provokingVertexMode);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkLineRasterizationModeEXT, void> vkCmdSetLineRasterizationModeEXT_ptr;
+	public static void vkCmdSetLineRasterizationModeEXT(VkCommandBuffer commandBuffer, VkLineRasterizationModeEXT lineRasterizationMode)
+	{
+		vkCmdSetLineRasterizationModeEXT_ptr(commandBuffer, lineRasterizationMode);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetLineStippleEnableEXT_ptr;
+	public static void vkCmdSetLineStippleEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stippledLineEnable)
+	{
+		vkCmdSetLineStippleEnableEXT_ptr(commandBuffer, stippledLineEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetDepthClipNegativeOneToOneEXT_ptr;
+	public static void vkCmdSetDepthClipNegativeOneToOneEXT(VkCommandBuffer commandBuffer, VkBool32 negativeOneToOne)
+	{
+		vkCmdSetDepthClipNegativeOneToOneEXT_ptr(commandBuffer, negativeOneToOne);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetViewportWScalingEnableNV_ptr;
+	public static void vkCmdSetViewportWScalingEnableNV(VkCommandBuffer commandBuffer, VkBool32 viewportWScalingEnable)
+	{
+		vkCmdSetViewportWScalingEnableNV_ptr(commandBuffer, viewportWScalingEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, int, VkViewportSwizzleNV*, void> vkCmdSetViewportSwizzleNV_ptr;
+	public static void vkCmdSetViewportSwizzleNV(VkCommandBuffer commandBuffer, uint firstViewport, int viewportCount, VkViewportSwizzleNV* viewportSwizzles)
+	{
+		vkCmdSetViewportSwizzleNV_ptr(commandBuffer, firstViewport, viewportCount, viewportSwizzles);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetCoverageToColorEnableNV_ptr;
+	public static void vkCmdSetCoverageToColorEnableNV(VkCommandBuffer commandBuffer, VkBool32 coverageToColorEnable)
+	{
+		vkCmdSetCoverageToColorEnableNV_ptr(commandBuffer, coverageToColorEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void> vkCmdSetCoverageToColorLocationNV_ptr;
+	public static void vkCmdSetCoverageToColorLocationNV(VkCommandBuffer commandBuffer, uint coverageToColorLocation)
+	{
+		vkCmdSetCoverageToColorLocationNV_ptr(commandBuffer, coverageToColorLocation);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCoverageModulationModeNV, void> vkCmdSetCoverageModulationModeNV_ptr;
+	public static void vkCmdSetCoverageModulationModeNV(VkCommandBuffer commandBuffer, VkCoverageModulationModeNV coverageModulationMode)
+	{
+		vkCmdSetCoverageModulationModeNV_ptr(commandBuffer, coverageModulationMode);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetCoverageModulationTableEnableNV_ptr;
+	public static void vkCmdSetCoverageModulationTableEnableNV(VkCommandBuffer commandBuffer, VkBool32 coverageModulationTableEnable)
+	{
+		vkCmdSetCoverageModulationTableEnableNV_ptr(commandBuffer, coverageModulationTableEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, int, float*, void> vkCmdSetCoverageModulationTableNV_ptr;
+	public static void vkCmdSetCoverageModulationTableNV(VkCommandBuffer commandBuffer, int coverageModulationTableCount, float* coverageModulationTable)
+	{
+		vkCmdSetCoverageModulationTableNV_ptr(commandBuffer, coverageModulationTableCount, coverageModulationTable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetShadingRateImageEnableNV_ptr;
+	public static void vkCmdSetShadingRateImageEnableNV(VkCommandBuffer commandBuffer, VkBool32 shadingRateImageEnable)
+	{
+		vkCmdSetShadingRateImageEnableNV_ptr(commandBuffer, shadingRateImageEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void> vkCmdSetRepresentativeFragmentTestEnableNV_ptr;
+	public static void vkCmdSetRepresentativeFragmentTestEnableNV(VkCommandBuffer commandBuffer, VkBool32 representativeFragmentTestEnable)
+	{
+		vkCmdSetRepresentativeFragmentTestEnableNV_ptr(commandBuffer, representativeFragmentTestEnable);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCoverageReductionModeNV, void> vkCmdSetCoverageReductionModeNV_ptr;
+	public static void vkCmdSetCoverageReductionModeNV(VkCommandBuffer commandBuffer, VkCoverageReductionModeNV coverageReductionMode)
+	{
+		vkCmdSetCoverageReductionModeNV_ptr(commandBuffer, coverageReductionMode);
+	}
+
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkShaderModule, VkShaderModuleIdentifierEXT*, void> vkGetShaderModuleIdentifierEXT_ptr;
 	public static void vkGetShaderModuleIdentifierEXT(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* identifier)
 	{
@@ -2825,6 +3101,36 @@ unsafe partial class Vulkan
 	public static void vkGetShaderModuleCreateInfoIdentifierEXT(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkShaderModuleIdentifierEXT* identifier)
 	{
 		vkGetShaderModuleCreateInfoIdentifierEXT_ptr(device, createInfo, identifier);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkOpticalFlowImageFormatInfoNV*, int*, VkOpticalFlowImageFormatPropertiesNV*, VkResult> vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr;
+	public static VkResult vkGetPhysicalDeviceOpticalFlowImageFormatsNV(VkPhysicalDevice physicalDevice, VkOpticalFlowImageFormatInfoNV* opticalFlowImageFormatInfo, int* formatCount, VkOpticalFlowImageFormatPropertiesNV* imageFormatProperties)
+	{
+		return vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr(physicalDevice, opticalFlowImageFormatInfo, formatCount, imageFormatProperties);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkOpticalFlowSessionCreateInfoNV*, VkAllocationCallbacks*, VkOpticalFlowSessionNV*, VkResult> vkCreateOpticalFlowSessionNV_ptr;
+	public static VkResult vkCreateOpticalFlowSessionNV(VkDevice device, VkOpticalFlowSessionCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkOpticalFlowSessionNV* session)
+	{
+		return vkCreateOpticalFlowSessionNV_ptr(device, createInfo, allocator, session);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkOpticalFlowSessionNV, VkAllocationCallbacks*, void> vkDestroyOpticalFlowSessionNV_ptr;
+	public static void vkDestroyOpticalFlowSessionNV(VkDevice device, VkOpticalFlowSessionNV session, VkAllocationCallbacks* allocator = default)
+	{
+		vkDestroyOpticalFlowSessionNV_ptr(device, session, allocator);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkOpticalFlowSessionNV, VkOpticalFlowSessionBindingPointNV, VkImageView, VkImageLayout, VkResult> vkBindOpticalFlowSessionImageNV_ptr;
+	public static VkResult vkBindOpticalFlowSessionImageNV(VkDevice device, VkOpticalFlowSessionNV session, VkOpticalFlowSessionBindingPointNV bindingPoint, VkImageView view, VkImageLayout layout)
+	{
+		return vkBindOpticalFlowSessionImageNV_ptr(device, session, bindingPoint, view, layout);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkOpticalFlowSessionNV, VkOpticalFlowExecuteInfoNV*, void> vkCmdOpticalFlowExecuteNV_ptr;
+	public static void vkCmdOpticalFlowExecuteNV(VkCommandBuffer commandBuffer, VkOpticalFlowSessionNV session, VkOpticalFlowExecuteInfoNV* executeInfo)
+	{
+		vkCmdOpticalFlowExecuteNV_ptr(commandBuffer, session, executeInfo);
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkDevice, VkFramebuffer, int*, VkTilePropertiesQCOM*, VkResult> vkGetFramebufferTilePropertiesQCOM_ptr;
@@ -3110,9 +3416,9 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoDecodeInfoKHR*, void> vkCmdDecodeVideoKHR_ptr;
-	public static void vkCmdDecodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoDecodeInfoKHR* frameInfo)
+	public static void vkCmdDecodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoDecodeInfoKHR* decodeInfo)
 	{
-		vkCmdDecodeVideoKHR_ptr(commandBuffer, frameInfo);
+		vkCmdDecodeVideoKHR_ptr(commandBuffer, decodeInfo);
 	}
 
 	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkVideoEncodeInfoKHR*, void> vkCmdEncodeVideoKHR_ptr;
@@ -3207,6 +3513,7 @@ unsafe partial class Vulkan
 		vkGetDrmDisplayEXT_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, int, uint, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetDrmDisplayEXT));
 		vkAcquireWinrtDisplayNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkResult>) load(context, nameof(vkAcquireWinrtDisplayNV));
 		vkGetWinrtDisplayNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetWinrtDisplayNV));
+		vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkOpticalFlowImageFormatInfoNV*, int*, VkOpticalFlowImageFormatPropertiesNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceOpticalFlowImageFormatsNV));
 		vkCreateAndroidSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateAndroidSurfaceKHR));
 		vkCreateIOSSurfaceMVK_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateIOSSurfaceMVK));
 		vkCreateMacOSSurfaceMVK_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateMacOSSurfaceMVK));
@@ -3579,6 +3886,7 @@ unsafe partial class Vulkan
 		vkGetPrivateDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void>) load(context, nameof(vkGetPrivateDataEXT));
 		vkCmdSetFragmentShadingRateEnumNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateEnumNV));
 		vkGetImageSubresourceLayout2EXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkImageSubresource2EXT*, VkSubresourceLayout2EXT*, void>) load(context, nameof(vkGetImageSubresourceLayout2EXT));
+		vkGetDeviceFaultInfoEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceFaultCountsEXT*, VkDeviceFaultInfoEXT*, VkResult>) load(context, nameof(vkGetDeviceFaultInfoEXT));
 		vkCmdSetVertexInputEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkVertexInputBindingDescription2EXT*, int, VkVertexInputAttributeDescription2EXT*, void>) load(context, nameof(vkCmdSetVertexInputEXT));
 		vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkRenderPass, VkExtent2D*, VkResult>) load(context, nameof(vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI));
 		vkCmdSubpassShadingHUAWEI_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, void>) load(context, nameof(vkCmdSubpassShadingHUAWEI));
@@ -3593,11 +3901,60 @@ unsafe partial class Vulkan
 		vkCmdSetColorWriteEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkBool32*, void>) load(context, nameof(vkCmdSetColorWriteEnableEXT));
 		vkCmdDrawMultiEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkMultiDrawInfoEXT*, int, uint, uint, void>) load(context, nameof(vkCmdDrawMultiEXT));
 		vkCmdDrawMultiIndexedEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkMultiDrawIndexedInfoEXT*, int, uint, uint, int*, void>) load(context, nameof(vkCmdDrawMultiIndexedEXT));
+		vkCreateMicromapEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkMicromapCreateInfoEXT*, VkAllocationCallbacks*, VkMicromapEXT*, VkResult>) load(context, nameof(vkCreateMicromapEXT));
+		vkDestroyMicromapEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkMicromapEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyMicromapEXT));
+		vkCmdBuildMicromapsEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkMicromapBuildInfoEXT*, void>) load(context, nameof(vkCmdBuildMicromapsEXT));
+		vkBuildMicromapsEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, int, VkMicromapBuildInfoEXT*, VkResult>) load(context, nameof(vkBuildMicromapsEXT));
+		vkCopyMicromapEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyMicromapInfoEXT*, VkResult>) load(context, nameof(vkCopyMicromapEXT));
+		vkCopyMicromapToMemoryEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyMicromapToMemoryInfoEXT*, VkResult>) load(context, nameof(vkCopyMicromapToMemoryEXT));
+		vkCopyMemoryToMicromapEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToMicromapInfoEXT*, VkResult>) load(context, nameof(vkCopyMemoryToMicromapEXT));
+		vkWriteMicromapsPropertiesEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, int, VkMicromapEXT*, VkQueryType, nuint, void*, nuint, VkResult>) load(context, nameof(vkWriteMicromapsPropertiesEXT));
+		vkCmdCopyMicromapEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyMicromapInfoEXT*, void>) load(context, nameof(vkCmdCopyMicromapEXT));
+		vkCmdCopyMicromapToMemoryEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyMicromapToMemoryInfoEXT*, void>) load(context, nameof(vkCmdCopyMicromapToMemoryEXT));
+		vkCmdCopyMemoryToMicromapEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCopyMemoryToMicromapInfoEXT*, void>) load(context, nameof(vkCmdCopyMemoryToMicromapEXT));
+		vkCmdWriteMicromapsPropertiesEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkMicromapEXT*, VkQueryType, VkQueryPool, uint, void>) load(context, nameof(vkCmdWriteMicromapsPropertiesEXT));
+		vkGetDeviceMicromapCompatibilityEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkMicromapVersionInfoEXT*, VkAccelerationStructureCompatibilityKHR*, void>) load(context, nameof(vkGetDeviceMicromapCompatibilityEXT));
+		vkGetMicromapBuildSizesEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureBuildTypeKHR, VkMicromapBuildInfoEXT*, VkMicromapBuildSizesInfoEXT*, void>) load(context, nameof(vkGetMicromapBuildSizesEXT));
 		vkSetDeviceMemoryPriorityEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, float, void>) load(context, nameof(vkSetDeviceMemoryPriorityEXT));
 		vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetBindingReferenceVALVE*, VkDescriptorSetLayoutHostMappingInfoVALVE*, void>) load(context, nameof(vkGetDescriptorSetLayoutHostMappingInfoVALVE));
 		vkGetDescriptorSetHostMappingVALVE_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSet, void*, void>) load(context, nameof(vkGetDescriptorSetHostMappingVALVE));
+		vkCmdSetTessellationDomainOriginEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkTessellationDomainOrigin, void>) load(context, nameof(vkCmdSetTessellationDomainOriginEXT));
+		vkCmdSetDepthClampEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthClampEnableEXT));
+		vkCmdSetPolygonModeEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPolygonMode, void>) load(context, nameof(vkCmdSetPolygonModeEXT));
+		vkCmdSetRasterizationSamplesEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSampleCountFlags, void>) load(context, nameof(vkCmdSetRasterizationSamplesEXT));
+		vkCmdSetSampleMaskEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkSampleCountFlags, uint*, void>) load(context, nameof(vkCmdSetSampleMaskEXT));
+		vkCmdSetAlphaToCoverageEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetAlphaToCoverageEnableEXT));
+		vkCmdSetAlphaToOneEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetAlphaToOneEnableEXT));
+		vkCmdSetLogicOpEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetLogicOpEnableEXT));
+		vkCmdSetColorBlendEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, int, VkBool32*, void>) load(context, nameof(vkCmdSetColorBlendEnableEXT));
+		vkCmdSetColorBlendEquationEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, int, VkColorBlendEquationEXT*, void>) load(context, nameof(vkCmdSetColorBlendEquationEXT));
+		vkCmdSetColorWriteMaskEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, int, VkColorComponentFlags*, void>) load(context, nameof(vkCmdSetColorWriteMaskEXT));
+		vkCmdSetRasterizationStreamEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetRasterizationStreamEXT));
+		vkCmdSetConservativeRasterizationModeEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkConservativeRasterizationModeEXT, void>) load(context, nameof(vkCmdSetConservativeRasterizationModeEXT));
+		vkCmdSetExtraPrimitiveOverestimationSizeEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, float, void>) load(context, nameof(vkCmdSetExtraPrimitiveOverestimationSizeEXT));
+		vkCmdSetDepthClipEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthClipEnableEXT));
+		vkCmdSetSampleLocationsEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetSampleLocationsEnableEXT));
+		vkCmdSetColorBlendAdvancedEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, int, VkColorBlendAdvancedEXT*, void>) load(context, nameof(vkCmdSetColorBlendAdvancedEXT));
+		vkCmdSetProvokingVertexModeEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkProvokingVertexModeEXT, void>) load(context, nameof(vkCmdSetProvokingVertexModeEXT));
+		vkCmdSetLineRasterizationModeEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkLineRasterizationModeEXT, void>) load(context, nameof(vkCmdSetLineRasterizationModeEXT));
+		vkCmdSetLineStippleEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetLineStippleEnableEXT));
+		vkCmdSetDepthClipNegativeOneToOneEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthClipNegativeOneToOneEXT));
+		vkCmdSetViewportWScalingEnableNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetViewportWScalingEnableNV));
+		vkCmdSetViewportSwizzleNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, int, VkViewportSwizzleNV*, void>) load(context, nameof(vkCmdSetViewportSwizzleNV));
+		vkCmdSetCoverageToColorEnableNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetCoverageToColorEnableNV));
+		vkCmdSetCoverageToColorLocationNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetCoverageToColorLocationNV));
+		vkCmdSetCoverageModulationModeNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCoverageModulationModeNV, void>) load(context, nameof(vkCmdSetCoverageModulationModeNV));
+		vkCmdSetCoverageModulationTableEnableNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetCoverageModulationTableEnableNV));
+		vkCmdSetCoverageModulationTableNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, float*, void>) load(context, nameof(vkCmdSetCoverageModulationTableNV));
+		vkCmdSetShadingRateImageEnableNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetShadingRateImageEnableNV));
+		vkCmdSetRepresentativeFragmentTestEnableNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetRepresentativeFragmentTestEnableNV));
+		vkCmdSetCoverageReductionModeNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkCoverageReductionModeNV, void>) load(context, nameof(vkCmdSetCoverageReductionModeNV));
 		vkGetShaderModuleIdentifierEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkShaderModule, VkShaderModuleIdentifierEXT*, void>) load(context, nameof(vkGetShaderModuleIdentifierEXT));
 		vkGetShaderModuleCreateInfoIdentifierEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkShaderModuleCreateInfo*, VkShaderModuleIdentifierEXT*, void>) load(context, nameof(vkGetShaderModuleCreateInfoIdentifierEXT));
+		vkCreateOpticalFlowSessionNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkOpticalFlowSessionCreateInfoNV*, VkAllocationCallbacks*, VkOpticalFlowSessionNV*, VkResult>) load(context, nameof(vkCreateOpticalFlowSessionNV));
+		vkDestroyOpticalFlowSessionNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkOpticalFlowSessionNV, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyOpticalFlowSessionNV));
+		vkBindOpticalFlowSessionImageNV_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkOpticalFlowSessionNV, VkOpticalFlowSessionBindingPointNV, VkImageView, VkImageLayout, VkResult>) load(context, nameof(vkBindOpticalFlowSessionImageNV));
+		vkCmdOpticalFlowExecuteNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkOpticalFlowSessionNV, VkOpticalFlowExecuteInfoNV*, void>) load(context, nameof(vkCmdOpticalFlowExecuteNV));
 		vkGetFramebufferTilePropertiesQCOM_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkFramebuffer, int*, VkTilePropertiesQCOM*, VkResult>) load(context, nameof(vkGetFramebufferTilePropertiesQCOM));
 		vkGetDynamicRenderingTilePropertiesQCOM_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkRenderingInfo*, VkTilePropertiesQCOM*, VkResult>) load(context, nameof(vkGetDynamicRenderingTilePropertiesQCOM));
 		vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));

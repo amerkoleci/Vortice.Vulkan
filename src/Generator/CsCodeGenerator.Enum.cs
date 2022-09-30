@@ -124,6 +124,21 @@ public static partial class CsCodeGenerator
         // VkPipelineCreateFlags
         { "VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR", "RasterizationStateCreateFragmentShadingRateAttachmentKHR" },
         { "VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT", "RasterizationStateCreateFragmentDensityMapAttachmentKHR" },
+
+        { "VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT", "Array2DCompatible" },
+        { "VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT", "View2DCompatibleEXT" },
+        { "VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR", "Array2DCompatibleKHR" },
+        { "VK_QUERY_RESULT_64_BIT", "Bit64" },
+        { "VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY", "Bit32Only" },
+        { "VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY_KHR", "Bit32OnlyKHR" },
+        { "VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT", "State2" },
+        { "VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT", "State4" },
+
+        // VkOpticalFlowGridSizeFlagsNV
+        { "VK_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_NV", "Size1x1" },
+        { "VK_OPTICAL_FLOW_GRID_SIZE_2X2_BIT_NV", "Size2x2" },
+        { "VK_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_NV", "Size4x4" },
+        { "VK_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_NV", "Size8x8" },
     };
 
     private static readonly Dictionary<string, string> s_knownEnumPrefixes = new()
@@ -134,6 +149,8 @@ public static partial class CsCodeGenerator
         { "VkShadingRatePaletteEntryNV", "VK_SHADING_RATE_PALETTE_ENTRY" },
         { "VkCoarseSampleOrderTypeNV", "VK_COARSE_SAMPLE_ORDER_TYPE" },
         { "VkCopyAccelerationStructureModeNVX", "VK_COPY_ACCELERATION_STRUCTURE_MODE" },
+        { "VkOpticalFlowPerformanceLevelNV", "VK_OPTICAL_FLOW_PERFORMANCE_LEVEL" },
+        { "VkOpticalFlowSessionBindingPointNV", "VK_OPTICAL_FLOW_SESSION_BINDING_POINT" },
     };
 
     private static readonly HashSet<string> s_ignoredParts = new(StringComparer.OrdinalIgnoreCase)
@@ -677,6 +694,46 @@ public static partial class CsCodeGenerator
         }
 
         string prettyName = sb.ToString();
-        return (char.IsNumber(prettyName[0])) ? "_" + prettyName : prettyName;
+        if (char.IsNumber(prettyName[0]))
+        {
+            if (enumPrefix.EndsWith("_IDC"))
+            {
+                return "Idc" + prettyName;
+            }
+
+            if (enumPrefix.EndsWith("_POC_TYPE"))
+            {
+                return "Type" + prettyName;
+            }
+
+            if (enumPrefix.EndsWith("_CTB_SIZE"))
+            {
+                return "Size" + prettyName;
+            }
+
+            if (enumPrefix.EndsWith("_BLOCK_SIZE"))
+            {
+                return "Size" + prettyName;
+            }
+
+            if (enumPrefix.EndsWith("_FIXED_RATE"))
+            {
+                return "Rate" + prettyName;
+            }
+
+            if (enumPrefix.EndsWith("_SUBSAMPLING"))
+            {
+                return "Subsampling" + prettyName;
+            }
+
+            if (enumPrefix.EndsWith("_BIT_DEPTH"))
+            {
+                return "Depth" + prettyName;
+            }
+
+            return "_" + prettyName;
+        }
+
+        return prettyName;
     }
 }

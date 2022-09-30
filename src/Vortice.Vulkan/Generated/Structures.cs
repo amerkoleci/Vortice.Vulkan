@@ -9055,6 +9055,48 @@ public partial struct VkPhysicalDeviceCustomBorderColorFeaturesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDevicePresentBarrierFeaturesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 presentBarrier;
+	public static VkPhysicalDevicePresentBarrierFeaturesNV New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDevicePresentBarrierFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDevicePresentBarrierFeaturesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkSurfaceCapabilitiesPresentBarrierNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 presentBarrierSupported;
+	public static VkSurfaceCapabilitiesPresentBarrierNV New()
+	{
+		Unsafe.SkipInit(out VkSurfaceCapabilitiesPresentBarrierNV instance);
+		instance.sType = VkStructureType.SurfaceCapabilitiesPresentBarrierNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkSwapchainPresentBarrierCreateInfoNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 presentBarrierEnable;
+	public static VkSwapchainPresentBarrierCreateInfoNV New()
+	{
+		Unsafe.SkipInit(out VkSwapchainPresentBarrierCreateInfoNV instance);
+		instance.sType = VkStructureType.SwapchainPresentBarrierCreateInfoNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceDiagnosticsConfigFeaturesNV
 {
 	public VkStructureType sType;
@@ -9463,6 +9505,84 @@ public partial struct VkPhysicalDevice4444FormatsFeaturesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceFaultFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 deviceFault;
+	public VkBool32 deviceFaultVendorBinary;
+	public static VkPhysicalDeviceFaultFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceFaultFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceFaultFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDeviceFaultCountsEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint addressInfoCount;
+	public uint vendorInfoCount;
+	public ulong vendorBinarySize;
+	public static VkDeviceFaultCountsEXT New()
+	{
+		Unsafe.SkipInit(out VkDeviceFaultCountsEXT instance);
+		instance.sType = VkStructureType.DeviceFaultCountsEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDeviceFaultAddressInfoEXT
+{
+	public VkDeviceFaultAddressTypeEXT addressType;
+	public ulong reportedAddress;
+	public ulong addressPrecision;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDeviceFaultVendorInfoEXT
+{
+	public unsafe fixed byte description[256];
+	public ulong vendorFaultCode;
+	public ulong vendorFaultData;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDeviceFaultInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public unsafe fixed byte description[256];
+	public unsafe VkDeviceFaultAddressInfoEXT* pAddressInfos;
+	public unsafe VkDeviceFaultVendorInfoEXT* pVendorInfos;
+	public unsafe void* pVendorBinaryData;
+	public static VkDeviceFaultInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkDeviceFaultInfoEXT instance);
+		instance.sType = VkStructureType.DeviceFaultInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDeviceFaultVendorBinaryHeaderVersionOneEXT
+{
+	public uint headerSize;
+	public VkDeviceFaultVendorBinaryHeaderVersionEXT headerVersion;
+	public uint vendorID;
+	public uint deviceID;
+	public uint driverVersion;
+	public unsafe fixed byte pipelineCacheUUID[16];
+	public uint applicationNameOffset;
+	public VkVersion applicationVersion;
+	public uint engineNameOffset;
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
 {
 	public VkStructureType sType;
@@ -9591,6 +9711,37 @@ public partial struct VkPhysicalDeviceDrmPropertiesEXT
 	{
 		Unsafe.SkipInit(out VkPhysicalDeviceDrmPropertiesEXT instance);
 		instance.sType = VkStructureType.PhysicalDeviceDrmPropertiesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceAddressBindingReportFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 reportAddressBinding;
+	public static VkPhysicalDeviceAddressBindingReportFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceAddressBindingReportFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceAddressBindingReportFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDeviceAddressBindingCallbackDataEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkDeviceAddressBindingFlagsEXT flags;
+	public ulong baseAddress;
+	public ulong size;
+	public VkDeviceAddressBindingTypeEXT bindingType;
+	public static VkDeviceAddressBindingCallbackDataEXT New()
+	{
+		Unsafe.SkipInit(out VkDeviceAddressBindingCallbackDataEXT instance);
+		instance.sType = VkStructureType.DeviceAddressBindingCallbackDataEXT;
 		return instance;
 	}
 }
@@ -9943,6 +10094,204 @@ public partial struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkMicromapUsageEXT
+{
+	public uint count;
+	public uint subdivisionLevel;
+	public uint format;
+}
+
+[StructLayout(LayoutKind.Explicit)]
+public partial struct VkDeviceOrHostAddressKHR
+{
+	[FieldOffset(0)]
+	public ulong deviceAddress;
+	[FieldOffset(0)]
+	public unsafe void* hostAddress;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkMicromapBuildInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkMicromapTypeEXT type;
+	public VkBuildMicromapFlagsEXT flags;
+	public VkBuildMicromapModeEXT mode;
+	public VkMicromapEXT dstMicromap;
+	public uint usageCountsCount;
+	public unsafe VkMicromapUsageEXT* pUsageCounts;
+	public unsafe VkMicromapUsageEXT** ppUsageCounts;
+	public VkDeviceOrHostAddressConstKHR data;
+	public VkDeviceOrHostAddressKHR scratchData;
+	public VkDeviceOrHostAddressConstKHR triangleArray;
+	public ulong triangleArrayStride;
+	public static VkMicromapBuildInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkMicromapBuildInfoEXT instance);
+		instance.sType = VkStructureType.MicromapBuildInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkMicromapCreateInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkMicromapCreateFlagsEXT createFlags;
+	public VkBuffer buffer;
+	public ulong offset;
+	public ulong size;
+	public VkMicromapTypeEXT type;
+	public ulong deviceAddress;
+	public static VkMicromapCreateInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkMicromapCreateInfoEXT instance);
+		instance.sType = VkStructureType.MicromapCreateInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceOpacityMicromapFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 micromap;
+	public VkBool32 micromapCaptureReplay;
+	public VkBool32 micromapHostCommands;
+	public static VkPhysicalDeviceOpacityMicromapFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceOpacityMicromapFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceOpacityMicromapFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceOpacityMicromapPropertiesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint maxOpacity2StateSubdivisionLevel;
+	public uint maxOpacity4StateSubdivisionLevel;
+	public static VkPhysicalDeviceOpacityMicromapPropertiesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceOpacityMicromapPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceOpacityMicromapPropertiesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkMicromapVersionInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public unsafe byte* pVersionData;
+	public static VkMicromapVersionInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkMicromapVersionInfoEXT instance);
+		instance.sType = VkStructureType.MicromapVersionInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkCopyMicromapToMemoryInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkMicromapEXT src;
+	public VkDeviceOrHostAddressKHR dst;
+	public VkCopyMicromapModeEXT mode;
+	public static VkCopyMicromapToMemoryInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkCopyMicromapToMemoryInfoEXT instance);
+		instance.sType = VkStructureType.CopyMicromapToMemoryInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkCopyMemoryToMicromapInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkDeviceOrHostAddressConstKHR src;
+	public VkMicromapEXT dst;
+	public VkCopyMicromapModeEXT mode;
+	public static VkCopyMemoryToMicromapInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkCopyMemoryToMicromapInfoEXT instance);
+		instance.sType = VkStructureType.CopyMemoryToMicromapInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkCopyMicromapInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkMicromapEXT src;
+	public VkMicromapEXT dst;
+	public VkCopyMicromapModeEXT mode;
+	public static VkCopyMicromapInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkCopyMicromapInfoEXT instance);
+		instance.sType = VkStructureType.CopyMicromapInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkMicromapBuildSizesInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public ulong micromapSize;
+	public ulong buildScratchSize;
+	public VkBool32 discardable;
+	public static VkMicromapBuildSizesInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkMicromapBuildSizesInfoEXT instance);
+		instance.sType = VkStructureType.MicromapBuildSizesInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkAccelerationStructureTrianglesOpacityMicromapEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkIndexType indexType;
+	public VkDeviceOrHostAddressConstKHR indexBuffer;
+	public ulong indexStride;
+	public uint baseTriangle;
+	public uint usageCountsCount;
+	public unsafe VkMicromapUsageEXT* pUsageCounts;
+	public unsafe VkMicromapUsageEXT** ppUsageCounts;
+	public VkMicromapEXT micromap;
+	public static VkAccelerationStructureTrianglesOpacityMicromapEXT New()
+	{
+		Unsafe.SkipInit(out VkAccelerationStructureTrianglesOpacityMicromapEXT instance);
+		instance.sType = VkStructureType.AccelerationStructureTrianglesOpacityMicromapEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkMicromapTriangleEXT
+{
+	public uint dataOffset;
+	public ushort subdivisionLevel;
+	public ushort format;
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceBorderColorSwizzleFeaturesEXT
 {
 	public VkStructureType sType;
@@ -10179,6 +10528,85 @@ public partial struct VkPhysicalDeviceImageProcessingPropertiesQCOM
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 extendedDynamicState3TessellationDomainOrigin;
+	public VkBool32 extendedDynamicState3DepthClampEnable;
+	public VkBool32 extendedDynamicState3PolygonMode;
+	public VkBool32 extendedDynamicState3RasterizationSamples;
+	public VkBool32 extendedDynamicState3SampleMask;
+	public VkBool32 extendedDynamicState3AlphaToCoverageEnable;
+	public VkBool32 extendedDynamicState3AlphaToOneEnable;
+	public VkBool32 extendedDynamicState3LogicOpEnable;
+	public VkBool32 extendedDynamicState3ColorBlendEnable;
+	public VkBool32 extendedDynamicState3ColorBlendEquation;
+	public VkBool32 extendedDynamicState3ColorWriteMask;
+	public VkBool32 extendedDynamicState3RasterizationStream;
+	public VkBool32 extendedDynamicState3ConservativeRasterizationMode;
+	public VkBool32 extendedDynamicState3ExtraPrimitiveOverestimationSize;
+	public VkBool32 extendedDynamicState3DepthClipEnable;
+	public VkBool32 extendedDynamicState3SampleLocationsEnable;
+	public VkBool32 extendedDynamicState3ColorBlendAdvanced;
+	public VkBool32 extendedDynamicState3ProvokingVertexMode;
+	public VkBool32 extendedDynamicState3LineRasterizationMode;
+	public VkBool32 extendedDynamicState3LineStippleEnable;
+	public VkBool32 extendedDynamicState3DepthClipNegativeOneToOne;
+	public VkBool32 extendedDynamicState3ViewportWScalingEnable;
+	public VkBool32 extendedDynamicState3ViewportSwizzle;
+	public VkBool32 extendedDynamicState3CoverageToColorEnable;
+	public VkBool32 extendedDynamicState3CoverageToColorLocation;
+	public VkBool32 extendedDynamicState3CoverageModulationMode;
+	public VkBool32 extendedDynamicState3CoverageModulationTableEnable;
+	public VkBool32 extendedDynamicState3CoverageModulationTable;
+	public VkBool32 extendedDynamicState3CoverageReductionMode;
+	public VkBool32 extendedDynamicState3RepresentativeFragmentTestEnable;
+	public VkBool32 extendedDynamicState3ShadingRateImageEnable;
+	public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceExtendedDynamicState3FeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceExtendedDynamicState3FeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceExtendedDynamicState3PropertiesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 dynamicPrimitiveTopologyUnrestricted;
+	public static VkPhysicalDeviceExtendedDynamicState3PropertiesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceExtendedDynamicState3PropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceExtendedDynamicState3PropertiesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkColorBlendEquationEXT
+{
+	public VkBlendFactor srcColorBlendFactor;
+	public VkBlendFactor dstColorBlendFactor;
+	public VkBlendOp colorBlendOp;
+	public VkBlendFactor srcAlphaBlendFactor;
+	public VkBlendFactor dstAlphaBlendFactor;
+	public VkBlendOp alphaBlendOp;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkColorBlendAdvancedEXT
+{
+	public VkBlendOp advancedBlendOp;
+	public VkBool32 srcPremultiplied;
+	public VkBool32 dstPremultiplied;
+	public VkBlendOverlapEXT blendOverlap;
+	public VkBool32 clampResults;
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT
 {
 	public VkStructureType sType;
@@ -10307,6 +10735,126 @@ public partial struct VkShaderModuleIdentifierEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceOpticalFlowFeaturesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 opticalFlow;
+	public static VkPhysicalDeviceOpticalFlowFeaturesNV New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceOpticalFlowFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceOpticalFlowFeaturesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceOpticalFlowPropertiesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkOpticalFlowGridSizeFlagsNV supportedOutputGridSizes;
+	public VkOpticalFlowGridSizeFlagsNV supportedHintGridSizes;
+	public VkBool32 hintSupported;
+	public VkBool32 costSupported;
+	public VkBool32 bidirectionalFlowSupported;
+	public VkBool32 globalFlowSupported;
+	public uint minWidth;
+	public uint minHeight;
+	public uint maxWidth;
+	public uint maxHeight;
+	public uint maxNumRegionsOfInterest;
+	public static VkPhysicalDeviceOpticalFlowPropertiesNV New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceOpticalFlowPropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceOpticalFlowPropertiesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkOpticalFlowImageFormatInfoNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkOpticalFlowUsageFlagsNV usage;
+	public static VkOpticalFlowImageFormatInfoNV New()
+	{
+		Unsafe.SkipInit(out VkOpticalFlowImageFormatInfoNV instance);
+		instance.sType = VkStructureType.OpticalFlowImageFormatInfoNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkOpticalFlowImageFormatPropertiesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkFormat format;
+	public static VkOpticalFlowImageFormatPropertiesNV New()
+	{
+		Unsafe.SkipInit(out VkOpticalFlowImageFormatPropertiesNV instance);
+		instance.sType = VkStructureType.OpticalFlowImageFormatPropertiesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkOpticalFlowSessionCreateInfoNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint width;
+	public uint height;
+	public VkFormat imageFormat;
+	public VkFormat flowVectorFormat;
+	public VkFormat costFormat;
+	public VkOpticalFlowGridSizeFlagsNV outputGridSize;
+	public VkOpticalFlowGridSizeFlagsNV hintGridSize;
+	public VkOpticalFlowPerformanceLevelNV performanceLevel;
+	public VkOpticalFlowSessionCreateFlagsNV flags;
+	public static VkOpticalFlowSessionCreateInfoNV New()
+	{
+		Unsafe.SkipInit(out VkOpticalFlowSessionCreateInfoNV instance);
+		instance.sType = VkStructureType.OpticalFlowSessionCreateInfoNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkOpticalFlowSessionCreatePrivateDataInfoNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint id;
+	public uint size;
+	public unsafe void* pPrivateData;
+	public static VkOpticalFlowSessionCreatePrivateDataInfoNV New()
+	{
+		Unsafe.SkipInit(out VkOpticalFlowSessionCreatePrivateDataInfoNV instance);
+		instance.sType = VkStructureType.OpticalFlowSessionCreatePrivateDataInfoNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkOpticalFlowExecuteInfoNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkOpticalFlowExecuteFlagsNV flags;
+	public uint regionCount;
+	public unsafe VkRect2D* pRegions;
+	public static VkOpticalFlowExecuteInfoNV New()
+	{
+		Unsafe.SkipInit(out VkOpticalFlowExecuteInfoNV instance);
+		instance.sType = VkStructureType.OpticalFlowExecuteInfoNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceLegacyDitheringFeaturesEXT
 {
 	public VkStructureType sType;
@@ -10316,6 +10864,20 @@ public partial struct VkPhysicalDeviceLegacyDitheringFeaturesEXT
 	{
 		Unsafe.SkipInit(out VkPhysicalDeviceLegacyDitheringFeaturesEXT instance);
 		instance.sType = VkStructureType.PhysicalDeviceLegacyDitheringFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDevicePipelineProtectedAccessFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 pipelineProtectedAccess;
+	public static VkPhysicalDevicePipelineProtectedAccessFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDevicePipelineProtectedAccessFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDevicePipelineProtectedAccessFeaturesEXT;
 		return instance;
 	}
 }
@@ -10377,15 +10939,6 @@ public partial struct VkAmigoProfilingSubmitInfoSEC
 		instance.sType = VkStructureType.AmigoProfilingSubmitInfoSEC;
 		return instance;
 	}
-}
-
-[StructLayout(LayoutKind.Explicit)]
-public partial struct VkDeviceOrHostAddressKHR
-{
-	[FieldOffset(0)]
-	public ulong deviceAddress;
-	[FieldOffset(0)]
-	public unsafe void* hostAddress;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -11286,14 +11839,14 @@ public partial struct VkVideoCapabilitiesKHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public VkVideoCapabilityFlagsKHR capabilityFlags;
+	public VkVideoCapabilityFlagsKHR flags;
 	public ulong minBitstreamBufferOffsetAlignment;
 	public ulong minBitstreamBufferSizeAlignment;
-	public VkExtent2D videoPictureExtentGranularity;
-	public VkExtent2D minExtent;
-	public VkExtent2D maxExtent;
-	public uint maxReferencePicturesSlotsCount;
-	public uint maxReferencePicturesActiveCount;
+	public VkExtent2D pictureAccessGranularity;
+	public VkExtent2D minCodedExtent;
+	public VkExtent2D maxCodedExtent;
+	public uint maxDpbSlots;
+	public uint maxActiveReferencePictures;
 	public VkExtensionProperties stdHeaderVersion;
 	public static VkVideoCapabilitiesKHR New()
 	{
@@ -11358,7 +11911,7 @@ public partial struct VkVideoReferenceSlotInfoKHR
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public sbyte slotIndex;
+	public int slotIndex;
 	public unsafe VkVideoPictureResourceInfoKHR* pPictureResource;
 	public static VkVideoReferenceSlotInfoKHR New()
 	{
@@ -11410,9 +11963,9 @@ public partial struct VkVideoSessionCreateInfoKHR
 	public unsafe VkVideoProfileInfoKHR* pVideoProfile;
 	public VkFormat pictureFormat;
 	public VkExtent2D maxCodedExtent;
-	public VkFormat referencePicturesFormat;
-	public uint maxReferencePicturesSlotsCount;
-	public uint maxReferencePicturesActiveCount;
+	public VkFormat referencePictureFormat;
+	public uint maxDpbSlots;
+	public uint maxActiveReferencePictures;
 	public unsafe VkExtensionProperties* pStdHeaderVersion;
 	public static VkVideoSessionCreateInfoKHR New()
 	{
@@ -11705,6 +12258,7 @@ public partial struct StdVideoH264HrdParameters
 	public byte cpb_cnt_minus1;
 	public byte bit_rate_scale;
 	public byte cpb_size_scale;
+	public byte reserved1;
 	public unsafe fixed uint bit_rate_value_minus1[32];
 	public unsafe fixed uint cpb_size_value_minus1[32];
 	public unsafe fixed byte cbr_flag[32];
@@ -11722,14 +12276,17 @@ public partial struct StdVideoH264SequenceParameterSetVui
 	public ushort sar_width;
 	public ushort sar_height;
 	public byte video_format;
-	public byte color_primaries;
+	public byte colour_primaries;
 	public byte transfer_characteristics;
 	public byte matrix_coefficients;
 	public uint num_units_in_tick;
 	public uint time_scale;
-	public unsafe StdVideoH264HrdParameters* pHrdParameters;
 	public byte max_num_reorder_frames;
 	public byte max_dec_frame_buffering;
+	public byte chroma_sample_loc_type_top_field;
+	public byte chroma_sample_loc_type_bottom_field;
+	public uint reserved1;
+	public unsafe StdVideoH264HrdParameters* pHrdParameters;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -11756,10 +12313,10 @@ public partial struct StdVideoH264SpsFlags
 [StructLayout(LayoutKind.Sequential)]
 public partial struct StdVideoH264ScalingLists
 {
-	public byte scaling_list_present_mask;
-	public byte use_default_scaling_matrix_mask;
+	public ushort scaling_list_present_mask;
+	public ushort use_default_scaling_matrix_mask;
 	public unsafe fixed byte ScalingList4x4[6 * 16];
-	public unsafe fixed byte ScalingList8x8[2 * 64];
+	public unsafe fixed byte ScalingList8x8[6 * 64];
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -11767,24 +12324,26 @@ public partial struct StdVideoH264SequenceParameterSet
 {
 	public StdVideoH264SpsFlags flags;
 	public StdVideoH264ProfileIdc profile_idc;
-	public StdVideoH264Level level_idc;
-	public byte seq_parameter_set_id;
+	public StdVideoH264LevelIdc level_idc;
 	public StdVideoH264ChromaFormatIdc chroma_format_idc;
+	public byte seq_parameter_set_id;
 	public byte bit_depth_luma_minus8;
 	public byte bit_depth_chroma_minus8;
 	public byte log2_max_frame_num_minus4;
 	public StdVideoH264PocType pic_order_cnt_type;
-	public byte log2_max_pic_order_cnt_lsb_minus4;
 	public int offset_for_non_ref_pic;
 	public int offset_for_top_to_bottom_field;
+	public byte log2_max_pic_order_cnt_lsb_minus4;
 	public byte num_ref_frames_in_pic_order_cnt_cycle;
 	public byte max_num_ref_frames;
+	public byte reserved1;
 	public uint pic_width_in_mbs_minus1;
 	public uint pic_height_in_map_units_minus1;
 	public uint frame_crop_left_offset;
 	public uint frame_crop_right_offset;
 	public uint frame_crop_top_offset;
 	public uint frame_crop_bottom_offset;
+	public uint reserved2;
 	public unsafe int* pOffsetForRefFrame;
 	public unsafe StdVideoH264ScalingLists* pScalingLists;
 	public unsafe StdVideoH264SequenceParameterSetVui* pSequenceParameterSetVui;
@@ -11797,9 +12356,8 @@ public partial struct StdVideoH264PpsFlags
 	public uint redundant_pic_cnt_present_flag;
 	public uint constrained_intra_pred_flag;
 	public uint deblocking_filter_control_present_flag;
-	public uint weighted_bipred_idc_flag;
 	public uint weighted_pred_flag;
-	public uint pic_order_present_flag;
+	public uint bottom_field_pic_order_in_frame_present_flag;
 	public uint entropy_coding_mode_flag;
 	public uint pic_scaling_matrix_present_flag;
 }
@@ -11972,10 +12530,10 @@ public partial struct VkVideoEncodeH264SessionParametersAddInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public uint spsStdCount;
-	public unsafe StdVideoH264SequenceParameterSet* pSpsStd;
-	public uint ppsStdCount;
-	public unsafe StdVideoH264PictureParameterSet* pPpsStd;
+	public uint stdSPSCount;
+	public unsafe StdVideoH264SequenceParameterSet* pStdSPSs;
+	public uint stdPPSCount;
+	public unsafe StdVideoH264PictureParameterSet* pStdPPSs;
 	public static VkVideoEncodeH264SessionParametersAddInfoEXT New()
 	{
 		Unsafe.SkipInit(out VkVideoEncodeH264SessionParametersAddInfoEXT instance);
@@ -11989,8 +12547,8 @@ public partial struct VkVideoEncodeH264SessionParametersCreateInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public uint maxSpsStdCount;
-	public uint maxPpsStdCount;
+	public uint maxStdSPSCount;
+	public uint maxStdPPSCount;
 	public unsafe VkVideoEncodeH264SessionParametersAddInfoEXT* pParametersAddInfo;
 	public static VkVideoEncodeH264SessionParametersCreateInfoEXT New()
 	{
@@ -12198,58 +12756,9 @@ public partial struct StdVideoH265HrdParameters
 	public byte dpb_output_delay_length_minus1;
 	public unsafe fixed byte cpb_cnt_minus1[7];
 	public unsafe fixed ushort elemental_duration_in_tc_minus1[7];
-	public pSubLayerHrdParametersNal__FixedBuffer pSubLayerHrdParametersNal;
-
-	public unsafe struct pSubLayerHrdParametersNal__FixedBuffer
-	{
-		public StdVideoH265SubLayerHrdParameters* e0;
-		public StdVideoH265SubLayerHrdParameters* e1;
-		public StdVideoH265SubLayerHrdParameters* e2;
-		public StdVideoH265SubLayerHrdParameters* e3;
-		public StdVideoH265SubLayerHrdParameters* e4;
-		public StdVideoH265SubLayerHrdParameters* e5;
-		public StdVideoH265SubLayerHrdParameters* e6;
-
-		[UnscopedRef]
-		public ref StdVideoH265SubLayerHrdParameters* this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				fixed (StdVideoH265SubLayerHrdParameters** pThis = &e0)
-				{
-					return ref pThis[index];
-				}
-			}
-		}
-
-	}
-	public pSubLayerHrdParametersVcl__FixedBuffer pSubLayerHrdParametersVcl;
-
-	public unsafe struct pSubLayerHrdParametersVcl__FixedBuffer
-	{
-		public StdVideoH265SubLayerHrdParameters* e0;
-		public StdVideoH265SubLayerHrdParameters* e1;
-		public StdVideoH265SubLayerHrdParameters* e2;
-		public StdVideoH265SubLayerHrdParameters* e3;
-		public StdVideoH265SubLayerHrdParameters* e4;
-		public StdVideoH265SubLayerHrdParameters* e5;
-		public StdVideoH265SubLayerHrdParameters* e6;
-
-		[UnscopedRef]
-		public ref StdVideoH265SubLayerHrdParameters* this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				fixed (StdVideoH265SubLayerHrdParameters** pThis = &e0)
-				{
-					return ref pThis[index];
-				}
-			}
-		}
-
-	}
+	public unsafe fixed ushort reserved[3];
+	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal;
+	public unsafe StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -12262,16 +12771,38 @@ public partial struct StdVideoH265VpsFlags
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoH265ProfileTierLevelFlags
+{
+	public uint general_tier_flag;
+	public uint general_progressive_source_flag;
+	public uint general_interlaced_source_flag;
+	public uint general_non_packed_constraint_flag;
+	public uint general_frame_only_constraint_flag;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoH265ProfileTierLevel
+{
+	public StdVideoH265ProfileTierLevelFlags flags;
+	public StdVideoH265ProfileIdc general_profile_idc;
+	public StdVideoH265LevelIdc general_level_idc;
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct StdVideoH265VideoParameterSet
 {
 	public StdVideoH265VpsFlags flags;
 	public byte vps_video_parameter_set_id;
 	public byte vps_max_sub_layers_minus1;
+	public byte reserved1;
+	public byte reserved2;
 	public uint vps_num_units_in_tick;
 	public uint vps_time_scale;
 	public uint vps_num_ticks_poc_diff_one_minus1;
+	public uint reserved3;
 	public unsafe StdVideoH265DecPicBufMgr* pDecPicBufMgr;
 	public unsafe StdVideoH265HrdParameters* pHrdParameters;
+	public unsafe StdVideoH265ProfileTierLevel* pProfileTierLevel;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -12312,7 +12843,7 @@ public partial struct StdVideoH265SpsVuiFlags
 public partial struct StdVideoH265SequenceParameterSetVui
 {
 	public StdVideoH265SpsVuiFlags flags;
-	public byte aspect_ratio_idc;
+	public StdVideoH265AspectRatioIdc aspect_ratio_idc;
 	public ushort sar_width;
 	public ushort sar_height;
 	public byte video_format;
@@ -12321,6 +12852,8 @@ public partial struct StdVideoH265SequenceParameterSetVui
 	public byte matrix_coeffs;
 	public byte chroma_sample_loc_type_top_field;
 	public byte chroma_sample_loc_type_bottom_field;
+	public byte reserved1;
+	public byte reserved2;
 	public ushort def_disp_win_left_offset;
 	public ushort def_disp_win_right_offset;
 	public ushort def_disp_win_top_offset;
@@ -12328,12 +12861,13 @@ public partial struct StdVideoH265SequenceParameterSetVui
 	public uint vui_num_units_in_tick;
 	public uint vui_time_scale;
 	public uint vui_num_ticks_poc_diff_one_minus1;
-	public unsafe StdVideoH265HrdParameters* pHrdParameters;
 	public ushort min_spatial_segmentation_idc;
+	public ushort reserved3;
 	public byte max_bytes_per_pic_denom;
 	public byte max_bits_per_min_cu_denom;
 	public byte log2_max_mv_length_horizontal;
 	public byte log2_max_mv_length_vertical;
+	public unsafe StdVideoH265HrdParameters* pHrdParameters;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -12347,6 +12881,8 @@ public partial struct StdVideoH265SpsFlags
 {
 	public uint sps_temporal_id_nesting_flag;
 	public uint separate_colour_plane_flag;
+	public uint conformance_window_flag;
+	public uint sps_sub_layer_ordering_info_present_flag;
 	public uint scaling_list_enabled_flag;
 	public uint sps_scaling_list_data_present_flag;
 	public uint amp_enabled_flag;
@@ -12371,22 +12907,53 @@ public partial struct StdVideoH265SpsFlags
 	public uint sps_scc_extension_flag;
 	public uint sps_curr_pic_ref_enabled_flag;
 	public uint palette_mode_enabled_flag;
-	public uint sps_palette_predictor_initializer_present_flag;
+	public uint sps_palette_predictor_initializers_present_flag;
 	public uint intra_boundary_filtering_disabled_flag;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoH265ShortTermRefPicSetFlags
+{
+	public uint inter_ref_pic_set_prediction_flag;
+	public uint delta_rps_sign;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoH265ShortTermRefPicSet
+{
+	public StdVideoH265ShortTermRefPicSetFlags flags;
+	public uint delta_idx_minus1;
+	public ushort use_delta_flag;
+	public ushort abs_delta_rps_minus1;
+	public ushort used_by_curr_pic_flag;
+	public ushort used_by_curr_pic_s0_flag;
+	public ushort used_by_curr_pic_s1_flag;
+	public ushort reserved1;
+	public byte reserved2;
+	public byte reserved3;
+	public byte num_negative_pics;
+	public byte num_positive_pics;
+	public unsafe fixed ushort delta_poc_s0_minus1[16];
+	public unsafe fixed ushort delta_poc_s1_minus1[16];
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoH265LongTermRefPicsSps
+{
+	public uint used_by_curr_pic_lt_sps_flag;
+	public unsafe fixed uint lt_ref_pic_poc_lsb_sps[32];
 }
 
 [StructLayout(LayoutKind.Sequential)]
 public partial struct StdVideoH265SequenceParameterSet
 {
 	public StdVideoH265SpsFlags flags;
-	public StdVideoH265ProfileIdc profile_idc;
-	public StdVideoH265Level level_idc;
+	public StdVideoH265ChromaFormatIdc chroma_format_idc;
 	public uint pic_width_in_luma_samples;
 	public uint pic_height_in_luma_samples;
 	public byte sps_video_parameter_set_id;
 	public byte sps_max_sub_layers_minus1;
 	public byte sps_seq_parameter_set_id;
-	public byte chroma_format_idc;
 	public byte bit_depth_luma_minus8;
 	public byte bit_depth_chroma_minus8;
 	public byte log2_max_pic_order_cnt_lsb_minus4;
@@ -12402,17 +12969,22 @@ public partial struct StdVideoH265SequenceParameterSet
 	public byte pcm_sample_bit_depth_chroma_minus1;
 	public byte log2_min_pcm_luma_coding_block_size_minus3;
 	public byte log2_diff_max_min_pcm_luma_coding_block_size;
+	public byte reserved1;
+	public byte reserved2;
+	public byte palette_max_size;
+	public byte delta_palette_max_predictor_size;
+	public byte motion_vector_resolution_control_idc;
+	public byte sps_num_palette_predictor_initializers_minus1;
 	public uint conf_win_left_offset;
 	public uint conf_win_right_offset;
 	public uint conf_win_top_offset;
 	public uint conf_win_bottom_offset;
+	public unsafe StdVideoH265ProfileTierLevel* pProfileTierLevel;
 	public unsafe StdVideoH265DecPicBufMgr* pDecPicBufMgr;
 	public unsafe StdVideoH265ScalingLists* pScalingLists;
+	public unsafe StdVideoH265ShortTermRefPicSet* pShortTermRefPicSet;
+	public unsafe StdVideoH265LongTermRefPicsSps* pLongTermRefPicsSps;
 	public unsafe StdVideoH265SequenceParameterSetVui* pSequenceParameterSetVui;
-	public byte palette_max_size;
-	public byte delta_palette_max_predictor_size;
-	public byte motion_vector_resolution_control_idc;
-	public byte sps_num_palette_predictor_initializer_minus1;
 	public unsafe StdVideoH265PredictorPaletteEntries* pPredictorPaletteEntries;
 }
 
@@ -12447,7 +13019,7 @@ public partial struct StdVideoH265PpsFlags
 	public uint pps_curr_pic_ref_enabled_flag;
 	public uint residual_adaptive_colour_transform_enabled_flag;
 	public uint pps_slice_act_qp_offsets_present_flag;
-	public uint pps_palette_predictor_initializer_present_flag;
+	public uint pps_palette_predictor_initializers_present_flag;
 	public uint monochrome_palette_flag;
 	public uint pps_range_extension_flag;
 }
@@ -12458,6 +13030,7 @@ public partial struct StdVideoH265PictureParameterSet
 	public StdVideoH265PpsFlags flags;
 	public byte pps_pic_parameter_set_id;
 	public byte pps_seq_parameter_set_id;
+	public byte sps_video_parameter_set_id;
 	public byte num_extra_slice_header_bits;
 	public byte num_ref_idx_l0_default_active_minus1;
 	public byte num_ref_idx_l1_default_active_minus1;
@@ -12465,14 +13038,9 @@ public partial struct StdVideoH265PictureParameterSet
 	public byte diff_cu_qp_delta_depth;
 	public sbyte pps_cb_qp_offset;
 	public sbyte pps_cr_qp_offset;
-	public byte num_tile_columns_minus1;
-	public byte num_tile_rows_minus1;
-	public unsafe fixed ushort column_width_minus1[19];
-	public unsafe fixed ushort row_height_minus1[21];
 	public sbyte pps_beta_offset_div2;
 	public sbyte pps_tc_offset_div2;
 	public byte log2_parallel_merge_level_minus2;
-	public unsafe StdVideoH265ScalingLists* pScalingLists;
 	public byte log2_max_transform_skip_block_size_minus2;
 	public byte diff_cu_chroma_qp_offset_depth;
 	public byte chroma_qp_offset_list_len_minus1;
@@ -12482,10 +13050,18 @@ public partial struct StdVideoH265PictureParameterSet
 	public byte log2_sao_offset_scale_chroma;
 	public sbyte pps_act_y_qp_offset_plus5;
 	public sbyte pps_act_cb_qp_offset_plus5;
-	public sbyte pps_act_cr_qp_offset_plus5;
-	public byte pps_num_palette_predictor_initializer;
+	public sbyte pps_act_cr_qp_offset_plus3;
+	public byte pps_num_palette_predictor_initializers;
 	public byte luma_bit_depth_entry_minus8;
 	public byte chroma_bit_depth_entry_minus8;
+	public byte num_tile_columns_minus1;
+	public byte num_tile_rows_minus1;
+	public byte reserved1;
+	public byte reserved2;
+	public unsafe fixed ushort column_width_minus1[19];
+	public unsafe fixed ushort row_height_minus1[21];
+	public uint reserved3;
+	public unsafe StdVideoH265ScalingLists* pScalingLists;
 	public unsafe StdVideoH265PredictorPaletteEntries* pPredictorPaletteEntries;
 }
 
@@ -12528,9 +13104,23 @@ public partial struct StdVideoEncodeH265SliceSegmentHeaderFlags
 	public uint num_ref_idx_active_override_flag;
 	public uint mvd_l1_zero_flag;
 	public uint cabac_init_flag;
-	public uint slice_deblocking_filter_disable_flag;
+	public uint cu_chroma_qp_offset_enabled_flag;
+	public uint deblocking_filter_override_flag;
+	public uint slice_deblocking_filter_disabled_flag;
 	public uint collocated_from_l0_flag;
 	public uint slice_loop_filter_across_slices_enabled_flag;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoEncodeH265SliceSegmentLongTermRefPics
+{
+	public byte num_long_term_sps;
+	public byte num_long_term_pics;
+	public unsafe fixed byte lt_idx_sps[32];
+	public unsafe fixed byte poc_lsb_lt[16];
+	public ushort used_by_curr_pic_lt_flag;
+	public unsafe fixed byte delta_poc_msb_present_flag[48];
+	public unsafe fixed byte delta_poc_msb_cycle_lt[48];
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -12538,11 +13128,8 @@ public partial struct StdVideoEncodeH265SliceSegmentHeader
 {
 	public StdVideoEncodeH265SliceSegmentHeaderFlags flags;
 	public StdVideoH265SliceType slice_type;
-	public byte num_short_term_ref_pic_sets;
 	public uint slice_segment_address;
 	public byte short_term_ref_pic_set_idx;
-	public byte num_long_term_sps;
-	public byte num_long_term_pics;
 	public byte collocated_ref_idx;
 	public byte num_ref_idx_l0_active_minus1;
 	public byte num_ref_idx_l1_active_minus1;
@@ -12554,6 +13141,8 @@ public partial struct StdVideoEncodeH265SliceSegmentHeader
 	public sbyte slice_act_y_qp_offset;
 	public sbyte slice_act_cb_qp_offset;
 	public sbyte slice_act_cr_qp_offset;
+	public unsafe StdVideoH265ShortTermRefPicSet* pShortTermRefPicSet;
+	public unsafe StdVideoEncodeH265SliceSegmentLongTermRefPics* pLongTermRefPics;
 	public unsafe StdVideoEncodeH265WeightTable* pWeightTable;
 }
 
@@ -12649,12 +13238,12 @@ public partial struct VkVideoEncodeH265SessionParametersAddInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public uint vpsStdCount;
-	public unsafe StdVideoH265VideoParameterSet* pVpsStd;
-	public uint spsStdCount;
-	public unsafe StdVideoH265SequenceParameterSet* pSpsStd;
-	public uint ppsStdCount;
-	public unsafe StdVideoH265PictureParameterSet* pPpsStd;
+	public uint stdVPSCount;
+	public unsafe StdVideoH265VideoParameterSet* pStdVPSs;
+	public uint stdSPSCount;
+	public unsafe StdVideoH265SequenceParameterSet* pStdSPSs;
+	public uint stdPPSCount;
+	public unsafe StdVideoH265PictureParameterSet* pStdPPSs;
 	public static VkVideoEncodeH265SessionParametersAddInfoEXT New()
 	{
 		Unsafe.SkipInit(out VkVideoEncodeH265SessionParametersAddInfoEXT instance);
@@ -12668,9 +13257,9 @@ public partial struct VkVideoEncodeH265SessionParametersCreateInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public uint maxVpsStdCount;
-	public uint maxSpsStdCount;
-	public uint maxPpsStdCount;
+	public uint maxStdVPSCount;
+	public uint maxStdSPSCount;
+	public uint maxStdPPSCount;
 	public unsafe VkVideoEncodeH265SessionParametersAddInfoEXT* pParametersAddInfo;
 	public static VkVideoEncodeH265SessionParametersCreateInfoEXT New()
 	{
@@ -12852,7 +13441,8 @@ public partial struct StdVideoDecodeH264PictureInfo
 	public StdVideoDecodeH264PictureInfoFlags flags;
 	public byte seq_parameter_set_id;
 	public byte pic_parameter_set_id;
-	public ushort reserved;
+	public byte reserved1;
+	public byte reserved2;
 	public ushort frame_num;
 	public ushort idr_pic_id;
 	public unsafe fixed int PicOrderCnt[2];
@@ -12877,40 +13467,6 @@ public partial struct StdVideoDecodeH264ReferenceInfo
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct StdVideoDecodeH264MvcElementFlags
-{
-	public uint non_idr;
-	public uint anchor_pic;
-	public uint inter_view;
-}
-
-[StructLayout(LayoutKind.Sequential)]
-public partial struct StdVideoDecodeH264MvcElement
-{
-	public StdVideoDecodeH264MvcElementFlags flags;
-	public ushort viewOrderIndex;
-	public ushort viewId;
-	public ushort temporalId;
-	public ushort priorityId;
-	public ushort numOfAnchorRefsInL0;
-	public unsafe fixed ushort viewIdOfAnchorRefsInL0[15];
-	public ushort numOfAnchorRefsInL1;
-	public unsafe fixed ushort viewIdOfAnchorRefsInL1[15];
-	public ushort numOfNonAnchorRefsInL0;
-	public unsafe fixed ushort viewIdOfNonAnchorRefsInL0[15];
-	public ushort numOfNonAnchorRefsInL1;
-	public unsafe fixed ushort viewIdOfNonAnchorRefsInL1[15];
-}
-
-[StructLayout(LayoutKind.Sequential)]
-public partial struct StdVideoDecodeH264Mvc
-{
-	public uint viewId0;
-	public uint mvcElementCount;
-	public unsafe StdVideoDecodeH264MvcElement* pMvcElements;
-}
-
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VkVideoDecodeH264ProfileInfoEXT
 {
 	public VkStructureType sType;
@@ -12930,7 +13486,7 @@ public partial struct VkVideoDecodeH264CapabilitiesEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public StdVideoH264Level maxLevel;
+	public StdVideoH264LevelIdc maxLevelIdc;
 	public VkOffset2D fieldOffsetGranularity;
 	public static VkVideoDecodeH264CapabilitiesEXT New()
 	{
@@ -12945,10 +13501,10 @@ public partial struct VkVideoDecodeH264SessionParametersAddInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public uint spsStdCount;
-	public unsafe StdVideoH264SequenceParameterSet* pSpsStd;
-	public uint ppsStdCount;
-	public unsafe StdVideoH264PictureParameterSet* pPpsStd;
+	public uint stdSPSCount;
+	public unsafe StdVideoH264SequenceParameterSet* pStdSPSs;
+	public uint stdPPSCount;
+	public unsafe StdVideoH264PictureParameterSet* pStdPPSs;
 	public static VkVideoDecodeH264SessionParametersAddInfoEXT New()
 	{
 		Unsafe.SkipInit(out VkVideoDecodeH264SessionParametersAddInfoEXT instance);
@@ -12962,8 +13518,8 @@ public partial struct VkVideoDecodeH264SessionParametersCreateInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public uint maxSpsStdCount;
-	public uint maxPpsStdCount;
+	public uint maxStdSPSCount;
+	public uint maxStdPPSCount;
 	public unsafe VkVideoDecodeH264SessionParametersAddInfoEXT* pParametersAddInfo;
 	public static VkVideoDecodeH264SessionParametersCreateInfoEXT New()
 	{
@@ -12979,26 +13535,12 @@ public partial struct VkVideoDecodeH264PictureInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe StdVideoDecodeH264PictureInfo* pStdPictureInfo;
-	public uint slicesCount;
-	public unsafe uint* pSlicesDataOffsets;
+	public uint sliceCount;
+	public unsafe uint* pSliceOffsets;
 	public static VkVideoDecodeH264PictureInfoEXT New()
 	{
 		Unsafe.SkipInit(out VkVideoDecodeH264PictureInfoEXT instance);
 		instance.sType = VkStructureType.VideoDecodeH264PictureInfoEXT;
-		return instance;
-	}
-}
-
-[StructLayout(LayoutKind.Sequential)]
-public partial struct VkVideoDecodeH264MvcInfoEXT
-{
-	public VkStructureType sType;
-	public unsafe void* pNext;
-	public unsafe StdVideoDecodeH264Mvc* pStdMvc;
-	public static VkVideoDecodeH264MvcInfoEXT New()
-	{
-		Unsafe.SkipInit(out VkVideoDecodeH264MvcInfoEXT instance);
-		instance.sType = VkStructureType.VideoDecodeH264MvcInfoEXT;
 		return instance;
 	}
 }
@@ -13033,10 +13575,10 @@ public partial struct StdVideoDecodeH265PictureInfo
 	public byte sps_video_parameter_set_id;
 	public byte pps_seq_parameter_set_id;
 	public byte pps_pic_parameter_set_id;
-	public byte num_short_term_ref_pic_sets;
+	public byte NumDeltaPocsOfRefRpsIdx;
 	public int PicOrderCntVal;
 	public ushort NumBitsForSTRefPicSetInSlice;
-	public byte NumDeltaPocsOfRefRpsIdx;
+	public ushort reserved;
 	public unsafe fixed byte RefPicSetStCurrBefore[8];
 	public unsafe fixed byte RefPicSetStCurrAfter[8];
 	public unsafe fixed byte RefPicSetLtCurr[8];
@@ -13047,7 +13589,6 @@ public partial struct StdVideoDecodeH265ReferenceInfoFlags
 {
 	public uint used_for_long_term_reference;
 	public uint unused_for_reference;
-	public uint is_non_existing;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -13076,7 +13617,7 @@ public partial struct VkVideoDecodeH265CapabilitiesEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public StdVideoH265Level maxLevel;
+	public StdVideoH265LevelIdc maxLevelIdc;
 	public static VkVideoDecodeH265CapabilitiesEXT New()
 	{
 		Unsafe.SkipInit(out VkVideoDecodeH265CapabilitiesEXT instance);
@@ -13090,12 +13631,12 @@ public partial struct VkVideoDecodeH265SessionParametersAddInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public uint vpsStdCount;
-	public unsafe StdVideoH265VideoParameterSet* pVpsStd;
-	public uint spsStdCount;
-	public unsafe StdVideoH265SequenceParameterSet* pSpsStd;
-	public uint ppsStdCount;
-	public unsafe StdVideoH265PictureParameterSet* pPpsStd;
+	public uint stdVPSCount;
+	public unsafe StdVideoH265VideoParameterSet* pStdVPSs;
+	public uint stdSPSCount;
+	public unsafe StdVideoH265SequenceParameterSet* pStdSPSs;
+	public uint stdPPSCount;
+	public unsafe StdVideoH265PictureParameterSet* pStdPPSs;
 	public static VkVideoDecodeH265SessionParametersAddInfoEXT New()
 	{
 		Unsafe.SkipInit(out VkVideoDecodeH265SessionParametersAddInfoEXT instance);
@@ -13109,9 +13650,9 @@ public partial struct VkVideoDecodeH265SessionParametersCreateInfoEXT
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
-	public uint maxVpsStdCount;
-	public uint maxSpsStdCount;
-	public uint maxPpsStdCount;
+	public uint maxStdVPSCount;
+	public uint maxStdSPSCount;
+	public uint maxStdPPSCount;
 	public unsafe VkVideoDecodeH265SessionParametersAddInfoEXT* pParametersAddInfo;
 	public static VkVideoDecodeH265SessionParametersCreateInfoEXT New()
 	{
@@ -13127,8 +13668,8 @@ public partial struct VkVideoDecodeH265PictureInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe StdVideoDecodeH265PictureInfo* pStdPictureInfo;
-	public uint slicesCount;
-	public unsafe uint* pSlicesDataOffsets;
+	public uint sliceCount;
+	public unsafe uint* pSliceOffsets;
 	public static VkVideoDecodeH265PictureInfoEXT New()
 	{
 		Unsafe.SkipInit(out VkVideoDecodeH265PictureInfoEXT instance);
