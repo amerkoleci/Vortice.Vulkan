@@ -784,6 +784,8 @@ public enum VkStructureType
 	AmigoProfilingSubmitInfoSEC = 1000485001,
 	PhysicalDeviceMutableDescriptorTypeFeaturesEXT = 1000351000,
 	MutableDescriptorTypeCreateInfoEXT = 1000351002,
+	PhysicalDeviceShaderCoreBuiltinsFeaturesARM = 1000497000,
+	PhysicalDeviceShaderCoreBuiltinsPropertiesARM = 1000497001,
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 	DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,

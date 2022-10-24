@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6.0;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net6.0;net7.0</TargetFrameworks>
     <Description>Vulkan low level bindings.</Description>
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
-    <VersionPrefix>1.5.20</VersionPrefix>
+    <VersionPrefix>1.5.21</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
@@ -12,6 +12,10 @@
     <None Include="..\..\LICENSE" PackagePath="" Pack="true" />
 
     <Using Include="System.Runtime.InteropServices" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+    <Compile Remove="Shims/UnscopedRefAttribute.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">

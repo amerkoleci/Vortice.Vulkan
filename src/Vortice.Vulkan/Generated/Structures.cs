@@ -10942,6 +10942,35 @@ public partial struct VkAmigoProfilingSubmitInfoSEC
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 shaderCoreBuiltins;
+	public static VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderCoreBuiltinsFeaturesARM;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint shaderCoreCount;
+	public uint shaderWarpsPerCore;
+	public static VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderCoreBuiltinsPropertiesARM;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkAccelerationStructureBuildRangeInfoKHR
 {
 	public uint primitiveCount;

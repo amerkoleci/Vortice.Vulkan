@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 230
+	/// VK_HEADER_VERSION = 231
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 230;
+	public const uint VK_HEADER_VERSION = 231;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -3330,6 +3330,18 @@ public static partial class Vulkan
 	/// VK_EXT_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_EXT_mutable_descriptor_type"
 	/// </summary>
 	public const string VK_EXT_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_EXT_mutable_descriptor_type";
+	/// <summary>
+	/// VK_ARM_shader_core_builtins = 1
+	/// </summary>
+	public const uint VK_ARM_shader_core_builtins = 1;
+	/// <summary>
+	/// VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_ARM_SHADER_CORE_BUILTINS_EXTENSION_NAME = "VK_ARM_shader_core_builtins"
+	/// </summary>
+	public const string VK_ARM_SHADER_CORE_BUILTINS_EXTENSION_NAME = "VK_ARM_shader_core_builtins";
 	/// <summary>
 	/// VK_KHR_acceleration_structure = 1
 	/// </summary>
