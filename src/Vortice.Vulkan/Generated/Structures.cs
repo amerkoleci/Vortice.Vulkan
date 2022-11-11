@@ -10451,6 +10451,92 @@ public partial struct VkSubpassFragmentDensityMapOffsetEndInfoQCOM
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkCopyMemoryIndirectCommandNV
+{
+	public ulong srcAddress;
+	public ulong dstAddress;
+	public ulong size;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkCopyMemoryToImageIndirectCommandNV
+{
+	public ulong srcAddress;
+	public uint bufferRowLength;
+	public uint bufferImageHeight;
+	public VkImageSubresourceLayers imageSubresource;
+	public VkOffset3D imageOffset;
+	public VkExtent3D imageExtent;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceCopyMemoryIndirectFeaturesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 indirectCopy;
+	public static VkPhysicalDeviceCopyMemoryIndirectFeaturesNV New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceCopyMemoryIndirectFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceCopyMemoryIndirectFeaturesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceCopyMemoryIndirectPropertiesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkQueueFlags supportedQueues;
+	public static VkPhysicalDeviceCopyMemoryIndirectPropertiesNV New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceCopyMemoryIndirectPropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceCopyMemoryIndirectPropertiesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDecompressMemoryRegionNV
+{
+	public ulong srcAddress;
+	public ulong dstAddress;
+	public ulong compressedSize;
+	public ulong decompressedSize;
+	public VkMemoryDecompressionMethodFlagsNV decompressionMethod;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceMemoryDecompressionFeaturesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 memoryDecompression;
+	public static VkPhysicalDeviceMemoryDecompressionFeaturesNV New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceMemoryDecompressionFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceMemoryDecompressionFeaturesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceMemoryDecompressionPropertiesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkMemoryDecompressionMethodFlagsNV decompressionMethods;
+	public ulong maxDecompressionIndirectCount;
+	public static VkPhysicalDeviceMemoryDecompressionPropertiesNV New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceMemoryDecompressionPropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceMemoryDecompressionPropertiesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV
 {
 	public VkStructureType sType;
@@ -10942,6 +11028,34 @@ public partial struct VkAmigoProfilingSubmitInfoSEC
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkRayTracingInvocationReorderModeNV rayTracingInvocationReorderReorderingHint;
+	public static VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceRayTracingInvocationReorderPropertiesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 rayTracingInvocationReorder;
+	public static VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceRayTracingInvocationReorderFeaturesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM
 {
 	public VkStructureType sType;
@@ -10960,6 +11074,7 @@ public partial struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM
 {
 	public VkStructureType sType;
 	public unsafe void* pNext;
+	public ulong shaderCoreMask;
 	public uint shaderCoreCount;
 	public uint shaderWarpsPerCore;
 	public static VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM New()

@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 231
+	/// VK_HEADER_VERSION = 234
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 231;
+	public const uint VK_HEADER_VERSION = 234;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -3159,6 +3159,30 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_QCOM_fragment_density_map_offset";
 	/// <summary>
+	/// VK_NV_copy_memory_indirect = 1
+	/// </summary>
+	public const uint VK_NV_copy_memory_indirect = 1;
+	/// <summary>
+	/// VK_NV_COPY_MEMORY_INDIRECT_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_NV_COPY_MEMORY_INDIRECT_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_NV_COPY_MEMORY_INDIRECT_EXTENSION_NAME = "VK_NV_copy_memory_indirect"
+	/// </summary>
+	public const string VK_NV_COPY_MEMORY_INDIRECT_EXTENSION_NAME = "VK_NV_copy_memory_indirect";
+	/// <summary>
+	/// VK_NV_memory_decompression = 1
+	/// </summary>
+	public const uint VK_NV_memory_decompression = 1;
+	/// <summary>
+	/// VK_NV_MEMORY_DECOMPRESSION_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_NV_MEMORY_DECOMPRESSION_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_NV_MEMORY_DECOMPRESSION_EXTENSION_NAME = "VK_NV_memory_decompression"
+	/// </summary>
+	public const string VK_NV_MEMORY_DECOMPRESSION_EXTENSION_NAME = "VK_NV_memory_decompression";
+	/// <summary>
 	/// VK_NV_linear_color_attachment = 1
 	/// </summary>
 	public const uint VK_NV_linear_color_attachment = 1;
@@ -3319,6 +3343,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_SEC_AMIGO_PROFILING_EXTENSION_NAME = "VK_SEC_amigo_profiling";
 	/// <summary>
+	/// VK_NV_ray_tracing_invocation_reorder = 1
+	/// </summary>
+	public const uint VK_NV_ray_tracing_invocation_reorder = 1;
+	/// <summary>
+	/// VK_NV_RAY_TRACING_INVOCATION_REORDER_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_NV_RAY_TRACING_INVOCATION_REORDER_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_NV_RAY_TRACING_INVOCATION_REORDER_EXTENSION_NAME = "VK_NV_ray_tracing_invocation_reorder"
+	/// </summary>
+	public const string VK_NV_RAY_TRACING_INVOCATION_REORDER_EXTENSION_NAME = "VK_NV_ray_tracing_invocation_reorder";
+	/// <summary>
 	/// VK_EXT_mutable_descriptor_type = 1
 	/// </summary>
 	public const uint VK_EXT_mutable_descriptor_type = 1;
@@ -3335,9 +3371,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_ARM_shader_core_builtins = 1;
 	/// <summary>
-	/// VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 1
+	/// VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 2
 	/// </summary>
-	public const uint VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 1;
+	public const uint VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_ARM_SHADER_CORE_BUILTINS_EXTENSION_NAME = "VK_ARM_shader_core_builtins"
 	/// </summary>

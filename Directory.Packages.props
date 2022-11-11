@@ -22,9 +22,9 @@
     
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" />
 
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
     <PackageVersion Include="NUnit" Version="3.13.3" />
-    <PackageVersion Include="NUnit3TestAdapter" Version="4.2.1" />
+    <PackageVersion Include="NUnit3TestAdapter" Version="4.3.0" />
 
     <PackageVersion Include="CppAst" Version="0.8.0" />
     <PackageVersion Include="Ultz.Native.GLFW" Version="3.3.3.1" />

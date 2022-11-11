@@ -753,6 +753,10 @@ public enum VkStructureType
 	PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM = 1000425000,
 	PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM = 1000425001,
 	SubpassFragmentDensityMapOffsetEndInfoQCOM = 1000425002,
+	PhysicalDeviceCopyMemoryIndirectFeaturesNV = 1000426000,
+	PhysicalDeviceCopyMemoryIndirectPropertiesNV = 1000426001,
+	PhysicalDeviceMemoryDecompressionFeaturesNV = 1000427000,
+	PhysicalDeviceMemoryDecompressionPropertiesNV = 1000427001,
 	PhysicalDeviceLinearColorAttachmentFeaturesNV = 1000430000,
 	PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT = 1000437000,
 	PhysicalDeviceImageProcessingFeaturesQCOM = 1000440000,
@@ -782,6 +786,8 @@ public enum VkStructureType
 	TilePropertiesQCOM = 1000484001,
 	PhysicalDeviceAmigoProfilingFeaturesSEC = 1000485000,
 	AmigoProfilingSubmitInfoSEC = 1000485001,
+	PhysicalDeviceRayTracingInvocationReorderFeaturesNV = 1000490000,
+	PhysicalDeviceRayTracingInvocationReorderPropertiesNV = 1000490001,
 	PhysicalDeviceMutableDescriptorTypeFeaturesEXT = 1000351000,
 	MutableDescriptorTypeCreateInfoEXT = 1000351002,
 	PhysicalDeviceShaderCoreBuiltinsFeaturesARM = 1000497000,
@@ -3713,6 +3719,12 @@ public enum VkOpticalFlowExecuteFlagsNV
 	DisableTemporalHints = 1,
 }
 
+public enum VkRayTracingInvocationReorderModeNV
+{
+	ModeNone = 0,
+	ModeReorder = 1,
+}
+
 public enum VkBuildAccelerationStructureModeKHR
 {
 	Build = 0,
@@ -4587,6 +4599,12 @@ public enum VkAccelerationStructureMotionInstanceFlagsNV
 }
 
 [Flags]
+public enum VkMemoryDecompressionMethodFlagsNV
+{
+	None = 0,
+}
+
+[Flags]
 public enum VkAndroidSurfaceCreateFlagsKHR
 {
 	None = 0,
@@ -4873,4 +4891,10 @@ public enum VkFormatFeatureFlags2 : ulong
 	OpticalFlowImageNV = 1099511627776,
 	OpticalFlowVectorNV = 2199023255552,
 	OpticalFlowCostNV = 4398046511104,
+}
+
+[Flags]
+public enum VkMemoryDecompressionMethodFlagBitsNV : ulong
+{
+	VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV = 1,
 }

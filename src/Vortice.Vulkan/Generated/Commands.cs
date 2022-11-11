@@ -2905,6 +2905,30 @@ unsafe partial class Vulkan
 		vkGetDescriptorSetHostMappingVALVE_ptr(device, descriptorSet, ppData);
 	}
 
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, ulong, int, uint, void> vkCmdCopyMemoryIndirectNV_ptr;
+	public static void vkCmdCopyMemoryIndirectNV(VkCommandBuffer commandBuffer, ulong copyBufferAddress, int copyCount, uint stride)
+	{
+		vkCmdCopyMemoryIndirectNV_ptr(commandBuffer, copyBufferAddress, copyCount, stride);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, ulong, int, uint, VkImage, VkImageLayout, VkImageSubresourceLayers*, void> vkCmdCopyMemoryToImageIndirectNV_ptr;
+	public static void vkCmdCopyMemoryToImageIndirectNV(VkCommandBuffer commandBuffer, ulong copyBufferAddress, int copyCount, uint stride, VkImage dstImage, VkImageLayout dstImageLayout, VkImageSubresourceLayers* imageSubresources)
+	{
+		vkCmdCopyMemoryToImageIndirectNV_ptr(commandBuffer, copyBufferAddress, copyCount, stride, dstImage, dstImageLayout, imageSubresources);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkDecompressMemoryRegionNV*, void> vkCmdDecompressMemoryNV_ptr;
+	public static void vkCmdDecompressMemoryNV(VkCommandBuffer commandBuffer, int decompressRegionCount, VkDecompressMemoryRegionNV* decompressMemoryRegions)
+	{
+		vkCmdDecompressMemoryNV_ptr(commandBuffer, decompressRegionCount, decompressMemoryRegions);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, ulong, ulong, uint, void> vkCmdDecompressMemoryIndirectCountNV_ptr;
+	public static void vkCmdDecompressMemoryIndirectCountNV(VkCommandBuffer commandBuffer, ulong indirectCommandsAddress, ulong indirectCommandsCountAddress, uint stride)
+	{
+		vkCmdDecompressMemoryIndirectCountNV_ptr(commandBuffer, indirectCommandsAddress, indirectCommandsCountAddress, stride);
+	}
+
 	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkTessellationDomainOrigin, void> vkCmdSetTessellationDomainOriginEXT_ptr;
 	public static void vkCmdSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin)
 	{
@@ -3918,6 +3942,10 @@ unsafe partial class Vulkan
 		vkSetDeviceMemoryPriorityEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, float, void>) load(context, nameof(vkSetDeviceMemoryPriorityEXT));
 		vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetBindingReferenceVALVE*, VkDescriptorSetLayoutHostMappingInfoVALVE*, void>) load(context, nameof(vkGetDescriptorSetLayoutHostMappingInfoVALVE));
 		vkGetDescriptorSetHostMappingVALVE_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSet, void*, void>) load(context, nameof(vkGetDescriptorSetHostMappingVALVE));
+		vkCmdCopyMemoryIndirectNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, ulong, int, uint, void>) load(context, nameof(vkCmdCopyMemoryIndirectNV));
+		vkCmdCopyMemoryToImageIndirectNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, ulong, int, uint, VkImage, VkImageLayout, VkImageSubresourceLayers*, void>) load(context, nameof(vkCmdCopyMemoryToImageIndirectNV));
+		vkCmdDecompressMemoryNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkDecompressMemoryRegionNV*, void>) load(context, nameof(vkCmdDecompressMemoryNV));
+		vkCmdDecompressMemoryIndirectCountNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, ulong, ulong, uint, void>) load(context, nameof(vkCmdDecompressMemoryIndirectCountNV));
 		vkCmdSetTessellationDomainOriginEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkTessellationDomainOrigin, void>) load(context, nameof(vkCmdSetTessellationDomainOriginEXT));
 		vkCmdSetDepthClampEnableEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthClampEnableEXT));
 		vkCmdSetPolygonModeEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPolygonMode, void>) load(context, nameof(vkCmdSetPolygonModeEXT));
