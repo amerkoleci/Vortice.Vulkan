@@ -2689,6 +2689,72 @@ unsafe partial class Vulkan
 		vkGetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, data);
 	}
 
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayout, ulong*, void> vkGetDescriptorSetLayoutSizeEXT_ptr;
+	public static void vkGetDescriptorSetLayoutSizeEXT(VkDevice device, VkDescriptorSetLayout layout, ulong* layoutSizeInBytes)
+	{
+		vkGetDescriptorSetLayoutSizeEXT_ptr(device, layout, layoutSizeInBytes);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayout, uint, ulong*, void> vkGetDescriptorSetLayoutBindingOffsetEXT_ptr;
+	public static void vkGetDescriptorSetLayoutBindingOffsetEXT(VkDevice device, VkDescriptorSetLayout layout, uint binding, ulong* offset)
+	{
+		vkGetDescriptorSetLayoutBindingOffsetEXT_ptr(device, layout, binding, offset);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorGetInfoEXT*, nuint, void*, void> vkGetDescriptorEXT_ptr;
+	public static void vkGetDescriptorEXT(VkDevice device, VkDescriptorGetInfoEXT* descriptorInfo, nuint dataSize, void* descriptor)
+	{
+		vkGetDescriptorEXT_ptr(device, descriptorInfo, dataSize, descriptor);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkDescriptorBufferBindingInfoEXT*, void> vkCmdBindDescriptorBuffersEXT_ptr;
+	public static void vkCmdBindDescriptorBuffersEXT(VkCommandBuffer commandBuffer, int bufferCount, VkDescriptorBufferBindingInfoEXT* bindingInfos)
+	{
+		vkCmdBindDescriptorBuffersEXT_ptr(commandBuffer, bufferCount, bindingInfos);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, int, uint*, ulong*, void> vkCmdSetDescriptorBufferOffsetsEXT_ptr;
+	public static void vkCmdSetDescriptorBufferOffsetsEXT(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, int setCount, uint* bufferIndices, ulong* offsets)
+	{
+		vkCmdSetDescriptorBufferOffsetsEXT_ptr(commandBuffer, pipelineBindPoint, layout, firstSet, setCount, bufferIndices, offsets);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, void> vkCmdBindDescriptorBufferEmbeddedSamplersEXT_ptr;
+	public static void vkCmdBindDescriptorBufferEmbeddedSamplersEXT(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set)
+	{
+		vkCmdBindDescriptorBufferEmbeddedSamplersEXT_ptr(commandBuffer, pipelineBindPoint, layout, set);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkBufferCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetBufferOpaqueCaptureDescriptorDataEXT_ptr;
+	public static VkResult vkGetBufferOpaqueCaptureDescriptorDataEXT(VkDevice device, VkBufferCaptureDescriptorDataInfoEXT* info, void* data)
+	{
+		return vkGetBufferOpaqueCaptureDescriptorDataEXT_ptr(device, info, data);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkImageCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetImageOpaqueCaptureDescriptorDataEXT_ptr;
+	public static VkResult vkGetImageOpaqueCaptureDescriptorDataEXT(VkDevice device, VkImageCaptureDescriptorDataInfoEXT* info, void* data)
+	{
+		return vkGetImageOpaqueCaptureDescriptorDataEXT_ptr(device, info, data);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkImageViewCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetImageViewOpaqueCaptureDescriptorDataEXT_ptr;
+	public static VkResult vkGetImageViewOpaqueCaptureDescriptorDataEXT(VkDevice device, VkImageViewCaptureDescriptorDataInfoEXT* info, void* data)
+	{
+		return vkGetImageViewOpaqueCaptureDescriptorDataEXT_ptr(device, info, data);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkSamplerCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetSamplerOpaqueCaptureDescriptorDataEXT_ptr;
+	public static VkResult vkGetSamplerOpaqueCaptureDescriptorDataEXT(VkDevice device, VkSamplerCaptureDescriptorDataInfoEXT* info, void* data)
+	{
+		return vkGetSamplerOpaqueCaptureDescriptorDataEXT_ptr(device, info, data);
+	}
+
+	private static delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT_ptr;
+	public static VkResult vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT(VkDevice device, VkAccelerationStructureCaptureDescriptorDataInfoEXT* info, void* data)
+	{
+		return vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT_ptr(device, info, data);
+	}
+
 	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void> vkCmdSetFragmentShadingRateEnumNV_ptr;
 	public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR* combinerOps)
 	{
@@ -3908,6 +3974,17 @@ unsafe partial class Vulkan
 		vkDestroyPrivateDataSlotEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPrivateDataSlotEXT));
 		vkSetPrivateDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong, VkResult>) load(context, nameof(vkSetPrivateDataEXT));
 		vkGetPrivateDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void>) load(context, nameof(vkGetPrivateDataEXT));
+		vkGetDescriptorSetLayoutSizeEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayout, ulong*, void>) load(context, nameof(vkGetDescriptorSetLayoutSizeEXT));
+		vkGetDescriptorSetLayoutBindingOffsetEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorSetLayout, uint, ulong*, void>) load(context, nameof(vkGetDescriptorSetLayoutBindingOffsetEXT));
+		vkGetDescriptorEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDescriptorGetInfoEXT*, nuint, void*, void>) load(context, nameof(vkGetDescriptorEXT));
+		vkCmdBindDescriptorBuffersEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkDescriptorBufferBindingInfoEXT*, void>) load(context, nameof(vkCmdBindDescriptorBuffersEXT));
+		vkCmdSetDescriptorBufferOffsetsEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, int, uint*, ulong*, void>) load(context, nameof(vkCmdSetDescriptorBufferOffsetsEXT));
+		vkCmdBindDescriptorBufferEmbeddedSamplersEXT_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, void>) load(context, nameof(vkCmdBindDescriptorBufferEmbeddedSamplersEXT));
+		vkGetBufferOpaqueCaptureDescriptorDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkBufferCaptureDescriptorDataInfoEXT*, void*, VkResult>) load(context, nameof(vkGetBufferOpaqueCaptureDescriptorDataEXT));
+		vkGetImageOpaqueCaptureDescriptorDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageCaptureDescriptorDataInfoEXT*, void*, VkResult>) load(context, nameof(vkGetImageOpaqueCaptureDescriptorDataEXT));
+		vkGetImageViewOpaqueCaptureDescriptorDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImageViewCaptureDescriptorDataInfoEXT*, void*, VkResult>) load(context, nameof(vkGetImageViewOpaqueCaptureDescriptorDataEXT));
+		vkGetSamplerOpaqueCaptureDescriptorDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSamplerCaptureDescriptorDataInfoEXT*, void*, VkResult>) load(context, nameof(vkGetSamplerOpaqueCaptureDescriptorDataEXT));
+		vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkAccelerationStructureCaptureDescriptorDataInfoEXT*, void*, VkResult>) load(context, nameof(vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT));
 		vkCmdSetFragmentShadingRateEnumNV_ptr = (delegate* unmanaged[Stdcall]<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateEnumNV));
 		vkGetImageSubresourceLayout2EXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkImageSubresource2EXT*, VkSubresourceLayout2EXT*, void>) load(context, nameof(vkGetImageSubresourceLayout2EXT));
 		vkGetDeviceFaultInfoEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkDeviceFaultCountsEXT*, VkDeviceFaultInfoEXT*, VkResult>) load(context, nameof(vkGetDeviceFaultInfoEXT));

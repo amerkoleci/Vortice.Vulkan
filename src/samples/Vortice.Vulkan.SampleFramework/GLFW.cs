@@ -331,7 +331,7 @@ public readonly partial struct GLFWmonitor : IEquatable<GLFWmonitor>
     public GLFWmonitor(nint handle) { Handle = handle; }
     public nint Handle { get; }
     public bool IsNull => Handle == 0;
-    public static VkDevice Null => new(0);
+    public static GLFWmonitor Null => new(0);
     public static implicit operator GLFWmonitor(nint handle) => new(handle);
     public static bool operator ==(GLFWmonitor left, GLFWmonitor right) => left.Handle == right.Handle;
     public static bool operator !=(GLFWmonitor left, GLFWmonitor right) => left.Handle != right.Handle;
@@ -351,7 +351,7 @@ public readonly partial struct GLFWwindow : IEquatable<GLFWwindow>
     public GLFWwindow(nint handle) { Handle = handle; }
     public nint Handle { get; }
     public bool IsNull => Handle == 0;
-    public static VkDevice Null => new(0);
+    public static GLFWwindow Null => new(0);
     public static implicit operator GLFWwindow(nint handle) => new(handle);
     public static bool operator ==(GLFWwindow left, GLFWwindow right) => left.Handle == right.Handle;
     public static bool operator !=(GLFWwindow left, GLFWwindow right) => left.Handle != right.Handle;

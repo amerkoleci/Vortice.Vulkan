@@ -139,6 +139,9 @@ public static partial class CsCodeGenerator
         { "VK_OPTICAL_FLOW_GRID_SIZE_2X2_BIT_NV", "Size2x2" },
         { "VK_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_NV", "Size4x4" },
         { "VK_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_NV", "Size8x8" },
+
+        // VkMemoryDecompressionMethodFlagBitsNV
+        { "VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV", "GDeflate_1_0" }
     };
 
     private static readonly Dictionary<string, string> s_knownEnumPrefixes = new()

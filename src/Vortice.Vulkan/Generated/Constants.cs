@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 234
+	/// VK_HEADER_VERSION = 235
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 234;
+	public const uint VK_HEADER_VERSION = 235;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -2662,6 +2662,18 @@ public static partial class Vulkan
 	/// VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops"
 	/// </summary>
 	public const string VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops";
+	/// <summary>
+	/// VK_EXT_descriptor_buffer = 1
+	/// </summary>
+	public const uint VK_EXT_descriptor_buffer = 1;
+	/// <summary>
+	/// VK_EXT_DESCRIPTOR_BUFFER_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_DESCRIPTOR_BUFFER_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_DESCRIPTOR_BUFFER_EXTENSION_NAME = "VK_EXT_descriptor_buffer"
+	/// </summary>
+	public const string VK_EXT_DESCRIPTOR_BUFFER_EXTENSION_NAME = "VK_EXT_descriptor_buffer";
 	/// <summary>
 	/// VK_EXT_graphics_pipeline_library = 1
 	/// </summary>

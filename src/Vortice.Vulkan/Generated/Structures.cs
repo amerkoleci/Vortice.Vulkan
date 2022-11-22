@@ -9125,6 +9125,253 @@ public partial struct VkDeviceDiagnosticsConfigCreateInfoNV
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceDescriptorBufferPropertiesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 combinedImageSamplerDescriptorSingleArray;
+	public VkBool32 bufferlessPushDescriptors;
+	public VkBool32 allowSamplerImageViewPostSubmitCreation;
+	public ulong descriptorBufferOffsetAlignment;
+	public uint maxDescriptorBufferBindings;
+	public uint maxResourceDescriptorBufferBindings;
+	public uint maxSamplerDescriptorBufferBindings;
+	public uint maxEmbeddedImmutableSamplerBindings;
+	public uint maxEmbeddedImmutableSamplers;
+	public nuint bufferCaptureReplayDescriptorDataSize;
+	public nuint imageCaptureReplayDescriptorDataSize;
+	public nuint imageViewCaptureReplayDescriptorDataSize;
+	public nuint samplerCaptureReplayDescriptorDataSize;
+	public nuint accelerationStructureCaptureReplayDescriptorDataSize;
+	public nuint samplerDescriptorSize;
+	public nuint combinedImageSamplerDescriptorSize;
+	public nuint sampledImageDescriptorSize;
+	public nuint storageImageDescriptorSize;
+	public nuint uniformTexelBufferDescriptorSize;
+	public nuint robustUniformTexelBufferDescriptorSize;
+	public nuint storageTexelBufferDescriptorSize;
+	public nuint robustStorageTexelBufferDescriptorSize;
+	public nuint uniformBufferDescriptorSize;
+	public nuint robustUniformBufferDescriptorSize;
+	public nuint storageBufferDescriptorSize;
+	public nuint robustStorageBufferDescriptorSize;
+	public nuint inputAttachmentDescriptorSize;
+	public nuint accelerationStructureDescriptorSize;
+	public ulong maxSamplerDescriptorBufferRange;
+	public ulong maxResourceDescriptorBufferRange;
+	public ulong samplerDescriptorBufferAddressSpaceSize;
+	public ulong resourceDescriptorBufferAddressSpaceSize;
+	public ulong descriptorBufferAddressSpaceSize;
+	public static VkPhysicalDeviceDescriptorBufferPropertiesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceDescriptorBufferPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceDescriptorBufferPropertiesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public nuint combinedImageSamplerDensityMapDescriptorSize;
+	public static VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceDescriptorBufferFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 descriptorBuffer;
+	public VkBool32 descriptorBufferCaptureReplay;
+	public VkBool32 descriptorBufferImageLayoutIgnored;
+	public VkBool32 descriptorBufferPushDescriptors;
+	public static VkPhysicalDeviceDescriptorBufferFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceDescriptorBufferFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceDescriptorBufferFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDescriptorAddressInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public ulong address;
+	public ulong range;
+	public VkFormat format;
+	public static VkDescriptorAddressInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkDescriptorAddressInfoEXT instance);
+		instance.sType = VkStructureType.DescriptorAddressInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDescriptorBufferBindingInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public ulong address;
+	public VkBufferUsageFlags usage;
+	public static VkDescriptorBufferBindingInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkDescriptorBufferBindingInfoEXT instance);
+		instance.sType = VkStructureType.DescriptorBufferBindingInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDescriptorBufferBindingPushDescriptorBufferHandleEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBuffer buffer;
+	public static VkDescriptorBufferBindingPushDescriptorBufferHandleEXT New()
+	{
+		Unsafe.SkipInit(out VkDescriptorBufferBindingPushDescriptorBufferHandleEXT instance);
+		instance.sType = VkStructureType.DescriptorBufferBindingPushDescriptorBufferHandleEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Explicit)]
+public partial struct VkDescriptorDataEXT
+{
+	[FieldOffset(0)]
+	public unsafe VkSampler* pSampler;
+	[FieldOffset(0)]
+	public unsafe VkDescriptorImageInfo* pCombinedImageSampler;
+	[FieldOffset(0)]
+	public unsafe VkDescriptorImageInfo* pInputAttachmentImage;
+	[FieldOffset(0)]
+	public unsafe VkDescriptorImageInfo* pSampledImage;
+	[FieldOffset(0)]
+	public unsafe VkDescriptorImageInfo* pStorageImage;
+	[FieldOffset(0)]
+	public unsafe VkDescriptorAddressInfoEXT* pUniformTexelBuffer;
+	[FieldOffset(0)]
+	public unsafe VkDescriptorAddressInfoEXT* pStorageTexelBuffer;
+	[FieldOffset(0)]
+	public unsafe VkDescriptorAddressInfoEXT* pUniformBuffer;
+	[FieldOffset(0)]
+	public unsafe VkDescriptorAddressInfoEXT* pStorageBuffer;
+	[FieldOffset(0)]
+	public ulong accelerationStructure;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDescriptorGetInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkDescriptorType type;
+	public VkDescriptorDataEXT data;
+	public static VkDescriptorGetInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkDescriptorGetInfoEXT instance);
+		instance.sType = VkStructureType.DescriptorGetInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkBufferCaptureDescriptorDataInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBuffer buffer;
+	public static VkBufferCaptureDescriptorDataInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkBufferCaptureDescriptorDataInfoEXT instance);
+		instance.sType = VkStructureType.BufferCaptureDescriptorDataInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkImageCaptureDescriptorDataInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkImage image;
+	public static VkImageCaptureDescriptorDataInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkImageCaptureDescriptorDataInfoEXT instance);
+		instance.sType = VkStructureType.ImageCaptureDescriptorDataInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkImageViewCaptureDescriptorDataInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkImageView imageView;
+	public static VkImageViewCaptureDescriptorDataInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkImageViewCaptureDescriptorDataInfoEXT instance);
+		instance.sType = VkStructureType.ImageViewCaptureDescriptorDataInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkSamplerCaptureDescriptorDataInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkSampler sampler;
+	public static VkSamplerCaptureDescriptorDataInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkSamplerCaptureDescriptorDataInfoEXT instance);
+		instance.sType = VkStructureType.SamplerCaptureDescriptorDataInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkOpaqueCaptureDescriptorDataCreateInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public unsafe void* opaqueCaptureDescriptorData;
+	public static VkOpaqueCaptureDescriptorDataCreateInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkOpaqueCaptureDescriptorDataCreateInfoEXT instance);
+		instance.sType = VkStructureType.OpaqueCaptureDescriptorDataCreateInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkAccelerationStructureCaptureDescriptorDataInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkAccelerationStructureKHR accelerationStructure;
+	public VkAccelerationStructureKHR accelerationStructureNV;
+	public static VkAccelerationStructureCaptureDescriptorDataInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkAccelerationStructureCaptureDescriptorDataInfoEXT instance);
+		instance.sType = VkStructureType.AccelerationStructureCaptureDescriptorDataInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT
 {
 	public VkStructureType sType;
