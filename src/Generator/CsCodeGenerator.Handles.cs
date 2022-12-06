@@ -48,6 +48,7 @@ public static partial class CsCodeGenerator
                 writer.WriteLine($"public {csName}({handleType} handle) {{ Handle = handle; }}");
                 writer.WriteLine($"public {handleType} Handle {{ get; }}");
                 writer.WriteLine($"public bool IsNull => Handle == 0;");
+                writer.WriteLine($"public bool IsNotNull => Handle != 0;");
 
                 writer.WriteLine($"public static {csName} Null => new({nullValue});");
                 writer.WriteLine($"public static implicit operator {csName}({handleType} handle) => new(handle);");

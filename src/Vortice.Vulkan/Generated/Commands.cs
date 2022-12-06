@@ -2773,18 +2773,6 @@ unsafe partial class Vulkan
 		return vkGetDeviceFaultInfoEXT_ptr(device, faultCounts, faultInfo);
 	}
 
-	private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkResult> vkAcquireWinrtDisplayNV_ptr;
-	public static VkResult vkAcquireWinrtDisplayNV(VkPhysicalDevice physicalDevice, VkDisplayKHR display)
-	{
-		return vkAcquireWinrtDisplayNV_ptr(physicalDevice, display);
-	}
-
-	private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, VkDisplayKHR*, VkResult> vkGetWinrtDisplayNV_ptr;
-	public static VkResult vkGetWinrtDisplayNV(VkPhysicalDevice physicalDevice, uint deviceRelativeId, VkDisplayKHR* display)
-	{
-		return vkGetWinrtDisplayNV_ptr(physicalDevice, deviceRelativeId, display);
-	}
-
 	private static delegate* unmanaged[Stdcall]<VkCommandBuffer, int, VkVertexInputBindingDescription2EXT*, int, VkVertexInputAttributeDescription2EXT*, void> vkCmdSetVertexInputEXT_ptr;
 	public static void vkCmdSetVertexInputEXT(VkCommandBuffer commandBuffer, int vertexBindingDescriptionCount, VkVertexInputBindingDescription2EXT* vertexBindingDescriptions, int vertexAttributeDescriptionCount, VkVertexInputAttributeDescription2EXT* vertexAttributeDescriptions)
 	{
@@ -3601,8 +3589,6 @@ unsafe partial class Vulkan
 		vkCreateHeadlessSurfaceEXT_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateHeadlessSurfaceEXT));
 		vkAcquireDrmDisplayEXT_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, int, VkDisplayKHR, VkResult>) load(context, nameof(vkAcquireDrmDisplayEXT));
 		vkGetDrmDisplayEXT_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, int, uint, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetDrmDisplayEXT));
-		vkAcquireWinrtDisplayNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkDisplayKHR, VkResult>) load(context, nameof(vkAcquireWinrtDisplayNV));
-		vkGetWinrtDisplayNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetWinrtDisplayNV));
 		vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkOpticalFlowImageFormatInfoNV*, int*, VkOpticalFlowImageFormatPropertiesNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceOpticalFlowImageFormatsNV));
 		vkCreateAndroidSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateAndroidSurfaceKHR));
 		vkCreateIOSSurfaceMVK_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateIOSSurfaceMVK));

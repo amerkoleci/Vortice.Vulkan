@@ -395,7 +395,7 @@ public enum VkStructureType
 	Win32KeyedMutexAcquireReleaseInfoKHR = 1000075000,
 	ImportSemaphoreWin32HandleInfoKHR = 1000078000,
 	ExportSemaphoreWin32HandleInfoKHR = 1000078001,
-	D3d12FenceSubmitInfoKHR = 1000078002,
+	D3D12FenceSubmitInfoKHR = 1000078002,
 	SemaphoreGetWin32HandleInfoKHR = 1000078003,
 	ImportSemaphoreFdInfoKHR = 1000079000,
 	SemaphoreGetFdInfoKHR = 1000079001,
@@ -781,6 +781,8 @@ public enum VkStructureType
 	RenderPassCreationControlEXT = 1000458001,
 	RenderPassCreationFeedbackCreateInfoEXT = 1000458002,
 	RenderPassSubpassFeedbackCreateInfoEXT = 1000458003,
+	DirectDriverLoadingInfoLUNARG = 1000459000,
+	DirectDriverLoadingListLUNARG = 1000459001,
 	PhysicalDeviceShaderModuleIdentifierFeaturesEXT = 1000462000,
 	PhysicalDeviceShaderModuleIdentifierPropertiesEXT = 1000462001,
 	PipelineShaderStageModuleIdentifierCreateInfoEXT = 1000462002,
@@ -799,6 +801,7 @@ public enum VkStructureType
 	TilePropertiesQCOM = 1000484001,
 	PhysicalDeviceAmigoProfilingFeaturesSEC = 1000485000,
 	AmigoProfilingSubmitInfoSEC = 1000485001,
+	PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM = 1000488000,
 	PhysicalDeviceRayTracingInvocationReorderFeaturesNV = 1000490000,
 	PhysicalDeviceRayTracingInvocationReorderPropertiesNV = 1000490001,
 	PhysicalDeviceMutableDescriptorTypeFeaturesEXT = 1000351000,
@@ -2592,8 +2595,8 @@ public enum VkExternalMemoryHandleTypeFlags
 	OpaqueWin32Kmt = 4,
 	D3d11Texture = 8,
 	D3d11TextureKmt = 16,
-	D3d12Heap = 32,
-	D3d12Resource = 64,
+	D3D12Heap = 32,
+	D3D12Resource = 64,
 	DmaBufEXT = 512,
 	AndroidHardwareBufferAndroid = 1024,
 	HostAllocationEXT = 128,
@@ -2605,8 +2608,8 @@ public enum VkExternalMemoryHandleTypeFlags
 	OpaqueWin32KmtKHR = OpaqueWin32Kmt,
 	D3d11TextureKHR = D3d11Texture,
 	D3d11TextureKmtKHR = D3d11TextureKmt,
-	D3d12HeapKHR = D3d12Heap,
-	D3d12ResourceKHR = D3d12Resource,
+	D3D12HeapKHR = D3D12Heap,
+	D3D12ResourceKHR = D3D12Resource,
 }
 
 [Flags]
@@ -2668,14 +2671,14 @@ public enum VkExternalSemaphoreHandleTypeFlags
 	OpaqueFd = 1,
 	OpaqueWin32 = 2,
 	OpaqueWin32Kmt = 4,
-	D3d12Fence = 8,
+	D3D12Fence = 8,
 	SyncFd = 16,
 	ZirconEventFUCHSIA = 128,
-	D3d11Fence = D3d12Fence,
+	D3d11Fence = D3D12Fence,
 	OpaqueFdKHR = OpaqueFd,
 	OpaqueWin32KHR = OpaqueWin32,
 	OpaqueWin32KmtKHR = OpaqueWin32Kmt,
-	D3d12FenceKHR = D3d12Fence,
+	D3D12FenceKHR = D3D12Fence,
 	SyncFdKHR = SyncFd,
 }
 
@@ -3679,6 +3682,12 @@ public enum VkSubpassMergeStatusEXT
 	NotMergedResolveAttachmentReuse = 11,
 	NotMergedSingleSubpass = 12,
 	NotMergedUnspecified = 13,
+}
+
+public enum VkDirectDriverLoadingModeLUNARG
+{
+	Exclusive = 0,
+	Include = 1,
 }
 
 public enum VkOpticalFlowPerformanceLevelNV

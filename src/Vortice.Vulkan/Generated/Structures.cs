@@ -11010,6 +11010,41 @@ public partial struct VkRenderPassSubpassFeedbackCreateInfoEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkDirectDriverLoadingInfoLUNARG
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkDirectDriverLoadingModeLUNARG flags;
+	#if NET6_0_OR_GREATER
+	public unsafe delegate* unmanaged<VkInstance, byte*, IntPtr> pfnGetInstanceProcAddr;
+	#else
+	public IntPtr pfnGetInstanceProcAddr;
+	#endif
+	public static VkDirectDriverLoadingInfoLUNARG New()
+	{
+		Unsafe.SkipInit(out VkDirectDriverLoadingInfoLUNARG instance);
+		instance.sType = VkStructureType.DirectDriverLoadingInfoLUNARG;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDirectDriverLoadingListLUNARG
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkDirectDriverLoadingModeLUNARG mode;
+	public uint driverCount;
+	public unsafe VkDirectDriverLoadingInfoLUNARG* pDrivers;
+	public static VkDirectDriverLoadingListLUNARG New()
+	{
+		Unsafe.SkipInit(out VkDirectDriverLoadingListLUNARG instance);
+		instance.sType = VkStructureType.DirectDriverLoadingListLUNARG;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT
 {
 	public VkStructureType sType;
@@ -11270,6 +11305,20 @@ public partial struct VkAmigoProfilingSubmitInfoSEC
 	{
 		Unsafe.SkipInit(out VkAmigoProfilingSubmitInfoSEC instance);
 		instance.sType = VkStructureType.AmigoProfilingSubmitInfoSEC;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 multiviewPerViewViewports;
+	public static VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM instance);
+		instance.sType = VkStructureType.PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM;
 		return instance;
 	}
 }
@@ -14059,8 +14108,8 @@ public partial struct VkVideoDecodeH265PictureInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public unsafe StdVideoDecodeH265PictureInfo* pStdPictureInfo;
-	public uint sliceCount;
-	public unsafe uint* pSliceOffsets;
+	public uint sliceSegmentCount;
+	public unsafe uint* pSliceSegmentOffsets;
 	public static VkVideoDecodeH265PictureInfoEXT New()
 	{
 		Unsafe.SkipInit(out VkVideoDecodeH265PictureInfoEXT instance);

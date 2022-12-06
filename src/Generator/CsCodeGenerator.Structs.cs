@@ -250,6 +250,10 @@ public static partial class CsCodeGenerator
             {
                 csFieldType = "IntPtr";
             }
+            else if (csFieldType == "VkDirectDriverLoadingFlagsLUNARG")
+            {
+                csFieldType = "VkDirectDriverLoadingModeLUNARG";
+            }
 
             string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
             if (csFieldType.EndsWith('*'))

@@ -68,7 +68,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             applicationVersion = new VkVersion(1, 0, 0),
             pEngineName = s_EngineName,
             engineVersion = new VkVersion(1, 0, 0),
-            apiVersion = VK_HEADER_VERSION_COMPLETE
+            apiVersion = VkVersion.Version_1_2
         };
 
         using VkStringArray vkLayerNames = new(instanceLayers);
@@ -196,79 +196,83 @@ public unsafe sealed class GraphicsDevice : IDisposable
             VK_KHR_SWAPCHAIN_EXTENSION_NAME
         };
 
-        VkPhysicalDeviceVulkan11Features features_1_1 = new VkPhysicalDeviceVulkan11Features
-        {
-            sType = VkStructureType.PhysicalDeviceVulkan11Features
-        };
-
-        VkPhysicalDeviceVulkan12Features features_1_2 = new VkPhysicalDeviceVulkan12Features
-        {
-            sType = VkStructureType.PhysicalDeviceVulkan12Features
-        };
-
-        VkPhysicalDeviceFeatures2 deviceFeatures2 = new VkPhysicalDeviceFeatures2
+        const bool useNewFeatures = false;
+        VkPhysicalDeviceFeatures2 deviceFeatures2 = new()
         {
             sType = VkStructureType.PhysicalDeviceFeatures2
+
         };
-
-        deviceFeatures2.pNext = &features_1_1;
-        features_1_1.pNext = &features_1_2;
-
-        void** features_chain = &features_1_2.pNext;
-
-        VkPhysicalDevice8BitStorageFeatures storage_8bit_features = default;
-        if (properties.apiVersion <= VkVersion.Version_1_2)
+        if (useNewFeatures)
         {
-            if (CheckDeviceExtensionSupport(VK_KHR_8BIT_STORAGE_EXTENSION_NAME, availableDeviceExtensions))
+            VkPhysicalDeviceVulkan11Features features_1_1 = new()
             {
-                enabledExtensions.Add(VK_KHR_8BIT_STORAGE_EXTENSION_NAME);
-                //storage_8bit_features.sType = VkStructureType.PhysicalDevice8bitStorageFeatures;
-                *features_chain = &storage_8bit_features;
-                features_chain = &storage_8bit_features.pNext;
+                sType = VkStructureType.PhysicalDeviceVulkan11Features
+            };
+
+            VkPhysicalDeviceVulkan12Features features_1_2 = new()
+            {
+                sType = VkStructureType.PhysicalDeviceVulkan12Features
+            };
+
+            deviceFeatures2.pNext = &features_1_1;
+            features_1_1.pNext = &features_1_2;
+
+            void** features_chain = &features_1_2.pNext;
+
+            VkPhysicalDevice8BitStorageFeatures storage_8bit_features = default;
+            if (properties.apiVersion <= VkVersion.Version_1_2)
+            {
+                if (CheckDeviceExtensionSupport(VK_KHR_8BIT_STORAGE_EXTENSION_NAME, availableDeviceExtensions))
+                {
+                    enabledExtensions.Add(VK_KHR_8BIT_STORAGE_EXTENSION_NAME);
+                    //storage_8bit_features.sType = VkStructureType.PhysicalDevice8bitStorageFeatures;
+                    *features_chain = &storage_8bit_features;
+                    features_chain = &storage_8bit_features.pNext;
+                }
             }
+
+            if (CheckDeviceExtensionSupport(VK_KHR_SPIRV_1_4_EXTENSION_NAME, availableDeviceExtensions))
+            {
+                // Required by VK_KHR_spirv_1_4
+                enabledExtensions.Add(VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME);
+
+                // Required for VK_KHR_ray_tracing_pipeline
+                enabledExtensions.Add(VK_KHR_SPIRV_1_4_EXTENSION_NAME);
+            }
+
+            if (CheckDeviceExtensionSupport(VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME, availableDeviceExtensions))
+            {
+                // Required by VK_KHR_acceleration_structure
+                enabledExtensions.Add(VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME);
+            }
+
+            if (CheckDeviceExtensionSupport(VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME, availableDeviceExtensions))
+            {
+                // Required by VK_KHR_acceleration_structure
+                enabledExtensions.Add(VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME);
+            }
+
+            VkPhysicalDeviceAccelerationStructureFeaturesKHR acceleration_structure_features = default;
+            if (CheckDeviceExtensionSupport(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME, availableDeviceExtensions))
+            {
+                // Required by VK_KHR_acceleration_structure
+                enabledExtensions.Add(VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME);
+
+                enabledExtensions.Add(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME);
+                acceleration_structure_features.sType = VkStructureType.PhysicalDeviceAccelerationStructureFeaturesKHR;
+                *features_chain = &acceleration_structure_features;
+                features_chain = &acceleration_structure_features.pNext;
+            }
+
+            vkGetPhysicalDeviceFeatures2(PhysicalDevice, &deviceFeatures2);
         }
-
-        if (CheckDeviceExtensionSupport(VK_KHR_SPIRV_1_4_EXTENSION_NAME, availableDeviceExtensions))
-        {
-            // Required by VK_KHR_spirv_1_4
-            enabledExtensions.Add(VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME);
-
-            // Required for VK_KHR_ray_tracing_pipeline
-            enabledExtensions.Add(VK_KHR_SPIRV_1_4_EXTENSION_NAME);
-        }
-
-        if (CheckDeviceExtensionSupport(VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME, availableDeviceExtensions))
-        {
-            // Required by VK_KHR_acceleration_structure
-            enabledExtensions.Add(VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME);
-        }
-
-        if (CheckDeviceExtensionSupport(VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME, availableDeviceExtensions))
-        {
-            // Required by VK_KHR_acceleration_structure
-            enabledExtensions.Add(VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME);
-        }
-
-        VkPhysicalDeviceAccelerationStructureFeaturesKHR acceleration_structure_features = default;
-        if (CheckDeviceExtensionSupport(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME, availableDeviceExtensions))
-        {
-            // Required by VK_KHR_acceleration_structure
-            enabledExtensions.Add(VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME);
-
-            enabledExtensions.Add(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME);
-            acceleration_structure_features.sType = VkStructureType.PhysicalDeviceAccelerationStructureFeaturesKHR;
-            *features_chain = &acceleration_structure_features;
-            features_chain = &acceleration_structure_features.pNext;
-        }
-
-        vkGetPhysicalDeviceFeatures2(PhysicalDevice, &deviceFeatures2);
 
         using var deviceExtensionNames = new VkStringArray(enabledExtensions);
 
         VkDeviceCreateInfo deviceCreateInfo = new()
         {
             sType = VkStructureType.DeviceCreateInfo,
-            pNext = &deviceFeatures2,
+            pNext = useNewFeatures ? & deviceFeatures2 : default,
             queueCreateInfoCount = queueCount,
             pQueueCreateInfos = queueCreateInfos,
             enabledExtensionCount = deviceExtensionNames.Length,
@@ -288,7 +292,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         // Create swap chain
         Swapchain = new Swapchain(this, surface, window);
         _perFrame = new PerFrame[Swapchain.ImageCount];
-        for (var i = 0; i < _perFrame.Length; i++)
+        for (int i = 0; i < _perFrame.Length; i++)
         {
             vkCreateFence(VkDevice, VkFenceCreateFlags.Signaled, out _perFrame[i].QueueSubmitFence).CheckResult();
 
@@ -364,7 +368,9 @@ public unsafe sealed class GraphicsDevice : IDisposable
         vkDeviceWaitIdle(VkDevice).CheckResult();
     }
 
-    public void RenderFrame(Action<VkCommandBuffer, VkFramebuffer, VkExtent2D> draw, [CallerMemberName] string? frameName = null)
+    public void RenderFrame(
+        Action<VkCommandBuffer, VkFramebuffer, VkExtent2D> draw,
+        [CallerMemberName] string? frameName = null)
     {
         VkResult result = AcquireNextImage(out _frameIndex);
 
@@ -527,11 +533,11 @@ public unsafe sealed class GraphicsDevice : IDisposable
         }
 
         // Recycle the old semaphore back into the semaphore manager.
-        VkSemaphore old_semaphore = _perFrame[imageIndex].SwapchainAcquireSemaphore;
+        VkSemaphore oldSemaphore = _perFrame[imageIndex].SwapchainAcquireSemaphore;
 
-        if (old_semaphore != VkSemaphore.Null)
+        if (oldSemaphore != VkSemaphore.Null)
         {
-            _recycledSemaphores.Add(old_semaphore);
+            _recycledSemaphores.Add(oldSemaphore);
         }
 
         _perFrame[imageIndex].SwapchainAcquireSemaphore = acquireSemaphore;

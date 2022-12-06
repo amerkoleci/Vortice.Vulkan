@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 235
+	/// VK_HEADER_VERSION = 236
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 235;
+	public const uint VK_HEADER_VERSION = 236;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -2843,18 +2843,6 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_EXT_RGBA10X6_FORMATS_EXTENSION_NAME = "VK_EXT_rgba10x6_formats";
 	/// <summary>
-	/// VK_NV_acquire_winrt_display = 1
-	/// </summary>
-	public const uint VK_NV_acquire_winrt_display = 1;
-	/// <summary>
-	/// VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION = 1
-	/// </summary>
-	public const uint VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION = 1;
-	/// <summary>
-	/// VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME = "VK_NV_acquire_winrt_display"
-	/// </summary>
-	public const string VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME = "VK_NV_acquire_winrt_display";
-	/// <summary>
 	/// VK_VALVE_mutable_descriptor_type = 1
 	/// </summary>
 	public const uint VK_VALVE_mutable_descriptor_type = 1;
@@ -3267,6 +3255,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_EXT_SUBPASS_MERGE_FEEDBACK_EXTENSION_NAME = "VK_EXT_subpass_merge_feedback";
 	/// <summary>
+	/// VK_LUNARG_direct_driver_loading = 1
+	/// </summary>
+	public const uint VK_LUNARG_direct_driver_loading = 1;
+	/// <summary>
+	/// VK_LUNARG_DIRECT_DRIVER_LOADING_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_LUNARG_DIRECT_DRIVER_LOADING_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_LUNARG_DIRECT_DRIVER_LOADING_EXTENSION_NAME = "VK_LUNARG_direct_driver_loading"
+	/// </summary>
+	public const string VK_LUNARG_DIRECT_DRIVER_LOADING_EXTENSION_NAME = "VK_LUNARG_direct_driver_loading";
+	/// <summary>
 	/// VK_EXT_shader_module_identifier = 1
 	/// </summary>
 	public const uint VK_EXT_shader_module_identifier = 1;
@@ -3354,6 +3354,18 @@ public static partial class Vulkan
 	/// VK_SEC_AMIGO_PROFILING_EXTENSION_NAME = "VK_SEC_amigo_profiling"
 	/// </summary>
 	public const string VK_SEC_AMIGO_PROFILING_EXTENSION_NAME = "VK_SEC_amigo_profiling";
+	/// <summary>
+	/// VK_QCOM_multiview_per_view_viewports = 1
+	/// </summary>
+	public const uint VK_QCOM_multiview_per_view_viewports = 1;
+	/// <summary>
+	/// VK_QCOM_MULTIVIEW_PER_VIEW_VIEWPORTS_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_QCOM_MULTIVIEW_PER_VIEW_VIEWPORTS_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_QCOM_MULTIVIEW_PER_VIEW_VIEWPORTS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_viewports"
+	/// </summary>
+	public const string VK_QCOM_MULTIVIEW_PER_VIEW_VIEWPORTS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_viewports";
 	/// <summary>
 	/// VK_NV_ray_tracing_invocation_reorder = 1
 	/// </summary>
@@ -3807,9 +3819,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_decode";
 	/// <summary>
-	/// VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 5
+	/// VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 6
 	/// </summary>
-	public const uint VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 5;
+	public const uint VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 6;
 	/// <summary>
 	/// VK_EXT_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_EXT_video_decode_h265"
 	/// </summary>

@@ -22,6 +22,7 @@ public readonly partial struct VkBuffer : IEquatable<VkBuffer>
 	public VkBuffer(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkBuffer Null => new(0);
 	public static implicit operator VkBuffer(ulong handle) => new(handle);
 	public static bool operator ==(VkBuffer left, VkBuffer right) => left.Handle == right.Handle;
@@ -45,6 +46,7 @@ public readonly partial struct VkImage : IEquatable<VkImage>
 	public VkImage(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkImage Null => new(0);
 	public static implicit operator VkImage(ulong handle) => new(handle);
 	public static bool operator ==(VkImage left, VkImage right) => left.Handle == right.Handle;
@@ -68,6 +70,7 @@ public readonly partial struct VkInstance : IEquatable<VkInstance>
 	public VkInstance(nint handle) { Handle = handle; }
 	public nint Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkInstance Null => new(0);
 	public static implicit operator VkInstance(nint handle) => new(handle);
 	public static bool operator ==(VkInstance left, VkInstance right) => left.Handle == right.Handle;
@@ -91,6 +94,7 @@ public readonly partial struct VkPhysicalDevice : IEquatable<VkPhysicalDevice>
 	public VkPhysicalDevice(nint handle) { Handle = handle; }
 	public nint Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkPhysicalDevice Null => new(0);
 	public static implicit operator VkPhysicalDevice(nint handle) => new(handle);
 	public static bool operator ==(VkPhysicalDevice left, VkPhysicalDevice right) => left.Handle == right.Handle;
@@ -114,6 +118,7 @@ public readonly partial struct VkDevice : IEquatable<VkDevice>
 	public VkDevice(nint handle) { Handle = handle; }
 	public nint Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkDevice Null => new(0);
 	public static implicit operator VkDevice(nint handle) => new(handle);
 	public static bool operator ==(VkDevice left, VkDevice right) => left.Handle == right.Handle;
@@ -137,6 +142,7 @@ public readonly partial struct VkQueue : IEquatable<VkQueue>
 	public VkQueue(nint handle) { Handle = handle; }
 	public nint Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkQueue Null => new(0);
 	public static implicit operator VkQueue(nint handle) => new(handle);
 	public static bool operator ==(VkQueue left, VkQueue right) => left.Handle == right.Handle;
@@ -160,6 +166,7 @@ public readonly partial struct VkSemaphore : IEquatable<VkSemaphore>
 	public VkSemaphore(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkSemaphore Null => new(0);
 	public static implicit operator VkSemaphore(ulong handle) => new(handle);
 	public static bool operator ==(VkSemaphore left, VkSemaphore right) => left.Handle == right.Handle;
@@ -183,6 +190,7 @@ public readonly partial struct VkCommandBuffer : IEquatable<VkCommandBuffer>
 	public VkCommandBuffer(nint handle) { Handle = handle; }
 	public nint Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkCommandBuffer Null => new(0);
 	public static implicit operator VkCommandBuffer(nint handle) => new(handle);
 	public static bool operator ==(VkCommandBuffer left, VkCommandBuffer right) => left.Handle == right.Handle;
@@ -206,6 +214,7 @@ public readonly partial struct VkFence : IEquatable<VkFence>
 	public VkFence(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkFence Null => new(0);
 	public static implicit operator VkFence(ulong handle) => new(handle);
 	public static bool operator ==(VkFence left, VkFence right) => left.Handle == right.Handle;
@@ -229,6 +238,7 @@ public readonly partial struct VkDeviceMemory : IEquatable<VkDeviceMemory>
 	public VkDeviceMemory(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkDeviceMemory Null => new(0);
 	public static implicit operator VkDeviceMemory(ulong handle) => new(handle);
 	public static bool operator ==(VkDeviceMemory left, VkDeviceMemory right) => left.Handle == right.Handle;
@@ -252,6 +262,7 @@ public readonly partial struct VkEvent : IEquatable<VkEvent>
 	public VkEvent(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkEvent Null => new(0);
 	public static implicit operator VkEvent(ulong handle) => new(handle);
 	public static bool operator ==(VkEvent left, VkEvent right) => left.Handle == right.Handle;
@@ -275,6 +286,7 @@ public readonly partial struct VkQueryPool : IEquatable<VkQueryPool>
 	public VkQueryPool(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkQueryPool Null => new(0);
 	public static implicit operator VkQueryPool(ulong handle) => new(handle);
 	public static bool operator ==(VkQueryPool left, VkQueryPool right) => left.Handle == right.Handle;
@@ -298,6 +310,7 @@ public readonly partial struct VkBufferView : IEquatable<VkBufferView>
 	public VkBufferView(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkBufferView Null => new(0);
 	public static implicit operator VkBufferView(ulong handle) => new(handle);
 	public static bool operator ==(VkBufferView left, VkBufferView right) => left.Handle == right.Handle;
@@ -321,6 +334,7 @@ public readonly partial struct VkImageView : IEquatable<VkImageView>
 	public VkImageView(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkImageView Null => new(0);
 	public static implicit operator VkImageView(ulong handle) => new(handle);
 	public static bool operator ==(VkImageView left, VkImageView right) => left.Handle == right.Handle;
@@ -344,6 +358,7 @@ public readonly partial struct VkShaderModule : IEquatable<VkShaderModule>
 	public VkShaderModule(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkShaderModule Null => new(0);
 	public static implicit operator VkShaderModule(ulong handle) => new(handle);
 	public static bool operator ==(VkShaderModule left, VkShaderModule right) => left.Handle == right.Handle;
@@ -367,6 +382,7 @@ public readonly partial struct VkPipelineCache : IEquatable<VkPipelineCache>
 	public VkPipelineCache(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkPipelineCache Null => new(0);
 	public static implicit operator VkPipelineCache(ulong handle) => new(handle);
 	public static bool operator ==(VkPipelineCache left, VkPipelineCache right) => left.Handle == right.Handle;
@@ -390,6 +406,7 @@ public readonly partial struct VkPipelineLayout : IEquatable<VkPipelineLayout>
 	public VkPipelineLayout(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkPipelineLayout Null => new(0);
 	public static implicit operator VkPipelineLayout(ulong handle) => new(handle);
 	public static bool operator ==(VkPipelineLayout left, VkPipelineLayout right) => left.Handle == right.Handle;
@@ -413,6 +430,7 @@ public readonly partial struct VkPipeline : IEquatable<VkPipeline>
 	public VkPipeline(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkPipeline Null => new(0);
 	public static implicit operator VkPipeline(ulong handle) => new(handle);
 	public static bool operator ==(VkPipeline left, VkPipeline right) => left.Handle == right.Handle;
@@ -436,6 +454,7 @@ public readonly partial struct VkRenderPass : IEquatable<VkRenderPass>
 	public VkRenderPass(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkRenderPass Null => new(0);
 	public static implicit operator VkRenderPass(ulong handle) => new(handle);
 	public static bool operator ==(VkRenderPass left, VkRenderPass right) => left.Handle == right.Handle;
@@ -459,6 +478,7 @@ public readonly partial struct VkDescriptorSetLayout : IEquatable<VkDescriptorSe
 	public VkDescriptorSetLayout(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkDescriptorSetLayout Null => new(0);
 	public static implicit operator VkDescriptorSetLayout(ulong handle) => new(handle);
 	public static bool operator ==(VkDescriptorSetLayout left, VkDescriptorSetLayout right) => left.Handle == right.Handle;
@@ -482,6 +502,7 @@ public readonly partial struct VkSampler : IEquatable<VkSampler>
 	public VkSampler(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkSampler Null => new(0);
 	public static implicit operator VkSampler(ulong handle) => new(handle);
 	public static bool operator ==(VkSampler left, VkSampler right) => left.Handle == right.Handle;
@@ -505,6 +526,7 @@ public readonly partial struct VkDescriptorSet : IEquatable<VkDescriptorSet>
 	public VkDescriptorSet(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkDescriptorSet Null => new(0);
 	public static implicit operator VkDescriptorSet(ulong handle) => new(handle);
 	public static bool operator ==(VkDescriptorSet left, VkDescriptorSet right) => left.Handle == right.Handle;
@@ -528,6 +550,7 @@ public readonly partial struct VkDescriptorPool : IEquatable<VkDescriptorPool>
 	public VkDescriptorPool(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkDescriptorPool Null => new(0);
 	public static implicit operator VkDescriptorPool(ulong handle) => new(handle);
 	public static bool operator ==(VkDescriptorPool left, VkDescriptorPool right) => left.Handle == right.Handle;
@@ -551,6 +574,7 @@ public readonly partial struct VkFramebuffer : IEquatable<VkFramebuffer>
 	public VkFramebuffer(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkFramebuffer Null => new(0);
 	public static implicit operator VkFramebuffer(ulong handle) => new(handle);
 	public static bool operator ==(VkFramebuffer left, VkFramebuffer right) => left.Handle == right.Handle;
@@ -574,6 +598,7 @@ public readonly partial struct VkCommandPool : IEquatable<VkCommandPool>
 	public VkCommandPool(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkCommandPool Null => new(0);
 	public static implicit operator VkCommandPool(ulong handle) => new(handle);
 	public static bool operator ==(VkCommandPool left, VkCommandPool right) => left.Handle == right.Handle;
@@ -597,6 +622,7 @@ public readonly partial struct VkSamplerYcbcrConversion : IEquatable<VkSamplerYc
 	public VkSamplerYcbcrConversion(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkSamplerYcbcrConversion Null => new(0);
 	public static implicit operator VkSamplerYcbcrConversion(ulong handle) => new(handle);
 	public static bool operator ==(VkSamplerYcbcrConversion left, VkSamplerYcbcrConversion right) => left.Handle == right.Handle;
@@ -620,6 +646,7 @@ public readonly partial struct VkDescriptorUpdateTemplate : IEquatable<VkDescrip
 	public VkDescriptorUpdateTemplate(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkDescriptorUpdateTemplate Null => new(0);
 	public static implicit operator VkDescriptorUpdateTemplate(ulong handle) => new(handle);
 	public static bool operator ==(VkDescriptorUpdateTemplate left, VkDescriptorUpdateTemplate right) => left.Handle == right.Handle;
@@ -643,6 +670,7 @@ public readonly partial struct VkPrivateDataSlot : IEquatable<VkPrivateDataSlot>
 	public VkPrivateDataSlot(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkPrivateDataSlot Null => new(0);
 	public static implicit operator VkPrivateDataSlot(ulong handle) => new(handle);
 	public static bool operator ==(VkPrivateDataSlot left, VkPrivateDataSlot right) => left.Handle == right.Handle;
@@ -666,6 +694,7 @@ public readonly partial struct VkSurfaceKHR : IEquatable<VkSurfaceKHR>
 	public VkSurfaceKHR(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkSurfaceKHR Null => new(0);
 	public static implicit operator VkSurfaceKHR(ulong handle) => new(handle);
 	public static bool operator ==(VkSurfaceKHR left, VkSurfaceKHR right) => left.Handle == right.Handle;
@@ -689,6 +718,7 @@ public readonly partial struct VkSwapchainKHR : IEquatable<VkSwapchainKHR>
 	public VkSwapchainKHR(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkSwapchainKHR Null => new(0);
 	public static implicit operator VkSwapchainKHR(ulong handle) => new(handle);
 	public static bool operator ==(VkSwapchainKHR left, VkSwapchainKHR right) => left.Handle == right.Handle;
@@ -712,6 +742,7 @@ public readonly partial struct VkDisplayKHR : IEquatable<VkDisplayKHR>
 	public VkDisplayKHR(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkDisplayKHR Null => new(0);
 	public static implicit operator VkDisplayKHR(ulong handle) => new(handle);
 	public static bool operator ==(VkDisplayKHR left, VkDisplayKHR right) => left.Handle == right.Handle;
@@ -735,6 +766,7 @@ public readonly partial struct VkDisplayModeKHR : IEquatable<VkDisplayModeKHR>
 	public VkDisplayModeKHR(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkDisplayModeKHR Null => new(0);
 	public static implicit operator VkDisplayModeKHR(ulong handle) => new(handle);
 	public static bool operator ==(VkDisplayModeKHR left, VkDisplayModeKHR right) => left.Handle == right.Handle;
@@ -758,6 +790,7 @@ public readonly partial struct VkDeferredOperationKHR : IEquatable<VkDeferredOpe
 	public VkDeferredOperationKHR(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkDeferredOperationKHR Null => new(0);
 	public static implicit operator VkDeferredOperationKHR(ulong handle) => new(handle);
 	public static bool operator ==(VkDeferredOperationKHR left, VkDeferredOperationKHR right) => left.Handle == right.Handle;
@@ -781,6 +814,7 @@ public readonly partial struct VkDebugReportCallbackEXT : IEquatable<VkDebugRepo
 	public VkDebugReportCallbackEXT(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkDebugReportCallbackEXT Null => new(0);
 	public static implicit operator VkDebugReportCallbackEXT(ulong handle) => new(handle);
 	public static bool operator ==(VkDebugReportCallbackEXT left, VkDebugReportCallbackEXT right) => left.Handle == right.Handle;
@@ -804,6 +838,7 @@ public readonly partial struct VkCuModuleNVX : IEquatable<VkCuModuleNVX>
 	public VkCuModuleNVX(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkCuModuleNVX Null => new(0);
 	public static implicit operator VkCuModuleNVX(ulong handle) => new(handle);
 	public static bool operator ==(VkCuModuleNVX left, VkCuModuleNVX right) => left.Handle == right.Handle;
@@ -827,6 +862,7 @@ public readonly partial struct VkCuFunctionNVX : IEquatable<VkCuFunctionNVX>
 	public VkCuFunctionNVX(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkCuFunctionNVX Null => new(0);
 	public static implicit operator VkCuFunctionNVX(ulong handle) => new(handle);
 	public static bool operator ==(VkCuFunctionNVX left, VkCuFunctionNVX right) => left.Handle == right.Handle;
@@ -850,6 +886,7 @@ public readonly partial struct VkDebugUtilsMessengerEXT : IEquatable<VkDebugUtil
 	public VkDebugUtilsMessengerEXT(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkDebugUtilsMessengerEXT Null => new(0);
 	public static implicit operator VkDebugUtilsMessengerEXT(ulong handle) => new(handle);
 	public static bool operator ==(VkDebugUtilsMessengerEXT left, VkDebugUtilsMessengerEXT right) => left.Handle == right.Handle;
@@ -873,6 +910,7 @@ public readonly partial struct VkValidationCacheEXT : IEquatable<VkValidationCac
 	public VkValidationCacheEXT(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkValidationCacheEXT Null => new(0);
 	public static implicit operator VkValidationCacheEXT(ulong handle) => new(handle);
 	public static bool operator ==(VkValidationCacheEXT left, VkValidationCacheEXT right) => left.Handle == right.Handle;
@@ -896,6 +934,7 @@ public readonly partial struct VkAccelerationStructureNV : IEquatable<VkAccelera
 	public VkAccelerationStructureNV(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkAccelerationStructureNV Null => new(0);
 	public static implicit operator VkAccelerationStructureNV(ulong handle) => new(handle);
 	public static bool operator ==(VkAccelerationStructureNV left, VkAccelerationStructureNV right) => left.Handle == right.Handle;
@@ -919,6 +958,7 @@ public readonly partial struct VkPerformanceConfigurationINTEL : IEquatable<VkPe
 	public VkPerformanceConfigurationINTEL(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkPerformanceConfigurationINTEL Null => new(0);
 	public static implicit operator VkPerformanceConfigurationINTEL(ulong handle) => new(handle);
 	public static bool operator ==(VkPerformanceConfigurationINTEL left, VkPerformanceConfigurationINTEL right) => left.Handle == right.Handle;
@@ -942,6 +982,7 @@ public readonly partial struct VkIndirectCommandsLayoutNV : IEquatable<VkIndirec
 	public VkIndirectCommandsLayoutNV(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkIndirectCommandsLayoutNV Null => new(0);
 	public static implicit operator VkIndirectCommandsLayoutNV(ulong handle) => new(handle);
 	public static bool operator ==(VkIndirectCommandsLayoutNV left, VkIndirectCommandsLayoutNV right) => left.Handle == right.Handle;
@@ -965,6 +1006,7 @@ public readonly partial struct VkAccelerationStructureKHR : IEquatable<VkAcceler
 	public VkAccelerationStructureKHR(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkAccelerationStructureKHR Null => new(0);
 	public static implicit operator VkAccelerationStructureKHR(ulong handle) => new(handle);
 	public static bool operator ==(VkAccelerationStructureKHR left, VkAccelerationStructureKHR right) => left.Handle == right.Handle;
@@ -988,6 +1030,7 @@ public readonly partial struct VkRemoteAddressNV : IEquatable<VkRemoteAddressNV>
 	public VkRemoteAddressNV(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkRemoteAddressNV Null => new(0);
 	public static implicit operator VkRemoteAddressNV(ulong handle) => new(handle);
 	public static bool operator ==(VkRemoteAddressNV left, VkRemoteAddressNV right) => left.Handle == right.Handle;
@@ -1011,6 +1054,7 @@ public readonly partial struct VkMicromapEXT : IEquatable<VkMicromapEXT>
 	public VkMicromapEXT(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkMicromapEXT Null => new(0);
 	public static implicit operator VkMicromapEXT(ulong handle) => new(handle);
 	public static bool operator ==(VkMicromapEXT left, VkMicromapEXT right) => left.Handle == right.Handle;
@@ -1034,6 +1078,7 @@ public readonly partial struct VkOpticalFlowSessionNV : IEquatable<VkOpticalFlow
 	public VkOpticalFlowSessionNV(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkOpticalFlowSessionNV Null => new(0);
 	public static implicit operator VkOpticalFlowSessionNV(ulong handle) => new(handle);
 	public static bool operator ==(VkOpticalFlowSessionNV left, VkOpticalFlowSessionNV right) => left.Handle == right.Handle;
@@ -1057,6 +1102,7 @@ public readonly partial struct MTLDevice_id : IEquatable<MTLDevice_id>
 	public MTLDevice_id(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static MTLDevice_id Null => new(0);
 	public static implicit operator MTLDevice_id(ulong handle) => new(handle);
 	public static bool operator ==(MTLDevice_id left, MTLDevice_id right) => left.Handle == right.Handle;
@@ -1080,6 +1126,7 @@ public readonly partial struct MTLCommandQueue_id : IEquatable<MTLCommandQueue_i
 	public MTLCommandQueue_id(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static MTLCommandQueue_id Null => new(0);
 	public static implicit operator MTLCommandQueue_id(ulong handle) => new(handle);
 	public static bool operator ==(MTLCommandQueue_id left, MTLCommandQueue_id right) => left.Handle == right.Handle;
@@ -1103,6 +1150,7 @@ public readonly partial struct MTLBuffer_id : IEquatable<MTLBuffer_id>
 	public MTLBuffer_id(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static MTLBuffer_id Null => new(0);
 	public static implicit operator MTLBuffer_id(ulong handle) => new(handle);
 	public static bool operator ==(MTLBuffer_id left, MTLBuffer_id right) => left.Handle == right.Handle;
@@ -1126,6 +1174,7 @@ public readonly partial struct MTLTexture_id : IEquatable<MTLTexture_id>
 	public MTLTexture_id(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static MTLTexture_id Null => new(0);
 	public static implicit operator MTLTexture_id(ulong handle) => new(handle);
 	public static bool operator ==(MTLTexture_id left, MTLTexture_id right) => left.Handle == right.Handle;
@@ -1149,6 +1198,7 @@ public readonly partial struct IOSurfaceRef : IEquatable<IOSurfaceRef>
 	public IOSurfaceRef(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static IOSurfaceRef Null => new(0);
 	public static implicit operator IOSurfaceRef(ulong handle) => new(handle);
 	public static bool operator ==(IOSurfaceRef left, IOSurfaceRef right) => left.Handle == right.Handle;
@@ -1172,6 +1222,7 @@ public readonly partial struct MTLSharedEvent_id : IEquatable<MTLSharedEvent_id>
 	public MTLSharedEvent_id(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static MTLSharedEvent_id Null => new(0);
 	public static implicit operator MTLSharedEvent_id(ulong handle) => new(handle);
 	public static bool operator ==(MTLSharedEvent_id left, MTLSharedEvent_id right) => left.Handle == right.Handle;
@@ -1195,6 +1246,7 @@ public readonly partial struct VkVideoSessionKHR : IEquatable<VkVideoSessionKHR>
 	public VkVideoSessionKHR(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkVideoSessionKHR Null => new(0);
 	public static implicit operator VkVideoSessionKHR(ulong handle) => new(handle);
 	public static bool operator ==(VkVideoSessionKHR left, VkVideoSessionKHR right) => left.Handle == right.Handle;
@@ -1218,6 +1270,7 @@ public readonly partial struct VkVideoSessionParametersKHR : IEquatable<VkVideoS
 	public VkVideoSessionParametersKHR(ulong handle) { Handle = handle; }
 	public ulong Handle { get; }
 	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
 	public static VkVideoSessionParametersKHR Null => new(0);
 	public static implicit operator VkVideoSessionParametersKHR(ulong handle) => new(handle);
 	public static bool operator ==(VkVideoSessionParametersKHR left, VkVideoSessionParametersKHR right) => left.Handle == right.Handle;

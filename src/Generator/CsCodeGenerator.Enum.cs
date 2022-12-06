@@ -140,6 +140,10 @@ public static partial class CsCodeGenerator
         { "VK_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_NV", "Size4x4" },
         { "VK_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_NV", "Size8x8" },
 
+        // VkDirectDriverLoadingModeLUNARG
+        { "VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG", "Exclusive" },
+        { "VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG", "Include" },
+
         // VkMemoryDecompressionMethodFlagBitsNV
         { "VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV", "GDeflate_1_0" }
     };
@@ -162,7 +166,6 @@ public static partial class CsCodeGenerator
         "bit",
         //"nv",
     };
-
 
     private static readonly HashSet<string> s_preserveCaps = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -196,6 +199,8 @@ public static partial class CsCodeGenerator
         "3d",
         "io",
         "sec",
+        "lunarg",
+        "d3d12",
     };
 
     public static void GenerateEnums(CppCompilation compilation, string outputPath)
@@ -293,6 +298,7 @@ public static partial class CsCodeGenerator
                         enumItem.Name.EndsWith("_MAX_ENUM_NV") ||
                         enumItem.Name.EndsWith("_MAX_ENUM_AMD") ||
                         enumItem.Name.EndsWith("_MAX_ENUM_INTEL") ||
+                        enumItem.Name.EndsWith("_MAX_ENUM_LUNARG") ||
                         //enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
                         enumItem.Name == "VK_STENCIL_FRONT_AND_BACK" ||
                         enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE")
