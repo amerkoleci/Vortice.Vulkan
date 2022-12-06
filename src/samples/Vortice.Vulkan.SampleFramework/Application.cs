@@ -8,7 +8,7 @@ namespace Vortice.Vulkan;
 
 public abstract class Application : IDisposable
 {
-    private static readonly glfwErrorCallback s_errorCallback = GlfwError;
+    private static readonly unsafe glfwErrorCallback s_errorCallback = GlfwError;
     private bool _closeRequested = false;
 
     protected Application()
@@ -65,8 +65,8 @@ public abstract class Application : IDisposable
 
     }
 
-    private static unsafe void GlfwError(int code, IntPtr message)
+    private static unsafe void GlfwError(int code, sbyte* message)
     {
-        throw new Exception(Interop.GetString((byte*)message));
+        throw new Exception(new string(message));
     }
 }

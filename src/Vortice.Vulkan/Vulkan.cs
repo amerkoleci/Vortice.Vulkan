@@ -3,16 +3,19 @@
 
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using static Vortice.Vulkan.Vulkan.Kernel32;
-using static Vortice.Vulkan.Vulkan.Libdl;
+#if NET6_0_OR_GREATER
+using SystemNativeLibrary = System.Runtime.InteropServices.NativeLibrary;
+#endif
+
 
 namespace Vortice.Vulkan;
 
 public static unsafe partial class Vulkan
 {
-    private delegate delegate* unmanaged[Stdcall]<void> LoadFunction(IntPtr context, string name);
+    private static readonly ILibraryLoader _loader = GetPlatformLoader();
+    private delegate delegate* unmanaged[Stdcall]<void> LoadFunction(nint context, string name);
 
-    private static IntPtr s_vulkanModule = IntPtr.Zero;
+    private static nint s_vulkanModule = 0;
     private static VkInstance s_loadedInstance = VkInstance.Null;
     private static VkDevice s_loadedDevice = VkDevice.Null;
 
@@ -23,38 +26,33 @@ public static unsafe partial class Vulkan
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            s_vulkanModule = LoadLibrary("vulkan-1.dll");
-            if (s_vulkanModule == IntPtr.Zero)
+            s_vulkanModule = _loader.LoadNativeLibrary("vulkan-1.dll");
+            if (s_vulkanModule == 0)
                 return VkResult.ErrorInitializationFailed;
-
-            vkGetInstanceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>>)GetProcAddress(s_vulkanModule, nameof(vkGetInstanceProcAddr));
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
-            s_vulkanModule = dlopen("libvulkan.dylib", RTLD_NOW);
-            if (s_vulkanModule == IntPtr.Zero)
-                s_vulkanModule = dlopen("libvulkan.1.dylib", RTLD_NOW);
-            if (s_vulkanModule == IntPtr.Zero)
-                s_vulkanModule = dlopen("libMoltenVK.dylib", RTLD_NOW);
+            s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.dylib");
+            if (s_vulkanModule == 0)
+                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.1.dylib");
+            if (s_vulkanModule == 0)
+                s_vulkanModule = _loader.LoadNativeLibrary("libMoltenVK.dylib");
 
-            if (s_vulkanModule == IntPtr.Zero)
+            if (s_vulkanModule ==0)
                 return VkResult.ErrorInitializationFailed;
-
-            vkGetInstanceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>>)dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
         }
         else
         {
-            s_vulkanModule = dlopen("libvulkan.so.1", RTLD_NOW);
-            if (s_vulkanModule == IntPtr.Zero)
-                s_vulkanModule = dlopen("libvulkan.so", RTLD_NOW);
+            s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so.1");
+            if (s_vulkanModule == 0)
+                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so");
 
-            if (s_vulkanModule == IntPtr.Zero)
+            if (s_vulkanModule == 0)
                 return VkResult.ErrorInitializationFailed;
-
-            vkGetInstanceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>>)dlsym(s_vulkanModule, nameof(vkGetInstanceProcAddr));
         }
 
-        GenLoadLoader(IntPtr.Zero, vkGetInstanceProcAddr);
+        vkGetInstanceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>>)_loader.LoadFunctionPointer(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+        GenLoadLoader(0, vkGetInstanceProcAddr);
 
         return VkResult.Success;
     }
@@ -89,7 +87,7 @@ public static unsafe partial class Vulkan
         //LoadXcb(device);
     }
 
-    private static void GenLoadLoader(IntPtr context, LoadFunction load)
+    private static void GenLoadLoader(nint context, LoadFunction load)
     {
         vkCreateInstance_ptr = (delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
         vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged[Stdcall]<byte*, int*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
@@ -97,7 +95,7 @@ public static unsafe partial class Vulkan
         vkEnumerateInstanceVersion_ptr = (delegate* unmanaged[Stdcall]<uint*, VkResult>)load(context, "vkEnumerateInstanceVersion");
     }
 
-    private static delegate* unmanaged[Stdcall]<void> LoadCallbackThrow(IntPtr context, LoadFunction load, string name)
+    private static delegate* unmanaged[Stdcall]<void> LoadCallbackThrow(nint context, LoadFunction load, string name)
     {
         delegate* unmanaged[Stdcall]<void> functionPtr = load(context, name);
         if (functionPtr == null)
@@ -115,26 +113,37 @@ public static unsafe partial class Vulkan
         return vkGetInstanceProcAddr_ptr(instance, name);
     }
 
+    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(VkInstance instance, ReadOnlySpan<byte> name)
+    {
+        fixed (byte* pName = name)
+        {
+            return vkGetInstanceProcAddr_ptr(instance, pName);
+        }
+    }
+
     public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(IntPtr instance, string name)
     {
-        int byteCount = Interop.GetMaxByteCount(name);
-        byte* stringPtr = stackalloc byte[byteCount];
-        Interop.StringToPointer(name, stringPtr, byteCount);
-        return vkGetInstanceProcAddr(instance, stringPtr);
+        return vkGetInstanceProcAddr(instance, name.GetUtf8Span());
     }
 
     public static delegate* unmanaged[Stdcall]<VkDevice, byte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr_ptr;
+
     public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, byte* name)
     {
         return vkGetDeviceProcAddr_ptr(device, name);
     }
 
+    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, ReadOnlySpan<byte> name)
+    {
+        fixed (byte* pName = name)
+        {
+            return vkGetDeviceProcAddr_ptr(device, pName);
+        }
+    }
+
     public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(IntPtr device, string name)
     {
-        int byteCount = Interop.GetMaxByteCount(name);
-        byte* stringPtr = stackalloc byte[byteCount];
-        Interop.StringToPointer(name, stringPtr, byteCount);
-        return vkGetDeviceProcAddr(device, stringPtr);
+        return vkGetDeviceProcAddr(device, name.GetUtf8Span());
     }
 
     /// <summary>
@@ -145,20 +154,37 @@ public static unsafe partial class Vulkan
     /// <exception cref="VkException">Vulkan returns an error code.</exception>
     public static ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties(string? layerName = null)
     {
-        int dstLayerNameByteCount = Interop.GetMaxByteCount(layerName);
-        byte* dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
-        Interop.StringToPointer(layerName, dstLayerNamePtr, dstLayerNameByteCount);
-
-        int count = 0;
-        vkEnumerateInstanceExtensionProperties(dstLayerNamePtr, &count, null).CheckResult();
-
-        ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[count];
-        fixed (VkExtensionProperties* ptr = properties)
+        if (layerName is not null)
         {
-            vkEnumerateInstanceExtensionProperties(dstLayerNamePtr, &count, ptr).CheckResult();
-        }
+            ReadOnlySpan<byte> layerNameSpan = layerName.GetUtf8Span();
 
-        return properties;
+            fixed (byte* pLayerName = layerNameSpan)
+            {
+                int count = 0;
+                vkEnumerateInstanceExtensionProperties(pLayerName, &count, null).CheckResult();
+
+                ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[count];
+                fixed (VkExtensionProperties* ptr = properties)
+                {
+                    vkEnumerateInstanceExtensionProperties(pLayerName, &count, ptr).CheckResult();
+                }
+
+                return properties;
+            }
+        }
+        else
+        {
+            int count = 0;
+            vkEnumerateInstanceExtensionProperties(null, &count, null).CheckResult();
+
+            ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[count];
+            fixed (VkExtensionProperties* ptr = properties)
+            {
+                vkEnumerateInstanceExtensionProperties(null, &count, ptr).CheckResult();
+            }
+
+            return properties;
+        }
     }
 
     /// <summary>
@@ -170,19 +196,36 @@ public static unsafe partial class Vulkan
     /// <exception cref="VkException">Vulkan returns an error code.</exception>
     public static ReadOnlySpan<VkExtensionProperties> vkEnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName = "")
     {
-        int dstLayerNameByteCount = Interop.GetMaxByteCount(layerName);
-        byte* dstLayerNamePtr = stackalloc byte[dstLayerNameByteCount];
-        Interop.StringToPointer(layerName, dstLayerNamePtr, dstLayerNameByteCount);
-
-        int propertyCount = 0;
-        vkEnumerateDeviceExtensionProperties(physicalDevice, dstLayerNamePtr, &propertyCount, null).CheckResult();
-
-        ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[propertyCount];
-        fixed (VkExtensionProperties* propertiesPtr = properties)
+        if (layerName is not null)
         {
-            vkEnumerateDeviceExtensionProperties(physicalDevice, dstLayerNamePtr, &propertyCount, propertiesPtr).CheckResult();
+            ReadOnlySpan<byte> layerNameSpan = layerName.GetUtf8Span();
+
+            fixed (byte* playerName = layerNameSpan)
+            {
+                int propertyCount = 0;
+                vkEnumerateDeviceExtensionProperties(physicalDevice, playerName, &propertyCount, null).CheckResult();
+
+                ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[propertyCount];
+                fixed (VkExtensionProperties* propertiesPtr = properties)
+                {
+                    vkEnumerateDeviceExtensionProperties(physicalDevice, playerName, &propertyCount, propertiesPtr).CheckResult();
+                }
+
+                return properties;
+            }
         }
-        return properties;
+        else
+        {
+            int propertyCount = 0;
+            vkEnumerateDeviceExtensionProperties(physicalDevice, null, &propertyCount, null).CheckResult();
+
+            ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[propertyCount];
+            fixed (VkExtensionProperties* propertiesPtr = properties)
+            {
+                vkEnumerateDeviceExtensionProperties(physicalDevice, null, &propertyCount, propertiesPtr).CheckResult();
+            }
+            return properties;
+        }
     }
 
     /// <summary>
@@ -704,28 +747,169 @@ public static unsafe partial class Vulkan
         }
     }
 
-    #region Nested
-    internal static class Kernel32
+    private static ILibraryLoader GetPlatformLoader()
     {
-        [DllImport("kernel32")]
-        public static extern IntPtr LoadLibrary(string fileName);
+#if NET6_0_OR_GREATER
+        return new SystemNativeLibraryLoader();
+#else
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            return new Win32LibraryLoader();
+        }
+
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ||
+            RuntimeInformation.OSDescription.ToUpper().Contains("BSD"))
+        {
+            return new BsdLibraryLoader();
+        }
+
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        {
+            return new UnixLibraryLoader();
+        }
+
+        throw new PlatformNotSupportedException("This platform cannot load native libraries.");
+#endif
+    }
+
+    interface ILibraryLoader
+    {
+        nint LoadNativeLibrary(string name);
+        void FreeNativeLibrary(nint handle);
+
+        nint LoadFunctionPointer(nint handle, string name);
+    }
+
+#if NET6_0_OR_GREATER
+    private class SystemNativeLibraryLoader : ILibraryLoader
+    {
+        public nint LoadNativeLibrary(string name)
+        {
+            if (SystemNativeLibrary.TryLoad(name, out nint lib))
+            {
+                return lib;
+            }
+
+            return 0;
+        }
+
+        public void FreeNativeLibrary(nint handle)
+        {
+            SystemNativeLibrary.Free(handle);
+        }
+
+        public nint LoadFunctionPointer(nint handle, string name)
+        {
+            if (SystemNativeLibrary.TryGetExport(handle, name, out nint ptr))
+            {
+                return ptr;
+            }
+
+            return 0;
+        }
+    }
+#else
+    private class Win32LibraryLoader : ILibraryLoader
+    {
+        public nint LoadNativeLibrary(string name)
+        {
+            return LoadLibrary(name);
+        }
+
+        public void FreeNativeLibrary(nint handle)
+        {
+            FreeLibrary(handle);
+        }
+
+        public nint LoadFunctionPointer(nint handle, string name)
+        {
+            return GetProcAddress(handle, name);
+        }
 
         [DllImport("kernel32")]
-        public static extern IntPtr GetProcAddress(IntPtr module, string procName);
+        private static extern nint LoadLibrary(string fileName);
+
+        [DllImport("kernel32")]
+        private static extern int FreeLibrary(nint module);
+
+        [DllImport("kernel32")]
+        private static extern nint GetProcAddress(nint module, string procName);
+    }
+
+    private class UnixLibraryLoader : ILibraryLoader
+    {
+        public nint LoadNativeLibrary(string name)
+        {
+            return Libdl.dlopen(name, Libdl.RTLD_NOW | Libdl.RTLD_LOCAL);
+        }
+
+        public void FreeNativeLibrary(nint handle)
+        {
+            Libdl.dlclose(handle);
+        }
+
+        public nint LoadFunctionPointer(nint handle, string name)
+        {
+            return Libdl.dlsym(handle, name);
+        }
+    }
+
+    private class BsdLibraryLoader : ILibraryLoader
+    {
+        public nint LoadNativeLibrary(string name)
+        {
+            return Libc.dlopen(name, Libc.RTLD_NOW | Libc.RTLD_LOCAL);
+        }
+
+        public void FreeNativeLibrary(nint handle)
+        {
+            Libc.dlclose(handle);
+        }
+
+        public nint LoadFunctionPointer(nint handle, string name)
+        {
+            return Libc.dlsym(handle, name);
+        }
     }
 
     internal static class Libdl
     {
-        [DllImport("libdl")]
-        public static extern IntPtr dlopen(string fileName, int flags);
+        private const string LibName = "libdl";
 
-        [DllImport("libdl")]
-        public static extern IntPtr dlsym(IntPtr handle, string name);
-
-        [DllImport("libdl")]
-        public static extern int dlclose(IntPtr handle);
-
+        public const int RTLD_LOCAL = 0x000;
         public const int RTLD_NOW = 0x002;
+
+        [DllImport(LibName)]
+        public static extern nint dlopen(string fileName, int flags);
+
+        [DllImport(LibName)]
+        public static extern nint dlsym(nint handle, string name);
+
+        [DllImport(LibName)]
+        public static extern int dlclose(nint handle);
+
+        [DllImport(LibName)]
+        public static extern string dlerror();
     }
-    #endregion
+
+    internal static class Libc
+    {
+        private const string LibName = "libc";
+
+        public const int RTLD_LOCAL = 0x000;
+        public const int RTLD_NOW = 0x002;
+
+        [DllImport(LibName)]
+        public static extern nint dlopen(string fileName, int flags);
+
+        [DllImport(LibName)]
+        public static extern nint dlsym(nint handle, string name);
+
+        [DllImport(LibName)]
+        public static extern int dlclose(nint handle);
+
+        [DllImport(LibName)]
+        public static extern string dlerror();
+    }
+#endif
 }

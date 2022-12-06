@@ -272,7 +272,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         VkDeviceCreateInfo deviceCreateInfo = new()
         {
             sType = VkStructureType.DeviceCreateInfo,
-            pNext = useNewFeatures ? & deviceFeatures2 : default,
+            pNext = useNewFeatures ? &deviceFeatures2 : default,
             queueCreateInfoCount = queueCount,
             pQueueCreateInfos = queueCreateInfos,
             enabledExtensionCount = deviceExtensionNames.Length,
@@ -347,9 +347,9 @@ public unsafe sealed class GraphicsDevice : IDisposable
         }
         _recycledSemaphores.Clear();
 
-        if (VkDevice != VkDevice.Null)
+        if (VkDevice.IsNotNull)
         {
-            vkDestroyDevice(VkDevice);
+            //vkDestroyDevice(VkDevice);
         }
 
         if (_debugMessenger != VkDebugUtilsMessengerEXT.Null)
@@ -557,7 +557,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         return vkCreateShaderModule(VkDevice, data, null, out module);
     }
 
-    #region Private Methods
+#region Private Methods
 
 
     private static bool CheckDeviceExtensionSupport(string extensionName, ReadOnlySpan<VkExtensionProperties> availableDeviceExtensions)
@@ -735,7 +735,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
         return (graphicsFamily, presentFamily);
     }
-    #endregion
+#endregion
 
     private static readonly Lazy<bool> s_isSupported = new(CheckIsSupported);
 

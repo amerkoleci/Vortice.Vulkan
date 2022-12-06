@@ -1,6 +1,8 @@
 // Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -8,6 +10,50 @@ namespace Vortice.Vulkan;
 
 public unsafe static class Interop
 {
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T* AllocateArray<T>(nuint byteCount)
+        where T : unmanaged
+    {
+#if NET6_0_OR_GREATER
+        T* result = (T*)NativeMemory.Alloc(byteCount);
+#else
+        T* result = (T*)Marshal.AllocHGlobal(checked((int)byteCount));
+#endif
+
+        if (result == null)
+        {
+            ThrowOutOfMemoryException(byteCount, SizeOf<T>());
+        }
+
+        return result;
+    }
+
+    public static void Free(void* ptr)
+    {
+#if NET6_0_OR_GREATER
+        NativeMemory.Free(ptr);
+#else
+        Marshal.FreeHGlobal((IntPtr)ptr);
+#endif
+    }
+
+    [DoesNotReturn]
+    public static void ThrowOutOfMemoryException(ulong size)
+    {
+        throw new OutOfMemoryException($"The allocation of '{size}' bytes failed");
+    }
+
+    [DoesNotReturn]
+    public static void ThrowOutOfMemoryException(ulong count, ulong size)
+    {
+        throw new OutOfMemoryException($"The allocation of '{count}x{size}' bytes failed");
+    }
+
+
+    /// <inheritdoc cref="Unsafe.SizeOf{T}" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint SizeOf<T>() => unchecked((uint)Unsafe.SizeOf<T>());
+
     /// <inheritdoc cref="Unsafe.AsPointer{T}(ref T)" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T* AsPointer<T>(ref T source) where T : unmanaged => (T*)Unsafe.AsPointer(ref source);
@@ -43,7 +89,7 @@ public unsafe static class Interop
     public static Span<T> CreateSpan<T>(ref T reference, int length) => MemoryMarshal.CreateSpan(ref reference, length);
 
     /// <inheritdoc cref="MemoryMarshal.CreateReadOnlySpan{T}(ref T, int)" />
-    public static ReadOnlySpan<T> CreateReadOnlySpan<T>(in T reference, int length) => MemoryMarshal.CreateReadOnlySpan(ref AsRef(in reference), length);
+    public static ReadOnlySpan<T> CreateReadOnlySpan<T>(scoped in T reference, int length) => MemoryMarshal.CreateReadOnlySpan(ref AsRef(in reference), length);
 #else
     public static Span<T> CreateSpan<T>(ref T reference, int length)
     {
@@ -82,6 +128,21 @@ public unsafe static class Interop
 
     /// <inheritdoc cref="Unsafe.As{TFrom, TTo}(ref TFrom)" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ref TTo As<TFrom, TTo>(ref TFrom source)
+        => ref Unsafe.As<TFrom, TTo>(ref source);
+
+    /// <inheritdoc cref="Unsafe.As{TFrom, TTo}(ref TFrom)" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Span<TTo> As<TFrom, TTo>(this Span<TFrom> span)
+        where TFrom : unmanaged
+        where TTo : unmanaged
+    {
+        Debug.Assert((SizeOf<TFrom>() == SizeOf<TTo>()));
+        return CreateSpan(ref As<TFrom, TTo>(ref span.GetReference()), span.Length);
+    }
+
+    /// <inheritdoc cref="Unsafe.As{TFrom, TTo}(ref TFrom)" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static ReadOnlySpan<TTo> As<TFrom, TTo>(this ReadOnlySpan<TFrom> span)
         where TFrom : unmanaged
         where TTo : unmanaged
@@ -93,46 +154,63 @@ public unsafe static class Interop
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool IsNullRef<T>(in T source) => Unsafe.IsNullRef(ref AsRef(in source));
 
-    
+    /// <summary>Gets a string for a given span.</summary>
+    /// <param name="span">The span for which to create the string.</param>
+    /// <returns>A string created from <paramref name="span" />.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<sbyte> GetUtf8Span(this string? source)
+    public static string? GetString(this ReadOnlySpan<byte> span)
+        => span.GetPointer() != null ? Encoding.UTF8.GetString(span) : null;
+
+    /// <summary>Gets a string for a given span.</summary>
+    /// <param name="span">The span for which to create the string.</param>
+    /// <returns>A string created from <paramref name="span" />.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static string? GetString(this ReadOnlySpan<ushort> span)
+    {
+#if NET6_0_OR_GREATER
+        return span.GetPointer() != null ? new string(span.As<ushort, char>()) : null;
+#else
+        return span.GetPointer() != null ? new string(span.As<ushort, char>().GetPointer()) : null;
+#endif
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ReadOnlySpan<byte> GetUtf8Span(this string? source)
     {
         ReadOnlySpan<byte> result;
 
         if (source is not null)
         {
             var maxLength = Encoding.UTF8.GetMaxByteCount(source.Length);
-#if NET6_0_OR_GREATER
             var bytes = new byte[maxLength + 1];
 
+#if NET6_0_OR_GREATER
             var length = Encoding.UTF8.GetBytes(source, bytes);
-            result = bytes.AsSpan(0, length);
 #else
-            byte* bytes = stackalloc byte[maxLength + 1];
-            fixed (char* namePtr = source)
+            var length = 0;
+            fixed (char* srcPointer = source)
             {
-                Encoding.UTF8.GetBytes(namePtr, source.Length, bytes, maxLength);
+                length = Encoding.UTF8.GetBytes(new ReadOnlySpan<char>(srcPointer, source.Length), bytes.AsSpan());
             }
-            bytes[maxLength] = 0;
-            result = new(bytes, source.Length);
 #endif
+            result = bytes.AsSpan(0, length);
         }
         else
         {
             result = null;
         }
 
-        return result.As<byte, sbyte>();
+        return result;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<sbyte> GetUtf8Span(sbyte* source, int maxLength = -1)
+    public static ReadOnlySpan<byte> GetUtf8Span(byte* source, int maxLength = -1)
         => (source != null) ? GetUtf8Span(in source[0], maxLength) : null;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<sbyte> GetUtf8Span(in sbyte source, int maxLength = -1)
+    public static ReadOnlySpan<byte> GetUtf8Span(in byte source, int maxLength = -1)
     {
-        ReadOnlySpan<sbyte> result;
+        ReadOnlySpan<byte> result;
 
         if (!IsNullRef(in source))
         {
@@ -142,7 +220,7 @@ public unsafe static class Interop
             }
 
             result = CreateReadOnlySpan(in source, maxLength);
-            var length = result.IndexOf((sbyte)'\0');
+            var length = result.IndexOf((byte)'\0');
 
             if (length != -1)
             {
@@ -157,13 +235,6 @@ public unsafe static class Interop
         return result;
     }
 
-    internal static int GetMaxByteCount(string? value)
-    {
-        return value == null
-            ? 0
-            : Encoding.UTF8.GetMaxByteCount(value.Length + 1); // +1 for null-terminator.
-    }
-
     public static string GetString(byte* ptr)
     {
         int length = 0;
@@ -174,19 +245,5 @@ public unsafe static class Interop
 
         // Decode UTF-8 bytes to string.
         return Encoding.UTF8.GetString(ptr, length);
-    }
-
-    internal static void StringToPointer(string? value, byte* dstPointer, int maxByteCount)
-    {
-        if (value == null)
-            return;
-
-        int destBytesWritten;
-        fixed (char* srcPointer = value)
-        {
-            destBytesWritten = Encoding.UTF8.GetBytes(srcPointer, value.Length, dstPointer, maxByteCount);
-        }
-
-        dstPointer[destBytesWritten] = 0; // Null-terminator.
     }
 }

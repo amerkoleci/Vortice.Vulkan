@@ -183,7 +183,7 @@ public static unsafe class GLFW
     private delegate glfwErrorCallback glfwSetErrorCallback_t(glfwErrorCallback callback);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void glfwErrorCallback(int code, IntPtr message);
+    public unsafe delegate void glfwErrorCallback(int code, sbyte* message);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate GLFWwindow* glfwCreateWindow_t(int width, int height, byte* title, GLFWmonitor* monitor, GLFWwindow* share);

@@ -1,75 +1,50 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using System.Runtime.InteropServices;
-using System.Text;
+using static Vortice.Vulkan.Interop;
 
 namespace Vortice.Vulkan;
 
-public sealed class VkString : IDisposable
+public unsafe readonly struct VkString : IDisposable
 {
-    private readonly GCHandle _handle;
+    public readonly byte* Pointer;
 
     /// <summary>
     /// Size of the byte array that is created from the string.
     /// This value is bigger then the length of the string because '\0' is added at the end of the string and because some UTF8 characters can be longer then 1 byte.
     /// When Size is 0, then this represents a null string or disposed VkString.
     /// </summary>
-    public int Size { get; private set; }
+    public int Size { get; }
 
     public VkString(string? str)
     {
         if (str == null)
             return; // Preserve Size as 0
 
-        byte[]? data = Encoding.UTF8.GetBytes(str + '\0'); // Vulkan expects '\0' terminated UTF8 string
-        _handle = GCHandle.Alloc(data, GCHandleType.Pinned);
+        var strSpan = str.GetUtf8Span();
+        var strLength = strSpan.Length + 1;
+        Pointer = AllocateArray<byte>((uint)strLength);
+
+        var destination = new Span<byte>(Pointer, strLength);
+        strSpan.CopyTo(destination);
+        destination[strSpan.Length] = 0x00;
 
         // note that empty string will have Size set to 1 because of added '\0'
-        Size = data.Length; 
+        Size = strLength;
     }
-
-    ~VkString() => Dispose(disposing: false);
 
     public void Dispose()
     {
-        Dispose(disposing: true);
-        GC.SuppressFinalize(this);
-    }
-
-    private void Dispose(bool disposing)
-    {
-        // Already disposed or not allocated?
         if (Size == 0)
             return;
 
-        _handle.Free();
-        Size = 0;
-    }
-
-    public unsafe byte* Pointer
-    {
-        get
-        {
-            if (Size == 0)
-                return (byte*)0;
-
-            return (byte*)_handle.AddrOfPinnedObject().ToPointer();
-        }
-    }
-
-    private unsafe string? GetString()
-    {
-        if (Size == 0)
-            return null;
-
-        return Encoding.UTF8.GetString(Pointer, Size);
+        Free(Pointer);
     }
 
     public static unsafe implicit operator byte*(VkString value) => value.Pointer;
     public static unsafe implicit operator IntPtr(VkString value) => new IntPtr(value.Pointer);
     public static implicit operator VkString(string str) => new(str);
-    public static implicit operator string?(VkString str) => str.GetString();
+    public static implicit operator string?(VkString str) => GetUtf8Span(str).GetString();
 }
 
 public sealed unsafe class VkStringArray : IDisposable
@@ -84,7 +59,7 @@ public sealed unsafe class VkStringArray : IDisposable
             this[i] = array[i];
     }
 
-    public VkStringArray(List<string> array)
+    public VkStringArray(IList<string> array)
         : this(array.Count)
     {
         for (int i = 0; i < array.Count; i++)
@@ -93,15 +68,28 @@ public sealed unsafe class VkStringArray : IDisposable
         }
     }
 
+    //public VkStringArray(IEnumerable<string> array)
+    //    : this(array.Count())
+    //{
+    //    foreach (string item in array)
+    //    {
+    //        this[i] = array[i];
+    //    }
+    //}
+
     private VkStringArray(int length)
     {
         Length = (uint)length;
-        Pointer = Marshal.AllocHGlobal(sizeof(IntPtr) * length);
+#if NET6_0_OR_GREATER
+        Pointer = NativeMemory.Alloc((nuint)(sizeof(nint) * length));
+#else
+        Pointer = (void*)Marshal.AllocHGlobal(sizeof(nint) * length);
+#endif
         _data = new VkString[length];
     }
 
     public readonly uint Length;
-    public readonly IntPtr Pointer;
+    public readonly void* Pointer;
 
     ~VkStringArray()
     {
@@ -119,9 +107,34 @@ public sealed unsafe class VkStringArray : IDisposable
         if (_disposed)
             return;
 
-        Marshal.FreeHGlobal(Pointer);
+#if NET6_0_OR_GREATER
+        NativeMemory.Free(Pointer);
+#else
+        Marshal.FreeHGlobal((IntPtr)Pointer);
+#endif
         _disposed = true;
     }
+
+    //private static int MarshalNames(string[] names, out sbyte* namesBuffer)
+    //{
+    //    nuint sizePerEntry = SizeOf<nuint>() + VK_MAX_EXTENSION_NAME_SIZE;
+    //    namesBuffer = AllocateArray<sbyte>((nuint)names.Length * sizePerEntry);
+
+    //    var pCurrent = namesBuffer;
+
+    //    for (var i = 0; i < names.Length; i++)
+    //    {
+    //        var destination = new Span<byte>(pCurrent + sizeof(nint), (int)VK_MAX_EXTENSION_NAME_SIZE);
+    //        var length = Encoding.UTF8.GetBytes(names[i], destination);
+
+    //        pCurrent[sizeof(nuint) + length] = (sbyte)'\0';
+
+    //        *(int*)pCurrent = length;
+    //        pCurrent += sizePerEntry;
+    //    }
+
+    //    return names.Length;
+    //}
 
     public VkString this[int index]
     {
