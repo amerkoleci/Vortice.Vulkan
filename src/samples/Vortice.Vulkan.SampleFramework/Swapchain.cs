@@ -189,14 +189,14 @@ public sealed unsafe class Swapchain : IDisposable
         // there is no preferred format, so we assume VK_FORMAT_B8G8R8A8_UNORM
         if ((availableFormats.Length == 1) && (availableFormats[0].format == VkFormat.Undefined))
         {
-            return new VkSurfaceFormatKHR(VkFormat.B8G8R8A8UNorm, availableFormats[0].colorSpace);
+            return new VkSurfaceFormatKHR(VkFormat.B8G8R8A8Unorm, availableFormats[0].colorSpace);
         }
 
         // iterate over the list of available surface format and
         // check for the presence of VK_FORMAT_B8G8R8A8_UNORM
         foreach (VkSurfaceFormatKHR availableFormat in availableFormats)
         {
-            if (availableFormat.format == VkFormat.B8G8R8A8UNorm)
+            if (availableFormat.format == VkFormat.B8G8R8A8Unorm)
             {
                 return availableFormat;
             }

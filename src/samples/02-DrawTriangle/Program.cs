@@ -71,12 +71,12 @@ public static unsafe class Program
                 // Attribute location 0: Position
                 vertexInputAttributs[0].binding = 0;
                 vertexInputAttributs[0].location = 0;
-                vertexInputAttributs[0].format = VkFormat.R32G32B32SFloat;
+                vertexInputAttributs[0].format = VkFormat.R32G32B32Sfloat;
                 vertexInputAttributs[0].offset = 0;
                 // Attribute location 1: Color
                 vertexInputAttributs[1].binding = 0;
                 vertexInputAttributs[1].location = 1;
-                vertexInputAttributs[1].format = VkFormat.R32G32B32A32SFloat;
+                vertexInputAttributs[1].format = VkFormat.R32G32B32A32Sfloat;
                 vertexInputAttributs[1].offset = 12;
 
                 VkPipelineVertexInputStateCreateInfo vertexInputState = new();

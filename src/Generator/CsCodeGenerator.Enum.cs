@@ -488,19 +488,19 @@ public static partial class CsCodeGenerator
                 {
                     if (part.Equals("UNORM", StringComparison.OrdinalIgnoreCase))
                     {
-                        sb.Append("UNorm");
+                        sb.Append("Unorm");
                     }
                     else if (part.Equals("SNORM", StringComparison.OrdinalIgnoreCase))
                     {
-                        sb.Append("SNorm");
+                        sb.Append("Snorm");
                     }
                     else if (part.Equals("UINT", StringComparison.OrdinalIgnoreCase))
                     {
-                        sb.Append("UInt");
+                        sb.Append("Uint");
                     }
                     else if (part.Equals("SINT", StringComparison.OrdinalIgnoreCase))
                     {
-                        sb.Append("SInt");
+                        sb.Append("Sint");
                     }
                     else if (part.Equals("PACK8", StringComparison.OrdinalIgnoreCase))
                     {
@@ -516,23 +516,23 @@ public static partial class CsCodeGenerator
                     }
                     else if (part.Equals("USCALED", StringComparison.OrdinalIgnoreCase))
                     {
-                        sb.Append("UScaled");
+                        sb.Append("Uscaled");
                     }
                     else if (part.Equals("SSCALED", StringComparison.OrdinalIgnoreCase))
                     {
-                        sb.Append("SScaled");
+                        sb.Append("Sscaled");
                     }
                     else if (part.Equals("UFLOAT", StringComparison.OrdinalIgnoreCase))
                     {
-                        sb.Append("UFloat");
+                        sb.Append("Ufloat");
                     }
                     else if (part.Equals("SFLOAT", StringComparison.OrdinalIgnoreCase))
                     {
-                        sb.Append("SFloat");
+                        sb.Append("Sfloat");
                     }
                     else if (part.Equals("SRGB", StringComparison.OrdinalIgnoreCase))
                     {
-                        sb.Append("SRgb");
+                        sb.Append("Srgb");
                     }
                     else if (part.Equals("BLOCK", StringComparison.OrdinalIgnoreCase))
                     {
@@ -565,6 +565,54 @@ public static partial class CsCodeGenerator
                     else if (part.Equals("4PLANE", StringComparison.OrdinalIgnoreCase))
                     {
                         sb.Append("4Plane");
+                    }
+                    else if (part.Equals("BC1", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Bc1");
+                    }
+                    else if (part.Equals("BC2", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Bc2");
+                    }
+                    else if (part.Equals("BC3", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Bc3");
+                    }
+                    else if (part.Equals("BC4", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Bc4");
+                    }
+                    else if (part.Equals("BC5", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Bc5");
+                    }
+                    else if (part.Equals("BC6H", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Bc6h");
+                    }
+                    else if (part.Equals("BC7", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Bc7");
+                    }
+                    else if (part.Equals("ETC2", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Etc2");
+                    }
+                    else if (part.Equals("EAC", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Eac");
+                    }
+                    else if (part.Equals("ASTC", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Astc");
+                    }
+                    else if (part.Equals("RGBA", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Rgba");
+                    }
+                    else if (part.Equals("RGB", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Rgb");
                     }
                     else
                     {
