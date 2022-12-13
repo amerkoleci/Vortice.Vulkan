@@ -11,18 +11,18 @@ namespace Vortice.Vulkan;
 public unsafe static class Interop
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T* AllocateArray<T>(nuint byteCount)
+    public static T* AllocateArray<T>(nuint count)
         where T : unmanaged
     {
 #if NET6_0_OR_GREATER
-        T* result = (T*)NativeMemory.Alloc(byteCount);
+        T* result = (T*)NativeMemory.Alloc(count, (nuint)sizeof(T));
 #else
-        T* result = (T*)Marshal.AllocHGlobal(checked((int)byteCount));
+        T* result = (T*)Marshal.AllocHGlobal(checked((int)count) * sizeof(T));
 #endif
 
         if (result == null)
         {
-            ThrowOutOfMemoryException(byteCount, SizeOf<T>());
+            ThrowOutOfMemoryException(count, SizeOf<T>());
         }
 
         return result;
