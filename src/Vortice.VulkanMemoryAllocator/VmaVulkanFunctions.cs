@@ -5,10 +5,8 @@ namespace Vortice.Vulkan;
 
 public unsafe struct VmaVulkanFunctions
 {
-    /// Required when using VMA_DYNAMIC_VULKAN_FUNCTIONS.
-    public delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr;
-    /// Required when using VMA_DYNAMIC_VULKAN_FUNCTIONS.
-    public delegate* unmanaged[Stdcall]<VkDevice, byte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr;
+    public delegate* unmanaged[Stdcall]<VkInstance, sbyte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr;
+    public delegate* unmanaged[Stdcall]<VkDevice, sbyte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr;
     public delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceProperties, void> vkGetPhysicalDeviceProperties;
     public delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void> vkGetPhysicalDeviceMemoryProperties;
     public delegate* unmanaged[Stdcall]<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, out VkDeviceMemory, VkResult> vkAllocateMemory;

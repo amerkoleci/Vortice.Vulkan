@@ -18,7 +18,7 @@ public static unsafe class Vma
     private static readonly delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, VkImageCreateInfo*, out VkImage, VkResult> vmaCreateAliasingImage_ptr;
     private static readonly delegate* unmanaged[Cdecl]<VmaAllocator, VkImage, VmaAllocation, void> vmaDestroyImage_ptr;
 
-    private static readonly delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, byte*, void> vmaSetAllocationName_ptr;
+    private static readonly delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, sbyte*, void> vmaSetAllocationName_ptr;
 
     static Vma()
     {
@@ -31,7 +31,7 @@ public static unsafe class Vma
         vmaCreateAliasingImage_ptr = (delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, VkImageCreateInfo*, out VkImage, VkResult>)LoadFunction(nameof(vmaCreateAliasingImage));
         vmaDestroyImage_ptr = (delegate* unmanaged[Cdecl]<VmaAllocator, VkImage, VmaAllocation, void>)LoadFunction(nameof(vmaDestroyImage));
 
-        vmaSetAllocationName_ptr = (delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, byte*, void>)LoadFunction(nameof(vmaSetAllocationName));
+        vmaSetAllocationName_ptr = (delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, sbyte*, void>)LoadFunction(nameof(vmaSetAllocationName));
     }
 
     public static VkResult vmaCreateAllocator(VmaAllocatorCreateInfo* allocateInfo, out VmaAllocator allocator)
@@ -165,8 +165,8 @@ public static unsafe class Vma
 
     public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, string name)
     {
-        var data = Interop.GetUtf8Span(name);
-        fixed (byte* dataPtr = data)
+        ReadOnlySpan<sbyte> data = Interop.GetUtf8Span(name);
+        fixed (sbyte* dataPtr = data)
         {
             vmaSetAllocationName_ptr(allocator, allocation, dataPtr);
         }
