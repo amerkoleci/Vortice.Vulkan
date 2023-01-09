@@ -22,22 +22,22 @@ public static unsafe class VkUtils
 
     public static string GetExtensionName(this VkExtensionProperties properties)
     {
-        return Interop.GetString(properties.extensionName);
+        return new(properties.extensionName);
     }
 
     public static string GetLayerName(this VkLayerProperties properties)
     {
-        return Interop.GetString(properties.layerName);
+        return new(properties.layerName);
     }
 
     public static string GetDeviceName(this VkPhysicalDeviceProperties properties)
     {
-        return Interop.GetString(properties.deviceName);
+        return new(properties.deviceName);
     }
 
     public static string GetDescription(this VkLayerProperties properties)
     {
-        return Interop.GetString(properties.description);
+        return new(properties.description);
     }
 
     public static uint IndexOf(this VkPhysicalDeviceMemoryProperties memoryProperties, int memoryTypeBits, VkMemoryPropertyFlags properties)

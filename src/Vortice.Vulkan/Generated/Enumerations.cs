@@ -360,12 +360,12 @@ public enum VkStructureType
 	VideoEncodeH265ReferenceListsInfoEXT = 1000039008,
 	VideoEncodeH265RateControlInfoEXT = 1000039009,
 	VideoEncodeH265RateControlLayerInfoEXT = 1000039010,
-	VideoDecodeH264CapabilitiesEXT = 1000040000,
-	VideoDecodeH264PictureInfoEXT = 1000040001,
-	VideoDecodeH264ProfileInfoEXT = 1000040003,
-	VideoDecodeH264SessionParametersCreateInfoEXT = 1000040004,
-	VideoDecodeH264SessionParametersAddInfoEXT = 1000040005,
-	VideoDecodeH264DpbSlotInfoEXT = 1000040006,
+	VideoDecodeH264CapabilitiesKHR = 1000040000,
+	VideoDecodeH264PictureInfoKHR = 1000040001,
+	VideoDecodeH264ProfileInfoKHR = 1000040003,
+	VideoDecodeH264SessionParametersCreateInfoKHR = 1000040004,
+	VideoDecodeH264SessionParametersAddInfoKHR = 1000040005,
+	VideoDecodeH264DpbSlotInfoKHR = 1000040006,
 	TextureLODGatherFormatPropertiesAMD = 1000041000,
 	RenderingFragmentShadingRateAttachmentInfoKHR = 1000044006,
 	RenderingFragmentDensityMapAttachmentInfoEXT = 1000044007,
@@ -524,12 +524,12 @@ public enum VkStructureType
 	PipelineCompilerControlCreateInfoAMD = 1000183000,
 	CalibratedTimestampInfoEXT = 1000184000,
 	PhysicalDeviceShaderCorePropertiesAMD = 1000185000,
-	VideoDecodeH265CapabilitiesEXT = 1000187000,
-	VideoDecodeH265SessionParametersCreateInfoEXT = 1000187001,
-	VideoDecodeH265SessionParametersAddInfoEXT = 1000187002,
-	VideoDecodeH265ProfileInfoEXT = 1000187003,
-	VideoDecodeH265PictureInfoEXT = 1000187004,
-	VideoDecodeH265DpbSlotInfoEXT = 1000187005,
+	VideoDecodeH265CapabilitiesKHR = 1000187000,
+	VideoDecodeH265SessionParametersCreateInfoKHR = 1000187001,
+	VideoDecodeH265SessionParametersAddInfoKHR = 1000187002,
+	VideoDecodeH265ProfileInfoKHR = 1000187003,
+	VideoDecodeH265PictureInfoKHR = 1000187004,
+	VideoDecodeH265DpbSlotInfoKHR = 1000187005,
 	DeviceQueueGlobalPriorityCreateInfoKHR = 1000174000,
 	PhysicalDeviceGlobalPriorityQueryFeaturesKHR = 1000388000,
 	QueueFamilyGlobalPriorityPropertiesKHR = 1000388001,
@@ -606,6 +606,15 @@ public enum VkStructureType
 	PipelineExecutableStatisticKHR = 1000269004,
 	PipelineExecutableInternalRepresentationKHR = 1000269005,
 	PhysicalDeviceShaderAtomicFloat2FeaturesEXT = 1000273000,
+	SurfacePresentModeEXT = 1000274000,
+	SurfacePresentScalingCapabilitiesEXT = 1000274001,
+	SurfacePresentModeCompatibilityEXT = 1000274002,
+	PhysicalDeviceSwapchainMaintenance1FeaturesEXT = 1000275000,
+	SwapchainPresentFenceInfoEXT = 1000275001,
+	SwapchainPresentModesCreateInfoEXT = 1000275002,
+	SwapchainPresentModeInfoEXT = 1000275003,
+	SwapchainPresentScalingCreateInfoEXT = 1000275004,
+	ReleaseSwapchainImagesInfoEXT = 1000275005,
 	PhysicalDeviceDeviceGeneratedCommandsPropertiesNV = 1000277000,
 	GraphicsShaderGroupCreateInfoNV = 1000277001,
 	GraphicsPipelineShaderGroupsCreateInfoNV = 1000277002,
@@ -2911,6 +2920,7 @@ public enum VkSwapchainCreateFlagsKHR
 	SplitInstanceBindRegions = 1,
 	Protected = 2,
 	MutableFormat = 4,
+	DeferredMemoryAllocationEXT = 8,
 }
 
 [Flags]
@@ -2931,6 +2941,249 @@ public enum VkDisplayPlaneAlphaFlagsKHR
 	Global = 2,
 	PerPixel = 4,
 	PerPixelPremultiplied = 8,
+}
+
+public enum VkQueryResultStatusKHR
+{
+	Error = -1,
+	NotReady = 0,
+	Complete = 1,
+}
+
+[Flags]
+public enum VkVideoCodecOperationFlagsKHR
+{
+	None = 0,
+	EncodeH264EXT = 65536,
+	EncodeH265EXT = 131072,
+	DecodeH264 = 1,
+	DecodeH265 = 2,
+}
+
+[Flags]
+public enum VkVideoChromaSubsamplingFlagsKHR
+{
+	None = 0,
+	Invalid = 0,
+	Monochrome = 1,
+	Subsampling420 = 2,
+	Subsampling422 = 4,
+	Subsampling444 = 8,
+}
+
+[Flags]
+public enum VkVideoComponentBitDepthFlagsKHR
+{
+	None = 0,
+	Invalid = 0,
+	Depth8 = 1,
+	Depth10 = 4,
+	Depth12 = 16,
+}
+
+[Flags]
+public enum VkVideoCapabilityFlagsKHR
+{
+	None = 0,
+	ProtectedContent = 1,
+	SeparateReferenceImages = 2,
+}
+
+[Flags]
+public enum VkVideoSessionCreateFlagsKHR
+{
+	None = 0,
+	ProtectedContent = 1,
+}
+
+[Flags]
+public enum VkVideoCodingControlFlagsKHR
+{
+	None = 0,
+	Reset = 1,
+	EncodeRateControl = 2,
+	EncodeRateControlLayer = 4,
+}
+
+[Flags]
+public enum VkVideoDecodeCapabilityFlagsKHR
+{
+	None = 0,
+	DpbAndOutputCoincide = 1,
+	DpbAndOutputDistinct = 2,
+}
+
+[Flags]
+public enum VkVideoDecodeUsageFlagsKHR
+{
+	None = 0,
+	Default = 0,
+	Transcoding = 1,
+	Offline = 2,
+	Streaming = 4,
+}
+
+public enum StdVideoH264ChromaFormatIdc
+{
+	Monochrome = 0,
+	Idc420 = 1,
+	Idc422 = 2,
+	Idc444 = 3,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264ProfileIdc
+{
+	Baseline = 66,
+	Main = 77,
+	High = 100,
+	High444Predictive = 244,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264LevelIdc
+{
+	Idc10 = 0,
+	Idc11 = 1,
+	Idc12 = 2,
+	Idc13 = 3,
+	Idc20 = 4,
+	Idc21 = 5,
+	Idc22 = 6,
+	Idc30 = 7,
+	Idc31 = 8,
+	Idc32 = 9,
+	Idc40 = 10,
+	Idc41 = 11,
+	Idc42 = 12,
+	Idc50 = 13,
+	Idc51 = 14,
+	Idc52 = 15,
+	Idc60 = 16,
+	Idc61 = 17,
+	Idc62 = 18,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264PocType
+{
+	Type0 = 0,
+	Type1 = 1,
+	Type2 = 2,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264AspectRatioIdc
+{
+	Unspecified = 0,
+	Square = 1,
+	Idc1211 = 2,
+	Idc1011 = 3,
+	Idc1611 = 4,
+	Idc4033 = 5,
+	Idc2411 = 6,
+	Idc2011 = 7,
+	Idc3211 = 8,
+	Idc8033 = 9,
+	Idc1811 = 10,
+	Idc1511 = 11,
+	Idc6433 = 12,
+	Idc16099 = 13,
+	Idc43 = 14,
+	Idc32 = 15,
+	Idc21 = 16,
+	ExtendedSar = 255,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264WeightedBipredIdc
+{
+	Default = 0,
+	Explicit = 1,
+	Implicit = 2,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264ModificationOfPicNumsIdc
+{
+	ShortTermSubtract = 0,
+	ShortTermAdd = 1,
+	LongTerm = 2,
+	End = 3,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264MemMgmtControlOp
+{
+	End = 0,
+	UnmarkShortTerm = 1,
+	UnmarkLongTerm = 2,
+	MarkLongTerm = 3,
+	SetMaxLongTermIndex = 4,
+	UnmarkAll = 5,
+	MarkCurrentAsLongTerm = 6,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264CabacInitIdc
+{
+	Idc0 = 0,
+	Idc1 = 1,
+	Idc2 = 2,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264DisableDeblockingFilterIdc
+{
+	Disabled = 0,
+	Enabled = 1,
+	Partial = 2,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264SliceType
+{
+	P = 0,
+	B = 1,
+	I = 2,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264PictureType
+{
+	P = 0,
+	B = 1,
+	I = 2,
+	Idr = 5,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH264NonVclNaluType
+{
+	Sps = 0,
+	Pps = 1,
+	Aud = 2,
+	Prefix = 3,
+	EndOfSequence = 4,
+	EndOfStream = 5,
+	Precoded = 6,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoDecodeH264FieldOrderCount
+{
+	Top = 0,
+	Bottom = 1,
+	Invalid = 2147483647,
+}
+
+[Flags]
+public enum VkVideoDecodeH264PictureLayoutFlagsKHR
+{
+	None = 0,
+	Progressive = 0,
+	InterlacedInterleavedLines = 1,
+	InterlacedSeparatePlanes = 2,
 }
 
 public enum VkPerformanceCounterUnitKHR
@@ -2980,6 +3233,83 @@ public enum VkPerformanceCounterDescriptionFlagsKHR
 public enum VkAcquireProfilingLockFlagsKHR
 {
 	None = 0,
+}
+
+public enum StdVideoH265ChromaFormatIdc
+{
+	Monochrome = 0,
+	Idc420 = 1,
+	Idc422 = 2,
+	Idc444 = 3,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH265ProfileIdc
+{
+	Main = 1,
+	Main10 = 2,
+	MainStillPicture = 3,
+	FormatRangeExtensions = 4,
+	SccExtensions = 9,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH265LevelIdc
+{
+	Idc10 = 0,
+	Idc20 = 1,
+	Idc21 = 2,
+	Idc30 = 3,
+	Idc31 = 4,
+	Idc40 = 5,
+	Idc41 = 6,
+	Idc50 = 7,
+	Idc51 = 8,
+	Idc52 = 9,
+	Idc60 = 10,
+	Idc61 = 11,
+	Idc62 = 12,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH265SliceType
+{
+	B = 0,
+	P = 1,
+	I = 2,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH265PictureType
+{
+	P = 0,
+	B = 1,
+	I = 2,
+	Idr = 3,
+	Invalid = 2147483647,
+}
+
+public enum StdVideoH265AspectRatioIdc
+{
+	Unspecified = 0,
+	Square = 1,
+	Idc1211 = 2,
+	Idc1011 = 3,
+	Idc1611 = 4,
+	Idc4033 = 5,
+	Idc2411 = 6,
+	Idc2011 = 7,
+	Idc3211 = 8,
+	Idc8033 = 9,
+	Idc1811 = 10,
+	Idc1511 = 11,
+	Idc6433 = 12,
+	Idc16099 = 13,
+	Idc43 = 14,
+	Idc32 = 15,
+	Idc21 = 16,
+	ExtendedSar = 255,
+	Invalid = 2147483647,
 }
 
 public enum VkQueueGlobalPriorityKHR
@@ -3449,6 +3779,24 @@ public enum VkLineRasterizationModeEXT
 	RectangularSmooth = 3,
 }
 
+[Flags]
+public enum VkPresentScalingFlagsEXT
+{
+	None = 0,
+	OneToOne = 1,
+	AspectRatioStretch = 2,
+	Stretch = 4,
+}
+
+[Flags]
+public enum VkPresentGravityFlagsEXT
+{
+	None = 0,
+	Min = 1,
+	Max = 2,
+	Centered = 4,
+}
+
 public enum VkIndirectCommandsTokenTypeNV
 {
 	TypeShaderGroup = 0,
@@ -3793,86 +4141,6 @@ public enum VkExportMetalObjectTypeFlagsEXT
 	MetalSharedEvent = 32,
 }
 
-public enum VkQueryResultStatusKHR
-{
-	Error = -1,
-	NotReady = 0,
-	Complete = 1,
-}
-
-[Flags]
-public enum VkVideoCodecOperationFlagsKHR
-{
-	None = 0,
-	EncodeH264EXT = 65536,
-	EncodeH265EXT = 131072,
-	DecodeH264EXT = 1,
-	DecodeH265EXT = 2,
-}
-
-[Flags]
-public enum VkVideoChromaSubsamplingFlagsKHR
-{
-	None = 0,
-	Invalid = 0,
-	Monochrome = 1,
-	Subsampling420 = 2,
-	Subsampling422 = 4,
-	Subsampling444 = 8,
-}
-
-[Flags]
-public enum VkVideoComponentBitDepthFlagsKHR
-{
-	None = 0,
-	Invalid = 0,
-	Depth8 = 1,
-	Depth10 = 4,
-	Depth12 = 16,
-}
-
-[Flags]
-public enum VkVideoCapabilityFlagsKHR
-{
-	None = 0,
-	ProtectedContent = 1,
-	SeparateReferenceImages = 2,
-}
-
-[Flags]
-public enum VkVideoSessionCreateFlagsKHR
-{
-	None = 0,
-	ProtectedContent = 1,
-}
-
-[Flags]
-public enum VkVideoCodingControlFlagsKHR
-{
-	None = 0,
-	Reset = 1,
-	EncodeRateControl = 2,
-	EncodeRateControlLayer = 4,
-}
-
-[Flags]
-public enum VkVideoDecodeCapabilityFlagsKHR
-{
-	None = 0,
-	DpbAndOutputCoincide = 1,
-	DpbAndOutputDistinct = 2,
-}
-
-[Flags]
-public enum VkVideoDecodeUsageFlagsKHR
-{
-	None = 0,
-	Default = 0,
-	Transcoding = 1,
-	Offline = 2,
-	Streaming = 4,
-}
-
 public enum VkVideoEncodeTuningModeKHR
 {
 	Default = 0,
@@ -3916,153 +4184,6 @@ public enum VkVideoEncodeContentFlagsKHR
 	Camera = 1,
 	Desktop = 2,
 	Rendered = 4,
-}
-
-public enum StdVideoH264ChromaFormatIdc
-{
-	Monochrome = 0,
-	Idc420 = 1,
-	Idc422 = 2,
-	Idc444 = 3,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264ProfileIdc
-{
-	Baseline = 66,
-	Main = 77,
-	High = 100,
-	High444Predictive = 244,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264LevelIdc
-{
-	Idc10 = 0,
-	Idc11 = 1,
-	Idc12 = 2,
-	Idc13 = 3,
-	Idc20 = 4,
-	Idc21 = 5,
-	Idc22 = 6,
-	Idc30 = 7,
-	Idc31 = 8,
-	Idc32 = 9,
-	Idc40 = 10,
-	Idc41 = 11,
-	Idc42 = 12,
-	Idc50 = 13,
-	Idc51 = 14,
-	Idc52 = 15,
-	Idc60 = 16,
-	Idc61 = 17,
-	Idc62 = 18,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264PocType
-{
-	Type0 = 0,
-	Type1 = 1,
-	Type2 = 2,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264AspectRatioIdc
-{
-	Unspecified = 0,
-	Square = 1,
-	Idc1211 = 2,
-	Idc1011 = 3,
-	Idc1611 = 4,
-	Idc4033 = 5,
-	Idc2411 = 6,
-	Idc2011 = 7,
-	Idc3211 = 8,
-	Idc8033 = 9,
-	Idc1811 = 10,
-	Idc1511 = 11,
-	Idc6433 = 12,
-	Idc16099 = 13,
-	Idc43 = 14,
-	Idc32 = 15,
-	Idc21 = 16,
-	ExtendedSar = 255,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264WeightedBipredIdc
-{
-	Default = 0,
-	Explicit = 1,
-	Implicit = 2,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264ModificationOfPicNumsIdc
-{
-	ShortTermSubtract = 0,
-	ShortTermAdd = 1,
-	LongTerm = 2,
-	End = 3,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264MemMgmtControlOp
-{
-	End = 0,
-	UnmarkShortTerm = 1,
-	UnmarkLongTerm = 2,
-	MarkLongTerm = 3,
-	SetMaxLongTermIndex = 4,
-	UnmarkAll = 5,
-	MarkCurrentAsLongTerm = 6,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264CabacInitIdc
-{
-	Idc0 = 0,
-	Idc1 = 1,
-	Idc2 = 2,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264DisableDeblockingFilterIdc
-{
-	Disabled = 0,
-	Enabled = 1,
-	Partial = 2,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264SliceType
-{
-	P = 0,
-	B = 1,
-	I = 2,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264PictureType
-{
-	P = 0,
-	B = 1,
-	I = 2,
-	Idr = 5,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH264NonVclNaluType
-{
-	Sps = 0,
-	Pps = 1,
-	Aud = 2,
-	Prefix = 3,
-	EndOfSequence = 4,
-	EndOfStream = 5,
-	Precoded = 6,
-	Invalid = 2147483647,
 }
 
 public enum VkVideoEncodeH264RateControlStructureEXT
@@ -4119,83 +4240,6 @@ public enum VkVideoEncodeH264OutputModeFlagsEXT
 	Frame = 1,
 	Slice = 2,
 	NonVcl = 4,
-}
-
-public enum StdVideoH265ChromaFormatIdc
-{
-	Monochrome = 0,
-	Idc420 = 1,
-	Idc422 = 2,
-	Idc444 = 3,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH265ProfileIdc
-{
-	Main = 1,
-	Main10 = 2,
-	MainStillPicture = 3,
-	FormatRangeExtensions = 4,
-	SccExtensions = 9,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH265LevelIdc
-{
-	Idc10 = 0,
-	Idc20 = 1,
-	Idc21 = 2,
-	Idc30 = 3,
-	Idc31 = 4,
-	Idc40 = 5,
-	Idc41 = 6,
-	Idc50 = 7,
-	Idc51 = 8,
-	Idc52 = 9,
-	Idc60 = 10,
-	Idc61 = 11,
-	Idc62 = 12,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH265SliceType
-{
-	B = 0,
-	P = 1,
-	I = 2,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH265PictureType
-{
-	P = 0,
-	B = 1,
-	I = 2,
-	Idr = 3,
-	Invalid = 2147483647,
-}
-
-public enum StdVideoH265AspectRatioIdc
-{
-	Unspecified = 0,
-	Square = 1,
-	Idc1211 = 2,
-	Idc1011 = 3,
-	Idc1611 = 4,
-	Idc4033 = 5,
-	Idc2411 = 6,
-	Idc2011 = 7,
-	Idc3211 = 8,
-	Idc8033 = 9,
-	Idc1811 = 10,
-	Idc1511 = 11,
-	Idc6433 = 12,
-	Idc16099 = 13,
-	Idc43 = 14,
-	Idc32 = 15,
-	Idc21 = 16,
-	ExtendedSar = 255,
-	Invalid = 2147483647,
 }
 
 public enum VkVideoEncodeH265RateControlStructureEXT
@@ -4272,22 +4316,6 @@ public enum VkVideoEncodeH265TransformBlockSizeFlagsEXT
 	Size8 = 2,
 	Size16 = 4,
 	Size32 = 8,
-}
-
-public enum StdVideoDecodeH264FieldOrderCount
-{
-	Top = 0,
-	Bottom = 1,
-	Invalid = 2147483647,
-}
-
-[Flags]
-public enum VkVideoDecodeH264PictureLayoutFlagsEXT
-{
-	None = 0,
-	Progressive = 0,
-	InterlacedInterleavedLines = 1,
-	InterlacedSeparatePlanes = 2,
 }
 
 [Flags]
@@ -4400,6 +4428,30 @@ public enum VkDisplayModeCreateFlagsKHR
 
 [Flags]
 public enum VkDisplaySurfaceCreateFlagsKHR
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkVideoSessionParametersCreateFlagsKHR
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkVideoBeginCodingFlagsKHR
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkVideoEndCodingFlagsKHR
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkVideoDecodeFlagsKHR
 {
 	None = 0,
 }
@@ -4664,30 +4716,6 @@ public enum VkMetalSurfaceCreateFlagsEXT
 
 [Flags]
 public enum VkViSurfaceCreateFlagsNN
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkVideoSessionParametersCreateFlagsKHR
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkVideoBeginCodingFlagsKHR
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkVideoEndCodingFlagsKHR
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkVideoDecodeFlagsKHR
 {
 	None = 0,
 }

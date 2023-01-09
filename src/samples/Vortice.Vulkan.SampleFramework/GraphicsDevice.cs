@@ -349,7 +349,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
         if (VkDevice.IsNotNull)
         {
-            //vkDestroyDevice(VkDevice);
+            vkDestroyDevice(VkDevice);
         }
 
         if (_debugMessenger != VkDebugUtilsMessengerEXT.Null)
@@ -557,7 +557,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         return vkCreateShaderModule(VkDevice, data, null, out module);
     }
 
-#region Private Methods
+    #region Private Methods
 
 
     private static bool CheckDeviceExtensionSupport(string extensionName, ReadOnlySpan<VkExtensionProperties> availableDeviceExtensions)
@@ -672,7 +672,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
         void* userData)
     {
-        string message = Interop.GetString(pCallbackData->pMessage);
+        string message = new(pCallbackData->pMessage);
         if (messageTypes == VkDebugUtilsMessageTypeFlagsEXT.Validation)
         {
             if (messageSeverity == VkDebugUtilsMessageSeverityFlagsEXT.Error)
@@ -735,7 +735,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
         return (graphicsFamily, presentFamily);
     }
-#endregion
+    #endregion
 
     private static readonly Lazy<bool> s_isSupported = new(CheckIsSupported);
 
@@ -798,7 +798,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
     private static string[] GetInstanceExtensions()
     {
         int count = 0;
-        VkResult result = vkEnumerateInstanceExtensionProperties((byte*)null, &count, null);
+        VkResult result = vkEnumerateInstanceExtensionProperties(&count, null);
         if (result != VkResult.Success)
         {
             return Array.Empty<string>();
@@ -810,7 +810,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         }
 
         VkExtensionProperties* props = stackalloc VkExtensionProperties[count];
-        vkEnumerateInstanceExtensionProperties((byte*)null, &count, props);
+        vkEnumerateInstanceExtensionProperties(&count, props);
 
         string[] extensions = new string[count];
         for (int i = 0; i < count; i++)

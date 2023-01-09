@@ -11,6 +11,23 @@ namespace Vortice.Vulkan;
 public unsafe static class Interop
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void* Allocate(nuint count)
+    {
+#if NET6_0_OR_GREATER
+        void* result = NativeMemory.Alloc(count);
+#else
+        void* result = (void*)Marshal.AllocHGlobal(checked((int)count));
+#endif
+
+        if (result == null)
+        {
+            ThrowOutOfMemoryException(count);
+        }
+
+        return result;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T* AllocateArray<T>(nuint count)
         where T : unmanaged
     {
@@ -158,8 +175,8 @@ public unsafe static class Interop
     /// <param name="span">The span for which to create the string.</param>
     /// <returns>A string created from <paramref name="span" />.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static string? GetString(this ReadOnlySpan<byte> span)
-        => span.GetPointer() != null ? Encoding.UTF8.GetString(span) : null;
+    public static string? GetString(this ReadOnlySpan<sbyte> span)
+        => span.GetPointer() != null ? Encoding.UTF8.GetString(span.As<sbyte, byte>()) : null;
 
     /// <summary>Gets a string for a given span.</summary>
     /// <param name="span">The span for which to create the string.</param>
@@ -175,7 +192,7 @@ public unsafe static class Interop
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<byte> GetUtf8Span(this string? source)
+    public static ReadOnlySpan<sbyte> GetUtf8Span(this string? source)
     {
         ReadOnlySpan<byte> result;
 
@@ -200,17 +217,17 @@ public unsafe static class Interop
             result = null;
         }
 
-        return result;
+        return result.As<byte, sbyte>();
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<byte> GetUtf8Span(byte* source, int maxLength = -1)
+    public static ReadOnlySpan<sbyte> GetUtf8Span(sbyte* source, int maxLength = -1)
         => (source != null) ? GetUtf8Span(in source[0], maxLength) : null;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<byte> GetUtf8Span(in byte source, int maxLength = -1)
+    public static ReadOnlySpan<sbyte> GetUtf8Span(in sbyte source, int maxLength = -1)
     {
-        ReadOnlySpan<byte> result;
+        ReadOnlySpan<sbyte> result;
 
         if (!IsNullRef(in source))
         {
@@ -220,7 +237,7 @@ public unsafe static class Interop
             }
 
             result = CreateReadOnlySpan(in source, maxLength);
-            var length = result.IndexOf((byte)'\0');
+            var length = result.IndexOf((sbyte)'\0');
 
             if (length != -1)
             {

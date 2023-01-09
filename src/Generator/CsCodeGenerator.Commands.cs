@@ -90,10 +90,8 @@ public static partial class CsCodeGenerator
         "vkCreateDebugUtilsMessengerEXT"
     };
 
-    private static string GetFunctionPointerSignature(CppFunction function, bool allowNonBlittable = true)
+    private static string GetFunctionPointerSignature(CppFunction function, bool canUseOut, bool allowNonBlittable = true)
     {
-        bool canUseOut = s_outReturnFunctions.Contains(function.Name);
-
         StringBuilder builder = new();
         foreach (CppParameter parameter in function.Parameters)
         {
@@ -144,9 +142,9 @@ public static partial class CsCodeGenerator
             "System"
             );
 
-        var commands = new Dictionary<string, CppFunction>();
-        var instanceCommands = new Dictionary<string, CppFunction>();
-        var deviceCommands = new Dictionary<string, CppFunction>();
+        Dictionary<string, CppFunction> commands = new();
+        Dictionary<string, CppFunction> instanceCommands = new();
+        Dictionary<string, CppFunction> deviceCommands = new();
         foreach (CppFunction? cppFunction in compilation.Functions)
         {
             string? returnType = GetCsTypeName(cppFunction.ReturnType, false);
@@ -187,45 +185,18 @@ public static partial class CsCodeGenerator
                     continue;
                 }
 
-                string functionPointerSignature = GetFunctionPointerSignature(cppFunction);
-                writer.WriteLine($"private static {functionPointerSignature} {command.Key}_ptr;");
-
-                string returnCsName = GetCsTypeName(cppFunction.ReturnType, false);
                 bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
-                var argumentsString = GetParameterSignature(cppFunction, canUseOut);
+                string functionPointerSignature = GetFunctionPointerSignature(cppFunction, false);
+                writer.WriteLine($"private static {functionPointerSignature} {command.Key}_ptr;");
+                WriteFunctionInvocation(writer, cppFunction, false);
 
-                using (writer.PushBlock($"public static {returnCsName} {cppFunction.Name}({argumentsString})"))
+                if (canUseOut)
                 {
-                    if (returnCsName != "void")
-                    {
-                        writer.Write("return ");
-                    }
+                    functionPointerSignature = GetFunctionPointerSignature(cppFunction, true);
+                    writer.WriteLine($"private static {functionPointerSignature} {command.Key}_out_ptr;");
 
-                    writer.Write($"{command.Key}_ptr(");
-                    int index = 0;
-                    foreach (CppParameter cppParameter in cppFunction.Parameters)
-                    {
-                        string paramCsName = GetParameterName(cppParameter.Name);
-
-                        if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
-                        {
-                            writer.Write("out ");
-                        }
-
-                        writer.Write($"{paramCsName}");
-
-                        if (index < cppFunction.Parameters.Count - 1)
-                        {
-                            writer.Write(", ");
-                        }
-
-                        index++;
-                    }
-
-                    writer.WriteLine(");");
+                    WriteFunctionInvocation(writer, cppFunction, true);
                 }
-
-                writer.WriteLine();
             }
 
             WriteCommands(writer, "GenLoadInstance", instanceCommands);
@@ -246,11 +217,66 @@ public static partial class CsCodeGenerator
                     continue;
                 }
 
-                string functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value);
+                bool canUseOut = s_outReturnFunctions.Contains(instanceCommand.Value.Name);
+                string functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value, false);
                 writer.WriteLine($"{commandName}_ptr = ({functionPointerSignature}) load(context, nameof({commandName}));");
+
+                if (canUseOut)
+                {
+                    functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value, true);
+                    writer.WriteLine($"{commandName}_out_ptr = ({functionPointerSignature}) load(context, nameof({commandName}));");
+                }
             }
         }
     }
+
+    private static void WriteFunctionInvocation(CodeWriter writer, CppFunction cppFunction, bool canUseOut)
+    {
+        string returnCsName = GetCsTypeName(cppFunction.ReturnType, false);
+        string argumentsString = GetParameterSignature(cppFunction, canUseOut);
+
+        using (writer.PushBlock($"public static {returnCsName} {cppFunction.Name}({argumentsString})"))
+        {
+            if (returnCsName != "void")
+            {
+                writer.Write("return ");
+            }
+
+            if (canUseOut)
+            {
+                writer.Write($"{cppFunction.Name}_out_ptr(");
+            }
+            else
+            {
+                writer.Write($"{cppFunction.Name}_ptr(");
+            }
+
+            int index = 0;
+            foreach (CppParameter cppParameter in cppFunction.Parameters)
+            {
+                string paramCsName = GetParameterName(cppParameter.Name);
+
+                if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
+                {
+                    writer.Write("out ");
+                }
+
+                writer.Write($"{paramCsName}");
+
+                if (index < cppFunction.Parameters.Count - 1)
+                {
+                    writer.Write(", ");
+                }
+
+                index++;
+            }
+
+            writer.WriteLine(");");
+        }
+
+        writer.WriteLine();
+    }
+
 
     private static void EmitInvoke(CodeWriter writer, CppFunction function, List<string> parameters, bool handleCheckResult = true)
     {

@@ -38,7 +38,7 @@ public static unsafe partial class Vulkan
             if (s_vulkanModule == 0)
                 s_vulkanModule = _loader.LoadNativeLibrary("libMoltenVK.dylib");
 
-            if (s_vulkanModule ==0)
+            if (s_vulkanModule == 0)
                 return VkResult.ErrorInitializationFailed;
         }
         else
@@ -51,7 +51,7 @@ public static unsafe partial class Vulkan
                 return VkResult.ErrorInitializationFailed;
         }
 
-        vkGetInstanceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>>)_loader.LoadFunctionPointer(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+        vkGetInstanceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkInstance, sbyte*, delegate* unmanaged[Stdcall]<void>>)_loader.LoadFunctionPointer(s_vulkanModule, nameof(vkGetInstanceProcAddr));
         GenLoadLoader(0, vkGetInstanceProcAddr);
 
         return VkResult.Success;
@@ -68,7 +68,7 @@ public static unsafe partial class Vulkan
         s_loadedInstance = instance;
         GenLoadInstance(instance.Handle, vkGetInstanceProcAddr);
 
-        vkGetDeviceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkDevice, byte*, delegate* unmanaged[Stdcall]<void>>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetDeviceProcAddr));
+        vkGetDeviceProcAddr_ptr = (delegate* unmanaged[Stdcall]<VkDevice, sbyte*, delegate* unmanaged[Stdcall]<void>>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetDeviceProcAddr));
 
         // Manually loaded entries.
         LoadWin32(instance);
@@ -89,8 +89,9 @@ public static unsafe partial class Vulkan
 
     private static void GenLoadLoader(nint context, LoadFunction load)
     {
-        vkCreateInstance_ptr = (delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
-        vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged[Stdcall]<byte*, int*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
+        vkCreateInstance_ptr = (delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
+        vkCreateInstance_out_ptr = (delegate* unmanaged[Stdcall]<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
+        vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged[Stdcall]<sbyte*, int*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
         vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged[Stdcall]<int*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
         vkEnumerateInstanceVersion_ptr = (delegate* unmanaged[Stdcall]<uint*, VkResult>)load(context, "vkEnumerateInstanceVersion");
     }
@@ -106,16 +107,16 @@ public static unsafe partial class Vulkan
         return functionPtr;
     }
 
-    public static delegate* unmanaged[Stdcall]<VkInstance, byte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr_ptr;
+    public static delegate* unmanaged[Stdcall]<VkInstance, sbyte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr_ptr;
 
-    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(VkInstance instance, byte* name)
+    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(VkInstance instance, sbyte* name)
     {
         return vkGetInstanceProcAddr_ptr(instance, name);
     }
 
-    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(VkInstance instance, ReadOnlySpan<byte> name)
+    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(VkInstance instance, ReadOnlySpan<sbyte> name)
     {
-        fixed (byte* pName = name)
+        fixed (sbyte* pName = name)
         {
             return vkGetInstanceProcAddr_ptr(instance, pName);
         }
@@ -126,16 +127,16 @@ public static unsafe partial class Vulkan
         return vkGetInstanceProcAddr(instance, name.GetUtf8Span());
     }
 
-    public static delegate* unmanaged[Stdcall]<VkDevice, byte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr_ptr;
+    public static delegate* unmanaged[Stdcall]<VkDevice, sbyte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr_ptr;
 
-    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, byte* name)
+    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, sbyte* name)
     {
         return vkGetDeviceProcAddr_ptr(device, name);
     }
 
-    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, ReadOnlySpan<byte> name)
+    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, ReadOnlySpan<sbyte> name)
     {
-        fixed (byte* pName = name)
+        fixed (sbyte* pName = name)
         {
             return vkGetDeviceProcAddr_ptr(device, pName);
         }
@@ -144,6 +145,11 @@ public static unsafe partial class Vulkan
     public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(IntPtr device, string name)
     {
         return vkGetDeviceProcAddr(device, name.GetUtf8Span());
+    }
+
+    public static VkResult vkEnumerateInstanceExtensionProperties(int* propertyCount, VkExtensionProperties* properties)
+    {
+        return vkEnumerateInstanceExtensionProperties_ptr((sbyte*)null, propertyCount, properties);
     }
 
     /// <summary>
@@ -156,9 +162,9 @@ public static unsafe partial class Vulkan
     {
         if (layerName is not null)
         {
-            ReadOnlySpan<byte> layerNameSpan = layerName.GetUtf8Span();
+            ReadOnlySpan<sbyte> layerNameSpan = layerName.GetUtf8Span();
 
-            fixed (byte* pLayerName = layerNameSpan)
+            fixed (sbyte* pLayerName = layerNameSpan)
             {
                 int count = 0;
                 vkEnumerateInstanceExtensionProperties(pLayerName, &count, null).CheckResult();
@@ -198,9 +204,9 @@ public static unsafe partial class Vulkan
     {
         if (layerName is not null)
         {
-            ReadOnlySpan<byte> layerNameSpan = layerName.GetUtf8Span();
+            ReadOnlySpan<sbyte> layerNameSpan = layerName.GetUtf8Span();
 
-            fixed (byte* playerName = layerNameSpan)
+            fixed (sbyte* playerName = layerNameSpan)
             {
                 int propertyCount = 0;
                 vkEnumerateDeviceExtensionProperties(physicalDevice, playerName, &propertyCount, null).CheckResult();

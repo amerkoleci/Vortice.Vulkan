@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 236
+	/// VK_HEADER_VERSION = 238
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 236;
+	public const uint VK_HEADER_VERSION = 238;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -154,6 +154,94 @@ public static partial class Vulkan
 	/// VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_EXTENSION_NAME = "VK_KHR_sampler_mirror_clamp_to_edge"
 	/// </summary>
 	public const string VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_EXTENSION_NAME = "VK_KHR_sampler_mirror_clamp_to_edge";
+	/// <summary>
+	/// VK_KHR_video_queue = 1
+	/// </summary>
+	public const uint VK_KHR_video_queue = 1;
+	/// <summary>
+	/// VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 8
+	/// </summary>
+	public const uint VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 8;
+	/// <summary>
+	/// VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue"
+	/// </summary>
+	public const string VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue";
+	/// <summary>
+	/// VK_KHR_video_decode_queue = 1
+	/// </summary>
+	public const uint VK_KHR_video_decode_queue = 1;
+	/// <summary>
+	/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 7
+	/// </summary>
+	public const uint VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 7;
+	/// <summary>
+	/// VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue"
+	/// </summary>
+	public const string VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue";
+	/// <summary>
+	/// VK_KHR_video_decode_h264 = 1
+	/// </summary>
+	public const uint VK_KHR_video_decode_h264 = 1;
+	/// <summary>
+	/// vulkan_video_codec_h264std = 1
+	/// </summary>
+	public const uint vulkan_video_codec_h264std = 1;
+	/// <summary>
+	/// STD_VIDEO_H264_CPB_CNT_LIST_SIZE = 32
+	/// </summary>
+	public const uint STD_VIDEO_H264_CPB_CNT_LIST_SIZE = 32;
+	/// <summary>
+	/// STD_VIDEO_H264_SCALING_LIST_4X4_NUM_LISTS = 6
+	/// </summary>
+	public const uint STD_VIDEO_H264_SCALING_LIST_4X4_NUM_LISTS = 6;
+	/// <summary>
+	/// STD_VIDEO_H264_SCALING_LIST_4X4_NUM_ELEMENTS = 16
+	/// </summary>
+	public const uint STD_VIDEO_H264_SCALING_LIST_4X4_NUM_ELEMENTS = 16;
+	/// <summary>
+	/// STD_VIDEO_H264_SCALING_LIST_8X8_NUM_LISTS = 6
+	/// </summary>
+	public const uint STD_VIDEO_H264_SCALING_LIST_8X8_NUM_LISTS = 6;
+	/// <summary>
+	/// STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS = 64
+	/// </summary>
+	public const uint STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
+	/// <summary>
+	/// STD_VIDEO_H264_MAX_NUM_LIST_REF = 32
+	/// </summary>
+	public const uint STD_VIDEO_H264_MAX_NUM_LIST_REF = 32;
+	/// <summary>
+	/// STD_VIDEO_H264_MAX_CHROMA_PLANES = 2
+	/// </summary>
+	public const uint STD_VIDEO_H264_MAX_CHROMA_PLANES = 2;
+	/// <summary>
+	/// vulkan_video_codec_h264std_decode = 1
+	/// </summary>
+	public const uint vulkan_video_codec_h264std_decode = 1;
+	/// <summary>
+	/// VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_1_0_0 = VK_MAKE_VIDEO_STD_VERSION(1,0,0)
+	/// </summary>
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_1_0_0 = new VkVersion(1, 0, 0);
+	/// <summary>
+	/// STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE = 2
+	/// </summary>
+	public const uint STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE = 2;
+	/// <summary>
+	/// VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_1_0_0
+	/// </summary>
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_1_0_0;
+	/// <summary>
+	/// VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264_decode"
+	/// </summary>
+	public const string VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264_decode";
+	/// <summary>
+	/// VK_KHR_VIDEO_DECODE_H264_SPEC_VERSION = 8
+	/// </summary>
+	public const uint VK_KHR_VIDEO_DECODE_H264_SPEC_VERSION = 8;
+	/// <summary>
+	/// VK_KHR_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_KHR_video_decode_h264"
+	/// </summary>
+	public const string VK_KHR_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_KHR_video_decode_h264";
 	/// <summary>
 	/// VK_KHR_dynamic_rendering = 1
 	/// </summary>
@@ -670,6 +758,130 @@ public static partial class Vulkan
 	/// VK_KHR_SHADER_CLOCK_EXTENSION_NAME = "VK_KHR_shader_clock"
 	/// </summary>
 	public const string VK_KHR_SHADER_CLOCK_EXTENSION_NAME = "VK_KHR_shader_clock";
+	/// <summary>
+	/// VK_KHR_video_decode_h265 = 1
+	/// </summary>
+	public const uint VK_KHR_video_decode_h265 = 1;
+	/// <summary>
+	/// vulkan_video_codec_h265std = 1
+	/// </summary>
+	public const uint vulkan_video_codec_h265std = 1;
+	/// <summary>
+	/// STD_VIDEO_H265_SUBLAYERS_LIST_SIZE = 7
+	/// </summary>
+	public const uint STD_VIDEO_H265_SUBLAYERS_LIST_SIZE = 7;
+	/// <summary>
+	/// STD_VIDEO_H265_CPB_CNT_LIST_SIZE = 32
+	/// </summary>
+	public const uint STD_VIDEO_H265_CPB_CNT_LIST_SIZE = 32;
+	/// <summary>
+	/// STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS = 6
+	/// </summary>
+	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS = 6;
+	/// <summary>
+	/// STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS = 16
+	/// </summary>
+	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS = 16;
+	/// <summary>
+	/// STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS = 6
+	/// </summary>
+	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS = 6;
+	/// <summary>
+	/// STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64
+	/// </summary>
+	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
+	/// <summary>
+	/// STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS = 6
+	/// </summary>
+	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS = 6;
+	/// <summary>
+	/// STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS = 64
+	/// </summary>
+	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS = 64;
+	/// <summary>
+	/// STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS = 2
+	/// </summary>
+	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS = 2;
+	/// <summary>
+	/// STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS = 64
+	/// </summary>
+	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS = 64;
+	/// <summary>
+	/// STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE = 3
+	/// </summary>
+	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE = 3;
+	/// <summary>
+	/// STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128
+	/// </summary>
+	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128;
+	/// <summary>
+	/// STD_VIDEO_H265_MAX_DPB_SIZE = 16
+	/// </summary>
+	public const uint STD_VIDEO_H265_MAX_DPB_SIZE = 16;
+	/// <summary>
+	/// STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS = 32
+	/// </summary>
+	public const uint STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS = 32;
+	/// <summary>
+	/// STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE = 6
+	/// </summary>
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE = 6;
+	/// <summary>
+	/// STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19
+	/// </summary>
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19;
+	/// <summary>
+	/// STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE = 21
+	/// </summary>
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE = 21;
+	/// <summary>
+	/// STD_VIDEO_H265_MAX_NUM_LIST_REF = 15
+	/// </summary>
+	public const uint STD_VIDEO_H265_MAX_NUM_LIST_REF = 15;
+	/// <summary>
+	/// STD_VIDEO_H265_MAX_CHROMA_PLANES = 2
+	/// </summary>
+	public const uint STD_VIDEO_H265_MAX_CHROMA_PLANES = 2;
+	/// <summary>
+	/// STD_VIDEO_H265_MAX_SHORT_TERM_REF_PIC_SETS = 64
+	/// </summary>
+	public const uint STD_VIDEO_H265_MAX_SHORT_TERM_REF_PIC_SETS = 64;
+	/// <summary>
+	/// STD_VIDEO_H265_MAX_LONG_TERM_PICS = 16
+	/// </summary>
+	public const uint STD_VIDEO_H265_MAX_LONG_TERM_PICS = 16;
+	/// <summary>
+	/// STD_VIDEO_H265_MAX_DELTA_POC = 48
+	/// </summary>
+	public const uint STD_VIDEO_H265_MAX_DELTA_POC = 48;
+	/// <summary>
+	/// vulkan_video_codec_h265std_decode = 1
+	/// </summary>
+	public const uint vulkan_video_codec_h265std_decode = 1;
+	/// <summary>
+	/// VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_1_0_0 = VK_MAKE_VIDEO_STD_VERSION(1,0,0)
+	/// </summary>
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_1_0_0 = new VkVersion(1, 0, 0);
+	/// <summary>
+	/// STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8
+	/// </summary>
+	public const uint STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8;
+	/// <summary>
+	/// VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_1_0_0
+	/// </summary>
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_1_0_0;
+	/// <summary>
+	/// VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_decode"
+	/// </summary>
+	public const string VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_decode";
+	/// <summary>
+	/// VK_KHR_VIDEO_DECODE_H265_SPEC_VERSION = 7
+	/// </summary>
+	public const uint VK_KHR_VIDEO_DECODE_H265_SPEC_VERSION = 7;
+	/// <summary>
+	/// VK_KHR_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_KHR_video_decode_h265"
+	/// </summary>
+	public const string VK_KHR_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_KHR_video_decode_h265";
 	/// <summary>
 	/// VK_KHR_global_priority = 1
 	/// </summary>
@@ -2483,6 +2695,30 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_EXT_SHADER_ATOMIC_FLOAT_2_EXTENSION_NAME = "VK_EXT_shader_atomic_float2";
 	/// <summary>
+	/// VK_EXT_surface_maintenance1 = 1
+	/// </summary>
+	public const uint VK_EXT_surface_maintenance1 = 1;
+	/// <summary>
+	/// VK_EXT_SURFACE_MAINTENANCE_1_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_SURFACE_MAINTENANCE_1_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_SURFACE_MAINTENANCE_1_EXTENSION_NAME = "VK_EXT_surface_maintenance1"
+	/// </summary>
+	public const string VK_EXT_SURFACE_MAINTENANCE_1_EXTENSION_NAME = "VK_EXT_surface_maintenance1";
+	/// <summary>
+	/// VK_EXT_swapchain_maintenance1 = 1
+	/// </summary>
+	public const uint VK_EXT_swapchain_maintenance1 = 1;
+	/// <summary>
+	/// VK_EXT_SWAPCHAIN_MAINTENANCE_1_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_SWAPCHAIN_MAINTENANCE_1_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_SWAPCHAIN_MAINTENANCE_1_EXTENSION_NAME = "VK_EXT_swapchain_maintenance1"
+	/// </summary>
+	public const string VK_EXT_SWAPCHAIN_MAINTENANCE_1_EXTENSION_NAME = "VK_EXT_swapchain_maintenance1";
+	/// <summary>
 	/// VK_EXT_shader_demote_to_helper_invocation = 1
 	/// </summary>
 	public const uint VK_EXT_shader_demote_to_helper_invocation = 1;
@@ -3535,30 +3771,6 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface";
 	/// <summary>
-	/// VK_KHR_video_queue = 1
-	/// </summary>
-	public const uint VK_KHR_video_queue = 1;
-	/// <summary>
-	/// VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 7
-	/// </summary>
-	public const uint VK_KHR_VIDEO_QUEUE_SPEC_VERSION = 7;
-	/// <summary>
-	/// VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue"
-	/// </summary>
-	public const string VK_KHR_VIDEO_QUEUE_EXTENSION_NAME = "VK_KHR_video_queue";
-	/// <summary>
-	/// VK_KHR_video_decode_queue = 1
-	/// </summary>
-	public const uint VK_KHR_video_decode_queue = 1;
-	/// <summary>
-	/// VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 6
-	/// </summary>
-	public const uint VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 6;
-	/// <summary>
-	/// VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue"
-	/// </summary>
-	public const string VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue";
-	/// <summary>
 	/// VK_KHR_portability_subset = 1
 	/// </summary>
 	public const uint VK_KHR_portability_subset = 1;
@@ -3586,38 +3798,6 @@ public static partial class Vulkan
 	/// VK_EXT_video_encode_h264 = 1
 	/// </summary>
 	public const uint VK_EXT_video_encode_h264 = 1;
-	/// <summary>
-	/// vulkan_video_codec_h264std = 1
-	/// </summary>
-	public const uint vulkan_video_codec_h264std = 1;
-	/// <summary>
-	/// STD_VIDEO_H264_CPB_CNT_LIST_SIZE = 32
-	/// </summary>
-	public const uint STD_VIDEO_H264_CPB_CNT_LIST_SIZE = 32;
-	/// <summary>
-	/// STD_VIDEO_H264_SCALING_LIST_4X4_NUM_LISTS = 6
-	/// </summary>
-	public const uint STD_VIDEO_H264_SCALING_LIST_4X4_NUM_LISTS = 6;
-	/// <summary>
-	/// STD_VIDEO_H264_SCALING_LIST_4X4_NUM_ELEMENTS = 16
-	/// </summary>
-	public const uint STD_VIDEO_H264_SCALING_LIST_4X4_NUM_ELEMENTS = 16;
-	/// <summary>
-	/// STD_VIDEO_H264_SCALING_LIST_8X8_NUM_LISTS = 6
-	/// </summary>
-	public const uint STD_VIDEO_H264_SCALING_LIST_8X8_NUM_LISTS = 6;
-	/// <summary>
-	/// STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS = 64
-	/// </summary>
-	public const uint STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
-	/// <summary>
-	/// STD_VIDEO_H264_MAX_NUM_LIST_REF = 32
-	/// </summary>
-	public const uint STD_VIDEO_H264_MAX_NUM_LIST_REF = 32;
-	/// <summary>
-	/// STD_VIDEO_H264_MAX_CHROMA_PLANES = 2
-	/// </summary>
-	public const uint STD_VIDEO_H264_MAX_CHROMA_PLANES = 2;
 	/// <summary>
 	/// vulkan_video_codec_h264std_encode = 1
 	/// </summary>
@@ -3647,98 +3827,6 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_EXT_video_encode_h265 = 1;
 	/// <summary>
-	/// vulkan_video_codec_h265std = 1
-	/// </summary>
-	public const uint vulkan_video_codec_h265std = 1;
-	/// <summary>
-	/// STD_VIDEO_H265_SUBLAYERS_LIST_SIZE = 7
-	/// </summary>
-	public const uint STD_VIDEO_H265_SUBLAYERS_LIST_SIZE = 7;
-	/// <summary>
-	/// STD_VIDEO_H265_CPB_CNT_LIST_SIZE = 32
-	/// </summary>
-	public const uint STD_VIDEO_H265_CPB_CNT_LIST_SIZE = 32;
-	/// <summary>
-	/// STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS = 6
-	/// </summary>
-	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS = 6;
-	/// <summary>
-	/// STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS = 16
-	/// </summary>
-	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS = 16;
-	/// <summary>
-	/// STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS = 6
-	/// </summary>
-	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS = 6;
-	/// <summary>
-	/// STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64
-	/// </summary>
-	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
-	/// <summary>
-	/// STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS = 6
-	/// </summary>
-	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS = 6;
-	/// <summary>
-	/// STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS = 64
-	/// </summary>
-	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS = 64;
-	/// <summary>
-	/// STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS = 2
-	/// </summary>
-	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS = 2;
-	/// <summary>
-	/// STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS = 64
-	/// </summary>
-	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS = 64;
-	/// <summary>
-	/// STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE = 3
-	/// </summary>
-	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE = 3;
-	/// <summary>
-	/// STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128
-	/// </summary>
-	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128;
-	/// <summary>
-	/// STD_VIDEO_H265_MAX_DPB_SIZE = 16
-	/// </summary>
-	public const uint STD_VIDEO_H265_MAX_DPB_SIZE = 16;
-	/// <summary>
-	/// STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS = 32
-	/// </summary>
-	public const uint STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS = 32;
-	/// <summary>
-	/// STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE = 6
-	/// </summary>
-	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE = 6;
-	/// <summary>
-	/// STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19
-	/// </summary>
-	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19;
-	/// <summary>
-	/// STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE = 21
-	/// </summary>
-	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE = 21;
-	/// <summary>
-	/// STD_VIDEO_H265_MAX_NUM_LIST_REF = 15
-	/// </summary>
-	public const uint STD_VIDEO_H265_MAX_NUM_LIST_REF = 15;
-	/// <summary>
-	/// STD_VIDEO_H265_MAX_CHROMA_PLANES = 2
-	/// </summary>
-	public const uint STD_VIDEO_H265_MAX_CHROMA_PLANES = 2;
-	/// <summary>
-	/// STD_VIDEO_H265_MAX_SHORT_TERM_REF_PIC_SETS = 64
-	/// </summary>
-	public const uint STD_VIDEO_H265_MAX_SHORT_TERM_REF_PIC_SETS = 64;
-	/// <summary>
-	/// STD_VIDEO_H265_MAX_LONG_TERM_PICS = 16
-	/// </summary>
-	public const uint STD_VIDEO_H265_MAX_LONG_TERM_PICS = 16;
-	/// <summary>
-	/// STD_VIDEO_H265_MAX_DELTA_POC = 48
-	/// </summary>
-	public const uint STD_VIDEO_H265_MAX_DELTA_POC = 48;
-	/// <summary>
 	/// vulkan_video_codec_h265std_encode = 1
 	/// </summary>
 	public const uint vulkan_video_codec_h265std_encode = 1;
@@ -3762,68 +3850,4 @@ public static partial class Vulkan
 	/// VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265"
 	/// </summary>
 	public const string VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265";
-	/// <summary>
-	/// VK_EXT_video_decode_h264 = 1
-	/// </summary>
-	public const uint VK_EXT_video_decode_h264 = 1;
-	/// <summary>
-	/// vulkan_video_codec_h264std_decode = 1
-	/// </summary>
-	public const uint vulkan_video_codec_h264std_decode = 1;
-	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_0_9_8 = VK_MAKE_VIDEO_STD_VERSION(0,9,8)
-	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_0_9_8 = new VkVersion(0, 9, 8);
-	/// <summary>
-	/// STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE = 2
-	/// </summary>
-	public const uint STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE = 2;
-	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_0_9_8
-	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_0_9_8;
-	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264_decode"
-	/// </summary>
-	public const string VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264_decode";
-	/// <summary>
-	/// VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 7
-	/// </summary>
-	public const uint VK_EXT_VIDEO_DECODE_H264_SPEC_VERSION = 7;
-	/// <summary>
-	/// VK_EXT_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_EXT_video_decode_h264"
-	/// </summary>
-	public const string VK_EXT_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_EXT_video_decode_h264";
-	/// <summary>
-	/// VK_EXT_video_decode_h265 = 1
-	/// </summary>
-	public const uint VK_EXT_video_decode_h265 = 1;
-	/// <summary>
-	/// vulkan_video_codec_h265std_decode = 1
-	/// </summary>
-	public const uint vulkan_video_codec_h265std_decode = 1;
-	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_9 = VK_MAKE_VIDEO_STD_VERSION(0,9,9)
-	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_9 = new VkVersion(0, 9, 9);
-	/// <summary>
-	/// STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8
-	/// </summary>
-	public const uint STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8;
-	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_9
-	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_0_9_9;
-	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_decode"
-	/// </summary>
-	public const string VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_decode";
-	/// <summary>
-	/// VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 6
-	/// </summary>
-	public const uint VK_EXT_VIDEO_DECODE_H265_SPEC_VERSION = 6;
-	/// <summary>
-	/// VK_EXT_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_EXT_video_decode_h265"
-	/// </summary>
-	public const string VK_EXT_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_EXT_video_decode_h265";
 }
