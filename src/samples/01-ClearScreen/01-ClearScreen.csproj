@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net461;net7.0</TargetFrameworks>
+    <TargetFramework>net7.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IsPackable>false</IsPackable>
     <RootNamespace>ClearScreen</RootNamespace>

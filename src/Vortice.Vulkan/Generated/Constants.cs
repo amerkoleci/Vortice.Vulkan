@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 238
+	/// VK_HEADER_VERSION = 242
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 238;
+	public const uint VK_HEADER_VERSION = 242;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -1763,9 +1763,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_EXT_discard_rectangles = 1;
 	/// <summary>
-	/// VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION = 1
+	/// VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION = 2
 	/// </summary>
-	public const uint VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION = 1;
+	public const uint VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_DISCARD_RECTANGLES_EXTENSION_NAME = "VK_EXT_discard_rectangles"
 	/// </summary>
@@ -2303,9 +2303,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_NV_scissor_exclusive = 1;
 	/// <summary>
-	/// VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION = 1
+	/// VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION = 2
 	/// </summary>
-	public const uint VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION = 1;
+	public const uint VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_NV_SCISSOR_EXCLUSIVE_EXTENSION_NAME = "VK_NV_scissor_exclusive"
 	/// </summary>
@@ -2899,6 +2899,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops";
 	/// <summary>
+	/// VK_NV_low_latency = 1
+	/// </summary>
+	public const uint VK_NV_low_latency = 1;
+	/// <summary>
+	/// VK_NV_LOW_LATENCY_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_NV_LOW_LATENCY_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_NV_LOW_LATENCY_EXTENSION_NAME = "VK_NV_low_latency"
+	/// </summary>
+	public const string VK_NV_LOW_LATENCY_EXTENSION_NAME = "VK_NV_low_latency";
+	/// <summary>
 	/// VK_EXT_descriptor_buffer = 1
 	/// </summary>
 	public const uint VK_EXT_descriptor_buffer = 1;
@@ -3323,6 +3335,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_EXT_load_store_op_none";
 	/// <summary>
+	/// VK_HUAWEI_cluster_culling_shader = 1
+	/// </summary>
+	public const uint VK_HUAWEI_cluster_culling_shader = 1;
+	/// <summary>
+	/// VK_HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_HUAWEI_CLUSTER_CULLING_SHADER_EXTENSION_NAME = "VK_HUAWEI_cluster_culling_shader"
+	/// </summary>
+	public const string VK_HUAWEI_CLUSTER_CULLING_SHADER_EXTENSION_NAME = "VK_HUAWEI_cluster_culling_shader";
+	/// <summary>
 	/// VK_EXT_border_color_swizzle = 1
 	/// </summary>
 	public const uint VK_EXT_border_color_swizzle = 1;
@@ -3346,6 +3370,34 @@ public static partial class Vulkan
 	/// VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory"
 	/// </summary>
 	public const string VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory";
+	/// <summary>
+	/// VK_ARM_shader_core_properties = 1
+	/// </summary>
+	public const uint VK_ARM_shader_core_properties = 1;
+	/// <summary>
+	/// VK_ARM_SHADER_CORE_PROPERTIES_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_ARM_SHADER_CORE_PROPERTIES_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_ARM_SHADER_CORE_PROPERTIES_EXTENSION_NAME = "VK_ARM_shader_core_properties"
+	/// </summary>
+	public const string VK_ARM_SHADER_CORE_PROPERTIES_EXTENSION_NAME = "VK_ARM_shader_core_properties";
+	/// <summary>
+	/// VK_EXT_image_sliced_view_of_3d = 1
+	/// </summary>
+	public const uint VK_EXT_image_sliced_view_of_3d = 1;
+	/// <summary>
+	/// VK_EXT_IMAGE_SLICED_VIEW_OF_3D_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_IMAGE_SLICED_VIEW_OF_3D_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_IMAGE_SLICED_VIEW_OF_3D_EXTENSION_NAME = "VK_EXT_image_sliced_view_of_3d"
+	/// </summary>
+	public const string VK_EXT_IMAGE_SLICED_VIEW_OF_3D_EXTENSION_NAME = "VK_EXT_image_sliced_view_of_3d";
+	/// <summary>
+	/// VK_REMAINING_3D_SLICES_EXT = (~0U)
+	/// </summary>
+	public const uint VK_REMAINING_3D_SLICES_EXT = ~0u;
 	/// <summary>
 	/// VK_VALVE_descriptor_set_host_mapping = 1
 	/// </summary>
@@ -3638,6 +3690,30 @@ public static partial class Vulkan
 	/// VK_ARM_SHADER_CORE_BUILTINS_EXTENSION_NAME = "VK_ARM_shader_core_builtins"
 	/// </summary>
 	public const string VK_ARM_SHADER_CORE_BUILTINS_EXTENSION_NAME = "VK_ARM_shader_core_builtins";
+	/// <summary>
+	/// VK_EXT_pipeline_library_group_handles = 1
+	/// </summary>
+	public const uint VK_EXT_pipeline_library_group_handles = 1;
+	/// <summary>
+	/// VK_EXT_PIPELINE_LIBRARY_GROUP_HANDLES_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_PIPELINE_LIBRARY_GROUP_HANDLES_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_PIPELINE_LIBRARY_GROUP_HANDLES_EXTENSION_NAME = "VK_EXT_pipeline_library_group_handles"
+	/// </summary>
+	public const string VK_EXT_PIPELINE_LIBRARY_GROUP_HANDLES_EXTENSION_NAME = "VK_EXT_pipeline_library_group_handles";
+	/// <summary>
+	/// VK_QCOM_multiview_per_view_render_areas = 1
+	/// </summary>
+	public const uint VK_QCOM_multiview_per_view_render_areas = 1;
+	/// <summary>
+	/// VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_render_areas"
+	/// </summary>
+	public const string VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_render_areas";
 	/// <summary>
 	/// VK_KHR_acceleration_structure = 1
 	/// </summary>

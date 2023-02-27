@@ -2,7 +2,7 @@
 #define VULKAN_CORE_H_ 1
 
 /*
-** Copyright 2015-2022 The Khronos Group Inc.
+** Copyright 2015-2023 The Khronos Group Inc.
 **
 ** SPDX-License-Identifier: Apache-2.0
 */
@@ -58,37 +58,37 @@ extern "C" {
     #endif
 #endif
 
-// DEPRECATED: This define is deprecated. VK_MAKE_API_VERSION should be used instead.
-#define VK_MAKE_VERSION(major, minor, patch) \
-    ((((uint32_t)(major)) << 22) | (((uint32_t)(minor)) << 12) | ((uint32_t)(patch)))
+#define VK_MAKE_API_VERSION(variant, major, minor, patch) \
+    ((((uint32_t)(variant)) << 29U) | (((uint32_t)(major)) << 22U) | (((uint32_t)(minor)) << 12U) | ((uint32_t)(patch)))
 
 // DEPRECATED: This define has been removed. Specific version defines (e.g. VK_API_VERSION_1_0), or the VK_MAKE_VERSION macro, should be used instead.
-//#define VK_API_VERSION VK_MAKE_VERSION(1, 0, 0) // Patch version should always be set to 0
-
-#define VK_MAKE_API_VERSION(variant, major, minor, patch) \
-    ((((uint32_t)(variant)) << 29) | (((uint32_t)(major)) << 22) | (((uint32_t)(minor)) << 12) | ((uint32_t)(patch)))
+//#define VK_API_VERSION VK_MAKE_API_VERSION(0, 1, 0, 0) // Patch version should always be set to 0
 
 // Vulkan 1.0 version number
 #define VK_API_VERSION_1_0 VK_MAKE_API_VERSION(0, 1, 0, 0)// Patch version should always be set to 0
 
 // Version of this file
-#define VK_HEADER_VERSION 238
+#define VK_HEADER_VERSION 242
 
 // Complete version of this file
 #define VK_HEADER_VERSION_COMPLETE VK_MAKE_API_VERSION(0, 1, 3, VK_HEADER_VERSION)
 
+// DEPRECATED: This define is deprecated. VK_MAKE_API_VERSION should be used instead.
+#define VK_MAKE_VERSION(major, minor, patch) \
+    ((((uint32_t)(major)) << 22U) | (((uint32_t)(minor)) << 12U) | ((uint32_t)(patch)))
+
 // DEPRECATED: This define is deprecated. VK_API_VERSION_MAJOR should be used instead.
-#define VK_VERSION_MAJOR(version) ((uint32_t)(version) >> 22)
+#define VK_VERSION_MAJOR(version) ((uint32_t)(version) >> 22U)
 
 // DEPRECATED: This define is deprecated. VK_API_VERSION_MINOR should be used instead.
-#define VK_VERSION_MINOR(version) (((uint32_t)(version) >> 12) & 0x3FFU)
+#define VK_VERSION_MINOR(version) (((uint32_t)(version) >> 12U) & 0x3FFU)
 
 // DEPRECATED: This define is deprecated. VK_API_VERSION_PATCH should be used instead.
 #define VK_VERSION_PATCH(version) ((uint32_t)(version) & 0xFFFU)
 
-#define VK_API_VERSION_VARIANT(version) ((uint32_t)(version) >> 29)
-#define VK_API_VERSION_MAJOR(version) (((uint32_t)(version) >> 22) & 0x7FU)
-#define VK_API_VERSION_MINOR(version) (((uint32_t)(version) >> 12) & 0x3FFU)
+#define VK_API_VERSION_VARIANT(version) ((uint32_t)(version) >> 29U)
+#define VK_API_VERSION_MAJOR(version) (((uint32_t)(version) >> 22U) & 0x7FU)
+#define VK_API_VERSION_MINOR(version) (((uint32_t)(version) >> 12U) & 0x3FFU)
 #define VK_API_VERSION_PATCH(version) ((uint32_t)(version) & 0xFFFU)
 typedef uint32_t VkBool32;
 typedef uint64_t VkDeviceAddress;
@@ -831,6 +831,7 @@ typedef enum VkStructureType {
 #endif
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV = 1000300000,
     VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV = 1000300001,
+    VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV = 1000310000,
     VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT = 1000311000,
     VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECTS_INFO_EXT = 1000311001,
     VK_STRUCTURE_TYPE_EXPORT_METAL_DEVICE_INFO_EXT = 1000311002,
@@ -946,9 +947,14 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_MICROMAP_CREATE_INFO_EXT = 1000396007,
     VK_STRUCTURE_TYPE_MICROMAP_BUILD_SIZES_INFO_EXT = 1000396008,
     VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT = 1000396009,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_FEATURES_HUAWEI = 1000404000,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_PROPERTIES_HUAWEI = 1000404001,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BORDER_COLOR_SWIZZLE_FEATURES_EXT = 1000411000,
     VK_STRUCTURE_TYPE_SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT = 1000411001,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT = 1000412000,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM = 1000415000,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT = 1000418000,
+    VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT = 1000418001,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE = 1000420000,
     VK_STRUCTURE_TYPE_DESCRIPTOR_SET_BINDING_REFERENCE_VALVE = 1000420001,
     VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_HOST_MAPPING_INFO_VALVE = 1000420002,
@@ -999,6 +1005,9 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT = 1000351002,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_FEATURES_ARM = 1000497000,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_PROPERTIES_ARM = 1000497001,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_LIBRARY_GROUP_HANDLES_FEATURES_EXT = 1000498000,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM = 1000510000,
+    VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM = 1000510001,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES,
     VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT,
@@ -1803,10 +1812,13 @@ typedef enum VkDynamicState {
     VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE = 1000377004,
     VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV = 1000087000,
     VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT = 1000099000,
+    VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT = 1000099001,
+    VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT = 1000099002,
     VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT = 1000143000,
     VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR = 1000347000,
     VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV = 1000164004,
     VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV = 1000164006,
+    VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV = 1000205000,
     VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV = 1000205001,
     VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR = 1000226000,
     VK_DYNAMIC_STATE_LINE_STIPPLE_EXT = 1000259000,
@@ -2352,6 +2364,7 @@ typedef enum VkQueryPipelineStatisticFlagBits {
     VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT = 0x00000400,
     VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT = 0x00000800,
     VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT = 0x00001000,
+    VK_QUERY_PIPELINE_STATISTIC_CLUSTER_CULLING_SHADER_INVOCATIONS_BIT_HUAWEI = 0x00002000,
     VK_QUERY_PIPELINE_STATISTIC_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
 } VkQueryPipelineStatisticFlagBits;
 typedef VkFlags VkQueryPipelineStatisticFlags;
@@ -2512,6 +2525,7 @@ typedef enum VkShaderStageFlagBits {
     VK_SHADER_STAGE_TASK_BIT_EXT = 0x00000040,
     VK_SHADER_STAGE_MESH_BIT_EXT = 0x00000080,
     VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI = 0x00004000,
+    VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI = 0x00080000,
     VK_SHADER_STAGE_RAYGEN_BIT_NV = VK_SHADER_STAGE_RAYGEN_BIT_KHR,
     VK_SHADER_STAGE_ANY_HIT_BIT_NV = VK_SHADER_STAGE_ANY_HIT_BIT_KHR,
     VK_SHADER_STAGE_CLOSEST_HIT_BIT_NV = VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR,
@@ -5641,6 +5655,7 @@ typedef enum VkDriverId {
     VK_DRIVER_ID_MESA_VENUS = 22,
     VK_DRIVER_ID_MESA_DOZEN = 23,
     VK_DRIVER_ID_MESA_NVK = 24,
+    VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA = 25,
     VK_DRIVER_ID_AMD_PROPRIETARY_KHR = VK_DRIVER_ID_AMD_PROPRIETARY,
     VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR = VK_DRIVER_ID_AMD_OPEN_SOURCE,
     VK_DRIVER_ID_MESA_RADV_KHR = VK_DRIVER_ID_MESA_RADV,
@@ -6475,6 +6490,7 @@ static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HU
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI = 0x10000000000ULL;
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR = 0x10000000ULL;
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT = 0x40000000ULL;
+static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI = 0x20000000000ULL;
 static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV = 0x20000000ULL;
 
 typedef VkFlags64 VkAccessFlags2;
@@ -11158,7 +11174,7 @@ typedef struct VkPipelineViewportSwizzleStateCreateInfoNV {
 
 
 #define VK_EXT_discard_rectangles 1
-#define VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION 1
+#define VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION 2
 #define VK_EXT_DISCARD_RECTANGLES_EXTENSION_NAME "VK_EXT_discard_rectangles"
 
 typedef enum VkDiscardRectangleModeEXT {
@@ -11183,6 +11199,8 @@ typedef struct VkPipelineDiscardRectangleStateCreateInfoEXT {
 } VkPipelineDiscardRectangleStateCreateInfoEXT;
 
 typedef void (VKAPI_PTR *PFN_vkCmdSetDiscardRectangleEXT)(VkCommandBuffer commandBuffer, uint32_t firstDiscardRectangle, uint32_t discardRectangleCount, const VkRect2D* pDiscardRectangles);
+typedef void (VKAPI_PTR *PFN_vkCmdSetDiscardRectangleEnableEXT)(VkCommandBuffer commandBuffer, VkBool32 discardRectangleEnable);
+typedef void (VKAPI_PTR *PFN_vkCmdSetDiscardRectangleModeEXT)(VkCommandBuffer commandBuffer, VkDiscardRectangleModeEXT discardRectangleMode);
 
 #ifndef VK_NO_PROTOTYPES
 VKAPI_ATTR void VKAPI_CALL vkCmdSetDiscardRectangleEXT(
@@ -11190,6 +11208,14 @@ VKAPI_ATTR void VKAPI_CALL vkCmdSetDiscardRectangleEXT(
     uint32_t                                    firstDiscardRectangle,
     uint32_t                                    discardRectangleCount,
     const VkRect2D*                             pDiscardRectangles);
+
+VKAPI_ATTR void VKAPI_CALL vkCmdSetDiscardRectangleEnableEXT(
+    VkCommandBuffer                             commandBuffer,
+    VkBool32                                    discardRectangleEnable);
+
+VKAPI_ATTR void VKAPI_CALL vkCmdSetDiscardRectangleModeEXT(
+    VkCommandBuffer                             commandBuffer,
+    VkDiscardRectangleModeEXT                   discardRectangleMode);
 #endif
 
 
@@ -12610,7 +12636,7 @@ typedef struct VkPhysicalDeviceShaderImageFootprintFeaturesNV {
 
 
 #define VK_NV_scissor_exclusive 1
-#define VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION 1
+#define VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION 2
 #define VK_NV_SCISSOR_EXCLUSIVE_EXTENSION_NAME "VK_NV_scissor_exclusive"
 typedef struct VkPipelineViewportExclusiveScissorStateCreateInfoNV {
     VkStructureType    sType;
@@ -12625,9 +12651,16 @@ typedef struct VkPhysicalDeviceExclusiveScissorFeaturesNV {
     VkBool32           exclusiveScissor;
 } VkPhysicalDeviceExclusiveScissorFeaturesNV;
 
+typedef void (VKAPI_PTR *PFN_vkCmdSetExclusiveScissorEnableNV)(VkCommandBuffer commandBuffer, uint32_t firstExclusiveScissor, uint32_t exclusiveScissorCount, const VkBool32* pExclusiveScissorEnables);
 typedef void (VKAPI_PTR *PFN_vkCmdSetExclusiveScissorNV)(VkCommandBuffer commandBuffer, uint32_t firstExclusiveScissor, uint32_t exclusiveScissorCount, const VkRect2D* pExclusiveScissors);
 
 #ifndef VK_NO_PROTOTYPES
+VKAPI_ATTR void VKAPI_CALL vkCmdSetExclusiveScissorEnableNV(
+    VkCommandBuffer                             commandBuffer,
+    uint32_t                                    firstExclusiveScissor,
+    uint32_t                                    exclusiveScissorCount,
+    const VkBool32*                             pExclusiveScissorEnables);
+
 VKAPI_ATTR void VKAPI_CALL vkCmdSetExclusiveScissorNV(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    firstExclusiveScissor,
@@ -14034,6 +14067,17 @@ typedef struct VkDeviceDiagnosticsConfigCreateInfoNV {
 #define VK_QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME "VK_QCOM_render_pass_store_ops"
 
 
+#define VK_NV_low_latency 1
+#define VK_NV_LOW_LATENCY_SPEC_VERSION    1
+#define VK_NV_LOW_LATENCY_EXTENSION_NAME  "VK_NV_low_latency"
+typedef struct VkQueryLowLatencySupportNV {
+    VkStructureType    sType;
+    const void*        pNext;
+    void*              pQueriedLowLatencyData;
+} VkQueryLowLatencySupportNV;
+
+
+
 #define VK_EXT_descriptor_buffer 1
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(VkAccelerationStructureKHR)
 #define VK_EXT_DESCRIPTOR_BUFFER_SPEC_VERSION 1
@@ -15416,6 +15460,41 @@ VKAPI_ATTR void VKAPI_CALL vkGetMicromapBuildSizesEXT(
 #define VK_EXT_LOAD_STORE_OP_NONE_EXTENSION_NAME "VK_EXT_load_store_op_none"
 
 
+#define VK_HUAWEI_cluster_culling_shader 1
+#define VK_HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION 1
+#define VK_HUAWEI_CLUSTER_CULLING_SHADER_EXTENSION_NAME "VK_HUAWEI_cluster_culling_shader"
+typedef struct VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           clustercullingShader;
+    VkBool32           multiviewClusterCullingShader;
+} VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI;
+
+typedef struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI {
+    VkStructureType    sType;
+    void*              pNext;
+    uint32_t           maxWorkGroupCount[3];
+    uint32_t           maxWorkGroupSize[3];
+    uint32_t           maxOutputClusterCount;
+} VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI;
+
+typedef void (VKAPI_PTR *PFN_vkCmdDrawClusterHUAWEI)(VkCommandBuffer commandBuffer, uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ);
+typedef void (VKAPI_PTR *PFN_vkCmdDrawClusterIndirectHUAWEI)(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset);
+
+#ifndef VK_NO_PROTOTYPES
+VKAPI_ATTR void VKAPI_CALL vkCmdDrawClusterHUAWEI(
+    VkCommandBuffer                             commandBuffer,
+    uint32_t                                    groupCountX,
+    uint32_t                                    groupCountY,
+    uint32_t                                    groupCountZ);
+
+VKAPI_ATTR void VKAPI_CALL vkCmdDrawClusterIndirectHUAWEI(
+    VkCommandBuffer                             commandBuffer,
+    VkBuffer                                    buffer,
+    VkDeviceSize                                offset);
+#endif
+
+
 #define VK_EXT_border_color_swizzle 1
 #define VK_EXT_BORDER_COLOR_SWIZZLE_SPEC_VERSION 1
 #define VK_EXT_BORDER_COLOR_SWIZZLE_EXTENSION_NAME "VK_EXT_border_color_swizzle"
@@ -15452,6 +15531,38 @@ VKAPI_ATTR void VKAPI_CALL vkSetDeviceMemoryPriorityEXT(
     VkDeviceMemory                              memory,
     float                                       priority);
 #endif
+
+
+#define VK_ARM_shader_core_properties 1
+#define VK_ARM_SHADER_CORE_PROPERTIES_SPEC_VERSION 1
+#define VK_ARM_SHADER_CORE_PROPERTIES_EXTENSION_NAME "VK_ARM_shader_core_properties"
+typedef struct VkPhysicalDeviceShaderCorePropertiesARM {
+    VkStructureType    sType;
+    void*              pNext;
+    uint32_t           pixelRate;
+    uint32_t           texelRate;
+    uint32_t           fmaRate;
+} VkPhysicalDeviceShaderCorePropertiesARM;
+
+
+
+#define VK_EXT_image_sliced_view_of_3d 1
+#define VK_EXT_IMAGE_SLICED_VIEW_OF_3D_SPEC_VERSION 1
+#define VK_EXT_IMAGE_SLICED_VIEW_OF_3D_EXTENSION_NAME "VK_EXT_image_sliced_view_of_3d"
+#define VK_REMAINING_3D_SLICES_EXT        (~0U)
+typedef struct VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           imageSlicedViewOf3D;
+} VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT;
+
+typedef struct VkImageViewSlicedCreateInfoEXT {
+    VkStructureType    sType;
+    const void*        pNext;
+    uint32_t           sliceOffset;
+    uint32_t           sliceCount;
+} VkImageViewSlicedCreateInfoEXT;
+
 
 
 #define VK_VALVE_descriptor_set_host_mapping 1
@@ -16358,6 +16469,35 @@ typedef struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM {
     uint32_t           shaderCoreCount;
     uint32_t           shaderWarpsPerCore;
 } VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM;
+
+
+
+#define VK_EXT_pipeline_library_group_handles 1
+#define VK_EXT_PIPELINE_LIBRARY_GROUP_HANDLES_SPEC_VERSION 1
+#define VK_EXT_PIPELINE_LIBRARY_GROUP_HANDLES_EXTENSION_NAME "VK_EXT_pipeline_library_group_handles"
+typedef struct VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           pipelineLibraryGroupHandles;
+} VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT;
+
+
+
+#define VK_QCOM_multiview_per_view_render_areas 1
+#define VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_SPEC_VERSION 1
+#define VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_EXTENSION_NAME "VK_QCOM_multiview_per_view_render_areas"
+typedef struct VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           multiviewPerViewRenderAreas;
+} VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM;
+
+typedef struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM {
+    VkStructureType    sType;
+    const void*        pNext;
+    uint32_t           perViewRenderAreaCount;
+    const VkRect2D*    pPerViewRenderAreas;
+} VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
 
 
 

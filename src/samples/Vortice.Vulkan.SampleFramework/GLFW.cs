@@ -204,7 +204,7 @@ public static unsafe class GLFW
     private delegate void glfwPollEvents_t();
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    private delegate byte** glfwGetRequiredInstanceExtensions_t(out int count);
+    private delegate nint glfwGetRequiredInstanceExtensions_t(out int count);
 
     private static delegate* unmanaged[Cdecl]<int> s_glfwInit;
 
@@ -259,16 +259,21 @@ public static unsafe class GLFW
 
     public static void glfwPollEvents() => s_glfwPollEvents();
 
-    public static byte** glfwGetRequiredInstanceExtensions(out int count) => s_glfwGetRequiredInstanceExtensions(out count);
+    public static nint glfwGetRequiredInstanceExtensions(out int count) => s_glfwGetRequiredInstanceExtensions(out count);
 
     public static string[] glfwGetRequiredInstanceExtensions()
     {
-        var ptr = s_glfwGetRequiredInstanceExtensions(out int count);
+        nint ptr = s_glfwGetRequiredInstanceExtensions(out int count);
 
-        var array = new string[count];
-        for (var i = 0; i < count; i++)
+        string[] array = new string[count];
+        if (count > 0 && ptr != 0)
         {
-            array[i] = Interop.GetString(ptr[i]);
+            var offset = 0;
+            for (int i = 0; i < count; i++, offset += IntPtr.Size)
+            {
+                IntPtr p = Marshal.ReadIntPtr(ptr, offset);
+                array[i] = Marshal.PtrToStringAnsi(p)!;
+            }
         }
 
         return array;

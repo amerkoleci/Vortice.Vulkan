@@ -1,6 +1,7 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Runtime.InteropServices;
 using static Vortice.Vulkan.Interop;
 
 namespace Vortice.Vulkan;
@@ -38,7 +39,7 @@ public unsafe readonly struct VkString : IDisposable
         if (Size == 0)
             return;
 
-        Free(Pointer);
+        NativeMemory.Free(Pointer);
     }
 
     public static unsafe implicit operator sbyte*(VkString value) => value.Pointer;
@@ -68,7 +69,7 @@ public unsafe readonly struct VkStringArray : IDisposable
 
     public void Dispose()
     {
-        Interop.Free(Pointer);
+        NativeMemory.Free(Pointer);
     }
 
     public VkString this[int index]

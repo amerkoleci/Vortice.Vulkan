@@ -130,8 +130,7 @@ public static partial class CsCodeGenerator
 
         builder.Append(returnCsName);
 
-        //return $"delegate* unmanaged<{builder}>";
-        return $"delegate* unmanaged[Stdcall]<{builder}>";
+        return $"delegate* unmanaged<{builder}>";
     }
 
     private static void GenerateCommands(CppCompilation compilation, string outputPath)

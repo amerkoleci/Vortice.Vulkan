@@ -1,22 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6.0;net7.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <Description>VulkanMemoryAllocator bindings.</Description>
     <IncludeContentInPack>true</IncludeContentInPack>
     <RootNamespace>Vortice.Vulkan</RootNamespace>
-    <VersionPrefix>1.1.1</VersionPrefix>
+    <VersionPrefix>1.2.0</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''">beta</VersionSuffix>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\..\LICENSE" PackagePath="" Pack="true" />
   </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Memory" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <Content Include="build\**" PackagePath="build" Pack="true" />
     <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" CopyToOutputDirectory="PreserveNewest" />

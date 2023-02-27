@@ -10,21 +10,13 @@ internal static unsafe class SpirvCrossApi
 {
     private static readonly IntPtr s_NativeLibrary = LoadNativeLibrary();
 
-#if !NET6_0_OR_GREATER
-    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate void spvc_error_callback(IntPtr userData, sbyte* error);
-#endif
 
     public static readonly delegate* unmanaged[Cdecl]<out uint, out uint, out uint, void> spvc_get_version;
     public static readonly delegate* unmanaged[Cdecl]<out IntPtr, Result> spvc_context_create;
     public static readonly delegate* unmanaged[Cdecl]<IntPtr, void> spvc_context_destroy;
     public static readonly delegate* unmanaged[Cdecl]<IntPtr, sbyte*> spvc_context_get_last_error_string;
     public static readonly delegate* unmanaged[Cdecl]<IntPtr, void> spvc_context_release_allocations = (delegate* unmanaged[Cdecl]<IntPtr, void>)LoadFunction(nameof(spvc_context_release_allocations));
-#if !NET6_0_OR_GREATER
-    public static readonly delegate* unmanaged[Cdecl]<IntPtr, spvc_error_callback, IntPtr, void> spvc_context_set_error_callback;
-#else
     public static readonly delegate* unmanaged[Cdecl]<IntPtr, delegate* unmanaged[Cdecl]<IntPtr, sbyte*, void>, IntPtr, void> spvc_context_set_error_callback;
-#endif
     public static readonly delegate* unmanaged[Cdecl]<IntPtr, uint*, nuint, out SpvcParsedIr, Result> spvc_context_parse_spirv;
     public static readonly delegate* unmanaged[Cdecl]<IntPtr, Backend, IntPtr, CaptureMode, out IntPtr, Result> spvc_context_create_compiler;
     public static readonly delegate* unmanaged[Cdecl]<IntPtr, uint> spvc_compiler_get_current_id_bound;
@@ -48,11 +40,7 @@ internal static unsafe class SpirvCrossApi
         spvc_context_destroy = (delegate* unmanaged[Cdecl]<IntPtr, void>)LoadFunction(nameof(spvc_context_destroy));
         spvc_context_get_last_error_string = (delegate* unmanaged[Cdecl]<IntPtr, sbyte*>)LoadFunction(nameof(spvc_context_get_last_error_string));
         spvc_context_release_allocations = (delegate* unmanaged[Cdecl]<IntPtr, void>)LoadFunction(nameof(spvc_context_release_allocations));
-#if !NET6_0_OR_GREATER
-        spvc_context_set_error_callback = (delegate* unmanaged[Cdecl]<IntPtr, spvc_error_callback, IntPtr, void>)LoadFunction(nameof(spvc_context_set_error_callback));
-#else
         spvc_context_set_error_callback = (delegate* unmanaged[Cdecl]<IntPtr, delegate* unmanaged[Cdecl]<IntPtr, sbyte*, void>, IntPtr, void>)LoadFunction(nameof(spvc_context_set_error_callback));
-#endif
         spvc_context_parse_spirv = (delegate* unmanaged[Cdecl]<IntPtr, uint*, nuint, out SpvcParsedIr, Result>)LoadFunction(nameof(spvc_context_parse_spirv));
         spvc_context_create_compiler = (delegate* unmanaged[Cdecl]<IntPtr, Backend, IntPtr, CaptureMode, out IntPtr, Result>)LoadFunction(nameof(spvc_context_create_compiler));
         spvc_compiler_get_current_id_bound = (delegate* unmanaged[Cdecl]<IntPtr, uint>)LoadFunction(nameof(spvc_compiler_get_current_id_bound));
@@ -74,20 +62,10 @@ internal static unsafe class SpirvCrossApi
     public static ReadOnlySpan<byte> GetUtf8(string str)
     {
         int maxLength = Encoding.UTF8.GetByteCount(str);
-#if NET6_0_OR_GREATER
         var bytes = new byte[maxLength + 1];
 
         var length = Encoding.UTF8.GetBytes(str, bytes);
         return bytes.AsSpan(0, length);
-#else
-        byte* utf8Ptr = stackalloc byte[maxLength + 1];
-        fixed (char* namePtr = str)
-        {
-            Encoding.UTF8.GetBytes(namePtr, str.Length, utf8Ptr, maxLength);
-        }
-        utf8Ptr[maxLength] = 0;
-        return new(utf8Ptr, str.Length);
-#endif
     }
 
     private static IntPtr LoadNativeLibrary()

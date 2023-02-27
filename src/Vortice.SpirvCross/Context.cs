@@ -11,18 +11,10 @@ public sealed unsafe class Context : IDisposable
 {
     private readonly nint _handle;
 
-#if !NET6_0_OR_GREATER
-    private readonly spvc_error_callback _errorCallback = OnErrorCallback;
-#endif
-
     public Context()
     {
         spvc_context_create(out _handle).CheckResult("Cannot create SPIRV-Cross context");
-#if NET6_0_OR_GREATER
         spvc_context_set_error_callback(_handle, &OnErrorCallback, IntPtr.Zero);
-#else
-        spvc_context_set_error_callback(_handle, _errorCallback, IntPtr.Zero);
-#endif
     }
 
     /// <summary>
@@ -95,9 +87,7 @@ public sealed unsafe class Context : IDisposable
         return new Compiler(compiler);
     }
 
-#if NET6_0_OR_GREATER
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-#endif
     private static unsafe void OnErrorCallback(IntPtr userData, sbyte* errorPtr)
     {
     }

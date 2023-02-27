@@ -224,11 +224,7 @@ public static partial class CsCodeGenerator
 
                 builder.Append(returnCsName);
 
-                writer.WriteLine("#if NET6_0_OR_GREATER");
                 writer.WriteLine($"public unsafe delegate* unmanaged<{builder}> {csFieldName};");
-                writer.WriteLine("#else");
-                writer.WriteLine($"public IntPtr {csFieldName};");
-                writer.WriteLine("#endif");
                 return;
             }
 

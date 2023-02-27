@@ -16,10 +16,6 @@ public unsafe sealed class GraphicsDevice : IDisposable
     public readonly bool DebugUtils;
     public readonly VkInstance VkInstance;
 
-#if !NET6_0_OR_GREATER
-    private readonly PFN_vkDebugUtilsMessengerCallbackEXT DebugMessagerCallbackDelegate = DebugMessengerCallback;
-#endif
-
     private readonly VkDebugUtilsMessengerEXT _debugMessenger = VkDebugUtilsMessengerEXT.Null;
     public readonly VkPhysicalDevice PhysicalDevice;
     public readonly VkDevice VkDevice;
@@ -93,12 +89,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         {
             debugUtilsCreateInfo.messageSeverity = VkDebugUtilsMessageSeverityFlagsEXT.Error | VkDebugUtilsMessageSeverityFlagsEXT.Warning;
             debugUtilsCreateInfo.messageType = VkDebugUtilsMessageTypeFlagsEXT.Validation | VkDebugUtilsMessageTypeFlagsEXT.Performance;
-#if NET6_0_OR_GREATER
             debugUtilsCreateInfo.pfnUserCallback = &DebugMessengerCallback;
-#else
-            debugUtilsCreateInfo.pfnUserCallback = Marshal.GetFunctionPointerForDelegate(DebugMessagerCallbackDelegate);
-#endif
-
             instanceCreateInfo.pNext = &debugUtilsCreateInfo;
         }
 
@@ -663,10 +654,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         return !swapChainSupport.Formats.IsEmpty && !swapChainSupport.PresentModes.IsEmpty;
     }
 
-
-#if NET6_0_OR_GREATER
     [UnmanagedCallersOnly]
-#endif
     private static uint DebugMessengerCallback(VkDebugUtilsMessageSeverityFlagsEXT messageSeverity,
         VkDebugUtilsMessageTypeFlagsEXT messageTypes,
         VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,

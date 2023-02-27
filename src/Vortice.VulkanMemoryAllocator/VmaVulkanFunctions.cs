@@ -5,25 +5,25 @@ namespace Vortice.Vulkan;
 
 public unsafe struct VmaVulkanFunctions
 {
-    public delegate* unmanaged[Stdcall]<VkInstance, sbyte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr;
-    public delegate* unmanaged[Stdcall]<VkDevice, sbyte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr;
-    public delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceProperties, void> vkGetPhysicalDeviceProperties;
-    public delegate* unmanaged[Stdcall]<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void> vkGetPhysicalDeviceMemoryProperties;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, out VkDeviceMemory, VkResult> vkAllocateMemory;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void> vkFreeMemory;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void*, VkResult> vkMapMemory;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkDeviceMemory, void> vkUnmapMemory;
-    public delegate* unmanaged[Stdcall]<VkDevice, int, VkMappedMemoryRange*, VkResult> vkFlushMappedMemoryRanges;
-    public delegate* unmanaged[Stdcall]<VkDevice, int, VkMappedMemoryRange*, VkResult> vkInvalidateMappedMemoryRanges;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult> vkBindBufferMemory;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult> vkBindImageMemory;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkBuffer, out VkMemoryRequirements, void> vkGetBufferMemoryRequirements;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkImage, out VkMemoryRequirements, void> vkGetImageMemoryRequirements;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, out VkBuffer, VkResult> vkCreateBuffer;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkBuffer, VkAllocationCallbacks*, void> vkDestroyBuffer;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, out VkImage, VkResult> vkCreateImage;
-    public delegate* unmanaged[Stdcall]<VkDevice, VkImage, VkAllocationCallbacks*, void> vkDestroyImage;
-    public delegate* unmanaged[Stdcall]<VkCommandBuffer, VkBuffer, VkBuffer, int, VkBufferCopy*, void> vkCmdCopyBuffer;
+    public delegate* unmanaged<VkInstance, sbyte*, delegate* unmanaged<void>> vkGetInstanceProcAddr;
+    public delegate* unmanaged<VkDevice, sbyte*, delegate* unmanaged<void>> vkGetDeviceProcAddr;
+    public delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceProperties, void> vkGetPhysicalDeviceProperties;
+    public delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void> vkGetPhysicalDeviceMemoryProperties;
+    public delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, out VkDeviceMemory, VkResult> vkAllocateMemory;
+    public delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void> vkFreeMemory;
+    public delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void*, VkResult> vkMapMemory;
+    public delegate* unmanaged<VkDevice, VkDeviceMemory, void> vkUnmapMemory;
+    public delegate* unmanaged<VkDevice, int, VkMappedMemoryRange*, VkResult> vkFlushMappedMemoryRanges;
+    public delegate* unmanaged<VkDevice, int, VkMappedMemoryRange*, VkResult> vkInvalidateMappedMemoryRanges;
+    public delegate* unmanaged<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult> vkBindBufferMemory;
+    public delegate* unmanaged<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult> vkBindImageMemory;
+    public delegate* unmanaged<VkDevice, VkBuffer, out VkMemoryRequirements, void> vkGetBufferMemoryRequirements;
+    public delegate* unmanaged<VkDevice, VkImage, out VkMemoryRequirements, void> vkGetImageMemoryRequirements;
+    public delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, out VkBuffer, VkResult> vkCreateBuffer;
+    public delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void> vkDestroyBuffer;
+    public delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, out VkImage, VkResult> vkCreateImage;
+    public delegate* unmanaged<VkDevice, VkImage, VkAllocationCallbacks*, void> vkDestroyImage;
+    public delegate* unmanaged<VkCommandBuffer, VkBuffer, VkBuffer, int, VkBufferCopy*, void> vkCmdCopyBuffer;
 
     /// Fetch "vkGetBufferMemoryRequirements2" on Vulkan >= 1.1, fetch "vkGetBufferMemoryRequirements2KHR" when using VK_KHR_dedicated_allocation extension.
     public delegate* unmanaged[Stdcall]<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2KHR;

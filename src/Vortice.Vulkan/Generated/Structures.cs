@@ -171,31 +171,11 @@ public partial struct VkPipelineCacheHeaderVersionOne
 public partial struct VkAllocationCallbacks
 {
 	public unsafe void* pUserData;
-	#if NET6_0_OR_GREATER
 	public unsafe delegate* unmanaged<void*, nuint, nuint, VkSystemAllocationScope, void*> pfnAllocation;
-	#else
-	public IntPtr pfnAllocation;
-	#endif
-	#if NET6_0_OR_GREATER
 	public unsafe delegate* unmanaged<void*, void*, nuint, nuint, VkSystemAllocationScope, void*> pfnReallocation;
-	#else
-	public IntPtr pfnReallocation;
-	#endif
-	#if NET6_0_OR_GREATER
 	public unsafe delegate* unmanaged<void*, void*, void> pfnFree;
-	#else
-	public IntPtr pfnFree;
-	#endif
-	#if NET6_0_OR_GREATER
 	public unsafe delegate* unmanaged<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalAllocation;
-	#else
-	public IntPtr pfnInternalAllocation;
-	#endif
-	#if NET6_0_OR_GREATER
 	public unsafe delegate* unmanaged<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalFree;
-	#else
-	public IntPtr pfnInternalFree;
-	#endif
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -7110,11 +7090,7 @@ public partial struct VkDebugReportCallbackCreateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDebugReportFlagsEXT flags;
-	#if NET6_0_OR_GREATER
 	public unsafe delegate* unmanaged<VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, sbyte*, sbyte*, void*, uint> pfnCallback;
-	#else
-	public IntPtr pfnCallback;
-	#endif
 	public unsafe void* pUserData;
 	public static VkDebugReportCallbackCreateInfoEXT New()
 	{
@@ -7960,11 +7936,7 @@ public partial struct VkDebugUtilsMessengerCreateInfoEXT
 	public VkDebugUtilsMessengerCreateFlagsEXT flags;
 	public VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
 	public VkDebugUtilsMessageTypeFlagsEXT messageType;
-	#if NET6_0_OR_GREATER
 	public unsafe delegate* unmanaged<VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void*, uint> pfnUserCallback;
-	#else
-	public IntPtr pfnUserCallback;
-	#endif
 	public unsafe void* pUserData;
 	public static VkDebugUtilsMessengerCreateInfoEXT New()
 	{
@@ -10194,11 +10166,7 @@ public partial struct VkDeviceDeviceMemoryReportCreateInfoEXT
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDeviceMemoryReportFlagsEXT flags;
-	#if NET6_0_OR_GREATER
 	public unsafe delegate* unmanaged<VkDeviceMemoryReportCallbackDataEXT*, void*, void> pfnUserCallback;
-	#else
-	public IntPtr pfnUserCallback;
-	#endif
 	public unsafe void* pUserData;
 	public static VkDeviceDeviceMemoryReportCreateInfoEXT New()
 	{
@@ -10349,6 +10317,20 @@ public partial struct VkDeviceDiagnosticsConfigCreateInfoNV
 	{
 		Unsafe.SkipInit(out VkDeviceDiagnosticsConfigCreateInfoNV instance);
 		instance.sType = VkStructureType.DeviceDiagnosticsConfigCreateInfoNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkQueryLowLatencySupportNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public unsafe void* pQueriedLowLatencyData;
+	public static VkQueryLowLatencySupportNV New()
+	{
+		Unsafe.SkipInit(out VkQueryLowLatencySupportNV instance);
+		instance.sType = VkStructureType.QueryLowLatencySupportNV;
 		return instance;
 	}
 }
@@ -11768,6 +11750,37 @@ public partial struct VkMicromapTriangleEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 clustercullingShader;
+	public VkBool32 multiviewClusterCullingShader;
+	public static VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI instance);
+		instance.sType = VkStructureType.PhysicalDeviceClusterCullingShaderFeaturesHUAWEI;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public unsafe fixed uint maxWorkGroupCount[3];
+	public unsafe fixed uint maxWorkGroupSize[3];
+	public uint maxOutputClusterCount;
+	public static VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI instance);
+		instance.sType = VkStructureType.PhysicalDeviceClusterCullingShaderPropertiesHUAWEI;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPhysicalDeviceBorderColorSwizzleFeaturesEXT
 {
 	public VkStructureType sType;
@@ -11807,6 +11820,51 @@ public partial struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT
 	{
 		Unsafe.SkipInit(out VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT instance);
 		instance.sType = VkStructureType.PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceShaderCorePropertiesARM
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint pixelRate;
+	public uint texelRate;
+	public uint fmaRate;
+	public static VkPhysicalDeviceShaderCorePropertiesARM New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderCorePropertiesARM instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderCorePropertiesARM;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 imageSlicedViewOf3D;
+	public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceImageSlicedViewOf3DFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkImageViewSlicedCreateInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint sliceOffset;
+	public uint sliceCount;
+	public static VkImageViewSlicedCreateInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkImageViewSlicedCreateInfoEXT instance);
+		instance.sType = VkStructureType.ImageViewSlicedCreateInfoEXT;
 		return instance;
 	}
 }
@@ -12244,11 +12302,7 @@ public partial struct VkDirectDriverLoadingInfoLUNARG
 	public VkStructureType sType;
 	public unsafe void* pNext;
 	public VkDirectDriverLoadingModeLUNARG flags;
-	#if NET6_0_OR_GREATER
 	public unsafe delegate* unmanaged<VkInstance, sbyte*, IntPtr> pfnGetInstanceProcAddr;
-	#else
-	public IntPtr pfnGetInstanceProcAddr;
-	#endif
 	public static VkDirectDriverLoadingInfoLUNARG New()
 	{
 		Unsafe.SkipInit(out VkDirectDriverLoadingInfoLUNARG instance);
@@ -12606,6 +12660,49 @@ public partial struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM
 	{
 		Unsafe.SkipInit(out VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM instance);
 		instance.sType = VkStructureType.PhysicalDeviceShaderCoreBuiltinsPropertiesARM;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 pipelineLibraryGroupHandles;
+	public static VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 multiviewPerViewRenderAreas;
+	public static VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM instance);
+		instance.sType = VkStructureType.PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint perViewRenderAreaCount;
+	public unsafe VkRect2D* pPerViewRenderAreas;
+	public static VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM New()
+	{
+		Unsafe.SkipInit(out VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM instance);
+		instance.sType = VkStructureType.MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
 		return instance;
 	}
 }

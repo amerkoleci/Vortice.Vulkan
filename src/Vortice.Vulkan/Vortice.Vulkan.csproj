@@ -1,24 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6.0;net7.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <Description>Vulkan low level bindings.</Description>
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
-    <VersionPrefix>1.5.28</VersionPrefix>
+    <VersionPrefix>1.6.0</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
-    <PolySharpIncludeRuntimeSupportedAttributes>true</PolySharpIncludeRuntimeSupportedAttributes>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\LICENSE" PackagePath="" Pack="true" />
-
-    <Using Include="System.Runtime.InteropServices" />
+  <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
+    <Compile Remove="Shims/UnscopedRefAttribute.cs" />
   </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Memory" />
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" />
-    <PackageReference Include="Microsoft.Bcl.HashCode" />
-  </ItemGroup>
-
 </Project>

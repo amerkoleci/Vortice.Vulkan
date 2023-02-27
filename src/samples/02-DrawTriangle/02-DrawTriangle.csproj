@@ -6,6 +6,7 @@
     <IsPackable>false</IsPackable>
     <RootNamespace>DrawTriangle</RootNamespace>
     <PlatformTarget>x64</PlatformTarget>
+    <PublishAot>true</PublishAot>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Assets\*.spv" CopyToOutputDirectory="Always" />
