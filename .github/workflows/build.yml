@@ -12,10 +12,6 @@ on:
       - '*.md'
       - 'LICENSE'
 
-env:
-  DOTNET_CLI_TELEMETRY_OPTOUT: false
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-
 jobs:
   build:
     runs-on: windows-latest
@@ -23,8 +19,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
 
     - name: Install .NET 7.0
       uses: actions/setup-dotnet@v3
@@ -32,8 +26,15 @@ jobs:
         dotnet-version: '7.0.x'
 
     - name: Pack
-      run: dotnet pack Vortice.Vulkan.sln --configuration Release --output build/packages
+      run: dotnet pack Vortice.Vulkan.sln --configuration Release
+
+    - name: Upload Package Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Packages
+        path: artifacts\*.nupkg
+        if-no-files-found: error
 
     - name: Publish to NuGet
       if: github.event_name == 'push'
-      run: dotnet nuget push build/packages/**/*.nupkg -k ${{secrets.NUGET_TOKEN}} --skip-duplicate --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push artifacts/**/*.nupkg -k ${{secrets.NUGET_TOKEN}} --skip-duplicate --source https://api.nuget.org/v3/index.json
