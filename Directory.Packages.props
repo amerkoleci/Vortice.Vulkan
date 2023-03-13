@@ -13,7 +13,7 @@
   <ItemGroup>
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageVersion Include="NUnit" Version="3.13.3" />
-    <PackageVersion Include="NUnit3TestAdapter" Version="4.4.0" />
+    <PackageVersion Include="NUnit3TestAdapter" Version="4.4.2" />
 
     <PackageVersion Include="CppAst" Version="0.10.0" />
     <PackageVersion Include="Ultz.Native.GLFW" Version="3.3.3.1" />

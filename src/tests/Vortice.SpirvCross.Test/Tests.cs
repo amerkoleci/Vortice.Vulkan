@@ -13,6 +13,7 @@ public class Tests
     [TestCase]
     public void ContextTest()
     {
+        Context.GetVersion(out uint major, out uint minor, out uint patch);
         using Context context = new();
         Assert.IsEmpty(context.GetLastErrorString());
     }

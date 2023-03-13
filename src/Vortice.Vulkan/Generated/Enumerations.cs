@@ -57,6 +57,7 @@ public enum VkResult
 	ThreadDoneKHR = 1000268001,
 	OperationDeferredKHR = 1000268002,
 	OperationNotDeferredKHR = 1000268003,
+	ErrorInvalidVideoStdParametersKHR = -1000299000,
 	ErrorCompressionExhaustedEXT = -1000338000,
 	ErrorOutOfPoolMemoryKHR = ErrorOutOfPoolMemory,
 	ErrorInvalidExternalHandleKHR = ErrorInvalidExternalHandle,
@@ -344,20 +345,16 @@ public enum VkStructureType
 	VideoEncodeH264VclFrameInfoEXT = 1000038003,
 	VideoEncodeH264DpbSlotInfoEXT = 1000038004,
 	VideoEncodeH264NaluSliceInfoEXT = 1000038005,
-	VideoEncodeH264EmitPictureParametersInfoEXT = 1000038006,
 	VideoEncodeH264ProfileInfoEXT = 1000038007,
 	VideoEncodeH264RateControlInfoEXT = 1000038008,
 	VideoEncodeH264RateControlLayerInfoEXT = 1000038009,
-	VideoEncodeH264ReferenceListsInfoEXT = 1000038010,
 	VideoEncodeH265CapabilitiesEXT = 1000039000,
 	VideoEncodeH265SessionParametersCreateInfoEXT = 1000039001,
 	VideoEncodeH265SessionParametersAddInfoEXT = 1000039002,
 	VideoEncodeH265VclFrameInfoEXT = 1000039003,
 	VideoEncodeH265DpbSlotInfoEXT = 1000039004,
 	VideoEncodeH265NaluSliceSegmentInfoEXT = 1000039005,
-	VideoEncodeH265EmitPictureParametersInfoEXT = 1000039006,
 	VideoEncodeH265ProfileInfoEXT = 1000039007,
-	VideoEncodeH265ReferenceListsInfoEXT = 1000039008,
 	VideoEncodeH265RateControlInfoEXT = 1000039009,
 	VideoEncodeH265RateControlLayerInfoEXT = 1000039010,
 	VideoDecodeH264CapabilitiesKHR = 1000040000,
@@ -647,6 +644,7 @@ public enum VkStructureType
 	VideoEncodeRateControlLayerInfoKHR = 1000299002,
 	VideoEncodeCapabilitiesKHR = 1000299003,
 	VideoEncodeUsageInfoKHR = 1000299004,
+	QueryPoolVideoEncodeFeedbackCreateInfoKHR = 1000299005,
 	PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 	DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
 	QueryLowLatencySupportNV = 1000310000,
@@ -1109,6 +1107,7 @@ public enum VkVendorId
 	Codeplay = 65540,
 	Mesa = 65541,
 	Pocl = 65542,
+	Mobileye = 65543,
 }
 
 public enum VkSystemAllocationScope
@@ -1466,7 +1465,7 @@ public enum VkQueryType
 	AccelerationStructureSerializationSizeKHR = 1000150001,
 	AccelerationStructureCompactedSizeNV = 1000165000,
 	PerformanceQueryINTEL = 1000210000,
-	VideoEncodeBitstreamBufferRangeKHR = 1000299000,
+	VideoEncodeFeedbackKHR = 1000299000,
 	MeshPrimitivesGeneratedEXT = 1000328000,
 	PrimitivesGeneratedEXT = 1000382000,
 	AccelerationStructureSerializationBottomLevelPointersKHR = 1000386000,
@@ -4176,8 +4175,18 @@ public enum VkVideoEncodeCapabilityFlagsKHR
 public enum VkVideoEncodeRateControlModeFlagsKHR
 {
 	None = 0,
-	Cbr = 1,
-	Vbr = 2,
+	Default = 0,
+	Disabled = 1,
+	Cbr = 2,
+	Vbr = 4,
+}
+
+[Flags]
+public enum VkVideoEncodeFeedbackFlagsKHR
+{
+	None = 0,
+	BitstreamBufferOffset = 1,
+	BitstreamBytesWritten = 2,
 }
 
 [Flags]
@@ -4237,24 +4246,7 @@ public enum VkVideoEncodeH264CapabilityFlagsEXT
 	RowUnalignedSlice = 4194304,
 	DifferentSliceType = 8388608,
 	BFrameInL1List = 16777216,
-}
-
-[Flags]
-public enum VkVideoEncodeH264InputModeFlagsEXT
-{
-	None = 0,
-	Frame = 1,
-	Slice = 2,
-	NonVcl = 4,
-}
-
-[Flags]
-public enum VkVideoEncodeH264OutputModeFlagsEXT
-{
-	None = 0,
-	Frame = 1,
-	Slice = 2,
-	NonVcl = 4,
+	DifferentReferenceFinalLists = 33554432,
 }
 
 public enum VkVideoEncodeH265RateControlStructureEXT
@@ -4294,24 +4286,7 @@ public enum VkVideoEncodeH265CapabilityFlagsEXT
 	DependentSliceSegment = 8388608,
 	DifferentSliceType = 16777216,
 	BFrameInL1List = 33554432,
-}
-
-[Flags]
-public enum VkVideoEncodeH265InputModeFlagsEXT
-{
-	None = 0,
-	Frame = 1,
-	SliceSegment = 2,
-	NonVcl = 4,
-}
-
-[Flags]
-public enum VkVideoEncodeH265OutputModeFlagsEXT
-{
-	None = 0,
-	Frame = 1,
-	SliceSegment = 2,
-	NonVcl = 4,
+	DifferentReferenceFinalLists = 67108864,
 }
 
 [Flags]

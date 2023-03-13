@@ -4,7 +4,7 @@
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <Description>https://github.com/KhronosGroup/SPIRV-Cross bindings.</Description>
     <IncludeContentInPack>true</IncludeContentInPack>
-    <VersionPrefix>1.2.0</VersionPrefix>
+    <VersionPrefix>1.2.1</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''">beta</VersionSuffix>
   </PropertyGroup>
 
@@ -13,7 +13,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="build\**" PackagePath="build" Pack="true" />
-    <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" />
     <Content Include="lib\**" PackagePath="lib" Pack="true" />
   </ItemGroup>
 

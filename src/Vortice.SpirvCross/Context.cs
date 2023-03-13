@@ -83,7 +83,7 @@ public sealed unsafe class Context : IDisposable
 
     public Compiler CreateCompiler(Backend backend, in SpvcParsedIr parsedIr, CaptureMode captureMode = CaptureMode.TakeOwnership)
     {
-        spvc_context_create_compiler(_handle, backend, parsedIr.Handle, captureMode, out IntPtr compiler).CheckResult();
+        spvc_context_create_compiler(_handle, backend, parsedIr, captureMode, out IntPtr compiler).CheckResult();
         return new Compiler(compiler);
     }
 

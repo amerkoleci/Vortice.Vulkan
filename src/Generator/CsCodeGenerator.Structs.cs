@@ -102,6 +102,7 @@ public static partial class CsCodeGenerator
                         structureTypeValue = structureTypeValue.Replace("ANDROID", "Android");
                     }
 
+                    writer.WriteLine();
                     using (writer.PushBlock($"public static {csName} New()"))
                     {
                         writer.WriteLine($"Unsafe.SkipInit(out {csName} instance);");

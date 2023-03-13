@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 242
+	/// VK_HEADER_VERSION = 243
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 242;
+	public const uint VK_HEADER_VERSION = 243;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -3863,9 +3863,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_KHR_video_encode_queue = 1;
 	/// <summary>
-	/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 7
+	/// VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 8
 	/// </summary>
-	public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 7;
+	public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 8;
 	/// <summary>
 	/// VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue"
 	/// </summary>
@@ -3879,21 +3879,21 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint vulkan_video_codec_h264std_encode = 1;
 	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_8 = VK_MAKE_VIDEO_STD_VERSION(0,9,8)
+	/// VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_9 = VK_MAKE_VIDEO_STD_VERSION(0,9,9)
 	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_8 = new VkVersion(0, 9, 8);
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_9 = new VkVersion(0, 9, 9);
 	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_8
+	/// VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_9
 	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_8;
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_9;
 	/// <summary>
 	/// VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264_encode"
 	/// </summary>
 	public const string VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264_encode";
 	/// <summary>
-	/// VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 9
+	/// VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 10
 	/// </summary>
-	public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 9;
+	public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 10;
 	/// <summary>
 	/// VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264"
 	/// </summary>
@@ -3907,21 +3907,21 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint vulkan_video_codec_h265std_encode = 1;
 	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_9 = VK_MAKE_VIDEO_STD_VERSION(0,9,9)
+	/// VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_10 = VK_MAKE_VIDEO_STD_VERSION(0,9,10)
 	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_9 = new VkVersion(0, 9, 9);
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_10 = new VkVersion(0, 9, 10);
 	/// <summary>
-	/// VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_9
+	/// VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_10
 	/// </summary>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_9;
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_10;
 	/// <summary>
 	/// VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_encode"
 	/// </summary>
 	public const string VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_encode";
 	/// <summary>
-	/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 9
+	/// VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 10
 	/// </summary>
-	public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 9;
+	public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 10;
 	/// <summary>
 	/// VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265"
 	/// </summary>
