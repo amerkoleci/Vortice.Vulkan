@@ -76,7 +76,7 @@ internal static unsafe class SpirvCrossApi
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
-            return LibraryLoader.LoadLocalLibrary("libshaderc_shared.so");
+            return LibraryLoader.LoadLocalLibrary("libspirv-cross-c-shared.so");
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
