@@ -59,6 +59,7 @@ public enum VkResult
 	OperationNotDeferredKHR = 1000268003,
 	ErrorInvalidVideoStdParametersKHR = -1000299000,
 	ErrorCompressionExhaustedEXT = -1000338000,
+	ErrorIncompatibleShaderBinaryEXT = 1000482000,
 	ErrorOutOfPoolMemoryKHR = ErrorOutOfPoolMemory,
 	ErrorInvalidExternalHandleKHR = ErrorInvalidExternalHandle,
 	ErrorFragmentationEXT = ErrorFragmentation,
@@ -602,6 +603,8 @@ public enum VkStructureType
 	PipelineExecutableInfoKHR = 1000269003,
 	PipelineExecutableStatisticKHR = 1000269004,
 	PipelineExecutableInternalRepresentationKHR = 1000269005,
+	MemoryMapInfoKHR = 1000271000,
+	MemoryUnmapInfoKHR = 1000271001,
 	PhysicalDeviceShaderAtomicFloat2FeaturesEXT = 1000273000,
 	SurfacePresentModeEXT = 1000274000,
 	SurfacePresentScalingCapabilitiesEXT = 1000274001,
@@ -753,6 +756,8 @@ public enum VkStructureType
 	PhysicalDeviceMultiDrawFeaturesEXT = 1000392000,
 	PhysicalDeviceMultiDrawPropertiesEXT = 1000392001,
 	PhysicalDeviceImage2DViewOf3DFeaturesEXT = 1000393000,
+	PhysicalDeviceShaderTileImageFeaturesEXT = 1000395000,
+	PhysicalDeviceShaderTileImagePropertiesEXT = 1000395001,
 	MicromapBuildInfoEXT = 1000396000,
 	MicromapVersionInfoEXT = 1000396001,
 	CopyMicromapInfoEXT = 1000396002,
@@ -763,6 +768,9 @@ public enum VkStructureType
 	MicromapCreateInfoEXT = 1000396007,
 	MicromapBuildSizesInfoEXT = 1000396008,
 	AccelerationStructureTrianglesOpacityMicromapEXT = 1000396009,
+	PhysicalDeviceDisplacementMicromapFeaturesNV = 1000397000,
+	PhysicalDeviceDisplacementMicromapPropertiesNV = 1000397001,
+	AccelerationStructureTrianglesDisplacementMicromapNV = 1000397002,
 	PhysicalDeviceClusterCullingShaderFeaturesHUAWEI = 1000404000,
 	PhysicalDeviceClusterCullingShaderPropertiesHUAWEI = 1000404001,
 	PhysicalDeviceBorderColorSwizzleFeaturesEXT = 1000411000,
@@ -810,6 +818,9 @@ public enum VkStructureType
 	OpticalFlowSessionCreatePrivateDataInfoNV = 1000464010,
 	PhysicalDeviceLegacyDitheringFeaturesEXT = 1000465000,
 	PhysicalDevicePipelineProtectedAccessFeaturesEXT = 1000466000,
+	PhysicalDeviceShaderObjectFeaturesEXT = 1000482000,
+	PhysicalDeviceShaderObjectPropertiesEXT = 1000482001,
+	ShaderCreateInfoEXT = 1000482002,
 	PhysicalDeviceTilePropertiesFeaturesQCOM = 1000484000,
 	TilePropertiesQCOM = 1000484001,
 	PhysicalDeviceAmigoProfilingFeaturesSEC = 1000485000,
@@ -996,6 +1007,7 @@ public enum VkStructureType
 	PhysicalDeviceMaintenance4PropertiesKHR = PhysicalDeviceMaintenance4Properties,
 	DeviceBufferMemoryRequirementsKHR = DeviceBufferMemoryRequirements,
 	DeviceImageMemoryRequirementsKHR = DeviceImageMemoryRequirements,
+	ShaderRequiredSubgroupSizeCreateInfoEXT = PipelineShaderStageRequiredSubgroupSizeCreateInfo,
 }
 
 public enum VkPipelineCacheHeaderVersion
@@ -1094,6 +1106,7 @@ public enum VkObjectType
 	BufferCollectionFUCHSIA = 1000366000,
 	MicromapEXT = 1000396000,
 	OpticalFlowSessionNV = 1000464000,
+	ShaderEXT = 1000482000,
 	DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate,
 	SamplerYcbcrConversionKHR = SamplerYcbcrConversion,
 	PrivateDataSlotEXT = PrivateDataSlot,
@@ -2294,6 +2307,7 @@ public enum VkPipelineCreateFlags
 	ColorAttachmentFeedbackLoopEXT = 33554432,
 	DepthStencilAttachmentFeedbackLoopEXT = 67108864,
 	RayTracingOpacityMicromapEXT = 16777216,
+	RayTracingDisplacementMicromapNV = 268435456,
 	NoProtectedAccessEXT = 134217728,
 	ProtectedAccessOnlyEXT = 1073741824,
 	RasterizationStateCreateFragmentShadingRateAttachmentKHR = RenderingFragmentShadingRateAttachmentKHR,
@@ -3664,6 +3678,7 @@ public enum VkBuildAccelerationStructureFlagsKHR
 	AllowOpacityMicromapUpdateEXT = 64,
 	AllowDisableOpacityMicromapsEXT = 128,
 	AllowOpacityMicromapDataUpdateEXT = 256,
+	AllowDisplacementMicromapUpdateNV = 512,
 	AllowUpdateNV = AllowUpdate,
 	AllowCompactionNV = AllowCompaction,
 	PreferFastTraceNV = PreferFastTrace,
@@ -3970,6 +3985,7 @@ public enum VkDeviceAddressBindingFlagsEXT
 public enum VkMicromapTypeEXT
 {
 	OpacityMicromap = 0,
+	DisplacementMicromapNV = 1000397000,
 }
 
 public enum VkBuildMicromapModeEXT
@@ -4112,6 +4128,25 @@ public enum VkOpticalFlowExecuteFlagsNV
 {
 	None = 0,
 	DisableTemporalHints = 1,
+}
+
+public enum VkShaderCodeTypeEXT
+{
+	Binary = 0,
+	Spirv = 1,
+}
+
+[Flags]
+public enum VkShaderCreateFlagsEXT
+{
+	None = 0,
+	LinkStage = 1,
+	AllowVaryingSubgroupSize = 2,
+	RequireFullSubgroups = 4,
+	NoTaskShader = 8,
+	DispatchBase = 16,
+	FragmentShadingRateAttachment = 32,
+	FragmentDensityMapAttachment = 64,
 }
 
 public enum VkRayTracingInvocationReorderModeNV
@@ -4306,6 +4341,13 @@ public enum VkVideoEncodeH265TransformBlockSizeFlagsEXT
 	Size8 = 2,
 	Size16 = 4,
 	Size32 = 8,
+}
+
+public enum VkDisplacementMicromapFormatNV
+{
+	_64Triangles64Bytes = 1,
+	_256Triangles128Bytes = 2,
+	_1024Triangles128Bytes = 3,
 }
 
 [Flags]
@@ -4532,6 +4574,12 @@ public enum VkResolveModeFlagsKHR
 
 [Flags]
 public enum VkSemaphoreWaitFlagsKHR
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkMemoryUnmapFlagsKHR
 {
 	None = 0,
 }

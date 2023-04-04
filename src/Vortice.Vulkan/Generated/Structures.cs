@@ -7222,6 +7222,40 @@ public partial struct VkPipelineExecutableInternalRepresentationKHR
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkMemoryMapInfoKHR
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkMemoryMapFlags flags;
+	public VkDeviceMemory memory;
+	public ulong offset;
+	public ulong size;
+
+	public static VkMemoryMapInfoKHR New()
+	{
+		Unsafe.SkipInit(out VkMemoryMapInfoKHR instance);
+		instance.sType = VkStructureType.MemoryMapInfoKHR;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkMemoryUnmapInfoKHR
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkMemoryUnmapFlagsKHR flags;
+	public VkDeviceMemory memory;
+
+	public static VkMemoryUnmapInfoKHR New()
+	{
+		Unsafe.SkipInit(out VkMemoryUnmapInfoKHR instance);
+		instance.sType = VkStructureType.MemoryUnmapInfoKHR;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkPipelineLibraryCreateInfoKHR
 {
 	public VkStructureType sType;
@@ -12120,6 +12154,40 @@ public partial struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceShaderTileImageFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 shaderTileImageColorReadAccess;
+	public VkBool32 shaderTileImageDepthReadAccess;
+	public VkBool32 shaderTileImageStencilReadAccess;
+
+	public static VkPhysicalDeviceShaderTileImageFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderTileImageFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderTileImageFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceShaderTileImagePropertiesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 shaderTileImageCoherentReadAccelerated;
+	public VkBool32 shaderTileImageReadSampleFromPixelRateInvocation;
+	public VkBool32 shaderTileImageReadFromHelperInvocation;
+
+	public static VkPhysicalDeviceShaderTileImagePropertiesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderTileImagePropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderTileImagePropertiesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkMicromapUsageEXT
 {
 	public uint count;
@@ -13154,6 +13222,63 @@ public partial struct VkPhysicalDevicePipelineProtectedAccessFeaturesEXT
 	{
 		Unsafe.SkipInit(out VkPhysicalDevicePipelineProtectedAccessFeaturesEXT instance);
 		instance.sType = VkStructureType.PhysicalDevicePipelineProtectedAccessFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceShaderObjectFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 shaderObject;
+
+	public static VkPhysicalDeviceShaderObjectFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderObjectFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderObjectFeaturesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceShaderObjectPropertiesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public unsafe fixed byte shaderBinaryUUID[16];
+	public uint shaderBinaryVersion;
+
+	public static VkPhysicalDeviceShaderObjectPropertiesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceShaderObjectPropertiesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceShaderObjectPropertiesEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkShaderCreateInfoEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkShaderCreateFlagsEXT flags;
+	public VkShaderStageFlags stage;
+	public VkShaderStageFlags nextStage;
+	public VkShaderCodeTypeEXT codeType;
+	public nuint codeSize;
+	public unsafe void* pCode;
+	public unsafe sbyte* pName;
+	public uint setLayoutCount;
+	public unsafe VkDescriptorSetLayout* pSetLayouts;
+	public uint pushConstantRangeCount;
+	public unsafe VkPushConstantRange* pPushConstantRanges;
+	public unsafe VkSpecializationInfo* pSpecializationInfo;
+
+	public static VkShaderCreateInfoEXT New()
+	{
+		Unsafe.SkipInit(out VkShaderCreateInfoEXT instance);
+		instance.sType = VkStructureType.ShaderCreateInfoEXT;
 		return instance;
 	}
 }
@@ -15023,6 +15148,66 @@ public partial struct VkVideoEncodeH265RateControlLayerInfoEXT
 	{
 		Unsafe.SkipInit(out VkVideoEncodeH265RateControlLayerInfoEXT instance);
 		instance.sType = VkStructureType.VideoEncodeH265RateControlLayerInfoEXT;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceDisplacementMicromapFeaturesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 displacementMicromap;
+
+	public static VkPhysicalDeviceDisplacementMicromapFeaturesNV New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceDisplacementMicromapFeaturesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceDisplacementMicromapFeaturesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceDisplacementMicromapPropertiesNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public uint maxDisplacementMicromapSubdivisionLevel;
+
+	public static VkPhysicalDeviceDisplacementMicromapPropertiesNV New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceDisplacementMicromapPropertiesNV instance);
+		instance.sType = VkStructureType.PhysicalDeviceDisplacementMicromapPropertiesNV;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkAccelerationStructureTrianglesDisplacementMicromapNV
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkFormat displacementBiasAndScaleFormat;
+	public VkFormat displacementVectorFormat;
+	public VkDeviceOrHostAddressConstKHR displacementBiasAndScaleBuffer;
+	public ulong displacementBiasAndScaleStride;
+	public VkDeviceOrHostAddressConstKHR displacementVectorBuffer;
+	public ulong displacementVectorStride;
+	public VkDeviceOrHostAddressConstKHR displacedMicromapPrimitiveFlags;
+	public ulong displacedMicromapPrimitiveFlagsStride;
+	public VkIndexType indexType;
+	public VkDeviceOrHostAddressConstKHR indexBuffer;
+	public ulong indexStride;
+	public uint baseTriangle;
+	public uint usageCountsCount;
+	public unsafe VkMicromapUsageEXT* pUsageCounts;
+	public unsafe VkMicromapUsageEXT** ppUsageCounts;
+	public VkMicromapEXT micromap;
+
+	public static VkAccelerationStructureTrianglesDisplacementMicromapNV New()
+	{
+		Unsafe.SkipInit(out VkAccelerationStructureTrianglesDisplacementMicromapNV instance);
+		instance.sType = VkStructureType.AccelerationStructureTrianglesDisplacementMicromapNV;
 		return instance;
 	}
 }

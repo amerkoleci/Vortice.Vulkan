@@ -2197,6 +2197,18 @@ unsafe partial class Vulkan
 		return vkGetPipelineExecutableInternalRepresentationsKHR_ptr(device, executableInfo, internalRepresentationCount, internalRepresentations);
 	}
 
+	private static delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void*, VkResult> vkMapMemory2KHR_ptr;
+	public static VkResult vkMapMemory2KHR(VkDevice device, VkMemoryMapInfoKHR* memoryMapInfo, void* ppData)
+	{
+		return vkMapMemory2KHR_ptr(device, memoryMapInfo, ppData);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkMemoryUnmapInfoKHR*, VkResult> vkUnmapMemory2KHR_ptr;
+	public static VkResult vkUnmapMemory2KHR(VkDevice device, VkMemoryUnmapInfoKHR* memoryUnmapInfo)
+	{
+		return vkUnmapMemory2KHR_ptr(device, memoryUnmapInfo);
+	}
+
 	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfo*, void> vkCmdSetEvent2KHR_ptr;
 	public static void vkCmdSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfo* dependencyInfo)
 	{
@@ -3607,6 +3619,30 @@ unsafe partial class Vulkan
 		vkCmdOpticalFlowExecuteNV_ptr(commandBuffer, session, executeInfo);
 	}
 
+	private static delegate* unmanaged<VkDevice, int, VkShaderCreateInfoEXT*, VkAllocationCallbacks*, VkShaderEXT*, VkResult> vkCreateShadersEXT_ptr;
+	public static VkResult vkCreateShadersEXT(VkDevice device, int createInfoCount, VkShaderCreateInfoEXT* createInfos, VkAllocationCallbacks* allocator, VkShaderEXT* shaders)
+	{
+		return vkCreateShadersEXT_ptr(device, createInfoCount, createInfos, allocator, shaders);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void> vkDestroyShaderEXT_ptr;
+	public static void vkDestroyShaderEXT(VkDevice device, VkShaderEXT shader, VkAllocationCallbacks* allocator = default)
+	{
+		vkDestroyShaderEXT_ptr(device, shader, allocator);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkShaderEXT, nuint*, void*, VkResult> vkGetShaderBinaryDataEXT_ptr;
+	public static VkResult vkGetShaderBinaryDataEXT(VkDevice device, VkShaderEXT shader, nuint* dataSize, void* data)
+	{
+		return vkGetShaderBinaryDataEXT_ptr(device, shader, dataSize, data);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, int, VkShaderStageFlags*, VkShaderEXT*, void> vkCmdBindShadersEXT_ptr;
+	public static void vkCmdBindShadersEXT(VkCommandBuffer commandBuffer, int stageCount, VkShaderStageFlags* stages, VkShaderEXT* shaders)
+	{
+		vkCmdBindShadersEXT_ptr(commandBuffer, stageCount, stages, shaders);
+	}
+
 	private static delegate* unmanaged<VkDevice, VkFramebuffer, int*, VkTilePropertiesQCOM*, VkResult> vkGetFramebufferTilePropertiesQCOM_ptr;
 	public static VkResult vkGetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, int* propertiesCount, VkTilePropertiesQCOM* properties)
 	{
@@ -4247,6 +4283,8 @@ unsafe partial class Vulkan
 		vkGetPipelineExecutablePropertiesKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineInfoKHR*, int*, VkPipelineExecutablePropertiesKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutablePropertiesKHR));
 		vkGetPipelineExecutableStatisticsKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, int*, VkPipelineExecutableStatisticKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutableStatisticsKHR));
 		vkGetPipelineExecutableInternalRepresentationsKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, int*, VkPipelineExecutableInternalRepresentationKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutableInternalRepresentationsKHR));
+		vkMapMemory2KHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void*, VkResult>) load(context, nameof(vkMapMemory2KHR));
+		vkUnmapMemory2KHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryUnmapInfoKHR*, VkResult>) load(context, nameof(vkUnmapMemory2KHR));
 		vkCmdSetEvent2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfo*, void>) load(context, nameof(vkCmdSetEvent2KHR));
 		vkCmdResetEvent2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags2, void>) load(context, nameof(vkCmdResetEvent2KHR));
 		vkCmdWaitEvents2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, int, VkEvent*, VkDependencyInfo*, void>) load(context, nameof(vkCmdWaitEvents2KHR));
@@ -4455,6 +4493,10 @@ unsafe partial class Vulkan
 		vkDestroyOpticalFlowSessionNV_ptr = (delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyOpticalFlowSessionNV));
 		vkBindOpticalFlowSessionImageNV_ptr = (delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkOpticalFlowSessionBindingPointNV, VkImageView, VkImageLayout, VkResult>) load(context, nameof(vkBindOpticalFlowSessionImageNV));
 		vkCmdOpticalFlowExecuteNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkOpticalFlowSessionNV, VkOpticalFlowExecuteInfoNV*, void>) load(context, nameof(vkCmdOpticalFlowExecuteNV));
+		vkCreateShadersEXT_ptr = (delegate* unmanaged<VkDevice, int, VkShaderCreateInfoEXT*, VkAllocationCallbacks*, VkShaderEXT*, VkResult>) load(context, nameof(vkCreateShadersEXT));
+		vkDestroyShaderEXT_ptr = (delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyShaderEXT));
+		vkGetShaderBinaryDataEXT_ptr = (delegate* unmanaged<VkDevice, VkShaderEXT, nuint*, void*, VkResult>) load(context, nameof(vkGetShaderBinaryDataEXT));
+		vkCmdBindShadersEXT_ptr = (delegate* unmanaged<VkCommandBuffer, int, VkShaderStageFlags*, VkShaderEXT*, void>) load(context, nameof(vkCmdBindShadersEXT));
 		vkGetFramebufferTilePropertiesQCOM_ptr = (delegate* unmanaged<VkDevice, VkFramebuffer, int*, VkTilePropertiesQCOM*, VkResult>) load(context, nameof(vkGetFramebufferTilePropertiesQCOM));
 		vkGetDynamicRenderingTilePropertiesQCOM_ptr = (delegate* unmanaged<VkDevice, VkRenderingInfo*, VkTilePropertiesQCOM*, VkResult>) load(context, nameof(vkGetDynamicRenderingTilePropertiesQCOM));
 		vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));

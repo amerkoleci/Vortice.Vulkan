@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 243
+	/// VK_HEADER_VERSION = 246
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 243;
+	public const uint VK_HEADER_VERSION = 246;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -1098,6 +1098,18 @@ public static partial class Vulkan
 	/// VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME = "VK_KHR_pipeline_executable_properties"
 	/// </summary>
 	public const string VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME = "VK_KHR_pipeline_executable_properties";
+	/// <summary>
+	/// VK_KHR_map_memory2 = 1
+	/// </summary>
+	public const uint VK_KHR_map_memory2 = 1;
+	/// <summary>
+	/// VK_KHR_MAP_MEMORY_2_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_KHR_MAP_MEMORY_2_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_KHR_MAP_MEMORY_2_EXTENSION_NAME = "VK_KHR_map_memory2"
+	/// </summary>
+	public const string VK_KHR_MAP_MEMORY_2_EXTENSION_NAME = "VK_KHR_map_memory2";
 	/// <summary>
 	/// VK_KHR_shader_integer_dot_product = 1
 	/// </summary>
@@ -3311,6 +3323,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_EXT_IMAGE_2D_VIEW_OF_3D_EXTENSION_NAME = "VK_EXT_image_2d_view_of_3d";
 	/// <summary>
+	/// VK_EXT_shader_tile_image = 1
+	/// </summary>
+	public const uint VK_EXT_shader_tile_image = 1;
+	/// <summary>
+	/// VK_EXT_SHADER_TILE_IMAGE_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_SHADER_TILE_IMAGE_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_SHADER_TILE_IMAGE_EXTENSION_NAME = "VK_EXT_shader_tile_image"
+	/// </summary>
+	public const string VK_EXT_SHADER_TILE_IMAGE_EXTENSION_NAME = "VK_EXT_shader_tile_image";
+	/// <summary>
 	/// VK_EXT_opacity_micromap = 1
 	/// </summary>
 	public const uint VK_EXT_opacity_micromap = 1;
@@ -3619,6 +3643,18 @@ public static partial class Vulkan
 	/// </summary>
 	public const string VK_EXT_PIPELINE_PROTECTED_ACCESS_EXTENSION_NAME = "VK_EXT_pipeline_protected_access";
 	/// <summary>
+	/// VK_EXT_shader_object = 1
+	/// </summary>
+	public const uint VK_EXT_shader_object = 1;
+	/// <summary>
+	/// VK_EXT_SHADER_OBJECT_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_SHADER_OBJECT_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_SHADER_OBJECT_EXTENSION_NAME = "VK_EXT_shader_object"
+	/// </summary>
+	public const string VK_EXT_SHADER_OBJECT_EXTENSION_NAME = "VK_EXT_shader_object";
+	/// <summary>
 	/// VK_QCOM_tile_properties = 1
 	/// </summary>
 	public const uint VK_QCOM_tile_properties = 1;
@@ -3926,4 +3962,16 @@ public static partial class Vulkan
 	/// VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265"
 	/// </summary>
 	public const string VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265";
+	/// <summary>
+	/// VK_NV_displacement_micromap = 1
+	/// </summary>
+	public const uint VK_NV_displacement_micromap = 1;
+	/// <summary>
+	/// VK_NV_DISPLACEMENT_MICROMAP_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_NV_DISPLACEMENT_MICROMAP_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_NV_DISPLACEMENT_MICROMAP_EXTENSION_NAME = "VK_NV_displacement_micromap"
+	/// </summary>
+	public const string VK_NV_DISPLACEMENT_MICROMAP_EXTENSION_NAME = "VK_NV_displacement_micromap";
 }

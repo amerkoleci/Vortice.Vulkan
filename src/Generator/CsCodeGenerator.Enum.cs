@@ -145,7 +145,12 @@ public static partial class CsCodeGenerator
         { "VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG", "Include" },
 
         // VkMemoryDecompressionMethodFlagBitsNV
-        { "VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV", "GDeflate_1_0" }
+        { "VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV", "GDeflate_1_0" },
+
+        // VkDisplacementMicromapFormatNV
+        { "VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV", "_64Triangles64Bytes" },
+        { "VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV", "_256Triangles128Bytes" },
+        { "VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV", "_1024Triangles128Bytes" },
     };
 
     private static readonly Dictionary<string, string> s_knownEnumPrefixes = new()

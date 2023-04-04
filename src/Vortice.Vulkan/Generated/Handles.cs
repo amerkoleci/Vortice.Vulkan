@@ -1145,6 +1145,30 @@ public readonly partial struct VkOpticalFlowSessionNV : IEquatable<VkOpticalFlow
 /// A non-dispatchable handle.
 /// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkShaderEXT : IEquatable<VkShaderEXT>
+{
+	public VkShaderEXT(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static VkShaderEXT Null => new(0);
+	public static implicit operator VkShaderEXT(ulong handle) => new(handle);
+	public static bool operator ==(VkShaderEXT left, VkShaderEXT right) => left.Handle == right.Handle;
+	public static bool operator !=(VkShaderEXT left, VkShaderEXT right) => left.Handle != right.Handle;
+	public static bool operator ==(VkShaderEXT left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkShaderEXT left, ulong right) => left.Handle != right;
+	public bool Equals(VkShaderEXT other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkShaderEXT handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkShaderEXT)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct MTLDevice_id : IEquatable<MTLDevice_id>
 {
 	public MTLDevice_id(ulong handle) { Handle = handle; }

@@ -20,6 +20,11 @@ public static class Program
             outputPath = Path.Combine(AppContext.BaseDirectory, outputPath);
         }
 
+        if (!outputPath.EndsWith("Generated"))
+        {
+            outputPath = Path.Combine(outputPath, "Generated");
+        }
+
         if (!Directory.Exists(outputPath))
         {
             Directory.CreateDirectory(outputPath);
