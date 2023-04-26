@@ -79,6 +79,13 @@ public sealed class CodeWriter : IDisposable
         _shouldIndent = true;
     }
 
+    public void WriteLineUndindented(string @string)
+    {
+        _writer.WriteLine(@string);
+        _shouldIndent = true;
+    }
+
+
     public void BeginBlock(string content)
     {
         WriteLine(content);

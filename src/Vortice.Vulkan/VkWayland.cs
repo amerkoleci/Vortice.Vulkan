@@ -9,10 +9,10 @@ public enum VkWaylandSurfaceCreateFlagsKHR
     None = 0,
 }
 
-public unsafe struct VkWaylandSurfaceCreateInfoKHR
+public struct VkWaylandSurfaceCreateInfoKHR
 {
     public VkStructureType sType;
-    public void* pNext;
+    public unsafe void* pNext;
     public VkWaylandSurfaceCreateFlagsKHR flags;
     public IntPtr display;
     public IntPtr surface;
@@ -36,12 +36,12 @@ public static unsafe partial class Vulkan
         vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWaylandPresentationSupportKHR));
     }
 
-    public static unsafe VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
+    public static VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
     {
         return vkCreateWaylandSurfaceKHR_ptr(instance, pCreateInfo, pAllocator, pSurface);
     }
 
-    public static unsafe bool vkGetPhysicalDeviceWaylandPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display)
+    public static bool vkGetPhysicalDeviceWaylandPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr display)
     {
         return vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex, display);
     }

@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-
 namespace Vortice.Vulkan;
 
 public static unsafe partial class Vulkan

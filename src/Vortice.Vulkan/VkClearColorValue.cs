@@ -12,9 +12,14 @@ namespace Vortice.Vulkan;
 [StructLayout(LayoutKind.Explicit)]
 public unsafe partial struct VkClearColorValue
 {
-    [FieldOffset(0)] public fixed float float32[4];
-    [FieldOffset(0)] public fixed int int32[4];
-    [FieldOffset(0)] public fixed uint uint32[4];
+    [FieldOffset(0)]
+    public fixed float float32[4];
+
+    [FieldOffset(0)]
+    public fixed int int32[4];
+
+    [FieldOffset(0)]
+    public fixed uint uint32[4];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="VkClearColorValue"/> structure.
@@ -67,5 +72,5 @@ public unsafe partial struct VkClearColorValue
     /// </summary>
     /// <param name="value">The value.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator VkClearColorValue(Vector4 value) => new(value.X, value.Y, value.Z, value.W);
+    public static implicit operator VkClearColorValue(in Vector4 value) => new(value.X, value.Y, value.Z, value.W);
 }

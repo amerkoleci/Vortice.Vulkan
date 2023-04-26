@@ -11,7 +11,7 @@ public partial struct VkStencilOpState
     /// <summary>
     /// A built-in description with default values.
     /// </summary>
-    public static readonly VkStencilOpState Default = new VkStencilOpState(VkStencilOp.Keep, VkStencilOp.Keep, VkStencilOp.Keep, VkCompareOp.Always);
+    public static VkStencilOpState Default => new(VkStencilOp.Keep, VkStencilOp.Keep, VkStencilOp.Keep, VkCompareOp.Always);
 
     public VkStencilOpState(
         VkStencilOp failOp = VkStencilOp.Keep,

@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 246
+	/// VK_HEADER_VERSION = 248
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 246;
+	public const uint VK_HEADER_VERSION = 248;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -3071,9 +3071,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_EXT_device_fault = 1;
 	/// <summary>
-	/// VK_EXT_DEVICE_FAULT_SPEC_VERSION = 1
+	/// VK_EXT_DEVICE_FAULT_SPEC_VERSION = 2
 	/// </summary>
-	public const uint VK_EXT_DEVICE_FAULT_SPEC_VERSION = 1;
+	public const uint VK_EXT_DEVICE_FAULT_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_EXT_DEVICE_FAULT_EXTENSION_NAME = "VK_EXT_device_fault"
 	/// </summary>
@@ -3363,9 +3363,9 @@ public static partial class Vulkan
 	/// </summary>
 	public const uint VK_HUAWEI_cluster_culling_shader = 1;
 	/// <summary>
-	/// VK_HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION = 1
+	/// VK_HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION = 2
 	/// </summary>
-	public const uint VK_HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION = 1;
+	public const uint VK_HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION = 2;
 	/// <summary>
 	/// VK_HUAWEI_CLUSTER_CULLING_SHADER_EXTENSION_NAME = "VK_HUAWEI_cluster_culling_shader"
 	/// </summary>

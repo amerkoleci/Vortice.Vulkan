@@ -11607,6 +11607,8 @@ public partial struct VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 	public uint applicationNameOffset;
 	public VkVersion applicationVersion;
 	public uint engineNameOffset;
+	public VkVersion engineVersion;
+	public VkVersion apiVersion;
 }
 
 [StructLayout(LayoutKind.Sequential)]

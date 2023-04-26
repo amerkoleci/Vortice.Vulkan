@@ -6,12 +6,12 @@ namespace Vortice.Vulkan;
 /// <summary>
 /// Structure specifying parameters of a newly created fence.
 /// </summary>
-public unsafe partial struct VkFenceCreateInfo
+public partial struct VkFenceCreateInfo
 {
-    public VkFenceCreateInfo(VkFenceCreateFlags flags = VkFenceCreateFlags.None)
+    public unsafe VkFenceCreateInfo(VkFenceCreateFlags flags = VkFenceCreateFlags.None, void* pNext = default)
     {
         sType = VkStructureType.FenceCreateInfo;
-        pNext = null;
+        this.pNext = pNext;
         this.flags = flags;
     }
 }

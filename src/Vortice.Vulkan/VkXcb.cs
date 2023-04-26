@@ -9,10 +9,10 @@ public enum VkXcbSurfaceCreateFlagsKHR
     None = 0,
 }
 
-public unsafe struct VkXcbSurfaceCreateInfoKHR
+public struct VkXcbSurfaceCreateInfoKHR
 {
     public VkStructureType sType;
-    public void* pNext;
+    public unsafe void* pNext;
     public VkXcbSurfaceCreateFlagsKHR flags;
     public IntPtr connection;
     public uint window;

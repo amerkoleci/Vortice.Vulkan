@@ -62,22 +62,15 @@ public static unsafe class Program
                 shaderStages[1].pName = entryPoint;
 
                 // VertexInputState
-                VkVertexInputBindingDescription vertexInputBinding = default;
-                vertexInputBinding.binding = 0;
-                vertexInputBinding.stride = (uint)VertexPositionColor.SizeInBytes;
-                vertexInputBinding.inputRate = VkVertexInputRate.Vertex;
+                VkVertexInputBindingDescription vertexInputBinding = new(VertexPositionColor.SizeInBytes);
 
-                VkVertexInputAttributeDescription* vertexInputAttributs = stackalloc VkVertexInputAttributeDescription[2];
                 // Attribute location 0: Position
-                vertexInputAttributs[0].binding = 0;
-                vertexInputAttributs[0].location = 0;
-                vertexInputAttributs[0].format = VkFormat.R32G32B32Sfloat;
-                vertexInputAttributs[0].offset = 0;
                 // Attribute location 1: Color
-                vertexInputAttributs[1].binding = 0;
-                vertexInputAttributs[1].location = 1;
-                vertexInputAttributs[1].format = VkFormat.R32G32B32A32Sfloat;
-                vertexInputAttributs[1].offset = 12;
+                VkVertexInputAttributeDescription* vertexInputAttributs = stackalloc VkVertexInputAttributeDescription[2]
+                {
+                    new(0, VkFormat.R32G32B32Sfloat, 0),
+                    new(1, VkFormat.R32G32B32A32Sfloat, 12)
+                };
 
                 VkPipelineVertexInputStateCreateInfo vertexInputState = new();
                 vertexInputState.sType = VkStructureType.PipelineVertexInputStateCreateInfo;
@@ -97,46 +90,20 @@ public static unsafe class Program
                 };
 
                 // Rasterization state
-                VkPipelineRasterizationStateCreateInfo rasterizationState = new()
-                {
-                    sType = VkStructureType.PipelineRasterizationStateCreateInfo,
-                    polygonMode = VkPolygonMode.Fill,
-                    cullMode = VkCullModeFlags.None,
-                    frontFace = VkFrontFace.CounterClockwise,
-                    depthClampEnable = false,
-                    rasterizerDiscardEnable = false,
-                    depthBiasEnable = false,
-                    lineWidth = 1.0f
-                };
+                VkPipelineRasterizationStateCreateInfo rasterizationState = VkPipelineRasterizationStateCreateInfo.CullCounterClockwise;
 
                 // Multi sampling state
-                VkPipelineMultisampleStateCreateInfo multisampleState = new();
-                multisampleState.sType = VkStructureType.PipelineMultisampleStateCreateInfo;
-                multisampleState.rasterizationSamples = VkSampleCountFlags.Count1;
-                multisampleState.pSampleMask = null;
+                VkPipelineMultisampleStateCreateInfo multisampleState = VkPipelineMultisampleStateCreateInfo.Default;
 
                 // DepthStencil
-                VkPipelineDepthStencilStateCreateInfo depthStencilState = new();
-                depthStencilState.sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
-                depthStencilState.depthTestEnable = true;
-                depthStencilState.depthWriteEnable = true;
-                depthStencilState.depthCompareOp = VkCompareOp.LessOrEqual;
-                depthStencilState.depthBoundsTestEnable = false;
-                depthStencilState.back.failOp = VkStencilOp.Keep;
-                depthStencilState.back.passOp = VkStencilOp.Keep;
-                depthStencilState.back.compareOp = VkCompareOp.Always;
-                depthStencilState.stencilTestEnable = false;
-                depthStencilState.front = depthStencilState.back;
+                VkPipelineDepthStencilStateCreateInfo depthStencilState = VkPipelineDepthStencilStateCreateInfo.Default;
 
                 // BlendStates
                 VkPipelineColorBlendAttachmentState blendAttachmentState = default;
                 blendAttachmentState.colorWriteMask = VkColorComponentFlags.All;
                 blendAttachmentState.blendEnable = false;
 
-                VkPipelineColorBlendStateCreateInfo colorBlendState = new();
-                colorBlendState.sType = VkStructureType.PipelineColorBlendStateCreateInfo;
-                colorBlendState.attachmentCount = 1;
-                colorBlendState.pAttachments = &blendAttachmentState;
+                VkPipelineColorBlendStateCreateInfo colorBlendState = new(blendAttachmentState);
 
                 // Dynamic states
                 VkDynamicState* dynamicStateEnables = stackalloc VkDynamicState[2];

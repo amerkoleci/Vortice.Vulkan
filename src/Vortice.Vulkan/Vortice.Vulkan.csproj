@@ -4,11 +4,11 @@
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <Description>Vulkan low level bindings.</Description>
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
-    <VersionPrefix>1.6.2</VersionPrefix>
+    <VersionPrefix>1.6.3</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
     <Compile Remove="Shims/UnscopedRefAttribute.cs" />
   </ItemGroup>
 </Project>

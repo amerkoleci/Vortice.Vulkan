@@ -6,9 +6,9 @@ namespace Vortice.Vulkan;
 /// <summary>
 /// Structure specifying an attachment description.
 /// </summary>
-public partial struct VkAttachmentDescription
+public unsafe partial struct VkAttachmentDescription2
 {
-    public VkAttachmentDescription(
+    public VkAttachmentDescription2(
         VkFormat format,
         VkSampleCountFlags samples,
         VkAttachmentLoadOp loadOp,
@@ -17,8 +17,11 @@ public partial struct VkAttachmentDescription
         VkAttachmentStoreOp stencilStoreOp,
         VkImageLayout initialLayout,
         VkImageLayout finalLayout,
-        VkAttachmentDescriptionFlags flags = VkAttachmentDescriptionFlags.None)
+        VkAttachmentDescriptionFlags flags = VkAttachmentDescriptionFlags.None,
+        void* pNext = default)
     {
+        sType = VkStructureType.AttachmentDescription2;
+        this.pNext = pNext;
         this.flags = flags;
         this.format = format;
         this.samples = samples;
