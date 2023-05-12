@@ -7432,6 +7432,21 @@ public partial struct VkTraceRaysIndirectCommand2KHR
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 rayTracingPositionFetch;
+
+	public static VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR instance);
+		instance.sType = VkStructureType.PhysicalDeviceRayTracingPositionFetchFeaturesKHR;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkDebugReportCallbackCreateInfoEXT
 {
 	public VkStructureType sType;
@@ -13467,6 +13482,21 @@ public partial struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM
 	{
 		Unsafe.SkipInit(out VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM instance);
 		instance.sType = VkStructureType.MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
+		return instance;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkBool32 attachmentFeedbackLoopDynamicState;
+
+	public static VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT New()
+	{
+		Unsafe.SkipInit(out VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT instance);
+		instance.sType = VkStructureType.PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT;
 		return instance;
 	}
 }

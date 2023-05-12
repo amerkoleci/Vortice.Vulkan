@@ -15,9 +15,9 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <summary>
-	/// VK_HEADER_VERSION = 248
+	/// VK_HEADER_VERSION = 250
 	/// </summary>
-	public const uint VK_HEADER_VERSION = 248;
+	public const uint VK_HEADER_VERSION = 250;
 	/// <summary>
 	/// VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0,1,3,VK_HEADER_VERSION)
 	/// </summary>
@@ -1278,6 +1278,18 @@ public static partial class Vulkan
 	/// VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4"
 	/// </summary>
 	public const string VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4";
+	/// <summary>
+	/// VK_KHR_ray_tracing_position_fetch = 1
+	/// </summary>
+	public const uint VK_KHR_ray_tracing_position_fetch = 1;
+	/// <summary>
+	/// VK_KHR_RAY_TRACING_POSITION_FETCH_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_KHR_RAY_TRACING_POSITION_FETCH_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_KHR_RAY_TRACING_POSITION_FETCH_EXTENSION_NAME = "VK_KHR_ray_tracing_position_fetch"
+	/// </summary>
+	public const string VK_KHR_RAY_TRACING_POSITION_FETCH_EXTENSION_NAME = "VK_KHR_ray_tracing_position_fetch";
 	/// <summary>
 	/// VK_EXT_debug_report = 1
 	/// </summary>
@@ -3750,6 +3762,18 @@ public static partial class Vulkan
 	/// VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_render_areas"
 	/// </summary>
 	public const string VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_render_areas";
+	/// <summary>
+	/// VK_EXT_attachment_feedback_loop_dynamic_state = 1
+	/// </summary>
+	public const uint VK_EXT_attachment_feedback_loop_dynamic_state = 1;
+	/// <summary>
+	/// VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_SPEC_VERSION = 1
+	/// </summary>
+	public const uint VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_SPEC_VERSION = 1;
+	/// <summary>
+	/// VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_attachment_feedback_loop_dynamic_state"
+	/// </summary>
+	public const string VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_attachment_feedback_loop_dynamic_state";
 	/// <summary>
 	/// VK_KHR_acceleration_structure = 1
 	/// </summary>
