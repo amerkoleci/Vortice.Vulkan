@@ -177,7 +177,7 @@ public static partial class CsCodeGenerator
 
                 //AddCsMapping(cppMacro.Name, csName);
 
-                writer.WriteLine("/// <summary>");
+                
                 if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_6" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION" ||
@@ -202,8 +202,7 @@ public static partial class CsCodeGenerator
                     csDataType = "VkVersion";
                 }
 
-                writer.WriteLine($"/// {cppMacro.Name} = {cppMacro.Value}");
-                writer.WriteLine("/// </summary>");
+                writer.WriteLine($"/// <unmanaged>{cppMacro.Name}</unmanaged>");
                 if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE")
                 {
                     writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]}, VK_HEADER_VERSION);");

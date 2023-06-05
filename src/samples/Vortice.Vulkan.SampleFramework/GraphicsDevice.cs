@@ -70,9 +70,8 @@ public unsafe sealed class GraphicsDevice : IDisposable
         using VkStringArray vkLayerNames = new(instanceLayers);
         using VkStringArray vkInstanceExtensions = new(instanceExtensions);
 
-        var instanceCreateInfo = new VkInstanceCreateInfo
+        VkInstanceCreateInfo instanceCreateInfo = new()
         {
-            sType = VkStructureType.InstanceCreateInfo,
             pApplicationInfo = &appInfo,
             enabledLayerCount = vkLayerNames.Length,
             ppEnabledLayerNames = vkLayerNames,
@@ -80,10 +79,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             ppEnabledExtensionNames = vkInstanceExtensions
         };
 
-        var debugUtilsCreateInfo = new VkDebugUtilsMessengerCreateInfoEXT
-        {
-            sType = VkStructureType.DebugUtilsMessengerCreateInfoEXT
-        };
+        VkDebugUtilsMessengerCreateInfoEXT debugUtilsCreateInfo = new();
 
         if (instanceLayers.Count > 0)
         {

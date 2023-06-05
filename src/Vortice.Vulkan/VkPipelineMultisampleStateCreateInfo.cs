@@ -1,6 +1,8 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Runtime.CompilerServices;
+
 namespace Vortice.Vulkan;
 
 /// <summary>
@@ -20,6 +22,8 @@ public unsafe partial struct VkPipelineMultisampleStateCreateInfo
         void* pNext = default,
         VkPipelineMultisampleStateCreateFlags flags = VkPipelineMultisampleStateCreateFlags.None)
     {
+        Unsafe.SkipInit(out this);
+
         this.sType = VkStructureType.PipelineMultisampleStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;

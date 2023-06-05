@@ -1,6 +1,8 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Runtime.CompilerServices;
+
 namespace Vortice.Vulkan;
 
 /// <summary>
@@ -15,6 +17,8 @@ public unsafe partial struct VkPipelineColorBlendStateCreateInfo
         void* pNext = default,
         VkPipelineColorBlendStateCreateFlags flags = VkPipelineColorBlendStateCreateFlags.None)
     {
+        Unsafe.SkipInit(out this);
+
         this.sType = VkStructureType.PipelineColorBlendStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;
@@ -36,6 +40,8 @@ public unsafe partial struct VkPipelineColorBlendStateCreateInfo
         void* pNext = default,
         VkPipelineColorBlendStateCreateFlags flags = VkPipelineColorBlendStateCreateFlags.None)
     {
+        Unsafe.SkipInit(out this);
+
         this.sType = VkStructureType.PipelineColorBlendStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;

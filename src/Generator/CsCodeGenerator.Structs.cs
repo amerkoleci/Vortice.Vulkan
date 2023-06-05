@@ -103,11 +103,11 @@ public static partial class CsCodeGenerator
                     }
 
                     writer.WriteLine();
-                    using (writer.PushBlock($"public static {csName} New()"))
+                    using (writer.PushBlock($"public {csName}()"))
                     {
-                        writer.WriteLine($"Unsafe.SkipInit(out {csName} instance);");
-                        writer.WriteLine($"instance.sType = VkStructureType.{structureTypeValue};");
-                        writer.WriteLine($"return instance;");
+                        writer.WriteLine($"Unsafe.SkipInit(out this);");
+                        writer.WriteLine();
+                        writer.WriteLine($"sType = VkStructureType.{structureTypeValue};");
                     }
                 }
             }

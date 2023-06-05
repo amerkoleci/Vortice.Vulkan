@@ -79,15 +79,9 @@ public static unsafe class Program
                 vertexInputState.vertexAttributeDescriptionCount = 2;
                 vertexInputState.pVertexAttributeDescriptions = vertexInputAttributs;
 
-                VkPipelineInputAssemblyStateCreateInfo inputAssemblyState = VkPipelineInputAssemblyStateCreateInfo.New();
-                inputAssemblyState.topology = VkPrimitiveTopology.TriangleList;
+                VkPipelineInputAssemblyStateCreateInfo inputAssemblyState = new(VkPrimitiveTopology.TriangleList);
 
-                VkPipelineViewportStateCreateInfo viewportState = new()
-                {
-                    sType = VkStructureType.PipelineViewportStateCreateInfo,
-                    viewportCount = 1,
-                    scissorCount = 1
-                };
+                VkPipelineViewportStateCreateInfo viewportState = new(1, 1);
 
                 // Rasterization state
                 VkPipelineRasterizationStateCreateInfo rasterizationState = VkPipelineRasterizationStateCreateInfo.CullCounterClockwise;

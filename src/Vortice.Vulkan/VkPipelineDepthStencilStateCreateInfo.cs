@@ -1,6 +1,8 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Runtime.CompilerServices;
+
 namespace Vortice.Vulkan;
 
 /// <summary>
@@ -40,6 +42,8 @@ public unsafe partial struct VkPipelineDepthStencilStateCreateInfo
         VkPipelineDepthStencilStateCreateFlags flags = VkPipelineDepthStencilStateCreateFlags.None,
         void* pNext = default)
     {
+        Unsafe.SkipInit(out this);
+
         this.sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
         this.flags = flags;
         this.pNext = pNext;
@@ -64,6 +68,8 @@ public unsafe partial struct VkPipelineDepthStencilStateCreateInfo
         VkPipelineDepthStencilStateCreateFlags flags = VkPipelineDepthStencilStateCreateFlags.None,
         void* pNext = default)
     {
+        Unsafe.SkipInit(out this);
+
         this.sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
         this.flags = flags;
         this.pNext = pNext;
@@ -91,6 +97,8 @@ public unsafe partial struct VkPipelineDepthStencilStateCreateInfo
         VkPipelineDepthStencilStateCreateFlags flags = VkPipelineDepthStencilStateCreateFlags.None,
         void* pNext = default)
     {
+        Unsafe.SkipInit(out this);
+
         this.sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
         this.flags = flags;
         this.pNext = pNext;

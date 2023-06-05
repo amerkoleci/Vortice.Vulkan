@@ -8,6 +8,11 @@ namespace Vortice.Vulkan;
 /// </summary>
 public partial struct VkPipelineColorBlendAttachmentState
 {
+    public static VkPipelineColorBlendAttachmentState Opaque => new(false, VkBlendFactor.One, VkBlendFactor.Zero, VkBlendOp.Add, VkBlendFactor.One, VkBlendFactor.Zero, VkBlendOp.Add, VkColorComponentFlags.All);
+    public static VkPipelineColorBlendAttachmentState AlphaBlend => new(true, VkBlendFactor.One, VkBlendFactor.OneMinusSrcAlpha, VkBlendOp.Add, VkBlendFactor.One, VkBlendFactor.OneMinusSrcAlpha, VkBlendOp.Add, VkColorComponentFlags.All);
+    public static VkPipelineColorBlendAttachmentState Additive => new(true, VkBlendFactor.SrcAlpha, VkBlendFactor.One, VkBlendOp.Add, VkBlendFactor.SrcAlpha, VkBlendFactor.One, VkBlendOp.Add, VkColorComponentFlags.All);
+    public static VkPipelineColorBlendAttachmentState NonPremultiplied => new(true, VkBlendFactor.SrcAlpha, VkBlendFactor.OneMinusSrcAlpha, VkBlendOp.Add, VkBlendFactor.SrcAlpha, VkBlendFactor.OneMinusSrcAlpha, VkBlendOp.Add, VkColorComponentFlags.All);
+
     public VkPipelineColorBlendAttachmentState(
         bool blendEnable = false,
         VkBlendFactor srcColorBlendFactor = VkBlendFactor.One,

@@ -1,6 +1,7 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Runtime.CompilerServices;
 using static Vortice.Vulkan.Vulkan;
 
 namespace Vortice.Vulkan;
@@ -21,6 +22,8 @@ public partial struct VkImageMemoryBarrier
         uint dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
         void* pNext = default)
     {
+        Unsafe.SkipInit(out this);
+
         sType = VkStructureType.ImageMemoryBarrier;
         this.pNext = pNext;
         this.srcAccessMask = srcAccessMask;
@@ -40,6 +43,8 @@ public partial struct VkImageMemoryBarrier
         VkImageSubresourceRange subresourceRange,
         void* pNext = default)
     {
+        Unsafe.SkipInit(out this);
+
         sType = VkStructureType.ImageMemoryBarrier;
         this.pNext = pNext;
         srcAccessMask = 0;

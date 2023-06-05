@@ -511,25 +511,19 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkCreateSemaphore(VkDevice device, out VkSemaphore semaphore)
     {
-        VkSemaphoreCreateInfo createInfo = VkSemaphoreCreateInfo.New();
+        VkSemaphoreCreateInfo createInfo = new();
         return vkCreateSemaphore(device, &createInfo, null, out semaphore);
     }
 
     public static VkResult vkCreateFence(VkDevice device, out VkFence fence)
     {
-        VkFenceCreateInfo createInfo = VkFenceCreateInfo.New();
+        VkFenceCreateInfo createInfo = new();
         return vkCreateFence(device, &createInfo, null, out fence);
     }
 
     public static VkResult vkCreateFence(VkDevice device, VkFenceCreateFlags flags, out VkFence fence)
     {
-        VkFenceCreateInfo createInfo = new()
-        {
-            sType = VkStructureType.FenceCreateInfo,
-            pNext = null,
-            flags = flags
-        };
-
+        VkFenceCreateInfo createInfo = new(flags);
         return vkCreateFence(device, &createInfo, null, out fence);
     }
 

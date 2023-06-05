@@ -1,6 +1,8 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Runtime.CompilerServices;
+
 namespace Vortice.Vulkan;
 
 /// <summary>
@@ -42,6 +44,8 @@ public unsafe partial struct VkPipelineRasterizationStateCreateInfo
         void* pNext = default,
         VkPipelineRasterizationStateCreateFlags flags = VkPipelineRasterizationStateCreateFlags.None)
     {
+        Unsafe.SkipInit(out this);
+
         this.sType = VkStructureType.PipelineRasterizationStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;

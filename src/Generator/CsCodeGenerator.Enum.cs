@@ -210,8 +210,8 @@ public static partial class CsCodeGenerator
 
     public static void GenerateEnums(CppCompilation compilation, string outputPath)
     {
-        using var writer = new CodeWriter(Path.Combine(outputPath, "Enumerations.cs"), false, "System");
-        var createdEnums = new Dictionary<string, string>();
+        using CodeWriter writer = new(Path.Combine(outputPath, "Enumerations.cs"), false, "System");
+        Dictionary<string, string> createdEnums = new();
 
         foreach (CppEnum cppEnum in compilation.Enums)
         {
@@ -323,9 +323,7 @@ public static partial class CsCodeGenerator
                         continue;
                     }
 
-                    //writer.WriteLine("/// <summary>");
-                    //writer.WriteLine($"/// {enumItem.Name}");
-                    //writer.WriteLine("/// </summary>");
+                    writer.WriteLine($"/// <unmanaged>{enumItem.Name}</unmanaged>");
                     if (enumItem.ValueExpression is CppRawExpression rawExpression)
                     {
                         string enumValueName = GetEnumItemName(cppEnum, rawExpression.Text, enumNamePrefix);

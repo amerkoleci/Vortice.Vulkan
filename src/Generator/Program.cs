@@ -48,12 +48,12 @@ public static class Program
                 }
         };
 
-        var compilation = CppParser.ParseFile(headerFile, options);
+        CppCompilation compilation = CppParser.ParseFile(headerFile, options);
 
         // Print diagnostic messages
         if (compilation.HasErrors)
         {
-            foreach (var message in compilation.Diagnostics.Messages)
+            foreach (CppDiagnosticMessage message in compilation.Diagnostics.Messages)
             {
                 if (message.Type == CppLogMessageType.Error)
                 {
@@ -67,35 +67,16 @@ public static class Program
             return 0;
         }
 
-        bool generateFuncFile = false;
-        if (generateFuncFile)
-        {
-            File.Delete("Vk.txt");
-            foreach (var func in compilation.Functions)
-            {
-                var signature = new System.Text.StringBuilder();
-                var argSignature = CsCodeGenerator.GetParameterSignature(func, true);
-                signature
-                    .Append(func.ReturnType.GetDisplayName())
-                    .Append(" ")
-                    .Append(func.Name)
-                    .Append("(")
-                    .Append(argSignature)
-                    .Append(")");
-                File.AppendAllText("Vk.txt", signature.ToString() + Environment.NewLine);
-            }
-        }
-
         CsCodeGenerator.Generate(compilation, outputPath);
         return 0;
     }
 
-    private static IEnumerable<string> ResolveWindowsSdk(string version)
-    {
-        var path = @"C:\Program Files (x86)\Windows Kits\10";
-        yield return $@"{path}\Include\{version}\shared";
-        yield return $@"{path}\Include\{version}\um";
-        yield return $@"{path}\Include\{version}\ucrt";
-        yield return $@"{path}\Include\{version}\winrt";
-    }
+    //private static IEnumerable<string> ResolveWindowsSdk(string version)
+    //{
+    //    var path = @"C:\Program Files (x86)\Windows Kits\10";
+    //    yield return $@"{path}\Include\{version}\shared";
+    //    yield return $@"{path}\Include\{version}\um";
+    //    yield return $@"{path}\Include\{version}\ucrt";
+    //    yield return $@"{path}\Include\{version}\winrt";
+    //}
 }
