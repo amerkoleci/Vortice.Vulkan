@@ -18,7 +18,9 @@ public static unsafe class Vma
     private static readonly delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, VkImageCreateInfo*, out VkImage, VkResult> vmaCreateAliasingImage_ptr;
     private static readonly delegate* unmanaged[Cdecl]<VmaAllocator, VkImage, VmaAllocation, void> vmaDestroyImage_ptr;
 
+    private static readonly delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, void**, VkResult> vmaMapMemory_ptr;
     private static readonly delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, sbyte*, void> vmaSetAllocationName_ptr;
+    private static readonly delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, VkResult> vmaUnmapMemory_ptr;
 
     static Vma()
     {
@@ -31,7 +33,9 @@ public static unsafe class Vma
         vmaCreateAliasingImage_ptr = (delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, VkImageCreateInfo*, out VkImage, VkResult>)LoadFunction(nameof(vmaCreateAliasingImage));
         vmaDestroyImage_ptr = (delegate* unmanaged[Cdecl]<VmaAllocator, VkImage, VmaAllocation, void>)LoadFunction(nameof(vmaDestroyImage));
 
+        vmaMapMemory_ptr = (delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, void**, VkResult>)LoadFunction(nameof(vmaMapMemory));
         vmaSetAllocationName_ptr = (delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, sbyte*, void>)LoadFunction(nameof(vmaSetAllocationName));
+        vmaUnmapMemory_ptr = (delegate* unmanaged[Cdecl]<VmaAllocator, VmaAllocation, VkResult>)LoadFunction(nameof(vmaUnmapMemory));
     }
 
     public static VkResult vmaCreateAllocator(VmaAllocatorCreateInfo* allocateInfo, out VmaAllocator allocator)
@@ -163,6 +167,14 @@ public static unsafe class Vma
         vmaDestroyImage_ptr(allocator, image, allocation);
     }
 
+    public static VkResult vmaMapMemory(
+        VmaAllocator allocator,
+        VmaAllocation allocation,
+        void** ppData)
+    {
+        return vmaMapMemory_ptr(allocator, allocation, ppData);
+    }
+
     public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, string name)
     {
         ReadOnlySpan<sbyte> data = Interop.GetUtf8Span(name);
@@ -170,6 +182,13 @@ public static unsafe class Vma
         {
             vmaSetAllocationName_ptr(allocator, allocation, dataPtr);
         }
+    }
+
+    public static VkResult vmaUnmapMemory(
+        VmaAllocator allocator,
+        VmaAllocation allocation)
+    {
+        return vmaUnmapMemory_ptr(allocator, allocation);
     }
 
     private static IntPtr LoadNativeLibrary()

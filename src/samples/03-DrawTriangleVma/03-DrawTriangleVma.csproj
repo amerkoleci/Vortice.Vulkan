@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>03-DrawTriangleVma</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Content Update="Assets\triangle.frag.spv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="Assets\triangle.vert.spv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Assets\triangle.frag.spv" />
+      <Content Include="Assets\triangle.frag.spv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Assets\triangle.vert.spv" />
+      <Content Include="Assets\triangle.vert.spv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Vortice.VulkanMemoryAllocator\Vortice.VulkanMemoryAllocator.csproj" />
+      <ProjectReference Include="..\..\Vortice.Vulkan\Vortice.Vulkan.csproj" />
+      <ProjectReference Include="..\Vortice.Vulkan.SampleFramework\Vortice.Vulkan.SampleFramework.csproj" />
+    </ItemGroup>
+
+</Project>
