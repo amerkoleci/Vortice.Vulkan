@@ -3,26 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
     <AssemblyName>03-DrawTriangleVma</AssemblyName>
+    <PublishAot>true</PublishAot>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Update="Assets\triangle.frag.spv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Assets\triangle.vert.spv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Assets\triangle.frag.spv" />
-    <Content Include="Assets\triangle.frag.spv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Assets\triangle.vert.spv" />
-    <Content Include="Assets\triangle.vert.spv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Assets\*.spv" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
   <ItemGroup>

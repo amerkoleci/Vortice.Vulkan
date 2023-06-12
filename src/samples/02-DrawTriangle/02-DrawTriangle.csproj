@@ -2,15 +2,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IsPackable>false</IsPackable>
     <RootNamespace>DrawTriangle</RootNamespace>
-    <PlatformTarget>x64</PlatformTarget>
     <PublishAot>true</PublishAot>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Assets\*.spv" CopyToOutputDirectory="Always" />
-    
+
     <ProjectReference Include="..\Vortice.Vulkan.SampleFramework\Vortice.Vulkan.SampleFramework.csproj" />
   </ItemGroup>
 </Project>
