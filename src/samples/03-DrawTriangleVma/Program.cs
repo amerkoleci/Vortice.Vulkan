@@ -4,6 +4,7 @@
 using System.Numerics;
 using Vortice.Vulkan;
 using static Vortice.Vulkan.Vulkan;
+using static Vortice.Vulkan.Vma;
 
 namespace DrawTriangleVma;
 
@@ -41,7 +42,7 @@ public static unsafe class Program
             allocatorCreateInfo.PhysicalDevice = _graphicsDevice.PhysicalDevice;
             allocatorCreateInfo.Device = _graphicsDevice.VkDevice;
             allocatorCreateInfo.Instance = _graphicsDevice.VkInstance;
-            Vma.vmaCreateAllocator(&allocatorCreateInfo, out _allocator);
+            vmaCreateAllocator(&allocatorCreateInfo, out _allocator);
 
             VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new()
             {
@@ -201,7 +202,16 @@ public static unsafe class Program
             vkDestroyPipelineLayout(_graphicsDevice, _pipelineLayout);
             vkDestroyPipeline(_graphicsDevice, _pipeline);
             _vertexBuffer.Destroy(_allocator);
-            Vma.vmaDestroyAllocator(_allocator);
+
+            VmaTotalStatistics stats;
+            vmaCalculateStatistics(_allocator, &stats);
+
+            if (stats.total.statistics.allocationBytes > 0)
+            {
+                Log.Warn($"Total device memory leaked:  {stats.total.statistics.allocationBytes} bytes.");
+            }
+
+            vmaDestroyAllocator(_allocator);
 
             _graphicsDevice.Dispose();
 

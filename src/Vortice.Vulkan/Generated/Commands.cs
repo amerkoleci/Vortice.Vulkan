@@ -73,7 +73,7 @@ unsafe partial class Vulkan
 		return vkGetPhysicalDeviceImageFormatProperties_out_ptr(physicalDevice, format, type, tiling, usage, flags, out imageFormatProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void> vkGetPhysicalDeviceProperties_ptr;
+	public static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void> vkGetPhysicalDeviceProperties_ptr;
 	public static void vkGetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties* properties)
 	{
 		vkGetPhysicalDeviceProperties_ptr(physicalDevice, properties);

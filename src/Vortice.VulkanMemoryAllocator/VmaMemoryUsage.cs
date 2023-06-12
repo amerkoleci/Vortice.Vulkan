@@ -8,7 +8,15 @@ namespace Vortice.Vulkan;
 /// </summary>
 public enum VmaMemoryUsage
 {
+    /// <summary>
+    /// No intended memory usage specified.
+    /// Use other members of <see cref="VmaAllocationCreateInfo"/> to specify your requirements
+    /// </summary>
     Unknown = 0,
+    /// <summary>
+    /// Obsolete, preserved for backward compatibility.
+    /// Prefers  <see cref="VkMemoryPropertyFlags.DeviceLocal"/>
+    /// </summary>
     [Obsolete]
     GpuOnly = 1,
     [Obsolete]

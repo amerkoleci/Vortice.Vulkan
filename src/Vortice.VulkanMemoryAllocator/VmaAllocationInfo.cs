@@ -3,6 +3,9 @@
 
 namespace Vortice.Vulkan;
 
+/// <summary>
+/// Parameters of #VmaAllocation objects, that can be retrieved using function <see cref="Vma.vmaGetAllocationInfo(VmaAllocator, VmaAllocation, Vortice.Vulkan.VmaAllocationInfo*)"/>.
+/// </summary>
 public unsafe readonly struct VmaAllocationInfo
 {
     public readonly uint memoryType;
@@ -11,5 +14,5 @@ public unsafe readonly struct VmaAllocationInfo
     public readonly ulong size;
     public readonly void* pMappedData;
     public readonly void* pUserData;
-    public readonly IntPtr pName;
+    public readonly sbyte* pName;
 }

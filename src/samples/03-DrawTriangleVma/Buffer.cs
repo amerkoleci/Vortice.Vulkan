@@ -1,4 +1,8 @@
-﻿using Vortice.Vulkan;
+﻿// Copyright © Amer Koleci and Contributors.
+// Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
+
+using Vortice.Vulkan;
+using static Vortice.Vulkan.Vma;
 
 namespace DrawTriangleVma;
 
@@ -33,8 +37,7 @@ public unsafe struct Buffer
 
         if (ByteSize == 0) return;
 
-        if (Vma.vmaCreateBuffer(allocator, &bufferInfo, &allocationCreateInfo,
-                out VkBuffer, out _allocation) != VkResult.Success)
+        if (vmaCreateBuffer(allocator, &bufferInfo, &allocationCreateInfo, out VkBuffer, out _allocation) != VkResult.Success)
         {
             throw new Exception("Failed to create buffer!");
         }
@@ -42,22 +45,24 @@ public unsafe struct Buffer
 
     public void Map(VmaAllocator allocator, void** data)
     {
-        if (ByteSize == 0) return;
+        if (ByteSize == 0)
+            return;
 
-        Vma.vmaMapMemory(allocator, _allocation, data);
+        vmaMapMemory(allocator, _allocation, data).CheckResult();
     }
 
     public void Unmap(VmaAllocator allocator)
     {
-        if (ByteSize == 0) return;
+        if (ByteSize == 0)
+            return;
 
-        Vma.vmaUnmapMemory(allocator, _allocation);
+        vmaUnmapMemory(allocator, _allocation).CheckResult();
     }
 
     public void Destroy(VmaAllocator allocator)
     {
         if (ByteSize == 0) return;
 
-        Vma.vmaDestroyBuffer(allocator, VkBuffer, _allocation);
+        vmaDestroyBuffer(allocator, VkBuffer, _allocation);
     }
 }
