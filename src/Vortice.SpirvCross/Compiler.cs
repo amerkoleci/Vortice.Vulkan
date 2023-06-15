@@ -7,7 +7,7 @@ using static Vortice.SpirvCross.SpirvCrossApi;
 
 namespace Vortice.SpirvCross;
 
-public sealed unsafe class Compiler
+public sealed unsafe partial class Compiler
 {
     private readonly nint _handle;
 
@@ -51,6 +51,20 @@ public sealed unsafe class Compiler
         }
     }
 
+    public void SetName(uint id, string text)
+    {
+        fixed (byte* dataPtr = GetUtf8(text))
+        {
+            spvc_compiler_set_name(_handle, id, dataPtr);
+        }
+    }
+
+    public string? GetName(uint id)
+    {
+        var dataPtr = spvc_compiler_get_name(_handle, id);
+        return Marshal.PtrToStringUTF8(new IntPtr(dataPtr));
+    }
+
     public Result FlattenBufferBlock(uint variableId)
     {
         return spvc_compiler_flatten_buffer_block(_handle, variableId);
@@ -69,5 +83,34 @@ public sealed unsafe class Compiler
     public Result MaskStageOutputByBuiltIn(SpvBuiltIn builtin)
     {
         return spvc_compiler_mask_stage_output_by_builtin(_handle, builtin);
+    }
+
+    public IntPtr GetShaderResourcesPointer()
+    {
+        spvc_compiler_create_shader_resources(_handle, out var resourcesPtr).CheckResult();
+        return resourcesPtr;
+    }
+
+    public SpvReflectedResource[] GetShaderResourceListOfType(IntPtr resourcesPtr, SpvResourceType type)
+    {
+        spvc_resources_get_resource_list_for_type(resourcesPtr, type, out var resourceList, out var resourceSize).CheckResult();
+
+        var size = resourceSize.ToUInt32();
+        var resources = new SpvReflectedResource[size];
+
+        int structSize = Marshal.SizeOf<SpvReflectedResource>();
+
+        for (int i = 0; i < size; i++)
+        {
+            var ptr = new IntPtr(resourceList.ToInt64() + i * structSize);
+            resources[i] = Marshal.PtrToStructure<SpvReflectedResource>(ptr);
+        }
+
+        return resources;
+    }
+
+    public int GetDecoration(uint id, SpvDecoration decoration)
+    {
+        return spvc_compiler_get_decoration(_handle, id, decoration);
     }
 }
