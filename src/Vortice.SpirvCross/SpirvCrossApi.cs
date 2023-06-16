@@ -151,6 +151,21 @@ internal static unsafe class SpirvCrossApi
     [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
     public static extern Result spvc_compiler_mask_stage_output_by_builtin(IntPtr compiler, SpvBuiltIn builtin);
 
+    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern void spvc_compiler_set_name(IntPtr compiler, uint id, byte* source);
+
+    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern byte* spvc_compiler_get_name(IntPtr compiler, uint id);
+
+    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern Result spvc_compiler_create_shader_resources(IntPtr compiler, out IntPtr resources);
+
+    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern Result spvc_resources_get_resource_list_for_type(IntPtr resources, SpvResourceType type, out IntPtr resource_list, out UIntPtr resource_size);
+
+    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern int spvc_compiler_get_decoration(IntPtr compiler, uint id, SpvDecoration decoration);
+
     public static ReadOnlySpan<byte> GetUtf8(string str)
     {
         int maxLength = Encoding.UTF8.GetByteCount(str);
