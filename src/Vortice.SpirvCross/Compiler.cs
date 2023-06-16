@@ -1,9 +1,8 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using static Vortice.SpirvCross.SpirvCrossApi;
+using static Vortice.SpirvCross.Utils;
 
 namespace Vortice.SpirvCross;
 
@@ -37,7 +36,7 @@ public sealed unsafe partial class Compiler
 
     public Result AddHeaderLine(string text)
     {
-        fixed (byte* dataPtr = GetUtf8(text))
+        fixed (sbyte* dataPtr = text.GetUtf8Span())
         {
             return spvc_compiler_add_header_line(_handle, dataPtr);
         }
@@ -45,7 +44,7 @@ public sealed unsafe partial class Compiler
 
     public Result RequireExtension(string text)
     {
-        fixed (byte* dataPtr = GetUtf8(text))
+        fixed (sbyte* dataPtr = text.GetUtf8Span())
         {
             return spvc_compiler_require_extension(_handle, dataPtr);
         }
@@ -53,7 +52,7 @@ public sealed unsafe partial class Compiler
 
     public void SetName(uint id, string text)
     {
-        fixed (byte* dataPtr = GetUtf8(text))
+        fixed (sbyte* dataPtr = text.GetUtf8Span())
         {
             spvc_compiler_set_name(_handle, id, dataPtr);
         }
@@ -61,8 +60,7 @@ public sealed unsafe partial class Compiler
 
     public string? GetName(uint id)
     {
-        var dataPtr = spvc_compiler_get_name(_handle, id);
-        return Marshal.PtrToStringUTF8(new IntPtr(dataPtr));
+        return GetUtf8Span(spvc_compiler_get_name(_handle, id)).GetString();
     }
 
     public Result FlattenBufferBlock(uint variableId)
@@ -85,28 +83,9 @@ public sealed unsafe partial class Compiler
         return spvc_compiler_mask_stage_output_by_builtin(_handle, builtin);
     }
 
-    public IntPtr GetShaderResourcesPointer()
+    public Result CreateShaderResources(out Resources resources)
     {
-        spvc_compiler_create_shader_resources(_handle, out var resourcesPtr).CheckResult();
-        return resourcesPtr;
-    }
-
-    public SpvReflectedResource[] GetShaderResourceListOfType(IntPtr resourcesPtr, SpvResourceType type)
-    {
-        spvc_resources_get_resource_list_for_type(resourcesPtr, type, out var resourceList, out var resourceSize).CheckResult();
-
-        var size = resourceSize.ToUInt32();
-        var resources = new SpvReflectedResource[size];
-
-        int structSize = Marshal.SizeOf<SpvReflectedResource>();
-
-        for (int i = 0; i < size; i++)
-        {
-            var ptr = new IntPtr(resourceList.ToInt64() + i * structSize);
-            resources[i] = Marshal.PtrToStructure<SpvReflectedResource>(ptr);
-        }
-
-        return resources;
+        return spvc_compiler_create_shader_resources(_handle, out resources);
     }
 
     public int GetDecoration(uint id, SpvDecoration decoration)

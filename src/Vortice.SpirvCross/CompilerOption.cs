@@ -1,89 +1,133 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using static Vortice.SpirvCross.Constants;
+
 namespace Vortice.SpirvCross;
 
-public enum CompilerOption
+public enum CompilerOption : uint
 {
     Unknown = 0,
-    ForceTemporary = 1 | 0x1000000,
-    FLATTEN_MULTIDIMENSIONAL_ARRAYS = 16777218,
-    FIXUP_DEPTH_CONVENTION = 16777219,
-    FLIP_VERTEX_Y = 16777220,
-    GLSL_SUPPORT_NONZERO_BASE_INSTANCE = 33554437,
-    GLSL_SEPARATE_SHADER_OBJECTS = 33554438,
-    GLSL_ENABLE_420PACK_EXTENSION = 33554439,
-    GLSL_Version = 33554440,
-    GLSL_ES = 33554441,
-    GLSL_VulkanSemantics = 33554442,
-    GLSL_ES_DEFAULT_FLOAT_PRECISION_HIGHP = 33554443,
-    GLSL_ES_DEFAULT_INT_PRECISION_HIGHP = 33554444,
-    HLSLShaderModel = 67108877,
-    HLSL_POINT_SIZE_COMPAT = 67108878,
-    HLSL_POINT_COORD_COMPAT = 67108879,
-    HLSL_SUPPORT_NONZERO_BASE_VERTEX_BASE_INSTANCE = 67108880,
-    MSL_VERSION = 134217745,
-    MSL_TEXEL_BUFFER_TEXTURE_WIDTH = 134217746,
-    MSL_AUX_BUFFER_INDEX = 134217747,
-    MSL_SWIZZLE_BUFFER_INDEX = 134217747,
-    MSL_INDIRECT_PARAMS_BUFFER_INDEX = 134217748,
-    MSL_SHADER_OUTPUT_BUFFER_INDEX = 134217749,
-    MSL_SHADER_PATCH_OUTPUT_BUFFER_INDEX = 134217750,
-    MSL_SHADER_TESS_FACTOR_OUTPUT_BUFFER_INDEX = 134217751,
-    MSL_SHADER_INPUT_WORKGROUP_INDEX = 134217752,
-    MSL_ENABLE_POINT_SIZE_BUILTIN = 134217753,
-    MSL_DISABLE_RASTERIZATION = 134217754,
-    MSL_CAPTURE_OUTPUT_TO_BUFFER = 134217755,
-    MSL_SWIZZLE_TEXTURE_SAMPLES = 134217756,
-    MSL_PAD_FRAGMENT_OUTPUT_COMPONENTS = 134217757,
-    MSL_TESS_DOMAIN_ORIGIN_LOWER_LEFT = 134217758,
-    MSL_PLATFORM = 134217759,
-    MSL_ARGUMENT_BUFFERS = 134217760,
-    GLSL_EMIT_PUSH_CONSTANT_AS_UNIFORM_BUFFER = 33554465,
-    MSL_TEXTURE_BUFFER_NATIVE = 134217762,
-    GLSL_EMIT_UNIFORM_BUFFER_AS_PLAIN_UNIFORMS = 33554467,
-    MSL_BUFFER_SIZE_BUFFER_INDEX = 134217764,
-    EMIT_LINE_DIRECTIVES = 16777253,
-    MSL_MULTIVIEW = 134217766,
-    MSL_VIEW_MASK_BUFFER_INDEX = 134217767,
-    MSL_DEVICE_INDEX = 134217768,
-    MSL_VIEW_INDEX_FROM_DEVICE_INDEX = 134217769,
-    MSL_DISPATCH_BASE = 134217770,
-    MSL_DYNAMIC_OFFSETS_BUFFER_INDEX = 134217771,
-    MSL_TEXTURE_1D_AS_2D = 134217772,
-    MSL_ENABLE_BASE_INDEX_ZERO = 134217773,
-    MSL_IOS_FRAMEBUFFER_FETCH_SUBPASS = 134217774,
-    MSL_FRAMEBUFFER_FETCH_SUBPASS = 134217774,
-    MSL_INVARIANT_FP_MATH = 134217775,
-    MSL_EMULATE_CUBEMAP_ARRAY = 134217776,
-    MSL_ENABLE_DECORATION_BINDING = 134217777,
-    MSL_FORCE_ACTIVE_ARGUMENT_BUFFER_RESOURCES = 134217778,
-    MSL_FORCE_NATIVE_ARRAYS = 134217779,
-    ENABLE_STORAGE_IMAGE_QUALIFIER_DEDUCTION = 16777268,
-    HLSL_FORCE_STORAGE_BUFFER_AS_UAV = 67108917,
-    FORCE_ZERO_INITIALIZED_VARIABLES = 16777270,
-    HLSL_NONWRITABLE_UAV_TEXTURE_AS_SRV = 67108919,
-    MSL_ENABLE_FRAG_OUTPUT_MASK = 134217784,
-    MSL_ENABLE_FRAG_DEPTH_BUILTIN = 134217785,
-    MSL_ENABLE_FRAG_STENCIL_REF_BUILTIN = 134217786,
-    MSL_ENABLE_CLIP_DISTANCE_USER_VARYING = 134217787,
-    HLSL_ENABLE_16BIT_TYPES = 67108924,
-    MSL_MULTI_PATCH_WORKGROUP = 134217789,
-    MSL_SHADER_INPUT_BUFFER_INDEX = 134217790,
-    MSL_SHADER_INDEX_BUFFER_INDEX = 134217791,
-    MSL_VERTEX_FOR_TESSELLATION = 134217792,
-    MSL_VERTEX_INDEX_TYPE = 134217793,
-    GLSL_FORCE_FLATTENED_IO_BLOCKS = 33554498,
-    MSL_MULTIVIEW_LAYERED_RENDERING = 134217795,
-    MSL_ARRAYED_SUBPASS_INPUT = 134217796,
-    MSL_R32UI_LINEAR_TEXTURE_ALIGNMENT = 134217797,
-    MSL_R32UI_ALIGNMENT_CONSTANT_ID = 134217798,
-    HLSL_FLATTEN_MATRIX_VERTEX_INPUT_SEMANTICS = 67108935,
-    MSL_IOS_USE_SIMDGROUP_FUNCTIONS = 134217800,
-    MSL_EMULATE_SUBGROUPS = 134217801,
-    MSL_FIXED_SUBGROUP_SIZE = 134217802,
-    MSL_FORCE_SAMPLE_RATE_SHADING = 134217803,
-    MSL_IOS_SUPPORT_BASE_VERTEX_INSTANCE = 134217804,
-    GLSL_OVR_MULTIVIEW_VIEW_COUNT = 33554509,
-    RELAX_NAN_CHECKS = 16777294,
+    ForceTemporary = 1 | OptionCommonBit,
+    FlattenMultidimensionalArrays = 2 | OptionCommonBit,
+    FixupDepthConvention = 3 | OptionCommonBit,
+    FlipVertexY = 4 | OptionCommonBit,
+
+    GLSL_SupportNonZeroBaseInstance = 5 | OptionGLSLBit,
+    GLSL_SeparateShaderObjects = 6 | OptionGLSLBit,
+    GLSL_Enable420PackExtension = 7 | OptionGLSLBit,
+    GLSL_Version = 8 | OptionGLSLBit,
+    GLSL_ES = 9 | OptionGLSLBit,
+    GLSL_VulkanSemantics = 10 | OptionGLSLBit,
+    GLSL_ES_DefaultFloatPrecisionHighPrecision = 11 | OptionGLSLBit,
+    GLSL_ES_DefaultIntPrecisionHighPrecision = 12 | OptionGLSLBit,
+
+    HLSL_ShaderModel = 13 | OptionHSLBit,
+    HLSL_PointSizeCompat = 14 | OptionHSLBit,
+    HLSL_PointCoordCompat = 15 | OptionHSLBit,
+    HLSL_SupportNonZeroBaseVertexBaseInstance = 16 | OptionHSLBit,
+
+    MSL_Version = 17 | OptionMSLBit,
+    MSL_TexelBufferTextureWidth = 18 | OptionMSLBit,
+
+    /// <summary>
+    /// Obsolete, use SwizzleBufferIndex instead.
+    /// </summary>
+    MSL_AixBufferIndex = 19 | OptionMSLBit,
+    MSL_SwizzleBufferIndex = 19 | OptionMSLBit,
+
+    MSL_IndirectParamsBufferIndex = 20 | OptionMSLBit,
+    MSL_ShaderOutputBufferIndex = 21 | OptionMSLBit,
+    MSL_ShaderPatchOutputBufferIndex = 22 | OptionMSLBit,
+    MSL_ShaderTessFactorOutputBufferIndex = 23 | OptionMSLBit,
+    MSL_ShaderInputWorkgroupIndex = 24 | OptionMSLBit,
+    MSL_EnablePointSizeBuiltin = 25 | OptionMSLBit,
+    MSL_DisableRasterization = 26 | OptionMSLBit,
+    MSL_CaptureOutputoBuffer = 27 | OptionMSLBit,
+    MSL_SwizzleTextureSamples = 28 | OptionMSLBit,
+    MSL_PAD_FRAGMENT_OutputComponents = 29 | OptionMSLBit,
+    MSL_TESS_DOMAIN_ORIGIN_LOWER_LEFT = 30 | OptionMSLBit,
+    MSL_Platform = 31 | OptionMSLBit,
+    MSL_ArgumentBuffers = 32 | OptionMSLBit,
+
+    GLSL_EmitPushConstantAsUniformBuffer = 33 | OptionGLSLBit,
+
+    MSLTextureBufferNative = 34 | OptionMSLBit,
+
+    GLSL_EMIT_UNIFORMBuffer_AS_PLAIN_UNIFORMS = 35 | OptionGLSLBit,
+
+    MSLBufferSizeBufferIndex = 36 | OptionMSLBit,
+
+    EmitLineDirectives = 37 | OptionCommonBit,
+
+    MSL_MultiView = 38 | OptionMSLBit,
+    MSL_ViewMaskBufferIndex = 39 | OptionMSLBit,
+    MSL_DeviceEIndex = 40 | OptionMSLBit,
+    MSL_ViewIndexFromDeviceIndex = 41 | OptionMSLBit,
+    MSL_DispatchBase = 42 | OptionMSLBit,
+    MSL_DynamicOffsetsBufferIndex = 43 | OptionMSLBit,
+    MSLTexture1DAs2D = 44 | OptionMSLBit,
+    MSL_EnableBaseIndexZero = 45 | OptionMSLBit,
+
+    /// <summary>
+    /// Obsolete. Use <see cref="MSL_FramebufferFetchSubpass"/> instead.
+    /// </summary>
+    MSL_IOSFramebufferFetchSubpass = 46 | OptionMSLBit,
+    MSL_FramebufferFetchSubpass = 46 | OptionMSLBit,
+
+    MSL_InvariantFPMath = 47 | OptionMSLBit,
+    MSL_EmulateCubemapArray = 48 | OptionMSLBit,
+    MSL_EnableDecorationBinding = 49 | OptionMSLBit,
+    MSL_ForceActiveArgumentBufferResources = 50 | OptionMSLBit,
+    MSL_ForceNativeArrays = 51 | OptionMSLBit,
+
+    EnableStorageImageQualifierDeduction = 52 | OptionCommonBit,
+
+    HLSL_ForceStorageBufferAsUAV = 53 | OptionHSLBit,
+
+    ForceZeroInitializedVariables = 54 | OptionCommonBit,
+
+    HLSL_NonWriteableUAVTextureAsSRV = 55 | OptionHSLBit,
+
+    MSL_EnableFragOutput_MASK = 56 | OptionMSLBit,
+    MSL_EnableFragDepthBuiltin = 57 | OptionMSLBit,
+    MSL_EnableFragStencilRefBuiltin = 58 | OptionMSLBit,
+    MSL_EnableClipDistanceUserVarying = 59 | OptionMSLBit,
+
+    HLSL_Enable16BitTypes = 60 | OptionHSLBit,
+
+    MSL_MULTI_PatchWORKGROUP = 61 | OptionMSLBit,
+    MSL_ShaderInputBufferIndex = 62 | OptionMSLBit,
+    MSL_ShaderIndexBufferIndex = 63 | OptionMSLBit,
+    MSL_VertexFOR_TESSELLATION = 64 | OptionMSLBit,
+    MSL_VertexIndexType = 65 | OptionMSLBit,
+
+    GLSL_ForceFlattenedIOBlocks = 66 | OptionGLSLBit,
+
+    MSL_MultiviewLayeredRendering = 67 | OptionMSLBit,
+    MSL_ArrayedSubpassInput = 68 | OptionMSLBit,
+    MSL_R32UILinearTextureAlignment = 69 | OptionMSLBit,
+    MSL_R32UIAlignmentConstantID = 70 | OptionMSLBit,
+
+    HLSL_FlattenMatrixVertexInputSemantics = 71 | OptionHSLBit,
+
+    MSL_IOS_UseSIMDGroupFunctions = 72 | OptionMSLBit,
+    MSL_EmulateSubGroups = 73 | OptionMSLBit,
+    FixedSubGroupSize = 74 | OptionMSLBit,
+    MSL_ForceSampleRateShading = 75 | OptionMSLBit,
+    MSL_IOS_SupportBaseVertexInstance = 76 | OptionMSLBit,
+
+    GLSL_OVRMultiView_ViewCount = 77 | OptionGLSLBit,
+
+    RelaxNaNChecks = 78 | OptionCommonBit,
+
+    MSL_RAWBufferTeseInput = 79 | OptionMSLBit,
+    MSL_ShaderPatchInputBufferIndex = 80 | OptionMSLBit,
+    MSL_ManualHelperInvocationUpdates = 81 | OptionMSLBit,
+    MSL_CheckDiscardedFragStores = 82 | OptionMSLBit,
+
+    GLSL_EnableRowMajorLoadWorkaround = 83 | OptionGLSLBit,
+
+    MSL_ArgumentBuffersTier = 84 | OptionMSLBit,
+    MSL_SampleDRefLODArrayAsGrad = 85 | OptionMSLBit,
 }
