@@ -5437,7 +5437,7 @@ public partial struct VkImportMemoryFdInfoKHR
 
 	public VkImportMemoryFdInfoKHR()
 	{
-		sType = VkStructureType.ImportMemoryFdInfoKHR;
+		sType = VkStructureType.ImportMemoryFDInfoKHR;
 	}
 }
 
@@ -5450,7 +5450,7 @@ public partial struct VkMemoryFdPropertiesKHR
 
 	public VkMemoryFdPropertiesKHR()
 	{
-		sType = VkStructureType.MemoryFdPropertiesKHR;
+		sType = VkStructureType.MemoryFDPropertiesKHR;
 	}
 }
 
@@ -5464,7 +5464,7 @@ public partial struct VkMemoryGetFdInfoKHR
 
 	public VkMemoryGetFdInfoKHR()
 	{
-		sType = VkStructureType.MemoryGetFdInfoKHR;
+		sType = VkStructureType.MemoryGetFDInfoKHR;
 	}
 }
 
@@ -5480,7 +5480,7 @@ public partial struct VkImportSemaphoreFdInfoKHR
 
 	public VkImportSemaphoreFdInfoKHR()
 	{
-		sType = VkStructureType.ImportSemaphoreFdInfoKHR;
+		sType = VkStructureType.ImportSemaphoreFDInfoKHR;
 	}
 }
 
@@ -5494,7 +5494,7 @@ public partial struct VkSemaphoreGetFdInfoKHR
 
 	public VkSemaphoreGetFdInfoKHR()
 	{
-		sType = VkStructureType.SemaphoreGetFdInfoKHR;
+		sType = VkStructureType.SemaphoreGetFDInfoKHR;
 	}
 }
 
@@ -5565,7 +5565,7 @@ public partial struct VkImportFenceFdInfoKHR
 
 	public VkImportFenceFdInfoKHR()
 	{
-		sType = VkStructureType.ImportFenceFdInfoKHR;
+		sType = VkStructureType.ImportFenceFDInfoKHR;
 	}
 }
 
@@ -5579,7 +5579,7 @@ public partial struct VkFenceGetFdInfoKHR
 
 	public VkFenceGetFdInfoKHR()
 	{
-		sType = VkStructureType.FenceGetFdInfoKHR;
+		sType = VkStructureType.FenceGetFDInfoKHR;
 	}
 }
 

@@ -16,6 +16,11 @@ public struct VkXcbSurfaceCreateInfoKHR
     public VkXcbSurfaceCreateFlagsKHR flags;
     public IntPtr connection;
     public uint window;
+
+    public VkXcbSurfaceCreateInfoKHR()
+    {
+        sType = VkStructureType.XcbSurfaceCreateInfoKHR;
+    }
 }
 
 public static unsafe partial class Vulkan
@@ -27,13 +32,13 @@ public static unsafe partial class Vulkan
     /// </summary>
     public static readonly string KHRXcbSurfaceExtensionName = "VK_KHR_xcb_surface";
 
-    private static delegate* unmanaged[Stdcall]<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateXcbSurfaceKHR_ptr;
-    private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, uint, VkBool32> vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr;
+    private static delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateXcbSurfaceKHR_ptr;
+    private static delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32> vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr;
 
     private static void LoadXcb(VkInstance instance)
     {
-        vkCreateXcbSurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXcbSurfaceKHR));
-        vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, IntPtr, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXcbPresentationSupportKHR));
+        vkCreateXcbSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXcbSurfaceKHR));
+        vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXcbPresentationSupportKHR));
     }
 
     public static VkResult vkCreateXcbSurfaceKHR(VkInstance instance, VkXcbSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)

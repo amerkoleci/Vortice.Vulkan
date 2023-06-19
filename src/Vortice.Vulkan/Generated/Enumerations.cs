@@ -758,11 +758,11 @@ public enum VkStructureType
 	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR</unmanaged>
 	MemoryGetWin32HandleInfoKHR = 1000073003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR</unmanaged>
-	ImportMemoryFdInfoKHR = 1000074000,
+	ImportMemoryFDInfoKHR = 1000074000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR</unmanaged>
-	MemoryFdPropertiesKHR = 1000074001,
+	MemoryFDPropertiesKHR = 1000074001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR</unmanaged>
-	MemoryGetFdInfoKHR = 1000074002,
+	MemoryGetFDInfoKHR = 1000074002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR</unmanaged>
 	Win32KeyedMutexAcquireReleaseInfoKHR = 1000075000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR</unmanaged>
@@ -774,9 +774,9 @@ public enum VkStructureType
 	/// <unmanaged>VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR</unmanaged>
 	SemaphoreGetWin32HandleInfoKHR = 1000078003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR</unmanaged>
-	ImportSemaphoreFdInfoKHR = 1000079000,
+	ImportSemaphoreFDInfoKHR = 1000079000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR</unmanaged>
-	SemaphoreGetFdInfoKHR = 1000079001,
+	SemaphoreGetFDInfoKHR = 1000079001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR</unmanaged>
 	PhysicalDevicePushDescriptorPropertiesKHR = 1000080000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT</unmanaged>
@@ -828,9 +828,9 @@ public enum VkStructureType
 	/// <unmanaged>VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR</unmanaged>
 	FenceGetWin32HandleInfoKHR = 1000114002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR</unmanaged>
-	ImportFenceFdInfoKHR = 1000115000,
+	ImportFenceFDInfoKHR = 1000115000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR</unmanaged>
-	FenceGetFdInfoKHR = 1000115001,
+	FenceGetFDInfoKHR = 1000115001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR</unmanaged>
 	PhysicalDevicePerformanceQueryFeaturesKHR = 1000116000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR</unmanaged>
@@ -1753,7 +1753,6 @@ public enum VkStructureType
 	PhysicalDevice16bitStorageFeaturesKHR = PhysicalDevice16BitStorageFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO_KHR</unmanaged>
 	DescriptorUpdateTemplateCreateInfoKHR = DescriptorUpdateTemplateCreateInfo,
-	/// <unmanaged>VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES2_EXT</unmanaged>
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES_KHR</unmanaged>
 	PhysicalDeviceImagelessFramebufferFeaturesKHR = PhysicalDeviceImagelessFramebufferFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO_KHR</unmanaged>
@@ -4798,15 +4797,15 @@ public enum VkExternalMemoryHandleTypeFlags
 {
 	None = 0,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT</unmanaged>
-	OpaqueFd = 1,
+	OpaqueFD = 1,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT</unmanaged>
 	OpaqueWin32 = 2,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT</unmanaged>
-	OpaqueWin32Kmt = 4,
+	OpaqueWin32KMT = 4,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT</unmanaged>
-	D3d11Texture = 8,
+	D3D11Texture = 8,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT</unmanaged>
-	D3d11TextureKmt = 16,
+	D3D11TextureKMT = 16,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT</unmanaged>
 	D3D12Heap = 32,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT</unmanaged>
@@ -4824,15 +4823,15 @@ public enum VkExternalMemoryHandleTypeFlags
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV</unmanaged>
 	RDMAAddressNV = 4096,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT_KHR</unmanaged>
-	OpaqueFdKHR = OpaqueFd,
+	OpaqueFDKHR = OpaqueFD,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR</unmanaged>
 	OpaqueWin32KHR = OpaqueWin32,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR</unmanaged>
-	OpaqueWin32KmtKHR = OpaqueWin32Kmt,
+	OpaqueWin32KMTKHR = OpaqueWin32KMT,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT_KHR</unmanaged>
-	D3d11TextureKHR = D3d11Texture,
+	D3D11TextureKHR = D3D11Texture,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT_KHR</unmanaged>
-	D3d11TextureKmtKHR = D3d11TextureKmt,
+	D3D11TextureKMTKHR = D3D11TextureKMT,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT_KHR</unmanaged>
 	D3D12HeapKHR = D3D12Heap,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT_KHR</unmanaged>
@@ -4862,21 +4861,21 @@ public enum VkExternalFenceHandleTypeFlags
 {
 	None = 0,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT</unmanaged>
-	OpaqueFd = 1,
+	OpaqueFD = 1,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT</unmanaged>
 	OpaqueWin32 = 2,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT</unmanaged>
-	OpaqueWin32Kmt = 4,
+	OpaqueWin32KMT = 4,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT</unmanaged>
-	SyncFd = 8,
+	SyncFD = 8,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR</unmanaged>
-	OpaqueFdKHR = OpaqueFd,
+	OpaqueFDKHR = OpaqueFD,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR</unmanaged>
 	OpaqueWin32KHR = OpaqueWin32,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR</unmanaged>
-	OpaqueWin32KmtKHR = OpaqueWin32Kmt,
+	OpaqueWin32KMTKHR = OpaqueWin32KMT,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR</unmanaged>
-	SyncFdKHR = SyncFd,
+	SyncFDKHR = SyncFD,
 }
 
 [Flags]
@@ -4918,29 +4917,29 @@ public enum VkExternalSemaphoreHandleTypeFlags
 {
 	None = 0,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT</unmanaged>
-	OpaqueFd = 1,
+	OpaqueFD = 1,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT</unmanaged>
 	OpaqueWin32 = 2,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT</unmanaged>
-	OpaqueWin32Kmt = 4,
+	OpaqueWin32KMT = 4,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT</unmanaged>
 	D3D12Fence = 8,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT</unmanaged>
-	SyncFd = 16,
+	SyncFD = 16,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA</unmanaged>
 	ZirconEventFUCHSIA = 128,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE_BIT</unmanaged>
-	D3d11Fence = D3D12Fence,
+	D3D11Fence = D3D12Fence,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR</unmanaged>
-	OpaqueFdKHR = OpaqueFd,
+	OpaqueFDKHR = OpaqueFD,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR</unmanaged>
 	OpaqueWin32KHR = OpaqueWin32,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR</unmanaged>
-	OpaqueWin32KmtKHR = OpaqueWin32Kmt,
+	OpaqueWin32KMTKHR = OpaqueWin32KMT,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT_KHR</unmanaged>
 	D3D12FenceKHR = D3D12Fence,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT_KHR</unmanaged>
-	SyncFdKHR = SyncFd,
+	SyncFDKHR = SyncFD,
 }
 
 [Flags]
@@ -5264,7 +5263,6 @@ public enum VkColorSpaceKHR
 	ExtendedSrgbNonLinearEXT = 1000104014,
 	/// <unmanaged>VK_COLOR_SPACE_DISPLAY_NATIVE_AMD</unmanaged>
 	DisplayNativeAMD = 1000213000,
-	/// <unmanaged>VK_COLORSPACE_SRGB_NONLINEAR_KHR</unmanaged>
 	/// <unmanaged>VK_COLOR_SPACE_DCI_P3_LINEAR_EXT</unmanaged>
 	DciP3LinearEXT = DisplayP3LinearEXT,
 }
@@ -5787,8 +5785,6 @@ public enum VkPerformanceCounterDescriptionFlagsKHR
 	PerformanceImpacting = 1,
 	/// <unmanaged>VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR</unmanaged>
 	ConcurrentlyImpacted = 2,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_KHR</unmanaged>
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_KHR</unmanaged>
 }
 
 [Flags]
@@ -6104,11 +6100,11 @@ public enum VkExternalMemoryHandleTypeFlagsNV
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV</unmanaged>
 	OpaqueWin32 = 1,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV</unmanaged>
-	OpaqueWin32Kmt = 2,
+	OpaqueWin32KMT = 2,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV</unmanaged>
-	D3d11Image = 4,
+	D3D11Image = 4,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV</unmanaged>
-	D3d11ImageKmt = 8,
+	D3D11ImageKMT = 8,
 }
 
 [Flags]
@@ -6169,7 +6165,6 @@ public enum VkSurfaceCounterFlagsEXT
 	None = 0,
 	/// <unmanaged>VK_SURFACE_COUNTER_VBLANK_BIT_EXT</unmanaged>
 	Vblank = 1,
-	/// <unmanaged>VK_SURFACE_COUNTER_VBLANK_EXT</unmanaged>
 }
 
 public enum VkDisplayPowerStateEXT
@@ -6336,9 +6331,6 @@ public enum VkRayTracingShaderGroupTypeKHR
 	TrianglesHitGroup = 1,
 	/// <unmanaged>VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR</unmanaged>
 	ProceduralHitGroup = 2,
-	/// <unmanaged>VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV</unmanaged>
-	/// <unmanaged>VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV</unmanaged>
-	/// <unmanaged>VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV</unmanaged>
 }
 
 public enum VkGeometryTypeKHR
@@ -6349,7 +6341,6 @@ public enum VkGeometryTypeKHR
 	Aabbs = 1,
 	/// <unmanaged>VK_GEOMETRY_TYPE_INSTANCES_KHR</unmanaged>
 	Instances = 2,
-	/// <unmanaged>VK_GEOMETRY_TYPE_TRIANGLES_NV</unmanaged>
 	/// <unmanaged>VK_GEOMETRY_TYPE_AABBS_NV</unmanaged>
 	AabbsNV = Aabbs,
 }
@@ -6362,8 +6353,6 @@ public enum VkAccelerationStructureTypeKHR
 	BottomLevel = 1,
 	/// <unmanaged>VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR</unmanaged>
 	Generic = 2,
-	/// <unmanaged>VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV</unmanaged>
-	/// <unmanaged>VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV</unmanaged>
 }
 
 public enum VkCopyAccelerationStructureModeKHR
@@ -6376,8 +6365,6 @@ public enum VkCopyAccelerationStructureModeKHR
 	Serialize = 2,
 	/// <unmanaged>VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR</unmanaged>
 	Deserialize = 3,
-	/// <unmanaged>VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV</unmanaged>
-	/// <unmanaged>VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV</unmanaged>
 }
 
 public enum VkAccelerationStructureMemoryRequirementsTypeKHR

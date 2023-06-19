@@ -205,6 +205,9 @@ public static partial class CsCodeGenerator
         "io",
         "sec",
         "lunarg",
+        "kmt",
+        "fd",
+        "d3d11",
         "d3d12",
     };
 
@@ -322,8 +325,7 @@ public static partial class CsCodeGenerator
                     {
                         continue;
                     }
-
-                    writer.WriteLine($"/// <unmanaged>{enumItem.Name}</unmanaged>");
+                    
                     if (enumItem.ValueExpression is CppRawExpression rawExpression)
                     {
                         string enumValueName = GetEnumItemName(cppEnum, rawExpression.Text, enumNamePrefix);
@@ -340,10 +342,12 @@ public static partial class CsCodeGenerator
                                 continue;
                         }
 
+                        writer.WriteLine($"/// <unmanaged>{enumItem.Name}</unmanaged>");
                         writer.WriteLine($"{enumItemName} = {enumValueName},");
                     }
                     else
                     {
+                        writer.WriteLine($"/// <unmanaged>{enumItem.Name}</unmanaged>");
                         writer.WriteLine($"{enumItemName} = {enumItem.Value},");
                     }
                 }

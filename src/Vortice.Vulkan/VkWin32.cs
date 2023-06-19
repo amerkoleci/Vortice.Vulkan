@@ -16,6 +16,11 @@ public unsafe struct VkWin32SurfaceCreateInfoKHR
     public VkWin32SurfaceCreateFlagsKHR flags;
     public IntPtr hinstance;
     public IntPtr hwnd;
+
+    public VkWin32SurfaceCreateInfoKHR()
+    {
+        sType = VkStructureType.Win32SurfaceCreateInfoKHR;
+    }
 }
 
 public unsafe struct VkImportMemoryWin32HandleInfoKHR
@@ -25,6 +30,11 @@ public unsafe struct VkImportMemoryWin32HandleInfoKHR
     public VkExternalMemoryHandleTypeFlags handleType;
     public nint handle;
     public nint name;
+
+    public VkImportMemoryWin32HandleInfoKHR()
+    {
+        sType = VkStructureType.ImportMemoryWin32HandleInfoKHR;
+    }
 }
 
 public unsafe struct VkExportMemoryWin32HandleInfoKHR
@@ -34,6 +44,11 @@ public unsafe struct VkExportMemoryWin32HandleInfoKHR
     public IntPtr* pAttributes;
     public uint dwAccess;
     public ushort* name;
+
+    public VkExportMemoryWin32HandleInfoKHR()
+    {
+        sType = VkStructureType.ExportMemoryWin32HandleInfoKHR;
+    }
 }
 
 public unsafe struct VkMemoryWin32HandlePropertiesKHR
@@ -41,6 +56,11 @@ public unsafe struct VkMemoryWin32HandlePropertiesKHR
     public VkStructureType sType;
     public void* pNext;
     public uint memoryTypeBits;
+
+    public VkMemoryWin32HandlePropertiesKHR()
+    {
+        sType = VkStructureType.MemoryWin32HandlePropertiesKHR;
+    }
 }
 
 public unsafe struct VkMemoryGetWin32HandleInfoKHR
@@ -49,6 +69,11 @@ public unsafe struct VkMemoryGetWin32HandleInfoKHR
     public void* pNext;
     public VkDeviceMemory memory;
     public VkExternalMemoryHandleTypeFlags handleType;
+
+    public VkMemoryGetWin32HandleInfoKHR()
+    {
+        sType = VkStructureType.MemoryGetWin32HandleInfoKHR;
+    }
 }
 
 public unsafe struct VkWin32KeyedMutexAcquireReleaseInfoKHR
@@ -63,12 +88,9 @@ public unsafe struct VkWin32KeyedMutexAcquireReleaseInfoKHR
     public VkDeviceMemory* pReleaseSyncs;
     public ulong* pReleaseKeys;
 
-    public static VkWin32KeyedMutexAcquireReleaseInfoKHR New()
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR()
     {
-        return new VkWin32KeyedMutexAcquireReleaseInfoKHR
-        {
-            sType = VkStructureType.Win32KeyedMutexAcquireReleaseInfoKHR
-        };
+        sType = VkStructureType.Win32KeyedMutexAcquireReleaseInfoKHR;
     }
 }
 
@@ -81,6 +103,11 @@ public unsafe struct VkImportSemaphoreWin32HandleInfoKHR
     public VkExternalSemaphoreHandleTypeFlags handleType;
     public IntPtr handle;
     public ushort* name;
+
+    public VkImportSemaphoreWin32HandleInfoKHR()
+    {
+        sType = VkStructureType.ImportSemaphoreWin32HandleInfoKHR;
+    }
 }
 
 public unsafe struct VkExportSemaphoreWin32HandleInfoKHR
@@ -90,6 +117,11 @@ public unsafe struct VkExportSemaphoreWin32HandleInfoKHR
     public IntPtr pAttributes;
     public uint dwAccess;
     public ushort* name;
+
+    public VkExportSemaphoreWin32HandleInfoKHR()
+    {
+        sType = VkStructureType.ExportSemaphoreWin32HandleInfoKHR;
+    }
 }
 
 public unsafe struct VkD3D12FenceSubmitInfoKHR
@@ -100,6 +132,11 @@ public unsafe struct VkD3D12FenceSubmitInfoKHR
     public ulong* pWaitSemaphoreValues;
     public uint signalSemaphoreValuesCount;
     public ulong* pSignalSemaphoreValues;
+
+    public VkD3D12FenceSubmitInfoKHR()
+    {
+        sType = VkStructureType.D3D12FenceSubmitInfoKHR;
+    }
 }
 
 public unsafe partial struct VkSemaphoreGetWin32HandleInfoKHR
@@ -108,6 +145,11 @@ public unsafe partial struct VkSemaphoreGetWin32HandleInfoKHR
     public void* pNext;
     public VkSemaphore semaphore;
     public VkExternalSemaphoreHandleTypeFlags handleType;
+
+    public VkSemaphoreGetWin32HandleInfoKHR()
+    {
+        sType = VkStructureType.SemaphoreGetWin32HandleInfoKHR;
+    }
 }
 
 public unsafe partial struct VkImportFenceWin32HandleInfoKHR
@@ -119,6 +161,11 @@ public unsafe partial struct VkImportFenceWin32HandleInfoKHR
     public VkExternalFenceHandleTypeFlags handleType;
     public IntPtr handle;
     public ushort* name;
+
+    public VkImportFenceWin32HandleInfoKHR()
+    {
+        sType = VkStructureType.ImportFenceWin32HandleInfoKHR;
+    }
 }
 
 public unsafe partial struct VkFenceGetWin32HandleInfoKHR
@@ -127,6 +174,11 @@ public unsafe partial struct VkFenceGetWin32HandleInfoKHR
     public void* pNext;
     public VkFence fence;
     public VkExternalFenceHandleTypeFlags handleType;
+
+    public VkFenceGetWin32HandleInfoKHR()
+    {
+        sType = VkStructureType.FenceGetWin32HandleInfoKHR;
+    }
 }
 
 public unsafe partial struct VkImportMemoryWin32HandleInfoNV
@@ -135,6 +187,11 @@ public unsafe partial struct VkImportMemoryWin32HandleInfoNV
     public void* pNext;
     public VkExternalMemoryHandleTypeFlagsNV handleType;
     public IntPtr handle;
+
+    public VkImportMemoryWin32HandleInfoNV()
+    {
+        sType = VkStructureType.ImportMemoryWin32HandleInfoNV;
+    }
 }
 
 public unsafe partial struct VkExportMemoryWin32HandleInfoNV
@@ -143,6 +200,11 @@ public unsafe partial struct VkExportMemoryWin32HandleInfoNV
     public void* pNext;
     public IntPtr pAttributes;
     public uint dwAccess;
+
+    public VkExportMemoryWin32HandleInfoNV()
+    {
+        sType = VkStructureType.ExportMemoryWin32HandleInfoNV;
+    }
 }
 
 public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoNV
@@ -156,6 +218,11 @@ public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoNV
     public uint releaseCount;
     public VkDeviceMemory* pReleaseSyncs;
     public ulong* pReleaseKeys;
+
+    public VkWin32KeyedMutexAcquireReleaseInfoNV()
+    {
+        sType = VkStructureType.Win32KeyedMutexAcquireReleaseInfoNV;
+    }
 }
 
 public enum VkFullScreenExclusiveEXT
@@ -166,27 +233,42 @@ public enum VkFullScreenExclusiveEXT
     ApplicationControlled = 3,
 }
 
-public unsafe partial struct VkSurfaceFullScreenExclusiveInfoEXT
+public partial struct VkSurfaceFullScreenExclusiveInfoEXT
 {
     public VkStructureType sType;
 
-    public void* pNext;
+    public unsafe void* pNext;
 
     public VkFullScreenExclusiveEXT fullScreenExclusive;
+
+    public VkSurfaceFullScreenExclusiveInfoEXT()
+    {
+        sType = VkStructureType.SurfaceFullScreenExclusiveInfoEXT;
+    }
 }
 
-public unsafe partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT
+public partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT
 {
     public VkStructureType sType;
-    public void* pNext;
+    public unsafe void* pNext;
     public VkBool32 fullScreenExclusiveSupported;
+
+    public VkSurfaceCapabilitiesFullScreenExclusiveEXT()
+    {
+        sType = VkStructureType.SurfaceCapabilitiesFullScreenExclusiveEXT;
+    }
 }
 
-public unsafe partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT
+public partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT
 {
     public VkStructureType sType;
-    public void* pNext;
+    public unsafe void* pNext;
     public IntPtr hmonitor;
+
+    public VkSurfaceFullScreenExclusiveWin32InfoEXT()
+    {
+        sType = VkStructureType.SurfaceFullScreenExclusiveWin32InfoEXT;
+    }
 }
 
 public static unsafe partial class Vulkan
@@ -206,43 +288,43 @@ public static unsafe partial class Vulkan
     public static readonly string KHRWin32SurfaceExtensionName = "VK_KHR_win32_surface";
 
 
-    private static delegate* unmanaged[Stdcall]<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateWin32SurfaceKHR_ptr;
-    private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, VkBool32> vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr;
-    private static delegate* unmanaged[Stdcall]<VkDevice, VkMemoryGetWin32HandleInfoKHR*, void*, VkResult> vkGetMemoryWin32HandleKHR_ptr;
-    private static delegate* unmanaged[Stdcall]<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryWin32HandlePropertiesKHR*, VkResult> vkGetMemoryWin32HandlePropertiesKHR_ptr;
-    private static delegate* unmanaged[Stdcall]<VkDevice, VkImportSemaphoreWin32HandleInfoKHR*, VkResult> vkImportSemaphoreWin32HandleKHR_ptr;
-    private static delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreGetWin32HandleInfoKHR*, IntPtr*, VkResult> vkGetSemaphoreWin32HandleKHR_ptr;
+    private static delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateWin32SurfaceKHR_ptr;
+    private static delegate* unmanaged<VkPhysicalDevice, uint, VkBool32> vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr;
+    private static delegate* unmanaged<VkDevice, VkMemoryGetWin32HandleInfoKHR*, void*, VkResult> vkGetMemoryWin32HandleKHR_ptr;
+    private static delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryWin32HandlePropertiesKHR*, VkResult> vkGetMemoryWin32HandlePropertiesKHR_ptr;
+    private static delegate* unmanaged<VkDevice, VkImportSemaphoreWin32HandleInfoKHR*, VkResult> vkImportSemaphoreWin32HandleKHR_ptr;
+    private static delegate* unmanaged<VkDevice, VkSemaphoreGetWin32HandleInfoKHR*, IntPtr*, VkResult> vkGetSemaphoreWin32HandleKHR_ptr;
 
-    private static delegate* unmanaged[Stdcall]<VkDevice, VkImportFenceWin32HandleInfoKHR*, VkResult> vkImportFenceWin32HandleKHR_ptr;
-    private static delegate* unmanaged[Stdcall]<VkDevice, VkFenceGetWin32HandleInfoKHR*, IntPtr*, VkResult> vkGetFenceWin32HandleKHR_ptr;
+    private static delegate* unmanaged<VkDevice, VkImportFenceWin32HandleInfoKHR*, VkResult> vkImportFenceWin32HandleKHR_ptr;
+    private static delegate* unmanaged<VkDevice, VkFenceGetWin32HandleInfoKHR*, IntPtr*, VkResult> vkGetFenceWin32HandleKHR_ptr;
 
-    private static delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkPresentModeKHR*, VkResult> vkGetPhysicalDeviceSurfacePresentModes2EXT_ptr;
+    private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkPresentModeKHR*, VkResult> vkGetPhysicalDeviceSurfacePresentModes2EXT_ptr;
 
-    private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkResult> vkAcquireFullScreenExclusiveModeEXT_ptr;
-    private static delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkResult> vkReleaseFullScreenExclusiveModeEXT_ptr;
-    private static delegate* unmanaged[Stdcall]<VkDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkDeviceGroupPresentModeFlagsKHR*, VkResult> vkGetDeviceGroupSurfacePresentModes2EXT_ptr;
+    private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult> vkAcquireFullScreenExclusiveModeEXT_ptr;
+    private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult> vkReleaseFullScreenExclusiveModeEXT_ptr;
+    private static delegate* unmanaged<VkDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkDeviceGroupPresentModeFlagsKHR*, VkResult> vkGetDeviceGroupSurfacePresentModes2EXT_ptr;
 
     private static void LoadWin32(VkInstance instance)
     {
-        vkCreateWin32SurfaceKHR_ptr = (delegate* unmanaged[Stdcall]<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWin32SurfaceKHR));
-        vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
-        vkGetPhysicalDeviceSurfacePresentModes2EXT_ptr = (delegate* unmanaged[Stdcall]<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkPresentModeKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceSurfacePresentModes2EXT));
+        vkCreateWin32SurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateWin32SurfaceKHR));
+        vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
+        vkGetPhysicalDeviceSurfacePresentModes2EXT_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkPresentModeKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceSurfacePresentModes2EXT));
     }
 
     private static void LoadWin32(VkDevice device)
     {
-        vkGetMemoryWin32HandleKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkMemoryGetWin32HandleInfoKHR*, void*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkGetMemoryWin32HandleKHR));
-        vkGetMemoryWin32HandlePropertiesKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryWin32HandlePropertiesKHR*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkGetMemoryWin32HandlePropertiesKHR));
+        vkGetMemoryWin32HandleKHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetWin32HandleInfoKHR*, void*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkGetMemoryWin32HandleKHR));
+        vkGetMemoryWin32HandlePropertiesKHR_ptr = (delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryWin32HandlePropertiesKHR*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkGetMemoryWin32HandlePropertiesKHR));
 
-        vkImportSemaphoreWin32HandleKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImportSemaphoreWin32HandleInfoKHR*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkImportSemaphoreWin32HandleKHR));
-        vkGetSemaphoreWin32HandleKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSemaphoreGetWin32HandleInfoKHR*, IntPtr*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkGetSemaphoreWin32HandleKHR));
+        vkImportSemaphoreWin32HandleKHR_ptr = (delegate* unmanaged<VkDevice, VkImportSemaphoreWin32HandleInfoKHR*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkImportSemaphoreWin32HandleKHR));
+        vkGetSemaphoreWin32HandleKHR_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreGetWin32HandleInfoKHR*, IntPtr*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkGetSemaphoreWin32HandleKHR));
 
-        vkImportFenceWin32HandleKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkImportFenceWin32HandleInfoKHR*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkImportFenceWin32HandleKHR));
-        vkGetFenceWin32HandleKHR_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkFenceGetWin32HandleInfoKHR*, IntPtr*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkGetFenceWin32HandleKHR));
+        vkImportFenceWin32HandleKHR_ptr = (delegate* unmanaged<VkDevice, VkImportFenceWin32HandleInfoKHR*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkImportFenceWin32HandleKHR));
+        vkGetFenceWin32HandleKHR_ptr = (delegate* unmanaged<VkDevice, VkFenceGetWin32HandleInfoKHR*, IntPtr*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkGetFenceWin32HandleKHR));
 
-        vkAcquireFullScreenExclusiveModeEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkAcquireFullScreenExclusiveModeEXT));
-        vkReleaseFullScreenExclusiveModeEXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkSwapchainKHR, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkReleaseFullScreenExclusiveModeEXT));
-        vkGetDeviceGroupSurfacePresentModes2EXT_ptr = (delegate* unmanaged[Stdcall]<VkDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkDeviceGroupPresentModeFlagsKHR*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkGetDeviceGroupSurfacePresentModes2EXT));
+        vkAcquireFullScreenExclusiveModeEXT_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkAcquireFullScreenExclusiveModeEXT));
+        vkReleaseFullScreenExclusiveModeEXT_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkReleaseFullScreenExclusiveModeEXT));
+        vkGetDeviceGroupSurfacePresentModes2EXT_ptr = (delegate* unmanaged<VkDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkDeviceGroupPresentModeFlagsKHR*, VkResult>)vkGetDeviceProcAddr(device.Handle, nameof(vkGetDeviceGroupSurfacePresentModes2EXT));
     }
 
     public static VkResult vkCreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)

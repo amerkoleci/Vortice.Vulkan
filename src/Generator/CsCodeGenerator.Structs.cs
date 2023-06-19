@@ -101,6 +101,34 @@ public static partial class CsCodeGenerator
                     {
                         structureTypeValue = structureTypeValue.Replace("ANDROID", "Android");
                     }
+                    if (structureTypeValue == "ImportMemoryFdInfoKHR")
+                    {
+                        structureTypeValue = "ImportMemoryFDInfoKHR";
+                    }
+                    else if (structureTypeValue == "MemoryFdPropertiesKHR")
+                    {
+                        structureTypeValue = "MemoryFDPropertiesKHR";
+                    }
+                    else if (structureTypeValue == "MemoryGetFdInfoKHR")
+                    {
+                        structureTypeValue = "MemoryGetFDInfoKHR";
+                    }
+                    else if (structureTypeValue == "ImportSemaphoreFdInfoKHR")
+                    {
+                        structureTypeValue = "ImportSemaphoreFDInfoKHR";
+                    }
+                    else if (structureTypeValue == "SemaphoreGetFdInfoKHR")
+                    {
+                        structureTypeValue = "SemaphoreGetFDInfoKHR";
+                    }
+                    else if (structureTypeValue == "ImportFenceFdInfoKHR")
+                    {
+                        structureTypeValue = "ImportFenceFDInfoKHR";
+                    }
+                    else if (structureTypeValue == "FenceGetFdInfoKHR")
+                    {
+                        structureTypeValue = "FenceGetFDInfoKHR";
+                    }
 
                     writer.WriteLine();
                     using (writer.PushBlock($"public {csName}()"))
