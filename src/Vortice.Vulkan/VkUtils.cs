@@ -3,12 +3,32 @@
 
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Vortice.Vulkan;
 
 public static unsafe class VkUtils
 {
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void ThrowIfFailed(VkResult result, [CallerArgumentExpression(nameof(result))] string? valueExpression = null)
+    {
+        if (result != VkResult.Success)
+        {
+            string message = string.Format("'{0}' failed with an error result of '{1}'", valueExpression ?? "Method", result);
+            throw new VkException(result, message);
+        }
+    }
+
+    [Conditional("DEBUG")]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void DebugThrowIfFailed(VkResult result, [CallerArgumentExpression(nameof(result))] string? valueExpression = null)
+    {
+        if (result != VkResult.Success)
+        {
+            string message = string.Format("'{0}' failed with an error result of '{1}'", valueExpression ?? "Method", result);
+            throw new VkException(result, message);
+        }
+    }
+
     [DebuggerHidden]
     [DebuggerStepThrough]
     public static void CheckResult(this VkResult result, string message = "Vulkan error occured")
@@ -19,6 +39,16 @@ public static unsafe class VkUtils
         }
     }
 
+    [DebuggerHidden]
+    [DebuggerStepThrough]
+    [Conditional("DEBUG")]
+    public static void DebugCheckResult(this VkResult result, string message = "Vulkan error occured")
+    {
+        if (result != VkResult.Success)
+        {
+            throw new VkException(result, message);
+        }
+    }
 
     public static string GetExtensionName(this VkExtensionProperties properties)
     {

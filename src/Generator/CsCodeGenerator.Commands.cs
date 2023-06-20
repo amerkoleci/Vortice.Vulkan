@@ -186,7 +186,25 @@ public static partial class CsCodeGenerator
 
                 bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
                 string functionPointerSignature = GetFunctionPointerSignature(cppFunction, false);
-                writer.WriteLine($"private static {functionPointerSignature} {command.Key}_ptr;");
+                string modifier = "private";
+
+                // Used by VulkanMemoryAllocator
+                if(command.Key == "vkGetPhysicalDeviceProperties" ||
+                    command.Key == "vkGetBufferMemoryRequirements2KHR" ||
+                    command.Key == "vkGetBufferMemoryRequirements2" ||
+                    command.Key == "vkGetImageMemoryRequirements2KHR" ||
+                    command.Key == "vkGetImageMemoryRequirements2" ||
+                    command.Key == "vkBindBufferMemory2KHR" ||
+                    command.Key == "vkBindBufferMemory2" ||
+                    command.Key == "vkBindImageMemory2KHR" ||
+                    command.Key == "vkBindImageMemory2" ||
+                    command.Key == "vkGetPhysicalDeviceMemoryProperties2KHR" ||
+                    command.Key == "vkGetDeviceImageMemoryRequirements" ||
+                    command.Key == "vkGetDeviceBufferMemoryRequirements")
+                {
+                    modifier = "internal";
+                }
+                writer.WriteLine($"{modifier} static {functionPointerSignature} {command.Key}_ptr;");
                 WriteFunctionInvocation(writer, cppFunction, false);
 
                 if (canUseOut)

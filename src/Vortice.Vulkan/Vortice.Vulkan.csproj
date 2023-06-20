@@ -4,12 +4,24 @@
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <Description>Vulkan low level bindings.</Description>
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
-    <VersionPrefix>1.6.7</VersionPrefix>
+    <VersionPrefix>1.6.8</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
     <Compile Remove="Shims/UnscopedRefAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(SignAssembly)' == 'true'">
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Vortice.VulkanMemoryAllocator, PublicKey=$(VorticePublicKey)</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(SignAssembly)' != 'true'">
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Vortice.VulkanMemoryAllocator</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
 
 </Project>

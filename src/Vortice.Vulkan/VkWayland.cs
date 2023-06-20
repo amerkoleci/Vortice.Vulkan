@@ -14,8 +14,8 @@ public struct VkWaylandSurfaceCreateInfoKHR
     public VkStructureType sType;
     public unsafe void* pNext;
     public VkWaylandSurfaceCreateFlagsKHR flags;
-    public nint display;
-    public nint surface;
+    public IntPtr display;
+    public IntPtr surface;
 
     public VkWaylandSurfaceCreateInfoKHR()
     {

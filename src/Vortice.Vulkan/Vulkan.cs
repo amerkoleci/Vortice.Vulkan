@@ -105,8 +105,8 @@ public static unsafe partial class Vulkan
         return functionPtr;
     }
 
-    public static delegate* unmanaged<VkInstance, sbyte*, delegate* unmanaged<void>> vkGetInstanceProcAddr_ptr;
-    public static delegate* unmanaged<VkDevice, sbyte*, delegate* unmanaged<void>> vkGetDeviceProcAddr_ptr;
+    internal static delegate* unmanaged<VkInstance, sbyte*, delegate* unmanaged<void>> vkGetInstanceProcAddr_ptr;
+    internal static delegate* unmanaged<VkDevice, sbyte*, delegate* unmanaged<void>> vkGetDeviceProcAddr_ptr;
 
     public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, ReadOnlySpan<sbyte> name)
     {

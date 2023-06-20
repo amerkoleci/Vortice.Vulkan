@@ -73,7 +73,7 @@ unsafe partial class Vulkan
 		return vkGetPhysicalDeviceImageFormatProperties_out_ptr(physicalDevice, format, type, tiling, usage, flags, out imageFormatProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void> vkGetPhysicalDeviceProperties_ptr;
+	internal static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void> vkGetPhysicalDeviceProperties_ptr;
 	public static void vkGetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties* properties)
 	{
 		vkGetPhysicalDeviceProperties_ptr(physicalDevice, properties);
@@ -1015,13 +1015,13 @@ unsafe partial class Vulkan
 		return vkEnumerateInstanceVersion_ptr(apiVersion);
 	}
 
-	private static delegate* unmanaged<VkDevice, int, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2_ptr;
+	internal static delegate* unmanaged<VkDevice, int, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2_ptr;
 	public static VkResult vkBindBufferMemory2(VkDevice device, int bindInfoCount, VkBindBufferMemoryInfo* bindInfos)
 	{
 		return vkBindBufferMemory2_ptr(device, bindInfoCount, bindInfos);
 	}
 
-	private static delegate* unmanaged<VkDevice, int, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2_ptr;
+	internal static delegate* unmanaged<VkDevice, int, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2_ptr;
 	public static VkResult vkBindImageMemory2(VkDevice device, int bindInfoCount, VkBindImageMemoryInfo* bindInfos)
 	{
 		return vkBindImageMemory2_ptr(device, bindInfoCount, bindInfos);
@@ -1051,13 +1051,13 @@ unsafe partial class Vulkan
 		return vkEnumeratePhysicalDeviceGroups_ptr(instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2_ptr;
+	internal static delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2_ptr;
 	public static void vkGetImageMemoryRequirements2(VkDevice device, VkImageMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetImageMemoryRequirements2_ptr(device, info, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2_ptr;
+	internal static delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2_ptr;
 	public static void vkGetBufferMemoryRequirements2(VkDevice device, VkBufferMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetBufferMemoryRequirements2_ptr(device, info, memoryRequirements);
@@ -1483,13 +1483,13 @@ unsafe partial class Vulkan
 		vkCmdSetPrimitiveRestartEnable_ptr(commandBuffer, primitiveRestartEnable);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirements_ptr;
+	internal static delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirements_ptr;
 	public static void vkGetDeviceBufferMemoryRequirements(VkDevice device, VkDeviceBufferMemoryRequirements* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetDeviceBufferMemoryRequirements_ptr(device, info, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirements_ptr;
+	internal static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirements_ptr;
 	public static void vkGetDeviceImageMemoryRequirements(VkDevice device, VkDeviceImageMemoryRequirements* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetDeviceImageMemoryRequirements_ptr(device, info, memoryRequirements);
@@ -1813,7 +1813,7 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceQueueFamilyProperties2KHR_ptr(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties2*, void> vkGetPhysicalDeviceMemoryProperties2KHR_ptr;
+	internal static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties2*, void> vkGetPhysicalDeviceMemoryProperties2KHR_ptr;
 	public static void vkGetPhysicalDeviceMemoryProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties2* memoryProperties)
 	{
 		vkGetPhysicalDeviceMemoryProperties2KHR_ptr(physicalDevice, memoryProperties);
@@ -2035,13 +2035,13 @@ unsafe partial class Vulkan
 		return vkGetDisplayPlaneCapabilities2KHR_ptr(physicalDevice, displayPlaneInfo, capabilities);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2KHR_ptr;
+	internal static delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2KHR_ptr;
 	public static void vkGetImageMemoryRequirements2KHR(VkDevice device, VkImageMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetImageMemoryRequirements2KHR_ptr(device, info, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2KHR_ptr;
+	internal static delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2KHR_ptr;
 	public static void vkGetBufferMemoryRequirements2KHR(VkDevice device, VkBufferMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetBufferMemoryRequirements2KHR_ptr(device, info, memoryRequirements);
@@ -2065,13 +2065,13 @@ unsafe partial class Vulkan
 		vkDestroySamplerYcbcrConversionKHR_ptr(device, ycbcrConversion, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, int, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2KHR_ptr;
+	internal static delegate* unmanaged<VkDevice, int, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2KHR_ptr;
 	public static VkResult vkBindBufferMemory2KHR(VkDevice device, int bindInfoCount, VkBindBufferMemoryInfo* bindInfos)
 	{
 		return vkBindBufferMemory2KHR_ptr(device, bindInfoCount, bindInfos);
 	}
 
-	private static delegate* unmanaged<VkDevice, int, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2KHR_ptr;
+	internal static delegate* unmanaged<VkDevice, int, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2KHR_ptr;
 	public static VkResult vkBindImageMemory2KHR(VkDevice device, int bindInfoCount, VkBindImageMemoryInfo* bindInfos)
 	{
 		return vkBindImageMemory2KHR_ptr(device, bindInfoCount, bindInfos);
