@@ -27,3 +27,4 @@ Other similar projects:
 Projects using Vortice.Vulkan:
 
 - [Stride Game Engine (formerly Xenko)](https://stride3d.net/)
+- [DSMapStudio](https://github.com/soulsmods/DSMapStudio)
