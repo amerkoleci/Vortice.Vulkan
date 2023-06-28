@@ -11,8 +11,6 @@ namespace Vortice.Vulkan;
 
 public unsafe sealed class GraphicsDevice : IDisposable
 {
-    private static readonly VkString s_EngineName = new("Vortice");
-
     public readonly bool DebugUtils;
     public readonly VkInstance VkInstance;
 
@@ -57,26 +55,13 @@ public unsafe sealed class GraphicsDevice : IDisposable
             }
         }
 
-        VkString name = applicationName;
-        var appInfo = new VkApplicationInfo
+        VkApplicationInfo appInfo = new()
         {
-            pApplicationName = name,
-            applicationVersion = new VkVersion(1, 0, 0),
-            pEngineName = s_EngineName,
-            engineVersion = new VkVersion(1, 0, 0),
-            apiVersion = VkVersion.Version_1_2
-        };
-
-        using VkStringArray vkLayerNames = new(instanceLayers);
-        using VkStringArray vkInstanceExtensions = new(instanceExtensions);
-
-        VkInstanceCreateInfo instanceCreateInfo = new()
-        {
-            pApplicationInfo = &appInfo,
-            enabledLayerCount = vkLayerNames.Length,
-            ppEnabledLayerNames = vkLayerNames,
-            enabledExtensionCount = vkInstanceExtensions.Length,
-            ppEnabledExtensionNames = vkInstanceExtensions
+            ApplicationName = applicationName,
+            ApplicationVersion = new VkVersion(1, 0, 0),
+            EngineName = "Vortice",
+            EngineVersion = new VkVersion(1, 0, 0),
+            ApiVersion = VkVersion.Version_1_3
         };
 
         VkDebugUtilsMessengerCreateInfoEXT debugUtilsCreateInfo = new();
@@ -86,10 +71,11 @@ public unsafe sealed class GraphicsDevice : IDisposable
             debugUtilsCreateInfo.messageSeverity = VkDebugUtilsMessageSeverityFlagsEXT.Error | VkDebugUtilsMessageSeverityFlagsEXT.Warning;
             debugUtilsCreateInfo.messageType = VkDebugUtilsMessageTypeFlagsEXT.Validation | VkDebugUtilsMessageTypeFlagsEXT.Performance;
             debugUtilsCreateInfo.pfnUserCallback = &DebugMessengerCallback;
-            instanceCreateInfo.pNext = &debugUtilsCreateInfo;
         }
 
-        VkResult result = vkCreateInstance(&instanceCreateInfo, null, out VkInstance);
+        VkInstanceCreateInfo instanceCreateInfo = new(appInfo, instanceLayers.ToArray(), instanceExtensions.ToArray(), instanceLayers.Count > 0 ? &debugUtilsCreateInfo : default);
+
+        VkResult result =  vkCreateInstance(in instanceCreateInfo, out VkInstance);
         if (result != VkResult.Success)
         {
             throw new InvalidOperationException($"Failed to create vulkan instance: {result}");
@@ -102,7 +88,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             vkCreateDebugUtilsMessengerEXT(VkInstance, &debugUtilsCreateInfo, null, out _debugMessenger).CheckResult();
         }
 
-        Log.Info($"Created VkInstance with version: {appInfo.apiVersion.Major}.{appInfo.apiVersion.Minor}.{appInfo.apiVersion.Patch}");
+        Log.Info($"Created VkInstance with version: {appInfo.ApiVersion.Major}.{appInfo.ApiVersion.Minor}.{appInfo.ApiVersion.Patch}");
         if (instanceLayers.Count > 0)
         {
             foreach (var layer in instanceLayers)
@@ -165,17 +151,11 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
         float priority = 1.0f;
         uint queueCount = 0;
-        VkDeviceQueueCreateInfo* queueCreateInfos = stackalloc VkDeviceQueueCreateInfo[2];
+        VkDeviceQueueCreateInfo[] queueCreateInfos = new VkDeviceQueueCreateInfo[uniqueQueueFamilies.Count];
 
         foreach (uint queueFamily in uniqueQueueFamilies)
         {
-            queueCreateInfos[queueCount++] = new VkDeviceQueueCreateInfo
-            {
-                sType = VkStructureType.DeviceQueueCreateInfo,
-                queueFamilyIndex = queueFamily,
-                queueCount = 1,
-                pQueuePriorities = &priority
-            };
+            queueCreateInfos[queueCount++] = new VkDeviceQueueCreateInfo(queueFamily, 1, priority);
         }
 
         List<string> enabledExtensions = new()
@@ -254,20 +234,9 @@ public unsafe sealed class GraphicsDevice : IDisposable
             vkGetPhysicalDeviceFeatures2(PhysicalDevice, &deviceFeatures2);
         }
 
-        using var deviceExtensionNames = new VkStringArray(enabledExtensions);
+        VkDeviceCreateInfo deviceCreateInfo = new(queueCreateInfos, enabledExtensions.ToArray(), null, useNewFeatures ? &deviceFeatures2 : default);
 
-        VkDeviceCreateInfo deviceCreateInfo = new()
-        {
-            sType = VkStructureType.DeviceCreateInfo,
-            pNext = useNewFeatures ? &deviceFeatures2 : default,
-            queueCreateInfoCount = queueCount,
-            pQueueCreateInfos = queueCreateInfos,
-            enabledExtensionCount = deviceExtensionNames.Length,
-            ppEnabledExtensionNames = deviceExtensionNames,
-            pEnabledFeatures = null,
-        };
-
-        result = vkCreateDevice(PhysicalDevice, &deviceCreateInfo, null, out VkDevice);
+        result = vkCreateDevice(PhysicalDevice, deviceCreateInfo, out VkDevice);
         if (result != VkResult.Success)
             throw new Exception($"Failed to create Vulkan Logical Device, {result}");
 

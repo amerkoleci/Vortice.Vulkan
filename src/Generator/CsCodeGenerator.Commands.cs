@@ -90,6 +90,12 @@ public static partial class CsCodeGenerator
         "vkCreateDebugUtilsMessengerEXT"
     };
 
+    private static readonly HashSet<string> s_ignoreFunctions = new()
+    {
+        "vkCreateInstance",
+        "vkCreateDevice",
+    };
+
     private static string GetFunctionPointerSignature(CppFunction function, bool canUseOut, bool allowNonBlittable = true)
     {
         StringBuilder builder = new();
@@ -189,7 +195,7 @@ public static partial class CsCodeGenerator
                 string modifier = "private";
 
                 // Used by VulkanMemoryAllocator
-                if(command.Key == "vkGetPhysicalDeviceProperties" ||
+                if (command.Key == "vkGetPhysicalDeviceProperties" ||
                     command.Key == "vkGetBufferMemoryRequirements2KHR" ||
                     command.Key == "vkGetBufferMemoryRequirements2" ||
                     command.Key == "vkGetImageMemoryRequirements2KHR" ||
@@ -205,14 +211,20 @@ public static partial class CsCodeGenerator
                     modifier = "internal";
                 }
                 writer.WriteLine($"{modifier} static {functionPointerSignature} {command.Key}_ptr;");
-                WriteFunctionInvocation(writer, cppFunction, false);
+
+                if (!s_ignoreFunctions.Contains(command.Key))
+                {
+                    WriteFunctionInvocation(writer, cppFunction, false);
+                }
 
                 if (canUseOut)
                 {
                     functionPointerSignature = GetFunctionPointerSignature(cppFunction, true);
                     writer.WriteLine($"private static {functionPointerSignature} {command.Key}_out_ptr;");
-
-                    WriteFunctionInvocation(writer, cppFunction, true);
+                    if (!s_ignoreFunctions.Contains(command.Key))
+                    {
+                        WriteFunctionInvocation(writer, cppFunction, true);
+                    }
                 }
             }
 

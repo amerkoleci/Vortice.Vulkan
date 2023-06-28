@@ -13,18 +13,8 @@ namespace Vortice.Vulkan;
 
 unsafe partial class Vulkan
 {
-	private static delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult> vkCreateInstance_ptr;
-	public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkInstance* instance)
-	{
-		return vkCreateInstance_ptr(createInfo, allocator, instance);
-	}
-
-	private static delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult> vkCreateInstance_out_ptr;
-	public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance)
-	{
-		return vkCreateInstance_out_ptr(createInfo, allocator, out instance);
-	}
-
+	private static delegate* unmanaged<VkInstanceCreateInfo.__Native*, VkAllocationCallbacks*, VkInstance*, VkResult> vkCreateInstance_ptr;
+	private static delegate* unmanaged<VkInstanceCreateInfo.__Native*, VkAllocationCallbacks*, out VkInstance, VkResult> vkCreateInstance_out_ptr;
 	private static delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void> vkDestroyInstance_ptr;
 	public static void vkDestroyInstance(VkInstance instance, VkAllocationCallbacks* allocator = default)
 	{
@@ -103,18 +93,8 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceMemoryProperties_out_ptr(physicalDevice, out memoryProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, VkDevice*, VkResult> vkCreateDevice_ptr;
-	public static VkResult vkCreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDevice* device)
-	{
-		return vkCreateDevice_ptr(physicalDevice, createInfo, allocator, device);
-	}
-
-	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult> vkCreateDevice_out_ptr;
-	public static VkResult vkCreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDevice device)
-	{
-		return vkCreateDevice_out_ptr(physicalDevice, createInfo, allocator, out device);
-	}
-
+	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo.__Native*, VkAllocationCallbacks*, VkDevice*, VkResult> vkCreateDevice_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo.__Native*, VkAllocationCallbacks*, out VkDevice, VkResult> vkCreateDevice_out_ptr;
 	private static delegate* unmanaged<VkDevice, VkAllocationCallbacks*, void> vkDestroyDevice_ptr;
 	public static void vkDestroyDevice(VkDevice device, VkAllocationCallbacks* allocator = default)
 	{
@@ -2317,6 +2297,12 @@ unsafe partial class Vulkan
 		vkGetDeviceImageSparseMemoryRequirementsKHR_ptr(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
 	}
 
+	private static delegate* unmanaged<VkPhysicalDevice, int*, VkCooperativeMatrixPropertiesKHR*, VkResult> vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr;
+	public static VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, int* propertyCount, VkCooperativeMatrixPropertiesKHR* properties)
+	{
+		return vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr(physicalDevice, propertyCount, properties);
+	}
+
 	private static delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult> vkCreateDebugReportCallbackEXT_ptr;
 	public static VkResult vkCreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkDebugReportCallbackEXT* callback)
 	{
@@ -3047,6 +3033,12 @@ unsafe partial class Vulkan
 	public static void vkDestroyIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyIndirectCommandsLayoutNV_ptr(device, indirectCommandsLayout, allocator);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, VkDepthBiasInfoEXT*, void> vkCmdSetDepthBias2EXT_ptr;
+	public static void vkCmdSetDepthBias2EXT(VkCommandBuffer commandBuffer, VkDepthBiasInfoEXT* depthBiasInfo)
+	{
+		vkCmdSetDepthBias2EXT_ptr(commandBuffer, depthBiasInfo);
 	}
 
 	private static delegate* unmanaged<VkPhysicalDevice, int, VkDisplayKHR, VkResult> vkAcquireDrmDisplayEXT_ptr;
@@ -3883,6 +3875,18 @@ unsafe partial class Vulkan
 		return vkCreateViSurfaceNN_ptr(instance, createInfo, allocator, surface);
 	}
 
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, VkVideoEncodeQualityLevelPropertiesKHR*, VkResult> vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr;
+	public static VkResult vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* qualityLevelInfo, VkVideoEncodeQualityLevelPropertiesKHR* qualityLevelProperties)
+	{
+		return vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr(physicalDevice, qualityLevelInfo, qualityLevelProperties);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult> vkGetEncodedVideoSessionParametersKHR_ptr;
+	public static VkResult vkGetEncodedVideoSessionParametersKHR(VkDevice device, VkVideoEncodeSessionParametersGetInfoKHR* videoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* feedbackInfo, nuint* dataSize, void* data)
+	{
+		return vkGetEncodedVideoSessionParametersKHR_ptr(device, videoSessionParametersInfo, feedbackInfo, dataSize, data);
+	}
+
 	private static delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void> vkCmdEncodeVideoKHR_ptr;
 	public static void vkCmdEncodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoEncodeInfoKHR* encodeInfo)
 	{
@@ -3904,8 +3908,8 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceQueueFamilyProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, int*, VkQueueFamilyProperties*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyProperties));
 		vkGetPhysicalDeviceMemoryProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties*, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties));
 		vkGetPhysicalDeviceMemoryProperties_out_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties));
-		vkCreateDevice_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, VkDevice*, VkResult>) load(context, nameof(vkCreateDevice));
-		vkCreateDevice_out_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult>) load(context, nameof(vkCreateDevice));
+		vkCreateDevice_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo.__Native*, VkAllocationCallbacks*, VkDevice*, VkResult>) load(context, nameof(vkCreateDevice));
+		vkCreateDevice_out_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo.__Native*, VkAllocationCallbacks*, out VkDevice, VkResult>) load(context, nameof(vkCreateDevice));
 		vkEnumerateDeviceExtensionProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, sbyte*, int*, VkExtensionProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceExtensionProperties));
 		vkEnumerateDeviceLayerProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, int*, VkLayerProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceLayerProperties));
 		vkGetPhysicalDeviceSparseImageFormatProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkSampleCountFlags, VkImageUsageFlags, VkImageTiling, int*, VkSparseImageFormatProperties*, void>) load(context, nameof(vkGetPhysicalDeviceSparseImageFormatProperties));
@@ -3961,6 +3965,7 @@ unsafe partial class Vulkan
 		vkGetDisplayModeProperties2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, int*, VkDisplayModeProperties2KHR*, VkResult>) load(context, nameof(vkGetDisplayModeProperties2KHR));
 		vkGetDisplayPlaneCapabilities2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayPlaneInfo2KHR*, VkDisplayPlaneCapabilities2KHR*, VkResult>) load(context, nameof(vkGetDisplayPlaneCapabilities2KHR));
 		vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, int*, VkPhysicalDeviceFragmentShadingRateKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceFragmentShadingRatesKHR));
+		vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, int*, VkCooperativeMatrixPropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR));
 		vkCreateDebugReportCallbackEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>) load(context, nameof(vkCreateDebugReportCallbackEXT));
 		vkDestroyDebugReportCallbackEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDebugReportCallbackEXT));
 		vkDebugReportMessageEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, sbyte*, sbyte*, void>) load(context, nameof(vkDebugReportMessageEXT));
@@ -3997,6 +4002,7 @@ unsafe partial class Vulkan
 		vkCreateMetalSurfaceEXT_ptr = (delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateMetalSurfaceEXT));
 		vkCreateMetalSurfaceEXT_out_ptr = (delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateMetalSurfaceEXT));
 		vkCreateViSurfaceNN_ptr = (delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateViSurfaceNN));
+		vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, VkVideoEncodeQualityLevelPropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR));
 	}
 	private static void GenLoadDevice(IntPtr context, LoadFunction load)
 	{
@@ -4407,6 +4413,7 @@ unsafe partial class Vulkan
 		vkCmdBindPipelineShaderGroupNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, uint, void>) load(context, nameof(vkCmdBindPipelineShaderGroupNV));
 		vkCreateIndirectCommandsLayoutNV_ptr = (delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoNV*, VkAllocationCallbacks*, VkIndirectCommandsLayoutNV*, VkResult>) load(context, nameof(vkCreateIndirectCommandsLayoutNV));
 		vkDestroyIndirectCommandsLayoutNV_ptr = (delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutNV, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyIndirectCommandsLayoutNV));
+		vkCmdSetDepthBias2EXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkDepthBiasInfoEXT*, void>) load(context, nameof(vkCmdSetDepthBias2EXT));
 		vkCreatePrivateDataSlotEXT_ptr = (delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult>) load(context, nameof(vkCreatePrivateDataSlotEXT));
 		vkDestroyPrivateDataSlotEXT_ptr = (delegate* unmanaged<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPrivateDataSlotEXT));
 		vkSetPrivateDataEXT_ptr = (delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong, VkResult>) load(context, nameof(vkSetPrivateDataEXT));
@@ -4534,6 +4541,7 @@ unsafe partial class Vulkan
 		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
 		vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
 		vkExportMetalObjectsEXT_ptr = (delegate* unmanaged<VkDevice, VkExportMetalObjectsInfoEXT*, void>) load(context, nameof(vkExportMetalObjectsEXT));
+		vkGetEncodedVideoSessionParametersKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult>) load(context, nameof(vkGetEncodedVideoSessionParametersKHR));
 		vkCmdEncodeVideoKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void>) load(context, nameof(vkCmdEncodeVideoKHR));
 	}
 }

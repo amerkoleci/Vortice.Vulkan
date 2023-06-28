@@ -41,6 +41,15 @@ public static partial class CsCodeGenerator
                 continue;
             }
 
+            // Handled manually with custom marshal logic.
+            if (cppClass.Name == "VkApplicationInfo" ||
+                cppClass.Name == "VkInstanceCreateInfo" ||
+                cppClass.Name == "VkDeviceQueueCreateInfo" ||
+                cppClass.Name == "VkDeviceCreateInfo")
+            {
+                continue;
+            }
+
             bool isUnion = cppClass.ClassKind == CppClassKind.Union;
             bool hasSType = false;
             if (cppClass.Fields.FirstOrDefault(item => item.Name == "sType") != null)

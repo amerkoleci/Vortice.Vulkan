@@ -10,6 +10,7 @@ public readonly partial struct VmaAllocation : IEquatable<VmaAllocation>
 {
     public VmaAllocation(nint handle) { Handle = handle; }
     public nint Handle { get; }
+    public bool IsNotNull => Handle != 0;
     public bool IsNull => Handle == 0;
     public static VmaAllocation Null => new(0);
     public static implicit operator VmaAllocation(nint handle) => new(handle);

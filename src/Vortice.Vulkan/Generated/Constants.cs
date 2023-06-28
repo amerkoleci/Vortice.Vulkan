@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 252;
+	public const uint VK_HEADER_VERSION = 255;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -652,6 +652,12 @@ public static partial class Vulkan
 	public const uint VK_KHR_RAY_TRACING_POSITION_FETCH_SPEC_VERSION = 1;
 	/// <unmanaged>VK_KHR_RAY_TRACING_POSITION_FETCH_EXTENSION_NAME</unmanaged>
 	public const string VK_KHR_RAY_TRACING_POSITION_FETCH_EXTENSION_NAME = "VK_KHR_ray_tracing_position_fetch";
+	/// <unmanaged>VK_KHR_cooperative_matrix</unmanaged>
+	public const uint VK_KHR_cooperative_matrix = 1;
+	/// <unmanaged>VK_KHR_COOPERATIVE_MATRIX_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_COOPERATIVE_MATRIX_SPEC_VERSION = 2;
+	/// <unmanaged>VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME</unmanaged>
+	public const string VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_KHR_cooperative_matrix";
 	/// <unmanaged>VK_EXT_debug_report</unmanaged>
 	public const uint VK_EXT_debug_report = 1;
 	/// <unmanaged>VK_EXT_DEBUG_REPORT_SPEC_VERSION</unmanaged>
@@ -1408,6 +1414,12 @@ public static partial class Vulkan
 	public const uint VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 3;
 	/// <unmanaged>VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME</unmanaged>
 	public const string VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform";
+	/// <unmanaged>VK_EXT_depth_bias_control</unmanaged>
+	public const uint VK_EXT_depth_bias_control = 1;
+	/// <unmanaged>VK_EXT_DEPTH_BIAS_CONTROL_SPEC_VERSION</unmanaged>
+	public const uint VK_EXT_DEPTH_BIAS_CONTROL_SPEC_VERSION = 1;
+	/// <unmanaged>VK_EXT_DEPTH_BIAS_CONTROL_EXTENSION_NAME</unmanaged>
+	public const string VK_EXT_DEPTH_BIAS_CONTROL_EXTENSION_NAME = "VK_EXT_depth_bias_control";
 	/// <unmanaged>VK_EXT_device_memory_report</unmanaged>
 	public const uint VK_EXT_device_memory_report = 1;
 	/// <unmanaged>VK_EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION</unmanaged>
@@ -1981,35 +1993,35 @@ public static partial class Vulkan
 	/// <unmanaged>VK_KHR_video_encode_queue</unmanaged>
 	public const uint VK_KHR_video_encode_queue = 1;
 	/// <unmanaged>VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION</unmanaged>
-	public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 8;
+	public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 9;
 	/// <unmanaged>VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME</unmanaged>
 	public const string VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
 	/// <unmanaged>VK_EXT_video_encode_h264</unmanaged>
 	public const uint VK_EXT_video_encode_h264 = 1;
 	/// <unmanaged>vulkan_video_codec_h264std_encode</unmanaged>
 	public const uint vulkan_video_codec_h264std_encode = 1;
-	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_9</unmanaged>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_9 = new VkVersion(0, 9, 9);
+	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_10</unmanaged>
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_10 = new VkVersion(0, 9, 10);
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION</unmanaged>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_9;
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_10;
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_EXTENSION_NAME</unmanaged>
 	public const string VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264_encode";
 	/// <unmanaged>VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION</unmanaged>
-	public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 10;
+	public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 11;
 	/// <unmanaged>VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME</unmanaged>
 	public const string VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264";
 	/// <unmanaged>VK_EXT_video_encode_h265</unmanaged>
 	public const uint VK_EXT_video_encode_h265 = 1;
 	/// <unmanaged>vulkan_video_codec_h265std_encode</unmanaged>
 	public const uint vulkan_video_codec_h265std_encode = 1;
-	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_10</unmanaged>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_10 = new VkVersion(0, 9, 10);
+	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_11</unmanaged>
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_11 = new VkVersion(0, 9, 11);
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION</unmanaged>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_10;
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_11;
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_EXTENSION_NAME</unmanaged>
 	public const string VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_encode";
 	/// <unmanaged>VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION</unmanaged>
-	public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 10;
+	public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 11;
 	/// <unmanaged>VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME</unmanaged>
 	public const string VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265";
 	/// <unmanaged>VK_NV_displacement_micromap</unmanaged>

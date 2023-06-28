@@ -196,8 +196,8 @@ public static partial class CsCodeGenerator
                 }
                 else
                 {
-                    var argumentsString = GetParameterSignature(newParameters, false, function.Name);
-                    var returnType = $"ReadOnlySpan<{returnArrayTypeName}>";
+                    string argumentsString = GetParameterSignature(newParameters, false, function.Name);
+                    string returnType = $"ReadOnlySpan<{returnArrayTypeName}>";
 
                     using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsString})"))
                     {

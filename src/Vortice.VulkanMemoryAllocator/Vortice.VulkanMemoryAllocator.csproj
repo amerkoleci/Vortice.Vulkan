@@ -5,18 +5,24 @@
     <Description>VulkanMemoryAllocator bindings.</Description>
     <IncludeContentInPack>true</IncludeContentInPack>
     <RootNamespace>Vortice.Vulkan</RootNamespace>
-    <VersionPrefix>1.3.1</VersionPrefix>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <!-- Verion -->
+  <PropertyGroup>
+    <VersionPrefix>1.3.2</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(RepoRootPath)README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
     <Compile Remove="Shims/UnscopedRefAttribute.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\LICENSE" PackagePath="" Pack="true" />
-  </ItemGroup>
-  
   <ItemGroup>
     <Content Include="build\**" PackagePath="build" Pack="true" />
     <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" />

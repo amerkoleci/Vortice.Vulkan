@@ -87,8 +87,8 @@ public static unsafe partial class Vulkan
 
     private static void GenLoadLoader(nint context, LoadFunction load)
     {
-        vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
-        vkCreateInstance_out_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
+        vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo.__Native*, VkAllocationCallbacks*, VkInstance*, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
+        vkCreateInstance_out_ptr = (delegate* unmanaged<VkInstanceCreateInfo.__Native*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
         vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<sbyte*, int*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
         vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<int*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
         vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<uint*, VkResult>)load(context, "vkEnumerateInstanceVersion");
@@ -240,6 +240,34 @@ public static unsafe partial class Vulkan
         }
 
         return VkVersion.Version_1_0;
+    }
+
+    public static VkResult vkCreateInstance(in VkInstanceCreateInfo createInfo, out VkInstance instance)
+    {
+        createInfo.ToNative(out VkInstanceCreateInfo.__Native nativeCreateInfo);
+
+        try
+        {
+            return vkCreateInstance_out_ptr(&nativeCreateInfo, null, out instance);
+        }
+        finally
+        {
+            nativeCreateInfo.Free();
+        }
+    }
+
+    public static VkResult vkCreateDevice(VkPhysicalDevice physicalDevice, in VkDeviceCreateInfo createInfo, out VkDevice device)
+    {
+        createInfo.ToNative(out VkDeviceCreateInfo.__Native nativeCreateInfo);
+
+        try
+        {
+            return vkCreateDevice_out_ptr(physicalDevice, &nativeCreateInfo, null, out device);
+        }
+        finally
+        {
+            nativeCreateInfo.Free();
+        }
     }
 
     public static VkResult vkAllocateCommandBuffer(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, out VkCommandBuffer commandBuffer)
@@ -736,6 +764,36 @@ public static unsafe partial class Vulkan
         fixed (VkFragmentShadingRateCombinerOpKHR* combinerOpsPtr = &combinerOps[0])
         {
             vkCmdSetFragmentShadingRateEnumNV(commandBuffer, shadingRate, combinerOpsPtr);
+        }
+    }
+
+    public static VkResult vkSetDebugUtilsObjectNameEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, ReadOnlySpan<sbyte> label)
+    {
+        fixed (sbyte* pName = label)
+        {
+            VkDebugUtilsObjectNameInfoEXT info = new()
+            {
+                sType = VkStructureType.DebugUtilsObjectNameInfoEXT,
+                objectType = objectType,
+                objectHandle = objectHandle,
+                pObjectName = pName
+            };
+            return vkSetDebugUtilsObjectNameEXT(device, &info);
+        }
+    }
+
+    public static VkResult vkSetDebugUtilsObjectNameEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, string? label = default)
+    {
+        fixed (sbyte* pName = label.GetUtf8Span())
+        {
+            VkDebugUtilsObjectNameInfoEXT info = new()
+            {
+                sType = VkStructureType.DebugUtilsObjectNameInfoEXT,
+                objectType = objectType,
+                objectHandle = objectHandle,
+                pObjectName = pName
+            };
+            return vkSetDebugUtilsObjectNameEXT(device, &info);
         }
     }
 

@@ -81,6 +81,10 @@ public static partial class CsCodeGenerator
         { "VkPipelineStageFlagBits2KHR", "VkPipelineStageFlags2KHR" },
         { "VkAccessFlagBits2KHR", "VkAccessFlags2KHR" },
         { "VkFormatFeatureFlagBits2KHR", "VkFormatFeatureFlags2KHR" },
+
+        { "VkInstanceCreateInfo", "VkInstanceCreateInfo.__Native" },
+        { "VkDeviceQueueCreateInfo", "VkDeviceQueueCreateInfo.__Native" },
+        { "VkDeviceCreateInfo", "VkDeviceCreateInfo.__Native" },
     };
 
     public static void Generate(CppCompilation compilation, string outputPath)
@@ -138,8 +142,9 @@ public static partial class CsCodeGenerator
 
                 //string csName = GetPrettyEnumName(cppMacro.Name, "VK_");
 
+                bool generateReadOnlySpan = false;
                 string modifier = "const";
-                string csDataType = "string";
+                string csDataType = generateReadOnlySpan ? "ReadOnlySpan<byte>" : "string";
                 string macroValue = NormalizeEnumValue(cppMacro.Value);
                 if (macroValue.EndsWith("F", StringComparison.OrdinalIgnoreCase))
                 {
@@ -196,7 +201,9 @@ public static partial class CsCodeGenerator
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_1_0_0" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_1_0_0" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_9" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_10")
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_10" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_10" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_11")
                 {
                     modifier = "static readonly";
                     csDataType = "VkVersion";
@@ -221,7 +228,9 @@ public static partial class CsCodeGenerator
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_1_0_0" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_1_0_0" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_9" ||
-                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_10")
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_10" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_10" ||
+                    cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_11")
                 {
                     writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]});");
                 }
@@ -237,7 +246,15 @@ public static partial class CsCodeGenerator
                 }
                 else
                 {
-                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = {macroValue};");
+                    string assignValue = "=";
+                    if (csDataType == "ReadOnlySpan<byte>")
+                    {
+                        modifier = "static";
+                        macroValue += "u8";
+                        assignValue = "=>";
+                    }
+
+                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} {assignValue} {macroValue};");
                 }
             }
         }
