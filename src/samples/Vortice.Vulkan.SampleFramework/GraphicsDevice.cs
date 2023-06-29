@@ -171,7 +171,6 @@ public unsafe sealed class GraphicsDevice : IDisposable
         {
             queueCreateInfos[queueCount++] = new VkDeviceQueueCreateInfo
             {
-                sType = VkStructureType.DeviceQueueCreateInfo,
                 queueFamilyIndex = queueFamily,
                 queueCount = 1,
                 pQueuePriorities = &priority
@@ -184,22 +183,11 @@ public unsafe sealed class GraphicsDevice : IDisposable
         };
 
         const bool useNewFeatures = false;
-        VkPhysicalDeviceFeatures2 deviceFeatures2 = new()
-        {
-            sType = VkStructureType.PhysicalDeviceFeatures2
-
-        };
+        VkPhysicalDeviceFeatures2 deviceFeatures2 = new();
         if (useNewFeatures)
         {
-            VkPhysicalDeviceVulkan11Features features_1_1 = new()
-            {
-                sType = VkStructureType.PhysicalDeviceVulkan11Features
-            };
-
-            VkPhysicalDeviceVulkan12Features features_1_2 = new()
-            {
-                sType = VkStructureType.PhysicalDeviceVulkan12Features
-            };
+            VkPhysicalDeviceVulkan11Features features_1_1 = new();
+            VkPhysicalDeviceVulkan12Features features_1_2 = new();
 
             deviceFeatures2.pNext = &features_1_1;
             features_1_1.pNext = &features_1_2;
@@ -239,14 +227,13 @@ public unsafe sealed class GraphicsDevice : IDisposable
                 enabledExtensions.Add(VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME);
             }
 
-            VkPhysicalDeviceAccelerationStructureFeaturesKHR acceleration_structure_features = default;
+            VkPhysicalDeviceAccelerationStructureFeaturesKHR acceleration_structure_features = new();
             if (CheckDeviceExtensionSupport(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME, availableDeviceExtensions))
             {
                 // Required by VK_KHR_acceleration_structure
                 enabledExtensions.Add(VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME);
 
                 enabledExtensions.Add(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME);
-                acceleration_structure_features.sType = VkStructureType.PhysicalDeviceAccelerationStructureFeaturesKHR;
                 *features_chain = &acceleration_structure_features;
                 features_chain = &acceleration_structure_features.pNext;
             }
@@ -258,7 +245,6 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
         VkDeviceCreateInfo deviceCreateInfo = new()
         {
-            sType = VkStructureType.DeviceCreateInfo,
             pNext = useNewFeatures ? &deviceFeatures2 : default,
             queueCreateInfoCount = queueCount,
             pQueueCreateInfos = queueCreateInfos,
@@ -285,7 +271,6 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
             VkCommandPoolCreateInfo poolCreateInfo = new()
             {
-                sType = VkStructureType.CommandPoolCreateInfo,
                 flags = VkCommandPoolCreateFlags.Transient,
                 queueFamilyIndex = queueFamilies.graphicsFamily,
             };
@@ -379,7 +364,6 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
         VkCommandBufferBeginInfo beginInfo = new()
         {
-            sType = VkStructureType.CommandBufferBeginInfo,
             flags = VkCommandBufferUsageFlags.OneTimeSubmit
         };
         vkBeginCommandBuffer(cmd, &beginInfo).CheckResult();
@@ -398,9 +382,8 @@ public unsafe sealed class GraphicsDevice : IDisposable
         VkSemaphore waitSemaphore = _perFrame[_frameIndex].SwapchainAcquireSemaphore;
         VkSemaphore signalSemaphore = _perFrame[_frameIndex].SwapchainReleaseSemaphore;
 
-        VkSubmitInfo submitInfo = new VkSubmitInfo
+        VkSubmitInfo submitInfo = new ()
         {
-            sType = VkStructureType.SubmitInfo,
             commandBufferCount = 1u,
             pCommandBuffers = &cmd,
             waitSemaphoreCount = 1u,
@@ -457,7 +440,6 @@ public unsafe sealed class GraphicsDevice : IDisposable
         {
             VkCommandBufferBeginInfo beginInfo = new()
             {
-                sType = VkStructureType.CommandBufferBeginInfo,
                 flags = VkCommandBufferUsageFlags.OneTimeSubmit
             };
             vkBeginCommandBuffer(commandBuffer, &beginInfo).CheckResult();
@@ -470,10 +452,11 @@ public unsafe sealed class GraphicsDevice : IDisposable
     {
         vkEndCommandBuffer(commandBuffer).CheckResult();
 
-        VkSubmitInfo submitInfo = new();
-        submitInfo.sType = VkStructureType.SubmitInfo;
-        submitInfo.commandBufferCount = 1;
-        submitInfo.pCommandBuffers = &commandBuffer;
+        VkSubmitInfo submitInfo = new()
+        {
+            commandBufferCount = 1,
+            pCommandBuffers = &commandBuffer
+        };
 
         // Create fence to ensure that the command buffer has finished executing
         vkCreateFence(VkDevice, out VkFence fence);

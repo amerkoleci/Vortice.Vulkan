@@ -4762,9 +4762,6 @@ public enum VkPipelineCacheCreateFlags
 public enum VkColorComponentFlags
 {
 	None = 0,
-	/// <summary>
-	/// specifies that the R value is written to the color attachment for the appropriate sample. Otherwise, the value in memory is unmodified.
-	/// </summary>
 	/// <unmanaged>VK_COLOR_COMPONENT_R_BIT</unmanaged>
 	R = 1,
 	/// <unmanaged>VK_COLOR_COMPONENT_G_BIT</unmanaged>

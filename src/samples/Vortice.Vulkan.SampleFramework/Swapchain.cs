@@ -39,9 +39,8 @@ public sealed unsafe class Swapchain : IDisposable
             imageCount = swapChainSupport.Capabilities.maxImageCount;
         }
 
-        var createInfo = new VkSwapchainCreateInfoKHR
+        VkSwapchainCreateInfoKHR createInfo = new()
         {
-            sType = VkStructureType.SwapchainCreateInfoKHR,
             surface = surface,
             minImageCount = imageCount,
             imageFormat = surfaceFormat.format,
@@ -147,9 +146,8 @@ public sealed unsafe class Swapchain : IDisposable
 
         fixed (VkSubpassDependency* dependenciesPtr = &dependencies[0])
         {
-            VkRenderPassCreateInfo createInfo = new VkRenderPassCreateInfo
+            VkRenderPassCreateInfo createInfo = new()
             {
-                sType = VkStructureType.RenderPassCreateInfo,
                 attachmentCount = 1,
                 pAttachments = &attachment,
                 subpassCount = 1,
@@ -162,7 +160,7 @@ public sealed unsafe class Swapchain : IDisposable
         }
     }
 
-    
+
 
     private VkExtent2D ChooseSwapExtent(VkSurfaceCapabilitiesKHR capabilities)
     {

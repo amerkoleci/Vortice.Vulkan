@@ -11,6 +11,7 @@ public class VulkanSpecification
 {
     public EnumDefinition[] Enums { get; }
     public ExtensionDefinition[] Extensions { get; }
+    public FormatDefinition[] Formats { get; }
 
     public VulkanSpecification(Stream stream)
     {
@@ -23,7 +24,11 @@ public class VulkanSpecification
             .Select(enumx => EnumDefinition.CreateFromXml(enumx)).ToArray();
 
         Extensions = registry.Element("extensions").Elements("extension")
-                .Select(xe => ExtensionDefinition.CreateFromXml(xe)).ToArray();
+                .Select(ExtensionDefinition.CreateFromXml).ToArray();
+
+        Formats = registry.Element("formats")!.Elements("format")
+                .Select(FormatDefinition.CreateFromXml).ToArray();
+
         AddExtensionEnums();
     }
 
@@ -302,31 +307,136 @@ public class EnumExtensionValue
         $"Ext: {ExtendedType}, {Name} = {Value}";
 }
 
+public class FormatDefinition
+{
+    public string Name { get; }
+    public string Class { get; }
+    public int BlockSize { get; }
+    public int TexelsPerBlock { get; }
+    public int? Packed { get; }
+    public int? Chroma { get; }
+    public int BlockExtentX { get; }
+    public int BlockExtentY { get; }
+    public int BlockExtentZ { get; }
+    public FormatComponent[] Components { get; }
+    public FormatPlane[] Planes { get; }
+    public string? Compressed { get; }
+    public string? SpirvimageFormatName { get; }
+
+    public FormatDefinition(
+        string name,
+        string @class,
+        int blockSize,
+        int texelsPerBlock,
+        int? packed,
+        int? chroma,
+        string? blockExtent,
+        string? compressed,
+        FormatComponent[] components,
+        FormatPlane[] planes,
+        string? spirvimageformat)
+    {
+        Name = name;
+        Class = @class;
+        BlockSize = blockSize;
+        TexelsPerBlock = texelsPerBlock;
+        Packed = packed;
+        Chroma = chroma;
+
+        if (!string.IsNullOrEmpty(blockExtent))
+        {
+            int[] splits = blockExtent.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            BlockExtentX = splits[0];
+            BlockExtentY = splits[1];
+            BlockExtentZ = splits[2];
+        }
+        else
+        {
+            BlockExtentX = 1;
+            BlockExtentY = 1;
+            BlockExtentZ = 1;
+        }
+
+        Compressed = compressed;
+        Components = components;
+        Planes = planes;
+        SpirvimageFormatName = spirvimageformat;
+    }
+
+    public static FormatDefinition CreateFromXml(XElement element)
+    {
+        string name = element.Attribute("name")!.Value;
+        string @class = element.Attribute("class")!.Value;
+        int blockSize = int.Parse(element.Attribute("blockSize")!.Value);
+        int texelsPerBlock = int.Parse(element.Attribute("texelsPerBlock")!.Value);
+        int? packed = element.GetOptionalIntAttribute("packed");
+        int? chroma = element.GetOptionalIntAttribute("chroma");
+        string? blockExtent = element.Attribute("blockExtent")?.Value;
+        string? compressed = element.Attribute("compressed")?.Value;
+
+        List<FormatComponent> components = new();
+        List<FormatPlane> planes = new();
+        string? spirvimageformat = default;
+
+        foreach (XElement childElement in element.Elements())
+        {
+            if (childElement.Name == "component")
+            {
+                string componentName = childElement.Attribute("name")!.Value;
+                string bits = childElement.Attribute("bits")!.Value;
+                string numericFormat = childElement.Attribute("name")!.Value;
+                int? planeIndex = childElement.GetOptionalIntAttribute("planeIndex");
+
+                components.Add(new FormatComponent(componentName, bits, numericFormat, planeIndex));
+            }
+            else if (childElement.Name == "spirvimageformat")
+            {
+                spirvimageformat = childElement.Attribute("name")!.Value;
+            }
+            else if (childElement.Name == "plane")
+            {
+                int index = int.Parse(childElement.Attribute("index")!.Value);
+                int widthDivisor = int.Parse(childElement.Attribute("widthDivisor")!.Value);
+                int heightDivisor = int.Parse(childElement.Attribute("heightDivisor")!.Value);
+                string compatible = childElement.Attribute("compatible")!.Value;
+
+                planes.Add(new FormatPlane(index, widthDivisor, heightDivisor, compatible));
+            }
+        }
+
+        return new FormatDefinition(name, @class, blockSize, texelsPerBlock, packed, chroma, blockExtent, compressed, components.ToArray(), planes.ToArray(), spirvimageformat);
+    }
+}
+
+public record FormatComponent(string Name, string Bits, string NumericFormat, int? PlaneIndex);
+
+public record FormatPlane(int Index, int WidthDivisor, int HeightDivisor, string Compatible);
+
 public static class XElementExtensions
 {
     public static string GetNameAttribute(this XElement xe)
     {
-        return xe.Attribute("name").Value;
+        return xe.Attribute("name")!.Value;
     }
 
     public static string GetNameElement(this XElement xe)
     {
-        return xe.Element("name").Value;
+        return xe.Element("name")!.Value;
     }
 
     public static string GetTypeElement(this XElement xe)
     {
-        return xe.Element("type").Value;
+        return xe.Element("type")!.Value;
     }
 
-    public static string GetTypeAttributeOrNull(this XElement xe)
+    public static string? GetTypeAttributeOrNull(this XElement xe)
     {
         return xe.Attribute("type")?.Value;
     }
 
     public static bool GetOptionalAttributeOrFalse(this XElement xe)
     {
-        var attr = xe.Attribute("optional");
+        XAttribute? attr = xe.Attribute("optional");
         return attr != null
             ? attr.Value == "true"
             : false;
@@ -334,7 +444,13 @@ public static class XElementExtensions
 
     public static bool HasCategoryAttribute(this XElement xe, string value)
     {
-        var attr = xe.Attribute("category");
+        XAttribute? attr = xe.Attribute("category");
         return attr != null && attr.Value == value;
+    }
+
+    public static int? GetOptionalIntAttribute(this XElement xe, string name)
+    {
+        XAttribute? attr = xe.Attribute(name);
+        return attr != null ? int.Parse(attr.Value) : default;
     }
 }

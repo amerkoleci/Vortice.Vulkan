@@ -329,7 +329,7 @@ public static partial class CsCodeGenerator
                         continue;
                     }
 
-                    string enumItemName = GetEnumItemName(cppEnum, enumItem.Name, enumNamePrefix);
+                    string enumItemName = GetEnumItemName(cppEnum.Name, enumItem.Name, enumNamePrefix);
 
                     if (!string.IsNullOrEmpty(extensionPrefix) && enumItemName.EndsWith(extensionPrefix))
                     {
@@ -349,7 +349,7 @@ public static partial class CsCodeGenerator
 
                     if (enumItem.ValueExpression is CppRawExpression rawExpression)
                     {
-                        string enumValueName = GetEnumItemName(cppEnum, rawExpression.Text, enumNamePrefix);
+                        string enumValueName = GetEnumItemName(cppEnum.Name, rawExpression.Text, enumNamePrefix);
                         if (enumItemName == "SurfaceCapabilities2EXT")
                         {
                             continue;
@@ -512,10 +512,10 @@ public static partial class CsCodeGenerator
         }
     }
 
-    private static string GetEnumItemName(CppEnum @enum, string cppEnumItemName, string enumNamePrefix)
+    private static string GetEnumItemName(string enumName, string cppEnumItemName, string enumNamePrefix)
     {
         string enumItemName;
-        if (@enum.Name == "VkFormat")
+        if (enumName == "VkFormat")
         {
             enumItemName = cppEnumItemName.Substring(enumNamePrefix.Length + 1);
             var splits = enumItemName.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);

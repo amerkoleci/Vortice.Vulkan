@@ -16,8 +16,6 @@ public partial struct VkPipelineInputAssemblyStateCreateInfo
         void* pNext = default,
         VkPipelineInputAssemblyStateCreateFlags flags = VkPipelineInputAssemblyStateCreateFlags.None)
     {
-        Unsafe.SkipInit(out this);
-
         sType = VkStructureType.PipelineInputAssemblyStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;

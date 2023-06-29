@@ -44,8 +44,6 @@ public unsafe partial struct VkPipelineRasterizationStateCreateInfo
         void* pNext = default,
         VkPipelineRasterizationStateCreateFlags flags = VkPipelineRasterizationStateCreateFlags.None)
     {
-        Unsafe.SkipInit(out this);
-
         this.sType = VkStructureType.PipelineRasterizationStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;

@@ -15,8 +15,6 @@ public partial struct VkPipelineViewportStateCreateInfo
         void* pNext = default,
         VkPipelineViewportStateCreateFlags flags = VkPipelineViewportStateCreateFlags.None)
     {
-        Unsafe.SkipInit(out this);
-
         sType = VkStructureType.PipelineViewportStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;
@@ -32,8 +30,6 @@ public partial struct VkPipelineViewportStateCreateInfo
         void* pNext = default,
         VkPipelineViewportStateCreateFlags flags = VkPipelineViewportStateCreateFlags.None)
     {
-        Unsafe.SkipInit(out this);
-
         sType = VkStructureType.PipelineViewportStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;

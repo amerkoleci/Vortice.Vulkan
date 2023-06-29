@@ -98,6 +98,11 @@ public static partial class CsCodeGenerator
         GenerateStructAndUnions(compilation);
         GenerateCommands(compilation);
         GenerateHelperCommands(compilation);
+
+        if(specification != null)
+        {
+            GenerateFormatHelpers(specification);
+        }
     }
 
     public static void AddCsMapping(string typeName, string csTypeName)

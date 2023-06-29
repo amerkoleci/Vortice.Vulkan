@@ -53,9 +53,8 @@ public static unsafe class Program
             VkClearValue clearValue = new VkClearValue(1.0f, _green, 0.0f, 1.0f);
 
             // Begin the render pass.
-            VkRenderPassBeginInfo renderPassBeginInfo = new VkRenderPassBeginInfo
+            VkRenderPassBeginInfo renderPassBeginInfo = new()
             {
-                sType = VkStructureType.RenderPassBeginInfo,
                 renderPass = _graphicsDevice!.Swapchain.RenderPass,
                 framebuffer = framebuffer,
                 renderArea = new VkRect2D(size),

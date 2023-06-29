@@ -15,8 +15,6 @@ public partial struct VkPipelineTessellationStateCreateInfo
         void* pNext = default,
         VkPipelineTessellationStateCreateFlags flags = VkPipelineTessellationStateCreateFlags.None)
     {
-        Unsafe.SkipInit(out this);
-
         this.sType = VkStructureType.PipelineTessellationStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;

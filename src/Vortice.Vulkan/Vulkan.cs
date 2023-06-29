@@ -2,7 +2,6 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Numerics;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -254,7 +253,6 @@ public static unsafe partial class Vulkan
     {
         VkCommandBufferAllocateInfo allocateInfo = new()
         {
-            sType = VkStructureType.CommandBufferAllocateInfo,
             commandPool = commandPool,
             level = VkCommandBufferLevel.Primary,
             commandBufferCount = 1
@@ -270,7 +268,6 @@ public static unsafe partial class Vulkan
     {
         VkCommandBufferAllocateInfo allocateInfo = new()
         {
-            sType = VkStructureType.CommandBufferAllocateInfo,
             commandPool = commandPool,
             level = level,
             commandBufferCount = 1
@@ -284,9 +281,8 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkCreateShaderModule(VkDevice device, nuint codeSize, byte* code, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
     {
-        var createInfo = new VkShaderModuleCreateInfo
+        VkShaderModuleCreateInfo createInfo = new()
         {
-            sType = VkStructureType.ShaderModuleCreateInfo,
             codeSize = codeSize,
             pCode = (uint*)code
         };
@@ -296,9 +292,8 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkCreateShaderModule(VkDevice device, ReadOnlySpan<byte> bytecode, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
     {
-        var createInfo = new VkShaderModuleCreateInfo
+        VkShaderModuleCreateInfo createInfo = new()
         {
-            sType = VkStructureType.ShaderModuleCreateInfo,
             codeSize = (nuint)bytecode.Length,
             pCode = (uint*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(bytecode))
         };
@@ -450,11 +445,7 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkQueuePresentKHR(VkQueue queue, VkSemaphore waitSemaphore, VkSwapchainKHR swapchain, uint imageIndex)
     {
-        var presentInfo = new VkPresentInfoKHR
-        {
-            sType = VkStructureType.PresentInfoKHR,
-            pNext = null
-        };
+        VkPresentInfoKHR presentInfo = new();
 
         if (waitSemaphore != VkSemaphore.Null)
         {
@@ -474,9 +465,8 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkCreateCommandPool(VkDevice device, uint queueFamilyIndex, out VkCommandPool commandPool)
     {
-        VkCommandPoolCreateInfo createInfo = new VkCommandPoolCreateInfo
+        VkCommandPoolCreateInfo createInfo = new()
         {
-            sType = VkStructureType.CommandPoolCreateInfo,
             queueFamilyIndex = queueFamilyIndex
         };
         return vkCreateCommandPool(device, &createInfo, null, out commandPool);
@@ -484,9 +474,8 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateFlags flags, uint queueFamilyIndex, out VkCommandPool commandPool)
     {
-        VkCommandPoolCreateInfo createInfo = new VkCommandPoolCreateInfo
+        VkCommandPoolCreateInfo createInfo = new ()
         {
-            sType = VkStructureType.CommandPoolCreateInfo,
             flags = flags,
             queueFamilyIndex = queueFamilyIndex
         };
@@ -502,7 +491,6 @@ public static unsafe partial class Vulkan
     {
         VkCommandBufferBeginInfo beginInfo = new()
         {
-            sType = VkStructureType.CommandBufferBeginInfo,
             flags = flags
         };
 
@@ -529,17 +517,15 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkCreateTypedSemaphore(VkDevice device, VkSemaphoreType type, ulong initialValue, out VkSemaphore semaphore)
     {
-        VkSemaphoreTypeCreateInfo typeCreateiInfo = new VkSemaphoreTypeCreateInfo
+        VkSemaphoreTypeCreateInfo typeCreateiInfo = new ()
         {
-            sType = VkStructureType.SemaphoreTypeCreateInfo,
             pNext = null,
             semaphoreType = type,
             initialValue = initialValue
         };
 
-        VkSemaphoreCreateInfo createInfo = new VkSemaphoreCreateInfo
+        VkSemaphoreCreateInfo createInfo = new ()
         {
-            sType = VkStructureType.SemaphoreCreateInfo,
             pNext = &typeCreateiInfo,
             flags = VkSemaphoreCreateFlags.None
         };
@@ -558,9 +544,8 @@ public static unsafe partial class Vulkan
     {
         fixed (VkImageView* attachmentsPtr = attachments)
         {
-            VkFramebufferCreateInfo createInfo = new VkFramebufferCreateInfo
+            VkFramebufferCreateInfo createInfo = new ()
             {
-                sType = VkStructureType.FramebufferCreateInfo,
                 renderPass = renderPass,
                 attachmentCount = (uint)attachments.Length,
                 pAttachments = attachmentsPtr,
@@ -585,7 +570,6 @@ public static unsafe partial class Vulkan
         {
             VkFramebufferCreateInfo createInfo = new VkFramebufferCreateInfo
             {
-                sType = VkStructureType.FramebufferCreateInfo,
                 renderPass = renderPass,
                 attachmentCount = (uint)attachments.Length,
                 pAttachments = attachmentsPtr,
@@ -606,7 +590,6 @@ public static unsafe partial class Vulkan
     {
         VkPipelineLayoutCreateInfo createInfo = new()
         {
-            sType = VkStructureType.PipelineLayoutCreateInfo,
             pNext = null,
             setLayoutCount = (uint)setLayouts.Length,
             pSetLayouts = (VkDescriptorSetLayout*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(setLayouts)),
@@ -745,7 +728,6 @@ public static unsafe partial class Vulkan
         {
             VkDebugUtilsObjectNameInfoEXT info = new()
             {
-                sType = VkStructureType.DebugUtilsObjectNameInfoEXT,
                 objectType = objectType,
                 objectHandle = objectHandle,
                 pObjectName = pName
@@ -760,7 +742,6 @@ public static unsafe partial class Vulkan
         {
             VkDebugUtilsObjectNameInfoEXT info = new()
             {
-                sType = VkStructureType.DebugUtilsObjectNameInfoEXT,
                 objectType = objectType,
                 objectHandle = objectHandle,
                 pObjectName = pName

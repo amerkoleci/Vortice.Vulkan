@@ -12,8 +12,6 @@ public partial struct VkFenceCreateInfo
 {
     public unsafe VkFenceCreateInfo(VkFenceCreateFlags flags = VkFenceCreateFlags.None, void* pNext = default)
     {
-        Unsafe.SkipInit(out this);
-
         sType = VkStructureType.FenceCreateInfo;
         this.pNext = pNext;
         this.flags = flags;

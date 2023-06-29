@@ -24,8 +24,6 @@ public unsafe partial struct VkImageMemoryBarrier2
         uint dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
         void* pNext = default)
     {
-        Unsafe.SkipInit(out this);
-
         sType = VkStructureType.ImageMemoryBarrier2;
         this.pNext = pNext;
         this.srcStageMask = srcStageMask;

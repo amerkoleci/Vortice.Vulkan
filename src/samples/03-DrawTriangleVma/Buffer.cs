@@ -21,11 +21,12 @@ public unsafe struct Buffer
     {
         ByteSize = byteSize;
 
-        VkBufferCreateInfo bufferInfo;
-        bufferInfo.sType = VkStructureType.BufferCreateInfo;
-        bufferInfo.size = byteSize;
-        bufferInfo.usage = usage;
-        bufferInfo.sharingMode = VkSharingMode.Exclusive;
+        VkBufferCreateInfo bufferInfo = new()
+        {
+            size = byteSize,
+            usage = usage,
+            sharingMode = VkSharingMode.Exclusive
+        };
 
         VmaAllocationCreateInfo allocationCreateInfo;
         allocationCreateInfo.usage = VmaMemoryUsage.Auto;

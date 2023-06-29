@@ -16,8 +16,6 @@ public partial struct VkPipelineVertexInputStateCreateInfo
         void* pNext = default,
         VkPipelineVertexInputStateCreateFlags flags = VkPipelineVertexInputStateCreateFlags.None)
     {
-        Unsafe.SkipInit(out this);
-
         sType = VkStructureType.PipelineVertexInputStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;

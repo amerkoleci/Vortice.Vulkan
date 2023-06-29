@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace Vortice.Vulkan;
 
-public static unsafe class VkUtils
+unsafe partial class Vulkan
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void ThrowIfFailed(VkResult result, [CallerArgumentExpression(nameof(result))] string? valueExpression = null)

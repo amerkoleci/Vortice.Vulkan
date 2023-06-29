@@ -146,8 +146,6 @@ public static partial class CsCodeGenerator
                     writer.WriteLine();
                     using (writer.PushBlock($"public {csName}()"))
                     {
-                        //writer.WriteLine($"Unsafe.SkipInit(out this);");
-                        //writer.WriteLine();
                         writer.WriteLine($"sType = VkStructureType.{structureTypeValue};");
                     }
                 }
@@ -299,7 +297,13 @@ public static partial class CsCodeGenerator
                 fieldPrefix += "unsafe ";
             }
 
-            writer.WriteLine($"public {fieldPrefix}{csFieldType} {csFieldName};");
+            string modifier = "public";
+            if (handleSType && csFieldName == "sType")
+            {
+                modifier = "internal";
+            }
+
+            writer.WriteLine($"{modifier} {fieldPrefix}{csFieldType} {csFieldName};");
         }
     }
 }

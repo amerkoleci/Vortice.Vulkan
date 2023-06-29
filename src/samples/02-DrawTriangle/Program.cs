@@ -35,10 +35,7 @@ public static unsafe class Program
         {
             _graphicsDevice = new GraphicsDevice(Name, EnableValidationLayers, MainWindow);
 
-            VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new()
-            {
-                sType = VkStructureType.PipelineLayoutCreateInfo
-            };
+            VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new();
             vkCreatePipelineLayout(_graphicsDevice, &pipelineLayoutCreateInfo, null, out _pipelineLayout).CheckResult();
 
             // Create pipeline
@@ -50,13 +47,13 @@ public static unsafe class Program
 
                 VkPipelineShaderStageCreateInfo* shaderStages = stackalloc VkPipelineShaderStageCreateInfo[2];
                 // Vertex shader
-                shaderStages[0].sType = VkStructureType.PipelineShaderStageCreateInfo;
+                shaderStages[0] = new();
                 shaderStages[0].stage = VkShaderStageFlags.Vertex;
                 shaderStages[0].module = vertexShader;
                 shaderStages[0].pName = entryPoint;
 
                 // Fragment shader
-                shaderStages[1].sType = VkStructureType.PipelineShaderStageCreateInfo;
+                shaderStages[1] = new();
                 shaderStages[1].stage = VkShaderStageFlags.Fragment;
                 shaderStages[1].module = fragmentShader;
                 shaderStages[1].pName = entryPoint;
@@ -72,12 +69,13 @@ public static unsafe class Program
                     new(1, VkFormat.R32G32B32A32Sfloat, 12)
                 };
 
-                VkPipelineVertexInputStateCreateInfo vertexInputState = new();
-                vertexInputState.sType = VkStructureType.PipelineVertexInputStateCreateInfo;
-                vertexInputState.vertexBindingDescriptionCount = 1;
-                vertexInputState.pVertexBindingDescriptions = &vertexInputBinding;
-                vertexInputState.vertexAttributeDescriptionCount = 2;
-                vertexInputState.pVertexAttributeDescriptions = vertexInputAttributs;
+                VkPipelineVertexInputStateCreateInfo vertexInputState = new()
+                {
+                    vertexBindingDescriptionCount = 1,
+                    pVertexBindingDescriptions = &vertexInputBinding,
+                    vertexAttributeDescriptionCount = 2,
+                    pVertexAttributeDescriptions = vertexInputAttributs
+                };
 
                 VkPipelineInputAssemblyStateCreateInfo inputAssemblyState = new(VkPrimitiveTopology.TriangleList);
 
@@ -106,14 +104,12 @@ public static unsafe class Program
 
                 VkPipelineDynamicStateCreateInfo dynamicState = new()
                 {
-                    sType = VkStructureType.PipelineDynamicStateCreateInfo,
                     dynamicStateCount = 2,
                     pDynamicStates = dynamicStateEnables
                 };
 
                 VkGraphicsPipelineCreateInfo pipelineCreateInfo = new()
                 {
-                    sType = VkStructureType.GraphicsPipelineCreateInfo,
                     stageCount = 2,
                     pStages = shaderStages,
                     pVertexInputState = &vertexInputState,
@@ -149,7 +145,6 @@ public static unsafe class Program
 
                 VkBufferCreateInfo vertexBufferInfo = new()
                 {
-                    sType = VkStructureType.BufferCreateInfo,
                     size = vertexBufferSize,
                     // Buffer is used as the copy source
                     usage = VkBufferUsageFlags.TransferSrc
@@ -162,7 +157,6 @@ public static unsafe class Program
 
                 VkMemoryAllocateInfo memAlloc = new()
                 {
-                    sType = VkStructureType.MemoryAllocateInfo,
                     allocationSize = memReqs.size,
                     // Request a host visible memory type that can be used to copy our data do
                     // Also request it to be coherent, so that writes are visible to the GPU right after unmapping the buffer
@@ -231,7 +225,6 @@ public static unsafe class Program
             // Begin the render pass.
             VkRenderPassBeginInfo renderPassBeginInfo = new()
             {
-                sType = VkStructureType.RenderPassBeginInfo,
                 renderPass = _graphicsDevice.Swapchain.RenderPass,
                 framebuffer = framebuffer,
                 renderArea = new VkRect2D(size),
