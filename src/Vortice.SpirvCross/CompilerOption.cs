@@ -54,7 +54,7 @@ public enum CompilerOption : uint
 
     MSLTextureBufferNative = 34 | OptionMSLBit,
 
-    GLSL_EMIT_UNIFORMBuffer_AS_PLAIN_UNIFORMS = 35 | OptionGLSLBit,
+    GLSL_EmitUniformBufferAsPlainUniforms = 35 | OptionGLSLBit,
 
     MSLBufferSizeBufferIndex = 36 | OptionMSLBit,
 
@@ -66,7 +66,7 @@ public enum CompilerOption : uint
     MSL_ViewIndexFromDeviceIndex = 41 | OptionMSLBit,
     MSL_DispatchBase = 42 | OptionMSLBit,
     MSL_DynamicOffsetsBufferIndex = 43 | OptionMSLBit,
-    MSLTexture1DAs2D = 44 | OptionMSLBit,
+    MSL_Texture1DAs2D = 44 | OptionMSLBit,
     MSL_EnableBaseIndexZero = 45 | OptionMSLBit,
 
     /// <summary>
@@ -96,10 +96,10 @@ public enum CompilerOption : uint
 
     HLSL_Enable16BitTypes = 60 | OptionHSLBit,
 
-    MSL_MULTI_PatchWORKGROUP = 61 | OptionMSLBit,
+    MSL_MULTI_PatchWorkGroup = 61 | OptionMSLBit,
     MSL_ShaderInputBufferIndex = 62 | OptionMSLBit,
     MSL_ShaderIndexBufferIndex = 63 | OptionMSLBit,
-    MSL_VertexFOR_TESSELLATION = 64 | OptionMSLBit,
+    MSL_VertexForTessellation = 64 | OptionMSLBit,
     MSL_VertexIndexType = 65 | OptionMSLBit,
 
     GLSL_ForceFlattenedIOBlocks = 66 | OptionGLSLBit,

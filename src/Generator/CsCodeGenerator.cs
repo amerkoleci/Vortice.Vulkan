@@ -26,8 +26,9 @@ public static partial class CsCodeGenerator
         { "int64_t*", "long*" },
         { "char", "byte" },
         { "size_t", "nuint" },
+        { "intptr_t", "nint" },
+        { "uintptr_t", "nuint" },
         { "DWORD", "uint" },
-
 
         //{ "VkBool32", "uint" },
         { "VkDeviceAddress", "ulong" },
@@ -87,14 +88,17 @@ public static partial class CsCodeGenerator
         { "VkDeviceCreateInfo", "VkDeviceCreateInfo.__Native" },
     };
 
-    public static void Generate(CppCompilation compilation, string outputPath)
+    private static CsCodeGeneratorOptions _options = new();
+
+    public static void Generate(CppCompilation compilation, CsCodeGeneratorOptions options)
     {
-        GenerateConstants(compilation, outputPath);
-        GenerateEnums(compilation, outputPath);
-        GenerateHandles(compilation, outputPath);
-        GenerateStructAndUnions(compilation, outputPath);
-        GenerateCommands(compilation, outputPath);
-        GenerateHelperCommands(compilation, outputPath);
+        _options = options;
+        GenerateConstants(compilation);
+        GenerateEnums(compilation);
+        GenerateHandles(compilation);
+        GenerateStructAndUnions(compilation);
+        GenerateCommands(compilation);
+        GenerateHelperCommands(compilation);
     }
 
     public static void AddCsMapping(string typeName, string csTypeName)
@@ -102,13 +106,14 @@ public static partial class CsCodeGenerator
         s_csNameMappings[typeName] = csTypeName;
     }
 
-    private static void GenerateConstants(CppCompilation compilation, string outputPath)
+    private static void GenerateConstants(CppCompilation compilation)
     {
-        using var writer = new CodeWriter(Path.Combine(outputPath, "Constants.cs"), false);
+        string visibility = _options.PublicVisiblity ? "public" : "internal";
+        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Constants.cs"), false, _options.Namespace, Array.Empty<string>());
         writer.WriteLine("/// <summary>");
         writer.WriteLine("/// Provides Vulkan specific constants for special values, layer names and extension names.");
         writer.WriteLine("/// </summary>");
-        using (writer.PushBlock("public static partial class Vulkan"))
+        using (writer.PushBlock($"{visibility} static partial class Vulkan"))
         {
             foreach (CppMacro cppMacro in compilation.Macros)
             {
@@ -142,9 +147,8 @@ public static partial class CsCodeGenerator
 
                 //string csName = GetPrettyEnumName(cppMacro.Name, "VK_");
 
-                bool generateReadOnlySpan = false;
                 string modifier = "const";
-                string csDataType = generateReadOnlySpan ? "ReadOnlySpan<byte>" : "string";
+                string csDataType = _options.ReadOnlySpanForStrings ? "ReadOnlySpan<byte>" : "string";
                 string macroValue = NormalizeEnumValue(cppMacro.Value);
                 if (macroValue.EndsWith("F", StringComparison.OrdinalIgnoreCase))
                 {
@@ -182,7 +186,7 @@ public static partial class CsCodeGenerator
 
                 //AddCsMapping(cppMacro.Name, csName);
 
-                
+
                 if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_6" ||
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION" ||

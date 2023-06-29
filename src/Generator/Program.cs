@@ -67,16 +67,15 @@ public static class Program
             return 0;
         }
 
-        CsCodeGenerator.Generate(compilation, outputPath);
+        CsCodeGeneratorOptions generateOptions = new()
+        {
+            OutputPath = outputPath,
+            ClassName = "Vulkan",
+            Namespace = "Vortice.Vulkan",
+            PublicVisiblity = true,
+            GenerateFunctionPointers = true
+        };
+        CsCodeGenerator.Generate(compilation, generateOptions);
         return 0;
     }
-
-    //private static IEnumerable<string> ResolveWindowsSdk(string version)
-    //{
-    //    var path = @"C:\Program Files (x86)\Windows Kits\10";
-    //    yield return $@"{path}\Include\{version}\shared";
-    //    yield return $@"{path}\Include\{version}\um";
-    //    yield return $@"{path}\Include\{version}\ucrt";
-    //    yield return $@"{path}\Include\{version}\winrt";
-    //}
 }

@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Diagnostics.CodeAnalysis;
 
+#pragma warning disable CS0649;
 namespace Vortice.Vulkan;
 
 [StructLayout(LayoutKind.Sequential)]

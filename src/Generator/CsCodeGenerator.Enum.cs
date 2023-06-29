@@ -211,9 +211,10 @@ public static partial class CsCodeGenerator
         "d3d12",
     };
 
-    public static void GenerateEnums(CppCompilation compilation, string outputPath)
+    public static void GenerateEnums(CppCompilation compilation)
     {
-        using CodeWriter writer = new(Path.Combine(outputPath, "Enumerations.cs"), false, "System");
+        string visibility = _options.PublicVisiblity ? "public" : "internal";
+        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Enumerations.cs"), false, _options.Namespace, new[] { "System" });
         Dictionary<string, string> createdEnums = new();
 
         foreach (CppEnum cppEnum in compilation.Enums)
@@ -274,7 +275,7 @@ public static partial class CsCodeGenerator
             createdEnums.Add(csName, cppEnum.Name);
 
             bool noneAdded = false;
-            using (writer.PushBlock($"public enum {csName}"))
+            using (writer.PushBlock($"{visibility} enum {csName}"))
             {
                 if (isBitmask &&
                     !cppEnum.Items.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "None"))

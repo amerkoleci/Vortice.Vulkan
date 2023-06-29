@@ -3,7 +3,7 @@
 
 namespace System.Diagnostics.CodeAnalysis;
 
-[AttributeUsageAttribute(AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Parameter, Inherited = false)]
+[AttributeUsage(AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Parameter, Inherited = false)]
 internal sealed class UnscopedRefAttribute : Attribute
 {
 }

@@ -7,12 +7,15 @@ namespace Generator;
 
 public static partial class CsCodeGenerator
 {
-    private static void GenerateHandles(CppCompilation compilation, string outputPath)
+    private static void GenerateHandles(CppCompilation compilation)
     {
+        string visibility = _options.PublicVisiblity ? "public" : "internal";
+
         // Generate Functions
-        using var writer = new CodeWriter(Path.Combine(outputPath, "Handles.cs"),
+        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Handles.cs"),
             true,
-            "System.Diagnostics"
+            _options.Namespace,
+            new[] { "System.Diagnostics" }
             );
 
         foreach (CppTypedef typedef in compilation.Typedefs)
@@ -40,7 +43,7 @@ public static partial class CsCodeGenerator
             writer.WriteLine($"/// A {(isDispatchable ? "dispatchable" : "non-dispatchable")} handle.");
             writer.WriteLine("/// </summary>");
             writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
-            using (writer.PushBlock($"public readonly partial struct {csName} : IEquatable<{csName}>"))
+            using (writer.PushBlock($"{visibility} readonly partial struct {csName} : IEquatable<{csName}>"))
             {
                 string handleType = isDispatchable ? "nint" : "ulong";
                 string nullValue = "0";

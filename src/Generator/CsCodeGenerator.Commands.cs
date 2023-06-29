@@ -139,12 +139,13 @@ public static partial class CsCodeGenerator
         return $"delegate* unmanaged<{builder}>";
     }
 
-    private static void GenerateCommands(CppCompilation compilation, string outputPath)
+    private static void GenerateCommands(CppCompilation compilation)
     {
         // Generate Functions
-        using var writer = new CodeWriter(Path.Combine(outputPath, "Commands.cs"),
+        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Commands.cs"),
             false,
-            "System"
+            _options.Namespace,
+            new[] { "System" }
             );
 
         Dictionary<string, CppFunction> commands = new();
@@ -178,7 +179,7 @@ public static partial class CsCodeGenerator
             }
         }
 
-        using (writer.PushBlock($"unsafe partial class Vulkan"))
+        using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))
         {
             foreach (KeyValuePair<string, CppFunction> command in commands)
             {
@@ -228,8 +229,11 @@ public static partial class CsCodeGenerator
                 }
             }
 
-            WriteCommands(writer, "GenLoadInstance", instanceCommands);
-            WriteCommands(writer, "GenLoadDevice", deviceCommands);
+            if (_options.GenerateFunctionPointers)
+            {
+                WriteCommands(writer, "GenLoadInstance", instanceCommands);
+                WriteCommands(writer, "GenLoadDevice", deviceCommands);
+            }
         }
     }
 

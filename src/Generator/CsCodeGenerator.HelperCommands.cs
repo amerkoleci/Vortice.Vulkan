@@ -56,16 +56,16 @@ public static partial class CsCodeGenerator
         "vkEnumeratePhysicalDeviceGroupsKHR",
     };
 
-    private static void GenerateHelperCommands(CppCompilation compilation, string outputPath)
+    private static void GenerateHelperCommands(CppCompilation compilation)
     {
         // Generate Functions
-        using var writer = new CodeWriter(Path.Combine(outputPath, "VkHelpers.cs"),
+        using CodeWriter writer = new (Path.Combine(_options.OutputPath, "VkHelpers.cs"),
             false,
-            "System.Diagnostics",
-            "System.Runtime.InteropServices"
+            _options.Namespace,
+            new[] { "System.Diagnostics", "System.Runtime.InteropServices" }
             );
 
-        using (writer.PushBlock($"unsafe partial class Vulkan"))
+        using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))
         {
             // Generate methods with array calls
             foreach (CppFunction function in compilation.Functions)
