@@ -22,9 +22,9 @@ public unsafe readonly struct VkString : IDisposable
         if (str == null)
             return; // Preserve Size as 0
 
-        var strSpan = str.GetUtf8Span();
-        var strLength = strSpan.Length + 1;
-        Pointer = AllocateArray<sbyte>((uint)strLength);
+        ReadOnlySpan<sbyte> strSpan = str.GetUtf8Span();
+        int strLength = strSpan.Length + 1;
+        Pointer = (sbyte*)NativeMemory.Alloc((nuint)strLength);
 
         var destination = new Span<sbyte>(Pointer, strLength);
         strSpan.CopyTo(destination);

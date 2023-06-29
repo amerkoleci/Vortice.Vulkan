@@ -16,24 +16,17 @@ public static unsafe class Vma
         NativeLibrary.SetDllImportResolver(Assembly.GetExecutingAssembly(), OnDllImport);
     }
 
-    public static event DllImportResolver? ResolveLibrary;
-
     private static nint OnDllImport(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
     {
-        if (TryResolveLibrary(libraryName, assembly, searchPath, out nint nativeLibrary))
+        if (libraryName.Equals(LibName) && TryResolveVMA(assembly, searchPath, out nint nativeLibrary))
         {
             return nativeLibrary;
         }
 
-        if (libraryName.Equals(LibName) && TryResolveVMA(assembly, searchPath, out nativeLibrary))
-        {
-            return nativeLibrary;
-        }
-
-        return IntPtr.Zero;
+        return 0;
     }
 
-    private static bool TryResolveVMA(Assembly assembly, DllImportSearchPath? searchPath, out IntPtr nativeLibrary)
+    private static bool TryResolveVMA(Assembly assembly, DllImportSearchPath? searchPath, out nint nativeLibrary)
     {
         if (OperatingSystem.IsWindows())
         {
@@ -67,29 +60,6 @@ public static unsafe class Vma
             return true;
         }
 
-        return false;
-    }
-
-    private static bool TryResolveLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath, out nint nativeLibrary)
-    {
-        var resolveLibrary = ResolveLibrary;
-
-        if (resolveLibrary != null)
-        {
-            var resolvers = resolveLibrary.GetInvocationList();
-
-            foreach (DllImportResolver resolver in resolvers)
-            {
-                nativeLibrary = resolver(libraryName, assembly, searchPath);
-
-                if (nativeLibrary != 0)
-                {
-                    return true;
-                }
-            }
-        }
-
-        nativeLibrary = 0;
         return false;
     }
 

@@ -67,15 +67,21 @@ public static class Program
             return 0;
         }
 
-        CsCodeGeneratorOptions generateOptions = new()
+        using (FileStream stream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, "docs", "vk.xml")))
         {
-            OutputPath = outputPath,
-            ClassName = "Vulkan",
-            Namespace = "Vortice.Vulkan",
-            PublicVisiblity = true,
-            GenerateFunctionPointers = true
-        };
-        CsCodeGenerator.Generate(compilation, generateOptions);
+            VulkanSpecification vs = new(stream);
+
+            CsCodeGeneratorOptions generateOptions = new()
+            {
+                OutputPath = outputPath,
+                ClassName = "Vulkan",
+                Namespace = "Vortice.Vulkan",
+                PublicVisiblity = true,
+                GenerateFunctionPointers = true
+            };
+            CsCodeGenerator.Generate(compilation, generateOptions, vs);
+        }
+        
         return 0;
     }
 }

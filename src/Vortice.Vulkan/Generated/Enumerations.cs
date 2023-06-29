@@ -11,44 +11,104 @@ using System;
 
 namespace Vortice.Vulkan;
 
+/// <summary>
+/// API result codes
+/// </summary>
 public enum VkResult
 {
+	/// <summary>
+	/// Command completed successfully
+	/// </summary>
 	/// <unmanaged>VK_SUCCESS</unmanaged>
 	Success = 0,
+	/// <summary>
+	/// A fence or query has not yet completed
+	/// </summary>
 	/// <unmanaged>VK_NOT_READY</unmanaged>
 	NotReady = 1,
+	/// <summary>
+	/// A wait operation has not completed in the specified time
+	/// </summary>
 	/// <unmanaged>VK_TIMEOUT</unmanaged>
 	Timeout = 2,
+	/// <summary>
+	/// An event is signaled
+	/// </summary>
 	/// <unmanaged>VK_EVENT_SET</unmanaged>
 	EventSet = 3,
+	/// <summary>
+	/// An event is unsignaled
+	/// </summary>
 	/// <unmanaged>VK_EVENT_RESET</unmanaged>
 	EventReset = 4,
+	/// <summary>
+	/// A return array was too small for the result
+	/// </summary>
 	/// <unmanaged>VK_INCOMPLETE</unmanaged>
 	Incomplete = 5,
+	/// <summary>
+	/// A host memory allocation has failed
+	/// </summary>
 	/// <unmanaged>VK_ERROR_OUT_OF_HOST_MEMORY</unmanaged>
 	ErrorOutOfHostMemory = -1,
+	/// <summary>
+	/// A device memory allocation has failed
+	/// </summary>
 	/// <unmanaged>VK_ERROR_OUT_OF_DEVICE_MEMORY</unmanaged>
 	ErrorOutOfDeviceMemory = -2,
+	/// <summary>
+	/// Initialization of an object has failed
+	/// </summary>
 	/// <unmanaged>VK_ERROR_INITIALIZATION_FAILED</unmanaged>
 	ErrorInitializationFailed = -3,
+	/// <summary>
+	/// The logical device has been lost. 
+	/// </summary>
 	/// <unmanaged>VK_ERROR_DEVICE_LOST</unmanaged>
 	ErrorDeviceLost = -4,
+	/// <summary>
+	/// Mapping of a memory object has failed
+	/// </summary>
 	/// <unmanaged>VK_ERROR_MEMORY_MAP_FAILED</unmanaged>
 	ErrorMemoryMapFailed = -5,
+	/// <summary>
+	/// Layer specified does not exist
+	/// </summary>
 	/// <unmanaged>VK_ERROR_LAYER_NOT_PRESENT</unmanaged>
 	ErrorLayerNotPresent = -6,
+	/// <summary>
+	/// Extension specified does not exist
+	/// </summary>
 	/// <unmanaged>VK_ERROR_EXTENSION_NOT_PRESENT</unmanaged>
 	ErrorExtensionNotPresent = -7,
+	/// <summary>
+	/// Requested feature is not available on this device
+	/// </summary>
 	/// <unmanaged>VK_ERROR_FEATURE_NOT_PRESENT</unmanaged>
 	ErrorFeatureNotPresent = -8,
+	/// <summary>
+	/// Unable to find a Vulkan driver
+	/// </summary>
 	/// <unmanaged>VK_ERROR_INCOMPATIBLE_DRIVER</unmanaged>
 	ErrorIncompatibleDriver = -9,
+	/// <summary>
+	/// Too many objects of the type have already been created
+	/// </summary>
 	/// <unmanaged>VK_ERROR_TOO_MANY_OBJECTS</unmanaged>
 	ErrorTooManyObjects = -10,
+	/// <summary>
+	/// Requested format is not supported on this device
+	/// </summary>
 	/// <unmanaged>VK_ERROR_FORMAT_NOT_SUPPORTED</unmanaged>
 	ErrorFormatNotSupported = -11,
+	/// <summary>
+	/// A requested pool allocation has failed due to fragmentation of the pool's memory
+	/// </summary>
 	/// <unmanaged>VK_ERROR_FRAGMENTED_POOL</unmanaged>
 	ErrorFragmentedPool = -12,
+	/// <summary>
+	/// An unknown error has occurred, due to an implementation or application bug
+	/// </summary>
 	/// <unmanaged>VK_ERROR_UNKNOWN</unmanaged>
 	ErrorUnknown = -13,
 	/// <unmanaged>VK_ERROR_OUT_OF_POOL_MEMORY</unmanaged>
@@ -125,6 +185,9 @@ public enum VkResult
 	ErrorPipelineCompileRequiredEXT = PipelineCompileRequired,
 }
 
+/// <summary>
+/// Structure type enumerant
+/// </summary>
 public enum VkStructureType
 {
 	/// <unmanaged>VK_STRUCTURE_TYPE_APPLICATION_INFO</unmanaged>
@@ -221,8 +284,14 @@ public enum VkStructureType
 	ImageMemoryBarrier = 45,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_BARRIER</unmanaged>
 	MemoryBarrier = 46,
+	/// <summary>
+	/// Reserved for internal use by the loader, layers, and ICDs
+	/// </summary>
 	/// <unmanaged>VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO</unmanaged>
 	LoaderInstanceCreateInfo = 47,
+	/// <summary>
+	/// Reserved for internal use by the loader, layers, and ICDs
+	/// </summary>
 	/// <unmanaged>VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO</unmanaged>
 	LoaderDeviceCreateInfo = 48,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES</unmanaged>
@@ -2069,22 +2138,49 @@ public enum VkPipelineCacheHeaderVersion
 
 public enum VkImageLayout
 {
+	/// <summary>
+	/// Implicit layout an image is when its contents are undefined due to various reasons (e.g. right after creation)
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_LAYOUT_UNDEFINED</unmanaged>
 	Undefined = 0,
+	/// <summary>
+	/// General layout when image can be used for any kind of access
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_LAYOUT_GENERAL</unmanaged>
 	General = 1,
+	/// <summary>
+	/// Optimal layout when image is only used for color attachment read/write
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</unmanaged>
 	ColorAttachmentOptimal = 2,
+	/// <summary>
+	/// Optimal layout when image is only used for depth/stencil attachment read/write
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL</unmanaged>
 	DepthStencilAttachmentOptimal = 3,
+	/// <summary>
+	/// Optimal layout when image is used for read only depth/stencil attachment and shader access
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL</unmanaged>
 	DepthStencilReadOnlyOptimal = 4,
+	/// <summary>
+	/// Optimal layout when image is used for read only shader access
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL</unmanaged>
 	ShaderReadOnlyOptimal = 5,
+	/// <summary>
+	/// Optimal layout when image is used only as source of transfer operations
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL</unmanaged>
 	TransferSrcOptimal = 6,
+	/// <summary>
+	/// Optimal layout when image is used only as destination of transfer operations
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</unmanaged>
 	TransferDstOptimal = 7,
+	/// <summary>
+	/// Initial layout used when the data is populated by the CPU
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_LAYOUT_PREINITIALIZED</unmanaged>
 	Preinitialized = 8,
 	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL</unmanaged>
@@ -2145,6 +2241,9 @@ public enum VkImageLayout
 	AttachmentOptimalKHR = AttachmentOptimal,
 }
 
+/// <summary>
+/// Enums to track objects of various types - also see objtypeenum attributes on type tags
+/// </summary>
 public enum VkObjectType
 {
 	/// <unmanaged>VK_OBJECT_TYPE_UNKNOWN</unmanaged>
@@ -2255,18 +2354,39 @@ public enum VkObjectType
 
 public enum VkVendorId
 {
+	/// <summary>
+	/// Vivante vendor ID
+	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_VIV</unmanaged>
 	Viv = 65537,
+	/// <summary>
+	/// VeriSilicon vendor ID
+	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_VSI</unmanaged>
 	Vsi = 65538,
+	/// <summary>
+	/// Kazan Software Renderer
+	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_KAZAN</unmanaged>
 	Kazan = 65539,
+	/// <summary>
+	/// Codeplay Software Ltd. vendor ID
+	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_CODEPLAY</unmanaged>
 	Codeplay = 65540,
+	/// <summary>
+	/// Mesa vendor ID
+	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_MESA</unmanaged>
 	Mesa = 65541,
+	/// <summary>
+	/// PoCL vendor ID
+	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_POCL</unmanaged>
 	Pocl = 65542,
+	/// <summary>
+	/// Mobileye vendor ID
+	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_MOBILEYE</unmanaged>
 	Mobileye = 65543,
 }
@@ -2291,6 +2411,9 @@ public enum VkInternalAllocationType
 	Executable = 0,
 }
 
+/// <summary>
+/// Vulkan format definitions
+/// </summary>
 public enum VkFormat
 {
 	/// <unmanaged>VK_FORMAT_UNDEFINED</unmanaged>
@@ -2937,6 +3060,9 @@ public enum VkQueryType
 {
 	/// <unmanaged>VK_QUERY_TYPE_OCCLUSION</unmanaged>
 	Occlusion = 0,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_TYPE_PIPELINE_STATISTICS</unmanaged>
 	PipelineStatistics = 1,
 	/// <unmanaged>VK_QUERY_TYPE_TIMESTAMP</unmanaged>
@@ -3521,8 +3647,14 @@ public enum VkSamplerAddressMode
 
 public enum VkSamplerMipmapMode
 {
+	/// <summary>
+	/// Choose nearest mip level
+	/// </summary>
 	/// <unmanaged>VK_SAMPLER_MIPMAP_MODE_NEAREST</unmanaged>
 	Nearest = 0,
+	/// <summary>
+	/// Linear filter between mip levels
+	/// </summary>
 	/// <unmanaged>VK_SAMPLER_MIPMAP_MODE_LINEAR</unmanaged>
 	Linear = 1,
 }
@@ -3644,38 +3776,89 @@ public enum VkSubpassContents
 [Flags]
 public enum VkAccessFlags
 {
+	/// <summary>
+	/// Controls coherency of indirect command reads
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_INDIRECT_COMMAND_READ_BIT</unmanaged>
 	IndirectCommandRead = 1,
+	/// <summary>
+	/// Controls coherency of index reads
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_INDEX_READ_BIT</unmanaged>
 	IndexRead = 2,
+	/// <summary>
+	/// Controls coherency of vertex attribute reads
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT</unmanaged>
 	VertexAttributeRead = 4,
+	/// <summary>
+	/// Controls coherency of uniform buffer reads
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_UNIFORM_READ_BIT</unmanaged>
 	UniformRead = 8,
+	/// <summary>
+	/// Controls coherency of input attachment reads
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_INPUT_ATTACHMENT_READ_BIT</unmanaged>
 	InputAttachmentRead = 16,
+	/// <summary>
+	/// Controls coherency of shader reads
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_SHADER_READ_BIT</unmanaged>
 	ShaderRead = 32,
+	/// <summary>
+	/// Controls coherency of shader writes
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_SHADER_WRITE_BIT</unmanaged>
 	ShaderWrite = 64,
+	/// <summary>
+	/// Controls coherency of color attachment reads
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_COLOR_ATTACHMENT_READ_BIT</unmanaged>
 	ColorAttachmentRead = 128,
+	/// <summary>
+	/// Controls coherency of color attachment writes
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT</unmanaged>
 	ColorAttachmentWrite = 256,
+	/// <summary>
+	/// Controls coherency of depth/stencil attachment reads
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT</unmanaged>
 	DepthStencilAttachmentRead = 512,
+	/// <summary>
+	/// Controls coherency of depth/stencil attachment writes
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT</unmanaged>
 	DepthStencilAttachmentWrite = 1024,
+	/// <summary>
+	/// Controls coherency of transfer reads
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_TRANSFER_READ_BIT</unmanaged>
 	TransferRead = 2048,
+	/// <summary>
+	/// Controls coherency of transfer writes
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_TRANSFER_WRITE_BIT</unmanaged>
 	TransferWrite = 4096,
+	/// <summary>
+	/// Controls coherency of host reads
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_HOST_READ_BIT</unmanaged>
 	HostRead = 8192,
+	/// <summary>
+	/// Controls coherency of host writes
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_HOST_WRITE_BIT</unmanaged>
 	HostWrite = 16384,
+	/// <summary>
+	/// Controls coherency of memory reads
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_MEMORY_READ_BIT</unmanaged>
 	MemoryRead = 32768,
+	/// <summary>
+	/// Controls coherency of memory writes
+	/// </summary>
 	/// <unmanaged>VK_ACCESS_MEMORY_WRITE_BIT</unmanaged>
 	MemoryWrite = 65536,
 	/// <unmanaged>VK_ACCESS_NONE</unmanaged>
@@ -3753,30 +3936,69 @@ public enum VkImageAspectFlags
 public enum VkFormatFeatureFlags
 {
 	None = 0,
+	/// <summary>
+	/// Format can be used for sampled images (SAMPLED_IMAGE and COMBINED_IMAGE_SAMPLER descriptor types)
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT</unmanaged>
 	SampledImage = 1,
+	/// <summary>
+	/// Format can be used for storage images (STORAGE_IMAGE descriptor type)
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT</unmanaged>
 	StorageImage = 2,
+	/// <summary>
+	/// Format supports atomic operations in case it is used for storage images
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT</unmanaged>
 	StorageImageAtomic = 4,
+	/// <summary>
+	/// Format can be used for uniform texel buffers (TBOs)
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT</unmanaged>
 	UniformTexelBuffer = 8,
+	/// <summary>
+	/// Format can be used for storage texel buffers (IBOs)
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT</unmanaged>
 	StorageTexelBuffer = 16,
+	/// <summary>
+	/// Format supports atomic operations in case it is used for storage texel buffers
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT</unmanaged>
 	StorageTexelBufferAtomic = 32,
+	/// <summary>
+	/// Format can be used for vertex buffers (VBOs)
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT</unmanaged>
 	VertexBuffer = 64,
+	/// <summary>
+	/// Format can be used for color attachment images
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT</unmanaged>
 	ColorAttachment = 128,
+	/// <summary>
+	/// Format supports blending in case it is used for color attachment images
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT</unmanaged>
 	ColorAttachmentBlend = 256,
+	/// <summary>
+	/// Format can be used for depth/stencil attachment images
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT</unmanaged>
 	DepthStencilAttachment = 512,
+	/// <summary>
+	/// Format can be used as the source image of blits with vkCmdBlitImage
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_BLIT_SRC_BIT</unmanaged>
 	BlitSrc = 1024,
+	/// <summary>
+	/// Format can be used as the destination image of blits with vkCmdBlitImage
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_BLIT_DST_BIT</unmanaged>
 	BlitDst = 2048,
+	/// <summary>
+	/// Format can be filtered with VK_FILTER_LINEAR when being sampled
+	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT</unmanaged>
 	SampledImageFilterLinear = 4096,
 	/// <unmanaged>VK_FORMAT_FEATURE_TRANSFER_SRC_BIT</unmanaged>
@@ -3843,14 +4065,29 @@ public enum VkFormatFeatureFlags
 public enum VkImageCreateFlags
 {
 	None = 0,
+	/// <summary>
+	/// Image should support sparse backing
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</unmanaged>
 	SparseBinding = 1,
+	/// <summary>
+	/// Image should support sparse backing with partial residency
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</unmanaged>
 	SparseResidency = 2,
+	/// <summary>
+	/// Image should support constant data access to physical memory ranges mapped into multiple locations of sparse images
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_CREATE_SPARSE_ALIASED_BIT</unmanaged>
 	SparseAliased = 4,
+	/// <summary>
+	/// Allows image views to have different format than the base image
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT</unmanaged>
 	MutableFormat = 8,
+	/// <summary>
+	/// Allows creating image views with cube type from the created image
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT</unmanaged>
 	CubeCompatible = 16,
 	/// <unmanaged>VK_IMAGE_CREATE_ALIAS_BIT</unmanaged>
@@ -3899,18 +4136,39 @@ public enum VkImageCreateFlags
 public enum VkSampleCountFlags
 {
 	None = 0,
+	/// <summary>
+	/// Sample count 1 supported
+	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_1_BIT</unmanaged>
 	Count1 = 1,
+	/// <summary>
+	/// Sample count 2 supported
+	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_2_BIT</unmanaged>
 	Count2 = 2,
+	/// <summary>
+	/// Sample count 4 supported
+	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_4_BIT</unmanaged>
 	Count4 = 4,
+	/// <summary>
+	/// Sample count 8 supported
+	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_8_BIT</unmanaged>
 	Count8 = 8,
+	/// <summary>
+	/// Sample count 16 supported
+	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_16_BIT</unmanaged>
 	Count16 = 16,
+	/// <summary>
+	/// Sample count 32 supported
+	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_32_BIT</unmanaged>
 	Count32 = 32,
+	/// <summary>
+	/// Sample count 64 supported
+	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_64_BIT</unmanaged>
 	Count64 = 64,
 }
@@ -3919,20 +4177,44 @@ public enum VkSampleCountFlags
 public enum VkImageUsageFlags
 {
 	None = 0,
+	/// <summary>
+	/// Can be used as a source of transfer operations
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_TRANSFER_SRC_BIT</unmanaged>
 	TransferSrc = 1,
+	/// <summary>
+	/// Can be used as a destination of transfer operations
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_TRANSFER_DST_BIT</unmanaged>
 	TransferDst = 2,
+	/// <summary>
+	/// Can be sampled from (SAMPLED_IMAGE and COMBINED_IMAGE_SAMPLER descriptor types)
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_SAMPLED_BIT</unmanaged>
 	Sampled = 4,
+	/// <summary>
+	/// Can be used as storage image (STORAGE_IMAGE descriptor type)
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_STORAGE_BIT</unmanaged>
 	Storage = 8,
+	/// <summary>
+	/// Can be used as framebuffer color attachment
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT</unmanaged>
 	ColorAttachment = 16,
+	/// <summary>
+	/// Can be used as framebuffer depth/stencil attachment
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT</unmanaged>
 	DepthStencilAttachment = 32,
+	/// <summary>
+	/// Image data not needed outside of rendering
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT</unmanaged>
 	TransientAttachment = 64,
+	/// <summary>
+	/// Can be used as framebuffer input attachment
+	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT</unmanaged>
 	InputAttachment = 128,
 	/// <unmanaged>VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR</unmanaged>
@@ -3975,6 +4257,9 @@ public enum VkInstanceCreateFlags
 public enum VkMemoryHeapFlags
 {
 	None = 0,
+	/// <summary>
+	/// If set, heap represents device memory
+	/// </summary>
 	/// <unmanaged>VK_MEMORY_HEAP_DEVICE_LOCAL_BIT</unmanaged>
 	DeviceLocal = 1,
 	/// <unmanaged>VK_MEMORY_HEAP_MULTI_INSTANCE_BIT</unmanaged>
@@ -3987,14 +4272,29 @@ public enum VkMemoryHeapFlags
 public enum VkMemoryPropertyFlags
 {
 	None = 0,
+	/// <summary>
+	/// If otherwise stated, then allocate memory on device
+	/// </summary>
 	/// <unmanaged>VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT</unmanaged>
 	DeviceLocal = 1,
+	/// <summary>
+	/// Memory is mappable by host
+	/// </summary>
 	/// <unmanaged>VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT</unmanaged>
 	HostVisible = 2,
+	/// <summary>
+	/// Memory will have i/o coherency. If not set, application may need to use vkFlushMappedMemoryRanges and vkInvalidateMappedMemoryRanges to flush/invalidate host cache
+	/// </summary>
 	/// <unmanaged>VK_MEMORY_PROPERTY_HOST_COHERENT_BIT</unmanaged>
 	HostCoherent = 4,
+	/// <summary>
+	/// Memory will be cached by the host
+	/// </summary>
 	/// <unmanaged>VK_MEMORY_PROPERTY_HOST_CACHED_BIT</unmanaged>
 	HostCached = 8,
+	/// <summary>
+	/// Memory may be allocated by the driver when it is required
+	/// </summary>
 	/// <unmanaged>VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT</unmanaged>
 	LazilyAllocated = 16,
 	/// <unmanaged>VK_MEMORY_PROPERTY_PROTECTED_BIT</unmanaged>
@@ -4011,12 +4311,24 @@ public enum VkMemoryPropertyFlags
 public enum VkQueueFlags
 {
 	None = 0,
+	/// <summary>
+	/// Queue supports graphics operations
+	/// </summary>
 	/// <unmanaged>VK_QUEUE_GRAPHICS_BIT</unmanaged>
 	Graphics = 1,
+	/// <summary>
+	/// Queue supports compute operations
+	/// </summary>
 	/// <unmanaged>VK_QUEUE_COMPUTE_BIT</unmanaged>
 	Compute = 2,
+	/// <summary>
+	/// Queue supports transfer operations
+	/// </summary>
 	/// <unmanaged>VK_QUEUE_TRANSFER_BIT</unmanaged>
 	Transfer = 4,
+	/// <summary>
+	/// Queue supports sparse resource memory management operations
+	/// </summary>
 	/// <unmanaged>VK_QUEUE_SPARSE_BINDING_BIT</unmanaged>
 	SparseBinding = 8,
 	/// <unmanaged>VK_QUEUE_PROTECTED_BIT</unmanaged>
@@ -4040,38 +4352,89 @@ public enum VkDeviceQueueCreateFlags
 [Flags]
 public enum VkPipelineStageFlags
 {
+	/// <summary>
+	/// Before subsequent commands are processed
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT</unmanaged>
 	TopOfPipe = 1,
+	/// <summary>
+	/// Draw/DispatchIndirect command fetch
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT</unmanaged>
 	DrawIndirect = 2,
+	/// <summary>
+	/// Vertex/index fetch
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_VERTEX_INPUT_BIT</unmanaged>
 	VertexInput = 4,
+	/// <summary>
+	/// Vertex shading
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_VERTEX_SHADER_BIT</unmanaged>
 	VertexShader = 8,
+	/// <summary>
+	/// Tessellation control shading
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT</unmanaged>
 	TessellationControlShader = 16,
+	/// <summary>
+	/// Tessellation evaluation shading
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT</unmanaged>
 	TessellationEvaluationShader = 32,
+	/// <summary>
+	/// Geometry shading
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT</unmanaged>
 	GeometryShader = 64,
+	/// <summary>
+	/// Fragment shading
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</unmanaged>
 	FragmentShader = 128,
+	/// <summary>
+	/// Early fragment (depth and stencil) tests
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT</unmanaged>
 	EarlyFragmentTests = 256,
+	/// <summary>
+	/// Late fragment (depth and stencil) tests
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</unmanaged>
 	LateFragmentTests = 512,
+	/// <summary>
+	/// Color attachment writes
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT</unmanaged>
 	ColorAttachmentOutput = 1024,
+	/// <summary>
+	/// Compute shading
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT</unmanaged>
 	ComputeShader = 2048,
+	/// <summary>
+	/// Transfer/copy operations
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_TRANSFER_BIT</unmanaged>
 	Transfer = 4096,
+	/// <summary>
+	/// After previous commands have completed
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT</unmanaged>
 	BottomOfPipe = 8192,
+	/// <summary>
+	/// Indicates host (CPU) is a source/sink of the dependency
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_HOST_BIT</unmanaged>
 	Host = 16384,
+	/// <summary>
+	/// All stages of the graphics pipeline
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT</unmanaged>
 	AllGraphics = 32768,
+	/// <summary>
+	/// All stages supported on the queue
+	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_ALL_COMMANDS_BIT</unmanaged>
 	AllCommands = 65536,
 	/// <unmanaged>VK_PIPELINE_STAGE_NONE</unmanaged>
@@ -4112,6 +4475,9 @@ public enum VkPipelineStageFlags
 public enum VkSparseMemoryBindFlags
 {
 	None = 0,
+	/// <summary>
+	/// Operation binds resource metadata to memory
+	/// </summary>
 	/// <unmanaged>VK_SPARSE_MEMORY_BIND_METADATA_BIT</unmanaged>
 	Metadata = 1,
 }
@@ -4120,10 +4486,19 @@ public enum VkSparseMemoryBindFlags
 public enum VkSparseImageFormatFlags
 {
 	None = 0,
+	/// <summary>
+	/// Image uses a single mip tail region for all array layers
+	/// </summary>
 	/// <unmanaged>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</unmanaged>
 	SingleMiptail = 1,
+	/// <summary>
+	/// Image requires mip level dimensions to be an integer multiple of the sparse image block dimensions for non-tail mip levels.
+	/// </summary>
 	/// <unmanaged>VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</unmanaged>
 	AlignedMipSize = 2,
+	/// <summary>
+	/// Image uses a non-standard sparse image block dimensions
+	/// </summary>
 	/// <unmanaged>VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT</unmanaged>
 	NonstandardBlockSize = 4,
 }
@@ -4150,26 +4525,59 @@ public enum VkEventCreateFlags
 public enum VkQueryPipelineStatisticFlags
 {
 	None = 0,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT</unmanaged>
 	InputAssemblyVertices = 1,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT</unmanaged>
 	InputAssemblyPrimitives = 2,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT</unmanaged>
 	VertexShaderInvocations = 4,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT</unmanaged>
 	GeometryShaderInvocations = 8,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT</unmanaged>
 	GeometryShaderPrimitives = 16,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT</unmanaged>
 	ClippingInvocations = 32,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT</unmanaged>
 	ClippingPrimitives = 64,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT</unmanaged>
 	FragmentShaderInvocations = 128,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT</unmanaged>
 	TessellationControlShaderPatches = 256,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT</unmanaged>
 	TessellationEvaluationShaderInvocations = 512,
+	/// <summary>
+	/// Optional
+	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT</unmanaged>
 	ComputeShaderInvocations = 1024,
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT</unmanaged>
@@ -4184,12 +4592,24 @@ public enum VkQueryPipelineStatisticFlags
 public enum VkQueryResultFlags
 {
 	None = 0,
+	/// <summary>
+	/// Results of the queries are written to the destination buffer as 64-bit values
+	/// </summary>
 	/// <unmanaged>VK_QUERY_RESULT_64_BIT</unmanaged>
 	Bit64 = 1,
+	/// <summary>
+	/// Results of the queries are waited on before proceeding with the result copy
+	/// </summary>
 	/// <unmanaged>VK_QUERY_RESULT_WAIT_BIT</unmanaged>
 	Wait = 2,
+	/// <summary>
+	/// Besides the results of the query, the availability of the results is also written
+	/// </summary>
 	/// <unmanaged>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</unmanaged>
 	WithAvailability = 4,
+	/// <summary>
+	/// Copy the partial results of the query even if the final results are not available
+	/// </summary>
 	/// <unmanaged>VK_QUERY_RESULT_PARTIAL_BIT</unmanaged>
 	Partial = 8,
 	/// <unmanaged>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</unmanaged>
@@ -4200,10 +4620,19 @@ public enum VkQueryResultFlags
 public enum VkBufferCreateFlags
 {
 	None = 0,
+	/// <summary>
+	/// Buffer should support sparse backing
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_CREATE_SPARSE_BINDING_BIT</unmanaged>
 	SparseBinding = 1,
+	/// <summary>
+	/// Buffer should support sparse backing with partial residency
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</unmanaged>
 	SparseResidency = 2,
+	/// <summary>
+	/// Buffer should support constant data access to physical memory ranges mapped into multiple locations of sparse buffers
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_CREATE_SPARSE_ALIASED_BIT</unmanaged>
 	SparseAliased = 4,
 	/// <unmanaged>VK_BUFFER_CREATE_PROTECTED_BIT</unmanaged>
@@ -4222,22 +4651,49 @@ public enum VkBufferCreateFlags
 public enum VkBufferUsageFlags
 {
 	None = 0,
+	/// <summary>
+	/// Can be used as a source of transfer operations
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_TRANSFER_SRC_BIT</unmanaged>
 	TransferSrc = 1,
+	/// <summary>
+	/// Can be used as a destination of transfer operations
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_TRANSFER_DST_BIT</unmanaged>
 	TransferDst = 2,
+	/// <summary>
+	/// Can be used as TBO
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT</unmanaged>
 	UniformTexelBuffer = 4,
+	/// <summary>
+	/// Can be used as IBO
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT</unmanaged>
 	StorageTexelBuffer = 8,
+	/// <summary>
+	/// Can be used as UBO
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT</unmanaged>
 	UniformBuffer = 16,
+	/// <summary>
+	/// Can be used as SSBO
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</unmanaged>
 	StorageBuffer = 32,
+	/// <summary>
+	/// Can be used as source of fixed-function index fetch (index buffer)
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_INDEX_BUFFER_BIT</unmanaged>
 	IndexBuffer = 64,
+	/// <summary>
+	/// Can be used as source of fixed-function vertex fetch (VBO)
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_VERTEX_BUFFER_BIT</unmanaged>
 	VertexBuffer = 128,
+	/// <summary>
+	/// Can be the source of indirect parameters (e.g. indirect buffer, parameter buffer)
+	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</unmanaged>
 	IndirectBuffer = 256,
 	/// <unmanaged>VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT</unmanaged>
@@ -4306,6 +4762,9 @@ public enum VkPipelineCacheCreateFlags
 public enum VkColorComponentFlags
 {
 	None = 0,
+	/// <summary>
+	/// specifies that the R value is written to the color attachment for the appropriate sample. Otherwise, the value in memory is unmodified.
+	/// </summary>
 	/// <unmanaged>VK_COLOR_COMPONENT_R_BIT</unmanaged>
 	R = 1,
 	/// <unmanaged>VK_COLOR_COMPONENT_G_BIT</unmanaged>
@@ -4318,6 +4777,9 @@ public enum VkColorComponentFlags
 }
 
 [Flags]
+/// <summary>
+/// Note that the gap at bitpos 10 is unused, and can be reserved
+/// </summary>
 public enum VkPipelineCreateFlags
 {
 	None = 0,
@@ -4534,6 +4996,9 @@ public enum VkSamplerCreateFlags
 public enum VkDescriptorPoolCreateFlags
 {
 	None = 0,
+	/// <summary>
+	/// Descriptor sets may be freed individually
+	/// </summary>
 	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT</unmanaged>
 	FreeDescriptorSet = 1,
 	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT</unmanaged>
@@ -4570,6 +5035,9 @@ public enum VkDescriptorSetLayoutCreateFlags
 public enum VkAttachmentDescriptionFlags
 {
 	None = 0,
+	/// <summary>
+	/// The attachment may alias physical memory of another attachment in the same render pass
+	/// </summary>
 	/// <unmanaged>VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT</unmanaged>
 	MayAlias = 1,
 }
@@ -4578,6 +5046,9 @@ public enum VkAttachmentDescriptionFlags
 public enum VkDependencyFlags
 {
 	None = 0,
+	/// <summary>
+	/// Dependency is per pixel region 
+	/// </summary>
 	/// <unmanaged>VK_DEPENDENCY_BY_REGION_BIT</unmanaged>
 	ByRegion = 1,
 	/// <unmanaged>VK_DEPENDENCY_DEVICE_GROUP_BIT</unmanaged>
@@ -4642,8 +5113,14 @@ public enum VkSubpassDescriptionFlags
 public enum VkCommandPoolCreateFlags
 {
 	None = 0,
+	/// <summary>
+	/// Command buffers have a short lifetime
+	/// </summary>
 	/// <unmanaged>VK_COMMAND_POOL_CREATE_TRANSIENT_BIT</unmanaged>
 	Transient = 1,
+	/// <summary>
+	/// Command buffers may release their memory individually
+	/// </summary>
 	/// <unmanaged>VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT</unmanaged>
 	ResetCommandBuffer = 2,
 	/// <unmanaged>VK_COMMAND_POOL_CREATE_PROTECTED_BIT</unmanaged>
@@ -4654,6 +5131,9 @@ public enum VkCommandPoolCreateFlags
 public enum VkCommandPoolResetFlags
 {
 	None = 0,
+	/// <summary>
+	/// Release resources owned by the pool
+	/// </summary>
 	/// <unmanaged>VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT</unmanaged>
 	ReleaseResources = 1,
 }
@@ -4666,6 +5146,9 @@ public enum VkCommandBufferUsageFlags
 	OneTimeSubmit = 1,
 	/// <unmanaged>VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT</unmanaged>
 	RenderPassContinue = 2,
+	/// <summary>
+	/// Command buffer may be submitted/executed more than once simultaneously
+	/// </summary>
 	/// <unmanaged>VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT</unmanaged>
 	SimultaneousUse = 4,
 }
@@ -4674,6 +5157,9 @@ public enum VkCommandBufferUsageFlags
 public enum VkQueryControlFlags
 {
 	None = 0,
+	/// <summary>
+	/// Require precise results to be collected by the query
+	/// </summary>
 	/// <unmanaged>VK_QUERY_CONTROL_PRECISE_BIT</unmanaged>
 	Precise = 1,
 }
@@ -4682,6 +5168,9 @@ public enum VkQueryControlFlags
 public enum VkCommandBufferResetFlags
 {
 	None = 0,
+	/// <summary>
+	/// Release resources owned by the buffer
+	/// </summary>
 	/// <unmanaged>VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT</unmanaged>
 	ReleaseResources = 1,
 }
@@ -4690,10 +5179,19 @@ public enum VkCommandBufferResetFlags
 public enum VkStencilFaceFlags
 {
 	None = 0,
+	/// <summary>
+	/// Front face
+	/// </summary>
 	/// <unmanaged>VK_STENCIL_FACE_FRONT_BIT</unmanaged>
 	Front = 1,
+	/// <summary>
+	/// Back face
+	/// </summary>
 	/// <unmanaged>VK_STENCIL_FACE_BACK_BIT</unmanaged>
 	Back = 2,
+	/// <summary>
+	/// Front and back faces
+	/// </summary>
 	/// <unmanaged>VK_STENCIL_FACE_FRONT_AND_BACK</unmanaged>
 	FrontAndBack = 3,
 }
@@ -4726,12 +5224,24 @@ public enum VkSamplerYcbcrModelConversion
 {
 	/// <unmanaged>VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY</unmanaged>
 	RgbIdentity = 0,
+	/// <summary>
+	/// just range expansion
+	/// </summary>
 	/// <unmanaged>VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY</unmanaged>
 	YcbcrIdentity = 1,
+	/// <summary>
+	/// aka HD YUV
+	/// </summary>
 	/// <unmanaged>VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709</unmanaged>
 	Ycbcr709 = 2,
+	/// <summary>
+	/// aka SD YUV
+	/// </summary>
 	/// <unmanaged>VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601</unmanaged>
 	Ycbcr601 = 3,
+	/// <summary>
+	/// aka UHD YUV
+	/// </summary>
 	/// <unmanaged>VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020</unmanaged>
 	Ycbcr2020 = 4,
 	/// <unmanaged>VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY_KHR</unmanaged>
@@ -4748,8 +5258,14 @@ public enum VkSamplerYcbcrModelConversion
 
 public enum VkSamplerYcbcrRange
 {
+	/// <summary>
+	/// Luma 0..1 maps to 0..255, chroma -0.5..0.5 to 1..255 (clamped)
+	/// </summary>
 	/// <unmanaged>VK_SAMPLER_YCBCR_RANGE_ITU_FULL</unmanaged>
 	ItuFull = 0,
+	/// <summary>
+	/// Luma 0..1 maps to 16..235, chroma -0.5..0.5 to 16..240
+	/// </summary>
 	/// <unmanaged>VK_SAMPLER_YCBCR_RANGE_ITU_NARROW</unmanaged>
 	ItuNarrow = 1,
 	/// <unmanaged>VK_SAMPLER_YCBCR_RANGE_ITU_FULL_KHR</unmanaged>
@@ -4772,6 +5288,9 @@ public enum VkChromaLocation
 
 public enum VkDescriptorUpdateTemplateType
 {
+	/// <summary>
+	/// Create descriptor update template for descriptor set updates
+	/// </summary>
 	/// <unmanaged>VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET</unmanaged>
 	DescriptorSet = 0,
 	/// <unmanaged>VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR</unmanaged>
@@ -4784,20 +5303,44 @@ public enum VkDescriptorUpdateTemplateType
 public enum VkSubgroupFeatureFlags
 {
 	None = 0,
+	/// <summary>
+	/// Basic subgroup operations
+	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_BASIC_BIT</unmanaged>
 	Basic = 1,
+	/// <summary>
+	/// Vote subgroup operations
+	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_VOTE_BIT</unmanaged>
 	Vote = 2,
+	/// <summary>
+	/// Arithmetic subgroup operations
+	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_ARITHMETIC_BIT</unmanaged>
 	Arithmetic = 4,
+	/// <summary>
+	/// Ballot subgroup operations
+	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_BALLOT_BIT</unmanaged>
 	Ballot = 8,
+	/// <summary>
+	/// Shuffle subgroup operations
+	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_SHUFFLE_BIT</unmanaged>
 	Shuffle = 16,
+	/// <summary>
+	/// Shuffle relative subgroup operations
+	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT</unmanaged>
 	ShuffleRelative = 32,
+	/// <summary>
+	/// Clustered subgroup operations
+	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_CLUSTERED_BIT</unmanaged>
 	Clustered = 64,
+	/// <summary>
+	/// Quad subgroup operations
+	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_QUAD_BIT</unmanaged>
 	Quad = 128,
 	/// <unmanaged>VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV</unmanaged>
@@ -4808,12 +5351,24 @@ public enum VkSubgroupFeatureFlags
 public enum VkPeerMemoryFeatureFlags
 {
 	None = 0,
+	/// <summary>
+	/// Can read with vkCmdCopy commands
+	/// </summary>
 	/// <unmanaged>VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT</unmanaged>
 	CopySrc = 1,
+	/// <summary>
+	/// Can write with vkCmdCopy commands
+	/// </summary>
 	/// <unmanaged>VK_PEER_MEMORY_FEATURE_COPY_DST_BIT</unmanaged>
 	CopyDst = 2,
+	/// <summary>
+	/// Can read with any access type/command
+	/// </summary>
 	/// <unmanaged>VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT</unmanaged>
 	GenericSrc = 4,
+	/// <summary>
+	/// Can write with and access type/command
+	/// </summary>
 	/// <unmanaged>VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT</unmanaged>
 	GenericDst = 8,
 	/// <unmanaged>VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT_KHR</unmanaged>
@@ -4830,6 +5385,9 @@ public enum VkPeerMemoryFeatureFlags
 public enum VkMemoryAllocateFlags
 {
 	None = 0,
+	/// <summary>
+	/// Force allocation on specific devices
+	/// </summary>
 	/// <unmanaged>VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT</unmanaged>
 	DeviceMask = 1,
 	/// <unmanaged>VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT</unmanaged>
@@ -5012,54 +5570,129 @@ public enum VkExternalSemaphoreFeatureFlags
 
 public enum VkDriverId
 {
+	/// <summary>
+	/// Advanced Micro Devices, Inc.
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_AMD_PROPRIETARY</unmanaged>
 	AMDProprietary = 1,
+	/// <summary>
+	/// Advanced Micro Devices, Inc.
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_AMD_OPEN_SOURCE</unmanaged>
 	AMDOpenSource = 2,
+	/// <summary>
+	/// Mesa open source project
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_RADV</unmanaged>
 	MesaRadv = 3,
+	/// <summary>
+	/// NVIDIA Corporation
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_NVIDIA_PROPRIETARY</unmanaged>
 	NVIDIAProprietary = 4,
+	/// <summary>
+	/// Intel Corporation
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS</unmanaged>
 	INTELProprietaryWindows = 5,
+	/// <summary>
+	/// Intel Corporation
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA</unmanaged>
 	INTELOpenSourceMesa = 6,
+	/// <summary>
+	/// Imagination Technologies
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_IMAGINATION_PROPRIETARY</unmanaged>
 	ImaginationProprietary = 7,
+	/// <summary>
+	/// Qualcomm Technologies, Inc.
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_QUALCOMM_PROPRIETARY</unmanaged>
 	QualcommProprietary = 8,
+	/// <summary>
+	/// Arm Limited
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_ARM_PROPRIETARY</unmanaged>
 	ARMProprietary = 9,
+	/// <summary>
+	/// Google LLC
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_GOOGLE_SWIFTSHADER</unmanaged>
 	GoogleSwiftShader = 10,
+	/// <summary>
+	/// Google LLC
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_GGP_PROPRIETARY</unmanaged>
 	GgpProprietary = 11,
+	/// <summary>
+	/// Broadcom Inc.
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_BROADCOM_PROPRIETARY</unmanaged>
 	BroadcomProprietary = 12,
+	/// <summary>
+	/// Mesa
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_LLVMPIPE</unmanaged>
 	MesaLLVMPipe = 13,
+	/// <summary>
+	/// MoltenVK
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MOLTENVK</unmanaged>
 	Moltenvk = 14,
+	/// <summary>
+	/// Core Avionics & Industrial Inc.
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_COREAVI_PROPRIETARY</unmanaged>
 	CoreaviProprietary = 15,
+	/// <summary>
+	/// Juice Technologies, Inc.
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_JUICE_PROPRIETARY</unmanaged>
 	JuiceProprietary = 16,
+	/// <summary>
+	/// Verisilicon, Inc.
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_VERISILICON_PROPRIETARY</unmanaged>
 	VerisiliconProprietary = 17,
+	/// <summary>
+	/// Mesa open source project
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_TURNIP</unmanaged>
 	MesaTurnip = 18,
+	/// <summary>
+	/// Mesa open source project
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_V3DV</unmanaged>
 	MesaV3dv = 19,
+	/// <summary>
+	/// Mesa open source project
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_PANVK</unmanaged>
 	MesaPanvk = 20,
+	/// <summary>
+	/// Samsung Electronics Co., Ltd.
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_SAMSUNG_PROPRIETARY</unmanaged>
 	SamsungProprietary = 21,
+	/// <summary>
+	/// Mesa open source project
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_VENUS</unmanaged>
 	MesaVenus = 22,
+	/// <summary>
+	/// Mesa open source project
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_DOZEN</unmanaged>
 	MesaDozen = 23,
+	/// <summary>
+	/// Mesa open source project
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_NVK</unmanaged>
 	MesaNvk = 24,
+	/// <summary>
+	/// Imagination Technologies
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA</unmanaged>
 	ImaginationOpenSourceMesa = 25,
 	/// <unmanaged>VK_DRIVER_ID_AMD_PROPRIETARY_KHR</unmanaged>
@@ -5377,12 +6010,24 @@ public enum VkSwapchainCreateFlagsKHR
 public enum VkDeviceGroupPresentModeFlagsKHR
 {
 	None = 0,
+	/// <summary>
+	/// Present from local memory
+	/// </summary>
 	/// <unmanaged>VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR</unmanaged>
 	Local = 1,
+	/// <summary>
+	/// Present from remote memory
+	/// </summary>
 	/// <unmanaged>VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR</unmanaged>
 	Remote = 2,
+	/// <summary>
+	/// Present sum of local and/or remote memory
+	/// </summary>
 	/// <unmanaged>VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR</unmanaged>
 	Sum = 4,
+	/// <summary>
+	/// Each physical device presents from local memory
+	/// </summary>
 	/// <unmanaged>VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR</unmanaged>
 	LocalMultiDevice = 8,
 }
@@ -5426,6 +6071,9 @@ public enum VkVideoCodecOperationFlagsKHR
 }
 
 [Flags]
+/// <summary>
+/// Vulkan video chroma subsampling definitions
+/// </summary>
 public enum VkVideoChromaSubsamplingFlagsKHR
 {
 	None = 0,
@@ -5442,6 +6090,9 @@ public enum VkVideoChromaSubsamplingFlagsKHR
 }
 
 [Flags]
+/// <summary>
+/// Vulkan video component bit depth definitions
+/// </summary>
 public enum VkVideoComponentBitDepthFlagsKHR
 {
 	None = 0,
@@ -6961,6 +7612,9 @@ public enum VkImageCompressionFixedRateFlagsEXT
 
 public enum VkDeviceFaultAddressTypeEXT
 {
+	/// <summary>
+	/// Currently unused
+	/// </summary>
 	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT</unmanaged>
 	None = 0,
 	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT</unmanaged>

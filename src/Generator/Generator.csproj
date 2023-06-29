@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="CppAst" />
+    <PackageReference Include="CommunityToolkit.Diagnostics" />
   </ItemGroup>
 
 </Project>

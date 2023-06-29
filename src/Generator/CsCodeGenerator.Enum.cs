@@ -275,6 +275,20 @@ public static partial class CsCodeGenerator
             createdEnums.Add(csName, cppEnum.Name);
 
             bool noneAdded = false;
+
+            EnumDefinition? enumDefinition = default;
+            if (s_vulkanSpecification is not null)
+            {
+                enumDefinition = s_vulkanSpecification.GetEnumDefinition(cppEnum.Name);
+            }
+
+            if (enumDefinition != null && !string.IsNullOrEmpty(enumDefinition.Comment))
+            {
+                writer.WriteLine("/// <summary>");
+                writer.WriteLine($"/// {enumDefinition.Comment!}");
+                writer.WriteLine("/// </summary>");
+            }
+
             using (writer.PushBlock($"{visibility} enum {csName}"))
             {
                 if (isBitmask &&
@@ -326,7 +340,13 @@ public static partial class CsCodeGenerator
                     {
                         continue;
                     }
-                    
+
+                    EnumValue? enumItemValue = default;
+                    if (enumDefinition != null)
+                    {
+                        enumItemValue = enumDefinition.Values.FirstOrDefault(item => item.Name == enumItem.Name);
+                    }
+
                     if (enumItem.ValueExpression is CppRawExpression rawExpression)
                     {
                         string enumValueName = GetEnumItemName(cppEnum, rawExpression.Text, enumNamePrefix);
@@ -343,11 +363,25 @@ public static partial class CsCodeGenerator
                                 continue;
                         }
 
+                        if (enumItemValue != null && !string.IsNullOrEmpty(enumItemValue.Comment))
+                        {
+                            writer.WriteLine("/// <summary>");
+                            writer.WriteLine($"/// {enumItemValue.Comment!}");
+                            writer.WriteLine("/// </summary>");
+                        }
+
                         writer.WriteLine($"/// <unmanaged>{enumItem.Name}</unmanaged>");
                         writer.WriteLine($"{enumItemName} = {enumValueName},");
                     }
                     else
                     {
+                        if (enumItemValue != null && !string.IsNullOrEmpty(enumItemValue.Comment))
+                        {
+                            writer.WriteLine("/// <summary>");
+                            writer.WriteLine($"/// {enumItemValue.Comment!}");
+                            writer.WriteLine("/// </summary>");
+                        }
+
                         writer.WriteLine($"/// <unmanaged>{enumItem.Name}</unmanaged>");
                         writer.WriteLine($"{enumItemName} = {enumItem.Value},");
                     }

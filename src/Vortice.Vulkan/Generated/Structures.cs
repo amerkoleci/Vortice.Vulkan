@@ -177,6 +177,23 @@ public partial struct VkAllocationCallbacks
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct VkApplicationInfo
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public unsafe sbyte* pApplicationName;
+	public VkVersion applicationVersion;
+	public unsafe sbyte* pEngineName;
+	public VkVersion engineVersion;
+	public VkVersion apiVersion;
+
+	public VkApplicationInfo()
+	{
+		sType = VkStructureType.ApplicationInfo;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct VkFormatProperties
 {
 	public VkFormatFeatureFlags linearTilingFeatures;
@@ -192,6 +209,24 @@ public partial struct VkImageFormatProperties
 	public uint maxArrayLayers;
 	public VkSampleCountFlags sampleCounts;
 	public ulong maxResourceSize;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkInstanceCreateInfo
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkInstanceCreateFlags flags;
+	public unsafe VkApplicationInfo* pApplicationInfo;
+	public uint enabledLayerCount;
+	public unsafe sbyte** ppEnabledLayerNames;
+	public uint enabledExtensionCount;
+	public unsafe sbyte** ppEnabledExtensionNames;
+
+	public VkInstanceCreateInfo()
+	{
+		sType = VkStructureType.InstanceCreateInfo;
+	}
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -509,6 +544,42 @@ public partial struct VkQueueFamilyProperties
 	public uint queueCount;
 	public uint timestampValidBits;
 	public VkExtent3D minImageTransferGranularity;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDeviceQueueCreateInfo
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkDeviceQueueCreateFlags flags;
+	public uint queueFamilyIndex;
+	public uint queueCount;
+	public unsafe float* pQueuePriorities;
+
+	public VkDeviceQueueCreateInfo()
+	{
+		sType = VkStructureType.DeviceQueueCreateInfo;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDeviceCreateInfo
+{
+	public VkStructureType sType;
+	public unsafe void* pNext;
+	public VkDeviceCreateFlags flags;
+	public uint queueCreateInfoCount;
+	public unsafe VkDeviceQueueCreateInfo* pQueueCreateInfos;
+	public uint enabledLayerCount;
+	public unsafe sbyte** ppEnabledLayerNames;
+	public uint enabledExtensionCount;
+	public unsafe sbyte** ppEnabledExtensionNames;
+	public unsafe VkPhysicalDeviceFeatures* pEnabledFeatures;
+
+	public VkDeviceCreateInfo()
+	{
+		sType = VkStructureType.DeviceCreateInfo;
+	}
 }
 
 [StructLayout(LayoutKind.Sequential)]

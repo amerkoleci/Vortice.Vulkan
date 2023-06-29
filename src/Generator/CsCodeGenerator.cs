@@ -82,17 +82,16 @@ public static partial class CsCodeGenerator
         { "VkPipelineStageFlagBits2KHR", "VkPipelineStageFlags2KHR" },
         { "VkAccessFlagBits2KHR", "VkAccessFlags2KHR" },
         { "VkFormatFeatureFlagBits2KHR", "VkFormatFeatureFlags2KHR" },
-
-        { "VkInstanceCreateInfo", "VkInstanceCreateInfo.__Native" },
-        { "VkDeviceQueueCreateInfo", "VkDeviceQueueCreateInfo.__Native" },
-        { "VkDeviceCreateInfo", "VkDeviceCreateInfo.__Native" },
     };
 
     private static CsCodeGeneratorOptions _options = new();
+    private static VulkanSpecification? s_vulkanSpecification = default;
 
-    public static void Generate(CppCompilation compilation, CsCodeGeneratorOptions options)
+    public static void Generate(CppCompilation compilation, CsCodeGeneratorOptions options, VulkanSpecification? specification)
     {
         _options = options;
+        s_vulkanSpecification = specification;
+
         GenerateConstants(compilation);
         GenerateEnums(compilation);
         GenerateHandles(compilation);
@@ -148,7 +147,7 @@ public static partial class CsCodeGenerator
                 //string csName = GetPrettyEnumName(cppMacro.Name, "VK_");
 
                 string modifier = "const";
-                string csDataType = _options.ReadOnlySpanForStrings ? "ReadOnlySpan<byte>" : "string";
+                string csDataType = _options.ReadOnlySpanForStrings ? "ReadOnlySpan<byte>" : "VkString";
                 string macroValue = NormalizeEnumValue(cppMacro.Value);
                 if (macroValue.EndsWith("F", StringComparison.OrdinalIgnoreCase))
                 {
@@ -255,6 +254,11 @@ public static partial class CsCodeGenerator
                     {
                         modifier = "static";
                         macroValue += "u8";
+                        assignValue = "=>";
+                    }
+                    else if (csDataType == "VkString")
+                    {
+                        modifier = "static";
                         assignValue = "=>";
                     }
 

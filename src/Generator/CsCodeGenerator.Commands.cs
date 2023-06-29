@@ -92,9 +92,9 @@ public static partial class CsCodeGenerator
 
     private static readonly HashSet<string> s_ignoreFunctions = new()
     {
-        "vkCreateInstance",
-        "vkCreateDevice",
-    };
+        //"vkCreateInstance",
+        //"vkCreateDevice",
+    };  
 
     private static string GetFunctionPointerSignature(CppFunction function, bool canUseOut, bool allowNonBlittable = true)
     {

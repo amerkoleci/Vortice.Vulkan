@@ -13,8 +13,18 @@ namespace Vortice.Vulkan;
 
 unsafe partial class Vulkan
 {
-	private static delegate* unmanaged<VkInstanceCreateInfo.__Native*, VkAllocationCallbacks*, VkInstance*, VkResult> vkCreateInstance_ptr;
-	private static delegate* unmanaged<VkInstanceCreateInfo.__Native*, VkAllocationCallbacks*, out VkInstance, VkResult> vkCreateInstance_out_ptr;
+	private static delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult> vkCreateInstance_ptr;
+	public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkInstance* instance)
+	{
+		return vkCreateInstance_ptr(createInfo, allocator, instance);
+	}
+
+	private static delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult> vkCreateInstance_out_ptr;
+	public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance)
+	{
+		return vkCreateInstance_out_ptr(createInfo, allocator, out instance);
+	}
+
 	private static delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void> vkDestroyInstance_ptr;
 	public static void vkDestroyInstance(VkInstance instance, VkAllocationCallbacks* allocator = default)
 	{
@@ -93,8 +103,18 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceMemoryProperties_out_ptr(physicalDevice, out memoryProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo.__Native*, VkAllocationCallbacks*, VkDevice*, VkResult> vkCreateDevice_ptr;
-	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo.__Native*, VkAllocationCallbacks*, out VkDevice, VkResult> vkCreateDevice_out_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, VkDevice*, VkResult> vkCreateDevice_ptr;
+	public static VkResult vkCreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDevice* device)
+	{
+		return vkCreateDevice_ptr(physicalDevice, createInfo, allocator, device);
+	}
+
+	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult> vkCreateDevice_out_ptr;
+	public static VkResult vkCreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDevice device)
+	{
+		return vkCreateDevice_out_ptr(physicalDevice, createInfo, allocator, out device);
+	}
+
 	private static delegate* unmanaged<VkDevice, VkAllocationCallbacks*, void> vkDestroyDevice_ptr;
 	public static void vkDestroyDevice(VkDevice device, VkAllocationCallbacks* allocator = default)
 	{
@@ -3908,8 +3928,8 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceQueueFamilyProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, int*, VkQueueFamilyProperties*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyProperties));
 		vkGetPhysicalDeviceMemoryProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties*, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties));
 		vkGetPhysicalDeviceMemoryProperties_out_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties));
-		vkCreateDevice_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo.__Native*, VkAllocationCallbacks*, VkDevice*, VkResult>) load(context, nameof(vkCreateDevice));
-		vkCreateDevice_out_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo.__Native*, VkAllocationCallbacks*, out VkDevice, VkResult>) load(context, nameof(vkCreateDevice));
+		vkCreateDevice_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, VkDevice*, VkResult>) load(context, nameof(vkCreateDevice));
+		vkCreateDevice_out_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult>) load(context, nameof(vkCreateDevice));
 		vkEnumerateDeviceExtensionProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, sbyte*, int*, VkExtensionProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceExtensionProperties));
 		vkEnumerateDeviceLayerProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, int*, VkLayerProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceLayerProperties));
 		vkGetPhysicalDeviceSparseImageFormatProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkSampleCountFlags, VkImageUsageFlags, VkImageTiling, int*, VkSparseImageFormatProperties*, void>) load(context, nameof(vkGetPhysicalDeviceSparseImageFormatProperties));

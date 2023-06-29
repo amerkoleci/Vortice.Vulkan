@@ -46,13 +46,13 @@ public static partial class CsCodeGenerator
             }
 
             // Handled manually with custom marshal logic.
-            if (cppClass.Name == "VkApplicationInfo" ||
-                cppClass.Name == "VkInstanceCreateInfo" ||
-                cppClass.Name == "VkDeviceQueueCreateInfo" ||
-                cppClass.Name == "VkDeviceCreateInfo")
-            {
-                continue;
-            }
+            //if (cppClass.Name == "VkApplicationInfo" ||
+            //    cppClass.Name == "VkInstanceCreateInfo" ||
+            //    cppClass.Name == "VkDeviceQueueCreateInfo" ||
+            //    cppClass.Name == "VkDeviceCreateInfo")
+            //{
+            //    continue;
+            //}
 
             bool isUnion = cppClass.ClassKind == CppClassKind.Union;
             bool hasSType = false;
