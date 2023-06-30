@@ -7,10 +7,10 @@ public readonly struct VkVersion : IComparable, IComparable<VkVersion>, IEquatab
 {
     public readonly uint Value;
 
-    public static readonly VkVersion Version_1_0 = new(0, 1, 0, 0);
-    public static readonly VkVersion Version_1_1 = new(0, 1, 1, 0);
-    public static readonly VkVersion Version_1_2 = new(0, 1, 2, 0);
-    public static readonly VkVersion Version_1_3 = new(0, 1, 3, 0);
+    public static VkVersion Version_1_0 => new(0, 1, 0, 0);
+    public static VkVersion Version_1_1 => new(0, 1, 1, 0);
+    public static VkVersion Version_1_2 => new(0, 1, 2, 0);
+    public static VkVersion Version_1_3 => new(0, 1, 3, 0);
 
     public VkVersion(uint value)
     {

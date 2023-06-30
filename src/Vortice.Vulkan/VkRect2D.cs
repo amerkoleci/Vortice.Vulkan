@@ -13,7 +13,7 @@ public unsafe partial struct VkRect2D : IEquatable<VkRect2D>
     /// <summary>
     /// An <see cref="VkRect2D"/> with all of its components set to zero.
     /// </summary>
-    public static readonly VkRect2D Zero = new(VkOffset2D.Zero, VkExtent2D.Zero);
+    public static VkRect2D Zero => new(VkOffset2D.Zero, VkExtent2D.Zero);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="VkRect2D"/> structure.

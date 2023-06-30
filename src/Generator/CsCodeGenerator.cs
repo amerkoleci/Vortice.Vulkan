@@ -152,7 +152,7 @@ public static partial class CsCodeGenerator
                 //string csName = GetPrettyEnumName(cppMacro.Name, "VK_");
 
                 string modifier = "const";
-                string csDataType = _options.ReadOnlySpanForStrings ? "ReadOnlySpan<byte>" : "VkString";
+                string csDataType = _options.ReadOnlySpanForStrings ? "ReadOnlySpan<byte>" : "string";
                 string macroValue = NormalizeEnumValue(cppMacro.Value);
                 if (macroValue.EndsWith("F", StringComparison.OrdinalIgnoreCase))
                 {

@@ -13,7 +13,7 @@ public partial struct VkOffset2D : IEquatable<VkOffset2D>
     /// <summary>
     /// An <see cref="VkOffset2D"/> with all of its components set to zero.
     /// </summary>
-    public static readonly VkOffset2D Zero = default;
+    public static VkOffset2D Zero => default;
 
     public VkOffset2D(int x, int y)
     {

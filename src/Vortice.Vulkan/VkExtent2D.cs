@@ -13,7 +13,7 @@ public partial struct VkExtent2D : IEquatable<VkExtent2D>
     /// <summary>
     /// An <see cref="VkExtent2D"/> with all of its components set to zero.
     /// </summary>
-    public static readonly VkExtent2D Zero = default;
+    public static VkExtent2D Zero => default;
 
     /// <summary>
     /// Initializes a new instance of <see cref="VkExtent2D"/> structure.

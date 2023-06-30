@@ -11,7 +11,7 @@ public partial struct VkOffset3D : IEquatable<VkOffset3D>
     /// <summary>
     /// An <see cref="VkOffset3D"/> with all of its components set to zero.
     /// </summary>
-    public static readonly VkOffset3D Zero = default;
+    public static VkOffset3D Zero => default;
 
     public VkOffset3D(int x, int y, int z)
     {
