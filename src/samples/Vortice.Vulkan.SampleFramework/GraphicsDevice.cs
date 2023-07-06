@@ -120,7 +120,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         window.CreateSurface(VkInstance, &surface).CheckResult();
 
         // Find physical device, setup queue's and create device.
-        int physicalDevicesCount = 0;
+        uint physicalDevicesCount = 0;
         vkEnumeratePhysicalDevices(VkInstance, &physicalDevicesCount, null).CheckResult();
 
         if (physicalDevicesCount == 0)
@@ -128,7 +128,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             throw new Exception("Vulkan: Failed to find GPUs with Vulkan support");
         }
 
-        VkPhysicalDevice* physicalDevices = stackalloc VkPhysicalDevice[physicalDevicesCount];
+        VkPhysicalDevice* physicalDevices = stackalloc VkPhysicalDevice[(int)physicalDevicesCount];
         vkEnumeratePhysicalDevices(VkInstance, &physicalDevicesCount, physicalDevices).CheckResult();
 
         for (int i = 0; i < physicalDevicesCount; i++)
@@ -738,7 +738,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             return Array.Empty<string>();
         }
 
-        int count = 0;
+        uint count = 0;
         VkResult result = vkEnumerateInstanceLayerProperties(&count, null);
         if (result != VkResult.Success)
         {
@@ -750,7 +750,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             return Array.Empty<string>();
         }
 
-        VkLayerProperties* properties = stackalloc VkLayerProperties[count];
+        VkLayerProperties* properties = stackalloc VkLayerProperties[(int)count];
         vkEnumerateInstanceLayerProperties(&count, properties).CheckResult();
 
         string[] resultExt = new string[count];
@@ -764,7 +764,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
     private static string[] GetInstanceExtensions()
     {
-        int count = 0;
+        uint count = 0;
         VkResult result = vkEnumerateInstanceExtensionProperties(&count, null);
         if (result != VkResult.Success)
         {
@@ -776,7 +776,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             return Array.Empty<string>();
         }
 
-        VkExtensionProperties* props = stackalloc VkExtensionProperties[count];
+        VkExtensionProperties* props = stackalloc VkExtensionProperties[(int)count];
         vkEnumerateInstanceExtensionProperties(&count, props);
 
         string[] extensions = new string[count];

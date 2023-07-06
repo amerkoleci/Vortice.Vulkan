@@ -229,11 +229,6 @@ public static partial class CsCodeGenerator
                 cppEnum.Name.EndsWith("FlagBitsMVK") ||
                 cppEnum.Name.EndsWith("FlagBitsNN");
 
-            if (isBitmask)
-            {
-                writer.WriteLine("[Flags]");
-            }
-
             string csName = GetCsCleanName(cppEnum.Name);
             string enumNamePrefix = GetEnumNamePrefix(cppEnum.Name);
 
@@ -288,6 +283,9 @@ public static partial class CsCodeGenerator
                 writer.WriteLine($"/// {enumDefinition.Comment!}");
                 writer.WriteLine("/// </summary>");
             }
+
+            if (isBitmask)
+                writer.WriteLine("[Flags]");
 
             using (writer.PushBlock($"{visibility} enum {csName}"))
             {

@@ -2,6 +2,7 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Diagnostics;
+using System.Web;
 using System.Xml.Linq;
 using CommunityToolkit.Diagnostics;
 
@@ -45,13 +46,20 @@ public class VulkanSpecification
         }
     }
 
-
     public EnumDefinition? GetEnumDefinition(string name)
     {
         return Enums.FirstOrDefault(ed => ed.Name == name);
     }
-}
 
+    internal static string? EscapeComment(string? comment)
+    {
+        if (string.IsNullOrEmpty(comment))
+            return comment;
+
+        comment = HttpUtility.HtmlEncode(comment);
+        return comment;
+    }
+}
 
 public class EnumDefinition
 {
@@ -67,7 +75,7 @@ public class EnumDefinition
 
         Name = name;
         Type = type;
-        Comment = comment;
+        Comment = VulkanSpecification.EscapeComment(comment);
         Values = values;
     }
 
@@ -114,9 +122,9 @@ public class EnumValue
 {
     public string Name { get; }
     public int ValueOrBitPosition { get; }
-    public string Comment { get; }
+    public string? Comment { get; }
 
-    public EnumValue(string name, int value, string comment)
+    public EnumValue(string name, int value, string? comment)
     {
         Name = name;
         ValueOrBitPosition = value;
@@ -132,6 +140,8 @@ public class EnumValue
         {
             Comment = Comment.Replace("See <<devsandqueues-lost-device>>", string.Empty);
         }
+
+        Comment = VulkanSpecification.EscapeComment(comment);
     }
 
     public static EnumValue? CreateFromXml(XElement xe)

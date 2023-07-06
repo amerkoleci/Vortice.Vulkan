@@ -110,19 +110,6 @@ public static partial class CsCodeGenerator
                 paramCsType = GetCsTypeName(cppTypeDeclaration, false);
             }
 
-            if (parameter.Name.EndsWith("Count"))
-            {
-                if (function.Name.StartsWith("vkEnumerate") ||
-                    function.Name.StartsWith("vkGet"))
-                {
-                    paramCsType = "int*";
-                }
-                else
-                {
-                    paramCsType = "int";
-                }
-            }
-
             builder.Append(paramCsType).Append(", ");
         }
 
@@ -348,10 +335,10 @@ public static partial class CsCodeGenerator
 
     public static string GetParameterSignature(CppFunction cppFunction, bool canUseOut)
     {
-        return GetParameterSignature(cppFunction.Parameters, canUseOut, cppFunction.Name);
+        return GetParameterSignature(cppFunction.Parameters, canUseOut);
     }
 
-    private static string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, string functionName)
+    private static string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut)
     {
         var argumentBuilder = new StringBuilder();
         int index = 0;
@@ -361,19 +348,6 @@ public static partial class CsCodeGenerator
             string direction = string.Empty;
             string paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
             string paramCsName = GetParameterName(cppParameter.Name);
-
-            if (cppParameter.Name.EndsWith("Count"))
-            {
-                if (functionName.StartsWith("vkEnumerate") ||
-                    functionName.StartsWith("vkGet"))
-                {
-                    paramCsTypeName = "int*";
-                }
-                else
-                {
-                    paramCsTypeName = "int";
-                }
-            }
 
             if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
             {

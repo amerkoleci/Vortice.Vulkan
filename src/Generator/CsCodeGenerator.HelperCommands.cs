@@ -59,7 +59,7 @@ public static partial class CsCodeGenerator
     private static void GenerateHelperCommands(CppCompilation compilation)
     {
         // Generate Functions
-        using CodeWriter writer = new (Path.Combine(_options.OutputPath, "VkHelpers.cs"),
+        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "VkHelpers.cs"),
             false,
             _options.Namespace,
             new[] { "System.Diagnostics", "System.Runtime.InteropServices" }
@@ -76,12 +76,12 @@ public static partial class CsCodeGenerator
                 }
 
                 // Find count and array return type.
-                var countParameterName = string.Empty;
-                var returnArrayTypeName = string.Empty;
-                var returnVariableName = string.Empty;
-                var newParameters = new List<CppParameter>();
-                var hasArrayReturn = false;
-                var countArgumentArrayIndex = 0;
+                string countParameterName = string.Empty;
+                string returnArrayTypeName = string.Empty;
+                string returnVariableName = string.Empty;
+                List<CppParameter> newParameters = new();
+                bool hasArrayReturn = false;
+                int countArgumentArrayIndex = 0;
 
                 foreach (CppParameter parameter in function.Parameters)
                 {
@@ -114,7 +114,7 @@ public static partial class CsCodeGenerator
                     newParameters.Add(parameter);
                 }
 
-                var csCountParameterType = "int";
+                string csCountParameterType = "uint";
                 if (!hasArrayReturn)
                 {
                     // Calls without return array.
@@ -196,7 +196,7 @@ public static partial class CsCodeGenerator
                 }
                 else
                 {
-                    string argumentsString = GetParameterSignature(newParameters, false, function.Name);
+                    string argumentsString = GetParameterSignature(newParameters, false);
                     string returnType = $"ReadOnlySpan<{returnArrayTypeName}>";
 
                     using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsString})"))

@@ -62,7 +62,7 @@ public enum VkResult
 	/// <unmanaged>VK_ERROR_INITIALIZATION_FAILED</unmanaged>
 	ErrorInitializationFailed = -3,
 	/// <summary>
-	/// The logical device has been lost. 
+	/// The logical device has been lost. See &lt;&lt;devsandqueues-lost-device&gt;&gt;
 	/// </summary>
 	/// <unmanaged>VK_ERROR_DEVICE_LOST</unmanaged>
 	ErrorDeviceLost = -4,
@@ -102,7 +102,7 @@ public enum VkResult
 	/// <unmanaged>VK_ERROR_FORMAT_NOT_SUPPORTED</unmanaged>
 	ErrorFormatNotSupported = -11,
 	/// <summary>
-	/// A requested pool allocation has failed due to fragmentation of the pool's memory
+	/// A requested pool allocation has failed due to fragmentation of the pool&#39;s memory
 	/// </summary>
 	/// <unmanaged>VK_ERROR_FRAGMENTED_POOL</unmanaged>
 	ErrorFragmentedPool = -12,
@@ -4773,10 +4773,10 @@ public enum VkColorComponentFlags
 	All = R | G | B | A
 }
 
-[Flags]
 /// <summary>
 /// Note that the gap at bitpos 10 is unused, and can be reserved
 /// </summary>
+[Flags]
 public enum VkPipelineCreateFlags
 {
 	None = 0,
@@ -5638,7 +5638,7 @@ public enum VkDriverId
 	/// <unmanaged>VK_DRIVER_ID_MOLTENVK</unmanaged>
 	Moltenvk = 14,
 	/// <summary>
-	/// Core Avionics & Industrial Inc.
+	/// Core Avionics &amp; Industrial Inc.
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_COREAVI_PROPRIETARY</unmanaged>
 	CoreaviProprietary = 15,
@@ -6067,10 +6067,10 @@ public enum VkVideoCodecOperationFlagsKHR
 	DecodeH265 = 2,
 }
 
-[Flags]
 /// <summary>
 /// Vulkan video chroma subsampling definitions
 /// </summary>
+[Flags]
 public enum VkVideoChromaSubsamplingFlagsKHR
 {
 	None = 0,
@@ -6086,10 +6086,10 @@ public enum VkVideoChromaSubsamplingFlagsKHR
 	Subsampling444 = 8,
 }
 
-[Flags]
 /// <summary>
 /// Vulkan video component bit depth definitions
 /// </summary>
+[Flags]
 public enum VkVideoComponentBitDepthFlagsKHR
 {
 	None = 0,
