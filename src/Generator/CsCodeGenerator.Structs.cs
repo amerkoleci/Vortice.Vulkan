@@ -275,7 +275,8 @@ public static partial class CsCodeGenerator
             if (csFieldName.Equals("specVersion", StringComparison.OrdinalIgnoreCase) ||
                 csFieldName.Equals("applicationVersion", StringComparison.OrdinalIgnoreCase) ||
                 csFieldName.Equals("engineVersion", StringComparison.OrdinalIgnoreCase) ||
-                csFieldName.Equals("apiVersion", StringComparison.OrdinalIgnoreCase))
+                csFieldName.Equals("apiVersion", StringComparison.OrdinalIgnoreCase) ||
+                csFieldName.Equals("vulkanApiVersion", StringComparison.OrdinalIgnoreCase))
             {
                 csFieldType = "VkVersion";
             }
@@ -302,6 +303,10 @@ public static partial class CsCodeGenerator
 
             string modifier = "public";
             if (handleSType && csFieldName == "sType")
+            {
+                modifier = "internal";
+            }
+            if (csFieldType == "VmaVulkanFunctions*" && csFieldName == "pVulkanFunctions")
             {
                 modifier = "internal";
             }

@@ -90,12 +90,6 @@ public static partial class CsCodeGenerator
         "vkCreateDebugUtilsMessengerEXT"
     };
 
-    private static readonly HashSet<string> s_ignoreFunctions = new()
-    {
-        //"vkCreateInstance",
-        //"vkCreateDevice",
-    };  
-
     private static string GetFunctionPointerSignature(CppFunction function, bool canUseOut, bool allowNonBlittable = true)
     {
         StringBuilder builder = new();
@@ -167,7 +161,7 @@ public static partial class CsCodeGenerator
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Commands.cs"),
             false,
             _options.Namespace,
-            new[] { "System" }
+            new[] { "System", "System.Runtime.InteropServices" }
             );
 
         using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))
@@ -202,21 +196,23 @@ public static partial class CsCodeGenerator
                 {
                     modifier = "internal";
                 }
-                writer.WriteLine($"{modifier} static {functionPointerSignature} {command.Key}_ptr;");
 
-                if (!s_ignoreFunctions.Contains(command.Key))
+                if (_options.GenerateFunctionPointers)
                 {
-                    WriteFunctionInvocation(writer, cppFunction, false);
+                    writer.WriteLine($"{modifier} static {functionPointerSignature} {command.Key}_ptr;");
                 }
+
+                WriteFunctionInvocation(writer, cppFunction, false);
 
                 if (canUseOut)
                 {
-                    functionPointerSignature = GetFunctionPointerSignature(cppFunction, true);
-                    writer.WriteLine($"private static {functionPointerSignature} {command.Key}_out_ptr;");
-                    if (!s_ignoreFunctions.Contains(command.Key))
+                    if (_options.GenerateFunctionPointers)
                     {
-                        WriteFunctionInvocation(writer, cppFunction, true);
+                        functionPointerSignature = GetFunctionPointerSignature(cppFunction, true);
+                        writer.WriteLine($"private static {functionPointerSignature} {command.Key}_out_ptr;");
                     }
+
+                    WriteFunctionInvocation(writer, cppFunction, true);
                 }
             }
 
@@ -258,44 +254,63 @@ public static partial class CsCodeGenerator
     {
         string returnCsName = GetCsTypeName(cppFunction.ReturnType, false);
         string argumentsString = GetParameterSignature(cppFunction, canUseOut);
+        string modifier = "public static";
+        string functionName = cppFunction.Name;
 
-        using (writer.PushBlock($"public static {returnCsName} {cppFunction.Name}({argumentsString})"))
+        if (cppFunction.Name == "vmaCreateAllocator")
         {
-            if (returnCsName != "void")
-            {
-                writer.Write("return ");
-            }
+            modifier = "private static";
+            functionName += "Private";
+        }
 
-            if (canUseOut)
-            {
-                writer.Write($"{cppFunction.Name}_out_ptr(");
-            }
-            else
-            {
-                writer.Write($"{cppFunction.Name}_ptr(");
-            }
+        if (!_options.GenerateFunctionPointers)
+        {
+            modifier += " extern";
+            writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = \"{cppFunction.Name}\")]");
 
-            int index = 0;
-            foreach (CppParameter cppParameter in cppFunction.Parameters)
-            {
-                string paramCsName = GetParameterName(cppParameter.Name);
 
-                if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
+            writer.WriteLine($"{modifier} {returnCsName} {functionName}({argumentsString});");
+        }
+        else
+        {
+            using (writer.PushBlock($"{modifier} {returnCsName} {functionName}({argumentsString})"))
+            {
+                if (returnCsName != "void")
                 {
-                    writer.Write("out ");
+                    writer.Write("return ");
                 }
 
-                writer.Write($"{paramCsName}");
-
-                if (index < cppFunction.Parameters.Count - 1)
+                if (canUseOut)
                 {
-                    writer.Write(", ");
+                    writer.Write($"{cppFunction.Name}_out_ptr(");
+                }
+                else
+                {
+                    writer.Write($"{cppFunction.Name}_ptr(");
                 }
 
-                index++;
-            }
+                int index = 0;
+                foreach (CppParameter cppParameter in cppFunction.Parameters)
+                {
+                    string paramCsName = GetParameterName(cppParameter.Name);
 
-            writer.WriteLine(");");
+                    if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
+                    {
+                        writer.Write("out ");
+                    }
+
+                    writer.Write($"{paramCsName}");
+
+                    if (index < cppFunction.Parameters.Count - 1)
+                    {
+                        writer.Write(", ");
+                    }
+
+                    index++;
+                }
+
+                writer.WriteLine(");");
+            }
         }
 
         writer.WriteLine();

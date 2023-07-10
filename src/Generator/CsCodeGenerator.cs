@@ -147,6 +147,7 @@ public static partial class CsCodeGenerator
                     || cppMacro.Name.StartsWith("VK_NV_VIEWPORT_ARRAY2_", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.StartsWith("VK_GOOGLE_HLSL_FUNCTIONALITY1_", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.StartsWith("VK_USE_64_BIT_PTR_DEFINES", StringComparison.OrdinalIgnoreCase)
+                    || cppMacro.Name.StartsWith("VMA_", StringComparison.OrdinalIgnoreCase)
                     )
                 {
                     continue;

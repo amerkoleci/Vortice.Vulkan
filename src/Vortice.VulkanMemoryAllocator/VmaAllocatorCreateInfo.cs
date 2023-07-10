@@ -3,6 +3,7 @@
 
 namespace Vortice.Vulkan;
 
+#if TODO
 public unsafe struct VmaAllocatorCreateInfo
 {
     /// <summary>
@@ -92,3 +93,5 @@ public unsafe struct VmaAllocatorCreateInfo
     /// </summary>
     public VkExternalMemoryHandleTypeFlagsKHR* pTypeExternalMemoryHandleTypes;
 }
+
+#endif

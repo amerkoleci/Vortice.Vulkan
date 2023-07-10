@@ -55,7 +55,12 @@ public static partial class CsCodeGenerator
                 typedef.Name == "VkPhysicalDevice" ||
                 typedef.Name == "VkDevice" ||
                 typedef.Name == "VkQueue" ||
-                typedef.Name == "VkCommandBuffer";
+                typedef.Name == "VkCommandBuffer" ||
+                typedef.Name == "VmaAllocator" ||
+                typedef.Name == "VmaPool" ||
+                typedef.Name == "VmaAllocation" ||
+                typedef.Name == "VmaDefragmentationContext" ||
+                typedef.Name == "VmaVirtualBlock";
 
             string csName = typedef.Name;
 

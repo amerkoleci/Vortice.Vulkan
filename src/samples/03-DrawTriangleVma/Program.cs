@@ -38,11 +38,13 @@ public static unsafe class Program
 
 
             VmaAllocatorCreateInfo allocatorCreateInfo;
-            allocatorCreateInfo.VulkanApiVersion = VkVersion.Version_1_2;
-            allocatorCreateInfo.PhysicalDevice = _graphicsDevice.PhysicalDevice;
-            allocatorCreateInfo.Device = _graphicsDevice.VkDevice;
-            allocatorCreateInfo.Instance = _graphicsDevice.VkInstance;
-            vmaCreateAllocator(&allocatorCreateInfo, out _allocator);
+            allocatorCreateInfo.vulkanApiVersion = VkVersion.Version_1_2;
+            allocatorCreateInfo.physicalDevice = _graphicsDevice.PhysicalDevice;
+            allocatorCreateInfo.device = _graphicsDevice.VkDevice;
+            allocatorCreateInfo.instance = _graphicsDevice.VkInstance;
+            VmaAllocator allocator;
+            vmaCreateAllocator(&allocatorCreateInfo, &allocator).CheckResult();
+            _allocator = allocator;
 
             VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new();
             vkCreatePipelineLayout(_graphicsDevice, &pipelineLayoutCreateInfo, null, out _pipelineLayout).CheckResult();

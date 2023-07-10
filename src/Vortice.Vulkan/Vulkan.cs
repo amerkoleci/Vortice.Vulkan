@@ -70,7 +70,7 @@ public static unsafe partial class Vulkan
                 return VkResult.ErrorInitializationFailed;
         }
 
-        vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, sbyte*, delegate* unmanaged<void>>)_loader.LoadFunctionPointer(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+        vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, sbyte*, IntPtr>)_loader.LoadFunctionPointer(s_vulkanModule, nameof(vkGetInstanceProcAddr));
         GenLoadLoader(0, vkGetInstanceProcAddr);
 
         return VkResult.Success;
@@ -87,7 +87,7 @@ public static unsafe partial class Vulkan
         s_loadedInstance = instance;
         GenLoadInstance(instance.Handle, vkGetInstanceProcAddr);
 
-        vkGetDeviceProcAddr_ptr = (delegate* unmanaged<VkDevice, sbyte*, delegate* unmanaged<void>>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetDeviceProcAddr));
+        vkGetDeviceProcAddr_ptr = (delegate* unmanaged<VkDevice, sbyte*, IntPtr>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetDeviceProcAddr));
 
         // Manually loaded entries.
         LoadWin32(instance);
@@ -126,14 +126,14 @@ public static unsafe partial class Vulkan
         return functionPtr;
     }
 
-    internal static delegate* unmanaged<VkInstance, sbyte*, delegate* unmanaged<void>> vkGetInstanceProcAddr_ptr;
-    internal static delegate* unmanaged<VkDevice, sbyte*, delegate* unmanaged<void>> vkGetDeviceProcAddr_ptr;
+    internal static delegate* unmanaged<VkInstance, sbyte*, IntPtr> vkGetInstanceProcAddr_ptr;
+    internal static delegate* unmanaged<VkDevice, sbyte*, IntPtr> vkGetDeviceProcAddr_ptr;
 
     public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, ReadOnlySpan<sbyte> name)
     {
         fixed (sbyte* pName = name)
         {
-            return vkGetInstanceProcAddr_ptr(instance, pName);
+            return (delegate* unmanaged<void>)vkGetInstanceProcAddr_ptr(instance, pName);
         }
     }
 
@@ -144,14 +144,14 @@ public static unsafe partial class Vulkan
 
     public static delegate* unmanaged<void> vkGetDeviceProcAddr(VkDevice device, sbyte* name)
     {
-        return vkGetDeviceProcAddr_ptr(device, name);
+        return (delegate* unmanaged<void>)vkGetDeviceProcAddr_ptr(device, name);
     }
 
     public static delegate* unmanaged<void> vkGetDeviceProcAddr(VkDevice device, ReadOnlySpan<sbyte> name)
     {
         fixed (sbyte* pName = name)
         {
-            return vkGetDeviceProcAddr_ptr(device, pName);
+            return (delegate* unmanaged<void>)vkGetDeviceProcAddr_ptr(device, pName);
         }
     }
 

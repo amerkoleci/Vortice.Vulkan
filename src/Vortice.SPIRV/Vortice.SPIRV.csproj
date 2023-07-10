@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0</TargetFrameworks>
+    <Description>Cross platform .NET bindings for SPIRV language</Description>
+    <PackageTags>3D graphics spirv standard game gamedev</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <!-- Verion -->
+  <PropertyGroup>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(RepoRootPath)README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+</Project>

@@ -10,17 +10,21 @@
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>1.3.1</VersionPrefix>
+    <VersionPrefix>1.4.0</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="$(RepoRootPath)README.md" Pack="true" PackagePath="\"/>
+    <None Include="$(RepoRootPath)README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
   
   <ItemGroup>
     <Content Include="build\**" PackagePath="build" Pack="true" />
     <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Vortice.SPIRV\Vortice.SPIRV.csproj" />
   </ItemGroup>
 
 </Project>

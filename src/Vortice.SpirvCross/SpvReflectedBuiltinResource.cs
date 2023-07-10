@@ -1,6 +1,9 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+#pragma warning disable CS0649
+using Vortice.SPIRV;
+
 namespace Vortice.SpirvCross;
 
 public struct SpvReflectedBuiltinResource

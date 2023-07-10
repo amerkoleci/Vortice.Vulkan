@@ -57,7 +57,7 @@ public unsafe struct Buffer
         if (ByteSize == 0)
             return;
 
-        vmaUnmapMemory(allocator, _allocation).CheckResult();
+        vmaUnmapMemory(allocator, _allocation);
     }
 
     public void Destroy(VmaAllocator allocator)

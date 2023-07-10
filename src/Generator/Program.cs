@@ -31,13 +31,18 @@ public static class Program
         }
 
         string? headerFile;
-        List<string> defines = new();
+        CppParserOptions parserOptions;
         CsCodeGeneratorOptions generateOptions;
         bool isVulkan = false;
 
         if (outputPath.Contains("Vortice.SPIRV"))
         {
             headerFile = Path.Combine(AppContext.BaseDirectory, "headers", "spirv.h");
+
+            parserOptions = new()
+            {
+                ParseMacros = true
+            };
 
             generateOptions = new()
             {
@@ -48,21 +53,47 @@ public static class Program
                 GenerateFunctionPointers = true
             };
         }
+        else if (outputPath.Contains("Vortice.VulkanMemoryAllocator"))
+        {
+            headerFile = Path.Combine(AppContext.BaseDirectory, "headers", "vk_mem_alloc.h");
+
+            parserOptions = new()
+            {
+                ParseMacros = true,
+                SystemIncludeFolders =
+                {
+                    Path.Combine(AppContext.BaseDirectory)
+                }
+            };
+
+            generateOptions = new()
+            {
+                OutputPath = outputPath,
+                ClassName = "Vma",
+                Namespace = "Vortice.Vulkan",
+                PublicVisiblity = true,
+                GenerateFunctionPointers = false
+            };
+        }
         else
         {
             isVulkan = true;
             headerFile = Path.Combine(AppContext.BaseDirectory, "vulkan", "vulkan.h");
-            defines = new()
+            parserOptions = new()
             {
-                "VK_USE_PLATFORM_ANDROID_KHR",
-                "VK_USE_PLATFORM_IOS_MVK",
-                "VK_USE_PLATFORM_MACOS_MVK",
-                "VK_USE_PLATFORM_METAL_EXT",
-                "VK_USE_PLATFORM_VI_NN",
-                //"VK_USE_PLATFORM_WAYLAND_KHR",
-                //"VK_USE_PLATFORM_WIN32_KHR",
-                //"VK_USE_PLATFORM_SCREEN_QNX",
-                "VK_ENABLE_BETA_EXTENSIONS"
+                ParseMacros = true,
+                Defines =
+                {
+                    "VK_USE_PLATFORM_ANDROID_KHR",
+                    "VK_USE_PLATFORM_IOS_MVK",
+                    "VK_USE_PLATFORM_MACOS_MVK",
+                    "VK_USE_PLATFORM_METAL_EXT",
+                    "VK_USE_PLATFORM_VI_NN",
+                    //"VK_USE_PLATFORM_WAYLAND_KHR",
+                    //"VK_USE_PLATFORM_WIN32_KHR",
+                    //"VK_USE_PLATFORM_SCREEN_QNX",
+                    "VK_ENABLE_BETA_EXTENSIONS"
+                }
             };
 
             generateOptions = new()
@@ -76,13 +107,7 @@ public static class Program
             };
         }
 
-        CppParserOptions options = new()
-        {
-            ParseMacros = true
-        };
-        options.Defines.AddRange(defines);
-
-        CppCompilation compilation = CppParser.ParseFile(headerFile, options);
+        CppCompilation compilation = CppParser.ParseFile(headerFile, parserOptions);
 
         // Print diagnostic messages
         if (compilation.HasErrors)

@@ -245,7 +245,7 @@ public static partial class CsCodeGenerator
             }
 
             string csName = GetCsCleanName(enumName);
-            string enumNamePrefix = _options.IsVulkan ? GetEnumNamePrefix(enumName) : enumName;
+            string enumNamePrefix = (_options.IsVulkan || enumName.StartsWith("Vma")) ? GetEnumNamePrefix(enumName) : enumName;
 
             // Rename FlagBits in Flags.
             if (isBitmask)
@@ -383,6 +383,11 @@ public static partial class CsCodeGenerator
                             writer.WriteLine("/// <summary>");
                             writer.WriteLine($"/// {enumItemValue.Comment!}");
                             writer.WriteLine("/// </summary>");
+                        }
+
+                        if (enumValueName.StartsWith("VMA_ALLOCATION_CREATE_"))
+                        {
+                            enumValueName = $"VmaAllocationCreateFlags.{enumItemName}";
                         }
 
                         writer.WriteLine($"/// <unmanaged>{enumItem.Name}</unmanaged>");
@@ -793,7 +798,7 @@ public static partial class CsCodeGenerator
             return value;
         }
 
-        if (!_options.IsVulkan)
+        if (!_options.IsVulkan && !enumPrefix.StartsWith("VMA_"))
         {
             string result = value[enumPrefix.Length..];
             if (char.IsNumber(result[0]))
