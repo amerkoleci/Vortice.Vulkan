@@ -153,7 +153,7 @@ public static partial class CsCodeGenerator
         { "VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV", "_1024Triangles128Bytes" },
 
         // Spvc
-        {  "SPVC_SUCCESS", "Success" },
+        //{  "SPVC_SUCCESS", "Success" },
     };
 
     private static readonly Dictionary<string, string> s_knownEnumPrefixes = new()
@@ -259,8 +259,14 @@ public static partial class CsCodeGenerator
                 }
             }
 
-            string csName = GetCsCleanName(enumName, true);
-            string enumNamePrefix = (_options.IsVulkan || enumName.StartsWith("Vma") || enumName.StartsWith("spvc_")) ? GetEnumNamePrefix(enumName) : enumName;
+            bool shouldGeneratePrettyPrefix = _options.IsVulkan || enumName.StartsWith("Vma");
+            //if (enumName.StartsWith("spvc_"))
+            //{
+            //    shouldGeneratePrettyPrefix = true;
+            //}
+
+            string csName = GetCsCleanName(enumName, shouldGeneratePrettyPrefix);
+            string enumNamePrefix = shouldGeneratePrettyPrefix ? GetEnumNamePrefix(enumName) : enumName;
 
             // Rename FlagBits in Flags.
             if (isBitmask)

@@ -9,9 +9,6 @@
 
 namespace Vortice.Vulkan;
 
-/// <summary>
-/// Provides Vulkan specific constants for special values, layer names and extension names.
-/// </summary>
 public static partial class Vma
 {
 }

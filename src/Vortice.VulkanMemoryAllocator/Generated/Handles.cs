@@ -13,9 +13,6 @@ using System.Diagnostics;
 
 namespace Vortice.Vulkan;
 
-/// <summary>
-/// A dispatchable handle.
-/// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VmaAllocator : IEquatable<VmaAllocator>
 {
@@ -37,9 +34,6 @@ public readonly partial struct VmaAllocator : IEquatable<VmaAllocator>
 	private string DebuggerDisplay => $"{nameof(VmaAllocator)} [0x{Handle.ToString("X")}]";
 }
 
-/// <summary>
-/// A dispatchable handle.
-/// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VmaPool : IEquatable<VmaPool>
 {
@@ -61,9 +55,6 @@ public readonly partial struct VmaPool : IEquatable<VmaPool>
 	private string DebuggerDisplay => $"{nameof(VmaPool)} [0x{Handle.ToString("X")}]";
 }
 
-/// <summary>
-/// A dispatchable handle.
-/// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VmaAllocation : IEquatable<VmaAllocation>
 {
@@ -85,9 +76,6 @@ public readonly partial struct VmaAllocation : IEquatable<VmaAllocation>
 	private string DebuggerDisplay => $"{nameof(VmaAllocation)} [0x{Handle.ToString("X")}]";
 }
 
-/// <summary>
-/// A dispatchable handle.
-/// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VmaDefragmentationContext : IEquatable<VmaDefragmentationContext>
 {
@@ -109,9 +97,6 @@ public readonly partial struct VmaDefragmentationContext : IEquatable<VmaDefragm
 	private string DebuggerDisplay => $"{nameof(VmaDefragmentationContext)} [0x{Handle.ToString("X")}]";
 }
 
-/// <summary>
-/// A non-dispatchable handle.
-/// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VmaVirtualAllocation : IEquatable<VmaVirtualAllocation>
 {
@@ -133,9 +118,6 @@ public readonly partial struct VmaVirtualAllocation : IEquatable<VmaVirtualAlloc
 	private string DebuggerDisplay => $"{nameof(VmaVirtualAllocation)} [0x{Handle.ToString("X")}]";
 }
 
-/// <summary>
-/// A dispatchable handle.
-/// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VmaVirtualBlock : IEquatable<VmaVirtualBlock>
 {

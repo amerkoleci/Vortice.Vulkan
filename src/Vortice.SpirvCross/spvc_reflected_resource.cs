@@ -1,11 +1,14 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using static Vortice.SpirvCross.Utils;
+
 namespace Vortice.SpirvCross;
 
-public enum SpvcBuiltinResourceType 
+partial struct spvc_reflected_resource
 {
-    Unknown = 0,
-    StageInput = 1,
-    StageOutput = 2,
+    public unsafe string GetName()
+    {
+        return GetUtf8Span(name).GetString()!;
+    }
 }

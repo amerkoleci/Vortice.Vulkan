@@ -4,6 +4,10 @@
 using NUnit.Framework;
 using Vortice.SPIRV;
 using static Vortice.SpirvCross.SpirvCrossApi;
+using static Vortice.SpirvCross.spvc_backend;
+using static Vortice.SpirvCross.spvc_capture_mode;
+using static Vortice.SpirvCross.spvc_compiler_option;
+using static Vortice.SpirvCross.spvc_resource_type;
 
 namespace Vortice.SpirvCross.Test;
 
@@ -19,110 +23,127 @@ public unsafe class Tests
 
         spvc_context_create(out spvc_context _handle).CheckResult("Cannot create SPIRV-Cross context");
         //spvc_context_set_error_callback(_handle, &OnErrorCallback, 0);
-        spvc_context_get_last_error_string(_handle);
+        Assert.IsEmpty(spvc_context_get_last_error_string(_handle));
 
         spvc_context_release_allocations(_handle);
-
         spvc_context_destroy(_handle);
-
-        using Context context = new();
-        Assert.IsEmpty(context.GetLastErrorString());
     }
 
-    //[TestCase]
-    //public void GLSLCompilerTest()
-    //{
-    //    byte[] vertexBytecode = GetBytecode("triangle.vert");
-    //    using Context context = new();
-    //    context.ParseSpirv(vertexBytecode, out spvc_parsed_ir parsedIr).CheckResult();
-    //    Compiler compiler = context.CreateCompiler(Backend.GLSL, parsedIr, CaptureMode.TakeOwnership);
-    //    compiler.Options.SetUInt(CompilerOption.GLSLVersion, 330);
-    //    compiler.Options.SetBool(CompilerOption.GLSLEs, false);
-    //    compiler.Apply();
+    [TestCase]
+    public void GLSLCompilerTest()
+    {
+        byte[] vertexBytecode = GetBytecode("triangle.vert");
+        spvc_context_create(out spvc_context context).CheckResult();
+        spvc_context_parse_spirv(context, vertexBytecode, out spvc_parsed_ir parsedIr).CheckResult();
+        spvc_context_create_compiler(context, SPVC_BACKEND_GLSL, parsedIr, SPVC_CAPTURE_MODE_TAKE_OWNERSHIP, out spvc_compiler compiler).CheckResult();
 
-    //    string glsl = compiler.Compile();
-    //    Assert.IsNotEmpty(glsl);
-    //    Assert.IsEmpty(context.GetLastErrorString());
-    //}
+        spvc_compiler_create_compiler_options(compiler, out spvc_compiler_options options).CheckResult();
+        spvc_compiler_options_set_uint(options, SPVC_COMPILER_OPTION_GLSL_VERSION, 330);
+        spvc_compiler_options_set_bool(options, SPVC_COMPILER_OPTION_GLSL_ES, SPVC_FALSE);
+        spvc_compiler_install_compiler_options(compiler, options);
 
-    //[TestCase]
-    //public void HLSLCompilerTest()
-    //{
-    //    byte[] vertexBytecode = GetBytecode("triangle.frag");
-    //    using Context context = new();
-    //    context.ParseSpirv(vertexBytecode, out spvc_parsed_ir parsedIr).CheckResult();
-    //    Compiler compiler = context.CreateCompiler(Backend.HLSL, parsedIr, CaptureMode.TakeOwnership);
-    //    compiler.Options.SetUInt(CompilerOption.HLSLShaderModel, 50);
-    //    compiler.Apply();
+        spvc_compiler_compile(compiler, out string? glsl);
+        Assert.IsNotEmpty(glsl);
+        Assert.IsEmpty(spvc_context_get_last_error_string(context));
 
-    //    string hlsl = compiler.Compile();
-    //    Assert.IsNotEmpty(hlsl);
-    //    Assert.IsEmpty(context.GetLastErrorString());
-    //}
+        spvc_context_release_allocations(context);
+        spvc_context_destroy(context);
+    }
 
-    //[TestCase]
-    //public void ParseVertexResources()
-    //{
-    //    byte[] vertexBytecode = GetBytecode("texture.vert");
-    //    using Context context = new();
-    //    context.ParseSpirv(vertexBytecode, out spvc_parsed_ir parsedIr).CheckResult();
-    //    Compiler compiler = context.CreateCompiler(Backend.GLSL, parsedIr, CaptureMode.TakeOwnership);
+    [TestCase]
+    public void HLSLCompilerTest()
+    {
+        byte[] vertexBytecode = GetBytecode("triangle.frag");
 
-    //    compiler.CreateShaderResources(out Resources resources).CheckResult();
-    //    SpvReflectedResource[] list = resources.GetResourceListForType(SpvResourceType.UniformBuffer);
+        spvc_context_create(out spvc_context context).CheckResult();
+        spvc_context_parse_spirv(context, vertexBytecode, out spvc_parsed_ir parsedIr).CheckResult();
+        spvc_context_create_compiler(context, SPVC_BACKEND_HLSL, parsedIr, SPVC_CAPTURE_MODE_TAKE_OWNERSHIP, out spvc_compiler compiler).CheckResult();
 
-    //    Assert.AreEqual(list.Length, 1);
+        spvc_compiler_create_compiler_options(compiler, out spvc_compiler_options options).CheckResult();
+        spvc_compiler_options_set_uint(options, SPVC_COMPILER_OPTION_HLSL_SHADER_MODEL, 50);
+        spvc_compiler_install_compiler_options(compiler, options);
 
-    //    for (int i = 0; i < list.Length; i++)
-    //    {
-    //        Assert.AreEqual(list[i].Id, 19);
-    //        Assert.AreEqual(list[i].BaseTypeId, 17);
-    //        Assert.AreEqual(list[i].TypeId, 18);
-    //        Assert.AreEqual(list[i].Name, "UBO");
+        spvc_compiler_compile(compiler, out string? hlsl);
+        Assert.IsNotEmpty(hlsl);
+        Assert.IsEmpty(spvc_context_get_last_error_string(context));
 
-    //        int descriptorSet = compiler.GetDecoration(list[i].Id, SpvDecoration.DescriptorSet);
-    //        int binding = compiler.GetDecoration(list[i].Id, SpvDecoration.Binding);
-    //        Assert.AreEqual(descriptorSet, 0);
-    //        Assert.AreEqual(binding, 0);
-    //    }
+        spvc_context_release_allocations(context);
+        spvc_context_destroy(context);
+    }
 
-    //    Assert.IsEmpty(context.GetLastErrorString());
+    [TestCase]
+    public void ParseVertexResources()
+    {
+        byte[] vertexBytecode = GetBytecode("texture.vert");
 
-    //    list = resources.GetResourceListForType(SpvResourceType.StageInput);
-    //    Assert.AreEqual(list.Length, 3);
-    //    Assert.AreEqual(list[0].Name, "inUV");
-    //    Assert.AreEqual(list[1].Name, "inPos");
-    //    Assert.AreEqual(list[2].Name, "inNormal");
-    //}
+        spvc_context_create(out spvc_context context).CheckResult();
+        spvc_context_parse_spirv(context, vertexBytecode, out spvc_parsed_ir parsedIr).CheckResult();
+        spvc_context_create_compiler(context, SPVC_BACKEND_GLSL, parsedIr, SPVC_CAPTURE_MODE_TAKE_OWNERSHIP, out spvc_compiler compiler_glsl).CheckResult();
 
-    //[TestCase]
-    //public void ParseFragmentResources()
-    //{
-    //    byte[] vertexBytecode = GetBytecode("texture.frag");
-    //    using Context context = new();
-    //    context.ParseSpirv(vertexBytecode, out SpvcParsedIr parsedIr).CheckResult();
-    //    Compiler compiler = context.CreateCompiler(Backend.GLSL, parsedIr, CaptureMode.TakeOwnership);
+        spvc_compiler_create_shader_resources(compiler_glsl, out spvc_resources resources);
 
-    //    compiler.CreateShaderResources(out Resources resources).CheckResult();
-    //    SpvReflectedResource[] list = resources.GetResourceListForType(SpvResourceType.SampledImage);
+        spvc_reflected_resource* resourceList;
+        spvc_resources_get_resource_list_for_type(resources, SPVC_RESOURCE_TYPE_UNIFORM_BUFFER, out resourceList, out nuint resourceSize).CheckResult();
 
-    //    Assert.AreEqual(list.Length, 1);
+        Assert.AreEqual(resourceSize, (nuint)1);
 
-    //    for (int i = 0; i < list.Length; i++)
-    //    {
-    //        Assert.AreEqual(list[i].Id, 13);
-    //        Assert.AreEqual(list[i].BaseTypeId, 11);
-    //        Assert.AreEqual(list[i].TypeId, 12);
-    //        Assert.AreEqual(list[i].Name, "samplerColor");
+        for (uint i = 0; i < (uint)resourceSize; i++)
+        {
+            Assert.AreEqual(resourceList[i].id, 19);
+            Assert.AreEqual(resourceList[i].base_type_id, 17);
+            Assert.AreEqual(resourceList[i].type_id, 18);
+            Assert.AreEqual(resourceList[i].GetName(), "UBO");
 
-    //        int descriptorSet = compiler.GetDecoration(list[i].Id, SpvDecoration.DescriptorSet);
-    //        int binding = compiler.GetDecoration(list[i].Id, SpvDecoration.Binding);
-    //        Assert.AreEqual(descriptorSet, 0);
-    //        Assert.AreEqual(binding, 1);
-    //    }
+            uint descriptorSet = spvc_compiler_get_decoration(compiler_glsl, resourceList[i].id, SpvDecoration.DescriptorSet);
+            uint binding = spvc_compiler_get_decoration(compiler_glsl, resourceList[i].id, SpvDecoration.Binding);
+            Assert.AreEqual(descriptorSet, 0u);
+            Assert.AreEqual(binding, 0u);
+        }
 
-    //    Assert.IsEmpty(context.GetLastErrorString());
-    //}
+        Assert.IsEmpty(spvc_context_get_last_error_string(context));
+
+        spvc_resources_get_resource_list_for_type(resources, SPVC_RESOURCE_TYPE_STAGE_INPUT, out resourceList, out resourceSize).CheckResult();
+        Assert.AreEqual(resourceSize, (nuint)3);
+        Assert.AreEqual(resourceList[0].GetName(), "inUV");
+        Assert.AreEqual(resourceList[1].GetName(), "inPos");
+        Assert.AreEqual(resourceList[2].GetName(), "inNormal");
+
+        Assert.IsEmpty(spvc_context_get_last_error_string(context));
+        spvc_context_release_allocations(context);
+        spvc_context_destroy(context);
+    }
+
+    [TestCase]
+    public void ParseFragmentResources()
+    {
+        byte[] vertexBytecode = GetBytecode("texture.frag");
+
+        spvc_context_create(out spvc_context context).CheckResult();
+        spvc_context_parse_spirv(context, vertexBytecode, out spvc_parsed_ir parsedIr).CheckResult();
+        spvc_context_create_compiler(context, SPVC_BACKEND_GLSL, parsedIr, SPVC_CAPTURE_MODE_TAKE_OWNERSHIP, out spvc_compiler compiler_glsl).CheckResult();
+
+        spvc_compiler_create_shader_resources(compiler_glsl, out spvc_resources resources);
+        spvc_resources_get_resource_list_for_type(resources, SPVC_RESOURCE_TYPE_SAMPLED_IMAGE, out spvc_reflected_resource* resourceList, out nuint resourceSize).CheckResult();
+
+        Assert.AreEqual(resourceSize, (nuint)1);
+
+        for (uint i = 0; i < (uint)resourceSize; i++)
+        {
+            Assert.AreEqual(resourceList[i].id, 13);
+            Assert.AreEqual(resourceList[i].base_type_id, 11);
+            Assert.AreEqual(resourceList[i].type_id, 12);
+            Assert.AreEqual(resourceList[i].GetName(), "samplerColor");
+
+            uint descriptorSet = spvc_compiler_get_decoration(compiler_glsl, resourceList[i].id, SpvDecoration.DescriptorSet);
+            uint binding = spvc_compiler_get_decoration(compiler_glsl, resourceList[i].id, SpvDecoration.Binding);
+            Assert.AreEqual(descriptorSet, 0u);
+            Assert.AreEqual(binding, 1u);
+        }
+
+        Assert.IsEmpty(spvc_context_get_last_error_string(context));
+        spvc_context_release_allocations(context);
+        spvc_context_destroy(context);
+    }
 
     private  static byte[] GetBytecode(string name)
     {

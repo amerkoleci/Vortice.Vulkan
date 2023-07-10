@@ -10,9 +10,13 @@
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>1.4.0</VersionPrefix>
+    <VersionPrefix>1.4.1</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+    <Compile Remove="Shims/UnscopedRefAttribute.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="$(RepoRootPath)README.md" Pack="true" PackagePath="\" />

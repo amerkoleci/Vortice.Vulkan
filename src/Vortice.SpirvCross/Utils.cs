@@ -10,15 +10,6 @@ namespace Vortice.SpirvCross;
 
 public static unsafe class Utils
 {
-    [DebuggerHidden]
-    [DebuggerStepThrough]
-    public static void CheckResult(this Result result, string message = "SPIRV-Cross error occured")
-    {
-        if (result != Result.Success)
-        {
-            throw new SpirvCrossException(result, message);
-        }
-    }
 
 #pragma warning disable CS8500
     /// <inheritdoc cref="Unsafe.SizeOf{T}" />
@@ -83,6 +74,12 @@ public static unsafe class Utils
     public static string? GetString(this ReadOnlySpan<ushort> span)
     {
         return span.GetPointerUnsafe() != null ? new string(span.As<ushort, char>()) : null;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static string? GetString(sbyte* source, int maxLength = -1)
+    {
+        return GetUtf8Span(source, maxLength).GetString();
     }
 
     /// <summary>Gets a null-terminated sequence of UTF8 characters for a string.</summary>

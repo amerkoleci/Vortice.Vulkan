@@ -1,18 +1,17 @@
 ﻿// Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Text;
-using Vortice.SPIRV;
+using static Vortice.SpirvCross.spvc_result;
+using static Vortice.SpirvCross.Utils;
 
 namespace Vortice.SpirvCross;
 
-internal static unsafe class SpirvCrossApi
+unsafe partial class SpirvCrossApi
 {
-    public static event DllImportResolver? ResolveLibrary;
-
     private const string LibName = "spirv-cross";
 
     static SpirvCrossApi()
@@ -22,12 +21,7 @@ internal static unsafe class SpirvCrossApi
 
     private static nint OnDllImport(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
     {
-        if (TryResolveLibrary(libraryName, assembly, searchPath, out nint nativeLibrary))
-        {
-            return nativeLibrary;
-        }
-
-        if (libraryName.Equals(LibName) && TryResolveSpirvCross(assembly, searchPath, out nativeLibrary))
+        if (libraryName.Equals(LibName) && TryResolveSpirvCross(assembly, searchPath, out nint nativeLibrary))
         {
             return nativeLibrary;
         }
@@ -75,114 +69,160 @@ internal static unsafe class SpirvCrossApi
         return false;
     }
 
-    private static bool TryResolveLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath, out nint nativeLibrary)
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void ThrowIfFailed(spvc_result result, [CallerArgumentExpression(nameof(result))] string? valueExpression = null)
     {
-        var resolveLibrary = ResolveLibrary;
-
-        if (resolveLibrary != null)
+        if (result != SPVC_SUCCESS)
         {
-            var resolvers = resolveLibrary.GetInvocationList();
-
-            foreach (DllImportResolver resolver in resolvers)
-            {
-                nativeLibrary = resolver(libraryName, assembly, searchPath);
-
-                if (nativeLibrary != 0)
-                {
-                    return true;
-                }
-            }
+            string message = string.Format("'{0}' failed with an error result of '{1}'", valueExpression ?? "Method", result);
+            throw new SpirvCrossException(result, message);
         }
-
-        nativeLibrary = 0;
-        return false;
     }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
+    [Conditional("DEBUG")]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void DebugThrowIfFailed(spvc_result result, [CallerArgumentExpression(nameof(result))] string? valueExpression = null)
+    {
+        if (result != SPVC_SUCCESS)
+        {
+            string message = string.Format("'{0}' failed with an error result of '{1}'", valueExpression ?? "Method", result);
+            throw new SpirvCrossException(result, message);
+        }
+    }
+
+    [DebuggerHidden]
+    [DebuggerStepThrough]
+    public static void CheckResult(this spvc_result result, string message = "SPIRV-Cross error occured")
+    {
+        if (result != SPVC_SUCCESS)
+        {
+            throw new SpirvCrossException(result, message);
+        }
+    }
+
+    [Conditional("DEBUG")]
+    [DebuggerHidden]
+    [DebuggerStepThrough]
+    public static void DebugCheckResult(this spvc_result result, string message = "SPIRV-Cross error occured")
+    {
+        if (result != SPVC_SUCCESS)
+        {
+            throw new SpirvCrossException(result, message);
+        }
+    }
+
+    #region Context
+    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_get_version")]
     public static extern void spvc_get_version(out uint major, out uint minor, out uint patch);
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_context_create(out IntPtr context);
+    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_context_set_error_callback")]
+    public static extern void spvc_context_set_error_callback(spvc_context context, delegate* unmanaged[Cdecl]<nint, sbyte*, void> callback, nint userData);
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void spvc_context_destroy(IntPtr context);
+    public static spvc_result spvc_context_parse_spirv(spvc_context context, byte[] bytecode, out spvc_parsed_ir parsed_ir)
+    {
+        fixed (byte* bytecodePtr = bytecode)
+        {
+            return spvc_context_parse_spirv(context,
+                (uint*)bytecodePtr,
+                (nuint)bytecode.Length / sizeof(uint),
+                out parsed_ir);
+        }
+    }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern sbyte* spvc_context_get_last_error_string(IntPtr context);
+    public static spvc_result spvc_context_parse_spirv(spvc_context context, ReadOnlySpan<byte> bytecode, out spvc_parsed_ir parsed_ir)
+    {
+        fixed (byte* bytecodePtr = bytecode)
+        {
+            return spvc_context_parse_spirv(context, (uint*)bytecodePtr, (nuint)bytecode.Length / sizeof(uint), out parsed_ir);
+        }
+    }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void spvc_context_release_allocations(IntPtr context);
+    public static spvc_result spvc_context_parse_spirv(spvc_context context, uint[] spirv, out spvc_parsed_ir parsed_ir)
+    {
+        fixed (uint* spirvPtr = spirv)
+        {
+            return spvc_context_parse_spirv(context, spirvPtr, (nuint)spirv.Length, out parsed_ir);
+        }
+    }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void spvc_context_set_error_callback(IntPtr context, delegate* unmanaged[Cdecl]<IntPtr, sbyte*, void> callback, IntPtr userData);
+    public static string? spvc_context_get_last_error_string(spvc_context context)
+    {
+        sbyte* native = spvc_context_get_last_error_stringPrivate(context);
+        return Utils.GetString(Utils.GetUtf8Span(native));
+    }
+    #endregion
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_context_parse_spirv(IntPtr context, uint* spirv, nuint word_count, out SpvcParsedIr parsed_ir);
+    #region Compiler
+    public static spvc_result spvc_compiler_compile(spvc_compiler compiler, out string? source)
+    {
+        sbyte* utf8Str = default;
+        spvc_result result = spvc_compiler_compile(compiler, (sbyte*)&utf8Str);
+        if (result != SPVC_SUCCESS)
+        {
+            source = default;
+            return result;
+        }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_context_create_compiler(IntPtr context, Backend backend, SpvcParsedIr parsedIr, CaptureMode mode, out IntPtr compiler);
+        source = new string(utf8Str);
+        return result;
+    }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern uint spvc_compiler_get_current_id_bound(IntPtr context);
+    public static void spvc_compiler_add_header_line(spvc_compiler compiler, ReadOnlySpan<sbyte> line)
+    {
+        fixed (sbyte* dataPtr = line)
+        {
+            spvc_compiler_add_header_line(compiler, dataPtr);
+        }
+    }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_create_compiler_options(IntPtr context, out IntPtr options);
+    public static void spvc_compiler_add_header_line(spvc_compiler compiler, string line)
+    {
+        fixed (sbyte* dataPtr = line.GetUtf8Span())
+        {
+            spvc_compiler_add_header_line(compiler, dataPtr);
+        }
+    }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_options_set_bool(IntPtr options, CompilerOption option, byte value);
+    public static void spvc_compiler_require_extension(spvc_compiler compiler, ReadOnlySpan<sbyte> ext)
+    {
+        fixed (sbyte* dataPtr = ext)
+        {
+            spvc_compiler_require_extension(compiler, dataPtr);
+        }
+    }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_options_set_uint(IntPtr options, CompilerOption option, uint value);
+    public static void spvc_compiler_require_extension(spvc_compiler compiler, string ext)
+    {
+        fixed (sbyte* dataPtr = ext.GetUtf8Span())
+        {
+            spvc_compiler_require_extension(compiler, dataPtr);
+        }
+    }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_install_compiler_options(IntPtr compiler, IntPtr options);
+    public static void spvc_compiler_set_name(spvc_compiler compiler, uint id, ReadOnlySpan<sbyte> argument)
+    {
+        fixed (sbyte* dataPtr = argument)
+        {
+            spvc_compiler_set_name(compiler, id, dataPtr);
+        }
+    }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_compile(IntPtr context, sbyte* source);
+    public static void spvc_compiler_set_name(spvc_compiler compiler, uint id, string argument)
+    {
+        fixed (sbyte* dataPtr = argument.GetUtf8Span())
+        {
+            spvc_compiler_set_name(compiler, id, dataPtr);
+        }
+    }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_add_header_line(IntPtr compiler, sbyte* source);
+    public static string? spvc_compiler_get_name(spvc_compiler compiler, uint id)
+    {
+        return GetUtf8Span(spvc_compiler_get_namePrivate(compiler, id)).GetString();
+    }
+    #endregion
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_require_extension(IntPtr compiler, sbyte* source);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_flatten_buffer_block(IntPtr compiler, uint id);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern byte spvc_compiler_variable_is_depth_or_compare(IntPtr compiler, uint id);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_mask_stage_output_by_location(IntPtr compiler, uint location, uint component);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_mask_stage_output_by_builtin(IntPtr compiler, SpvBuiltIn builtin);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void spvc_compiler_set_name(IntPtr compiler, uint id, sbyte* source);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern sbyte* spvc_compiler_get_name(IntPtr compiler, uint id);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_get_active_interface_variables(IntPtr compiler, out nint set);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_set_enabled_interface_variables(IntPtr compiler, nint set);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_create_shader_resources(IntPtr compiler, out Resources resources);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_compiler_create_shader_resources_for_active_variables(IntPtr compiler, out Resources resources, nint active);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_resources_get_resource_list_for_type(Resources resources, SpvResourceType type, SpvReflectedResource.Native** resource_list, nuint* resource_size);
-
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern Result spvc_resources_get_builtin_resource_list_for_type(Resources resources, SpvcBuiltinResourceType type, SpvReflectedBuiltinResource.Native** resource_list, nuint* resource_size);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int spvc_compiler_get_decoration(IntPtr compiler, uint id, SpvDecoration decoration);
+    #region Resources
+    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_resources_get_resource_list_for_type")]
+    public static extern spvc_result spvc_resources_get_resource_list_for_type(spvc_resources resources, spvc_resource_type type, out spvc_reflected_resource* resource_list, out nuint resource_size);
+    #endregion
 }

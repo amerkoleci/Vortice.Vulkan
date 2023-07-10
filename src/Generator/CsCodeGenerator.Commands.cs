@@ -91,6 +91,7 @@ public static partial class CsCodeGenerator
 
         // spvc
         "spvc_context_create",
+        "spvc_compiler_create_compiler_options",
         "spvc_compiler_create_shader_resources",
         "spvc_context_create_compiler",
         "spvc_context_parse_spirv",
@@ -133,6 +134,9 @@ public static partial class CsCodeGenerator
         Dictionary<string, CppFunction> deviceCommands = new();
         foreach (CppFunction? cppFunction in compilation.Functions)
         {
+            if (cppFunction.Name == "spvc_context_set_error_callback")
+                continue;
+
             string? returnType = GetCsTypeName(cppFunction.ReturnType, false);
             bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
             string? csName = cppFunction.Name;
@@ -271,7 +275,9 @@ public static partial class CsCodeGenerator
         string modifier = "public static";
         string functionName = cppFunction.Name;
 
-        if (cppFunction.Name == "vmaCreateAllocator")
+        if (cppFunction.Name == "vmaCreateAllocator" ||
+            cppFunction.Name == "spvc_context_get_last_error_string" ||
+            cppFunction.Name == "spvc_compiler_get_name")
         {
             modifier = "private static";
             functionName += "Private";

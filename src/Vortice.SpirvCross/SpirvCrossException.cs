@@ -11,7 +11,7 @@ public sealed class SpirvCrossException : Exception
     /// <summary>
     /// Gets the result returned by SPIRV-Cross.
     /// </summary>
-    public Result Result { get; }
+    public spvc_result Result { get; }
 
     /// <summary>
     /// Gets if the result is considered an error.
@@ -30,7 +30,7 @@ public sealed class SpirvCrossException : Exception
     /// </summary>
     /// <param name="result">The result code that caused this exception.</param>
     /// <param name="message"></param>
-    public SpirvCrossException(Result result, string message = "SPIRV-Cross error occured")
+    public SpirvCrossException(spvc_result result, string message = "SPIRV-Cross error occured")
         : base($"[{(int)result}] {result} - {message}")
     {
         Result = result;
