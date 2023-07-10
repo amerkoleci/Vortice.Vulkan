@@ -12,7 +12,8 @@ public static partial class CsCodeGenerator
         bool hasAnyHandleType = false;
         foreach (CppTypedef typedef in compilation.Typedefs)
         {
-            if (typedef.Name.StartsWith("PFN_"))
+            if (typedef.Name.StartsWith("PFN_") ||
+                typedef.Name == "spvc_error_callback")
             {
                 continue;
             }
@@ -40,7 +41,8 @@ public static partial class CsCodeGenerator
 
         foreach (CppTypedef typedef in compilation.Typedefs)
         {
-            if (typedef.Name.StartsWith("PFN_"))
+            if (typedef.Name.StartsWith("PFN_") ||
+                typedef.Name == "spvc_error_callback")
             {
                 continue;
             }
@@ -64,9 +66,19 @@ public static partial class CsCodeGenerator
 
             string csName = typedef.Name;
 
-            writer.WriteLine($"/// <summary>");
-            writer.WriteLine($"/// A {(isDispatchable ? "dispatchable" : "non-dispatchable")} handle.");
-            writer.WriteLine("/// </summary>");
+            if (csName != "VmaVirtualAllocation" &&
+                typedef.ElementType is CppPointerType)
+            {
+                isDispatchable = true;
+            }
+
+            if (_options.IsVulkan)
+            {
+                writer.WriteLine($"/// <summary>");
+                writer.WriteLine($"/// A {(isDispatchable ? "dispatchable" : "non-dispatchable")} handle.");
+                writer.WriteLine("/// </summary>");
+            }
+
             writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
             using (writer.PushBlock($"{visibility} readonly partial struct {csName} : IEquatable<{csName}>"))
             {

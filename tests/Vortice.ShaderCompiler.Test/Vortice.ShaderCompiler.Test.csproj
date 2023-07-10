@@ -9,10 +9,8 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="NUnit" />
     <PackageReference Include="NUnit3TestAdapter" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Vortice.ShaderCompiler\Vortice.ShaderCompiler.csproj" />
+    
+    <ProjectReference Include="..\..\src\Vortice.ShaderCompiler\Vortice.ShaderCompiler.csproj" />
   </ItemGroup>
 
   <ItemGroup>

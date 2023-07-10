@@ -75,6 +75,32 @@ public static class Program
                 GenerateFunctionPointers = false
             };
         }
+        else if (outputPath.Contains("Vortice.SpirvCross"))
+        {
+            headerFile = Path.Combine(AppContext.BaseDirectory, "headers", "spirv_cross_c.h");
+
+            parserOptions = new()
+            {
+                ParseMacros = true,
+                SystemIncludeFolders =
+                {
+                    Path.Combine(AppContext.BaseDirectory, "headers")
+                }
+            };
+
+            generateOptions = new()
+            {
+                OutputPath = outputPath,
+                ClassName = "SpirvCrossApi",
+                Namespace = "Vortice.SpirvCross",
+                PublicVisiblity = true,
+                GenerateFunctionPointers = false,
+                ExtraUsings =
+                {
+                    "Vortice.SPIRV"
+                }
+            };
+        }
         else
         {
             isVulkan = true;

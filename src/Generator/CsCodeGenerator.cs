@@ -1,6 +1,7 @@
 // Copyright © Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Runtime.InteropServices;
 using CppAst;
 
 namespace Generator;
@@ -29,6 +30,7 @@ public static partial class CsCodeGenerator
         { "intptr_t", "nint" },
         { "uintptr_t", "nuint" },
         { "DWORD", "uint" },
+        
 
         //{ "VkBool32", "uint" },
         { "VkDeviceAddress", "ulong" },
@@ -82,6 +84,14 @@ public static partial class CsCodeGenerator
         { "VkPipelineStageFlagBits2KHR", "VkPipelineStageFlags2KHR" },
         { "VkAccessFlagBits2KHR", "VkAccessFlags2KHR" },
         { "VkFormatFeatureFlagBits2KHR", "VkFormatFeatureFlags2KHR" },
+
+        // Spirv - Spirv-Cross
+        { "SpvId", "uint" },
+        { "spvc_bool", "SpvcBool" },
+        { "spvc_type_id", "uint" }, // SpvId
+        { "spvc_variable_id", "uint" }, // SpvId
+        { "spvc_constant_id", "uint" }, // SpvId
+        { "spvc_msl_vertex_format", "spvc_msl_shader_variable_format" },
     };
 
     private static CsCodeGeneratorOptions _options = new();
@@ -117,9 +127,14 @@ public static partial class CsCodeGenerator
     {
         string visibility = _options.PublicVisiblity ? "public" : "internal";
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Constants.cs"), false, _options.Namespace, Array.Empty<string>());
-        writer.WriteLine("/// <summary>");
-        writer.WriteLine("/// Provides Vulkan specific constants for special values, layer names and extension names.");
-        writer.WriteLine("/// </summary>");
+
+        if (_options.IsVulkan)
+        {
+            writer.WriteLine("/// <summary>");
+            writer.WriteLine("/// Provides Vulkan specific constants for special values, layer names and extension names.");
+            writer.WriteLine("/// </summary>");
+        }
+
         using (writer.PushBlock($"{visibility} static partial class {_options.ClassName}"))
         {
             foreach (CppMacro cppMacro in compilation.Macros)
@@ -148,6 +163,7 @@ public static partial class CsCodeGenerator
                     || cppMacro.Name.StartsWith("VK_GOOGLE_HLSL_FUNCTIONALITY1_", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.StartsWith("VK_USE_64_BIT_PTR_DEFINES", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.StartsWith("VMA_", StringComparison.OrdinalIgnoreCase)
+                    || cppMacro.Name.Equals("SPVC_MAKE_MSL_VERSION", StringComparison.OrdinalIgnoreCase)
                     )
                 {
                     continue;
@@ -188,6 +204,15 @@ public static partial class CsCodeGenerator
                 {
                     csDataType = "uint";
                     macroValue = cppMacro.Value;
+                }
+                else if (cppMacro.Name == "SPVC_TRUE" ||
+                    cppMacro.Name == "SPVC_FALSE")
+                {
+                    macroValue = "new (1)";
+                    if (cppMacro.Name == "SPVC_FALSE")
+                        macroValue = "new (0)";
+                    writer.WriteLine($"public static SpvcBool {cppMacro.Name} => {macroValue};");
+                    continue;
                 }
 
                 //AddCsMapping(cppMacro.Name, csName);
@@ -307,15 +332,26 @@ public static partial class CsCodeGenerator
         return name;
     }
 
-    private static string GetCsCleanName(string name)
+    private static string GetCsCleanName(string name, bool allowPretty)
     {
         if (s_csNameMappings.TryGetValue(name, out string? mappedName))
         {
-            return GetCsCleanName(mappedName);
+            return GetCsCleanName(mappedName, allowPretty);
         }
         else if (name.StartsWith("PFN"))
         {
             return "IntPtr";
+        }
+
+        if (allowPretty)
+        {
+            if (name.StartsWith("spvc_"))
+            {
+                string[] parts = name["spvc_".Length..].Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+                string result = PrettifyName(parts);
+                AddCsMapping(name, result);
+                return result;
+            }
         }
 
         return name;
@@ -335,7 +371,7 @@ public static partial class CsCodeGenerator
 
         if (type is CppEnum enumType)
         {
-            string enumCsName = GetCsCleanName(enumType.Name);
+            string enumCsName = GetCsCleanName(enumType.Name, false);
             if (isPointer)
                 return enumCsName + "*";
 
@@ -349,7 +385,7 @@ public static partial class CsCodeGenerator
                 return GetCsTypeName(classElementType, isPointer);
             }
 
-            string typeDefCsName = GetCsCleanName(typedef.Name);
+            string typeDefCsName = GetCsCleanName(typedef.Name, false);
             if (isPointer)
                 return typeDefCsName + "*";
 
@@ -358,7 +394,7 @@ public static partial class CsCodeGenerator
 
         if (type is CppClass @class)
         {
-            var className = GetCsCleanName(@class.Name);
+            var className = GetCsCleanName(@class.Name, false);
             if (isPointer)
                 return className + "*";
 
@@ -388,38 +424,38 @@ public static partial class CsCodeGenerator
             case CppPrimitiveKind.Char:
                 return isPointer ? "sbyte*" : "sbyte";
 
-            case CppPrimitiveKind.Bool:
-                break;
             case CppPrimitiveKind.WChar:
                 return isPointer ? "ushort*" : "ushort";
 
             case CppPrimitiveKind.Short:
                 return isPointer ? "short*" : "short";
+
             case CppPrimitiveKind.Int:
                 return isPointer ? "int*" : "int";
 
             case CppPrimitiveKind.LongLong:
-                break;
+                return isPointer ? "long*" : "long";
+
             case CppPrimitiveKind.UnsignedChar:
-                break;
+                return isPointer ? "byte*" : "byte";
+
             case CppPrimitiveKind.UnsignedShort:
                 return isPointer ? "ushort*" : "ushort";
+
             case CppPrimitiveKind.UnsignedInt:
                 return isPointer ? "uint*" : "uint";
-
             case CppPrimitiveKind.UnsignedLongLong:
-                break;
+                return isPointer ? "ulong*" : "ulong";
+
             case CppPrimitiveKind.Float:
                 return isPointer ? "float*" : "float";
+
             case CppPrimitiveKind.Double:
                 return isPointer ? "double*" : "double";
-            case CppPrimitiveKind.LongDouble:
-                break;
-            default:
-                return string.Empty;
-        }
 
-        return string.Empty;
+            default:
+                throw new InvalidOperationException($"Unknown primitive type: {primitiveType.Kind}");
+        }
     }
 
     private static string GetCsTypeName(CppPointerType pointerType)

@@ -151,6 +151,9 @@ public static partial class CsCodeGenerator
         { "VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV", "_64Triangles64Bytes" },
         { "VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV", "_256Triangles128Bytes" },
         { "VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV", "_1024Triangles128Bytes" },
+
+        // Spvc
+        {  "SPVC_SUCCESS", "Success" },
     };
 
     private static readonly Dictionary<string, string> s_knownEnumPrefixes = new()
@@ -163,6 +166,9 @@ public static partial class CsCodeGenerator
         { "VkCopyAccelerationStructureModeNVX", "VK_COPY_ACCELERATION_STRUCTURE_MODE" },
         { "VkOpticalFlowPerformanceLevelNV", "VK_OPTICAL_FLOW_PERFORMANCE_LEVEL" },
         { "VkOpticalFlowSessionBindingPointNV", "VK_OPTICAL_FLOW_SESSION_BINDING_POINT" },
+
+        //
+        { "spvc_result", "SPVC_ERROR" },
     };
 
     private static readonly HashSet<string> s_ignoredParts = new(StringComparer.OrdinalIgnoreCase)
@@ -209,6 +215,12 @@ public static partial class CsCodeGenerator
         "fd",
         "d3d11",
         "d3d12",
+
+        "spirv",
+        "glsl",
+        "hlsl",
+        "msl",
+        "json",
     };
 
     public static void GenerateEnums(CppCompilation compilation)
@@ -232,20 +244,23 @@ public static partial class CsCodeGenerator
             // typedef enum SpvSourceLanguage_ { } SpvSourceLanguage; }
             string enumName = cppEnum.Name;
 
-            foreach (CppTypedef typedef in compilation.Typedefs)
+            if (cppEnum.Name != "spvc_msl_shader_variable_format")
             {
-                if (typedef.ElementType is not CppEnum typeDefEnum)
-                    continue;
-
-                if (typeDefEnum.Name == cppEnum.Name)
+                foreach (CppTypedef typedef in compilation.Typedefs)
                 {
-                    enumName = typedef.Name;
-                    break;
+                    if (typedef.ElementType is not CppEnum typeDefEnum)
+                        continue;
+
+                    if (typeDefEnum.Name == cppEnum.Name)
+                    {
+                        enumName = typedef.Name;
+                        break;
+                    }
                 }
             }
 
-            string csName = GetCsCleanName(enumName);
-            string enumNamePrefix = (_options.IsVulkan || enumName.StartsWith("Vma")) ? GetEnumNamePrefix(enumName) : enumName;
+            string csName = GetCsCleanName(enumName, true);
+            string enumNamePrefix = (_options.IsVulkan || enumName.StartsWith("Vma") || enumName.StartsWith("spvc_")) ? GetEnumNamePrefix(enumName) : enumName;
 
             // Rename FlagBits in Flags.
             if (isBitmask)
@@ -339,7 +354,10 @@ public static partial class CsCodeGenerator
                         enumItem.Name.EndsWith("_MAX_ENUM_LUNARG") ||
                         //enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
                         enumItem.Name == "VK_STENCIL_FRONT_AND_BACK" ||
-                        enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE")
+                        enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE" ||
+                        enumItem.Name.EndsWith("_INT_MAX") ||
+                        enumItem.Name.EndsWith("_MAX_INT")
+                        )
                     {
                         continue;
                     }
@@ -705,9 +723,27 @@ public static partial class CsCodeGenerator
 
     private static string NormalizeEnumValue(string value)
     {
-        if (value == "(~0U)")
+        if (value == "(~0U)" || value == "(~(0u))")
         {
             return "~0u";
+        }
+
+        if (value == "(0)")
+        {
+            return "0";
+        }
+
+        if (value == "(~(1u))")
+        {
+            return "~1u";
+        }
+        if (value == "(~(2u))")
+        {
+            return "~2u";
+        }
+        if (value == "(~(3u))")
+        {
+            return "~3u";
         }
 
         if (value == "(~0ULL)")
@@ -798,7 +834,9 @@ public static partial class CsCodeGenerator
             return value;
         }
 
-        if (!_options.IsVulkan && !enumPrefix.StartsWith("VMA_"))
+        if (!_options.IsVulkan &&
+            !enumPrefix.StartsWith("VMA_") &&
+            !enumPrefix.StartsWith("SPVC_"))
         {
             string result = value[enumPrefix.Length..];
             if (char.IsNumber(result[0]))
@@ -813,7 +851,12 @@ public static partial class CsCodeGenerator
         }
 
         string[] parts = value[enumPrefix.Length..].Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
-        var sb = new StringBuilder();
+        return PrettifyName(parts, enumPrefix);
+    }
+
+    private static string PrettifyName(string[] parts, string? enumPrefix = default)
+    {
+        StringBuilder sb = new();
         foreach (string part in parts)
         {
             if (s_ignoredParts.Contains(part))
@@ -836,44 +879,47 @@ public static partial class CsCodeGenerator
         }
 
         string prettyName = sb.ToString();
-        if (char.IsNumber(prettyName[0]))
+        if (!string.IsNullOrEmpty(enumPrefix))
         {
-            if (enumPrefix.EndsWith("_IDC"))
+            if (char.IsNumber(prettyName[0]))
             {
-                return "Idc" + prettyName;
-            }
+                if (enumPrefix.EndsWith("_IDC"))
+                {
+                    return "Idc" + prettyName;
+                }
 
-            if (enumPrefix.EndsWith("_POC_TYPE"))
-            {
-                return "Type" + prettyName;
-            }
+                if (enumPrefix.EndsWith("_POC_TYPE"))
+                {
+                    return "Type" + prettyName;
+                }
 
-            if (enumPrefix.EndsWith("_CTB_SIZE"))
-            {
-                return "Size" + prettyName;
-            }
+                if (enumPrefix.EndsWith("_CTB_SIZE"))
+                {
+                    return "Size" + prettyName;
+                }
 
-            if (enumPrefix.EndsWith("_BLOCK_SIZE"))
-            {
-                return "Size" + prettyName;
-            }
+                if (enumPrefix.EndsWith("_BLOCK_SIZE"))
+                {
+                    return "Size" + prettyName;
+                }
 
-            if (enumPrefix.EndsWith("_FIXED_RATE"))
-            {
-                return "Rate" + prettyName;
-            }
+                if (enumPrefix.EndsWith("_FIXED_RATE"))
+                {
+                    return "Rate" + prettyName;
+                }
 
-            if (enumPrefix.EndsWith("_SUBSAMPLING"))
-            {
-                return "Subsampling" + prettyName;
-            }
+                if (enumPrefix.EndsWith("_SUBSAMPLING"))
+                {
+                    return "Subsampling" + prettyName;
+                }
 
-            if (enumPrefix.EndsWith("_BIT_DEPTH"))
-            {
-                return "Depth" + prettyName;
-            }
+                if (enumPrefix.EndsWith("_BIT_DEPTH"))
+                {
+                    return "Depth" + prettyName;
+                }
 
-            return "_" + prettyName;
+                return "_" + prettyName;
+            }
         }
 
         return prettyName;

@@ -9,39 +9,38 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="NUnit" />
     <PackageReference Include="NUnit3TestAdapter" />
+    
+    <ProjectReference Include="..\..\src\Vortice.SpirvCross\Vortice.SpirvCross.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Vortice.SpirvCross\Vortice.SpirvCross.csproj" />
-  </ItemGroup>
-
-  <Choose>
-    <When Condition="($([MSBuild]::IsOsPlatform('windows')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='win-x64'">
-      <ItemGroup>
-        <None Include="$(MSBuildThisFileDirectory)..\..\Vortice.SpirvCross\runtimes\win-x64\native\spirv-cross.dll" Link="spirv-cross.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
-      </ItemGroup>
-    </When>
-    <When Condition="($([MSBuild]::IsOsPlatform('windows')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='win-arm644'">
-      <ItemGroup>
-        <None Include="$(MSBuildThisFileDirectory)..\..\Vortice.SpirvCross\runtimes\win-arm644\native\spirv-cross.dll" Link="spirv-cross.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
-      </ItemGroup>
-    </When>
-    <When Condition="($([MSBuild]::IsOsPlatform('linux')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='linux-x64'">
-      <ItemGroup>
-        <None Include="$(MSBuildThisFileDirectory)..\..\Vortice.SpirvCross\runtimes\linux-x64\native\libspirv-cross.so" Link="libspirv-cross.so" Visible="False" CopyToOutputDirectory="PreserveNewest" />
-      </ItemGroup>
-    </When>
-    <When Condition="($([MSBuild]::IsOsPlatform('osx')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='osx-universal'">
-      <ItemGroup>
-        <None Include="$(MSBuildThisFileDirectory)..\..\Vortice.SpirvCross\runtimes\osx-universal\native\libspirv-cross.dylib" Link="libspirv-cross.dylib" Visible="False" CopyToOutputDirectory="PreserveNewest" />
-      </ItemGroup>
-    </When>
-  </Choose>
 
   <ItemGroup>
     <Content Include="Assets\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+
+  <Choose>
+    <When Condition="($([MSBuild]::IsOsPlatform('windows')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='win-x64'">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\win-x64\native\spirv-cross.dll" Link="spirv-cross.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+    <When Condition="($([MSBuild]::IsOsPlatform('windows')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='win-arm644'">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\win-arm644\native\spirv-cross.dll" Link="spirv-cross.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+    <When Condition="($([MSBuild]::IsOsPlatform('linux')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='linux-x64'">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\linux-x64\native\libspirv-cross.so" Link="libspirv-cross.so" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+    <When Condition="($([MSBuild]::IsOsPlatform('osx')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='osx-universal'">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\osx-universal\native\libspirv-cross.dylib" Link="libspirv-cross.dylib" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+  </Choose>
 
 </Project>

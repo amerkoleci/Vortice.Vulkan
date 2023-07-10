@@ -87,7 +87,13 @@ public static partial class CsCodeGenerator
         "vkCreateDisplayPlaneSurfaceKHR",
         "vkCreateSharedSwapchainsKHR",
 
-        "vkCreateDebugUtilsMessengerEXT"
+        "vkCreateDebugUtilsMessengerEXT",
+
+        // spvc
+        "spvc_context_create",
+        "spvc_compiler_create_shader_resources",
+        "spvc_context_create_compiler",
+        "spvc_context_parse_spirv",
     };
 
     private static string GetFunctionPointerSignature(CppFunction function, bool canUseOut, bool allowNonBlittable = true)
@@ -122,7 +128,6 @@ public static partial class CsCodeGenerator
 
     private static void GenerateCommands(CppCompilation compilation)
     {
-
         Dictionary<string, CppFunction> commands = new();
         Dictionary<string, CppFunction> instanceCommands = new();
         Dictionary<string, CppFunction> deviceCommands = new();
@@ -158,10 +163,19 @@ public static partial class CsCodeGenerator
             return;
 
         // Generate Functions
+        List<string> usings = new()
+        {
+            "System",
+            "System.Runtime.InteropServices"
+        };
+        if(_options.ExtraUsings.Count > 0)
+        {
+            usings.AddRange(_options.ExtraUsings);
+        }
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Commands.cs"),
             false,
             _options.Namespace,
-            new[] { "System", "System.Runtime.InteropServices" }
+            usings.ToArray()
             );
 
         using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))

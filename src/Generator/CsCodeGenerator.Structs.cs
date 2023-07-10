@@ -15,15 +15,22 @@ public static partial class CsCodeGenerator
 
         string visibility = _options.PublicVisiblity ? "public" : "internal";
 
+        List<string> usings = new()
+        {
+            "System.Runtime.InteropServices",
+            "System.Runtime.CompilerServices",
+            "System.Diagnostics.CodeAnalysis"
+        };
+        if (_options.ExtraUsings.Count > 0)
+        {
+            usings.AddRange(_options.ExtraUsings);
+        }
+
         // Generate Structures
-        using var writer = new CodeWriter(Path.Combine(_options.OutputPath, "Structures.cs"),
+        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Structures.cs"),
             false,
             _options.Namespace,
-            new string[] {
-                "System.Runtime.InteropServices",
-                "System.Runtime.CompilerServices",
-                "System.Diagnostics.CodeAnalysis"
-            },
+            usings.ToArray(),
             "#pragma warning disable CS0649"
             );
 
