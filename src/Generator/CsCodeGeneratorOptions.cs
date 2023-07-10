@@ -13,4 +13,5 @@ public sealed class CsCodeGeneratorOptions
     public bool ReadOnlySpanForStrings { get; set; } = false;
 
     public bool GenerateSizeOfStructs { get; set; } = false;
+    public bool IsVulkan { get; set; } = false;
 }

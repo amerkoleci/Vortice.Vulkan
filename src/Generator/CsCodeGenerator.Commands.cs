@@ -128,12 +128,6 @@ public static partial class CsCodeGenerator
 
     private static void GenerateCommands(CppCompilation compilation)
     {
-        // Generate Functions
-        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Commands.cs"),
-            false,
-            _options.Namespace,
-            new[] { "System" }
-            );
 
         Dictionary<string, CppFunction> commands = new();
         Dictionary<string, CppFunction> instanceCommands = new();
@@ -165,6 +159,16 @@ public static partial class CsCodeGenerator
                 }
             }
         }
+
+        if (commands.Count == 0)
+            return;
+
+        // Generate Functions
+        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Commands.cs"),
+            false,
+            _options.Namespace,
+            new[] { "System" }
+            );
 
         using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))
         {

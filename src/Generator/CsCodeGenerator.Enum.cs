@@ -229,14 +229,29 @@ public static partial class CsCodeGenerator
                 cppEnum.Name.EndsWith("FlagBitsMVK") ||
                 cppEnum.Name.EndsWith("FlagBitsNN");
 
-            string csName = GetCsCleanName(cppEnum.Name);
-            string enumNamePrefix = GetEnumNamePrefix(cppEnum.Name);
+            // typedef enum SpvSourceLanguage_ { } SpvSourceLanguage; }
+            string enumName = cppEnum.Name;
+
+            foreach (CppTypedef typedef in compilation.Typedefs)
+            {
+                if (typedef.ElementType is not CppEnum typeDefEnum)
+                    continue;
+
+                if (typeDefEnum.Name == cppEnum.Name)
+                {
+                    enumName = typedef.Name;
+                    break;
+                }
+            }
+
+            string csName = GetCsCleanName(enumName);
+            string enumNamePrefix = _options.IsVulkan ? GetEnumNamePrefix(enumName) : enumName;
 
             // Rename FlagBits in Flags.
             if (isBitmask)
             {
                 csName = csName.Replace("FlagBits", "Flags");
-                AddCsMapping(cppEnum.Name, csName);
+                AddCsMapping(enumName, csName);
             }
 
             // Remove extension suffix from enum item values
@@ -267,7 +282,7 @@ public static partial class CsCodeGenerator
                 extensionPrefix = "ANDROID";
             }
 
-            createdEnums.Add(csName, cppEnum.Name);
+            createdEnums.Add(csName, enumName);
 
             bool noneAdded = false;
 
@@ -285,7 +300,9 @@ public static partial class CsCodeGenerator
             }
 
             if (isBitmask)
+            {
                 writer.WriteLine("[Flags]");
+            }
 
             using (writer.PushBlock($"{visibility} enum {csName}"))
             {
@@ -373,6 +390,12 @@ public static partial class CsCodeGenerator
                     }
                     else
                     {
+                        // Spv
+                        if (enumItemName == "Max" && enumItem.Value == int.MaxValue)
+                        {
+                            continue;
+                        }
+
                         if (enumItemValue != null && !string.IsNullOrEmpty(enumItemValue.Comment))
                         {
                             writer.WriteLine("/// <summary>");
@@ -432,81 +455,85 @@ public static partial class CsCodeGenerator
         }
 
         // Defined with specs 1.2.170 => VK_KHR_synchronization2
-        string lastCreatedEnum = string.Empty;
-        foreach (CppField cppField in compilation.Fields)
+        if (_options.IsVulkan)
         {
-            string? fieldType = GetCsTypeName(cppField.Type, false);
-            string createdEnumName;
-
-            if (!createdEnums.ContainsKey(fieldType))
+            string lastCreatedEnum = string.Empty;
+            foreach (CppField cppField in compilation.Fields)
             {
-                if (!string.IsNullOrEmpty(lastCreatedEnum))
-                {
-                    writer.EndBlock();
-                    writer.WriteLine();
-                }
+                string? fieldType = GetCsTypeName(cppField.Type, false);
+                string createdEnumName;
 
-                createdEnums.Add(fieldType, fieldType);
-                lastCreatedEnum = fieldType;
-
-                string baseType = "uint";
-                if (cppField.Type is CppQualifiedType qualifiedType)
+                if (!createdEnums.ContainsKey(fieldType))
                 {
-                    if (qualifiedType.ElementType is CppTypedef typedef)
+                    if (!string.IsNullOrEmpty(lastCreatedEnum))
                     {
-                        baseType = GetCsTypeName(typedef.ElementType, false);
+                        writer.EndBlock();
+                        writer.WriteLine();
                     }
-                    else
+
+                    createdEnums.Add(fieldType, fieldType);
+                    lastCreatedEnum = fieldType;
+
+                    string baseType = "uint";
+                    if (cppField.Type is CppQualifiedType qualifiedType)
                     {
-                        baseType = GetCsTypeName(qualifiedType.ElementType, false);
+                        if (qualifiedType.ElementType is CppTypedef typedef)
+                        {
+                            baseType = GetCsTypeName(typedef.ElementType, false);
+                        }
+                        else
+                        {
+                            baseType = GetCsTypeName(qualifiedType.ElementType, false);
+                        }
                     }
-                }
 
-                if (fieldType.EndsWith("FlagBits2"))
+                    if (fieldType.EndsWith("FlagBits2"))
+                    {
+                        fieldType = fieldType.Replace("FlagBits2", "Flags2");
+                    }
+
+                    writer.WriteLine("[Flags]");
+                    writer.BeginBlock($"public enum {fieldType} : {baseType}");
+                    createdEnumName = fieldType;
+                }
+                else
                 {
-                    fieldType = fieldType.Replace("FlagBits2", "Flags2");
+                    createdEnumName = createdEnums[fieldType];
                 }
 
-                writer.WriteLine("[Flags]");
-                writer.BeginBlock($"public enum {fieldType} : {baseType}");
-                createdEnumName = fieldType;
-            }
-            else
-            {
-                createdEnumName = createdEnums[fieldType];
+                string csFieldName = string.Empty;
+                if (cppField.Name.StartsWith("VK_PIPELINE_STAGE_2"))
+                {
+                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_PIPELINE_STAGE_2");
+                }
+                else if (cppField.Name.StartsWith("VK_ACCESS_2"))
+                {
+                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_ACCESS_2");
+                }
+                else if (cppField.Name.StartsWith("VK_FORMAT_FEATURE_2"))
+                {
+                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_FORMAT_FEATURE_2");
+                }
+                else
+                {
+                    csFieldName = NormalizeFieldName(cppField.Name);
+                }
+
+                // Remove vendor suffix from enum value if enum already contains it
+                if (csFieldName.EndsWith("KHR", StringComparison.Ordinal) &&
+                    createdEnumName.EndsWith("KHR", StringComparison.Ordinal))
+                {
+                    csFieldName = csFieldName.Substring(0, csFieldName.Length - 3);
+                }
+
+                writer.WriteLine($"{csFieldName} = {cppField.InitValue},");
             }
 
-            string csFieldName = string.Empty;
-            if (cppField.Name.StartsWith("VK_PIPELINE_STAGE_2"))
-            {
-                csFieldName = GetPrettyEnumName(cppField.Name, "VK_PIPELINE_STAGE_2");
-            }
-            else if (cppField.Name.StartsWith("VK_ACCESS_2"))
-            {
-                csFieldName = GetPrettyEnumName(cppField.Name, "VK_ACCESS_2");
-            }
-            else if (cppField.Name.StartsWith("VK_FORMAT_FEATURE_2"))
-            {
-                csFieldName = GetPrettyEnumName(cppField.Name, "VK_FORMAT_FEATURE_2");
-            }
-            else
-            {
-                csFieldName = NormalizeFieldName(cppField.Name);
-            }
 
-            // Remove vendor suffix from enum value if enum already contains it
-            if (csFieldName.EndsWith("KHR", StringComparison.Ordinal) &&
-                createdEnumName.EndsWith("KHR", StringComparison.Ordinal))
+            if (!string.IsNullOrEmpty(lastCreatedEnum))
             {
-                csFieldName = csFieldName.Substring(0, csFieldName.Length - 3);
+                writer.EndBlock();
             }
-
-            writer.WriteLine($"{csFieldName} = {cppField.InitValue},");
-        }
-
-        if (!string.IsNullOrEmpty(lastCreatedEnum))
-        {
-            writer.EndBlock();
         }
     }
 
@@ -516,15 +543,15 @@ public static partial class CsCodeGenerator
         if (enumName == "VkFormat")
         {
             enumItemName = cppEnumItemName.Substring(enumNamePrefix.Length + 1);
-            var splits = enumItemName.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] splits = enumItemName.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
             if (splits.Length <= 1)
             {
                 enumItemName = char.ToUpperInvariant(enumItemName[0]) + enumItemName.Substring(1).ToLowerInvariant();
             }
             else
             {
-                var sb = new StringBuilder();
-                foreach (var part in splits)
+                StringBuilder sb = new();
+                foreach (string part in splits)
                 {
                     if (part.Equals("UNORM", StringComparison.OrdinalIgnoreCase))
                     {
@@ -766,8 +793,21 @@ public static partial class CsCodeGenerator
             return value;
         }
 
-        string[] parts = value[enumPrefix.Length..].Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+        if (!_options.IsVulkan)
+        {
+            string result = value[enumPrefix.Length..];
+            if (char.IsNumber(result[0]))
+            {
+                if (enumPrefix.EndsWith("SpvDim"))
+                {
+                    return "Dim" + result;
+                }
+            }
 
+            return result;
+        }
+
+        string[] parts = value[enumPrefix.Length..].Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
         var sb = new StringBuilder();
         foreach (string part in parts)
         {

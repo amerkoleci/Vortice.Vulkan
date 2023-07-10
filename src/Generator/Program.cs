@@ -30,23 +30,57 @@ public static class Program
             Directory.CreateDirectory(outputPath);
         }
 
-        string? headerFile = Path.Combine(AppContext.BaseDirectory, "vulkan", "vulkan.h");
-        var options = new CppParserOptions
+        string? headerFile;
+        List<string> defines = new();
+        CsCodeGeneratorOptions generateOptions;
+        bool isVulkan = false;
+
+        if (outputPath.Contains("Vortice.SPIRV"))
         {
-            ParseMacros = true,
-            Defines =
-                {
-                    "VK_USE_PLATFORM_ANDROID_KHR",
-                    "VK_USE_PLATFORM_IOS_MVK",
-                    "VK_USE_PLATFORM_MACOS_MVK",
-                    "VK_USE_PLATFORM_METAL_EXT",
-                    "VK_USE_PLATFORM_VI_NN",
-                    //"VK_USE_PLATFORM_WAYLAND_KHR",
-                    //"VK_USE_PLATFORM_WIN32_KHR",
-                    //"VK_USE_PLATFORM_SCREEN_QNX",
-                    "VK_ENABLE_BETA_EXTENSIONS"
-                }
+            headerFile = Path.Combine(AppContext.BaseDirectory, "headers", "spirv.h");
+
+            generateOptions = new()
+            {
+                OutputPath = outputPath,
+                ClassName = "Spv",
+                Namespace = "Vortice.SPIRV",
+                PublicVisiblity = true,
+                GenerateFunctionPointers = true
+            };
+        }
+        else
+        {
+            isVulkan = true;
+            headerFile = Path.Combine(AppContext.BaseDirectory, "vulkan", "vulkan.h");
+            defines = new()
+            {
+                "VK_USE_PLATFORM_ANDROID_KHR",
+                "VK_USE_PLATFORM_IOS_MVK",
+                "VK_USE_PLATFORM_MACOS_MVK",
+                "VK_USE_PLATFORM_METAL_EXT",
+                "VK_USE_PLATFORM_VI_NN",
+                //"VK_USE_PLATFORM_WAYLAND_KHR",
+                //"VK_USE_PLATFORM_WIN32_KHR",
+                //"VK_USE_PLATFORM_SCREEN_QNX",
+                "VK_ENABLE_BETA_EXTENSIONS"
+            };
+
+            generateOptions = new()
+            {
+                OutputPath = outputPath,
+                ClassName = "Vulkan",
+                Namespace = "Vortice.Vulkan",
+                PublicVisiblity = true,
+                GenerateFunctionPointers = true,
+                IsVulkan = true
+            };
+        }
+
+        CppParserOptions options = new()
+        {
+            ParseMacros = true
         };
+        options.Defines.AddRange(defines);
 
         CppCompilation compilation = CppParser.ParseFile(headerFile, options);
 
@@ -57,7 +91,7 @@ public static class Program
             {
                 if (message.Type == CppLogMessageType.Error)
                 {
-                    var currentColor = Console.ForegroundColor;
+                    ConsoleColor currentColor = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(message);
                     Console.ForegroundColor = currentColor;
@@ -67,21 +101,20 @@ public static class Program
             return 0;
         }
 
-        using (FileStream stream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, "docs", "vk.xml")))
+        if (isVulkan)
         {
-            VulkanSpecification vs = new(stream);
-
-            CsCodeGeneratorOptions generateOptions = new()
+            using (FileStream stream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, "docs", "vk.xml")))
             {
-                OutputPath = outputPath,
-                ClassName = "Vulkan",
-                Namespace = "Vortice.Vulkan",
-                PublicVisiblity = true,
-                GenerateFunctionPointers = true
-            };
-            CsCodeGenerator.Generate(compilation, generateOptions, vs);
+                VulkanSpecification vs = new(stream);
+
+                CsCodeGenerator.Generate(compilation, generateOptions, vs);
+            }
         }
-        
+        else
+        {
+            CsCodeGenerator.Generate(compilation, generateOptions);
+        }
+
         return 0;
     }
 }

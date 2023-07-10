@@ -9,6 +9,26 @@ public static partial class CsCodeGenerator
 {
     private static void GenerateHandles(CppCompilation compilation)
     {
+        bool hasAnyHandleType = false;
+        foreach (CppTypedef typedef in compilation.Typedefs)
+        {
+            if (typedef.Name.StartsWith("PFN_"))
+            {
+                continue;
+            }
+
+            if (typedef.ElementType is not CppPointerType)
+            {
+                continue;
+            }
+
+            hasAnyHandleType = true;
+            break;
+        }
+
+        if (!hasAnyHandleType)
+            return;
+
         string visibility = _options.PublicVisiblity ? "public" : "internal";
 
         // Generate Functions

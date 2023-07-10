@@ -87,7 +87,7 @@ public static partial class CsCodeGenerator
     private static CsCodeGeneratorOptions _options = new();
     private static VulkanSpecification? s_vulkanSpecification = default;
 
-    public static void Generate(CppCompilation compilation, CsCodeGeneratorOptions options, VulkanSpecification? specification)
+    public static void Generate(CppCompilation compilation, CsCodeGeneratorOptions options, VulkanSpecification? specification = default)
     {
         _options = options;
         s_vulkanSpecification = specification;
@@ -97,9 +97,12 @@ public static partial class CsCodeGenerator
         GenerateHandles(compilation);
         GenerateStructAndUnions(compilation);
         GenerateCommands(compilation);
-        GenerateHelperCommands(compilation);
+        if (options.IsVulkan)
+        {
+            GenerateHelperCommands(compilation);
+        }
 
-        if(specification != null)
+        if (specification != null)
         {
             GenerateFormatHelpers(specification);
         }
@@ -117,7 +120,7 @@ public static partial class CsCodeGenerator
         writer.WriteLine("/// <summary>");
         writer.WriteLine("/// Provides Vulkan specific constants for special values, layer names and extension names.");
         writer.WriteLine("/// </summary>");
-        using (writer.PushBlock($"{visibility} static partial class Vulkan"))
+        using (writer.PushBlock($"{visibility} static partial class {_options.ClassName}"))
         {
             foreach (CppMacro cppMacro in compilation.Macros)
             {
@@ -149,8 +152,6 @@ public static partial class CsCodeGenerator
                     continue;
                 }
 
-                //string csName = GetPrettyEnumName(cppMacro.Name, "VK_");
-
                 string modifier = "const";
                 string csDataType = _options.ReadOnlySpanForStrings ? "ReadOnlySpan<byte>" : "string";
                 string macroValue = NormalizeEnumValue(cppMacro.Value);
@@ -166,7 +167,7 @@ public static partial class CsCodeGenerator
                 {
                     csDataType = "uint";
                 }
-                else if (uint.TryParse(macroValue, out _))
+                else if (uint.TryParse(macroValue, out _) || macroValue.StartsWith("0x"))
                 {
                     csDataType = "uint";
                 }
@@ -268,6 +269,30 @@ public static partial class CsCodeGenerator
                     }
 
                     writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} {assignValue} {macroValue};");
+                }
+            }
+
+            if (!_options.IsVulkan)
+            {
+                bool first = true;
+
+                foreach (CppField cppField in compilation.Fields)
+                {
+                    if (first)
+                    {
+                        writer.WriteLine();
+                        first = false;
+                    }
+
+                    string? fieldType = GetCsTypeName(cppField.Type, false);
+                    string fieldName = cppField.Name;
+                    if (fieldName.StartsWith(_options.ClassName))
+                    {
+                        fieldName = fieldName[_options.ClassName.Length..];
+                    }
+
+                    string modifier = "const";
+                    writer.WriteLine($"public {modifier} {fieldType} {fieldName} = {cppField.InitExpression};");
                 }
             }
         }

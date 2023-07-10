@@ -10,6 +10,9 @@ public static partial class CsCodeGenerator
 {
     private static void GenerateStructAndUnions(CppCompilation compilation)
     {
+        if (compilation.Classes.Count == 0)
+            return;
+
         string visibility = _options.PublicVisiblity ? "public" : "internal";
 
         // Generate Structures
