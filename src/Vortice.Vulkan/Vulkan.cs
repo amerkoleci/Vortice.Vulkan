@@ -19,30 +19,52 @@ public static unsafe partial class Vulkan
     public const uint VK_TRUE = 1;
     public const uint VK_FALSE = 0;
 
-    public static VkResult vkInitialize()
+    public static VkResult vkInitialize(string? libraryName = default)
     {
         if (OperatingSystem.IsWindows())
         {
-            s_vulkanModule = _loader.LoadNativeLibrary("vulkan-1.dll");
+            if (!string.IsNullOrEmpty(libraryName))
+            {
+                s_vulkanModule = _loader.LoadNativeLibrary(libraryName);
+            }
+            else
+            {
+                s_vulkanModule = _loader.LoadNativeLibrary("vulkan-1.dll");
+            }
+
             if (s_vulkanModule == 0)
                 return VkResult.ErrorInitializationFailed;
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
-            s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.dylib");
-            if (s_vulkanModule == 0)
-                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.1.dylib");
-            if (s_vulkanModule == 0)
-                s_vulkanModule = _loader.LoadNativeLibrary("libMoltenVK.dylib");
+            if (!string.IsNullOrEmpty(libraryName))
+            {
+                s_vulkanModule = _loader.LoadNativeLibrary(libraryName);
+            }
+            else
+            {
+                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.dylib");
+                if (s_vulkanModule == 0)
+                    s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.1.dylib");
+                if (s_vulkanModule == 0)
+                    s_vulkanModule = _loader.LoadNativeLibrary("libMoltenVK.dylib");
+            }
 
             if (s_vulkanModule == 0)
                 return VkResult.ErrorInitializationFailed;
         }
         else
         {
-            s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so.1");
-            if (s_vulkanModule == 0)
-                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so");
+            if (!string.IsNullOrEmpty(libraryName))
+            {
+                s_vulkanModule = _loader.LoadNativeLibrary(libraryName);
+            }
+            else
+            {
+                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so.1");
+                if (s_vulkanModule == 0)
+                    s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so");
+            }
 
             if (s_vulkanModule == 0)
                 return VkResult.ErrorInitializationFailed;
@@ -414,9 +436,9 @@ public static unsafe partial class Vulkan
         }
     }
 
-    public static void vkCmdBindVertexBuffer(VkCommandBuffer commandBuffer, int binding, VkBuffer buffer, ulong offset = 0)
+    public static void vkCmdBindVertexBuffer(VkCommandBuffer commandBuffer, uint binding, VkBuffer buffer, ulong offset = 0)
     {
-        vkCmdBindVertexBuffers(commandBuffer, (uint)binding, 1, &buffer, &offset);
+        vkCmdBindVertexBuffers(commandBuffer, binding, 1, &buffer, &offset);
     }
 
     public static void vkCmdBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, ReadOnlySpan<VkBuffer> buffers, ReadOnlySpan<ulong> offsets)
@@ -474,7 +496,7 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateFlags flags, uint queueFamilyIndex, out VkCommandPool commandPool)
     {
-        VkCommandPoolCreateInfo createInfo = new ()
+        VkCommandPoolCreateInfo createInfo = new()
         {
             flags = flags,
             queueFamilyIndex = queueFamilyIndex
@@ -517,14 +539,14 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkCreateTypedSemaphore(VkDevice device, VkSemaphoreType type, ulong initialValue, out VkSemaphore semaphore)
     {
-        VkSemaphoreTypeCreateInfo typeCreateiInfo = new ()
+        VkSemaphoreTypeCreateInfo typeCreateiInfo = new()
         {
             pNext = null,
             semaphoreType = type,
             initialValue = initialValue
         };
 
-        VkSemaphoreCreateInfo createInfo = new ()
+        VkSemaphoreCreateInfo createInfo = new()
         {
             pNext = &typeCreateiInfo,
             flags = VkSemaphoreCreateFlags.None
@@ -544,7 +566,7 @@ public static unsafe partial class Vulkan
     {
         fixed (VkImageView* attachmentsPtr = attachments)
         {
-            VkFramebufferCreateInfo createInfo = new ()
+            VkFramebufferCreateInfo createInfo = new()
             {
                 renderPass = renderPass,
                 attachmentCount = (uint)attachments.Length,
