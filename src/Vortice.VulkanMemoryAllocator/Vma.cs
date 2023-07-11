@@ -73,6 +73,16 @@ unsafe partial class Vma
         return vmaCreateAllocatorPrivate(allocateInfo, allocator);
     }
 
+    public static VkResult vmaCreateAllocator(VmaAllocatorCreateInfo* allocateInfo, out VmaAllocator allocator)
+    {
+        VmaVulkanFunctions functions = default;
+        functions.vkGetInstanceProcAddr = vkGetInstanceProcAddr_ptr;
+        functions.vkGetDeviceProcAddr = vkGetDeviceProcAddr_ptr;
+
+        allocateInfo->pVulkanFunctions = &functions;
+        return vmaCreateAllocatorPrivate(allocateInfo, out allocator);
+    }
+
     public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, ReadOnlySpan<sbyte> name)
     {
         fixed (sbyte* namePtr = name)
@@ -145,21 +155,6 @@ unsafe partial class Vma
         out VkBuffer buffer,
         out VmaAllocation allocation,
         VmaAllocationInfo* pAllocationInfo);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern VkResult vmaCreateAliasingBuffer(
-        VmaAllocator allocator,
-        VmaAllocation allocation,
-        VkBufferCreateInfo* pBufferCreateInfo,
-        out VkBuffer buffer);
-
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern VkResult vmaCreateAliasingBuffer2(
-        VmaAllocator allocator,
-        VmaAllocation allocation,
-        ulong allocationLocalOffset,
-        VkBufferCreateInfo* pBufferCreateInfo,
-        out VkBuffer buffer);
 
     public static VkResult vmaCreateImage(
         VmaAllocator allocator,

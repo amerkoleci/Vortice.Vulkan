@@ -91,7 +91,7 @@ public static partial class CsCodeGenerator
                         continue;
                     }
 
-                    if (CanBeUsedAsOutput(parameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
+                    if (CanBeUsedAsOutput(parameter.Type, out CppType? cppTypeDeclaration))
                     {
                         returnVariableName = GetParameterName(parameter.Name);
                         returnArrayTypeName = GetCsTypeName(cppTypeDeclaration);

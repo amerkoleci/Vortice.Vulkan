@@ -89,6 +89,32 @@ public static partial class CsCodeGenerator
 
         "vkCreateDebugUtilsMessengerEXT",
 
+        // vma
+        "vmaCreateAllocator",
+        "vmaGetAllocatorInfo",
+        "vmaGetPhysicalDeviceProperties",
+        "vmaGetMemoryProperties",
+        "vmaGetMemoryTypeProperties",
+        "vmaCalculateStatistics",
+        "vmaGetHeapBudgets",
+        "vmaCreatePool",
+        "vmaGetPoolStatistics",
+        "vmaCalculatePoolStatistics",
+        "vmaAllocateMemory",
+        "vmaAllocateMemoryForBuffer",
+        "vmaAllocateMemoryForImage",
+        "vmaCreateBuffer",
+        "vmaCreateBufferWithAlignment",
+        "vmaCreateAliasingBuffer",
+        "vmaCreateAliasingBuffer2",
+        "vmaCreateImage",
+        "vmaCreateAliasingImage",
+        "vmaCreateAliasingImage2",
+        "vmaCreateVirtualBlock",
+        "vmaGetVirtualAllocationInfo",
+        "vmaGetVirtualBlockStatistics",
+        "vmaCalculateVirtualBlockStatistics",
+
         // spvc
         "spvc_context_create",
         "spvc_compiler_create_compiler_options",
@@ -105,7 +131,7 @@ public static partial class CsCodeGenerator
             string paramCsType = GetCsTypeName(parameter.Type, false);
 
             if (canUseOut &&
-                CanBeUsedAsOutput(parameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
+                CanBeUsedAsOutput(parameter.Type, out CppType? cppTypeDeclaration))
             {
                 builder.Append("out ");
                 paramCsType = GetCsTypeName(cppTypeDeclaration, false);
@@ -137,10 +163,7 @@ public static partial class CsCodeGenerator
             if (cppFunction.Name == "spvc_context_set_error_callback")
                 continue;
 
-            string? returnType = GetCsTypeName(cppFunction.ReturnType, false);
-            bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
             string? csName = cppFunction.Name;
-            string argumentsString = GetParameterSignature(cppFunction, canUseOut);
 
             commands.Add(csName, cppFunction);
 
@@ -314,7 +337,7 @@ public static partial class CsCodeGenerator
                 {
                     string paramCsName = GetParameterName(cppParameter.Name);
 
-                    if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
+                    if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out _))
                     {
                         writer.Write("out ");
                     }
@@ -388,7 +411,7 @@ public static partial class CsCodeGenerator
             string paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
             string paramCsName = GetParameterName(cppParameter.Name);
 
-            if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
+            if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppType? cppTypeDeclaration))
             {
                 argumentBuilder.Append("out ");
                 paramCsTypeName = GetCsTypeName(cppTypeDeclaration, false);
@@ -428,10 +451,17 @@ public static partial class CsCodeGenerator
             return GetParameterName(name);
         }
 
+        if (name.StartsWith("pp")
+            && char.IsUpper(name[2]))
+        {
+            name = char.ToLower(name[2]) + name.Substring(3);
+            return GetParameterName(name);
+        }
+
         return name;
     }
 
-    private static bool CanBeUsedAsOutput(CppType type, out CppTypeDeclaration? elementTypeDeclaration)
+    private static bool CanBeUsedAsOutput(CppType type, out CppType? elementTypeDeclaration)
     {
         if (type is CppPointerType pointerType)
         {
@@ -451,6 +481,12 @@ public static partial class CsCodeGenerator
                 && @enum.SizeOf > 0)
             {
                 elementTypeDeclaration = @enum;
+                return true;
+            }
+            else if (pointerType.ElementType is CppPointerType cppElementPointerType
+                && cppElementPointerType.SizeOf > 0)
+            {
+                elementTypeDeclaration = cppElementPointerType.ElementType;
                 return true;
             }
         }
