@@ -6697,6 +6697,28 @@ public enum VkComponentTypeKHR
 	Uint32 = 9,
 	/// <unmanaged>VK_COMPONENT_TYPE_UINT64_KHR</unmanaged>
 	Uint64 = 10,
+	/// <unmanaged>VK_COMPONENT_TYPE_FLOAT16_NV</unmanaged>
+	Float16NV = Float16,
+	/// <unmanaged>VK_COMPONENT_TYPE_FLOAT32_NV</unmanaged>
+	Float32NV = Float32,
+	/// <unmanaged>VK_COMPONENT_TYPE_FLOAT64_NV</unmanaged>
+	Float64NV = Float64,
+	/// <unmanaged>VK_COMPONENT_TYPE_SINT8_NV</unmanaged>
+	Sint8NV = Sint8,
+	/// <unmanaged>VK_COMPONENT_TYPE_SINT16_NV</unmanaged>
+	Sint16NV = Sint16,
+	/// <unmanaged>VK_COMPONENT_TYPE_SINT32_NV</unmanaged>
+	Sint32NV = Sint32,
+	/// <unmanaged>VK_COMPONENT_TYPE_SINT64_NV</unmanaged>
+	Sint64NV = Sint64,
+	/// <unmanaged>VK_COMPONENT_TYPE_UINT8_NV</unmanaged>
+	Uint8NV = Uint8,
+	/// <unmanaged>VK_COMPONENT_TYPE_UINT16_NV</unmanaged>
+	Uint16NV = Uint16,
+	/// <unmanaged>VK_COMPONENT_TYPE_UINT32_NV</unmanaged>
+	Uint32NV = Uint32,
+	/// <unmanaged>VK_COMPONENT_TYPE_UINT64_NV</unmanaged>
+	Uint64NV = Uint64,
 }
 
 public enum VkScopeKHR
@@ -6709,6 +6731,14 @@ public enum VkScopeKHR
 	Subgroup = 3,
 	/// <unmanaged>VK_SCOPE_QUEUE_FAMILY_KHR</unmanaged>
 	QueueFamily = 5,
+	/// <unmanaged>VK_SCOPE_DEVICE_NV</unmanaged>
+	DeviceNV = Device,
+	/// <unmanaged>VK_SCOPE_WORKGROUP_NV</unmanaged>
+	WorkgroupNV = Workgroup,
+	/// <unmanaged>VK_SCOPE_SUBGROUP_NV</unmanaged>
+	SubgroupNV = Subgroup,
+	/// <unmanaged>VK_SCOPE_QUEUE_FAMILY_NV</unmanaged>
+	QueueFamilyNV = QueueFamily,
 }
 
 public enum VkDebugReportObjectTypeEXT
@@ -7309,44 +7339,6 @@ public enum VkValidationFeatureDisableEXT
 	ShaderValidationCache = 7,
 }
 
-public enum VkComponentTypeNV
-{
-	/// <unmanaged>VK_COMPONENT_TYPE_FLOAT16_NV</unmanaged>
-	TypeFloat16 = 0,
-	/// <unmanaged>VK_COMPONENT_TYPE_FLOAT32_NV</unmanaged>
-	TypeFloat32 = 1,
-	/// <unmanaged>VK_COMPONENT_TYPE_FLOAT64_NV</unmanaged>
-	TypeFloat64 = 2,
-	/// <unmanaged>VK_COMPONENT_TYPE_SINT8_NV</unmanaged>
-	TypeSint8 = 3,
-	/// <unmanaged>VK_COMPONENT_TYPE_SINT16_NV</unmanaged>
-	TypeSint16 = 4,
-	/// <unmanaged>VK_COMPONENT_TYPE_SINT32_NV</unmanaged>
-	TypeSint32 = 5,
-	/// <unmanaged>VK_COMPONENT_TYPE_SINT64_NV</unmanaged>
-	TypeSint64 = 6,
-	/// <unmanaged>VK_COMPONENT_TYPE_UINT8_NV</unmanaged>
-	TypeUint8 = 7,
-	/// <unmanaged>VK_COMPONENT_TYPE_UINT16_NV</unmanaged>
-	TypeUint16 = 8,
-	/// <unmanaged>VK_COMPONENT_TYPE_UINT32_NV</unmanaged>
-	TypeUint32 = 9,
-	/// <unmanaged>VK_COMPONENT_TYPE_UINT64_NV</unmanaged>
-	TypeUint64 = 10,
-}
-
-public enum VkScopeNV
-{
-	/// <unmanaged>VK_SCOPE_DEVICE_NV</unmanaged>
-	ScopeDevice = 1,
-	/// <unmanaged>VK_SCOPE_WORKGROUP_NV</unmanaged>
-	ScopeWorkgroup = 2,
-	/// <unmanaged>VK_SCOPE_SUBGROUP_NV</unmanaged>
-	ScopeSubgroup = 3,
-	/// <unmanaged>VK_SCOPE_QUEUE_FAMILY_NV</unmanaged>
-	ScopeQueueFamily = 5,
-}
-
 public enum VkCoverageReductionModeNV
 {
 	/// <unmanaged>VK_COVERAGE_REDUCTION_MODE_MERGE_NV</unmanaged>
@@ -7871,7 +7863,7 @@ public enum VkShaderCodeTypeEXT
 	/// <unmanaged>VK_SHADER_CODE_TYPE_BINARY_EXT</unmanaged>
 	Binary = 0,
 	/// <unmanaged>VK_SHADER_CODE_TYPE_SPIRV_EXT</unmanaged>
-	Spirv = 1,
+	SPIRV = 1,
 }
 
 [Flags]
@@ -8725,6 +8717,7 @@ public enum VkPipelineStageFlags2 : ulong
 	MeshShaderNV = 1048576,
 	TaskShaderEXT = 524288,
 	MeshShaderEXT = 1048576,
+	SubpassShaderHUAWEI = 549755813888,
 	SubpassShadingHUAWEI = 549755813888,
 	InvocationMaskHUAWEI = 1099511627776,
 	AccelerationStructureCopyKHR = 268435456,

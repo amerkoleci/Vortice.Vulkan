@@ -34,7 +34,6 @@ public static partial class CsCodeGenerator
             "#pragma warning disable CS0649"
             );
 
-        // Print All classes, structs
         foreach (CppClass? cppClass in compilation.Classes)
         {
             if (cppClass.ClassKind == CppClassKind.Class ||
@@ -82,7 +81,13 @@ public static partial class CsCodeGenerator
             }
 
             bool isReadOnly = false;
+
             string modifier = "partial";
+            bool needUnsafe = NeedUnsafe(cppClass);
+            if (needUnsafe)
+            {
+                modifier = "unsafe partial";
+            }
             if (csName == "VkClearDepthStencilValue")
             {
                 modifier = "readonly partial";
@@ -190,7 +195,7 @@ public static partial class CsCodeGenerator
             if (canUseFixed)
             {
                 string csFieldType = GetCsTypeName(arrayType.ElementType, false);
-                writer.WriteLine($"public unsafe fixed {csFieldType} {csFieldName}[{arrayType.Size}];");
+                writer.WriteLine($"public fixed {csFieldType} {csFieldName}[{arrayType.Size}];");
             }
             else
             {
@@ -199,7 +204,7 @@ public static partial class CsCodeGenerator
                 {
                     // vk-video madness
                     csFieldType = GetCsTypeName(elementArrayType.ElementType, false);
-                    writer.WriteLine($"public unsafe fixed {csFieldType} {csFieldName}[{arrayType.Size} * {elementArrayType.Size}];");
+                    writer.WriteLine($"public fixed {csFieldType} {csFieldName}[{arrayType.Size} * {elementArrayType.Size}];");
                 }
                 else
                 {
@@ -274,7 +279,7 @@ public static partial class CsCodeGenerator
 
                 builder.Append(returnCsName);
 
-                writer.WriteLine($"public unsafe delegate* unmanaged<{builder}> {csFieldName};");
+                writer.WriteLine($"public delegate* unmanaged<{builder}> {csFieldName};");
                 return;
             }
 
@@ -303,10 +308,6 @@ public static partial class CsCodeGenerator
             }
 
             string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
-            if (csFieldType.EndsWith('*'))
-            {
-                fieldPrefix += "unsafe ";
-            }
 
             string modifier = "public";
             if (handleSType && csFieldName == "sType")
@@ -320,5 +321,83 @@ public static partial class CsCodeGenerator
 
             writer.WriteLine($"{modifier} {fieldPrefix}{csFieldType} {csFieldName};");
         }
+    }
+
+    private static bool NeedUnsafe(CppClass @class)
+    {
+        foreach (CppField field in @class.Fields)
+        {
+            if (field.Type is CppArrayType arrayType)
+            {
+                bool canUseFixed = false;
+                if (arrayType.ElementType is CppPrimitiveType)
+                {
+                    canUseFixed = true;
+                }
+                else if (arrayType.ElementType is CppTypedef typedef
+                    && typedef.ElementType is CppPrimitiveType)
+                {
+                    canUseFixed = true;
+                }
+
+                if (canUseFixed)
+                {
+                    return true;
+                }
+                else
+                {
+                    if (arrayType.ElementType is CppArrayType elementArrayType)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                // VkAllocationCallbacks members
+                if (field.Type is CppTypedef typedef &&
+                    typedef.ElementType is CppPointerType pointerType &&
+                    pointerType.ElementType is CppFunctionType functionType)
+                {
+                    return true;
+                }
+
+                string csFieldName = NormalizeFieldName(field.Name);
+                string csFieldType = GetCsTypeName(field.Type, false);
+                if (csFieldName.Equals("specVersion", StringComparison.OrdinalIgnoreCase) ||
+                    csFieldName.Equals("applicationVersion", StringComparison.OrdinalIgnoreCase) ||
+                    csFieldName.Equals("engineVersion", StringComparison.OrdinalIgnoreCase) ||
+                    csFieldName.Equals("apiVersion", StringComparison.OrdinalIgnoreCase) ||
+                    csFieldName.Equals("vulkanApiVersion", StringComparison.OrdinalIgnoreCase))
+                {
+                    csFieldType = "VkVersion";
+                }
+
+                if (field.Type.ToString() == "ANativeWindow*")
+                {
+                    csFieldType = "IntPtr";
+                }
+                else if (field.Type.ToString() == "CAMetalLayer*"
+                    || field.Type.ToString() == "const CAMetalLayer*")
+                {
+                    csFieldType = "IntPtr";
+                }
+                else if (csFieldType == "VkDirectDriverLoadingFlagsLUNARG")
+                {
+                    csFieldType = "VkDirectDriverLoadingModeLUNARG";
+                }
+
+                if (csFieldType.EndsWith('*'))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

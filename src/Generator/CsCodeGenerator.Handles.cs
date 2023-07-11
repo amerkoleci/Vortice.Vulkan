@@ -66,10 +66,12 @@ public static partial class CsCodeGenerator
 
             string csName = typedef.Name;
 
-            if (csName != "VmaVirtualAllocation" &&
-                typedef.ElementType is CppPointerType)
+            if (!_options.IsVulkan)
             {
-                isDispatchable = true;
+                if (csName != "VmaVirtualAllocation" && typedef.ElementType is CppPointerType)
+                {
+                    isDispatchable = true;
+                }
             }
 
             if (_options.IsVulkan)

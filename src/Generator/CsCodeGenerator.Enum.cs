@@ -244,17 +244,20 @@ public static partial class CsCodeGenerator
             // typedef enum SpvSourceLanguage_ { } SpvSourceLanguage; }
             string enumName = cppEnum.Name;
 
-            if (cppEnum.Name != "spvc_msl_shader_variable_format")
+            if (!_options.IsVulkan)
             {
-                foreach (CppTypedef typedef in compilation.Typedefs)
+                if (cppEnum.Name != "spvc_msl_shader_variable_format")
                 {
-                    if (typedef.ElementType is not CppEnum typeDefEnum)
-                        continue;
-
-                    if (typeDefEnum.Name == cppEnum.Name)
+                    foreach (CppTypedef typedef in compilation.Typedefs)
                     {
-                        enumName = typedef.Name;
-                        break;
+                        if (typedef.ElementType is not CppEnum typeDefEnum)
+                            continue;
+
+                        if (typeDefEnum.Name == cppEnum.Name)
+                        {
+                            enumName = typedef.Name;
+                            break;
+                        }
                     }
                 }
             }

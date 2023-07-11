@@ -84,6 +84,8 @@ public static partial class CsCodeGenerator
         { "VkPipelineStageFlagBits2KHR", "VkPipelineStageFlags2KHR" },
         { "VkAccessFlagBits2KHR", "VkAccessFlags2KHR" },
         { "VkFormatFeatureFlagBits2KHR", "VkFormatFeatureFlags2KHR" },
+        { "VkComponentTypeNV", "VkComponentTypeKHR" },
+        { "VkScopeNV", "VkScopeKHR" },
 
         // Spirv - Spirv-Cross
         { "SpvId", "uint" },

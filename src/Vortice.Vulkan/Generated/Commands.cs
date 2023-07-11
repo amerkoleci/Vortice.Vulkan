@@ -8,6 +8,7 @@
 // ------------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Vortice.Vulkan;
 
@@ -194,9 +195,9 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void*, VkResult> vkMapMemory_ptr;
-	public static VkResult vkMapMemory(VkDevice device, VkDeviceMemory memory, ulong offset, ulong size, VkMemoryMapFlags flags, void* ppData)
+	public static VkResult vkMapMemory(VkDevice device, VkDeviceMemory memory, ulong offset, ulong size, VkMemoryMapFlags flags, void* data)
 	{
-		return vkMapMemory_ptr(device, memory, offset, size, flags, ppData);
+		return vkMapMemory_ptr(device, memory, offset, size, flags, data);
 	}
 
 	private static delegate* unmanaged<VkDevice, VkDeviceMemory, void> vkUnmapMemory_ptr;
@@ -2198,9 +2199,9 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void*, VkResult> vkMapMemory2KHR_ptr;
-	public static VkResult vkMapMemory2KHR(VkDevice device, VkMemoryMapInfoKHR* memoryMapInfo, void* ppData)
+	public static VkResult vkMapMemory2KHR(VkDevice device, VkMemoryMapInfoKHR* memoryMapInfo, void* data)
 	{
-		return vkMapMemory2KHR_ptr(device, memoryMapInfo, ppData);
+		return vkMapMemory2KHR_ptr(device, memoryMapInfo, data);
 	}
 
 	private static delegate* unmanaged<VkDevice, VkMemoryUnmapInfoKHR*, VkResult> vkUnmapMemory2KHR_ptr;
@@ -3374,9 +3375,9 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged<VkDevice, VkDescriptorSet, void*, void> vkGetDescriptorSetHostMappingVALVE_ptr;
-	public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void* ppData)
+	public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void* data)
 	{
-		vkGetDescriptorSetHostMappingVALVE_ptr(device, descriptorSet, ppData);
+		vkGetDescriptorSetHostMappingVALVE_ptr(device, descriptorSet, data);
 	}
 
 	private static delegate* unmanaged<VkCommandBuffer, ulong, uint, uint, void> vkCmdCopyMemoryIndirectNV_ptr;
@@ -3686,21 +3687,21 @@ unsafe partial class Vulkan
 	}
 
 	private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void> vkCmdBuildAccelerationStructuresKHR_ptr;
-	public static void vkCmdBuildAccelerationStructuresKHR(VkCommandBuffer commandBuffer, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildRangeInfoKHR** ppBuildRangeInfos)
+	public static void vkCmdBuildAccelerationStructuresKHR(VkCommandBuffer commandBuffer, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildRangeInfoKHR** buildRangeInfos)
 	{
-		vkCmdBuildAccelerationStructuresKHR_ptr(commandBuffer, infoCount, infos, ppBuildRangeInfos);
+		vkCmdBuildAccelerationStructuresKHR_ptr(commandBuffer, infoCount, infos, buildRangeInfos);
 	}
 
 	private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, ulong*, uint*, uint**, void> vkCmdBuildAccelerationStructuresIndirectKHR_ptr;
-	public static void vkCmdBuildAccelerationStructuresIndirectKHR(VkCommandBuffer commandBuffer, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, ulong* indirectDeviceAddresses, uint* indirectStrides, uint** ppMaxPrimitiveCounts)
+	public static void vkCmdBuildAccelerationStructuresIndirectKHR(VkCommandBuffer commandBuffer, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, ulong* indirectDeviceAddresses, uint* indirectStrides, uint** maxPrimitiveCounts)
 	{
-		vkCmdBuildAccelerationStructuresIndirectKHR_ptr(commandBuffer, infoCount, infos, indirectDeviceAddresses, indirectStrides, ppMaxPrimitiveCounts);
+		vkCmdBuildAccelerationStructuresIndirectKHR_ptr(commandBuffer, infoCount, infos, indirectDeviceAddresses, indirectStrides, maxPrimitiveCounts);
 	}
 
 	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, VkResult> vkBuildAccelerationStructuresKHR_ptr;
-	public static VkResult vkBuildAccelerationStructuresKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildRangeInfoKHR** ppBuildRangeInfos)
+	public static VkResult vkBuildAccelerationStructuresKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildRangeInfoKHR** buildRangeInfos)
 	{
-		return vkBuildAccelerationStructuresKHR_ptr(device, deferredOperation, infoCount, infos, ppBuildRangeInfos);
+		return vkBuildAccelerationStructuresKHR_ptr(device, deferredOperation, infoCount, infos, buildRangeInfos);
 	}
 
 	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureInfoKHR*, VkResult> vkCopyAccelerationStructureKHR_ptr;

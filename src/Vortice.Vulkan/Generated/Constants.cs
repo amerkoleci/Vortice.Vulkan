@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 255;
+	public const uint VK_HEADER_VERSION = 257;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -1615,7 +1615,7 @@ public static partial class Vulkan
 	/// <unmanaged>VK_HUAWEI_subpass_shading</unmanaged>
 	public const uint VK_HUAWEI_subpass_shading = 1;
 	/// <unmanaged>VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION</unmanaged>
-	public const uint VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 2;
+	public const uint VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 3;
 	/// <unmanaged>VK_HUAWEI_SUBPASS_SHADING_EXTENSION_NAME</unmanaged>
 	public const string VK_HUAWEI_SUBPASS_SHADING_EXTENSION_NAME = "VK_HUAWEI_subpass_shading";
 	/// <unmanaged>VK_HUAWEI_invocation_mask</unmanaged>
