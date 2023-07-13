@@ -69,13 +69,12 @@ public static partial class CsCodeGenerator
         { "GgpFrameToken", "IntPtr" },
         { "GgpStreamDescriptor", "IntPtr" },
 
-        // Vortice.Mathematics types.
-        //{ "VkOffset2D", "Point" },
-        //{ "VkOffset3D", "Point3" },
-        //{ "VkExtent2D", "Size" },
-        //{ "VkExtent3D", "Size3" },
-        //{ "VkRect2D", "Rectangle" },
-        //{ "VkViewport", "Viewport" },
+        { "MTLDevice_id", "IntPtr" },
+        { "MTLCommandQueue_id", "IntPtr" },
+        { "MTLBuffer_id", "IntPtr" },
+        { "MTLTexture_id", "IntPtr" },
+        { "MTLSharedEvent_id", "IntPtr" },
+        { "IOSurfaceRef", "IntPtr" },
 
         { "VkAccelerationStructureTypeNV", "VkAccelerationStructureTypeKHR" },
         { "VkAccelerationStructureMemoryRequirementsTypeNV", "VkAccelerationStructureMemoryRequirementsTypeKHR" },

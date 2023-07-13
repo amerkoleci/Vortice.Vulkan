@@ -372,6 +372,32 @@ public static unsafe partial class Vulkan
         return vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, pipeline);
     }
 
+    public static VkDescriptorPool vkCreateDescriptorPool(VkDevice device, ReadOnlySpan<VkDescriptorPoolSize> poolSizes, uint maxSets = 1u)
+    {
+        VkDescriptorPoolCreateInfo createInfo = new()
+        {
+            maxSets = maxSets,
+            poolSizeCount = (uint)poolSizes.Length,
+            pPoolSizes = (VkDescriptorPoolSize*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(poolSizes))
+        };
+
+        VkDescriptorPool descriptorPool;
+        vkCreateDescriptorPool_ptr(device, &createInfo, null, &descriptorPool).CheckResult();
+        return descriptorPool;
+    }
+
+    public static VkResult vkCreateDescriptorPool(VkDevice device, ReadOnlySpan<VkDescriptorPoolSize> poolSizes, uint maxSets, out VkDescriptorPool descriptorPool)
+    {
+        VkDescriptorPoolCreateInfo createInfo = new()
+        {
+            maxSets = maxSets,
+            poolSizeCount = (uint)poolSizes.Length,
+            pPoolSizes = (VkDescriptorPoolSize*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(poolSizes))
+        };
+
+        return vkCreateDescriptorPool_out_ptr(device, &createInfo, null, out descriptorPool);
+    }
+
     public static void vkUpdateDescriptorSets(VkDevice device, VkWriteDescriptorSet writeDescriptorSet)
     {
         vkUpdateDescriptorSets(device, 1, &writeDescriptorSet, 0, null);
@@ -772,6 +798,7 @@ public static unsafe partial class Vulkan
         }
     }
 
+    #region LibraryLoader
     private static ILibraryLoader GetPlatformLoader()
     {
         return new SystemNativeLibraryLoader();
@@ -811,5 +838,6 @@ public static unsafe partial class Vulkan
 
             return 0;
         }
-    }
+    } 
+    #endregion
 }

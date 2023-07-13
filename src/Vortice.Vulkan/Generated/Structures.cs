@@ -12968,7 +12968,7 @@ public unsafe partial struct VkExportMetalDeviceInfoEXT
 {
 	internal VkStructureType sType;
 	public void* pNext;
-	public MTLDevice_id mtlDevice;
+	public IntPtr mtlDevice;
 
 	public VkExportMetalDeviceInfoEXT()
 	{
@@ -12982,7 +12982,7 @@ public unsafe partial struct VkExportMetalCommandQueueInfoEXT
 	internal VkStructureType sType;
 	public void* pNext;
 	public VkQueue queue;
-	public MTLCommandQueue_id mtlCommandQueue;
+	public IntPtr mtlCommandQueue;
 
 	public VkExportMetalCommandQueueInfoEXT()
 	{
@@ -12996,7 +12996,7 @@ public unsafe partial struct VkExportMetalBufferInfoEXT
 	internal VkStructureType sType;
 	public void* pNext;
 	public VkDeviceMemory memory;
-	public MTLBuffer_id mtlBuffer;
+	public IntPtr mtlBuffer;
 
 	public VkExportMetalBufferInfoEXT()
 	{
@@ -13009,7 +13009,7 @@ public unsafe partial struct VkImportMetalBufferInfoEXT
 {
 	internal VkStructureType sType;
 	public void* pNext;
-	public MTLBuffer_id mtlBuffer;
+	public IntPtr mtlBuffer;
 
 	public VkImportMetalBufferInfoEXT()
 	{
@@ -13026,7 +13026,7 @@ public unsafe partial struct VkExportMetalTextureInfoEXT
 	public VkImageView imageView;
 	public VkBufferView bufferView;
 	public VkImageAspectFlags plane;
-	public MTLTexture_id mtlTexture;
+	public IntPtr mtlTexture;
 
 	public VkExportMetalTextureInfoEXT()
 	{
@@ -13040,7 +13040,7 @@ public unsafe partial struct VkImportMetalTextureInfoEXT
 	internal VkStructureType sType;
 	public void* pNext;
 	public VkImageAspectFlags plane;
-	public MTLTexture_id mtlTexture;
+	public IntPtr mtlTexture;
 
 	public VkImportMetalTextureInfoEXT()
 	{
@@ -13054,7 +13054,7 @@ public unsafe partial struct VkExportMetalIOSurfaceInfoEXT
 	internal VkStructureType sType;
 	public void* pNext;
 	public VkImage image;
-	public IOSurfaceRef ioSurface;
+	public IntPtr ioSurface;
 
 	public VkExportMetalIOSurfaceInfoEXT()
 	{
@@ -13067,7 +13067,7 @@ public unsafe partial struct VkImportMetalIOSurfaceInfoEXT
 {
 	internal VkStructureType sType;
 	public void* pNext;
-	public IOSurfaceRef ioSurface;
+	public IntPtr ioSurface;
 
 	public VkImportMetalIOSurfaceInfoEXT()
 	{
@@ -13082,7 +13082,7 @@ public unsafe partial struct VkExportMetalSharedEventInfoEXT
 	public void* pNext;
 	public VkSemaphore semaphore;
 	public VkEvent @event;
-	public MTLSharedEvent_id mtlSharedEvent;
+	public IntPtr mtlSharedEvent;
 
 	public VkExportMetalSharedEventInfoEXT()
 	{
@@ -13095,7 +13095,7 @@ public unsafe partial struct VkImportMetalSharedEventInfoEXT
 {
 	internal VkStructureType sType;
 	public void* pNext;
-	public MTLSharedEvent_id mtlSharedEvent;
+	public IntPtr mtlSharedEvent;
 
 	public VkImportMetalSharedEventInfoEXT()
 	{

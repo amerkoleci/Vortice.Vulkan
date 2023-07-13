@@ -7,13 +7,24 @@ namespace Generator;
 
 public static partial class CsCodeGenerator
 {
+    private static readonly HashSet<string> s_ignoredHandles = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "MTLDevice_id",
+        "MTLCommandQueue_id",
+        "MTLBuffer_id",
+        "MTLTexture_id",
+        "MTLSharedEvent_id",
+        "IOSurfaceRef",
+    };
+
     private static void GenerateHandles(CppCompilation compilation)
     {
         bool hasAnyHandleType = false;
         foreach (CppTypedef typedef in compilation.Typedefs)
         {
             if (typedef.Name.StartsWith("PFN_") ||
-                typedef.Name == "spvc_error_callback")
+                typedef.Name == "spvc_error_callback" ||
+                s_ignoredHandles.Contains(typedef.Name))
             {
                 continue;
             }
@@ -42,7 +53,8 @@ public static partial class CsCodeGenerator
         foreach (CppTypedef typedef in compilation.Typedefs)
         {
             if (typedef.Name.StartsWith("PFN_") ||
-                typedef.Name == "spvc_error_callback")
+                typedef.Name == "spvc_error_callback" ||
+                s_ignoredHandles.Contains(typedef.Name))
             {
                 continue;
             }
