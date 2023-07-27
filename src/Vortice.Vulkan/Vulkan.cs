@@ -798,6 +798,49 @@ public static unsafe partial class Vulkan
         }
     }
 
+    public static void vkCmdCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, ReadOnlySpan<VkBufferImageCopy> regions, uint regionCount = 0)
+    {
+        if (regionCount == 0)
+            regionCount = (uint)regions.Length;
+
+        fixed (VkBufferImageCopy* pRegions = regions)
+        {
+            vkCmdCopyBufferToImage_ptr(commandBuffer, srcBuffer, dstImage, dstImageLayout,
+                regionCount,
+                pRegions
+             );
+        }
+    }
+
+    public static void vkCmdCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, VkBufferImageCopy[] regions, uint regionCount = 0)
+    {
+        if (regionCount == 0)
+            regionCount = (uint)regions.Length;
+
+        fixed (VkBufferImageCopy* pRegions = regions)
+        {
+            vkCmdCopyBufferToImage_ptr(commandBuffer, srcBuffer, dstImage, dstImageLayout,
+                regionCount,
+                pRegions
+             );
+        }
+    }
+
+    public static void vkCmdCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, List<VkBufferImageCopy> regions, uint regionCount = 0)
+    {
+        if (regionCount == 0)
+            regionCount = (uint)regions.Count;
+
+        Span<VkBufferImageCopy> regionsSpan = CollectionsMarshal.AsSpan(regions);
+        fixed (VkBufferImageCopy* pRegions = regionsSpan)
+        {
+            vkCmdCopyBufferToImage_ptr(commandBuffer, srcBuffer, dstImage, dstImageLayout,
+                regionCount,
+                pRegions
+             );
+        }
+    }
+
     #region LibraryLoader
     private static ILibraryLoader GetPlatformLoader()
     {
@@ -838,6 +881,6 @@ public static unsafe partial class Vulkan
 
             return 0;
         }
-    } 
+    }
     #endregion
 }

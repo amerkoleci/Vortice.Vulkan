@@ -106,6 +106,7 @@ public static partial class CsCodeGenerator
 
                 writer.WriteLine($"public static {csName} Null => new({nullValue});");
                 writer.WriteLine($"public static implicit operator {csName}({handleType} handle) => new(handle);");
+                writer.WriteLine($"public static implicit operator {handleType}({csName} handle) => handle;");
                 writer.WriteLine($"public static bool operator ==({csName} left, {csName} right) => left.Handle == right.Handle;");
                 writer.WriteLine($"public static bool operator !=({csName} left, {csName} right) => left.Handle != right.Handle;");
                 writer.WriteLine($"public static bool operator ==({csName} left, {handleType} right) => left.Handle == right;");
