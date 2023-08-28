@@ -6803,6 +6803,120 @@ public partial struct VkTraceRaysIndirectCommand2KHR
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceMaintenance5FeaturesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 maintenance5;
+
+	public VkPhysicalDeviceMaintenance5FeaturesKHR()
+	{
+		sType = VkStructureType.PhysicalDeviceMaintenance5FeaturesKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceMaintenance5PropertiesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
+	public VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
+	public VkBool32 depthStencilSwizzleOneSupport;
+	public VkBool32 polygonModePointSize;
+	public VkBool32 nonStrictSinglePixelWideLinesUseParallelogram;
+	public VkBool32 nonStrictWideLinesUseParallelogram;
+
+	public VkPhysicalDeviceMaintenance5PropertiesKHR()
+	{
+		sType = VkStructureType.PhysicalDeviceMaintenance5PropertiesKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkRenderingAreaInfoKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint viewMask;
+	public uint colorAttachmentCount;
+	public VkFormat* pColorAttachmentFormats;
+	public VkFormat depthAttachmentFormat;
+	public VkFormat stencilAttachmentFormat;
+
+	public VkRenderingAreaInfoKHR()
+	{
+		sType = VkStructureType.RenderingAreaInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkImageSubresource2KHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkImageSubresource imageSubresource;
+
+	public VkImageSubresource2KHR()
+	{
+		sType = VkStructureType.ImageSubresource2KHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkDeviceImageSubresourceInfoKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkImageCreateInfo* pCreateInfo;
+	public VkImageSubresource2KHR* pSubresource;
+
+	public VkDeviceImageSubresourceInfoKHR()
+	{
+		sType = VkStructureType.DeviceImageSubresourceInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkSubresourceLayout2KHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkSubresourceLayout subresourceLayout;
+
+	public VkSubresourceLayout2KHR()
+	{
+		sType = VkStructureType.SubresourceLayout2KHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPipelineCreateFlags2CreateInfoKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkPipelineCreateFlags2KHR flags;
+
+	public VkPipelineCreateFlags2CreateInfoKHR()
+	{
+		sType = VkStructureType.PipelineCreateFlags2CreateInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkBufferUsageFlags2CreateInfoKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBufferUsageFlags2KHR usage;
+
+	public VkBufferUsageFlags2CreateInfoKHR()
+	{
+		sType = VkStructureType.BufferUsageFlags2CreateInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR
 {
 	internal VkStructureType sType;
@@ -9329,6 +9443,169 @@ public unsafe partial struct VkPhysicalDeviceExtendedDynamicStateFeaturesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceHostImageCopyFeaturesEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 hostImageCopy;
+
+	public VkPhysicalDeviceHostImageCopyFeaturesEXT()
+	{
+		sType = VkStructureType.PhysicalDeviceHostImageCopyFeaturesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceHostImageCopyPropertiesEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint copySrcLayoutCount;
+	public VkImageLayout* pCopySrcLayouts;
+	public uint copyDstLayoutCount;
+	public VkImageLayout* pCopyDstLayouts;
+	public fixed byte optimalTilingLayoutUUID[16];
+	public VkBool32 identicalMemoryTypeRequirements;
+
+	public VkPhysicalDeviceHostImageCopyPropertiesEXT()
+	{
+		sType = VkStructureType.PhysicalDeviceHostImageCopyPropertiesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkMemoryToImageCopyEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public void* pHostPointer;
+	public uint memoryRowLength;
+	public uint memoryImageHeight;
+	public VkImageSubresourceLayers imageSubresource;
+	public VkOffset3D imageOffset;
+	public VkExtent3D imageExtent;
+
+	public VkMemoryToImageCopyEXT()
+	{
+		sType = VkStructureType.MemoryToImageCopyEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkImageToMemoryCopyEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public void* pHostPointer;
+	public uint memoryRowLength;
+	public uint memoryImageHeight;
+	public VkImageSubresourceLayers imageSubresource;
+	public VkOffset3D imageOffset;
+	public VkExtent3D imageExtent;
+
+	public VkImageToMemoryCopyEXT()
+	{
+		sType = VkStructureType.ImageToMemoryCopyEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkCopyMemoryToImageInfoEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkHostImageCopyFlagsEXT flags;
+	public VkImage dstImage;
+	public VkImageLayout dstImageLayout;
+	public uint regionCount;
+	public VkMemoryToImageCopyEXT* pRegions;
+
+	public VkCopyMemoryToImageInfoEXT()
+	{
+		sType = VkStructureType.CopyMemoryToImageInfoEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkCopyImageToMemoryInfoEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkHostImageCopyFlagsEXT flags;
+	public VkImage srcImage;
+	public VkImageLayout srcImageLayout;
+	public uint regionCount;
+	public VkImageToMemoryCopyEXT* pRegions;
+
+	public VkCopyImageToMemoryInfoEXT()
+	{
+		sType = VkStructureType.CopyImageToMemoryInfoEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkCopyImageToImageInfoEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkHostImageCopyFlagsEXT flags;
+	public VkImage srcImage;
+	public VkImageLayout srcImageLayout;
+	public VkImage dstImage;
+	public VkImageLayout dstImageLayout;
+	public uint regionCount;
+	public VkImageCopy2* pRegions;
+
+	public VkCopyImageToImageInfoEXT()
+	{
+		sType = VkStructureType.CopyImageToImageInfoEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkHostImageLayoutTransitionInfoEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkImage image;
+	public VkImageLayout oldLayout;
+	public VkImageLayout newLayout;
+	public VkImageSubresourceRange subresourceRange;
+
+	public VkHostImageLayoutTransitionInfoEXT()
+	{
+		sType = VkStructureType.HostImageLayoutTransitionInfoEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkSubresourceHostMemcpySizeEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public ulong size;
+
+	public VkSubresourceHostMemcpySizeEXT()
+	{
+		sType = VkStructureType.SubresourceHostMemcpySizeEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkHostImageCopyDevicePerformanceQueryEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 optimalDeviceAccess;
+	public VkBool32 identicalMemoryLayout;
+
+	public VkHostImageCopyDevicePerformanceQueryEXT()
+	{
+		sType = VkStructureType.HostImageCopyDevicePerformanceQueryEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT
 {
 	internal VkStructureType sType;
@@ -10501,32 +10778,6 @@ public unsafe partial struct VkImageCompressionControlEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe partial struct VkSubresourceLayout2EXT
-{
-	internal VkStructureType sType;
-	public void* pNext;
-	public VkSubresourceLayout subresourceLayout;
-
-	public VkSubresourceLayout2EXT()
-	{
-		sType = VkStructureType.SubresourceLayout2EXT;
-	}
-}
-
-[StructLayout(LayoutKind.Sequential)]
-public unsafe partial struct VkImageSubresource2EXT
-{
-	internal VkStructureType sType;
-	public void* pNext;
-	public VkImageSubresource imageSubresource;
-
-	public VkImageSubresource2EXT()
-	{
-		sType = VkStructureType.ImageSubresource2EXT;
-	}
-}
-
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkImageCompressionPropertiesEXT
 {
 	internal VkStructureType sType;
@@ -11643,6 +11894,56 @@ public unsafe partial struct VkPhysicalDeviceMemoryDecompressionPropertiesNV
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 deviceGeneratedCompute;
+	public VkBool32 deviceGeneratedComputePipelines;
+	public VkBool32 deviceGeneratedComputeCaptureReplay;
+
+	public VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV()
+	{
+		sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkComputePipelineIndirectBufferInfoNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public ulong deviceAddress;
+	public ulong size;
+	public ulong pipelineDeviceAddressCaptureReplay;
+
+	public VkComputePipelineIndirectBufferInfoNV()
+	{
+		sType = VkStructureType.ComputePipelineIndirectBufferInfoNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPipelineIndirectDeviceAddressInfoNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkPipelineBindPoint pipelineBindPoint;
+	public VkPipeline pipeline;
+
+	public VkPipelineIndirectDeviceAddressInfoNV()
+	{
+		sType = VkStructureType.PipelineIndirectDeviceAddressInfoNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkBindPipelineIndirectCommandNV
+{
+	public ulong pipelineAddress;
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV
 {
 	internal VkStructureType sType;
@@ -12315,6 +12616,125 @@ public unsafe partial struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCO
 	public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM()
 	{
 		sType = VkStructureType.MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceImageProcessing2FeaturesQCOM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 textureBlockMatch2;
+
+	public VkPhysicalDeviceImageProcessing2FeaturesQCOM()
+	{
+		sType = VkStructureType.PhysicalDeviceImageProcessing2FeaturesQCOM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceImageProcessing2PropertiesQCOM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkExtent2D maxBlockMatchWindow;
+
+	public VkPhysicalDeviceImageProcessing2PropertiesQCOM()
+	{
+		sType = VkStructureType.PhysicalDeviceImageProcessing2PropertiesQCOM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkSamplerBlockMatchWindowCreateInfoQCOM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkExtent2D windowExtent;
+	public VkBlockMatchWindowCompareModeQCOM windowCompareMode;
+
+	public VkSamplerBlockMatchWindowCreateInfoQCOM()
+	{
+		sType = VkStructureType.SamplerBlockMatchWindowCreateInfoQCOM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceCubicWeightsFeaturesQCOM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 selectableCubicWeights;
+
+	public VkPhysicalDeviceCubicWeightsFeaturesQCOM()
+	{
+		sType = VkStructureType.PhysicalDeviceCubicWeightsFeaturesQCOM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkSamplerCubicWeightsCreateInfoQCOM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkCubicFilterWeightsQCOM cubicWeights;
+
+	public VkSamplerCubicWeightsCreateInfoQCOM()
+	{
+		sType = VkStructureType.SamplerCubicWeightsCreateInfoQCOM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkBlitImageCubicWeightsInfoQCOM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkCubicFilterWeightsQCOM cubicWeights;
+
+	public VkBlitImageCubicWeightsInfoQCOM()
+	{
+		sType = VkStructureType.BlitImageCubicWeightsInfoQCOM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceYcbcrDegammaFeaturesQCOM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 ycbcrDegamma;
+
+	public VkPhysicalDeviceYcbcrDegammaFeaturesQCOM()
+	{
+		sType = VkStructureType.PhysicalDeviceYcbcrDegammaFeaturesQCOM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 enableYDegamma;
+	public VkBool32 enableCbCrDegamma;
+
+	public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM()
+	{
+		sType = VkStructureType.SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceCubicClampFeaturesQCOM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 cubicRangeClamp;
+
+	public VkPhysicalDeviceCubicClampFeaturesQCOM()
+	{
+		sType = VkStructureType.PhysicalDeviceCubicClampFeaturesQCOM;
 	}
 }
 
@@ -14096,6 +14516,108 @@ public unsafe partial struct VkVideoEncodeH265GopRemainingFrameInfoEXT
 	public VkVideoEncodeH265GopRemainingFrameInfoEXT()
 	{
 		sType = VkStructureType.VideoEncodeH265GopRemainingFrameInfoEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceShaderEnqueueFeaturesAMDX
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 shaderEnqueue;
+
+	public VkPhysicalDeviceShaderEnqueueFeaturesAMDX()
+	{
+		sType = VkStructureType.PhysicalDeviceShaderEnqueueFeaturesAMDX;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint maxExecutionGraphDepth;
+	public uint maxExecutionGraphShaderOutputNodes;
+	public uint maxExecutionGraphShaderPayloadSize;
+	public uint maxExecutionGraphShaderPayloadCount;
+	public uint executionGraphDispatchAddressAlignment;
+
+	public VkPhysicalDeviceShaderEnqueuePropertiesAMDX()
+	{
+		sType = VkStructureType.PhysicalDeviceShaderEnqueuePropertiesAMDX;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkExecutionGraphPipelineScratchSizeAMDX
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public ulong size;
+
+	public VkExecutionGraphPipelineScratchSizeAMDX()
+	{
+		sType = VkStructureType.ExecutionGraphPipelineScratchSizeAMDX;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkExecutionGraphPipelineCreateInfoAMDX
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkPipelineCreateFlags flags;
+	public uint stageCount;
+	public VkPipelineShaderStageCreateInfo* pStages;
+	public VkPipelineLibraryCreateInfoKHR* pLibraryInfo;
+	public VkPipelineLayout layout;
+	public VkPipeline basePipelineHandle;
+	public int basePipelineIndex;
+
+	public VkExecutionGraphPipelineCreateInfoAMDX()
+	{
+		sType = VkStructureType.ExecutionGraphPipelineCreateInfoAMDX;
+	}
+}
+
+[StructLayout(LayoutKind.Explicit)]
+public unsafe partial struct VkDeviceOrHostAddressConstAMDX
+{
+	[FieldOffset(0)]
+	public ulong deviceAddress;
+	[FieldOffset(0)]
+	public void* hostAddress;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDispatchGraphInfoAMDX
+{
+	public uint nodeIndex;
+	public uint payloadCount;
+	public VkDeviceOrHostAddressConstAMDX payloads;
+	public ulong payloadStride;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct VkDispatchGraphCountInfoAMDX
+{
+	public uint count;
+	public VkDeviceOrHostAddressConstAMDX infos;
+	public ulong stride;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPipelineShaderStageNodeCreateInfoAMDX
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public sbyte* pName;
+	public uint index;
+
+	public VkPipelineShaderStageNodeCreateInfoAMDX()
+	{
+		sType = VkStructureType.PipelineShaderStageNodeCreateInfoAMDX;
 	}
 }
 

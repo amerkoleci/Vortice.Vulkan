@@ -10,7 +10,7 @@
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>1.7.9</VersionPrefix>
+    <VersionPrefix>1.8.0</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 

@@ -187,6 +187,7 @@ public static partial class CsCodeGenerator
         "nvx",
         "nvidia",
         "amd",
+        "amdx",
         "intel",
         "arm",
         "mvk",
@@ -222,6 +223,8 @@ public static partial class CsCodeGenerator
         "msl",
         "json",
     };
+
+    private static readonly HashSet<string> s_enumConstants = new();
 
     public static void GenerateEnums(CppCompilation compilation)
     {
@@ -268,45 +271,45 @@ public static partial class CsCodeGenerator
             //    shouldGeneratePrettyPrefix = true;
             //}
 
-            string csName = GetCsCleanName(enumName, shouldGeneratePrettyPrefix);
+            string enumCsName = GetCsCleanName(enumName, shouldGeneratePrettyPrefix);
             string enumNamePrefix = shouldGeneratePrettyPrefix ? GetEnumNamePrefix(enumName) : enumName;
 
             // Rename FlagBits in Flags.
             if (isBitmask)
             {
-                csName = csName.Replace("FlagBits", "Flags");
-                AddCsMapping(enumName, csName);
+                enumCsName = enumCsName.Replace("FlagBits", "Flags");
+                AddCsMapping(enumName, enumCsName);
             }
 
             // Remove extension suffix from enum item values
             string extensionPrefix = "";
 
-            if (csName.EndsWith("EXT"))
+            if (enumCsName.EndsWith("EXT"))
             {
                 extensionPrefix = "EXT";
             }
-            else if (csName.EndsWith("NV"))
+            else if (enumCsName.EndsWith("NV"))
             {
                 extensionPrefix = "NV";
             }
-            else if (csName.EndsWith("KHR"))
+            else if (enumCsName.EndsWith("KHR"))
             {
                 extensionPrefix = "KHR";
             }
-            else if (csName.EndsWith("NN"))
+            else if (enumCsName.EndsWith("NN"))
             {
                 extensionPrefix = "NN";
             }
-            else if (csName.EndsWith("GGP"))
+            else if (enumCsName.EndsWith("GGP"))
             {
                 extensionPrefix = "GGP";
             }
-            else if (csName.EndsWith("ANDROID"))
+            else if (enumCsName.EndsWith("ANDROID"))
             {
                 extensionPrefix = "ANDROID";
             }
 
-            createdEnums.Add(csName, enumName);
+            createdEnums.Add(enumCsName, enumName);
 
             bool noneAdded = false;
 
@@ -328,7 +331,7 @@ public static partial class CsCodeGenerator
                 writer.WriteLine("[Flags]");
             }
 
-            using (writer.PushBlock($"{visibility} enum {csName}"))
+            using (writer.PushBlock($"{visibility} enum {enumCsName}"))
             {
                 if (isBitmask &&
                     !cppEnum.Items.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "None"))
@@ -419,6 +422,7 @@ public static partial class CsCodeGenerator
 
                         writer.WriteLine($"/// <unmanaged>{enumItem.Name}</unmanaged>");
                         writer.WriteLine($"{enumItemName} = {enumValueName},");
+                        s_enumConstants.Add($"{enumCsName} {enumItem.Name} = {enumCsName}.{enumItemName}");
                     }
                     else
                     {
@@ -436,11 +440,23 @@ public static partial class CsCodeGenerator
                         }
 
                         writer.WriteLine($"/// <unmanaged>{enumItem.Name}</unmanaged>");
-                        writer.WriteLine($"{enumItemName} = {enumItem.Value},");
+                        if (enumItem.ValueExpression is CppLiteralExpression literalExpression)
+                        {
+                            writer.WriteLine($"{enumItemName} = {literalExpression.Value},");
+                        }
+                        else if (enumItem.ValueExpression is CppBinaryExpression binaryExpression)
+                        {
+                            throw new NotImplementedException();
+                        }
+                        else
+                        {
+                            writer.WriteLine($"{enumItemName} = {enumItem.Value},");
+                        }
+                        s_enumConstants.Add($"{enumCsName} {enumItem.Name} = {enumCsName}.{enumItemName}");
                     }
                 }
 
-                if (csName == "VkColorComponentFlags")
+                if (enumCsName == "VkColorComponentFlags")
                 {
                     writer.WriteLine("All = R | G | B | A");
                 }
@@ -523,6 +539,10 @@ public static partial class CsCodeGenerator
                     {
                         fieldType = fieldType.Replace("FlagBits2", "Flags2");
                     }
+                    else if (fieldType.EndsWith("FlagBits2KHR"))
+                    {
+                        fieldType = fieldType.Replace("FlagBits2KHR", "Flags2KHR");
+                    }
 
                     writer.WriteLine("[Flags]");
                     writer.BeginBlock($"public enum {fieldType} : {baseType}");
@@ -546,6 +566,14 @@ public static partial class CsCodeGenerator
                 {
                     csFieldName = GetPrettyEnumName(cppField.Name, "VK_FORMAT_FEATURE_2");
                 }
+                else if (cppField.Name.StartsWith("VK_PIPELINE_CREATE_2"))
+                {
+                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_PIPELINE_CREATE_2");
+                }
+                else if (cppField.Name.StartsWith("VK_BUFFER_USAGE_2"))
+                {
+                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_BUFFER_USAGE_2");
+                }
                 else
                 {
                     csFieldName = NormalizeFieldName(cppField.Name);
@@ -558,7 +586,21 @@ public static partial class CsCodeGenerator
                     csFieldName = csFieldName.Substring(0, csFieldName.Length - 3);
                 }
 
-                writer.WriteLine($"{csFieldName} = {cppField.InitValue},");
+                writer.WriteLine($"/// <unmanaged>{cppField.Name}</unmanaged>");
+                if (cppField.InitExpression is CppLiteralExpression literalExpression)
+                {
+                    string enumValue = literalExpression.Value;
+                    if (enumValue.EndsWith("ULL"))
+                    {
+                        enumValue = enumValue.Replace("ULL", "UL");
+                    }
+
+                    writer.WriteLine($"{csFieldName} = {enumValue},");
+                }
+                else
+                {
+                    writer.WriteLine($"{csFieldName} = {cppField.InitValue},");
+                }
             }
 
 

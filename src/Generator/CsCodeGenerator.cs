@@ -103,8 +103,8 @@ public static partial class CsCodeGenerator
         _options = options;
         s_vulkanSpecification = specification;
 
-        GenerateConstants(compilation);
         GenerateEnums(compilation);
+        GenerateConstants(compilation);
         GenerateHandles(compilation);
         GenerateStructAndUnions(compilation);
         GenerateCommands(compilation);
@@ -320,6 +320,15 @@ public static partial class CsCodeGenerator
 
                     string modifier = "const";
                     writer.WriteLine($"public {modifier} {fieldType} {fieldName} = {cppField.InitExpression};");
+                }
+            }
+            else
+            {
+                writer.WriteLine();
+
+                foreach (string enumConstant in s_enumConstants)
+                {
+                    writer.WriteLine($"public const {enumConstant};");
                 }
             }
         }

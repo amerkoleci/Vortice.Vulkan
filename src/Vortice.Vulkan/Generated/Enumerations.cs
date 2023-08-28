@@ -978,6 +978,16 @@ public enum VkStructureType
 	ExternalFormatAndroid = 1000129005,
 	/// <unmanaged>VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID</unmanaged>
 	AndroidHardwareBufferFormatProperties2Android = 1000129006,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX</unmanaged>
+	PhysicalDeviceShaderEnqueueFeaturesAMDX = 1000134000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX</unmanaged>
+	PhysicalDeviceShaderEnqueuePropertiesAMDX = 1000134001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_SCRATCH_SIZE_AMDX</unmanaged>
+	ExecutionGraphPipelineScratchSizeAMDX = 1000134002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX</unmanaged>
+	ExecutionGraphPipelineCreateInfoAMDX = 1000134003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX</unmanaged>
+	PipelineShaderStageNodeCreateInfoAMDX = 1000134004,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT</unmanaged>
 	SampleLocationsInfoEXT = 1000143000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT</unmanaged>
@@ -1278,6 +1288,26 @@ public enum VkStructureType
 	PipelineExecutableStatisticKHR = 1000269004,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INTERNAL_REPRESENTATION_KHR</unmanaged>
 	PipelineExecutableInternalRepresentationKHR = 1000269005,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES_EXT</unmanaged>
+	PhysicalDeviceHostImageCopyFeaturesEXT = 1000270000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES_EXT</unmanaged>
+	PhysicalDeviceHostImageCopyPropertiesEXT = 1000270001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_TO_IMAGE_COPY_EXT</unmanaged>
+	MemoryToImageCopyEXT = 1000270002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_TO_MEMORY_COPY_EXT</unmanaged>
+	ImageToMemoryCopyEXT = 1000270003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_COPY_IMAGE_TO_MEMORY_INFO_EXT</unmanaged>
+	CopyImageToMemoryInfoEXT = 1000270004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INFO_EXT</unmanaged>
+	CopyMemoryToImageInfoEXT = 1000270005,
+	/// <unmanaged>VK_STRUCTURE_TYPE_HOST_IMAGE_LAYOUT_TRANSITION_INFO_EXT</unmanaged>
+	HostImageLayoutTransitionInfoEXT = 1000270006,
+	/// <unmanaged>VK_STRUCTURE_TYPE_COPY_IMAGE_TO_IMAGE_INFO_EXT</unmanaged>
+	CopyImageToImageInfoEXT = 1000270007,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE_EXT</unmanaged>
+	SubresourceHostMemcpySizeEXT = 1000270008,
+	/// <unmanaged>VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY_EXT</unmanaged>
+	HostImageCopyDevicePerformanceQueryEXT = 1000270009,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_MAP_INFO_KHR</unmanaged>
 	MemoryMapInfoKHR = 1000271000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR</unmanaged>
@@ -1488,10 +1518,6 @@ public enum VkStructureType
 	PhysicalDeviceImageCompressionControlFeaturesEXT = 1000338000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT</unmanaged>
 	ImageCompressionControlEXT = 1000338001,
-	/// <unmanaged>VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2_EXT</unmanaged>
-	SubresourceLayout2EXT = 1000338002,
-	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2_EXT</unmanaged>
-	ImageSubresource2EXT = 1000338003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT</unmanaged>
 	ImageCompressionPropertiesEXT = 1000338004,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_FEATURES_EXT</unmanaged>
@@ -1670,6 +1696,12 @@ public enum VkStructureType
 	PhysicalDeviceMemoryDecompressionFeaturesNV = 1000427000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_NV</unmanaged>
 	PhysicalDeviceMemoryDecompressionPropertiesNV = 1000427001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV</unmanaged>
+	PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV = 1000428000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV</unmanaged>
+	ComputePipelineIndirectBufferInfoNV = 1000428001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_INDIRECT_DEVICE_ADDRESS_INFO_NV</unmanaged>
+	PipelineIndirectDeviceAddressInfoNV = 1000428002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV</unmanaged>
 	PhysicalDeviceLinearColorAttachmentFeaturesNV = 1000430000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_FEATURES_EXT</unmanaged>
@@ -1726,6 +1758,22 @@ public enum VkStructureType
 	PhysicalDeviceLegacyDitheringFeaturesEXT = 1000465000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES_EXT</unmanaged>
 	PhysicalDevicePipelineProtectedAccessFeaturesEXT = 1000466000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES_KHR</unmanaged>
+	PhysicalDeviceMaintenance5FeaturesKHR = 1000470000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES_KHR</unmanaged>
+	PhysicalDeviceMaintenance5PropertiesKHR = 1000470001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RENDERING_AREA_INFO_KHR</unmanaged>
+	RenderingAreaInfoKHR = 1000470003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_IMAGE_SUBRESOURCE_INFO_KHR</unmanaged>
+	DeviceImageSubresourceInfoKHR = 1000470004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2_KHR</unmanaged>
+	SubresourceLayout2KHR = 1000338002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2_KHR</unmanaged>
+	ImageSubresource2KHR = 1000338003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO_KHR</unmanaged>
+	PipelineCreateFlags2CreateInfoKHR = 1000470005,
+	/// <unmanaged>VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO_KHR</unmanaged>
+	BufferUsageFlags2CreateInfoKHR = 1000470006,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_POSITION_FETCH_FEATURES_KHR</unmanaged>
 	PhysicalDeviceRayTracingPositionFetchFeaturesKHR = 1000481000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT</unmanaged>
@@ -1770,6 +1818,24 @@ public enum VkStructureType
 	PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM = 1000510000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM</unmanaged>
 	MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM = 1000510001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_FEATURES_QCOM</unmanaged>
+	PhysicalDeviceImageProcessing2FeaturesQCOM = 1000518000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM</unmanaged>
+	PhysicalDeviceImageProcessing2PropertiesQCOM = 1000518001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM</unmanaged>
+	SamplerBlockMatchWindowCreateInfoQCOM = 1000518002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SAMPLER_CUBIC_WEIGHTS_CREATE_INFO_QCOM</unmanaged>
+	SamplerCubicWeightsCreateInfoQCOM = 1000519000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUBIC_WEIGHTS_FEATURES_QCOM</unmanaged>
+	PhysicalDeviceCubicWeightsFeaturesQCOM = 1000519001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_BLIT_IMAGE_CUBIC_WEIGHTS_INFO_QCOM</unmanaged>
+	BlitImageCubicWeightsInfoQCOM = 1000519002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_DEGAMMA_FEATURES_QCOM</unmanaged>
+	PhysicalDeviceYcbcrDegammaFeaturesQCOM = 1000520000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM</unmanaged>
+	SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM = 1000520001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUBIC_CLAMP_FEATURES_QCOM</unmanaged>
+	PhysicalDeviceCubicClampFeaturesQCOM = 1000521000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT</unmanaged>
 	PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT = 1000524000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX</unmanaged>
@@ -2104,6 +2170,10 @@ public enum VkStructureType
 	BufferImageCopy2KHR = BufferImageCopy2,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_RESOLVE_2_KHR</unmanaged>
 	ImageResolve2KHR = ImageResolve2,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2_EXT</unmanaged>
+	SubresourceLayout2EXT = SubresourceLayout2KHR,
+	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2_EXT</unmanaged>
+	ImageSubresource2EXT = ImageSubresource2KHR,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_ARM</unmanaged>
 	PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM = PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_VALVE</unmanaged>
@@ -2358,37 +2428,37 @@ public enum VkVendorId
 	/// Vivante vendor ID
 	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_VIV</unmanaged>
-	Viv = 65537,
+	Viv = 0x10001,
 	/// <summary>
 	/// VeriSilicon vendor ID
 	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_VSI</unmanaged>
-	Vsi = 65538,
+	Vsi = 0x10002,
 	/// <summary>
 	/// Kazan Software Renderer
 	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_KAZAN</unmanaged>
-	Kazan = 65539,
+	Kazan = 0x10003,
 	/// <summary>
 	/// Codeplay Software Ltd. vendor ID
 	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_CODEPLAY</unmanaged>
-	Codeplay = 65540,
+	Codeplay = 0x10004,
 	/// <summary>
 	/// Mesa vendor ID
 	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_MESA</unmanaged>
-	Mesa = 65541,
+	Mesa = 0x10005,
 	/// <summary>
 	/// PoCL vendor ID
 	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_POCL</unmanaged>
-	Pocl = 65542,
+	Pocl = 0x10006,
 	/// <summary>
 	/// Mobileye vendor ID
 	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_MOBILEYE</unmanaged>
-	Mobileye = 65543,
+	Mobileye = 0x10007,
 }
 
 public enum VkSystemAllocationScope
@@ -2912,6 +2982,10 @@ public enum VkFormat
 	PVRTC24BPPSrgbBlockImg = 1000054007,
 	/// <unmanaged>VK_FORMAT_R16G16_S10_5_NV</unmanaged>
 	R16G16S105NV = 1000464000,
+	/// <unmanaged>VK_FORMAT_A1B5G5R5_UNORM_PACK16_KHR</unmanaged>
+	A1B5G5R5UnormPack16KHR = 1000470000,
+	/// <unmanaged>VK_FORMAT_A8_UNORM_KHR</unmanaged>
+	A8UnormKHR = 1000470001,
 	/// <unmanaged>VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT</unmanaged>
 	Astc4x4SfloatBlockEXT = Astc4x4SfloatBlock,
 	/// <unmanaged>VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT</unmanaged>
@@ -3735,6 +3809,8 @@ public enum VkPipelineBindPoint
 	Graphics = 0,
 	/// <unmanaged>VK_PIPELINE_BIND_POINT_COMPUTE</unmanaged>
 	Compute = 1,
+	/// <unmanaged>VK_PIPELINE_BIND_POINT_EXECUTION_GRAPH_AMDX</unmanaged>
+	ExecutionGraphAMDX = 1000134000,
 	/// <unmanaged>VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR</unmanaged>
 	RayTracingKHR = 1000165000,
 	/// <unmanaged>VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI</unmanaged>
@@ -3780,111 +3856,111 @@ public enum VkAccessFlags
 	/// Controls coherency of indirect command reads
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_INDIRECT_COMMAND_READ_BIT</unmanaged>
-	IndirectCommandRead = 1,
+	IndirectCommandRead = 0x00000001,
 	/// <summary>
 	/// Controls coherency of index reads
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_INDEX_READ_BIT</unmanaged>
-	IndexRead = 2,
+	IndexRead = 0x00000002,
 	/// <summary>
 	/// Controls coherency of vertex attribute reads
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT</unmanaged>
-	VertexAttributeRead = 4,
+	VertexAttributeRead = 0x00000004,
 	/// <summary>
 	/// Controls coherency of uniform buffer reads
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_UNIFORM_READ_BIT</unmanaged>
-	UniformRead = 8,
+	UniformRead = 0x00000008,
 	/// <summary>
 	/// Controls coherency of input attachment reads
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_INPUT_ATTACHMENT_READ_BIT</unmanaged>
-	InputAttachmentRead = 16,
+	InputAttachmentRead = 0x00000010,
 	/// <summary>
 	/// Controls coherency of shader reads
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_SHADER_READ_BIT</unmanaged>
-	ShaderRead = 32,
+	ShaderRead = 0x00000020,
 	/// <summary>
 	/// Controls coherency of shader writes
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_SHADER_WRITE_BIT</unmanaged>
-	ShaderWrite = 64,
+	ShaderWrite = 0x00000040,
 	/// <summary>
 	/// Controls coherency of color attachment reads
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_COLOR_ATTACHMENT_READ_BIT</unmanaged>
-	ColorAttachmentRead = 128,
+	ColorAttachmentRead = 0x00000080,
 	/// <summary>
 	/// Controls coherency of color attachment writes
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT</unmanaged>
-	ColorAttachmentWrite = 256,
+	ColorAttachmentWrite = 0x00000100,
 	/// <summary>
 	/// Controls coherency of depth/stencil attachment reads
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT</unmanaged>
-	DepthStencilAttachmentRead = 512,
+	DepthStencilAttachmentRead = 0x00000200,
 	/// <summary>
 	/// Controls coherency of depth/stencil attachment writes
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT</unmanaged>
-	DepthStencilAttachmentWrite = 1024,
+	DepthStencilAttachmentWrite = 0x00000400,
 	/// <summary>
 	/// Controls coherency of transfer reads
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_TRANSFER_READ_BIT</unmanaged>
-	TransferRead = 2048,
+	TransferRead = 0x00000800,
 	/// <summary>
 	/// Controls coherency of transfer writes
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_TRANSFER_WRITE_BIT</unmanaged>
-	TransferWrite = 4096,
+	TransferWrite = 0x00001000,
 	/// <summary>
 	/// Controls coherency of host reads
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_HOST_READ_BIT</unmanaged>
-	HostRead = 8192,
+	HostRead = 0x00002000,
 	/// <summary>
 	/// Controls coherency of host writes
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_HOST_WRITE_BIT</unmanaged>
-	HostWrite = 16384,
+	HostWrite = 0x00004000,
 	/// <summary>
 	/// Controls coherency of memory reads
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_MEMORY_READ_BIT</unmanaged>
-	MemoryRead = 32768,
+	MemoryRead = 0x00008000,
 	/// <summary>
 	/// Controls coherency of memory writes
 	/// </summary>
 	/// <unmanaged>VK_ACCESS_MEMORY_WRITE_BIT</unmanaged>
-	MemoryWrite = 65536,
+	MemoryWrite = 0x00010000,
 	/// <unmanaged>VK_ACCESS_NONE</unmanaged>
 	None = 0,
 	/// <unmanaged>VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT</unmanaged>
-	TransformFeedbackWriteEXT = 33554432,
+	TransformFeedbackWriteEXT = 0x02000000,
 	/// <unmanaged>VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT</unmanaged>
-	TransformFeedbackCounterReadEXT = 67108864,
+	TransformFeedbackCounterReadEXT = 0x04000000,
 	/// <unmanaged>VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT</unmanaged>
-	TransformFeedbackCounterWriteEXT = 134217728,
+	TransformFeedbackCounterWriteEXT = 0x08000000,
 	/// <unmanaged>VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT</unmanaged>
-	ConditionalRenderingReadEXT = 1048576,
+	ConditionalRenderingReadEXT = 0x00100000,
 	/// <unmanaged>VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT</unmanaged>
-	ColorAttachmentReadNoncoherentEXT = 524288,
+	ColorAttachmentReadNoncoherentEXT = 0x00080000,
 	/// <unmanaged>VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR</unmanaged>
-	AccelerationStructureReadKHR = 2097152,
+	AccelerationStructureReadKHR = 0x00200000,
 	/// <unmanaged>VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR</unmanaged>
-	AccelerationStructureWriteKHR = 4194304,
+	AccelerationStructureWriteKHR = 0x00400000,
 	/// <unmanaged>VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT</unmanaged>
-	FragmentDensityMapReadEXT = 16777216,
+	FragmentDensityMapReadEXT = 0x01000000,
 	/// <unmanaged>VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR</unmanaged>
-	FragmentShadingRateAttachmentReadKHR = 8388608,
+	FragmentShadingRateAttachmentReadKHR = 0x00800000,
 	/// <unmanaged>VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV</unmanaged>
-	CommandPreprocessReadNV = 131072,
+	CommandPreprocessReadNV = 0x00020000,
 	/// <unmanaged>VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV</unmanaged>
-	CommandPreprocessWriteNV = 262144,
+	CommandPreprocessWriteNV = 0x00040000,
 	/// <unmanaged>VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV</unmanaged>
 	ShadingRateImageReadNV = FragmentShadingRateAttachmentReadKHR,
 	/// <unmanaged>VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV</unmanaged>
@@ -3899,29 +3975,29 @@ public enum VkAccessFlags
 public enum VkImageAspectFlags
 {
 	/// <unmanaged>VK_IMAGE_ASPECT_COLOR_BIT</unmanaged>
-	Color = 1,
+	Color = 0x00000001,
 	/// <unmanaged>VK_IMAGE_ASPECT_DEPTH_BIT</unmanaged>
-	Depth = 2,
+	Depth = 0x00000002,
 	/// <unmanaged>VK_IMAGE_ASPECT_STENCIL_BIT</unmanaged>
-	Stencil = 4,
+	Stencil = 0x00000004,
 	/// <unmanaged>VK_IMAGE_ASPECT_METADATA_BIT</unmanaged>
-	Metadata = 8,
+	Metadata = 0x00000008,
 	/// <unmanaged>VK_IMAGE_ASPECT_PLANE_0_BIT</unmanaged>
-	Plane0 = 16,
+	Plane0 = 0x00000010,
 	/// <unmanaged>VK_IMAGE_ASPECT_PLANE_1_BIT</unmanaged>
-	Plane1 = 32,
+	Plane1 = 0x00000020,
 	/// <unmanaged>VK_IMAGE_ASPECT_PLANE_2_BIT</unmanaged>
-	Plane2 = 64,
+	Plane2 = 0x00000040,
 	/// <unmanaged>VK_IMAGE_ASPECT_NONE</unmanaged>
 	None = 0,
 	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT</unmanaged>
-	MemoryPlane0EXT = 128,
+	MemoryPlane0EXT = 0x00000080,
 	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT</unmanaged>
-	MemoryPlane1EXT = 256,
+	MemoryPlane1EXT = 0x00000100,
 	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT</unmanaged>
-	MemoryPlane2EXT = 512,
+	MemoryPlane2EXT = 0x00000200,
 	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT</unmanaged>
-	MemoryPlane3EXT = 1024,
+	MemoryPlane3EXT = 0x00000400,
 	/// <unmanaged>VK_IMAGE_ASPECT_PLANE_0_BIT_KHR</unmanaged>
 	Plane0KHR = Plane0,
 	/// <unmanaged>VK_IMAGE_ASPECT_PLANE_1_BIT_KHR</unmanaged>
@@ -3940,103 +4016,103 @@ public enum VkFormatFeatureFlags
 	/// Format can be used for sampled images (SAMPLED_IMAGE and COMBINED_IMAGE_SAMPLER descriptor types)
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT</unmanaged>
-	SampledImage = 1,
+	SampledImage = 0x00000001,
 	/// <summary>
 	/// Format can be used for storage images (STORAGE_IMAGE descriptor type)
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT</unmanaged>
-	StorageImage = 2,
+	StorageImage = 0x00000002,
 	/// <summary>
 	/// Format supports atomic operations in case it is used for storage images
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT</unmanaged>
-	StorageImageAtomic = 4,
+	StorageImageAtomic = 0x00000004,
 	/// <summary>
 	/// Format can be used for uniform texel buffers (TBOs)
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT</unmanaged>
-	UniformTexelBuffer = 8,
+	UniformTexelBuffer = 0x00000008,
 	/// <summary>
 	/// Format can be used for storage texel buffers (IBOs)
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT</unmanaged>
-	StorageTexelBuffer = 16,
+	StorageTexelBuffer = 0x00000010,
 	/// <summary>
 	/// Format supports atomic operations in case it is used for storage texel buffers
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT</unmanaged>
-	StorageTexelBufferAtomic = 32,
+	StorageTexelBufferAtomic = 0x00000020,
 	/// <summary>
 	/// Format can be used for vertex buffers (VBOs)
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT</unmanaged>
-	VertexBuffer = 64,
+	VertexBuffer = 0x00000040,
 	/// <summary>
 	/// Format can be used for color attachment images
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT</unmanaged>
-	ColorAttachment = 128,
+	ColorAttachment = 0x00000080,
 	/// <summary>
 	/// Format supports blending in case it is used for color attachment images
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT</unmanaged>
-	ColorAttachmentBlend = 256,
+	ColorAttachmentBlend = 0x00000100,
 	/// <summary>
 	/// Format can be used for depth/stencil attachment images
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT</unmanaged>
-	DepthStencilAttachment = 512,
+	DepthStencilAttachment = 0x00000200,
 	/// <summary>
 	/// Format can be used as the source image of blits with vkCmdBlitImage
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_BLIT_SRC_BIT</unmanaged>
-	BlitSrc = 1024,
+	BlitSrc = 0x00000400,
 	/// <summary>
 	/// Format can be used as the destination image of blits with vkCmdBlitImage
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_BLIT_DST_BIT</unmanaged>
-	BlitDst = 2048,
+	BlitDst = 0x00000800,
 	/// <summary>
 	/// Format can be filtered with VK_FILTER_LINEAR when being sampled
 	/// </summary>
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT</unmanaged>
-	SampledImageFilterLinear = 4096,
+	SampledImageFilterLinear = 0x00001000,
 	/// <unmanaged>VK_FORMAT_FEATURE_TRANSFER_SRC_BIT</unmanaged>
-	TransferSrc = 16384,
+	TransferSrc = 0x00004000,
 	/// <unmanaged>VK_FORMAT_FEATURE_TRANSFER_DST_BIT</unmanaged>
-	TransferDst = 32768,
+	TransferDst = 0x00008000,
 	/// <unmanaged>VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT</unmanaged>
-	MidpointChromaSamples = 131072,
+	MidpointChromaSamples = 0x00020000,
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT</unmanaged>
-	SampledImageYcbcrConversionLinearFilter = 262144,
+	SampledImageYcbcrConversionLinearFilter = 0x00040000,
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT</unmanaged>
-	SampledImageYcbcrConversionSeparateReconstructionFilter = 524288,
+	SampledImageYcbcrConversionSeparateReconstructionFilter = 0x00080000,
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT</unmanaged>
-	SampledImageYcbcrConversionChromaReconstructionExplicit = 1048576,
+	SampledImageYcbcrConversionChromaReconstructionExplicit = 0x00100000,
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT</unmanaged>
-	SampledImageYcbcrConversionChromaReconstructionExplicitForceable = 2097152,
+	SampledImageYcbcrConversionChromaReconstructionExplicitForceable = 0x00200000,
 	/// <unmanaged>VK_FORMAT_FEATURE_DISJOINT_BIT</unmanaged>
-	Disjoint = 4194304,
+	Disjoint = 0x00400000,
 	/// <unmanaged>VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT</unmanaged>
-	CositedChromaSamples = 8388608,
+	CositedChromaSamples = 0x00800000,
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT</unmanaged>
-	SampledImageFilterMinmax = 65536,
+	SampledImageFilterMinmax = 0x00010000,
 	/// <unmanaged>VK_FORMAT_FEATURE_VIDEO_DECODE_OUTPUT_BIT_KHR</unmanaged>
-	VideoDecodeOutputKHR = 33554432,
+	VideoDecodeOutputKHR = 0x02000000,
 	/// <unmanaged>VK_FORMAT_FEATURE_VIDEO_DECODE_DPB_BIT_KHR</unmanaged>
-	VideoDecodeDpbKHR = 67108864,
+	VideoDecodeDpbKHR = 0x04000000,
 	/// <unmanaged>VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR</unmanaged>
-	AccelerationStructureVertexBufferKHR = 536870912,
+	AccelerationStructureVertexBufferKHR = 0x20000000,
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT</unmanaged>
-	SampledImageFilterCubicEXT = 8192,
+	SampledImageFilterCubicEXT = 0x00002000,
 	/// <unmanaged>VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT</unmanaged>
-	FragmentDensityMapEXT = 16777216,
+	FragmentDensityMapEXT = 0x01000000,
 	/// <unmanaged>VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
-	FragmentShadingRateAttachmentKHR = 1073741824,
+	FragmentShadingRateAttachmentKHR = 0x40000000,
 	/// <unmanaged>VK_FORMAT_FEATURE_VIDEO_ENCODE_INPUT_BIT_KHR</unmanaged>
-	VideoEncodeInputKHR = 134217728,
+	VideoEncodeInputKHR = 0x08000000,
 	/// <unmanaged>VK_FORMAT_FEATURE_VIDEO_ENCODE_DPB_BIT_KHR</unmanaged>
-	VideoEncodeDpbKHR = 268435456,
+	VideoEncodeDpbKHR = 0x10000000,
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG</unmanaged>
 	SampledImageFilterCubicImg = SampledImageFilterCubicEXT,
 	/// <unmanaged>VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR</unmanaged>
@@ -4069,55 +4145,55 @@ public enum VkImageCreateFlags
 	/// Image should support sparse backing
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</unmanaged>
-	SparseBinding = 1,
+	SparseBinding = 0x00000001,
 	/// <summary>
 	/// Image should support sparse backing with partial residency
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</unmanaged>
-	SparseResidency = 2,
+	SparseResidency = 0x00000002,
 	/// <summary>
 	/// Image should support constant data access to physical memory ranges mapped into multiple locations of sparse images
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_CREATE_SPARSE_ALIASED_BIT</unmanaged>
-	SparseAliased = 4,
+	SparseAliased = 0x00000004,
 	/// <summary>
 	/// Allows image views to have different format than the base image
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT</unmanaged>
-	MutableFormat = 8,
+	MutableFormat = 0x00000008,
 	/// <summary>
 	/// Allows creating image views with cube type from the created image
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT</unmanaged>
-	CubeCompatible = 16,
+	CubeCompatible = 0x00000010,
 	/// <unmanaged>VK_IMAGE_CREATE_ALIAS_BIT</unmanaged>
-	Alias = 1024,
+	Alias = 0x00000400,
 	/// <unmanaged>VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT</unmanaged>
-	SplitInstanceBindRegions = 64,
+	SplitInstanceBindRegions = 0x00000040,
 	/// <unmanaged>VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT</unmanaged>
-	Array2DCompatible = 32,
+	Array2DCompatible = 0x00000020,
 	/// <unmanaged>VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT</unmanaged>
-	BlockTexelViewCompatible = 128,
+	BlockTexelViewCompatible = 0x00000080,
 	/// <unmanaged>VK_IMAGE_CREATE_EXTENDED_USAGE_BIT</unmanaged>
-	ExtendedUsage = 256,
+	ExtendedUsage = 0x00000100,
 	/// <unmanaged>VK_IMAGE_CREATE_PROTECTED_BIT</unmanaged>
-	Protected = 2048,
+	Protected = 0x00000800,
 	/// <unmanaged>VK_IMAGE_CREATE_DISJOINT_BIT</unmanaged>
-	Disjoint = 512,
+	Disjoint = 0x00000200,
 	/// <unmanaged>VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV</unmanaged>
-	CornerSampledNV = 8192,
+	CornerSampledNV = 0x00002000,
 	/// <unmanaged>VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT</unmanaged>
-	SampleLocationsCompatibleDepthEXT = 4096,
+	SampleLocationsCompatibleDepthEXT = 0x00001000,
 	/// <unmanaged>VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT</unmanaged>
-	SubsampledEXT = 16384,
+	SubsampledEXT = 0x00004000,
 	/// <unmanaged>VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT</unmanaged>
-	DescriptorBufferCaptureReplayEXT = 65536,
+	DescriptorBufferCaptureReplayEXT = 0x00010000,
 	/// <unmanaged>VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT</unmanaged>
-	MultisampledRenderToSingleSampledEXT = 262144,
+	MultisampledRenderToSingleSampledEXT = 0x00040000,
 	/// <unmanaged>VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT</unmanaged>
-	View2DCompatibleEXT = 131072,
+	View2DCompatibleEXT = 0x00020000,
 	/// <unmanaged>VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_QCOM</unmanaged>
-	FragmentDensityMapOffsetQCOM = 32768,
+	FragmentDensityMapOffsetQCOM = 0x00008000,
 	/// <unmanaged>VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR</unmanaged>
 	SplitInstanceBindRegionsKHR = SplitInstanceBindRegions,
 	/// <unmanaged>VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR</unmanaged>
@@ -4140,37 +4216,37 @@ public enum VkSampleCountFlags
 	/// Sample count 1 supported
 	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_1_BIT</unmanaged>
-	Count1 = 1,
+	Count1 = 0x00000001,
 	/// <summary>
 	/// Sample count 2 supported
 	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_2_BIT</unmanaged>
-	Count2 = 2,
+	Count2 = 0x00000002,
 	/// <summary>
 	/// Sample count 4 supported
 	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_4_BIT</unmanaged>
-	Count4 = 4,
+	Count4 = 0x00000004,
 	/// <summary>
 	/// Sample count 8 supported
 	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_8_BIT</unmanaged>
-	Count8 = 8,
+	Count8 = 0x00000008,
 	/// <summary>
 	/// Sample count 16 supported
 	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_16_BIT</unmanaged>
-	Count16 = 16,
+	Count16 = 0x00000010,
 	/// <summary>
 	/// Sample count 32 supported
 	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_32_BIT</unmanaged>
-	Count32 = 32,
+	Count32 = 0x00000020,
 	/// <summary>
 	/// Sample count 64 supported
 	/// </summary>
 	/// <unmanaged>VK_SAMPLE_COUNT_64_BIT</unmanaged>
-	Count64 = 64,
+	Count64 = 0x00000040,
 }
 
 [Flags]
@@ -4181,66 +4257,68 @@ public enum VkImageUsageFlags
 	/// Can be used as a source of transfer operations
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_TRANSFER_SRC_BIT</unmanaged>
-	TransferSrc = 1,
+	TransferSrc = 0x00000001,
 	/// <summary>
 	/// Can be used as a destination of transfer operations
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_TRANSFER_DST_BIT</unmanaged>
-	TransferDst = 2,
+	TransferDst = 0x00000002,
 	/// <summary>
 	/// Can be sampled from (SAMPLED_IMAGE and COMBINED_IMAGE_SAMPLER descriptor types)
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_SAMPLED_BIT</unmanaged>
-	Sampled = 4,
+	Sampled = 0x00000004,
 	/// <summary>
 	/// Can be used as storage image (STORAGE_IMAGE descriptor type)
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_STORAGE_BIT</unmanaged>
-	Storage = 8,
+	Storage = 0x00000008,
 	/// <summary>
 	/// Can be used as framebuffer color attachment
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT</unmanaged>
-	ColorAttachment = 16,
+	ColorAttachment = 0x00000010,
 	/// <summary>
 	/// Can be used as framebuffer depth/stencil attachment
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT</unmanaged>
-	DepthStencilAttachment = 32,
+	DepthStencilAttachment = 0x00000020,
 	/// <summary>
 	/// Image data not needed outside of rendering
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT</unmanaged>
-	TransientAttachment = 64,
+	TransientAttachment = 0x00000040,
 	/// <summary>
 	/// Can be used as framebuffer input attachment
 	/// </summary>
 	/// <unmanaged>VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT</unmanaged>
-	InputAttachment = 128,
+	InputAttachment = 0x00000080,
 	/// <unmanaged>VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR</unmanaged>
-	VideoDecodeDstKHR = 1024,
+	VideoDecodeDstKHR = 0x00000400,
 	/// <unmanaged>VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR</unmanaged>
-	VideoDecodeSrcKHR = 2048,
+	VideoDecodeSrcKHR = 0x00000800,
 	/// <unmanaged>VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR</unmanaged>
-	VideoDecodeDpbKHR = 4096,
+	VideoDecodeDpbKHR = 0x00001000,
 	/// <unmanaged>VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT</unmanaged>
-	FragmentDensityMapEXT = 512,
+	FragmentDensityMapEXT = 0x00000200,
 	/// <unmanaged>VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
-	FragmentShadingRateAttachmentKHR = 256,
+	FragmentShadingRateAttachmentKHR = 0x00000100,
+	/// <unmanaged>VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT</unmanaged>
+	HostTransferEXT = 0x00400000,
 	/// <unmanaged>VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR</unmanaged>
-	VideoEncodeDstKHR = 8192,
+	VideoEncodeDstKHR = 0x00002000,
 	/// <unmanaged>VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR</unmanaged>
-	VideoEncodeSrcKHR = 16384,
+	VideoEncodeSrcKHR = 0x00004000,
 	/// <unmanaged>VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR</unmanaged>
-	VideoEncodeDpbKHR = 32768,
+	VideoEncodeDpbKHR = 0x00008000,
 	/// <unmanaged>VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT</unmanaged>
-	AttachmentFeedbackLoopEXT = 524288,
+	AttachmentFeedbackLoopEXT = 0x00080000,
 	/// <unmanaged>VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI</unmanaged>
-	InvocationMaskHUAWEI = 262144,
+	InvocationMaskHUAWEI = 0x00040000,
 	/// <unmanaged>VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM</unmanaged>
-	SampleWeightQCOM = 1048576,
+	SampleWeightQCOM = 0x00100000,
 	/// <unmanaged>VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM</unmanaged>
-	SampleBlockMatchQCOM = 2097152,
+	SampleBlockMatchQCOM = 0x00200000,
 	/// <unmanaged>VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV</unmanaged>
 	ShadingRateImageNV = FragmentShadingRateAttachmentKHR,
 }
@@ -4250,7 +4328,7 @@ public enum VkInstanceCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR</unmanaged>
-	EnumeratePortabilityKHR = 1,
+	EnumeratePortabilityKHR = 0x00000001,
 }
 
 [Flags]
@@ -4261,9 +4339,9 @@ public enum VkMemoryHeapFlags
 	/// If set, heap represents device memory
 	/// </summary>
 	/// <unmanaged>VK_MEMORY_HEAP_DEVICE_LOCAL_BIT</unmanaged>
-	DeviceLocal = 1,
+	DeviceLocal = 0x00000001,
 	/// <unmanaged>VK_MEMORY_HEAP_MULTI_INSTANCE_BIT</unmanaged>
-	MultiInstance = 2,
+	MultiInstance = 0x00000002,
 	/// <unmanaged>VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR</unmanaged>
 	MultiInstanceKHR = MultiInstance,
 }
@@ -4276,35 +4354,35 @@ public enum VkMemoryPropertyFlags
 	/// If otherwise stated, then allocate memory on device
 	/// </summary>
 	/// <unmanaged>VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT</unmanaged>
-	DeviceLocal = 1,
+	DeviceLocal = 0x00000001,
 	/// <summary>
 	/// Memory is mappable by host
 	/// </summary>
 	/// <unmanaged>VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT</unmanaged>
-	HostVisible = 2,
+	HostVisible = 0x00000002,
 	/// <summary>
 	/// Memory will have i/o coherency. If not set, application may need to use vkFlushMappedMemoryRanges and vkInvalidateMappedMemoryRanges to flush/invalidate host cache
 	/// </summary>
 	/// <unmanaged>VK_MEMORY_PROPERTY_HOST_COHERENT_BIT</unmanaged>
-	HostCoherent = 4,
+	HostCoherent = 0x00000004,
 	/// <summary>
 	/// Memory will be cached by the host
 	/// </summary>
 	/// <unmanaged>VK_MEMORY_PROPERTY_HOST_CACHED_BIT</unmanaged>
-	HostCached = 8,
+	HostCached = 0x00000008,
 	/// <summary>
 	/// Memory may be allocated by the driver when it is required
 	/// </summary>
 	/// <unmanaged>VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT</unmanaged>
-	LazilyAllocated = 16,
+	LazilyAllocated = 0x00000010,
 	/// <unmanaged>VK_MEMORY_PROPERTY_PROTECTED_BIT</unmanaged>
-	Protected = 32,
+	Protected = 0x00000020,
 	/// <unmanaged>VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD</unmanaged>
-	DeviceCoherentAMD = 64,
+	DeviceCoherentAMD = 0x00000040,
 	/// <unmanaged>VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD</unmanaged>
-	DeviceUncachedAMD = 128,
+	DeviceUncachedAMD = 0x00000080,
 	/// <unmanaged>VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV</unmanaged>
-	RDMACapableNV = 256,
+	RDMACapableNV = 0x00000100,
 }
 
 [Flags]
@@ -4315,30 +4393,30 @@ public enum VkQueueFlags
 	/// Queue supports graphics operations
 	/// </summary>
 	/// <unmanaged>VK_QUEUE_GRAPHICS_BIT</unmanaged>
-	Graphics = 1,
+	Graphics = 0x00000001,
 	/// <summary>
 	/// Queue supports compute operations
 	/// </summary>
 	/// <unmanaged>VK_QUEUE_COMPUTE_BIT</unmanaged>
-	Compute = 2,
+	Compute = 0x00000002,
 	/// <summary>
 	/// Queue supports transfer operations
 	/// </summary>
 	/// <unmanaged>VK_QUEUE_TRANSFER_BIT</unmanaged>
-	Transfer = 4,
+	Transfer = 0x00000004,
 	/// <summary>
 	/// Queue supports sparse resource memory management operations
 	/// </summary>
 	/// <unmanaged>VK_QUEUE_SPARSE_BINDING_BIT</unmanaged>
-	SparseBinding = 8,
+	SparseBinding = 0x00000008,
 	/// <unmanaged>VK_QUEUE_PROTECTED_BIT</unmanaged>
-	Protected = 16,
+	Protected = 0x00000010,
 	/// <unmanaged>VK_QUEUE_VIDEO_DECODE_BIT_KHR</unmanaged>
-	VideoDecodeKHR = 32,
+	VideoDecodeKHR = 0x00000020,
 	/// <unmanaged>VK_QUEUE_VIDEO_ENCODE_BIT_KHR</unmanaged>
-	VideoEncodeKHR = 64,
+	VideoEncodeKHR = 0x00000040,
 	/// <unmanaged>VK_QUEUE_OPTICAL_FLOW_BIT_NV</unmanaged>
-	OpticalFlowNV = 256,
+	OpticalFlowNV = 0x00000100,
 }
 
 [Flags]
@@ -4346,7 +4424,7 @@ public enum VkDeviceQueueCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT</unmanaged>
-	Protected = 1,
+	Protected = 0x00000001,
 }
 
 [Flags]
@@ -4356,107 +4434,107 @@ public enum VkPipelineStageFlags
 	/// Before subsequent commands are processed
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT</unmanaged>
-	TopOfPipe = 1,
+	TopOfPipe = 0x00000001,
 	/// <summary>
 	/// Draw/DispatchIndirect command fetch
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT</unmanaged>
-	DrawIndirect = 2,
+	DrawIndirect = 0x00000002,
 	/// <summary>
 	/// Vertex/index fetch
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_VERTEX_INPUT_BIT</unmanaged>
-	VertexInput = 4,
+	VertexInput = 0x00000004,
 	/// <summary>
 	/// Vertex shading
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_VERTEX_SHADER_BIT</unmanaged>
-	VertexShader = 8,
+	VertexShader = 0x00000008,
 	/// <summary>
 	/// Tessellation control shading
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT</unmanaged>
-	TessellationControlShader = 16,
+	TessellationControlShader = 0x00000010,
 	/// <summary>
 	/// Tessellation evaluation shading
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT</unmanaged>
-	TessellationEvaluationShader = 32,
+	TessellationEvaluationShader = 0x00000020,
 	/// <summary>
 	/// Geometry shading
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT</unmanaged>
-	GeometryShader = 64,
+	GeometryShader = 0x00000040,
 	/// <summary>
 	/// Fragment shading
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</unmanaged>
-	FragmentShader = 128,
+	FragmentShader = 0x00000080,
 	/// <summary>
 	/// Early fragment (depth and stencil) tests
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT</unmanaged>
-	EarlyFragmentTests = 256,
+	EarlyFragmentTests = 0x00000100,
 	/// <summary>
 	/// Late fragment (depth and stencil) tests
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</unmanaged>
-	LateFragmentTests = 512,
+	LateFragmentTests = 0x00000200,
 	/// <summary>
 	/// Color attachment writes
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT</unmanaged>
-	ColorAttachmentOutput = 1024,
+	ColorAttachmentOutput = 0x00000400,
 	/// <summary>
 	/// Compute shading
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT</unmanaged>
-	ComputeShader = 2048,
+	ComputeShader = 0x00000800,
 	/// <summary>
 	/// Transfer/copy operations
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_TRANSFER_BIT</unmanaged>
-	Transfer = 4096,
+	Transfer = 0x00001000,
 	/// <summary>
 	/// After previous commands have completed
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT</unmanaged>
-	BottomOfPipe = 8192,
+	BottomOfPipe = 0x00002000,
 	/// <summary>
 	/// Indicates host (CPU) is a source/sink of the dependency
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_HOST_BIT</unmanaged>
-	Host = 16384,
+	Host = 0x00004000,
 	/// <summary>
 	/// All stages of the graphics pipeline
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT</unmanaged>
-	AllGraphics = 32768,
+	AllGraphics = 0x00008000,
 	/// <summary>
 	/// All stages supported on the queue
 	/// </summary>
 	/// <unmanaged>VK_PIPELINE_STAGE_ALL_COMMANDS_BIT</unmanaged>
-	AllCommands = 65536,
+	AllCommands = 0x00010000,
 	/// <unmanaged>VK_PIPELINE_STAGE_NONE</unmanaged>
 	None = 0,
 	/// <unmanaged>VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT</unmanaged>
-	TransformFeedbackEXT = 16777216,
+	TransformFeedbackEXT = 0x01000000,
 	/// <unmanaged>VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT</unmanaged>
-	ConditionalRenderingEXT = 262144,
+	ConditionalRenderingEXT = 0x00040000,
 	/// <unmanaged>VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR</unmanaged>
-	AccelerationStructureBuildKHR = 33554432,
+	AccelerationStructureBuildKHR = 0x02000000,
 	/// <unmanaged>VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR</unmanaged>
-	RayTracingShaderKHR = 2097152,
+	RayTracingShaderKHR = 0x00200000,
 	/// <unmanaged>VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT</unmanaged>
-	FragmentDensityProcessEXT = 8388608,
+	FragmentDensityProcessEXT = 0x00800000,
 	/// <unmanaged>VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
-	FragmentShadingRateAttachmentKHR = 4194304,
+	FragmentShadingRateAttachmentKHR = 0x00400000,
 	/// <unmanaged>VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV</unmanaged>
-	CommandPreprocessNV = 131072,
+	CommandPreprocessNV = 0x00020000,
 	/// <unmanaged>VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT</unmanaged>
-	TaskShaderEXT = 524288,
+	TaskShaderEXT = 0x00080000,
 	/// <unmanaged>VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT</unmanaged>
-	MeshShaderEXT = 1048576,
+	MeshShaderEXT = 0x00100000,
 	/// <unmanaged>VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV</unmanaged>
 	ShadingRateImageNV = FragmentShadingRateAttachmentKHR,
 	/// <unmanaged>VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_NV</unmanaged>
@@ -4479,7 +4557,7 @@ public enum VkSparseMemoryBindFlags
 	/// Operation binds resource metadata to memory
 	/// </summary>
 	/// <unmanaged>VK_SPARSE_MEMORY_BIND_METADATA_BIT</unmanaged>
-	Metadata = 1,
+	Metadata = 0x00000001,
 }
 
 [Flags]
@@ -4490,17 +4568,17 @@ public enum VkSparseImageFormatFlags
 	/// Image uses a single mip tail region for all array layers
 	/// </summary>
 	/// <unmanaged>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</unmanaged>
-	SingleMiptail = 1,
+	SingleMiptail = 0x00000001,
 	/// <summary>
 	/// Image requires mip level dimensions to be an integer multiple of the sparse image block dimensions for non-tail mip levels.
 	/// </summary>
 	/// <unmanaged>VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</unmanaged>
-	AlignedMipSize = 2,
+	AlignedMipSize = 0x00000002,
 	/// <summary>
 	/// Image uses a non-standard sparse image block dimensions
 	/// </summary>
 	/// <unmanaged>VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT</unmanaged>
-	NonstandardBlockSize = 4,
+	NonstandardBlockSize = 0x00000004,
 }
 
 [Flags]
@@ -4508,7 +4586,7 @@ public enum VkFenceCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_FENCE_CREATE_SIGNALED_BIT</unmanaged>
-	Signaled = 1,
+	Signaled = 0x00000001,
 }
 
 [Flags]
@@ -4516,7 +4594,7 @@ public enum VkEventCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_EVENT_CREATE_DEVICE_ONLY_BIT</unmanaged>
-	DeviceOnly = 1,
+	DeviceOnly = 0x00000001,
 	/// <unmanaged>VK_EVENT_CREATE_DEVICE_ONLY_BIT_KHR</unmanaged>
 	DeviceOnlyKHR = DeviceOnly,
 }
@@ -4529,63 +4607,63 @@ public enum VkQueryPipelineStatisticFlags
 	/// Optional
 	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT</unmanaged>
-	InputAssemblyVertices = 1,
+	InputAssemblyVertices = 0x00000001,
 	/// <summary>
 	/// Optional
 	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT</unmanaged>
-	InputAssemblyPrimitives = 2,
+	InputAssemblyPrimitives = 0x00000002,
 	/// <summary>
 	/// Optional
 	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT</unmanaged>
-	VertexShaderInvocations = 4,
+	VertexShaderInvocations = 0x00000004,
 	/// <summary>
 	/// Optional
 	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT</unmanaged>
-	GeometryShaderInvocations = 8,
+	GeometryShaderInvocations = 0x00000008,
 	/// <summary>
 	/// Optional
 	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT</unmanaged>
-	GeometryShaderPrimitives = 16,
+	GeometryShaderPrimitives = 0x00000010,
 	/// <summary>
 	/// Optional
 	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT</unmanaged>
-	ClippingInvocations = 32,
+	ClippingInvocations = 0x00000020,
 	/// <summary>
 	/// Optional
 	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT</unmanaged>
-	ClippingPrimitives = 64,
+	ClippingPrimitives = 0x00000040,
 	/// <summary>
 	/// Optional
 	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT</unmanaged>
-	FragmentShaderInvocations = 128,
+	FragmentShaderInvocations = 0x00000080,
 	/// <summary>
 	/// Optional
 	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT</unmanaged>
-	TessellationControlShaderPatches = 256,
+	TessellationControlShaderPatches = 0x00000100,
 	/// <summary>
 	/// Optional
 	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT</unmanaged>
-	TessellationEvaluationShaderInvocations = 512,
+	TessellationEvaluationShaderInvocations = 0x00000200,
 	/// <summary>
 	/// Optional
 	/// </summary>
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT</unmanaged>
-	ComputeShaderInvocations = 1024,
+	ComputeShaderInvocations = 0x00000400,
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT</unmanaged>
-	TaskShaderInvocationsEXT = 2048,
+	TaskShaderInvocationsEXT = 0x00000800,
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT</unmanaged>
-	MeshShaderInvocationsEXT = 4096,
+	MeshShaderInvocationsEXT = 0x00001000,
 	/// <unmanaged>VK_QUERY_PIPELINE_STATISTIC_CLUSTER_CULLING_SHADER_INVOCATIONS_BIT_HUAWEI</unmanaged>
-	ClusterCullingShaderInvocationsHUAWEI = 8192,
+	ClusterCullingShaderInvocationsHUAWEI = 0x00002000,
 }
 
 [Flags]
@@ -4596,24 +4674,24 @@ public enum VkQueryResultFlags
 	/// Results of the queries are written to the destination buffer as 64-bit values
 	/// </summary>
 	/// <unmanaged>VK_QUERY_RESULT_64_BIT</unmanaged>
-	Bit64 = 1,
+	Bit64 = 0x00000001,
 	/// <summary>
 	/// Results of the queries are waited on before proceeding with the result copy
 	/// </summary>
 	/// <unmanaged>VK_QUERY_RESULT_WAIT_BIT</unmanaged>
-	Wait = 2,
+	Wait = 0x00000002,
 	/// <summary>
 	/// Besides the results of the query, the availability of the results is also written
 	/// </summary>
 	/// <unmanaged>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</unmanaged>
-	WithAvailability = 4,
+	WithAvailability = 0x00000004,
 	/// <summary>
 	/// Copy the partial results of the query even if the final results are not available
 	/// </summary>
 	/// <unmanaged>VK_QUERY_RESULT_PARTIAL_BIT</unmanaged>
-	Partial = 8,
+	Partial = 0x00000008,
 	/// <unmanaged>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</unmanaged>
-	WithStatusKHR = 16,
+	WithStatusKHR = 0x00000010,
 }
 
 [Flags]
@@ -4624,23 +4702,23 @@ public enum VkBufferCreateFlags
 	/// Buffer should support sparse backing
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_CREATE_SPARSE_BINDING_BIT</unmanaged>
-	SparseBinding = 1,
+	SparseBinding = 0x00000001,
 	/// <summary>
 	/// Buffer should support sparse backing with partial residency
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</unmanaged>
-	SparseResidency = 2,
+	SparseResidency = 0x00000002,
 	/// <summary>
 	/// Buffer should support constant data access to physical memory ranges mapped into multiple locations of sparse buffers
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_CREATE_SPARSE_ALIASED_BIT</unmanaged>
-	SparseAliased = 4,
+	SparseAliased = 0x00000004,
 	/// <unmanaged>VK_BUFFER_CREATE_PROTECTED_BIT</unmanaged>
-	Protected = 8,
+	Protected = 0x00000008,
 	/// <unmanaged>VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT</unmanaged>
-	DeviceAddressCaptureReplay = 16,
+	DeviceAddressCaptureReplay = 0x00000010,
 	/// <unmanaged>VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT</unmanaged>
-	DescriptorBufferCaptureReplayEXT = 32,
+	DescriptorBufferCaptureReplayEXT = 0x00000020,
 	/// <unmanaged>VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT</unmanaged>
 	DeviceAddressCaptureReplayEXT = DeviceAddressCaptureReplay,
 	/// <unmanaged>VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR</unmanaged>
@@ -4655,79 +4733,81 @@ public enum VkBufferUsageFlags
 	/// Can be used as a source of transfer operations
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_TRANSFER_SRC_BIT</unmanaged>
-	TransferSrc = 1,
+	TransferSrc = 0x00000001,
 	/// <summary>
 	/// Can be used as a destination of transfer operations
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_TRANSFER_DST_BIT</unmanaged>
-	TransferDst = 2,
+	TransferDst = 0x00000002,
 	/// <summary>
 	/// Can be used as TBO
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT</unmanaged>
-	UniformTexelBuffer = 4,
+	UniformTexelBuffer = 0x00000004,
 	/// <summary>
 	/// Can be used as IBO
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT</unmanaged>
-	StorageTexelBuffer = 8,
+	StorageTexelBuffer = 0x00000008,
 	/// <summary>
 	/// Can be used as UBO
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT</unmanaged>
-	UniformBuffer = 16,
+	UniformBuffer = 0x00000010,
 	/// <summary>
 	/// Can be used as SSBO
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</unmanaged>
-	StorageBuffer = 32,
+	StorageBuffer = 0x00000020,
 	/// <summary>
 	/// Can be used as source of fixed-function index fetch (index buffer)
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_INDEX_BUFFER_BIT</unmanaged>
-	IndexBuffer = 64,
+	IndexBuffer = 0x00000040,
 	/// <summary>
 	/// Can be used as source of fixed-function vertex fetch (VBO)
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_VERTEX_BUFFER_BIT</unmanaged>
-	VertexBuffer = 128,
+	VertexBuffer = 0x00000080,
 	/// <summary>
 	/// Can be the source of indirect parameters (e.g. indirect buffer, parameter buffer)
 	/// </summary>
 	/// <unmanaged>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</unmanaged>
-	IndirectBuffer = 256,
+	IndirectBuffer = 0x00000100,
 	/// <unmanaged>VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT</unmanaged>
-	ShaderDeviceAddress = 131072,
+	ShaderDeviceAddress = 0x00020000,
 	/// <unmanaged>VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR</unmanaged>
-	VideoDecodeSrcKHR = 8192,
+	VideoDecodeSrcKHR = 0x00002000,
 	/// <unmanaged>VK_BUFFER_USAGE_VIDEO_DECODE_DST_BIT_KHR</unmanaged>
-	VideoDecodeDstKHR = 16384,
+	VideoDecodeDstKHR = 0x00004000,
 	/// <unmanaged>VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT</unmanaged>
-	TransformFeedbackBufferEXT = 2048,
+	TransformFeedbackBufferEXT = 0x00000800,
 	/// <unmanaged>VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT</unmanaged>
-	TransformFeedbackCounterBufferEXT = 4096,
+	TransformFeedbackCounterBufferEXT = 0x00001000,
 	/// <unmanaged>VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT</unmanaged>
-	ConditionalRenderingEXT = 512,
+	ConditionalRenderingEXT = 0x00000200,
+	/// <unmanaged>VK_BUFFER_USAGE_EXECUTION_GRAPH_SCRATCH_BIT_AMDX</unmanaged>
+	ExecutionGraphScratchAMDX = 0x02000000,
 	/// <unmanaged>VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR</unmanaged>
-	AccelerationStructureBuildInputReadOnlyKHR = 524288,
+	AccelerationStructureBuildInputReadOnlyKHR = 0x00080000,
 	/// <unmanaged>VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR</unmanaged>
-	AccelerationStructureStorageKHR = 1048576,
+	AccelerationStructureStorageKHR = 0x00100000,
 	/// <unmanaged>VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR</unmanaged>
-	ShaderBindingTableKHR = 1024,
+	ShaderBindingTableKHR = 0x00000400,
 	/// <unmanaged>VK_BUFFER_USAGE_VIDEO_ENCODE_DST_BIT_KHR</unmanaged>
-	VideoEncodeDstKHR = 32768,
+	VideoEncodeDstKHR = 0x00008000,
 	/// <unmanaged>VK_BUFFER_USAGE_VIDEO_ENCODE_SRC_BIT_KHR</unmanaged>
-	VideoEncodeSrcKHR = 65536,
+	VideoEncodeSrcKHR = 0x00010000,
 	/// <unmanaged>VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT</unmanaged>
-	SamplerDescriptorBufferEXT = 2097152,
+	SamplerDescriptorBufferEXT = 0x00200000,
 	/// <unmanaged>VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT</unmanaged>
-	ResourceDescriptorBufferEXT = 4194304,
+	ResourceDescriptorBufferEXT = 0x00400000,
 	/// <unmanaged>VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT</unmanaged>
-	PushDescriptorsDescriptorBufferEXT = 67108864,
+	PushDescriptorsDescriptorBufferEXT = 0x04000000,
 	/// <unmanaged>VK_BUFFER_USAGE_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT</unmanaged>
-	MicromapBuildInputReadOnlyEXT = 8388608,
+	MicromapBuildInputReadOnlyEXT = 0x00800000,
 	/// <unmanaged>VK_BUFFER_USAGE_MICROMAP_STORAGE_BIT_EXT</unmanaged>
-	MicromapStorageEXT = 16777216,
+	MicromapStorageEXT = 0x01000000,
 	/// <unmanaged>VK_BUFFER_USAGE_RAY_TRACING_BIT_NV</unmanaged>
 	RayTracingNV = ShaderBindingTableKHR,
 	/// <unmanaged>VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT</unmanaged>
@@ -4741,11 +4821,11 @@ public enum VkImageViewCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT</unmanaged>
-	FragmentDensityMapDynamicEXT = 1,
+	FragmentDensityMapDynamicEXT = 0x00000001,
 	/// <unmanaged>VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT</unmanaged>
-	DescriptorBufferCaptureReplayEXT = 4,
+	DescriptorBufferCaptureReplayEXT = 0x00000004,
 	/// <unmanaged>VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT</unmanaged>
-	FragmentDensityMapDeferredEXT = 2,
+	FragmentDensityMapDeferredEXT = 0x00000002,
 }
 
 [Flags]
@@ -4753,7 +4833,7 @@ public enum VkPipelineCacheCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT</unmanaged>
-	ExternallySynchronized = 1,
+	ExternallySynchronized = 0x00000001,
 	/// <unmanaged>VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT</unmanaged>
 	ExternallySynchronizedEXT = ExternallySynchronized,
 }
@@ -4763,13 +4843,13 @@ public enum VkColorComponentFlags
 {
 	None = 0,
 	/// <unmanaged>VK_COLOR_COMPONENT_R_BIT</unmanaged>
-	R = 1,
+	R = 0x00000001,
 	/// <unmanaged>VK_COLOR_COMPONENT_G_BIT</unmanaged>
-	G = 2,
+	G = 0x00000002,
 	/// <unmanaged>VK_COLOR_COMPONENT_B_BIT</unmanaged>
-	B = 4,
+	B = 0x00000004,
 	/// <unmanaged>VK_COLOR_COMPONENT_A_BIT</unmanaged>
-	A = 8,
+	A = 0x00000008,
 	All = R | G | B | A
 }
 
@@ -4781,67 +4861,67 @@ public enum VkPipelineCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT</unmanaged>
-	DisableOptimization = 1,
+	DisableOptimization = 0x00000001,
 	/// <unmanaged>VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT</unmanaged>
-	AllowDerivatives = 2,
+	AllowDerivatives = 0x00000002,
 	/// <unmanaged>VK_PIPELINE_CREATE_DERIVATIVE_BIT</unmanaged>
-	Derivative = 4,
+	Derivative = 0x00000004,
 	/// <unmanaged>VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT</unmanaged>
-	ViewIndexFromDeviceIndex = 8,
+	ViewIndexFromDeviceIndex = 0x00000008,
 	/// <unmanaged>VK_PIPELINE_CREATE_DISPATCH_BASE_BIT</unmanaged>
-	DispatchBase = 16,
+	DispatchBase = 0x00000010,
 	/// <unmanaged>VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT</unmanaged>
-	FailOnPipelineCompileRequired = 256,
+	FailOnPipelineCompileRequired = 0x00000100,
 	/// <unmanaged>VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT</unmanaged>
-	EarlyReturnOnFailure = 512,
+	EarlyReturnOnFailure = 0x00000200,
 	/// <unmanaged>VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
-	RenderingFragmentShadingRateAttachmentKHR = 2097152,
+	RenderingFragmentShadingRateAttachmentKHR = 0x00200000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT</unmanaged>
-	RenderingFragmentDensityMapAttachmentEXT = 4194304,
+	RenderingFragmentDensityMapAttachmentEXT = 0x00400000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR</unmanaged>
-	RayTracingNoNullAnyHitShadersKHR = 16384,
+	RayTracingNoNullAnyHitShadersKHR = 0x00004000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR</unmanaged>
-	RayTracingNoNullClosestHitShadersKHR = 32768,
+	RayTracingNoNullClosestHitShadersKHR = 0x00008000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR</unmanaged>
-	RayTracingNoNullMissShadersKHR = 65536,
+	RayTracingNoNullMissShadersKHR = 0x00010000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR</unmanaged>
-	RayTracingNoNullIntersectionShadersKHR = 131072,
+	RayTracingNoNullIntersectionShadersKHR = 0x00020000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</unmanaged>
-	RayTracingSkipTrianglesKHR = 4096,
+	RayTracingSkipTrianglesKHR = 0x00001000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR</unmanaged>
-	RayTracingSkipAabbsKHR = 8192,
+	RayTracingSkipAabbsKHR = 0x00002000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR</unmanaged>
-	RayTracingShaderGroupHandleCaptureReplayKHR = 524288,
+	RayTracingShaderGroupHandleCaptureReplayKHR = 0x00080000,
 	/// <unmanaged>VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV</unmanaged>
-	DeferCompileNV = 32,
+	DeferCompileNV = 0x00000020,
 	/// <unmanaged>VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR</unmanaged>
-	CaptureStatisticsKHR = 64,
+	CaptureStatisticsKHR = 0x00000040,
 	/// <unmanaged>VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR</unmanaged>
-	CaptureInternalRepresentationsKHR = 128,
+	CaptureInternalRepresentationsKHR = 0x00000080,
 	/// <unmanaged>VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV</unmanaged>
-	IndirectBindableNV = 262144,
+	IndirectBindableNV = 0x00040000,
 	/// <unmanaged>VK_PIPELINE_CREATE_LIBRARY_BIT_KHR</unmanaged>
-	LibraryKHR = 2048,
+	LibraryKHR = 0x00000800,
 	/// <unmanaged>VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</unmanaged>
-	DescriptorBufferEXT = 536870912,
+	DescriptorBufferEXT = 0x20000000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT</unmanaged>
-	RetainLinkTimeOptimizationInfoEXT = 8388608,
+	RetainLinkTimeOptimizationInfoEXT = 0x00800000,
 	/// <unmanaged>VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT</unmanaged>
-	LinkTimeOptimizationEXT = 1024,
+	LinkTimeOptimizationEXT = 0x00000400,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</unmanaged>
-	RayTracingAllowMotionNV = 1048576,
+	RayTracingAllowMotionNV = 0x00100000,
 	/// <unmanaged>VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT</unmanaged>
-	ColorAttachmentFeedbackLoopEXT = 33554432,
+	ColorAttachmentFeedbackLoopEXT = 0x02000000,
 	/// <unmanaged>VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT</unmanaged>
-	DepthStencilAttachmentFeedbackLoopEXT = 67108864,
+	DepthStencilAttachmentFeedbackLoopEXT = 0x04000000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT</unmanaged>
-	RayTracingOpacityMicromapEXT = 16777216,
+	RayTracingOpacityMicromapEXT = 0x01000000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV</unmanaged>
-	RayTracingDisplacementMicromapNV = 268435456,
+	RayTracingDisplacementMicromapNV = 0x10000000,
 	/// <unmanaged>VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT_EXT</unmanaged>
-	NoProtectedAccessEXT = 134217728,
+	NoProtectedAccessEXT = 0x08000000,
 	/// <unmanaged>VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT_EXT</unmanaged>
-	ProtectedAccessOnlyEXT = 1073741824,
+	ProtectedAccessOnlyEXT = 0x40000000,
 	/// <unmanaged>VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
 	RasterizationStateCreateFragmentShadingRateAttachmentKHR = RenderingFragmentShadingRateAttachmentKHR,
 	/// <unmanaged>VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT</unmanaged>
@@ -4861,9 +4941,9 @@ public enum VkPipelineShaderStageCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT</unmanaged>
-	AllowVaryingSubgroupSize = 1,
+	AllowVaryingSubgroupSize = 0x00000001,
 	/// <unmanaged>VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT</unmanaged>
-	RequireFullSubgroups = 2,
+	RequireFullSubgroups = 0x00000002,
 	/// <unmanaged>VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT</unmanaged>
 	AllowVaryingSubgroupSizeEXT = AllowVaryingSubgroupSize,
 	/// <unmanaged>VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT</unmanaged>
@@ -4875,41 +4955,41 @@ public enum VkShaderStageFlags
 {
 	None = 0,
 	/// <unmanaged>VK_SHADER_STAGE_VERTEX_BIT</unmanaged>
-	Vertex = 1,
+	Vertex = 0x00000001,
 	/// <unmanaged>VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT</unmanaged>
-	TessellationControl = 2,
+	TessellationControl = 0x00000002,
 	/// <unmanaged>VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT</unmanaged>
-	TessellationEvaluation = 4,
+	TessellationEvaluation = 0x00000004,
 	/// <unmanaged>VK_SHADER_STAGE_GEOMETRY_BIT</unmanaged>
-	Geometry = 8,
+	Geometry = 0x00000008,
 	/// <unmanaged>VK_SHADER_STAGE_FRAGMENT_BIT</unmanaged>
-	Fragment = 16,
+	Fragment = 0x00000010,
 	/// <unmanaged>VK_SHADER_STAGE_COMPUTE_BIT</unmanaged>
-	Compute = 32,
+	Compute = 0x00000020,
 	/// <unmanaged>VK_SHADER_STAGE_ALL_GRAPHICS</unmanaged>
-	AllGraphics = 31,
+	AllGraphics = 0x0000001F,
 	/// <unmanaged>VK_SHADER_STAGE_ALL</unmanaged>
-	All = 2147483647,
+	All = 0x7FFFFFFF,
 	/// <unmanaged>VK_SHADER_STAGE_RAYGEN_BIT_KHR</unmanaged>
-	RaygenKHR = 256,
+	RaygenKHR = 0x00000100,
 	/// <unmanaged>VK_SHADER_STAGE_ANY_HIT_BIT_KHR</unmanaged>
-	AnyHitKHR = 512,
+	AnyHitKHR = 0x00000200,
 	/// <unmanaged>VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR</unmanaged>
-	ClosestHitKHR = 1024,
+	ClosestHitKHR = 0x00000400,
 	/// <unmanaged>VK_SHADER_STAGE_MISS_BIT_KHR</unmanaged>
-	MissKHR = 2048,
+	MissKHR = 0x00000800,
 	/// <unmanaged>VK_SHADER_STAGE_INTERSECTION_BIT_KHR</unmanaged>
-	IntersectionKHR = 4096,
+	IntersectionKHR = 0x00001000,
 	/// <unmanaged>VK_SHADER_STAGE_CALLABLE_BIT_KHR</unmanaged>
-	CallableKHR = 8192,
+	CallableKHR = 0x00002000,
 	/// <unmanaged>VK_SHADER_STAGE_TASK_BIT_EXT</unmanaged>
-	TaskEXT = 64,
+	TaskEXT = 0x00000040,
 	/// <unmanaged>VK_SHADER_STAGE_MESH_BIT_EXT</unmanaged>
-	MeshEXT = 128,
+	MeshEXT = 0x00000080,
 	/// <unmanaged>VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI</unmanaged>
-	SubpassShadingHUAWEI = 16384,
+	SubpassShadingHUAWEI = 0x00004000,
 	/// <unmanaged>VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI</unmanaged>
-	ClusterCullingHUAWEI = 524288,
+	ClusterCullingHUAWEI = 0x00080000,
 	/// <unmanaged>VK_SHADER_STAGE_RAYGEN_BIT_NV</unmanaged>
 	RaygenNV = RaygenKHR,
 	/// <unmanaged>VK_SHADER_STAGE_ANY_HIT_BIT_NV</unmanaged>
@@ -4934,11 +5014,11 @@ public enum VkCullModeFlags
 	/// <unmanaged>VK_CULL_MODE_NONE</unmanaged>
 	None = 0,
 	/// <unmanaged>VK_CULL_MODE_FRONT_BIT</unmanaged>
-	Front = 1,
+	Front = 0x00000001,
 	/// <unmanaged>VK_CULL_MODE_BACK_BIT</unmanaged>
-	Back = 2,
+	Back = 0x00000002,
 	/// <unmanaged>VK_CULL_MODE_FRONT_AND_BACK</unmanaged>
-	FrontAndBack = 3,
+	FrontAndBack = 0x00000003,
 }
 
 [Flags]
@@ -4946,9 +5026,9 @@ public enum VkPipelineDepthStencilStateCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT</unmanaged>
-	RasterizationOrderAttachmentDepthAccessEXT = 1,
+	RasterizationOrderAttachmentDepthAccessEXT = 0x00000001,
 	/// <unmanaged>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT</unmanaged>
-	RasterizationOrderAttachmentStencilAccessEXT = 2,
+	RasterizationOrderAttachmentStencilAccessEXT = 0x00000002,
 	/// <unmanaged>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_ARM</unmanaged>
 	RasterizationOrderAttachmentDepthAccessARM = RasterizationOrderAttachmentDepthAccessEXT,
 	/// <unmanaged>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_ARM</unmanaged>
@@ -4960,7 +5040,7 @@ public enum VkPipelineColorBlendStateCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT</unmanaged>
-	RasterizationOrderAttachmentAccessEXT = 1,
+	RasterizationOrderAttachmentAccessEXT = 0x00000001,
 	/// <unmanaged>VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_ARM</unmanaged>
 	RasterizationOrderAttachmentAccessARM = RasterizationOrderAttachmentAccessEXT,
 }
@@ -4970,7 +5050,7 @@ public enum VkPipelineLayoutCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT</unmanaged>
-	IndependentSetsEXT = 2,
+	IndependentSetsEXT = 0x00000002,
 }
 
 [Flags]
@@ -4978,15 +5058,15 @@ public enum VkSamplerCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT</unmanaged>
-	SubsampledEXT = 1,
+	SubsampledEXT = 0x00000001,
 	/// <unmanaged>VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT</unmanaged>
-	SubsampledCoarseReconstructionEXT = 2,
+	SubsampledCoarseReconstructionEXT = 0x00000002,
 	/// <unmanaged>VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT</unmanaged>
-	DescriptorBufferCaptureReplayEXT = 8,
+	DescriptorBufferCaptureReplayEXT = 0x00000008,
 	/// <unmanaged>VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT</unmanaged>
-	NonSeamlessCubeMapEXT = 4,
+	NonSeamlessCubeMapEXT = 0x00000004,
 	/// <unmanaged>VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM</unmanaged>
-	ImageProcessingQCOM = 16,
+	ImageProcessingQCOM = 0x00000010,
 }
 
 [Flags]
@@ -4997,11 +5077,11 @@ public enum VkDescriptorPoolCreateFlags
 	/// Descriptor sets may be freed individually
 	/// </summary>
 	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT</unmanaged>
-	FreeDescriptorSet = 1,
+	FreeDescriptorSet = 0x00000001,
 	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT</unmanaged>
-	UpdateAfterBind = 2,
+	UpdateAfterBind = 0x00000002,
 	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT</unmanaged>
-	HostOnlyEXT = 4,
+	HostOnlyEXT = 0x00000004,
 	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT</unmanaged>
 	UpdateAfterBindEXT = UpdateAfterBind,
 	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_VALVE</unmanaged>
@@ -5013,15 +5093,17 @@ public enum VkDescriptorSetLayoutCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT</unmanaged>
-	UpdateAfterBindPool = 2,
+	UpdateAfterBindPool = 0x00000002,
 	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR</unmanaged>
-	PushDescriptorKHR = 1,
+	PushDescriptorKHR = 0x00000001,
 	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</unmanaged>
-	DescriptorBufferEXT = 16,
+	DescriptorBufferEXT = 0x00000010,
 	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT</unmanaged>
-	EmbeddedImmutableSamplersEXT = 32,
+	EmbeddedImmutableSamplersEXT = 0x00000020,
+	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_INDIRECT_BINDABLE_BIT_NV</unmanaged>
+	IndirectBindableNV = 0x00000080,
 	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT</unmanaged>
-	HostOnlyPoolEXT = 4,
+	HostOnlyPoolEXT = 0x00000004,
 	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</unmanaged>
 	UpdateAfterBindPoolEXT = UpdateAfterBindPool,
 	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_VALVE</unmanaged>
@@ -5036,7 +5118,7 @@ public enum VkAttachmentDescriptionFlags
 	/// The attachment may alias physical memory of another attachment in the same render pass
 	/// </summary>
 	/// <unmanaged>VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT</unmanaged>
-	MayAlias = 1,
+	MayAlias = 0x00000001,
 }
 
 [Flags]
@@ -5047,13 +5129,13 @@ public enum VkDependencyFlags
 	/// Dependency is per pixel region 
 	/// </summary>
 	/// <unmanaged>VK_DEPENDENCY_BY_REGION_BIT</unmanaged>
-	ByRegion = 1,
+	ByRegion = 0x00000001,
 	/// <unmanaged>VK_DEPENDENCY_DEVICE_GROUP_BIT</unmanaged>
-	DeviceGroup = 4,
+	DeviceGroup = 0x00000004,
 	/// <unmanaged>VK_DEPENDENCY_VIEW_LOCAL_BIT</unmanaged>
-	ViewLocal = 2,
+	ViewLocal = 0x00000002,
 	/// <unmanaged>VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT</unmanaged>
-	FeedbackLoopEXT = 8,
+	FeedbackLoopEXT = 0x00000008,
 	/// <unmanaged>VK_DEPENDENCY_VIEW_LOCAL_BIT_KHR</unmanaged>
 	ViewLocalKHR = ViewLocal,
 	/// <unmanaged>VK_DEPENDENCY_DEVICE_GROUP_BIT_KHR</unmanaged>
@@ -5065,7 +5147,7 @@ public enum VkFramebufferCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT</unmanaged>
-	Imageless = 1,
+	Imageless = 0x00000001,
 	/// <unmanaged>VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT_KHR</unmanaged>
 	ImagelessKHR = Imageless,
 }
@@ -5075,7 +5157,7 @@ public enum VkRenderPassCreateFlags
 {
 	None = 0,
 	/// <unmanaged>VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM</unmanaged>
-	TransformQCOM = 2,
+	TransformQCOM = 0x00000002,
 }
 
 [Flags]
@@ -5083,21 +5165,21 @@ public enum VkSubpassDescriptionFlags
 {
 	None = 0,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX</unmanaged>
-	PerViewAttributesNVX = 1,
+	PerViewAttributesNVX = 0x00000001,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX</unmanaged>
-	PerViewPositionXOnlyNVX = 2,
+	PerViewPositionXOnlyNVX = 0x00000002,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM</unmanaged>
-	FragmentRegionQCOM = 4,
+	FragmentRegionQCOM = 0x00000004,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM</unmanaged>
-	ShaderResolveQCOM = 8,
+	ShaderResolveQCOM = 0x00000008,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT</unmanaged>
-	RasterizationOrderAttachmentColorAccessEXT = 16,
+	RasterizationOrderAttachmentColorAccessEXT = 0x00000010,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT</unmanaged>
-	RasterizationOrderAttachmentDepthAccessEXT = 32,
+	RasterizationOrderAttachmentDepthAccessEXT = 0x00000020,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT</unmanaged>
-	RasterizationOrderAttachmentStencilAccessEXT = 64,
+	RasterizationOrderAttachmentStencilAccessEXT = 0x00000040,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT</unmanaged>
-	EnableLegacyDitheringEXT = 128,
+	EnableLegacyDitheringEXT = 0x00000080,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_ARM</unmanaged>
 	RasterizationOrderAttachmentColorAccessARM = RasterizationOrderAttachmentColorAccessEXT,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_ARM</unmanaged>
@@ -5114,14 +5196,14 @@ public enum VkCommandPoolCreateFlags
 	/// Command buffers have a short lifetime
 	/// </summary>
 	/// <unmanaged>VK_COMMAND_POOL_CREATE_TRANSIENT_BIT</unmanaged>
-	Transient = 1,
+	Transient = 0x00000001,
 	/// <summary>
 	/// Command buffers may release their memory individually
 	/// </summary>
 	/// <unmanaged>VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT</unmanaged>
-	ResetCommandBuffer = 2,
+	ResetCommandBuffer = 0x00000002,
 	/// <unmanaged>VK_COMMAND_POOL_CREATE_PROTECTED_BIT</unmanaged>
-	Protected = 4,
+	Protected = 0x00000004,
 }
 
 [Flags]
@@ -5132,7 +5214,7 @@ public enum VkCommandPoolResetFlags
 	/// Release resources owned by the pool
 	/// </summary>
 	/// <unmanaged>VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT</unmanaged>
-	ReleaseResources = 1,
+	ReleaseResources = 0x00000001,
 }
 
 [Flags]
@@ -5140,14 +5222,14 @@ public enum VkCommandBufferUsageFlags
 {
 	None = 0,
 	/// <unmanaged>VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT</unmanaged>
-	OneTimeSubmit = 1,
+	OneTimeSubmit = 0x00000001,
 	/// <unmanaged>VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT</unmanaged>
-	RenderPassContinue = 2,
+	RenderPassContinue = 0x00000002,
 	/// <summary>
 	/// Command buffer may be submitted/executed more than once simultaneously
 	/// </summary>
 	/// <unmanaged>VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT</unmanaged>
-	SimultaneousUse = 4,
+	SimultaneousUse = 0x00000004,
 }
 
 [Flags]
@@ -5158,7 +5240,7 @@ public enum VkQueryControlFlags
 	/// Require precise results to be collected by the query
 	/// </summary>
 	/// <unmanaged>VK_QUERY_CONTROL_PRECISE_BIT</unmanaged>
-	Precise = 1,
+	Precise = 0x00000001,
 }
 
 [Flags]
@@ -5169,7 +5251,7 @@ public enum VkCommandBufferResetFlags
 	/// Release resources owned by the buffer
 	/// </summary>
 	/// <unmanaged>VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT</unmanaged>
-	ReleaseResources = 1,
+	ReleaseResources = 0x00000001,
 }
 
 [Flags]
@@ -5180,17 +5262,17 @@ public enum VkStencilFaceFlags
 	/// Front face
 	/// </summary>
 	/// <unmanaged>VK_STENCIL_FACE_FRONT_BIT</unmanaged>
-	Front = 1,
+	Front = 0x00000001,
 	/// <summary>
 	/// Back face
 	/// </summary>
 	/// <unmanaged>VK_STENCIL_FACE_BACK_BIT</unmanaged>
-	Back = 2,
+	Back = 0x00000002,
 	/// <summary>
 	/// Front and back faces
 	/// </summary>
 	/// <unmanaged>VK_STENCIL_FACE_FRONT_AND_BACK</unmanaged>
-	FrontAndBack = 3,
+	FrontAndBack = 0x00000003,
 }
 
 public enum VkPointClippingBehavior
@@ -5304,44 +5386,44 @@ public enum VkSubgroupFeatureFlags
 	/// Basic subgroup operations
 	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_BASIC_BIT</unmanaged>
-	Basic = 1,
+	Basic = 0x00000001,
 	/// <summary>
 	/// Vote subgroup operations
 	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_VOTE_BIT</unmanaged>
-	Vote = 2,
+	Vote = 0x00000002,
 	/// <summary>
 	/// Arithmetic subgroup operations
 	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_ARITHMETIC_BIT</unmanaged>
-	Arithmetic = 4,
+	Arithmetic = 0x00000004,
 	/// <summary>
 	/// Ballot subgroup operations
 	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_BALLOT_BIT</unmanaged>
-	Ballot = 8,
+	Ballot = 0x00000008,
 	/// <summary>
 	/// Shuffle subgroup operations
 	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_SHUFFLE_BIT</unmanaged>
-	Shuffle = 16,
+	Shuffle = 0x00000010,
 	/// <summary>
 	/// Shuffle relative subgroup operations
 	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT</unmanaged>
-	ShuffleRelative = 32,
+	ShuffleRelative = 0x00000020,
 	/// <summary>
 	/// Clustered subgroup operations
 	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_CLUSTERED_BIT</unmanaged>
-	Clustered = 64,
+	Clustered = 0x00000040,
 	/// <summary>
 	/// Quad subgroup operations
 	/// </summary>
 	/// <unmanaged>VK_SUBGROUP_FEATURE_QUAD_BIT</unmanaged>
-	Quad = 128,
+	Quad = 0x00000080,
 	/// <unmanaged>VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV</unmanaged>
-	PartitionedNV = 256,
+	PartitionedNV = 0x00000100,
 }
 
 [Flags]
@@ -5352,22 +5434,22 @@ public enum VkPeerMemoryFeatureFlags
 	/// Can read with vkCmdCopy commands
 	/// </summary>
 	/// <unmanaged>VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT</unmanaged>
-	CopySrc = 1,
+	CopySrc = 0x00000001,
 	/// <summary>
 	/// Can write with vkCmdCopy commands
 	/// </summary>
 	/// <unmanaged>VK_PEER_MEMORY_FEATURE_COPY_DST_BIT</unmanaged>
-	CopyDst = 2,
+	CopyDst = 0x00000002,
 	/// <summary>
 	/// Can read with any access type/command
 	/// </summary>
 	/// <unmanaged>VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT</unmanaged>
-	GenericSrc = 4,
+	GenericSrc = 0x00000004,
 	/// <summary>
 	/// Can write with and access type/command
 	/// </summary>
 	/// <unmanaged>VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT</unmanaged>
-	GenericDst = 8,
+	GenericDst = 0x00000008,
 	/// <unmanaged>VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT_KHR</unmanaged>
 	CopySrcKHR = CopySrc,
 	/// <unmanaged>VK_PEER_MEMORY_FEATURE_COPY_DST_BIT_KHR</unmanaged>
@@ -5386,11 +5468,11 @@ public enum VkMemoryAllocateFlags
 	/// Force allocation on specific devices
 	/// </summary>
 	/// <unmanaged>VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT</unmanaged>
-	DeviceMask = 1,
+	DeviceMask = 0x00000001,
 	/// <unmanaged>VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT</unmanaged>
-	DeviceAddress = 2,
+	DeviceAddress = 0x00000002,
 	/// <unmanaged>VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT</unmanaged>
-	DeviceAddressCaptureReplay = 4,
+	DeviceAddressCaptureReplay = 0x00000004,
 	/// <unmanaged>VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT_KHR</unmanaged>
 	DeviceMaskKHR = DeviceMask,
 	/// <unmanaged>VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT_KHR</unmanaged>
@@ -5404,33 +5486,33 @@ public enum VkExternalMemoryHandleTypeFlags
 {
 	None = 0,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT</unmanaged>
-	OpaqueFD = 1,
+	OpaqueFD = 0x00000001,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT</unmanaged>
-	OpaqueWin32 = 2,
+	OpaqueWin32 = 0x00000002,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT</unmanaged>
-	OpaqueWin32KMT = 4,
+	OpaqueWin32KMT = 0x00000004,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT</unmanaged>
-	D3D11Texture = 8,
+	D3D11Texture = 0x00000008,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT</unmanaged>
-	D3D11TextureKMT = 16,
+	D3D11TextureKMT = 0x00000010,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT</unmanaged>
-	D3D12Heap = 32,
+	D3D12Heap = 0x00000020,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT</unmanaged>
-	D3D12Resource = 64,
+	D3D12Resource = 0x00000040,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT</unmanaged>
-	DmaBufEXT = 512,
+	DmaBufEXT = 0x00000200,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID</unmanaged>
-	AndroidHardwareBufferAndroid = 1024,
+	AndroidHardwareBufferAndroid = 0x00000400,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT</unmanaged>
-	HostAllocationEXT = 128,
+	HostAllocationEXT = 0x00000080,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT</unmanaged>
-	HostMappedForeignMemoryEXT = 256,
+	HostMappedForeignMemoryEXT = 0x00000100,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA</unmanaged>
-	ZirconVmoFUCHSIA = 2048,
+	ZirconVmoFUCHSIA = 0x00000800,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV</unmanaged>
-	RDMAAddressNV = 4096,
+	RDMAAddressNV = 0x00001000,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX</unmanaged>
-	ScreenBufferQnx = 16384,
+	ScreenBufferQnx = 0x00004000,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT_KHR</unmanaged>
 	OpaqueFDKHR = OpaqueFD,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR</unmanaged>
@@ -5452,11 +5534,11 @@ public enum VkExternalMemoryFeatureFlags
 {
 	None = 0,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT</unmanaged>
-	DedicatedOnly = 1,
+	DedicatedOnly = 0x00000001,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT</unmanaged>
-	Exportable = 2,
+	Exportable = 0x00000002,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT</unmanaged>
-	Importable = 4,
+	Importable = 0x00000004,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_KHR</unmanaged>
 	DedicatedOnlyKHR = DedicatedOnly,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_KHR</unmanaged>
@@ -5470,13 +5552,13 @@ public enum VkExternalFenceHandleTypeFlags
 {
 	None = 0,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT</unmanaged>
-	OpaqueFD = 1,
+	OpaqueFD = 0x00000001,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT</unmanaged>
-	OpaqueWin32 = 2,
+	OpaqueWin32 = 0x00000002,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT</unmanaged>
-	OpaqueWin32KMT = 4,
+	OpaqueWin32KMT = 0x00000004,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT</unmanaged>
-	SyncFD = 8,
+	SyncFD = 0x00000008,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR</unmanaged>
 	OpaqueFDKHR = OpaqueFD,
 	/// <unmanaged>VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR</unmanaged>
@@ -5492,9 +5574,9 @@ public enum VkExternalFenceFeatureFlags
 {
 	None = 0,
 	/// <unmanaged>VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT</unmanaged>
-	Exportable = 1,
+	Exportable = 0x00000001,
 	/// <unmanaged>VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT</unmanaged>
-	Importable = 2,
+	Importable = 0x00000002,
 	/// <unmanaged>VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT_KHR</unmanaged>
 	ExportableKHR = Exportable,
 	/// <unmanaged>VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT_KHR</unmanaged>
@@ -5506,7 +5588,7 @@ public enum VkFenceImportFlags
 {
 	None = 0,
 	/// <unmanaged>VK_FENCE_IMPORT_TEMPORARY_BIT</unmanaged>
-	Temporary = 1,
+	Temporary = 0x00000001,
 	/// <unmanaged>VK_FENCE_IMPORT_TEMPORARY_BIT_KHR</unmanaged>
 	TemporaryKHR = Temporary,
 }
@@ -5516,7 +5598,7 @@ public enum VkSemaphoreImportFlags
 {
 	None = 0,
 	/// <unmanaged>VK_SEMAPHORE_IMPORT_TEMPORARY_BIT</unmanaged>
-	Temporary = 1,
+	Temporary = 0x00000001,
 	/// <unmanaged>VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR</unmanaged>
 	TemporaryKHR = Temporary,
 }
@@ -5526,17 +5608,17 @@ public enum VkExternalSemaphoreHandleTypeFlags
 {
 	None = 0,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT</unmanaged>
-	OpaqueFD = 1,
+	OpaqueFD = 0x00000001,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT</unmanaged>
-	OpaqueWin32 = 2,
+	OpaqueWin32 = 0x00000002,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT</unmanaged>
-	OpaqueWin32KMT = 4,
+	OpaqueWin32KMT = 0x00000004,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT</unmanaged>
-	D3D12Fence = 8,
+	D3D12Fence = 0x00000008,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT</unmanaged>
-	SyncFD = 16,
+	SyncFD = 0x00000010,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA</unmanaged>
-	ZirconEventFUCHSIA = 128,
+	ZirconEventFUCHSIA = 0x00000080,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE_BIT</unmanaged>
 	D3D11Fence = D3D12Fence,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR</unmanaged>
@@ -5556,9 +5638,9 @@ public enum VkExternalSemaphoreFeatureFlags
 {
 	None = 0,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT</unmanaged>
-	Exportable = 1,
+	Exportable = 0x00000001,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT</unmanaged>
-	Importable = 2,
+	Importable = 0x00000002,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHR</unmanaged>
 	ExportableKHR = Exportable,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHR</unmanaged>
@@ -5742,6 +5824,8 @@ public enum VkSamplerReductionMode
 	Min = 1,
 	/// <unmanaged>VK_SAMPLER_REDUCTION_MODE_MAX</unmanaged>
 	Max = 2,
+	/// <unmanaged>VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM</unmanaged>
+	WeightedAverageRangeclampQCOM = 1000521000,
 	/// <unmanaged>VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT</unmanaged>
 	WeightedAverageEXT = WeightedAverage,
 	/// <unmanaged>VK_SAMPLER_REDUCTION_MODE_MIN_EXT</unmanaged>
@@ -5768,13 +5852,13 @@ public enum VkResolveModeFlags
 	/// <unmanaged>VK_RESOLVE_MODE_NONE</unmanaged>
 	None = 0,
 	/// <unmanaged>VK_RESOLVE_MODE_SAMPLE_ZERO_BIT</unmanaged>
-	SampleZero = 1,
+	SampleZero = 0x00000001,
 	/// <unmanaged>VK_RESOLVE_MODE_AVERAGE_BIT</unmanaged>
-	Average = 2,
+	Average = 0x00000002,
 	/// <unmanaged>VK_RESOLVE_MODE_MIN_BIT</unmanaged>
-	Min = 4,
+	Min = 0x00000004,
 	/// <unmanaged>VK_RESOLVE_MODE_MAX_BIT</unmanaged>
-	Max = 8,
+	Max = 0x00000008,
 	/// <unmanaged>VK_RESOLVE_MODE_NONE_KHR</unmanaged>
 	NoneKHR = None,
 	/// <unmanaged>VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR</unmanaged>
@@ -5792,13 +5876,13 @@ public enum VkDescriptorBindingFlags
 {
 	None = 0,
 	/// <unmanaged>VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT</unmanaged>
-	UpdateAfterBind = 1,
+	UpdateAfterBind = 0x00000001,
 	/// <unmanaged>VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT</unmanaged>
-	UpdateUnusedWhilePending = 2,
+	UpdateUnusedWhilePending = 0x00000002,
 	/// <unmanaged>VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT</unmanaged>
-	PartiallyBound = 4,
+	PartiallyBound = 0x00000004,
 	/// <unmanaged>VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT</unmanaged>
-	VariableDescriptorCount = 8,
+	VariableDescriptorCount = 0x00000008,
 	/// <unmanaged>VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT</unmanaged>
 	UpdateAfterBindEXT = UpdateAfterBind,
 	/// <unmanaged>VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT_EXT</unmanaged>
@@ -5814,7 +5898,7 @@ public enum VkSemaphoreWaitFlags
 {
 	None = 0,
 	/// <unmanaged>VK_SEMAPHORE_WAIT_ANY_BIT</unmanaged>
-	Any = 1,
+	Any = 0x00000001,
 	/// <unmanaged>VK_SEMAPHORE_WAIT_ANY_BIT_KHR</unmanaged>
 	AnyKHR = Any,
 }
@@ -5824,11 +5908,11 @@ public enum VkPipelineCreationFeedbackFlags
 {
 	None = 0,
 	/// <unmanaged>VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT</unmanaged>
-	Valid = 1,
+	Valid = 0x00000001,
 	/// <unmanaged>VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT</unmanaged>
-	ApplicationPipelineCacheHit = 2,
+	ApplicationPipelineCacheHit = 0x00000002,
 	/// <unmanaged>VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT</unmanaged>
-	BasePipelineAcceleration = 4,
+	BasePipelineAcceleration = 0x00000004,
 	/// <unmanaged>VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT_EXT</unmanaged>
 	ValidEXT = Valid,
 	/// <unmanaged>VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXT</unmanaged>
@@ -5842,19 +5926,19 @@ public enum VkToolPurposeFlags
 {
 	None = 0,
 	/// <unmanaged>VK_TOOL_PURPOSE_VALIDATION_BIT</unmanaged>
-	Validation = 1,
+	Validation = 0x00000001,
 	/// <unmanaged>VK_TOOL_PURPOSE_PROFILING_BIT</unmanaged>
-	Profiling = 2,
+	Profiling = 0x00000002,
 	/// <unmanaged>VK_TOOL_PURPOSE_TRACING_BIT</unmanaged>
-	Tracing = 4,
+	Tracing = 0x00000004,
 	/// <unmanaged>VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT</unmanaged>
-	AdditionalFeatures = 8,
+	AdditionalFeatures = 0x00000008,
 	/// <unmanaged>VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT</unmanaged>
-	ModifyingFeatures = 16,
+	ModifyingFeatures = 0x00000010,
 	/// <unmanaged>VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT</unmanaged>
-	DebugReportingEXT = 32,
+	DebugReportingEXT = 0x00000020,
 	/// <unmanaged>VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT</unmanaged>
-	DebugMarkersEXT = 64,
+	DebugMarkersEXT = 0x00000040,
 	/// <unmanaged>VK_TOOL_PURPOSE_VALIDATION_BIT_EXT</unmanaged>
 	ValidationEXT = Validation,
 	/// <unmanaged>VK_TOOL_PURPOSE_PROFILING_BIT_EXT</unmanaged>
@@ -5872,7 +5956,7 @@ public enum VkSubmitFlags
 {
 	None = 0,
 	/// <unmanaged>VK_SUBMIT_PROTECTED_BIT</unmanaged>
-	Protected = 1,
+	Protected = 0x00000001,
 	/// <unmanaged>VK_SUBMIT_PROTECTED_BIT_KHR</unmanaged>
 	ProtectedKHR = Protected,
 }
@@ -5882,13 +5966,13 @@ public enum VkRenderingFlags
 {
 	None = 0,
 	/// <unmanaged>VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT</unmanaged>
-	ContentsSecondaryCommandBuffers = 1,
+	ContentsSecondaryCommandBuffers = 0x00000001,
 	/// <unmanaged>VK_RENDERING_SUSPENDING_BIT</unmanaged>
-	Suspending = 2,
+	Suspending = 0x00000002,
 	/// <unmanaged>VK_RENDERING_RESUMING_BIT</unmanaged>
-	Resuming = 4,
+	Resuming = 0x00000004,
 	/// <unmanaged>VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT</unmanaged>
-	EnableLegacyDitheringEXT = 8,
+	EnableLegacyDitheringEXT = 0x00000008,
 	/// <unmanaged>VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT_KHR</unmanaged>
 	ContentsSecondaryCommandBuffersKHR = ContentsSecondaryCommandBuffers,
 	/// <unmanaged>VK_RENDERING_SUSPENDING_BIT_KHR</unmanaged>
@@ -5956,23 +6040,23 @@ public enum VkSurfaceTransformFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR</unmanaged>
-	Identity = 1,
+	Identity = 0x00000001,
 	/// <unmanaged>VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR</unmanaged>
-	Rotate90 = 2,
+	Rotate90 = 0x00000002,
 	/// <unmanaged>VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR</unmanaged>
-	Rotate180 = 4,
+	Rotate180 = 0x00000004,
 	/// <unmanaged>VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR</unmanaged>
-	Rotate270 = 8,
+	Rotate270 = 0x00000008,
 	/// <unmanaged>VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR</unmanaged>
-	HorizontalMirror = 16,
+	HorizontalMirror = 0x00000010,
 	/// <unmanaged>VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR</unmanaged>
-	HorizontalMirrorRotate90 = 32,
+	HorizontalMirrorRotate90 = 0x00000020,
 	/// <unmanaged>VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR</unmanaged>
-	HorizontalMirrorRotate180 = 64,
+	HorizontalMirrorRotate180 = 0x00000040,
 	/// <unmanaged>VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR</unmanaged>
-	HorizontalMirrorRotate270 = 128,
+	HorizontalMirrorRotate270 = 0x00000080,
 	/// <unmanaged>VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR</unmanaged>
-	Inherit = 256,
+	Inherit = 0x00000100,
 }
 
 [Flags]
@@ -5980,13 +6064,13 @@ public enum VkCompositeAlphaFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR</unmanaged>
-	Opaque = 1,
+	Opaque = 0x00000001,
 	/// <unmanaged>VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR</unmanaged>
-	PreMultiplied = 2,
+	PreMultiplied = 0x00000002,
 	/// <unmanaged>VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR</unmanaged>
-	PostMultiplied = 4,
+	PostMultiplied = 0x00000004,
 	/// <unmanaged>VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR</unmanaged>
-	Inherit = 8,
+	Inherit = 0x00000008,
 }
 
 [Flags]
@@ -5994,13 +6078,13 @@ public enum VkSwapchainCreateFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR</unmanaged>
-	SplitInstanceBindRegions = 1,
+	SplitInstanceBindRegions = 0x00000001,
 	/// <unmanaged>VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR</unmanaged>
-	Protected = 2,
+	Protected = 0x00000002,
 	/// <unmanaged>VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR</unmanaged>
-	MutableFormat = 4,
+	MutableFormat = 0x00000004,
 	/// <unmanaged>VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_EXT</unmanaged>
-	DeferredMemoryAllocationEXT = 8,
+	DeferredMemoryAllocationEXT = 0x00000008,
 }
 
 [Flags]
@@ -6011,22 +6095,22 @@ public enum VkDeviceGroupPresentModeFlagsKHR
 	/// Present from local memory
 	/// </summary>
 	/// <unmanaged>VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR</unmanaged>
-	Local = 1,
+	Local = 0x00000001,
 	/// <summary>
 	/// Present from remote memory
 	/// </summary>
 	/// <unmanaged>VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR</unmanaged>
-	Remote = 2,
+	Remote = 0x00000002,
 	/// <summary>
 	/// Present sum of local and/or remote memory
 	/// </summary>
 	/// <unmanaged>VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR</unmanaged>
-	Sum = 4,
+	Sum = 0x00000004,
 	/// <summary>
 	/// Each physical device presents from local memory
 	/// </summary>
 	/// <unmanaged>VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR</unmanaged>
-	LocalMultiDevice = 8,
+	LocalMultiDevice = 0x00000008,
 }
 
 [Flags]
@@ -6034,13 +6118,13 @@ public enum VkDisplayPlaneAlphaFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR</unmanaged>
-	Opaque = 1,
+	Opaque = 0x00000001,
 	/// <unmanaged>VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR</unmanaged>
-	Global = 2,
+	Global = 0x00000002,
 	/// <unmanaged>VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR</unmanaged>
-	PerPixel = 4,
+	PerPixel = 0x00000004,
 	/// <unmanaged>VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR</unmanaged>
-	PerPixelPremultiplied = 8,
+	PerPixelPremultiplied = 0x00000008,
 }
 
 public enum VkQueryResultStatusKHR
@@ -6058,13 +6142,13 @@ public enum VkVideoCodecOperationFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_EXT</unmanaged>
-	EncodeH264EXT = 65536,
+	EncodeH264EXT = 0x00010000,
 	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_EXT</unmanaged>
-	EncodeH265EXT = 131072,
+	EncodeH265EXT = 0x00020000,
 	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR</unmanaged>
-	DecodeH264 = 1,
+	DecodeH264 = 0x00000001,
 	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR</unmanaged>
-	DecodeH265 = 2,
+	DecodeH265 = 0x00000002,
 }
 
 /// <summary>
@@ -6077,13 +6161,13 @@ public enum VkVideoChromaSubsamplingFlagsKHR
 	/// <unmanaged>VK_VIDEO_CHROMA_SUBSAMPLING_INVALID_KHR</unmanaged>
 	Invalid = 0,
 	/// <unmanaged>VK_VIDEO_CHROMA_SUBSAMPLING_MONOCHROME_BIT_KHR</unmanaged>
-	Monochrome = 1,
+	Monochrome = 0x00000001,
 	/// <unmanaged>VK_VIDEO_CHROMA_SUBSAMPLING_420_BIT_KHR</unmanaged>
-	Subsampling420 = 2,
+	Subsampling420 = 0x00000002,
 	/// <unmanaged>VK_VIDEO_CHROMA_SUBSAMPLING_422_BIT_KHR</unmanaged>
-	Subsampling422 = 4,
+	Subsampling422 = 0x00000004,
 	/// <unmanaged>VK_VIDEO_CHROMA_SUBSAMPLING_444_BIT_KHR</unmanaged>
-	Subsampling444 = 8,
+	Subsampling444 = 0x00000008,
 }
 
 /// <summary>
@@ -6096,11 +6180,11 @@ public enum VkVideoComponentBitDepthFlagsKHR
 	/// <unmanaged>VK_VIDEO_COMPONENT_BIT_DEPTH_INVALID_KHR</unmanaged>
 	Invalid = 0,
 	/// <unmanaged>VK_VIDEO_COMPONENT_BIT_DEPTH_8_BIT_KHR</unmanaged>
-	Depth8 = 1,
+	Depth8 = 0x00000001,
 	/// <unmanaged>VK_VIDEO_COMPONENT_BIT_DEPTH_10_BIT_KHR</unmanaged>
-	Depth10 = 4,
+	Depth10 = 0x00000004,
 	/// <unmanaged>VK_VIDEO_COMPONENT_BIT_DEPTH_12_BIT_KHR</unmanaged>
-	Depth12 = 16,
+	Depth12 = 0x00000010,
 }
 
 [Flags]
@@ -6108,9 +6192,9 @@ public enum VkVideoCapabilityFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_CAPABILITY_PROTECTED_CONTENT_BIT_KHR</unmanaged>
-	ProtectedContent = 1,
+	ProtectedContent = 0x00000001,
 	/// <unmanaged>VK_VIDEO_CAPABILITY_SEPARATE_REFERENCE_IMAGES_BIT_KHR</unmanaged>
-	SeparateReferenceImages = 2,
+	SeparateReferenceImages = 0x00000002,
 }
 
 [Flags]
@@ -6118,9 +6202,9 @@ public enum VkVideoSessionCreateFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR</unmanaged>
-	ProtectedContent = 1,
+	ProtectedContent = 0x00000001,
 	/// <unmanaged>VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS_BIT_KHR</unmanaged>
-	AllowEncodeParameterOptimizations = 2,
+	AllowEncodeParameterOptimizations = 0x00000002,
 }
 
 [Flags]
@@ -6128,11 +6212,11 @@ public enum VkVideoCodingControlFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR</unmanaged>
-	Reset = 1,
+	Reset = 0x00000001,
 	/// <unmanaged>VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR</unmanaged>
-	EncodeRateControl = 2,
+	EncodeRateControl = 0x00000002,
 	/// <unmanaged>VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR</unmanaged>
-	EncodeQualityLevel = 4,
+	EncodeQualityLevel = 0x00000004,
 }
 
 [Flags]
@@ -6140,9 +6224,9 @@ public enum VkVideoDecodeCapabilityFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR</unmanaged>
-	DpbAndOutputCoincide = 1,
+	DpbAndOutputCoincide = 0x00000001,
 	/// <unmanaged>VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR</unmanaged>
-	DpbAndOutputDistinct = 2,
+	DpbAndOutputDistinct = 0x00000002,
 }
 
 [Flags]
@@ -6152,11 +6236,11 @@ public enum VkVideoDecodeUsageFlagsKHR
 	/// <unmanaged>VK_VIDEO_DECODE_USAGE_DEFAULT_KHR</unmanaged>
 	Default = 0,
 	/// <unmanaged>VK_VIDEO_DECODE_USAGE_TRANSCODING_BIT_KHR</unmanaged>
-	Transcoding = 1,
+	Transcoding = 0x00000001,
 	/// <unmanaged>VK_VIDEO_DECODE_USAGE_OFFLINE_BIT_KHR</unmanaged>
-	Offline = 2,
+	Offline = 0x00000002,
 	/// <unmanaged>VK_VIDEO_DECODE_USAGE_STREAMING_BIT_KHR</unmanaged>
-	Streaming = 4,
+	Streaming = 0x00000004,
 }
 
 public enum StdVideoH264ChromaFormatIdc
@@ -6170,7 +6254,7 @@ public enum StdVideoH264ChromaFormatIdc
 	/// <unmanaged>STD_VIDEO_H264_CHROMA_FORMAT_IDC_444</unmanaged>
 	Idc444 = 3,
 	/// <unmanaged>STD_VIDEO_H264_CHROMA_FORMAT_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264ProfileIdc
@@ -6184,7 +6268,7 @@ public enum StdVideoH264ProfileIdc
 	/// <unmanaged>STD_VIDEO_H264_PROFILE_IDC_HIGH_444_PREDICTIVE</unmanaged>
 	High444Predictive = 244,
 	/// <unmanaged>STD_VIDEO_H264_PROFILE_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264LevelIdc
@@ -6228,7 +6312,7 @@ public enum StdVideoH264LevelIdc
 	/// <unmanaged>STD_VIDEO_H264_LEVEL_IDC_6_2</unmanaged>
 	Idc62 = 18,
 	/// <unmanaged>STD_VIDEO_H264_LEVEL_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264PocType
@@ -6240,7 +6324,7 @@ public enum StdVideoH264PocType
 	/// <unmanaged>STD_VIDEO_H264_POC_TYPE_2</unmanaged>
 	Type2 = 2,
 	/// <unmanaged>STD_VIDEO_H264_POC_TYPE_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264AspectRatioIdc
@@ -6282,7 +6366,7 @@ public enum StdVideoH264AspectRatioIdc
 	/// <unmanaged>STD_VIDEO_H264_ASPECT_RATIO_IDC_EXTENDED_SAR</unmanaged>
 	ExtendedSar = 255,
 	/// <unmanaged>STD_VIDEO_H264_ASPECT_RATIO_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264WeightedBipredIdc
@@ -6294,7 +6378,7 @@ public enum StdVideoH264WeightedBipredIdc
 	/// <unmanaged>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_IMPLICIT</unmanaged>
 	Implicit = 2,
 	/// <unmanaged>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264ModificationOfPicNumsIdc
@@ -6308,7 +6392,7 @@ public enum StdVideoH264ModificationOfPicNumsIdc
 	/// <unmanaged>STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_END</unmanaged>
 	End = 3,
 	/// <unmanaged>STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264MemMgmtControlOp
@@ -6328,7 +6412,7 @@ public enum StdVideoH264MemMgmtControlOp
 	/// <unmanaged>STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_MARK_CURRENT_AS_LONG_TERM</unmanaged>
 	MarkCurrentAsLongTerm = 6,
 	/// <unmanaged>STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264CabacInitIdc
@@ -6340,7 +6424,7 @@ public enum StdVideoH264CabacInitIdc
 	/// <unmanaged>STD_VIDEO_H264_CABAC_INIT_IDC_2</unmanaged>
 	Idc2 = 2,
 	/// <unmanaged>STD_VIDEO_H264_CABAC_INIT_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264DisableDeblockingFilterIdc
@@ -6352,7 +6436,7 @@ public enum StdVideoH264DisableDeblockingFilterIdc
 	/// <unmanaged>STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL</unmanaged>
 	Partial = 2,
 	/// <unmanaged>STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264SliceType
@@ -6364,7 +6448,7 @@ public enum StdVideoH264SliceType
 	/// <unmanaged>STD_VIDEO_H264_SLICE_TYPE_I</unmanaged>
 	I = 2,
 	/// <unmanaged>STD_VIDEO_H264_SLICE_TYPE_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264PictureType
@@ -6378,7 +6462,7 @@ public enum StdVideoH264PictureType
 	/// <unmanaged>STD_VIDEO_H264_PICTURE_TYPE_IDR</unmanaged>
 	Idr = 5,
 	/// <unmanaged>STD_VIDEO_H264_PICTURE_TYPE_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH264NonVclNaluType
@@ -6398,7 +6482,7 @@ public enum StdVideoH264NonVclNaluType
 	/// <unmanaged>STD_VIDEO_H264_NON_VCL_NALU_TYPE_PRECODED</unmanaged>
 	Precoded = 6,
 	/// <unmanaged>STD_VIDEO_H264_NON_VCL_NALU_TYPE_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoDecodeH264FieldOrderCount
@@ -6408,7 +6492,7 @@ public enum StdVideoDecodeH264FieldOrderCount
 	/// <unmanaged>STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM</unmanaged>
 	Bottom = 1,
 	/// <unmanaged>STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 [Flags]
@@ -6418,9 +6502,9 @@ public enum VkVideoDecodeH264PictureLayoutFlagsKHR
 	/// <unmanaged>VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE_KHR</unmanaged>
 	Progressive = 0,
 	/// <unmanaged>VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR</unmanaged>
-	InterlacedInterleavedLines = 1,
+	InterlacedInterleavedLines = 0x00000001,
 	/// <unmanaged>VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR</unmanaged>
-	InterlacedSeparatePlanes = 2,
+	InterlacedSeparatePlanes = 0x00000002,
 }
 
 public enum VkPerformanceCounterUnitKHR
@@ -6486,9 +6570,9 @@ public enum VkPerformanceCounterDescriptionFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR</unmanaged>
-	PerformanceImpacting = 1,
+	PerformanceImpacting = 0x00000001,
 	/// <unmanaged>VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR</unmanaged>
-	ConcurrentlyImpacted = 2,
+	ConcurrentlyImpacted = 0x00000002,
 }
 
 [Flags]
@@ -6508,7 +6592,7 @@ public enum StdVideoH265ChromaFormatIdc
 	/// <unmanaged>STD_VIDEO_H265_CHROMA_FORMAT_IDC_444</unmanaged>
 	Idc444 = 3,
 	/// <unmanaged>STD_VIDEO_H265_CHROMA_FORMAT_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH265ProfileIdc
@@ -6524,7 +6608,7 @@ public enum StdVideoH265ProfileIdc
 	/// <unmanaged>STD_VIDEO_H265_PROFILE_IDC_SCC_EXTENSIONS</unmanaged>
 	SccExtensions = 9,
 	/// <unmanaged>STD_VIDEO_H265_PROFILE_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH265LevelIdc
@@ -6556,7 +6640,7 @@ public enum StdVideoH265LevelIdc
 	/// <unmanaged>STD_VIDEO_H265_LEVEL_IDC_6_2</unmanaged>
 	Idc62 = 12,
 	/// <unmanaged>STD_VIDEO_H265_LEVEL_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH265SliceType
@@ -6568,7 +6652,7 @@ public enum StdVideoH265SliceType
 	/// <unmanaged>STD_VIDEO_H265_SLICE_TYPE_I</unmanaged>
 	I = 2,
 	/// <unmanaged>STD_VIDEO_H265_SLICE_TYPE_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH265PictureType
@@ -6582,7 +6666,7 @@ public enum StdVideoH265PictureType
 	/// <unmanaged>STD_VIDEO_H265_PICTURE_TYPE_IDR</unmanaged>
 	Idr = 3,
 	/// <unmanaged>STD_VIDEO_H265_PICTURE_TYPE_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum StdVideoH265AspectRatioIdc
@@ -6624,7 +6708,7 @@ public enum StdVideoH265AspectRatioIdc
 	/// <unmanaged>STD_VIDEO_H265_ASPECT_RATIO_IDC_EXTENDED_SAR</unmanaged>
 	ExtendedSar = 255,
 	/// <unmanaged>STD_VIDEO_H265_ASPECT_RATIO_IDC_INVALID</unmanaged>
-	Invalid = 2147483647,
+	Invalid = 0x7FFFFFFF,
 }
 
 public enum VkQueueGlobalPriorityKHR
@@ -6836,15 +6920,15 @@ public enum VkDebugReportFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_DEBUG_REPORT_INFORMATION_BIT_EXT</unmanaged>
-	Information = 1,
+	Information = 0x00000001,
 	/// <unmanaged>VK_DEBUG_REPORT_WARNING_BIT_EXT</unmanaged>
-	Warning = 2,
+	Warning = 0x00000002,
 	/// <unmanaged>VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT</unmanaged>
-	PerformanceWarning = 4,
+	PerformanceWarning = 0x00000004,
 	/// <unmanaged>VK_DEBUG_REPORT_ERROR_BIT_EXT</unmanaged>
-	Error = 8,
+	Error = 0x00000008,
 	/// <unmanaged>VK_DEBUG_REPORT_DEBUG_BIT_EXT</unmanaged>
-	Debug = 16,
+	Debug = 0x00000010,
 }
 
 public enum VkRasterizationOrderAMD
@@ -6870,13 +6954,13 @@ public enum VkExternalMemoryHandleTypeFlagsNV
 {
 	None = 0,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV</unmanaged>
-	OpaqueWin32 = 1,
+	OpaqueWin32 = 0x00000001,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV</unmanaged>
-	OpaqueWin32KMT = 2,
+	OpaqueWin32KMT = 0x00000002,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV</unmanaged>
-	D3D11Image = 4,
+	D3D11Image = 0x00000004,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV</unmanaged>
-	D3D11ImageKMT = 8,
+	D3D11ImageKMT = 0x00000008,
 }
 
 [Flags]
@@ -6884,11 +6968,11 @@ public enum VkExternalMemoryFeatureFlagsNV
 {
 	None = 0,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV</unmanaged>
-	DedicatedOnly = 1,
+	DedicatedOnly = 0x00000001,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_NV</unmanaged>
-	Exportable = 2,
+	Exportable = 0x00000002,
 	/// <unmanaged>VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV</unmanaged>
-	Importable = 4,
+	Importable = 0x00000004,
 }
 
 public enum VkValidationCheckEXT
@@ -6928,7 +7012,7 @@ public enum VkConditionalRenderingFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT</unmanaged>
-	Inverted = 1,
+	Inverted = 0x00000001,
 }
 
 [Flags]
@@ -6936,7 +7020,7 @@ public enum VkSurfaceCounterFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_SURFACE_COUNTER_VBLANK_BIT_EXT</unmanaged>
-	Vblank = 1,
+	Vblank = 0x00000001,
 }
 
 public enum VkDisplayPowerStateEXT
@@ -7004,13 +7088,13 @@ public enum VkDebugUtilsMessageSeverityFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT</unmanaged>
-	Verbose = 1,
+	Verbose = 0x00000001,
 	/// <unmanaged>VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT</unmanaged>
-	Info = 16,
+	Info = 0x00000010,
 	/// <unmanaged>VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT</unmanaged>
-	Warning = 256,
+	Warning = 0x00000100,
 	/// <unmanaged>VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT</unmanaged>
-	Error = 4096,
+	Error = 0x00001000,
 }
 
 [Flags]
@@ -7018,13 +7102,13 @@ public enum VkDebugUtilsMessageTypeFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT</unmanaged>
-	General = 1,
+	General = 0x00000001,
 	/// <unmanaged>VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT</unmanaged>
-	Validation = 2,
+	Validation = 0x00000002,
 	/// <unmanaged>VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT</unmanaged>
-	Performance = 4,
+	Performance = 0x00000004,
 	/// <unmanaged>VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT</unmanaged>
-	DeviceAddressBinding = 8,
+	DeviceAddressBinding = 0x00000008,
 }
 
 public enum VkBlendOverlapEXT
@@ -7154,9 +7238,9 @@ public enum VkGeometryFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_GEOMETRY_OPAQUE_BIT_KHR</unmanaged>
-	Opaque = 1,
+	Opaque = 0x00000001,
 	/// <unmanaged>VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_KHR</unmanaged>
-	NoDuplicateAnyHitInvocation = 2,
+	NoDuplicateAnyHitInvocation = 0x00000002,
 	/// <unmanaged>VK_GEOMETRY_OPAQUE_BIT_NV</unmanaged>
 	OpaqueNV = Opaque,
 	/// <unmanaged>VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NV</unmanaged>
@@ -7168,17 +7252,17 @@ public enum VkGeometryInstanceFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_GEOMETRY_INSTANCE_TRIANGLE_FACING_CULL_DISABLE_BIT_KHR</unmanaged>
-	TriangleFacingCullDisable = 1,
+	TriangleFacingCullDisable = 0x00000001,
 	/// <unmanaged>VK_GEOMETRY_INSTANCE_TRIANGLE_FLIP_FACING_BIT_KHR</unmanaged>
-	TriangleFlipFacing = 2,
+	TriangleFlipFacing = 0x00000002,
 	/// <unmanaged>VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_KHR</unmanaged>
-	ForceOpaque = 4,
+	ForceOpaque = 0x00000004,
 	/// <unmanaged>VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_KHR</unmanaged>
-	ForceNoOpaque = 8,
+	ForceNoOpaque = 0x00000008,
 	/// <unmanaged>VK_GEOMETRY_INSTANCE_FORCE_OPACITY_MICROMAP_2_STATE_EXT</unmanaged>
-	ForceOpacityMicromap2StateEXT = 16,
+	ForceOpacityMicromap2StateEXT = 0x00000010,
 	/// <unmanaged>VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_EXT</unmanaged>
-	DisableOpacityMicromapsEXT = 32,
+	DisableOpacityMicromapsEXT = 0x00000020,
 	/// <unmanaged>VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_KHR</unmanaged>
 	TriangleFrontCounterclockwise = TriangleFlipFacing,
 	/// <unmanaged>VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NV</unmanaged>
@@ -7196,27 +7280,27 @@ public enum VkBuildAccelerationStructureFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR</unmanaged>
-	AllowUpdate = 1,
+	AllowUpdate = 0x00000001,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR</unmanaged>
-	AllowCompaction = 2,
+	AllowCompaction = 0x00000002,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_KHR</unmanaged>
-	PreferFastTrace = 4,
+	PreferFastTrace = 0x00000004,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_KHR</unmanaged>
-	PreferFastBuild = 8,
+	PreferFastBuild = 0x00000008,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_KHR</unmanaged>
-	LowMemory = 16,
+	LowMemory = 0x00000010,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</unmanaged>
-	MotionNV = 32,
+	MotionNV = 0x00000020,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_UPDATE_EXT</unmanaged>
-	AllowOpacityMicromapUpdateEXT = 64,
+	AllowOpacityMicromapUpdateEXT = 0x00000040,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISABLE_OPACITY_MICROMAPS_EXT</unmanaged>
-	AllowDisableOpacityMicromapsEXT = 128,
+	AllowDisableOpacityMicromapsEXT = 0x00000080,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_EXT</unmanaged>
-	AllowOpacityMicromapDataUpdateEXT = 256,
+	AllowOpacityMicromapDataUpdateEXT = 0x00000100,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISPLACEMENT_MICROMAP_UPDATE_NV</unmanaged>
-	AllowDisplacementMicromapUpdateNV = 512,
+	AllowDisplacementMicromapUpdateNV = 0x00000200,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_KHR</unmanaged>
-	AllowDataAccess = 2048,
+	AllowDataAccess = 0x00000800,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV</unmanaged>
 	AllowUpdateNV = AllowUpdate,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NV</unmanaged>
@@ -7368,15 +7452,23 @@ public enum VkLineRasterizationModeEXT
 }
 
 [Flags]
+public enum VkHostImageCopyFlagsEXT
+{
+	None = 0,
+	/// <unmanaged>VK_HOST_IMAGE_COPY_MEMCPY_EXT</unmanaged>
+	Memcpy = 0x00000001,
+}
+
+[Flags]
 public enum VkPresentScalingFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_PRESENT_SCALING_ONE_TO_ONE_BIT_EXT</unmanaged>
-	OneToOne = 1,
+	OneToOne = 0x00000001,
 	/// <unmanaged>VK_PRESENT_SCALING_ASPECT_RATIO_STRETCH_BIT_EXT</unmanaged>
-	AspectRatioStretch = 2,
+	AspectRatioStretch = 0x00000002,
 	/// <unmanaged>VK_PRESENT_SCALING_STRETCH_BIT_EXT</unmanaged>
-	Stretch = 4,
+	Stretch = 0x00000004,
 }
 
 [Flags]
@@ -7384,11 +7476,11 @@ public enum VkPresentGravityFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_PRESENT_GRAVITY_MIN_BIT_EXT</unmanaged>
-	Min = 1,
+	Min = 0x00000001,
 	/// <unmanaged>VK_PRESENT_GRAVITY_MAX_BIT_EXT</unmanaged>
-	Max = 2,
+	Max = 0x00000002,
 	/// <unmanaged>VK_PRESENT_GRAVITY_CENTERED_BIT_EXT</unmanaged>
-	Centered = 4,
+	Centered = 0x00000004,
 }
 
 public enum VkIndirectCommandsTokenTypeNV
@@ -7411,6 +7503,10 @@ public enum VkIndirectCommandsTokenTypeNV
 	TypeDrawTasks = 7,
 	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV</unmanaged>
 	TypeDrawMeshTasks = 1000328000,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV</unmanaged>
+	TypePipeline = 1000428003,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV</unmanaged>
+	TypeDispatch = 1000428004,
 }
 
 [Flags]
@@ -7418,7 +7514,7 @@ public enum VkIndirectStateFlagsNV
 {
 	None = 0,
 	/// <unmanaged>VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV</unmanaged>
-	FlagFrontface = 1,
+	FlagFrontface = 0x00000001,
 }
 
 [Flags]
@@ -7426,11 +7522,11 @@ public enum VkIndirectCommandsLayoutUsageFlagsNV
 {
 	None = 0,
 	/// <unmanaged>VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV</unmanaged>
-	ExplicitPreprocess = 1,
+	ExplicitPreprocess = 0x00000001,
 	/// <unmanaged>VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NV</unmanaged>
-	IndexedSequences = 2,
+	IndexedSequences = 0x00000002,
 	/// <unmanaged>VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NV</unmanaged>
-	UnorderedSequences = 4,
+	UnorderedSequences = 0x00000004,
 }
 
 public enum VkDepthBiasRepresentationEXT
@@ -7462,13 +7558,13 @@ public enum VkDeviceDiagnosticsConfigFlagsNV
 {
 	None = 0,
 	/// <unmanaged>VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV</unmanaged>
-	EnableShaderDebugInfo = 1,
+	EnableShaderDebugInfo = 0x00000001,
 	/// <unmanaged>VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV</unmanaged>
-	EnableResourceTracking = 2,
+	EnableResourceTracking = 0x00000002,
 	/// <unmanaged>VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV</unmanaged>
-	EnableAutomaticCheckpoints = 4,
+	EnableAutomaticCheckpoints = 0x00000004,
 	/// <unmanaged>VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_ERROR_REPORTING_BIT_NV</unmanaged>
-	EnableShaderErrorReporting = 8,
+	EnableShaderErrorReporting = 0x00000008,
 }
 
 [Flags]
@@ -7476,13 +7572,13 @@ public enum VkGraphicsPipelineLibraryFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT</unmanaged>
-	VertexInputInterface = 1,
+	VertexInputInterface = 0x00000001,
 	/// <unmanaged>VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT</unmanaged>
-	PreRasterizationShaders = 2,
+	PreRasterizationShaders = 0x00000002,
 	/// <unmanaged>VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT</unmanaged>
-	FragmentShader = 4,
+	FragmentShader = 0x00000004,
 	/// <unmanaged>VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT</unmanaged>
-	FragmentOutputInterface = 8,
+	FragmentOutputInterface = 0x00000008,
 }
 
 public enum VkFragmentShadingRateTypeNV
@@ -7538,11 +7634,11 @@ public enum VkImageCompressionFlagsEXT
 	/// <unmanaged>VK_IMAGE_COMPRESSION_DEFAULT_EXT</unmanaged>
 	Default = 0,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT</unmanaged>
-	FixedRateDefault = 1,
+	FixedRateDefault = 0x00000001,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT</unmanaged>
-	FixedRateExplicit = 2,
+	FixedRateExplicit = 0x00000002,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_DISABLED_EXT</unmanaged>
-	Disabled = 4,
+	Disabled = 0x00000004,
 }
 
 [Flags]
@@ -7550,53 +7646,53 @@ public enum VkImageCompressionFixedRateFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_1BPC_BIT_EXT</unmanaged>
-	Rate1bpc = 1,
+	Rate1bpc = 0x00000001,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_2BPC_BIT_EXT</unmanaged>
-	Rate2bpc = 2,
+	Rate2bpc = 0x00000002,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_3BPC_BIT_EXT</unmanaged>
-	Rate3bpc = 4,
+	Rate3bpc = 0x00000004,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_4BPC_BIT_EXT</unmanaged>
-	Rate4bpc = 8,
+	Rate4bpc = 0x00000008,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_5BPC_BIT_EXT</unmanaged>
-	Rate5bpc = 16,
+	Rate5bpc = 0x00000010,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_6BPC_BIT_EXT</unmanaged>
-	Rate6bpc = 32,
+	Rate6bpc = 0x00000020,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_7BPC_BIT_EXT</unmanaged>
-	Rate7bpc = 64,
+	Rate7bpc = 0x00000040,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_8BPC_BIT_EXT</unmanaged>
-	Rate8bpc = 128,
+	Rate8bpc = 0x00000080,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_9BPC_BIT_EXT</unmanaged>
-	Rate9bpc = 256,
+	Rate9bpc = 0x00000100,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_10BPC_BIT_EXT</unmanaged>
-	Rate10bpc = 512,
+	Rate10bpc = 0x00000200,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_11BPC_BIT_EXT</unmanaged>
-	Rate11bpc = 1024,
+	Rate11bpc = 0x00000400,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_12BPC_BIT_EXT</unmanaged>
-	Rate12bpc = 2048,
+	Rate12bpc = 0x00000800,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_13BPC_BIT_EXT</unmanaged>
-	Rate13bpc = 4096,
+	Rate13bpc = 0x00001000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_14BPC_BIT_EXT</unmanaged>
-	Rate14bpc = 8192,
+	Rate14bpc = 0x00002000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_15BPC_BIT_EXT</unmanaged>
-	Rate15bpc = 16384,
+	Rate15bpc = 0x00004000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_16BPC_BIT_EXT</unmanaged>
-	Rate16bpc = 32768,
+	Rate16bpc = 0x00008000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_17BPC_BIT_EXT</unmanaged>
-	Rate17bpc = 65536,
+	Rate17bpc = 0x00010000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_18BPC_BIT_EXT</unmanaged>
-	Rate18bpc = 131072,
+	Rate18bpc = 0x00020000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_19BPC_BIT_EXT</unmanaged>
-	Rate19bpc = 262144,
+	Rate19bpc = 0x00040000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_20BPC_BIT_EXT</unmanaged>
-	Rate20bpc = 524288,
+	Rate20bpc = 0x00080000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_21BPC_BIT_EXT</unmanaged>
-	Rate21bpc = 1048576,
+	Rate21bpc = 0x00100000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_22BPC_BIT_EXT</unmanaged>
-	Rate22bpc = 2097152,
+	Rate22bpc = 0x00200000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_23BPC_BIT_EXT</unmanaged>
-	Rate23bpc = 4194304,
+	Rate23bpc = 0x00400000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_24BPC_BIT_EXT</unmanaged>
-	Rate24bpc = 8388608,
+	Rate24bpc = 0x00800000,
 }
 
 public enum VkDeviceFaultAddressTypeEXT
@@ -7639,7 +7735,7 @@ public enum VkDeviceAddressBindingFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT</unmanaged>
-	InternalObject = 1,
+	InternalObject = 0x00000001,
 }
 
 public enum VkMicromapTypeEXT
@@ -7711,11 +7807,11 @@ public enum VkBuildMicromapFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_BUILD_MICROMAP_PREFER_FAST_TRACE_BIT_EXT</unmanaged>
-	PreferFastTrace = 1,
+	PreferFastTrace = 0x00000001,
 	/// <unmanaged>VK_BUILD_MICROMAP_PREFER_FAST_BUILD_BIT_EXT</unmanaged>
-	PreferFastBuild = 2,
+	PreferFastBuild = 0x00000002,
 	/// <unmanaged>VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT</unmanaged>
-	AllowCompaction = 4,
+	AllowCompaction = 0x00000004,
 }
 
 [Flags]
@@ -7723,7 +7819,7 @@ public enum VkMicromapCreateFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT</unmanaged>
-	DeviceAddressCaptureReplay = 1,
+	DeviceAddressCaptureReplay = 0x00000001,
 }
 
 public enum VkSubpassMergeStatusEXT
@@ -7807,13 +7903,13 @@ public enum VkOpticalFlowGridSizeFlagsNV
 	/// <unmanaged>VK_OPTICAL_FLOW_GRID_SIZE_UNKNOWN_NV</unmanaged>
 	Unknown = 0,
 	/// <unmanaged>VK_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_NV</unmanaged>
-	Size1x1 = 1,
+	Size1x1 = 0x00000001,
 	/// <unmanaged>VK_OPTICAL_FLOW_GRID_SIZE_2X2_BIT_NV</unmanaged>
-	Size2x2 = 2,
+	Size2x2 = 0x00000002,
 	/// <unmanaged>VK_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_NV</unmanaged>
-	Size4x4 = 4,
+	Size4x4 = 0x00000004,
 	/// <unmanaged>VK_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_NV</unmanaged>
-	Size8x8 = 8,
+	Size8x8 = 0x00000008,
 }
 
 [Flags]
@@ -7823,15 +7919,15 @@ public enum VkOpticalFlowUsageFlagsNV
 	/// <unmanaged>VK_OPTICAL_FLOW_USAGE_UNKNOWN_NV</unmanaged>
 	Unknown = 0,
 	/// <unmanaged>VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV</unmanaged>
-	Input = 1,
+	Input = 0x00000001,
 	/// <unmanaged>VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV</unmanaged>
-	Output = 2,
+	Output = 0x00000002,
 	/// <unmanaged>VK_OPTICAL_FLOW_USAGE_HINT_BIT_NV</unmanaged>
-	Hint = 4,
+	Hint = 0x00000004,
 	/// <unmanaged>VK_OPTICAL_FLOW_USAGE_COST_BIT_NV</unmanaged>
-	Cost = 8,
+	Cost = 0x00000008,
 	/// <unmanaged>VK_OPTICAL_FLOW_USAGE_GLOBAL_FLOW_BIT_NV</unmanaged>
-	GlobalFlow = 16,
+	GlobalFlow = 0x00000010,
 }
 
 [Flags]
@@ -7839,15 +7935,15 @@ public enum VkOpticalFlowSessionCreateFlagsNV
 {
 	None = 0,
 	/// <unmanaged>VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV</unmanaged>
-	EnableHint = 1,
+	EnableHint = 0x00000001,
 	/// <unmanaged>VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV</unmanaged>
-	EnableCost = 2,
+	EnableCost = 0x00000002,
 	/// <unmanaged>VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_GLOBAL_FLOW_BIT_NV</unmanaged>
-	EnableGlobalFlow = 4,
+	EnableGlobalFlow = 0x00000004,
 	/// <unmanaged>VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV</unmanaged>
-	AllowRegions = 8,
+	AllowRegions = 0x00000008,
 	/// <unmanaged>VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV</unmanaged>
-	BothDirections = 16,
+	BothDirections = 0x00000010,
 }
 
 [Flags]
@@ -7855,7 +7951,7 @@ public enum VkOpticalFlowExecuteFlagsNV
 {
 	None = 0,
 	/// <unmanaged>VK_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_NV</unmanaged>
-	DisableTemporalHints = 1,
+	DisableTemporalHints = 0x00000001,
 }
 
 public enum VkShaderCodeTypeEXT
@@ -7871,19 +7967,19 @@ public enum VkShaderCreateFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_SHADER_CREATE_LINK_STAGE_BIT_EXT</unmanaged>
-	LinkStage = 1,
+	LinkStage = 0x00000001,
 	/// <unmanaged>VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT</unmanaged>
-	AllowVaryingSubgroupSize = 2,
+	AllowVaryingSubgroupSize = 0x00000002,
 	/// <unmanaged>VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT</unmanaged>
-	RequireFullSubgroups = 4,
+	RequireFullSubgroups = 0x00000004,
 	/// <unmanaged>VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT</unmanaged>
-	NoTaskShader = 8,
+	NoTaskShader = 0x00000008,
 	/// <unmanaged>VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT</unmanaged>
-	DispatchBase = 16,
+	DispatchBase = 0x00000010,
 	/// <unmanaged>VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT</unmanaged>
-	FragmentShadingRateAttachment = 32,
+	FragmentShadingRateAttachment = 0x00000020,
 	/// <unmanaged>VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT</unmanaged>
-	FragmentDensityMapAttachment = 64,
+	FragmentDensityMapAttachment = 0x00000040,
 }
 
 public enum VkRayTracingInvocationReorderModeNV
@@ -7892,6 +7988,30 @@ public enum VkRayTracingInvocationReorderModeNV
 	ModeNone = 0,
 	/// <unmanaged>VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_NV</unmanaged>
 	ModeReorder = 1,
+}
+
+public enum VkBlockMatchWindowCompareModeQCOM
+{
+	/// <unmanaged>VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM</unmanaged>
+	VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM = 0,
+	/// <unmanaged>VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM</unmanaged>
+	VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM = 1,
+	/// <unmanaged>VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_ENUM_QCOM</unmanaged>
+	VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_ENUM_QCOM = 0x7FFFFFFF,
+}
+
+public enum VkCubicFilterWeightsQCOM
+{
+	/// <unmanaged>VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM</unmanaged>
+	VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM = 0,
+	/// <unmanaged>VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM</unmanaged>
+	VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM = 1,
+	/// <unmanaged>VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM</unmanaged>
+	VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM = 2,
+	/// <unmanaged>VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM</unmanaged>
+	VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM = 3,
+	/// <unmanaged>VK_CUBIC_FILTER_WEIGHTS_MAX_ENUM_QCOM</unmanaged>
+	VK_CUBIC_FILTER_WEIGHTS_MAX_ENUM_QCOM = 0x7FFFFFFF,
 }
 
 public enum VkBuildAccelerationStructureModeKHR
@@ -7907,11 +8027,11 @@ public enum VkAccelerationStructureCreateFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR</unmanaged>
-	DeviceAddressCaptureReplay = 1,
+	DeviceAddressCaptureReplay = 0x00000001,
 	/// <unmanaged>VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT</unmanaged>
-	DescriptorBufferCaptureReplayEXT = 8,
+	DescriptorBufferCaptureReplayEXT = 0x00000008,
 	/// <unmanaged>VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV</unmanaged>
-	MotionNV = 4,
+	MotionNV = 0x00000004,
 }
 
 public enum VkShaderGroupShaderKHR
@@ -7931,17 +8051,17 @@ public enum VkExportMetalObjectTypeFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT</unmanaged>
-	MetalDevice = 1,
+	MetalDevice = 0x00000001,
 	/// <unmanaged>VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT</unmanaged>
-	MetalCommandQueue = 2,
+	MetalCommandQueue = 0x00000002,
 	/// <unmanaged>VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT</unmanaged>
-	MetalBuffer = 4,
+	MetalBuffer = 0x00000004,
 	/// <unmanaged>VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT</unmanaged>
-	MetalTexture = 8,
+	MetalTexture = 0x00000008,
 	/// <unmanaged>VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT</unmanaged>
-	MetalIosurface = 16,
+	MetalIosurface = 0x00000010,
 	/// <unmanaged>VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT</unmanaged>
-	MetalSharedEvent = 32,
+	MetalSharedEvent = 0x00000020,
 }
 
 public enum VkVideoEncodeTuningModeKHR
@@ -7963,7 +8083,7 @@ public enum VkVideoEncodeCapabilityFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR</unmanaged>
-	PrecedingExternallyEncodedBytes = 1,
+	PrecedingExternallyEncodedBytes = 0x00000001,
 }
 
 [Flags]
@@ -7973,11 +8093,11 @@ public enum VkVideoEncodeRateControlModeFlagsKHR
 	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR</unmanaged>
 	Default = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</unmanaged>
-	Disabled = 1,
+	Disabled = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR</unmanaged>
-	Cbr = 2,
+	Cbr = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR</unmanaged>
-	Vbr = 4,
+	Vbr = 0x00000004,
 }
 
 [Flags]
@@ -7985,11 +8105,11 @@ public enum VkVideoEncodeFeedbackFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR</unmanaged>
-	BitstreamBufferOffset = 1,
+	BitstreamBufferOffset = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR</unmanaged>
-	BitstreamBytesWritten = 2,
+	BitstreamBytesWritten = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR</unmanaged>
-	BitstreamHasOverrides = 4,
+	BitstreamHasOverrides = 0x00000004,
 }
 
 [Flags]
@@ -7999,13 +8119,13 @@ public enum VkVideoEncodeUsageFlagsKHR
 	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR</unmanaged>
 	Default = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR</unmanaged>
-	Transcoding = 1,
+	Transcoding = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR</unmanaged>
-	Streaming = 2,
+	Streaming = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR</unmanaged>
-	Recording = 4,
+	Recording = 0x00000004,
 	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR</unmanaged>
-	Conferencing = 8,
+	Conferencing = 0x00000008,
 }
 
 [Flags]
@@ -8015,11 +8135,11 @@ public enum VkVideoEncodeContentFlagsKHR
 	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR</unmanaged>
 	Default = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR</unmanaged>
-	Camera = 1,
+	Camera = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR</unmanaged>
-	Desktop = 2,
+	Desktop = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR</unmanaged>
-	Rendered = 4,
+	Rendered = 0x00000004,
 }
 
 [Flags]
@@ -8027,23 +8147,23 @@ public enum VkVideoEncodeH264CapabilityFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_EXT</unmanaged>
-	HrdCompliance = 1,
+	HrdCompliance = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT</unmanaged>
-	PredictionWeightTableGenerated = 2,
+	PredictionWeightTableGenerated = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_EXT</unmanaged>
-	RowUnalignedSlice = 4,
+	RowUnalignedSlice = 0x00000004,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_EXT</unmanaged>
-	DifferentSliceType = 8,
+	DifferentSliceType = 0x00000008,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT</unmanaged>
-	BFrameInL0List = 16,
+	BFrameInL0List = 0x00000010,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT</unmanaged>
-	BFrameInL1List = 32,
+	BFrameInL1List = 0x00000020,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT</unmanaged>
-	PerPictureTypeMinMaxQp = 64,
+	PerPictureTypeMinMaxQp = 0x00000040,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_EXT</unmanaged>
-	PerSliceConstantQp = 128,
+	PerSliceConstantQp = 0x00000080,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_EXT</unmanaged>
-	GeneratePrefixNalu = 256,
+	GeneratePrefixNalu = 0x00000100,
 }
 
 [Flags]
@@ -8051,41 +8171,41 @@ public enum VkVideoEncodeH264StdFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT</unmanaged>
-	SeparateColorPlaneFlagSet = 1,
+	SeparateColorPlaneFlagSet = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG_SET_BIT_EXT</unmanaged>
-	QpprimeYZeroTransformBypassFlagSet = 2,
+	QpprimeYZeroTransformBypassFlagSet = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_EXT</unmanaged>
-	ScalingMatrixPresentFlagSet = 4,
+	ScalingMatrixPresentFlagSet = 0x00000004,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_EXT</unmanaged>
-	ChromaQpIndexOffset = 8,
+	ChromaQpIndexOffset = 0x00000008,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT</unmanaged>
-	SecondChromaQpIndexOffset = 16,
+	SecondChromaQpIndexOffset = 0x00000010,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_EXT</unmanaged>
-	PicInitQpMinus26 = 32,
+	PicInitQpMinus26 = 0x00000020,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT</unmanaged>
-	WeightedPredFlagSet = 64,
+	WeightedPredFlagSet = 0x00000040,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT</unmanaged>
-	WeightedBipredIdcExplicit = 128,
+	WeightedBipredIdcExplicit = 0x00000080,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_EXT</unmanaged>
-	WeightedBipredIdcImplicit = 256,
+	WeightedBipredIdcImplicit = 0x00000100,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_EXT</unmanaged>
-	Transform8x8ModeFlagSet = 512,
+	Transform8x8ModeFlagSet = 0x00000200,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_EXT</unmanaged>
-	DirectSpatialMvPredFlagUnset = 1024,
+	DirectSpatialMvPredFlagUnset = 0x00000400,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_EXT</unmanaged>
-	EntropyCodingModeFlagUnset = 2048,
+	EntropyCodingModeFlagUnset = 0x00000800,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_EXT</unmanaged>
-	EntropyCodingModeFlagSet = 4096,
+	EntropyCodingModeFlagSet = 0x00001000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_EXT</unmanaged>
-	Direct8x8InferenceFlagUnset = 8192,
+	Direct8x8InferenceFlagUnset = 0x00002000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT</unmanaged>
-	ConstrainedIntraPredFlagSet = 16384,
+	ConstrainedIntraPredFlagSet = 0x00004000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_EXT</unmanaged>
-	DeblockingFilterDisabled = 32768,
+	DeblockingFilterDisabled = 0x00008000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_EXT</unmanaged>
-	DeblockingFilterEnabled = 65536,
+	DeblockingFilterEnabled = 0x00010000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT</unmanaged>
-	DeblockingFilterPartial = 131072,
+	DeblockingFilterPartial = 0x00020000,
 }
 
 [Flags]
@@ -8093,15 +8213,15 @@ public enum VkVideoEncodeH264RateControlFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT</unmanaged>
-	AttemptHrdCompliance = 1,
+	AttemptHrdCompliance = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_EXT</unmanaged>
-	RegularGop = 2,
+	RegularGop = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT</unmanaged>
-	ReferencePatternFlat = 4,
+	ReferencePatternFlat = 0x00000004,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT</unmanaged>
-	ReferencePatternDyadic = 8,
+	ReferencePatternDyadic = 0x00000008,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_EXT</unmanaged>
-	TemporalLayerPatternDyadic = 16,
+	TemporalLayerPatternDyadic = 0x00000010,
 }
 
 [Flags]
@@ -8109,25 +8229,25 @@ public enum VkVideoEncodeH265CapabilityFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_EXT</unmanaged>
-	HrdCompliance = 1,
+	HrdCompliance = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT</unmanaged>
-	PredictionWeightTableGenerated = 2,
+	PredictionWeightTableGenerated = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_EXT</unmanaged>
-	RowUnalignedSliceSegment = 4,
+	RowUnalignedSliceSegment = 0x00000004,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_EXT</unmanaged>
-	DifferentSliceSegmentType = 8,
+	DifferentSliceSegmentType = 0x00000008,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT</unmanaged>
-	BFrameInL0List = 16,
+	BFrameInL0List = 0x00000010,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT</unmanaged>
-	BFrameInL1List = 32,
+	BFrameInL1List = 0x00000020,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT</unmanaged>
-	PerPictureTypeMinMaxQp = 64,
+	PerPictureTypeMinMaxQp = 0x00000040,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_EXT</unmanaged>
-	PerSliceSegmentConstantQp = 128,
+	PerSliceSegmentConstantQp = 0x00000080,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_EXT</unmanaged>
-	MultipleTilesPerSliceSegment = 256,
+	MultipleTilesPerSliceSegment = 0x00000100,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_EXT</unmanaged>
-	MultipleSliceSegmentsPerTile = 512,
+	MultipleSliceSegmentsPerTile = 0x00000200,
 }
 
 [Flags]
@@ -8135,43 +8255,43 @@ public enum VkVideoEncodeH265StdFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT</unmanaged>
-	SeparateColorPlaneFlagSet = 1,
+	SeparateColorPlaneFlagSet = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SAMPLE_ADAPTIVE_OFFSET_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	SampleAdaptiveOffsetEnabledFlagSet = 2,
+	SampleAdaptiveOffsetEnabledFlagSet = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_EXT</unmanaged>
-	ScalingListDataPresentFlagSet = 4,
+	ScalingListDataPresentFlagSet = 0x00000004,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	PcmEnabledFlagSet = 8,
+	PcmEnabledFlagSet = 0x00000008,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	SpsTemporalMvpEnabledFlagSet = 16,
+	SpsTemporalMvpEnabledFlagSet = 0x00000010,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_EXT</unmanaged>
-	InitQpMinus26 = 32,
+	InitQpMinus26 = 0x00000020,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT</unmanaged>
-	WeightedPredFlagSet = 64,
+	WeightedPredFlagSet = 0x00000040,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT</unmanaged>
-	WeightedBipredFlagSet = 128,
+	WeightedBipredFlagSet = 0x00000080,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_EXT</unmanaged>
-	Log2ParallelMergeLevelMinus2 = 256,
+	Log2ParallelMergeLevelMinus2 = 0x00000100,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	SignDataHidingEnabledFlagSet = 512,
+	SignDataHidingEnabledFlagSet = 0x00000200,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	TransformSkipEnabledFlagSet = 1024,
+	TransformSkipEnabledFlagSet = 0x00000400,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT</unmanaged>
-	TransformSkipEnabledFlagUnset = 2048,
+	TransformSkipEnabledFlagUnset = 0x00000800,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_EXT</unmanaged>
-	PpsSliceChromaQpOffsetsPresentFlagSet = 4096,
+	PpsSliceChromaQpOffsetsPresentFlagSet = 0x00001000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	TransquantBypassEnabledFlagSet = 8192,
+	TransquantBypassEnabledFlagSet = 0x00002000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT</unmanaged>
-	ConstrainedIntraPredFlagSet = 16384,
+	ConstrainedIntraPredFlagSet = 0x00004000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	EntropyCodingSyncEnabledFlagSet = 32768,
+	EntropyCodingSyncEnabledFlagSet = 0x00008000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	DeblockingFilterOverrideEnabledFlagSet = 65536,
+	DeblockingFilterOverrideEnabledFlagSet = 0x00010000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	DependentSliceSegmentsEnabledFlagSet = 131072,
+	DependentSliceSegmentsEnabledFlagSet = 0x00020000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT</unmanaged>
-	DependentSliceSegmentFlagSet = 262144,
+	DependentSliceSegmentFlagSet = 0x00040000,
 }
 
 [Flags]
@@ -8179,11 +8299,11 @@ public enum VkVideoEncodeH265CtbSizeFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_EXT</unmanaged>
-	Size16 = 1,
+	Size16 = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_EXT</unmanaged>
-	Size32 = 2,
+	Size32 = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_EXT</unmanaged>
-	Size64 = 4,
+	Size64 = 0x00000004,
 }
 
 [Flags]
@@ -8191,13 +8311,13 @@ public enum VkVideoEncodeH265TransformBlockSizeFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_EXT</unmanaged>
-	Size4 = 1,
+	Size4 = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_EXT</unmanaged>
-	Size8 = 2,
+	Size8 = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_EXT</unmanaged>
-	Size16 = 4,
+	Size16 = 0x00000004,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_EXT</unmanaged>
-	Size32 = 8,
+	Size32 = 0x00000008,
 }
 
 [Flags]
@@ -8205,15 +8325,15 @@ public enum VkVideoEncodeH265RateControlFlagsEXT
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT</unmanaged>
-	AttemptHrdCompliance = 1,
+	AttemptHrdCompliance = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_EXT</unmanaged>
-	RegularGop = 2,
+	RegularGop = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT</unmanaged>
-	ReferencePatternFlat = 4,
+	ReferencePatternFlat = 0x00000004,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT</unmanaged>
-	ReferencePatternDyadic = 8,
+	ReferencePatternDyadic = 0x00000008,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_EXT</unmanaged>
-	TemporalSubLayerPatternDyadic = 16,
+	TemporalSubLayerPatternDyadic = 0x00000010,
 }
 
 public enum VkDisplacementMicromapFormatNV
@@ -8649,231 +8769,571 @@ public enum VkVideoEncodeRateControlFlagsKHR
 [Flags]
 public enum VkPipelineStageFlags2 : ulong
 {
-	None = 0,
-	NoneKHR = 0,
-	TopOfPipe = 1,
-	TopOfPipeKHR = 1,
-	DrawIndirect = 2,
-	DrawIndirectKHR = 2,
-	VertexInput = 4,
-	VertexInputKHR = 4,
-	VertexShader = 8,
-	VertexShaderKHR = 8,
-	TessellationControlShader = 16,
-	TessellationControlShaderKHR = 16,
-	TessellationEvaluationShader = 32,
-	TessellationEvaluationShaderKHR = 32,
-	GeometryShader = 64,
-	GeometryShaderKHR = 64,
-	FragmentShader = 128,
-	FragmentShaderKHR = 128,
-	EarlyFragmentTests = 256,
-	EarlyFragmentTestsKHR = 256,
-	LateFragmentTests = 512,
-	LateFragmentTestsKHR = 512,
-	ColorAttachmentOutput = 1024,
-	ColorAttachmentOutputKHR = 1024,
-	ComputeShader = 2048,
-	ComputeShaderKHR = 2048,
-	AllTransfer = 4096,
-	AllTransferKHR = 4096,
-	Transfer = 4096,
-	TransferKHR = 4096,
-	BottomOfPipe = 8192,
-	BottomOfPipeKHR = 8192,
-	Host = 16384,
-	HostKHR = 16384,
-	AllGraphics = 32768,
-	AllGraphicsKHR = 32768,
-	AllCommands = 65536,
-	AllCommandsKHR = 65536,
-	Copy = 4294967296,
-	CopyKHR = 4294967296,
-	Resolve = 8589934592,
-	ResolveKHR = 8589934592,
-	Blit = 17179869184,
-	BlitKHR = 17179869184,
-	Clear = 34359738368,
-	ClearKHR = 34359738368,
-	IndexInput = 68719476736,
-	IndexInputKHR = 68719476736,
-	VertexAttributeInput = 137438953472,
-	VertexAttributeInputKHR = 137438953472,
-	PreRasterizationShaders = 274877906944,
-	PreRasterizationShadersKHR = 274877906944,
-	VideoDecodeKHR = 67108864,
-	VideoEncodeKHR = 134217728,
-	TransformFeedbackEXT = 16777216,
-	ConditionalRenderingEXT = 262144,
-	CommandPreprocessNV = 131072,
-	FragmentShadingRateAttachmentKHR = 4194304,
-	ShadingRateImageNV = 4194304,
-	AccelerationStructureBuildKHR = 33554432,
-	RayTracingShaderKHR = 2097152,
-	RayTracingShaderNV = 2097152,
-	AccelerationStructureBuildNV = 33554432,
-	FragmentDensityProcessEXT = 8388608,
-	TaskShaderNV = 524288,
-	MeshShaderNV = 1048576,
-	TaskShaderEXT = 524288,
-	MeshShaderEXT = 1048576,
-	SubpassShaderHUAWEI = 549755813888,
-	SubpassShadingHUAWEI = 549755813888,
-	InvocationMaskHUAWEI = 1099511627776,
-	AccelerationStructureCopyKHR = 268435456,
-	MicromapBuildEXT = 1073741824,
-	ClusterCullingShaderHUAWEI = 2199023255552,
-	OpticalFlowNV = 536870912,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_NONE</unmanaged>
+	None = 0UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_NONE_KHR</unmanaged>
+	NoneKHR = 0UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT</unmanaged>
+	TopOfPipe = 0x00000001UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT_KHR</unmanaged>
+	TopOfPipeKHR = 0x00000001UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT</unmanaged>
+	DrawIndirect = 0x00000002UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT_KHR</unmanaged>
+	DrawIndirectKHR = 0x00000002UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT</unmanaged>
+	VertexInput = 0x00000004UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT_KHR</unmanaged>
+	VertexInputKHR = 0x00000004UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT</unmanaged>
+	VertexShader = 0x00000008UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT_KHR</unmanaged>
+	VertexShaderKHR = 0x00000008UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT</unmanaged>
+	TessellationControlShader = 0x00000010UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT_KHR</unmanaged>
+	TessellationControlShaderKHR = 0x00000010UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT</unmanaged>
+	TessellationEvaluationShader = 0x00000020UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT_KHR</unmanaged>
+	TessellationEvaluationShaderKHR = 0x00000020UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT</unmanaged>
+	GeometryShader = 0x00000040UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT_KHR</unmanaged>
+	GeometryShaderKHR = 0x00000040UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT</unmanaged>
+	FragmentShader = 0x00000080UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT_KHR</unmanaged>
+	FragmentShaderKHR = 0x00000080UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT</unmanaged>
+	EarlyFragmentTests = 0x00000100UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT_KHR</unmanaged>
+	EarlyFragmentTestsKHR = 0x00000100UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT</unmanaged>
+	LateFragmentTests = 0x00000200UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT_KHR</unmanaged>
+	LateFragmentTestsKHR = 0x00000200UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT</unmanaged>
+	ColorAttachmentOutput = 0x00000400UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT_KHR</unmanaged>
+	ColorAttachmentOutputKHR = 0x00000400UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT</unmanaged>
+	ComputeShader = 0x00000800UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT_KHR</unmanaged>
+	ComputeShaderKHR = 0x00000800UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT</unmanaged>
+	AllTransfer = 0x00001000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT_KHR</unmanaged>
+	AllTransferKHR = 0x00001000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_TRANSFER_BIT</unmanaged>
+	Transfer = 0x00001000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_TRANSFER_BIT_KHR</unmanaged>
+	TransferKHR = 0x00001000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_BOTTOM_OF_PIPE_BIT</unmanaged>
+	BottomOfPipe = 0x00002000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_BOTTOM_OF_PIPE_BIT_KHR</unmanaged>
+	BottomOfPipeKHR = 0x00002000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_HOST_BIT</unmanaged>
+	Host = 0x00004000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_HOST_BIT_KHR</unmanaged>
+	HostKHR = 0x00004000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT</unmanaged>
+	AllGraphics = 0x00008000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT_KHR</unmanaged>
+	AllGraphicsKHR = 0x00008000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT</unmanaged>
+	AllCommands = 0x00010000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT_KHR</unmanaged>
+	AllCommandsKHR = 0x00010000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_COPY_BIT</unmanaged>
+	Copy = 0x100000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_COPY_BIT_KHR</unmanaged>
+	CopyKHR = 0x100000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_RESOLVE_BIT</unmanaged>
+	Resolve = 0x200000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_RESOLVE_BIT_KHR</unmanaged>
+	ResolveKHR = 0x200000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_BLIT_BIT</unmanaged>
+	Blit = 0x400000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_BLIT_BIT_KHR</unmanaged>
+	BlitKHR = 0x400000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_CLEAR_BIT</unmanaged>
+	Clear = 0x800000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_CLEAR_BIT_KHR</unmanaged>
+	ClearKHR = 0x800000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT</unmanaged>
+	IndexInput = 0x1000000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT_KHR</unmanaged>
+	IndexInputKHR = 0x1000000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT</unmanaged>
+	VertexAttributeInput = 0x2000000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT_KHR</unmanaged>
+	VertexAttributeInputKHR = 0x2000000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_PRE_RASTERIZATION_SHADERS_BIT</unmanaged>
+	PreRasterizationShaders = 0x4000000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_PRE_RASTERIZATION_SHADERS_BIT_KHR</unmanaged>
+	PreRasterizationShadersKHR = 0x4000000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR</unmanaged>
+	VideoDecodeKHR = 0x04000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR</unmanaged>
+	VideoEncodeKHR = 0x08000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT</unmanaged>
+	TransformFeedbackEXT = 0x01000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT</unmanaged>
+	ConditionalRenderingEXT = 0x00040000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV</unmanaged>
+	CommandPreprocessNV = 0x00020000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
+	FragmentShadingRateAttachmentKHR = 0x00400000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV</unmanaged>
+	ShadingRateImageNV = 0x00400000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR</unmanaged>
+	AccelerationStructureBuildKHR = 0x02000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR</unmanaged>
+	RayTracingShaderKHR = 0x00200000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_NV</unmanaged>
+	RayTracingShaderNV = 0x00200000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_NV</unmanaged>
+	AccelerationStructureBuildNV = 0x02000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT</unmanaged>
+	FragmentDensityProcessEXT = 0x00800000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_NV</unmanaged>
+	TaskShaderNV = 0x00080000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_NV</unmanaged>
+	MeshShaderNV = 0x00100000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT</unmanaged>
+	TaskShaderEXT = 0x00080000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT</unmanaged>
+	MeshShaderEXT = 0x00100000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI</unmanaged>
+	SubpassShaderHUAWEI = 0x8000000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HUAWEI</unmanaged>
+	SubpassShadingHUAWEI = 0x8000000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI</unmanaged>
+	InvocationMaskHUAWEI = 0x10000000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR</unmanaged>
+	AccelerationStructureCopyKHR = 0x10000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT</unmanaged>
+	MicromapBuildEXT = 0x40000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI</unmanaged>
+	ClusterCullingShaderHUAWEI = 0x20000000000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV</unmanaged>
+	OpticalFlowNV = 0x20000000UL,
 }
 
 [Flags]
 public enum VkAccessFlags2 : ulong
 {
-	None = 0,
-	NoneKHR = 0,
-	IndirectCommandRead = 1,
-	IndirectCommandReadKHR = 1,
-	IndexRead = 2,
-	IndexReadKHR = 2,
-	VertexAttributeRead = 4,
-	VertexAttributeReadKHR = 4,
-	UniformRead = 8,
-	UniformReadKHR = 8,
-	InputAttachmentRead = 16,
-	InputAttachmentReadKHR = 16,
-	ShaderRead = 32,
-	ShaderReadKHR = 32,
-	ShaderWrite = 64,
-	ShaderWriteKHR = 64,
-	ColorAttachmentRead = 128,
-	ColorAttachmentReadKHR = 128,
-	ColorAttachmentWrite = 256,
-	ColorAttachmentWriteKHR = 256,
-	DepthStencilAttachmentRead = 512,
-	DepthStencilAttachmentReadKHR = 512,
-	DepthStencilAttachmentWrite = 1024,
-	DepthStencilAttachmentWriteKHR = 1024,
-	TransferRead = 2048,
-	TransferReadKHR = 2048,
-	TransferWrite = 4096,
-	TransferWriteKHR = 4096,
-	HostRead = 8192,
-	HostReadKHR = 8192,
-	HostWrite = 16384,
-	HostWriteKHR = 16384,
-	MemoryRead = 32768,
-	MemoryReadKHR = 32768,
-	MemoryWrite = 65536,
-	MemoryWriteKHR = 65536,
-	ShaderSampledRead = 4294967296,
-	ShaderSampledReadKHR = 4294967296,
-	ShaderStorageRead = 8589934592,
-	ShaderStorageReadKHR = 8589934592,
-	ShaderStorageWrite = 17179869184,
-	ShaderStorageWriteKHR = 17179869184,
-	VideoDecodeReadKHR = 34359738368,
-	VideoDecodeWriteKHR = 68719476736,
-	VideoEncodeReadKHR = 137438953472,
-	VideoEncodeWriteKHR = 274877906944,
-	TransformFeedbackWriteEXT = 33554432,
-	TransformFeedbackCounterReadEXT = 67108864,
-	TransformFeedbackCounterWriteEXT = 134217728,
-	ConditionalRenderingReadEXT = 1048576,
-	CommandPreprocessReadNV = 131072,
-	CommandPreprocessWriteNV = 262144,
-	FragmentShadingRateAttachmentReadKHR = 8388608,
-	ShadingRateImageReadNV = 8388608,
-	AccelerationStructureReadKHR = 2097152,
-	AccelerationStructureWriteKHR = 4194304,
-	AccelerationStructureReadNV = 2097152,
-	AccelerationStructureWriteNV = 4194304,
-	FragmentDensityMapReadEXT = 16777216,
-	ColorAttachmentReadNoncoherentEXT = 524288,
-	DescriptorBufferReadEXT = 2199023255552,
-	InvocationMaskReadHUAWEI = 549755813888,
-	ShaderBindingTableReadKHR = 1099511627776,
-	MicromapReadEXT = 17592186044416,
-	MicromapWriteEXT = 35184372088832,
-	OpticalFlowReadNV = 4398046511104,
-	OpticalFlowWriteNV = 8796093022208,
+	/// <unmanaged>VK_ACCESS_2_NONE</unmanaged>
+	None = 0UL,
+	/// <unmanaged>VK_ACCESS_2_NONE_KHR</unmanaged>
+	NoneKHR = 0UL,
+	/// <unmanaged>VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT</unmanaged>
+	IndirectCommandRead = 0x00000001UL,
+	/// <unmanaged>VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT_KHR</unmanaged>
+	IndirectCommandReadKHR = 0x00000001UL,
+	/// <unmanaged>VK_ACCESS_2_INDEX_READ_BIT</unmanaged>
+	IndexRead = 0x00000002UL,
+	/// <unmanaged>VK_ACCESS_2_INDEX_READ_BIT_KHR</unmanaged>
+	IndexReadKHR = 0x00000002UL,
+	/// <unmanaged>VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT</unmanaged>
+	VertexAttributeRead = 0x00000004UL,
+	/// <unmanaged>VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT_KHR</unmanaged>
+	VertexAttributeReadKHR = 0x00000004UL,
+	/// <unmanaged>VK_ACCESS_2_UNIFORM_READ_BIT</unmanaged>
+	UniformRead = 0x00000008UL,
+	/// <unmanaged>VK_ACCESS_2_UNIFORM_READ_BIT_KHR</unmanaged>
+	UniformReadKHR = 0x00000008UL,
+	/// <unmanaged>VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT</unmanaged>
+	InputAttachmentRead = 0x00000010UL,
+	/// <unmanaged>VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT_KHR</unmanaged>
+	InputAttachmentReadKHR = 0x00000010UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_READ_BIT</unmanaged>
+	ShaderRead = 0x00000020UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_READ_BIT_KHR</unmanaged>
+	ShaderReadKHR = 0x00000020UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_WRITE_BIT</unmanaged>
+	ShaderWrite = 0x00000040UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_WRITE_BIT_KHR</unmanaged>
+	ShaderWriteKHR = 0x00000040UL,
+	/// <unmanaged>VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT</unmanaged>
+	ColorAttachmentRead = 0x00000080UL,
+	/// <unmanaged>VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT_KHR</unmanaged>
+	ColorAttachmentReadKHR = 0x00000080UL,
+	/// <unmanaged>VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT</unmanaged>
+	ColorAttachmentWrite = 0x00000100UL,
+	/// <unmanaged>VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT_KHR</unmanaged>
+	ColorAttachmentWriteKHR = 0x00000100UL,
+	/// <unmanaged>VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT</unmanaged>
+	DepthStencilAttachmentRead = 0x00000200UL,
+	/// <unmanaged>VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT_KHR</unmanaged>
+	DepthStencilAttachmentReadKHR = 0x00000200UL,
+	/// <unmanaged>VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT</unmanaged>
+	DepthStencilAttachmentWrite = 0x00000400UL,
+	/// <unmanaged>VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT_KHR</unmanaged>
+	DepthStencilAttachmentWriteKHR = 0x00000400UL,
+	/// <unmanaged>VK_ACCESS_2_TRANSFER_READ_BIT</unmanaged>
+	TransferRead = 0x00000800UL,
+	/// <unmanaged>VK_ACCESS_2_TRANSFER_READ_BIT_KHR</unmanaged>
+	TransferReadKHR = 0x00000800UL,
+	/// <unmanaged>VK_ACCESS_2_TRANSFER_WRITE_BIT</unmanaged>
+	TransferWrite = 0x00001000UL,
+	/// <unmanaged>VK_ACCESS_2_TRANSFER_WRITE_BIT_KHR</unmanaged>
+	TransferWriteKHR = 0x00001000UL,
+	/// <unmanaged>VK_ACCESS_2_HOST_READ_BIT</unmanaged>
+	HostRead = 0x00002000UL,
+	/// <unmanaged>VK_ACCESS_2_HOST_READ_BIT_KHR</unmanaged>
+	HostReadKHR = 0x00002000UL,
+	/// <unmanaged>VK_ACCESS_2_HOST_WRITE_BIT</unmanaged>
+	HostWrite = 0x00004000UL,
+	/// <unmanaged>VK_ACCESS_2_HOST_WRITE_BIT_KHR</unmanaged>
+	HostWriteKHR = 0x00004000UL,
+	/// <unmanaged>VK_ACCESS_2_MEMORY_READ_BIT</unmanaged>
+	MemoryRead = 0x00008000UL,
+	/// <unmanaged>VK_ACCESS_2_MEMORY_READ_BIT_KHR</unmanaged>
+	MemoryReadKHR = 0x00008000UL,
+	/// <unmanaged>VK_ACCESS_2_MEMORY_WRITE_BIT</unmanaged>
+	MemoryWrite = 0x00010000UL,
+	/// <unmanaged>VK_ACCESS_2_MEMORY_WRITE_BIT_KHR</unmanaged>
+	MemoryWriteKHR = 0x00010000UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_SAMPLED_READ_BIT</unmanaged>
+	ShaderSampledRead = 0x100000000UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_SAMPLED_READ_BIT_KHR</unmanaged>
+	ShaderSampledReadKHR = 0x100000000UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_STORAGE_READ_BIT</unmanaged>
+	ShaderStorageRead = 0x200000000UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_STORAGE_READ_BIT_KHR</unmanaged>
+	ShaderStorageReadKHR = 0x200000000UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT</unmanaged>
+	ShaderStorageWrite = 0x400000000UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT_KHR</unmanaged>
+	ShaderStorageWriteKHR = 0x400000000UL,
+	/// <unmanaged>VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR</unmanaged>
+	VideoDecodeReadKHR = 0x800000000UL,
+	/// <unmanaged>VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR</unmanaged>
+	VideoDecodeWriteKHR = 0x1000000000UL,
+	/// <unmanaged>VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR</unmanaged>
+	VideoEncodeReadKHR = 0x2000000000UL,
+	/// <unmanaged>VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR</unmanaged>
+	VideoEncodeWriteKHR = 0x4000000000UL,
+	/// <unmanaged>VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT</unmanaged>
+	TransformFeedbackWriteEXT = 0x02000000UL,
+	/// <unmanaged>VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT</unmanaged>
+	TransformFeedbackCounterReadEXT = 0x04000000UL,
+	/// <unmanaged>VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT</unmanaged>
+	TransformFeedbackCounterWriteEXT = 0x08000000UL,
+	/// <unmanaged>VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT</unmanaged>
+	ConditionalRenderingReadEXT = 0x00100000UL,
+	/// <unmanaged>VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV</unmanaged>
+	CommandPreprocessReadNV = 0x00020000UL,
+	/// <unmanaged>VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV</unmanaged>
+	CommandPreprocessWriteNV = 0x00040000UL,
+	/// <unmanaged>VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR</unmanaged>
+	FragmentShadingRateAttachmentReadKHR = 0x00800000UL,
+	/// <unmanaged>VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV</unmanaged>
+	ShadingRateImageReadNV = 0x00800000UL,
+	/// <unmanaged>VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR</unmanaged>
+	AccelerationStructureReadKHR = 0x00200000UL,
+	/// <unmanaged>VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR</unmanaged>
+	AccelerationStructureWriteKHR = 0x00400000UL,
+	/// <unmanaged>VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_NV</unmanaged>
+	AccelerationStructureReadNV = 0x00200000UL,
+	/// <unmanaged>VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_NV</unmanaged>
+	AccelerationStructureWriteNV = 0x00400000UL,
+	/// <unmanaged>VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT</unmanaged>
+	FragmentDensityMapReadEXT = 0x01000000UL,
+	/// <unmanaged>VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT</unmanaged>
+	ColorAttachmentReadNoncoherentEXT = 0x00080000UL,
+	/// <unmanaged>VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT</unmanaged>
+	DescriptorBufferReadEXT = 0x20000000000UL,
+	/// <unmanaged>VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI</unmanaged>
+	InvocationMaskReadHUAWEI = 0x8000000000UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR</unmanaged>
+	ShaderBindingTableReadKHR = 0x10000000000UL,
+	/// <unmanaged>VK_ACCESS_2_MICROMAP_READ_BIT_EXT</unmanaged>
+	MicromapReadEXT = 0x100000000000UL,
+	/// <unmanaged>VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT</unmanaged>
+	MicromapWriteEXT = 0x200000000000UL,
+	/// <unmanaged>VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV</unmanaged>
+	OpticalFlowReadNV = 0x40000000000UL,
+	/// <unmanaged>VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV</unmanaged>
+	OpticalFlowWriteNV = 0x80000000000UL,
 }
 
 [Flags]
 public enum VkFormatFeatureFlags2 : ulong
 {
-	SampledImage = 1,
-	SampledImageKHR = 1,
-	StorageImage = 2,
-	StorageImageKHR = 2,
-	StorageImageAtomic = 4,
-	StorageImageAtomicKHR = 4,
-	UniformTexelBuffer = 8,
-	UniformTexelBufferKHR = 8,
-	StorageTexelBuffer = 16,
-	StorageTexelBufferKHR = 16,
-	StorageTexelBufferAtomic = 32,
-	StorageTexelBufferAtomicKHR = 32,
-	VertexBuffer = 64,
-	VertexBufferKHR = 64,
-	ColorAttachment = 128,
-	ColorAttachmentKHR = 128,
-	ColorAttachmentBlend = 256,
-	ColorAttachmentBlendKHR = 256,
-	DepthStencilAttachment = 512,
-	DepthStencilAttachmentKHR = 512,
-	BlitSrc = 1024,
-	BlitSrcKHR = 1024,
-	BlitDst = 2048,
-	BlitDstKHR = 2048,
-	SampledImageFilterLinear = 4096,
-	SampledImageFilterLinearKHR = 4096,
-	SampledImageFilterCubic = 8192,
-	SampledImageFilterCubicEXT = 8192,
-	TransferSrc = 16384,
-	TransferSrcKHR = 16384,
-	TransferDst = 32768,
-	TransferDstKHR = 32768,
-	SampledImageFilterMinmax = 65536,
-	SampledImageFilterMinmaxKHR = 65536,
-	MidpointChromaSamples = 131072,
-	MidpointChromaSamplesKHR = 131072,
-	SampledImageYcbcrConversionLinearFilter = 262144,
-	SampledImageYcbcrConversionLinearFilterKHR = 262144,
-	SampledImageYcbcrConversionSeparateReconstructionFilter = 524288,
-	SampledImageYcbcrConversionSeparateReconstructionFilterKHR = 524288,
-	SampledImageYcbcrConversionChromaReconstructionExplicit = 1048576,
-	SampledImageYcbcrConversionChromaReconstructionExplicitKHR = 1048576,
-	SampledImageYcbcrConversionChromaReconstructionExplicitForceable = 2097152,
-	SampledImageYcbcrConversionChromaReconstructionExplicitForceableKHR = 2097152,
-	Disjoint = 4194304,
-	DisjointKHR = 4194304,
-	CositedChromaSamples = 8388608,
-	CositedChromaSamplesKHR = 8388608,
-	StorageReadWithoutFormat = 2147483648,
-	StorageReadWithoutFormatKHR = 2147483648,
-	StorageWriteWithoutFormat = 4294967296,
-	StorageWriteWithoutFormatKHR = 4294967296,
-	SampledImageDepthComparison = 8589934592,
-	SampledImageDepthComparisonKHR = 8589934592,
-	VideoDecodeOutputKHR = 33554432,
-	VideoDecodeDpbKHR = 67108864,
-	AccelerationStructureVertexBufferKHR = 536870912,
-	FragmentDensityMapEXT = 16777216,
-	FragmentShadingRateAttachmentKHR = 1073741824,
-	VideoEncodeInputKHR = 134217728,
-	VideoEncodeDpbKHR = 268435456,
-	LinearColorAttachmentNV = 274877906944,
-	WeightImageQCOM = 17179869184,
-	WeightSampledImageQCOM = 34359738368,
-	BlockMatchingQCOM = 68719476736,
-	BoxFilterSampledQCOM = 137438953472,
-	OpticalFlowImageNV = 1099511627776,
-	OpticalFlowVectorNV = 2199023255552,
-	OpticalFlowCostNV = 4398046511104,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT</unmanaged>
+	SampledImage = 0x00000001UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT_KHR</unmanaged>
+	SampledImageKHR = 0x00000001UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_IMAGE_BIT</unmanaged>
+	StorageImage = 0x00000002UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_IMAGE_BIT_KHR</unmanaged>
+	StorageImageKHR = 0x00000002UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_IMAGE_ATOMIC_BIT</unmanaged>
+	StorageImageAtomic = 0x00000004UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_IMAGE_ATOMIC_BIT_KHR</unmanaged>
+	StorageImageAtomicKHR = 0x00000004UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_UNIFORM_TEXEL_BUFFER_BIT</unmanaged>
+	UniformTexelBuffer = 0x00000008UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_UNIFORM_TEXEL_BUFFER_BIT_KHR</unmanaged>
+	UniformTexelBufferKHR = 0x00000008UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_TEXEL_BUFFER_BIT</unmanaged>
+	StorageTexelBuffer = 0x00000010UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_TEXEL_BUFFER_BIT_KHR</unmanaged>
+	StorageTexelBufferKHR = 0x00000010UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_TEXEL_BUFFER_ATOMIC_BIT</unmanaged>
+	StorageTexelBufferAtomic = 0x00000020UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_TEXEL_BUFFER_ATOMIC_BIT_KHR</unmanaged>
+	StorageTexelBufferAtomicKHR = 0x00000020UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_VERTEX_BUFFER_BIT</unmanaged>
+	VertexBuffer = 0x00000040UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_VERTEX_BUFFER_BIT_KHR</unmanaged>
+	VertexBufferKHR = 0x00000040UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_COLOR_ATTACHMENT_BIT</unmanaged>
+	ColorAttachment = 0x00000080UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_COLOR_ATTACHMENT_BIT_KHR</unmanaged>
+	ColorAttachmentKHR = 0x00000080UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_COLOR_ATTACHMENT_BLEND_BIT</unmanaged>
+	ColorAttachmentBlend = 0x00000100UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_COLOR_ATTACHMENT_BLEND_BIT_KHR</unmanaged>
+	ColorAttachmentBlendKHR = 0x00000100UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_DEPTH_STENCIL_ATTACHMENT_BIT</unmanaged>
+	DepthStencilAttachment = 0x00000200UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_DEPTH_STENCIL_ATTACHMENT_BIT_KHR</unmanaged>
+	DepthStencilAttachmentKHR = 0x00000200UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_BLIT_SRC_BIT</unmanaged>
+	BlitSrc = 0x00000400UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_BLIT_SRC_BIT_KHR</unmanaged>
+	BlitSrcKHR = 0x00000400UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_BLIT_DST_BIT</unmanaged>
+	BlitDst = 0x00000800UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_BLIT_DST_BIT_KHR</unmanaged>
+	BlitDstKHR = 0x00000800UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_LINEAR_BIT</unmanaged>
+	SampledImageFilterLinear = 0x00001000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_LINEAR_BIT_KHR</unmanaged>
+	SampledImageFilterLinearKHR = 0x00001000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_CUBIC_BIT</unmanaged>
+	SampledImageFilterCubic = 0x00002000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT</unmanaged>
+	SampledImageFilterCubicEXT = 0x00002000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_TRANSFER_SRC_BIT</unmanaged>
+	TransferSrc = 0x00004000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_TRANSFER_SRC_BIT_KHR</unmanaged>
+	TransferSrcKHR = 0x00004000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_TRANSFER_DST_BIT</unmanaged>
+	TransferDst = 0x00008000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_TRANSFER_DST_BIT_KHR</unmanaged>
+	TransferDstKHR = 0x00008000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_MINMAX_BIT</unmanaged>
+	SampledImageFilterMinmax = 0x00010000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_MINMAX_BIT_KHR</unmanaged>
+	SampledImageFilterMinmaxKHR = 0x00010000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_MIDPOINT_CHROMA_SAMPLES_BIT</unmanaged>
+	MidpointChromaSamples = 0x00020000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_MIDPOINT_CHROMA_SAMPLES_BIT_KHR</unmanaged>
+	MidpointChromaSamplesKHR = 0x00020000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT</unmanaged>
+	SampledImageYcbcrConversionLinearFilter = 0x00040000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT_KHR</unmanaged>
+	SampledImageYcbcrConversionLinearFilterKHR = 0x00040000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT</unmanaged>
+	SampledImageYcbcrConversionSeparateReconstructionFilter = 0x00080000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT_KHR</unmanaged>
+	SampledImageYcbcrConversionSeparateReconstructionFilterKHR = 0x00080000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT</unmanaged>
+	SampledImageYcbcrConversionChromaReconstructionExplicit = 0x00100000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT_KHR</unmanaged>
+	SampledImageYcbcrConversionChromaReconstructionExplicitKHR = 0x00100000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT</unmanaged>
+	SampledImageYcbcrConversionChromaReconstructionExplicitForceable = 0x00200000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT_KHR</unmanaged>
+	SampledImageYcbcrConversionChromaReconstructionExplicitForceableKHR = 0x00200000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_DISJOINT_BIT</unmanaged>
+	Disjoint = 0x00400000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_DISJOINT_BIT_KHR</unmanaged>
+	DisjointKHR = 0x00400000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_COSITED_CHROMA_SAMPLES_BIT</unmanaged>
+	CositedChromaSamples = 0x00800000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_COSITED_CHROMA_SAMPLES_BIT_KHR</unmanaged>
+	CositedChromaSamplesKHR = 0x00800000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT</unmanaged>
+	StorageReadWithoutFormat = 0x80000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT_KHR</unmanaged>
+	StorageReadWithoutFormatKHR = 0x80000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT</unmanaged>
+	StorageWriteWithoutFormat = 0x100000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT_KHR</unmanaged>
+	StorageWriteWithoutFormatKHR = 0x100000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT</unmanaged>
+	SampledImageDepthComparison = 0x200000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT_KHR</unmanaged>
+	SampledImageDepthComparisonKHR = 0x200000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_VIDEO_DECODE_OUTPUT_BIT_KHR</unmanaged>
+	VideoDecodeOutputKHR = 0x02000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_VIDEO_DECODE_DPB_BIT_KHR</unmanaged>
+	VideoDecodeDpbKHR = 0x04000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR</unmanaged>
+	AccelerationStructureVertexBufferKHR = 0x20000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_FRAGMENT_DENSITY_MAP_BIT_EXT</unmanaged>
+	FragmentDensityMapEXT = 0x01000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
+	FragmentShadingRateAttachmentKHR = 0x40000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT_EXT</unmanaged>
+	HostImageTransferEXT = 0x400000000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_VIDEO_ENCODE_INPUT_BIT_KHR</unmanaged>
+	VideoEncodeInputKHR = 0x08000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_VIDEO_ENCODE_DPB_BIT_KHR</unmanaged>
+	VideoEncodeDpbKHR = 0x10000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV</unmanaged>
+	LinearColorAttachmentNV = 0x4000000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM</unmanaged>
+	WeightImageQCOM = 0x400000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM</unmanaged>
+	WeightSampledImageQCOM = 0x800000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM</unmanaged>
+	BlockMatchingQCOM = 0x1000000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM</unmanaged>
+	BoxFilterSampledQCOM = 0x2000000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_OPTICAL_FLOW_IMAGE_BIT_NV</unmanaged>
+	OpticalFlowImageNV = 0x10000000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_OPTICAL_FLOW_VECTOR_BIT_NV</unmanaged>
+	OpticalFlowVectorNV = 0x20000000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_OPTICAL_FLOW_COST_BIT_NV</unmanaged>
+	OpticalFlowCostNV = 0x40000000000UL,
+}
+
+[Flags]
+public enum VkPipelineCreateFlags2KHR : ulong
+{
+	/// <unmanaged>VK_PIPELINE_CREATE_2_DISABLE_OPTIMIZATION_BIT_KHR</unmanaged>
+	DisableOptimization = 0x00000001UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT_KHR</unmanaged>
+	AllowDerivatives = 0x00000002UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_DERIVATIVE_BIT_KHR</unmanaged>
+	Derivative = 0x00000004UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR</unmanaged>
+	ViewIndexFromDeviceIndex = 0x00000008UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_DISPATCH_BASE_BIT_KHR</unmanaged>
+	DispatchBase = 0x00000010UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_DEFER_COMPILE_BIT_NV</unmanaged>
+	DeferCompileNV = 0x00000020UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_CAPTURE_STATISTICS_BIT_KHR</unmanaged>
+	CaptureStatistics = 0x00000040UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR</unmanaged>
+	CaptureInternalRepresentations = 0x00000080UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_KHR</unmanaged>
+	FailOnPipelineCompileRequired = 0x00000100UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_EARLY_RETURN_ON_FAILURE_BIT_KHR</unmanaged>
+	EarlyReturnOnFailure = 0x00000200UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT</unmanaged>
+	LinkTimeOptimizationEXT = 0x00000400UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT</unmanaged>
+	RetainLinkTimeOptimizationInfoEXT = 0x00800000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_LIBRARY_BIT_KHR</unmanaged>
+	Library = 0x00000800UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</unmanaged>
+	RayTracingSkipTriangles = 0x00001000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_AABBS_BIT_KHR</unmanaged>
+	RayTracingSkipAabbs = 0x00002000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR</unmanaged>
+	RayTracingNoNullAnyHitShaders = 0x00004000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR</unmanaged>
+	RayTracingNoNullClosestHitShaders = 0x00008000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR</unmanaged>
+	RayTracingNoNullMissShaders = 0x00010000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR</unmanaged>
+	RayTracingNoNullIntersectionShaders = 0x00020000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR</unmanaged>
+	RayTracingShaderGroupHandleCaptureReplay = 0x00080000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_NV</unmanaged>
+	IndirectBindableNV = 0x00040000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_MOTION_BIT_NV</unmanaged>
+	RayTracingAllowMotionNV = 0x00100000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
+	RenderingFragmentShadingRateAttachment = 0x00200000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT</unmanaged>
+	RenderingFragmentDensityMapAttachmentEXT = 0x00400000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT</unmanaged>
+	RayTracingOpacityMicromapEXT = 0x01000000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT</unmanaged>
+	ColorAttachmentFeedbackLoopEXT = 0x02000000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT</unmanaged>
+	DepthStencilAttachmentFeedbackLoopEXT = 0x04000000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT_EXT</unmanaged>
+	NoProtectedAccessEXT = 0x08000000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT_EXT</unmanaged>
+	ProtectedAccessOnlyEXT = 0x40000000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV</unmanaged>
+	RayTracingDisplacementMicromapNV = 0x10000000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT</unmanaged>
+	DescriptorBufferEXT = 0x20000000UL,
+}
+
+[Flags]
+public enum VkBufferUsageFlags2KHR : ulong
+{
+	/// <unmanaged>VK_BUFFER_USAGE_2_TRANSFER_SRC_BIT_KHR</unmanaged>
+	TransferSrc = 0x00000001UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_TRANSFER_DST_BIT_KHR</unmanaged>
+	TransferDst = 0x00000002UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_UNIFORM_TEXEL_BUFFER_BIT_KHR</unmanaged>
+	UniformTexelBuffer = 0x00000004UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_STORAGE_TEXEL_BUFFER_BIT_KHR</unmanaged>
+	StorageTexelBuffer = 0x00000008UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_UNIFORM_BUFFER_BIT_KHR</unmanaged>
+	UniformBuffer = 0x00000010UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_STORAGE_BUFFER_BIT_KHR</unmanaged>
+	StorageBuffer = 0x00000020UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_INDEX_BUFFER_BIT_KHR</unmanaged>
+	IndexBuffer = 0x00000040UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_VERTEX_BUFFER_BIT_KHR</unmanaged>
+	VertexBuffer = 0x00000080UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT_KHR</unmanaged>
+	IndirectBuffer = 0x00000100UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX</unmanaged>
+	ExecutionGraphScratchAMDX = 0x02000000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_CONDITIONAL_RENDERING_BIT_EXT</unmanaged>
+	ConditionalRenderingEXT = 0x00000200UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_SHADER_BINDING_TABLE_BIT_KHR</unmanaged>
+	ShaderBindingTable = 0x00000400UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_RAY_TRACING_BIT_NV</unmanaged>
+	RayTracingNV = 0x00000400UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT</unmanaged>
+	TransformFeedbackBufferEXT = 0x00000800UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT</unmanaged>
+	TransformFeedbackCounterBufferEXT = 0x00001000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_VIDEO_DECODE_SRC_BIT_KHR</unmanaged>
+	VideoDecodeSrc = 0x00002000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_VIDEO_DECODE_DST_BIT_KHR</unmanaged>
+	VideoDecodeDst = 0x00004000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_VIDEO_ENCODE_DST_BIT_KHR</unmanaged>
+	VideoEncodeDst = 0x00008000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_VIDEO_ENCODE_SRC_BIT_KHR</unmanaged>
+	VideoEncodeSrc = 0x00010000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT_KHR</unmanaged>
+	ShaderDeviceAddress = 0x00020000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR</unmanaged>
+	AccelerationStructureBuildInputReadOnly = 0x00080000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR</unmanaged>
+	AccelerationStructureStorage = 0x00100000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT</unmanaged>
+	SamplerDescriptorBufferEXT = 0x00200000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT</unmanaged>
+	ResourceDescriptorBufferEXT = 0x00400000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT</unmanaged>
+	PushDescriptorsDescriptorBufferEXT = 0x04000000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT</unmanaged>
+	MicromapBuildInputReadOnlyEXT = 0x00800000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT</unmanaged>
+	MicromapStorageEXT = 0x01000000UL,
 }
 
 [Flags]
 public enum VkMemoryDecompressionMethodFlagBitsNV : ulong
 {
-	VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV = 1,
+	/// <unmanaged>VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV</unmanaged>
+	VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV = 0x00000001UL,
 }

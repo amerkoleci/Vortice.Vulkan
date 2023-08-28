@@ -2318,6 +2318,30 @@ unsafe partial class Vulkan
 		vkGetDeviceImageSparseMemoryRequirementsKHR_ptr(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
 	}
 
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, VkIndexType, void> vkCmdBindIndexBuffer2KHR_ptr;
+	public static void vkCmdBindIndexBuffer2KHR(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, ulong size, VkIndexType indexType)
+	{
+		vkCmdBindIndexBuffer2KHR_ptr(commandBuffer, buffer, offset, size, indexType);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkRenderingAreaInfoKHR*, VkExtent2D*, void> vkGetRenderingAreaGranularityKHR_ptr;
+	public static void vkGetRenderingAreaGranularityKHR(VkDevice device, VkRenderingAreaInfoKHR* renderingAreaInfo, VkExtent2D* granularity)
+	{
+		vkGetRenderingAreaGranularityKHR_ptr(device, renderingAreaInfo, granularity);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfoKHR*, VkSubresourceLayout2KHR*, void> vkGetDeviceImageSubresourceLayoutKHR_ptr;
+	public static void vkGetDeviceImageSubresourceLayoutKHR(VkDevice device, VkDeviceImageSubresourceInfoKHR* info, VkSubresourceLayout2KHR* layout)
+	{
+		vkGetDeviceImageSubresourceLayoutKHR_ptr(device, info, layout);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void> vkGetImageSubresourceLayout2KHR_ptr;
+	public static void vkGetImageSubresourceLayout2KHR(VkDevice device, VkImage image, VkImageSubresource2KHR* subresource, VkSubresourceLayout2KHR* layout)
+	{
+		vkGetImageSubresourceLayout2KHR_ptr(device, image, subresource, layout);
+	}
+
 	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesKHR*, VkResult> vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeMatrixPropertiesKHR* properties)
 	{
@@ -3014,6 +3038,36 @@ unsafe partial class Vulkan
 		vkCmdSetStencilOpEXT_ptr(commandBuffer, faceMask, failOp, passOp, depthFailOp, compareOp);
 	}
 
+	private static delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfoEXT*, VkResult> vkCopyMemoryToImageEXT_ptr;
+	public static VkResult vkCopyMemoryToImageEXT(VkDevice device, VkCopyMemoryToImageInfoEXT* copyMemoryToImageInfo)
+	{
+		return vkCopyMemoryToImageEXT_ptr(device, copyMemoryToImageInfo);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfoEXT*, VkResult> vkCopyImageToMemoryEXT_ptr;
+	public static VkResult vkCopyImageToMemoryEXT(VkDevice device, VkCopyImageToMemoryInfoEXT* copyImageToMemoryInfo)
+	{
+		return vkCopyImageToMemoryEXT_ptr(device, copyImageToMemoryInfo);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkCopyImageToImageInfoEXT*, VkResult> vkCopyImageToImageEXT_ptr;
+	public static VkResult vkCopyImageToImageEXT(VkDevice device, VkCopyImageToImageInfoEXT* copyImageToImageInfo)
+	{
+		return vkCopyImageToImageEXT_ptr(device, copyImageToImageInfo);
+	}
+
+	private static delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfoEXT*, VkResult> vkTransitionImageLayoutEXT_ptr;
+	public static VkResult vkTransitionImageLayoutEXT(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfoEXT* transitions)
+	{
+		return vkTransitionImageLayoutEXT_ptr(device, transitionCount, transitions);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void> vkGetImageSubresourceLayout2EXT_ptr;
+	public static void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2KHR* subresource, VkSubresourceLayout2KHR* layout)
+	{
+		vkGetImageSubresourceLayout2EXT_ptr(device, image, subresource, layout);
+	}
+
 	private static delegate* unmanaged<VkDevice, VkReleaseSwapchainImagesInfoEXT*, VkResult> vkReleaseSwapchainImagesEXT_ptr;
 	public static VkResult vkReleaseSwapchainImagesEXT(VkDevice device, VkReleaseSwapchainImagesInfoEXT* releaseInfo)
 	{
@@ -3168,12 +3222,6 @@ unsafe partial class Vulkan
 	public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR* combinerOps)
 	{
 		vkCmdSetFragmentShadingRateEnumNV_ptr(commandBuffer, shadingRate, combinerOps);
-	}
-
-	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2EXT*, VkSubresourceLayout2EXT*, void> vkGetImageSubresourceLayout2EXT_ptr;
-	public static void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2EXT* subresource, VkSubresourceLayout2EXT* layout)
-	{
-		vkGetImageSubresourceLayout2EXT_ptr(device, image, subresource, layout);
 	}
 
 	private static delegate* unmanaged<VkDevice, VkDeviceFaultCountsEXT*, VkDeviceFaultInfoEXT*, VkResult> vkGetDeviceFaultInfoEXT_ptr;
@@ -3402,6 +3450,24 @@ unsafe partial class Vulkan
 	public static void vkCmdDecompressMemoryIndirectCountNV(VkCommandBuffer commandBuffer, ulong indirectCommandsAddress, ulong indirectCommandsCountAddress, uint stride)
 	{
 		vkCmdDecompressMemoryIndirectCountNV_ptr(commandBuffer, indirectCommandsAddress, indirectCommandsCountAddress, stride);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkComputePipelineCreateInfo*, VkMemoryRequirements2*, void> vkGetPipelineIndirectMemoryRequirementsNV_ptr;
+	public static void vkGetPipelineIndirectMemoryRequirementsNV(VkDevice device, VkComputePipelineCreateInfo* createInfo, VkMemoryRequirements2* memoryRequirements)
+	{
+		vkGetPipelineIndirectMemoryRequirementsNV_ptr(device, createInfo, memoryRequirements);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void> vkCmdUpdatePipelineIndirectBufferNV_ptr;
+	public static void vkCmdUpdatePipelineIndirectBufferNV(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline)
+	{
+		vkCmdUpdatePipelineIndirectBufferNV_ptr(commandBuffer, pipelineBindPoint, pipeline);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkPipelineIndirectDeviceAddressInfoNV*, ulong> vkGetPipelineIndirectDeviceAddressNV_ptr;
+	public static ulong vkGetPipelineIndirectDeviceAddressNV(VkDevice device, VkPipelineIndirectDeviceAddressInfoNV* info)
+	{
+		return vkGetPipelineIndirectDeviceAddressNV_ptr(device, info);
 	}
 
 	private static delegate* unmanaged<VkCommandBuffer, VkTessellationDomainOrigin, void> vkCmdSetTessellationDomainOriginEXT_ptr;
@@ -3914,6 +3980,48 @@ unsafe partial class Vulkan
 		vkCmdEncodeVideoKHR_ptr(commandBuffer, encodeInfo);
 	}
 
+	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateExecutionGraphPipelinesAMDX_ptr;
+	public static VkResult vkCreateExecutionGraphPipelinesAMDX(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkExecutionGraphPipelineCreateInfoAMDX* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
+	{
+		return vkCreateExecutionGraphPipelinesAMDX_ptr(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkPipeline, VkExecutionGraphPipelineScratchSizeAMDX*, VkResult> vkGetExecutionGraphPipelineScratchSizeAMDX_ptr;
+	public static VkResult vkGetExecutionGraphPipelineScratchSizeAMDX(VkDevice device, VkPipeline executionGraph, VkExecutionGraphPipelineScratchSizeAMDX* sizeInfo)
+	{
+		return vkGetExecutionGraphPipelineScratchSizeAMDX_ptr(device, executionGraph, sizeInfo);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkPipeline, VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, VkResult> vkGetExecutionGraphPipelineNodeIndexAMDX_ptr;
+	public static VkResult vkGetExecutionGraphPipelineNodeIndexAMDX(VkDevice device, VkPipeline executionGraph, VkPipelineShaderStageNodeCreateInfoAMDX* nodeInfo, uint* nodeIndex)
+	{
+		return vkGetExecutionGraphPipelineNodeIndexAMDX_ptr(device, executionGraph, nodeInfo, nodeIndex);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, ulong, void> vkCmdInitializeGraphScratchMemoryAMDX_ptr;
+	public static void vkCmdInitializeGraphScratchMemoryAMDX(VkCommandBuffer commandBuffer, ulong scratch)
+	{
+		vkCmdInitializeGraphScratchMemoryAMDX_ptr(commandBuffer, scratch);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, ulong, VkDispatchGraphCountInfoAMDX*, void> vkCmdDispatchGraphAMDX_ptr;
+	public static void vkCmdDispatchGraphAMDX(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* countInfo)
+	{
+		vkCmdDispatchGraphAMDX_ptr(commandBuffer, scratch, countInfo);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, ulong, VkDispatchGraphCountInfoAMDX*, void> vkCmdDispatchGraphIndirectAMDX_ptr;
+	public static void vkCmdDispatchGraphIndirectAMDX(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* countInfo)
+	{
+		vkCmdDispatchGraphIndirectAMDX_ptr(commandBuffer, scratch, countInfo);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, ulong, ulong, void> vkCmdDispatchGraphIndirectCountAMDX_ptr;
+	public static void vkCmdDispatchGraphIndirectCountAMDX(VkCommandBuffer commandBuffer, ulong scratch, ulong countInfo)
+	{
+		vkCmdDispatchGraphIndirectCountAMDX_ptr(commandBuffer, scratch, countInfo);
+	}
+
 	private static void GenLoadInstance(IntPtr context, LoadFunction load)
 	{
 		vkDestroyInstance_ptr = (delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyInstance));
@@ -4336,6 +4444,10 @@ unsafe partial class Vulkan
 		vkGetDeviceBufferMemoryRequirementsKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceBufferMemoryRequirementsKHR));
 		vkGetDeviceImageMemoryRequirementsKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageMemoryRequirementsKHR));
 		vkGetDeviceImageSparseMemoryRequirementsKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageSparseMemoryRequirementsKHR));
+		vkCmdBindIndexBuffer2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, VkIndexType, void>) load(context, nameof(vkCmdBindIndexBuffer2KHR));
+		vkGetRenderingAreaGranularityKHR_ptr = (delegate* unmanaged<VkDevice, VkRenderingAreaInfoKHR*, VkExtent2D*, void>) load(context, nameof(vkGetRenderingAreaGranularityKHR));
+		vkGetDeviceImageSubresourceLayoutKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfoKHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetDeviceImageSubresourceLayoutKHR));
+		vkGetImageSubresourceLayout2KHR_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetImageSubresourceLayout2KHR));
 		vkDebugMarkerSetObjectTagEXT_ptr = (delegate* unmanaged<VkDevice, VkDebugMarkerObjectTagInfoEXT*, VkResult>) load(context, nameof(vkDebugMarkerSetObjectTagEXT));
 		vkDebugMarkerSetObjectNameEXT_ptr = (delegate* unmanaged<VkDevice, VkDebugMarkerObjectNameInfoEXT*, VkResult>) load(context, nameof(vkDebugMarkerSetObjectNameEXT));
 		vkCmdDebugMarkerBeginEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void>) load(context, nameof(vkCmdDebugMarkerBeginEXT));
@@ -4427,6 +4539,11 @@ unsafe partial class Vulkan
 		vkCmdSetDepthBoundsTestEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthBoundsTestEnableEXT));
 		vkCmdSetStencilTestEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetStencilTestEnableEXT));
 		vkCmdSetStencilOpEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void>) load(context, nameof(vkCmdSetStencilOpEXT));
+		vkCopyMemoryToImageEXT_ptr = (delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfoEXT*, VkResult>) load(context, nameof(vkCopyMemoryToImageEXT));
+		vkCopyImageToMemoryEXT_ptr = (delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfoEXT*, VkResult>) load(context, nameof(vkCopyImageToMemoryEXT));
+		vkCopyImageToImageEXT_ptr = (delegate* unmanaged<VkDevice, VkCopyImageToImageInfoEXT*, VkResult>) load(context, nameof(vkCopyImageToImageEXT));
+		vkTransitionImageLayoutEXT_ptr = (delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfoEXT*, VkResult>) load(context, nameof(vkTransitionImageLayoutEXT));
+		vkGetImageSubresourceLayout2EXT_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetImageSubresourceLayout2EXT));
 		vkReleaseSwapchainImagesEXT_ptr = (delegate* unmanaged<VkDevice, VkReleaseSwapchainImagesInfoEXT*, VkResult>) load(context, nameof(vkReleaseSwapchainImagesEXT));
 		vkGetGeneratedCommandsMemoryRequirementsNV_ptr = (delegate* unmanaged<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetGeneratedCommandsMemoryRequirementsNV));
 		vkCmdPreprocessGeneratedCommandsNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkGeneratedCommandsInfoNV*, void>) load(context, nameof(vkCmdPreprocessGeneratedCommandsNV));
@@ -4451,7 +4568,6 @@ unsafe partial class Vulkan
 		vkGetSamplerOpaqueCaptureDescriptorDataEXT_ptr = (delegate* unmanaged<VkDevice, VkSamplerCaptureDescriptorDataInfoEXT*, void*, VkResult>) load(context, nameof(vkGetSamplerOpaqueCaptureDescriptorDataEXT));
 		vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureCaptureDescriptorDataInfoEXT*, void*, VkResult>) load(context, nameof(vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT));
 		vkCmdSetFragmentShadingRateEnumNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateEnumNV));
-		vkGetImageSubresourceLayout2EXT_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2EXT*, VkSubresourceLayout2EXT*, void>) load(context, nameof(vkGetImageSubresourceLayout2EXT));
 		vkGetDeviceFaultInfoEXT_ptr = (delegate* unmanaged<VkDevice, VkDeviceFaultCountsEXT*, VkDeviceFaultInfoEXT*, VkResult>) load(context, nameof(vkGetDeviceFaultInfoEXT));
 		vkCmdSetVertexInputEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkVertexInputBindingDescription2EXT*, uint, VkVertexInputAttributeDescription2EXT*, void>) load(context, nameof(vkCmdSetVertexInputEXT));
 		vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI_ptr = (delegate* unmanaged<VkDevice, VkRenderPass, VkExtent2D*, VkResult>) load(context, nameof(vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI));
@@ -4490,6 +4606,9 @@ unsafe partial class Vulkan
 		vkCmdCopyMemoryToImageIndirectNV_ptr = (delegate* unmanaged<VkCommandBuffer, ulong, uint, uint, VkImage, VkImageLayout, VkImageSubresourceLayers*, void>) load(context, nameof(vkCmdCopyMemoryToImageIndirectNV));
 		vkCmdDecompressMemoryNV_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkDecompressMemoryRegionNV*, void>) load(context, nameof(vkCmdDecompressMemoryNV));
 		vkCmdDecompressMemoryIndirectCountNV_ptr = (delegate* unmanaged<VkCommandBuffer, ulong, ulong, uint, void>) load(context, nameof(vkCmdDecompressMemoryIndirectCountNV));
+		vkGetPipelineIndirectMemoryRequirementsNV_ptr = (delegate* unmanaged<VkDevice, VkComputePipelineCreateInfo*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetPipelineIndirectMemoryRequirementsNV));
+		vkCmdUpdatePipelineIndirectBufferNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void>) load(context, nameof(vkCmdUpdatePipelineIndirectBufferNV));
+		vkGetPipelineIndirectDeviceAddressNV_ptr = (delegate* unmanaged<VkDevice, VkPipelineIndirectDeviceAddressInfoNV*, ulong>) load(context, nameof(vkGetPipelineIndirectDeviceAddressNV));
 		vkCmdSetTessellationDomainOriginEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkTessellationDomainOrigin, void>) load(context, nameof(vkCmdSetTessellationDomainOriginEXT));
 		vkCmdSetDepthClampEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthClampEnableEXT));
 		vkCmdSetPolygonModeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkPolygonMode, void>) load(context, nameof(vkCmdSetPolygonModeEXT));
@@ -4564,5 +4683,12 @@ unsafe partial class Vulkan
 		vkExportMetalObjectsEXT_ptr = (delegate* unmanaged<VkDevice, VkExportMetalObjectsInfoEXT*, void>) load(context, nameof(vkExportMetalObjectsEXT));
 		vkGetEncodedVideoSessionParametersKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult>) load(context, nameof(vkGetEncodedVideoSessionParametersKHR));
 		vkCmdEncodeVideoKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void>) load(context, nameof(vkCmdEncodeVideoKHR));
+		vkCreateExecutionGraphPipelinesAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateExecutionGraphPipelinesAMDX));
+		vkGetExecutionGraphPipelineScratchSizeAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkExecutionGraphPipelineScratchSizeAMDX*, VkResult>) load(context, nameof(vkGetExecutionGraphPipelineScratchSizeAMDX));
+		vkGetExecutionGraphPipelineNodeIndexAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, VkResult>) load(context, nameof(vkGetExecutionGraphPipelineNodeIndexAMDX));
+		vkCmdInitializeGraphScratchMemoryAMDX_ptr = (delegate* unmanaged<VkCommandBuffer, ulong, void>) load(context, nameof(vkCmdInitializeGraphScratchMemoryAMDX));
+		vkCmdDispatchGraphAMDX_ptr = (delegate* unmanaged<VkCommandBuffer, ulong, VkDispatchGraphCountInfoAMDX*, void>) load(context, nameof(vkCmdDispatchGraphAMDX));
+		vkCmdDispatchGraphIndirectAMDX_ptr = (delegate* unmanaged<VkCommandBuffer, ulong, VkDispatchGraphCountInfoAMDX*, void>) load(context, nameof(vkCmdDispatchGraphIndirectAMDX));
+		vkCmdDispatchGraphIndirectCountAMDX_ptr = (delegate* unmanaged<VkCommandBuffer, ulong, ulong, void>) load(context, nameof(vkCmdDispatchGraphIndirectCountAMDX));
 	}
 }
