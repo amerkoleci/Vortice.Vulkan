@@ -8,17 +8,16 @@ namespace Vortice.Vulkan;
 
 public abstract class Application : IDisposable
 {
-    private static readonly unsafe glfwErrorCallback s_errorCallback = GlfwError;
     private bool _closeRequested = false;
 
-    protected Application()
+    protected unsafe Application()
     {
         if (!glfwInit())
         {
             throw new PlatformNotSupportedException("GLFW is not supported");
         }
 
-        glfwSetErrorCallback(s_errorCallback);
+        glfwSetErrorCallback(&GlfwError);
 
         if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
@@ -65,6 +64,7 @@ public abstract class Application : IDisposable
 
     }
 
+    [UnmanagedCallersOnly]
     private static unsafe void GlfwError(int code, sbyte* message)
     {
         throw new Exception(new string(message));

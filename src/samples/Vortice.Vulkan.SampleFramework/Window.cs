@@ -20,14 +20,14 @@ public enum WindowFlags
 
 public sealed unsafe class Window
 {
-    private readonly GLFWwindow* _window;
+    private readonly GLFWwindow _window;
 
     public unsafe Window(string title, int width, int height, WindowFlags flags = WindowFlags.None)
     {
         Title = title;
 
         bool fullscreen = false;
-        GLFWmonitor* monitor = null;
+        GLFWmonitor monitor = GLFWmonitor.Null;
         if ((flags & WindowFlags.Fullscreen) != WindowFlags.None)
         {
             monitor = glfwGetPrimaryMonitor();
@@ -80,7 +80,7 @@ public sealed unsafe class Window
             }
         }
 
-        _window = glfwCreateWindow(width, height, title, monitor, null);
+        _window = glfwCreateWindow(width, height, title, monitor, GLFWwindow.Null);
         //Handle = hwnd;
 
         glfwGetWindowSize(_window, out width, out height);

@@ -5,7 +5,15 @@
     <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <AssemblyName>03-DrawTriangleVma</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <PublishAot>true</PublishAot>
+    <UseSystemResourceKeys>true</UseSystemResourceKeys>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <OptimizationPreference>Speed</OptimizationPreference>
+    <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+    <IlcDisableReflection>false</IlcDisableReflection>
   </PropertyGroup>
 
   <ItemGroup>

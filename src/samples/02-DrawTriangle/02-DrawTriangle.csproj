@@ -4,8 +4,17 @@
     <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <RootNamespace>DrawTriangle</RootNamespace>
-    <PublishAot>true</PublishAot>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <PublishAot>true</PublishAot>
+    <UseSystemResourceKeys>true</UseSystemResourceKeys>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <OptimizationPreference>Speed</OptimizationPreference>
+    <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+    <IlcDisableReflection>false</IlcDisableReflection>
+  </PropertyGroup>
+  
   <ItemGroup>
     <Content Include="Assets\*.spv" CopyToOutputDirectory="Always" />
 
