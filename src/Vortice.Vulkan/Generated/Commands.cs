@@ -3734,6 +3734,36 @@ unsafe partial class Vulkan
 		return vkGetDynamicRenderingTilePropertiesQCOM_ptr(device, renderingInfo, properties);
 	}
 
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepModeInfoNV*, VkResult> vkSetLatencySleepModeNV_ptr;
+	public static VkResult vkSetLatencySleepModeNV(VkDevice device, VkSwapchainKHR swapchain, VkLatencySleepModeInfoNV* sleepModeInfo)
+	{
+		return vkSetLatencySleepModeNV_ptr(device, swapchain, sleepModeInfo);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepInfoNV*, VkResult> vkLatencySleepNV_ptr;
+	public static VkResult vkLatencySleepNV(VkDevice device, VkSwapchainKHR swapchain, VkLatencySleepInfoNV* sleepInfo)
+	{
+		return vkLatencySleepNV_ptr(device, swapchain, sleepInfo);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkSetLatencyMarkerInfoNV*, void> vkSetLatencyMarkerNV_ptr;
+	public static void vkSetLatencyMarkerNV(VkDevice device, VkSwapchainKHR swapchain, VkSetLatencyMarkerInfoNV* latencyMarkerInfo)
+	{
+		vkSetLatencyMarkerNV_ptr(device, swapchain, latencyMarkerInfo);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkGetLatencyMarkerInfoNV*, void> vkGetLatencyTimingsNV_ptr;
+	public static void vkGetLatencyTimingsNV(VkDevice device, VkSwapchainKHR swapchain, uint* timingCount, VkGetLatencyMarkerInfoNV* latencyMarkerInfo)
+	{
+		vkGetLatencyTimingsNV_ptr(device, swapchain, timingCount, latencyMarkerInfo);
+	}
+
+	private static delegate* unmanaged<VkQueue, VkOutOfBandQueueTypeInfoNV*, void> vkQueueNotifyOutOfBandNV_ptr;
+	public static void vkQueueNotifyOutOfBandNV(VkQueue queue, VkOutOfBandQueueTypeInfoNV* queueTypeInfo)
+	{
+		vkQueueNotifyOutOfBandNV_ptr(queue, queueTypeInfo);
+	}
+
 	private static delegate* unmanaged<VkCommandBuffer, VkImageAspectFlags, void> vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr;
 	public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask)
 	{
@@ -4652,6 +4682,11 @@ unsafe partial class Vulkan
 		vkCmdBindShadersEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkShaderStageFlags*, VkShaderEXT*, void>) load(context, nameof(vkCmdBindShadersEXT));
 		vkGetFramebufferTilePropertiesQCOM_ptr = (delegate* unmanaged<VkDevice, VkFramebuffer, uint*, VkTilePropertiesQCOM*, VkResult>) load(context, nameof(vkGetFramebufferTilePropertiesQCOM));
 		vkGetDynamicRenderingTilePropertiesQCOM_ptr = (delegate* unmanaged<VkDevice, VkRenderingInfo*, VkTilePropertiesQCOM*, VkResult>) load(context, nameof(vkGetDynamicRenderingTilePropertiesQCOM));
+		vkSetLatencySleepModeNV_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepModeInfoNV*, VkResult>) load(context, nameof(vkSetLatencySleepModeNV));
+		vkLatencySleepNV_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepInfoNV*, VkResult>) load(context, nameof(vkLatencySleepNV));
+		vkSetLatencyMarkerNV_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkSetLatencyMarkerInfoNV*, void>) load(context, nameof(vkSetLatencyMarkerNV));
+		vkGetLatencyTimingsNV_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkGetLatencyMarkerInfoNV*, void>) load(context, nameof(vkGetLatencyTimingsNV));
+		vkQueueNotifyOutOfBandNV_ptr = (delegate* unmanaged<VkQueue, VkOutOfBandQueueTypeInfoNV*, void>) load(context, nameof(vkQueueNotifyOutOfBandNV));
 		vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkImageAspectFlags, void>) load(context, nameof(vkCmdSetAttachmentFeedbackLoopEnableEXT));
 		vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));
 		vkDestroyAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyAccelerationStructureKHR));

@@ -24,7 +24,7 @@ public class VulkanSpecification
             .Where(enumx => enumx.GetTypeAttributeOrNull() == "enum" || enumx.GetTypeAttributeOrNull() == "bitmask")
             .Select(enumx => EnumDefinition.CreateFromXml(enumx)).ToArray();
 
-        Extensions = registry.Element("extensions").Elements("extension")
+        Extensions = registry.Element("extensions")!.Elements("extension")
                 .Select(ExtensionDefinition.CreateFromXml).ToArray();
 
         Formats = registry.Element("formats")!.Elements("format")
@@ -88,7 +88,7 @@ public class EnumDefinition
         var commentAttr = xe.Attribute("comment");
         if (typeAttr != null)
         {
-            string typeString = xe.Attribute("type").Value;
+            string typeString = xe.Attribute("type")!.Value;
             type = (EnumType)Enum.Parse(typeof(EnumType), typeString, true);
         }
         else
@@ -96,7 +96,7 @@ public class EnumDefinition
             type = EnumType.Constants;
         }
 
-        string name = xe.Attribute("name").Value;
+        string name = xe.Attribute("name")!.Value;
         string? comment = commentAttr != null ? commentAttr.Value : null;
         EnumValue[] values = xe.Elements("enum")
             .Select(valuesx => EnumValue.CreateFromXml(valuesx))
@@ -148,17 +148,17 @@ public class EnumValue
     {
         Guard.IsNotNull(xe);
 
-        string name = xe.Attribute("name").Value;
+        string name = xe.Attribute("name")!.Value;
 
         int value;
         string valueStr = xe.Attribute("value")?.Value;
-        string deprecatedValue = xe.Attribute("deprecated")?.Value;
+        string? deprecatedValue = xe.Attribute("deprecated")?.Value;
         if (!string.IsNullOrEmpty(deprecatedValue))
         {
             return null;
         }
 
-        string aliasValue = xe.Attribute("alias")?.Value;
+        string? aliasValue = xe.Attribute("alias")?.Value;
         if (!string.IsNullOrEmpty(aliasValue))
         {
             return null;
@@ -178,7 +178,7 @@ public class EnumValue
         }
         else
         {
-            string bitposStr = xe.Attribute("bitpos").Value;
+            string bitposStr = xe.Attribute("bitpos")!.Value;
             value = 1 << int.Parse(bitposStr);
         }
 
@@ -216,24 +216,24 @@ public class ExtensionDefinition
     public static ExtensionDefinition CreateFromXml(XElement xe)
     {
         string name = xe.GetNameAttribute();
-        string numberString = xe.Attribute("number").Value;
+        string numberString = xe.Attribute("number")!.Value;
         int number = int.Parse(numberString);
-        string type = xe.GetTypeAttributeOrNull();
-        List<ExtensionConstant> extensionConstants = new List<ExtensionConstant>();
-        List<EnumExtensionValue> enumExtensions = new List<EnumExtensionValue>();
-        List<string> commandNames = new List<string>();
+        string? type = xe.GetTypeAttributeOrNull();
+        List<ExtensionConstant> extensionConstants = [];
+        List<EnumExtensionValue> enumExtensions = [];
+        List<string> commandNames = [];
 
-        foreach (var require in xe.Elements("require"))
+        foreach (XElement require in xe.Elements("require"))
         {
-            foreach (var enumXE in require.Elements("enum"))
+            foreach (XElement enumXE in require.Elements("enum"))
             {
                 string enumName = enumXE.GetNameAttribute();
-                string extends = enumXE.Attribute("extends")?.Value;
-                string deprecatedValue = enumXE.Attribute("deprecated")?.Value;
+                string? extends = enumXE.Attribute("extends")?.Value;
+                string? deprecatedValue = enumXE.Attribute("deprecated")?.Value;
                 if (!string.IsNullOrEmpty(deprecatedValue))
                     continue;
 
-                string aliasValue = enumXE.Attribute("alias")?.Value;
+                string? aliasValue = enumXE.Attribute("alias")?.Value;
                 if (!string.IsNullOrEmpty(aliasValue))
                 {
                     continue;
@@ -242,7 +242,7 @@ public class ExtensionDefinition
                 if (extends != null)
                 {
                     string valueString;
-                    string offsetString = enumXE.Attribute("offset")?.Value;
+                    string? offsetString = enumXE.Attribute("offset")?.Value;
                     if (offsetString != null)
                     {
                         int offset = int.Parse(offsetString);
@@ -257,7 +257,7 @@ public class ExtensionDefinition
                     }
                     else
                     {
-                        string bitPosString = enumXE.Attribute("bitpos")?.Value;
+                        string? bitPosString = enumXE.Attribute("bitpos")?.Value;
                         if (bitPosString != null)
                         {
                             int shift = int.Parse(bitPosString);
@@ -265,7 +265,7 @@ public class ExtensionDefinition
                         }
                         else
                         {
-                            valueString = enumXE.Attribute("value").Value;
+                            valueString = enumXE.Attribute("value")!.Value;
                         }
                     }
                     enumExtensions.Add(new EnumExtensionValue(extends, enumName, valueString));

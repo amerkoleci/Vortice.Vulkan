@@ -11196,6 +11196,40 @@ public unsafe partial struct VkPhysicalDevicePipelinePropertiesFeaturesEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceFrameBoundaryFeaturesEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 frameBoundary;
+
+	public VkPhysicalDeviceFrameBoundaryFeaturesEXT()
+	{
+		sType = VkStructureType.PhysicalDeviceFrameBoundaryFeaturesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkFrameBoundaryEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkFrameBoundaryFlagsEXT flags;
+	public ulong frameID;
+	public uint imageCount;
+	public VkImage* pImages;
+	public uint bufferCount;
+	public VkBuffer* pBuffers;
+	public ulong tagName;
+	public nuint tagSize;
+	public void* pTag;
+
+	public VkFrameBoundaryEXT()
+	{
+		sType = VkStructureType.FrameBoundaryEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT
 {
 	internal VkStructureType sType;
@@ -12016,6 +12050,34 @@ public unsafe partial struct VkPhysicalDeviceImageProcessingPropertiesQCOM
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceNestedCommandBufferFeaturesEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 nestedCommandBuffer;
+	public VkBool32 nestedCommandBufferRendering;
+	public VkBool32 nestedCommandBufferSimultaneousUse;
+
+	public VkPhysicalDeviceNestedCommandBufferFeaturesEXT()
+	{
+		sType = VkStructureType.PhysicalDeviceNestedCommandBufferFeaturesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceNestedCommandBufferPropertiesEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint maxCommandBufferNestingLevel;
+
+	public VkPhysicalDeviceNestedCommandBufferPropertiesEXT()
+	{
+		sType = VkStructureType.PhysicalDeviceNestedCommandBufferPropertiesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkExternalMemoryAcquireUnmodifiedEXT
 {
 	internal VkStructureType sType;
@@ -12539,6 +12601,34 @@ public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderFeatures
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 extendedSparseAddressSpace;
+
+	public VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV()
+	{
+		sType = VkStructureType.PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public ulong extendedSparseAddressSpaceSize;
+	public VkImageUsageFlags extendedSparseImageUsageFlags;
+	public VkBufferUsageFlags extendedSparseBufferUsageFlags;
+
+	public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV()
+	{
+		sType = VkStructureType.PhysicalDeviceExtendedSparseAddressSpacePropertiesNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM
 {
 	internal VkStructureType sType;
@@ -12589,6 +12679,141 @@ public unsafe partial struct VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFe
 	public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT()
 	{
 		sType = VkStructureType.PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkLatencySleepModeInfoNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 lowLatencyMode;
+	public VkBool32 lowLatencyBoost;
+	public uint minimumIntervalUs;
+
+	public VkLatencySleepModeInfoNV()
+	{
+		sType = VkStructureType.LatencySleepModeInfoNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkLatencySleepInfoNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkSemaphore signalSemaphore;
+	public ulong value;
+
+	public VkLatencySleepInfoNV()
+	{
+		sType = VkStructureType.LatencySleepInfoNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkSetLatencyMarkerInfoNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public ulong presentID;
+	public VkLatencyMarkerNV marker;
+
+	public VkSetLatencyMarkerInfoNV()
+	{
+		sType = VkStructureType.SetLatencyMarkerInfoNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkLatencyTimingsFrameReportNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public ulong presentID;
+	public ulong inputSampleTimeUs;
+	public ulong simStartTimeUs;
+	public ulong simEndTimeUs;
+	public ulong renderSubmitStartTimeUs;
+	public ulong renderSubmitEndTimeUs;
+	public ulong presentStartTimeUs;
+	public ulong presentEndTimeUs;
+	public ulong driverStartTimeUs;
+	public ulong driverEndTimeUs;
+	public ulong osRenderQueueStartTimeUs;
+	public ulong osRenderQueueEndTimeUs;
+	public ulong gpuRenderStartTimeUs;
+	public ulong gpuRenderEndTimeUs;
+
+	public VkLatencyTimingsFrameReportNV()
+	{
+		sType = VkStructureType.LatencyTimingsFrameReportNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkGetLatencyMarkerInfoNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkLatencyTimingsFrameReportNV* pTimings;
+
+	public VkGetLatencyMarkerInfoNV()
+	{
+		sType = VkStructureType.GetLatencyMarkerInfoNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkLatencySubmissionPresentIdNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public ulong presentID;
+
+	public VkLatencySubmissionPresentIdNV()
+	{
+		sType = VkStructureType.LatencySubmissionPresentIdNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkSwapchainLatencyCreateInfoNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 latencyModeEnable;
+
+	public VkSwapchainLatencyCreateInfoNV()
+	{
+		sType = VkStructureType.SwapchainLatencyCreateInfoNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkOutOfBandQueueTypeInfoNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkOutOfBandQueueTypeNV queueType;
+
+	public VkOutOfBandQueueTypeInfoNV()
+	{
+		sType = VkStructureType.OutOfBandQueueTypeInfoNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkLatencySurfaceCapabilitiesNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint presentModeCount;
+	public VkPresentModeKHR* pPresentModes;
+
+	public VkLatencySurfaceCapabilitiesNV()
+	{
+		sType = VkStructureType.LatencySurfaceCapabilitiesNV;
 	}
 }
 
@@ -12748,6 +12973,32 @@ public unsafe partial struct VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateF
 	public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT()
 	{
 		sType = VkStructureType.PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceLayeredDriverPropertiesMSFT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkLayeredDriverUnderlyingApiMSFT underlyingAPI;
+
+	public VkPhysicalDeviceLayeredDriverPropertiesMSFT()
+	{
+		sType = VkStructureType.PhysicalDeviceLayeredDriverPropertiesMSFT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 descriptorPoolOverallocation;
+
+	public VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV()
+	{
+		sType = VkStructureType.PhysicalDeviceDescriptorPoolOverallocationFeaturesNV;
 	}
 }
 
@@ -13317,6 +13568,47 @@ public unsafe partial struct VkAndroidHardwareBufferFormatProperties2ANDROID
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceExternalFormatResolveFeaturesANDROID
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 externalFormatResolve;
+
+	public VkPhysicalDeviceExternalFormatResolveFeaturesANDROID()
+	{
+		sType = VkStructureType.PhysicalDeviceExternalFormatResolveFeaturesAndroid;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceExternalFormatResolvePropertiesANDROID
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 nullColorAttachmentWithExternalFormatResolve;
+	public VkChromaLocation externalFormatResolveChromaOffsetX;
+	public VkChromaLocation externalFormatResolveChromaOffsetY;
+
+	public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID()
+	{
+		sType = VkStructureType.PhysicalDeviceExternalFormatResolvePropertiesAndroid;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkAndroidHardwareBufferFormatResolvePropertiesANDROID
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkFormat colorAttachmentFormat;
+
+	public VkAndroidHardwareBufferFormatResolvePropertiesANDROID()
+	{
+		sType = VkStructureType.AndroidHardwareBufferFormatResolvePropertiesAndroid;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkIOSSurfaceCreateInfoMVK
 {
 	internal VkStructureType sType;
@@ -13816,7 +14108,7 @@ public partial struct StdVideoEncodeH264RefListModEntry
 [StructLayout(LayoutKind.Sequential)]
 public partial struct StdVideoEncodeH264RefPicMarkingEntry
 {
-	public StdVideoH264MemMgmtControlOp operation;
+	public StdVideoH264MemMgmtControlOp memory_management_control_operation;
 	public ushort difference_of_pic_nums_minus1;
 	public ushort long_term_pic_num;
 	public ushort long_term_frame_idx;
@@ -13875,7 +14167,8 @@ public unsafe partial struct StdVideoEncodeH264SliceHeader
 	public StdVideoH264SliceType slice_type;
 	public sbyte slice_alpha_c0_offset_div2;
 	public sbyte slice_beta_offset_div2;
-	public ushort reserved1;
+	public sbyte slice_qp_delta;
+	public byte reserved1;
 	public StdVideoH264CabacInitIdc cabac_init_idc;
 	public StdVideoH264DisableDeblockingFilterIdc disable_deblocking_filter_idc;
 	public StdVideoEncodeH264WeightTable* pWeightTable;
@@ -14183,7 +14476,8 @@ public unsafe partial struct StdVideoEncodeH265SliceSegmentHeader
 	public sbyte slice_act_y_qp_offset;
 	public sbyte slice_act_cb_qp_offset;
 	public sbyte slice_act_cr_qp_offset;
-	public fixed byte reserved1[3];
+	public sbyte slice_qp_delta;
+	public ushort reserved1;
 	public StdVideoEncodeH265WeightTable* pWeightTable;
 }
 
@@ -14223,7 +14517,7 @@ public partial struct StdVideoEncodeH265PictureInfoFlags
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe partial struct StdVideoEncodeH265SliceSegmentLongTermRefPics
+public unsafe partial struct StdVideoEncodeH265LongTermRefPics
 {
 	public byte num_long_term_sps;
 	public byte num_long_term_pics;
@@ -14248,7 +14542,7 @@ public unsafe partial struct StdVideoEncodeH265PictureInfo
 	public fixed byte reserved1[7];
 	public StdVideoEncodeH265ReferenceListsInfo* pRefLists;
 	public StdVideoH265ShortTermRefPicSet* pShortTermRefPicSet;
-	public StdVideoEncodeH265SliceSegmentLongTermRefPics* pLongTermRefPics;
+	public StdVideoEncodeH265LongTermRefPics* pLongTermRefPics;
 }
 
 [StructLayout(LayoutKind.Sequential)]

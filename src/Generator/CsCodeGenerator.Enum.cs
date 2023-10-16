@@ -20,10 +20,10 @@ public static partial class CsCodeGenerator
         { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_FEATURES_KHR", "PhysicalDevicePresentIdFeaturesKHR" },
         { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES", "PhysicalDevice8BitStorageFeatures" },
         { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES", "PhysicalDevice16BitStorageFeatures" },
-        //{ "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_RDMA_FEATURES_NV", "PhysicalDeviceExternalMemoryRDMAFeaturesNV" },
+        {  "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO", "MemoryAllocateFlagsInfo" },
+        { "VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV", "LatencySubmissionPresentIdNV" },
 
         {  "VK_STENCIL_FRONT_AND_BACK", "FrontAndBack" },
-        {  "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO", "MemoryAllocateFlagsInfo" },
 
         // VkSampleCountFlagBits
         {  "VK_SAMPLE_COUNT_1_BIT", "Count1" },
@@ -152,6 +152,7 @@ public static partial class CsCodeGenerator
         { "VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV", "_256Triangles128Bytes" },
         { "VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV", "_1024Triangles128Bytes" },
 
+
         // Spvc
         //{  "SPVC_SUCCESS", "Success" },
     };
@@ -222,6 +223,7 @@ public static partial class CsCodeGenerator
         "hlsl",
         "msl",
         "json",
+        "msft",
     };
 
     private static readonly HashSet<string> s_enumConstants = new();

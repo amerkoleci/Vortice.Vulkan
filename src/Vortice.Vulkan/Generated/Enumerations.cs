@@ -1598,6 +1598,10 @@ public enum VkStructureType
 	PipelinePropertiesIdentifierEXT = 1000372000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT</unmanaged>
 	PhysicalDevicePipelinePropertiesFeaturesEXT = 1000372001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAME_BOUNDARY_FEATURES_EXT</unmanaged>
+	PhysicalDeviceFrameBoundaryFeaturesEXT = 1000375000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT</unmanaged>
+	FrameBoundaryEXT = 1000375001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT</unmanaged>
 	PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT = 1000376000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT</unmanaged>
@@ -1712,6 +1716,10 @@ public enum VkStructureType
 	PhysicalDeviceImageProcessingPropertiesQCOM = 1000440001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM</unmanaged>
 	ImageViewSampleWeightCreateInfoQCOM = 1000440002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_FEATURES_EXT</unmanaged>
+	PhysicalDeviceNestedCommandBufferFeaturesEXT = 1000451000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT</unmanaged>
+	PhysicalDeviceNestedCommandBufferPropertiesEXT = 1000451001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT</unmanaged>
 	ExternalMemoryAcquireUnmodifiedEXT = 1000453000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT</unmanaged>
@@ -1758,6 +1766,12 @@ public enum VkStructureType
 	PhysicalDeviceLegacyDitheringFeaturesEXT = 1000465000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES_EXT</unmanaged>
 	PhysicalDevicePipelineProtectedAccessFeaturesEXT = 1000466000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_FEATURES_ANDROID</unmanaged>
+	PhysicalDeviceExternalFormatResolveFeaturesAndroid = 1000468000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID</unmanaged>
+	PhysicalDeviceExternalFormatResolvePropertiesAndroid = 1000468001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID</unmanaged>
+	AndroidHardwareBufferFormatResolvePropertiesAndroid = 1000468002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES_KHR</unmanaged>
 	PhysicalDeviceMaintenance5FeaturesKHR = 1000470000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES_KHR</unmanaged>
@@ -1796,6 +1810,10 @@ public enum VkStructureType
 	PhysicalDeviceRayTracingInvocationReorderFeaturesNV = 1000490000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV</unmanaged>
 	PhysicalDeviceRayTracingInvocationReorderPropertiesNV = 1000490001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV</unmanaged>
+	PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV = 1000492000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV</unmanaged>
+	PhysicalDeviceExtendedSparseAddressSpacePropertiesNV = 1000492001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT</unmanaged>
 	PhysicalDeviceMutableDescriptorTypeFeaturesEXT = 1000351000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT</unmanaged>
@@ -1808,6 +1826,24 @@ public enum VkStructureType
 	PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT = 1000498000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_FEATURES_EXT</unmanaged>
 	PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT = 1000499000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV</unmanaged>
+	LatencySleepModeInfoNV = 1000505000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_LATENCY_SLEEP_INFO_NV</unmanaged>
+	LatencySleepInfoNV = 1000505001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SET_LATENCY_MARKER_INFO_NV</unmanaged>
+	SetLatencyMarkerInfoNV = 1000505002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_GET_LATENCY_MARKER_INFO_NV</unmanaged>
+	GetLatencyMarkerInfoNV = 1000505003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_LATENCY_TIMINGS_FRAME_REPORT_NV</unmanaged>
+	LatencyTimingsFrameReportNV = 1000505004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV</unmanaged>
+	LatencySubmissionPresentIdNV = 1000505005,
+	/// <unmanaged>VK_STRUCTURE_TYPE_OUT_OF_BAND_QUEUE_TYPE_INFO_NV</unmanaged>
+	OutOfBandQueueTypeInfoNV = 1000505006,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV</unmanaged>
+	SwapchainLatencyCreateInfoNV = 1000505007,
+	/// <unmanaged>VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV</unmanaged>
+	LatencySurfaceCapabilitiesNV = 1000505008,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_KHR</unmanaged>
 	PhysicalDeviceCooperativeMatrixFeaturesKHR = 1000506000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_KHR</unmanaged>
@@ -1848,6 +1884,10 @@ public enum VkStructureType
 	ExternalFormatQnx = 1000529003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX</unmanaged>
 	PhysicalDeviceExternalMemoryScreenBufferFeaturesQnx = 1000529004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT</unmanaged>
+	PhysicalDeviceLayeredDriverPropertiesMSFT = 1000530000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV</unmanaged>
+	PhysicalDeviceDescriptorPoolOverallocationFeaturesNV = 1000546000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES</unmanaged>
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES</unmanaged>
@@ -3847,6 +3887,8 @@ public enum VkSubpassContents
 	Inline = 0,
 	/// <unmanaged>VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS</unmanaged>
 	SecondaryCommandBuffers = 1,
+	/// <unmanaged>VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT</unmanaged>
+	InlineAndSecondaryCommandBuffersEXT = 1000451000,
 }
 
 [Flags]
@@ -5082,6 +5124,10 @@ public enum VkDescriptorPoolCreateFlags
 	UpdateAfterBind = 0x00000002,
 	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT</unmanaged>
 	HostOnlyEXT = 0x00000004,
+	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV</unmanaged>
+	AllowOverallocationSetsNV = 0x00000008,
+	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV</unmanaged>
+	AllowOverallocationPoolsNV = 0x00000010,
 	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT</unmanaged>
 	UpdateAfterBindEXT = UpdateAfterBind,
 	/// <unmanaged>VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_VALVE</unmanaged>
@@ -5774,6 +5820,8 @@ public enum VkDriverId
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA</unmanaged>
 	ImaginationOpenSourceMesa = 25,
+	/// <unmanaged>VK_DRIVER_ID_MESA_AGXV</unmanaged>
+	MesaAgxv = 26,
 	/// <unmanaged>VK_DRIVER_ID_AMD_PROPRIETARY_KHR</unmanaged>
 	AMDProprietaryKHR = AMDProprietary,
 	/// <unmanaged>VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR</unmanaged>
@@ -5859,6 +5907,8 @@ public enum VkResolveModeFlags
 	Min = 0x00000004,
 	/// <unmanaged>VK_RESOLVE_MODE_MAX_BIT</unmanaged>
 	Max = 0x00000008,
+	/// <unmanaged>VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_ANDROID</unmanaged>
+	ExternalFormatDownsampleAndroid = 0x00000010,
 	/// <unmanaged>VK_RESOLVE_MODE_NONE_KHR</unmanaged>
 	NoneKHR = None,
 	/// <unmanaged>VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR</unmanaged>
@@ -5971,6 +6021,8 @@ public enum VkRenderingFlags
 	Suspending = 0x00000002,
 	/// <unmanaged>VK_RENDERING_RESUMING_BIT</unmanaged>
 	Resuming = 0x00000004,
+	/// <unmanaged>VK_RENDERING_CONTENTS_INLINE_BIT_EXT</unmanaged>
+	ContentsInlineEXT = 0x00000010,
 	/// <unmanaged>VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT</unmanaged>
 	EnableLegacyDitheringEXT = 0x00000008,
 	/// <unmanaged>VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT_KHR</unmanaged>
@@ -6135,6 +6187,8 @@ public enum VkQueryResultStatusKHR
 	NotReady = 0,
 	/// <unmanaged>VK_QUERY_RESULT_STATUS_COMPLETE_KHR</unmanaged>
 	Complete = 1,
+	/// <unmanaged>VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR</unmanaged>
+	InsufficientBitstreamBufferRange = -1000299000,
 }
 
 [Flags]
@@ -7738,6 +7792,14 @@ public enum VkDeviceAddressBindingFlagsEXT
 	InternalObject = 0x00000001,
 }
 
+[Flags]
+public enum VkFrameBoundaryFlagsEXT
+{
+	None = 0,
+	/// <unmanaged>VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT</unmanaged>
+	FrameEnd = 0x00000001,
+}
+
 public enum VkMicromapTypeEXT
 {
 	/// <unmanaged>VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT</unmanaged>
@@ -7990,6 +8052,42 @@ public enum VkRayTracingInvocationReorderModeNV
 	ModeReorder = 1,
 }
 
+public enum VkLatencyMarkerNV
+{
+	/// <unmanaged>VK_LATENCY_MARKER_SIMULATION_START_NV</unmanaged>
+	VK_LATENCY_MARKER_SIMULATION_START_ = 0,
+	/// <unmanaged>VK_LATENCY_MARKER_SIMULATION_END_NV</unmanaged>
+	VK_LATENCY_MARKER_SIMULATION_END_ = 1,
+	/// <unmanaged>VK_LATENCY_MARKER_RENDERSUBMIT_START_NV</unmanaged>
+	VK_LATENCY_MARKER_RENDERSUBMIT_START_ = 2,
+	/// <unmanaged>VK_LATENCY_MARKER_RENDERSUBMIT_END_NV</unmanaged>
+	VK_LATENCY_MARKER_RENDERSUBMIT_END_ = 3,
+	/// <unmanaged>VK_LATENCY_MARKER_PRESENT_START_NV</unmanaged>
+	VK_LATENCY_MARKER_PRESENT_START_ = 4,
+	/// <unmanaged>VK_LATENCY_MARKER_PRESENT_END_NV</unmanaged>
+	VK_LATENCY_MARKER_PRESENT_END_ = 5,
+	/// <unmanaged>VK_LATENCY_MARKER_INPUT_SAMPLE_NV</unmanaged>
+	VK_LATENCY_MARKER_INPUT_SAMPLE_ = 6,
+	/// <unmanaged>VK_LATENCY_MARKER_TRIGGER_FLASH_NV</unmanaged>
+	VK_LATENCY_MARKER_TRIGGER_FLASH_ = 7,
+	/// <unmanaged>VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_START_NV</unmanaged>
+	VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_START_ = 8,
+	/// <unmanaged>VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_END_NV</unmanaged>
+	VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_END_ = 9,
+	/// <unmanaged>VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_START_NV</unmanaged>
+	VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_START_ = 10,
+	/// <unmanaged>VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_END_NV</unmanaged>
+	VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_END_ = 11,
+}
+
+public enum VkOutOfBandQueueTypeNV
+{
+	/// <unmanaged>VK_OUT_OF_BAND_QUEUE_TYPE_RENDER_NV</unmanaged>
+	TypeRender = 0,
+	/// <unmanaged>VK_OUT_OF_BAND_QUEUE_TYPE_PRESENT_NV</unmanaged>
+	TypePresent = 1,
+}
+
 public enum VkBlockMatchWindowCompareModeQCOM
 {
 	/// <unmanaged>VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM</unmanaged>
@@ -8012,6 +8110,16 @@ public enum VkCubicFilterWeightsQCOM
 	VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM = 3,
 	/// <unmanaged>VK_CUBIC_FILTER_WEIGHTS_MAX_ENUM_QCOM</unmanaged>
 	VK_CUBIC_FILTER_WEIGHTS_MAX_ENUM_QCOM = 0x7FFFFFFF,
+}
+
+public enum VkLayeredDriverUnderlyingApiMSFT
+{
+	/// <unmanaged>VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT</unmanaged>
+	VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT = 0,
+	/// <unmanaged>VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT</unmanaged>
+	VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT = 1,
+	/// <unmanaged>VK_LAYERED_DRIVER_UNDERLYING_API_MAX_ENUM_MSFT</unmanaged>
+	VK_LAYERED_DRIVER_UNDERLYING_API_MAX_ENUM_MSFT = 0x7FFFFFFF,
 }
 
 public enum VkBuildAccelerationStructureModeKHR
@@ -8084,6 +8192,8 @@ public enum VkVideoEncodeCapabilityFlagsKHR
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR</unmanaged>
 	PrecedingExternallyEncodedBytes = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR</unmanaged>
+	InsufficientBitstreamBufferRangeDetection = 0x00000002,
 }
 
 [Flags]
@@ -8206,6 +8316,10 @@ public enum VkVideoEncodeH264StdFlagsEXT
 	DeblockingFilterEnabled = 0x00010000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT</unmanaged>
 	DeblockingFilterPartial = 0x00020000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SLICE_QP_DELTA_BIT_EXT</unmanaged>
+	SliceQpDelta = 0x00080000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DIFFERENT_SLICE_QP_DELTA_BIT_EXT</unmanaged>
+	DifferentSliceQpDelta = 0x00100000,
 }
 
 [Flags]
@@ -8292,6 +8406,10 @@ public enum VkVideoEncodeH265StdFlagsEXT
 	DependentSliceSegmentsEnabledFlagSet = 0x00020000,
 	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT</unmanaged>
 	DependentSliceSegmentFlagSet = 0x00040000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SLICE_QP_DELTA_BIT_EXT</unmanaged>
+	SliceQpDelta = 0x00080000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DIFFERENT_SLICE_QP_DELTA_BIT_EXT</unmanaged>
+	DifferentSliceQpDelta = 0x00100000,
 }
 
 [Flags]
