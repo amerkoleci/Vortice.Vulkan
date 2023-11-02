@@ -195,27 +195,12 @@ public unsafe static class Interop
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static ref T AsRef<T>(nint source) => ref Unsafe.AsRef<T>((void*)source);
 
-    /// <summary>Reinterprets the given native unsigned integer as a reference.</summary>
-    /// <typeparam name="T">The type of the reference.</typeparam>
-    /// <param name="source">The native unsigned integer to reinterpret.</param>
-    /// <returns>A reference to a value of type <typeparamref name="T" />.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref T AsRef<T>(nuint source) => ref Unsafe.AsRef<T>((void*)source);
-
     /// <inheritdoc cref="Unsafe.AsRef{T}(in T)" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static ref T AsRef<T>(in T source) => ref Unsafe.AsRef(in source);
 
     /// <inheritdoc cref="MemoryMarshal.CreateReadOnlySpan{T}(ref T, int)" />
     public static ReadOnlySpan<T> CreateReadOnlySpan<T>(scoped in T reference, int length) => MemoryMarshal.CreateReadOnlySpan(ref AsRef(in reference), length);
-
-    // <summary>Returns a pointer to the element of the span at index zero.</summary>
-    /// <typeparam name="T">The type of items in <paramref name="span" />.</typeparam>
-    /// <param name="span">The span from which the pointer is retrieved.</param>
-    /// <returns>A pointer to the item at index zero of <paramref name="span" />.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T* GetPointer<T>(this Span<T> span)
-        where T : unmanaged => AsPointer(ref span.GetReference());
 
     /// <summary>Returns a pointer to the element of the span at index zero.</summary>
     /// <typeparam name="T">The type of items in <paramref name="span" />.</typeparam>
@@ -224,10 +209,6 @@ public unsafe static class Interop
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T* GetPointer<T>(this ReadOnlySpan<T> span)
         where T : unmanaged => AsPointer(ref AsRef(in span.GetReference()));
-
-    /// <inheritdoc cref="MemoryMarshal.GetReference{T}(Span{T})" />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref T GetReference<T>(this Span<T> span) => ref MemoryMarshal.GetReference(span);
 
     /// <inheritdoc cref="MemoryMarshal.GetReference{T}(ReadOnlySpan{T})" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

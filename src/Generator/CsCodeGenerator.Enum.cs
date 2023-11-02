@@ -448,7 +448,9 @@ public static partial class CsCodeGenerator
                         }
                         else if (enumItem.ValueExpression is CppBinaryExpression binaryExpression)
                         {
-                            throw new NotImplementedException();
+                            StringBuilder builder = new();
+                            FormatCppBinaryExpression(binaryExpression, builder, enumNamePrefix);
+                            writer.WriteLine($"{enumItemName} = {builder},");
                         }
                         else
                         {
@@ -612,6 +614,40 @@ public static partial class CsCodeGenerator
             }
         }
     }
+
+    private static void FormatExpression(CppExpression expression, StringBuilder builder, string enumNamePrefix)
+    {
+        if (expression is CppRawExpression rawExpression)
+        {
+            builder.Append(GetPrettyEnumName(rawExpression.Text, enumNamePrefix));
+        }
+        else if (expression is CppLiteralExpression literalExpression)
+        {
+            builder.Append(literalExpression.Value);
+        }
+        else if (expression is CppBinaryExpression binaryExpression)
+        {
+            FormatCppBinaryExpression(binaryExpression, builder, enumNamePrefix);
+        }
+    }
+
+    private static void FormatCppBinaryExpression(CppBinaryExpression expression, StringBuilder builder, string enumNamePrefix)
+    {
+        if (expression.Arguments != null && expression.Arguments.Count > 0)
+        {
+            FormatExpression(expression.Arguments[0], builder, enumNamePrefix);
+        }
+
+        builder.Append(' ');
+        builder.Append(expression.Operator);
+        builder.Append(' ');
+
+        if (expression.Arguments != null && expression.Arguments.Count > 1)
+        {
+            FormatExpression(expression.Arguments[1], builder, enumNamePrefix);
+        }
+    }
+
 
     private static string GetEnumItemName(string enumName, string cppEnumItemName, string enumNamePrefix)
     {

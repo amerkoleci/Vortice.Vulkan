@@ -1,4 +1,4 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Reflection;
@@ -9,6 +9,11 @@ namespace Vortice.Vulkan;
 
 unsafe partial class Vma
 {
+    /// <summary>
+    /// Raised whenever a native library is loaded by VMA. Handlers can be added to this event to customize how libraries are loaded, and they will be used first whenever a new native library is being resolved.
+    /// </summary>
+    public static event DllImportResolver? ResolveLibrary;
+
     private const string LibName = "vma";
 
     static Vma()
@@ -18,12 +23,46 @@ unsafe partial class Vma
 
     private static nint OnDllImport(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
     {
-        if (libraryName.Equals(LibName) && TryResolveVMA(assembly, searchPath, out nint nativeLibrary))
+        if (TryResolveLibrary(libraryName, assembly, searchPath, out nint nativeLibrary))
+        {
+            return nativeLibrary;
+        }
+
+        if (libraryName.Equals(LibName) && TryResolveVMA(assembly, searchPath, out nativeLibrary))
         {
             return nativeLibrary;
         }
 
         return 0;
+    }
+
+    /// <summary>Tries to resolve a native library using the handlers for the <see cref="ResolveLibrary"/> event.</summary>
+    /// <param name="libraryName">The native library to resolve.</param>
+    /// <param name="assembly">The assembly requesting the resolution.</param>
+    /// <param name="searchPath">The <see cref="DllImportSearchPath"/> value on the P/Invoke or assembly, or <see langword="null"/>.</param>
+    /// <param name="nativeLibrary">The loaded library, if one was resolved.</param>
+    /// <returns>Whether or not the requested library was successfully loaded.</returns>
+    private static bool TryResolveLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath, out nint nativeLibrary)
+    {
+        DllImportResolver? resolveLibrary = ResolveLibrary;
+
+        if (resolveLibrary is not null)
+        {
+            Delegate[] resolvers = resolveLibrary.GetInvocationList();
+
+            foreach (DllImportResolver resolver in resolvers)
+            {
+                nativeLibrary = resolver(libraryName, assembly, searchPath);
+
+                if (nativeLibrary != 0)
+                {
+                    return true;
+                }
+            }
+        }
+
+        nativeLibrary = 0;
+        return false;
     }
 
     private static bool TryResolveVMA(Assembly assembly, DllImportSearchPath? searchPath, out nint nativeLibrary)
@@ -137,8 +176,8 @@ unsafe partial class Vma
         return vmaCreateBuffer(allocator, pBufferCreateInfo, pAllocationCreateInfo, out buffer, out allocation, null);
     }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern VkResult vmaCreateBuffer(
+    [LibraryImport(LibName)]
+    public static partial VkResult vmaCreateBuffer(
         VmaAllocator allocator,
         VkBufferCreateInfo* pBufferCreateInfo,
         VmaAllocationCreateInfo* pAllocationCreateInfo,
@@ -146,8 +185,8 @@ unsafe partial class Vma
         out VmaAllocation allocation,
         VmaAllocationInfo* pAllocationInfo);
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern VkResult vmaCreateBufferWithAlignment(
+    [LibraryImport(LibName)]
+    public static partial VkResult vmaCreateBufferWithAlignment(
         VmaAllocator allocator,
         VkBufferCreateInfo* pBufferCreateInfo,
         VmaAllocationCreateInfo* pAllocationCreateInfo,
@@ -193,8 +232,8 @@ unsafe partial class Vma
         return vmaCreateImage(allocator, pImageCreateInfo, pAllocationCreateInfo, out image, out allocation, null);
     }
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern VkResult vmaCreateImage(
+    [LibraryImport(LibName)]
+    public static partial VkResult vmaCreateImage(
         VmaAllocator allocator,
         VkImageCreateInfo* pImageCreateInfo,
         VmaAllocationCreateInfo* pAllocationCreateInfo,

@@ -15,58 +15,58 @@ using System.Diagnostics.CodeAnalysis;
 namespace Vortice.Vulkan;
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VmaDeviceMemoryCallbacks
+public unsafe partial struct VmaDeviceMemoryCallbacks
 {
-	public unsafe delegate* unmanaged<VmaAllocator, uint, VkDeviceMemory, ulong, void*, void> pfnAllocate;
-	public unsafe delegate* unmanaged<VmaAllocator, uint, VkDeviceMemory, ulong, void*, void> pfnFree;
-	public unsafe void* pUserData;
+	public delegate* unmanaged<VmaAllocator, uint, VkDeviceMemory, ulong, void*, void> pfnAllocate;
+	public delegate* unmanaged<VmaAllocator, uint, VkDeviceMemory, ulong, void*, void> pfnFree;
+	public void* pUserData;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VmaVulkanFunctions
+public unsafe partial struct VmaVulkanFunctions
 {
-	public unsafe delegate* unmanaged<VkInstance, sbyte*, IntPtr> vkGetInstanceProcAddr;
-	public unsafe delegate* unmanaged<VkDevice, sbyte*, IntPtr> vkGetDeviceProcAddr;
-	public unsafe delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void> vkGetPhysicalDeviceProperties;
-	public unsafe delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties*, void> vkGetPhysicalDeviceMemoryProperties;
-	public unsafe delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult> vkAllocateMemory;
-	public unsafe delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void> vkFreeMemory;
-	public unsafe delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void*, VkResult> vkMapMemory;
-	public unsafe delegate* unmanaged<VkDevice, VkDeviceMemory, void> vkUnmapMemory;
-	public unsafe delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkFlushMappedMemoryRanges;
-	public unsafe delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkInvalidateMappedMemoryRanges;
-	public unsafe delegate* unmanaged<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult> vkBindBufferMemory;
-	public unsafe delegate* unmanaged<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult> vkBindImageMemory;
-	public unsafe delegate* unmanaged<VkDevice, VkBuffer, VkMemoryRequirements*, void> vkGetBufferMemoryRequirements;
-	public unsafe delegate* unmanaged<VkDevice, VkImage, VkMemoryRequirements*, void> vkGetImageMemoryRequirements;
-	public unsafe delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult> vkCreateBuffer;
-	public unsafe delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void> vkDestroyBuffer;
-	public unsafe delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult> vkCreateImage;
-	public unsafe delegate* unmanaged<VkDevice, VkImage, VkAllocationCallbacks*, void> vkDestroyImage;
-	public unsafe delegate* unmanaged<VkCommandBuffer, VkBuffer, VkBuffer, uint, VkBufferCopy*, void> vkCmdCopyBuffer;
-	public unsafe delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2KHR;
-	public unsafe delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2KHR;
-	public unsafe delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2KHR;
-	public unsafe delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2KHR;
-	public unsafe delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties2*, void> vkGetPhysicalDeviceMemoryProperties2KHR;
-	public unsafe delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirements;
-	public unsafe delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirements;
+	public delegate* unmanaged<VkInstance, sbyte*, IntPtr> vkGetInstanceProcAddr;
+	public delegate* unmanaged<VkDevice, sbyte*, IntPtr> vkGetDeviceProcAddr;
+	public delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void> vkGetPhysicalDeviceProperties;
+	public delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties*, void> vkGetPhysicalDeviceMemoryProperties;
+	public delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult> vkAllocateMemory;
+	public delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void> vkFreeMemory;
+	public delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void*, VkResult> vkMapMemory;
+	public delegate* unmanaged<VkDevice, VkDeviceMemory, void> vkUnmapMemory;
+	public delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkFlushMappedMemoryRanges;
+	public delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkInvalidateMappedMemoryRanges;
+	public delegate* unmanaged<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult> vkBindBufferMemory;
+	public delegate* unmanaged<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult> vkBindImageMemory;
+	public delegate* unmanaged<VkDevice, VkBuffer, VkMemoryRequirements*, void> vkGetBufferMemoryRequirements;
+	public delegate* unmanaged<VkDevice, VkImage, VkMemoryRequirements*, void> vkGetImageMemoryRequirements;
+	public delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult> vkCreateBuffer;
+	public delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void> vkDestroyBuffer;
+	public delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult> vkCreateImage;
+	public delegate* unmanaged<VkDevice, VkImage, VkAllocationCallbacks*, void> vkDestroyImage;
+	public delegate* unmanaged<VkCommandBuffer, VkBuffer, VkBuffer, uint, VkBufferCopy*, void> vkCmdCopyBuffer;
+	public delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2KHR;
+	public delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2KHR;
+	public delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2KHR;
+	public delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2KHR;
+	public delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties2*, void> vkGetPhysicalDeviceMemoryProperties2KHR;
+	public delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirements;
+	public delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirements;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VmaAllocatorCreateInfo
+public unsafe partial struct VmaAllocatorCreateInfo
 {
 	public VmaAllocatorCreateFlags flags;
 	public VkPhysicalDevice physicalDevice;
 	public VkDevice device;
 	public ulong preferredLargeHeapBlockSize;
-	public unsafe VkAllocationCallbacks* pAllocationCallbacks;
-	public unsafe VmaDeviceMemoryCallbacks* pDeviceMemoryCallbacks;
-	public unsafe ulong* pHeapSizeLimit;
-	internal unsafe VmaVulkanFunctions* pVulkanFunctions;
+	public VkAllocationCallbacks* pAllocationCallbacks;
+	public VmaDeviceMemoryCallbacks* pDeviceMemoryCallbacks;
+	public ulong* pHeapSizeLimit;
+	internal VmaVulkanFunctions* pVulkanFunctions;
 	public VkInstance instance;
 	public VkVersion vulkanApiVersion;
-	public unsafe VkExternalMemoryHandleTypeFlagsKHR* pTypeExternalMemoryHandleTypes;
+	public VkExternalMemoryHandleTypeFlagsKHR* pTypeExternalMemoryHandleTypes;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -204,7 +204,7 @@ public partial struct VmaBudget
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VmaAllocationCreateInfo
+public unsafe partial struct VmaAllocationCreateInfo
 {
 	public VmaAllocationCreateFlags flags;
 	public VmaMemoryUsage usage;
@@ -212,12 +212,12 @@ public partial struct VmaAllocationCreateInfo
 	public VkMemoryPropertyFlags preferredFlags;
 	public uint memoryTypeBits;
 	public VmaPool pool;
-	public unsafe void* pUserData;
+	public void* pUserData;
 	public float priority;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VmaPoolCreateInfo
+public unsafe partial struct VmaPoolCreateInfo
 {
 	public uint memoryTypeIndex;
 	public VmaPoolCreateFlags flags;
@@ -226,19 +226,19 @@ public partial struct VmaPoolCreateInfo
 	public nuint maxBlockCount;
 	public float priority;
 	public ulong minAllocationAlignment;
-	public unsafe void* pMemoryAllocateNext;
+	public void* pMemoryAllocateNext;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VmaAllocationInfo
+public unsafe partial struct VmaAllocationInfo
 {
 	public uint memoryType;
 	public VkDeviceMemory deviceMemory;
 	public ulong offset;
 	public ulong size;
-	public unsafe void* pMappedData;
-	public unsafe void* pUserData;
-	public unsafe sbyte* pName;
+	public void* pMappedData;
+	public void* pUserData;
+	public sbyte* pName;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -259,10 +259,10 @@ public partial struct VmaDefragmentationMove
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VmaDefragmentationPassMoveInfo
+public unsafe partial struct VmaDefragmentationPassMoveInfo
 {
 	public uint moveCount;
-	public unsafe VmaDefragmentationMove* pMoves;
+	public VmaDefragmentationMove* pMoves;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -275,27 +275,27 @@ public partial struct VmaDefragmentationStats
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VmaVirtualBlockCreateInfo
+public unsafe partial struct VmaVirtualBlockCreateInfo
 {
 	public ulong size;
 	public VmaVirtualBlockCreateFlags flags;
-	public unsafe VkAllocationCallbacks* pAllocationCallbacks;
+	public VkAllocationCallbacks* pAllocationCallbacks;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VmaVirtualAllocationCreateInfo
+public unsafe partial struct VmaVirtualAllocationCreateInfo
 {
 	public ulong size;
 	public ulong alignment;
 	public VmaVirtualAllocationCreateFlags flags;
-	public unsafe void* pUserData;
+	public void* pUserData;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VmaVirtualAllocationInfo
+public unsafe partial struct VmaVirtualAllocationInfo
 {
 	public ulong offset;
 	public ulong size;
-	public unsafe void* pUserData;
+	public void* pUserData;
 }
 

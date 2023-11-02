@@ -34,7 +34,7 @@
     <Owners>Amer Koleci</Owners>
     <Company>Amer Koleci</Company>
     <Product>Vortice.Vulkan</Product>
-    <Copyright>Copyright © Amer Koleci and Contributors</Copyright>
+    <Copyright>Copyright (c) Amer Koleci and Contributors</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>vulkan vulkan-api gpu graphics gamedev core standard game vortice</PackageTags>

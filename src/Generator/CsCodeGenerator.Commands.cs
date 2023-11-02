@@ -308,9 +308,16 @@ public static partial class CsCodeGenerator
 
         if (!_options.GenerateFunctionPointers)
         {
-            modifier += " extern";
-            writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = \"{cppFunction.Name}\")]");
-
+            if (_options.GenerateLibraryImport)
+            {
+                modifier += " partial";
+                writer.WriteLine($"[LibraryImport(LibName, EntryPoint = \"{cppFunction.Name}\")]");
+            }
+            else
+            {
+                modifier += " extern";
+                writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = \"{cppFunction.Name}\")]");
+            }
 
             writer.WriteLine($"{modifier} {returnCsName} {functionName}({argumentsString});");
         }
