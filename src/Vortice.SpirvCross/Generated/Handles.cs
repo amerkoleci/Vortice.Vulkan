@@ -22,6 +22,7 @@ public readonly partial struct spvc_context : IEquatable<spvc_context>
 	public bool IsNotNull => Handle != 0;
 	public static spvc_context Null => new(0);
 	public static implicit operator spvc_context(nint handle) => new(handle);
+	public static implicit operator nint(spvc_context handle) => handle.Handle;
 	public static bool operator ==(spvc_context left, spvc_context right) => left.Handle == right.Handle;
 	public static bool operator !=(spvc_context left, spvc_context right) => left.Handle != right.Handle;
 	public static bool operator ==(spvc_context left, nint right) => left.Handle == right;
@@ -43,6 +44,7 @@ public readonly partial struct spvc_parsed_ir : IEquatable<spvc_parsed_ir>
 	public bool IsNotNull => Handle != 0;
 	public static spvc_parsed_ir Null => new(0);
 	public static implicit operator spvc_parsed_ir(nint handle) => new(handle);
+	public static implicit operator nint(spvc_parsed_ir handle) => handle.Handle;
 	public static bool operator ==(spvc_parsed_ir left, spvc_parsed_ir right) => left.Handle == right.Handle;
 	public static bool operator !=(spvc_parsed_ir left, spvc_parsed_ir right) => left.Handle != right.Handle;
 	public static bool operator ==(spvc_parsed_ir left, nint right) => left.Handle == right;
@@ -64,6 +66,7 @@ public readonly partial struct spvc_compiler : IEquatable<spvc_compiler>
 	public bool IsNotNull => Handle != 0;
 	public static spvc_compiler Null => new(0);
 	public static implicit operator spvc_compiler(nint handle) => new(handle);
+	public static implicit operator nint(spvc_compiler handle) => handle.Handle;
 	public static bool operator ==(spvc_compiler left, spvc_compiler right) => left.Handle == right.Handle;
 	public static bool operator !=(spvc_compiler left, spvc_compiler right) => left.Handle != right.Handle;
 	public static bool operator ==(spvc_compiler left, nint right) => left.Handle == right;
@@ -85,6 +88,7 @@ public readonly partial struct spvc_compiler_options : IEquatable<spvc_compiler_
 	public bool IsNotNull => Handle != 0;
 	public static spvc_compiler_options Null => new(0);
 	public static implicit operator spvc_compiler_options(nint handle) => new(handle);
+	public static implicit operator nint(spvc_compiler_options handle) => handle.Handle;
 	public static bool operator ==(spvc_compiler_options left, spvc_compiler_options right) => left.Handle == right.Handle;
 	public static bool operator !=(spvc_compiler_options left, spvc_compiler_options right) => left.Handle != right.Handle;
 	public static bool operator ==(spvc_compiler_options left, nint right) => left.Handle == right;
@@ -106,6 +110,7 @@ public readonly partial struct spvc_resources : IEquatable<spvc_resources>
 	public bool IsNotNull => Handle != 0;
 	public static spvc_resources Null => new(0);
 	public static implicit operator spvc_resources(nint handle) => new(handle);
+	public static implicit operator nint(spvc_resources handle) => handle.Handle;
 	public static bool operator ==(spvc_resources left, spvc_resources right) => left.Handle == right.Handle;
 	public static bool operator !=(spvc_resources left, spvc_resources right) => left.Handle != right.Handle;
 	public static bool operator ==(spvc_resources left, nint right) => left.Handle == right;
@@ -127,6 +132,7 @@ public readonly partial struct spvc_type : IEquatable<spvc_type>
 	public bool IsNotNull => Handle != 0;
 	public static spvc_type Null => new(0);
 	public static implicit operator spvc_type(nint handle) => new(handle);
+	public static implicit operator nint(spvc_type handle) => handle.Handle;
 	public static bool operator ==(spvc_type left, spvc_type right) => left.Handle == right.Handle;
 	public static bool operator !=(spvc_type left, spvc_type right) => left.Handle != right.Handle;
 	public static bool operator ==(spvc_type left, nint right) => left.Handle == right;
@@ -148,6 +154,7 @@ public readonly partial struct spvc_constant : IEquatable<spvc_constant>
 	public bool IsNotNull => Handle != 0;
 	public static spvc_constant Null => new(0);
 	public static implicit operator spvc_constant(nint handle) => new(handle);
+	public static implicit operator nint(spvc_constant handle) => handle.Handle;
 	public static bool operator ==(spvc_constant left, spvc_constant right) => left.Handle == right.Handle;
 	public static bool operator !=(spvc_constant left, spvc_constant right) => left.Handle != right.Handle;
 	public static bool operator ==(spvc_constant left, nint right) => left.Handle == right;
@@ -169,6 +176,7 @@ public readonly partial struct spvc_set : IEquatable<spvc_set>
 	public bool IsNotNull => Handle != 0;
 	public static spvc_set Null => new(0);
 	public static implicit operator spvc_set(nint handle) => new(handle);
+	public static implicit operator nint(spvc_set handle) => handle.Handle;
 	public static bool operator ==(spvc_set left, spvc_set right) => left.Handle == right.Handle;
 	public static bool operator !=(spvc_set left, spvc_set right) => left.Handle != right.Handle;
 	public static bool operator ==(spvc_set left, nint right) => left.Handle == right;

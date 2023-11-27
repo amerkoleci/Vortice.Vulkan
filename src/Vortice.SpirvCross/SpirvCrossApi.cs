@@ -148,7 +148,7 @@ unsafe partial class SpirvCrossApi
     public static string? spvc_context_get_last_error_string(spvc_context context)
     {
         sbyte* native = spvc_context_get_last_error_stringPrivate(context);
-        return Utils.GetString(Utils.GetUtf8Span(native));
+        return Utils.GetString(GetUtf8Span(native));
     }
     #endregion
 
@@ -220,6 +220,15 @@ unsafe partial class SpirvCrossApi
         return GetUtf8Span(spvc_compiler_get_namePrivate(compiler, id)).GetString();
     }
     #endregion
+
+    [LibraryImport(LibName, EntryPoint = "spvc_compiler_get_combined_image_samplers")]
+    public static partial spvc_result spvc_compiler_get_combined_image_samplers(spvc_compiler compiler, out spvc_combined_image_sampler* samplers, out nuint num_samplers);
+
+    public static ReadOnlySpan<spvc_combined_image_sampler> spvc_compiler_get_combined_image_samplers(spvc_compiler compiler)
+    {
+        spvc_compiler_get_combined_image_samplers(compiler, out spvc_combined_image_sampler* pSamplers, out nuint count).CheckResult();
+        return new ReadOnlySpan<spvc_combined_image_sampler>(pSamplers, (int)count);
+    }
 
     #region Resources
     [DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_resources_get_resource_list_for_type")]

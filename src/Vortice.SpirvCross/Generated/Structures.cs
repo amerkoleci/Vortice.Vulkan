@@ -16,12 +16,12 @@ using Vortice.SPIRV;
 namespace Vortice.SpirvCross;
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct spvc_reflected_resource
+public unsafe partial struct spvc_reflected_resource
 {
 	public uint id;
 	public uint base_type_id;
 	public uint type_id;
-	public unsafe sbyte* name;
+	public sbyte* name;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -33,10 +33,10 @@ public partial struct spvc_reflected_builtin_resource
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct spvc_entry_point
+public unsafe partial struct spvc_entry_point
 {
 	public SpvExecutionModel execution_model;
-	public unsafe sbyte* name;
+	public sbyte* name;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -72,10 +72,10 @@ public partial struct spvc_hlsl_root_constants
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct spvc_hlsl_vertex_attribute_remap
+public unsafe partial struct spvc_hlsl_vertex_attribute_remap
 {
 	public uint location;
-	public unsafe sbyte* semantic;
+	public sbyte* semantic;
 }
 
 [StructLayout(LayoutKind.Sequential)]

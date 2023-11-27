@@ -448,9 +448,16 @@ public static partial class CsCodeGenerator
                         }
                         else if (enumItem.ValueExpression is CppBinaryExpression binaryExpression)
                         {
-                            StringBuilder builder = new();
-                            FormatCppBinaryExpression(binaryExpression, builder, enumNamePrefix);
-                            writer.WriteLine($"{enumItemName} = {builder},");
+                            if (cppEnum.Name == "spvc_compiler_option")
+                            {
+                                writer.WriteLine($"{enumItemName} = {enumItem.Value},");
+                            }
+                            else
+                            {
+                                StringBuilder builder = new();
+                                FormatCppBinaryExpression(binaryExpression, builder, enumNamePrefix);
+                                writer.WriteLine($"{enumItemName} = {builder},");
+                            }
                         }
                         else
                         {

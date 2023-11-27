@@ -124,6 +124,7 @@ public unsafe class Tests
 
         spvc_compiler_create_shader_resources(compiler_glsl, out spvc_resources resources);
         spvc_resources_get_resource_list_for_type(resources, SPVC_RESOURCE_TYPE_SAMPLED_IMAGE, out spvc_reflected_resource* resourceList, out nuint resourceSize).CheckResult();
+        ReadOnlySpan<spvc_combined_image_sampler> samplers = spvc_compiler_get_combined_image_samplers(compiler_glsl);
 
         Assert.AreEqual(resourceSize, (nuint)1);
 
