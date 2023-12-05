@@ -7723,6 +7723,19 @@ public unsafe partial struct VkHdrMetadataEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 relaxedLineRasterization;
+
+	public VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG()
+	{
+		sType = VkStructureType.PhysicalDeviceRelaxedLineRasterizationFeaturesIMG;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkDebugUtilsLabelEXT
 {
 	internal VkStructureType sType;
@@ -10239,6 +10252,85 @@ public unsafe partial struct VkDeviceDiagnosticsConfigCreateInfoNV
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkCudaModuleCreateInfoNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public nuint dataSize;
+	public void* pData;
+
+	public VkCudaModuleCreateInfoNV()
+	{
+		sType = VkStructureType.CudaModuleCreateInfoNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkCudaFunctionCreateInfoNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkCudaModuleNV module;
+	public sbyte* pName;
+
+	public VkCudaFunctionCreateInfoNV()
+	{
+		sType = VkStructureType.CudaFunctionCreateInfoNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkCudaLaunchInfoNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkCudaFunctionNV function;
+	public uint gridDimX;
+	public uint gridDimY;
+	public uint gridDimZ;
+	public uint blockDimX;
+	public uint blockDimY;
+	public uint blockDimZ;
+	public uint sharedMemBytes;
+	public nuint paramCount;
+	public void** pParams;
+	public nuint extraCount;
+	public void** pExtras;
+
+	public VkCudaLaunchInfoNV()
+	{
+		sType = VkStructureType.CudaLaunchInfoNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceCudaKernelLaunchFeaturesNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 cudaKernelLaunchFeatures;
+
+	public VkPhysicalDeviceCudaKernelLaunchFeaturesNV()
+	{
+		sType = VkStructureType.PhysicalDeviceCudaKernelLaunchFeaturesNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceCudaKernelLaunchPropertiesNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint computeCapabilityMinor;
+	public uint computeCapabilityMajor;
+
+	public VkPhysicalDeviceCudaKernelLaunchPropertiesNV()
+	{
+		sType = VkStructureType.PhysicalDeviceCudaKernelLaunchPropertiesNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkQueryLowLatencySupportNV
 {
 	internal VkStructureType sType;
@@ -11656,6 +11748,19 @@ public unsafe partial struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWE
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 clusterShadingRate;
+
+	public VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI()
+	{
+		sType = VkStructureType.PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkPhysicalDeviceBorderColorSwizzleFeaturesEXT
 {
 	internal VkStructureType sType;
@@ -11708,6 +11813,45 @@ public unsafe partial struct VkPhysicalDeviceShaderCorePropertiesARM
 	public VkPhysicalDeviceShaderCorePropertiesARM()
 	{
 		sType = VkStructureType.PhysicalDeviceShaderCorePropertiesARM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkDeviceQueueShaderCoreControlCreateInfoARM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint shaderCoreCount;
+
+	public VkDeviceQueueShaderCoreControlCreateInfoARM()
+	{
+		sType = VkStructureType.DeviceQueueShaderCoreControlCreateInfoARM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceSchedulingControlsFeaturesARM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 schedulingControls;
+
+	public VkPhysicalDeviceSchedulingControlsFeaturesARM()
+	{
+		sType = VkStructureType.PhysicalDeviceSchedulingControlsFeaturesARM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceSchedulingControlsPropertiesARM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkPhysicalDeviceSchedulingControlsFlagsARM schedulingControlsFlags;
+
+	public VkPhysicalDeviceSchedulingControlsPropertiesARM()
+	{
+		sType = VkStructureType.PhysicalDeviceSchedulingControlsPropertiesARM;
 	}
 }
 
@@ -11802,6 +11946,74 @@ public unsafe partial struct VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT
 	public VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT()
 	{
 		sType = VkStructureType.PhysicalDeviceNonSeamlessCubeMapFeaturesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceRenderPassStripedFeaturesARM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 renderPassStriped;
+
+	public VkPhysicalDeviceRenderPassStripedFeaturesARM()
+	{
+		sType = VkStructureType.PhysicalDeviceRenderPassStripedFeaturesARM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceRenderPassStripedPropertiesARM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkExtent2D renderPassStripeGranularity;
+	public uint maxRenderPassStripes;
+
+	public VkPhysicalDeviceRenderPassStripedPropertiesARM()
+	{
+		sType = VkStructureType.PhysicalDeviceRenderPassStripedPropertiesARM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkRenderPassStripeInfoARM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkRect2D stripeArea;
+
+	public VkRenderPassStripeInfoARM()
+	{
+		sType = VkStructureType.RenderPassStripeInfoARM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkRenderPassStripeBeginInfoARM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint stripeInfoCount;
+	public VkRenderPassStripeInfoARM* pStripeInfos;
+
+	public VkRenderPassStripeBeginInfoARM()
+	{
+		sType = VkStructureType.RenderPassStripeBeginInfoARM;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkRenderPassStripeSubmitInfoARM
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint stripeSemaphoreInfoCount;
+	public VkSemaphoreSubmitInfo* pStripeSemaphoreInfos;
+
+	public VkRenderPassStripeSubmitInfoARM()
+	{
+		sType = VkStructureType.RenderPassStripeSubmitInfoARM;
 	}
 }
 
@@ -12629,6 +12841,30 @@ public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpacePropertie
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkLayerSettingEXT
+{
+	public sbyte* pLayerName;
+	public sbyte* pSettingName;
+	public VkLayerSettingTypeEXT type;
+	public uint valueCount;
+	public void* pValues;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkLayerSettingsCreateInfoEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint settingCount;
+	public VkLayerSettingEXT* pSettings;
+
+	public VkLayerSettingsCreateInfoEXT()
+	{
+		sType = VkStructureType.LayerSettingsCreateInfoEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM
 {
 	internal VkStructureType sType;
@@ -12756,6 +12992,7 @@ public unsafe partial struct VkGetLatencyMarkerInfoNV
 {
 	internal VkStructureType sType;
 	public void* pNext;
+	public uint timingCount;
 	public VkLatencyTimingsFrameReportNV* pTimings;
 
 	public VkGetLatencyMarkerInfoNV()

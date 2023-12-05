@@ -224,6 +224,7 @@ public static partial class CsCodeGenerator
         "msl",
         "json",
         "msft",
+        "img",
     };
 
     private static readonly HashSet<string> s_enumConstants = new();
@@ -244,7 +245,8 @@ public static partial class CsCodeGenerator
                 cppEnum.Name.EndsWith("FlagBitsNV") ||
                 cppEnum.Name.EndsWith("FlagBitsAMD") ||
                 cppEnum.Name.EndsWith("FlagBitsMVK") ||
-                cppEnum.Name.EndsWith("FlagBitsNN");
+                cppEnum.Name.EndsWith("FlagBitsNN") ||
+                cppEnum.Name.EndsWith("FlagBitsARM");
 
             // typedef enum SpvSourceLanguage_ { } SpvSourceLanguage; }
             string enumName = cppEnum.Name;

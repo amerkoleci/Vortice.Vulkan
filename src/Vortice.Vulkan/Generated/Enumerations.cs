@@ -908,6 +908,8 @@ public enum VkStructureType
 	PipelineRasterizationDepthClipStateCreateInfoEXT = 1000102001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_HDR_METADATA_EXT</unmanaged>
 	HdrMetadataEXT = 1000105000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RELAXED_LINE_RASTERIZATION_FEATURES_IMG</unmanaged>
+	PhysicalDeviceRelaxedLineRasterizationFeaturesIMG = 1000110000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR</unmanaged>
 	SharedPresentSurfaceCapabilitiesKHR = 1000111000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR</unmanaged>
@@ -1418,6 +1420,16 @@ public enum VkStructureType
 	PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV</unmanaged>
 	DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV</unmanaged>
+	CudaModuleCreateInfoNV = 1000307000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV</unmanaged>
+	CudaFunctionCreateInfoNV = 1000307001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV</unmanaged>
+	CudaLaunchInfoNV = 1000307002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV</unmanaged>
+	PhysicalDeviceCudaKernelLaunchFeaturesNV = 1000307003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV</unmanaged>
+	PhysicalDeviceCudaKernelLaunchPropertiesNV = 1000307004,
 	/// <unmanaged>VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV</unmanaged>
 	QueryLowLatencySupportNV = 1000310000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT</unmanaged>
@@ -1664,6 +1676,8 @@ public enum VkStructureType
 	PhysicalDeviceClusterCullingShaderFeaturesHUAWEI = 1000404000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_PROPERTIES_HUAWEI</unmanaged>
 	PhysicalDeviceClusterCullingShaderPropertiesHUAWEI = 1000404001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_VRS_FEATURES_HUAWEI</unmanaged>
+	PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI = 1000404002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BORDER_COLOR_SWIZZLE_FEATURES_EXT</unmanaged>
 	PhysicalDeviceBorderColorSwizzleFeaturesEXT = 1000411000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT</unmanaged>
@@ -1672,6 +1686,12 @@ public enum VkStructureType
 	PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT = 1000412000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM</unmanaged>
 	PhysicalDeviceShaderCorePropertiesARM = 1000415000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM</unmanaged>
+	DeviceQueueShaderCoreControlCreateInfoARM = 1000417000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM</unmanaged>
+	PhysicalDeviceSchedulingControlsFeaturesARM = 1000417001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM</unmanaged>
+	PhysicalDeviceSchedulingControlsPropertiesARM = 1000417002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT</unmanaged>
 	PhysicalDeviceImageSlicedViewOf3DFeaturesEXT = 1000418000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT</unmanaged>
@@ -1686,6 +1706,16 @@ public enum VkStructureType
 	PhysicalDeviceDepthClampZeroOneFeaturesEXT = 1000421000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT</unmanaged>
 	PhysicalDeviceNonSeamlessCubeMapFeaturesEXT = 1000422000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_FEATURES_ARM</unmanaged>
+	PhysicalDeviceRenderPassStripedFeaturesARM = 1000424000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_PROPERTIES_ARM</unmanaged>
+	PhysicalDeviceRenderPassStripedPropertiesARM = 1000424001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_BEGIN_INFO_ARM</unmanaged>
+	RenderPassStripeBeginInfoARM = 1000424002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_INFO_ARM</unmanaged>
+	RenderPassStripeInfoARM = 1000424003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_SUBMIT_INFO_ARM</unmanaged>
+	RenderPassStripeSubmitInfoARM = 1000424004,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM</unmanaged>
 	PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM = 1000425000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_QCOM</unmanaged>
@@ -1818,6 +1848,8 @@ public enum VkStructureType
 	PhysicalDeviceMutableDescriptorTypeFeaturesEXT = 1000351000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT</unmanaged>
 	MutableDescriptorTypeCreateInfoEXT = 1000351002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT</unmanaged>
+	LayerSettingsCreateInfoEXT = 1000496000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_FEATURES_ARM</unmanaged>
 	PhysicalDeviceShaderCoreBuiltinsFeaturesARM = 1000497000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_PROPERTIES_ARM</unmanaged>
@@ -2446,6 +2478,10 @@ public enum VkObjectType
 	DeferredOperationKHR = 1000268000,
 	/// <unmanaged>VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV</unmanaged>
 	IndirectCommandsLayoutNV = 1000277000,
+	/// <unmanaged>VK_OBJECT_TYPE_CUDA_MODULE_NV</unmanaged>
+	CudaModuleNV = 1000307000,
+	/// <unmanaged>VK_OBJECT_TYPE_CUDA_FUNCTION_NV</unmanaged>
+	CudaFunctionNV = 1000307001,
 	/// <unmanaged>VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA</unmanaged>
 	BufferCollectionFUCHSIA = 1000366000,
 	/// <unmanaged>VK_OBJECT_TYPE_MICROMAP_EXT</unmanaged>
@@ -3740,7 +3776,7 @@ public enum VkFilter
 	/// <unmanaged>VK_FILTER_CUBIC_EXT</unmanaged>
 	CubicEXT = 1000015000,
 	/// <unmanaged>VK_FILTER_CUBIC_IMG</unmanaged>
-	CubicImg = CubicEXT,
+	CubicIMG = CubicEXT,
 }
 
 public enum VkSamplerAddressMode
@@ -4156,7 +4192,7 @@ public enum VkFormatFeatureFlags
 	/// <unmanaged>VK_FORMAT_FEATURE_VIDEO_ENCODE_DPB_BIT_KHR</unmanaged>
 	VideoEncodeDpbKHR = 0x10000000,
 	/// <unmanaged>VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG</unmanaged>
-	SampledImageFilterCubicImg = SampledImageFilterCubicEXT,
+	SampledImageFilterCubicIMG = SampledImageFilterCubicEXT,
 	/// <unmanaged>VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR</unmanaged>
 	TransferSrcKHR = TransferSrc,
 	/// <unmanaged>VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR</unmanaged>
@@ -6957,6 +6993,10 @@ public enum VkDebugReportObjectTypeEXT
 	AccelerationStructureKHR = 1000150000,
 	/// <unmanaged>VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV_EXT</unmanaged>
 	AccelerationStructureNV = 1000165000,
+	/// <unmanaged>VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_MODULE_NV_EXT</unmanaged>
+	CudaModuleNV = 1000307000,
+	/// <unmanaged>VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_FUNCTION_NV_EXT</unmanaged>
+	CudaFunctionNV = 1000307001,
 	/// <unmanaged>VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA_EXT</unmanaged>
 	BufferCollectionFUCHSIA = 1000366000,
 	/// <unmanaged>VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT</unmanaged>
@@ -7884,6 +7924,16 @@ public enum VkMicromapCreateFlagsEXT
 	DeviceAddressCaptureReplay = 0x00000001,
 }
 
+[Flags]
+public enum VkPhysicalDeviceSchedulingControlsFlagsARM
+{
+	None = 0,
+	/// <unmanaged>VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM</unmanaged>
+	ShaderCoreCountARM = 0x00000001,
+	/// <unmanaged>VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FLAG_BITS_MAX_ENUM_ARM</unmanaged>
+	FlagBitsMaxEnumARM = 0x7FFFFFFF,
+}
+
 public enum VkSubpassMergeStatusEXT
 {
 	/// <unmanaged>VK_SUBPASS_MERGE_STATUS_MERGED_EXT</unmanaged>
@@ -8050,6 +8100,26 @@ public enum VkRayTracingInvocationReorderModeNV
 	ModeNone = 0,
 	/// <unmanaged>VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_NV</unmanaged>
 	ModeReorder = 1,
+}
+
+public enum VkLayerSettingTypeEXT
+{
+	/// <unmanaged>VK_LAYER_SETTING_TYPE_BOOL32_EXT</unmanaged>
+	Bool32 = 0,
+	/// <unmanaged>VK_LAYER_SETTING_TYPE_INT32_EXT</unmanaged>
+	Int32 = 1,
+	/// <unmanaged>VK_LAYER_SETTING_TYPE_INT64_EXT</unmanaged>
+	Int64 = 2,
+	/// <unmanaged>VK_LAYER_SETTING_TYPE_UINT32_EXT</unmanaged>
+	Uint32 = 3,
+	/// <unmanaged>VK_LAYER_SETTING_TYPE_UINT64_EXT</unmanaged>
+	Uint64 = 4,
+	/// <unmanaged>VK_LAYER_SETTING_TYPE_FLOAT32_EXT</unmanaged>
+	Float32 = 5,
+	/// <unmanaged>VK_LAYER_SETTING_TYPE_FLOAT64_EXT</unmanaged>
+	Float64 = 6,
+	/// <unmanaged>VK_LAYER_SETTING_TYPE_STRING_EXT</unmanaged>
+	String = 7,
 }
 
 public enum VkLatencyMarkerNV

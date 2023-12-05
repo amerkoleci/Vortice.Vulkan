@@ -52,9 +52,6 @@ public static unsafe class Utils
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool IsNullRef<T>(in T source) => Unsafe.IsNullRef(ref Unsafe.AsRef(in source));
 
-    /// <inheritdoc cref="MemoryMarshal.CreateSpan{T}(ref T, int)" />
-    public static Span<T> CreateSpan<T>(scoped ref T reference, int length) => MemoryMarshal.CreateSpan(ref reference, length);
-
     /// <inheritdoc cref="MemoryMarshal.CreateReadOnlySpan{T}(ref T, int)" />
     public static ReadOnlySpan<T> CreateReadOnlySpan<T>(scoped in T reference, int length) => MemoryMarshal.CreateReadOnlySpan(ref Unsafe.AsRef(in reference), length);
 

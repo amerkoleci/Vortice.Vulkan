@@ -3152,6 +3152,42 @@ unsafe partial class Vulkan
 		vkGetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, data);
 	}
 
+	private static delegate* unmanaged<VkDevice, VkCudaModuleCreateInfoNV*, VkAllocationCallbacks*, VkCudaModuleNV*, VkResult> vkCreateCudaModuleNV_ptr;
+	public static VkResult vkCreateCudaModuleNV(VkDevice device, VkCudaModuleCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkCudaModuleNV* module)
+	{
+		return vkCreateCudaModuleNV_ptr(device, createInfo, allocator, module);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkCudaModuleNV, nuint*, void*, VkResult> vkGetCudaModuleCacheNV_ptr;
+	public static VkResult vkGetCudaModuleCacheNV(VkDevice device, VkCudaModuleNV module, nuint* cacheSize, void* cacheData)
+	{
+		return vkGetCudaModuleCacheNV_ptr(device, module, cacheSize, cacheData);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkCudaFunctionCreateInfoNV*, VkAllocationCallbacks*, VkCudaFunctionNV*, VkResult> vkCreateCudaFunctionNV_ptr;
+	public static VkResult vkCreateCudaFunctionNV(VkDevice device, VkCudaFunctionCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkCudaFunctionNV* function)
+	{
+		return vkCreateCudaFunctionNV_ptr(device, createInfo, allocator, function);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkCudaModuleNV, VkAllocationCallbacks*, void> vkDestroyCudaModuleNV_ptr;
+	public static void vkDestroyCudaModuleNV(VkDevice device, VkCudaModuleNV module, VkAllocationCallbacks* allocator = default)
+	{
+		vkDestroyCudaModuleNV_ptr(device, module, allocator);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkCudaFunctionNV, VkAllocationCallbacks*, void> vkDestroyCudaFunctionNV_ptr;
+	public static void vkDestroyCudaFunctionNV(VkDevice device, VkCudaFunctionNV function, VkAllocationCallbacks* allocator = default)
+	{
+		vkDestroyCudaFunctionNV_ptr(device, function, allocator);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, VkCudaLaunchInfoNV*, void> vkCmdCudaLaunchKernelNV_ptr;
+	public static void vkCmdCudaLaunchKernelNV(VkCommandBuffer commandBuffer, VkCudaLaunchInfoNV* launchInfo)
+	{
+		vkCmdCudaLaunchKernelNV_ptr(commandBuffer, launchInfo);
+	}
+
 	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayout, ulong*, void> vkGetDescriptorSetLayoutSizeEXT_ptr;
 	public static void vkGetDescriptorSetLayoutSizeEXT(VkDevice device, VkDescriptorSetLayout layout, ulong* layoutSizeInBytes)
 	{
@@ -3752,10 +3788,10 @@ unsafe partial class Vulkan
 		vkSetLatencyMarkerNV_ptr(device, swapchain, latencyMarkerInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkGetLatencyMarkerInfoNV*, void> vkGetLatencyTimingsNV_ptr;
-	public static void vkGetLatencyTimingsNV(VkDevice device, VkSwapchainKHR swapchain, uint* timingCount, VkGetLatencyMarkerInfoNV* latencyMarkerInfo)
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkGetLatencyMarkerInfoNV*, void> vkGetLatencyTimingsNV_ptr;
+	public static void vkGetLatencyTimingsNV(VkDevice device, VkSwapchainKHR swapchain, VkGetLatencyMarkerInfoNV* latencyMarkerInfo)
 	{
-		vkGetLatencyTimingsNV_ptr(device, swapchain, timingCount, latencyMarkerInfo);
+		vkGetLatencyTimingsNV_ptr(device, swapchain, latencyMarkerInfo);
 	}
 
 	private static delegate* unmanaged<VkQueue, VkOutOfBandQueueTypeInfoNV*, void> vkQueueNotifyOutOfBandNV_ptr;
@@ -4586,6 +4622,12 @@ unsafe partial class Vulkan
 		vkDestroyPrivateDataSlotEXT_ptr = (delegate* unmanaged<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPrivateDataSlotEXT));
 		vkSetPrivateDataEXT_ptr = (delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong, VkResult>) load(context, nameof(vkSetPrivateDataEXT));
 		vkGetPrivateDataEXT_ptr = (delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void>) load(context, nameof(vkGetPrivateDataEXT));
+		vkCreateCudaModuleNV_ptr = (delegate* unmanaged<VkDevice, VkCudaModuleCreateInfoNV*, VkAllocationCallbacks*, VkCudaModuleNV*, VkResult>) load(context, nameof(vkCreateCudaModuleNV));
+		vkGetCudaModuleCacheNV_ptr = (delegate* unmanaged<VkDevice, VkCudaModuleNV, nuint*, void*, VkResult>) load(context, nameof(vkGetCudaModuleCacheNV));
+		vkCreateCudaFunctionNV_ptr = (delegate* unmanaged<VkDevice, VkCudaFunctionCreateInfoNV*, VkAllocationCallbacks*, VkCudaFunctionNV*, VkResult>) load(context, nameof(vkCreateCudaFunctionNV));
+		vkDestroyCudaModuleNV_ptr = (delegate* unmanaged<VkDevice, VkCudaModuleNV, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyCudaModuleNV));
+		vkDestroyCudaFunctionNV_ptr = (delegate* unmanaged<VkDevice, VkCudaFunctionNV, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyCudaFunctionNV));
+		vkCmdCudaLaunchKernelNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkCudaLaunchInfoNV*, void>) load(context, nameof(vkCmdCudaLaunchKernelNV));
 		vkGetDescriptorSetLayoutSizeEXT_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetLayout, ulong*, void>) load(context, nameof(vkGetDescriptorSetLayoutSizeEXT));
 		vkGetDescriptorSetLayoutBindingOffsetEXT_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetLayout, uint, ulong*, void>) load(context, nameof(vkGetDescriptorSetLayoutBindingOffsetEXT));
 		vkGetDescriptorEXT_ptr = (delegate* unmanaged<VkDevice, VkDescriptorGetInfoEXT*, nuint, void*, void>) load(context, nameof(vkGetDescriptorEXT));
@@ -4685,7 +4727,7 @@ unsafe partial class Vulkan
 		vkSetLatencySleepModeNV_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepModeInfoNV*, VkResult>) load(context, nameof(vkSetLatencySleepModeNV));
 		vkLatencySleepNV_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepInfoNV*, VkResult>) load(context, nameof(vkLatencySleepNV));
 		vkSetLatencyMarkerNV_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkSetLatencyMarkerInfoNV*, void>) load(context, nameof(vkSetLatencyMarkerNV));
-		vkGetLatencyTimingsNV_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkGetLatencyMarkerInfoNV*, void>) load(context, nameof(vkGetLatencyTimingsNV));
+		vkGetLatencyTimingsNV_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkGetLatencyMarkerInfoNV*, void>) load(context, nameof(vkGetLatencyTimingsNV));
 		vkQueueNotifyOutOfBandNV_ptr = (delegate* unmanaged<VkQueue, VkOutOfBandQueueTypeInfoNV*, void>) load(context, nameof(vkQueueNotifyOutOfBandNV));
 		vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkImageAspectFlags, void>) load(context, nameof(vkCmdSetAttachmentFeedbackLoopEnableEXT));
 		vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));
