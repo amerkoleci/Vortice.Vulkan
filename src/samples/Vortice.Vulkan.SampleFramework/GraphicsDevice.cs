@@ -1,11 +1,12 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using static Vortice.Vulkan.Vulkan;
-using static Vortice.Vulkan.GLFW;
+using SDL;
+using static SDL.SDL;
 
 namespace Vortice.Vulkan;
 
@@ -30,10 +31,9 @@ public unsafe sealed class GraphicsDevice : IDisposable
         HashSet<string> availableInstanceLayers = new(EnumerateInstanceLayers());
         HashSet<string> availableInstanceExtensions = new(GetInstanceExtensions());
 
-        List<string> instanceExtensions = new();
-        instanceExtensions.AddRange(glfwGetRequiredInstanceExtensions());
+        List<string> instanceExtensions = [.. SDL_Vulkan_GetInstanceExtensions()];
 
-        List<string> instanceLayers = new();
+        List<string> instanceLayers = [];
 
         if (enableValidation)
         {
@@ -116,8 +116,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             Log.Info($"Instance extension '{extension}'");
         }
 
-        VkSurfaceKHR surface;
-        window.CreateSurface(VkInstance, &surface).CheckResult();
+        VkSurfaceKHR surface = window.CreateSurface(VkInstance);
 
         // Find physical device, setup queue's and create device.
         uint physicalDevicesCount = 0;

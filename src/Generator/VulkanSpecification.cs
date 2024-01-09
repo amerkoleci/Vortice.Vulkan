@@ -1,10 +1,9 @@
-// Copyright © Amer Koleci and Contributors.
+// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Diagnostics;
 using System.Web;
 using System.Xml.Linq;
-using CommunityToolkit.Diagnostics;
 
 namespace Generator;
 
@@ -70,8 +69,8 @@ public class EnumDefinition
 
     public EnumDefinition(string name, EnumType type, string? comment, EnumValue[] values)
     {
-        Guard.IsNotNullOrEmpty(name);
-        Guard.IsNotNull(values);
+        ArgumentNullException.ThrowIfNullOrEmpty(name);
+        ArgumentNullException.ThrowIfNull(values);
 
         Name = name;
         Type = type;
@@ -81,7 +80,7 @@ public class EnumDefinition
 
     public static EnumDefinition CreateFromXml(XElement xe)
     {
-        Guard.IsNotNull(xe);
+        ArgumentNullException.ThrowIfNull(xe);
 
         EnumType type;
         var typeAttr = xe.Attribute("type");
@@ -146,7 +145,7 @@ public class EnumValue
 
     public static EnumValue? CreateFromXml(XElement xe)
     {
-        Guard.IsNotNull(xe);
+        ArgumentNullException.ThrowIfNull(xe);
 
         string name = xe.Attribute("name")!.Value;
 

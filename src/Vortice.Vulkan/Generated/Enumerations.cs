@@ -732,62 +732,62 @@ public enum VkStructureType
 	ImageViewHandleInfoNVX = 1000030000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX</unmanaged>
 	ImageViewAddressPropertiesNVX = 1000030001,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_EXT</unmanaged>
-	VideoEncodeH264CapabilitiesEXT = 1000038000,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_CREATE_INFO_EXT</unmanaged>
-	VideoEncodeH264SessionParametersCreateInfoEXT = 1000038001,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_ADD_INFO_EXT</unmanaged>
-	VideoEncodeH264SessionParametersAddInfoEXT = 1000038002,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PICTURE_INFO_EXT</unmanaged>
-	VideoEncodeH264PictureInfoEXT = 1000038003,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_DPB_SLOT_INFO_EXT</unmanaged>
-	VideoEncodeH264DpbSlotInfoEXT = 1000038004,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_NALU_SLICE_INFO_EXT</unmanaged>
-	VideoEncodeH264NaluSliceInfoEXT = 1000038005,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_GOP_REMAINING_FRAME_INFO_EXT</unmanaged>
-	VideoEncodeH264GopRemainingFrameInfoEXT = 1000038006,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PROFILE_INFO_EXT</unmanaged>
-	VideoEncodeH264ProfileInfoEXT = 1000038007,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_INFO_EXT</unmanaged>
-	VideoEncodeH264RateControlInfoEXT = 1000038008,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_EXT</unmanaged>
-	VideoEncodeH264RateControlLayerInfoEXT = 1000038009,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_CREATE_INFO_EXT</unmanaged>
-	VideoEncodeH264SessionCreateInfoEXT = 1000038010,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_EXT</unmanaged>
-	VideoEncodeH264QualityLevelPropertiesEXT = 1000038011,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_GET_INFO_EXT</unmanaged>
-	VideoEncodeH264SessionParametersGetInfoEXT = 1000038012,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_EXT</unmanaged>
-	VideoEncodeH264SessionParametersFeedbackInfoEXT = 1000038013,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_CAPABILITIES_EXT</unmanaged>
-	VideoEncodeH265CapabilitiesEXT = 1000039000,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_EXT</unmanaged>
-	VideoEncodeH265SessionParametersCreateInfoEXT = 1000039001,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_ADD_INFO_EXT</unmanaged>
-	VideoEncodeH265SessionParametersAddInfoEXT = 1000039002,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PICTURE_INFO_EXT</unmanaged>
-	VideoEncodeH265PictureInfoEXT = 1000039003,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_DPB_SLOT_INFO_EXT</unmanaged>
-	VideoEncodeH265DpbSlotInfoEXT = 1000039004,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_NALU_SLICE_SEGMENT_INFO_EXT</unmanaged>
-	VideoEncodeH265NaluSliceSegmentInfoEXT = 1000039005,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_GOP_REMAINING_FRAME_INFO_EXT</unmanaged>
-	VideoEncodeH265GopRemainingFrameInfoEXT = 1000039006,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PROFILE_INFO_EXT</unmanaged>
-	VideoEncodeH265ProfileInfoEXT = 1000039007,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_INFO_EXT</unmanaged>
-	VideoEncodeH265RateControlInfoEXT = 1000039009,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_LAYER_INFO_EXT</unmanaged>
-	VideoEncodeH265RateControlLayerInfoEXT = 1000039010,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_CREATE_INFO_EXT</unmanaged>
-	VideoEncodeH265SessionCreateInfoEXT = 1000039011,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUALITY_LEVEL_PROPERTIES_EXT</unmanaged>
-	VideoEncodeH265QualityLevelPropertiesEXT = 1000039012,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_GET_INFO_EXT</unmanaged>
-	VideoEncodeH265SessionParametersGetInfoEXT = 1000039013,
-	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_EXT</unmanaged>
-	VideoEncodeH265SessionParametersFeedbackInfoEXT = 1000039014,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_KHR</unmanaged>
+	VideoEncodeH264CapabilitiesKHR = 1000038000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR</unmanaged>
+	VideoEncodeH264SessionParametersCreateInfoKHR = 1000038001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR</unmanaged>
+	VideoEncodeH264SessionParametersAddInfoKHR = 1000038002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PICTURE_INFO_KHR</unmanaged>
+	VideoEncodeH264PictureInfoKHR = 1000038003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_DPB_SLOT_INFO_KHR</unmanaged>
+	VideoEncodeH264DpbSlotInfoKHR = 1000038004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_NALU_SLICE_INFO_KHR</unmanaged>
+	VideoEncodeH264NaluSliceInfoKHR = 1000038005,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_GOP_REMAINING_FRAME_INFO_KHR</unmanaged>
+	VideoEncodeH264GopRemainingFrameInfoKHR = 1000038006,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PROFILE_INFO_KHR</unmanaged>
+	VideoEncodeH264ProfileInfoKHR = 1000038007,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_INFO_KHR</unmanaged>
+	VideoEncodeH264RateControlInfoKHR = 1000038008,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_KHR</unmanaged>
+	VideoEncodeH264RateControlLayerInfoKHR = 1000038009,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_CREATE_INFO_KHR</unmanaged>
+	VideoEncodeH264SessionCreateInfoKHR = 1000038010,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_KHR</unmanaged>
+	VideoEncodeH264QualityLevelPropertiesKHR = 1000038011,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_GET_INFO_KHR</unmanaged>
+	VideoEncodeH264SessionParametersGetInfoKHR = 1000038012,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_KHR</unmanaged>
+	VideoEncodeH264SessionParametersFeedbackInfoKHR = 1000038013,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_CAPABILITIES_KHR</unmanaged>
+	VideoEncodeH265CapabilitiesKHR = 1000039000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR</unmanaged>
+	VideoEncodeH265SessionParametersCreateInfoKHR = 1000039001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR</unmanaged>
+	VideoEncodeH265SessionParametersAddInfoKHR = 1000039002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PICTURE_INFO_KHR</unmanaged>
+	VideoEncodeH265PictureInfoKHR = 1000039003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_DPB_SLOT_INFO_KHR</unmanaged>
+	VideoEncodeH265DpbSlotInfoKHR = 1000039004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_NALU_SLICE_SEGMENT_INFO_KHR</unmanaged>
+	VideoEncodeH265NaluSliceSegmentInfoKHR = 1000039005,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_GOP_REMAINING_FRAME_INFO_KHR</unmanaged>
+	VideoEncodeH265GopRemainingFrameInfoKHR = 1000039006,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PROFILE_INFO_KHR</unmanaged>
+	VideoEncodeH265ProfileInfoKHR = 1000039007,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR</unmanaged>
+	VideoEncodeH265RateControlInfoKHR = 1000039009,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_LAYER_INFO_KHR</unmanaged>
+	VideoEncodeH265RateControlLayerInfoKHR = 1000039010,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_CREATE_INFO_KHR</unmanaged>
+	VideoEncodeH265SessionCreateInfoKHR = 1000039011,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUALITY_LEVEL_PROPERTIES_KHR</unmanaged>
+	VideoEncodeH265QualityLevelPropertiesKHR = 1000039012,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_GET_INFO_KHR</unmanaged>
+	VideoEncodeH265SessionParametersGetInfoKHR = 1000039013,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_KHR</unmanaged>
+	VideoEncodeH265SessionParametersFeedbackInfoKHR = 1000039014,
 	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_CAPABILITIES_KHR</unmanaged>
 	VideoDecodeH264CapabilitiesKHR = 1000040000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_PICTURE_INFO_KHR</unmanaged>
@@ -1124,8 +1124,6 @@ public enum VkStructureType
 	PhysicalDeviceShaderClockFeaturesKHR = 1000181000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD</unmanaged>
 	PipelineCompilerControlCreateInfoAMD = 1000183000,
-	/// <unmanaged>VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_EXT</unmanaged>
-	CalibratedTimestampInfoEXT = 1000184000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD</unmanaged>
 	PhysicalDeviceShaderCorePropertiesAMD = 1000185000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_CAPABILITIES_KHR</unmanaged>
@@ -1150,10 +1148,6 @@ public enum VkStructureType
 	DeviceMemoryOverallocationCreateInfoAMD = 1000189000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT</unmanaged>
 	PhysicalDeviceVertexAttributeDivisorPropertiesEXT = 1000190000,
-	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT</unmanaged>
-	PipelineVertexInputDivisorStateCreateInfoEXT = 1000190001,
-	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT</unmanaged>
-	PhysicalDeviceVertexAttributeDivisorFeaturesEXT = 1000190002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP</unmanaged>
 	PresentFrameTokenGgp = 1000191000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV</unmanaged>
@@ -1886,6 +1880,12 @@ public enum VkStructureType
 	PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM = 1000510000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM</unmanaged>
 	MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM = 1000510001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR</unmanaged>
+	PhysicalDeviceVideoMaintenance1FeaturesKHR = 1000515000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR</unmanaged>
+	VideoInlineQueryInfoKHR = 1000515001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV</unmanaged>
+	PhysicalDevicePerStageDescriptorSetFeaturesNV = 1000516000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_FEATURES_QCOM</unmanaged>
 	PhysicalDeviceImageProcessing2FeaturesQCOM = 1000518000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM</unmanaged>
@@ -1906,6 +1906,12 @@ public enum VkStructureType
 	PhysicalDeviceCubicClampFeaturesQCOM = 1000521000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT</unmanaged>
 	PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT = 1000524000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_KHR</unmanaged>
+	PhysicalDeviceVertexAttributeDivisorPropertiesKHR = 1000525000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_KHR</unmanaged>
+	PipelineVertexInputDivisorStateCreateInfoKHR = 1000190001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR</unmanaged>
+	PhysicalDeviceVertexAttributeDivisorFeaturesKHR = 1000190002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX</unmanaged>
 	ScreenBufferPropertiesQnx = 1000529000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX</unmanaged>
@@ -1918,6 +1924,26 @@ public enum VkStructureType
 	PhysicalDeviceExternalMemoryScreenBufferFeaturesQnx = 1000529004,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT</unmanaged>
 	PhysicalDeviceLayeredDriverPropertiesMSFT = 1000530000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR</unmanaged>
+	CalibratedTimestampInfoKHR = 1000184000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES_KHR</unmanaged>
+	PhysicalDeviceMaintenance6FeaturesKHR = 1000545000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES_KHR</unmanaged>
+	PhysicalDeviceMaintenance6PropertiesKHR = 1000545001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS_KHR</unmanaged>
+	BindMemoryStatusKHR = 1000545002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO_KHR</unmanaged>
+	BindDescriptorSetsInfoKHR = 1000545003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO_KHR</unmanaged>
+	PushConstantsInfoKHR = 1000545004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO_KHR</unmanaged>
+	PushDescriptorSetInfoKHR = 1000545005,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO_KHR</unmanaged>
+	PushDescriptorSetWithTemplateInfoKHR = 1000545006,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT</unmanaged>
+	SetDescriptorBufferOffsetsInfoEXT = 1000545007,
+	/// <unmanaged>VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT</unmanaged>
+	BindDescriptorBufferEmbeddedSamplersInfoEXT = 1000545008,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV</unmanaged>
 	PhysicalDeviceDescriptorPoolOverallocationFeaturesNV = 1000546000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES</unmanaged>
@@ -2118,6 +2144,12 @@ public enum VkStructureType
 	PhysicalDevice8bitStorageFeaturesKHR = PhysicalDevice8BitStorageFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR</unmanaged>
 	PhysicalDeviceShaderAtomicInt64FeaturesKHR = PhysicalDeviceShaderAtomicInt64Features,
+	/// <unmanaged>VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_EXT</unmanaged>
+	CalibratedTimestampInfoEXT = CalibratedTimestampInfoKHR,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT</unmanaged>
+	PipelineVertexInputDivisorStateCreateInfoEXT = PipelineVertexInputDivisorStateCreateInfoKHR,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT</unmanaged>
+	PhysicalDeviceVertexAttributeDivisorFeaturesEXT = PhysicalDeviceVertexAttributeDivisorFeaturesKHR,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT</unmanaged>
 	PipelineCreationFeedbackCreateInfoEXT = PipelineCreationFeedbackCreateInfo,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR</unmanaged>
@@ -4272,6 +4304,8 @@ public enum VkImageCreateFlags
 	View2DCompatibleEXT = 0x00020000,
 	/// <unmanaged>VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_QCOM</unmanaged>
 	FragmentDensityMapOffsetQCOM = 0x00008000,
+	/// <unmanaged>VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR</unmanaged>
+	VideoProfileIndependentKHR = 0x00100000,
 	/// <unmanaged>VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR</unmanaged>
 	SplitInstanceBindRegionsKHR = SplitInstanceBindRegions,
 	/// <unmanaged>VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR</unmanaged>
@@ -4797,6 +4831,8 @@ public enum VkBufferCreateFlags
 	DeviceAddressCaptureReplay = 0x00000010,
 	/// <unmanaged>VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT</unmanaged>
 	DescriptorBufferCaptureReplayEXT = 0x00000020,
+	/// <unmanaged>VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR</unmanaged>
+	VideoProfileIndependentKHR = 0x00000040,
 	/// <unmanaged>VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT</unmanaged>
 	DeviceAddressCaptureReplayEXT = DeviceAddressCaptureReplay,
 	/// <unmanaged>VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR</unmanaged>
@@ -5186,6 +5222,8 @@ public enum VkDescriptorSetLayoutCreateFlags
 	IndirectBindableNV = 0x00000080,
 	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT</unmanaged>
 	HostOnlyPoolEXT = 0x00000004,
+	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV</unmanaged>
+	PerStageNV = 0x00000040,
 	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</unmanaged>
 	UpdateAfterBindPoolEXT = UpdateAfterBindPool,
 	/// <unmanaged>VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_VALVE</unmanaged>
@@ -6231,10 +6269,10 @@ public enum VkQueryResultStatusKHR
 public enum VkVideoCodecOperationFlagsKHR
 {
 	None = 0,
-	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_EXT</unmanaged>
-	EncodeH264EXT = 0x00010000,
-	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_EXT</unmanaged>
-	EncodeH265EXT = 0x00020000,
+	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</unmanaged>
+	EncodeH264 = 0x00010000,
+	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</unmanaged>
+	EncodeH265 = 0x00020000,
 	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR</unmanaged>
 	DecodeH264 = 0x00000001,
 	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR</unmanaged>
@@ -6295,6 +6333,8 @@ public enum VkVideoSessionCreateFlagsKHR
 	ProtectedContent = 0x00000001,
 	/// <unmanaged>VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS_BIT_KHR</unmanaged>
 	AllowEncodeParameterOptimizations = 0x00000002,
+	/// <unmanaged>VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</unmanaged>
+	InlineQueries = 0x00000004,
 }
 
 [Flags]
@@ -6575,100 +6615,90 @@ public enum StdVideoH264NonVclNaluType
 	Invalid = 0x7FFFFFFF,
 }
 
-public enum StdVideoDecodeH264FieldOrderCount
+[Flags]
+public enum VkVideoEncodeH264CapabilityFlagsKHR
 {
-	/// <unmanaged>STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_TOP</unmanaged>
-	Top = 0,
-	/// <unmanaged>STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM</unmanaged>
-	Bottom = 1,
-	/// <unmanaged>STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_INVALID</unmanaged>
-	Invalid = 0x7FFFFFFF,
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_KHR</unmanaged>
+	HrdCompliance = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_KHR</unmanaged>
+	PredictionWeightTableGenerated = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_KHR</unmanaged>
+	RowUnalignedSlice = 0x00000004,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_KHR</unmanaged>
+	DifferentSliceType = 0x00000008,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_KHR</unmanaged>
+	BFrameInL0List = 0x00000010,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_KHR</unmanaged>
+	BFrameInL1List = 0x00000020,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_KHR</unmanaged>
+	PerPictureTypeMinMaxQp = 0x00000040,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_KHR</unmanaged>
+	PerSliceConstantQp = 0x00000080,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_KHR</unmanaged>
+	GeneratePrefixNalu = 0x00000100,
 }
 
 [Flags]
-public enum VkVideoDecodeH264PictureLayoutFlagsKHR
+public enum VkVideoEncodeH264StdFlagsKHR
 {
 	None = 0,
-	/// <unmanaged>VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE_KHR</unmanaged>
-	Progressive = 0,
-	/// <unmanaged>VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR</unmanaged>
-	InterlacedInterleavedLines = 0x00000001,
-	/// <unmanaged>VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR</unmanaged>
-	InterlacedSeparatePlanes = 0x00000002,
-}
-
-public enum VkPerformanceCounterUnitKHR
-{
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR</unmanaged>
-	Generic = 0,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR</unmanaged>
-	Percentage = 1,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR</unmanaged>
-	Nanoseconds = 2,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR</unmanaged>
-	Bytes = 3,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_BYTES_PER_SECOND_KHR</unmanaged>
-	BytesPerSecond = 4,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_KELVIN_KHR</unmanaged>
-	Kelvin = 5,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR</unmanaged>
-	Watts = 6,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR</unmanaged>
-	Volts = 7,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR</unmanaged>
-	Amps = 8,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR</unmanaged>
-	Hertz = 9,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR</unmanaged>
-	Cycles = 10,
-}
-
-public enum VkPerformanceCounterScopeKHR
-{
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR</unmanaged>
-	CommandBuffer = 0,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR</unmanaged>
-	RenderPass = 1,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR</unmanaged>
-	Command = 2,
-	/// <unmanaged>VK_QUERY_SCOPE_COMMAND_BUFFER_KHR</unmanaged>
-	QueryScopeCommandBuffer = CommandBuffer,
-	/// <unmanaged>VK_QUERY_SCOPE_RENDER_PASS_KHR</unmanaged>
-	QueryScopeRenderPass = RenderPass,
-	/// <unmanaged>VK_QUERY_SCOPE_COMMAND_KHR</unmanaged>
-	QueryScopeCommand = Command,
-}
-
-public enum VkPerformanceCounterStorageKHR
-{
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR</unmanaged>
-	Int32 = 0,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR</unmanaged>
-	Int64 = 1,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_UINT32_KHR</unmanaged>
-	Uint32 = 2,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_UINT64_KHR</unmanaged>
-	Uint64 = 3,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_FLOAT32_KHR</unmanaged>
-	Float32 = 4,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_FLOAT64_KHR</unmanaged>
-	Float64 = 5,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_KHR</unmanaged>
+	SeparateColorPlaneFlagSet = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG_SET_BIT_KHR</unmanaged>
+	QpprimeYZeroTransformBypassFlagSet = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_KHR</unmanaged>
+	ScalingMatrixPresentFlagSet = 0x00000004,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_KHR</unmanaged>
+	ChromaQpIndexOffset = 0x00000008,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_KHR</unmanaged>
+	SecondChromaQpIndexOffset = 0x00000010,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_KHR</unmanaged>
+	PicInitQpMinus26 = 0x00000020,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_KHR</unmanaged>
+	WeightedPredFlagSet = 0x00000040,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_KHR</unmanaged>
+	WeightedBipredIdcExplicit = 0x00000080,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_KHR</unmanaged>
+	WeightedBipredIdcImplicit = 0x00000100,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_KHR</unmanaged>
+	Transform8x8ModeFlagSet = 0x00000200,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_KHR</unmanaged>
+	DirectSpatialMvPredFlagUnset = 0x00000400,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_KHR</unmanaged>
+	EntropyCodingModeFlagUnset = 0x00000800,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_KHR</unmanaged>
+	EntropyCodingModeFlagSet = 0x00001000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_KHR</unmanaged>
+	Direct8x8InferenceFlagUnset = 0x00002000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_KHR</unmanaged>
+	ConstrainedIntraPredFlagSet = 0x00004000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_KHR</unmanaged>
+	DeblockingFilterDisabled = 0x00008000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_KHR</unmanaged>
+	DeblockingFilterEnabled = 0x00010000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_KHR</unmanaged>
+	DeblockingFilterPartial = 0x00020000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SLICE_QP_DELTA_BIT_KHR</unmanaged>
+	SliceQpDelta = 0x00080000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DIFFERENT_SLICE_QP_DELTA_BIT_KHR</unmanaged>
+	DifferentSliceQpDelta = 0x00100000,
 }
 
 [Flags]
-public enum VkPerformanceCounterDescriptionFlagsKHR
+public enum VkVideoEncodeH264RateControlFlagsKHR
 {
 	None = 0,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR</unmanaged>
-	PerformanceImpacting = 0x00000001,
-	/// <unmanaged>VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR</unmanaged>
-	ConcurrentlyImpacted = 0x00000002,
-}
-
-[Flags]
-public enum VkAcquireProfilingLockFlagsKHR
-{
-	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR</unmanaged>
+	AttemptHrdCompliance = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_KHR</unmanaged>
+	RegularGop = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR</unmanaged>
+	ReferencePatternFlat = 0x00000004,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR</unmanaged>
+	ReferencePatternDyadic = 0x00000008,
+	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_KHR</unmanaged>
+	TemporalLayerPatternDyadic = 0x00000010,
 }
 
 public enum StdVideoH265ChromaFormatIdc
@@ -6801,6 +6831,218 @@ public enum StdVideoH265AspectRatioIdc
 	Invalid = 0x7FFFFFFF,
 }
 
+[Flags]
+public enum VkVideoEncodeH265CapabilityFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_KHR</unmanaged>
+	HrdCompliance = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_KHR</unmanaged>
+	PredictionWeightTableGenerated = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_KHR</unmanaged>
+	RowUnalignedSliceSegment = 0x00000004,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_KHR</unmanaged>
+	DifferentSliceSegmentType = 0x00000008,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_KHR</unmanaged>
+	BFrameInL0List = 0x00000010,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_KHR</unmanaged>
+	BFrameInL1List = 0x00000020,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_KHR</unmanaged>
+	PerPictureTypeMinMaxQp = 0x00000040,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_KHR</unmanaged>
+	PerSliceSegmentConstantQp = 0x00000080,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_KHR</unmanaged>
+	MultipleTilesPerSliceSegment = 0x00000100,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_KHR</unmanaged>
+	MultipleSliceSegmentsPerTile = 0x00000200,
+}
+
+[Flags]
+public enum VkVideoEncodeH265StdFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_KHR</unmanaged>
+	SeparateColorPlaneFlagSet = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SAMPLE_ADAPTIVE_OFFSET_ENABLED_FLAG_SET_BIT_KHR</unmanaged>
+	SampleAdaptiveOffsetEnabledFlagSet = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_KHR</unmanaged>
+	ScalingListDataPresentFlagSet = 0x00000004,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_KHR</unmanaged>
+	PcmEnabledFlagSet = 0x00000008,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_KHR</unmanaged>
+	SpsTemporalMvpEnabledFlagSet = 0x00000010,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_KHR</unmanaged>
+	InitQpMinus26 = 0x00000020,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_KHR</unmanaged>
+	WeightedPredFlagSet = 0x00000040,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_KHR</unmanaged>
+	WeightedBipredFlagSet = 0x00000080,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_KHR</unmanaged>
+	Log2ParallelMergeLevelMinus2 = 0x00000100,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_KHR</unmanaged>
+	SignDataHidingEnabledFlagSet = 0x00000200,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_KHR</unmanaged>
+	TransformSkipEnabledFlagSet = 0x00000400,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_KHR</unmanaged>
+	TransformSkipEnabledFlagUnset = 0x00000800,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_KHR</unmanaged>
+	PpsSliceChromaQpOffsetsPresentFlagSet = 0x00001000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_KHR</unmanaged>
+	TransquantBypassEnabledFlagSet = 0x00002000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_KHR</unmanaged>
+	ConstrainedIntraPredFlagSet = 0x00004000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_KHR</unmanaged>
+	EntropyCodingSyncEnabledFlagSet = 0x00008000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_KHR</unmanaged>
+	DeblockingFilterOverrideEnabledFlagSet = 0x00010000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_KHR</unmanaged>
+	DependentSliceSegmentsEnabledFlagSet = 0x00020000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_KHR</unmanaged>
+	DependentSliceSegmentFlagSet = 0x00040000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SLICE_QP_DELTA_BIT_KHR</unmanaged>
+	SliceQpDelta = 0x00080000,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DIFFERENT_SLICE_QP_DELTA_BIT_KHR</unmanaged>
+	DifferentSliceQpDelta = 0x00100000,
+}
+
+[Flags]
+public enum VkVideoEncodeH265CtbSizeFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_KHR</unmanaged>
+	Size16 = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_KHR</unmanaged>
+	Size32 = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_KHR</unmanaged>
+	Size64 = 0x00000004,
+}
+
+[Flags]
+public enum VkVideoEncodeH265TransformBlockSizeFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_KHR</unmanaged>
+	Size4 = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_KHR</unmanaged>
+	Size8 = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_KHR</unmanaged>
+	Size16 = 0x00000004,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_KHR</unmanaged>
+	Size32 = 0x00000008,
+}
+
+[Flags]
+public enum VkVideoEncodeH265RateControlFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR</unmanaged>
+	AttemptHrdCompliance = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_KHR</unmanaged>
+	RegularGop = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR</unmanaged>
+	ReferencePatternFlat = 0x00000004,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR</unmanaged>
+	ReferencePatternDyadic = 0x00000008,
+	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_KHR</unmanaged>
+	TemporalSubLayerPatternDyadic = 0x00000010,
+}
+
+public enum StdVideoDecodeH264FieldOrderCount
+{
+	/// <unmanaged>STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_TOP</unmanaged>
+	Top = 0,
+	/// <unmanaged>STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM</unmanaged>
+	Bottom = 1,
+	/// <unmanaged>STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_INVALID</unmanaged>
+	Invalid = 0x7FFFFFFF,
+}
+
+[Flags]
+public enum VkVideoDecodeH264PictureLayoutFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE_KHR</unmanaged>
+	Progressive = 0,
+	/// <unmanaged>VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR</unmanaged>
+	InterlacedInterleavedLines = 0x00000001,
+	/// <unmanaged>VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR</unmanaged>
+	InterlacedSeparatePlanes = 0x00000002,
+}
+
+public enum VkPerformanceCounterUnitKHR
+{
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR</unmanaged>
+	Generic = 0,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR</unmanaged>
+	Percentage = 1,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR</unmanaged>
+	Nanoseconds = 2,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR</unmanaged>
+	Bytes = 3,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_BYTES_PER_SECOND_KHR</unmanaged>
+	BytesPerSecond = 4,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_KELVIN_KHR</unmanaged>
+	Kelvin = 5,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR</unmanaged>
+	Watts = 6,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR</unmanaged>
+	Volts = 7,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR</unmanaged>
+	Amps = 8,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR</unmanaged>
+	Hertz = 9,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR</unmanaged>
+	Cycles = 10,
+}
+
+public enum VkPerformanceCounterScopeKHR
+{
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR</unmanaged>
+	CommandBuffer = 0,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR</unmanaged>
+	RenderPass = 1,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR</unmanaged>
+	Command = 2,
+	/// <unmanaged>VK_QUERY_SCOPE_COMMAND_BUFFER_KHR</unmanaged>
+	QueryScopeCommandBuffer = CommandBuffer,
+	/// <unmanaged>VK_QUERY_SCOPE_RENDER_PASS_KHR</unmanaged>
+	QueryScopeRenderPass = RenderPass,
+	/// <unmanaged>VK_QUERY_SCOPE_COMMAND_KHR</unmanaged>
+	QueryScopeCommand = Command,
+}
+
+public enum VkPerformanceCounterStorageKHR
+{
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR</unmanaged>
+	Int32 = 0,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR</unmanaged>
+	Int64 = 1,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_UINT32_KHR</unmanaged>
+	Uint32 = 2,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_UINT64_KHR</unmanaged>
+	Uint64 = 3,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_FLOAT32_KHR</unmanaged>
+	Float32 = 4,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_STORAGE_FLOAT64_KHR</unmanaged>
+	Float64 = 5,
+}
+
+[Flags]
+public enum VkPerformanceCounterDescriptionFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR</unmanaged>
+	PerformanceImpacting = 0x00000001,
+	/// <unmanaged>VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR</unmanaged>
+	ConcurrentlyImpacted = 0x00000002,
+}
+
+[Flags]
+public enum VkAcquireProfilingLockFlagsKHR
+{
+	None = 0,
+}
+
 public enum VkQueueGlobalPriorityKHR
 {
 	/// <unmanaged>VK_QUEUE_GLOBAL_PRIORITY_LOW_KHR</unmanaged>
@@ -6845,6 +7087,86 @@ public enum VkPipelineExecutableStatisticFormatKHR
 	Uint64 = 2,
 	/// <unmanaged>VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR</unmanaged>
 	Float64 = 3,
+}
+
+public enum VkVideoEncodeTuningModeKHR
+{
+	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR</unmanaged>
+	Default = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR</unmanaged>
+	HighQuality = 1,
+	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR</unmanaged>
+	LowLatency = 2,
+	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR</unmanaged>
+	UltraLowLatency = 3,
+	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR</unmanaged>
+	Lossless = 4,
+}
+
+[Flags]
+public enum VkVideoEncodeCapabilityFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR</unmanaged>
+	PrecedingExternallyEncodedBytes = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR</unmanaged>
+	InsufficientBitstreamBufferRangeDetection = 0x00000002,
+}
+
+[Flags]
+public enum VkVideoEncodeRateControlModeFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR</unmanaged>
+	Default = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</unmanaged>
+	Disabled = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR</unmanaged>
+	Cbr = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR</unmanaged>
+	Vbr = 0x00000004,
+}
+
+[Flags]
+public enum VkVideoEncodeFeedbackFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR</unmanaged>
+	BitstreamBufferOffset = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR</unmanaged>
+	BitstreamBytesWritten = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR</unmanaged>
+	BitstreamHasOverrides = 0x00000004,
+}
+
+[Flags]
+public enum VkVideoEncodeUsageFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR</unmanaged>
+	Default = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR</unmanaged>
+	Transcoding = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR</unmanaged>
+	Streaming = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR</unmanaged>
+	Recording = 0x00000004,
+	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR</unmanaged>
+	Conferencing = 0x00000008,
+}
+
+[Flags]
+public enum VkVideoEncodeContentFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR</unmanaged>
+	Default = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR</unmanaged>
+	Camera = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR</unmanaged>
+	Desktop = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR</unmanaged>
+	Rendered = 0x00000004,
 }
 
 public enum VkComponentTypeKHR
@@ -6913,6 +7235,26 @@ public enum VkScopeKHR
 	SubgroupNV = Subgroup,
 	/// <unmanaged>VK_SCOPE_QUEUE_FAMILY_NV</unmanaged>
 	QueueFamilyNV = QueueFamily,
+}
+
+public enum VkTimeDomainKHR
+{
+	/// <unmanaged>VK_TIME_DOMAIN_DEVICE_KHR</unmanaged>
+	Device = 0,
+	/// <unmanaged>VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR</unmanaged>
+	ClockMonotonic = 1,
+	/// <unmanaged>VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR</unmanaged>
+	ClockMonotonicRaw = 2,
+	/// <unmanaged>VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR</unmanaged>
+	QueryPerformanceCounter = 3,
+	/// <unmanaged>VK_TIME_DOMAIN_DEVICE_EXT</unmanaged>
+	DeviceEXT = Device,
+	/// <unmanaged>VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT</unmanaged>
+	ClockMonotonicEXT = ClockMonotonic,
+	/// <unmanaged>VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT</unmanaged>
+	ClockMonotonicRawEXT = ClockMonotonicRaw,
+	/// <unmanaged>VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT</unmanaged>
+	QueryPerformanceCounterEXT = QueryPerformanceCounter,
 }
 
 public enum VkDebugReportObjectTypeEXT
@@ -7411,18 +7753,6 @@ public enum VkBuildAccelerationStructureFlagsKHR
 public enum VkPipelineCompilerControlFlagsAMD
 {
 	None = 0,
-}
-
-public enum VkTimeDomainEXT
-{
-	/// <unmanaged>VK_TIME_DOMAIN_DEVICE_EXT</unmanaged>
-	Device = 0,
-	/// <unmanaged>VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT</unmanaged>
-	ClockMonotonic = 1,
-	/// <unmanaged>VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT</unmanaged>
-	ClockMonotonicRaw = 2,
-	/// <unmanaged>VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT</unmanaged>
-	QueryPerformanceCounter = 3,
 }
 
 public enum VkMemoryOverallocationBehaviorAMD
@@ -7924,16 +8254,6 @@ public enum VkMicromapCreateFlagsEXT
 	DeviceAddressCaptureReplay = 0x00000001,
 }
 
-[Flags]
-public enum VkPhysicalDeviceSchedulingControlsFlagsARM
-{
-	None = 0,
-	/// <unmanaged>VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM</unmanaged>
-	ShaderCoreCountARM = 0x00000001,
-	/// <unmanaged>VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FLAG_BITS_MAX_ENUM_ARM</unmanaged>
-	FlagBitsMaxEnumARM = 0x7FFFFFFF,
-}
-
 public enum VkSubpassMergeStatusEXT
 {
 	/// <unmanaged>VK_SUBPASS_MERGE_STATUS_MERGED_EXT</unmanaged>
@@ -8242,288 +8562,6 @@ public enum VkExportMetalObjectTypeFlagsEXT
 	MetalSharedEvent = 0x00000020,
 }
 
-public enum VkVideoEncodeTuningModeKHR
-{
-	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR</unmanaged>
-	Default = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR</unmanaged>
-	HighQuality = 1,
-	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR</unmanaged>
-	LowLatency = 2,
-	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR</unmanaged>
-	UltraLowLatency = 3,
-	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR</unmanaged>
-	Lossless = 4,
-}
-
-[Flags]
-public enum VkVideoEncodeCapabilityFlagsKHR
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR</unmanaged>
-	PrecedingExternallyEncodedBytes = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR</unmanaged>
-	InsufficientBitstreamBufferRangeDetection = 0x00000002,
-}
-
-[Flags]
-public enum VkVideoEncodeRateControlModeFlagsKHR
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR</unmanaged>
-	Default = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</unmanaged>
-	Disabled = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR</unmanaged>
-	Cbr = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR</unmanaged>
-	Vbr = 0x00000004,
-}
-
-[Flags]
-public enum VkVideoEncodeFeedbackFlagsKHR
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR</unmanaged>
-	BitstreamBufferOffset = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR</unmanaged>
-	BitstreamBytesWritten = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR</unmanaged>
-	BitstreamHasOverrides = 0x00000004,
-}
-
-[Flags]
-public enum VkVideoEncodeUsageFlagsKHR
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR</unmanaged>
-	Default = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR</unmanaged>
-	Transcoding = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR</unmanaged>
-	Streaming = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR</unmanaged>
-	Recording = 0x00000004,
-	/// <unmanaged>VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR</unmanaged>
-	Conferencing = 0x00000008,
-}
-
-[Flags]
-public enum VkVideoEncodeContentFlagsKHR
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR</unmanaged>
-	Default = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR</unmanaged>
-	Camera = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR</unmanaged>
-	Desktop = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR</unmanaged>
-	Rendered = 0x00000004,
-}
-
-[Flags]
-public enum VkVideoEncodeH264CapabilityFlagsEXT
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_EXT</unmanaged>
-	HrdCompliance = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT</unmanaged>
-	PredictionWeightTableGenerated = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_EXT</unmanaged>
-	RowUnalignedSlice = 0x00000004,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_EXT</unmanaged>
-	DifferentSliceType = 0x00000008,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT</unmanaged>
-	BFrameInL0List = 0x00000010,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT</unmanaged>
-	BFrameInL1List = 0x00000020,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT</unmanaged>
-	PerPictureTypeMinMaxQp = 0x00000040,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_EXT</unmanaged>
-	PerSliceConstantQp = 0x00000080,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_EXT</unmanaged>
-	GeneratePrefixNalu = 0x00000100,
-}
-
-[Flags]
-public enum VkVideoEncodeH264StdFlagsEXT
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT</unmanaged>
-	SeparateColorPlaneFlagSet = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG_SET_BIT_EXT</unmanaged>
-	QpprimeYZeroTransformBypassFlagSet = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_EXT</unmanaged>
-	ScalingMatrixPresentFlagSet = 0x00000004,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_EXT</unmanaged>
-	ChromaQpIndexOffset = 0x00000008,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT</unmanaged>
-	SecondChromaQpIndexOffset = 0x00000010,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_EXT</unmanaged>
-	PicInitQpMinus26 = 0x00000020,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT</unmanaged>
-	WeightedPredFlagSet = 0x00000040,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT</unmanaged>
-	WeightedBipredIdcExplicit = 0x00000080,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_EXT</unmanaged>
-	WeightedBipredIdcImplicit = 0x00000100,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_EXT</unmanaged>
-	Transform8x8ModeFlagSet = 0x00000200,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_EXT</unmanaged>
-	DirectSpatialMvPredFlagUnset = 0x00000400,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_EXT</unmanaged>
-	EntropyCodingModeFlagUnset = 0x00000800,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_EXT</unmanaged>
-	EntropyCodingModeFlagSet = 0x00001000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_EXT</unmanaged>
-	Direct8x8InferenceFlagUnset = 0x00002000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT</unmanaged>
-	ConstrainedIntraPredFlagSet = 0x00004000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_EXT</unmanaged>
-	DeblockingFilterDisabled = 0x00008000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_EXT</unmanaged>
-	DeblockingFilterEnabled = 0x00010000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT</unmanaged>
-	DeblockingFilterPartial = 0x00020000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_SLICE_QP_DELTA_BIT_EXT</unmanaged>
-	SliceQpDelta = 0x00080000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_STD_DIFFERENT_SLICE_QP_DELTA_BIT_EXT</unmanaged>
-	DifferentSliceQpDelta = 0x00100000,
-}
-
-[Flags]
-public enum VkVideoEncodeH264RateControlFlagsEXT
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT</unmanaged>
-	AttemptHrdCompliance = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_EXT</unmanaged>
-	RegularGop = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT</unmanaged>
-	ReferencePatternFlat = 0x00000004,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT</unmanaged>
-	ReferencePatternDyadic = 0x00000008,
-	/// <unmanaged>VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_EXT</unmanaged>
-	TemporalLayerPatternDyadic = 0x00000010,
-}
-
-[Flags]
-public enum VkVideoEncodeH265CapabilityFlagsEXT
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_EXT</unmanaged>
-	HrdCompliance = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT</unmanaged>
-	PredictionWeightTableGenerated = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_EXT</unmanaged>
-	RowUnalignedSliceSegment = 0x00000004,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_EXT</unmanaged>
-	DifferentSliceSegmentType = 0x00000008,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT</unmanaged>
-	BFrameInL0List = 0x00000010,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT</unmanaged>
-	BFrameInL1List = 0x00000020,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT</unmanaged>
-	PerPictureTypeMinMaxQp = 0x00000040,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_EXT</unmanaged>
-	PerSliceSegmentConstantQp = 0x00000080,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_EXT</unmanaged>
-	MultipleTilesPerSliceSegment = 0x00000100,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_EXT</unmanaged>
-	MultipleSliceSegmentsPerTile = 0x00000200,
-}
-
-[Flags]
-public enum VkVideoEncodeH265StdFlagsEXT
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT</unmanaged>
-	SeparateColorPlaneFlagSet = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SAMPLE_ADAPTIVE_OFFSET_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	SampleAdaptiveOffsetEnabledFlagSet = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_EXT</unmanaged>
-	ScalingListDataPresentFlagSet = 0x00000004,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	PcmEnabledFlagSet = 0x00000008,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	SpsTemporalMvpEnabledFlagSet = 0x00000010,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_EXT</unmanaged>
-	InitQpMinus26 = 0x00000020,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT</unmanaged>
-	WeightedPredFlagSet = 0x00000040,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT</unmanaged>
-	WeightedBipredFlagSet = 0x00000080,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_EXT</unmanaged>
-	Log2ParallelMergeLevelMinus2 = 0x00000100,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	SignDataHidingEnabledFlagSet = 0x00000200,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	TransformSkipEnabledFlagSet = 0x00000400,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT</unmanaged>
-	TransformSkipEnabledFlagUnset = 0x00000800,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_EXT</unmanaged>
-	PpsSliceChromaQpOffsetsPresentFlagSet = 0x00001000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	TransquantBypassEnabledFlagSet = 0x00002000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT</unmanaged>
-	ConstrainedIntraPredFlagSet = 0x00004000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	EntropyCodingSyncEnabledFlagSet = 0x00008000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	DeblockingFilterOverrideEnabledFlagSet = 0x00010000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_EXT</unmanaged>
-	DependentSliceSegmentsEnabledFlagSet = 0x00020000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT</unmanaged>
-	DependentSliceSegmentFlagSet = 0x00040000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_SLICE_QP_DELTA_BIT_EXT</unmanaged>
-	SliceQpDelta = 0x00080000,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_STD_DIFFERENT_SLICE_QP_DELTA_BIT_EXT</unmanaged>
-	DifferentSliceQpDelta = 0x00100000,
-}
-
-[Flags]
-public enum VkVideoEncodeH265CtbSizeFlagsEXT
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_EXT</unmanaged>
-	Size16 = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_EXT</unmanaged>
-	Size32 = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_EXT</unmanaged>
-	Size64 = 0x00000004,
-}
-
-[Flags]
-public enum VkVideoEncodeH265TransformBlockSizeFlagsEXT
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_EXT</unmanaged>
-	Size4 = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_EXT</unmanaged>
-	Size8 = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_EXT</unmanaged>
-	Size16 = 0x00000004,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_EXT</unmanaged>
-	Size32 = 0x00000008,
-}
-
-[Flags]
-public enum VkVideoEncodeH265RateControlFlagsEXT
-{
-	None = 0,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT</unmanaged>
-	AttemptHrdCompliance = 0x00000001,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_EXT</unmanaged>
-	RegularGop = 0x00000002,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT</unmanaged>
-	ReferencePatternFlat = 0x00000004,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT</unmanaged>
-	ReferencePatternDyadic = 0x00000008,
-	/// <unmanaged>VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_EXT</unmanaged>
-	TemporalSubLayerPatternDyadic = 0x00000010,
-}
-
 public enum VkDisplacementMicromapFormatNV
 {
 	/// <unmanaged>VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV</unmanaged>
@@ -8769,6 +8807,18 @@ public enum VkMemoryUnmapFlagsKHR
 }
 
 [Flags]
+public enum VkVideoEncodeFlagsKHR
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkVideoEncodeRateControlFlagsKHR
+{
+	None = 0,
+}
+
+[Flags]
 public enum VkSubmitFlagsKHR
 {
 	None = 0,
@@ -8907,12 +8957,6 @@ public enum VkAccelerationStructureMotionInstanceFlagsNV
 }
 
 [Flags]
-public enum VkMemoryDecompressionMethodFlagsNV
-{
-	None = 0,
-}
-
-[Flags]
 public enum VkAndroidSurfaceCreateFlagsKHR
 {
 	None = 0,
@@ -8938,18 +8982,6 @@ public enum VkMetalSurfaceCreateFlagsEXT
 
 [Flags]
 public enum VkViSurfaceCreateFlagsNN
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkVideoEncodeFlagsKHR
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkVideoEncodeRateControlFlagsKHR
 {
 	None = 0,
 }
@@ -9520,8 +9552,15 @@ public enum VkBufferUsageFlags2KHR : ulong
 }
 
 [Flags]
-public enum VkMemoryDecompressionMethodFlagBitsNV : ulong
+public enum VkPhysicalDeviceSchedulingControlsFlagsARM : ulong
+{
+	/// <unmanaged>VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM</unmanaged>
+	ShaderCoreCountARM = 0x00000001UL,
+}
+
+[Flags]
+public enum VkMemoryDecompressionMethodFlagsNV : ulong
 {
 	/// <unmanaged>VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV</unmanaged>
-	VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV = 0x00000001UL,
+	GDeflate_1_0 = 0x00000001UL,
 }

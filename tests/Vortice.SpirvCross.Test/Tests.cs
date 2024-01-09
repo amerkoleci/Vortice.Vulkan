@@ -1,4 +1,4 @@
-// Copyright © Amer Koleci and Contributors.
+// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using NUnit.Framework;
@@ -23,7 +23,7 @@ public unsafe class Tests
 
         spvc_context_create(out spvc_context _handle).CheckResult("Cannot create SPIRV-Cross context");
         //spvc_context_set_error_callback(_handle, &OnErrorCallback, 0);
-        Assert.IsEmpty(spvc_context_get_last_error_string(_handle));
+        Assert.That(spvc_context_get_last_error_string(_handle), Is.Empty);
 
         spvc_context_release_allocations(_handle);
         spvc_context_destroy(_handle);
@@ -43,8 +43,8 @@ public unsafe class Tests
         spvc_compiler_install_compiler_options(compiler, options);
 
         spvc_compiler_compile(compiler, out string? glsl);
-        Assert.IsNotEmpty(glsl);
-        Assert.IsEmpty(spvc_context_get_last_error_string(context));
+        Assert.That(glsl, Is.Not.Empty);
+        Assert.That(spvc_context_get_last_error_string(context), Is.Empty);
 
         spvc_context_release_allocations(context);
         spvc_context_destroy(context);
@@ -64,8 +64,8 @@ public unsafe class Tests
         spvc_compiler_install_compiler_options(compiler, options);
 
         spvc_compiler_compile(compiler, out string? hlsl);
-        Assert.IsNotEmpty(hlsl);
-        Assert.IsEmpty(spvc_context_get_last_error_string(context));
+        Assert.That(hlsl, Is.Not.Empty);
+        Assert.That(spvc_context_get_last_error_string(context), Is.Empty);
 
         spvc_context_release_allocations(context);
         spvc_context_destroy(context);
@@ -85,30 +85,30 @@ public unsafe class Tests
         spvc_reflected_resource* resourceList;
         spvc_resources_get_resource_list_for_type(resources, SPVC_RESOURCE_TYPE_UNIFORM_BUFFER, out resourceList, out nuint resourceSize).CheckResult();
 
-        Assert.AreEqual(resourceSize, (nuint)1);
+        Assert.That(resourceSize, Is.EqualTo((nuint)1));
 
         for (uint i = 0; i < (uint)resourceSize; i++)
         {
-            Assert.AreEqual(resourceList[i].id, 19);
-            Assert.AreEqual(resourceList[i].base_type_id, 17);
-            Assert.AreEqual(resourceList[i].type_id, 18);
-            Assert.AreEqual(resourceList[i].GetName(), "UBO");
+            Assert.That(resourceList[i].id, Is.EqualTo(19));
+            Assert.That(resourceList[i].base_type_id, Is.EqualTo(17));
+            Assert.That(resourceList[i].type_id, Is.EqualTo(18));
+            Assert.That(resourceList[i].GetName(), Is.EqualTo("UBO"));
 
             uint descriptorSet = spvc_compiler_get_decoration(compiler_glsl, resourceList[i].id, SpvDecoration.DescriptorSet);
             uint binding = spvc_compiler_get_decoration(compiler_glsl, resourceList[i].id, SpvDecoration.Binding);
-            Assert.AreEqual(descriptorSet, 0u);
-            Assert.AreEqual(binding, 0u);
+            Assert.That(descriptorSet, Is.EqualTo(0u));
+            Assert.That(binding, Is.EqualTo(0u));
         }
 
-        Assert.IsEmpty(spvc_context_get_last_error_string(context));
+        Assert.That(spvc_context_get_last_error_string(context), Is.Empty);
 
         spvc_resources_get_resource_list_for_type(resources, SPVC_RESOURCE_TYPE_STAGE_INPUT, out resourceList, out resourceSize).CheckResult();
-        Assert.AreEqual(resourceSize, (nuint)3);
-        Assert.AreEqual(resourceList[0].GetName(), "inUV");
-        Assert.AreEqual(resourceList[1].GetName(), "inPos");
-        Assert.AreEqual(resourceList[2].GetName(), "inNormal");
+        Assert.That(resourceSize, Is.EqualTo((nuint)3));
+        Assert.That(resourceList[0].GetName(), Is.EqualTo("inUV"));
+        Assert.That(resourceList[1].GetName(), Is.EqualTo("inPos"));
+        Assert.That(resourceList[2].GetName(), Is.EqualTo("inNormal"));
 
-        Assert.IsEmpty(spvc_context_get_last_error_string(context));
+        Assert.That(spvc_context_get_last_error_string(context), Is.Empty);
         spvc_context_release_allocations(context);
         spvc_context_destroy(context);
     }
@@ -126,22 +126,22 @@ public unsafe class Tests
         spvc_resources_get_resource_list_for_type(resources, SPVC_RESOURCE_TYPE_SAMPLED_IMAGE, out spvc_reflected_resource* resourceList, out nuint resourceSize).CheckResult();
         ReadOnlySpan<spvc_combined_image_sampler> samplers = spvc_compiler_get_combined_image_samplers(compiler_glsl);
 
-        Assert.AreEqual(resourceSize, (nuint)1);
+        Assert.That(resourceSize, Is.EqualTo((nuint)1));
 
         for (uint i = 0; i < (uint)resourceSize; i++)
         {
-            Assert.AreEqual(resourceList[i].id, 13);
-            Assert.AreEqual(resourceList[i].base_type_id, 11);
-            Assert.AreEqual(resourceList[i].type_id, 12);
-            Assert.AreEqual(resourceList[i].GetName(), "samplerColor");
+            Assert.That(resourceList[i].id, Is.EqualTo(13));
+            Assert.That(resourceList[i].base_type_id, Is.EqualTo(11));
+            Assert.That(resourceList[i].type_id, Is.EqualTo(12));
+            Assert.That(resourceList[i].GetName(), Is.EqualTo("samplerColor"));
 
             uint descriptorSet = spvc_compiler_get_decoration(compiler_glsl, resourceList[i].id, SpvDecoration.DescriptorSet);
             uint binding = spvc_compiler_get_decoration(compiler_glsl, resourceList[i].id, SpvDecoration.Binding);
-            Assert.AreEqual(descriptorSet, 0u);
-            Assert.AreEqual(binding, 1u);
+            Assert.That(descriptorSet, Is.EqualTo(0u));
+            Assert.That(binding, Is.EqualTo(1u));
         }
 
-        Assert.IsEmpty(spvc_context_get_last_error_string(context));
+        Assert.That(spvc_context_get_last_error_string(context), Is.Empty);
         spvc_context_release_allocations(context);
         spvc_context_destroy(context);
     }

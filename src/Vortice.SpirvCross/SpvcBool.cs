@@ -1,16 +1,11 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 namespace Vortice.SpirvCross;
 
-public readonly partial struct SpvcBool : IComparable, IComparable<SpvcBool>, IEquatable<SpvcBool>, IFormattable
+public readonly partial struct SpvcBool(byte value) : IComparable, IComparable<SpvcBool>, IEquatable<SpvcBool>, IFormattable
 {
-    public readonly byte Value;
-
-    public SpvcBool(byte value)
-    {
-        Value = value;
-    }
+    public readonly byte Value = value;
 
     public static SpvcBool False => new(0);
     public static SpvcBool True => new(1);

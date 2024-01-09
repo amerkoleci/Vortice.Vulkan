@@ -1,7 +1,9 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using static Vortice.Vulkan.GLFW;
+using SDL;
+using static SDL.SDL;
+using static SDL.SDL_bool;
 
 namespace Vortice.Vulkan;
 
@@ -10,88 +12,83 @@ public enum WindowFlags
 {
     None = 0,
     Fullscreen = 1 << 0,
-    FullscreenDesktop = 1 << 1,
-    Hidden = 1 << 2,
-    Borderless = 1 << 3,
-    Resizable = 1 << 4,
-    Minimized = 1 << 5,
-    Maximized = 1 << 6,
+    Borderless = 1 << 1,
+    Resizable = 1 << 2,
+    Minimized = 1 << 3,
+    Maximized = 1 << 4,
 }
 
 public sealed unsafe class Window
 {
-    private readonly GLFWwindow _window;
+    private readonly SDL_Window _window;
 
     public unsafe Window(string title, int width, int height, WindowFlags flags = WindowFlags.None)
     {
         Title = title;
 
-        bool fullscreen = false;
-        GLFWmonitor monitor = GLFWmonitor.Null;
+        SDL_WindowFlags sdl_flags = SDL_WindowFlags.HighPixelDensity | SDL_WindowFlags.Vulkan | SDL_WindowFlags.Hidden;
         if ((flags & WindowFlags.Fullscreen) != WindowFlags.None)
         {
-            monitor = glfwGetPrimaryMonitor();
-            fullscreen = true;
+            sdl_flags |= SDL_WindowFlags.Fullscreen;
         }
-
-        if ((flags & WindowFlags.FullscreenDesktop) != WindowFlags.None)
-        {
-            monitor = glfwGetPrimaryMonitor();
-            //auto mode = glfwGetVideoMode(monitor);
-            //
-            //glfwWindowHint(GLFW_RED_BITS, mode->redBits);
-            //glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
-            //glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
-            //glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
-
-            glfwWindowHint(WindowHintBool.Decorated, false);
-            fullscreen = true;
-        }
-
-        if (!fullscreen)
+        else
         {
             if ((flags & WindowFlags.Borderless) != WindowFlags.None)
             {
-                glfwWindowHint(WindowHintBool.Decorated, false);
-            }
-            else
-            {
-                glfwWindowHint(WindowHintBool.Decorated, true);
+                sdl_flags |= SDL_WindowFlags.Borderless;
             }
 
             if ((flags & WindowFlags.Resizable) != WindowFlags.None)
             {
-                glfwWindowHint(WindowHintBool.Resizable, true);
-            }
-
-            if ((flags & WindowFlags.Hidden) != WindowFlags.None)
-            {
-                glfwWindowHint(WindowHintBool.Visible, false);
+                sdl_flags |= SDL_WindowFlags.Resizable;
             }
 
             if ((flags & WindowFlags.Minimized) != WindowFlags.None)
             {
-                glfwWindowHint(WindowHintBool.Iconified, true);
+                sdl_flags |= SDL_WindowFlags.Minimized;
             }
 
             if ((flags & WindowFlags.Maximized) != WindowFlags.None)
             {
-                glfwWindowHint(WindowHintBool.Maximized, true);
+                sdl_flags |= SDL_WindowFlags.Maximized;
             }
         }
 
-        _window = glfwCreateWindow(width, height, title, monitor, GLFWwindow.Null);
-        //Handle = hwnd;
+        _window = SDL_CreateWindow(title, width, height, sdl_flags);
+        if (_window.IsNull)
+        {
+            throw new Exception("SDL: failed to create window");
+        }
 
-        glfwGetWindowSize(_window, out width, out height);
-        Extent = new VkExtent2D(width, height);
+        _ = SDL_SetWindowPosition(_window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+        Id = SDL_GetWindowID(_window);
     }
 
     public string Title { get; }
-    public VkExtent2D Extent { get; }
-    //public IntPtr Handle { get; }
 
-    public bool ShoudClose => glfwWindowShouldClose(_window);
+    public SDL_WindowID Id { get; }
+    public VkExtent2D Extent
+    {
+        get
+        {
+            SDL_GetWindowSize(_window, out int width, out int height);
+            return new(width, height);
+        }
+    }
 
-    public VkResult CreateSurface(VkInstance instance, VkSurfaceKHR* surface) => glfwCreateWindowSurface(instance, _window, null, surface);
+    public void Show()
+    {
+        _ = SDL_ShowWindow(_window);
+    }
+
+    public VkSurfaceKHR CreateSurface(VkInstance instance)
+    {
+        VkSurfaceKHR surface;
+        if (SDL_Vulkan_CreateSurface(_window, instance, null, (ulong*)&surface) != SDL_TRUE)
+        {
+            throw new Exception("SDL: failed to create vulkan surface");
+        }
+
+        return surface;
+    }
 }

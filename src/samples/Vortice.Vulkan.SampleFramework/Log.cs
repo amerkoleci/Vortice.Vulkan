@@ -1,4 +1,4 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 namespace Vortice.Vulkan;
@@ -25,7 +25,7 @@ public static class Log
 
     private static void WriteColored(ConsoleColor color, string message)
     {
-        var currentColor = Console.ForegroundColor;
+        ConsoleColor currentColor = Console.ForegroundColor;
         Console.ForegroundColor = color;
         Console.Write(message);
         Console.ForegroundColor = currentColor;

@@ -1,5 +1,7 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
+
+using System.Diagnostics.CodeAnalysis;
 
 namespace Vortice.Vulkan;
 
@@ -21,22 +23,13 @@ public partial struct VkOffset3D : IEquatable<VkOffset3D>
     }
 
     /// <inheritdoc/>
-    public override bool Equals(object? obj) => obj is VkOffset3D other && Equals(other);
+    public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is VkOffset3D other && Equals(other);
 
     /// <inheritdoc/>
-    public bool Equals(VkOffset3D other) => x == other.x && y == other.y && z == other.z;
+    public readonly bool Equals(VkOffset3D other) => x == other.x && y == other.y && z == other.z;
 
     /// <inheritdoc/>
-    public override int GetHashCode()
-    {
-        unchecked
-        {
-            int hashCode = x;
-            hashCode = (hashCode * 397) ^ y;
-            hashCode = (hashCode * 397) ^ z;
-            return hashCode;
-        }
-    }
+    public override readonly int GetHashCode() => HashCode.Combine(x, y, z);
 
     /// <inheritdoc/>
     public override readonly string ToString() => $"{{X={x},Y={y},Z={z}}}";

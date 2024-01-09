@@ -1,4 +1,4 @@
-// Copyright © Amer Koleci and Contributors.
+// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Text;
@@ -8,8 +8,8 @@ namespace Generator;
 
 public static partial class CsCodeGenerator
 {
-    private static readonly HashSet<string> s_instanceFunctions = new()
-    {
+    private static readonly HashSet<string> s_instanceFunctions =
+    [
         "vkGetDeviceProcAddr",
         "vkCmdBeginDebugUtilsLabelEXT",
         "vkCmdEndDebugUtilsLabelEXT",
@@ -22,10 +22,10 @@ public static partial class CsCodeGenerator
         "vkSetDebugUtilsObjectNameEXT",
         "vkSetDebugUtilsObjectTagEXT",
         "vkSubmitDebugUtilsMessageEXT"
-    };
+    ];
 
-    private static readonly HashSet<string> s_outReturnFunctions = new()
-    {
+    private static readonly HashSet<string> s_outReturnFunctions =
+    [
         "vkCreateInstance",
         "vkCreateDevice",
         "vkGetPhysicalDeviceFeatures",
@@ -121,7 +121,7 @@ public static partial class CsCodeGenerator
         "spvc_compiler_create_shader_resources",
         "spvc_context_create_compiler",
         "spvc_context_parse_spirv",
-    };
+    ];
 
     private static string GetFunctionPointerSignature(CppFunction function, bool canUseOut, bool allowNonBlittable = true)
     {
@@ -195,7 +195,7 @@ public static partial class CsCodeGenerator
             "System",
             "System.Runtime.InteropServices"
         };
-        if(_options.ExtraUsings.Count > 0)
+        if (_options.ExtraUsings.Count > 0)
         {
             usings.AddRange(_options.ExtraUsings);
         }
@@ -308,17 +308,8 @@ public static partial class CsCodeGenerator
 
         if (!_options.GenerateFunctionPointers)
         {
-            if (_options.GenerateLibraryImport)
-            {
-                modifier += " partial";
-                writer.WriteLine($"[LibraryImport(LibName, EntryPoint = \"{cppFunction.Name}\")]");
-            }
-            else
-            {
-                modifier += " extern";
-                writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = \"{cppFunction.Name}\")]");
-            }
-
+            modifier += " partial";
+            writer.WriteLine($"[LibraryImport(LibName, EntryPoint = \"{cppFunction.Name}\")]");
             writer.WriteLine($"{modifier} {returnCsName} {functionName}({argumentsString});");
         }
         else

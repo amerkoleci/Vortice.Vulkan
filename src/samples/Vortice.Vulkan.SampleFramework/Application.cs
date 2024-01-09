@@ -1,8 +1,9 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Runtime.InteropServices;
-using static Vortice.Vulkan.GLFW;
+using SDL;
+using static SDL.SDL;
 
 namespace Vortice.Vulkan;
 
@@ -12,19 +13,17 @@ public abstract class Application : IDisposable
 
     protected unsafe Application()
     {
-        if (!glfwInit())
+        if (SDL_Init(SDL_InitFlags.Video) != 0)
         {
-            throw new PlatformNotSupportedException("GLFW is not supported");
+            throw new PlatformNotSupportedException("SDL is not supported");
         }
 
-        glfwSetErrorCallback(&GlfwError);
+        SDL_LogSetOutputFunction(Log_SDL);
 
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        if (SDL_Vulkan_LoadLibrary() < 0)
         {
-            glfwInitHint(InitHintBool.CocoaChDirResources, false);
+            throw new PlatformNotSupportedException("SDL: Failed to init vulkan");
         }
-
-        glfwWindowHint((int)WindowHintClientApi.ClientApi, 0);
 
         // Create main window.
         MainWindow = new Window(Name, 1280, 720);
@@ -47,15 +46,39 @@ public abstract class Application : IDisposable
     {
     }
 
-    public void Run()
+    public unsafe void Run()
     {
         Initialize();
+        MainWindow.Show();
 
-        while (!MainWindow.ShoudClose &&
-            !_closeRequested)
+        bool running = true;
+
+        while (running && !_closeRequested)
         {
+            SDL_Event evt;
+            while (SDL_PollEvent(&evt))
+            {
+                if (evt.type == SDL_EventType.Quit)
+                {
+                    running = false;
+                    break;
+                }
+
+                if (evt.type == SDL_EventType.WindowCloseRequested && evt.window.windowID == MainWindow.Id)
+                {
+                    running = false;
+                    break;
+                }
+                else if (evt.type >= SDL_EventType.WindowFirst && evt.type <= SDL_EventType.WindowLast)
+                {
+                    HandleWindowEvent(evt);
+                }
+            }
+
+            if (!running)
+                break;
+
             OnTick();
-            glfwPollEvents();
         }
     }
 
@@ -64,9 +87,38 @@ public abstract class Application : IDisposable
 
     }
 
-    [UnmanagedCallersOnly]
-    private static unsafe void GlfwError(int code, sbyte* message)
+    private void HandleWindowEvent(in SDL_Event evt)
     {
-        throw new Exception(new string(message));
+        switch (evt.window.type)
+        {
+            case SDL_EventType.WindowResized:
+                //_minimized = false;
+                HandleResize(evt);
+                break;
+        }
+    }
+
+    private void HandleResize(in SDL_Event evt)
+    {
+        //if (MainWindow.ClientSize.width != evt.window.data1 ||
+        //    MainWindow.ClientSize.height != evt.window.data2)
+        {
+            //_graphicsDevice.Resize((uint)evt.window.data1, (uint)evt.window.data2);
+            //OnSizeChanged(evt.window.data1, evt.window.data2);
+        }
+    }
+
+    //[UnmanagedCallersOnly]
+    private static void Log_SDL(SDL_LogCategory category, SDL_LogPriority priority, string description)
+    {
+        if (priority >= SDL_LogPriority.Error)
+        {
+            Log.Error($"[{priority}] SDL: {description}");
+            throw new Exception(description);
+        }
+        else
+        {
+            Log.Info($"[{priority}] SDL: {description}");
+        }
     }
 }

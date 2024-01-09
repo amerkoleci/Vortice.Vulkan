@@ -1,5 +1,7 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
+
+using System.Diagnostics.CodeAnalysis;
 
 namespace Vortice.Vulkan;
 
@@ -62,7 +64,7 @@ public readonly struct VkVersion : IComparable, IComparable<VkVersion>, IEquatab
 
     public int CompareTo(VkVersion other) => Value.CompareTo(other.Value);
 
-    public override bool Equals(object? obj) => (obj is VkVersion other) && Equals(other);
+    public override bool Equals([NotNullWhen(true)] object? obj) => (obj is VkVersion other) && Equals(other);
 
     public bool Equals(VkVersion other) => Value == other.Value;
 

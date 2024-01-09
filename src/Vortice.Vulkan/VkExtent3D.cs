@@ -1,5 +1,7 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
+
+using System.Diagnostics.CodeAnalysis;
 
 namespace Vortice.Vulkan;
 
@@ -40,13 +42,13 @@ public partial struct VkExtent3D : IEquatable<VkExtent3D>
     }
 
     /// <inheritdoc/>
-    public override bool Equals(object? obj) => obj is VkExtent3D other && Equals(other);
+    public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is VkExtent3D other && Equals(other);
 
     /// <inheritdoc/>
-    public bool Equals(VkExtent3D other) => width == other.width && height == other.height && depth == other.depth;
+    public readonly bool Equals(VkExtent3D other) => width == other.width && height == other.height && depth == other.depth;
 
     /// <inheritdoc/>
-    public override int GetHashCode() => HashCode.Combine(width, height, depth);
+    public override readonly int GetHashCode() => HashCode.Combine(width, height, depth);
 
     /// <inheritdoc/>
     public override readonly string ToString() => $"{{Width={width},Height={height},Depth={depth}}}";

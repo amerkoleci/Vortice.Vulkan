@@ -1,4 +1,4 @@
-// Copyright © Amer Koleci and Contributors.
+// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using NUnit.Framework;
@@ -20,11 +20,11 @@ public class CompileTests
         {
             using (var result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
             {
-                Assert.AreEqual(CompilationStatus.Success, result.Status);
+                Assert.That(CompilationStatus.Success, Is.EqualTo(result.Status));
 
                 var shaderCode = result.GetBytecode().ToArray();
 
-                Assert.True(shaderCode.Length > 0);
+                Assert.That(shaderCode.Length > 0, Is.True);
             }
         }
     }
@@ -39,11 +39,11 @@ public class CompileTests
         {
             using (var result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
             {
-                Assert.AreEqual(CompilationStatus.compilationError, result.Status);
+                Assert.That(CompilationStatus.compilationError, Is.EqualTo(result.Status));
 
                 var shaderCode = result.GetBytecode().ToArray();
 
-                Assert.IsTrue(result.ErrorMessage.Contains("error: 'out_var_ThisIsAnError' : undeclared identifier"));
+                Assert.That(result.ErrorMessage.Contains("error: 'out_var_ThisIsAnError' : undeclared identifier"), Is.True);
             }
         }
     }
@@ -59,11 +59,11 @@ public class CompileTests
             compiler.Includer = new Includer(Path.GetDirectoryName(shaderSourceFile)!);
             using (Result result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
             {
-                Assert.AreEqual(CompilationStatus.Success, result.Status);
+                Assert.That(CompilationStatus.Success, Is.EqualTo(result.Status));
 
                 var shaderCode = result.GetBytecode().ToArray();
 
-                Assert.True(shaderCode.Length > 0);
+                Assert.That(shaderCode.Length > 0, Is.True);
             }
         }
     }

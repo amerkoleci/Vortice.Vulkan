@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 272;
+	public const uint VK_HEADER_VERSION = 275;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -93,11 +93,11 @@ public static partial class Vulkan
 	/// <unmanaged>VK_KHR_video_decode_queue</unmanaged>
 	public const uint VK_KHR_video_decode_queue = 1;
 	/// <unmanaged>VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION</unmanaged>
-	public const uint VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 7;
+	public const uint VK_KHR_VIDEO_DECODE_QUEUE_SPEC_VERSION = 8;
 	/// <unmanaged>VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME</unmanaged>
 	public const string VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_decode_queue";
-	/// <unmanaged>VK_KHR_video_decode_h264</unmanaged>
-	public const uint VK_KHR_video_decode_h264 = 1;
+	/// <unmanaged>VK_KHR_video_encode_h264</unmanaged>
+	public const uint VK_KHR_video_encode_h264 = 1;
 	/// <unmanaged>vulkan_video_codec_h264std</unmanaged>
 	public const uint vulkan_video_codec_h264std = 1;
 	/// <unmanaged>vulkan_video_codecs_common</unmanaged>
@@ -118,6 +118,82 @@ public static partial class Vulkan
 	public const uint STD_VIDEO_H264_MAX_CHROMA_PLANES = 2;
 	/// <unmanaged>STD_VIDEO_H264_NO_REFERENCE_PICTURE</unmanaged>
 	public const float STD_VIDEO_H264_NO_REFERENCE_PICTURE = 0xFF;
+	/// <unmanaged>vulkan_video_codec_h264std_encode</unmanaged>
+	public const uint vulkan_video_codec_h264std_encode = 1;
+	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_1_0_0</unmanaged>
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_1_0_0 = new VkVersion(1, 0, 0);
+	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION</unmanaged>
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_1_0_0;
+	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_EXTENSION_NAME</unmanaged>
+	public const string VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264_encode";
+	/// <unmanaged>VK_KHR_VIDEO_ENCODE_H264_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_VIDEO_ENCODE_H264_SPEC_VERSION = 14;
+	/// <unmanaged>VK_KHR_VIDEO_ENCODE_H264_EXTENSION_NAME</unmanaged>
+	public const string VK_KHR_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_KHR_video_encode_h264";
+	/// <unmanaged>VK_KHR_video_encode_h265</unmanaged>
+	public const uint VK_KHR_video_encode_h265 = 1;
+	/// <unmanaged>vulkan_video_codec_h265std</unmanaged>
+	public const uint vulkan_video_codec_h265std = 1;
+	/// <unmanaged>STD_VIDEO_H265_CPB_CNT_LIST_SIZE</unmanaged>
+	public const uint STD_VIDEO_H265_CPB_CNT_LIST_SIZE = 32;
+	/// <unmanaged>STD_VIDEO_H265_SUBLAYERS_LIST_SIZE</unmanaged>
+	public const uint STD_VIDEO_H265_SUBLAYERS_LIST_SIZE = 7;
+	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS</unmanaged>
+	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS = 6;
+	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS</unmanaged>
+	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS = 16;
+	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS</unmanaged>
+	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS = 6;
+	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS</unmanaged>
+	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
+	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS</unmanaged>
+	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS = 6;
+	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS</unmanaged>
+	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS = 64;
+	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS</unmanaged>
+	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS = 2;
+	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS</unmanaged>
+	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS = 64;
+	/// <unmanaged>STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE</unmanaged>
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE = 6;
+	/// <unmanaged>STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE</unmanaged>
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19;
+	/// <unmanaged>STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE</unmanaged>
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE = 21;
+	/// <unmanaged>STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE</unmanaged>
+	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE = 3;
+	/// <unmanaged>STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE</unmanaged>
+	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128;
+	/// <unmanaged>STD_VIDEO_H265_MAX_NUM_LIST_REF</unmanaged>
+	public const uint STD_VIDEO_H265_MAX_NUM_LIST_REF = 15;
+	/// <unmanaged>STD_VIDEO_H265_MAX_CHROMA_PLANES</unmanaged>
+	public const uint STD_VIDEO_H265_MAX_CHROMA_PLANES = 2;
+	/// <unmanaged>STD_VIDEO_H265_MAX_SHORT_TERM_REF_PIC_SETS</unmanaged>
+	public const uint STD_VIDEO_H265_MAX_SHORT_TERM_REF_PIC_SETS = 64;
+	/// <unmanaged>STD_VIDEO_H265_MAX_DPB_SIZE</unmanaged>
+	public const uint STD_VIDEO_H265_MAX_DPB_SIZE = 16;
+	/// <unmanaged>STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS</unmanaged>
+	public const uint STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS = 32;
+	/// <unmanaged>STD_VIDEO_H265_MAX_LONG_TERM_PICS</unmanaged>
+	public const uint STD_VIDEO_H265_MAX_LONG_TERM_PICS = 16;
+	/// <unmanaged>STD_VIDEO_H265_MAX_DELTA_POC</unmanaged>
+	public const uint STD_VIDEO_H265_MAX_DELTA_POC = 48;
+	/// <unmanaged>STD_VIDEO_H265_NO_REFERENCE_PICTURE</unmanaged>
+	public const float STD_VIDEO_H265_NO_REFERENCE_PICTURE = 0xFF;
+	/// <unmanaged>vulkan_video_codec_h265std_encode</unmanaged>
+	public const uint vulkan_video_codec_h265std_encode = 1;
+	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_1_0_0</unmanaged>
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_1_0_0 = new VkVersion(1, 0, 0);
+	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION</unmanaged>
+	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_1_0_0;
+	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_EXTENSION_NAME</unmanaged>
+	public const string VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_encode";
+	/// <unmanaged>VK_KHR_VIDEO_ENCODE_H265_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_VIDEO_ENCODE_H265_SPEC_VERSION = 14;
+	/// <unmanaged>VK_KHR_VIDEO_ENCODE_H265_EXTENSION_NAME</unmanaged>
+	public const string VK_KHR_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_KHR_video_encode_h265";
+	/// <unmanaged>VK_KHR_video_decode_h264</unmanaged>
+	public const uint VK_KHR_video_decode_h264 = 1;
 	/// <unmanaged>vulkan_video_codec_h264std_decode</unmanaged>
 	public const uint vulkan_video_codec_h264std_decode = 1;
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_1_0_0</unmanaged>
@@ -129,7 +205,7 @@ public static partial class Vulkan
 	/// <unmanaged>STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE</unmanaged>
 	public const uint STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE = 2;
 	/// <unmanaged>VK_KHR_VIDEO_DECODE_H264_SPEC_VERSION</unmanaged>
-	public const uint VK_KHR_VIDEO_DECODE_H264_SPEC_VERSION = 8;
+	public const uint VK_KHR_VIDEO_DECODE_H264_SPEC_VERSION = 9;
 	/// <unmanaged>VK_KHR_VIDEO_DECODE_H264_EXTENSION_NAME</unmanaged>
 	public const string VK_KHR_VIDEO_DECODE_H264_EXTENSION_NAME = "VK_KHR_video_decode_h264";
 	/// <unmanaged>VK_KHR_dynamic_rendering</unmanaged>
@@ -392,54 +468,6 @@ public static partial class Vulkan
 	public const string VK_KHR_SHADER_CLOCK_EXTENSION_NAME = "VK_KHR_shader_clock";
 	/// <unmanaged>VK_KHR_video_decode_h265</unmanaged>
 	public const uint VK_KHR_video_decode_h265 = 1;
-	/// <unmanaged>vulkan_video_codec_h265std</unmanaged>
-	public const uint vulkan_video_codec_h265std = 1;
-	/// <unmanaged>STD_VIDEO_H265_CPB_CNT_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_CPB_CNT_LIST_SIZE = 32;
-	/// <unmanaged>STD_VIDEO_H265_SUBLAYERS_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_SUBLAYERS_LIST_SIZE = 7;
-	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS = 6;
-	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS = 16;
-	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS = 6;
-	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
-	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS = 6;
-	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS = 64;
-	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS = 2;
-	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS = 64;
-	/// <unmanaged>STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE = 6;
-	/// <unmanaged>STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19;
-	/// <unmanaged>STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE = 21;
-	/// <unmanaged>STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE = 3;
-	/// <unmanaged>STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128;
-	/// <unmanaged>STD_VIDEO_H265_MAX_NUM_LIST_REF</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_NUM_LIST_REF = 15;
-	/// <unmanaged>STD_VIDEO_H265_MAX_CHROMA_PLANES</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_CHROMA_PLANES = 2;
-	/// <unmanaged>STD_VIDEO_H265_MAX_SHORT_TERM_REF_PIC_SETS</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_SHORT_TERM_REF_PIC_SETS = 64;
-	/// <unmanaged>STD_VIDEO_H265_MAX_DPB_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_DPB_SIZE = 16;
-	/// <unmanaged>STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS = 32;
-	/// <unmanaged>STD_VIDEO_H265_MAX_LONG_TERM_PICS</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_LONG_TERM_PICS = 16;
-	/// <unmanaged>STD_VIDEO_H265_MAX_DELTA_POC</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_DELTA_POC = 48;
-	/// <unmanaged>STD_VIDEO_H265_NO_REFERENCE_PICTURE</unmanaged>
-	public const float STD_VIDEO_H265_NO_REFERENCE_PICTURE = 0xFF;
 	/// <unmanaged>vulkan_video_codec_h265std_decode</unmanaged>
 	public const uint vulkan_video_codec_h265std_decode = 1;
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_1_0_0</unmanaged>
@@ -451,7 +479,7 @@ public static partial class Vulkan
 	/// <unmanaged>STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE</unmanaged>
 	public const uint STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8;
 	/// <unmanaged>VK_KHR_VIDEO_DECODE_H265_SPEC_VERSION</unmanaged>
-	public const uint VK_KHR_VIDEO_DECODE_H265_SPEC_VERSION = 7;
+	public const uint VK_KHR_VIDEO_DECODE_H265_SPEC_VERSION = 8;
 	/// <unmanaged>VK_KHR_VIDEO_DECODE_H265_EXTENSION_NAME</unmanaged>
 	public const string VK_KHR_VIDEO_DECODE_H265_EXTENSION_NAME = "VK_KHR_video_decode_h265";
 	/// <unmanaged>VK_KHR_global_priority</unmanaged>
@@ -592,6 +620,12 @@ public static partial class Vulkan
 	public const uint VK_KHR_PRESENT_ID_SPEC_VERSION = 1;
 	/// <unmanaged>VK_KHR_PRESENT_ID_EXTENSION_NAME</unmanaged>
 	public const string VK_KHR_PRESENT_ID_EXTENSION_NAME = "VK_KHR_present_id";
+	/// <unmanaged>VK_KHR_video_encode_queue</unmanaged>
+	public const uint VK_KHR_video_encode_queue = 1;
+	/// <unmanaged>VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 12;
+	/// <unmanaged>VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME</unmanaged>
+	public const string VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
 	/// <unmanaged>VK_KHR_synchronization2</unmanaged>
 	public const uint VK_KHR_synchronization2 = 1;
 	/// <unmanaged>VK_KHR_SYNCHRONIZATION_2_SPEC_VERSION</unmanaged>
@@ -670,6 +704,30 @@ public static partial class Vulkan
 	public const uint VK_KHR_COOPERATIVE_MATRIX_SPEC_VERSION = 2;
 	/// <unmanaged>VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME</unmanaged>
 	public const string VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_KHR_cooperative_matrix";
+	/// <unmanaged>VK_KHR_video_maintenance1</unmanaged>
+	public const uint VK_KHR_video_maintenance1 = 1;
+	/// <unmanaged>VK_KHR_VIDEO_MAINTENANCE_1_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_VIDEO_MAINTENANCE_1_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_VIDEO_MAINTENANCE_1_EXTENSION_NAME</unmanaged>
+	public const string VK_KHR_VIDEO_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_video_maintenance1";
+	/// <unmanaged>VK_KHR_vertex_attribute_divisor</unmanaged>
+	public const uint VK_KHR_vertex_attribute_divisor = 1;
+	/// <unmanaged>VK_KHR_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME</unmanaged>
+	public const string VK_KHR_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME = "VK_KHR_vertex_attribute_divisor";
+	/// <unmanaged>VK_KHR_calibrated_timestamps</unmanaged>
+	public const uint VK_KHR_calibrated_timestamps = 1;
+	/// <unmanaged>VK_KHR_CALIBRATED_TIMESTAMPS_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_CALIBRATED_TIMESTAMPS_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_CALIBRATED_TIMESTAMPS_EXTENSION_NAME</unmanaged>
+	public const string VK_KHR_CALIBRATED_TIMESTAMPS_EXTENSION_NAME = "VK_KHR_calibrated_timestamps";
+	/// <unmanaged>VK_KHR_maintenance6</unmanaged>
+	public const uint VK_KHR_maintenance6 = 1;
+	/// <unmanaged>VK_KHR_MAINTENANCE_6_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_MAINTENANCE_6_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_MAINTENANCE_6_EXTENSION_NAME</unmanaged>
+	public const string VK_KHR_MAINTENANCE_6_EXTENSION_NAME = "VK_KHR_maintenance6";
 	/// <unmanaged>VK_EXT_debug_report</unmanaged>
 	public const uint VK_EXT_debug_report = 1;
 	/// <unmanaged>VK_EXT_DEBUG_REPORT_SPEC_VERSION</unmanaged>
@@ -1435,7 +1493,7 @@ public static partial class Vulkan
 	/// <unmanaged>VK_QCOM_render_pass_transform</unmanaged>
 	public const uint VK_QCOM_render_pass_transform = 1;
 	/// <unmanaged>VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION</unmanaged>
-	public const uint VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 3;
+	public const uint VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 4;
 	/// <unmanaged>VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME</unmanaged>
 	public const string VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform";
 	/// <unmanaged>VK_EXT_depth_bias_control</unmanaged>
@@ -1561,7 +1619,7 @@ public static partial class Vulkan
 	/// <unmanaged>VK_QCOM_rotated_copy_commands</unmanaged>
 	public const uint VK_QCOM_rotated_copy_commands = 1;
 	/// <unmanaged>VK_QCOM_ROTATED_COPY_COMMANDS_SPEC_VERSION</unmanaged>
-	public const uint VK_QCOM_ROTATED_COPY_COMMANDS_SPEC_VERSION = 1;
+	public const uint VK_QCOM_ROTATED_COPY_COMMANDS_SPEC_VERSION = 2;
 	/// <unmanaged>VK_QCOM_ROTATED_COPY_COMMANDS_EXTENSION_NAME</unmanaged>
 	public const string VK_QCOM_ROTATED_COPY_COMMANDS_EXTENSION_NAME = "VK_QCOM_rotated_copy_commands";
 	/// <unmanaged>VK_EXT_image_robustness</unmanaged>
@@ -1990,6 +2048,12 @@ public static partial class Vulkan
 	public const uint VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_SPEC_VERSION = 1;
 	/// <unmanaged>VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_EXTENSION_NAME</unmanaged>
 	public const string VK_QCOM_MULTIVIEW_PER_VIEW_RENDER_AREAS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_render_areas";
+	/// <unmanaged>VK_NV_per_stage_descriptor_set</unmanaged>
+	public const uint VK_NV_per_stage_descriptor_set = 1;
+	/// <unmanaged>VK_NV_PER_STAGE_DESCRIPTOR_SET_SPEC_VERSION</unmanaged>
+	public const uint VK_NV_PER_STAGE_DESCRIPTOR_SET_SPEC_VERSION = 1;
+	/// <unmanaged>VK_NV_PER_STAGE_DESCRIPTOR_SET_EXTENSION_NAME</unmanaged>
+	public const string VK_NV_PER_STAGE_DESCRIPTOR_SET_EXTENSION_NAME = "VK_NV_per_stage_descriptor_set";
 	/// <unmanaged>VK_QCOM_image_processing2</unmanaged>
 	public const uint VK_QCOM_image_processing2 = 1;
 	/// <unmanaged>VK_QCOM_IMAGE_PROCESSING_2_SPEC_VERSION</unmanaged>
@@ -2110,40 +2174,6 @@ public static partial class Vulkan
 	public const uint VK_KHR_PORTABILITY_SUBSET_SPEC_VERSION = 1;
 	/// <unmanaged>VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME</unmanaged>
 	public const string VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME = "VK_KHR_portability_subset";
-	/// <unmanaged>VK_KHR_video_encode_queue</unmanaged>
-	public const uint VK_KHR_video_encode_queue = 1;
-	/// <unmanaged>VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION</unmanaged>
-	public const uint VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 10;
-	/// <unmanaged>VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME</unmanaged>
-	public const string VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
-	/// <unmanaged>VK_EXT_video_encode_h264</unmanaged>
-	public const uint VK_EXT_video_encode_h264 = 1;
-	/// <unmanaged>vulkan_video_codec_h264std_encode</unmanaged>
-	public const uint vulkan_video_codec_h264std_encode = 1;
-	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_11</unmanaged>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_11 = new VkVersion(0, 9, 11);
-	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION</unmanaged>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_11;
-	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_EXTENSION_NAME</unmanaged>
-	public const string VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h264_encode";
-	/// <unmanaged>VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION</unmanaged>
-	public const uint VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 12;
-	/// <unmanaged>VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME</unmanaged>
-	public const string VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_EXT_video_encode_h264";
-	/// <unmanaged>VK_EXT_video_encode_h265</unmanaged>
-	public const uint VK_EXT_video_encode_h265 = 1;
-	/// <unmanaged>vulkan_video_codec_h265std_encode</unmanaged>
-	public const uint vulkan_video_codec_h265std_encode = 1;
-	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_12</unmanaged>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_12 = new VkVersion(0, 9, 12);
-	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION</unmanaged>
-	public static readonly VkVersion VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_12;
-	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_EXTENSION_NAME</unmanaged>
-	public const string VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_encode";
-	/// <unmanaged>VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION</unmanaged>
-	public const uint VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 12;
-	/// <unmanaged>VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME</unmanaged>
-	public const string VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME = "VK_EXT_video_encode_h265";
 	/// <unmanaged>VK_AMDX_shader_enqueue</unmanaged>
 	public const uint VK_AMDX_shader_enqueue = 1;
 	/// <unmanaged>VK_AMDX_SHADER_ENQUEUE_SPEC_VERSION</unmanaged>
@@ -2482,34 +2512,34 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_CU_LAUNCH_INFO_NVX = VkStructureType.CuLaunchInfoNVX;
 	public const VkStructureType VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX = VkStructureType.ImageViewHandleInfoNVX;
 	public const VkStructureType VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX = VkStructureType.ImageViewAddressPropertiesNVX;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_EXT = VkStructureType.VideoEncodeH264CapabilitiesEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_CREATE_INFO_EXT = VkStructureType.VideoEncodeH264SessionParametersCreateInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_ADD_INFO_EXT = VkStructureType.VideoEncodeH264SessionParametersAddInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PICTURE_INFO_EXT = VkStructureType.VideoEncodeH264PictureInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_DPB_SLOT_INFO_EXT = VkStructureType.VideoEncodeH264DpbSlotInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_NALU_SLICE_INFO_EXT = VkStructureType.VideoEncodeH264NaluSliceInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_GOP_REMAINING_FRAME_INFO_EXT = VkStructureType.VideoEncodeH264GopRemainingFrameInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PROFILE_INFO_EXT = VkStructureType.VideoEncodeH264ProfileInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_INFO_EXT = VkStructureType.VideoEncodeH264RateControlInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_EXT = VkStructureType.VideoEncodeH264RateControlLayerInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_CREATE_INFO_EXT = VkStructureType.VideoEncodeH264SessionCreateInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_EXT = VkStructureType.VideoEncodeH264QualityLevelPropertiesEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_GET_INFO_EXT = VkStructureType.VideoEncodeH264SessionParametersGetInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_EXT = VkStructureType.VideoEncodeH264SessionParametersFeedbackInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_CAPABILITIES_EXT = VkStructureType.VideoEncodeH265CapabilitiesEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_EXT = VkStructureType.VideoEncodeH265SessionParametersCreateInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_ADD_INFO_EXT = VkStructureType.VideoEncodeH265SessionParametersAddInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PICTURE_INFO_EXT = VkStructureType.VideoEncodeH265PictureInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_DPB_SLOT_INFO_EXT = VkStructureType.VideoEncodeH265DpbSlotInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_NALU_SLICE_SEGMENT_INFO_EXT = VkStructureType.VideoEncodeH265NaluSliceSegmentInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_GOP_REMAINING_FRAME_INFO_EXT = VkStructureType.VideoEncodeH265GopRemainingFrameInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PROFILE_INFO_EXT = VkStructureType.VideoEncodeH265ProfileInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_INFO_EXT = VkStructureType.VideoEncodeH265RateControlInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_LAYER_INFO_EXT = VkStructureType.VideoEncodeH265RateControlLayerInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_CREATE_INFO_EXT = VkStructureType.VideoEncodeH265SessionCreateInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUALITY_LEVEL_PROPERTIES_EXT = VkStructureType.VideoEncodeH265QualityLevelPropertiesEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_GET_INFO_EXT = VkStructureType.VideoEncodeH265SessionParametersGetInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_EXT = VkStructureType.VideoEncodeH265SessionParametersFeedbackInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_KHR = VkStructureType.VideoEncodeH264CapabilitiesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR = VkStructureType.VideoEncodeH264SessionParametersCreateInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR = VkStructureType.VideoEncodeH264SessionParametersAddInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PICTURE_INFO_KHR = VkStructureType.VideoEncodeH264PictureInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_DPB_SLOT_INFO_KHR = VkStructureType.VideoEncodeH264DpbSlotInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_NALU_SLICE_INFO_KHR = VkStructureType.VideoEncodeH264NaluSliceInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_GOP_REMAINING_FRAME_INFO_KHR = VkStructureType.VideoEncodeH264GopRemainingFrameInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PROFILE_INFO_KHR = VkStructureType.VideoEncodeH264ProfileInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_INFO_KHR = VkStructureType.VideoEncodeH264RateControlInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_KHR = VkStructureType.VideoEncodeH264RateControlLayerInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_CREATE_INFO_KHR = VkStructureType.VideoEncodeH264SessionCreateInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_KHR = VkStructureType.VideoEncodeH264QualityLevelPropertiesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_GET_INFO_KHR = VkStructureType.VideoEncodeH264SessionParametersGetInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = VkStructureType.VideoEncodeH264SessionParametersFeedbackInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_CAPABILITIES_KHR = VkStructureType.VideoEncodeH265CapabilitiesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR = VkStructureType.VideoEncodeH265SessionParametersCreateInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR = VkStructureType.VideoEncodeH265SessionParametersAddInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PICTURE_INFO_KHR = VkStructureType.VideoEncodeH265PictureInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_DPB_SLOT_INFO_KHR = VkStructureType.VideoEncodeH265DpbSlotInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_NALU_SLICE_SEGMENT_INFO_KHR = VkStructureType.VideoEncodeH265NaluSliceSegmentInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_GOP_REMAINING_FRAME_INFO_KHR = VkStructureType.VideoEncodeH265GopRemainingFrameInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PROFILE_INFO_KHR = VkStructureType.VideoEncodeH265ProfileInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR = VkStructureType.VideoEncodeH265RateControlInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_LAYER_INFO_KHR = VkStructureType.VideoEncodeH265RateControlLayerInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_CREATE_INFO_KHR = VkStructureType.VideoEncodeH265SessionCreateInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUALITY_LEVEL_PROPERTIES_KHR = VkStructureType.VideoEncodeH265QualityLevelPropertiesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_GET_INFO_KHR = VkStructureType.VideoEncodeH265SessionParametersGetInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = VkStructureType.VideoEncodeH265SessionParametersFeedbackInfoKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_CAPABILITIES_KHR = VkStructureType.VideoDecodeH264CapabilitiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_PICTURE_INFO_KHR = VkStructureType.VideoDecodeH264PictureInfoKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_PROFILE_INFO_KHR = VkStructureType.VideoDecodeH264ProfileInfoKHR;
@@ -2678,7 +2708,6 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT = VkStructureType.PhysicalDeviceExternalMemoryHostPropertiesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CLOCK_FEATURES_KHR = VkStructureType.PhysicalDeviceShaderClockFeaturesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD = VkStructureType.PipelineCompilerControlCreateInfoAMD;
-	public const VkStructureType VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_EXT = VkStructureType.CalibratedTimestampInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD = VkStructureType.PhysicalDeviceShaderCorePropertiesAMD;
 	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_CAPABILITIES_KHR = VkStructureType.VideoDecodeH265CapabilitiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR = VkStructureType.VideoDecodeH265SessionParametersCreateInfoKHR;
@@ -2691,8 +2720,6 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_KHR = VkStructureType.QueueFamilyGlobalPriorityPropertiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD = VkStructureType.DeviceMemoryOverallocationCreateInfoAMD;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT = VkStructureType.PhysicalDeviceVertexAttributeDivisorPropertiesEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT = VkStructureType.PipelineVertexInputDivisorStateCreateInfoEXT;
-	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT = VkStructureType.PhysicalDeviceVertexAttributeDivisorFeaturesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP = VkStructureType.PresentFrameTokenGgp;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV = VkStructureType.PhysicalDeviceComputeShaderDerivativesFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV = VkStructureType.PhysicalDeviceMeshShaderFeaturesNV;
@@ -3059,6 +3086,9 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR = VkStructureType.PhysicalDeviceCooperativeMatrixPropertiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM = VkStructureType.PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM;
 	public const VkStructureType VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM = VkStructureType.MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR = VkStructureType.PhysicalDeviceVideoMaintenance1FeaturesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR = VkStructureType.VideoInlineQueryInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV = VkStructureType.PhysicalDevicePerStageDescriptorSetFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_FEATURES_QCOM = VkStructureType.PhysicalDeviceImageProcessing2FeaturesQCOM;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM = VkStructureType.PhysicalDeviceImageProcessing2PropertiesQCOM;
 	public const VkStructureType VK_STRUCTURE_TYPE_SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM = VkStructureType.SamplerBlockMatchWindowCreateInfoQCOM;
@@ -3069,12 +3099,25 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM = VkStructureType.SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUBIC_CLAMP_FEATURES_QCOM = VkStructureType.PhysicalDeviceCubicClampFeaturesQCOM;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT = VkStructureType.PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_KHR = VkStructureType.PhysicalDeviceVertexAttributeDivisorPropertiesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_KHR = VkStructureType.PipelineVertexInputDivisorStateCreateInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR = VkStructureType.PhysicalDeviceVertexAttributeDivisorFeaturesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX = VkStructureType.ScreenBufferPropertiesQnx;
 	public const VkStructureType VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX = VkStructureType.ScreenBufferFormatPropertiesQnx;
 	public const VkStructureType VK_STRUCTURE_TYPE_IMPORT_SCREEN_BUFFER_INFO_QNX = VkStructureType.ImportScreenBufferInfoQnx;
 	public const VkStructureType VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX = VkStructureType.ExternalFormatQnx;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX = VkStructureType.PhysicalDeviceExternalMemoryScreenBufferFeaturesQnx;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT = VkStructureType.PhysicalDeviceLayeredDriverPropertiesMSFT;
+	public const VkStructureType VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR = VkStructureType.CalibratedTimestampInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES_KHR = VkStructureType.PhysicalDeviceMaintenance6FeaturesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES_KHR = VkStructureType.PhysicalDeviceMaintenance6PropertiesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS_KHR = VkStructureType.BindMemoryStatusKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO_KHR = VkStructureType.BindDescriptorSetsInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO_KHR = VkStructureType.PushConstantsInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO_KHR = VkStructureType.PushDescriptorSetInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO_KHR = VkStructureType.PushDescriptorSetWithTemplateInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT = VkStructureType.SetDescriptorBufferOffsetsInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT = VkStructureType.BindDescriptorBufferEmbeddedSamplersInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV = VkStructureType.PhysicalDeviceDescriptorPoolOverallocationFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VkStructureType.PhysicalDeviceVariablePointerFeatures;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES = VkStructureType.PhysicalDeviceShaderDrawParameterFeatures;
@@ -3175,6 +3218,9 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES_KHR = VkStructureType.PhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR = VkStructureType.PhysicalDevice8bitStorageFeaturesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR = VkStructureType.PhysicalDeviceShaderAtomicInt64FeaturesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_EXT = VkStructureType.CalibratedTimestampInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT = VkStructureType.PipelineVertexInputDivisorStateCreateInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT = VkStructureType.PhysicalDeviceVertexAttributeDivisorFeaturesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT = VkStructureType.PipelineCreationFeedbackCreateInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR = VkStructureType.PhysicalDeviceDriverPropertiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR = VkStructureType.PhysicalDeviceFloatControlsPropertiesKHR;
@@ -4087,6 +4133,7 @@ public static partial class Vulkan
 	public const VkImageCreateFlags VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT = VkImageCreateFlags.MultisampledRenderToSingleSampledEXT;
 	public const VkImageCreateFlags VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT = VkImageCreateFlags.View2DCompatibleEXT;
 	public const VkImageCreateFlags VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_QCOM = VkImageCreateFlags.FragmentDensityMapOffsetQCOM;
+	public const VkImageCreateFlags VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR = VkImageCreateFlags.VideoProfileIndependentKHR;
 	public const VkImageCreateFlags VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR = VkImageCreateFlags.SplitInstanceBindRegionsKHR;
 	public const VkImageCreateFlags VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR = VkImageCreateFlags.Array2DCompatibleKHR;
 	public const VkImageCreateFlags VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT_KHR = VkImageCreateFlags.BlockTexelViewCompatibleKHR;
@@ -4209,6 +4256,7 @@ public static partial class Vulkan
 	public const VkBufferCreateFlags VK_BUFFER_CREATE_PROTECTED_BIT = VkBufferCreateFlags.Protected;
 	public const VkBufferCreateFlags VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT = VkBufferCreateFlags.DeviceAddressCaptureReplay;
 	public const VkBufferCreateFlags VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT = VkBufferCreateFlags.DescriptorBufferCaptureReplayEXT;
+	public const VkBufferCreateFlags VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR = VkBufferCreateFlags.VideoProfileIndependentKHR;
 	public const VkBufferCreateFlags VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT = VkBufferCreateFlags.DeviceAddressCaptureReplayEXT;
 	public const VkBufferCreateFlags VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR = VkBufferCreateFlags.DeviceAddressCaptureReplayKHR;
 	public const VkBufferUsageFlags VK_BUFFER_USAGE_TRANSFER_SRC_BIT = VkBufferUsageFlags.TransferSrc;
@@ -4345,6 +4393,7 @@ public static partial class Vulkan
 	public const VkDescriptorSetLayoutCreateFlags VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT = VkDescriptorSetLayoutCreateFlags.EmbeddedImmutableSamplersEXT;
 	public const VkDescriptorSetLayoutCreateFlags VK_DESCRIPTOR_SET_LAYOUT_CREATE_INDIRECT_BINDABLE_BIT_NV = VkDescriptorSetLayoutCreateFlags.IndirectBindableNV;
 	public const VkDescriptorSetLayoutCreateFlags VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT = VkDescriptorSetLayoutCreateFlags.HostOnlyPoolEXT;
+	public const VkDescriptorSetLayoutCreateFlags VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV = VkDescriptorSetLayoutCreateFlags.PerStageNV;
 	public const VkDescriptorSetLayoutCreateFlags VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT = VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPoolEXT;
 	public const VkDescriptorSetLayoutCreateFlags VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_VALVE = VkDescriptorSetLayoutCreateFlags.HostOnlyPoolVALVE;
 	public const VkAttachmentDescriptionFlags VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT = VkAttachmentDescriptionFlags.MayAlias;
@@ -4647,8 +4696,8 @@ public static partial class Vulkan
 	public const VkQueryResultStatusKHR VK_QUERY_RESULT_STATUS_NOT_READY_KHR = VkQueryResultStatusKHR.NotReady;
 	public const VkQueryResultStatusKHR VK_QUERY_RESULT_STATUS_COMPLETE_KHR = VkQueryResultStatusKHR.Complete;
 	public const VkQueryResultStatusKHR VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR = VkQueryResultStatusKHR.InsufficientBitstreamBufferRange;
-	public const VkVideoCodecOperationFlagsKHR VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_EXT = VkVideoCodecOperationFlagsKHR.EncodeH264EXT;
-	public const VkVideoCodecOperationFlagsKHR VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_EXT = VkVideoCodecOperationFlagsKHR.EncodeH265EXT;
+	public const VkVideoCodecOperationFlagsKHR VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR = VkVideoCodecOperationFlagsKHR.EncodeH264;
+	public const VkVideoCodecOperationFlagsKHR VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR = VkVideoCodecOperationFlagsKHR.EncodeH265;
 	public const VkVideoCodecOperationFlagsKHR VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR = VkVideoCodecOperationFlagsKHR.DecodeH264;
 	public const VkVideoCodecOperationFlagsKHR VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR = VkVideoCodecOperationFlagsKHR.DecodeH265;
 	public const VkVideoChromaSubsamplingFlagsKHR VK_VIDEO_CHROMA_SUBSAMPLING_INVALID_KHR = VkVideoChromaSubsamplingFlagsKHR.Invalid;
@@ -4664,6 +4713,7 @@ public static partial class Vulkan
 	public const VkVideoCapabilityFlagsKHR VK_VIDEO_CAPABILITY_SEPARATE_REFERENCE_IMAGES_BIT_KHR = VkVideoCapabilityFlagsKHR.SeparateReferenceImages;
 	public const VkVideoSessionCreateFlagsKHR VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR = VkVideoSessionCreateFlagsKHR.ProtectedContent;
 	public const VkVideoSessionCreateFlagsKHR VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS_BIT_KHR = VkVideoSessionCreateFlagsKHR.AllowEncodeParameterOptimizations;
+	public const VkVideoSessionCreateFlagsKHR VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR = VkVideoSessionCreateFlagsKHR.InlineQueries;
 	public const VkVideoCodingControlFlagsKHR VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR = VkVideoCodingControlFlagsKHR.Reset;
 	public const VkVideoCodingControlFlagsKHR VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR = VkVideoCodingControlFlagsKHR.EncodeRateControl;
 	public const VkVideoCodingControlFlagsKHR VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR = VkVideoCodingControlFlagsKHR.EncodeQualityLevel;
@@ -4768,37 +4818,40 @@ public static partial class Vulkan
 	public const StdVideoH264NonVclNaluType STD_VIDEO_H264_NON_VCL_NALU_TYPE_END_OF_STREAM = StdVideoH264NonVclNaluType.EndOfStream;
 	public const StdVideoH264NonVclNaluType STD_VIDEO_H264_NON_VCL_NALU_TYPE_PRECODED = StdVideoH264NonVclNaluType.Precoded;
 	public const StdVideoH264NonVclNaluType STD_VIDEO_H264_NON_VCL_NALU_TYPE_INVALID = StdVideoH264NonVclNaluType.Invalid;
-	public const StdVideoDecodeH264FieldOrderCount STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_TOP = StdVideoDecodeH264FieldOrderCount.Top;
-	public const StdVideoDecodeH264FieldOrderCount STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM = StdVideoDecodeH264FieldOrderCount.Bottom;
-	public const StdVideoDecodeH264FieldOrderCount STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_INVALID = StdVideoDecodeH264FieldOrderCount.Invalid;
-	public const VkVideoDecodeH264PictureLayoutFlagsKHR VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE_KHR = VkVideoDecodeH264PictureLayoutFlagsKHR.Progressive;
-	public const VkVideoDecodeH264PictureLayoutFlagsKHR VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR = VkVideoDecodeH264PictureLayoutFlagsKHR.InterlacedInterleavedLines;
-	public const VkVideoDecodeH264PictureLayoutFlagsKHR VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR = VkVideoDecodeH264PictureLayoutFlagsKHR.InterlacedSeparatePlanes;
-	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR = VkPerformanceCounterUnitKHR.Generic;
-	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR = VkPerformanceCounterUnitKHR.Percentage;
-	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR = VkPerformanceCounterUnitKHR.Nanoseconds;
-	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR = VkPerformanceCounterUnitKHR.Bytes;
-	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_BYTES_PER_SECOND_KHR = VkPerformanceCounterUnitKHR.BytesPerSecond;
-	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_KELVIN_KHR = VkPerformanceCounterUnitKHR.Kelvin;
-	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR = VkPerformanceCounterUnitKHR.Watts;
-	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR = VkPerformanceCounterUnitKHR.Volts;
-	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR = VkPerformanceCounterUnitKHR.Amps;
-	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR = VkPerformanceCounterUnitKHR.Hertz;
-	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR = VkPerformanceCounterUnitKHR.Cycles;
-	public const VkPerformanceCounterScopeKHR VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR = VkPerformanceCounterScopeKHR.CommandBuffer;
-	public const VkPerformanceCounterScopeKHR VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR = VkPerformanceCounterScopeKHR.RenderPass;
-	public const VkPerformanceCounterScopeKHR VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR = VkPerformanceCounterScopeKHR.Command;
-	public const VkPerformanceCounterScopeKHR VK_QUERY_SCOPE_COMMAND_BUFFER_KHR = VkPerformanceCounterScopeKHR.QueryScopeCommandBuffer;
-	public const VkPerformanceCounterScopeKHR VK_QUERY_SCOPE_RENDER_PASS_KHR = VkPerformanceCounterScopeKHR.QueryScopeRenderPass;
-	public const VkPerformanceCounterScopeKHR VK_QUERY_SCOPE_COMMAND_KHR = VkPerformanceCounterScopeKHR.QueryScopeCommand;
-	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR = VkPerformanceCounterStorageKHR.Int32;
-	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR = VkPerformanceCounterStorageKHR.Int64;
-	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_UINT32_KHR = VkPerformanceCounterStorageKHR.Uint32;
-	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_UINT64_KHR = VkPerformanceCounterStorageKHR.Uint64;
-	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_FLOAT32_KHR = VkPerformanceCounterStorageKHR.Float32;
-	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_FLOAT64_KHR = VkPerformanceCounterStorageKHR.Float64;
-	public const VkPerformanceCounterDescriptionFlagsKHR VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR = VkPerformanceCounterDescriptionFlagsKHR.PerformanceImpacting;
-	public const VkPerformanceCounterDescriptionFlagsKHR VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR = VkPerformanceCounterDescriptionFlagsKHR.ConcurrentlyImpacted;
+	public const VkVideoEncodeH264CapabilityFlagsKHR VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_KHR = VkVideoEncodeH264CapabilityFlagsKHR.HrdCompliance;
+	public const VkVideoEncodeH264CapabilityFlagsKHR VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_KHR = VkVideoEncodeH264CapabilityFlagsKHR.PredictionWeightTableGenerated;
+	public const VkVideoEncodeH264CapabilityFlagsKHR VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_KHR = VkVideoEncodeH264CapabilityFlagsKHR.RowUnalignedSlice;
+	public const VkVideoEncodeH264CapabilityFlagsKHR VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_KHR = VkVideoEncodeH264CapabilityFlagsKHR.DifferentSliceType;
+	public const VkVideoEncodeH264CapabilityFlagsKHR VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_KHR = VkVideoEncodeH264CapabilityFlagsKHR.BFrameInL0List;
+	public const VkVideoEncodeH264CapabilityFlagsKHR VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_KHR = VkVideoEncodeH264CapabilityFlagsKHR.BFrameInL1List;
+	public const VkVideoEncodeH264CapabilityFlagsKHR VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_KHR = VkVideoEncodeH264CapabilityFlagsKHR.PerPictureTypeMinMaxQp;
+	public const VkVideoEncodeH264CapabilityFlagsKHR VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_KHR = VkVideoEncodeH264CapabilityFlagsKHR.PerSliceConstantQp;
+	public const VkVideoEncodeH264CapabilityFlagsKHR VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_KHR = VkVideoEncodeH264CapabilityFlagsKHR.GeneratePrefixNalu;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.SeparateColorPlaneFlagSet;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG_SET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.QpprimeYZeroTransformBypassFlagSet;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.ScalingMatrixPresentFlagSet;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.ChromaQpIndexOffset;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.SecondChromaQpIndexOffset;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.PicInitQpMinus26;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.WeightedPredFlagSet;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.WeightedBipredIdcExplicit;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.WeightedBipredIdcImplicit;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.Transform8x8ModeFlagSet;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.DirectSpatialMvPredFlagUnset;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.EntropyCodingModeFlagUnset;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.EntropyCodingModeFlagSet;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.Direct8x8InferenceFlagUnset;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.ConstrainedIntraPredFlagSet;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.DeblockingFilterDisabled;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.DeblockingFilterEnabled;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.DeblockingFilterPartial;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_SLICE_QP_DELTA_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.SliceQpDelta;
+	public const VkVideoEncodeH264StdFlagsKHR VK_VIDEO_ENCODE_H264_STD_DIFFERENT_SLICE_QP_DELTA_BIT_KHR = VkVideoEncodeH264StdFlagsKHR.DifferentSliceQpDelta;
+	public const VkVideoEncodeH264RateControlFlagsKHR VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR = VkVideoEncodeH264RateControlFlagsKHR.AttemptHrdCompliance;
+	public const VkVideoEncodeH264RateControlFlagsKHR VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_KHR = VkVideoEncodeH264RateControlFlagsKHR.RegularGop;
+	public const VkVideoEncodeH264RateControlFlagsKHR VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR = VkVideoEncodeH264RateControlFlagsKHR.ReferencePatternFlat;
+	public const VkVideoEncodeH264RateControlFlagsKHR VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR = VkVideoEncodeH264RateControlFlagsKHR.ReferencePatternDyadic;
+	public const VkVideoEncodeH264RateControlFlagsKHR VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_KHR = VkVideoEncodeH264RateControlFlagsKHR.TemporalLayerPatternDyadic;
 	public const StdVideoH265ChromaFormatIdc STD_VIDEO_H265_CHROMA_FORMAT_IDC_MONOCHROME = StdVideoH265ChromaFormatIdc.Monochrome;
 	public const StdVideoH265ChromaFormatIdc STD_VIDEO_H265_CHROMA_FORMAT_IDC_420 = StdVideoH265ChromaFormatIdc.Idc420;
 	public const StdVideoH265ChromaFormatIdc STD_VIDEO_H265_CHROMA_FORMAT_IDC_422 = StdVideoH265ChromaFormatIdc.Idc422;
@@ -4852,6 +4905,80 @@ public static partial class Vulkan
 	public const StdVideoH265AspectRatioIdc STD_VIDEO_H265_ASPECT_RATIO_IDC_2_1 = StdVideoH265AspectRatioIdc.Idc21;
 	public const StdVideoH265AspectRatioIdc STD_VIDEO_H265_ASPECT_RATIO_IDC_EXTENDED_SAR = StdVideoH265AspectRatioIdc.ExtendedSar;
 	public const StdVideoH265AspectRatioIdc STD_VIDEO_H265_ASPECT_RATIO_IDC_INVALID = StdVideoH265AspectRatioIdc.Invalid;
+	public const VkVideoEncodeH265CapabilityFlagsKHR VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_KHR = VkVideoEncodeH265CapabilityFlagsKHR.HrdCompliance;
+	public const VkVideoEncodeH265CapabilityFlagsKHR VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_KHR = VkVideoEncodeH265CapabilityFlagsKHR.PredictionWeightTableGenerated;
+	public const VkVideoEncodeH265CapabilityFlagsKHR VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_KHR = VkVideoEncodeH265CapabilityFlagsKHR.RowUnalignedSliceSegment;
+	public const VkVideoEncodeH265CapabilityFlagsKHR VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_KHR = VkVideoEncodeH265CapabilityFlagsKHR.DifferentSliceSegmentType;
+	public const VkVideoEncodeH265CapabilityFlagsKHR VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_KHR = VkVideoEncodeH265CapabilityFlagsKHR.BFrameInL0List;
+	public const VkVideoEncodeH265CapabilityFlagsKHR VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_KHR = VkVideoEncodeH265CapabilityFlagsKHR.BFrameInL1List;
+	public const VkVideoEncodeH265CapabilityFlagsKHR VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_KHR = VkVideoEncodeH265CapabilityFlagsKHR.PerPictureTypeMinMaxQp;
+	public const VkVideoEncodeH265CapabilityFlagsKHR VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_KHR = VkVideoEncodeH265CapabilityFlagsKHR.PerSliceSegmentConstantQp;
+	public const VkVideoEncodeH265CapabilityFlagsKHR VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_KHR = VkVideoEncodeH265CapabilityFlagsKHR.MultipleTilesPerSliceSegment;
+	public const VkVideoEncodeH265CapabilityFlagsKHR VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_KHR = VkVideoEncodeH265CapabilityFlagsKHR.MultipleSliceSegmentsPerTile;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.SeparateColorPlaneFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_SAMPLE_ADAPTIVE_OFFSET_ENABLED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.SampleAdaptiveOffsetEnabledFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.ScalingListDataPresentFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.PcmEnabledFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.SpsTemporalMvpEnabledFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.InitQpMinus26;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.WeightedPredFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.WeightedBipredFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.Log2ParallelMergeLevelMinus2;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.SignDataHidingEnabledFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.TransformSkipEnabledFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.TransformSkipEnabledFlagUnset;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.PpsSliceChromaQpOffsetsPresentFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.TransquantBypassEnabledFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.ConstrainedIntraPredFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.EntropyCodingSyncEnabledFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.DeblockingFilterOverrideEnabledFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.DependentSliceSegmentsEnabledFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.DependentSliceSegmentFlagSet;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_SLICE_QP_DELTA_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.SliceQpDelta;
+	public const VkVideoEncodeH265StdFlagsKHR VK_VIDEO_ENCODE_H265_STD_DIFFERENT_SLICE_QP_DELTA_BIT_KHR = VkVideoEncodeH265StdFlagsKHR.DifferentSliceQpDelta;
+	public const VkVideoEncodeH265CtbSizeFlagsKHR VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_KHR = VkVideoEncodeH265CtbSizeFlagsKHR.Size16;
+	public const VkVideoEncodeH265CtbSizeFlagsKHR VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_KHR = VkVideoEncodeH265CtbSizeFlagsKHR.Size32;
+	public const VkVideoEncodeH265CtbSizeFlagsKHR VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_KHR = VkVideoEncodeH265CtbSizeFlagsKHR.Size64;
+	public const VkVideoEncodeH265TransformBlockSizeFlagsKHR VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_KHR = VkVideoEncodeH265TransformBlockSizeFlagsKHR.Size4;
+	public const VkVideoEncodeH265TransformBlockSizeFlagsKHR VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_KHR = VkVideoEncodeH265TransformBlockSizeFlagsKHR.Size8;
+	public const VkVideoEncodeH265TransformBlockSizeFlagsKHR VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_KHR = VkVideoEncodeH265TransformBlockSizeFlagsKHR.Size16;
+	public const VkVideoEncodeH265TransformBlockSizeFlagsKHR VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_KHR = VkVideoEncodeH265TransformBlockSizeFlagsKHR.Size32;
+	public const VkVideoEncodeH265RateControlFlagsKHR VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR = VkVideoEncodeH265RateControlFlagsKHR.AttemptHrdCompliance;
+	public const VkVideoEncodeH265RateControlFlagsKHR VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_KHR = VkVideoEncodeH265RateControlFlagsKHR.RegularGop;
+	public const VkVideoEncodeH265RateControlFlagsKHR VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR = VkVideoEncodeH265RateControlFlagsKHR.ReferencePatternFlat;
+	public const VkVideoEncodeH265RateControlFlagsKHR VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR = VkVideoEncodeH265RateControlFlagsKHR.ReferencePatternDyadic;
+	public const VkVideoEncodeH265RateControlFlagsKHR VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_KHR = VkVideoEncodeH265RateControlFlagsKHR.TemporalSubLayerPatternDyadic;
+	public const StdVideoDecodeH264FieldOrderCount STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_TOP = StdVideoDecodeH264FieldOrderCount.Top;
+	public const StdVideoDecodeH264FieldOrderCount STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM = StdVideoDecodeH264FieldOrderCount.Bottom;
+	public const StdVideoDecodeH264FieldOrderCount STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_INVALID = StdVideoDecodeH264FieldOrderCount.Invalid;
+	public const VkVideoDecodeH264PictureLayoutFlagsKHR VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE_KHR = VkVideoDecodeH264PictureLayoutFlagsKHR.Progressive;
+	public const VkVideoDecodeH264PictureLayoutFlagsKHR VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR = VkVideoDecodeH264PictureLayoutFlagsKHR.InterlacedInterleavedLines;
+	public const VkVideoDecodeH264PictureLayoutFlagsKHR VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR = VkVideoDecodeH264PictureLayoutFlagsKHR.InterlacedSeparatePlanes;
+	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR = VkPerformanceCounterUnitKHR.Generic;
+	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR = VkPerformanceCounterUnitKHR.Percentage;
+	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR = VkPerformanceCounterUnitKHR.Nanoseconds;
+	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR = VkPerformanceCounterUnitKHR.Bytes;
+	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_BYTES_PER_SECOND_KHR = VkPerformanceCounterUnitKHR.BytesPerSecond;
+	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_KELVIN_KHR = VkPerformanceCounterUnitKHR.Kelvin;
+	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR = VkPerformanceCounterUnitKHR.Watts;
+	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR = VkPerformanceCounterUnitKHR.Volts;
+	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR = VkPerformanceCounterUnitKHR.Amps;
+	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR = VkPerformanceCounterUnitKHR.Hertz;
+	public const VkPerformanceCounterUnitKHR VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR = VkPerformanceCounterUnitKHR.Cycles;
+	public const VkPerformanceCounterScopeKHR VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR = VkPerformanceCounterScopeKHR.CommandBuffer;
+	public const VkPerformanceCounterScopeKHR VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR = VkPerformanceCounterScopeKHR.RenderPass;
+	public const VkPerformanceCounterScopeKHR VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR = VkPerformanceCounterScopeKHR.Command;
+	public const VkPerformanceCounterScopeKHR VK_QUERY_SCOPE_COMMAND_BUFFER_KHR = VkPerformanceCounterScopeKHR.QueryScopeCommandBuffer;
+	public const VkPerformanceCounterScopeKHR VK_QUERY_SCOPE_RENDER_PASS_KHR = VkPerformanceCounterScopeKHR.QueryScopeRenderPass;
+	public const VkPerformanceCounterScopeKHR VK_QUERY_SCOPE_COMMAND_KHR = VkPerformanceCounterScopeKHR.QueryScopeCommand;
+	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR = VkPerformanceCounterStorageKHR.Int32;
+	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR = VkPerformanceCounterStorageKHR.Int64;
+	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_UINT32_KHR = VkPerformanceCounterStorageKHR.Uint32;
+	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_UINT64_KHR = VkPerformanceCounterStorageKHR.Uint64;
+	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_FLOAT32_KHR = VkPerformanceCounterStorageKHR.Float32;
+	public const VkPerformanceCounterStorageKHR VK_PERFORMANCE_COUNTER_STORAGE_FLOAT64_KHR = VkPerformanceCounterStorageKHR.Float64;
+	public const VkPerformanceCounterDescriptionFlagsKHR VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR = VkPerformanceCounterDescriptionFlagsKHR.PerformanceImpacting;
+	public const VkPerformanceCounterDescriptionFlagsKHR VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR = VkPerformanceCounterDescriptionFlagsKHR.ConcurrentlyImpacted;
 	public const VkQueueGlobalPriorityKHR VK_QUEUE_GLOBAL_PRIORITY_LOW_KHR = VkQueueGlobalPriorityKHR.Low;
 	public const VkQueueGlobalPriorityKHR VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_KHR = VkQueueGlobalPriorityKHR.Medium;
 	public const VkQueueGlobalPriorityKHR VK_QUEUE_GLOBAL_PRIORITY_HIGH_KHR = VkQueueGlobalPriorityKHR.High;
@@ -4869,6 +4996,29 @@ public static partial class Vulkan
 	public const VkPipelineExecutableStatisticFormatKHR VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR = VkPipelineExecutableStatisticFormatKHR.Int64;
 	public const VkPipelineExecutableStatisticFormatKHR VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR = VkPipelineExecutableStatisticFormatKHR.Uint64;
 	public const VkPipelineExecutableStatisticFormatKHR VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR = VkPipelineExecutableStatisticFormatKHR.Float64;
+	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR = VkVideoEncodeTuningModeKHR.Default;
+	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR = VkVideoEncodeTuningModeKHR.HighQuality;
+	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR = VkVideoEncodeTuningModeKHR.LowLatency;
+	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR = VkVideoEncodeTuningModeKHR.UltraLowLatency;
+	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR = VkVideoEncodeTuningModeKHR.Lossless;
+	public const VkVideoEncodeCapabilityFlagsKHR VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR = VkVideoEncodeCapabilityFlagsKHR.PrecedingExternallyEncodedBytes;
+	public const VkVideoEncodeCapabilityFlagsKHR VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR = VkVideoEncodeCapabilityFlagsKHR.InsufficientBitstreamBufferRangeDetection;
+	public const VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR = VkVideoEncodeRateControlModeFlagsKHR.Default;
+	public const VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR = VkVideoEncodeRateControlModeFlagsKHR.Disabled;
+	public const VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR = VkVideoEncodeRateControlModeFlagsKHR.Cbr;
+	public const VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR = VkVideoEncodeRateControlModeFlagsKHR.Vbr;
+	public const VkVideoEncodeFeedbackFlagsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR = VkVideoEncodeFeedbackFlagsKHR.BitstreamBufferOffset;
+	public const VkVideoEncodeFeedbackFlagsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR = VkVideoEncodeFeedbackFlagsKHR.BitstreamBytesWritten;
+	public const VkVideoEncodeFeedbackFlagsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR = VkVideoEncodeFeedbackFlagsKHR.BitstreamHasOverrides;
+	public const VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR = VkVideoEncodeUsageFlagsKHR.Default;
+	public const VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.Transcoding;
+	public const VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.Streaming;
+	public const VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.Recording;
+	public const VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.Conferencing;
+	public const VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR = VkVideoEncodeContentFlagsKHR.Default;
+	public const VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR = VkVideoEncodeContentFlagsKHR.Camera;
+	public const VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR = VkVideoEncodeContentFlagsKHR.Desktop;
+	public const VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR = VkVideoEncodeContentFlagsKHR.Rendered;
 	public const VkComponentTypeKHR VK_COMPONENT_TYPE_FLOAT16_KHR = VkComponentTypeKHR.Float16;
 	public const VkComponentTypeKHR VK_COMPONENT_TYPE_FLOAT32_KHR = VkComponentTypeKHR.Float32;
 	public const VkComponentTypeKHR VK_COMPONENT_TYPE_FLOAT64_KHR = VkComponentTypeKHR.Float64;
@@ -4899,6 +5049,14 @@ public static partial class Vulkan
 	public const VkScopeKHR VK_SCOPE_WORKGROUP_NV = VkScopeKHR.WorkgroupNV;
 	public const VkScopeKHR VK_SCOPE_SUBGROUP_NV = VkScopeKHR.SubgroupNV;
 	public const VkScopeKHR VK_SCOPE_QUEUE_FAMILY_NV = VkScopeKHR.QueueFamilyNV;
+	public const VkTimeDomainKHR VK_TIME_DOMAIN_DEVICE_KHR = VkTimeDomainKHR.Device;
+	public const VkTimeDomainKHR VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR = VkTimeDomainKHR.ClockMonotonic;
+	public const VkTimeDomainKHR VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR = VkTimeDomainKHR.ClockMonotonicRaw;
+	public const VkTimeDomainKHR VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR = VkTimeDomainKHR.QueryPerformanceCounter;
+	public const VkTimeDomainKHR VK_TIME_DOMAIN_DEVICE_EXT = VkTimeDomainKHR.DeviceEXT;
+	public const VkTimeDomainKHR VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT = VkTimeDomainKHR.ClockMonotonicEXT;
+	public const VkTimeDomainKHR VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT = VkTimeDomainKHR.ClockMonotonicRawEXT;
+	public const VkTimeDomainKHR VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT = VkTimeDomainKHR.QueryPerformanceCounterEXT;
 	public const VkDebugReportObjectTypeEXT VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT = VkDebugReportObjectTypeEXT.Unknown;
 	public const VkDebugReportObjectTypeEXT VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT = VkDebugReportObjectTypeEXT.Instance;
 	public const VkDebugReportObjectTypeEXT VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT = VkDebugReportObjectTypeEXT.PhysicalDevice;
@@ -5071,10 +5229,6 @@ public static partial class Vulkan
 	public const VkBuildAccelerationStructureFlagsKHR VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV = VkBuildAccelerationStructureFlagsKHR.PreferFastTraceNV;
 	public const VkBuildAccelerationStructureFlagsKHR VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV = VkBuildAccelerationStructureFlagsKHR.PreferFastBuildNV;
 	public const VkBuildAccelerationStructureFlagsKHR VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NV = VkBuildAccelerationStructureFlagsKHR.LowMemoryNV;
-	public const VkTimeDomainEXT VK_TIME_DOMAIN_DEVICE_EXT = VkTimeDomainEXT.Device;
-	public const VkTimeDomainEXT VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT = VkTimeDomainEXT.ClockMonotonic;
-	public const VkTimeDomainEXT VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT = VkTimeDomainEXT.ClockMonotonicRaw;
-	public const VkTimeDomainEXT VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT = VkTimeDomainEXT.QueryPerformanceCounter;
 	public const VkMemoryOverallocationBehaviorAMD VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD = VkMemoryOverallocationBehaviorAMD.DefaultAMD;
 	public const VkMemoryOverallocationBehaviorAMD VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD = VkMemoryOverallocationBehaviorAMD.AllowedAMD;
 	public const VkMemoryOverallocationBehaviorAMD VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD = VkMemoryOverallocationBehaviorAMD.DisallowedAMD;
@@ -5227,8 +5381,6 @@ public static partial class Vulkan
 	public const VkBuildMicromapFlagsEXT VK_BUILD_MICROMAP_PREFER_FAST_BUILD_BIT_EXT = VkBuildMicromapFlagsEXT.PreferFastBuild;
 	public const VkBuildMicromapFlagsEXT VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT = VkBuildMicromapFlagsEXT.AllowCompaction;
 	public const VkMicromapCreateFlagsEXT VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT = VkMicromapCreateFlagsEXT.DeviceAddressCaptureReplay;
-	public const VkPhysicalDeviceSchedulingControlsFlagsARM VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM = VkPhysicalDeviceSchedulingControlsFlagsARM.ShaderCoreCountARM;
-	public const VkPhysicalDeviceSchedulingControlsFlagsARM VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FLAG_BITS_MAX_ENUM_ARM = VkPhysicalDeviceSchedulingControlsFlagsARM.FlagBitsMaxEnumARM;
 	public const VkSubpassMergeStatusEXT VK_SUBPASS_MERGE_STATUS_MERGED_EXT = VkSubpassMergeStatusEXT.Merged;
 	public const VkSubpassMergeStatusEXT VK_SUBPASS_MERGE_STATUS_DISALLOWED_EXT = VkSubpassMergeStatusEXT.Disallowed;
 	public const VkSubpassMergeStatusEXT VK_SUBPASS_MERGE_STATUS_NOT_MERGED_SIDE_EFFECTS_EXT = VkSubpassMergeStatusEXT.NotMergedSideEffects;
@@ -5334,106 +5486,6 @@ public static partial class Vulkan
 	public const VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.MetalTexture;
 	public const VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.MetalIosurface;
 	public const VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.MetalSharedEvent;
-	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR = VkVideoEncodeTuningModeKHR.Default;
-	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR = VkVideoEncodeTuningModeKHR.HighQuality;
-	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR = VkVideoEncodeTuningModeKHR.LowLatency;
-	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR = VkVideoEncodeTuningModeKHR.UltraLowLatency;
-	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR = VkVideoEncodeTuningModeKHR.Lossless;
-	public const VkVideoEncodeCapabilityFlagsKHR VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR = VkVideoEncodeCapabilityFlagsKHR.PrecedingExternallyEncodedBytes;
-	public const VkVideoEncodeCapabilityFlagsKHR VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR = VkVideoEncodeCapabilityFlagsKHR.InsufficientBitstreamBufferRangeDetection;
-	public const VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR = VkVideoEncodeRateControlModeFlagsKHR.Default;
-	public const VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR = VkVideoEncodeRateControlModeFlagsKHR.Disabled;
-	public const VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR = VkVideoEncodeRateControlModeFlagsKHR.Cbr;
-	public const VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR = VkVideoEncodeRateControlModeFlagsKHR.Vbr;
-	public const VkVideoEncodeFeedbackFlagsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR = VkVideoEncodeFeedbackFlagsKHR.BitstreamBufferOffset;
-	public const VkVideoEncodeFeedbackFlagsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR = VkVideoEncodeFeedbackFlagsKHR.BitstreamBytesWritten;
-	public const VkVideoEncodeFeedbackFlagsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR = VkVideoEncodeFeedbackFlagsKHR.BitstreamHasOverrides;
-	public const VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR = VkVideoEncodeUsageFlagsKHR.Default;
-	public const VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.Transcoding;
-	public const VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.Streaming;
-	public const VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.Recording;
-	public const VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.Conferencing;
-	public const VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR = VkVideoEncodeContentFlagsKHR.Default;
-	public const VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR = VkVideoEncodeContentFlagsKHR.Camera;
-	public const VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR = VkVideoEncodeContentFlagsKHR.Desktop;
-	public const VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR = VkVideoEncodeContentFlagsKHR.Rendered;
-	public const VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.HrdCompliance;
-	public const VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.PredictionWeightTableGenerated;
-	public const VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.RowUnalignedSlice;
-	public const VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.DifferentSliceType;
-	public const VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.BFrameInL0List;
-	public const VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.BFrameInL1List;
-	public const VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.PerPictureTypeMinMaxQp;
-	public const VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.PerSliceConstantQp;
-	public const VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.GeneratePrefixNalu;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.SeparateColorPlaneFlagSet;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.QpprimeYZeroTransformBypassFlagSet;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.ScalingMatrixPresentFlagSet;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.ChromaQpIndexOffset;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.SecondChromaQpIndexOffset;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.PicInitQpMinus26;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.WeightedPredFlagSet;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.WeightedBipredIdcExplicit;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.WeightedBipredIdcImplicit;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.Transform8x8ModeFlagSet;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.DirectSpatialMvPredFlagUnset;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.EntropyCodingModeFlagUnset;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.EntropyCodingModeFlagSet;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.Direct8x8InferenceFlagUnset;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.ConstrainedIntraPredFlagSet;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.DeblockingFilterDisabled;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.DeblockingFilterEnabled;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.DeblockingFilterPartial;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_SLICE_QP_DELTA_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.SliceQpDelta;
-	public const VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_DIFFERENT_SLICE_QP_DELTA_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.DifferentSliceQpDelta;
-	public const VkVideoEncodeH264RateControlFlagsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH264RateControlFlagsEXT.AttemptHrdCompliance;
-	public const VkVideoEncodeH264RateControlFlagsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_EXT = VkVideoEncodeH264RateControlFlagsEXT.RegularGop;
-	public const VkVideoEncodeH264RateControlFlagsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT = VkVideoEncodeH264RateControlFlagsEXT.ReferencePatternFlat;
-	public const VkVideoEncodeH264RateControlFlagsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH264RateControlFlagsEXT.ReferencePatternDyadic;
-	public const VkVideoEncodeH264RateControlFlagsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH264RateControlFlagsEXT.TemporalLayerPatternDyadic;
-	public const VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.HrdCompliance;
-	public const VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.PredictionWeightTableGenerated;
-	public const VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.RowUnalignedSliceSegment;
-	public const VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.DifferentSliceSegmentType;
-	public const VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.BFrameInL0List;
-	public const VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.BFrameInL1List;
-	public const VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.PerPictureTypeMinMaxQp;
-	public const VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.PerSliceSegmentConstantQp;
-	public const VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.MultipleTilesPerSliceSegment;
-	public const VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.MultipleSliceSegmentsPerTile;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.SeparateColorPlaneFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_SAMPLE_ADAPTIVE_OFFSET_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.SampleAdaptiveOffsetEnabledFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.ScalingListDataPresentFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.PcmEnabledFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.SpsTemporalMvpEnabledFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.InitQpMinus26;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.WeightedPredFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.WeightedBipredFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.Log2ParallelMergeLevelMinus2;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.SignDataHidingEnabledFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.TransformSkipEnabledFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.TransformSkipEnabledFlagUnset;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.PpsSliceChromaQpOffsetsPresentFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.TransquantBypassEnabledFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.ConstrainedIntraPredFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.EntropyCodingSyncEnabledFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.DeblockingFilterOverrideEnabledFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.DependentSliceSegmentsEnabledFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.DependentSliceSegmentFlagSet;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_SLICE_QP_DELTA_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.SliceQpDelta;
-	public const VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_DIFFERENT_SLICE_QP_DELTA_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.DifferentSliceQpDelta;
-	public const VkVideoEncodeH265CtbSizeFlagsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_EXT = VkVideoEncodeH265CtbSizeFlagsEXT.Size16;
-	public const VkVideoEncodeH265CtbSizeFlagsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_EXT = VkVideoEncodeH265CtbSizeFlagsEXT.Size32;
-	public const VkVideoEncodeH265CtbSizeFlagsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_EXT = VkVideoEncodeH265CtbSizeFlagsEXT.Size64;
-	public const VkVideoEncodeH265TransformBlockSizeFlagsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagsEXT.Size4;
-	public const VkVideoEncodeH265TransformBlockSizeFlagsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagsEXT.Size8;
-	public const VkVideoEncodeH265TransformBlockSizeFlagsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagsEXT.Size16;
-	public const VkVideoEncodeH265TransformBlockSizeFlagsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagsEXT.Size32;
-	public const VkVideoEncodeH265RateControlFlagsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH265RateControlFlagsEXT.AttemptHrdCompliance;
-	public const VkVideoEncodeH265RateControlFlagsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_EXT = VkVideoEncodeH265RateControlFlagsEXT.RegularGop;
-	public const VkVideoEncodeH265RateControlFlagsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT = VkVideoEncodeH265RateControlFlagsEXT.ReferencePatternFlat;
-	public const VkVideoEncodeH265RateControlFlagsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH265RateControlFlagsEXT.ReferencePatternDyadic;
-	public const VkVideoEncodeH265RateControlFlagsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH265RateControlFlagsEXT.TemporalSubLayerPatternDyadic;
 	public const VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV = VkDisplacementMicromapFormatNV._64Triangles64Bytes;
 	public const VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV = VkDisplacementMicromapFormatNV._256Triangles128Bytes;
 	public const VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV = VkDisplacementMicromapFormatNV._1024Triangles128Bytes;

@@ -1,6 +1,7 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 
 namespace Vortice.Vulkan;
@@ -85,13 +86,13 @@ public unsafe partial struct VkRect2D : IEquatable<VkRect2D>
     }
 
     /// <inheritdoc/>
-    public override bool Equals(object? obj) => obj is VkRect2D other && Equals(other);
+    public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is VkRect2D other && Equals(other);
 
     /// <inheritdoc/>
-    public bool Equals(VkRect2D other) => offset.Equals(other.offset) && extent.Equals(other.extent);
+    public readonly bool Equals(VkRect2D other) => offset.Equals(other.offset) && extent.Equals(other.extent);
 
     /// <inheritdoc/>
-    public override int GetHashCode() => HashCode.Combine(offset, extent);
+    public override readonly int GetHashCode() => HashCode.Combine(offset, extent);
 
     /// <inheritdoc/>
     public override readonly string ToString() => $"{{Offset={offset},Extent={extent}}}";

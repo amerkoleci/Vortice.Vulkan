@@ -5,8 +5,12 @@
     <IsPackable>false</IsPackable>
     <RootNamespace>Vortice.Vulkan</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Alimer.Bindings.SDL" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\Vortice.Vulkan\Vortice.Vulkan.csproj" />
-    <PackageReference Include="Ultz.Native.GLFW" />
   </ItemGroup>
 </Project>

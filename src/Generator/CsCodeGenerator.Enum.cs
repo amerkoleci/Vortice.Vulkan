@@ -1,4 +1,4 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Text;
@@ -227,7 +227,7 @@ public static partial class CsCodeGenerator
         "img",
     };
 
-    private static readonly HashSet<string> s_enumConstants = new();
+    private static readonly HashSet<string> s_enumConstants = [];
 
     public static void GenerateEnums(CppCompilation compilation)
     {
@@ -498,13 +498,16 @@ public static partial class CsCodeGenerator
                 continue;
             }
 
-            if (typedef.Name.EndsWith("Flags", StringComparison.OrdinalIgnoreCase) ||
-                typedef.Name.EndsWith("FlagsKHR", StringComparison.OrdinalIgnoreCase) ||
-                typedef.Name.EndsWith("FlagsEXT", StringComparison.OrdinalIgnoreCase) ||
-                typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase) ||
-                typedef.Name.EndsWith("FlagsAMD", StringComparison.OrdinalIgnoreCase) ||
-                typedef.Name.EndsWith("FlagsMVK", StringComparison.OrdinalIgnoreCase) ||
-                typedef.Name.EndsWith("FlagsNN", StringComparison.OrdinalIgnoreCase))
+            if (typedef.Name.EndsWith("Flags", StringComparison.OrdinalIgnoreCase)
+                || typedef.Name.EndsWith("FlagsKHR", StringComparison.OrdinalIgnoreCase)
+                || typedef.Name.EndsWith("FlagsEXT", StringComparison.OrdinalIgnoreCase)
+                || (typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase) && typedef.Name != "VkMemoryDecompressionMethodFlagsNV")
+                || typedef.Name.EndsWith("FlagsAMD", StringComparison.OrdinalIgnoreCase)
+                || typedef.Name.EndsWith("FlagsMVK", StringComparison.OrdinalIgnoreCase)
+                || typedef.Name.EndsWith("FlagsNN", StringComparison.OrdinalIgnoreCase)
+                //|| typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase)
+                //|| typedef.Name.EndsWith("FlagsARM", StringComparison.OrdinalIgnoreCase)
+                )
             {
                 writer.WriteLine("[Flags]");
                 using (writer.PushBlock($"public enum {typedef.Name}"))
@@ -556,6 +559,14 @@ public static partial class CsCodeGenerator
                     {
                         fieldType = fieldType.Replace("FlagBits2KHR", "Flags2KHR");
                     }
+                    else if (fieldType.EndsWith("FlagBitsARM"))
+                    {
+                        fieldType = fieldType.Replace("FlagBitsARM", "FlagsARM");
+                    }
+                    else if (fieldType.EndsWith("FlagBitsNV"))
+                    {
+                        fieldType = fieldType.Replace("FlagBitsNV", "FlagsNV");
+                    }
 
                     writer.WriteLine("[Flags]");
                     writer.BeginBlock($"public enum {fieldType} : {baseType}");
@@ -586,6 +597,14 @@ public static partial class CsCodeGenerator
                 else if (cppField.Name.StartsWith("VK_BUFFER_USAGE_2"))
                 {
                     csFieldName = GetPrettyEnumName(cppField.Name, "VK_BUFFER_USAGE_2");
+                }
+                else if (cppField.Name.StartsWith("VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS"))
+                {
+                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS");
+                }
+                else if (cppField.Name.StartsWith("VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV"))
+                {
+                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_MEMORY_DECOMPRESSION_METHOD");
                 }
                 else
                 {

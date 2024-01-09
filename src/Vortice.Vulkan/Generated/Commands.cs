@@ -2210,6 +2210,24 @@ unsafe partial class Vulkan
 		return vkUnmapMemory2KHR_ptr(device, memoryUnmapInfo);
 	}
 
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, VkVideoEncodeQualityLevelPropertiesKHR*, VkResult> vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr;
+	public static VkResult vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* qualityLevelInfo, VkVideoEncodeQualityLevelPropertiesKHR* qualityLevelProperties)
+	{
+		return vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr(physicalDevice, qualityLevelInfo, qualityLevelProperties);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult> vkGetEncodedVideoSessionParametersKHR_ptr;
+	public static VkResult vkGetEncodedVideoSessionParametersKHR(VkDevice device, VkVideoEncodeSessionParametersGetInfoKHR* videoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* feedbackInfo, nuint* dataSize, void* data)
+	{
+		return vkGetEncodedVideoSessionParametersKHR_ptr(device, videoSessionParametersInfo, feedbackInfo, dataSize, data);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void> vkCmdEncodeVideoKHR_ptr;
+	public static void vkCmdEncodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoEncodeInfoKHR* encodeInfo)
+	{
+		vkCmdEncodeVideoKHR_ptr(commandBuffer, encodeInfo);
+	}
+
 	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfo*, void> vkCmdSetEvent2KHR_ptr;
 	public static void vkCmdSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfo* dependencyInfo)
 	{
@@ -2346,6 +2364,54 @@ unsafe partial class Vulkan
 	public static VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeMatrixPropertiesKHR* properties)
 	{
 		return vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr(physicalDevice, propertyCount, properties);
+	}
+
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr;
+	public static VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(VkPhysicalDevice physicalDevice, uint* timeDomainCount, VkTimeDomainKHR* timeDomains)
+	{
+		return vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr(physicalDevice, timeDomainCount, timeDomains);
+	}
+
+	private static delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult> vkGetCalibratedTimestampsKHR_ptr;
+	public static VkResult vkGetCalibratedTimestampsKHR(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoKHR* timestampInfos, ulong* timestamps, ulong* maxDeviation)
+	{
+		return vkGetCalibratedTimestampsKHR_ptr(device, timestampCount, timestampInfos, timestamps, maxDeviation);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfoKHR*, void> vkCmdBindDescriptorSets2KHR_ptr;
+	public static void vkCmdBindDescriptorSets2KHR(VkCommandBuffer commandBuffer, VkBindDescriptorSetsInfoKHR* bindDescriptorSetsInfo)
+	{
+		vkCmdBindDescriptorSets2KHR_ptr(commandBuffer, bindDescriptorSetsInfo);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, VkPushConstantsInfoKHR*, void> vkCmdPushConstants2KHR_ptr;
+	public static void vkCmdPushConstants2KHR(VkCommandBuffer commandBuffer, VkPushConstantsInfoKHR* pushConstantsInfo)
+	{
+		vkCmdPushConstants2KHR_ptr(commandBuffer, pushConstantsInfo);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetInfoKHR*, void> vkCmdPushDescriptorSet2KHR_ptr;
+	public static void vkCmdPushDescriptorSet2KHR(VkCommandBuffer commandBuffer, VkPushDescriptorSetInfoKHR* pushDescriptorSetInfo)
+	{
+		vkCmdPushDescriptorSet2KHR_ptr(commandBuffer, pushDescriptorSetInfo);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetWithTemplateInfoKHR*, void> vkCmdPushDescriptorSetWithTemplate2KHR_ptr;
+	public static void vkCmdPushDescriptorSetWithTemplate2KHR(VkCommandBuffer commandBuffer, VkPushDescriptorSetWithTemplateInfoKHR* pushDescriptorSetWithTemplateInfo)
+	{
+		vkCmdPushDescriptorSetWithTemplate2KHR_ptr(commandBuffer, pushDescriptorSetWithTemplateInfo);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, VkSetDescriptorBufferOffsetsInfoEXT*, void> vkCmdSetDescriptorBufferOffsets2EXT_ptr;
+	public static void vkCmdSetDescriptorBufferOffsets2EXT(VkCommandBuffer commandBuffer, VkSetDescriptorBufferOffsetsInfoEXT* setDescriptorBufferOffsetsInfo)
+	{
+		vkCmdSetDescriptorBufferOffsets2EXT_ptr(commandBuffer, setDescriptorBufferOffsetsInfo);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, VkBindDescriptorBufferEmbeddedSamplersInfoEXT*, void> vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr;
+	public static void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(VkCommandBuffer commandBuffer, VkBindDescriptorBufferEmbeddedSamplersInfoEXT* bindDescriptorBufferEmbeddedSamplersInfo)
+	{
+		vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr(commandBuffer, bindDescriptorBufferEmbeddedSamplersInfo);
 	}
 
 	private static delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult> vkCreateDebugReportCallbackEXT_ptr;
@@ -2810,14 +2876,14 @@ unsafe partial class Vulkan
 		vkCmdWriteBufferMarkerAMD_ptr(commandBuffer, pipelineStage, dstBuffer, dstOffset, marker);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainEXT*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr;
-	public static VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, uint* timeDomainCount, VkTimeDomainEXT* timeDomains)
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr;
+	public static VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, uint* timeDomainCount, VkTimeDomainKHR* timeDomains)
 	{
 		return vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr(physicalDevice, timeDomainCount, timeDomains);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoEXT*, ulong*, ulong*, VkResult> vkGetCalibratedTimestampsEXT_ptr;
-	public static VkResult vkGetCalibratedTimestampsEXT(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoEXT* timestampInfos, ulong* timestamps, ulong* maxDeviation)
+	private static delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult> vkGetCalibratedTimestampsEXT_ptr;
+	public static VkResult vkGetCalibratedTimestampsEXT(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoKHR* timestampInfos, ulong* timestamps, ulong* maxDeviation)
 	{
 		return vkGetCalibratedTimestampsEXT_ptr(device, timestampCount, timestampInfos, timestamps, maxDeviation);
 	}
@@ -4028,24 +4094,6 @@ unsafe partial class Vulkan
 		return vkCreateViSurfaceNN_ptr(instance, createInfo, allocator, surface);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, VkVideoEncodeQualityLevelPropertiesKHR*, VkResult> vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr;
-	public static VkResult vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* qualityLevelInfo, VkVideoEncodeQualityLevelPropertiesKHR* qualityLevelProperties)
-	{
-		return vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr(physicalDevice, qualityLevelInfo, qualityLevelProperties);
-	}
-
-	private static delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult> vkGetEncodedVideoSessionParametersKHR_ptr;
-	public static VkResult vkGetEncodedVideoSessionParametersKHR(VkDevice device, VkVideoEncodeSessionParametersGetInfoKHR* videoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* feedbackInfo, nuint* dataSize, void* data)
-	{
-		return vkGetEncodedVideoSessionParametersKHR_ptr(device, videoSessionParametersInfo, feedbackInfo, dataSize, data);
-	}
-
-	private static delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void> vkCmdEncodeVideoKHR_ptr;
-	public static void vkCmdEncodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoEncodeInfoKHR* encodeInfo)
-	{
-		vkCmdEncodeVideoKHR_ptr(commandBuffer, encodeInfo);
-	}
-
 	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateExecutionGraphPipelinesAMDX_ptr;
 	public static VkResult vkCreateExecutionGraphPipelinesAMDX(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkExecutionGraphPipelineCreateInfoAMDX* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
@@ -4160,7 +4208,9 @@ unsafe partial class Vulkan
 		vkGetDisplayModeProperties2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModeProperties2KHR*, VkResult>) load(context, nameof(vkGetDisplayModeProperties2KHR));
 		vkGetDisplayPlaneCapabilities2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayPlaneInfo2KHR*, VkDisplayPlaneCapabilities2KHR*, VkResult>) load(context, nameof(vkGetDisplayPlaneCapabilities2KHR));
 		vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceFragmentShadingRateKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceFragmentShadingRatesKHR));
+		vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, VkVideoEncodeQualityLevelPropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR));
 		vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR));
+		vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceCalibrateableTimeDomainsKHR));
 		vkCreateDebugReportCallbackEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>) load(context, nameof(vkCreateDebugReportCallbackEXT));
 		vkDestroyDebugReportCallbackEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDebugReportCallbackEXT));
 		vkDebugReportMessageEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, sbyte*, sbyte*, void>) load(context, nameof(vkDebugReportMessageEXT));
@@ -4180,7 +4230,7 @@ unsafe partial class Vulkan
 		vkDestroyDebugUtilsMessengerEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDebugUtilsMessengerEXT));
 		vkSubmitDebugUtilsMessageEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void>) load(context, nameof(vkSubmitDebugUtilsMessageEXT));
 		vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSampleCountFlags, VkMultisamplePropertiesEXT*, void>) load(context, nameof(vkGetPhysicalDeviceMultisamplePropertiesEXT));
-		vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainEXT*, VkResult>) load(context, nameof(vkGetPhysicalDeviceCalibrateableTimeDomainsEXT));
+		vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceCalibrateableTimeDomainsEXT));
 		vkGetPhysicalDeviceToolPropertiesEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceToolProperties*, VkResult>) load(context, nameof(vkGetPhysicalDeviceToolPropertiesEXT));
 		vkGetPhysicalDeviceCooperativeMatrixPropertiesNV_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceCooperativeMatrixPropertiesNV));
 		vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkFramebufferMixedSamplesCombinationNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV));
@@ -4197,7 +4247,6 @@ unsafe partial class Vulkan
 		vkCreateMetalSurfaceEXT_ptr = (delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateMetalSurfaceEXT));
 		vkCreateMetalSurfaceEXT_out_ptr = (delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateMetalSurfaceEXT));
 		vkCreateViSurfaceNN_ptr = (delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateViSurfaceNN));
-		vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, VkVideoEncodeQualityLevelPropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR));
 	}
 	private static void GenLoadDevice(IntPtr context, LoadFunction load)
 	{
@@ -4492,6 +4541,8 @@ unsafe partial class Vulkan
 		vkGetPipelineExecutableInternalRepresentationsKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableInternalRepresentationKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutableInternalRepresentationsKHR));
 		vkMapMemory2KHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void*, VkResult>) load(context, nameof(vkMapMemory2KHR));
 		vkUnmapMemory2KHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryUnmapInfoKHR*, VkResult>) load(context, nameof(vkUnmapMemory2KHR));
+		vkGetEncodedVideoSessionParametersKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult>) load(context, nameof(vkGetEncodedVideoSessionParametersKHR));
+		vkCmdEncodeVideoKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void>) load(context, nameof(vkCmdEncodeVideoKHR));
 		vkCmdSetEvent2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfo*, void>) load(context, nameof(vkCmdSetEvent2KHR));
 		vkCmdResetEvent2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags2, void>) load(context, nameof(vkCmdResetEvent2KHR));
 		vkCmdWaitEvents2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkDependencyInfo*, void>) load(context, nameof(vkCmdWaitEvents2KHR));
@@ -4514,6 +4565,13 @@ unsafe partial class Vulkan
 		vkGetRenderingAreaGranularityKHR_ptr = (delegate* unmanaged<VkDevice, VkRenderingAreaInfoKHR*, VkExtent2D*, void>) load(context, nameof(vkGetRenderingAreaGranularityKHR));
 		vkGetDeviceImageSubresourceLayoutKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfoKHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetDeviceImageSubresourceLayoutKHR));
 		vkGetImageSubresourceLayout2KHR_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetImageSubresourceLayout2KHR));
+		vkGetCalibratedTimestampsKHR_ptr = (delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult>) load(context, nameof(vkGetCalibratedTimestampsKHR));
+		vkCmdBindDescriptorSets2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfoKHR*, void>) load(context, nameof(vkCmdBindDescriptorSets2KHR));
+		vkCmdPushConstants2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushConstantsInfoKHR*, void>) load(context, nameof(vkCmdPushConstants2KHR));
+		vkCmdPushDescriptorSet2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetInfoKHR*, void>) load(context, nameof(vkCmdPushDescriptorSet2KHR));
+		vkCmdPushDescriptorSetWithTemplate2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetWithTemplateInfoKHR*, void>) load(context, nameof(vkCmdPushDescriptorSetWithTemplate2KHR));
+		vkCmdSetDescriptorBufferOffsets2EXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkSetDescriptorBufferOffsetsInfoEXT*, void>) load(context, nameof(vkCmdSetDescriptorBufferOffsets2EXT));
+		vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBindDescriptorBufferEmbeddedSamplersInfoEXT*, void>) load(context, nameof(vkCmdBindDescriptorBufferEmbeddedSamplers2EXT));
 		vkDebugMarkerSetObjectTagEXT_ptr = (delegate* unmanaged<VkDevice, VkDebugMarkerObjectTagInfoEXT*, VkResult>) load(context, nameof(vkDebugMarkerSetObjectTagEXT));
 		vkDebugMarkerSetObjectNameEXT_ptr = (delegate* unmanaged<VkDevice, VkDebugMarkerObjectNameInfoEXT*, VkResult>) load(context, nameof(vkDebugMarkerSetObjectNameEXT));
 		vkCmdDebugMarkerBeginEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void>) load(context, nameof(vkCmdDebugMarkerBeginEXT));
@@ -4572,7 +4630,7 @@ unsafe partial class Vulkan
 		vkCompileDeferredNV_ptr = (delegate* unmanaged<VkDevice, VkPipeline, uint, VkResult>) load(context, nameof(vkCompileDeferredNV));
 		vkGetMemoryHostPointerPropertiesEXT_ptr = (delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryHostPointerPropertiesEXT*, VkResult>) load(context, nameof(vkGetMemoryHostPointerPropertiesEXT));
 		vkCmdWriteBufferMarkerAMD_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkBuffer, ulong, uint, void>) load(context, nameof(vkCmdWriteBufferMarkerAMD));
-		vkGetCalibratedTimestampsEXT_ptr = (delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoEXT*, ulong*, ulong*, VkResult>) load(context, nameof(vkGetCalibratedTimestampsEXT));
+		vkGetCalibratedTimestampsEXT_ptr = (delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult>) load(context, nameof(vkGetCalibratedTimestampsEXT));
 		vkCmdDrawMeshTasksNV_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksNV));
 		vkCmdDrawMeshTasksIndirectNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectNV));
 		vkCmdDrawMeshTasksIndirectCountNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectCountNV));
@@ -4758,8 +4816,6 @@ unsafe partial class Vulkan
 		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
 		vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
 		vkExportMetalObjectsEXT_ptr = (delegate* unmanaged<VkDevice, VkExportMetalObjectsInfoEXT*, void>) load(context, nameof(vkExportMetalObjectsEXT));
-		vkGetEncodedVideoSessionParametersKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult>) load(context, nameof(vkGetEncodedVideoSessionParametersKHR));
-		vkCmdEncodeVideoKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void>) load(context, nameof(vkCmdEncodeVideoKHR));
 		vkCreateExecutionGraphPipelinesAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateExecutionGraphPipelinesAMDX));
 		vkGetExecutionGraphPipelineScratchSizeAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkExecutionGraphPipelineScratchSizeAMDX*, VkResult>) load(context, nameof(vkGetExecutionGraphPipelineScratchSizeAMDX));
 		vkGetExecutionGraphPipelineNodeIndexAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, VkResult>) load(context, nameof(vkGetExecutionGraphPipelineNodeIndexAMDX));

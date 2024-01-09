@@ -1,6 +1,7 @@
-﻿// Copyright © Amer Koleci and Contributors.
+﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 
 namespace Vortice.Vulkan;
@@ -106,10 +107,10 @@ public partial struct VkViewport : IEquatable<VkViewport>
     }
 
     /// <inheritdoc/>
-    public override bool Equals(object? obj) => obj is VkViewport other && Equals(other);
+    public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is VkViewport other && Equals(other);
 
     /// <inheritdoc/>
-    public bool Equals(VkViewport other)
+    public readonly bool Equals(VkViewport other)
     {
         return
             x == other.x &&
@@ -121,7 +122,7 @@ public partial struct VkViewport : IEquatable<VkViewport>
     }
 
     /// <inheritdoc/>
-    public override int GetHashCode() => HashCode.Combine(x, y, width, height, minDepth, maxDepth);
+    public override readonly int GetHashCode() => HashCode.Combine(x, y, width, height, minDepth, maxDepth);
 
     /// <inheritdoc/>
     public override readonly string ToString() => $"{{X={x},Y={y},Width={width},Height={height},MinDepth={minDepth},MaxDepth={maxDepth}}}";
