@@ -420,6 +420,9 @@ unsafe partial class SpirvCrossApi
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_build_combined_image_samplers")]
 	public static partial spvc_result spvc_compiler_build_combined_image_samplers(spvc_compiler compiler);
 
+	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_combined_image_samplers")]
+	public static partial spvc_result spvc_compiler_get_combined_image_samplers(spvc_compiler compiler, spvc_combined_image_sampler* samplers, nuint* num_samplers);
+
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_specialization_constants")]
 	public static partial spvc_result spvc_compiler_get_specialization_constants(spvc_compiler compiler, spvc_specialization_constant* constants, nuint* num_constants);
 
@@ -462,6 +465,12 @@ unsafe partial class SpirvCrossApi
 	[LibraryImport(LibName, EntryPoint = "spvc_constant_get_subconstants")]
 	public static partial void spvc_constant_get_subconstants(spvc_constant constant, uint* constituents, nuint* count);
 
+	[LibraryImport(LibName, EntryPoint = "spvc_constant_get_scalar_u64")]
+	public static partial ulong spvc_constant_get_scalar_u64(spvc_constant constant, uint column, uint row);
+
+	[LibraryImport(LibName, EntryPoint = "spvc_constant_get_scalar_i64")]
+	public static partial long spvc_constant_get_scalar_i64(spvc_constant constant, uint column, uint row);
+
 	[LibraryImport(LibName, EntryPoint = "spvc_constant_get_type")]
 	public static partial uint spvc_constant_get_type(spvc_constant constant);
 
@@ -479,6 +488,12 @@ unsafe partial class SpirvCrossApi
 
 	[LibraryImport(LibName, EntryPoint = "spvc_constant_set_scalar_i32")]
 	public static partial void spvc_constant_set_scalar_i32(spvc_constant constant, uint column, uint row, int value);
+
+	[LibraryImport(LibName, EntryPoint = "spvc_constant_set_scalar_u64")]
+	public static partial void spvc_constant_set_scalar_u64(spvc_constant constant, uint column, uint row, ulong value);
+
+	[LibraryImport(LibName, EntryPoint = "spvc_constant_set_scalar_i64")]
+	public static partial void spvc_constant_set_scalar_i64(spvc_constant constant, uint column, uint row, long value);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_constant_set_scalar_u16")]
 	public static partial void spvc_constant_set_scalar_u16(spvc_constant constant, uint column, uint row, ushort value);

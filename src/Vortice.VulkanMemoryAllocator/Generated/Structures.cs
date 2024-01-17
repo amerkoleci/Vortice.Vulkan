@@ -242,12 +242,22 @@ public unsafe partial struct VmaAllocationInfo
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public partial struct VmaDefragmentationInfo
+public partial struct VmaAllocationInfo2
+{
+	public VmaAllocationInfo allocationInfo;
+	public ulong blockSize;
+	public VkBool32 dedicatedMemory;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VmaDefragmentationInfo
 {
 	public VmaDefragmentationFlags flags;
 	public VmaPool pool;
 	public ulong maxBytesPerPass;
 	public uint maxAllocationsPerPass;
+	public delegate* unmanaged<void*, uint> pfnBreakCallback;
+	public void* pBreakCallbackUserData;
 }
 
 [StructLayout(LayoutKind.Sequential)]

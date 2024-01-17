@@ -131,6 +131,9 @@ unsafe partial class Vma
 	[LibraryImport(LibName, EntryPoint = "vmaGetAllocationInfo")]
 	public static partial void vmaGetAllocationInfo(VmaAllocator allocator, VmaAllocation allocation, VmaAllocationInfo* allocationInfo);
 
+	[LibraryImport(LibName, EntryPoint = "vmaGetAllocationInfo2")]
+	public static partial void vmaGetAllocationInfo2(VmaAllocator allocator, VmaAllocation allocation, VmaAllocationInfo2* allocationInfo);
+
 	[LibraryImport(LibName, EntryPoint = "vmaSetAllocationUserData")]
 	public static partial void vmaSetAllocationUserData(VmaAllocator allocator, VmaAllocation allocation, void* userData);
 

@@ -246,7 +246,9 @@ public static partial class CsCodeGenerator
                 cppEnum.Name.EndsWith("FlagBitsAMD") ||
                 cppEnum.Name.EndsWith("FlagBitsMVK") ||
                 cppEnum.Name.EndsWith("FlagBitsNN") ||
-                cppEnum.Name.EndsWith("FlagBitsARM");
+                cppEnum.Name.EndsWith("FlagBitsARM")
+                || (cppEnum.Name.StartsWith("Spv") && cppEnum.Name.EndsWith("Mask_")) // spirv.h
+                ;
 
             // typedef enum SpvSourceLanguage_ { } SpvSourceLanguage; }
             string enumName = cppEnum.Name;

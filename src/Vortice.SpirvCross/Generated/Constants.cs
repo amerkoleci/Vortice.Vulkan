@@ -11,10 +11,14 @@ namespace Vortice.SpirvCross;
 
 public static partial class SpirvCrossApi
 {
+	/// <unmanaged>SPV_VERSION</unmanaged>
+	public const uint SPV_VERSION = 0x10600;
+	/// <unmanaged>SPV_REVISION</unmanaged>
+	public const uint SPV_REVISION = 1;
 	/// <unmanaged>SPVC_C_API_VERSION_MAJOR</unmanaged>
 	public const uint SPVC_C_API_VERSION_MAJOR = 0;
 	/// <unmanaged>SPVC_C_API_VERSION_MINOR</unmanaged>
-	public const uint SPVC_C_API_VERSION_MINOR = 57;
+	public const uint SPVC_C_API_VERSION_MINOR = 59;
 	/// <unmanaged>SPVC_C_API_VERSION_PATCH</unmanaged>
 	public const uint SPVC_C_API_VERSION_PATCH = 0;
 	public static SpvcBool SPVC_TRUE => new (1);
@@ -47,4 +51,10 @@ public static partial class SpirvCrossApi
 	public const uint SPVC_HLSL_PUSH_CONSTANT_DESC_SET = ~0u;
 	/// <unmanaged>SPVC_HLSL_PUSH_CONSTANT_BINDING</unmanaged>
 	public const uint SPVC_HLSL_PUSH_CONSTANT_BINDING = 0;
+
+	public const uint SpvMagicNumber = 0x07230203;
+	public const uint SpvVersion = 0x00010600;
+	public const uint SpvRevision = 1;
+	public const uint SpvOpCodeMask = 0xffff;
+	public const uint SpvWordCountShift = 16;
 }

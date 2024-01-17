@@ -11,6 +11,3528 @@ using System;
 
 namespace Vortice.SpirvCross;
 
+public enum SpvSourceLanguage
+{
+	/// <unmanaged>SpvSourceLanguageUnknown</unmanaged>
+	Unknown = 0,
+	/// <unmanaged>SpvSourceLanguageESSL</unmanaged>
+	ESSL = 1,
+	/// <unmanaged>SpvSourceLanguageGLSL</unmanaged>
+	GLSL = 2,
+	/// <unmanaged>SpvSourceLanguageOpenCL_C</unmanaged>
+	OpenCL_C = 3,
+	/// <unmanaged>SpvSourceLanguageOpenCL_CPP</unmanaged>
+	OpenCL_CPP = 4,
+	/// <unmanaged>SpvSourceLanguageHLSL</unmanaged>
+	HLSL = 5,
+	/// <unmanaged>SpvSourceLanguageCPP_for_OpenCL</unmanaged>
+	CPP_for_OpenCL = 6,
+	/// <unmanaged>SpvSourceLanguageSYCL</unmanaged>
+	SYCL = 7,
+}
+
+public enum SpvExecutionModel
+{
+	/// <unmanaged>SpvExecutionModelVertex</unmanaged>
+	Vertex = 0,
+	/// <unmanaged>SpvExecutionModelTessellationControl</unmanaged>
+	TessellationControl = 1,
+	/// <unmanaged>SpvExecutionModelTessellationEvaluation</unmanaged>
+	TessellationEvaluation = 2,
+	/// <unmanaged>SpvExecutionModelGeometry</unmanaged>
+	Geometry = 3,
+	/// <unmanaged>SpvExecutionModelFragment</unmanaged>
+	Fragment = 4,
+	/// <unmanaged>SpvExecutionModelGLCompute</unmanaged>
+	GLCompute = 5,
+	/// <unmanaged>SpvExecutionModelKernel</unmanaged>
+	Kernel = 6,
+	/// <unmanaged>SpvExecutionModelTaskNV</unmanaged>
+	TaskNV = 5267,
+	/// <unmanaged>SpvExecutionModelMeshNV</unmanaged>
+	MeshNV = 5268,
+	/// <unmanaged>SpvExecutionModelRayGenerationKHR</unmanaged>
+	RayGenerationKHR = 5313,
+	/// <unmanaged>SpvExecutionModelRayGenerationNV</unmanaged>
+	RayGenerationNV = 5313,
+	/// <unmanaged>SpvExecutionModelIntersectionKHR</unmanaged>
+	IntersectionKHR = 5314,
+	/// <unmanaged>SpvExecutionModelIntersectionNV</unmanaged>
+	IntersectionNV = 5314,
+	/// <unmanaged>SpvExecutionModelAnyHitKHR</unmanaged>
+	AnyHitKHR = 5315,
+	/// <unmanaged>SpvExecutionModelAnyHitNV</unmanaged>
+	AnyHitNV = 5315,
+	/// <unmanaged>SpvExecutionModelClosestHitKHR</unmanaged>
+	ClosestHitKHR = 5316,
+	/// <unmanaged>SpvExecutionModelClosestHitNV</unmanaged>
+	ClosestHitNV = 5316,
+	/// <unmanaged>SpvExecutionModelMissKHR</unmanaged>
+	MissKHR = 5317,
+	/// <unmanaged>SpvExecutionModelMissNV</unmanaged>
+	MissNV = 5317,
+	/// <unmanaged>SpvExecutionModelCallableKHR</unmanaged>
+	CallableKHR = 5318,
+	/// <unmanaged>SpvExecutionModelCallableNV</unmanaged>
+	CallableNV = 5318,
+	/// <unmanaged>SpvExecutionModelTaskEXT</unmanaged>
+	TaskEXT = 5364,
+	/// <unmanaged>SpvExecutionModelMeshEXT</unmanaged>
+	MeshEXT = 5365,
+}
+
+public enum SpvAddressingModel
+{
+	/// <unmanaged>SpvAddressingModelLogical</unmanaged>
+	Logical = 0,
+	/// <unmanaged>SpvAddressingModelPhysical32</unmanaged>
+	Physical32 = 1,
+	/// <unmanaged>SpvAddressingModelPhysical64</unmanaged>
+	Physical64 = 2,
+	/// <unmanaged>SpvAddressingModelPhysicalStorageBuffer64</unmanaged>
+	PhysicalStorageBuffer64 = 5348,
+	/// <unmanaged>SpvAddressingModelPhysicalStorageBuffer64EXT</unmanaged>
+	PhysicalStorageBuffer64EXT = 5348,
+}
+
+public enum SpvMemoryModel
+{
+	/// <unmanaged>SpvMemoryModelSimple</unmanaged>
+	Simple = 0,
+	/// <unmanaged>SpvMemoryModelGLSL450</unmanaged>
+	GLSL450 = 1,
+	/// <unmanaged>SpvMemoryModelOpenCL</unmanaged>
+	OpenCL = 2,
+	/// <unmanaged>SpvMemoryModelVulkan</unmanaged>
+	Vulkan = 3,
+	/// <unmanaged>SpvMemoryModelVulkanKHR</unmanaged>
+	VulkanKHR = 3,
+}
+
+public enum SpvExecutionMode
+{
+	/// <unmanaged>SpvExecutionModeInvocations</unmanaged>
+	Invocations = 0,
+	/// <unmanaged>SpvExecutionModeSpacingEqual</unmanaged>
+	SpacingEqual = 1,
+	/// <unmanaged>SpvExecutionModeSpacingFractionalEven</unmanaged>
+	SpacingFractionalEven = 2,
+	/// <unmanaged>SpvExecutionModeSpacingFractionalOdd</unmanaged>
+	SpacingFractionalOdd = 3,
+	/// <unmanaged>SpvExecutionModeVertexOrderCw</unmanaged>
+	VertexOrderCw = 4,
+	/// <unmanaged>SpvExecutionModeVertexOrderCcw</unmanaged>
+	VertexOrderCcw = 5,
+	/// <unmanaged>SpvExecutionModePixelCenterInteger</unmanaged>
+	PixelCenterInteger = 6,
+	/// <unmanaged>SpvExecutionModeOriginUpperLeft</unmanaged>
+	OriginUpperLeft = 7,
+	/// <unmanaged>SpvExecutionModeOriginLowerLeft</unmanaged>
+	OriginLowerLeft = 8,
+	/// <unmanaged>SpvExecutionModeEarlyFragmentTests</unmanaged>
+	EarlyFragmentTests = 9,
+	/// <unmanaged>SpvExecutionModePointMode</unmanaged>
+	PointMode = 10,
+	/// <unmanaged>SpvExecutionModeXfb</unmanaged>
+	Xfb = 11,
+	/// <unmanaged>SpvExecutionModeDepthReplacing</unmanaged>
+	DepthReplacing = 12,
+	/// <unmanaged>SpvExecutionModeDepthGreater</unmanaged>
+	DepthGreater = 14,
+	/// <unmanaged>SpvExecutionModeDepthLess</unmanaged>
+	DepthLess = 15,
+	/// <unmanaged>SpvExecutionModeDepthUnchanged</unmanaged>
+	DepthUnchanged = 16,
+	/// <unmanaged>SpvExecutionModeLocalSize</unmanaged>
+	LocalSize = 17,
+	/// <unmanaged>SpvExecutionModeLocalSizeHint</unmanaged>
+	LocalSizeHint = 18,
+	/// <unmanaged>SpvExecutionModeInputPoints</unmanaged>
+	InputPoints = 19,
+	/// <unmanaged>SpvExecutionModeInputLines</unmanaged>
+	InputLines = 20,
+	/// <unmanaged>SpvExecutionModeInputLinesAdjacency</unmanaged>
+	InputLinesAdjacency = 21,
+	/// <unmanaged>SpvExecutionModeTriangles</unmanaged>
+	Triangles = 22,
+	/// <unmanaged>SpvExecutionModeInputTrianglesAdjacency</unmanaged>
+	InputTrianglesAdjacency = 23,
+	/// <unmanaged>SpvExecutionModeQuads</unmanaged>
+	Quads = 24,
+	/// <unmanaged>SpvExecutionModeIsolines</unmanaged>
+	Isolines = 25,
+	/// <unmanaged>SpvExecutionModeOutputVertices</unmanaged>
+	OutputVertices = 26,
+	/// <unmanaged>SpvExecutionModeOutputPoints</unmanaged>
+	OutputPoints = 27,
+	/// <unmanaged>SpvExecutionModeOutputLineStrip</unmanaged>
+	OutputLineStrip = 28,
+	/// <unmanaged>SpvExecutionModeOutputTriangleStrip</unmanaged>
+	OutputTriangleStrip = 29,
+	/// <unmanaged>SpvExecutionModeVecTypeHint</unmanaged>
+	VecTypeHint = 30,
+	/// <unmanaged>SpvExecutionModeContractionOff</unmanaged>
+	ContractionOff = 31,
+	/// <unmanaged>SpvExecutionModeInitializer</unmanaged>
+	Initializer = 33,
+	/// <unmanaged>SpvExecutionModeFinalizer</unmanaged>
+	Finalizer = 34,
+	/// <unmanaged>SpvExecutionModeSubgroupSize</unmanaged>
+	SubgroupSize = 35,
+	/// <unmanaged>SpvExecutionModeSubgroupsPerWorkgroup</unmanaged>
+	SubgroupsPerWorkgroup = 36,
+	/// <unmanaged>SpvExecutionModeSubgroupsPerWorkgroupId</unmanaged>
+	SubgroupsPerWorkgroupId = 37,
+	/// <unmanaged>SpvExecutionModeLocalSizeId</unmanaged>
+	LocalSizeId = 38,
+	/// <unmanaged>SpvExecutionModeLocalSizeHintId</unmanaged>
+	LocalSizeHintId = 39,
+	/// <unmanaged>SpvExecutionModeSubgroupUniformControlFlowKHR</unmanaged>
+	SubgroupUniformControlFlowKHR = 4421,
+	/// <unmanaged>SpvExecutionModePostDepthCoverage</unmanaged>
+	PostDepthCoverage = 4446,
+	/// <unmanaged>SpvExecutionModeDenormPreserve</unmanaged>
+	DenormPreserve = 4459,
+	/// <unmanaged>SpvExecutionModeDenormFlushToZero</unmanaged>
+	DenormFlushToZero = 4460,
+	/// <unmanaged>SpvExecutionModeSignedZeroInfNanPreserve</unmanaged>
+	SignedZeroInfNanPreserve = 4461,
+	/// <unmanaged>SpvExecutionModeRoundingModeRTE</unmanaged>
+	RoundingModeRTE = 4462,
+	/// <unmanaged>SpvExecutionModeRoundingModeRTZ</unmanaged>
+	RoundingModeRTZ = 4463,
+	/// <unmanaged>SpvExecutionModeEarlyAndLateFragmentTestsAMD</unmanaged>
+	EarlyAndLateFragmentTestsAMD = 5017,
+	/// <unmanaged>SpvExecutionModeStencilRefReplacingEXT</unmanaged>
+	StencilRefReplacingEXT = 5027,
+	/// <unmanaged>SpvExecutionModeStencilRefUnchangedFrontAMD</unmanaged>
+	StencilRefUnchangedFrontAMD = 5079,
+	/// <unmanaged>SpvExecutionModeStencilRefGreaterFrontAMD</unmanaged>
+	StencilRefGreaterFrontAMD = 5080,
+	/// <unmanaged>SpvExecutionModeStencilRefLessFrontAMD</unmanaged>
+	StencilRefLessFrontAMD = 5081,
+	/// <unmanaged>SpvExecutionModeStencilRefUnchangedBackAMD</unmanaged>
+	StencilRefUnchangedBackAMD = 5082,
+	/// <unmanaged>SpvExecutionModeStencilRefGreaterBackAMD</unmanaged>
+	StencilRefGreaterBackAMD = 5083,
+	/// <unmanaged>SpvExecutionModeStencilRefLessBackAMD</unmanaged>
+	StencilRefLessBackAMD = 5084,
+	/// <unmanaged>SpvExecutionModeOutputLinesEXT</unmanaged>
+	OutputLinesEXT = 5269,
+	/// <unmanaged>SpvExecutionModeOutputLinesNV</unmanaged>
+	OutputLinesNV = 5269,
+	/// <unmanaged>SpvExecutionModeOutputPrimitivesEXT</unmanaged>
+	OutputPrimitivesEXT = 5270,
+	/// <unmanaged>SpvExecutionModeOutputPrimitivesNV</unmanaged>
+	OutputPrimitivesNV = 5270,
+	/// <unmanaged>SpvExecutionModeDerivativeGroupQuadsNV</unmanaged>
+	DerivativeGroupQuadsNV = 5289,
+	/// <unmanaged>SpvExecutionModeDerivativeGroupLinearNV</unmanaged>
+	DerivativeGroupLinearNV = 5290,
+	/// <unmanaged>SpvExecutionModeOutputTrianglesEXT</unmanaged>
+	OutputTrianglesEXT = 5298,
+	/// <unmanaged>SpvExecutionModeOutputTrianglesNV</unmanaged>
+	OutputTrianglesNV = 5298,
+	/// <unmanaged>SpvExecutionModePixelInterlockOrderedEXT</unmanaged>
+	PixelInterlockOrderedEXT = 5366,
+	/// <unmanaged>SpvExecutionModePixelInterlockUnorderedEXT</unmanaged>
+	PixelInterlockUnorderedEXT = 5367,
+	/// <unmanaged>SpvExecutionModeSampleInterlockOrderedEXT</unmanaged>
+	SampleInterlockOrderedEXT = 5368,
+	/// <unmanaged>SpvExecutionModeSampleInterlockUnorderedEXT</unmanaged>
+	SampleInterlockUnorderedEXT = 5369,
+	/// <unmanaged>SpvExecutionModeShadingRateInterlockOrderedEXT</unmanaged>
+	ShadingRateInterlockOrderedEXT = 5370,
+	/// <unmanaged>SpvExecutionModeShadingRateInterlockUnorderedEXT</unmanaged>
+	ShadingRateInterlockUnorderedEXT = 5371,
+	/// <unmanaged>SpvExecutionModeSharedLocalMemorySizeINTEL</unmanaged>
+	SharedLocalMemorySizeINTEL = 5618,
+	/// <unmanaged>SpvExecutionModeRoundingModeRTPINTEL</unmanaged>
+	RoundingModeRTPINTEL = 5620,
+	/// <unmanaged>SpvExecutionModeRoundingModeRTNINTEL</unmanaged>
+	RoundingModeRTNINTEL = 5621,
+	/// <unmanaged>SpvExecutionModeFloatingPointModeALTINTEL</unmanaged>
+	FloatingPointModeALTINTEL = 5622,
+	/// <unmanaged>SpvExecutionModeFloatingPointModeIEEEINTEL</unmanaged>
+	FloatingPointModeIEEEINTEL = 5623,
+	/// <unmanaged>SpvExecutionModeMaxWorkgroupSizeINTEL</unmanaged>
+	MaxWorkgroupSizeINTEL = 5893,
+	/// <unmanaged>SpvExecutionModeMaxWorkDimINTEL</unmanaged>
+	MaxWorkDimINTEL = 5894,
+	/// <unmanaged>SpvExecutionModeNoGlobalOffsetINTEL</unmanaged>
+	NoGlobalOffsetINTEL = 5895,
+	/// <unmanaged>SpvExecutionModeNumSIMDWorkitemsINTEL</unmanaged>
+	NumSIMDWorkitemsINTEL = 5896,
+	/// <unmanaged>SpvExecutionModeSchedulerTargetFmaxMhzINTEL</unmanaged>
+	SchedulerTargetFmaxMhzINTEL = 5903,
+	/// <unmanaged>SpvExecutionModeNamedBarrierCountINTEL</unmanaged>
+	NamedBarrierCountINTEL = 6417,
+}
+
+public enum SpvStorageClass
+{
+	/// <unmanaged>SpvStorageClassUniformConstant</unmanaged>
+	UniformConstant = 0,
+	/// <unmanaged>SpvStorageClassInput</unmanaged>
+	Input = 1,
+	/// <unmanaged>SpvStorageClassUniform</unmanaged>
+	Uniform = 2,
+	/// <unmanaged>SpvStorageClassOutput</unmanaged>
+	Output = 3,
+	/// <unmanaged>SpvStorageClassWorkgroup</unmanaged>
+	Workgroup = 4,
+	/// <unmanaged>SpvStorageClassCrossWorkgroup</unmanaged>
+	CrossWorkgroup = 5,
+	/// <unmanaged>SpvStorageClassPrivate</unmanaged>
+	Private = 6,
+	/// <unmanaged>SpvStorageClassFunction</unmanaged>
+	Function = 7,
+	/// <unmanaged>SpvStorageClassGeneric</unmanaged>
+	Generic = 8,
+	/// <unmanaged>SpvStorageClassPushConstant</unmanaged>
+	PushConstant = 9,
+	/// <unmanaged>SpvStorageClassAtomicCounter</unmanaged>
+	AtomicCounter = 10,
+	/// <unmanaged>SpvStorageClassImage</unmanaged>
+	Image = 11,
+	/// <unmanaged>SpvStorageClassStorageBuffer</unmanaged>
+	StorageBuffer = 12,
+	/// <unmanaged>SpvStorageClassCallableDataKHR</unmanaged>
+	CallableDataKHR = 5328,
+	/// <unmanaged>SpvStorageClassCallableDataNV</unmanaged>
+	CallableDataNV = 5328,
+	/// <unmanaged>SpvStorageClassIncomingCallableDataKHR</unmanaged>
+	IncomingCallableDataKHR = 5329,
+	/// <unmanaged>SpvStorageClassIncomingCallableDataNV</unmanaged>
+	IncomingCallableDataNV = 5329,
+	/// <unmanaged>SpvStorageClassRayPayloadKHR</unmanaged>
+	RayPayloadKHR = 5338,
+	/// <unmanaged>SpvStorageClassRayPayloadNV</unmanaged>
+	RayPayloadNV = 5338,
+	/// <unmanaged>SpvStorageClassHitAttributeKHR</unmanaged>
+	HitAttributeKHR = 5339,
+	/// <unmanaged>SpvStorageClassHitAttributeNV</unmanaged>
+	HitAttributeNV = 5339,
+	/// <unmanaged>SpvStorageClassIncomingRayPayloadKHR</unmanaged>
+	IncomingRayPayloadKHR = 5342,
+	/// <unmanaged>SpvStorageClassIncomingRayPayloadNV</unmanaged>
+	IncomingRayPayloadNV = 5342,
+	/// <unmanaged>SpvStorageClassShaderRecordBufferKHR</unmanaged>
+	ShaderRecordBufferKHR = 5343,
+	/// <unmanaged>SpvStorageClassShaderRecordBufferNV</unmanaged>
+	ShaderRecordBufferNV = 5343,
+	/// <unmanaged>SpvStorageClassPhysicalStorageBuffer</unmanaged>
+	PhysicalStorageBuffer = 5349,
+	/// <unmanaged>SpvStorageClassPhysicalStorageBufferEXT</unmanaged>
+	PhysicalStorageBufferEXT = 5349,
+	/// <unmanaged>SpvStorageClassTaskPayloadWorkgroupEXT</unmanaged>
+	TaskPayloadWorkgroupEXT = 5402,
+	/// <unmanaged>SpvStorageClassCodeSectionINTEL</unmanaged>
+	CodeSectionINTEL = 5605,
+	/// <unmanaged>SpvStorageClassDeviceOnlyINTEL</unmanaged>
+	DeviceOnlyINTEL = 5936,
+	/// <unmanaged>SpvStorageClassHostOnlyINTEL</unmanaged>
+	HostOnlyINTEL = 5937,
+}
+
+public enum SpvDim
+{
+	/// <unmanaged>SpvDim1D</unmanaged>
+	Dim1D = 0,
+	/// <unmanaged>SpvDim2D</unmanaged>
+	Dim2D = 1,
+	/// <unmanaged>SpvDim3D</unmanaged>
+	Dim3D = 2,
+	/// <unmanaged>SpvDimCube</unmanaged>
+	Cube = 3,
+	/// <unmanaged>SpvDimRect</unmanaged>
+	Rect = 4,
+	/// <unmanaged>SpvDimBuffer</unmanaged>
+	Buffer = 5,
+	/// <unmanaged>SpvDimSubpassData</unmanaged>
+	SubpassData = 6,
+}
+
+public enum SpvSamplerAddressingMode
+{
+	/// <unmanaged>SpvSamplerAddressingModeNone</unmanaged>
+	None = 0,
+	/// <unmanaged>SpvSamplerAddressingModeClampToEdge</unmanaged>
+	ClampToEdge = 1,
+	/// <unmanaged>SpvSamplerAddressingModeClamp</unmanaged>
+	Clamp = 2,
+	/// <unmanaged>SpvSamplerAddressingModeRepeat</unmanaged>
+	Repeat = 3,
+	/// <unmanaged>SpvSamplerAddressingModeRepeatMirrored</unmanaged>
+	RepeatMirrored = 4,
+}
+
+public enum SpvSamplerFilterMode
+{
+	/// <unmanaged>SpvSamplerFilterModeNearest</unmanaged>
+	Nearest = 0,
+	/// <unmanaged>SpvSamplerFilterModeLinear</unmanaged>
+	Linear = 1,
+}
+
+public enum SpvImageFormat
+{
+	/// <unmanaged>SpvImageFormatUnknown</unmanaged>
+	Unknown = 0,
+	/// <unmanaged>SpvImageFormatRgba32f</unmanaged>
+	Rgba32f = 1,
+	/// <unmanaged>SpvImageFormatRgba16f</unmanaged>
+	Rgba16f = 2,
+	/// <unmanaged>SpvImageFormatR32f</unmanaged>
+	R32f = 3,
+	/// <unmanaged>SpvImageFormatRgba8</unmanaged>
+	Rgba8 = 4,
+	/// <unmanaged>SpvImageFormatRgba8Snorm</unmanaged>
+	Rgba8Snorm = 5,
+	/// <unmanaged>SpvImageFormatRg32f</unmanaged>
+	Rg32f = 6,
+	/// <unmanaged>SpvImageFormatRg16f</unmanaged>
+	Rg16f = 7,
+	/// <unmanaged>SpvImageFormatR11fG11fB10f</unmanaged>
+	R11fG11fB10f = 8,
+	/// <unmanaged>SpvImageFormatR16f</unmanaged>
+	R16f = 9,
+	/// <unmanaged>SpvImageFormatRgba16</unmanaged>
+	Rgba16 = 10,
+	/// <unmanaged>SpvImageFormatRgb10A2</unmanaged>
+	Rgb10A2 = 11,
+	/// <unmanaged>SpvImageFormatRg16</unmanaged>
+	Rg16 = 12,
+	/// <unmanaged>SpvImageFormatRg8</unmanaged>
+	Rg8 = 13,
+	/// <unmanaged>SpvImageFormatR16</unmanaged>
+	R16 = 14,
+	/// <unmanaged>SpvImageFormatR8</unmanaged>
+	R8 = 15,
+	/// <unmanaged>SpvImageFormatRgba16Snorm</unmanaged>
+	Rgba16Snorm = 16,
+	/// <unmanaged>SpvImageFormatRg16Snorm</unmanaged>
+	Rg16Snorm = 17,
+	/// <unmanaged>SpvImageFormatRg8Snorm</unmanaged>
+	Rg8Snorm = 18,
+	/// <unmanaged>SpvImageFormatR16Snorm</unmanaged>
+	R16Snorm = 19,
+	/// <unmanaged>SpvImageFormatR8Snorm</unmanaged>
+	R8Snorm = 20,
+	/// <unmanaged>SpvImageFormatRgba32i</unmanaged>
+	Rgba32i = 21,
+	/// <unmanaged>SpvImageFormatRgba16i</unmanaged>
+	Rgba16i = 22,
+	/// <unmanaged>SpvImageFormatRgba8i</unmanaged>
+	Rgba8i = 23,
+	/// <unmanaged>SpvImageFormatR32i</unmanaged>
+	R32i = 24,
+	/// <unmanaged>SpvImageFormatRg32i</unmanaged>
+	Rg32i = 25,
+	/// <unmanaged>SpvImageFormatRg16i</unmanaged>
+	Rg16i = 26,
+	/// <unmanaged>SpvImageFormatRg8i</unmanaged>
+	Rg8i = 27,
+	/// <unmanaged>SpvImageFormatR16i</unmanaged>
+	R16i = 28,
+	/// <unmanaged>SpvImageFormatR8i</unmanaged>
+	R8i = 29,
+	/// <unmanaged>SpvImageFormatRgba32ui</unmanaged>
+	Rgba32ui = 30,
+	/// <unmanaged>SpvImageFormatRgba16ui</unmanaged>
+	Rgba16ui = 31,
+	/// <unmanaged>SpvImageFormatRgba8ui</unmanaged>
+	Rgba8ui = 32,
+	/// <unmanaged>SpvImageFormatR32ui</unmanaged>
+	R32ui = 33,
+	/// <unmanaged>SpvImageFormatRgb10a2ui</unmanaged>
+	Rgb10a2ui = 34,
+	/// <unmanaged>SpvImageFormatRg32ui</unmanaged>
+	Rg32ui = 35,
+	/// <unmanaged>SpvImageFormatRg16ui</unmanaged>
+	Rg16ui = 36,
+	/// <unmanaged>SpvImageFormatRg8ui</unmanaged>
+	Rg8ui = 37,
+	/// <unmanaged>SpvImageFormatR16ui</unmanaged>
+	R16ui = 38,
+	/// <unmanaged>SpvImageFormatR8ui</unmanaged>
+	R8ui = 39,
+	/// <unmanaged>SpvImageFormatR64ui</unmanaged>
+	R64ui = 40,
+	/// <unmanaged>SpvImageFormatR64i</unmanaged>
+	R64i = 41,
+}
+
+public enum SpvImageChannelOrder
+{
+	/// <unmanaged>SpvImageChannelOrderR</unmanaged>
+	R = 0,
+	/// <unmanaged>SpvImageChannelOrderA</unmanaged>
+	A = 1,
+	/// <unmanaged>SpvImageChannelOrderRG</unmanaged>
+	RG = 2,
+	/// <unmanaged>SpvImageChannelOrderRA</unmanaged>
+	RA = 3,
+	/// <unmanaged>SpvImageChannelOrderRGB</unmanaged>
+	RGB = 4,
+	/// <unmanaged>SpvImageChannelOrderRGBA</unmanaged>
+	RGBA = 5,
+	/// <unmanaged>SpvImageChannelOrderBGRA</unmanaged>
+	BGRA = 6,
+	/// <unmanaged>SpvImageChannelOrderARGB</unmanaged>
+	ARGB = 7,
+	/// <unmanaged>SpvImageChannelOrderIntensity</unmanaged>
+	Intensity = 8,
+	/// <unmanaged>SpvImageChannelOrderLuminance</unmanaged>
+	Luminance = 9,
+	/// <unmanaged>SpvImageChannelOrderRx</unmanaged>
+	Rx = 10,
+	/// <unmanaged>SpvImageChannelOrderRGx</unmanaged>
+	RGx = 11,
+	/// <unmanaged>SpvImageChannelOrderRGBx</unmanaged>
+	RGBx = 12,
+	/// <unmanaged>SpvImageChannelOrderDepth</unmanaged>
+	Depth = 13,
+	/// <unmanaged>SpvImageChannelOrderDepthStencil</unmanaged>
+	DepthStencil = 14,
+	/// <unmanaged>SpvImageChannelOrdersRGB</unmanaged>
+	sRGB = 15,
+	/// <unmanaged>SpvImageChannelOrdersRGBx</unmanaged>
+	sRGBx = 16,
+	/// <unmanaged>SpvImageChannelOrdersRGBA</unmanaged>
+	sRGBA = 17,
+	/// <unmanaged>SpvImageChannelOrdersBGRA</unmanaged>
+	sBGRA = 18,
+	/// <unmanaged>SpvImageChannelOrderABGR</unmanaged>
+	ABGR = 19,
+}
+
+public enum SpvImageChannelDataType
+{
+	/// <unmanaged>SpvImageChannelDataTypeSnormInt8</unmanaged>
+	SnormInt8 = 0,
+	/// <unmanaged>SpvImageChannelDataTypeSnormInt16</unmanaged>
+	SnormInt16 = 1,
+	/// <unmanaged>SpvImageChannelDataTypeUnormInt8</unmanaged>
+	UnormInt8 = 2,
+	/// <unmanaged>SpvImageChannelDataTypeUnormInt16</unmanaged>
+	UnormInt16 = 3,
+	/// <unmanaged>SpvImageChannelDataTypeUnormShort565</unmanaged>
+	UnormShort565 = 4,
+	/// <unmanaged>SpvImageChannelDataTypeUnormShort555</unmanaged>
+	UnormShort555 = 5,
+	/// <unmanaged>SpvImageChannelDataTypeUnormInt101010</unmanaged>
+	UnormInt101010 = 6,
+	/// <unmanaged>SpvImageChannelDataTypeSignedInt8</unmanaged>
+	SignedInt8 = 7,
+	/// <unmanaged>SpvImageChannelDataTypeSignedInt16</unmanaged>
+	SignedInt16 = 8,
+	/// <unmanaged>SpvImageChannelDataTypeSignedInt32</unmanaged>
+	SignedInt32 = 9,
+	/// <unmanaged>SpvImageChannelDataTypeUnsignedInt8</unmanaged>
+	UnsignedInt8 = 10,
+	/// <unmanaged>SpvImageChannelDataTypeUnsignedInt16</unmanaged>
+	UnsignedInt16 = 11,
+	/// <unmanaged>SpvImageChannelDataTypeUnsignedInt32</unmanaged>
+	UnsignedInt32 = 12,
+	/// <unmanaged>SpvImageChannelDataTypeHalfFloat</unmanaged>
+	HalfFloat = 13,
+	/// <unmanaged>SpvImageChannelDataTypeFloat</unmanaged>
+	Float = 14,
+	/// <unmanaged>SpvImageChannelDataTypeUnormInt24</unmanaged>
+	UnormInt24 = 15,
+	/// <unmanaged>SpvImageChannelDataTypeUnormInt101010_2</unmanaged>
+	UnormInt101010_2 = 16,
+}
+
+public enum SpvImageOperandsShift
+{
+	/// <unmanaged>SpvImageOperandsBiasShift</unmanaged>
+	SpvImageOperandsBiasShift = 0,
+	/// <unmanaged>SpvImageOperandsLodShift</unmanaged>
+	SpvImageOperandsLodShift = 1,
+	/// <unmanaged>SpvImageOperandsGradShift</unmanaged>
+	SpvImageOperandsGradShift = 2,
+	/// <unmanaged>SpvImageOperandsConstOffsetShift</unmanaged>
+	SpvImageOperandsConstOffsetShift = 3,
+	/// <unmanaged>SpvImageOperandsOffsetShift</unmanaged>
+	SpvImageOperandsOffsetShift = 4,
+	/// <unmanaged>SpvImageOperandsConstOffsetsShift</unmanaged>
+	SpvImageOperandsConstOffsetsShift = 5,
+	/// <unmanaged>SpvImageOperandsSampleShift</unmanaged>
+	SpvImageOperandsSampleShift = 6,
+	/// <unmanaged>SpvImageOperandsMinLodShift</unmanaged>
+	SpvImageOperandsMinLodShift = 7,
+	/// <unmanaged>SpvImageOperandsMakeTexelAvailableShift</unmanaged>
+	SpvImageOperandsMakeTexelAvailableShift = 8,
+	/// <unmanaged>SpvImageOperandsMakeTexelAvailableKHRShift</unmanaged>
+	SpvImageOperandsMakeTexelAvailableKHRShift = 8,
+	/// <unmanaged>SpvImageOperandsMakeTexelVisibleShift</unmanaged>
+	SpvImageOperandsMakeTexelVisibleShift = 9,
+	/// <unmanaged>SpvImageOperandsMakeTexelVisibleKHRShift</unmanaged>
+	SpvImageOperandsMakeTexelVisibleKHRShift = 9,
+	/// <unmanaged>SpvImageOperandsNonPrivateTexelShift</unmanaged>
+	SpvImageOperandsNonPrivateTexelShift = 10,
+	/// <unmanaged>SpvImageOperandsNonPrivateTexelKHRShift</unmanaged>
+	SpvImageOperandsNonPrivateTexelKHRShift = 10,
+	/// <unmanaged>SpvImageOperandsVolatileTexelShift</unmanaged>
+	SpvImageOperandsVolatileTexelShift = 11,
+	/// <unmanaged>SpvImageOperandsVolatileTexelKHRShift</unmanaged>
+	SpvImageOperandsVolatileTexelKHRShift = 11,
+	/// <unmanaged>SpvImageOperandsSignExtendShift</unmanaged>
+	SpvImageOperandsSignExtendShift = 12,
+	/// <unmanaged>SpvImageOperandsZeroExtendShift</unmanaged>
+	SpvImageOperandsZeroExtendShift = 13,
+	/// <unmanaged>SpvImageOperandsNontemporalShift</unmanaged>
+	SpvImageOperandsNontemporalShift = 14,
+	/// <unmanaged>SpvImageOperandsOffsetsShift</unmanaged>
+	SpvImageOperandsOffsetsShift = 16,
+	/// <unmanaged>SpvImageOperandsMax</unmanaged>
+	SpvImageOperandsMax = 0x7fffffff,
+}
+
+[Flags]
+public enum SpvImageOperandsMask
+{
+	/// <unmanaged>SpvImageOperandsMaskNone</unmanaged>
+	None = 0,
+	/// <unmanaged>SpvImageOperandsBiasMask</unmanaged>
+	SpvImageOperandsBiasMask = 0x00000001,
+	/// <unmanaged>SpvImageOperandsLodMask</unmanaged>
+	SpvImageOperandsLodMask = 0x00000002,
+	/// <unmanaged>SpvImageOperandsGradMask</unmanaged>
+	SpvImageOperandsGradMask = 0x00000004,
+	/// <unmanaged>SpvImageOperandsConstOffsetMask</unmanaged>
+	SpvImageOperandsConstOffsetMask = 0x00000008,
+	/// <unmanaged>SpvImageOperandsOffsetMask</unmanaged>
+	SpvImageOperandsOffsetMask = 0x00000010,
+	/// <unmanaged>SpvImageOperandsConstOffsetsMask</unmanaged>
+	SpvImageOperandsConstOffsetsMask = 0x00000020,
+	/// <unmanaged>SpvImageOperandsSampleMask</unmanaged>
+	SpvImageOperandsSampleMask = 0x00000040,
+	/// <unmanaged>SpvImageOperandsMinLodMask</unmanaged>
+	SpvImageOperandsMinLodMask = 0x00000080,
+	/// <unmanaged>SpvImageOperandsMakeTexelAvailableMask</unmanaged>
+	SpvImageOperandsMakeTexelAvailableMask = 0x00000100,
+	/// <unmanaged>SpvImageOperandsMakeTexelAvailableKHRMask</unmanaged>
+	SpvImageOperandsMakeTexelAvailableKHRMask = 0x00000100,
+	/// <unmanaged>SpvImageOperandsMakeTexelVisibleMask</unmanaged>
+	SpvImageOperandsMakeTexelVisibleMask = 0x00000200,
+	/// <unmanaged>SpvImageOperandsMakeTexelVisibleKHRMask</unmanaged>
+	SpvImageOperandsMakeTexelVisibleKHRMask = 0x00000200,
+	/// <unmanaged>SpvImageOperandsNonPrivateTexelMask</unmanaged>
+	SpvImageOperandsNonPrivateTexelMask = 0x00000400,
+	/// <unmanaged>SpvImageOperandsNonPrivateTexelKHRMask</unmanaged>
+	SpvImageOperandsNonPrivateTexelKHRMask = 0x00000400,
+	/// <unmanaged>SpvImageOperandsVolatileTexelMask</unmanaged>
+	SpvImageOperandsVolatileTexelMask = 0x00000800,
+	/// <unmanaged>SpvImageOperandsVolatileTexelKHRMask</unmanaged>
+	SpvImageOperandsVolatileTexelKHRMask = 0x00000800,
+	/// <unmanaged>SpvImageOperandsSignExtendMask</unmanaged>
+	SpvImageOperandsSignExtendMask = 0x00001000,
+	/// <unmanaged>SpvImageOperandsZeroExtendMask</unmanaged>
+	SpvImageOperandsZeroExtendMask = 0x00002000,
+	/// <unmanaged>SpvImageOperandsNontemporalMask</unmanaged>
+	SpvImageOperandsNontemporalMask = 0x00004000,
+	/// <unmanaged>SpvImageOperandsOffsetsMask</unmanaged>
+	SpvImageOperandsOffsetsMask = 0x00010000,
+}
+
+public enum SpvFPFastMathModeShift
+{
+	/// <unmanaged>SpvFPFastMathModeNotNaNShift</unmanaged>
+	SpvFPFastMathModeNotNaNShift = 0,
+	/// <unmanaged>SpvFPFastMathModeNotInfShift</unmanaged>
+	SpvFPFastMathModeNotInfShift = 1,
+	/// <unmanaged>SpvFPFastMathModeNSZShift</unmanaged>
+	SpvFPFastMathModeNSZShift = 2,
+	/// <unmanaged>SpvFPFastMathModeAllowRecipShift</unmanaged>
+	SpvFPFastMathModeAllowRecipShift = 3,
+	/// <unmanaged>SpvFPFastMathModeFastShift</unmanaged>
+	SpvFPFastMathModeFastShift = 4,
+	/// <unmanaged>SpvFPFastMathModeAllowContractFastINTELShift</unmanaged>
+	SpvFPFastMathModeAllowContractFastINTELShift = 16,
+	/// <unmanaged>SpvFPFastMathModeAllowReassocINTELShift</unmanaged>
+	SpvFPFastMathModeAllowReassocINTELShift = 17,
+	/// <unmanaged>SpvFPFastMathModeMax</unmanaged>
+	SpvFPFastMathModeMax = 0x7fffffff,
+}
+
+[Flags]
+public enum SpvFPFastMathModeMask
+{
+	/// <unmanaged>SpvFPFastMathModeMaskNone</unmanaged>
+	None = 0,
+	/// <unmanaged>SpvFPFastMathModeNotNaNMask</unmanaged>
+	SpvFPFastMathModeNotNaNMask = 0x00000001,
+	/// <unmanaged>SpvFPFastMathModeNotInfMask</unmanaged>
+	SpvFPFastMathModeNotInfMask = 0x00000002,
+	/// <unmanaged>SpvFPFastMathModeNSZMask</unmanaged>
+	SpvFPFastMathModeNSZMask = 0x00000004,
+	/// <unmanaged>SpvFPFastMathModeAllowRecipMask</unmanaged>
+	SpvFPFastMathModeAllowRecipMask = 0x00000008,
+	/// <unmanaged>SpvFPFastMathModeFastMask</unmanaged>
+	SpvFPFastMathModeFastMask = 0x00000010,
+	/// <unmanaged>SpvFPFastMathModeAllowContractFastINTELMask</unmanaged>
+	SpvFPFastMathModeAllowContractFastINTELMask = 0x00010000,
+	/// <unmanaged>SpvFPFastMathModeAllowReassocINTELMask</unmanaged>
+	SpvFPFastMathModeAllowReassocINTELMask = 0x00020000,
+}
+
+public enum SpvFPRoundingMode
+{
+	/// <unmanaged>SpvFPRoundingModeRTE</unmanaged>
+	RTE = 0,
+	/// <unmanaged>SpvFPRoundingModeRTZ</unmanaged>
+	RTZ = 1,
+	/// <unmanaged>SpvFPRoundingModeRTP</unmanaged>
+	RTP = 2,
+	/// <unmanaged>SpvFPRoundingModeRTN</unmanaged>
+	RTN = 3,
+}
+
+public enum SpvLinkageType
+{
+	/// <unmanaged>SpvLinkageTypeExport</unmanaged>
+	Export = 0,
+	/// <unmanaged>SpvLinkageTypeImport</unmanaged>
+	Import = 1,
+	/// <unmanaged>SpvLinkageTypeLinkOnceODR</unmanaged>
+	LinkOnceODR = 2,
+}
+
+public enum SpvAccessQualifier
+{
+	/// <unmanaged>SpvAccessQualifierReadOnly</unmanaged>
+	ReadOnly = 0,
+	/// <unmanaged>SpvAccessQualifierWriteOnly</unmanaged>
+	WriteOnly = 1,
+	/// <unmanaged>SpvAccessQualifierReadWrite</unmanaged>
+	ReadWrite = 2,
+}
+
+public enum SpvFunctionParameterAttribute
+{
+	/// <unmanaged>SpvFunctionParameterAttributeZext</unmanaged>
+	Zext = 0,
+	/// <unmanaged>SpvFunctionParameterAttributeSext</unmanaged>
+	Sext = 1,
+	/// <unmanaged>SpvFunctionParameterAttributeByVal</unmanaged>
+	ByVal = 2,
+	/// <unmanaged>SpvFunctionParameterAttributeSret</unmanaged>
+	Sret = 3,
+	/// <unmanaged>SpvFunctionParameterAttributeNoAlias</unmanaged>
+	NoAlias = 4,
+	/// <unmanaged>SpvFunctionParameterAttributeNoCapture</unmanaged>
+	NoCapture = 5,
+	/// <unmanaged>SpvFunctionParameterAttributeNoWrite</unmanaged>
+	NoWrite = 6,
+	/// <unmanaged>SpvFunctionParameterAttributeNoReadWrite</unmanaged>
+	NoReadWrite = 7,
+}
+
+public enum SpvDecoration
+{
+	/// <unmanaged>SpvDecorationRelaxedPrecision</unmanaged>
+	RelaxedPrecision = 0,
+	/// <unmanaged>SpvDecorationSpecId</unmanaged>
+	SpecId = 1,
+	/// <unmanaged>SpvDecorationBlock</unmanaged>
+	Block = 2,
+	/// <unmanaged>SpvDecorationBufferBlock</unmanaged>
+	BufferBlock = 3,
+	/// <unmanaged>SpvDecorationRowMajor</unmanaged>
+	RowMajor = 4,
+	/// <unmanaged>SpvDecorationColMajor</unmanaged>
+	ColMajor = 5,
+	/// <unmanaged>SpvDecorationArrayStride</unmanaged>
+	ArrayStride = 6,
+	/// <unmanaged>SpvDecorationMatrixStride</unmanaged>
+	MatrixStride = 7,
+	/// <unmanaged>SpvDecorationGLSLShared</unmanaged>
+	GLSLShared = 8,
+	/// <unmanaged>SpvDecorationGLSLPacked</unmanaged>
+	GLSLPacked = 9,
+	/// <unmanaged>SpvDecorationCPacked</unmanaged>
+	CPacked = 10,
+	/// <unmanaged>SpvDecorationBuiltIn</unmanaged>
+	BuiltIn = 11,
+	/// <unmanaged>SpvDecorationNoPerspective</unmanaged>
+	NoPerspective = 13,
+	/// <unmanaged>SpvDecorationFlat</unmanaged>
+	Flat = 14,
+	/// <unmanaged>SpvDecorationPatch</unmanaged>
+	Patch = 15,
+	/// <unmanaged>SpvDecorationCentroid</unmanaged>
+	Centroid = 16,
+	/// <unmanaged>SpvDecorationSample</unmanaged>
+	Sample = 17,
+	/// <unmanaged>SpvDecorationInvariant</unmanaged>
+	Invariant = 18,
+	/// <unmanaged>SpvDecorationRestrict</unmanaged>
+	Restrict = 19,
+	/// <unmanaged>SpvDecorationAliased</unmanaged>
+	Aliased = 20,
+	/// <unmanaged>SpvDecorationVolatile</unmanaged>
+	Volatile = 21,
+	/// <unmanaged>SpvDecorationConstant</unmanaged>
+	Constant = 22,
+	/// <unmanaged>SpvDecorationCoherent</unmanaged>
+	Coherent = 23,
+	/// <unmanaged>SpvDecorationNonWritable</unmanaged>
+	NonWritable = 24,
+	/// <unmanaged>SpvDecorationNonReadable</unmanaged>
+	NonReadable = 25,
+	/// <unmanaged>SpvDecorationUniform</unmanaged>
+	Uniform = 26,
+	/// <unmanaged>SpvDecorationUniformId</unmanaged>
+	UniformId = 27,
+	/// <unmanaged>SpvDecorationSaturatedConversion</unmanaged>
+	SaturatedConversion = 28,
+	/// <unmanaged>SpvDecorationStream</unmanaged>
+	Stream = 29,
+	/// <unmanaged>SpvDecorationLocation</unmanaged>
+	Location = 30,
+	/// <unmanaged>SpvDecorationComponent</unmanaged>
+	Component = 31,
+	/// <unmanaged>SpvDecorationIndex</unmanaged>
+	Index = 32,
+	/// <unmanaged>SpvDecorationBinding</unmanaged>
+	Binding = 33,
+	/// <unmanaged>SpvDecorationDescriptorSet</unmanaged>
+	DescriptorSet = 34,
+	/// <unmanaged>SpvDecorationOffset</unmanaged>
+	Offset = 35,
+	/// <unmanaged>SpvDecorationXfbBuffer</unmanaged>
+	XfbBuffer = 36,
+	/// <unmanaged>SpvDecorationXfbStride</unmanaged>
+	XfbStride = 37,
+	/// <unmanaged>SpvDecorationFuncParamAttr</unmanaged>
+	FuncParamAttr = 38,
+	/// <unmanaged>SpvDecorationFPRoundingMode</unmanaged>
+	FPRoundingMode = 39,
+	/// <unmanaged>SpvDecorationFPFastMathMode</unmanaged>
+	FPFastMathMode = 40,
+	/// <unmanaged>SpvDecorationLinkageAttributes</unmanaged>
+	LinkageAttributes = 41,
+	/// <unmanaged>SpvDecorationNoContraction</unmanaged>
+	NoContraction = 42,
+	/// <unmanaged>SpvDecorationInputAttachmentIndex</unmanaged>
+	InputAttachmentIndex = 43,
+	/// <unmanaged>SpvDecorationAlignment</unmanaged>
+	Alignment = 44,
+	/// <unmanaged>SpvDecorationMaxByteOffset</unmanaged>
+	MaxByteOffset = 45,
+	/// <unmanaged>SpvDecorationAlignmentId</unmanaged>
+	AlignmentId = 46,
+	/// <unmanaged>SpvDecorationMaxByteOffsetId</unmanaged>
+	MaxByteOffsetId = 47,
+	/// <unmanaged>SpvDecorationNoSignedWrap</unmanaged>
+	NoSignedWrap = 4469,
+	/// <unmanaged>SpvDecorationNoUnsignedWrap</unmanaged>
+	NoUnsignedWrap = 4470,
+	/// <unmanaged>SpvDecorationWeightTextureQCOM</unmanaged>
+	WeightTextureQCOM = 4487,
+	/// <unmanaged>SpvDecorationBlockMatchTextureQCOM</unmanaged>
+	BlockMatchTextureQCOM = 4488,
+	/// <unmanaged>SpvDecorationExplicitInterpAMD</unmanaged>
+	ExplicitInterpAMD = 4999,
+	/// <unmanaged>SpvDecorationOverrideCoverageNV</unmanaged>
+	OverrideCoverageNV = 5248,
+	/// <unmanaged>SpvDecorationPassthroughNV</unmanaged>
+	PassthroughNV = 5250,
+	/// <unmanaged>SpvDecorationViewportRelativeNV</unmanaged>
+	ViewportRelativeNV = 5252,
+	/// <unmanaged>SpvDecorationSecondaryViewportRelativeNV</unmanaged>
+	SecondaryViewportRelativeNV = 5256,
+	/// <unmanaged>SpvDecorationPerPrimitiveEXT</unmanaged>
+	PerPrimitiveEXT = 5271,
+	/// <unmanaged>SpvDecorationPerPrimitiveNV</unmanaged>
+	PerPrimitiveNV = 5271,
+	/// <unmanaged>SpvDecorationPerViewNV</unmanaged>
+	PerViewNV = 5272,
+	/// <unmanaged>SpvDecorationPerTaskNV</unmanaged>
+	PerTaskNV = 5273,
+	/// <unmanaged>SpvDecorationPerVertexKHR</unmanaged>
+	PerVertexKHR = 5285,
+	/// <unmanaged>SpvDecorationPerVertexNV</unmanaged>
+	PerVertexNV = 5285,
+	/// <unmanaged>SpvDecorationNonUniform</unmanaged>
+	NonUniform = 5300,
+	/// <unmanaged>SpvDecorationNonUniformEXT</unmanaged>
+	NonUniformEXT = 5300,
+	/// <unmanaged>SpvDecorationRestrictPointer</unmanaged>
+	RestrictPointer = 5355,
+	/// <unmanaged>SpvDecorationRestrictPointerEXT</unmanaged>
+	RestrictPointerEXT = 5355,
+	/// <unmanaged>SpvDecorationAliasedPointer</unmanaged>
+	AliasedPointer = 5356,
+	/// <unmanaged>SpvDecorationAliasedPointerEXT</unmanaged>
+	AliasedPointerEXT = 5356,
+	/// <unmanaged>SpvDecorationBindlessSamplerNV</unmanaged>
+	BindlessSamplerNV = 5398,
+	/// <unmanaged>SpvDecorationBindlessImageNV</unmanaged>
+	BindlessImageNV = 5399,
+	/// <unmanaged>SpvDecorationBoundSamplerNV</unmanaged>
+	BoundSamplerNV = 5400,
+	/// <unmanaged>SpvDecorationBoundImageNV</unmanaged>
+	BoundImageNV = 5401,
+	/// <unmanaged>SpvDecorationSIMTCallINTEL</unmanaged>
+	SIMTCallINTEL = 5599,
+	/// <unmanaged>SpvDecorationReferencedIndirectlyINTEL</unmanaged>
+	ReferencedIndirectlyINTEL = 5602,
+	/// <unmanaged>SpvDecorationClobberINTEL</unmanaged>
+	ClobberINTEL = 5607,
+	/// <unmanaged>SpvDecorationSideEffectsINTEL</unmanaged>
+	SideEffectsINTEL = 5608,
+	/// <unmanaged>SpvDecorationVectorComputeVariableINTEL</unmanaged>
+	VectorComputeVariableINTEL = 5624,
+	/// <unmanaged>SpvDecorationFuncParamIOKindINTEL</unmanaged>
+	FuncParamIOKindINTEL = 5625,
+	/// <unmanaged>SpvDecorationVectorComputeFunctionINTEL</unmanaged>
+	VectorComputeFunctionINTEL = 5626,
+	/// <unmanaged>SpvDecorationStackCallINTEL</unmanaged>
+	StackCallINTEL = 5627,
+	/// <unmanaged>SpvDecorationGlobalVariableOffsetINTEL</unmanaged>
+	GlobalVariableOffsetINTEL = 5628,
+	/// <unmanaged>SpvDecorationCounterBuffer</unmanaged>
+	CounterBuffer = 5634,
+	/// <unmanaged>SpvDecorationHlslCounterBufferGOOGLE</unmanaged>
+	HlslCounterBufferGOOGLE = 5634,
+	/// <unmanaged>SpvDecorationHlslSemanticGOOGLE</unmanaged>
+	HlslSemanticGOOGLE = 5635,
+	/// <unmanaged>SpvDecorationUserSemantic</unmanaged>
+	UserSemantic = 5635,
+	/// <unmanaged>SpvDecorationUserTypeGOOGLE</unmanaged>
+	UserTypeGOOGLE = 5636,
+	/// <unmanaged>SpvDecorationFunctionRoundingModeINTEL</unmanaged>
+	FunctionRoundingModeINTEL = 5822,
+	/// <unmanaged>SpvDecorationFunctionDenormModeINTEL</unmanaged>
+	FunctionDenormModeINTEL = 5823,
+	/// <unmanaged>SpvDecorationRegisterINTEL</unmanaged>
+	RegisterINTEL = 5825,
+	/// <unmanaged>SpvDecorationMemoryINTEL</unmanaged>
+	MemoryINTEL = 5826,
+	/// <unmanaged>SpvDecorationNumbanksINTEL</unmanaged>
+	NumbanksINTEL = 5827,
+	/// <unmanaged>SpvDecorationBankwidthINTEL</unmanaged>
+	BankwidthINTEL = 5828,
+	/// <unmanaged>SpvDecorationMaxPrivateCopiesINTEL</unmanaged>
+	MaxPrivateCopiesINTEL = 5829,
+	/// <unmanaged>SpvDecorationSinglepumpINTEL</unmanaged>
+	SinglepumpINTEL = 5830,
+	/// <unmanaged>SpvDecorationDoublepumpINTEL</unmanaged>
+	DoublepumpINTEL = 5831,
+	/// <unmanaged>SpvDecorationMaxReplicatesINTEL</unmanaged>
+	MaxReplicatesINTEL = 5832,
+	/// <unmanaged>SpvDecorationSimpleDualPortINTEL</unmanaged>
+	SimpleDualPortINTEL = 5833,
+	/// <unmanaged>SpvDecorationMergeINTEL</unmanaged>
+	MergeINTEL = 5834,
+	/// <unmanaged>SpvDecorationBankBitsINTEL</unmanaged>
+	BankBitsINTEL = 5835,
+	/// <unmanaged>SpvDecorationForcePow2DepthINTEL</unmanaged>
+	ForcePow2DepthINTEL = 5836,
+	/// <unmanaged>SpvDecorationBurstCoalesceINTEL</unmanaged>
+	BurstCoalesceINTEL = 5899,
+	/// <unmanaged>SpvDecorationCacheSizeINTEL</unmanaged>
+	CacheSizeINTEL = 5900,
+	/// <unmanaged>SpvDecorationDontStaticallyCoalesceINTEL</unmanaged>
+	DontStaticallyCoalesceINTEL = 5901,
+	/// <unmanaged>SpvDecorationPrefetchINTEL</unmanaged>
+	PrefetchINTEL = 5902,
+	/// <unmanaged>SpvDecorationStallEnableINTEL</unmanaged>
+	StallEnableINTEL = 5905,
+	/// <unmanaged>SpvDecorationFuseLoopsInFunctionINTEL</unmanaged>
+	FuseLoopsInFunctionINTEL = 5907,
+	/// <unmanaged>SpvDecorationAliasScopeINTEL</unmanaged>
+	AliasScopeINTEL = 5914,
+	/// <unmanaged>SpvDecorationNoAliasINTEL</unmanaged>
+	NoAliasINTEL = 5915,
+	/// <unmanaged>SpvDecorationBufferLocationINTEL</unmanaged>
+	BufferLocationINTEL = 5921,
+	/// <unmanaged>SpvDecorationIOPipeStorageINTEL</unmanaged>
+	IOPipeStorageINTEL = 5944,
+	/// <unmanaged>SpvDecorationFunctionFloatingPointModeINTEL</unmanaged>
+	FunctionFloatingPointModeINTEL = 6080,
+	/// <unmanaged>SpvDecorationSingleElementVectorINTEL</unmanaged>
+	SingleElementVectorINTEL = 6085,
+	/// <unmanaged>SpvDecorationVectorComputeCallableFunctionINTEL</unmanaged>
+	VectorComputeCallableFunctionINTEL = 6087,
+	/// <unmanaged>SpvDecorationMediaBlockIOINTEL</unmanaged>
+	MediaBlockIOINTEL = 6140,
+}
+
+public enum SpvBuiltIn
+{
+	/// <unmanaged>SpvBuiltInPosition</unmanaged>
+	Position = 0,
+	/// <unmanaged>SpvBuiltInPointSize</unmanaged>
+	PointSize = 1,
+	/// <unmanaged>SpvBuiltInClipDistance</unmanaged>
+	ClipDistance = 3,
+	/// <unmanaged>SpvBuiltInCullDistance</unmanaged>
+	CullDistance = 4,
+	/// <unmanaged>SpvBuiltInVertexId</unmanaged>
+	VertexId = 5,
+	/// <unmanaged>SpvBuiltInInstanceId</unmanaged>
+	InstanceId = 6,
+	/// <unmanaged>SpvBuiltInPrimitiveId</unmanaged>
+	PrimitiveId = 7,
+	/// <unmanaged>SpvBuiltInInvocationId</unmanaged>
+	InvocationId = 8,
+	/// <unmanaged>SpvBuiltInLayer</unmanaged>
+	Layer = 9,
+	/// <unmanaged>SpvBuiltInViewportIndex</unmanaged>
+	ViewportIndex = 10,
+	/// <unmanaged>SpvBuiltInTessLevelOuter</unmanaged>
+	TessLevelOuter = 11,
+	/// <unmanaged>SpvBuiltInTessLevelInner</unmanaged>
+	TessLevelInner = 12,
+	/// <unmanaged>SpvBuiltInTessCoord</unmanaged>
+	TessCoord = 13,
+	/// <unmanaged>SpvBuiltInPatchVertices</unmanaged>
+	PatchVertices = 14,
+	/// <unmanaged>SpvBuiltInFragCoord</unmanaged>
+	FragCoord = 15,
+	/// <unmanaged>SpvBuiltInPointCoord</unmanaged>
+	PointCoord = 16,
+	/// <unmanaged>SpvBuiltInFrontFacing</unmanaged>
+	FrontFacing = 17,
+	/// <unmanaged>SpvBuiltInSampleId</unmanaged>
+	SampleId = 18,
+	/// <unmanaged>SpvBuiltInSamplePosition</unmanaged>
+	SamplePosition = 19,
+	/// <unmanaged>SpvBuiltInSampleMask</unmanaged>
+	SampleMask = 20,
+	/// <unmanaged>SpvBuiltInFragDepth</unmanaged>
+	FragDepth = 22,
+	/// <unmanaged>SpvBuiltInHelperInvocation</unmanaged>
+	HelperInvocation = 23,
+	/// <unmanaged>SpvBuiltInNumWorkgroups</unmanaged>
+	NumWorkgroups = 24,
+	/// <unmanaged>SpvBuiltInWorkgroupSize</unmanaged>
+	WorkgroupSize = 25,
+	/// <unmanaged>SpvBuiltInWorkgroupId</unmanaged>
+	WorkgroupId = 26,
+	/// <unmanaged>SpvBuiltInLocalInvocationId</unmanaged>
+	LocalInvocationId = 27,
+	/// <unmanaged>SpvBuiltInGlobalInvocationId</unmanaged>
+	GlobalInvocationId = 28,
+	/// <unmanaged>SpvBuiltInLocalInvocationIndex</unmanaged>
+	LocalInvocationIndex = 29,
+	/// <unmanaged>SpvBuiltInWorkDim</unmanaged>
+	WorkDim = 30,
+	/// <unmanaged>SpvBuiltInGlobalSize</unmanaged>
+	GlobalSize = 31,
+	/// <unmanaged>SpvBuiltInEnqueuedWorkgroupSize</unmanaged>
+	EnqueuedWorkgroupSize = 32,
+	/// <unmanaged>SpvBuiltInGlobalOffset</unmanaged>
+	GlobalOffset = 33,
+	/// <unmanaged>SpvBuiltInGlobalLinearId</unmanaged>
+	GlobalLinearId = 34,
+	/// <unmanaged>SpvBuiltInSubgroupSize</unmanaged>
+	SubgroupSize = 36,
+	/// <unmanaged>SpvBuiltInSubgroupMaxSize</unmanaged>
+	SubgroupMaxSize = 37,
+	/// <unmanaged>SpvBuiltInNumSubgroups</unmanaged>
+	NumSubgroups = 38,
+	/// <unmanaged>SpvBuiltInNumEnqueuedSubgroups</unmanaged>
+	NumEnqueuedSubgroups = 39,
+	/// <unmanaged>SpvBuiltInSubgroupId</unmanaged>
+	SubgroupId = 40,
+	/// <unmanaged>SpvBuiltInSubgroupLocalInvocationId</unmanaged>
+	SubgroupLocalInvocationId = 41,
+	/// <unmanaged>SpvBuiltInVertexIndex</unmanaged>
+	VertexIndex = 42,
+	/// <unmanaged>SpvBuiltInInstanceIndex</unmanaged>
+	InstanceIndex = 43,
+	/// <unmanaged>SpvBuiltInSubgroupEqMask</unmanaged>
+	SubgroupEqMask = 4416,
+	/// <unmanaged>SpvBuiltInSubgroupEqMaskKHR</unmanaged>
+	SubgroupEqMaskKHR = 4416,
+	/// <unmanaged>SpvBuiltInSubgroupGeMask</unmanaged>
+	SubgroupGeMask = 4417,
+	/// <unmanaged>SpvBuiltInSubgroupGeMaskKHR</unmanaged>
+	SubgroupGeMaskKHR = 4417,
+	/// <unmanaged>SpvBuiltInSubgroupGtMask</unmanaged>
+	SubgroupGtMask = 4418,
+	/// <unmanaged>SpvBuiltInSubgroupGtMaskKHR</unmanaged>
+	SubgroupGtMaskKHR = 4418,
+	/// <unmanaged>SpvBuiltInSubgroupLeMask</unmanaged>
+	SubgroupLeMask = 4419,
+	/// <unmanaged>SpvBuiltInSubgroupLeMaskKHR</unmanaged>
+	SubgroupLeMaskKHR = 4419,
+	/// <unmanaged>SpvBuiltInSubgroupLtMask</unmanaged>
+	SubgroupLtMask = 4420,
+	/// <unmanaged>SpvBuiltInSubgroupLtMaskKHR</unmanaged>
+	SubgroupLtMaskKHR = 4420,
+	/// <unmanaged>SpvBuiltInBaseVertex</unmanaged>
+	BaseVertex = 4424,
+	/// <unmanaged>SpvBuiltInBaseInstance</unmanaged>
+	BaseInstance = 4425,
+	/// <unmanaged>SpvBuiltInDrawIndex</unmanaged>
+	DrawIndex = 4426,
+	/// <unmanaged>SpvBuiltInPrimitiveShadingRateKHR</unmanaged>
+	PrimitiveShadingRateKHR = 4432,
+	/// <unmanaged>SpvBuiltInDeviceIndex</unmanaged>
+	DeviceIndex = 4438,
+	/// <unmanaged>SpvBuiltInViewIndex</unmanaged>
+	ViewIndex = 4440,
+	/// <unmanaged>SpvBuiltInShadingRateKHR</unmanaged>
+	ShadingRateKHR = 4444,
+	/// <unmanaged>SpvBuiltInBaryCoordNoPerspAMD</unmanaged>
+	BaryCoordNoPerspAMD = 4992,
+	/// <unmanaged>SpvBuiltInBaryCoordNoPerspCentroidAMD</unmanaged>
+	BaryCoordNoPerspCentroidAMD = 4993,
+	/// <unmanaged>SpvBuiltInBaryCoordNoPerspSampleAMD</unmanaged>
+	BaryCoordNoPerspSampleAMD = 4994,
+	/// <unmanaged>SpvBuiltInBaryCoordSmoothAMD</unmanaged>
+	BaryCoordSmoothAMD = 4995,
+	/// <unmanaged>SpvBuiltInBaryCoordSmoothCentroidAMD</unmanaged>
+	BaryCoordSmoothCentroidAMD = 4996,
+	/// <unmanaged>SpvBuiltInBaryCoordSmoothSampleAMD</unmanaged>
+	BaryCoordSmoothSampleAMD = 4997,
+	/// <unmanaged>SpvBuiltInBaryCoordPullModelAMD</unmanaged>
+	BaryCoordPullModelAMD = 4998,
+	/// <unmanaged>SpvBuiltInFragStencilRefEXT</unmanaged>
+	FragStencilRefEXT = 5014,
+	/// <unmanaged>SpvBuiltInViewportMaskNV</unmanaged>
+	ViewportMaskNV = 5253,
+	/// <unmanaged>SpvBuiltInSecondaryPositionNV</unmanaged>
+	SecondaryPositionNV = 5257,
+	/// <unmanaged>SpvBuiltInSecondaryViewportMaskNV</unmanaged>
+	SecondaryViewportMaskNV = 5258,
+	/// <unmanaged>SpvBuiltInPositionPerViewNV</unmanaged>
+	PositionPerViewNV = 5261,
+	/// <unmanaged>SpvBuiltInViewportMaskPerViewNV</unmanaged>
+	ViewportMaskPerViewNV = 5262,
+	/// <unmanaged>SpvBuiltInFullyCoveredEXT</unmanaged>
+	FullyCoveredEXT = 5264,
+	/// <unmanaged>SpvBuiltInTaskCountNV</unmanaged>
+	TaskCountNV = 5274,
+	/// <unmanaged>SpvBuiltInPrimitiveCountNV</unmanaged>
+	PrimitiveCountNV = 5275,
+	/// <unmanaged>SpvBuiltInPrimitiveIndicesNV</unmanaged>
+	PrimitiveIndicesNV = 5276,
+	/// <unmanaged>SpvBuiltInClipDistancePerViewNV</unmanaged>
+	ClipDistancePerViewNV = 5277,
+	/// <unmanaged>SpvBuiltInCullDistancePerViewNV</unmanaged>
+	CullDistancePerViewNV = 5278,
+	/// <unmanaged>SpvBuiltInLayerPerViewNV</unmanaged>
+	LayerPerViewNV = 5279,
+	/// <unmanaged>SpvBuiltInMeshViewCountNV</unmanaged>
+	MeshViewCountNV = 5280,
+	/// <unmanaged>SpvBuiltInMeshViewIndicesNV</unmanaged>
+	MeshViewIndicesNV = 5281,
+	/// <unmanaged>SpvBuiltInBaryCoordKHR</unmanaged>
+	BaryCoordKHR = 5286,
+	/// <unmanaged>SpvBuiltInBaryCoordNV</unmanaged>
+	BaryCoordNV = 5286,
+	/// <unmanaged>SpvBuiltInBaryCoordNoPerspKHR</unmanaged>
+	BaryCoordNoPerspKHR = 5287,
+	/// <unmanaged>SpvBuiltInBaryCoordNoPerspNV</unmanaged>
+	BaryCoordNoPerspNV = 5287,
+	/// <unmanaged>SpvBuiltInFragSizeEXT</unmanaged>
+	FragSizeEXT = 5292,
+	/// <unmanaged>SpvBuiltInFragmentSizeNV</unmanaged>
+	FragmentSizeNV = 5292,
+	/// <unmanaged>SpvBuiltInFragInvocationCountEXT</unmanaged>
+	FragInvocationCountEXT = 5293,
+	/// <unmanaged>SpvBuiltInInvocationsPerPixelNV</unmanaged>
+	InvocationsPerPixelNV = 5293,
+	/// <unmanaged>SpvBuiltInPrimitivePointIndicesEXT</unmanaged>
+	PrimitivePointIndicesEXT = 5294,
+	/// <unmanaged>SpvBuiltInPrimitiveLineIndicesEXT</unmanaged>
+	PrimitiveLineIndicesEXT = 5295,
+	/// <unmanaged>SpvBuiltInPrimitiveTriangleIndicesEXT</unmanaged>
+	PrimitiveTriangleIndicesEXT = 5296,
+	/// <unmanaged>SpvBuiltInCullPrimitiveEXT</unmanaged>
+	CullPrimitiveEXT = 5299,
+	/// <unmanaged>SpvBuiltInLaunchIdKHR</unmanaged>
+	LaunchIdKHR = 5319,
+	/// <unmanaged>SpvBuiltInLaunchIdNV</unmanaged>
+	LaunchIdNV = 5319,
+	/// <unmanaged>SpvBuiltInLaunchSizeKHR</unmanaged>
+	LaunchSizeKHR = 5320,
+	/// <unmanaged>SpvBuiltInLaunchSizeNV</unmanaged>
+	LaunchSizeNV = 5320,
+	/// <unmanaged>SpvBuiltInWorldRayOriginKHR</unmanaged>
+	WorldRayOriginKHR = 5321,
+	/// <unmanaged>SpvBuiltInWorldRayOriginNV</unmanaged>
+	WorldRayOriginNV = 5321,
+	/// <unmanaged>SpvBuiltInWorldRayDirectionKHR</unmanaged>
+	WorldRayDirectionKHR = 5322,
+	/// <unmanaged>SpvBuiltInWorldRayDirectionNV</unmanaged>
+	WorldRayDirectionNV = 5322,
+	/// <unmanaged>SpvBuiltInObjectRayOriginKHR</unmanaged>
+	ObjectRayOriginKHR = 5323,
+	/// <unmanaged>SpvBuiltInObjectRayOriginNV</unmanaged>
+	ObjectRayOriginNV = 5323,
+	/// <unmanaged>SpvBuiltInObjectRayDirectionKHR</unmanaged>
+	ObjectRayDirectionKHR = 5324,
+	/// <unmanaged>SpvBuiltInObjectRayDirectionNV</unmanaged>
+	ObjectRayDirectionNV = 5324,
+	/// <unmanaged>SpvBuiltInRayTminKHR</unmanaged>
+	RayTminKHR = 5325,
+	/// <unmanaged>SpvBuiltInRayTminNV</unmanaged>
+	RayTminNV = 5325,
+	/// <unmanaged>SpvBuiltInRayTmaxKHR</unmanaged>
+	RayTmaxKHR = 5326,
+	/// <unmanaged>SpvBuiltInRayTmaxNV</unmanaged>
+	RayTmaxNV = 5326,
+	/// <unmanaged>SpvBuiltInInstanceCustomIndexKHR</unmanaged>
+	InstanceCustomIndexKHR = 5327,
+	/// <unmanaged>SpvBuiltInInstanceCustomIndexNV</unmanaged>
+	InstanceCustomIndexNV = 5327,
+	/// <unmanaged>SpvBuiltInObjectToWorldKHR</unmanaged>
+	ObjectToWorldKHR = 5330,
+	/// <unmanaged>SpvBuiltInObjectToWorldNV</unmanaged>
+	ObjectToWorldNV = 5330,
+	/// <unmanaged>SpvBuiltInWorldToObjectKHR</unmanaged>
+	WorldToObjectKHR = 5331,
+	/// <unmanaged>SpvBuiltInWorldToObjectNV</unmanaged>
+	WorldToObjectNV = 5331,
+	/// <unmanaged>SpvBuiltInHitTNV</unmanaged>
+	HitTNV = 5332,
+	/// <unmanaged>SpvBuiltInHitKindKHR</unmanaged>
+	HitKindKHR = 5333,
+	/// <unmanaged>SpvBuiltInHitKindNV</unmanaged>
+	HitKindNV = 5333,
+	/// <unmanaged>SpvBuiltInCurrentRayTimeNV</unmanaged>
+	CurrentRayTimeNV = 5334,
+	/// <unmanaged>SpvBuiltInIncomingRayFlagsKHR</unmanaged>
+	IncomingRayFlagsKHR = 5351,
+	/// <unmanaged>SpvBuiltInIncomingRayFlagsNV</unmanaged>
+	IncomingRayFlagsNV = 5351,
+	/// <unmanaged>SpvBuiltInRayGeometryIndexKHR</unmanaged>
+	RayGeometryIndexKHR = 5352,
+	/// <unmanaged>SpvBuiltInWarpsPerSMNV</unmanaged>
+	WarpsPerSMNV = 5374,
+	/// <unmanaged>SpvBuiltInSMCountNV</unmanaged>
+	SMCountNV = 5375,
+	/// <unmanaged>SpvBuiltInWarpIDNV</unmanaged>
+	WarpIDNV = 5376,
+	/// <unmanaged>SpvBuiltInSMIDNV</unmanaged>
+	SMIDNV = 5377,
+	/// <unmanaged>SpvBuiltInCullMaskKHR</unmanaged>
+	CullMaskKHR = 6021,
+}
+
+public enum SpvSelectionControlShift
+{
+	/// <unmanaged>SpvSelectionControlFlattenShift</unmanaged>
+	SpvSelectionControlFlattenShift = 0,
+	/// <unmanaged>SpvSelectionControlDontFlattenShift</unmanaged>
+	SpvSelectionControlDontFlattenShift = 1,
+	/// <unmanaged>SpvSelectionControlMax</unmanaged>
+	SpvSelectionControlMax = 0x7fffffff,
+}
+
+[Flags]
+public enum SpvSelectionControlMask
+{
+	/// <unmanaged>SpvSelectionControlMaskNone</unmanaged>
+	None = 0,
+	/// <unmanaged>SpvSelectionControlFlattenMask</unmanaged>
+	SpvSelectionControlFlattenMask = 0x00000001,
+	/// <unmanaged>SpvSelectionControlDontFlattenMask</unmanaged>
+	SpvSelectionControlDontFlattenMask = 0x00000002,
+}
+
+public enum SpvLoopControlShift
+{
+	/// <unmanaged>SpvLoopControlUnrollShift</unmanaged>
+	SpvLoopControlUnrollShift = 0,
+	/// <unmanaged>SpvLoopControlDontUnrollShift</unmanaged>
+	SpvLoopControlDontUnrollShift = 1,
+	/// <unmanaged>SpvLoopControlDependencyInfiniteShift</unmanaged>
+	SpvLoopControlDependencyInfiniteShift = 2,
+	/// <unmanaged>SpvLoopControlDependencyLengthShift</unmanaged>
+	SpvLoopControlDependencyLengthShift = 3,
+	/// <unmanaged>SpvLoopControlMinIterationsShift</unmanaged>
+	SpvLoopControlMinIterationsShift = 4,
+	/// <unmanaged>SpvLoopControlMaxIterationsShift</unmanaged>
+	SpvLoopControlMaxIterationsShift = 5,
+	/// <unmanaged>SpvLoopControlIterationMultipleShift</unmanaged>
+	SpvLoopControlIterationMultipleShift = 6,
+	/// <unmanaged>SpvLoopControlPeelCountShift</unmanaged>
+	SpvLoopControlPeelCountShift = 7,
+	/// <unmanaged>SpvLoopControlPartialCountShift</unmanaged>
+	SpvLoopControlPartialCountShift = 8,
+	/// <unmanaged>SpvLoopControlInitiationIntervalINTELShift</unmanaged>
+	SpvLoopControlInitiationIntervalINTELShift = 16,
+	/// <unmanaged>SpvLoopControlMaxConcurrencyINTELShift</unmanaged>
+	SpvLoopControlMaxConcurrencyINTELShift = 17,
+	/// <unmanaged>SpvLoopControlDependencyArrayINTELShift</unmanaged>
+	SpvLoopControlDependencyArrayINTELShift = 18,
+	/// <unmanaged>SpvLoopControlPipelineEnableINTELShift</unmanaged>
+	SpvLoopControlPipelineEnableINTELShift = 19,
+	/// <unmanaged>SpvLoopControlLoopCoalesceINTELShift</unmanaged>
+	SpvLoopControlLoopCoalesceINTELShift = 20,
+	/// <unmanaged>SpvLoopControlMaxInterleavingINTELShift</unmanaged>
+	SpvLoopControlMaxInterleavingINTELShift = 21,
+	/// <unmanaged>SpvLoopControlSpeculatedIterationsINTELShift</unmanaged>
+	SpvLoopControlSpeculatedIterationsINTELShift = 22,
+	/// <unmanaged>SpvLoopControlNoFusionINTELShift</unmanaged>
+	SpvLoopControlNoFusionINTELShift = 23,
+	/// <unmanaged>SpvLoopControlMax</unmanaged>
+	SpvLoopControlMax = 0x7fffffff,
+}
+
+[Flags]
+public enum SpvLoopControlMask
+{
+	/// <unmanaged>SpvLoopControlMaskNone</unmanaged>
+	None = 0,
+	/// <unmanaged>SpvLoopControlUnrollMask</unmanaged>
+	SpvLoopControlUnrollMask = 0x00000001,
+	/// <unmanaged>SpvLoopControlDontUnrollMask</unmanaged>
+	SpvLoopControlDontUnrollMask = 0x00000002,
+	/// <unmanaged>SpvLoopControlDependencyInfiniteMask</unmanaged>
+	SpvLoopControlDependencyInfiniteMask = 0x00000004,
+	/// <unmanaged>SpvLoopControlDependencyLengthMask</unmanaged>
+	SpvLoopControlDependencyLengthMask = 0x00000008,
+	/// <unmanaged>SpvLoopControlMinIterationsMask</unmanaged>
+	SpvLoopControlMinIterationsMask = 0x00000010,
+	/// <unmanaged>SpvLoopControlMaxIterationsMask</unmanaged>
+	SpvLoopControlMaxIterationsMask = 0x00000020,
+	/// <unmanaged>SpvLoopControlIterationMultipleMask</unmanaged>
+	SpvLoopControlIterationMultipleMask = 0x00000040,
+	/// <unmanaged>SpvLoopControlPeelCountMask</unmanaged>
+	SpvLoopControlPeelCountMask = 0x00000080,
+	/// <unmanaged>SpvLoopControlPartialCountMask</unmanaged>
+	SpvLoopControlPartialCountMask = 0x00000100,
+	/// <unmanaged>SpvLoopControlInitiationIntervalINTELMask</unmanaged>
+	SpvLoopControlInitiationIntervalINTELMask = 0x00010000,
+	/// <unmanaged>SpvLoopControlMaxConcurrencyINTELMask</unmanaged>
+	SpvLoopControlMaxConcurrencyINTELMask = 0x00020000,
+	/// <unmanaged>SpvLoopControlDependencyArrayINTELMask</unmanaged>
+	SpvLoopControlDependencyArrayINTELMask = 0x00040000,
+	/// <unmanaged>SpvLoopControlPipelineEnableINTELMask</unmanaged>
+	SpvLoopControlPipelineEnableINTELMask = 0x00080000,
+	/// <unmanaged>SpvLoopControlLoopCoalesceINTELMask</unmanaged>
+	SpvLoopControlLoopCoalesceINTELMask = 0x00100000,
+	/// <unmanaged>SpvLoopControlMaxInterleavingINTELMask</unmanaged>
+	SpvLoopControlMaxInterleavingINTELMask = 0x00200000,
+	/// <unmanaged>SpvLoopControlSpeculatedIterationsINTELMask</unmanaged>
+	SpvLoopControlSpeculatedIterationsINTELMask = 0x00400000,
+	/// <unmanaged>SpvLoopControlNoFusionINTELMask</unmanaged>
+	SpvLoopControlNoFusionINTELMask = 0x00800000,
+}
+
+public enum SpvFunctionControlShift
+{
+	/// <unmanaged>SpvFunctionControlInlineShift</unmanaged>
+	SpvFunctionControlInlineShift = 0,
+	/// <unmanaged>SpvFunctionControlDontInlineShift</unmanaged>
+	SpvFunctionControlDontInlineShift = 1,
+	/// <unmanaged>SpvFunctionControlPureShift</unmanaged>
+	SpvFunctionControlPureShift = 2,
+	/// <unmanaged>SpvFunctionControlConstShift</unmanaged>
+	SpvFunctionControlConstShift = 3,
+	/// <unmanaged>SpvFunctionControlOptNoneINTELShift</unmanaged>
+	SpvFunctionControlOptNoneINTELShift = 16,
+	/// <unmanaged>SpvFunctionControlMax</unmanaged>
+	SpvFunctionControlMax = 0x7fffffff,
+}
+
+[Flags]
+public enum SpvFunctionControlMask
+{
+	/// <unmanaged>SpvFunctionControlMaskNone</unmanaged>
+	None = 0,
+	/// <unmanaged>SpvFunctionControlInlineMask</unmanaged>
+	SpvFunctionControlInlineMask = 0x00000001,
+	/// <unmanaged>SpvFunctionControlDontInlineMask</unmanaged>
+	SpvFunctionControlDontInlineMask = 0x00000002,
+	/// <unmanaged>SpvFunctionControlPureMask</unmanaged>
+	SpvFunctionControlPureMask = 0x00000004,
+	/// <unmanaged>SpvFunctionControlConstMask</unmanaged>
+	SpvFunctionControlConstMask = 0x00000008,
+	/// <unmanaged>SpvFunctionControlOptNoneINTELMask</unmanaged>
+	SpvFunctionControlOptNoneINTELMask = 0x00010000,
+}
+
+public enum SpvMemorySemanticsShift
+{
+	/// <unmanaged>SpvMemorySemanticsAcquireShift</unmanaged>
+	SpvMemorySemanticsAcquireShift = 1,
+	/// <unmanaged>SpvMemorySemanticsReleaseShift</unmanaged>
+	SpvMemorySemanticsReleaseShift = 2,
+	/// <unmanaged>SpvMemorySemanticsAcquireReleaseShift</unmanaged>
+	SpvMemorySemanticsAcquireReleaseShift = 3,
+	/// <unmanaged>SpvMemorySemanticsSequentiallyConsistentShift</unmanaged>
+	SpvMemorySemanticsSequentiallyConsistentShift = 4,
+	/// <unmanaged>SpvMemorySemanticsUniformMemoryShift</unmanaged>
+	SpvMemorySemanticsUniformMemoryShift = 6,
+	/// <unmanaged>SpvMemorySemanticsSubgroupMemoryShift</unmanaged>
+	SpvMemorySemanticsSubgroupMemoryShift = 7,
+	/// <unmanaged>SpvMemorySemanticsWorkgroupMemoryShift</unmanaged>
+	SpvMemorySemanticsWorkgroupMemoryShift = 8,
+	/// <unmanaged>SpvMemorySemanticsCrossWorkgroupMemoryShift</unmanaged>
+	SpvMemorySemanticsCrossWorkgroupMemoryShift = 9,
+	/// <unmanaged>SpvMemorySemanticsAtomicCounterMemoryShift</unmanaged>
+	SpvMemorySemanticsAtomicCounterMemoryShift = 10,
+	/// <unmanaged>SpvMemorySemanticsImageMemoryShift</unmanaged>
+	SpvMemorySemanticsImageMemoryShift = 11,
+	/// <unmanaged>SpvMemorySemanticsOutputMemoryShift</unmanaged>
+	SpvMemorySemanticsOutputMemoryShift = 12,
+	/// <unmanaged>SpvMemorySemanticsOutputMemoryKHRShift</unmanaged>
+	SpvMemorySemanticsOutputMemoryKHRShift = 12,
+	/// <unmanaged>SpvMemorySemanticsMakeAvailableShift</unmanaged>
+	SpvMemorySemanticsMakeAvailableShift = 13,
+	/// <unmanaged>SpvMemorySemanticsMakeAvailableKHRShift</unmanaged>
+	SpvMemorySemanticsMakeAvailableKHRShift = 13,
+	/// <unmanaged>SpvMemorySemanticsMakeVisibleShift</unmanaged>
+	SpvMemorySemanticsMakeVisibleShift = 14,
+	/// <unmanaged>SpvMemorySemanticsMakeVisibleKHRShift</unmanaged>
+	SpvMemorySemanticsMakeVisibleKHRShift = 14,
+	/// <unmanaged>SpvMemorySemanticsVolatileShift</unmanaged>
+	SpvMemorySemanticsVolatileShift = 15,
+	/// <unmanaged>SpvMemorySemanticsMax</unmanaged>
+	SpvMemorySemanticsMax = 0x7fffffff,
+}
+
+[Flags]
+public enum SpvMemorySemanticsMask
+{
+	/// <unmanaged>SpvMemorySemanticsMaskNone</unmanaged>
+	None = 0,
+	/// <unmanaged>SpvMemorySemanticsAcquireMask</unmanaged>
+	SpvMemorySemanticsAcquireMask = 0x00000002,
+	/// <unmanaged>SpvMemorySemanticsReleaseMask</unmanaged>
+	SpvMemorySemanticsReleaseMask = 0x00000004,
+	/// <unmanaged>SpvMemorySemanticsAcquireReleaseMask</unmanaged>
+	SpvMemorySemanticsAcquireReleaseMask = 0x00000008,
+	/// <unmanaged>SpvMemorySemanticsSequentiallyConsistentMask</unmanaged>
+	SpvMemorySemanticsSequentiallyConsistentMask = 0x00000010,
+	/// <unmanaged>SpvMemorySemanticsUniformMemoryMask</unmanaged>
+	SpvMemorySemanticsUniformMemoryMask = 0x00000040,
+	/// <unmanaged>SpvMemorySemanticsSubgroupMemoryMask</unmanaged>
+	SpvMemorySemanticsSubgroupMemoryMask = 0x00000080,
+	/// <unmanaged>SpvMemorySemanticsWorkgroupMemoryMask</unmanaged>
+	SpvMemorySemanticsWorkgroupMemoryMask = 0x00000100,
+	/// <unmanaged>SpvMemorySemanticsCrossWorkgroupMemoryMask</unmanaged>
+	SpvMemorySemanticsCrossWorkgroupMemoryMask = 0x00000200,
+	/// <unmanaged>SpvMemorySemanticsAtomicCounterMemoryMask</unmanaged>
+	SpvMemorySemanticsAtomicCounterMemoryMask = 0x00000400,
+	/// <unmanaged>SpvMemorySemanticsImageMemoryMask</unmanaged>
+	SpvMemorySemanticsImageMemoryMask = 0x00000800,
+	/// <unmanaged>SpvMemorySemanticsOutputMemoryMask</unmanaged>
+	SpvMemorySemanticsOutputMemoryMask = 0x00001000,
+	/// <unmanaged>SpvMemorySemanticsOutputMemoryKHRMask</unmanaged>
+	SpvMemorySemanticsOutputMemoryKHRMask = 0x00001000,
+	/// <unmanaged>SpvMemorySemanticsMakeAvailableMask</unmanaged>
+	SpvMemorySemanticsMakeAvailableMask = 0x00002000,
+	/// <unmanaged>SpvMemorySemanticsMakeAvailableKHRMask</unmanaged>
+	SpvMemorySemanticsMakeAvailableKHRMask = 0x00002000,
+	/// <unmanaged>SpvMemorySemanticsMakeVisibleMask</unmanaged>
+	SpvMemorySemanticsMakeVisibleMask = 0x00004000,
+	/// <unmanaged>SpvMemorySemanticsMakeVisibleKHRMask</unmanaged>
+	SpvMemorySemanticsMakeVisibleKHRMask = 0x00004000,
+	/// <unmanaged>SpvMemorySemanticsVolatileMask</unmanaged>
+	SpvMemorySemanticsVolatileMask = 0x00008000,
+}
+
+public enum SpvMemoryAccessShift
+{
+	/// <unmanaged>SpvMemoryAccessVolatileShift</unmanaged>
+	SpvMemoryAccessVolatileShift = 0,
+	/// <unmanaged>SpvMemoryAccessAlignedShift</unmanaged>
+	SpvMemoryAccessAlignedShift = 1,
+	/// <unmanaged>SpvMemoryAccessNontemporalShift</unmanaged>
+	SpvMemoryAccessNontemporalShift = 2,
+	/// <unmanaged>SpvMemoryAccessMakePointerAvailableShift</unmanaged>
+	SpvMemoryAccessMakePointerAvailableShift = 3,
+	/// <unmanaged>SpvMemoryAccessMakePointerAvailableKHRShift</unmanaged>
+	SpvMemoryAccessMakePointerAvailableKHRShift = 3,
+	/// <unmanaged>SpvMemoryAccessMakePointerVisibleShift</unmanaged>
+	SpvMemoryAccessMakePointerVisibleShift = 4,
+	/// <unmanaged>SpvMemoryAccessMakePointerVisibleKHRShift</unmanaged>
+	SpvMemoryAccessMakePointerVisibleKHRShift = 4,
+	/// <unmanaged>SpvMemoryAccessNonPrivatePointerShift</unmanaged>
+	SpvMemoryAccessNonPrivatePointerShift = 5,
+	/// <unmanaged>SpvMemoryAccessNonPrivatePointerKHRShift</unmanaged>
+	SpvMemoryAccessNonPrivatePointerKHRShift = 5,
+	/// <unmanaged>SpvMemoryAccessAliasScopeINTELMaskShift</unmanaged>
+	SpvMemoryAccessAliasScopeINTELMaskShift = 16,
+	/// <unmanaged>SpvMemoryAccessNoAliasINTELMaskShift</unmanaged>
+	SpvMemoryAccessNoAliasINTELMaskShift = 17,
+	/// <unmanaged>SpvMemoryAccessMax</unmanaged>
+	SpvMemoryAccessMax = 0x7fffffff,
+}
+
+[Flags]
+public enum SpvMemoryAccessMask
+{
+	/// <unmanaged>SpvMemoryAccessMaskNone</unmanaged>
+	None = 0,
+	/// <unmanaged>SpvMemoryAccessVolatileMask</unmanaged>
+	SpvMemoryAccessVolatileMask = 0x00000001,
+	/// <unmanaged>SpvMemoryAccessAlignedMask</unmanaged>
+	SpvMemoryAccessAlignedMask = 0x00000002,
+	/// <unmanaged>SpvMemoryAccessNontemporalMask</unmanaged>
+	SpvMemoryAccessNontemporalMask = 0x00000004,
+	/// <unmanaged>SpvMemoryAccessMakePointerAvailableMask</unmanaged>
+	SpvMemoryAccessMakePointerAvailableMask = 0x00000008,
+	/// <unmanaged>SpvMemoryAccessMakePointerAvailableKHRMask</unmanaged>
+	SpvMemoryAccessMakePointerAvailableKHRMask = 0x00000008,
+	/// <unmanaged>SpvMemoryAccessMakePointerVisibleMask</unmanaged>
+	SpvMemoryAccessMakePointerVisibleMask = 0x00000010,
+	/// <unmanaged>SpvMemoryAccessMakePointerVisibleKHRMask</unmanaged>
+	SpvMemoryAccessMakePointerVisibleKHRMask = 0x00000010,
+	/// <unmanaged>SpvMemoryAccessNonPrivatePointerMask</unmanaged>
+	SpvMemoryAccessNonPrivatePointerMask = 0x00000020,
+	/// <unmanaged>SpvMemoryAccessNonPrivatePointerKHRMask</unmanaged>
+	SpvMemoryAccessNonPrivatePointerKHRMask = 0x00000020,
+	/// <unmanaged>SpvMemoryAccessAliasScopeINTELMaskMask</unmanaged>
+	SpvMemoryAccessAliasScopeINTELMaskMask = 0x00010000,
+	/// <unmanaged>SpvMemoryAccessNoAliasINTELMaskMask</unmanaged>
+	SpvMemoryAccessNoAliasINTELMaskMask = 0x00020000,
+}
+
+public enum SpvScope
+{
+	/// <unmanaged>SpvScopeCrossDevice</unmanaged>
+	CrossDevice = 0,
+	/// <unmanaged>SpvScopeDevice</unmanaged>
+	Device = 1,
+	/// <unmanaged>SpvScopeWorkgroup</unmanaged>
+	Workgroup = 2,
+	/// <unmanaged>SpvScopeSubgroup</unmanaged>
+	Subgroup = 3,
+	/// <unmanaged>SpvScopeInvocation</unmanaged>
+	Invocation = 4,
+	/// <unmanaged>SpvScopeQueueFamily</unmanaged>
+	QueueFamily = 5,
+	/// <unmanaged>SpvScopeQueueFamilyKHR</unmanaged>
+	QueueFamilyKHR = 5,
+	/// <unmanaged>SpvScopeShaderCallKHR</unmanaged>
+	ShaderCallKHR = 6,
+}
+
+public enum SpvGroupOperation
+{
+	/// <unmanaged>SpvGroupOperationReduce</unmanaged>
+	Reduce = 0,
+	/// <unmanaged>SpvGroupOperationInclusiveScan</unmanaged>
+	InclusiveScan = 1,
+	/// <unmanaged>SpvGroupOperationExclusiveScan</unmanaged>
+	ExclusiveScan = 2,
+	/// <unmanaged>SpvGroupOperationClusteredReduce</unmanaged>
+	ClusteredReduce = 3,
+	/// <unmanaged>SpvGroupOperationPartitionedReduceNV</unmanaged>
+	PartitionedReduceNV = 6,
+	/// <unmanaged>SpvGroupOperationPartitionedInclusiveScanNV</unmanaged>
+	PartitionedInclusiveScanNV = 7,
+	/// <unmanaged>SpvGroupOperationPartitionedExclusiveScanNV</unmanaged>
+	PartitionedExclusiveScanNV = 8,
+}
+
+public enum SpvKernelEnqueueFlags
+{
+	/// <unmanaged>SpvKernelEnqueueFlagsNoWait</unmanaged>
+	NoWait = 0,
+	/// <unmanaged>SpvKernelEnqueueFlagsWaitKernel</unmanaged>
+	WaitKernel = 1,
+	/// <unmanaged>SpvKernelEnqueueFlagsWaitWorkGroup</unmanaged>
+	WaitWorkGroup = 2,
+}
+
+public enum SpvKernelProfilingInfoShift
+{
+	/// <unmanaged>SpvKernelProfilingInfoCmdExecTimeShift</unmanaged>
+	SpvKernelProfilingInfoCmdExecTimeShift = 0,
+	/// <unmanaged>SpvKernelProfilingInfoMax</unmanaged>
+	SpvKernelProfilingInfoMax = 0x7fffffff,
+}
+
+[Flags]
+public enum SpvKernelProfilingInfoMask
+{
+	/// <unmanaged>SpvKernelProfilingInfoMaskNone</unmanaged>
+	None = 0,
+	/// <unmanaged>SpvKernelProfilingInfoCmdExecTimeMask</unmanaged>
+	SpvKernelProfilingInfoCmdExecTimeMask = 0x00000001,
+}
+
+public enum SpvCapability
+{
+	/// <unmanaged>SpvCapabilityMatrix</unmanaged>
+	Matrix = 0,
+	/// <unmanaged>SpvCapabilityShader</unmanaged>
+	Shader = 1,
+	/// <unmanaged>SpvCapabilityGeometry</unmanaged>
+	Geometry = 2,
+	/// <unmanaged>SpvCapabilityTessellation</unmanaged>
+	Tessellation = 3,
+	/// <unmanaged>SpvCapabilityAddresses</unmanaged>
+	Addresses = 4,
+	/// <unmanaged>SpvCapabilityLinkage</unmanaged>
+	Linkage = 5,
+	/// <unmanaged>SpvCapabilityKernel</unmanaged>
+	Kernel = 6,
+	/// <unmanaged>SpvCapabilityVector16</unmanaged>
+	Vector16 = 7,
+	/// <unmanaged>SpvCapabilityFloat16Buffer</unmanaged>
+	Float16Buffer = 8,
+	/// <unmanaged>SpvCapabilityFloat16</unmanaged>
+	Float16 = 9,
+	/// <unmanaged>SpvCapabilityFloat64</unmanaged>
+	Float64 = 10,
+	/// <unmanaged>SpvCapabilityInt64</unmanaged>
+	Int64 = 11,
+	/// <unmanaged>SpvCapabilityInt64Atomics</unmanaged>
+	Int64Atomics = 12,
+	/// <unmanaged>SpvCapabilityImageBasic</unmanaged>
+	ImageBasic = 13,
+	/// <unmanaged>SpvCapabilityImageReadWrite</unmanaged>
+	ImageReadWrite = 14,
+	/// <unmanaged>SpvCapabilityImageMipmap</unmanaged>
+	ImageMipmap = 15,
+	/// <unmanaged>SpvCapabilityPipes</unmanaged>
+	Pipes = 17,
+	/// <unmanaged>SpvCapabilityGroups</unmanaged>
+	Groups = 18,
+	/// <unmanaged>SpvCapabilityDeviceEnqueue</unmanaged>
+	DeviceEnqueue = 19,
+	/// <unmanaged>SpvCapabilityLiteralSampler</unmanaged>
+	LiteralSampler = 20,
+	/// <unmanaged>SpvCapabilityAtomicStorage</unmanaged>
+	AtomicStorage = 21,
+	/// <unmanaged>SpvCapabilityInt16</unmanaged>
+	Int16 = 22,
+	/// <unmanaged>SpvCapabilityTessellationPointSize</unmanaged>
+	TessellationPointSize = 23,
+	/// <unmanaged>SpvCapabilityGeometryPointSize</unmanaged>
+	GeometryPointSize = 24,
+	/// <unmanaged>SpvCapabilityImageGatherExtended</unmanaged>
+	ImageGatherExtended = 25,
+	/// <unmanaged>SpvCapabilityStorageImageMultisample</unmanaged>
+	StorageImageMultisample = 27,
+	/// <unmanaged>SpvCapabilityUniformBufferArrayDynamicIndexing</unmanaged>
+	UniformBufferArrayDynamicIndexing = 28,
+	/// <unmanaged>SpvCapabilitySampledImageArrayDynamicIndexing</unmanaged>
+	SampledImageArrayDynamicIndexing = 29,
+	/// <unmanaged>SpvCapabilityStorageBufferArrayDynamicIndexing</unmanaged>
+	StorageBufferArrayDynamicIndexing = 30,
+	/// <unmanaged>SpvCapabilityStorageImageArrayDynamicIndexing</unmanaged>
+	StorageImageArrayDynamicIndexing = 31,
+	/// <unmanaged>SpvCapabilityClipDistance</unmanaged>
+	ClipDistance = 32,
+	/// <unmanaged>SpvCapabilityCullDistance</unmanaged>
+	CullDistance = 33,
+	/// <unmanaged>SpvCapabilityImageCubeArray</unmanaged>
+	ImageCubeArray = 34,
+	/// <unmanaged>SpvCapabilitySampleRateShading</unmanaged>
+	SampleRateShading = 35,
+	/// <unmanaged>SpvCapabilityImageRect</unmanaged>
+	ImageRect = 36,
+	/// <unmanaged>SpvCapabilitySampledRect</unmanaged>
+	SampledRect = 37,
+	/// <unmanaged>SpvCapabilityGenericPointer</unmanaged>
+	GenericPointer = 38,
+	/// <unmanaged>SpvCapabilityInt8</unmanaged>
+	Int8 = 39,
+	/// <unmanaged>SpvCapabilityInputAttachment</unmanaged>
+	InputAttachment = 40,
+	/// <unmanaged>SpvCapabilitySparseResidency</unmanaged>
+	SparseResidency = 41,
+	/// <unmanaged>SpvCapabilityMinLod</unmanaged>
+	MinLod = 42,
+	/// <unmanaged>SpvCapabilitySampled1D</unmanaged>
+	Sampled1D = 43,
+	/// <unmanaged>SpvCapabilityImage1D</unmanaged>
+	Image1D = 44,
+	/// <unmanaged>SpvCapabilitySampledCubeArray</unmanaged>
+	SampledCubeArray = 45,
+	/// <unmanaged>SpvCapabilitySampledBuffer</unmanaged>
+	SampledBuffer = 46,
+	/// <unmanaged>SpvCapabilityImageBuffer</unmanaged>
+	ImageBuffer = 47,
+	/// <unmanaged>SpvCapabilityImageMSArray</unmanaged>
+	ImageMSArray = 48,
+	/// <unmanaged>SpvCapabilityStorageImageExtendedFormats</unmanaged>
+	StorageImageExtendedFormats = 49,
+	/// <unmanaged>SpvCapabilityImageQuery</unmanaged>
+	ImageQuery = 50,
+	/// <unmanaged>SpvCapabilityDerivativeControl</unmanaged>
+	DerivativeControl = 51,
+	/// <unmanaged>SpvCapabilityInterpolationFunction</unmanaged>
+	InterpolationFunction = 52,
+	/// <unmanaged>SpvCapabilityTransformFeedback</unmanaged>
+	TransformFeedback = 53,
+	/// <unmanaged>SpvCapabilityGeometryStreams</unmanaged>
+	GeometryStreams = 54,
+	/// <unmanaged>SpvCapabilityStorageImageReadWithoutFormat</unmanaged>
+	StorageImageReadWithoutFormat = 55,
+	/// <unmanaged>SpvCapabilityStorageImageWriteWithoutFormat</unmanaged>
+	StorageImageWriteWithoutFormat = 56,
+	/// <unmanaged>SpvCapabilityMultiViewport</unmanaged>
+	MultiViewport = 57,
+	/// <unmanaged>SpvCapabilitySubgroupDispatch</unmanaged>
+	SubgroupDispatch = 58,
+	/// <unmanaged>SpvCapabilityNamedBarrier</unmanaged>
+	NamedBarrier = 59,
+	/// <unmanaged>SpvCapabilityPipeStorage</unmanaged>
+	PipeStorage = 60,
+	/// <unmanaged>SpvCapabilityGroupNonUniform</unmanaged>
+	GroupNonUniform = 61,
+	/// <unmanaged>SpvCapabilityGroupNonUniformVote</unmanaged>
+	GroupNonUniformVote = 62,
+	/// <unmanaged>SpvCapabilityGroupNonUniformArithmetic</unmanaged>
+	GroupNonUniformArithmetic = 63,
+	/// <unmanaged>SpvCapabilityGroupNonUniformBallot</unmanaged>
+	GroupNonUniformBallot = 64,
+	/// <unmanaged>SpvCapabilityGroupNonUniformShuffle</unmanaged>
+	GroupNonUniformShuffle = 65,
+	/// <unmanaged>SpvCapabilityGroupNonUniformShuffleRelative</unmanaged>
+	GroupNonUniformShuffleRelative = 66,
+	/// <unmanaged>SpvCapabilityGroupNonUniformClustered</unmanaged>
+	GroupNonUniformClustered = 67,
+	/// <unmanaged>SpvCapabilityGroupNonUniformQuad</unmanaged>
+	GroupNonUniformQuad = 68,
+	/// <unmanaged>SpvCapabilityShaderLayer</unmanaged>
+	ShaderLayer = 69,
+	/// <unmanaged>SpvCapabilityShaderViewportIndex</unmanaged>
+	ShaderViewportIndex = 70,
+	/// <unmanaged>SpvCapabilityUniformDecoration</unmanaged>
+	UniformDecoration = 71,
+	/// <unmanaged>SpvCapabilityFragmentShadingRateKHR</unmanaged>
+	FragmentShadingRateKHR = 4422,
+	/// <unmanaged>SpvCapabilitySubgroupBallotKHR</unmanaged>
+	SubgroupBallotKHR = 4423,
+	/// <unmanaged>SpvCapabilityDrawParameters</unmanaged>
+	DrawParameters = 4427,
+	/// <unmanaged>SpvCapabilityWorkgroupMemoryExplicitLayoutKHR</unmanaged>
+	WorkgroupMemoryExplicitLayoutKHR = 4428,
+	/// <unmanaged>SpvCapabilityWorkgroupMemoryExplicitLayout8BitAccessKHR</unmanaged>
+	WorkgroupMemoryExplicitLayout8BitAccessKHR = 4429,
+	/// <unmanaged>SpvCapabilityWorkgroupMemoryExplicitLayout16BitAccessKHR</unmanaged>
+	WorkgroupMemoryExplicitLayout16BitAccessKHR = 4430,
+	/// <unmanaged>SpvCapabilitySubgroupVoteKHR</unmanaged>
+	SubgroupVoteKHR = 4431,
+	/// <unmanaged>SpvCapabilityStorageBuffer16BitAccess</unmanaged>
+	StorageBuffer16BitAccess = 4433,
+	/// <unmanaged>SpvCapabilityStorageUniformBufferBlock16</unmanaged>
+	StorageUniformBufferBlock16 = 4433,
+	/// <unmanaged>SpvCapabilityStorageUniform16</unmanaged>
+	StorageUniform16 = 4434,
+	/// <unmanaged>SpvCapabilityUniformAndStorageBuffer16BitAccess</unmanaged>
+	UniformAndStorageBuffer16BitAccess = 4434,
+	/// <unmanaged>SpvCapabilityStoragePushConstant16</unmanaged>
+	StoragePushConstant16 = 4435,
+	/// <unmanaged>SpvCapabilityStorageInputOutput16</unmanaged>
+	StorageInputOutput16 = 4436,
+	/// <unmanaged>SpvCapabilityDeviceGroup</unmanaged>
+	DeviceGroup = 4437,
+	/// <unmanaged>SpvCapabilityMultiView</unmanaged>
+	MultiView = 4439,
+	/// <unmanaged>SpvCapabilityVariablePointersStorageBuffer</unmanaged>
+	VariablePointersStorageBuffer = 4441,
+	/// <unmanaged>SpvCapabilityVariablePointers</unmanaged>
+	VariablePointers = 4442,
+	/// <unmanaged>SpvCapabilityAtomicStorageOps</unmanaged>
+	AtomicStorageOps = 4445,
+	/// <unmanaged>SpvCapabilitySampleMaskPostDepthCoverage</unmanaged>
+	SampleMaskPostDepthCoverage = 4447,
+	/// <unmanaged>SpvCapabilityStorageBuffer8BitAccess</unmanaged>
+	StorageBuffer8BitAccess = 4448,
+	/// <unmanaged>SpvCapabilityUniformAndStorageBuffer8BitAccess</unmanaged>
+	UniformAndStorageBuffer8BitAccess = 4449,
+	/// <unmanaged>SpvCapabilityStoragePushConstant8</unmanaged>
+	StoragePushConstant8 = 4450,
+	/// <unmanaged>SpvCapabilityDenormPreserve</unmanaged>
+	DenormPreserve = 4464,
+	/// <unmanaged>SpvCapabilityDenormFlushToZero</unmanaged>
+	DenormFlushToZero = 4465,
+	/// <unmanaged>SpvCapabilitySignedZeroInfNanPreserve</unmanaged>
+	SignedZeroInfNanPreserve = 4466,
+	/// <unmanaged>SpvCapabilityRoundingModeRTE</unmanaged>
+	RoundingModeRTE = 4467,
+	/// <unmanaged>SpvCapabilityRoundingModeRTZ</unmanaged>
+	RoundingModeRTZ = 4468,
+	/// <unmanaged>SpvCapabilityRayQueryProvisionalKHR</unmanaged>
+	RayQueryProvisionalKHR = 4471,
+	/// <unmanaged>SpvCapabilityRayQueryKHR</unmanaged>
+	RayQueryKHR = 4472,
+	/// <unmanaged>SpvCapabilityRayTraversalPrimitiveCullingKHR</unmanaged>
+	RayTraversalPrimitiveCullingKHR = 4478,
+	/// <unmanaged>SpvCapabilityRayTracingKHR</unmanaged>
+	RayTracingKHR = 4479,
+	/// <unmanaged>SpvCapabilityTextureSampleWeightedQCOM</unmanaged>
+	TextureSampleWeightedQCOM = 4484,
+	/// <unmanaged>SpvCapabilityTextureBoxFilterQCOM</unmanaged>
+	TextureBoxFilterQCOM = 4485,
+	/// <unmanaged>SpvCapabilityTextureBlockMatchQCOM</unmanaged>
+	TextureBlockMatchQCOM = 4486,
+	/// <unmanaged>SpvCapabilityFloat16ImageAMD</unmanaged>
+	Float16ImageAMD = 5008,
+	/// <unmanaged>SpvCapabilityImageGatherBiasLodAMD</unmanaged>
+	ImageGatherBiasLodAMD = 5009,
+	/// <unmanaged>SpvCapabilityFragmentMaskAMD</unmanaged>
+	FragmentMaskAMD = 5010,
+	/// <unmanaged>SpvCapabilityStencilExportEXT</unmanaged>
+	StencilExportEXT = 5013,
+	/// <unmanaged>SpvCapabilityImageReadWriteLodAMD</unmanaged>
+	ImageReadWriteLodAMD = 5015,
+	/// <unmanaged>SpvCapabilityInt64ImageEXT</unmanaged>
+	Int64ImageEXT = 5016,
+	/// <unmanaged>SpvCapabilityShaderClockKHR</unmanaged>
+	ShaderClockKHR = 5055,
+	/// <unmanaged>SpvCapabilitySampleMaskOverrideCoverageNV</unmanaged>
+	SampleMaskOverrideCoverageNV = 5249,
+	/// <unmanaged>SpvCapabilityGeometryShaderPassthroughNV</unmanaged>
+	GeometryShaderPassthroughNV = 5251,
+	/// <unmanaged>SpvCapabilityShaderViewportIndexLayerEXT</unmanaged>
+	ShaderViewportIndexLayerEXT = 5254,
+	/// <unmanaged>SpvCapabilityShaderViewportIndexLayerNV</unmanaged>
+	ShaderViewportIndexLayerNV = 5254,
+	/// <unmanaged>SpvCapabilityShaderViewportMaskNV</unmanaged>
+	ShaderViewportMaskNV = 5255,
+	/// <unmanaged>SpvCapabilityShaderStereoViewNV</unmanaged>
+	ShaderStereoViewNV = 5259,
+	/// <unmanaged>SpvCapabilityPerViewAttributesNV</unmanaged>
+	PerViewAttributesNV = 5260,
+	/// <unmanaged>SpvCapabilityFragmentFullyCoveredEXT</unmanaged>
+	FragmentFullyCoveredEXT = 5265,
+	/// <unmanaged>SpvCapabilityMeshShadingNV</unmanaged>
+	MeshShadingNV = 5266,
+	/// <unmanaged>SpvCapabilityImageFootprintNV</unmanaged>
+	ImageFootprintNV = 5282,
+	/// <unmanaged>SpvCapabilityMeshShadingEXT</unmanaged>
+	MeshShadingEXT = 5283,
+	/// <unmanaged>SpvCapabilityFragmentBarycentricKHR</unmanaged>
+	FragmentBarycentricKHR = 5284,
+	/// <unmanaged>SpvCapabilityFragmentBarycentricNV</unmanaged>
+	FragmentBarycentricNV = 5284,
+	/// <unmanaged>SpvCapabilityComputeDerivativeGroupQuadsNV</unmanaged>
+	ComputeDerivativeGroupQuadsNV = 5288,
+	/// <unmanaged>SpvCapabilityFragmentDensityEXT</unmanaged>
+	FragmentDensityEXT = 5291,
+	/// <unmanaged>SpvCapabilityShadingRateNV</unmanaged>
+	ShadingRateNV = 5291,
+	/// <unmanaged>SpvCapabilityGroupNonUniformPartitionedNV</unmanaged>
+	GroupNonUniformPartitionedNV = 5297,
+	/// <unmanaged>SpvCapabilityShaderNonUniform</unmanaged>
+	ShaderNonUniform = 5301,
+	/// <unmanaged>SpvCapabilityShaderNonUniformEXT</unmanaged>
+	ShaderNonUniformEXT = 5301,
+	/// <unmanaged>SpvCapabilityRuntimeDescriptorArray</unmanaged>
+	RuntimeDescriptorArray = 5302,
+	/// <unmanaged>SpvCapabilityRuntimeDescriptorArrayEXT</unmanaged>
+	RuntimeDescriptorArrayEXT = 5302,
+	/// <unmanaged>SpvCapabilityInputAttachmentArrayDynamicIndexing</unmanaged>
+	InputAttachmentArrayDynamicIndexing = 5303,
+	/// <unmanaged>SpvCapabilityInputAttachmentArrayDynamicIndexingEXT</unmanaged>
+	InputAttachmentArrayDynamicIndexingEXT = 5303,
+	/// <unmanaged>SpvCapabilityUniformTexelBufferArrayDynamicIndexing</unmanaged>
+	UniformTexelBufferArrayDynamicIndexing = 5304,
+	/// <unmanaged>SpvCapabilityUniformTexelBufferArrayDynamicIndexingEXT</unmanaged>
+	UniformTexelBufferArrayDynamicIndexingEXT = 5304,
+	/// <unmanaged>SpvCapabilityStorageTexelBufferArrayDynamicIndexing</unmanaged>
+	StorageTexelBufferArrayDynamicIndexing = 5305,
+	/// <unmanaged>SpvCapabilityStorageTexelBufferArrayDynamicIndexingEXT</unmanaged>
+	StorageTexelBufferArrayDynamicIndexingEXT = 5305,
+	/// <unmanaged>SpvCapabilityUniformBufferArrayNonUniformIndexing</unmanaged>
+	UniformBufferArrayNonUniformIndexing = 5306,
+	/// <unmanaged>SpvCapabilityUniformBufferArrayNonUniformIndexingEXT</unmanaged>
+	UniformBufferArrayNonUniformIndexingEXT = 5306,
+	/// <unmanaged>SpvCapabilitySampledImageArrayNonUniformIndexing</unmanaged>
+	SampledImageArrayNonUniformIndexing = 5307,
+	/// <unmanaged>SpvCapabilitySampledImageArrayNonUniformIndexingEXT</unmanaged>
+	SampledImageArrayNonUniformIndexingEXT = 5307,
+	/// <unmanaged>SpvCapabilityStorageBufferArrayNonUniformIndexing</unmanaged>
+	StorageBufferArrayNonUniformIndexing = 5308,
+	/// <unmanaged>SpvCapabilityStorageBufferArrayNonUniformIndexingEXT</unmanaged>
+	StorageBufferArrayNonUniformIndexingEXT = 5308,
+	/// <unmanaged>SpvCapabilityStorageImageArrayNonUniformIndexing</unmanaged>
+	StorageImageArrayNonUniformIndexing = 5309,
+	/// <unmanaged>SpvCapabilityStorageImageArrayNonUniformIndexingEXT</unmanaged>
+	StorageImageArrayNonUniformIndexingEXT = 5309,
+	/// <unmanaged>SpvCapabilityInputAttachmentArrayNonUniformIndexing</unmanaged>
+	InputAttachmentArrayNonUniformIndexing = 5310,
+	/// <unmanaged>SpvCapabilityInputAttachmentArrayNonUniformIndexingEXT</unmanaged>
+	InputAttachmentArrayNonUniformIndexingEXT = 5310,
+	/// <unmanaged>SpvCapabilityUniformTexelBufferArrayNonUniformIndexing</unmanaged>
+	UniformTexelBufferArrayNonUniformIndexing = 5311,
+	/// <unmanaged>SpvCapabilityUniformTexelBufferArrayNonUniformIndexingEXT</unmanaged>
+	UniformTexelBufferArrayNonUniformIndexingEXT = 5311,
+	/// <unmanaged>SpvCapabilityStorageTexelBufferArrayNonUniformIndexing</unmanaged>
+	StorageTexelBufferArrayNonUniformIndexing = 5312,
+	/// <unmanaged>SpvCapabilityStorageTexelBufferArrayNonUniformIndexingEXT</unmanaged>
+	StorageTexelBufferArrayNonUniformIndexingEXT = 5312,
+	/// <unmanaged>SpvCapabilityRayTracingNV</unmanaged>
+	RayTracingNV = 5340,
+	/// <unmanaged>SpvCapabilityRayTracingMotionBlurNV</unmanaged>
+	RayTracingMotionBlurNV = 5341,
+	/// <unmanaged>SpvCapabilityVulkanMemoryModel</unmanaged>
+	VulkanMemoryModel = 5345,
+	/// <unmanaged>SpvCapabilityVulkanMemoryModelKHR</unmanaged>
+	VulkanMemoryModelKHR = 5345,
+	/// <unmanaged>SpvCapabilityVulkanMemoryModelDeviceScope</unmanaged>
+	VulkanMemoryModelDeviceScope = 5346,
+	/// <unmanaged>SpvCapabilityVulkanMemoryModelDeviceScopeKHR</unmanaged>
+	VulkanMemoryModelDeviceScopeKHR = 5346,
+	/// <unmanaged>SpvCapabilityPhysicalStorageBufferAddresses</unmanaged>
+	PhysicalStorageBufferAddresses = 5347,
+	/// <unmanaged>SpvCapabilityPhysicalStorageBufferAddressesEXT</unmanaged>
+	PhysicalStorageBufferAddressesEXT = 5347,
+	/// <unmanaged>SpvCapabilityComputeDerivativeGroupLinearNV</unmanaged>
+	ComputeDerivativeGroupLinearNV = 5350,
+	/// <unmanaged>SpvCapabilityRayTracingProvisionalKHR</unmanaged>
+	RayTracingProvisionalKHR = 5353,
+	/// <unmanaged>SpvCapabilityCooperativeMatrixNV</unmanaged>
+	CooperativeMatrixNV = 5357,
+	/// <unmanaged>SpvCapabilityFragmentShaderSampleInterlockEXT</unmanaged>
+	FragmentShaderSampleInterlockEXT = 5363,
+	/// <unmanaged>SpvCapabilityFragmentShaderShadingRateInterlockEXT</unmanaged>
+	FragmentShaderShadingRateInterlockEXT = 5372,
+	/// <unmanaged>SpvCapabilityShaderSMBuiltinsNV</unmanaged>
+	ShaderSMBuiltinsNV = 5373,
+	/// <unmanaged>SpvCapabilityFragmentShaderPixelInterlockEXT</unmanaged>
+	FragmentShaderPixelInterlockEXT = 5378,
+	/// <unmanaged>SpvCapabilityDemoteToHelperInvocation</unmanaged>
+	DemoteToHelperInvocation = 5379,
+	/// <unmanaged>SpvCapabilityDemoteToHelperInvocationEXT</unmanaged>
+	DemoteToHelperInvocationEXT = 5379,
+	/// <unmanaged>SpvCapabilityBindlessTextureNV</unmanaged>
+	BindlessTextureNV = 5390,
+	/// <unmanaged>SpvCapabilitySubgroupShuffleINTEL</unmanaged>
+	SubgroupShuffleINTEL = 5568,
+	/// <unmanaged>SpvCapabilitySubgroupBufferBlockIOINTEL</unmanaged>
+	SubgroupBufferBlockIOINTEL = 5569,
+	/// <unmanaged>SpvCapabilitySubgroupImageBlockIOINTEL</unmanaged>
+	SubgroupImageBlockIOINTEL = 5570,
+	/// <unmanaged>SpvCapabilitySubgroupImageMediaBlockIOINTEL</unmanaged>
+	SubgroupImageMediaBlockIOINTEL = 5579,
+	/// <unmanaged>SpvCapabilityRoundToInfinityINTEL</unmanaged>
+	RoundToInfinityINTEL = 5582,
+	/// <unmanaged>SpvCapabilityFloatingPointModeINTEL</unmanaged>
+	FloatingPointModeINTEL = 5583,
+	/// <unmanaged>SpvCapabilityIntegerFunctions2INTEL</unmanaged>
+	IntegerFunctions2INTEL = 5584,
+	/// <unmanaged>SpvCapabilityFunctionPointersINTEL</unmanaged>
+	FunctionPointersINTEL = 5603,
+	/// <unmanaged>SpvCapabilityIndirectReferencesINTEL</unmanaged>
+	IndirectReferencesINTEL = 5604,
+	/// <unmanaged>SpvCapabilityAsmINTEL</unmanaged>
+	AsmINTEL = 5606,
+	/// <unmanaged>SpvCapabilityAtomicFloat32MinMaxEXT</unmanaged>
+	AtomicFloat32MinMaxEXT = 5612,
+	/// <unmanaged>SpvCapabilityAtomicFloat64MinMaxEXT</unmanaged>
+	AtomicFloat64MinMaxEXT = 5613,
+	/// <unmanaged>SpvCapabilityAtomicFloat16MinMaxEXT</unmanaged>
+	AtomicFloat16MinMaxEXT = 5616,
+	/// <unmanaged>SpvCapabilityVectorComputeINTEL</unmanaged>
+	VectorComputeINTEL = 5617,
+	/// <unmanaged>SpvCapabilityVectorAnyINTEL</unmanaged>
+	VectorAnyINTEL = 5619,
+	/// <unmanaged>SpvCapabilityExpectAssumeKHR</unmanaged>
+	ExpectAssumeKHR = 5629,
+	/// <unmanaged>SpvCapabilitySubgroupAvcMotionEstimationINTEL</unmanaged>
+	SubgroupAvcMotionEstimationINTEL = 5696,
+	/// <unmanaged>SpvCapabilitySubgroupAvcMotionEstimationIntraINTEL</unmanaged>
+	SubgroupAvcMotionEstimationIntraINTEL = 5697,
+	/// <unmanaged>SpvCapabilitySubgroupAvcMotionEstimationChromaINTEL</unmanaged>
+	SubgroupAvcMotionEstimationChromaINTEL = 5698,
+	/// <unmanaged>SpvCapabilityVariableLengthArrayINTEL</unmanaged>
+	VariableLengthArrayINTEL = 5817,
+	/// <unmanaged>SpvCapabilityFunctionFloatControlINTEL</unmanaged>
+	FunctionFloatControlINTEL = 5821,
+	/// <unmanaged>SpvCapabilityFPGAMemoryAttributesINTEL</unmanaged>
+	FPGAMemoryAttributesINTEL = 5824,
+	/// <unmanaged>SpvCapabilityFPFastMathModeINTEL</unmanaged>
+	FPFastMathModeINTEL = 5837,
+	/// <unmanaged>SpvCapabilityArbitraryPrecisionIntegersINTEL</unmanaged>
+	ArbitraryPrecisionIntegersINTEL = 5844,
+	/// <unmanaged>SpvCapabilityArbitraryPrecisionFloatingPointINTEL</unmanaged>
+	ArbitraryPrecisionFloatingPointINTEL = 5845,
+	/// <unmanaged>SpvCapabilityUnstructuredLoopControlsINTEL</unmanaged>
+	UnstructuredLoopControlsINTEL = 5886,
+	/// <unmanaged>SpvCapabilityFPGALoopControlsINTEL</unmanaged>
+	FPGALoopControlsINTEL = 5888,
+	/// <unmanaged>SpvCapabilityKernelAttributesINTEL</unmanaged>
+	KernelAttributesINTEL = 5892,
+	/// <unmanaged>SpvCapabilityFPGAKernelAttributesINTEL</unmanaged>
+	FPGAKernelAttributesINTEL = 5897,
+	/// <unmanaged>SpvCapabilityFPGAMemoryAccessesINTEL</unmanaged>
+	FPGAMemoryAccessesINTEL = 5898,
+	/// <unmanaged>SpvCapabilityFPGAClusterAttributesINTEL</unmanaged>
+	FPGAClusterAttributesINTEL = 5904,
+	/// <unmanaged>SpvCapabilityLoopFuseINTEL</unmanaged>
+	LoopFuseINTEL = 5906,
+	/// <unmanaged>SpvCapabilityMemoryAccessAliasingINTEL</unmanaged>
+	MemoryAccessAliasingINTEL = 5910,
+	/// <unmanaged>SpvCapabilityFPGABufferLocationINTEL</unmanaged>
+	FPGABufferLocationINTEL = 5920,
+	/// <unmanaged>SpvCapabilityArbitraryPrecisionFixedPointINTEL</unmanaged>
+	ArbitraryPrecisionFixedPointINTEL = 5922,
+	/// <unmanaged>SpvCapabilityUSMStorageClassesINTEL</unmanaged>
+	USMStorageClassesINTEL = 5935,
+	/// <unmanaged>SpvCapabilityIOPipesINTEL</unmanaged>
+	IOPipesINTEL = 5943,
+	/// <unmanaged>SpvCapabilityBlockingPipesINTEL</unmanaged>
+	BlockingPipesINTEL = 5945,
+	/// <unmanaged>SpvCapabilityFPGARegINTEL</unmanaged>
+	FPGARegINTEL = 5948,
+	/// <unmanaged>SpvCapabilityDotProductInputAll</unmanaged>
+	DotProductInputAll = 6016,
+	/// <unmanaged>SpvCapabilityDotProductInputAllKHR</unmanaged>
+	DotProductInputAllKHR = 6016,
+	/// <unmanaged>SpvCapabilityDotProductInput4x8Bit</unmanaged>
+	DotProductInput4x8Bit = 6017,
+	/// <unmanaged>SpvCapabilityDotProductInput4x8BitKHR</unmanaged>
+	DotProductInput4x8BitKHR = 6017,
+	/// <unmanaged>SpvCapabilityDotProductInput4x8BitPacked</unmanaged>
+	DotProductInput4x8BitPacked = 6018,
+	/// <unmanaged>SpvCapabilityDotProductInput4x8BitPackedKHR</unmanaged>
+	DotProductInput4x8BitPackedKHR = 6018,
+	/// <unmanaged>SpvCapabilityDotProduct</unmanaged>
+	DotProduct = 6019,
+	/// <unmanaged>SpvCapabilityDotProductKHR</unmanaged>
+	DotProductKHR = 6019,
+	/// <unmanaged>SpvCapabilityRayCullMaskKHR</unmanaged>
+	RayCullMaskKHR = 6020,
+	/// <unmanaged>SpvCapabilityBitInstructions</unmanaged>
+	BitInstructions = 6025,
+	/// <unmanaged>SpvCapabilityGroupNonUniformRotateKHR</unmanaged>
+	GroupNonUniformRotateKHR = 6026,
+	/// <unmanaged>SpvCapabilityAtomicFloat32AddEXT</unmanaged>
+	AtomicFloat32AddEXT = 6033,
+	/// <unmanaged>SpvCapabilityAtomicFloat64AddEXT</unmanaged>
+	AtomicFloat64AddEXT = 6034,
+	/// <unmanaged>SpvCapabilityLongConstantCompositeINTEL</unmanaged>
+	LongConstantCompositeINTEL = 6089,
+	/// <unmanaged>SpvCapabilityOptNoneINTEL</unmanaged>
+	OptNoneINTEL = 6094,
+	/// <unmanaged>SpvCapabilityAtomicFloat16AddEXT</unmanaged>
+	AtomicFloat16AddEXT = 6095,
+	/// <unmanaged>SpvCapabilityDebugInfoModuleINTEL</unmanaged>
+	DebugInfoModuleINTEL = 6114,
+	/// <unmanaged>SpvCapabilitySplitBarrierINTEL</unmanaged>
+	SplitBarrierINTEL = 6141,
+	/// <unmanaged>SpvCapabilityGroupUniformArithmeticKHR</unmanaged>
+	GroupUniformArithmeticKHR = 6400,
+}
+
+public enum SpvRayFlagsShift
+{
+	/// <unmanaged>SpvRayFlagsOpaqueKHRShift</unmanaged>
+	SpvRayFlagsOpaqueKHRShift = 0,
+	/// <unmanaged>SpvRayFlagsNoOpaqueKHRShift</unmanaged>
+	SpvRayFlagsNoOpaqueKHRShift = 1,
+	/// <unmanaged>SpvRayFlagsTerminateOnFirstHitKHRShift</unmanaged>
+	SpvRayFlagsTerminateOnFirstHitKHRShift = 2,
+	/// <unmanaged>SpvRayFlagsSkipClosestHitShaderKHRShift</unmanaged>
+	SpvRayFlagsSkipClosestHitShaderKHRShift = 3,
+	/// <unmanaged>SpvRayFlagsCullBackFacingTrianglesKHRShift</unmanaged>
+	SpvRayFlagsCullBackFacingTrianglesKHRShift = 4,
+	/// <unmanaged>SpvRayFlagsCullFrontFacingTrianglesKHRShift</unmanaged>
+	SpvRayFlagsCullFrontFacingTrianglesKHRShift = 5,
+	/// <unmanaged>SpvRayFlagsCullOpaqueKHRShift</unmanaged>
+	SpvRayFlagsCullOpaqueKHRShift = 6,
+	/// <unmanaged>SpvRayFlagsCullNoOpaqueKHRShift</unmanaged>
+	SpvRayFlagsCullNoOpaqueKHRShift = 7,
+	/// <unmanaged>SpvRayFlagsSkipTrianglesKHRShift</unmanaged>
+	SpvRayFlagsSkipTrianglesKHRShift = 8,
+	/// <unmanaged>SpvRayFlagsSkipAABBsKHRShift</unmanaged>
+	SpvRayFlagsSkipAABBsKHRShift = 9,
+	/// <unmanaged>SpvRayFlagsMax</unmanaged>
+	SpvRayFlagsMax = 0x7fffffff,
+}
+
+[Flags]
+public enum SpvRayFlagsMask
+{
+	/// <unmanaged>SpvRayFlagsMaskNone</unmanaged>
+	None = 0,
+	/// <unmanaged>SpvRayFlagsOpaqueKHRMask</unmanaged>
+	SpvRayFlagsOpaqueKHRMask = 0x00000001,
+	/// <unmanaged>SpvRayFlagsNoOpaqueKHRMask</unmanaged>
+	SpvRayFlagsNoOpaqueKHRMask = 0x00000002,
+	/// <unmanaged>SpvRayFlagsTerminateOnFirstHitKHRMask</unmanaged>
+	SpvRayFlagsTerminateOnFirstHitKHRMask = 0x00000004,
+	/// <unmanaged>SpvRayFlagsSkipClosestHitShaderKHRMask</unmanaged>
+	SpvRayFlagsSkipClosestHitShaderKHRMask = 0x00000008,
+	/// <unmanaged>SpvRayFlagsCullBackFacingTrianglesKHRMask</unmanaged>
+	SpvRayFlagsCullBackFacingTrianglesKHRMask = 0x00000010,
+	/// <unmanaged>SpvRayFlagsCullFrontFacingTrianglesKHRMask</unmanaged>
+	SpvRayFlagsCullFrontFacingTrianglesKHRMask = 0x00000020,
+	/// <unmanaged>SpvRayFlagsCullOpaqueKHRMask</unmanaged>
+	SpvRayFlagsCullOpaqueKHRMask = 0x00000040,
+	/// <unmanaged>SpvRayFlagsCullNoOpaqueKHRMask</unmanaged>
+	SpvRayFlagsCullNoOpaqueKHRMask = 0x00000080,
+	/// <unmanaged>SpvRayFlagsSkipTrianglesKHRMask</unmanaged>
+	SpvRayFlagsSkipTrianglesKHRMask = 0x00000100,
+	/// <unmanaged>SpvRayFlagsSkipAABBsKHRMask</unmanaged>
+	SpvRayFlagsSkipAABBsKHRMask = 0x00000200,
+}
+
+public enum SpvRayQueryIntersection
+{
+	/// <unmanaged>SpvRayQueryIntersectionRayQueryCandidateIntersectionKHR</unmanaged>
+	RayQueryCandidateIntersectionKHR = 0,
+	/// <unmanaged>SpvRayQueryIntersectionRayQueryCommittedIntersectionKHR</unmanaged>
+	RayQueryCommittedIntersectionKHR = 1,
+}
+
+public enum SpvRayQueryCommittedIntersectionType
+{
+	/// <unmanaged>SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionNoneKHR</unmanaged>
+	RayQueryCommittedIntersectionNoneKHR = 0,
+	/// <unmanaged>SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionTriangleKHR</unmanaged>
+	RayQueryCommittedIntersectionTriangleKHR = 1,
+	/// <unmanaged>SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionGeneratedKHR</unmanaged>
+	RayQueryCommittedIntersectionGeneratedKHR = 2,
+}
+
+public enum SpvRayQueryCandidateIntersectionType
+{
+	/// <unmanaged>SpvRayQueryCandidateIntersectionTypeRayQueryCandidateIntersectionTriangleKHR</unmanaged>
+	RayQueryCandidateIntersectionTriangleKHR = 0,
+	/// <unmanaged>SpvRayQueryCandidateIntersectionTypeRayQueryCandidateIntersectionAABBKHR</unmanaged>
+	RayQueryCandidateIntersectionAABBKHR = 1,
+}
+
+public enum SpvFragmentShadingRateShift
+{
+	/// <unmanaged>SpvFragmentShadingRateVertical2PixelsShift</unmanaged>
+	SpvFragmentShadingRateVertical2PixelsShift = 0,
+	/// <unmanaged>SpvFragmentShadingRateVertical4PixelsShift</unmanaged>
+	SpvFragmentShadingRateVertical4PixelsShift = 1,
+	/// <unmanaged>SpvFragmentShadingRateHorizontal2PixelsShift</unmanaged>
+	SpvFragmentShadingRateHorizontal2PixelsShift = 2,
+	/// <unmanaged>SpvFragmentShadingRateHorizontal4PixelsShift</unmanaged>
+	SpvFragmentShadingRateHorizontal4PixelsShift = 3,
+	/// <unmanaged>SpvFragmentShadingRateMax</unmanaged>
+	SpvFragmentShadingRateMax = 0x7fffffff,
+}
+
+[Flags]
+public enum SpvFragmentShadingRateMask
+{
+	/// <unmanaged>SpvFragmentShadingRateMaskNone</unmanaged>
+	None = 0,
+	/// <unmanaged>SpvFragmentShadingRateVertical2PixelsMask</unmanaged>
+	SpvFragmentShadingRateVertical2PixelsMask = 0x00000001,
+	/// <unmanaged>SpvFragmentShadingRateVertical4PixelsMask</unmanaged>
+	SpvFragmentShadingRateVertical4PixelsMask = 0x00000002,
+	/// <unmanaged>SpvFragmentShadingRateHorizontal2PixelsMask</unmanaged>
+	SpvFragmentShadingRateHorizontal2PixelsMask = 0x00000004,
+	/// <unmanaged>SpvFragmentShadingRateHorizontal4PixelsMask</unmanaged>
+	SpvFragmentShadingRateHorizontal4PixelsMask = 0x00000008,
+}
+
+public enum SpvFPDenormMode
+{
+	/// <unmanaged>SpvFPDenormModePreserve</unmanaged>
+	Preserve = 0,
+	/// <unmanaged>SpvFPDenormModeFlushToZero</unmanaged>
+	FlushToZero = 1,
+}
+
+public enum SpvFPOperationMode
+{
+	/// <unmanaged>SpvFPOperationModeIEEE</unmanaged>
+	IEEE = 0,
+	/// <unmanaged>SpvFPOperationModeALT</unmanaged>
+	ALT = 1,
+}
+
+public enum SpvQuantizationModes
+{
+	/// <unmanaged>SpvQuantizationModesTRN</unmanaged>
+	TRN = 0,
+	/// <unmanaged>SpvQuantizationModesTRN_ZERO</unmanaged>
+	TRN_ZERO = 1,
+	/// <unmanaged>SpvQuantizationModesRND</unmanaged>
+	RND = 2,
+	/// <unmanaged>SpvQuantizationModesRND_ZERO</unmanaged>
+	RND_ZERO = 3,
+	/// <unmanaged>SpvQuantizationModesRND_INF</unmanaged>
+	RND_INF = 4,
+	/// <unmanaged>SpvQuantizationModesRND_MIN_INF</unmanaged>
+	RND_MIN_INF = 5,
+	/// <unmanaged>SpvQuantizationModesRND_CONV</unmanaged>
+	RND_CONV = 6,
+	/// <unmanaged>SpvQuantizationModesRND_CONV_ODD</unmanaged>
+	RND_CONV_ODD = 7,
+}
+
+public enum SpvOverflowModes
+{
+	/// <unmanaged>SpvOverflowModesWRAP</unmanaged>
+	WRAP = 0,
+	/// <unmanaged>SpvOverflowModesSAT</unmanaged>
+	SAT = 1,
+	/// <unmanaged>SpvOverflowModesSAT_ZERO</unmanaged>
+	SAT_ZERO = 2,
+	/// <unmanaged>SpvOverflowModesSAT_SYM</unmanaged>
+	SAT_SYM = 3,
+}
+
+public enum SpvPackedVectorFormat
+{
+	/// <unmanaged>SpvPackedVectorFormatPackedVectorFormat4x8Bit</unmanaged>
+	PackedVectorFormat4x8Bit = 0,
+	/// <unmanaged>SpvPackedVectorFormatPackedVectorFormat4x8BitKHR</unmanaged>
+	PackedVectorFormat4x8BitKHR = 0,
+}
+
+public enum SpvOp
+{
+	/// <unmanaged>SpvOpNop</unmanaged>
+	Nop = 0,
+	/// <unmanaged>SpvOpUndef</unmanaged>
+	Undef = 1,
+	/// <unmanaged>SpvOpSourceContinued</unmanaged>
+	SourceContinued = 2,
+	/// <unmanaged>SpvOpSource</unmanaged>
+	Source = 3,
+	/// <unmanaged>SpvOpSourceExtension</unmanaged>
+	SourceExtension = 4,
+	/// <unmanaged>SpvOpName</unmanaged>
+	Name = 5,
+	/// <unmanaged>SpvOpMemberName</unmanaged>
+	MemberName = 6,
+	/// <unmanaged>SpvOpString</unmanaged>
+	String = 7,
+	/// <unmanaged>SpvOpLine</unmanaged>
+	Line = 8,
+	/// <unmanaged>SpvOpExtension</unmanaged>
+	Extension = 10,
+	/// <unmanaged>SpvOpExtInstImport</unmanaged>
+	ExtInstImport = 11,
+	/// <unmanaged>SpvOpExtInst</unmanaged>
+	ExtInst = 12,
+	/// <unmanaged>SpvOpMemoryModel</unmanaged>
+	MemoryModel = 14,
+	/// <unmanaged>SpvOpEntryPoint</unmanaged>
+	EntryPoint = 15,
+	/// <unmanaged>SpvOpExecutionMode</unmanaged>
+	ExecutionMode = 16,
+	/// <unmanaged>SpvOpCapability</unmanaged>
+	Capability = 17,
+	/// <unmanaged>SpvOpTypeVoid</unmanaged>
+	TypeVoid = 19,
+	/// <unmanaged>SpvOpTypeBool</unmanaged>
+	TypeBool = 20,
+	/// <unmanaged>SpvOpTypeInt</unmanaged>
+	TypeInt = 21,
+	/// <unmanaged>SpvOpTypeFloat</unmanaged>
+	TypeFloat = 22,
+	/// <unmanaged>SpvOpTypeVector</unmanaged>
+	TypeVector = 23,
+	/// <unmanaged>SpvOpTypeMatrix</unmanaged>
+	TypeMatrix = 24,
+	/// <unmanaged>SpvOpTypeImage</unmanaged>
+	TypeImage = 25,
+	/// <unmanaged>SpvOpTypeSampler</unmanaged>
+	TypeSampler = 26,
+	/// <unmanaged>SpvOpTypeSampledImage</unmanaged>
+	TypeSampledImage = 27,
+	/// <unmanaged>SpvOpTypeArray</unmanaged>
+	TypeArray = 28,
+	/// <unmanaged>SpvOpTypeRuntimeArray</unmanaged>
+	TypeRuntimeArray = 29,
+	/// <unmanaged>SpvOpTypeStruct</unmanaged>
+	TypeStruct = 30,
+	/// <unmanaged>SpvOpTypeOpaque</unmanaged>
+	TypeOpaque = 31,
+	/// <unmanaged>SpvOpTypePointer</unmanaged>
+	TypePointer = 32,
+	/// <unmanaged>SpvOpTypeFunction</unmanaged>
+	TypeFunction = 33,
+	/// <unmanaged>SpvOpTypeEvent</unmanaged>
+	TypeEvent = 34,
+	/// <unmanaged>SpvOpTypeDeviceEvent</unmanaged>
+	TypeDeviceEvent = 35,
+	/// <unmanaged>SpvOpTypeReserveId</unmanaged>
+	TypeReserveId = 36,
+	/// <unmanaged>SpvOpTypeQueue</unmanaged>
+	TypeQueue = 37,
+	/// <unmanaged>SpvOpTypePipe</unmanaged>
+	TypePipe = 38,
+	/// <unmanaged>SpvOpTypeForwardPointer</unmanaged>
+	TypeForwardPointer = 39,
+	/// <unmanaged>SpvOpConstantTrue</unmanaged>
+	ConstantTrue = 41,
+	/// <unmanaged>SpvOpConstantFalse</unmanaged>
+	ConstantFalse = 42,
+	/// <unmanaged>SpvOpConstant</unmanaged>
+	Constant = 43,
+	/// <unmanaged>SpvOpConstantComposite</unmanaged>
+	ConstantComposite = 44,
+	/// <unmanaged>SpvOpConstantSampler</unmanaged>
+	ConstantSampler = 45,
+	/// <unmanaged>SpvOpConstantNull</unmanaged>
+	ConstantNull = 46,
+	/// <unmanaged>SpvOpSpecConstantTrue</unmanaged>
+	SpecConstantTrue = 48,
+	/// <unmanaged>SpvOpSpecConstantFalse</unmanaged>
+	SpecConstantFalse = 49,
+	/// <unmanaged>SpvOpSpecConstant</unmanaged>
+	SpecConstant = 50,
+	/// <unmanaged>SpvOpSpecConstantComposite</unmanaged>
+	SpecConstantComposite = 51,
+	/// <unmanaged>SpvOpSpecConstantOp</unmanaged>
+	SpecConstantOp = 52,
+	/// <unmanaged>SpvOpFunction</unmanaged>
+	Function = 54,
+	/// <unmanaged>SpvOpFunctionParameter</unmanaged>
+	FunctionParameter = 55,
+	/// <unmanaged>SpvOpFunctionEnd</unmanaged>
+	FunctionEnd = 56,
+	/// <unmanaged>SpvOpFunctionCall</unmanaged>
+	FunctionCall = 57,
+	/// <unmanaged>SpvOpVariable</unmanaged>
+	Variable = 59,
+	/// <unmanaged>SpvOpImageTexelPointer</unmanaged>
+	ImageTexelPointer = 60,
+	/// <unmanaged>SpvOpLoad</unmanaged>
+	Load = 61,
+	/// <unmanaged>SpvOpStore</unmanaged>
+	Store = 62,
+	/// <unmanaged>SpvOpCopyMemory</unmanaged>
+	CopyMemory = 63,
+	/// <unmanaged>SpvOpCopyMemorySized</unmanaged>
+	CopyMemorySized = 64,
+	/// <unmanaged>SpvOpAccessChain</unmanaged>
+	AccessChain = 65,
+	/// <unmanaged>SpvOpInBoundsAccessChain</unmanaged>
+	InBoundsAccessChain = 66,
+	/// <unmanaged>SpvOpPtrAccessChain</unmanaged>
+	PtrAccessChain = 67,
+	/// <unmanaged>SpvOpArrayLength</unmanaged>
+	ArrayLength = 68,
+	/// <unmanaged>SpvOpGenericPtrMemSemantics</unmanaged>
+	GenericPtrMemSemantics = 69,
+	/// <unmanaged>SpvOpInBoundsPtrAccessChain</unmanaged>
+	InBoundsPtrAccessChain = 70,
+	/// <unmanaged>SpvOpDecorate</unmanaged>
+	Decorate = 71,
+	/// <unmanaged>SpvOpMemberDecorate</unmanaged>
+	MemberDecorate = 72,
+	/// <unmanaged>SpvOpDecorationGroup</unmanaged>
+	DecorationGroup = 73,
+	/// <unmanaged>SpvOpGroupDecorate</unmanaged>
+	GroupDecorate = 74,
+	/// <unmanaged>SpvOpGroupMemberDecorate</unmanaged>
+	GroupMemberDecorate = 75,
+	/// <unmanaged>SpvOpVectorExtractDynamic</unmanaged>
+	VectorExtractDynamic = 77,
+	/// <unmanaged>SpvOpVectorInsertDynamic</unmanaged>
+	VectorInsertDynamic = 78,
+	/// <unmanaged>SpvOpVectorShuffle</unmanaged>
+	VectorShuffle = 79,
+	/// <unmanaged>SpvOpCompositeConstruct</unmanaged>
+	CompositeConstruct = 80,
+	/// <unmanaged>SpvOpCompositeExtract</unmanaged>
+	CompositeExtract = 81,
+	/// <unmanaged>SpvOpCompositeInsert</unmanaged>
+	CompositeInsert = 82,
+	/// <unmanaged>SpvOpCopyObject</unmanaged>
+	CopyObject = 83,
+	/// <unmanaged>SpvOpTranspose</unmanaged>
+	Transpose = 84,
+	/// <unmanaged>SpvOpSampledImage</unmanaged>
+	SampledImage = 86,
+	/// <unmanaged>SpvOpImageSampleImplicitLod</unmanaged>
+	ImageSampleImplicitLod = 87,
+	/// <unmanaged>SpvOpImageSampleExplicitLod</unmanaged>
+	ImageSampleExplicitLod = 88,
+	/// <unmanaged>SpvOpImageSampleDrefImplicitLod</unmanaged>
+	ImageSampleDrefImplicitLod = 89,
+	/// <unmanaged>SpvOpImageSampleDrefExplicitLod</unmanaged>
+	ImageSampleDrefExplicitLod = 90,
+	/// <unmanaged>SpvOpImageSampleProjImplicitLod</unmanaged>
+	ImageSampleProjImplicitLod = 91,
+	/// <unmanaged>SpvOpImageSampleProjExplicitLod</unmanaged>
+	ImageSampleProjExplicitLod = 92,
+	/// <unmanaged>SpvOpImageSampleProjDrefImplicitLod</unmanaged>
+	ImageSampleProjDrefImplicitLod = 93,
+	/// <unmanaged>SpvOpImageSampleProjDrefExplicitLod</unmanaged>
+	ImageSampleProjDrefExplicitLod = 94,
+	/// <unmanaged>SpvOpImageFetch</unmanaged>
+	ImageFetch = 95,
+	/// <unmanaged>SpvOpImageGather</unmanaged>
+	ImageGather = 96,
+	/// <unmanaged>SpvOpImageDrefGather</unmanaged>
+	ImageDrefGather = 97,
+	/// <unmanaged>SpvOpImageRead</unmanaged>
+	ImageRead = 98,
+	/// <unmanaged>SpvOpImageWrite</unmanaged>
+	ImageWrite = 99,
+	/// <unmanaged>SpvOpImage</unmanaged>
+	Image = 100,
+	/// <unmanaged>SpvOpImageQueryFormat</unmanaged>
+	ImageQueryFormat = 101,
+	/// <unmanaged>SpvOpImageQueryOrder</unmanaged>
+	ImageQueryOrder = 102,
+	/// <unmanaged>SpvOpImageQuerySizeLod</unmanaged>
+	ImageQuerySizeLod = 103,
+	/// <unmanaged>SpvOpImageQuerySize</unmanaged>
+	ImageQuerySize = 104,
+	/// <unmanaged>SpvOpImageQueryLod</unmanaged>
+	ImageQueryLod = 105,
+	/// <unmanaged>SpvOpImageQueryLevels</unmanaged>
+	ImageQueryLevels = 106,
+	/// <unmanaged>SpvOpImageQuerySamples</unmanaged>
+	ImageQuerySamples = 107,
+	/// <unmanaged>SpvOpConvertFToU</unmanaged>
+	ConvertFToU = 109,
+	/// <unmanaged>SpvOpConvertFToS</unmanaged>
+	ConvertFToS = 110,
+	/// <unmanaged>SpvOpConvertSToF</unmanaged>
+	ConvertSToF = 111,
+	/// <unmanaged>SpvOpConvertUToF</unmanaged>
+	ConvertUToF = 112,
+	/// <unmanaged>SpvOpUConvert</unmanaged>
+	UConvert = 113,
+	/// <unmanaged>SpvOpSConvert</unmanaged>
+	SConvert = 114,
+	/// <unmanaged>SpvOpFConvert</unmanaged>
+	FConvert = 115,
+	/// <unmanaged>SpvOpQuantizeToF16</unmanaged>
+	QuantizeToF16 = 116,
+	/// <unmanaged>SpvOpConvertPtrToU</unmanaged>
+	ConvertPtrToU = 117,
+	/// <unmanaged>SpvOpSatConvertSToU</unmanaged>
+	SatConvertSToU = 118,
+	/// <unmanaged>SpvOpSatConvertUToS</unmanaged>
+	SatConvertUToS = 119,
+	/// <unmanaged>SpvOpConvertUToPtr</unmanaged>
+	ConvertUToPtr = 120,
+	/// <unmanaged>SpvOpPtrCastToGeneric</unmanaged>
+	PtrCastToGeneric = 121,
+	/// <unmanaged>SpvOpGenericCastToPtr</unmanaged>
+	GenericCastToPtr = 122,
+	/// <unmanaged>SpvOpGenericCastToPtrExplicit</unmanaged>
+	GenericCastToPtrExplicit = 123,
+	/// <unmanaged>SpvOpBitcast</unmanaged>
+	Bitcast = 124,
+	/// <unmanaged>SpvOpSNegate</unmanaged>
+	SNegate = 126,
+	/// <unmanaged>SpvOpFNegate</unmanaged>
+	FNegate = 127,
+	/// <unmanaged>SpvOpIAdd</unmanaged>
+	IAdd = 128,
+	/// <unmanaged>SpvOpFAdd</unmanaged>
+	FAdd = 129,
+	/// <unmanaged>SpvOpISub</unmanaged>
+	ISub = 130,
+	/// <unmanaged>SpvOpFSub</unmanaged>
+	FSub = 131,
+	/// <unmanaged>SpvOpIMul</unmanaged>
+	IMul = 132,
+	/// <unmanaged>SpvOpFMul</unmanaged>
+	FMul = 133,
+	/// <unmanaged>SpvOpUDiv</unmanaged>
+	UDiv = 134,
+	/// <unmanaged>SpvOpSDiv</unmanaged>
+	SDiv = 135,
+	/// <unmanaged>SpvOpFDiv</unmanaged>
+	FDiv = 136,
+	/// <unmanaged>SpvOpUMod</unmanaged>
+	UMod = 137,
+	/// <unmanaged>SpvOpSRem</unmanaged>
+	SRem = 138,
+	/// <unmanaged>SpvOpSMod</unmanaged>
+	SMod = 139,
+	/// <unmanaged>SpvOpFRem</unmanaged>
+	FRem = 140,
+	/// <unmanaged>SpvOpFMod</unmanaged>
+	FMod = 141,
+	/// <unmanaged>SpvOpVectorTimesScalar</unmanaged>
+	VectorTimesScalar = 142,
+	/// <unmanaged>SpvOpMatrixTimesScalar</unmanaged>
+	MatrixTimesScalar = 143,
+	/// <unmanaged>SpvOpVectorTimesMatrix</unmanaged>
+	VectorTimesMatrix = 144,
+	/// <unmanaged>SpvOpMatrixTimesVector</unmanaged>
+	MatrixTimesVector = 145,
+	/// <unmanaged>SpvOpMatrixTimesMatrix</unmanaged>
+	MatrixTimesMatrix = 146,
+	/// <unmanaged>SpvOpOuterProduct</unmanaged>
+	OuterProduct = 147,
+	/// <unmanaged>SpvOpDot</unmanaged>
+	Dot = 148,
+	/// <unmanaged>SpvOpIAddCarry</unmanaged>
+	IAddCarry = 149,
+	/// <unmanaged>SpvOpISubBorrow</unmanaged>
+	ISubBorrow = 150,
+	/// <unmanaged>SpvOpUMulExtended</unmanaged>
+	UMulExtended = 151,
+	/// <unmanaged>SpvOpSMulExtended</unmanaged>
+	SMulExtended = 152,
+	/// <unmanaged>SpvOpAny</unmanaged>
+	Any = 154,
+	/// <unmanaged>SpvOpAll</unmanaged>
+	All = 155,
+	/// <unmanaged>SpvOpIsNan</unmanaged>
+	IsNan = 156,
+	/// <unmanaged>SpvOpIsInf</unmanaged>
+	IsInf = 157,
+	/// <unmanaged>SpvOpIsFinite</unmanaged>
+	IsFinite = 158,
+	/// <unmanaged>SpvOpIsNormal</unmanaged>
+	IsNormal = 159,
+	/// <unmanaged>SpvOpSignBitSet</unmanaged>
+	SignBitSet = 160,
+	/// <unmanaged>SpvOpLessOrGreater</unmanaged>
+	LessOrGreater = 161,
+	/// <unmanaged>SpvOpOrdered</unmanaged>
+	Ordered = 162,
+	/// <unmanaged>SpvOpUnordered</unmanaged>
+	Unordered = 163,
+	/// <unmanaged>SpvOpLogicalEqual</unmanaged>
+	LogicalEqual = 164,
+	/// <unmanaged>SpvOpLogicalNotEqual</unmanaged>
+	LogicalNotEqual = 165,
+	/// <unmanaged>SpvOpLogicalOr</unmanaged>
+	LogicalOr = 166,
+	/// <unmanaged>SpvOpLogicalAnd</unmanaged>
+	LogicalAnd = 167,
+	/// <unmanaged>SpvOpLogicalNot</unmanaged>
+	LogicalNot = 168,
+	/// <unmanaged>SpvOpSelect</unmanaged>
+	Select = 169,
+	/// <unmanaged>SpvOpIEqual</unmanaged>
+	IEqual = 170,
+	/// <unmanaged>SpvOpINotEqual</unmanaged>
+	INotEqual = 171,
+	/// <unmanaged>SpvOpUGreaterThan</unmanaged>
+	UGreaterThan = 172,
+	/// <unmanaged>SpvOpSGreaterThan</unmanaged>
+	SGreaterThan = 173,
+	/// <unmanaged>SpvOpUGreaterThanEqual</unmanaged>
+	UGreaterThanEqual = 174,
+	/// <unmanaged>SpvOpSGreaterThanEqual</unmanaged>
+	SGreaterThanEqual = 175,
+	/// <unmanaged>SpvOpULessThan</unmanaged>
+	ULessThan = 176,
+	/// <unmanaged>SpvOpSLessThan</unmanaged>
+	SLessThan = 177,
+	/// <unmanaged>SpvOpULessThanEqual</unmanaged>
+	ULessThanEqual = 178,
+	/// <unmanaged>SpvOpSLessThanEqual</unmanaged>
+	SLessThanEqual = 179,
+	/// <unmanaged>SpvOpFOrdEqual</unmanaged>
+	FOrdEqual = 180,
+	/// <unmanaged>SpvOpFUnordEqual</unmanaged>
+	FUnordEqual = 181,
+	/// <unmanaged>SpvOpFOrdNotEqual</unmanaged>
+	FOrdNotEqual = 182,
+	/// <unmanaged>SpvOpFUnordNotEqual</unmanaged>
+	FUnordNotEqual = 183,
+	/// <unmanaged>SpvOpFOrdLessThan</unmanaged>
+	FOrdLessThan = 184,
+	/// <unmanaged>SpvOpFUnordLessThan</unmanaged>
+	FUnordLessThan = 185,
+	/// <unmanaged>SpvOpFOrdGreaterThan</unmanaged>
+	FOrdGreaterThan = 186,
+	/// <unmanaged>SpvOpFUnordGreaterThan</unmanaged>
+	FUnordGreaterThan = 187,
+	/// <unmanaged>SpvOpFOrdLessThanEqual</unmanaged>
+	FOrdLessThanEqual = 188,
+	/// <unmanaged>SpvOpFUnordLessThanEqual</unmanaged>
+	FUnordLessThanEqual = 189,
+	/// <unmanaged>SpvOpFOrdGreaterThanEqual</unmanaged>
+	FOrdGreaterThanEqual = 190,
+	/// <unmanaged>SpvOpFUnordGreaterThanEqual</unmanaged>
+	FUnordGreaterThanEqual = 191,
+	/// <unmanaged>SpvOpShiftRightLogical</unmanaged>
+	ShiftRightLogical = 194,
+	/// <unmanaged>SpvOpShiftRightArithmetic</unmanaged>
+	ShiftRightArithmetic = 195,
+	/// <unmanaged>SpvOpShiftLeftLogical</unmanaged>
+	ShiftLeftLogical = 196,
+	/// <unmanaged>SpvOpBitwiseOr</unmanaged>
+	BitwiseOr = 197,
+	/// <unmanaged>SpvOpBitwiseXor</unmanaged>
+	BitwiseXor = 198,
+	/// <unmanaged>SpvOpBitwiseAnd</unmanaged>
+	BitwiseAnd = 199,
+	/// <unmanaged>SpvOpNot</unmanaged>
+	Not = 200,
+	/// <unmanaged>SpvOpBitFieldInsert</unmanaged>
+	BitFieldInsert = 201,
+	/// <unmanaged>SpvOpBitFieldSExtract</unmanaged>
+	BitFieldSExtract = 202,
+	/// <unmanaged>SpvOpBitFieldUExtract</unmanaged>
+	BitFieldUExtract = 203,
+	/// <unmanaged>SpvOpBitReverse</unmanaged>
+	BitReverse = 204,
+	/// <unmanaged>SpvOpBitCount</unmanaged>
+	BitCount = 205,
+	/// <unmanaged>SpvOpDPdx</unmanaged>
+	DPdx = 207,
+	/// <unmanaged>SpvOpDPdy</unmanaged>
+	DPdy = 208,
+	/// <unmanaged>SpvOpFwidth</unmanaged>
+	Fwidth = 209,
+	/// <unmanaged>SpvOpDPdxFine</unmanaged>
+	DPdxFine = 210,
+	/// <unmanaged>SpvOpDPdyFine</unmanaged>
+	DPdyFine = 211,
+	/// <unmanaged>SpvOpFwidthFine</unmanaged>
+	FwidthFine = 212,
+	/// <unmanaged>SpvOpDPdxCoarse</unmanaged>
+	DPdxCoarse = 213,
+	/// <unmanaged>SpvOpDPdyCoarse</unmanaged>
+	DPdyCoarse = 214,
+	/// <unmanaged>SpvOpFwidthCoarse</unmanaged>
+	FwidthCoarse = 215,
+	/// <unmanaged>SpvOpEmitVertex</unmanaged>
+	EmitVertex = 218,
+	/// <unmanaged>SpvOpEndPrimitive</unmanaged>
+	EndPrimitive = 219,
+	/// <unmanaged>SpvOpEmitStreamVertex</unmanaged>
+	EmitStreamVertex = 220,
+	/// <unmanaged>SpvOpEndStreamPrimitive</unmanaged>
+	EndStreamPrimitive = 221,
+	/// <unmanaged>SpvOpControlBarrier</unmanaged>
+	ControlBarrier = 224,
+	/// <unmanaged>SpvOpMemoryBarrier</unmanaged>
+	MemoryBarrier = 225,
+	/// <unmanaged>SpvOpAtomicLoad</unmanaged>
+	AtomicLoad = 227,
+	/// <unmanaged>SpvOpAtomicStore</unmanaged>
+	AtomicStore = 228,
+	/// <unmanaged>SpvOpAtomicExchange</unmanaged>
+	AtomicExchange = 229,
+	/// <unmanaged>SpvOpAtomicCompareExchange</unmanaged>
+	AtomicCompareExchange = 230,
+	/// <unmanaged>SpvOpAtomicCompareExchangeWeak</unmanaged>
+	AtomicCompareExchangeWeak = 231,
+	/// <unmanaged>SpvOpAtomicIIncrement</unmanaged>
+	AtomicIIncrement = 232,
+	/// <unmanaged>SpvOpAtomicIDecrement</unmanaged>
+	AtomicIDecrement = 233,
+	/// <unmanaged>SpvOpAtomicIAdd</unmanaged>
+	AtomicIAdd = 234,
+	/// <unmanaged>SpvOpAtomicISub</unmanaged>
+	AtomicISub = 235,
+	/// <unmanaged>SpvOpAtomicSMin</unmanaged>
+	AtomicSMin = 236,
+	/// <unmanaged>SpvOpAtomicUMin</unmanaged>
+	AtomicUMin = 237,
+	/// <unmanaged>SpvOpAtomicSMax</unmanaged>
+	AtomicSMax = 238,
+	/// <unmanaged>SpvOpAtomicUMax</unmanaged>
+	AtomicUMax = 239,
+	/// <unmanaged>SpvOpAtomicAnd</unmanaged>
+	AtomicAnd = 240,
+	/// <unmanaged>SpvOpAtomicOr</unmanaged>
+	AtomicOr = 241,
+	/// <unmanaged>SpvOpAtomicXor</unmanaged>
+	AtomicXor = 242,
+	/// <unmanaged>SpvOpPhi</unmanaged>
+	Phi = 245,
+	/// <unmanaged>SpvOpLoopMerge</unmanaged>
+	LoopMerge = 246,
+	/// <unmanaged>SpvOpSelectionMerge</unmanaged>
+	SelectionMerge = 247,
+	/// <unmanaged>SpvOpLabel</unmanaged>
+	Label = 248,
+	/// <unmanaged>SpvOpBranch</unmanaged>
+	Branch = 249,
+	/// <unmanaged>SpvOpBranchConditional</unmanaged>
+	BranchConditional = 250,
+	/// <unmanaged>SpvOpSwitch</unmanaged>
+	Switch = 251,
+	/// <unmanaged>SpvOpKill</unmanaged>
+	Kill = 252,
+	/// <unmanaged>SpvOpReturn</unmanaged>
+	Return = 253,
+	/// <unmanaged>SpvOpReturnValue</unmanaged>
+	ReturnValue = 254,
+	/// <unmanaged>SpvOpUnreachable</unmanaged>
+	Unreachable = 255,
+	/// <unmanaged>SpvOpLifetimeStart</unmanaged>
+	LifetimeStart = 256,
+	/// <unmanaged>SpvOpLifetimeStop</unmanaged>
+	LifetimeStop = 257,
+	/// <unmanaged>SpvOpGroupAsyncCopy</unmanaged>
+	GroupAsyncCopy = 259,
+	/// <unmanaged>SpvOpGroupWaitEvents</unmanaged>
+	GroupWaitEvents = 260,
+	/// <unmanaged>SpvOpGroupAll</unmanaged>
+	GroupAll = 261,
+	/// <unmanaged>SpvOpGroupAny</unmanaged>
+	GroupAny = 262,
+	/// <unmanaged>SpvOpGroupBroadcast</unmanaged>
+	GroupBroadcast = 263,
+	/// <unmanaged>SpvOpGroupIAdd</unmanaged>
+	GroupIAdd = 264,
+	/// <unmanaged>SpvOpGroupFAdd</unmanaged>
+	GroupFAdd = 265,
+	/// <unmanaged>SpvOpGroupFMin</unmanaged>
+	GroupFMin = 266,
+	/// <unmanaged>SpvOpGroupUMin</unmanaged>
+	GroupUMin = 267,
+	/// <unmanaged>SpvOpGroupSMin</unmanaged>
+	GroupSMin = 268,
+	/// <unmanaged>SpvOpGroupFMax</unmanaged>
+	GroupFMax = 269,
+	/// <unmanaged>SpvOpGroupUMax</unmanaged>
+	GroupUMax = 270,
+	/// <unmanaged>SpvOpGroupSMax</unmanaged>
+	GroupSMax = 271,
+	/// <unmanaged>SpvOpReadPipe</unmanaged>
+	ReadPipe = 274,
+	/// <unmanaged>SpvOpWritePipe</unmanaged>
+	WritePipe = 275,
+	/// <unmanaged>SpvOpReservedReadPipe</unmanaged>
+	ReservedReadPipe = 276,
+	/// <unmanaged>SpvOpReservedWritePipe</unmanaged>
+	ReservedWritePipe = 277,
+	/// <unmanaged>SpvOpReserveReadPipePackets</unmanaged>
+	ReserveReadPipePackets = 278,
+	/// <unmanaged>SpvOpReserveWritePipePackets</unmanaged>
+	ReserveWritePipePackets = 279,
+	/// <unmanaged>SpvOpCommitReadPipe</unmanaged>
+	CommitReadPipe = 280,
+	/// <unmanaged>SpvOpCommitWritePipe</unmanaged>
+	CommitWritePipe = 281,
+	/// <unmanaged>SpvOpIsValidReserveId</unmanaged>
+	IsValidReserveId = 282,
+	/// <unmanaged>SpvOpGetNumPipePackets</unmanaged>
+	GetNumPipePackets = 283,
+	/// <unmanaged>SpvOpGetMaxPipePackets</unmanaged>
+	GetMaxPipePackets = 284,
+	/// <unmanaged>SpvOpGroupReserveReadPipePackets</unmanaged>
+	GroupReserveReadPipePackets = 285,
+	/// <unmanaged>SpvOpGroupReserveWritePipePackets</unmanaged>
+	GroupReserveWritePipePackets = 286,
+	/// <unmanaged>SpvOpGroupCommitReadPipe</unmanaged>
+	GroupCommitReadPipe = 287,
+	/// <unmanaged>SpvOpGroupCommitWritePipe</unmanaged>
+	GroupCommitWritePipe = 288,
+	/// <unmanaged>SpvOpEnqueueMarker</unmanaged>
+	EnqueueMarker = 291,
+	/// <unmanaged>SpvOpEnqueueKernel</unmanaged>
+	EnqueueKernel = 292,
+	/// <unmanaged>SpvOpGetKernelNDrangeSubGroupCount</unmanaged>
+	GetKernelNDrangeSubGroupCount = 293,
+	/// <unmanaged>SpvOpGetKernelNDrangeMaxSubGroupSize</unmanaged>
+	GetKernelNDrangeMaxSubGroupSize = 294,
+	/// <unmanaged>SpvOpGetKernelWorkGroupSize</unmanaged>
+	GetKernelWorkGroupSize = 295,
+	/// <unmanaged>SpvOpGetKernelPreferredWorkGroupSizeMultiple</unmanaged>
+	GetKernelPreferredWorkGroupSizeMultiple = 296,
+	/// <unmanaged>SpvOpRetainEvent</unmanaged>
+	RetainEvent = 297,
+	/// <unmanaged>SpvOpReleaseEvent</unmanaged>
+	ReleaseEvent = 298,
+	/// <unmanaged>SpvOpCreateUserEvent</unmanaged>
+	CreateUserEvent = 299,
+	/// <unmanaged>SpvOpIsValidEvent</unmanaged>
+	IsValidEvent = 300,
+	/// <unmanaged>SpvOpSetUserEventStatus</unmanaged>
+	SetUserEventStatus = 301,
+	/// <unmanaged>SpvOpCaptureEventProfilingInfo</unmanaged>
+	CaptureEventProfilingInfo = 302,
+	/// <unmanaged>SpvOpGetDefaultQueue</unmanaged>
+	GetDefaultQueue = 303,
+	/// <unmanaged>SpvOpBuildNDRange</unmanaged>
+	BuildNDRange = 304,
+	/// <unmanaged>SpvOpImageSparseSampleImplicitLod</unmanaged>
+	ImageSparseSampleImplicitLod = 305,
+	/// <unmanaged>SpvOpImageSparseSampleExplicitLod</unmanaged>
+	ImageSparseSampleExplicitLod = 306,
+	/// <unmanaged>SpvOpImageSparseSampleDrefImplicitLod</unmanaged>
+	ImageSparseSampleDrefImplicitLod = 307,
+	/// <unmanaged>SpvOpImageSparseSampleDrefExplicitLod</unmanaged>
+	ImageSparseSampleDrefExplicitLod = 308,
+	/// <unmanaged>SpvOpImageSparseSampleProjImplicitLod</unmanaged>
+	ImageSparseSampleProjImplicitLod = 309,
+	/// <unmanaged>SpvOpImageSparseSampleProjExplicitLod</unmanaged>
+	ImageSparseSampleProjExplicitLod = 310,
+	/// <unmanaged>SpvOpImageSparseSampleProjDrefImplicitLod</unmanaged>
+	ImageSparseSampleProjDrefImplicitLod = 311,
+	/// <unmanaged>SpvOpImageSparseSampleProjDrefExplicitLod</unmanaged>
+	ImageSparseSampleProjDrefExplicitLod = 312,
+	/// <unmanaged>SpvOpImageSparseFetch</unmanaged>
+	ImageSparseFetch = 313,
+	/// <unmanaged>SpvOpImageSparseGather</unmanaged>
+	ImageSparseGather = 314,
+	/// <unmanaged>SpvOpImageSparseDrefGather</unmanaged>
+	ImageSparseDrefGather = 315,
+	/// <unmanaged>SpvOpImageSparseTexelsResident</unmanaged>
+	ImageSparseTexelsResident = 316,
+	/// <unmanaged>SpvOpNoLine</unmanaged>
+	NoLine = 317,
+	/// <unmanaged>SpvOpAtomicFlagTestAndSet</unmanaged>
+	AtomicFlagTestAndSet = 318,
+	/// <unmanaged>SpvOpAtomicFlagClear</unmanaged>
+	AtomicFlagClear = 319,
+	/// <unmanaged>SpvOpImageSparseRead</unmanaged>
+	ImageSparseRead = 320,
+	/// <unmanaged>SpvOpSizeOf</unmanaged>
+	SizeOf = 321,
+	/// <unmanaged>SpvOpTypePipeStorage</unmanaged>
+	TypePipeStorage = 322,
+	/// <unmanaged>SpvOpConstantPipeStorage</unmanaged>
+	ConstantPipeStorage = 323,
+	/// <unmanaged>SpvOpCreatePipeFromPipeStorage</unmanaged>
+	CreatePipeFromPipeStorage = 324,
+	/// <unmanaged>SpvOpGetKernelLocalSizeForSubgroupCount</unmanaged>
+	GetKernelLocalSizeForSubgroupCount = 325,
+	/// <unmanaged>SpvOpGetKernelMaxNumSubgroups</unmanaged>
+	GetKernelMaxNumSubgroups = 326,
+	/// <unmanaged>SpvOpTypeNamedBarrier</unmanaged>
+	TypeNamedBarrier = 327,
+	/// <unmanaged>SpvOpNamedBarrierInitialize</unmanaged>
+	NamedBarrierInitialize = 328,
+	/// <unmanaged>SpvOpMemoryNamedBarrier</unmanaged>
+	MemoryNamedBarrier = 329,
+	/// <unmanaged>SpvOpModuleProcessed</unmanaged>
+	ModuleProcessed = 330,
+	/// <unmanaged>SpvOpExecutionModeId</unmanaged>
+	ExecutionModeId = 331,
+	/// <unmanaged>SpvOpDecorateId</unmanaged>
+	DecorateId = 332,
+	/// <unmanaged>SpvOpGroupNonUniformElect</unmanaged>
+	GroupNonUniformElect = 333,
+	/// <unmanaged>SpvOpGroupNonUniformAll</unmanaged>
+	GroupNonUniformAll = 334,
+	/// <unmanaged>SpvOpGroupNonUniformAny</unmanaged>
+	GroupNonUniformAny = 335,
+	/// <unmanaged>SpvOpGroupNonUniformAllEqual</unmanaged>
+	GroupNonUniformAllEqual = 336,
+	/// <unmanaged>SpvOpGroupNonUniformBroadcast</unmanaged>
+	GroupNonUniformBroadcast = 337,
+	/// <unmanaged>SpvOpGroupNonUniformBroadcastFirst</unmanaged>
+	GroupNonUniformBroadcastFirst = 338,
+	/// <unmanaged>SpvOpGroupNonUniformBallot</unmanaged>
+	GroupNonUniformBallot = 339,
+	/// <unmanaged>SpvOpGroupNonUniformInverseBallot</unmanaged>
+	GroupNonUniformInverseBallot = 340,
+	/// <unmanaged>SpvOpGroupNonUniformBallotBitExtract</unmanaged>
+	GroupNonUniformBallotBitExtract = 341,
+	/// <unmanaged>SpvOpGroupNonUniformBallotBitCount</unmanaged>
+	GroupNonUniformBallotBitCount = 342,
+	/// <unmanaged>SpvOpGroupNonUniformBallotFindLSB</unmanaged>
+	GroupNonUniformBallotFindLSB = 343,
+	/// <unmanaged>SpvOpGroupNonUniformBallotFindMSB</unmanaged>
+	GroupNonUniformBallotFindMSB = 344,
+	/// <unmanaged>SpvOpGroupNonUniformShuffle</unmanaged>
+	GroupNonUniformShuffle = 345,
+	/// <unmanaged>SpvOpGroupNonUniformShuffleXor</unmanaged>
+	GroupNonUniformShuffleXor = 346,
+	/// <unmanaged>SpvOpGroupNonUniformShuffleUp</unmanaged>
+	GroupNonUniformShuffleUp = 347,
+	/// <unmanaged>SpvOpGroupNonUniformShuffleDown</unmanaged>
+	GroupNonUniformShuffleDown = 348,
+	/// <unmanaged>SpvOpGroupNonUniformIAdd</unmanaged>
+	GroupNonUniformIAdd = 349,
+	/// <unmanaged>SpvOpGroupNonUniformFAdd</unmanaged>
+	GroupNonUniformFAdd = 350,
+	/// <unmanaged>SpvOpGroupNonUniformIMul</unmanaged>
+	GroupNonUniformIMul = 351,
+	/// <unmanaged>SpvOpGroupNonUniformFMul</unmanaged>
+	GroupNonUniformFMul = 352,
+	/// <unmanaged>SpvOpGroupNonUniformSMin</unmanaged>
+	GroupNonUniformSMin = 353,
+	/// <unmanaged>SpvOpGroupNonUniformUMin</unmanaged>
+	GroupNonUniformUMin = 354,
+	/// <unmanaged>SpvOpGroupNonUniformFMin</unmanaged>
+	GroupNonUniformFMin = 355,
+	/// <unmanaged>SpvOpGroupNonUniformSMax</unmanaged>
+	GroupNonUniformSMax = 356,
+	/// <unmanaged>SpvOpGroupNonUniformUMax</unmanaged>
+	GroupNonUniformUMax = 357,
+	/// <unmanaged>SpvOpGroupNonUniformFMax</unmanaged>
+	GroupNonUniformFMax = 358,
+	/// <unmanaged>SpvOpGroupNonUniformBitwiseAnd</unmanaged>
+	GroupNonUniformBitwiseAnd = 359,
+	/// <unmanaged>SpvOpGroupNonUniformBitwiseOr</unmanaged>
+	GroupNonUniformBitwiseOr = 360,
+	/// <unmanaged>SpvOpGroupNonUniformBitwiseXor</unmanaged>
+	GroupNonUniformBitwiseXor = 361,
+	/// <unmanaged>SpvOpGroupNonUniformLogicalAnd</unmanaged>
+	GroupNonUniformLogicalAnd = 362,
+	/// <unmanaged>SpvOpGroupNonUniformLogicalOr</unmanaged>
+	GroupNonUniformLogicalOr = 363,
+	/// <unmanaged>SpvOpGroupNonUniformLogicalXor</unmanaged>
+	GroupNonUniformLogicalXor = 364,
+	/// <unmanaged>SpvOpGroupNonUniformQuadBroadcast</unmanaged>
+	GroupNonUniformQuadBroadcast = 365,
+	/// <unmanaged>SpvOpGroupNonUniformQuadSwap</unmanaged>
+	GroupNonUniformQuadSwap = 366,
+	/// <unmanaged>SpvOpCopyLogical</unmanaged>
+	CopyLogical = 400,
+	/// <unmanaged>SpvOpPtrEqual</unmanaged>
+	PtrEqual = 401,
+	/// <unmanaged>SpvOpPtrNotEqual</unmanaged>
+	PtrNotEqual = 402,
+	/// <unmanaged>SpvOpPtrDiff</unmanaged>
+	PtrDiff = 403,
+	/// <unmanaged>SpvOpTerminateInvocation</unmanaged>
+	TerminateInvocation = 4416,
+	/// <unmanaged>SpvOpSubgroupBallotKHR</unmanaged>
+	SubgroupBallotKHR = 4421,
+	/// <unmanaged>SpvOpSubgroupFirstInvocationKHR</unmanaged>
+	SubgroupFirstInvocationKHR = 4422,
+	/// <unmanaged>SpvOpSubgroupAllKHR</unmanaged>
+	SubgroupAllKHR = 4428,
+	/// <unmanaged>SpvOpSubgroupAnyKHR</unmanaged>
+	SubgroupAnyKHR = 4429,
+	/// <unmanaged>SpvOpSubgroupAllEqualKHR</unmanaged>
+	SubgroupAllEqualKHR = 4430,
+	/// <unmanaged>SpvOpGroupNonUniformRotateKHR</unmanaged>
+	GroupNonUniformRotateKHR = 4431,
+	/// <unmanaged>SpvOpSubgroupReadInvocationKHR</unmanaged>
+	SubgroupReadInvocationKHR = 4432,
+	/// <unmanaged>SpvOpTraceRayKHR</unmanaged>
+	TraceRayKHR = 4445,
+	/// <unmanaged>SpvOpExecuteCallableKHR</unmanaged>
+	ExecuteCallableKHR = 4446,
+	/// <unmanaged>SpvOpConvertUToAccelerationStructureKHR</unmanaged>
+	ConvertUToAccelerationStructureKHR = 4447,
+	/// <unmanaged>SpvOpIgnoreIntersectionKHR</unmanaged>
+	IgnoreIntersectionKHR = 4448,
+	/// <unmanaged>SpvOpTerminateRayKHR</unmanaged>
+	TerminateRayKHR = 4449,
+	/// <unmanaged>SpvOpSDot</unmanaged>
+	SDot = 4450,
+	/// <unmanaged>SpvOpSDotKHR</unmanaged>
+	SDotKHR = 4450,
+	/// <unmanaged>SpvOpUDot</unmanaged>
+	UDot = 4451,
+	/// <unmanaged>SpvOpUDotKHR</unmanaged>
+	UDotKHR = 4451,
+	/// <unmanaged>SpvOpSUDot</unmanaged>
+	SUDot = 4452,
+	/// <unmanaged>SpvOpSUDotKHR</unmanaged>
+	SUDotKHR = 4452,
+	/// <unmanaged>SpvOpSDotAccSat</unmanaged>
+	SDotAccSat = 4453,
+	/// <unmanaged>SpvOpSDotAccSatKHR</unmanaged>
+	SDotAccSatKHR = 4453,
+	/// <unmanaged>SpvOpUDotAccSat</unmanaged>
+	UDotAccSat = 4454,
+	/// <unmanaged>SpvOpUDotAccSatKHR</unmanaged>
+	UDotAccSatKHR = 4454,
+	/// <unmanaged>SpvOpSUDotAccSat</unmanaged>
+	SUDotAccSat = 4455,
+	/// <unmanaged>SpvOpSUDotAccSatKHR</unmanaged>
+	SUDotAccSatKHR = 4455,
+	/// <unmanaged>SpvOpTypeRayQueryKHR</unmanaged>
+	TypeRayQueryKHR = 4472,
+	/// <unmanaged>SpvOpRayQueryInitializeKHR</unmanaged>
+	RayQueryInitializeKHR = 4473,
+	/// <unmanaged>SpvOpRayQueryTerminateKHR</unmanaged>
+	RayQueryTerminateKHR = 4474,
+	/// <unmanaged>SpvOpRayQueryGenerateIntersectionKHR</unmanaged>
+	RayQueryGenerateIntersectionKHR = 4475,
+	/// <unmanaged>SpvOpRayQueryConfirmIntersectionKHR</unmanaged>
+	RayQueryConfirmIntersectionKHR = 4476,
+	/// <unmanaged>SpvOpRayQueryProceedKHR</unmanaged>
+	RayQueryProceedKHR = 4477,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionTypeKHR</unmanaged>
+	RayQueryGetIntersectionTypeKHR = 4479,
+	/// <unmanaged>SpvOpImageSampleWeightedQCOM</unmanaged>
+	ImageSampleWeightedQCOM = 4480,
+	/// <unmanaged>SpvOpImageBoxFilterQCOM</unmanaged>
+	ImageBoxFilterQCOM = 4481,
+	/// <unmanaged>SpvOpImageBlockMatchSSDQCOM</unmanaged>
+	ImageBlockMatchSSDQCOM = 4482,
+	/// <unmanaged>SpvOpImageBlockMatchSADQCOM</unmanaged>
+	ImageBlockMatchSADQCOM = 4483,
+	/// <unmanaged>SpvOpGroupIAddNonUniformAMD</unmanaged>
+	GroupIAddNonUniformAMD = 5000,
+	/// <unmanaged>SpvOpGroupFAddNonUniformAMD</unmanaged>
+	GroupFAddNonUniformAMD = 5001,
+	/// <unmanaged>SpvOpGroupFMinNonUniformAMD</unmanaged>
+	GroupFMinNonUniformAMD = 5002,
+	/// <unmanaged>SpvOpGroupUMinNonUniformAMD</unmanaged>
+	GroupUMinNonUniformAMD = 5003,
+	/// <unmanaged>SpvOpGroupSMinNonUniformAMD</unmanaged>
+	GroupSMinNonUniformAMD = 5004,
+	/// <unmanaged>SpvOpGroupFMaxNonUniformAMD</unmanaged>
+	GroupFMaxNonUniformAMD = 5005,
+	/// <unmanaged>SpvOpGroupUMaxNonUniformAMD</unmanaged>
+	GroupUMaxNonUniformAMD = 5006,
+	/// <unmanaged>SpvOpGroupSMaxNonUniformAMD</unmanaged>
+	GroupSMaxNonUniformAMD = 5007,
+	/// <unmanaged>SpvOpFragmentMaskFetchAMD</unmanaged>
+	FragmentMaskFetchAMD = 5011,
+	/// <unmanaged>SpvOpFragmentFetchAMD</unmanaged>
+	FragmentFetchAMD = 5012,
+	/// <unmanaged>SpvOpReadClockKHR</unmanaged>
+	ReadClockKHR = 5056,
+	/// <unmanaged>SpvOpImageSampleFootprintNV</unmanaged>
+	ImageSampleFootprintNV = 5283,
+	/// <unmanaged>SpvOpEmitMeshTasksEXT</unmanaged>
+	EmitMeshTasksEXT = 5294,
+	/// <unmanaged>SpvOpSetMeshOutputsEXT</unmanaged>
+	SetMeshOutputsEXT = 5295,
+	/// <unmanaged>SpvOpGroupNonUniformPartitionNV</unmanaged>
+	GroupNonUniformPartitionNV = 5296,
+	/// <unmanaged>SpvOpWritePackedPrimitiveIndices4x8NV</unmanaged>
+	WritePackedPrimitiveIndices4x8NV = 5299,
+	/// <unmanaged>SpvOpReportIntersectionKHR</unmanaged>
+	ReportIntersectionKHR = 5334,
+	/// <unmanaged>SpvOpReportIntersectionNV</unmanaged>
+	ReportIntersectionNV = 5334,
+	/// <unmanaged>SpvOpIgnoreIntersectionNV</unmanaged>
+	IgnoreIntersectionNV = 5335,
+	/// <unmanaged>SpvOpTerminateRayNV</unmanaged>
+	TerminateRayNV = 5336,
+	/// <unmanaged>SpvOpTraceNV</unmanaged>
+	TraceNV = 5337,
+	/// <unmanaged>SpvOpTraceMotionNV</unmanaged>
+	TraceMotionNV = 5338,
+	/// <unmanaged>SpvOpTraceRayMotionNV</unmanaged>
+	TraceRayMotionNV = 5339,
+	/// <unmanaged>SpvOpTypeAccelerationStructureKHR</unmanaged>
+	TypeAccelerationStructureKHR = 5341,
+	/// <unmanaged>SpvOpTypeAccelerationStructureNV</unmanaged>
+	TypeAccelerationStructureNV = 5341,
+	/// <unmanaged>SpvOpExecuteCallableNV</unmanaged>
+	ExecuteCallableNV = 5344,
+	/// <unmanaged>SpvOpTypeCooperativeMatrixNV</unmanaged>
+	TypeCooperativeMatrixNV = 5358,
+	/// <unmanaged>SpvOpCooperativeMatrixLoadNV</unmanaged>
+	CooperativeMatrixLoadNV = 5359,
+	/// <unmanaged>SpvOpCooperativeMatrixStoreNV</unmanaged>
+	CooperativeMatrixStoreNV = 5360,
+	/// <unmanaged>SpvOpCooperativeMatrixMulAddNV</unmanaged>
+	CooperativeMatrixMulAddNV = 5361,
+	/// <unmanaged>SpvOpCooperativeMatrixLengthNV</unmanaged>
+	CooperativeMatrixLengthNV = 5362,
+	/// <unmanaged>SpvOpBeginInvocationInterlockEXT</unmanaged>
+	BeginInvocationInterlockEXT = 5364,
+	/// <unmanaged>SpvOpEndInvocationInterlockEXT</unmanaged>
+	EndInvocationInterlockEXT = 5365,
+	/// <unmanaged>SpvOpDemoteToHelperInvocation</unmanaged>
+	DemoteToHelperInvocation = 5380,
+	/// <unmanaged>SpvOpDemoteToHelperInvocationEXT</unmanaged>
+	DemoteToHelperInvocationEXT = 5380,
+	/// <unmanaged>SpvOpIsHelperInvocationEXT</unmanaged>
+	IsHelperInvocationEXT = 5381,
+	/// <unmanaged>SpvOpConvertUToImageNV</unmanaged>
+	ConvertUToImageNV = 5391,
+	/// <unmanaged>SpvOpConvertUToSamplerNV</unmanaged>
+	ConvertUToSamplerNV = 5392,
+	/// <unmanaged>SpvOpConvertImageToUNV</unmanaged>
+	ConvertImageToUNV = 5393,
+	/// <unmanaged>SpvOpConvertSamplerToUNV</unmanaged>
+	ConvertSamplerToUNV = 5394,
+	/// <unmanaged>SpvOpConvertUToSampledImageNV</unmanaged>
+	ConvertUToSampledImageNV = 5395,
+	/// <unmanaged>SpvOpConvertSampledImageToUNV</unmanaged>
+	ConvertSampledImageToUNV = 5396,
+	/// <unmanaged>SpvOpSamplerImageAddressingModeNV</unmanaged>
+	SamplerImageAddressingModeNV = 5397,
+	/// <unmanaged>SpvOpSubgroupShuffleINTEL</unmanaged>
+	SubgroupShuffleINTEL = 5571,
+	/// <unmanaged>SpvOpSubgroupShuffleDownINTEL</unmanaged>
+	SubgroupShuffleDownINTEL = 5572,
+	/// <unmanaged>SpvOpSubgroupShuffleUpINTEL</unmanaged>
+	SubgroupShuffleUpINTEL = 5573,
+	/// <unmanaged>SpvOpSubgroupShuffleXorINTEL</unmanaged>
+	SubgroupShuffleXorINTEL = 5574,
+	/// <unmanaged>SpvOpSubgroupBlockReadINTEL</unmanaged>
+	SubgroupBlockReadINTEL = 5575,
+	/// <unmanaged>SpvOpSubgroupBlockWriteINTEL</unmanaged>
+	SubgroupBlockWriteINTEL = 5576,
+	/// <unmanaged>SpvOpSubgroupImageBlockReadINTEL</unmanaged>
+	SubgroupImageBlockReadINTEL = 5577,
+	/// <unmanaged>SpvOpSubgroupImageBlockWriteINTEL</unmanaged>
+	SubgroupImageBlockWriteINTEL = 5578,
+	/// <unmanaged>SpvOpSubgroupImageMediaBlockReadINTEL</unmanaged>
+	SubgroupImageMediaBlockReadINTEL = 5580,
+	/// <unmanaged>SpvOpSubgroupImageMediaBlockWriteINTEL</unmanaged>
+	SubgroupImageMediaBlockWriteINTEL = 5581,
+	/// <unmanaged>SpvOpUCountLeadingZerosINTEL</unmanaged>
+	UCountLeadingZerosINTEL = 5585,
+	/// <unmanaged>SpvOpUCountTrailingZerosINTEL</unmanaged>
+	UCountTrailingZerosINTEL = 5586,
+	/// <unmanaged>SpvOpAbsISubINTEL</unmanaged>
+	AbsISubINTEL = 5587,
+	/// <unmanaged>SpvOpAbsUSubINTEL</unmanaged>
+	AbsUSubINTEL = 5588,
+	/// <unmanaged>SpvOpIAddSatINTEL</unmanaged>
+	IAddSatINTEL = 5589,
+	/// <unmanaged>SpvOpUAddSatINTEL</unmanaged>
+	UAddSatINTEL = 5590,
+	/// <unmanaged>SpvOpIAverageINTEL</unmanaged>
+	IAverageINTEL = 5591,
+	/// <unmanaged>SpvOpUAverageINTEL</unmanaged>
+	UAverageINTEL = 5592,
+	/// <unmanaged>SpvOpIAverageRoundedINTEL</unmanaged>
+	IAverageRoundedINTEL = 5593,
+	/// <unmanaged>SpvOpUAverageRoundedINTEL</unmanaged>
+	UAverageRoundedINTEL = 5594,
+	/// <unmanaged>SpvOpISubSatINTEL</unmanaged>
+	ISubSatINTEL = 5595,
+	/// <unmanaged>SpvOpUSubSatINTEL</unmanaged>
+	USubSatINTEL = 5596,
+	/// <unmanaged>SpvOpIMul32x16INTEL</unmanaged>
+	IMul32x16INTEL = 5597,
+	/// <unmanaged>SpvOpUMul32x16INTEL</unmanaged>
+	UMul32x16INTEL = 5598,
+	/// <unmanaged>SpvOpConstantFunctionPointerINTEL</unmanaged>
+	ConstantFunctionPointerINTEL = 5600,
+	/// <unmanaged>SpvOpFunctionPointerCallINTEL</unmanaged>
+	FunctionPointerCallINTEL = 5601,
+	/// <unmanaged>SpvOpAsmTargetINTEL</unmanaged>
+	AsmTargetINTEL = 5609,
+	/// <unmanaged>SpvOpAsmINTEL</unmanaged>
+	AsmINTEL = 5610,
+	/// <unmanaged>SpvOpAsmCallINTEL</unmanaged>
+	AsmCallINTEL = 5611,
+	/// <unmanaged>SpvOpAtomicFMinEXT</unmanaged>
+	AtomicFMinEXT = 5614,
+	/// <unmanaged>SpvOpAtomicFMaxEXT</unmanaged>
+	AtomicFMaxEXT = 5615,
+	/// <unmanaged>SpvOpAssumeTrueKHR</unmanaged>
+	AssumeTrueKHR = 5630,
+	/// <unmanaged>SpvOpExpectKHR</unmanaged>
+	ExpectKHR = 5631,
+	/// <unmanaged>SpvOpDecorateString</unmanaged>
+	DecorateString = 5632,
+	/// <unmanaged>SpvOpDecorateStringGOOGLE</unmanaged>
+	DecorateStringGOOGLE = 5632,
+	/// <unmanaged>SpvOpMemberDecorateString</unmanaged>
+	MemberDecorateString = 5633,
+	/// <unmanaged>SpvOpMemberDecorateStringGOOGLE</unmanaged>
+	MemberDecorateStringGOOGLE = 5633,
+	/// <unmanaged>SpvOpVmeImageINTEL</unmanaged>
+	VmeImageINTEL = 5699,
+	/// <unmanaged>SpvOpTypeVmeImageINTEL</unmanaged>
+	TypeVmeImageINTEL = 5700,
+	/// <unmanaged>SpvOpTypeAvcImePayloadINTEL</unmanaged>
+	TypeAvcImePayloadINTEL = 5701,
+	/// <unmanaged>SpvOpTypeAvcRefPayloadINTEL</unmanaged>
+	TypeAvcRefPayloadINTEL = 5702,
+	/// <unmanaged>SpvOpTypeAvcSicPayloadINTEL</unmanaged>
+	TypeAvcSicPayloadINTEL = 5703,
+	/// <unmanaged>SpvOpTypeAvcMcePayloadINTEL</unmanaged>
+	TypeAvcMcePayloadINTEL = 5704,
+	/// <unmanaged>SpvOpTypeAvcMceResultINTEL</unmanaged>
+	TypeAvcMceResultINTEL = 5705,
+	/// <unmanaged>SpvOpTypeAvcImeResultINTEL</unmanaged>
+	TypeAvcImeResultINTEL = 5706,
+	/// <unmanaged>SpvOpTypeAvcImeResultSingleReferenceStreamoutINTEL</unmanaged>
+	TypeAvcImeResultSingleReferenceStreamoutINTEL = 5707,
+	/// <unmanaged>SpvOpTypeAvcImeResultDualReferenceStreamoutINTEL</unmanaged>
+	TypeAvcImeResultDualReferenceStreamoutINTEL = 5708,
+	/// <unmanaged>SpvOpTypeAvcImeSingleReferenceStreaminINTEL</unmanaged>
+	TypeAvcImeSingleReferenceStreaminINTEL = 5709,
+	/// <unmanaged>SpvOpTypeAvcImeDualReferenceStreaminINTEL</unmanaged>
+	TypeAvcImeDualReferenceStreaminINTEL = 5710,
+	/// <unmanaged>SpvOpTypeAvcRefResultINTEL</unmanaged>
+	TypeAvcRefResultINTEL = 5711,
+	/// <unmanaged>SpvOpTypeAvcSicResultINTEL</unmanaged>
+	TypeAvcSicResultINTEL = 5712,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetDefaultInterBaseMultiReferencePenaltyINTEL</unmanaged>
+	SubgroupAvcMceGetDefaultInterBaseMultiReferencePenaltyINTEL = 5713,
+	/// <unmanaged>SpvOpSubgroupAvcMceSetInterBaseMultiReferencePenaltyINTEL</unmanaged>
+	SubgroupAvcMceSetInterBaseMultiReferencePenaltyINTEL = 5714,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetDefaultInterShapePenaltyINTEL</unmanaged>
+	SubgroupAvcMceGetDefaultInterShapePenaltyINTEL = 5715,
+	/// <unmanaged>SpvOpSubgroupAvcMceSetInterShapePenaltyINTEL</unmanaged>
+	SubgroupAvcMceSetInterShapePenaltyINTEL = 5716,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetDefaultInterDirectionPenaltyINTEL</unmanaged>
+	SubgroupAvcMceGetDefaultInterDirectionPenaltyINTEL = 5717,
+	/// <unmanaged>SpvOpSubgroupAvcMceSetInterDirectionPenaltyINTEL</unmanaged>
+	SubgroupAvcMceSetInterDirectionPenaltyINTEL = 5718,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetDefaultIntraLumaShapePenaltyINTEL</unmanaged>
+	SubgroupAvcMceGetDefaultIntraLumaShapePenaltyINTEL = 5719,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetDefaultInterMotionVectorCostTableINTEL</unmanaged>
+	SubgroupAvcMceGetDefaultInterMotionVectorCostTableINTEL = 5720,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetDefaultHighPenaltyCostTableINTEL</unmanaged>
+	SubgroupAvcMceGetDefaultHighPenaltyCostTableINTEL = 5721,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetDefaultMediumPenaltyCostTableINTEL</unmanaged>
+	SubgroupAvcMceGetDefaultMediumPenaltyCostTableINTEL = 5722,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetDefaultLowPenaltyCostTableINTEL</unmanaged>
+	SubgroupAvcMceGetDefaultLowPenaltyCostTableINTEL = 5723,
+	/// <unmanaged>SpvOpSubgroupAvcMceSetMotionVectorCostFunctionINTEL</unmanaged>
+	SubgroupAvcMceSetMotionVectorCostFunctionINTEL = 5724,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetDefaultIntraLumaModePenaltyINTEL</unmanaged>
+	SubgroupAvcMceGetDefaultIntraLumaModePenaltyINTEL = 5725,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetDefaultNonDcLumaIntraPenaltyINTEL</unmanaged>
+	SubgroupAvcMceGetDefaultNonDcLumaIntraPenaltyINTEL = 5726,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetDefaultIntraChromaModeBasePenaltyINTEL</unmanaged>
+	SubgroupAvcMceGetDefaultIntraChromaModeBasePenaltyINTEL = 5727,
+	/// <unmanaged>SpvOpSubgroupAvcMceSetAcOnlyHaarINTEL</unmanaged>
+	SubgroupAvcMceSetAcOnlyHaarINTEL = 5728,
+	/// <unmanaged>SpvOpSubgroupAvcMceSetSourceInterlacedFieldPolarityINTEL</unmanaged>
+	SubgroupAvcMceSetSourceInterlacedFieldPolarityINTEL = 5729,
+	/// <unmanaged>SpvOpSubgroupAvcMceSetSingleReferenceInterlacedFieldPolarityINTEL</unmanaged>
+	SubgroupAvcMceSetSingleReferenceInterlacedFieldPolarityINTEL = 5730,
+	/// <unmanaged>SpvOpSubgroupAvcMceSetDualReferenceInterlacedFieldPolaritiesINTEL</unmanaged>
+	SubgroupAvcMceSetDualReferenceInterlacedFieldPolaritiesINTEL = 5731,
+	/// <unmanaged>SpvOpSubgroupAvcMceConvertToImePayloadINTEL</unmanaged>
+	SubgroupAvcMceConvertToImePayloadINTEL = 5732,
+	/// <unmanaged>SpvOpSubgroupAvcMceConvertToImeResultINTEL</unmanaged>
+	SubgroupAvcMceConvertToImeResultINTEL = 5733,
+	/// <unmanaged>SpvOpSubgroupAvcMceConvertToRefPayloadINTEL</unmanaged>
+	SubgroupAvcMceConvertToRefPayloadINTEL = 5734,
+	/// <unmanaged>SpvOpSubgroupAvcMceConvertToRefResultINTEL</unmanaged>
+	SubgroupAvcMceConvertToRefResultINTEL = 5735,
+	/// <unmanaged>SpvOpSubgroupAvcMceConvertToSicPayloadINTEL</unmanaged>
+	SubgroupAvcMceConvertToSicPayloadINTEL = 5736,
+	/// <unmanaged>SpvOpSubgroupAvcMceConvertToSicResultINTEL</unmanaged>
+	SubgroupAvcMceConvertToSicResultINTEL = 5737,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetMotionVectorsINTEL</unmanaged>
+	SubgroupAvcMceGetMotionVectorsINTEL = 5738,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetInterDistortionsINTEL</unmanaged>
+	SubgroupAvcMceGetInterDistortionsINTEL = 5739,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetBestInterDistortionsINTEL</unmanaged>
+	SubgroupAvcMceGetBestInterDistortionsINTEL = 5740,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetInterMajorShapeINTEL</unmanaged>
+	SubgroupAvcMceGetInterMajorShapeINTEL = 5741,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetInterMinorShapeINTEL</unmanaged>
+	SubgroupAvcMceGetInterMinorShapeINTEL = 5742,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetInterDirectionsINTEL</unmanaged>
+	SubgroupAvcMceGetInterDirectionsINTEL = 5743,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetInterMotionVectorCountINTEL</unmanaged>
+	SubgroupAvcMceGetInterMotionVectorCountINTEL = 5744,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetInterReferenceIdsINTEL</unmanaged>
+	SubgroupAvcMceGetInterReferenceIdsINTEL = 5745,
+	/// <unmanaged>SpvOpSubgroupAvcMceGetInterReferenceInterlacedFieldPolaritiesINTEL</unmanaged>
+	SubgroupAvcMceGetInterReferenceInterlacedFieldPolaritiesINTEL = 5746,
+	/// <unmanaged>SpvOpSubgroupAvcImeInitializeINTEL</unmanaged>
+	SubgroupAvcImeInitializeINTEL = 5747,
+	/// <unmanaged>SpvOpSubgroupAvcImeSetSingleReferenceINTEL</unmanaged>
+	SubgroupAvcImeSetSingleReferenceINTEL = 5748,
+	/// <unmanaged>SpvOpSubgroupAvcImeSetDualReferenceINTEL</unmanaged>
+	SubgroupAvcImeSetDualReferenceINTEL = 5749,
+	/// <unmanaged>SpvOpSubgroupAvcImeRefWindowSizeINTEL</unmanaged>
+	SubgroupAvcImeRefWindowSizeINTEL = 5750,
+	/// <unmanaged>SpvOpSubgroupAvcImeAdjustRefOffsetINTEL</unmanaged>
+	SubgroupAvcImeAdjustRefOffsetINTEL = 5751,
+	/// <unmanaged>SpvOpSubgroupAvcImeConvertToMcePayloadINTEL</unmanaged>
+	SubgroupAvcImeConvertToMcePayloadINTEL = 5752,
+	/// <unmanaged>SpvOpSubgroupAvcImeSetMaxMotionVectorCountINTEL</unmanaged>
+	SubgroupAvcImeSetMaxMotionVectorCountINTEL = 5753,
+	/// <unmanaged>SpvOpSubgroupAvcImeSetUnidirectionalMixDisableINTEL</unmanaged>
+	SubgroupAvcImeSetUnidirectionalMixDisableINTEL = 5754,
+	/// <unmanaged>SpvOpSubgroupAvcImeSetEarlySearchTerminationThresholdINTEL</unmanaged>
+	SubgroupAvcImeSetEarlySearchTerminationThresholdINTEL = 5755,
+	/// <unmanaged>SpvOpSubgroupAvcImeSetWeightedSadINTEL</unmanaged>
+	SubgroupAvcImeSetWeightedSadINTEL = 5756,
+	/// <unmanaged>SpvOpSubgroupAvcImeEvaluateWithSingleReferenceINTEL</unmanaged>
+	SubgroupAvcImeEvaluateWithSingleReferenceINTEL = 5757,
+	/// <unmanaged>SpvOpSubgroupAvcImeEvaluateWithDualReferenceINTEL</unmanaged>
+	SubgroupAvcImeEvaluateWithDualReferenceINTEL = 5758,
+	/// <unmanaged>SpvOpSubgroupAvcImeEvaluateWithSingleReferenceStreaminINTEL</unmanaged>
+	SubgroupAvcImeEvaluateWithSingleReferenceStreaminINTEL = 5759,
+	/// <unmanaged>SpvOpSubgroupAvcImeEvaluateWithDualReferenceStreaminINTEL</unmanaged>
+	SubgroupAvcImeEvaluateWithDualReferenceStreaminINTEL = 5760,
+	/// <unmanaged>SpvOpSubgroupAvcImeEvaluateWithSingleReferenceStreamoutINTEL</unmanaged>
+	SubgroupAvcImeEvaluateWithSingleReferenceStreamoutINTEL = 5761,
+	/// <unmanaged>SpvOpSubgroupAvcImeEvaluateWithDualReferenceStreamoutINTEL</unmanaged>
+	SubgroupAvcImeEvaluateWithDualReferenceStreamoutINTEL = 5762,
+	/// <unmanaged>SpvOpSubgroupAvcImeEvaluateWithSingleReferenceStreaminoutINTEL</unmanaged>
+	SubgroupAvcImeEvaluateWithSingleReferenceStreaminoutINTEL = 5763,
+	/// <unmanaged>SpvOpSubgroupAvcImeEvaluateWithDualReferenceStreaminoutINTEL</unmanaged>
+	SubgroupAvcImeEvaluateWithDualReferenceStreaminoutINTEL = 5764,
+	/// <unmanaged>SpvOpSubgroupAvcImeConvertToMceResultINTEL</unmanaged>
+	SubgroupAvcImeConvertToMceResultINTEL = 5765,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetSingleReferenceStreaminINTEL</unmanaged>
+	SubgroupAvcImeGetSingleReferenceStreaminINTEL = 5766,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetDualReferenceStreaminINTEL</unmanaged>
+	SubgroupAvcImeGetDualReferenceStreaminINTEL = 5767,
+	/// <unmanaged>SpvOpSubgroupAvcImeStripSingleReferenceStreamoutINTEL</unmanaged>
+	SubgroupAvcImeStripSingleReferenceStreamoutINTEL = 5768,
+	/// <unmanaged>SpvOpSubgroupAvcImeStripDualReferenceStreamoutINTEL</unmanaged>
+	SubgroupAvcImeStripDualReferenceStreamoutINTEL = 5769,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetStreamoutSingleReferenceMajorShapeMotionVectorsINTEL</unmanaged>
+	SubgroupAvcImeGetStreamoutSingleReferenceMajorShapeMotionVectorsINTEL = 5770,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetStreamoutSingleReferenceMajorShapeDistortionsINTEL</unmanaged>
+	SubgroupAvcImeGetStreamoutSingleReferenceMajorShapeDistortionsINTEL = 5771,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetStreamoutSingleReferenceMajorShapeReferenceIdsINTEL</unmanaged>
+	SubgroupAvcImeGetStreamoutSingleReferenceMajorShapeReferenceIdsINTEL = 5772,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetStreamoutDualReferenceMajorShapeMotionVectorsINTEL</unmanaged>
+	SubgroupAvcImeGetStreamoutDualReferenceMajorShapeMotionVectorsINTEL = 5773,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetStreamoutDualReferenceMajorShapeDistortionsINTEL</unmanaged>
+	SubgroupAvcImeGetStreamoutDualReferenceMajorShapeDistortionsINTEL = 5774,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetStreamoutDualReferenceMajorShapeReferenceIdsINTEL</unmanaged>
+	SubgroupAvcImeGetStreamoutDualReferenceMajorShapeReferenceIdsINTEL = 5775,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetBorderReachedINTEL</unmanaged>
+	SubgroupAvcImeGetBorderReachedINTEL = 5776,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetTruncatedSearchIndicationINTEL</unmanaged>
+	SubgroupAvcImeGetTruncatedSearchIndicationINTEL = 5777,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetUnidirectionalEarlySearchTerminationINTEL</unmanaged>
+	SubgroupAvcImeGetUnidirectionalEarlySearchTerminationINTEL = 5778,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetWeightingPatternMinimumMotionVectorINTEL</unmanaged>
+	SubgroupAvcImeGetWeightingPatternMinimumMotionVectorINTEL = 5779,
+	/// <unmanaged>SpvOpSubgroupAvcImeGetWeightingPatternMinimumDistortionINTEL</unmanaged>
+	SubgroupAvcImeGetWeightingPatternMinimumDistortionINTEL = 5780,
+	/// <unmanaged>SpvOpSubgroupAvcFmeInitializeINTEL</unmanaged>
+	SubgroupAvcFmeInitializeINTEL = 5781,
+	/// <unmanaged>SpvOpSubgroupAvcBmeInitializeINTEL</unmanaged>
+	SubgroupAvcBmeInitializeINTEL = 5782,
+	/// <unmanaged>SpvOpSubgroupAvcRefConvertToMcePayloadINTEL</unmanaged>
+	SubgroupAvcRefConvertToMcePayloadINTEL = 5783,
+	/// <unmanaged>SpvOpSubgroupAvcRefSetBidirectionalMixDisableINTEL</unmanaged>
+	SubgroupAvcRefSetBidirectionalMixDisableINTEL = 5784,
+	/// <unmanaged>SpvOpSubgroupAvcRefSetBilinearFilterEnableINTEL</unmanaged>
+	SubgroupAvcRefSetBilinearFilterEnableINTEL = 5785,
+	/// <unmanaged>SpvOpSubgroupAvcRefEvaluateWithSingleReferenceINTEL</unmanaged>
+	SubgroupAvcRefEvaluateWithSingleReferenceINTEL = 5786,
+	/// <unmanaged>SpvOpSubgroupAvcRefEvaluateWithDualReferenceINTEL</unmanaged>
+	SubgroupAvcRefEvaluateWithDualReferenceINTEL = 5787,
+	/// <unmanaged>SpvOpSubgroupAvcRefEvaluateWithMultiReferenceINTEL</unmanaged>
+	SubgroupAvcRefEvaluateWithMultiReferenceINTEL = 5788,
+	/// <unmanaged>SpvOpSubgroupAvcRefEvaluateWithMultiReferenceInterlacedINTEL</unmanaged>
+	SubgroupAvcRefEvaluateWithMultiReferenceInterlacedINTEL = 5789,
+	/// <unmanaged>SpvOpSubgroupAvcRefConvertToMceResultINTEL</unmanaged>
+	SubgroupAvcRefConvertToMceResultINTEL = 5790,
+	/// <unmanaged>SpvOpSubgroupAvcSicInitializeINTEL</unmanaged>
+	SubgroupAvcSicInitializeINTEL = 5791,
+	/// <unmanaged>SpvOpSubgroupAvcSicConfigureSkcINTEL</unmanaged>
+	SubgroupAvcSicConfigureSkcINTEL = 5792,
+	/// <unmanaged>SpvOpSubgroupAvcSicConfigureIpeLumaINTEL</unmanaged>
+	SubgroupAvcSicConfigureIpeLumaINTEL = 5793,
+	/// <unmanaged>SpvOpSubgroupAvcSicConfigureIpeLumaChromaINTEL</unmanaged>
+	SubgroupAvcSicConfigureIpeLumaChromaINTEL = 5794,
+	/// <unmanaged>SpvOpSubgroupAvcSicGetMotionVectorMaskINTEL</unmanaged>
+	SubgroupAvcSicGetMotionVectorMaskINTEL = 5795,
+	/// <unmanaged>SpvOpSubgroupAvcSicConvertToMcePayloadINTEL</unmanaged>
+	SubgroupAvcSicConvertToMcePayloadINTEL = 5796,
+	/// <unmanaged>SpvOpSubgroupAvcSicSetIntraLumaShapePenaltyINTEL</unmanaged>
+	SubgroupAvcSicSetIntraLumaShapePenaltyINTEL = 5797,
+	/// <unmanaged>SpvOpSubgroupAvcSicSetIntraLumaModeCostFunctionINTEL</unmanaged>
+	SubgroupAvcSicSetIntraLumaModeCostFunctionINTEL = 5798,
+	/// <unmanaged>SpvOpSubgroupAvcSicSetIntraChromaModeCostFunctionINTEL</unmanaged>
+	SubgroupAvcSicSetIntraChromaModeCostFunctionINTEL = 5799,
+	/// <unmanaged>SpvOpSubgroupAvcSicSetBilinearFilterEnableINTEL</unmanaged>
+	SubgroupAvcSicSetBilinearFilterEnableINTEL = 5800,
+	/// <unmanaged>SpvOpSubgroupAvcSicSetSkcForwardTransformEnableINTEL</unmanaged>
+	SubgroupAvcSicSetSkcForwardTransformEnableINTEL = 5801,
+	/// <unmanaged>SpvOpSubgroupAvcSicSetBlockBasedRawSkipSadINTEL</unmanaged>
+	SubgroupAvcSicSetBlockBasedRawSkipSadINTEL = 5802,
+	/// <unmanaged>SpvOpSubgroupAvcSicEvaluateIpeINTEL</unmanaged>
+	SubgroupAvcSicEvaluateIpeINTEL = 5803,
+	/// <unmanaged>SpvOpSubgroupAvcSicEvaluateWithSingleReferenceINTEL</unmanaged>
+	SubgroupAvcSicEvaluateWithSingleReferenceINTEL = 5804,
+	/// <unmanaged>SpvOpSubgroupAvcSicEvaluateWithDualReferenceINTEL</unmanaged>
+	SubgroupAvcSicEvaluateWithDualReferenceINTEL = 5805,
+	/// <unmanaged>SpvOpSubgroupAvcSicEvaluateWithMultiReferenceINTEL</unmanaged>
+	SubgroupAvcSicEvaluateWithMultiReferenceINTEL = 5806,
+	/// <unmanaged>SpvOpSubgroupAvcSicEvaluateWithMultiReferenceInterlacedINTEL</unmanaged>
+	SubgroupAvcSicEvaluateWithMultiReferenceInterlacedINTEL = 5807,
+	/// <unmanaged>SpvOpSubgroupAvcSicConvertToMceResultINTEL</unmanaged>
+	SubgroupAvcSicConvertToMceResultINTEL = 5808,
+	/// <unmanaged>SpvOpSubgroupAvcSicGetIpeLumaShapeINTEL</unmanaged>
+	SubgroupAvcSicGetIpeLumaShapeINTEL = 5809,
+	/// <unmanaged>SpvOpSubgroupAvcSicGetBestIpeLumaDistortionINTEL</unmanaged>
+	SubgroupAvcSicGetBestIpeLumaDistortionINTEL = 5810,
+	/// <unmanaged>SpvOpSubgroupAvcSicGetBestIpeChromaDistortionINTEL</unmanaged>
+	SubgroupAvcSicGetBestIpeChromaDistortionINTEL = 5811,
+	/// <unmanaged>SpvOpSubgroupAvcSicGetPackedIpeLumaModesINTEL</unmanaged>
+	SubgroupAvcSicGetPackedIpeLumaModesINTEL = 5812,
+	/// <unmanaged>SpvOpSubgroupAvcSicGetIpeChromaModeINTEL</unmanaged>
+	SubgroupAvcSicGetIpeChromaModeINTEL = 5813,
+	/// <unmanaged>SpvOpSubgroupAvcSicGetPackedSkcLumaCountThresholdINTEL</unmanaged>
+	SubgroupAvcSicGetPackedSkcLumaCountThresholdINTEL = 5814,
+	/// <unmanaged>SpvOpSubgroupAvcSicGetPackedSkcLumaSumThresholdINTEL</unmanaged>
+	SubgroupAvcSicGetPackedSkcLumaSumThresholdINTEL = 5815,
+	/// <unmanaged>SpvOpSubgroupAvcSicGetInterRawSadsINTEL</unmanaged>
+	SubgroupAvcSicGetInterRawSadsINTEL = 5816,
+	/// <unmanaged>SpvOpVariableLengthArrayINTEL</unmanaged>
+	VariableLengthArrayINTEL = 5818,
+	/// <unmanaged>SpvOpSaveMemoryINTEL</unmanaged>
+	SaveMemoryINTEL = 5819,
+	/// <unmanaged>SpvOpRestoreMemoryINTEL</unmanaged>
+	RestoreMemoryINTEL = 5820,
+	/// <unmanaged>SpvOpArbitraryFloatSinCosPiINTEL</unmanaged>
+	ArbitraryFloatSinCosPiINTEL = 5840,
+	/// <unmanaged>SpvOpArbitraryFloatCastINTEL</unmanaged>
+	ArbitraryFloatCastINTEL = 5841,
+	/// <unmanaged>SpvOpArbitraryFloatCastFromIntINTEL</unmanaged>
+	ArbitraryFloatCastFromIntINTEL = 5842,
+	/// <unmanaged>SpvOpArbitraryFloatCastToIntINTEL</unmanaged>
+	ArbitraryFloatCastToIntINTEL = 5843,
+	/// <unmanaged>SpvOpArbitraryFloatAddINTEL</unmanaged>
+	ArbitraryFloatAddINTEL = 5846,
+	/// <unmanaged>SpvOpArbitraryFloatSubINTEL</unmanaged>
+	ArbitraryFloatSubINTEL = 5847,
+	/// <unmanaged>SpvOpArbitraryFloatMulINTEL</unmanaged>
+	ArbitraryFloatMulINTEL = 5848,
+	/// <unmanaged>SpvOpArbitraryFloatDivINTEL</unmanaged>
+	ArbitraryFloatDivINTEL = 5849,
+	/// <unmanaged>SpvOpArbitraryFloatGTINTEL</unmanaged>
+	ArbitraryFloatGTINTEL = 5850,
+	/// <unmanaged>SpvOpArbitraryFloatGEINTEL</unmanaged>
+	ArbitraryFloatGEINTEL = 5851,
+	/// <unmanaged>SpvOpArbitraryFloatLTINTEL</unmanaged>
+	ArbitraryFloatLTINTEL = 5852,
+	/// <unmanaged>SpvOpArbitraryFloatLEINTEL</unmanaged>
+	ArbitraryFloatLEINTEL = 5853,
+	/// <unmanaged>SpvOpArbitraryFloatEQINTEL</unmanaged>
+	ArbitraryFloatEQINTEL = 5854,
+	/// <unmanaged>SpvOpArbitraryFloatRecipINTEL</unmanaged>
+	ArbitraryFloatRecipINTEL = 5855,
+	/// <unmanaged>SpvOpArbitraryFloatRSqrtINTEL</unmanaged>
+	ArbitraryFloatRSqrtINTEL = 5856,
+	/// <unmanaged>SpvOpArbitraryFloatCbrtINTEL</unmanaged>
+	ArbitraryFloatCbrtINTEL = 5857,
+	/// <unmanaged>SpvOpArbitraryFloatHypotINTEL</unmanaged>
+	ArbitraryFloatHypotINTEL = 5858,
+	/// <unmanaged>SpvOpArbitraryFloatSqrtINTEL</unmanaged>
+	ArbitraryFloatSqrtINTEL = 5859,
+	/// <unmanaged>SpvOpArbitraryFloatLogINTEL</unmanaged>
+	ArbitraryFloatLogINTEL = 5860,
+	/// <unmanaged>SpvOpArbitraryFloatLog2INTEL</unmanaged>
+	ArbitraryFloatLog2INTEL = 5861,
+	/// <unmanaged>SpvOpArbitraryFloatLog10INTEL</unmanaged>
+	ArbitraryFloatLog10INTEL = 5862,
+	/// <unmanaged>SpvOpArbitraryFloatLog1pINTEL</unmanaged>
+	ArbitraryFloatLog1pINTEL = 5863,
+	/// <unmanaged>SpvOpArbitraryFloatExpINTEL</unmanaged>
+	ArbitraryFloatExpINTEL = 5864,
+	/// <unmanaged>SpvOpArbitraryFloatExp2INTEL</unmanaged>
+	ArbitraryFloatExp2INTEL = 5865,
+	/// <unmanaged>SpvOpArbitraryFloatExp10INTEL</unmanaged>
+	ArbitraryFloatExp10INTEL = 5866,
+	/// <unmanaged>SpvOpArbitraryFloatExpm1INTEL</unmanaged>
+	ArbitraryFloatExpm1INTEL = 5867,
+	/// <unmanaged>SpvOpArbitraryFloatSinINTEL</unmanaged>
+	ArbitraryFloatSinINTEL = 5868,
+	/// <unmanaged>SpvOpArbitraryFloatCosINTEL</unmanaged>
+	ArbitraryFloatCosINTEL = 5869,
+	/// <unmanaged>SpvOpArbitraryFloatSinCosINTEL</unmanaged>
+	ArbitraryFloatSinCosINTEL = 5870,
+	/// <unmanaged>SpvOpArbitraryFloatSinPiINTEL</unmanaged>
+	ArbitraryFloatSinPiINTEL = 5871,
+	/// <unmanaged>SpvOpArbitraryFloatCosPiINTEL</unmanaged>
+	ArbitraryFloatCosPiINTEL = 5872,
+	/// <unmanaged>SpvOpArbitraryFloatASinINTEL</unmanaged>
+	ArbitraryFloatASinINTEL = 5873,
+	/// <unmanaged>SpvOpArbitraryFloatASinPiINTEL</unmanaged>
+	ArbitraryFloatASinPiINTEL = 5874,
+	/// <unmanaged>SpvOpArbitraryFloatACosINTEL</unmanaged>
+	ArbitraryFloatACosINTEL = 5875,
+	/// <unmanaged>SpvOpArbitraryFloatACosPiINTEL</unmanaged>
+	ArbitraryFloatACosPiINTEL = 5876,
+	/// <unmanaged>SpvOpArbitraryFloatATanINTEL</unmanaged>
+	ArbitraryFloatATanINTEL = 5877,
+	/// <unmanaged>SpvOpArbitraryFloatATanPiINTEL</unmanaged>
+	ArbitraryFloatATanPiINTEL = 5878,
+	/// <unmanaged>SpvOpArbitraryFloatATan2INTEL</unmanaged>
+	ArbitraryFloatATan2INTEL = 5879,
+	/// <unmanaged>SpvOpArbitraryFloatPowINTEL</unmanaged>
+	ArbitraryFloatPowINTEL = 5880,
+	/// <unmanaged>SpvOpArbitraryFloatPowRINTEL</unmanaged>
+	ArbitraryFloatPowRINTEL = 5881,
+	/// <unmanaged>SpvOpArbitraryFloatPowNINTEL</unmanaged>
+	ArbitraryFloatPowNINTEL = 5882,
+	/// <unmanaged>SpvOpLoopControlINTEL</unmanaged>
+	LoopControlINTEL = 5887,
+	/// <unmanaged>SpvOpAliasDomainDeclINTEL</unmanaged>
+	AliasDomainDeclINTEL = 5911,
+	/// <unmanaged>SpvOpAliasScopeDeclINTEL</unmanaged>
+	AliasScopeDeclINTEL = 5912,
+	/// <unmanaged>SpvOpAliasScopeListDeclINTEL</unmanaged>
+	AliasScopeListDeclINTEL = 5913,
+	/// <unmanaged>SpvOpFixedSqrtINTEL</unmanaged>
+	FixedSqrtINTEL = 5923,
+	/// <unmanaged>SpvOpFixedRecipINTEL</unmanaged>
+	FixedRecipINTEL = 5924,
+	/// <unmanaged>SpvOpFixedRsqrtINTEL</unmanaged>
+	FixedRsqrtINTEL = 5925,
+	/// <unmanaged>SpvOpFixedSinINTEL</unmanaged>
+	FixedSinINTEL = 5926,
+	/// <unmanaged>SpvOpFixedCosINTEL</unmanaged>
+	FixedCosINTEL = 5927,
+	/// <unmanaged>SpvOpFixedSinCosINTEL</unmanaged>
+	FixedSinCosINTEL = 5928,
+	/// <unmanaged>SpvOpFixedSinPiINTEL</unmanaged>
+	FixedSinPiINTEL = 5929,
+	/// <unmanaged>SpvOpFixedCosPiINTEL</unmanaged>
+	FixedCosPiINTEL = 5930,
+	/// <unmanaged>SpvOpFixedSinCosPiINTEL</unmanaged>
+	FixedSinCosPiINTEL = 5931,
+	/// <unmanaged>SpvOpFixedLogINTEL</unmanaged>
+	FixedLogINTEL = 5932,
+	/// <unmanaged>SpvOpFixedExpINTEL</unmanaged>
+	FixedExpINTEL = 5933,
+	/// <unmanaged>SpvOpPtrCastToCrossWorkgroupINTEL</unmanaged>
+	PtrCastToCrossWorkgroupINTEL = 5934,
+	/// <unmanaged>SpvOpCrossWorkgroupCastToPtrINTEL</unmanaged>
+	CrossWorkgroupCastToPtrINTEL = 5938,
+	/// <unmanaged>SpvOpReadPipeBlockingINTEL</unmanaged>
+	ReadPipeBlockingINTEL = 5946,
+	/// <unmanaged>SpvOpWritePipeBlockingINTEL</unmanaged>
+	WritePipeBlockingINTEL = 5947,
+	/// <unmanaged>SpvOpFPGARegINTEL</unmanaged>
+	FPGARegINTEL = 5949,
+	/// <unmanaged>SpvOpRayQueryGetRayTMinKHR</unmanaged>
+	RayQueryGetRayTMinKHR = 6016,
+	/// <unmanaged>SpvOpRayQueryGetRayFlagsKHR</unmanaged>
+	RayQueryGetRayFlagsKHR = 6017,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionTKHR</unmanaged>
+	RayQueryGetIntersectionTKHR = 6018,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionInstanceCustomIndexKHR</unmanaged>
+	RayQueryGetIntersectionInstanceCustomIndexKHR = 6019,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionInstanceIdKHR</unmanaged>
+	RayQueryGetIntersectionInstanceIdKHR = 6020,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionInstanceShaderBindingTableRecordOffsetKHR</unmanaged>
+	RayQueryGetIntersectionInstanceShaderBindingTableRecordOffsetKHR = 6021,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionGeometryIndexKHR</unmanaged>
+	RayQueryGetIntersectionGeometryIndexKHR = 6022,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionPrimitiveIndexKHR</unmanaged>
+	RayQueryGetIntersectionPrimitiveIndexKHR = 6023,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionBarycentricsKHR</unmanaged>
+	RayQueryGetIntersectionBarycentricsKHR = 6024,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionFrontFaceKHR</unmanaged>
+	RayQueryGetIntersectionFrontFaceKHR = 6025,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionCandidateAABBOpaqueKHR</unmanaged>
+	RayQueryGetIntersectionCandidateAABBOpaqueKHR = 6026,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionObjectRayDirectionKHR</unmanaged>
+	RayQueryGetIntersectionObjectRayDirectionKHR = 6027,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionObjectRayOriginKHR</unmanaged>
+	RayQueryGetIntersectionObjectRayOriginKHR = 6028,
+	/// <unmanaged>SpvOpRayQueryGetWorldRayDirectionKHR</unmanaged>
+	RayQueryGetWorldRayDirectionKHR = 6029,
+	/// <unmanaged>SpvOpRayQueryGetWorldRayOriginKHR</unmanaged>
+	RayQueryGetWorldRayOriginKHR = 6030,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionObjectToWorldKHR</unmanaged>
+	RayQueryGetIntersectionObjectToWorldKHR = 6031,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionWorldToObjectKHR</unmanaged>
+	RayQueryGetIntersectionWorldToObjectKHR = 6032,
+	/// <unmanaged>SpvOpAtomicFAddEXT</unmanaged>
+	AtomicFAddEXT = 6035,
+	/// <unmanaged>SpvOpTypeBufferSurfaceINTEL</unmanaged>
+	TypeBufferSurfaceINTEL = 6086,
+	/// <unmanaged>SpvOpTypeStructContinuedINTEL</unmanaged>
+	TypeStructContinuedINTEL = 6090,
+	/// <unmanaged>SpvOpConstantCompositeContinuedINTEL</unmanaged>
+	ConstantCompositeContinuedINTEL = 6091,
+	/// <unmanaged>SpvOpSpecConstantCompositeContinuedINTEL</unmanaged>
+	SpecConstantCompositeContinuedINTEL = 6092,
+	/// <unmanaged>SpvOpControlBarrierArriveINTEL</unmanaged>
+	ControlBarrierArriveINTEL = 6142,
+	/// <unmanaged>SpvOpControlBarrierWaitINTEL</unmanaged>
+	ControlBarrierWaitINTEL = 6143,
+	/// <unmanaged>SpvOpGroupIMulKHR</unmanaged>
+	GroupIMulKHR = 6401,
+	/// <unmanaged>SpvOpGroupFMulKHR</unmanaged>
+	GroupFMulKHR = 6402,
+	/// <unmanaged>SpvOpGroupBitwiseAndKHR</unmanaged>
+	GroupBitwiseAndKHR = 6403,
+	/// <unmanaged>SpvOpGroupBitwiseOrKHR</unmanaged>
+	GroupBitwiseOrKHR = 6404,
+	/// <unmanaged>SpvOpGroupBitwiseXorKHR</unmanaged>
+	GroupBitwiseXorKHR = 6405,
+	/// <unmanaged>SpvOpGroupLogicalAndKHR</unmanaged>
+	GroupLogicalAndKHR = 6406,
+	/// <unmanaged>SpvOpGroupLogicalOrKHR</unmanaged>
+	GroupLogicalOrKHR = 6407,
+	/// <unmanaged>SpvOpGroupLogicalXorKHR</unmanaged>
+	GroupLogicalXorKHR = 6408,
+}
+
 public enum spvc_result
 {
 	/// <unmanaged>SPVC_SUCCESS</unmanaged>
@@ -519,6 +4041,12 @@ public enum spvc_compiler_option
 	SPVC_COMPILER_OPTION_MSL_ARGUMENT_BUFFERS_TIER = 134217812,
 	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_SAMPLE_DREF_LOD_ARRAY_AS_GRAD</unmanaged>
 	SPVC_COMPILER_OPTION_MSL_SAMPLE_DREF_LOD_ARRAY_AS_GRAD = 134217813,
+	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_READWRITE_TEXTURE_FENCES</unmanaged>
+	SPVC_COMPILER_OPTION_MSL_READWRITE_TEXTURE_FENCES = 134217814,
+	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_REPLACE_RECURSIVE_INPUTS</unmanaged>
+	SPVC_COMPILER_OPTION_MSL_REPLACE_RECURSIVE_INPUTS = 134217815,
+	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_AGX_MANUAL_CUBE_GRAD_FIXUP</unmanaged>
+	SPVC_COMPILER_OPTION_MSL_AGX_MANUAL_CUBE_GRAD_FIXUP = 134217816,
 }
 
 [Flags]
