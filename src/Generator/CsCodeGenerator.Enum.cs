@@ -167,6 +167,17 @@ public static partial class CsCodeGenerator
         { "VkCopyAccelerationStructureModeNVX", "VK_COPY_ACCELERATION_STRUCTURE_MODE" },
         { "VkOpticalFlowPerformanceLevelNV", "VK_OPTICAL_FLOW_PERFORMANCE_LEVEL" },
         { "VkOpticalFlowSessionBindingPointNV", "VK_OPTICAL_FLOW_SESSION_BINDING_POINT" },
+        { "StdVideoAV1Profile", "STD_VIDEO_AV1_PROFILE" },
+        { "StdVideoAV1Level", "STD_VIDEO_AV1" },
+        { "StdVideoAV1FrameType", "STD_VIDEO_AV1_FRAME_TYPE" },
+        { "StdVideoAV1ReferenceName", "STD_VIDEO_AV1_REFERENCE_NAME" },
+        { "StdVideoAV1InterpolationFilter", "STD_VIDEO_AV1_INTERPOLATION_FILTER" },
+        { "StdVideoAV1TxMode", "STD_VIDEO_AV1_TX_MODE" },
+        { "StdVideoAV1FrameRestorationType", "STD_VIDEO_AV1_FRAME_RESTORATION_TYPE" },
+        { "StdVideoAV1ColorPrimaries", "STD_VIDEO_AV1_COLOR_PRIMARIES" },
+        { "StdVideoAV1TransferCharacteristics", "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS" },
+        { "StdVideoAV1MatrixCoefficients", "STD_VIDEO_AV1_MATRIX_COEFFICIENTS" },
+        { "StdVideoAV1ChromaSamplePosition", "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION" },
 
         //
         { "spvc_result", "SPVC_ERROR" },
@@ -225,6 +236,7 @@ public static partial class CsCodeGenerator
         "json",
         "msft",
         "img",
+        "av1",
     };
 
     private static readonly HashSet<string> s_enumConstants = [];

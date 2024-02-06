@@ -5,7 +5,7 @@
     <PackageVersion Include="CppAst" Version="0.15.0" />
 
     <!-- Samples -->
-    <PackageVersion Include="Alimer.Bindings.SDL" Version="3.4.4" />
+    <PackageVersion Include="Alimer.Bindings.SDL" Version="3.4.7" />
 
     <!-- Tests -->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />

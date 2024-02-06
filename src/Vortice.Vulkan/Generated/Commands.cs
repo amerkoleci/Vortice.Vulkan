@@ -2126,6 +2126,18 @@ unsafe partial class Vulkan
 		vkCmdSetFragmentShadingRateKHR_ptr(commandBuffer, fragmentSize, combinerOps);
 	}
 
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfoKHR*, void> vkCmdSetRenderingAttachmentLocationsKHR_ptr;
+	public static void vkCmdSetRenderingAttachmentLocationsKHR(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfoKHR* locationInfo)
+	{
+		vkCmdSetRenderingAttachmentLocationsKHR_ptr(commandBuffer, locationInfo);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfoKHR*, void> vkCmdSetRenderingInputAttachmentIndicesKHR_ptr;
+	public static void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfoKHR* locationInfo)
+	{
+		vkCmdSetRenderingInputAttachmentIndicesKHR_ptr(commandBuffer, locationInfo);
+	}
+
 	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, ulong, VkResult> vkWaitForPresentKHR_ptr;
 	public static VkResult vkWaitForPresentKHR(VkDevice device, VkSwapchainKHR swapchain, ulong presentId, ulong timeout)
 	{
@@ -2364,6 +2376,12 @@ unsafe partial class Vulkan
 	public static VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeMatrixPropertiesKHR* properties)
 	{
 		return vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr(physicalDevice, propertyCount, properties);
+	}
+
+	private static delegate* unmanaged<VkCommandBuffer, uint, ushort, void> vkCmdSetLineStippleKHR_ptr;
+	public static void vkCmdSetLineStippleKHR(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern)
+	{
+		vkCmdSetLineStippleKHR_ptr(commandBuffer, lineStippleFactor, lineStipplePattern);
 	}
 
 	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr;
@@ -3572,12 +3590,6 @@ unsafe partial class Vulkan
 		return vkGetPipelineIndirectDeviceAddressNV_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkTessellationDomainOrigin, void> vkCmdSetTessellationDomainOriginEXT_ptr;
-	public static void vkCmdSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin)
-	{
-		vkCmdSetTessellationDomainOriginEXT_ptr(commandBuffer, domainOrigin);
-	}
-
 	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthClampEnableEXT_ptr;
 	public static void vkCmdSetDepthClampEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClampEnable)
 	{
@@ -3638,6 +3650,12 @@ unsafe partial class Vulkan
 		vkCmdSetColorWriteMaskEXT_ptr(commandBuffer, firstAttachment, attachmentCount, colorWriteMasks);
 	}
 
+	private static delegate* unmanaged<VkCommandBuffer, VkTessellationDomainOrigin, void> vkCmdSetTessellationDomainOriginEXT_ptr;
+	public static void vkCmdSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin)
+	{
+		vkCmdSetTessellationDomainOriginEXT_ptr(commandBuffer, domainOrigin);
+	}
+
 	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetRasterizationStreamEXT_ptr;
 	public static void vkCmdSetRasterizationStreamEXT(VkCommandBuffer commandBuffer, uint rasterizationStream)
 	{
@@ -3680,8 +3698,8 @@ unsafe partial class Vulkan
 		vkCmdSetProvokingVertexModeEXT_ptr(commandBuffer, provokingVertexMode);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkLineRasterizationModeEXT, void> vkCmdSetLineRasterizationModeEXT_ptr;
-	public static void vkCmdSetLineRasterizationModeEXT(VkCommandBuffer commandBuffer, VkLineRasterizationModeEXT lineRasterizationMode)
+	private static delegate* unmanaged<VkCommandBuffer, VkLineRasterizationModeKHR, void> vkCmdSetLineRasterizationModeEXT_ptr;
+	public static void vkCmdSetLineRasterizationModeEXT(VkCommandBuffer commandBuffer, VkLineRasterizationModeKHR lineRasterizationMode)
 	{
 		vkCmdSetLineRasterizationModeEXT_ptr(commandBuffer, lineRasterizationMode);
 	}
@@ -4527,6 +4545,8 @@ unsafe partial class Vulkan
 		vkWaitSemaphoresKHR_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult>) load(context, nameof(vkWaitSemaphoresKHR));
 		vkSignalSemaphoreKHR_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult>) load(context, nameof(vkSignalSemaphoreKHR));
 		vkCmdSetFragmentShadingRateKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkExtent2D*, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateKHR));
+		vkCmdSetRenderingAttachmentLocationsKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfoKHR*, void>) load(context, nameof(vkCmdSetRenderingAttachmentLocationsKHR));
+		vkCmdSetRenderingInputAttachmentIndicesKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfoKHR*, void>) load(context, nameof(vkCmdSetRenderingInputAttachmentIndicesKHR));
 		vkWaitForPresentKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, ulong, VkResult>) load(context, nameof(vkWaitForPresentKHR));
 		vkGetBufferDeviceAddressKHR_ptr = (delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferDeviceAddressKHR));
 		vkGetBufferOpaqueCaptureAddressKHR_ptr = (delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferOpaqueCaptureAddressKHR));
@@ -4565,6 +4585,7 @@ unsafe partial class Vulkan
 		vkGetRenderingAreaGranularityKHR_ptr = (delegate* unmanaged<VkDevice, VkRenderingAreaInfoKHR*, VkExtent2D*, void>) load(context, nameof(vkGetRenderingAreaGranularityKHR));
 		vkGetDeviceImageSubresourceLayoutKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfoKHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetDeviceImageSubresourceLayoutKHR));
 		vkGetImageSubresourceLayout2KHR_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetImageSubresourceLayout2KHR));
+		vkCmdSetLineStippleKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, ushort, void>) load(context, nameof(vkCmdSetLineStippleKHR));
 		vkGetCalibratedTimestampsKHR_ptr = (delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult>) load(context, nameof(vkGetCalibratedTimestampsKHR));
 		vkCmdBindDescriptorSets2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfoKHR*, void>) load(context, nameof(vkCmdBindDescriptorSets2KHR));
 		vkCmdPushConstants2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushConstantsInfoKHR*, void>) load(context, nameof(vkCmdPushConstants2KHR));
@@ -4739,7 +4760,6 @@ unsafe partial class Vulkan
 		vkGetPipelineIndirectMemoryRequirementsNV_ptr = (delegate* unmanaged<VkDevice, VkComputePipelineCreateInfo*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetPipelineIndirectMemoryRequirementsNV));
 		vkCmdUpdatePipelineIndirectBufferNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void>) load(context, nameof(vkCmdUpdatePipelineIndirectBufferNV));
 		vkGetPipelineIndirectDeviceAddressNV_ptr = (delegate* unmanaged<VkDevice, VkPipelineIndirectDeviceAddressInfoNV*, ulong>) load(context, nameof(vkGetPipelineIndirectDeviceAddressNV));
-		vkCmdSetTessellationDomainOriginEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkTessellationDomainOrigin, void>) load(context, nameof(vkCmdSetTessellationDomainOriginEXT));
 		vkCmdSetDepthClampEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthClampEnableEXT));
 		vkCmdSetPolygonModeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkPolygonMode, void>) load(context, nameof(vkCmdSetPolygonModeEXT));
 		vkCmdSetRasterizationSamplesEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkSampleCountFlags, void>) load(context, nameof(vkCmdSetRasterizationSamplesEXT));
@@ -4750,6 +4770,7 @@ unsafe partial class Vulkan
 		vkCmdSetColorBlendEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkBool32*, void>) load(context, nameof(vkCmdSetColorBlendEnableEXT));
 		vkCmdSetColorBlendEquationEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkColorBlendEquationEXT*, void>) load(context, nameof(vkCmdSetColorBlendEquationEXT));
 		vkCmdSetColorWriteMaskEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkColorComponentFlags*, void>) load(context, nameof(vkCmdSetColorWriteMaskEXT));
+		vkCmdSetTessellationDomainOriginEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkTessellationDomainOrigin, void>) load(context, nameof(vkCmdSetTessellationDomainOriginEXT));
 		vkCmdSetRasterizationStreamEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetRasterizationStreamEXT));
 		vkCmdSetConservativeRasterizationModeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkConservativeRasterizationModeEXT, void>) load(context, nameof(vkCmdSetConservativeRasterizationModeEXT));
 		vkCmdSetExtraPrimitiveOverestimationSizeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, float, void>) load(context, nameof(vkCmdSetExtraPrimitiveOverestimationSizeEXT));
@@ -4757,7 +4778,7 @@ unsafe partial class Vulkan
 		vkCmdSetSampleLocationsEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetSampleLocationsEnableEXT));
 		vkCmdSetColorBlendAdvancedEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkColorBlendAdvancedEXT*, void>) load(context, nameof(vkCmdSetColorBlendAdvancedEXT));
 		vkCmdSetProvokingVertexModeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkProvokingVertexModeEXT, void>) load(context, nameof(vkCmdSetProvokingVertexModeEXT));
-		vkCmdSetLineRasterizationModeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkLineRasterizationModeEXT, void>) load(context, nameof(vkCmdSetLineRasterizationModeEXT));
+		vkCmdSetLineRasterizationModeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkLineRasterizationModeKHR, void>) load(context, nameof(vkCmdSetLineRasterizationModeEXT));
 		vkCmdSetLineStippleEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetLineStippleEnableEXT));
 		vkCmdSetDepthClipNegativeOneToOneEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthClipNegativeOneToOneEXT));
 		vkCmdSetViewportWScalingEnableNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetViewportWScalingEnableNV));

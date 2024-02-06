@@ -11,7 +11,7 @@ public static partial class CsCodeGenerator
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "VkFormatUtils.cs"),
             false,
             _options.Namespace,
-            new string[] { }
+            []
             );
 
         using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))

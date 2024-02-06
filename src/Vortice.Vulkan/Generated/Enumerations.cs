@@ -1210,8 +1210,16 @@ public enum VkStructureType
 	PhysicalDeviceShaderCoreProperties2AMD = 1000227000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD</unmanaged>
 	PhysicalDeviceCoherentMemoryFeaturesAMD = 1000229000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES_KHR</unmanaged>
+	PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR = 1000232000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO_KHR</unmanaged>
+	RenderingAttachmentLocationInfoKHR = 1000232001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO_KHR</unmanaged>
+	RenderingInputAttachmentIndexInfoKHR = 1000232002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT</unmanaged>
 	PhysicalDeviceShaderImageAtomicInt64FeaturesEXT = 1000234000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_QUAD_CONTROL_FEATURES_KHR</unmanaged>
+	PhysicalDeviceShaderQuadControlFeaturesKHR = 1000235000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT</unmanaged>
 	PhysicalDeviceMemoryBudgetPropertiesEXT = 1000237000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT</unmanaged>
@@ -1260,16 +1268,8 @@ public enum VkStructureType
 	SurfaceFullScreenExclusiveWin32InfoEXT = 1000255001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT</unmanaged>
 	HeadlessSurfaceCreateInfoEXT = 1000256000,
-	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES_EXT</unmanaged>
-	PhysicalDeviceLineRasterizationFeaturesEXT = 1000259000,
-	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_EXT</unmanaged>
-	PipelineRasterizationLineStateCreateInfoEXT = 1000259001,
-	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES_EXT</unmanaged>
-	PhysicalDeviceLineRasterizationPropertiesEXT = 1000259002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT</unmanaged>
 	PhysicalDeviceShaderAtomicFloatFeaturesEXT = 1000260000,
-	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_EXT</unmanaged>
-	PhysicalDeviceIndexTypeUint8FeaturesEXT = 1000265000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT</unmanaged>
 	PhysicalDeviceExtendedDynamicStateFeaturesEXT = 1000267000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR</unmanaged>
@@ -1680,6 +1680,8 @@ public enum VkStructureType
 	PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT = 1000412000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM</unmanaged>
 	PhysicalDeviceShaderCorePropertiesARM = 1000415000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES_KHR</unmanaged>
+	PhysicalDeviceShaderSubgroupRotateFeaturesKHR = 1000416000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM</unmanaged>
 	DeviceQueueShaderCoreControlCreateInfoARM = 1000417000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM</unmanaged>
@@ -1732,6 +1734,8 @@ public enum VkStructureType
 	PipelineIndirectDeviceAddressInfoNV = 1000428002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV</unmanaged>
 	PhysicalDeviceLinearColorAttachmentFeaturesNV = 1000430000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MAXIMAL_RECONVERGENCE_FEATURES_KHR</unmanaged>
+	PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR = 1000434000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_FEATURES_EXT</unmanaged>
 	PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT = 1000437000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM</unmanaged>
@@ -1880,6 +1884,16 @@ public enum VkStructureType
 	PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM = 1000510000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM</unmanaged>
 	MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM = 1000510001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_CAPABILITIES_KHR</unmanaged>
+	VideoDecodeAV1CapabilitiesKHR = 1000512000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PICTURE_INFO_KHR</unmanaged>
+	VideoDecodeAV1PictureInfoKHR = 1000512001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PROFILE_INFO_KHR</unmanaged>
+	VideoDecodeAV1ProfileInfoKHR = 1000512003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR</unmanaged>
+	VideoDecodeAV1SessionParametersCreateInfoKHR = 1000512004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR</unmanaged>
+	VideoDecodeAV1DpbSlotInfoKHR = 1000512005,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR</unmanaged>
 	PhysicalDeviceVideoMaintenance1FeaturesKHR = 1000515000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR</unmanaged>
@@ -1912,6 +1926,8 @@ public enum VkStructureType
 	PipelineVertexInputDivisorStateCreateInfoKHR = 1000190001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR</unmanaged>
 	PhysicalDeviceVertexAttributeDivisorFeaturesKHR = 1000190002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT_CONTROLS_2_FEATURES_KHR</unmanaged>
+	PhysicalDeviceShaderFloatControls2FeaturesKHR = 1000528000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX</unmanaged>
 	ScreenBufferPropertiesQnx = 1000529000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX</unmanaged>
@@ -1924,8 +1940,18 @@ public enum VkStructureType
 	PhysicalDeviceExternalMemoryScreenBufferFeaturesQnx = 1000529004,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT</unmanaged>
 	PhysicalDeviceLayeredDriverPropertiesMSFT = 1000530000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_KHR</unmanaged>
+	PhysicalDeviceIndexTypeUint8FeaturesKHR = 1000265000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES_KHR</unmanaged>
+	PhysicalDeviceLineRasterizationFeaturesKHR = 1000259000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_KHR</unmanaged>
+	PipelineRasterizationLineStateCreateInfoKHR = 1000259001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES_KHR</unmanaged>
+	PhysicalDeviceLineRasterizationPropertiesKHR = 1000259002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR</unmanaged>
 	CalibratedTimestampInfoKHR = 1000184000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES_KHR</unmanaged>
+	PhysicalDeviceShaderExpectAssumeFeaturesKHR = 1000544000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES_KHR</unmanaged>
 	PhysicalDeviceMaintenance6FeaturesKHR = 1000545000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES_KHR</unmanaged>
@@ -2214,8 +2240,16 @@ public enum VkStructureType
 	MemoryOpaqueCaptureAddressAllocateInfoKHR = MemoryOpaqueCaptureAddressAllocateInfo,
 	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO_KHR</unmanaged>
 	DeviceMemoryOpaqueCaptureAddressInfoKHR = DeviceMemoryOpaqueCaptureAddressInfo,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES_EXT</unmanaged>
+	PhysicalDeviceLineRasterizationFeaturesEXT = PhysicalDeviceLineRasterizationFeaturesKHR,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_EXT</unmanaged>
+	PipelineRasterizationLineStateCreateInfoEXT = PipelineRasterizationLineStateCreateInfoKHR,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES_EXT</unmanaged>
+	PhysicalDeviceLineRasterizationPropertiesEXT = PhysicalDeviceLineRasterizationPropertiesKHR,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT</unmanaged>
 	PhysicalDeviceHostQueryResetFeaturesEXT = PhysicalDeviceHostQueryResetFeatures,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_EXT</unmanaged>
+	PhysicalDeviceIndexTypeUint8FeaturesEXT = PhysicalDeviceIndexTypeUint8FeaturesKHR,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT</unmanaged>
 	PhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT = PhysicalDeviceShaderDemoteToHelperInvocationFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_FEATURES_KHR</unmanaged>
@@ -2387,6 +2421,8 @@ public enum VkImageLayout
 	FragmentDensityMapOptimalEXT = 1000218000,
 	/// <unmanaged>VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR</unmanaged>
 	FragmentShadingRateAttachmentOptimalKHR = 1000164003,
+	/// <unmanaged>VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ_KHR</unmanaged>
+	RenderingLocalReadKHR = 1000232000,
 	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR</unmanaged>
 	VideoEncodeDstKHR = 1000299000,
 	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR</unmanaged>
@@ -3563,8 +3599,6 @@ public enum VkDynamicState
 	ExclusiveScissorNV = 1000205001,
 	/// <unmanaged>VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR</unmanaged>
 	FragmentShadingRateKHR = 1000226000,
-	/// <unmanaged>VK_DYNAMIC_STATE_LINE_STIPPLE_EXT</unmanaged>
-	LineStippleEXT = 1000259000,
 	/// <unmanaged>VK_DYNAMIC_STATE_VERTEX_INPUT_EXT</unmanaged>
 	VertexInputEXT = 1000352000,
 	/// <unmanaged>VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT</unmanaged>
@@ -3573,8 +3607,6 @@ public enum VkDynamicState
 	LogicOpEXT = 1000377003,
 	/// <unmanaged>VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT</unmanaged>
 	ColorWriteEnableEXT = 1000381000,
-	/// <unmanaged>VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT</unmanaged>
-	TessellationDomainOriginEXT = 1000455002,
 	/// <unmanaged>VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT</unmanaged>
 	DepthClampEnableEXT = 1000455003,
 	/// <unmanaged>VK_DYNAMIC_STATE_POLYGON_MODE_EXT</unmanaged>
@@ -3595,6 +3627,8 @@ public enum VkDynamicState
 	ColorBlendEquationEXT = 1000455011,
 	/// <unmanaged>VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT</unmanaged>
 	ColorWriteMaskEXT = 1000455012,
+	/// <unmanaged>VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT</unmanaged>
+	TessellationDomainOriginEXT = 1000455002,
 	/// <unmanaged>VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT</unmanaged>
 	RasterizationStreamEXT = 1000455013,
 	/// <unmanaged>VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT</unmanaged>
@@ -3637,6 +3671,10 @@ public enum VkDynamicState
 	CoverageReductionModeNV = 1000455032,
 	/// <unmanaged>VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT</unmanaged>
 	AttachmentFeedbackLoopEnableEXT = 1000524000,
+	/// <unmanaged>VK_DYNAMIC_STATE_LINE_STIPPLE_KHR</unmanaged>
+	LineStippleKHR = 1000259000,
+	/// <unmanaged>VK_DYNAMIC_STATE_LINE_STIPPLE_EXT</unmanaged>
+	LineStippleEXT = LineStippleKHR,
 	/// <unmanaged>VK_DYNAMIC_STATE_CULL_MODE_EXT</unmanaged>
 	CullModeEXT = CullMode,
 	/// <unmanaged>VK_DYNAMIC_STATE_FRONT_FACE_EXT</unmanaged>
@@ -3891,8 +3929,10 @@ public enum VkAttachmentLoadOp
 	Clear = 1,
 	/// <unmanaged>VK_ATTACHMENT_LOAD_OP_DONT_CARE</unmanaged>
 	DontCare = 2,
+	/// <unmanaged>VK_ATTACHMENT_LOAD_OP_NONE_KHR</unmanaged>
+	NoneKHR = 1000400000,
 	/// <unmanaged>VK_ATTACHMENT_LOAD_OP_NONE_EXT</unmanaged>
-	NoneEXT = 1000400000,
+	NoneEXT = NoneKHR,
 }
 
 public enum VkAttachmentStoreOp
@@ -3943,10 +3983,12 @@ public enum VkIndexType
 	Uint32 = 1,
 	/// <unmanaged>VK_INDEX_TYPE_NONE_KHR</unmanaged>
 	NoneKHR = 1000165000,
-	/// <unmanaged>VK_INDEX_TYPE_UINT8_EXT</unmanaged>
-	Uint8EXT = 1000265000,
+	/// <unmanaged>VK_INDEX_TYPE_UINT8_KHR</unmanaged>
+	Uint8KHR = 1000265000,
 	/// <unmanaged>VK_INDEX_TYPE_NONE_NV</unmanaged>
 	NoneNV = NoneKHR,
+	/// <unmanaged>VK_INDEX_TYPE_UINT8_EXT</unmanaged>
+	Uint8EXT = Uint8KHR,
 }
 
 public enum VkSubpassContents
@@ -5544,6 +5586,10 @@ public enum VkSubgroupFeatureFlags
 	Quad = 0x00000080,
 	/// <unmanaged>VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV</unmanaged>
 	PartitionedNV = 0x00000100,
+	/// <unmanaged>VK_SUBGROUP_FEATURE_ROTATE_BIT_KHR</unmanaged>
+	RotateKHR = 0x00000200,
+	/// <unmanaged>VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT_KHR</unmanaged>
+	RotateClusteredKHR = 0x00000400,
 }
 
 [Flags]
@@ -6277,6 +6323,8 @@ public enum VkVideoCodecOperationFlagsKHR
 	DecodeH264 = 0x00000001,
 	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR</unmanaged>
 	DecodeH265 = 0x00000002,
+	/// <unmanaged>VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR</unmanaged>
+	DecodeAV1 = 0x00000004,
 }
 
 /// <summary>
@@ -7237,6 +7285,294 @@ public enum VkScopeKHR
 	QueueFamilyNV = QueueFamily,
 }
 
+public enum StdVideoAV1Profile
+{
+	/// <unmanaged>STD_VIDEO_AV1_PROFILE_MAIN</unmanaged>
+	Main = 0,
+	/// <unmanaged>STD_VIDEO_AV1_PROFILE_HIGH</unmanaged>
+	High = 1,
+	/// <unmanaged>STD_VIDEO_AV1_PROFILE_PROFESSIONAL</unmanaged>
+	Professional = 2,
+	/// <unmanaged>STD_VIDEO_AV1_PROFILE_INVALID</unmanaged>
+	Invalid = 0x7FFFFFFF,
+}
+
+public enum StdVideoAV1Level
+{
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_2_0</unmanaged>
+	Level20 = 0,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_2_1</unmanaged>
+	Level21 = 1,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_2_2</unmanaged>
+	Level22 = 2,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_2_3</unmanaged>
+	Level23 = 3,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_3_0</unmanaged>
+	Level30 = 4,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_3_1</unmanaged>
+	Level31 = 5,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_3_2</unmanaged>
+	Level32 = 6,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_3_3</unmanaged>
+	Level33 = 7,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_4_0</unmanaged>
+	Level40 = 8,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_4_1</unmanaged>
+	Level41 = 9,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_4_2</unmanaged>
+	Level42 = 10,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_4_3</unmanaged>
+	Level43 = 11,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_5_0</unmanaged>
+	Level50 = 12,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_5_1</unmanaged>
+	Level51 = 13,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_5_2</unmanaged>
+	Level52 = 14,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_5_3</unmanaged>
+	Level53 = 15,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_6_0</unmanaged>
+	Level60 = 16,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_6_1</unmanaged>
+	Level61 = 17,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_6_2</unmanaged>
+	Level62 = 18,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_6_3</unmanaged>
+	Level63 = 19,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_7_0</unmanaged>
+	Level70 = 20,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_7_1</unmanaged>
+	Level71 = 21,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_7_2</unmanaged>
+	Level72 = 22,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_7_3</unmanaged>
+	Level73 = 23,
+	/// <unmanaged>STD_VIDEO_AV1_LEVEL_INVALID</unmanaged>
+	LevelInvalid = 0x7FFFFFFF,
+}
+
+public enum StdVideoAV1FrameType
+{
+	/// <unmanaged>STD_VIDEO_AV1_FRAME_TYPE_KEY</unmanaged>
+	Key = 0,
+	/// <unmanaged>STD_VIDEO_AV1_FRAME_TYPE_INTER</unmanaged>
+	Inter = 1,
+	/// <unmanaged>STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY</unmanaged>
+	IntraOnly = 2,
+	/// <unmanaged>STD_VIDEO_AV1_FRAME_TYPE_SWITCH</unmanaged>
+	Switch = 3,
+	/// <unmanaged>STD_VIDEO_AV1_FRAME_TYPE_INVALID</unmanaged>
+	Invalid = 0x7FFFFFFF,
+}
+
+public enum StdVideoAV1ReferenceName
+{
+	/// <unmanaged>STD_VIDEO_AV1_REFERENCE_NAME_INTRA_FRAME</unmanaged>
+	IntraFrame = 0,
+	/// <unmanaged>STD_VIDEO_AV1_REFERENCE_NAME_LAST_FRAME</unmanaged>
+	LastFrame = 1,
+	/// <unmanaged>STD_VIDEO_AV1_REFERENCE_NAME_LAST2_FRAME</unmanaged>
+	Last2Frame = 2,
+	/// <unmanaged>STD_VIDEO_AV1_REFERENCE_NAME_LAST3_FRAME</unmanaged>
+	Last3Frame = 3,
+	/// <unmanaged>STD_VIDEO_AV1_REFERENCE_NAME_GOLDEN_FRAME</unmanaged>
+	GoldenFrame = 4,
+	/// <unmanaged>STD_VIDEO_AV1_REFERENCE_NAME_BWDREF_FRAME</unmanaged>
+	BwdrefFrame = 5,
+	/// <unmanaged>STD_VIDEO_AV1_REFERENCE_NAME_ALTREF2_FRAME</unmanaged>
+	Altref2Frame = 6,
+	/// <unmanaged>STD_VIDEO_AV1_REFERENCE_NAME_ALTREF_FRAME</unmanaged>
+	AltrefFrame = 7,
+	/// <unmanaged>STD_VIDEO_AV1_REFERENCE_NAME_INVALID</unmanaged>
+	Invalid = 0x7FFFFFFF,
+}
+
+public enum StdVideoAV1InterpolationFilter
+{
+	/// <unmanaged>STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP</unmanaged>
+	Eighttap = 0,
+	/// <unmanaged>STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH</unmanaged>
+	EighttapSmooth = 1,
+	/// <unmanaged>STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SHARP</unmanaged>
+	EighttapSharp = 2,
+	/// <unmanaged>STD_VIDEO_AV1_INTERPOLATION_FILTER_BILINEAR</unmanaged>
+	Bilinear = 3,
+	/// <unmanaged>STD_VIDEO_AV1_INTERPOLATION_FILTER_SWITCHABLE</unmanaged>
+	Switchable = 4,
+	/// <unmanaged>STD_VIDEO_AV1_INTERPOLATION_FILTER_INVALID</unmanaged>
+	Invalid = 0x7FFFFFFF,
+}
+
+public enum StdVideoAV1TxMode
+{
+	/// <unmanaged>STD_VIDEO_AV1_TX_MODE_ONLY_4X4</unmanaged>
+	Only4x4 = 0,
+	/// <unmanaged>STD_VIDEO_AV1_TX_MODE_LARGEST</unmanaged>
+	Largest = 1,
+	/// <unmanaged>STD_VIDEO_AV1_TX_MODE_SELECT</unmanaged>
+	Select = 2,
+	/// <unmanaged>STD_VIDEO_AV1_TX_MODE_INVALID</unmanaged>
+	Invalid = 0x7FFFFFFF,
+}
+
+public enum StdVideoAV1FrameRestorationType
+{
+	/// <unmanaged>STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_NONE</unmanaged>
+	None = 0,
+	/// <unmanaged>STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_WIENER</unmanaged>
+	Wiener = 1,
+	/// <unmanaged>STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SGRPROJ</unmanaged>
+	Sgrproj = 2,
+	/// <unmanaged>STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SWITCHABLE</unmanaged>
+	Switchable = 3,
+	/// <unmanaged>STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_INVALID</unmanaged>
+	Invalid = 0x7FFFFFFF,
+}
+
+public enum StdVideoAV1ColorPrimaries
+{
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709</unmanaged>
+	Bt709 = 1,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED</unmanaged>
+	BtUnspecified = 2,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M</unmanaged>
+	Bt470M = 4,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G</unmanaged>
+	Bt470BG = 5,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_BT_601</unmanaged>
+	Bt601 = 6,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_240</unmanaged>
+	Smpte240 = 7,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_GENERIC_FILM</unmanaged>
+	GenericFilm = 8,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_BT_2020</unmanaged>
+	Bt2020 = 9,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_XYZ</unmanaged>
+	Xyz = 10,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_431</unmanaged>
+	Smpte431 = 11,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_432</unmanaged>
+	Smpte432 = 12,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_EBU_3213</unmanaged>
+	Ebu3213 = 22,
+	/// <unmanaged>STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID</unmanaged>
+	Invalid = 0x7FFFFFFF,
+}
+
+public enum StdVideoAV1TransferCharacteristics
+{
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_0</unmanaged>
+	Reserved0 = 0,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_709</unmanaged>
+	Bt709 = 1,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_UNSPECIFIED</unmanaged>
+	Unspecified = 2,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_3</unmanaged>
+	Reserved3 = 3,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_M</unmanaged>
+	Bt470M = 4,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_B_G</unmanaged>
+	Bt470BG = 5,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_601</unmanaged>
+	Bt601 = 6,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_240</unmanaged>
+	Smpte240 = 7,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LINEAR</unmanaged>
+	Linear = 8,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100</unmanaged>
+	Log100 = 9,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100_SQRT10</unmanaged>
+	Log100Sqrt10 = 10,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_IEC_61966</unmanaged>
+	Iec61966 = 11,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_1361</unmanaged>
+	Bt1361 = 12,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SRGB</unmanaged>
+	Srgb = 13,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_10_BIT</unmanaged>
+	Bt202010 = 14,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_12_BIT</unmanaged>
+	Bt202012 = 15,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_2084</unmanaged>
+	Smpte2084 = 16,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_428</unmanaged>
+	Smpte428 = 17,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_HLG</unmanaged>
+	Hlg = 18,
+	/// <unmanaged>STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_INVALID</unmanaged>
+	Invalid = 0x7FFFFFFF,
+}
+
+public enum StdVideoAV1MatrixCoefficients
+{
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_IDENTITY</unmanaged>
+	Identity = 0,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_709</unmanaged>
+	Bt709 = 1,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_UNSPECIFIED</unmanaged>
+	Unspecified = 2,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_RESERVED_3</unmanaged>
+	Reserved3 = 3,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_FCC</unmanaged>
+	Fcc = 4,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_470_B_G</unmanaged>
+	Bt470BG = 5,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_601</unmanaged>
+	Bt601 = 6,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_240</unmanaged>
+	Smpte240 = 7,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_YCGCO</unmanaged>
+	SmpteYcgco = 8,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_NCL</unmanaged>
+	Bt2020Ncl = 9,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_CL</unmanaged>
+	Bt2020Cl = 10,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_2085</unmanaged>
+	Smpte2085 = 11,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_NCL</unmanaged>
+	ChromatNcl = 12,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_CL</unmanaged>
+	ChromatCl = 13,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_ICTCP</unmanaged>
+	Ictcp = 14,
+	/// <unmanaged>STD_VIDEO_AV1_MATRIX_COEFFICIENTS_INVALID</unmanaged>
+	Invalid = 0x7FFFFFFF,
+}
+
+public enum StdVideoAV1ChromaSamplePosition
+{
+	/// <unmanaged>STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN</unmanaged>
+	Unknown = 0,
+	/// <unmanaged>STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_VERTICAL</unmanaged>
+	Vertical = 1,
+	/// <unmanaged>STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_COLOCATED</unmanaged>
+	Colocated = 2,
+	/// <unmanaged>STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_RESERVED</unmanaged>
+	Reserved = 3,
+	/// <unmanaged>STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_INVALID</unmanaged>
+	Invalid = 0x7FFFFFFF,
+}
+
+public enum VkLineRasterizationModeKHR
+{
+	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_DEFAULT_KHR</unmanaged>
+	Default = 0,
+	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_KHR</unmanaged>
+	Rectangular = 1,
+	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_BRESENHAM_KHR</unmanaged>
+	Bresenham = 2,
+	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_KHR</unmanaged>
+	RectangularSmooth = 3,
+	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT</unmanaged>
+	DefaultEXT = Default,
+	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_EXT</unmanaged>
+	RectangularEXT = Rectangular,
+	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_BRESENHAM_EXT</unmanaged>
+	BresenhamEXT = Bresenham,
+	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_EXT</unmanaged>
+	RectangularSmoothEXT = RectangularSmooth,
+}
+
 public enum VkTimeDomainKHR
 {
 	/// <unmanaged>VK_TIME_DOMAIN_DEVICE_KHR</unmanaged>
@@ -7861,18 +8197,6 @@ public enum VkProvokingVertexModeEXT
 	FirstVertex = 0,
 	/// <unmanaged>VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT</unmanaged>
 	LastVertex = 1,
-}
-
-public enum VkLineRasterizationModeEXT
-{
-	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT</unmanaged>
-	Default = 0,
-	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_EXT</unmanaged>
-	Rectangular = 1,
-	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_BRESENHAM_EXT</unmanaged>
-	Bresenham = 2,
-	/// <unmanaged>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_EXT</unmanaged>
-	RectangularSmooth = 3,
 }
 
 [Flags]

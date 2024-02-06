@@ -420,96 +420,18 @@ public partial struct VkPhysicalDeviceMemoryProperties
 	public uint memoryTypeCount;
 	public memoryTypes__FixedBuffer memoryTypes;
 
-	public unsafe struct memoryTypes__FixedBuffer
+	[InlineArray(32)]
+	public partial struct memoryTypes__FixedBuffer
 	{
 		public VkMemoryType e0;
-		public VkMemoryType e1;
-		public VkMemoryType e2;
-		public VkMemoryType e3;
-		public VkMemoryType e4;
-		public VkMemoryType e5;
-		public VkMemoryType e6;
-		public VkMemoryType e7;
-		public VkMemoryType e8;
-		public VkMemoryType e9;
-		public VkMemoryType e10;
-		public VkMemoryType e11;
-		public VkMemoryType e12;
-		public VkMemoryType e13;
-		public VkMemoryType e14;
-		public VkMemoryType e15;
-		public VkMemoryType e16;
-		public VkMemoryType e17;
-		public VkMemoryType e18;
-		public VkMemoryType e19;
-		public VkMemoryType e20;
-		public VkMemoryType e21;
-		public VkMemoryType e22;
-		public VkMemoryType e23;
-		public VkMemoryType e24;
-		public VkMemoryType e25;
-		public VkMemoryType e26;
-		public VkMemoryType e27;
-		public VkMemoryType e28;
-		public VkMemoryType e29;
-		public VkMemoryType e30;
-		public VkMemoryType e31;
-
-		[UnscopedRef]
-		public ref VkMemoryType this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VkMemoryType> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 32);
-		}
 	}
 	public uint memoryHeapCount;
 	public memoryHeaps__FixedBuffer memoryHeaps;
 
-	public unsafe struct memoryHeaps__FixedBuffer
+	[InlineArray(16)]
+	public partial struct memoryHeaps__FixedBuffer
 	{
 		public VkMemoryHeap e0;
-		public VkMemoryHeap e1;
-		public VkMemoryHeap e2;
-		public VkMemoryHeap e3;
-		public VkMemoryHeap e4;
-		public VkMemoryHeap e5;
-		public VkMemoryHeap e6;
-		public VkMemoryHeap e7;
-		public VkMemoryHeap e8;
-		public VkMemoryHeap e9;
-		public VkMemoryHeap e10;
-		public VkMemoryHeap e11;
-		public VkMemoryHeap e12;
-		public VkMemoryHeap e13;
-		public VkMemoryHeap e14;
-		public VkMemoryHeap e15;
-
-		[UnscopedRef]
-		public ref VkMemoryHeap this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VkMemoryHeap> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 16);
-		}
 	}
 }
 
@@ -1606,52 +1528,18 @@ public partial struct VkImageBlit
 	public VkImageSubresourceLayers srcSubresource;
 	public srcOffsets__FixedBuffer srcOffsets;
 
-	public unsafe struct srcOffsets__FixedBuffer
+	[InlineArray(2)]
+	public partial struct srcOffsets__FixedBuffer
 	{
 		public VkOffset3D e0;
-		public VkOffset3D e1;
-
-		[UnscopedRef]
-		public ref VkOffset3D this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VkOffset3D> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 2);
-		}
 	}
 	public VkImageSubresourceLayers dstSubresource;
 	public dstOffsets__FixedBuffer dstOffsets;
 
-	public unsafe struct dstOffsets__FixedBuffer
+	[InlineArray(2)]
+	public partial struct dstOffsets__FixedBuffer
 	{
 		public VkOffset3D e0;
-		public VkOffset3D e1;
-
-		[UnscopedRef]
-		public ref VkOffset3D this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VkOffset3D> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 2);
-		}
 	}
 }
 
@@ -1894,57 +1782,10 @@ public unsafe partial struct VkPhysicalDeviceGroupProperties
 	public uint physicalDeviceCount;
 	public physicalDevices__FixedBuffer physicalDevices;
 
-	public unsafe struct physicalDevices__FixedBuffer
+	[InlineArray(32)]
+	public partial struct physicalDevices__FixedBuffer
 	{
 		public VkPhysicalDevice e0;
-		public VkPhysicalDevice e1;
-		public VkPhysicalDevice e2;
-		public VkPhysicalDevice e3;
-		public VkPhysicalDevice e4;
-		public VkPhysicalDevice e5;
-		public VkPhysicalDevice e6;
-		public VkPhysicalDevice e7;
-		public VkPhysicalDevice e8;
-		public VkPhysicalDevice e9;
-		public VkPhysicalDevice e10;
-		public VkPhysicalDevice e11;
-		public VkPhysicalDevice e12;
-		public VkPhysicalDevice e13;
-		public VkPhysicalDevice e14;
-		public VkPhysicalDevice e15;
-		public VkPhysicalDevice e16;
-		public VkPhysicalDevice e17;
-		public VkPhysicalDevice e18;
-		public VkPhysicalDevice e19;
-		public VkPhysicalDevice e20;
-		public VkPhysicalDevice e21;
-		public VkPhysicalDevice e22;
-		public VkPhysicalDevice e23;
-		public VkPhysicalDevice e24;
-		public VkPhysicalDevice e25;
-		public VkPhysicalDevice e26;
-		public VkPhysicalDevice e27;
-		public VkPhysicalDevice e28;
-		public VkPhysicalDevice e29;
-		public VkPhysicalDevice e30;
-		public VkPhysicalDevice e31;
-
-		[UnscopedRef]
-		public ref VkPhysicalDevice this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VkPhysicalDevice> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 32);
-		}
 	}
 	public VkBool32 subsetAllocation;
 
@@ -4092,52 +3933,18 @@ public unsafe partial struct VkImageBlit2
 	public VkImageSubresourceLayers srcSubresource;
 	public srcOffsets__FixedBuffer srcOffsets;
 
-	public unsafe struct srcOffsets__FixedBuffer
+	[InlineArray(2)]
+	public partial struct srcOffsets__FixedBuffer
 	{
 		public VkOffset3D e0;
-		public VkOffset3D e1;
-
-		[UnscopedRef]
-		public ref VkOffset3D this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VkOffset3D> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 2);
-		}
 	}
 	public VkImageSubresourceLayers dstSubresource;
 	public dstOffsets__FixedBuffer dstOffsets;
 
-	public unsafe struct dstOffsets__FixedBuffer
+	[InlineArray(2)]
+	public partial struct dstOffsets__FixedBuffer
 	{
 		public VkOffset3D e0;
-		public VkOffset3D e1;
-
-		[UnscopedRef]
-		public ref VkOffset3D this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VkOffset3D> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 2);
-		}
 	}
 
 	public VkImageBlit2()
@@ -7111,41 +6918,10 @@ public unsafe partial struct VkQueueFamilyGlobalPriorityPropertiesKHR
 	public uint priorityCount;
 	public priorities__FixedBuffer priorities;
 
-	public unsafe struct priorities__FixedBuffer
+	[InlineArray(16)]
+	public partial struct priorities__FixedBuffer
 	{
 		public VkQueueGlobalPriorityKHR e0;
-		public VkQueueGlobalPriorityKHR e1;
-		public VkQueueGlobalPriorityKHR e2;
-		public VkQueueGlobalPriorityKHR e3;
-		public VkQueueGlobalPriorityKHR e4;
-		public VkQueueGlobalPriorityKHR e5;
-		public VkQueueGlobalPriorityKHR e6;
-		public VkQueueGlobalPriorityKHR e7;
-		public VkQueueGlobalPriorityKHR e8;
-		public VkQueueGlobalPriorityKHR e9;
-		public VkQueueGlobalPriorityKHR e10;
-		public VkQueueGlobalPriorityKHR e11;
-		public VkQueueGlobalPriorityKHR e12;
-		public VkQueueGlobalPriorityKHR e13;
-		public VkQueueGlobalPriorityKHR e14;
-		public VkQueueGlobalPriorityKHR e15;
-
-		[UnscopedRef]
-		public ref VkQueueGlobalPriorityKHR this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VkQueueGlobalPriorityKHR> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 16);
-		}
 	}
 
 	public VkQueueFamilyGlobalPriorityPropertiesKHR()
@@ -7176,27 +6952,10 @@ public unsafe partial struct VkPipelineFragmentShadingRateStateCreateInfoKHR
 	public VkExtent2D fragmentSize;
 	public combinerOps__FixedBuffer combinerOps;
 
-	public unsafe struct combinerOps__FixedBuffer
+	[InlineArray(2)]
+	public partial struct combinerOps__FixedBuffer
 	{
 		public VkFragmentShadingRateCombinerOpKHR e0;
-		public VkFragmentShadingRateCombinerOpKHR e1;
-
-		[UnscopedRef]
-		public ref VkFragmentShadingRateCombinerOpKHR this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VkFragmentShadingRateCombinerOpKHR> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 2);
-		}
 	}
 
 	public VkPipelineFragmentShadingRateStateCreateInfoKHR()
@@ -7260,6 +7019,62 @@ public unsafe partial struct VkPhysicalDeviceFragmentShadingRateKHR
 	public VkPhysicalDeviceFragmentShadingRateKHR()
 	{
 		sType = VkStructureType.PhysicalDeviceFragmentShadingRateKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 dynamicRenderingLocalRead;
+
+	public VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR()
+	{
+		sType = VkStructureType.PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkRenderingAttachmentLocationInfoKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint colorAttachmentCount;
+	public uint* pColorAttachmentLocations;
+
+	public VkRenderingAttachmentLocationInfoKHR()
+	{
+		sType = VkStructureType.RenderingAttachmentLocationInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkRenderingInputAttachmentIndexInfoKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint colorAttachmentCount;
+	public uint* pColorAttachmentInputIndices;
+	public uint* pDepthInputAttachmentIndex;
+	public uint* pStencilInputAttachmentIndex;
+
+	public VkRenderingInputAttachmentIndexInfoKHR()
+	{
+		sType = VkStructureType.RenderingInputAttachmentIndexInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceShaderQuadControlFeaturesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 shaderQuadControl;
+
+	public VkPhysicalDeviceShaderQuadControlFeaturesKHR()
+	{
+		sType = VkStructureType.PhysicalDeviceShaderQuadControlFeaturesKHR;
 	}
 }
 
@@ -7747,6 +7562,33 @@ public partial struct VkTraceRaysIndirectCommand2KHR
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 shaderSubgroupRotate;
+	public VkBool32 shaderSubgroupRotateClustered;
+
+	public VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR()
+	{
+		sType = VkStructureType.PhysicalDeviceShaderSubgroupRotateFeaturesKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 shaderMaximalReconvergence;
+
+	public VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR()
+	{
+		sType = VkStructureType.PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkPhysicalDeviceMaintenance5FeaturesKHR
 {
 	internal VkStructureType sType;
@@ -7922,6 +7764,386 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrixPropertiesKHR
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoAV1ColorConfigFlags
+{
+	public uint mono_chrome;
+	public uint color_range;
+	public uint separate_uv_delta_q;
+	public uint color_description_present_flag;
+	public uint reserved;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoAV1ColorConfig
+{
+	public StdVideoAV1ColorConfigFlags flags;
+	public byte BitDepth;
+	public byte subsampling_x;
+	public byte subsampling_y;
+	public byte reserved1;
+	public StdVideoAV1ColorPrimaries color_primaries;
+	public StdVideoAV1TransferCharacteristics transfer_characteristics;
+	public StdVideoAV1MatrixCoefficients matrix_coefficients;
+	public StdVideoAV1ChromaSamplePosition chroma_sample_position;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoAV1TimingInfoFlags
+{
+	public uint equal_picture_interval;
+	public uint reserved;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoAV1TimingInfo
+{
+	public StdVideoAV1TimingInfoFlags flags;
+	public uint num_units_in_display_tick;
+	public uint time_scale;
+	public uint num_ticks_per_picture_minus_1;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoAV1LoopFilterFlags
+{
+	public uint loop_filter_delta_enabled;
+	public uint loop_filter_delta_update;
+	public uint reserved;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct StdVideoAV1LoopFilter
+{
+	public StdVideoAV1LoopFilterFlags flags;
+	public fixed byte loop_filter_level[4];
+	public byte loop_filter_sharpness;
+	public byte update_ref_delta;
+	public fixed sbyte loop_filter_ref_deltas[8];
+	public byte update_mode_delta;
+	public fixed sbyte loop_filter_mode_deltas[2];
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoAV1QuantizationFlags
+{
+	public uint using_qmatrix;
+	public uint diff_uv_delta;
+	public uint reserved;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoAV1Quantization
+{
+	public StdVideoAV1QuantizationFlags flags;
+	public byte base_q_idx;
+	public sbyte DeltaQYDc;
+	public sbyte DeltaQUDc;
+	public sbyte DeltaQUAc;
+	public sbyte DeltaQVDc;
+	public sbyte DeltaQVAc;
+	public byte qm_y;
+	public byte qm_u;
+	public byte qm_v;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct StdVideoAV1Segmentation
+{
+	public fixed byte FeatureEnabled[8];
+	public fixed short FeatureData[8 * 8];
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoAV1TileInfoFlags
+{
+	public uint uniform_tile_spacing_flag;
+	public uint reserved;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct StdVideoAV1TileInfo
+{
+	public StdVideoAV1TileInfoFlags flags;
+	public byte TileCols;
+	public byte TileRows;
+	public ushort context_update_tile_id;
+	public byte tile_size_bytes_minus_1;
+	public fixed byte reserved1[7];
+	public ushort* pMiColStarts;
+	public ushort* pMiRowStarts;
+	public ushort* pWidthInSbsMinus1;
+	public ushort* pHeightInSbsMinus1;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct StdVideoAV1CDEF
+{
+	public byte cdef_damping_minus_3;
+	public byte cdef_bits;
+	public fixed byte cdef_y_pri_strength[8];
+	public fixed byte cdef_y_sec_strength[8];
+	public fixed byte cdef_uv_pri_strength[8];
+	public fixed byte cdef_uv_sec_strength[8];
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct StdVideoAV1LoopRestoration
+{
+	public FrameRestorationType__FixedBuffer FrameRestorationType;
+
+	[InlineArray(3)]
+	public partial struct FrameRestorationType__FixedBuffer
+	{
+		public StdVideoAV1FrameRestorationType e0;
+	}
+	public fixed ushort LoopRestorationSize[3];
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct StdVideoAV1GlobalMotion
+{
+	public fixed byte GmType[8];
+	public fixed int gm_params[8 * 6];
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoAV1FilmGrainFlags
+{
+	public uint chroma_scaling_from_luma;
+	public uint overlap_flag;
+	public uint clip_to_restricted_range;
+	public uint update_grain;
+	public uint reserved;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct StdVideoAV1FilmGrain
+{
+	public StdVideoAV1FilmGrainFlags flags;
+	public byte grain_scaling_minus_8;
+	public byte ar_coeff_lag;
+	public byte ar_coeff_shift_minus_6;
+	public byte grain_scale_shift;
+	public ushort grain_seed;
+	public byte film_grain_params_ref_idx;
+	public byte num_y_points;
+	public fixed byte point_y_value[14];
+	public fixed byte point_y_scaling[14];
+	public byte num_cb_points;
+	public fixed byte point_cb_value[10];
+	public fixed byte point_cb_scaling[10];
+	public byte num_cr_points;
+	public fixed byte point_cr_value[10];
+	public fixed byte point_cr_scaling[10];
+	public fixed sbyte ar_coeffs_y_plus_128[24];
+	public fixed sbyte ar_coeffs_cb_plus_128[25];
+	public fixed sbyte ar_coeffs_cr_plus_128[25];
+	public byte cb_mult;
+	public byte cb_luma_mult;
+	public ushort cb_offset;
+	public byte cr_mult;
+	public byte cr_luma_mult;
+	public ushort cr_offset;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoAV1SequenceHeaderFlags
+{
+	public uint still_picture;
+	public uint reduced_still_picture_header;
+	public uint use_128x128_superblock;
+	public uint enable_filter_intra;
+	public uint enable_intra_edge_filter;
+	public uint enable_interintra_compound;
+	public uint enable_masked_compound;
+	public uint enable_warped_motion;
+	public uint enable_dual_filter;
+	public uint enable_order_hint;
+	public uint enable_jnt_comp;
+	public uint enable_ref_frame_mvs;
+	public uint frame_id_numbers_present_flag;
+	public uint enable_superres;
+	public uint enable_cdef;
+	public uint enable_restoration;
+	public uint film_grain_params_present;
+	public uint timing_info_present_flag;
+	public uint initial_display_delay_present_flag;
+	public uint reserved;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct StdVideoAV1SequenceHeader
+{
+	public StdVideoAV1SequenceHeaderFlags flags;
+	public StdVideoAV1Profile seq_profile;
+	public byte frame_width_bits_minus_1;
+	public byte frame_height_bits_minus_1;
+	public ushort max_frame_width_minus_1;
+	public ushort max_frame_height_minus_1;
+	public byte delta_frame_id_length_minus_2;
+	public byte additional_frame_id_length_minus_1;
+	public byte order_hint_bits_minus_1;
+	public byte seq_force_integer_mv;
+	public byte seq_force_screen_content_tools;
+	public fixed byte reserved1[5];
+	public StdVideoAV1ColorConfig* pColorConfig;
+	public StdVideoAV1TimingInfo* pTimingInfo;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoDecodeAV1PictureInfoFlags
+{
+	public uint error_resilient_mode;
+	public uint disable_cdf_update;
+	public uint use_superres;
+	public uint render_and_frame_size_different;
+	public uint allow_screen_content_tools;
+	public uint is_filter_switchable;
+	public uint force_integer_mv;
+	public uint frame_size_override_flag;
+	public uint buffer_removal_time_present_flag;
+	public uint allow_intrabc;
+	public uint frame_refs_short_signaling;
+	public uint allow_high_precision_mv;
+	public uint is_motion_mode_switchable;
+	public uint use_ref_frame_mvs;
+	public uint disable_frame_end_update_cdf;
+	public uint allow_warped_motion;
+	public uint reduced_tx_set;
+	public uint reference_select;
+	public uint skip_mode_present;
+	public uint delta_q_present;
+	public uint delta_lf_present;
+	public uint delta_lf_multi;
+	public uint segmentation_enabled;
+	public uint segmentation_update_map;
+	public uint segmentation_temporal_update;
+	public uint segmentation_update_data;
+	public uint UsesLr;
+	public uint usesChromaLr;
+	public uint apply_grain;
+	public uint reserved;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct StdVideoDecodeAV1PictureInfo
+{
+	public StdVideoDecodeAV1PictureInfoFlags flags;
+	public StdVideoAV1FrameType frame_type;
+	public uint current_frame_id;
+	public byte OrderHint;
+	public byte primary_ref_frame;
+	public byte refresh_frame_flags;
+	public byte reserved1;
+	public StdVideoAV1InterpolationFilter interpolation_filter;
+	public StdVideoAV1TxMode TxMode;
+	public byte delta_q_res;
+	public byte delta_lf_res;
+	public fixed byte SkipModeFrame[2];
+	public byte coded_denom;
+	public fixed byte reserved2[3];
+	public fixed byte OrderHints[8];
+	public fixed uint expectedFrameId[8];
+	public StdVideoAV1TileInfo* pTileInfo;
+	public StdVideoAV1Quantization* pQuantization;
+	public StdVideoAV1Segmentation* pSegmentation;
+	public StdVideoAV1LoopFilter* pLoopFilter;
+	public StdVideoAV1CDEF* pCDEF;
+	public StdVideoAV1LoopRestoration* pLoopRestoration;
+	public StdVideoAV1GlobalMotion* pGlobalMotion;
+	public StdVideoAV1FilmGrain* pFilmGrain;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct StdVideoDecodeAV1ReferenceInfoFlags
+{
+	public uint disable_frame_end_update_cdf;
+	public uint segmentation_enabled;
+	public uint reserved;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct StdVideoDecodeAV1ReferenceInfo
+{
+	public StdVideoDecodeAV1ReferenceInfoFlags flags;
+	public byte frame_type;
+	public byte RefFrameSignBias;
+	public byte OrderHint;
+	public fixed byte SavedOrderHints[8];
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkVideoDecodeAV1ProfileInfoKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public StdVideoAV1Profile stdProfile;
+	public VkBool32 filmGrainSupport;
+
+	public VkVideoDecodeAV1ProfileInfoKHR()
+	{
+		sType = VkStructureType.VideoDecodeAV1ProfileInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkVideoDecodeAV1CapabilitiesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public StdVideoAV1Level maxLevel;
+
+	public VkVideoDecodeAV1CapabilitiesKHR()
+	{
+		sType = VkStructureType.VideoDecodeAV1CapabilitiesKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkVideoDecodeAV1SessionParametersCreateInfoKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public StdVideoAV1SequenceHeader* pStdSequenceHeader;
+
+	public VkVideoDecodeAV1SessionParametersCreateInfoKHR()
+	{
+		sType = VkStructureType.VideoDecodeAV1SessionParametersCreateInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkVideoDecodeAV1PictureInfoKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public StdVideoDecodeAV1PictureInfo* pStdPictureInfo;
+	public fixed int referenceNameSlotIndices[7];
+	public uint frameHeaderOffset;
+	public uint tileCount;
+	public uint* pTileOffsets;
+	public uint* pTileSizes;
+
+	public VkVideoDecodeAV1PictureInfoKHR()
+	{
+		sType = VkStructureType.VideoDecodeAV1PictureInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkVideoDecodeAV1DpbSlotInfoKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public StdVideoDecodeAV1ReferenceInfo* pStdReferenceInfo;
+
+	public VkVideoDecodeAV1DpbSlotInfoKHR()
+	{
+		sType = VkStructureType.VideoDecodeAV1DpbSlotInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkPhysicalDeviceVideoMaintenance1FeaturesKHR
 {
 	internal VkStructureType sType;
@@ -7999,6 +8221,79 @@ public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceShaderFloatControls2FeaturesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 shaderFloatControls2;
+
+	public VkPhysicalDeviceShaderFloatControls2FeaturesKHR()
+	{
+		sType = VkStructureType.PhysicalDeviceShaderFloatControls2FeaturesKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceIndexTypeUint8FeaturesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 indexTypeUint8;
+
+	public VkPhysicalDeviceIndexTypeUint8FeaturesKHR()
+	{
+		sType = VkStructureType.PhysicalDeviceIndexTypeUint8FeaturesKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceLineRasterizationFeaturesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 rectangularLines;
+	public VkBool32 bresenhamLines;
+	public VkBool32 smoothLines;
+	public VkBool32 stippledRectangularLines;
+	public VkBool32 stippledBresenhamLines;
+	public VkBool32 stippledSmoothLines;
+
+	public VkPhysicalDeviceLineRasterizationFeaturesKHR()
+	{
+		sType = VkStructureType.PhysicalDeviceLineRasterizationFeaturesKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceLineRasterizationPropertiesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint lineSubPixelPrecisionBits;
+
+	public VkPhysicalDeviceLineRasterizationPropertiesKHR()
+	{
+		sType = VkStructureType.PhysicalDeviceLineRasterizationPropertiesKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPipelineRasterizationLineStateCreateInfoKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkLineRasterizationModeKHR lineRasterizationMode;
+	public VkBool32 stippledLineEnable;
+	public uint lineStippleFactor;
+	public ushort lineStipplePattern;
+
+	public VkPipelineRasterizationLineStateCreateInfoKHR()
+	{
+		sType = VkStructureType.PipelineRasterizationLineStateCreateInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkCalibratedTimestampInfoKHR
 {
 	internal VkStructureType sType;
@@ -8008,6 +8303,19 @@ public unsafe partial struct VkCalibratedTimestampInfoKHR
 	public VkCalibratedTimestampInfoKHR()
 	{
 		sType = VkStructureType.CalibratedTimestampInfoKHR;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceShaderExpectAssumeFeaturesKHR
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 shaderExpectAssume;
+
+	public VkPhysicalDeviceShaderExpectAssumeFeaturesKHR()
+	{
+		sType = VkStructureType.PhysicalDeviceShaderExpectAssumeFeaturesKHR;
 	}
 }
 
@@ -10151,79 +10459,17 @@ public unsafe partial struct VkPhysicalDeviceMemoryBudgetPropertiesEXT
 	public void* pNext;
 	public heapBudget__FixedBuffer heapBudget;
 
-	public unsafe struct heapBudget__FixedBuffer
+	[InlineArray(16)]
+	public partial struct heapBudget__FixedBuffer
 	{
 		public ulong e0;
-		public ulong e1;
-		public ulong e2;
-		public ulong e3;
-		public ulong e4;
-		public ulong e5;
-		public ulong e6;
-		public ulong e7;
-		public ulong e8;
-		public ulong e9;
-		public ulong e10;
-		public ulong e11;
-		public ulong e12;
-		public ulong e13;
-		public ulong e14;
-		public ulong e15;
-
-		[UnscopedRef]
-		public ref ulong this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<ulong> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 16);
-		}
 	}
 	public heapUsage__FixedBuffer heapUsage;
 
-	public unsafe struct heapUsage__FixedBuffer
+	[InlineArray(16)]
+	public partial struct heapUsage__FixedBuffer
 	{
 		public ulong e0;
-		public ulong e1;
-		public ulong e2;
-		public ulong e3;
-		public ulong e4;
-		public ulong e5;
-		public ulong e6;
-		public ulong e7;
-		public ulong e8;
-		public ulong e9;
-		public ulong e10;
-		public ulong e11;
-		public ulong e12;
-		public ulong e13;
-		public ulong e14;
-		public ulong e15;
-
-		[UnscopedRef]
-		public ref ulong this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<ulong> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 16);
-		}
 	}
 
 	public VkPhysicalDeviceMemoryBudgetPropertiesEXT()
@@ -10488,53 +10734,6 @@ public unsafe partial struct VkHeadlessSurfaceCreateInfoEXT
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe partial struct VkPhysicalDeviceLineRasterizationFeaturesEXT
-{
-	internal VkStructureType sType;
-	public void* pNext;
-	public VkBool32 rectangularLines;
-	public VkBool32 bresenhamLines;
-	public VkBool32 smoothLines;
-	public VkBool32 stippledRectangularLines;
-	public VkBool32 stippledBresenhamLines;
-	public VkBool32 stippledSmoothLines;
-
-	public VkPhysicalDeviceLineRasterizationFeaturesEXT()
-	{
-		sType = VkStructureType.PhysicalDeviceLineRasterizationFeaturesEXT;
-	}
-}
-
-[StructLayout(LayoutKind.Sequential)]
-public unsafe partial struct VkPhysicalDeviceLineRasterizationPropertiesEXT
-{
-	internal VkStructureType sType;
-	public void* pNext;
-	public uint lineSubPixelPrecisionBits;
-
-	public VkPhysicalDeviceLineRasterizationPropertiesEXT()
-	{
-		sType = VkStructureType.PhysicalDeviceLineRasterizationPropertiesEXT;
-	}
-}
-
-[StructLayout(LayoutKind.Sequential)]
-public unsafe partial struct VkPipelineRasterizationLineStateCreateInfoEXT
-{
-	internal VkStructureType sType;
-	public void* pNext;
-	public VkLineRasterizationModeEXT lineRasterizationMode;
-	public VkBool32 stippledLineEnable;
-	public uint lineStippleFactor;
-	public ushort lineStipplePattern;
-
-	public VkPipelineRasterizationLineStateCreateInfoEXT()
-	{
-		sType = VkStructureType.PipelineRasterizationLineStateCreateInfoEXT;
-	}
-}
-
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 {
 	internal VkStructureType sType;
@@ -10555,19 +10754,6 @@ public unsafe partial struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 	public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT()
 	{
 		sType = VkStructureType.PhysicalDeviceShaderAtomicFloatFeaturesEXT;
-	}
-}
-
-[StructLayout(LayoutKind.Sequential)]
-public unsafe partial struct VkPhysicalDeviceIndexTypeUint8FeaturesEXT
-{
-	internal VkStructureType sType;
-	public void* pNext;
-	public VkBool32 indexTypeUint8;
-
-	public VkPhysicalDeviceIndexTypeUint8FeaturesEXT()
-	{
-		sType = VkStructureType.PhysicalDeviceIndexTypeUint8FeaturesEXT;
 	}
 }
 
@@ -11796,27 +11982,10 @@ public unsafe partial struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV
 	public VkFragmentShadingRateNV shadingRate;
 	public combinerOps__FixedBuffer combinerOps;
 
-	public unsafe struct combinerOps__FixedBuffer
+	[InlineArray(2)]
+	public partial struct combinerOps__FixedBuffer
 	{
 		public VkFragmentShadingRateCombinerOpKHR e0;
-		public VkFragmentShadingRateCombinerOpKHR e1;
-
-		[UnscopedRef]
-		public ref VkFragmentShadingRateCombinerOpKHR this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref AsSpan()[index];
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VkFragmentShadingRateCombinerOpKHR> AsSpan()
-		{
-			return MemoryMarshal.CreateSpan(ref e0, 2);
-		}
 	}
 
 	public VkPipelineFragmentShadingRateEnumStateCreateInfoNV()

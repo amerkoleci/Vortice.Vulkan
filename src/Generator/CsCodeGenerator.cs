@@ -84,6 +84,7 @@ public static partial class CsCodeGenerator
         { "VkFormatFeatureFlagBits2KHR", "VkFormatFeatureFlags2KHR" },
         { "VkComponentTypeNV", "VkComponentTypeKHR" },
         { "VkScopeNV", "VkScopeKHR" },
+        { "VkLineRasterizationModeEXT", "VkLineRasterizationModeKHR" },
 
         // Spirv - Spirv-Cross
         { "SpvId", "uint" },
@@ -243,6 +244,8 @@ public static partial class CsCodeGenerator
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_SPEC_VERSION"
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_1_0_0"
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION"
+                    || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_API_VERSION_1_0_0"
+                    || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_SPEC_VERSION"
                     )
                 {
                     modifier = "static readonly";
@@ -273,6 +276,7 @@ public static partial class CsCodeGenerator
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_12"
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_1_0_0"
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_1_0_0"
+                    || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_API_VERSION_1_0_0"
                     )
                 {
                     writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]});");

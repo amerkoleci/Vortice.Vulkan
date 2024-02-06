@@ -2,10 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/amerkoleci/Vortice.Vulkan/blob/main/LICENSE)
 [![Build status](https://github.com/amerkoleci/Vortice.Vulkan/workflows/Build/badge.svg)](https://github.com/amerkoleci/Vortice.Vulkan/actions)
-[![Vulkan](https://img.shields.io/badge/vulkan-1.3.275-brightgreen.svg)](https://www.khronos.org/vulkan/)
+[![Vulkan](https://img.shields.io/badge/vulkan-1.3.277-brightgreen.svg)](https://www.khronos.org/vulkan/)
 [![NuGet](https://img.shields.io/nuget/v/Vortice.Vulkan.svg)](https://www.nuget.org/packages/Vortice.Vulkan)
 
-**Vortice.Vulkan** is a **.NET 7** and **.NET 8** low-level bindings for [Vulkan](https://www.khronos.org/vulkan/), [VulkanMemoryAllocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator), [SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross) and [shaderc](https://github.com/google/shaderc).
+**Vortice.Vulkan** is **.NET 8** low-level bindings for [Vulkan](https://www.khronos.org/vulkan/), [VulkanMemoryAllocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator), [SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross) and [shaderc](https://github.com/google/shaderc).
 
 ## Sponsors
 To further help development of these bindings library or other projects, please consider [SPONSOR](https://github.com/sponsors/amerkoleci) my profile in order to allow faster issue triaging and new features to be implemented.
