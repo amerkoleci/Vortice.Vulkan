@@ -52,10 +52,7 @@ public class Options : IDisposable
 
     public void AddMacroDefinition(string name, string? value = null)
     {
-        shaderc_compile_options_add_macro_definition(Handle,
-            name,
-            (nuint)name.Length,
-            value, string.IsNullOrEmpty(value) ? 0 : (nuint)value!.Length);
+        shaderc_compile_options_add_macro_definition(Handle, name, value);
     }
 
     public void SetSourceLanguage(SourceLanguage language)
@@ -97,11 +94,11 @@ public class Options : IDisposable
 
     public void SetLimit(Limit limit, int value) => shaderc_compile_options_set_limit(Handle, limit, value);
 
-    public void SetAutoBindUniforms(bool value) => shaderc_compile_options_set_auto_bind_uniforms(Handle, value);
+    public void SetAutoBindUniforms(bool value) => shaderc_compile_options_set_auto_bind_uniforms(Handle, value ? (byte)1 : (byte)0);
 
-    public void SetHLSLIoMapping(bool value) => shaderc_compile_options_set_hlsl_io_mapping(Handle, value);
+    public void SetHLSLIoMapping(bool value) => shaderc_compile_options_set_hlsl_io_mapping(Handle, value ? (byte)1 : (byte)0);
 
-    public void SetHLSLOffsets(bool value) => shaderc_compile_options_set_hlsl_offsets(Handle, value);
+    public void SetHLSLOffsets(bool value) => shaderc_compile_options_set_hlsl_offsets(Handle, value ? (byte)1 : (byte)0);
 
     public void SetBindingBase(UniformKind kind, uint @base) => shaderc_compile_options_set_binding_base(Handle, kind, @base);
 
@@ -110,21 +107,27 @@ public class Options : IDisposable
         shaderc_compile_options_set_binding_base_for_stage(Handle, shaderKind, kind, @base);
     }
 
-    public void SetAutoMapLocations(bool value) => shaderc_compile_options_set_auto_map_locations(Handle, value);
+    public void SetAutoMapLocations(bool value) => shaderc_compile_options_set_auto_map_locations(Handle, value ? (byte)1 : (byte)0);
 
-    public void SetHLSLRegisterSetAndBindingForStage(ShaderKind shaderKind, string reg, string set, string binding)
+    public unsafe void SetHLSLRegisterSetAndBindingForStage(ShaderKind shaderKind, string reg, string set, string binding)
     {
-        shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage(Handle, shaderKind, reg, set, binding);
+        fixed (byte* regPtr = reg.GetUtf8Span())
+        fixed (byte* setPtr = set.GetUtf8Span())
+        fixed (byte* bindingPtr = binding.GetUtf8Span())
+            shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage(Handle, shaderKind, regPtr, setPtr, bindingPtr);
     }
 
-    public void SetHLSLRegisterSetAndBinding(string reg, string set, string binding)
+    public unsafe void SetHLSLRegisterSetAndBinding(string reg, string set, string binding)
     {
-        shaderc_compile_options_set_hlsl_register_set_and_binding(Handle, reg, set, binding);
+        fixed (byte* regPtr = reg.GetUtf8Span())
+        fixed (byte* setPtr = set.GetUtf8Span())
+        fixed (byte* bindingPtr = binding.GetUtf8Span())
+            shaderc_compile_options_set_hlsl_register_set_and_binding(Handle, regPtr, setPtr, bindingPtr);
     }
 
     public void SetHLSLFunctionality1(bool enable)
     {
-        shaderc_compile_options_set_hlsl_functionality1(Handle, enable);
+        shaderc_compile_options_set_hlsl_functionality1(Handle, enable ? (byte)1 : (byte)0);
     }
 
     /// <summary>
@@ -133,11 +136,11 @@ public class Options : IDisposable
     /// <param name="enable"></param>
     public void SetInvertY(bool enable)
     {
-        shaderc_compile_options_set_invert_y(Handle, enable);
+        shaderc_compile_options_set_invert_y(Handle, enable ? (byte)1 : (byte)0);
     }
 
     public void SetNaNClamp(bool enable)
     {
-        shaderc_compile_options_set_nan_clamp(Handle, enable);
+        shaderc_compile_options_set_nan_clamp(Handle, enable ? (byte)1 : (byte)0);
     }
 }

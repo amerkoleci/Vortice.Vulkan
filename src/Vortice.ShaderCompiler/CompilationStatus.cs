@@ -7,7 +7,7 @@ public enum CompilationStatus
 {
     Success = 0,
     InvalidStage = 1,  // error stage deduction
-    compilationError = 2,
+    CompilationError = 2,
     InternalError = 3,  // unexpected failure
     NullResultObject = 4,
     InvalidAssembly = 5,

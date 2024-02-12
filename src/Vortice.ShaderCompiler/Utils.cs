@@ -6,11 +6,10 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Vortice.SpirvCross;
+namespace Vortice.ShaderCompiler;
 
 public static unsafe class Utils
 {
-
 #pragma warning disable CS8500
     /// <inheritdoc cref="Unsafe.SizeOf{T}" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -67,9 +66,9 @@ public static unsafe class Utils
     /// <param name="span">The span for which to create the string.</param>
     /// <returns>A string created from <paramref name="span" />.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static string? GetString(this ReadOnlySpan<sbyte> span)
+    public static string GetString(this ReadOnlySpan<byte> span)
     {
-        return span.GetPointerUnsafe() != null ? Encoding.UTF8.GetString(span.As<sbyte, byte>()) : null;
+        return span.GetPointerUnsafe() != null ? Encoding.UTF8.GetString(span) : string.Empty;
     }
 
     /// <summary>Gets a string for a given span.</summary>
@@ -82,7 +81,7 @@ public static unsafe class Utils
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static string? GetString(sbyte* source, int maxLength = -1)
+    public static string GetString(byte* source, int maxLength = -1)
     {
         return GetUtf8Span(source, maxLength).GetString();
     }
@@ -91,7 +90,7 @@ public static unsafe class Utils
     /// <param name="source">The string for which to get the null-terminated UTF8 character sequence.</param>
     /// <returns>A null-terminated UTF8 character sequence created from <paramref name="source" />.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<sbyte> GetUtf8Span(this string? source)
+    public static ReadOnlySpan<byte> GetUtf8Span(this string? source)
     {
         ReadOnlySpan<byte> result;
 
@@ -108,7 +107,7 @@ public static unsafe class Utils
             result = null;
         }
 
-        return result.As<byte, sbyte>();
+        return result;
     }
 
     /// <summary>Gets a span for a null-terminated UTF8 character sequence.</summary>
@@ -116,7 +115,7 @@ public static unsafe class Utils
     /// <param name="maxLength">The maximum length of <paramref name="source" /> or <c>-1</c> if the maximum length is unknown.</param>
     /// <returns>A span that starts at <paramref name="source" /> and extends to <paramref name="maxLength" /> or the first null character, whichever comes first.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<sbyte> GetUtf8Span(sbyte* source, int maxLength = -1)
+    public static ReadOnlySpan<byte> GetUtf8Span(byte* source, int maxLength = -1)
         => (source != null) ? GetUtf8Span(in source[0], maxLength) : null;
 
     /// <summary>Gets a span for a null-terminated UTF8 character sequence.</summary>
@@ -124,9 +123,9 @@ public static unsafe class Utils
     /// <param name="maxLength">The maximum length of <paramref name="source" /> or <c>-1</c> if the maximum length is unknown.</param>
     /// <returns>A span that starts at <paramref name="source" /> and extends to <paramref name="maxLength" /> or the first null character, whichever comes first.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ReadOnlySpan<sbyte> GetUtf8Span(in sbyte source, int maxLength = -1)
+    public static ReadOnlySpan<byte> GetUtf8Span(in byte source, int maxLength = -1)
     {
-        ReadOnlySpan<sbyte> result;
+        ReadOnlySpan<byte> result;
 
         if (!IsNullRef(in source))
         {
@@ -136,7 +135,7 @@ public static unsafe class Utils
             }
 
             result = CreateReadOnlySpan(in source, maxLength);
-            var length = result.IndexOf((sbyte)'\0');
+            var length = result.IndexOf((byte)'\0');
 
             if (length >= 0)
             {
@@ -149,5 +148,20 @@ public static unsafe class Utils
         }
 
         return result;
+    }
+
+    public static byte* ToUTF8(in string str)
+    {
+        int count = Encoding.UTF8.GetByteCount(str) + 1;
+        byte* ptr = (byte*)NativeMemory.Alloc((nuint)count);
+        Span<byte> span = new(ptr, count);
+        Encoding.UTF8.GetBytes(str, span);
+        span[^1] = 0;
+        return ptr;
+    }
+
+    public static void FreeUTF8(byte* ptr)
+    {
+        NativeMemory.Free(ptr);
     }
 }

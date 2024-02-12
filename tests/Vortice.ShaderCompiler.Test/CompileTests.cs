@@ -35,15 +35,14 @@ public class CompileTests
         string shaderSourceFile = Path.Combine(AssetsPath, "TriangleVertexError.glsl");
         string shaderSource = File.ReadAllText(shaderSourceFile);
 
-        using (var compiler = new Compiler())
+        using (Compiler compiler = new())
         {
-            using (var result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
+            using (Result result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
             {
-                Assert.That(CompilationStatus.compilationError, Is.EqualTo(result.Status));
+                Assert.That(CompilationStatus.CompilationError, Is.EqualTo(result.Status));
+                Span<byte> shaderCode = result.GetBytecode();
 
-                var shaderCode = result.GetBytecode().ToArray();
-
-                Assert.That(result.ErrorMessage.Contains("error: 'out_var_ThisIsAnError' : undeclared identifier"), Is.True);
+                Assert.That(result.ErrorMessage!.Contains("error: 'out_var_ThisIsAnError' : undeclared identifier"), Is.True);
             }
         }
     }
@@ -59,7 +58,7 @@ public class CompileTests
             compiler.Includer = new Includer(Path.GetDirectoryName(shaderSourceFile)!);
             using (Result result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
             {
-                Assert.That(CompilationStatus.Success, Is.EqualTo(result.Status));
+                Assert.That(result.Status, Is.EqualTo(CompilationStatus.Success));
 
                 var shaderCode = result.GetBytecode().ToArray();
 

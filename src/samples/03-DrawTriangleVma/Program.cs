@@ -36,7 +36,6 @@ public static unsafe class Program
         {
             _graphicsDevice = new GraphicsDevice(Name, EnableValidationLayers, MainWindow);
 
-
             VmaAllocatorCreateInfo allocatorCreateInfo;
             allocatorCreateInfo.vulkanApiVersion = VkVersion.Version_1_2;
             allocatorCreateInfo.physicalDevice = _graphicsDevice.PhysicalDevice;

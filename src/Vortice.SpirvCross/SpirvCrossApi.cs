@@ -61,11 +61,6 @@ unsafe partial class SpirvCrossApi
             return true;
         }
 
-        if (NativeLibrary.TryLoad("libspirv-cross", assembly, searchPath, out nativeLibrary))
-        {
-            return true;
-        }
-
         return false;
     }
 
@@ -112,11 +107,11 @@ unsafe partial class SpirvCrossApi
     }
 
     #region Context
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_get_version")]
-    public static extern void spvc_get_version(out uint major, out uint minor, out uint patch);
+    [LibraryImport(LibName)]
+    public static partial void spvc_get_version(out uint major, out uint minor, out uint patch);
 
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_context_set_error_callback")]
-    public static extern void spvc_context_set_error_callback(spvc_context context, delegate* unmanaged[Cdecl]<nint, sbyte*, void> callback, nint userData);
+    [LibraryImport(LibName)]
+    public static partial void spvc_context_set_error_callback(spvc_context context, delegate* unmanaged[Cdecl]<nint, sbyte*, void> callback, nint userData);
 
     public static spvc_result spvc_context_parse_spirv(spvc_context context, byte[] bytecode, out spvc_parsed_ir parsed_ir)
     {
@@ -231,7 +226,7 @@ unsafe partial class SpirvCrossApi
     }
 
     #region Resources
-    [DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_resources_get_resource_list_for_type")]
-    public static extern spvc_result spvc_resources_get_resource_list_for_type(spvc_resources resources, spvc_resource_type type, out spvc_reflected_resource* resource_list, out nuint resource_size);
+    [LibraryImport(LibName, EntryPoint = "spvc_resources_get_resource_list_for_type")]
+    public static partial spvc_result spvc_resources_get_resource_list_for_type(spvc_resources resources, spvc_resource_type type, out spvc_reflected_resource* resource_list, out nuint resource_size);
     #endregion
 }

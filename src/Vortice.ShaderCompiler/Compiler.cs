@@ -21,7 +21,7 @@ public class Compiler : IDisposable
     }
 
     public Options Options { get; }
-    public IIncluder? Includer;
+    public IIncluder? Includer { get; set; }
 
     /// <summary>
     /// Finalizes an instance of the <see cref="Compiler" /> class.
@@ -50,7 +50,7 @@ public class Compiler : IDisposable
     public Result Compile(string source, string fileName, ShaderKind shaderKind, string entryPoint = "main")
     {
         Includer?.Activate(Options);
-        return new Result(shaderc_compile_into_spv(_handle, source, (nuint)source.Length, (byte)shaderKind, fileName, entryPoint, Options.Handle));
+        return new Result(shaderc_compile_into_spv(_handle, source, shaderKind, fileName, entryPoint, Options.Handle));
     }
 
     public static void GetSpvVersion(out uint version, out uint revision) => shaderc_get_spv_version(out version, out revision);

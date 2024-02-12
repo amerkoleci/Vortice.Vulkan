@@ -4,7 +4,11 @@
     <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
     <Description>https://github.com/google/shaderc bindings.</Description>
     <IncludeContentInPack>true</IncludeContentInPack>
-    <VersionPrefix>1.7.2</VersionPrefix>
+  </PropertyGroup>
+
+  <!-- Version -->
+  <PropertyGroup>
+    <VersionPrefix>1.7.3</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
@@ -14,8 +18,7 @@
 
   <ItemGroup>
     <Content Include="build\**" PackagePath="build" Pack="true" />
-    <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="lib\**" PackagePath="lib" Pack="true" />
+    <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" />
   </ItemGroup>
 
 </Project>
