@@ -104,12 +104,19 @@ unsafe partial class Vma
 
     public static VkResult vmaCreateAllocator(VmaAllocatorCreateInfo* allocateInfo, VmaAllocator* allocator)
     {
-        VmaVulkanFunctions functions = default;
-        functions.vkGetInstanceProcAddr = vkGetInstanceProcAddr_ptr;
-        functions.vkGetDeviceProcAddr = vkGetDeviceProcAddr_ptr;
+        if (allocateInfo->pVulkanFunctions == null)
+        {
+            VmaVulkanFunctions functions = default;
+            functions.vkGetInstanceProcAddr = vkGetInstanceProcAddr_ptr;
+            functions.vkGetDeviceProcAddr = vkGetDeviceProcAddr_ptr;
 
-        allocateInfo->pVulkanFunctions = &functions;
-        return vmaCreateAllocatorPrivate(allocateInfo, allocator);
+            allocateInfo->pVulkanFunctions = &functions;
+            return vmaCreateAllocatorPrivate(allocateInfo, allocator);
+        }
+        else
+        {
+            return vmaCreateAllocatorPrivate(allocateInfo, allocator);
+        }
     }
 
     public static VkResult vmaCreateAllocator(VmaAllocatorCreateInfo* allocateInfo, out VmaAllocator allocator)

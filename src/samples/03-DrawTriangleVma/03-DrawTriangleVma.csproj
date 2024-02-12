@@ -21,14 +21,31 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="$(RepoRootPath)src\Vortice.VulkanMemoryAllocator\runtimes\win-x64\native\vma.dll" Link="vma.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="$(RepoRootPath)src\Vortice.VulkanMemoryAllocator\runtimes\linux-x64\native\libvma.so" Link="libvma.so" Visible="False" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Vortice.VulkanMemoryAllocator\Vortice.VulkanMemoryAllocator.csproj" />
-    <ProjectReference Include="..\..\Vortice.Vulkan\Vortice.Vulkan.csproj" />
     <ProjectReference Include="..\Vortice.Vulkan.SampleFramework\Vortice.Vulkan.SampleFramework.csproj" />
   </ItemGroup>
+
+  <Choose>
+    <When Condition="$([MSBuild]::IsOSPlatform('Windows')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.VulkanMemoryAllocator\runtimes\win-x64\native\vma.dll" Link="vma.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+    <When Condition="$([MSBuild]::IsOSPlatform('Windows')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'Arm64'">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.VulkanMemoryAllocator\runtimes\win-arm64\native\vma.dll" Link="vma.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+    <When Condition="$([MSBuild]::IsOSPlatform('Linux')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.VulkanMemoryAllocator\runtimes\linux-x64\native\libvma.so" Link="libvma.so" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+    <When Condition="$([MSBuild]::IsOSPlatform('OSX'))">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.VulkanMemoryAllocator\runtimes\osx\native\libvma.dylib" Link="libvma.dylib" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+  </Choose>
 
 </Project>

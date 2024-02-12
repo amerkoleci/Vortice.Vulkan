@@ -11,7 +11,7 @@
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>1.4.2</VersionPrefix>
+    <VersionPrefix>1.4.3</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
@@ -20,9 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="build\**" PackagePath="build" Pack="true" />
     <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" />
-    <Content Include="lib\**" PackagePath="lib" Pack="true" />
   </ItemGroup>
 
   <ItemGroup>

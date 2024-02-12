@@ -326,10 +326,6 @@ public static partial class CsCodeGenerator
             {
                 modifier = "internal";
             }
-            if (csFieldType == "VmaVulkanFunctions*" && csFieldName == "pVulkanFunctions")
-            {
-                modifier = "internal";
-            }
 
             writer.WriteLine($"{modifier} {fieldPrefix}{csFieldType} {csFieldName};");
         }

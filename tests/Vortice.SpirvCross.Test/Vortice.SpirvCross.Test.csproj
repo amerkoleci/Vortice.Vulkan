@@ -19,26 +19,25 @@
     </Content>
   </ItemGroup>
 
-
   <Choose>
-    <When Condition="($([MSBuild]::IsOsPlatform('windows')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='win-x64'">
+    <When Condition="$([MSBuild]::IsOSPlatform('Windows')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
       <ItemGroup>
         <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\win-x64\native\spirv-cross.dll" Link="spirv-cross.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
       </ItemGroup>
     </When>
-    <When Condition="($([MSBuild]::IsOsPlatform('windows')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='win-arm644'">
+    <When Condition="$([MSBuild]::IsOSPlatform('Windows')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'Arm64'">
       <ItemGroup>
         <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\win-arm64\native\spirv-cross.dll" Link="spirv-cross.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
       </ItemGroup>
     </When>
-    <When Condition="($([MSBuild]::IsOsPlatform('linux')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='linux-x64'">
+    <When Condition="$([MSBuild]::IsOSPlatform('Linux')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
       <ItemGroup>
         <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\linux-x64\native\libspirv-cross.so" Link="libspirv-cross.so" Visible="False" CopyToOutputDirectory="PreserveNewest" />
       </ItemGroup>
     </When>
-    <When Condition="($([MSBuild]::IsOsPlatform('osx')) and '$(RuntimeIdentifier)'=='') or '$(RuntimeIdentifier)'=='osx-universal'">
+    <When Condition="$([MSBuild]::IsOSPlatform('OSX'))">
       <ItemGroup>
-        <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\osx-universal\native\libspirv-cross.dylib" Link="libspirv-cross.dylib" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\osx\native\libspirv-cross.dylib" Link="libspirv-cross.dylib" Visible="False" CopyToOutputDirectory="PreserveNewest" />
       </ItemGroup>
     </When>
   </Choose>
