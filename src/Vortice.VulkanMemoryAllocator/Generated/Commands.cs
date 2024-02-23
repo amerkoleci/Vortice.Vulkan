@@ -161,6 +161,12 @@ unsafe partial class Vma
 	[LibraryImport(LibName, EntryPoint = "vmaInvalidateAllocations")]
 	public static partial VkResult vmaInvalidateAllocations(VmaAllocator allocator, uint allocationCount, VmaAllocation* allocations, ulong* offsets, ulong* sizes);
 
+	[LibraryImport(LibName, EntryPoint = "vmaCopyMemoryToAllocation")]
+	public static partial VkResult vmaCopyMemoryToAllocation(VmaAllocator allocator, void* srcHostPointer, VmaAllocation dstAllocation, ulong dstAllocationLocalOffset, ulong size);
+
+	[LibraryImport(LibName, EntryPoint = "vmaCopyAllocationToMemory")]
+	public static partial VkResult vmaCopyAllocationToMemory(VmaAllocator allocator, VmaAllocation srcAllocation, ulong srcAllocationLocalOffset, void* dstHostPointer, ulong size);
+
 	[LibraryImport(LibName, EntryPoint = "vmaCheckCorruption")]
 	public static partial VkResult vmaCheckCorruption(VmaAllocator allocator, uint memoryTypeBits);
 

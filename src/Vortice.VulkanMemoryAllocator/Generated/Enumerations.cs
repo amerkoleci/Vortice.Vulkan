@@ -29,6 +29,8 @@ public enum VmaAllocatorCreateFlags
 	BufferDeviceAddress = 0x00000020,
 	/// <unmanaged>VMA_ALLOCATOR_CREATE_EXT_MEMORY_PRIORITY_BIT</unmanaged>
 	EXTMemoryPriority = 0x00000040,
+	/// <unmanaged>VMA_ALLOCATOR_CREATE_KHR_MAINTENANCE4_BIT</unmanaged>
+	KHRMaintenance4 = 0x00000080,
 }
 
 public enum VmaMemoryUsage

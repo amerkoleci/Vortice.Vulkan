@@ -26,10 +26,10 @@ unsafe partial class SpirvCrossApi
             return nativeLibrary;
         }
 
-        return IntPtr.Zero;
+        return 0;
     }
 
-    private static bool TryResolveSpirvCross(Assembly assembly, DllImportSearchPath? searchPath, out IntPtr nativeLibrary)
+    private static bool TryResolveSpirvCross(Assembly assembly, DllImportSearchPath? searchPath, out nint nativeLibrary)
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
