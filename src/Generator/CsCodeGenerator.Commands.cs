@@ -131,19 +131,19 @@ public static partial class CsCodeGenerator
         StringBuilder builder = new();
         foreach (CppParameter parameter in function.Parameters)
         {
-            string paramCsType = GetCsTypeName(parameter.Type, false);
+            string paramCsType = GetCsTypeName(parameter.Type);
 
             if (canUseOut &&
                 CanBeUsedAsOutput(parameter.Type, out CppType? cppTypeDeclaration))
             {
                 builder.Append("out ");
-                paramCsType = GetCsTypeName(cppTypeDeclaration, false);
+                paramCsType = GetCsTypeName(cppTypeDeclaration);
             }
 
             builder.Append(paramCsType).Append(", ");
         }
 
-        string returnCsName = GetCsTypeName(function.ReturnType, false);
+        string returnCsName = GetCsTypeName(function.ReturnType);
         if (!allowNonBlittable)
         {
             // Otherwise we get interop issues with non blittable types
@@ -299,7 +299,7 @@ public static partial class CsCodeGenerator
 
     private static void WriteFunctionInvocation(CodeWriter writer, CppFunction cppFunction, bool canUseOut)
     {
-        string returnCsName = GetCsTypeName(cppFunction.ReturnType, false);
+        string returnCsName = GetCsTypeName(cppFunction.ReturnType);
         string argumentsString = GetParameterSignature(cppFunction, canUseOut);
         string modifier = "public static";
         string functionName = cppFunction.Name;
@@ -310,6 +310,11 @@ public static partial class CsCodeGenerator
         {
             modifier = "private static";
             functionName += "Private";
+        }
+
+        if(cppFunction.Name == "spvReflectEnumerateDescriptorBindings")
+        {
+
         }
 
         if (!_options.GenerateFunctionPointers)
@@ -412,13 +417,13 @@ public static partial class CsCodeGenerator
         foreach (CppParameter cppParameter in parameters)
         {
             string direction = string.Empty;
-            string paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+            string paramCsTypeName = GetCsTypeName(cppParameter.Type);
             string paramCsName = GetParameterName(cppParameter.Name);
 
             if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppType? cppTypeDeclaration))
             {
                 argumentBuilder.Append("out ");
-                paramCsTypeName = GetCsTypeName(cppTypeDeclaration, false);
+                paramCsTypeName = GetCsTypeName(cppTypeDeclaration);
             }
 
             argumentBuilder.Append(paramCsTypeName).Append(' ').Append(paramCsName);

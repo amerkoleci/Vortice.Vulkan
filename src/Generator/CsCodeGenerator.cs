@@ -334,7 +334,7 @@ public static partial class CsCodeGenerator
                         first = false;
                     }
 
-                    string? fieldType = GetCsTypeName(cppField.Type, false);
+                    string? fieldType = GetCsTypeName(cppField.Type);
                     string fieldName = cppField.Name;
                     if (fieldName.StartsWith(_options.ClassName))
                     {
@@ -390,24 +390,21 @@ public static partial class CsCodeGenerator
         return name;
     }
 
-    private static string GetCsTypeName(CppType? type, bool isPointer = false)
+    private static string GetCsTypeName(CppType? type)
     {
         if (type is CppPrimitiveType primitiveType)
         {
-            return GetCsTypeName(primitiveType, isPointer);
+            return GetCsTypeName(primitiveType);
         }
 
         if (type is CppQualifiedType qualifiedType)
         {
-            return GetCsTypeName(qualifiedType.ElementType, isPointer);
+            return GetCsTypeName(qualifiedType.ElementType);
         }
 
         if (type is CppEnum enumType)
         {
             string enumCsName = GetCsCleanName(enumType.Name, false);
-            if (isPointer)
-                return enumCsName + "*";
-
             return enumCsName;
         }
 
@@ -415,76 +412,70 @@ public static partial class CsCodeGenerator
         {
             if (typedef.ElementType is CppClass classElementType)
             {
-                return GetCsTypeName(classElementType, isPointer);
+                return GetCsTypeName(classElementType);
             }
 
             string typeDefCsName = GetCsCleanName(typedef.Name, false);
-            if (isPointer)
-                return typeDefCsName + "*";
-
             return typeDefCsName;
         }
 
         if (type is CppClass @class)
         {
-            var className = GetCsCleanName(@class.Name, false);
-            if (isPointer)
-                return className + "*";
-
+            string className = GetCsCleanName(@class.Name, false);
             return className;
         }
 
         if (type is CppPointerType pointerType)
         {
-            return GetCsTypeName(pointerType);
+            return GetCsTypeName(pointerType) + "*";
         }
 
         if (type is CppArrayType arrayType)
         {
-            return GetCsTypeName(arrayType.ElementType, true);
+            return GetCsTypeName(arrayType.ElementType) + "*";
         }
 
         return string.Empty;
     }
 
-    private static string GetCsTypeName(CppPrimitiveType primitiveType, bool isPointer)
+    private static string GetCsTypeName(CppPrimitiveType primitiveType)
     {
         switch (primitiveType.Kind)
         {
             case CppPrimitiveKind.Void:
-                return isPointer ? "void*" : "void";
+                return "void";
 
             case CppPrimitiveKind.Char:
-                return isPointer ? "sbyte*" : "sbyte";
+                return "sbyte";
 
             case CppPrimitiveKind.WChar:
-                return isPointer ? "ushort*" : "ushort";
+                return "char";
 
             case CppPrimitiveKind.Short:
-                return isPointer ? "short*" : "short";
+                return "short";
 
             case CppPrimitiveKind.Int:
-                return isPointer ? "int*" : "int";
+                return "int";
 
             case CppPrimitiveKind.LongLong:
-                return isPointer ? "long*" : "long";
+                return  "long";
 
             case CppPrimitiveKind.UnsignedChar:
-                return isPointer ? "byte*" : "byte";
+                return "byte";
 
             case CppPrimitiveKind.UnsignedShort:
-                return isPointer ? "ushort*" : "ushort";
+                return "ushort";
 
             case CppPrimitiveKind.UnsignedInt:
-                return isPointer ? "uint*" : "uint";
+                return "uint";
             case CppPrimitiveKind.UnsignedLongLong:
-                return isPointer ? "ulong*" : "ulong";
+                return "ulong";
 
             case CppPrimitiveKind.Float:
-                return isPointer ? "float*" : "float";
+                return "float";
 
             case CppPrimitiveKind.Double:
-                return isPointer ? "double*" : "double";
+                return "double";
 
             default:
                 throw new InvalidOperationException($"Unknown primitive type: {primitiveType.Kind}");
@@ -497,28 +488,28 @@ public static partial class CsCodeGenerator
         {
             if (qualifiedType.ElementType is CppPrimitiveType primitiveType)
             {
-                return GetCsTypeName(primitiveType, true);
+                return GetCsTypeName(primitiveType);
             }
             else if (qualifiedType.ElementType is CppClass @classType)
             {
-                return GetCsTypeName(@classType, true);
+                return GetCsTypeName(@classType);
             }
             else if (qualifiedType.ElementType is CppPointerType subPointerType)
             {
-                return GetCsTypeName(subPointerType, true) + "*";
+                return GetCsTypeName(subPointerType) + "*";
             }
             else if (qualifiedType.ElementType is CppTypedef typedef)
             {
-                return GetCsTypeName(typedef, true);
+                return GetCsTypeName(typedef);
             }
             else if (qualifiedType.ElementType is CppEnum @enum)
             {
-                return GetCsTypeName(@enum, true);
+                return GetCsTypeName(@enum);
             }
 
-            return GetCsTypeName(qualifiedType.ElementType, true);
+            return GetCsTypeName(qualifiedType.ElementType);
         }
 
-        return GetCsTypeName(pointerType.ElementType, true);
+        return GetCsTypeName(pointerType.ElementType);
     }
 }

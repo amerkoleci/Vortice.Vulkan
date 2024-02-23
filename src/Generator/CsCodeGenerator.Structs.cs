@@ -99,7 +99,7 @@ public static partial class CsCodeGenerator
             handleSType = true;
         }
 
-        if (structName == "SpvReflectShaderModule")
+        if (structName == "VkInstanceCreateInfo")
         {
 
         }
@@ -193,7 +193,7 @@ public static partial class CsCodeGenerator
 
             if (canUseFixed)
             {
-                string csFieldType = GetCsTypeName(arrayType.ElementType, false);
+                string csFieldType = GetCsTypeName(arrayType.ElementType);
                 writer.WriteLine($"public fixed {csFieldType} {csFieldName}[{arrayType.Size}];");
             }
             else
@@ -202,12 +202,12 @@ public static partial class CsCodeGenerator
                 if (arrayType.ElementType is CppArrayType elementArrayType)
                 {
                     // vk-video madness
-                    csFieldType = GetCsTypeName(elementArrayType.ElementType, false);
+                    csFieldType = GetCsTypeName(elementArrayType.ElementType);
                     writer.WriteLine($"public fixed {csFieldType} {csFieldName}[{arrayType.Size} * {elementArrayType.Size}];");
                 }
                 else
                 {
-                    csFieldType = GetCsTypeName(arrayType.ElementType, false);
+                    csFieldType = GetCsTypeName(arrayType.ElementType);
 
                     writer.WriteLine($"public {csFieldName}__FixedBuffer {csFieldName};");
                     writer.WriteLine();
@@ -319,14 +319,14 @@ public static partial class CsCodeGenerator
                 StringBuilder builder = new();
                 foreach (CppParameter parameter in functionType.Parameters)
                 {
-                    string paramCsType = GetCsTypeName(parameter.Type, false);
+                    string paramCsType = GetCsTypeName(parameter.Type);
                     // Otherwise we get interop issues with non blittable types
                     if (paramCsType == "VkBool32")
                         paramCsType = "uint";
                     builder.Append(paramCsType).Append(", ");
                 }
 
-                string returnCsName = GetCsTypeName(functionType.ReturnType, false);
+                string returnCsName = GetCsTypeName(functionType.ReturnType);
                 // Otherwise we get interop issues with non blittable types
                 if (returnCsName == "VkBool32")
                     returnCsName = "uint";
@@ -337,7 +337,7 @@ public static partial class CsCodeGenerator
                 return;
             }
 
-            string csFieldType = GetCsTypeName(field.Type, false);
+            string csFieldType = GetCsTypeName(field.Type);
             if (csFieldName.Equals("specVersion", StringComparison.OrdinalIgnoreCase) ||
                 csFieldName.Equals("applicationVersion", StringComparison.OrdinalIgnoreCase) ||
                 csFieldName.Equals("engineVersion", StringComparison.OrdinalIgnoreCase) ||
@@ -420,7 +420,7 @@ public static partial class CsCodeGenerator
                 }
 
                 string csFieldName = NormalizeFieldName(field.Name);
-                string csFieldType = GetCsTypeName(field.Type, false);
+                string csFieldType = GetCsTypeName(field.Type);
                 if (csFieldName.Equals("specVersion", StringComparison.OrdinalIgnoreCase) ||
                     csFieldName.Equals("applicationVersion", StringComparison.OrdinalIgnoreCase) ||
                     csFieldName.Equals("engineVersion", StringComparison.OrdinalIgnoreCase) ||

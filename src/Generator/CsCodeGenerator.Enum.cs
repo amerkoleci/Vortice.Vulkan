@@ -153,7 +153,7 @@ public static partial class CsCodeGenerator
         { "VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV", "_1024Triangles128Bytes" },
 
         // Spvc
-        //{  "SPVC_SUCCESS", "Success" },
+        { "SPVC_SUCCESS", "Success" },
     };
 
     private static readonly Dictionary<string, string> s_knownEnumPrefixes = new()
@@ -178,8 +178,9 @@ public static partial class CsCodeGenerator
         { "StdVideoAV1MatrixCoefficients", "STD_VIDEO_AV1_MATRIX_COEFFICIENTS" },
         { "StdVideoAV1ChromaSamplePosition", "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION" },
 
-        //
+        // spvc
         { "spvc_result", "SPVC_ERROR" },
+        { "spvc_hlsl_binding_flag_bits", "SPVC_HLSL_BINDING_AUTO" },
 
         // Spirv-Reflect
         {  "SpvReflectResult", "SPV_REFLECT_RESULT" },
@@ -242,6 +243,7 @@ public static partial class CsCodeGenerator
         "msft",
         "img",
         "av1",
+        "es",
     };
 
     private static readonly HashSet<string> s_enumConstants = [];
@@ -258,8 +260,12 @@ public static partial class CsCodeGenerator
                 continue;
 
             // Skip spirv.h enums
-            if (cppEnum.Name.StartsWith("Spv") && _options.ClassName == "SPIRVReflectApi" && Path.GetFileNameWithoutExtension(cppEnum.SourceFile) == "spirv")
+            if (cppEnum.Name.StartsWith("Spv")
+                && Path.GetFileNameWithoutExtension(cppEnum.SourceFile) == "spirv"
+                && _options.ClassName != "Spv")
+            {
                 continue;
+            }
 
             bool isBitmask =
                 cppEnum.Name.EndsWith("FlagBits2") ||
@@ -274,7 +280,9 @@ public static partial class CsCodeGenerator
                 || (cppEnum.Name.StartsWith("Spv") && cppEnum.Name.EndsWith("Mask_")) // spirv.h
                 ;
 
-            if (cppEnum.Name == "SpvReflectResourceType")
+            if (cppEnum.Name == "SpvReflectResourceType"
+                || cppEnum.Name == "spvc_hlsl_binding_flag_bits"
+                )
             {
                 isBitmask = true;
             }
@@ -300,12 +308,7 @@ public static partial class CsCodeGenerator
                 }
             }
 
-            bool shouldGeneratePrettyPrefix = _options.IsVulkan || enumName.StartsWith("Vma") || enumName.StartsWith("Spv");
-            //if (enumName.StartsWith("spvc_"))
-            //{
-            //    shouldGeneratePrettyPrefix = true;
-            //}
-
+            bool shouldGeneratePrettyPrefix = _options.IsVulkan || enumName.StartsWith("Vma") || enumName.StartsWith("spvc_");
             string enumCsName = GetCsCleanName(enumName, shouldGeneratePrettyPrefix);
             string enumNamePrefix = shouldGeneratePrettyPrefix ? GetEnumNamePrefix(enumName) : enumName;
 
@@ -410,9 +413,11 @@ public static partial class CsCodeGenerator
                         enumItem.Name.EndsWith("_MAX_ENUM_LUNARG") ||
                         //enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
                         enumItem.Name == "VK_STENCIL_FRONT_AND_BACK" ||
-                        enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE" ||
-                        enumItem.Name.EndsWith("_INT_MAX") ||
-                        enumItem.Name.EndsWith("_MAX_INT")
+                        enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE"
+                        || enumItem.Name.EndsWith("_INT_MAX")
+                        || enumItem.Name.EndsWith("_MAX_INT")
+                        || enumItem.Name.StartsWith("SPVC_MSL_SHADER_INPUT_FORMAT_")
+                        || enumItem.Name.StartsWith("SPVC_MSL_VERTEX_FORMAT_")
                         )
                     {
                         continue;
@@ -564,7 +569,7 @@ public static partial class CsCodeGenerator
             string lastCreatedEnum = string.Empty;
             foreach (CppField cppField in compilation.Fields)
             {
-                string? fieldType = GetCsTypeName(cppField.Type, false);
+                string? fieldType = GetCsTypeName(cppField.Type);
                 string createdEnumName;
 
                 if (!createdEnums.ContainsKey(fieldType))
@@ -583,11 +588,11 @@ public static partial class CsCodeGenerator
                     {
                         if (qualifiedType.ElementType is CppTypedef typedef)
                         {
-                            baseType = GetCsTypeName(typedef.ElementType, false);
+                            baseType = GetCsTypeName(typedef.ElementType);
                         }
                         else
                         {
-                            baseType = GetCsTypeName(qualifiedType.ElementType, false);
+                            baseType = GetCsTypeName(qualifiedType.ElementType);
                         }
                     }
 

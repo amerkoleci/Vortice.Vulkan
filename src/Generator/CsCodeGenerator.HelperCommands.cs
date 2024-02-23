@@ -129,7 +129,7 @@ public static partial class CsCodeGenerator
 
                     foreach (CppParameter cppParameter in newParameters)
                     {
-                        string paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+                        string paramCsTypeName = GetCsTypeName(cppParameter.Type);
                         string paramCsName = GetParameterName(cppParameter.Name);
                         string argumentSignature = $"{paramCsTypeName} {paramCsName}";
 
