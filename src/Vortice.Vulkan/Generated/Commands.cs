@@ -194,8 +194,8 @@ unsafe partial class Vulkan
 		vkFreeMemory_ptr(device, memory, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void*, VkResult> vkMapMemory_ptr;
-	public static VkResult vkMapMemory(VkDevice device, VkDeviceMemory memory, ulong offset, ulong size, VkMemoryMapFlags flags, void* data)
+	private static delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void**, VkResult> vkMapMemory_ptr;
+	public static VkResult vkMapMemory(VkDevice device, VkDeviceMemory memory, ulong offset, ulong size, VkMemoryMapFlags flags, void** data)
 	{
 		return vkMapMemory_ptr(device, memory, offset, size, flags, data);
 	}
@@ -2210,8 +2210,8 @@ unsafe partial class Vulkan
 		return vkGetPipelineExecutableInternalRepresentationsKHR_ptr(device, executableInfo, internalRepresentationCount, internalRepresentations);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void*, VkResult> vkMapMemory2KHR_ptr;
-	public static VkResult vkMapMemory2KHR(VkDevice device, VkMemoryMapInfoKHR* memoryMapInfo, void* data)
+	private static delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void**, VkResult> vkMapMemory2KHR_ptr;
+	public static VkResult vkMapMemory2KHR(VkDevice device, VkMemoryMapInfoKHR* memoryMapInfo, void** data)
 	{
 		return vkMapMemory2KHR_ptr(device, memoryMapInfo, data);
 	}
@@ -3542,8 +3542,8 @@ unsafe partial class Vulkan
 		vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr(device, bindingReference, hostMapping);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSet, void*, void> vkGetDescriptorSetHostMappingVALVE_ptr;
-	public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void* data)
+	private static delegate* unmanaged<VkDevice, VkDescriptorSet, void**, void> vkGetDescriptorSetHostMappingVALVE_ptr;
+	public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void** data)
 	{
 		vkGetDescriptorSetHostMappingVALVE_ptr(device, descriptorSet, data);
 	}
@@ -4058,8 +4058,8 @@ unsafe partial class Vulkan
 		return vkGetAndroidHardwareBufferPropertiesANDROID_ptr(device, buffer, properties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_ptr;
-	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, IntPtr* buffer)
+	private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr**, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_ptr;
+	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, IntPtr** buffer)
 	{
 		return vkGetMemoryAndroidHardwareBufferANDROID_ptr(device, info, buffer);
 	}
@@ -4277,7 +4277,7 @@ unsafe partial class Vulkan
 		vkAllocateMemory_ptr = (delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult>) load(context, nameof(vkAllocateMemory));
 		vkAllocateMemory_out_ptr = (delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, out VkDeviceMemory, VkResult>) load(context, nameof(vkAllocateMemory));
 		vkFreeMemory_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void>) load(context, nameof(vkFreeMemory));
-		vkMapMemory_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void*, VkResult>) load(context, nameof(vkMapMemory));
+		vkMapMemory_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void**, VkResult>) load(context, nameof(vkMapMemory));
 		vkUnmapMemory_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, void>) load(context, nameof(vkUnmapMemory));
 		vkFlushMappedMemoryRanges_ptr = (delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>) load(context, nameof(vkFlushMappedMemoryRanges));
 		vkInvalidateMappedMemoryRanges_ptr = (delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>) load(context, nameof(vkInvalidateMappedMemoryRanges));
@@ -4559,7 +4559,7 @@ unsafe partial class Vulkan
 		vkGetPipelineExecutablePropertiesKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineInfoKHR*, uint*, VkPipelineExecutablePropertiesKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutablePropertiesKHR));
 		vkGetPipelineExecutableStatisticsKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableStatisticKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutableStatisticsKHR));
 		vkGetPipelineExecutableInternalRepresentationsKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableInternalRepresentationKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutableInternalRepresentationsKHR));
-		vkMapMemory2KHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void*, VkResult>) load(context, nameof(vkMapMemory2KHR));
+		vkMapMemory2KHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void**, VkResult>) load(context, nameof(vkMapMemory2KHR));
 		vkUnmapMemory2KHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryUnmapInfoKHR*, VkResult>) load(context, nameof(vkUnmapMemory2KHR));
 		vkGetEncodedVideoSessionParametersKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult>) load(context, nameof(vkGetEncodedVideoSessionParametersKHR));
 		vkCmdEncodeVideoKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void>) load(context, nameof(vkCmdEncodeVideoKHR));
@@ -4752,7 +4752,7 @@ unsafe partial class Vulkan
 		vkCmdDrawClusterIndirectHUAWEI_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, void>) load(context, nameof(vkCmdDrawClusterIndirectHUAWEI));
 		vkSetDeviceMemoryPriorityEXT_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, float, void>) load(context, nameof(vkSetDeviceMemoryPriorityEXT));
 		vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetBindingReferenceVALVE*, VkDescriptorSetLayoutHostMappingInfoVALVE*, void>) load(context, nameof(vkGetDescriptorSetLayoutHostMappingInfoVALVE));
-		vkGetDescriptorSetHostMappingVALVE_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSet, void*, void>) load(context, nameof(vkGetDescriptorSetHostMappingVALVE));
+		vkGetDescriptorSetHostMappingVALVE_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSet, void**, void>) load(context, nameof(vkGetDescriptorSetHostMappingVALVE));
 		vkCmdCopyMemoryIndirectNV_ptr = (delegate* unmanaged<VkCommandBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdCopyMemoryIndirectNV));
 		vkCmdCopyMemoryToImageIndirectNV_ptr = (delegate* unmanaged<VkCommandBuffer, ulong, uint, uint, VkImage, VkImageLayout, VkImageSubresourceLayers*, void>) load(context, nameof(vkCmdCopyMemoryToImageIndirectNV));
 		vkCmdDecompressMemoryNV_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkDecompressMemoryRegionNV*, void>) load(context, nameof(vkCmdDecompressMemoryNV));
@@ -4835,7 +4835,7 @@ unsafe partial class Vulkan
 		vkCmdDrawMeshTasksIndirectEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectEXT));
 		vkCmdDrawMeshTasksIndirectCountEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectCountEXT));
 		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
-		vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr*, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
+		vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr**, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
 		vkExportMetalObjectsEXT_ptr = (delegate* unmanaged<VkDevice, VkExportMetalObjectsInfoEXT*, void>) load(context, nameof(vkExportMetalObjectsEXT));
 		vkCreateExecutionGraphPipelinesAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateExecutionGraphPipelinesAMDX));
 		vkGetExecutionGraphPipelineScratchSizeAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkExecutionGraphPipelineScratchSizeAMDX*, VkResult>) load(context, nameof(vkGetExecutionGraphPipelineScratchSizeAMDX));

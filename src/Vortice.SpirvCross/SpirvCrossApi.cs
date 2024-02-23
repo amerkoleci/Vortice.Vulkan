@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using static Vortice.SpirvCross.spvc_result;
 using static Vortice.SpirvCross.Utils;
 
 namespace Vortice.SpirvCross;
@@ -65,9 +64,9 @@ unsafe partial class SpirvCrossApi
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void ThrowIfFailed(spvc_result result, [CallerArgumentExpression(nameof(result))] string? valueExpression = null)
+    public static void ThrowIfFailed(Result result, [CallerArgumentExpression(nameof(result))] string? valueExpression = null)
     {
-        if (result != SPVC_SUCCESS)
+        if (result != Result.Success)
         {
             string message = string.Format("'{0}' failed with an error result of '{1}'", valueExpression ?? "Method", result);
             throw new SpirvCrossException(result, message);
@@ -76,9 +75,9 @@ unsafe partial class SpirvCrossApi
 
     [Conditional("DEBUG")]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void DebugThrowIfFailed(spvc_result result, [CallerArgumentExpression(nameof(result))] string? valueExpression = null)
+    public static void DebugThrowIfFailed(Result result, [CallerArgumentExpression(nameof(result))] string? valueExpression = null)
     {
-        if (result != SPVC_SUCCESS)
+        if (result != Result.Success)
         {
             string message = string.Format("'{0}' failed with an error result of '{1}'", valueExpression ?? "Method", result);
             throw new SpirvCrossException(result, message);
@@ -87,9 +86,9 @@ unsafe partial class SpirvCrossApi
 
     [DebuggerHidden]
     [DebuggerStepThrough]
-    public static void CheckResult(this spvc_result result, string message = "SPIRV-Cross error occured")
+    public static void CheckResult(this Result result, string message = "SPIRV-Cross error occured")
     {
-        if (result != SPVC_SUCCESS)
+        if (result != Result.Success)
         {
             throw new SpirvCrossException(result, message);
         }
@@ -98,9 +97,9 @@ unsafe partial class SpirvCrossApi
     [Conditional("DEBUG")]
     [DebuggerHidden]
     [DebuggerStepThrough]
-    public static void DebugCheckResult(this spvc_result result, string message = "SPIRV-Cross error occured")
+    public static void DebugCheckResult(this Result result, string message = "SPIRV-Cross error occured")
     {
-        if (result != SPVC_SUCCESS)
+        if (result != Result.Success)
         {
             throw new SpirvCrossException(result, message);
         }
@@ -113,7 +112,7 @@ unsafe partial class SpirvCrossApi
     [LibraryImport(LibName)]
     public static partial void spvc_context_set_error_callback(spvc_context context, delegate* unmanaged[Cdecl]<nint, sbyte*, void> callback, nint userData);
 
-    public static spvc_result spvc_context_parse_spirv(spvc_context context, byte[] bytecode, out spvc_parsed_ir parsed_ir)
+    public static Result spvc_context_parse_spirv(spvc_context context, byte[] bytecode, out spvc_parsed_ir parsed_ir)
     {
         fixed (byte* bytecodePtr = bytecode)
         {
@@ -124,7 +123,7 @@ unsafe partial class SpirvCrossApi
         }
     }
 
-    public static spvc_result spvc_context_parse_spirv(spvc_context context, ReadOnlySpan<byte> bytecode, out spvc_parsed_ir parsed_ir)
+    public static Result spvc_context_parse_spirv(spvc_context context, ReadOnlySpan<byte> bytecode, out spvc_parsed_ir parsed_ir)
     {
         fixed (byte* bytecodePtr = bytecode)
         {
@@ -132,7 +131,7 @@ unsafe partial class SpirvCrossApi
         }
     }
 
-    public static spvc_result spvc_context_parse_spirv(spvc_context context, uint[] spirv, out spvc_parsed_ir parsed_ir)
+    public static Result spvc_context_parse_spirv(spvc_context context, uint[] spirv, out spvc_parsed_ir parsed_ir)
     {
         fixed (uint* spirvPtr = spirv)
         {
@@ -148,11 +147,11 @@ unsafe partial class SpirvCrossApi
     #endregion
 
     #region Compiler
-    public static spvc_result spvc_compiler_compile(spvc_compiler compiler, out string? source)
+    public static Result spvc_compiler_compile(spvc_compiler compiler, out string? source)
     {
         sbyte* utf8Str = default;
-        spvc_result result = spvc_compiler_compile(compiler, (sbyte*)&utf8Str);
-        if (result != SPVC_SUCCESS)
+        Result result = spvc_compiler_compile(compiler, &utf8Str);
+        if (result != Result.Success)
         {
             source = default;
             return result;
@@ -217,7 +216,7 @@ unsafe partial class SpirvCrossApi
     #endregion
 
     [LibraryImport(LibName, EntryPoint = "spvc_compiler_get_combined_image_samplers")]
-    public static partial spvc_result spvc_compiler_get_combined_image_samplers(spvc_compiler compiler, out spvc_combined_image_sampler* samplers, out nuint num_samplers);
+    public static partial Result spvc_compiler_get_combined_image_samplers(spvc_compiler compiler, out spvc_combined_image_sampler* samplers, out nuint num_samplers);
 
     public static ReadOnlySpan<spvc_combined_image_sampler> spvc_compiler_get_combined_image_samplers(spvc_compiler compiler)
     {
@@ -227,6 +226,6 @@ unsafe partial class SpirvCrossApi
 
     #region Resources
     [LibraryImport(LibName, EntryPoint = "spvc_resources_get_resource_list_for_type")]
-    public static partial spvc_result spvc_resources_get_resource_list_for_type(spvc_resources resources, spvc_resource_type type, out spvc_reflected_resource* resource_list, out nuint resource_size);
+    public static partial Result spvc_resources_get_resource_list_for_type(spvc_resources resources, ResourceType type, out spvc_reflected_resource* resource_list, out nuint resource_size);
     #endregion
 }

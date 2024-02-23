@@ -2,11 +2,8 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using NUnit.Framework;
+using Vortice.SPIRV;
 using static Vortice.SpirvCross.SpirvCrossApi;
-using static Vortice.SpirvCross.spvc_backend;
-using static Vortice.SpirvCross.spvc_capture_mode;
-using static Vortice.SpirvCross.spvc_compiler_option;
-using static Vortice.SpirvCross.spvc_resource_type;
 
 namespace Vortice.SpirvCross.Test;
 
@@ -34,11 +31,11 @@ public unsafe class Tests
         byte[] vertexBytecode = GetBytecode("triangle.vert");
         spvc_context_create(out spvc_context context).CheckResult();
         spvc_context_parse_spirv(context, vertexBytecode, out spvc_parsed_ir parsedIr).CheckResult();
-        spvc_context_create_compiler(context, SPVC_BACKEND_GLSL, parsedIr, SPVC_CAPTURE_MODE_TAKE_OWNERSHIP, out spvc_compiler compiler).CheckResult();
+        spvc_context_create_compiler(context, Backend.GLSL, parsedIr, CaptureMode.TakeOwnership, out spvc_compiler compiler).CheckResult();
 
         spvc_compiler_create_compiler_options(compiler, out spvc_compiler_options options).CheckResult();
-        spvc_compiler_options_set_uint(options, SPVC_COMPILER_OPTION_GLSL_VERSION, 330);
-        spvc_compiler_options_set_bool(options, SPVC_COMPILER_OPTION_GLSL_ES, SPVC_FALSE);
+        spvc_compiler_options_set_uint(options, CompilerOption.GLSLVersion, 330);
+        spvc_compiler_options_set_bool(options, CompilerOption.GLSLES, SPVC_FALSE);
         spvc_compiler_install_compiler_options(compiler, options);
 
         spvc_compiler_compile(compiler, out string? glsl);
@@ -56,10 +53,10 @@ public unsafe class Tests
 
         spvc_context_create(out spvc_context context).CheckResult();
         spvc_context_parse_spirv(context, vertexBytecode, out spvc_parsed_ir parsedIr).CheckResult();
-        spvc_context_create_compiler(context, SPVC_BACKEND_HLSL, parsedIr, SPVC_CAPTURE_MODE_TAKE_OWNERSHIP, out spvc_compiler compiler).CheckResult();
+        spvc_context_create_compiler(context, Backend.HLSL, parsedIr, CaptureMode.TakeOwnership, out spvc_compiler compiler).CheckResult();
 
         spvc_compiler_create_compiler_options(compiler, out spvc_compiler_options options).CheckResult();
-        spvc_compiler_options_set_uint(options, SPVC_COMPILER_OPTION_HLSL_SHADER_MODEL, 50);
+        spvc_compiler_options_set_uint(options, CompilerOption.HLSLShaderModel, 50);
         spvc_compiler_install_compiler_options(compiler, options);
 
         spvc_compiler_compile(compiler, out string? hlsl);
@@ -77,12 +74,12 @@ public unsafe class Tests
 
         spvc_context_create(out spvc_context context).CheckResult();
         spvc_context_parse_spirv(context, vertexBytecode, out spvc_parsed_ir parsedIr).CheckResult();
-        spvc_context_create_compiler(context, SPVC_BACKEND_GLSL, parsedIr, SPVC_CAPTURE_MODE_TAKE_OWNERSHIP, out spvc_compiler compiler_glsl).CheckResult();
+        spvc_context_create_compiler(context, Backend.GLSL, parsedIr, CaptureMode.TakeOwnership, out spvc_compiler compiler_glsl).CheckResult();
 
         spvc_compiler_create_shader_resources(compiler_glsl, out spvc_resources resources);
 
         spvc_reflected_resource* resourceList;
-        spvc_resources_get_resource_list_for_type(resources, SPVC_RESOURCE_TYPE_UNIFORM_BUFFER, out resourceList, out nuint resourceSize).CheckResult();
+        spvc_resources_get_resource_list_for_type(resources, ResourceType.UniformBuffer, out resourceList, out nuint resourceSize).CheckResult();
 
         Assert.That(resourceSize, Is.EqualTo((nuint)1));
 
@@ -101,7 +98,7 @@ public unsafe class Tests
 
         Assert.That(spvc_context_get_last_error_string(context), Is.Empty);
 
-        spvc_resources_get_resource_list_for_type(resources, SPVC_RESOURCE_TYPE_STAGE_INPUT, out resourceList, out resourceSize).CheckResult();
+        spvc_resources_get_resource_list_for_type(resources, ResourceType.StageInput, out resourceList, out resourceSize).CheckResult();
         Assert.That(resourceSize, Is.EqualTo((nuint)3));
         Assert.That(resourceList[0].GetName(), Is.EqualTo("inUV"));
         Assert.That(resourceList[1].GetName(), Is.EqualTo("inPos"));
@@ -119,10 +116,10 @@ public unsafe class Tests
 
         spvc_context_create(out spvc_context context).CheckResult();
         spvc_context_parse_spirv(context, vertexBytecode, out spvc_parsed_ir parsedIr).CheckResult();
-        spvc_context_create_compiler(context, SPVC_BACKEND_GLSL, parsedIr, SPVC_CAPTURE_MODE_TAKE_OWNERSHIP, out spvc_compiler compiler_glsl).CheckResult();
+        spvc_context_create_compiler(context, Backend.GLSL, parsedIr, CaptureMode.TakeOwnership, out spvc_compiler compiler_glsl).CheckResult();
 
         spvc_compiler_create_shader_resources(compiler_glsl, out spvc_resources resources);
-        spvc_resources_get_resource_list_for_type(resources, SPVC_RESOURCE_TYPE_SAMPLED_IMAGE, out spvc_reflected_resource* resourceList, out nuint resourceSize).CheckResult();
+        spvc_resources_get_resource_list_for_type(resources, ResourceType.SampledImage, out spvc_reflected_resource* resourceList, out nuint resourceSize).CheckResult();
         ReadOnlySpan<spvc_combined_image_sampler> samplers = spvc_compiler_get_combined_image_samplers(compiler_glsl);
 
         Assert.That(resourceSize, Is.EqualTo((nuint)1));

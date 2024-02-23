@@ -30,13 +30,13 @@ unsafe partial class Vma
 	public static partial void vmaGetAllocatorInfo(VmaAllocator allocator, out VmaAllocatorInfo allocatorInfo);
 
 	[LibraryImport(LibName, EntryPoint = "vmaGetPhysicalDeviceProperties")]
-	public static partial void vmaGetPhysicalDeviceProperties(VmaAllocator allocator, VkPhysicalDeviceProperties* physicalDeviceProperties);
+	public static partial void vmaGetPhysicalDeviceProperties(VmaAllocator allocator, VkPhysicalDeviceProperties** physicalDeviceProperties);
 
 	[LibraryImport(LibName, EntryPoint = "vmaGetPhysicalDeviceProperties")]
 	public static partial void vmaGetPhysicalDeviceProperties(VmaAllocator allocator, out VkPhysicalDeviceProperties physicalDeviceProperties);
 
 	[LibraryImport(LibName, EntryPoint = "vmaGetMemoryProperties")]
-	public static partial void vmaGetMemoryProperties(VmaAllocator allocator, VkPhysicalDeviceMemoryProperties* physicalDeviceMemoryProperties);
+	public static partial void vmaGetMemoryProperties(VmaAllocator allocator, VkPhysicalDeviceMemoryProperties** physicalDeviceMemoryProperties);
 
 	[LibraryImport(LibName, EntryPoint = "vmaGetMemoryProperties")]
 	public static partial void vmaGetMemoryProperties(VmaAllocator allocator, out VkPhysicalDeviceMemoryProperties physicalDeviceMemoryProperties);
@@ -96,7 +96,7 @@ unsafe partial class Vma
 	public static partial VkResult vmaCheckPoolCorruption(VmaAllocator allocator, VmaPool pool);
 
 	[LibraryImport(LibName, EntryPoint = "vmaGetPoolName")]
-	public static partial void vmaGetPoolName(VmaAllocator allocator, VmaPool pool, sbyte* name);
+	public static partial void vmaGetPoolName(VmaAllocator allocator, VmaPool pool, sbyte** name);
 
 	[LibraryImport(LibName, EntryPoint = "vmaSetPoolName")]
 	public static partial void vmaSetPoolName(VmaAllocator allocator, VmaPool pool, sbyte* name);
@@ -144,7 +144,7 @@ unsafe partial class Vma
 	public static partial void vmaGetAllocationMemoryProperties(VmaAllocator allocator, VmaAllocation allocation, VkMemoryPropertyFlags* flags);
 
 	[LibraryImport(LibName, EntryPoint = "vmaMapMemory")]
-	public static partial VkResult vmaMapMemory(VmaAllocator allocator, VmaAllocation allocation, void* data);
+	public static partial VkResult vmaMapMemory(VmaAllocator allocator, VmaAllocation allocation, void** data);
 
 	[LibraryImport(LibName, EntryPoint = "vmaUnmapMemory")]
 	public static partial void vmaUnmapMemory(VmaAllocator allocator, VmaAllocation allocation);
@@ -285,13 +285,13 @@ unsafe partial class Vma
 	public static partial void vmaCalculateVirtualBlockStatistics(VmaVirtualBlock virtualBlock, out VmaDetailedStatistics stats);
 
 	[LibraryImport(LibName, EntryPoint = "vmaBuildVirtualBlockStatsString")]
-	public static partial void vmaBuildVirtualBlockStatsString(VmaVirtualBlock virtualBlock, sbyte* statsString, VkBool32 detailedMap);
+	public static partial void vmaBuildVirtualBlockStatsString(VmaVirtualBlock virtualBlock, sbyte** statsString, VkBool32 detailedMap);
 
 	[LibraryImport(LibName, EntryPoint = "vmaFreeVirtualBlockStatsString")]
 	public static partial void vmaFreeVirtualBlockStatsString(VmaVirtualBlock virtualBlock, sbyte* statsString);
 
 	[LibraryImport(LibName, EntryPoint = "vmaBuildStatsString")]
-	public static partial void vmaBuildStatsString(VmaAllocator allocator, sbyte* statsString, VkBool32 detailedMap);
+	public static partial void vmaBuildStatsString(VmaAllocator allocator, sbyte** statsString, VkBool32 detailedMap);
 
 	[LibraryImport(LibName, EntryPoint = "vmaFreeStatsString")]
 	public static partial void vmaFreeStatsString(VmaAllocator allocator, sbyte* statsString);
