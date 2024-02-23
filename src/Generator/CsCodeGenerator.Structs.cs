@@ -13,14 +13,12 @@ public static partial class CsCodeGenerator
         if (compilation.Classes.Count == 0)
             return;
 
-        string visibility = _options.PublicVisiblity ? "public" : "internal";
-
-        List<string> usings = new()
-        {
+        List<string> usings =
+        [
             "System.Runtime.InteropServices",
             "System.Runtime.CompilerServices",
             "System.Diagnostics.CodeAnalysis"
-        };
+        ];
         if (_options.ExtraUsings.Count > 0)
         {
             usings.AddRange(_options.ExtraUsings);
@@ -63,110 +61,120 @@ public static partial class CsCodeGenerator
             //    continue;
             //}
 
-            bool isUnion = cppClass.ClassKind == CppClassKind.Union;
-            bool hasSType = false;
-            if (cppClass.Fields.FirstOrDefault(item => item.Name == "sType") != null)
-            {
-                hasSType = true;
-            }
-
-            string csName = cppClass.Name;
-            if (isUnion)
-            {
-                writer.WriteLine("[StructLayout(LayoutKind.Explicit)]");
-            }
-            else
-            {
-                writer.WriteLine("[StructLayout(LayoutKind.Sequential)]");
-            }
-
-            bool isReadOnly = false;
-
-            string modifier = "partial";
-            bool needUnsafe = NeedUnsafe(cppClass);
-            if (needUnsafe)
-            {
-                modifier = "unsafe partial";
-            }
-            if (csName == "VkClearDepthStencilValue")
-            {
-                modifier = "readonly partial";
-                isReadOnly = true;
-            }
-
-            bool handleSType = false;
-            if (hasSType &&
-                csName != "VkBaseInStructure" &&
-                csName != "VkBaseOutStructure")
-            {
-                handleSType = true;
-            }
-
-            using (writer.PushBlock($"{visibility} {modifier} struct {csName}"))
-            {
-                if (_options.GenerateSizeOfStructs && cppClass.SizeOf > 0)
-                {
-                    writer.WriteLine("/// <summary>");
-                    writer.WriteLine($"/// The size of the <see cref=\"{csName}\"/> type, in bytes.");
-                    writer.WriteLine("/// </summary>");
-                    writer.WriteLine($"public static readonly int SizeInBytes = {cppClass.SizeOf};");
-                    writer.WriteLine();
-                }
-
-                foreach (CppField cppField in cppClass.Fields)
-                {
-                    WriteField(writer, cppField, handleSType, isUnion, isReadOnly);
-                }
-
-                if (handleSType)
-                {
-                    string structureTypeValue = csName;
-                    if (structureTypeValue.StartsWith("Vk"))
-                    {
-                        structureTypeValue = structureTypeValue.Substring(2);
-                    }
-                    if (structureTypeValue.EndsWith("ANDROID"))
-                    {
-                        structureTypeValue = structureTypeValue.Replace("ANDROID", "Android");
-                    }
-                    if (structureTypeValue == "ImportMemoryFdInfoKHR")
-                    {
-                        structureTypeValue = "ImportMemoryFDInfoKHR";
-                    }
-                    else if (structureTypeValue == "MemoryFdPropertiesKHR")
-                    {
-                        structureTypeValue = "MemoryFDPropertiesKHR";
-                    }
-                    else if (structureTypeValue == "MemoryGetFdInfoKHR")
-                    {
-                        structureTypeValue = "MemoryGetFDInfoKHR";
-                    }
-                    else if (structureTypeValue == "ImportSemaphoreFdInfoKHR")
-                    {
-                        structureTypeValue = "ImportSemaphoreFDInfoKHR";
-                    }
-                    else if (structureTypeValue == "SemaphoreGetFdInfoKHR")
-                    {
-                        structureTypeValue = "SemaphoreGetFDInfoKHR";
-                    }
-                    else if (structureTypeValue == "ImportFenceFdInfoKHR")
-                    {
-                        structureTypeValue = "ImportFenceFDInfoKHR";
-                    }
-                    else if (structureTypeValue == "FenceGetFdInfoKHR")
-                    {
-                        structureTypeValue = "FenceGetFDInfoKHR";
-                    }
-
-                    writer.WriteLine();
-                    using (writer.PushBlock($"public {csName}()"))
-                    {
-                        writer.WriteLine($"sType = VkStructureType.{structureTypeValue};");
-                    }
-                }
-            }
+            WriteStruct(writer, cppClass, cppClass.Name);
 
             writer.WriteLine();
+        }
+    }
+
+    private static void WriteStruct(CodeWriter writer, CppClass cppClass, string structName)
+    {
+        string visibility = _options.PublicVisiblity ? "public" : "internal";
+        bool isUnion = cppClass.ClassKind == CppClassKind.Union;
+        bool hasSType = false;
+        if (cppClass.Fields.FirstOrDefault(item => item.Name == "sType") != null)
+        {
+            hasSType = true;
+        }
+
+        if (isUnion)
+        {
+            writer.WriteLine("[StructLayout(LayoutKind.Explicit)]");
+        }
+        else
+        {
+            writer.WriteLine("[StructLayout(LayoutKind.Sequential)]");
+        }
+
+        bool isReadOnly = false;
+
+        string modifier = "partial";
+        bool needUnsafe = NeedUnsafe(cppClass);
+        if (needUnsafe)
+        {
+            modifier = "unsafe partial";
+        }
+        if (structName == "VkClearDepthStencilValue")
+        {
+            modifier = "readonly partial";
+            isReadOnly = true;
+        }
+
+        bool handleSType = false;
+        if (hasSType &&
+            structName != "VkBaseInStructure" &&
+            structName != "VkBaseOutStructure")
+        {
+            handleSType = true;
+        }
+
+        if (structName == "SpvReflectShaderModule")
+        {
+
+        }
+
+        using (writer.PushBlock($"{visibility} {modifier} struct {structName}"))
+        {
+            if (_options.GenerateSizeOfStructs && cppClass.SizeOf > 0)
+            {
+                writer.WriteLine("/// <summary>");
+                writer.WriteLine($"/// The size of the <see cref=\"{structName}\"/> type, in bytes.");
+                writer.WriteLine("/// </summary>");
+                writer.WriteLine($"public static readonly int SizeInBytes = {cppClass.SizeOf};");
+                writer.WriteLine();
+            }
+
+            foreach (CppField cppField in cppClass.Fields)
+            {
+                WriteField(writer, cppField, handleSType, isUnion, isReadOnly);
+            }
+
+            if (handleSType)
+            {
+                string structureTypeValue = structName;
+                if (structureTypeValue.StartsWith("Vk"))
+                {
+                    structureTypeValue = structureTypeValue.Substring(2);
+                }
+                if (structureTypeValue.EndsWith("ANDROID"))
+                {
+                    structureTypeValue = structureTypeValue.Replace("ANDROID", "Android");
+                }
+                if (structureTypeValue == "ImportMemoryFdInfoKHR")
+                {
+                    structureTypeValue = "ImportMemoryFDInfoKHR";
+                }
+                else if (structureTypeValue == "MemoryFdPropertiesKHR")
+                {
+                    structureTypeValue = "MemoryFDPropertiesKHR";
+                }
+                else if (structureTypeValue == "MemoryGetFdInfoKHR")
+                {
+                    structureTypeValue = "MemoryGetFDInfoKHR";
+                }
+                else if (structureTypeValue == "ImportSemaphoreFdInfoKHR")
+                {
+                    structureTypeValue = "ImportSemaphoreFDInfoKHR";
+                }
+                else if (structureTypeValue == "SemaphoreGetFdInfoKHR")
+                {
+                    structureTypeValue = "SemaphoreGetFDInfoKHR";
+                }
+                else if (structureTypeValue == "ImportFenceFdInfoKHR")
+                {
+                    structureTypeValue = "ImportFenceFDInfoKHR";
+                }
+                else if (structureTypeValue == "FenceGetFdInfoKHR")
+                {
+                    structureTypeValue = "FenceGetFDInfoKHR";
+                }
+
+                writer.WriteLine();
+                using (writer.PushBlock($"public {structName}()"))
+                {
+                    writer.WriteLine($"sType = VkStructureType.{structureTypeValue};");
+                }
+            }
         }
     }
 
@@ -265,6 +273,56 @@ public static partial class CsCodeGenerator
                         }
                     }
                 }
+            }
+        }
+        else if (field.Type is CppClass cppClass && (cppClass.IsAnonymous || cppClass.FullName.StartsWith($"{field.FullParentName}::")))
+        {
+            if (cppClass.IsAnonymous)
+            {
+                string fullParentName = field.FullParentName;
+                if (fullParentName.EndsWith("::"))
+                {
+                    fullParentName = fullParentName.Substring(0, fullParentName.Length - 2);
+                }
+                string csFieldType = $"{fullParentName}_{csFieldName}";
+                writer.WriteLine($"public {csFieldType} {csFieldName};");
+                writer.WriteLine("");
+
+                WriteStruct(writer, cppClass, csFieldType);
+            }
+            else
+            {
+                string csFieldType = cppClass.Name;
+                writer.WriteLine($"public {csFieldType} {csFieldName};");
+                writer.WriteLine("");
+
+                WriteStruct(writer, cppClass, csFieldType);
+            }
+        }
+        else if (field.Type is CppPointerType cppPointer
+            && cppPointer.ElementType is CppClass cppPointerClass
+            && (cppPointerClass.IsAnonymous || cppPointerClass.FullName.StartsWith($"{field.FullParentName}::")))
+        {
+            if (cppPointerClass.IsAnonymous)
+            {
+                string fullParentName = field.FullParentName;
+                if (fullParentName.EndsWith("::"))
+                {
+                    fullParentName = fullParentName.Substring(0, fullParentName.Length - 2);
+                }
+                string csFieldType = $"{fullParentName}_{csFieldName}";
+                writer.WriteLine($"public {csFieldType} {csFieldName};");
+                writer.WriteLine("");
+
+                WriteStruct(writer, cppPointerClass, csFieldType);
+            }
+            else
+            {
+                string csFieldType = cppPointerClass.Name;
+                writer.WriteLine($"public {csFieldType} {csFieldName};");
+                writer.WriteLine("");
+
+                WriteStruct(writer, cppPointerClass, csFieldType);
             }
         }
         else

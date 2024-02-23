@@ -35,7 +35,33 @@ public static class Program
         CsCodeGeneratorOptions generateOptions;
         bool isVulkan = false;
 
-        if (outputPath.Contains("Vortice.SPIRV"))
+        if (outputPath.Contains("Vortice.SPIRV.Reflect"))
+        {
+            headerFile = Path.Combine(AppContext.BaseDirectory, "headers", "spirv_reflect.h");
+
+            parserOptions = new()
+            {
+                ParseMacros = true,
+                SystemIncludeFolders =
+                {
+                    Path.Combine(AppContext.BaseDirectory, "headers")
+                }
+            };
+
+            generateOptions = new()
+            {
+                OutputPath = outputPath,
+                ClassName = "SPIRVReflectApi",
+                Namespace = "Vortice.SPIRV.Reflect",
+                PublicVisiblity = true,
+                GenerateFunctionPointers = false,
+                ExtraUsings =
+                {
+                    "Vortice.SPIRV"
+                }
+            };
+        }
+        else if (outputPath.Contains("Vortice.SPIRV"))
         {
             headerFile = Path.Combine(AppContext.BaseDirectory, "headers", "spirv.h");
 

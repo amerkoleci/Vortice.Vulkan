@@ -152,7 +152,6 @@ public static partial class CsCodeGenerator
         { "VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV", "_256Triangles128Bytes" },
         { "VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV", "_1024Triangles128Bytes" },
 
-
         // Spvc
         //{  "SPVC_SUCCESS", "Success" },
     };
@@ -181,6 +180,12 @@ public static partial class CsCodeGenerator
 
         //
         { "spvc_result", "SPVC_ERROR" },
+
+        // Spirv-Reflect
+        {  "SpvReflectResult", "SPV_REFLECT_RESULT" },
+        {  "SpvReflectResourceType", "SPV_REFLECT_RESOURCE_FLAG" },
+        {  "SpvReflectArrayDimType", "SPV_REFLECT_ARRAY_DIM" },
+        {  "SpvReflectExecutionModeValue", "SPV_REFLECT_EXECUTION_MODE" },
     };
 
     private static readonly HashSet<string> s_ignoredParts = new(StringComparer.OrdinalIgnoreCase)
@@ -245,10 +250,17 @@ public static partial class CsCodeGenerator
     {
         string visibility = _options.PublicVisiblity ? "public" : "internal";
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Enumerations.cs"), false, _options.Namespace, new[] { "System" });
-        Dictionary<string, string> createdEnums = new();
+        Dictionary<string, string> createdEnums = [];
 
         foreach (CppEnum cppEnum in compilation.Enums)
         {
+            if (cppEnum.IsAnonymous)
+                continue;
+
+            // Skip spirv.h enums
+            if (cppEnum.Name.StartsWith("Spv") && _options.ClassName == "SPIRVReflectApi" && Path.GetFileNameWithoutExtension(cppEnum.SourceFile) == "spirv")
+                continue;
+
             bool isBitmask =
                 cppEnum.Name.EndsWith("FlagBits2") ||
                 cppEnum.Name.EndsWith("FlagBits") ||
@@ -261,6 +273,11 @@ public static partial class CsCodeGenerator
                 cppEnum.Name.EndsWith("FlagBitsARM")
                 || (cppEnum.Name.StartsWith("Spv") && cppEnum.Name.EndsWith("Mask_")) // spirv.h
                 ;
+
+            if (cppEnum.Name == "SpvReflectResourceType")
+            {
+                isBitmask = true;
+            }
 
             // typedef enum SpvSourceLanguage_ { } SpvSourceLanguage; }
             string enumName = cppEnum.Name;
@@ -283,7 +300,7 @@ public static partial class CsCodeGenerator
                 }
             }
 
-            bool shouldGeneratePrettyPrefix = _options.IsVulkan || enumName.StartsWith("Vma");
+            bool shouldGeneratePrettyPrefix = _options.IsVulkan || enumName.StartsWith("Vma") || enumName.StartsWith("Spv");
             //if (enumName.StartsWith("spvc_"))
             //{
             //    shouldGeneratePrettyPrefix = true;
@@ -296,7 +313,10 @@ public static partial class CsCodeGenerator
             if (isBitmask)
             {
                 enumCsName = enumCsName.Replace("FlagBits", "Flags");
-                AddCsMapping(enumName, enumCsName);
+                if (enumName != enumCsName)
+                {
+                    AddCsMapping(enumName, enumCsName);
+                }
             }
 
             // Remove extension suffix from enum item values
@@ -349,7 +369,13 @@ public static partial class CsCodeGenerator
                 writer.WriteLine("[Flags]");
             }
 
-            using (writer.PushBlock($"{visibility} enum {enumCsName}"))
+            string baseTypeDecl = string.Empty;
+            if (enumCsName == "SpvReflectExecutionModeValue")
+            {
+                baseTypeDecl = " : uint";
+            }
+
+            using (writer.PushBlock($"{visibility} enum {enumCsName}{baseTypeDecl}"))
             {
                 if (isBitmask &&
                     !cppEnum.Items.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "None"))
@@ -965,9 +991,10 @@ public static partial class CsCodeGenerator
             return value;
         }
 
-        if (!_options.IsVulkan &&
-            !enumPrefix.StartsWith("VMA_") &&
-            !enumPrefix.StartsWith("SPVC_"))
+        if (!_options.IsVulkan
+            && !enumPrefix.StartsWith("VMA_")
+            && !enumPrefix.StartsWith("SPV_")
+            && !enumPrefix.StartsWith("SPVC_"))
         {
             string result = value[enumPrefix.Length..];
             if (char.IsNumber(result[0]))

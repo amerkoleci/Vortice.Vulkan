@@ -121,6 +121,9 @@ public static partial class CsCodeGenerator
         "spvc_compiler_create_shader_resources",
         "spvc_context_create_compiler",
         "spvc_context_parse_spirv",
+
+        // Spirv-Reflect
+        "spvReflectCreateShaderModule",
     ];
 
     private static string GetFunctionPointerSignature(CppFunction function, bool canUseOut, bool allowNonBlittable = true)
@@ -216,6 +219,9 @@ public static partial class CsCodeGenerator
                 {
                     continue;
                 }
+
+                if (cppFunction.Attributes.Count > 0 && cppFunction.Attributes[0].Name == "deprecated")
+                    continue;
 
                 bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
                 string functionPointerSignature = GetFunctionPointerSignature(cppFunction, false);

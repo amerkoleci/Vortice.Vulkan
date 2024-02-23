@@ -7,11 +7,11 @@ namespace Generator;
 
 public static partial class CsCodeGenerator
 {
-    private static readonly HashSet<string> s_keywords = new()
-    {
+    private static readonly HashSet<string> s_keywords =
+    [
         "object",
         "event",
-    };
+    ];
 
     private static readonly Dictionary<string, string> s_csNameMappings = new()
     {
@@ -121,6 +121,9 @@ public static partial class CsCodeGenerator
 
     public static void AddCsMapping(string typeName, string csTypeName)
     {
+        if (typeName == csTypeName)
+            return;
+
         s_csNameMappings[typeName] = csTypeName;
     }
 
@@ -140,6 +143,10 @@ public static partial class CsCodeGenerator
         {
             foreach (CppMacro cppMacro in compilation.Macros)
             {
+                // Skip spirv.h enums
+                if ((cppMacro.Name.StartsWith("SPV_") || cppMacro.Name.StartsWith("Spv")) && _options.ClassName == "SPIRVReflectApi" && Path.GetFileNameWithoutExtension(cppMacro.SourceFile) == "spirv")
+                    continue;
+
                 if (string.IsNullOrEmpty(cppMacro.Value)
                     || cppMacro.Name.EndsWith("_H_", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.Equals("VKAPI_CALL", StringComparison.OrdinalIgnoreCase)
@@ -165,6 +172,7 @@ public static partial class CsCodeGenerator
                     || cppMacro.Name.StartsWith("VK_USE_64_BIT_PTR_DEFINES", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.StartsWith("VMA_", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.Equals("SPVC_MAKE_MSL_VERSION", StringComparison.OrdinalIgnoreCase)
+                    || cppMacro.Name.Equals("SPV_REFLECT_DEPRECATED", StringComparison.OrdinalIgnoreCase)
                     )
                 {
                     continue;
@@ -316,6 +324,10 @@ public static partial class CsCodeGenerator
 
                 foreach (CppField cppField in compilation.Fields)
                 {
+                    // Skip spirv.h enums
+                    if (cppField.Name.StartsWith("Spv") && _options.ClassName == "SPIRVReflectApi" && Path.GetFileNameWithoutExtension(cppField.SourceFile) == "spirv")
+                        continue;
+
                     if (first)
                     {
                         writer.WriteLine();
