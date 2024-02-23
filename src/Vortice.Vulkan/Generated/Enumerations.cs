@@ -165,8 +165,8 @@ public enum VkResult
 	ErrorInvalidVideoStdParametersKHR = -1000299000,
 	/// <unmanaged>VK_ERROR_COMPRESSION_EXHAUSTED_EXT</unmanaged>
 	ErrorCompressionExhaustedEXT = -1000338000,
-	/// <unmanaged>VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT</unmanaged>
-	ErrorIncompatibleShaderBinaryEXT = 1000482000,
+	/// <unmanaged>VK_INCOMPATIBLE_SHADER_BINARY_EXT</unmanaged>
+	IncompatibleShaderBinaryEXT = 1000482000,
 	/// <unmanaged>VK_ERROR_OUT_OF_POOL_MEMORY_KHR</unmanaged>
 	ErrorOutOfPoolMemoryKHR = ErrorOutOfPoolMemory,
 	/// <unmanaged>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</unmanaged>
@@ -183,6 +183,8 @@ public enum VkResult
 	PipelineCompileRequiredEXT = PipelineCompileRequired,
 	/// <unmanaged>VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT</unmanaged>
 	ErrorPipelineCompileRequiredEXT = PipelineCompileRequired,
+	/// <unmanaged>VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT</unmanaged>
+	ErrorIncompatibleShaderBinaryEXT = IncompatibleShaderBinaryEXT,
 }
 
 /// <summary>
@@ -1308,6 +1310,12 @@ public enum VkStructureType
 	MemoryMapInfoKHR = 1000271000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR</unmanaged>
 	MemoryUnmapInfoKHR = 1000271001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT</unmanaged>
+	PhysicalDeviceMapMemoryPlacedFeaturesEXT = 1000272000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT</unmanaged>
+	PhysicalDeviceMapMemoryPlacedPropertiesEXT = 1000272001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT</unmanaged>
+	MemoryMapPlacedInfoEXT = 1000272002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT</unmanaged>
 	PhysicalDeviceShaderAtomicFloat2FeaturesEXT = 1000273000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_EXT</unmanaged>
@@ -1972,6 +1980,8 @@ public enum VkStructureType
 	BindDescriptorBufferEmbeddedSamplersInfoEXT = 1000545008,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV</unmanaged>
 	PhysicalDeviceDescriptorPoolOverallocationFeaturesNV = 1000546000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV</unmanaged>
+	PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV = 1000563000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES</unmanaged>
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES</unmanaged>
@@ -4704,6 +4714,14 @@ public enum VkPipelineStageFlags
 }
 
 [Flags]
+public enum VkMemoryMapFlags
+{
+	None = 0,
+	/// <unmanaged>VK_MEMORY_MAP_PLACED_BIT_EXT</unmanaged>
+	PlacedEXT = 0x00000001,
+}
+
+[Flags]
 public enum VkSparseMemoryBindFlags
 {
 	None = 0,
@@ -7137,6 +7155,14 @@ public enum VkPipelineExecutableStatisticFormatKHR
 	Float64 = 3,
 }
 
+[Flags]
+public enum VkMemoryUnmapFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_MEMORY_UNMAP_RESERVE_BIT_EXT</unmanaged>
+	ReserveEXT = 0x00000001,
+}
+
 public enum VkVideoEncodeTuningModeKHR
 {
 	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR</unmanaged>
@@ -7149,6 +7175,12 @@ public enum VkVideoEncodeTuningModeKHR
 	UltraLowLatency = 3,
 	/// <unmanaged>VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR</unmanaged>
 	Lossless = 4,
+}
+
+[Flags]
+public enum VkVideoEncodeFlagsKHR
+{
+	None = 0,
 }
 
 [Flags]
@@ -8903,12 +8935,6 @@ public enum VkDeviceCreateFlags
 }
 
 [Flags]
-public enum VkMemoryMapFlags
-{
-	None = 0,
-}
-
-[Flags]
 public enum VkSemaphoreCreateFlags
 {
 	None = 0,
@@ -9120,18 +9146,6 @@ public enum VkResolveModeFlagsKHR
 
 [Flags]
 public enum VkSemaphoreWaitFlagsKHR
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkMemoryUnmapFlagsKHR
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkVideoEncodeFlagsKHR
 {
 	None = 0,
 }

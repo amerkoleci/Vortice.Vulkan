@@ -2,7 +2,6 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using NUnit.Framework;
-using Vortice.SPIRV;
 using static Vortice.SpirvCross.SpirvCrossApi;
 using static Vortice.SpirvCross.spvc_backend;
 using static Vortice.SpirvCross.spvc_capture_mode;

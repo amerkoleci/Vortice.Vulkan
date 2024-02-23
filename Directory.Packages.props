@@ -5,10 +5,10 @@
     <PackageVersion Include="CppAst" Version="0.15.0" />
 
     <!-- Samples -->
-    <PackageVersion Include="Alimer.Bindings.SDL" Version="3.4.7" />
+    <PackageVersion Include="Alimer.Bindings.SDL" Version="3.4.9" />
 
     <!-- Tests -->
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageVersion Include="NUnit" Version="4.0.1" />
     <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
   </ItemGroup>

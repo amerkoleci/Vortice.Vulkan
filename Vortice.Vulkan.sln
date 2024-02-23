@@ -44,6 +44,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.SpirvCross.Test", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.ShaderCompiler.Test", "tests\Vortice.ShaderCompiler.Test\Vortice.ShaderCompiler.Test.csproj", "{898042D9-7E34-40AE-ACC6-A43B25907CFA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.SPIRV.Reflect", "src\Vortice.SPIRV.Reflect\Vortice.SPIRV.Reflect.csproj", "{E57DECDC-C66A-4316-AD7E-30FEB42270F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vortice.SPIRV.Reflect.Tests", "tests\Vortice.SPIRV.Reflect.Tests\Vortice.SPIRV.Reflect.Tests.csproj", "{2DFFD155-0431-4F4B-A06D-0C43E3297ADB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +102,14 @@ Global
 		{898042D9-7E34-40AE-ACC6-A43B25907CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{898042D9-7E34-40AE-ACC6-A43B25907CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{898042D9-7E34-40AE-ACC6-A43B25907CFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E57DECDC-C66A-4316-AD7E-30FEB42270F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E57DECDC-C66A-4316-AD7E-30FEB42270F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E57DECDC-C66A-4316-AD7E-30FEB42270F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E57DECDC-C66A-4316-AD7E-30FEB42270F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DFFD155-0431-4F4B-A06D-0C43E3297ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DFFD155-0431-4F4B-A06D-0C43E3297ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DFFD155-0431-4F4B-A06D-0C43E3297ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DFFD155-0431-4F4B-A06D-0C43E3297ADB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +121,7 @@ Global
 		{34D6C276-B009-4C0E-95AA-9602C23FF1A3} = {08F6AF96-809B-45C5-BE6C-5BAB7D9AFB60}
 		{DFDAD3C7-EB3E-4D55-A150-49CAD7374DB6} = {253C0AE5-70CF-4519-A8B6-4395B5ABD4DA}
 		{898042D9-7E34-40AE-ACC6-A43B25907CFA} = {253C0AE5-70CF-4519-A8B6-4395B5ABD4DA}
+		{2DFFD155-0431-4F4B-A06D-0C43E3297ADB} = {253C0AE5-70CF-4519-A8B6-4395B5ABD4DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF0375B3-E304-4A53-8E5F-FC9D23743647}

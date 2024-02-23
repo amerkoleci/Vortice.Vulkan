@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 277;
+	public const uint VK_HEADER_VERSION = 278;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -1562,6 +1562,12 @@ public static partial class Vulkan
 	public const uint VK_EXT_HOST_IMAGE_COPY_SPEC_VERSION = 1;
 	/// <unmanaged>VK_EXT_HOST_IMAGE_COPY_EXTENSION_NAME</unmanaged>
 	public const string VK_EXT_HOST_IMAGE_COPY_EXTENSION_NAME = "VK_EXT_host_image_copy";
+	/// <unmanaged>VK_EXT_map_memory_placed</unmanaged>
+	public const uint VK_EXT_map_memory_placed = 1;
+	/// <unmanaged>VK_EXT_MAP_MEMORY_PLACED_SPEC_VERSION</unmanaged>
+	public const uint VK_EXT_MAP_MEMORY_PLACED_SPEC_VERSION = 1;
+	/// <unmanaged>VK_EXT_MAP_MEMORY_PLACED_EXTENSION_NAME</unmanaged>
+	public const string VK_EXT_MAP_MEMORY_PLACED_EXTENSION_NAME = "VK_EXT_map_memory_placed";
 	/// <unmanaged>VK_EXT_shader_atomic_float2</unmanaged>
 	public const uint VK_EXT_shader_atomic_float2 = 1;
 	/// <unmanaged>VK_EXT_SHADER_ATOMIC_FLOAT_2_SPEC_VERSION</unmanaged>
@@ -2210,6 +2216,12 @@ public static partial class Vulkan
 	public const uint VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_SPEC_VERSION = 1;
 	/// <unmanaged>VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_EXTENSION_NAME</unmanaged>
 	public const string VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_EXTENSION_NAME = "VK_NV_descriptor_pool_overallocation";
+	/// <unmanaged>VK_NV_shader_atomic_float16_vector</unmanaged>
+	public const uint VK_NV_shader_atomic_float16_vector = 1;
+	/// <unmanaged>VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_SPEC_VERSION</unmanaged>
+	public const uint VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_SPEC_VERSION = 1;
+	/// <unmanaged>VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_EXTENSION_NAME</unmanaged>
+	public const string VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_EXTENSION_NAME = "VK_NV_shader_atomic_float16_vector";
 	/// <unmanaged>VK_KHR_acceleration_structure</unmanaged>
 	public const uint VK_KHR_acceleration_structure = 1;
 	/// <unmanaged>VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION</unmanaged>
@@ -2349,7 +2361,7 @@ public static partial class Vulkan
 	public const VkResult VK_OPERATION_NOT_DEFERRED_KHR = VkResult.OperationNotDeferredKHR;
 	public const VkResult VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR = VkResult.ErrorInvalidVideoStdParametersKHR;
 	public const VkResult VK_ERROR_COMPRESSION_EXHAUSTED_EXT = VkResult.ErrorCompressionExhaustedEXT;
-	public const VkResult VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT = VkResult.ErrorIncompatibleShaderBinaryEXT;
+	public const VkResult VK_INCOMPATIBLE_SHADER_BINARY_EXT = VkResult.IncompatibleShaderBinaryEXT;
 	public const VkResult VK_ERROR_OUT_OF_POOL_MEMORY_KHR = VkResult.ErrorOutOfPoolMemoryKHR;
 	public const VkResult VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR = VkResult.ErrorInvalidExternalHandleKHR;
 	public const VkResult VK_ERROR_FRAGMENTATION_EXT = VkResult.ErrorFragmentationEXT;
@@ -2358,6 +2370,7 @@ public static partial class Vulkan
 	public const VkResult VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR = VkResult.ErrorInvalidOpaqueCaptureAddressKHR;
 	public const VkResult VK_PIPELINE_COMPILE_REQUIRED_EXT = VkResult.PipelineCompileRequiredEXT;
 	public const VkResult VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT = VkResult.ErrorPipelineCompileRequiredEXT;
+	public const VkResult VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT = VkResult.ErrorIncompatibleShaderBinaryEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_APPLICATION_INFO = VkStructureType.ApplicationInfo;
 	public const VkStructureType VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO = VkStructureType.InstanceCreateInfo;
 	public const VkStructureType VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO = VkStructureType.DeviceQueueCreateInfo;
@@ -2914,6 +2927,9 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY_EXT = VkStructureType.HostImageCopyDevicePerformanceQueryEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_MEMORY_MAP_INFO_KHR = VkStructureType.MemoryMapInfoKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR = VkStructureType.MemoryUnmapInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT = VkStructureType.PhysicalDeviceMapMemoryPlacedFeaturesEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT = VkStructureType.PhysicalDeviceMapMemoryPlacedPropertiesEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT = VkStructureType.MemoryMapPlacedInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT = VkStructureType.PhysicalDeviceShaderAtomicFloat2FeaturesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_EXT = VkStructureType.SurfacePresentModeEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_EXT = VkStructureType.SurfacePresentScalingCapabilitiesEXT;
@@ -3246,6 +3262,7 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT = VkStructureType.SetDescriptorBufferOffsetsInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT = VkStructureType.BindDescriptorBufferEmbeddedSamplersInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV = VkStructureType.PhysicalDeviceDescriptorPoolOverallocationFeaturesNV;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV = VkStructureType.PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VkStructureType.PhysicalDeviceVariablePointerFeatures;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES = VkStructureType.PhysicalDeviceShaderDrawParameterFeatures;
 	public const VkStructureType VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT = VkStructureType.DebugReportCreateInfoEXT;
@@ -4359,6 +4376,7 @@ public static partial class Vulkan
 	public const VkPipelineStageFlags VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV = VkPipelineStageFlags.TaskShaderNV;
 	public const VkPipelineStageFlags VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV = VkPipelineStageFlags.MeshShaderNV;
 	public const VkPipelineStageFlags VK_PIPELINE_STAGE_NONE_KHR = VkPipelineStageFlags.NoneKHR;
+	public const VkMemoryMapFlags VK_MEMORY_MAP_PLACED_BIT_EXT = VkMemoryMapFlags.PlacedEXT;
 	public const VkSparseMemoryBindFlags VK_SPARSE_MEMORY_BIND_METADATA_BIT = VkSparseMemoryBindFlags.Metadata;
 	public const VkSparseImageFormatFlags VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT = VkSparseImageFormatFlags.SingleMiptail;
 	public const VkSparseImageFormatFlags VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT = VkSparseImageFormatFlags.AlignedMipSize;
@@ -5134,6 +5152,7 @@ public static partial class Vulkan
 	public const VkPipelineExecutableStatisticFormatKHR VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR = VkPipelineExecutableStatisticFormatKHR.Int64;
 	public const VkPipelineExecutableStatisticFormatKHR VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR = VkPipelineExecutableStatisticFormatKHR.Uint64;
 	public const VkPipelineExecutableStatisticFormatKHR VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR = VkPipelineExecutableStatisticFormatKHR.Float64;
+	public const VkMemoryUnmapFlagsKHR VK_MEMORY_UNMAP_RESERVE_BIT_EXT = VkMemoryUnmapFlagsKHR.ReserveEXT;
 	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR = VkVideoEncodeTuningModeKHR.Default;
 	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR = VkVideoEncodeTuningModeKHR.HighQuality;
 	public const VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR = VkVideoEncodeTuningModeKHR.LowLatency;

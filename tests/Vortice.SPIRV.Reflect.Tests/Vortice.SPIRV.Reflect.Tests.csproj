@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="NUnit" />
+    <PackageReference Include="NUnit3TestAdapter" />
+    
+    <ProjectReference Include="..\..\src\Vortice.SPIRV.Reflect\Vortice.SPIRV.Reflect.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <Choose>
+    <When Condition="$([MSBuild]::IsOSPlatform('Windows')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.SPIRV.Reflect\runtimes\win-x64\native\spirv-reflect.dll" Link="spirv-reflect.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+    <When Condition="$([MSBuild]::IsOSPlatform('Windows')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'Arm64'">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.SPIRV.Reflect\runtimes\win-arm64\native\spirv-reflect.dll" Link="spirv-reflect.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+    <When Condition="$([MSBuild]::IsOSPlatform('Linux')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.SPIRV.Reflect\runtimes\linux-x64\native\libspirv-reflect.so" Link="libspirv-reflect.so" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+    <When Condition="$([MSBuild]::IsOSPlatform('OSX'))">
+      <ItemGroup>
+        <None Include="$(RepoRootPath)src\Vortice.SPIRV.Reflect\runtimes\osx\native\libspirv-reflect.dylib" Link="libspirv-reflect.dylib" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+      </ItemGroup>
+    </When>
+  </Choose>
+
+</Project>
