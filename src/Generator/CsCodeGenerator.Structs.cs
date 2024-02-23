@@ -303,7 +303,7 @@ public static partial class CsCodeGenerator
             else
             {
                 string csFieldType = cppPointerClass.Name;
-                writer.WriteLine($"public {csFieldType} {csFieldName};");
+                writer.WriteLine($"public {csFieldType}* {csFieldName};");
                 writer.WriteLine("");
 
                 WriteStruct(writer, cppPointerClass, csFieldType);

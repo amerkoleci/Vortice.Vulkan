@@ -36,11 +36,11 @@ public class VulkanSpecification
     {
         foreach (ExtensionDefinition exDef in Extensions)
         {
-            foreach (var enumEx in exDef.EnumExtensions)
+            foreach (EnumExtensionValue enumEx in exDef.EnumExtensions)
             {
                 EnumDefinition enumDef = Enums.Single(ed => ed.Name == enumEx.ExtendedType);
                 int value = int.Parse(enumEx.Value);
-                enumDef.Values = enumDef.Values.Append(new EnumValue(enumEx.Name, value, null)).ToArray();
+                enumDef.Values = [.. enumDef.Values, new EnumValue(enumEx.Name, value, null)];
             }
         }
     }
@@ -96,18 +96,16 @@ public class EnumDefinition
         }
 
         string name = xe.Attribute("name")!.Value;
-        string? comment = commentAttr != null ? commentAttr.Value : null;
-        EnumValue[] values = xe.Elements("enum")
+        string? comment = commentAttr?.Value;
+        EnumValue[] values =
+            xe.Elements("enum")
             .Select(valuesx => EnumValue.CreateFromXml(valuesx))
-            .Where(item => item != null)
-            .ToArray();
+            .Where(item => item is not null)
+            .ToArray()!;
         return new EnumDefinition(name, type, comment, values);
     }
 
-    public override string ToString()
-    {
-        return $"Enum: {Name} ({Type})[{Values.Length}]";
-    }
+    public override string ToString() => $"Enum: {Name} ({Type})[{Values.Length}]";
 }
 
 public enum EnumType
@@ -150,7 +148,7 @@ public class EnumValue
         string name = xe.Attribute("name")!.Value;
 
         int value;
-        string valueStr = xe.Attribute("value")?.Value;
+        string? valueStr = xe.Attribute("value")?.Value;
         string? deprecatedValue = xe.Attribute("deprecated")?.Value;
         if (!string.IsNullOrEmpty(deprecatedValue))
         {
@@ -191,7 +189,7 @@ public class ExtensionDefinition
 {
     public string Name { get; }
     public int Number { get; }
-    public string Type { get; }
+    public string? Type { get; }
     public ExtensionConstant[] Constants { get; }
     public EnumExtensionValue[] EnumExtensions { get; }
     public string[] CommandNames { get; }
@@ -199,7 +197,7 @@ public class ExtensionDefinition
     public ExtensionDefinition(
         string name,
         int number,
-        string type,
+        string? type,
         ExtensionConstant[] constants,
         EnumExtensionValue[] enumExtensions,
         string[] commandNames)
@@ -271,14 +269,14 @@ public class ExtensionDefinition
                 }
                 else
                 {
-                    var valueAttribute = enumXE.Attribute("value");
-                    if (valueAttribute == null)
+                    XAttribute? valueAttribute = enumXE.Attribute("value");
+                    if (valueAttribute is null)
                         continue;
 
                     extensionConstants.Add(new ExtensionConstant(name, valueAttribute.Value));
                 }
             }
-            foreach (var commandXE in require.Elements("command"))
+            foreach (XElement commandXE in require.Elements("command"))
             {
                 commandNames.Add(commandXE.GetNameAttribute());
             }

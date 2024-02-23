@@ -37,43 +37,43 @@ unsafe partial class SPIRVReflectApi
 	public static partial SpvReflectEntryPoint* spvReflectGetEntryPoint(SpvReflectShaderModule* p_module, sbyte* entry_point);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateDescriptorBindings")]
-	public static partial SpvReflectResult spvReflectEnumerateDescriptorBindings(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectDescriptorBinding* pp_bindings);
+	public static partial SpvReflectResult spvReflectEnumerateDescriptorBindings(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectDescriptorBinding** pp_bindings);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateEntryPointDescriptorBindings")]
-	public static partial SpvReflectResult spvReflectEnumerateEntryPointDescriptorBindings(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectDescriptorBinding* pp_bindings);
+	public static partial SpvReflectResult spvReflectEnumerateEntryPointDescriptorBindings(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectDescriptorBinding** pp_bindings);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateDescriptorSets")]
-	public static partial SpvReflectResult spvReflectEnumerateDescriptorSets(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectDescriptorSet* pp_sets);
+	public static partial SpvReflectResult spvReflectEnumerateDescriptorSets(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectDescriptorSet** pp_sets);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateEntryPointDescriptorSets")]
-	public static partial SpvReflectResult spvReflectEnumerateEntryPointDescriptorSets(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectDescriptorSet* pp_sets);
+	public static partial SpvReflectResult spvReflectEnumerateEntryPointDescriptorSets(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectDescriptorSet** pp_sets);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateInterfaceVariables")]
-	public static partial SpvReflectResult spvReflectEnumerateInterfaceVariables(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectInterfaceVariable* pp_variables);
+	public static partial SpvReflectResult spvReflectEnumerateInterfaceVariables(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectInterfaceVariable** pp_variables);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateEntryPointInterfaceVariables")]
-	public static partial SpvReflectResult spvReflectEnumerateEntryPointInterfaceVariables(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectInterfaceVariable* pp_variables);
+	public static partial SpvReflectResult spvReflectEnumerateEntryPointInterfaceVariables(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectInterfaceVariable** pp_variables);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateInputVariables")]
-	public static partial SpvReflectResult spvReflectEnumerateInputVariables(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectInterfaceVariable* pp_variables);
+	public static partial SpvReflectResult spvReflectEnumerateInputVariables(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectInterfaceVariable** pp_variables);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateEntryPointInputVariables")]
-	public static partial SpvReflectResult spvReflectEnumerateEntryPointInputVariables(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectInterfaceVariable* pp_variables);
+	public static partial SpvReflectResult spvReflectEnumerateEntryPointInputVariables(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectInterfaceVariable** pp_variables);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateOutputVariables")]
-	public static partial SpvReflectResult spvReflectEnumerateOutputVariables(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectInterfaceVariable* pp_variables);
+	public static partial SpvReflectResult spvReflectEnumerateOutputVariables(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectInterfaceVariable** pp_variables);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateEntryPointOutputVariables")]
-	public static partial SpvReflectResult spvReflectEnumerateEntryPointOutputVariables(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectInterfaceVariable* pp_variables);
+	public static partial SpvReflectResult spvReflectEnumerateEntryPointOutputVariables(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectInterfaceVariable** pp_variables);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumeratePushConstantBlocks")]
-	public static partial SpvReflectResult spvReflectEnumeratePushConstantBlocks(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectBlockVariable* pp_blocks);
+	public static partial SpvReflectResult spvReflectEnumeratePushConstantBlocks(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectBlockVariable** pp_blocks);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateEntryPointPushConstantBlocks")]
-	public static partial SpvReflectResult spvReflectEnumerateEntryPointPushConstantBlocks(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectBlockVariable* pp_blocks);
+	public static partial SpvReflectResult spvReflectEnumerateEntryPointPushConstantBlocks(SpvReflectShaderModule* p_module, sbyte* entry_point, uint* p_count, SpvReflectBlockVariable** pp_blocks);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateSpecializationConstants")]
-	public static partial SpvReflectResult spvReflectEnumerateSpecializationConstants(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectSpecializationConstant* pp_constants);
+	public static partial SpvReflectResult spvReflectEnumerateSpecializationConstants(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectSpecializationConstant** pp_constants);
 
 	[LibraryImport(LibName, EntryPoint = "spvReflectGetDescriptorBinding")]
 	public static partial SpvReflectDescriptorBinding* spvReflectGetDescriptorBinding(SpvReflectShaderModule* p_module, uint binding_number, uint set_number, SpvReflectResult* p_result);

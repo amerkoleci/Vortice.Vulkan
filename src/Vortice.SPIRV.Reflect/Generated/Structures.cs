@@ -184,7 +184,7 @@ public unsafe partial struct SpvReflectDescriptorSet
 {
 	public uint set;
 	public uint binding_count;
-	public SpvReflectDescriptorBinding* bindings;
+	public SpvReflectDescriptorBinding** bindings;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -195,9 +195,9 @@ public unsafe partial struct SpvReflectEntryPoint
 	public SpvExecutionModel spirv_execution_model;
 	public SpvReflectShaderStageFlags shader_stage;
 	public uint input_variable_count;
-	public SpvReflectInterfaceVariable* input_variables;
+	public SpvReflectInterfaceVariable** input_variables;
 	public uint output_variable_count;
-	public SpvReflectInterfaceVariable* output_variables;
+	public SpvReflectInterfaceVariable** output_variables;
 	public uint interface_variable_count;
 	public SpvReflectInterfaceVariable* interface_variables;
 	public uint descriptor_set_count;
@@ -347,16 +347,16 @@ public unsafe partial struct SpvReflectShaderModule
 	}
 #endif
 	public uint input_variable_count;
-	public SpvReflectInterfaceVariable* input_variables;
+	public SpvReflectInterfaceVariable** input_variables;
 	public uint output_variable_count;
-	public SpvReflectInterfaceVariable* output_variables;
+	public SpvReflectInterfaceVariable** output_variables;
 	public uint interface_variable_count;
 	public SpvReflectInterfaceVariable* interface_variables;
 	public uint push_constant_block_count;
 	public SpvReflectBlockVariable* push_constant_blocks;
 	public uint spec_constant_count;
 	public SpvReflectSpecializationConstant* spec_constants;
-	public Internal _internal;
+	public Internal* _internal;
 	
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct Internal

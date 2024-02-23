@@ -308,7 +308,7 @@ public static partial class CsCodeGenerator
                 }
             }
 
-            bool shouldGeneratePrettyPrefix = _options.IsVulkan || enumName.StartsWith("Vma") || enumName.StartsWith("spvc_");
+            bool shouldGeneratePrettyPrefix = _options.IsVulkan || enumName.StartsWith("Vma") || enumName.StartsWith("spvc_") || enumName.StartsWith("SpvReflect");
             string enumCsName = GetCsCleanName(enumName, shouldGeneratePrettyPrefix);
             string enumNamePrefix = shouldGeneratePrettyPrefix ? GetEnumNamePrefix(enumName) : enumName;
 
