@@ -121,7 +121,7 @@ unsafe partial class SPIRVReflectApi
     {
         fixed (byte* bytecodePtr = bytecode)
         {
-            return spvReflectCreateShaderModule((nuint)bytecode.Length, (uint*)bytecodePtr, module);
+            return spvReflectCreateShaderModule((nuint)bytecode.Length, bytecodePtr, module);
         }
     }
 
@@ -129,11 +129,19 @@ unsafe partial class SPIRVReflectApi
     {
         fixed (byte* bytecodePtr = bytecode)
         {
-            return spvReflectCreateShaderModule((nuint)bytecode.Length / sizeof(uint), (uint*)bytecodePtr, module);
+            return spvReflectCreateShaderModule((nuint)bytecode.Length, bytecodePtr, module);
         }
     }
 
     public static SpvReflectResult spvReflectCreateShaderModule(uint[] spirv, SpvReflectShaderModule* module)
+    {
+        fixed (uint* spirvPtr = spirv)
+        {
+            return spvReflectCreateShaderModule((nuint)spirv.Length / sizeof(uint), spirvPtr, module);
+        }
+    }
+
+    public static SpvReflectResult spvReflectCreateShaderModule(ReadOnlySpan<uint> spirv, SpvReflectShaderModule* module)
     {
         fixed (uint* spirvPtr = spirv)
         {
@@ -153,11 +161,19 @@ unsafe partial class SPIRVReflectApi
     {
         fixed (byte* bytecodePtr = bytecode)
         {
-            return spvReflectCreateShaderModule2(flags, (nuint)bytecode.Length / sizeof(uint), (uint*)bytecodePtr, module);
+            return spvReflectCreateShaderModule2(flags, (nuint)bytecode.Length, bytecodePtr, module);
         }
     }
 
     public static SpvReflectResult spvReflectCreateShaderModule2(SpvReflectModuleFlags flags, uint[] spirv, SpvReflectShaderModule* module)
+    {
+        fixed (uint* spirvPtr = spirv)
+        {
+            return spvReflectCreateShaderModule2(flags, (nuint)spirv.Length / sizeof(uint), spirvPtr, module);
+        }
+    }
+
+    public static SpvReflectResult spvReflectCreateShaderModule2(SpvReflectModuleFlags flags, ReadOnlySpan<uint> spirv, SpvReflectShaderModule* module)
     {
         fixed (uint* spirvPtr = spirv)
         {
