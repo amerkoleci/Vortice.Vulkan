@@ -18,7 +18,7 @@ public abstract class Application : IDisposable
             throw new PlatformNotSupportedException("SDL is not supported");
         }
 
-        SDL_LogSetOutputFunction(Log_SDL);
+        SDL_SetLogOutputFunction(Log_SDL);
 
         if (SDL_Vulkan_LoadLibrary() < 0)
         {

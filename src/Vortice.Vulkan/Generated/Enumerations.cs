@@ -1980,8 +1980,12 @@ public enum VkStructureType
 	BindDescriptorBufferEmbeddedSamplersInfoEXT = 1000545008,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV</unmanaged>
 	PhysicalDeviceDescriptorPoolOverallocationFeaturesNV = 1000546000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV</unmanaged>
+	PhysicalDeviceRawAccessChainsFeaturesNV = 1000555000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV</unmanaged>
 	PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV = 1000563000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV</unmanaged>
+	PhysicalDeviceRayTracingValidationFeaturesNV = 1000568000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES</unmanaged>
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES</unmanaged>

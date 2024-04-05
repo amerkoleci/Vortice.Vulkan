@@ -14996,6 +14996,19 @@ public unsafe partial struct VkPhysicalDeviceDescriptorPoolOverallocationFeature
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceRawAccessChainsFeaturesNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 shaderRawAccessChains;
+
+	public VkPhysicalDeviceRawAccessChainsFeaturesNV()
+	{
+		sType = VkStructureType.PhysicalDeviceRawAccessChainsFeaturesNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV
 {
 	internal VkStructureType sType;
@@ -15005,6 +15018,19 @@ public unsafe partial struct VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV
 	public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV()
 	{
 		sType = VkStructureType.PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceRayTracingValidationFeaturesNV
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 rayTracingValidation;
+
+	public VkPhysicalDeviceRayTracingValidationFeaturesNV()
+	{
+		sType = VkStructureType.PhysicalDeviceRayTracingValidationFeaturesNV;
 	}
 }
 

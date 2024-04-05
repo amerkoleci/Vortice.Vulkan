@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 278;
+	public const uint VK_HEADER_VERSION = 281;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -2216,12 +2216,24 @@ public static partial class Vulkan
 	public const uint VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_SPEC_VERSION = 1;
 	/// <unmanaged>VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_EXTENSION_NAME</unmanaged>
 	public const string VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_EXTENSION_NAME = "VK_NV_descriptor_pool_overallocation";
+	/// <unmanaged>VK_NV_raw_access_chains</unmanaged>
+	public const uint VK_NV_raw_access_chains = 1;
+	/// <unmanaged>VK_NV_RAW_ACCESS_CHAINS_SPEC_VERSION</unmanaged>
+	public const uint VK_NV_RAW_ACCESS_CHAINS_SPEC_VERSION = 1;
+	/// <unmanaged>VK_NV_RAW_ACCESS_CHAINS_EXTENSION_NAME</unmanaged>
+	public const string VK_NV_RAW_ACCESS_CHAINS_EXTENSION_NAME = "VK_NV_raw_access_chains";
 	/// <unmanaged>VK_NV_shader_atomic_float16_vector</unmanaged>
 	public const uint VK_NV_shader_atomic_float16_vector = 1;
 	/// <unmanaged>VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_SPEC_VERSION</unmanaged>
 	public const uint VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_SPEC_VERSION = 1;
 	/// <unmanaged>VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_EXTENSION_NAME</unmanaged>
 	public const string VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_EXTENSION_NAME = "VK_NV_shader_atomic_float16_vector";
+	/// <unmanaged>VK_NV_ray_tracing_validation</unmanaged>
+	public const uint VK_NV_ray_tracing_validation = 1;
+	/// <unmanaged>VK_NV_RAY_TRACING_VALIDATION_SPEC_VERSION</unmanaged>
+	public const uint VK_NV_RAY_TRACING_VALIDATION_SPEC_VERSION = 1;
+	/// <unmanaged>VK_NV_RAY_TRACING_VALIDATION_EXTENSION_NAME</unmanaged>
+	public const string VK_NV_RAY_TRACING_VALIDATION_EXTENSION_NAME = "VK_NV_ray_tracing_validation";
 	/// <unmanaged>VK_KHR_acceleration_structure</unmanaged>
 	public const uint VK_KHR_acceleration_structure = 1;
 	/// <unmanaged>VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION</unmanaged>
@@ -3262,7 +3274,9 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT = VkStructureType.SetDescriptorBufferOffsetsInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT = VkStructureType.BindDescriptorBufferEmbeddedSamplersInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV = VkStructureType.PhysicalDeviceDescriptorPoolOverallocationFeaturesNV;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV = VkStructureType.PhysicalDeviceRawAccessChainsFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV = VkStructureType.PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV = VkStructureType.PhysicalDeviceRayTracingValidationFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VkStructureType.PhysicalDeviceVariablePointerFeatures;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES = VkStructureType.PhysicalDeviceShaderDrawParameterFeatures;
 	public const VkStructureType VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT = VkStructureType.DebugReportCreateInfoEXT;
