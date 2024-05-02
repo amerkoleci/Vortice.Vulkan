@@ -4052,16 +4052,22 @@ unsafe partial class Vulkan
 		return vkCreateAndroidSurfaceKHR_out_ptr(instance, createInfo, allocator, out surface);
 	}
 
-	private static delegate* unmanaged<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult> vkGetAndroidHardwareBufferPropertiesANDROID_ptr;
-	public static VkResult vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, IntPtr* buffer, VkAndroidHardwareBufferPropertiesANDROID* properties)
+	private static delegate* unmanaged<VkDevice, IntPtr, VkAndroidHardwareBufferPropertiesANDROID*, VkResult> vkGetAndroidHardwareBufferPropertiesANDROID_ptr;
+	public static VkResult vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, IntPtr buffer, VkAndroidHardwareBufferPropertiesANDROID* properties)
 	{
 		return vkGetAndroidHardwareBufferPropertiesANDROID_ptr(device, buffer, properties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr**, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_ptr;
-	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, IntPtr** buffer)
+	private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_ptr;
+	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, IntPtr buffer)
 	{
 		return vkGetMemoryAndroidHardwareBufferANDROID_ptr(device, info, buffer);
+	}
+
+	private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, out IntPtr, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_out_ptr;
+	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, out IntPtr buffer)
+	{
+		return vkGetMemoryAndroidHardwareBufferANDROID_out_ptr(device, info, out buffer);
 	}
 
 	private static delegate* unmanaged<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateIOSSurfaceMVK_ptr;
@@ -4834,8 +4840,9 @@ unsafe partial class Vulkan
 		vkCmdDrawMeshTasksEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksEXT));
 		vkCmdDrawMeshTasksIndirectEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectEXT));
 		vkCmdDrawMeshTasksIndirectCountEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectCountEXT));
-		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged<VkDevice, IntPtr*, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
-		vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr**, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
+		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged<VkDevice, IntPtr, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
+		vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
+		vkGetMemoryAndroidHardwareBufferANDROID_out_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, out IntPtr, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
 		vkExportMetalObjectsEXT_ptr = (delegate* unmanaged<VkDevice, VkExportMetalObjectsInfoEXT*, void>) load(context, nameof(vkExportMetalObjectsEXT));
 		vkCreateExecutionGraphPipelinesAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateExecutionGraphPipelinesAMDX));
 		vkGetExecutionGraphPipelineScratchSizeAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkExecutionGraphPipelineScratchSizeAMDX*, VkResult>) load(context, nameof(vkGetExecutionGraphPipelineScratchSizeAMDX));

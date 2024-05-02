@@ -3138,8 +3138,8 @@ public enum VkFormat
 	PVRTC22BPPSrgbBlockImg = 1000054006,
 	/// <unmanaged>VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG</unmanaged>
 	PVRTC24BPPSrgbBlockImg = 1000054007,
-	/// <unmanaged>VK_FORMAT_R16G16_S10_5_NV</unmanaged>
-	R16G16S105NV = 1000464000,
+	/// <unmanaged>VK_FORMAT_R16G16_SFIXED5_NV</unmanaged>
+	R16G16SFixed5NV = 1000464000,
 	/// <unmanaged>VK_FORMAT_A1B5G5R5_UNORM_PACK16_KHR</unmanaged>
 	A1B5G5R5UnormPack16KHR = 1000470000,
 	/// <unmanaged>VK_FORMAT_A8_UNORM_KHR</unmanaged>
@@ -3252,6 +3252,8 @@ public enum VkFormat
 	A4R4G4B4UnormPack16EXT = A4R4G4B4UnormPack16,
 	/// <unmanaged>VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT</unmanaged>
 	A4B4G4R4UnormPack16EXT = A4B4G4R4UnormPack16,
+	/// <unmanaged>VK_FORMAT_R16G16_S10_5_NV</unmanaged>
+	R16G16S105NV = R16G16SFixed5NV,
 }
 
 public enum VkImageTiling
@@ -9776,6 +9778,8 @@ public enum VkPipelineCreateFlags2KHR : ulong
 	AllowDerivatives = 0x00000002UL,
 	/// <unmanaged>VK_PIPELINE_CREATE_2_DERIVATIVE_BIT_KHR</unmanaged>
 	Derivative = 0x00000004UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT</unmanaged>
+	EnableLegacyDitheringEXT = 0x400000000UL,
 	/// <unmanaged>VK_PIPELINE_CREATE_2_VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR</unmanaged>
 	ViewIndexFromDeviceIndex = 0x00000008UL,
 	/// <unmanaged>VK_PIPELINE_CREATE_2_DISPATCH_BASE_BIT_KHR</unmanaged>

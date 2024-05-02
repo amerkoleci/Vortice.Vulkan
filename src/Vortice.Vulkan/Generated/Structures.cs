@@ -15545,7 +15545,7 @@ public unsafe partial struct VkImportAndroidHardwareBufferInfoANDROID
 {
 	internal VkStructureType sType;
 	public void* pNext;
-	public IntPtr* buffer;
+	public IntPtr buffer;
 
 	public VkImportAndroidHardwareBufferInfoANDROID()
 	{

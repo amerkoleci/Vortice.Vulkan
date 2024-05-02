@@ -715,6 +715,13 @@ public unsafe sealed class GraphicsDevice : IDisposable
             if (result != VkResult.Success)
                 return false;
 
+            uint propCount;
+            result = vkEnumerateInstanceExtensionProperties(&propCount, null);
+            if (result != VkResult.Success)
+            {
+                return false;
+            }
+
             // We require Vulkan 1.1 or higher
             VkVersion version = vkEnumerateInstanceVersion();
             if (version < VkVersion.Version_1_1)

@@ -88,6 +88,7 @@ public static partial class CsCodeGenerator
         "vkCreateSharedSwapchainsKHR",
 
         "vkCreateDebugUtilsMessengerEXT",
+        "vkGetMemoryAndroidHardwareBufferANDROID",
 
         // vma
         "vmaCreateAllocator",

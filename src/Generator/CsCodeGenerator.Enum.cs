@@ -866,6 +866,10 @@ public static partial class CsCodeGenerator
                     {
                         sb.Append("Rgb");
                     }
+                    else if (part.Equals("SFIXED5", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("SFixed5");
+                    }
                     else
                     {
                         sb.Append(part);

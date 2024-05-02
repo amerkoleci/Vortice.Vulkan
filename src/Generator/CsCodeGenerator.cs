@@ -13,6 +13,8 @@ public static partial class CsCodeGenerator
         "event",
     ];
 
+    private static readonly char[] _spvcSeparator = ['_'];
+
     private static readonly Dictionary<string, string> s_csNameMappings = new()
     {
         { "uint8_t", "byte" },
@@ -380,7 +382,7 @@ public static partial class CsCodeGenerator
         {
             if (name.StartsWith("spvc_"))
             {
-                string[] parts = name["spvc_".Length..].Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] parts = name["spvc_".Length..].Split(_spvcSeparator, StringSplitOptions.RemoveEmptyEntries);
                 string result = PrettifyName(parts);
                 AddCsMapping(name, result);
                 return result;
@@ -427,7 +429,13 @@ public static partial class CsCodeGenerator
 
         if (type is CppPointerType pointerType)
         {
-            return GetCsTypeName(pointerType) + "*";
+            string csPointerTypeName = GetCsTypeName(pointerType);
+            if (csPointerTypeName == "IntPtr" /*&& s_csNameMappings.ContainsKey(pointerType.)*/)
+            {
+                return csPointerTypeName;
+            }
+
+            return csPointerTypeName + "*";
         }
 
         if (type is CppArrayType arrayType)
@@ -458,7 +466,7 @@ public static partial class CsCodeGenerator
                 return "int";
 
             case CppPrimitiveKind.LongLong:
-                return  "long";
+                return "long";
 
             case CppPrimitiveKind.UnsignedChar:
                 return "byte";

@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 281;
+	public const uint VK_HEADER_VERSION = 283;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -2081,7 +2081,7 @@ public static partial class Vulkan
 	/// <unmanaged>VK_EXT_legacy_dithering</unmanaged>
 	public const uint VK_EXT_legacy_dithering = 1;
 	/// <unmanaged>VK_EXT_LEGACY_DITHERING_SPEC_VERSION</unmanaged>
-	public const uint VK_EXT_LEGACY_DITHERING_SPEC_VERSION = 1;
+	public const uint VK_EXT_LEGACY_DITHERING_SPEC_VERSION = 2;
 	/// <unmanaged>VK_EXT_LEGACY_DITHERING_EXTENSION_NAME</unmanaged>
 	public const string VK_EXT_LEGACY_DITHERING_EXTENSION_NAME = "VK_EXT_legacy_dithering";
 	/// <unmanaged>VK_EXT_pipeline_protected_access</unmanaged>
@@ -2297,7 +2297,7 @@ public static partial class Vulkan
 	/// <unmanaged>VK_EXT_metal_objects</unmanaged>
 	public const uint VK_EXT_metal_objects = 1;
 	/// <unmanaged>VK_EXT_METAL_OBJECTS_SPEC_VERSION</unmanaged>
-	public const uint VK_EXT_METAL_OBJECTS_SPEC_VERSION = 1;
+	public const uint VK_EXT_METAL_OBJECTS_SPEC_VERSION = 2;
 	/// <unmanaged>VK_EXT_METAL_OBJECTS_EXTENSION_NAME</unmanaged>
 	public const string VK_EXT_METAL_OBJECTS_EXTENSION_NAME = "VK_EXT_metal_objects";
 	/// <unmanaged>VK_NN_vi_surface</unmanaged>
@@ -3812,7 +3812,7 @@ public static partial class Vulkan
 	public const VkFormat VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG = VkFormat.PVRTC14BPPSrgbBlockImg;
 	public const VkFormat VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG = VkFormat.PVRTC22BPPSrgbBlockImg;
 	public const VkFormat VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG = VkFormat.PVRTC24BPPSrgbBlockImg;
-	public const VkFormat VK_FORMAT_R16G16_S10_5_NV = VkFormat.R16G16S105NV;
+	public const VkFormat VK_FORMAT_R16G16_SFIXED5_NV = VkFormat.R16G16SFixed5NV;
 	public const VkFormat VK_FORMAT_A1B5G5R5_UNORM_PACK16_KHR = VkFormat.A1B5G5R5UnormPack16KHR;
 	public const VkFormat VK_FORMAT_A8_UNORM_KHR = VkFormat.A8UnormKHR;
 	public const VkFormat VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT = VkFormat.Astc4x4SfloatBlockEXT;
@@ -3869,6 +3869,7 @@ public static partial class Vulkan
 	public const VkFormat VK_FORMAT_G16_B16R16_2PLANE_444_UNORM_EXT = VkFormat.G16B16R162Plane444UnormEXT;
 	public const VkFormat VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT = VkFormat.A4R4G4B4UnormPack16EXT;
 	public const VkFormat VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT = VkFormat.A4B4G4R4UnormPack16EXT;
+	public const VkFormat VK_FORMAT_R16G16_S10_5_NV = VkFormat.R16G16S105NV;
 	public const VkImageTiling VK_IMAGE_TILING_OPTIMAL = VkImageTiling.Optimal;
 	public const VkImageTiling VK_IMAGE_TILING_LINEAR = VkImageTiling.Linear;
 	public const VkImageTiling VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT = VkImageTiling.DrmFormatModifierEXT;
