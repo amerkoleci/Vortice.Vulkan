@@ -244,6 +244,7 @@ public static partial class CsCodeGenerator
         "img",
         "av1",
         "es",
+        "mesa",
     };
 
     private static readonly HashSet<string> s_enumConstants = [];

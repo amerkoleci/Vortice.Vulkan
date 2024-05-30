@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 283;
+	public const uint VK_HEADER_VERSION = 285;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -2132,6 +2132,12 @@ public static partial class Vulkan
 	public const uint VK_EXT_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1;
 	/// <unmanaged>VK_EXT_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME</unmanaged>
 	public const string VK_EXT_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_EXT_mutable_descriptor_type";
+	/// <unmanaged>VK_EXT_legacy_vertex_attributes</unmanaged>
+	public const uint VK_EXT_legacy_vertex_attributes = 1;
+	/// <unmanaged>VK_EXT_LEGACY_VERTEX_ATTRIBUTES_SPEC_VERSION</unmanaged>
+	public const uint VK_EXT_LEGACY_VERTEX_ATTRIBUTES_SPEC_VERSION = 1;
+	/// <unmanaged>VK_EXT_LEGACY_VERTEX_ATTRIBUTES_EXTENSION_NAME</unmanaged>
+	public const string VK_EXT_LEGACY_VERTEX_ATTRIBUTES_EXTENSION_NAME = "VK_EXT_legacy_vertex_attributes";
 	/// <unmanaged>VK_EXT_layer_settings</unmanaged>
 	public const uint VK_EXT_layer_settings = 1;
 	/// <unmanaged>VK_EXT_LAYER_SETTINGS_SPEC_VERSION</unmanaged>
@@ -2234,6 +2240,12 @@ public static partial class Vulkan
 	public const uint VK_NV_RAY_TRACING_VALIDATION_SPEC_VERSION = 1;
 	/// <unmanaged>VK_NV_RAY_TRACING_VALIDATION_EXTENSION_NAME</unmanaged>
 	public const string VK_NV_RAY_TRACING_VALIDATION_EXTENSION_NAME = "VK_NV_ray_tracing_validation";
+	/// <unmanaged>VK_MESA_image_alignment_control</unmanaged>
+	public const uint VK_MESA_image_alignment_control = 1;
+	/// <unmanaged>VK_MESA_IMAGE_ALIGNMENT_CONTROL_SPEC_VERSION</unmanaged>
+	public const uint VK_MESA_IMAGE_ALIGNMENT_CONTROL_SPEC_VERSION = 1;
+	/// <unmanaged>VK_MESA_IMAGE_ALIGNMENT_CONTROL_EXTENSION_NAME</unmanaged>
+	public const string VK_MESA_IMAGE_ALIGNMENT_CONTROL_EXTENSION_NAME = "VK_MESA_image_alignment_control";
 	/// <unmanaged>VK_KHR_acceleration_structure</unmanaged>
 	public const uint VK_KHR_acceleration_structure = 1;
 	/// <unmanaged>VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION</unmanaged>
@@ -3211,6 +3223,8 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV = VkStructureType.PhysicalDeviceExtendedSparseAddressSpacePropertiesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT = VkStructureType.PhysicalDeviceMutableDescriptorTypeFeaturesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT = VkStructureType.MutableDescriptorTypeCreateInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_FEATURES_EXT = VkStructureType.PhysicalDeviceLegacyVertexAttributesFeaturesEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT = VkStructureType.PhysicalDeviceLegacyVertexAttributesPropertiesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT = VkStructureType.LayerSettingsCreateInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_FEATURES_ARM = VkStructureType.PhysicalDeviceShaderCoreBuiltinsFeaturesARM;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_PROPERTIES_ARM = VkStructureType.PhysicalDeviceShaderCoreBuiltinsPropertiesARM;
@@ -3277,6 +3291,9 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV = VkStructureType.PhysicalDeviceRawAccessChainsFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV = VkStructureType.PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV = VkStructureType.PhysicalDeviceRayTracingValidationFeaturesNV;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA = VkStructureType.PhysicalDeviceImageAlignmentControlFeaturesMESA;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA = VkStructureType.PhysicalDeviceImageAlignmentControlPropertiesMESA;
+	public const VkStructureType VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA = VkStructureType.ImageAlignmentControlCreateInfoMESA;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VkStructureType.PhysicalDeviceVariablePointerFeatures;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES = VkStructureType.PhysicalDeviceShaderDrawParameterFeatures;
 	public const VkStructureType VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT = VkStructureType.DebugReportCreateInfoEXT;
@@ -3556,7 +3573,7 @@ public static partial class Vulkan
 	public const VkVendorId VK_VENDOR_ID_VSI = VkVendorId.Vsi;
 	public const VkVendorId VK_VENDOR_ID_KAZAN = VkVendorId.Kazan;
 	public const VkVendorId VK_VENDOR_ID_CODEPLAY = VkVendorId.Codeplay;
-	public const VkVendorId VK_VENDOR_ID_MESA = VkVendorId.Mesa;
+	public const VkVendorId VK_VENDOR_ID_MESA = VkVendorId.MESA;
 	public const VkVendorId VK_VENDOR_ID_POCL = VkVendorId.Pocl;
 	public const VkVendorId VK_VENDOR_ID_MOBILEYE = VkVendorId.Mobileye;
 	public const VkSystemAllocationScope VK_SYSTEM_ALLOCATION_SCOPE_COMMAND = VkSystemAllocationScope.Command;
@@ -4712,10 +4729,10 @@ public static partial class Vulkan
 	public const VkExternalSemaphoreFeatureFlags VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHR = VkExternalSemaphoreFeatureFlags.ImportableKHR;
 	public const VkDriverId VK_DRIVER_ID_AMD_PROPRIETARY = VkDriverId.AMDProprietary;
 	public const VkDriverId VK_DRIVER_ID_AMD_OPEN_SOURCE = VkDriverId.AMDOpenSource;
-	public const VkDriverId VK_DRIVER_ID_MESA_RADV = VkDriverId.MesaRadv;
+	public const VkDriverId VK_DRIVER_ID_MESA_RADV = VkDriverId.MESARadv;
 	public const VkDriverId VK_DRIVER_ID_NVIDIA_PROPRIETARY = VkDriverId.NVIDIAProprietary;
 	public const VkDriverId VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS = VkDriverId.INTELProprietaryWindows;
-	public const VkDriverId VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA = VkDriverId.INTELOpenSourceMesa;
+	public const VkDriverId VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA = VkDriverId.INTELOpenSourceMESA;
 	public const VkDriverId VK_DRIVER_ID_IMAGINATION_PROPRIETARY = VkDriverId.ImaginationProprietary;
 	public const VkDriverId VK_DRIVER_ID_QUALCOMM_PROPRIETARY = VkDriverId.QualcommProprietary;
 	public const VkDriverId VK_DRIVER_ID_ARM_PROPRIETARY = VkDriverId.ARMProprietary;
@@ -4727,21 +4744,21 @@ public static partial class Vulkan
 	public const VkDriverId VK_DRIVER_ID_COREAVI_PROPRIETARY = VkDriverId.CoreaviProprietary;
 	public const VkDriverId VK_DRIVER_ID_JUICE_PROPRIETARY = VkDriverId.JuiceProprietary;
 	public const VkDriverId VK_DRIVER_ID_VERISILICON_PROPRIETARY = VkDriverId.VerisiliconProprietary;
-	public const VkDriverId VK_DRIVER_ID_MESA_TURNIP = VkDriverId.MesaTurnip;
-	public const VkDriverId VK_DRIVER_ID_MESA_V3DV = VkDriverId.MesaV3dv;
-	public const VkDriverId VK_DRIVER_ID_MESA_PANVK = VkDriverId.MesaPanvk;
+	public const VkDriverId VK_DRIVER_ID_MESA_TURNIP = VkDriverId.MESATurnip;
+	public const VkDriverId VK_DRIVER_ID_MESA_V3DV = VkDriverId.MESAV3dv;
+	public const VkDriverId VK_DRIVER_ID_MESA_PANVK = VkDriverId.MESAPanvk;
 	public const VkDriverId VK_DRIVER_ID_SAMSUNG_PROPRIETARY = VkDriverId.SamsungProprietary;
-	public const VkDriverId VK_DRIVER_ID_MESA_VENUS = VkDriverId.MesaVenus;
-	public const VkDriverId VK_DRIVER_ID_MESA_DOZEN = VkDriverId.MesaDozen;
-	public const VkDriverId VK_DRIVER_ID_MESA_NVK = VkDriverId.MesaNvk;
-	public const VkDriverId VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA = VkDriverId.ImaginationOpenSourceMesa;
-	public const VkDriverId VK_DRIVER_ID_MESA_AGXV = VkDriverId.MesaAgxv;
+	public const VkDriverId VK_DRIVER_ID_MESA_VENUS = VkDriverId.MESAVenus;
+	public const VkDriverId VK_DRIVER_ID_MESA_DOZEN = VkDriverId.MESADozen;
+	public const VkDriverId VK_DRIVER_ID_MESA_NVK = VkDriverId.MESANvk;
+	public const VkDriverId VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA = VkDriverId.ImaginationOpenSourceMESA;
+	public const VkDriverId VK_DRIVER_ID_MESA_AGXV = VkDriverId.MESAAgxv;
 	public const VkDriverId VK_DRIVER_ID_AMD_PROPRIETARY_KHR = VkDriverId.AMDProprietaryKHR;
 	public const VkDriverId VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR = VkDriverId.AMDOpenSourceKHR;
-	public const VkDriverId VK_DRIVER_ID_MESA_RADV_KHR = VkDriverId.MesaRadvKHR;
+	public const VkDriverId VK_DRIVER_ID_MESA_RADV_KHR = VkDriverId.MESARadvKHR;
 	public const VkDriverId VK_DRIVER_ID_NVIDIA_PROPRIETARY_KHR = VkDriverId.NVIDIAProprietaryKHR;
 	public const VkDriverId VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS_KHR = VkDriverId.INTELProprietaryWindowsKHR;
-	public const VkDriverId VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA_KHR = VkDriverId.INTELOpenSourceMesaKHR;
+	public const VkDriverId VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA_KHR = VkDriverId.INTELOpenSourceMESAKHR;
 	public const VkDriverId VK_DRIVER_ID_IMAGINATION_PROPRIETARY_KHR = VkDriverId.ImaginationProprietaryKHR;
 	public const VkDriverId VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR = VkDriverId.QualcommProprietaryKHR;
 	public const VkDriverId VK_DRIVER_ID_ARM_PROPRIETARY_KHR = VkDriverId.ARMProprietaryKHR;

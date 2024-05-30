@@ -14583,6 +14583,32 @@ public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpacePropertie
 }
 
 [StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 legacyVertexAttributes;
+
+	public VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT()
+	{
+		sType = VkStructureType.PhysicalDeviceLegacyVertexAttributesFeaturesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 nativeUnalignedPerformance;
+
+	public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT()
+	{
+		sType = VkStructureType.PhysicalDeviceLegacyVertexAttributesPropertiesEXT;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VkLayerSettingEXT
 {
 	public sbyte* pLayerName;
@@ -15031,6 +15057,45 @@ public unsafe partial struct VkPhysicalDeviceRayTracingValidationFeaturesNV
 	public VkPhysicalDeviceRayTracingValidationFeaturesNV()
 	{
 		sType = VkStructureType.PhysicalDeviceRayTracingValidationFeaturesNV;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceImageAlignmentControlFeaturesMESA
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public VkBool32 imageAlignmentControl;
+
+	public VkPhysicalDeviceImageAlignmentControlFeaturesMESA()
+	{
+		sType = VkStructureType.PhysicalDeviceImageAlignmentControlFeaturesMESA;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkPhysicalDeviceImageAlignmentControlPropertiesMESA
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint supportedImageAlignmentMask;
+
+	public VkPhysicalDeviceImageAlignmentControlPropertiesMESA()
+	{
+		sType = VkStructureType.PhysicalDeviceImageAlignmentControlPropertiesMESA;
+	}
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct VkImageAlignmentControlCreateInfoMESA
+{
+	internal VkStructureType sType;
+	public void* pNext;
+	public uint maximumRequestedAlignment;
+
+	public VkImageAlignmentControlCreateInfoMESA()
+	{
+		sType = VkStructureType.ImageAlignmentControlCreateInfoMESA;
 	}
 }
 

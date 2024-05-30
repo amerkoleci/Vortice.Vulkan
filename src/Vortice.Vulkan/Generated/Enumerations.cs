@@ -1854,6 +1854,10 @@ public enum VkStructureType
 	PhysicalDeviceMutableDescriptorTypeFeaturesEXT = 1000351000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT</unmanaged>
 	MutableDescriptorTypeCreateInfoEXT = 1000351002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_FEATURES_EXT</unmanaged>
+	PhysicalDeviceLegacyVertexAttributesFeaturesEXT = 1000495000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT</unmanaged>
+	PhysicalDeviceLegacyVertexAttributesPropertiesEXT = 1000495001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT</unmanaged>
 	LayerSettingsCreateInfoEXT = 1000496000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_FEATURES_ARM</unmanaged>
@@ -1986,6 +1990,12 @@ public enum VkStructureType
 	PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV = 1000563000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV</unmanaged>
 	PhysicalDeviceRayTracingValidationFeaturesNV = 1000568000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA</unmanaged>
+	PhysicalDeviceImageAlignmentControlFeaturesMESA = 1000575000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA</unmanaged>
+	PhysicalDeviceImageAlignmentControlPropertiesMESA = 1000575001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA</unmanaged>
+	ImageAlignmentControlCreateInfoMESA = 1000575002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES</unmanaged>
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES</unmanaged>
@@ -2606,7 +2616,7 @@ public enum VkVendorId
 	/// Mesa vendor ID
 	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_MESA</unmanaged>
-	Mesa = 0x10005,
+	MESA = 0x10005,
 	/// <summary>
 	/// PoCL vendor ID
 	/// </summary>
@@ -5853,7 +5863,7 @@ public enum VkDriverId
 	/// Mesa open source project
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_RADV</unmanaged>
-	MesaRadv = 3,
+	MESARadv = 3,
 	/// <summary>
 	/// NVIDIA Corporation
 	/// </summary>
@@ -5868,7 +5878,7 @@ public enum VkDriverId
 	/// Intel Corporation
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA</unmanaged>
-	INTELOpenSourceMesa = 6,
+	INTELOpenSourceMESA = 6,
 	/// <summary>
 	/// Imagination Technologies
 	/// </summary>
@@ -5928,17 +5938,17 @@ public enum VkDriverId
 	/// Mesa open source project
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_TURNIP</unmanaged>
-	MesaTurnip = 18,
+	MESATurnip = 18,
 	/// <summary>
 	/// Mesa open source project
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_V3DV</unmanaged>
-	MesaV3dv = 19,
+	MESAV3dv = 19,
 	/// <summary>
 	/// Mesa open source project
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_PANVK</unmanaged>
-	MesaPanvk = 20,
+	MESAPanvk = 20,
 	/// <summary>
 	/// Samsung Electronics Co., Ltd.
 	/// </summary>
@@ -5948,36 +5958,36 @@ public enum VkDriverId
 	/// Mesa open source project
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_VENUS</unmanaged>
-	MesaVenus = 22,
+	MESAVenus = 22,
 	/// <summary>
 	/// Mesa open source project
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_DOZEN</unmanaged>
-	MesaDozen = 23,
+	MESADozen = 23,
 	/// <summary>
 	/// Mesa open source project
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_NVK</unmanaged>
-	MesaNvk = 24,
+	MESANvk = 24,
 	/// <summary>
 	/// Imagination Technologies
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA</unmanaged>
-	ImaginationOpenSourceMesa = 25,
+	ImaginationOpenSourceMESA = 25,
 	/// <unmanaged>VK_DRIVER_ID_MESA_AGXV</unmanaged>
-	MesaAgxv = 26,
+	MESAAgxv = 26,
 	/// <unmanaged>VK_DRIVER_ID_AMD_PROPRIETARY_KHR</unmanaged>
 	AMDProprietaryKHR = AMDProprietary,
 	/// <unmanaged>VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR</unmanaged>
 	AMDOpenSourceKHR = AMDOpenSource,
 	/// <unmanaged>VK_DRIVER_ID_MESA_RADV_KHR</unmanaged>
-	MesaRadvKHR = MesaRadv,
+	MESARadvKHR = MESARadv,
 	/// <unmanaged>VK_DRIVER_ID_NVIDIA_PROPRIETARY_KHR</unmanaged>
 	NVIDIAProprietaryKHR = NVIDIAProprietary,
 	/// <unmanaged>VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS_KHR</unmanaged>
 	INTELProprietaryWindowsKHR = INTELProprietaryWindows,
 	/// <unmanaged>VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA_KHR</unmanaged>
-	INTELOpenSourceMesaKHR = INTELOpenSourceMesa,
+	INTELOpenSourceMESAKHR = INTELOpenSourceMESA,
 	/// <unmanaged>VK_DRIVER_ID_IMAGINATION_PROPRIETARY_KHR</unmanaged>
 	ImaginationProprietaryKHR = ImaginationProprietary,
 	/// <unmanaged>VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR</unmanaged>
