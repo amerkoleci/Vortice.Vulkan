@@ -43,6 +43,8 @@ public static partial class CsCodeGenerator
 
             // Handled manually.
             if (cppClass.Name == "VkClearColorValue"
+                || cppClass.Name == "VkBaseInStructure"
+                || cppClass.Name == "VkBaseOutStructure"
                 || cppClass.Name == "VkTransformMatrixKHR"
                 || cppClass.Name == "VkAccelerationStructureInstanceKHR"
                 || cppClass.Name == "VkAccelerationStructureSRTMotionInstanceNV"
@@ -63,9 +65,15 @@ public static partial class CsCodeGenerator
         string visibility = _options.PublicVisiblity ? "public" : "internal";
         bool isUnion = cppClass.ClassKind == CppClassKind.Union;
         bool hasSType = false;
+        bool hasPNext = false;
         if (cppClass.Fields.FirstOrDefault(item => item.Name == "sType") != null)
         {
             hasSType = true;
+        }
+
+        if (cppClass.Fields.FirstOrDefault(item => item.Name == "pNext") != null)
+        {
+            hasPNext = true;
         }
 
         if (isUnion)
@@ -91,20 +99,15 @@ public static partial class CsCodeGenerator
             isReadOnly = true;
         }
 
-        bool handleSType = false;
-        if (hasSType &&
-            structName != "VkBaseInStructure" &&
-            structName != "VkBaseOutStructure")
-        {
-            handleSType = true;
-        }
+        string interfaceSubclass = string.Empty;
+        if (hasSType && hasPNext)
+            interfaceSubclass = " : IStructureType, IChainType";
+        else if (hasSType)
+            interfaceSubclass = " : IStructureType";
+        else if (hasPNext)
+            interfaceSubclass = " : IChainType";
 
-        if (structName == "VkInstanceCreateInfo")
-        {
-
-        }
-
-        using (writer.PushBlock($"{visibility} {modifier} struct {structName}"))
+        using (writer.PushBlock($"{visibility} {modifier} struct {structName}{interfaceSubclass}"))
         {
             if (_options.GenerateSizeOfStructs && cppClass.SizeOf > 0)
             {
@@ -117,10 +120,10 @@ public static partial class CsCodeGenerator
 
             foreach (CppField cppField in cppClass.Fields)
             {
-                WriteField(writer, cppField, handleSType, isUnion, isReadOnly);
+                WriteField(writer, cppField, hasSType, isUnion, isReadOnly);
             }
 
-            if (handleSType)
+            if (hasSType)
             {
                 string structureTypeValue = structName;
                 if (structureTypeValue.StartsWith("Vk"))
@@ -164,6 +167,21 @@ public static partial class CsCodeGenerator
                 using (writer.PushBlock($"public {structName}()"))
                 {
                     writer.WriteLine($"sType = VkStructureType.{structureTypeValue};");
+                }
+
+                writer.WriteLine();
+                writer.WriteLine("/// <inheritdoc />");
+                writer.WriteLine("VkStructureType IStructureType.sType => sType;");
+            }
+
+            if (hasPNext)
+            {
+                writer.WriteLine();
+                writer.WriteLine("/// <inheritdoc />");
+                using (writer.PushBlock("void* IChainType.pNext"))
+                {
+                    writer.WriteLine("get => pNext;");
+                    writer.WriteLine("set => pNext = value;");
                 }
             }
         }

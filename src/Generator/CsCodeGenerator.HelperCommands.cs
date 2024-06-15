@@ -8,8 +8,8 @@ namespace Generator;
 
 public static partial class CsCodeGenerator
 {
-    private static readonly HashSet<string> s_outArrayReturnFunctions = new()
-    {
+    private static readonly HashSet<string> s_outArrayReturnFunctions =
+    [
         "vkEnumeratePhysicalDevices",
         "vkGetPhysicalDeviceQueueFamilyProperties",
         // "vkEnumerateInstanceExtensionProperties",
@@ -54,7 +54,7 @@ public static partial class CsCodeGenerator
         "vkGetPhysicalDeviceQueueFamilyProperties2KHR",
         "vkGetPhysicalDeviceSparseImageFormatProperties2KHR",
         "vkEnumeratePhysicalDeviceGroupsKHR",
-    };
+    ];
 
     private static void GenerateHelperCommands(CppCompilation compilation)
     {
@@ -91,7 +91,7 @@ public static partial class CsCodeGenerator
                         continue;
                     }
 
-                    if (CanBeUsedAsOutput(parameter.Type, out CppType? cppTypeDeclaration))
+                    if (CanBeUsedAsInOut(parameter.Type, true, out CppType? cppTypeDeclaration))
                     {
                         returnVariableName = GetParameterName(parameter.Name);
                         returnArrayTypeName = GetCsTypeName(cppTypeDeclaration);
@@ -196,7 +196,7 @@ public static partial class CsCodeGenerator
                 }
                 else
                 {
-                    string argumentsString = GetParameterSignature(newParameters, false);
+                    string argumentsString = GetParameterSignature(newParameters, false, false);
                     string returnType = $"ReadOnlySpan<{returnArrayTypeName}>";
 
                     using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsString})"))

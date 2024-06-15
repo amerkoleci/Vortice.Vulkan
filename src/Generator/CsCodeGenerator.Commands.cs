@@ -135,7 +135,7 @@ public static partial class CsCodeGenerator
             string paramCsType = GetCsTypeName(parameter.Type);
 
             if (canUseOut &&
-                CanBeUsedAsOutput(parameter.Type, out CppType? cppTypeDeclaration))
+                CanBeUsedAsInOut(parameter.Type, true, out CppType? cppTypeDeclaration))
             {
                 builder.Append("out ");
                 paramCsType = GetCsTypeName(cppTypeDeclaration);
@@ -252,6 +252,12 @@ public static partial class CsCodeGenerator
 
                 WriteFunctionInvocation(writer, cppFunction, false);
 
+                if (command.Key.StartsWith("vkCreate")
+                    && command.Key != "vkCreateDeferredOperationKHR")
+                {
+                    WriteFunctionInvocation(writer, cppFunction, false, true);
+                }
+
                 if (canUseOut)
                 {
                     if (_options.GenerateFunctionPointers)
@@ -261,6 +267,12 @@ public static partial class CsCodeGenerator
                     }
 
                     WriteFunctionInvocation(writer, cppFunction, true);
+
+                    if (command.Key.StartsWith("vkCreate")
+                    && command.Key != "vkCreateDeferredOperationKHR")
+                    {
+                        WriteFunctionInvocation(writer, cppFunction, true, true);
+                    }
                 }
             }
 
@@ -298,10 +310,11 @@ public static partial class CsCodeGenerator
         }
     }
 
-    private static void WriteFunctionInvocation(CodeWriter writer, CppFunction cppFunction, bool canUseOut)
+    private static void WriteFunctionInvocation(CodeWriter writer, CppFunction cppFunction,
+        bool canUseOut, bool inParameters = false)
     {
         string returnCsName = GetCsTypeName(cppFunction.ReturnType);
-        string argumentsString = GetParameterSignature(cppFunction, canUseOut);
+        string argumentsString = GetParameterSignature(cppFunction, canUseOut, inParameters);
         string modifier = "public static";
         string functionName = cppFunction.Name;
 
@@ -311,11 +324,6 @@ public static partial class CsCodeGenerator
         {
             modifier = "private static";
             functionName += "Private";
-        }
-
-        if(cppFunction.Name == "spvReflectEnumerateDescriptorBindings")
-        {
-
         }
 
         if (!_options.GenerateFunctionPointers)
@@ -328,6 +336,24 @@ public static partial class CsCodeGenerator
         {
             using (writer.PushBlock($"{modifier} {returnCsName} {functionName}({argumentsString})"))
             {
+                // Generate fixed statements
+                bool closeBlock = false;
+                if (inParameters)
+                {
+                    foreach (CppParameter cppParameter in cppFunction.Parameters)
+                    {
+                        string paramCsTypeName = GetCsTypeName(cppParameter.Type);
+                        string paramCsName = GetParameterName(cppParameter.Name);
+
+                        if (paramCsTypeName.Contains("CreateInfo")
+                            && CanBeUsedAsInOut(cppParameter.Type, false, out _))
+                        {
+                            writer.BeginBlock($"fixed ({paramCsTypeName} createInfoPtr = &{paramCsName})");
+                            closeBlock = true;
+                        }
+                    }
+                }
+
                 if (returnCsName != "void")
                 {
                     writer.Write("return ");
@@ -345,11 +371,18 @@ public static partial class CsCodeGenerator
                 int index = 0;
                 foreach (CppParameter cppParameter in cppFunction.Parameters)
                 {
+                    string paramCsTypeName = GetCsTypeName(cppParameter.Type);
                     string paramCsName = GetParameterName(cppParameter.Name);
 
-                    if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out _))
+                    if (canUseOut && CanBeUsedAsInOut(cppParameter.Type, true, out _))
                     {
                         writer.Write("out ");
+                    }
+                    else if (inParameters
+                        && paramCsTypeName.Contains("CreateInfo")
+                        && CanBeUsedAsInOut(cppParameter.Type, false, out _))
+                    {
+                        paramCsName = "createInfoPtr";
                     }
 
                     writer.Write($"{paramCsName}");
@@ -363,6 +396,9 @@ public static partial class CsCodeGenerator
                 }
 
                 writer.WriteLine(");");
+
+                if (closeBlock)
+                    writer.EndBlock();
             }
         }
 
@@ -405,14 +441,14 @@ public static partial class CsCodeGenerator
         return s_instanceFunctions.Contains(name);
     }
 
-    public static string GetParameterSignature(CppFunction cppFunction, bool canUseOut)
+    public static string GetParameterSignature(CppFunction cppFunction, bool canUseOut, bool inParameters)
     {
-        return GetParameterSignature(cppFunction.Parameters, canUseOut);
+        return GetParameterSignature(cppFunction.Parameters, canUseOut, inParameters);
     }
 
-    private static string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut)
+    private static string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool inParameters)
     {
-        var argumentBuilder = new StringBuilder();
+        StringBuilder argumentBuilder = new();
         int index = 0;
 
         foreach (CppParameter cppParameter in parameters)
@@ -420,10 +456,18 @@ public static partial class CsCodeGenerator
             string direction = string.Empty;
             string paramCsTypeName = GetCsTypeName(cppParameter.Type);
             string paramCsName = GetParameterName(cppParameter.Name);
+            CppType? cppTypeDeclaration = default;
 
-            if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppType? cppTypeDeclaration))
+            if (canUseOut && CanBeUsedAsInOut(cppParameter.Type, true, out cppTypeDeclaration))
             {
                 argumentBuilder.Append("out ");
+                paramCsTypeName = GetCsTypeName(cppTypeDeclaration);
+            }
+            else if (inParameters
+                && paramCsTypeName.Contains("CreateInfo")
+                && CanBeUsedAsInOut(cppParameter.Type, false, out cppTypeDeclaration))
+            {
+                argumentBuilder.Append("in ");
                 paramCsTypeName = GetCsTypeName(cppTypeDeclaration);
             }
 
@@ -471,7 +515,7 @@ public static partial class CsCodeGenerator
         return name;
     }
 
-    private static bool CanBeUsedAsOutput(CppType type, out CppType? elementTypeDeclaration)
+    private static bool CanBeUsedAsInOut(CppType type, bool onlyOutput, out CppType? elementTypeDeclaration)
     {
         if (type is CppPointerType pointerType)
         {
@@ -497,6 +541,13 @@ public static partial class CsCodeGenerator
                 && cppElementPointerType.SizeOf > 0)
             {
                 elementTypeDeclaration = cppElementPointerType.ElementType;
+                return true;
+            }
+            else if (onlyOutput == false &&
+                pointerType.ElementType is CppQualifiedType qualifiedType
+                && qualifiedType.SizeOf > 0)
+            {
+                elementTypeDeclaration = qualifiedType.ElementType;
                 return true;
             }
         }
