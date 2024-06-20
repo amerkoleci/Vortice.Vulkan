@@ -18,7 +18,7 @@ public static partial class SpirvCrossApi
 	/// <unmanaged>SPVC_C_API_VERSION_MAJOR</unmanaged>
 	public const uint SPVC_C_API_VERSION_MAJOR = 0;
 	/// <unmanaged>SPVC_C_API_VERSION_MINOR</unmanaged>
-	public const uint SPVC_C_API_VERSION_MINOR = 59;
+	public const uint SPVC_C_API_VERSION_MINOR = 60;
 	/// <unmanaged>SPVC_C_API_VERSION_PATCH</unmanaged>
 	public const uint SPVC_C_API_VERSION_PATCH = 0;
 	public static SpvcBool SPVC_TRUE => new (1);

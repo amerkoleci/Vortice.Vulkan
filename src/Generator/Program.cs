@@ -76,7 +76,6 @@ public static class Program
                 ClassName = "Spv",
                 Namespace = "Vortice.SPIRV",
                 PublicVisiblity = true,
-                GenerateFunctionPointers = true
             };
         }
         else if (outputPath.Contains("Vortice.VulkanMemoryAllocator"))
@@ -98,7 +97,7 @@ public static class Program
                 ClassName = "Vma",
                 Namespace = "Vortice.Vulkan",
                 PublicVisiblity = true,
-                GenerateFunctionPointers = false
+                GenerateFunctionPointers = true,
             };
         }
         else if (outputPath.Contains("Vortice.SpirvCross"))

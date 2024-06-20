@@ -14,8 +14,8 @@ public struct VkXlibSurfaceCreateInfoKHR
     public VkStructureType sType;
     public unsafe void* pNext;
     public VkXlibSurfaceCreateFlagsKHR flags;
-    public IntPtr display;
-    public nuint window;
+    public nint display;
+    public ulong window;
 
     public VkXlibSurfaceCreateInfoKHR()
     {

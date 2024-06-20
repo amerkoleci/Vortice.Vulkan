@@ -2,7 +2,6 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Runtime.InteropServices;
-using static Vortice.Vulkan.Interop;
 
 namespace Vortice.Vulkan;
 

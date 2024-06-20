@@ -28,7 +28,7 @@ public unsafe struct Buffer
             sharingMode = VkSharingMode.Exclusive
         };
 
-        VmaAllocationCreateInfo allocationCreateInfo;
+        VmaAllocationCreateInfo allocationCreateInfo = new();
         allocationCreateInfo.usage = VmaMemoryUsage.Auto;
         if (cpuAccessible)
         {
@@ -38,7 +38,7 @@ public unsafe struct Buffer
 
         if (ByteSize == 0) return;
 
-        if (vmaCreateBuffer(allocator, &bufferInfo, &allocationCreateInfo, out VkBuffer, out _allocation) != VkResult.Success)
+        if (vmaCreateBuffer(allocator, in bufferInfo, in allocationCreateInfo, out VkBuffer, out _allocation) != VkResult.Success)
         {
             throw new Exception("Failed to create buffer!");
         }

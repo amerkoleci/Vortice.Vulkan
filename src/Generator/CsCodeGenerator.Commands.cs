@@ -88,13 +88,11 @@ public static partial class CsCodeGenerator
         "vkCreateSharedSwapchainsKHR",
 
         "vkCreateDebugUtilsMessengerEXT",
-        "vkGetMemoryAndroidHardwareBufferANDROID",
+        //"vkGetMemoryAndroidHardwareBufferANDROID",
 
         // vma
         "vmaCreateAllocator",
         "vmaGetAllocatorInfo",
-        "vmaGetPhysicalDeviceProperties",
-        "vmaGetMemoryProperties",
         "vmaGetMemoryTypeProperties",
         "vmaCalculateStatistics",
         "vmaGetHeapBudgets",
@@ -127,19 +125,12 @@ public static partial class CsCodeGenerator
         "spvReflectCreateShaderModule",
     ];
 
-    private static string GetFunctionPointerSignature(CppFunction function, bool canUseOut, bool allowNonBlittable = true)
+    private static string GetFunctionPointerSignature(CppFunction function, bool allowNonBlittable = true)
     {
         StringBuilder builder = new();
         foreach (CppParameter parameter in function.Parameters)
         {
             string paramCsType = GetCsTypeName(parameter.Type);
-
-            if (canUseOut &&
-                CanBeUsedAsInOut(parameter.Type, true, out CppType? cppTypeDeclaration))
-            {
-                builder.Append("out ");
-                paramCsType = GetCsTypeName(cppTypeDeclaration);
-            }
 
             builder.Append(paramCsType).Append(", ");
         }
@@ -159,21 +150,35 @@ public static partial class CsCodeGenerator
 
     private static void GenerateCommands(CppCompilation compilation)
     {
-        Dictionary<string, CppFunction> commands = new();
-        Dictionary<string, CppFunction> instanceCommands = new();
-        Dictionary<string, CppFunction> deviceCommands = new();
+        Dictionary<string, CppFunction> commands = [];
+        Dictionary<string, CppFunction> instanceCommands = [];
+        Dictionary<string, CppFunction> deviceCommands = [];
         foreach (CppFunction? cppFunction in compilation.Functions)
         {
-            if (cppFunction.Name == "spvc_context_set_error_callback")
+            if (cppFunction.Name == "spvc_context_set_error_callback"
+                || cppFunction.Name == "vkGetInstanceProcAddr"
+                || cppFunction.Name == "vkGetDeviceProcAddr"
+                // We compile VMA with #define VMA_STATS_STRING_ENABLED 0
+                || cppFunction.Name == "vmaBuildVirtualBlockStatsString"
+                || cppFunction.Name == "vmaFreeVirtualBlockStatsString"
+                || cppFunction.Name == "vmaBuildStatsString"
+                || cppFunction.Name == "vmaFreeStatsString")
+            {
                 continue;
+            }
+
+            if (cppFunction.Attributes.Count > 0 && cppFunction.Attributes[0].Name == "deprecated")
+            {
+                continue;
+            }
 
             string? csName = cppFunction.Name;
 
             commands.Add(csName, cppFunction);
 
-            if (cppFunction.Parameters.Count > 0)
+            if (cppFunction.Parameters.Count > 0 && _options.IsVulkan)
             {
-                var firstParameter = cppFunction.Parameters[0];
+                CppParameter firstParameter = cppFunction.Parameters[0];
                 if (firstParameter.Type is CppTypedef typedef)
                 {
                     if (typedef.Name == "VkInstance" ||
@@ -194,11 +199,12 @@ public static partial class CsCodeGenerator
             return;
 
         // Generate Functions
-        List<string> usings = new()
-        {
+        List<string> usings =
+        [
             "System",
-            "System.Runtime.InteropServices"
-        };
+            "System.Runtime.InteropServices",
+            "System.Runtime.CompilerServices"
+        ];
         if (_options.ExtraUsings.Count > 0)
         {
             usings.AddRange(_options.ExtraUsings);
@@ -206,49 +212,33 @@ public static partial class CsCodeGenerator
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Commands.cs"),
             false,
             _options.Namespace,
-            usings.ToArray()
+            [.. usings]
             );
 
         using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))
         {
+            // Write function declarations first
+            if (_options.GenerateFunctionPointers)
+            {
+                foreach (KeyValuePair<string, CppFunction> command in commands)
+                {
+                    CppFunction cppFunction = command.Value;
+
+                    string functionPointerSignature = GetFunctionPointerSignature(cppFunction);
+                    string modifier = GetFunctionModifier(command.Key);
+                    writer.WriteLine($"{modifier} static {functionPointerSignature} {command.Key}_ptr;");
+                }
+
+                if (commands.Count > 0)
+                    writer.WriteLine();
+            }
+
+            // Write function invocation now
             foreach (KeyValuePair<string, CppFunction> command in commands)
             {
                 CppFunction cppFunction = command.Value;
 
-                if (cppFunction.Name == "vkGetInstanceProcAddr" ||
-                    cppFunction.Name == "vkGetDeviceProcAddr")
-                {
-                    continue;
-                }
-
-                if (cppFunction.Attributes.Count > 0 && cppFunction.Attributes[0].Name == "deprecated")
-                    continue;
-
                 bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
-                string functionPointerSignature = GetFunctionPointerSignature(cppFunction, false);
-                string modifier = "private";
-
-                // Used by VulkanMemoryAllocator
-                if (command.Key == "vkGetPhysicalDeviceProperties" ||
-                    command.Key == "vkGetBufferMemoryRequirements2KHR" ||
-                    command.Key == "vkGetBufferMemoryRequirements2" ||
-                    command.Key == "vkGetImageMemoryRequirements2KHR" ||
-                    command.Key == "vkGetImageMemoryRequirements2" ||
-                    command.Key == "vkBindBufferMemory2KHR" ||
-                    command.Key == "vkBindBufferMemory2" ||
-                    command.Key == "vkBindImageMemory2KHR" ||
-                    command.Key == "vkBindImageMemory2" ||
-                    command.Key == "vkGetPhysicalDeviceMemoryProperties2KHR" ||
-                    command.Key == "vkGetDeviceImageMemoryRequirements" ||
-                    command.Key == "vkGetDeviceBufferMemoryRequirements")
-                {
-                    modifier = "internal";
-                }
-
-                if (_options.GenerateFunctionPointers)
-                {
-                    writer.WriteLine($"{modifier} static {functionPointerSignature} {command.Key}_ptr;");
-                }
 
                 WriteFunctionInvocation(writer, cppFunction, false);
 
@@ -260,16 +250,10 @@ public static partial class CsCodeGenerator
 
                 if (canUseOut)
                 {
-                    if (_options.GenerateFunctionPointers)
-                    {
-                        functionPointerSignature = GetFunctionPointerSignature(cppFunction, true);
-                        writer.WriteLine($"private static {functionPointerSignature} {command.Key}_out_ptr;");
-                    }
-
                     WriteFunctionInvocation(writer, cppFunction, true);
 
                     if (command.Key.StartsWith("vkCreate")
-                    && command.Key != "vkCreateDeferredOperationKHR")
+                        && command.Key != "vkCreateDeferredOperationKHR")
                     {
                         WriteFunctionInvocation(writer, cppFunction, true, true);
                     }
@@ -278,10 +262,41 @@ public static partial class CsCodeGenerator
 
             if (_options.GenerateFunctionPointers)
             {
-                WriteCommands(writer, "GenLoadInstance", instanceCommands);
-                WriteCommands(writer, "GenLoadDevice", deviceCommands);
+                if (_options.IsVulkan)
+                {
+                    WriteCommands(writer, "GenLoadInstance", instanceCommands);
+                    WriteCommands(writer, "GenLoadDevice", deviceCommands);
+                }
+                else
+                {
+                    WriteLibraryImport(writer, commands);
+                }
             }
         }
+    }
+
+    private static string GetFunctionModifier(string name)
+    {
+        string modifier = "private";
+
+        // Used by VulkanMemoryAllocator
+        if (name == "vkGetPhysicalDeviceProperties" ||
+            name == "vkGetBufferMemoryRequirements2KHR" ||
+            name == "vkGetBufferMemoryRequirements2" ||
+            name == "vkGetImageMemoryRequirements2KHR" ||
+            name == "vkGetImageMemoryRequirements2" ||
+            name == "vkBindBufferMemory2KHR" ||
+            name == "vkBindBufferMemory2" ||
+            name == "vkBindImageMemory2KHR" ||
+            name == "vkBindImageMemory2" ||
+            name == "vkGetPhysicalDeviceMemoryProperties2KHR" ||
+            name == "vkGetDeviceImageMemoryRequirements" ||
+            name == "vkGetDeviceBufferMemoryRequirements")
+        {
+            modifier = "internal";
+        }
+
+        return modifier;
     }
 
     private static void WriteCommands(CodeWriter writer, string name, Dictionary<string, CppFunction> commands)
@@ -297,15 +312,21 @@ public static partial class CsCodeGenerator
                     continue;
                 }
 
-                bool canUseOut = s_outReturnFunctions.Contains(instanceCommand.Value.Name);
-                string functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value, false);
+                string functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value);
                 writer.WriteLine($"{commandName}_ptr = ({functionPointerSignature}) load(context, nameof({commandName}));");
+            }
+        }
+    }
 
-                if (canUseOut)
-                {
-                    functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value, true);
-                    writer.WriteLine($"{commandName}_out_ptr = ({functionPointerSignature}) load(context, nameof({commandName}));");
-                }
+    private static void WriteLibraryImport(CodeWriter writer, Dictionary<string, CppFunction> commands)
+    {
+        using (writer.PushBlock($"private static void LoadEntries()"))
+        {
+            foreach (KeyValuePair<string, CppFunction> instanceCommand in commands)
+            {
+                string commandName = instanceCommand.Key;
+                string functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value);
+                writer.WriteLine($"{commandName}_ptr = ({functionPointerSignature}) NativeLibrary.GetExport(s_nativeLibrary, nameof({commandName}));");
             }
         }
     }
@@ -337,7 +358,8 @@ public static partial class CsCodeGenerator
             using (writer.PushBlock($"{modifier} {returnCsName} {functionName}({argumentsString})"))
             {
                 // Generate fixed statements
-                bool closeBlock = false;
+                int closeBlockCount = 0;
+
                 if (inParameters)
                 {
                     foreach (CppParameter cppParameter in cppFunction.Parameters)
@@ -349,7 +371,23 @@ public static partial class CsCodeGenerator
                             && CanBeUsedAsInOut(cppParameter.Type, false, out _))
                         {
                             writer.BeginBlock($"fixed ({paramCsTypeName} createInfoPtr = &{paramCsName})");
-                            closeBlock = true;
+                            closeBlockCount++;
+                        }
+                    }
+                }
+
+                if (canUseOut)
+                {
+                    foreach (CppParameter cppParameter in cppFunction.Parameters)
+                    {
+                        string paramCsTypeName = GetCsTypeName(cppParameter.Type);
+                        string paramCsName = GetParameterName(cppParameter.Name);
+
+                        if (CanBeUsedAsInOut(cppParameter.Type, true, out _))
+                        {
+                            writer.WriteLine($"Unsafe.SkipInit(out {paramCsName});");
+                            writer.BeginBlock($"fixed ({paramCsTypeName} {paramCsName}Ptr = &{paramCsName})");
+                            closeBlockCount++;
                         }
                     }
                 }
@@ -359,14 +397,7 @@ public static partial class CsCodeGenerator
                     writer.Write("return ");
                 }
 
-                if (canUseOut)
-                {
-                    writer.Write($"{cppFunction.Name}_out_ptr(");
-                }
-                else
-                {
-                    writer.Write($"{cppFunction.Name}_ptr(");
-                }
+                writer.Write($"{cppFunction.Name}_ptr(");
 
                 int index = 0;
                 foreach (CppParameter cppParameter in cppFunction.Parameters)
@@ -376,7 +407,7 @@ public static partial class CsCodeGenerator
 
                     if (canUseOut && CanBeUsedAsInOut(cppParameter.Type, true, out _))
                     {
-                        writer.Write("out ");
+                        paramCsName = $"{paramCsName}Ptr";
                     }
                     else if (inParameters
                         && paramCsTypeName.Contains("CreateInfo")
@@ -397,8 +428,10 @@ public static partial class CsCodeGenerator
 
                 writer.WriteLine(");");
 
-                if (closeBlock)
+                for (int i = 0; i < closeBlockCount; i++)
+                {
                     writer.EndBlock();
+                }
             }
         }
 

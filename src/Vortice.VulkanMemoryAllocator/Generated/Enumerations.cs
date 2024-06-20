@@ -31,6 +31,8 @@ public enum VmaAllocatorCreateFlags
 	EXTMemoryPriority = 0x00000040,
 	/// <unmanaged>VMA_ALLOCATOR_CREATE_KHR_MAINTENANCE4_BIT</unmanaged>
 	KHRMaintenance4 = 0x00000080,
+	/// <unmanaged>VMA_ALLOCATOR_CREATE_KHR_MAINTENANCE5_BIT</unmanaged>
+	KHRMaintenance5 = 0x00000100,
 }
 
 public enum VmaMemoryUsage

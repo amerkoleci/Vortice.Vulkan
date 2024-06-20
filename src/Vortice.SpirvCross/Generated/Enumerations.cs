@@ -510,6 +510,8 @@ public enum CompilerOption
 	MSLReplaceRecursiveInputs = 134217815,
 	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_AGX_MANUAL_CUBE_GRAD_FIXUP</unmanaged>
 	MSLAgxManualCubeGradFixup = 134217816,
+	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_FORCE_FRAGMENT_WITH_SIDE_EFFECTS_EXECUTION</unmanaged>
+	MSLForceFragmentWithSideEffectsExecution = 134217817,
 }
 
 [Flags]

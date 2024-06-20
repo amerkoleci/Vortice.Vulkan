@@ -415,7 +415,7 @@ public enum SpvReflectGenerator
 	/// <unmanaged>SPV_REFLECT_GENERATOR_GOOGLE_RSPIRV</unmanaged>
 	GOOGLERspirv = 15,
 	/// <unmanaged>SPV_REFLECT_GENERATOR_X_LEGEND_MESA_MESAIR_SPIRV_TRANSLATOR</unmanaged>
-	XLegendMesaMesairSPIRVTranslator = 16,
+	XLegendMESAMesairSPIRVTranslator = 16,
 	/// <unmanaged>SPV_REFLECT_GENERATOR_KHRONOS_SPIRV_TOOLS_LINKER</unmanaged>
 	KhronosSPIRVToolsLinker = 17,
 	/// <unmanaged>SPV_REFLECT_GENERATOR_WINE_VKD3D_SHADER_COMPILER</unmanaged>

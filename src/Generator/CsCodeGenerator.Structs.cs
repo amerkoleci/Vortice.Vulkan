@@ -109,15 +109,6 @@ public static partial class CsCodeGenerator
 
         using (writer.PushBlock($"{visibility} {modifier} struct {structName}{interfaceSubclass}"))
         {
-            if (_options.GenerateSizeOfStructs && cppClass.SizeOf > 0)
-            {
-                writer.WriteLine("/// <summary>");
-                writer.WriteLine($"/// The size of the <see cref=\"{structName}\"/> type, in bytes.");
-                writer.WriteLine("/// </summary>");
-                writer.WriteLine($"public static readonly int SizeInBytes = {cppClass.SizeOf};");
-                writer.WriteLine();
-            }
-
             foreach (CppField cppField in cppClass.Fields)
             {
                 WriteField(writer, cppField, hasSType, isUnion, isReadOnly);
@@ -367,12 +358,12 @@ public static partial class CsCodeGenerator
 
             if (field.Type.ToString() == "ANativeWindow*")
             {
-                csFieldType = "IntPtr";
+                csFieldType = "nint";
             }
             else if (field.Type.ToString() == "CAMetalLayer*"
                 || field.Type.ToString() == "const CAMetalLayer*")
             {
-                csFieldType = "IntPtr";
+                csFieldType = "nint";
             }
             else if (csFieldType == "VkDirectDriverLoadingFlagsLUNARG")
             {
@@ -450,12 +441,12 @@ public static partial class CsCodeGenerator
 
                 if (field.Type.ToString() == "ANativeWindow*")
                 {
-                    csFieldType = "IntPtr";
+                    csFieldType = "nint";
                 }
                 else if (field.Type.ToString() == "CAMetalLayer*"
                     || field.Type.ToString() == "const CAMetalLayer*")
                 {
-                    csFieldType = "IntPtr";
+                    csFieldType = "nint";
                 }
                 else if (csFieldType == "VkDirectDriverLoadingFlagsLUNARG")
                 {

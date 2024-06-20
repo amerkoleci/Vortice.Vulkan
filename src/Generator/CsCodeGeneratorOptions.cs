@@ -12,7 +12,6 @@ public sealed class CsCodeGeneratorOptions
     public bool GenerateFunctionPointers { get; set; } = false;
     public bool ReadOnlySpanForStrings { get; set; } = false;
 
-    public bool GenerateSizeOfStructs { get; set; } = false;
     public bool IsVulkan { get; set; } = false;
-    public List<string> ExtraUsings { get; } = new();
+    public List<string> ExtraUsings { get; } = [];
 }

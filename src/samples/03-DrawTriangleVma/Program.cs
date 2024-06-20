@@ -35,18 +35,17 @@ public static unsafe class Program
         protected override void Initialize()
         {
             _graphicsDevice = new GraphicsDevice(Name, EnableValidationLayers, MainWindow);
+            vmaInitialize().CheckResult();
 
-            VmaAllocatorCreateInfo allocatorCreateInfo;
+            VmaAllocatorCreateInfo allocatorCreateInfo = new();
             allocatorCreateInfo.vulkanApiVersion = VkVersion.Version_1_2;
             allocatorCreateInfo.physicalDevice = _graphicsDevice.PhysicalDevice;
             allocatorCreateInfo.device = _graphicsDevice.VkDevice;
             allocatorCreateInfo.instance = _graphicsDevice.VkInstance;
-            VmaAllocator allocator;
-            vmaCreateAllocator(&allocatorCreateInfo, &allocator).CheckResult();
-            _allocator = allocator;
+            vmaCreateAllocator(in allocatorCreateInfo, out _allocator).CheckResult();
 
             VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new();
-            vkCreatePipelineLayout(_graphicsDevice, &pipelineLayoutCreateInfo, null, out _pipelineLayout).CheckResult();
+            vkCreatePipelineLayout(_graphicsDevice, in pipelineLayoutCreateInfo, null, out _pipelineLayout).CheckResult();
 
             // Create pipeline
             {
@@ -266,7 +265,7 @@ public static unsafe class Program
 
         private void CreateShaderModule(string name, out VkShaderModule shaderModule)
         {
-            byte[] vertexBytecode = File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Assets", $"{name}.spv"));
+            ReadOnlySpan<byte> vertexBytecode = File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Assets", $"{name}.spv"));
             _graphicsDevice.CreateShaderModule(vertexBytecode, out shaderModule).CheckResult();
         }
     }

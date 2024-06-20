@@ -9,6 +9,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 namespace Vortice.Vulkan;
 
@@ -28,17 +29,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult> vkCreateInstance_out_ptr;
 	public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance)
 	{
-		return vkCreateInstance_out_ptr(createInfo, allocator, out instance);
+		Unsafe.SkipInit(out instance);
+		fixed (VkInstance* instancePtr = &instance)
+		{
+			return vkCreateInstance_ptr(createInfo, allocator, instancePtr);
+		}
 	}
 
 	public static VkResult vkCreateInstance(in VkInstanceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkInstance instance)
 	{
 		fixed (VkInstanceCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateInstance_out_ptr(createInfoPtr, allocator, out instance);
+			Unsafe.SkipInit(out instance);
+			fixed (VkInstance* instancePtr = &instance)
+			{
+				return vkCreateInstance_ptr(createInfoPtr, allocator, instancePtr);
+			}
 		}
 	}
 
@@ -60,10 +68,13 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceFeatures_ptr(physicalDevice, features);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceFeatures, void> vkGetPhysicalDeviceFeatures_out_ptr;
 	public static void vkGetPhysicalDeviceFeatures(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceFeatures features)
 	{
-		vkGetPhysicalDeviceFeatures_out_ptr(physicalDevice, out features);
+		Unsafe.SkipInit(out features);
+		fixed (VkPhysicalDeviceFeatures* featuresPtr = &features)
+		{
+			vkGetPhysicalDeviceFeatures_ptr(physicalDevice, featuresPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkFormatProperties*, void> vkGetPhysicalDeviceFormatProperties_ptr;
@@ -72,10 +83,13 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceFormatProperties_ptr(physicalDevice, format, formatProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, out VkFormatProperties, void> vkGetPhysicalDeviceFormatProperties_out_ptr;
 	public static void vkGetPhysicalDeviceFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, out VkFormatProperties formatProperties)
 	{
-		vkGetPhysicalDeviceFormatProperties_out_ptr(physicalDevice, format, out formatProperties);
+		Unsafe.SkipInit(out formatProperties);
+		fixed (VkFormatProperties* formatPropertiesPtr = &formatProperties)
+		{
+			vkGetPhysicalDeviceFormatProperties_ptr(physicalDevice, format, formatPropertiesPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkImageFormatProperties*, VkResult> vkGetPhysicalDeviceImageFormatProperties_ptr;
@@ -84,10 +98,13 @@ unsafe partial class Vulkan
 		return vkGetPhysicalDeviceImageFormatProperties_ptr(physicalDevice, format, type, tiling, usage, flags, imageFormatProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, out VkImageFormatProperties, VkResult> vkGetPhysicalDeviceImageFormatProperties_out_ptr;
 	public static VkResult vkGetPhysicalDeviceImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, out VkImageFormatProperties imageFormatProperties)
 	{
-		return vkGetPhysicalDeviceImageFormatProperties_out_ptr(physicalDevice, format, type, tiling, usage, flags, out imageFormatProperties);
+		Unsafe.SkipInit(out imageFormatProperties);
+		fixed (VkImageFormatProperties* imageFormatPropertiesPtr = &imageFormatProperties)
+		{
+			return vkGetPhysicalDeviceImageFormatProperties_ptr(physicalDevice, format, type, tiling, usage, flags, imageFormatPropertiesPtr);
+		}
 	}
 
 	internal static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void> vkGetPhysicalDeviceProperties_ptr;
@@ -96,10 +113,13 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceProperties_ptr(physicalDevice, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceProperties, void> vkGetPhysicalDeviceProperties_out_ptr;
 	public static void vkGetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceProperties properties)
 	{
-		vkGetPhysicalDeviceProperties_out_ptr(physicalDevice, out properties);
+		Unsafe.SkipInit(out properties);
+		fixed (VkPhysicalDeviceProperties* propertiesPtr = &properties)
+		{
+			vkGetPhysicalDeviceProperties_ptr(physicalDevice, propertiesPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties*, void> vkGetPhysicalDeviceQueueFamilyProperties_ptr;
@@ -114,10 +134,13 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceMemoryProperties_ptr(physicalDevice, memoryProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void> vkGetPhysicalDeviceMemoryProperties_out_ptr;
 	public static void vkGetPhysicalDeviceMemoryProperties(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties memoryProperties)
 	{
-		vkGetPhysicalDeviceMemoryProperties_out_ptr(physicalDevice, out memoryProperties);
+		Unsafe.SkipInit(out memoryProperties);
+		fixed (VkPhysicalDeviceMemoryProperties* memoryPropertiesPtr = &memoryProperties)
+		{
+			vkGetPhysicalDeviceMemoryProperties_ptr(physicalDevice, memoryPropertiesPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, VkDevice*, VkResult> vkCreateDevice_ptr;
@@ -134,17 +157,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult> vkCreateDevice_out_ptr;
 	public static VkResult vkCreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDevice device)
 	{
-		return vkCreateDevice_out_ptr(physicalDevice, createInfo, allocator, out device);
+		Unsafe.SkipInit(out device);
+		fixed (VkDevice* devicePtr = &device)
+		{
+			return vkCreateDevice_ptr(physicalDevice, createInfo, allocator, devicePtr);
+		}
 	}
 
 	public static VkResult vkCreateDevice(VkPhysicalDevice physicalDevice, in VkDeviceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDevice device)
 	{
 		fixed (VkDeviceCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateDevice_out_ptr(physicalDevice, createInfoPtr, allocator, out device);
+			Unsafe.SkipInit(out device);
+			fixed (VkDevice* devicePtr = &device)
+			{
+				return vkCreateDevice_ptr(physicalDevice, createInfoPtr, allocator, devicePtr);
+			}
 		}
 	}
 
@@ -184,10 +214,13 @@ unsafe partial class Vulkan
 		vkGetDeviceQueue_ptr(device, queueFamilyIndex, queueIndex, queue);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, uint, out VkQueue, void> vkGetDeviceQueue_out_ptr;
 	public static void vkGetDeviceQueue(VkDevice device, uint queueFamilyIndex, uint queueIndex, out VkQueue queue)
 	{
-		vkGetDeviceQueue_out_ptr(device, queueFamilyIndex, queueIndex, out queue);
+		Unsafe.SkipInit(out queue);
+		fixed (VkQueue* queuePtr = &queue)
+		{
+			vkGetDeviceQueue_ptr(device, queueFamilyIndex, queueIndex, queuePtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkQueue, uint, VkSubmitInfo*, VkFence, VkResult> vkQueueSubmit_ptr;
@@ -214,10 +247,13 @@ unsafe partial class Vulkan
 		return vkAllocateMemory_ptr(device, allocateInfo, allocator, memory);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, out VkDeviceMemory, VkResult> vkAllocateMemory_out_ptr;
 	public static VkResult vkAllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, out VkDeviceMemory memory)
 	{
-		return vkAllocateMemory_out_ptr(device, allocateInfo, allocator, out memory);
+		Unsafe.SkipInit(out memory);
+		fixed (VkDeviceMemory* memoryPtr = &memory)
+		{
+			return vkAllocateMemory_ptr(device, allocateInfo, allocator, memoryPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void> vkFreeMemory_ptr;
@@ -256,10 +292,13 @@ unsafe partial class Vulkan
 		vkGetDeviceMemoryCommitment_ptr(device, memory, committedMemoryInBytes);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceMemory, out ulong, void> vkGetDeviceMemoryCommitment_out_ptr;
 	public static void vkGetDeviceMemoryCommitment(VkDevice device, VkDeviceMemory memory, out ulong committedMemoryInBytes)
 	{
-		vkGetDeviceMemoryCommitment_out_ptr(device, memory, out committedMemoryInBytes);
+		Unsafe.SkipInit(out committedMemoryInBytes);
+		fixed (ulong* committedMemoryInBytesPtr = &committedMemoryInBytes)
+		{
+			vkGetDeviceMemoryCommitment_ptr(device, memory, committedMemoryInBytesPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult> vkBindBufferMemory_ptr;
@@ -280,10 +319,13 @@ unsafe partial class Vulkan
 		vkGetBufferMemoryRequirements_ptr(device, buffer, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBuffer, out VkMemoryRequirements, void> vkGetBufferMemoryRequirements_out_ptr;
 	public static void vkGetBufferMemoryRequirements(VkDevice device, VkBuffer buffer, out VkMemoryRequirements memoryRequirements)
 	{
-		vkGetBufferMemoryRequirements_out_ptr(device, buffer, out memoryRequirements);
+		Unsafe.SkipInit(out memoryRequirements);
+		fixed (VkMemoryRequirements* memoryRequirementsPtr = &memoryRequirements)
+		{
+			vkGetBufferMemoryRequirements_ptr(device, buffer, memoryRequirementsPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkDevice, VkImage, VkMemoryRequirements*, void> vkGetImageMemoryRequirements_ptr;
@@ -292,10 +334,13 @@ unsafe partial class Vulkan
 		vkGetImageMemoryRequirements_ptr(device, image, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImage, out VkMemoryRequirements, void> vkGetImageMemoryRequirements_out_ptr;
 	public static void vkGetImageMemoryRequirements(VkDevice device, VkImage image, out VkMemoryRequirements memoryRequirements)
 	{
-		vkGetImageMemoryRequirements_out_ptr(device, image, out memoryRequirements);
+		Unsafe.SkipInit(out memoryRequirements);
+		fixed (VkMemoryRequirements* memoryRequirementsPtr = &memoryRequirements)
+		{
+			vkGetImageMemoryRequirements_ptr(device, image, memoryRequirementsPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void> vkGetImageSparseMemoryRequirements_ptr;
@@ -330,17 +375,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, out VkFence, VkResult> vkCreateFence_out_ptr;
 	public static VkResult vkCreateFence(VkDevice device, VkFenceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFence fence)
 	{
-		return vkCreateFence_out_ptr(device, createInfo, allocator, out fence);
+		Unsafe.SkipInit(out fence);
+		fixed (VkFence* fencePtr = &fence)
+		{
+			return vkCreateFence_ptr(device, createInfo, allocator, fencePtr);
+		}
 	}
 
 	public static VkResult vkCreateFence(VkDevice device, in VkFenceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkFence fence)
 	{
 		fixed (VkFenceCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateFence_out_ptr(device, createInfoPtr, allocator, out fence);
+			Unsafe.SkipInit(out fence);
+			fixed (VkFence* fencePtr = &fence)
+			{
+				return vkCreateFence_ptr(device, createInfoPtr, allocator, fencePtr);
+			}
 		}
 	}
 
@@ -382,17 +434,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, out VkSemaphore, VkResult> vkCreateSemaphore_out_ptr;
 	public static VkResult vkCreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore)
 	{
-		return vkCreateSemaphore_out_ptr(device, createInfo, allocator, out semaphore);
+		Unsafe.SkipInit(out semaphore);
+		fixed (VkSemaphore* semaphorePtr = &semaphore)
+		{
+			return vkCreateSemaphore_ptr(device, createInfo, allocator, semaphorePtr);
+		}
 	}
 
 	public static VkResult vkCreateSemaphore(VkDevice device, in VkSemaphoreCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore)
 	{
 		fixed (VkSemaphoreCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateSemaphore_out_ptr(device, createInfoPtr, allocator, out semaphore);
+			Unsafe.SkipInit(out semaphore);
+			fixed (VkSemaphore* semaphorePtr = &semaphore)
+			{
+				return vkCreateSemaphore_ptr(device, createInfoPtr, allocator, semaphorePtr);
+			}
 		}
 	}
 
@@ -416,17 +475,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, out VkEvent, VkResult> vkCreateEvent_out_ptr;
 	public static VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkEvent @event)
 	{
-		return vkCreateEvent_out_ptr(device, createInfo, allocator, out @event);
+		Unsafe.SkipInit(out @event);
+		fixed (VkEvent* @eventPtr = &@event)
+		{
+			return vkCreateEvent_ptr(device, createInfo, allocator, @eventPtr);
+		}
 	}
 
 	public static VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkEvent @event)
 	{
 		fixed (VkEventCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateEvent_out_ptr(device, createInfoPtr, allocator, out @event);
+			Unsafe.SkipInit(out @event);
+			fixed (VkEvent* @eventPtr = &@event)
+			{
+				return vkCreateEvent_ptr(device, createInfoPtr, allocator, @eventPtr);
+			}
 		}
 	}
 
@@ -468,17 +534,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, out VkQueryPool, VkResult> vkCreateQueryPool_out_ptr;
 	public static VkResult vkCreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkQueryPool queryPool)
 	{
-		return vkCreateQueryPool_out_ptr(device, createInfo, allocator, out queryPool);
+		Unsafe.SkipInit(out queryPool);
+		fixed (VkQueryPool* queryPoolPtr = &queryPool)
+		{
+			return vkCreateQueryPool_ptr(device, createInfo, allocator, queryPoolPtr);
+		}
 	}
 
 	public static VkResult vkCreateQueryPool(VkDevice device, in VkQueryPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkQueryPool queryPool)
 	{
 		fixed (VkQueryPoolCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateQueryPool_out_ptr(device, createInfoPtr, allocator, out queryPool);
+			Unsafe.SkipInit(out queryPool);
+			fixed (VkQueryPool* queryPoolPtr = &queryPool)
+			{
+				return vkCreateQueryPool_ptr(device, createInfoPtr, allocator, queryPoolPtr);
+			}
 		}
 	}
 
@@ -508,17 +581,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, out VkBuffer, VkResult> vkCreateBuffer_out_ptr;
 	public static VkResult vkCreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBuffer buffer)
 	{
-		return vkCreateBuffer_out_ptr(device, createInfo, allocator, out buffer);
+		Unsafe.SkipInit(out buffer);
+		fixed (VkBuffer* bufferPtr = &buffer)
+		{
+			return vkCreateBuffer_ptr(device, createInfo, allocator, bufferPtr);
+		}
 	}
 
 	public static VkResult vkCreateBuffer(VkDevice device, in VkBufferCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkBuffer buffer)
 	{
 		fixed (VkBufferCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateBuffer_out_ptr(device, createInfoPtr, allocator, out buffer);
+			Unsafe.SkipInit(out buffer);
+			fixed (VkBuffer* bufferPtr = &buffer)
+			{
+				return vkCreateBuffer_ptr(device, createInfoPtr, allocator, bufferPtr);
+			}
 		}
 	}
 
@@ -542,17 +622,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, out VkBufferView, VkResult> vkCreateBufferView_out_ptr;
 	public static VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBufferView view)
 	{
-		return vkCreateBufferView_out_ptr(device, createInfo, allocator, out view);
+		Unsafe.SkipInit(out view);
+		fixed (VkBufferView* viewPtr = &view)
+		{
+			return vkCreateBufferView_ptr(device, createInfo, allocator, viewPtr);
+		}
 	}
 
 	public static VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkBufferView view)
 	{
 		fixed (VkBufferViewCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateBufferView_out_ptr(device, createInfoPtr, allocator, out view);
+			Unsafe.SkipInit(out view);
+			fixed (VkBufferView* viewPtr = &view)
+			{
+				return vkCreateBufferView_ptr(device, createInfoPtr, allocator, viewPtr);
+			}
 		}
 	}
 
@@ -576,17 +663,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, out VkImage, VkResult> vkCreateImage_out_ptr;
 	public static VkResult vkCreateImage(VkDevice device, VkImageCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImage image)
 	{
-		return vkCreateImage_out_ptr(device, createInfo, allocator, out image);
+		Unsafe.SkipInit(out image);
+		fixed (VkImage* imagePtr = &image)
+		{
+			return vkCreateImage_ptr(device, createInfo, allocator, imagePtr);
+		}
 	}
 
 	public static VkResult vkCreateImage(VkDevice device, in VkImageCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkImage image)
 	{
 		fixed (VkImageCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateImage_out_ptr(device, createInfoPtr, allocator, out image);
+			Unsafe.SkipInit(out image);
+			fixed (VkImage* imagePtr = &image)
+			{
+				return vkCreateImage_ptr(device, createInfoPtr, allocator, imagePtr);
+			}
 		}
 	}
 
@@ -602,10 +696,13 @@ unsafe partial class Vulkan
 		vkGetImageSubresourceLayout_ptr(device, image, subresource, layout);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource*, out VkSubresourceLayout, void> vkGetImageSubresourceLayout_out_ptr;
 	public static void vkGetImageSubresourceLayout(VkDevice device, VkImage image, VkImageSubresource* subresource, out VkSubresourceLayout layout)
 	{
-		vkGetImageSubresourceLayout_out_ptr(device, image, subresource, out layout);
+		Unsafe.SkipInit(out layout);
+		fixed (VkSubresourceLayout* layoutPtr = &layout)
+		{
+			vkGetImageSubresourceLayout_ptr(device, image, subresource, layoutPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, VkImageView*, VkResult> vkCreateImageView_ptr;
@@ -622,17 +719,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, out VkImageView, VkResult> vkCreateImageView_out_ptr;
 	public static VkResult vkCreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImageView view)
 	{
-		return vkCreateImageView_out_ptr(device, createInfo, allocator, out view);
+		Unsafe.SkipInit(out view);
+		fixed (VkImageView* viewPtr = &view)
+		{
+			return vkCreateImageView_ptr(device, createInfo, allocator, viewPtr);
+		}
 	}
 
 	public static VkResult vkCreateImageView(VkDevice device, in VkImageViewCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkImageView view)
 	{
 		fixed (VkImageViewCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateImageView_out_ptr(device, createInfoPtr, allocator, out view);
+			Unsafe.SkipInit(out view);
+			fixed (VkImageView* viewPtr = &view)
+			{
+				return vkCreateImageView_ptr(device, createInfoPtr, allocator, viewPtr);
+			}
 		}
 	}
 
@@ -656,17 +760,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, out VkShaderModule, VkResult> vkCreateShaderModule_out_ptr;
 	public static VkResult vkCreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
 	{
-		return vkCreateShaderModule_out_ptr(device, createInfo, allocator, out shaderModule);
+		Unsafe.SkipInit(out shaderModule);
+		fixed (VkShaderModule* shaderModulePtr = &shaderModule)
+		{
+			return vkCreateShaderModule_ptr(device, createInfo, allocator, shaderModulePtr);
+		}
 	}
 
 	public static VkResult vkCreateShaderModule(VkDevice device, in VkShaderModuleCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
 	{
 		fixed (VkShaderModuleCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateShaderModule_out_ptr(device, createInfoPtr, allocator, out shaderModule);
+			Unsafe.SkipInit(out shaderModule);
+			fixed (VkShaderModule* shaderModulePtr = &shaderModule)
+			{
+				return vkCreateShaderModule_ptr(device, createInfoPtr, allocator, shaderModulePtr);
+			}
 		}
 	}
 
@@ -690,17 +801,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, out VkPipelineCache, VkResult> vkCreatePipelineCache_out_ptr;
 	public static VkResult vkCreatePipelineCache(VkDevice device, VkPipelineCacheCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineCache pipelineCache)
 	{
-		return vkCreatePipelineCache_out_ptr(device, createInfo, allocator, out pipelineCache);
+		Unsafe.SkipInit(out pipelineCache);
+		fixed (VkPipelineCache* pipelineCachePtr = &pipelineCache)
+		{
+			return vkCreatePipelineCache_ptr(device, createInfo, allocator, pipelineCachePtr);
+		}
 	}
 
 	public static VkResult vkCreatePipelineCache(VkDevice device, in VkPipelineCacheCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkPipelineCache pipelineCache)
 	{
 		fixed (VkPipelineCacheCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreatePipelineCache_out_ptr(device, createInfoPtr, allocator, out pipelineCache);
+			Unsafe.SkipInit(out pipelineCache);
+			fixed (VkPipelineCache* pipelineCachePtr = &pipelineCache)
+			{
+				return vkCreatePipelineCache_ptr(device, createInfoPtr, allocator, pipelineCachePtr);
+			}
 		}
 	}
 
@@ -770,17 +888,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, out VkPipelineLayout, VkResult> vkCreatePipelineLayout_out_ptr;
 	public static VkResult vkCreatePipelineLayout(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineLayout pipelineLayout)
 	{
-		return vkCreatePipelineLayout_out_ptr(device, createInfo, allocator, out pipelineLayout);
+		Unsafe.SkipInit(out pipelineLayout);
+		fixed (VkPipelineLayout* pipelineLayoutPtr = &pipelineLayout)
+		{
+			return vkCreatePipelineLayout_ptr(device, createInfo, allocator, pipelineLayoutPtr);
+		}
 	}
 
 	public static VkResult vkCreatePipelineLayout(VkDevice device, in VkPipelineLayoutCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkPipelineLayout pipelineLayout)
 	{
 		fixed (VkPipelineLayoutCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreatePipelineLayout_out_ptr(device, createInfoPtr, allocator, out pipelineLayout);
+			Unsafe.SkipInit(out pipelineLayout);
+			fixed (VkPipelineLayout* pipelineLayoutPtr = &pipelineLayout)
+			{
+				return vkCreatePipelineLayout_ptr(device, createInfoPtr, allocator, pipelineLayoutPtr);
+			}
 		}
 	}
 
@@ -804,17 +929,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, out VkSampler, VkResult> vkCreateSampler_out_ptr;
 	public static VkResult vkCreateSampler(VkDevice device, VkSamplerCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSampler sampler)
 	{
-		return vkCreateSampler_out_ptr(device, createInfo, allocator, out sampler);
+		Unsafe.SkipInit(out sampler);
+		fixed (VkSampler* samplerPtr = &sampler)
+		{
+			return vkCreateSampler_ptr(device, createInfo, allocator, samplerPtr);
+		}
 	}
 
 	public static VkResult vkCreateSampler(VkDevice device, in VkSamplerCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSampler sampler)
 	{
 		fixed (VkSamplerCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateSampler_out_ptr(device, createInfoPtr, allocator, out sampler);
+			Unsafe.SkipInit(out sampler);
+			fixed (VkSampler* samplerPtr = &sampler)
+			{
+				return vkCreateSampler_ptr(device, createInfoPtr, allocator, samplerPtr);
+			}
 		}
 	}
 
@@ -838,17 +970,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, out VkDescriptorSetLayout, VkResult> vkCreateDescriptorSetLayout_out_ptr;
 	public static VkResult vkCreateDescriptorSetLayout(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorSetLayout setLayout)
 	{
-		return vkCreateDescriptorSetLayout_out_ptr(device, createInfo, allocator, out setLayout);
+		Unsafe.SkipInit(out setLayout);
+		fixed (VkDescriptorSetLayout* setLayoutPtr = &setLayout)
+		{
+			return vkCreateDescriptorSetLayout_ptr(device, createInfo, allocator, setLayoutPtr);
+		}
 	}
 
 	public static VkResult vkCreateDescriptorSetLayout(VkDevice device, in VkDescriptorSetLayoutCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDescriptorSetLayout setLayout)
 	{
 		fixed (VkDescriptorSetLayoutCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateDescriptorSetLayout_out_ptr(device, createInfoPtr, allocator, out setLayout);
+			Unsafe.SkipInit(out setLayout);
+			fixed (VkDescriptorSetLayout* setLayoutPtr = &setLayout)
+			{
+				return vkCreateDescriptorSetLayout_ptr(device, createInfoPtr, allocator, setLayoutPtr);
+			}
 		}
 	}
 
@@ -872,17 +1011,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, out VkDescriptorPool, VkResult> vkCreateDescriptorPool_out_ptr;
 	public static VkResult vkCreateDescriptorPool(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorPool descriptorPool)
 	{
-		return vkCreateDescriptorPool_out_ptr(device, createInfo, allocator, out descriptorPool);
+		Unsafe.SkipInit(out descriptorPool);
+		fixed (VkDescriptorPool* descriptorPoolPtr = &descriptorPool)
+		{
+			return vkCreateDescriptorPool_ptr(device, createInfo, allocator, descriptorPoolPtr);
+		}
 	}
 
 	public static VkResult vkCreateDescriptorPool(VkDevice device, in VkDescriptorPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDescriptorPool descriptorPool)
 	{
 		fixed (VkDescriptorPoolCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateDescriptorPool_out_ptr(device, createInfoPtr, allocator, out descriptorPool);
+			Unsafe.SkipInit(out descriptorPool);
+			fixed (VkDescriptorPool* descriptorPoolPtr = &descriptorPool)
+			{
+				return vkCreateDescriptorPool_ptr(device, createInfoPtr, allocator, descriptorPoolPtr);
+			}
 		}
 	}
 
@@ -930,17 +1076,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, out VkFramebuffer, VkResult> vkCreateFramebuffer_out_ptr;
 	public static VkResult vkCreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer)
 	{
-		return vkCreateFramebuffer_out_ptr(device, createInfo, allocator, out framebuffer);
+		Unsafe.SkipInit(out framebuffer);
+		fixed (VkFramebuffer* framebufferPtr = &framebuffer)
+		{
+			return vkCreateFramebuffer_ptr(device, createInfo, allocator, framebufferPtr);
+		}
 	}
 
 	public static VkResult vkCreateFramebuffer(VkDevice device, in VkFramebufferCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer)
 	{
 		fixed (VkFramebufferCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateFramebuffer_out_ptr(device, createInfoPtr, allocator, out framebuffer);
+			Unsafe.SkipInit(out framebuffer);
+			fixed (VkFramebuffer* framebufferPtr = &framebuffer)
+			{
+				return vkCreateFramebuffer_ptr(device, createInfoPtr, allocator, framebufferPtr);
+			}
 		}
 	}
 
@@ -964,17 +1117,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, out VkRenderPass, VkResult> vkCreateRenderPass_out_ptr;
 	public static VkResult vkCreateRenderPass(VkDevice device, VkRenderPassCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass)
 	{
-		return vkCreateRenderPass_out_ptr(device, createInfo, allocator, out renderPass);
+		Unsafe.SkipInit(out renderPass);
+		fixed (VkRenderPass* renderPassPtr = &renderPass)
+		{
+			return vkCreateRenderPass_ptr(device, createInfo, allocator, renderPassPtr);
+		}
 	}
 
 	public static VkResult vkCreateRenderPass(VkDevice device, in VkRenderPassCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass)
 	{
 		fixed (VkRenderPassCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateRenderPass_out_ptr(device, createInfoPtr, allocator, out renderPass);
+			Unsafe.SkipInit(out renderPass);
+			fixed (VkRenderPass* renderPassPtr = &renderPass)
+			{
+				return vkCreateRenderPass_ptr(device, createInfoPtr, allocator, renderPassPtr);
+			}
 		}
 	}
 
@@ -990,10 +1150,13 @@ unsafe partial class Vulkan
 		vkGetRenderAreaGranularity_ptr(device, renderPass, granularity);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkRenderPass, out VkExtent2D, void> vkGetRenderAreaGranularity_out_ptr;
 	public static void vkGetRenderAreaGranularity(VkDevice device, VkRenderPass renderPass, out VkExtent2D granularity)
 	{
-		vkGetRenderAreaGranularity_out_ptr(device, renderPass, out granularity);
+		Unsafe.SkipInit(out granularity);
+		fixed (VkExtent2D* granularityPtr = &granularity)
+		{
+			vkGetRenderAreaGranularity_ptr(device, renderPass, granularityPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult> vkCreateCommandPool_ptr;
@@ -1010,17 +1173,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, out VkCommandPool, VkResult> vkCreateCommandPool_out_ptr;
 	public static VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool)
 	{
-		return vkCreateCommandPool_out_ptr(device, createInfo, allocator, out commandPool);
+		Unsafe.SkipInit(out commandPool);
+		fixed (VkCommandPool* commandPoolPtr = &commandPool)
+		{
+			return vkCreateCommandPool_ptr(device, createInfo, allocator, commandPoolPtr);
+		}
 	}
 
 	public static VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool)
 	{
 		fixed (VkCommandPoolCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateCommandPool_out_ptr(device, createInfoPtr, allocator, out commandPool);
+			Unsafe.SkipInit(out commandPool);
+			fixed (VkCommandPool* commandPoolPtr = &commandPool)
+			{
+				return vkCreateCommandPool_ptr(device, createInfoPtr, allocator, commandPoolPtr);
+			}
 		}
 	}
 
@@ -1444,10 +1614,13 @@ unsafe partial class Vulkan
 		vkGetDeviceQueue2_ptr(device, queueInfo, queue);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceQueueInfo2*, out VkQueue, void> vkGetDeviceQueue2_out_ptr;
 	public static void vkGetDeviceQueue2(VkDevice device, VkDeviceQueueInfo2* queueInfo, out VkQueue queue)
 	{
-		vkGetDeviceQueue2_out_ptr(device, queueInfo, out queue);
+		Unsafe.SkipInit(out queue);
+		fixed (VkQueue* queuePtr = &queue)
+		{
+			vkGetDeviceQueue2_ptr(device, queueInfo, queuePtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult> vkCreateSamplerYcbcrConversion_ptr;
@@ -1464,17 +1637,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, out VkSamplerYcbcrConversion, VkResult> vkCreateSamplerYcbcrConversion_out_ptr;
 	public static VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion)
 	{
-		return vkCreateSamplerYcbcrConversion_out_ptr(device, createInfo, allocator, out ycbcrConversion);
+		Unsafe.SkipInit(out ycbcrConversion);
+		fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
+		{
+			return vkCreateSamplerYcbcrConversion_ptr(device, createInfo, allocator, ycbcrConversionPtr);
+		}
 	}
 
 	public static VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion)
 	{
 		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateSamplerYcbcrConversion_out_ptr(device, createInfoPtr, allocator, out ycbcrConversion);
+			Unsafe.SkipInit(out ycbcrConversion);
+			fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
+			{
+				return vkCreateSamplerYcbcrConversion_ptr(device, createInfoPtr, allocator, ycbcrConversionPtr);
+			}
 		}
 	}
 
@@ -1498,17 +1678,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, out VkDescriptorUpdateTemplate, VkResult> vkCreateDescriptorUpdateTemplate_out_ptr;
 	public static VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate)
 	{
-		return vkCreateDescriptorUpdateTemplate_out_ptr(device, createInfo, allocator, out descriptorUpdateTemplate);
+		Unsafe.SkipInit(out descriptorUpdateTemplate);
+		fixed (VkDescriptorUpdateTemplate* descriptorUpdateTemplatePtr = &descriptorUpdateTemplate)
+		{
+			return vkCreateDescriptorUpdateTemplate_ptr(device, createInfo, allocator, descriptorUpdateTemplatePtr);
+		}
 	}
 
 	public static VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, in VkDescriptorUpdateTemplateCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate)
 	{
 		fixed (VkDescriptorUpdateTemplateCreateInfo* createInfoPtr = &createInfo)
 		{
-			return vkCreateDescriptorUpdateTemplate_out_ptr(device, createInfoPtr, allocator, out descriptorUpdateTemplate);
+			Unsafe.SkipInit(out descriptorUpdateTemplate);
+			fixed (VkDescriptorUpdateTemplate* descriptorUpdateTemplatePtr = &descriptorUpdateTemplate)
+			{
+				return vkCreateDescriptorUpdateTemplate_ptr(device, createInfoPtr, allocator, descriptorUpdateTemplatePtr);
+			}
 		}
 	}
 
@@ -1574,17 +1761,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, out VkRenderPass, VkResult> vkCreateRenderPass2_out_ptr;
 	public static VkResult vkCreateRenderPass2(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass)
 	{
-		return vkCreateRenderPass2_out_ptr(device, createInfo, allocator, out renderPass);
+		Unsafe.SkipInit(out renderPass);
+		fixed (VkRenderPass* renderPassPtr = &renderPass)
+		{
+			return vkCreateRenderPass2_ptr(device, createInfo, allocator, renderPassPtr);
+		}
 	}
 
 	public static VkResult vkCreateRenderPass2(VkDevice device, in VkRenderPassCreateInfo2 createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass)
 	{
 		fixed (VkRenderPassCreateInfo2* createInfoPtr = &createInfo)
 		{
-			return vkCreateRenderPass2_out_ptr(device, createInfoPtr, allocator, out renderPass);
+			Unsafe.SkipInit(out renderPass);
+			fixed (VkRenderPass* renderPassPtr = &renderPass)
+			{
+				return vkCreateRenderPass2_ptr(device, createInfoPtr, allocator, renderPassPtr);
+			}
 		}
 	}
 
@@ -1890,10 +2084,13 @@ unsafe partial class Vulkan
 		return vkGetPhysicalDeviceSurfaceSupportKHR_ptr(physicalDevice, queueFamilyIndex, surface, supported);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint, VkSurfaceKHR, out VkBool32, VkResult> vkGetPhysicalDeviceSurfaceSupportKHR_out_ptr;
 	public static VkResult vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, out VkBool32 supported)
 	{
-		return vkGetPhysicalDeviceSurfaceSupportKHR_out_ptr(physicalDevice, queueFamilyIndex, surface, out supported);
+		Unsafe.SkipInit(out supported);
+		fixed (VkBool32* supportedPtr = &supported)
+		{
+			return vkGetPhysicalDeviceSurfaceSupportKHR_ptr(physicalDevice, queueFamilyIndex, surface, supportedPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilitiesKHR*, VkResult> vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr;
@@ -1902,10 +2099,13 @@ unsafe partial class Vulkan
 		return vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr(physicalDevice, surface, surfaceCapabilities);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, out VkSurfaceCapabilitiesKHR, VkResult> vkGetPhysicalDeviceSurfaceCapabilitiesKHR_out_ptr;
 	public static VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, out VkSurfaceCapabilitiesKHR surfaceCapabilities)
 	{
-		return vkGetPhysicalDeviceSurfaceCapabilitiesKHR_out_ptr(physicalDevice, surface, out surfaceCapabilities);
+		Unsafe.SkipInit(out surfaceCapabilities);
+		fixed (VkSurfaceCapabilitiesKHR* surfaceCapabilitiesPtr = &surfaceCapabilities)
+		{
+			return vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr(physicalDevice, surface, surfaceCapabilitiesPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkSurfaceFormatKHR*, VkResult> vkGetPhysicalDeviceSurfaceFormatsKHR_ptr;
@@ -1934,17 +2134,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult> vkCreateSwapchainKHR_out_ptr;
 	public static VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain)
 	{
-		return vkCreateSwapchainKHR_out_ptr(device, createInfo, allocator, out swapchain);
+		Unsafe.SkipInit(out swapchain);
+		fixed (VkSwapchainKHR* swapchainPtr = &swapchain)
+		{
+			return vkCreateSwapchainKHR_ptr(device, createInfo, allocator, swapchainPtr);
+		}
 	}
 
 	public static VkResult vkCreateSwapchainKHR(VkDevice device, in VkSwapchainCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain)
 	{
 		fixed (VkSwapchainCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return vkCreateSwapchainKHR_out_ptr(device, createInfoPtr, allocator, out swapchain);
+			Unsafe.SkipInit(out swapchain);
+			fixed (VkSwapchainKHR* swapchainPtr = &swapchain)
+			{
+				return vkCreateSwapchainKHR_ptr(device, createInfoPtr, allocator, swapchainPtr);
+			}
 		}
 	}
 
@@ -1966,10 +2173,13 @@ unsafe partial class Vulkan
 		return vkAcquireNextImageKHR_ptr(device, swapchain, timeout, semaphore, fence, imageIndex);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, VkSemaphore, VkFence, out uint, VkResult> vkAcquireNextImageKHR_out_ptr;
 	public static VkResult vkAcquireNextImageKHR(VkDevice device, VkSwapchainKHR swapchain, ulong timeout, VkSemaphore semaphore, VkFence fence, out uint imageIndex)
 	{
-		return vkAcquireNextImageKHR_out_ptr(device, swapchain, timeout, semaphore, fence, out imageIndex);
+		Unsafe.SkipInit(out imageIndex);
+		fixed (uint* imageIndexPtr = &imageIndex)
+		{
+			return vkAcquireNextImageKHR_ptr(device, swapchain, timeout, semaphore, fence, imageIndexPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkQueue, VkPresentInfoKHR*, VkResult> vkQueuePresentKHR_ptr;
@@ -1990,10 +2200,13 @@ unsafe partial class Vulkan
 		return vkGetDeviceGroupSurfacePresentModesKHR_ptr(device, surface, modes);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSurfaceKHR, out VkDeviceGroupPresentModeFlagsKHR, VkResult> vkGetDeviceGroupSurfacePresentModesKHR_out_ptr;
 	public static VkResult vkGetDeviceGroupSurfacePresentModesKHR(VkDevice device, VkSurfaceKHR surface, out VkDeviceGroupPresentModeFlagsKHR modes)
 	{
-		return vkGetDeviceGroupSurfacePresentModesKHR_out_ptr(device, surface, out modes);
+		Unsafe.SkipInit(out modes);
+		fixed (VkDeviceGroupPresentModeFlagsKHR* modesPtr = &modes)
+		{
+			return vkGetDeviceGroupSurfacePresentModesKHR_ptr(device, surface, modesPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkRect2D*, VkResult> vkGetPhysicalDevicePresentRectanglesKHR_ptr;
@@ -2008,10 +2221,13 @@ unsafe partial class Vulkan
 		return vkAcquireNextImage2KHR_ptr(device, acquireInfo, imageIndex);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAcquireNextImageInfoKHR*, out uint, VkResult> vkAcquireNextImage2KHR_out_ptr;
 	public static VkResult vkAcquireNextImage2KHR(VkDevice device, VkAcquireNextImageInfoKHR* acquireInfo, out uint imageIndex)
 	{
-		return vkAcquireNextImage2KHR_out_ptr(device, acquireInfo, out imageIndex);
+		Unsafe.SkipInit(out imageIndex);
+		fixed (uint* imageIndexPtr = &imageIndex)
+		{
+			return vkAcquireNextImage2KHR_ptr(device, acquireInfo, imageIndexPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPropertiesKHR*, VkResult> vkGetPhysicalDeviceDisplayPropertiesKHR_ptr;
@@ -2052,17 +2268,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkDisplayModeCreateInfoKHR*, VkAllocationCallbacks*, out VkDisplayModeKHR, VkResult> vkCreateDisplayModeKHR_out_ptr;
 	public static VkResult vkCreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkDisplayModeKHR mode)
 	{
-		return vkCreateDisplayModeKHR_out_ptr(physicalDevice, display, createInfo, allocator, out mode);
+		Unsafe.SkipInit(out mode);
+		fixed (VkDisplayModeKHR* modePtr = &mode)
+		{
+			return vkCreateDisplayModeKHR_ptr(physicalDevice, display, createInfo, allocator, modePtr);
+		}
 	}
 
 	public static VkResult vkCreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, in VkDisplayModeCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkDisplayModeKHR mode)
 	{
 		fixed (VkDisplayModeCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return vkCreateDisplayModeKHR_out_ptr(physicalDevice, display, createInfoPtr, allocator, out mode);
+			Unsafe.SkipInit(out mode);
+			fixed (VkDisplayModeKHR* modePtr = &mode)
+			{
+				return vkCreateDisplayModeKHR_ptr(physicalDevice, display, createInfoPtr, allocator, modePtr);
+			}
 		}
 	}
 
@@ -2072,10 +2295,13 @@ unsafe partial class Vulkan
 		return vkGetDisplayPlaneCapabilitiesKHR_ptr(physicalDevice, mode, planeIndex, capabilities);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayModeKHR, uint, out VkDisplayPlaneCapabilitiesKHR, VkResult> vkGetDisplayPlaneCapabilitiesKHR_out_ptr;
 	public static VkResult vkGetDisplayPlaneCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkDisplayModeKHR mode, uint planeIndex, out VkDisplayPlaneCapabilitiesKHR capabilities)
 	{
-		return vkGetDisplayPlaneCapabilitiesKHR_out_ptr(physicalDevice, mode, planeIndex, out capabilities);
+		Unsafe.SkipInit(out capabilities);
+		fixed (VkDisplayPlaneCapabilitiesKHR* capabilitiesPtr = &capabilities)
+		{
+			return vkGetDisplayPlaneCapabilitiesKHR_ptr(physicalDevice, mode, planeIndex, capabilitiesPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateDisplayPlaneSurfaceKHR_ptr;
@@ -2092,17 +2318,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateDisplayPlaneSurfaceKHR_out_ptr;
 	public static VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
-		return vkCreateDisplayPlaneSurfaceKHR_out_ptr(instance, createInfo, allocator, out surface);
+		Unsafe.SkipInit(out surface);
+		fixed (VkSurfaceKHR* surfacePtr = &surface)
+		{
+			return vkCreateDisplayPlaneSurfaceKHR_ptr(instance, createInfo, allocator, surfacePtr);
+		}
 	}
 
 	public static VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, in VkDisplaySurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		fixed (VkDisplaySurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return vkCreateDisplayPlaneSurfaceKHR_out_ptr(instance, createInfoPtr, allocator, out surface);
+			Unsafe.SkipInit(out surface);
+			fixed (VkSurfaceKHR* surfacePtr = &surface)
+			{
+				return vkCreateDisplayPlaneSurfaceKHR_ptr(instance, createInfoPtr, allocator, surfacePtr);
+			}
 		}
 	}
 
@@ -2120,17 +2353,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult> vkCreateSharedSwapchainsKHR_out_ptr;
 	public static VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* createInfos, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchains)
 	{
-		return vkCreateSharedSwapchainsKHR_out_ptr(device, swapchainCount, createInfos, allocator, out swapchains);
+		Unsafe.SkipInit(out swapchains);
+		fixed (VkSwapchainKHR* swapchainsPtr = &swapchains)
+		{
+			return vkCreateSharedSwapchainsKHR_ptr(device, swapchainCount, createInfos, allocator, swapchainsPtr);
+		}
 	}
 
 	public static VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, in VkSwapchainCreateInfoKHR createInfos, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchains)
 	{
 		fixed (VkSwapchainCreateInfoKHR* createInfoPtr = &createInfos)
 		{
-			return vkCreateSharedSwapchainsKHR_out_ptr(device, swapchainCount, createInfoPtr, allocator, out swapchains);
+			Unsafe.SkipInit(out swapchains);
+			fixed (VkSwapchainKHR* swapchainsPtr = &swapchains)
+			{
+				return vkCreateSharedSwapchainsKHR_ptr(device, swapchainCount, createInfoPtr, allocator, swapchainsPtr);
+			}
 		}
 	}
 
@@ -2288,10 +2528,13 @@ unsafe partial class Vulkan
 		vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr(device, heapIndex, localDeviceIndex, remoteDeviceIndex, peerMemoryFeatures);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, uint, uint, out VkPeerMemoryFeatureFlags, void> vkGetDeviceGroupPeerMemoryFeaturesKHR_out_ptr;
 	public static void vkGetDeviceGroupPeerMemoryFeaturesKHR(VkDevice device, uint heapIndex, uint localDeviceIndex, uint remoteDeviceIndex, out VkPeerMemoryFeatureFlags peerMemoryFeatures)
 	{
-		vkGetDeviceGroupPeerMemoryFeaturesKHR_out_ptr(device, heapIndex, localDeviceIndex, remoteDeviceIndex, out peerMemoryFeatures);
+		Unsafe.SkipInit(out peerMemoryFeatures);
+		fixed (VkPeerMemoryFeatureFlags* peerMemoryFeaturesPtr = &peerMemoryFeatures)
+		{
+			vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr(device, heapIndex, localDeviceIndex, remoteDeviceIndex, peerMemoryFeaturesPtr);
+		}
 	}
 
 	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetDeviceMaskKHR_ptr;
@@ -3238,17 +3481,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, out VkDebugUtilsMessengerEXT, VkResult> vkCreateDebugUtilsMessengerEXT_out_ptr;
 	public static VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkDebugUtilsMessengerEXT messenger)
 	{
-		return vkCreateDebugUtilsMessengerEXT_out_ptr(instance, createInfo, allocator, out messenger);
+		Unsafe.SkipInit(out messenger);
+		fixed (VkDebugUtilsMessengerEXT* messengerPtr = &messenger)
+		{
+			return vkCreateDebugUtilsMessengerEXT_ptr(instance, createInfo, allocator, messengerPtr);
+		}
 	}
 
 	public static VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, in VkDebugUtilsMessengerCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkDebugUtilsMessengerEXT messenger)
 	{
 		fixed (VkDebugUtilsMessengerCreateInfoEXT* createInfoPtr = &createInfo)
 		{
-			return vkCreateDebugUtilsMessengerEXT_out_ptr(instance, createInfoPtr, allocator, out messenger);
+			Unsafe.SkipInit(out messenger);
+			fixed (VkDebugUtilsMessengerEXT* messengerPtr = &messenger)
+			{
+				return vkCreateDebugUtilsMessengerEXT_ptr(instance, createInfoPtr, allocator, messengerPtr);
+			}
 		}
 	}
 
@@ -4678,36 +4928,37 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateAndroidSurfaceKHR_out_ptr;
 	public static VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
-		return vkCreateAndroidSurfaceKHR_out_ptr(instance, createInfo, allocator, out surface);
+		Unsafe.SkipInit(out surface);
+		fixed (VkSurfaceKHR* surfacePtr = &surface)
+		{
+			return vkCreateAndroidSurfaceKHR_ptr(instance, createInfo, allocator, surfacePtr);
+		}
 	}
 
 	public static VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, in VkAndroidSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		fixed (VkAndroidSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return vkCreateAndroidSurfaceKHR_out_ptr(instance, createInfoPtr, allocator, out surface);
+			Unsafe.SkipInit(out surface);
+			fixed (VkSurfaceKHR* surfacePtr = &surface)
+			{
+				return vkCreateAndroidSurfaceKHR_ptr(instance, createInfoPtr, allocator, surfacePtr);
+			}
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, IntPtr, VkAndroidHardwareBufferPropertiesANDROID*, VkResult> vkGetAndroidHardwareBufferPropertiesANDROID_ptr;
-	public static VkResult vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, IntPtr buffer, VkAndroidHardwareBufferPropertiesANDROID* properties)
+	private static delegate* unmanaged<VkDevice, nint, VkAndroidHardwareBufferPropertiesANDROID*, VkResult> vkGetAndroidHardwareBufferPropertiesANDROID_ptr;
+	public static VkResult vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, nint buffer, VkAndroidHardwareBufferPropertiesANDROID* properties)
 	{
 		return vkGetAndroidHardwareBufferPropertiesANDROID_ptr(device, buffer, properties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_ptr;
-	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, IntPtr buffer)
+	private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, nint, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_ptr;
+	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, nint buffer)
 	{
 		return vkGetMemoryAndroidHardwareBufferANDROID_ptr(device, info, buffer);
-	}
-
-	private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, out IntPtr, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_out_ptr;
-	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, out IntPtr buffer)
-	{
-		return vkGetMemoryAndroidHardwareBufferANDROID_out_ptr(device, info, out buffer);
 	}
 
 	private static delegate* unmanaged<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateIOSSurfaceMVK_ptr;
@@ -4724,17 +4975,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateIOSSurfaceMVK_out_ptr;
 	public static VkResult vkCreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
-		return vkCreateIOSSurfaceMVK_out_ptr(instance, createInfo, allocator, out surface);
+		Unsafe.SkipInit(out surface);
+		fixed (VkSurfaceKHR* surfacePtr = &surface)
+		{
+			return vkCreateIOSSurfaceMVK_ptr(instance, createInfo, allocator, surfacePtr);
+		}
 	}
 
 	public static VkResult vkCreateIOSSurfaceMVK(VkInstance instance, in VkIOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		fixed (VkIOSSurfaceCreateInfoMVK* createInfoPtr = &createInfo)
 		{
-			return vkCreateIOSSurfaceMVK_out_ptr(instance, createInfoPtr, allocator, out surface);
+			Unsafe.SkipInit(out surface);
+			fixed (VkSurfaceKHR* surfacePtr = &surface)
+			{
+				return vkCreateIOSSurfaceMVK_ptr(instance, createInfoPtr, allocator, surfacePtr);
+			}
 		}
 	}
 
@@ -4752,17 +5010,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateMacOSSurfaceMVK_out_ptr;
 	public static VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
-		return vkCreateMacOSSurfaceMVK_out_ptr(instance, createInfo, allocator, out surface);
+		Unsafe.SkipInit(out surface);
+		fixed (VkSurfaceKHR* surfacePtr = &surface)
+		{
+			return vkCreateMacOSSurfaceMVK_ptr(instance, createInfo, allocator, surfacePtr);
+		}
 	}
 
 	public static VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, in VkMacOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		fixed (VkMacOSSurfaceCreateInfoMVK* createInfoPtr = &createInfo)
 		{
-			return vkCreateMacOSSurfaceMVK_out_ptr(instance, createInfoPtr, allocator, out surface);
+			Unsafe.SkipInit(out surface);
+			fixed (VkSurfaceKHR* surfacePtr = &surface)
+			{
+				return vkCreateMacOSSurfaceMVK_ptr(instance, createInfoPtr, allocator, surfacePtr);
+			}
 		}
 	}
 
@@ -4780,17 +5045,24 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult> vkCreateMetalSurfaceEXT_out_ptr;
 	public static VkResult vkCreateMetalSurfaceEXT(VkInstance instance, VkMetalSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
-		return vkCreateMetalSurfaceEXT_out_ptr(instance, createInfo, allocator, out surface);
+		Unsafe.SkipInit(out surface);
+		fixed (VkSurfaceKHR* surfacePtr = &surface)
+		{
+			return vkCreateMetalSurfaceEXT_ptr(instance, createInfo, allocator, surfacePtr);
+		}
 	}
 
 	public static VkResult vkCreateMetalSurfaceEXT(VkInstance instance, in VkMetalSurfaceCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		fixed (VkMetalSurfaceCreateInfoEXT* createInfoPtr = &createInfo)
 		{
-			return vkCreateMetalSurfaceEXT_out_ptr(instance, createInfoPtr, allocator, out surface);
+			Unsafe.SkipInit(out surface);
+			fixed (VkSurfaceKHR* surfacePtr = &surface)
+			{
+				return vkCreateMetalSurfaceEXT_ptr(instance, createInfoPtr, allocator, surfacePtr);
+			}
 		}
 	}
 
@@ -4869,18 +5141,12 @@ unsafe partial class Vulkan
 		vkDestroyInstance_ptr = (delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyInstance));
 		vkEnumeratePhysicalDevices_ptr = (delegate* unmanaged<VkInstance, uint*, VkPhysicalDevice*, VkResult>) load(context, nameof(vkEnumeratePhysicalDevices));
 		vkGetPhysicalDeviceFeatures_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceFeatures*, void>) load(context, nameof(vkGetPhysicalDeviceFeatures));
-		vkGetPhysicalDeviceFeatures_out_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceFeatures, void>) load(context, nameof(vkGetPhysicalDeviceFeatures));
 		vkGetPhysicalDeviceFormatProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, VkFormatProperties*, void>) load(context, nameof(vkGetPhysicalDeviceFormatProperties));
-		vkGetPhysicalDeviceFormatProperties_out_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, out VkFormatProperties, void>) load(context, nameof(vkGetPhysicalDeviceFormatProperties));
 		vkGetPhysicalDeviceImageFormatProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkImageFormatProperties*, VkResult>) load(context, nameof(vkGetPhysicalDeviceImageFormatProperties));
-		vkGetPhysicalDeviceImageFormatProperties_out_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, out VkImageFormatProperties, VkResult>) load(context, nameof(vkGetPhysicalDeviceImageFormatProperties));
 		vkGetPhysicalDeviceProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void>) load(context, nameof(vkGetPhysicalDeviceProperties));
-		vkGetPhysicalDeviceProperties_out_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceProperties, void>) load(context, nameof(vkGetPhysicalDeviceProperties));
 		vkGetPhysicalDeviceQueueFamilyProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyProperties));
 		vkGetPhysicalDeviceMemoryProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties*, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties));
-		vkGetPhysicalDeviceMemoryProperties_out_ptr = (delegate* unmanaged<VkPhysicalDevice, out VkPhysicalDeviceMemoryProperties, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties));
 		vkCreateDevice_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, VkDevice*, VkResult>) load(context, nameof(vkCreateDevice));
-		vkCreateDevice_out_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, out VkDevice, VkResult>) load(context, nameof(vkCreateDevice));
 		vkEnumerateDeviceExtensionProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, sbyte*, uint*, VkExtensionProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceExtensionProperties));
 		vkEnumerateDeviceLayerProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkLayerProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceLayerProperties));
 		vkGetPhysicalDeviceSparseImageFormatProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkSampleCountFlags, VkImageUsageFlags, VkImageTiling, uint*, VkSparseImageFormatProperties*, void>) load(context, nameof(vkGetPhysicalDeviceSparseImageFormatProperties));
@@ -4898,9 +5164,7 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceToolProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceToolProperties*, VkResult>) load(context, nameof(vkGetPhysicalDeviceToolProperties));
 		vkDestroySurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySurfaceKHR));
 		vkGetPhysicalDeviceSurfaceSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, VkSurfaceKHR, VkBool32*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceSupportKHR));
-		vkGetPhysicalDeviceSurfaceSupportKHR_out_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, VkSurfaceKHR, out VkBool32, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceSupportKHR));
 		vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilitiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceCapabilitiesKHR));
-		vkGetPhysicalDeviceSurfaceCapabilitiesKHR_out_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, out VkSurfaceCapabilitiesKHR, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceCapabilitiesKHR));
 		vkGetPhysicalDeviceSurfaceFormatsKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkSurfaceFormatKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceFormatsKHR));
 		vkGetPhysicalDeviceSurfacePresentModesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkPresentModeKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfacePresentModesKHR));
 		vkGetPhysicalDevicePresentRectanglesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkRect2D*, VkResult>) load(context, nameof(vkGetPhysicalDevicePresentRectanglesKHR));
@@ -4909,11 +5173,8 @@ unsafe partial class Vulkan
 		vkGetDisplayPlaneSupportedDisplaysKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetDisplayPlaneSupportedDisplaysKHR));
 		vkGetDisplayModePropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModePropertiesKHR*, VkResult>) load(context, nameof(vkGetDisplayModePropertiesKHR));
 		vkCreateDisplayModeKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkDisplayModeCreateInfoKHR*, VkAllocationCallbacks*, VkDisplayModeKHR*, VkResult>) load(context, nameof(vkCreateDisplayModeKHR));
-		vkCreateDisplayModeKHR_out_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkDisplayModeCreateInfoKHR*, VkAllocationCallbacks*, out VkDisplayModeKHR, VkResult>) load(context, nameof(vkCreateDisplayModeKHR));
 		vkGetDisplayPlaneCapabilitiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayModeKHR, uint, VkDisplayPlaneCapabilitiesKHR*, VkResult>) load(context, nameof(vkGetDisplayPlaneCapabilitiesKHR));
-		vkGetDisplayPlaneCapabilitiesKHR_out_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayModeKHR, uint, out VkDisplayPlaneCapabilitiesKHR, VkResult>) load(context, nameof(vkGetDisplayPlaneCapabilitiesKHR));
 		vkCreateDisplayPlaneSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateDisplayPlaneSurfaceKHR));
-		vkCreateDisplayPlaneSurfaceKHR_out_ptr = (delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateDisplayPlaneSurfaceKHR));
 		vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkVideoProfileInfoKHR*, VkVideoCapabilitiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoCapabilitiesKHR));
 		vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoFormatInfoKHR*, uint*, VkVideoFormatPropertiesKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceVideoFormatPropertiesKHR));
 		vkGetPhysicalDeviceFeatures2KHR_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceFeatures2*, void>) load(context, nameof(vkGetPhysicalDeviceFeatures2KHR));
@@ -4954,7 +5215,6 @@ unsafe partial class Vulkan
 		vkCmdEndDebugUtilsLabelEXT_ptr = (delegate* unmanaged<VkCommandBuffer, void>) load(context, nameof(vkCmdEndDebugUtilsLabelEXT));
 		vkCmdInsertDebugUtilsLabelEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkDebugUtilsLabelEXT*, void>) load(context, nameof(vkCmdInsertDebugUtilsLabelEXT));
 		vkCreateDebugUtilsMessengerEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>) load(context, nameof(vkCreateDebugUtilsMessengerEXT));
-		vkCreateDebugUtilsMessengerEXT_out_ptr = (delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, out VkDebugUtilsMessengerEXT, VkResult>) load(context, nameof(vkCreateDebugUtilsMessengerEXT));
 		vkDestroyDebugUtilsMessengerEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDebugUtilsMessengerEXT));
 		vkSubmitDebugUtilsMessageEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void>) load(context, nameof(vkSubmitDebugUtilsMessageEXT));
 		vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSampleCountFlags, VkMultisamplePropertiesEXT*, void>) load(context, nameof(vkGetPhysicalDeviceMultisamplePropertiesEXT));
@@ -4967,78 +5227,58 @@ unsafe partial class Vulkan
 		vkGetDrmDisplayEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, int, uint, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetDrmDisplayEXT));
 		vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr = (delegate* unmanaged<VkPhysicalDevice, VkOpticalFlowImageFormatInfoNV*, uint*, VkOpticalFlowImageFormatPropertiesNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceOpticalFlowImageFormatsNV));
 		vkCreateAndroidSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateAndroidSurfaceKHR));
-		vkCreateAndroidSurfaceKHR_out_ptr = (delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateAndroidSurfaceKHR));
 		vkCreateIOSSurfaceMVK_ptr = (delegate* unmanaged<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateIOSSurfaceMVK));
-		vkCreateIOSSurfaceMVK_out_ptr = (delegate* unmanaged<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateIOSSurfaceMVK));
 		vkCreateMacOSSurfaceMVK_ptr = (delegate* unmanaged<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateMacOSSurfaceMVK));
-		vkCreateMacOSSurfaceMVK_out_ptr = (delegate* unmanaged<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateMacOSSurfaceMVK));
 		vkCreateMetalSurfaceEXT_ptr = (delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateMetalSurfaceEXT));
-		vkCreateMetalSurfaceEXT_out_ptr = (delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, out VkSurfaceKHR, VkResult>) load(context, nameof(vkCreateMetalSurfaceEXT));
 		vkCreateViSurfaceNN_ptr = (delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateViSurfaceNN));
 	}
 	private static void GenLoadDevice(IntPtr context, LoadFunction load)
 	{
 		vkDestroyDevice_ptr = (delegate* unmanaged<VkDevice, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDevice));
 		vkGetDeviceQueue_ptr = (delegate* unmanaged<VkDevice, uint, uint, VkQueue*, void>) load(context, nameof(vkGetDeviceQueue));
-		vkGetDeviceQueue_out_ptr = (delegate* unmanaged<VkDevice, uint, uint, out VkQueue, void>) load(context, nameof(vkGetDeviceQueue));
 		vkQueueSubmit_ptr = (delegate* unmanaged<VkQueue, uint, VkSubmitInfo*, VkFence, VkResult>) load(context, nameof(vkQueueSubmit));
 		vkQueueWaitIdle_ptr = (delegate* unmanaged<VkQueue, VkResult>) load(context, nameof(vkQueueWaitIdle));
 		vkDeviceWaitIdle_ptr = (delegate* unmanaged<VkDevice, VkResult>) load(context, nameof(vkDeviceWaitIdle));
 		vkAllocateMemory_ptr = (delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult>) load(context, nameof(vkAllocateMemory));
-		vkAllocateMemory_out_ptr = (delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, out VkDeviceMemory, VkResult>) load(context, nameof(vkAllocateMemory));
 		vkFreeMemory_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void>) load(context, nameof(vkFreeMemory));
 		vkMapMemory_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void**, VkResult>) load(context, nameof(vkMapMemory));
 		vkUnmapMemory_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, void>) load(context, nameof(vkUnmapMemory));
 		vkFlushMappedMemoryRanges_ptr = (delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>) load(context, nameof(vkFlushMappedMemoryRanges));
 		vkInvalidateMappedMemoryRanges_ptr = (delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>) load(context, nameof(vkInvalidateMappedMemoryRanges));
 		vkGetDeviceMemoryCommitment_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, ulong*, void>) load(context, nameof(vkGetDeviceMemoryCommitment));
-		vkGetDeviceMemoryCommitment_out_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, out ulong, void>) load(context, nameof(vkGetDeviceMemoryCommitment));
 		vkBindBufferMemory_ptr = (delegate* unmanaged<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult>) load(context, nameof(vkBindBufferMemory));
 		vkBindImageMemory_ptr = (delegate* unmanaged<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult>) load(context, nameof(vkBindImageMemory));
 		vkGetBufferMemoryRequirements_ptr = (delegate* unmanaged<VkDevice, VkBuffer, VkMemoryRequirements*, void>) load(context, nameof(vkGetBufferMemoryRequirements));
-		vkGetBufferMemoryRequirements_out_ptr = (delegate* unmanaged<VkDevice, VkBuffer, out VkMemoryRequirements, void>) load(context, nameof(vkGetBufferMemoryRequirements));
 		vkGetImageMemoryRequirements_ptr = (delegate* unmanaged<VkDevice, VkImage, VkMemoryRequirements*, void>) load(context, nameof(vkGetImageMemoryRequirements));
-		vkGetImageMemoryRequirements_out_ptr = (delegate* unmanaged<VkDevice, VkImage, out VkMemoryRequirements, void>) load(context, nameof(vkGetImageMemoryRequirements));
 		vkGetImageSparseMemoryRequirements_ptr = (delegate* unmanaged<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void>) load(context, nameof(vkGetImageSparseMemoryRequirements));
 		vkQueueBindSparse_ptr = (delegate* unmanaged<VkQueue, uint, VkBindSparseInfo*, VkFence, VkResult>) load(context, nameof(vkQueueBindSparse));
 		vkCreateFence_ptr = (delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, VkFence*, VkResult>) load(context, nameof(vkCreateFence));
-		vkCreateFence_out_ptr = (delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, out VkFence, VkResult>) load(context, nameof(vkCreateFence));
 		vkDestroyFence_ptr = (delegate* unmanaged<VkDevice, VkFence, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyFence));
 		vkResetFences_ptr = (delegate* unmanaged<VkDevice, uint, VkFence*, VkResult>) load(context, nameof(vkResetFences));
 		vkGetFenceStatus_ptr = (delegate* unmanaged<VkDevice, VkFence, VkResult>) load(context, nameof(vkGetFenceStatus));
 		vkWaitForFences_ptr = (delegate* unmanaged<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult>) load(context, nameof(vkWaitForFences));
 		vkCreateSemaphore_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, VkSemaphore*, VkResult>) load(context, nameof(vkCreateSemaphore));
-		vkCreateSemaphore_out_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, out VkSemaphore, VkResult>) load(context, nameof(vkCreateSemaphore));
 		vkDestroySemaphore_ptr = (delegate* unmanaged<VkDevice, VkSemaphore, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySemaphore));
 		vkCreateEvent_ptr = (delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>) load(context, nameof(vkCreateEvent));
-		vkCreateEvent_out_ptr = (delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, out VkEvent, VkResult>) load(context, nameof(vkCreateEvent));
 		vkDestroyEvent_ptr = (delegate* unmanaged<VkDevice, VkEvent, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyEvent));
 		vkGetEventStatus_ptr = (delegate* unmanaged<VkDevice, VkEvent, VkResult>) load(context, nameof(vkGetEventStatus));
 		vkSetEvent_ptr = (delegate* unmanaged<VkDevice, VkEvent, VkResult>) load(context, nameof(vkSetEvent));
 		vkResetEvent_ptr = (delegate* unmanaged<VkDevice, VkEvent, VkResult>) load(context, nameof(vkResetEvent));
 		vkCreateQueryPool_ptr = (delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, VkQueryPool*, VkResult>) load(context, nameof(vkCreateQueryPool));
-		vkCreateQueryPool_out_ptr = (delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, out VkQueryPool, VkResult>) load(context, nameof(vkCreateQueryPool));
 		vkDestroyQueryPool_ptr = (delegate* unmanaged<VkDevice, VkQueryPool, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyQueryPool));
 		vkGetQueryPoolResults_ptr = (delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, nuint, void*, ulong, VkQueryResultFlags, VkResult>) load(context, nameof(vkGetQueryPoolResults));
 		vkCreateBuffer_ptr = (delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult>) load(context, nameof(vkCreateBuffer));
-		vkCreateBuffer_out_ptr = (delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, out VkBuffer, VkResult>) load(context, nameof(vkCreateBuffer));
 		vkDestroyBuffer_ptr = (delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyBuffer));
 		vkCreateBufferView_ptr = (delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>) load(context, nameof(vkCreateBufferView));
-		vkCreateBufferView_out_ptr = (delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, out VkBufferView, VkResult>) load(context, nameof(vkCreateBufferView));
 		vkDestroyBufferView_ptr = (delegate* unmanaged<VkDevice, VkBufferView, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyBufferView));
 		vkCreateImage_ptr = (delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult>) load(context, nameof(vkCreateImage));
-		vkCreateImage_out_ptr = (delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, out VkImage, VkResult>) load(context, nameof(vkCreateImage));
 		vkDestroyImage_ptr = (delegate* unmanaged<VkDevice, VkImage, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyImage));
 		vkGetImageSubresourceLayout_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource*, VkSubresourceLayout*, void>) load(context, nameof(vkGetImageSubresourceLayout));
-		vkGetImageSubresourceLayout_out_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource*, out VkSubresourceLayout, void>) load(context, nameof(vkGetImageSubresourceLayout));
 		vkCreateImageView_ptr = (delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, VkImageView*, VkResult>) load(context, nameof(vkCreateImageView));
-		vkCreateImageView_out_ptr = (delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, out VkImageView, VkResult>) load(context, nameof(vkCreateImageView));
 		vkDestroyImageView_ptr = (delegate* unmanaged<VkDevice, VkImageView, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyImageView));
 		vkCreateShaderModule_ptr = (delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, VkShaderModule*, VkResult>) load(context, nameof(vkCreateShaderModule));
-		vkCreateShaderModule_out_ptr = (delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, out VkShaderModule, VkResult>) load(context, nameof(vkCreateShaderModule));
 		vkDestroyShaderModule_ptr = (delegate* unmanaged<VkDevice, VkShaderModule, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyShaderModule));
 		vkCreatePipelineCache_ptr = (delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, VkPipelineCache*, VkResult>) load(context, nameof(vkCreatePipelineCache));
-		vkCreatePipelineCache_out_ptr = (delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, out VkPipelineCache, VkResult>) load(context, nameof(vkCreatePipelineCache));
 		vkDestroyPipelineCache_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPipelineCache));
 		vkGetPipelineCacheData_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, nuint*, void*, VkResult>) load(context, nameof(vkGetPipelineCacheData));
 		vkMergePipelineCaches_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult>) load(context, nameof(vkMergePipelineCaches));
@@ -5046,31 +5286,23 @@ unsafe partial class Vulkan
 		vkCreateComputePipelines_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkComputePipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateComputePipelines));
 		vkDestroyPipeline_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPipeline));
 		vkCreatePipelineLayout_ptr = (delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, VkPipelineLayout*, VkResult>) load(context, nameof(vkCreatePipelineLayout));
-		vkCreatePipelineLayout_out_ptr = (delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, out VkPipelineLayout, VkResult>) load(context, nameof(vkCreatePipelineLayout));
 		vkDestroyPipelineLayout_ptr = (delegate* unmanaged<VkDevice, VkPipelineLayout, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPipelineLayout));
 		vkCreateSampler_ptr = (delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, VkSampler*, VkResult>) load(context, nameof(vkCreateSampler));
-		vkCreateSampler_out_ptr = (delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, out VkSampler, VkResult>) load(context, nameof(vkCreateSampler));
 		vkDestroySampler_ptr = (delegate* unmanaged<VkDevice, VkSampler, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySampler));
 		vkCreateDescriptorSetLayout_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, VkDescriptorSetLayout*, VkResult>) load(context, nameof(vkCreateDescriptorSetLayout));
-		vkCreateDescriptorSetLayout_out_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, out VkDescriptorSetLayout, VkResult>) load(context, nameof(vkCreateDescriptorSetLayout));
 		vkDestroyDescriptorSetLayout_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetLayout, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDescriptorSetLayout));
 		vkCreateDescriptorPool_ptr = (delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, VkDescriptorPool*, VkResult>) load(context, nameof(vkCreateDescriptorPool));
-		vkCreateDescriptorPool_out_ptr = (delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, out VkDescriptorPool, VkResult>) load(context, nameof(vkCreateDescriptorPool));
 		vkDestroyDescriptorPool_ptr = (delegate* unmanaged<VkDevice, VkDescriptorPool, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDescriptorPool));
 		vkResetDescriptorPool_ptr = (delegate* unmanaged<VkDevice, VkDescriptorPool, VkDescriptorPoolResetFlags, VkResult>) load(context, nameof(vkResetDescriptorPool));
 		vkAllocateDescriptorSets_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetAllocateInfo*, VkDescriptorSet*, VkResult>) load(context, nameof(vkAllocateDescriptorSets));
 		vkFreeDescriptorSets_ptr = (delegate* unmanaged<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult>) load(context, nameof(vkFreeDescriptorSets));
 		vkUpdateDescriptorSets_ptr = (delegate* unmanaged<VkDevice, uint, VkWriteDescriptorSet*, uint, VkCopyDescriptorSet*, void>) load(context, nameof(vkUpdateDescriptorSets));
 		vkCreateFramebuffer_ptr = (delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, VkFramebuffer*, VkResult>) load(context, nameof(vkCreateFramebuffer));
-		vkCreateFramebuffer_out_ptr = (delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, out VkFramebuffer, VkResult>) load(context, nameof(vkCreateFramebuffer));
 		vkDestroyFramebuffer_ptr = (delegate* unmanaged<VkDevice, VkFramebuffer, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyFramebuffer));
 		vkCreateRenderPass_ptr = (delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, VkRenderPass*, VkResult>) load(context, nameof(vkCreateRenderPass));
-		vkCreateRenderPass_out_ptr = (delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, out VkRenderPass, VkResult>) load(context, nameof(vkCreateRenderPass));
 		vkDestroyRenderPass_ptr = (delegate* unmanaged<VkDevice, VkRenderPass, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyRenderPass));
 		vkGetRenderAreaGranularity_ptr = (delegate* unmanaged<VkDevice, VkRenderPass, VkExtent2D*, void>) load(context, nameof(vkGetRenderAreaGranularity));
-		vkGetRenderAreaGranularity_out_ptr = (delegate* unmanaged<VkDevice, VkRenderPass, out VkExtent2D, void>) load(context, nameof(vkGetRenderAreaGranularity));
 		vkCreateCommandPool_ptr = (delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>) load(context, nameof(vkCreateCommandPool));
-		vkCreateCommandPool_out_ptr = (delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, out VkCommandPool, VkResult>) load(context, nameof(vkCreateCommandPool));
 		vkDestroyCommandPool_ptr = (delegate* unmanaged<VkDevice, VkCommandPool, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyCommandPool));
 		vkResetCommandPool_ptr = (delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolResetFlags, VkResult>) load(context, nameof(vkResetCommandPool));
 		vkAllocateCommandBuffers_ptr = (delegate* unmanaged<VkDevice, VkCommandBufferAllocateInfo*, VkCommandBuffer*, VkResult>) load(context, nameof(vkAllocateCommandBuffers));
@@ -5132,19 +5364,15 @@ unsafe partial class Vulkan
 		vkGetImageSparseMemoryRequirements2_ptr = (delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetImageSparseMemoryRequirements2));
 		vkTrimCommandPool_ptr = (delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void>) load(context, nameof(vkTrimCommandPool));
 		vkGetDeviceQueue2_ptr = (delegate* unmanaged<VkDevice, VkDeviceQueueInfo2*, VkQueue*, void>) load(context, nameof(vkGetDeviceQueue2));
-		vkGetDeviceQueue2_out_ptr = (delegate* unmanaged<VkDevice, VkDeviceQueueInfo2*, out VkQueue, void>) load(context, nameof(vkGetDeviceQueue2));
 		vkCreateSamplerYcbcrConversion_ptr = (delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>) load(context, nameof(vkCreateSamplerYcbcrConversion));
-		vkCreateSamplerYcbcrConversion_out_ptr = (delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, out VkSamplerYcbcrConversion, VkResult>) load(context, nameof(vkCreateSamplerYcbcrConversion));
 		vkDestroySamplerYcbcrConversion_ptr = (delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySamplerYcbcrConversion));
 		vkCreateDescriptorUpdateTemplate_ptr = (delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>) load(context, nameof(vkCreateDescriptorUpdateTemplate));
-		vkCreateDescriptorUpdateTemplate_out_ptr = (delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, out VkDescriptorUpdateTemplate, VkResult>) load(context, nameof(vkCreateDescriptorUpdateTemplate));
 		vkDestroyDescriptorUpdateTemplate_ptr = (delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDescriptorUpdateTemplate));
 		vkUpdateDescriptorSetWithTemplate_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void>) load(context, nameof(vkUpdateDescriptorSetWithTemplate));
 		vkGetDescriptorSetLayoutSupport_ptr = (delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkDescriptorSetLayoutSupport*, void>) load(context, nameof(vkGetDescriptorSetLayoutSupport));
 		vkCmdDrawIndirectCount_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectCount));
 		vkCmdDrawIndexedIndirectCount_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndexedIndirectCount));
 		vkCreateRenderPass2_ptr = (delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>) load(context, nameof(vkCreateRenderPass2));
-		vkCreateRenderPass2_out_ptr = (delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, out VkRenderPass, VkResult>) load(context, nameof(vkCreateRenderPass2));
 		vkCmdBeginRenderPass2_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void>) load(context, nameof(vkCmdBeginRenderPass2));
 		vkCmdNextSubpass2_ptr = (delegate* unmanaged<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void>) load(context, nameof(vkCmdNextSubpass2));
 		vkCmdEndRenderPass2_ptr = (delegate* unmanaged<VkCommandBuffer, VkSubpassEndInfo*, void>) load(context, nameof(vkCmdEndRenderPass2));
@@ -5192,19 +5420,14 @@ unsafe partial class Vulkan
 		vkGetDeviceImageMemoryRequirements_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageMemoryRequirements));
 		vkGetDeviceImageSparseMemoryRequirements_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageSparseMemoryRequirements));
 		vkCreateSwapchainKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>) load(context, nameof(vkCreateSwapchainKHR));
-		vkCreateSwapchainKHR_out_ptr = (delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult>) load(context, nameof(vkCreateSwapchainKHR));
 		vkDestroySwapchainKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySwapchainKHR));
 		vkGetSwapchainImagesKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult>) load(context, nameof(vkGetSwapchainImagesKHR));
 		vkAcquireNextImageKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, VkSemaphore, VkFence, uint*, VkResult>) load(context, nameof(vkAcquireNextImageKHR));
-		vkAcquireNextImageKHR_out_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, VkSemaphore, VkFence, out uint, VkResult>) load(context, nameof(vkAcquireNextImageKHR));
 		vkQueuePresentKHR_ptr = (delegate* unmanaged<VkQueue, VkPresentInfoKHR*, VkResult>) load(context, nameof(vkQueuePresentKHR));
 		vkGetDeviceGroupPresentCapabilitiesKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceGroupPresentCapabilitiesKHR*, VkResult>) load(context, nameof(vkGetDeviceGroupPresentCapabilitiesKHR));
 		vkGetDeviceGroupSurfacePresentModesKHR_ptr = (delegate* unmanaged<VkDevice, VkSurfaceKHR, VkDeviceGroupPresentModeFlagsKHR*, VkResult>) load(context, nameof(vkGetDeviceGroupSurfacePresentModesKHR));
-		vkGetDeviceGroupSurfacePresentModesKHR_out_ptr = (delegate* unmanaged<VkDevice, VkSurfaceKHR, out VkDeviceGroupPresentModeFlagsKHR, VkResult>) load(context, nameof(vkGetDeviceGroupSurfacePresentModesKHR));
 		vkAcquireNextImage2KHR_ptr = (delegate* unmanaged<VkDevice, VkAcquireNextImageInfoKHR*, uint*, VkResult>) load(context, nameof(vkAcquireNextImage2KHR));
-		vkAcquireNextImage2KHR_out_ptr = (delegate* unmanaged<VkDevice, VkAcquireNextImageInfoKHR*, out uint, VkResult>) load(context, nameof(vkAcquireNextImage2KHR));
 		vkCreateSharedSwapchainsKHR_ptr = (delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>) load(context, nameof(vkCreateSharedSwapchainsKHR));
-		vkCreateSharedSwapchainsKHR_out_ptr = (delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, out VkSwapchainKHR, VkResult>) load(context, nameof(vkCreateSharedSwapchainsKHR));
 		vkCreateVideoSessionKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult>) load(context, nameof(vkCreateVideoSessionKHR));
 		vkDestroyVideoSessionKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyVideoSessionKHR));
 		vkGetVideoSessionMemoryRequirementsKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoSessionKHR, uint*, VkVideoSessionMemoryRequirementsKHR*, VkResult>) load(context, nameof(vkGetVideoSessionMemoryRequirementsKHR));
@@ -5219,7 +5442,6 @@ unsafe partial class Vulkan
 		vkCmdBeginRenderingKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderingInfo*, void>) load(context, nameof(vkCmdBeginRenderingKHR));
 		vkCmdEndRenderingKHR_ptr = (delegate* unmanaged<VkCommandBuffer, void>) load(context, nameof(vkCmdEndRenderingKHR));
 		vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr = (delegate* unmanaged<VkDevice, uint, uint, uint, VkPeerMemoryFeatureFlags*, void>) load(context, nameof(vkGetDeviceGroupPeerMemoryFeaturesKHR));
-		vkGetDeviceGroupPeerMemoryFeaturesKHR_out_ptr = (delegate* unmanaged<VkDevice, uint, uint, uint, out VkPeerMemoryFeatureFlags, void>) load(context, nameof(vkGetDeviceGroupPeerMemoryFeaturesKHR));
 		vkCmdSetDeviceMaskKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, void>) load(context, nameof(vkCmdSetDeviceMaskKHR));
 		vkCmdDispatchBaseKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void>) load(context, nameof(vkCmdDispatchBaseKHR));
 		vkTrimCommandPoolKHR_ptr = (delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void>) load(context, nameof(vkTrimCommandPoolKHR));
@@ -5544,9 +5766,8 @@ unsafe partial class Vulkan
 		vkCmdDrawMeshTasksEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksEXT));
 		vkCmdDrawMeshTasksIndirectEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectEXT));
 		vkCmdDrawMeshTasksIndirectCountEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawMeshTasksIndirectCountEXT));
-		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged<VkDevice, IntPtr, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
-		vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, IntPtr, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
-		vkGetMemoryAndroidHardwareBufferANDROID_out_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, out IntPtr, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
+		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged<VkDevice, nint, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
+		vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, nint, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
 		vkExportMetalObjectsEXT_ptr = (delegate* unmanaged<VkDevice, VkExportMetalObjectsInfoEXT*, void>) load(context, nameof(vkExportMetalObjectsEXT));
 		vkCreateExecutionGraphPipelinesAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateExecutionGraphPipelinesAMDX));
 		vkGetExecutionGraphPipelineScratchSizeAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkExecutionGraphPipelineScratchSizeAMDX*, VkResult>) load(context, nameof(vkGetExecutionGraphPipelineScratchSizeAMDX));

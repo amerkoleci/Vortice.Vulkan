@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <Description>https://github.com/KhronosGroup/SPIRV-Reflect bindings</Description>
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -10,7 +10,7 @@
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>1.0.1</VersionPrefix>
+    <VersionPrefix>1.0.2</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 

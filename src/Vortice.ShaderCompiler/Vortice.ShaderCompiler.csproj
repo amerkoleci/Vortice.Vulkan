@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <Description>https://github.com/google/shaderc bindings.</Description>
     <IncludeContentInPack>true</IncludeContentInPack>
   </PropertyGroup>

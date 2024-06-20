@@ -40,42 +40,42 @@ public static partial class CsCodeGenerator
         { "VkSampleMask", "uint" },
         { "VkFlags64", "ulong" },
 
-        { "buffer_handle_t", "IntPtr" },
-        { "AHardwareBuffer", "IntPtr" },
-        { "ANativeWindow", "IntPtr" },
+        { "buffer_handle_t", "nint" },
+        { "AHardwareBuffer", "nint" },
+        { "ANativeWindow", "nint" },
 
-        { "MirConnection", "IntPtr" },
-        { "MirSurface", "IntPtr" },
+        { "MirConnection", "nint" },
+        { "MirSurface", "nint" },
 
-        { "wl_display", "IntPtr" },
-        { "wl_surface", "IntPtr" },
+        { "wl_display", "nint" },
+        { "wl_surface", "nint" },
 
-        { "Display", "IntPtr" },
-        { "Window", "IntPtr" },
-        { "VisualID", "IntPtr" },
-        { "RROutput", "IntPtr" },
+        { "Display", "nint" },
+        { "Window", "ulong" },
+        { "VisualID", "nint" },
+        { "RROutput", "nint" },
 
-        { "HINSTANCE", "IntPtr" },
-        { "HWND", "IntPtr" },
-        { "HANDLE", "IntPtr" },
-        { "SECURITY_ATTRIBUTES", "IntPtr" },
-        { "LPCWSTR", "IntPtr" },
-        { "HMONITOR", "IntPtr" },
+        { "HINSTANCE", "nint" },
+        { "HWND", "nint" },
+        { "HANDLE", "nint" },
+        { "SECURITY_ATTRIBUTES", "nint" },
+        { "LPCWSTR", "nint" },
+        { "HMONITOR", "nint" },
 
-        { "xcb_connection_t", "IntPtr" },
-        { "xcb_window_t", "IntPtr" },
-        { "xcb_visualid_t", "IntPtr" },
+        { "xcb_connection_t", "nint" },
+        { "xcb_window_t", "uint" },
+        { "xcb_visualid_t", "nint" },
 
-        { "CAMetalLayer", "IntPtr" },
-        { "GgpFrameToken", "IntPtr" },
-        { "GgpStreamDescriptor", "IntPtr" },
+        { "CAMetalLayer", "nint" },
+        { "GgpFrameToken", "nint" },
+        { "GgpStreamDescriptor", "nint" },
 
-        { "MTLDevice_id", "IntPtr" },
-        { "MTLCommandQueue_id", "IntPtr" },
-        { "MTLBuffer_id", "IntPtr" },
-        { "MTLTexture_id", "IntPtr" },
-        { "MTLSharedEvent_id", "IntPtr" },
-        { "IOSurfaceRef", "IntPtr" },
+        { "MTLDevice_id", "nint" },
+        { "MTLCommandQueue_id", "nint" },
+        { "MTLBuffer_id", "nint" },
+        { "MTLTexture_id", "nint" },
+        { "MTLSharedEvent_id", "nint" },
+        { "IOSurfaceRef", "nint" },
 
         { "VkAccelerationStructureTypeNV", "VkAccelerationStructureTypeKHR" },
         { "VkAccelerationStructureMemoryRequirementsTypeNV", "VkAccelerationStructureMemoryRequirementsTypeKHR" },
@@ -110,15 +110,12 @@ public static partial class CsCodeGenerator
         GenerateHandles(compilation);
         GenerateStructAndUnions(compilation);
         GenerateCommands(compilation);
+
         if (options.IsVulkan)
-        {
             GenerateHelperCommands(compilation);
-        }
 
         if (specification != null)
-        {
             GenerateFormatHelpers(specification);
-        }
     }
 
     public static void AddCsMapping(string typeName, string csTypeName)
@@ -375,7 +372,7 @@ public static partial class CsCodeGenerator
         }
         else if (name.StartsWith("PFN"))
         {
-            return "IntPtr";
+            return "nint";
         }
 
         if (allowPretty)
@@ -430,7 +427,7 @@ public static partial class CsCodeGenerator
         if (type is CppPointerType pointerType)
         {
             string csPointerTypeName = GetCsTypeName(pointerType);
-            if (csPointerTypeName == "IntPtr" /*&& s_csNameMappings.ContainsKey(pointerType.)*/)
+            if (csPointerTypeName == "IntPtr" || csPointerTypeName == "nint" /*&& s_csNameMappings.ContainsKey(pointerType.)*/)
             {
                 return csPointerTypeName;
             }

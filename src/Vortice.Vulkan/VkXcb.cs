@@ -14,7 +14,7 @@ public struct VkXcbSurfaceCreateInfoKHR
     public VkStructureType sType;
     public unsafe void* pNext;
     public VkXcbSurfaceCreateFlagsKHR flags;
-    public IntPtr connection;
+    public nint connection;
     public uint window;
 
     public VkXcbSurfaceCreateInfoKHR()
@@ -33,12 +33,12 @@ public static unsafe partial class Vulkan
     public static readonly string KHRXcbSurfaceExtensionName = "VK_KHR_xcb_surface";
 
     private static delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateXcbSurfaceKHR_ptr;
-    private static delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32> vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr;
+    private static delegate* unmanaged<VkPhysicalDevice, uint, nint, uint, VkBool32> vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr;
 
     private static void LoadXcb(VkInstance instance)
     {
         vkCreateXcbSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkGetInstanceProcAddr(instance.Handle, nameof(vkCreateXcbSurfaceKHR));
-        vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, IntPtr, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXcbPresentationSupportKHR));
+        vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, nint, uint, VkBool32>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetPhysicalDeviceXcbPresentationSupportKHR));
     }
 
     public static VkResult vkCreateXcbSurfaceKHR(VkInstance instance, VkXcbSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
@@ -46,7 +46,7 @@ public static unsafe partial class Vulkan
         return vkCreateXcbSurfaceKHR_ptr(instance, pCreateInfo, pAllocator, pSurface);
     }
 
-    public static bool vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, IntPtr connection, uint visualId)
+    public static bool vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, nint connection, uint visualId)
     {
         return vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex, connection, visualId);
     }

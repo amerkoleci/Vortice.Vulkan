@@ -14,8 +14,8 @@ public unsafe struct VkWin32SurfaceCreateInfoKHR
     public VkStructureType sType;
     public void* pNext;
     public VkWin32SurfaceCreateFlagsKHR flags;
-    public IntPtr hinstance;
-    public IntPtr hwnd;
+    public nint hinstance;
+    public nint hwnd;
 
     public VkWin32SurfaceCreateInfoKHR()
     {

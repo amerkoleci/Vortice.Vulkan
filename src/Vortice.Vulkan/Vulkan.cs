@@ -109,7 +109,6 @@ public static unsafe partial class Vulkan
     private static void GenLoadLoader(nint context, LoadFunction load)
     {
         vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
-        vkCreateInstance_out_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
         vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<sbyte*, uint*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
         vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<uint*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
         vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<uint*, VkResult>)load(context, "vkEnumerateInstanceVersion");
@@ -388,14 +387,19 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkCreateDescriptorPool(VkDevice device, ReadOnlySpan<VkDescriptorPoolSize> poolSizes, uint maxSets, out VkDescriptorPool descriptorPool)
     {
-        VkDescriptorPoolCreateInfo createInfo = new()
-        {
-            maxSets = maxSets,
-            poolSizeCount = (uint)poolSizes.Length,
-            pPoolSizes = (VkDescriptorPoolSize*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(poolSizes))
-        };
+        Unsafe.SkipInit(out descriptorPool);
 
-        return vkCreateDescriptorPool_out_ptr(device, &createInfo, null, out descriptorPool);
+        fixed (VkDescriptorPool* descriptorPoolPtr = &descriptorPool)
+        {
+            VkDescriptorPoolCreateInfo createInfo = new()
+            {
+                maxSets = maxSets,
+                poolSizeCount = (uint)poolSizes.Length,
+                pPoolSizes = (VkDescriptorPoolSize*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(poolSizes))
+            };
+
+            return vkCreateDescriptorPool_ptr(device, &createInfo, null, descriptorPoolPtr);
+        }
     }
 
     public static void vkUpdateDescriptorSets(VkDevice device, VkWriteDescriptorSet writeDescriptorSet)

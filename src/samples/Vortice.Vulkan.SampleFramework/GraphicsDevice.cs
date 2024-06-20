@@ -521,14 +521,12 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
     public static implicit operator VkDevice(GraphicsDevice device) => device.VkDevice;
 
-    public VkResult CreateShaderModule(byte[] data, out VkShaderModule module)
+    public VkResult CreateShaderModule(ReadOnlySpan<byte> data, out VkShaderModule module)
     {
         return vkCreateShaderModule(VkDevice, data, null, out module);
     }
 
     #region Private Methods
-
-
     private static bool CheckDeviceExtensionSupport(string extensionName, ReadOnlySpan<VkExtensionProperties> availableDeviceExtensions)
     {
         foreach (VkExtensionProperties property in availableDeviceExtensions)
@@ -543,10 +541,10 @@ public unsafe sealed class GraphicsDevice : IDisposable
     private static void GetOptimalValidationLayers(HashSet<string> availableLayers, List<string> instanceLayers)
     {
         // The preferred validation layer is "VK_LAYER_KHRONOS_validation"
-        List<string> validationLayers = new()
-        {
+        List<string> validationLayers =
+        [
             "VK_LAYER_KHRONOS_validation"
-        };
+        ];
 
         if (ValidateLayers(validationLayers, availableLayers))
         {
@@ -555,10 +553,10 @@ public unsafe sealed class GraphicsDevice : IDisposable
         }
 
         // Otherwise we fallback to using the LunarG meta layer
-        validationLayers = new()
-        {
+        validationLayers =
+        [
             "VK_LAYER_LUNARG_standard_validation"
-        };
+        ];
 
         if (ValidateLayers(validationLayers, availableLayers))
         {
@@ -741,19 +739,14 @@ public unsafe sealed class GraphicsDevice : IDisposable
     {
         if (!IsSupported())
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         uint count = 0;
         VkResult result = vkEnumerateInstanceLayerProperties(&count, null);
-        if (result != VkResult.Success)
+        if (result != VkResult.Success || count == 0)
         {
-            return Array.Empty<string>();
-        }
-
-        if (count == 0)
-        {
-            return Array.Empty<string>();
+            return [];
         }
 
         VkLayerProperties* properties = stackalloc VkLayerProperties[(int)count];

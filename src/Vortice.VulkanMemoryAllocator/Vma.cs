@@ -2,6 +2,7 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using static Vortice.Vulkan.Vulkan;
 
@@ -9,114 +10,71 @@ namespace Vortice.Vulkan;
 
 unsafe partial class Vma
 {
-    /// <summary>
-    /// Raised whenever a native library is loaded by VMA. Handlers can be added to this event to customize how libraries are loaded, and they will be used first whenever a new native library is being resolved.
-    /// </summary>
-    public static event DllImportResolver? ResolveLibrary;
-
     private const string LibName = "vma";
+    private static nint s_nativeLibrary;
 
-    static Vma()
+    public static VkResult vmaInitialize(string? libraryName = default)
     {
-        NativeLibrary.SetDllImportResolver(Assembly.GetExecutingAssembly(), OnDllImport);
-    }
-
-    private static nint OnDllImport(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
-    {
-        if (TryResolveLibrary(libraryName, assembly, searchPath, out nint nativeLibrary))
+        if (!string.IsNullOrEmpty(libraryName))
         {
-            return nativeLibrary;
-        }
-
-        if (libraryName.Equals(LibName) && TryResolveVMA(assembly, searchPath, out nativeLibrary))
-        {
-            return nativeLibrary;
-        }
-
-        return 0;
-    }
-
-    /// <summary>Tries to resolve a native library using the handlers for the <see cref="ResolveLibrary"/> event.</summary>
-    /// <param name="libraryName">The native library to resolve.</param>
-    /// <param name="assembly">The assembly requesting the resolution.</param>
-    /// <param name="searchPath">The <see cref="DllImportSearchPath"/> value on the P/Invoke or assembly, or <see langword="null"/>.</param>
-    /// <param name="nativeLibrary">The loaded library, if one was resolved.</param>
-    /// <returns>Whether or not the requested library was successfully loaded.</returns>
-    private static bool TryResolveLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath, out nint nativeLibrary)
-    {
-        DllImportResolver? resolveLibrary = ResolveLibrary;
-
-        if (resolveLibrary is not null)
-        {
-            Delegate[] resolvers = resolveLibrary.GetInvocationList();
-
-            foreach (DllImportResolver resolver in resolvers)
+            if (NativeLibrary.TryLoad(libraryName, out s_nativeLibrary))
             {
-                nativeLibrary = resolver(libraryName, assembly, searchPath);
+                return VkResult.Success;
+            }
+        }
 
-                if (nativeLibrary != 0)
+        if (OperatingSystem.IsWindows())
+        {
+            s_nativeLibrary = NativeLibrary.Load("vma.dll");
+        }
+        else if (OperatingSystem.IsMacOS() || OperatingSystem.IsMacCatalyst())
+        {
+            s_nativeLibrary = NativeLibrary.Load("libvma.dylib");
+        }
+        else if (OperatingSystem.IsLinux())
+        {
+            s_nativeLibrary = NativeLibrary.Load("libvma.so");
+        }
+        else
+        {
+            if (!NativeLibrary.TryLoad("libvma", out s_nativeLibrary))
+            {
+                if (NativeLibrary.TryLoad("vma", out s_nativeLibrary))
                 {
-                    return true;
                 }
             }
         }
 
-        nativeLibrary = 0;
-        return false;
+        if (s_nativeLibrary == 0)
+            return VkResult.ErrorInitializationFailed;
+
+        LoadEntries();
+
+        return VkResult.Success;
     }
 
-    private static bool TryResolveVMA(Assembly assembly, DllImportSearchPath? searchPath, out nint nativeLibrary)
+    [SkipLocalsInit]
+    public static VkResult vmaCreateAllocator(in VmaAllocatorCreateInfo createInfo, out VmaAllocator allocator)
     {
-        if (OperatingSystem.IsWindows())
-        {
-            if (NativeLibrary.TryLoad("vma.dll", assembly, searchPath, out nativeLibrary))
-            {
-                return true;
-            }
-        }
-        else if (OperatingSystem.IsLinux())
-        {
-            if (NativeLibrary.TryLoad("libvma.so", assembly, searchPath, out nativeLibrary))
-            {
-                return true;
-            }
-        }
-        else if (OperatingSystem.IsMacOS() || OperatingSystem.IsMacCatalyst())
-        {
-            if (NativeLibrary.TryLoad("libvma.dylib", assembly, searchPath, out nativeLibrary))
-            {
-                return true;
-            }
-        }
+        Unsafe.SkipInit(out allocator);
 
-        if (NativeLibrary.TryLoad("libvma", assembly, searchPath, out nativeLibrary))
-        {
-            return true;
-        }
-
-        if (NativeLibrary.TryLoad("vma", assembly, searchPath, out nativeLibrary))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    public static VkResult vmaCreateAllocator(VmaAllocatorCreateInfo* allocateInfo, VmaAllocator* allocator)
-    {
-        if (allocateInfo->pVulkanFunctions == null)
+        if (createInfo.pVulkanFunctions == null)
         {
             VmaVulkanFunctions functions = default;
             functions.vkGetInstanceProcAddr = vkGetInstanceProcAddr_ptr;
             functions.vkGetDeviceProcAddr = vkGetDeviceProcAddr_ptr;
 
-            allocateInfo->pVulkanFunctions = &functions;
-            return vmaCreateAllocatorPrivate(allocateInfo, allocator);
+            fixed (VmaAllocator* allocatorPtr = &allocator)
+            {
+                VmaAllocatorCreateInfo createInfoIn = createInfo;
+                createInfoIn.pVulkanFunctions = &functions;
+                return vmaCreateAllocatorPrivate(&createInfoIn, allocatorPtr);
+            }
         }
-        else
-        {
-            return vmaCreateAllocatorPrivate(allocateInfo, allocator);
-        }
+
+        fixed (VmaAllocatorCreateInfo* createInfoPtr = &createInfo)
+        fixed (VmaAllocator* allocatorPtr = &allocator)
+            return vmaCreateAllocatorPrivate(createInfoPtr, allocatorPtr);
     }
 
     public static VkResult vmaCreateAllocator(VmaAllocatorCreateInfo* allocateInfo, out VmaAllocator allocator)
@@ -127,6 +85,24 @@ unsafe partial class Vma
 
         allocateInfo->pVulkanFunctions = &functions;
         return vmaCreateAllocatorPrivate(allocateInfo, out allocator);
+    }
+
+
+    public static void vmaGetPhysicalDeviceProperties(VmaAllocator allocator, out VkPhysicalDeviceProperties* physicalDeviceProperties)
+    {
+        fixed (VkPhysicalDeviceProperties** physicalDevicePropertiesPtr = &physicalDeviceProperties)
+        {
+            vmaGetPhysicalDeviceProperties_ptr(allocator, physicalDevicePropertiesPtr);
+        }
+    }
+
+
+    public static void vmaGetMemoryProperties(VmaAllocator allocator, out VkPhysicalDeviceMemoryProperties* physicalDeviceMemoryProperties)
+    {
+        fixed (VkPhysicalDeviceMemoryProperties** physicalDeviceMemoryPropertiesPtr = &physicalDeviceMemoryProperties)
+        {
+            vmaGetMemoryProperties_ptr(allocator, physicalDeviceMemoryPropertiesPtr);
+        }
     }
 
     public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, ReadOnlySpan<sbyte> name)
@@ -148,7 +124,7 @@ unsafe partial class Vma
 
     public static VkResult vmaCreateBuffer(
         VmaAllocator allocator,
-        VkBufferCreateInfo* pBufferCreateInfo,
+        in VkBufferCreateInfo bufferCreateInfo,
         out VkBuffer buffer,
         out VmaAllocation allocation)
     {
@@ -156,12 +132,12 @@ unsafe partial class Vma
         {
             usage = VmaMemoryUsage.Auto
         };
-        return vmaCreateBuffer(allocator, pBufferCreateInfo, &allocationInfo, out buffer, out allocation, null);
+        return vmaCreateBuffer(allocator, in bufferCreateInfo, in allocationInfo, out buffer, out allocation, null);
     }
 
     public static VkResult vmaCreateBuffer(
         VmaAllocator allocator,
-        VkBufferCreateInfo* pBufferCreateInfo,
+        in VkBufferCreateInfo bufferCreateInfo,
         out VkBuffer buffer,
         out VmaAllocation allocation,
         VmaAllocationInfo* pAllocationInfo)
@@ -170,81 +146,75 @@ unsafe partial class Vma
         {
             usage = VmaMemoryUsage.Auto
         };
-        return vmaCreateBuffer(allocator, pBufferCreateInfo, &allocationInfo, out buffer, out allocation, pAllocationInfo);
+        return vmaCreateBuffer(allocator, in bufferCreateInfo, in allocationInfo, out buffer, out allocation, pAllocationInfo);
     }
 
     public static VkResult vmaCreateBuffer(
         VmaAllocator allocator,
-        VkBufferCreateInfo* pBufferCreateInfo,
-        VmaAllocationCreateInfo* pAllocationCreateInfo,
-        out VkBuffer buffer,
-        out VmaAllocation allocation)
-    {
-        return vmaCreateBuffer(allocator, pBufferCreateInfo, pAllocationCreateInfo, out buffer, out allocation, null);
-    }
-
-    [LibraryImport(LibName)]
-    public static partial VkResult vmaCreateBuffer(
-        VmaAllocator allocator,
-        VkBufferCreateInfo* pBufferCreateInfo,
-        VmaAllocationCreateInfo* pAllocationCreateInfo,
+        in VkBufferCreateInfo bufferCreateInfo,
+        in VmaAllocationCreateInfo allocationCreateInfo,
         out VkBuffer buffer,
         out VmaAllocation allocation,
-        VmaAllocationInfo* pAllocationInfo);
+        VmaAllocationInfo* pAllocationInfo = default)
+    {
+        Unsafe.SkipInit(out buffer);
+        Unsafe.SkipInit(out allocation);
 
-    [LibraryImport(LibName)]
-    public static partial VkResult vmaCreateBufferWithAlignment(
+        fixed (VkBufferCreateInfo* bufferCreateInfoPtr = &bufferCreateInfo)
+        fixed (VmaAllocationCreateInfo* allocationCreateInfoPtr = &allocationCreateInfo)
+        fixed (VkBuffer* bufferPtr = &buffer)
+        fixed (VmaAllocation* allocationPtr = &allocation)
+            return vmaCreateBuffer_ptr(allocator, bufferCreateInfoPtr, allocationCreateInfoPtr, bufferPtr, allocationPtr, pAllocationInfo);
+    }
+
+    public static VkResult vmaCreateBufferWithAlignment(
         VmaAllocator allocator,
-        VkBufferCreateInfo* pBufferCreateInfo,
-        VmaAllocationCreateInfo* pAllocationCreateInfo,
+        in VkBufferCreateInfo bufferCreateInfo,
+        in VmaAllocationCreateInfo allocationCreateInfo,
         ulong minAlignment,
         out VkBuffer buffer,
         out VmaAllocation allocation,
-        VmaAllocationInfo* pAllocationInfo);
+        VmaAllocationInfo* pAllocationInfo = default)
+    {
+        Unsafe.SkipInit(out buffer);
+        Unsafe.SkipInit(out allocation);
+
+        fixed (VkBufferCreateInfo* bufferCreateInfoPtr = &bufferCreateInfo)
+        fixed (VmaAllocationCreateInfo* allocationCreateInfoPtr = &allocationCreateInfo)
+        fixed (VkBuffer* bufferPtr = &buffer)
+        fixed (VmaAllocation* allocationPtr = &allocation)
+            return vmaCreateBufferWithAlignment_ptr(allocator, bufferCreateInfoPtr, allocationCreateInfoPtr, minAlignment, bufferPtr, allocationPtr, pAllocationInfo);
+    }
 
     public static VkResult vmaCreateImage(
         VmaAllocator allocator,
-        VkImageCreateInfo* pImageCreateInfo,
+        in VkImageCreateInfo imageCreateInfo,
         out VkImage image,
-        out VmaAllocation allocation)
+        out VmaAllocation allocation,
+        VmaAllocationInfo* pAllocationInfo = default)
     {
         VmaAllocationCreateInfo allocationInfo = new()
         {
             usage = VmaMemoryUsage.Auto
         };
-        return vmaCreateImage(allocator, pImageCreateInfo, &allocationInfo, out image, out allocation, null);
+        return vmaCreateImage(allocator, in imageCreateInfo, in allocationInfo, out image, out allocation, pAllocationInfo);
     }
 
     public static VkResult vmaCreateImage(
         VmaAllocator allocator,
-        VkImageCreateInfo* pImageCreateInfo,
+        in VkImageCreateInfo imageCreateInfo,
+        in VmaAllocationCreateInfo allocationCreateInfo,
         out VkImage image,
         out VmaAllocation allocation,
-        VmaAllocationInfo* pAllocationInfo)
+        VmaAllocationInfo* pAllocationInfo = default)
     {
-        VmaAllocationCreateInfo allocationInfo = new()
-        {
-            usage = VmaMemoryUsage.Auto
-        };
-        return vmaCreateImage(allocator, pImageCreateInfo, &allocationInfo, out image, out allocation, pAllocationInfo);
-    }
+        Unsafe.SkipInit(out image);
+        Unsafe.SkipInit(out allocation);
 
-    public static VkResult vmaCreateImage(
-        VmaAllocator allocator,
-        VkImageCreateInfo* pImageCreateInfo,
-        VmaAllocationCreateInfo* pAllocationCreateInfo,
-        out VkImage image,
-        out VmaAllocation allocation)
-    {
-        return vmaCreateImage(allocator, pImageCreateInfo, pAllocationCreateInfo, out image, out allocation, null);
+        fixed (VkImageCreateInfo* imageCreateInfoPtr = &imageCreateInfo)
+        fixed (VmaAllocationCreateInfo* allocationCreateInfoPtr = &allocationCreateInfo)
+        fixed (VkImage* imagePtr = &image)
+        fixed (VmaAllocation* allocationPtr = &allocation)
+            return vmaCreateImage_ptr(allocator, imageCreateInfoPtr, allocationCreateInfoPtr, imagePtr, allocationPtr, pAllocationInfo);
     }
-
-    [LibraryImport(LibName)]
-    public static partial VkResult vmaCreateImage(
-        VmaAllocator allocator,
-        VkImageCreateInfo* pImageCreateInfo,
-        VmaAllocationCreateInfo* pAllocationCreateInfo,
-        out VkImage image,
-        out VmaAllocation allocation,
-        VmaAllocationInfo* pAllocationInfo);
 }

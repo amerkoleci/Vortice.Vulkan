@@ -21439,7 +21439,7 @@ public unsafe partial struct VkDirectDriverLoadingInfoLUNARG : IStructureType, I
 	internal VkStructureType sType;
 	public void* pNext;
 	public VkDirectDriverLoadingModeLUNARG flags;
-	public delegate* unmanaged<VkInstance, sbyte*, IntPtr> pfnGetInstanceProcAddr;
+	public delegate* unmanaged<VkInstance, sbyte*, nint> pfnGetInstanceProcAddr;
 
 	public VkDirectDriverLoadingInfoLUNARG()
 	{
@@ -23666,7 +23666,7 @@ public unsafe partial struct VkAndroidSurfaceCreateInfoKHR : IStructureType, ICh
 	internal VkStructureType sType;
 	public void* pNext;
 	public VkAndroidSurfaceCreateFlagsKHR flags;
-	public IntPtr window;
+	public nint window;
 
 	public VkAndroidSurfaceCreateInfoKHR()
 	{
@@ -23766,7 +23766,7 @@ public unsafe partial struct VkImportAndroidHardwareBufferInfoANDROID : IStructu
 {
 	internal VkStructureType sType;
 	public void* pNext;
-	public IntPtr buffer;
+	public nint buffer;
 
 	public VkImportAndroidHardwareBufferInfoANDROID()
 	{
@@ -23985,7 +23985,7 @@ public unsafe partial struct VkMetalSurfaceCreateInfoEXT : IStructureType, IChai
 	internal VkStructureType sType;
 	public void* pNext;
 	public VkMetalSurfaceCreateFlagsEXT flags;
-	public IntPtr pLayer;
+	public nint pLayer;
 
 	public VkMetalSurfaceCreateInfoEXT()
 	{
@@ -24053,7 +24053,7 @@ public unsafe partial struct VkExportMetalDeviceInfoEXT : IStructureType, IChain
 {
 	internal VkStructureType sType;
 	public void* pNext;
-	public IntPtr mtlDevice;
+	public nint mtlDevice;
 
 	public VkExportMetalDeviceInfoEXT()
 	{
@@ -24077,7 +24077,7 @@ public unsafe partial struct VkExportMetalCommandQueueInfoEXT : IStructureType, 
 	internal VkStructureType sType;
 	public void* pNext;
 	public VkQueue queue;
-	public IntPtr mtlCommandQueue;
+	public nint mtlCommandQueue;
 
 	public VkExportMetalCommandQueueInfoEXT()
 	{
@@ -24101,7 +24101,7 @@ public unsafe partial struct VkExportMetalBufferInfoEXT : IStructureType, IChain
 	internal VkStructureType sType;
 	public void* pNext;
 	public VkDeviceMemory memory;
-	public IntPtr mtlBuffer;
+	public nint mtlBuffer;
 
 	public VkExportMetalBufferInfoEXT()
 	{
@@ -24124,7 +24124,7 @@ public unsafe partial struct VkImportMetalBufferInfoEXT : IStructureType, IChain
 {
 	internal VkStructureType sType;
 	public void* pNext;
-	public IntPtr mtlBuffer;
+	public nint mtlBuffer;
 
 	public VkImportMetalBufferInfoEXT()
 	{
@@ -24151,7 +24151,7 @@ public unsafe partial struct VkExportMetalTextureInfoEXT : IStructureType, IChai
 	public VkImageView imageView;
 	public VkBufferView bufferView;
 	public VkImageAspectFlags plane;
-	public IntPtr mtlTexture;
+	public nint mtlTexture;
 
 	public VkExportMetalTextureInfoEXT()
 	{
@@ -24175,7 +24175,7 @@ public unsafe partial struct VkImportMetalTextureInfoEXT : IStructureType, IChai
 	internal VkStructureType sType;
 	public void* pNext;
 	public VkImageAspectFlags plane;
-	public IntPtr mtlTexture;
+	public nint mtlTexture;
 
 	public VkImportMetalTextureInfoEXT()
 	{
@@ -24199,7 +24199,7 @@ public unsafe partial struct VkExportMetalIOSurfaceInfoEXT : IStructureType, ICh
 	internal VkStructureType sType;
 	public void* pNext;
 	public VkImage image;
-	public IntPtr ioSurface;
+	public nint ioSurface;
 
 	public VkExportMetalIOSurfaceInfoEXT()
 	{
@@ -24222,7 +24222,7 @@ public unsafe partial struct VkImportMetalIOSurfaceInfoEXT : IStructureType, ICh
 {
 	internal VkStructureType sType;
 	public void* pNext;
-	public IntPtr ioSurface;
+	public nint ioSurface;
 
 	public VkImportMetalIOSurfaceInfoEXT()
 	{
@@ -24247,7 +24247,7 @@ public unsafe partial struct VkExportMetalSharedEventInfoEXT : IStructureType, I
 	public void* pNext;
 	public VkSemaphore semaphore;
 	public VkEvent @event;
-	public IntPtr mtlSharedEvent;
+	public nint mtlSharedEvent;
 
 	public VkExportMetalSharedEventInfoEXT()
 	{
@@ -24270,7 +24270,7 @@ public unsafe partial struct VkImportMetalSharedEventInfoEXT : IStructureType, I
 {
 	internal VkStructureType sType;
 	public void* pNext;
-	public IntPtr mtlSharedEvent;
+	public nint mtlSharedEvent;
 
 	public VkImportMetalSharedEventInfoEXT()
 	{
