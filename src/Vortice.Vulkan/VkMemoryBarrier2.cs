@@ -17,7 +17,6 @@ public partial struct VkMemoryBarrier2
         VkAccessFlags2 dstAccessMask,
         void* pNext = default)
     {
-        sType = VkStructureType.MemoryBarrier2;
         this.pNext = pNext;
         this.srcStageMask = srcStageMask;
         this.srcAccessMask = srcAccessMask;

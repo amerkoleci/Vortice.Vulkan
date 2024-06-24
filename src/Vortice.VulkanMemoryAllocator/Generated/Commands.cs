@@ -32,8 +32,8 @@ unsafe partial class Vma
 	private static delegate* unmanaged<VmaAllocator, VmaPool, VmaStatistics*, void> vmaGetPoolStatistics_ptr;
 	private static delegate* unmanaged<VmaAllocator, VmaPool, VmaDetailedStatistics*, void> vmaCalculatePoolStatistics_ptr;
 	private static delegate* unmanaged<VmaAllocator, VmaPool, VkResult> vmaCheckPoolCorruption_ptr;
-	private static delegate* unmanaged<VmaAllocator, VmaPool, sbyte**, void> vmaGetPoolName_ptr;
-	private static delegate* unmanaged<VmaAllocator, VmaPool, sbyte*, void> vmaSetPoolName_ptr;
+	private static delegate* unmanaged<VmaAllocator, VmaPool, byte**, void> vmaGetPoolName_ptr;
+	private static delegate* unmanaged<VmaAllocator, VmaPool, byte*, void> vmaSetPoolName_ptr;
 	private static delegate* unmanaged<VmaAllocator, VkMemoryRequirements*, VmaAllocationCreateInfo*, VmaAllocation*, VmaAllocationInfo*, VkResult> vmaAllocateMemory_ptr;
 	private static delegate* unmanaged<VmaAllocator, VkMemoryRequirements*, VmaAllocationCreateInfo*, nuint, VmaAllocation*, VmaAllocationInfo*, VkResult> vmaAllocateMemoryPages_ptr;
 	private static delegate* unmanaged<VmaAllocator, VkBuffer, VmaAllocationCreateInfo*, VmaAllocation*, VmaAllocationInfo*, VkResult> vmaAllocateMemoryForBuffer_ptr;
@@ -43,7 +43,7 @@ unsafe partial class Vma
 	private static delegate* unmanaged<VmaAllocator, VmaAllocation, VmaAllocationInfo*, void> vmaGetAllocationInfo_ptr;
 	private static delegate* unmanaged<VmaAllocator, VmaAllocation, VmaAllocationInfo2*, void> vmaGetAllocationInfo2_ptr;
 	private static delegate* unmanaged<VmaAllocator, VmaAllocation, void*, void> vmaSetAllocationUserData_ptr;
-	private static delegate* unmanaged<VmaAllocator, VmaAllocation, sbyte*, void> vmaSetAllocationName_ptr;
+	private static delegate* unmanaged<VmaAllocator, VmaAllocation, byte*, void> vmaSetAllocationName_ptr;
 	private static delegate* unmanaged<VmaAllocator, VmaAllocation, VkMemoryPropertyFlags*, void> vmaGetAllocationMemoryProperties_ptr;
 	private static delegate* unmanaged<VmaAllocator, VmaAllocation, void**, VkResult> vmaMapMemory_ptr;
 	private static delegate* unmanaged<VmaAllocator, VmaAllocation, void> vmaUnmapMemory_ptr;
@@ -239,12 +239,12 @@ unsafe partial class Vma
 		return vmaCheckPoolCorruption_ptr(allocator, pool);
 	}
 
-	public static void vmaGetPoolName(VmaAllocator allocator, VmaPool pool, sbyte** name)
+	public static void vmaGetPoolName(VmaAllocator allocator, VmaPool pool, byte** name)
 	{
 		vmaGetPoolName_ptr(allocator, pool, name);
 	}
 
-	public static void vmaSetPoolName(VmaAllocator allocator, VmaPool pool, sbyte* name)
+	public static void vmaSetPoolName(VmaAllocator allocator, VmaPool pool, byte* name)
 	{
 		vmaSetPoolName_ptr(allocator, pool, name);
 	}
@@ -333,7 +333,7 @@ unsafe partial class Vma
 		vmaSetAllocationUserData_ptr(allocator, allocation, userData);
 	}
 
-	public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, sbyte* name)
+	public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, byte* name)
 	{
 		vmaSetAllocationName_ptr(allocator, allocation, name);
 	}
@@ -665,8 +665,8 @@ unsafe partial class Vma
 		vmaGetPoolStatistics_ptr = (delegate* unmanaged<VmaAllocator, VmaPool, VmaStatistics*, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaGetPoolStatistics));
 		vmaCalculatePoolStatistics_ptr = (delegate* unmanaged<VmaAllocator, VmaPool, VmaDetailedStatistics*, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaCalculatePoolStatistics));
 		vmaCheckPoolCorruption_ptr = (delegate* unmanaged<VmaAllocator, VmaPool, VkResult>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaCheckPoolCorruption));
-		vmaGetPoolName_ptr = (delegate* unmanaged<VmaAllocator, VmaPool, sbyte**, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaGetPoolName));
-		vmaSetPoolName_ptr = (delegate* unmanaged<VmaAllocator, VmaPool, sbyte*, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaSetPoolName));
+		vmaGetPoolName_ptr = (delegate* unmanaged<VmaAllocator, VmaPool, byte**, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaGetPoolName));
+		vmaSetPoolName_ptr = (delegate* unmanaged<VmaAllocator, VmaPool, byte*, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaSetPoolName));
 		vmaAllocateMemory_ptr = (delegate* unmanaged<VmaAllocator, VkMemoryRequirements*, VmaAllocationCreateInfo*, VmaAllocation*, VmaAllocationInfo*, VkResult>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaAllocateMemory));
 		vmaAllocateMemoryPages_ptr = (delegate* unmanaged<VmaAllocator, VkMemoryRequirements*, VmaAllocationCreateInfo*, nuint, VmaAllocation*, VmaAllocationInfo*, VkResult>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaAllocateMemoryPages));
 		vmaAllocateMemoryForBuffer_ptr = (delegate* unmanaged<VmaAllocator, VkBuffer, VmaAllocationCreateInfo*, VmaAllocation*, VmaAllocationInfo*, VkResult>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaAllocateMemoryForBuffer));
@@ -676,7 +676,7 @@ unsafe partial class Vma
 		vmaGetAllocationInfo_ptr = (delegate* unmanaged<VmaAllocator, VmaAllocation, VmaAllocationInfo*, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaGetAllocationInfo));
 		vmaGetAllocationInfo2_ptr = (delegate* unmanaged<VmaAllocator, VmaAllocation, VmaAllocationInfo2*, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaGetAllocationInfo2));
 		vmaSetAllocationUserData_ptr = (delegate* unmanaged<VmaAllocator, VmaAllocation, void*, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaSetAllocationUserData));
-		vmaSetAllocationName_ptr = (delegate* unmanaged<VmaAllocator, VmaAllocation, sbyte*, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaSetAllocationName));
+		vmaSetAllocationName_ptr = (delegate* unmanaged<VmaAllocator, VmaAllocation, byte*, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaSetAllocationName));
 		vmaGetAllocationMemoryProperties_ptr = (delegate* unmanaged<VmaAllocator, VmaAllocation, VkMemoryPropertyFlags*, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaGetAllocationMemoryProperties));
 		vmaMapMemory_ptr = (delegate* unmanaged<VmaAllocator, VmaAllocation, void**, VkResult>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaMapMemory));
 		vmaUnmapMemory_ptr = (delegate* unmanaged<VmaAllocator, VmaAllocation, void>) NativeLibrary.GetExport(s_nativeLibrary, nameof(vmaUnmapMemory));

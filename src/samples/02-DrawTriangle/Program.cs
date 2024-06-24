@@ -40,7 +40,7 @@ public static unsafe class Program
 
             // Create pipeline
             {
-                VkString entryPoint = new("main");
+                ReadOnlySpanUtf8 entryPoint = "main"u8;
 
                 CreateShaderModule("triangle.vert", out VkShaderModule vertexShader);
                 CreateShaderModule("triangle.frag", out VkShaderModule fragmentShader);
@@ -227,7 +227,7 @@ public static unsafe class Program
             {
                 renderPass = _graphicsDevice.Swapchain.RenderPass,
                 framebuffer = framebuffer,
-                renderArea = new VkRect2D(size),
+                renderArea = new VkRect2D(VkOffset2D.Zero, size),
                 clearValueCount = 1,
                 pClearValues = &clearValue
             };
@@ -248,7 +248,7 @@ public static unsafe class Program
             vkCmdSetViewport(commandBuffer, viewport);
 
             // Update dynamic scissor state
-            VkRect2D scissor = new(MainWindow.Extent);
+            VkRect2D scissor = new(VkOffset2D.Zero, MainWindow.Extent);
             vkCmdSetScissor(commandBuffer, scissor);
 
             // Bind the rendering pipeline

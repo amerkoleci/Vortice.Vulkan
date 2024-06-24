@@ -20,7 +20,6 @@ public unsafe partial struct VkPipelineMultisampleStateCreateInfo
         void* pNext = default,
         VkPipelineMultisampleStateCreateFlags flags = VkPipelineMultisampleStateCreateFlags.None)
     {
-        this.sType = VkStructureType.PipelineMultisampleStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;
         this.rasterizationSamples = rasterizationSamples;

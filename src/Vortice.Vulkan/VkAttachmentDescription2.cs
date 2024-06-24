@@ -20,7 +20,6 @@ public unsafe partial struct VkAttachmentDescription2
         VkAttachmentDescriptionFlags flags = VkAttachmentDescriptionFlags.None,
         void* pNext = default)
     {
-        sType = VkStructureType.AttachmentDescription2;
         this.pNext = pNext;
         this.flags = flags;
         this.format = format;

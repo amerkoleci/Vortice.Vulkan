@@ -22,22 +22,22 @@
   <Choose>
     <When Condition="$([MSBuild]::IsOSPlatform('Windows')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
       <ItemGroup>
-        <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\win-x64\native\spirv-cross.dll" Link="spirv-cross.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="$(NativeLibDirectory)win-x64/spirv-cross.dll" Link="spirv-cross.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
       </ItemGroup>
     </When>
     <When Condition="$([MSBuild]::IsOSPlatform('Windows')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'Arm64'">
       <ItemGroup>
-        <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\win-arm64\native\spirv-cross.dll" Link="spirv-cross.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="$(NativeLibDirectory)win-arm64/spirv-cross.dll" Link="spirv-cross.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
       </ItemGroup>
     </When>
     <When Condition="$([MSBuild]::IsOSPlatform('Linux')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
       <ItemGroup>
-        <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\linux-x64\native\libspirv-cross.so" Link="libspirv-cross.so" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="$(NativeLibDirectory)linux-x64/libspirv-cross.so" Link="libspirv-cross.so" Visible="False" CopyToOutputDirectory="PreserveNewest" />
       </ItemGroup>
     </When>
     <When Condition="$([MSBuild]::IsOSPlatform('OSX'))">
       <ItemGroup>
-        <None Include="$(RepoRootPath)src\Vortice.SpirvCross\runtimes\osx\native\libspirv-cross.dylib" Link="libspirv-cross.dylib" Visible="False" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="$(NativeLibDirectory)osx/libspirv-cross.dylib" Link="libspirv-cross.dylib" Visible="False" CopyToOutputDirectory="PreserveNewest" />
       </ItemGroup>
     </When>
   </Choose>

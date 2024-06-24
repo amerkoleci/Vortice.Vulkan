@@ -10,17 +10,51 @@
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>1.4.9</VersionPrefix>
+    <VersionPrefix>1.5.0</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="$(RepoRootPath)README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
-  
+
+  <!-- Native Libs -->
   <ItemGroup>
-    <Content Include="build\**" PackagePath="build" Pack="true" />
-    <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" />
+    <Content Include="$(NativeLibDirectory)win-x64\spirv-cross.dll">
+      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)win-arm64\spirv-cross.dll">
+      <PackagePath>runtimes/win-arm64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)linux-x64\libspirv-cross.so">
+      <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)osx\libspirv-cross.dylib">
+      <PackagePath>runtimes/osx/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)android-arm\libspirv-cross.so">
+      <PackagePath>runtimes/android-arm/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)android-arm64\libspirv-cross.so">
+      <PackagePath>runtimes/android-arm64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)android-x64\libspirv-cross.so">
+      <PackagePath>runtimes/android-x64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
   </ItemGroup>
   
   <ItemGroup>

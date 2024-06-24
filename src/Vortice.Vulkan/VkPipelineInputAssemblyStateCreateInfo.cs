@@ -14,7 +14,6 @@ public partial struct VkPipelineInputAssemblyStateCreateInfo
         void* pNext = default,
         VkPipelineInputAssemblyStateCreateFlags flags = VkPipelineInputAssemblyStateCreateFlags.None)
     {
-        sType = VkStructureType.PipelineInputAssemblyStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;
         this.topology = topology;

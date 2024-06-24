@@ -57,7 +57,7 @@ public static unsafe class Program
             {
                 renderPass = _graphicsDevice!.Swapchain.RenderPass,
                 framebuffer = framebuffer,
-                renderArea = new VkRect2D(size),
+                renderArea = new VkRect2D(VkOffset2D.Zero, size),
                 clearValueCount = 1,
                 pClearValues = &clearValue
             };

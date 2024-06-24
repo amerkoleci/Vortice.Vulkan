@@ -17,7 +17,6 @@ public partial struct VkImageViewCreateInfo
         VkImageViewCreateFlags flags = VkImageViewCreateFlags.None,
         void* pNext = default)
     {
-        sType = VkStructureType.ImageViewCreateInfo;
         this.pNext = pNext;
         this.flags = flags;
         this.image = image;

@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 285;
+	public const uint VK_HEADER_VERSION = 288;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -842,6 +842,12 @@ public static partial class Vulkan
 	public const uint VK_KHR_MAINTENANCE_6_SPEC_VERSION = 1;
 	/// <unmanaged>VK_KHR_MAINTENANCE_6_EXTENSION_NAME</unmanaged>
 	public const string VK_KHR_MAINTENANCE_6_EXTENSION_NAME = "VK_KHR_maintenance6";
+	/// <unmanaged>VK_KHR_shader_relaxed_extended_instruction</unmanaged>
+	public const uint VK_KHR_shader_relaxed_extended_instruction = 1;
+	/// <unmanaged>VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_EXTENSION_NAME</unmanaged>
+	public const string VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_EXTENSION_NAME = "VK_KHR_shader_relaxed_extended_instruction";
 	/// <unmanaged>VK_EXT_debug_report</unmanaged>
 	public const uint VK_EXT_debug_report = 1;
 	/// <unmanaged>VK_EXT_DEBUG_REPORT_SPEC_VERSION</unmanaged>
@@ -2234,6 +2240,12 @@ public static partial class Vulkan
 	public const uint VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_SPEC_VERSION = 1;
 	/// <unmanaged>VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_EXTENSION_NAME</unmanaged>
 	public const string VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_EXTENSION_NAME = "VK_NV_shader_atomic_float16_vector";
+	/// <unmanaged>VK_EXT_shader_replicated_composites</unmanaged>
+	public const uint VK_EXT_shader_replicated_composites = 1;
+	/// <unmanaged>VK_EXT_SHADER_REPLICATED_COMPOSITES_SPEC_VERSION</unmanaged>
+	public const uint VK_EXT_SHADER_REPLICATED_COMPOSITES_SPEC_VERSION = 1;
+	/// <unmanaged>VK_EXT_SHADER_REPLICATED_COMPOSITES_EXTENSION_NAME</unmanaged>
+	public const string VK_EXT_SHADER_REPLICATED_COMPOSITES_EXTENSION_NAME = "VK_EXT_shader_replicated_composites";
 	/// <unmanaged>VK_NV_ray_tracing_validation</unmanaged>
 	public const uint VK_NV_ray_tracing_validation = 1;
 	/// <unmanaged>VK_NV_RAY_TRACING_VALIDATION_SPEC_VERSION</unmanaged>
@@ -3289,7 +3301,9 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT = VkStructureType.BindDescriptorBufferEmbeddedSamplersInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV = VkStructureType.PhysicalDeviceDescriptorPoolOverallocationFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV = VkStructureType.PhysicalDeviceRawAccessChainsFeaturesNV;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR = VkStructureType.PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV = VkStructureType.PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT = VkStructureType.PhysicalDeviceShaderReplicatedCompositesFeaturesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV = VkStructureType.PhysicalDeviceRayTracingValidationFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA = VkStructureType.PhysicalDeviceImageAlignmentControlFeaturesMESA;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA = VkStructureType.PhysicalDeviceImageAlignmentControlPropertiesMESA;
@@ -3569,6 +3583,7 @@ public static partial class Vulkan
 	public const VkObjectType VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR = VkObjectType.DescriptorUpdateTemplateKHR;
 	public const VkObjectType VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR = VkObjectType.SamplerYcbcrConversionKHR;
 	public const VkObjectType VK_OBJECT_TYPE_PRIVATE_DATA_SLOT_EXT = VkObjectType.PrivateDataSlotEXT;
+	public const VkVendorId VK_VENDOR_ID_KHRONOS = VkVendorId.Khronos;
 	public const VkVendorId VK_VENDOR_ID_VIV = VkVendorId.Viv;
 	public const VkVendorId VK_VENDOR_ID_VSI = VkVendorId.Vsi;
 	public const VkVendorId VK_VENDOR_ID_KAZAN = VkVendorId.Kazan;
@@ -4752,7 +4767,8 @@ public static partial class Vulkan
 	public const VkDriverId VK_DRIVER_ID_MESA_DOZEN = VkDriverId.MESADozen;
 	public const VkDriverId VK_DRIVER_ID_MESA_NVK = VkDriverId.MESANvk;
 	public const VkDriverId VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA = VkDriverId.ImaginationOpenSourceMESA;
-	public const VkDriverId VK_DRIVER_ID_MESA_AGXV = VkDriverId.MESAAgxv;
+	public const VkDriverId VK_DRIVER_ID_MESA_HONEYKRISP = VkDriverId.MESAHoneykrisp;
+	public const VkDriverId VK_DRIVER_ID_RESERVED_27 = VkDriverId.Reserved27;
 	public const VkDriverId VK_DRIVER_ID_AMD_PROPRIETARY_KHR = VkDriverId.AMDProprietaryKHR;
 	public const VkDriverId VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR = VkDriverId.AMDOpenSourceKHR;
 	public const VkDriverId VK_DRIVER_ID_MESA_RADV_KHR = VkDriverId.MESARadvKHR;

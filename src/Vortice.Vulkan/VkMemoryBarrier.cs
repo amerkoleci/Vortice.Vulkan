@@ -12,7 +12,6 @@ public partial struct VkMemoryBarrier
 {
     public unsafe VkMemoryBarrier(VkAccessFlags srcAccessMask, VkAccessFlags dstAccessMask, void* pNext = default)
     {
-        sType = VkStructureType.MemoryBarrier;
         this.pNext = pNext;
         this.srcAccessMask = srcAccessMask;
         this.dstAccessMask = dstAccessMask;

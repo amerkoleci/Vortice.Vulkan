@@ -16,6 +16,645 @@ namespace Vortice.Vulkan;
 unsafe partial class Vulkan
 {
 	private static delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult> vkCreateInstance_ptr;
+	private static delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void> vkDestroyInstance_ptr;
+	private static delegate* unmanaged<VkInstance, uint*, VkPhysicalDevice*, VkResult> vkEnumeratePhysicalDevices_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceFeatures*, void> vkGetPhysicalDeviceFeatures_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkFormatProperties*, void> vkGetPhysicalDeviceFormatProperties_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkImageFormatProperties*, VkResult> vkGetPhysicalDeviceImageFormatProperties_ptr;
+	internal static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void> vkGetPhysicalDeviceProperties_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties*, void> vkGetPhysicalDeviceQueueFamilyProperties_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties*, void> vkGetPhysicalDeviceMemoryProperties_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, VkDevice*, VkResult> vkCreateDevice_ptr;
+	private static delegate* unmanaged<VkDevice, VkAllocationCallbacks*, void> vkDestroyDevice_ptr;
+	private static delegate* unmanaged<byte*, uint*, VkExtensionProperties*, VkResult> vkEnumerateInstanceExtensionProperties_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, byte*, uint*, VkExtensionProperties*, VkResult> vkEnumerateDeviceExtensionProperties_ptr;
+	private static delegate* unmanaged<uint*, VkLayerProperties*, VkResult> vkEnumerateInstanceLayerProperties_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkLayerProperties*, VkResult> vkEnumerateDeviceLayerProperties_ptr;
+	private static delegate* unmanaged<VkDevice, uint, uint, VkQueue*, void> vkGetDeviceQueue_ptr;
+	private static delegate* unmanaged<VkQueue, uint, VkSubmitInfo*, VkFence, VkResult> vkQueueSubmit_ptr;
+	private static delegate* unmanaged<VkQueue, VkResult> vkQueueWaitIdle_ptr;
+	private static delegate* unmanaged<VkDevice, VkResult> vkDeviceWaitIdle_ptr;
+	private static delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult> vkAllocateMemory_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void> vkFreeMemory_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void**, VkResult> vkMapMemory_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceMemory, void> vkUnmapMemory_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkFlushMappedMemoryRanges_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkInvalidateMappedMemoryRanges_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceMemory, ulong*, void> vkGetDeviceMemoryCommitment_ptr;
+	private static delegate* unmanaged<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult> vkBindBufferMemory_ptr;
+	private static delegate* unmanaged<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult> vkBindImageMemory_ptr;
+	private static delegate* unmanaged<VkDevice, VkBuffer, VkMemoryRequirements*, void> vkGetBufferMemoryRequirements_ptr;
+	private static delegate* unmanaged<VkDevice, VkImage, VkMemoryRequirements*, void> vkGetImageMemoryRequirements_ptr;
+	private static delegate* unmanaged<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void> vkGetImageSparseMemoryRequirements_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkSampleCountFlags, VkImageUsageFlags, VkImageTiling, uint*, VkSparseImageFormatProperties*, void> vkGetPhysicalDeviceSparseImageFormatProperties_ptr;
+	private static delegate* unmanaged<VkQueue, uint, VkBindSparseInfo*, VkFence, VkResult> vkQueueBindSparse_ptr;
+	private static delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, VkFence*, VkResult> vkCreateFence_ptr;
+	private static delegate* unmanaged<VkDevice, VkFence, VkAllocationCallbacks*, void> vkDestroyFence_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkFence*, VkResult> vkResetFences_ptr;
+	private static delegate* unmanaged<VkDevice, VkFence, VkResult> vkGetFenceStatus_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult> vkWaitForFences_ptr;
+	private static delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, VkSemaphore*, VkResult> vkCreateSemaphore_ptr;
+	private static delegate* unmanaged<VkDevice, VkSemaphore, VkAllocationCallbacks*, void> vkDestroySemaphore_ptr;
+	private static delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult> vkCreateEvent_ptr;
+	private static delegate* unmanaged<VkDevice, VkEvent, VkAllocationCallbacks*, void> vkDestroyEvent_ptr;
+	private static delegate* unmanaged<VkDevice, VkEvent, VkResult> vkGetEventStatus_ptr;
+	private static delegate* unmanaged<VkDevice, VkEvent, VkResult> vkSetEvent_ptr;
+	private static delegate* unmanaged<VkDevice, VkEvent, VkResult> vkResetEvent_ptr;
+	private static delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, VkQueryPool*, VkResult> vkCreateQueryPool_ptr;
+	private static delegate* unmanaged<VkDevice, VkQueryPool, VkAllocationCallbacks*, void> vkDestroyQueryPool_ptr;
+	private static delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, nuint, void*, ulong, VkQueryResultFlags, VkResult> vkGetQueryPoolResults_ptr;
+	private static delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult> vkCreateBuffer_ptr;
+	private static delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void> vkDestroyBuffer_ptr;
+	private static delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult> vkCreateBufferView_ptr;
+	private static delegate* unmanaged<VkDevice, VkBufferView, VkAllocationCallbacks*, void> vkDestroyBufferView_ptr;
+	private static delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult> vkCreateImage_ptr;
+	private static delegate* unmanaged<VkDevice, VkImage, VkAllocationCallbacks*, void> vkDestroyImage_ptr;
+	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource*, VkSubresourceLayout*, void> vkGetImageSubresourceLayout_ptr;
+	private static delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, VkImageView*, VkResult> vkCreateImageView_ptr;
+	private static delegate* unmanaged<VkDevice, VkImageView, VkAllocationCallbacks*, void> vkDestroyImageView_ptr;
+	private static delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, VkShaderModule*, VkResult> vkCreateShaderModule_ptr;
+	private static delegate* unmanaged<VkDevice, VkShaderModule, VkAllocationCallbacks*, void> vkDestroyShaderModule_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, VkPipelineCache*, VkResult> vkCreatePipelineCache_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void> vkDestroyPipelineCache_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineCache, nuint*, void*, VkResult> vkGetPipelineCacheData_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult> vkMergePipelineCaches_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateGraphicsPipelines_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkComputePipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateComputePipelines_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipeline, VkAllocationCallbacks*, void> vkDestroyPipeline_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, VkPipelineLayout*, VkResult> vkCreatePipelineLayout_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineLayout, VkAllocationCallbacks*, void> vkDestroyPipelineLayout_ptr;
+	private static delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, VkSampler*, VkResult> vkCreateSampler_ptr;
+	private static delegate* unmanaged<VkDevice, VkSampler, VkAllocationCallbacks*, void> vkDestroySampler_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, VkDescriptorSetLayout*, VkResult> vkCreateDescriptorSetLayout_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayout, VkAllocationCallbacks*, void> vkDestroyDescriptorSetLayout_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, VkDescriptorPool*, VkResult> vkCreateDescriptorPool_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorPool, VkAllocationCallbacks*, void> vkDestroyDescriptorPool_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorPool, VkDescriptorPoolResetFlags, VkResult> vkResetDescriptorPool_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorSetAllocateInfo*, VkDescriptorSet*, VkResult> vkAllocateDescriptorSets_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult> vkFreeDescriptorSets_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkWriteDescriptorSet*, uint, VkCopyDescriptorSet*, void> vkUpdateDescriptorSets_ptr;
+	private static delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, VkFramebuffer*, VkResult> vkCreateFramebuffer_ptr;
+	private static delegate* unmanaged<VkDevice, VkFramebuffer, VkAllocationCallbacks*, void> vkDestroyFramebuffer_ptr;
+	private static delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, VkRenderPass*, VkResult> vkCreateRenderPass_ptr;
+	private static delegate* unmanaged<VkDevice, VkRenderPass, VkAllocationCallbacks*, void> vkDestroyRenderPass_ptr;
+	private static delegate* unmanaged<VkDevice, VkRenderPass, VkExtent2D*, void> vkGetRenderAreaGranularity_ptr;
+	private static delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult> vkCreateCommandPool_ptr;
+	private static delegate* unmanaged<VkDevice, VkCommandPool, VkAllocationCallbacks*, void> vkDestroyCommandPool_ptr;
+	private static delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolResetFlags, VkResult> vkResetCommandPool_ptr;
+	private static delegate* unmanaged<VkDevice, VkCommandBufferAllocateInfo*, VkCommandBuffer*, VkResult> vkAllocateCommandBuffers_ptr;
+	private static delegate* unmanaged<VkDevice, VkCommandPool, uint, VkCommandBuffer*, void> vkFreeCommandBuffers_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCommandBufferBeginInfo*, VkResult> vkBeginCommandBuffer_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkResult> vkEndCommandBuffer_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCommandBufferResetFlags, VkResult> vkResetCommandBuffer_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void> vkCmdBindPipeline_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewport*, void> vkCmdSetViewport_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetScissor_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, float, void> vkCmdSetLineWidth_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, float, float, float, void> vkCmdSetDepthBias_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, float*, void> vkCmdSetBlendConstants_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, float, float, void> vkCmdSetDepthBounds_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilCompareMask_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilWriteMask_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilReference_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkDescriptorSet*, uint, uint*, void> vkCmdBindDescriptorSets_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkIndexType, void> vkCmdBindIndexBuffer_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdBindVertexBuffers_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, void> vkCmdDraw_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, int, uint, void> vkCmdDrawIndexed_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirect_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirect_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void> vkCmdDispatch_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, void> vkCmdDispatchIndirect_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, VkBuffer, uint, VkBufferCopy*, void> vkCmdCopyBuffer_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageCopy*, void> vkCmdCopyImage_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageBlit*, VkFilter, void> vkCmdBlitImage_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, VkImage, VkImageLayout, uint, VkBufferImageCopy*, void> vkCmdCopyBufferToImage_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkBuffer, uint, VkBufferImageCopy*, void> vkCmdCopyImageToBuffer_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, void*, void> vkCmdUpdateBuffer_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, uint, void> vkCmdFillBuffer_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkClearColorValue*, uint, VkImageSubresourceRange*, void> vkCmdClearColorImage_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkClearDepthStencilValue*, uint, VkImageSubresourceRange*, void> vkCmdClearDepthStencilImage_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkClearAttachment*, uint, VkClearRect*, void> vkCmdClearAttachments_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageResolve*, void> vkCmdResolveImage_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void> vkCmdSetEvent_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void> vkCmdResetEvent_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkPipelineStageFlags, VkPipelineStageFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void> vkCmdWaitEvents_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkPipelineStageFlags, VkDependencyFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void> vkCmdPipelineBarrier_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, void> vkCmdBeginQuery_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, void> vkCmdEndQuery_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, void> vkCmdResetQueryPool_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkQueryPool, uint, void> vkCmdWriteTimestamp_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, VkBuffer, ulong, ulong, VkQueryResultFlags, void> vkCmdCopyQueryPoolResults_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineLayout, VkShaderStageFlags, uint, uint, void*, void> vkCmdPushConstants_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassContents, void> vkCmdBeginRenderPass_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkSubpassContents, void> vkCmdNextSubpass_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndRenderPass_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkCommandBuffer*, void> vkCmdExecuteCommands_ptr;
+	private static delegate* unmanaged<uint*, VkResult> vkEnumerateInstanceVersion_ptr;
+	internal static delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2_ptr;
+	internal static delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2_ptr;
+	private static delegate* unmanaged<VkDevice, uint, uint, uint, VkPeerMemoryFeatureFlags*, void> vkGetDeviceGroupPeerMemoryFeatures_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetDeviceMask_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void> vkCmdDispatchBase_ptr;
+	private static delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult> vkEnumeratePhysicalDeviceGroups_ptr;
+	internal static delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2_ptr;
+	internal static delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2_ptr;
+	private static delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetImageSparseMemoryRequirements2_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceFeatures2*, void> vkGetPhysicalDeviceFeatures2_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties2*, void> vkGetPhysicalDeviceProperties2_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkFormatProperties2*, void> vkGetPhysicalDeviceFormatProperties2_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, VkImageFormatProperties2*, VkResult> vkGetPhysicalDeviceImageFormatProperties2_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void> vkGetPhysicalDeviceQueueFamilyProperties2_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties2*, void> vkGetPhysicalDeviceMemoryProperties2_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void> vkGetPhysicalDeviceSparseImageFormatProperties2_ptr;
+	private static delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void> vkTrimCommandPool_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceQueueInfo2*, VkQueue*, void> vkGetDeviceQueue2_ptr;
+	private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult> vkCreateSamplerYcbcrConversion_ptr;
+	private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void> vkDestroySamplerYcbcrConversion_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult> vkCreateDescriptorUpdateTemplate_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void> vkDestroyDescriptorUpdateTemplate_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void> vkUpdateDescriptorSetWithTemplate_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, VkExternalBufferProperties*, void> vkGetPhysicalDeviceExternalBufferProperties_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, VkExternalFenceProperties*, void> vkGetPhysicalDeviceExternalFenceProperties_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, VkExternalSemaphoreProperties*, void> vkGetPhysicalDeviceExternalSemaphoreProperties_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkDescriptorSetLayoutSupport*, void> vkGetDescriptorSetLayoutSupport_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCount_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCount_ptr;
+	private static delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult> vkCreateRenderPass2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void> vkCmdBeginRenderPass2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void> vkCmdNextSubpass2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkSubpassEndInfo*, void> vkCmdEndRenderPass2_ptr;
+	private static delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, void> vkResetQueryPool_ptr;
+	private static delegate* unmanaged<VkDevice, VkSemaphore, ulong*, VkResult> vkGetSemaphoreCounterValue_ptr;
+	private static delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult> vkWaitSemaphores_ptr;
+	private static delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult> vkSignalSemaphore_ptr;
+	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferDeviceAddress_ptr;
+	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferOpaqueCaptureAddress_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong> vkGetDeviceMemoryOpaqueCaptureAddress_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceToolProperties*, VkResult> vkGetPhysicalDeviceToolProperties_ptr;
+	private static delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult> vkCreatePrivateDataSlot_ptr;
+	private static delegate* unmanaged<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void> vkDestroyPrivateDataSlot_ptr;
+	private static delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong, VkResult> vkSetPrivateData_ptr;
+	private static delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void> vkGetPrivateData_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfo*, void> vkCmdSetEvent2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags2, void> vkCmdResetEvent2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkDependencyInfo*, void> vkCmdWaitEvents2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkDependencyInfo*, void> vkCmdPipelineBarrier2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags2, VkQueryPool, uint, void> vkCmdWriteTimestamp2_ptr;
+	private static delegate* unmanaged<VkQueue, uint, VkSubmitInfo2*, VkFence, VkResult> vkQueueSubmit2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyBufferInfo2*, void> vkCmdCopyBuffer2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyImageInfo2*, void> vkCmdCopyImage2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyBufferToImageInfo2*, void> vkCmdCopyBufferToImage2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyImageToBufferInfo2*, void> vkCmdCopyImageToBuffer2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBlitImageInfo2*, void> vkCmdBlitImage2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkResolveImageInfo2*, void> vkCmdResolveImage2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderingInfo*, void> vkCmdBeginRendering_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndRendering_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCullModeFlags, void> vkCmdSetCullMode_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkFrontFace, void> vkCmdSetFrontFace_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPrimitiveTopology, void> vkCmdSetPrimitiveTopology_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkViewport*, void> vkCmdSetViewportWithCount_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkRect2D*, void> vkCmdSetScissorWithCount_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, ulong*, void> vkCmdBindVertexBuffers2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthTestEnable_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthWriteEnable_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCompareOp, void> vkCmdSetDepthCompareOp_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBoundsTestEnable_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetStencilTestEnable_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void> vkCmdSetStencilOp_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetRasterizerDiscardEnable_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBiasEnable_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetPrimitiveRestartEnable_ptr;
+	internal static delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirements_ptr;
+	internal static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirements_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetDeviceImageSparseMemoryRequirements_ptr;
+	private static delegate* unmanaged<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void> vkDestroySurfaceKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint, VkSurfaceKHR, VkBool32*, VkResult> vkGetPhysicalDeviceSurfaceSupportKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilitiesKHR*, VkResult> vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkSurfaceFormatKHR*, VkResult> vkGetPhysicalDeviceSurfaceFormatsKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkPresentModeKHR*, VkResult> vkGetPhysicalDeviceSurfacePresentModesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult> vkCreateSwapchainKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkAllocationCallbacks*, void> vkDestroySwapchainKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult> vkGetSwapchainImagesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, VkSemaphore, VkFence, uint*, VkResult> vkAcquireNextImageKHR_ptr;
+	private static delegate* unmanaged<VkQueue, VkPresentInfoKHR*, VkResult> vkQueuePresentKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceGroupPresentCapabilitiesKHR*, VkResult> vkGetDeviceGroupPresentCapabilitiesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSurfaceKHR, VkDeviceGroupPresentModeFlagsKHR*, VkResult> vkGetDeviceGroupSurfacePresentModesKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkRect2D*, VkResult> vkGetPhysicalDevicePresentRectanglesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkAcquireNextImageInfoKHR*, uint*, VkResult> vkAcquireNextImage2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPropertiesKHR*, VkResult> vkGetPhysicalDeviceDisplayPropertiesKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPlanePropertiesKHR*, VkResult> vkGetPhysicalDeviceDisplayPlanePropertiesKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkDisplayKHR*, VkResult> vkGetDisplayPlaneSupportedDisplaysKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModePropertiesKHR*, VkResult> vkGetDisplayModePropertiesKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkDisplayModeCreateInfoKHR*, VkAllocationCallbacks*, VkDisplayModeKHR*, VkResult> vkCreateDisplayModeKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayModeKHR, uint, VkDisplayPlaneCapabilitiesKHR*, VkResult> vkGetDisplayPlaneCapabilitiesKHR_ptr;
+	private static delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateDisplayPlaneSurfaceKHR_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult> vkCreateSharedSwapchainsKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkVideoProfileInfoKHR*, VkVideoCapabilitiesKHR*, VkResult> vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoFormatInfoKHR*, uint*, VkVideoFormatPropertiesKHR*, VkResult> vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult> vkCreateVideoSessionKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void> vkDestroyVideoSessionKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkVideoSessionKHR, uint*, VkVideoSessionMemoryRequirementsKHR*, VkResult> vkGetVideoSessionMemoryRequirementsKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkVideoSessionKHR, uint, VkBindVideoSessionMemoryInfoKHR*, VkResult> vkBindVideoSessionMemoryKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkVideoSessionParametersCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionParametersKHR*, VkResult> vkCreateVideoSessionParametersKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkVideoSessionParametersKHR, VkVideoSessionParametersUpdateInfoKHR*, VkResult> vkUpdateVideoSessionParametersKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkVideoSessionParametersKHR, VkAllocationCallbacks*, void> vkDestroyVideoSessionParametersKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkVideoBeginCodingInfoKHR*, void> vkCmdBeginVideoCodingKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkVideoEndCodingInfoKHR*, void> vkCmdEndVideoCodingKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkVideoCodingControlInfoKHR*, void> vkCmdControlVideoCodingKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkVideoDecodeInfoKHR*, void> vkCmdDecodeVideoKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderingInfo*, void> vkCmdBeginRenderingKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndRenderingKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceFeatures2*, void> vkGetPhysicalDeviceFeatures2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties2*, void> vkGetPhysicalDeviceProperties2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkFormatProperties2*, void> vkGetPhysicalDeviceFormatProperties2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, VkImageFormatProperties2*, VkResult> vkGetPhysicalDeviceImageFormatProperties2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void> vkGetPhysicalDeviceQueueFamilyProperties2KHR_ptr;
+	internal static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties2*, void> vkGetPhysicalDeviceMemoryProperties2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void> vkGetPhysicalDeviceSparseImageFormatProperties2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, uint, uint, uint, VkPeerMemoryFeatureFlags*, void> vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetDeviceMaskKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void> vkCmdDispatchBaseKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void> vkTrimCommandPoolKHR_ptr;
+	private static delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult> vkEnumeratePhysicalDeviceGroupsKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, VkExternalBufferProperties*, void> vkGetPhysicalDeviceExternalBufferPropertiesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkMemoryGetFdInfoKHR*, int*, VkResult> vkGetMemoryFdKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, int, VkMemoryFdPropertiesKHR*, VkResult> vkGetMemoryFdPropertiesKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, VkExternalSemaphoreProperties*, void> vkGetPhysicalDeviceExternalSemaphorePropertiesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkImportSemaphoreFdInfoKHR*, VkResult> vkImportSemaphoreFdKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSemaphoreGetFdInfoKHR*, int*, VkResult> vkGetSemaphoreFdKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkWriteDescriptorSet*, void> vkCmdPushDescriptorSetKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkDescriptorUpdateTemplate, VkPipelineLayout, uint, void*, void> vkCmdPushDescriptorSetWithTemplateKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult> vkCreateDescriptorUpdateTemplateKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void> vkDestroyDescriptorUpdateTemplateKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void> vkUpdateDescriptorSetWithTemplateKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult> vkCreateRenderPass2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void> vkCmdBeginRenderPass2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void> vkCmdNextSubpass2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkSubpassEndInfo*, void> vkCmdEndRenderPass2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult> vkGetSwapchainStatusKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, VkExternalFenceProperties*, void> vkGetPhysicalDeviceExternalFencePropertiesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkImportFenceFdInfoKHR*, VkResult> vkImportFenceFdKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkFenceGetFdInfoKHR*, int*, VkResult> vkGetFenceFdKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkPerformanceCounterKHR*, VkPerformanceCounterDescriptionKHR*, VkResult> vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkQueryPoolPerformanceCreateInfoKHR*, uint*, void> vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkAcquireProfilingLockInfoKHR*, VkResult> vkAcquireProfilingLockKHR_ptr;
+	private static delegate* unmanaged<VkDevice, void> vkReleaseProfilingLockKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkSurfaceCapabilities2KHR*, VkResult> vkGetPhysicalDeviceSurfaceCapabilities2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkSurfaceFormat2KHR*, VkResult> vkGetPhysicalDeviceSurfaceFormats2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayProperties2KHR*, VkResult> vkGetPhysicalDeviceDisplayProperties2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPlaneProperties2KHR*, VkResult> vkGetPhysicalDeviceDisplayPlaneProperties2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModeProperties2KHR*, VkResult> vkGetDisplayModeProperties2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayPlaneInfo2KHR*, VkDisplayPlaneCapabilities2KHR*, VkResult> vkGetDisplayPlaneCapabilities2KHR_ptr;
+	internal static delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2KHR_ptr;
+	internal static delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetImageSparseMemoryRequirements2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult> vkCreateSamplerYcbcrConversionKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void> vkDestroySamplerYcbcrConversionKHR_ptr;
+	internal static delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2KHR_ptr;
+	internal static delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkDescriptorSetLayoutSupport*, void> vkGetDescriptorSetLayoutSupportKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCountKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCountKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSemaphore, ulong*, VkResult> vkGetSemaphoreCounterValueKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult> vkWaitSemaphoresKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult> vkSignalSemaphoreKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceFragmentShadingRateKHR*, VkResult> vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkExtent2D*, VkFragmentShadingRateCombinerOpKHR*, void> vkCmdSetFragmentShadingRateKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfoKHR*, void> vkCmdSetRenderingAttachmentLocationsKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfoKHR*, void> vkCmdSetRenderingInputAttachmentIndicesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, ulong, VkResult> vkWaitForPresentKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferDeviceAddressKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferOpaqueCaptureAddressKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong> vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkAllocationCallbacks*, VkDeferredOperationKHR*, VkResult> vkCreateDeferredOperationKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkAllocationCallbacks*, void> vkDestroyDeferredOperationKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, uint> vkGetDeferredOperationMaxConcurrencyKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkResult> vkGetDeferredOperationResultKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkResult> vkDeferredOperationJoinKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineInfoKHR*, uint*, VkPipelineExecutablePropertiesKHR*, VkResult> vkGetPipelineExecutablePropertiesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableStatisticKHR*, VkResult> vkGetPipelineExecutableStatisticsKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableInternalRepresentationKHR*, VkResult> vkGetPipelineExecutableInternalRepresentationsKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void**, VkResult> vkMapMemory2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkMemoryUnmapInfoKHR*, VkResult> vkUnmapMemory2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, VkVideoEncodeQualityLevelPropertiesKHR*, VkResult> vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult> vkGetEncodedVideoSessionParametersKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void> vkCmdEncodeVideoKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfo*, void> vkCmdSetEvent2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags2, void> vkCmdResetEvent2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkDependencyInfo*, void> vkCmdWaitEvents2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkDependencyInfo*, void> vkCmdPipelineBarrier2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags2, VkQueryPool, uint, void> vkCmdWriteTimestamp2KHR_ptr;
+	private static delegate* unmanaged<VkQueue, uint, VkSubmitInfo2*, VkFence, VkResult> vkQueueSubmit2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags2, VkBuffer, ulong, uint, void> vkCmdWriteBufferMarker2AMD_ptr;
+	private static delegate* unmanaged<VkQueue, uint*, VkCheckpointData2NV*, void> vkGetQueueCheckpointData2NV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyBufferInfo2*, void> vkCmdCopyBuffer2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyImageInfo2*, void> vkCmdCopyImage2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyBufferToImageInfo2*, void> vkCmdCopyBufferToImage2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyImageToBufferInfo2*, void> vkCmdCopyImageToBuffer2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBlitImageInfo2*, void> vkCmdBlitImage2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkResolveImageInfo2*, void> vkCmdResolveImage2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, ulong, void> vkCmdTraceRaysIndirect2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirementsKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirementsKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetDeviceImageSparseMemoryRequirementsKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, VkIndexType, void> vkCmdBindIndexBuffer2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkRenderingAreaInfoKHR*, VkExtent2D*, void> vkGetRenderingAreaGranularityKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfoKHR*, VkSubresourceLayout2KHR*, void> vkGetDeviceImageSubresourceLayoutKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void> vkGetImageSubresourceLayout2KHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesKHR*, VkResult> vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, ushort, void> vkCmdSetLineStippleKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult> vkGetCalibratedTimestampsKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfoKHR*, void> vkCmdBindDescriptorSets2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPushConstantsInfoKHR*, void> vkCmdPushConstants2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetInfoKHR*, void> vkCmdPushDescriptorSet2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetWithTemplateInfoKHR*, void> vkCmdPushDescriptorSetWithTemplate2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkSetDescriptorBufferOffsetsInfoEXT*, void> vkCmdSetDescriptorBufferOffsets2EXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBindDescriptorBufferEmbeddedSamplersInfoEXT*, void> vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr;
+	private static delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult> vkCreateDebugReportCallbackEXT_ptr;
+	private static delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void> vkDestroyDebugReportCallbackEXT_ptr;
+	private static delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void> vkDebugReportMessageEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDebugMarkerObjectTagInfoEXT*, VkResult> vkDebugMarkerSetObjectTagEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDebugMarkerObjectNameInfoEXT*, VkResult> vkDebugMarkerSetObjectNameEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void> vkCmdDebugMarkerBeginEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdDebugMarkerEndEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void> vkCmdDebugMarkerInsertEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, void> vkCmdBindTransformFeedbackBuffersEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdBeginTransformFeedbackEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdEndTransformFeedbackEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, uint, void> vkCmdBeginQueryIndexedEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, void> vkCmdEndQueryIndexedEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectByteCountEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkCuModuleCreateInfoNVX*, VkAllocationCallbacks*, VkCuModuleNVX*, VkResult> vkCreateCuModuleNVX_ptr;
+	private static delegate* unmanaged<VkDevice, VkCuFunctionCreateInfoNVX*, VkAllocationCallbacks*, VkCuFunctionNVX*, VkResult> vkCreateCuFunctionNVX_ptr;
+	private static delegate* unmanaged<VkDevice, VkCuModuleNVX, VkAllocationCallbacks*, void> vkDestroyCuModuleNVX_ptr;
+	private static delegate* unmanaged<VkDevice, VkCuFunctionNVX, VkAllocationCallbacks*, void> vkDestroyCuFunctionNVX_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCuLaunchInfoNVX*, void> vkCmdCuLaunchKernelNVX_ptr;
+	private static delegate* unmanaged<VkDevice, VkImageViewHandleInfoNVX*, uint> vkGetImageViewHandleNVX_ptr;
+	private static delegate* unmanaged<VkDevice, VkImageView, VkImageViewAddressPropertiesNVX*, VkResult> vkGetImageViewAddressNVX_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCountAMD_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCountAMD_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipeline, VkShaderStageFlags, VkShaderInfoTypeAMD, nuint*, void*, VkResult> vkGetShaderInfoAMD_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkExternalMemoryHandleTypeFlagsNV, VkExternalImageFormatPropertiesNV*, VkResult> vkGetPhysicalDeviceExternalImageFormatPropertiesNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkConditionalRenderingBeginInfoEXT*, void> vkCmdBeginConditionalRenderingEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndConditionalRenderingEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewportWScalingNV*, void> vkCmdSetViewportWScalingNV_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkResult> vkReleaseDisplayEXT_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilities2EXT*, VkResult> vkGetPhysicalDeviceSurfaceCapabilities2EXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDisplayKHR, VkDisplayPowerInfoEXT*, VkResult> vkDisplayPowerControlEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult> vkRegisterDeviceEventEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDisplayKHR, VkDisplayEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult> vkRegisterDisplayEventEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkSurfaceCounterFlagsEXT, ulong*, VkResult> vkGetSwapchainCounterEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkRefreshCycleDurationGOOGLE*, VkResult> vkGetRefreshCycleDurationGOOGLE_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkPastPresentationTimingGOOGLE*, VkResult> vkGetPastPresentationTimingGOOGLE_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetDiscardRectangleEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDiscardRectangleEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkDiscardRectangleModeEXT, void> vkCmdSetDiscardRectangleModeEXT_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkSwapchainKHR*, VkHdrMetadataEXT*, void> vkSetHdrMetadataEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDebugUtilsObjectNameInfoEXT*, VkResult> vkSetDebugUtilsObjectNameEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDebugUtilsObjectTagInfoEXT*, VkResult> vkSetDebugUtilsObjectTagEXT_ptr;
+	private static delegate* unmanaged<VkQueue, VkDebugUtilsLabelEXT*, void> vkQueueBeginDebugUtilsLabelEXT_ptr;
+	private static delegate* unmanaged<VkQueue, void> vkQueueEndDebugUtilsLabelEXT_ptr;
+	private static delegate* unmanaged<VkQueue, VkDebugUtilsLabelEXT*, void> vkQueueInsertDebugUtilsLabelEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkDebugUtilsLabelEXT*, void> vkCmdBeginDebugUtilsLabelEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndDebugUtilsLabelEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkDebugUtilsLabelEXT*, void> vkCmdInsertDebugUtilsLabelEXT_ptr;
+	private static delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult> vkCreateDebugUtilsMessengerEXT_ptr;
+	private static delegate* unmanaged<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void> vkDestroyDebugUtilsMessengerEXT_ptr;
+	private static delegate* unmanaged<VkInstance, VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void> vkSubmitDebugUtilsMessageEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkSampleLocationsInfoEXT*, void> vkCmdSetSampleLocationsEXT_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkSampleCountFlags, VkMultisamplePropertiesEXT*, void> vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkImage, VkImageDrmFormatModifierPropertiesEXT*, VkResult> vkGetImageDrmFormatModifierPropertiesEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkValidationCacheCreateInfoEXT*, VkAllocationCallbacks*, VkValidationCacheEXT*, VkResult> vkCreateValidationCacheEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkValidationCacheEXT, VkAllocationCallbacks*, void> vkDestroyValidationCacheEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkValidationCacheEXT, uint, VkValidationCacheEXT*, VkResult> vkMergeValidationCachesEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkValidationCacheEXT, nuint*, void*, VkResult> vkGetValidationCacheDataEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkImageView, VkImageLayout, void> vkCmdBindShadingRateImageNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkShadingRatePaletteNV*, void> vkCmdSetViewportShadingRatePaletteNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCoarseSampleOrderTypeNV, uint, VkCoarseSampleOrderCustomNV*, void> vkCmdSetCoarseSampleOrderNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoNV*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void> vkDestroyAccelerationStructureNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkAccelerationStructureMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void> vkGetAccelerationStructureMemoryRequirementsNV_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkBindAccelerationStructureMemoryInfoNV*, VkResult> vkBindAccelerationStructureMemoryNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkAccelerationStructureInfoNV*, VkBuffer, ulong, VkBool32, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkBuffer, ulong, void> vkCmdBuildAccelerationStructureNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkCopyAccelerationStructureModeKHR, void> vkCmdCopyAccelerationStructureNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, uint, uint, uint, void> vkCmdTraceRaysNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoNV*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateRayTracingPipelinesNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingShaderGroupHandlesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingShaderGroupHandlesNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, nuint, void*, VkResult> vkGetAccelerationStructureHandleNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void> vkCmdWriteAccelerationStructuresPropertiesNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipeline, uint, VkResult> vkCompileDeferredNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryHostPointerPropertiesEXT*, VkResult> vkGetMemoryHostPointerPropertiesEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkBuffer, ulong, uint, void> vkCmdWriteBufferMarkerAMD_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult> vkGetCalibratedTimestampsEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, void> vkCmdDrawMeshTasksNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectCountNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBool32*, void> vkCmdSetExclusiveScissorEnableNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetExclusiveScissorNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, void*, void> vkCmdSetCheckpointNV_ptr;
+	private static delegate* unmanaged<VkQueue, uint*, VkCheckpointDataNV*, void> vkGetQueueCheckpointDataNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkInitializePerformanceApiInfoINTEL*, VkResult> vkInitializePerformanceApiINTEL_ptr;
+	private static delegate* unmanaged<VkDevice, void> vkUninitializePerformanceApiINTEL_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPerformanceMarkerInfoINTEL*, VkResult> vkCmdSetPerformanceMarkerINTEL_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPerformanceStreamMarkerInfoINTEL*, VkResult> vkCmdSetPerformanceStreamMarkerINTEL_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPerformanceOverrideInfoINTEL*, VkResult> vkCmdSetPerformanceOverrideINTEL_ptr;
+	private static delegate* unmanaged<VkDevice, VkPerformanceConfigurationAcquireInfoINTEL*, VkPerformanceConfigurationINTEL*, VkResult> vkAcquirePerformanceConfigurationINTEL_ptr;
+	private static delegate* unmanaged<VkDevice, VkPerformanceConfigurationINTEL, VkResult> vkReleasePerformanceConfigurationINTEL_ptr;
+	private static delegate* unmanaged<VkQueue, VkPerformanceConfigurationINTEL, VkResult> vkQueueSetPerformanceConfigurationINTEL_ptr;
+	private static delegate* unmanaged<VkDevice, VkPerformanceParameterTypeINTEL, VkPerformanceValueINTEL*, VkResult> vkGetPerformanceParameterINTEL_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkBool32, void> vkSetLocalDimmingAMD_ptr;
+	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferDeviceAddressEXT_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceToolProperties*, VkResult> vkGetPhysicalDeviceToolPropertiesEXT_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesNV*, VkResult> vkGetPhysicalDeviceCooperativeMatrixPropertiesNV_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkFramebufferMixedSamplesCombinationNV*, VkResult> vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr;
+	private static delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateHeadlessSurfaceEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, ushort, void> vkCmdSetLineStippleEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, void> vkResetQueryPoolEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCullModeFlags, void> vkCmdSetCullModeEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkFrontFace, void> vkCmdSetFrontFaceEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPrimitiveTopology, void> vkCmdSetPrimitiveTopologyEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkViewport*, void> vkCmdSetViewportWithCountEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkRect2D*, void> vkCmdSetScissorWithCountEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, ulong*, void> vkCmdBindVertexBuffers2EXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthTestEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthWriteEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCompareOp, void> vkCmdSetDepthCompareOpEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBoundsTestEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetStencilTestEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void> vkCmdSetStencilOpEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfoEXT*, VkResult> vkCopyMemoryToImageEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfoEXT*, VkResult> vkCopyImageToMemoryEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkCopyImageToImageInfoEXT*, VkResult> vkCopyImageToImageEXT_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfoEXT*, VkResult> vkTransitionImageLayoutEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void> vkGetImageSubresourceLayout2EXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkReleaseSwapchainImagesInfoEXT*, VkResult> vkReleaseSwapchainImagesEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void> vkGetGeneratedCommandsMemoryRequirementsNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkGeneratedCommandsInfoNV*, void> vkCmdPreprocessGeneratedCommandsNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, VkGeneratedCommandsInfoNV*, void> vkCmdExecuteGeneratedCommandsNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, uint, void> vkCmdBindPipelineShaderGroupNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoNV*, VkAllocationCallbacks*, VkIndirectCommandsLayoutNV*, VkResult> vkCreateIndirectCommandsLayoutNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutNV, VkAllocationCallbacks*, void> vkDestroyIndirectCommandsLayoutNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkDepthBiasInfoEXT*, void> vkCmdSetDepthBias2EXT_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, int, VkDisplayKHR, VkResult> vkAcquireDrmDisplayEXT_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, int, uint, VkDisplayKHR*, VkResult> vkGetDrmDisplayEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult> vkCreatePrivateDataSlotEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void> vkDestroyPrivateDataSlotEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong, VkResult> vkSetPrivateDataEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void> vkGetPrivateDataEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkCudaModuleCreateInfoNV*, VkAllocationCallbacks*, VkCudaModuleNV*, VkResult> vkCreateCudaModuleNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkCudaModuleNV, nuint*, void*, VkResult> vkGetCudaModuleCacheNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkCudaFunctionCreateInfoNV*, VkAllocationCallbacks*, VkCudaFunctionNV*, VkResult> vkCreateCudaFunctionNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkCudaModuleNV, VkAllocationCallbacks*, void> vkDestroyCudaModuleNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkCudaFunctionNV, VkAllocationCallbacks*, void> vkDestroyCudaFunctionNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCudaLaunchInfoNV*, void> vkCmdCudaLaunchKernelNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayout, ulong*, void> vkGetDescriptorSetLayoutSizeEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayout, uint, ulong*, void> vkGetDescriptorSetLayoutBindingOffsetEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorGetInfoEXT*, nuint, void*, void> vkGetDescriptorEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkDescriptorBufferBindingInfoEXT*, void> vkCmdBindDescriptorBuffersEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, uint*, ulong*, void> vkCmdSetDescriptorBufferOffsetsEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, void> vkCmdBindDescriptorBufferEmbeddedSamplersEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkBufferCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetBufferOpaqueCaptureDescriptorDataEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkImageCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetImageOpaqueCaptureDescriptorDataEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkImageViewCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetImageViewOpaqueCaptureDescriptorDataEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkSamplerCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetSamplerOpaqueCaptureDescriptorDataEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkAccelerationStructureCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void> vkCmdSetFragmentShadingRateEnumNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceFaultCountsEXT*, VkDeviceFaultInfoEXT*, VkResult> vkGetDeviceFaultInfoEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkVertexInputBindingDescription2EXT*, uint, VkVertexInputAttributeDescription2EXT*, void> vkCmdSetVertexInputEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkRenderPass, VkExtent2D*, VkResult> vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdSubpassShadingHUAWEI_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkImageView, VkImageLayout, void> vkCmdBindInvocationMaskHUAWEI_ptr;
+	private static delegate* unmanaged<VkDevice, VkMemoryGetRemoteAddressInfoNV*, VkRemoteAddressNV*, VkResult> vkGetMemoryRemoteAddressNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineInfoKHR*, VkBaseOutStructure*, VkResult> vkGetPipelinePropertiesEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetPatchControlPointsEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetRasterizerDiscardEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBiasEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkLogicOp, void> vkCmdSetLogicOpEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetPrimitiveRestartEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkBool32*, void> vkCmdSetColorWriteEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawInfoEXT*, uint, uint, uint, void> vkCmdDrawMultiEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawIndexedInfoEXT*, uint, uint, uint, int*, void> vkCmdDrawMultiIndexedEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkMicromapCreateInfoEXT*, VkAllocationCallbacks*, VkMicromapEXT*, VkResult> vkCreateMicromapEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkMicromapEXT, VkAllocationCallbacks*, void> vkDestroyMicromapEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkMicromapBuildInfoEXT*, void> vkCmdBuildMicromapsEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, uint, VkMicromapBuildInfoEXT*, VkResult> vkBuildMicromapsEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMicromapInfoEXT*, VkResult> vkCopyMicromapEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMicromapToMemoryInfoEXT*, VkResult> vkCopyMicromapToMemoryEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToMicromapInfoEXT*, VkResult> vkCopyMemoryToMicromapEXT_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkMicromapEXT*, VkQueryType, nuint, void*, nuint, VkResult> vkWriteMicromapsPropertiesEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyMicromapInfoEXT*, void> vkCmdCopyMicromapEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyMicromapToMemoryInfoEXT*, void> vkCmdCopyMicromapToMemoryEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyMemoryToMicromapInfoEXT*, void> vkCmdCopyMemoryToMicromapEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkMicromapEXT*, VkQueryType, VkQueryPool, uint, void> vkCmdWriteMicromapsPropertiesEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkMicromapVersionInfoEXT*, VkAccelerationStructureCompatibilityKHR*, void> vkGetDeviceMicromapCompatibilityEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkAccelerationStructureBuildTypeKHR, VkMicromapBuildInfoEXT*, VkMicromapBuildSizesInfoEXT*, void> vkGetMicromapBuildSizesEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void> vkCmdDrawClusterHUAWEI_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, void> vkCmdDrawClusterIndirectHUAWEI_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceMemory, float, void> vkSetDeviceMemoryPriorityEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorSetBindingReferenceVALVE*, VkDescriptorSetLayoutHostMappingInfoVALVE*, void> vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr;
+	private static delegate* unmanaged<VkDevice, VkDescriptorSet, void**, void> vkGetDescriptorSetHostMappingVALVE_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, ulong, uint, uint, void> vkCmdCopyMemoryIndirectNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, ulong, uint, uint, VkImage, VkImageLayout, VkImageSubresourceLayers*, void> vkCmdCopyMemoryToImageIndirectNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkDecompressMemoryRegionNV*, void> vkCmdDecompressMemoryNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, ulong, ulong, uint, void> vkCmdDecompressMemoryIndirectCountNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkComputePipelineCreateInfo*, VkMemoryRequirements2*, void> vkGetPipelineIndirectMemoryRequirementsNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void> vkCmdUpdatePipelineIndirectBufferNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineIndirectDeviceAddressInfoNV*, ulong> vkGetPipelineIndirectDeviceAddressNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthClampEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPolygonMode, void> vkCmdSetPolygonModeEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkSampleCountFlags, void> vkCmdSetRasterizationSamplesEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkSampleCountFlags, uint*, void> vkCmdSetSampleMaskEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetAlphaToCoverageEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetAlphaToOneEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetLogicOpEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBool32*, void> vkCmdSetColorBlendEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkColorBlendEquationEXT*, void> vkCmdSetColorBlendEquationEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkColorComponentFlags*, void> vkCmdSetColorWriteMaskEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkTessellationDomainOrigin, void> vkCmdSetTessellationDomainOriginEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetRasterizationStreamEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkConservativeRasterizationModeEXT, void> vkCmdSetConservativeRasterizationModeEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, float, void> vkCmdSetExtraPrimitiveOverestimationSizeEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthClipEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetSampleLocationsEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkColorBlendAdvancedEXT*, void> vkCmdSetColorBlendAdvancedEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkProvokingVertexModeEXT, void> vkCmdSetProvokingVertexModeEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkLineRasterizationModeKHR, void> vkCmdSetLineRasterizationModeEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetLineStippleEnableEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthClipNegativeOneToOneEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetViewportWScalingEnableNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewportSwizzleNV*, void> vkCmdSetViewportSwizzleNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetCoverageToColorEnableNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetCoverageToColorLocationNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCoverageModulationModeNV, void> vkCmdSetCoverageModulationModeNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetCoverageModulationTableEnableNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, float*, void> vkCmdSetCoverageModulationTableNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetShadingRateImageEnableNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetRepresentativeFragmentTestEnableNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCoverageReductionModeNV, void> vkCmdSetCoverageReductionModeNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkShaderModule, VkShaderModuleIdentifierEXT*, void> vkGetShaderModuleIdentifierEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkShaderModuleIdentifierEXT*, void> vkGetShaderModuleCreateInfoIdentifierEXT_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkOpticalFlowImageFormatInfoNV*, uint*, VkOpticalFlowImageFormatPropertiesNV*, VkResult> vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkOpticalFlowSessionCreateInfoNV*, VkAllocationCallbacks*, VkOpticalFlowSessionNV*, VkResult> vkCreateOpticalFlowSessionNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkAllocationCallbacks*, void> vkDestroyOpticalFlowSessionNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkOpticalFlowSessionBindingPointNV, VkImageView, VkImageLayout, VkResult> vkBindOpticalFlowSessionImageNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkOpticalFlowSessionNV, VkOpticalFlowExecuteInfoNV*, void> vkCmdOpticalFlowExecuteNV_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkShaderCreateInfoEXT*, VkAllocationCallbacks*, VkShaderEXT*, VkResult> vkCreateShadersEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void> vkDestroyShaderEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkShaderEXT, nuint*, void*, VkResult> vkGetShaderBinaryDataEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkShaderStageFlags*, VkShaderEXT*, void> vkCmdBindShadersEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkFramebuffer, uint*, VkTilePropertiesQCOM*, VkResult> vkGetFramebufferTilePropertiesQCOM_ptr;
+	private static delegate* unmanaged<VkDevice, VkRenderingInfo*, VkTilePropertiesQCOM*, VkResult> vkGetDynamicRenderingTilePropertiesQCOM_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepModeInfoNV*, VkResult> vkSetLatencySleepModeNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepInfoNV*, VkResult> vkLatencySleepNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkSetLatencyMarkerInfoNV*, void> vkSetLatencyMarkerNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkGetLatencyMarkerInfoNV*, void> vkGetLatencyTimingsNV_ptr;
+	private static delegate* unmanaged<VkQueue, VkOutOfBandQueueTypeInfoNV*, void> vkQueueNotifyOutOfBandNV_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkImageAspectFlags, void> vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void> vkDestroyAccelerationStructureKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void> vkCmdBuildAccelerationStructuresKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, ulong*, uint*, uint**, void> vkCmdBuildAccelerationStructuresIndirectKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, VkResult> vkBuildAccelerationStructuresKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureInfoKHR*, VkResult> vkCopyAccelerationStructureKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureToMemoryInfoKHR*, VkResult> vkCopyAccelerationStructureToMemoryKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToAccelerationStructureInfoKHR*, VkResult> vkCopyMemoryToAccelerationStructureKHR_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkAccelerationStructureKHR*, VkQueryType, nuint, void*, nuint, VkResult> vkWriteAccelerationStructuresPropertiesKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyAccelerationStructureInfoKHR*, void> vkCmdCopyAccelerationStructureKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyAccelerationStructureToMemoryInfoKHR*, void> vkCmdCopyAccelerationStructureToMemoryKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkCopyMemoryToAccelerationStructureInfoKHR*, void> vkCmdCopyMemoryToAccelerationStructureKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkAccelerationStructureDeviceAddressInfoKHR*, ulong> vkGetAccelerationStructureDeviceAddressKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void> vkCmdWriteAccelerationStructuresPropertiesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkAccelerationStructureVersionInfoKHR*, VkAccelerationStructureCompatibilityKHR*, void> vkGetDeviceAccelerationStructureCompatibilityKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkAccelerationStructureBuildTypeKHR, VkAccelerationStructureBuildGeometryInfoKHR*, uint*, VkAccelerationStructureBuildSizesInfoKHR*, void> vkGetAccelerationStructureBuildSizesKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, uint, uint, uint, void> vkCmdTraceRaysKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoKHR*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateRayTracingPipelinesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, ulong, void> vkCmdTraceRaysIndirectKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipeline, uint, VkShaderGroupShaderKHR, ulong> vkGetRayTracingShaderGroupStackSizeKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetRayTracingPipelineStackSizeKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void> vkCmdDrawMeshTasksEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectCountEXT_ptr;
+	private static delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateAndroidSurfaceKHR_ptr;
+	private static delegate* unmanaged<VkDevice, nint, VkAndroidHardwareBufferPropertiesANDROID*, VkResult> vkGetAndroidHardwareBufferPropertiesANDROID_ptr;
+	private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, nint, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_ptr;
+	private static delegate* unmanaged<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateIOSSurfaceMVK_ptr;
+	private static delegate* unmanaged<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateMacOSSurfaceMVK_ptr;
+	private static delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateMetalSurfaceEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkExportMetalObjectsInfoEXT*, void> vkExportMetalObjectsEXT_ptr;
+	private static delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateViSurfaceNN_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateExecutionGraphPipelinesAMDX_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipeline, VkExecutionGraphPipelineScratchSizeAMDX*, VkResult> vkGetExecutionGraphPipelineScratchSizeAMDX_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipeline, VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, VkResult> vkGetExecutionGraphPipelineNodeIndexAMDX_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, ulong, void> vkCmdInitializeGraphScratchMemoryAMDX_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, ulong, VkDispatchGraphCountInfoAMDX*, void> vkCmdDispatchGraphAMDX_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, ulong, VkDispatchGraphCountInfoAMDX*, void> vkCmdDispatchGraphIndirectAMDX_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, ulong, ulong, void> vkCmdDispatchGraphIndirectCountAMDX_ptr;
+
 	public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkInstance* instance)
 	{
 		return vkCreateInstance_ptr(createInfo, allocator, instance);
@@ -50,19 +689,16 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void> vkDestroyInstance_ptr;
 	public static void vkDestroyInstance(VkInstance instance, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyInstance_ptr(instance, allocator);
 	}
 
-	private static delegate* unmanaged<VkInstance, uint*, VkPhysicalDevice*, VkResult> vkEnumeratePhysicalDevices_ptr;
 	public static VkResult vkEnumeratePhysicalDevices(VkInstance instance, uint* physicalDeviceCount, VkPhysicalDevice* physicalDevices)
 	{
 		return vkEnumeratePhysicalDevices_ptr(instance, physicalDeviceCount, physicalDevices);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceFeatures*, void> vkGetPhysicalDeviceFeatures_ptr;
 	public static void vkGetPhysicalDeviceFeatures(VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures* features)
 	{
 		vkGetPhysicalDeviceFeatures_ptr(physicalDevice, features);
@@ -77,7 +713,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkFormatProperties*, void> vkGetPhysicalDeviceFormatProperties_ptr;
 	public static void vkGetPhysicalDeviceFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkFormatProperties* formatProperties)
 	{
 		vkGetPhysicalDeviceFormatProperties_ptr(physicalDevice, format, formatProperties);
@@ -92,7 +727,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkImageFormatProperties*, VkResult> vkGetPhysicalDeviceImageFormatProperties_ptr;
 	public static VkResult vkGetPhysicalDeviceImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkImageFormatProperties* imageFormatProperties)
 	{
 		return vkGetPhysicalDeviceImageFormatProperties_ptr(physicalDevice, format, type, tiling, usage, flags, imageFormatProperties);
@@ -107,7 +741,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	internal static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void> vkGetPhysicalDeviceProperties_ptr;
 	public static void vkGetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties* properties)
 	{
 		vkGetPhysicalDeviceProperties_ptr(physicalDevice, properties);
@@ -122,13 +755,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties*, void> vkGetPhysicalDeviceQueueFamilyProperties_ptr;
 	public static void vkGetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, VkQueueFamilyProperties* queueFamilyProperties)
 	{
 		vkGetPhysicalDeviceQueueFamilyProperties_ptr(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties*, void> vkGetPhysicalDeviceMemoryProperties_ptr;
 	public static void vkGetPhysicalDeviceMemoryProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties* memoryProperties)
 	{
 		vkGetPhysicalDeviceMemoryProperties_ptr(physicalDevice, memoryProperties);
@@ -143,7 +774,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, VkDevice*, VkResult> vkCreateDevice_ptr;
 	public static VkResult vkCreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDevice* device)
 	{
 		return vkCreateDevice_ptr(physicalDevice, createInfo, allocator, device);
@@ -178,37 +808,31 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAllocationCallbacks*, void> vkDestroyDevice_ptr;
 	public static void vkDestroyDevice(VkDevice device, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDevice_ptr(device, allocator);
 	}
 
-	private static delegate* unmanaged<sbyte*, uint*, VkExtensionProperties*, VkResult> vkEnumerateInstanceExtensionProperties_ptr;
-	public static VkResult vkEnumerateInstanceExtensionProperties(sbyte* layerName, uint* propertyCount, VkExtensionProperties* properties)
+	public static VkResult vkEnumerateInstanceExtensionProperties(byte* layerName, uint* propertyCount, VkExtensionProperties* properties)
 	{
 		return vkEnumerateInstanceExtensionProperties_ptr(layerName, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, sbyte*, uint*, VkExtensionProperties*, VkResult> vkEnumerateDeviceExtensionProperties_ptr;
-	public static VkResult vkEnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, sbyte* layerName, uint* propertyCount, VkExtensionProperties* properties)
+	public static VkResult vkEnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, byte* layerName, uint* propertyCount, VkExtensionProperties* properties)
 	{
 		return vkEnumerateDeviceExtensionProperties_ptr(physicalDevice, layerName, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<uint*, VkLayerProperties*, VkResult> vkEnumerateInstanceLayerProperties_ptr;
 	public static VkResult vkEnumerateInstanceLayerProperties(uint* propertyCount, VkLayerProperties* properties)
 	{
 		return vkEnumerateInstanceLayerProperties_ptr(propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkLayerProperties*, VkResult> vkEnumerateDeviceLayerProperties_ptr;
 	public static VkResult vkEnumerateDeviceLayerProperties(VkPhysicalDevice physicalDevice, uint* propertyCount, VkLayerProperties* properties)
 	{
 		return vkEnumerateDeviceLayerProperties_ptr(physicalDevice, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, uint, VkQueue*, void> vkGetDeviceQueue_ptr;
 	public static void vkGetDeviceQueue(VkDevice device, uint queueFamilyIndex, uint queueIndex, VkQueue* queue)
 	{
 		vkGetDeviceQueue_ptr(device, queueFamilyIndex, queueIndex, queue);
@@ -223,25 +847,21 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkQueue, uint, VkSubmitInfo*, VkFence, VkResult> vkQueueSubmit_ptr;
 	public static VkResult vkQueueSubmit(VkQueue queue, uint submitCount, VkSubmitInfo* submits, VkFence fence)
 	{
 		return vkQueueSubmit_ptr(queue, submitCount, submits, fence);
 	}
 
-	private static delegate* unmanaged<VkQueue, VkResult> vkQueueWaitIdle_ptr;
 	public static VkResult vkQueueWaitIdle(VkQueue queue)
 	{
 		return vkQueueWaitIdle_ptr(queue);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkResult> vkDeviceWaitIdle_ptr;
 	public static VkResult vkDeviceWaitIdle(VkDevice device)
 	{
 		return vkDeviceWaitIdle_ptr(device);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult> vkAllocateMemory_ptr;
 	public static VkResult vkAllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, VkDeviceMemory* memory)
 	{
 		return vkAllocateMemory_ptr(device, allocateInfo, allocator, memory);
@@ -256,37 +876,31 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void> vkFreeMemory_ptr;
 	public static void vkFreeMemory(VkDevice device, VkDeviceMemory memory, VkAllocationCallbacks* allocator = default)
 	{
 		vkFreeMemory_ptr(device, memory, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void**, VkResult> vkMapMemory_ptr;
 	public static VkResult vkMapMemory(VkDevice device, VkDeviceMemory memory, ulong offset, ulong size, VkMemoryMapFlags flags, void** data)
 	{
 		return vkMapMemory_ptr(device, memory, offset, size, flags, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceMemory, void> vkUnmapMemory_ptr;
 	public static void vkUnmapMemory(VkDevice device, VkDeviceMemory memory)
 	{
 		vkUnmapMemory_ptr(device, memory);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkFlushMappedMemoryRanges_ptr;
 	public static VkResult vkFlushMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange* memoryRanges)
 	{
 		return vkFlushMappedMemoryRanges_ptr(device, memoryRangeCount, memoryRanges);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult> vkInvalidateMappedMemoryRanges_ptr;
 	public static VkResult vkInvalidateMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange* memoryRanges)
 	{
 		return vkInvalidateMappedMemoryRanges_ptr(device, memoryRangeCount, memoryRanges);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceMemory, ulong*, void> vkGetDeviceMemoryCommitment_ptr;
 	public static void vkGetDeviceMemoryCommitment(VkDevice device, VkDeviceMemory memory, ulong* committedMemoryInBytes)
 	{
 		vkGetDeviceMemoryCommitment_ptr(device, memory, committedMemoryInBytes);
@@ -301,19 +915,16 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult> vkBindBufferMemory_ptr;
 	public static VkResult vkBindBufferMemory(VkDevice device, VkBuffer buffer, VkDeviceMemory memory, ulong memoryOffset)
 	{
 		return vkBindBufferMemory_ptr(device, buffer, memory, memoryOffset);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult> vkBindImageMemory_ptr;
 	public static VkResult vkBindImageMemory(VkDevice device, VkImage image, VkDeviceMemory memory, ulong memoryOffset)
 	{
 		return vkBindImageMemory_ptr(device, image, memory, memoryOffset);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBuffer, VkMemoryRequirements*, void> vkGetBufferMemoryRequirements_ptr;
 	public static void vkGetBufferMemoryRequirements(VkDevice device, VkBuffer buffer, VkMemoryRequirements* memoryRequirements)
 	{
 		vkGetBufferMemoryRequirements_ptr(device, buffer, memoryRequirements);
@@ -328,7 +939,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImage, VkMemoryRequirements*, void> vkGetImageMemoryRequirements_ptr;
 	public static void vkGetImageMemoryRequirements(VkDevice device, VkImage image, VkMemoryRequirements* memoryRequirements)
 	{
 		vkGetImageMemoryRequirements_ptr(device, image, memoryRequirements);
@@ -343,25 +953,21 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void> vkGetImageSparseMemoryRequirements_ptr;
 	public static void vkGetImageSparseMemoryRequirements(VkDevice device, VkImage image, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements* sparseMemoryRequirements)
 	{
 		vkGetImageSparseMemoryRequirements_ptr(device, image, sparseMemoryRequirementCount, sparseMemoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkSampleCountFlags, VkImageUsageFlags, VkImageTiling, uint*, VkSparseImageFormatProperties*, void> vkGetPhysicalDeviceSparseImageFormatProperties_ptr;
 	public static void vkGetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, uint* propertyCount, VkSparseImageFormatProperties* properties)
 	{
 		vkGetPhysicalDeviceSparseImageFormatProperties_ptr(physicalDevice, format, type, samples, usage, tiling, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkQueue, uint, VkBindSparseInfo*, VkFence, VkResult> vkQueueBindSparse_ptr;
 	public static VkResult vkQueueBindSparse(VkQueue queue, uint bindInfoCount, VkBindSparseInfo* bindInfo, VkFence fence)
 	{
 		return vkQueueBindSparse_ptr(queue, bindInfoCount, bindInfo, fence);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, VkFence*, VkResult> vkCreateFence_ptr;
 	public static VkResult vkCreateFence(VkDevice device, VkFenceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkFence* fence)
 	{
 		return vkCreateFence_ptr(device, createInfo, allocator, fence);
@@ -396,31 +1002,26 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkFence, VkAllocationCallbacks*, void> vkDestroyFence_ptr;
 	public static void vkDestroyFence(VkDevice device, VkFence fence, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyFence_ptr(device, fence, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkFence*, VkResult> vkResetFences_ptr;
 	public static VkResult vkResetFences(VkDevice device, uint fenceCount, VkFence* fences)
 	{
 		return vkResetFences_ptr(device, fenceCount, fences);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkFence, VkResult> vkGetFenceStatus_ptr;
 	public static VkResult vkGetFenceStatus(VkDevice device, VkFence fence)
 	{
 		return vkGetFenceStatus_ptr(device, fence);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult> vkWaitForFences_ptr;
 	public static VkResult vkWaitForFences(VkDevice device, uint fenceCount, VkFence* fences, VkBool32 waitAll, ulong timeout)
 	{
 		return vkWaitForFences_ptr(device, fenceCount, fences, waitAll, timeout);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, VkSemaphore*, VkResult> vkCreateSemaphore_ptr;
 	public static VkResult vkCreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSemaphore* semaphore)
 	{
 		return vkCreateSemaphore_ptr(device, createInfo, allocator, semaphore);
@@ -455,13 +1056,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSemaphore, VkAllocationCallbacks*, void> vkDestroySemaphore_ptr;
 	public static void vkDestroySemaphore(VkDevice device, VkSemaphore semaphore, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySemaphore_ptr(device, semaphore, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult> vkCreateEvent_ptr;
 	public static VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkEvent* @event)
 	{
 		return vkCreateEvent_ptr(device, createInfo, allocator, @event);
@@ -496,31 +1095,26 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkEvent, VkAllocationCallbacks*, void> vkDestroyEvent_ptr;
 	public static void vkDestroyEvent(VkDevice device, VkEvent @event, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyEvent_ptr(device, @event, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkEvent, VkResult> vkGetEventStatus_ptr;
 	public static VkResult vkGetEventStatus(VkDevice device, VkEvent @event)
 	{
 		return vkGetEventStatus_ptr(device, @event);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkEvent, VkResult> vkSetEvent_ptr;
 	public static VkResult vkSetEvent(VkDevice device, VkEvent @event)
 	{
 		return vkSetEvent_ptr(device, @event);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkEvent, VkResult> vkResetEvent_ptr;
 	public static VkResult vkResetEvent(VkDevice device, VkEvent @event)
 	{
 		return vkResetEvent_ptr(device, @event);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, VkQueryPool*, VkResult> vkCreateQueryPool_ptr;
 	public static VkResult vkCreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkQueryPool* queryPool)
 	{
 		return vkCreateQueryPool_ptr(device, createInfo, allocator, queryPool);
@@ -555,19 +1149,16 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkQueryPool, VkAllocationCallbacks*, void> vkDestroyQueryPool_ptr;
 	public static void vkDestroyQueryPool(VkDevice device, VkQueryPool queryPool, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyQueryPool_ptr(device, queryPool, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, nuint, void*, ulong, VkQueryResultFlags, VkResult> vkGetQueryPoolResults_ptr;
 	public static VkResult vkGetQueryPoolResults(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount, nuint dataSize, void* data, ulong stride, VkQueryResultFlags flags)
 	{
 		return vkGetQueryPoolResults_ptr(device, queryPool, firstQuery, queryCount, dataSize, data, stride, flags);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult> vkCreateBuffer_ptr;
 	public static VkResult vkCreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkBuffer* buffer)
 	{
 		return vkCreateBuffer_ptr(device, createInfo, allocator, buffer);
@@ -602,13 +1193,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void> vkDestroyBuffer_ptr;
 	public static void vkDestroyBuffer(VkDevice device, VkBuffer buffer, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyBuffer_ptr(device, buffer, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult> vkCreateBufferView_ptr;
 	public static VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkBufferView* view)
 	{
 		return vkCreateBufferView_ptr(device, createInfo, allocator, view);
@@ -643,13 +1232,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferView, VkAllocationCallbacks*, void> vkDestroyBufferView_ptr;
 	public static void vkDestroyBufferView(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyBufferView_ptr(device, bufferView, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult> vkCreateImage_ptr;
 	public static VkResult vkCreateImage(VkDevice device, VkImageCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkImage* image)
 	{
 		return vkCreateImage_ptr(device, createInfo, allocator, image);
@@ -684,13 +1271,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImage, VkAllocationCallbacks*, void> vkDestroyImage_ptr;
 	public static void vkDestroyImage(VkDevice device, VkImage image, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyImage_ptr(device, image, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource*, VkSubresourceLayout*, void> vkGetImageSubresourceLayout_ptr;
 	public static void vkGetImageSubresourceLayout(VkDevice device, VkImage image, VkImageSubresource* subresource, VkSubresourceLayout* layout)
 	{
 		vkGetImageSubresourceLayout_ptr(device, image, subresource, layout);
@@ -705,7 +1290,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, VkImageView*, VkResult> vkCreateImageView_ptr;
 	public static VkResult vkCreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkImageView* view)
 	{
 		return vkCreateImageView_ptr(device, createInfo, allocator, view);
@@ -740,13 +1324,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageView, VkAllocationCallbacks*, void> vkDestroyImageView_ptr;
 	public static void vkDestroyImageView(VkDevice device, VkImageView imageView, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyImageView_ptr(device, imageView, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, VkShaderModule*, VkResult> vkCreateShaderModule_ptr;
 	public static VkResult vkCreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkShaderModule* shaderModule)
 	{
 		return vkCreateShaderModule_ptr(device, createInfo, allocator, shaderModule);
@@ -781,13 +1363,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkShaderModule, VkAllocationCallbacks*, void> vkDestroyShaderModule_ptr;
 	public static void vkDestroyShaderModule(VkDevice device, VkShaderModule shaderModule, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyShaderModule_ptr(device, shaderModule, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, VkPipelineCache*, VkResult> vkCreatePipelineCache_ptr;
 	public static VkResult vkCreatePipelineCache(VkDevice device, VkPipelineCacheCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkPipelineCache* pipelineCache)
 	{
 		return vkCreatePipelineCache_ptr(device, createInfo, allocator, pipelineCache);
@@ -822,25 +1402,21 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void> vkDestroyPipelineCache_ptr;
 	public static void vkDestroyPipelineCache(VkDevice device, VkPipelineCache pipelineCache, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyPipelineCache_ptr(device, pipelineCache, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineCache, nuint*, void*, VkResult> vkGetPipelineCacheData_ptr;
 	public static VkResult vkGetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, nuint* dataSize, void* data)
 	{
 		return vkGetPipelineCacheData_ptr(device, pipelineCache, dataSize, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult> vkMergePipelineCaches_ptr;
 	public static VkResult vkMergePipelineCaches(VkDevice device, VkPipelineCache dstCache, uint srcCacheCount, VkPipelineCache* srcCaches)
 	{
 		return vkMergePipelineCaches_ptr(device, dstCache, srcCacheCount, srcCaches);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateGraphicsPipelines_ptr;
 	public static VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
 		return vkCreateGraphicsPipelines_ptr(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
@@ -854,7 +1430,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkComputePipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateComputePipelines_ptr;
 	public static VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
 		return vkCreateComputePipelines_ptr(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
@@ -868,13 +1443,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipeline, VkAllocationCallbacks*, void> vkDestroyPipeline_ptr;
 	public static void vkDestroyPipeline(VkDevice device, VkPipeline pipeline, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyPipeline_ptr(device, pipeline, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, VkPipelineLayout*, VkResult> vkCreatePipelineLayout_ptr;
 	public static VkResult vkCreatePipelineLayout(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkPipelineLayout* pipelineLayout)
 	{
 		return vkCreatePipelineLayout_ptr(device, createInfo, allocator, pipelineLayout);
@@ -909,13 +1482,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineLayout, VkAllocationCallbacks*, void> vkDestroyPipelineLayout_ptr;
 	public static void vkDestroyPipelineLayout(VkDevice device, VkPipelineLayout pipelineLayout, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyPipelineLayout_ptr(device, pipelineLayout, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, VkSampler*, VkResult> vkCreateSampler_ptr;
 	public static VkResult vkCreateSampler(VkDevice device, VkSamplerCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSampler* sampler)
 	{
 		return vkCreateSampler_ptr(device, createInfo, allocator, sampler);
@@ -950,13 +1521,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSampler, VkAllocationCallbacks*, void> vkDestroySampler_ptr;
 	public static void vkDestroySampler(VkDevice device, VkSampler sampler, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySampler_ptr(device, sampler, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, VkDescriptorSetLayout*, VkResult> vkCreateDescriptorSetLayout_ptr;
 	public static VkResult vkCreateDescriptorSetLayout(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDescriptorSetLayout* setLayout)
 	{
 		return vkCreateDescriptorSetLayout_ptr(device, createInfo, allocator, setLayout);
@@ -991,13 +1560,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayout, VkAllocationCallbacks*, void> vkDestroyDescriptorSetLayout_ptr;
 	public static void vkDestroyDescriptorSetLayout(VkDevice device, VkDescriptorSetLayout descriptorSetLayout, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDescriptorSetLayout_ptr(device, descriptorSetLayout, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, VkDescriptorPool*, VkResult> vkCreateDescriptorPool_ptr;
 	public static VkResult vkCreateDescriptorPool(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDescriptorPool* descriptorPool)
 	{
 		return vkCreateDescriptorPool_ptr(device, createInfo, allocator, descriptorPool);
@@ -1032,37 +1599,31 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorPool, VkAllocationCallbacks*, void> vkDestroyDescriptorPool_ptr;
 	public static void vkDestroyDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDescriptorPool_ptr(device, descriptorPool, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorPool, VkDescriptorPoolResetFlags, VkResult> vkResetDescriptorPool_ptr;
 	public static VkResult vkResetDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkDescriptorPoolResetFlags flags)
 	{
 		return vkResetDescriptorPool_ptr(device, descriptorPool, flags);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSetAllocateInfo*, VkDescriptorSet*, VkResult> vkAllocateDescriptorSets_ptr;
 	public static VkResult vkAllocateDescriptorSets(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, VkDescriptorSet* descriptorSets)
 	{
 		return vkAllocateDescriptorSets_ptr(device, allocateInfo, descriptorSets);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult> vkFreeDescriptorSets_ptr;
 	public static VkResult vkFreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, VkDescriptorSet* descriptorSets)
 	{
 		return vkFreeDescriptorSets_ptr(device, descriptorPool, descriptorSetCount, descriptorSets);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkWriteDescriptorSet*, uint, VkCopyDescriptorSet*, void> vkUpdateDescriptorSets_ptr;
 	public static void vkUpdateDescriptorSets(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet* descriptorCopies)
 	{
 		vkUpdateDescriptorSets_ptr(device, descriptorWriteCount, descriptorWrites, descriptorCopyCount, descriptorCopies);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, VkFramebuffer*, VkResult> vkCreateFramebuffer_ptr;
 	public static VkResult vkCreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkFramebuffer* framebuffer)
 	{
 		return vkCreateFramebuffer_ptr(device, createInfo, allocator, framebuffer);
@@ -1097,13 +1658,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkFramebuffer, VkAllocationCallbacks*, void> vkDestroyFramebuffer_ptr;
 	public static void vkDestroyFramebuffer(VkDevice device, VkFramebuffer framebuffer, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyFramebuffer_ptr(device, framebuffer, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, VkRenderPass*, VkResult> vkCreateRenderPass_ptr;
 	public static VkResult vkCreateRenderPass(VkDevice device, VkRenderPassCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkRenderPass* renderPass)
 	{
 		return vkCreateRenderPass_ptr(device, createInfo, allocator, renderPass);
@@ -1138,13 +1697,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkRenderPass, VkAllocationCallbacks*, void> vkDestroyRenderPass_ptr;
 	public static void vkDestroyRenderPass(VkDevice device, VkRenderPass renderPass, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyRenderPass_ptr(device, renderPass, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkRenderPass, VkExtent2D*, void> vkGetRenderAreaGranularity_ptr;
 	public static void vkGetRenderAreaGranularity(VkDevice device, VkRenderPass renderPass, VkExtent2D* granularity)
 	{
 		vkGetRenderAreaGranularity_ptr(device, renderPass, granularity);
@@ -1159,7 +1716,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult> vkCreateCommandPool_ptr;
 	public static VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkCommandPool* commandPool)
 	{
 		return vkCreateCommandPool_ptr(device, createInfo, allocator, commandPool);
@@ -1194,421 +1750,351 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCommandPool, VkAllocationCallbacks*, void> vkDestroyCommandPool_ptr;
 	public static void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyCommandPool_ptr(device, commandPool, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolResetFlags, VkResult> vkResetCommandPool_ptr;
 	public static VkResult vkResetCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags)
 	{
 		return vkResetCommandPool_ptr(device, commandPool, flags);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCommandBufferAllocateInfo*, VkCommandBuffer*, VkResult> vkAllocateCommandBuffers_ptr;
 	public static VkResult vkAllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, VkCommandBuffer* commandBuffers)
 	{
 		return vkAllocateCommandBuffers_ptr(device, allocateInfo, commandBuffers);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCommandPool, uint, VkCommandBuffer*, void> vkFreeCommandBuffers_ptr;
 	public static void vkFreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* commandBuffers)
 	{
 		vkFreeCommandBuffers_ptr(device, commandPool, commandBufferCount, commandBuffers);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCommandBufferBeginInfo*, VkResult> vkBeginCommandBuffer_ptr;
 	public static VkResult vkBeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* beginInfo)
 	{
 		return vkBeginCommandBuffer_ptr(commandBuffer, beginInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkResult> vkEndCommandBuffer_ptr;
 	public static VkResult vkEndCommandBuffer(VkCommandBuffer commandBuffer)
 	{
 		return vkEndCommandBuffer_ptr(commandBuffer);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCommandBufferResetFlags, VkResult> vkResetCommandBuffer_ptr;
 	public static VkResult vkResetCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags)
 	{
 		return vkResetCommandBuffer_ptr(commandBuffer, flags);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void> vkCmdBindPipeline_ptr;
 	public static void vkCmdBindPipeline(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline)
 	{
 		vkCmdBindPipeline_ptr(commandBuffer, pipelineBindPoint, pipeline);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewport*, void> vkCmdSetViewport_ptr;
 	public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewport* viewports)
 	{
 		vkCmdSetViewport_ptr(commandBuffer, firstViewport, viewportCount, viewports);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetScissor_ptr;
 	public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, VkRect2D* scissors)
 	{
 		vkCmdSetScissor_ptr(commandBuffer, firstScissor, scissorCount, scissors);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, float, void> vkCmdSetLineWidth_ptr;
 	public static void vkCmdSetLineWidth(VkCommandBuffer commandBuffer, float lineWidth)
 	{
 		vkCmdSetLineWidth_ptr(commandBuffer, lineWidth);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, float, float, float, void> vkCmdSetDepthBias_ptr;
 	public static void vkCmdSetDepthBias(VkCommandBuffer commandBuffer, float depthBiasConstantFactor, float depthBiasClamp, float depthBiasSlopeFactor)
 	{
 		vkCmdSetDepthBias_ptr(commandBuffer, depthBiasConstantFactor, depthBiasClamp, depthBiasSlopeFactor);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, float*, void> vkCmdSetBlendConstants_ptr;
 	public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float* blendConstants)
 	{
 		vkCmdSetBlendConstants_ptr(commandBuffer, blendConstants);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, float, float, void> vkCmdSetDepthBounds_ptr;
 	public static void vkCmdSetDepthBounds(VkCommandBuffer commandBuffer, float minDepthBounds, float maxDepthBounds)
 	{
 		vkCmdSetDepthBounds_ptr(commandBuffer, minDepthBounds, maxDepthBounds);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilCompareMask_ptr;
 	public static void vkCmdSetStencilCompareMask(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint compareMask)
 	{
 		vkCmdSetStencilCompareMask_ptr(commandBuffer, faceMask, compareMask);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilWriteMask_ptr;
 	public static void vkCmdSetStencilWriteMask(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint writeMask)
 	{
 		vkCmdSetStencilWriteMask_ptr(commandBuffer, faceMask, writeMask);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void> vkCmdSetStencilReference_ptr;
 	public static void vkCmdSetStencilReference(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint reference)
 	{
 		vkCmdSetStencilReference_ptr(commandBuffer, faceMask, reference);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkDescriptorSet*, uint, uint*, void> vkCmdBindDescriptorSets_ptr;
 	public static void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* descriptorSets, uint dynamicOffsetCount, uint* dynamicOffsets)
 	{
 		vkCmdBindDescriptorSets_ptr(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, descriptorSets, dynamicOffsetCount, dynamicOffsets);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkIndexType, void> vkCmdBindIndexBuffer_ptr;
 	public static void vkCmdBindIndexBuffer(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkIndexType indexType)
 	{
 		vkCmdBindIndexBuffer_ptr(commandBuffer, buffer, offset, indexType);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdBindVertexBuffers_ptr;
 	public static void vkCmdBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ulong* offsets)
 	{
 		vkCmdBindVertexBuffers_ptr(commandBuffer, firstBinding, bindingCount, buffers, offsets);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, void> vkCmdDraw_ptr;
 	public static void vkCmdDraw(VkCommandBuffer commandBuffer, uint vertexCount, uint instanceCount, uint firstVertex, uint firstInstance)
 	{
 		vkCmdDraw_ptr(commandBuffer, vertexCount, instanceCount, firstVertex, firstInstance);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, int, uint, void> vkCmdDrawIndexed_ptr;
 	public static void vkCmdDrawIndexed(VkCommandBuffer commandBuffer, uint indexCount, uint instanceCount, uint firstIndex, int vertexOffset, uint firstInstance)
 	{
 		vkCmdDrawIndexed_ptr(commandBuffer, indexCount, instanceCount, firstIndex, vertexOffset, firstInstance);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirect_ptr;
 	public static void vkCmdDrawIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, uint drawCount, uint stride)
 	{
 		vkCmdDrawIndirect_ptr(commandBuffer, buffer, offset, drawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirect_ptr;
 	public static void vkCmdDrawIndexedIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, uint drawCount, uint stride)
 	{
 		vkCmdDrawIndexedIndirect_ptr(commandBuffer, buffer, offset, drawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void> vkCmdDispatch_ptr;
 	public static void vkCmdDispatch(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ)
 	{
 		vkCmdDispatch_ptr(commandBuffer, groupCountX, groupCountY, groupCountZ);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, void> vkCmdDispatchIndirect_ptr;
 	public static void vkCmdDispatchIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset)
 	{
 		vkCmdDispatchIndirect_ptr(commandBuffer, buffer, offset);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, VkBuffer, uint, VkBufferCopy*, void> vkCmdCopyBuffer_ptr;
 	public static void vkCmdCopyBuffer(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkBuffer dstBuffer, uint regionCount, VkBufferCopy* regions)
 	{
 		vkCmdCopyBuffer_ptr(commandBuffer, srcBuffer, dstBuffer, regionCount, regions);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageCopy*, void> vkCmdCopyImage_ptr;
 	public static void vkCmdCopyImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageCopy* regions)
 	{
 		vkCmdCopyImage_ptr(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, regions);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageBlit*, VkFilter, void> vkCmdBlitImage_ptr;
 	public static void vkCmdBlitImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageBlit* regions, VkFilter filter)
 	{
 		vkCmdBlitImage_ptr(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, regions, filter);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, VkImage, VkImageLayout, uint, VkBufferImageCopy*, void> vkCmdCopyBufferToImage_ptr;
 	public static void vkCmdCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkBufferImageCopy* regions)
 	{
 		vkCmdCopyBufferToImage_ptr(commandBuffer, srcBuffer, dstImage, dstImageLayout, regionCount, regions);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkBuffer, uint, VkBufferImageCopy*, void> vkCmdCopyImageToBuffer_ptr;
 	public static void vkCmdCopyImageToBuffer(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkBuffer dstBuffer, uint regionCount, VkBufferImageCopy* regions)
 	{
 		vkCmdCopyImageToBuffer_ptr(commandBuffer, srcImage, srcImageLayout, dstBuffer, regionCount, regions);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, void*, void> vkCmdUpdateBuffer_ptr;
 	public static void vkCmdUpdateBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong dataSize, void* data)
 	{
 		vkCmdUpdateBuffer_ptr(commandBuffer, dstBuffer, dstOffset, dataSize, data);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, uint, void> vkCmdFillBuffer_ptr;
 	public static void vkCmdFillBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong size, uint data)
 	{
 		vkCmdFillBuffer_ptr(commandBuffer, dstBuffer, dstOffset, size, data);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkClearColorValue*, uint, VkImageSubresourceRange*, void> vkCmdClearColorImage_ptr;
 	public static void vkCmdClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* color, uint rangeCount, VkImageSubresourceRange* ranges)
 	{
 		vkCmdClearColorImage_ptr(commandBuffer, image, imageLayout, color, rangeCount, ranges);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkClearDepthStencilValue*, uint, VkImageSubresourceRange*, void> vkCmdClearDepthStencilImage_ptr;
 	public static void vkCmdClearDepthStencilImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearDepthStencilValue* depthStencil, uint rangeCount, VkImageSubresourceRange* ranges)
 	{
 		vkCmdClearDepthStencilImage_ptr(commandBuffer, image, imageLayout, depthStencil, rangeCount, ranges);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkClearAttachment*, uint, VkClearRect*, void> vkCmdClearAttachments_ptr;
 	public static void vkCmdClearAttachments(VkCommandBuffer commandBuffer, uint attachmentCount, VkClearAttachment* attachments, uint rectCount, VkClearRect* rects)
 	{
 		vkCmdClearAttachments_ptr(commandBuffer, attachmentCount, attachments, rectCount, rects);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageResolve*, void> vkCmdResolveImage_ptr;
 	public static void vkCmdResolveImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageResolve* regions)
 	{
 		vkCmdResolveImage_ptr(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, regions);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void> vkCmdSetEvent_ptr;
 	public static void vkCmdSetEvent(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask)
 	{
 		vkCmdSetEvent_ptr(commandBuffer, @event, stageMask);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void> vkCmdResetEvent_ptr;
 	public static void vkCmdResetEvent(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask)
 	{
 		vkCmdResetEvent_ptr(commandBuffer, @event, stageMask);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkPipelineStageFlags, VkPipelineStageFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void> vkCmdWaitEvents_ptr;
 	public static void vkCmdWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers)
 	{
 		vkCmdWaitEvents_ptr(commandBuffer, eventCount, events, srcStageMask, dstStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkPipelineStageFlags, VkDependencyFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void> vkCmdPipelineBarrier_ptr;
 	public static void vkCmdPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers)
 	{
 		vkCmdPipelineBarrier_ptr(commandBuffer, srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, void> vkCmdBeginQuery_ptr;
 	public static void vkCmdBeginQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags)
 	{
 		vkCmdBeginQuery_ptr(commandBuffer, queryPool, query, flags);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, void> vkCmdEndQuery_ptr;
 	public static void vkCmdEndQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query)
 	{
 		vkCmdEndQuery_ptr(commandBuffer, queryPool, query);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, void> vkCmdResetQueryPool_ptr;
 	public static void vkCmdResetQueryPool(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount)
 	{
 		vkCmdResetQueryPool_ptr(commandBuffer, queryPool, firstQuery, queryCount);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkQueryPool, uint, void> vkCmdWriteTimestamp_ptr;
 	public static void vkCmdWriteTimestamp(VkCommandBuffer commandBuffer, VkPipelineStageFlags pipelineStage, VkQueryPool queryPool, uint query)
 	{
 		vkCmdWriteTimestamp_ptr(commandBuffer, pipelineStage, queryPool, query);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, VkBuffer, ulong, ulong, VkQueryResultFlags, void> vkCmdCopyQueryPoolResults_ptr;
 	public static void vkCmdCopyQueryPoolResults(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount, VkBuffer dstBuffer, ulong dstOffset, ulong stride, VkQueryResultFlags flags)
 	{
 		vkCmdCopyQueryPoolResults_ptr(commandBuffer, queryPool, firstQuery, queryCount, dstBuffer, dstOffset, stride, flags);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineLayout, VkShaderStageFlags, uint, uint, void*, void> vkCmdPushConstants_ptr;
 	public static void vkCmdPushConstants(VkCommandBuffer commandBuffer, VkPipelineLayout layout, VkShaderStageFlags stageFlags, uint offset, uint size, void* values)
 	{
 		vkCmdPushConstants_ptr(commandBuffer, layout, stageFlags, offset, size, values);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassContents, void> vkCmdBeginRenderPass_ptr;
 	public static void vkCmdBeginRenderPass(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* renderPassBegin, VkSubpassContents contents)
 	{
 		vkCmdBeginRenderPass_ptr(commandBuffer, renderPassBegin, contents);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkSubpassContents, void> vkCmdNextSubpass_ptr;
 	public static void vkCmdNextSubpass(VkCommandBuffer commandBuffer, VkSubpassContents contents)
 	{
 		vkCmdNextSubpass_ptr(commandBuffer, contents);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndRenderPass_ptr;
 	public static void vkCmdEndRenderPass(VkCommandBuffer commandBuffer)
 	{
 		vkCmdEndRenderPass_ptr(commandBuffer);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkCommandBuffer*, void> vkCmdExecuteCommands_ptr;
 	public static void vkCmdExecuteCommands(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer* commandBuffers)
 	{
 		vkCmdExecuteCommands_ptr(commandBuffer, commandBufferCount, commandBuffers);
 	}
 
-	private static delegate* unmanaged<uint*, VkResult> vkEnumerateInstanceVersion_ptr;
 	public static VkResult vkEnumerateInstanceVersion(uint* apiVersion)
 	{
 		return vkEnumerateInstanceVersion_ptr(apiVersion);
 	}
 
-	internal static delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2_ptr;
 	public static VkResult vkBindBufferMemory2(VkDevice device, uint bindInfoCount, VkBindBufferMemoryInfo* bindInfos)
 	{
 		return vkBindBufferMemory2_ptr(device, bindInfoCount, bindInfos);
 	}
 
-	internal static delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2_ptr;
 	public static VkResult vkBindImageMemory2(VkDevice device, uint bindInfoCount, VkBindImageMemoryInfo* bindInfos)
 	{
 		return vkBindImageMemory2_ptr(device, bindInfoCount, bindInfos);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, uint, uint, VkPeerMemoryFeatureFlags*, void> vkGetDeviceGroupPeerMemoryFeatures_ptr;
 	public static void vkGetDeviceGroupPeerMemoryFeatures(VkDevice device, uint heapIndex, uint localDeviceIndex, uint remoteDeviceIndex, VkPeerMemoryFeatureFlags* peerMemoryFeatures)
 	{
 		vkGetDeviceGroupPeerMemoryFeatures_ptr(device, heapIndex, localDeviceIndex, remoteDeviceIndex, peerMemoryFeatures);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetDeviceMask_ptr;
 	public static void vkCmdSetDeviceMask(VkCommandBuffer commandBuffer, uint deviceMask)
 	{
 		vkCmdSetDeviceMask_ptr(commandBuffer, deviceMask);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void> vkCmdDispatchBase_ptr;
 	public static void vkCmdDispatchBase(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ)
 	{
 		vkCmdDispatchBase_ptr(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 	}
 
-	private static delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult> vkEnumeratePhysicalDeviceGroups_ptr;
 	public static VkResult vkEnumeratePhysicalDeviceGroups(VkInstance instance, uint* physicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* physicalDeviceGroupProperties)
 	{
 		return vkEnumeratePhysicalDeviceGroups_ptr(instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
 	}
 
-	internal static delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2_ptr;
 	public static void vkGetImageMemoryRequirements2(VkDevice device, VkImageMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetImageMemoryRequirements2_ptr(device, info, memoryRequirements);
 	}
 
-	internal static delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2_ptr;
 	public static void vkGetBufferMemoryRequirements2(VkDevice device, VkBufferMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetBufferMemoryRequirements2_ptr(device, info, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetImageSparseMemoryRequirements2_ptr;
 	public static void vkGetImageSparseMemoryRequirements2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements)
 	{
 		vkGetImageSparseMemoryRequirements2_ptr(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceFeatures2*, void> vkGetPhysicalDeviceFeatures2_ptr;
 	public static void vkGetPhysicalDeviceFeatures2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures2* features)
 	{
 		vkGetPhysicalDeviceFeatures2_ptr(physicalDevice, features);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties2*, void> vkGetPhysicalDeviceProperties2_ptr;
 	public static void vkGetPhysicalDeviceProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties2* properties)
 	{
 		vkGetPhysicalDeviceProperties2_ptr(physicalDevice, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkFormatProperties2*, void> vkGetPhysicalDeviceFormatProperties2_ptr;
 	public static void vkGetPhysicalDeviceFormatProperties2(VkPhysicalDevice physicalDevice, VkFormat format, VkFormatProperties2* formatProperties)
 	{
 		vkGetPhysicalDeviceFormatProperties2_ptr(physicalDevice, format, formatProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, VkImageFormatProperties2*, VkResult> vkGetPhysicalDeviceImageFormatProperties2_ptr;
 	public static VkResult vkGetPhysicalDeviceImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2* imageFormatInfo, VkImageFormatProperties2* imageFormatProperties)
 	{
 		return vkGetPhysicalDeviceImageFormatProperties2_ptr(physicalDevice, imageFormatInfo, imageFormatProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void> vkGetPhysicalDeviceQueueFamilyProperties2_ptr;
 	public static void vkGetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, VkQueueFamilyProperties2* queueFamilyProperties)
 	{
 		vkGetPhysicalDeviceQueueFamilyProperties2_ptr(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties2*, void> vkGetPhysicalDeviceMemoryProperties2_ptr;
 	public static void vkGetPhysicalDeviceMemoryProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties2* memoryProperties)
 	{
 		vkGetPhysicalDeviceMemoryProperties2_ptr(physicalDevice, memoryProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void> vkGetPhysicalDeviceSparseImageFormatProperties2_ptr;
 	public static void vkGetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, VkSparseImageFormatProperties2* properties)
 	{
 		vkGetPhysicalDeviceSparseImageFormatProperties2_ptr(physicalDevice, formatInfo, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void> vkTrimCommandPool_ptr;
 	public static void vkTrimCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlags flags)
 	{
 		vkTrimCommandPool_ptr(device, commandPool, flags);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceQueueInfo2*, VkQueue*, void> vkGetDeviceQueue2_ptr;
 	public static void vkGetDeviceQueue2(VkDevice device, VkDeviceQueueInfo2* queueInfo, VkQueue* queue)
 	{
 		vkGetDeviceQueue2_ptr(device, queueInfo, queue);
@@ -1623,7 +2109,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult> vkCreateSamplerYcbcrConversion_ptr;
 	public static VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion)
 	{
 		return vkCreateSamplerYcbcrConversion_ptr(device, createInfo, allocator, ycbcrConversion);
@@ -1658,13 +2143,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void> vkDestroySamplerYcbcrConversion_ptr;
 	public static void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySamplerYcbcrConversion_ptr(device, ycbcrConversion, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult> vkCreateDescriptorUpdateTemplate_ptr;
 	public static VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
 	{
 		return vkCreateDescriptorUpdateTemplate_ptr(device, createInfo, allocator, descriptorUpdateTemplate);
@@ -1699,55 +2182,46 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void> vkDestroyDescriptorUpdateTemplate_ptr;
 	public static void vkDestroyDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDescriptorUpdateTemplate_ptr(device, descriptorUpdateTemplate, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void> vkUpdateDescriptorSetWithTemplate_ptr;
 	public static void vkUpdateDescriptorSetWithTemplate(VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, void* data)
 	{
 		vkUpdateDescriptorSetWithTemplate_ptr(device, descriptorSet, descriptorUpdateTemplate, data);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, VkExternalBufferProperties*, void> vkGetPhysicalDeviceExternalBufferProperties_ptr;
 	public static void vkGetPhysicalDeviceExternalBufferProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* externalBufferInfo, VkExternalBufferProperties* externalBufferProperties)
 	{
 		vkGetPhysicalDeviceExternalBufferProperties_ptr(physicalDevice, externalBufferInfo, externalBufferProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, VkExternalFenceProperties*, void> vkGetPhysicalDeviceExternalFenceProperties_ptr;
 	public static void vkGetPhysicalDeviceExternalFenceProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* externalFenceInfo, VkExternalFenceProperties* externalFenceProperties)
 	{
 		vkGetPhysicalDeviceExternalFenceProperties_ptr(physicalDevice, externalFenceInfo, externalFenceProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, VkExternalSemaphoreProperties*, void> vkGetPhysicalDeviceExternalSemaphoreProperties_ptr;
 	public static void vkGetPhysicalDeviceExternalSemaphoreProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* externalSemaphoreInfo, VkExternalSemaphoreProperties* externalSemaphoreProperties)
 	{
 		vkGetPhysicalDeviceExternalSemaphoreProperties_ptr(physicalDevice, externalSemaphoreInfo, externalSemaphoreProperties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkDescriptorSetLayoutSupport*, void> vkGetDescriptorSetLayoutSupport_ptr;
 	public static void vkGetDescriptorSetLayoutSupport(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkDescriptorSetLayoutSupport* support)
 	{
 		vkGetDescriptorSetLayoutSupport_ptr(device, createInfo, support);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCount_ptr;
 	public static void vkCmdDrawIndirectCount(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 	{
 		vkCmdDrawIndirectCount_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCount_ptr;
 	public static void vkCmdDrawIndexedIndirectCount(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 	{
 		vkCmdDrawIndexedIndirectCount_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult> vkCreateRenderPass2_ptr;
 	public static VkResult vkCreateRenderPass2(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkAllocationCallbacks* allocator, VkRenderPass* renderPass)
 	{
 		return vkCreateRenderPass2_ptr(device, createInfo, allocator, renderPass);
@@ -1782,73 +2256,61 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void> vkCmdBeginRenderPass2_ptr;
 	public static void vkCmdBeginRenderPass2(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* renderPassBegin, VkSubpassBeginInfo* subpassBeginInfo)
 	{
 		vkCmdBeginRenderPass2_ptr(commandBuffer, renderPassBegin, subpassBeginInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void> vkCmdNextSubpass2_ptr;
 	public static void vkCmdNextSubpass2(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* subpassBeginInfo, VkSubpassEndInfo* subpassEndInfo)
 	{
 		vkCmdNextSubpass2_ptr(commandBuffer, subpassBeginInfo, subpassEndInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkSubpassEndInfo*, void> vkCmdEndRenderPass2_ptr;
 	public static void vkCmdEndRenderPass2(VkCommandBuffer commandBuffer, VkSubpassEndInfo* subpassEndInfo)
 	{
 		vkCmdEndRenderPass2_ptr(commandBuffer, subpassEndInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, void> vkResetQueryPool_ptr;
 	public static void vkResetQueryPool(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount)
 	{
 		vkResetQueryPool_ptr(device, queryPool, firstQuery, queryCount);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSemaphore, ulong*, VkResult> vkGetSemaphoreCounterValue_ptr;
 	public static VkResult vkGetSemaphoreCounterValue(VkDevice device, VkSemaphore semaphore, ulong* value)
 	{
 		return vkGetSemaphoreCounterValue_ptr(device, semaphore, value);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult> vkWaitSemaphores_ptr;
 	public static VkResult vkWaitSemaphores(VkDevice device, VkSemaphoreWaitInfo* waitInfo, ulong timeout)
 	{
 		return vkWaitSemaphores_ptr(device, waitInfo, timeout);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult> vkSignalSemaphore_ptr;
 	public static VkResult vkSignalSemaphore(VkDevice device, VkSemaphoreSignalInfo* signalInfo)
 	{
 		return vkSignalSemaphore_ptr(device, signalInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferDeviceAddress_ptr;
 	public static ulong vkGetBufferDeviceAddress(VkDevice device, VkBufferDeviceAddressInfo* info)
 	{
 		return vkGetBufferDeviceAddress_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferOpaqueCaptureAddress_ptr;
 	public static ulong vkGetBufferOpaqueCaptureAddress(VkDevice device, VkBufferDeviceAddressInfo* info)
 	{
 		return vkGetBufferOpaqueCaptureAddress_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong> vkGetDeviceMemoryOpaqueCaptureAddress_ptr;
 	public static ulong vkGetDeviceMemoryOpaqueCaptureAddress(VkDevice device, VkDeviceMemoryOpaqueCaptureAddressInfo* info)
 	{
 		return vkGetDeviceMemoryOpaqueCaptureAddress_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceToolProperties*, VkResult> vkGetPhysicalDeviceToolProperties_ptr;
 	public static VkResult vkGetPhysicalDeviceToolProperties(VkPhysicalDevice physicalDevice, uint* toolCount, VkPhysicalDeviceToolProperties* toolProperties)
 	{
 		return vkGetPhysicalDeviceToolProperties_ptr(physicalDevice, toolCount, toolProperties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult> vkCreatePrivateDataSlot_ptr;
 	public static VkResult vkCreatePrivateDataSlot(VkDevice device, VkPrivateDataSlotCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkPrivateDataSlot* privateDataSlot)
 	{
 		return vkCreatePrivateDataSlot_ptr(device, createInfo, allocator, privateDataSlot);
@@ -1862,223 +2324,186 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void> vkDestroyPrivateDataSlot_ptr;
 	public static void vkDestroyPrivateDataSlot(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyPrivateDataSlot_ptr(device, privateDataSlot, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong, VkResult> vkSetPrivateData_ptr;
 	public static VkResult vkSetPrivateData(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlot privateDataSlot, ulong data)
 	{
 		return vkSetPrivateData_ptr(device, objectType, objectHandle, privateDataSlot, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void> vkGetPrivateData_ptr;
 	public static void vkGetPrivateData(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlot privateDataSlot, ulong* data)
 	{
 		vkGetPrivateData_ptr(device, objectType, objectHandle, privateDataSlot, data);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfo*, void> vkCmdSetEvent2_ptr;
 	public static void vkCmdSetEvent2(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfo* dependencyInfo)
 	{
 		vkCmdSetEvent2_ptr(commandBuffer, @event, dependencyInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags2, void> vkCmdResetEvent2_ptr;
 	public static void vkCmdResetEvent2(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2 stageMask)
 	{
 		vkCmdResetEvent2_ptr(commandBuffer, @event, stageMask);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkDependencyInfo*, void> vkCmdWaitEvents2_ptr;
 	public static void vkCmdWaitEvents2(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkDependencyInfo* dependencyInfos)
 	{
 		vkCmdWaitEvents2_ptr(commandBuffer, eventCount, events, dependencyInfos);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkDependencyInfo*, void> vkCmdPipelineBarrier2_ptr;
 	public static void vkCmdPipelineBarrier2(VkCommandBuffer commandBuffer, VkDependencyInfo* dependencyInfo)
 	{
 		vkCmdPipelineBarrier2_ptr(commandBuffer, dependencyInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags2, VkQueryPool, uint, void> vkCmdWriteTimestamp2_ptr;
 	public static void vkCmdWriteTimestamp2(VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkQueryPool queryPool, uint query)
 	{
 		vkCmdWriteTimestamp2_ptr(commandBuffer, stage, queryPool, query);
 	}
 
-	private static delegate* unmanaged<VkQueue, uint, VkSubmitInfo2*, VkFence, VkResult> vkQueueSubmit2_ptr;
 	public static VkResult vkQueueSubmit2(VkQueue queue, uint submitCount, VkSubmitInfo2* submits, VkFence fence)
 	{
 		return vkQueueSubmit2_ptr(queue, submitCount, submits, fence);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyBufferInfo2*, void> vkCmdCopyBuffer2_ptr;
 	public static void vkCmdCopyBuffer2(VkCommandBuffer commandBuffer, VkCopyBufferInfo2* copyBufferInfo)
 	{
 		vkCmdCopyBuffer2_ptr(commandBuffer, copyBufferInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyImageInfo2*, void> vkCmdCopyImage2_ptr;
 	public static void vkCmdCopyImage2(VkCommandBuffer commandBuffer, VkCopyImageInfo2* copyImageInfo)
 	{
 		vkCmdCopyImage2_ptr(commandBuffer, copyImageInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyBufferToImageInfo2*, void> vkCmdCopyBufferToImage2_ptr;
 	public static void vkCmdCopyBufferToImage2(VkCommandBuffer commandBuffer, VkCopyBufferToImageInfo2* copyBufferToImageInfo)
 	{
 		vkCmdCopyBufferToImage2_ptr(commandBuffer, copyBufferToImageInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyImageToBufferInfo2*, void> vkCmdCopyImageToBuffer2_ptr;
 	public static void vkCmdCopyImageToBuffer2(VkCommandBuffer commandBuffer, VkCopyImageToBufferInfo2* copyImageToBufferInfo)
 	{
 		vkCmdCopyImageToBuffer2_ptr(commandBuffer, copyImageToBufferInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBlitImageInfo2*, void> vkCmdBlitImage2_ptr;
 	public static void vkCmdBlitImage2(VkCommandBuffer commandBuffer, VkBlitImageInfo2* blitImageInfo)
 	{
 		vkCmdBlitImage2_ptr(commandBuffer, blitImageInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkResolveImageInfo2*, void> vkCmdResolveImage2_ptr;
 	public static void vkCmdResolveImage2(VkCommandBuffer commandBuffer, VkResolveImageInfo2* resolveImageInfo)
 	{
 		vkCmdResolveImage2_ptr(commandBuffer, resolveImageInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkRenderingInfo*, void> vkCmdBeginRendering_ptr;
 	public static void vkCmdBeginRendering(VkCommandBuffer commandBuffer, VkRenderingInfo* renderingInfo)
 	{
 		vkCmdBeginRendering_ptr(commandBuffer, renderingInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndRendering_ptr;
 	public static void vkCmdEndRendering(VkCommandBuffer commandBuffer)
 	{
 		vkCmdEndRendering_ptr(commandBuffer);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCullModeFlags, void> vkCmdSetCullMode_ptr;
 	public static void vkCmdSetCullMode(VkCommandBuffer commandBuffer, VkCullModeFlags cullMode)
 	{
 		vkCmdSetCullMode_ptr(commandBuffer, cullMode);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkFrontFace, void> vkCmdSetFrontFace_ptr;
 	public static void vkCmdSetFrontFace(VkCommandBuffer commandBuffer, VkFrontFace frontFace)
 	{
 		vkCmdSetFrontFace_ptr(commandBuffer, frontFace);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPrimitiveTopology, void> vkCmdSetPrimitiveTopology_ptr;
 	public static void vkCmdSetPrimitiveTopology(VkCommandBuffer commandBuffer, VkPrimitiveTopology primitiveTopology)
 	{
 		vkCmdSetPrimitiveTopology_ptr(commandBuffer, primitiveTopology);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkViewport*, void> vkCmdSetViewportWithCount_ptr;
 	public static void vkCmdSetViewportWithCount(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport* viewports)
 	{
 		vkCmdSetViewportWithCount_ptr(commandBuffer, viewportCount, viewports);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkRect2D*, void> vkCmdSetScissorWithCount_ptr;
 	public static void vkCmdSetScissorWithCount(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D* scissors)
 	{
 		vkCmdSetScissorWithCount_ptr(commandBuffer, scissorCount, scissors);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, ulong*, void> vkCmdBindVertexBuffers2_ptr;
 	public static void vkCmdBindVertexBuffers2(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ulong* offsets, ulong* sizes, ulong* strides)
 	{
 		vkCmdBindVertexBuffers2_ptr(commandBuffer, firstBinding, bindingCount, buffers, offsets, sizes, strides);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthTestEnable_ptr;
 	public static void vkCmdSetDepthTestEnable(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable)
 	{
 		vkCmdSetDepthTestEnable_ptr(commandBuffer, depthTestEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthWriteEnable_ptr;
 	public static void vkCmdSetDepthWriteEnable(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable)
 	{
 		vkCmdSetDepthWriteEnable_ptr(commandBuffer, depthWriteEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCompareOp, void> vkCmdSetDepthCompareOp_ptr;
 	public static void vkCmdSetDepthCompareOp(VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp)
 	{
 		vkCmdSetDepthCompareOp_ptr(commandBuffer, depthCompareOp);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBoundsTestEnable_ptr;
 	public static void vkCmdSetDepthBoundsTestEnable(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable)
 	{
 		vkCmdSetDepthBoundsTestEnable_ptr(commandBuffer, depthBoundsTestEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetStencilTestEnable_ptr;
 	public static void vkCmdSetStencilTestEnable(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable)
 	{
 		vkCmdSetStencilTestEnable_ptr(commandBuffer, stencilTestEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void> vkCmdSetStencilOp_ptr;
 	public static void vkCmdSetStencilOp(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp)
 	{
 		vkCmdSetStencilOp_ptr(commandBuffer, faceMask, failOp, passOp, depthFailOp, compareOp);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetRasterizerDiscardEnable_ptr;
 	public static void vkCmdSetRasterizerDiscardEnable(VkCommandBuffer commandBuffer, VkBool32 rasterizerDiscardEnable)
 	{
 		vkCmdSetRasterizerDiscardEnable_ptr(commandBuffer, rasterizerDiscardEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBiasEnable_ptr;
 	public static void vkCmdSetDepthBiasEnable(VkCommandBuffer commandBuffer, VkBool32 depthBiasEnable)
 	{
 		vkCmdSetDepthBiasEnable_ptr(commandBuffer, depthBiasEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetPrimitiveRestartEnable_ptr;
 	public static void vkCmdSetPrimitiveRestartEnable(VkCommandBuffer commandBuffer, VkBool32 primitiveRestartEnable)
 	{
 		vkCmdSetPrimitiveRestartEnable_ptr(commandBuffer, primitiveRestartEnable);
 	}
 
-	internal static delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirements_ptr;
 	public static void vkGetDeviceBufferMemoryRequirements(VkDevice device, VkDeviceBufferMemoryRequirements* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetDeviceBufferMemoryRequirements_ptr(device, info, memoryRequirements);
 	}
 
-	internal static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirements_ptr;
 	public static void vkGetDeviceImageMemoryRequirements(VkDevice device, VkDeviceImageMemoryRequirements* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetDeviceImageMemoryRequirements_ptr(device, info, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetDeviceImageSparseMemoryRequirements_ptr;
 	public static void vkGetDeviceImageSparseMemoryRequirements(VkDevice device, VkDeviceImageMemoryRequirements* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements)
 	{
 		vkGetDeviceImageSparseMemoryRequirements_ptr(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void> vkDestroySurfaceKHR_ptr;
 	public static void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySurfaceKHR_ptr(instance, surface, allocator);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint, VkSurfaceKHR, VkBool32*, VkResult> vkGetPhysicalDeviceSurfaceSupportKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, VkBool32* supported)
 	{
 		return vkGetPhysicalDeviceSurfaceSupportKHR_ptr(physicalDevice, queueFamilyIndex, surface, supported);
@@ -2093,7 +2518,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilitiesKHR*, VkResult> vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilitiesKHR* surfaceCapabilities)
 	{
 		return vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr(physicalDevice, surface, surfaceCapabilities);
@@ -2108,19 +2532,16 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkSurfaceFormatKHR*, VkResult> vkGetPhysicalDeviceSurfaceFormatsKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* surfaceFormatCount, VkSurfaceFormatKHR* surfaceFormats)
 	{
 		return vkGetPhysicalDeviceSurfaceFormatsKHR_ptr(physicalDevice, surface, surfaceFormatCount, surfaceFormats);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkPresentModeKHR*, VkResult> vkGetPhysicalDeviceSurfacePresentModesKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* presentModeCount, VkPresentModeKHR* presentModes)
 	{
 		return vkGetPhysicalDeviceSurfacePresentModesKHR_ptr(physicalDevice, surface, presentModeCount, presentModes);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult> vkCreateSwapchainKHR_ptr;
 	public static VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSwapchainKHR* swapchain)
 	{
 		return vkCreateSwapchainKHR_ptr(device, createInfo, allocator, swapchain);
@@ -2155,19 +2576,16 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkAllocationCallbacks*, void> vkDestroySwapchainKHR_ptr;
 	public static void vkDestroySwapchainKHR(VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySwapchainKHR_ptr(device, swapchain, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult> vkGetSwapchainImagesKHR_ptr;
 	public static VkResult vkGetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, uint* swapchainImageCount, VkImage* swapchainImages)
 	{
 		return vkGetSwapchainImagesKHR_ptr(device, swapchain, swapchainImageCount, swapchainImages);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, VkSemaphore, VkFence, uint*, VkResult> vkAcquireNextImageKHR_ptr;
 	public static VkResult vkAcquireNextImageKHR(VkDevice device, VkSwapchainKHR swapchain, ulong timeout, VkSemaphore semaphore, VkFence fence, uint* imageIndex)
 	{
 		return vkAcquireNextImageKHR_ptr(device, swapchain, timeout, semaphore, fence, imageIndex);
@@ -2182,19 +2600,16 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkQueue, VkPresentInfoKHR*, VkResult> vkQueuePresentKHR_ptr;
 	public static VkResult vkQueuePresentKHR(VkQueue queue, VkPresentInfoKHR* presentInfo)
 	{
 		return vkQueuePresentKHR_ptr(queue, presentInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceGroupPresentCapabilitiesKHR*, VkResult> vkGetDeviceGroupPresentCapabilitiesKHR_ptr;
 	public static VkResult vkGetDeviceGroupPresentCapabilitiesKHR(VkDevice device, VkDeviceGroupPresentCapabilitiesKHR* deviceGroupPresentCapabilities)
 	{
 		return vkGetDeviceGroupPresentCapabilitiesKHR_ptr(device, deviceGroupPresentCapabilities);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSurfaceKHR, VkDeviceGroupPresentModeFlagsKHR*, VkResult> vkGetDeviceGroupSurfacePresentModesKHR_ptr;
 	public static VkResult vkGetDeviceGroupSurfacePresentModesKHR(VkDevice device, VkSurfaceKHR surface, VkDeviceGroupPresentModeFlagsKHR* modes)
 	{
 		return vkGetDeviceGroupSurfacePresentModesKHR_ptr(device, surface, modes);
@@ -2209,13 +2624,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, uint*, VkRect2D*, VkResult> vkGetPhysicalDevicePresentRectanglesKHR_ptr;
 	public static VkResult vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, VkRect2D* rects)
 	{
 		return vkGetPhysicalDevicePresentRectanglesKHR_ptr(physicalDevice, surface, rectCount, rects);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAcquireNextImageInfoKHR*, uint*, VkResult> vkAcquireNextImage2KHR_ptr;
 	public static VkResult vkAcquireNextImage2KHR(VkDevice device, VkAcquireNextImageInfoKHR* acquireInfo, uint* imageIndex)
 	{
 		return vkAcquireNextImage2KHR_ptr(device, acquireInfo, imageIndex);
@@ -2230,31 +2643,26 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPropertiesKHR*, VkResult> vkGetPhysicalDeviceDisplayPropertiesKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPropertiesKHR* properties)
 	{
 		return vkGetPhysicalDeviceDisplayPropertiesKHR_ptr(physicalDevice, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPlanePropertiesKHR*, VkResult> vkGetPhysicalDeviceDisplayPlanePropertiesKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPlanePropertiesKHR* properties)
 	{
 		return vkGetPhysicalDeviceDisplayPlanePropertiesKHR_ptr(physicalDevice, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkDisplayKHR*, VkResult> vkGetDisplayPlaneSupportedDisplaysKHR_ptr;
 	public static VkResult vkGetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, uint* displayCount, VkDisplayKHR* displays)
 	{
 		return vkGetDisplayPlaneSupportedDisplaysKHR_ptr(physicalDevice, planeIndex, displayCount, displays);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModePropertiesKHR*, VkResult> vkGetDisplayModePropertiesKHR_ptr;
 	public static VkResult vkGetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, VkDisplayModePropertiesKHR* properties)
 	{
 		return vkGetDisplayModePropertiesKHR_ptr(physicalDevice, display, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkDisplayModeCreateInfoKHR*, VkAllocationCallbacks*, VkDisplayModeKHR*, VkResult> vkCreateDisplayModeKHR_ptr;
 	public static VkResult vkCreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkDisplayModeKHR* mode)
 	{
 		return vkCreateDisplayModeKHR_ptr(physicalDevice, display, createInfo, allocator, mode);
@@ -2289,7 +2697,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayModeKHR, uint, VkDisplayPlaneCapabilitiesKHR*, VkResult> vkGetDisplayPlaneCapabilitiesKHR_ptr;
 	public static VkResult vkGetDisplayPlaneCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkDisplayModeKHR mode, uint planeIndex, VkDisplayPlaneCapabilitiesKHR* capabilities)
 	{
 		return vkGetDisplayPlaneCapabilitiesKHR_ptr(physicalDevice, mode, planeIndex, capabilities);
@@ -2304,7 +2711,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateDisplayPlaneSurfaceKHR_ptr;
 	public static VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		return vkCreateDisplayPlaneSurfaceKHR_ptr(instance, createInfo, allocator, surface);
@@ -2339,7 +2745,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult> vkCreateSharedSwapchainsKHR_ptr;
 	public static VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* createInfos, VkAllocationCallbacks* allocator, VkSwapchainKHR* swapchains)
 	{
 		return vkCreateSharedSwapchainsKHR_ptr(device, swapchainCount, createInfos, allocator, swapchains);
@@ -2374,19 +2779,16 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkVideoProfileInfoKHR*, VkVideoCapabilitiesKHR*, VkResult> vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceVideoCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkVideoProfileInfoKHR* videoProfile, VkVideoCapabilitiesKHR* capabilities)
 	{
 		return vkGetPhysicalDeviceVideoCapabilitiesKHR_ptr(physicalDevice, videoProfile, capabilities);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoFormatInfoKHR*, uint*, VkVideoFormatPropertiesKHR*, VkResult> vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceVideoFormatPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceVideoFormatInfoKHR* videoFormatInfo, uint* videoFormatPropertyCount, VkVideoFormatPropertiesKHR* videoFormatProperties)
 	{
 		return vkGetPhysicalDeviceVideoFormatPropertiesKHR_ptr(physicalDevice, videoFormatInfo, videoFormatPropertyCount, videoFormatProperties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult> vkCreateVideoSessionKHR_ptr;
 	public static VkResult vkCreateVideoSessionKHR(VkDevice device, VkVideoSessionCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkVideoSessionKHR* videoSession)
 	{
 		return vkCreateVideoSessionKHR_ptr(device, createInfo, allocator, videoSession);
@@ -2400,25 +2802,21 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void> vkDestroyVideoSessionKHR_ptr;
 	public static void vkDestroyVideoSessionKHR(VkDevice device, VkVideoSessionKHR videoSession, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyVideoSessionKHR_ptr(device, videoSession, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkVideoSessionKHR, uint*, VkVideoSessionMemoryRequirementsKHR*, VkResult> vkGetVideoSessionMemoryRequirementsKHR_ptr;
 	public static VkResult vkGetVideoSessionMemoryRequirementsKHR(VkDevice device, VkVideoSessionKHR videoSession, uint* memoryRequirementsCount, VkVideoSessionMemoryRequirementsKHR* memoryRequirements)
 	{
 		return vkGetVideoSessionMemoryRequirementsKHR_ptr(device, videoSession, memoryRequirementsCount, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkVideoSessionKHR, uint, VkBindVideoSessionMemoryInfoKHR*, VkResult> vkBindVideoSessionMemoryKHR_ptr;
 	public static VkResult vkBindVideoSessionMemoryKHR(VkDevice device, VkVideoSessionKHR videoSession, uint bindSessionMemoryInfoCount, VkBindVideoSessionMemoryInfoKHR* bindSessionMemoryInfos)
 	{
 		return vkBindVideoSessionMemoryKHR_ptr(device, videoSession, bindSessionMemoryInfoCount, bindSessionMemoryInfos);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkVideoSessionParametersCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionParametersKHR*, VkResult> vkCreateVideoSessionParametersKHR_ptr;
 	public static VkResult vkCreateVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkVideoSessionParametersKHR* videoSessionParameters)
 	{
 		return vkCreateVideoSessionParametersKHR_ptr(device, createInfo, allocator, videoSessionParameters);
@@ -2432,97 +2830,81 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkVideoSessionParametersKHR, VkVideoSessionParametersUpdateInfoKHR*, VkResult> vkUpdateVideoSessionParametersKHR_ptr;
 	public static VkResult vkUpdateVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkVideoSessionParametersUpdateInfoKHR* updateInfo)
 	{
 		return vkUpdateVideoSessionParametersKHR_ptr(device, videoSessionParameters, updateInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkVideoSessionParametersKHR, VkAllocationCallbacks*, void> vkDestroyVideoSessionParametersKHR_ptr;
 	public static void vkDestroyVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyVideoSessionParametersKHR_ptr(device, videoSessionParameters, allocator);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkVideoBeginCodingInfoKHR*, void> vkCmdBeginVideoCodingKHR_ptr;
 	public static void vkCmdBeginVideoCodingKHR(VkCommandBuffer commandBuffer, VkVideoBeginCodingInfoKHR* beginInfo)
 	{
 		vkCmdBeginVideoCodingKHR_ptr(commandBuffer, beginInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkVideoEndCodingInfoKHR*, void> vkCmdEndVideoCodingKHR_ptr;
 	public static void vkCmdEndVideoCodingKHR(VkCommandBuffer commandBuffer, VkVideoEndCodingInfoKHR* endCodingInfo)
 	{
 		vkCmdEndVideoCodingKHR_ptr(commandBuffer, endCodingInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkVideoCodingControlInfoKHR*, void> vkCmdControlVideoCodingKHR_ptr;
 	public static void vkCmdControlVideoCodingKHR(VkCommandBuffer commandBuffer, VkVideoCodingControlInfoKHR* codingControlInfo)
 	{
 		vkCmdControlVideoCodingKHR_ptr(commandBuffer, codingControlInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkVideoDecodeInfoKHR*, void> vkCmdDecodeVideoKHR_ptr;
 	public static void vkCmdDecodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoDecodeInfoKHR* decodeInfo)
 	{
 		vkCmdDecodeVideoKHR_ptr(commandBuffer, decodeInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkRenderingInfo*, void> vkCmdBeginRenderingKHR_ptr;
 	public static void vkCmdBeginRenderingKHR(VkCommandBuffer commandBuffer, VkRenderingInfo* renderingInfo)
 	{
 		vkCmdBeginRenderingKHR_ptr(commandBuffer, renderingInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndRenderingKHR_ptr;
 	public static void vkCmdEndRenderingKHR(VkCommandBuffer commandBuffer)
 	{
 		vkCmdEndRenderingKHR_ptr(commandBuffer);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceFeatures2*, void> vkGetPhysicalDeviceFeatures2KHR_ptr;
 	public static void vkGetPhysicalDeviceFeatures2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures2* features)
 	{
 		vkGetPhysicalDeviceFeatures2KHR_ptr(physicalDevice, features);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties2*, void> vkGetPhysicalDeviceProperties2KHR_ptr;
 	public static void vkGetPhysicalDeviceProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties2* properties)
 	{
 		vkGetPhysicalDeviceProperties2KHR_ptr(physicalDevice, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkFormatProperties2*, void> vkGetPhysicalDeviceFormatProperties2KHR_ptr;
 	public static void vkGetPhysicalDeviceFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkFormat format, VkFormatProperties2* formatProperties)
 	{
 		vkGetPhysicalDeviceFormatProperties2KHR_ptr(physicalDevice, format, formatProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceImageFormatInfo2*, VkImageFormatProperties2*, VkResult> vkGetPhysicalDeviceImageFormatProperties2KHR_ptr;
 	public static VkResult vkGetPhysicalDeviceImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2* imageFormatInfo, VkImageFormatProperties2* imageFormatProperties)
 	{
 		return vkGetPhysicalDeviceImageFormatProperties2KHR_ptr(physicalDevice, imageFormatInfo, imageFormatProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties2*, void> vkGetPhysicalDeviceQueueFamilyProperties2KHR_ptr;
 	public static void vkGetPhysicalDeviceQueueFamilyProperties2KHR(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, VkQueueFamilyProperties2* queueFamilyProperties)
 	{
 		vkGetPhysicalDeviceQueueFamilyProperties2KHR_ptr(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
 	}
 
-	internal static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties2*, void> vkGetPhysicalDeviceMemoryProperties2KHR_ptr;
 	public static void vkGetPhysicalDeviceMemoryProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties2* memoryProperties)
 	{
 		vkGetPhysicalDeviceMemoryProperties2KHR_ptr(physicalDevice, memoryProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void> vkGetPhysicalDeviceSparseImageFormatProperties2KHR_ptr;
 	public static void vkGetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, VkSparseImageFormatProperties2* properties)
 	{
 		vkGetPhysicalDeviceSparseImageFormatProperties2KHR_ptr(physicalDevice, formatInfo, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, uint, uint, VkPeerMemoryFeatureFlags*, void> vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr;
 	public static void vkGetDeviceGroupPeerMemoryFeaturesKHR(VkDevice device, uint heapIndex, uint localDeviceIndex, uint remoteDeviceIndex, VkPeerMemoryFeatureFlags* peerMemoryFeatures)
 	{
 		vkGetDeviceGroupPeerMemoryFeaturesKHR_ptr(device, heapIndex, localDeviceIndex, remoteDeviceIndex, peerMemoryFeatures);
@@ -2537,79 +2919,66 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetDeviceMaskKHR_ptr;
 	public static void vkCmdSetDeviceMaskKHR(VkCommandBuffer commandBuffer, uint deviceMask)
 	{
 		vkCmdSetDeviceMaskKHR_ptr(commandBuffer, deviceMask);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void> vkCmdDispatchBaseKHR_ptr;
 	public static void vkCmdDispatchBaseKHR(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ)
 	{
 		vkCmdDispatchBaseKHR_ptr(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolTrimFlags, void> vkTrimCommandPoolKHR_ptr;
 	public static void vkTrimCommandPoolKHR(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlags flags)
 	{
 		vkTrimCommandPoolKHR_ptr(device, commandPool, flags);
 	}
 
-	private static delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult> vkEnumeratePhysicalDeviceGroupsKHR_ptr;
 	public static VkResult vkEnumeratePhysicalDeviceGroupsKHR(VkInstance instance, uint* physicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* physicalDeviceGroupProperties)
 	{
 		return vkEnumeratePhysicalDeviceGroupsKHR_ptr(instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalBufferInfo*, VkExternalBufferProperties*, void> vkGetPhysicalDeviceExternalBufferPropertiesKHR_ptr;
 	public static void vkGetPhysicalDeviceExternalBufferPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* externalBufferInfo, VkExternalBufferProperties* externalBufferProperties)
 	{
 		vkGetPhysicalDeviceExternalBufferPropertiesKHR_ptr(physicalDevice, externalBufferInfo, externalBufferProperties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMemoryGetFdInfoKHR*, int*, VkResult> vkGetMemoryFdKHR_ptr;
 	public static VkResult vkGetMemoryFdKHR(VkDevice device, VkMemoryGetFdInfoKHR* getFdInfo, int* fd)
 	{
 		return vkGetMemoryFdKHR_ptr(device, getFdInfo, fd);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, int, VkMemoryFdPropertiesKHR*, VkResult> vkGetMemoryFdPropertiesKHR_ptr;
 	public static VkResult vkGetMemoryFdPropertiesKHR(VkDevice device, VkExternalMemoryHandleTypeFlags handleType, int fd, VkMemoryFdPropertiesKHR* memoryFdProperties)
 	{
 		return vkGetMemoryFdPropertiesKHR_ptr(device, handleType, fd, memoryFdProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalSemaphoreInfo*, VkExternalSemaphoreProperties*, void> vkGetPhysicalDeviceExternalSemaphorePropertiesKHR_ptr;
 	public static void vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* externalSemaphoreInfo, VkExternalSemaphoreProperties* externalSemaphoreProperties)
 	{
 		vkGetPhysicalDeviceExternalSemaphorePropertiesKHR_ptr(physicalDevice, externalSemaphoreInfo, externalSemaphoreProperties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImportSemaphoreFdInfoKHR*, VkResult> vkImportSemaphoreFdKHR_ptr;
 	public static VkResult vkImportSemaphoreFdKHR(VkDevice device, VkImportSemaphoreFdInfoKHR* importSemaphoreFdInfo)
 	{
 		return vkImportSemaphoreFdKHR_ptr(device, importSemaphoreFdInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSemaphoreGetFdInfoKHR*, int*, VkResult> vkGetSemaphoreFdKHR_ptr;
 	public static VkResult vkGetSemaphoreFdKHR(VkDevice device, VkSemaphoreGetFdInfoKHR* getFdInfo, int* fd)
 	{
 		return vkGetSemaphoreFdKHR_ptr(device, getFdInfo, fd);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkWriteDescriptorSet*, void> vkCmdPushDescriptorSetKHR_ptr;
 	public static void vkCmdPushDescriptorSetKHR(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites)
 	{
 		vkCmdPushDescriptorSetKHR_ptr(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, descriptorWrites);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkDescriptorUpdateTemplate, VkPipelineLayout, uint, void*, void> vkCmdPushDescriptorSetWithTemplateKHR_ptr;
 	public static void vkCmdPushDescriptorSetWithTemplateKHR(VkCommandBuffer commandBuffer, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkPipelineLayout layout, uint set, void* data)
 	{
 		vkCmdPushDescriptorSetWithTemplateKHR_ptr(commandBuffer, descriptorUpdateTemplate, layout, set, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult> vkCreateDescriptorUpdateTemplateKHR_ptr;
 	public static VkResult vkCreateDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
 	{
 		return vkCreateDescriptorUpdateTemplateKHR_ptr(device, createInfo, allocator, descriptorUpdateTemplate);
@@ -2623,19 +2992,16 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void> vkDestroyDescriptorUpdateTemplateKHR_ptr;
 	public static void vkDestroyDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDescriptorUpdateTemplateKHR_ptr(device, descriptorUpdateTemplate, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void> vkUpdateDescriptorSetWithTemplateKHR_ptr;
 	public static void vkUpdateDescriptorSetWithTemplateKHR(VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, void* data)
 	{
 		vkUpdateDescriptorSetWithTemplateKHR_ptr(device, descriptorSet, descriptorUpdateTemplate, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult> vkCreateRenderPass2KHR_ptr;
 	public static VkResult vkCreateRenderPass2KHR(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkAllocationCallbacks* allocator, VkRenderPass* renderPass)
 	{
 		return vkCreateRenderPass2KHR_ptr(device, createInfo, allocator, renderPass);
@@ -2649,127 +3015,106 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassBeginInfo*, void> vkCmdBeginRenderPass2KHR_ptr;
 	public static void vkCmdBeginRenderPass2KHR(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* renderPassBegin, VkSubpassBeginInfo* subpassBeginInfo)
 	{
 		vkCmdBeginRenderPass2KHR_ptr(commandBuffer, renderPassBegin, subpassBeginInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkSubpassBeginInfo*, VkSubpassEndInfo*, void> vkCmdNextSubpass2KHR_ptr;
 	public static void vkCmdNextSubpass2KHR(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* subpassBeginInfo, VkSubpassEndInfo* subpassEndInfo)
 	{
 		vkCmdNextSubpass2KHR_ptr(commandBuffer, subpassBeginInfo, subpassEndInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkSubpassEndInfo*, void> vkCmdEndRenderPass2KHR_ptr;
 	public static void vkCmdEndRenderPass2KHR(VkCommandBuffer commandBuffer, VkSubpassEndInfo* subpassEndInfo)
 	{
 		vkCmdEndRenderPass2KHR_ptr(commandBuffer, subpassEndInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult> vkGetSwapchainStatusKHR_ptr;
 	public static VkResult vkGetSwapchainStatusKHR(VkDevice device, VkSwapchainKHR swapchain)
 	{
 		return vkGetSwapchainStatusKHR_ptr(device, swapchain);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalFenceInfo*, VkExternalFenceProperties*, void> vkGetPhysicalDeviceExternalFencePropertiesKHR_ptr;
 	public static void vkGetPhysicalDeviceExternalFencePropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* externalFenceInfo, VkExternalFenceProperties* externalFenceProperties)
 	{
 		vkGetPhysicalDeviceExternalFencePropertiesKHR_ptr(physicalDevice, externalFenceInfo, externalFenceProperties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImportFenceFdInfoKHR*, VkResult> vkImportFenceFdKHR_ptr;
 	public static VkResult vkImportFenceFdKHR(VkDevice device, VkImportFenceFdInfoKHR* importFenceFdInfo)
 	{
 		return vkImportFenceFdKHR_ptr(device, importFenceFdInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkFenceGetFdInfoKHR*, int*, VkResult> vkGetFenceFdKHR_ptr;
 	public static VkResult vkGetFenceFdKHR(VkDevice device, VkFenceGetFdInfoKHR* getFdInfo, int* fd)
 	{
 		return vkGetFenceFdKHR_ptr(device, getFdInfo, fd);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkPerformanceCounterKHR*, VkPerformanceCounterDescriptionKHR*, VkResult> vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_ptr;
 	public static VkResult vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* counterCount, VkPerformanceCounterKHR* counters, VkPerformanceCounterDescriptionKHR* counterDescriptions)
 	{
 		return vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_ptr(physicalDevice, queueFamilyIndex, counterCount, counters, counterDescriptions);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkQueryPoolPerformanceCreateInfoKHR*, uint*, void> vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_ptr;
 	public static void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(VkPhysicalDevice physicalDevice, VkQueryPoolPerformanceCreateInfoKHR* performanceQueryCreateInfo, uint* numPasses)
 	{
 		vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_ptr(physicalDevice, performanceQueryCreateInfo, numPasses);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAcquireProfilingLockInfoKHR*, VkResult> vkAcquireProfilingLockKHR_ptr;
 	public static VkResult vkAcquireProfilingLockKHR(VkDevice device, VkAcquireProfilingLockInfoKHR* info)
 	{
 		return vkAcquireProfilingLockKHR_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, void> vkReleaseProfilingLockKHR_ptr;
 	public static void vkReleaseProfilingLockKHR(VkDevice device)
 	{
 		vkReleaseProfilingLockKHR_ptr(device);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkSurfaceCapabilities2KHR*, VkResult> vkGetPhysicalDeviceSurfaceCapabilities2KHR_ptr;
 	public static VkResult vkGetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, VkSurfaceCapabilities2KHR* surfaceCapabilities)
 	{
 		return vkGetPhysicalDeviceSurfaceCapabilities2KHR_ptr(physicalDevice, surfaceInfo, surfaceCapabilities);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkSurfaceFormat2KHR*, VkResult> vkGetPhysicalDeviceSurfaceFormats2KHR_ptr;
 	public static VkResult vkGetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* surfaceFormatCount, VkSurfaceFormat2KHR* surfaceFormats)
 	{
 		return vkGetPhysicalDeviceSurfaceFormats2KHR_ptr(physicalDevice, surfaceInfo, surfaceFormatCount, surfaceFormats);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayProperties2KHR*, VkResult> vkGetPhysicalDeviceDisplayProperties2KHR_ptr;
 	public static VkResult vkGetPhysicalDeviceDisplayProperties2KHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayProperties2KHR* properties)
 	{
 		return vkGetPhysicalDeviceDisplayProperties2KHR_ptr(physicalDevice, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkDisplayPlaneProperties2KHR*, VkResult> vkGetPhysicalDeviceDisplayPlaneProperties2KHR_ptr;
 	public static VkResult vkGetPhysicalDeviceDisplayPlaneProperties2KHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPlaneProperties2KHR* properties)
 	{
 		return vkGetPhysicalDeviceDisplayPlaneProperties2KHR_ptr(physicalDevice, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, uint*, VkDisplayModeProperties2KHR*, VkResult> vkGetDisplayModeProperties2KHR_ptr;
 	public static VkResult vkGetDisplayModeProperties2KHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, VkDisplayModeProperties2KHR* properties)
 	{
 		return vkGetDisplayModeProperties2KHR_ptr(physicalDevice, display, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayPlaneInfo2KHR*, VkDisplayPlaneCapabilities2KHR*, VkResult> vkGetDisplayPlaneCapabilities2KHR_ptr;
 	public static VkResult vkGetDisplayPlaneCapabilities2KHR(VkPhysicalDevice physicalDevice, VkDisplayPlaneInfo2KHR* displayPlaneInfo, VkDisplayPlaneCapabilities2KHR* capabilities)
 	{
 		return vkGetDisplayPlaneCapabilities2KHR_ptr(physicalDevice, displayPlaneInfo, capabilities);
 	}
 
-	internal static delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetImageMemoryRequirements2KHR_ptr;
 	public static void vkGetImageMemoryRequirements2KHR(VkDevice device, VkImageMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetImageMemoryRequirements2KHR_ptr(device, info, memoryRequirements);
 	}
 
-	internal static delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void> vkGetBufferMemoryRequirements2KHR_ptr;
 	public static void vkGetBufferMemoryRequirements2KHR(VkDevice device, VkBufferMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetBufferMemoryRequirements2KHR_ptr(device, info, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetImageSparseMemoryRequirements2KHR_ptr;
 	public static void vkGetImageSparseMemoryRequirements2KHR(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements)
 	{
 		vkGetImageSparseMemoryRequirements2KHR_ptr(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult> vkCreateSamplerYcbcrConversionKHR_ptr;
 	public static VkResult vkCreateSamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion)
 	{
 		return vkCreateSamplerYcbcrConversionKHR_ptr(device, createInfo, allocator, ycbcrConversion);
@@ -2783,379 +3128,316 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void> vkDestroySamplerYcbcrConversionKHR_ptr;
 	public static void vkDestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySamplerYcbcrConversionKHR_ptr(device, ycbcrConversion, allocator);
 	}
 
-	internal static delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult> vkBindBufferMemory2KHR_ptr;
 	public static VkResult vkBindBufferMemory2KHR(VkDevice device, uint bindInfoCount, VkBindBufferMemoryInfo* bindInfos)
 	{
 		return vkBindBufferMemory2KHR_ptr(device, bindInfoCount, bindInfos);
 	}
 
-	internal static delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult> vkBindImageMemory2KHR_ptr;
 	public static VkResult vkBindImageMemory2KHR(VkDevice device, uint bindInfoCount, VkBindImageMemoryInfo* bindInfos)
 	{
 		return vkBindImageMemory2KHR_ptr(device, bindInfoCount, bindInfos);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkDescriptorSetLayoutSupport*, void> vkGetDescriptorSetLayoutSupportKHR_ptr;
 	public static void vkGetDescriptorSetLayoutSupportKHR(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkDescriptorSetLayoutSupport* support)
 	{
 		vkGetDescriptorSetLayoutSupportKHR_ptr(device, createInfo, support);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCountKHR_ptr;
 	public static void vkCmdDrawIndirectCountKHR(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 	{
 		vkCmdDrawIndirectCountKHR_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCountKHR_ptr;
 	public static void vkCmdDrawIndexedIndirectCountKHR(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 	{
 		vkCmdDrawIndexedIndirectCountKHR_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSemaphore, ulong*, VkResult> vkGetSemaphoreCounterValueKHR_ptr;
 	public static VkResult vkGetSemaphoreCounterValueKHR(VkDevice device, VkSemaphore semaphore, ulong* value)
 	{
 		return vkGetSemaphoreCounterValueKHR_ptr(device, semaphore, value);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult> vkWaitSemaphoresKHR_ptr;
 	public static VkResult vkWaitSemaphoresKHR(VkDevice device, VkSemaphoreWaitInfo* waitInfo, ulong timeout)
 	{
 		return vkWaitSemaphoresKHR_ptr(device, waitInfo, timeout);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult> vkSignalSemaphoreKHR_ptr;
 	public static VkResult vkSignalSemaphoreKHR(VkDevice device, VkSemaphoreSignalInfo* signalInfo)
 	{
 		return vkSignalSemaphoreKHR_ptr(device, signalInfo);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceFragmentShadingRateKHR*, VkResult> vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceFragmentShadingRatesKHR(VkPhysicalDevice physicalDevice, uint* fragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR* fragmentShadingRates)
 	{
 		return vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr(physicalDevice, fragmentShadingRateCount, fragmentShadingRates);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkExtent2D*, VkFragmentShadingRateCombinerOpKHR*, void> vkCmdSetFragmentShadingRateKHR_ptr;
 	public static void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D* fragmentSize, VkFragmentShadingRateCombinerOpKHR* combinerOps)
 	{
 		vkCmdSetFragmentShadingRateKHR_ptr(commandBuffer, fragmentSize, combinerOps);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfoKHR*, void> vkCmdSetRenderingAttachmentLocationsKHR_ptr;
 	public static void vkCmdSetRenderingAttachmentLocationsKHR(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfoKHR* locationInfo)
 	{
 		vkCmdSetRenderingAttachmentLocationsKHR_ptr(commandBuffer, locationInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfoKHR*, void> vkCmdSetRenderingInputAttachmentIndicesKHR_ptr;
-	public static void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfoKHR* locationInfo)
+	public static void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfoKHR* inputAttachmentIndexInfo)
 	{
-		vkCmdSetRenderingInputAttachmentIndicesKHR_ptr(commandBuffer, locationInfo);
+		vkCmdSetRenderingInputAttachmentIndicesKHR_ptr(commandBuffer, inputAttachmentIndexInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, ulong, VkResult> vkWaitForPresentKHR_ptr;
 	public static VkResult vkWaitForPresentKHR(VkDevice device, VkSwapchainKHR swapchain, ulong presentId, ulong timeout)
 	{
 		return vkWaitForPresentKHR_ptr(device, swapchain, presentId, timeout);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferDeviceAddressKHR_ptr;
 	public static ulong vkGetBufferDeviceAddressKHR(VkDevice device, VkBufferDeviceAddressInfo* info)
 	{
 		return vkGetBufferDeviceAddressKHR_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferOpaqueCaptureAddressKHR_ptr;
 	public static ulong vkGetBufferOpaqueCaptureAddressKHR(VkDevice device, VkBufferDeviceAddressInfo* info)
 	{
 		return vkGetBufferOpaqueCaptureAddressKHR_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong> vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr;
 	public static ulong vkGetDeviceMemoryOpaqueCaptureAddressKHR(VkDevice device, VkDeviceMemoryOpaqueCaptureAddressInfo* info)
 	{
 		return vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAllocationCallbacks*, VkDeferredOperationKHR*, VkResult> vkCreateDeferredOperationKHR_ptr;
 	public static VkResult vkCreateDeferredOperationKHR(VkDevice device, VkAllocationCallbacks* allocator, VkDeferredOperationKHR* deferredOperation)
 	{
 		return vkCreateDeferredOperationKHR_ptr(device, allocator, deferredOperation);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkAllocationCallbacks*, void> vkDestroyDeferredOperationKHR_ptr;
 	public static void vkDestroyDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR operation, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDeferredOperationKHR_ptr(device, operation, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, uint> vkGetDeferredOperationMaxConcurrencyKHR_ptr;
 	public static uint vkGetDeferredOperationMaxConcurrencyKHR(VkDevice device, VkDeferredOperationKHR operation)
 	{
 		return vkGetDeferredOperationMaxConcurrencyKHR_ptr(device, operation);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkResult> vkGetDeferredOperationResultKHR_ptr;
 	public static VkResult vkGetDeferredOperationResultKHR(VkDevice device, VkDeferredOperationKHR operation)
 	{
 		return vkGetDeferredOperationResultKHR_ptr(device, operation);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkResult> vkDeferredOperationJoinKHR_ptr;
 	public static VkResult vkDeferredOperationJoinKHR(VkDevice device, VkDeferredOperationKHR operation)
 	{
 		return vkDeferredOperationJoinKHR_ptr(device, operation);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineInfoKHR*, uint*, VkPipelineExecutablePropertiesKHR*, VkResult> vkGetPipelineExecutablePropertiesKHR_ptr;
 	public static VkResult vkGetPipelineExecutablePropertiesKHR(VkDevice device, VkPipelineInfoKHR* pipelineInfo, uint* executableCount, VkPipelineExecutablePropertiesKHR* properties)
 	{
 		return vkGetPipelineExecutablePropertiesKHR_ptr(device, pipelineInfo, executableCount, properties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableStatisticKHR*, VkResult> vkGetPipelineExecutableStatisticsKHR_ptr;
 	public static VkResult vkGetPipelineExecutableStatisticsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* statisticCount, VkPipelineExecutableStatisticKHR* statistics)
 	{
 		return vkGetPipelineExecutableStatisticsKHR_ptr(device, executableInfo, statisticCount, statistics);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableInternalRepresentationKHR*, VkResult> vkGetPipelineExecutableInternalRepresentationsKHR_ptr;
 	public static VkResult vkGetPipelineExecutableInternalRepresentationsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* internalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* internalRepresentations)
 	{
 		return vkGetPipelineExecutableInternalRepresentationsKHR_ptr(device, executableInfo, internalRepresentationCount, internalRepresentations);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void**, VkResult> vkMapMemory2KHR_ptr;
 	public static VkResult vkMapMemory2KHR(VkDevice device, VkMemoryMapInfoKHR* memoryMapInfo, void** data)
 	{
 		return vkMapMemory2KHR_ptr(device, memoryMapInfo, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMemoryUnmapInfoKHR*, VkResult> vkUnmapMemory2KHR_ptr;
 	public static VkResult vkUnmapMemory2KHR(VkDevice device, VkMemoryUnmapInfoKHR* memoryUnmapInfo)
 	{
 		return vkUnmapMemory2KHR_ptr(device, memoryUnmapInfo);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, VkVideoEncodeQualityLevelPropertiesKHR*, VkResult> vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* qualityLevelInfo, VkVideoEncodeQualityLevelPropertiesKHR* qualityLevelProperties)
 	{
 		return vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr(physicalDevice, qualityLevelInfo, qualityLevelProperties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult> vkGetEncodedVideoSessionParametersKHR_ptr;
 	public static VkResult vkGetEncodedVideoSessionParametersKHR(VkDevice device, VkVideoEncodeSessionParametersGetInfoKHR* videoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* feedbackInfo, nuint* dataSize, void* data)
 	{
 		return vkGetEncodedVideoSessionParametersKHR_ptr(device, videoSessionParametersInfo, feedbackInfo, dataSize, data);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void> vkCmdEncodeVideoKHR_ptr;
 	public static void vkCmdEncodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoEncodeInfoKHR* encodeInfo)
 	{
 		vkCmdEncodeVideoKHR_ptr(commandBuffer, encodeInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfo*, void> vkCmdSetEvent2KHR_ptr;
 	public static void vkCmdSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfo* dependencyInfo)
 	{
 		vkCmdSetEvent2KHR_ptr(commandBuffer, @event, dependencyInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags2, void> vkCmdResetEvent2KHR_ptr;
 	public static void vkCmdResetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2 stageMask)
 	{
 		vkCmdResetEvent2KHR_ptr(commandBuffer, @event, stageMask);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkDependencyInfo*, void> vkCmdWaitEvents2KHR_ptr;
 	public static void vkCmdWaitEvents2KHR(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkDependencyInfo* dependencyInfos)
 	{
 		vkCmdWaitEvents2KHR_ptr(commandBuffer, eventCount, events, dependencyInfos);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkDependencyInfo*, void> vkCmdPipelineBarrier2KHR_ptr;
 	public static void vkCmdPipelineBarrier2KHR(VkCommandBuffer commandBuffer, VkDependencyInfo* dependencyInfo)
 	{
 		vkCmdPipelineBarrier2KHR_ptr(commandBuffer, dependencyInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags2, VkQueryPool, uint, void> vkCmdWriteTimestamp2KHR_ptr;
 	public static void vkCmdWriteTimestamp2KHR(VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkQueryPool queryPool, uint query)
 	{
 		vkCmdWriteTimestamp2KHR_ptr(commandBuffer, stage, queryPool, query);
 	}
 
-	private static delegate* unmanaged<VkQueue, uint, VkSubmitInfo2*, VkFence, VkResult> vkQueueSubmit2KHR_ptr;
 	public static VkResult vkQueueSubmit2KHR(VkQueue queue, uint submitCount, VkSubmitInfo2* submits, VkFence fence)
 	{
 		return vkQueueSubmit2KHR_ptr(queue, submitCount, submits, fence);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags2, VkBuffer, ulong, uint, void> vkCmdWriteBufferMarker2AMD_ptr;
 	public static void vkCmdWriteBufferMarker2AMD(VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkBuffer dstBuffer, ulong dstOffset, uint marker)
 	{
 		vkCmdWriteBufferMarker2AMD_ptr(commandBuffer, stage, dstBuffer, dstOffset, marker);
 	}
 
-	private static delegate* unmanaged<VkQueue, uint*, VkCheckpointData2NV*, void> vkGetQueueCheckpointData2NV_ptr;
 	public static void vkGetQueueCheckpointData2NV(VkQueue queue, uint* checkpointDataCount, VkCheckpointData2NV* checkpointData)
 	{
 		vkGetQueueCheckpointData2NV_ptr(queue, checkpointDataCount, checkpointData);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyBufferInfo2*, void> vkCmdCopyBuffer2KHR_ptr;
 	public static void vkCmdCopyBuffer2KHR(VkCommandBuffer commandBuffer, VkCopyBufferInfo2* copyBufferInfo)
 	{
 		vkCmdCopyBuffer2KHR_ptr(commandBuffer, copyBufferInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyImageInfo2*, void> vkCmdCopyImage2KHR_ptr;
 	public static void vkCmdCopyImage2KHR(VkCommandBuffer commandBuffer, VkCopyImageInfo2* copyImageInfo)
 	{
 		vkCmdCopyImage2KHR_ptr(commandBuffer, copyImageInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyBufferToImageInfo2*, void> vkCmdCopyBufferToImage2KHR_ptr;
 	public static void vkCmdCopyBufferToImage2KHR(VkCommandBuffer commandBuffer, VkCopyBufferToImageInfo2* copyBufferToImageInfo)
 	{
 		vkCmdCopyBufferToImage2KHR_ptr(commandBuffer, copyBufferToImageInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyImageToBufferInfo2*, void> vkCmdCopyImageToBuffer2KHR_ptr;
 	public static void vkCmdCopyImageToBuffer2KHR(VkCommandBuffer commandBuffer, VkCopyImageToBufferInfo2* copyImageToBufferInfo)
 	{
 		vkCmdCopyImageToBuffer2KHR_ptr(commandBuffer, copyImageToBufferInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBlitImageInfo2*, void> vkCmdBlitImage2KHR_ptr;
 	public static void vkCmdBlitImage2KHR(VkCommandBuffer commandBuffer, VkBlitImageInfo2* blitImageInfo)
 	{
 		vkCmdBlitImage2KHR_ptr(commandBuffer, blitImageInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkResolveImageInfo2*, void> vkCmdResolveImage2KHR_ptr;
 	public static void vkCmdResolveImage2KHR(VkCommandBuffer commandBuffer, VkResolveImageInfo2* resolveImageInfo)
 	{
 		vkCmdResolveImage2KHR_ptr(commandBuffer, resolveImageInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, ulong, void> vkCmdTraceRaysIndirect2KHR_ptr;
 	public static void vkCmdTraceRaysIndirect2KHR(VkCommandBuffer commandBuffer, ulong indirectDeviceAddress)
 	{
 		vkCmdTraceRaysIndirect2KHR_ptr(commandBuffer, indirectDeviceAddress);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirementsKHR_ptr;
 	public static void vkGetDeviceBufferMemoryRequirementsKHR(VkDevice device, VkDeviceBufferMemoryRequirements* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetDeviceBufferMemoryRequirementsKHR_ptr(device, info, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirementsKHR_ptr;
 	public static void vkGetDeviceImageMemoryRequirementsKHR(VkDevice device, VkDeviceImageMemoryRequirements* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetDeviceImageMemoryRequirementsKHR_ptr(device, info, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetDeviceImageSparseMemoryRequirementsKHR_ptr;
 	public static void vkGetDeviceImageSparseMemoryRequirementsKHR(VkDevice device, VkDeviceImageMemoryRequirements* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements)
 	{
 		vkGetDeviceImageSparseMemoryRequirementsKHR_ptr(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, VkIndexType, void> vkCmdBindIndexBuffer2KHR_ptr;
 	public static void vkCmdBindIndexBuffer2KHR(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, ulong size, VkIndexType indexType)
 	{
 		vkCmdBindIndexBuffer2KHR_ptr(commandBuffer, buffer, offset, size, indexType);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkRenderingAreaInfoKHR*, VkExtent2D*, void> vkGetRenderingAreaGranularityKHR_ptr;
 	public static void vkGetRenderingAreaGranularityKHR(VkDevice device, VkRenderingAreaInfoKHR* renderingAreaInfo, VkExtent2D* granularity)
 	{
 		vkGetRenderingAreaGranularityKHR_ptr(device, renderingAreaInfo, granularity);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfoKHR*, VkSubresourceLayout2KHR*, void> vkGetDeviceImageSubresourceLayoutKHR_ptr;
 	public static void vkGetDeviceImageSubresourceLayoutKHR(VkDevice device, VkDeviceImageSubresourceInfoKHR* info, VkSubresourceLayout2KHR* layout)
 	{
 		vkGetDeviceImageSubresourceLayoutKHR_ptr(device, info, layout);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void> vkGetImageSubresourceLayout2KHR_ptr;
 	public static void vkGetImageSubresourceLayout2KHR(VkDevice device, VkImage image, VkImageSubresource2KHR* subresource, VkSubresourceLayout2KHR* layout)
 	{
 		vkGetImageSubresourceLayout2KHR_ptr(device, image, subresource, layout);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesKHR*, VkResult> vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeMatrixPropertiesKHR* properties)
 	{
 		return vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr(physicalDevice, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, ushort, void> vkCmdSetLineStippleKHR_ptr;
 	public static void vkCmdSetLineStippleKHR(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern)
 	{
 		vkCmdSetLineStippleKHR_ptr(commandBuffer, lineStippleFactor, lineStipplePattern);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr;
 	public static VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(VkPhysicalDevice physicalDevice, uint* timeDomainCount, VkTimeDomainKHR* timeDomains)
 	{
 		return vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr(physicalDevice, timeDomainCount, timeDomains);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult> vkGetCalibratedTimestampsKHR_ptr;
 	public static VkResult vkGetCalibratedTimestampsKHR(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoKHR* timestampInfos, ulong* timestamps, ulong* maxDeviation)
 	{
 		return vkGetCalibratedTimestampsKHR_ptr(device, timestampCount, timestampInfos, timestamps, maxDeviation);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfoKHR*, void> vkCmdBindDescriptorSets2KHR_ptr;
 	public static void vkCmdBindDescriptorSets2KHR(VkCommandBuffer commandBuffer, VkBindDescriptorSetsInfoKHR* bindDescriptorSetsInfo)
 	{
 		vkCmdBindDescriptorSets2KHR_ptr(commandBuffer, bindDescriptorSetsInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPushConstantsInfoKHR*, void> vkCmdPushConstants2KHR_ptr;
 	public static void vkCmdPushConstants2KHR(VkCommandBuffer commandBuffer, VkPushConstantsInfoKHR* pushConstantsInfo)
 	{
 		vkCmdPushConstants2KHR_ptr(commandBuffer, pushConstantsInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetInfoKHR*, void> vkCmdPushDescriptorSet2KHR_ptr;
 	public static void vkCmdPushDescriptorSet2KHR(VkCommandBuffer commandBuffer, VkPushDescriptorSetInfoKHR* pushDescriptorSetInfo)
 	{
 		vkCmdPushDescriptorSet2KHR_ptr(commandBuffer, pushDescriptorSetInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetWithTemplateInfoKHR*, void> vkCmdPushDescriptorSetWithTemplate2KHR_ptr;
 	public static void vkCmdPushDescriptorSetWithTemplate2KHR(VkCommandBuffer commandBuffer, VkPushDescriptorSetWithTemplateInfoKHR* pushDescriptorSetWithTemplateInfo)
 	{
 		vkCmdPushDescriptorSetWithTemplate2KHR_ptr(commandBuffer, pushDescriptorSetWithTemplateInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkSetDescriptorBufferOffsetsInfoEXT*, void> vkCmdSetDescriptorBufferOffsets2EXT_ptr;
 	public static void vkCmdSetDescriptorBufferOffsets2EXT(VkCommandBuffer commandBuffer, VkSetDescriptorBufferOffsetsInfoEXT* setDescriptorBufferOffsetsInfo)
 	{
 		vkCmdSetDescriptorBufferOffsets2EXT_ptr(commandBuffer, setDescriptorBufferOffsetsInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBindDescriptorBufferEmbeddedSamplersInfoEXT*, void> vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr;
 	public static void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(VkCommandBuffer commandBuffer, VkBindDescriptorBufferEmbeddedSamplersInfoEXT* bindDescriptorBufferEmbeddedSamplersInfo)
 	{
 		vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr(commandBuffer, bindDescriptorBufferEmbeddedSamplersInfo);
 	}
 
-	private static delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult> vkCreateDebugReportCallbackEXT_ptr;
 	public static VkResult vkCreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkDebugReportCallbackEXT* callback)
 	{
 		return vkCreateDebugReportCallbackEXT_ptr(instance, createInfo, allocator, callback);
@@ -3169,85 +3451,71 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void> vkDestroyDebugReportCallbackEXT_ptr;
 	public static void vkDestroyDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackEXT callback, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDebugReportCallbackEXT_ptr(instance, callback, allocator);
 	}
 
-	private static delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, sbyte*, sbyte*, void> vkDebugReportMessageEXT_ptr;
-	public static void vkDebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, sbyte* layerPrefix, sbyte* message)
+	public static void vkDebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, byte* message)
 	{
 		vkDebugReportMessageEXT_ptr(instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDebugMarkerObjectTagInfoEXT*, VkResult> vkDebugMarkerSetObjectTagEXT_ptr;
 	public static VkResult vkDebugMarkerSetObjectTagEXT(VkDevice device, VkDebugMarkerObjectTagInfoEXT* tagInfo)
 	{
 		return vkDebugMarkerSetObjectTagEXT_ptr(device, tagInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDebugMarkerObjectNameInfoEXT*, VkResult> vkDebugMarkerSetObjectNameEXT_ptr;
 	public static VkResult vkDebugMarkerSetObjectNameEXT(VkDevice device, VkDebugMarkerObjectNameInfoEXT* nameInfo)
 	{
 		return vkDebugMarkerSetObjectNameEXT_ptr(device, nameInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void> vkCmdDebugMarkerBeginEXT_ptr;
 	public static void vkCmdDebugMarkerBeginEXT(VkCommandBuffer commandBuffer, VkDebugMarkerMarkerInfoEXT* markerInfo)
 	{
 		vkCmdDebugMarkerBeginEXT_ptr(commandBuffer, markerInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdDebugMarkerEndEXT_ptr;
 	public static void vkCmdDebugMarkerEndEXT(VkCommandBuffer commandBuffer)
 	{
 		vkCmdDebugMarkerEndEXT_ptr(commandBuffer);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkDebugMarkerMarkerInfoEXT*, void> vkCmdDebugMarkerInsertEXT_ptr;
 	public static void vkCmdDebugMarkerInsertEXT(VkCommandBuffer commandBuffer, VkDebugMarkerMarkerInfoEXT* markerInfo)
 	{
 		vkCmdDebugMarkerInsertEXT_ptr(commandBuffer, markerInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, void> vkCmdBindTransformFeedbackBuffersEXT_ptr;
 	public static void vkCmdBindTransformFeedbackBuffersEXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ulong* offsets, ulong* sizes)
 	{
 		vkCmdBindTransformFeedbackBuffersEXT_ptr(commandBuffer, firstBinding, bindingCount, buffers, offsets, sizes);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdBeginTransformFeedbackEXT_ptr;
 	public static void vkCmdBeginTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, ulong* counterBufferOffsets)
 	{
 		vkCmdBeginTransformFeedbackEXT_ptr(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, counterBufferOffsets);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, void> vkCmdEndTransformFeedbackEXT_ptr;
 	public static void vkCmdEndTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, ulong* counterBufferOffsets)
 	{
 		vkCmdEndTransformFeedbackEXT_ptr(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, counterBufferOffsets);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, uint, void> vkCmdBeginQueryIndexedEXT_ptr;
 	public static void vkCmdBeginQueryIndexedEXT(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags, uint index)
 	{
 		vkCmdBeginQueryIndexedEXT_ptr(commandBuffer, queryPool, query, flags, index);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, void> vkCmdEndQueryIndexedEXT_ptr;
 	public static void vkCmdEndQueryIndexedEXT(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, uint index)
 	{
 		vkCmdEndQueryIndexedEXT_ptr(commandBuffer, queryPool, query, index);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectByteCountEXT_ptr;
 	public static void vkCmdDrawIndirectByteCountEXT(VkCommandBuffer commandBuffer, uint instanceCount, uint firstInstance, VkBuffer counterBuffer, ulong counterBufferOffset, uint counterOffset, uint vertexStride)
 	{
 		vkCmdDrawIndirectByteCountEXT_ptr(commandBuffer, instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCuModuleCreateInfoNVX*, VkAllocationCallbacks*, VkCuModuleNVX*, VkResult> vkCreateCuModuleNVX_ptr;
 	public static VkResult vkCreateCuModuleNVX(VkDevice device, VkCuModuleCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, VkCuModuleNVX* module)
 	{
 		return vkCreateCuModuleNVX_ptr(device, createInfo, allocator, module);
@@ -3261,7 +3529,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCuFunctionCreateInfoNVX*, VkAllocationCallbacks*, VkCuFunctionNVX*, VkResult> vkCreateCuFunctionNVX_ptr;
 	public static VkResult vkCreateCuFunctionNVX(VkDevice device, VkCuFunctionCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, VkCuFunctionNVX* function)
 	{
 		return vkCreateCuFunctionNVX_ptr(device, createInfo, allocator, function);
@@ -3275,199 +3542,166 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCuModuleNVX, VkAllocationCallbacks*, void> vkDestroyCuModuleNVX_ptr;
 	public static void vkDestroyCuModuleNVX(VkDevice device, VkCuModuleNVX module, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyCuModuleNVX_ptr(device, module, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCuFunctionNVX, VkAllocationCallbacks*, void> vkDestroyCuFunctionNVX_ptr;
 	public static void vkDestroyCuFunctionNVX(VkDevice device, VkCuFunctionNVX function, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyCuFunctionNVX_ptr(device, function, allocator);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCuLaunchInfoNVX*, void> vkCmdCuLaunchKernelNVX_ptr;
 	public static void vkCmdCuLaunchKernelNVX(VkCommandBuffer commandBuffer, VkCuLaunchInfoNVX* launchInfo)
 	{
 		vkCmdCuLaunchKernelNVX_ptr(commandBuffer, launchInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageViewHandleInfoNVX*, uint> vkGetImageViewHandleNVX_ptr;
 	public static uint vkGetImageViewHandleNVX(VkDevice device, VkImageViewHandleInfoNVX* info)
 	{
 		return vkGetImageViewHandleNVX_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageView, VkImageViewAddressPropertiesNVX*, VkResult> vkGetImageViewAddressNVX_ptr;
 	public static VkResult vkGetImageViewAddressNVX(VkDevice device, VkImageView imageView, VkImageViewAddressPropertiesNVX* properties)
 	{
 		return vkGetImageViewAddressNVX_ptr(device, imageView, properties);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCountAMD_ptr;
 	public static void vkCmdDrawIndirectCountAMD(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 	{
 		vkCmdDrawIndirectCountAMD_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCountAMD_ptr;
 	public static void vkCmdDrawIndexedIndirectCountAMD(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 	{
 		vkCmdDrawIndexedIndirectCountAMD_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipeline, VkShaderStageFlags, VkShaderInfoTypeAMD, nuint*, void*, VkResult> vkGetShaderInfoAMD_ptr;
 	public static VkResult vkGetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info)
 	{
 		return vkGetShaderInfoAMD_ptr(device, pipeline, shaderStage, infoType, infoSize, info);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkExternalMemoryHandleTypeFlagsNV, VkExternalImageFormatPropertiesNV*, VkResult> vkGetPhysicalDeviceExternalImageFormatPropertiesNV_ptr;
 	public static VkResult vkGetPhysicalDeviceExternalImageFormatPropertiesNV(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkExternalMemoryHandleTypeFlagsNV externalHandleType, VkExternalImageFormatPropertiesNV* externalImageFormatProperties)
 	{
 		return vkGetPhysicalDeviceExternalImageFormatPropertiesNV_ptr(physicalDevice, format, type, tiling, usage, flags, externalHandleType, externalImageFormatProperties);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkConditionalRenderingBeginInfoEXT*, void> vkCmdBeginConditionalRenderingEXT_ptr;
 	public static void vkCmdBeginConditionalRenderingEXT(VkCommandBuffer commandBuffer, VkConditionalRenderingBeginInfoEXT* conditionalRenderingBegin)
 	{
 		vkCmdBeginConditionalRenderingEXT_ptr(commandBuffer, conditionalRenderingBegin);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndConditionalRenderingEXT_ptr;
 	public static void vkCmdEndConditionalRenderingEXT(VkCommandBuffer commandBuffer)
 	{
 		vkCmdEndConditionalRenderingEXT_ptr(commandBuffer);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewportWScalingNV*, void> vkCmdSetViewportWScalingNV_ptr;
 	public static void vkCmdSetViewportWScalingNV(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewportWScalingNV* viewportWScalings)
 	{
 		vkCmdSetViewportWScalingNV_ptr(commandBuffer, firstViewport, viewportCount, viewportWScalings);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkResult> vkReleaseDisplayEXT_ptr;
 	public static VkResult vkReleaseDisplayEXT(VkPhysicalDevice physicalDevice, VkDisplayKHR display)
 	{
 		return vkReleaseDisplayEXT_ptr(physicalDevice, display);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilities2EXT*, VkResult> vkGetPhysicalDeviceSurfaceCapabilities2EXT_ptr;
 	public static VkResult vkGetPhysicalDeviceSurfaceCapabilities2EXT(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilities2EXT* surfaceCapabilities)
 	{
 		return vkGetPhysicalDeviceSurfaceCapabilities2EXT_ptr(physicalDevice, surface, surfaceCapabilities);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDisplayKHR, VkDisplayPowerInfoEXT*, VkResult> vkDisplayPowerControlEXT_ptr;
 	public static VkResult vkDisplayPowerControlEXT(VkDevice device, VkDisplayKHR display, VkDisplayPowerInfoEXT* displayPowerInfo)
 	{
 		return vkDisplayPowerControlEXT_ptr(device, display, displayPowerInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult> vkRegisterDeviceEventEXT_ptr;
 	public static VkResult vkRegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, VkAllocationCallbacks* allocator, VkFence* fence)
 	{
 		return vkRegisterDeviceEventEXT_ptr(device, deviceEventInfo, allocator, fence);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDisplayKHR, VkDisplayEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult> vkRegisterDisplayEventEXT_ptr;
 	public static VkResult vkRegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, VkAllocationCallbacks* allocator, VkFence* fence)
 	{
 		return vkRegisterDisplayEventEXT_ptr(device, display, displayEventInfo, allocator, fence);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkSurfaceCounterFlagsEXT, ulong*, VkResult> vkGetSwapchainCounterEXT_ptr;
 	public static VkResult vkGetSwapchainCounterEXT(VkDevice device, VkSwapchainKHR swapchain, VkSurfaceCounterFlagsEXT counter, ulong* counterValue)
 	{
 		return vkGetSwapchainCounterEXT_ptr(device, swapchain, counter, counterValue);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkRefreshCycleDurationGOOGLE*, VkResult> vkGetRefreshCycleDurationGOOGLE_ptr;
 	public static VkResult vkGetRefreshCycleDurationGOOGLE(VkDevice device, VkSwapchainKHR swapchain, VkRefreshCycleDurationGOOGLE* displayTimingProperties)
 	{
 		return vkGetRefreshCycleDurationGOOGLE_ptr(device, swapchain, displayTimingProperties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkPastPresentationTimingGOOGLE*, VkResult> vkGetPastPresentationTimingGOOGLE_ptr;
 	public static VkResult vkGetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, uint* presentationTimingCount, VkPastPresentationTimingGOOGLE* presentationTimings)
 	{
 		return vkGetPastPresentationTimingGOOGLE_ptr(device, swapchain, presentationTimingCount, presentationTimings);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetDiscardRectangleEXT_ptr;
 	public static void vkCmdSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D* discardRectangles)
 	{
 		vkCmdSetDiscardRectangleEXT_ptr(commandBuffer, firstDiscardRectangle, discardRectangleCount, discardRectangles);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDiscardRectangleEnableEXT_ptr;
 	public static void vkCmdSetDiscardRectangleEnableEXT(VkCommandBuffer commandBuffer, VkBool32 discardRectangleEnable)
 	{
 		vkCmdSetDiscardRectangleEnableEXT_ptr(commandBuffer, discardRectangleEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkDiscardRectangleModeEXT, void> vkCmdSetDiscardRectangleModeEXT_ptr;
 	public static void vkCmdSetDiscardRectangleModeEXT(VkCommandBuffer commandBuffer, VkDiscardRectangleModeEXT discardRectangleMode)
 	{
 		vkCmdSetDiscardRectangleModeEXT_ptr(commandBuffer, discardRectangleMode);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkSwapchainKHR*, VkHdrMetadataEXT*, void> vkSetHdrMetadataEXT_ptr;
 	public static void vkSetHdrMetadataEXT(VkDevice device, uint swapchainCount, VkSwapchainKHR* swapchains, VkHdrMetadataEXT* metadata)
 	{
 		vkSetHdrMetadataEXT_ptr(device, swapchainCount, swapchains, metadata);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDebugUtilsObjectNameInfoEXT*, VkResult> vkSetDebugUtilsObjectNameEXT_ptr;
 	public static VkResult vkSetDebugUtilsObjectNameEXT(VkDevice device, VkDebugUtilsObjectNameInfoEXT* nameInfo)
 	{
 		return vkSetDebugUtilsObjectNameEXT_ptr(device, nameInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDebugUtilsObjectTagInfoEXT*, VkResult> vkSetDebugUtilsObjectTagEXT_ptr;
 	public static VkResult vkSetDebugUtilsObjectTagEXT(VkDevice device, VkDebugUtilsObjectTagInfoEXT* tagInfo)
 	{
 		return vkSetDebugUtilsObjectTagEXT_ptr(device, tagInfo);
 	}
 
-	private static delegate* unmanaged<VkQueue, VkDebugUtilsLabelEXT*, void> vkQueueBeginDebugUtilsLabelEXT_ptr;
 	public static void vkQueueBeginDebugUtilsLabelEXT(VkQueue queue, VkDebugUtilsLabelEXT* labelInfo)
 	{
 		vkQueueBeginDebugUtilsLabelEXT_ptr(queue, labelInfo);
 	}
 
-	private static delegate* unmanaged<VkQueue, void> vkQueueEndDebugUtilsLabelEXT_ptr;
 	public static void vkQueueEndDebugUtilsLabelEXT(VkQueue queue)
 	{
 		vkQueueEndDebugUtilsLabelEXT_ptr(queue);
 	}
 
-	private static delegate* unmanaged<VkQueue, VkDebugUtilsLabelEXT*, void> vkQueueInsertDebugUtilsLabelEXT_ptr;
 	public static void vkQueueInsertDebugUtilsLabelEXT(VkQueue queue, VkDebugUtilsLabelEXT* labelInfo)
 	{
 		vkQueueInsertDebugUtilsLabelEXT_ptr(queue, labelInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkDebugUtilsLabelEXT*, void> vkCmdBeginDebugUtilsLabelEXT_ptr;
 	public static void vkCmdBeginDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, VkDebugUtilsLabelEXT* labelInfo)
 	{
 		vkCmdBeginDebugUtilsLabelEXT_ptr(commandBuffer, labelInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdEndDebugUtilsLabelEXT_ptr;
 	public static void vkCmdEndDebugUtilsLabelEXT(VkCommandBuffer commandBuffer)
 	{
 		vkCmdEndDebugUtilsLabelEXT_ptr(commandBuffer);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkDebugUtilsLabelEXT*, void> vkCmdInsertDebugUtilsLabelEXT_ptr;
 	public static void vkCmdInsertDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, VkDebugUtilsLabelEXT* labelInfo)
 	{
 		vkCmdInsertDebugUtilsLabelEXT_ptr(commandBuffer, labelInfo);
 	}
 
-	private static delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult> vkCreateDebugUtilsMessengerEXT_ptr;
 	public static VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkDebugUtilsMessengerEXT* messenger)
 	{
 		return vkCreateDebugUtilsMessengerEXT_ptr(instance, createInfo, allocator, messenger);
@@ -3502,37 +3736,31 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void> vkDestroyDebugUtilsMessengerEXT_ptr;
 	public static void vkDestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT messenger, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyDebugUtilsMessengerEXT_ptr(instance, messenger, allocator);
 	}
 
-	private static delegate* unmanaged<VkInstance, VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void> vkSubmitDebugUtilsMessageEXT_ptr;
 	public static void vkSubmitDebugUtilsMessageEXT(VkInstance instance, VkDebugUtilsMessageSeverityFlagsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageTypes, VkDebugUtilsMessengerCallbackDataEXT* callbackData)
 	{
 		vkSubmitDebugUtilsMessageEXT_ptr(instance, messageSeverity, messageTypes, callbackData);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkSampleLocationsInfoEXT*, void> vkCmdSetSampleLocationsEXT_ptr;
 	public static void vkCmdSetSampleLocationsEXT(VkCommandBuffer commandBuffer, VkSampleLocationsInfoEXT* sampleLocationsInfo)
 	{
 		vkCmdSetSampleLocationsEXT_ptr(commandBuffer, sampleLocationsInfo);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkSampleCountFlags, VkMultisamplePropertiesEXT*, void> vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr;
 	public static void vkGetPhysicalDeviceMultisamplePropertiesEXT(VkPhysicalDevice physicalDevice, VkSampleCountFlags samples, VkMultisamplePropertiesEXT* multisampleProperties)
 	{
 		vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr(physicalDevice, samples, multisampleProperties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImage, VkImageDrmFormatModifierPropertiesEXT*, VkResult> vkGetImageDrmFormatModifierPropertiesEXT_ptr;
 	public static VkResult vkGetImageDrmFormatModifierPropertiesEXT(VkDevice device, VkImage image, VkImageDrmFormatModifierPropertiesEXT* properties)
 	{
 		return vkGetImageDrmFormatModifierPropertiesEXT_ptr(device, image, properties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkValidationCacheCreateInfoEXT*, VkAllocationCallbacks*, VkValidationCacheEXT*, VkResult> vkCreateValidationCacheEXT_ptr;
 	public static VkResult vkCreateValidationCacheEXT(VkDevice device, VkValidationCacheCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkValidationCacheEXT* validationCache)
 	{
 		return vkCreateValidationCacheEXT_ptr(device, createInfo, allocator, validationCache);
@@ -3546,43 +3774,36 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkValidationCacheEXT, VkAllocationCallbacks*, void> vkDestroyValidationCacheEXT_ptr;
 	public static void vkDestroyValidationCacheEXT(VkDevice device, VkValidationCacheEXT validationCache, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyValidationCacheEXT_ptr(device, validationCache, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkValidationCacheEXT, uint, VkValidationCacheEXT*, VkResult> vkMergeValidationCachesEXT_ptr;
 	public static VkResult vkMergeValidationCachesEXT(VkDevice device, VkValidationCacheEXT dstCache, uint srcCacheCount, VkValidationCacheEXT* srcCaches)
 	{
 		return vkMergeValidationCachesEXT_ptr(device, dstCache, srcCacheCount, srcCaches);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkValidationCacheEXT, nuint*, void*, VkResult> vkGetValidationCacheDataEXT_ptr;
 	public static VkResult vkGetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, nuint* dataSize, void* data)
 	{
 		return vkGetValidationCacheDataEXT_ptr(device, validationCache, dataSize, data);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkImageView, VkImageLayout, void> vkCmdBindShadingRateImageNV_ptr;
 	public static void vkCmdBindShadingRateImageNV(VkCommandBuffer commandBuffer, VkImageView imageView, VkImageLayout imageLayout)
 	{
 		vkCmdBindShadingRateImageNV_ptr(commandBuffer, imageView, imageLayout);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkShadingRatePaletteNV*, void> vkCmdSetViewportShadingRatePaletteNV_ptr;
 	public static void vkCmdSetViewportShadingRatePaletteNV(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkShadingRatePaletteNV* shadingRatePalettes)
 	{
 		vkCmdSetViewportShadingRatePaletteNV_ptr(commandBuffer, firstViewport, viewportCount, shadingRatePalettes);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCoarseSampleOrderTypeNV, uint, VkCoarseSampleOrderCustomNV*, void> vkCmdSetCoarseSampleOrderNV_ptr;
 	public static void vkCmdSetCoarseSampleOrderNV(VkCommandBuffer commandBuffer, VkCoarseSampleOrderTypeNV sampleOrderType, uint customSampleOrderCount, VkCoarseSampleOrderCustomNV* customSampleOrders)
 	{
 		vkCmdSetCoarseSampleOrderNV_ptr(commandBuffer, sampleOrderType, customSampleOrderCount, customSampleOrders);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoNV*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureNV_ptr;
 	public static VkResult vkCreateAccelerationStructureNV(VkDevice device, VkAccelerationStructureCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
 	{
 		return vkCreateAccelerationStructureNV_ptr(device, createInfo, allocator, accelerationStructure);
@@ -3596,43 +3817,36 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void> vkDestroyAccelerationStructureNV_ptr;
 	public static void vkDestroyAccelerationStructureNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyAccelerationStructureNV_ptr(device, accelerationStructure, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAccelerationStructureMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void> vkGetAccelerationStructureMemoryRequirementsNV_ptr;
 	public static void vkGetAccelerationStructureMemoryRequirementsNV(VkDevice device, VkAccelerationStructureMemoryRequirementsInfoNV* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetAccelerationStructureMemoryRequirementsNV_ptr(device, info, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkBindAccelerationStructureMemoryInfoNV*, VkResult> vkBindAccelerationStructureMemoryNV_ptr;
 	public static VkResult vkBindAccelerationStructureMemoryNV(VkDevice device, uint bindInfoCount, VkBindAccelerationStructureMemoryInfoNV* bindInfos)
 	{
 		return vkBindAccelerationStructureMemoryNV_ptr(device, bindInfoCount, bindInfos);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkAccelerationStructureInfoNV*, VkBuffer, ulong, VkBool32, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkBuffer, ulong, void> vkCmdBuildAccelerationStructureNV_ptr;
 	public static void vkCmdBuildAccelerationStructureNV(VkCommandBuffer commandBuffer, VkAccelerationStructureInfoNV* info, VkBuffer instanceData, ulong instanceOffset, VkBool32 update, VkAccelerationStructureKHR dst, VkAccelerationStructureKHR src, VkBuffer scratch, ulong scratchOffset)
 	{
 		vkCmdBuildAccelerationStructureNV_ptr(commandBuffer, info, instanceData, instanceOffset, update, dst, src, scratch, scratchOffset);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkAccelerationStructureKHR, VkAccelerationStructureKHR, VkCopyAccelerationStructureModeKHR, void> vkCmdCopyAccelerationStructureNV_ptr;
 	public static void vkCmdCopyAccelerationStructureNV(VkCommandBuffer commandBuffer, VkAccelerationStructureKHR dst, VkAccelerationStructureKHR src, VkCopyAccelerationStructureModeKHR mode)
 	{
 		vkCmdCopyAccelerationStructureNV_ptr(commandBuffer, dst, src, mode);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, uint, uint, uint, void> vkCmdTraceRaysNV_ptr;
 	public static void vkCmdTraceRaysNV(VkCommandBuffer commandBuffer, VkBuffer raygenShaderBindingTableBuffer, ulong raygenShaderBindingOffset, VkBuffer missShaderBindingTableBuffer, ulong missShaderBindingOffset, ulong missShaderBindingStride, VkBuffer hitShaderBindingTableBuffer, ulong hitShaderBindingOffset, ulong hitShaderBindingStride, VkBuffer callableShaderBindingTableBuffer, ulong callableShaderBindingOffset, ulong callableShaderBindingStride, uint width, uint height, uint depth)
 	{
 		vkCmdTraceRaysNV_ptr(commandBuffer, raygenShaderBindingTableBuffer, raygenShaderBindingOffset, missShaderBindingTableBuffer, missShaderBindingOffset, missShaderBindingStride, hitShaderBindingTableBuffer, hitShaderBindingOffset, hitShaderBindingStride, callableShaderBindingTableBuffer, callableShaderBindingOffset, callableShaderBindingStride, width, height, depth);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoNV*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateRayTracingPipelinesNV_ptr;
 	public static VkResult vkCreateRayTracingPipelinesNV(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoNV* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
 		return vkCreateRayTracingPipelinesNV_ptr(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
@@ -3646,187 +3860,156 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingShaderGroupHandlesKHR_ptr;
 	public static VkResult vkGetRayTracingShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 	{
 		return vkGetRayTracingShaderGroupHandlesKHR_ptr(device, pipeline, firstGroup, groupCount, dataSize, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingShaderGroupHandlesNV_ptr;
 	public static VkResult vkGetRayTracingShaderGroupHandlesNV(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 	{
 		return vkGetRayTracingShaderGroupHandlesNV_ptr(device, pipeline, firstGroup, groupCount, dataSize, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, nuint, void*, VkResult> vkGetAccelerationStructureHandleNV_ptr;
 	public static VkResult vkGetAccelerationStructureHandleNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, nuint dataSize, void* data)
 	{
 		return vkGetAccelerationStructureHandleNV_ptr(device, accelerationStructure, dataSize, data);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void> vkCmdWriteAccelerationStructuresPropertiesNV_ptr;
 	public static void vkCmdWriteAccelerationStructuresPropertiesNV(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery)
 	{
 		vkCmdWriteAccelerationStructuresPropertiesNV_ptr(commandBuffer, accelerationStructureCount, accelerationStructures, queryType, queryPool, firstQuery);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipeline, uint, VkResult> vkCompileDeferredNV_ptr;
 	public static VkResult vkCompileDeferredNV(VkDevice device, VkPipeline pipeline, uint shader)
 	{
 		return vkCompileDeferredNV_ptr(device, pipeline, shader);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryHostPointerPropertiesEXT*, VkResult> vkGetMemoryHostPointerPropertiesEXT_ptr;
 	public static VkResult vkGetMemoryHostPointerPropertiesEXT(VkDevice device, VkExternalMemoryHandleTypeFlags handleType, void* hostPointer, VkMemoryHostPointerPropertiesEXT* memoryHostPointerProperties)
 	{
 		return vkGetMemoryHostPointerPropertiesEXT_ptr(device, handleType, hostPointer, memoryHostPointerProperties);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkBuffer, ulong, uint, void> vkCmdWriteBufferMarkerAMD_ptr;
 	public static void vkCmdWriteBufferMarkerAMD(VkCommandBuffer commandBuffer, VkPipelineStageFlags pipelineStage, VkBuffer dstBuffer, ulong dstOffset, uint marker)
 	{
 		vkCmdWriteBufferMarkerAMD_ptr(commandBuffer, pipelineStage, dstBuffer, dstOffset, marker);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr;
 	public static VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, uint* timeDomainCount, VkTimeDomainKHR* timeDomains)
 	{
 		return vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr(physicalDevice, timeDomainCount, timeDomains);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult> vkGetCalibratedTimestampsEXT_ptr;
 	public static VkResult vkGetCalibratedTimestampsEXT(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoKHR* timestampInfos, ulong* timestamps, ulong* maxDeviation)
 	{
 		return vkGetCalibratedTimestampsEXT_ptr(device, timestampCount, timestampInfos, timestamps, maxDeviation);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, void> vkCmdDrawMeshTasksNV_ptr;
 	public static void vkCmdDrawMeshTasksNV(VkCommandBuffer commandBuffer, uint taskCount, uint firstTask)
 	{
 		vkCmdDrawMeshTasksNV_ptr(commandBuffer, taskCount, firstTask);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectNV_ptr;
 	public static void vkCmdDrawMeshTasksIndirectNV(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, uint drawCount, uint stride)
 	{
 		vkCmdDrawMeshTasksIndirectNV_ptr(commandBuffer, buffer, offset, drawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectCountNV_ptr;
 	public static void vkCmdDrawMeshTasksIndirectCountNV(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 	{
 		vkCmdDrawMeshTasksIndirectCountNV_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBool32*, void> vkCmdSetExclusiveScissorEnableNV_ptr;
 	public static void vkCmdSetExclusiveScissorEnableNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkBool32* exclusiveScissorEnables)
 	{
 		vkCmdSetExclusiveScissorEnableNV_ptr(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, exclusiveScissorEnables);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void> vkCmdSetExclusiveScissorNV_ptr;
 	public static void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D* exclusiveScissors)
 	{
 		vkCmdSetExclusiveScissorNV_ptr(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, exclusiveScissors);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, void*, void> vkCmdSetCheckpointNV_ptr;
 	public static void vkCmdSetCheckpointNV(VkCommandBuffer commandBuffer, void* checkpointMarker)
 	{
 		vkCmdSetCheckpointNV_ptr(commandBuffer, checkpointMarker);
 	}
 
-	private static delegate* unmanaged<VkQueue, uint*, VkCheckpointDataNV*, void> vkGetQueueCheckpointDataNV_ptr;
 	public static void vkGetQueueCheckpointDataNV(VkQueue queue, uint* checkpointDataCount, VkCheckpointDataNV* checkpointData)
 	{
 		vkGetQueueCheckpointDataNV_ptr(queue, checkpointDataCount, checkpointData);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkInitializePerformanceApiInfoINTEL*, VkResult> vkInitializePerformanceApiINTEL_ptr;
 	public static VkResult vkInitializePerformanceApiINTEL(VkDevice device, VkInitializePerformanceApiInfoINTEL* initializeInfo)
 	{
 		return vkInitializePerformanceApiINTEL_ptr(device, initializeInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, void> vkUninitializePerformanceApiINTEL_ptr;
 	public static void vkUninitializePerformanceApiINTEL(VkDevice device)
 	{
 		vkUninitializePerformanceApiINTEL_ptr(device);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPerformanceMarkerInfoINTEL*, VkResult> vkCmdSetPerformanceMarkerINTEL_ptr;
 	public static VkResult vkCmdSetPerformanceMarkerINTEL(VkCommandBuffer commandBuffer, VkPerformanceMarkerInfoINTEL* markerInfo)
 	{
 		return vkCmdSetPerformanceMarkerINTEL_ptr(commandBuffer, markerInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPerformanceStreamMarkerInfoINTEL*, VkResult> vkCmdSetPerformanceStreamMarkerINTEL_ptr;
 	public static VkResult vkCmdSetPerformanceStreamMarkerINTEL(VkCommandBuffer commandBuffer, VkPerformanceStreamMarkerInfoINTEL* markerInfo)
 	{
 		return vkCmdSetPerformanceStreamMarkerINTEL_ptr(commandBuffer, markerInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPerformanceOverrideInfoINTEL*, VkResult> vkCmdSetPerformanceOverrideINTEL_ptr;
 	public static VkResult vkCmdSetPerformanceOverrideINTEL(VkCommandBuffer commandBuffer, VkPerformanceOverrideInfoINTEL* overrideInfo)
 	{
 		return vkCmdSetPerformanceOverrideINTEL_ptr(commandBuffer, overrideInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPerformanceConfigurationAcquireInfoINTEL*, VkPerformanceConfigurationINTEL*, VkResult> vkAcquirePerformanceConfigurationINTEL_ptr;
 	public static VkResult vkAcquirePerformanceConfigurationINTEL(VkDevice device, VkPerformanceConfigurationAcquireInfoINTEL* acquireInfo, VkPerformanceConfigurationINTEL* configuration)
 	{
 		return vkAcquirePerformanceConfigurationINTEL_ptr(device, acquireInfo, configuration);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPerformanceConfigurationINTEL, VkResult> vkReleasePerformanceConfigurationINTEL_ptr;
 	public static VkResult vkReleasePerformanceConfigurationINTEL(VkDevice device, VkPerformanceConfigurationINTEL configuration)
 	{
 		return vkReleasePerformanceConfigurationINTEL_ptr(device, configuration);
 	}
 
-	private static delegate* unmanaged<VkQueue, VkPerformanceConfigurationINTEL, VkResult> vkQueueSetPerformanceConfigurationINTEL_ptr;
 	public static VkResult vkQueueSetPerformanceConfigurationINTEL(VkQueue queue, VkPerformanceConfigurationINTEL configuration)
 	{
 		return vkQueueSetPerformanceConfigurationINTEL_ptr(queue, configuration);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPerformanceParameterTypeINTEL, VkPerformanceValueINTEL*, VkResult> vkGetPerformanceParameterINTEL_ptr;
 	public static VkResult vkGetPerformanceParameterINTEL(VkDevice device, VkPerformanceParameterTypeINTEL parameter, VkPerformanceValueINTEL* value)
 	{
 		return vkGetPerformanceParameterINTEL_ptr(device, parameter, value);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkBool32, void> vkSetLocalDimmingAMD_ptr;
 	public static void vkSetLocalDimmingAMD(VkDevice device, VkSwapchainKHR swapChain, VkBool32 localDimmingEnable)
 	{
 		vkSetLocalDimmingAMD_ptr(device, swapChain, localDimmingEnable);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferDeviceAddressEXT_ptr;
 	public static ulong vkGetBufferDeviceAddressEXT(VkDevice device, VkBufferDeviceAddressInfo* info)
 	{
 		return vkGetBufferDeviceAddressEXT_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceToolProperties*, VkResult> vkGetPhysicalDeviceToolPropertiesEXT_ptr;
 	public static VkResult vkGetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, uint* toolCount, VkPhysicalDeviceToolProperties* toolProperties)
 	{
 		return vkGetPhysicalDeviceToolPropertiesEXT_ptr(physicalDevice, toolCount, toolProperties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesNV*, VkResult> vkGetPhysicalDeviceCooperativeMatrixPropertiesNV_ptr;
 	public static VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeMatrixPropertiesNV* properties)
 	{
 		return vkGetPhysicalDeviceCooperativeMatrixPropertiesNV_ptr(physicalDevice, propertyCount, properties);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkFramebufferMixedSamplesCombinationNV*, VkResult> vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr;
 	public static VkResult vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(VkPhysicalDevice physicalDevice, uint* combinationCount, VkFramebufferMixedSamplesCombinationNV* combinations)
 	{
 		return vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr(physicalDevice, combinationCount, combinations);
 	}
 
-	private static delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateHeadlessSurfaceEXT_ptr;
 	public static VkResult vkCreateHeadlessSurfaceEXT(VkInstance instance, VkHeadlessSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		return vkCreateHeadlessSurfaceEXT_ptr(instance, createInfo, allocator, surface);
@@ -3840,151 +4023,126 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, ushort, void> vkCmdSetLineStippleEXT_ptr;
 	public static void vkCmdSetLineStippleEXT(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern)
 	{
 		vkCmdSetLineStippleEXT_ptr(commandBuffer, lineStippleFactor, lineStipplePattern);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, void> vkResetQueryPoolEXT_ptr;
 	public static void vkResetQueryPoolEXT(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount)
 	{
 		vkResetQueryPoolEXT_ptr(device, queryPool, firstQuery, queryCount);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCullModeFlags, void> vkCmdSetCullModeEXT_ptr;
 	public static void vkCmdSetCullModeEXT(VkCommandBuffer commandBuffer, VkCullModeFlags cullMode)
 	{
 		vkCmdSetCullModeEXT_ptr(commandBuffer, cullMode);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkFrontFace, void> vkCmdSetFrontFaceEXT_ptr;
 	public static void vkCmdSetFrontFaceEXT(VkCommandBuffer commandBuffer, VkFrontFace frontFace)
 	{
 		vkCmdSetFrontFaceEXT_ptr(commandBuffer, frontFace);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPrimitiveTopology, void> vkCmdSetPrimitiveTopologyEXT_ptr;
 	public static void vkCmdSetPrimitiveTopologyEXT(VkCommandBuffer commandBuffer, VkPrimitiveTopology primitiveTopology)
 	{
 		vkCmdSetPrimitiveTopologyEXT_ptr(commandBuffer, primitiveTopology);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkViewport*, void> vkCmdSetViewportWithCountEXT_ptr;
 	public static void vkCmdSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport* viewports)
 	{
 		vkCmdSetViewportWithCountEXT_ptr(commandBuffer, viewportCount, viewports);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkRect2D*, void> vkCmdSetScissorWithCountEXT_ptr;
 	public static void vkCmdSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D* scissors)
 	{
 		vkCmdSetScissorWithCountEXT_ptr(commandBuffer, scissorCount, scissors);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, ulong*, void> vkCmdBindVertexBuffers2EXT_ptr;
 	public static void vkCmdBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ulong* offsets, ulong* sizes, ulong* strides)
 	{
 		vkCmdBindVertexBuffers2EXT_ptr(commandBuffer, firstBinding, bindingCount, buffers, offsets, sizes, strides);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthTestEnableEXT_ptr;
 	public static void vkCmdSetDepthTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable)
 	{
 		vkCmdSetDepthTestEnableEXT_ptr(commandBuffer, depthTestEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthWriteEnableEXT_ptr;
 	public static void vkCmdSetDepthWriteEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable)
 	{
 		vkCmdSetDepthWriteEnableEXT_ptr(commandBuffer, depthWriteEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCompareOp, void> vkCmdSetDepthCompareOpEXT_ptr;
 	public static void vkCmdSetDepthCompareOpEXT(VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp)
 	{
 		vkCmdSetDepthCompareOpEXT_ptr(commandBuffer, depthCompareOp);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBoundsTestEnableEXT_ptr;
 	public static void vkCmdSetDepthBoundsTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable)
 	{
 		vkCmdSetDepthBoundsTestEnableEXT_ptr(commandBuffer, depthBoundsTestEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetStencilTestEnableEXT_ptr;
 	public static void vkCmdSetStencilTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable)
 	{
 		vkCmdSetStencilTestEnableEXT_ptr(commandBuffer, stencilTestEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void> vkCmdSetStencilOpEXT_ptr;
 	public static void vkCmdSetStencilOpEXT(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp)
 	{
 		vkCmdSetStencilOpEXT_ptr(commandBuffer, faceMask, failOp, passOp, depthFailOp, compareOp);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfoEXT*, VkResult> vkCopyMemoryToImageEXT_ptr;
 	public static VkResult vkCopyMemoryToImageEXT(VkDevice device, VkCopyMemoryToImageInfoEXT* copyMemoryToImageInfo)
 	{
 		return vkCopyMemoryToImageEXT_ptr(device, copyMemoryToImageInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfoEXT*, VkResult> vkCopyImageToMemoryEXT_ptr;
 	public static VkResult vkCopyImageToMemoryEXT(VkDevice device, VkCopyImageToMemoryInfoEXT* copyImageToMemoryInfo)
 	{
 		return vkCopyImageToMemoryEXT_ptr(device, copyImageToMemoryInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCopyImageToImageInfoEXT*, VkResult> vkCopyImageToImageEXT_ptr;
 	public static VkResult vkCopyImageToImageEXT(VkDevice device, VkCopyImageToImageInfoEXT* copyImageToImageInfo)
 	{
 		return vkCopyImageToImageEXT_ptr(device, copyImageToImageInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfoEXT*, VkResult> vkTransitionImageLayoutEXT_ptr;
 	public static VkResult vkTransitionImageLayoutEXT(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfoEXT* transitions)
 	{
 		return vkTransitionImageLayoutEXT_ptr(device, transitionCount, transitions);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void> vkGetImageSubresourceLayout2EXT_ptr;
 	public static void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2KHR* subresource, VkSubresourceLayout2KHR* layout)
 	{
 		vkGetImageSubresourceLayout2EXT_ptr(device, image, subresource, layout);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkReleaseSwapchainImagesInfoEXT*, VkResult> vkReleaseSwapchainImagesEXT_ptr;
 	public static VkResult vkReleaseSwapchainImagesEXT(VkDevice device, VkReleaseSwapchainImagesInfoEXT* releaseInfo)
 	{
 		return vkReleaseSwapchainImagesEXT_ptr(device, releaseInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void> vkGetGeneratedCommandsMemoryRequirementsNV_ptr;
 	public static void vkGetGeneratedCommandsMemoryRequirementsNV(VkDevice device, VkGeneratedCommandsMemoryRequirementsInfoNV* info, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetGeneratedCommandsMemoryRequirementsNV_ptr(device, info, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkGeneratedCommandsInfoNV*, void> vkCmdPreprocessGeneratedCommandsNV_ptr;
 	public static void vkCmdPreprocessGeneratedCommandsNV(VkCommandBuffer commandBuffer, VkGeneratedCommandsInfoNV* generatedCommandsInfo)
 	{
 		vkCmdPreprocessGeneratedCommandsNV_ptr(commandBuffer, generatedCommandsInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, VkGeneratedCommandsInfoNV*, void> vkCmdExecuteGeneratedCommandsNV_ptr;
 	public static void vkCmdExecuteGeneratedCommandsNV(VkCommandBuffer commandBuffer, VkBool32 isPreprocessed, VkGeneratedCommandsInfoNV* generatedCommandsInfo)
 	{
 		vkCmdExecuteGeneratedCommandsNV_ptr(commandBuffer, isPreprocessed, generatedCommandsInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, uint, void> vkCmdBindPipelineShaderGroupNV_ptr;
 	public static void vkCmdBindPipelineShaderGroupNV(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline, uint groupIndex)
 	{
 		vkCmdBindPipelineShaderGroupNV_ptr(commandBuffer, pipelineBindPoint, pipeline, groupIndex);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoNV*, VkAllocationCallbacks*, VkIndirectCommandsLayoutNV*, VkResult> vkCreateIndirectCommandsLayoutNV_ptr;
 	public static VkResult vkCreateIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkIndirectCommandsLayoutNV* indirectCommandsLayout)
 	{
 		return vkCreateIndirectCommandsLayoutNV_ptr(device, createInfo, allocator, indirectCommandsLayout);
@@ -3998,31 +4156,26 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutNV, VkAllocationCallbacks*, void> vkDestroyIndirectCommandsLayoutNV_ptr;
 	public static void vkDestroyIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyIndirectCommandsLayoutNV_ptr(device, indirectCommandsLayout, allocator);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkDepthBiasInfoEXT*, void> vkCmdSetDepthBias2EXT_ptr;
 	public static void vkCmdSetDepthBias2EXT(VkCommandBuffer commandBuffer, VkDepthBiasInfoEXT* depthBiasInfo)
 	{
 		vkCmdSetDepthBias2EXT_ptr(commandBuffer, depthBiasInfo);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, int, VkDisplayKHR, VkResult> vkAcquireDrmDisplayEXT_ptr;
 	public static VkResult vkAcquireDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, VkDisplayKHR display)
 	{
 		return vkAcquireDrmDisplayEXT_ptr(physicalDevice, drmFd, display);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, int, uint, VkDisplayKHR*, VkResult> vkGetDrmDisplayEXT_ptr;
 	public static VkResult vkGetDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, uint connectorId, VkDisplayKHR* display)
 	{
 		return vkGetDrmDisplayEXT_ptr(physicalDevice, drmFd, connectorId, display);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult> vkCreatePrivateDataSlotEXT_ptr;
 	public static VkResult vkCreatePrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkPrivateDataSlot* privateDataSlot)
 	{
 		return vkCreatePrivateDataSlotEXT_ptr(device, createInfo, allocator, privateDataSlot);
@@ -4036,25 +4189,21 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void> vkDestroyPrivateDataSlotEXT_ptr;
 	public static void vkDestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyPrivateDataSlotEXT_ptr(device, privateDataSlot, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong, VkResult> vkSetPrivateDataEXT_ptr;
 	public static VkResult vkSetPrivateDataEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlot privateDataSlot, ulong data)
 	{
 		return vkSetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void> vkGetPrivateDataEXT_ptr;
 	public static void vkGetPrivateDataEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlot privateDataSlot, ulong* data)
 	{
 		vkGetPrivateDataEXT_ptr(device, objectType, objectHandle, privateDataSlot, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCudaModuleCreateInfoNV*, VkAllocationCallbacks*, VkCudaModuleNV*, VkResult> vkCreateCudaModuleNV_ptr;
 	public static VkResult vkCreateCudaModuleNV(VkDevice device, VkCudaModuleCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkCudaModuleNV* module)
 	{
 		return vkCreateCudaModuleNV_ptr(device, createInfo, allocator, module);
@@ -4068,13 +4217,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCudaModuleNV, nuint*, void*, VkResult> vkGetCudaModuleCacheNV_ptr;
 	public static VkResult vkGetCudaModuleCacheNV(VkDevice device, VkCudaModuleNV module, nuint* cacheSize, void* cacheData)
 	{
 		return vkGetCudaModuleCacheNV_ptr(device, module, cacheSize, cacheData);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCudaFunctionCreateInfoNV*, VkAllocationCallbacks*, VkCudaFunctionNV*, VkResult> vkCreateCudaFunctionNV_ptr;
 	public static VkResult vkCreateCudaFunctionNV(VkDevice device, VkCudaFunctionCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkCudaFunctionNV* function)
 	{
 		return vkCreateCudaFunctionNV_ptr(device, createInfo, allocator, function);
@@ -4088,187 +4235,156 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCudaModuleNV, VkAllocationCallbacks*, void> vkDestroyCudaModuleNV_ptr;
 	public static void vkDestroyCudaModuleNV(VkDevice device, VkCudaModuleNV module, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyCudaModuleNV_ptr(device, module, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkCudaFunctionNV, VkAllocationCallbacks*, void> vkDestroyCudaFunctionNV_ptr;
 	public static void vkDestroyCudaFunctionNV(VkDevice device, VkCudaFunctionNV function, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyCudaFunctionNV_ptr(device, function, allocator);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCudaLaunchInfoNV*, void> vkCmdCudaLaunchKernelNV_ptr;
 	public static void vkCmdCudaLaunchKernelNV(VkCommandBuffer commandBuffer, VkCudaLaunchInfoNV* launchInfo)
 	{
 		vkCmdCudaLaunchKernelNV_ptr(commandBuffer, launchInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayout, ulong*, void> vkGetDescriptorSetLayoutSizeEXT_ptr;
 	public static void vkGetDescriptorSetLayoutSizeEXT(VkDevice device, VkDescriptorSetLayout layout, ulong* layoutSizeInBytes)
 	{
 		vkGetDescriptorSetLayoutSizeEXT_ptr(device, layout, layoutSizeInBytes);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSetLayout, uint, ulong*, void> vkGetDescriptorSetLayoutBindingOffsetEXT_ptr;
 	public static void vkGetDescriptorSetLayoutBindingOffsetEXT(VkDevice device, VkDescriptorSetLayout layout, uint binding, ulong* offset)
 	{
 		vkGetDescriptorSetLayoutBindingOffsetEXT_ptr(device, layout, binding, offset);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorGetInfoEXT*, nuint, void*, void> vkGetDescriptorEXT_ptr;
 	public static void vkGetDescriptorEXT(VkDevice device, VkDescriptorGetInfoEXT* descriptorInfo, nuint dataSize, void* descriptor)
 	{
 		vkGetDescriptorEXT_ptr(device, descriptorInfo, dataSize, descriptor);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkDescriptorBufferBindingInfoEXT*, void> vkCmdBindDescriptorBuffersEXT_ptr;
 	public static void vkCmdBindDescriptorBuffersEXT(VkCommandBuffer commandBuffer, uint bufferCount, VkDescriptorBufferBindingInfoEXT* bindingInfos)
 	{
 		vkCmdBindDescriptorBuffersEXT_ptr(commandBuffer, bufferCount, bindingInfos);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, uint*, ulong*, void> vkCmdSetDescriptorBufferOffsetsEXT_ptr;
 	public static void vkCmdSetDescriptorBufferOffsetsEXT(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint setCount, uint* bufferIndices, ulong* offsets)
 	{
 		vkCmdSetDescriptorBufferOffsetsEXT_ptr(commandBuffer, pipelineBindPoint, layout, firstSet, setCount, bufferIndices, offsets);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, void> vkCmdBindDescriptorBufferEmbeddedSamplersEXT_ptr;
 	public static void vkCmdBindDescriptorBufferEmbeddedSamplersEXT(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set)
 	{
 		vkCmdBindDescriptorBufferEmbeddedSamplersEXT_ptr(commandBuffer, pipelineBindPoint, layout, set);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkBufferCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetBufferOpaqueCaptureDescriptorDataEXT_ptr;
 	public static VkResult vkGetBufferOpaqueCaptureDescriptorDataEXT(VkDevice device, VkBufferCaptureDescriptorDataInfoEXT* info, void* data)
 	{
 		return vkGetBufferOpaqueCaptureDescriptorDataEXT_ptr(device, info, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetImageOpaqueCaptureDescriptorDataEXT_ptr;
 	public static VkResult vkGetImageOpaqueCaptureDescriptorDataEXT(VkDevice device, VkImageCaptureDescriptorDataInfoEXT* info, void* data)
 	{
 		return vkGetImageOpaqueCaptureDescriptorDataEXT_ptr(device, info, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkImageViewCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetImageViewOpaqueCaptureDescriptorDataEXT_ptr;
 	public static VkResult vkGetImageViewOpaqueCaptureDescriptorDataEXT(VkDevice device, VkImageViewCaptureDescriptorDataInfoEXT* info, void* data)
 	{
 		return vkGetImageViewOpaqueCaptureDescriptorDataEXT_ptr(device, info, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSamplerCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetSamplerOpaqueCaptureDescriptorDataEXT_ptr;
 	public static VkResult vkGetSamplerOpaqueCaptureDescriptorDataEXT(VkDevice device, VkSamplerCaptureDescriptorDataInfoEXT* info, void* data)
 	{
 		return vkGetSamplerOpaqueCaptureDescriptorDataEXT_ptr(device, info, data);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAccelerationStructureCaptureDescriptorDataInfoEXT*, void*, VkResult> vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT_ptr;
 	public static VkResult vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT(VkDevice device, VkAccelerationStructureCaptureDescriptorDataInfoEXT* info, void* data)
 	{
 		return vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT_ptr(device, info, data);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void> vkCmdSetFragmentShadingRateEnumNV_ptr;
 	public static void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR* combinerOps)
 	{
 		vkCmdSetFragmentShadingRateEnumNV_ptr(commandBuffer, shadingRate, combinerOps);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceFaultCountsEXT*, VkDeviceFaultInfoEXT*, VkResult> vkGetDeviceFaultInfoEXT_ptr;
 	public static VkResult vkGetDeviceFaultInfoEXT(VkDevice device, VkDeviceFaultCountsEXT* faultCounts, VkDeviceFaultInfoEXT* faultInfo)
 	{
 		return vkGetDeviceFaultInfoEXT_ptr(device, faultCounts, faultInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkVertexInputBindingDescription2EXT*, uint, VkVertexInputAttributeDescription2EXT*, void> vkCmdSetVertexInputEXT_ptr;
 	public static void vkCmdSetVertexInputEXT(VkCommandBuffer commandBuffer, uint vertexBindingDescriptionCount, VkVertexInputBindingDescription2EXT* vertexBindingDescriptions, uint vertexAttributeDescriptionCount, VkVertexInputAttributeDescription2EXT* vertexAttributeDescriptions)
 	{
 		vkCmdSetVertexInputEXT_ptr(commandBuffer, vertexBindingDescriptionCount, vertexBindingDescriptions, vertexAttributeDescriptionCount, vertexAttributeDescriptions);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkRenderPass, VkExtent2D*, VkResult> vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI_ptr;
 	public static VkResult vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(VkDevice device, VkRenderPass renderpass, VkExtent2D* maxWorkgroupSize)
 	{
 		return vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI_ptr(device, renderpass, maxWorkgroupSize);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, void> vkCmdSubpassShadingHUAWEI_ptr;
 	public static void vkCmdSubpassShadingHUAWEI(VkCommandBuffer commandBuffer)
 	{
 		vkCmdSubpassShadingHUAWEI_ptr(commandBuffer);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkImageView, VkImageLayout, void> vkCmdBindInvocationMaskHUAWEI_ptr;
 	public static void vkCmdBindInvocationMaskHUAWEI(VkCommandBuffer commandBuffer, VkImageView imageView, VkImageLayout imageLayout)
 	{
 		vkCmdBindInvocationMaskHUAWEI_ptr(commandBuffer, imageView, imageLayout);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMemoryGetRemoteAddressInfoNV*, VkRemoteAddressNV*, VkResult> vkGetMemoryRemoteAddressNV_ptr;
 	public static VkResult vkGetMemoryRemoteAddressNV(VkDevice device, VkMemoryGetRemoteAddressInfoNV* memoryGetRemoteAddressInfo, VkRemoteAddressNV* address)
 	{
 		return vkGetMemoryRemoteAddressNV_ptr(device, memoryGetRemoteAddressInfo, address);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineInfoKHR*, VkBaseOutStructure*, VkResult> vkGetPipelinePropertiesEXT_ptr;
 	public static VkResult vkGetPipelinePropertiesEXT(VkDevice device, VkPipelineInfoKHR* pipelineInfo, VkBaseOutStructure* pipelineProperties)
 	{
 		return vkGetPipelinePropertiesEXT_ptr(device, pipelineInfo, pipelineProperties);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetPatchControlPointsEXT_ptr;
 	public static void vkCmdSetPatchControlPointsEXT(VkCommandBuffer commandBuffer, uint patchControlPoints)
 	{
 		vkCmdSetPatchControlPointsEXT_ptr(commandBuffer, patchControlPoints);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetRasterizerDiscardEnableEXT_ptr;
 	public static void vkCmdSetRasterizerDiscardEnableEXT(VkCommandBuffer commandBuffer, VkBool32 rasterizerDiscardEnable)
 	{
 		vkCmdSetRasterizerDiscardEnableEXT_ptr(commandBuffer, rasterizerDiscardEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBiasEnableEXT_ptr;
 	public static void vkCmdSetDepthBiasEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBiasEnable)
 	{
 		vkCmdSetDepthBiasEnableEXT_ptr(commandBuffer, depthBiasEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkLogicOp, void> vkCmdSetLogicOpEXT_ptr;
 	public static void vkCmdSetLogicOpEXT(VkCommandBuffer commandBuffer, VkLogicOp logicOp)
 	{
 		vkCmdSetLogicOpEXT_ptr(commandBuffer, logicOp);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetPrimitiveRestartEnableEXT_ptr;
 	public static void vkCmdSetPrimitiveRestartEnableEXT(VkCommandBuffer commandBuffer, VkBool32 primitiveRestartEnable)
 	{
 		vkCmdSetPrimitiveRestartEnableEXT_ptr(commandBuffer, primitiveRestartEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkBool32*, void> vkCmdSetColorWriteEnableEXT_ptr;
 	public static void vkCmdSetColorWriteEnableEXT(VkCommandBuffer commandBuffer, uint attachmentCount, VkBool32* colorWriteEnables)
 	{
 		vkCmdSetColorWriteEnableEXT_ptr(commandBuffer, attachmentCount, colorWriteEnables);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawInfoEXT*, uint, uint, uint, void> vkCmdDrawMultiEXT_ptr;
 	public static void vkCmdDrawMultiEXT(VkCommandBuffer commandBuffer, uint drawCount, VkMultiDrawInfoEXT* vertexInfo, uint instanceCount, uint firstInstance, uint stride)
 	{
 		vkCmdDrawMultiEXT_ptr(commandBuffer, drawCount, vertexInfo, instanceCount, firstInstance, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawIndexedInfoEXT*, uint, uint, uint, int*, void> vkCmdDrawMultiIndexedEXT_ptr;
 	public static void vkCmdDrawMultiIndexedEXT(VkCommandBuffer commandBuffer, uint drawCount, VkMultiDrawIndexedInfoEXT* indexInfo, uint instanceCount, uint firstInstance, uint stride, int* vertexOffset)
 	{
 		vkCmdDrawMultiIndexedEXT_ptr(commandBuffer, drawCount, indexInfo, instanceCount, firstInstance, stride, vertexOffset);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMicromapCreateInfoEXT*, VkAllocationCallbacks*, VkMicromapEXT*, VkResult> vkCreateMicromapEXT_ptr;
 	public static VkResult vkCreateMicromapEXT(VkDevice device, VkMicromapCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkMicromapEXT* micromap)
 	{
 		return vkCreateMicromapEXT_ptr(device, createInfo, allocator, micromap);
@@ -4282,361 +4398,301 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMicromapEXT, VkAllocationCallbacks*, void> vkDestroyMicromapEXT_ptr;
 	public static void vkDestroyMicromapEXT(VkDevice device, VkMicromapEXT micromap, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyMicromapEXT_ptr(device, micromap, allocator);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkMicromapBuildInfoEXT*, void> vkCmdBuildMicromapsEXT_ptr;
 	public static void vkCmdBuildMicromapsEXT(VkCommandBuffer commandBuffer, uint infoCount, VkMicromapBuildInfoEXT* infos)
 	{
 		vkCmdBuildMicromapsEXT_ptr(commandBuffer, infoCount, infos);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, uint, VkMicromapBuildInfoEXT*, VkResult> vkBuildMicromapsEXT_ptr;
 	public static VkResult vkBuildMicromapsEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, uint infoCount, VkMicromapBuildInfoEXT* infos)
 	{
 		return vkBuildMicromapsEXT_ptr(device, deferredOperation, infoCount, infos);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMicromapInfoEXT*, VkResult> vkCopyMicromapEXT_ptr;
 	public static VkResult vkCopyMicromapEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyMicromapInfoEXT* info)
 	{
 		return vkCopyMicromapEXT_ptr(device, deferredOperation, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMicromapToMemoryInfoEXT*, VkResult> vkCopyMicromapToMemoryEXT_ptr;
 	public static VkResult vkCopyMicromapToMemoryEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyMicromapToMemoryInfoEXT* info)
 	{
 		return vkCopyMicromapToMemoryEXT_ptr(device, deferredOperation, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToMicromapInfoEXT*, VkResult> vkCopyMemoryToMicromapEXT_ptr;
 	public static VkResult vkCopyMemoryToMicromapEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyMemoryToMicromapInfoEXT* info)
 	{
 		return vkCopyMemoryToMicromapEXT_ptr(device, deferredOperation, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkMicromapEXT*, VkQueryType, nuint, void*, nuint, VkResult> vkWriteMicromapsPropertiesEXT_ptr;
 	public static VkResult vkWriteMicromapsPropertiesEXT(VkDevice device, uint micromapCount, VkMicromapEXT* micromaps, VkQueryType queryType, nuint dataSize, void* data, nuint stride)
 	{
 		return vkWriteMicromapsPropertiesEXT_ptr(device, micromapCount, micromaps, queryType, dataSize, data, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyMicromapInfoEXT*, void> vkCmdCopyMicromapEXT_ptr;
 	public static void vkCmdCopyMicromapEXT(VkCommandBuffer commandBuffer, VkCopyMicromapInfoEXT* info)
 	{
 		vkCmdCopyMicromapEXT_ptr(commandBuffer, info);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyMicromapToMemoryInfoEXT*, void> vkCmdCopyMicromapToMemoryEXT_ptr;
 	public static void vkCmdCopyMicromapToMemoryEXT(VkCommandBuffer commandBuffer, VkCopyMicromapToMemoryInfoEXT* info)
 	{
 		vkCmdCopyMicromapToMemoryEXT_ptr(commandBuffer, info);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyMemoryToMicromapInfoEXT*, void> vkCmdCopyMemoryToMicromapEXT_ptr;
 	public static void vkCmdCopyMemoryToMicromapEXT(VkCommandBuffer commandBuffer, VkCopyMemoryToMicromapInfoEXT* info)
 	{
 		vkCmdCopyMemoryToMicromapEXT_ptr(commandBuffer, info);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkMicromapEXT*, VkQueryType, VkQueryPool, uint, void> vkCmdWriteMicromapsPropertiesEXT_ptr;
 	public static void vkCmdWriteMicromapsPropertiesEXT(VkCommandBuffer commandBuffer, uint micromapCount, VkMicromapEXT* micromaps, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery)
 	{
 		vkCmdWriteMicromapsPropertiesEXT_ptr(commandBuffer, micromapCount, micromaps, queryType, queryPool, firstQuery);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMicromapVersionInfoEXT*, VkAccelerationStructureCompatibilityKHR*, void> vkGetDeviceMicromapCompatibilityEXT_ptr;
 	public static void vkGetDeviceMicromapCompatibilityEXT(VkDevice device, VkMicromapVersionInfoEXT* versionInfo, VkAccelerationStructureCompatibilityKHR* compatibility)
 	{
 		vkGetDeviceMicromapCompatibilityEXT_ptr(device, versionInfo, compatibility);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAccelerationStructureBuildTypeKHR, VkMicromapBuildInfoEXT*, VkMicromapBuildSizesInfoEXT*, void> vkGetMicromapBuildSizesEXT_ptr;
 	public static void vkGetMicromapBuildSizesEXT(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkMicromapBuildInfoEXT* buildInfo, VkMicromapBuildSizesInfoEXT* sizeInfo)
 	{
 		vkGetMicromapBuildSizesEXT_ptr(device, buildType, buildInfo, sizeInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void> vkCmdDrawClusterHUAWEI_ptr;
 	public static void vkCmdDrawClusterHUAWEI(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ)
 	{
 		vkCmdDrawClusterHUAWEI_ptr(commandBuffer, groupCountX, groupCountY, groupCountZ);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, void> vkCmdDrawClusterIndirectHUAWEI_ptr;
 	public static void vkCmdDrawClusterIndirectHUAWEI(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset)
 	{
 		vkCmdDrawClusterIndirectHUAWEI_ptr(commandBuffer, buffer, offset);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeviceMemory, float, void> vkSetDeviceMemoryPriorityEXT_ptr;
 	public static void vkSetDeviceMemoryPriorityEXT(VkDevice device, VkDeviceMemory memory, float priority)
 	{
 		vkSetDeviceMemoryPriorityEXT_ptr(device, memory, priority);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSetBindingReferenceVALVE*, VkDescriptorSetLayoutHostMappingInfoVALVE*, void> vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr;
 	public static void vkGetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device, VkDescriptorSetBindingReferenceVALVE* bindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE* hostMapping)
 	{
 		vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr(device, bindingReference, hostMapping);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDescriptorSet, void**, void> vkGetDescriptorSetHostMappingVALVE_ptr;
 	public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void** data)
 	{
 		vkGetDescriptorSetHostMappingVALVE_ptr(device, descriptorSet, data);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, ulong, uint, uint, void> vkCmdCopyMemoryIndirectNV_ptr;
 	public static void vkCmdCopyMemoryIndirectNV(VkCommandBuffer commandBuffer, ulong copyBufferAddress, uint copyCount, uint stride)
 	{
 		vkCmdCopyMemoryIndirectNV_ptr(commandBuffer, copyBufferAddress, copyCount, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, ulong, uint, uint, VkImage, VkImageLayout, VkImageSubresourceLayers*, void> vkCmdCopyMemoryToImageIndirectNV_ptr;
 	public static void vkCmdCopyMemoryToImageIndirectNV(VkCommandBuffer commandBuffer, ulong copyBufferAddress, uint copyCount, uint stride, VkImage dstImage, VkImageLayout dstImageLayout, VkImageSubresourceLayers* imageSubresources)
 	{
 		vkCmdCopyMemoryToImageIndirectNV_ptr(commandBuffer, copyBufferAddress, copyCount, stride, dstImage, dstImageLayout, imageSubresources);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkDecompressMemoryRegionNV*, void> vkCmdDecompressMemoryNV_ptr;
 	public static void vkCmdDecompressMemoryNV(VkCommandBuffer commandBuffer, uint decompressRegionCount, VkDecompressMemoryRegionNV* decompressMemoryRegions)
 	{
 		vkCmdDecompressMemoryNV_ptr(commandBuffer, decompressRegionCount, decompressMemoryRegions);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, ulong, ulong, uint, void> vkCmdDecompressMemoryIndirectCountNV_ptr;
 	public static void vkCmdDecompressMemoryIndirectCountNV(VkCommandBuffer commandBuffer, ulong indirectCommandsAddress, ulong indirectCommandsCountAddress, uint stride)
 	{
 		vkCmdDecompressMemoryIndirectCountNV_ptr(commandBuffer, indirectCommandsAddress, indirectCommandsCountAddress, stride);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkComputePipelineCreateInfo*, VkMemoryRequirements2*, void> vkGetPipelineIndirectMemoryRequirementsNV_ptr;
 	public static void vkGetPipelineIndirectMemoryRequirementsNV(VkDevice device, VkComputePipelineCreateInfo* createInfo, VkMemoryRequirements2* memoryRequirements)
 	{
 		vkGetPipelineIndirectMemoryRequirementsNV_ptr(device, createInfo, memoryRequirements);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void> vkCmdUpdatePipelineIndirectBufferNV_ptr;
 	public static void vkCmdUpdatePipelineIndirectBufferNV(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline)
 	{
 		vkCmdUpdatePipelineIndirectBufferNV_ptr(commandBuffer, pipelineBindPoint, pipeline);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineIndirectDeviceAddressInfoNV*, ulong> vkGetPipelineIndirectDeviceAddressNV_ptr;
 	public static ulong vkGetPipelineIndirectDeviceAddressNV(VkDevice device, VkPipelineIndirectDeviceAddressInfoNV* info)
 	{
 		return vkGetPipelineIndirectDeviceAddressNV_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthClampEnableEXT_ptr;
 	public static void vkCmdSetDepthClampEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClampEnable)
 	{
 		vkCmdSetDepthClampEnableEXT_ptr(commandBuffer, depthClampEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkPolygonMode, void> vkCmdSetPolygonModeEXT_ptr;
 	public static void vkCmdSetPolygonModeEXT(VkCommandBuffer commandBuffer, VkPolygonMode polygonMode)
 	{
 		vkCmdSetPolygonModeEXT_ptr(commandBuffer, polygonMode);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkSampleCountFlags, void> vkCmdSetRasterizationSamplesEXT_ptr;
 	public static void vkCmdSetRasterizationSamplesEXT(VkCommandBuffer commandBuffer, VkSampleCountFlags rasterizationSamples)
 	{
 		vkCmdSetRasterizationSamplesEXT_ptr(commandBuffer, rasterizationSamples);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkSampleCountFlags, uint*, void> vkCmdSetSampleMaskEXT_ptr;
 	public static void vkCmdSetSampleMaskEXT(VkCommandBuffer commandBuffer, VkSampleCountFlags samples, uint* sampleMask)
 	{
 		vkCmdSetSampleMaskEXT_ptr(commandBuffer, samples, sampleMask);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetAlphaToCoverageEnableEXT_ptr;
 	public static void vkCmdSetAlphaToCoverageEnableEXT(VkCommandBuffer commandBuffer, VkBool32 alphaToCoverageEnable)
 	{
 		vkCmdSetAlphaToCoverageEnableEXT_ptr(commandBuffer, alphaToCoverageEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetAlphaToOneEnableEXT_ptr;
 	public static void vkCmdSetAlphaToOneEnableEXT(VkCommandBuffer commandBuffer, VkBool32 alphaToOneEnable)
 	{
 		vkCmdSetAlphaToOneEnableEXT_ptr(commandBuffer, alphaToOneEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetLogicOpEnableEXT_ptr;
 	public static void vkCmdSetLogicOpEnableEXT(VkCommandBuffer commandBuffer, VkBool32 logicOpEnable)
 	{
 		vkCmdSetLogicOpEnableEXT_ptr(commandBuffer, logicOpEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkBool32*, void> vkCmdSetColorBlendEnableEXT_ptr;
 	public static void vkCmdSetColorBlendEnableEXT(VkCommandBuffer commandBuffer, uint firstAttachment, uint attachmentCount, VkBool32* colorBlendEnables)
 	{
 		vkCmdSetColorBlendEnableEXT_ptr(commandBuffer, firstAttachment, attachmentCount, colorBlendEnables);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkColorBlendEquationEXT*, void> vkCmdSetColorBlendEquationEXT_ptr;
 	public static void vkCmdSetColorBlendEquationEXT(VkCommandBuffer commandBuffer, uint firstAttachment, uint attachmentCount, VkColorBlendEquationEXT* colorBlendEquations)
 	{
 		vkCmdSetColorBlendEquationEXT_ptr(commandBuffer, firstAttachment, attachmentCount, colorBlendEquations);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkColorComponentFlags*, void> vkCmdSetColorWriteMaskEXT_ptr;
 	public static void vkCmdSetColorWriteMaskEXT(VkCommandBuffer commandBuffer, uint firstAttachment, uint attachmentCount, VkColorComponentFlags* colorWriteMasks)
 	{
 		vkCmdSetColorWriteMaskEXT_ptr(commandBuffer, firstAttachment, attachmentCount, colorWriteMasks);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkTessellationDomainOrigin, void> vkCmdSetTessellationDomainOriginEXT_ptr;
 	public static void vkCmdSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin)
 	{
 		vkCmdSetTessellationDomainOriginEXT_ptr(commandBuffer, domainOrigin);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetRasterizationStreamEXT_ptr;
 	public static void vkCmdSetRasterizationStreamEXT(VkCommandBuffer commandBuffer, uint rasterizationStream)
 	{
 		vkCmdSetRasterizationStreamEXT_ptr(commandBuffer, rasterizationStream);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkConservativeRasterizationModeEXT, void> vkCmdSetConservativeRasterizationModeEXT_ptr;
 	public static void vkCmdSetConservativeRasterizationModeEXT(VkCommandBuffer commandBuffer, VkConservativeRasterizationModeEXT conservativeRasterizationMode)
 	{
 		vkCmdSetConservativeRasterizationModeEXT_ptr(commandBuffer, conservativeRasterizationMode);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, float, void> vkCmdSetExtraPrimitiveOverestimationSizeEXT_ptr;
 	public static void vkCmdSetExtraPrimitiveOverestimationSizeEXT(VkCommandBuffer commandBuffer, float extraPrimitiveOverestimationSize)
 	{
 		vkCmdSetExtraPrimitiveOverestimationSizeEXT_ptr(commandBuffer, extraPrimitiveOverestimationSize);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthClipEnableEXT_ptr;
 	public static void vkCmdSetDepthClipEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClipEnable)
 	{
 		vkCmdSetDepthClipEnableEXT_ptr(commandBuffer, depthClipEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetSampleLocationsEnableEXT_ptr;
 	public static void vkCmdSetSampleLocationsEnableEXT(VkCommandBuffer commandBuffer, VkBool32 sampleLocationsEnable)
 	{
 		vkCmdSetSampleLocationsEnableEXT_ptr(commandBuffer, sampleLocationsEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkColorBlendAdvancedEXT*, void> vkCmdSetColorBlendAdvancedEXT_ptr;
 	public static void vkCmdSetColorBlendAdvancedEXT(VkCommandBuffer commandBuffer, uint firstAttachment, uint attachmentCount, VkColorBlendAdvancedEXT* colorBlendAdvanced)
 	{
 		vkCmdSetColorBlendAdvancedEXT_ptr(commandBuffer, firstAttachment, attachmentCount, colorBlendAdvanced);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkProvokingVertexModeEXT, void> vkCmdSetProvokingVertexModeEXT_ptr;
 	public static void vkCmdSetProvokingVertexModeEXT(VkCommandBuffer commandBuffer, VkProvokingVertexModeEXT provokingVertexMode)
 	{
 		vkCmdSetProvokingVertexModeEXT_ptr(commandBuffer, provokingVertexMode);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkLineRasterizationModeKHR, void> vkCmdSetLineRasterizationModeEXT_ptr;
 	public static void vkCmdSetLineRasterizationModeEXT(VkCommandBuffer commandBuffer, VkLineRasterizationModeKHR lineRasterizationMode)
 	{
 		vkCmdSetLineRasterizationModeEXT_ptr(commandBuffer, lineRasterizationMode);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetLineStippleEnableEXT_ptr;
 	public static void vkCmdSetLineStippleEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stippledLineEnable)
 	{
 		vkCmdSetLineStippleEnableEXT_ptr(commandBuffer, stippledLineEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthClipNegativeOneToOneEXT_ptr;
 	public static void vkCmdSetDepthClipNegativeOneToOneEXT(VkCommandBuffer commandBuffer, VkBool32 negativeOneToOne)
 	{
 		vkCmdSetDepthClipNegativeOneToOneEXT_ptr(commandBuffer, negativeOneToOne);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetViewportWScalingEnableNV_ptr;
 	public static void vkCmdSetViewportWScalingEnableNV(VkCommandBuffer commandBuffer, VkBool32 viewportWScalingEnable)
 	{
 		vkCmdSetViewportWScalingEnableNV_ptr(commandBuffer, viewportWScalingEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewportSwizzleNV*, void> vkCmdSetViewportSwizzleNV_ptr;
 	public static void vkCmdSetViewportSwizzleNV(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewportSwizzleNV* viewportSwizzles)
 	{
 		vkCmdSetViewportSwizzleNV_ptr(commandBuffer, firstViewport, viewportCount, viewportSwizzles);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetCoverageToColorEnableNV_ptr;
 	public static void vkCmdSetCoverageToColorEnableNV(VkCommandBuffer commandBuffer, VkBool32 coverageToColorEnable)
 	{
 		vkCmdSetCoverageToColorEnableNV_ptr(commandBuffer, coverageToColorEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetCoverageToColorLocationNV_ptr;
 	public static void vkCmdSetCoverageToColorLocationNV(VkCommandBuffer commandBuffer, uint coverageToColorLocation)
 	{
 		vkCmdSetCoverageToColorLocationNV_ptr(commandBuffer, coverageToColorLocation);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCoverageModulationModeNV, void> vkCmdSetCoverageModulationModeNV_ptr;
 	public static void vkCmdSetCoverageModulationModeNV(VkCommandBuffer commandBuffer, VkCoverageModulationModeNV coverageModulationMode)
 	{
 		vkCmdSetCoverageModulationModeNV_ptr(commandBuffer, coverageModulationMode);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetCoverageModulationTableEnableNV_ptr;
 	public static void vkCmdSetCoverageModulationTableEnableNV(VkCommandBuffer commandBuffer, VkBool32 coverageModulationTableEnable)
 	{
 		vkCmdSetCoverageModulationTableEnableNV_ptr(commandBuffer, coverageModulationTableEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, float*, void> vkCmdSetCoverageModulationTableNV_ptr;
 	public static void vkCmdSetCoverageModulationTableNV(VkCommandBuffer commandBuffer, uint coverageModulationTableCount, float* coverageModulationTable)
 	{
 		vkCmdSetCoverageModulationTableNV_ptr(commandBuffer, coverageModulationTableCount, coverageModulationTable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetShadingRateImageEnableNV_ptr;
 	public static void vkCmdSetShadingRateImageEnableNV(VkCommandBuffer commandBuffer, VkBool32 shadingRateImageEnable)
 	{
 		vkCmdSetShadingRateImageEnableNV_ptr(commandBuffer, shadingRateImageEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetRepresentativeFragmentTestEnableNV_ptr;
 	public static void vkCmdSetRepresentativeFragmentTestEnableNV(VkCommandBuffer commandBuffer, VkBool32 representativeFragmentTestEnable)
 	{
 		vkCmdSetRepresentativeFragmentTestEnableNV_ptr(commandBuffer, representativeFragmentTestEnable);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCoverageReductionModeNV, void> vkCmdSetCoverageReductionModeNV_ptr;
 	public static void vkCmdSetCoverageReductionModeNV(VkCommandBuffer commandBuffer, VkCoverageReductionModeNV coverageReductionMode)
 	{
 		vkCmdSetCoverageReductionModeNV_ptr(commandBuffer, coverageReductionMode);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkShaderModule, VkShaderModuleIdentifierEXT*, void> vkGetShaderModuleIdentifierEXT_ptr;
 	public static void vkGetShaderModuleIdentifierEXT(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* identifier)
 	{
 		vkGetShaderModuleIdentifierEXT_ptr(device, shaderModule, identifier);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkShaderModuleIdentifierEXT*, void> vkGetShaderModuleCreateInfoIdentifierEXT_ptr;
 	public static void vkGetShaderModuleCreateInfoIdentifierEXT(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkShaderModuleIdentifierEXT* identifier)
 	{
 		vkGetShaderModuleCreateInfoIdentifierEXT_ptr(device, createInfo, identifier);
 	}
 
-	private static delegate* unmanaged<VkPhysicalDevice, VkOpticalFlowImageFormatInfoNV*, uint*, VkOpticalFlowImageFormatPropertiesNV*, VkResult> vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr;
 	public static VkResult vkGetPhysicalDeviceOpticalFlowImageFormatsNV(VkPhysicalDevice physicalDevice, VkOpticalFlowImageFormatInfoNV* opticalFlowImageFormatInfo, uint* formatCount, VkOpticalFlowImageFormatPropertiesNV* imageFormatProperties)
 	{
 		return vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr(physicalDevice, opticalFlowImageFormatInfo, formatCount, imageFormatProperties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkOpticalFlowSessionCreateInfoNV*, VkAllocationCallbacks*, VkOpticalFlowSessionNV*, VkResult> vkCreateOpticalFlowSessionNV_ptr;
 	public static VkResult vkCreateOpticalFlowSessionNV(VkDevice device, VkOpticalFlowSessionCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkOpticalFlowSessionNV* session)
 	{
 		return vkCreateOpticalFlowSessionNV_ptr(device, createInfo, allocator, session);
@@ -4650,25 +4706,21 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkAllocationCallbacks*, void> vkDestroyOpticalFlowSessionNV_ptr;
 	public static void vkDestroyOpticalFlowSessionNV(VkDevice device, VkOpticalFlowSessionNV session, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyOpticalFlowSessionNV_ptr(device, session, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkOpticalFlowSessionBindingPointNV, VkImageView, VkImageLayout, VkResult> vkBindOpticalFlowSessionImageNV_ptr;
 	public static VkResult vkBindOpticalFlowSessionImageNV(VkDevice device, VkOpticalFlowSessionNV session, VkOpticalFlowSessionBindingPointNV bindingPoint, VkImageView view, VkImageLayout layout)
 	{
 		return vkBindOpticalFlowSessionImageNV_ptr(device, session, bindingPoint, view, layout);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkOpticalFlowSessionNV, VkOpticalFlowExecuteInfoNV*, void> vkCmdOpticalFlowExecuteNV_ptr;
 	public static void vkCmdOpticalFlowExecuteNV(VkCommandBuffer commandBuffer, VkOpticalFlowSessionNV session, VkOpticalFlowExecuteInfoNV* executeInfo)
 	{
 		vkCmdOpticalFlowExecuteNV_ptr(commandBuffer, session, executeInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkShaderCreateInfoEXT*, VkAllocationCallbacks*, VkShaderEXT*, VkResult> vkCreateShadersEXT_ptr;
 	public static VkResult vkCreateShadersEXT(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT* createInfos, VkAllocationCallbacks* allocator, VkShaderEXT* shaders)
 	{
 		return vkCreateShadersEXT_ptr(device, createInfoCount, createInfos, allocator, shaders);
@@ -4682,73 +4734,61 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void> vkDestroyShaderEXT_ptr;
 	public static void vkDestroyShaderEXT(VkDevice device, VkShaderEXT shader, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyShaderEXT_ptr(device, shader, allocator);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkShaderEXT, nuint*, void*, VkResult> vkGetShaderBinaryDataEXT_ptr;
 	public static VkResult vkGetShaderBinaryDataEXT(VkDevice device, VkShaderEXT shader, nuint* dataSize, void* data)
 	{
 		return vkGetShaderBinaryDataEXT_ptr(device, shader, dataSize, data);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkShaderStageFlags*, VkShaderEXT*, void> vkCmdBindShadersEXT_ptr;
 	public static void vkCmdBindShadersEXT(VkCommandBuffer commandBuffer, uint stageCount, VkShaderStageFlags* stages, VkShaderEXT* shaders)
 	{
 		vkCmdBindShadersEXT_ptr(commandBuffer, stageCount, stages, shaders);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkFramebuffer, uint*, VkTilePropertiesQCOM*, VkResult> vkGetFramebufferTilePropertiesQCOM_ptr;
 	public static VkResult vkGetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, uint* propertiesCount, VkTilePropertiesQCOM* properties)
 	{
 		return vkGetFramebufferTilePropertiesQCOM_ptr(device, framebuffer, propertiesCount, properties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkRenderingInfo*, VkTilePropertiesQCOM*, VkResult> vkGetDynamicRenderingTilePropertiesQCOM_ptr;
 	public static VkResult vkGetDynamicRenderingTilePropertiesQCOM(VkDevice device, VkRenderingInfo* renderingInfo, VkTilePropertiesQCOM* properties)
 	{
 		return vkGetDynamicRenderingTilePropertiesQCOM_ptr(device, renderingInfo, properties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepModeInfoNV*, VkResult> vkSetLatencySleepModeNV_ptr;
 	public static VkResult vkSetLatencySleepModeNV(VkDevice device, VkSwapchainKHR swapchain, VkLatencySleepModeInfoNV* sleepModeInfo)
 	{
 		return vkSetLatencySleepModeNV_ptr(device, swapchain, sleepModeInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepInfoNV*, VkResult> vkLatencySleepNV_ptr;
 	public static VkResult vkLatencySleepNV(VkDevice device, VkSwapchainKHR swapchain, VkLatencySleepInfoNV* sleepInfo)
 	{
 		return vkLatencySleepNV_ptr(device, swapchain, sleepInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkSetLatencyMarkerInfoNV*, void> vkSetLatencyMarkerNV_ptr;
 	public static void vkSetLatencyMarkerNV(VkDevice device, VkSwapchainKHR swapchain, VkSetLatencyMarkerInfoNV* latencyMarkerInfo)
 	{
 		vkSetLatencyMarkerNV_ptr(device, swapchain, latencyMarkerInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkGetLatencyMarkerInfoNV*, void> vkGetLatencyTimingsNV_ptr;
 	public static void vkGetLatencyTimingsNV(VkDevice device, VkSwapchainKHR swapchain, VkGetLatencyMarkerInfoNV* latencyMarkerInfo)
 	{
 		vkGetLatencyTimingsNV_ptr(device, swapchain, latencyMarkerInfo);
 	}
 
-	private static delegate* unmanaged<VkQueue, VkOutOfBandQueueTypeInfoNV*, void> vkQueueNotifyOutOfBandNV_ptr;
 	public static void vkQueueNotifyOutOfBandNV(VkQueue queue, VkOutOfBandQueueTypeInfoNV* queueTypeInfo)
 	{
 		vkQueueNotifyOutOfBandNV_ptr(queue, queueTypeInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkImageAspectFlags, void> vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr;
 	public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask)
 	{
 		vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr(commandBuffer, aspectMask);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
 	public static VkResult vkCreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
 	{
 		return vkCreateAccelerationStructureKHR_ptr(device, createInfo, allocator, accelerationStructure);
@@ -4762,103 +4802,86 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void> vkDestroyAccelerationStructureKHR_ptr;
 	public static void vkDestroyAccelerationStructureKHR(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroyAccelerationStructureKHR_ptr(device, accelerationStructure, allocator);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void> vkCmdBuildAccelerationStructuresKHR_ptr;
 	public static void vkCmdBuildAccelerationStructuresKHR(VkCommandBuffer commandBuffer, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildRangeInfoKHR** buildRangeInfos)
 	{
 		vkCmdBuildAccelerationStructuresKHR_ptr(commandBuffer, infoCount, infos, buildRangeInfos);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, ulong*, uint*, uint**, void> vkCmdBuildAccelerationStructuresIndirectKHR_ptr;
 	public static void vkCmdBuildAccelerationStructuresIndirectKHR(VkCommandBuffer commandBuffer, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, ulong* indirectDeviceAddresses, uint* indirectStrides, uint** maxPrimitiveCounts)
 	{
 		vkCmdBuildAccelerationStructuresIndirectKHR_ptr(commandBuffer, infoCount, infos, indirectDeviceAddresses, indirectStrides, maxPrimitiveCounts);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, VkResult> vkBuildAccelerationStructuresKHR_ptr;
 	public static VkResult vkBuildAccelerationStructuresKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, uint infoCount, VkAccelerationStructureBuildGeometryInfoKHR* infos, VkAccelerationStructureBuildRangeInfoKHR** buildRangeInfos)
 	{
 		return vkBuildAccelerationStructuresKHR_ptr(device, deferredOperation, infoCount, infos, buildRangeInfos);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureInfoKHR*, VkResult> vkCopyAccelerationStructureKHR_ptr;
 	public static VkResult vkCopyAccelerationStructureKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyAccelerationStructureInfoKHR* info)
 	{
 		return vkCopyAccelerationStructureKHR_ptr(device, deferredOperation, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyAccelerationStructureToMemoryInfoKHR*, VkResult> vkCopyAccelerationStructureToMemoryKHR_ptr;
 	public static VkResult vkCopyAccelerationStructureToMemoryKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyAccelerationStructureToMemoryInfoKHR* info)
 	{
 		return vkCopyAccelerationStructureToMemoryKHR_ptr(device, deferredOperation, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToAccelerationStructureInfoKHR*, VkResult> vkCopyMemoryToAccelerationStructureKHR_ptr;
 	public static VkResult vkCopyMemoryToAccelerationStructureKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyMemoryToAccelerationStructureInfoKHR* info)
 	{
 		return vkCopyMemoryToAccelerationStructureKHR_ptr(device, deferredOperation, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, uint, VkAccelerationStructureKHR*, VkQueryType, nuint, void*, nuint, VkResult> vkWriteAccelerationStructuresPropertiesKHR_ptr;
 	public static VkResult vkWriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, nuint dataSize, void* data, nuint stride)
 	{
 		return vkWriteAccelerationStructuresPropertiesKHR_ptr(device, accelerationStructureCount, accelerationStructures, queryType, dataSize, data, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyAccelerationStructureInfoKHR*, void> vkCmdCopyAccelerationStructureKHR_ptr;
 	public static void vkCmdCopyAccelerationStructureKHR(VkCommandBuffer commandBuffer, VkCopyAccelerationStructureInfoKHR* info)
 	{
 		vkCmdCopyAccelerationStructureKHR_ptr(commandBuffer, info);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyAccelerationStructureToMemoryInfoKHR*, void> vkCmdCopyAccelerationStructureToMemoryKHR_ptr;
 	public static void vkCmdCopyAccelerationStructureToMemoryKHR(VkCommandBuffer commandBuffer, VkCopyAccelerationStructureToMemoryInfoKHR* info)
 	{
 		vkCmdCopyAccelerationStructureToMemoryKHR_ptr(commandBuffer, info);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkCopyMemoryToAccelerationStructureInfoKHR*, void> vkCmdCopyMemoryToAccelerationStructureKHR_ptr;
 	public static void vkCmdCopyMemoryToAccelerationStructureKHR(VkCommandBuffer commandBuffer, VkCopyMemoryToAccelerationStructureInfoKHR* info)
 	{
 		vkCmdCopyMemoryToAccelerationStructureKHR_ptr(commandBuffer, info);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAccelerationStructureDeviceAddressInfoKHR*, ulong> vkGetAccelerationStructureDeviceAddressKHR_ptr;
 	public static ulong vkGetAccelerationStructureDeviceAddressKHR(VkDevice device, VkAccelerationStructureDeviceAddressInfoKHR* info)
 	{
 		return vkGetAccelerationStructureDeviceAddressKHR_ptr(device, info);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureKHR*, VkQueryType, VkQueryPool, uint, void> vkCmdWriteAccelerationStructuresPropertiesKHR_ptr;
 	public static void vkCmdWriteAccelerationStructuresPropertiesKHR(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery)
 	{
 		vkCmdWriteAccelerationStructuresPropertiesKHR_ptr(commandBuffer, accelerationStructureCount, accelerationStructures, queryType, queryPool, firstQuery);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAccelerationStructureVersionInfoKHR*, VkAccelerationStructureCompatibilityKHR*, void> vkGetDeviceAccelerationStructureCompatibilityKHR_ptr;
 	public static void vkGetDeviceAccelerationStructureCompatibilityKHR(VkDevice device, VkAccelerationStructureVersionInfoKHR* versionInfo, VkAccelerationStructureCompatibilityKHR* compatibility)
 	{
 		vkGetDeviceAccelerationStructureCompatibilityKHR_ptr(device, versionInfo, compatibility);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkAccelerationStructureBuildTypeKHR, VkAccelerationStructureBuildGeometryInfoKHR*, uint*, VkAccelerationStructureBuildSizesInfoKHR*, void> vkGetAccelerationStructureBuildSizesKHR_ptr;
 	public static void vkGetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, uint* maxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo)
 	{
 		vkGetAccelerationStructureBuildSizesKHR_ptr(device, buildType, buildInfo, maxPrimitiveCounts, sizeInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, uint, uint, uint, void> vkCmdTraceRaysKHR_ptr;
 	public static void vkCmdTraceRaysKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, uint width, uint height, uint depth)
 	{
 		vkCmdTraceRaysKHR_ptr(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, hitShaderBindingTable, callableShaderBindingTable, width, height, depth);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoKHR*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateRayTracingPipelinesKHR_ptr;
 	public static VkResult vkCreateRayTracingPipelinesKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
 		return vkCreateRayTracingPipelinesKHR_ptr(device, deferredOperation, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
@@ -4872,49 +4895,41 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult> vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr;
 	public static VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 	{
 		return vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr(device, pipeline, firstGroup, groupCount, dataSize, data);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, ulong, void> vkCmdTraceRaysIndirectKHR_ptr;
 	public static void vkCmdTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, ulong indirectDeviceAddress)
 	{
 		vkCmdTraceRaysIndirectKHR_ptr(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, hitShaderBindingTable, callableShaderBindingTable, indirectDeviceAddress);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipeline, uint, VkShaderGroupShaderKHR, ulong> vkGetRayTracingShaderGroupStackSizeKHR_ptr;
 	public static ulong vkGetRayTracingShaderGroupStackSizeKHR(VkDevice device, VkPipeline pipeline, uint group, VkShaderGroupShaderKHR groupShader)
 	{
 		return vkGetRayTracingShaderGroupStackSizeKHR_ptr(device, pipeline, group, groupShader);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, void> vkCmdSetRayTracingPipelineStackSizeKHR_ptr;
 	public static void vkCmdSetRayTracingPipelineStackSizeKHR(VkCommandBuffer commandBuffer, uint pipelineStackSize)
 	{
 		vkCmdSetRayTracingPipelineStackSizeKHR_ptr(commandBuffer, pipelineStackSize);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void> vkCmdDrawMeshTasksEXT_ptr;
 	public static void vkCmdDrawMeshTasksEXT(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ)
 	{
 		vkCmdDrawMeshTasksEXT_ptr(commandBuffer, groupCountX, groupCountY, groupCountZ);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectEXT_ptr;
 	public static void vkCmdDrawMeshTasksIndirectEXT(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, uint drawCount, uint stride)
 	{
 		vkCmdDrawMeshTasksIndirectEXT_ptr(commandBuffer, buffer, offset, drawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawMeshTasksIndirectCountEXT_ptr;
 	public static void vkCmdDrawMeshTasksIndirectCountEXT(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 	{
 		vkCmdDrawMeshTasksIndirectCountEXT_ptr(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	}
 
-	private static delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateAndroidSurfaceKHR_ptr;
 	public static VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		return vkCreateAndroidSurfaceKHR_ptr(instance, createInfo, allocator, surface);
@@ -4949,19 +4964,16 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, nint, VkAndroidHardwareBufferPropertiesANDROID*, VkResult> vkGetAndroidHardwareBufferPropertiesANDROID_ptr;
 	public static VkResult vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, nint buffer, VkAndroidHardwareBufferPropertiesANDROID* properties)
 	{
 		return vkGetAndroidHardwareBufferPropertiesANDROID_ptr(device, buffer, properties);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, nint, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_ptr;
 	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, nint buffer)
 	{
 		return vkGetMemoryAndroidHardwareBufferANDROID_ptr(device, info, buffer);
 	}
 
-	private static delegate* unmanaged<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateIOSSurfaceMVK_ptr;
 	public static VkResult vkCreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		return vkCreateIOSSurfaceMVK_ptr(instance, createInfo, allocator, surface);
@@ -4996,7 +5008,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateMacOSSurfaceMVK_ptr;
 	public static VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		return vkCreateMacOSSurfaceMVK_ptr(instance, createInfo, allocator, surface);
@@ -5031,7 +5042,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateMetalSurfaceEXT_ptr;
 	public static VkResult vkCreateMetalSurfaceEXT(VkInstance instance, VkMetalSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		return vkCreateMetalSurfaceEXT_ptr(instance, createInfo, allocator, surface);
@@ -5066,13 +5076,11 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkExportMetalObjectsInfoEXT*, void> vkExportMetalObjectsEXT_ptr;
 	public static void vkExportMetalObjectsEXT(VkDevice device, VkExportMetalObjectsInfoEXT* metalObjectsInfo)
 	{
 		vkExportMetalObjectsEXT_ptr(device, metalObjectsInfo);
 	}
 
-	private static delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateViSurfaceNN_ptr;
 	public static VkResult vkCreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		return vkCreateViSurfaceNN_ptr(instance, createInfo, allocator, surface);
@@ -5086,7 +5094,6 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateExecutionGraphPipelinesAMDX_ptr;
 	public static VkResult vkCreateExecutionGraphPipelinesAMDX(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkExecutionGraphPipelineCreateInfoAMDX* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
 		return vkCreateExecutionGraphPipelinesAMDX_ptr(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
@@ -5100,37 +5107,31 @@ unsafe partial class Vulkan
 		}
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipeline, VkExecutionGraphPipelineScratchSizeAMDX*, VkResult> vkGetExecutionGraphPipelineScratchSizeAMDX_ptr;
 	public static VkResult vkGetExecutionGraphPipelineScratchSizeAMDX(VkDevice device, VkPipeline executionGraph, VkExecutionGraphPipelineScratchSizeAMDX* sizeInfo)
 	{
 		return vkGetExecutionGraphPipelineScratchSizeAMDX_ptr(device, executionGraph, sizeInfo);
 	}
 
-	private static delegate* unmanaged<VkDevice, VkPipeline, VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, VkResult> vkGetExecutionGraphPipelineNodeIndexAMDX_ptr;
 	public static VkResult vkGetExecutionGraphPipelineNodeIndexAMDX(VkDevice device, VkPipeline executionGraph, VkPipelineShaderStageNodeCreateInfoAMDX* nodeInfo, uint* nodeIndex)
 	{
 		return vkGetExecutionGraphPipelineNodeIndexAMDX_ptr(device, executionGraph, nodeInfo, nodeIndex);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, ulong, void> vkCmdInitializeGraphScratchMemoryAMDX_ptr;
 	public static void vkCmdInitializeGraphScratchMemoryAMDX(VkCommandBuffer commandBuffer, ulong scratch)
 	{
 		vkCmdInitializeGraphScratchMemoryAMDX_ptr(commandBuffer, scratch);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, ulong, VkDispatchGraphCountInfoAMDX*, void> vkCmdDispatchGraphAMDX_ptr;
 	public static void vkCmdDispatchGraphAMDX(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* countInfo)
 	{
 		vkCmdDispatchGraphAMDX_ptr(commandBuffer, scratch, countInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, ulong, VkDispatchGraphCountInfoAMDX*, void> vkCmdDispatchGraphIndirectAMDX_ptr;
 	public static void vkCmdDispatchGraphIndirectAMDX(VkCommandBuffer commandBuffer, ulong scratch, VkDispatchGraphCountInfoAMDX* countInfo)
 	{
 		vkCmdDispatchGraphIndirectAMDX_ptr(commandBuffer, scratch, countInfo);
 	}
 
-	private static delegate* unmanaged<VkCommandBuffer, ulong, ulong, void> vkCmdDispatchGraphIndirectCountAMDX_ptr;
 	public static void vkCmdDispatchGraphIndirectCountAMDX(VkCommandBuffer commandBuffer, ulong scratch, ulong countInfo)
 	{
 		vkCmdDispatchGraphIndirectCountAMDX_ptr(commandBuffer, scratch, countInfo);
@@ -5147,7 +5148,7 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceQueueFamilyProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkQueueFamilyProperties*, void>) load(context, nameof(vkGetPhysicalDeviceQueueFamilyProperties));
 		vkGetPhysicalDeviceMemoryProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties*, void>) load(context, nameof(vkGetPhysicalDeviceMemoryProperties));
 		vkCreateDevice_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDeviceCreateInfo*, VkAllocationCallbacks*, VkDevice*, VkResult>) load(context, nameof(vkCreateDevice));
-		vkEnumerateDeviceExtensionProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, sbyte*, uint*, VkExtensionProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceExtensionProperties));
+		vkEnumerateDeviceExtensionProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, byte*, uint*, VkExtensionProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceExtensionProperties));
 		vkEnumerateDeviceLayerProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkLayerProperties*, VkResult>) load(context, nameof(vkEnumerateDeviceLayerProperties));
 		vkGetPhysicalDeviceSparseImageFormatProperties_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkSampleCountFlags, VkImageUsageFlags, VkImageTiling, uint*, VkSparseImageFormatProperties*, void>) load(context, nameof(vkGetPhysicalDeviceSparseImageFormatProperties));
 		vkEnumeratePhysicalDeviceGroups_ptr = (delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>) load(context, nameof(vkEnumeratePhysicalDeviceGroups));
@@ -5202,7 +5203,7 @@ unsafe partial class Vulkan
 		vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceCalibrateableTimeDomainsKHR));
 		vkCreateDebugReportCallbackEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>) load(context, nameof(vkCreateDebugReportCallbackEXT));
 		vkDestroyDebugReportCallbackEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyDebugReportCallbackEXT));
-		vkDebugReportMessageEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, sbyte*, sbyte*, void>) load(context, nameof(vkDebugReportMessageEXT));
+		vkDebugReportMessageEXT_ptr = (delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void>) load(context, nameof(vkDebugReportMessageEXT));
 		vkGetPhysicalDeviceExternalImageFormatPropertiesNV_ptr = (delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkExternalMemoryHandleTypeFlagsNV, VkExternalImageFormatPropertiesNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceExternalImageFormatPropertiesNV));
 		vkReleaseDisplayEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkResult>) load(context, nameof(vkReleaseDisplayEXT));
 		vkGetPhysicalDeviceSurfaceCapabilities2EXT_ptr = (delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilities2EXT*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfaceCapabilities2EXT));

@@ -55,8 +55,8 @@ public unsafe sealed class GraphicsDevice : IDisposable
             }
         }
 
-        using VkString pApplicationName = new(applicationName);
-        using VkString pEngineName = new("Vortice");
+        ReadOnlySpanUtf8 pApplicationName = Interop.GetUtf8Span(applicationName);
+        ReadOnlySpanUtf8 pEngineName = "Vortice"u8;
 
         VkApplicationInfo appInfo = new()
         {
@@ -636,7 +636,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
         void* userData)
     {
-        string message = new(pCallbackData->pMessage);
+        string message = Interop.GetString(pCallbackData->pMessage)!;
         if (messageTypes == VkDebugUtilsMessageTypeFlagsEXT.Validation)
         {
             if (messageSeverity == VkDebugUtilsMessageSeverityFlagsEXT.Error)

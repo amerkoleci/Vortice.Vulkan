@@ -11,7 +11,7 @@ public enum VkXlibSurfaceCreateFlagsKHR
 
 public struct VkXlibSurfaceCreateInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.XlibSurfaceCreateInfoKHR;
     public unsafe void* pNext;
     public VkXlibSurfaceCreateFlagsKHR flags;
     public nint display;
@@ -19,7 +19,7 @@ public struct VkXlibSurfaceCreateInfoKHR
 
     public VkXlibSurfaceCreateInfoKHR()
     {
-        sType = VkStructureType.XlibSurfaceCreateInfoKHR;
+        
     }
 }
 

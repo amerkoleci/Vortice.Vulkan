@@ -1986,8 +1986,12 @@ public enum VkStructureType
 	PhysicalDeviceDescriptorPoolOverallocationFeaturesNV = 1000546000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV</unmanaged>
 	PhysicalDeviceRawAccessChainsFeaturesNV = 1000555000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR</unmanaged>
+	PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR = 1000558000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV</unmanaged>
 	PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV = 1000563000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT</unmanaged>
+	PhysicalDeviceShaderReplicatedCompositesFeaturesEXT = 1000564000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV</unmanaged>
 	PhysicalDeviceRayTracingValidationFeaturesNV = 1000568000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA</unmanaged>
@@ -2592,6 +2596,8 @@ public enum VkObjectType
 
 public enum VkVendorId
 {
+	/// <unmanaged>VK_VENDOR_ID_KHRONOS</unmanaged>
+	Khronos = 0x10000,
 	/// <summary>
 	/// Vivante vendor ID
 	/// </summary>
@@ -5974,8 +5980,10 @@ public enum VkDriverId
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA</unmanaged>
 	ImaginationOpenSourceMESA = 25,
-	/// <unmanaged>VK_DRIVER_ID_MESA_AGXV</unmanaged>
-	MESAAgxv = 26,
+	/// <unmanaged>VK_DRIVER_ID_MESA_HONEYKRISP</unmanaged>
+	MESAHoneykrisp = 26,
+	/// <unmanaged>VK_DRIVER_ID_RESERVED_27</unmanaged>
+	Reserved27 = 27,
 	/// <unmanaged>VK_DRIVER_ID_AMD_PROPRIETARY_KHR</unmanaged>
 	AMDProprietaryKHR = AMDProprietary,
 	/// <unmanaged>VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR</unmanaged>

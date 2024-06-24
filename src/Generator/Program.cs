@@ -154,7 +154,8 @@ public static class Program
                 Namespace = "Vortice.Vulkan",
                 PublicVisiblity = true,
                 GenerateFunctionPointers = true,
-                IsVulkan = true
+                IsVulkan = true,
+                ReadOnlyMemoryUtf8ForStrings = false // TODO: Enable
             };
         }
 

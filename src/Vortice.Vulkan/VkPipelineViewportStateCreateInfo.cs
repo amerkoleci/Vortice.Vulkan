@@ -15,7 +15,6 @@ public partial struct VkPipelineViewportStateCreateInfo
         void* pNext = default,
         VkPipelineViewportStateCreateFlags flags = VkPipelineViewportStateCreateFlags.None)
     {
-        sType = VkStructureType.PipelineViewportStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;
         this.viewportCount = viewportCount;
@@ -30,7 +29,6 @@ public partial struct VkPipelineViewportStateCreateInfo
         void* pNext = default,
         VkPipelineViewportStateCreateFlags flags = VkPipelineViewportStateCreateFlags.None)
     {
-        sType = VkStructureType.PipelineViewportStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;
         this.viewportCount = viewportCount;

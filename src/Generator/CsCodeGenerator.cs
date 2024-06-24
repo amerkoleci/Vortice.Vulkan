@@ -129,7 +129,11 @@ public static partial class CsCodeGenerator
     private static void GenerateConstants(CppCompilation compilation)
     {
         string visibility = _options.PublicVisiblity ? "public" : "internal";
-        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Constants.cs"), false, _options.Namespace, Array.Empty<string>());
+
+        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Constants.cs"), false,
+            _options.Namespace,
+            []
+            );
 
         if (_options.IsVulkan)
         {
@@ -178,7 +182,8 @@ public static partial class CsCodeGenerator
                 }
 
                 string modifier = "const";
-                string csDataType = _options.ReadOnlySpanForStrings ? "ReadOnlySpan<byte>" : "string";
+                string csDataType = _options.ReadOnlyMemoryUtf8ForStrings ? "ReadOnlyMemoryUtf8" : "string";
+
                 string macroValue = NormalizeEnumValue(cppMacro.Value);
                 if (macroValue.EndsWith("F", StringComparison.OrdinalIgnoreCase))
                 {
@@ -301,15 +306,10 @@ public static partial class CsCodeGenerator
                 else
                 {
                     string assignValue = "=";
-                    if (csDataType == "ReadOnlySpan<byte>")
+                    if (csDataType == "ReadOnlyMemoryUtf8")
                     {
                         modifier = "static";
                         macroValue += "u8";
-                        assignValue = "=>";
-                    }
-                    else if (csDataType == "VkString")
-                    {
-                        modifier = "static";
                         assignValue = "=>";
                     }
 
@@ -451,7 +451,7 @@ public static partial class CsCodeGenerator
                 return "void";
 
             case CppPrimitiveKind.Char:
-                return "sbyte";
+                return "byte";
 
             case CppPrimitiveKind.WChar:
                 return "char";

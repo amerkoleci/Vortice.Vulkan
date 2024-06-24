@@ -13,7 +13,6 @@ public partial struct VkPipelineTessellationStateCreateInfo
         void* pNext = default,
         VkPipelineTessellationStateCreateFlags flags = VkPipelineTessellationStateCreateFlags.None)
     {
-        this.sType = VkStructureType.PipelineTessellationStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;
         this.patchControlPoints = patchControlPoints;

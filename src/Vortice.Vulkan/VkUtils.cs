@@ -52,22 +52,22 @@ unsafe partial class Vulkan
 
     public static string GetExtensionName(this VkExtensionProperties properties)
     {
-        return new(properties.extensionName);
+        return Interop.GetString(properties.extensionName, 256)!;
     }
 
     public static string GetLayerName(this VkLayerProperties properties)
     {
-        return new(properties.layerName);
+        return Interop.GetString(properties.layerName, 256)!;
     }
 
     public static string GetDeviceName(this VkPhysicalDeviceProperties properties)
     {
-        return new(properties.deviceName);
+        return Interop.GetString(properties.deviceName, 256)!;
     }
 
     public static string GetDescription(this VkLayerProperties properties)
     {
-        return new(properties.description);
+        return Interop.GetString(properties.description, 256)!;
     }
 
     public static uint IndexOf(this VkPhysicalDeviceMemoryProperties memoryProperties, int memoryTypeBits, VkMemoryPropertyFlags properties)

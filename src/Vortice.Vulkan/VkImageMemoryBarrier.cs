@@ -22,7 +22,6 @@ public partial struct VkImageMemoryBarrier
         uint dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
         void* pNext = default)
     {
-        sType = VkStructureType.ImageMemoryBarrier;
         this.pNext = pNext;
         this.srcAccessMask = srcAccessMask;
         this.dstAccessMask = dstAccessMask;
@@ -41,7 +40,6 @@ public partial struct VkImageMemoryBarrier
         VkImageSubresourceRange subresourceRange,
         void* pNext = default)
     {
-        sType = VkStructureType.ImageMemoryBarrier;
         this.pNext = pNext;
         srcAccessMask = 0;
         dstAccessMask = 0;

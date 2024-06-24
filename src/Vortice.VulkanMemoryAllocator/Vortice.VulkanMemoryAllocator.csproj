@@ -11,7 +11,7 @@
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>1.4.7</VersionPrefix>
+    <VersionPrefix>1.4.8</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
@@ -19,8 +19,43 @@
     <None Include="$(RepoRootPath)README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
+  <!-- Native Libs -->
   <ItemGroup>
-    <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" />
+    <Content Include="$(NativeLibDirectory)win-x64\vma.dll">
+      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)win-arm64\vma.dll">
+      <PackagePath>runtimes/win-arm64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)linux-x64\libvma.so">
+      <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)osx\libvma.dylib">
+      <PackagePath>runtimes/osx/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)android-arm\libvma.so">
+      <PackagePath>runtimes/android-arm/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)android-arm64\libvma.so">
+      <PackagePath>runtimes/android-arm64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)android-x64\libvma.so">
+      <PackagePath>runtimes/android-x64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

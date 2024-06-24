@@ -8,7 +8,7 @@ namespace Vortice.Vulkan;
 /// <summary>
 /// Structure specifying a three-dimensional offset.
 /// </summary>
-public partial struct VkOffset3D : IEquatable<VkOffset3D>
+partial record struct VkOffset3D
 {
     /// <summary>
     /// An <see cref="VkOffset3D"/> with all of its components set to zero.
@@ -21,36 +21,4 @@ public partial struct VkOffset3D : IEquatable<VkOffset3D>
         this.y = y;
         this.z = z;
     }
-
-    /// <inheritdoc/>
-    public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is VkOffset3D other && Equals(other);
-
-    /// <inheritdoc/>
-    public readonly bool Equals(VkOffset3D other) => x == other.x && y == other.y && z == other.z;
-
-    /// <inheritdoc/>
-    public override readonly int GetHashCode() => HashCode.Combine(x, y, z);
-
-    /// <inheritdoc/>
-    public override readonly string ToString() => $"{{X={x},Y={y},Z={z}}}";
-
-    /// <summary>
-    /// Compares two <see cref="VkOffset3D"/> objects for equality.
-    /// </summary>
-    /// <param name="left">The <see cref="VkOffset3D"/> on the left hand of the operand.</param>
-    /// <param name="right">The <see cref="VkOffset3D"/> on the right hand of the operand.</param>
-    /// <returns>
-    /// True if the current left is equal to the <paramref name="right"/> parameter; otherwise, false.
-    /// </returns>
-    public static bool operator ==(VkOffset3D left, VkOffset3D right) => left.Equals(right);
-
-    /// <summary>
-    /// Compares two <see cref="VkOffset3D"/> objects for inequality.
-    /// </summary>
-    /// <param name="left">The <see cref="VkOffset3D"/> on the left hand of the operand.</param>
-    /// <param name="right">The <see cref="VkOffset3D"/> on the right hand of the operand.</param>
-    /// <returns>
-    /// True if the current left is unequal to the <paramref name="right"/> parameter; otherwise, false.
-    /// </returns>
-    public static bool operator !=(VkOffset3D left, VkOffset3D right) => !left.Equals(right);
 }

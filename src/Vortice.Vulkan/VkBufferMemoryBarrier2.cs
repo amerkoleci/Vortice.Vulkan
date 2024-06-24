@@ -22,7 +22,6 @@ public unsafe partial struct VkBufferMemoryBarrier2
         uint dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
         void* pNext = default)
     {
-        sType = VkStructureType.BufferMemoryBarrier2;
         this.pNext = pNext;
         this.srcStageMask = srcStageMask;
         this.srcAccessMask = srcAccessMask;

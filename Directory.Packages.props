@@ -3,7 +3,7 @@
   <!-- https://learn.microsoft.com/nuget/consume-packages/central-package-management -->
   <ItemGroup>
     <PackageVersion Include="CppAst" Version="0.20.1" />
-
+    
     <!-- Samples -->
     <PackageVersion Include="Alimer.Bindings.SDL" Version="3.5.4" />
     

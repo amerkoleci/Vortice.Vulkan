@@ -2,6 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <RepoRootPath>$(MSBuildThisFileDirectory)</RepoRootPath>
+    <NativeLibDirectory>$(MSBuildThisFileDirectory)native/</NativeLibDirectory>
   </PropertyGroup>
 
   <PropertyGroup>

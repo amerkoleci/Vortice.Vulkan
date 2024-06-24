@@ -15,7 +15,6 @@ public unsafe partial struct VkPipelineColorBlendStateCreateInfo
         void* pNext = default,
         VkPipelineColorBlendStateCreateFlags flags = VkPipelineColorBlendStateCreateFlags.None)
     {
-        this.sType = VkStructureType.PipelineColorBlendStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;
         this.logicOpEnable = logicOpEnable;
@@ -36,7 +35,6 @@ public unsafe partial struct VkPipelineColorBlendStateCreateInfo
         void* pNext = default,
         VkPipelineColorBlendStateCreateFlags flags = VkPipelineColorBlendStateCreateFlags.None)
     {
-        this.sType = VkStructureType.PipelineColorBlendStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;
         this.logicOpEnable = logicOpEnable;

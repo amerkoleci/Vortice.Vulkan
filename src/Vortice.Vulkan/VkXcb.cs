@@ -11,7 +11,7 @@ public enum VkXcbSurfaceCreateFlagsKHR
 
 public struct VkXcbSurfaceCreateInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.XcbSurfaceCreateInfoKHR;
     public unsafe void* pNext;
     public VkXcbSurfaceCreateFlagsKHR flags;
     public nint connection;
@@ -19,7 +19,6 @@ public struct VkXcbSurfaceCreateInfoKHR
 
     public VkXcbSurfaceCreateInfoKHR()
     {
-        sType = VkStructureType.XcbSurfaceCreateInfoKHR;
     }
 }
 

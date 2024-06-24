@@ -11,7 +11,7 @@ public enum VkWin32SurfaceCreateFlagsKHR
 
 public unsafe struct VkWin32SurfaceCreateInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.Win32SurfaceCreateInfoKHR;
     public void* pNext;
     public VkWin32SurfaceCreateFlagsKHR flags;
     public nint hinstance;
@@ -19,13 +19,12 @@ public unsafe struct VkWin32SurfaceCreateInfoKHR
 
     public VkWin32SurfaceCreateInfoKHR()
     {
-        sType = VkStructureType.Win32SurfaceCreateInfoKHR;
     }
 }
 
 public unsafe struct VkImportMemoryWin32HandleInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.ImportMemoryWin32HandleInfoKHR;
     public void* pNext;
     public VkExternalMemoryHandleTypeFlags handleType;
     public nint handle;
@@ -33,13 +32,12 @@ public unsafe struct VkImportMemoryWin32HandleInfoKHR
 
     public VkImportMemoryWin32HandleInfoKHR()
     {
-        sType = VkStructureType.ImportMemoryWin32HandleInfoKHR;
     }
 }
 
 public unsafe struct VkExportMemoryWin32HandleInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.ExportMemoryWin32HandleInfoKHR;
     public void* pNext;
     public IntPtr* pAttributes;
     public uint dwAccess;
@@ -47,38 +45,35 @@ public unsafe struct VkExportMemoryWin32HandleInfoKHR
 
     public VkExportMemoryWin32HandleInfoKHR()
     {
-        sType = VkStructureType.ExportMemoryWin32HandleInfoKHR;
     }
 }
 
 public unsafe struct VkMemoryWin32HandlePropertiesKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.MemoryWin32HandlePropertiesKHR;
     public void* pNext;
     public uint memoryTypeBits;
 
     public VkMemoryWin32HandlePropertiesKHR()
     {
-        sType = VkStructureType.MemoryWin32HandlePropertiesKHR;
     }
 }
 
 public unsafe struct VkMemoryGetWin32HandleInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.MemoryGetWin32HandleInfoKHR;
     public void* pNext;
     public VkDeviceMemory memory;
     public VkExternalMemoryHandleTypeFlags handleType;
 
     public VkMemoryGetWin32HandleInfoKHR()
     {
-        sType = VkStructureType.MemoryGetWin32HandleInfoKHR;
     }
 }
 
 public unsafe struct VkWin32KeyedMutexAcquireReleaseInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.Win32KeyedMutexAcquireReleaseInfoKHR;
     public void* pNext;
     public uint acquireCount;
     public VkDeviceMemory* pAcquireSyncs;
@@ -90,13 +85,12 @@ public unsafe struct VkWin32KeyedMutexAcquireReleaseInfoKHR
 
     public VkWin32KeyedMutexAcquireReleaseInfoKHR()
     {
-        sType = VkStructureType.Win32KeyedMutexAcquireReleaseInfoKHR;
     }
 }
 
 public unsafe struct VkImportSemaphoreWin32HandleInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.ImportSemaphoreWin32HandleInfoKHR;
     public void* pNext;
     public VkSemaphore semaphore;
     public VkSemaphoreImportFlags flags;
@@ -106,13 +100,13 @@ public unsafe struct VkImportSemaphoreWin32HandleInfoKHR
 
     public VkImportSemaphoreWin32HandleInfoKHR()
     {
-        sType = VkStructureType.ImportSemaphoreWin32HandleInfoKHR;
+        
     }
 }
 
 public unsafe struct VkExportSemaphoreWin32HandleInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.ExportSemaphoreWin32HandleInfoKHR;
     public void* pNext;
     public IntPtr pAttributes;
     public uint dwAccess;
@@ -120,13 +114,12 @@ public unsafe struct VkExportSemaphoreWin32HandleInfoKHR
 
     public VkExportSemaphoreWin32HandleInfoKHR()
     {
-        sType = VkStructureType.ExportSemaphoreWin32HandleInfoKHR;
     }
 }
 
 public unsafe struct VkD3D12FenceSubmitInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.D3D12FenceSubmitInfoKHR;
     public void* pNext;
     public uint waitSemaphoreValuesCount;
     public ulong* pWaitSemaphoreValues;
@@ -135,26 +128,24 @@ public unsafe struct VkD3D12FenceSubmitInfoKHR
 
     public VkD3D12FenceSubmitInfoKHR()
     {
-        sType = VkStructureType.D3D12FenceSubmitInfoKHR;
     }
 }
 
 public unsafe partial struct VkSemaphoreGetWin32HandleInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.SemaphoreGetWin32HandleInfoKHR;
     public void* pNext;
     public VkSemaphore semaphore;
     public VkExternalSemaphoreHandleTypeFlags handleType;
 
     public VkSemaphoreGetWin32HandleInfoKHR()
     {
-        sType = VkStructureType.SemaphoreGetWin32HandleInfoKHR;
     }
 }
 
 public unsafe partial struct VkImportFenceWin32HandleInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.ImportFenceWin32HandleInfoKHR;
     public void* pNext;
     public VkFence fence;
     public VkFenceImportFlags flags;
@@ -164,52 +155,48 @@ public unsafe partial struct VkImportFenceWin32HandleInfoKHR
 
     public VkImportFenceWin32HandleInfoKHR()
     {
-        sType = VkStructureType.ImportFenceWin32HandleInfoKHR;
     }
 }
 
 public unsafe partial struct VkFenceGetWin32HandleInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.FenceGetWin32HandleInfoKHR;
     public void* pNext;
     public VkFence fence;
     public VkExternalFenceHandleTypeFlags handleType;
 
     public VkFenceGetWin32HandleInfoKHR()
     {
-        sType = VkStructureType.FenceGetWin32HandleInfoKHR;
     }
 }
 
 public unsafe partial struct VkImportMemoryWin32HandleInfoNV
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.ImportMemoryWin32HandleInfoNV;
     public void* pNext;
     public VkExternalMemoryHandleTypeFlagsNV handleType;
     public IntPtr handle;
 
     public VkImportMemoryWin32HandleInfoNV()
     {
-        sType = VkStructureType.ImportMemoryWin32HandleInfoNV;
     }
 }
 
 public unsafe partial struct VkExportMemoryWin32HandleInfoNV
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.ExportMemoryWin32HandleInfoNV;
     public void* pNext;
     public IntPtr pAttributes;
     public uint dwAccess;
 
     public VkExportMemoryWin32HandleInfoNV()
     {
-        sType = VkStructureType.ExportMemoryWin32HandleInfoNV;
     }
 }
 
 public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoNV
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.Win32KeyedMutexAcquireReleaseInfoNV;
     public void* pNext;
     public uint acquireCount;
     public VkDeviceMemory* pAcquireSyncs;
@@ -221,7 +208,6 @@ public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoNV
 
     public VkWin32KeyedMutexAcquireReleaseInfoNV()
     {
-        sType = VkStructureType.Win32KeyedMutexAcquireReleaseInfoNV;
     }
 }
 
@@ -235,7 +221,7 @@ public enum VkFullScreenExclusiveEXT
 
 public partial struct VkSurfaceFullScreenExclusiveInfoEXT
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.SurfaceFullScreenExclusiveInfoEXT;
 
     public unsafe void* pNext;
 
@@ -243,31 +229,28 @@ public partial struct VkSurfaceFullScreenExclusiveInfoEXT
 
     public VkSurfaceFullScreenExclusiveInfoEXT()
     {
-        sType = VkStructureType.SurfaceFullScreenExclusiveInfoEXT;
     }
 }
 
 public partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.SurfaceCapabilitiesFullScreenExclusiveEXT;
     public unsafe void* pNext;
     public VkBool32 fullScreenExclusiveSupported;
 
     public VkSurfaceCapabilitiesFullScreenExclusiveEXT()
     {
-        sType = VkStructureType.SurfaceCapabilitiesFullScreenExclusiveEXT;
     }
 }
 
 public partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.SurfaceFullScreenExclusiveWin32InfoEXT;
     public unsafe void* pNext;
     public IntPtr hmonitor;
 
     public VkSurfaceFullScreenExclusiveWin32InfoEXT()
     {
-        sType = VkStructureType.SurfaceFullScreenExclusiveWin32InfoEXT;
     }
 }
 

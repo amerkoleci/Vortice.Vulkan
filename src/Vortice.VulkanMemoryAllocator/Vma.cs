@@ -4,6 +4,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Text;
 using static Vortice.Vulkan.Vulkan;
 
 namespace Vortice.Vulkan;
@@ -105,21 +106,23 @@ unsafe partial class Vma
         }
     }
 
-    public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, ReadOnlySpan<sbyte> name)
+    public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, ReadOnlySpan<byte> name)
     {
-        fixed (sbyte* namePtr = name)
+        fixed (byte* namePtr = name)
         {
             vmaSetAllocationName(allocator, allocation, namePtr);
         }
     }
 
+    public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, ReadOnlySpanUtf8 name)
+    {
+        byte* namePtr = name;
+        vmaSetAllocationName(allocator, allocation, namePtr);
+    }
+
     public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, string name)
     {
-        ReadOnlySpan<sbyte> data = Interop.GetUtf8Span(name);
-        fixed (sbyte* namePtr = data)
-        {
-            vmaSetAllocationName(allocator, allocation, namePtr);
-        }
+        vmaSetAllocationName(allocator, allocation, new ReadOnlySpanUtf8(Encoding.UTF8.GetBytes(name)));
     }
 
     public static VkResult vmaCreateBuffer(

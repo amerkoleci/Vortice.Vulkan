@@ -11,7 +11,7 @@ public enum VkWaylandSurfaceCreateFlagsKHR
 
 public struct VkWaylandSurfaceCreateInfoKHR
 {
-    public VkStructureType sType;
+    public VkStructureType sType = VkStructureType.WaylandSurfaceCreateInfoKHR;
     public unsafe void* pNext;
     public VkWaylandSurfaceCreateFlagsKHR flags;
     public IntPtr display;
@@ -19,7 +19,6 @@ public struct VkWaylandSurfaceCreateInfoKHR
 
     public VkWaylandSurfaceCreateInfoKHR()
     {
-        sType = VkStructureType.WaylandSurfaceCreateInfoKHR;
     }
 }
 

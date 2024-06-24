@@ -20,7 +20,6 @@ public unsafe partial struct VkBufferMemoryBarrier
         uint dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
         void* pNext = default)
     {
-        sType = VkStructureType.BufferMemoryBarrier;
         this.pNext = pNext;
         this.srcAccessMask = srcAccessMask;
         this.dstAccessMask = dstAccessMask;

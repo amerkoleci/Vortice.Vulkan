@@ -8,7 +8,7 @@ namespace Vortice.Vulkan;
 /// <summary>
 /// Structure specifying a three-dimensional extent.
 /// </summary>
-public partial struct VkExtent3D : IEquatable<VkExtent3D>
+partial record struct VkExtent3D : IEquatable<VkExtent3D>
 {
     /// <summary>
     /// An <see cref="VkExtent3D"/> with all of its components set to zero.
@@ -40,36 +40,4 @@ public partial struct VkExtent3D : IEquatable<VkExtent3D>
         this.height = (uint)height;
         this.depth = (uint)depth;
     }
-
-    /// <inheritdoc/>
-    public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is VkExtent3D other && Equals(other);
-
-    /// <inheritdoc/>
-    public readonly bool Equals(VkExtent3D other) => width == other.width && height == other.height && depth == other.depth;
-
-    /// <inheritdoc/>
-    public override readonly int GetHashCode() => HashCode.Combine(width, height, depth);
-
-    /// <inheritdoc/>
-    public override readonly string ToString() => $"{{Width={width},Height={height},Depth={depth}}}";
-
-    /// <summary>
-    /// Compares two <see cref="VkExtent3D"/> objects for equality.
-    /// </summary>
-    /// <param name="left">The <see cref="VkExtent3D"/> on the left hand of the operand.</param>
-    /// <param name="right">The <see cref="VkExtent3D"/> on the right hand of the operand.</param>
-    /// <returns>
-    /// True if the current left is equal to the <paramref name="right"/> parameter; otherwise, false.
-    /// </returns>
-    public static bool operator ==(VkExtent3D left, VkExtent3D right) => left.Equals(right);
-
-    /// <summary>
-    /// Compares two <see cref="VkExtent3D"/> objects for inequality.
-    /// </summary>
-    /// <param name="left">The <see cref="VkExtent3D"/> on the left hand of the operand.</param>
-    /// <param name="right">The <see cref="VkExtent3D"/> on the right hand of the operand.</param>
-    /// <returns>
-    /// True if the current left is unequal to the <paramref name="right"/> parameter; otherwise, false.
-    /// </returns>
-    public static bool operator !=(VkExtent3D left, VkExtent3D right) => !left.Equals(right);
 }

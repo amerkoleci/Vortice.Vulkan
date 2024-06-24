@@ -4,6 +4,7 @@
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Vortice.Vulkan;
 
@@ -70,7 +71,7 @@ public static unsafe partial class Vulkan
                 return VkResult.ErrorInitializationFailed;
         }
 
-        vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, sbyte*, IntPtr>)_loader.LoadFunctionPointer(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+        vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, byte*, IntPtr>)_loader.LoadFunctionPointer(s_vulkanModule, nameof(vkGetInstanceProcAddr));
         GenLoadLoader(0, vkGetInstanceProcAddr);
 
         return VkResult.Success;
@@ -87,7 +88,7 @@ public static unsafe partial class Vulkan
         s_loadedInstance = instance;
         GenLoadInstance(instance.Handle, vkGetInstanceProcAddr);
 
-        vkGetDeviceProcAddr_ptr = (delegate* unmanaged<VkDevice, sbyte*, IntPtr>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetDeviceProcAddr));
+        vkGetDeviceProcAddr_ptr = (delegate* unmanaged<VkDevice, byte*, IntPtr>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetDeviceProcAddr));
 
         // Manually loaded entries.
         LoadWin32(instance);
@@ -109,7 +110,7 @@ public static unsafe partial class Vulkan
     private static void GenLoadLoader(nint context, LoadFunction load)
     {
         vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
-        vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<sbyte*, uint*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
+        vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<byte*, uint*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
         vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<uint*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
         vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<uint*, VkResult>)load(context, "vkEnumerateInstanceVersion");
     }
@@ -125,12 +126,12 @@ public static unsafe partial class Vulkan
         return functionPtr;
     }
 
-    internal static delegate* unmanaged<VkInstance, sbyte*, IntPtr> vkGetInstanceProcAddr_ptr;
-    internal static delegate* unmanaged<VkDevice, sbyte*, IntPtr> vkGetDeviceProcAddr_ptr;
+    internal static delegate* unmanaged<VkInstance, byte*, IntPtr> vkGetInstanceProcAddr_ptr;
+    internal static delegate* unmanaged<VkDevice, byte*, IntPtr> vkGetDeviceProcAddr_ptr;
 
-    public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, ReadOnlySpan<sbyte> name)
+    public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, ReadOnlySpan<byte> name)
     {
-        fixed (sbyte* pName = name)
+        fixed (byte* pName = name)
         {
             return (delegate* unmanaged<void>)vkGetInstanceProcAddr_ptr(instance, pName);
         }
@@ -141,14 +142,14 @@ public static unsafe partial class Vulkan
         return vkGetInstanceProcAddr(instance, name.GetUtf8Span());
     }
 
-    public static delegate* unmanaged<void> vkGetDeviceProcAddr(VkDevice device, sbyte* name)
+    public static delegate* unmanaged<void> vkGetDeviceProcAddr(VkDevice device, byte* name)
     {
         return (delegate* unmanaged<void>)vkGetDeviceProcAddr_ptr(device, name);
     }
 
-    public static delegate* unmanaged<void> vkGetDeviceProcAddr(VkDevice device, ReadOnlySpan<sbyte> name)
+    public static delegate* unmanaged<void> vkGetDeviceProcAddr(VkDevice device, ReadOnlySpan<byte> name)
     {
-        fixed (sbyte* pName = name)
+        fixed (byte* pName = name)
         {
             return (delegate* unmanaged<void>)vkGetDeviceProcAddr_ptr(device, pName);
         }
@@ -161,7 +162,29 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkEnumerateInstanceExtensionProperties(uint* propertyCount, VkExtensionProperties* properties)
     {
-        return vkEnumerateInstanceExtensionProperties_ptr((sbyte*)null, propertyCount, properties);
+        return vkEnumerateInstanceExtensionProperties_ptr((byte*)null, propertyCount, properties);
+    }
+
+    /// <summary>
+    /// Returns up to requested number of global extension properties
+    /// </summary>
+    /// <param name="layerName">Is either null/empty or a string naming the layer to retrieve extensions from.</param>
+    /// <returns>A <see cref="ReadOnlySpan{VkExtensionProperties}"/> </returns>
+    /// <exception cref="VkException">Vulkan returns an error code.</exception>
+    public static ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties(ReadOnlySpanUtf8 layerName)
+    {
+        byte* pLayerName = layerName;
+
+        uint count = 0;
+        vkEnumerateInstanceExtensionProperties(pLayerName, &count, null).CheckResult();
+
+        ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[count];
+        fixed (VkExtensionProperties* ptr = properties)
+        {
+            vkEnumerateInstanceExtensionProperties(pLayerName, &count, ptr).CheckResult();
+        }
+
+        return properties;
     }
 
     /// <summary>
@@ -174,21 +197,7 @@ public static unsafe partial class Vulkan
     {
         if (layerName is not null)
         {
-            ReadOnlySpan<sbyte> layerNameSpan = layerName.GetUtf8Span();
-
-            fixed (sbyte* pLayerName = layerNameSpan)
-            {
-                uint count = 0;
-                vkEnumerateInstanceExtensionProperties(pLayerName, &count, null).CheckResult();
-
-                ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[count];
-                fixed (VkExtensionProperties* ptr = properties)
-                {
-                    vkEnumerateInstanceExtensionProperties(pLayerName, &count, ptr).CheckResult();
-                }
-
-                return properties;
-            }
+            return vkEnumerateInstanceExtensionProperties(new ReadOnlySpanUtf8(Encoding.UTF8.GetBytes(layerName)));
         }
         else
         {
@@ -216,9 +225,9 @@ public static unsafe partial class Vulkan
     {
         if (layerName is not null)
         {
-            ReadOnlySpan<sbyte> layerNameSpan = layerName.GetUtf8Span();
+            ReadOnlySpan<byte> layerNameSpan = layerName.GetUtf8Span();
 
-            fixed (sbyte* playerName = layerNameSpan)
+            fixed (byte* playerName = layerNameSpan)
             {
                 uint propertyCount = 0;
                 vkEnumerateDeviceExtensionProperties(physicalDevice, playerName, &propertyCount, null).CheckResult();
@@ -702,7 +711,7 @@ public static unsafe partial class Vulkan
         vkCmdSetViewport_ptr(commandBuffer, firstViewport, (uint)viewportCount, (VkViewport*)viewports);
     }
 
-    public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, int x, int y, int width, int height)
+    public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, int x, int y, uint width, uint height)
     {
         VkRect2D scissor = new(x, y, width, height);
         vkCmdSetScissor_ptr(commandBuffer, 0, 1, &scissor);
@@ -774,9 +783,9 @@ public static unsafe partial class Vulkan
         }
     }
 
-    public static VkResult vkSetDebugUtilsObjectNameEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, ReadOnlySpan<sbyte> label)
+    public static VkResult vkSetDebugUtilsObjectNameEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, ReadOnlySpan<byte> label)
     {
-        fixed (sbyte* pName = label)
+        fixed (byte* pName = label)
         {
             VkDebugUtilsObjectNameInfoEXT info = new()
             {
@@ -790,7 +799,7 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkSetDebugUtilsObjectNameEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, string? label = default)
     {
-        fixed (sbyte* pName = label.GetUtf8Span())
+        fixed (byte* pName = label.GetUtf8Span())
         {
             VkDebugUtilsObjectNameInfoEXT info = new()
             {

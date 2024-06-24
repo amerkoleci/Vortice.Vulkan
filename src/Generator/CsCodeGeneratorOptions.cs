@@ -10,7 +10,7 @@ public sealed class CsCodeGeneratorOptions
     public string? Namespace { get; set; }
     public bool PublicVisiblity { get; set; } = true;
     public bool GenerateFunctionPointers { get; set; } = false;
-    public bool ReadOnlySpanForStrings { get; set; } = false;
+    public bool ReadOnlyMemoryUtf8ForStrings { get; set; } = false;
 
     public bool IsVulkan { get; set; } = false;
     public List<string> ExtraUsings { get; } = [];

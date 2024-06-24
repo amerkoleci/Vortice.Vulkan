@@ -40,7 +40,6 @@ public unsafe partial struct VkPipelineDepthStencilStateCreateInfo
         VkPipelineDepthStencilStateCreateFlags flags = VkPipelineDepthStencilStateCreateFlags.None,
         void* pNext = default)
     {
-        this.sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
         this.flags = flags;
         this.pNext = pNext;
         this.depthTestEnable = depthTestEnable;
@@ -64,7 +63,6 @@ public unsafe partial struct VkPipelineDepthStencilStateCreateInfo
         VkPipelineDepthStencilStateCreateFlags flags = VkPipelineDepthStencilStateCreateFlags.None,
         void* pNext = default)
     {
-        this.sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
         this.flags = flags;
         this.pNext = pNext;
         this.depthTestEnable = depthTestEnable;
@@ -91,7 +89,6 @@ public unsafe partial struct VkPipelineDepthStencilStateCreateInfo
         VkPipelineDepthStencilStateCreateFlags flags = VkPipelineDepthStencilStateCreateFlags.None,
         void* pNext = default)
     {
-        this.sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
         this.flags = flags;
         this.pNext = pNext;
         this.depthTestEnable = depthTestEnable;

@@ -7,31 +7,18 @@ namespace Vortice.Vulkan;
 
 public unsafe readonly struct VkStringArray : IDisposable
 {
-    private readonly VkString[] _data;
+    private readonly ReadOnlyMemoryUtf8[] _data;
 
     public VkStringArray(IReadOnlyList<string> array)
     {
         Length = (uint)array.Count;
         Pointer = NativeMemory.Alloc((nuint)(sizeof(nint) * Length));
-        _data = new VkString[Length];
+        _data = new ReadOnlyMemoryUtf8[Length];
 
         for (int i = 0; i < array.Count; i++)
         {
-            _data[i] = array[i];
-            ((sbyte**)Pointer)[i] = _data[i].Pointer;
-        }
-    }
-
-    public VkStringArray(string[] array)
-    {
-        Length = (uint)array.Length;
-        Pointer = NativeMemory.Alloc((nuint)(sizeof(nint) * Length));
-        _data = new VkString[Length];
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            _data[i] = array[i];
-            ((sbyte**)Pointer)[i] = _data[i].Pointer;
+            _data[i] = Interop.GetUtf8Span(array[i]);
+            ((byte**)Pointer)[i] = _data[i].Buffer;
         }
     }
 
@@ -43,7 +30,7 @@ public unsafe readonly struct VkStringArray : IDisposable
         NativeMemory.Free(Pointer);
     }
 
-    public VkString this[int index]
+    public ReadOnlyMemoryUtf8 this[int index]
     {
         get
         {
@@ -54,7 +41,6 @@ public unsafe readonly struct VkStringArray : IDisposable
 
             return _data[index];
         }
-
         set
         {
             if (index < 0 || index >= Length)
@@ -63,9 +49,9 @@ public unsafe readonly struct VkStringArray : IDisposable
             }
 
             _data[index] = value;
-            ((sbyte**)Pointer)[index] = value;
+            ((byte**)Pointer)[index] = value.Buffer;
         }
     }
 
-    public static implicit operator sbyte**(VkStringArray arr) => (sbyte**)arr.Pointer;
+    public static implicit operator byte**(VkStringArray arr) => (byte**)arr.Pointer;
 }

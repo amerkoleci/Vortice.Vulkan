@@ -14,7 +14,6 @@ public partial struct VkPipelineVertexInputStateCreateInfo
         void* pNext = default,
         VkPipelineVertexInputStateCreateFlags flags = VkPipelineVertexInputStateCreateFlags.None)
     {
-        sType = VkStructureType.PipelineVertexInputStateCreateInfo;
         this.pNext = pNext;
         this.flags = flags;
         this.vertexBindingDescriptionCount = vertexBindingDescriptionCount;

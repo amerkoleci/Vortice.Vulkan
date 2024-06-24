@@ -16,7 +16,6 @@ public partial struct VkMappedMemoryRange
         ulong size = VK_WHOLE_SIZE,
         void* pNext = default)
     {
-        sType = VkStructureType.MappedMemoryRange;
         this.pNext = pNext;
         this.memory = memory;
         this.offset = offset;

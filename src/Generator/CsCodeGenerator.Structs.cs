@@ -8,6 +8,15 @@ namespace Generator;
 
 public static partial class CsCodeGenerator
 {
+    private static readonly HashSet<string> _structsAsRecord =
+    [
+        "VkOffset2D",
+        "VkOffset3D",
+        "VkExtent2D",
+        "VkExtent3D",
+        "VkRect2D",
+    ];
+
     private static void GenerateStructAndUnions(CppCompilation compilation)
     {
         if (compilation.Classes.Count == 0)
@@ -99,6 +108,11 @@ public static partial class CsCodeGenerator
             isReadOnly = true;
         }
 
+        if(_structsAsRecord.Contains(cppClass.Name))
+        {
+            modifier += " record";
+        }
+
         string interfaceSubclass = string.Empty;
         if (hasSType && hasPNext)
             interfaceSubclass = " : IStructureType, IChainType";
@@ -111,53 +125,14 @@ public static partial class CsCodeGenerator
         {
             foreach (CppField cppField in cppClass.Fields)
             {
-                WriteField(writer, cppField, hasSType, isUnion, isReadOnly);
+                WriteField(writer, structName, cppField, hasSType, isUnion, isReadOnly);
             }
 
             if (hasSType)
             {
-                string structureTypeValue = structName;
-                if (structureTypeValue.StartsWith("Vk"))
-                {
-                    structureTypeValue = structureTypeValue.Substring(2);
-                }
-                if (structureTypeValue.EndsWith("ANDROID"))
-                {
-                    structureTypeValue = structureTypeValue.Replace("ANDROID", "Android");
-                }
-                if (structureTypeValue == "ImportMemoryFdInfoKHR")
-                {
-                    structureTypeValue = "ImportMemoryFDInfoKHR";
-                }
-                else if (structureTypeValue == "MemoryFdPropertiesKHR")
-                {
-                    structureTypeValue = "MemoryFDPropertiesKHR";
-                }
-                else if (structureTypeValue == "MemoryGetFdInfoKHR")
-                {
-                    structureTypeValue = "MemoryGetFDInfoKHR";
-                }
-                else if (structureTypeValue == "ImportSemaphoreFdInfoKHR")
-                {
-                    structureTypeValue = "ImportSemaphoreFDInfoKHR";
-                }
-                else if (structureTypeValue == "SemaphoreGetFdInfoKHR")
-                {
-                    structureTypeValue = "SemaphoreGetFDInfoKHR";
-                }
-                else if (structureTypeValue == "ImportFenceFdInfoKHR")
-                {
-                    structureTypeValue = "ImportFenceFDInfoKHR";
-                }
-                else if (structureTypeValue == "FenceGetFdInfoKHR")
-                {
-                    structureTypeValue = "FenceGetFDInfoKHR";
-                }
-
                 writer.WriteLine();
                 using (writer.PushBlock($"public {structName}()"))
                 {
-                    writer.WriteLine($"sType = VkStructureType.{structureTypeValue};");
                 }
 
                 writer.WriteLine();
@@ -178,7 +153,7 @@ public static partial class CsCodeGenerator
         }
     }
 
-    private static void WriteField(CodeWriter writer, CppField field, bool handleSType, bool isUnion = false, bool isReadOnly = false)
+    private static void WriteField(CodeWriter writer, string structName, CppField field, bool handleSType, bool isUnion = false, bool isReadOnly = false)
     {
         string csFieldName = NormalizeFieldName(field.Name);
 
@@ -373,12 +348,51 @@ public static partial class CsCodeGenerator
             string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
 
             string modifier = "public";
+            string fieldInitializer = string.Empty;
             if (handleSType && csFieldName == "sType")
             {
-                modifier = "internal";
+                string structureTypeValue = structName;
+                if (structureTypeValue.StartsWith("Vk"))
+                {
+                    structureTypeValue = structureTypeValue.Substring(2);
+                }
+                if (structureTypeValue.EndsWith("ANDROID"))
+                {
+                    structureTypeValue = structureTypeValue.Replace("ANDROID", "Android");
+                }
+                if (structureTypeValue == "ImportMemoryFdInfoKHR")
+                {
+                    structureTypeValue = "ImportMemoryFDInfoKHR";
+                }
+                else if (structureTypeValue == "MemoryFdPropertiesKHR")
+                {
+                    structureTypeValue = "MemoryFDPropertiesKHR";
+                }
+                else if (structureTypeValue == "MemoryGetFdInfoKHR")
+                {
+                    structureTypeValue = "MemoryGetFDInfoKHR";
+                }
+                else if (structureTypeValue == "ImportSemaphoreFdInfoKHR")
+                {
+                    structureTypeValue = "ImportSemaphoreFDInfoKHR";
+                }
+                else if (structureTypeValue == "SemaphoreGetFdInfoKHR")
+                {
+                    structureTypeValue = "SemaphoreGetFDInfoKHR";
+                }
+                else if (structureTypeValue == "ImportFenceFdInfoKHR")
+                {
+                    structureTypeValue = "ImportFenceFDInfoKHR";
+                }
+                else if (structureTypeValue == "FenceGetFdInfoKHR")
+                {
+                    structureTypeValue = "FenceGetFDInfoKHR";
+                }
+
+                fieldInitializer = $" = VkStructureType.{structureTypeValue}";
             }
 
-            writer.WriteLine($"{modifier} {fieldPrefix}{csFieldType} {csFieldName};");
+            writer.WriteLine($"{modifier} {fieldPrefix}{csFieldType} {csFieldName}{fieldInitializer};");
         }
     }
 
