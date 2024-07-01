@@ -41,6 +41,7 @@ public readonly unsafe struct ReadOnlyMemoryUtf8(byte* buffer, int length) : IEq
     /// </summary>
     public ReadOnlySpan<byte> Bytes => new(Buffer, Length);
 
+    /// <inheritdoc />
     public override int GetHashCode()
     {
         var hash = new HashCode();
@@ -80,6 +81,7 @@ public readonly unsafe struct ReadOnlyMemoryUtf8(byte* buffer, int length) : IEq
         return Bytes.SequenceEqual(other.Bytes);
     }
 
+    /// <inheritdoc />
     public override bool Equals(object? obj)
     {
         return obj is ReadOnlyMemoryUtf8 other && Equals(other);

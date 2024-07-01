@@ -11,47 +11,72 @@ namespace Vortice.Vulkan;
 
 unsafe partial class Vma
 {
-    private const string LibName = "vma";
-    private static nint s_nativeLibrary;
+    private const DllImportSearchPath DefaultDllImportSearchPath = DllImportSearchPath.ApplicationDirectory | DllImportSearchPath.UserDirectories | DllImportSearchPath.UseDllDirectoryForDependencies;
 
-    public static VkResult vmaInitialize(string? libraryName = default)
+    /// <summary>
+    /// Raised whenever a native library is loaded by VMA. Handlers can be added to this event to customize how libraries are loaded, and they will be used first whenever a new native library is being resolved.
+    /// </summary>
+    public static event DllImportResolver? VmaDllImporterResolver;
+
+    private const string LibName = "vma";
+
+    static Vma()
     {
-        if (!string.IsNullOrEmpty(libraryName))
+        NativeLibrary.SetDllImportResolver(typeof(Vma).Assembly, OnDllImport);
+    }
+
+    private static IntPtr OnDllImport(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
+    {
+        if (libraryName != LibName)
         {
-            if (NativeLibrary.TryLoad(libraryName, out s_nativeLibrary))
-            {
-                return VkResult.Success;
-            }
+            return IntPtr.Zero;
+        }
+
+        IntPtr nativeLibrary = IntPtr.Zero;
+        DllImportResolver? resolver = VmaDllImporterResolver;
+        if (resolver != null)
+        {
+            nativeLibrary = resolver(libraryName, assembly, searchPath);
+        }
+
+        if (nativeLibrary != IntPtr.Zero)
+        {
+            return nativeLibrary;
         }
 
         if (OperatingSystem.IsWindows())
         {
-            s_nativeLibrary = NativeLibrary.Load("vma.dll");
-        }
-        else if (OperatingSystem.IsMacOS() || OperatingSystem.IsMacCatalyst())
-        {
-            s_nativeLibrary = NativeLibrary.Load("libvma.dylib");
+            if (NativeLibrary.TryLoad("vma.dll", assembly, searchPath, out nativeLibrary))
+            {
+                return nativeLibrary;
+            }
         }
         else if (OperatingSystem.IsLinux())
         {
-            s_nativeLibrary = NativeLibrary.Load("libvma.so");
-        }
-        else
-        {
-            if (!NativeLibrary.TryLoad("libvma", out s_nativeLibrary))
+            if (NativeLibrary.TryLoad("libvma.so", assembly, searchPath, out nativeLibrary))
             {
-                if (NativeLibrary.TryLoad("vma", out s_nativeLibrary))
-                {
-                }
+                return nativeLibrary;
+            }
+        }
+        else if (OperatingSystem.IsMacOS() || OperatingSystem.IsMacCatalyst())
+        {
+            if (NativeLibrary.TryLoad("libvma.dylib", assembly, searchPath, out nativeLibrary))
+            {
+                return nativeLibrary;
             }
         }
 
-        if (s_nativeLibrary == 0)
-            return VkResult.ErrorInitializationFailed;
+        if (NativeLibrary.TryLoad("libvma", assembly, searchPath, out nativeLibrary))
+        {
+            return nativeLibrary;
+        }
 
-        LoadEntries();
+        if (NativeLibrary.TryLoad("vma", assembly, searchPath, out nativeLibrary))
+        {
+            return nativeLibrary;
+        }
 
-        return VkResult.Success;
+        return 0;
     }
 
     [SkipLocalsInit]
@@ -93,7 +118,7 @@ unsafe partial class Vma
     {
         fixed (VkPhysicalDeviceProperties** physicalDevicePropertiesPtr = &physicalDeviceProperties)
         {
-            vmaGetPhysicalDeviceProperties_ptr(allocator, physicalDevicePropertiesPtr);
+            vmaGetPhysicalDeviceProperties(allocator, physicalDevicePropertiesPtr);
         }
     }
 
@@ -102,7 +127,7 @@ unsafe partial class Vma
     {
         fixed (VkPhysicalDeviceMemoryProperties** physicalDeviceMemoryPropertiesPtr = &physicalDeviceMemoryProperties)
         {
-            vmaGetMemoryProperties_ptr(allocator, physicalDeviceMemoryPropertiesPtr);
+            vmaGetMemoryProperties(allocator, physicalDeviceMemoryPropertiesPtr);
         }
     }
 
@@ -167,7 +192,7 @@ unsafe partial class Vma
         fixed (VmaAllocationCreateInfo* allocationCreateInfoPtr = &allocationCreateInfo)
         fixed (VkBuffer* bufferPtr = &buffer)
         fixed (VmaAllocation* allocationPtr = &allocation)
-            return vmaCreateBuffer_ptr(allocator, bufferCreateInfoPtr, allocationCreateInfoPtr, bufferPtr, allocationPtr, pAllocationInfo);
+            return vmaCreateBuffer(allocator, bufferCreateInfoPtr, allocationCreateInfoPtr, bufferPtr, allocationPtr, pAllocationInfo);
     }
 
     public static VkResult vmaCreateBufferWithAlignment(
@@ -186,7 +211,7 @@ unsafe partial class Vma
         fixed (VmaAllocationCreateInfo* allocationCreateInfoPtr = &allocationCreateInfo)
         fixed (VkBuffer* bufferPtr = &buffer)
         fixed (VmaAllocation* allocationPtr = &allocation)
-            return vmaCreateBufferWithAlignment_ptr(allocator, bufferCreateInfoPtr, allocationCreateInfoPtr, minAlignment, bufferPtr, allocationPtr, pAllocationInfo);
+            return vmaCreateBufferWithAlignment(allocator, bufferCreateInfoPtr, allocationCreateInfoPtr, minAlignment, bufferPtr, allocationPtr, pAllocationInfo);
     }
 
     public static VkResult vmaCreateImage(
@@ -218,6 +243,6 @@ unsafe partial class Vma
         fixed (VmaAllocationCreateInfo* allocationCreateInfoPtr = &allocationCreateInfo)
         fixed (VkImage* imagePtr = &image)
         fixed (VmaAllocation* allocationPtr = &allocation)
-            return vmaCreateImage_ptr(allocator, imageCreateInfoPtr, allocationCreateInfoPtr, imagePtr, allocationPtr, pAllocationInfo);
+            return vmaCreateImage(allocator, imageCreateInfoPtr, allocationCreateInfoPtr, imagePtr, allocationPtr, pAllocationInfo);
     }
 }

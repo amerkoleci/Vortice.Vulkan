@@ -27,6 +27,7 @@ public readonly ref struct ReadOnlySpanUtf8(ReadOnlySpan<byte> span)
     /// </summary>
     public ReadOnlySpan<byte> Bytes => _span;
 
+    /// <inheritdoc />
     public override int GetHashCode()
     {
         var hash = new HashCode();

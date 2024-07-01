@@ -17,6 +17,11 @@ public static unsafe partial class Vulkan
     private static VkInstance s_loadedInstance = VkInstance.Null;
     private static VkDevice s_loadedDevice = VkDevice.Null;
 
+    /// <summary>
+    /// The VK_LAYER_KHRONOS_validation extension name.
+    /// </summary>
+    public static ReadOnlyMemoryUtf8 VK_LAYER_KHRONOS_VALIDATION_EXTENSION_NAME => "VK_LAYER_KHRONOS_validation"u8;
+
     public const uint VK_TRUE = 1;
     public const uint VK_FALSE = 0;
 
