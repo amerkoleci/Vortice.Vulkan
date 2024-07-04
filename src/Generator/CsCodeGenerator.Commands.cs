@@ -439,12 +439,17 @@ public static partial class CsCodeGenerator
     }
 
 
-    private static void EmitInvoke(CodeWriter writer, CppFunction function, List<string> parameters, bool handleCheckResult = true)
+    private static void EmitInvoke(
+        CodeWriter writer,
+        CppFunction cppFunction,
+        List<string> parameters,
+        bool handleCheckResult = true,
+        bool emitReturn = false)
     {
-        var postCall = string.Empty;
+        string postCall = string.Empty;
         if (handleCheckResult)
         {
-            var hasResultReturn = GetCsTypeName(function.ReturnType) == "VkResult";
+            var hasResultReturn = GetCsTypeName(cppFunction.ReturnType) == "VkResult";
             if (hasResultReturn)
             {
                 postCall = ".CheckResult()";
@@ -452,7 +457,7 @@ public static partial class CsCodeGenerator
         }
 
         int index = 0;
-        var callArgumentStringBuilder = new StringBuilder();
+        StringBuilder callArgumentStringBuilder = new();
         foreach (string? parameterName in parameters)
         {
             callArgumentStringBuilder.Append(parameterName);
@@ -465,8 +470,17 @@ public static partial class CsCodeGenerator
             index++;
         }
 
+        if (emitReturn)
+        {
+            string returnCsName = GetCsTypeName(cppFunction.ReturnType);
+            if (returnCsName != "void")
+            {
+                writer.Write("return ");
+            }
+        }
+
         string callArgumentString = callArgumentStringBuilder.ToString();
-        writer.WriteLine($"{function.Name}_ptr({callArgumentString}){postCall};");
+        writer.WriteLine($"{cppFunction.Name}_ptr({callArgumentString}){postCall};");
     }
 
     private static bool IsInstanceFunction(string name)

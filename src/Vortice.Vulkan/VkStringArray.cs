@@ -2,56 +2,82 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Vortice.Vulkan;
 
 public unsafe readonly struct VkStringArray : IDisposable
 {
-    private readonly ReadOnlyMemoryUtf8[] _data;
+    private readonly byte** _data;
+    public readonly uint Length;
 
-    public VkStringArray(IReadOnlyList<string> array)
+    public VkStringArray(IList<string> strings)
     {
-        Length = (uint)array.Count;
-        Pointer = NativeMemory.Alloc((nuint)(sizeof(nint) * Length));
-        _data = new ReadOnlyMemoryUtf8[Length];
+        Length = (uint)strings.Count;
+        _data = (byte**)NativeMemory.Alloc((nuint)(strings.Count * sizeof(byte*)));
 
-        for (int i = 0; i < array.Count; i++)
+        for (int i = 0; i < Length; i++)
         {
-            _data[i] = Interop.GetUtf8Span(array[i]);
-            ((byte**)Pointer)[i] = _data[i].Buffer;
+            ReadOnlySpan<char> source = strings[i];
+            int maxLength = Encoding.UTF8.GetMaxByteCount(source.Length);
+            Span<byte> bytes = new byte[maxLength + 1];
+
+            int length = Encoding.UTF8.GetBytes(source, bytes);
+
+            uint size = (uint)(bytes.Length + 1) * sizeof(byte);
+            _data[i] = (byte*)NativeMemory.Alloc(size);
+
+            fixed (byte* pBytes = bytes)
+            {
+                NativeMemory.Copy(pBytes, _data[i], size);
+            }
         }
     }
 
-    public readonly uint Length;
-    public readonly void* Pointer;
+    public VkStringArray(IList<VkUtf8String> strings)
+    {
+        Length = (uint)strings.Count;
+        _data = (byte**)NativeMemory.Alloc((nuint)(strings.Count * sizeof(byte*)));
+
+        for (int i = 0; i < Length; i++)
+        {
+            ReadOnlySpan<byte> bytes = strings[i].Span;
+
+            uint size = (uint)(bytes.Length + 1) * sizeof(byte);
+            _data[i] = (byte*)NativeMemory.Alloc(size);
+
+            fixed (byte* pBytes = bytes)
+            {
+                NativeMemory.Copy(pBytes, _data[i], size);
+            }
+        }
+    }
 
     public void Dispose()
     {
-        NativeMemory.Free(Pointer);
+        for (int i = 0; i < Length; i++)
+            NativeMemory.Free(_data[i]);
+
+        NativeMemory.Free(_data);
     }
 
-    public ReadOnlyMemoryUtf8 this[int index]
+    public override string ToString()
     {
-        get
-        {
-            if (index < 0 || index >= Length)
-            {
-                throw new IndexOutOfRangeException();
-            }
+        StringBuilder builder = new("[");
 
-            return _data[index];
-        }
-        set
+        for (int i = 0; i < Length; i++)
         {
-            if (index < 0 || index >= Length)
-            {
-                throw new IndexOutOfRangeException();
-            }
+            builder.Append(new string((sbyte*)_data[i]));
 
-            _data[index] = value;
-            ((byte**)Pointer)[index] = value.Buffer;
+            if (i < Length - 1)
+                builder.Append(", ");
         }
+
+        builder.Append(']');
+
+        return builder.ToString();
     }
 
-    public static implicit operator byte**(VkStringArray arr) => (byte**)arr.Pointer;
+    public static implicit operator byte**(VkStringArray pStringArray)
+        => pStringArray._data;
 }

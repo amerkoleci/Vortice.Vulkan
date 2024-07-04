@@ -182,7 +182,7 @@ public static partial class CsCodeGenerator
                 }
 
                 string modifier = "const";
-                string csDataType = _options.ReadOnlyMemoryUtf8ForStrings ? "ReadOnlyMemoryUtf8" : "string";
+                string csDataType = _options.ReadOnlyMemoryUtf8ForStrings ? "ReadOnlySpan<byte>" : "string";
 
                 string macroValue = NormalizeEnumValue(cppMacro.Value);
                 if (macroValue.EndsWith("F", StringComparison.OrdinalIgnoreCase))
@@ -306,7 +306,7 @@ public static partial class CsCodeGenerator
                 else
                 {
                     string assignValue = "=";
-                    if (csDataType == "ReadOnlyMemoryUtf8")
+                    if (csDataType == "ReadOnlySpan<byte>")
                     {
                         modifier = "static";
                         macroValue += "u8";

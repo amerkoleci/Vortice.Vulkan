@@ -2596,6 +2596,9 @@ public enum VkObjectType
 
 public enum VkVendorId
 {
+	/// <summary>
+	/// Khronos vendor ID
+	/// </summary>
 	/// <unmanaged>VK_VENDOR_ID_KHRONOS</unmanaged>
 	Khronos = 0x10000,
 	/// <summary>
@@ -5049,9 +5052,6 @@ public enum VkColorComponentFlags
 	All = R | G | B | A
 }
 
-/// <summary>
-/// Note that the gap at bitpos 10 is unused, and can be reserved
-/// </summary>
 [Flags]
 public enum VkPipelineCreateFlags
 {
@@ -5980,8 +5980,14 @@ public enum VkDriverId
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA</unmanaged>
 	ImaginationOpenSourceMESA = 25,
+	/// <summary>
+	/// Mesa open source project
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_HONEYKRISP</unmanaged>
 	MESAHoneykrisp = 26,
+	/// <summary>
+	/// Reserved for undisclosed driver project
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_RESERVED_27</unmanaged>
 	Reserved27 = 27,
 	/// <unmanaged>VK_DRIVER_ID_AMD_PROPRIETARY_KHR</unmanaged>

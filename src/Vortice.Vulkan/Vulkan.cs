@@ -20,7 +20,7 @@ public static unsafe partial class Vulkan
     /// <summary>
     /// The VK_LAYER_KHRONOS_validation extension name.
     /// </summary>
-    public static ReadOnlyMemoryUtf8 VK_LAYER_KHRONOS_VALIDATION_EXTENSION_NAME => "VK_LAYER_KHRONOS_validation"u8;
+    public static ReadOnlySpan<byte> VK_LAYER_KHRONOS_VALIDATION_EXTENSION_NAME => "VK_LAYER_KHRONOS_validation"u8;
 
     public const uint VK_TRUE = 1;
     public const uint VK_FALSE = 0;
@@ -170,52 +170,42 @@ public static unsafe partial class Vulkan
         return vkEnumerateInstanceExtensionProperties_ptr((byte*)null, propertyCount, properties);
     }
 
-    /// <summary>
-    /// Returns up to requested number of global extension properties
-    /// </summary>
-    /// <param name="layerName">Is either null/empty or a string naming the layer to retrieve extensions from.</param>
-    /// <returns>A <see cref="ReadOnlySpan{VkExtensionProperties}"/> </returns>
-    /// <exception cref="VkException">Vulkan returns an error code.</exception>
-    public static ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties(ReadOnlySpanUtf8 layerName)
+    [SkipLocalsInit]
+    public static VkResult vkEnumerateInstanceExtensionProperties(out uint propertyCount)
     {
-        byte* pLayerName = layerName;
-
-        uint count = 0;
-        vkEnumerateInstanceExtensionProperties(pLayerName, &count, null).CheckResult();
-
-        ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[count];
-        fixed (VkExtensionProperties* ptr = properties)
+        Unsafe.SkipInit(out propertyCount);
+        fixed (uint* propertyCountPtr = &propertyCount)
         {
-            vkEnumerateInstanceExtensionProperties(pLayerName, &count, ptr).CheckResult();
+            return vkEnumerateInstanceExtensionProperties_ptr((byte*)null, propertyCountPtr, default);
         }
-
-        return properties;
     }
 
-    /// <summary>
-    /// Returns up to requested number of global extension properties
-    /// </summary>
-    /// <param name="layerName">Is either null/empty or a string naming the layer to retrieve extensions from.</param>
-    /// <returns>A <see cref="ReadOnlySpan{VkExtensionProperties}"/> </returns>
-    /// <exception cref="VkException">Vulkan returns an error code.</exception>
-    public static ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties(string? layerName = null)
+    public static VkResult vkEnumerateInstanceExtensionProperties(Span<VkExtensionProperties> properties)
     {
-        if (layerName is not null)
+        uint propertiesCount = checked((uint)properties.Length);
+        fixed (VkExtensionProperties* propertiesPtr = properties)
         {
-            return vkEnumerateInstanceExtensionProperties(new ReadOnlySpanUtf8(Encoding.UTF8.GetBytes(layerName)));
+            return vkEnumerateInstanceExtensionProperties_ptr((byte*)null, &propertiesCount, propertiesPtr);
         }
-        else
+    }
+
+    [SkipLocalsInit]
+    public static VkResult vkEnumerateInstanceExtensionProperties(VkUtf8ReadOnlyString layerName, out uint propertyCount)
+    {
+        Unsafe.SkipInit(out propertyCount);
+        fixed (uint* propertyCountPtr = &propertyCount)
         {
-            uint count = 0;
-            vkEnumerateInstanceExtensionProperties(null, &count, null).CheckResult();
+            return vkEnumerateInstanceExtensionProperties_ptr(layerName, propertyCountPtr, default);
+        }
+    }
 
-            ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[count];
-            fixed (VkExtensionProperties* ptr = properties)
-            {
-                vkEnumerateInstanceExtensionProperties(null, &count, ptr).CheckResult();
-            }
-
-            return properties;
+    [SkipLocalsInit]
+    public static VkResult vkEnumerateInstanceExtensionProperties(VkUtf8ReadOnlyString layerName, Span<VkExtensionProperties> properties)
+    {
+        uint propertiesCount = checked((uint)properties.Length);
+        fixed (VkExtensionProperties* propertiesPtr = properties)
+        {
+            return vkEnumerateInstanceExtensionProperties_ptr(layerName, &propertiesCount, propertiesPtr);
         }
     }
 

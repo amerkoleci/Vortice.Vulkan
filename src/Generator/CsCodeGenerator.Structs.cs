@@ -89,10 +89,6 @@ public static partial class CsCodeGenerator
         {
             writer.WriteLine("[StructLayout(LayoutKind.Explicit)]");
         }
-        else
-        {
-            writer.WriteLine("[StructLayout(LayoutKind.Sequential)]");
-        }
 
         bool isReadOnly = false;
 

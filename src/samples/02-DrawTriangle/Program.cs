@@ -40,7 +40,7 @@ public static unsafe class Program
 
             // Create pipeline
             {
-                ReadOnlySpanUtf8 entryPoint = "main"u8;
+                VkUtf8ReadOnlyString entryPoint = "main"u8;
 
                 CreateShaderModule("triangle.vert", out VkShaderModule vertexShader);
                 CreateShaderModule("triangle.frag", out VkShaderModule fragmentShader);

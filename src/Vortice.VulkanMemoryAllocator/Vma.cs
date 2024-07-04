@@ -139,7 +139,7 @@ unsafe partial class Vma
         }
     }
 
-    public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, ReadOnlySpanUtf8 name)
+    public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, VkUtf8ReadOnlyString name)
     {
         byte* namePtr = name;
         vmaSetAllocationName(allocator, allocation, namePtr);
@@ -147,7 +147,7 @@ unsafe partial class Vma
 
     public static void vmaSetAllocationName(VmaAllocator allocator, VmaAllocation allocation, string name)
     {
-        vmaSetAllocationName(allocator, allocation, new ReadOnlySpanUtf8(Encoding.UTF8.GetBytes(name)));
+        vmaSetAllocationName(allocator, allocation, new VkUtf8ReadOnlyString(Encoding.UTF8.GetBytes(name)));
     }
 
     public static VkResult vmaCreateBuffer(

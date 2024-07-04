@@ -49,40 +49,4 @@ unsafe partial class Vulkan
             throw new VkException(result, message);
         }
     }
-
-    public static string GetExtensionName(this VkExtensionProperties properties)
-    {
-        return Interop.GetString(properties.extensionName, 256)!;
-    }
-
-    public static string GetLayerName(this VkLayerProperties properties)
-    {
-        return Interop.GetString(properties.layerName, 256)!;
-    }
-
-    public static string GetDeviceName(this VkPhysicalDeviceProperties properties)
-    {
-        return Interop.GetString(properties.deviceName, 256)!;
-    }
-
-    public static string GetDescription(this VkLayerProperties properties)
-    {
-        return Interop.GetString(properties.description, 256)!;
-    }
-
-    public static uint IndexOf(this VkPhysicalDeviceMemoryProperties memoryProperties, int memoryTypeBits, VkMemoryPropertyFlags properties)
-    {
-        uint count = memoryProperties.memoryTypeCount;
-        for (uint i = 0; i < count; i++)
-        {
-            if ((memoryTypeBits & 1) == 1 &&
-                (memoryProperties.memoryTypes[(int)i].propertyFlags & properties) == properties)
-            {
-                return i;
-            }
-            memoryTypeBits >>= 1;
-        }
-
-        return uint.MaxValue;
-    }
 }

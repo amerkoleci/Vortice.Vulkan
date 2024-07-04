@@ -62,7 +62,7 @@ public static partial class CsCodeGenerator
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "VkHelpers.cs"),
             false,
             _options.Namespace,
-            new[] { "System.Diagnostics", "System.Runtime.InteropServices" }
+            ["System.Diagnostics", "System.Runtime.InteropServices", "System.Runtime.CompilerServices"]
             );
 
         using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))
@@ -79,7 +79,7 @@ public static partial class CsCodeGenerator
                 string countParameterName = string.Empty;
                 string returnArrayTypeName = string.Empty;
                 string returnVariableName = string.Empty;
-                List<CppParameter> newParameters = new();
+                List<CppParameter> newParameters = [];
                 bool hasArrayReturn = false;
                 int countArgumentArrayIndex = 0;
 
@@ -124,8 +124,8 @@ public static partial class CsCodeGenerator
                     StringBuilder argumentsReadOnlySpanBuilder = new();
 
                     int index = 0;
-                    List<string> invokeSingleElementParameters = new();
-                    List<string> invokeElementsParameters = new();
+                    List<string> invokeSingleElementParameters = [];
+                    List<string> invokeElementsParameters = [];
 
                     foreach (CppParameter cppParameter in newParameters)
                     {
@@ -197,17 +197,63 @@ public static partial class CsCodeGenerator
                 else
                 {
                     string argumentsString = GetParameterSignature(newParameters, false, false);
-                    string returnType = $"ReadOnlySpan<{returnArrayTypeName}>";
+                    string extraArgs = string.Empty;
+                    if (!string.IsNullOrEmpty(argumentsString))
+                    {
+                        extraArgs = ", ";
+                    }
 
+                    // Generate function with out only
+                    // Example: public static VkResult vkEnumeratePhysicalDevices(VkInstance instance, out uint pPhysicalDeviceCount);
+                    string returnType = GetCsTypeName(function.ReturnType);
+                    writer.WriteLine($"[SkipLocalsInit]");
+                    using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsString}{extraArgs}out {csCountParameterType} {countParameterName})"))
+                    {
+                        writer.WriteLine($"Unsafe.SkipInit(out {countParameterName});");
+                        using (writer.PushBlock($"fixed ({csCountParameterType}* {countParameterName}Ptr = &{countParameterName})"))
+                        {
+                            List<string> invokeParameters = new(newParameters.Select(item => GetParameterName(item.Name)))
+                            {
+                                $"{countParameterName}Ptr",
+                                "default"
+                            };
+                            EmitInvoke(writer, function, invokeParameters,
+                                handleCheckResult: false,
+                                emitReturn: true);
+                        }
+                    }
+                    writer.WriteLine();
+
+                    // Generate function with Span as parameter
+                    // Example: public static VkResult vkEnumeratePhysicalDevices(VkInstance instance, Span<vulkan.VkPhysicalDevice> pPhysicalDevices)
+                    using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsString}{extraArgs}Span<{returnArrayTypeName}> {returnVariableName})"))
+                    {
+                        writer.WriteLine($"{csCountParameterType} {countParameterName} = checked(({csCountParameterType}){returnVariableName}.Length);");
+                        using (writer.PushBlock($"fixed ({returnArrayTypeName}* {returnVariableName}Ptr = {returnVariableName})"))
+                        {
+                            List<string> invokeParameters = new(newParameters.Select(item => GetParameterName(item.Name)))
+                            {
+                                $"&{countParameterName}",
+                                $"{returnVariableName}Ptr"
+                            };
+                            EmitInvoke(writer, function, invokeParameters,
+                                handleCheckResult: false,
+                                emitReturn: true);
+                        }
+                    }
+                    writer.WriteLine();
+
+                    // Return ReadOnlySpan
+                    returnType = $"ReadOnlySpan<{returnArrayTypeName}>";
                     using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsString})"))
                     {
                         //var csCountParameterType = GetCsTypeName(countParameterType);
                         writer.WriteLine($"{csCountParameterType} {countParameterName} = 0;");
 
-                        var invokeParameters = new List<string>(newParameters.Select(item => GetParameterName(item.Name)))
+                        List<string> invokeParameters = new(newParameters.Select(item => GetParameterName(item.Name)))
                         {
                             $"&{countParameterName}",
-                            "null"
+                            "default"
                         };
 
                         EmitInvoke(writer, function, invokeParameters);

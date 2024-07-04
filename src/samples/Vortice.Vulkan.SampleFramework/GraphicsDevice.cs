@@ -4,9 +4,9 @@
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using static Vortice.Vulkan.Vulkan;
-using SDL;
+using System.Text;
 using static SDL.SDL;
+using static Vortice.Vulkan.Vulkan;
 
 namespace Vortice.Vulkan;
 
@@ -28,12 +28,17 @@ public unsafe sealed class GraphicsDevice : IDisposable
 
     public GraphicsDevice(string applicationName, bool enableValidation, Window window)
     {
-        HashSet<string> availableInstanceLayers = new(EnumerateInstanceLayers());
-        HashSet<string> availableInstanceExtensions = new(GetInstanceExtensions());
+        HashSet<VkUtf8String> availableInstanceLayers = new(EnumerateInstanceLayers());
+        HashSet<VkUtf8String> availableInstanceExtensions = new(GetInstanceExtensions());
 
-        List<string> instanceExtensions = [.. SDL_Vulkan_GetInstanceExtensions()];
+        List<VkUtf8String> instanceExtensions = [];
+        foreach (string sdlExt in SDL_Vulkan_GetInstanceExtensions())
+        {
+            ReadOnlySpan<byte> sdlExtSpan = Encoding.UTF8.GetBytes(sdlExt);
+            instanceExtensions.Add(sdlExtSpan);
+        }
 
-        List<string> instanceLayers = [];
+        List<VkUtf8String> instanceLayers = [];
 
         if (enableValidation)
         {
@@ -42,7 +47,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         }
 
         // Check if VK_EXT_debug_utils is supported, which supersedes VK_EXT_Debug_Report
-        foreach (string availableExtension in availableInstanceExtensions)
+        foreach (VkUtf8String availableExtension in availableInstanceExtensions)
         {
             if (availableExtension == VK_EXT_DEBUG_UTILS_EXTENSION_NAME)
             {
@@ -55,8 +60,8 @@ public unsafe sealed class GraphicsDevice : IDisposable
             }
         }
 
-        ReadOnlySpanUtf8 pApplicationName = Interop.GetUtf8Span(applicationName);
-        ReadOnlySpanUtf8 pEngineName = "Vortice"u8;
+        VkUtf8ReadOnlyString pApplicationName = Encoding.UTF8.GetBytes(applicationName);
+        VkUtf8ReadOnlyString pEngineName = "Vortice"u8;
 
         VkApplicationInfo appInfo = new()
         {
@@ -89,7 +94,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             instanceCreateInfo.pNext = &debugUtilsCreateInfo;
         }
 
-        VkResult result =  vkCreateInstance(&instanceCreateInfo, null, out VkInstance);
+        VkResult result = vkCreateInstance(&instanceCreateInfo, null, out VkInstance);
         if (result != VkResult.Success)
         {
             throw new InvalidOperationException($"Failed to create vulkan instance: {result}");
@@ -111,7 +116,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
             }
         }
 
-        foreach (string extension in instanceExtensions)
+        foreach (VkUtf8String extension in instanceExtensions)
         {
             Log.Info($"Instance extension '{extension}'");
         }
@@ -176,13 +181,14 @@ public unsafe sealed class GraphicsDevice : IDisposable
             };
         }
 
-        List<string> enabledExtensions = new()
+        List<VkUtf8String> enabledExtensions = new()
         {
             VK_KHR_SWAPCHAIN_EXTENSION_NAME
         };
 
         const bool useNewFeatures = false;
         VkPhysicalDeviceFeatures2 deviceFeatures2 = new();
+#if TODO
         if (useNewFeatures)
         {
             VkPhysicalDeviceVulkan11Features features_1_1 = new();
@@ -238,7 +244,8 @@ public unsafe sealed class GraphicsDevice : IDisposable
             }
 
             vkGetPhysicalDeviceFeatures2(PhysicalDevice, &deviceFeatures2);
-        }
+        } 
+#endif
 
         using var deviceExtensionNames = new VkStringArray(enabledExtensions);
 
@@ -381,7 +388,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         VkSemaphore waitSemaphore = _perFrame[_frameIndex].SwapchainAcquireSemaphore;
         VkSemaphore signalSemaphore = _perFrame[_frameIndex].SwapchainReleaseSemaphore;
 
-        VkSubmitInfo submitInfo = new ()
+        VkSubmitInfo submitInfo = new()
         {
             commandBufferCount = 1u,
             pCommandBuffers = &cmd,
@@ -527,26 +534,28 @@ public unsafe sealed class GraphicsDevice : IDisposable
     }
 
     #region Private Methods
-    private static bool CheckDeviceExtensionSupport(string extensionName, ReadOnlySpan<VkExtensionProperties> availableDeviceExtensions)
+    private static bool CheckDeviceExtensionSupport(VkUtf8ReadOnlyString extensionName, ReadOnlySpan<VkExtensionProperties> availableDeviceExtensions)
     {
         foreach (VkExtensionProperties property in availableDeviceExtensions)
         {
-            if (string.Equals(property.GetExtensionName(), extensionName, StringComparison.OrdinalIgnoreCase))
+            if (extensionName == property.extensionName)
                 return true;
         }
 
         return false;
     }
 
-    private static void GetOptimalValidationLayers(HashSet<string> availableLayers, List<string> instanceLayers)
+    private static void GetOptimalValidationLayers(
+        HashSet<VkUtf8String> availableLayers,
+        List<VkUtf8String> instanceLayers)
     {
         // The preferred validation layer is "VK_LAYER_KHRONOS_validation"
-        List<string> validationLayers =
+        List<VkUtf8String> validationLayers =
         [
-            "VK_LAYER_KHRONOS_validation"
+            "VK_LAYER_KHRONOS_validation"u8
         ];
 
-        if (ValidateLayers(validationLayers, availableLayers))
+        if (ValidateLayers(availableLayers, validationLayers))
         {
             instanceLayers.AddRange(validationLayers);
             return;
@@ -555,10 +564,10 @@ public unsafe sealed class GraphicsDevice : IDisposable
         // Otherwise we fallback to using the LunarG meta layer
         validationLayers =
         [
-            "VK_LAYER_LUNARG_standard_validation"
+            "VK_LAYER_LUNARG_standard_validation"u8
         ];
 
-        if (ValidateLayers(validationLayers, availableLayers))
+        if (ValidateLayers(availableLayers, validationLayers))
         {
             instanceLayers.AddRange(validationLayers);
             return;
@@ -567,14 +576,14 @@ public unsafe sealed class GraphicsDevice : IDisposable
         // Otherwise we attempt to enable the individual layers that compose the LunarG meta layer since it doesn't exist
         validationLayers = new()
         {
-            "VK_LAYER_GOOGLE_threading",
-            "VK_LAYER_LUNARG_parameter_validation",
-            "VK_LAYER_LUNARG_object_tracker",
-            "VK_LAYER_LUNARG_core_validation",
-            "VK_LAYER_GOOGLE_unique_objects",
+            "VK_LAYER_GOOGLE_threading"u8,
+            "VK_LAYER_LUNARG_parameter_validation"u8,
+            "VK_LAYER_LUNARG_object_tracker"u8,
+            "VK_LAYER_LUNARG_core_validation"u8,
+            "VK_LAYER_GOOGLE_unique_objects"u8,
         };
 
-        if (ValidateLayers(validationLayers, availableLayers))
+        if (ValidateLayers(availableLayers, validationLayers))
         {
             instanceLayers.AddRange(validationLayers);
             return;
@@ -583,22 +592,25 @@ public unsafe sealed class GraphicsDevice : IDisposable
         // Otherwise as a last resort we fallback to attempting to enable the LunarG core layer
         validationLayers = new()
         {
-            "VK_LAYER_LUNARG_core_validation"
+            "VK_LAYER_LUNARG_core_validation"u8
         };
 
-        if (ValidateLayers(validationLayers, availableLayers))
+        if (ValidateLayers(availableLayers, validationLayers))
         {
             instanceLayers.AddRange(validationLayers);
             return;
         }
     }
 
-    private static bool ValidateLayers(List<string> required, HashSet<string> availableLayers)
+    private static bool ValidateLayers(
+        HashSet<VkUtf8String> availableLayers,
+        List<VkUtf8String> required
+        )
     {
-        foreach (string layer in required)
+        foreach (VkUtf8String layer in required)
         {
             bool found = false;
-            foreach (string availableLayer in availableLayers)
+            foreach (VkUtf8String availableLayer in availableLayers)
             {
                 if (availableLayer == layer)
                 {
@@ -636,7 +648,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
         void* userData)
     {
-        string message = Interop.GetString(pCallbackData->pMessage)!;
+        VkUtf8String message = new VkUtf8String(pCallbackData->pMessage)!;
         if (messageTypes == VkDebugUtilsMessageTypeFlagsEXT.Validation)
         {
             if (messageSeverity == VkDebugUtilsMessageSeverityFlagsEXT.Error)
@@ -735,7 +747,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         }
     }
 
-    private static string[] EnumerateInstanceLayers()
+    private unsafe static VkUtf8String[] EnumerateInstanceLayers()
     {
         if (!IsSupported())
         {
@@ -749,39 +761,45 @@ public unsafe sealed class GraphicsDevice : IDisposable
             return [];
         }
 
-        VkLayerProperties* properties = stackalloc VkLayerProperties[(int)count];
-        vkEnumerateInstanceLayerProperties(&count, properties).CheckResult();
+        VkLayerProperties[] props = new VkLayerProperties[(int)count];
+        vkEnumerateInstanceLayerProperties(props).CheckResult();
 
-        string[] resultExt = new string[count];
+        VkUtf8String[] resultExt = new VkUtf8String[count];
         for (int i = 0; i < count; i++)
         {
-            resultExt[i] = properties[i].GetLayerName();
+            fixed (byte* pLayerName = props[i].layerName)
+            {
+                resultExt[i] = new VkUtf8String(pLayerName);
+            }
         }
 
         return resultExt;
     }
 
-    private static string[] GetInstanceExtensions()
+    private static VkUtf8String[] GetInstanceExtensions()
     {
         uint count = 0;
         VkResult result = vkEnumerateInstanceExtensionProperties(&count, null);
         if (result != VkResult.Success)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         if (count == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
-        VkExtensionProperties* props = stackalloc VkExtensionProperties[(int)count];
-        vkEnumerateInstanceExtensionProperties(&count, props);
+        VkExtensionProperties[] props = new VkExtensionProperties[(int)count];
+        vkEnumerateInstanceExtensionProperties(props);
 
-        string[] extensions = new string[count];
+        VkUtf8String[] extensions = new VkUtf8String[count];
         for (int i = 0; i < count; i++)
         {
-            extensions[i] = props[i].GetExtensionName();
+            fixed (byte* pExtensionName = props[i].extensionName)
+            {
+                extensions[i] = new VkUtf8String(pExtensionName);
+            }
         }
 
         return extensions;

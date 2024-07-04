@@ -115,6 +115,8 @@ unsafe partial class Vulkan
 			case VkFormat.R5G5B5A1UnormPack16: return 2;
 			case VkFormat.B5G5R5A1UnormPack16: return 2;
 			case VkFormat.A1R5G5B5UnormPack16: return 2;
+			case VkFormat.A1B5G5R5UnormPack16KHR: return 2;
+			case VkFormat.A8UnormKHR: return 1;
 			case VkFormat.R8Unorm: return 1;
 			case VkFormat.R8Snorm: return 1;
 			case VkFormat.R8Uscaled: return 1;
@@ -353,7 +355,7 @@ unsafe partial class Vulkan
 			case VkFormat.G16B16R162Plane444Unorm: return 6;
 			case VkFormat.A4R4G4B4UnormPack16: return 2;
 			case VkFormat.A4B4G4R4UnormPack16: return 2;
-			case VkFormat.R16G16S105NV: return 4;
+			case VkFormat.R16G16SFixed5NV: return 4;
 
 			default: return 0;
 		}
@@ -370,6 +372,8 @@ unsafe partial class Vulkan
 			case VkFormat.R5G5B5A1UnormPack16: return 1;
 			case VkFormat.B5G5R5A1UnormPack16: return 1;
 			case VkFormat.A1R5G5B5UnormPack16: return 1;
+			case VkFormat.A1B5G5R5UnormPack16KHR: return 1;
+			case VkFormat.A8UnormKHR: return 1;
 			case VkFormat.R8Unorm: return 1;
 			case VkFormat.R8Snorm: return 1;
 			case VkFormat.R8Uscaled: return 1;
@@ -608,7 +612,7 @@ unsafe partial class Vulkan
 			case VkFormat.G16B16R162Plane444Unorm: return 1;
 			case VkFormat.A4R4G4B4UnormPack16: return 1;
 			case VkFormat.A4B4G4R4UnormPack16: return 1;
-			case VkFormat.R16G16S105NV: return 1;
+			case VkFormat.R16G16SFixed5NV: return 1;
 
 			default: return 0;
 		}
@@ -625,6 +629,8 @@ unsafe partial class Vulkan
 			case VkFormat.R5G5B5A1UnormPack16: return "16-bit";
 			case VkFormat.B5G5R5A1UnormPack16: return "16-bit";
 			case VkFormat.A1R5G5B5UnormPack16: return "16-bit";
+			case VkFormat.A1B5G5R5UnormPack16KHR: return "16-bit";
+			case VkFormat.A8UnormKHR: return "8-bit alpha";
 			case VkFormat.R8Unorm: return "8-bit";
 			case VkFormat.R8Snorm: return "8-bit";
 			case VkFormat.R8Uscaled: return "8-bit";
@@ -863,7 +869,7 @@ unsafe partial class Vulkan
 			case VkFormat.G16B16R162Plane444Unorm: return "16-bit 2-plane 444";
 			case VkFormat.A4R4G4B4UnormPack16: return "16-bit";
 			case VkFormat.A4B4G4R4UnormPack16: return "16-bit";
-			case VkFormat.R16G16S105NV: return "32-bit";
+			case VkFormat.R16G16SFixed5NV: return "32-bit";
 
 			default: return string.Empty;
 		}
@@ -880,6 +886,8 @@ unsafe partial class Vulkan
 			case VkFormat.R5G5B5A1UnormPack16: return 4;
 			case VkFormat.B5G5R5A1UnormPack16: return 4;
 			case VkFormat.A1R5G5B5UnormPack16: return 4;
+			case VkFormat.A1B5G5R5UnormPack16KHR: return 4;
+			case VkFormat.A8UnormKHR: return 1;
 			case VkFormat.R8Unorm: return 1;
 			case VkFormat.R8Snorm: return 1;
 			case VkFormat.R8Uscaled: return 1;
@@ -1118,7 +1126,7 @@ unsafe partial class Vulkan
 			case VkFormat.G16B16R162Plane444Unorm: return 3;
 			case VkFormat.A4R4G4B4UnormPack16: return 4;
 			case VkFormat.A4B4G4R4UnormPack16: return 4;
-			case VkFormat.R16G16S105NV: return 2;
+			case VkFormat.R16G16SFixed5NV: return 2;
 
 			default: return 0;
 		}
@@ -1193,6 +1201,21 @@ unsafe partial class Vulkan
 					case 1: return 5;
 					case 2: return 5;
 					case 3: return 5;
+					default: return 0;
+				}
+			case VkFormat.A1B5G5R5UnormPack16KHR:
+				switch (component)
+				{
+					case 0: return 1;
+					case 1: return 5;
+					case 2: return 5;
+					case 3: return 5;
+					default: return 0;
+				}
+			case VkFormat.A8UnormKHR:
+				switch (component)
+				{
+					case 0: return 8;
 					default: return 0;
 				}
 			case VkFormat.R8Unorm:
@@ -2472,7 +2495,7 @@ unsafe partial class Vulkan
 					case 3: return 4;
 					default: return 0;
 				}
-			case VkFormat.R16G16S105NV:
+			case VkFormat.R16G16SFixed5NV:
 				switch (component)
 				{
 					case 0: return 16;
@@ -2666,6 +2689,8 @@ unsafe partial class Vulkan
 			case VkFormat.R5G5B5A1UnormPack16: return 16;
 			case VkFormat.B5G5R5A1UnormPack16: return 16;
 			case VkFormat.A1R5G5B5UnormPack16: return 16;
+			case VkFormat.A1B5G5R5UnormPack16KHR: return 16;
+			case VkFormat.A8UnormKHR: return 0;
 			case VkFormat.R8Unorm: return 0;
 			case VkFormat.R8Snorm: return 0;
 			case VkFormat.R8Uscaled: return 0;
@@ -2904,7 +2929,7 @@ unsafe partial class Vulkan
 			case VkFormat.G16B16R162Plane444Unorm: return 0;
 			case VkFormat.A4R4G4B4UnormPack16: return 16;
 			case VkFormat.A4B4G4R4UnormPack16: return 16;
-			case VkFormat.R16G16S105NV: return 0;
+			case VkFormat.R16G16SFixed5NV: return 0;
 
 			default: return 0;
 		}

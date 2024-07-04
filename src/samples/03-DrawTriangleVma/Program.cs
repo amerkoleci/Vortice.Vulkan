@@ -35,13 +35,25 @@ public static unsafe class Program
         protected override void Initialize()
         {
             _graphicsDevice = new GraphicsDevice(Name, EnableValidationLayers, MainWindow);
-            vmaInitialize().CheckResult();
 
-            VmaAllocatorCreateInfo allocatorCreateInfo = new();
-            allocatorCreateInfo.vulkanApiVersion = VkVersion.Version_1_2;
-            allocatorCreateInfo.physicalDevice = _graphicsDevice.PhysicalDevice;
-            allocatorCreateInfo.device = _graphicsDevice.VkDevice;
-            allocatorCreateInfo.instance = _graphicsDevice.VkInstance;
+            VmaAllocatorCreateFlags allocatorFlags = VmaAllocatorCreateFlags.None;
+
+            // Core in 1.1
+            allocatorFlags |= VmaAllocatorCreateFlags.KHRDedicatedAllocation | VmaAllocatorCreateFlags.KHRBindMemory2;
+
+            //if (PhysicalDeviceExtensions.MemoryBudget)
+            {
+            //    allocatorFlags |= VmaAllocatorCreateFlags.EXTMemoryBudget;
+            }
+
+            VmaAllocatorCreateInfo allocatorCreateInfo = new()
+            {
+                flags = allocatorFlags,
+                instance = _graphicsDevice.VkInstance,
+                vulkanApiVersion = VkVersion.Version_1_3,
+                physicalDevice = _graphicsDevice.PhysicalDevice,
+                device = _graphicsDevice.VkDevice,
+            };
             vmaCreateAllocator(in allocatorCreateInfo, out _allocator).CheckResult();
 
             VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new();
@@ -49,7 +61,7 @@ public static unsafe class Program
 
             // Create pipeline
             {
-                ReadOnlySpanUtf8 entryPoint = "main"u8;
+                VkUtf8ReadOnlyString entryPoint = "main"u8;
 
                 CreateShaderModule("triangle.vert", out VkShaderModule vertexShader);
                 CreateShaderModule("triangle.frag", out VkShaderModule fragmentShader);

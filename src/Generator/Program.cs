@@ -97,7 +97,7 @@ public static class Program
                 ClassName = "Vma",
                 Namespace = "Vortice.Vulkan",
                 PublicVisiblity = true,
-                GenerateFunctionPointers = true,
+                GenerateFunctionPointers = false,
             };
         }
         else if (outputPath.Contains("Vortice.SpirvCross"))
@@ -155,7 +155,7 @@ public static class Program
                 PublicVisiblity = true,
                 GenerateFunctionPointers = true,
                 IsVulkan = true,
-                ReadOnlyMemoryUtf8ForStrings = false // TODO: Enable
+                ReadOnlyMemoryUtf8ForStrings = true // TODO: Enable
             };
         }
 
