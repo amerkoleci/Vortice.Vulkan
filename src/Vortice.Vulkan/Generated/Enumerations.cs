@@ -8948,6 +8948,18 @@ public enum VkExportMetalObjectTypeFlagsEXT
 	MetalSharedEvent = 0x00000020,
 }
 
+public enum VkFullScreenExclusiveEXT
+{
+	/// <unmanaged>VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT</unmanaged>
+	Default = 0,
+	/// <unmanaged>VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT</unmanaged>
+	Allowed = 1,
+	/// <unmanaged>VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT</unmanaged>
+	Disallowed = 2,
+	/// <unmanaged>VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT</unmanaged>
+	ApplicationControlled = 3,
+}
+
 public enum VkDisplacementMicromapFormatNV
 {
 	/// <unmanaged>VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV</unmanaged>
@@ -9331,18 +9343,6 @@ public enum VkAndroidSurfaceCreateFlagsKHR
 }
 
 [Flags]
-public enum VkIOSSurfaceCreateFlagsMVK
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkMacOSSurfaceCreateFlagsMVK
-{
-	None = 0,
-}
-
-[Flags]
 public enum VkMetalSurfaceCreateFlagsEXT
 {
 	None = 0,
@@ -9350,6 +9350,30 @@ public enum VkMetalSurfaceCreateFlagsEXT
 
 [Flags]
 public enum VkViSurfaceCreateFlagsNN
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkWaylandSurfaceCreateFlagsKHR
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkWin32SurfaceCreateFlagsKHR
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkXcbSurfaceCreateFlagsKHR
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkXlibSurfaceCreateFlagsKHR
 {
 	None = 0,
 }

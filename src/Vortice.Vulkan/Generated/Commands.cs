@@ -642,11 +642,30 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateAndroidSurfaceKHR_ptr;
 	private static delegate* unmanaged<VkDevice, nint, VkAndroidHardwareBufferPropertiesANDROID*, VkResult> vkGetAndroidHardwareBufferPropertiesANDROID_ptr;
 	private static delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, nint, VkResult> vkGetMemoryAndroidHardwareBufferANDROID_ptr;
-	private static delegate* unmanaged<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateIOSSurfaceMVK_ptr;
-	private static delegate* unmanaged<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateMacOSSurfaceMVK_ptr;
 	private static delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateMetalSurfaceEXT_ptr;
 	private static delegate* unmanaged<VkDevice, VkExportMetalObjectsInfoEXT*, void> vkExportMetalObjectsEXT_ptr;
 	private static delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateViSurfaceNN_ptr;
+	private static delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateWaylandSurfaceKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint, nint, VkBool32> vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr;
+	private static delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateWin32SurfaceKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint, VkBool32> vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkMemoryGetWin32HandleInfoKHR*, nint, VkResult> vkGetMemoryWin32HandleKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, nint, VkMemoryWin32HandlePropertiesKHR*, VkResult> vkGetMemoryWin32HandlePropertiesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkImportSemaphoreWin32HandleInfoKHR*, VkResult> vkImportSemaphoreWin32HandleKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkSemaphoreGetWin32HandleInfoKHR*, nint, VkResult> vkGetSemaphoreWin32HandleKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkImportFenceWin32HandleInfoKHR*, VkResult> vkImportFenceWin32HandleKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkFenceGetWin32HandleInfoKHR*, nint, VkResult> vkGetFenceWin32HandleKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceMemory, VkExternalMemoryHandleTypeFlagsNV, nint, VkResult> vkGetMemoryWin32HandleNV_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkPresentModeKHR*, VkResult> vkGetPhysicalDeviceSurfacePresentModes2EXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult> vkAcquireFullScreenExclusiveModeEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult> vkReleaseFullScreenExclusiveModeEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkDeviceGroupPresentModeFlagsKHR*, VkResult> vkGetDeviceGroupSurfacePresentModes2EXT_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkResult> vkAcquireWinrtDisplayNV_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint, VkDisplayKHR*, VkResult> vkGetWinrtDisplayNV_ptr;
+	private static delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateXcbSurfaceKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint, nint, nint, VkBool32> vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr;
+	private static delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult> vkCreateXlibSurfaceKHR_ptr;
+	private static delegate* unmanaged<VkPhysicalDevice, uint, nint, ulong, VkBool32> vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult> vkCreateExecutionGraphPipelinesAMDX_ptr;
 	private static delegate* unmanaged<VkDevice, VkPipeline, VkExecutionGraphPipelineScratchSizeAMDX*, VkResult> vkGetExecutionGraphPipelineScratchSizeAMDX_ptr;
 	private static delegate* unmanaged<VkDevice, VkPipeline, VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, VkResult> vkGetExecutionGraphPipelineNodeIndexAMDX_ptr;
@@ -4974,74 +4993,6 @@ unsafe partial class Vulkan
 		return vkGetMemoryAndroidHardwareBufferANDROID_ptr(device, info, buffer);
 	}
 
-	public static VkResult vkCreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
-	{
-		return vkCreateIOSSurfaceMVK_ptr(instance, createInfo, allocator, surface);
-	}
-
-	public static VkResult vkCreateIOSSurfaceMVK(VkInstance instance, in VkIOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
-	{
-		fixed (VkIOSSurfaceCreateInfoMVK* createInfoPtr = &createInfo)
-		{
-			return vkCreateIOSSurfaceMVK_ptr(instance, createInfoPtr, allocator, surface);
-		}
-	}
-
-	public static VkResult vkCreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
-	{
-		Unsafe.SkipInit(out surface);
-		fixed (VkSurfaceKHR* surfacePtr = &surface)
-		{
-			return vkCreateIOSSurfaceMVK_ptr(instance, createInfo, allocator, surfacePtr);
-		}
-	}
-
-	public static VkResult vkCreateIOSSurfaceMVK(VkInstance instance, in VkIOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
-	{
-		fixed (VkIOSSurfaceCreateInfoMVK* createInfoPtr = &createInfo)
-		{
-			Unsafe.SkipInit(out surface);
-			fixed (VkSurfaceKHR* surfacePtr = &surface)
-			{
-				return vkCreateIOSSurfaceMVK_ptr(instance, createInfoPtr, allocator, surfacePtr);
-			}
-		}
-	}
-
-	public static VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
-	{
-		return vkCreateMacOSSurfaceMVK_ptr(instance, createInfo, allocator, surface);
-	}
-
-	public static VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, in VkMacOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
-	{
-		fixed (VkMacOSSurfaceCreateInfoMVK* createInfoPtr = &createInfo)
-		{
-			return vkCreateMacOSSurfaceMVK_ptr(instance, createInfoPtr, allocator, surface);
-		}
-	}
-
-	public static VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
-	{
-		Unsafe.SkipInit(out surface);
-		fixed (VkSurfaceKHR* surfacePtr = &surface)
-		{
-			return vkCreateMacOSSurfaceMVK_ptr(instance, createInfo, allocator, surfacePtr);
-		}
-	}
-
-	public static VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, in VkMacOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
-	{
-		fixed (VkMacOSSurfaceCreateInfoMVK* createInfoPtr = &createInfo)
-		{
-			Unsafe.SkipInit(out surface);
-			fixed (VkSurfaceKHR* surfacePtr = &surface)
-			{
-				return vkCreateMacOSSurfaceMVK_ptr(instance, createInfoPtr, allocator, surfacePtr);
-			}
-		}
-	}
-
 	public static VkResult vkCreateMetalSurfaceEXT(VkInstance instance, VkMetalSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		return vkCreateMetalSurfaceEXT_ptr(instance, createInfo, allocator, surface);
@@ -5092,6 +5043,206 @@ unsafe partial class Vulkan
 		{
 			return vkCreateViSurfaceNN_ptr(instance, createInfoPtr, allocator, surface);
 		}
+	}
+
+	public static VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		return vkCreateWaylandSurfaceKHR_ptr(instance, createInfo, allocator, surface);
+	}
+
+	public static VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, in VkWaylandSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		fixed (VkWaylandSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return vkCreateWaylandSurfaceKHR_ptr(instance, createInfoPtr, allocator, surface);
+		}
+	}
+
+	public static VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	{
+		Unsafe.SkipInit(out surface);
+		fixed (VkSurfaceKHR* surfacePtr = &surface)
+		{
+			return vkCreateWaylandSurfaceKHR_ptr(instance, createInfo, allocator, surfacePtr);
+		}
+	}
+
+	public static VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, in VkWaylandSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	{
+		fixed (VkWaylandSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out surface);
+			fixed (VkSurfaceKHR* surfacePtr = &surface)
+			{
+				return vkCreateWaylandSurfaceKHR_ptr(instance, createInfoPtr, allocator, surfacePtr);
+			}
+		}
+	}
+
+	public static VkBool32 vkGetPhysicalDeviceWaylandPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, nint display)
+	{
+		return vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex, display);
+	}
+
+	public static VkResult vkCreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		return vkCreateWin32SurfaceKHR_ptr(instance, createInfo, allocator, surface);
+	}
+
+	public static VkResult vkCreateWin32SurfaceKHR(VkInstance instance, in VkWin32SurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		fixed (VkWin32SurfaceCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return vkCreateWin32SurfaceKHR_ptr(instance, createInfoPtr, allocator, surface);
+		}
+	}
+
+	public static VkResult vkCreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	{
+		Unsafe.SkipInit(out surface);
+		fixed (VkSurfaceKHR* surfacePtr = &surface)
+		{
+			return vkCreateWin32SurfaceKHR_ptr(instance, createInfo, allocator, surfacePtr);
+		}
+	}
+
+	public static VkResult vkCreateWin32SurfaceKHR(VkInstance instance, in VkWin32SurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	{
+		fixed (VkWin32SurfaceCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out surface);
+			fixed (VkSurfaceKHR* surfacePtr = &surface)
+			{
+				return vkCreateWin32SurfaceKHR_ptr(instance, createInfoPtr, allocator, surfacePtr);
+			}
+		}
+	}
+
+	public static VkBool32 vkGetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex)
+	{
+		return vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex);
+	}
+
+	public static VkResult vkGetMemoryWin32HandleKHR(VkDevice device, VkMemoryGetWin32HandleInfoKHR* getWin32HandleInfo, nint handle)
+	{
+		return vkGetMemoryWin32HandleKHR_ptr(device, getWin32HandleInfo, handle);
+	}
+
+	public static VkResult vkGetMemoryWin32HandlePropertiesKHR(VkDevice device, VkExternalMemoryHandleTypeFlags handleType, nint handle, VkMemoryWin32HandlePropertiesKHR* memoryWin32HandleProperties)
+	{
+		return vkGetMemoryWin32HandlePropertiesKHR_ptr(device, handleType, handle, memoryWin32HandleProperties);
+	}
+
+	public static VkResult vkImportSemaphoreWin32HandleKHR(VkDevice device, VkImportSemaphoreWin32HandleInfoKHR* importSemaphoreWin32HandleInfo)
+	{
+		return vkImportSemaphoreWin32HandleKHR_ptr(device, importSemaphoreWin32HandleInfo);
+	}
+
+	public static VkResult vkGetSemaphoreWin32HandleKHR(VkDevice device, VkSemaphoreGetWin32HandleInfoKHR* getWin32HandleInfo, nint handle)
+	{
+		return vkGetSemaphoreWin32HandleKHR_ptr(device, getWin32HandleInfo, handle);
+	}
+
+	public static VkResult vkImportFenceWin32HandleKHR(VkDevice device, VkImportFenceWin32HandleInfoKHR* importFenceWin32HandleInfo)
+	{
+		return vkImportFenceWin32HandleKHR_ptr(device, importFenceWin32HandleInfo);
+	}
+
+	public static VkResult vkGetFenceWin32HandleKHR(VkDevice device, VkFenceGetWin32HandleInfoKHR* getWin32HandleInfo, nint handle)
+	{
+		return vkGetFenceWin32HandleKHR_ptr(device, getWin32HandleInfo, handle);
+	}
+
+	public static VkResult vkGetMemoryWin32HandleNV(VkDevice device, VkDeviceMemory memory, VkExternalMemoryHandleTypeFlagsNV handleType, nint handle)
+	{
+		return vkGetMemoryWin32HandleNV_ptr(device, memory, handleType, handle);
+	}
+
+	public static VkResult vkGetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* presentModeCount, VkPresentModeKHR* presentModes)
+	{
+		return vkGetPhysicalDeviceSurfacePresentModes2EXT_ptr(physicalDevice, surfaceInfo, presentModeCount, presentModes);
+	}
+
+	public static VkResult vkAcquireFullScreenExclusiveModeEXT(VkDevice device, VkSwapchainKHR swapchain)
+	{
+		return vkAcquireFullScreenExclusiveModeEXT_ptr(device, swapchain);
+	}
+
+	public static VkResult vkReleaseFullScreenExclusiveModeEXT(VkDevice device, VkSwapchainKHR swapchain)
+	{
+		return vkReleaseFullScreenExclusiveModeEXT_ptr(device, swapchain);
+	}
+
+	public static VkResult vkGetDeviceGroupSurfacePresentModes2EXT(VkDevice device, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, VkDeviceGroupPresentModeFlagsKHR* modes)
+	{
+		return vkGetDeviceGroupSurfacePresentModes2EXT_ptr(device, surfaceInfo, modes);
+	}
+
+	public static VkResult vkAcquireWinrtDisplayNV(VkPhysicalDevice physicalDevice, VkDisplayKHR display)
+	{
+		return vkAcquireWinrtDisplayNV_ptr(physicalDevice, display);
+	}
+
+	public static VkResult vkGetWinrtDisplayNV(VkPhysicalDevice physicalDevice, uint deviceRelativeId, VkDisplayKHR* display)
+	{
+		return vkGetWinrtDisplayNV_ptr(physicalDevice, deviceRelativeId, display);
+	}
+
+	public static VkResult vkCreateXcbSurfaceKHR(VkInstance instance, VkXcbSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		return vkCreateXcbSurfaceKHR_ptr(instance, createInfo, allocator, surface);
+	}
+
+	public static VkResult vkCreateXcbSurfaceKHR(VkInstance instance, in VkXcbSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		fixed (VkXcbSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return vkCreateXcbSurfaceKHR_ptr(instance, createInfoPtr, allocator, surface);
+		}
+	}
+
+	public static VkBool32 vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, nint connection, nint visual_id)
+	{
+		return vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex, connection, visual_id);
+	}
+
+	public static VkResult vkCreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		return vkCreateXlibSurfaceKHR_ptr(instance, createInfo, allocator, surface);
+	}
+
+	public static VkResult vkCreateXlibSurfaceKHR(VkInstance instance, in VkXlibSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		fixed (VkXlibSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return vkCreateXlibSurfaceKHR_ptr(instance, createInfoPtr, allocator, surface);
+		}
+	}
+
+	public static VkResult vkCreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	{
+		Unsafe.SkipInit(out surface);
+		fixed (VkSurfaceKHR* surfacePtr = &surface)
+		{
+			return vkCreateXlibSurfaceKHR_ptr(instance, createInfo, allocator, surfacePtr);
+		}
+	}
+
+	public static VkResult vkCreateXlibSurfaceKHR(VkInstance instance, in VkXlibSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	{
+		fixed (VkXlibSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out surface);
+			fixed (VkSurfaceKHR* surfacePtr = &surface)
+			{
+				return vkCreateXlibSurfaceKHR_ptr(instance, createInfoPtr, allocator, surfacePtr);
+			}
+		}
+	}
+
+	public static VkBool32 vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, nint dpy, ulong visualID)
+	{
+		return vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr(physicalDevice, queueFamilyIndex, dpy, visualID);
 	}
 
 	public static VkResult vkCreateExecutionGraphPipelinesAMDX(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkExecutionGraphPipelineCreateInfoAMDX* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
@@ -5228,10 +5379,19 @@ unsafe partial class Vulkan
 		vkGetDrmDisplayEXT_ptr = (delegate* unmanaged<VkPhysicalDevice, int, uint, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetDrmDisplayEXT));
 		vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr = (delegate* unmanaged<VkPhysicalDevice, VkOpticalFlowImageFormatInfoNV*, uint*, VkOpticalFlowImageFormatPropertiesNV*, VkResult>) load(context, nameof(vkGetPhysicalDeviceOpticalFlowImageFormatsNV));
 		vkCreateAndroidSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateAndroidSurfaceKHR));
-		vkCreateIOSSurfaceMVK_ptr = (delegate* unmanaged<VkInstance, VkIOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateIOSSurfaceMVK));
-		vkCreateMacOSSurfaceMVK_ptr = (delegate* unmanaged<VkInstance, VkMacOSSurfaceCreateInfoMVK*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateMacOSSurfaceMVK));
 		vkCreateMetalSurfaceEXT_ptr = (delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateMetalSurfaceEXT));
 		vkCreateViSurfaceNN_ptr = (delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateViSurfaceNN));
+		vkCreateWaylandSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateWaylandSurfaceKHR));
+		vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, nint, VkBool32>) load(context, nameof(vkGetPhysicalDeviceWaylandPresentationSupportKHR));
+		vkCreateWin32SurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateWin32SurfaceKHR));
+		vkGetPhysicalDeviceWin32PresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, VkBool32>) load(context, nameof(vkGetPhysicalDeviceWin32PresentationSupportKHR));
+		vkGetPhysicalDeviceSurfacePresentModes2EXT_ptr = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSurfaceInfo2KHR*, uint*, VkPresentModeKHR*, VkResult>) load(context, nameof(vkGetPhysicalDeviceSurfacePresentModes2EXT));
+		vkAcquireWinrtDisplayNV_ptr = (delegate* unmanaged<VkPhysicalDevice, VkDisplayKHR, VkResult>) load(context, nameof(vkAcquireWinrtDisplayNV));
+		vkGetWinrtDisplayNV_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, VkDisplayKHR*, VkResult>) load(context, nameof(vkGetWinrtDisplayNV));
+		vkCreateXcbSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateXcbSurfaceKHR));
+		vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, nint, nint, VkBool32>) load(context, nameof(vkGetPhysicalDeviceXcbPresentationSupportKHR));
+		vkCreateXlibSurfaceKHR_ptr = (delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>) load(context, nameof(vkCreateXlibSurfaceKHR));
+		vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr = (delegate* unmanaged<VkPhysicalDevice, uint, nint, ulong, VkBool32>) load(context, nameof(vkGetPhysicalDeviceXlibPresentationSupportKHR));
 	}
 	private static void GenLoadDevice(IntPtr context, LoadFunction load)
 	{
@@ -5770,6 +5930,16 @@ unsafe partial class Vulkan
 		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = (delegate* unmanaged<VkDevice, nint, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>) load(context, nameof(vkGetAndroidHardwareBufferPropertiesANDROID));
 		vkGetMemoryAndroidHardwareBufferANDROID_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, nint, VkResult>) load(context, nameof(vkGetMemoryAndroidHardwareBufferANDROID));
 		vkExportMetalObjectsEXT_ptr = (delegate* unmanaged<VkDevice, VkExportMetalObjectsInfoEXT*, void>) load(context, nameof(vkExportMetalObjectsEXT));
+		vkGetMemoryWin32HandleKHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryGetWin32HandleInfoKHR*, nint, VkResult>) load(context, nameof(vkGetMemoryWin32HandleKHR));
+		vkGetMemoryWin32HandlePropertiesKHR_ptr = (delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, nint, VkMemoryWin32HandlePropertiesKHR*, VkResult>) load(context, nameof(vkGetMemoryWin32HandlePropertiesKHR));
+		vkImportSemaphoreWin32HandleKHR_ptr = (delegate* unmanaged<VkDevice, VkImportSemaphoreWin32HandleInfoKHR*, VkResult>) load(context, nameof(vkImportSemaphoreWin32HandleKHR));
+		vkGetSemaphoreWin32HandleKHR_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreGetWin32HandleInfoKHR*, nint, VkResult>) load(context, nameof(vkGetSemaphoreWin32HandleKHR));
+		vkImportFenceWin32HandleKHR_ptr = (delegate* unmanaged<VkDevice, VkImportFenceWin32HandleInfoKHR*, VkResult>) load(context, nameof(vkImportFenceWin32HandleKHR));
+		vkGetFenceWin32HandleKHR_ptr = (delegate* unmanaged<VkDevice, VkFenceGetWin32HandleInfoKHR*, nint, VkResult>) load(context, nameof(vkGetFenceWin32HandleKHR));
+		vkGetMemoryWin32HandleNV_ptr = (delegate* unmanaged<VkDevice, VkDeviceMemory, VkExternalMemoryHandleTypeFlagsNV, nint, VkResult>) load(context, nameof(vkGetMemoryWin32HandleNV));
+		vkAcquireFullScreenExclusiveModeEXT_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult>) load(context, nameof(vkAcquireFullScreenExclusiveModeEXT));
+		vkReleaseFullScreenExclusiveModeEXT_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkResult>) load(context, nameof(vkReleaseFullScreenExclusiveModeEXT));
+		vkGetDeviceGroupSurfacePresentModes2EXT_ptr = (delegate* unmanaged<VkDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkDeviceGroupPresentModeFlagsKHR*, VkResult>) load(context, nameof(vkGetDeviceGroupSurfacePresentModes2EXT));
 		vkCreateExecutionGraphPipelinesAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult>) load(context, nameof(vkCreateExecutionGraphPipelinesAMDX));
 		vkGetExecutionGraphPipelineScratchSizeAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkExecutionGraphPipelineScratchSizeAMDX*, VkResult>) load(context, nameof(vkGetExecutionGraphPipelineScratchSizeAMDX));
 		vkGetExecutionGraphPipelineNodeIndexAMDX_ptr = (delegate* unmanaged<VkDevice, VkPipeline, VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, VkResult>) load(context, nameof(vkGetExecutionGraphPipelineNodeIndexAMDX));

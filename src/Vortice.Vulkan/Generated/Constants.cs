@@ -2300,18 +2300,6 @@ public static partial class Vulkan
 	public const uint VK_ANDROID_EXTERNAL_FORMAT_RESOLVE_SPEC_VERSION = 1;
 	/// <unmanaged>VK_ANDROID_EXTERNAL_FORMAT_RESOLVE_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_ANDROID_EXTERNAL_FORMAT_RESOLVE_EXTENSION_NAME => "VK_ANDROID_external_format_resolve"u8;
-	/// <unmanaged>VK_MVK_ios_surface</unmanaged>
-	public const uint VK_MVK_ios_surface = 1;
-	/// <unmanaged>VK_MVK_IOS_SURFACE_SPEC_VERSION</unmanaged>
-	public const uint VK_MVK_IOS_SURFACE_SPEC_VERSION = 3;
-	/// <unmanaged>VK_MVK_IOS_SURFACE_EXTENSION_NAME</unmanaged>
-	public static ReadOnlySpan<byte> VK_MVK_IOS_SURFACE_EXTENSION_NAME => "VK_MVK_ios_surface"u8;
-	/// <unmanaged>VK_MVK_macos_surface</unmanaged>
-	public const uint VK_MVK_macos_surface = 1;
-	/// <unmanaged>VK_MVK_MACOS_SURFACE_SPEC_VERSION</unmanaged>
-	public const uint VK_MVK_MACOS_SURFACE_SPEC_VERSION = 3;
-	/// <unmanaged>VK_MVK_MACOS_SURFACE_EXTENSION_NAME</unmanaged>
-	public static ReadOnlySpan<byte> VK_MVK_MACOS_SURFACE_EXTENSION_NAME => "VK_MVK_macos_surface"u8;
 	/// <unmanaged>VK_EXT_metal_surface</unmanaged>
 	public const uint VK_EXT_metal_surface = 1;
 	/// <unmanaged>VK_EXT_METAL_SURFACE_SPEC_VERSION</unmanaged>
@@ -2330,6 +2318,78 @@ public static partial class Vulkan
 	public const uint VK_NN_VI_SURFACE_SPEC_VERSION = 1;
 	/// <unmanaged>VK_NN_VI_SURFACE_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_NN_VI_SURFACE_EXTENSION_NAME => "VK_NN_vi_surface"u8;
+	/// <unmanaged>VK_KHR_wayland_surface</unmanaged>
+	public const uint VK_KHR_wayland_surface = 1;
+	/// <unmanaged>VK_KHR_WAYLAND_SURFACE_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_WAYLAND_SURFACE_SPEC_VERSION = 6;
+	/// <unmanaged>VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME => "VK_KHR_wayland_surface"u8;
+	/// <unmanaged>VK_KHR_win32_surface</unmanaged>
+	public const uint VK_KHR_win32_surface = 1;
+	/// <unmanaged>VK_KHR_WIN32_SURFACE_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_WIN32_SURFACE_SPEC_VERSION = 6;
+	/// <unmanaged>VK_KHR_WIN32_SURFACE_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_WIN32_SURFACE_EXTENSION_NAME => "VK_KHR_win32_surface"u8;
+	/// <unmanaged>VK_KHR_external_memory_win32</unmanaged>
+	public const uint VK_KHR_external_memory_win32 = 1;
+	/// <unmanaged>VK_KHR_EXTERNAL_MEMORY_WIN32_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_EXTERNAL_MEMORY_WIN32_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME => "VK_KHR_external_memory_win32"u8;
+	/// <unmanaged>VK_KHR_win32_keyed_mutex</unmanaged>
+	public const uint VK_KHR_win32_keyed_mutex = 1;
+	/// <unmanaged>VK_KHR_WIN32_KEYED_MUTEX_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_WIN32_KEYED_MUTEX_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_WIN32_KEYED_MUTEX_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_WIN32_KEYED_MUTEX_EXTENSION_NAME => "VK_KHR_win32_keyed_mutex"u8;
+	/// <unmanaged>VK_KHR_external_semaphore_win32</unmanaged>
+	public const uint VK_KHR_external_semaphore_win32 = 1;
+	/// <unmanaged>VK_KHR_EXTERNAL_SEMAPHORE_WIN32_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_EXTERNAL_SEMAPHORE_WIN32_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_EXTERNAL_SEMAPHORE_WIN32_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_EXTERNAL_SEMAPHORE_WIN32_EXTENSION_NAME => "VK_KHR_external_semaphore_win32"u8;
+	/// <unmanaged>VK_KHR_external_fence_win32</unmanaged>
+	public const uint VK_KHR_external_fence_win32 = 1;
+	/// <unmanaged>VK_KHR_EXTERNAL_FENCE_WIN32_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_EXTERNAL_FENCE_WIN32_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_EXTERNAL_FENCE_WIN32_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_EXTERNAL_FENCE_WIN32_EXTENSION_NAME => "VK_KHR_external_fence_win32"u8;
+	/// <unmanaged>VK_NV_external_memory_win32</unmanaged>
+	public const uint VK_NV_external_memory_win32 = 1;
+	/// <unmanaged>VK_NV_EXTERNAL_MEMORY_WIN32_SPEC_VERSION</unmanaged>
+	public const uint VK_NV_EXTERNAL_MEMORY_WIN32_SPEC_VERSION = 1;
+	/// <unmanaged>VK_NV_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_NV_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME => "VK_NV_external_memory_win32"u8;
+	/// <unmanaged>VK_NV_win32_keyed_mutex</unmanaged>
+	public const uint VK_NV_win32_keyed_mutex = 1;
+	/// <unmanaged>VK_NV_WIN32_KEYED_MUTEX_SPEC_VERSION</unmanaged>
+	public const uint VK_NV_WIN32_KEYED_MUTEX_SPEC_VERSION = 2;
+	/// <unmanaged>VK_NV_WIN32_KEYED_MUTEX_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_NV_WIN32_KEYED_MUTEX_EXTENSION_NAME => "VK_NV_win32_keyed_mutex"u8;
+	/// <unmanaged>VK_EXT_full_screen_exclusive</unmanaged>
+	public const uint VK_EXT_full_screen_exclusive = 1;
+	/// <unmanaged>VK_EXT_FULL_SCREEN_EXCLUSIVE_SPEC_VERSION</unmanaged>
+	public const uint VK_EXT_FULL_SCREEN_EXCLUSIVE_SPEC_VERSION = 4;
+	/// <unmanaged>VK_EXT_FULL_SCREEN_EXCLUSIVE_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_EXT_FULL_SCREEN_EXCLUSIVE_EXTENSION_NAME => "VK_EXT_full_screen_exclusive"u8;
+	/// <unmanaged>VK_NV_acquire_winrt_display</unmanaged>
+	public const uint VK_NV_acquire_winrt_display = 1;
+	/// <unmanaged>VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION</unmanaged>
+	public const uint VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION = 1;
+	/// <unmanaged>VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME => "VK_NV_acquire_winrt_display"u8;
+	/// <unmanaged>VK_KHR_xcb_surface</unmanaged>
+	public const uint VK_KHR_xcb_surface = 1;
+	/// <unmanaged>VK_KHR_XCB_SURFACE_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_XCB_SURFACE_SPEC_VERSION = 6;
+	/// <unmanaged>VK_KHR_XCB_SURFACE_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_XCB_SURFACE_EXTENSION_NAME => "VK_KHR_xcb_surface"u8;
+	/// <unmanaged>VK_KHR_xlib_surface</unmanaged>
+	public const uint VK_KHR_xlib_surface = 1;
+	/// <unmanaged>VK_KHR_XLIB_SURFACE_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_XLIB_SURFACE_SPEC_VERSION = 6;
+	/// <unmanaged>VK_KHR_XLIB_SURFACE_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_XLIB_SURFACE_EXTENSION_NAME => "VK_KHR_xlib_surface"u8;
 	/// <unmanaged>VK_KHR_portability_subset</unmanaged>
 	public const uint VK_KHR_portability_subset = 1;
 	/// <unmanaged>VK_KHR_PORTABILITY_SUBSET_SPEC_VERSION</unmanaged>
@@ -5807,6 +5867,10 @@ public static partial class Vulkan
 	public const VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.MetalTexture;
 	public const VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.MetalIosurface;
 	public const VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.MetalSharedEvent;
+	public const VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT = VkFullScreenExclusiveEXT.Default;
+	public const VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT = VkFullScreenExclusiveEXT.Allowed;
+	public const VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT = VkFullScreenExclusiveEXT.Disallowed;
+	public const VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT = VkFullScreenExclusiveEXT.ApplicationControlled;
 	public const VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV = VkDisplacementMicromapFormatNV._64Triangles64Bytes;
 	public const VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV = VkDisplacementMicromapFormatNV._256Triangles128Bytes;
 	public const VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV = VkDisplacementMicromapFormatNV._1024Triangles128Bytes;

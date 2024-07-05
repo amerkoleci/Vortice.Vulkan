@@ -129,19 +129,22 @@ public static class Program
         else
         {
             isVulkan = true;
-            headerFile = Path.Combine(AppContext.BaseDirectory, "vulkan", "vulkan.h");
+            headerFile = Path.Combine(AppContext.BaseDirectory, "vulkan", "vulkan_volk.h");
             parserOptions = new()
             {
                 ParseMacros = true,
                 Defines =
                 {
+                    //"VK_NO_PROTOTYPES",
                     "VK_USE_PLATFORM_ANDROID_KHR",
-                    "VK_USE_PLATFORM_IOS_MVK",
-                    "VK_USE_PLATFORM_MACOS_MVK",
+                    //"VK_USE_PLATFORM_IOS_MVK", // Deprecated
+                    //"VK_USE_PLATFORM_MACOS_MVK",  // Deprecated
                     "VK_USE_PLATFORM_METAL_EXT",
                     "VK_USE_PLATFORM_VI_NN",
-                    //"VK_USE_PLATFORM_WAYLAND_KHR",
-                    //"VK_USE_PLATFORM_WIN32_KHR",
+                    "VK_USE_PLATFORM_WIN32_KHR",
+                    "VK_USE_PLATFORM_XCB_KHR",
+                    "VK_USE_PLATFORM_XLIB_KHR",
+                    "VK_USE_PLATFORM_WAYLAND_KHR",
                     //"VK_USE_PLATFORM_SCREEN_QNX",
                     "VK_ENABLE_BETA_EXTENSIONS"
                 }

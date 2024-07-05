@@ -52,7 +52,7 @@ public static partial class CsCodeGenerator
 
         { "Display", "nint" },
         { "Window", "ulong" },
-        { "VisualID", "nint" },
+        { "VisualID", "ulong" },
         { "RROutput", "nint" },
 
         { "HINSTANCE", "nint" },
@@ -61,6 +61,7 @@ public static partial class CsCodeGenerator
         { "SECURITY_ATTRIBUTES", "nint" },
         { "LPCWSTR", "nint" },
         { "HMONITOR", "nint" },
+        { "_SECURITY_ATTRIBUTES", "nint" },
 
         { "xcb_connection_t", "nint" },
         { "xcb_window_t", "uint" },
@@ -473,6 +474,10 @@ public static partial class CsCodeGenerator
 
             case CppPrimitiveKind.UnsignedInt:
                 return "uint";
+
+            case CppPrimitiveKind.UnsignedLong:
+                return "ulong";
+
             case CppPrimitiveKind.UnsignedLongLong:
                 return "ulong";
 

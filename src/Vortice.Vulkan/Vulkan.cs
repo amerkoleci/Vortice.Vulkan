@@ -94,12 +94,6 @@ public static unsafe partial class Vulkan
         GenLoadInstance(instance.Handle, vkGetInstanceProcAddr);
 
         vkGetDeviceProcAddr_ptr = (delegate* unmanaged<VkDevice, byte*, IntPtr>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetDeviceProcAddr));
-
-        // Manually loaded entries.
-        LoadWin32(instance);
-        LoadXcb(instance);
-        LoadXlib(instance);
-        LoadWayland(instance);
     }
 
     public static void vkLoadDevice(VkDevice device)
@@ -108,7 +102,6 @@ public static unsafe partial class Vulkan
         GenLoadDevice(device.Handle, vkGetDeviceProcAddr);
 
         // Manually loaded entries.
-        LoadWin32(device);
         //LoadXcb(device);
     }
 

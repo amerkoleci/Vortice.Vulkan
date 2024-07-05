@@ -27,7 +27,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="vulkan\vulkan_volk.h" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CppAst" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="vulkan\vulkan_volk.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

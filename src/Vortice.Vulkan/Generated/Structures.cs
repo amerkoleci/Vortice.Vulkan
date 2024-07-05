@@ -22117,50 +22117,6 @@ public unsafe partial struct VkAndroidHardwareBufferFormatResolvePropertiesANDRO
 	}
 }
 
-public unsafe partial struct VkIOSSurfaceCreateInfoMVK : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.IOSSurfaceCreateInfoMVK;
-	public void* pNext;
-	public VkIOSSurfaceCreateFlagsMVK flags;
-	public void* pView;
-
-	public VkIOSSurfaceCreateInfoMVK()
-	{
-	}
-
-	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkMacOSSurfaceCreateInfoMVK : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.MacOSSurfaceCreateInfoMVK;
-	public void* pNext;
-	public VkMacOSSurfaceCreateFlagsMVK flags;
-	public void* pView;
-
-	public VkMacOSSurfaceCreateInfoMVK()
-	{
-	}
-
-	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkMetalSurfaceCreateInfoEXT : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.MetalSurfaceCreateInfoEXT;
@@ -22452,6 +22408,512 @@ public unsafe partial struct VkViSurfaceCreateInfoNN : IStructureType, IChainTyp
 	public void* window;
 
 	public VkViSurfaceCreateInfoNN()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkWaylandSurfaceCreateInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.WaylandSurfaceCreateInfoKHR;
+	public void* pNext;
+	public VkWaylandSurfaceCreateFlagsKHR flags;
+	public nint display;
+	public nint surface;
+
+	public VkWaylandSurfaceCreateInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkWin32SurfaceCreateInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.Win32SurfaceCreateInfoKHR;
+	public void* pNext;
+	public VkWin32SurfaceCreateFlagsKHR flags;
+	public nint hinstance;
+	public nint hwnd;
+
+	public VkWin32SurfaceCreateInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImportMemoryWin32HandleInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ImportMemoryWin32HandleInfoKHR;
+	public void* pNext;
+	public VkExternalMemoryHandleTypeFlags handleType;
+	public nint handle;
+	public nint name;
+
+	public VkImportMemoryWin32HandleInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkExportMemoryWin32HandleInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ExportMemoryWin32HandleInfoKHR;
+	public void* pNext;
+	public nint pAttributes;
+	public uint dwAccess;
+	public nint name;
+
+	public VkExportMemoryWin32HandleInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkMemoryWin32HandlePropertiesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.MemoryWin32HandlePropertiesKHR;
+	public void* pNext;
+	public uint memoryTypeBits;
+
+	public VkMemoryWin32HandlePropertiesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkMemoryGetWin32HandleInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.MemoryGetWin32HandleInfoKHR;
+	public void* pNext;
+	public VkDeviceMemory memory;
+	public VkExternalMemoryHandleTypeFlags handleType;
+
+	public VkMemoryGetWin32HandleInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.Win32KeyedMutexAcquireReleaseInfoKHR;
+	public void* pNext;
+	public uint acquireCount;
+	public VkDeviceMemory* pAcquireSyncs;
+	public ulong* pAcquireKeys;
+	public uint* pAcquireTimeouts;
+	public uint releaseCount;
+	public VkDeviceMemory* pReleaseSyncs;
+	public ulong* pReleaseKeys;
+
+	public VkWin32KeyedMutexAcquireReleaseInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImportSemaphoreWin32HandleInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ImportSemaphoreWin32HandleInfoKHR;
+	public void* pNext;
+	public VkSemaphore semaphore;
+	public VkSemaphoreImportFlags flags;
+	public VkExternalSemaphoreHandleTypeFlags handleType;
+	public nint handle;
+	public nint name;
+
+	public VkImportSemaphoreWin32HandleInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkExportSemaphoreWin32HandleInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ExportSemaphoreWin32HandleInfoKHR;
+	public void* pNext;
+	public nint pAttributes;
+	public uint dwAccess;
+	public nint name;
+
+	public VkExportSemaphoreWin32HandleInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkD3D12FenceSubmitInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.D3D12FenceSubmitInfoKHR;
+	public void* pNext;
+	public uint waitSemaphoreValuesCount;
+	public ulong* pWaitSemaphoreValues;
+	public uint signalSemaphoreValuesCount;
+	public ulong* pSignalSemaphoreValues;
+
+	public VkD3D12FenceSubmitInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSemaphoreGetWin32HandleInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SemaphoreGetWin32HandleInfoKHR;
+	public void* pNext;
+	public VkSemaphore semaphore;
+	public VkExternalSemaphoreHandleTypeFlags handleType;
+
+	public VkSemaphoreGetWin32HandleInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImportFenceWin32HandleInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ImportFenceWin32HandleInfoKHR;
+	public void* pNext;
+	public VkFence fence;
+	public VkFenceImportFlags flags;
+	public VkExternalFenceHandleTypeFlags handleType;
+	public nint handle;
+	public nint name;
+
+	public VkImportFenceWin32HandleInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkExportFenceWin32HandleInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ExportFenceWin32HandleInfoKHR;
+	public void* pNext;
+	public nint pAttributes;
+	public uint dwAccess;
+	public nint name;
+
+	public VkExportFenceWin32HandleInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkFenceGetWin32HandleInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.FenceGetWin32HandleInfoKHR;
+	public void* pNext;
+	public VkFence fence;
+	public VkExternalFenceHandleTypeFlags handleType;
+
+	public VkFenceGetWin32HandleInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImportMemoryWin32HandleInfoNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ImportMemoryWin32HandleInfoNV;
+	public void* pNext;
+	public VkExternalMemoryHandleTypeFlagsNV handleType;
+	public nint handle;
+
+	public VkImportMemoryWin32HandleInfoNV()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkExportMemoryWin32HandleInfoNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ExportMemoryWin32HandleInfoNV;
+	public void* pNext;
+	public nint pAttributes;
+	public uint dwAccess;
+
+	public VkExportMemoryWin32HandleInfoNV()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.Win32KeyedMutexAcquireReleaseInfoNV;
+	public void* pNext;
+	public uint acquireCount;
+	public VkDeviceMemory* pAcquireSyncs;
+	public ulong* pAcquireKeys;
+	public uint* pAcquireTimeoutMilliseconds;
+	public uint releaseCount;
+	public VkDeviceMemory* pReleaseSyncs;
+	public ulong* pReleaseKeys;
+
+	public VkWin32KeyedMutexAcquireReleaseInfoNV()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSurfaceFullScreenExclusiveInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SurfaceFullScreenExclusiveInfoEXT;
+	public void* pNext;
+	public VkFullScreenExclusiveEXT fullScreenExclusive;
+
+	public VkSurfaceFullScreenExclusiveInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SurfaceCapabilitiesFullScreenExclusiveEXT;
+	public void* pNext;
+	public VkBool32 fullScreenExclusiveSupported;
+
+	public VkSurfaceCapabilitiesFullScreenExclusiveEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SurfaceFullScreenExclusiveWin32InfoEXT;
+	public void* pNext;
+	public nint hmonitor;
+
+	public VkSurfaceFullScreenExclusiveWin32InfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkXcbSurfaceCreateInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.XcbSurfaceCreateInfoKHR;
+	public void* pNext;
+	public VkXcbSurfaceCreateFlagsKHR flags;
+	public nint connection;
+	public uint window;
+
+	public VkXcbSurfaceCreateInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkXlibSurfaceCreateInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.XlibSurfaceCreateInfoKHR;
+	public void* pNext;
+	public VkXlibSurfaceCreateFlagsKHR flags;
+	public nint dpy;
+	public ulong window;
+
+	public VkXlibSurfaceCreateInfoKHR()
 	{
 	}
 

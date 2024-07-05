@@ -1263,3 +1263,128 @@ public readonly partial struct VkShaderEXT : IEquatable<VkShaderEXT>
 	private string DebuggerDisplay => $"{nameof(VkShaderEXT)} [0x{Handle.ToString("X")}]";
 }
 
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct LPCWSTR : IEquatable<LPCWSTR>
+{
+	public LPCWSTR(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static LPCWSTR Null => new(0);
+	public static implicit operator LPCWSTR(ulong handle) => new(handle);
+	public static implicit operator ulong(LPCWSTR handle) => handle.Handle;
+	public static bool operator ==(LPCWSTR left, LPCWSTR right) => left.Handle == right.Handle;
+	public static bool operator !=(LPCWSTR left, LPCWSTR right) => left.Handle != right.Handle;
+	public static bool operator ==(LPCWSTR left, ulong right) => left.Handle == right;
+	public static bool operator !=(LPCWSTR left, ulong right) => left.Handle != right;
+	public bool Equals(LPCWSTR other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is LPCWSTR handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(LPCWSTR)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct HANDLE : IEquatable<HANDLE>
+{
+	public HANDLE(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static HANDLE Null => new(0);
+	public static implicit operator HANDLE(ulong handle) => new(handle);
+	public static implicit operator ulong(HANDLE handle) => handle.Handle;
+	public static bool operator ==(HANDLE left, HANDLE right) => left.Handle == right.Handle;
+	public static bool operator !=(HANDLE left, HANDLE right) => left.Handle != right.Handle;
+	public static bool operator ==(HANDLE left, ulong right) => left.Handle == right;
+	public static bool operator !=(HANDLE left, ulong right) => left.Handle != right;
+	public bool Equals(HANDLE other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is HANDLE handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(HANDLE)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct HINSTANCE : IEquatable<HINSTANCE>
+{
+	public HINSTANCE(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static HINSTANCE Null => new(0);
+	public static implicit operator HINSTANCE(ulong handle) => new(handle);
+	public static implicit operator ulong(HINSTANCE handle) => handle.Handle;
+	public static bool operator ==(HINSTANCE left, HINSTANCE right) => left.Handle == right.Handle;
+	public static bool operator !=(HINSTANCE left, HINSTANCE right) => left.Handle != right.Handle;
+	public static bool operator ==(HINSTANCE left, ulong right) => left.Handle == right;
+	public static bool operator !=(HINSTANCE left, ulong right) => left.Handle != right;
+	public bool Equals(HINSTANCE other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is HINSTANCE handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(HINSTANCE)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct HWND : IEquatable<HWND>
+{
+	public HWND(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static HWND Null => new(0);
+	public static implicit operator HWND(ulong handle) => new(handle);
+	public static implicit operator ulong(HWND handle) => handle.Handle;
+	public static bool operator ==(HWND left, HWND right) => left.Handle == right.Handle;
+	public static bool operator !=(HWND left, HWND right) => left.Handle != right.Handle;
+	public static bool operator ==(HWND left, ulong right) => left.Handle == right;
+	public static bool operator !=(HWND left, ulong right) => left.Handle != right;
+	public bool Equals(HWND other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is HWND handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(HWND)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct HMONITOR : IEquatable<HMONITOR>
+{
+	public HMONITOR(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static HMONITOR Null => new(0);
+	public static implicit operator HMONITOR(ulong handle) => new(handle);
+	public static implicit operator ulong(HMONITOR handle) => handle.Handle;
+	public static bool operator ==(HMONITOR left, HMONITOR right) => left.Handle == right.Handle;
+	public static bool operator !=(HMONITOR left, HMONITOR right) => left.Handle != right.Handle;
+	public static bool operator ==(HMONITOR left, ulong right) => left.Handle == right;
+	public static bool operator !=(HMONITOR left, ulong right) => left.Handle != right;
+	public bool Equals(HMONITOR other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is HMONITOR handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(HMONITOR)} [0x{Handle.ToString("X")}]";
+}
+
