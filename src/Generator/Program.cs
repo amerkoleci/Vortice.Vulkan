@@ -186,13 +186,14 @@ public static class Program
             using (FileStream stream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, "docs", "vk.xml")))
             {
                 VulkanSpecification vs = new(stream);
-
-                CsCodeGenerator.Generate(compilation, generateOptions, vs);
+                CsCodeGenerator generator = new(generateOptions, vs);
+                generator.Generate(compilation);
             }
         }
         else
         {
-            CsCodeGenerator.Generate(compilation, generateOptions);
+            CsCodeGenerator generator = new(generateOptions);
+            generator.Generate(compilation);
         }
 
         return 0;

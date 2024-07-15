@@ -11803,6 +11803,122 @@ public unsafe partial struct VkPhysicalDeviceShaderRelaxedExtendedInstructionFea
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceMaintenance7FeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance7FeaturesKHR;
+	public void* pNext;
+	public VkBool32 maintenance7;
+
+	public VkPhysicalDeviceMaintenance7FeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceMaintenance7PropertiesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance7PropertiesKHR;
+	public void* pNext;
+	public VkBool32 robustFragmentShadingRateAttachmentAccess;
+	public VkBool32 separateDepthStencilAttachmentAccess;
+	public uint maxDescriptorSetTotalUniformBuffersDynamic;
+	public uint maxDescriptorSetTotalStorageBuffersDynamic;
+	public uint maxDescriptorSetTotalBuffersDynamic;
+	public uint maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic;
+	public uint maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic;
+	public uint maxDescriptorSetUpdateAfterBindTotalBuffersDynamic;
+
+	public VkPhysicalDeviceMaintenance7PropertiesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceLayeredApiPropertiesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceLayeredApiPropertiesKHR;
+	public void* pNext;
+	public uint vendorID;
+	public uint deviceID;
+	public VkPhysicalDeviceLayeredApiKHR layeredAPI;
+	public fixed byte deviceName[256];
+
+	public VkPhysicalDeviceLayeredApiPropertiesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceLayeredApiPropertiesListKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceLayeredApiPropertiesListKHR;
+	public void* pNext;
+	public uint layeredApiCount;
+	public VkPhysicalDeviceLayeredApiPropertiesKHR* pLayeredApis;
+
+	public VkPhysicalDeviceLayeredApiPropertiesListKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceLayeredApiVulkanPropertiesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceLayeredApiVulkanPropertiesKHR;
+	public void* pNext;
+	public VkPhysicalDeviceProperties2 properties;
+
+	public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkDebugReportCallbackCreateInfoEXT : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.DebugReportCallbackCreateInfoEXT;

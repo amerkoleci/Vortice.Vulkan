@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 288;
+	public const uint VK_HEADER_VERSION = 290;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -848,6 +848,12 @@ public static partial class Vulkan
 	public const uint VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_SPEC_VERSION = 1;
 	/// <unmanaged>VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_KHR_SHADER_RELAXED_EXTENDED_INSTRUCTION_EXTENSION_NAME => "VK_KHR_shader_relaxed_extended_instruction"u8;
+	/// <unmanaged>VK_KHR_maintenance7</unmanaged>
+	public const uint VK_KHR_maintenance7 = 1;
+	/// <unmanaged>VK_KHR_MAINTENANCE_7_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_MAINTENANCE_7_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_MAINTENANCE_7_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_MAINTENANCE_7_EXTENSION_NAME => "VK_KHR_maintenance7"u8;
 	/// <unmanaged>VK_EXT_debug_report</unmanaged>
 	public const uint VK_EXT_debug_report = 1;
 	/// <unmanaged>VK_EXT_DEBUG_REPORT_SPEC_VERSION</unmanaged>
@@ -1115,13 +1121,13 @@ public static partial class Vulkan
 	/// <unmanaged>VK_EXT_swapchain_colorspace</unmanaged>
 	public const uint VK_EXT_swapchain_colorspace = 1;
 	/// <unmanaged>VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION</unmanaged>
-	public const uint VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION = 4;
+	public const uint VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION = 5;
 	/// <unmanaged>VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME => "VK_EXT_swapchain_colorspace"u8;
 	/// <unmanaged>VK_EXT_hdr_metadata</unmanaged>
 	public const uint VK_EXT_hdr_metadata = 1;
 	/// <unmanaged>VK_EXT_HDR_METADATA_SPEC_VERSION</unmanaged>
-	public const uint VK_EXT_HDR_METADATA_SPEC_VERSION = 2;
+	public const uint VK_EXT_HDR_METADATA_SPEC_VERSION = 3;
 	/// <unmanaged>VK_EXT_HDR_METADATA_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_EXT_HDR_METADATA_EXTENSION_NAME => "VK_EXT_hdr_metadata"u8;
 	/// <unmanaged>VK_IMG_relaxed_line_rasterization</unmanaged>
@@ -1989,7 +1995,7 @@ public static partial class Vulkan
 	/// <unmanaged>VK_QCOM_fragment_density_map_offset</unmanaged>
 	public const uint VK_QCOM_fragment_density_map_offset = 1;
 	/// <unmanaged>VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION</unmanaged>
-	public const uint VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 1;
+	public const uint VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 2;
 	/// <unmanaged>VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME => "VK_QCOM_fragment_density_map_offset"u8;
 	/// <unmanaged>VK_NV_copy_memory_indirect</unmanaged>
@@ -3362,6 +3368,11 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV = VkStructureType.PhysicalDeviceDescriptorPoolOverallocationFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV = VkStructureType.PhysicalDeviceRawAccessChainsFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR = VkStructureType.PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR = VkStructureType.PhysicalDeviceMaintenance7FeaturesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR = VkStructureType.PhysicalDeviceMaintenance7PropertiesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR = VkStructureType.PhysicalDeviceLayeredApiPropertiesListKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR = VkStructureType.PhysicalDeviceLayeredApiPropertiesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR = VkStructureType.PhysicalDeviceLayeredApiVulkanPropertiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV = VkStructureType.PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT = VkStructureType.PhysicalDeviceShaderReplicatedCompositesFeaturesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV = VkStructureType.PhysicalDeviceRayTracingValidationFeaturesNV;
@@ -4281,6 +4292,7 @@ public static partial class Vulkan
 	public const VkIndexType VK_INDEX_TYPE_UINT8_EXT = VkIndexType.Uint8EXT;
 	public const VkSubpassContents VK_SUBPASS_CONTENTS_INLINE = VkSubpassContents.Inline;
 	public const VkSubpassContents VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS = VkSubpassContents.SecondaryCommandBuffers;
+	public const VkSubpassContents VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR = VkSubpassContents.InlineAndSecondaryCommandBuffersKHR;
 	public const VkSubpassContents VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT = VkSubpassContents.InlineAndSecondaryCommandBuffersEXT;
 	public const VkAccessFlags VK_ACCESS_INDIRECT_COMMAND_READ_BIT = VkAccessFlags.IndirectCommandRead;
 	public const VkAccessFlags VK_ACCESS_INDEX_READ_BIT = VkAccessFlags.IndexRead;
@@ -4902,11 +4914,12 @@ public static partial class Vulkan
 	public const VkRenderingFlags VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT = VkRenderingFlags.ContentsSecondaryCommandBuffers;
 	public const VkRenderingFlags VK_RENDERING_SUSPENDING_BIT = VkRenderingFlags.Suspending;
 	public const VkRenderingFlags VK_RENDERING_RESUMING_BIT = VkRenderingFlags.Resuming;
-	public const VkRenderingFlags VK_RENDERING_CONTENTS_INLINE_BIT_EXT = VkRenderingFlags.ContentsInlineEXT;
 	public const VkRenderingFlags VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT = VkRenderingFlags.EnableLegacyDitheringEXT;
+	public const VkRenderingFlags VK_RENDERING_CONTENTS_INLINE_BIT_KHR = VkRenderingFlags.ContentsInlineKHR;
 	public const VkRenderingFlags VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT_KHR = VkRenderingFlags.ContentsSecondaryCommandBuffersKHR;
 	public const VkRenderingFlags VK_RENDERING_SUSPENDING_BIT_KHR = VkRenderingFlags.SuspendingKHR;
 	public const VkRenderingFlags VK_RENDERING_RESUMING_BIT_KHR = VkRenderingFlags.ResumingKHR;
+	public const VkRenderingFlags VK_RENDERING_CONTENTS_INLINE_BIT_EXT = VkRenderingFlags.ContentsInlineEXT;
 	public const VkPresentModeKHR VK_PRESENT_MODE_IMMEDIATE_KHR = VkPresentModeKHR.Immediate;
 	public const VkPresentModeKHR VK_PRESENT_MODE_MAILBOX_KHR = VkPresentModeKHR.Mailbox;
 	public const VkPresentModeKHR VK_PRESENT_MODE_FIFO_KHR = VkPresentModeKHR.Fifo;
@@ -5442,6 +5455,11 @@ public static partial class Vulkan
 	public const VkTimeDomainKHR VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT = VkTimeDomainKHR.ClockMonotonicEXT;
 	public const VkTimeDomainKHR VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT = VkTimeDomainKHR.ClockMonotonicRawEXT;
 	public const VkTimeDomainKHR VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT = VkTimeDomainKHR.QueryPerformanceCounterEXT;
+	public const VkPhysicalDeviceLayeredApiKHR VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR = VkPhysicalDeviceLayeredApiKHR.Vulkan;
+	public const VkPhysicalDeviceLayeredApiKHR VK_PHYSICAL_DEVICE_LAYERED_API_D3D12_KHR = VkPhysicalDeviceLayeredApiKHR.D3D12;
+	public const VkPhysicalDeviceLayeredApiKHR VK_PHYSICAL_DEVICE_LAYERED_API_METAL_KHR = VkPhysicalDeviceLayeredApiKHR.Metal;
+	public const VkPhysicalDeviceLayeredApiKHR VK_PHYSICAL_DEVICE_LAYERED_API_OPENGL_KHR = VkPhysicalDeviceLayeredApiKHR.OpenGL;
+	public const VkPhysicalDeviceLayeredApiKHR VK_PHYSICAL_DEVICE_LAYERED_API_OPENGLES_KHR = VkPhysicalDeviceLayeredApiKHR.OpenGLES;
 	public const VkDebugReportObjectTypeEXT VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT = VkDebugReportObjectTypeEXT.Unknown;
 	public const VkDebugReportObjectTypeEXT VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT = VkDebugReportObjectTypeEXT.Instance;
 	public const VkDebugReportObjectTypeEXT VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT = VkDebugReportObjectTypeEXT.PhysicalDevice;

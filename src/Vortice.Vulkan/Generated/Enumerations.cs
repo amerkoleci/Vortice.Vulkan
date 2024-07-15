@@ -1988,6 +1988,16 @@ public enum VkStructureType
 	PhysicalDeviceRawAccessChainsFeaturesNV = 1000555000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR</unmanaged>
 	PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR = 1000558000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR</unmanaged>
+	PhysicalDeviceMaintenance7FeaturesKHR = 1000562000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR</unmanaged>
+	PhysicalDeviceMaintenance7PropertiesKHR = 1000562001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR</unmanaged>
+	PhysicalDeviceLayeredApiPropertiesListKHR = 1000562002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR</unmanaged>
+	PhysicalDeviceLayeredApiPropertiesKHR = 1000562003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR</unmanaged>
+	PhysicalDeviceLayeredApiVulkanPropertiesKHR = 1000562004,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV</unmanaged>
 	PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV = 1000563000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT</unmanaged>
@@ -4032,8 +4042,10 @@ public enum VkSubpassContents
 	Inline = 0,
 	/// <unmanaged>VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS</unmanaged>
 	SecondaryCommandBuffers = 1,
+	/// <unmanaged>VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR</unmanaged>
+	InlineAndSecondaryCommandBuffersKHR = 1000451000,
 	/// <unmanaged>VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT</unmanaged>
-	InlineAndSecondaryCommandBuffersEXT = 1000451000,
+	InlineAndSecondaryCommandBuffersEXT = InlineAndSecondaryCommandBuffersKHR,
 }
 
 [Flags]
@@ -6189,16 +6201,18 @@ public enum VkRenderingFlags
 	Suspending = 0x00000002,
 	/// <unmanaged>VK_RENDERING_RESUMING_BIT</unmanaged>
 	Resuming = 0x00000004,
-	/// <unmanaged>VK_RENDERING_CONTENTS_INLINE_BIT_EXT</unmanaged>
-	ContentsInlineEXT = 0x00000010,
 	/// <unmanaged>VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT</unmanaged>
 	EnableLegacyDitheringEXT = 0x00000008,
+	/// <unmanaged>VK_RENDERING_CONTENTS_INLINE_BIT_KHR</unmanaged>
+	ContentsInlineKHR = 0x00000010,
 	/// <unmanaged>VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT_KHR</unmanaged>
 	ContentsSecondaryCommandBuffersKHR = ContentsSecondaryCommandBuffers,
 	/// <unmanaged>VK_RENDERING_SUSPENDING_BIT_KHR</unmanaged>
 	SuspendingKHR = Suspending,
 	/// <unmanaged>VK_RENDERING_RESUMING_BIT_KHR</unmanaged>
 	ResumingKHR = Resuming,
+	/// <unmanaged>VK_RENDERING_CONTENTS_INLINE_BIT_EXT</unmanaged>
+	ContentsInlineEXT = ContentsInlineKHR,
 }
 
 public enum VkPresentModeKHR
@@ -7653,6 +7667,20 @@ public enum VkTimeDomainKHR
 	ClockMonotonicRawEXT = ClockMonotonicRaw,
 	/// <unmanaged>VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT</unmanaged>
 	QueryPerformanceCounterEXT = QueryPerformanceCounter,
+}
+
+public enum VkPhysicalDeviceLayeredApiKHR
+{
+	/// <unmanaged>VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR</unmanaged>
+	Vulkan = 0,
+	/// <unmanaged>VK_PHYSICAL_DEVICE_LAYERED_API_D3D12_KHR</unmanaged>
+	D3D12 = 1,
+	/// <unmanaged>VK_PHYSICAL_DEVICE_LAYERED_API_METAL_KHR</unmanaged>
+	Metal = 2,
+	/// <unmanaged>VK_PHYSICAL_DEVICE_LAYERED_API_OPENGL_KHR</unmanaged>
+	OpenGL = 3,
+	/// <unmanaged>VK_PHYSICAL_DEVICE_LAYERED_API_OPENGLES_KHR</unmanaged>
+	OpenGLES = 4,
 }
 
 public enum VkDebugReportObjectTypeEXT

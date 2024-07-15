@@ -6,7 +6,7 @@ using CppAst;
 
 namespace Generator;
 
-public static partial class CsCodeGenerator
+partial class CsCodeGenerator
 {
     private static readonly Dictionary<string, string> s_knownEnumValueNames = new()
     {
@@ -247,9 +247,9 @@ public static partial class CsCodeGenerator
         "mesa",
     };
 
-    private static readonly HashSet<string> s_enumConstants = [];
+    private readonly HashSet<string> s_enumConstants = [];
 
-    public static void GenerateEnums(CppCompilation compilation)
+    public void GenerateEnums(CppCompilation compilation)
     {
         string visibility = _options.PublicVisiblity ? "public" : "internal";
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Enumerations.cs"), false, _options.Namespace, new[] { "System" });
@@ -356,9 +356,9 @@ public static partial class CsCodeGenerator
             bool noneAdded = false;
 
             EnumDefinition? enumDefinition = default;
-            if (s_vulkanSpecification is not null)
+            if (_vulkanSpecification is not null)
             {
-                enumDefinition = s_vulkanSpecification.GetEnumDefinition(cppEnum.Name);
+                enumDefinition = _vulkanSpecification.GetEnumDefinition(cppEnum.Name);
             }
 
             if (enumDefinition != null && !string.IsNullOrEmpty(enumDefinition.Comment))
@@ -689,7 +689,7 @@ public static partial class CsCodeGenerator
         }
     }
 
-    private static void FormatExpression(CppExpression expression, StringBuilder builder, string enumNamePrefix)
+    private void FormatExpression(CppExpression expression, StringBuilder builder, string enumNamePrefix)
     {
         if (expression is CppRawExpression rawExpression)
         {
@@ -705,7 +705,7 @@ public static partial class CsCodeGenerator
         }
     }
 
-    private static void FormatCppBinaryExpression(CppBinaryExpression expression, StringBuilder builder, string enumNamePrefix)
+    private void FormatCppBinaryExpression(CppBinaryExpression expression, StringBuilder builder, string enumNamePrefix)
     {
         if (expression.Arguments != null && expression.Arguments.Count > 0)
         {
@@ -722,8 +722,7 @@ public static partial class CsCodeGenerator
         }
     }
 
-
-    private static string GetEnumItemName(string enumName, string cppEnumItemName, string enumNamePrefix)
+    private string GetEnumItemName(string enumName, string cppEnumItemName, string enumNamePrefix)
     {
         string enumItemName;
         if (enumName == "VkFormat")
@@ -989,7 +988,7 @@ public static partial class CsCodeGenerator
         return string.Join("_", parts.Select(s => s.ToUpper()));
     }
 
-    private static string GetPrettyEnumName(string value, string enumPrefix)
+    private string GetPrettyEnumName(string value, string enumPrefix)
     {
         if (s_knownEnumValueNames.TryGetValue(value, out string? knownName))
         {
@@ -1035,6 +1034,14 @@ public static partial class CsCodeGenerator
             if (s_preserveCaps.Contains(part))
             {
                 sb.Append(part);
+            }
+            else if(part.Equals("OPENGL", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return "OpenGL";
+            }
+            else if (part.Equals("OPENGLES", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return "OpenGLES";
             }
             else
             {

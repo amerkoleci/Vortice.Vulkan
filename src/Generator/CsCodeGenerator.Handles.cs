@@ -5,7 +5,7 @@ using CppAst;
 
 namespace Generator;
 
-public static partial class CsCodeGenerator
+partial class CsCodeGenerator
 {
     private static readonly HashSet<string> s_ignoredHandles = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -17,7 +17,7 @@ public static partial class CsCodeGenerator
         "IOSurfaceRef",
     };
 
-    private static void GenerateHandles(CppCompilation compilation)
+    private void GenerateHandles(CppCompilation compilation)
     {
         bool hasAnyHandleType = false;
         foreach (CppTypedef typedef in compilation.Typedefs)

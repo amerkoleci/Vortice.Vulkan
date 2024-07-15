@@ -3,10 +3,13 @@
 
 namespace Generator;
 
-public static partial class CsCodeGenerator
+partial class CsCodeGenerator
 {
-    private static void GenerateFormatHelpers(VulkanSpecification specification)
+    private void GenerateFormatHelpers()
     {
+        if (_vulkanSpecification == null)
+            throw new InvalidOperationException();
+
         // Generate Functions
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "VkFormatUtils.cs"),
             false,
@@ -20,7 +23,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch(format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         if (format.BlockExtentX == 1 && format.BlockExtentY == 1 && format.BlockExtentZ == 1)
                             continue;
@@ -38,7 +41,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch(format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         string enumItemName = GetEnumItemName("VkFormat", format.Name, "VK_FORMAT");
                         writer.WriteLine($"case VkFormat.{enumItemName}: return {format.BlockSize};");
@@ -53,7 +56,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch(format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         string enumItemName = GetEnumItemName("VkFormat", format.Name, "VK_FORMAT");
                         writer.WriteLine($"case VkFormat.{enumItemName}: return {format.TexelsPerBlock};");
@@ -68,7 +71,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch(format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         string enumItemName = GetEnumItemName("VkFormat", format.Name, "VK_FORMAT");
                         writer.WriteLine($"case VkFormat.{enumItemName}: return \"{format.Class}\";");
@@ -83,7 +86,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch(format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         string enumItemName = GetEnumItemName("VkFormat", format.Name, "VK_FORMAT");
                         writer.WriteLine($"case VkFormat.{enumItemName}: return {format.Components.Length};");
@@ -98,7 +101,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch (format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         if (!string.IsNullOrEmpty(format.Compressed))
                             continue;
@@ -129,7 +132,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch(format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         if (string.IsNullOrEmpty(format.Compressed))
                             continue;
@@ -154,7 +157,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch(format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         if (string.IsNullOrEmpty(format.Compressed))
                             continue;
@@ -175,7 +178,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch(format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         if (!format.Packed.HasValue)
                             continue;
@@ -193,7 +196,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch (format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         if (format.Planes.Length == 0)
                             continue;
@@ -224,7 +227,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch(format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         if (format.Planes.Length == 0)
                             continue;
@@ -242,7 +245,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch(format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         if (format.Planes.Length == 0)
                             continue;
@@ -272,7 +275,7 @@ public static partial class CsCodeGenerator
             {
                 using (writer.PushBlock($"switch(format)"))
                 {
-                    foreach (FormatDefinition format in specification.Formats)
+                    foreach (FormatDefinition format in _vulkanSpecification.Formats)
                     {
                         if (format.Planes.Length == 0)
                             continue;

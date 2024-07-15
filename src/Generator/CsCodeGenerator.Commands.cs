@@ -6,9 +6,9 @@ using CppAst;
 
 namespace Generator;
 
-public static partial class CsCodeGenerator
+partial class CsCodeGenerator
 {
-    private static readonly HashSet<string> s_instanceFunctions =
+    private readonly HashSet<string> s_instanceFunctions =
     [
         "vkGetDeviceProcAddr",
         "vkCmdBeginDebugUtilsLabelEXT",
@@ -24,7 +24,7 @@ public static partial class CsCodeGenerator
         "vkSubmitDebugUtilsMessageEXT"
     ];
 
-    private static readonly HashSet<string> s_outReturnFunctions =
+    private readonly HashSet<string> s_outReturnFunctions =
     [
         "vkCreateInstance",
         "vkCreateDevice",
@@ -148,7 +148,7 @@ public static partial class CsCodeGenerator
         return $"delegate* unmanaged<{builder}>";
     }
 
-    private static void GenerateCommands(CppCompilation compilation)
+    private void GenerateCommands(CppCompilation compilation)
     {
         Dictionary<string, CppFunction> commands = [];
         Dictionary<string, CppFunction> instanceCommands = [];
@@ -299,7 +299,7 @@ public static partial class CsCodeGenerator
         return modifier;
     }
 
-    private static void WriteCommands(CodeWriter writer, string name, Dictionary<string, CppFunction> commands)
+    private void WriteCommands(CodeWriter writer, string name, Dictionary<string, CppFunction> commands)
     {
         using (writer.PushBlock($"private static void {name}(IntPtr context, LoadFunction load)"))
         {
@@ -331,7 +331,7 @@ public static partial class CsCodeGenerator
         }
     }
 
-    private static void WriteFunctionInvocation(CodeWriter writer, CppFunction cppFunction,
+    private void WriteFunctionInvocation(CodeWriter writer, CppFunction cppFunction,
         bool canUseOut, bool inParameters = false)
     {
         string returnCsName = GetCsTypeName(cppFunction.ReturnType);
@@ -483,7 +483,7 @@ public static partial class CsCodeGenerator
         writer.WriteLine($"{cppFunction.Name}_ptr({callArgumentString}){postCall};");
     }
 
-    private static bool IsInstanceFunction(string name)
+    private bool IsInstanceFunction(string name)
     {
         return s_instanceFunctions.Contains(name);
     }

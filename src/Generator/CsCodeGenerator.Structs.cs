@@ -6,7 +6,7 @@ using CppAst;
 
 namespace Generator;
 
-public static partial class CsCodeGenerator
+partial class CsCodeGenerator
 {
     private static readonly HashSet<string> _structsAsRecord =
     [
@@ -17,7 +17,7 @@ public static partial class CsCodeGenerator
         "VkRect2D",
     ];
 
-    private static void GenerateStructAndUnions(CppCompilation compilation)
+    private void GenerateStructAndUnions(CppCompilation compilation)
     {
         if (compilation.Classes.Count == 0)
             return;
@@ -69,7 +69,7 @@ public static partial class CsCodeGenerator
         }
     }
 
-    private static void WriteStruct(CodeWriter writer, CppClass cppClass, string structName)
+    private void WriteStruct(CodeWriter writer, CppClass cppClass, string structName)
     {
         string visibility = _options.PublicVisiblity ? "public" : "internal";
         bool isUnion = cppClass.ClassKind == CppClassKind.Union;
@@ -149,7 +149,7 @@ public static partial class CsCodeGenerator
         }
     }
 
-    private static void WriteField(CodeWriter writer, string structName, CppField field, bool handleSType, bool isUnion = false, bool isReadOnly = false)
+    private void WriteField(CodeWriter writer, string structName, CppField field, bool handleSType, bool isUnion = false, bool isReadOnly = false)
     {
         string csFieldName = NormalizeFieldName(field.Name);
 

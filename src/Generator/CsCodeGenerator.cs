@@ -5,7 +5,7 @@ using CppAst;
 
 namespace Generator;
 
-public static partial class CsCodeGenerator
+public partial class CsCodeGenerator
 {
     private static readonly HashSet<string> s_keywords =
     [
@@ -98,25 +98,28 @@ public static partial class CsCodeGenerator
         { "spvc_msl_vertex_format", "spvc_msl_shader_variable_format" },
     };
 
-    private static CsCodeGeneratorOptions _options = new();
-    private static VulkanSpecification? s_vulkanSpecification = default;
+    private readonly CsCodeGeneratorOptions _options = new();
+    private readonly VulkanSpecification? _vulkanSpecification = default;
 
-    public static void Generate(CppCompilation compilation, CsCodeGeneratorOptions options, VulkanSpecification? specification = default)
+    public CsCodeGenerator(CsCodeGeneratorOptions options, VulkanSpecification? specification = default)
     {
         _options = options;
-        s_vulkanSpecification = specification;
+        _vulkanSpecification = specification;
+    }
 
+    public void Generate(CppCompilation compilation)
+    {
         GenerateEnums(compilation);
         GenerateConstants(compilation);
         GenerateHandles(compilation);
         GenerateStructAndUnions(compilation);
         GenerateCommands(compilation);
 
-        if (options.IsVulkan)
+        if (_options.IsVulkan)
             GenerateHelperCommands(compilation);
 
-        if (specification != null)
-            GenerateFormatHelpers(specification);
+        if (_vulkanSpecification != null)
+            GenerateFormatHelpers();
     }
 
     public static void AddCsMapping(string typeName, string csTypeName)
@@ -127,7 +130,7 @@ public static partial class CsCodeGenerator
         s_csNameMappings[typeName] = csTypeName;
     }
 
-    private static void GenerateConstants(CppCompilation compilation)
+    private void GenerateConstants(CppCompilation compilation)
     {
         string visibility = _options.PublicVisiblity ? "public" : "internal";
 

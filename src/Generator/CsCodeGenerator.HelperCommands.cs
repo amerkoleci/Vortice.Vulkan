@@ -6,7 +6,7 @@ using CppAst;
 
 namespace Generator;
 
-public static partial class CsCodeGenerator
+partial class CsCodeGenerator
 {
     private static readonly HashSet<string> s_outArrayReturnFunctions =
     [
@@ -56,7 +56,7 @@ public static partial class CsCodeGenerator
         "vkEnumeratePhysicalDeviceGroupsKHR",
     ];
 
-    private static void GenerateHelperCommands(CppCompilation compilation)
+    private void GenerateHelperCommands(CppCompilation compilation)
     {
         // Generate Functions
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "VkHelpers.cs"),
