@@ -17,7 +17,7 @@ public readonly unsafe struct VkUtf8String : IEquatable<VkUtf8String>
     /// </summary>
     /// <param name="buffer">A null terminated UTF-8 string.</param>
     public VkUtf8String(byte* buffer)
-        : this(buffer, buffer == null ? 0 : new ReadOnlySpan<byte>(buffer, int.MaxValue).IndexOf((byte)0))
+        : this(buffer, buffer == null ? 0 : MemoryMarshal.CreateReadOnlySpanFromNullTerminated(buffer).Length)
     {
     }
 

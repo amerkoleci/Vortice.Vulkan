@@ -7,34 +7,24 @@ using System.Text;
 
 namespace Vortice.Vulkan;
 
-public readonly unsafe ref struct VkUtf8ReadOnlyString
+public readonly ref struct VkUtf8ReadOnlyString(ReadOnlySpan<byte> span)
 {
-    private readonly ReadOnlySpan<byte> _data;
-
-    public VkUtf8ReadOnlyString(ReadOnlySpan<byte> data)
-    {
-        _data = data;
-    }
-
-    public VkUtf8ReadOnlyString(byte[] data)
-    {
-        _data = data.AsSpan();
-    }
+    private readonly ReadOnlySpan<byte> _span = span;
 
     /// <inheritdoc />
-    public override string? ToString() => Unsafe.IsNullRef(ref MemoryMarshal.GetReference(_data)) ? null : Encoding.UTF8.GetString(_data);
+    public override string? ToString() => Unsafe.IsNullRef(ref MemoryMarshal.GetReference(_span)) ? null : Encoding.UTF8.GetString(_span);
 
     public static implicit operator VkUtf8ReadOnlyString(ReadOnlySpan<byte> span) => new(span);
     public static implicit operator VkUtf8ReadOnlyString(byte[] data) => new(data);
 
-    public static implicit operator ReadOnlySpan<byte>(VkUtf8ReadOnlyString span) => span._data;
+    public static implicit operator ReadOnlySpan<byte>(VkUtf8ReadOnlyString span) => span._span;
 
-    public static unsafe implicit operator byte*(VkUtf8ReadOnlyString span) => (byte*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(span._data));
+    public static unsafe implicit operator byte*(VkUtf8ReadOnlyString span) => (byte*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(span._span));
 
-    internal ref readonly byte GetPinnableReference() => ref _data.GetPinnableReference();
+    internal ref readonly byte GetPinnableReference() => ref _span.GetPinnableReference();
 
-    public static bool operator ==(VkUtf8ReadOnlyString left, VkUtf8ReadOnlyString right) => left._data.SequenceEqual(right._data);
+    public static bool operator ==(VkUtf8ReadOnlyString left, VkUtf8ReadOnlyString right) => left._span.SequenceEqual(right._span);
 
-    public static bool operator !=(VkUtf8ReadOnlyString left, VkUtf8ReadOnlyString right) => !left._data.SequenceEqual(right._data);
+    public static bool operator !=(VkUtf8ReadOnlyString left, VkUtf8ReadOnlyString right) => !left._span.SequenceEqual(right._span);
 
 }

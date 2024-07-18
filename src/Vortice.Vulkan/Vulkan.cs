@@ -4,6 +4,7 @@
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 
 namespace Vortice.Vulkan;
@@ -127,6 +128,11 @@ public static unsafe partial class Vulkan
     internal static delegate* unmanaged<VkInstance, byte*, IntPtr> vkGetInstanceProcAddr_ptr;
     internal static delegate* unmanaged<VkDevice, byte*, IntPtr> vkGetDeviceProcAddr_ptr;
 
+    public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, byte* pName)
+    {
+        return (delegate* unmanaged<void>)vkGetInstanceProcAddr_ptr(instance, pName);
+    }
+
     public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, ReadOnlySpan<byte> name)
     {
         fixed (byte* pName = name)
@@ -135,9 +141,28 @@ public static unsafe partial class Vulkan
         }
     }
 
-    public static delegate* unmanaged<void> vkGetInstanceProcAddr(IntPtr instance, string name)
+    [LibraryImport("Amer.dll", StringMarshalling = StringMarshalling.Utf8)]
+    public static partial string Test(string test, string test3);
+
+    public static delegate* unmanaged<void> vkGetInstanceProcAddr(nint instance, string name)
     {
-        return vkGetInstanceProcAddr(instance, name.GetUtf8Span());
+        return vkGetInstanceProcAddr(new VkInstance(instance), name);
+    }
+
+    public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, string name)
+    {
+        byte* __pName_local = default;
+        scoped Utf8StringMarshaller.ManagedToUnmanagedIn __pName__marshaller = new();
+        try
+        {
+            __pName__marshaller.FromManaged(name, stackalloc byte[Utf8StringMarshaller.ManagedToUnmanagedIn.BufferSize]);
+            __pName_local = __pName__marshaller.ToUnmanaged();
+            return vkGetInstanceProcAddr(instance, __pName_local);
+        }
+        finally
+        {
+            __pName__marshaller.Free();
+        }
     }
 
     public static delegate* unmanaged<void> vkGetDeviceProcAddr(VkDevice device, byte* name)
@@ -145,17 +170,25 @@ public static unsafe partial class Vulkan
         return (delegate* unmanaged<void>)vkGetDeviceProcAddr_ptr(device, name);
     }
 
-    public static delegate* unmanaged<void> vkGetDeviceProcAddr(VkDevice device, ReadOnlySpan<byte> name)
+    public static delegate* unmanaged<void> vkGetDeviceProcAddr(VkDevice device, string name)
     {
-        fixed (byte* pName = name)
+        byte* __pName_local = default;
+        scoped Utf8StringMarshaller.ManagedToUnmanagedIn __pName__marshaller = new();
+        try
         {
-            return (delegate* unmanaged<void>)vkGetDeviceProcAddr_ptr(device, pName);
+            __pName__marshaller.FromManaged(name, stackalloc byte[Utf8StringMarshaller.ManagedToUnmanagedIn.BufferSize]);
+            __pName_local = __pName__marshaller.ToUnmanaged();
+            return vkGetDeviceProcAddr(device, __pName_local);
+        }
+        finally
+        {
+            __pName__marshaller.Free();
         }
     }
 
-    public static delegate* unmanaged<void> vkGetDeviceProcAddr(IntPtr device, string name)
+    public static delegate* unmanaged<void> vkGetDeviceProcAddr(nint device, string name)
     {
-        return vkGetDeviceProcAddr(device, name.GetUtf8Span());
+        return vkGetDeviceProcAddr(new VkDevice(device), name);
     }
 
     public static VkResult vkEnumerateInstanceExtensionProperties(uint* propertyCount, VkExtensionProperties* properties)
@@ -213,21 +246,19 @@ public static unsafe partial class Vulkan
     {
         if (layerName is not null)
         {
-            ReadOnlySpan<byte> layerNameSpan = layerName.GetUtf8Span();
+            byte* playerName = VkStringInterop.ConvertToUnmanaged(layerName);
 
-            fixed (byte* playerName = layerNameSpan)
+            uint propertyCount = 0;
+            vkEnumerateDeviceExtensionProperties(physicalDevice, playerName, &propertyCount, null).CheckResult();
+
+            ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[propertyCount];
+            fixed (VkExtensionProperties* propertiesPtr = properties)
             {
-                uint propertyCount = 0;
-                vkEnumerateDeviceExtensionProperties(physicalDevice, playerName, &propertyCount, null).CheckResult();
-
-                ReadOnlySpan<VkExtensionProperties> properties = new VkExtensionProperties[propertyCount];
-                fixed (VkExtensionProperties* propertiesPtr = properties)
-                {
-                    vkEnumerateDeviceExtensionProperties(physicalDevice, playerName, &propertyCount, propertiesPtr).CheckResult();
-                }
-
-                return properties;
+                vkEnumerateDeviceExtensionProperties(physicalDevice, playerName, &propertyCount, propertiesPtr).CheckResult();
             }
+
+            VkStringInterop.Free(playerName);
+            return properties;
         }
         else
         {
@@ -787,17 +818,45 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkSetDebugUtilsObjectNameEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, string? label = default)
     {
-        fixed (byte* pName = label.GetUtf8Span())
+        byte* __pName_local = default;
+        scoped Utf8StringMarshaller.ManagedToUnmanagedIn __label__marshaller = new();
+        try
+        {
+            __label__marshaller.FromManaged(label, stackalloc byte[Utf8StringMarshaller.ManagedToUnmanagedIn.BufferSize]);
+            __pName_local = __label__marshaller.ToUnmanaged();
+            VkDebugUtilsObjectNameInfoEXT info = new()
+            {
+                objectType = objectType,
+                objectHandle = objectHandle,
+                pObjectName = __pName_local
+            };
+            return vkSetDebugUtilsObjectNameEXT(device, &info);
+        }
+        finally
+        {
+            __label__marshaller.Free();
+        }
+    }
+
+    public static VkResult vkSetDebugUtilsObjectNameEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, ReadOnlySpan<char> label)
+    {
+        int maxLength = Encoding.UTF8.GetMaxByteCount(label.Length);
+        Span<byte> bytes = stackalloc byte[maxLength + 1];
+
+        int length = Encoding.UTF8.GetBytes(label, bytes);
+        Span<byte> result = bytes.Slice(0, length);
+        fixed(byte* pLabel = result)
         {
             VkDebugUtilsObjectNameInfoEXT info = new()
             {
                 objectType = objectType,
                 objectHandle = objectHandle,
-                pObjectName = pName
+                pObjectName = pLabel
             };
             return vkSetDebugUtilsObjectNameEXT(device, &info);
         }
     }
+
 
     public static void vkCmdCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, ReadOnlySpan<VkBufferImageCopy> regions, uint regionCount = 0)
     {
