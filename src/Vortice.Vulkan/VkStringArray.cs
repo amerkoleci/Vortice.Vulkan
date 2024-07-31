@@ -44,12 +44,33 @@ public unsafe readonly struct VkStringArray : IDisposable
             ReadOnlySpan<byte> bytes = strings[i].Span;
 
             uint size = (uint)(bytes.Length + 1) * sizeof(byte);
-            _data[i] = (byte*)NativeMemory.Alloc(size);
+            _data[i] = (byte*)NativeMemory.AllocZeroed(size);
 
             fixed (byte* pBytes = bytes)
             {
                 NativeMemory.Copy(pBytes, _data[i], size);
             }
+        }
+    }
+
+    public VkStringArray(IEnumerable<VkUtf8String> strings)
+    {
+        Length = (uint)strings.Count();
+        _data = (byte**)NativeMemory.Alloc((nuint)(Length * sizeof(byte*)));
+
+        int index = 0;
+        foreach(VkUtf8String str in strings)
+        {
+            ReadOnlySpan<byte> bytes = str.Span;
+
+            uint size = (uint)(bytes.Length + 1) * sizeof(byte);
+            _data[index] = (byte*)NativeMemory.AllocZeroed(size);
+
+            fixed (byte* pBytes = bytes)
+            {
+                NativeMemory.Copy(pBytes, _data[index], size);
+            }
+            index++;
         }
     }
 
