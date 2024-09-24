@@ -30,4 +30,4 @@ jobs:
 
     - name: Publish to NuGet
       if: github.event_name == 'push'
-      run: dotnet nuget push artifact/release/*.nupkg -k ${{secrets.NUGET_TOKEN}} --skip-duplicate --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push artifacts/package/release/*.nupkg -k ${{secrets.NUGET_TOKEN}} --skip-duplicate --source https://api.nuget.org/v3/index.json
