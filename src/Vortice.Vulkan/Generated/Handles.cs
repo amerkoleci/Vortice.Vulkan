@@ -892,6 +892,31 @@ public readonly partial struct VkDeferredOperationKHR : IEquatable<VkDeferredOpe
 /// A non-dispatchable handle.
 /// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkPipelineBinaryKHR : IEquatable<VkPipelineBinaryKHR>
+{
+	public VkPipelineBinaryKHR(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static VkPipelineBinaryKHR Null => new(0);
+	public static implicit operator VkPipelineBinaryKHR(ulong handle) => new(handle);
+	public static implicit operator ulong(VkPipelineBinaryKHR handle) => handle.Handle;
+	public static bool operator ==(VkPipelineBinaryKHR left, VkPipelineBinaryKHR right) => left.Handle == right.Handle;
+	public static bool operator !=(VkPipelineBinaryKHR left, VkPipelineBinaryKHR right) => left.Handle != right.Handle;
+	public static bool operator ==(VkPipelineBinaryKHR left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkPipelineBinaryKHR left, ulong right) => left.Handle != right;
+	public bool Equals(VkPipelineBinaryKHR other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkPipelineBinaryKHR handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkPipelineBinaryKHR)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VkDebugReportCallbackEXT : IEquatable<VkDebugReportCallbackEXT>
 {
 	public VkDebugReportCallbackEXT(ulong handle) { Handle = handle; }

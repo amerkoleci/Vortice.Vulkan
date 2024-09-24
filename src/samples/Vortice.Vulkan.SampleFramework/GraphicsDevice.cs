@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-using static SDL.SDL;
+using static SDL3.SDL3;
 using static Vortice.Vulkan.Vulkan;
 
 namespace Vortice.Vulkan;

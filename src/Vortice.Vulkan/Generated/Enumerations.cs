@@ -167,6 +167,10 @@ public enum VkResult
 	ErrorCompressionExhaustedEXT = -1000338000,
 	/// <unmanaged>VK_INCOMPATIBLE_SHADER_BINARY_EXT</unmanaged>
 	IncompatibleShaderBinaryEXT = 1000482000,
+	/// <unmanaged>VK_PIPELINE_BINARY_MISSING_KHR</unmanaged>
+	PipelineBinaryMissingKHR = 1000483000,
+	/// <unmanaged>VK_ERROR_NOT_ENOUGH_SPACE_KHR</unmanaged>
+	ErrorNotEnoughSpaceKHR = -1000483000,
 	/// <unmanaged>VK_ERROR_OUT_OF_POOL_MEMORY_KHR</unmanaged>
 	ErrorOutOfPoolMemoryKHR = ErrorOutOfPoolMemory,
 	/// <unmanaged>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</unmanaged>
@@ -1152,8 +1156,6 @@ public enum VkStructureType
 	PhysicalDeviceVertexAttributeDivisorPropertiesEXT = 1000190000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP</unmanaged>
 	PresentFrameTokenGgp = 1000191000,
-	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV</unmanaged>
-	PhysicalDeviceComputeShaderDerivativesFeaturesNV = 1000201000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV</unmanaged>
 	PhysicalDeviceMeshShaderFeaturesNV = 1000202000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV</unmanaged>
@@ -1824,6 +1826,12 @@ public enum VkStructureType
 	PipelineCreateFlags2CreateInfoKHR = 1000470005,
 	/// <unmanaged>VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO_KHR</unmanaged>
 	BufferUsageFlags2CreateInfoKHR = 1000470006,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD</unmanaged>
+	PhysicalDeviceAntiLagFeaturesAMD = 1000476000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD</unmanaged>
+	AntiLagDataAMD = 1000476001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD</unmanaged>
+	AntiLagPresentationInfoAMD = 1000476002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_POSITION_FETCH_FEATURES_KHR</unmanaged>
 	PhysicalDeviceRayTracingPositionFetchFeaturesKHR = 1000481000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT</unmanaged>
@@ -1832,6 +1840,26 @@ public enum VkStructureType
 	PhysicalDeviceShaderObjectPropertiesEXT = 1000482001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SHADER_CREATE_INFO_EXT</unmanaged>
 	ShaderCreateInfoEXT = 1000482002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_BINARY_FEATURES_KHR</unmanaged>
+	PhysicalDevicePipelineBinaryFeaturesKHR = 1000483000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_BINARY_CREATE_INFO_KHR</unmanaged>
+	PipelineBinaryCreateInfoKHR = 1000483001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_BINARY_INFO_KHR</unmanaged>
+	PipelineBinaryInfoKHR = 1000483002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_BINARY_KEY_KHR</unmanaged>
+	PipelineBinaryKeyKHR = 1000483003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_BINARY_PROPERTIES_KHR</unmanaged>
+	PhysicalDevicePipelineBinaryPropertiesKHR = 1000483004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RELEASE_CAPTURED_PIPELINE_DATA_INFO_KHR</unmanaged>
+	ReleaseCapturedPipelineDataInfoKHR = 1000483005,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_BINARY_DATA_INFO_KHR</unmanaged>
+	PipelineBinaryDataInfoKHR = 1000483006,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_CREATE_INFO_KHR</unmanaged>
+	PipelineCreateInfoKHR = 1000483007,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_PIPELINE_BINARY_INTERNAL_CACHE_CONTROL_KHR</unmanaged>
+	DevicePipelineBinaryInternalCacheControlKHR = 1000483008,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_BINARY_HANDLES_INFO_KHR</unmanaged>
+	PipelineBinaryHandlesInfoKHR = 1000483009,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_PROPERTIES_FEATURES_QCOM</unmanaged>
 	PhysicalDeviceTilePropertiesFeaturesQCOM = 1000484000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM</unmanaged>
@@ -1896,6 +1924,10 @@ public enum VkStructureType
 	PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM = 1000510000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM</unmanaged>
 	MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM = 1000510001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_KHR</unmanaged>
+	PhysicalDeviceComputeShaderDerivativesFeaturesKHR = 1000201000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR</unmanaged>
+	PhysicalDeviceComputeShaderDerivativesPropertiesKHR = 1000511000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_CAPABILITIES_KHR</unmanaged>
 	VideoDecodeAV1CapabilitiesKHR = 1000512000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PICTURE_INFO_KHR</unmanaged>
@@ -1988,6 +2020,8 @@ public enum VkStructureType
 	PhysicalDeviceRawAccessChainsFeaturesNV = 1000555000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR</unmanaged>
 	PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR = 1000558000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV</unmanaged>
+	PhysicalDeviceCommandBufferInheritanceFeaturesNV = 1000559000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR</unmanaged>
 	PhysicalDeviceMaintenance7FeaturesKHR = 1000562000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR</unmanaged>
@@ -2224,6 +2258,8 @@ public enum VkStructureType
 	PhysicalDeviceDepthStencilResolvePropertiesKHR = PhysicalDeviceDepthStencilResolveProperties,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR</unmanaged>
 	SubpassDescriptionDepthStencilResolveKHR = SubpassDescriptionDepthStencilResolve,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV</unmanaged>
+	PhysicalDeviceComputeShaderDerivativesFeaturesNV = PhysicalDeviceComputeShaderDerivativesFeaturesKHR,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV</unmanaged>
 	PhysicalDeviceFragmentShaderBarycentricFeaturesNV = PhysicalDeviceFragmentShaderBarycentricFeaturesKHR,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES_KHR</unmanaged>
@@ -2596,6 +2632,8 @@ public enum VkObjectType
 	OpticalFlowSessionNV = 1000464000,
 	/// <unmanaged>VK_OBJECT_TYPE_SHADER_EXT</unmanaged>
 	ShaderEXT = 1000482000,
+	/// <unmanaged>VK_OBJECT_TYPE_PIPELINE_BINARY_KHR</unmanaged>
+	PipelineBinaryKHR = 1000483000,
 	/// <unmanaged>VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR</unmanaged>
 	DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate,
 	/// <unmanaged>VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR</unmanaged>
@@ -7222,12 +7260,6 @@ public enum VkVideoEncodeTuningModeKHR
 }
 
 [Flags]
-public enum VkVideoEncodeFlagsKHR
-{
-	None = 0,
-}
-
-[Flags]
 public enum VkVideoEncodeCapabilityFlagsKHR
 {
 	None = 0,
@@ -8800,6 +8832,24 @@ public enum VkOpticalFlowExecuteFlagsNV
 	DisableTemporalHints = 0x00000001,
 }
 
+public enum VkAntiLagModeAMD
+{
+	/// <unmanaged>VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD</unmanaged>
+	DriverControlAMD = 0,
+	/// <unmanaged>VK_ANTI_LAG_MODE_ON_AMD</unmanaged>
+	OnAMD = 1,
+	/// <unmanaged>VK_ANTI_LAG_MODE_OFF_AMD</unmanaged>
+	OffAMD = 2,
+}
+
+public enum VkAntiLagStageAMD
+{
+	/// <unmanaged>VK_ANTI_LAG_STAGE_INPUT_AMD</unmanaged>
+	InputAMD = 0,
+	/// <unmanaged>VK_ANTI_LAG_STAGE_PRESENT_AMD</unmanaged>
+	PresentAMD = 1,
+}
+
 public enum VkShaderCodeTypeEXT
 {
 	/// <unmanaged>VK_SHADER_CODE_TYPE_BINARY_EXT</unmanaged>
@@ -9216,6 +9266,12 @@ public enum VkResolveModeFlagsKHR
 
 [Flags]
 public enum VkSemaphoreWaitFlagsKHR
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkVideoEncodeFlagsKHR
 {
 	None = 0,
 }
@@ -9912,6 +9968,8 @@ public enum VkPipelineCreateFlags2KHR : ulong
 	RayTracingDisplacementMicromapNV = 0x10000000UL,
 	/// <unmanaged>VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT</unmanaged>
 	DescriptorBufferEXT = 0x20000000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR</unmanaged>
+	CaptureData = 0x80000000UL,
 }
 
 [Flags]

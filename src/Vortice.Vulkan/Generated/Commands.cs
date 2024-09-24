@@ -362,6 +362,11 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkDevice, VkRenderingAreaInfoKHR*, VkExtent2D*, void> vkGetRenderingAreaGranularityKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfoKHR*, VkSubresourceLayout2KHR*, void> vkGetDeviceImageSubresourceLayoutKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void> vkGetImageSubresourceLayout2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineBinaryCreateInfoKHR*, VkAllocationCallbacks*, VkPipelineBinaryHandlesInfoKHR*, VkResult> vkCreatePipelineBinariesKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineBinaryKHR, VkAllocationCallbacks*, void> vkDestroyPipelineBinaryKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineCreateInfoKHR*, VkPipelineBinaryKeyKHR*, VkResult> vkGetPipelineKeyKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkPipelineBinaryDataInfoKHR*, VkPipelineBinaryKeyKHR*, nuint*, void*, VkResult> vkGetPipelineBinaryDataKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkReleaseCapturedPipelineDataInfoKHR*, VkAllocationCallbacks*, VkResult> vkReleaseCapturedPipelineDataKHR_ptr;
 	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesKHR*, VkResult> vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, uint, ushort, void> vkCmdSetLineStippleKHR_ptr;
 	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr;
@@ -602,6 +607,7 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkAllocationCallbacks*, void> vkDestroyOpticalFlowSessionNV_ptr;
 	private static delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkOpticalFlowSessionBindingPointNV, VkImageView, VkImageLayout, VkResult> vkBindOpticalFlowSessionImageNV_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkOpticalFlowSessionNV, VkOpticalFlowExecuteInfoNV*, void> vkCmdOpticalFlowExecuteNV_ptr;
+	private static delegate* unmanaged<VkDevice, VkAntiLagDataAMD*, void> vkAntiLagUpdateAMD_ptr;
 	private static delegate* unmanaged<VkDevice, uint, VkShaderCreateInfoEXT*, VkAllocationCallbacks*, VkShaderEXT*, VkResult> vkCreateShadersEXT_ptr;
 	private static delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void> vkDestroyShaderEXT_ptr;
 	private static delegate* unmanaged<VkDevice, VkShaderEXT, nuint*, void*, VkResult> vkGetShaderBinaryDataEXT_ptr;
@@ -3407,6 +3413,39 @@ unsafe partial class Vulkan
 		vkGetImageSubresourceLayout2KHR_ptr(device, image, subresource, layout);
 	}
 
+	public static VkResult vkCreatePipelineBinariesKHR(VkDevice device, VkPipelineBinaryCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkPipelineBinaryHandlesInfoKHR* binaries)
+	{
+		return vkCreatePipelineBinariesKHR_ptr(device, createInfo, allocator, binaries);
+	}
+
+	public static VkResult vkCreatePipelineBinariesKHR(VkDevice device, in VkPipelineBinaryCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkPipelineBinaryHandlesInfoKHR* binaries)
+	{
+		fixed (VkPipelineBinaryCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return vkCreatePipelineBinariesKHR_ptr(device, createInfoPtr, allocator, binaries);
+		}
+	}
+
+	public static void vkDestroyPipelineBinaryKHR(VkDevice device, VkPipelineBinaryKHR pipelineBinary, VkAllocationCallbacks* allocator = default)
+	{
+		vkDestroyPipelineBinaryKHR_ptr(device, pipelineBinary, allocator);
+	}
+
+	public static VkResult vkGetPipelineKeyKHR(VkDevice device, VkPipelineCreateInfoKHR* pipelineCreateInfo, VkPipelineBinaryKeyKHR* pipelineKey)
+	{
+		return vkGetPipelineKeyKHR_ptr(device, pipelineCreateInfo, pipelineKey);
+	}
+
+	public static VkResult vkGetPipelineBinaryDataKHR(VkDevice device, VkPipelineBinaryDataInfoKHR* info, VkPipelineBinaryKeyKHR* pipelineBinaryKey, nuint* pipelineBinaryDataSize, void* pipelineBinaryData)
+	{
+		return vkGetPipelineBinaryDataKHR_ptr(device, info, pipelineBinaryKey, pipelineBinaryDataSize, pipelineBinaryData);
+	}
+
+	public static VkResult vkReleaseCapturedPipelineDataKHR(VkDevice device, VkReleaseCapturedPipelineDataInfoKHR* info, VkAllocationCallbacks* allocator = default)
+	{
+		return vkReleaseCapturedPipelineDataKHR_ptr(device, info, allocator);
+	}
+
 	public static VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeMatrixPropertiesKHR* properties)
 	{
 		return vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR_ptr(physicalDevice, propertyCount, properties);
@@ -4740,6 +4779,11 @@ unsafe partial class Vulkan
 		vkCmdOpticalFlowExecuteNV_ptr(commandBuffer, session, executeInfo);
 	}
 
+	public static void vkAntiLagUpdateAMD(VkDevice device, VkAntiLagDataAMD* data)
+	{
+		vkAntiLagUpdateAMD_ptr(device, data);
+	}
+
 	public static VkResult vkCreateShadersEXT(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT* createInfos, VkAllocationCallbacks* allocator, VkShaderEXT* shaders)
 	{
 		return vkCreateShadersEXT_ptr(device, createInfoCount, createInfos, allocator, shaders);
@@ -5678,6 +5722,11 @@ unsafe partial class Vulkan
 		vkGetRenderingAreaGranularityKHR_ptr = (delegate* unmanaged<VkDevice, VkRenderingAreaInfoKHR*, VkExtent2D*, void>) load(context, nameof(vkGetRenderingAreaGranularityKHR));
 		vkGetDeviceImageSubresourceLayoutKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfoKHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetDeviceImageSubresourceLayoutKHR));
 		vkGetImageSubresourceLayout2KHR_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetImageSubresourceLayout2KHR));
+		vkCreatePipelineBinariesKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineBinaryCreateInfoKHR*, VkAllocationCallbacks*, VkPipelineBinaryHandlesInfoKHR*, VkResult>) load(context, nameof(vkCreatePipelineBinariesKHR));
+		vkDestroyPipelineBinaryKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineBinaryKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPipelineBinaryKHR));
+		vkGetPipelineKeyKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineCreateInfoKHR*, VkPipelineBinaryKeyKHR*, VkResult>) load(context, nameof(vkGetPipelineKeyKHR));
+		vkGetPipelineBinaryDataKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineBinaryDataInfoKHR*, VkPipelineBinaryKeyKHR*, nuint*, void*, VkResult>) load(context, nameof(vkGetPipelineBinaryDataKHR));
+		vkReleaseCapturedPipelineDataKHR_ptr = (delegate* unmanaged<VkDevice, VkReleaseCapturedPipelineDataInfoKHR*, VkAllocationCallbacks*, VkResult>) load(context, nameof(vkReleaseCapturedPipelineDataKHR));
 		vkCmdSetLineStippleKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, ushort, void>) load(context, nameof(vkCmdSetLineStippleKHR));
 		vkGetCalibratedTimestampsKHR_ptr = (delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult>) load(context, nameof(vkGetCalibratedTimestampsKHR));
 		vkCmdBindDescriptorSets2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfoKHR*, void>) load(context, nameof(vkCmdBindDescriptorSets2KHR));
@@ -5890,6 +5939,7 @@ unsafe partial class Vulkan
 		vkDestroyOpticalFlowSessionNV_ptr = (delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyOpticalFlowSessionNV));
 		vkBindOpticalFlowSessionImageNV_ptr = (delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkOpticalFlowSessionBindingPointNV, VkImageView, VkImageLayout, VkResult>) load(context, nameof(vkBindOpticalFlowSessionImageNV));
 		vkCmdOpticalFlowExecuteNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkOpticalFlowSessionNV, VkOpticalFlowExecuteInfoNV*, void>) load(context, nameof(vkCmdOpticalFlowExecuteNV));
+		vkAntiLagUpdateAMD_ptr = (delegate* unmanaged<VkDevice, VkAntiLagDataAMD*, void>) load(context, nameof(vkAntiLagUpdateAMD));
 		vkCreateShadersEXT_ptr = (delegate* unmanaged<VkDevice, uint, VkShaderCreateInfoEXT*, VkAllocationCallbacks*, VkShaderEXT*, VkResult>) load(context, nameof(vkCreateShadersEXT));
 		vkDestroyShaderEXT_ptr = (delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyShaderEXT));
 		vkGetShaderBinaryDataEXT_ptr = (delegate* unmanaged<VkDevice, VkShaderEXT, nuint*, void*, VkResult>) load(context, nameof(vkGetShaderBinaryDataEXT));

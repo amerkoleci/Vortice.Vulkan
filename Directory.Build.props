@@ -16,6 +16,7 @@
     <LangVersion>12.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
     <!-- Local builds should embed PDBs so we never lose them when a subsequent build occurs. -->
     <DebugType Condition=" '$(CI)' != 'true' and '$(TF_BUILD)' != 'true' ">embedded</DebugType>
     <Features>strict</Features>
@@ -38,7 +39,6 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>vulkan vulkan-api gpu graphics gamedev core standard game vortice</PackageTags>
     <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
-    <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts/</PackageOutputPath>
     <ContinuousIntegrationBuild Condition="'$(GITHUB_RUN_ID)' != ''">true</ContinuousIntegrationBuild>
     <UseSharedCompilation>true</UseSharedCompilation>
   </PropertyGroup>

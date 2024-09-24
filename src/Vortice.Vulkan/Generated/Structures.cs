@@ -10803,6 +10803,237 @@ public unsafe partial struct VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR 
 	}
 }
 
+public unsafe partial struct VkPhysicalDevicePipelineBinaryFeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineBinaryFeaturesKHR;
+	public void* pNext;
+	public VkBool32 pipelineBinaries;
+
+	public VkPhysicalDevicePipelineBinaryFeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePipelineBinaryPropertiesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineBinaryPropertiesKHR;
+	public void* pNext;
+	public VkBool32 pipelineBinaryInternalCache;
+	public VkBool32 pipelineBinaryInternalCacheControl;
+	public VkBool32 pipelineBinaryPrefersInternalCache;
+	public VkBool32 pipelineBinaryPrecompiledInternalCache;
+	public VkBool32 pipelineBinaryCompressedData;
+
+	public VkPhysicalDevicePipelineBinaryPropertiesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkDevicePipelineBinaryInternalCacheControlKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DevicePipelineBinaryInternalCacheControlKHR;
+	public void* pNext;
+	public VkBool32 disableInternalCache;
+
+	public VkDevicePipelineBinaryInternalCacheControlKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineBinaryKeyKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineBinaryKeyKHR;
+	public void* pNext;
+	public uint keySize;
+	public fixed byte key[32];
+
+	public VkPipelineBinaryKeyKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineBinaryDataKHR
+{
+	public nuint dataSize;
+	public void* pData;
+}
+
+public unsafe partial struct VkPipelineBinaryKeysAndDataKHR
+{
+	public uint binaryCount;
+	public VkPipelineBinaryKeyKHR* pPipelineBinaryKeys;
+	public VkPipelineBinaryDataKHR* pPipelineBinaryData;
+}
+
+public unsafe partial struct VkPipelineCreateInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineCreateInfoKHR;
+	public void* pNext;
+
+	public VkPipelineCreateInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineBinaryCreateInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineBinaryCreateInfoKHR;
+	public void* pNext;
+	public VkPipelineBinaryKeysAndDataKHR* pKeysAndDataInfo;
+	public VkPipeline pipeline;
+	public VkPipelineCreateInfoKHR* pPipelineCreateInfo;
+
+	public VkPipelineBinaryCreateInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineBinaryInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineBinaryInfoKHR;
+	public void* pNext;
+	public uint binaryCount;
+	public VkPipelineBinaryKHR* pPipelineBinaries;
+
+	public VkPipelineBinaryInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkReleaseCapturedPipelineDataInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ReleaseCapturedPipelineDataInfoKHR;
+	public void* pNext;
+	public VkPipeline pipeline;
+
+	public VkReleaseCapturedPipelineDataInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineBinaryDataInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineBinaryDataInfoKHR;
+	public void* pNext;
+	public VkPipelineBinaryKHR pipelineBinary;
+
+	public VkPipelineBinaryDataInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineBinaryHandlesInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineBinaryHandlesInfoKHR;
+	public void* pNext;
+	public uint pipelineBinaryCount;
+	public VkPipelineBinaryKHR* pPipelineBinaries;
+
+	public VkPipelineBinaryHandlesInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkCooperativeMatrixPropertiesKHR : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.CooperativeMatrixPropertiesKHR;
@@ -10861,6 +11092,49 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrixPropertiesKHR : IS
 	public VkShaderStageFlags cooperativeMatrixSupportedStages;
 
 	public VkPhysicalDeviceCooperativeMatrixPropertiesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceComputeShaderDerivativesFeaturesKHR;
+	public void* pNext;
+	public VkBool32 computeDerivativeGroupQuads;
+	public VkBool32 computeDerivativeGroupLinear;
+
+	public VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceComputeShaderDerivativesPropertiesKHR;
+	public void* pNext;
+	public VkBool32 meshAndTaskShaderDerivatives;
+
+	public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR()
 	{
 	}
 
@@ -14284,28 +14558,6 @@ public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT
 	public uint maxVertexAttribDivisor;
 
 	public VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT()
-	{
-	}
-
-	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesNV : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceComputeShaderDerivativesFeaturesNV;
-	public void* pNext;
-	public VkBool32 computeDerivativeGroupQuads;
-	public VkBool32 computeDerivativeGroupLinear;
-
-	public VkPhysicalDeviceComputeShaderDerivativesFeaturesNV()
 	{
 	}
 
@@ -20257,6 +20509,72 @@ public unsafe partial struct VkPhysicalDevicePipelineProtectedAccessFeaturesEXT 
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceAntiLagFeaturesAMD : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceAntiLagFeaturesAMD;
+	public void* pNext;
+	public VkBool32 antiLag;
+
+	public VkPhysicalDeviceAntiLagFeaturesAMD()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkAntiLagPresentationInfoAMD : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.AntiLagPresentationInfoAMD;
+	public void* pNext;
+	public VkAntiLagStageAMD stage;
+	public ulong frameIndex;
+
+	public VkAntiLagPresentationInfoAMD()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkAntiLagDataAMD : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.AntiLagDataAMD;
+	public void* pNext;
+	public VkAntiLagModeAMD mode;
+	public uint maxFPS;
+	public VkAntiLagPresentationInfoAMD* pPresentationInfo;
+
+	public VkAntiLagDataAMD()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceShaderObjectFeaturesEXT : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderObjectFeaturesEXT;
@@ -21219,6 +21537,27 @@ public unsafe partial struct VkPhysicalDeviceRawAccessChainsFeaturesNV : IStruct
 	public VkBool32 shaderRawAccessChains;
 
 	public VkPhysicalDeviceRawAccessChainsFeaturesNV()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceCommandBufferInheritanceFeaturesNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceCommandBufferInheritanceFeaturesNV;
+	public void* pNext;
+	public VkBool32 commandBufferInheritance;
+
+	public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV()
 	{
 	}
 

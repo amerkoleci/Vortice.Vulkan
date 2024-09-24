@@ -85,7 +85,7 @@ public class Options : IDisposable
         shaderc_compile_options_set_target_env(Handle, target, version);
     }
 
-    public void SetargetSpirv(SpirVVersion version)
+    public void SetTargetSpirv(SpirVVersion version)
     {
         shaderc_compile_options_set_target_spirv(Handle, version);
     }

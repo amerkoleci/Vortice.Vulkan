@@ -2,8 +2,8 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Runtime.InteropServices;
-using SDL;
-using static SDL.SDL;
+using SDL3;
+using static SDL3.SDL3;
 
 namespace Vortice.Vulkan;
 
@@ -13,14 +13,14 @@ public abstract class Application : IDisposable
 
     protected unsafe Application()
     {
-        if (SDL_Init(SDL_InitFlags.Video) != 0)
+        if (!SDL_Init(SDL_InitFlags.Video))
         {
             throw new PlatformNotSupportedException("SDL is not supported");
         }
 
         SDL_SetLogOutputFunction(Log_SDL);
 
-        if (SDL_Vulkan_LoadLibrary() < 0)
+        if (!SDL_Vulkan_LoadLibrary())
         {
             throw new PlatformNotSupportedException("SDL: Failed to init vulkan");
         }
@@ -109,7 +109,7 @@ public abstract class Application : IDisposable
     }
 
     //[UnmanagedCallersOnly]
-    private static void Log_SDL(SDL_LogCategory category, SDL_LogPriority priority, string description)
+    private static void Log_SDL(SDL_LogCategory category, SDL_LogPriority priority, string? description)
     {
         if (priority >= SDL_LogPriority.Error)
         {

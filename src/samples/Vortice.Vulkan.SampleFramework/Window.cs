@@ -1,9 +1,8 @@
 ﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using SDL;
-using static SDL.SDL;
-using static SDL.SDL_bool;
+using SDL3;
+using static SDL3.SDL3;
 
 namespace Vortice.Vulkan;
 
@@ -84,7 +83,7 @@ public sealed unsafe class Window
     public VkSurfaceKHR CreateSurface(VkInstance instance)
     {
         VkSurfaceKHR surface;
-        if (SDL_Vulkan_CreateSurface(_window, instance, null, (ulong*)&surface) != SDL_TRUE)
+        if (!SDL_Vulkan_CreateSurface(_window, instance, 0, (ulong**)&surface))
         {
             throw new Exception("SDL: failed to create vulkan surface");
         }

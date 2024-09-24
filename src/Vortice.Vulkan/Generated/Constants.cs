@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 290;
+	public const uint VK_HEADER_VERSION = 295;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -722,12 +722,26 @@ public static partial class Vulkan
 	public const uint VK_KHR_RAY_TRACING_POSITION_FETCH_SPEC_VERSION = 1;
 	/// <unmanaged>VK_KHR_RAY_TRACING_POSITION_FETCH_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_KHR_RAY_TRACING_POSITION_FETCH_EXTENSION_NAME => "VK_KHR_ray_tracing_position_fetch"u8;
+	/// <unmanaged>VK_KHR_pipeline_binary</unmanaged>
+	public const uint VK_KHR_pipeline_binary = 1;
+	/// <unmanaged>VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR</unmanaged>
+	public const uint VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR = 32U;
+	/// <unmanaged>VK_KHR_PIPELINE_BINARY_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_PIPELINE_BINARY_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_PIPELINE_BINARY_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_PIPELINE_BINARY_EXTENSION_NAME => "VK_KHR_pipeline_binary"u8;
 	/// <unmanaged>VK_KHR_cooperative_matrix</unmanaged>
 	public const uint VK_KHR_cooperative_matrix = 1;
 	/// <unmanaged>VK_KHR_COOPERATIVE_MATRIX_SPEC_VERSION</unmanaged>
 	public const uint VK_KHR_COOPERATIVE_MATRIX_SPEC_VERSION = 2;
 	/// <unmanaged>VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_KHR_COOPERATIVE_MATRIX_EXTENSION_NAME => "VK_KHR_cooperative_matrix"u8;
+	/// <unmanaged>VK_KHR_compute_shader_derivatives</unmanaged>
+	public const uint VK_KHR_compute_shader_derivatives = 1;
+	/// <unmanaged>VK_KHR_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME => "VK_KHR_compute_shader_derivatives"u8;
 	/// <unmanaged>VK_KHR_video_decode_av1</unmanaged>
 	public const uint VK_KHR_video_decode_av1 = 1;
 	/// <unmanaged>vulkan_video_codec_av1std</unmanaged>
@@ -2102,6 +2116,12 @@ public static partial class Vulkan
 	public const uint VK_EXT_PIPELINE_PROTECTED_ACCESS_SPEC_VERSION = 1;
 	/// <unmanaged>VK_EXT_PIPELINE_PROTECTED_ACCESS_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_EXT_PIPELINE_PROTECTED_ACCESS_EXTENSION_NAME => "VK_EXT_pipeline_protected_access"u8;
+	/// <unmanaged>VK_AMD_anti_lag</unmanaged>
+	public const uint VK_AMD_anti_lag = 1;
+	/// <unmanaged>VK_AMD_ANTI_LAG_SPEC_VERSION</unmanaged>
+	public const uint VK_AMD_ANTI_LAG_SPEC_VERSION = 1;
+	/// <unmanaged>VK_AMD_ANTI_LAG_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_AMD_ANTI_LAG_EXTENSION_NAME => "VK_AMD_anti_lag"u8;
 	/// <unmanaged>VK_EXT_shader_object</unmanaged>
 	public const uint VK_EXT_shader_object = 1;
 	/// <unmanaged>VK_EXT_SHADER_OBJECT_SPEC_VERSION</unmanaged>
@@ -2240,6 +2260,12 @@ public static partial class Vulkan
 	public const uint VK_NV_RAW_ACCESS_CHAINS_SPEC_VERSION = 1;
 	/// <unmanaged>VK_NV_RAW_ACCESS_CHAINS_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_NV_RAW_ACCESS_CHAINS_EXTENSION_NAME => "VK_NV_raw_access_chains"u8;
+	/// <unmanaged>VK_NV_command_buffer_inheritance</unmanaged>
+	public const uint VK_NV_command_buffer_inheritance = 1;
+	/// <unmanaged>VK_NV_COMMAND_BUFFER_INHERITANCE_SPEC_VERSION</unmanaged>
+	public const uint VK_NV_COMMAND_BUFFER_INHERITANCE_SPEC_VERSION = 1;
+	/// <unmanaged>VK_NV_COMMAND_BUFFER_INHERITANCE_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_NV_COMMAND_BUFFER_INHERITANCE_EXTENSION_NAME => "VK_NV_command_buffer_inheritance"u8;
 	/// <unmanaged>VK_NV_shader_atomic_float16_vector</unmanaged>
 	public const uint VK_NV_shader_atomic_float16_vector = 1;
 	/// <unmanaged>VK_NV_SHADER_ATOMIC_FLOAT16_VECTOR_SPEC_VERSION</unmanaged>
@@ -2464,6 +2490,8 @@ public static partial class Vulkan
 	public const VkResult VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR = VkResult.ErrorInvalidVideoStdParametersKHR;
 	public const VkResult VK_ERROR_COMPRESSION_EXHAUSTED_EXT = VkResult.ErrorCompressionExhaustedEXT;
 	public const VkResult VK_INCOMPATIBLE_SHADER_BINARY_EXT = VkResult.IncompatibleShaderBinaryEXT;
+	public const VkResult VK_PIPELINE_BINARY_MISSING_KHR = VkResult.PipelineBinaryMissingKHR;
+	public const VkResult VK_ERROR_NOT_ENOUGH_SPACE_KHR = VkResult.ErrorNotEnoughSpaceKHR;
 	public const VkResult VK_ERROR_OUT_OF_POOL_MEMORY_KHR = VkResult.ErrorOutOfPoolMemoryKHR;
 	public const VkResult VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR = VkResult.ErrorInvalidExternalHandleKHR;
 	public const VkResult VK_ERROR_FRAGMENTATION_EXT = VkResult.ErrorFragmentationEXT;
@@ -2950,7 +2978,6 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD = VkStructureType.DeviceMemoryOverallocationCreateInfoAMD;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT = VkStructureType.PhysicalDeviceVertexAttributeDivisorPropertiesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP = VkStructureType.PresentFrameTokenGgp;
-	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV = VkStructureType.PhysicalDeviceComputeShaderDerivativesFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV = VkStructureType.PhysicalDeviceMeshShaderFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV = VkStructureType.PhysicalDeviceMeshShaderPropertiesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV = VkStructureType.PhysicalDeviceShaderImageFootprintFeaturesNV;
@@ -3286,10 +3313,23 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2_KHR = VkStructureType.ImageSubresource2KHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO_KHR = VkStructureType.PipelineCreateFlags2CreateInfoKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO_KHR = VkStructureType.BufferUsageFlags2CreateInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD = VkStructureType.PhysicalDeviceAntiLagFeaturesAMD;
+	public const VkStructureType VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD = VkStructureType.AntiLagDataAMD;
+	public const VkStructureType VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD = VkStructureType.AntiLagPresentationInfoAMD;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_POSITION_FETCH_FEATURES_KHR = VkStructureType.PhysicalDeviceRayTracingPositionFetchFeaturesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT = VkStructureType.PhysicalDeviceShaderObjectFeaturesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT = VkStructureType.PhysicalDeviceShaderObjectPropertiesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_SHADER_CREATE_INFO_EXT = VkStructureType.ShaderCreateInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_BINARY_FEATURES_KHR = VkStructureType.PhysicalDevicePipelineBinaryFeaturesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_BINARY_CREATE_INFO_KHR = VkStructureType.PipelineBinaryCreateInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_BINARY_INFO_KHR = VkStructureType.PipelineBinaryInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_BINARY_KEY_KHR = VkStructureType.PipelineBinaryKeyKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_BINARY_PROPERTIES_KHR = VkStructureType.PhysicalDevicePipelineBinaryPropertiesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_RELEASE_CAPTURED_PIPELINE_DATA_INFO_KHR = VkStructureType.ReleaseCapturedPipelineDataInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_BINARY_DATA_INFO_KHR = VkStructureType.PipelineBinaryDataInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_CREATE_INFO_KHR = VkStructureType.PipelineCreateInfoKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_DEVICE_PIPELINE_BINARY_INTERNAL_CACHE_CONTROL_KHR = VkStructureType.DevicePipelineBinaryInternalCacheControlKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_BINARY_HANDLES_INFO_KHR = VkStructureType.PipelineBinaryHandlesInfoKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_PROPERTIES_FEATURES_QCOM = VkStructureType.PhysicalDeviceTilePropertiesFeaturesQCOM;
 	public const VkStructureType VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM = VkStructureType.TilePropertiesQCOM;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_AMIGO_PROFILING_FEATURES_SEC = VkStructureType.PhysicalDeviceAmigoProfilingFeaturesSEC;
@@ -3322,6 +3362,8 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR = VkStructureType.PhysicalDeviceCooperativeMatrixPropertiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM = VkStructureType.PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM;
 	public const VkStructureType VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM = VkStructureType.MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_KHR = VkStructureType.PhysicalDeviceComputeShaderDerivativesFeaturesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR = VkStructureType.PhysicalDeviceComputeShaderDerivativesPropertiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_CAPABILITIES_KHR = VkStructureType.VideoDecodeAV1CapabilitiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PICTURE_INFO_KHR = VkStructureType.VideoDecodeAV1PictureInfoKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PROFILE_INFO_KHR = VkStructureType.VideoDecodeAV1ProfileInfoKHR;
@@ -3368,6 +3410,7 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV = VkStructureType.PhysicalDeviceDescriptorPoolOverallocationFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV = VkStructureType.PhysicalDeviceRawAccessChainsFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR = VkStructureType.PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV = VkStructureType.PhysicalDeviceCommandBufferInheritanceFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR = VkStructureType.PhysicalDeviceMaintenance7FeaturesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR = VkStructureType.PhysicalDeviceMaintenance7PropertiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR = VkStructureType.PhysicalDeviceLayeredApiPropertiesListKHR;
@@ -3486,6 +3529,7 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR = VkStructureType.PhysicalDeviceFloatControlsPropertiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR = VkStructureType.PhysicalDeviceDepthStencilResolvePropertiesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR = VkStructureType.SubpassDescriptionDepthStencilResolveKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV = VkStructureType.PhysicalDeviceComputeShaderDerivativesFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV = VkStructureType.PhysicalDeviceFragmentShaderBarycentricFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES_KHR = VkStructureType.PhysicalDeviceTimelineSemaphoreFeaturesKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES_KHR = VkStructureType.PhysicalDeviceTimelineSemaphorePropertiesKHR;
@@ -3651,6 +3695,7 @@ public static partial class Vulkan
 	public const VkObjectType VK_OBJECT_TYPE_MICROMAP_EXT = VkObjectType.MicromapEXT;
 	public const VkObjectType VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV = VkObjectType.OpticalFlowSessionNV;
 	public const VkObjectType VK_OBJECT_TYPE_SHADER_EXT = VkObjectType.ShaderEXT;
+	public const VkObjectType VK_OBJECT_TYPE_PIPELINE_BINARY_KHR = VkObjectType.PipelineBinaryKHR;
 	public const VkObjectType VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR = VkObjectType.DescriptorUpdateTemplateKHR;
 	public const VkObjectType VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR = VkObjectType.SamplerYcbcrConversionKHR;
 	public const VkObjectType VK_OBJECT_TYPE_PRIVATE_DATA_SLOT_EXT = VkObjectType.PrivateDataSlotEXT;
@@ -5826,6 +5871,11 @@ public static partial class Vulkan
 	public const VkOpticalFlowSessionCreateFlagsNV VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV = VkOpticalFlowSessionCreateFlagsNV.AllowRegions;
 	public const VkOpticalFlowSessionCreateFlagsNV VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV = VkOpticalFlowSessionCreateFlagsNV.BothDirections;
 	public const VkOpticalFlowExecuteFlagsNV VK_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_NV = VkOpticalFlowExecuteFlagsNV.DisableTemporalHints;
+	public const VkAntiLagModeAMD VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD = VkAntiLagModeAMD.DriverControlAMD;
+	public const VkAntiLagModeAMD VK_ANTI_LAG_MODE_ON_AMD = VkAntiLagModeAMD.OnAMD;
+	public const VkAntiLagModeAMD VK_ANTI_LAG_MODE_OFF_AMD = VkAntiLagModeAMD.OffAMD;
+	public const VkAntiLagStageAMD VK_ANTI_LAG_STAGE_INPUT_AMD = VkAntiLagStageAMD.InputAMD;
+	public const VkAntiLagStageAMD VK_ANTI_LAG_STAGE_PRESENT_AMD = VkAntiLagStageAMD.PresentAMD;
 	public const VkShaderCodeTypeEXT VK_SHADER_CODE_TYPE_BINARY_EXT = VkShaderCodeTypeEXT.Binary;
 	public const VkShaderCodeTypeEXT VK_SHADER_CODE_TYPE_SPIRV_EXT = VkShaderCodeTypeEXT.SPIRV;
 	public const VkShaderCreateFlagsEXT VK_SHADER_CREATE_LINK_STAGE_BIT_EXT = VkShaderCreateFlagsEXT.LinkStage;
