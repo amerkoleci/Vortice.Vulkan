@@ -149,19 +149,4 @@ public static unsafe class Utils
 
         return result;
     }
-
-    public static byte* ToUTF8(in string str)
-    {
-        int count = Encoding.UTF8.GetByteCount(str) + 1;
-        byte* ptr = (byte*)NativeMemory.Alloc((nuint)count);
-        Span<byte> span = new(ptr, count);
-        Encoding.UTF8.GetBytes(str, span);
-        span[^1] = 0;
-        return ptr;
-    }
-
-    public static void FreeUTF8(byte* ptr)
-    {
-        NativeMemory.Free(ptr);
-    }
 }

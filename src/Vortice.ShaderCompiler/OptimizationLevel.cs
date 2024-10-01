@@ -3,7 +3,7 @@
 
 namespace Vortice.ShaderCompiler;
 
-public enum OptimizationLevel
+public enum OptimizationLevel : uint
 {
     /// <summary>
     /// No optimization

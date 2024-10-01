@@ -19,28 +19,8 @@
     </Content>
   </ItemGroup>
 
-
-  <Choose>
-    <When Condition="$([MSBuild]::IsOSPlatform('Windows')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
-      <ItemGroup>
-        <None Include="$(RepoRootPath)src\Vortice.ShaderCompiler\runtimes\win-x64\native\shaderc_shared.dll" Link="shaderc_shared.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
-      </ItemGroup>
-    </When>
-    <!--<When Condition="$([MSBuild]::IsOSPlatform('Windows')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'Arm64'">
-      <ItemGroup>
-        <None Include="$(RepoRootPath)src\Vortice.ShaderCompiler\runtimes\win-arm64\native\shaderc_shared.dll" Link="shaderc_shared.dll" Visible="False" CopyToOutputDirectory="PreserveNewest" />
-      </ItemGroup>
-    </When>-->
-    <When Condition="$([MSBuild]::IsOSPlatform('Linux')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
-      <ItemGroup>
-        <None Include="$(RepoRootPath)src\Vortice.ShaderCompiler\runtimes\linux-x64\native\libshaderc_shared.so" Link="libshaderc_shared.so" Visible="False" CopyToOutputDirectory="PreserveNewest" />
-      </ItemGroup>
-    </When>
-    <!--<When Condition="$([MSBuild]::IsOSPlatform('OSX'))">
-      <ItemGroup>
-        <None Include="$(RepoRootPath)src\Vortice.ShaderCompiler\runtimes\osx\native\libspirv-cross.dylib" Link="libspirv-cross.dylib" Visible="False" CopyToOutputDirectory="PreserveNewest" />
-      </ItemGroup>
-    </When>-->
-  </Choose>
+  <ItemGroup>
+    <None Remove="Assets\TriangleFragmentWithInclude.glsl" />
+  </ItemGroup>
 
 </Project>

@@ -8,7 +8,7 @@
 
   <!-- Version -->
   <PropertyGroup>
-    <VersionPrefix>1.7.4</VersionPrefix>
+    <VersionPrefix>1.8.0</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
@@ -17,8 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="build\**" PackagePath="build" Pack="true" />
-    <Content Include="runtimes\**" PackagePath="runtimes" Pack="true" />
+    <PackageReference Include="Silk.NET.Shaderc.Native" />
   </ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@
 
 namespace Vortice.ShaderCompiler;
 
-public enum TargetEnvironment
+public enum TargetEnvironment : uint
 {
     /// <summary>
     /// SPIR-V under Vulkan semantics.
@@ -17,7 +17,7 @@ public enum TargetEnvironment
     /// <summary>
     /// SPIR-V under OpenGL semantics, including compatibility profile functions
     /// </summary>
-    OpenGLCompate,
+    OpenGLCompat,
     /// <summary>
     /// Deprecated, SPIR-V under WebGPU semantics.
     /// </summary>

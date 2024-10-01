@@ -10,5 +10,6 @@ public enum SpirVVersion : uint
     Version_1_2 = 0x010200u,
     Version_1_3 = 0x010300u,
     Version_1_4 = 0x010400u,
-    Version_1_5 = 0x010500u
+    Version_1_5 = 0x010500u,
+    Version_1_6 = 0x010600u,
 }

@@ -18,16 +18,19 @@ public class CompileTests
 
         using (var compiler = new Compiler())
         {
-            using (var result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
+            var options = new CompilerOptions
             {
-                Assert.That(CompilationStatus.Success, Is.EqualTo(result.Status));
+                ShaderStage = ShaderKind.VertexShader
+            };
 
-                var shaderCode = result.GetBytecode().ToArray();
+            CompileResult result = compiler.Compile(shaderSource, shaderSourceFile, options);
+            Assert.That(CompilationStatus.Success, Is.EqualTo(result.Status));
 
-                Assert.That(shaderCode.Length > 0, Is.True);
-            }
+            var shaderCode = result.Bytecode.AsSpan();
+            Assert.That(shaderCode.Length > 0, Is.True);
         }
     }
+
 
     [TestCase]
     public void ErrorTest()
@@ -37,13 +40,14 @@ public class CompileTests
 
         using (Compiler compiler = new())
         {
-            using (Result result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
+            var options = new CompilerOptions
             {
-                Assert.That(CompilationStatus.CompilationError, Is.EqualTo(result.Status));
-                Span<byte> shaderCode = result.GetBytecode();
+                ShaderStage = ShaderKind.VertexShader
+            };
 
-                Assert.That(result.ErrorMessage!.Contains("error: 'out_var_ThisIsAnError' : undeclared identifier"), Is.True);
-            }
+            CompileResult result = compiler.Compile(shaderSource, shaderSourceFile, options);
+            Assert.That(CompilationStatus.CompilationError, Is.EqualTo(result.Status));
+            Assert.That(result.ErrorMessage!.Contains("error: 'out_var_ThisIsAnError' : undeclared identifier"), Is.True);
         }
     }
 
@@ -55,15 +59,50 @@ public class CompileTests
 
         using (var compiler = new Compiler())
         {
-            compiler.Includer = new Includer(Path.GetDirectoryName(shaderSourceFile)!);
-            using (Result result = compiler.Compile(shaderSource, shaderSourceFile, ShaderKind.VertexShader))
+            CompilerOptions options = new()
             {
-                Assert.That(result.Status, Is.EqualTo(CompilationStatus.Success));
+                ShaderStage = ShaderKind.VertexShader,
+                IncludeDirectories =
+                {
+                    Path.GetDirectoryName(shaderSourceFile)!
+                }
+            };
 
-                var shaderCode = result.GetBytecode().ToArray();
+            CompileResult result = compiler.Compile(shaderSource, shaderSourceFile, options);
+            Assert.That(result.Status, Is.EqualTo(CompilationStatus.Success));
 
-                Assert.That(shaderCode.Length > 0, Is.True);
-            }
+            var shaderCode = result.Bytecode.AsSpan();
+
+            Assert.That(shaderCode.Length > 0, Is.True);
+        }
+    }
+
+    [TestCase]
+    public void MultipleIncludeFileTest()
+    {
+        string vertexShaderSourceFile = Path.Combine(AssetsPath, "TriangleVertexWithInclude.glsl");
+        string fragmentShaderSourceFile = Path.Combine(AssetsPath, "TriangleFragmentWithInclude.glsl");
+
+        using (var compiler = new Compiler())
+        {
+            CompilerOptions options = new()
+            {
+                ShaderStage = ShaderKind.VertexShader,
+                IncludeDirectories =
+                {
+                    Path.GetDirectoryName(vertexShaderSourceFile)!
+                }
+            };
+
+            CompileResult vertexResult = compiler.Compile(vertexShaderSourceFile, options);
+            Assert.That(vertexResult.Status, Is.EqualTo(CompilationStatus.Success));
+            Assert.That(vertexResult.Bytecode.Length > 0, Is.True);
+
+            // Fragment
+            options.ShaderStage = ShaderKind.FragmentShader;
+            CompileResult fragmentResult = compiler.Compile(fragmentShaderSourceFile, options);
+            Assert.That(fragmentResult.Status, Is.EqualTo(CompilationStatus.Success));
+            Assert.That(fragmentResult.Bytecode.Length > 0, Is.True);
         }
     }
 }

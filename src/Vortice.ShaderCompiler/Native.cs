@@ -8,74 +8,59 @@ namespace Vortice.ShaderCompiler;
 
 internal static unsafe partial class Native
 {
-    private const string LibName = "shaderc_shared";
+    private const DllImportSearchPath DefaultDllImportSearchPath = DllImportSearchPath.ApplicationDirectory | DllImportSearchPath.UserDirectories | DllImportSearchPath.UseDllDirectoryForDependencies;
+    private const string LibraryName = "shaderc_shared";
+
+    public static DllImportResolver? ResolveLibrary { get; set; }
 
     static Native()
     {
-        NativeLibrary.SetDllImportResolver(Assembly.GetExecutingAssembly(), OnDllImport);
+        NativeLibrary.SetDllImportResolver(typeof(Native).Assembly, OnDllImport);
     }
 
     private static nint OnDllImport(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
     {
-        if (libraryName.Equals(LibName) && TryResolveShaderc(assembly, searchPath, out nint nativeLibrary))
+        if (libraryName != LibraryName)
         {
-            return nativeLibrary;
+            return IntPtr.Zero;
+        }
+
+        IntPtr ptr = IntPtr.Zero;
+        DllImportResolver? resolver = ResolveLibrary;
+        if (resolver != null)
+        {
+            ptr = resolver(libraryName, assembly, searchPath);
+        }
+
+        if (ptr != IntPtr.Zero)
+        {
+            return ptr;
+        }
+
+        if (NativeLibrary.TryLoad(LibraryName, assembly, DefaultDllImportSearchPath, out ptr))
+        {
+            return ptr;
         }
 
         return IntPtr.Zero;
     }
 
-    private static bool TryResolveShaderc(Assembly assembly, DllImportSearchPath? searchPath, out IntPtr nativeLibrary)
-    {
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            if (NativeLibrary.TryLoad("shaderc_shared.dll", assembly, searchPath, out nativeLibrary))
-            {
-                return true;
-            }
-        }
-        else
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                if (NativeLibrary.TryLoad("libshaderc_shared.so", assembly, searchPath, out nativeLibrary))
-                {
-                    return true;
-                }
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                if (NativeLibrary.TryLoad("libshaderc_shared.dylib", assembly, searchPath, out nativeLibrary))
-                {
-                    return true;
-                }
-            }
-        }
-
-        if (NativeLibrary.TryLoad("shaderc_shared", assembly, searchPath, out nativeLibrary))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial nint shaderc_compiler_initialize();
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compiler_release(nint handle);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial nint shaderc_compile_options_initialize();
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial nint shaderc_compile_options_clone(nint handle);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_release(nint handle);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial nint shaderc_compile_options_add_macro_definition(nint options, byte* name, nuint name_length, byte* value, nuint value_length);
 
     public static void shaderc_compile_options_add_macro_definition(nint options, string name, string? value)
@@ -85,27 +70,38 @@ internal static unsafe partial class Native
             shaderc_compile_options_add_macro_definition(options, namePtr, (nuint)name.Length, valuePtr, string.IsNullOrEmpty(value) ? 0 : (nuint)value!.Length);
     }
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_source_language(nint options, SourceLanguage lang);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_generate_debug_info(nint options);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_optimization_level(nint options, OptimizationLevel level);
 
-    [LibraryImport(LibName)]
-    public static partial nint shaderc_compile_into_spv(nint compiler, byte* source, nuint source_size, int shader_kind, byte* input_file, byte* entry_point, nint additional_options);
+    [LibraryImport(LibraryName)]
+    public static partial nint shaderc_compile_into_spv(nint compiler, byte* source, nuint source_size, uint shader_kind, byte* input_file, byte* entry_point, nint additional_options);
 
     public static nint shaderc_compile_into_spv(nint compiler, string source, ShaderKind shaderKind, string inputFile, string entryPoint, nint additional_options)
     {
         fixed (byte* sourcePtr = source.GetUtf8Span())
         fixed (byte* inputFilePtr = inputFile.GetUtf8Span())
         fixed (byte* entryPointPtr = entryPoint.GetUtf8Span())
-            return shaderc_compile_into_spv(compiler, sourcePtr, (nuint)source.Length, (int)shaderKind, inputFilePtr, entryPointPtr, additional_options);
+            return shaderc_compile_into_spv(compiler, sourcePtr, (nuint)source.Length, (uint)shaderKind, inputFilePtr, entryPointPtr, additional_options);
     }
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
+    public static partial nint shaderc_compile_into_spv_assembly(nint compiler, byte* source_text, nuint source_text_size, uint shader_kind, byte* input_file_name, byte* entry_point_name, nint additional_options);
+
+    public static nint shaderc_compile_into_spv_assembly(nint compiler, string source, ShaderKind shaderKind, string inputFile, string entryPoint, nint additional_options)
+    {
+        fixed (byte* sourcePtr = source.GetUtf8Span())
+        fixed (byte* inputFilePtr = inputFile.GetUtf8Span())
+        fixed (byte* entryPointPtr = entryPoint.GetUtf8Span())
+            return shaderc_compile_into_spv_assembly(compiler, sourcePtr, (nuint)source.Length, (uint)shaderKind, inputFilePtr, entryPointPtr, additional_options);
+    }
+
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_forced_version_profile(nint options, int version, Profile profile);
 
     /// <summary>An include result. https://github.com/google/shaderc/blob/c42db5815fad0424f0f1311de1eec92cdd77203d/libshaderc/include/shaderc/shaderc.h#L325</summary>
@@ -133,84 +129,87 @@ internal static unsafe partial class Native
         public nint user_data;
     }
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_include_callbacks(nint options,
         delegate* unmanaged<nint, byte*, int, byte*, nuint, shaderc_include_result*> resolver,
         delegate* unmanaged<nint, shaderc_include_result*, void> result_releaser, nint user_data);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_suppress_warnings(nint options);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_target_env(nint options, TargetEnvironment target, uint version);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_target_spirv(nint options, SpirVVersion version);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_warnings_as_errors(nint options);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_limit(nint options, Limit limit, int value);
 
-    [LibraryImport(LibName)]
-    public static partial void shaderc_compile_options_set_auto_bind_uniforms(nint options, byte auto_bind);
+    [LibraryImport(LibraryName)]
+    public static partial void shaderc_compile_options_set_auto_bind_uniforms(nint options, [MarshalAs(UnmanagedType.U1)] bool auto_bind);
 
-    [LibraryImport(LibName)]
-    public static partial void shaderc_compile_options_set_hlsl_io_mapping(nint options, byte hlsl_iomap);
+    [LibraryImport(LibraryName)]
+    public static partial void shaderc_compile_options_set_hlsl_io_mapping(nint options, [MarshalAs(UnmanagedType.U1)] bool hlsl_iomap);
 
-    [LibraryImport(LibName)]
-    public static partial void shaderc_compile_options_set_hlsl_offsets(nint options, byte hlsl_offsets);
+    [LibraryImport(LibraryName)]
+    public static partial void shaderc_compile_options_set_hlsl_offsets(nint options, [MarshalAs(UnmanagedType.U1)] bool hlsl_offsets);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_binding_base(nint options, UniformKind kind, uint _base);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_binding_base_for_stage(nint options, ShaderKind shader_kind, UniformKind kind, uint _base);
 
-    [LibraryImport(LibName)]
-    public static partial void shaderc_compile_options_set_auto_map_locations(nint options, byte auto_map);
+    [LibraryImport(LibraryName)]
+    public static partial void shaderc_compile_options_set_auto_map_locations(nint options, [MarshalAs(UnmanagedType.U1)] bool auto_map);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage(nint options, ShaderKind shader_kind, byte* reg, byte* set, byte* binding);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_compile_options_set_hlsl_register_set_and_binding(nint options, byte* reg, byte* set, byte* binding);
 
-    [LibraryImport(LibName)]
-    public static partial void shaderc_compile_options_set_hlsl_functionality1(nint options, byte enable);
+    [LibraryImport(LibraryName)]
+    public static partial void shaderc_compile_options_set_hlsl_functionality1(nint options, [MarshalAs(UnmanagedType.U1)] bool enable);
 
-    [LibraryImport(LibName)]
-    public static partial void shaderc_compile_options_set_invert_y(nint options, byte enable);
+    [LibraryImport(LibraryName)]
+    public static partial void shaderc_compile_options_set_hlsl_16bit_types(nint options, [MarshalAs(UnmanagedType.U1)] bool enable);
 
-    [LibraryImport(LibName)]
-    public static partial void shaderc_compile_options_set_nan_clamp(nint options, byte enable);
+    [LibraryImport(LibraryName)]
+    public static partial void shaderc_compile_options_set_invert_y(nint options, [MarshalAs(UnmanagedType.U1)] bool enable);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
+    public static partial void shaderc_compile_options_set_nan_clamp(nint options, [MarshalAs(UnmanagedType.U1)] bool enable);
+
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_result_release(nint handle);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial nuint shaderc_result_get_length(nint result);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial nuint shaderc_result_get_num_warnings(nint result);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial nuint shaderc_result_get_num_errors(nint result);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial CompilationStatus shaderc_result_get_compilation_status(nint result);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial byte* shaderc_result_get_bytes(nint result);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial nint shaderc_result_get_error_message(nint result);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial void shaderc_get_spv_version(out uint version, out uint revision);
 
-    [LibraryImport(LibName)]
+    [LibraryImport(LibraryName)]
     public static partial byte shaderc_parse_version_profile(byte* str, int* version, Profile* profile);
 
     public static void shaderc_parse_version_profile(string str, int* version, Profile* profile)
@@ -219,5 +218,23 @@ internal static unsafe partial class Native
         {
             shaderc_parse_version_profile(dataPtr, version, profile);
         }
+    }
+
+    /// <summary>
+    /// The kinds of include requests.
+    /// </summary>
+    public enum shaderc_include_type : uint
+    {
+        /// <summary>
+        /// E.g. #include "source"
+        /// </summary>
+        shaderc_include_type_relative = 0,
+
+        /// <summary>
+        /// E.g. #include 
+        /// &lt;source
+        /// &gt;
+        /// </summary>
+        shaderc_include_type_standard = 1,
     }
 }
