@@ -47,16 +47,20 @@ public static unsafe class Program
 
                 VkPipelineShaderStageCreateInfo* shaderStages = stackalloc VkPipelineShaderStageCreateInfo[2];
                 // Vertex shader
-                shaderStages[0] = new();
-                shaderStages[0].stage = VkShaderStageFlags.Vertex;
-                shaderStages[0].module = vertexShader;
-                shaderStages[0].pName = entryPoint;
+                shaderStages[0] = new()
+                {
+                    stage = VkShaderStageFlags.Vertex,
+                    module = vertexShader,
+                    pName = entryPoint
+                };
 
                 // Fragment shader
-                shaderStages[1] = new();
-                shaderStages[1].stage = VkShaderStageFlags.Fragment;
-                shaderStages[1].module = fragmentShader;
-                shaderStages[1].pName = entryPoint;
+                shaderStages[1] = new()
+                {
+                    stage = VkShaderStageFlags.Fragment,
+                    module = fragmentShader,
+                    pName = entryPoint
+                };
 
                 // VertexInputState
                 VkVertexInputBindingDescription vertexInputBinding = new(VertexPositionColor.SizeInBytes);
@@ -134,12 +138,12 @@ public static unsafe class Program
 
             {
                 // Create vertex buffer
-                ReadOnlySpan<VertexPositionColor> sourceData = new VertexPositionColor[]
-                {
+                ReadOnlySpan<VertexPositionColor> sourceData =
+                [
                     new VertexPositionColor(new Vector3(0f, 0.5f, 0.0f), new Vector4(1.0f, 0.0f, 0.0f, 1.0f)),
                     new VertexPositionColor(new Vector3(0.5f, -0.5f, 0.0f), new Vector4(0.0f, 1.0f, 0.0f, 1.0f)),
                     new VertexPositionColor(new Vector3(-0.5f, -0.5f, 0.0f), new Vector4(0.0f, 0.0f, 1.0f, 1.0f))
-                };
+                ];
 
                 uint vertexBufferSize = (uint)(sourceData.Length * VertexPositionColor.SizeInBytes);
 

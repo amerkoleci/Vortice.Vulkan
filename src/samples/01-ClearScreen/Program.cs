@@ -50,7 +50,7 @@ public static unsafe class Program
                 g = 0.0f;
             _green = g;
 
-            VkClearValue clearValue = new VkClearValue(1.0f, _green, 0.0f, 1.0f);
+            VkClearValue clearValue = new(1.0f, _green, 0.0f, 1.0f);
 
             // Begin the render pass.
             VkRenderPassBeginInfo renderPassBeginInfo = new()

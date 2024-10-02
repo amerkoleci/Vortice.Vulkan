@@ -41,7 +41,8 @@ public sealed class VkException : Exception
     {
     }
 
-    public VkException(string message, Exception innerException) : base(message, innerException)
+    public VkException(string message, Exception innerException)
+        : base(message, innerException)
     {
     }
 

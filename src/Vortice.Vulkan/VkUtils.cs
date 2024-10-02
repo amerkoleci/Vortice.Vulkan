@@ -11,7 +11,7 @@ unsafe partial class Vulkan
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void ThrowIfFailed(VkResult result, [CallerArgumentExpression(nameof(result))] string? valueExpression = null)
     {
-        if (result != VkResult.Success)
+        if (result < VK_SUCCESS)
         {
             string message = string.Format("'{0}' failed with an error result of '{1}'", valueExpression ?? "Method", result);
             throw new VkException(result, message);
@@ -22,7 +22,7 @@ unsafe partial class Vulkan
     [DebuggerStepThrough]
     public static void CheckResult(this VkResult result, string message = "Vulkan error occured")
     {
-        if (result != VkResult.Success)
+        if (result < VK_SUCCESS)
         {
             throw new VkException(result, message);
         }
