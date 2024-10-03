@@ -2038,12 +2038,44 @@ public enum VkStructureType
 	PhysicalDeviceShaderReplicatedCompositesFeaturesEXT = 1000564000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV</unmanaged>
 	PhysicalDeviceRayTracingValidationFeaturesNV = 1000568000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT</unmanaged>
+	PhysicalDeviceDeviceGeneratedCommandsFeaturesEXT = 1000572000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT</unmanaged>
+	PhysicalDeviceDeviceGeneratedCommandsPropertiesEXT = 1000572001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_EXT</unmanaged>
+	GeneratedCommandsMemoryRequirementsInfoEXT = 1000572002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_CREATE_INFO_EXT</unmanaged>
+	IndirectExecutionSetCreateInfoEXT = 1000572003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_EXT</unmanaged>
+	GeneratedCommandsInfoEXT = 1000572004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT</unmanaged>
+	IndirectCommandsLayoutCreateInfoEXT = 1000572006,
+	/// <unmanaged>VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_EXT</unmanaged>
+	IndirectCommandsLayoutTokenEXT = 1000572007,
+	/// <unmanaged>VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT</unmanaged>
+	WriteIndirectExecutionSetPipelineEXT = 1000572008,
+	/// <unmanaged>VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_SHADER_EXT</unmanaged>
+	WriteIndirectExecutionSetShaderEXT = 1000572009,
+	/// <unmanaged>VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT</unmanaged>
+	IndirectExecutionSetPipelineInfoEXT = 1000572010,
+	/// <unmanaged>VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_INFO_EXT</unmanaged>
+	IndirectExecutionSetShaderInfoEXT = 1000572011,
+	/// <unmanaged>VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_LAYOUT_INFO_EXT</unmanaged>
+	IndirectExecutionSetShaderLayoutInfoEXT = 1000572012,
+	/// <unmanaged>VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT</unmanaged>
+	GeneratedCommandsPipelineInfoEXT = 1000572013,
+	/// <unmanaged>VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT</unmanaged>
+	GeneratedCommandsShaderInfoEXT = 1000572014,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA</unmanaged>
 	PhysicalDeviceImageAlignmentControlFeaturesMESA = 1000575000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA</unmanaged>
 	PhysicalDeviceImageAlignmentControlPropertiesMESA = 1000575001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA</unmanaged>
 	ImageAlignmentControlCreateInfoMESA = 1000575002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT</unmanaged>
+	PhysicalDeviceDepthClampControlFeaturesEXT = 1000582000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT</unmanaged>
+	PipelineViewportDepthClampControlCreateInfoEXT = 1000582001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES</unmanaged>
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES</unmanaged>
@@ -2634,6 +2666,10 @@ public enum VkObjectType
 	ShaderEXT = 1000482000,
 	/// <unmanaged>VK_OBJECT_TYPE_PIPELINE_BINARY_KHR</unmanaged>
 	PipelineBinaryKHR = 1000483000,
+	/// <unmanaged>VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT</unmanaged>
+	IndirectCommandsLayoutEXT = 1000572000,
+	/// <unmanaged>VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT</unmanaged>
+	IndirectExecutionSetEXT = 1000572001,
 	/// <unmanaged>VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR</unmanaged>
 	DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate,
 	/// <unmanaged>VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR</unmanaged>
@@ -3756,6 +3792,8 @@ public enum VkDynamicState
 	AttachmentFeedbackLoopEnableEXT = 1000524000,
 	/// <unmanaged>VK_DYNAMIC_STATE_LINE_STIPPLE_KHR</unmanaged>
 	LineStippleKHR = 1000259000,
+	/// <unmanaged>VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT</unmanaged>
+	DepthClampRangeEXT = 1000582000,
 	/// <unmanaged>VK_DYNAMIC_STATE_LINE_STIPPLE_EXT</unmanaged>
 	LineStippleEXT = LineStippleKHR,
 	/// <unmanaged>VK_DYNAMIC_STATE_CULL_MODE_EXT</unmanaged>
@@ -4206,6 +4244,10 @@ public enum VkAccessFlags
 	AccelerationStructureWriteNV = AccelerationStructureWriteKHR,
 	/// <unmanaged>VK_ACCESS_NONE_KHR</unmanaged>
 	NoneKHR = None,
+	/// <unmanaged>VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_EXT</unmanaged>
+	CommandPreprocessReadEXT = CommandPreprocessReadNV,
+	/// <unmanaged>VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_EXT</unmanaged>
+	CommandPreprocessWriteEXT = CommandPreprocessWriteNV,
 }
 
 [Flags]
@@ -4786,6 +4828,8 @@ public enum VkPipelineStageFlags
 	MeshShaderNV = MeshShaderEXT,
 	/// <unmanaged>VK_PIPELINE_STAGE_NONE_KHR</unmanaged>
 	NoneKHR = None,
+	/// <unmanaged>VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT</unmanaged>
+	CommandPreprocessEXT = CommandPreprocessNV,
 }
 
 [Flags]
@@ -8858,6 +8902,14 @@ public enum VkShaderCodeTypeEXT
 	SPIRV = 1,
 }
 
+public enum VkDepthClampModeEXT
+{
+	/// <unmanaged>VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT</unmanaged>
+	ViewportRange = 0,
+	/// <unmanaged>VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</unmanaged>
+	UserDefinedRange = 1,
+}
+
 [Flags]
 public enum VkShaderCreateFlagsEXT
 {
@@ -8876,6 +8928,8 @@ public enum VkShaderCreateFlagsEXT
 	FragmentShadingRateAttachment = 0x00000020,
 	/// <unmanaged>VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT</unmanaged>
 	FragmentDensityMapAttachment = 0x00000040,
+	/// <unmanaged>VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT</unmanaged>
+	IndirectBindable = 0x00000080,
 }
 
 public enum VkRayTracingInvocationReorderModeNV
@@ -8974,6 +9028,68 @@ public enum VkLayeredDriverUnderlyingApiMSFT
 	VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT = 1,
 	/// <unmanaged>VK_LAYERED_DRIVER_UNDERLYING_API_MAX_ENUM_MSFT</unmanaged>
 	VK_LAYERED_DRIVER_UNDERLYING_API_MAX_ENUM_MSFT = 0x7FFFFFFF,
+}
+
+public enum VkIndirectExecutionSetInfoTypeEXT
+{
+	/// <unmanaged>VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT</unmanaged>
+	Pipelines = 0,
+	/// <unmanaged>VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT</unmanaged>
+	ShaderObjects = 1,
+}
+
+public enum VkIndirectCommandsTokenTypeEXT
+{
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT</unmanaged>
+	ExecutionSet = 0,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT</unmanaged>
+	PushConstant = 1,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT</unmanaged>
+	SequenceIndex = 2,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT</unmanaged>
+	IndexBuffer = 3,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT</unmanaged>
+	VertexBuffer = 4,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT</unmanaged>
+	DrawIndexed = 5,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT</unmanaged>
+	Draw = 6,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT</unmanaged>
+	DrawIndexedCount = 7,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT</unmanaged>
+	DrawCount = 8,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT</unmanaged>
+	Dispatch = 9,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT</unmanaged>
+	DrawMeshTasksNV = 1000202002,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT</unmanaged>
+	DrawMeshTasksCountNV = 1000202003,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT</unmanaged>
+	DrawMeshTasks = 1000328000,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT</unmanaged>
+	DrawMeshTasksCount = 1000328001,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT</unmanaged>
+	TraceRays2 = 1000386004,
+}
+
+[Flags]
+public enum VkIndirectCommandsInputModeFlagsEXT
+{
+	None = 0,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT</unmanaged>
+	VulkanIndexBuffer = 0x00000001,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT</unmanaged>
+	DxgiIndexBuffer = 0x00000002,
+}
+
+[Flags]
+public enum VkIndirectCommandsLayoutUsageFlagsEXT
+{
+	None = 0,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT</unmanaged>
+	ExplicitPreprocess = 0x00000001,
+	/// <unmanaged>VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT</unmanaged>
+	UnorderedSequences = 0x00000002,
 }
 
 public enum VkBuildAccelerationStructureModeKHR
@@ -9579,6 +9695,8 @@ public enum VkPipelineStageFlags2 : ulong
 	ConditionalRenderingEXT = 0x00040000UL,
 	/// <unmanaged>VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV</unmanaged>
 	CommandPreprocessNV = 0x00020000UL,
+	/// <unmanaged>VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT</unmanaged>
+	CommandPreprocessEXT = 0x00020000UL,
 	/// <unmanaged>VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
 	FragmentShadingRateAttachmentKHR = 0x00400000UL,
 	/// <unmanaged>VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV</unmanaged>
@@ -9724,6 +9842,10 @@ public enum VkAccessFlags2 : ulong
 	CommandPreprocessReadNV = 0x00020000UL,
 	/// <unmanaged>VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV</unmanaged>
 	CommandPreprocessWriteNV = 0x00040000UL,
+	/// <unmanaged>VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_EXT</unmanaged>
+	CommandPreprocessReadEXT = 0x00020000UL,
+	/// <unmanaged>VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_EXT</unmanaged>
+	CommandPreprocessWriteEXT = 0x00040000UL,
 	/// <unmanaged>VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR</unmanaged>
 	FragmentShadingRateAttachmentReadKHR = 0x00800000UL,
 	/// <unmanaged>VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV</unmanaged>
@@ -9970,6 +10092,8 @@ public enum VkPipelineCreateFlags2KHR : ulong
 	DescriptorBufferEXT = 0x20000000UL,
 	/// <unmanaged>VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR</unmanaged>
 	CaptureData = 0x80000000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT</unmanaged>
+	IndirectBindableEXT = 0x4000000000UL,
 }
 
 [Flags]
@@ -10029,6 +10153,8 @@ public enum VkBufferUsageFlags2KHR : ulong
 	MicromapBuildInputReadOnlyEXT = 0x00800000UL,
 	/// <unmanaged>VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT</unmanaged>
 	MicromapStorageEXT = 0x01000000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT</unmanaged>
+	PreprocessBufferEXT = 0x80000000UL,
 }
 
 [Flags]

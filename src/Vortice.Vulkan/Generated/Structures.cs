@@ -20650,6 +20650,12 @@ public unsafe partial struct VkShaderCreateInfoEXT : IStructureType, IChainType
 	}
 }
 
+public partial struct VkDepthClampRangeEXT
+{
+	public float minDepthClamp;
+	public float maxDepthClamp;
+}
+
 public unsafe partial struct VkPhysicalDeviceTilePropertiesFeaturesQCOM : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceTilePropertiesFeaturesQCOM;
@@ -21635,6 +21641,406 @@ public unsafe partial struct VkPhysicalDeviceRayTracingValidationFeaturesNV : IS
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsFeaturesEXT;
+	public void* pNext;
+	public VkBool32 deviceGeneratedCommands;
+	public VkBool32 dynamicGeneratedPipelineLayout;
+
+	public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsPropertiesEXT;
+	public void* pNext;
+	public uint maxIndirectPipelineCount;
+	public uint maxIndirectShaderObjectCount;
+	public uint maxIndirectSequenceCount;
+	public uint maxIndirectCommandsTokenCount;
+	public uint maxIndirectCommandsTokenOffset;
+	public uint maxIndirectCommandsIndirectStride;
+	public VkIndirectCommandsInputModeFlagsEXT supportedIndirectCommandsInputModes;
+	public VkShaderStageFlags supportedIndirectCommandsShaderStages;
+	public VkShaderStageFlags supportedIndirectCommandsShaderStagesPipelineBinding;
+	public VkShaderStageFlags supportedIndirectCommandsShaderStagesShaderBinding;
+	public VkBool32 deviceGeneratedCommandsTransformFeedback;
+	public VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount;
+
+	public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkGeneratedCommandsMemoryRequirementsInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.GeneratedCommandsMemoryRequirementsInfoEXT;
+	public void* pNext;
+	public VkIndirectExecutionSetEXT indirectExecutionSet;
+	public VkIndirectCommandsLayoutEXT indirectCommandsLayout;
+	public uint maxSequenceCount;
+	public uint maxDrawCount;
+
+	public VkGeneratedCommandsMemoryRequirementsInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkIndirectExecutionSetPipelineInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.IndirectExecutionSetPipelineInfoEXT;
+	public void* pNext;
+	public VkPipeline initialPipeline;
+	public uint maxPipelineCount;
+
+	public VkIndirectExecutionSetPipelineInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkIndirectExecutionSetShaderLayoutInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.IndirectExecutionSetShaderLayoutInfoEXT;
+	public void* pNext;
+	public uint setLayoutCount;
+	public VkDescriptorSetLayout* pSetLayouts;
+
+	public VkIndirectExecutionSetShaderLayoutInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkIndirectExecutionSetShaderInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.IndirectExecutionSetShaderInfoEXT;
+	public void* pNext;
+	public uint shaderCount;
+	public VkShaderEXT* pInitialShaders;
+	public VkIndirectExecutionSetShaderLayoutInfoEXT* pSetLayoutInfos;
+	public uint maxShaderCount;
+	public uint pushConstantRangeCount;
+	public VkPushConstantRange* pPushConstantRanges;
+
+	public VkIndirectExecutionSetShaderInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+[StructLayout(LayoutKind.Explicit)]
+public unsafe partial struct VkIndirectExecutionSetInfoEXT
+{
+	[FieldOffset(0)]
+	public VkIndirectExecutionSetPipelineInfoEXT* pPipelineInfo;
+	[FieldOffset(0)]
+	public VkIndirectExecutionSetShaderInfoEXT* pShaderInfo;
+}
+
+public unsafe partial struct VkIndirectExecutionSetCreateInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.IndirectExecutionSetCreateInfoEXT;
+	public void* pNext;
+	public VkIndirectExecutionSetInfoTypeEXT type;
+	public VkIndirectExecutionSetInfoEXT info;
+
+	public VkIndirectExecutionSetCreateInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkGeneratedCommandsInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.GeneratedCommandsInfoEXT;
+	public void* pNext;
+	public VkShaderStageFlags shaderStages;
+	public VkIndirectExecutionSetEXT indirectExecutionSet;
+	public VkIndirectCommandsLayoutEXT indirectCommandsLayout;
+	public ulong indirectAddress;
+	public ulong indirectAddressSize;
+	public ulong preprocessAddress;
+	public ulong preprocessSize;
+	public uint maxSequenceCount;
+	public ulong sequenceCountAddress;
+	public uint maxDrawCount;
+
+	public VkGeneratedCommandsInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkWriteIndirectExecutionSetPipelineEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.WriteIndirectExecutionSetPipelineEXT;
+	public void* pNext;
+	public uint index;
+	public VkPipeline pipeline;
+
+	public VkWriteIndirectExecutionSetPipelineEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkIndirectCommandsPushConstantTokenEXT
+{
+	public VkPushConstantRange updateRange;
+}
+
+public partial struct VkIndirectCommandsVertexBufferTokenEXT
+{
+	public uint vertexBindingUnit;
+}
+
+public partial struct VkIndirectCommandsIndexBufferTokenEXT
+{
+	public VkIndirectCommandsInputModeFlagsEXT mode;
+}
+
+public partial struct VkIndirectCommandsExecutionSetTokenEXT
+{
+	public VkIndirectExecutionSetInfoTypeEXT type;
+	public VkShaderStageFlags shaderStages;
+}
+
+[StructLayout(LayoutKind.Explicit)]
+public unsafe partial struct VkIndirectCommandsTokenDataEXT
+{
+	[FieldOffset(0)]
+	public VkIndirectCommandsPushConstantTokenEXT* pPushConstant;
+	[FieldOffset(0)]
+	public VkIndirectCommandsVertexBufferTokenEXT* pVertexBuffer;
+	[FieldOffset(0)]
+	public VkIndirectCommandsIndexBufferTokenEXT* pIndexBuffer;
+	[FieldOffset(0)]
+	public VkIndirectCommandsExecutionSetTokenEXT* pExecutionSet;
+}
+
+public unsafe partial struct VkIndirectCommandsLayoutTokenEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.IndirectCommandsLayoutTokenEXT;
+	public void* pNext;
+	public VkIndirectCommandsTokenTypeEXT type;
+	public VkIndirectCommandsTokenDataEXT data;
+	public uint offset;
+
+	public VkIndirectCommandsLayoutTokenEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkIndirectCommandsLayoutCreateInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.IndirectCommandsLayoutCreateInfoEXT;
+	public void* pNext;
+	public VkIndirectCommandsLayoutUsageFlagsEXT flags;
+	public VkShaderStageFlags shaderStages;
+	public uint indirectStride;
+	public VkPipelineLayout pipelineLayout;
+	public uint tokenCount;
+	public VkIndirectCommandsLayoutTokenEXT* pTokens;
+
+	public VkIndirectCommandsLayoutCreateInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkDrawIndirectCountIndirectCommandEXT
+{
+	public ulong bufferAddress;
+	public uint stride;
+	public uint commandCount;
+}
+
+public partial struct VkBindVertexBufferIndirectCommandEXT
+{
+	public ulong bufferAddress;
+	public uint size;
+	public uint stride;
+}
+
+public partial struct VkBindIndexBufferIndirectCommandEXT
+{
+	public ulong bufferAddress;
+	public uint size;
+	public VkIndexType indexType;
+}
+
+public unsafe partial struct VkGeneratedCommandsPipelineInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.GeneratedCommandsPipelineInfoEXT;
+	public void* pNext;
+	public VkPipeline pipeline;
+
+	public VkGeneratedCommandsPipelineInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkGeneratedCommandsShaderInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.GeneratedCommandsShaderInfoEXT;
+	public void* pNext;
+	public uint shaderCount;
+	public VkShaderEXT* pShaders;
+
+	public VkGeneratedCommandsShaderInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkWriteIndirectExecutionSetShaderEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.WriteIndirectExecutionSetShaderEXT;
+	public void* pNext;
+	public uint index;
+	public VkShaderEXT shader;
+
+	public VkWriteIndirectExecutionSetShaderEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceImageAlignmentControlFeaturesMESA : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceImageAlignmentControlFeaturesMESA;
@@ -21684,6 +22090,49 @@ public unsafe partial struct VkImageAlignmentControlCreateInfoMESA : IStructureT
 	public uint maximumRequestedAlignment;
 
 	public VkImageAlignmentControlCreateInfoMESA()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceDepthClampControlFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDepthClampControlFeaturesEXT;
+	public void* pNext;
+	public VkBool32 depthClampControl;
+
+	public VkPhysicalDeviceDepthClampControlFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineViewportDepthClampControlCreateInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineViewportDepthClampControlCreateInfoEXT;
+	public void* pNext;
+	public VkDepthClampModeEXT depthClampMode;
+	public VkDepthClampRangeEXT* pDepthClampRange;
+
+	public VkPipelineViewportDepthClampControlCreateInfoEXT()
 	{
 	}
 

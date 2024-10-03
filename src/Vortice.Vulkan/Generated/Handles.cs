@@ -1292,6 +1292,56 @@ public readonly partial struct VkShaderEXT : IEquatable<VkShaderEXT>
 /// A non-dispatchable handle.
 /// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkIndirectExecutionSetEXT : IEquatable<VkIndirectExecutionSetEXT>
+{
+	public VkIndirectExecutionSetEXT(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static VkIndirectExecutionSetEXT Null => new(0);
+	public static implicit operator VkIndirectExecutionSetEXT(ulong handle) => new(handle);
+	public static implicit operator ulong(VkIndirectExecutionSetEXT handle) => handle.Handle;
+	public static bool operator ==(VkIndirectExecutionSetEXT left, VkIndirectExecutionSetEXT right) => left.Handle == right.Handle;
+	public static bool operator !=(VkIndirectExecutionSetEXT left, VkIndirectExecutionSetEXT right) => left.Handle != right.Handle;
+	public static bool operator ==(VkIndirectExecutionSetEXT left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkIndirectExecutionSetEXT left, ulong right) => left.Handle != right;
+	public bool Equals(VkIndirectExecutionSetEXT other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkIndirectExecutionSetEXT handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkIndirectExecutionSetEXT)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkIndirectCommandsLayoutEXT : IEquatable<VkIndirectCommandsLayoutEXT>
+{
+	public VkIndirectCommandsLayoutEXT(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static VkIndirectCommandsLayoutEXT Null => new(0);
+	public static implicit operator VkIndirectCommandsLayoutEXT(ulong handle) => new(handle);
+	public static implicit operator ulong(VkIndirectCommandsLayoutEXT handle) => handle.Handle;
+	public static bool operator ==(VkIndirectCommandsLayoutEXT left, VkIndirectCommandsLayoutEXT right) => left.Handle == right.Handle;
+	public static bool operator !=(VkIndirectCommandsLayoutEXT left, VkIndirectCommandsLayoutEXT right) => left.Handle != right.Handle;
+	public static bool operator ==(VkIndirectCommandsLayoutEXT left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkIndirectCommandsLayoutEXT left, ulong right) => left.Handle != right;
+	public bool Equals(VkIndirectCommandsLayoutEXT other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkIndirectCommandsLayoutEXT handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkIndirectCommandsLayoutEXT)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct LPCWSTR : IEquatable<LPCWSTR>
 {
 	public LPCWSTR(ulong handle) { Handle = handle; }

@@ -612,6 +612,7 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void> vkDestroyShaderEXT_ptr;
 	private static delegate* unmanaged<VkDevice, VkShaderEXT, nuint*, void*, VkResult> vkGetShaderBinaryDataEXT_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, uint, VkShaderStageFlags*, VkShaderEXT*, void> vkCmdBindShadersEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkDepthClampModeEXT, VkDepthClampRangeEXT*, void> vkCmdSetDepthClampRangeEXT_ptr;
 	private static delegate* unmanaged<VkDevice, VkFramebuffer, uint*, VkTilePropertiesQCOM*, VkResult> vkGetFramebufferTilePropertiesQCOM_ptr;
 	private static delegate* unmanaged<VkDevice, VkRenderingInfo*, VkTilePropertiesQCOM*, VkResult> vkGetDynamicRenderingTilePropertiesQCOM_ptr;
 	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepModeInfoNV*, VkResult> vkSetLatencySleepModeNV_ptr;
@@ -620,6 +621,15 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, VkGetLatencyMarkerInfoNV*, void> vkGetLatencyTimingsNV_ptr;
 	private static delegate* unmanaged<VkQueue, VkOutOfBandQueueTypeInfoNV*, void> vkQueueNotifyOutOfBandNV_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkImageAspectFlags, void> vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoEXT*, VkMemoryRequirements2*, void> vkGetGeneratedCommandsMemoryRequirementsEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkGeneratedCommandsInfoEXT*, VkCommandBuffer, void> vkCmdPreprocessGeneratedCommandsEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBool32, VkGeneratedCommandsInfoEXT*, void> vkCmdExecuteGeneratedCommandsEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoEXT*, VkAllocationCallbacks*, VkIndirectCommandsLayoutEXT*, VkResult> vkCreateIndirectCommandsLayoutEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutEXT, VkAllocationCallbacks*, void> vkDestroyIndirectCommandsLayoutEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkIndirectExecutionSetCreateInfoEXT*, VkAllocationCallbacks*, VkIndirectExecutionSetEXT*, VkResult> vkCreateIndirectExecutionSetEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkIndirectExecutionSetEXT, VkAllocationCallbacks*, void> vkDestroyIndirectExecutionSetEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkIndirectExecutionSetEXT, uint, VkWriteIndirectExecutionSetPipelineEXT*, void> vkUpdateIndirectExecutionSetPipelineEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkIndirectExecutionSetEXT, uint, VkWriteIndirectExecutionSetShaderEXT*, void> vkUpdateIndirectExecutionSetShaderEXT_ptr;
 	private static delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult> vkCreateAccelerationStructureKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void> vkDestroyAccelerationStructureKHR_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void> vkCmdBuildAccelerationStructuresKHR_ptr;
@@ -4812,6 +4822,11 @@ unsafe partial class Vulkan
 		vkCmdBindShadersEXT_ptr(commandBuffer, stageCount, stages, shaders);
 	}
 
+	public static void vkCmdSetDepthClampRangeEXT(VkCommandBuffer commandBuffer, VkDepthClampModeEXT depthClampMode, VkDepthClampRangeEXT* depthClampRange)
+	{
+		vkCmdSetDepthClampRangeEXT_ptr(commandBuffer, depthClampMode, depthClampRange);
+	}
+
 	public static VkResult vkGetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, uint* propertiesCount, VkTilePropertiesQCOM* properties)
 	{
 		return vkGetFramebufferTilePropertiesQCOM_ptr(device, framebuffer, propertiesCount, properties);
@@ -4850,6 +4865,67 @@ unsafe partial class Vulkan
 	public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask)
 	{
 		vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr(commandBuffer, aspectMask);
+	}
+
+	public static void vkGetGeneratedCommandsMemoryRequirementsEXT(VkDevice device, VkGeneratedCommandsMemoryRequirementsInfoEXT* info, VkMemoryRequirements2* memoryRequirements)
+	{
+		vkGetGeneratedCommandsMemoryRequirementsEXT_ptr(device, info, memoryRequirements);
+	}
+
+	public static void vkCmdPreprocessGeneratedCommandsEXT(VkCommandBuffer commandBuffer, VkGeneratedCommandsInfoEXT* generatedCommandsInfo, VkCommandBuffer stateCommandBuffer)
+	{
+		vkCmdPreprocessGeneratedCommandsEXT_ptr(commandBuffer, generatedCommandsInfo, stateCommandBuffer);
+	}
+
+	public static void vkCmdExecuteGeneratedCommandsEXT(VkCommandBuffer commandBuffer, VkBool32 isPreprocessed, VkGeneratedCommandsInfoEXT* generatedCommandsInfo)
+	{
+		vkCmdExecuteGeneratedCommandsEXT_ptr(commandBuffer, isPreprocessed, generatedCommandsInfo);
+	}
+
+	public static VkResult vkCreateIndirectCommandsLayoutEXT(VkDevice device, VkIndirectCommandsLayoutCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkIndirectCommandsLayoutEXT* indirectCommandsLayout)
+	{
+		return vkCreateIndirectCommandsLayoutEXT_ptr(device, createInfo, allocator, indirectCommandsLayout);
+	}
+
+	public static VkResult vkCreateIndirectCommandsLayoutEXT(VkDevice device, in VkIndirectCommandsLayoutCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkIndirectCommandsLayoutEXT* indirectCommandsLayout)
+	{
+		fixed (VkIndirectCommandsLayoutCreateInfoEXT* createInfoPtr = &createInfo)
+		{
+			return vkCreateIndirectCommandsLayoutEXT_ptr(device, createInfoPtr, allocator, indirectCommandsLayout);
+		}
+	}
+
+	public static void vkDestroyIndirectCommandsLayoutEXT(VkDevice device, VkIndirectCommandsLayoutEXT indirectCommandsLayout, VkAllocationCallbacks* allocator = default)
+	{
+		vkDestroyIndirectCommandsLayoutEXT_ptr(device, indirectCommandsLayout, allocator);
+	}
+
+	public static VkResult vkCreateIndirectExecutionSetEXT(VkDevice device, VkIndirectExecutionSetCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkIndirectExecutionSetEXT* indirectExecutionSet)
+	{
+		return vkCreateIndirectExecutionSetEXT_ptr(device, createInfo, allocator, indirectExecutionSet);
+	}
+
+	public static VkResult vkCreateIndirectExecutionSetEXT(VkDevice device, in VkIndirectExecutionSetCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkIndirectExecutionSetEXT* indirectExecutionSet)
+	{
+		fixed (VkIndirectExecutionSetCreateInfoEXT* createInfoPtr = &createInfo)
+		{
+			return vkCreateIndirectExecutionSetEXT_ptr(device, createInfoPtr, allocator, indirectExecutionSet);
+		}
+	}
+
+	public static void vkDestroyIndirectExecutionSetEXT(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet, VkAllocationCallbacks* allocator = default)
+	{
+		vkDestroyIndirectExecutionSetEXT_ptr(device, indirectExecutionSet, allocator);
+	}
+
+	public static void vkUpdateIndirectExecutionSetPipelineEXT(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet, uint executionSetWriteCount, VkWriteIndirectExecutionSetPipelineEXT* executionSetWrites)
+	{
+		vkUpdateIndirectExecutionSetPipelineEXT_ptr(device, indirectExecutionSet, executionSetWriteCount, executionSetWrites);
+	}
+
+	public static void vkUpdateIndirectExecutionSetShaderEXT(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet, uint executionSetWriteCount, VkWriteIndirectExecutionSetShaderEXT* executionSetWrites)
+	{
+		vkUpdateIndirectExecutionSetShaderEXT_ptr(device, indirectExecutionSet, executionSetWriteCount, executionSetWrites);
 	}
 
 	public static VkResult vkCreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
@@ -5944,6 +6020,7 @@ unsafe partial class Vulkan
 		vkDestroyShaderEXT_ptr = (delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyShaderEXT));
 		vkGetShaderBinaryDataEXT_ptr = (delegate* unmanaged<VkDevice, VkShaderEXT, nuint*, void*, VkResult>) load(context, nameof(vkGetShaderBinaryDataEXT));
 		vkCmdBindShadersEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkShaderStageFlags*, VkShaderEXT*, void>) load(context, nameof(vkCmdBindShadersEXT));
+		vkCmdSetDepthClampRangeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkDepthClampModeEXT, VkDepthClampRangeEXT*, void>) load(context, nameof(vkCmdSetDepthClampRangeEXT));
 		vkGetFramebufferTilePropertiesQCOM_ptr = (delegate* unmanaged<VkDevice, VkFramebuffer, uint*, VkTilePropertiesQCOM*, VkResult>) load(context, nameof(vkGetFramebufferTilePropertiesQCOM));
 		vkGetDynamicRenderingTilePropertiesQCOM_ptr = (delegate* unmanaged<VkDevice, VkRenderingInfo*, VkTilePropertiesQCOM*, VkResult>) load(context, nameof(vkGetDynamicRenderingTilePropertiesQCOM));
 		vkSetLatencySleepModeNV_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepModeInfoNV*, VkResult>) load(context, nameof(vkSetLatencySleepModeNV));
@@ -5952,6 +6029,15 @@ unsafe partial class Vulkan
 		vkGetLatencyTimingsNV_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkGetLatencyMarkerInfoNV*, void>) load(context, nameof(vkGetLatencyTimingsNV));
 		vkQueueNotifyOutOfBandNV_ptr = (delegate* unmanaged<VkQueue, VkOutOfBandQueueTypeInfoNV*, void>) load(context, nameof(vkQueueNotifyOutOfBandNV));
 		vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkImageAspectFlags, void>) load(context, nameof(vkCmdSetAttachmentFeedbackLoopEnableEXT));
+		vkGetGeneratedCommandsMemoryRequirementsEXT_ptr = (delegate* unmanaged<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoEXT*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetGeneratedCommandsMemoryRequirementsEXT));
+		vkCmdPreprocessGeneratedCommandsEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkGeneratedCommandsInfoEXT*, VkCommandBuffer, void>) load(context, nameof(vkCmdPreprocessGeneratedCommandsEXT));
+		vkCmdExecuteGeneratedCommandsEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, VkGeneratedCommandsInfoEXT*, void>) load(context, nameof(vkCmdExecuteGeneratedCommandsEXT));
+		vkCreateIndirectCommandsLayoutEXT_ptr = (delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoEXT*, VkAllocationCallbacks*, VkIndirectCommandsLayoutEXT*, VkResult>) load(context, nameof(vkCreateIndirectCommandsLayoutEXT));
+		vkDestroyIndirectCommandsLayoutEXT_ptr = (delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyIndirectCommandsLayoutEXT));
+		vkCreateIndirectExecutionSetEXT_ptr = (delegate* unmanaged<VkDevice, VkIndirectExecutionSetCreateInfoEXT*, VkAllocationCallbacks*, VkIndirectExecutionSetEXT*, VkResult>) load(context, nameof(vkCreateIndirectExecutionSetEXT));
+		vkDestroyIndirectExecutionSetEXT_ptr = (delegate* unmanaged<VkDevice, VkIndirectExecutionSetEXT, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyIndirectExecutionSetEXT));
+		vkUpdateIndirectExecutionSetPipelineEXT_ptr = (delegate* unmanaged<VkDevice, VkIndirectExecutionSetEXT, uint, VkWriteIndirectExecutionSetPipelineEXT*, void>) load(context, nameof(vkUpdateIndirectExecutionSetPipelineEXT));
+		vkUpdateIndirectExecutionSetShaderEXT_ptr = (delegate* unmanaged<VkDevice, VkIndirectExecutionSetEXT, uint, VkWriteIndirectExecutionSetShaderEXT*, void>) load(context, nameof(vkUpdateIndirectExecutionSetShaderEXT));
 		vkCreateAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>) load(context, nameof(vkCreateAccelerationStructureKHR));
 		vkDestroyAccelerationStructureKHR_ptr = (delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyAccelerationStructureKHR));
 		vkCmdBuildAccelerationStructuresKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, VkAccelerationStructureBuildGeometryInfoKHR*, VkAccelerationStructureBuildRangeInfoKHR**, void>) load(context, nameof(vkCmdBuildAccelerationStructuresKHR));

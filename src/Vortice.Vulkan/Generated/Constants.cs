@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 295;
+	public const uint VK_HEADER_VERSION = 296;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static readonly VkVersion VK_HEADER_VERSION_COMPLETE = new VkVersion(0, 1, 3, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -2284,12 +2284,24 @@ public static partial class Vulkan
 	public const uint VK_NV_RAY_TRACING_VALIDATION_SPEC_VERSION = 1;
 	/// <unmanaged>VK_NV_RAY_TRACING_VALIDATION_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_NV_RAY_TRACING_VALIDATION_EXTENSION_NAME => "VK_NV_ray_tracing_validation"u8;
+	/// <unmanaged>VK_EXT_device_generated_commands</unmanaged>
+	public const uint VK_EXT_device_generated_commands = 1;
+	/// <unmanaged>VK_EXT_DEVICE_GENERATED_COMMANDS_SPEC_VERSION</unmanaged>
+	public const uint VK_EXT_DEVICE_GENERATED_COMMANDS_SPEC_VERSION = 1;
+	/// <unmanaged>VK_EXT_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_EXT_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME => "VK_EXT_device_generated_commands"u8;
 	/// <unmanaged>VK_MESA_image_alignment_control</unmanaged>
 	public const uint VK_MESA_image_alignment_control = 1;
 	/// <unmanaged>VK_MESA_IMAGE_ALIGNMENT_CONTROL_SPEC_VERSION</unmanaged>
 	public const uint VK_MESA_IMAGE_ALIGNMENT_CONTROL_SPEC_VERSION = 1;
 	/// <unmanaged>VK_MESA_IMAGE_ALIGNMENT_CONTROL_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_MESA_IMAGE_ALIGNMENT_CONTROL_EXTENSION_NAME => "VK_MESA_image_alignment_control"u8;
+	/// <unmanaged>VK_EXT_depth_clamp_control</unmanaged>
+	public const uint VK_EXT_depth_clamp_control = 1;
+	/// <unmanaged>VK_EXT_DEPTH_CLAMP_CONTROL_SPEC_VERSION</unmanaged>
+	public const uint VK_EXT_DEPTH_CLAMP_CONTROL_SPEC_VERSION = 1;
+	/// <unmanaged>VK_EXT_DEPTH_CLAMP_CONTROL_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_EXT_DEPTH_CLAMP_CONTROL_EXTENSION_NAME => "VK_EXT_depth_clamp_control"u8;
 	/// <unmanaged>VK_KHR_acceleration_structure</unmanaged>
 	public const uint VK_KHR_acceleration_structure = 1;
 	/// <unmanaged>VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION</unmanaged>
@@ -3419,9 +3431,25 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV = VkStructureType.PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT = VkStructureType.PhysicalDeviceShaderReplicatedCompositesFeaturesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV = VkStructureType.PhysicalDeviceRayTracingValidationFeaturesNV;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsFeaturesEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsPropertiesEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_EXT = VkStructureType.GeneratedCommandsMemoryRequirementsInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_CREATE_INFO_EXT = VkStructureType.IndirectExecutionSetCreateInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_EXT = VkStructureType.GeneratedCommandsInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT = VkStructureType.IndirectCommandsLayoutCreateInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_EXT = VkStructureType.IndirectCommandsLayoutTokenEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT = VkStructureType.WriteIndirectExecutionSetPipelineEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_SHADER_EXT = VkStructureType.WriteIndirectExecutionSetShaderEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT = VkStructureType.IndirectExecutionSetPipelineInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_INFO_EXT = VkStructureType.IndirectExecutionSetShaderInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_LAYOUT_INFO_EXT = VkStructureType.IndirectExecutionSetShaderLayoutInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT = VkStructureType.GeneratedCommandsPipelineInfoEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT = VkStructureType.GeneratedCommandsShaderInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA = VkStructureType.PhysicalDeviceImageAlignmentControlFeaturesMESA;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA = VkStructureType.PhysicalDeviceImageAlignmentControlPropertiesMESA;
 	public const VkStructureType VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA = VkStructureType.ImageAlignmentControlCreateInfoMESA;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT = VkStructureType.PhysicalDeviceDepthClampControlFeaturesEXT;
+	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT = VkStructureType.PipelineViewportDepthClampControlCreateInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VkStructureType.PhysicalDeviceVariablePointerFeatures;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES = VkStructureType.PhysicalDeviceShaderDrawParameterFeatures;
 	public const VkStructureType VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT = VkStructureType.DebugReportCreateInfoEXT;
@@ -3696,6 +3724,8 @@ public static partial class Vulkan
 	public const VkObjectType VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV = VkObjectType.OpticalFlowSessionNV;
 	public const VkObjectType VK_OBJECT_TYPE_SHADER_EXT = VkObjectType.ShaderEXT;
 	public const VkObjectType VK_OBJECT_TYPE_PIPELINE_BINARY_KHR = VkObjectType.PipelineBinaryKHR;
+	public const VkObjectType VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT = VkObjectType.IndirectCommandsLayoutEXT;
+	public const VkObjectType VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT = VkObjectType.IndirectExecutionSetEXT;
 	public const VkObjectType VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR = VkObjectType.DescriptorUpdateTemplateKHR;
 	public const VkObjectType VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR = VkObjectType.SamplerYcbcrConversionKHR;
 	public const VkObjectType VK_OBJECT_TYPE_PRIVATE_DATA_SLOT_EXT = VkObjectType.PrivateDataSlotEXT;
@@ -4212,6 +4242,7 @@ public static partial class Vulkan
 	public const VkDynamicState VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV = VkDynamicState.CoverageReductionModeNV;
 	public const VkDynamicState VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT = VkDynamicState.AttachmentFeedbackLoopEnableEXT;
 	public const VkDynamicState VK_DYNAMIC_STATE_LINE_STIPPLE_KHR = VkDynamicState.LineStippleKHR;
+	public const VkDynamicState VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT = VkDynamicState.DepthClampRangeEXT;
 	public const VkDynamicState VK_DYNAMIC_STATE_LINE_STIPPLE_EXT = VkDynamicState.LineStippleEXT;
 	public const VkDynamicState VK_DYNAMIC_STATE_CULL_MODE_EXT = VkDynamicState.CullModeEXT;
 	public const VkDynamicState VK_DYNAMIC_STATE_FRONT_FACE_EXT = VkDynamicState.FrontFaceEXT;
@@ -4372,6 +4403,8 @@ public static partial class Vulkan
 	public const VkAccessFlags VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV = VkAccessFlags.AccelerationStructureReadNV;
 	public const VkAccessFlags VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV = VkAccessFlags.AccelerationStructureWriteNV;
 	public const VkAccessFlags VK_ACCESS_NONE_KHR = VkAccessFlags.NoneKHR;
+	public const VkAccessFlags VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_EXT = VkAccessFlags.CommandPreprocessReadEXT;
+	public const VkAccessFlags VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_EXT = VkAccessFlags.CommandPreprocessWriteEXT;
 	public const VkImageAspectFlags VK_IMAGE_ASPECT_COLOR_BIT = VkImageAspectFlags.Color;
 	public const VkImageAspectFlags VK_IMAGE_ASPECT_DEPTH_BIT = VkImageAspectFlags.Depth;
 	public const VkImageAspectFlags VK_IMAGE_ASPECT_STENCIL_BIT = VkImageAspectFlags.Stencil;
@@ -4540,6 +4573,7 @@ public static partial class Vulkan
 	public const VkPipelineStageFlags VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV = VkPipelineStageFlags.TaskShaderNV;
 	public const VkPipelineStageFlags VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV = VkPipelineStageFlags.MeshShaderNV;
 	public const VkPipelineStageFlags VK_PIPELINE_STAGE_NONE_KHR = VkPipelineStageFlags.NoneKHR;
+	public const VkPipelineStageFlags VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT = VkPipelineStageFlags.CommandPreprocessEXT;
 	public const VkMemoryMapFlags VK_MEMORY_MAP_PLACED_BIT_EXT = VkMemoryMapFlags.PlacedEXT;
 	public const VkSparseMemoryBindFlags VK_SPARSE_MEMORY_BIND_METADATA_BIT = VkSparseMemoryBindFlags.Metadata;
 	public const VkSparseImageFormatFlags VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT = VkSparseImageFormatFlags.SingleMiptail;
@@ -5878,6 +5912,8 @@ public static partial class Vulkan
 	public const VkAntiLagStageAMD VK_ANTI_LAG_STAGE_PRESENT_AMD = VkAntiLagStageAMD.PresentAMD;
 	public const VkShaderCodeTypeEXT VK_SHADER_CODE_TYPE_BINARY_EXT = VkShaderCodeTypeEXT.Binary;
 	public const VkShaderCodeTypeEXT VK_SHADER_CODE_TYPE_SPIRV_EXT = VkShaderCodeTypeEXT.SPIRV;
+	public const VkDepthClampModeEXT VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT = VkDepthClampModeEXT.ViewportRange;
+	public const VkDepthClampModeEXT VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT = VkDepthClampModeEXT.UserDefinedRange;
 	public const VkShaderCreateFlagsEXT VK_SHADER_CREATE_LINK_STAGE_BIT_EXT = VkShaderCreateFlagsEXT.LinkStage;
 	public const VkShaderCreateFlagsEXT VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT = VkShaderCreateFlagsEXT.AllowVaryingSubgroupSize;
 	public const VkShaderCreateFlagsEXT VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT = VkShaderCreateFlagsEXT.RequireFullSubgroups;
@@ -5885,6 +5921,7 @@ public static partial class Vulkan
 	public const VkShaderCreateFlagsEXT VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT = VkShaderCreateFlagsEXT.DispatchBase;
 	public const VkShaderCreateFlagsEXT VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT = VkShaderCreateFlagsEXT.FragmentShadingRateAttachment;
 	public const VkShaderCreateFlagsEXT VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT = VkShaderCreateFlagsEXT.FragmentDensityMapAttachment;
+	public const VkShaderCreateFlagsEXT VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT = VkShaderCreateFlagsEXT.IndirectBindable;
 	public const VkRayTracingInvocationReorderModeNV VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_NV = VkRayTracingInvocationReorderModeNV.ModeNone;
 	public const VkRayTracingInvocationReorderModeNV VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_NV = VkRayTracingInvocationReorderModeNV.ModeReorder;
 	public const VkLayerSettingTypeEXT VK_LAYER_SETTING_TYPE_BOOL32_EXT = VkLayerSettingTypeEXT.Bool32;
@@ -5920,6 +5957,27 @@ public static partial class Vulkan
 	public const VkLayeredDriverUnderlyingApiMSFT VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT = VkLayeredDriverUnderlyingApiMSFT.VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT;
 	public const VkLayeredDriverUnderlyingApiMSFT VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT = VkLayeredDriverUnderlyingApiMSFT.VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT;
 	public const VkLayeredDriverUnderlyingApiMSFT VK_LAYERED_DRIVER_UNDERLYING_API_MAX_ENUM_MSFT = VkLayeredDriverUnderlyingApiMSFT.VK_LAYERED_DRIVER_UNDERLYING_API_MAX_ENUM_MSFT;
+	public const VkIndirectExecutionSetInfoTypeEXT VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT = VkIndirectExecutionSetInfoTypeEXT.Pipelines;
+	public const VkIndirectExecutionSetInfoTypeEXT VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT = VkIndirectExecutionSetInfoTypeEXT.ShaderObjects;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT = VkIndirectCommandsTokenTypeEXT.ExecutionSet;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT = VkIndirectCommandsTokenTypeEXT.PushConstant;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT = VkIndirectCommandsTokenTypeEXT.SequenceIndex;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT = VkIndirectCommandsTokenTypeEXT.IndexBuffer;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT = VkIndirectCommandsTokenTypeEXT.VertexBuffer;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT = VkIndirectCommandsTokenTypeEXT.DrawIndexed;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT = VkIndirectCommandsTokenTypeEXT.Draw;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT = VkIndirectCommandsTokenTypeEXT.DrawIndexedCount;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT = VkIndirectCommandsTokenTypeEXT.DrawCount;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT = VkIndirectCommandsTokenTypeEXT.Dispatch;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT = VkIndirectCommandsTokenTypeEXT.DrawMeshTasksNV;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT = VkIndirectCommandsTokenTypeEXT.DrawMeshTasksCountNV;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT = VkIndirectCommandsTokenTypeEXT.DrawMeshTasks;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT = VkIndirectCommandsTokenTypeEXT.DrawMeshTasksCount;
+	public const VkIndirectCommandsTokenTypeEXT VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT = VkIndirectCommandsTokenTypeEXT.TraceRays2;
+	public const VkIndirectCommandsInputModeFlagsEXT VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT = VkIndirectCommandsInputModeFlagsEXT.VulkanIndexBuffer;
+	public const VkIndirectCommandsInputModeFlagsEXT VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT = VkIndirectCommandsInputModeFlagsEXT.DxgiIndexBuffer;
+	public const VkIndirectCommandsLayoutUsageFlagsEXT VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT = VkIndirectCommandsLayoutUsageFlagsEXT.ExplicitPreprocess;
+	public const VkIndirectCommandsLayoutUsageFlagsEXT VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT = VkIndirectCommandsLayoutUsageFlagsEXT.UnorderedSequences;
 	public const VkBuildAccelerationStructureModeKHR VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR = VkBuildAccelerationStructureModeKHR.Build;
 	public const VkBuildAccelerationStructureModeKHR VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR = VkBuildAccelerationStructureModeKHR.Update;
 	public const VkAccelerationStructureCreateFlagsKHR VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR = VkAccelerationStructureCreateFlagsKHR.DeviceAddressCaptureReplay;
