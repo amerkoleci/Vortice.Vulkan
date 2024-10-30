@@ -11,10 +11,11 @@ namespace Vortice.Vulkan;
 
 public static unsafe partial class Vulkan
 {
-    private static readonly ILibraryLoader _loader = GetPlatformLoader();
-    private delegate delegate* unmanaged<void> LoadFunction(nint context, string name);
+    private const string LibraryName = "vulkan";
 
-    private static nint s_vulkanModule = 0;
+    private delegate delegate* unmanaged[Stdcall]<void> LoadFunction(nint context, string name);
+
+    private static nint s_vulkanModule;
     private static VkInstance s_loadedInstance = VkInstance.Null;
     private static VkDevice s_loadedDevice = VkDevice.Null;
 
@@ -32,12 +33,11 @@ public static unsafe partial class Vulkan
         {
             if (!string.IsNullOrEmpty(libraryName))
             {
-                s_vulkanModule = _loader.LoadNativeLibrary(libraryName);
+                s_vulkanModule = LoadNativeLibrary(libraryName);
             }
-            else
-            {
-                s_vulkanModule = _loader.LoadNativeLibrary("vulkan-1.dll");
-            }
+
+            if (s_vulkanModule == 0)
+                s_vulkanModule = LoadNativeLibrary("vulkan-1.dll");
 
             if (s_vulkanModule == 0)
                 return VkResult.ErrorInitializationFailed;
@@ -46,15 +46,22 @@ public static unsafe partial class Vulkan
         {
             if (!string.IsNullOrEmpty(libraryName))
             {
-                s_vulkanModule = _loader.LoadNativeLibrary(libraryName);
+                s_vulkanModule = LoadNativeLibrary(libraryName);
             }
-            else
+
+            if (s_vulkanModule == 0)
             {
-                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.dylib");
+                s_vulkanModule = LoadNativeLibrary("libvulkan.dylib");
                 if (s_vulkanModule == 0)
-                    s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.1.dylib");
+                    s_vulkanModule = LoadNativeLibrary("libvulkan.1.dylib");
                 if (s_vulkanModule == 0)
-                    s_vulkanModule = _loader.LoadNativeLibrary("libMoltenVK.dylib");
+                    s_vulkanModule = LoadNativeLibrary("libMoltenVK.dylib");
+                // Add support for using Vulkan and MoltenVK in a Framework. App store rules for iOS
+                // strictly enforce no .dylib's. If they aren't found it just falls through
+                if (s_vulkanModule == 0)
+                    s_vulkanModule = LoadNativeLibrary("vulkan.framework/vulkan");
+                if (s_vulkanModule == 0)
+                    s_vulkanModule = LoadNativeLibrary("MoltenVK.framework/MoltenVK");
             }
 
             if (s_vulkanModule == 0)
@@ -64,29 +71,42 @@ public static unsafe partial class Vulkan
         {
             if (!string.IsNullOrEmpty(libraryName))
             {
-                s_vulkanModule = _loader.LoadNativeLibrary(libraryName);
+                s_vulkanModule = LoadNativeLibrary(libraryName);
             }
-            else
+
+            if (s_vulkanModule == 0)
             {
-                s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so.1");
+                s_vulkanModule = LoadNativeLibrary("libvulkan.so.1");
                 if (s_vulkanModule == 0)
-                    s_vulkanModule = _loader.LoadNativeLibrary("libvulkan.so");
+                    s_vulkanModule = LoadNativeLibrary("libvulkan.so");
             }
 
             if (s_vulkanModule == 0)
                 return VkResult.ErrorInitializationFailed;
         }
 
-        vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, byte*, IntPtr>)_loader.LoadFunctionPointer(s_vulkanModule, nameof(vkGetInstanceProcAddr));
-        GenLoadLoader(0, vkGetInstanceProcAddr);
+        vkGetInstanceProcAddr_ptr = (delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>>)NativeLibrary.GetExport(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+        vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)vkGetInstanceProcAddr(0, "vkCreateInstance"u8);
+        vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<byte*, uint*, VkExtensionProperties*, VkResult>)vkGetInstanceProcAddr(0, "vkEnumerateInstanceExtensionProperties"u8);
+        vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<uint*, VkLayerProperties*, VkResult>)vkGetInstanceProcAddr(0, "vkEnumerateInstanceLayerProperties"u8);
+        vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<uint*, VkResult>)vkGetInstanceProcAddr(0, "vkEnumerateInstanceVersion"u8);
 
         return VkResult.Success;
+    }
+
+    public static void vkShutdown()
+    {
+        if (s_vulkanModule != IntPtr.Zero)
+        {
+            NativeLibrary.Free(s_vulkanModule);
+            s_vulkanModule = IntPtr.Zero;
+        }
     }
 
     public static void vkLoadInstance(VkInstance instance)
     {
         vkLoadInstanceOnly(instance);
-        GenLoadDevice(instance.Handle, vkGetInstanceProcAddr);
+        //GenLoadDevice(instance.Handle, vkGetInstanceProcAddr);
     }
 
     public static void vkLoadInstanceOnly(VkInstance instance)
@@ -94,62 +114,37 @@ public static unsafe partial class Vulkan
         s_loadedInstance = instance;
         GenLoadInstance(instance.Handle, vkGetInstanceProcAddr);
 
-        vkGetDeviceProcAddr_ptr = (delegate* unmanaged<VkDevice, byte*, IntPtr>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetDeviceProcAddr));
+        vkGetDeviceProcAddr_ptr = (delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetDeviceProcAddr));
     }
 
     public static void vkLoadDevice(VkDevice device)
     {
         s_loadedDevice = device;
         GenLoadDevice(device.Handle, vkGetDeviceProcAddr);
-
-        // Manually loaded entries.
-        //LoadXcb(device);
     }
 
-    private static void GenLoadLoader(nint context, LoadFunction load)
+    internal static delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr_ptr;
+    internal static delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr_ptr;
+
+    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(in VkInstance instance, byte* pName)
     {
-        vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)LoadCallbackThrow(context, load, "vkCreateInstance");
-        vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<byte*, uint*, VkExtensionProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceExtensionProperties");
-        vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<uint*, VkLayerProperties*, VkResult>)LoadCallbackThrow(context, load, "vkEnumerateInstanceLayerProperties");
-        vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<uint*, VkResult>)load(context, "vkEnumerateInstanceVersion");
+        return vkGetInstanceProcAddr_ptr(instance, pName);
     }
 
-    private static delegate* unmanaged<void> LoadCallbackThrow(nint context, LoadFunction load, string name)
-    {
-        delegate* unmanaged<void> functionPtr = load(context, name);
-        if (functionPtr == null)
-        {
-            throw new InvalidOperationException($"No function was found with the name {name}.");
-        }
-
-        return functionPtr;
-    }
-
-    internal static delegate* unmanaged<VkInstance, byte*, IntPtr> vkGetInstanceProcAddr_ptr;
-    internal static delegate* unmanaged<VkDevice, byte*, IntPtr> vkGetDeviceProcAddr_ptr;
-
-    public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, byte* pName)
-    {
-        return (delegate* unmanaged<void>)vkGetInstanceProcAddr_ptr(instance, pName);
-    }
-
-    public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, ReadOnlySpan<byte> name)
+    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(in VkInstance instance, ReadOnlySpan<byte> name)
     {
         fixed (byte* pName = name)
         {
-            return (delegate* unmanaged<void>)vkGetInstanceProcAddr_ptr(instance, pName);
+            return vkGetInstanceProcAddr_ptr(instance, pName);
         }
     }
 
-    [LibraryImport("Amer.dll", StringMarshalling = StringMarshalling.Utf8)]
-    public static partial string Test(string test, string test3);
-
-    public static delegate* unmanaged<void> vkGetInstanceProcAddr(nint instance, string name)
+    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(nint instance, string name)
     {
         return vkGetInstanceProcAddr(new VkInstance(instance), name);
     }
 
-    public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, string name)
+    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(VkInstance instance, string name)
     {
         byte* __pName_local = default;
         scoped Utf8StringMarshaller.ManagedToUnmanagedIn __pName__marshaller = new();
@@ -157,7 +152,7 @@ public static unsafe partial class Vulkan
         {
             __pName__marshaller.FromManaged(name, stackalloc byte[Utf8StringMarshaller.ManagedToUnmanagedIn.BufferSize]);
             __pName_local = __pName__marshaller.ToUnmanaged();
-            return vkGetInstanceProcAddr(instance, __pName_local);
+            return vkGetInstanceProcAddr_ptr(instance, __pName_local);
         }
         finally
         {
@@ -165,12 +160,17 @@ public static unsafe partial class Vulkan
         }
     }
 
-    public static delegate* unmanaged<void> vkGetDeviceProcAddr(VkDevice device, byte* name)
+    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(nint device, byte* name)
     {
-        return (delegate* unmanaged<void>)vkGetDeviceProcAddr_ptr(device, name);
+        return vkGetDeviceProcAddr_ptr(device, name);
     }
 
-    public static delegate* unmanaged<void> vkGetDeviceProcAddr(VkDevice device, string name)
+    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, byte* name)
+    {
+        return vkGetDeviceProcAddr_ptr(device.Handle, name);
+    }
+
+    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, string name)
     {
         byte* __pName_local = default;
         scoped Utf8StringMarshaller.ManagedToUnmanagedIn __pName__marshaller = new();
@@ -178,7 +178,7 @@ public static unsafe partial class Vulkan
         {
             __pName__marshaller.FromManaged(name, stackalloc byte[Utf8StringMarshaller.ManagedToUnmanagedIn.BufferSize]);
             __pName_local = __pName__marshaller.ToUnmanaged();
-            return vkGetDeviceProcAddr(device, __pName_local);
+            return vkGetDeviceProcAddr_ptr(device.Handle, __pName_local);
         }
         finally
         {
@@ -186,7 +186,7 @@ public static unsafe partial class Vulkan
         }
     }
 
-    public static delegate* unmanaged<void> vkGetDeviceProcAddr(nint device, string name)
+    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(nint device, string name)
     {
         return vkGetDeviceProcAddr(new VkDevice(device), name);
     }
@@ -845,7 +845,7 @@ public static unsafe partial class Vulkan
 
         int length = Encoding.UTF8.GetBytes(label, bytes);
         Span<byte> result = bytes.Slice(0, length);
-        fixed(byte* pLabel = result)
+        fixed (byte* pLabel = result)
         {
             VkDebugUtilsObjectNameInfoEXT info = new()
             {
@@ -901,46 +901,13 @@ public static unsafe partial class Vulkan
         }
     }
 
-    #region LibraryLoader
-    private static ILibraryLoader GetPlatformLoader()
+    private static nint LoadNativeLibrary(string name)
     {
-        return new SystemNativeLibraryLoader();
-    }
-
-    interface ILibraryLoader
-    {
-        nint LoadNativeLibrary(string name);
-        void FreeNativeLibrary(nint handle);
-
-        nint LoadFunctionPointer(nint handle, string name);
-    }
-
-    private class SystemNativeLibraryLoader : ILibraryLoader
-    {
-        public nint LoadNativeLibrary(string name)
+        if (NativeLibrary.TryLoad(name, out nint lib))
         {
-            if (NativeLibrary.TryLoad(name, out nint lib))
-            {
-                return lib;
-            }
-
-            return 0;
+            return lib;
         }
 
-        public void FreeNativeLibrary(nint handle)
-        {
-            NativeLibrary.Free(handle);
-        }
-
-        public nint LoadFunctionPointer(nint handle, string name)
-        {
-            if (NativeLibrary.TryGetExport(handle, name, out nint ptr))
-            {
-                return ptr;
-            }
-
-            return 0;
-        }
+        return 0;
     }
-    #endregion
 }

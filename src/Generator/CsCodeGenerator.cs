@@ -187,6 +187,7 @@ public partial class CsCodeGenerator
 
                 string modifier = "const";
                 string csDataType = _options.ReadOnlyMemoryUtf8ForStrings ? "ReadOnlySpan<byte>" : "string";
+                string assignValue = "=";
 
                 string macroValue = NormalizeEnumValue(cppMacro.Value);
                 if (macroValue.EndsWith("F", StringComparison.OrdinalIgnoreCase))
@@ -264,14 +265,15 @@ public partial class CsCodeGenerator
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_SPEC_VERSION"
                     )
                 {
-                    modifier = "static readonly";
+                    modifier = "static";
                     csDataType = "VkVersion";
+                    assignValue = "=>";
                 }
 
                 writer.WriteLine($"/// <unmanaged>{cppMacro.Name}</unmanaged>");
                 if (cppMacro.Name == "VK_HEADER_VERSION_COMPLETE")
                 {
-                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]}, VK_HEADER_VERSION);");
+                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} {assignValue} new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]}, VK_HEADER_VERSION);");
                 }
                 else if (
                     cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_6" ||
@@ -295,7 +297,7 @@ public partial class CsCodeGenerator
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_API_VERSION_1_0_0"
                     )
                 {
-                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} = new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]});");
+                    writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} => new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]});");
                 }
                 else if (cppMacro.Name.StartsWith("STD_VIDEO_"))
                 {
@@ -309,7 +311,7 @@ public partial class CsCodeGenerator
                 }
                 else
                 {
-                    string assignValue = "=";
+                    
                     if (csDataType == "ReadOnlySpan<byte>")
                     {
                         modifier = "static";

@@ -11,9 +11,10 @@
     <PublishAot>true</PublishAot>
     <UseSystemResourceKeys>true</UseSystemResourceKeys>
     <InvariantGlobalization>true</InvariantGlobalization>
+    <StackTraceSupport>false</StackTraceSupport>
     <OptimizationPreference>Speed</OptimizationPreference>
     <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
-    <IlcDisableReflection>false</IlcDisableReflection>
+    <IlcDisableReflection>true</IlcDisableReflection>
   </PropertyGroup>
 
   <ItemGroup>

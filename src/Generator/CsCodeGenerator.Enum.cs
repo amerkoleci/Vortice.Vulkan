@@ -260,6 +260,10 @@ partial class CsCodeGenerator
             if (cppEnum.IsAnonymous)
                 continue;
 
+            string sourceFileName = Path.GetFileNameWithoutExtension(cppEnum.SourceFile);
+            if (ShouldIgnoreFile(sourceFileName))
+                continue;
+
             // Skip spirv.h enums
             if (cppEnum.Name.StartsWith("Spv")
                 && Path.GetFileNameWithoutExtension(cppEnum.SourceFile) == "spirv"
@@ -570,6 +574,10 @@ partial class CsCodeGenerator
             string lastCreatedEnum = string.Empty;
             foreach (CppField cppField in compilation.Fields)
             {
+                string sourceFileName = Path.GetFileNameWithoutExtension(cppField.SourceFile);
+                if (ShouldIgnoreFile(sourceFileName))
+                    continue;
+
                 string? fieldType = GetCsTypeName(cppField.Type);
                 string createdEnumName;
 

@@ -808,14 +808,6 @@ public enum VkStructureType
 	VideoDecodeH264DpbSlotInfoKHR = 1000040006,
 	/// <unmanaged>VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD</unmanaged>
 	TextureLODGatherFormatPropertiesAMD = 1000041000,
-	/// <unmanaged>VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR</unmanaged>
-	RenderingFragmentShadingRateAttachmentInfoKHR = 1000044006,
-	/// <unmanaged>VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT</unmanaged>
-	RenderingFragmentDensityMapAttachmentInfoEXT = 1000044007,
-	/// <unmanaged>VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD</unmanaged>
-	AttachmentSampleCountInfoAMD = 1000044008,
-	/// <unmanaged>VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX</unmanaged>
-	MultiviewPerViewAttributesInfoNVX = 1000044009,
 	/// <unmanaged>VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP</unmanaged>
 	StreamDescriptorSurfaceCreateInfoGgp = 1000049000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV</unmanaged>
@@ -898,6 +890,8 @@ public enum VkStructureType
 	PresentTimesInfoGOOGLE = 1000092000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX</unmanaged>
 	PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX = 1000097000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX</unmanaged>
+	MultiviewPerViewAttributesInfoNVX = 1000044009,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV</unmanaged>
 	PipelineViewportSwizzleStateCreateInfoNV = 1000098000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT</unmanaged>
@@ -996,6 +990,8 @@ public enum VkStructureType
 	ExecutionGraphPipelineCreateInfoAMDX = 1000134003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX</unmanaged>
 	PipelineShaderStageNodeCreateInfoAMDX = 1000134004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD</unmanaged>
+	AttachmentSampleCountInfoAMD = 1000044008,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT</unmanaged>
 	SampleLocationsInfoEXT = 1000143000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT</unmanaged>
@@ -1170,6 +1166,10 @@ public enum VkStructureType
 	CheckpointDataNV = 1000206000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV</unmanaged>
 	QueueFamilyCheckpointPropertiesNV = 1000206001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV</unmanaged>
+	QueueFamilyCheckpointProperties2NV = 1000314008,
+	/// <unmanaged>VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV</unmanaged>
+	CheckpointData2NV = 1000314009,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL</unmanaged>
 	PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL = 1000209000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL</unmanaged>
@@ -1200,6 +1200,8 @@ public enum VkStructureType
 	PhysicalDeviceFragmentDensityMapPropertiesEXT = 1000218001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT</unmanaged>
 	RenderPassFragmentDensityMapCreateInfoEXT = 1000218002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT</unmanaged>
+	RenderingFragmentDensityMapAttachmentInfoEXT = 1000044007,
 	/// <unmanaged>VK_STRUCTURE_TYPE_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR</unmanaged>
 	FragmentShadingRateAttachmentInfoKHR = 1000226000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR</unmanaged>
@@ -1210,6 +1212,8 @@ public enum VkStructureType
 	PhysicalDeviceFragmentShadingRateFeaturesKHR = 1000226003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR</unmanaged>
 	PhysicalDeviceFragmentShadingRateKHR = 1000226004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR</unmanaged>
+	RenderingFragmentShadingRateAttachmentInfoKHR = 1000044006,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD</unmanaged>
 	PhysicalDeviceShaderCoreProperties2AMD = 1000227000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD</unmanaged>
@@ -1460,10 +1464,6 @@ public enum VkStructureType
 	ExportMetalSharedEventInfoEXT = 1000311010,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT</unmanaged>
 	ImportMetalSharedEventInfoEXT = 1000311011,
-	/// <unmanaged>VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV</unmanaged>
-	QueueFamilyCheckpointProperties2NV = 1000314008,
-	/// <unmanaged>VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV</unmanaged>
-	CheckpointData2NV = 1000314009,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT</unmanaged>
 	PhysicalDeviceDescriptorBufferPropertiesEXT = 1000316000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT</unmanaged>
@@ -1568,6 +1568,8 @@ public enum VkStructureType
 	PipelineViewportDepthClipControlCreateInfoEXT = 1000355001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT</unmanaged>
 	PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT = 1000356000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_EXT</unmanaged>
+	PhysicalDevicePresentModeFifoLatestReadyFeaturesEXT = 1000361000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA</unmanaged>
 	ImportMemoryZirconHandleInfoFUCHSIA = 1000364000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA</unmanaged>
@@ -2076,6 +2078,12 @@ public enum VkStructureType
 	PhysicalDeviceDepthClampControlFeaturesEXT = 1000582000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT</unmanaged>
 	PipelineViewportDepthClampControlCreateInfoEXT = 1000582001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV</unmanaged>
+	PhysicalDeviceCooperativeMatrix2FeaturesNV = 1000593000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV</unmanaged>
+	CooperativeMatrixFlexibleDimensionsPropertiesNV = 1000593001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV</unmanaged>
+	PhysicalDeviceCooperativeMatrix2PropertiesNV = 1000593002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES</unmanaged>
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES</unmanaged>
@@ -2092,8 +2100,6 @@ public enum VkStructureType
 	PhysicalDeviceDynamicRenderingFeaturesKHR = PhysicalDeviceDynamicRenderingFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO_KHR</unmanaged>
 	CommandBufferInheritanceRenderingInfoKHR = CommandBufferInheritanceRenderingInfo,
-	/// <unmanaged>VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_NV</unmanaged>
-	AttachmentSampleCountInfoNV = AttachmentSampleCountInfoAMD,
 	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR</unmanaged>
 	RenderPassMultiviewCreateInfoKHR = RenderPassMultiviewCreateInfo,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR</unmanaged>
@@ -2236,6 +2242,8 @@ public enum VkStructureType
 	SparseImageMemoryRequirements2KHR = SparseImageMemoryRequirements2,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR</unmanaged>
 	ImageFormatListCreateInfoKHR = ImageFormatListCreateInfo,
+	/// <unmanaged>VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_NV</unmanaged>
+	AttachmentSampleCountInfoNV = AttachmentSampleCountInfoAMD,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO_KHR</unmanaged>
 	SamplerYcbcrConversionCreateInfoKHR = SamplerYcbcrConversionCreateInfo,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO_KHR</unmanaged>
@@ -5164,10 +5172,6 @@ public enum VkPipelineCreateFlags
 	FailOnPipelineCompileRequired = 0x00000100,
 	/// <unmanaged>VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT</unmanaged>
 	EarlyReturnOnFailure = 0x00000200,
-	/// <unmanaged>VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
-	RenderingFragmentShadingRateAttachmentKHR = 0x00200000,
-	/// <unmanaged>VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT</unmanaged>
-	RenderingFragmentDensityMapAttachmentEXT = 0x00400000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR</unmanaged>
 	RayTracingNoNullAnyHitShadersKHR = 0x00004000,
 	/// <unmanaged>VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR</unmanaged>
@@ -5184,6 +5188,10 @@ public enum VkPipelineCreateFlags
 	RayTracingShaderGroupHandleCaptureReplayKHR = 0x00080000,
 	/// <unmanaged>VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV</unmanaged>
 	DeferCompileNV = 0x00000020,
+	/// <unmanaged>VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT</unmanaged>
+	RenderingFragmentDensityMapAttachmentEXT = 0x00400000,
+	/// <unmanaged>VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
+	RenderingFragmentShadingRateAttachmentKHR = 0x00200000,
 	/// <unmanaged>VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR</unmanaged>
 	CaptureStatisticsKHR = 0x00000040,
 	/// <unmanaged>VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR</unmanaged>
@@ -5212,14 +5220,14 @@ public enum VkPipelineCreateFlags
 	NoProtectedAccessEXT = 0x08000000,
 	/// <unmanaged>VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT_EXT</unmanaged>
 	ProtectedAccessOnlyEXT = 0x40000000,
-	/// <unmanaged>VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
-	RasterizationStateCreateFragmentShadingRateAttachmentKHR = RenderingFragmentShadingRateAttachmentKHR,
-	/// <unmanaged>VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT</unmanaged>
-	RasterizationStateCreateFragmentDensityMapAttachmentKHR = RenderingFragmentDensityMapAttachmentEXT,
 	/// <unmanaged>VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR</unmanaged>
 	ViewIndexFromDeviceIndexKHR = ViewIndexFromDeviceIndex,
 	/// <unmanaged>VK_PIPELINE_CREATE_DISPATCH_BASE_KHR</unmanaged>
 	DispatchBaseKHR = DispatchBase,
+	/// <unmanaged>VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT</unmanaged>
+	RasterizationStateCreateFragmentDensityMapAttachmentKHR = RenderingFragmentDensityMapAttachmentEXT,
+	/// <unmanaged>VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</unmanaged>
+	RasterizationStateCreateFragmentShadingRateAttachmentKHR = RenderingFragmentShadingRateAttachmentKHR,
 	/// <unmanaged>VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT</unmanaged>
 	FailOnPipelineCompileRequiredEXT = FailOnPipelineCompileRequired,
 	/// <unmanaged>VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT_EXT</unmanaged>
@@ -6311,6 +6319,8 @@ public enum VkPresentModeKHR
 	SharedDemandRefresh = 1000111000,
 	/// <unmanaged>VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR</unmanaged>
 	SharedContinuousRefresh = 1000111001,
+	/// <unmanaged>VK_PRESENT_MODE_FIFO_LATEST_READY_EXT</unmanaged>
+	FifoLatestReadyEXT = 1000361000,
 }
 
 public enum VkColorSpaceKHR
@@ -10032,6 +10042,8 @@ public enum VkPipelineCreateFlags2KHR : ulong
 	AllowDerivatives = 0x00000002UL,
 	/// <unmanaged>VK_PIPELINE_CREATE_2_DERIVATIVE_BIT_KHR</unmanaged>
 	Derivative = 0x00000004UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX</unmanaged>
+	ExecutionGraphAMDX = 0x100000000UL,
 	/// <unmanaged>VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT</unmanaged>
 	EnableLegacyDitheringEXT = 0x400000000UL,
 	/// <unmanaged>VK_PIPELINE_CREATE_2_VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR</unmanaged>

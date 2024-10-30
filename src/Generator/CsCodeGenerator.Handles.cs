@@ -29,6 +29,10 @@ partial class CsCodeGenerator
                 continue;
             }
 
+            string sourceFileName = Path.GetFileNameWithoutExtension(typedef.SourceFile);
+            if (ShouldIgnoreFile(sourceFileName))
+                continue;
+
             if (typedef.ElementType is not CppPointerType)
             {
                 continue;
@@ -47,7 +51,7 @@ partial class CsCodeGenerator
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Handles.cs"),
             true,
             _options.Namespace,
-            new[] { "System.Diagnostics" }
+            ["System.Diagnostics"]
             );
 
         foreach (CppTypedef typedef in compilation.Typedefs)
@@ -58,6 +62,10 @@ partial class CsCodeGenerator
             {
                 continue;
             }
+
+            string sourceFileName = Path.GetFileNameWithoutExtension(typedef.SourceFile);
+            if (ShouldIgnoreFile(sourceFileName))
+                continue;
 
             if (typedef.ElementType is not CppPointerType)
             {

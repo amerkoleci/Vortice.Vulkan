@@ -1,6 +1,7 @@
 // Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Runtime.InteropServices;
 using System.Text;
 using CppAst;
 
@@ -8,7 +9,7 @@ namespace Generator;
 
 partial class CsCodeGenerator
 {
-    private readonly HashSet<string> s_instanceFunctions =
+    private readonly HashSet<string> _instanceFunctions =
     [
         "vkGetDeviceProcAddr",
         "vkCmdBeginDebugUtilsLabelEXT",
@@ -24,7 +25,7 @@ partial class CsCodeGenerator
         "vkSubmitDebugUtilsMessageEXT"
     ];
 
-    private readonly HashSet<string> s_outReturnFunctions =
+    private readonly HashSet<string> _outReturnFunctions =
     [
         "vkCreateInstance",
         "vkCreateDevice",
@@ -148,6 +149,19 @@ partial class CsCodeGenerator
         return $"delegate* unmanaged<{builder}>";
     }
 
+    private static bool ShouldIgnoreFile(string sourceFileName)
+    {
+        if (sourceFileName == "vadefs"
+            || sourceFileName == "vcruntime"
+            || sourceFileName == "corecrt"
+            || sourceFileName == "stddef")
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     private void GenerateCommands(CppCompilation compilation)
     {
         Dictionary<string, CppFunction> commands = [];
@@ -167,10 +181,12 @@ partial class CsCodeGenerator
                 continue;
             }
 
-            if (cppFunction.Attributes.Count > 0 && cppFunction.Attributes[0].Name == "deprecated")
-            {
+            string sourceFileName = Path.GetFileNameWithoutExtension(cppFunction.SourceFile);
+            if (ShouldIgnoreFile(sourceFileName))
                 continue;
-            }
+
+            if (cppFunction.Attributes.Count > 0 && cppFunction.Attributes[0].Name == "deprecated")
+                continue;
 
             string? csName = cppFunction.Name;
 
@@ -238,7 +254,7 @@ partial class CsCodeGenerator
             {
                 CppFunction cppFunction = command.Value;
 
-                bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
+                bool canUseOut = _outReturnFunctions.Contains(cppFunction.Name);
 
                 WriteFunctionInvocation(writer, cppFunction, false);
 
@@ -485,7 +501,7 @@ partial class CsCodeGenerator
 
     private bool IsInstanceFunction(string name)
     {
-        return s_instanceFunctions.Contains(name);
+        return _instanceFunctions.Contains(name);
     }
 
     public static string GetParameterSignature(CppFunction cppFunction, bool canUseOut, bool inParameters)

@@ -63,6 +63,10 @@ partial class CsCodeGenerator
                 continue;
             }
 
+            string sourceFileName = Path.GetFileNameWithoutExtension(cppClass.SourceFile);
+            if (ShouldIgnoreFile(sourceFileName))
+                continue;
+
             WriteStruct(writer, cppClass, cppClass.Name);
 
             writer.WriteLine();

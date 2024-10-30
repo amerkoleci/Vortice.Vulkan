@@ -202,7 +202,6 @@ public static unsafe class Program
             }
         }
 
-
         public override void Dispose()
         {
             _graphicsDevice.WaitIdle();

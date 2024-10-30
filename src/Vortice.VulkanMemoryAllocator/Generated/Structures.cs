@@ -25,8 +25,8 @@ public unsafe partial struct VmaDeviceMemoryCallbacks
 [StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaVulkanFunctions
 {
-	public delegate* unmanaged<VkInstance, byte*, nint> vkGetInstanceProcAddr;
-	public delegate* unmanaged<VkDevice, byte*, nint> vkGetDeviceProcAddr;
+	public delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr;
+	public delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr;
 	public delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void> vkGetPhysicalDeviceProperties;
 	public delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties*, void> vkGetPhysicalDeviceMemoryProperties;
 	public delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult> vkAllocateMemory;

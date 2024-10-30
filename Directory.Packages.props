@@ -2,12 +2,12 @@
 <Project>
   <!-- https://learn.microsoft.com/nuget/consume-packages/central-package-management -->
   <ItemGroup>
-    <PackageVersion Include="CppAst" Version="0.20.2" />
+    <PackageVersion Include="CppAst" Version="0.21.0" />
 
     <PackageVersion Include="Silk.NET.Shaderc.Native" Version="2.21.0" />
 
     <!-- Samples -->
-    <PackageVersion Include="Alimer.Bindings.SDL" Version="3.8.0" />
+    <PackageVersion Include="Alimer.Bindings.SDL" Version="3.9.3" />
     
     <!-- Tests -->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
