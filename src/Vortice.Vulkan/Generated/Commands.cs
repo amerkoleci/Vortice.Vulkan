@@ -228,6 +228,25 @@ unsafe partial class Vulkan
 	internal static delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirements_ptr;
 	internal static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirements_ptr;
 	private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetDeviceImageSparseMemoryRequirements_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, uint, ushort, void> vkCmdSetLineStipple_ptr;
+	private static delegate* unmanaged<VkDevice, VkMemoryMapInfo*, void**, VkResult> vkMapMemory2_ptr;
+	private static delegate* unmanaged<VkDevice, VkMemoryUnmapInfo*, VkResult> vkUnmapMemory2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, VkIndexType, void> vkCmdBindIndexBuffer2_ptr;
+	private static delegate* unmanaged<VkDevice, VkRenderingAreaInfo*, VkExtent2D*, void> vkGetRenderingAreaGranularity_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfo*, VkSubresourceLayout2*, void> vkGetDeviceImageSubresourceLayout_ptr;
+	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2*, VkSubresourceLayout2*, void> vkGetImageSubresourceLayout2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkWriteDescriptorSet*, void> vkCmdPushDescriptorSet_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkDescriptorUpdateTemplate, VkPipelineLayout, uint, void*, void> vkCmdPushDescriptorSetWithTemplate_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfo*, void> vkCmdSetRenderingAttachmentLocations_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfo*, void> vkCmdSetRenderingInputAttachmentIndices_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfo*, void> vkCmdBindDescriptorSets2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPushConstantsInfo*, void> vkCmdPushConstants2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetInfo*, void> vkCmdPushDescriptorSet2_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetWithTemplateInfo*, void> vkCmdPushDescriptorSetWithTemplate2_ptr;
+	private static delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfo*, VkResult> vkCopyMemoryToImage_ptr;
+	private static delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfo*, VkResult> vkCopyImageToMemory_ptr;
+	private static delegate* unmanaged<VkDevice, VkCopyImageToImageInfo*, VkResult> vkCopyImageToImage_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfo*, VkResult> vkTransitionImageLayout_ptr;
 	private static delegate* unmanaged<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void> vkDestroySurfaceKHR_ptr;
 	private static delegate* unmanaged<VkPhysicalDevice, uint, VkSurfaceKHR, VkBool32*, VkResult> vkGetPhysicalDeviceSurfaceSupportKHR_ptr;
 	private static delegate* unmanaged<VkPhysicalDevice, VkSurfaceKHR, VkSurfaceCapabilitiesKHR*, VkResult> vkGetPhysicalDeviceSurfaceCapabilitiesKHR_ptr;
@@ -321,8 +340,8 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult> vkSignalSemaphoreKHR_ptr;
 	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceFragmentShadingRateKHR*, VkResult> vkGetPhysicalDeviceFragmentShadingRatesKHR_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkExtent2D*, VkFragmentShadingRateCombinerOpKHR*, void> vkCmdSetFragmentShadingRateKHR_ptr;
-	private static delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfoKHR*, void> vkCmdSetRenderingAttachmentLocationsKHR_ptr;
-	private static delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfoKHR*, void> vkCmdSetRenderingInputAttachmentIndicesKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfo*, void> vkCmdSetRenderingAttachmentLocationsKHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfo*, void> vkCmdSetRenderingInputAttachmentIndicesKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, ulong, VkResult> vkWaitForPresentKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferDeviceAddressKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong> vkGetBufferOpaqueCaptureAddressKHR_ptr;
@@ -335,8 +354,8 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkDevice, VkPipelineInfoKHR*, uint*, VkPipelineExecutablePropertiesKHR*, VkResult> vkGetPipelineExecutablePropertiesKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableStatisticKHR*, VkResult> vkGetPipelineExecutableStatisticsKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableInternalRepresentationKHR*, VkResult> vkGetPipelineExecutableInternalRepresentationsKHR_ptr;
-	private static delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void**, VkResult> vkMapMemory2KHR_ptr;
-	private static delegate* unmanaged<VkDevice, VkMemoryUnmapInfoKHR*, VkResult> vkUnmapMemory2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkMemoryMapInfo*, void**, VkResult> vkMapMemory2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkMemoryUnmapInfo*, VkResult> vkUnmapMemory2KHR_ptr;
 	private static delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, VkVideoEncodeQualityLevelPropertiesKHR*, VkResult> vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult> vkGetEncodedVideoSessionParametersKHR_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void> vkCmdEncodeVideoKHR_ptr;
@@ -357,9 +376,9 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirementsKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void> vkGetDeviceImageSparseMemoryRequirementsKHR_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, VkIndexType, void> vkCmdBindIndexBuffer2KHR_ptr;
-	private static delegate* unmanaged<VkDevice, VkRenderingAreaInfoKHR*, VkExtent2D*, void> vkGetRenderingAreaGranularityKHR_ptr;
-	private static delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfoKHR*, VkSubresourceLayout2KHR*, void> vkGetDeviceImageSubresourceLayoutKHR_ptr;
-	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void> vkGetImageSubresourceLayout2KHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkRenderingAreaInfo*, VkExtent2D*, void> vkGetRenderingAreaGranularityKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfo*, VkSubresourceLayout2*, void> vkGetDeviceImageSubresourceLayoutKHR_ptr;
+	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2*, VkSubresourceLayout2*, void> vkGetImageSubresourceLayout2KHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkPipelineBinaryCreateInfoKHR*, VkAllocationCallbacks*, VkPipelineBinaryHandlesInfoKHR*, VkResult> vkCreatePipelineBinariesKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkPipelineBinaryKHR, VkAllocationCallbacks*, void> vkDestroyPipelineBinaryKHR_ptr;
 	private static delegate* unmanaged<VkDevice, VkPipelineCreateInfoKHR*, VkPipelineBinaryKeyKHR*, VkResult> vkGetPipelineKeyKHR_ptr;
@@ -369,10 +388,10 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkCommandBuffer, uint, ushort, void> vkCmdSetLineStippleKHR_ptr;
 	private static delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult> vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr;
 	private static delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult> vkGetCalibratedTimestampsKHR_ptr;
-	private static delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfoKHR*, void> vkCmdBindDescriptorSets2KHR_ptr;
-	private static delegate* unmanaged<VkCommandBuffer, VkPushConstantsInfoKHR*, void> vkCmdPushConstants2KHR_ptr;
-	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetInfoKHR*, void> vkCmdPushDescriptorSet2KHR_ptr;
-	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetWithTemplateInfoKHR*, void> vkCmdPushDescriptorSetWithTemplate2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfo*, void> vkCmdBindDescriptorSets2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPushConstantsInfo*, void> vkCmdPushConstants2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetInfo*, void> vkCmdPushDescriptorSet2KHR_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetWithTemplateInfo*, void> vkCmdPushDescriptorSetWithTemplate2KHR_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkSetDescriptorBufferOffsetsInfoEXT*, void> vkCmdSetDescriptorBufferOffsets2EXT_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkBindDescriptorBufferEmbeddedSamplersInfoEXT*, void> vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr;
 	private static delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult> vkCreateDebugReportCallbackEXT_ptr;
@@ -395,6 +414,7 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkDevice, VkCuFunctionNVX, VkAllocationCallbacks*, void> vkDestroyCuFunctionNVX_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkCuLaunchInfoNVX*, void> vkCmdCuLaunchKernelNVX_ptr;
 	private static delegate* unmanaged<VkDevice, VkImageViewHandleInfoNVX*, uint> vkGetImageViewHandleNVX_ptr;
+	private static delegate* unmanaged<VkDevice, VkImageViewHandleInfoNVX*, ulong> vkGetImageViewHandle64NVX_ptr;
 	private static delegate* unmanaged<VkDevice, VkImageView, VkImageViewAddressPropertiesNVX*, VkResult> vkGetImageViewAddressNVX_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndirectCountAMD_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void> vkCmdDrawIndexedIndirectCountAMD_ptr;
@@ -491,11 +511,11 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthBoundsTestEnableEXT_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetStencilTestEnableEXT_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void> vkCmdSetStencilOpEXT_ptr;
-	private static delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfoEXT*, VkResult> vkCopyMemoryToImageEXT_ptr;
-	private static delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfoEXT*, VkResult> vkCopyImageToMemoryEXT_ptr;
-	private static delegate* unmanaged<VkDevice, VkCopyImageToImageInfoEXT*, VkResult> vkCopyImageToImageEXT_ptr;
-	private static delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfoEXT*, VkResult> vkTransitionImageLayoutEXT_ptr;
-	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void> vkGetImageSubresourceLayout2EXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfo*, VkResult> vkCopyMemoryToImageEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfo*, VkResult> vkCopyImageToMemoryEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkCopyImageToImageInfo*, VkResult> vkCopyImageToImageEXT_ptr;
+	private static delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfo*, VkResult> vkTransitionImageLayoutEXT_ptr;
+	private static delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2*, VkSubresourceLayout2*, void> vkGetImageSubresourceLayout2EXT_ptr;
 	private static delegate* unmanaged<VkDevice, VkReleaseSwapchainImagesInfoEXT*, VkResult> vkReleaseSwapchainImagesEXT_ptr;
 	private static delegate* unmanaged<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void> vkGetGeneratedCommandsMemoryRequirementsNV_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkGeneratedCommandsInfoNV*, void> vkCmdPreprocessGeneratedCommandsNV_ptr;
@@ -587,7 +607,7 @@ unsafe partial class Vulkan
 	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetSampleLocationsEnableEXT_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, uint, uint, VkColorBlendAdvancedEXT*, void> vkCmdSetColorBlendAdvancedEXT_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkProvokingVertexModeEXT, void> vkCmdSetProvokingVertexModeEXT_ptr;
-	private static delegate* unmanaged<VkCommandBuffer, VkLineRasterizationModeKHR, void> vkCmdSetLineRasterizationModeEXT_ptr;
+	private static delegate* unmanaged<VkCommandBuffer, VkLineRasterizationMode, void> vkCmdSetLineRasterizationModeEXT_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetLineStippleEnableEXT_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetDepthClipNegativeOneToOneEXT_ptr;
 	private static delegate* unmanaged<VkCommandBuffer, VkBool32, void> vkCmdSetViewportWScalingEnableNV_ptr;
@@ -2535,6 +2555,101 @@ unsafe partial class Vulkan
 		vkGetDeviceImageSparseMemoryRequirements_ptr(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
 	}
 
+	public static void vkCmdSetLineStipple(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern)
+	{
+		vkCmdSetLineStipple_ptr(commandBuffer, lineStippleFactor, lineStipplePattern);
+	}
+
+	public static VkResult vkMapMemory2(VkDevice device, VkMemoryMapInfo* memoryMapInfo, void** data)
+	{
+		return vkMapMemory2_ptr(device, memoryMapInfo, data);
+	}
+
+	public static VkResult vkUnmapMemory2(VkDevice device, VkMemoryUnmapInfo* memoryUnmapInfo)
+	{
+		return vkUnmapMemory2_ptr(device, memoryUnmapInfo);
+	}
+
+	public static void vkCmdBindIndexBuffer2(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, ulong size, VkIndexType indexType)
+	{
+		vkCmdBindIndexBuffer2_ptr(commandBuffer, buffer, offset, size, indexType);
+	}
+
+	public static void vkGetRenderingAreaGranularity(VkDevice device, VkRenderingAreaInfo* renderingAreaInfo, VkExtent2D* granularity)
+	{
+		vkGetRenderingAreaGranularity_ptr(device, renderingAreaInfo, granularity);
+	}
+
+	public static void vkGetDeviceImageSubresourceLayout(VkDevice device, VkDeviceImageSubresourceInfo* info, VkSubresourceLayout2* layout)
+	{
+		vkGetDeviceImageSubresourceLayout_ptr(device, info, layout);
+	}
+
+	public static void vkGetImageSubresourceLayout2(VkDevice device, VkImage image, VkImageSubresource2* subresource, VkSubresourceLayout2* layout)
+	{
+		vkGetImageSubresourceLayout2_ptr(device, image, subresource, layout);
+	}
+
+	public static void vkCmdPushDescriptorSet(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites)
+	{
+		vkCmdPushDescriptorSet_ptr(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, descriptorWrites);
+	}
+
+	public static void vkCmdPushDescriptorSetWithTemplate(VkCommandBuffer commandBuffer, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkPipelineLayout layout, uint set, void* data)
+	{
+		vkCmdPushDescriptorSetWithTemplate_ptr(commandBuffer, descriptorUpdateTemplate, layout, set, data);
+	}
+
+	public static void vkCmdSetRenderingAttachmentLocations(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfo* locationInfo)
+	{
+		vkCmdSetRenderingAttachmentLocations_ptr(commandBuffer, locationInfo);
+	}
+
+	public static void vkCmdSetRenderingInputAttachmentIndices(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfo* inputAttachmentIndexInfo)
+	{
+		vkCmdSetRenderingInputAttachmentIndices_ptr(commandBuffer, inputAttachmentIndexInfo);
+	}
+
+	public static void vkCmdBindDescriptorSets2(VkCommandBuffer commandBuffer, VkBindDescriptorSetsInfo* bindDescriptorSetsInfo)
+	{
+		vkCmdBindDescriptorSets2_ptr(commandBuffer, bindDescriptorSetsInfo);
+	}
+
+	public static void vkCmdPushConstants2(VkCommandBuffer commandBuffer, VkPushConstantsInfo* pushConstantsInfo)
+	{
+		vkCmdPushConstants2_ptr(commandBuffer, pushConstantsInfo);
+	}
+
+	public static void vkCmdPushDescriptorSet2(VkCommandBuffer commandBuffer, VkPushDescriptorSetInfo* pushDescriptorSetInfo)
+	{
+		vkCmdPushDescriptorSet2_ptr(commandBuffer, pushDescriptorSetInfo);
+	}
+
+	public static void vkCmdPushDescriptorSetWithTemplate2(VkCommandBuffer commandBuffer, VkPushDescriptorSetWithTemplateInfo* pushDescriptorSetWithTemplateInfo)
+	{
+		vkCmdPushDescriptorSetWithTemplate2_ptr(commandBuffer, pushDescriptorSetWithTemplateInfo);
+	}
+
+	public static VkResult vkCopyMemoryToImage(VkDevice device, VkCopyMemoryToImageInfo* copyMemoryToImageInfo)
+	{
+		return vkCopyMemoryToImage_ptr(device, copyMemoryToImageInfo);
+	}
+
+	public static VkResult vkCopyImageToMemory(VkDevice device, VkCopyImageToMemoryInfo* copyImageToMemoryInfo)
+	{
+		return vkCopyImageToMemory_ptr(device, copyImageToMemoryInfo);
+	}
+
+	public static VkResult vkCopyImageToImage(VkDevice device, VkCopyImageToImageInfo* copyImageToImageInfo)
+	{
+		return vkCopyImageToImage_ptr(device, copyImageToImageInfo);
+	}
+
+	public static VkResult vkTransitionImageLayout(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfo* transitions)
+	{
+		return vkTransitionImageLayout_ptr(device, transitionCount, transitions);
+	}
+
 	public static void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* allocator = default)
 	{
 		vkDestroySurfaceKHR_ptr(instance, surface, allocator);
@@ -3219,12 +3334,12 @@ unsafe partial class Vulkan
 		vkCmdSetFragmentShadingRateKHR_ptr(commandBuffer, fragmentSize, combinerOps);
 	}
 
-	public static void vkCmdSetRenderingAttachmentLocationsKHR(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfoKHR* locationInfo)
+	public static void vkCmdSetRenderingAttachmentLocationsKHR(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfo* locationInfo)
 	{
 		vkCmdSetRenderingAttachmentLocationsKHR_ptr(commandBuffer, locationInfo);
 	}
 
-	public static void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfoKHR* inputAttachmentIndexInfo)
+	public static void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfo* inputAttachmentIndexInfo)
 	{
 		vkCmdSetRenderingInputAttachmentIndicesKHR_ptr(commandBuffer, inputAttachmentIndexInfo);
 	}
@@ -3289,12 +3404,12 @@ unsafe partial class Vulkan
 		return vkGetPipelineExecutableInternalRepresentationsKHR_ptr(device, executableInfo, internalRepresentationCount, internalRepresentations);
 	}
 
-	public static VkResult vkMapMemory2KHR(VkDevice device, VkMemoryMapInfoKHR* memoryMapInfo, void** data)
+	public static VkResult vkMapMemory2KHR(VkDevice device, VkMemoryMapInfo* memoryMapInfo, void** data)
 	{
 		return vkMapMemory2KHR_ptr(device, memoryMapInfo, data);
 	}
 
-	public static VkResult vkUnmapMemory2KHR(VkDevice device, VkMemoryUnmapInfoKHR* memoryUnmapInfo)
+	public static VkResult vkUnmapMemory2KHR(VkDevice device, VkMemoryUnmapInfo* memoryUnmapInfo)
 	{
 		return vkUnmapMemory2KHR_ptr(device, memoryUnmapInfo);
 	}
@@ -3399,17 +3514,17 @@ unsafe partial class Vulkan
 		vkCmdBindIndexBuffer2KHR_ptr(commandBuffer, buffer, offset, size, indexType);
 	}
 
-	public static void vkGetRenderingAreaGranularityKHR(VkDevice device, VkRenderingAreaInfoKHR* renderingAreaInfo, VkExtent2D* granularity)
+	public static void vkGetRenderingAreaGranularityKHR(VkDevice device, VkRenderingAreaInfo* renderingAreaInfo, VkExtent2D* granularity)
 	{
 		vkGetRenderingAreaGranularityKHR_ptr(device, renderingAreaInfo, granularity);
 	}
 
-	public static void vkGetDeviceImageSubresourceLayoutKHR(VkDevice device, VkDeviceImageSubresourceInfoKHR* info, VkSubresourceLayout2KHR* layout)
+	public static void vkGetDeviceImageSubresourceLayoutKHR(VkDevice device, VkDeviceImageSubresourceInfo* info, VkSubresourceLayout2* layout)
 	{
 		vkGetDeviceImageSubresourceLayoutKHR_ptr(device, info, layout);
 	}
 
-	public static void vkGetImageSubresourceLayout2KHR(VkDevice device, VkImage image, VkImageSubresource2KHR* subresource, VkSubresourceLayout2KHR* layout)
+	public static void vkGetImageSubresourceLayout2KHR(VkDevice device, VkImage image, VkImageSubresource2* subresource, VkSubresourceLayout2* layout)
 	{
 		vkGetImageSubresourceLayout2KHR_ptr(device, image, subresource, layout);
 	}
@@ -3467,22 +3582,22 @@ unsafe partial class Vulkan
 		return vkGetCalibratedTimestampsKHR_ptr(device, timestampCount, timestampInfos, timestamps, maxDeviation);
 	}
 
-	public static void vkCmdBindDescriptorSets2KHR(VkCommandBuffer commandBuffer, VkBindDescriptorSetsInfoKHR* bindDescriptorSetsInfo)
+	public static void vkCmdBindDescriptorSets2KHR(VkCommandBuffer commandBuffer, VkBindDescriptorSetsInfo* bindDescriptorSetsInfo)
 	{
 		vkCmdBindDescriptorSets2KHR_ptr(commandBuffer, bindDescriptorSetsInfo);
 	}
 
-	public static void vkCmdPushConstants2KHR(VkCommandBuffer commandBuffer, VkPushConstantsInfoKHR* pushConstantsInfo)
+	public static void vkCmdPushConstants2KHR(VkCommandBuffer commandBuffer, VkPushConstantsInfo* pushConstantsInfo)
 	{
 		vkCmdPushConstants2KHR_ptr(commandBuffer, pushConstantsInfo);
 	}
 
-	public static void vkCmdPushDescriptorSet2KHR(VkCommandBuffer commandBuffer, VkPushDescriptorSetInfoKHR* pushDescriptorSetInfo)
+	public static void vkCmdPushDescriptorSet2KHR(VkCommandBuffer commandBuffer, VkPushDescriptorSetInfo* pushDescriptorSetInfo)
 	{
 		vkCmdPushDescriptorSet2KHR_ptr(commandBuffer, pushDescriptorSetInfo);
 	}
 
-	public static void vkCmdPushDescriptorSetWithTemplate2KHR(VkCommandBuffer commandBuffer, VkPushDescriptorSetWithTemplateInfoKHR* pushDescriptorSetWithTemplateInfo)
+	public static void vkCmdPushDescriptorSetWithTemplate2KHR(VkCommandBuffer commandBuffer, VkPushDescriptorSetWithTemplateInfo* pushDescriptorSetWithTemplateInfo)
 	{
 		vkCmdPushDescriptorSetWithTemplate2KHR_ptr(commandBuffer, pushDescriptorSetWithTemplateInfo);
 	}
@@ -3619,6 +3734,11 @@ unsafe partial class Vulkan
 	public static uint vkGetImageViewHandleNVX(VkDevice device, VkImageViewHandleInfoNVX* info)
 	{
 		return vkGetImageViewHandleNVX_ptr(device, info);
+	}
+
+	public static ulong vkGetImageViewHandle64NVX(VkDevice device, VkImageViewHandleInfoNVX* info)
+	{
+		return vkGetImageViewHandle64NVX_ptr(device, info);
 	}
 
 	public static VkResult vkGetImageViewAddressNVX(VkDevice device, VkImageView imageView, VkImageViewAddressPropertiesNVX* properties)
@@ -4162,27 +4282,27 @@ unsafe partial class Vulkan
 		vkCmdSetStencilOpEXT_ptr(commandBuffer, faceMask, failOp, passOp, depthFailOp, compareOp);
 	}
 
-	public static VkResult vkCopyMemoryToImageEXT(VkDevice device, VkCopyMemoryToImageInfoEXT* copyMemoryToImageInfo)
+	public static VkResult vkCopyMemoryToImageEXT(VkDevice device, VkCopyMemoryToImageInfo* copyMemoryToImageInfo)
 	{
 		return vkCopyMemoryToImageEXT_ptr(device, copyMemoryToImageInfo);
 	}
 
-	public static VkResult vkCopyImageToMemoryEXT(VkDevice device, VkCopyImageToMemoryInfoEXT* copyImageToMemoryInfo)
+	public static VkResult vkCopyImageToMemoryEXT(VkDevice device, VkCopyImageToMemoryInfo* copyImageToMemoryInfo)
 	{
 		return vkCopyImageToMemoryEXT_ptr(device, copyImageToMemoryInfo);
 	}
 
-	public static VkResult vkCopyImageToImageEXT(VkDevice device, VkCopyImageToImageInfoEXT* copyImageToImageInfo)
+	public static VkResult vkCopyImageToImageEXT(VkDevice device, VkCopyImageToImageInfo* copyImageToImageInfo)
 	{
 		return vkCopyImageToImageEXT_ptr(device, copyImageToImageInfo);
 	}
 
-	public static VkResult vkTransitionImageLayoutEXT(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfoEXT* transitions)
+	public static VkResult vkTransitionImageLayoutEXT(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfo* transitions)
 	{
 		return vkTransitionImageLayoutEXT_ptr(device, transitionCount, transitions);
 	}
 
-	public static void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2KHR* subresource, VkSubresourceLayout2KHR* layout)
+	public static void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2* subresource, VkSubresourceLayout2* layout)
 	{
 		vkGetImageSubresourceLayout2EXT_ptr(device, image, subresource, layout);
 	}
@@ -4682,7 +4802,7 @@ unsafe partial class Vulkan
 		vkCmdSetProvokingVertexModeEXT_ptr(commandBuffer, provokingVertexMode);
 	}
 
-	public static void vkCmdSetLineRasterizationModeEXT(VkCommandBuffer commandBuffer, VkLineRasterizationModeKHR lineRasterizationMode)
+	public static void vkCmdSetLineRasterizationModeEXT(VkCommandBuffer commandBuffer, VkLineRasterizationMode lineRasterizationMode)
 	{
 		vkCmdSetLineRasterizationModeEXT_ptr(commandBuffer, lineRasterizationMode);
 	}
@@ -5707,6 +5827,25 @@ unsafe partial class Vulkan
 		vkGetDeviceBufferMemoryRequirements_ptr = (delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceBufferMemoryRequirements));
 		vkGetDeviceImageMemoryRequirements_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageMemoryRequirements));
 		vkGetDeviceImageSparseMemoryRequirements_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageSparseMemoryRequirements));
+		vkCmdSetLineStipple_ptr = (delegate* unmanaged<VkCommandBuffer, uint, ushort, void>) load(context, nameof(vkCmdSetLineStipple));
+		vkMapMemory2_ptr = (delegate* unmanaged<VkDevice, VkMemoryMapInfo*, void**, VkResult>) load(context, nameof(vkMapMemory2));
+		vkUnmapMemory2_ptr = (delegate* unmanaged<VkDevice, VkMemoryUnmapInfo*, VkResult>) load(context, nameof(vkUnmapMemory2));
+		vkCmdBindIndexBuffer2_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, VkIndexType, void>) load(context, nameof(vkCmdBindIndexBuffer2));
+		vkGetRenderingAreaGranularity_ptr = (delegate* unmanaged<VkDevice, VkRenderingAreaInfo*, VkExtent2D*, void>) load(context, nameof(vkGetRenderingAreaGranularity));
+		vkGetDeviceImageSubresourceLayout_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfo*, VkSubresourceLayout2*, void>) load(context, nameof(vkGetDeviceImageSubresourceLayout));
+		vkGetImageSubresourceLayout2_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2*, VkSubresourceLayout2*, void>) load(context, nameof(vkGetImageSubresourceLayout2));
+		vkCmdPushDescriptorSet_ptr = (delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkWriteDescriptorSet*, void>) load(context, nameof(vkCmdPushDescriptorSet));
+		vkCmdPushDescriptorSetWithTemplate_ptr = (delegate* unmanaged<VkCommandBuffer, VkDescriptorUpdateTemplate, VkPipelineLayout, uint, void*, void>) load(context, nameof(vkCmdPushDescriptorSetWithTemplate));
+		vkCmdSetRenderingAttachmentLocations_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfo*, void>) load(context, nameof(vkCmdSetRenderingAttachmentLocations));
+		vkCmdSetRenderingInputAttachmentIndices_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfo*, void>) load(context, nameof(vkCmdSetRenderingInputAttachmentIndices));
+		vkCmdBindDescriptorSets2_ptr = (delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfo*, void>) load(context, nameof(vkCmdBindDescriptorSets2));
+		vkCmdPushConstants2_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushConstantsInfo*, void>) load(context, nameof(vkCmdPushConstants2));
+		vkCmdPushDescriptorSet2_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetInfo*, void>) load(context, nameof(vkCmdPushDescriptorSet2));
+		vkCmdPushDescriptorSetWithTemplate2_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetWithTemplateInfo*, void>) load(context, nameof(vkCmdPushDescriptorSetWithTemplate2));
+		vkCopyMemoryToImage_ptr = (delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfo*, VkResult>) load(context, nameof(vkCopyMemoryToImage));
+		vkCopyImageToMemory_ptr = (delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfo*, VkResult>) load(context, nameof(vkCopyImageToMemory));
+		vkCopyImageToImage_ptr = (delegate* unmanaged<VkDevice, VkCopyImageToImageInfo*, VkResult>) load(context, nameof(vkCopyImageToImage));
+		vkTransitionImageLayout_ptr = (delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfo*, VkResult>) load(context, nameof(vkTransitionImageLayout));
 		vkCreateSwapchainKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>) load(context, nameof(vkCreateSwapchainKHR));
 		vkDestroySwapchainKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroySwapchainKHR));
 		vkGetSwapchainImagesKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult>) load(context, nameof(vkGetSwapchainImagesKHR));
@@ -5765,8 +5904,8 @@ unsafe partial class Vulkan
 		vkWaitSemaphoresKHR_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult>) load(context, nameof(vkWaitSemaphoresKHR));
 		vkSignalSemaphoreKHR_ptr = (delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult>) load(context, nameof(vkSignalSemaphoreKHR));
 		vkCmdSetFragmentShadingRateKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkExtent2D*, VkFragmentShadingRateCombinerOpKHR*, void>) load(context, nameof(vkCmdSetFragmentShadingRateKHR));
-		vkCmdSetRenderingAttachmentLocationsKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfoKHR*, void>) load(context, nameof(vkCmdSetRenderingAttachmentLocationsKHR));
-		vkCmdSetRenderingInputAttachmentIndicesKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfoKHR*, void>) load(context, nameof(vkCmdSetRenderingInputAttachmentIndicesKHR));
+		vkCmdSetRenderingAttachmentLocationsKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfo*, void>) load(context, nameof(vkCmdSetRenderingAttachmentLocationsKHR));
+		vkCmdSetRenderingInputAttachmentIndicesKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfo*, void>) load(context, nameof(vkCmdSetRenderingInputAttachmentIndicesKHR));
 		vkWaitForPresentKHR_ptr = (delegate* unmanaged<VkDevice, VkSwapchainKHR, ulong, ulong, VkResult>) load(context, nameof(vkWaitForPresentKHR));
 		vkGetBufferDeviceAddressKHR_ptr = (delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferDeviceAddressKHR));
 		vkGetBufferOpaqueCaptureAddressKHR_ptr = (delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong>) load(context, nameof(vkGetBufferOpaqueCaptureAddressKHR));
@@ -5779,8 +5918,8 @@ unsafe partial class Vulkan
 		vkGetPipelineExecutablePropertiesKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineInfoKHR*, uint*, VkPipelineExecutablePropertiesKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutablePropertiesKHR));
 		vkGetPipelineExecutableStatisticsKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableStatisticKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutableStatisticsKHR));
 		vkGetPipelineExecutableInternalRepresentationsKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineExecutableInfoKHR*, uint*, VkPipelineExecutableInternalRepresentationKHR*, VkResult>) load(context, nameof(vkGetPipelineExecutableInternalRepresentationsKHR));
-		vkMapMemory2KHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryMapInfoKHR*, void**, VkResult>) load(context, nameof(vkMapMemory2KHR));
-		vkUnmapMemory2KHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryUnmapInfoKHR*, VkResult>) load(context, nameof(vkUnmapMemory2KHR));
+		vkMapMemory2KHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryMapInfo*, void**, VkResult>) load(context, nameof(vkMapMemory2KHR));
+		vkUnmapMemory2KHR_ptr = (delegate* unmanaged<VkDevice, VkMemoryUnmapInfo*, VkResult>) load(context, nameof(vkUnmapMemory2KHR));
 		vkGetEncodedVideoSessionParametersKHR_ptr = (delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult>) load(context, nameof(vkGetEncodedVideoSessionParametersKHR));
 		vkCmdEncodeVideoKHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkVideoEncodeInfoKHR*, void>) load(context, nameof(vkCmdEncodeVideoKHR));
 		vkCmdSetEvent2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfo*, void>) load(context, nameof(vkCmdSetEvent2KHR));
@@ -5800,9 +5939,9 @@ unsafe partial class Vulkan
 		vkGetDeviceImageMemoryRequirementsKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageMemoryRequirementsKHR));
 		vkGetDeviceImageSparseMemoryRequirementsKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void>) load(context, nameof(vkGetDeviceImageSparseMemoryRequirementsKHR));
 		vkCmdBindIndexBuffer2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, VkIndexType, void>) load(context, nameof(vkCmdBindIndexBuffer2KHR));
-		vkGetRenderingAreaGranularityKHR_ptr = (delegate* unmanaged<VkDevice, VkRenderingAreaInfoKHR*, VkExtent2D*, void>) load(context, nameof(vkGetRenderingAreaGranularityKHR));
-		vkGetDeviceImageSubresourceLayoutKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfoKHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetDeviceImageSubresourceLayoutKHR));
-		vkGetImageSubresourceLayout2KHR_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetImageSubresourceLayout2KHR));
+		vkGetRenderingAreaGranularityKHR_ptr = (delegate* unmanaged<VkDevice, VkRenderingAreaInfo*, VkExtent2D*, void>) load(context, nameof(vkGetRenderingAreaGranularityKHR));
+		vkGetDeviceImageSubresourceLayoutKHR_ptr = (delegate* unmanaged<VkDevice, VkDeviceImageSubresourceInfo*, VkSubresourceLayout2*, void>) load(context, nameof(vkGetDeviceImageSubresourceLayoutKHR));
+		vkGetImageSubresourceLayout2KHR_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2*, VkSubresourceLayout2*, void>) load(context, nameof(vkGetImageSubresourceLayout2KHR));
 		vkCreatePipelineBinariesKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineBinaryCreateInfoKHR*, VkAllocationCallbacks*, VkPipelineBinaryHandlesInfoKHR*, VkResult>) load(context, nameof(vkCreatePipelineBinariesKHR));
 		vkDestroyPipelineBinaryKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineBinaryKHR, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyPipelineBinaryKHR));
 		vkGetPipelineKeyKHR_ptr = (delegate* unmanaged<VkDevice, VkPipelineCreateInfoKHR*, VkPipelineBinaryKeyKHR*, VkResult>) load(context, nameof(vkGetPipelineKeyKHR));
@@ -5810,10 +5949,10 @@ unsafe partial class Vulkan
 		vkReleaseCapturedPipelineDataKHR_ptr = (delegate* unmanaged<VkDevice, VkReleaseCapturedPipelineDataInfoKHR*, VkAllocationCallbacks*, VkResult>) load(context, nameof(vkReleaseCapturedPipelineDataKHR));
 		vkCmdSetLineStippleKHR_ptr = (delegate* unmanaged<VkCommandBuffer, uint, ushort, void>) load(context, nameof(vkCmdSetLineStippleKHR));
 		vkGetCalibratedTimestampsKHR_ptr = (delegate* unmanaged<VkDevice, uint, VkCalibratedTimestampInfoKHR*, ulong*, ulong*, VkResult>) load(context, nameof(vkGetCalibratedTimestampsKHR));
-		vkCmdBindDescriptorSets2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfoKHR*, void>) load(context, nameof(vkCmdBindDescriptorSets2KHR));
-		vkCmdPushConstants2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushConstantsInfoKHR*, void>) load(context, nameof(vkCmdPushConstants2KHR));
-		vkCmdPushDescriptorSet2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetInfoKHR*, void>) load(context, nameof(vkCmdPushDescriptorSet2KHR));
-		vkCmdPushDescriptorSetWithTemplate2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetWithTemplateInfoKHR*, void>) load(context, nameof(vkCmdPushDescriptorSetWithTemplate2KHR));
+		vkCmdBindDescriptorSets2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkBindDescriptorSetsInfo*, void>) load(context, nameof(vkCmdBindDescriptorSets2KHR));
+		vkCmdPushConstants2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushConstantsInfo*, void>) load(context, nameof(vkCmdPushConstants2KHR));
+		vkCmdPushDescriptorSet2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetInfo*, void>) load(context, nameof(vkCmdPushDescriptorSet2KHR));
+		vkCmdPushDescriptorSetWithTemplate2KHR_ptr = (delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetWithTemplateInfo*, void>) load(context, nameof(vkCmdPushDescriptorSetWithTemplate2KHR));
 		vkCmdSetDescriptorBufferOffsets2EXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkSetDescriptorBufferOffsetsInfoEXT*, void>) load(context, nameof(vkCmdSetDescriptorBufferOffsets2EXT));
 		vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBindDescriptorBufferEmbeddedSamplersInfoEXT*, void>) load(context, nameof(vkCmdBindDescriptorBufferEmbeddedSamplers2EXT));
 		vkDebugMarkerSetObjectTagEXT_ptr = (delegate* unmanaged<VkDevice, VkDebugMarkerObjectTagInfoEXT*, VkResult>) load(context, nameof(vkDebugMarkerSetObjectTagEXT));
@@ -5833,6 +5972,7 @@ unsafe partial class Vulkan
 		vkDestroyCuFunctionNVX_ptr = (delegate* unmanaged<VkDevice, VkCuFunctionNVX, VkAllocationCallbacks*, void>) load(context, nameof(vkDestroyCuFunctionNVX));
 		vkCmdCuLaunchKernelNVX_ptr = (delegate* unmanaged<VkCommandBuffer, VkCuLaunchInfoNVX*, void>) load(context, nameof(vkCmdCuLaunchKernelNVX));
 		vkGetImageViewHandleNVX_ptr = (delegate* unmanaged<VkDevice, VkImageViewHandleInfoNVX*, uint>) load(context, nameof(vkGetImageViewHandleNVX));
+		vkGetImageViewHandle64NVX_ptr = (delegate* unmanaged<VkDevice, VkImageViewHandleInfoNVX*, ulong>) load(context, nameof(vkGetImageViewHandle64NVX));
 		vkGetImageViewAddressNVX_ptr = (delegate* unmanaged<VkDevice, VkImageView, VkImageViewAddressPropertiesNVX*, VkResult>) load(context, nameof(vkGetImageViewAddressNVX));
 		vkCmdDrawIndirectCountAMD_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndirectCountAMD));
 		vkCmdDrawIndexedIndirectCountAMD_ptr = (delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>) load(context, nameof(vkCmdDrawIndexedIndirectCountAMD));
@@ -5909,11 +6049,11 @@ unsafe partial class Vulkan
 		vkCmdSetDepthBoundsTestEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthBoundsTestEnableEXT));
 		vkCmdSetStencilTestEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetStencilTestEnableEXT));
 		vkCmdSetStencilOpEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void>) load(context, nameof(vkCmdSetStencilOpEXT));
-		vkCopyMemoryToImageEXT_ptr = (delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfoEXT*, VkResult>) load(context, nameof(vkCopyMemoryToImageEXT));
-		vkCopyImageToMemoryEXT_ptr = (delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfoEXT*, VkResult>) load(context, nameof(vkCopyImageToMemoryEXT));
-		vkCopyImageToImageEXT_ptr = (delegate* unmanaged<VkDevice, VkCopyImageToImageInfoEXT*, VkResult>) load(context, nameof(vkCopyImageToImageEXT));
-		vkTransitionImageLayoutEXT_ptr = (delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfoEXT*, VkResult>) load(context, nameof(vkTransitionImageLayoutEXT));
-		vkGetImageSubresourceLayout2EXT_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2KHR*, VkSubresourceLayout2KHR*, void>) load(context, nameof(vkGetImageSubresourceLayout2EXT));
+		vkCopyMemoryToImageEXT_ptr = (delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfo*, VkResult>) load(context, nameof(vkCopyMemoryToImageEXT));
+		vkCopyImageToMemoryEXT_ptr = (delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfo*, VkResult>) load(context, nameof(vkCopyImageToMemoryEXT));
+		vkCopyImageToImageEXT_ptr = (delegate* unmanaged<VkDevice, VkCopyImageToImageInfo*, VkResult>) load(context, nameof(vkCopyImageToImageEXT));
+		vkTransitionImageLayoutEXT_ptr = (delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfo*, VkResult>) load(context, nameof(vkTransitionImageLayoutEXT));
+		vkGetImageSubresourceLayout2EXT_ptr = (delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2*, VkSubresourceLayout2*, void>) load(context, nameof(vkGetImageSubresourceLayout2EXT));
 		vkReleaseSwapchainImagesEXT_ptr = (delegate* unmanaged<VkDevice, VkReleaseSwapchainImagesInfoEXT*, VkResult>) load(context, nameof(vkReleaseSwapchainImagesEXT));
 		vkGetGeneratedCommandsMemoryRequirementsNV_ptr = (delegate* unmanaged<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void>) load(context, nameof(vkGetGeneratedCommandsMemoryRequirementsNV));
 		vkCmdPreprocessGeneratedCommandsNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkGeneratedCommandsInfoNV*, void>) load(context, nameof(vkCmdPreprocessGeneratedCommandsNV));
@@ -6003,7 +6143,7 @@ unsafe partial class Vulkan
 		vkCmdSetSampleLocationsEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetSampleLocationsEnableEXT));
 		vkCmdSetColorBlendAdvancedEXT_ptr = (delegate* unmanaged<VkCommandBuffer, uint, uint, VkColorBlendAdvancedEXT*, void>) load(context, nameof(vkCmdSetColorBlendAdvancedEXT));
 		vkCmdSetProvokingVertexModeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkProvokingVertexModeEXT, void>) load(context, nameof(vkCmdSetProvokingVertexModeEXT));
-		vkCmdSetLineRasterizationModeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkLineRasterizationModeKHR, void>) load(context, nameof(vkCmdSetLineRasterizationModeEXT));
+		vkCmdSetLineRasterizationModeEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkLineRasterizationMode, void>) load(context, nameof(vkCmdSetLineRasterizationModeEXT));
 		vkCmdSetLineStippleEnableEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetLineStippleEnableEXT));
 		vkCmdSetDepthClipNegativeOneToOneEXT_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetDepthClipNegativeOneToOneEXT));
 		vkCmdSetViewportWScalingEnableNV_ptr = (delegate* unmanaged<VkCommandBuffer, VkBool32, void>) load(context, nameof(vkCmdSetViewportWScalingEnableNV));

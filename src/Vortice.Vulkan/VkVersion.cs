@@ -13,6 +13,8 @@ public readonly struct VkVersion : IComparable, IComparable<VkVersion>, IEquatab
     public static VkVersion Version_1_1 => new(0, 1, 1, 0);
     public static VkVersion Version_1_2 => new(0, 1, 2, 0);
     public static VkVersion Version_1_3 => new(0, 1, 3, 0);
+    public static VkVersion Version_1_4 => new(0, 1, 4, 0);
+    public static VkVersion HeaderVersionComplete => Vulkan.VK_HEADER_VERSION_COMPLETE;
 
     public VkVersion(uint value)
     {

@@ -82,12 +82,9 @@ public partial class CsCodeGenerator
         { "VkAccelerationStructureMemoryRequirementsTypeNV", "VkAccelerationStructureMemoryRequirementsTypeKHR" },
         { "VkAccelerationStructureNV", "VkAccelerationStructureKHR" },
 
-        { "VkPipelineStageFlagBits2KHR", "VkPipelineStageFlags2KHR" },
-        { "VkAccessFlagBits2KHR", "VkAccessFlags2KHR" },
-        { "VkFormatFeatureFlagBits2KHR", "VkFormatFeatureFlags2KHR" },
         { "VkComponentTypeNV", "VkComponentTypeKHR" },
         { "VkScopeNV", "VkScopeKHR" },
-        { "VkLineRasterizationModeEXT", "VkLineRasterizationModeKHR" },
+        { "VkLineRasterizationModeEXT", "VkLineRasterizationMode" },
 
         // Spirv - Spirv-Cross
         { "SpvId", "uint" },
@@ -97,6 +94,15 @@ public partial class CsCodeGenerator
         { "spvc_constant_id", "uint" }, // SpvId
         { "spvc_msl_vertex_format", "spvc_msl_shader_variable_format" },
     };
+
+
+    private static readonly HashSet<string> s_ignoredMacros =
+    [
+        "VK_TRUE",
+        "VK_FALSE",
+        "VK_MAX_GLOBAL_PRIORITY_SIZE_KHR",
+        "VK_MAX_GLOBAL_PRIORITY_SIZE_EXT",
+    ];
 
     private readonly CsCodeGeneratorOptions _options = new();
     private readonly VulkanSpecification? _vulkanSpecification = default;
@@ -159,8 +165,6 @@ public partial class CsCodeGenerator
                     || cppMacro.Name.Equals("VKAPI_CALL", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.Equals("VKAPI_PTR", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.Equals("VULKAN_CORE_H_", StringComparison.OrdinalIgnoreCase)
-                    || cppMacro.Name.Equals("VK_TRUE", StringComparison.OrdinalIgnoreCase)
-                    || cppMacro.Name.Equals("VK_FALSE", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.Equals("VK_MAKE_VERSION", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.Equals("VK_MAKE_API_VERSION", StringComparison.OrdinalIgnoreCase)
                     || cppMacro.Name.Equals("VK_MAKE_VIDEO_STD_VERSION", StringComparison.OrdinalIgnoreCase)
@@ -184,6 +188,9 @@ public partial class CsCodeGenerator
                 {
                     continue;
                 }
+
+                if (s_ignoredMacros.Contains(cppMacro.Name))
+                    continue;
 
                 string modifier = "const";
                 string csDataType = _options.ReadOnlyMemoryUtf8ForStrings ? "ReadOnlySpan<byte>" : "string";
@@ -218,6 +225,7 @@ public partial class CsCodeGenerator
                     || cppMacro.Name == "VK_MAX_DRIVER_NAME_SIZE_KHR"
                     || cppMacro.Name == "VK_MAX_DRIVER_INFO_SIZE_KHR"
                     || cppMacro.Name == "VK_MAX_DEVICE_GROUP_SIZE_KHR"
+                    || cppMacro.Name == "VK_MAX_GLOBAL_PRIORITY_SIZE"
                     )
                 {
                     csDataType = "uint";
@@ -263,6 +271,8 @@ public partial class CsCodeGenerator
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_SPEC_VERSION"
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_API_VERSION_1_0_0"
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_SPEC_VERSION"
+                    || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_AV1_ENCODE_API_VERSION_1_0_0"
+                    || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_AV1_ENCODE_SPEC_VERSION"
                     )
                 {
                     modifier = "static";
@@ -295,6 +305,7 @@ public partial class CsCodeGenerator
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_1_0_0"
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_1_0_0"
                     || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_API_VERSION_1_0_0"
+                    || cppMacro.Name == "VK_STD_VULKAN_VIDEO_CODEC_AV1_ENCODE_API_VERSION_1_0_0"
                     )
                 {
                     writer.WriteLine($"public {modifier} {csDataType} {cppMacro.Name} => new VkVersion({cppMacro.Tokens[2]}, {cppMacro.Tokens[4]}, {cppMacro.Tokens[6]});");

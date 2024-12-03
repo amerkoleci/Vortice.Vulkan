@@ -454,6 +454,13 @@ partial class CsCodeGenerator
                             continue;
                         }
 
+                        // Dont generate extensions enum values that maps to core values
+                        // Example: VK_ERROR_OUT_OF_POOL_MEMORY_KHR => VK_ERROR_OUT_OF_POOL_MEMORY
+                        if (IsExtensionsValue(enumItemName))
+                        {
+                            continue;
+                        }
+
                         if (!string.IsNullOrEmpty(extensionPrefix) && enumValueName.EndsWith(extensionPrefix))
                         {
                             enumValueName = enumValueName.Remove(enumValueName.Length - extensionPrefix.Length);
@@ -572,6 +579,8 @@ partial class CsCodeGenerator
         if (_options.IsVulkan)
         {
             string lastCreatedEnum = string.Empty;
+            HashSet<string> lastCreatedEnumFields = [];
+
             foreach (CppField cppField in compilation.Fields)
             {
                 string sourceFileName = Path.GetFileNameWithoutExtension(cppField.SourceFile);
@@ -591,6 +600,7 @@ partial class CsCodeGenerator
 
                     createdEnums.Add(fieldType, fieldType);
                     lastCreatedEnum = fieldType;
+                    lastCreatedEnumFields = [];
 
                     string baseType = "uint";
                     if (cppField.Type is CppQualifiedType qualifiedType)
@@ -672,6 +682,23 @@ partial class CsCodeGenerator
                     csFieldName = csFieldName.Substring(0, csFieldName.Length - 3);
                 }
 
+                // Dont generate extensions enum values that maps to core values
+                // Example: VK_PIPELINE_STAGE_2_NONE_KHR => VK_PIPELINE_STAGE_2_NONE
+                if (IsExtensionsValue(csFieldName))
+                {
+                    string existingField = string.Empty;
+                    if (csFieldName.EndsWith("KHR", StringComparison.Ordinal))
+                    {
+                        existingField = csFieldName.Substring(0, csFieldName.Length - 3);
+                    }
+
+                    if (!string.IsNullOrEmpty(existingField) &&
+                        lastCreatedEnumFields.Contains(existingField))
+                    {
+                        continue;
+                    }
+                }
+
                 writer.WriteLine($"/// <unmanaged>{cppField.Name}</unmanaged>");
                 if (cppField.InitExpression is CppLiteralExpression literalExpression)
                 {
@@ -687,6 +714,8 @@ partial class CsCodeGenerator
                 {
                     writer.WriteLine($"{csFieldName} = {cppField.InitValue},");
                 }
+
+                lastCreatedEnumFields.Add(csFieldName);
             }
 
 
@@ -695,6 +724,17 @@ partial class CsCodeGenerator
                 writer.EndBlock();
             }
         }
+    }
+
+    private static bool IsExtensionsValue(string value)
+    {
+        return value.EndsWith("EXT")
+            || value.EndsWith("KHR")
+            || value.EndsWith("NV")
+            || value.EndsWith("NN")
+            || value.EndsWith("GGP")
+            || value.EndsWith("ANDROID")
+            ;
     }
 
     private void FormatExpression(CppExpression expression, StringBuilder builder, string enumNamePrefix)
@@ -1043,7 +1083,7 @@ partial class CsCodeGenerator
             {
                 sb.Append(part);
             }
-            else if(part.Equals("OPENGL", StringComparison.InvariantCultureIgnoreCase))
+            else if (part.Equals("OPENGL", StringComparison.InvariantCultureIgnoreCase))
             {
                 return "OpenGL";
             }
