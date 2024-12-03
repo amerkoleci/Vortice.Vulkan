@@ -89,6 +89,30 @@ unsafe partial class Vma
             VmaVulkanFunctions functions = default;
             functions.vkGetInstanceProcAddr = vkGetInstanceProcAddr_ptr;
             functions.vkGetDeviceProcAddr = vkGetDeviceProcAddr_ptr;
+            functions.vkGetPhysicalDeviceProperties = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void>)vkGetPhysicalDeviceProperties_ptr.Value;
+            functions.vkGetPhysicalDeviceMemoryProperties = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties*, void>)vkGetPhysicalDeviceMemoryProperties_ptr.Value;
+            functions.vkAllocateMemory = (delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult>)vkAllocateMemory_ptr.Value;
+            functions.vkFreeMemory = (delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void>)vkFreeMemory_ptr.Value;
+            functions.vkMapMemory = (delegate* unmanaged<VkDevice, VkDeviceMemory, ulong, ulong, VkMemoryMapFlags, void**, VkResult>)vkMapMemory_ptr.Value;
+            functions.vkUnmapMemory = (delegate* unmanaged<VkDevice, VkDeviceMemory, void>)vkUnmapMemory_ptr.Value;
+            functions.vkFlushMappedMemoryRanges = (delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkFlushMappedMemoryRanges_ptr.Value;
+            functions.vkInvalidateMappedMemoryRanges = (delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkInvalidateMappedMemoryRanges_ptr.Value;
+            functions.vkBindBufferMemory = (delegate* unmanaged<VkDevice, VkBuffer, VkDeviceMemory, ulong, VkResult>)vkBindBufferMemory_ptr.Value;
+            functions.vkBindImageMemory = (delegate* unmanaged<VkDevice, VkImage, VkDeviceMemory, ulong, VkResult>)vkBindImageMemory_ptr.Value;
+            functions.vkGetBufferMemoryRequirements = (delegate* unmanaged<VkDevice, VkBuffer, VkMemoryRequirements*, void>)vkGetBufferMemoryRequirements_ptr.Value;
+            functions.vkGetImageMemoryRequirements = (delegate* unmanaged<VkDevice, VkImage, VkMemoryRequirements*, void>)vkGetImageMemoryRequirements_ptr.Value;
+            functions.vkCreateBuffer = (delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult>)vkCreateBuffer_ptr.Value;
+            functions.vkDestroyBuffer = (delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void>)vkDestroyBuffer_ptr.Value;
+            functions.vkCreateImage = (delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult>)vkCreateImage_ptr.Value;
+            functions.vkDestroyImage = (delegate* unmanaged<VkDevice, VkImage, VkAllocationCallbacks*, void>)vkDestroyImage_ptr.Value;
+            functions.vkCmdCopyBuffer = (delegate* unmanaged<VkCommandBuffer, VkBuffer, VkBuffer, uint, VkBufferCopy*, void>)vkCmdCopyBuffer_ptr.Value;
+            functions.vkGetBufferMemoryRequirements2KHR = (delegate* unmanaged<VkDevice, VkBufferMemoryRequirementsInfo2*, VkMemoryRequirements2*, void>)vkGetBufferMemoryRequirements2KHR_ptr.Value;
+            functions.vkGetImageMemoryRequirements2KHR = (delegate* unmanaged<VkDevice, VkImageMemoryRequirementsInfo2*, VkMemoryRequirements2*, void>)vkGetImageMemoryRequirements2KHR_ptr.Value;
+            functions.vkBindBufferMemory2KHR = (delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult>)vkBindBufferMemory2KHR_ptr.Value;
+            functions.vkBindImageMemory2KHR = (delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult>)vkBindImageMemory2KHR_ptr.Value;
+            functions.vkGetPhysicalDeviceMemoryProperties2KHR = (delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties2*, void>)vkGetPhysicalDeviceMemoryProperties2KHR_ptr.Value;
+            functions.vkGetDeviceBufferMemoryRequirements = (delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void>)vkGetDeviceBufferMemoryRequirements_ptr.Value;
+            functions.vkGetDeviceImageMemoryRequirements = (delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void>)vkGetDeviceImageMemoryRequirements_ptr.Value;
 
             fixed (VmaAllocator* allocatorPtr = &allocator)
             {

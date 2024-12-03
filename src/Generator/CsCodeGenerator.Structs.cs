@@ -64,7 +64,7 @@ partial class CsCodeGenerator
             }
 
             string sourceFileName = Path.GetFileNameWithoutExtension(cppClass.SourceFile);
-            if (ShouldIgnoreFile(sourceFileName))
+            if (ShouldIgnoreFile(sourceFileName, _options.IsVulkan))
                 continue;
 
             WriteStruct(writer, cppClass, cppClass.Name);

@@ -14,7 +14,6 @@ using System.Diagnostics.CodeAnalysis;
 #pragma warning disable CS0649
 namespace Vortice.Vulkan;
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaDeviceMemoryCallbacks
 {
 	public delegate* unmanaged<VmaAllocator, uint, VkDeviceMemory, ulong, void*, void> pfnAllocate;
@@ -22,11 +21,10 @@ public unsafe partial struct VmaDeviceMemoryCallbacks
 	public void* pUserData;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaVulkanFunctions
 {
-	public delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr;
-	public delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr;
+	public delegate* unmanaged<VkInstance, byte*, PFN_vkVoidFunction> vkGetInstanceProcAddr;
+	public delegate* unmanaged<VkDevice, byte*, PFN_vkVoidFunction> vkGetDeviceProcAddr;
 	public delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void> vkGetPhysicalDeviceProperties;
 	public delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties*, void> vkGetPhysicalDeviceMemoryProperties;
 	public delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult> vkAllocateMemory;
@@ -53,7 +51,6 @@ public unsafe partial struct VmaVulkanFunctions
 	public delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirements;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaAllocatorCreateInfo
 {
 	public VmaAllocatorCreateFlags flags;
@@ -69,7 +66,6 @@ public unsafe partial struct VmaAllocatorCreateInfo
 	public VkExternalMemoryHandleTypeFlagsKHR* pTypeExternalMemoryHandleTypes;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VmaAllocatorInfo
 {
 	public VkInstance instance;
@@ -77,7 +73,6 @@ public partial struct VmaAllocatorInfo
 	public VkDevice device;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VmaStatistics
 {
 	public uint blockCount;
@@ -86,7 +81,6 @@ public partial struct VmaStatistics
 	public ulong allocationBytes;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VmaDetailedStatistics
 {
 	public VmaStatistics statistics;
@@ -97,7 +91,6 @@ public partial struct VmaDetailedStatistics
 	public ulong unusedRangeSizeMax;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VmaTotalStatistics
 {
 	public memoryType__FixedBuffer memoryType;
@@ -205,7 +198,6 @@ public partial struct VmaTotalStatistics
 	public VmaDetailedStatistics total;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VmaBudget
 {
 	public VmaStatistics statistics;
@@ -213,7 +205,6 @@ public partial struct VmaBudget
 	public ulong budget;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaAllocationCreateInfo
 {
 	public VmaAllocationCreateFlags flags;
@@ -226,7 +217,6 @@ public unsafe partial struct VmaAllocationCreateInfo
 	public float priority;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaPoolCreateInfo
 {
 	public uint memoryTypeIndex;
@@ -239,7 +229,6 @@ public unsafe partial struct VmaPoolCreateInfo
 	public void* pMemoryAllocateNext;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaAllocationInfo
 {
 	public uint memoryType;
@@ -251,7 +240,6 @@ public unsafe partial struct VmaAllocationInfo
 	public byte* pName;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VmaAllocationInfo2
 {
 	public VmaAllocationInfo allocationInfo;
@@ -259,7 +247,6 @@ public partial struct VmaAllocationInfo2
 	public VkBool32 dedicatedMemory;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaDefragmentationInfo
 {
 	public VmaDefragmentationFlags flags;
@@ -270,7 +257,6 @@ public unsafe partial struct VmaDefragmentationInfo
 	public void* pBreakCallbackUserData;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VmaDefragmentationMove
 {
 	public VmaDefragmentationMoveOperation operation;
@@ -278,14 +264,12 @@ public partial struct VmaDefragmentationMove
 	public VmaAllocation dstTmpAllocation;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaDefragmentationPassMoveInfo
 {
 	public uint moveCount;
 	public VmaDefragmentationMove* pMoves;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VmaDefragmentationStats
 {
 	public ulong bytesMoved;
@@ -294,7 +278,6 @@ public partial struct VmaDefragmentationStats
 	public uint deviceMemoryBlocksFreed;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaVirtualBlockCreateInfo
 {
 	public ulong size;
@@ -302,7 +285,6 @@ public unsafe partial struct VmaVirtualBlockCreateInfo
 	public VkAllocationCallbacks* pAllocationCallbacks;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaVirtualAllocationCreateInfo
 {
 	public ulong size;
@@ -311,7 +293,6 @@ public unsafe partial struct VmaVirtualAllocationCreateInfo
 	public void* pUserData;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct VmaVirtualAllocationInfo
 {
 	public ulong offset;

@@ -13,10 +13,9 @@ public static unsafe partial class Vulkan
 {
     private const string LibraryName = "vulkan";
 
-    private delegate delegate* unmanaged[Stdcall]<void> LoadFunction(nint context, string name);
+    private delegate PFN_vkVoidFunction LoadFunction(nint context, ReadOnlySpan<byte> name);
 
     private static nint s_vulkanModule;
-    private static VkInstance s_loadedInstance = VkInstance.Null;
     private static VkDevice s_loadedDevice = VkDevice.Null;
 
     /// <summary>
@@ -85,11 +84,11 @@ public static unsafe partial class Vulkan
                 return VkResult.ErrorInitializationFailed;
         }
 
-        vkGetInstanceProcAddr_ptr = (delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>>)NativeLibrary.GetExport(s_vulkanModule, nameof(vkGetInstanceProcAddr));
-        vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)vkGetInstanceProcAddr(0, "vkCreateInstance"u8);
-        vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<byte*, uint*, VkExtensionProperties*, VkResult>)vkGetInstanceProcAddr(0, "vkEnumerateInstanceExtensionProperties"u8);
-        vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<uint*, VkLayerProperties*, VkResult>)vkGetInstanceProcAddr(0, "vkEnumerateInstanceLayerProperties"u8);
-        vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<uint*, VkResult>)vkGetInstanceProcAddr(0, "vkEnumerateInstanceVersion"u8);
+        vkGetInstanceProcAddr_ptr = (delegate* unmanaged<VkInstance, byte*, PFN_vkVoidFunction>)NativeLibrary.GetExport(s_vulkanModule, nameof(vkGetInstanceProcAddr));
+        vkCreateInstance_ptr = vkGetGlobalProcAddr("vkCreateInstance"u8);
+        vkEnumerateInstanceExtensionProperties_ptr = vkGetGlobalProcAddr("vkEnumerateInstanceExtensionProperties"u8);
+        vkEnumerateInstanceLayerProperties_ptr = vkGetGlobalProcAddr("vkEnumerateInstanceLayerProperties"u8);
+        vkEnumerateInstanceVersion_ptr = vkGetGlobalProcAddr("vkEnumerateInstanceVersion"u8);
 
         return VkResult.Success;
     }
@@ -111,10 +110,9 @@ public static unsafe partial class Vulkan
 
     public static void vkLoadInstanceOnly(VkInstance instance)
     {
-        s_loadedInstance = instance;
         GenLoadInstance(instance.Handle, vkGetInstanceProcAddr);
 
-        vkGetDeviceProcAddr_ptr = (delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>>)vkGetInstanceProcAddr(instance.Handle, nameof(vkGetDeviceProcAddr));
+        vkGetDeviceProcAddr_ptr = (delegate* unmanaged<VkDevice, byte*, PFN_vkVoidFunction>)vkGetInstanceProcAddr(instance.Handle, "vkGetDeviceProcAddr"u8).Value;
     }
 
     public static void vkLoadDevice(VkDevice device)
@@ -123,28 +121,28 @@ public static unsafe partial class Vulkan
         GenLoadDevice(device.Handle, vkGetDeviceProcAddr);
     }
 
-    internal static delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>> vkGetInstanceProcAddr_ptr;
-    internal static delegate* unmanaged<nint, byte*, delegate* unmanaged[Stdcall]<void>> vkGetDeviceProcAddr_ptr;
+    internal static delegate* unmanaged<VkInstance, byte*, PFN_vkVoidFunction> vkGetInstanceProcAddr_ptr;
+    internal static delegate* unmanaged<VkDevice, byte*, PFN_vkVoidFunction> vkGetDeviceProcAddr_ptr;
 
-    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(in VkInstance instance, byte* pName)
-    {
-        return vkGetInstanceProcAddr_ptr(instance, pName);
-    }
-
-    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(in VkInstance instance, ReadOnlySpan<byte> name)
+    public static PFN_vkVoidFunction vkGetGlobalProcAddr(ReadOnlySpan<byte> name)
     {
         fixed (byte* pName = name)
-        {
-            return vkGetInstanceProcAddr_ptr(instance, pName);
-        }
+            return vkGetInstanceProcAddr_ptr(default, pName);
     }
 
-    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(nint instance, string name)
+    public static PFN_vkVoidFunction vkGetInstanceProcAddr(VkInstance instance, ReadOnlySpan<byte> name)
     {
-        return vkGetInstanceProcAddr(new VkInstance(instance), name);
+        fixed (byte* pName = name)
+            return vkGetInstanceProcAddr_ptr(instance.Handle, pName);
     }
 
-    public static delegate* unmanaged[Stdcall]<void> vkGetInstanceProcAddr(VkInstance instance, string name)
+    public static PFN_vkVoidFunction vkGetInstanceProcAddr(nint instance, ReadOnlySpan<byte> name)
+    {
+        fixed (byte* pName = name)
+            return vkGetInstanceProcAddr_ptr(instance, pName);
+    }
+
+    public static PFN_vkVoidFunction vkGetInstanceProcAddr(VkInstance instance, string name)
     {
         byte* __pName_local = default;
         scoped Utf8StringMarshaller.ManagedToUnmanagedIn __pName__marshaller = new();
@@ -152,7 +150,7 @@ public static unsafe partial class Vulkan
         {
             __pName__marshaller.FromManaged(name, stackalloc byte[Utf8StringMarshaller.ManagedToUnmanagedIn.BufferSize]);
             __pName_local = __pName__marshaller.ToUnmanaged();
-            return vkGetInstanceProcAddr_ptr(instance, __pName_local);
+            return vkGetInstanceProcAddr_ptr(instance.Handle, __pName_local);
         }
         finally
         {
@@ -160,17 +158,12 @@ public static unsafe partial class Vulkan
         }
     }
 
-    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(nint device, byte* name)
-    {
-        return vkGetDeviceProcAddr_ptr(device, name);
-    }
-
-    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, byte* name)
+    public static PFN_vkVoidFunction vkGetDeviceProcAddr(VkDevice device, byte* name)
     {
         return vkGetDeviceProcAddr_ptr(device.Handle, name);
     }
 
-    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(VkDevice device, string name)
+    public static PFN_vkVoidFunction vkGetDeviceProcAddr(VkDevice device, string name)
     {
         byte* __pName_local = default;
         scoped Utf8StringMarshaller.ManagedToUnmanagedIn __pName__marshaller = new();
@@ -186,14 +179,15 @@ public static unsafe partial class Vulkan
         }
     }
 
-    public static delegate* unmanaged[Stdcall]<void> vkGetDeviceProcAddr(nint device, string name)
+    public static PFN_vkVoidFunction vkGetDeviceProcAddr(nint device, ReadOnlySpan<byte> name)
     {
-        return vkGetDeviceProcAddr(new VkDevice(device), name);
+        fixed (byte* pName = name)
+            return vkGetDeviceProcAddr_ptr(device, pName);
     }
 
     public static VkResult vkEnumerateInstanceExtensionProperties(uint* propertyCount, VkExtensionProperties* properties)
     {
-        return vkEnumerateInstanceExtensionProperties_ptr((byte*)null, propertyCount, properties);
+        return ((delegate* unmanaged[Stdcall]<byte*, uint*, VkExtensionProperties*, VkResult>)vkEnumerateInstanceExtensionProperties_ptr.Value)(null, propertyCount, properties);
     }
 
     [SkipLocalsInit]
@@ -202,7 +196,7 @@ public static unsafe partial class Vulkan
         Unsafe.SkipInit(out propertyCount);
         fixed (uint* propertyCountPtr = &propertyCount)
         {
-            return vkEnumerateInstanceExtensionProperties_ptr((byte*)null, propertyCountPtr, default);
+            return ((delegate* unmanaged[Stdcall]<byte*, uint*, VkExtensionProperties*, VkResult>)vkEnumerateInstanceExtensionProperties_ptr.Value)(null, propertyCountPtr, default);
         }
     }
 
@@ -211,7 +205,7 @@ public static unsafe partial class Vulkan
         uint propertiesCount = checked((uint)properties.Length);
         fixed (VkExtensionProperties* propertiesPtr = properties)
         {
-            return vkEnumerateInstanceExtensionProperties_ptr((byte*)null, &propertiesCount, propertiesPtr);
+            return ((delegate* unmanaged[Stdcall]<byte*, uint*, VkExtensionProperties*, VkResult>)vkEnumerateInstanceExtensionProperties_ptr.Value)(null, &propertiesCount, propertiesPtr);
         }
     }
 
@@ -221,7 +215,7 @@ public static unsafe partial class Vulkan
         Unsafe.SkipInit(out propertyCount);
         fixed (uint* propertyCountPtr = &propertyCount)
         {
-            return vkEnumerateInstanceExtensionProperties_ptr(layerName, propertyCountPtr, default);
+            return ((delegate* unmanaged[Stdcall]<byte*, uint*, VkExtensionProperties*, VkResult>)vkEnumerateInstanceExtensionProperties_ptr.Value)(layerName, propertyCountPtr, default);
         }
     }
 
@@ -231,7 +225,7 @@ public static unsafe partial class Vulkan
         uint propertiesCount = checked((uint)properties.Length);
         fixed (VkExtensionProperties* propertiesPtr = properties)
         {
-            return vkEnumerateInstanceExtensionProperties_ptr(layerName, &propertiesCount, propertiesPtr);
+            return ((delegate* unmanaged[Stdcall]<byte*, uint*, VkExtensionProperties*, VkResult>)vkEnumerateInstanceExtensionProperties_ptr.Value)(layerName, &propertiesCount, propertiesPtr);
         }
     }
 
@@ -375,7 +369,7 @@ public static unsafe partial class Vulkan
 
     public static VkResult vkCreateGraphicsPipeline(VkDevice device, VkPipelineCache pipelineCache, VkGraphicsPipelineCreateInfo createInfo, VkPipeline* pipeline)
     {
-        return vkCreateGraphicsPipelines_ptr(device, pipelineCache, 1, &createInfo, null, pipeline);
+        return vkCreateGraphicsPipelines(device, pipelineCache, 1, &createInfo, null, pipeline);
     }
 
     public static VkResult vkCreateComputePipeline(VkDevice device, VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
@@ -409,7 +403,7 @@ public static unsafe partial class Vulkan
         };
 
         VkDescriptorPool descriptorPool;
-        vkCreateDescriptorPool_ptr(device, &createInfo, null, &descriptorPool).CheckResult();
+        vkCreateDescriptorPool(device, &createInfo, null, &descriptorPool).CheckResult();
         return descriptorPool;
     }
 
@@ -426,7 +420,7 @@ public static unsafe partial class Vulkan
                 pPoolSizes = (VkDescriptorPoolSize*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(poolSizes))
             };
 
-            return vkCreateDescriptorPool_ptr(device, &createInfo, null, descriptorPoolPtr);
+            return vkCreateDescriptorPool(device, &createInfo, null, descriptorPoolPtr);
         }
     }
 
@@ -683,19 +677,19 @@ public static unsafe partial class Vulkan
     public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, float x, float y, float width, float height, float minDepth = 0.0f, float maxDepth = 1.0f)
     {
         VkViewport viewport = new(x, y, width, height, minDepth, maxDepth);
-        vkCmdSetViewport_ptr(commandBuffer, 0, 1, &viewport);
+        vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
     }
 
     public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, VkViewport viewport)
     {
-        vkCmdSetViewport_ptr(commandBuffer, 0, 1, &viewport);
+        vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
     }
 
     public static void vkCmdSetViewport(VkCommandBuffer commandBuffer, VkViewport[] viewports)
     {
         fixed (VkViewport* viewportsPtr = viewports)
         {
-            vkCmdSetViewport_ptr(commandBuffer, 0, (uint)viewports.Length, viewportsPtr);
+            vkCmdSetViewport(commandBuffer, 0, (uint)viewports.Length, viewportsPtr);
         }
     }
 
@@ -703,7 +697,7 @@ public static unsafe partial class Vulkan
     {
         fixed (VkViewport* viewportsPtr = viewports)
         {
-            vkCmdSetViewport_ptr(commandBuffer, 0, (uint)viewports.Length, viewportsPtr);
+            vkCmdSetViewport(commandBuffer, 0, (uint)viewports.Length, viewportsPtr);
         }
     }
 
@@ -715,7 +709,7 @@ public static unsafe partial class Vulkan
             throw new ArgumentException($"Type T must have same size and layout as {nameof(VkViewport)}", nameof(viewport));
         }
 #endif
-        vkCmdSetViewport_ptr(commandBuffer, firstViewport, 1, (VkViewport*)&viewport);
+        vkCmdSetViewport(commandBuffer, firstViewport, 1, (VkViewport*)&viewport);
     }
 
     public static void vkCmdSetViewport<T>(VkCommandBuffer commandBuffer, uint firstViewport, int viewportCount, T* viewports) where T : unmanaged
@@ -727,18 +721,18 @@ public static unsafe partial class Vulkan
         }
 #endif
 
-        vkCmdSetViewport_ptr(commandBuffer, firstViewport, (uint)viewportCount, (VkViewport*)viewports);
+        vkCmdSetViewport(commandBuffer, firstViewport, (uint)viewportCount, (VkViewport*)viewports);
     }
 
     public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, int x, int y, uint width, uint height)
     {
         VkRect2D scissor = new(x, y, width, height);
-        vkCmdSetScissor_ptr(commandBuffer, 0, 1, &scissor);
+        vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
     }
 
     public static void vkCmdSetScissor(VkCommandBuffer commandBuffer, VkRect2D scissor)
     {
-        vkCmdSetScissor_ptr(commandBuffer, 0, 1, &scissor);
+        vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
     }
 
     public static void vkCmdSetScissor<T>(VkCommandBuffer commandBuffer, uint firstScissor, T scissor) where T : unmanaged
@@ -749,7 +743,7 @@ public static unsafe partial class Vulkan
             throw new ArgumentException($"Type T must have same size and layout as {nameof(VkRect2D)}", nameof(scissor));
         }
 #endif
-        vkCmdSetScissor_ptr(commandBuffer, firstScissor, 1, (VkRect2D*)&scissor);
+        vkCmdSetScissor(commandBuffer, firstScissor, 1, (VkRect2D*)&scissor);
     }
 
     public static void vkCmdSetScissor<T>(VkCommandBuffer commandBuffer, uint firstScissor, int scissorCount, T* scissorRects) where T : unmanaged
@@ -761,7 +755,7 @@ public static unsafe partial class Vulkan
         }
 #endif
 
-        vkCmdSetScissor_ptr(commandBuffer, firstScissor, (uint)scissorCount, (VkRect2D*)scissorRects);
+        vkCmdSetScissor(commandBuffer, firstScissor, (uint)scissorCount, (VkRect2D*)scissorRects);
     }
 
     public static void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float red, float green, float blue, float alpha)
@@ -865,7 +859,7 @@ public static unsafe partial class Vulkan
 
         fixed (VkBufferImageCopy* pRegions = regions)
         {
-            vkCmdCopyBufferToImage_ptr(commandBuffer, srcBuffer, dstImage, dstImageLayout,
+            vkCmdCopyBufferToImage(commandBuffer, srcBuffer, dstImage, dstImageLayout,
                 regionCount,
                 pRegions
              );
@@ -879,7 +873,7 @@ public static unsafe partial class Vulkan
 
         fixed (VkBufferImageCopy* pRegions = regions)
         {
-            vkCmdCopyBufferToImage_ptr(commandBuffer, srcBuffer, dstImage, dstImageLayout,
+            vkCmdCopyBufferToImage(commandBuffer, srcBuffer, dstImage, dstImageLayout,
                 regionCount,
                 pRegions
              );
@@ -894,7 +888,7 @@ public static unsafe partial class Vulkan
         Span<VkBufferImageCopy> regionsSpan = CollectionsMarshal.AsSpan(regions);
         fixed (VkBufferImageCopy* pRegions = regionsSpan)
         {
-            vkCmdCopyBufferToImage_ptr(commandBuffer, srcBuffer, dstImage, dstImageLayout,
+            vkCmdCopyBufferToImage(commandBuffer, srcBuffer, dstImage, dstImageLayout,
                 regionCount,
                 pRegions
              );

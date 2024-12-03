@@ -149,12 +149,26 @@ partial class CsCodeGenerator
         return $"delegate* unmanaged<{builder}>";
     }
 
-    private static bool ShouldIgnoreFile(string sourceFileName)
+    private static bool ShouldIgnoreFile(string sourceFileName, bool vulkan)
     {
         if (sourceFileName == "vadefs"
             || sourceFileName == "vcruntime"
             || sourceFileName == "corecrt"
             || sourceFileName == "stddef")
+        {
+            return true;
+        }
+
+        if(!vulkan)
+            return ShouldIgnoreVulkanFile(sourceFileName);
+
+        return false;
+    }
+
+    private static bool ShouldIgnoreVulkanFile(string sourceFileName)
+    {
+        if (sourceFileName == "vulkan_core"
+            || sourceFileName.StartsWith("vulkan_video_"))
         {
             return true;
         }
@@ -165,6 +179,7 @@ partial class CsCodeGenerator
     private void GenerateCommands(CppCompilation compilation)
     {
         Dictionary<string, CppFunction> commands = [];
+        Dictionary<string, CppFunction> globalCommands = [];
         Dictionary<string, CppFunction> instanceCommands = [];
         Dictionary<string, CppFunction> deviceCommands = [];
         foreach (CppFunction? cppFunction in compilation.Functions)
@@ -182,7 +197,7 @@ partial class CsCodeGenerator
             }
 
             string sourceFileName = Path.GetFileNameWithoutExtension(cppFunction.SourceFile);
-            if (ShouldIgnoreFile(sourceFileName))
+            if (ShouldIgnoreFile(sourceFileName, _options.IsVulkan))
                 continue;
 
             if (cppFunction.Attributes.Count > 0 && cppFunction.Attributes[0].Name == "deprecated")
@@ -192,20 +207,27 @@ partial class CsCodeGenerator
 
             commands.Add(csName, cppFunction);
 
-            if (cppFunction.Parameters.Count > 0 && _options.IsVulkan)
+            if (_options.IsVulkan)
             {
-                CppParameter firstParameter = cppFunction.Parameters[0];
-                if (firstParameter.Type is CppTypedef typedef)
+                if (cppFunction.Parameters.Count > 0)
                 {
-                    if (typedef.Name == "VkInstance" ||
-                        typedef.Name == "VkPhysicalDevice" ||
-                        IsInstanceFunction(cppFunction.Name))
+                    CppParameter firstParameter = cppFunction.Parameters[0];
+                    if (firstParameter.Type is CppTypedef typedef)
                     {
-                        instanceCommands.Add(csName, cppFunction);
+                        if (typedef.Name == "VkInstance" ||
+                            typedef.Name == "VkPhysicalDevice" ||
+                            IsInstanceFunction(cppFunction.Name))
+                        {
+                            instanceCommands.Add(csName, cppFunction);
+                        }
+                        else
+                        {
+                            deviceCommands.Add(csName, cppFunction);
+                        }
                     }
                     else
                     {
-                        deviceCommands.Add(csName, cppFunction);
+                        globalCommands.Add(csName, cppFunction);
                     }
                 }
             }
@@ -231,61 +253,87 @@ partial class CsCodeGenerator
             [.. usings]
             );
 
-        using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))
+        bool todoNew = false;
+        if (_options.IsVulkan && todoNew)
         {
-            // Write function declarations first
-            if (_options.GenerateFunctionPointers)
+            using (writer.PushBlock($"unsafe partial class VkInstance"))
             {
-                foreach (KeyValuePair<string, CppFunction> command in commands)
+                foreach (KeyValuePair<string, CppFunction> command in instanceCommands)
                 {
                     CppFunction cppFunction = command.Value;
 
                     string functionPointerSignature = GetFunctionPointerSignature(cppFunction);
                     string modifier = GetFunctionModifier(command.Key);
-                    writer.WriteLine($"{modifier} static {functionPointerSignature} {command.Key}_ptr;");
+                    writer.WriteLine($"{modifier} readonly /*{functionPointerSignature}*/ PFN_vkVoidFunction _{command.Key};");
                 }
 
-                if (commands.Count > 0)
+                writer.WriteLine();
+
+                // Generate constructors
+                using (writer.PushBlock($"public VkInstance(nint handle)"))
+                {
+                    writer.WriteLine("Handle = handle;");
                     writer.WriteLine();
+
+                    WriteCommandsNew(writer, instanceCommands, "vkGetInstanceProcAddr");
+                }
             }
+        }
 
-            // Write function invocation now
-            foreach (KeyValuePair<string, CppFunction> command in commands)
+        {
+            using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))
             {
-                CppFunction cppFunction = command.Value;
-
-                bool canUseOut = _outReturnFunctions.Contains(cppFunction.Name);
-
-                WriteFunctionInvocation(writer, cppFunction, false);
-
-                if (command.Key.StartsWith("vkCreate")
-                    && command.Key != "vkCreateDeferredOperationKHR")
+                // Write function declarations first
+                if (_options.GenerateFunctionPointers)
                 {
-                    WriteFunctionInvocation(writer, cppFunction, false, true);
+                    writer.WriteLine("// Global functions");
+                    WriteFunctionDeclarations(writer, globalCommands);
+
+                    writer.WriteLine("// Instance functions");
+                    WriteFunctionDeclarations(writer, instanceCommands);
+
+                    writer.WriteLine("// Device functions");
+                    WriteFunctionDeclarations(writer, deviceCommands);
                 }
 
-                if (canUseOut)
+                // Write function invocation now
+                foreach (KeyValuePair<string, CppFunction> command in commands)
                 {
-                    WriteFunctionInvocation(writer, cppFunction, true);
+                    CppFunction cppFunction = command.Value;
+
+                    bool canUseOut = _outReturnFunctions.Contains(cppFunction.Name);
+
+                    WriteFunctionInvocation(writer, cppFunction, false);
 
                     if (command.Key.StartsWith("vkCreate")
                         && command.Key != "vkCreateDeferredOperationKHR")
                     {
-                        WriteFunctionInvocation(writer, cppFunction, true, true);
+                        WriteFunctionInvocation(writer, cppFunction, false, true);
+                    }
+
+                    if (canUseOut)
+                    {
+                        WriteFunctionInvocation(writer, cppFunction, true);
+
+                        if (command.Key.StartsWith("vkCreate")
+                            && command.Key != "vkCreateDeferredOperationKHR")
+                        {
+                            WriteFunctionInvocation(writer, cppFunction, true, true);
+                        }
                     }
                 }
-            }
 
-            if (_options.GenerateFunctionPointers)
-            {
-                if (_options.IsVulkan)
+                if (_options.GenerateFunctionPointers)
                 {
-                    WriteCommands(writer, "GenLoadInstance", instanceCommands);
-                    WriteCommands(writer, "GenLoadDevice", deviceCommands);
-                }
-                else
-                {
-                    WriteLibraryImport(writer, commands);
+                    if (_options.IsVulkan)
+                    {
+                        WriteCommands(writer, "GenLoadInstance", instanceCommands);
+                        WriteCommands(writer, "GenLoadDevice", deviceCommands);
+                    }
+                    else
+                    {
+                        WriteLibraryImport(writer, commands);
+                    }
                 }
             }
         }
@@ -297,6 +345,7 @@ partial class CsCodeGenerator
 
         // Used by VulkanMemoryAllocator
         if (name == "vkGetPhysicalDeviceProperties" ||
+            name == "vkGetPhysicalDeviceMemoryProperties" ||
             name == "vkGetBufferMemoryRequirements2KHR" ||
             name == "vkGetBufferMemoryRequirements2" ||
             name == "vkGetImageMemoryRequirements2KHR" ||
@@ -305,14 +354,60 @@ partial class CsCodeGenerator
             name == "vkBindBufferMemory2" ||
             name == "vkBindImageMemory2KHR" ||
             name == "vkBindImageMemory2" ||
-            name == "vkGetPhysicalDeviceMemoryProperties2KHR" ||
             name == "vkGetDeviceImageMemoryRequirements" ||
-            name == "vkGetDeviceBufferMemoryRequirements")
+            name == "vkGetDeviceBufferMemoryRequirements"
+            || name == "vkAllocateMemory"
+            || name == "vkFreeMemory"
+            || name == "vkMapMemory"
+            || name == "vkUnmapMemory"
+            || name == "vkFlushMappedMemoryRanges"
+            || name == "vkInvalidateMappedMemoryRanges"
+            || name == "vkBindBufferMemory"
+            || name == "vkBindImageMemory"
+            || name == "vkGetBufferMemoryRequirements"
+            || name == "vkGetImageMemoryRequirements"
+            || name == "vkCreateBuffer"
+            || name == "vkDestroyBuffer"
+            || name == "vkCreateImage"
+            || name == "vkDestroyImage"
+            || name == "vkCmdCopyBuffer"
+            || name == "vkGetPhysicalDeviceMemoryProperties2KHR"
+            )
         {
             modifier = "internal";
         }
 
         return modifier;
+    }
+
+    private void WriteFunctionDeclarations(CodeWriter writer, Dictionary<string, CppFunction> commands)
+    {
+        foreach (KeyValuePair<string, CppFunction> command in commands)
+        {
+            CppFunction cppFunction = command.Value;
+
+            string functionPointerSignature = _options.IsVulkan ? "PFN_vkVoidFunction" : GetFunctionPointerSignature(cppFunction);
+            string modifier = GetFunctionModifier(command.Key);
+            writer.WriteLine($"{modifier} static {functionPointerSignature} {command.Key}_ptr;");
+        }
+
+        if (commands.Count > 0)
+            writer.WriteLine();
+    }
+
+    private void WriteCommandsNew(CodeWriter writer, Dictionary<string, CppFunction> commands, string addressFuncName)
+    {
+        foreach (KeyValuePair<string, CppFunction> instanceCommand in commands)
+        {
+            string commandName = instanceCommand.Key;
+            if (commandName == "vkGetInstanceProcAddr" ||
+                commandName == "vkGetDeviceProcAddr")
+            {
+                continue;
+            }
+
+            writer.WriteLine($"_{commandName} = Vulkan.{addressFuncName}(handle, \"{commandName}\"u8);");
+        }
     }
 
     private void WriteCommands(CodeWriter writer, string name, Dictionary<string, CppFunction> commands)
@@ -328,8 +423,15 @@ partial class CsCodeGenerator
                     continue;
                 }
 
-                string functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value);
-                writer.WriteLine($"{commandName}_ptr = ({functionPointerSignature}) load(context, nameof({commandName}));");
+                if (_options.IsVulkan)
+                {
+                    writer.WriteLine($"{commandName}_ptr = load(context, \"{commandName}\"u8);");
+                }
+                else
+                {
+                    string functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value);
+                    writer.WriteLine($"{commandName}_ptr = ({functionPointerSignature}) load(context, \"{commandName}\"u8);");
+                }
             }
         }
     }
@@ -413,7 +515,9 @@ partial class CsCodeGenerator
                     writer.Write("return ");
                 }
 
-                writer.Write($"{cppFunction.Name}_ptr(");
+                string functionPointerSignature = GetFunctionPointerSignature(cppFunction);
+                writer.Write($"(({functionPointerSignature}){cppFunction.Name}_ptr.Value)");
+                writer.Write("(");
 
                 int index = 0;
                 foreach (CppParameter cppParameter in cppFunction.Parameters)
@@ -455,7 +559,7 @@ partial class CsCodeGenerator
     }
 
 
-    private static void EmitInvoke(
+    private void EmitInvoke(
         CodeWriter writer,
         CppFunction cppFunction,
         List<string> parameters,
@@ -496,7 +600,16 @@ partial class CsCodeGenerator
         }
 
         string callArgumentString = callArgumentStringBuilder.ToString();
-        writer.WriteLine($"{cppFunction.Name}_ptr({callArgumentString}){postCall};");
+        if (_options.IsVulkan)
+        {
+            string functionPointerSignature = GetFunctionPointerSignature(cppFunction);
+            writer.Write($"(({functionPointerSignature}){cppFunction.Name}_ptr.Value)");
+            writer.WriteLine($"({callArgumentString}){postCall};");
+        }
+        else
+        {
+            writer.WriteLine($"{cppFunction.Name}_ptr({callArgumentString}){postCall};");
+        }
     }
 
     private bool IsInstanceFunction(string name)

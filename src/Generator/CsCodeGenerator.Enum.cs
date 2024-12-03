@@ -261,7 +261,7 @@ partial class CsCodeGenerator
                 continue;
 
             string sourceFileName = Path.GetFileNameWithoutExtension(cppEnum.SourceFile);
-            if (ShouldIgnoreFile(sourceFileName))
+            if (ShouldIgnoreFile(sourceFileName, _options.IsVulkan))
                 continue;
 
             // Skip spirv.h enums
@@ -536,42 +536,45 @@ partial class CsCodeGenerator
         }
 
         // Map missing flags with typedefs to VkFlags
-        foreach (CppTypedef typedef in compilation.Typedefs)
+        if (_options.IsVulkan)
         {
-            if (typedef.Name.StartsWith("PFN_")
-                || typedef.Name.Equals("VkBool32", StringComparison.OrdinalIgnoreCase)
-                || typedef.Name.Equals("VkFlags", StringComparison.OrdinalIgnoreCase))
+            foreach (CppTypedef typedef in compilation.Typedefs)
             {
-                continue;
-            }
-
-            if (typedef.ElementType is CppPointerType)
-            {
-                continue;
-            }
-
-            if (createdEnums.ContainsKey(typedef.Name))
-            {
-                continue;
-            }
-
-            if (typedef.Name.EndsWith("Flags", StringComparison.OrdinalIgnoreCase)
-                || typedef.Name.EndsWith("FlagsKHR", StringComparison.OrdinalIgnoreCase)
-                || typedef.Name.EndsWith("FlagsEXT", StringComparison.OrdinalIgnoreCase)
-                || (typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase) && typedef.Name != "VkMemoryDecompressionMethodFlagsNV")
-                || typedef.Name.EndsWith("FlagsAMD", StringComparison.OrdinalIgnoreCase)
-                || typedef.Name.EndsWith("FlagsMVK", StringComparison.OrdinalIgnoreCase)
-                || typedef.Name.EndsWith("FlagsNN", StringComparison.OrdinalIgnoreCase)
-                //|| typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase)
-                //|| typedef.Name.EndsWith("FlagsARM", StringComparison.OrdinalIgnoreCase)
-                )
-            {
-                writer.WriteLine("[Flags]");
-                using (writer.PushBlock($"public enum {typedef.Name}"))
+                if (typedef.Name.StartsWith("PFN_")
+                    || typedef.Name.Equals("VkBool32", StringComparison.OrdinalIgnoreCase)
+                    || typedef.Name.Equals("VkFlags", StringComparison.OrdinalIgnoreCase))
                 {
-                    writer.WriteLine("None = 0,");
+                    continue;
                 }
-                writer.WriteLine();
+
+                if (typedef.ElementType is CppPointerType)
+                {
+                    continue;
+                }
+
+                if (createdEnums.ContainsKey(typedef.Name))
+                {
+                    continue;
+                }
+
+                if (typedef.Name.EndsWith("Flags", StringComparison.OrdinalIgnoreCase)
+                    || typedef.Name.EndsWith("FlagsKHR", StringComparison.OrdinalIgnoreCase)
+                    || typedef.Name.EndsWith("FlagsEXT", StringComparison.OrdinalIgnoreCase)
+                    || (typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase) && typedef.Name != "VkMemoryDecompressionMethodFlagsNV")
+                    || typedef.Name.EndsWith("FlagsAMD", StringComparison.OrdinalIgnoreCase)
+                    || typedef.Name.EndsWith("FlagsMVK", StringComparison.OrdinalIgnoreCase)
+                    || typedef.Name.EndsWith("FlagsNN", StringComparison.OrdinalIgnoreCase)
+                    //|| typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase)
+                    //|| typedef.Name.EndsWith("FlagsARM", StringComparison.OrdinalIgnoreCase)
+                    )
+                {
+                    writer.WriteLine("[Flags]");
+                    using (writer.PushBlock($"public enum {typedef.Name}"))
+                    {
+                        writer.WriteLine("None = 0,");
+                    }
+                    writer.WriteLine();
+                }
             }
         }
 
@@ -584,7 +587,7 @@ partial class CsCodeGenerator
             foreach (CppField cppField in compilation.Fields)
             {
                 string sourceFileName = Path.GetFileNameWithoutExtension(cppField.SourceFile);
-                if (ShouldIgnoreFile(sourceFileName))
+                if (ShouldIgnoreFile(sourceFileName, _options.IsVulkan))
                     continue;
 
                 string? fieldType = GetCsTypeName(cppField.Type);

@@ -20955,7 +20955,7 @@ public unsafe partial struct VkDirectDriverLoadingInfoLUNARG : IStructureType, I
 	public VkStructureType sType = VkStructureType.DirectDriverLoadingInfoLUNARG;
 	public void* pNext;
 	public VkDirectDriverLoadingModeLUNARG flags;
-	public delegate* unmanaged<VkInstance, byte*, nint> pfnGetInstanceProcAddr;
+	public delegate* unmanaged<VkInstance, byte*, PFN_vkVoidFunction> pfnGetInstanceProcAddr;
 
 	public VkDirectDriverLoadingInfoLUNARG()
 	{

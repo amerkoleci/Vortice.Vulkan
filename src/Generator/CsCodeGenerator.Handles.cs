@@ -9,6 +9,7 @@ partial class CsCodeGenerator
 {
     private static readonly HashSet<string> s_ignoredHandles = new(StringComparer.OrdinalIgnoreCase)
     {
+        //"VkInstance",
         "MTLDevice_id",
         "MTLCommandQueue_id",
         "MTLBuffer_id",
@@ -30,7 +31,7 @@ partial class CsCodeGenerator
             }
 
             string sourceFileName = Path.GetFileNameWithoutExtension(typedef.SourceFile);
-            if (ShouldIgnoreFile(sourceFileName))
+            if (ShouldIgnoreFile(sourceFileName, _options.IsVulkan))
                 continue;
 
             if (typedef.ElementType is not CppPointerType)
@@ -64,7 +65,7 @@ partial class CsCodeGenerator
             }
 
             string sourceFileName = Path.GetFileNameWithoutExtension(typedef.SourceFile);
-            if (ShouldIgnoreFile(sourceFileName))
+            if (ShouldIgnoreFile(sourceFileName, _options.IsVulkan))
                 continue;
 
             if (typedef.ElementType is not CppPointerType)
