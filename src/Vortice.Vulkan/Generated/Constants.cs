@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 303;
+	public const uint VK_HEADER_VERSION = 304;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static VkVersion VK_HEADER_VERSION_COMPLETE => new VkVersion(0, 1, 4, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -4616,7 +4616,7 @@ public static partial class Vulkan
 	public const VkDriverId VK_DRIVER_ID_MESA_NVK = VkDriverId.MESANvk;
 	public const VkDriverId VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA = VkDriverId.ImaginationOpenSourceMESA;
 	public const VkDriverId VK_DRIVER_ID_MESA_HONEYKRISP = VkDriverId.MESAHoneykrisp;
-	public const VkDriverId VK_DRIVER_ID_RESERVED_27 = VkDriverId.Reserved27;
+	public const VkDriverId VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN = VkDriverId.VulkanScEmulationOnVulkan;
 	public const VkShaderFloatControlsIndependence VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY = VkShaderFloatControlsIndependence.Bit32Only;
 	public const VkShaderFloatControlsIndependence VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL = VkShaderFloatControlsIndependence.All;
 	public const VkShaderFloatControlsIndependence VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE = VkShaderFloatControlsIndependence.None;

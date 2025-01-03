@@ -9,6 +9,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 using Vortice.SPIRV;
 
 namespace Vortice.SpirvCross;
@@ -19,7 +20,7 @@ unsafe partial class SpirvCrossApi
 	public static partial void spvc_get_version(uint* major, uint* minor, uint* patch);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_get_commit_revision_and_timestamp")]
-	public static partial sbyte* spvc_get_commit_revision_and_timestamp();
+	public static partial byte* spvc_get_commit_revision_and_timestamp();
 
 	[LibraryImport(LibName, EntryPoint = "spvc_msl_vertex_attribute_init")]
 	public static partial void spvc_msl_vertex_attribute_init(spvc_msl_vertex_attribute* attr);
@@ -35,6 +36,9 @@ unsafe partial class SpirvCrossApi
 
 	[LibraryImport(LibName, EntryPoint = "spvc_msl_resource_binding_init")]
 	public static partial void spvc_msl_resource_binding_init(spvc_msl_resource_binding* binding);
+
+	[LibraryImport(LibName, EntryPoint = "spvc_msl_resource_binding_init_2")]
+	public static partial void spvc_msl_resource_binding_init_2(spvc_msl_resource_binding_2* binding);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_msl_get_aux_buffer_struct_version")]
 	public static partial uint spvc_msl_get_aux_buffer_struct_version();
@@ -61,7 +65,7 @@ unsafe partial class SpirvCrossApi
 	public static partial void spvc_context_release_allocations(spvc_context context);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_context_get_last_error_string")]
-	private static partial sbyte* spvc_context_get_last_error_stringPrivate(spvc_context context);
+	private static partial byte* spvc_context_get_last_error_stringPrivate(spvc_context context);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_context_parse_spirv")]
 	public static partial Result spvc_context_parse_spirv(spvc_context context, uint* spirv, nuint word_count, spvc_parsed_ir* parsed_ir);
@@ -94,19 +98,19 @@ unsafe partial class SpirvCrossApi
 	public static partial Result spvc_compiler_install_compiler_options(spvc_compiler compiler, spvc_compiler_options options);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_compile")]
-	public static partial Result spvc_compiler_compile(spvc_compiler compiler, sbyte** source);
+	public static partial Result spvc_compiler_compile(spvc_compiler compiler, byte** source);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_add_header_line")]
-	public static partial Result spvc_compiler_add_header_line(spvc_compiler compiler, sbyte* line);
+	public static partial Result spvc_compiler_add_header_line(spvc_compiler compiler, byte* line);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_require_extension")]
-	public static partial Result spvc_compiler_require_extension(spvc_compiler compiler, sbyte* ext);
+	public static partial Result spvc_compiler_require_extension(spvc_compiler compiler, byte* ext);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_num_required_extensions")]
 	public static partial nuint spvc_compiler_get_num_required_extensions(spvc_compiler compiler);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_required_extension")]
-	public static partial sbyte* spvc_compiler_get_required_extension(spvc_compiler compiler, nuint index);
+	public static partial byte* spvc_compiler_get_required_extension(spvc_compiler compiler, nuint index);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_flatten_buffer_block")]
 	public static partial Result spvc_compiler_flatten_buffer_block(spvc_compiler compiler, uint id);
@@ -130,7 +134,7 @@ unsafe partial class SpirvCrossApi
 	public static partial uint spvc_compiler_hlsl_remap_num_workgroups_builtin(spvc_compiler compiler);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_hlsl_set_resource_binding_flags")]
-	public static partial Result spvc_compiler_hlsl_set_resource_binding_flags(spvc_compiler compiler, spvc_hlsl_binding_flags flags);
+	public static partial Result spvc_compiler_hlsl_set_resource_binding_flags(spvc_compiler compiler, HLSLBindingFlags flags);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_hlsl_add_resource_binding")]
 	public static partial Result spvc_compiler_hlsl_add_resource_binding(spvc_compiler compiler, spvc_hlsl_resource_binding* binding);
@@ -164,6 +168,9 @@ unsafe partial class SpirvCrossApi
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_msl_add_resource_binding")]
 	public static partial Result spvc_compiler_msl_add_resource_binding(spvc_compiler compiler, spvc_msl_resource_binding* binding);
+
+	[LibraryImport(LibName, EntryPoint = "spvc_compiler_msl_add_resource_binding_2")]
+	public static partial Result spvc_compiler_msl_add_resource_binding_2(spvc_compiler compiler, spvc_msl_resource_binding_2* binding);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_msl_add_shader_input")]
 	public static partial Result spvc_compiler_msl_add_shader_input(spvc_compiler compiler, spvc_msl_shader_interface_var* input);
@@ -223,10 +230,10 @@ unsafe partial class SpirvCrossApi
 	public static partial Result spvc_compiler_msl_add_inline_uniform_block(spvc_compiler compiler, uint desc_set, uint binding);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_msl_set_combined_sampler_suffix")]
-	public static partial Result spvc_compiler_msl_set_combined_sampler_suffix(spvc_compiler compiler, sbyte* suffix);
+	public static partial Result spvc_compiler_msl_set_combined_sampler_suffix(spvc_compiler compiler, byte* suffix);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_msl_get_combined_sampler_suffix")]
-	public static partial sbyte* spvc_compiler_msl_get_combined_sampler_suffix(spvc_compiler compiler);
+	public static partial byte* spvc_compiler_msl_get_combined_sampler_suffix(spvc_compiler compiler);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_active_interface_variables")]
 	public static partial Result spvc_compiler_get_active_interface_variables(spvc_compiler compiler, spvc_set* set);
@@ -253,19 +260,19 @@ unsafe partial class SpirvCrossApi
 	public static partial void spvc_compiler_set_decoration(spvc_compiler compiler, uint id, SpvDecoration decoration, uint argument);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_set_decoration_string")]
-	public static partial void spvc_compiler_set_decoration_string(spvc_compiler compiler, uint id, SpvDecoration decoration, sbyte* argument);
+	public static partial void spvc_compiler_set_decoration_string(spvc_compiler compiler, uint id, SpvDecoration decoration, byte* argument);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_set_name")]
-	public static partial void spvc_compiler_set_name(spvc_compiler compiler, uint id, sbyte* argument);
+	public static partial void spvc_compiler_set_name(spvc_compiler compiler, uint id, byte* argument);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_set_member_decoration")]
 	public static partial void spvc_compiler_set_member_decoration(spvc_compiler compiler, uint id, uint member_index, SpvDecoration decoration, uint argument);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_set_member_decoration_string")]
-	public static partial void spvc_compiler_set_member_decoration_string(spvc_compiler compiler, uint id, uint member_index, SpvDecoration decoration, sbyte* argument);
+	public static partial void spvc_compiler_set_member_decoration_string(spvc_compiler compiler, uint id, uint member_index, SpvDecoration decoration, byte* argument);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_set_member_name")]
-	public static partial void spvc_compiler_set_member_name(spvc_compiler compiler, uint id, uint member_index, sbyte* argument);
+	public static partial void spvc_compiler_set_member_name(spvc_compiler compiler, uint id, uint member_index, byte* argument);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_unset_decoration")]
 	public static partial void spvc_compiler_unset_decoration(spvc_compiler compiler, uint id, SpvDecoration decoration);
@@ -280,34 +287,34 @@ unsafe partial class SpirvCrossApi
 	public static partial SpvcBool spvc_compiler_has_member_decoration(spvc_compiler compiler, uint id, uint member_index, SpvDecoration decoration);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_name")]
-	private static partial sbyte* spvc_compiler_get_namePrivate(spvc_compiler compiler, uint id);
+	private static partial byte* spvc_compiler_get_namePrivate(spvc_compiler compiler, uint id);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_decoration")]
 	public static partial uint spvc_compiler_get_decoration(spvc_compiler compiler, uint id, SpvDecoration decoration);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_decoration_string")]
-	public static partial sbyte* spvc_compiler_get_decoration_string(spvc_compiler compiler, uint id, SpvDecoration decoration);
+	public static partial byte* spvc_compiler_get_decoration_string(spvc_compiler compiler, uint id, SpvDecoration decoration);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_member_decoration")]
 	public static partial uint spvc_compiler_get_member_decoration(spvc_compiler compiler, uint id, uint member_index, SpvDecoration decoration);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_member_decoration_string")]
-	public static partial sbyte* spvc_compiler_get_member_decoration_string(spvc_compiler compiler, uint id, uint member_index, SpvDecoration decoration);
+	public static partial byte* spvc_compiler_get_member_decoration_string(spvc_compiler compiler, uint id, uint member_index, SpvDecoration decoration);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_member_name")]
-	public static partial sbyte* spvc_compiler_get_member_name(spvc_compiler compiler, uint id, uint member_index);
+	public static partial byte* spvc_compiler_get_member_name(spvc_compiler compiler, uint id, uint member_index);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_entry_points")]
 	public static partial Result spvc_compiler_get_entry_points(spvc_compiler compiler, spvc_entry_point** entry_points, nuint* num_entry_points);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_set_entry_point")]
-	public static partial Result spvc_compiler_set_entry_point(spvc_compiler compiler, sbyte* name, SpvExecutionModel model);
+	public static partial Result spvc_compiler_set_entry_point(spvc_compiler compiler, byte* name, SpvExecutionModel model);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_rename_entry_point")]
-	public static partial Result spvc_compiler_rename_entry_point(spvc_compiler compiler, sbyte* old_name, sbyte* new_name, SpvExecutionModel model);
+	public static partial Result spvc_compiler_rename_entry_point(spvc_compiler compiler, byte* old_name, byte* new_name, SpvExecutionModel model);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_cleansed_entry_point_name")]
-	public static partial sbyte* spvc_compiler_get_cleansed_entry_point_name(spvc_compiler compiler, sbyte* name, SpvExecutionModel model);
+	public static partial byte* spvc_compiler_get_cleansed_entry_point_name(spvc_compiler compiler, byte* name, SpvExecutionModel model);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_set_execution_mode")]
 	public static partial void spvc_compiler_set_execution_mode(spvc_compiler compiler, SpvExecutionMode mode);
@@ -505,7 +512,7 @@ unsafe partial class SpirvCrossApi
 	public static partial void spvc_constant_set_scalar_u8(spvc_constant constant, uint column, uint row, byte value);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_constant_set_scalar_i8")]
-	public static partial void spvc_constant_set_scalar_i8(spvc_constant constant, uint column, uint row, sbyte value);
+	public static partial void spvc_constant_set_scalar_i8(spvc_constant constant, uint column, uint row, byte value);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_binary_offset_for_decoration")]
 	public static partial SpvcBool spvc_compiler_get_binary_offset_for_decoration(spvc_compiler compiler, uint id, SpvDecoration decoration, uint* word_offset);
@@ -520,10 +527,10 @@ unsafe partial class SpirvCrossApi
 	public static partial Result spvc_compiler_get_declared_capabilities(spvc_compiler compiler, SpvCapability** capabilities, nuint* num_capabilities);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_declared_extensions")]
-	public static partial Result spvc_compiler_get_declared_extensions(spvc_compiler compiler, sbyte*** extensions, nuint* num_extensions);
+	public static partial Result spvc_compiler_get_declared_extensions(spvc_compiler compiler, byte*** extensions, nuint* num_extensions);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_remapped_declared_block_name")]
-	public static partial sbyte* spvc_compiler_get_remapped_declared_block_name(spvc_compiler compiler, uint id);
+	public static partial byte* spvc_compiler_get_remapped_declared_block_name(spvc_compiler compiler, uint id);
 
 	[LibraryImport(LibName, EntryPoint = "spvc_compiler_get_buffer_block_decorations")]
 	public static partial Result spvc_compiler_get_buffer_block_decorations(spvc_compiler compiler, uint id, SpvDecoration** decorations, nuint* num_decorations);

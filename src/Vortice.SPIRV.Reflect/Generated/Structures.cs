@@ -15,12 +15,10 @@ using Vortice.SPIRV;
 #pragma warning disable CS0649
 namespace Vortice.SPIRV.Reflect;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct SpvReflectNumericTraits
 {
 	public Scalar scalar;
 	
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct Scalar
 	{
 		public uint width;
@@ -28,14 +26,12 @@ public partial struct SpvReflectNumericTraits
 	}
 	public Vector vector;
 	
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct Vector
 	{
 		public uint component_count;
 	}
 	public Matrix matrix;
 	
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct Matrix
 	{
 		public uint column_count;
@@ -44,7 +40,6 @@ public partial struct SpvReflectNumericTraits
 	}
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct SpvReflectImageTraits
 {
 	public SpvDim dim;
@@ -55,7 +50,6 @@ public partial struct SpvReflectImageTraits
 	public SpvImageFormat image_format;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct SpvReflectArrayTraits
 {
 	public uint dims_count;
@@ -64,26 +58,23 @@ public unsafe partial struct SpvReflectArrayTraits
 	public uint stride;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct SpvReflectBindingArrayTraits
 {
 	public uint dims_count;
 	public fixed uint dims[32];
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct SpvReflectTypeDescription
 {
 	public uint id;
 	public SpvOp op;
-	public sbyte* type_name;
-	public sbyte* struct_member_name;
-	public SpvStorageClass storage_class;
+	public byte* type_name;
+	public byte* struct_member_name;
+	public int storage_class;
 	public SpvReflectTypeFlags type_flags;
 	public SpvReflectDecorationFlags decoration_flags;
 	public Traits traits;
 	
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct Traits
 	{
 		public SpvReflectNumericTraits numeric;
@@ -96,17 +87,16 @@ public unsafe partial struct SpvReflectTypeDescription
 	public SpvReflectTypeDescription* members;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct SpvReflectInterfaceVariable
 {
 	public uint spirv_id;
-	public sbyte* name;
+	public byte* name;
 	public uint location;
 	public uint component;
 	public SpvStorageClass storage_class;
-	public sbyte* semantic;
+	public byte* semantic;
 	public SpvReflectDecorationFlags decoration_flags;
-	public SpvBuiltIn built_in;
+	public int built_in;
 	public SpvReflectNumericTraits numeric;
 	public SpvReflectArrayTraits array;
 	public uint member_count;
@@ -115,18 +105,16 @@ public unsafe partial struct SpvReflectInterfaceVariable
 	public SpvReflectTypeDescription* type_description;
 	public SpvReflectInterfaceVariable_word_offset word_offset;
 	
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvReflectInterfaceVariable_word_offset
 	{
 		public uint location;
 	}
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct SpvReflectBlockVariable
 {
 	public uint spirv_id;
-	public sbyte* name;
+	public byte* name;
 	public uint offset;
 	public uint absolute_offset;
 	public uint size;
@@ -140,18 +128,16 @@ public unsafe partial struct SpvReflectBlockVariable
 	public SpvReflectTypeDescription* type_description;
 	public SpvReflectBlockVariable_word_offset word_offset;
 	
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvReflectBlockVariable_word_offset
 	{
 		public uint offset;
 	}
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct SpvReflectDescriptorBinding
 {
 	public uint spirv_id;
-	public sbyte* name;
+	public byte* name;
 	public uint binding;
 	public uint input_attachment_index;
 	public uint set;
@@ -169,7 +155,6 @@ public unsafe partial struct SpvReflectDescriptorBinding
 	public SpvReflectTypeDescription* type_description;
 	public SpvReflectDescriptorBinding_word_offset word_offset;
 	
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvReflectDescriptorBinding_word_offset
 	{
 		public uint binding;
@@ -179,7 +164,6 @@ public unsafe partial struct SpvReflectDescriptorBinding
 	public SpvReflectUserType user_type;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct SpvReflectDescriptorSet
 {
 	public uint set;
@@ -187,10 +171,9 @@ public unsafe partial struct SpvReflectDescriptorSet
 	public SpvReflectDescriptorBinding** bindings;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct SpvReflectEntryPoint
 {
-	public sbyte* name;
+	public byte* name;
 	public uint id;
 	public SpvExecutionModel spirv_execution_model;
 	public SpvReflectShaderStageFlags shader_stage;
@@ -210,7 +193,6 @@ public unsafe partial struct SpvReflectEntryPoint
 	public SpvExecutionMode* execution_modes;
 	public LocalSize local_size;
 	
-	[StructLayout(LayoutKind.Sequential)]
 	public partial struct LocalSize
 	{
 		public uint x;
@@ -221,33 +203,30 @@ public unsafe partial struct SpvReflectEntryPoint
 	public uint output_vertices;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct SpvReflectCapability
 {
 	public SpvCapability value;
 	public uint word_offset;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct SpvReflectSpecializationConstant
 {
 	public uint spirv_id;
 	public uint constant_id;
-	public sbyte* name;
+	public byte* name;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct SpvReflectShaderModule
 {
 	public SpvReflectGenerator generator;
-	public sbyte* entry_point_name;
+	public byte* entry_point_name;
 	public uint entry_point_id;
 	public uint entry_point_count;
 	public SpvReflectEntryPoint* entry_points;
 	public SpvSourceLanguage source_language;
 	public uint source_language_version;
-	public sbyte* source_file;
-	public sbyte* source_source;
+	public byte* source_file;
+	public byte* source_source;
 	public uint capability_count;
 	public SpvReflectCapability* capabilities;
 	public SpvExecutionModel spirv_execution_model;
@@ -257,95 +236,11 @@ public unsafe partial struct SpvReflectShaderModule
 	public uint descriptor_set_count;
 	public descriptor_sets__FixedBuffer descriptor_sets;
 
-#if NET8_0_OR_GREATER
 	[InlineArray(64)]
 	public partial struct descriptor_sets__FixedBuffer
 	{
 		public SpvReflectDescriptorSet e0;
 	}
-#else
-	public unsafe struct descriptor_sets__FixedBuffer
-	{
-		public SpvReflectDescriptorSet e0;
-		public SpvReflectDescriptorSet e1;
-		public SpvReflectDescriptorSet e2;
-		public SpvReflectDescriptorSet e3;
-		public SpvReflectDescriptorSet e4;
-		public SpvReflectDescriptorSet e5;
-		public SpvReflectDescriptorSet e6;
-		public SpvReflectDescriptorSet e7;
-		public SpvReflectDescriptorSet e8;
-		public SpvReflectDescriptorSet e9;
-		public SpvReflectDescriptorSet e10;
-		public SpvReflectDescriptorSet e11;
-		public SpvReflectDescriptorSet e12;
-		public SpvReflectDescriptorSet e13;
-		public SpvReflectDescriptorSet e14;
-		public SpvReflectDescriptorSet e15;
-		public SpvReflectDescriptorSet e16;
-		public SpvReflectDescriptorSet e17;
-		public SpvReflectDescriptorSet e18;
-		public SpvReflectDescriptorSet e19;
-		public SpvReflectDescriptorSet e20;
-		public SpvReflectDescriptorSet e21;
-		public SpvReflectDescriptorSet e22;
-		public SpvReflectDescriptorSet e23;
-		public SpvReflectDescriptorSet e24;
-		public SpvReflectDescriptorSet e25;
-		public SpvReflectDescriptorSet e26;
-		public SpvReflectDescriptorSet e27;
-		public SpvReflectDescriptorSet e28;
-		public SpvReflectDescriptorSet e29;
-		public SpvReflectDescriptorSet e30;
-		public SpvReflectDescriptorSet e31;
-		public SpvReflectDescriptorSet e32;
-		public SpvReflectDescriptorSet e33;
-		public SpvReflectDescriptorSet e34;
-		public SpvReflectDescriptorSet e35;
-		public SpvReflectDescriptorSet e36;
-		public SpvReflectDescriptorSet e37;
-		public SpvReflectDescriptorSet e38;
-		public SpvReflectDescriptorSet e39;
-		public SpvReflectDescriptorSet e40;
-		public SpvReflectDescriptorSet e41;
-		public SpvReflectDescriptorSet e42;
-		public SpvReflectDescriptorSet e43;
-		public SpvReflectDescriptorSet e44;
-		public SpvReflectDescriptorSet e45;
-		public SpvReflectDescriptorSet e46;
-		public SpvReflectDescriptorSet e47;
-		public SpvReflectDescriptorSet e48;
-		public SpvReflectDescriptorSet e49;
-		public SpvReflectDescriptorSet e50;
-		public SpvReflectDescriptorSet e51;
-		public SpvReflectDescriptorSet e52;
-		public SpvReflectDescriptorSet e53;
-		public SpvReflectDescriptorSet e54;
-		public SpvReflectDescriptorSet e55;
-		public SpvReflectDescriptorSet e56;
-		public SpvReflectDescriptorSet e57;
-		public SpvReflectDescriptorSet e58;
-		public SpvReflectDescriptorSet e59;
-		public SpvReflectDescriptorSet e60;
-		public SpvReflectDescriptorSet e61;
-		public SpvReflectDescriptorSet e62;
-		public SpvReflectDescriptorSet e63;
-
-		[UnscopedRef]
-		public ref SpvReflectDescriptorSet this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref Unsafe.Add(ref e0, index);
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<SpvReflectDescriptorSet> AsSpan() => MemoryMarshal.CreateSpan(ref e0, 64);
-	}
-#endif
 	public uint input_variable_count;
 	public SpvReflectInterfaceVariable** input_variables;
 	public uint output_variable_count;
@@ -358,7 +253,6 @@ public unsafe partial struct SpvReflectShaderModule
 	public SpvReflectSpecializationConstant* spec_constants;
 	public Internal* _internal;
 	
-	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct Internal
 	{
 		public SpvReflectModuleFlags module_flags;

@@ -141,7 +141,7 @@ unsafe partial class SpirvCrossApi
 
     public static string? spvc_context_get_last_error_string(spvc_context context)
     {
-        sbyte* native = spvc_context_get_last_error_stringPrivate(context);
+        byte* native = spvc_context_get_last_error_stringPrivate(context);
         return Utils.GetString(GetUtf8Span(native));
     }
     #endregion
@@ -149,7 +149,7 @@ unsafe partial class SpirvCrossApi
     #region Compiler
     public static Result spvc_compiler_compile(spvc_compiler compiler, out string? source)
     {
-        sbyte* utf8Str = default;
+        byte* utf8Str = default;
         Result result = spvc_compiler_compile(compiler, &utf8Str);
         if (result != Result.Success)
         {
@@ -157,13 +157,13 @@ unsafe partial class SpirvCrossApi
             return result;
         }
 
-        source = new string(utf8Str);
+        source = Utils.GetString(GetUtf8Span(utf8Str));
         return result;
     }
 
-    public static void spvc_compiler_add_header_line(spvc_compiler compiler, ReadOnlySpan<sbyte> line)
+    public static void spvc_compiler_add_header_line(spvc_compiler compiler, ReadOnlySpan<byte> line)
     {
-        fixed (sbyte* dataPtr = line)
+        fixed (byte* dataPtr = line)
         {
             spvc_compiler_add_header_line(compiler, dataPtr);
         }
@@ -171,15 +171,15 @@ unsafe partial class SpirvCrossApi
 
     public static void spvc_compiler_add_header_line(spvc_compiler compiler, string line)
     {
-        fixed (sbyte* dataPtr = line.GetUtf8Span())
+        fixed (byte* dataPtr = line.GetUtf8Span())
         {
             spvc_compiler_add_header_line(compiler, dataPtr);
         }
     }
 
-    public static void spvc_compiler_require_extension(spvc_compiler compiler, ReadOnlySpan<sbyte> ext)
+    public static void spvc_compiler_require_extension(spvc_compiler compiler, ReadOnlySpan<byte> ext)
     {
-        fixed (sbyte* dataPtr = ext)
+        fixed (byte* dataPtr = ext)
         {
             spvc_compiler_require_extension(compiler, dataPtr);
         }
@@ -187,15 +187,15 @@ unsafe partial class SpirvCrossApi
 
     public static void spvc_compiler_require_extension(spvc_compiler compiler, string ext)
     {
-        fixed (sbyte* dataPtr = ext.GetUtf8Span())
+        fixed (byte* dataPtr = ext.GetUtf8Span())
         {
             spvc_compiler_require_extension(compiler, dataPtr);
         }
     }
 
-    public static void spvc_compiler_set_name(spvc_compiler compiler, uint id, ReadOnlySpan<sbyte> argument)
+    public static void spvc_compiler_set_name(spvc_compiler compiler, uint id, ReadOnlySpan<byte> argument)
     {
-        fixed (sbyte* dataPtr = argument)
+        fixed (byte* dataPtr = argument)
         {
             spvc_compiler_set_name(compiler, id, dataPtr);
         }
@@ -203,7 +203,7 @@ unsafe partial class SpirvCrossApi
 
     public static void spvc_compiler_set_name(spvc_compiler compiler, uint id, string argument)
     {
-        fixed (sbyte* dataPtr = argument.GetUtf8Span())
+        fixed (byte* dataPtr = argument.GetUtf8Span())
         {
             spvc_compiler_set_name(compiler, id, dataPtr);
         }

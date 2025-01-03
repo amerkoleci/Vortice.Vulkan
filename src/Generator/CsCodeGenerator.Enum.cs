@@ -247,6 +247,13 @@ partial class CsCodeGenerator
         "mesa",
     };
 
+    private static readonly HashSet<string> s_toUpperCaps = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "glsl",
+        "hlsl",
+        "msl",
+    };
+
     private readonly HashSet<string> s_enumConstants = [];
 
     public void GenerateEnums(CppCompilation compilation)
@@ -273,8 +280,8 @@ partial class CsCodeGenerator
             }
 
             bool isBitmask =
-                cppEnum.Name.EndsWith("FlagBits2") ||
                 cppEnum.Name.EndsWith("FlagBits") ||
+                cppEnum.Name.EndsWith("FlagBits2") ||
                 cppEnum.Name.EndsWith("FlagBitsEXT") ||
                 cppEnum.Name.EndsWith("FlagBitsKHR") ||
                 cppEnum.Name.EndsWith("FlagBitsNV") ||
@@ -456,7 +463,7 @@ partial class CsCodeGenerator
 
                         // Dont generate extensions enum values that maps to core values
                         // Example: VK_ERROR_OUT_OF_POOL_MEMORY_KHR => VK_ERROR_OUT_OF_POOL_MEMORY
-                        if (IsExtensionsValue(enumItemName))
+                        if (_options.IsVulkan && IsExtensionsValue(enumItemName))
                         {
                             continue;
                         }
@@ -1084,7 +1091,14 @@ partial class CsCodeGenerator
 
             if (s_preserveCaps.Contains(part))
             {
-                sb.Append(part);
+                if (s_toUpperCaps.Contains(part))
+                {
+                    sb.Append(part.ToUpper());
+                }
+                else
+                {
+                    sb.Append(part);
+                }
             }
             else if (part.Equals("OPENGL", StringComparison.InvariantCultureIgnoreCase))
             {

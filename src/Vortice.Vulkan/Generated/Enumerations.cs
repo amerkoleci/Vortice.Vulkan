@@ -5377,11 +5377,8 @@ public enum VkDriverId
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_HONEYKRISP</unmanaged>
 	MESAHoneykrisp = 26,
-	/// <summary>
-	/// Reserved for undisclosed driver project
-	/// </summary>
-	/// <unmanaged>VK_DRIVER_ID_RESERVED_27</unmanaged>
-	Reserved27 = 27,
+	/// <unmanaged>VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN</unmanaged>
+	VulkanScEmulationOnVulkan = 27,
 }
 
 public enum VkShaderFloatControlsIndependence

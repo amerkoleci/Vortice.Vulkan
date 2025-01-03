@@ -93,6 +93,7 @@ public partial class CsCodeGenerator
         { "spvc_variable_id", "uint" }, // SpvId
         { "spvc_constant_id", "uint" }, // SpvId
         { "spvc_msl_vertex_format", "spvc_msl_shader_variable_format" },
+        { "spvc_hlsl_binding_flags", "spvc_hlsl_binding_flag_bits" },
     };
 
 

@@ -344,18 +344,18 @@ partial class CsCodeGenerator
         string modifier = "private";
 
         // Used by VulkanMemoryAllocator
-        if (name == "vkGetPhysicalDeviceProperties" ||
-            name == "vkGetPhysicalDeviceMemoryProperties" ||
-            name == "vkGetBufferMemoryRequirements2KHR" ||
-            name == "vkGetBufferMemoryRequirements2" ||
-            name == "vkGetImageMemoryRequirements2KHR" ||
-            name == "vkGetImageMemoryRequirements2" ||
-            name == "vkBindBufferMemory2KHR" ||
-            name == "vkBindBufferMemory2" ||
-            name == "vkBindImageMemory2KHR" ||
-            name == "vkBindImageMemory2" ||
-            name == "vkGetDeviceImageMemoryRequirements" ||
-            name == "vkGetDeviceBufferMemoryRequirements"
+        if (name == "vkGetPhysicalDeviceProperties"
+            || name == "vkGetPhysicalDeviceMemoryProperties"
+            || name == "vkGetBufferMemoryRequirements2KHR"
+            || name == "vkGetBufferMemoryRequirements2"
+            || name == "vkGetImageMemoryRequirements2KHR"
+            || name == "vkGetImageMemoryRequirements2"
+            || name == "vkBindBufferMemory2KHR"
+            || name == "vkBindBufferMemory2"
+            || name == "vkBindImageMemory2KHR"
+            || name == "vkBindImageMemory2"
+            || name == "vkGetDeviceImageMemoryRequirements"
+            || name == "vkGetDeviceBufferMemoryRequirements"
             || name == "vkAllocateMemory"
             || name == "vkFreeMemory"
             || name == "vkMapMemory"
@@ -372,6 +372,7 @@ partial class CsCodeGenerator
             || name == "vkDestroyImage"
             || name == "vkCmdCopyBuffer"
             || name == "vkGetPhysicalDeviceMemoryProperties2KHR"
+            || name == "vkGetMemoryWin32HandleKHR"
             )
         {
             modifier = "internal";

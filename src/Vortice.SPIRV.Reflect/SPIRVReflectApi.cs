@@ -181,9 +181,9 @@ unsafe partial class SPIRVReflectApi
         }
     }
 
-    public static SpvReflectEntryPoint* spvReflectGetEntryPoint(SpvReflectShaderModule* module, ReadOnlySpan<sbyte> line)
+    public static SpvReflectEntryPoint* spvReflectGetEntryPoint(SpvReflectShaderModule* module, ReadOnlySpan<byte> line)
     {
-        fixed (sbyte* dataPtr = line)
+        fixed (byte* dataPtr = line)
         {
             return spvReflectGetEntryPoint(module, dataPtr);
         }
@@ -191,7 +191,7 @@ unsafe partial class SPIRVReflectApi
 
     public static SpvReflectEntryPoint* spvReflectGetEntryPoint(SpvReflectShaderModule* module, string line)
     {
-        fixed (sbyte* dataPtr = line.GetUtf8Span())
+        fixed (byte* dataPtr = line.GetUtf8Span())
         {
             return spvReflectGetEntryPoint(module, dataPtr);
         }

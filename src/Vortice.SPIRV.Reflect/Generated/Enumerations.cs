@@ -436,9 +436,3 @@ public enum SpvReflectExecutionModeValue : uint
 	SpecConstant = 0xFFFFFFFF,
 }
 
-[Flags]
-public enum SpvKernelEnqueueFlags
-{
-	None = 0,
-}
-

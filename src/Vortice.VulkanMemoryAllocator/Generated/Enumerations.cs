@@ -33,6 +33,8 @@ public enum VmaAllocatorCreateFlags
 	KHRMaintenance4 = 0x00000080,
 	/// <unmanaged>VMA_ALLOCATOR_CREATE_KHR_MAINTENANCE5_BIT</unmanaged>
 	KHRMaintenance5 = 0x00000100,
+	/// <unmanaged>VMA_ALLOCATOR_CREATE_KHR_EXTERNAL_MEMORY_WIN32_BIT</unmanaged>
+	KHRExternalMemoryWin32 = 0x00000200,
 }
 
 public enum VmaMemoryUsage

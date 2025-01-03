@@ -47,19 +47,11 @@ public static unsafe class Utils
         return (T*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(span));
     }
 
-#if NET8_0_OR_GREATER
     /// <inheritdoc cref="Unsafe.IsNullRef{T}(ref readonly T)" />
-#else
-    /// <inheritdoc cref="Unsafe.IsNullRef{T}(ref T)" />
-#endif
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool IsNullRef<T>(in T source) => Unsafe.IsNullRef(ref Unsafe.AsRef(in source));
 
-#if NET8_0_OR_GREATER
     /// <inheritdoc cref="MemoryMarshal.CreateReadOnlySpan{T}(ref readonly T, int)" />
-#else
-    /// <inheritdoc cref="MemoryMarshal.CreateReadOnlySpan{T}(ref T, int)" />
-#endif
     public static ReadOnlySpan<T> CreateReadOnlySpan<T>(scoped in T reference, int length) => MemoryMarshal.CreateReadOnlySpan(ref Unsafe.AsRef(in reference), length);
 
     /// <summary>Gets a string for a given span.</summary>

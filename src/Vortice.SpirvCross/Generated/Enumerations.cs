@@ -81,6 +81,8 @@ public enum ResourceType
 	RayQuery = 13,
 	/// <unmanaged>SPVC_RESOURCE_TYPE_SHADER_RECORD_BUFFER</unmanaged>
 	ShaderRecordBuffer = 14,
+	/// <unmanaged>SPVC_RESOURCE_TYPE_GL_PLAIN_UNIFORM</unmanaged>
+	GlPlainUniform = 15,
 }
 
 public enum BuiltinResourceType
@@ -137,7 +139,7 @@ public enum Basetype
 	AccelerationStructure = 19,
 }
 
-public enum mslPlatform
+public enum MSLPlatform
 {
 	/// <unmanaged>SPVC_MSL_PLATFORM_IOS</unmanaged>
 	IOS = 0,
@@ -145,7 +147,7 @@ public enum mslPlatform
 	MACOS = 1,
 }
 
-public enum mslIndexType
+public enum MSLIndexType
 {
 	/// <unmanaged>SPVC_MSL_INDEX_TYPE_NONE</unmanaged>
 	None = 0,
@@ -155,7 +157,7 @@ public enum mslIndexType
 	Uint32 = 2,
 }
 
-public enum mslShaderVariableFormat
+public enum MSLShaderVariableFormat
 {
 	/// <unmanaged>SPVC_MSL_SHADER_VARIABLE_FORMAT_OTHER</unmanaged>
 	Other = 0,
@@ -169,7 +171,7 @@ public enum mslShaderVariableFormat
 	Any32 = 4,
 }
 
-public enum mslShaderVariableRate
+public enum MSLShaderVariableRate
 {
 	/// <unmanaged>SPVC_MSL_SHADER_VARIABLE_RATE_PER_VERTEX</unmanaged>
 	PerVertex = 0,
@@ -179,7 +181,7 @@ public enum mslShaderVariableRate
 	PerPatch = 2,
 }
 
-public enum mslSamplerCoord
+public enum MSLSamplerCoord
 {
 	/// <unmanaged>SPVC_MSL_SAMPLER_COORD_NORMALIZED</unmanaged>
 	Normalized = 0,
@@ -187,7 +189,7 @@ public enum mslSamplerCoord
 	Pixel = 1,
 }
 
-public enum mslSamplerFilter
+public enum MSLSamplerFilter
 {
 	/// <unmanaged>SPVC_MSL_SAMPLER_FILTER_NEAREST</unmanaged>
 	Nearest = 0,
@@ -195,7 +197,7 @@ public enum mslSamplerFilter
 	Linear = 1,
 }
 
-public enum mslSamplerMipFilter
+public enum MSLSamplerMipFilter
 {
 	/// <unmanaged>SPVC_MSL_SAMPLER_MIP_FILTER_NONE</unmanaged>
 	None = 0,
@@ -205,7 +207,7 @@ public enum mslSamplerMipFilter
 	Linear = 2,
 }
 
-public enum mslSamplerAddress
+public enum MSLSamplerAddress
 {
 	/// <unmanaged>SPVC_MSL_SAMPLER_ADDRESS_CLAMP_TO_ZERO</unmanaged>
 	ClampToZero = 0,
@@ -219,7 +221,7 @@ public enum mslSamplerAddress
 	MirroredRepeat = 4,
 }
 
-public enum mslSamplerCompareFunc
+public enum MSLSamplerCompareFunc
 {
 	/// <unmanaged>SPVC_MSL_SAMPLER_COMPARE_FUNC_NEVER</unmanaged>
 	Never = 0,
@@ -239,7 +241,7 @@ public enum mslSamplerCompareFunc
 	Always = 7,
 }
 
-public enum mslSamplerBorderColor
+public enum MSLSamplerBorderColor
 {
 	/// <unmanaged>SPVC_MSL_SAMPLER_BORDER_COLOR_TRANSPARENT_BLACK</unmanaged>
 	TransparentBlack = 0,
@@ -249,7 +251,7 @@ public enum mslSamplerBorderColor
 	OpaqueWhite = 2,
 }
 
-public enum mslFormatResolution
+public enum MSLFormatResolution
 {
 	/// <unmanaged>SPVC_MSL_FORMAT_RESOLUTION_444</unmanaged>
 	_444 = 0,
@@ -259,7 +261,7 @@ public enum mslFormatResolution
 	_420 = 2,
 }
 
-public enum mslChromaLocation
+public enum MSLChromaLocation
 {
 	/// <unmanaged>SPVC_MSL_CHROMA_LOCATION_COSITED_EVEN</unmanaged>
 	CositedEven = 0,
@@ -267,7 +269,7 @@ public enum mslChromaLocation
 	Midpoint = 1,
 }
 
-public enum mslComponentSwizzle
+public enum MSLComponentSwizzle
 {
 	/// <unmanaged>SPVC_MSL_COMPONENT_SWIZZLE_IDENTITY</unmanaged>
 	Identity = 0,
@@ -285,7 +287,7 @@ public enum mslComponentSwizzle
 	A = 6,
 }
 
-public enum mslSamplerYcbcrModelConversion
+public enum MSLSamplerYcbcrModelConversion
 {
 	/// <unmanaged>SPVC_MSL_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY</unmanaged>
 	RgbIdentity = 0,
@@ -299,7 +301,7 @@ public enum mslSamplerYcbcrModelConversion
 	YcbcrBt2020 = 4,
 }
 
-public enum mslSamplerYcbcrRange
+public enum MSLSamplerYcbcrRange
 {
 	/// <unmanaged>SPVC_MSL_SAMPLER_YCBCR_RANGE_ITU_FULL</unmanaged>
 	ItuFull = 0,
@@ -308,7 +310,7 @@ public enum mslSamplerYcbcrRange
 }
 
 [Flags]
-public enum hlslBindingFlags
+public enum HLSLBindingFlags
 {
 	/// <unmanaged>SPVC_HLSL_BINDING_AUTO_NONE_BIT</unmanaged>
 	None = 0,
@@ -512,17 +514,9 @@ public enum CompilerOption
 	MSLAgxManualCubeGradFixup = 134217816,
 	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_FORCE_FRAGMENT_WITH_SIDE_EFFECTS_EXECUTION</unmanaged>
 	MSLForceFragmentWithSideEffectsExecution = 134217817,
-}
-
-[Flags]
-public enum SpvKernelEnqueueFlags
-{
-	None = 0,
-}
-
-[Flags]
-public enum spvc_hlsl_binding_flags
-{
-	None = 0,
+	/// <unmanaged>SPVC_COMPILER_OPTION_HLSL_USE_ENTRY_POINT_NAME</unmanaged>
+	HLSLUseEntryPointName = 67108954,
+	/// <unmanaged>SPVC_COMPILER_OPTION_HLSL_PRESERVE_STRUCTURED_BUFFERS</unmanaged>
+	HLSLPreserveStructuredBuffers = 67108955,
 }
 

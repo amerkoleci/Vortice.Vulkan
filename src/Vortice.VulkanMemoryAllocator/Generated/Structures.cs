@@ -49,6 +49,7 @@ public unsafe partial struct VmaVulkanFunctions
 	public delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceMemoryProperties2*, void> vkGetPhysicalDeviceMemoryProperties2KHR;
 	public delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirements;
 	public delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirements;
+	public void* vkGetMemoryWin32HandleKHR;
 }
 
 public unsafe partial struct VmaAllocatorCreateInfo
@@ -95,106 +96,18 @@ public partial struct VmaTotalStatistics
 {
 	public memoryType__FixedBuffer memoryType;
 
-#if NET8_0_OR_GREATER
 	[InlineArray(32)]
 	public partial struct memoryType__FixedBuffer
 	{
 		public VmaDetailedStatistics e0;
 	}
-#else
-	public unsafe struct memoryType__FixedBuffer
-	{
-		public VmaDetailedStatistics e0;
-		public VmaDetailedStatistics e1;
-		public VmaDetailedStatistics e2;
-		public VmaDetailedStatistics e3;
-		public VmaDetailedStatistics e4;
-		public VmaDetailedStatistics e5;
-		public VmaDetailedStatistics e6;
-		public VmaDetailedStatistics e7;
-		public VmaDetailedStatistics e8;
-		public VmaDetailedStatistics e9;
-		public VmaDetailedStatistics e10;
-		public VmaDetailedStatistics e11;
-		public VmaDetailedStatistics e12;
-		public VmaDetailedStatistics e13;
-		public VmaDetailedStatistics e14;
-		public VmaDetailedStatistics e15;
-		public VmaDetailedStatistics e16;
-		public VmaDetailedStatistics e17;
-		public VmaDetailedStatistics e18;
-		public VmaDetailedStatistics e19;
-		public VmaDetailedStatistics e20;
-		public VmaDetailedStatistics e21;
-		public VmaDetailedStatistics e22;
-		public VmaDetailedStatistics e23;
-		public VmaDetailedStatistics e24;
-		public VmaDetailedStatistics e25;
-		public VmaDetailedStatistics e26;
-		public VmaDetailedStatistics e27;
-		public VmaDetailedStatistics e28;
-		public VmaDetailedStatistics e29;
-		public VmaDetailedStatistics e30;
-		public VmaDetailedStatistics e31;
-
-		[UnscopedRef]
-		public ref VmaDetailedStatistics this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref Unsafe.Add(ref e0, index);
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VmaDetailedStatistics> AsSpan() => MemoryMarshal.CreateSpan(ref e0, 32);
-	}
-#endif
 	public memoryHeap__FixedBuffer memoryHeap;
 
-#if NET8_0_OR_GREATER
 	[InlineArray(16)]
 	public partial struct memoryHeap__FixedBuffer
 	{
 		public VmaDetailedStatistics e0;
 	}
-#else
-	public unsafe struct memoryHeap__FixedBuffer
-	{
-		public VmaDetailedStatistics e0;
-		public VmaDetailedStatistics e1;
-		public VmaDetailedStatistics e2;
-		public VmaDetailedStatistics e3;
-		public VmaDetailedStatistics e4;
-		public VmaDetailedStatistics e5;
-		public VmaDetailedStatistics e6;
-		public VmaDetailedStatistics e7;
-		public VmaDetailedStatistics e8;
-		public VmaDetailedStatistics e9;
-		public VmaDetailedStatistics e10;
-		public VmaDetailedStatistics e11;
-		public VmaDetailedStatistics e12;
-		public VmaDetailedStatistics e13;
-		public VmaDetailedStatistics e14;
-		public VmaDetailedStatistics e15;
-
-		[UnscopedRef]
-		public ref VmaDetailedStatistics this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref Unsafe.Add(ref e0, index);
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<VmaDetailedStatistics> AsSpan() => MemoryMarshal.CreateSpan(ref e0, 16);
-	}
-#endif
 	public VmaDetailedStatistics total;
 }
 

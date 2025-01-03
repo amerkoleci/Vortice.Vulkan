@@ -835,6 +835,8 @@ public enum SpvDecoration
 	WeightTextureQCOM = 4487,
 	/// <unmanaged>SpvDecorationBlockMatchTextureQCOM</unmanaged>
 	BlockMatchTextureQCOM = 4488,
+	/// <unmanaged>SpvDecorationBlockMatchSamplerQCOM</unmanaged>
+	BlockMatchSamplerQCOM = 4499,
 	/// <unmanaged>SpvDecorationExplicitInterpAMD</unmanaged>
 	ExplicitInterpAMD = 4999,
 	/// <unmanaged>SpvDecorationOverrideCoverageNV</unmanaged>
@@ -1767,6 +1769,8 @@ public enum SpvCapability
 	TextureBoxFilterQCOM = 4485,
 	/// <unmanaged>SpvCapabilityTextureBlockMatchQCOM</unmanaged>
 	TextureBlockMatchQCOM = 4486,
+	/// <unmanaged>SpvCapabilityTextureBlockMatch2QCOM</unmanaged>
+	TextureBlockMatch2QCOM = 4498,
 	/// <unmanaged>SpvCapabilityFloat16ImageAMD</unmanaged>
 	Float16ImageAMD = 5008,
 	/// <unmanaged>SpvCapabilityImageGatherBiasLodAMD</unmanaged>
@@ -2943,6 +2947,14 @@ public enum SpvOp
 	ImageBlockMatchSSDQCOM = 4482,
 	/// <unmanaged>SpvOpImageBlockMatchSADQCOM</unmanaged>
 	ImageBlockMatchSADQCOM = 4483,
+	/// <unmanaged>SpvOpImageBlockMatchWindowSSDQCOM</unmanaged>
+	ImageBlockMatchWindowSSDQCOM = 4500,
+	/// <unmanaged>SpvOpImageBlockMatchWindowSADQCOM</unmanaged>
+	ImageBlockMatchWindowSADQCOM = 4501,
+	/// <unmanaged>SpvOpImageBlockMatchGatherSSDQCOM</unmanaged>
+	ImageBlockMatchGatherSSDQCOM = 4502,
+	/// <unmanaged>SpvOpImageBlockMatchGatherSADQCOM</unmanaged>
+	ImageBlockMatchGatherSADQCOM = 4503,
 	/// <unmanaged>SpvOpGroupIAddNonUniformAMD</unmanaged>
 	GroupIAddNonUniformAMD = 5000,
 	/// <unmanaged>SpvOpGroupFAddNonUniformAMD</unmanaged>

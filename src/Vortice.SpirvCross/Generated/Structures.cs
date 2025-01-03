@@ -15,16 +15,14 @@ using Vortice.SPIRV;
 #pragma warning disable CS0649
 namespace Vortice.SpirvCross;
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct spvc_reflected_resource
 {
 	public uint id;
 	public uint base_type_id;
 	public uint type_id;
-	public sbyte* name;
+	public byte* name;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_reflected_builtin_resource
 {
 	public SpvBuiltIn builtin;
@@ -32,14 +30,12 @@ public partial struct spvc_reflected_builtin_resource
 	public spvc_reflected_resource resource;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct spvc_entry_point
 {
 	public SpvExecutionModel execution_model;
-	public sbyte* name;
+	public byte* name;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_combined_image_sampler
 {
 	public uint combined_id;
@@ -47,14 +43,12 @@ public partial struct spvc_combined_image_sampler
 	public uint sampler_id;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_specialization_constant
 {
 	public uint id;
 	public uint constant_id;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_buffer_range
 {
 	public uint index;
@@ -62,7 +56,6 @@ public partial struct spvc_buffer_range
 	public nuint range;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_hlsl_root_constants
 {
 	public uint start;
@@ -71,14 +64,12 @@ public partial struct spvc_hlsl_root_constants
 	public uint space;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public unsafe partial struct spvc_hlsl_vertex_attribute_remap
 {
 	public uint location;
-	public sbyte* semantic;
+	public byte* semantic;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_msl_vertex_attribute
 {
 	public uint location;
@@ -86,30 +77,27 @@ public partial struct spvc_msl_vertex_attribute
 	public uint msl_offset;
 	public uint msl_stride;
 	public SpvcBool per_instance;
-	public mslShaderVariableFormat format;
+	public MSLShaderVariableFormat format;
 	public SpvBuiltIn builtin;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_msl_shader_interface_var
 {
 	public uint location;
-	public mslShaderVariableFormat format;
+	public MSLShaderVariableFormat format;
 	public SpvBuiltIn builtin;
 	public uint vecsize;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_msl_shader_interface_var_2
 {
 	public uint location;
-	public mslShaderVariableFormat format;
+	public MSLShaderVariableFormat format;
 	public SpvBuiltIn builtin;
 	public uint vecsize;
-	public mslShaderVariableRate rate;
+	public MSLShaderVariableRate rate;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_msl_resource_binding
 {
 	public SpvExecutionModel stage;
@@ -120,18 +108,28 @@ public partial struct spvc_msl_resource_binding
 	public uint msl_sampler;
 }
 
-[StructLayout(LayoutKind.Sequential)]
+public partial struct spvc_msl_resource_binding_2
+{
+	public SpvExecutionModel stage;
+	public uint desc_set;
+	public uint binding;
+	public uint count;
+	public uint msl_buffer;
+	public uint msl_texture;
+	public uint msl_sampler;
+}
+
 public partial struct spvc_msl_constexpr_sampler
 {
-	public mslSamplerCoord coord;
-	public mslSamplerFilter min_filter;
-	public mslSamplerFilter mag_filter;
-	public mslSamplerMipFilter mip_filter;
-	public mslSamplerAddress s_address;
-	public mslSamplerAddress t_address;
-	public mslSamplerAddress r_address;
-	public mslSamplerCompareFunc compare_func;
-	public mslSamplerBorderColor border_color;
+	public MSLSamplerCoord coord;
+	public MSLSamplerFilter min_filter;
+	public MSLSamplerFilter mag_filter;
+	public MSLSamplerMipFilter mip_filter;
+	public MSLSamplerAddress s_address;
+	public MSLSamplerAddress t_address;
+	public MSLSamplerAddress r_address;
+	public MSLSamplerCompareFunc compare_func;
+	public MSLSamplerBorderColor border_color;
 	public float lod_clamp_min;
 	public float lod_clamp_max;
 	public int max_anisotropy;
@@ -140,58 +138,31 @@ public partial struct spvc_msl_constexpr_sampler
 	public SpvcBool anisotropy_enable;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_msl_sampler_ycbcr_conversion
 {
 	public uint planes;
-	public mslFormatResolution resolution;
-	public mslSamplerFilter chroma_filter;
-	public mslChromaLocation x_chroma_offset;
-	public mslChromaLocation y_chroma_offset;
+	public MSLFormatResolution resolution;
+	public MSLSamplerFilter chroma_filter;
+	public MSLChromaLocation x_chroma_offset;
+	public MSLChromaLocation y_chroma_offset;
 	public swizzle__FixedBuffer swizzle;
 
-#if NET8_0_OR_GREATER
 	[InlineArray(4)]
 	public partial struct swizzle__FixedBuffer
 	{
-		public mslComponentSwizzle e0;
+		public MSLComponentSwizzle e0;
 	}
-#else
-	public unsafe struct swizzle__FixedBuffer
-	{
-		public mslComponentSwizzle e0;
-		public mslComponentSwizzle e1;
-		public mslComponentSwizzle e2;
-		public mslComponentSwizzle e3;
-
-		[UnscopedRef]
-		public ref mslComponentSwizzle this[int index]
-		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get
-			{
-				return ref Unsafe.Add(ref e0, index);
-			}
-		}
-
-		[UnscopedRef]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public Span<mslComponentSwizzle> AsSpan() => MemoryMarshal.CreateSpan(ref e0, 4);
-	}
-#endif
-	public mslSamplerYcbcrModelConversion ycbcr_model;
-	public mslSamplerYcbcrRange ycbcr_range;
+	public MSLSamplerYcbcrModelConversion ycbcr_model;
+	public MSLSamplerYcbcrRange ycbcr_range;
 	public uint bpc;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_hlsl_resource_binding_mapping
 {
 	public uint register_space;
 	public uint register_binding;
 }
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct spvc_hlsl_resource_binding
 {
 	public SpvExecutionModel stage;
