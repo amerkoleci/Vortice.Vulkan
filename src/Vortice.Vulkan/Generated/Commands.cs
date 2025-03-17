@@ -110,6 +110,7 @@ unsafe partial class Vulkan
 	private static PFN_vkVoidFunction vkAcquireDrmDisplayEXT_ptr;
 	private static PFN_vkVoidFunction vkGetDrmDisplayEXT_ptr;
 	private static PFN_vkVoidFunction vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr;
+	private static PFN_vkVoidFunction vkGetPhysicalDeviceCooperativeVectorPropertiesNV_ptr;
 	private static PFN_vkVoidFunction vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr;
 	private static PFN_vkVoidFunction vkCreateAndroidSurfaceKHR_ptr;
 	private static PFN_vkVoidFunction vkCreateMetalSurfaceEXT_ptr;
@@ -655,12 +656,18 @@ unsafe partial class Vulkan
 	private static PFN_vkVoidFunction vkCmdSetDepthClampRangeEXT_ptr;
 	private static PFN_vkVoidFunction vkGetFramebufferTilePropertiesQCOM_ptr;
 	private static PFN_vkVoidFunction vkGetDynamicRenderingTilePropertiesQCOM_ptr;
+	private static PFN_vkVoidFunction vkConvertCooperativeVectorMatrixNV_ptr;
+	private static PFN_vkVoidFunction vkCmdConvertCooperativeVectorMatrixNV_ptr;
 	private static PFN_vkVoidFunction vkSetLatencySleepModeNV_ptr;
 	private static PFN_vkVoidFunction vkLatencySleepNV_ptr;
 	private static PFN_vkVoidFunction vkSetLatencyMarkerNV_ptr;
 	private static PFN_vkVoidFunction vkGetLatencyTimingsNV_ptr;
 	private static PFN_vkVoidFunction vkQueueNotifyOutOfBandNV_ptr;
 	private static PFN_vkVoidFunction vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr;
+	private static PFN_vkVoidFunction vkGetClusterAccelerationStructureBuildSizesNV_ptr;
+	private static PFN_vkVoidFunction vkCmdBuildClusterAccelerationStructureIndirectNV_ptr;
+	private static PFN_vkVoidFunction vkGetPartitionedAccelerationStructuresBuildSizesNV_ptr;
+	private static PFN_vkVoidFunction vkCmdBuildPartitionedAccelerationStructuresNV_ptr;
 	private static PFN_vkVoidFunction vkGetGeneratedCommandsMemoryRequirementsEXT_ptr;
 	private static PFN_vkVoidFunction vkCmdPreprocessGeneratedCommandsEXT_ptr;
 	private static PFN_vkVoidFunction vkCmdExecuteGeneratedCommandsEXT_ptr;
@@ -698,7 +705,9 @@ unsafe partial class Vulkan
 	private static PFN_vkVoidFunction vkGetAndroidHardwareBufferPropertiesANDROID_ptr;
 	private static PFN_vkVoidFunction vkGetMemoryAndroidHardwareBufferANDROID_ptr;
 	private static PFN_vkVoidFunction vkExportMetalObjectsEXT_ptr;
-	private static PFN_vkVoidFunction vkGetMemoryWin32HandleKHR_ptr;
+	private static PFN_vkVoidFunction vkGetMemoryMetalHandleEXT_ptr;
+	private static PFN_vkVoidFunction vkGetMemoryMetalHandlePropertiesEXT_ptr;
+	internal static PFN_vkVoidFunction vkGetMemoryWin32HandleKHR_ptr;
 	private static PFN_vkVoidFunction vkGetMemoryWin32HandlePropertiesKHR_ptr;
 	private static PFN_vkVoidFunction vkImportSemaphoreWin32HandleKHR_ptr;
 	private static PFN_vkVoidFunction vkGetSemaphoreWin32HandleKHR_ptr;
@@ -4963,6 +4972,21 @@ unsafe partial class Vulkan
 		return ((delegate* unmanaged<VkDevice, VkRenderingInfo*, VkTilePropertiesQCOM*, VkResult>)vkGetDynamicRenderingTilePropertiesQCOM_ptr.Value)(device, renderingInfo, properties);
 	}
 
+	public static VkResult vkGetPhysicalDeviceCooperativeVectorPropertiesNV(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeVectorPropertiesNV* properties)
+	{
+		return ((delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeVectorPropertiesNV*, VkResult>)vkGetPhysicalDeviceCooperativeVectorPropertiesNV_ptr.Value)(physicalDevice, propertyCount, properties);
+	}
+
+	public static VkResult vkConvertCooperativeVectorMatrixNV(VkDevice device, VkConvertCooperativeVectorMatrixInfoNV* info)
+	{
+		return ((delegate* unmanaged<VkDevice, VkConvertCooperativeVectorMatrixInfoNV*, VkResult>)vkConvertCooperativeVectorMatrixNV_ptr.Value)(device, info);
+	}
+
+	public static void vkCmdConvertCooperativeVectorMatrixNV(VkCommandBuffer commandBuffer, uint infoCount, VkConvertCooperativeVectorMatrixInfoNV* infos)
+	{
+		((delegate* unmanaged<VkCommandBuffer, uint, VkConvertCooperativeVectorMatrixInfoNV*, void>)vkCmdConvertCooperativeVectorMatrixNV_ptr.Value)(commandBuffer, infoCount, infos);
+	}
+
 	public static VkResult vkSetLatencySleepModeNV(VkDevice device, VkSwapchainKHR swapchain, VkLatencySleepModeInfoNV* sleepModeInfo)
 	{
 		return ((delegate* unmanaged<VkDevice, VkSwapchainKHR, VkLatencySleepModeInfoNV*, VkResult>)vkSetLatencySleepModeNV_ptr.Value)(device, swapchain, sleepModeInfo);
@@ -4991,6 +5015,26 @@ unsafe partial class Vulkan
 	public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkImageAspectFlags, void>)vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr.Value)(commandBuffer, aspectMask);
+	}
+
+	public static void vkGetClusterAccelerationStructureBuildSizesNV(VkDevice device, VkClusterAccelerationStructureInputInfoNV* info, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo)
+	{
+		((delegate* unmanaged<VkDevice, VkClusterAccelerationStructureInputInfoNV*, VkAccelerationStructureBuildSizesInfoKHR*, void>)vkGetClusterAccelerationStructureBuildSizesNV_ptr.Value)(device, info, sizeInfo);
+	}
+
+	public static void vkCmdBuildClusterAccelerationStructureIndirectNV(VkCommandBuffer commandBuffer, VkClusterAccelerationStructureCommandsInfoNV* commandInfos)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkClusterAccelerationStructureCommandsInfoNV*, void>)vkCmdBuildClusterAccelerationStructureIndirectNV_ptr.Value)(commandBuffer, commandInfos);
+	}
+
+	public static void vkGetPartitionedAccelerationStructuresBuildSizesNV(VkDevice device, VkPartitionedAccelerationStructureInstancesInputNV* info, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo)
+	{
+		((delegate* unmanaged<VkDevice, VkPartitionedAccelerationStructureInstancesInputNV*, VkAccelerationStructureBuildSizesInfoKHR*, void>)vkGetPartitionedAccelerationStructuresBuildSizesNV_ptr.Value)(device, info, sizeInfo);
+	}
+
+	public static void vkCmdBuildPartitionedAccelerationStructuresNV(VkCommandBuffer commandBuffer, VkBuildPartitionedAccelerationStructureInfoNV* buildInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkBuildPartitionedAccelerationStructureInfoNV*, void>)vkCmdBuildPartitionedAccelerationStructuresNV_ptr.Value)(commandBuffer, buildInfo);
 	}
 
 	public static void vkGetGeneratedCommandsMemoryRequirementsEXT(VkDevice device, VkGeneratedCommandsMemoryRequirementsInfoEXT* info, VkMemoryRequirements2* memoryRequirements)
@@ -5281,6 +5325,16 @@ unsafe partial class Vulkan
 	public static void vkExportMetalObjectsEXT(VkDevice device, VkExportMetalObjectsInfoEXT* metalObjectsInfo)
 	{
 		((delegate* unmanaged<VkDevice, VkExportMetalObjectsInfoEXT*, void>)vkExportMetalObjectsEXT_ptr.Value)(device, metalObjectsInfo);
+	}
+
+	public static VkResult vkGetMemoryMetalHandleEXT(VkDevice device, VkMemoryGetMetalHandleInfoEXT* getMetalHandleInfo, void** handle)
+	{
+		return ((delegate* unmanaged<VkDevice, VkMemoryGetMetalHandleInfoEXT*, void**, VkResult>)vkGetMemoryMetalHandleEXT_ptr.Value)(device, getMetalHandleInfo, handle);
+	}
+
+	public static VkResult vkGetMemoryMetalHandlePropertiesEXT(VkDevice device, VkExternalMemoryHandleTypeFlags handleType, void* handle, VkMemoryMetalHandlePropertiesEXT* memoryMetalHandleProperties)
+	{
+		return ((delegate* unmanaged<VkDevice, VkExternalMemoryHandleTypeFlags, void*, VkMemoryMetalHandlePropertiesEXT*, VkResult>)vkGetMemoryMetalHandlePropertiesEXT_ptr.Value)(device, handleType, handle, memoryMetalHandleProperties);
 	}
 
 	public static VkResult vkCreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
@@ -5629,6 +5683,7 @@ unsafe partial class Vulkan
 		vkAcquireDrmDisplayEXT_ptr = load(context, "vkAcquireDrmDisplayEXT"u8);
 		vkGetDrmDisplayEXT_ptr = load(context, "vkGetDrmDisplayEXT"u8);
 		vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr = load(context, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV"u8);
+		vkGetPhysicalDeviceCooperativeVectorPropertiesNV_ptr = load(context, "vkGetPhysicalDeviceCooperativeVectorPropertiesNV"u8);
 		vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr = load(context, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV"u8);
 		vkCreateAndroidSurfaceKHR_ptr = load(context, "vkCreateAndroidSurfaceKHR"u8);
 		vkCreateMetalSurfaceEXT_ptr = load(context, "vkCreateMetalSurfaceEXT"u8);
@@ -6175,12 +6230,18 @@ unsafe partial class Vulkan
 		vkCmdSetDepthClampRangeEXT_ptr = load(context, "vkCmdSetDepthClampRangeEXT"u8);
 		vkGetFramebufferTilePropertiesQCOM_ptr = load(context, "vkGetFramebufferTilePropertiesQCOM"u8);
 		vkGetDynamicRenderingTilePropertiesQCOM_ptr = load(context, "vkGetDynamicRenderingTilePropertiesQCOM"u8);
+		vkConvertCooperativeVectorMatrixNV_ptr = load(context, "vkConvertCooperativeVectorMatrixNV"u8);
+		vkCmdConvertCooperativeVectorMatrixNV_ptr = load(context, "vkCmdConvertCooperativeVectorMatrixNV"u8);
 		vkSetLatencySleepModeNV_ptr = load(context, "vkSetLatencySleepModeNV"u8);
 		vkLatencySleepNV_ptr = load(context, "vkLatencySleepNV"u8);
 		vkSetLatencyMarkerNV_ptr = load(context, "vkSetLatencyMarkerNV"u8);
 		vkGetLatencyTimingsNV_ptr = load(context, "vkGetLatencyTimingsNV"u8);
 		vkQueueNotifyOutOfBandNV_ptr = load(context, "vkQueueNotifyOutOfBandNV"u8);
 		vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr = load(context, "vkCmdSetAttachmentFeedbackLoopEnableEXT"u8);
+		vkGetClusterAccelerationStructureBuildSizesNV_ptr = load(context, "vkGetClusterAccelerationStructureBuildSizesNV"u8);
+		vkCmdBuildClusterAccelerationStructureIndirectNV_ptr = load(context, "vkCmdBuildClusterAccelerationStructureIndirectNV"u8);
+		vkGetPartitionedAccelerationStructuresBuildSizesNV_ptr = load(context, "vkGetPartitionedAccelerationStructuresBuildSizesNV"u8);
+		vkCmdBuildPartitionedAccelerationStructuresNV_ptr = load(context, "vkCmdBuildPartitionedAccelerationStructuresNV"u8);
 		vkGetGeneratedCommandsMemoryRequirementsEXT_ptr = load(context, "vkGetGeneratedCommandsMemoryRequirementsEXT"u8);
 		vkCmdPreprocessGeneratedCommandsEXT_ptr = load(context, "vkCmdPreprocessGeneratedCommandsEXT"u8);
 		vkCmdExecuteGeneratedCommandsEXT_ptr = load(context, "vkCmdExecuteGeneratedCommandsEXT"u8);
@@ -6218,6 +6279,8 @@ unsafe partial class Vulkan
 		vkGetAndroidHardwareBufferPropertiesANDROID_ptr = load(context, "vkGetAndroidHardwareBufferPropertiesANDROID"u8);
 		vkGetMemoryAndroidHardwareBufferANDROID_ptr = load(context, "vkGetMemoryAndroidHardwareBufferANDROID"u8);
 		vkExportMetalObjectsEXT_ptr = load(context, "vkExportMetalObjectsEXT"u8);
+		vkGetMemoryMetalHandleEXT_ptr = load(context, "vkGetMemoryMetalHandleEXT"u8);
+		vkGetMemoryMetalHandlePropertiesEXT_ptr = load(context, "vkGetMemoryMetalHandlePropertiesEXT"u8);
 		vkGetMemoryWin32HandleKHR_ptr = load(context, "vkGetMemoryWin32HandleKHR"u8);
 		vkGetMemoryWin32HandlePropertiesKHR_ptr = load(context, "vkGetMemoryWin32HandlePropertiesKHR"u8);
 		vkImportSemaphoreWin32HandleKHR_ptr = load(context, "vkImportSemaphoreWin32HandleKHR"u8);

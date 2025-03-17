@@ -252,6 +252,7 @@ partial class CsCodeGenerator
         "glsl",
         "hlsl",
         "msl",
+        "mtl",
     };
 
     private readonly HashSet<string> s_enumConstants = [];
@@ -279,16 +280,16 @@ partial class CsCodeGenerator
                 continue;
             }
 
-            bool isBitmask =
-                cppEnum.Name.EndsWith("FlagBits") ||
-                cppEnum.Name.EndsWith("FlagBits2") ||
-                cppEnum.Name.EndsWith("FlagBitsEXT") ||
-                cppEnum.Name.EndsWith("FlagBitsKHR") ||
-                cppEnum.Name.EndsWith("FlagBitsNV") ||
-                cppEnum.Name.EndsWith("FlagBitsAMD") ||
-                cppEnum.Name.EndsWith("FlagBitsMVK") ||
-                cppEnum.Name.EndsWith("FlagBitsNN") ||
-                cppEnum.Name.EndsWith("FlagBitsARM")
+            bool isBitmask = cppEnum.Name.EndsWith("FlagBits")
+                || cppEnum.Name.EndsWith("FlagBits2")
+                || cppEnum.Name.EndsWith("FlagBits3")
+                || cppEnum.Name.EndsWith("FlagBitsEXT")
+                || cppEnum.Name.EndsWith("FlagBitsKHR")
+                || cppEnum.Name.EndsWith("FlagBitsNV")
+                || cppEnum.Name.EndsWith("FlagBitsAMD")
+                || cppEnum.Name.EndsWith("FlagBitsMVK")
+                || cppEnum.Name.EndsWith("FlagBitsNN")
+                || cppEnum.Name.EndsWith("FlagBitsARM")
                 || (cppEnum.Name.StartsWith("Spv") && cppEnum.Name.EndsWith("Mask_")) // spirv.h
                 ;
 
@@ -641,6 +642,14 @@ partial class CsCodeGenerator
                     {
                         fieldType = fieldType.Replace("FlagBitsNV", "FlagsNV");
                     }
+                    else if (fieldType.EndsWith("FlagBits3"))
+                    {
+                        fieldType = fieldType.Replace("FlagBits3", "Flags3");
+                    }
+                    else if (fieldType.EndsWith("FlagBits3KHR"))
+                    {
+                        fieldType = fieldType.Replace("FlagBits3KHR", "Flags3KHR");
+                    }
 
                     writer.WriteLine("[Flags]");
                     writer.BeginBlock($"public enum {fieldType} : {baseType}");
@@ -659,6 +668,10 @@ partial class CsCodeGenerator
                 else if (cppField.Name.StartsWith("VK_ACCESS_2"))
                 {
                     csFieldName = GetPrettyEnumName(cppField.Name, "VK_ACCESS_2");
+                }
+                else if (cppField.Name.StartsWith("VK_ACCESS_3"))
+                {
+                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_ACCESS_3");
                 }
                 else if (cppField.Name.StartsWith("VK_FORMAT_FEATURE_2"))
                 {
@@ -1053,7 +1066,7 @@ partial class CsCodeGenerator
             return knownName;
         }
 
-        if (value.IndexOf(enumPrefix) != 0)
+        if (!value.StartsWith(enumPrefix))
         {
             return value;
         }
@@ -1107,6 +1120,18 @@ partial class CsCodeGenerator
             else if (part.Equals("OPENGLES", StringComparison.InvariantCultureIgnoreCase))
             {
                 return "OpenGLES";
+            }
+            else if (part.Equals("MTLBUFFER", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return "MTLBuffer";
+            }
+            else if (part.Equals("MTLTEXTURE", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return "MTLTexture";
+            }
+            else if (part.Equals("MTLHEAP", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return "MTLHeap";
             }
             else
             {
