@@ -10146,6 +10146,29 @@ public unsafe partial struct VkDisplayPlaneCapabilities2KHR : IStructureType, IC
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceShaderBfloat16FeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderBfloat16FeaturesKHR;
+	public void* pNext;
+	public VkBool32 shaderBFloat16Type;
+	public VkBool32 shaderBFloat16DotProduct;
+	public VkBool32 shaderBFloat16CooperativeMatrix;
+
+	public VkPhysicalDeviceShaderBfloat16FeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceShaderClockFeaturesKHR : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderClockFeaturesKHR;
@@ -17565,6 +17588,146 @@ public unsafe partial struct VkPhysicalDeviceCudaKernelLaunchPropertiesNV : IStr
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceTileShadingFeaturesQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceTileShadingFeaturesQCOM;
+	public void* pNext;
+	public VkBool32 tileShading;
+	public VkBool32 tileShadingFragmentStage;
+	public VkBool32 tileShadingColorAttachments;
+	public VkBool32 tileShadingDepthAttachments;
+	public VkBool32 tileShadingStencilAttachments;
+	public VkBool32 tileShadingInputAttachments;
+	public VkBool32 tileShadingSampledAttachments;
+	public VkBool32 tileShadingPerTileDraw;
+	public VkBool32 tileShadingPerTileDispatch;
+	public VkBool32 tileShadingDispatchTile;
+	public VkBool32 tileShadingApron;
+	public VkBool32 tileShadingAnisotropicApron;
+	public VkBool32 tileShadingAtomicOps;
+	public VkBool32 tileShadingImageProcessing;
+
+	public VkPhysicalDeviceTileShadingFeaturesQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceTileShadingPropertiesQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceTileShadingPropertiesQCOM;
+	public void* pNext;
+	public uint maxApronSize;
+	public VkBool32 preferNonCoherent;
+	public VkExtent2D tileGranularity;
+	public VkExtent2D maxTileShadingRate;
+
+	public VkPhysicalDeviceTileShadingPropertiesQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkRenderPassTileShadingCreateInfoQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderPassTileShadingCreateInfoQCOM;
+	public void* pNext;
+	public VkTileShadingRenderPassFlagsQCOM flags;
+	public VkExtent2D tileApronSize;
+
+	public VkRenderPassTileShadingCreateInfoQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPerTileBeginInfoQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PerTileBeginInfoQCOM;
+	public void* pNext;
+
+	public VkPerTileBeginInfoQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPerTileEndInfoQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PerTileEndInfoQCOM;
+	public void* pNext;
+
+	public VkPerTileEndInfoQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkDispatchTileInfoQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DispatchTileInfoQCOM;
+	public void* pNext;
+
+	public VkDispatchTileInfoQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkQueryLowLatencySupportNV : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.QueryLowLatencySupportNV;
@@ -20065,13 +20228,13 @@ public unsafe partial struct VkRenderPassStripeSubmitInfoARM : IStructureType, I
 	}
 }
 
-public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM : IStructureType, IChainType
+public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM;
+	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetFeaturesEXT;
 	public void* pNext;
 	public VkBool32 fragmentDensityMapOffset;
 
-	public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM()
+	public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT()
 	{
 	}
 
@@ -20086,13 +20249,13 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCO
 	}
 }
 
-public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM : IStructureType, IChainType
+public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM;
+	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetPropertiesEXT;
 	public void* pNext;
 	public VkExtent2D fragmentDensityOffsetGranularity;
 
-	public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM()
+	public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT()
 	{
 	}
 
@@ -20107,14 +20270,14 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQ
 	}
 }
 
-public unsafe partial struct VkSubpassFragmentDensityMapOffsetEndInfoQCOM : IStructureType, IChainType
+public unsafe partial struct VkRenderPassFragmentDensityMapOffsetEndInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubpassFragmentDensityMapOffsetEndInfoQCOM;
+	public VkStructureType sType = VkStructureType.RenderPassFragmentDensityMapOffsetEndInfoEXT;
 	public void* pNext;
 	public uint fragmentDensityOffsetCount;
 	public VkOffset2D* pFragmentDensityOffsets;
 
-	public VkSubpassFragmentDensityMapOffsetEndInfoQCOM()
+	public VkRenderPassFragmentDensityMapOffsetEndInfoEXT()
 	{
 	}
 
@@ -22211,6 +22374,113 @@ public unsafe partial struct VkPhysicalDeviceDescriptorPoolOverallocationFeature
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceTileMemoryHeapFeaturesQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceTileMemoryHeapFeaturesQCOM;
+	public void* pNext;
+	public VkBool32 tileMemoryHeap;
+
+	public VkPhysicalDeviceTileMemoryHeapFeaturesQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceTileMemoryHeapPropertiesQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceTileMemoryHeapPropertiesQCOM;
+	public void* pNext;
+	public VkBool32 queueSubmitBoundary;
+	public VkBool32 tileBufferTransfers;
+
+	public VkPhysicalDeviceTileMemoryHeapPropertiesQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkTileMemoryRequirementsQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.TileMemoryRequirementsQCOM;
+	public void* pNext;
+	public ulong size;
+	public ulong alignment;
+
+	public VkTileMemoryRequirementsQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkTileMemoryBindInfoQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.TileMemoryBindInfoQCOM;
+	public void* pNext;
+	public VkDeviceMemory memory;
+
+	public VkTileMemoryBindInfoQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkTileMemorySizeInfoQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.TileMemorySizeInfoQCOM;
+	public void* pNext;
+	public ulong size;
+
+	public VkTileMemorySizeInfoQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkDisplaySurfaceStereoCreateInfoNV : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.DisplaySurfaceStereoCreateInfoNV;
@@ -22260,6 +22530,91 @@ public unsafe partial struct VkPhysicalDeviceRawAccessChainsFeaturesNV : IStruct
 	public VkBool32 shaderRawAccessChains;
 
 	public VkPhysicalDeviceRawAccessChainsFeaturesNV()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkExternalComputeQueueDeviceCreateInfoNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ExternalComputeQueueDeviceCreateInfoNV;
+	public void* pNext;
+	public uint reservedExternalQueues;
+
+	public VkExternalComputeQueueDeviceCreateInfoNV()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkExternalComputeQueueCreateInfoNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ExternalComputeQueueCreateInfoNV;
+	public void* pNext;
+	public VkQueue preferredQueue;
+
+	public VkExternalComputeQueueCreateInfoNV()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkExternalComputeQueueDataParamsNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ExternalComputeQueueDataParamsNV;
+	public void* pNext;
+	public uint deviceIndex;
+
+	public VkExternalComputeQueueDataParamsNV()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceExternalComputeQueuePropertiesNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceExternalComputeQueuePropertiesNV;
+	public void* pNext;
+	public uint externalDataSize;
+	public uint maxExternalQueues;
+
+	public VkPhysicalDeviceExternalComputeQueuePropertiesNV()
 	{
 	}
 
@@ -23541,6 +23896,26 @@ public unsafe partial struct VkPhysicalDevicePresentMeteringFeaturesNV : IStruct
 	public VkBool32 presentMetering;
 
 	public VkPhysicalDevicePresentMeteringFeaturesNV()
+	{
+	}
+
+	/// <inheritdoc />
+	VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkRenderingEndInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderingEndInfoEXT;
+	public void* pNext;
+
+	public VkRenderingEndInfoEXT()
 	{
 	}
 

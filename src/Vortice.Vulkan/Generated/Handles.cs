@@ -1292,6 +1292,31 @@ public readonly partial struct VkShaderEXT : IEquatable<VkShaderEXT>
 /// A non-dispatchable handle.
 /// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkExternalComputeQueueNV : IEquatable<VkExternalComputeQueueNV>
+{
+	public VkExternalComputeQueueNV(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static VkExternalComputeQueueNV Null => new(0);
+	public static implicit operator VkExternalComputeQueueNV(ulong handle) => new(handle);
+	public static implicit operator ulong(VkExternalComputeQueueNV handle) => handle.Handle;
+	public static bool operator ==(VkExternalComputeQueueNV left, VkExternalComputeQueueNV right) => left.Handle == right.Handle;
+	public static bool operator !=(VkExternalComputeQueueNV left, VkExternalComputeQueueNV right) => left.Handle != right.Handle;
+	public static bool operator ==(VkExternalComputeQueueNV left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkExternalComputeQueueNV left, ulong right) => left.Handle != right;
+	public bool Equals(VkExternalComputeQueueNV other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkExternalComputeQueueNV handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkExternalComputeQueueNV)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VkIndirectExecutionSetEXT : IEquatable<VkIndirectExecutionSetEXT>
 {
 	public VkIndirectExecutionSetEXT(ulong handle) { Handle = handle; }

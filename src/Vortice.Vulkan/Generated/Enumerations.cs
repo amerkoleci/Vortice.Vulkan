@@ -1068,6 +1068,8 @@ public enum VkStructureType
 	PipelineShaderStageNodeCreateInfoAMDX = 1000134004,
 	/// <unmanaged>VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD</unmanaged>
 	AttachmentSampleCountInfoAMD = 1000044008,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_BFLOAT16_FEATURES_KHR</unmanaged>
+	PhysicalDeviceShaderBfloat16FeaturesKHR = 1000141000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT</unmanaged>
 	SampleLocationsInfoEXT = 1000143000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT</unmanaged>
@@ -1478,6 +1480,18 @@ public enum VkStructureType
 	PhysicalDeviceCudaKernelLaunchFeaturesNV = 1000307003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV</unmanaged>
 	PhysicalDeviceCudaKernelLaunchPropertiesNV = 1000307004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_FEATURES_QCOM</unmanaged>
+	PhysicalDeviceTileShadingFeaturesQCOM = 1000309000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM</unmanaged>
+	PhysicalDeviceTileShadingPropertiesQCOM = 1000309001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM</unmanaged>
+	RenderPassTileShadingCreateInfoQCOM = 1000309002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PER_TILE_BEGIN_INFO_QCOM</unmanaged>
+	PerTileBeginInfoQCOM = 1000309003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM</unmanaged>
+	PerTileEndInfoQCOM = 1000309004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DISPATCH_TILE_INFO_QCOM</unmanaged>
+	DispatchTileInfoQCOM = 1000309005,
 	/// <unmanaged>VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV</unmanaged>
 	QueryLowLatencySupportNV = 1000310000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT</unmanaged>
@@ -1760,12 +1774,6 @@ public enum VkStructureType
 	RenderPassStripeInfoARM = 1000424003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_SUBMIT_INFO_ARM</unmanaged>
 	RenderPassStripeSubmitInfoARM = 1000424004,
-	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM</unmanaged>
-	PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM = 1000425000,
-	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_QCOM</unmanaged>
-	PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM = 1000425001,
-	/// <unmanaged>VK_STRUCTURE_TYPE_SUBPASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_QCOM</unmanaged>
-	SubpassFragmentDensityMapOffsetEndInfoQCOM = 1000425002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV</unmanaged>
 	PhysicalDeviceCopyMemoryIndirectFeaturesNV = 1000426000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_NV</unmanaged>
@@ -2040,6 +2048,16 @@ public enum VkStructureType
 	BindDescriptorBufferEmbeddedSamplersInfoEXT = 1000545008,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV</unmanaged>
 	PhysicalDeviceDescriptorPoolOverallocationFeaturesNV = 1000546000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_FEATURES_QCOM</unmanaged>
+	PhysicalDeviceTileMemoryHeapFeaturesQCOM = 1000547000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM</unmanaged>
+	PhysicalDeviceTileMemoryHeapPropertiesQCOM = 1000547001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM</unmanaged>
+	TileMemoryRequirementsQCOM = 1000547002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM</unmanaged>
+	TileMemoryBindInfoQCOM = 1000547003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM</unmanaged>
+	TileMemorySizeInfoQCOM = 1000547004,
 	/// <unmanaged>VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV</unmanaged>
 	DisplaySurfaceStereoCreateInfoNV = 1000551000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV</unmanaged>
@@ -2066,6 +2084,14 @@ public enum VkStructureType
 	VideoFormatAV1QuantizationMapPropertiesKHR = 1000553008,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV</unmanaged>
 	PhysicalDeviceRawAccessChainsFeaturesNV = 1000555000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DEVICE_CREATE_INFO_NV</unmanaged>
+	ExternalComputeQueueDeviceCreateInfoNV = 1000556000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV</unmanaged>
+	ExternalComputeQueueCreateInfoNV = 1000556001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DATA_PARAMS_NV</unmanaged>
+	ExternalComputeQueueDataParamsNV = 1000556002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV</unmanaged>
+	PhysicalDeviceExternalComputeQueuePropertiesNV = 1000556003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR</unmanaged>
 	PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR = 1000558000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV</unmanaged>
@@ -2190,14 +2216,20 @@ public enum VkStructureType
 	SetPresentConfigNV = 1000613000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV</unmanaged>
 	PhysicalDevicePresentMeteringFeaturesNV = 1000613001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_EXT</unmanaged>
+	PhysicalDeviceFragmentDensityMapOffsetFeaturesEXT = 1000425000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_EXT</unmanaged>
+	PhysicalDeviceFragmentDensityMapOffsetPropertiesEXT = 1000425001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_EXT</unmanaged>
+	RenderPassFragmentDensityMapOffsetEndInfoEXT = 1000425002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_RENDERING_END_INFO_EXT</unmanaged>
+	RenderingEndInfoEXT = 1000619003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES</unmanaged>
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES</unmanaged>
 	PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO_INTEL</unmanaged>
 	QueryPoolCreateInfoINTEL = QueryPoolPerformanceQueryCreateInfoINTEL,
-	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_ARM</unmanaged>
-	PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM = PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_VALVE</unmanaged>
 	PhysicalDeviceMutableDescriptorTypeFeaturesVALVE = PhysicalDeviceMutableDescriptorTypeFeaturesEXT,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_VALVE</unmanaged>
@@ -2410,6 +2442,8 @@ public enum VkObjectType
 	ShaderEXT = 1000482000,
 	/// <unmanaged>VK_OBJECT_TYPE_PIPELINE_BINARY_KHR</unmanaged>
 	PipelineBinaryKHR = 1000483000,
+	/// <unmanaged>VK_OBJECT_TYPE_EXTERNAL_COMPUTE_QUEUE_NV</unmanaged>
+	ExternalComputeQueueNV = 1000556000,
 	/// <unmanaged>VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT</unmanaged>
 	IndirectCommandsLayoutEXT = 1000572000,
 	/// <unmanaged>VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT</unmanaged>
@@ -3656,8 +3690,6 @@ public enum VkAttachmentStoreOp
 	DontCare = 1,
 	/// <unmanaged>VK_ATTACHMENT_STORE_OP_NONE</unmanaged>
 	None = 1000301000,
-	/// <unmanaged>VK_ATTACHMENT_STORE_OP_NONE_QCOM</unmanaged>
-	NoneQCOM = None,
 }
 
 public enum VkPipelineBindPoint
@@ -4011,10 +4043,10 @@ public enum VkImageCreateFlags
 	MultisampledRenderToSingleSampledEXT = 0x00040000,
 	/// <unmanaged>VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT</unmanaged>
 	View2DCompatibleEXT = 0x00020000,
-	/// <unmanaged>VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_QCOM</unmanaged>
-	FragmentDensityMapOffsetQCOM = 0x00008000,
 	/// <unmanaged>VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR</unmanaged>
 	VideoProfileIndependentKHR = 0x00100000,
+	/// <unmanaged>VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT</unmanaged>
+	FragmentDensityMapOffsetEXT = 0x00008000,
 }
 
 [Flags]
@@ -4128,6 +4160,8 @@ public enum VkImageUsageFlags
 	SampleWeightQCOM = 0x00100000,
 	/// <unmanaged>VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM</unmanaged>
 	SampleBlockMatchQCOM = 0x00200000,
+	/// <unmanaged>VK_IMAGE_USAGE_TILE_MEMORY_QCOM</unmanaged>
+	TileMemoryQCOM = 0x08000000,
 	/// <unmanaged>VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR</unmanaged>
 	VideoEncodeQuantizationDeltaMapKHR = 0x02000000,
 	/// <unmanaged>VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR</unmanaged>
@@ -4153,6 +4187,8 @@ public enum VkMemoryHeapFlags
 	DeviceLocal = 0x00000001,
 	/// <unmanaged>VK_MEMORY_HEAP_MULTI_INSTANCE_BIT</unmanaged>
 	MultiInstance = 0x00000002,
+	/// <unmanaged>VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM</unmanaged>
+	TileMemoryQCOM = 0x00000008,
 }
 
 [Flags]
@@ -4609,6 +4645,8 @@ public enum VkBufferUsageFlags
 	MicromapBuildInputReadOnlyEXT = 0x00800000,
 	/// <unmanaged>VK_BUFFER_USAGE_MICROMAP_STORAGE_BIT_EXT</unmanaged>
 	MicromapStorageEXT = 0x01000000,
+	/// <unmanaged>VK_BUFFER_USAGE_TILE_MEMORY_QCOM</unmanaged>
+	TileMemoryQCOM = 0x08000000,
 }
 
 [Flags]
@@ -4789,10 +4827,6 @@ public enum VkPipelineDepthStencilStateCreateFlags
 	RasterizationOrderAttachmentDepthAccessEXT = 0x00000001,
 	/// <unmanaged>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT</unmanaged>
 	RasterizationOrderAttachmentStencilAccessEXT = 0x00000002,
-	/// <unmanaged>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_ARM</unmanaged>
-	RasterizationOrderAttachmentDepthAccessARM = RasterizationOrderAttachmentDepthAccessEXT,
-	/// <unmanaged>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_ARM</unmanaged>
-	RasterizationOrderAttachmentStencilAccessARM = RasterizationOrderAttachmentStencilAccessEXT,
 }
 
 [Flags]
@@ -4801,8 +4835,6 @@ public enum VkPipelineColorBlendStateCreateFlags
 	None = 0,
 	/// <unmanaged>VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT</unmanaged>
 	RasterizationOrderAttachmentAccessEXT = 0x00000001,
-	/// <unmanaged>VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_ARM</unmanaged>
-	RasterizationOrderAttachmentAccessARM = RasterizationOrderAttachmentAccessEXT,
 }
 
 [Flags]
@@ -4930,6 +4962,8 @@ public enum VkSubpassDescriptionFlags
 	FragmentRegionQCOM = 0x00000004,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM</unmanaged>
 	ShaderResolveQCOM = 0x00000008,
+	/// <unmanaged>VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM</unmanaged>
+	TileShadingApronQCOM = 0x00000100,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT</unmanaged>
 	RasterizationOrderAttachmentColorAccessEXT = 0x00000010,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT</unmanaged>
@@ -4938,12 +4972,6 @@ public enum VkSubpassDescriptionFlags
 	RasterizationOrderAttachmentStencilAccessEXT = 0x00000040,
 	/// <unmanaged>VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT</unmanaged>
 	EnableLegacyDitheringEXT = 0x00000080,
-	/// <unmanaged>VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_ARM</unmanaged>
-	RasterizationOrderAttachmentColorAccessARM = RasterizationOrderAttachmentColorAccessEXT,
-	/// <unmanaged>VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_ARM</unmanaged>
-	RasterizationOrderAttachmentDepthAccessARM = RasterizationOrderAttachmentDepthAccessEXT,
-	/// <unmanaged>VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_ARM</unmanaged>
-	RasterizationOrderAttachmentStencilAccessARM = RasterizationOrderAttachmentStencilAccessEXT,
 }
 
 [Flags]
@@ -6750,6 +6778,8 @@ public enum VkComponentTypeKHR
 	Uint32 = 9,
 	/// <unmanaged>VK_COMPONENT_TYPE_UINT64_KHR</unmanaged>
 	Uint64 = 10,
+	/// <unmanaged>VK_COMPONENT_TYPE_BFLOAT16_KHR</unmanaged>
+	Bfloat16 = 1000141000,
 	/// <unmanaged>VK_COMPONENT_TYPE_SINT8_PACKED_NV</unmanaged>
 	Sint8PackedNV = 1000491000,
 	/// <unmanaged>VK_COMPONENT_TYPE_UINT8_PACKED_NV</unmanaged>
@@ -7045,23 +7075,23 @@ public enum StdVideoAV1ChromaSamplePosition
 public enum VkVideoEncodeAV1PredictionModeKHR
 {
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_ = 0,
+	IntraOnly = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_ = 1,
+	SingleReference = 1,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_ = 2,
+	UnidirectionalCompound = 2,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_ = 3,
+	BidirectionalCompound = 3,
 }
 
 public enum VkVideoEncodeAV1RateControlGroupKHR
 {
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_ = 0,
+	Intra = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_ = 1,
+	Predictive = 1,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_ = 2,
+	Bipredictive = 2,
 }
 
 [Flags]
@@ -7069,15 +7099,15 @@ public enum VkVideoEncodeAV1CapabilityFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX_BIT_ = 0x00000001,
+	PerRateControlGroupMinMaxQIndex = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER_BIT_ = 0x00000002,
+	GenerateObuExtensionHeader = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY_BIT_ = 0x00000004,
+	PrimaryReferenceCdfOnly = 0x00000004,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_ = 0x00000008,
+	FrameSizeOverride = 0x00000008,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_CAPABILITY_MOTION_VECTOR_SCALING_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_CAPABILITY_MOTION_VECTOR_SCALING_BIT_ = 0x00000010,
+	MotionVectorScaling = 0x00000010,
 }
 
 [Flags]
@@ -7085,13 +7115,13 @@ public enum VkVideoEncodeAV1StdFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_STD_UNIFORM_TILE_SPACING_FLAG_SET_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_STD_UNIFORM_TILE_SPACING_FLAG_SET_BIT_ = 0x00000001,
+	UniformTileSpacingFlagSet = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_STD_SKIP_MODE_PRESENT_UNSET_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_STD_SKIP_MODE_PRESENT_UNSET_BIT_ = 0x00000002,
+	SkipModePresentUnset = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_STD_PRIMARY_REF_FRAME_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_STD_PRIMARY_REF_FRAME_BIT_ = 0x00000004,
+	PrimaryRefFrame = 0x00000004,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_STD_DELTA_Q_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_STD_DELTA_Q_BIT_ = 0x00000008,
+	DeltaQ = 0x00000008,
 }
 
 [Flags]
@@ -7099,9 +7129,9 @@ public enum VkVideoEncodeAV1SuperblockSizeFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64_BIT_ = 0x00000001,
+	_64 = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128_BIT_ = 0x00000002,
+	_128 = 0x00000002,
 }
 
 [Flags]
@@ -7109,13 +7139,13 @@ public enum VkVideoEncodeAV1RateControlFlagsKHR
 {
 	None = 0,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_BIT_ = 0x00000001,
+	RegularGop = 0x00000001,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_ = 0x00000002,
+	TemporalLayerPatternDyadic = 0x00000002,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_ = 0x00000004,
+	ReferencePatternFlat = 0x00000004,
 	/// <unmanaged>VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR</unmanaged>
-	VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_ = 0x00000008,
+	ReferencePatternDyadic = 0x00000008,
 }
 
 public enum VkTimeDomainKHR
@@ -7811,6 +7841,16 @@ public enum VkDeviceDiagnosticsConfigFlagsNV
 }
 
 [Flags]
+public enum VkTileShadingRenderPassFlagsQCOM
+{
+	None = 0,
+	/// <unmanaged>VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM</unmanaged>
+	Enable = 0x00000001,
+	/// <unmanaged>VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM</unmanaged>
+	PerTileExecution = 0x00000002,
+}
+
+[Flags]
 public enum VkGraphicsPipelineLibraryFlagsEXT
 {
 	None = 0,
@@ -8290,13 +8330,13 @@ public enum VkRayTracingInvocationReorderModeNV
 public enum VkCooperativeVectorMatrixLayoutNV
 {
 	/// <unmanaged>VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV</unmanaged>
-	VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_ = 0,
+	RowMajor = 0,
 	/// <unmanaged>VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV</unmanaged>
-	VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_ = 1,
+	ColumnMajor = 1,
 	/// <unmanaged>VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV</unmanaged>
-	VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_ = 2,
+	InferencingOptimal = 2,
 	/// <unmanaged>VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV</unmanaged>
-	VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_ = 3,
+	TrainingOptimal = 3,
 }
 
 public enum VkLayerSettingTypeEXT
@@ -8322,29 +8362,29 @@ public enum VkLayerSettingTypeEXT
 public enum VkLatencyMarkerNV
 {
 	/// <unmanaged>VK_LATENCY_MARKER_SIMULATION_START_NV</unmanaged>
-	VK_LATENCY_MARKER_SIMULATION_START_ = 0,
+	SimulationStart = 0,
 	/// <unmanaged>VK_LATENCY_MARKER_SIMULATION_END_NV</unmanaged>
-	VK_LATENCY_MARKER_SIMULATION_END_ = 1,
+	SimulationEnd = 1,
 	/// <unmanaged>VK_LATENCY_MARKER_RENDERSUBMIT_START_NV</unmanaged>
-	VK_LATENCY_MARKER_RENDERSUBMIT_START_ = 2,
+	RendersubmitStart = 2,
 	/// <unmanaged>VK_LATENCY_MARKER_RENDERSUBMIT_END_NV</unmanaged>
-	VK_LATENCY_MARKER_RENDERSUBMIT_END_ = 3,
+	RendersubmitEnd = 3,
 	/// <unmanaged>VK_LATENCY_MARKER_PRESENT_START_NV</unmanaged>
-	VK_LATENCY_MARKER_PRESENT_START_ = 4,
+	PresentStart = 4,
 	/// <unmanaged>VK_LATENCY_MARKER_PRESENT_END_NV</unmanaged>
-	VK_LATENCY_MARKER_PRESENT_END_ = 5,
+	PresentEnd = 5,
 	/// <unmanaged>VK_LATENCY_MARKER_INPUT_SAMPLE_NV</unmanaged>
-	VK_LATENCY_MARKER_INPUT_SAMPLE_ = 6,
+	InputSample = 6,
 	/// <unmanaged>VK_LATENCY_MARKER_TRIGGER_FLASH_NV</unmanaged>
-	VK_LATENCY_MARKER_TRIGGER_FLASH_ = 7,
+	TriggerFlash = 7,
 	/// <unmanaged>VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_START_NV</unmanaged>
-	VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_START_ = 8,
+	OutOfBandRendersubmitStart = 8,
 	/// <unmanaged>VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_END_NV</unmanaged>
-	VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_END_ = 9,
+	OutOfBandRendersubmitEnd = 9,
 	/// <unmanaged>VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_START_NV</unmanaged>
-	VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_START_ = 10,
+	OutOfBandPresentStart = 10,
 	/// <unmanaged>VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_END_NV</unmanaged>
-	VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_END_ = 11,
+	OutOfBandPresentEnd = 11,
 }
 
 public enum VkOutOfBandQueueTypeNV
@@ -8358,35 +8398,29 @@ public enum VkOutOfBandQueueTypeNV
 public enum VkBlockMatchWindowCompareModeQCOM
 {
 	/// <unmanaged>VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM</unmanaged>
-	VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM = 0,
+	Min = 0,
 	/// <unmanaged>VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM</unmanaged>
-	VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM = 1,
-	/// <unmanaged>VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_ENUM_QCOM</unmanaged>
-	VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_ENUM_QCOM = 0x7FFFFFFF,
+	Max = 1,
 }
 
 public enum VkCubicFilterWeightsQCOM
 {
 	/// <unmanaged>VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM</unmanaged>
-	VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM = 0,
+	CatmullRom = 0,
 	/// <unmanaged>VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM</unmanaged>
-	VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM = 1,
+	ZeroTangentCardinal = 1,
 	/// <unmanaged>VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM</unmanaged>
-	VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM = 2,
+	BSpline = 2,
 	/// <unmanaged>VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM</unmanaged>
-	VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM = 3,
-	/// <unmanaged>VK_CUBIC_FILTER_WEIGHTS_MAX_ENUM_QCOM</unmanaged>
-	VK_CUBIC_FILTER_WEIGHTS_MAX_ENUM_QCOM = 0x7FFFFFFF,
+	MitchellNetravali = 3,
 }
 
 public enum VkLayeredDriverUnderlyingApiMSFT
 {
 	/// <unmanaged>VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT</unmanaged>
-	VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT = 0,
+	None = 0,
 	/// <unmanaged>VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT</unmanaged>
-	VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT = 1,
-	/// <unmanaged>VK_LAYERED_DRIVER_UNDERLYING_API_MAX_ENUM_MSFT</unmanaged>
-	VK_LAYERED_DRIVER_UNDERLYING_API_MAX_ENUM_MSFT = 0x7FFFFFFF,
+	D3D12 = 1,
 }
 
 public enum VkDisplaySurfaceStereoTypeNV
@@ -9219,6 +9253,10 @@ public enum VkAccessFlags2 : ulong
 	VideoEncodeReadKHR = 0x2000000000UL,
 	/// <unmanaged>VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR</unmanaged>
 	VideoEncodeWriteKHR = 0x4000000000UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM</unmanaged>
+	ShaderTileAttachmentReadQCOM = 0x8000000000000UL,
+	/// <unmanaged>VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM</unmanaged>
+	ShaderTileAttachmentWriteQCOM = 0x10000000000000UL,
 	/// <unmanaged>VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT</unmanaged>
 	TransformFeedbackWriteEXT = 0x02000000UL,
 	/// <unmanaged>VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT</unmanaged>
@@ -9510,6 +9548,8 @@ public enum VkBufferUsageFlags2 : ulong
 	MicromapBuildInputReadOnlyEXT = 0x00800000UL,
 	/// <unmanaged>VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT</unmanaged>
 	MicromapStorageEXT = 0x01000000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_TILE_MEMORY_QCOM</unmanaged>
+	TileMemoryQCOM = 0x08000000UL,
 	/// <unmanaged>VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT</unmanaged>
 	PreprocessBufferEXT = 0x80000000UL,
 }

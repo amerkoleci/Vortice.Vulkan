@@ -89,7 +89,11 @@ partial class CsCodeGenerator
         "vkCreateSharedSwapchainsKHR",
 
         "vkCreateDebugUtilsMessengerEXT",
-        //"vkGetMemoryAndroidHardwareBufferANDROID",
+        "vkGetMemoryWin32HandleKHR",
+        "vkGetSemaphoreWin32HandleKHR",
+        "vkGetFenceWin32HandleKHR",
+        "vkGetMemoryWin32HandleNV",
+        "vkGetMemoryAndroidHardwareBufferANDROID",
 
         // vma
         "vmaCreateAllocator",
@@ -126,12 +130,17 @@ partial class CsCodeGenerator
         "spvReflectCreateShaderModule",
     ];
 
-    private static string GetFunctionPointerSignature(CppFunction function, bool allowNonBlittable = true)
+    private string GetFunctionPointerSignature(CppFunction function, bool allowNonBlittable = true)
     {
         StringBuilder builder = new();
         foreach (CppParameter parameter in function.Parameters)
         {
             string paramCsType = GetCsTypeName(parameter.Type);
+            if ((paramCsType == "IntPtr" || paramCsType == "nint")
+                && _outReturnFunctions.Contains(function.Name))
+            {
+                paramCsType += "*";
+            }
 
             builder.Append(paramCsType).Append(", ");
         }
@@ -159,7 +168,7 @@ partial class CsCodeGenerator
             return true;
         }
 
-        if(!vulkan)
+        if (!vulkan)
             return ShouldIgnoreVulkanFile(sourceFileName);
 
         return false;
@@ -437,7 +446,7 @@ partial class CsCodeGenerator
         }
     }
 
-    private static void WriteLibraryImport(CodeWriter writer, Dictionary<string, CppFunction> commands)
+    private void WriteLibraryImport(CodeWriter writer, Dictionary<string, CppFunction> commands)
     {
         using (writer.PushBlock($"private static void LoadEntries()"))
         {
@@ -504,6 +513,11 @@ partial class CsCodeGenerator
 
                         if (CanBeUsedAsInOut(cppParameter.Type, true, out _))
                         {
+                            if (paramCsTypeName == "IntPtr" || paramCsTypeName == "nint")
+                            {
+                                paramCsTypeName += "*";
+                            }
+
                             writer.WriteLine($"Unsafe.SkipInit(out {paramCsName});");
                             writer.BeginBlock($"fixed ({paramCsTypeName} {paramCsName}Ptr = &{paramCsName})");
                             closeBlockCount++;
@@ -620,6 +634,11 @@ partial class CsCodeGenerator
 
     public static string GetParameterSignature(CppFunction cppFunction, bool canUseOut, bool inParameters)
     {
+        if (cppFunction.Name == "vkGetMemoryWin32HandleKHR")
+        {
+
+        }
+
         return GetParameterSignature(cppFunction.Parameters, canUseOut, inParameters);
     }
 
@@ -641,11 +660,18 @@ partial class CsCodeGenerator
                 paramCsTypeName = GetCsTypeName(cppTypeDeclaration);
             }
             else if (inParameters
-                && paramCsTypeName.Contains("CreateInfo")
+                && (paramCsTypeName.Contains("CreateInfo") || paramCsName == "getWin32HandleInfo")
                 && CanBeUsedAsInOut(cppParameter.Type, false, out cppTypeDeclaration))
             {
                 argumentBuilder.Append("in ");
                 paramCsTypeName = GetCsTypeName(cppTypeDeclaration);
+            }
+            else if (canUseOut == false
+                && paramCsTypeName == "nint"
+                && cppParameter.Type.TypeKind == CppTypeKind.Pointer
+                && paramCsName == "handle")
+            {
+                paramCsTypeName += "*";
             }
 
             argumentBuilder.Append(paramCsTypeName).Append(' ').Append(paramCsName);
@@ -669,11 +695,7 @@ partial class CsCodeGenerator
 
     private static string GetParameterName(string name)
     {
-        if (name == "event")
-            return "@event";
-
-        if (name == "object")
-            return "@object";
+        name = NormalizeFieldName(name);
 
         if (name.StartsWith('p')
             && char.IsUpper(name[1]))

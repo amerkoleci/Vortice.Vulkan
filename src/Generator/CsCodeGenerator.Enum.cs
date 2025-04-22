@@ -177,6 +177,17 @@ partial class CsCodeGenerator
         { "StdVideoAV1TransferCharacteristics", "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS" },
         { "StdVideoAV1MatrixCoefficients", "STD_VIDEO_AV1_MATRIX_COEFFICIENTS" },
         { "StdVideoAV1ChromaSamplePosition", "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION" },
+        { "VkVideoEncodeAV1PredictionModeKHR", "VK_VIDEO_ENCODE_AV1_PREDICTION_MODE" },
+        { "VkVideoEncodeAV1RateControlGroupKHR", "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP" },
+        { "VkVideoEncodeAV1CapabilityFlagBitsKHR", "VK_VIDEO_ENCODE_AV1_CAPABILITY" },
+        { "VkVideoEncodeAV1StdFlagBitsKHR", "VK_VIDEO_ENCODE_AV1_STD" },
+        { "VkVideoEncodeAV1SuperblockSizeFlagBitsKHR", "VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE" },
+        { "VkVideoEncodeAV1RateControlFlagBitsKHR", "VK_VIDEO_ENCODE_AV1_RATE_CONTROL" },
+        { "VkCooperativeVectorMatrixLayoutNV", "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT" },
+        { "VkLatencyMarkerNV", "VK_LATENCY_MARKER" },
+        { "VkBlockMatchWindowCompareModeQCOM", "VK_BLOCK_MATCH_WINDOW_COMPARE_MODE" },
+        { "VkCubicFilterWeightsQCOM", "VK_CUBIC_FILTER_WEIGHTS" },
+        { "VkLayeredDriverUnderlyingApiMSFT", "VK_LAYERED_DRIVER_UNDERLYING_API" },
 
         // spvc
         { "spvc_result", "SPVC_ERROR" },
@@ -290,6 +301,7 @@ partial class CsCodeGenerator
                 || cppEnum.Name.EndsWith("FlagBitsMVK")
                 || cppEnum.Name.EndsWith("FlagBitsNN")
                 || cppEnum.Name.EndsWith("FlagBitsARM")
+                || cppEnum.Name.EndsWith("FlagBitsQCOM")
                 || (cppEnum.Name.StartsWith("Spv") && cppEnum.Name.EndsWith("Mask_")) // spirv.h
                 ;
 
@@ -362,6 +374,18 @@ partial class CsCodeGenerator
             {
                 extensionPrefix = "ANDROID";
             }
+            else if (enumCsName.EndsWith("ARM"))
+            {
+                extensionPrefix = "ARM";
+            }
+            else if (enumCsName.EndsWith("QCOM"))
+            {
+                extensionPrefix = "QCOM";
+            }
+            else if (enumCsName.EndsWith("MSFT"))
+            {
+                extensionPrefix = "MSFT";
+            }
 
             createdEnums.Add(enumCsName, enumName);
 
@@ -416,17 +440,21 @@ partial class CsCodeGenerator
                         enumItem.Name.EndsWith("_RANGE_SIZE_EXT") ||
                         enumItem.Name.EndsWith("_RANGE_SIZE_KHR") ||
                         enumItem.Name.EndsWith("_RANGE_SIZE_NV") ||
-                        enumItem.Name.EndsWith("_RANGE_SIZE_AMD") ||
-                        enumItem.Name.EndsWith("_MAX_ENUM") ||
-                        enumItem.Name.EndsWith("_MAX_ENUM_EXT") ||
-                        enumItem.Name.EndsWith("_MAX_ENUM_KHR") ||
-                        enumItem.Name.EndsWith("_MAX_ENUM_NV") ||
-                        enumItem.Name.EndsWith("_MAX_ENUM_AMD") ||
-                        enumItem.Name.EndsWith("_MAX_ENUM_INTEL") ||
-                        enumItem.Name.EndsWith("_MAX_ENUM_LUNARG") ||
+                        enumItem.Name.EndsWith("_RANGE_SIZE_AMD")
+                        || enumItem.Name.EndsWith("_MAX_ENUM")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_EXT")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_KHR")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_NV")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_AMD")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_INTEL")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_LUNARG")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_ANDROID")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_QCOM")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_MSFT")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_MSFT")
                         //enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
-                        enumItem.Name == "VK_STENCIL_FRONT_AND_BACK" ||
-                        enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE"
+                        || enumItem.Name == "VK_STENCIL_FRONT_AND_BACK"
+                        || enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE"
                         || enumItem.Name.EndsWith("_INT_MAX")
                         || enumItem.Name.EndsWith("_MAX_INT")
                         || enumItem.Name.StartsWith("SPVC_MSL_SHADER_INPUT_FORMAT_")
@@ -638,6 +666,10 @@ partial class CsCodeGenerator
                     {
                         fieldType = fieldType.Replace("FlagBitsARM", "FlagsARM");
                     }
+                    else if (fieldType.EndsWith("FlagBitsQCOM"))
+                    {
+                        fieldType = fieldType.Replace("FlagBitsQCOM", "FlagsQCOM");
+                    }
                     else if (fieldType.EndsWith("FlagBitsNV"))
                     {
                         fieldType = fieldType.Replace("FlagBitsNV", "FlagsNV");
@@ -757,6 +789,9 @@ partial class CsCodeGenerator
             || value.EndsWith("NN")
             || value.EndsWith("GGP")
             || value.EndsWith("ANDROID")
+            || value.EndsWith("ARM")
+            || value.EndsWith("QCOM")
+            || value.EndsWith("MSFT")
             ;
     }
 

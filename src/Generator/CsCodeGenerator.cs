@@ -11,6 +11,7 @@ public partial class CsCodeGenerator
     [
         "object",
         "event",
+        "params",
     ];
 
     private static readonly char[] _spvcSeparator = ['_'];
