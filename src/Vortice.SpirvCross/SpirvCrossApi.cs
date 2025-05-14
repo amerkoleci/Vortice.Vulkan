@@ -224,8 +224,23 @@ unsafe partial class SpirvCrossApi
         return new ReadOnlySpan<spvc_combined_image_sampler>(pSamplers, (int)count);
     }
 
+    public static ReadOnlySpan<spvc_reflected_resource> spvc_resources_get_resource_list_for_type(spvc_resources resources, ResourceType type)
+    {
+        spvc_resources_get_resource_list_for_type(resources, type, out spvc_reflected_resource* resource_list, out nuint count).CheckResult();
+        return new ReadOnlySpan<spvc_reflected_resource>(resource_list, (int)count);
+    }
+
+    public static ReadOnlySpan<spvc_buffer_range> spvc_compiler_get_active_buffer_ranges(spvc_compiler compiler, uint id)
+    {
+        spvc_compiler_get_active_buffer_ranges(compiler, id, out spvc_buffer_range* ranges, out nuint count).CheckResult();
+        return new ReadOnlySpan<spvc_buffer_range>(ranges, (int)count);
+    }
+
     #region Resources
     [LibraryImport(LibName, EntryPoint = "spvc_resources_get_resource_list_for_type")]
     public static partial Result spvc_resources_get_resource_list_for_type(spvc_resources resources, ResourceType type, out spvc_reflected_resource* resource_list, out nuint resource_size);
+
+    [LibraryImport(LibName, EntryPoint = "spvc_compiler_get_active_buffer_ranges")]
+    public static partial Result spvc_compiler_get_active_buffer_ranges(spvc_compiler compiler, uint id, out spvc_buffer_range* ranges, out nuint num_ranges);
     #endregion
 }

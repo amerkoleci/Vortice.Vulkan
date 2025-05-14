@@ -78,12 +78,11 @@ public unsafe class Tests
 
         spvc_compiler_create_shader_resources(compiler_glsl, out spvc_resources resources);
 
-        spvc_reflected_resource* resourceList;
-        spvc_resources_get_resource_list_for_type(resources, ResourceType.UniformBuffer, out resourceList, out nuint resourceSize).CheckResult();
+        ReadOnlySpan<spvc_reflected_resource> resourceList = spvc_resources_get_resource_list_for_type(resources, ResourceType.UniformBuffer);
 
-        Assert.That(resourceSize, Is.EqualTo((nuint)1));
+        Assert.That(resourceList.Length, Is.EqualTo(1));
 
-        for (uint i = 0; i < (uint)resourceSize; i++)
+        for (int i = 0; i < resourceList.Length; i++)
         {
             Assert.That(resourceList[i].id, Is.EqualTo(19));
             Assert.That(resourceList[i].base_type_id, Is.EqualTo(17));
@@ -94,12 +93,14 @@ public unsafe class Tests
             uint binding = spvc_compiler_get_decoration(compiler_glsl, resourceList[i].id, SpvDecoration.Binding);
             Assert.That(descriptorSet, Is.EqualTo(0u));
             Assert.That(binding, Is.EqualTo(0u));
+
+            ReadOnlySpan<spvc_buffer_range> ranges = spvc_compiler_get_active_buffer_ranges(compiler_glsl, resourceList[i].id);
         }
 
         Assert.That(spvc_context_get_last_error_string(context), Is.Empty);
 
-        spvc_resources_get_resource_list_for_type(resources, ResourceType.StageInput, out resourceList, out resourceSize).CheckResult();
-        Assert.That(resourceSize, Is.EqualTo((nuint)3));
+        resourceList = spvc_resources_get_resource_list_for_type(resources, ResourceType.StageInput);
+        Assert.That(resourceList.Length, Is.EqualTo(3));
         Assert.That(resourceList[0].GetName(), Is.EqualTo("inUV"));
         Assert.That(resourceList[1].GetName(), Is.EqualTo("inPos"));
         Assert.That(resourceList[2].GetName(), Is.EqualTo("inNormal"));
