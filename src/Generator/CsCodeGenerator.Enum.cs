@@ -229,7 +229,7 @@ partial class CsCodeGenerator
         "qcom",
         "macos",
         "ios",
-        "id",
+        //"id",
         "pci",
         "bit",
         "astc",
@@ -256,6 +256,7 @@ partial class CsCodeGenerator
         "av1",
         "es",
         "mesa",
+        "vp9",
     };
 
     private static readonly HashSet<string> s_toUpperCaps = new(StringComparer.OrdinalIgnoreCase)
@@ -459,6 +460,9 @@ partial class CsCodeGenerator
                         || enumItem.Name.EndsWith("_MAX_INT")
                         || enumItem.Name.StartsWith("SPVC_MSL_SHADER_INPUT_FORMAT_")
                         || enumItem.Name.StartsWith("SPVC_MSL_VERTEX_FORMAT_")
+                        // Deprecated enums
+                        || enumItem.Name == "VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_ANDROID"
+                        || enumItem.Name == "VK_HOST_IMAGE_COPY_MEMCPY"
                         )
                     {
                         continue;
@@ -600,8 +604,6 @@ partial class CsCodeGenerator
                     || typedef.Name.EndsWith("FlagsAMD", StringComparison.OrdinalIgnoreCase)
                     || typedef.Name.EndsWith("FlagsMVK", StringComparison.OrdinalIgnoreCase)
                     || typedef.Name.EndsWith("FlagsNN", StringComparison.OrdinalIgnoreCase)
-                    //|| typedef.Name.EndsWith("FlagsNV", StringComparison.OrdinalIgnoreCase)
-                    //|| typedef.Name.EndsWith("FlagsARM", StringComparison.OrdinalIgnoreCase)
                     )
                 {
                     writer.WriteLine("[Flags]");
@@ -629,7 +631,7 @@ partial class CsCodeGenerator
                 string? fieldType = GetCsTypeName(cppField.Type);
                 string createdEnumName;
 
-                if (!createdEnums.ContainsKey(fieldType))
+                if (!createdEnums.TryGetValue(fieldType, out string? value))
                 {
                     if (!string.IsNullOrEmpty(lastCreatedEnum))
                     {
@@ -689,7 +691,7 @@ partial class CsCodeGenerator
                 }
                 else
                 {
-                    createdEnumName = createdEnums[fieldType];
+                    createdEnumName = value;
                 }
 
                 string csFieldName = string.Empty;
@@ -717,17 +719,10 @@ partial class CsCodeGenerator
                 {
                     csFieldName = GetPrettyEnumName(cppField.Name, "VK_BUFFER_USAGE_2");
                 }
-                else if (cppField.Name.StartsWith("VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS"))
-                {
-                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS");
-                }
-                else if (cppField.Name.StartsWith("VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV"))
-                {
-                    csFieldName = GetPrettyEnumName(cppField.Name, "VK_MEMORY_DECOMPRESSION_METHOD");
-                }
                 else
                 {
-                    csFieldName = NormalizeFieldName(cppField.Name);
+                    string enumNamePrefix = GetEnumNamePrefix(createdEnumName);
+                    csFieldName = GetPrettyEnumName(cppField.Name, enumNamePrefix);
                 }
 
                 // Remove vendor suffix from enum value if enum already contains it
@@ -1123,7 +1118,7 @@ partial class CsCodeGenerator
             return result;
         }
 
-        string[] parts = value[enumPrefix.Length..].Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+        string[] parts = value[enumPrefix.Length..].Split(['_'], StringSplitOptions.RemoveEmptyEntries);
         return PrettifyName(parts, enumPrefix);
     }
 

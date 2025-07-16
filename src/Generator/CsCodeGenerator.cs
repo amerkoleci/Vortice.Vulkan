@@ -86,6 +86,7 @@ public partial class CsCodeGenerator
         { "VkComponentTypeNV", "VkComponentTypeKHR" },
         { "VkScopeNV", "VkScopeKHR" },
         { "VkLineRasterizationModeEXT", "VkLineRasterizationMode" },
+        { "VkPipelineCreateFlags2KHR", "VkPipelineCreateFlags2" },
 
         // Spirv - Spirv-Cross
         { "SpvId", "uint" },

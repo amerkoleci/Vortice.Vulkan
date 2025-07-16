@@ -1117,56 +1117,6 @@ public readonly partial struct VkIndirectCommandsLayoutNV : IEquatable<VkIndirec
 /// A non-dispatchable handle.
 /// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
-public readonly partial struct VkCudaModuleNV : IEquatable<VkCudaModuleNV>
-{
-	public VkCudaModuleNV(ulong handle) { Handle = handle; }
-	public ulong Handle { get; }
-	public bool IsNull => Handle == 0;
-	public bool IsNotNull => Handle != 0;
-	public static VkCudaModuleNV Null => new(0);
-	public static implicit operator VkCudaModuleNV(ulong handle) => new(handle);
-	public static implicit operator ulong(VkCudaModuleNV handle) => handle.Handle;
-	public static bool operator ==(VkCudaModuleNV left, VkCudaModuleNV right) => left.Handle == right.Handle;
-	public static bool operator !=(VkCudaModuleNV left, VkCudaModuleNV right) => left.Handle != right.Handle;
-	public static bool operator ==(VkCudaModuleNV left, ulong right) => left.Handle == right;
-	public static bool operator !=(VkCudaModuleNV left, ulong right) => left.Handle != right;
-	public bool Equals(VkCudaModuleNV other) => Handle == other.Handle;
-	/// <inheritdoc/>
-	public override bool Equals(object? obj) => obj is VkCudaModuleNV handle && Equals(handle);
-	/// <inheritdoc/>
-	public override int GetHashCode() => Handle.GetHashCode();
-	private string DebuggerDisplay => $"{nameof(VkCudaModuleNV)} [0x{Handle.ToString("X")}]";
-}
-
-/// <summary>
-/// A non-dispatchable handle.
-/// </summary>
-[DebuggerDisplay("{DebuggerDisplay,nq}")]
-public readonly partial struct VkCudaFunctionNV : IEquatable<VkCudaFunctionNV>
-{
-	public VkCudaFunctionNV(ulong handle) { Handle = handle; }
-	public ulong Handle { get; }
-	public bool IsNull => Handle == 0;
-	public bool IsNotNull => Handle != 0;
-	public static VkCudaFunctionNV Null => new(0);
-	public static implicit operator VkCudaFunctionNV(ulong handle) => new(handle);
-	public static implicit operator ulong(VkCudaFunctionNV handle) => handle.Handle;
-	public static bool operator ==(VkCudaFunctionNV left, VkCudaFunctionNV right) => left.Handle == right.Handle;
-	public static bool operator !=(VkCudaFunctionNV left, VkCudaFunctionNV right) => left.Handle != right.Handle;
-	public static bool operator ==(VkCudaFunctionNV left, ulong right) => left.Handle == right;
-	public static bool operator !=(VkCudaFunctionNV left, ulong right) => left.Handle != right;
-	public bool Equals(VkCudaFunctionNV other) => Handle == other.Handle;
-	/// <inheritdoc/>
-	public override bool Equals(object? obj) => obj is VkCudaFunctionNV handle && Equals(handle);
-	/// <inheritdoc/>
-	public override int GetHashCode() => Handle.GetHashCode();
-	private string DebuggerDisplay => $"{nameof(VkCudaFunctionNV)} [0x{Handle.ToString("X")}]";
-}
-
-/// <summary>
-/// A non-dispatchable handle.
-/// </summary>
-[DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VkAccelerationStructureKHR : IEquatable<VkAccelerationStructureKHR>
 {
 	public VkAccelerationStructureKHR(ulong handle) { Handle = handle; }
@@ -1242,6 +1192,56 @@ public readonly partial struct VkMicromapEXT : IEquatable<VkMicromapEXT>
 /// A non-dispatchable handle.
 /// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkTensorARM : IEquatable<VkTensorARM>
+{
+	public VkTensorARM(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static VkTensorARM Null => new(0);
+	public static implicit operator VkTensorARM(ulong handle) => new(handle);
+	public static implicit operator ulong(VkTensorARM handle) => handle.Handle;
+	public static bool operator ==(VkTensorARM left, VkTensorARM right) => left.Handle == right.Handle;
+	public static bool operator !=(VkTensorARM left, VkTensorARM right) => left.Handle != right.Handle;
+	public static bool operator ==(VkTensorARM left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkTensorARM left, ulong right) => left.Handle != right;
+	public bool Equals(VkTensorARM other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkTensorARM handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkTensorARM)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkTensorViewARM : IEquatable<VkTensorViewARM>
+{
+	public VkTensorViewARM(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static VkTensorViewARM Null => new(0);
+	public static implicit operator VkTensorViewARM(ulong handle) => new(handle);
+	public static implicit operator ulong(VkTensorViewARM handle) => handle.Handle;
+	public static bool operator ==(VkTensorViewARM left, VkTensorViewARM right) => left.Handle == right.Handle;
+	public static bool operator !=(VkTensorViewARM left, VkTensorViewARM right) => left.Handle != right.Handle;
+	public static bool operator ==(VkTensorViewARM left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkTensorViewARM left, ulong right) => left.Handle != right;
+	public bool Equals(VkTensorViewARM other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkTensorViewARM handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkTensorViewARM)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VkOpticalFlowSessionNV : IEquatable<VkOpticalFlowSessionNV>
 {
 	public VkOpticalFlowSessionNV(ulong handle) { Handle = handle; }
@@ -1286,6 +1286,31 @@ public readonly partial struct VkShaderEXT : IEquatable<VkShaderEXT>
 	/// <inheritdoc/>
 	public override int GetHashCode() => Handle.GetHashCode();
 	private string DebuggerDisplay => $"{nameof(VkShaderEXT)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkDataGraphPipelineSessionARM : IEquatable<VkDataGraphPipelineSessionARM>
+{
+	public VkDataGraphPipelineSessionARM(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static VkDataGraphPipelineSessionARM Null => new(0);
+	public static implicit operator VkDataGraphPipelineSessionARM(ulong handle) => new(handle);
+	public static implicit operator ulong(VkDataGraphPipelineSessionARM handle) => handle.Handle;
+	public static bool operator ==(VkDataGraphPipelineSessionARM left, VkDataGraphPipelineSessionARM right) => left.Handle == right.Handle;
+	public static bool operator !=(VkDataGraphPipelineSessionARM left, VkDataGraphPipelineSessionARM right) => left.Handle != right.Handle;
+	public static bool operator ==(VkDataGraphPipelineSessionARM left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkDataGraphPipelineSessionARM left, ulong right) => left.Handle != right;
+	public bool Equals(VkDataGraphPipelineSessionARM other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkDataGraphPipelineSessionARM handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkDataGraphPipelineSessionARM)} [0x{Handle.ToString("X")}]";
 }
 
 /// <summary>
@@ -1486,5 +1511,55 @@ public readonly partial struct HMONITOR : IEquatable<HMONITOR>
 	/// <inheritdoc/>
 	public override int GetHashCode() => Handle.GetHashCode();
 	private string DebuggerDisplay => $"{nameof(HMONITOR)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkCudaModuleNV : IEquatable<VkCudaModuleNV>
+{
+	public VkCudaModuleNV(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static VkCudaModuleNV Null => new(0);
+	public static implicit operator VkCudaModuleNV(ulong handle) => new(handle);
+	public static implicit operator ulong(VkCudaModuleNV handle) => handle.Handle;
+	public static bool operator ==(VkCudaModuleNV left, VkCudaModuleNV right) => left.Handle == right.Handle;
+	public static bool operator !=(VkCudaModuleNV left, VkCudaModuleNV right) => left.Handle != right.Handle;
+	public static bool operator ==(VkCudaModuleNV left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkCudaModuleNV left, ulong right) => left.Handle != right;
+	public bool Equals(VkCudaModuleNV other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkCudaModuleNV handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkCudaModuleNV)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkCudaFunctionNV : IEquatable<VkCudaFunctionNV>
+{
+	public VkCudaFunctionNV(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static VkCudaFunctionNV Null => new(0);
+	public static implicit operator VkCudaFunctionNV(ulong handle) => new(handle);
+	public static implicit operator ulong(VkCudaFunctionNV handle) => handle.Handle;
+	public static bool operator ==(VkCudaFunctionNV left, VkCudaFunctionNV right) => left.Handle == right.Handle;
+	public static bool operator !=(VkCudaFunctionNV left, VkCudaFunctionNV right) => left.Handle != right.Handle;
+	public static bool operator ==(VkCudaFunctionNV left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkCudaFunctionNV left, ulong right) => left.Handle != right;
+	public bool Equals(VkCudaFunctionNV other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkCudaFunctionNV handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkCudaFunctionNV)} [0x{Handle.ToString("X")}]";
 }
 

@@ -634,11 +634,6 @@ partial class CsCodeGenerator
 
     public static string GetParameterSignature(CppFunction cppFunction, bool canUseOut, bool inParameters)
     {
-        if (cppFunction.Name == "vkGetMemoryWin32HandleKHR")
-        {
-
-        }
-
         return GetParameterSignature(cppFunction.Parameters, canUseOut, inParameters);
     }
 
@@ -740,6 +735,12 @@ partial class CsCodeGenerator
                 && cppElementPointerType.SizeOf > 0)
             {
                 elementTypeDeclaration = cppElementPointerType.ElementType;
+                return true;
+            }
+            else if (pointerType.ElementType is CppPrimitiveType cppPrimitiveType
+                && cppPrimitiveType.SizeOf > 0)
+            {
+                elementTypeDeclaration = cppPrimitiveType;
                 return true;
             }
             else if (onlyOutput == false &&

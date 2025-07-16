@@ -109,8 +109,11 @@ unsafe partial class Vulkan
 	private static PFN_vkVoidFunction vkCreateHeadlessSurfaceEXT_ptr;
 	private static PFN_vkVoidFunction vkAcquireDrmDisplayEXT_ptr;
 	private static PFN_vkVoidFunction vkGetDrmDisplayEXT_ptr;
+	private static PFN_vkVoidFunction vkGetPhysicalDeviceExternalTensorPropertiesARM_ptr;
 	private static PFN_vkVoidFunction vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr;
 	private static PFN_vkVoidFunction vkGetPhysicalDeviceCooperativeVectorPropertiesNV_ptr;
+	private static PFN_vkVoidFunction vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM_ptr;
+	private static PFN_vkVoidFunction vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM_ptr;
 	private static PFN_vkVoidFunction vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr;
 	private static PFN_vkVoidFunction vkCreateAndroidSurfaceKHR_ptr;
 	private static PFN_vkVoidFunction vkCreateMetalSurfaceEXT_ptr;
@@ -428,11 +431,13 @@ unsafe partial class Vulkan
 	private static PFN_vkVoidFunction vkGetRenderingAreaGranularityKHR_ptr;
 	private static PFN_vkVoidFunction vkGetDeviceImageSubresourceLayoutKHR_ptr;
 	private static PFN_vkVoidFunction vkGetImageSubresourceLayout2KHR_ptr;
+	private static PFN_vkVoidFunction vkWaitForPresent2KHR_ptr;
 	private static PFN_vkVoidFunction vkCreatePipelineBinariesKHR_ptr;
 	private static PFN_vkVoidFunction vkDestroyPipelineBinaryKHR_ptr;
 	private static PFN_vkVoidFunction vkGetPipelineKeyKHR_ptr;
 	private static PFN_vkVoidFunction vkGetPipelineBinaryDataKHR_ptr;
 	private static PFN_vkVoidFunction vkReleaseCapturedPipelineDataKHR_ptr;
+	private static PFN_vkVoidFunction vkReleaseSwapchainImagesKHR_ptr;
 	private static PFN_vkVoidFunction vkCmdSetLineStippleKHR_ptr;
 	private static PFN_vkVoidFunction vkGetCalibratedTimestampsKHR_ptr;
 	private static PFN_vkVoidFunction vkCmdBindDescriptorSets2KHR_ptr;
@@ -552,12 +557,6 @@ unsafe partial class Vulkan
 	private static PFN_vkVoidFunction vkDestroyPrivateDataSlotEXT_ptr;
 	private static PFN_vkVoidFunction vkSetPrivateDataEXT_ptr;
 	private static PFN_vkVoidFunction vkGetPrivateDataEXT_ptr;
-	private static PFN_vkVoidFunction vkCreateCudaModuleNV_ptr;
-	private static PFN_vkVoidFunction vkGetCudaModuleCacheNV_ptr;
-	private static PFN_vkVoidFunction vkCreateCudaFunctionNV_ptr;
-	private static PFN_vkVoidFunction vkDestroyCudaModuleNV_ptr;
-	private static PFN_vkVoidFunction vkDestroyCudaFunctionNV_ptr;
-	private static PFN_vkVoidFunction vkCmdCudaLaunchKernelNV_ptr;
 	private static PFN_vkVoidFunction vkCmdDispatchTileQCOM_ptr;
 	private static PFN_vkVoidFunction vkCmdBeginPerTileExecutionQCOM_ptr;
 	private static PFN_vkVoidFunction vkCmdEndPerTileExecutionQCOM_ptr;
@@ -645,6 +644,16 @@ unsafe partial class Vulkan
 	private static PFN_vkVoidFunction vkCmdSetShadingRateImageEnableNV_ptr;
 	private static PFN_vkVoidFunction vkCmdSetRepresentativeFragmentTestEnableNV_ptr;
 	private static PFN_vkVoidFunction vkCmdSetCoverageReductionModeNV_ptr;
+	private static PFN_vkVoidFunction vkCreateTensorARM_ptr;
+	private static PFN_vkVoidFunction vkDestroyTensorARM_ptr;
+	private static PFN_vkVoidFunction vkCreateTensorViewARM_ptr;
+	private static PFN_vkVoidFunction vkDestroyTensorViewARM_ptr;
+	private static PFN_vkVoidFunction vkGetTensorMemoryRequirementsARM_ptr;
+	private static PFN_vkVoidFunction vkBindTensorMemoryARM_ptr;
+	private static PFN_vkVoidFunction vkGetDeviceTensorMemoryRequirementsARM_ptr;
+	private static PFN_vkVoidFunction vkCmdCopyTensorARM_ptr;
+	private static PFN_vkVoidFunction vkGetTensorOpaqueCaptureDescriptorDataARM_ptr;
+	private static PFN_vkVoidFunction vkGetTensorViewOpaqueCaptureDescriptorDataARM_ptr;
 	private static PFN_vkVoidFunction vkGetShaderModuleIdentifierEXT_ptr;
 	private static PFN_vkVoidFunction vkGetShaderModuleCreateInfoIdentifierEXT_ptr;
 	private static PFN_vkVoidFunction vkCreateOpticalFlowSessionNV_ptr;
@@ -666,6 +675,15 @@ unsafe partial class Vulkan
 	private static PFN_vkVoidFunction vkSetLatencyMarkerNV_ptr;
 	private static PFN_vkVoidFunction vkGetLatencyTimingsNV_ptr;
 	private static PFN_vkVoidFunction vkQueueNotifyOutOfBandNV_ptr;
+	private static PFN_vkVoidFunction vkCreateDataGraphPipelinesARM_ptr;
+	private static PFN_vkVoidFunction vkCreateDataGraphPipelineSessionARM_ptr;
+	private static PFN_vkVoidFunction vkGetDataGraphPipelineSessionBindPointRequirementsARM_ptr;
+	private static PFN_vkVoidFunction vkGetDataGraphPipelineSessionMemoryRequirementsARM_ptr;
+	private static PFN_vkVoidFunction vkBindDataGraphPipelineSessionMemoryARM_ptr;
+	private static PFN_vkVoidFunction vkDestroyDataGraphPipelineSessionARM_ptr;
+	private static PFN_vkVoidFunction vkCmdDispatchDataGraphARM_ptr;
+	private static PFN_vkVoidFunction vkGetDataGraphPipelineAvailablePropertiesARM_ptr;
+	private static PFN_vkVoidFunction vkGetDataGraphPipelinePropertiesARM_ptr;
 	private static PFN_vkVoidFunction vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr;
 	private static PFN_vkVoidFunction vkCmdBindTileMemoryQCOM_ptr;
 	private static PFN_vkVoidFunction vkCreateExternalComputeQueueNV_ptr;
@@ -732,6 +750,12 @@ unsafe partial class Vulkan
 	private static PFN_vkVoidFunction vkCmdDispatchGraphAMDX_ptr;
 	private static PFN_vkVoidFunction vkCmdDispatchGraphIndirectAMDX_ptr;
 	private static PFN_vkVoidFunction vkCmdDispatchGraphIndirectCountAMDX_ptr;
+	private static PFN_vkVoidFunction vkCreateCudaModuleNV_ptr;
+	private static PFN_vkVoidFunction vkGetCudaModuleCacheNV_ptr;
+	private static PFN_vkVoidFunction vkCreateCudaFunctionNV_ptr;
+	private static PFN_vkVoidFunction vkDestroyCudaModuleNV_ptr;
+	private static PFN_vkVoidFunction vkDestroyCudaFunctionNV_ptr;
+	private static PFN_vkVoidFunction vkCmdCudaLaunchKernelNV_ptr;
 
 	public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkInstance* instance)
 	{
@@ -1232,9 +1256,9 @@ unsafe partial class Vulkan
 		((delegate* unmanaged<VkDevice, VkQueryPool, VkAllocationCallbacks*, void>)vkDestroyQueryPool_ptr.Value)(device, queryPool, allocator);
 	}
 
-	public static VkResult vkGetQueryPoolResults(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount, nuint dataSize, void* data, ulong stride, VkQueryResultFlags flags)
+	public static VkResult vkGetQueryPoolResults(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount, ulong dataSize, void* data, ulong stride, VkQueryResultFlags flags)
 	{
-		return ((delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, nuint, void*, ulong, VkQueryResultFlags, VkResult>)vkGetQueryPoolResults_ptr.Value)(device, queryPool, firstQuery, queryCount, dataSize, data, stride, flags);
+		return ((delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, ulong, void*, ulong, VkQueryResultFlags, VkResult>)vkGetQueryPoolResults_ptr.Value)(device, queryPool, firstQuery, queryCount, dataSize, data, stride, flags);
 	}
 
 	public static VkResult vkCreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkBuffer* buffer)
@@ -1485,9 +1509,9 @@ unsafe partial class Vulkan
 		((delegate* unmanaged<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void>)vkDestroyPipelineCache_ptr.Value)(device, pipelineCache, allocator);
 	}
 
-	public static VkResult vkGetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, nuint* dataSize, void* data)
+	public static VkResult vkGetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, ulong* dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipelineCache, nuint*, void*, VkResult>)vkGetPipelineCacheData_ptr.Value)(device, pipelineCache, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkPipelineCache, ulong*, void*, VkResult>)vkGetPipelineCacheData_ptr.Value)(device, pipelineCache, dataSize, data);
 	}
 
 	public static VkResult vkMergePipelineCaches(VkDevice device, VkPipelineCache dstCache, uint srcCacheCount, VkPipelineCache* srcCaches)
@@ -3441,9 +3465,9 @@ unsafe partial class Vulkan
 		return ((delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, VkVideoEncodeQualityLevelPropertiesKHR*, VkResult>)vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ptr.Value)(physicalDevice, qualityLevelInfo, qualityLevelProperties);
 	}
 
-	public static VkResult vkGetEncodedVideoSessionParametersKHR(VkDevice device, VkVideoEncodeSessionParametersGetInfoKHR* videoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* feedbackInfo, nuint* dataSize, void* data)
+	public static VkResult vkGetEncodedVideoSessionParametersKHR(VkDevice device, VkVideoEncodeSessionParametersGetInfoKHR* videoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* feedbackInfo, ulong* dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult>)vkGetEncodedVideoSessionParametersKHR_ptr.Value)(device, videoSessionParametersInfo, feedbackInfo, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, ulong*, void*, VkResult>)vkGetEncodedVideoSessionParametersKHR_ptr.Value)(device, videoSessionParametersInfo, feedbackInfo, dataSize, data);
 	}
 
 	public static void vkCmdEncodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoEncodeInfoKHR* encodeInfo)
@@ -3551,6 +3575,11 @@ unsafe partial class Vulkan
 		((delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2*, VkSubresourceLayout2*, void>)vkGetImageSubresourceLayout2KHR_ptr.Value)(device, image, subresource, layout);
 	}
 
+	public static VkResult vkWaitForPresent2KHR(VkDevice device, VkSwapchainKHR swapchain, VkPresentWait2InfoKHR* presentWait2Info)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSwapchainKHR, VkPresentWait2InfoKHR*, VkResult>)vkWaitForPresent2KHR_ptr.Value)(device, swapchain, presentWait2Info);
+	}
+
 	public static VkResult vkCreatePipelineBinariesKHR(VkDevice device, VkPipelineBinaryCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkPipelineBinaryHandlesInfoKHR* binaries)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPipelineBinaryCreateInfoKHR*, VkAllocationCallbacks*, VkPipelineBinaryHandlesInfoKHR*, VkResult>)vkCreatePipelineBinariesKHR_ptr.Value)(device, createInfo, allocator, binaries);
@@ -3574,14 +3603,19 @@ unsafe partial class Vulkan
 		return ((delegate* unmanaged<VkDevice, VkPipelineCreateInfoKHR*, VkPipelineBinaryKeyKHR*, VkResult>)vkGetPipelineKeyKHR_ptr.Value)(device, pipelineCreateInfo, pipelineKey);
 	}
 
-	public static VkResult vkGetPipelineBinaryDataKHR(VkDevice device, VkPipelineBinaryDataInfoKHR* info, VkPipelineBinaryKeyKHR* pipelineBinaryKey, nuint* pipelineBinaryDataSize, void* pipelineBinaryData)
+	public static VkResult vkGetPipelineBinaryDataKHR(VkDevice device, VkPipelineBinaryDataInfoKHR* info, VkPipelineBinaryKeyKHR* pipelineBinaryKey, ulong* pipelineBinaryDataSize, void* pipelineBinaryData)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipelineBinaryDataInfoKHR*, VkPipelineBinaryKeyKHR*, nuint*, void*, VkResult>)vkGetPipelineBinaryDataKHR_ptr.Value)(device, info, pipelineBinaryKey, pipelineBinaryDataSize, pipelineBinaryData);
+		return ((delegate* unmanaged<VkDevice, VkPipelineBinaryDataInfoKHR*, VkPipelineBinaryKeyKHR*, ulong*, void*, VkResult>)vkGetPipelineBinaryDataKHR_ptr.Value)(device, info, pipelineBinaryKey, pipelineBinaryDataSize, pipelineBinaryData);
 	}
 
 	public static VkResult vkReleaseCapturedPipelineDataKHR(VkDevice device, VkReleaseCapturedPipelineDataInfoKHR* info, VkAllocationCallbacks* allocator = default)
 	{
 		return ((delegate* unmanaged<VkDevice, VkReleaseCapturedPipelineDataInfoKHR*, VkAllocationCallbacks*, VkResult>)vkReleaseCapturedPipelineDataKHR_ptr.Value)(device, info, allocator);
+	}
+
+	public static VkResult vkReleaseSwapchainImagesKHR(VkDevice device, VkReleaseSwapchainImagesInfoKHR* releaseInfo)
+	{
+		return ((delegate* unmanaged<VkDevice, VkReleaseSwapchainImagesInfoKHR*, VkResult>)vkReleaseSwapchainImagesKHR_ptr.Value)(device, releaseInfo);
 	}
 
 	public static VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeMatrixPropertiesKHR* properties)
@@ -3652,9 +3686,9 @@ unsafe partial class Vulkan
 		((delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void>)vkDestroyDebugReportCallbackEXT_ptr.Value)(instance, callback, allocator);
 	}
 
-	public static void vkDebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, byte* message)
+	public static void vkDebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, ulong location, int messageCode, byte* layerPrefix, byte* message)
 	{
-		((delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void>)vkDebugReportMessageEXT_ptr.Value)(instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
+		((delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, ulong, int, byte*, byte*, void>)vkDebugReportMessageEXT_ptr.Value)(instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
 	}
 
 	public static VkResult vkDebugMarkerSetObjectTagEXT(VkDevice device, VkDebugMarkerObjectTagInfoEXT* tagInfo)
@@ -3778,9 +3812,9 @@ unsafe partial class Vulkan
 		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>)vkCmdDrawIndexedIndirectCountAMD_ptr.Value)(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	}
 
-	public static VkResult vkGetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info)
+	public static VkResult vkGetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, ulong* infoSize, void* info)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipeline, VkShaderStageFlags, VkShaderInfoTypeAMD, nuint*, void*, VkResult>)vkGetShaderInfoAMD_ptr.Value)(device, pipeline, shaderStage, infoType, infoSize, info);
+		return ((delegate* unmanaged<VkDevice, VkPipeline, VkShaderStageFlags, VkShaderInfoTypeAMD, ulong*, void*, VkResult>)vkGetShaderInfoAMD_ptr.Value)(device, pipeline, shaderStage, infoType, infoSize, info);
 	}
 
 	public static VkResult vkGetPhysicalDeviceExternalImageFormatPropertiesNV(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkExternalMemoryHandleTypeFlagsNV externalHandleType, VkExternalImageFormatPropertiesNV* externalImageFormatProperties)
@@ -3985,9 +4019,9 @@ unsafe partial class Vulkan
 		return ((delegate* unmanaged<VkDevice, VkValidationCacheEXT, uint, VkValidationCacheEXT*, VkResult>)vkMergeValidationCachesEXT_ptr.Value)(device, dstCache, srcCacheCount, srcCaches);
 	}
 
-	public static VkResult vkGetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, nuint* dataSize, void* data)
+	public static VkResult vkGetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, ulong* dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkValidationCacheEXT, nuint*, void*, VkResult>)vkGetValidationCacheDataEXT_ptr.Value)(device, validationCache, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkValidationCacheEXT, ulong*, void*, VkResult>)vkGetValidationCacheDataEXT_ptr.Value)(device, validationCache, dataSize, data);
 	}
 
 	public static void vkCmdBindShadingRateImageNV(VkCommandBuffer commandBuffer, VkImageView imageView, VkImageLayout imageLayout)
@@ -4061,19 +4095,19 @@ unsafe partial class Vulkan
 		}
 	}
 
-	public static VkResult vkGetRayTracingShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
+	public static VkResult vkGetRayTracingShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, ulong dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>)vkGetRayTracingShaderGroupHandlesKHR_ptr.Value)(device, pipeline, firstGroup, groupCount, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, ulong, void*, VkResult>)vkGetRayTracingShaderGroupHandlesKHR_ptr.Value)(device, pipeline, firstGroup, groupCount, dataSize, data);
 	}
 
-	public static VkResult vkGetRayTracingShaderGroupHandlesNV(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
+	public static VkResult vkGetRayTracingShaderGroupHandlesNV(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, ulong dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>)vkGetRayTracingShaderGroupHandlesNV_ptr.Value)(device, pipeline, firstGroup, groupCount, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, ulong, void*, VkResult>)vkGetRayTracingShaderGroupHandlesNV_ptr.Value)(device, pipeline, firstGroup, groupCount, dataSize, data);
 	}
 
-	public static VkResult vkGetAccelerationStructureHandleNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, nuint dataSize, void* data)
+	public static VkResult vkGetAccelerationStructureHandleNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, ulong dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, nuint, void*, VkResult>)vkGetAccelerationStructureHandleNV_ptr.Value)(device, accelerationStructure, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, ulong, void*, VkResult>)vkGetAccelerationStructureHandleNV_ptr.Value)(device, accelerationStructure, dataSize, data);
 	}
 
 	public static void vkCmdWriteAccelerationStructuresPropertiesNV(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery)
@@ -4329,9 +4363,9 @@ unsafe partial class Vulkan
 		((delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2*, VkSubresourceLayout2*, void>)vkGetImageSubresourceLayout2EXT_ptr.Value)(device, image, subresource, layout);
 	}
 
-	public static VkResult vkReleaseSwapchainImagesEXT(VkDevice device, VkReleaseSwapchainImagesInfoEXT* releaseInfo)
+	public static VkResult vkReleaseSwapchainImagesEXT(VkDevice device, VkReleaseSwapchainImagesInfoKHR* releaseInfo)
 	{
-		return ((delegate* unmanaged<VkDevice, VkReleaseSwapchainImagesInfoEXT*, VkResult>)vkReleaseSwapchainImagesEXT_ptr.Value)(device, releaseInfo);
+		return ((delegate* unmanaged<VkDevice, VkReleaseSwapchainImagesInfoKHR*, VkResult>)vkReleaseSwapchainImagesEXT_ptr.Value)(device, releaseInfo);
 	}
 
 	public static void vkGetGeneratedCommandsMemoryRequirementsNV(VkDevice device, VkGeneratedCommandsMemoryRequirementsInfoNV* info, VkMemoryRequirements2* memoryRequirements)
@@ -4415,55 +4449,9 @@ unsafe partial class Vulkan
 		((delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void>)vkGetPrivateDataEXT_ptr.Value)(device, objectType, objectHandle, privateDataSlot, data);
 	}
 
-	public static VkResult vkCreateCudaModuleNV(VkDevice device, VkCudaModuleCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkCudaModuleNV* module)
+	public static void vkCmdDispatchTileQCOM(VkCommandBuffer commandBuffer, VkDispatchTileInfoQCOM* dispatchTileInfo)
 	{
-		return ((delegate* unmanaged<VkDevice, VkCudaModuleCreateInfoNV*, VkAllocationCallbacks*, VkCudaModuleNV*, VkResult>)vkCreateCudaModuleNV_ptr.Value)(device, createInfo, allocator, module);
-	}
-
-	public static VkResult vkCreateCudaModuleNV(VkDevice device, in VkCudaModuleCreateInfoNV createInfo, VkAllocationCallbacks* allocator, VkCudaModuleNV* module)
-	{
-		fixed (VkCudaModuleCreateInfoNV* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkDevice, VkCudaModuleCreateInfoNV*, VkAllocationCallbacks*, VkCudaModuleNV*, VkResult>)vkCreateCudaModuleNV_ptr.Value)(device, createInfoPtr, allocator, module);
-		}
-	}
-
-	public static VkResult vkGetCudaModuleCacheNV(VkDevice device, VkCudaModuleNV module, nuint* cacheSize, void* cacheData)
-	{
-		return ((delegate* unmanaged<VkDevice, VkCudaModuleNV, nuint*, void*, VkResult>)vkGetCudaModuleCacheNV_ptr.Value)(device, module, cacheSize, cacheData);
-	}
-
-	public static VkResult vkCreateCudaFunctionNV(VkDevice device, VkCudaFunctionCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkCudaFunctionNV* function)
-	{
-		return ((delegate* unmanaged<VkDevice, VkCudaFunctionCreateInfoNV*, VkAllocationCallbacks*, VkCudaFunctionNV*, VkResult>)vkCreateCudaFunctionNV_ptr.Value)(device, createInfo, allocator, function);
-	}
-
-	public static VkResult vkCreateCudaFunctionNV(VkDevice device, in VkCudaFunctionCreateInfoNV createInfo, VkAllocationCallbacks* allocator, VkCudaFunctionNV* function)
-	{
-		fixed (VkCudaFunctionCreateInfoNV* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkDevice, VkCudaFunctionCreateInfoNV*, VkAllocationCallbacks*, VkCudaFunctionNV*, VkResult>)vkCreateCudaFunctionNV_ptr.Value)(device, createInfoPtr, allocator, function);
-		}
-	}
-
-	public static void vkDestroyCudaModuleNV(VkDevice device, VkCudaModuleNV module, VkAllocationCallbacks* allocator = default)
-	{
-		((delegate* unmanaged<VkDevice, VkCudaModuleNV, VkAllocationCallbacks*, void>)vkDestroyCudaModuleNV_ptr.Value)(device, module, allocator);
-	}
-
-	public static void vkDestroyCudaFunctionNV(VkDevice device, VkCudaFunctionNV function, VkAllocationCallbacks* allocator = default)
-	{
-		((delegate* unmanaged<VkDevice, VkCudaFunctionNV, VkAllocationCallbacks*, void>)vkDestroyCudaFunctionNV_ptr.Value)(device, function, allocator);
-	}
-
-	public static void vkCmdCudaLaunchKernelNV(VkCommandBuffer commandBuffer, VkCudaLaunchInfoNV* launchInfo)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkCudaLaunchInfoNV*, void>)vkCmdCudaLaunchKernelNV_ptr.Value)(commandBuffer, launchInfo);
-	}
-
-	public static void vkCmdDispatchTileQCOM(VkCommandBuffer commandBuffer)
-	{
-		((delegate* unmanaged<VkCommandBuffer, void>)vkCmdDispatchTileQCOM_ptr.Value)(commandBuffer);
+		((delegate* unmanaged<VkCommandBuffer, VkDispatchTileInfoQCOM*, void>)vkCmdDispatchTileQCOM_ptr.Value)(commandBuffer, dispatchTileInfo);
 	}
 
 	public static void vkCmdBeginPerTileExecutionQCOM(VkCommandBuffer commandBuffer, VkPerTileBeginInfoQCOM* perTileBeginInfo)
@@ -4486,9 +4474,9 @@ unsafe partial class Vulkan
 		((delegate* unmanaged<VkDevice, VkDescriptorSetLayout, uint, ulong*, void>)vkGetDescriptorSetLayoutBindingOffsetEXT_ptr.Value)(device, layout, binding, offset);
 	}
 
-	public static void vkGetDescriptorEXT(VkDevice device, VkDescriptorGetInfoEXT* descriptorInfo, nuint dataSize, void* descriptor)
+	public static void vkGetDescriptorEXT(VkDevice device, VkDescriptorGetInfoEXT* descriptorInfo, ulong dataSize, void* descriptor)
 	{
-		((delegate* unmanaged<VkDevice, VkDescriptorGetInfoEXT*, nuint, void*, void>)vkGetDescriptorEXT_ptr.Value)(device, descriptorInfo, dataSize, descriptor);
+		((delegate* unmanaged<VkDevice, VkDescriptorGetInfoEXT*, ulong, void*, void>)vkGetDescriptorEXT_ptr.Value)(device, descriptorInfo, dataSize, descriptor);
 	}
 
 	public static void vkCmdBindDescriptorBuffersEXT(VkCommandBuffer commandBuffer, uint bufferCount, VkDescriptorBufferBindingInfoEXT* bindingInfos)
@@ -4654,9 +4642,9 @@ unsafe partial class Vulkan
 		return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToMicromapInfoEXT*, VkResult>)vkCopyMemoryToMicromapEXT_ptr.Value)(device, deferredOperation, info);
 	}
 
-	public static VkResult vkWriteMicromapsPropertiesEXT(VkDevice device, uint micromapCount, VkMicromapEXT* micromaps, VkQueryType queryType, nuint dataSize, void* data, nuint stride)
+	public static VkResult vkWriteMicromapsPropertiesEXT(VkDevice device, uint micromapCount, VkMicromapEXT* micromaps, VkQueryType queryType, ulong dataSize, void* data, ulong stride)
 	{
-		return ((delegate* unmanaged<VkDevice, uint, VkMicromapEXT*, VkQueryType, nuint, void*, nuint, VkResult>)vkWriteMicromapsPropertiesEXT_ptr.Value)(device, micromapCount, micromaps, queryType, dataSize, data, stride);
+		return ((delegate* unmanaged<VkDevice, uint, VkMicromapEXT*, VkQueryType, ulong, void*, ulong, VkResult>)vkWriteMicromapsPropertiesEXT_ptr.Value)(device, micromapCount, micromaps, queryType, dataSize, data, stride);
 	}
 
 	public static void vkCmdCopyMicromapEXT(VkCommandBuffer commandBuffer, VkCopyMicromapInfoEXT* info)
@@ -4904,6 +4892,77 @@ unsafe partial class Vulkan
 		((delegate* unmanaged<VkCommandBuffer, VkCoverageReductionModeNV, void>)vkCmdSetCoverageReductionModeNV_ptr.Value)(commandBuffer, coverageReductionMode);
 	}
 
+	public static VkResult vkCreateTensorARM(VkDevice device, VkTensorCreateInfoARM* createInfo, VkAllocationCallbacks* allocator, VkTensorARM* tensor)
+	{
+		return ((delegate* unmanaged<VkDevice, VkTensorCreateInfoARM*, VkAllocationCallbacks*, VkTensorARM*, VkResult>)vkCreateTensorARM_ptr.Value)(device, createInfo, allocator, tensor);
+	}
+
+	public static VkResult vkCreateTensorARM(VkDevice device, in VkTensorCreateInfoARM createInfo, VkAllocationCallbacks* allocator, VkTensorARM* tensor)
+	{
+		fixed (VkTensorCreateInfoARM* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkTensorCreateInfoARM*, VkAllocationCallbacks*, VkTensorARM*, VkResult>)vkCreateTensorARM_ptr.Value)(device, createInfoPtr, allocator, tensor);
+		}
+	}
+
+	public static void vkDestroyTensorARM(VkDevice device, VkTensorARM tensor, VkAllocationCallbacks* allocator = default)
+	{
+		((delegate* unmanaged<VkDevice, VkTensorARM, VkAllocationCallbacks*, void>)vkDestroyTensorARM_ptr.Value)(device, tensor, allocator);
+	}
+
+	public static VkResult vkCreateTensorViewARM(VkDevice device, VkTensorViewCreateInfoARM* createInfo, VkAllocationCallbacks* allocator, VkTensorViewARM* view)
+	{
+		return ((delegate* unmanaged<VkDevice, VkTensorViewCreateInfoARM*, VkAllocationCallbacks*, VkTensorViewARM*, VkResult>)vkCreateTensorViewARM_ptr.Value)(device, createInfo, allocator, view);
+	}
+
+	public static VkResult vkCreateTensorViewARM(VkDevice device, in VkTensorViewCreateInfoARM createInfo, VkAllocationCallbacks* allocator, VkTensorViewARM* view)
+	{
+		fixed (VkTensorViewCreateInfoARM* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkTensorViewCreateInfoARM*, VkAllocationCallbacks*, VkTensorViewARM*, VkResult>)vkCreateTensorViewARM_ptr.Value)(device, createInfoPtr, allocator, view);
+		}
+	}
+
+	public static void vkDestroyTensorViewARM(VkDevice device, VkTensorViewARM tensorView, VkAllocationCallbacks* allocator = default)
+	{
+		((delegate* unmanaged<VkDevice, VkTensorViewARM, VkAllocationCallbacks*, void>)vkDestroyTensorViewARM_ptr.Value)(device, tensorView, allocator);
+	}
+
+	public static void vkGetTensorMemoryRequirementsARM(VkDevice device, VkTensorMemoryRequirementsInfoARM* info, VkMemoryRequirements2* memoryRequirements)
+	{
+		((delegate* unmanaged<VkDevice, VkTensorMemoryRequirementsInfoARM*, VkMemoryRequirements2*, void>)vkGetTensorMemoryRequirementsARM_ptr.Value)(device, info, memoryRequirements);
+	}
+
+	public static VkResult vkBindTensorMemoryARM(VkDevice device, uint bindInfoCount, VkBindTensorMemoryInfoARM* bindInfos)
+	{
+		return ((delegate* unmanaged<VkDevice, uint, VkBindTensorMemoryInfoARM*, VkResult>)vkBindTensorMemoryARM_ptr.Value)(device, bindInfoCount, bindInfos);
+	}
+
+	public static void vkGetDeviceTensorMemoryRequirementsARM(VkDevice device, VkDeviceTensorMemoryRequirementsARM* info, VkMemoryRequirements2* memoryRequirements)
+	{
+		((delegate* unmanaged<VkDevice, VkDeviceTensorMemoryRequirementsARM*, VkMemoryRequirements2*, void>)vkGetDeviceTensorMemoryRequirementsARM_ptr.Value)(device, info, memoryRequirements);
+	}
+
+	public static void vkCmdCopyTensorARM(VkCommandBuffer commandBuffer, VkCopyTensorInfoARM* copyTensorInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkCopyTensorInfoARM*, void>)vkCmdCopyTensorARM_ptr.Value)(commandBuffer, copyTensorInfo);
+	}
+
+	public static void vkGetPhysicalDeviceExternalTensorPropertiesARM(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalTensorInfoARM* externalTensorInfo, VkExternalTensorPropertiesARM* externalTensorProperties)
+	{
+		((delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceExternalTensorInfoARM*, VkExternalTensorPropertiesARM*, void>)vkGetPhysicalDeviceExternalTensorPropertiesARM_ptr.Value)(physicalDevice, externalTensorInfo, externalTensorProperties);
+	}
+
+	public static VkResult vkGetTensorOpaqueCaptureDescriptorDataARM(VkDevice device, VkTensorCaptureDescriptorDataInfoARM* info, void* data)
+	{
+		return ((delegate* unmanaged<VkDevice, VkTensorCaptureDescriptorDataInfoARM*, void*, VkResult>)vkGetTensorOpaqueCaptureDescriptorDataARM_ptr.Value)(device, info, data);
+	}
+
+	public static VkResult vkGetTensorViewOpaqueCaptureDescriptorDataARM(VkDevice device, VkTensorViewCaptureDescriptorDataInfoARM* info, void* data)
+	{
+		return ((delegate* unmanaged<VkDevice, VkTensorViewCaptureDescriptorDataInfoARM*, void*, VkResult>)vkGetTensorViewOpaqueCaptureDescriptorDataARM_ptr.Value)(device, info, data);
+	}
+
 	public static void vkGetShaderModuleIdentifierEXT(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* identifier)
 	{
 		((delegate* unmanaged<VkDevice, VkShaderModule, VkShaderModuleIdentifierEXT*, void>)vkGetShaderModuleIdentifierEXT_ptr.Value)(device, shaderModule, identifier);
@@ -4970,9 +5029,9 @@ unsafe partial class Vulkan
 		((delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void>)vkDestroyShaderEXT_ptr.Value)(device, shader, allocator);
 	}
 
-	public static VkResult vkGetShaderBinaryDataEXT(VkDevice device, VkShaderEXT shader, nuint* dataSize, void* data)
+	public static VkResult vkGetShaderBinaryDataEXT(VkDevice device, VkShaderEXT shader, ulong* dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkShaderEXT, nuint*, void*, VkResult>)vkGetShaderBinaryDataEXT_ptr.Value)(device, shader, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkShaderEXT, ulong*, void*, VkResult>)vkGetShaderBinaryDataEXT_ptr.Value)(device, shader, dataSize, data);
 	}
 
 	public static void vkCmdBindShadersEXT(VkCommandBuffer commandBuffer, uint stageCount, VkShaderStageFlags* stages, VkShaderEXT* shaders)
@@ -5033,6 +5092,77 @@ unsafe partial class Vulkan
 	public static void vkQueueNotifyOutOfBandNV(VkQueue queue, VkOutOfBandQueueTypeInfoNV* queueTypeInfo)
 	{
 		((delegate* unmanaged<VkQueue, VkOutOfBandQueueTypeInfoNV*, void>)vkQueueNotifyOutOfBandNV_ptr.Value)(queue, queueTypeInfo);
+	}
+
+	public static VkResult vkCreateDataGraphPipelinesARM(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkDataGraphPipelineCreateInfoARM* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkDataGraphPipelineCreateInfoARM*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateDataGraphPipelinesARM_ptr.Value)(device, deferredOperation, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
+	}
+
+	public static VkResult vkCreateDataGraphPipelinesARM(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, in VkDataGraphPipelineCreateInfoARM createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
+	{
+		fixed (VkDataGraphPipelineCreateInfoARM* createInfoPtr = &createInfos)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkDataGraphPipelineCreateInfoARM*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateDataGraphPipelinesARM_ptr.Value)(device, deferredOperation, pipelineCache, createInfoCount, createInfoPtr, allocator, pipelines);
+		}
+	}
+
+	public static VkResult vkCreateDataGraphPipelineSessionARM(VkDevice device, VkDataGraphPipelineSessionCreateInfoARM* createInfo, VkAllocationCallbacks* allocator, VkDataGraphPipelineSessionARM* session)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDataGraphPipelineSessionCreateInfoARM*, VkAllocationCallbacks*, VkDataGraphPipelineSessionARM*, VkResult>)vkCreateDataGraphPipelineSessionARM_ptr.Value)(device, createInfo, allocator, session);
+	}
+
+	public static VkResult vkCreateDataGraphPipelineSessionARM(VkDevice device, in VkDataGraphPipelineSessionCreateInfoARM createInfo, VkAllocationCallbacks* allocator, VkDataGraphPipelineSessionARM* session)
+	{
+		fixed (VkDataGraphPipelineSessionCreateInfoARM* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDataGraphPipelineSessionCreateInfoARM*, VkAllocationCallbacks*, VkDataGraphPipelineSessionARM*, VkResult>)vkCreateDataGraphPipelineSessionARM_ptr.Value)(device, createInfoPtr, allocator, session);
+		}
+	}
+
+	public static VkResult vkGetDataGraphPipelineSessionBindPointRequirementsARM(VkDevice device, VkDataGraphPipelineSessionBindPointRequirementsInfoARM* info, uint* bindPointRequirementCount, VkDataGraphPipelineSessionBindPointRequirementARM* bindPointRequirements)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDataGraphPipelineSessionBindPointRequirementsInfoARM*, uint*, VkDataGraphPipelineSessionBindPointRequirementARM*, VkResult>)vkGetDataGraphPipelineSessionBindPointRequirementsARM_ptr.Value)(device, info, bindPointRequirementCount, bindPointRequirements);
+	}
+
+	public static void vkGetDataGraphPipelineSessionMemoryRequirementsARM(VkDevice device, VkDataGraphPipelineSessionMemoryRequirementsInfoARM* info, VkMemoryRequirements2* memoryRequirements)
+	{
+		((delegate* unmanaged<VkDevice, VkDataGraphPipelineSessionMemoryRequirementsInfoARM*, VkMemoryRequirements2*, void>)vkGetDataGraphPipelineSessionMemoryRequirementsARM_ptr.Value)(device, info, memoryRequirements);
+	}
+
+	public static VkResult vkBindDataGraphPipelineSessionMemoryARM(VkDevice device, uint bindInfoCount, VkBindDataGraphPipelineSessionMemoryInfoARM* bindInfos)
+	{
+		return ((delegate* unmanaged<VkDevice, uint, VkBindDataGraphPipelineSessionMemoryInfoARM*, VkResult>)vkBindDataGraphPipelineSessionMemoryARM_ptr.Value)(device, bindInfoCount, bindInfos);
+	}
+
+	public static void vkDestroyDataGraphPipelineSessionARM(VkDevice device, VkDataGraphPipelineSessionARM session, VkAllocationCallbacks* allocator = default)
+	{
+		((delegate* unmanaged<VkDevice, VkDataGraphPipelineSessionARM, VkAllocationCallbacks*, void>)vkDestroyDataGraphPipelineSessionARM_ptr.Value)(device, session, allocator);
+	}
+
+	public static void vkCmdDispatchDataGraphARM(VkCommandBuffer commandBuffer, VkDataGraphPipelineSessionARM session, VkDataGraphPipelineDispatchInfoARM* info)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDataGraphPipelineSessionARM, VkDataGraphPipelineDispatchInfoARM*, void>)vkCmdDispatchDataGraphARM_ptr.Value)(commandBuffer, session, info);
+	}
+
+	public static VkResult vkGetDataGraphPipelineAvailablePropertiesARM(VkDevice device, VkDataGraphPipelineInfoARM* pipelineInfo, uint* propertiesCount, VkDataGraphPipelinePropertyARM* properties)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDataGraphPipelineInfoARM*, uint*, VkDataGraphPipelinePropertyARM*, VkResult>)vkGetDataGraphPipelineAvailablePropertiesARM_ptr.Value)(device, pipelineInfo, propertiesCount, properties);
+	}
+
+	public static VkResult vkGetDataGraphPipelinePropertiesARM(VkDevice device, VkDataGraphPipelineInfoARM* pipelineInfo, uint propertiesCount, VkDataGraphPipelinePropertyQueryResultARM* properties)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDataGraphPipelineInfoARM*, uint, VkDataGraphPipelinePropertyQueryResultARM*, VkResult>)vkGetDataGraphPipelinePropertiesARM_ptr.Value)(device, pipelineInfo, propertiesCount, properties);
+	}
+
+	public static VkResult vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* queueFamilyDataGraphPropertyCount, VkQueueFamilyDataGraphPropertiesARM* queueFamilyDataGraphProperties)
+	{
+		return ((delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkQueueFamilyDataGraphPropertiesARM*, VkResult>)vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM_ptr.Value)(physicalDevice, queueFamilyIndex, queueFamilyDataGraphPropertyCount, queueFamilyDataGraphProperties);
+	}
+
+	public static void vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM(VkPhysicalDevice physicalDevice, VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* queueFamilyDataGraphProcessingEngineInfo, VkQueueFamilyDataGraphProcessingEnginePropertiesARM* queueFamilyDataGraphProcessingEngineProperties)
+	{
+		((delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM*, VkQueueFamilyDataGraphProcessingEnginePropertiesARM*, void>)vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM_ptr.Value)(physicalDevice, queueFamilyDataGraphProcessingEngineInfo, queueFamilyDataGraphProcessingEngineProperties);
 	}
 
 	public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask)
@@ -5207,9 +5337,9 @@ unsafe partial class Vulkan
 		return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToAccelerationStructureInfoKHR*, VkResult>)vkCopyMemoryToAccelerationStructureKHR_ptr.Value)(device, deferredOperation, info);
 	}
 
-	public static VkResult vkWriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, nuint dataSize, void* data, nuint stride)
+	public static VkResult vkWriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, ulong dataSize, void* data, ulong stride)
 	{
-		return ((delegate* unmanaged<VkDevice, uint, VkAccelerationStructureKHR*, VkQueryType, nuint, void*, nuint, VkResult>)vkWriteAccelerationStructuresPropertiesKHR_ptr.Value)(device, accelerationStructureCount, accelerationStructures, queryType, dataSize, data, stride);
+		return ((delegate* unmanaged<VkDevice, uint, VkAccelerationStructureKHR*, VkQueryType, ulong, void*, ulong, VkResult>)vkWriteAccelerationStructuresPropertiesKHR_ptr.Value)(device, accelerationStructureCount, accelerationStructures, queryType, dataSize, data, stride);
 	}
 
 	public static void vkCmdCopyAccelerationStructureKHR(VkCommandBuffer commandBuffer, VkCopyAccelerationStructureInfoKHR* info)
@@ -5265,9 +5395,9 @@ unsafe partial class Vulkan
 		}
 	}
 
-	public static VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
+	public static VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, ulong dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>)vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr.Value)(device, pipeline, firstGroup, groupCount, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, ulong, void*, VkResult>)vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr.Value)(device, pipeline, firstGroup, groupCount, dataSize, data);
 	}
 
 	public static void vkCmdTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, ulong indirectDeviceAddress)
@@ -5339,9 +5469,9 @@ unsafe partial class Vulkan
 		return ((delegate* unmanaged<VkDevice, nint, VkAndroidHardwareBufferPropertiesANDROID*, VkResult>)vkGetAndroidHardwareBufferPropertiesANDROID_ptr.Value)(device, buffer, properties);
 	}
 
-	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, nint* buffer)
+	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, nint buffer)
 	{
-		return ((delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, nint*, VkResult>)vkGetMemoryAndroidHardwareBufferANDROID_ptr.Value)(device, info, buffer);
+		return ((delegate* unmanaged<VkDevice, VkMemoryGetAndroidHardwareBufferInfoANDROID*, nint, VkResult>)vkGetMemoryAndroidHardwareBufferANDROID_ptr.Value)(device, info, buffer);
 	}
 
 	public static VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, VkMemoryGetAndroidHardwareBufferInfoANDROID* info, out nint buffer)
@@ -5694,6 +5824,52 @@ unsafe partial class Vulkan
 		((delegate* unmanaged<VkCommandBuffer, ulong, ulong, ulong, void>)vkCmdDispatchGraphIndirectCountAMDX_ptr.Value)(commandBuffer, scratch, scratchSize, countInfo);
 	}
 
+	public static VkResult vkCreateCudaModuleNV(VkDevice device, VkCudaModuleCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkCudaModuleNV* module)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCudaModuleCreateInfoNV*, VkAllocationCallbacks*, VkCudaModuleNV*, VkResult>)vkCreateCudaModuleNV_ptr.Value)(device, createInfo, allocator, module);
+	}
+
+	public static VkResult vkCreateCudaModuleNV(VkDevice device, in VkCudaModuleCreateInfoNV createInfo, VkAllocationCallbacks* allocator, VkCudaModuleNV* module)
+	{
+		fixed (VkCudaModuleCreateInfoNV* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCudaModuleCreateInfoNV*, VkAllocationCallbacks*, VkCudaModuleNV*, VkResult>)vkCreateCudaModuleNV_ptr.Value)(device, createInfoPtr, allocator, module);
+		}
+	}
+
+	public static VkResult vkGetCudaModuleCacheNV(VkDevice device, VkCudaModuleNV module, ulong* cacheSize, void* cacheData)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCudaModuleNV, ulong*, void*, VkResult>)vkGetCudaModuleCacheNV_ptr.Value)(device, module, cacheSize, cacheData);
+	}
+
+	public static VkResult vkCreateCudaFunctionNV(VkDevice device, VkCudaFunctionCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkCudaFunctionNV* function)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCudaFunctionCreateInfoNV*, VkAllocationCallbacks*, VkCudaFunctionNV*, VkResult>)vkCreateCudaFunctionNV_ptr.Value)(device, createInfo, allocator, function);
+	}
+
+	public static VkResult vkCreateCudaFunctionNV(VkDevice device, in VkCudaFunctionCreateInfoNV createInfo, VkAllocationCallbacks* allocator, VkCudaFunctionNV* function)
+	{
+		fixed (VkCudaFunctionCreateInfoNV* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCudaFunctionCreateInfoNV*, VkAllocationCallbacks*, VkCudaFunctionNV*, VkResult>)vkCreateCudaFunctionNV_ptr.Value)(device, createInfoPtr, allocator, function);
+		}
+	}
+
+	public static void vkDestroyCudaModuleNV(VkDevice device, VkCudaModuleNV module, VkAllocationCallbacks* allocator = default)
+	{
+		((delegate* unmanaged<VkDevice, VkCudaModuleNV, VkAllocationCallbacks*, void>)vkDestroyCudaModuleNV_ptr.Value)(device, module, allocator);
+	}
+
+	public static void vkDestroyCudaFunctionNV(VkDevice device, VkCudaFunctionNV function, VkAllocationCallbacks* allocator = default)
+	{
+		((delegate* unmanaged<VkDevice, VkCudaFunctionNV, VkAllocationCallbacks*, void>)vkDestroyCudaFunctionNV_ptr.Value)(device, function, allocator);
+	}
+
+	public static void vkCmdCudaLaunchKernelNV(VkCommandBuffer commandBuffer, VkCudaLaunchInfoNV* launchInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkCudaLaunchInfoNV*, void>)vkCmdCudaLaunchKernelNV_ptr.Value)(commandBuffer, launchInfo);
+	}
+
 	private static void GenLoadInstance(IntPtr context, LoadFunction load)
 	{
 		vkDestroyInstance_ptr = load(context, "vkDestroyInstance"u8);
@@ -5783,8 +5959,11 @@ unsafe partial class Vulkan
 		vkCreateHeadlessSurfaceEXT_ptr = load(context, "vkCreateHeadlessSurfaceEXT"u8);
 		vkAcquireDrmDisplayEXT_ptr = load(context, "vkAcquireDrmDisplayEXT"u8);
 		vkGetDrmDisplayEXT_ptr = load(context, "vkGetDrmDisplayEXT"u8);
+		vkGetPhysicalDeviceExternalTensorPropertiesARM_ptr = load(context, "vkGetPhysicalDeviceExternalTensorPropertiesARM"u8);
 		vkGetPhysicalDeviceOpticalFlowImageFormatsNV_ptr = load(context, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV"u8);
 		vkGetPhysicalDeviceCooperativeVectorPropertiesNV_ptr = load(context, "vkGetPhysicalDeviceCooperativeVectorPropertiesNV"u8);
+		vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM_ptr = load(context, "vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM"u8);
+		vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM_ptr = load(context, "vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM"u8);
 		vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr = load(context, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV"u8);
 		vkCreateAndroidSurfaceKHR_ptr = load(context, "vkCreateAndroidSurfaceKHR"u8);
 		vkCreateMetalSurfaceEXT_ptr = load(context, "vkCreateMetalSurfaceEXT"u8);
@@ -6103,11 +6282,13 @@ unsafe partial class Vulkan
 		vkGetRenderingAreaGranularityKHR_ptr = load(context, "vkGetRenderingAreaGranularityKHR"u8);
 		vkGetDeviceImageSubresourceLayoutKHR_ptr = load(context, "vkGetDeviceImageSubresourceLayoutKHR"u8);
 		vkGetImageSubresourceLayout2KHR_ptr = load(context, "vkGetImageSubresourceLayout2KHR"u8);
+		vkWaitForPresent2KHR_ptr = load(context, "vkWaitForPresent2KHR"u8);
 		vkCreatePipelineBinariesKHR_ptr = load(context, "vkCreatePipelineBinariesKHR"u8);
 		vkDestroyPipelineBinaryKHR_ptr = load(context, "vkDestroyPipelineBinaryKHR"u8);
 		vkGetPipelineKeyKHR_ptr = load(context, "vkGetPipelineKeyKHR"u8);
 		vkGetPipelineBinaryDataKHR_ptr = load(context, "vkGetPipelineBinaryDataKHR"u8);
 		vkReleaseCapturedPipelineDataKHR_ptr = load(context, "vkReleaseCapturedPipelineDataKHR"u8);
+		vkReleaseSwapchainImagesKHR_ptr = load(context, "vkReleaseSwapchainImagesKHR"u8);
 		vkCmdSetLineStippleKHR_ptr = load(context, "vkCmdSetLineStippleKHR"u8);
 		vkGetCalibratedTimestampsKHR_ptr = load(context, "vkGetCalibratedTimestampsKHR"u8);
 		vkCmdBindDescriptorSets2KHR_ptr = load(context, "vkCmdBindDescriptorSets2KHR"u8);
@@ -6227,12 +6408,6 @@ unsafe partial class Vulkan
 		vkDestroyPrivateDataSlotEXT_ptr = load(context, "vkDestroyPrivateDataSlotEXT"u8);
 		vkSetPrivateDataEXT_ptr = load(context, "vkSetPrivateDataEXT"u8);
 		vkGetPrivateDataEXT_ptr = load(context, "vkGetPrivateDataEXT"u8);
-		vkCreateCudaModuleNV_ptr = load(context, "vkCreateCudaModuleNV"u8);
-		vkGetCudaModuleCacheNV_ptr = load(context, "vkGetCudaModuleCacheNV"u8);
-		vkCreateCudaFunctionNV_ptr = load(context, "vkCreateCudaFunctionNV"u8);
-		vkDestroyCudaModuleNV_ptr = load(context, "vkDestroyCudaModuleNV"u8);
-		vkDestroyCudaFunctionNV_ptr = load(context, "vkDestroyCudaFunctionNV"u8);
-		vkCmdCudaLaunchKernelNV_ptr = load(context, "vkCmdCudaLaunchKernelNV"u8);
 		vkCmdDispatchTileQCOM_ptr = load(context, "vkCmdDispatchTileQCOM"u8);
 		vkCmdBeginPerTileExecutionQCOM_ptr = load(context, "vkCmdBeginPerTileExecutionQCOM"u8);
 		vkCmdEndPerTileExecutionQCOM_ptr = load(context, "vkCmdEndPerTileExecutionQCOM"u8);
@@ -6320,6 +6495,16 @@ unsafe partial class Vulkan
 		vkCmdSetShadingRateImageEnableNV_ptr = load(context, "vkCmdSetShadingRateImageEnableNV"u8);
 		vkCmdSetRepresentativeFragmentTestEnableNV_ptr = load(context, "vkCmdSetRepresentativeFragmentTestEnableNV"u8);
 		vkCmdSetCoverageReductionModeNV_ptr = load(context, "vkCmdSetCoverageReductionModeNV"u8);
+		vkCreateTensorARM_ptr = load(context, "vkCreateTensorARM"u8);
+		vkDestroyTensorARM_ptr = load(context, "vkDestroyTensorARM"u8);
+		vkCreateTensorViewARM_ptr = load(context, "vkCreateTensorViewARM"u8);
+		vkDestroyTensorViewARM_ptr = load(context, "vkDestroyTensorViewARM"u8);
+		vkGetTensorMemoryRequirementsARM_ptr = load(context, "vkGetTensorMemoryRequirementsARM"u8);
+		vkBindTensorMemoryARM_ptr = load(context, "vkBindTensorMemoryARM"u8);
+		vkGetDeviceTensorMemoryRequirementsARM_ptr = load(context, "vkGetDeviceTensorMemoryRequirementsARM"u8);
+		vkCmdCopyTensorARM_ptr = load(context, "vkCmdCopyTensorARM"u8);
+		vkGetTensorOpaqueCaptureDescriptorDataARM_ptr = load(context, "vkGetTensorOpaqueCaptureDescriptorDataARM"u8);
+		vkGetTensorViewOpaqueCaptureDescriptorDataARM_ptr = load(context, "vkGetTensorViewOpaqueCaptureDescriptorDataARM"u8);
 		vkGetShaderModuleIdentifierEXT_ptr = load(context, "vkGetShaderModuleIdentifierEXT"u8);
 		vkGetShaderModuleCreateInfoIdentifierEXT_ptr = load(context, "vkGetShaderModuleCreateInfoIdentifierEXT"u8);
 		vkCreateOpticalFlowSessionNV_ptr = load(context, "vkCreateOpticalFlowSessionNV"u8);
@@ -6341,6 +6526,15 @@ unsafe partial class Vulkan
 		vkSetLatencyMarkerNV_ptr = load(context, "vkSetLatencyMarkerNV"u8);
 		vkGetLatencyTimingsNV_ptr = load(context, "vkGetLatencyTimingsNV"u8);
 		vkQueueNotifyOutOfBandNV_ptr = load(context, "vkQueueNotifyOutOfBandNV"u8);
+		vkCreateDataGraphPipelinesARM_ptr = load(context, "vkCreateDataGraphPipelinesARM"u8);
+		vkCreateDataGraphPipelineSessionARM_ptr = load(context, "vkCreateDataGraphPipelineSessionARM"u8);
+		vkGetDataGraphPipelineSessionBindPointRequirementsARM_ptr = load(context, "vkGetDataGraphPipelineSessionBindPointRequirementsARM"u8);
+		vkGetDataGraphPipelineSessionMemoryRequirementsARM_ptr = load(context, "vkGetDataGraphPipelineSessionMemoryRequirementsARM"u8);
+		vkBindDataGraphPipelineSessionMemoryARM_ptr = load(context, "vkBindDataGraphPipelineSessionMemoryARM"u8);
+		vkDestroyDataGraphPipelineSessionARM_ptr = load(context, "vkDestroyDataGraphPipelineSessionARM"u8);
+		vkCmdDispatchDataGraphARM_ptr = load(context, "vkCmdDispatchDataGraphARM"u8);
+		vkGetDataGraphPipelineAvailablePropertiesARM_ptr = load(context, "vkGetDataGraphPipelineAvailablePropertiesARM"u8);
+		vkGetDataGraphPipelinePropertiesARM_ptr = load(context, "vkGetDataGraphPipelinePropertiesARM"u8);
 		vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr = load(context, "vkCmdSetAttachmentFeedbackLoopEnableEXT"u8);
 		vkCmdBindTileMemoryQCOM_ptr = load(context, "vkCmdBindTileMemoryQCOM"u8);
 		vkCreateExternalComputeQueueNV_ptr = load(context, "vkCreateExternalComputeQueueNV"u8);
@@ -6407,5 +6601,11 @@ unsafe partial class Vulkan
 		vkCmdDispatchGraphAMDX_ptr = load(context, "vkCmdDispatchGraphAMDX"u8);
 		vkCmdDispatchGraphIndirectAMDX_ptr = load(context, "vkCmdDispatchGraphIndirectAMDX"u8);
 		vkCmdDispatchGraphIndirectCountAMDX_ptr = load(context, "vkCmdDispatchGraphIndirectCountAMDX"u8);
+		vkCreateCudaModuleNV_ptr = load(context, "vkCreateCudaModuleNV"u8);
+		vkGetCudaModuleCacheNV_ptr = load(context, "vkGetCudaModuleCacheNV"u8);
+		vkCreateCudaFunctionNV_ptr = load(context, "vkCreateCudaFunctionNV"u8);
+		vkDestroyCudaModuleNV_ptr = load(context, "vkDestroyCudaModuleNV"u8);
+		vkDestroyCudaFunctionNV_ptr = load(context, "vkDestroyCudaFunctionNV"u8);
+		vkCmdCudaLaunchKernelNV_ptr = load(context, "vkCmdCudaLaunchKernelNV"u8);
 	}
 }

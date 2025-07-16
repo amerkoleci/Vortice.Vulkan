@@ -2,15 +2,15 @@
 <Project>
   <!-- https://learn.microsoft.com/nuget/consume-packages/central-package-management -->
   <ItemGroup>
-    <PackageVersion Include="CppAst" Version="0.21.1" />
+    <PackageVersion Include="CppAst" Version="0.23.1" />
 
     <PackageVersion Include="Silk.NET.Shaderc.Native" Version="2.22.0" />
 
     <!-- Samples -->
-    <PackageVersion Include="Alimer.Bindings.SDL" Version="3.9.7" />
+    <PackageVersion Include="Alimer.Bindings.SDL" Version="3.9.8" />
     
     <!-- Tests -->
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageVersion Include="NUnit" Version="4.3.2" />
     <PackageVersion Include="NUnit3TestAdapter" Version="5.0.0" />
   </ItemGroup>

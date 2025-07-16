@@ -108,7 +108,7 @@ partial class CsCodeGenerator
             isReadOnly = true;
         }
 
-        if(_structsAsRecord.Contains(cppClass.Name))
+        if (_structsAsRecord.Contains(cppClass.Name))
         {
             modifier += " record";
         }
@@ -348,6 +348,14 @@ partial class CsCodeGenerator
                 else if (structureTypeValue == "FenceGetFdInfoKHR")
                 {
                     structureTypeValue = "FenceGetFDInfoKHR";
+                }
+                else if (structureTypeValue == "VkSurfaceCapabilitiesPresentId2KHR")
+                {
+                    structureTypeValue = "FenceGetFDInfoKHR";
+                }
+                else if (structName == "VkPhysicalDeviceIDProperties")
+                {
+                    structureTypeValue = "PhysicalDeviceIdProperties";
                 }
 
                 fieldInitializer = $" = VkStructureType.{structureTypeValue}";
