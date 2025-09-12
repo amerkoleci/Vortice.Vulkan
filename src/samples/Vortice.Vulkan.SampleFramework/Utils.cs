@@ -8,20 +8,24 @@ namespace Vortice.Vulkan;
 public ref struct SwapChainSupportDetails
 {
     public VkSurfaceCapabilitiesKHR Capabilities;
-    public ReadOnlySpan<VkSurfaceFormatKHR> Formats;
-    public ReadOnlySpan<VkPresentModeKHR> PresentModes;
+    public Span<VkSurfaceFormatKHR> Formats;
+    public Span<VkPresentModeKHR> PresentModes;
 }
-
 
 public static class Utils
 {
-    public static SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface)
+    public static SwapChainSupportDetails QuerySwapChainSupport(VkInstanceApi api, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface)
     {
-        SwapChainSupportDetails details = new SwapChainSupportDetails();
-        vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, out details.Capabilities).CheckResult();
+        SwapChainSupportDetails details = new();
+        api.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, out details.Capabilities).CheckResult();
 
-        details.Formats = vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface);
-        details.PresentModes = vkGetPhysicalDeviceSurfacePresentModesKHR(physicalDevice, surface);
+        api.vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, out uint surfaceFormatCount).CheckResult();
+        details.Formats = new VkSurfaceFormatKHR[surfaceFormatCount];
+        api.vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, details.Formats).CheckResult();
+
+        api.vkGetPhysicalDeviceSurfacePresentModesKHR(physicalDevice, surface, out uint presentModeCount).CheckResult();
+        details.PresentModes = new VkPresentModeKHR[presentModeCount];
+        api.vkGetPhysicalDeviceSurfacePresentModesKHR(physicalDevice, surface, details.PresentModes).CheckResult();
         return details;
     }
 }

@@ -36,7 +36,7 @@ public static unsafe class Program
             _graphicsDevice = new GraphicsDevice(Name, EnableValidationLayers, MainWindow);
 
             VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new();
-            vkCreatePipelineLayout(_graphicsDevice, &pipelineLayoutCreateInfo, null, out _pipelineLayout).CheckResult();
+            _graphicsDevice.DeviceApi.vkCreatePipelineLayout(_graphicsDevice, &pipelineLayoutCreateInfo, null, out _pipelineLayout).CheckResult();
 
             // Create pipeline
             {
@@ -130,10 +130,10 @@ public static unsafe class Program
                 };
 
                 // Create rendering pipeline using the specified states
-                vkCreateGraphicsPipeline(_graphicsDevice, pipelineCreateInfo, out _pipeline).CheckResult();
+                _graphicsDevice.DeviceApi.vkCreateGraphicsPipeline(_graphicsDevice, pipelineCreateInfo, out _pipeline).CheckResult();
 
-                vkDestroyShaderModule(_graphicsDevice, vertexShader);
-                vkDestroyShaderModule(_graphicsDevice, fragmentShader);
+                _graphicsDevice.DeviceApi.vkDestroyShaderModule(_graphicsDevice, vertexShader);
+                _graphicsDevice.DeviceApi.vkDestroyShaderModule(_graphicsDevice, fragmentShader);
             }
 
             {
@@ -155,9 +155,9 @@ public static unsafe class Program
                 };
 
                 // Create a host-visible buffer to copy the vertex data to (staging buffer)
-                vkCreateBuffer(_graphicsDevice, &vertexBufferInfo, null, out VkBuffer stagingBuffer).CheckResult();
+                _graphicsDevice.DeviceApi.vkCreateBuffer(_graphicsDevice, &vertexBufferInfo, null, out VkBuffer stagingBuffer).CheckResult();
 
-                vkGetBufferMemoryRequirements(_graphicsDevice, stagingBuffer, out VkMemoryRequirements memReqs);
+                _graphicsDevice.DeviceApi.vkGetBufferMemoryRequirements(_graphicsDevice, stagingBuffer, out VkMemoryRequirements memReqs);
 
                 VkMemoryAllocateInfo memAlloc = new()
                 {
@@ -166,24 +166,24 @@ public static unsafe class Program
                     // Also request it to be coherent, so that writes are visible to the GPU right after unmapping the buffer
                     memoryTypeIndex = _graphicsDevice.GetMemoryTypeIndex(memReqs.memoryTypeBits, VkMemoryPropertyFlags.HostVisible | VkMemoryPropertyFlags.HostCoherent)
                 };
-                vkAllocateMemory(_graphicsDevice, &memAlloc, null, out VkDeviceMemory stagingBufferMemory);
+                _graphicsDevice.DeviceApi.vkAllocateMemory(_graphicsDevice, &memAlloc, null, out VkDeviceMemory stagingBufferMemory);
 
                 // Map and copy
                 void* pMappedData;
-                vkMapMemory(_graphicsDevice, stagingBufferMemory, 0, memAlloc.allocationSize, 0, &pMappedData).CheckResult();
+                _graphicsDevice.DeviceApi.vkMapMemory(_graphicsDevice, stagingBufferMemory, 0, memAlloc.allocationSize, 0, &pMappedData).CheckResult();
                 Span<VertexPositionColor> destinationData = new(pMappedData, sourceData.Length);
                 sourceData.CopyTo(destinationData);
-                vkUnmapMemory(_graphicsDevice, stagingBufferMemory);
-                vkBindBufferMemory(_graphicsDevice, stagingBuffer, stagingBufferMemory, 0).CheckResult();
+                _graphicsDevice.DeviceApi.vkUnmapMemory(_graphicsDevice, stagingBufferMemory);
+                _graphicsDevice.DeviceApi.vkBindBufferMemory(_graphicsDevice, stagingBuffer, stagingBufferMemory, 0).CheckResult();
 
                 vertexBufferInfo.usage = VkBufferUsageFlags.VertexBuffer | VkBufferUsageFlags.TransferDst;
-                vkCreateBuffer(_graphicsDevice, &vertexBufferInfo, null, out _vertexBuffer).CheckResult();
+                _graphicsDevice.DeviceApi.vkCreateBuffer(_graphicsDevice, &vertexBufferInfo, null, out _vertexBuffer).CheckResult();
 
-                vkGetBufferMemoryRequirements(_graphicsDevice, _vertexBuffer, out memReqs);
+                _graphicsDevice.DeviceApi.vkGetBufferMemoryRequirements(_graphicsDevice, _vertexBuffer, out memReqs);
                 memAlloc.allocationSize = memReqs.size;
                 memAlloc.memoryTypeIndex = _graphicsDevice.GetMemoryTypeIndex(memReqs.memoryTypeBits, VkMemoryPropertyFlags.DeviceLocal);
-                vkAllocateMemory(_graphicsDevice, &memAlloc, null, out _vertexBufferMemory).CheckResult();
-                vkBindBufferMemory(_graphicsDevice, _vertexBuffer, _vertexBufferMemory, 0).CheckResult();
+                _graphicsDevice.DeviceApi.vkAllocateMemory(_graphicsDevice, &memAlloc, null, out _vertexBufferMemory).CheckResult();
+                _graphicsDevice.DeviceApi.vkBindBufferMemory(_graphicsDevice, _vertexBuffer, _vertexBufferMemory, 0).CheckResult();
 
                 VkCommandBuffer copyCmd = _graphicsDevice.GetCommandBuffer(true);
 
@@ -192,13 +192,13 @@ public static unsafe class Program
 
                 // Vertex buffer
                 copyRegion.size = vertexBufferSize;
-                vkCmdCopyBuffer(copyCmd, stagingBuffer, _vertexBuffer, 1, &copyRegion);
+                _graphicsDevice.DeviceApi.vkCmdCopyBuffer(copyCmd, stagingBuffer, _vertexBuffer, 1, &copyRegion);
 
                 // Flushing the command buffer will also submit it to the queue and uses a fence to ensure that all commands have been executed before returning
                 _graphicsDevice.FlushCommandBuffer(copyCmd);
 
-                vkDestroyBuffer(_graphicsDevice, stagingBuffer);
-                vkFreeMemory(_graphicsDevice, stagingBufferMemory);
+                _graphicsDevice.DeviceApi.vkDestroyBuffer(_graphicsDevice, stagingBuffer);
+                _graphicsDevice.DeviceApi.vkFreeMemory(_graphicsDevice, stagingBufferMemory);
             }
         }
 
@@ -206,10 +206,10 @@ public static unsafe class Program
         {
             _graphicsDevice.WaitIdle();
 
-            vkDestroyPipelineLayout(_graphicsDevice, _pipelineLayout);
-            vkDestroyPipeline(_graphicsDevice, _pipeline);
-            vkDestroyBuffer(_graphicsDevice, _vertexBuffer);
-            vkFreeMemory(_graphicsDevice, _vertexBufferMemory);
+            _graphicsDevice.DeviceApi.vkDestroyPipelineLayout(_graphicsDevice, _pipelineLayout);
+            _graphicsDevice.DeviceApi.vkDestroyPipeline(_graphicsDevice, _pipeline);
+            _graphicsDevice.DeviceApi.vkDestroyBuffer(_graphicsDevice, _vertexBuffer);
+            _graphicsDevice.DeviceApi.vkFreeMemory(_graphicsDevice, _vertexBufferMemory);
 
             _graphicsDevice.Dispose();
 
@@ -235,7 +235,7 @@ public static unsafe class Program
                 pClearValues = &clearValue
             };
 
-            vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
+            _graphicsDevice.DeviceApi.vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
 
             // Update dynamic viewport state
             // Flip coordinate to map DirectX coordinate system.
@@ -248,22 +248,22 @@ public static unsafe class Program
                 minDepth = 0.0f,
                 maxDepth = 1.0f
             };
-            vkCmdSetViewport(commandBuffer, viewport);
+            _graphicsDevice.DeviceApi.vkCmdSetViewport(commandBuffer, viewport);
 
             // Update dynamic scissor state
             VkRect2D scissor = new(VkOffset2D.Zero, MainWindow.Extent);
-            vkCmdSetScissor(commandBuffer, scissor);
+            _graphicsDevice.DeviceApi.vkCmdSetScissor(commandBuffer, scissor);
 
             // Bind the rendering pipeline
-            vkCmdBindPipeline(commandBuffer, VkPipelineBindPoint.Graphics, _pipeline);
+            _graphicsDevice.DeviceApi.vkCmdBindPipeline(commandBuffer, VkPipelineBindPoint.Graphics, _pipeline);
 
             // Bind triangle vertex buffer (contains position and colors)
-            vkCmdBindVertexBuffer(commandBuffer, 0, _vertexBuffer);
+            _graphicsDevice.DeviceApi.vkCmdBindVertexBuffer(commandBuffer, 0, _vertexBuffer);
 
             // Draw non indexed
-            vkCmdDraw(commandBuffer, 3, 1, 0, 0);
+            _graphicsDevice.DeviceApi.vkCmdDraw(commandBuffer, 3, 1, 0, 0);
 
-            vkCmdEndRenderPass(commandBuffer);
+            _graphicsDevice.DeviceApi.vkCmdEndRenderPass(commandBuffer);
         }
 
         private void CreateShaderModule(string name, out VkShaderModule shaderModule)

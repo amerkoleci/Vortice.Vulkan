@@ -10,24 +10,12 @@
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>2.2.0</VersionPrefix>
+    <VersionPrefix>3.0.0</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="$(RepoRootPath)README.md" Pack="true" PackagePath="\"/>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(SignAssembly)' == 'true'">
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>Vortice.VulkanMemoryAllocator, PublicKey=$(VorticePublicKey)</_Parameter1>
-    </AssemblyAttribute>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(SignAssembly)' != 'true'">
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>Vortice.VulkanMemoryAllocator</_Parameter1>
-    </AssemblyAttribute>
+    <None Include="$(RepoRootPath)README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

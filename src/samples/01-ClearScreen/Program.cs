@@ -1,9 +1,7 @@
 // Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using System.Numerics;
 using Vortice.Vulkan;
-using static Vortice.Vulkan.Vulkan;
 
 namespace ClearScreen;
 
@@ -61,9 +59,9 @@ public static unsafe class Program
                 clearValueCount = 1,
                 pClearValues = &clearValue
             };
-            vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
-            vkCmdSetBlendConstants(commandBuffer, new Vector4(1.0f, 1.0f, 1.0f, 1.0f));
-            vkCmdEndRenderPass(commandBuffer);
+            _graphicsDevice.DeviceApi.vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
+            _graphicsDevice.DeviceApi.vkCmdSetBlendConstants(commandBuffer, 1.0f, 1.0f, 1.0f, 1.0f);
+            _graphicsDevice.DeviceApi.vkCmdEndRenderPass(commandBuffer);
         }
     }
 }

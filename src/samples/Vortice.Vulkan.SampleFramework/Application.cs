@@ -2,8 +2,11 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Runtime.InteropServices;
-using SDL3;
-using static SDL3.SDL3;
+using SDL;
+using static SDL.SDL3;
+using static SDL.SDL_LogPriority;
+using static SDL.SDL_EventType;
+using System.Runtime.CompilerServices;
 
 namespace Vortice.Vulkan;
 
@@ -13,14 +16,14 @@ public abstract class Application : IDisposable
 
     protected unsafe Application()
     {
-        if (!SDL_Init(SDL_InitFlags.Video))
+        if (!SDL_Init(SDL_InitFlags.SDL_INIT_VIDEO))
         {
             throw new PlatformNotSupportedException("SDL is not supported");
         }
 
-        SDL_SetLogOutputFunction(Log_SDL);
+        SDL_SetLogOutputFunction(&Log_SDL, 0);
 
-        if (!SDL_Vulkan_LoadLibrary())
+        if (!SDL_Vulkan_LoadLibrary((byte*)null))
         {
             throw new PlatformNotSupportedException("SDL: Failed to init vulkan");
         }
@@ -58,18 +61,19 @@ public abstract class Application : IDisposable
             SDL_Event evt;
             while (SDL_PollEvent(&evt))
             {
-                if (evt.type == SDL_EventType.Quit)
+                if (evt.type == (uint)SDL_EVENT_QUIT)
                 {
                     running = false;
                     break;
                 }
 
-                if (evt.type == SDL_EventType.WindowCloseRequested && evt.window.windowID == MainWindow.Id)
+                if (evt.type == (uint)SDL_EVENT_WINDOW_CLOSE_REQUESTED && evt.window.windowID == MainWindow.Id)
                 {
                     running = false;
                     break;
                 }
-                else if (evt.type >= SDL_EventType.WindowFirst && evt.type <= SDL_EventType.WindowLast)
+                else if (evt.type >= (uint)SDL_EVENT_WINDOW_FIRST
+                    && evt.type <= (uint)SDL_EVENT_WINDOW_LAST)
                 {
                     HandleWindowEvent(evt);
                 }
@@ -91,7 +95,7 @@ public abstract class Application : IDisposable
     {
         switch (evt.window.type)
         {
-            case SDL_EventType.WindowResized:
+            case SDL_EVENT_WINDOW_RESIZED:
                 //_minimized = false;
                 HandleResize(evt);
                 break;
@@ -108,17 +112,19 @@ public abstract class Application : IDisposable
         }
     }
 
-    //[UnmanagedCallersOnly]
-    private static void Log_SDL(SDL_LogCategory category, SDL_LogPriority priority, string? description)
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    private static unsafe void Log_SDL(nint _,int categoryInt, SDL_LogPriority priority, byte* messagePtr)
     {
-        if (priority >= SDL_LogPriority.Error)
+        string? message = PtrToStringUTF8(messagePtr);
+        SDL_LogCategory category = (SDL_LogCategory)categoryInt;
+        if (priority >= SDL_LOG_PRIORITY_ERROR)
         {
-            Log.Error($"[{priority}] SDL: {description}");
-            throw new Exception(description);
+            Log.Error($"[{priority}] SDL: {message}");
+            throw new Exception(message);
         }
         else
         {
-            Log.Info($"[{priority}] SDL: {description}");
+            Log.Info($"[{priority}] SDL: {message}");
         }
     }
 }

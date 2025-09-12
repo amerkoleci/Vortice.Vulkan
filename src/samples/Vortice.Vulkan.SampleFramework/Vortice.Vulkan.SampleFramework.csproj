@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net9.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IsPackable>false</IsPackable>
     <RootNamespace>Vortice.Vulkan</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Alimer.Bindings.SDL" />
+    <PackageReference Include="ppy.SDL3-CS" />
   </ItemGroup>
 
   <ItemGroup>

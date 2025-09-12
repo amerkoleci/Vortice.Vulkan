@@ -58,222 +58,230 @@ partial class CsCodeGenerator
 
     private void GenerateHelperCommands(CppCompilation compilation)
     {
+        List<CppFunction> globalCommands = [];
+        List<CppFunction> instanceCommands = [];
+        List<CppFunction> deviceCommands = [];
+
+        foreach (CppFunction function in compilation.Functions)
+        {
+            if (!s_outArrayReturnFunctions.Contains(function.Name))
+            {
+                continue;
+            }
+
+            if (function.Parameters.Count > 0)
+            {
+                CppParameter firstParameter = function.Parameters[0];
+                if (firstParameter.Type is CppTypedef typedef)
+                {
+                    if (typedef.Name == "VkInstance" ||
+                        typedef.Name == "VkPhysicalDevice" ||
+                        IsInstanceFunction(function.Name))
+                    {
+                        instanceCommands.Add(function);
+                    }
+                    else
+                    {
+                        deviceCommands.Add(function);
+                    }
+                }
+                else
+                {
+                    globalCommands.Add(function);
+                }
+            }
+        }
+
+        GenerateHelpers(globalCommands, false, "Vulkan", "VkHelpers");
+        GenerateHelpers(instanceCommands, true, "VkInstanceApi", "VkInstanceApi.Helpers");
+        GenerateHelpers(deviceCommands, true, "VkDeviceApi", "VkDeviceApi.Helpers");
+    }
+
+    private void GenerateHelpers(List<CppFunction> commands, bool instance, string className, string fileName)
+    {
+        string methodModifier = instance ? string.Empty : "static ";
+
         // Generate Functions
-        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "VkHelpers.cs"),
+        using (CodeWriter writer = new(Path.Combine(_options.OutputPath, $"{fileName}.cs"),
             false,
             _options.Namespace,
             ["System.Diagnostics", "System.Runtime.InteropServices", "System.Runtime.CompilerServices"]
-            );
-
-        using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))
+        ))
         {
-            // Generate methods with array calls
-            foreach (CppFunction function in compilation.Functions)
+            using (writer.PushBlock($"unsafe partial class {className}"))
             {
-                if (!s_outArrayReturnFunctions.Contains(function.Name))
+                // Generate methods with array calls
+                foreach (CppFunction function in commands)
                 {
-                    continue;
-                }
+                    // Find count and array return type.
+                    string countParameterName = string.Empty;
+                    string returnArrayTypeName = string.Empty;
+                    string returnVariableName = string.Empty;
+                    List<CppParameter> newParameters = [];
+                    bool hasArrayReturn = false;
+                    int countArgumentArrayIndex = 0;
 
-                // Find count and array return type.
-                string countParameterName = string.Empty;
-                string returnArrayTypeName = string.Empty;
-                string returnVariableName = string.Empty;
-                List<CppParameter> newParameters = [];
-                bool hasArrayReturn = false;
-                int countArgumentArrayIndex = 0;
-
-                foreach (CppParameter parameter in function.Parameters)
-                {
-                    if (parameter.Name.EndsWith("count", StringComparison.OrdinalIgnoreCase))
+                    foreach (CppParameter parameter in function.Parameters)
                     {
-                        countParameterName = GetParameterName(parameter.Name);
-                        continue;
-                    }
-
-                    if (CanBeUsedAsInOut(parameter.Type, true, out CppType? cppTypeDeclaration))
-                    {
-                        returnVariableName = GetParameterName(parameter.Name);
-                        returnArrayTypeName = GetCsTypeName(cppTypeDeclaration);
-                        hasArrayReturn = true;
-                        countArgumentArrayIndex = function.Parameters.IndexOf(parameter) - 1;
-                        continue;
-                    }
-
-                    if (parameter.Type is CppPointerType pointerType
-                        && pointerType.ElementType is CppQualifiedType qualifiedType
-                        && !string.IsNullOrEmpty(countParameterName))
-                    {
-                        returnVariableName = GetParameterName(parameter.Name);
-                        returnArrayTypeName = GetCsTypeName(qualifiedType);
-                        hasArrayReturn = false;
-                        countArgumentArrayIndex = function.Parameters.IndexOf(parameter) - 1;
-                        continue;
-                    }
-
-                    newParameters.Add(parameter);
-                }
-
-                string csCountParameterType = "uint";
-                if (!hasArrayReturn)
-                {
-                    // Calls without return array.
-                    string returnType = GetCsTypeName(function.ReturnType);
-
-                    StringBuilder argumentsSingleElementBuilder = new();
-                    StringBuilder argumentsReadOnlySpanBuilder = new();
-
-                    int index = 0;
-                    List<string> invokeSingleElementParameters = [];
-                    List<string> invokeElementsParameters = [];
-
-                    foreach (CppParameter cppParameter in newParameters)
-                    {
-                        string paramCsTypeName = GetCsTypeName(cppParameter.Type);
-                        string paramCsName = GetParameterName(cppParameter.Name);
-                        string argumentSignature = $"{paramCsTypeName} {paramCsName}";
-
-                        if (index == countArgumentArrayIndex)
+                        if (parameter.Name.EndsWith("count", StringComparison.OrdinalIgnoreCase))
                         {
-                            AppendCountParameter(false,
-                                argumentsSingleElementBuilder, argumentsReadOnlySpanBuilder,
-                                invokeSingleElementParameters, invokeElementsParameters,
-                                returnArrayTypeName, returnVariableName,
-                                csCountParameterType);
+                            countParameterName = GetParameterName(parameter.Name);
+                            continue;
                         }
 
-                        argumentsSingleElementBuilder.Append(argumentSignature);
-                        argumentsReadOnlySpanBuilder.Append(argumentSignature);
-                        if (index < newParameters.Count - 1)
+                        if (CanBeUsedAsInOut(parameter.Type, true, out CppType? cppTypeDeclaration))
                         {
-                            argumentsSingleElementBuilder.Append(", ");
-                            argumentsReadOnlySpanBuilder.Append(", ");
+                            returnVariableName = GetParameterName(parameter.Name);
+                            returnArrayTypeName = GetCsTypeName(cppTypeDeclaration);
+                            hasArrayReturn = true;
+                            countArgumentArrayIndex = function.Parameters.IndexOf(parameter) - 1;
+                            continue;
                         }
 
-                        invokeSingleElementParameters.Add(paramCsName);
-                        invokeElementsParameters.Add(paramCsName);
-                        index++;
-                    }
-
-                    // Functions like vkFlushMappedMemoryRanges
-                    if (newParameters.Count == countArgumentArrayIndex)
-                    {
-                        AppendCountParameter(true,
-                                argumentsSingleElementBuilder, argumentsReadOnlySpanBuilder,
-                                invokeSingleElementParameters, invokeElementsParameters,
-                                returnArrayTypeName, returnVariableName,
-                                csCountParameterType);
-                    }
-
-                    // Single element function.
-                    var argumentsSingleElementString = argumentsSingleElementBuilder.ToString();
-                    using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsSingleElementString})"))
-                    {
-                        if (returnType != "void")
+                        if (parameter.Type is CppPointerType pointerType
+                            && pointerType.ElementType is CppQualifiedType qualifiedType
+                            && !string.IsNullOrEmpty(countParameterName))
                         {
-                            writer.Write("return ");
+                            returnVariableName = GetParameterName(parameter.Name);
+                            returnArrayTypeName = GetCsTypeName(qualifiedType);
+                            hasArrayReturn = false;
+                            countArgumentArrayIndex = function.Parameters.IndexOf(parameter) - 1;
+                            continue;
                         }
 
-                        EmitInvoke(writer, function, invokeSingleElementParameters, false);
+                        newParameters.Add(parameter);
                     }
 
-                    writer.WriteLine();
-
-                    // ReadOnlySpan
-                    var argumentsReadOnlySpanString = argumentsReadOnlySpanBuilder.ToString();
-                    using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsReadOnlySpanString})"))
+                    string csCountParameterType = "uint";
+                    if (!hasArrayReturn)
                     {
-                        using (writer.PushBlock($"fixed ({returnArrayTypeName}* {returnVariableName}Ptr = {returnVariableName})"))
+                        // Calls without return array.
+                        string returnType = GetCsTypeName(function.ReturnType);
+
+                        StringBuilder argumentsSingleElementBuilder = new();
+                        StringBuilder argumentsReadOnlySpanBuilder = new();
+
+                        int index = 0;
+                        List<string> invokeSingleElementParameters = [];
+                        List<string> invokeElementsParameters = [];
+
+                        foreach (CppParameter cppParameter in newParameters)
+                        {
+                            string paramCsTypeName = GetCsTypeName(cppParameter.Type);
+                            string paramCsName = GetParameterName(cppParameter.Name);
+                            string argumentSignature = $"{paramCsTypeName} {paramCsName}";
+
+                            if (index == countArgumentArrayIndex)
+                            {
+                                AppendCountParameter(false,
+                                    argumentsSingleElementBuilder, argumentsReadOnlySpanBuilder,
+                                    invokeSingleElementParameters, invokeElementsParameters,
+                                    returnArrayTypeName, returnVariableName,
+                                    csCountParameterType);
+                            }
+
+                            argumentsSingleElementBuilder.Append(argumentSignature);
+                            argumentsReadOnlySpanBuilder.Append(argumentSignature);
+                            if (index < newParameters.Count - 1)
+                            {
+                                argumentsSingleElementBuilder.Append(", ");
+                                argumentsReadOnlySpanBuilder.Append(", ");
+                            }
+
+                            invokeSingleElementParameters.Add(paramCsName);
+                            invokeElementsParameters.Add(paramCsName);
+                            index++;
+                        }
+
+                        // Functions like vkFlushMappedMemoryRanges
+                        if (newParameters.Count == countArgumentArrayIndex)
+                        {
+                            AppendCountParameter(true,
+                                    argumentsSingleElementBuilder, argumentsReadOnlySpanBuilder,
+                                    invokeSingleElementParameters, invokeElementsParameters,
+                                    returnArrayTypeName, returnVariableName,
+                                    csCountParameterType);
+                        }
+
+                        // Single element function.
+                        var argumentsSingleElementString = argumentsSingleElementBuilder.ToString();
+                        using (writer.PushBlock($"public {methodModifier}{returnType} {function.Name}({argumentsSingleElementString})"))
                         {
                             if (returnType != "void")
                             {
                                 writer.Write("return ");
                             }
 
-                            EmitInvoke(writer, function, invokeElementsParameters, false);
+                            EmitInvoke(writer, function, invokeSingleElementParameters, false);
+                        }
+
+                        writer.WriteLine();
+
+                        // ReadOnlySpan
+                        var argumentsReadOnlySpanString = argumentsReadOnlySpanBuilder.ToString();
+                        using (writer.PushBlock($"public {methodModifier}{returnType} {function.Name}({argumentsReadOnlySpanString})"))
+                        {
+                            using (writer.PushBlock($"fixed ({returnArrayTypeName}* {returnVariableName}Ptr = {returnVariableName})"))
+                            {
+                                if (returnType != "void")
+                                {
+                                    writer.Write("return ");
+                                }
+
+                                EmitInvoke(writer, function, invokeElementsParameters, false);
+                            }
                         }
                     }
-                }
-                else
-                {
-                    string argumentsString = GetParameterSignature(newParameters, false, false);
-                    string extraArgs = string.Empty;
-                    if (!string.IsNullOrEmpty(argumentsString))
+                    else
                     {
-                        extraArgs = ", ";
-                    }
-
-                    // Generate function with out only
-                    // Example: public static VkResult vkEnumeratePhysicalDevices(VkInstance instance, out uint pPhysicalDeviceCount);
-                    string returnType = GetCsTypeName(function.ReturnType);
-                    writer.WriteLine($"[SkipLocalsInit]");
-                    using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsString}{extraArgs}out {csCountParameterType} {countParameterName})"))
-                    {
-                        writer.WriteLine($"Unsafe.SkipInit(out {countParameterName});");
-                        using (writer.PushBlock($"fixed ({csCountParameterType}* {countParameterName}Ptr = &{countParameterName})"))
+                        string argumentsString = GetParameterSignature(newParameters, false, false);
+                        string extraArgs = string.Empty;
+                        if (!string.IsNullOrEmpty(argumentsString))
                         {
-                            List<string> invokeParameters = new(newParameters.Select(item => GetParameterName(item.Name)))
+                            extraArgs = ", ";
+                        }
+
+                        // Generate function with out only
+                        // Example: public static VkResult vkEnumeratePhysicalDevices(VkInstance instance, out uint pPhysicalDeviceCount);
+                        string returnType = GetCsTypeName(function.ReturnType);
+                        using (writer.PushBlock($"public {methodModifier}{returnType} {function.Name}({argumentsString}{extraArgs}out {csCountParameterType} {countParameterName})"))
+                        {
+                            writer.WriteLine($"{countParameterName} = default;");
+                            using (writer.PushBlock($"fixed ({csCountParameterType}* {countParameterName}Ptr = &{countParameterName})"))
+                            {
+                                List<string> invokeParameters = new(newParameters.Select(item => GetParameterName(item.Name)))
                             {
                                 $"{countParameterName}Ptr",
                                 "default"
                             };
-                            EmitInvoke(writer, function, invokeParameters,
-                                handleCheckResult: false,
-                                emitReturn: true);
+                                EmitInvoke(writer, function, invokeParameters,
+                                    handleCheckResult: false,
+                                    emitReturn: true);
+                            }
                         }
-                    }
-                    writer.WriteLine();
+                        writer.WriteLine();
 
-                    // Generate function with Span as parameter
-                    // Example: public static VkResult vkEnumeratePhysicalDevices(VkInstance instance, Span<vulkan.VkPhysicalDevice> pPhysicalDevices)
-                    using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsString}{extraArgs}Span<{returnArrayTypeName}> {returnVariableName})"))
-                    {
-                        writer.WriteLine($"{csCountParameterType} {countParameterName} = checked(({csCountParameterType}){returnVariableName}.Length);");
-                        using (writer.PushBlock($"fixed ({returnArrayTypeName}* {returnVariableName}Ptr = {returnVariableName})"))
+                        // Generate function with Span as parameter
+                        // Example: public static VkResult vkEnumeratePhysicalDevices(VkInstance instance, Span<vulkan.VkPhysicalDevice> pPhysicalDevices)
+                        using (writer.PushBlock($"public {methodModifier}{returnType} {function.Name}({argumentsString}{extraArgs}Span<{returnArrayTypeName}> {returnVariableName})"))
                         {
-                            List<string> invokeParameters = new(newParameters.Select(item => GetParameterName(item.Name)))
+                            writer.WriteLine($"{csCountParameterType} {countParameterName} = checked(({csCountParameterType}){returnVariableName}.Length);");
+                            using (writer.PushBlock($"fixed ({returnArrayTypeName}* {returnVariableName}Ptr = {returnVariableName})"))
+                            {
+                                List<string> invokeParameters = new(newParameters.Select(item => GetParameterName(item.Name)))
                             {
                                 $"&{countParameterName}",
                                 $"{returnVariableName}Ptr"
                             };
-                            EmitInvoke(writer, function, invokeParameters,
-                                handleCheckResult: false,
-                                emitReturn: true);
+                                EmitInvoke(writer, function, invokeParameters,
+                                    handleCheckResult: false,
+                                    emitReturn: true);
+                            }
                         }
                     }
+
                     writer.WriteLine();
-
-                    // Return ReadOnlySpan
-                    returnType = $"ReadOnlySpan<{returnArrayTypeName}>";
-                    using (writer.PushBlock($"public static {returnType} {function.Name}({argumentsString})"))
-                    {
-                        //var csCountParameterType = GetCsTypeName(countParameterType);
-                        writer.WriteLine($"{csCountParameterType} {countParameterName} = 0;");
-
-                        List<string> invokeParameters = new(newParameters.Select(item => GetParameterName(item.Name)))
-                        {
-                            $"&{countParameterName}",
-                            "default"
-                        };
-
-                        EmitInvoke(writer, function, invokeParameters);
-
-                        writer.WriteLine();
-                        // Alloc array.
-                        writer.WriteLine($"{returnType} {returnVariableName} = new {returnArrayTypeName}[{countParameterName}];");
-
-                        // Write fixed access
-                        using (writer.PushBlock($"fixed ({returnArrayTypeName}* {returnVariableName}Ptr = {returnVariableName})"))
-                        {
-                            invokeParameters[invokeParameters.Count - 1] = $"{returnVariableName}Ptr";
-                            EmitInvoke(writer, function, invokeParameters);
-                        }
-
-                        writer.WriteLine($"return {returnVariableName};");
-                    }
                 }
-
-                writer.WriteLine();
             }
         }
     }

@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using SDL3;
-using static SDL3.SDL3;
+using SDL;
+using static SDL.SDL3;
 
 namespace Vortice.Vulkan;
 
@@ -19,47 +19,47 @@ public enum WindowFlags
 
 public sealed unsafe class Window
 {
-    private readonly SDL_Window _window;
+    private readonly SDL_Window* _window;
 
     public unsafe Window(string title, int width, int height, WindowFlags flags = WindowFlags.None)
     {
         Title = title;
 
-        SDL_WindowFlags sdl_flags = SDL_WindowFlags.HighPixelDensity | SDL_WindowFlags.Vulkan | SDL_WindowFlags.Hidden;
+        ulong sdl_flags = SDL_WINDOW_HIGH_PIXEL_DENSITY | SDL_WINDOW_VULKAN | SDL_WINDOW_HIDDEN;
         if ((flags & WindowFlags.Fullscreen) != WindowFlags.None)
         {
-            sdl_flags |= SDL_WindowFlags.Fullscreen;
+            sdl_flags |= SDL_WINDOW_FULLSCREEN;
         }
         else
         {
             if ((flags & WindowFlags.Borderless) != WindowFlags.None)
             {
-                sdl_flags |= SDL_WindowFlags.Borderless;
+                sdl_flags |= SDL_WINDOW_BORDERLESS;
             }
 
             if ((flags & WindowFlags.Resizable) != WindowFlags.None)
             {
-                sdl_flags |= SDL_WindowFlags.Resizable;
+                sdl_flags |= SDL_WINDOW_RESIZABLE;
             }
 
             if ((flags & WindowFlags.Minimized) != WindowFlags.None)
             {
-                sdl_flags |= SDL_WindowFlags.Minimized;
+                sdl_flags |= SDL_WINDOW_MINIMIZED;
             }
 
             if ((flags & WindowFlags.Maximized) != WindowFlags.None)
             {
-                sdl_flags |= SDL_WindowFlags.Maximized;
+                sdl_flags |= SDL_WINDOW_MAXIMIZED;
             }
         }
 
-        _window = SDL_CreateWindow(title, width, height, sdl_flags);
-        if (_window.IsNull)
+        _window = SDL_CreateWindow(title, width, height, (SDL_WindowFlags)sdl_flags);
+        if (_window == null)
         {
             throw new Exception("SDL: failed to create window");
         }
 
-        _ = SDL_SetWindowPosition(_window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+        _ = SDL_SetWindowPosition(_window, (int)SDL_WINDOWPOS_CENTERED, (int)SDL_WINDOWPOS_CENTERED);
         Id = SDL_GetWindowID(_window);
     }
 
@@ -70,7 +70,8 @@ public sealed unsafe class Window
     {
         get
         {
-            SDL_GetWindowSize(_window, out int width, out int height);
+            int width, height;
+            SDL_GetWindowSize(_window, &width, &height);
             return new(width, height);
         }
     }
@@ -82,12 +83,12 @@ public sealed unsafe class Window
 
     public VkSurfaceKHR CreateSurface(VkInstance instance)
     {
-        VkSurfaceKHR surface;
-        if (!SDL_Vulkan_CreateSurface(_window, instance, 0, (ulong**)&surface))
+        VkSurfaceKHR_T* surface = default;
+        if (!SDL_Vulkan_CreateSurface(_window, (VkInstance_T*)instance.Handle, null, &surface))
         {
             throw new Exception("SDL: failed to create vulkan surface");
         }
 
-        return surface;
+        return new VkSurfaceKHR((ulong)new IntPtr(surface).ToInt64());
     }
 }

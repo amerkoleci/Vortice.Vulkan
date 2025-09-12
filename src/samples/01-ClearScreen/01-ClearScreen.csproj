@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net9.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IsPackable>false</IsPackable>
     <RootNamespace>ClearScreen</RootNamespace>
@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <SelfContained>true</SelfContained>
+    <PublishReadyToRun>true</PublishReadyToRun>
+  </PropertyGroup>
+
+  <!--<PropertyGroup>
     <PublishAot>true</PublishAot>
     <UseSystemResourceKeys>true</UseSystemResourceKeys>
     <InvariantGlobalization>true</InvariantGlobalization>
@@ -16,7 +21,7 @@
     <OptimizationPreference>Speed</OptimizationPreference>
     <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
     <IlcDisableReflection>true</IlcDisableReflection>
-  </PropertyGroup>
+  </PropertyGroup>-->
   
   <ItemGroup>
     <ProjectReference Include="..\Vortice.Vulkan.SampleFramework\Vortice.Vulkan.SampleFramework.csproj" />

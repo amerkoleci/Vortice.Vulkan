@@ -7,7 +7,7 @@
     <PackageVersion Include="Silk.NET.Shaderc.Native" Version="2.22.0" />
 
     <!-- Samples -->
-    <PackageVersion Include="Alimer.Bindings.SDL" Version="3.9.8" />
+    <PackageVersion Include="ppy.SDL3-CS" Version="2025.828.0" />
     
     <!-- Tests -->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />

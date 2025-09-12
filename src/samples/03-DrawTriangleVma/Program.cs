@@ -58,7 +58,7 @@ public static unsafe class Program
             vmaCreateAllocator(in allocatorCreateInfo, out _allocator).CheckResult();
 
             VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new();
-            vkCreatePipelineLayout(_graphicsDevice, in pipelineLayoutCreateInfo, null, out _pipelineLayout).CheckResult();
+            _graphicsDevice.DeviceApi.vkCreatePipelineLayout(_graphicsDevice, in pipelineLayoutCreateInfo, null, out _pipelineLayout).CheckResult();
 
             // Create pipeline
             {
@@ -148,10 +148,10 @@ public static unsafe class Program
                 };
 
                 // Create rendering pipeline using the specified states
-                vkCreateGraphicsPipeline(_graphicsDevice, pipelineCreateInfo, out _pipeline).CheckResult();
+                _graphicsDevice.DeviceApi.vkCreateGraphicsPipeline(_graphicsDevice, pipelineCreateInfo, out _pipeline).CheckResult();
 
-                vkDestroyShaderModule(_graphicsDevice, vertexShader);
-                vkDestroyShaderModule(_graphicsDevice, fragmentShader);
+                _graphicsDevice.DeviceApi.vkDestroyShaderModule(_graphicsDevice, vertexShader);
+                _graphicsDevice.DeviceApi.vkDestroyShaderModule(_graphicsDevice, fragmentShader);
             }
 
             {
@@ -193,7 +193,7 @@ public static unsafe class Program
 
                 // Vertex buffer
                 copyRegion.size = vertexBufferSize;
-                vkCmdCopyBuffer(copyCmd, stagingBuffer.VkBuffer, _vertexBuffer.VkBuffer, 1, &copyRegion);
+                _graphicsDevice.DeviceApi.vkCmdCopyBuffer(copyCmd, stagingBuffer.VkBuffer, _vertexBuffer.VkBuffer, 1, &copyRegion);
 
                 // Flushing the command buffer will also submit it to the queue and uses a fence to ensure that all commands have been executed before returning
                 _graphicsDevice.FlushCommandBuffer(copyCmd);
@@ -207,8 +207,8 @@ public static unsafe class Program
         {
             _graphicsDevice.WaitIdle();
 
-            vkDestroyPipelineLayout(_graphicsDevice, _pipelineLayout);
-            vkDestroyPipeline(_graphicsDevice, _pipeline);
+            _graphicsDevice.DeviceApi.vkDestroyPipelineLayout(_graphicsDevice, _pipelineLayout);
+            _graphicsDevice.DeviceApi.vkDestroyPipeline(_graphicsDevice, _pipeline);
             _vertexBuffer.Destroy(_allocator);
 
             VmaTotalStatistics stats;
@@ -233,7 +233,7 @@ public static unsafe class Program
 
         private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, VkExtent2D size)
         {
-            VkClearValue clearValue = new VkClearValue(0.0f, 0.0f, 0.2f, 1.0f);
+            VkClearValue clearValue = new(0.0f, 0.0f, 0.2f, 1.0f);
 
             // Begin the render pass.
             VkRenderPassBeginInfo renderPassBeginInfo = new()
@@ -245,7 +245,7 @@ public static unsafe class Program
                 pClearValues = &clearValue
             };
 
-            vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
+            _graphicsDevice.DeviceApi.vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
 
             // Update dynamic viewport state
             // Flip coordinate to map DirectX coordinate system.
@@ -258,27 +258,27 @@ public static unsafe class Program
                 minDepth = 0.0f,
                 maxDepth = 1.0f
             };
-            vkCmdSetViewport(commandBuffer, viewport);
+            _graphicsDevice.DeviceApi.vkCmdSetViewport(commandBuffer, viewport);
 
             // Update dynamic scissor state
             VkRect2D scissor = new(VkOffset2D.Zero, MainWindow.Extent);
-            vkCmdSetScissor(commandBuffer, scissor);
+            _graphicsDevice.DeviceApi.vkCmdSetScissor(commandBuffer, scissor);
 
             // Bind the rendering pipeline
-            vkCmdBindPipeline(commandBuffer, VkPipelineBindPoint.Graphics, _pipeline);
+            _graphicsDevice.DeviceApi.vkCmdBindPipeline(commandBuffer, VkPipelineBindPoint.Graphics, _pipeline);
 
             // Bind triangle vertex buffer (contains position and colors)
-            vkCmdBindVertexBuffer(commandBuffer, 0, _vertexBuffer.VkBuffer);
+            _graphicsDevice.DeviceApi.vkCmdBindVertexBuffer(commandBuffer, 0, _vertexBuffer.VkBuffer);
 
             // Draw non indexed
-            vkCmdDraw(commandBuffer, 3, 1, 0, 0);
+            _graphicsDevice.DeviceApi.vkCmdDraw(commandBuffer, 3, 1, 0, 0);
 
-            vkCmdEndRenderPass(commandBuffer);
+            _graphicsDevice.DeviceApi.vkCmdEndRenderPass(commandBuffer);
         }
 
         private void CreateShaderModule(string name, out VkShaderModule shaderModule)
         {
-            ReadOnlySpan<byte> vertexBytecode = File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Assets", $"{name}.spv"));
+            Span<byte> vertexBytecode = File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Assets", $"{name}.spv"));
             _graphicsDevice.CreateShaderModule(vertexBytecode, out shaderModule).CheckResult();
         }
     }

@@ -24,7 +24,7 @@ public sealed unsafe class Swapchain : IDisposable
         _surface = surface;
         Window = window;
 
-        SwapChainSupportDetails swapChainSupport = Utils.QuerySwapChainSupport(device.PhysicalDevice, surface);
+        SwapChainSupportDetails swapChainSupport = Utils.QuerySwapChainSupport(device.InstanceApi, device.PhysicalDevice, surface);
 
         VkSurfaceFormatKHR surfaceFormat = ChooseSwapSurfaceFormat(swapChainSupport.Formats);
         VkPresentModeKHR presentMode = ChooseSwapPresentMode(swapChainSupport.PresentModes);
@@ -56,12 +56,15 @@ public sealed unsafe class Swapchain : IDisposable
             oldSwapchain = VkSwapchainKHR.Null
         };
 
-        vkCreateSwapchainKHR(device.VkDevice, &createInfo, null, out Handle).CheckResult();
-        ReadOnlySpan<VkImage> swapChainImages = vkGetSwapchainImagesKHR(device.VkDevice, Handle);
-        _swapChainImageViews = new VkImageView[swapChainImages.Length];
-        Framebuffers = new VkFramebuffer[swapChainImages.Length];
+        device.DeviceApi.vkCreateSwapchainKHR(device.VkDevice, &createInfo, null, out Handle).CheckResult();
 
-        for (int i = 0; i < swapChainImages.Length; i++)
+        device.DeviceApi.vkGetSwapchainImagesKHR(device.VkDevice, Handle, out uint swapChainImageCount).CheckResult();
+        Span<VkImage> swapChainImages = stackalloc VkImage[(int)swapChainImageCount];
+        device.DeviceApi.vkGetSwapchainImagesKHR(device.VkDevice, Handle, swapChainImages).CheckResult();
+        _swapChainImageViews = new VkImageView[swapChainImageCount];
+        Framebuffers = new VkFramebuffer[swapChainImageCount];
+
+        for (int i = 0; i < swapChainImageCount; i++)
         {
             var viewCreateInfo = new VkImageViewCreateInfo(
                 swapChainImages[i],
@@ -71,8 +74,8 @@ public sealed unsafe class Swapchain : IDisposable
                 new VkImageSubresourceRange(VkImageAspectFlags.Color, 0, 1, 0, 1)
                 );
 
-            vkCreateImageView(Device.VkDevice, &viewCreateInfo, null, out _swapChainImageViews[i]).CheckResult();
-            vkCreateFramebuffer(Device.VkDevice, RenderPass, new[] { _swapChainImageViews[i] }, Extent, 1u, out Framebuffers[i]);
+            device.DeviceApi.vkCreateImageView(Device.VkDevice, &viewCreateInfo, null, out _swapChainImageViews[i]).CheckResult();
+            device.DeviceApi.vkCreateFramebuffer(Device.VkDevice, RenderPass, new[] { _swapChainImageViews[i] }, Extent, 1u, out Framebuffers[i]);
         }
     }
 
@@ -80,24 +83,24 @@ public sealed unsafe class Swapchain : IDisposable
     {
         for (int i = 0; i < _swapChainImageViews.Length; i++)
         {
-            vkDestroyImageView(Device, _swapChainImageViews[i]);
+            Device.DeviceApi.vkDestroyImageView(Device, _swapChainImageViews[i]);
         }
 
         for (int i = 0; i < Framebuffers.Length; i++)
         {
-            vkDestroyFramebuffer(Device, Framebuffers[i]);
+            Device.DeviceApi.vkDestroyFramebuffer(Device, Framebuffers[i]);
         }
 
-        vkDestroyRenderPass(Device, RenderPass);
+        Device.DeviceApi.vkDestroyRenderPass(Device, RenderPass);
 
         if (Handle != VkSwapchainKHR.Null)
         {
-            vkDestroySwapchainKHR(Device, Handle);
+            Device.DeviceApi.vkDestroySwapchainKHR(Device, Handle);
         }
 
         if (_surface != VkSurfaceKHR.Null)
         {
-            vkDestroySurfaceKHR(Device.VkInstance, _surface);
+            Device.InstanceApi.vkDestroySurfaceKHR(Device.VkInstance, _surface);
         }
     }
 
@@ -156,11 +159,9 @@ public sealed unsafe class Swapchain : IDisposable
                 pDependencies = dependenciesPtr
             };
 
-            vkCreateRenderPass(Device, &createInfo, null, out RenderPass).CheckResult();
+            Device.DeviceApi.vkCreateRenderPass(Device, &createInfo, null, out RenderPass).CheckResult();
         }
     }
-
-
 
     private VkExtent2D ChooseSwapExtent(VkSurfaceCapabilitiesKHR capabilities)
     {

@@ -195,7 +195,7 @@ partial class CsCodeGenerator
         {
             if (cppFunction.Name == "spvc_context_set_error_callback"
                 || cppFunction.Name == "vkGetInstanceProcAddr"
-                || cppFunction.Name == "vkGetDeviceProcAddr"
+                //|| cppFunction.Name == "vkGetDeviceProcAddr"
                 // We compile VMA with #define VMA_STATS_STRING_ENABLED 0
                 || cppFunction.Name == "vmaBuildVirtualBlockStatsString"
                 || cppFunction.Name == "vmaFreeVirtualBlockStatsString"
@@ -256,58 +256,30 @@ partial class CsCodeGenerator
         {
             usings.AddRange(_options.ExtraUsings);
         }
-        using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Commands.cs"),
+        using (CodeWriter writer = new(Path.Combine(_options.OutputPath, "Commands.cs"),
             false,
             _options.Namespace,
             [.. usings]
-            );
-
-        bool todoNew = false;
-        if (_options.IsVulkan && todoNew)
-        {
-            using (writer.PushBlock($"unsafe partial class VkInstance"))
-            {
-                foreach (KeyValuePair<string, CppFunction> command in instanceCommands)
-                {
-                    CppFunction cppFunction = command.Value;
-
-                    string functionPointerSignature = GetFunctionPointerSignature(cppFunction);
-                    string modifier = GetFunctionModifier(command.Key);
-                    writer.WriteLine($"{modifier} readonly /*{functionPointerSignature}*/ PFN_vkVoidFunction _{command.Key};");
-                }
-
-                writer.WriteLine();
-
-                // Generate constructors
-                using (writer.PushBlock($"public VkInstance(nint handle)"))
-                {
-                    writer.WriteLine("Handle = handle;");
-                    writer.WriteLine();
-
-                    WriteCommandsNew(writer, instanceCommands, "vkGetInstanceProcAddr");
-                }
-            }
-        }
-
+            ))
         {
             using (writer.PushBlock($"unsafe partial class {_options.ClassName}"))
             {
                 // Write function declarations first
                 if (_options.GenerateFunctionPointers)
                 {
-                    writer.WriteLine("// Global functions");
-                    WriteFunctionDeclarations(writer, globalCommands);
-
-                    writer.WriteLine("// Instance functions");
-                    WriteFunctionDeclarations(writer, instanceCommands);
-
-                    writer.WriteLine("// Device functions");
-                    WriteFunctionDeclarations(writer, deviceCommands);
+                    writer.WriteLine("// Global functions (no <see cref=\"VkInstance\"/> required)");
+                    WriteFunctionDeclarations(writer, false, globalCommands);
                 }
 
                 // Write function invocation now
                 foreach (KeyValuePair<string, CppFunction> command in commands)
                 {
+                    if (instanceCommands.ContainsKey(command.Key)
+                        || deviceCommands.ContainsKey(command.Key))
+                    {
+                        continue;
+                    }
+
                     CppFunction cppFunction = command.Value;
 
                     bool canUseOut = _outReturnFunctions.Contains(cppFunction.Name);
@@ -332,117 +304,142 @@ partial class CsCodeGenerator
                     }
                 }
 
-                if (_options.GenerateFunctionPointers)
+                if (_options.GenerateFunctionPointers && !_options.IsVulkan)
                 {
-                    if (_options.IsVulkan)
+                    WriteLibraryImport(writer, commands);
+                }
+            }
+        }
+
+        // Vulkan instance and device tables
+        if (_options.IsVulkan)
+        {
+            usings.Add("static Vortice.Vulkan.Vulkan");
+
+            using (CodeWriter writer = new(Path.Combine(_options.OutputPath, "VkInstanceApi.Commands.cs"),
+                false,
+                _options.Namespace,
+                [.. usings]
+            ))
+            {
+                using (writer.PushBlock($"public unsafe partial class VkInstanceApi"))
+                {
+                    writer.WriteLine("public VkInstance Instance { get; }");
+                    writer.WriteLine();
+                    writer.WriteLine("// Instance functions");
+                    WriteFunctionDeclarations(writer, true, instanceCommands);
+
+                    using (writer.PushBlock($"public VkInstanceApi(in VkInstance instance)"))
                     {
-                        WriteCommands(writer, "GenLoadInstance", instanceCommands);
-                        WriteCommands(writer, "GenLoadDevice", deviceCommands);
+                        writer.WriteLine("Instance = instance;");
+                        writer.WriteLine();
+                        WriteTableCommands(writer, true, instanceCommands);
                     }
-                    else
+
+                    foreach (KeyValuePair<string, CppFunction> command in instanceCommands)
                     {
-                        WriteLibraryImport(writer, commands);
+                        CppFunction cppFunction = command.Value;
+
+                        bool canUseOut = _outReturnFunctions.Contains(cppFunction.Name);
+
+                        WriteFunctionInvocation(writer, cppFunction, false, instance: true);
+
+                        if (command.Key.StartsWith("vkCreate")
+                            && command.Key != "vkCreateDeferredOperationKHR")
+                        {
+                            WriteFunctionInvocation(writer, cppFunction, false, true, instance: true);
+                        }
+
+                        if (canUseOut)
+                        {
+                            WriteFunctionInvocation(writer, cppFunction, true, instance: true);
+
+                            if (command.Key.StartsWith("vkCreate")
+                                && command.Key != "vkCreateDeferredOperationKHR")
+                            {
+                                WriteFunctionInvocation(writer, cppFunction, true, true, instance: true);
+                            }
+                        }
+                    }
+                }
+            }
+
+            using (CodeWriter writer = new(Path.Combine(_options.OutputPath, "VkDeviceApi.Commands.cs"),
+                false,
+                _options.Namespace,
+                [.. usings]
+                ))
+            {
+                using (writer.PushBlock($"public unsafe partial class VkDeviceApi"))
+                {
+                    writer.WriteLine("public VkDevice Device { get; }");
+                    writer.WriteLine();
+                    writer.WriteLine("// Device functions");
+                    WriteFunctionDeclarations(writer, true, deviceCommands);
+
+                    using (writer.PushBlock($"public VkDeviceApi(VkInstanceApi api, in VkDevice device)"))
+                    {
+                        writer.WriteLine("Device = device;");
+                        writer.WriteLine();
+                        WriteTableCommands(writer, false, deviceCommands);
+                    }
+
+                    foreach (KeyValuePair<string, CppFunction> command in deviceCommands)
+                    {
+                        CppFunction cppFunction = command.Value;
+
+                        bool canUseOut = _outReturnFunctions.Contains(cppFunction.Name);
+
+                        WriteFunctionInvocation(writer, cppFunction, false, instance: true);
+
+                        if (command.Key.StartsWith("vkCreate")
+                            && command.Key != "vkCreateDeferredOperationKHR")
+                        {
+                            WriteFunctionInvocation(writer, cppFunction, false, true, instance: true);
+                        }
+
+                        if (canUseOut)
+                        {
+                            WriteFunctionInvocation(writer, cppFunction, true, instance: true);
+
+                            if (command.Key.StartsWith("vkCreate")
+                                && command.Key != "vkCreateDeferredOperationKHR")
+                            {
+                                WriteFunctionInvocation(writer, cppFunction, true, true, instance: true);
+                            }
+                        }
                     }
                 }
             }
         }
     }
 
-    private static string GetFunctionModifier(string name)
-    {
-        string modifier = "private";
-
-        // Used by VulkanMemoryAllocator
-        if (name == "vkGetPhysicalDeviceProperties"
-            || name == "vkGetPhysicalDeviceMemoryProperties"
-            || name == "vkGetBufferMemoryRequirements2KHR"
-            || name == "vkGetBufferMemoryRequirements2"
-            || name == "vkGetImageMemoryRequirements2KHR"
-            || name == "vkGetImageMemoryRequirements2"
-            || name == "vkBindBufferMemory2KHR"
-            || name == "vkBindBufferMemory2"
-            || name == "vkBindImageMemory2KHR"
-            || name == "vkBindImageMemory2"
-            || name == "vkGetDeviceImageMemoryRequirements"
-            || name == "vkGetDeviceBufferMemoryRequirements"
-            || name == "vkAllocateMemory"
-            || name == "vkFreeMemory"
-            || name == "vkMapMemory"
-            || name == "vkUnmapMemory"
-            || name == "vkFlushMappedMemoryRanges"
-            || name == "vkInvalidateMappedMemoryRanges"
-            || name == "vkBindBufferMemory"
-            || name == "vkBindImageMemory"
-            || name == "vkGetBufferMemoryRequirements"
-            || name == "vkGetImageMemoryRequirements"
-            || name == "vkCreateBuffer"
-            || name == "vkDestroyBuffer"
-            || name == "vkCreateImage"
-            || name == "vkDestroyImage"
-            || name == "vkCmdCopyBuffer"
-            || name == "vkGetPhysicalDeviceMemoryProperties2KHR"
-            || name == "vkGetMemoryWin32HandleKHR"
-            )
-        {
-            modifier = "internal";
-        }
-
-        return modifier;
-    }
-
-    private void WriteFunctionDeclarations(CodeWriter writer, Dictionary<string, CppFunction> commands)
+    private void WriteFunctionDeclarations(CodeWriter writer, bool instance, Dictionary<string, CppFunction> commands)
     {
         foreach (KeyValuePair<string, CppFunction> command in commands)
         {
             CppFunction cppFunction = command.Value;
 
+            string modifier = instance ? "readonly" : "static";
+
             string functionPointerSignature = _options.IsVulkan ? "PFN_vkVoidFunction" : GetFunctionPointerSignature(cppFunction);
-            string modifier = GetFunctionModifier(command.Key);
-            writer.WriteLine($"{modifier} static {functionPointerSignature} {command.Key}_ptr;");
+            writer.WriteLine($"public {modifier} {functionPointerSignature} {command.Key}_ptr;");
         }
 
         if (commands.Count > 0)
             writer.WriteLine();
     }
 
-    private void WriteCommandsNew(CodeWriter writer, Dictionary<string, CppFunction> commands, string addressFuncName)
+
+    private void WriteTableCommands(CodeWriter writer, bool instance, Dictionary<string, CppFunction> commands)
     {
         foreach (KeyValuePair<string, CppFunction> instanceCommand in commands)
         {
             string commandName = instanceCommand.Key;
-            if (commandName == "vkGetInstanceProcAddr" ||
-                commandName == "vkGetDeviceProcAddr")
-            {
-                continue;
-            }
-
-            writer.WriteLine($"_{commandName} = Vulkan.{addressFuncName}(handle, \"{commandName}\"u8);");
-        }
-    }
-
-    private void WriteCommands(CodeWriter writer, string name, Dictionary<string, CppFunction> commands)
-    {
-        using (writer.PushBlock($"private static void {name}(IntPtr context, LoadFunction load)"))
-        {
-            foreach (KeyValuePair<string, CppFunction> instanceCommand in commands)
-            {
-                string commandName = instanceCommand.Key;
-                if (commandName == "vkGetInstanceProcAddr" ||
-                    commandName == "vkGetDeviceProcAddr")
-                {
-                    continue;
-                }
-
-                if (_options.IsVulkan)
-                {
-                    writer.WriteLine($"{commandName}_ptr = load(context, \"{commandName}\"u8);");
-                }
-                else
-                {
-                    string functionPointerSignature = GetFunctionPointerSignature(instanceCommand.Value);
-                    writer.WriteLine($"{commandName}_ptr = ({functionPointerSignature}) load(context, \"{commandName}\"u8);");
-                }
-            }
+            string invocation = instance
+                ? $"vkGetInstanceProcAddr(instance.Handle, \"{commandName}\"u8)"
+                : $"api.vkGetDeviceProcAddr(device.Handle, \"{commandName}\"u8)";
+            writer.WriteLine($"{commandName}_ptr = {invocation};");
         }
     }
 
@@ -459,13 +456,23 @@ partial class CsCodeGenerator
         }
     }
 
-    private void WriteFunctionInvocation(CodeWriter writer, CppFunction cppFunction,
-        bool canUseOut, bool inParameters = false)
+    private void WriteFunctionInvocation(CodeWriter writer, CppFunction cppFunction, bool canUseOut,
+        bool inParameters = false, bool instance = false)
     {
         string returnCsName = GetCsTypeName(cppFunction.ReturnType);
         string argumentsString = GetParameterSignature(cppFunction, canUseOut, inParameters);
-        string modifier = "public static";
+        string modifier = "public";
+        if (instance == false)
+            modifier += " static";
+
         string functionName = cppFunction.Name;
+
+        // Don't write functions
+        if (canUseOut == false &&
+            (cppFunction.Name == "vkGetMemoryAndroidHardwareBufferANDROID"))
+        {
+            return;
+        }
 
         if (cppFunction.Name == "vmaCreateAllocator" ||
             cppFunction.Name == "spvc_context_get_last_error_string" ||
@@ -519,6 +526,7 @@ partial class CsCodeGenerator
                             }
 
                             writer.WriteLine($"Unsafe.SkipInit(out {paramCsName});");
+                            writer.WriteLine();
                             writer.BeginBlock($"fixed ({paramCsTypeName} {paramCsName}Ptr = &{paramCsName})");
                             closeBlockCount++;
                         }
