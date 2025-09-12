@@ -137,7 +137,7 @@ partial class CsCodeGenerator
 
                 writer.WriteLine();
                 writer.WriteLine("/// <inheritdoc />");
-                writer.WriteLine("VkStructureType IStructureType.sType => sType;");
+                writer.WriteLine("readonly VkStructureType IStructureType.sType => sType;");
             }
 
             if (hasPNext)

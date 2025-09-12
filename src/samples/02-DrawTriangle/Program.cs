@@ -112,8 +112,17 @@ public static unsafe class Program
                     pDynamicStates = dynamicStateEnables
                 };
 
+                VkFormat colorFormat = _graphicsDevice.Swapchain.Format;
+
+                VkPipelineRenderingCreateInfo renderingInfo = new()
+                {
+                    colorAttachmentCount = 1u,
+                    pColorAttachmentFormats = &colorFormat
+                };
+
                 VkGraphicsPipelineCreateInfo pipelineCreateInfo = new()
                 {
+                    pNext = &renderingInfo,
                     stageCount = 2,
                     pStages = shaderStages,
                     pVertexInputState = &vertexInputState,
@@ -126,7 +135,6 @@ public static unsafe class Program
                     pColorBlendState = &colorBlendState,
                     pDynamicState = &dynamicState,
                     layout = _pipelineLayout,
-                    renderPass = _graphicsDevice.Swapchain.RenderPass
                 };
 
                 // Create rendering pipeline using the specified states
@@ -221,21 +229,20 @@ public static unsafe class Program
             _graphicsDevice!.RenderFrame(OnDraw);
         }
 
-        private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, VkExtent2D size)
+        private void OnDraw(VkCommandBuffer commandBuffer, VkRenderingAttachmentInfo colorAttachment, VkExtent2D size)
         {
-            VkClearValue clearValue = new VkClearValue(0.0f, 0.0f, 0.2f, 1.0f);
+            colorAttachment.clearValue = new (0.0f, 0.0f, 0.2f, 1.0f);
 
             // Begin the render pass.
-            VkRenderPassBeginInfo renderPassBeginInfo = new()
+            VkRenderingInfo renderingInfo = new()
             {
-                renderPass = _graphicsDevice.Swapchain.RenderPass,
-                framebuffer = framebuffer,
                 renderArea = new VkRect2D(VkOffset2D.Zero, size),
-                clearValueCount = 1,
-                pClearValues = &clearValue
+                layerCount = 1,
+                colorAttachmentCount = 1,
+                pColorAttachments = &colorAttachment,
             };
 
-            _graphicsDevice.DeviceApi.vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
+            _graphicsDevice.DeviceApi.vkCmdBeginRendering(commandBuffer, &renderingInfo);
 
             // Update dynamic viewport state
             // Flip coordinate to map DirectX coordinate system.
@@ -263,7 +270,7 @@ public static unsafe class Program
             // Draw non indexed
             _graphicsDevice.DeviceApi.vkCmdDraw(commandBuffer, 3, 1, 0, 0);
 
-            _graphicsDevice.DeviceApi.vkCmdEndRenderPass(commandBuffer);
+            _graphicsDevice.DeviceApi.vkCmdEndRendering(commandBuffer);
         }
 
         private void CreateShaderModule(string name, out VkShaderModule shaderModule)

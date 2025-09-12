@@ -9,14 +9,16 @@ public sealed unsafe class Swapchain : IDisposable
 {
     public readonly GraphicsDevice Device;
     public readonly Window Window;
+    private readonly VkImage[] _swapChainImages;
     private readonly VkImageView[] _swapChainImageViews;
     private readonly VkSurfaceKHR _surface;
 
     public VkSwapchainKHR Handle;
     public int ImageCount => _swapChainImageViews.Length;
-    public VkRenderPass RenderPass;
+    public VkFormat Format { get; }
     public VkExtent2D Extent { get; }
-    public VkFramebuffer[] Framebuffers { get; }
+    public VkImage[] Images => _swapChainImages;
+    public VkImageView[] ImageViews => _swapChainImageViews;
 
     public Swapchain(GraphicsDevice device, VkSurfaceKHR surface, Window window)
     {
@@ -29,8 +31,6 @@ public sealed unsafe class Swapchain : IDisposable
         VkSurfaceFormatKHR surfaceFormat = ChooseSwapSurfaceFormat(swapChainSupport.Formats);
         VkPresentModeKHR presentMode = ChooseSwapPresentMode(swapChainSupport.PresentModes);
         Extent = ChooseSwapExtent(swapChainSupport.Capabilities);
-
-        CreateRenderPass(surfaceFormat.format);
 
         uint imageCount = swapChainSupport.Capabilities.minImageCount + 1;
         if (swapChainSupport.Capabilities.maxImageCount > 0 &&
@@ -61,13 +61,14 @@ public sealed unsafe class Swapchain : IDisposable
         device.DeviceApi.vkGetSwapchainImagesKHR(device.VkDevice, Handle, out uint swapChainImageCount).CheckResult();
         Span<VkImage> swapChainImages = stackalloc VkImage[(int)swapChainImageCount];
         device.DeviceApi.vkGetSwapchainImagesKHR(device.VkDevice, Handle, swapChainImages).CheckResult();
+        _swapChainImages = swapChainImages.ToArray();
         _swapChainImageViews = new VkImageView[swapChainImageCount];
-        Framebuffers = new VkFramebuffer[swapChainImageCount];
+        Format = createInfo.imageFormat;
 
         for (int i = 0; i < swapChainImageCount; i++)
         {
             var viewCreateInfo = new VkImageViewCreateInfo(
-                swapChainImages[i],
+                _swapChainImages[i],
                 VkImageViewType.Image2D,
                 surfaceFormat.format,
                 VkComponentMapping.Rgba,
@@ -75,7 +76,6 @@ public sealed unsafe class Swapchain : IDisposable
                 );
 
             device.DeviceApi.vkCreateImageView(Device.VkDevice, &viewCreateInfo, null, out _swapChainImageViews[i]).CheckResult();
-            device.DeviceApi.vkCreateFramebuffer(Device.VkDevice, RenderPass, new[] { _swapChainImageViews[i] }, Extent, 1u, out Framebuffers[i]);
         }
     }
 
@@ -86,13 +86,6 @@ public sealed unsafe class Swapchain : IDisposable
             Device.DeviceApi.vkDestroyImageView(Device, _swapChainImageViews[i]);
         }
 
-        for (int i = 0; i < Framebuffers.Length; i++)
-        {
-            Device.DeviceApi.vkDestroyFramebuffer(Device, Framebuffers[i]);
-        }
-
-        Device.DeviceApi.vkDestroyRenderPass(Device, RenderPass);
-
         if (Handle != VkSwapchainKHR.Null)
         {
             Device.DeviceApi.vkDestroySwapchainKHR(Device, Handle);
@@ -101,65 +94,6 @@ public sealed unsafe class Swapchain : IDisposable
         if (_surface != VkSurfaceKHR.Null)
         {
             Device.InstanceApi.vkDestroySurfaceKHR(Device.VkInstance, _surface);
-        }
-    }
-
-    private void CreateRenderPass(VkFormat colorFormat)
-    {
-        VkAttachmentDescription attachment = new VkAttachmentDescription(
-            colorFormat,
-            VkSampleCountFlags.Count1,
-            VkAttachmentLoadOp.Clear, VkAttachmentStoreOp.Store,
-            VkAttachmentLoadOp.DontCare, VkAttachmentStoreOp.DontCare,
-            VkImageLayout.Undefined, VkImageLayout.PresentSrcKHR
-        );
-
-        VkAttachmentReference colorAttachmentRef = new VkAttachmentReference(0, VkImageLayout.ColorAttachmentOptimal);
-
-        VkSubpassDescription subpass = new VkSubpassDescription
-        {
-            pipelineBindPoint = VkPipelineBindPoint.Graphics,
-            colorAttachmentCount = 1,
-            pColorAttachments = &colorAttachmentRef
-        };
-
-        VkSubpassDependency[] dependencies = new VkSubpassDependency[2];
-
-        dependencies[0] = new VkSubpassDependency
-        {
-            srcSubpass = VK_SUBPASS_EXTERNAL,
-            dstSubpass = 0,
-            srcStageMask = VkPipelineStageFlags.BottomOfPipe,
-            dstStageMask = VkPipelineStageFlags.ColorAttachmentOutput,
-            srcAccessMask = VkAccessFlags.MemoryRead,
-            dstAccessMask = VkAccessFlags.ColorAttachmentRead | VkAccessFlags.ColorAttachmentWrite,
-            dependencyFlags = VkDependencyFlags.ByRegion
-        };
-
-        dependencies[1] = new VkSubpassDependency
-        {
-            srcSubpass = 0,
-            dstSubpass = VK_SUBPASS_EXTERNAL,
-            srcStageMask = VkPipelineStageFlags.ColorAttachmentOutput,
-            dstStageMask = VkPipelineStageFlags.BottomOfPipe,
-            srcAccessMask = VkAccessFlags.ColorAttachmentRead | VkAccessFlags.ColorAttachmentWrite,
-            dstAccessMask = VkAccessFlags.MemoryRead,
-            dependencyFlags = VkDependencyFlags.ByRegion
-        };
-
-        fixed (VkSubpassDependency* dependenciesPtr = &dependencies[0])
-        {
-            VkRenderPassCreateInfo createInfo = new()
-            {
-                attachmentCount = 1,
-                pAttachments = &attachment,
-                subpassCount = 1,
-                pSubpasses = &subpass,
-                dependencyCount = 2,
-                pDependencies = dependenciesPtr
-            };
-
-            Device.DeviceApi.vkCreateRenderPass(Device, &createInfo, null, out RenderPass).CheckResult();
         }
     }
 

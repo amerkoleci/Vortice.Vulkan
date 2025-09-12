@@ -12,6 +12,6 @@ public unsafe partial struct VkBaseOutStructure : IStructureType
     public VkBaseOutStructure* pNext;
 
     /// <inheritdoc />
-    VkStructureType IStructureType.sType => sType;
+    readonly VkStructureType IStructureType.sType => sType;
 }
 

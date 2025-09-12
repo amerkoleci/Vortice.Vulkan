@@ -687,6 +687,7 @@ partial class CsCodeGenerator
 
                     writer.WriteLine("[Flags]");
                     writer.BeginBlock($"public enum {fieldType} : {baseType}");
+
                     createdEnumName = fieldType;
                 }
                 else
@@ -759,6 +760,40 @@ partial class CsCodeGenerator
                     }
 
                     writer.WriteLine($"{csFieldName} = {enumValue},");
+                    if (csFieldName != "None")
+                    {
+                        string cleanEnumName = createdEnumName;
+                        if (cleanEnumName.EndsWith("FlagBits2"))
+                        {
+                            cleanEnumName = cleanEnumName.Replace("FlagBits2", "Flags2");
+                        }
+                        else if (cleanEnumName.EndsWith("FlagBits2KHR"))
+                        {
+                            cleanEnumName = cleanEnumName.Replace("FlagBits2KHR", "Flags2KHR");
+                        }
+                        else if (cleanEnumName.EndsWith("FlagBitsARM"))
+                        {
+                            cleanEnumName = cleanEnumName.Replace("FlagBitsARM", "FlagsARM");
+                        }
+                        else if (cleanEnumName.EndsWith("FlagBitsQCOM"))
+                        {
+                            cleanEnumName = cleanEnumName.Replace("FlagBitsQCOM", "FlagsQCOM");
+                        }
+                        else if (cleanEnumName.EndsWith("FlagBitsNV"))
+                        {
+                            cleanEnumName = cleanEnumName.Replace("FlagBitsNV", "FlagsNV");
+                        }
+                        else if (cleanEnumName.EndsWith("FlagBits3"))
+                        {
+                            cleanEnumName = cleanEnumName.Replace("FlagBits3", "Flags3");
+                        }
+                        else if (cleanEnumName.EndsWith("FlagBits3KHR"))
+                        {
+                            cleanEnumName = cleanEnumName.Replace("FlagBits3KHR", "Flags3KHR");
+                        }
+
+                        s_enumConstants.Add($"{cleanEnumName} {cppField.Name} = {cleanEnumName}.{csFieldName}");
+                    }
                 }
                 else
                 {

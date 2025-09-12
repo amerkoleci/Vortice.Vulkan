@@ -63,7 +63,7 @@ public unsafe partial struct VkBufferMemoryBarrier : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -124,7 +124,7 @@ public unsafe partial struct VkImageMemoryBarrier : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -146,7 +146,7 @@ public unsafe partial struct VkMemoryBarrier : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -190,7 +190,7 @@ public unsafe partial struct VkApplicationInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -232,7 +232,7 @@ public unsafe partial struct VkInstanceCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -487,7 +487,7 @@ public unsafe partial struct VkDeviceQueueCreateInfo : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -515,7 +515,7 @@ public unsafe partial struct VkDeviceCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -556,7 +556,7 @@ public unsafe partial struct VkSubmitInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -579,7 +579,7 @@ public unsafe partial struct VkMappedMemoryRange : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -601,7 +601,7 @@ public unsafe partial struct VkMemoryAllocateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -685,7 +685,7 @@ public unsafe partial struct VkBindSparseInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -722,7 +722,7 @@ public unsafe partial struct VkFenceCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -743,7 +743,7 @@ public unsafe partial struct VkSemaphoreCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -764,7 +764,7 @@ public unsafe partial struct VkEventCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -788,7 +788,7 @@ public unsafe partial struct VkQueryPoolCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -814,7 +814,7 @@ public unsafe partial struct VkBufferCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -839,7 +839,7 @@ public unsafe partial struct VkBufferViewCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -872,7 +872,7 @@ public unsafe partial struct VkImageCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -915,7 +915,7 @@ public unsafe partial struct VkImageViewCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -938,7 +938,7 @@ public unsafe partial struct VkShaderModuleCreateInfo : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -961,7 +961,7 @@ public unsafe partial struct VkPipelineCacheCreateInfo : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1001,7 +1001,7 @@ public unsafe partial struct VkPipelineShaderStageCreateInfo : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1026,7 +1026,7 @@ public unsafe partial struct VkComputePipelineCreateInfo : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1066,7 +1066,7 @@ public unsafe partial struct VkPipelineVertexInputStateCreateInfo : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1089,7 +1089,7 @@ public unsafe partial struct VkPipelineInputAssemblyStateCreateInfo : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1111,7 +1111,7 @@ public unsafe partial struct VkPipelineTessellationStateCreateInfo : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1146,7 +1146,7 @@ public unsafe partial struct VkPipelineViewportStateCreateInfo : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1177,7 +1177,7 @@ public unsafe partial struct VkPipelineRasterizationStateCreateInfo : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1204,7 +1204,7 @@ public unsafe partial struct VkPipelineMultisampleStateCreateInfo : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1245,7 +1245,7 @@ public unsafe partial struct VkPipelineDepthStencilStateCreateInfo : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1283,7 +1283,7 @@ public unsafe partial struct VkPipelineColorBlendStateCreateInfo : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1306,7 +1306,7 @@ public unsafe partial struct VkPipelineDynamicStateCreateInfo : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1343,7 +1343,7 @@ public unsafe partial struct VkGraphicsPipelineCreateInfo : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1375,7 +1375,7 @@ public unsafe partial struct VkPipelineLayoutCreateInfo : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1411,7 +1411,7 @@ public unsafe partial struct VkSamplerCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1438,7 +1438,7 @@ public unsafe partial struct VkCopyDescriptorSet : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1482,7 +1482,7 @@ public unsafe partial struct VkDescriptorPoolCreateInfo : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1505,7 +1505,7 @@ public unsafe partial struct VkDescriptorSetAllocateInfo : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1537,7 +1537,7 @@ public unsafe partial struct VkDescriptorSetLayoutCreateInfo : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1565,7 +1565,7 @@ public unsafe partial struct VkWriteDescriptorSet : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1611,7 +1611,7 @@ public unsafe partial struct VkFramebufferCreateInfo : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1663,7 +1663,7 @@ public unsafe partial struct VkRenderPassCreateInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1685,7 +1685,7 @@ public unsafe partial struct VkCommandPoolCreateInfo : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1708,7 +1708,7 @@ public unsafe partial struct VkCommandBufferAllocateInfo : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1734,7 +1734,7 @@ public unsafe partial struct VkCommandBufferInheritanceInfo : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1756,7 +1756,7 @@ public unsafe partial struct VkCommandBufferBeginInfo : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1873,7 +1873,7 @@ public unsafe partial struct VkRenderPassBeginInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1897,7 +1897,7 @@ public unsafe partial struct VkPhysicalDeviceSubgroupProperties : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1920,7 +1920,7 @@ public unsafe partial struct VkBindBufferMemoryInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1943,7 +1943,7 @@ public unsafe partial struct VkBindImageMemoryInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1967,7 +1967,7 @@ public unsafe partial struct VkPhysicalDevice16BitStorageFeatures : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -1989,7 +1989,7 @@ public unsafe partial struct VkMemoryDedicatedRequirements : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2011,7 +2011,7 @@ public unsafe partial struct VkMemoryDedicatedAllocateInfo : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2033,7 +2033,7 @@ public unsafe partial struct VkMemoryAllocateFlagsInfo : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2056,7 +2056,7 @@ public unsafe partial struct VkDeviceGroupRenderPassBeginInfo : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2077,7 +2077,7 @@ public unsafe partial struct VkDeviceGroupCommandBufferBeginInfo : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2103,7 +2103,7 @@ public unsafe partial struct VkDeviceGroupSubmitInfo : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2125,7 +2125,7 @@ public unsafe partial struct VkDeviceGroupBindSparseInfo : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2147,7 +2147,7 @@ public unsafe partial struct VkBindBufferMemoryDeviceGroupInfo : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2171,7 +2171,7 @@ public unsafe partial struct VkBindImageMemoryDeviceGroupInfo : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2200,7 +2200,7 @@ public unsafe partial struct VkPhysicalDeviceGroupProperties : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2222,7 +2222,7 @@ public unsafe partial struct VkDeviceGroupDeviceCreateInfo : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2243,7 +2243,7 @@ public unsafe partial struct VkBufferMemoryRequirementsInfo2 : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2264,7 +2264,7 @@ public unsafe partial struct VkImageMemoryRequirementsInfo2 : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2285,7 +2285,7 @@ public unsafe partial struct VkImageSparseMemoryRequirementsInfo2 : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2306,7 +2306,7 @@ public unsafe partial struct VkMemoryRequirements2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2327,7 +2327,7 @@ public unsafe partial struct VkSparseImageMemoryRequirements2 : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2348,7 +2348,7 @@ public unsafe partial struct VkPhysicalDeviceFeatures2 : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2369,7 +2369,7 @@ public unsafe partial struct VkPhysicalDeviceProperties2 : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2390,7 +2390,7 @@ public unsafe partial struct VkFormatProperties2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2411,7 +2411,7 @@ public unsafe partial struct VkImageFormatProperties2 : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2436,7 +2436,7 @@ public unsafe partial struct VkPhysicalDeviceImageFormatInfo2 : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2457,7 +2457,7 @@ public unsafe partial struct VkQueueFamilyProperties2 : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2478,7 +2478,7 @@ public unsafe partial struct VkPhysicalDeviceMemoryProperties2 : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2499,7 +2499,7 @@ public unsafe partial struct VkSparseImageFormatProperties2 : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2524,7 +2524,7 @@ public unsafe partial struct VkPhysicalDeviceSparseImageFormatInfo2 : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2545,7 +2545,7 @@ public unsafe partial struct VkPhysicalDevicePointClippingProperties : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2574,7 +2574,7 @@ public unsafe partial struct VkRenderPassInputAttachmentAspectCreateInfo : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2595,7 +2595,7 @@ public unsafe partial struct VkImageViewUsageCreateInfo : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2616,7 +2616,7 @@ public unsafe partial struct VkPipelineTessellationDomainOriginStateCreateInfo :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2642,7 +2642,7 @@ public unsafe partial struct VkRenderPassMultiviewCreateInfo : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2665,7 +2665,7 @@ public unsafe partial struct VkPhysicalDeviceMultiviewFeatures : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2687,7 +2687,7 @@ public unsafe partial struct VkPhysicalDeviceMultiviewProperties : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2709,7 +2709,7 @@ public unsafe partial struct VkPhysicalDeviceVariablePointersFeatures : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2730,7 +2730,7 @@ public unsafe partial struct VkPhysicalDeviceProtectedMemoryFeatures : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2751,7 +2751,7 @@ public unsafe partial struct VkPhysicalDeviceProtectedMemoryProperties : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2774,7 +2774,7 @@ public unsafe partial struct VkDeviceQueueInfo2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2795,7 +2795,7 @@ public unsafe partial struct VkProtectedSubmitInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2823,7 +2823,7 @@ public unsafe partial struct VkSamplerYcbcrConversionCreateInfo : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2844,7 +2844,7 @@ public unsafe partial struct VkSamplerYcbcrConversionInfo : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2865,7 +2865,7 @@ public unsafe partial struct VkBindImagePlaneMemoryInfo : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2886,7 +2886,7 @@ public unsafe partial struct VkImagePlaneMemoryRequirementsInfo : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2907,7 +2907,7 @@ public unsafe partial struct VkPhysicalDeviceSamplerYcbcrConversionFeatures : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2928,7 +2928,7 @@ public unsafe partial struct VkSamplerYcbcrConversionImageFormatProperties : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2966,7 +2966,7 @@ public unsafe partial struct VkDescriptorUpdateTemplateCreateInfo : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -2994,7 +2994,7 @@ public unsafe partial struct VkPhysicalDeviceExternalImageFormatInfo : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3015,7 +3015,7 @@ public unsafe partial struct VkExternalImageFormatProperties : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3038,7 +3038,7 @@ public unsafe partial struct VkPhysicalDeviceExternalBufferInfo : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3059,7 +3059,7 @@ public unsafe partial struct VkExternalBufferProperties : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3084,7 +3084,7 @@ public unsafe partial struct VkPhysicalDeviceIDProperties : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3105,7 +3105,7 @@ public unsafe partial struct VkExternalMemoryImageCreateInfo : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3126,7 +3126,7 @@ public unsafe partial struct VkExternalMemoryBufferCreateInfo : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3147,7 +3147,7 @@ public unsafe partial struct VkExportMemoryAllocateInfo : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3168,7 +3168,7 @@ public unsafe partial struct VkPhysicalDeviceExternalFenceInfo : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3191,7 +3191,7 @@ public unsafe partial struct VkExternalFenceProperties : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3212,7 +3212,7 @@ public unsafe partial struct VkExportFenceCreateInfo : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3233,7 +3233,7 @@ public unsafe partial struct VkExportSemaphoreCreateInfo : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3254,7 +3254,7 @@ public unsafe partial struct VkPhysicalDeviceExternalSemaphoreInfo : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3277,7 +3277,7 @@ public unsafe partial struct VkExternalSemaphoreProperties : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3299,7 +3299,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance3Properties : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3320,7 +3320,7 @@ public unsafe partial struct VkDescriptorSetLayoutSupport : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3341,7 +3341,7 @@ public unsafe partial struct VkPhysicalDeviceShaderDrawParametersFeatures : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3373,7 +3373,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan11Features : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3408,7 +3408,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan11Properties : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3475,7 +3475,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan12Features : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3555,7 +3555,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan12Properties : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3577,7 +3577,7 @@ public unsafe partial struct VkImageFormatListCreateInfo : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3606,7 +3606,7 @@ public unsafe partial struct VkAttachmentDescription2 : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3629,7 +3629,7 @@ public unsafe partial struct VkAttachmentReference2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3660,7 +3660,7 @@ public unsafe partial struct VkSubpassDescription2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3688,7 +3688,7 @@ public unsafe partial struct VkSubpassDependency2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3717,7 +3717,7 @@ public unsafe partial struct VkRenderPassCreateInfo2 : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3738,7 +3738,7 @@ public unsafe partial struct VkSubpassBeginInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3758,7 +3758,7 @@ public unsafe partial struct VkSubpassEndInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3781,7 +3781,7 @@ public unsafe partial struct VkPhysicalDevice8BitStorageFeatures : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3805,7 +3805,7 @@ public unsafe partial struct VkPhysicalDeviceDriverProperties : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3827,7 +3827,7 @@ public unsafe partial struct VkPhysicalDeviceShaderAtomicInt64Features : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3849,7 +3849,7 @@ public unsafe partial struct VkPhysicalDeviceShaderFloat16Int8Features : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3886,7 +3886,7 @@ public unsafe partial struct VkPhysicalDeviceFloatControlsProperties : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3908,7 +3908,7 @@ public unsafe partial struct VkDescriptorSetLayoutBindingFlagsCreateInfo : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3948,7 +3948,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorIndexingFeatures : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -3991,7 +3991,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorIndexingProperties : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4013,7 +4013,7 @@ public unsafe partial struct VkDescriptorSetVariableDescriptorCountAllocateInfo 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4034,7 +4034,7 @@ public unsafe partial struct VkDescriptorSetVariableDescriptorCountLayoutSupport
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4057,7 +4057,7 @@ public unsafe partial struct VkSubpassDescriptionDepthStencilResolve : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4081,7 +4081,7 @@ public unsafe partial struct VkPhysicalDeviceDepthStencilResolveProperties : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4102,7 +4102,7 @@ public unsafe partial struct VkPhysicalDeviceScalarBlockLayoutFeatures : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4123,7 +4123,7 @@ public unsafe partial struct VkImageStencilUsageCreateInfo : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4144,7 +4144,7 @@ public unsafe partial struct VkSamplerReductionModeCreateInfo : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4166,7 +4166,7 @@ public unsafe partial struct VkPhysicalDeviceSamplerFilterMinmaxProperties : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4189,7 +4189,7 @@ public unsafe partial struct VkPhysicalDeviceVulkanMemoryModelFeatures : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4210,7 +4210,7 @@ public unsafe partial struct VkPhysicalDeviceImagelessFramebufferFeatures : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4237,7 +4237,7 @@ public unsafe partial struct VkFramebufferAttachmentImageInfo : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4259,7 +4259,7 @@ public unsafe partial struct VkFramebufferAttachmentsCreateInfo : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4281,7 +4281,7 @@ public unsafe partial struct VkRenderPassAttachmentBeginInfo : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4302,7 +4302,7 @@ public unsafe partial struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4323,7 +4323,7 @@ public unsafe partial struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4344,7 +4344,7 @@ public unsafe partial struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4365,7 +4365,7 @@ public unsafe partial struct VkAttachmentReferenceStencilLayout : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4387,7 +4387,7 @@ public unsafe partial struct VkAttachmentDescriptionStencilLayout : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4408,7 +4408,7 @@ public unsafe partial struct VkPhysicalDeviceHostQueryResetFeatures : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4429,7 +4429,7 @@ public unsafe partial struct VkPhysicalDeviceTimelineSemaphoreFeatures : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4450,7 +4450,7 @@ public unsafe partial struct VkPhysicalDeviceTimelineSemaphoreProperties : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4472,7 +4472,7 @@ public unsafe partial struct VkSemaphoreTypeCreateInfo : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4496,7 +4496,7 @@ public unsafe partial struct VkTimelineSemaphoreSubmitInfo : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4520,7 +4520,7 @@ public unsafe partial struct VkSemaphoreWaitInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4542,7 +4542,7 @@ public unsafe partial struct VkSemaphoreSignalInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4565,7 +4565,7 @@ public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressFeatures : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4586,7 +4586,7 @@ public unsafe partial struct VkBufferDeviceAddressInfo : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4607,7 +4607,7 @@ public unsafe partial struct VkBufferOpaqueCaptureAddressCreateInfo : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4628,7 +4628,7 @@ public unsafe partial struct VkMemoryOpaqueCaptureAddressAllocateInfo : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4649,7 +4649,7 @@ public unsafe partial struct VkDeviceMemoryOpaqueCaptureAddressInfo : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4684,7 +4684,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan13Features : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4749,7 +4749,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan13Properties : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4778,7 +4778,7 @@ public unsafe partial struct VkPipelineCreationFeedbackCreateInfo : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4799,7 +4799,7 @@ public unsafe partial struct VkPhysicalDeviceShaderTerminateInvocationFeatures :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4824,7 +4824,7 @@ public unsafe partial struct VkPhysicalDeviceToolProperties : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4845,7 +4845,7 @@ public unsafe partial struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeatu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4866,7 +4866,7 @@ public unsafe partial struct VkPhysicalDevicePrivateDataFeatures : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4887,7 +4887,7 @@ public unsafe partial struct VkDevicePrivateDataCreateInfo : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4908,7 +4908,7 @@ public unsafe partial struct VkPrivateDataSlotCreateInfo : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4929,7 +4929,7 @@ public unsafe partial struct VkPhysicalDevicePipelineCreationCacheControlFeature
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4953,7 +4953,7 @@ public unsafe partial struct VkMemoryBarrier2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -4982,7 +4982,7 @@ public unsafe partial struct VkBufferMemoryBarrier2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5012,7 +5012,7 @@ public unsafe partial struct VkImageMemoryBarrier2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5039,7 +5039,7 @@ public unsafe partial struct VkDependencyInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5063,7 +5063,7 @@ public unsafe partial struct VkSemaphoreSubmitInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5085,7 +5085,7 @@ public unsafe partial struct VkCommandBufferSubmitInfo : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5112,7 +5112,7 @@ public unsafe partial struct VkSubmitInfo2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5133,7 +5133,7 @@ public unsafe partial struct VkPhysicalDeviceSynchronization2Features : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5154,7 +5154,7 @@ public unsafe partial struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5175,7 +5175,7 @@ public unsafe partial struct VkPhysicalDeviceImageRobustnessFeatures : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5198,7 +5198,7 @@ public unsafe partial struct VkBufferCopy2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5222,7 +5222,7 @@ public unsafe partial struct VkCopyBufferInfo2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5247,7 +5247,7 @@ public unsafe partial struct VkImageCopy2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5273,7 +5273,7 @@ public unsafe partial struct VkCopyImageInfo2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5299,7 +5299,7 @@ public unsafe partial struct VkBufferImageCopy2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5324,7 +5324,7 @@ public unsafe partial struct VkCopyBufferToImageInfo2 : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5349,7 +5349,7 @@ public unsafe partial struct VkCopyImageToBufferInfo2 : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5385,7 +5385,7 @@ public unsafe partial struct VkImageBlit2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5412,7 +5412,7 @@ public unsafe partial struct VkBlitImageInfo2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5437,7 +5437,7 @@ public unsafe partial struct VkImageResolve2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5463,7 +5463,7 @@ public unsafe partial struct VkResolveImageInfo2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5485,7 +5485,7 @@ public unsafe partial struct VkPhysicalDeviceSubgroupSizeControlFeatures : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5509,7 +5509,7 @@ public unsafe partial struct VkPhysicalDeviceSubgroupSizeControlProperties : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5530,7 +5530,7 @@ public unsafe partial struct VkPipelineShaderStageRequiredSubgroupSizeCreateInfo
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5552,7 +5552,7 @@ public unsafe partial struct VkPhysicalDeviceInlineUniformBlockFeatures : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5577,7 +5577,7 @@ public unsafe partial struct VkPhysicalDeviceInlineUniformBlockProperties : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5599,7 +5599,7 @@ public unsafe partial struct VkWriteDescriptorSetInlineUniformBlock : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5620,7 +5620,7 @@ public unsafe partial struct VkDescriptorPoolInlineUniformBlockCreateInfo : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5641,7 +5641,7 @@ public unsafe partial struct VkPhysicalDeviceTextureCompressionASTCHDRFeatures :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5669,7 +5669,7 @@ public unsafe partial struct VkRenderingAttachmentInfo : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5697,7 +5697,7 @@ public unsafe partial struct VkRenderingInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5722,7 +5722,7 @@ public unsafe partial struct VkPipelineRenderingCreateInfo : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5743,7 +5743,7 @@ public unsafe partial struct VkPhysicalDeviceDynamicRenderingFeatures : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5770,7 +5770,7 @@ public unsafe partial struct VkCommandBufferInheritanceRenderingInfo : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5791,7 +5791,7 @@ public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductFeatures : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5841,7 +5841,7 @@ public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductProperties :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5865,7 +5865,7 @@ public unsafe partial struct VkPhysicalDeviceTexelBufferAlignmentProperties : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5888,7 +5888,7 @@ public unsafe partial struct VkFormatProperties3 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5909,7 +5909,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance4Features : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5930,7 +5930,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance4Properties : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5951,7 +5951,7 @@ public unsafe partial struct VkDeviceBufferMemoryRequirements : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -5973,7 +5973,7 @@ public unsafe partial struct VkDeviceImageMemoryRequirements : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6014,7 +6014,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan14Features : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6059,7 +6059,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan14Properties : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6080,7 +6080,7 @@ public unsafe partial struct VkDeviceQueueGlobalPriorityCreateInfo : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6101,7 +6101,7 @@ public unsafe partial struct VkPhysicalDeviceGlobalPriorityQueryFeatures : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6129,7 +6129,7 @@ public unsafe partial struct VkQueueFamilyGlobalPriorityProperties : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6151,7 +6151,7 @@ public unsafe partial struct VkPhysicalDeviceShaderSubgroupRotateFeatures : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6172,7 +6172,7 @@ public unsafe partial struct VkPhysicalDeviceShaderFloatControls2Features : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6193,7 +6193,7 @@ public unsafe partial struct VkPhysicalDeviceShaderExpectAssumeFeatures : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6219,7 +6219,7 @@ public unsafe partial struct VkPhysicalDeviceLineRasterizationFeatures : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6240,7 +6240,7 @@ public unsafe partial struct VkPhysicalDeviceLineRasterizationProperties : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6264,7 +6264,7 @@ public unsafe partial struct VkPipelineRasterizationLineStateCreateInfo : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6286,7 +6286,7 @@ public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorProperties : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6314,7 +6314,7 @@ public unsafe partial struct VkPipelineVertexInputDivisorStateCreateInfo : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6336,7 +6336,7 @@ public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorFeatures : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6357,7 +6357,7 @@ public unsafe partial struct VkPhysicalDeviceIndexTypeUint8Features : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6381,7 +6381,7 @@ public unsafe partial struct VkMemoryMapInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6403,7 +6403,7 @@ public unsafe partial struct VkMemoryUnmapInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6424,7 +6424,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance5Features : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6450,7 +6450,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance5Properties : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6475,7 +6475,7 @@ public unsafe partial struct VkRenderingAreaInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6496,7 +6496,7 @@ public unsafe partial struct VkImageSubresource2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6518,7 +6518,7 @@ public unsafe partial struct VkDeviceImageSubresourceInfo : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6539,7 +6539,7 @@ public unsafe partial struct VkSubresourceLayout2 : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6560,7 +6560,7 @@ public unsafe partial struct VkPipelineCreateFlags2CreateInfo : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6581,7 +6581,7 @@ public unsafe partial struct VkBufferUsageFlags2CreateInfo : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6602,7 +6602,7 @@ public unsafe partial struct VkPhysicalDevicePushDescriptorProperties : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6623,7 +6623,7 @@ public unsafe partial struct VkPhysicalDeviceDynamicRenderingLocalReadFeatures :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6645,7 +6645,7 @@ public unsafe partial struct VkRenderingAttachmentLocationInfo : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6669,7 +6669,7 @@ public unsafe partial struct VkRenderingInputAttachmentIndexInfo : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6690,7 +6690,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance6Features : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6713,7 +6713,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance6Properties : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6734,7 +6734,7 @@ public unsafe partial struct VkBindMemoryStatus : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6761,7 +6761,7 @@ public unsafe partial struct VkBindDescriptorSetsInfo : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6786,7 +6786,7 @@ public unsafe partial struct VkPushConstantsInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6811,7 +6811,7 @@ public unsafe partial struct VkPushDescriptorSetInfo : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6835,7 +6835,7 @@ public unsafe partial struct VkPushDescriptorSetWithTemplateInfo : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6856,7 +6856,7 @@ public unsafe partial struct VkPhysicalDevicePipelineProtectedAccessFeatures : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6877,7 +6877,7 @@ public unsafe partial struct VkPhysicalDevicePipelineRobustnessFeatures : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6901,7 +6901,7 @@ public unsafe partial struct VkPhysicalDevicePipelineRobustnessProperties : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6925,7 +6925,7 @@ public unsafe partial struct VkPipelineRobustnessCreateInfo : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6946,7 +6946,7 @@ public unsafe partial struct VkPhysicalDeviceHostImageCopyFeatures : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6972,7 +6972,7 @@ public unsafe partial struct VkPhysicalDeviceHostImageCopyProperties : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -6998,7 +6998,7 @@ public unsafe partial struct VkMemoryToImageCopy : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7024,7 +7024,7 @@ public unsafe partial struct VkImageToMemoryCopy : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7049,7 +7049,7 @@ public unsafe partial struct VkCopyMemoryToImageInfo : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7074,7 +7074,7 @@ public unsafe partial struct VkCopyImageToMemoryInfo : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7101,7 +7101,7 @@ public unsafe partial struct VkCopyImageToImageInfo : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7125,7 +7125,7 @@ public unsafe partial struct VkHostImageLayoutTransitionInfo : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7146,7 +7146,7 @@ public unsafe partial struct VkSubresourceHostMemcpySize : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7168,7 +7168,7 @@ public unsafe partial struct VkHostImageCopyDevicePerformanceQuery : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7224,7 +7224,7 @@ public unsafe partial struct VkSwapchainCreateInfoKHR : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7250,7 +7250,7 @@ public unsafe partial struct VkPresentInfoKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7271,7 +7271,7 @@ public unsafe partial struct VkImageSwapchainCreateInfoKHR : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7293,7 +7293,7 @@ public unsafe partial struct VkBindImageMemorySwapchainInfoKHR : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7318,7 +7318,7 @@ public unsafe partial struct VkAcquireNextImageInfoKHR : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7340,7 +7340,7 @@ public unsafe partial struct VkDeviceGroupPresentCapabilitiesKHR : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7363,7 +7363,7 @@ public unsafe partial struct VkDeviceGroupPresentInfoKHR : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7384,7 +7384,7 @@ public unsafe partial struct VkDeviceGroupSwapchainCreateInfoKHR : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7412,7 +7412,7 @@ public unsafe partial struct VkDisplayModeCreateInfoKHR : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7476,7 +7476,7 @@ public unsafe partial struct VkDisplaySurfaceCreateInfoKHR : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7499,7 +7499,7 @@ public unsafe partial struct VkDisplayPresentInfoKHR : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7520,7 +7520,7 @@ public unsafe partial struct VkQueueFamilyQueryResultStatusPropertiesKHR : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7541,7 +7541,7 @@ public unsafe partial struct VkQueueFamilyVideoPropertiesKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7565,7 +7565,7 @@ public unsafe partial struct VkVideoProfileInfoKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7587,7 +7587,7 @@ public unsafe partial struct VkVideoProfileListInfoKHR : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7616,7 +7616,7 @@ public unsafe partial struct VkVideoCapabilitiesKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7637,7 +7637,7 @@ public unsafe partial struct VkPhysicalDeviceVideoFormatInfoKHR : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7663,7 +7663,7 @@ public unsafe partial struct VkVideoFormatPropertiesKHR : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7687,7 +7687,7 @@ public unsafe partial struct VkVideoPictureResourceInfoKHR : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7709,7 +7709,7 @@ public unsafe partial struct VkVideoReferenceSlotInfoKHR : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7731,7 +7731,7 @@ public unsafe partial struct VkVideoSessionMemoryRequirementsKHR : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7755,7 +7755,7 @@ public unsafe partial struct VkBindVideoSessionMemoryInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7784,7 +7784,7 @@ public unsafe partial struct VkVideoSessionCreateInfoKHR : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7807,7 +7807,7 @@ public unsafe partial struct VkVideoSessionParametersCreateInfoKHR : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7828,7 +7828,7 @@ public unsafe partial struct VkVideoSessionParametersUpdateInfoKHR : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7853,7 +7853,7 @@ public unsafe partial struct VkVideoBeginCodingInfoKHR : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7874,7 +7874,7 @@ public unsafe partial struct VkVideoEndCodingInfoKHR : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7895,7 +7895,7 @@ public unsafe partial struct VkVideoCodingControlInfoKHR : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7916,7 +7916,7 @@ public unsafe partial struct VkVideoDecodeCapabilitiesKHR : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7937,7 +7937,7 @@ public unsafe partial struct VkVideoDecodeUsageInfoKHR : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -7965,7 +7965,7 @@ public unsafe partial struct VkVideoDecodeInfoKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8257,7 +8257,7 @@ public unsafe partial struct VkVideoEncodeH264CapabilitiesKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8293,7 +8293,7 @@ public unsafe partial struct VkVideoEncodeH264QualityLevelPropertiesKHR : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8315,7 +8315,7 @@ public unsafe partial struct VkVideoEncodeH264SessionCreateInfoKHR : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8339,7 +8339,7 @@ public unsafe partial struct VkVideoEncodeH264SessionParametersAddInfoKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8362,7 +8362,7 @@ public unsafe partial struct VkVideoEncodeH264SessionParametersCreateInfoKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8386,7 +8386,7 @@ public unsafe partial struct VkVideoEncodeH264SessionParametersGetInfoKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8408,7 +8408,7 @@ public unsafe partial struct VkVideoEncodeH264SessionParametersFeedbackInfoKHR :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8430,7 +8430,7 @@ public unsafe partial struct VkVideoEncodeH264NaluSliceInfoKHR : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8454,7 +8454,7 @@ public unsafe partial struct VkVideoEncodeH264PictureInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8475,7 +8475,7 @@ public unsafe partial struct VkVideoEncodeH264DpbSlotInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8496,7 +8496,7 @@ public unsafe partial struct VkVideoEncodeH264ProfileInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8521,7 +8521,7 @@ public unsafe partial struct VkVideoEncodeH264RateControlInfoKHR : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8554,7 +8554,7 @@ public unsafe partial struct VkVideoEncodeH264RateControlLayerInfoKHR : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -8578,7 +8578,7 @@ public unsafe partial struct VkVideoEncodeH264GopRemainingFrameInfoKHR : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9082,7 +9082,7 @@ public unsafe partial struct VkVideoEncodeH265CapabilitiesKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9104,7 +9104,7 @@ public unsafe partial struct VkVideoEncodeH265SessionCreateInfoKHR : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9139,7 +9139,7 @@ public unsafe partial struct VkVideoEncodeH265QualityLevelPropertiesKHR : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9165,7 +9165,7 @@ public unsafe partial struct VkVideoEncodeH265SessionParametersAddInfoKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9189,7 +9189,7 @@ public unsafe partial struct VkVideoEncodeH265SessionParametersCreateInfoKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9215,7 +9215,7 @@ public unsafe partial struct VkVideoEncodeH265SessionParametersGetInfoKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9238,7 +9238,7 @@ public unsafe partial struct VkVideoEncodeH265SessionParametersFeedbackInfoKHR :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9260,7 +9260,7 @@ public unsafe partial struct VkVideoEncodeH265NaluSliceSegmentInfoKHR : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9283,7 +9283,7 @@ public unsafe partial struct VkVideoEncodeH265PictureInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9304,7 +9304,7 @@ public unsafe partial struct VkVideoEncodeH265DpbSlotInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9325,7 +9325,7 @@ public unsafe partial struct VkVideoEncodeH265ProfileInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9350,7 +9350,7 @@ public unsafe partial struct VkVideoEncodeH265RateControlInfoKHR : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9383,7 +9383,7 @@ public unsafe partial struct VkVideoEncodeH265RateControlLayerInfoKHR : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9407,7 +9407,7 @@ public unsafe partial struct VkVideoEncodeH265GopRemainingFrameInfoKHR : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9467,7 +9467,7 @@ public unsafe partial struct VkVideoDecodeH264ProfileInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9489,7 +9489,7 @@ public unsafe partial struct VkVideoDecodeH264CapabilitiesKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9513,7 +9513,7 @@ public unsafe partial struct VkVideoDecodeH264SessionParametersAddInfoKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9536,7 +9536,7 @@ public unsafe partial struct VkVideoDecodeH264SessionParametersCreateInfoKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9559,7 +9559,7 @@ public unsafe partial struct VkVideoDecodeH264PictureInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9580,7 +9580,7 @@ public unsafe partial struct VkVideoDecodeH264DpbSlotInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9602,7 +9602,7 @@ public unsafe partial struct VkImportMemoryFdInfoKHR : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9623,7 +9623,7 @@ public unsafe partial struct VkMemoryFdPropertiesKHR : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9645,7 +9645,7 @@ public unsafe partial struct VkMemoryGetFdInfoKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9669,7 +9669,7 @@ public unsafe partial struct VkImportSemaphoreFdInfoKHR : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9691,7 +9691,7 @@ public unsafe partial struct VkSemaphoreGetFdInfoKHR : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9726,7 +9726,7 @@ public unsafe partial struct VkPresentRegionsKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9747,7 +9747,7 @@ public unsafe partial struct VkSharedPresentSurfaceCapabilitiesKHR : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9771,7 +9771,7 @@ public unsafe partial struct VkImportFenceFdInfoKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9793,7 +9793,7 @@ public unsafe partial struct VkFenceGetFdInfoKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9815,7 +9815,7 @@ public unsafe partial struct VkPhysicalDevicePerformanceQueryFeaturesKHR : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9836,7 +9836,7 @@ public unsafe partial struct VkPhysicalDevicePerformanceQueryPropertiesKHR : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9860,7 +9860,7 @@ public unsafe partial struct VkPerformanceCounterKHR : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9884,7 +9884,7 @@ public unsafe partial struct VkPerformanceCounterDescriptionKHR : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9907,7 +9907,7 @@ public unsafe partial struct VkQueryPoolPerformanceCreateInfoKHR : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9946,7 +9946,7 @@ public unsafe partial struct VkAcquireProfilingLockInfoKHR : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9967,7 +9967,7 @@ public unsafe partial struct VkPerformanceQuerySubmitInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -9988,7 +9988,7 @@ public unsafe partial struct VkPhysicalDeviceSurfaceInfo2KHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10009,7 +10009,7 @@ public unsafe partial struct VkSurfaceCapabilities2KHR : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10030,7 +10030,7 @@ public unsafe partial struct VkSurfaceFormat2KHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10051,7 +10051,7 @@ public unsafe partial struct VkDisplayProperties2KHR : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10072,7 +10072,7 @@ public unsafe partial struct VkDisplayPlaneProperties2KHR : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10093,7 +10093,7 @@ public unsafe partial struct VkDisplayModeProperties2KHR : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10115,7 +10115,7 @@ public unsafe partial struct VkDisplayPlaneInfo2KHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10136,7 +10136,7 @@ public unsafe partial struct VkDisplayPlaneCapabilities2KHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10159,7 +10159,7 @@ public unsafe partial struct VkPhysicalDeviceShaderBfloat16FeaturesKHR : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10181,7 +10181,7 @@ public unsafe partial struct VkPhysicalDeviceShaderClockFeaturesKHR : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10237,7 +10237,7 @@ public unsafe partial struct VkVideoDecodeH265ProfileInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10258,7 +10258,7 @@ public unsafe partial struct VkVideoDecodeH265CapabilitiesKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10284,7 +10284,7 @@ public unsafe partial struct VkVideoDecodeH265SessionParametersAddInfoKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10308,7 +10308,7 @@ public unsafe partial struct VkVideoDecodeH265SessionParametersCreateInfoKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10331,7 +10331,7 @@ public unsafe partial struct VkVideoDecodeH265PictureInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10352,7 +10352,7 @@ public unsafe partial struct VkVideoDecodeH265DpbSlotInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10374,7 +10374,7 @@ public unsafe partial struct VkFragmentShadingRateAttachmentInfoKHR : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10402,7 +10402,7 @@ public unsafe partial struct VkPipelineFragmentShadingRateStateCreateInfoKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10425,7 +10425,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShadingRateFeaturesKHR : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10462,7 +10462,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10484,7 +10484,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShadingRateKHR : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10507,7 +10507,7 @@ public unsafe partial struct VkRenderingFragmentShadingRateAttachmentInfoKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10528,7 +10528,7 @@ public unsafe partial struct VkPhysicalDeviceShaderQuadControlFeaturesKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10549,7 +10549,7 @@ public unsafe partial struct VkSurfaceProtectedCapabilitiesKHR : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10570,7 +10570,7 @@ public unsafe partial struct VkPhysicalDevicePresentWaitFeaturesKHR : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10591,7 +10591,7 @@ public unsafe partial struct VkPhysicalDevicePipelineExecutablePropertiesFeature
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10612,7 +10612,7 @@ public unsafe partial struct VkPipelineInfoKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10636,7 +10636,7 @@ public unsafe partial struct VkPipelineExecutablePropertiesKHR : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10658,7 +10658,7 @@ public unsafe partial struct VkPipelineExecutableInfoKHR : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10695,7 +10695,7 @@ public unsafe partial struct VkPipelineExecutableStatisticKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10720,7 +10720,7 @@ public unsafe partial struct VkPipelineExecutableInternalRepresentationKHR : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10742,7 +10742,7 @@ public unsafe partial struct VkPipelineLibraryCreateInfoKHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10764,7 +10764,7 @@ public unsafe partial struct VkPresentIdKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10785,7 +10785,7 @@ public unsafe partial struct VkPhysicalDevicePresentIdFeaturesKHR : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10814,7 +10814,7 @@ public unsafe partial struct VkVideoEncodeInfoKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10841,7 +10841,7 @@ public unsafe partial struct VkVideoEncodeCapabilitiesKHR : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10862,7 +10862,7 @@ public unsafe partial struct VkQueryPoolVideoEncodeFeedbackCreateInfoKHR : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10885,7 +10885,7 @@ public unsafe partial struct VkVideoEncodeUsageInfoKHR : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10909,7 +10909,7 @@ public unsafe partial struct VkVideoEncodeRateControlLayerInfoKHR : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10935,7 +10935,7 @@ public unsafe partial struct VkVideoEncodeRateControlInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10957,7 +10957,7 @@ public unsafe partial struct VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -10979,7 +10979,7 @@ public unsafe partial struct VkVideoEncodeQualityLevelPropertiesKHR : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11000,7 +11000,7 @@ public unsafe partial struct VkVideoEncodeQualityLevelInfoKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11021,7 +11021,7 @@ public unsafe partial struct VkVideoEncodeSessionParametersGetInfoKHR : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11042,7 +11042,7 @@ public unsafe partial struct VkVideoEncodeSessionParametersFeedbackInfoKHR : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11063,7 +11063,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesKH
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11084,7 +11084,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShaderBarycentricProperties
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11105,7 +11105,7 @@ public unsafe partial struct VkPhysicalDeviceShaderSubgroupUniformControlFlowFea
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11129,7 +11129,7 @@ public unsafe partial struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeatur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11151,7 +11151,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11190,7 +11190,7 @@ public unsafe partial struct VkPhysicalDeviceShaderMaximalReconvergenceFeaturesK
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11211,7 +11211,7 @@ public unsafe partial struct VkSurfaceCapabilitiesPresentId2KHR : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11233,7 +11233,7 @@ public unsafe partial struct VkPresentId2KHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11254,7 +11254,7 @@ public unsafe partial struct VkPhysicalDevicePresentId2FeaturesKHR : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11275,7 +11275,7 @@ public unsafe partial struct VkSurfaceCapabilitiesPresentWait2KHR : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11296,7 +11296,7 @@ public unsafe partial struct VkPhysicalDevicePresentWait2FeaturesKHR : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11318,7 +11318,7 @@ public unsafe partial struct VkPresentWait2InfoKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11339,7 +11339,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11360,7 +11360,7 @@ public unsafe partial struct VkPhysicalDevicePipelineBinaryFeaturesKHR : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11385,7 +11385,7 @@ public unsafe partial struct VkPhysicalDevicePipelineBinaryPropertiesKHR : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11406,7 +11406,7 @@ public unsafe partial struct VkDevicePipelineBinaryInternalCacheControlKHR : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11428,7 +11428,7 @@ public unsafe partial struct VkPipelineBinaryKeyKHR : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11461,7 +11461,7 @@ public unsafe partial struct VkPipelineCreateInfoKHR : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11484,7 +11484,7 @@ public unsafe partial struct VkPipelineBinaryCreateInfoKHR : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11506,7 +11506,7 @@ public unsafe partial struct VkPipelineBinaryInfoKHR : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11527,7 +11527,7 @@ public unsafe partial struct VkReleaseCapturedPipelineDataInfoKHR : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11548,7 +11548,7 @@ public unsafe partial struct VkPipelineBinaryDataInfoKHR : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11570,7 +11570,7 @@ public unsafe partial struct VkPipelineBinaryHandlesInfoKHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11591,7 +11591,7 @@ public unsafe partial struct VkSurfacePresentModeKHR : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11616,7 +11616,7 @@ public unsafe partial struct VkSurfacePresentScalingCapabilitiesKHR : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11638,7 +11638,7 @@ public unsafe partial struct VkSurfacePresentModeCompatibilityKHR : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11659,7 +11659,7 @@ public unsafe partial struct VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11681,7 +11681,7 @@ public unsafe partial struct VkSwapchainPresentFenceInfoKHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11703,7 +11703,7 @@ public unsafe partial struct VkSwapchainPresentModesCreateInfoKHR : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11725,7 +11725,7 @@ public unsafe partial struct VkSwapchainPresentModeInfoKHR : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11748,7 +11748,7 @@ public unsafe partial struct VkSwapchainPresentScalingCreateInfoKHR : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11771,7 +11771,7 @@ public unsafe partial struct VkReleaseSwapchainImagesInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11800,7 +11800,7 @@ public unsafe partial struct VkCooperativeMatrixPropertiesKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11822,7 +11822,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrixFeaturesKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11843,7 +11843,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrixPropertiesKHR : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11865,7 +11865,7 @@ public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -11886,7 +11886,7 @@ public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesPropertiesK
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12195,7 +12195,7 @@ public unsafe partial struct VkVideoDecodeAV1ProfileInfoKHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12216,7 +12216,7 @@ public unsafe partial struct VkVideoDecodeAV1CapabilitiesKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12237,7 +12237,7 @@ public unsafe partial struct VkVideoDecodeAV1SessionParametersCreateInfoKHR : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12263,7 +12263,7 @@ public unsafe partial struct VkVideoDecodeAV1PictureInfoKHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12284,7 +12284,7 @@ public unsafe partial struct VkVideoDecodeAV1DpbSlotInfoKHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12421,7 +12421,7 @@ public unsafe partial struct VkPhysicalDeviceVideoEncodeAV1FeaturesKHR : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12465,7 +12465,7 @@ public unsafe partial struct VkVideoEncodeAV1CapabilitiesKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12507,7 +12507,7 @@ public unsafe partial struct VkVideoEncodeAV1QualityLevelPropertiesKHR : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12529,7 +12529,7 @@ public unsafe partial struct VkVideoEncodeAV1SessionCreateInfoKHR : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12553,7 +12553,7 @@ public unsafe partial struct VkVideoEncodeAV1SessionParametersCreateInfoKHR : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12580,7 +12580,7 @@ public unsafe partial struct VkVideoEncodeAV1PictureInfoKHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12601,7 +12601,7 @@ public unsafe partial struct VkVideoEncodeAV1DpbSlotInfoKHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12622,7 +12622,7 @@ public unsafe partial struct VkVideoEncodeAV1ProfileInfoKHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12653,7 +12653,7 @@ public unsafe partial struct VkVideoEncodeAV1GopRemainingFrameInfoKHR : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12678,7 +12678,7 @@ public unsafe partial struct VkVideoEncodeAV1RateControlInfoKHR : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12704,7 +12704,7 @@ public unsafe partial struct VkVideoEncodeAV1RateControlLayerInfoKHR : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12812,7 +12812,7 @@ public unsafe partial struct VkPhysicalDeviceVideoDecodeVP9FeaturesKHR : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12833,7 +12833,7 @@ public unsafe partial struct VkVideoDecodeVP9ProfileInfoKHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12854,7 +12854,7 @@ public unsafe partial struct VkVideoDecodeVP9CapabilitiesKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12879,7 +12879,7 @@ public unsafe partial struct VkVideoDecodeVP9PictureInfoKHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12900,7 +12900,7 @@ public unsafe partial struct VkPhysicalDeviceVideoMaintenance1FeaturesKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12923,7 +12923,7 @@ public unsafe partial struct VkVideoInlineQueryInfoKHR : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12945,7 +12945,7 @@ public unsafe partial struct VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12966,7 +12966,7 @@ public unsafe partial struct VkAttachmentFeedbackLoopInfoEXT : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -12987,7 +12987,7 @@ public unsafe partial struct VkCalibratedTimestampInfoKHR : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13013,7 +13013,7 @@ public unsafe partial struct VkSetDescriptorBufferOffsetsInfoEXT : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13036,7 +13036,7 @@ public unsafe partial struct VkBindDescriptorBufferEmbeddedSamplersInfoEXT : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13061,7 +13061,7 @@ public unsafe partial struct VkVideoEncodeIntraRefreshCapabilitiesKHR : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13082,7 +13082,7 @@ public unsafe partial struct VkVideoEncodeSessionIntraRefreshCreateInfoKHR : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13104,7 +13104,7 @@ public unsafe partial struct VkVideoEncodeIntraRefreshInfoKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13125,7 +13125,7 @@ public unsafe partial struct VkVideoReferenceIntraRefreshInfoKHR : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13146,7 +13146,7 @@ public unsafe partial struct VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13167,7 +13167,7 @@ public unsafe partial struct VkVideoEncodeQuantizationMapCapabilitiesKHR : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13188,7 +13188,7 @@ public unsafe partial struct VkVideoFormatQuantizationMapPropertiesKHR : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13210,7 +13210,7 @@ public unsafe partial struct VkVideoEncodeQuantizationMapInfoKHR : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13231,7 +13231,7 @@ public unsafe partial struct VkVideoEncodeQuantizationMapSessionParametersCreate
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13252,7 +13252,7 @@ public unsafe partial struct VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesK
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13274,7 +13274,7 @@ public unsafe partial struct VkVideoEncodeH264QuantizationMapCapabilitiesKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13296,7 +13296,7 @@ public unsafe partial struct VkVideoEncodeH265QuantizationMapCapabilitiesKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13317,7 +13317,7 @@ public unsafe partial struct VkVideoFormatH265QuantizationMapPropertiesKHR : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13339,7 +13339,7 @@ public unsafe partial struct VkVideoEncodeAV1QuantizationMapCapabilitiesKHR : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13360,7 +13360,7 @@ public unsafe partial struct VkVideoFormatAV1QuantizationMapPropertiesKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13381,7 +13381,7 @@ public unsafe partial struct VkPhysicalDeviceShaderRelaxedExtendedInstructionFea
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13402,7 +13402,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance7FeaturesKHR : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13430,7 +13430,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance7PropertiesKHR : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13454,7 +13454,7 @@ public unsafe partial struct VkPhysicalDeviceLayeredApiPropertiesKHR : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13476,7 +13476,7 @@ public unsafe partial struct VkPhysicalDeviceLayeredApiPropertiesListKHR : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13497,7 +13497,7 @@ public unsafe partial struct VkPhysicalDeviceLayeredApiVulkanPropertiesKHR : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13518,7 +13518,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance8FeaturesKHR : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13540,7 +13540,7 @@ public unsafe partial struct VkMemoryBarrierAccessFlags3KHR : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13561,7 +13561,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance9FeaturesKHR : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13583,7 +13583,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance9PropertiesKHR : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13604,7 +13604,7 @@ public unsafe partial struct VkQueueFamilyOwnershipTransferPropertiesKHR : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13625,7 +13625,7 @@ public unsafe partial struct VkPhysicalDeviceVideoMaintenance2FeaturesKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13647,7 +13647,7 @@ public unsafe partial struct VkVideoDecodeH264InlineSessionParametersInfoKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13670,7 +13670,7 @@ public unsafe partial struct VkVideoDecodeH265InlineSessionParametersInfoKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13691,7 +13691,7 @@ public unsafe partial struct VkVideoDecodeAV1InlineSessionParametersInfoKHR : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13712,7 +13712,7 @@ public unsafe partial struct VkPhysicalDeviceDepthClampZeroOneFeaturesKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13735,7 +13735,7 @@ public unsafe partial struct VkPhysicalDeviceRobustness2FeaturesKHR : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13757,7 +13757,7 @@ public unsafe partial struct VkPhysicalDeviceRobustness2PropertiesKHR : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13778,7 +13778,7 @@ public unsafe partial struct VkPhysicalDevicePresentModeFifoLatestReadyFeaturesK
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13801,7 +13801,7 @@ public unsafe partial struct VkDebugReportCallbackCreateInfoEXT : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13822,7 +13822,7 @@ public unsafe partial struct VkPipelineRasterizationStateRasterizationOrderAMD :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13845,7 +13845,7 @@ public unsafe partial struct VkDebugMarkerObjectNameInfoEXT : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13870,7 +13870,7 @@ public unsafe partial struct VkDebugMarkerObjectTagInfoEXT : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13892,7 +13892,7 @@ public unsafe partial struct VkDebugMarkerMarkerInfoEXT : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13913,7 +13913,7 @@ public unsafe partial struct VkDedicatedAllocationImageCreateInfoNV : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13934,7 +13934,7 @@ public unsafe partial struct VkDedicatedAllocationBufferCreateInfoNV : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13956,7 +13956,7 @@ public unsafe partial struct VkDedicatedAllocationMemoryAllocateInfoNV : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -13978,7 +13978,7 @@ public unsafe partial struct VkPhysicalDeviceTransformFeedbackFeaturesEXT : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14008,7 +14008,7 @@ public unsafe partial struct VkPhysicalDeviceTransformFeedbackPropertiesEXT : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14030,7 +14030,7 @@ public unsafe partial struct VkPipelineRasterizationStateStreamCreateInfoEXT : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14052,7 +14052,7 @@ public unsafe partial struct VkCuModuleCreateInfoNVX : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14073,7 +14073,7 @@ public unsafe partial struct VkCuModuleTexturingModeCreateInfoNVX : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14095,7 +14095,7 @@ public unsafe partial struct VkCuFunctionCreateInfoNVX : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14127,7 +14127,7 @@ public unsafe partial struct VkCuLaunchInfoNVX : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14150,7 +14150,7 @@ public unsafe partial struct VkImageViewHandleInfoNVX : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14172,7 +14172,7 @@ public unsafe partial struct VkImageViewAddressPropertiesNVX : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14193,7 +14193,7 @@ public unsafe partial struct VkTextureLODGatherFormatPropertiesAMD : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14234,7 +14234,7 @@ public unsafe partial struct VkPhysicalDeviceCornerSampledImageFeaturesNV : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14263,7 +14263,7 @@ public unsafe partial struct VkExternalMemoryImageCreateInfoNV : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14284,7 +14284,7 @@ public unsafe partial struct VkExportMemoryAllocateInfoNV : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14306,7 +14306,7 @@ public unsafe partial struct VkValidationFlagsEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14327,7 +14327,7 @@ public unsafe partial struct VkImageViewASTCDecodeModeEXT : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14348,7 +14348,7 @@ public unsafe partial struct VkPhysicalDeviceASTCDecodeFeaturesEXT : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14371,7 +14371,7 @@ public unsafe partial struct VkConditionalRenderingBeginInfoEXT : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14393,7 +14393,7 @@ public unsafe partial struct VkPhysicalDeviceConditionalRenderingFeaturesEXT : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14414,7 +14414,7 @@ public unsafe partial struct VkCommandBufferInheritanceConditionalRenderingInfoE
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14443,7 +14443,7 @@ public unsafe partial struct VkPipelineViewportWScalingStateCreateInfoNV : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14474,7 +14474,7 @@ public unsafe partial struct VkSurfaceCapabilities2EXT : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14495,7 +14495,7 @@ public unsafe partial struct VkDisplayPowerInfoEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14516,7 +14516,7 @@ public unsafe partial struct VkDeviceEventInfoEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14537,7 +14537,7 @@ public unsafe partial struct VkDisplayEventInfoEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14558,7 +14558,7 @@ public unsafe partial struct VkSwapchainCounterCreateInfoEXT : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14600,7 +14600,7 @@ public unsafe partial struct VkPresentTimesInfoGOOGLE : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14621,7 +14621,7 @@ public unsafe partial struct VkPhysicalDeviceMultiviewPerViewAttributesPropertie
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14643,7 +14643,7 @@ public unsafe partial struct VkMultiviewPerViewAttributesInfoNVX : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14674,7 +14674,7 @@ public unsafe partial struct VkPipelineViewportSwizzleStateCreateInfoNV : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14695,7 +14695,7 @@ public unsafe partial struct VkPhysicalDeviceDiscardRectanglePropertiesEXT : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14719,7 +14719,7 @@ public unsafe partial struct VkPipelineDiscardRectangleStateCreateInfoEXT : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14748,7 +14748,7 @@ public unsafe partial struct VkPhysicalDeviceConservativeRasterizationProperties
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14771,7 +14771,7 @@ public unsafe partial struct VkPipelineRasterizationConservativeStateCreateInfoE
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14792,7 +14792,7 @@ public unsafe partial struct VkPhysicalDeviceDepthClipEnableFeaturesEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14814,7 +14814,7 @@ public unsafe partial struct VkPipelineRasterizationDepthClipStateCreateInfoEXT 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14848,7 +14848,7 @@ public unsafe partial struct VkHdrMetadataEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14869,7 +14869,7 @@ public unsafe partial struct VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14891,7 +14891,7 @@ public unsafe partial struct VkDebugUtilsLabelEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14914,7 +14914,7 @@ public unsafe partial struct VkDebugUtilsObjectNameInfoEXT : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14944,7 +14944,7 @@ public unsafe partial struct VkDebugUtilsMessengerCallbackDataEXT : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14969,7 +14969,7 @@ public unsafe partial struct VkDebugUtilsMessengerCreateInfoEXT : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -14994,7 +14994,7 @@ public unsafe partial struct VkDebugUtilsObjectTagInfoEXT : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15017,7 +15017,7 @@ public unsafe partial struct VkAttachmentSampleCountInfoAMD : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15047,7 +15047,7 @@ public unsafe partial struct VkSampleLocationsInfoEXT : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15083,7 +15083,7 @@ public unsafe partial struct VkRenderPassSampleLocationsBeginInfoEXT : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15105,7 +15105,7 @@ public unsafe partial struct VkPipelineSampleLocationsStateCreateInfoEXT : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15130,7 +15130,7 @@ public unsafe partial struct VkPhysicalDeviceSampleLocationsPropertiesEXT : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15151,7 +15151,7 @@ public unsafe partial struct VkMultisamplePropertiesEXT : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15172,7 +15172,7 @@ public unsafe partial struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15198,7 +15198,7 @@ public unsafe partial struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15221,7 +15221,7 @@ public unsafe partial struct VkPipelineColorBlendAdvancedStateCreateInfoEXT : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15244,7 +15244,7 @@ public unsafe partial struct VkPipelineCoverageToColorStateCreateInfoNV : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15269,7 +15269,7 @@ public unsafe partial struct VkPipelineCoverageModulationStateCreateInfoNV : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15291,7 +15291,7 @@ public unsafe partial struct VkPhysicalDeviceShaderSMBuiltinsPropertiesNV : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15312,7 +15312,7 @@ public unsafe partial struct VkPhysicalDeviceShaderSMBuiltinsFeaturesNV : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15341,7 +15341,7 @@ public unsafe partial struct VkDrmFormatModifierPropertiesListEXT : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15365,7 +15365,7 @@ public unsafe partial struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15387,7 +15387,7 @@ public unsafe partial struct VkImageDrmFormatModifierListCreateInfoEXT : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15410,7 +15410,7 @@ public unsafe partial struct VkImageDrmFormatModifierExplicitCreateInfoEXT : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15431,7 +15431,7 @@ public unsafe partial struct VkImageDrmFormatModifierPropertiesEXT : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15460,7 +15460,7 @@ public unsafe partial struct VkDrmFormatModifierPropertiesList2EXT : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15483,7 +15483,7 @@ public unsafe partial struct VkValidationCacheCreateInfoEXT : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15504,7 +15504,7 @@ public unsafe partial struct VkShaderModuleValidationCacheCreateInfoEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15533,7 +15533,7 @@ public unsafe partial struct VkPipelineViewportShadingRateImageStateCreateInfoNV
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15555,7 +15555,7 @@ public unsafe partial struct VkPhysicalDeviceShadingRateImageFeaturesNV : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15578,7 +15578,7 @@ public unsafe partial struct VkPhysicalDeviceShadingRateImagePropertiesNV : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15616,7 +15616,7 @@ public unsafe partial struct VkPipelineViewportCoarseSampleOrderStateCreateInfoN
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15641,7 +15641,7 @@ public unsafe partial struct VkRayTracingShaderGroupCreateInfoNV : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15670,7 +15670,7 @@ public unsafe partial struct VkRayTracingPipelineCreateInfoNV : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15701,7 +15701,7 @@ public unsafe partial struct VkGeometryTrianglesNV : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15725,7 +15725,7 @@ public unsafe partial struct VkGeometryAABBNV : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15754,7 +15754,7 @@ public unsafe partial struct VkGeometryNV : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15779,7 +15779,7 @@ public unsafe partial struct VkAccelerationStructureInfoNV : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15801,7 +15801,7 @@ public unsafe partial struct VkAccelerationStructureCreateInfoNV : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15826,7 +15826,7 @@ public unsafe partial struct VkBindAccelerationStructureMemoryInfoNV : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15848,7 +15848,7 @@ public unsafe partial struct VkWriteDescriptorSetAccelerationStructureNV : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15870,7 +15870,7 @@ public unsafe partial struct VkAccelerationStructureMemoryRequirementsInfoNV : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15898,7 +15898,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingPropertiesNV : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15929,7 +15929,7 @@ public unsafe partial struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesN
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15950,7 +15950,7 @@ public unsafe partial struct VkPipelineRepresentativeFragmentTestStateCreateInfo
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15971,7 +15971,7 @@ public unsafe partial struct VkPhysicalDeviceImageViewImageFormatInfoEXT : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -15993,7 +15993,7 @@ public unsafe partial struct VkFilterCubicImageViewImageFormatPropertiesEXT : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16015,7 +16015,7 @@ public unsafe partial struct VkImportMemoryHostPointerInfoEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16036,7 +16036,7 @@ public unsafe partial struct VkMemoryHostPointerPropertiesEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16057,7 +16057,7 @@ public unsafe partial struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16078,7 +16078,7 @@ public unsafe partial struct VkPipelineCompilerControlCreateInfoAMD : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16112,7 +16112,7 @@ public unsafe partial struct VkPhysicalDeviceShaderCorePropertiesAMD : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16133,7 +16133,7 @@ public unsafe partial struct VkDeviceMemoryOverallocationCreateInfoAMD : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16154,7 +16154,7 @@ public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16176,7 +16176,7 @@ public unsafe partial struct VkPhysicalDeviceMeshShaderFeaturesNV : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16209,7 +16209,7 @@ public unsafe partial struct VkPhysicalDeviceMeshShaderPropertiesNV : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16236,7 +16236,7 @@ public unsafe partial struct VkPhysicalDeviceShaderImageFootprintFeaturesNV : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16258,7 +16258,7 @@ public unsafe partial struct VkPipelineViewportExclusiveScissorStateCreateInfoNV
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16279,7 +16279,7 @@ public unsafe partial struct VkPhysicalDeviceExclusiveScissorFeaturesNV : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16300,7 +16300,7 @@ public unsafe partial struct VkQueueFamilyCheckpointPropertiesNV : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16322,7 +16322,7 @@ public unsafe partial struct VkCheckpointDataNV : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16343,7 +16343,7 @@ public unsafe partial struct VkQueueFamilyCheckpointProperties2NV : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16365,7 +16365,7 @@ public unsafe partial struct VkCheckpointData2NV : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16386,7 +16386,7 @@ public unsafe partial struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTE
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16428,7 +16428,7 @@ public unsafe partial struct VkInitializePerformanceApiInfoINTEL : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16449,7 +16449,7 @@ public unsafe partial struct VkQueryPoolPerformanceQueryCreateInfoINTEL : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16470,7 +16470,7 @@ public unsafe partial struct VkPerformanceMarkerInfoINTEL : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16491,7 +16491,7 @@ public unsafe partial struct VkPerformanceStreamMarkerInfoINTEL : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16514,7 +16514,7 @@ public unsafe partial struct VkPerformanceOverrideInfoINTEL : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16535,7 +16535,7 @@ public unsafe partial struct VkPerformanceConfigurationAcquireInfoINTEL : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16559,7 +16559,7 @@ public unsafe partial struct VkPhysicalDevicePCIBusInfoPropertiesEXT : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16580,7 +16580,7 @@ public unsafe partial struct VkDisplayNativeHdrSurfaceCapabilitiesAMD : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16601,7 +16601,7 @@ public unsafe partial struct VkSwapchainDisplayNativeHdrCreateInfoAMD : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16624,7 +16624,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16647,7 +16647,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16668,7 +16668,7 @@ public unsafe partial struct VkRenderPassFragmentDensityMapCreateInfoEXT : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16690,7 +16690,7 @@ public unsafe partial struct VkRenderingFragmentDensityMapAttachmentInfoEXT : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16712,7 +16712,7 @@ public unsafe partial struct VkPhysicalDeviceShaderCoreProperties2AMD : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16733,7 +16733,7 @@ public unsafe partial struct VkPhysicalDeviceCoherentMemoryFeaturesAMD : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16755,7 +16755,7 @@ public unsafe partial struct VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16777,7 +16777,7 @@ public unsafe partial struct VkPhysicalDeviceMemoryBudgetPropertiesEXT : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16798,7 +16798,7 @@ public unsafe partial struct VkPhysicalDeviceMemoryPriorityFeaturesEXT : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16819,7 +16819,7 @@ public unsafe partial struct VkMemoryPriorityAllocateInfoEXT : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16840,7 +16840,7 @@ public unsafe partial struct VkPhysicalDeviceDedicatedAllocationImageAliasingFea
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16863,7 +16863,7 @@ public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16884,7 +16884,7 @@ public unsafe partial struct VkBufferDeviceAddressCreateInfoEXT : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16908,7 +16908,7 @@ public unsafe partial struct VkValidationFeaturesEXT : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16936,7 +16936,7 @@ public unsafe partial struct VkCooperativeMatrixPropertiesNV : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16958,7 +16958,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrixFeaturesNV : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -16979,7 +16979,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrixPropertiesNV : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17000,7 +17000,7 @@ public unsafe partial struct VkPhysicalDeviceCoverageReductionModeFeaturesNV : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17022,7 +17022,7 @@ public unsafe partial struct VkPipelineCoverageReductionStateCreateInfoNV : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17046,7 +17046,7 @@ public unsafe partial struct VkFramebufferMixedSamplesCombinationNV : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17069,7 +17069,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17090,7 +17090,7 @@ public unsafe partial struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17112,7 +17112,7 @@ public unsafe partial struct VkPhysicalDeviceProvokingVertexFeaturesEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17134,7 +17134,7 @@ public unsafe partial struct VkPhysicalDeviceProvokingVertexPropertiesEXT : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17155,7 +17155,7 @@ public unsafe partial struct VkPipelineRasterizationProvokingVertexStateCreateIn
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17176,7 +17176,7 @@ public unsafe partial struct VkHeadlessSurfaceCreateInfoEXT : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17208,7 +17208,7 @@ public unsafe partial struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17229,7 +17229,7 @@ public unsafe partial struct VkPhysicalDeviceExtendedDynamicStateFeaturesEXT : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17252,7 +17252,7 @@ public unsafe partial struct VkPhysicalDeviceMapMemoryPlacedFeaturesEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17273,7 +17273,7 @@ public unsafe partial struct VkPhysicalDeviceMapMemoryPlacedPropertiesEXT : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17294,7 +17294,7 @@ public unsafe partial struct VkMemoryMapPlacedInfoEXT : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17326,7 +17326,7 @@ public unsafe partial struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17355,7 +17355,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17376,7 +17376,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17400,7 +17400,7 @@ public unsafe partial struct VkGraphicsShaderGroupCreateInfoNV : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17424,7 +17424,7 @@ public unsafe partial struct VkGraphicsPipelineShaderGroupsCreateInfoNV : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17487,7 +17487,7 @@ public unsafe partial struct VkIndirectCommandsLayoutTokenNV : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17513,7 +17513,7 @@ public unsafe partial struct VkIndirectCommandsLayoutCreateInfoNV : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17546,7 +17546,7 @@ public unsafe partial struct VkGeneratedCommandsInfoNV : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17570,7 +17570,7 @@ public unsafe partial struct VkGeneratedCommandsMemoryRequirementsInfoNV : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17591,7 +17591,7 @@ public unsafe partial struct VkPhysicalDeviceInheritedViewportScissorFeaturesNV 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17614,7 +17614,7 @@ public unsafe partial struct VkCommandBufferInheritanceViewportScissorInfoNV : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17635,7 +17635,7 @@ public unsafe partial struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17656,7 +17656,7 @@ public unsafe partial struct VkRenderPassTransformBeginInfoQCOM : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17678,7 +17678,7 @@ public unsafe partial struct VkCommandBufferInheritanceRenderPassTransformInfoQC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17702,7 +17702,7 @@ public unsafe partial struct VkPhysicalDeviceDepthBiasControlFeaturesEXT : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17725,7 +17725,7 @@ public unsafe partial struct VkDepthBiasInfoEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17747,7 +17747,7 @@ public unsafe partial struct VkDepthBiasRepresentationInfoEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17768,7 +17768,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceMemoryReportFeaturesEXT : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17795,7 +17795,7 @@ public unsafe partial struct VkDeviceMemoryReportCallbackDataEXT : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17818,7 +17818,7 @@ public unsafe partial struct VkDeviceDeviceMemoryReportCreateInfoEXT : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17840,7 +17840,7 @@ public unsafe partial struct VkSamplerCustomBorderColorCreateInfoEXT : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17861,7 +17861,7 @@ public unsafe partial struct VkPhysicalDeviceCustomBorderColorPropertiesEXT : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17883,7 +17883,7 @@ public unsafe partial struct VkPhysicalDeviceCustomBorderColorFeaturesEXT : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17904,7 +17904,7 @@ public unsafe partial struct VkPhysicalDevicePresentBarrierFeaturesNV : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17925,7 +17925,7 @@ public unsafe partial struct VkSurfaceCapabilitiesPresentBarrierNV : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17946,7 +17946,7 @@ public unsafe partial struct VkSwapchainPresentBarrierCreateInfoNV : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17967,7 +17967,7 @@ public unsafe partial struct VkPhysicalDeviceDiagnosticsConfigFeaturesNV : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -17988,7 +17988,7 @@ public unsafe partial struct VkDeviceDiagnosticsConfigCreateInfoNV : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18022,7 +18022,7 @@ public unsafe partial struct VkPhysicalDeviceTileShadingFeaturesQCOM : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18046,7 +18046,7 @@ public unsafe partial struct VkPhysicalDeviceTileShadingPropertiesQCOM : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18068,7 +18068,7 @@ public unsafe partial struct VkRenderPassTileShadingCreateInfoQCOM : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18088,7 +18088,7 @@ public unsafe partial struct VkPerTileBeginInfoQCOM : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18108,7 +18108,7 @@ public unsafe partial struct VkPerTileEndInfoQCOM : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18128,7 +18128,7 @@ public unsafe partial struct VkDispatchTileInfoQCOM : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18149,7 +18149,7 @@ public unsafe partial struct VkQueryLowLatencySupportNV : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18202,7 +18202,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferPropertiesEXT : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18223,7 +18223,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferDensityMapPropertie
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18247,7 +18247,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferFeaturesEXT : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18270,7 +18270,7 @@ public unsafe partial struct VkDescriptorAddressInfoEXT : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18292,7 +18292,7 @@ public unsafe partial struct VkDescriptorBufferBindingInfoEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18313,7 +18313,7 @@ public unsafe partial struct VkDescriptorBufferBindingPushDescriptorBufferHandle
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18360,7 +18360,7 @@ public unsafe partial struct VkDescriptorGetInfoEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18381,7 +18381,7 @@ public unsafe partial struct VkBufferCaptureDescriptorDataInfoEXT : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18402,7 +18402,7 @@ public unsafe partial struct VkImageCaptureDescriptorDataInfoEXT : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18423,7 +18423,7 @@ public unsafe partial struct VkImageViewCaptureDescriptorDataInfoEXT : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18444,7 +18444,7 @@ public unsafe partial struct VkSamplerCaptureDescriptorDataInfoEXT : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18465,7 +18465,7 @@ public unsafe partial struct VkOpaqueCaptureDescriptorDataCreateInfoEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18487,7 +18487,7 @@ public unsafe partial struct VkAccelerationStructureCaptureDescriptorDataInfoEXT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18508,7 +18508,7 @@ public unsafe partial struct VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18530,7 +18530,7 @@ public unsafe partial struct VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEX
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18551,7 +18551,7 @@ public unsafe partial struct VkGraphicsPipelineLibraryCreateInfoEXT : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18572,7 +18572,7 @@ public unsafe partial struct VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeat
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18595,7 +18595,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18616,7 +18616,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShadingRateEnumsPropertiesN
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18645,7 +18645,7 @@ public unsafe partial struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18675,7 +18675,7 @@ public unsafe partial struct VkAccelerationStructureGeometryMotionTrianglesDataN
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18697,7 +18697,7 @@ public unsafe partial struct VkAccelerationStructureMotionInfoNV : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18757,7 +18757,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingMotionBlurFeaturesNV : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18778,7 +18778,7 @@ public unsafe partial struct VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18799,7 +18799,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMap2FeaturesEXT : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18823,7 +18823,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMap2PropertiesEXT : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18844,7 +18844,7 @@ public unsafe partial struct VkCopyCommandTransformInfoQCOM : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18865,7 +18865,7 @@ public unsafe partial struct VkPhysicalDeviceImageCompressionControlFeaturesEXT 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18888,7 +18888,7 @@ public unsafe partial struct VkImageCompressionControlEXT : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18910,7 +18910,7 @@ public unsafe partial struct VkImageCompressionPropertiesEXT : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18931,7 +18931,7 @@ public unsafe partial struct VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeature
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18953,7 +18953,7 @@ public unsafe partial struct VkPhysicalDevice4444FormatsFeaturesEXT : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18975,7 +18975,7 @@ public unsafe partial struct VkPhysicalDeviceFaultFeaturesEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -18998,7 +18998,7 @@ public unsafe partial struct VkDeviceFaultCountsEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19036,7 +19036,7 @@ public unsafe partial struct VkDeviceFaultInfoEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19074,7 +19074,7 @@ public unsafe partial struct VkPhysicalDeviceRasterizationOrderAttachmentAccessF
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19095,7 +19095,7 @@ public unsafe partial struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19116,7 +19116,7 @@ public unsafe partial struct VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19144,7 +19144,7 @@ public unsafe partial struct VkMutableDescriptorTypeCreateInfoEXT : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19165,7 +19165,7 @@ public unsafe partial struct VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19189,7 +19189,7 @@ public unsafe partial struct VkVertexInputBindingDescription2EXT : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19213,7 +19213,7 @@ public unsafe partial struct VkVertexInputAttributeDescription2EXT : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19239,7 +19239,7 @@ public unsafe partial struct VkPhysicalDeviceDrmPropertiesEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19260,7 +19260,7 @@ public unsafe partial struct VkPhysicalDeviceAddressBindingReportFeaturesEXT : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19284,7 +19284,7 @@ public unsafe partial struct VkDeviceAddressBindingCallbackDataEXT : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19305,7 +19305,7 @@ public unsafe partial struct VkPhysicalDeviceDepthClipControlFeaturesEXT : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19326,7 +19326,7 @@ public unsafe partial struct VkPipelineViewportDepthClipControlCreateInfoEXT : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19348,7 +19348,7 @@ public unsafe partial struct VkPhysicalDevicePrimitiveTopologyListRestartFeature
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19370,7 +19370,7 @@ public unsafe partial struct VkSubpassShadingPipelineCreateInfoHUAWEI : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19391,7 +19391,7 @@ public unsafe partial struct VkPhysicalDeviceSubpassShadingFeaturesHUAWEI : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19412,7 +19412,7 @@ public unsafe partial struct VkPhysicalDeviceSubpassShadingPropertiesHUAWEI : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19433,7 +19433,7 @@ public unsafe partial struct VkPhysicalDeviceInvocationMaskFeaturesHUAWEI : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19455,7 +19455,7 @@ public unsafe partial struct VkMemoryGetRemoteAddressInfoNV : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19476,7 +19476,7 @@ public unsafe partial struct VkPhysicalDeviceExternalMemoryRDMAFeaturesNV : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19497,7 +19497,7 @@ public unsafe partial struct VkPipelinePropertiesIdentifierEXT : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19518,7 +19518,7 @@ public unsafe partial struct VkPhysicalDevicePipelinePropertiesFeaturesEXT : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19539,7 +19539,7 @@ public unsafe partial struct VkPhysicalDeviceFrameBoundaryFeaturesEXT : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19568,7 +19568,7 @@ public unsafe partial struct VkFrameBoundaryEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19589,7 +19589,7 @@ public unsafe partial struct VkPhysicalDeviceMultisampledRenderToSingleSampledFe
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19610,7 +19610,7 @@ public unsafe partial struct VkSubpassResolvePerformanceQueryEXT : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19632,7 +19632,7 @@ public unsafe partial struct VkMultisampledRenderToSingleSampledInfoEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19655,7 +19655,7 @@ public unsafe partial struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19676,7 +19676,7 @@ public unsafe partial struct VkPhysicalDeviceColorWriteEnableFeaturesEXT : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19698,7 +19698,7 @@ public unsafe partial struct VkPipelineColorWriteCreateInfoEXT : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19721,7 +19721,7 @@ public unsafe partial struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19742,7 +19742,7 @@ public unsafe partial struct VkPhysicalDeviceImageViewMinLodFeaturesEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19763,7 +19763,7 @@ public unsafe partial struct VkImageViewMinLodCreateInfoEXT : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19784,7 +19784,7 @@ public unsafe partial struct VkPhysicalDeviceMultiDrawFeaturesEXT : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19805,7 +19805,7 @@ public unsafe partial struct VkPhysicalDeviceMultiDrawPropertiesEXT : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19840,7 +19840,7 @@ public unsafe partial struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19863,7 +19863,7 @@ public unsafe partial struct VkPhysicalDeviceShaderTileImageFeaturesEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19886,7 +19886,7 @@ public unsafe partial struct VkPhysicalDeviceShaderTileImagePropertiesEXT : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19933,7 +19933,7 @@ public unsafe partial struct VkMicromapBuildInfoEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19959,7 +19959,7 @@ public unsafe partial struct VkMicromapCreateInfoEXT : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -19982,7 +19982,7 @@ public unsafe partial struct VkPhysicalDeviceOpacityMicromapFeaturesEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20004,7 +20004,7 @@ public unsafe partial struct VkPhysicalDeviceOpacityMicromapPropertiesEXT : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20025,7 +20025,7 @@ public unsafe partial struct VkMicromapVersionInfoEXT : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20048,7 +20048,7 @@ public unsafe partial struct VkCopyMicromapToMemoryInfoEXT : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20071,7 +20071,7 @@ public unsafe partial struct VkCopyMemoryToMicromapInfoEXT : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20094,7 +20094,7 @@ public unsafe partial struct VkCopyMicromapInfoEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20117,7 +20117,7 @@ public unsafe partial struct VkMicromapBuildSizesInfoEXT : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20145,7 +20145,7 @@ public unsafe partial struct VkAccelerationStructureTrianglesOpacityMicromapEXT 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20174,7 +20174,7 @@ public unsafe partial struct VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20198,7 +20198,7 @@ public unsafe partial struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWE
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20219,7 +20219,7 @@ public unsafe partial struct VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAW
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20241,7 +20241,7 @@ public unsafe partial struct VkPhysicalDeviceBorderColorSwizzleFeaturesEXT : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20263,7 +20263,7 @@ public unsafe partial struct VkSamplerBorderColorComponentMappingCreateInfoEXT :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20284,7 +20284,7 @@ public unsafe partial struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEX
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20307,7 +20307,7 @@ public unsafe partial struct VkPhysicalDeviceShaderCorePropertiesARM : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20328,7 +20328,7 @@ public unsafe partial struct VkDeviceQueueShaderCoreControlCreateInfoARM : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20349,7 +20349,7 @@ public unsafe partial struct VkPhysicalDeviceSchedulingControlsFeaturesARM : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20370,7 +20370,7 @@ public unsafe partial struct VkPhysicalDeviceSchedulingControlsPropertiesARM : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20391,7 +20391,7 @@ public unsafe partial struct VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20413,7 +20413,7 @@ public unsafe partial struct VkImageViewSlicedCreateInfoEXT : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20434,7 +20434,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorSetHostMappingFeaturesVAL
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20456,7 +20456,7 @@ public unsafe partial struct VkDescriptorSetBindingReferenceVALVE : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20478,7 +20478,7 @@ public unsafe partial struct VkDescriptorSetLayoutHostMappingInfoVALVE : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20499,7 +20499,7 @@ public unsafe partial struct VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20520,7 +20520,7 @@ public unsafe partial struct VkPhysicalDeviceRenderPassStripedFeaturesARM : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20542,7 +20542,7 @@ public unsafe partial struct VkPhysicalDeviceRenderPassStripedPropertiesARM : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20563,7 +20563,7 @@ public unsafe partial struct VkRenderPassStripeInfoARM : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20585,7 +20585,7 @@ public unsafe partial struct VkRenderPassStripeBeginInfoARM : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20607,7 +20607,7 @@ public unsafe partial struct VkRenderPassStripeSubmitInfoARM : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20628,7 +20628,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20649,7 +20649,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesE
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20671,7 +20671,7 @@ public unsafe partial struct VkRenderPassFragmentDensityMapOffsetEndInfoEXT : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20709,7 +20709,7 @@ public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectFeaturesNV : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20730,7 +20730,7 @@ public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectPropertiesNV : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20760,7 +20760,7 @@ public unsafe partial struct VkPhysicalDeviceMemoryDecompressionFeaturesNV : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20782,7 +20782,7 @@ public unsafe partial struct VkPhysicalDeviceMemoryDecompressionPropertiesNV : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20805,7 +20805,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsComputeFeatu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20828,7 +20828,7 @@ public unsafe partial struct VkComputePipelineIndirectBufferInfoNV : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20850,7 +20850,7 @@ public unsafe partial struct VkPipelineIndirectDeviceAddressInfoNV : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20877,7 +20877,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingLinearSweptSpheresFeature
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20908,7 +20908,7 @@ public unsafe partial struct VkAccelerationStructureGeometryLinearSweptSpheresDa
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20937,7 +20937,7 @@ public unsafe partial struct VkAccelerationStructureGeometrySpheresDataNV : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20958,7 +20958,7 @@ public unsafe partial struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -20979,7 +20979,7 @@ public unsafe partial struct VkPhysicalDeviceImageCompressionControlSwapchainFea
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21002,7 +21002,7 @@ public unsafe partial struct VkImageViewSampleWeightCreateInfoQCOM : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21025,7 +21025,7 @@ public unsafe partial struct VkPhysicalDeviceImageProcessingFeaturesQCOM : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21049,7 +21049,7 @@ public unsafe partial struct VkPhysicalDeviceImageProcessingPropertiesQCOM : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21072,7 +21072,7 @@ public unsafe partial struct VkPhysicalDeviceNestedCommandBufferFeaturesEXT : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21093,7 +21093,7 @@ public unsafe partial struct VkPhysicalDeviceNestedCommandBufferPropertiesEXT : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21114,7 +21114,7 @@ public unsafe partial struct VkExternalMemoryAcquireUnmodifiedEXT : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21165,7 +21165,7 @@ public unsafe partial struct VkPhysicalDeviceExtendedDynamicState3FeaturesEXT : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21186,7 +21186,7 @@ public unsafe partial struct VkPhysicalDeviceExtendedDynamicState3PropertiesEXT 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21226,7 +21226,7 @@ public unsafe partial struct VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21247,7 +21247,7 @@ public unsafe partial struct VkRenderPassCreationControlEXT : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21273,7 +21273,7 @@ public unsafe partial struct VkRenderPassCreationFeedbackCreateInfoEXT : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21301,7 +21301,7 @@ public unsafe partial struct VkRenderPassSubpassFeedbackCreateInfoEXT : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21323,7 +21323,7 @@ public unsafe partial struct VkDirectDriverLoadingInfoLUNARG : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21346,7 +21346,7 @@ public unsafe partial struct VkDirectDriverLoadingListLUNARG : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21372,7 +21372,7 @@ public unsafe partial struct VkTensorDescriptionARM : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21397,7 +21397,7 @@ public unsafe partial struct VkTensorCreateInfoARM : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21420,7 +21420,7 @@ public unsafe partial struct VkTensorViewCreateInfoARM : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21441,7 +21441,7 @@ public unsafe partial struct VkTensorMemoryRequirementsInfoARM : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21464,7 +21464,7 @@ public unsafe partial struct VkBindTensorMemoryInfoARM : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21486,7 +21486,7 @@ public unsafe partial struct VkWriteDescriptorSetTensorARM : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21508,7 +21508,7 @@ public unsafe partial struct VkTensorFormatPropertiesARM : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21541,7 +21541,7 @@ public unsafe partial struct VkPhysicalDeviceTensorPropertiesARM : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21568,7 +21568,7 @@ public unsafe partial struct VkTensorMemoryBarrierARM : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21590,7 +21590,7 @@ public unsafe partial struct VkTensorDependencyInfoARM : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21616,7 +21616,7 @@ public unsafe partial struct VkPhysicalDeviceTensorFeaturesARM : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21637,7 +21637,7 @@ public unsafe partial struct VkDeviceTensorMemoryRequirementsARM : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21661,7 +21661,7 @@ public unsafe partial struct VkTensorCopyARM : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21685,7 +21685,7 @@ public unsafe partial struct VkCopyTensorInfoARM : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21706,7 +21706,7 @@ public unsafe partial struct VkMemoryDedicatedAllocateInfoTensorARM : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21729,7 +21729,7 @@ public unsafe partial struct VkPhysicalDeviceExternalTensorInfoARM : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21750,7 +21750,7 @@ public unsafe partial struct VkExternalTensorPropertiesARM : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21771,7 +21771,7 @@ public unsafe partial struct VkExternalMemoryTensorCreateInfoARM : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21792,7 +21792,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferTensorFeaturesARM :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21815,7 +21815,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferTensorPropertiesARM
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21836,7 +21836,7 @@ public unsafe partial struct VkDescriptorGetTensorInfoARM : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21857,7 +21857,7 @@ public unsafe partial struct VkTensorCaptureDescriptorDataInfoARM : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21878,7 +21878,7 @@ public unsafe partial struct VkTensorViewCaptureDescriptorDataInfoARM : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21900,7 +21900,7 @@ public unsafe partial struct VkFrameBoundaryTensorsARM : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21921,7 +21921,7 @@ public unsafe partial struct VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21942,7 +21942,7 @@ public unsafe partial struct VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21964,7 +21964,7 @@ public unsafe partial struct VkPipelineShaderStageModuleIdentifierCreateInfoEXT 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -21986,7 +21986,7 @@ public unsafe partial struct VkShaderModuleIdentifierEXT : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22007,7 +22007,7 @@ public unsafe partial struct VkPhysicalDeviceOpticalFlowFeaturesNV : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22038,7 +22038,7 @@ public unsafe partial struct VkPhysicalDeviceOpticalFlowPropertiesNV : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22059,7 +22059,7 @@ public unsafe partial struct VkOpticalFlowImageFormatInfoNV : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22080,7 +22080,7 @@ public unsafe partial struct VkOpticalFlowImageFormatPropertiesNV : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22109,7 +22109,7 @@ public unsafe partial struct VkOpticalFlowSessionCreateInfoNV : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22132,7 +22132,7 @@ public unsafe partial struct VkOpticalFlowSessionCreatePrivateDataInfoNV : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22155,7 +22155,7 @@ public unsafe partial struct VkOpticalFlowExecuteInfoNV : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22176,7 +22176,7 @@ public unsafe partial struct VkPhysicalDeviceLegacyDitheringFeaturesEXT : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22197,7 +22197,7 @@ public unsafe partial struct VkPhysicalDeviceAntiLagFeaturesAMD : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22219,7 +22219,7 @@ public unsafe partial struct VkAntiLagPresentationInfoAMD : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22242,7 +22242,7 @@ public unsafe partial struct VkAntiLagDataAMD : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22263,7 +22263,7 @@ public unsafe partial struct VkPhysicalDeviceShaderObjectFeaturesEXT : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22285,7 +22285,7 @@ public unsafe partial struct VkPhysicalDeviceShaderObjectPropertiesEXT : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22317,7 +22317,7 @@ public unsafe partial struct VkShaderCreateInfoEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22344,7 +22344,7 @@ public unsafe partial struct VkPhysicalDeviceTilePropertiesFeaturesQCOM : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22367,7 +22367,7 @@ public unsafe partial struct VkTilePropertiesQCOM : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22388,7 +22388,7 @@ public unsafe partial struct VkPhysicalDeviceAmigoProfilingFeaturesSEC : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22410,7 +22410,7 @@ public unsafe partial struct VkAmigoProfilingSubmitInfoSEC : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22431,7 +22431,7 @@ public unsafe partial struct VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22452,7 +22452,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderProperti
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22473,7 +22473,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderFeatures
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22497,7 +22497,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeVectorPropertiesNV : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22519,7 +22519,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeVectorFeaturesNV : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22545,7 +22545,7 @@ public unsafe partial struct VkCooperativeVectorPropertiesNV : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22577,7 +22577,7 @@ public unsafe partial struct VkConvertCooperativeVectorMatrixInfoNV : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22598,7 +22598,7 @@ public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesN
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22621,7 +22621,7 @@ public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpacePropertie
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22642,7 +22642,7 @@ public unsafe partial struct VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22663,7 +22663,7 @@ public unsafe partial struct VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22694,7 +22694,7 @@ public unsafe partial struct VkLayerSettingsCreateInfoEXT : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22715,7 +22715,7 @@ public unsafe partial struct VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22738,7 +22738,7 @@ public unsafe partial struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22759,7 +22759,7 @@ public unsafe partial struct VkPhysicalDevicePipelineLibraryGroupHandlesFeatures
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22780,7 +22780,7 @@ public unsafe partial struct VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFe
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22803,7 +22803,7 @@ public unsafe partial struct VkLatencySleepModeInfoNV : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22825,7 +22825,7 @@ public unsafe partial struct VkLatencySleepInfoNV : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22847,7 +22847,7 @@ public unsafe partial struct VkSetLatencyMarkerInfoNV : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22881,7 +22881,7 @@ public unsafe partial struct VkLatencyTimingsFrameReportNV : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22903,7 +22903,7 @@ public unsafe partial struct VkGetLatencyMarkerInfoNV : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22924,7 +22924,7 @@ public unsafe partial struct VkLatencySubmissionPresentIdNV : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22945,7 +22945,7 @@ public unsafe partial struct VkSwapchainLatencyCreateInfoNV : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22966,7 +22966,7 @@ public unsafe partial struct VkOutOfBandQueueTypeInfoNV : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -22988,7 +22988,7 @@ public unsafe partial struct VkLatencySurfaceCapabilitiesNV : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23013,7 +23013,7 @@ public unsafe partial struct VkPhysicalDeviceDataGraphFeaturesARM : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23035,7 +23035,7 @@ public unsafe partial struct VkDataGraphPipelineConstantARM : IStructureType, IC
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23058,7 +23058,7 @@ public unsafe partial struct VkDataGraphPipelineResourceInfoARM : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23079,7 +23079,7 @@ public unsafe partial struct VkDataGraphPipelineCompilerControlCreateInfoARM : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23103,7 +23103,7 @@ public unsafe partial struct VkDataGraphPipelineCreateInfoARM : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23128,7 +23128,7 @@ public unsafe partial struct VkDataGraphPipelineShaderModuleCreateInfoARM : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23150,7 +23150,7 @@ public unsafe partial struct VkDataGraphPipelineSessionCreateInfoARM : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23171,7 +23171,7 @@ public unsafe partial struct VkDataGraphPipelineSessionBindPointRequirementsInfo
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23194,7 +23194,7 @@ public unsafe partial struct VkDataGraphPipelineSessionBindPointRequirementARM :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23217,7 +23217,7 @@ public unsafe partial struct VkDataGraphPipelineSessionMemoryRequirementsInfoARM
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23242,7 +23242,7 @@ public unsafe partial struct VkBindDataGraphPipelineSessionMemoryInfoARM : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23263,7 +23263,7 @@ public unsafe partial struct VkDataGraphPipelineInfoARM : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23287,7 +23287,7 @@ public unsafe partial struct VkDataGraphPipelinePropertyQueryResultARM : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23309,7 +23309,7 @@ public unsafe partial struct VkDataGraphPipelineIdentifierCreateInfoARM : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23330,7 +23330,7 @@ public unsafe partial struct VkDataGraphPipelineDispatchInfoARM : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23365,7 +23365,7 @@ public unsafe partial struct VkQueueFamilyDataGraphPropertiesARM : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23387,7 +23387,7 @@ public unsafe partial struct VkDataGraphProcessingEngineCreateInfoARM : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23409,7 +23409,7 @@ public unsafe partial struct VkPhysicalDeviceQueueFamilyDataGraphProcessingEngin
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23431,7 +23431,7 @@ public unsafe partial struct VkQueueFamilyDataGraphProcessingEnginePropertiesARM
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23454,7 +23454,7 @@ public unsafe partial struct VkDataGraphPipelineConstantTensorSemiStructuredSpar
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23475,7 +23475,7 @@ public unsafe partial struct VkPhysicalDeviceMultiviewPerViewRenderAreasFeatures
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23497,7 +23497,7 @@ public unsafe partial struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCO
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23519,7 +23519,7 @@ public unsafe partial struct VkPhysicalDevicePerStageDescriptorSetFeaturesNV : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23540,7 +23540,7 @@ public unsafe partial struct VkPhysicalDeviceImageProcessing2FeaturesQCOM : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23561,7 +23561,7 @@ public unsafe partial struct VkPhysicalDeviceImageProcessing2PropertiesQCOM : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23583,7 +23583,7 @@ public unsafe partial struct VkSamplerBlockMatchWindowCreateInfoQCOM : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23604,7 +23604,7 @@ public unsafe partial struct VkPhysicalDeviceCubicWeightsFeaturesQCOM : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23625,7 +23625,7 @@ public unsafe partial struct VkSamplerCubicWeightsCreateInfoQCOM : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23646,7 +23646,7 @@ public unsafe partial struct VkBlitImageCubicWeightsInfoQCOM : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23667,7 +23667,7 @@ public unsafe partial struct VkPhysicalDeviceYcbcrDegammaFeaturesQCOM : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23689,7 +23689,7 @@ public unsafe partial struct VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23710,7 +23710,7 @@ public unsafe partial struct VkPhysicalDeviceCubicClampFeaturesQCOM : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23731,7 +23731,7 @@ public unsafe partial struct VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateF
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23752,7 +23752,7 @@ public unsafe partial struct VkPhysicalDeviceLayeredDriverPropertiesMSFT : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23773,7 +23773,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorPoolOverallocationFeature
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23794,7 +23794,7 @@ public unsafe partial struct VkPhysicalDeviceTileMemoryHeapFeaturesQCOM : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23816,7 +23816,7 @@ public unsafe partial struct VkPhysicalDeviceTileMemoryHeapPropertiesQCOM : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23838,7 +23838,7 @@ public unsafe partial struct VkTileMemoryRequirementsQCOM : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23859,7 +23859,7 @@ public unsafe partial struct VkTileMemoryBindInfoQCOM : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23880,7 +23880,7 @@ public unsafe partial struct VkTileMemorySizeInfoQCOM : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23901,7 +23901,7 @@ public unsafe partial struct VkDisplaySurfaceStereoCreateInfoNV : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23922,7 +23922,7 @@ public unsafe partial struct VkDisplayModeStereoPropertiesNV : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23943,7 +23943,7 @@ public unsafe partial struct VkPhysicalDeviceRawAccessChainsFeaturesNV : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23964,7 +23964,7 @@ public unsafe partial struct VkExternalComputeQueueDeviceCreateInfoNV : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -23985,7 +23985,7 @@ public unsafe partial struct VkExternalComputeQueueCreateInfoNV : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24006,7 +24006,7 @@ public unsafe partial struct VkExternalComputeQueueDataParamsNV : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24028,7 +24028,7 @@ public unsafe partial struct VkPhysicalDeviceExternalComputeQueuePropertiesNV : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24049,7 +24049,7 @@ public unsafe partial struct VkPhysicalDeviceCommandBufferInheritanceFeaturesNV 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24070,7 +24070,7 @@ public unsafe partial struct VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24091,7 +24091,7 @@ public unsafe partial struct VkPhysicalDeviceShaderReplicatedCompositesFeaturesE
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24113,7 +24113,7 @@ public unsafe partial struct VkPhysicalDeviceShaderFloat8FeaturesEXT : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24134,7 +24134,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingValidationFeaturesNV : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24155,7 +24155,7 @@ public unsafe partial struct VkPhysicalDeviceClusterAccelerationStructureFeature
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24183,7 +24183,7 @@ public unsafe partial struct VkPhysicalDeviceClusterAccelerationStructurePropert
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24205,7 +24205,7 @@ public unsafe partial struct VkClusterAccelerationStructureClustersBottomLevelIn
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24233,7 +24233,7 @@ public unsafe partial struct VkClusterAccelerationStructureTriangleClusterInputN
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24256,7 +24256,7 @@ public unsafe partial struct VkClusterAccelerationStructureMoveObjectsInputNV : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24292,7 +24292,7 @@ public unsafe partial struct VkClusterAccelerationStructureInputInfoNV : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24327,7 +24327,7 @@ public unsafe partial struct VkClusterAccelerationStructureCommandsInfoNV : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24432,7 +24432,7 @@ public unsafe partial struct VkAccelerationStructureBuildSizesInfoKHR : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24453,7 +24453,7 @@ public unsafe partial struct VkRayTracingPipelineClusterAccelerationStructureCre
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24474,7 +24474,7 @@ public unsafe partial struct VkPhysicalDevicePartitionedAccelerationStructureFea
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24495,7 +24495,7 @@ public unsafe partial struct VkPhysicalDevicePartitionedAccelerationStructurePro
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24516,7 +24516,7 @@ public unsafe partial struct VkPartitionedAccelerationStructureFlagsNV : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24571,7 +24571,7 @@ public unsafe partial struct VkWriteDescriptorSetPartitionedAccelerationStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24596,7 +24596,7 @@ public unsafe partial struct VkPartitionedAccelerationStructureInstancesInputNV 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24622,7 +24622,7 @@ public unsafe partial struct VkBuildPartitionedAccelerationStructureInfoNV : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24644,7 +24644,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24676,7 +24676,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEX
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24700,7 +24700,7 @@ public unsafe partial struct VkGeneratedCommandsMemoryRequirementsInfoEXT : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24722,7 +24722,7 @@ public unsafe partial struct VkIndirectExecutionSetPipelineInfoEXT : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24744,7 +24744,7 @@ public unsafe partial struct VkIndirectExecutionSetShaderLayoutInfoEXT : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24770,7 +24770,7 @@ public unsafe partial struct VkIndirectExecutionSetShaderInfoEXT : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24801,7 +24801,7 @@ public unsafe partial struct VkIndirectExecutionSetCreateInfoEXT : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24831,7 +24831,7 @@ public unsafe partial struct VkGeneratedCommandsInfoEXT : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24853,7 +24853,7 @@ public unsafe partial struct VkWriteIndirectExecutionSetPipelineEXT : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24910,7 +24910,7 @@ public unsafe partial struct VkIndirectCommandsLayoutTokenEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24936,7 +24936,7 @@ public unsafe partial struct VkIndirectCommandsLayoutCreateInfoEXT : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -24978,7 +24978,7 @@ public unsafe partial struct VkGeneratedCommandsPipelineInfoEXT : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25000,7 +25000,7 @@ public unsafe partial struct VkGeneratedCommandsShaderInfoEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25022,7 +25022,7 @@ public unsafe partial struct VkWriteIndirectExecutionSetShaderEXT : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25043,7 +25043,7 @@ public unsafe partial struct VkPhysicalDeviceImageAlignmentControlFeaturesMESA :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25064,7 +25064,7 @@ public unsafe partial struct VkPhysicalDeviceImageAlignmentControlPropertiesMESA
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25085,7 +25085,7 @@ public unsafe partial struct VkImageAlignmentControlCreateInfoMESA : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25106,7 +25106,7 @@ public unsafe partial struct VkPhysicalDeviceDepthClampControlFeaturesEXT : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25128,7 +25128,7 @@ public unsafe partial struct VkPipelineViewportDepthClampControlCreateInfoEXT : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25149,7 +25149,7 @@ public unsafe partial struct VkPhysicalDeviceHdrVividFeaturesHUAWEI : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25171,7 +25171,7 @@ public unsafe partial struct VkHdrVividDynamicMetadataHUAWEI : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25201,7 +25201,7 @@ public unsafe partial struct VkCooperativeMatrixFlexibleDimensionsPropertiesNV :
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25228,7 +25228,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrix2FeaturesNV : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25251,7 +25251,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrix2PropertiesNV : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25272,7 +25272,7 @@ public unsafe partial struct VkPhysicalDevicePipelineOpacityMicromapFeaturesARM 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25293,7 +25293,7 @@ public unsafe partial struct VkPhysicalDeviceVertexAttributeRobustnessFeaturesEX
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25314,7 +25314,7 @@ public unsafe partial struct VkPhysicalDeviceFormatPackFeaturesARM : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25335,7 +25335,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVA
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25356,7 +25356,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapLayeredProperties
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25377,7 +25377,7 @@ public unsafe partial struct VkPipelineFragmentDensityMapLayeredCreateInfoVALVE 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25399,7 +25399,7 @@ public unsafe partial struct VkSetPresentConfigNV : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25420,7 +25420,7 @@ public unsafe partial struct VkPhysicalDevicePresentMeteringFeaturesNV : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25440,7 +25440,7 @@ public unsafe partial struct VkRenderingEndInfoEXT : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25461,7 +25461,7 @@ public unsafe partial struct VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesE
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25482,7 +25482,7 @@ public unsafe partial struct VkPhysicalDevicePipelineCacheIncrementalModeFeature
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25517,7 +25517,7 @@ public unsafe partial struct VkAccelerationStructureGeometryTrianglesDataKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25539,7 +25539,7 @@ public unsafe partial struct VkAccelerationStructureGeometryAabbsDataKHR : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25561,7 +25561,7 @@ public unsafe partial struct VkAccelerationStructureGeometryInstancesDataKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25595,7 +25595,7 @@ public unsafe partial struct VkAccelerationStructureGeometryKHR : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25624,7 +25624,7 @@ public unsafe partial struct VkAccelerationStructureBuildGeometryInfoKHR : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25650,7 +25650,7 @@ public unsafe partial struct VkAccelerationStructureCreateInfoKHR : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25672,7 +25672,7 @@ public unsafe partial struct VkWriteDescriptorSetAccelerationStructureKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25697,7 +25697,7 @@ public unsafe partial struct VkPhysicalDeviceAccelerationStructureFeaturesKHR : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25725,7 +25725,7 @@ public unsafe partial struct VkPhysicalDeviceAccelerationStructurePropertiesKHR 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25746,7 +25746,7 @@ public unsafe partial struct VkAccelerationStructureDeviceAddressInfoKHR : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25767,7 +25767,7 @@ public unsafe partial struct VkAccelerationStructureVersionInfoKHR : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25790,7 +25790,7 @@ public unsafe partial struct VkCopyAccelerationStructureToMemoryInfoKHR : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25813,7 +25813,7 @@ public unsafe partial struct VkCopyMemoryToAccelerationStructureInfoKHR : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25836,7 +25836,7 @@ public unsafe partial struct VkCopyAccelerationStructureInfoKHR : IStructureType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25862,7 +25862,7 @@ public unsafe partial struct VkRayTracingShaderGroupCreateInfoKHR : IStructureTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25884,7 +25884,7 @@ public unsafe partial struct VkRayTracingPipelineInterfaceCreateInfoKHR : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25916,7 +25916,7 @@ public unsafe partial struct VkRayTracingPipelineCreateInfoKHR : IStructureType,
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25941,7 +25941,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR : ISt
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25969,7 +25969,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingPipelinePropertiesKHR : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -25997,7 +25997,7 @@ public unsafe partial struct VkPhysicalDeviceRayQueryFeaturesKHR : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26022,7 +26022,7 @@ public unsafe partial struct VkPhysicalDeviceMeshShaderFeaturesEXT : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26070,7 +26070,7 @@ public unsafe partial struct VkPhysicalDeviceMeshShaderPropertiesEXT : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26099,7 +26099,7 @@ public unsafe partial struct VkAndroidSurfaceCreateInfoKHR : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26120,7 +26120,7 @@ public unsafe partial struct VkAndroidHardwareBufferUsageANDROID : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26142,7 +26142,7 @@ public unsafe partial struct VkAndroidHardwareBufferPropertiesANDROID : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26170,7 +26170,7 @@ public unsafe partial struct VkAndroidHardwareBufferFormatPropertiesANDROID : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26191,7 +26191,7 @@ public unsafe partial struct VkImportAndroidHardwareBufferInfoANDROID : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26212,7 +26212,7 @@ public unsafe partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26233,7 +26233,7 @@ public unsafe partial struct VkExternalFormatANDROID : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26261,7 +26261,7 @@ public unsafe partial struct VkAndroidHardwareBufferFormatProperties2ANDROID : I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26282,7 +26282,7 @@ public unsafe partial struct VkPhysicalDeviceExternalFormatResolveFeaturesANDROI
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26305,7 +26305,7 @@ public unsafe partial struct VkPhysicalDeviceExternalFormatResolvePropertiesANDR
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26326,7 +26326,7 @@ public unsafe partial struct VkAndroidHardwareBufferFormatResolvePropertiesANDRO
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26348,7 +26348,7 @@ public unsafe partial struct VkMetalSurfaceCreateInfoEXT : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26369,7 +26369,7 @@ public unsafe partial struct VkExportMetalObjectCreateInfoEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26389,7 +26389,7 @@ public unsafe partial struct VkExportMetalObjectsInfoEXT : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26410,7 +26410,7 @@ public unsafe partial struct VkExportMetalDeviceInfoEXT : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26432,7 +26432,7 @@ public unsafe partial struct VkExportMetalCommandQueueInfoEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26454,7 +26454,7 @@ public unsafe partial struct VkExportMetalBufferInfoEXT : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26475,7 +26475,7 @@ public unsafe partial struct VkImportMetalBufferInfoEXT : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26500,7 +26500,7 @@ public unsafe partial struct VkExportMetalTextureInfoEXT : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26522,7 +26522,7 @@ public unsafe partial struct VkImportMetalTextureInfoEXT : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26544,7 +26544,7 @@ public unsafe partial struct VkExportMetalIOSurfaceInfoEXT : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26565,7 +26565,7 @@ public unsafe partial struct VkImportMetalIOSurfaceInfoEXT : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26588,7 +26588,7 @@ public unsafe partial struct VkExportMetalSharedEventInfoEXT : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26609,7 +26609,7 @@ public unsafe partial struct VkImportMetalSharedEventInfoEXT : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26631,7 +26631,7 @@ public unsafe partial struct VkImportMemoryMetalHandleInfoEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26652,7 +26652,7 @@ public unsafe partial struct VkMemoryMetalHandlePropertiesEXT : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26674,7 +26674,7 @@ public unsafe partial struct VkMemoryGetMetalHandleInfoEXT : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26696,7 +26696,7 @@ public unsafe partial struct VkViSurfaceCreateInfoNN : IStructureType, IChainTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26719,7 +26719,7 @@ public unsafe partial struct VkWaylandSurfaceCreateInfoKHR : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26742,7 +26742,7 @@ public unsafe partial struct VkWin32SurfaceCreateInfoKHR : IStructureType, IChai
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26765,7 +26765,7 @@ public unsafe partial struct VkImportMemoryWin32HandleInfoKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26788,7 +26788,7 @@ public unsafe partial struct VkExportMemoryWin32HandleInfoKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26809,7 +26809,7 @@ public unsafe partial struct VkMemoryWin32HandlePropertiesKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26831,7 +26831,7 @@ public unsafe partial struct VkMemoryGetWin32HandleInfoKHR : IStructureType, ICh
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26858,7 +26858,7 @@ public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoKHR : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26883,7 +26883,7 @@ public unsafe partial struct VkImportSemaphoreWin32HandleInfoKHR : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26906,7 +26906,7 @@ public unsafe partial struct VkExportSemaphoreWin32HandleInfoKHR : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26930,7 +26930,7 @@ public unsafe partial struct VkD3D12FenceSubmitInfoKHR : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26952,7 +26952,7 @@ public unsafe partial struct VkSemaphoreGetWin32HandleInfoKHR : IStructureType, 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -26977,7 +26977,7 @@ public unsafe partial struct VkImportFenceWin32HandleInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27000,7 +27000,7 @@ public unsafe partial struct VkExportFenceWin32HandleInfoKHR : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27022,7 +27022,7 @@ public unsafe partial struct VkFenceGetWin32HandleInfoKHR : IStructureType, ICha
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27044,7 +27044,7 @@ public unsafe partial struct VkImportMemoryWin32HandleInfoNV : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27066,7 +27066,7 @@ public unsafe partial struct VkExportMemoryWin32HandleInfoNV : IStructureType, I
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27093,7 +27093,7 @@ public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoNV : IStructureT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27114,7 +27114,7 @@ public unsafe partial struct VkSurfaceFullScreenExclusiveInfoEXT : IStructureTyp
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27135,7 +27135,7 @@ public unsafe partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27156,7 +27156,7 @@ public unsafe partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT : IStructu
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27179,7 +27179,7 @@ public unsafe partial struct VkXcbSurfaceCreateInfoKHR : IStructureType, IChainT
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27202,7 +27202,7 @@ public unsafe partial struct VkXlibSurfaceCreateInfoKHR : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27237,7 +27237,7 @@ public unsafe partial struct VkPhysicalDevicePortabilitySubsetFeaturesKHR : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27258,7 +27258,7 @@ public unsafe partial struct VkPhysicalDevicePortabilitySubsetPropertiesKHR : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27280,7 +27280,7 @@ public unsafe partial struct VkPhysicalDeviceShaderEnqueueFeaturesAMDX : IStruct
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27307,7 +27307,7 @@ public unsafe partial struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX : IStru
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27330,7 +27330,7 @@ public unsafe partial struct VkExecutionGraphPipelineScratchSizeAMDX : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27357,7 +27357,7 @@ public unsafe partial struct VkExecutionGraphPipelineCreateInfoAMDX : IStructure
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27403,7 +27403,7 @@ public unsafe partial struct VkPipelineShaderStageNodeCreateInfoAMDX : IStructur
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27425,7 +27425,7 @@ public unsafe partial struct VkCudaModuleCreateInfoNV : IStructureType, IChainTy
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27447,7 +27447,7 @@ public unsafe partial struct VkCudaFunctionCreateInfoNV : IStructureType, IChain
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27479,7 +27479,7 @@ public unsafe partial struct VkCudaLaunchInfoNV : IStructureType, IChainType
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27500,7 +27500,7 @@ public unsafe partial struct VkPhysicalDeviceCudaKernelLaunchFeaturesNV : IStruc
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27522,7 +27522,7 @@ public unsafe partial struct VkPhysicalDeviceCudaKernelLaunchPropertiesNV : IStr
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27543,7 +27543,7 @@ public unsafe partial struct VkPhysicalDeviceDisplacementMicromapFeaturesNV : IS
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27564,7 +27564,7 @@ public unsafe partial struct VkPhysicalDeviceDisplacementMicromapPropertiesNV : 
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext
@@ -27600,7 +27600,7 @@ public unsafe partial struct VkAccelerationStructureTrianglesDisplacementMicroma
 	}
 
 	/// <inheritdoc />
-	VkStructureType IStructureType.sType => sType;
+	readonly VkStructureType IStructureType.sType => sType;
 
 	/// <inheritdoc />
 	void* IChainType.pNext

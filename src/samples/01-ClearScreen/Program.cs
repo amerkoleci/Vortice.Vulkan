@@ -41,27 +41,26 @@ public static unsafe class Program
             _graphicsDevice!.RenderFrame(OnDraw);
         }
 
-        private void OnDraw(VkCommandBuffer commandBuffer, VkFramebuffer framebuffer, VkExtent2D size)
+        private void OnDraw(VkCommandBuffer commandBuffer, VkRenderingAttachmentInfo colorAttachment, VkExtent2D size)
         {
             float g = _green + 0.001f;
             if (g > 1.0f)
                 g = 0.0f;
             _green = g;
 
-            VkClearValue clearValue = new(1.0f, _green, 0.0f, 1.0f);
+            colorAttachment.clearValue = new(1.0f, _green, 0.0f, 1.0f);
 
             // Begin the render pass.
-            VkRenderPassBeginInfo renderPassBeginInfo = new()
+            VkRenderingInfo renderingInfo = new()
             {
-                renderPass = _graphicsDevice!.Swapchain.RenderPass,
-                framebuffer = framebuffer,
                 renderArea = new VkRect2D(VkOffset2D.Zero, size),
-                clearValueCount = 1,
-                pClearValues = &clearValue
+                layerCount = 1u,
+                colorAttachmentCount = 1,
+                pColorAttachments = & colorAttachment,
             };
-            _graphicsDevice.DeviceApi.vkCmdBeginRenderPass(commandBuffer, &renderPassBeginInfo, VkSubpassContents.Inline);
+            _graphicsDevice.DeviceApi.vkCmdBeginRendering(commandBuffer, &renderingInfo);
             _graphicsDevice.DeviceApi.vkCmdSetBlendConstants(commandBuffer, 1.0f, 1.0f, 1.0f, 1.0f);
-            _graphicsDevice.DeviceApi.vkCmdEndRenderPass(commandBuffer);
+            _graphicsDevice.DeviceApi.vkCmdEndRendering(commandBuffer);
         }
     }
 }

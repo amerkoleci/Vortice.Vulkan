@@ -148,6 +148,25 @@ public unsafe sealed class GraphicsDevice : IDisposable
             if (IsDeviceSuitable(physicalDevice, surface) == false)
                 continue;
 
+            // Query for Vulkan 1.3 features
+            VkPhysicalDeviceVulkan13Features queryVulkan13Features = new();
+            VkPhysicalDeviceFeatures2 queryDeviceFeatures2 = new();
+            queryDeviceFeatures2.pNext = &queryVulkan13Features;
+            InstanceApi.vkGetPhysicalDeviceFeatures2(physicalDevice, &queryDeviceFeatures2);
+
+            // Check if Physical device supports Vulkan 1.3 features
+            if (!queryVulkan13Features.dynamicRendering)
+            {
+                Debug.WriteLine("Dynamic Rendering feature is missing");
+                continue;
+            }
+
+            if (!queryVulkan13Features.synchronization2)
+            {
+                Debug.WriteLine("Synchronization2 feature is missing");
+                continue;
+            }
+
             InstanceApi.vkGetPhysicalDeviceProperties(physicalDevice, out VkPhysicalDeviceProperties checkProperties);
             bool discrete = checkProperties.deviceType == VkPhysicalDeviceType.DiscreteGpu;
 
@@ -193,72 +212,20 @@ public unsafe sealed class GraphicsDevice : IDisposable
             VK_KHR_SWAPCHAIN_EXTENSION_NAME
         ];
 
-        const bool useNewFeatures = false;
-        VkPhysicalDeviceFeatures2 deviceFeatures2 = new();
-#if TODO
-        if (useNewFeatures)
+        VkPhysicalDeviceVulkan13Features deviceFeatures2 = new()
         {
-            VkPhysicalDeviceVulkan11Features features_1_1 = new();
-            VkPhysicalDeviceVulkan12Features features_1_2 = new();
+            synchronization2 = true,
+            dynamicRendering = true
+        };
 
-            deviceFeatures2.pNext = &features_1_1;
-            features_1_1.pNext = &features_1_2;
-
-            void** features_chain = &features_1_2.pNext;
-
-            VkPhysicalDevice8BitStorageFeatures storage_8bit_features = default;
-            if (properties.apiVersion <= VkVersion.Version_1_2)
-            {
-                if (CheckDeviceExtensionSupport(VK_KHR_8BIT_STORAGE_EXTENSION_NAME, availableDeviceExtensions))
-                {
-                    enabledExtensions.Add(VK_KHR_8BIT_STORAGE_EXTENSION_NAME);
-                    //storage_8bit_features.sType = VkStructureType.PhysicalDevice8bitStorageFeatures;
-                    *features_chain = &storage_8bit_features;
-                    features_chain = &storage_8bit_features.pNext;
-                }
-            }
-
-            if (CheckDeviceExtensionSupport(VK_KHR_SPIRV_1_4_EXTENSION_NAME, availableDeviceExtensions))
-            {
-                // Required by VK_KHR_spirv_1_4
-                enabledExtensions.Add(VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME);
-
-                // Required for VK_KHR_ray_tracing_pipeline
-                enabledExtensions.Add(VK_KHR_SPIRV_1_4_EXTENSION_NAME);
-            }
-
-            if (CheckDeviceExtensionSupport(VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME, availableDeviceExtensions))
-            {
-                // Required by VK_KHR_acceleration_structure
-                enabledExtensions.Add(VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME);
-            }
-
-            if (CheckDeviceExtensionSupport(VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME, availableDeviceExtensions))
-            {
-                // Required by VK_KHR_acceleration_structure
-                enabledExtensions.Add(VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME);
-            }
-
-            VkPhysicalDeviceAccelerationStructureFeaturesKHR acceleration_structure_features = new();
-            if (CheckDeviceExtensionSupport(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME, availableDeviceExtensions))
-            {
-                // Required by VK_KHR_acceleration_structure
-                enabledExtensions.Add(VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME);
-
-                enabledExtensions.Add(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME);
-                *features_chain = &acceleration_structure_features;
-                features_chain = &acceleration_structure_features.pNext;
-            }
-
-            vkGetPhysicalDeviceFeatures2(PhysicalDevice, &deviceFeatures2);
-        } 
-#endif
+        VkPhysicalDeviceFeatures2 enableDeviceFeatures2 = new();
+        enableDeviceFeatures2.pNext = &deviceFeatures2;
 
         using var deviceExtensionNames = new VkStringArray(enabledExtensions);
 
         VkDeviceCreateInfo deviceCreateInfo = new()
         {
-            pNext = useNewFeatures ? &deviceFeatures2 : default,
+            pNext = &enableDeviceFeatures2,
             queueCreateInfoCount = queueCount,
             pQueueCreateInfos = queueCreateInfos,
             enabledExtensionCount = deviceExtensionNames.Length,
@@ -354,7 +321,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
     }
 
     public void RenderFrame(
-        Action<VkCommandBuffer, VkFramebuffer, VkExtent2D> draw,
+        Action<VkCommandBuffer, VkRenderingAttachmentInfo, VkExtent2D> draw,
         [CallerMemberName] string? frameName = null)
     {
         VkResult result = AcquireNextImage(out _frameIndex);
@@ -373,18 +340,51 @@ public unsafe sealed class GraphicsDevice : IDisposable
         }
 
         // Begin command recording
-        VkCommandBuffer cmd = _perFrame[_frameIndex].PrimaryCommandBuffer;
+        VkCommandBuffer commandBuffer = _perFrame[_frameIndex].PrimaryCommandBuffer;
 
         VkCommandBufferBeginInfo beginInfo = new()
         {
             flags = VkCommandBufferUsageFlags.OneTimeSubmit
         };
-        DeviceApi.vkBeginCommandBuffer(cmd, &beginInfo).CheckResult();
+        DeviceApi.vkBeginCommandBuffer(commandBuffer, &beginInfo).CheckResult();
 
-        draw(cmd, Swapchain.Framebuffers[_frameIndex], Swapchain.Extent);
+        // Before starting rendering, transition the swapchain image to COLOR_ATTACHMENT_OPTIMAL
+        TransitionImageLayout(
+            commandBuffer,
+            Swapchain.Images[_frameIndex],
+            VK_IMAGE_LAYOUT_UNDEFINED,
+            VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL,
+            0,                                                     // srcAccessMask (no need to wait for previous operations)
+            VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT,                // dstAccessMask
+            VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT,                   // srcStage
+            VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT        // dstStage
+        );
+
+        VkRenderingAttachmentInfo colorAttachment = new()
+        {
+            imageView = Swapchain.ImageViews[_frameIndex],
+            imageLayout = VkImageLayout.ColorAttachmentOptimal,
+            loadOp = VkAttachmentLoadOp.Clear,
+            storeOp = VkAttachmentStoreOp.Store,
+            clearValue = new VkClearValue(0.0f, 0.0f, 0.0f, 1.0f)
+        };
+
+        draw(commandBuffer, colorAttachment, Swapchain.Extent);
+
+        // After rendering, transition the swapchain image to PRESENT_SRC
+        TransitionImageLayout(
+            commandBuffer,
+            Swapchain.Images[_frameIndex],
+            VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL,
+            VK_IMAGE_LAYOUT_PRESENT_SRC_KHR,
+            VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT,                 // srcAccessMask
+            0,                                                      // dstAccessMask
+            VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT,        // srcStage
+            VK_PIPELINE_STAGE_2_BOTTOM_OF_PIPE_BIT                  // dstStage
+        );
 
         // Complete the command buffer.
-        DeviceApi.vkEndCommandBuffer(cmd).CheckResult();
+        DeviceApi.vkEndCommandBuffer(commandBuffer).CheckResult();
 
         if (_perFrame[_frameIndex].SwapchainReleaseSemaphore == VkSemaphore.Null)
         {
@@ -398,7 +398,7 @@ public unsafe sealed class GraphicsDevice : IDisposable
         VkSubmitInfo submitInfo = new()
         {
             commandBufferCount = 1u,
-            pCommandBuffers = &cmd,
+            pCommandBuffers = &commandBuffer,
             waitSemaphoreCount = 1u,
             pWaitSemaphores = &waitSemaphore,
             pWaitDstStageMask = &wait_stage,
@@ -539,6 +539,52 @@ public unsafe sealed class GraphicsDevice : IDisposable
     public VkResult CreateShaderModule(Span<byte> data, out VkShaderModule module)
     {
         return DeviceApi.vkCreateShaderModule(VkDevice, data, null, out module);
+    }
+
+    public void TransitionImageLayout(
+        VkCommandBuffer commandBuffer,
+        VkImage image,
+        VkImageLayout oldLayout,
+        VkImageLayout newLayout,
+        VkAccessFlags2 srcAccessMask,
+        VkAccessFlags2 dstAccessMask,
+        VkPipelineStageFlags2 srcStage,
+        VkPipelineStageFlags2 dstStage)
+    {
+        // Initialize the VkImageMemoryBarrier2 structure
+        VkImageMemoryBarrier2 imageBarrier = new VkImageMemoryBarrier2
+        {
+            // Specify the pipeline stages and access masks for the barrier
+            srcStageMask = srcStage,             // Source pipeline stage mask
+            srcAccessMask = srcAccessMask,        // Source access mask
+            dstStageMask = dstStage,             // Destination pipeline stage mask
+            dstAccessMask = dstAccessMask,        // Destination access mask
+
+            // Specify the old and new layouts of the image
+            oldLayout = oldLayout,        // Current layout of the image
+            newLayout = newLayout,        // Target layout of the image
+
+            // We are not changing the ownership between queues
+            srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
+            dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
+
+            // Specify the image to be affected by this barrier
+            image = image,
+
+            // Define the subresource range (which parts of the image are affected)
+            subresourceRange = new VkImageSubresourceRange(VK_IMAGE_ASPECT_COLOR_BIT, 0, 1, 0, 1)
+        };
+
+        // Initialize the VkDependencyInfo structure
+        VkDependencyInfo dependencyInfo = new()
+        {
+            dependencyFlags = 0,                    // No special dependency flags
+            imageMemoryBarrierCount = 1,                    // Number of image memory barriers
+            pImageMemoryBarriers = &imageBarrier        // Pointer to the image memory barrier(s)
+        };
+
+        // Record the pipeline barrier into the command buffer
+        DeviceApi.vkCmdPipelineBarrier2(commandBuffer, &dependencyInfo);
     }
 
     #region Private Methods
