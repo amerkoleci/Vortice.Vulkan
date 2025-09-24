@@ -1275,7 +1275,12 @@ public unsafe partial class VkDeviceApi
 		vkDestroyCudaFunctionNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyCudaFunctionNV"u8);
 		vkCmdCudaLaunchKernelNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCudaLaunchKernelNV"u8);
 	}
-	public void vkDestroyDevice(VkDevice device, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyDevice(VkDevice device)
+	{
+		((delegate* unmanaged<VkDevice, VkAllocationCallbacks*, void>)vkDestroyDevice_ptr.Value)(device, default);
+	}
+
+	public void vkDestroyDevice(VkDevice device, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkAllocationCallbacks*, void>)vkDestroyDevice_ptr.Value)(device, allocator);
 	}
@@ -1310,9 +1315,24 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkResult>)vkDeviceWaitIdle_ptr.Value)(device);
 	}
 
+	public VkResult vkAllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkDeviceMemory* memory)
+	{
+		return ((delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult>)vkAllocateMemory_ptr.Value)(device, allocateInfo, default, memory);
+	}
+
 	public VkResult vkAllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, VkDeviceMemory* memory)
 	{
 		return ((delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult>)vkAllocateMemory_ptr.Value)(device, allocateInfo, allocator, memory);
+	}
+
+	public VkResult vkAllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, out VkDeviceMemory memory)
+	{
+		Unsafe.SkipInit(out memory);
+
+		fixed (VkDeviceMemory* memoryPtr = &memory)
+		{
+			return ((delegate* unmanaged<VkDevice, VkMemoryAllocateInfo*, VkAllocationCallbacks*, VkDeviceMemory*, VkResult>)vkAllocateMemory_ptr.Value)(device, allocateInfo, default, memoryPtr);
+		}
 	}
 
 	public VkResult vkAllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, out VkDeviceMemory memory)
@@ -1325,7 +1345,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkFreeMemory(VkDevice device, VkDeviceMemory memory, VkAllocationCallbacks* allocator = default)
+	public void vkFreeMemory(VkDevice device, VkDeviceMemory memory)
+	{
+		((delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void>)vkFreeMemory_ptr.Value)(device, memory, default);
+	}
+
+	public void vkFreeMemory(VkDevice device, VkDeviceMemory memory, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkDeviceMemory, VkAllocationCallbacks*, void>)vkFreeMemory_ptr.Value)(device, memory, allocator);
 	}
@@ -1415,9 +1440,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkQueue, uint, VkBindSparseInfo*, VkFence, VkResult>)vkQueueBindSparse_ptr.Value)(queue, bindInfoCount, bindInfo, fence);
 	}
 
+	public VkResult vkCreateFence(VkDevice device, VkFenceCreateInfo* createInfo, VkFence* fence)
+	{
+		return ((delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, VkFence*, VkResult>)vkCreateFence_ptr.Value)(device, createInfo, default, fence);
+	}
+
 	public VkResult vkCreateFence(VkDevice device, VkFenceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkFence* fence)
 	{
 		return ((delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, VkFence*, VkResult>)vkCreateFence_ptr.Value)(device, createInfo, allocator, fence);
+	}
+
+	public VkResult vkCreateFence(VkDevice device, in VkFenceCreateInfo createInfo, VkFence* fence)
+	{
+		fixed (VkFenceCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, VkFence*, VkResult>)vkCreateFence_ptr.Value)(device, createInfoPtr, default, fence);
+		}
 	}
 
 	public VkResult vkCreateFence(VkDevice device, in VkFenceCreateInfo createInfo, VkAllocationCallbacks* allocator, VkFence* fence)
@@ -1428,6 +1466,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateFence(VkDevice device, VkFenceCreateInfo* createInfo, out VkFence fence)
+	{
+		Unsafe.SkipInit(out fence);
+
+		fixed (VkFence* fencePtr = &fence)
+		{
+			return ((delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, VkFence*, VkResult>)vkCreateFence_ptr.Value)(device, createInfo, default, fencePtr);
+		}
+	}
+
 	public VkResult vkCreateFence(VkDevice device, VkFenceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFence fence)
 	{
 		Unsafe.SkipInit(out fence);
@@ -1435,6 +1483,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkFence* fencePtr = &fence)
 		{
 			return ((delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, VkFence*, VkResult>)vkCreateFence_ptr.Value)(device, createInfo, allocator, fencePtr);
+		}
+	}
+
+	public VkResult vkCreateFence(VkDevice device, in VkFenceCreateInfo createInfo, out VkFence fence)
+	{
+		fixed (VkFenceCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out fence);
+
+			fixed (VkFence* fencePtr = &fence)
+			{
+				return ((delegate* unmanaged<VkDevice, VkFenceCreateInfo*, VkAllocationCallbacks*, VkFence*, VkResult>)vkCreateFence_ptr.Value)(device, createInfoPtr, default, fencePtr);
+			}
 		}
 	}
 
@@ -1451,7 +1512,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyFence(VkDevice device, VkFence fence, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyFence(VkDevice device, VkFence fence)
+	{
+		((delegate* unmanaged<VkDevice, VkFence, VkAllocationCallbacks*, void>)vkDestroyFence_ptr.Value)(device, fence, default);
+	}
+
+	public void vkDestroyFence(VkDevice device, VkFence fence, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkFence, VkAllocationCallbacks*, void>)vkDestroyFence_ptr.Value)(device, fence, allocator);
 	}
@@ -1471,9 +1537,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult>)vkWaitForFences_ptr.Value)(device, fenceCount, fences, waitAll, timeout);
 	}
 
+	public VkResult vkCreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkSemaphore* semaphore)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, VkSemaphore*, VkResult>)vkCreateSemaphore_ptr.Value)(device, createInfo, default, semaphore);
+	}
+
 	public VkResult vkCreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSemaphore* semaphore)
 	{
 		return ((delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, VkSemaphore*, VkResult>)vkCreateSemaphore_ptr.Value)(device, createInfo, allocator, semaphore);
+	}
+
+	public VkResult vkCreateSemaphore(VkDevice device, in VkSemaphoreCreateInfo createInfo, VkSemaphore* semaphore)
+	{
+		fixed (VkSemaphoreCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, VkSemaphore*, VkResult>)vkCreateSemaphore_ptr.Value)(device, createInfoPtr, default, semaphore);
+		}
 	}
 
 	public VkResult vkCreateSemaphore(VkDevice device, in VkSemaphoreCreateInfo createInfo, VkAllocationCallbacks* allocator, VkSemaphore* semaphore)
@@ -1484,6 +1563,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, out VkSemaphore semaphore)
+	{
+		Unsafe.SkipInit(out semaphore);
+
+		fixed (VkSemaphore* semaphorePtr = &semaphore)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, VkSemaphore*, VkResult>)vkCreateSemaphore_ptr.Value)(device, createInfo, default, semaphorePtr);
+		}
+	}
+
 	public VkResult vkCreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore)
 	{
 		Unsafe.SkipInit(out semaphore);
@@ -1491,6 +1580,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkSemaphore* semaphorePtr = &semaphore)
 		{
 			return ((delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, VkSemaphore*, VkResult>)vkCreateSemaphore_ptr.Value)(device, createInfo, allocator, semaphorePtr);
+		}
+	}
+
+	public VkResult vkCreateSemaphore(VkDevice device, in VkSemaphoreCreateInfo createInfo, out VkSemaphore semaphore)
+	{
+		fixed (VkSemaphoreCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out semaphore);
+
+			fixed (VkSemaphore* semaphorePtr = &semaphore)
+			{
+				return ((delegate* unmanaged<VkDevice, VkSemaphoreCreateInfo*, VkAllocationCallbacks*, VkSemaphore*, VkResult>)vkCreateSemaphore_ptr.Value)(device, createInfoPtr, default, semaphorePtr);
+			}
 		}
 	}
 
@@ -1507,14 +1609,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroySemaphore(VkDevice device, VkSemaphore semaphore, VkAllocationCallbacks* allocator = default)
+	public void vkDestroySemaphore(VkDevice device, VkSemaphore semaphore)
+	{
+		((delegate* unmanaged<VkDevice, VkSemaphore, VkAllocationCallbacks*, void>)vkDestroySemaphore_ptr.Value)(device, semaphore, default);
+	}
+
+	public void vkDestroySemaphore(VkDevice device, VkSemaphore semaphore, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkSemaphore, VkAllocationCallbacks*, void>)vkDestroySemaphore_ptr.Value)(device, semaphore, allocator);
+	}
+
+	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkEvent* @event)
+	{
+		return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, default, @event);
 	}
 
 	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkEvent* @event)
 	{
 		return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, allocator, @event);
+	}
+
+	public VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, VkEvent* @event)
+	{
+		fixed (VkEventCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfoPtr, default, @event);
+		}
 	}
 
 	public VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, VkAllocationCallbacks* allocator, VkEvent* @event)
@@ -1525,6 +1645,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, out VkEvent @event)
+	{
+		Unsafe.SkipInit(out @event);
+
+		fixed (VkEvent* @eventPtr = &@event)
+		{
+			return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, default, @eventPtr);
+		}
+	}
+
 	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkEvent @event)
 	{
 		Unsafe.SkipInit(out @event);
@@ -1532,6 +1662,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkEvent* @eventPtr = &@event)
 		{
 			return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, allocator, @eventPtr);
+		}
+	}
+
+	public VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, out VkEvent @event)
+	{
+		fixed (VkEventCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out @event);
+
+			fixed (VkEvent* @eventPtr = &@event)
+			{
+				return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfoPtr, default, @eventPtr);
+			}
 		}
 	}
 
@@ -1548,7 +1691,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyEvent(VkDevice device, VkEvent @event, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyEvent(VkDevice device, VkEvent @event)
+	{
+		((delegate* unmanaged<VkDevice, VkEvent, VkAllocationCallbacks*, void>)vkDestroyEvent_ptr.Value)(device, @event, default);
+	}
+
+	public void vkDestroyEvent(VkDevice device, VkEvent @event, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkEvent, VkAllocationCallbacks*, void>)vkDestroyEvent_ptr.Value)(device, @event, allocator);
 	}
@@ -1568,9 +1716,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkEvent, VkResult>)vkResetEvent_ptr.Value)(device, @event);
 	}
 
+	public VkResult vkCreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, VkQueryPool* queryPool)
+	{
+		return ((delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, VkQueryPool*, VkResult>)vkCreateQueryPool_ptr.Value)(device, createInfo, default, queryPool);
+	}
+
 	public VkResult vkCreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkQueryPool* queryPool)
 	{
 		return ((delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, VkQueryPool*, VkResult>)vkCreateQueryPool_ptr.Value)(device, createInfo, allocator, queryPool);
+	}
+
+	public VkResult vkCreateQueryPool(VkDevice device, in VkQueryPoolCreateInfo createInfo, VkQueryPool* queryPool)
+	{
+		fixed (VkQueryPoolCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, VkQueryPool*, VkResult>)vkCreateQueryPool_ptr.Value)(device, createInfoPtr, default, queryPool);
+		}
 	}
 
 	public VkResult vkCreateQueryPool(VkDevice device, in VkQueryPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, VkQueryPool* queryPool)
@@ -1581,6 +1742,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, out VkQueryPool queryPool)
+	{
+		Unsafe.SkipInit(out queryPool);
+
+		fixed (VkQueryPool* queryPoolPtr = &queryPool)
+		{
+			return ((delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, VkQueryPool*, VkResult>)vkCreateQueryPool_ptr.Value)(device, createInfo, default, queryPoolPtr);
+		}
+	}
+
 	public VkResult vkCreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkQueryPool queryPool)
 	{
 		Unsafe.SkipInit(out queryPool);
@@ -1588,6 +1759,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkQueryPool* queryPoolPtr = &queryPool)
 		{
 			return ((delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, VkQueryPool*, VkResult>)vkCreateQueryPool_ptr.Value)(device, createInfo, allocator, queryPoolPtr);
+		}
+	}
+
+	public VkResult vkCreateQueryPool(VkDevice device, in VkQueryPoolCreateInfo createInfo, out VkQueryPool queryPool)
+	{
+		fixed (VkQueryPoolCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out queryPool);
+
+			fixed (VkQueryPool* queryPoolPtr = &queryPool)
+			{
+				return ((delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, VkQueryPool*, VkResult>)vkCreateQueryPool_ptr.Value)(device, createInfoPtr, default, queryPoolPtr);
+			}
 		}
 	}
 
@@ -1604,7 +1788,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyQueryPool(VkDevice device, VkQueryPool queryPool, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyQueryPool(VkDevice device, VkQueryPool queryPool)
+	{
+		((delegate* unmanaged<VkDevice, VkQueryPool, VkAllocationCallbacks*, void>)vkDestroyQueryPool_ptr.Value)(device, queryPool, default);
+	}
+
+	public void vkDestroyQueryPool(VkDevice device, VkQueryPool queryPool, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkQueryPool, VkAllocationCallbacks*, void>)vkDestroyQueryPool_ptr.Value)(device, queryPool, allocator);
 	}
@@ -1614,9 +1803,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, ulong, void*, ulong, VkQueryResultFlags, VkResult>)vkGetQueryPoolResults_ptr.Value)(device, queryPool, firstQuery, queryCount, dataSize, data, stride, flags);
 	}
 
+	public VkResult vkCreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, VkBuffer* buffer)
+	{
+		return ((delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult>)vkCreateBuffer_ptr.Value)(device, createInfo, default, buffer);
+	}
+
 	public VkResult vkCreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkBuffer* buffer)
 	{
 		return ((delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult>)vkCreateBuffer_ptr.Value)(device, createInfo, allocator, buffer);
+	}
+
+	public VkResult vkCreateBuffer(VkDevice device, in VkBufferCreateInfo createInfo, VkBuffer* buffer)
+	{
+		fixed (VkBufferCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult>)vkCreateBuffer_ptr.Value)(device, createInfoPtr, default, buffer);
+		}
 	}
 
 	public VkResult vkCreateBuffer(VkDevice device, in VkBufferCreateInfo createInfo, VkAllocationCallbacks* allocator, VkBuffer* buffer)
@@ -1627,6 +1829,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, out VkBuffer buffer)
+	{
+		Unsafe.SkipInit(out buffer);
+
+		fixed (VkBuffer* bufferPtr = &buffer)
+		{
+			return ((delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult>)vkCreateBuffer_ptr.Value)(device, createInfo, default, bufferPtr);
+		}
+	}
+
 	public VkResult vkCreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBuffer buffer)
 	{
 		Unsafe.SkipInit(out buffer);
@@ -1634,6 +1846,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkBuffer* bufferPtr = &buffer)
 		{
 			return ((delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult>)vkCreateBuffer_ptr.Value)(device, createInfo, allocator, bufferPtr);
+		}
+	}
+
+	public VkResult vkCreateBuffer(VkDevice device, in VkBufferCreateInfo createInfo, out VkBuffer buffer)
+	{
+		fixed (VkBufferCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out buffer);
+
+			fixed (VkBuffer* bufferPtr = &buffer)
+			{
+				return ((delegate* unmanaged<VkDevice, VkBufferCreateInfo*, VkAllocationCallbacks*, VkBuffer*, VkResult>)vkCreateBuffer_ptr.Value)(device, createInfoPtr, default, bufferPtr);
+			}
 		}
 	}
 
@@ -1650,14 +1875,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyBuffer(VkDevice device, VkBuffer buffer, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyBuffer(VkDevice device, VkBuffer buffer)
+	{
+		((delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void>)vkDestroyBuffer_ptr.Value)(device, buffer, default);
+	}
+
+	public void vkDestroyBuffer(VkDevice device, VkBuffer buffer, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void>)vkDestroyBuffer_ptr.Value)(device, buffer, allocator);
+	}
+
+	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkBufferView* view)
+	{
+		return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, default, view);
 	}
 
 	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkBufferView* view)
 	{
 		return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, allocator, view);
+	}
+
+	public VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, VkBufferView* view)
+	{
+		fixed (VkBufferViewCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfoPtr, default, view);
+		}
 	}
 
 	public VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, VkAllocationCallbacks* allocator, VkBufferView* view)
@@ -1668,6 +1911,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, out VkBufferView view)
+	{
+		Unsafe.SkipInit(out view);
+
+		fixed (VkBufferView* viewPtr = &view)
+		{
+			return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, default, viewPtr);
+		}
+	}
+
 	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBufferView view)
 	{
 		Unsafe.SkipInit(out view);
@@ -1675,6 +1928,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkBufferView* viewPtr = &view)
 		{
 			return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, allocator, viewPtr);
+		}
+	}
+
+	public VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, out VkBufferView view)
+	{
+		fixed (VkBufferViewCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out view);
+
+			fixed (VkBufferView* viewPtr = &view)
+			{
+				return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfoPtr, default, viewPtr);
+			}
 		}
 	}
 
@@ -1691,14 +1957,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyBufferView(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyBufferView(VkDevice device, VkBufferView bufferView)
+	{
+		((delegate* unmanaged<VkDevice, VkBufferView, VkAllocationCallbacks*, void>)vkDestroyBufferView_ptr.Value)(device, bufferView, default);
+	}
+
+	public void vkDestroyBufferView(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkBufferView, VkAllocationCallbacks*, void>)vkDestroyBufferView_ptr.Value)(device, bufferView, allocator);
+	}
+
+	public VkResult vkCreateImage(VkDevice device, VkImageCreateInfo* createInfo, VkImage* image)
+	{
+		return ((delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult>)vkCreateImage_ptr.Value)(device, createInfo, default, image);
 	}
 
 	public VkResult vkCreateImage(VkDevice device, VkImageCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkImage* image)
 	{
 		return ((delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult>)vkCreateImage_ptr.Value)(device, createInfo, allocator, image);
+	}
+
+	public VkResult vkCreateImage(VkDevice device, in VkImageCreateInfo createInfo, VkImage* image)
+	{
+		fixed (VkImageCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult>)vkCreateImage_ptr.Value)(device, createInfoPtr, default, image);
+		}
 	}
 
 	public VkResult vkCreateImage(VkDevice device, in VkImageCreateInfo createInfo, VkAllocationCallbacks* allocator, VkImage* image)
@@ -1709,6 +1993,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateImage(VkDevice device, VkImageCreateInfo* createInfo, out VkImage image)
+	{
+		Unsafe.SkipInit(out image);
+
+		fixed (VkImage* imagePtr = &image)
+		{
+			return ((delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult>)vkCreateImage_ptr.Value)(device, createInfo, default, imagePtr);
+		}
+	}
+
 	public VkResult vkCreateImage(VkDevice device, VkImageCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImage image)
 	{
 		Unsafe.SkipInit(out image);
@@ -1716,6 +2010,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkImage* imagePtr = &image)
 		{
 			return ((delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult>)vkCreateImage_ptr.Value)(device, createInfo, allocator, imagePtr);
+		}
+	}
+
+	public VkResult vkCreateImage(VkDevice device, in VkImageCreateInfo createInfo, out VkImage image)
+	{
+		fixed (VkImageCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out image);
+
+			fixed (VkImage* imagePtr = &image)
+			{
+				return ((delegate* unmanaged<VkDevice, VkImageCreateInfo*, VkAllocationCallbacks*, VkImage*, VkResult>)vkCreateImage_ptr.Value)(device, createInfoPtr, default, imagePtr);
+			}
 		}
 	}
 
@@ -1732,7 +2039,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyImage(VkDevice device, VkImage image, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyImage(VkDevice device, VkImage image)
+	{
+		((delegate* unmanaged<VkDevice, VkImage, VkAllocationCallbacks*, void>)vkDestroyImage_ptr.Value)(device, image, default);
+	}
+
+	public void vkDestroyImage(VkDevice device, VkImage image, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkImage, VkAllocationCallbacks*, void>)vkDestroyImage_ptr.Value)(device, image, allocator);
 	}
@@ -1752,9 +2064,22 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, VkImageView* view)
+	{
+		return ((delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, VkImageView*, VkResult>)vkCreateImageView_ptr.Value)(device, createInfo, default, view);
+	}
+
 	public VkResult vkCreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkImageView* view)
 	{
 		return ((delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, VkImageView*, VkResult>)vkCreateImageView_ptr.Value)(device, createInfo, allocator, view);
+	}
+
+	public VkResult vkCreateImageView(VkDevice device, in VkImageViewCreateInfo createInfo, VkImageView* view)
+	{
+		fixed (VkImageViewCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, VkImageView*, VkResult>)vkCreateImageView_ptr.Value)(device, createInfoPtr, default, view);
+		}
 	}
 
 	public VkResult vkCreateImageView(VkDevice device, in VkImageViewCreateInfo createInfo, VkAllocationCallbacks* allocator, VkImageView* view)
@@ -1765,6 +2090,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, out VkImageView view)
+	{
+		Unsafe.SkipInit(out view);
+
+		fixed (VkImageView* viewPtr = &view)
+		{
+			return ((delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, VkImageView*, VkResult>)vkCreateImageView_ptr.Value)(device, createInfo, default, viewPtr);
+		}
+	}
+
 	public VkResult vkCreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImageView view)
 	{
 		Unsafe.SkipInit(out view);
@@ -1772,6 +2107,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkImageView* viewPtr = &view)
 		{
 			return ((delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, VkImageView*, VkResult>)vkCreateImageView_ptr.Value)(device, createInfo, allocator, viewPtr);
+		}
+	}
+
+	public VkResult vkCreateImageView(VkDevice device, in VkImageViewCreateInfo createInfo, out VkImageView view)
+	{
+		fixed (VkImageViewCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out view);
+
+			fixed (VkImageView* viewPtr = &view)
+			{
+				return ((delegate* unmanaged<VkDevice, VkImageViewCreateInfo*, VkAllocationCallbacks*, VkImageView*, VkResult>)vkCreateImageView_ptr.Value)(device, createInfoPtr, default, viewPtr);
+			}
 		}
 	}
 
@@ -1788,14 +2136,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyImageView(VkDevice device, VkImageView imageView, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyImageView(VkDevice device, VkImageView imageView)
+	{
+		((delegate* unmanaged<VkDevice, VkImageView, VkAllocationCallbacks*, void>)vkDestroyImageView_ptr.Value)(device, imageView, default);
+	}
+
+	public void vkDestroyImageView(VkDevice device, VkImageView imageView, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkImageView, VkAllocationCallbacks*, void>)vkDestroyImageView_ptr.Value)(device, imageView, allocator);
+	}
+
+	public VkResult vkCreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkShaderModule* shaderModule)
+	{
+		return ((delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, VkShaderModule*, VkResult>)vkCreateShaderModule_ptr.Value)(device, createInfo, default, shaderModule);
 	}
 
 	public VkResult vkCreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkShaderModule* shaderModule)
 	{
 		return ((delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, VkShaderModule*, VkResult>)vkCreateShaderModule_ptr.Value)(device, createInfo, allocator, shaderModule);
+	}
+
+	public VkResult vkCreateShaderModule(VkDevice device, in VkShaderModuleCreateInfo createInfo, VkShaderModule* shaderModule)
+	{
+		fixed (VkShaderModuleCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, VkShaderModule*, VkResult>)vkCreateShaderModule_ptr.Value)(device, createInfoPtr, default, shaderModule);
+		}
 	}
 
 	public VkResult vkCreateShaderModule(VkDevice device, in VkShaderModuleCreateInfo createInfo, VkAllocationCallbacks* allocator, VkShaderModule* shaderModule)
@@ -1806,6 +2172,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, out VkShaderModule shaderModule)
+	{
+		Unsafe.SkipInit(out shaderModule);
+
+		fixed (VkShaderModule* shaderModulePtr = &shaderModule)
+		{
+			return ((delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, VkShaderModule*, VkResult>)vkCreateShaderModule_ptr.Value)(device, createInfo, default, shaderModulePtr);
+		}
+	}
+
 	public VkResult vkCreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
 	{
 		Unsafe.SkipInit(out shaderModule);
@@ -1813,6 +2189,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkShaderModule* shaderModulePtr = &shaderModule)
 		{
 			return ((delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, VkShaderModule*, VkResult>)vkCreateShaderModule_ptr.Value)(device, createInfo, allocator, shaderModulePtr);
+		}
+	}
+
+	public VkResult vkCreateShaderModule(VkDevice device, in VkShaderModuleCreateInfo createInfo, out VkShaderModule shaderModule)
+	{
+		fixed (VkShaderModuleCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out shaderModule);
+
+			fixed (VkShaderModule* shaderModulePtr = &shaderModule)
+			{
+				return ((delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, VkShaderModule*, VkResult>)vkCreateShaderModule_ptr.Value)(device, createInfoPtr, default, shaderModulePtr);
+			}
 		}
 	}
 
@@ -1829,14 +2218,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyShaderModule(VkDevice device, VkShaderModule shaderModule, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyShaderModule(VkDevice device, VkShaderModule shaderModule)
+	{
+		((delegate* unmanaged<VkDevice, VkShaderModule, VkAllocationCallbacks*, void>)vkDestroyShaderModule_ptr.Value)(device, shaderModule, default);
+	}
+
+	public void vkDestroyShaderModule(VkDevice device, VkShaderModule shaderModule, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkShaderModule, VkAllocationCallbacks*, void>)vkDestroyShaderModule_ptr.Value)(device, shaderModule, allocator);
+	}
+
+	public VkResult vkCreatePipelineCache(VkDevice device, VkPipelineCacheCreateInfo* createInfo, VkPipelineCache* pipelineCache)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, VkPipelineCache*, VkResult>)vkCreatePipelineCache_ptr.Value)(device, createInfo, default, pipelineCache);
 	}
 
 	public VkResult vkCreatePipelineCache(VkDevice device, VkPipelineCacheCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkPipelineCache* pipelineCache)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, VkPipelineCache*, VkResult>)vkCreatePipelineCache_ptr.Value)(device, createInfo, allocator, pipelineCache);
+	}
+
+	public VkResult vkCreatePipelineCache(VkDevice device, in VkPipelineCacheCreateInfo createInfo, VkPipelineCache* pipelineCache)
+	{
+		fixed (VkPipelineCacheCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, VkPipelineCache*, VkResult>)vkCreatePipelineCache_ptr.Value)(device, createInfoPtr, default, pipelineCache);
+		}
 	}
 
 	public VkResult vkCreatePipelineCache(VkDevice device, in VkPipelineCacheCreateInfo createInfo, VkAllocationCallbacks* allocator, VkPipelineCache* pipelineCache)
@@ -1847,6 +2254,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreatePipelineCache(VkDevice device, VkPipelineCacheCreateInfo* createInfo, out VkPipelineCache pipelineCache)
+	{
+		Unsafe.SkipInit(out pipelineCache);
+
+		fixed (VkPipelineCache* pipelineCachePtr = &pipelineCache)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, VkPipelineCache*, VkResult>)vkCreatePipelineCache_ptr.Value)(device, createInfo, default, pipelineCachePtr);
+		}
+	}
+
 	public VkResult vkCreatePipelineCache(VkDevice device, VkPipelineCacheCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineCache pipelineCache)
 	{
 		Unsafe.SkipInit(out pipelineCache);
@@ -1854,6 +2271,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkPipelineCache* pipelineCachePtr = &pipelineCache)
 		{
 			return ((delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, VkPipelineCache*, VkResult>)vkCreatePipelineCache_ptr.Value)(device, createInfo, allocator, pipelineCachePtr);
+		}
+	}
+
+	public VkResult vkCreatePipelineCache(VkDevice device, in VkPipelineCacheCreateInfo createInfo, out VkPipelineCache pipelineCache)
+	{
+		fixed (VkPipelineCacheCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out pipelineCache);
+
+			fixed (VkPipelineCache* pipelineCachePtr = &pipelineCache)
+			{
+				return ((delegate* unmanaged<VkDevice, VkPipelineCacheCreateInfo*, VkAllocationCallbacks*, VkPipelineCache*, VkResult>)vkCreatePipelineCache_ptr.Value)(device, createInfoPtr, default, pipelineCachePtr);
+			}
 		}
 	}
 
@@ -1870,7 +2300,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyPipelineCache(VkDevice device, VkPipelineCache pipelineCache, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyPipelineCache(VkDevice device, VkPipelineCache pipelineCache)
+	{
+		((delegate* unmanaged<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void>)vkDestroyPipelineCache_ptr.Value)(device, pipelineCache, default);
+	}
+
+	public void vkDestroyPipelineCache(VkDevice device, VkPipelineCache pipelineCache, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void>)vkDestroyPipelineCache_ptr.Value)(device, pipelineCache, allocator);
 	}
@@ -1885,9 +2320,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult>)vkMergePipelineCaches_ptr.Value)(device, dstCache, srcCacheCount, srcCaches);
 	}
 
+	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* createInfos, VkPipeline* pipelines)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateGraphicsPipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, default, pipelines);
+	}
+
 	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateGraphicsPipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
+	}
+
+	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkGraphicsPipelineCreateInfo createInfos, VkPipeline* pipelines)
+	{
+		fixed (VkGraphicsPipelineCreateInfo* createInfoPtr = &createInfos)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateGraphicsPipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfoPtr, default, pipelines);
+		}
 	}
 
 	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkGraphicsPipelineCreateInfo createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
@@ -1898,9 +2346,22 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo* createInfos, VkPipeline* pipelines)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkComputePipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateComputePipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, default, pipelines);
+	}
+
 	public VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkComputePipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateComputePipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
+	}
+
+	public VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkComputePipelineCreateInfo createInfos, VkPipeline* pipelines)
+	{
+		fixed (VkComputePipelineCreateInfo* createInfoPtr = &createInfos)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkComputePipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateComputePipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfoPtr, default, pipelines);
+		}
 	}
 
 	public VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkComputePipelineCreateInfo createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
@@ -1911,14 +2372,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyPipeline(VkDevice device, VkPipeline pipeline, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyPipeline(VkDevice device, VkPipeline pipeline)
+	{
+		((delegate* unmanaged<VkDevice, VkPipeline, VkAllocationCallbacks*, void>)vkDestroyPipeline_ptr.Value)(device, pipeline, default);
+	}
+
+	public void vkDestroyPipeline(VkDevice device, VkPipeline pipeline, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkPipeline, VkAllocationCallbacks*, void>)vkDestroyPipeline_ptr.Value)(device, pipeline, allocator);
+	}
+
+	public VkResult vkCreatePipelineLayout(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, VkPipelineLayout* pipelineLayout)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, VkPipelineLayout*, VkResult>)vkCreatePipelineLayout_ptr.Value)(device, createInfo, default, pipelineLayout);
 	}
 
 	public VkResult vkCreatePipelineLayout(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkPipelineLayout* pipelineLayout)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, VkPipelineLayout*, VkResult>)vkCreatePipelineLayout_ptr.Value)(device, createInfo, allocator, pipelineLayout);
+	}
+
+	public VkResult vkCreatePipelineLayout(VkDevice device, in VkPipelineLayoutCreateInfo createInfo, VkPipelineLayout* pipelineLayout)
+	{
+		fixed (VkPipelineLayoutCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, VkPipelineLayout*, VkResult>)vkCreatePipelineLayout_ptr.Value)(device, createInfoPtr, default, pipelineLayout);
+		}
 	}
 
 	public VkResult vkCreatePipelineLayout(VkDevice device, in VkPipelineLayoutCreateInfo createInfo, VkAllocationCallbacks* allocator, VkPipelineLayout* pipelineLayout)
@@ -1929,6 +2408,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreatePipelineLayout(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, out VkPipelineLayout pipelineLayout)
+	{
+		Unsafe.SkipInit(out pipelineLayout);
+
+		fixed (VkPipelineLayout* pipelineLayoutPtr = &pipelineLayout)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, VkPipelineLayout*, VkResult>)vkCreatePipelineLayout_ptr.Value)(device, createInfo, default, pipelineLayoutPtr);
+		}
+	}
+
 	public VkResult vkCreatePipelineLayout(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineLayout pipelineLayout)
 	{
 		Unsafe.SkipInit(out pipelineLayout);
@@ -1936,6 +2425,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkPipelineLayout* pipelineLayoutPtr = &pipelineLayout)
 		{
 			return ((delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, VkPipelineLayout*, VkResult>)vkCreatePipelineLayout_ptr.Value)(device, createInfo, allocator, pipelineLayoutPtr);
+		}
+	}
+
+	public VkResult vkCreatePipelineLayout(VkDevice device, in VkPipelineLayoutCreateInfo createInfo, out VkPipelineLayout pipelineLayout)
+	{
+		fixed (VkPipelineLayoutCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out pipelineLayout);
+
+			fixed (VkPipelineLayout* pipelineLayoutPtr = &pipelineLayout)
+			{
+				return ((delegate* unmanaged<VkDevice, VkPipelineLayoutCreateInfo*, VkAllocationCallbacks*, VkPipelineLayout*, VkResult>)vkCreatePipelineLayout_ptr.Value)(device, createInfoPtr, default, pipelineLayoutPtr);
+			}
 		}
 	}
 
@@ -1952,14 +2454,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyPipelineLayout(VkDevice device, VkPipelineLayout pipelineLayout, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyPipelineLayout(VkDevice device, VkPipelineLayout pipelineLayout)
+	{
+		((delegate* unmanaged<VkDevice, VkPipelineLayout, VkAllocationCallbacks*, void>)vkDestroyPipelineLayout_ptr.Value)(device, pipelineLayout, default);
+	}
+
+	public void vkDestroyPipelineLayout(VkDevice device, VkPipelineLayout pipelineLayout, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkPipelineLayout, VkAllocationCallbacks*, void>)vkDestroyPipelineLayout_ptr.Value)(device, pipelineLayout, allocator);
+	}
+
+	public VkResult vkCreateSampler(VkDevice device, VkSamplerCreateInfo* createInfo, VkSampler* sampler)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, VkSampler*, VkResult>)vkCreateSampler_ptr.Value)(device, createInfo, default, sampler);
 	}
 
 	public VkResult vkCreateSampler(VkDevice device, VkSamplerCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSampler* sampler)
 	{
 		return ((delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, VkSampler*, VkResult>)vkCreateSampler_ptr.Value)(device, createInfo, allocator, sampler);
+	}
+
+	public VkResult vkCreateSampler(VkDevice device, in VkSamplerCreateInfo createInfo, VkSampler* sampler)
+	{
+		fixed (VkSamplerCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, VkSampler*, VkResult>)vkCreateSampler_ptr.Value)(device, createInfoPtr, default, sampler);
+		}
 	}
 
 	public VkResult vkCreateSampler(VkDevice device, in VkSamplerCreateInfo createInfo, VkAllocationCallbacks* allocator, VkSampler* sampler)
@@ -1970,6 +2490,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateSampler(VkDevice device, VkSamplerCreateInfo* createInfo, out VkSampler sampler)
+	{
+		Unsafe.SkipInit(out sampler);
+
+		fixed (VkSampler* samplerPtr = &sampler)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, VkSampler*, VkResult>)vkCreateSampler_ptr.Value)(device, createInfo, default, samplerPtr);
+		}
+	}
+
 	public VkResult vkCreateSampler(VkDevice device, VkSamplerCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSampler sampler)
 	{
 		Unsafe.SkipInit(out sampler);
@@ -1977,6 +2507,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkSampler* samplerPtr = &sampler)
 		{
 			return ((delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, VkSampler*, VkResult>)vkCreateSampler_ptr.Value)(device, createInfo, allocator, samplerPtr);
+		}
+	}
+
+	public VkResult vkCreateSampler(VkDevice device, in VkSamplerCreateInfo createInfo, out VkSampler sampler)
+	{
+		fixed (VkSamplerCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out sampler);
+
+			fixed (VkSampler* samplerPtr = &sampler)
+			{
+				return ((delegate* unmanaged<VkDevice, VkSamplerCreateInfo*, VkAllocationCallbacks*, VkSampler*, VkResult>)vkCreateSampler_ptr.Value)(device, createInfoPtr, default, samplerPtr);
+			}
 		}
 	}
 
@@ -1993,14 +2536,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroySampler(VkDevice device, VkSampler sampler, VkAllocationCallbacks* allocator = default)
+	public void vkDestroySampler(VkDevice device, VkSampler sampler)
+	{
+		((delegate* unmanaged<VkDevice, VkSampler, VkAllocationCallbacks*, void>)vkDestroySampler_ptr.Value)(device, sampler, default);
+	}
+
+	public void vkDestroySampler(VkDevice device, VkSampler sampler, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkSampler, VkAllocationCallbacks*, void>)vkDestroySampler_ptr.Value)(device, sampler, allocator);
+	}
+
+	public VkResult vkCreateDescriptorSetLayout(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkDescriptorSetLayout* setLayout)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, VkDescriptorSetLayout*, VkResult>)vkCreateDescriptorSetLayout_ptr.Value)(device, createInfo, default, setLayout);
 	}
 
 	public VkResult vkCreateDescriptorSetLayout(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDescriptorSetLayout* setLayout)
 	{
 		return ((delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, VkDescriptorSetLayout*, VkResult>)vkCreateDescriptorSetLayout_ptr.Value)(device, createInfo, allocator, setLayout);
+	}
+
+	public VkResult vkCreateDescriptorSetLayout(VkDevice device, in VkDescriptorSetLayoutCreateInfo createInfo, VkDescriptorSetLayout* setLayout)
+	{
+		fixed (VkDescriptorSetLayoutCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, VkDescriptorSetLayout*, VkResult>)vkCreateDescriptorSetLayout_ptr.Value)(device, createInfoPtr, default, setLayout);
+		}
 	}
 
 	public VkResult vkCreateDescriptorSetLayout(VkDevice device, in VkDescriptorSetLayoutCreateInfo createInfo, VkAllocationCallbacks* allocator, VkDescriptorSetLayout* setLayout)
@@ -2011,6 +2572,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateDescriptorSetLayout(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, out VkDescriptorSetLayout setLayout)
+	{
+		Unsafe.SkipInit(out setLayout);
+
+		fixed (VkDescriptorSetLayout* setLayoutPtr = &setLayout)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, VkDescriptorSetLayout*, VkResult>)vkCreateDescriptorSetLayout_ptr.Value)(device, createInfo, default, setLayoutPtr);
+		}
+	}
+
 	public VkResult vkCreateDescriptorSetLayout(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorSetLayout setLayout)
 	{
 		Unsafe.SkipInit(out setLayout);
@@ -2018,6 +2589,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkDescriptorSetLayout* setLayoutPtr = &setLayout)
 		{
 			return ((delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, VkDescriptorSetLayout*, VkResult>)vkCreateDescriptorSetLayout_ptr.Value)(device, createInfo, allocator, setLayoutPtr);
+		}
+	}
+
+	public VkResult vkCreateDescriptorSetLayout(VkDevice device, in VkDescriptorSetLayoutCreateInfo createInfo, out VkDescriptorSetLayout setLayout)
+	{
+		fixed (VkDescriptorSetLayoutCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out setLayout);
+
+			fixed (VkDescriptorSetLayout* setLayoutPtr = &setLayout)
+			{
+				return ((delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkAllocationCallbacks*, VkDescriptorSetLayout*, VkResult>)vkCreateDescriptorSetLayout_ptr.Value)(device, createInfoPtr, default, setLayoutPtr);
+			}
 		}
 	}
 
@@ -2034,14 +2618,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyDescriptorSetLayout(VkDevice device, VkDescriptorSetLayout descriptorSetLayout, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyDescriptorSetLayout(VkDevice device, VkDescriptorSetLayout descriptorSetLayout)
+	{
+		((delegate* unmanaged<VkDevice, VkDescriptorSetLayout, VkAllocationCallbacks*, void>)vkDestroyDescriptorSetLayout_ptr.Value)(device, descriptorSetLayout, default);
+	}
+
+	public void vkDestroyDescriptorSetLayout(VkDevice device, VkDescriptorSetLayout descriptorSetLayout, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkDescriptorSetLayout, VkAllocationCallbacks*, void>)vkDestroyDescriptorSetLayout_ptr.Value)(device, descriptorSetLayout, allocator);
+	}
+
+	public VkResult vkCreateDescriptorPool(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, VkDescriptorPool* descriptorPool)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, VkDescriptorPool*, VkResult>)vkCreateDescriptorPool_ptr.Value)(device, createInfo, default, descriptorPool);
 	}
 
 	public VkResult vkCreateDescriptorPool(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDescriptorPool* descriptorPool)
 	{
 		return ((delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, VkDescriptorPool*, VkResult>)vkCreateDescriptorPool_ptr.Value)(device, createInfo, allocator, descriptorPool);
+	}
+
+	public VkResult vkCreateDescriptorPool(VkDevice device, in VkDescriptorPoolCreateInfo createInfo, VkDescriptorPool* descriptorPool)
+	{
+		fixed (VkDescriptorPoolCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, VkDescriptorPool*, VkResult>)vkCreateDescriptorPool_ptr.Value)(device, createInfoPtr, default, descriptorPool);
+		}
 	}
 
 	public VkResult vkCreateDescriptorPool(VkDevice device, in VkDescriptorPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, VkDescriptorPool* descriptorPool)
@@ -2052,6 +2654,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateDescriptorPool(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, out VkDescriptorPool descriptorPool)
+	{
+		Unsafe.SkipInit(out descriptorPool);
+
+		fixed (VkDescriptorPool* descriptorPoolPtr = &descriptorPool)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, VkDescriptorPool*, VkResult>)vkCreateDescriptorPool_ptr.Value)(device, createInfo, default, descriptorPoolPtr);
+		}
+	}
+
 	public VkResult vkCreateDescriptorPool(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorPool descriptorPool)
 	{
 		Unsafe.SkipInit(out descriptorPool);
@@ -2059,6 +2671,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkDescriptorPool* descriptorPoolPtr = &descriptorPool)
 		{
 			return ((delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, VkDescriptorPool*, VkResult>)vkCreateDescriptorPool_ptr.Value)(device, createInfo, allocator, descriptorPoolPtr);
+		}
+	}
+
+	public VkResult vkCreateDescriptorPool(VkDevice device, in VkDescriptorPoolCreateInfo createInfo, out VkDescriptorPool descriptorPool)
+	{
+		fixed (VkDescriptorPoolCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out descriptorPool);
+
+			fixed (VkDescriptorPool* descriptorPoolPtr = &descriptorPool)
+			{
+				return ((delegate* unmanaged<VkDevice, VkDescriptorPoolCreateInfo*, VkAllocationCallbacks*, VkDescriptorPool*, VkResult>)vkCreateDescriptorPool_ptr.Value)(device, createInfoPtr, default, descriptorPoolPtr);
+			}
 		}
 	}
 
@@ -2075,7 +2700,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool)
+	{
+		((delegate* unmanaged<VkDevice, VkDescriptorPool, VkAllocationCallbacks*, void>)vkDestroyDescriptorPool_ptr.Value)(device, descriptorPool, default);
+	}
+
+	public void vkDestroyDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkDescriptorPool, VkAllocationCallbacks*, void>)vkDestroyDescriptorPool_ptr.Value)(device, descriptorPool, allocator);
 	}
@@ -2100,9 +2730,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, uint, VkWriteDescriptorSet*, uint, VkCopyDescriptorSet*, void>)vkUpdateDescriptorSets_ptr.Value)(device, descriptorWriteCount, descriptorWrites, descriptorCopyCount, descriptorCopies);
 	}
 
+	public VkResult vkCreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, VkFramebuffer* framebuffer)
+	{
+		return ((delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, VkFramebuffer*, VkResult>)vkCreateFramebuffer_ptr.Value)(device, createInfo, default, framebuffer);
+	}
+
 	public VkResult vkCreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkFramebuffer* framebuffer)
 	{
 		return ((delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, VkFramebuffer*, VkResult>)vkCreateFramebuffer_ptr.Value)(device, createInfo, allocator, framebuffer);
+	}
+
+	public VkResult vkCreateFramebuffer(VkDevice device, in VkFramebufferCreateInfo createInfo, VkFramebuffer* framebuffer)
+	{
+		fixed (VkFramebufferCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, VkFramebuffer*, VkResult>)vkCreateFramebuffer_ptr.Value)(device, createInfoPtr, default, framebuffer);
+		}
 	}
 
 	public VkResult vkCreateFramebuffer(VkDevice device, in VkFramebufferCreateInfo createInfo, VkAllocationCallbacks* allocator, VkFramebuffer* framebuffer)
@@ -2113,6 +2756,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, out VkFramebuffer framebuffer)
+	{
+		Unsafe.SkipInit(out framebuffer);
+
+		fixed (VkFramebuffer* framebufferPtr = &framebuffer)
+		{
+			return ((delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, VkFramebuffer*, VkResult>)vkCreateFramebuffer_ptr.Value)(device, createInfo, default, framebufferPtr);
+		}
+	}
+
 	public VkResult vkCreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer)
 	{
 		Unsafe.SkipInit(out framebuffer);
@@ -2120,6 +2773,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkFramebuffer* framebufferPtr = &framebuffer)
 		{
 			return ((delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, VkFramebuffer*, VkResult>)vkCreateFramebuffer_ptr.Value)(device, createInfo, allocator, framebufferPtr);
+		}
+	}
+
+	public VkResult vkCreateFramebuffer(VkDevice device, in VkFramebufferCreateInfo createInfo, out VkFramebuffer framebuffer)
+	{
+		fixed (VkFramebufferCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out framebuffer);
+
+			fixed (VkFramebuffer* framebufferPtr = &framebuffer)
+			{
+				return ((delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, VkFramebuffer*, VkResult>)vkCreateFramebuffer_ptr.Value)(device, createInfoPtr, default, framebufferPtr);
+			}
 		}
 	}
 
@@ -2136,14 +2802,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyFramebuffer(VkDevice device, VkFramebuffer framebuffer, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyFramebuffer(VkDevice device, VkFramebuffer framebuffer)
+	{
+		((delegate* unmanaged<VkDevice, VkFramebuffer, VkAllocationCallbacks*, void>)vkDestroyFramebuffer_ptr.Value)(device, framebuffer, default);
+	}
+
+	public void vkDestroyFramebuffer(VkDevice device, VkFramebuffer framebuffer, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkFramebuffer, VkAllocationCallbacks*, void>)vkDestroyFramebuffer_ptr.Value)(device, framebuffer, allocator);
+	}
+
+	public VkResult vkCreateRenderPass(VkDevice device, VkRenderPassCreateInfo* createInfo, VkRenderPass* renderPass)
+	{
+		return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass_ptr.Value)(device, createInfo, default, renderPass);
 	}
 
 	public VkResult vkCreateRenderPass(VkDevice device, VkRenderPassCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkRenderPass* renderPass)
 	{
 		return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass_ptr.Value)(device, createInfo, allocator, renderPass);
+	}
+
+	public VkResult vkCreateRenderPass(VkDevice device, in VkRenderPassCreateInfo createInfo, VkRenderPass* renderPass)
+	{
+		fixed (VkRenderPassCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass_ptr.Value)(device, createInfoPtr, default, renderPass);
+		}
 	}
 
 	public VkResult vkCreateRenderPass(VkDevice device, in VkRenderPassCreateInfo createInfo, VkAllocationCallbacks* allocator, VkRenderPass* renderPass)
@@ -2154,6 +2838,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateRenderPass(VkDevice device, VkRenderPassCreateInfo* createInfo, out VkRenderPass renderPass)
+	{
+		Unsafe.SkipInit(out renderPass);
+
+		fixed (VkRenderPass* renderPassPtr = &renderPass)
+		{
+			return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass_ptr.Value)(device, createInfo, default, renderPassPtr);
+		}
+	}
+
 	public VkResult vkCreateRenderPass(VkDevice device, VkRenderPassCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass)
 	{
 		Unsafe.SkipInit(out renderPass);
@@ -2161,6 +2855,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkRenderPass* renderPassPtr = &renderPass)
 		{
 			return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass_ptr.Value)(device, createInfo, allocator, renderPassPtr);
+		}
+	}
+
+	public VkResult vkCreateRenderPass(VkDevice device, in VkRenderPassCreateInfo createInfo, out VkRenderPass renderPass)
+	{
+		fixed (VkRenderPassCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out renderPass);
+
+			fixed (VkRenderPass* renderPassPtr = &renderPass)
+			{
+				return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass_ptr.Value)(device, createInfoPtr, default, renderPassPtr);
+			}
 		}
 	}
 
@@ -2177,7 +2884,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyRenderPass(VkDevice device, VkRenderPass renderPass, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyRenderPass(VkDevice device, VkRenderPass renderPass)
+	{
+		((delegate* unmanaged<VkDevice, VkRenderPass, VkAllocationCallbacks*, void>)vkDestroyRenderPass_ptr.Value)(device, renderPass, default);
+	}
+
+	public void vkDestroyRenderPass(VkDevice device, VkRenderPass renderPass, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkRenderPass, VkAllocationCallbacks*, void>)vkDestroyRenderPass_ptr.Value)(device, renderPass, allocator);
 	}
@@ -2197,9 +2909,22 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkCommandPool* commandPool)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, default, commandPool);
+	}
+
 	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkCommandPool* commandPool)
 	{
 		return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, allocator, commandPool);
+	}
+
+	public VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, VkCommandPool* commandPool)
+	{
+		fixed (VkCommandPoolCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfoPtr, default, commandPool);
+		}
 	}
 
 	public VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, VkCommandPool* commandPool)
@@ -2210,6 +2935,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, out VkCommandPool commandPool)
+	{
+		Unsafe.SkipInit(out commandPool);
+
+		fixed (VkCommandPool* commandPoolPtr = &commandPool)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, default, commandPoolPtr);
+		}
+	}
+
 	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool)
 	{
 		Unsafe.SkipInit(out commandPool);
@@ -2217,6 +2952,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkCommandPool* commandPoolPtr = &commandPool)
 		{
 			return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, allocator, commandPoolPtr);
+		}
+	}
+
+	public VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, out VkCommandPool commandPool)
+	{
+		fixed (VkCommandPoolCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out commandPool);
+
+			fixed (VkCommandPool* commandPoolPtr = &commandPool)
+			{
+				return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfoPtr, default, commandPoolPtr);
+			}
 		}
 	}
 
@@ -2233,7 +2981,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool)
+	{
+		((delegate* unmanaged<VkDevice, VkCommandPool, VkAllocationCallbacks*, void>)vkDestroyCommandPool_ptr.Value)(device, commandPool, default);
+	}
+
+	public void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkCommandPool, VkAllocationCallbacks*, void>)vkDestroyCommandPool_ptr.Value)(device, commandPool, allocator);
 	}
@@ -2548,9 +3301,22 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkSamplerYcbcrConversion* ycbcrConversion)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, default, ycbcrConversion);
+	}
+
 	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion)
 	{
 		return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, allocator, ycbcrConversion);
+	}
+
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, VkSamplerYcbcrConversion* ycbcrConversion)
+	{
+		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfoPtr, default, ycbcrConversion);
+		}
 	}
 
 	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion)
@@ -2561,6 +3327,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, out VkSamplerYcbcrConversion ycbcrConversion)
+	{
+		Unsafe.SkipInit(out ycbcrConversion);
+
+		fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, default, ycbcrConversionPtr);
+		}
+	}
+
 	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion)
 	{
 		Unsafe.SkipInit(out ycbcrConversion);
@@ -2568,6 +3344,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
 		{
 			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, allocator, ycbcrConversionPtr);
+		}
+	}
+
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, out VkSamplerYcbcrConversion ycbcrConversion)
+	{
+		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out ycbcrConversion);
+
+			fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
+			{
+				return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfoPtr, default, ycbcrConversionPtr);
+			}
 		}
 	}
 
@@ -2584,14 +3373,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator = default)
+	public void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion)
+	{
+		((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>)vkDestroySamplerYcbcrConversion_ptr.Value)(device, ycbcrConversion, default);
+	}
+
+	public void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>)vkDestroySamplerYcbcrConversion_ptr.Value)(device, ycbcrConversion, allocator);
+	}
+
+	public VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>)vkCreateDescriptorUpdateTemplate_ptr.Value)(device, createInfo, default, descriptorUpdateTemplate);
 	}
 
 	public VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
 	{
 		return ((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>)vkCreateDescriptorUpdateTemplate_ptr.Value)(device, createInfo, allocator, descriptorUpdateTemplate);
+	}
+
+	public VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, in VkDescriptorUpdateTemplateCreateInfo createInfo, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
+	{
+		fixed (VkDescriptorUpdateTemplateCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>)vkCreateDescriptorUpdateTemplate_ptr.Value)(device, createInfoPtr, default, descriptorUpdateTemplate);
+		}
 	}
 
 	public VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, in VkDescriptorUpdateTemplateCreateInfo createInfo, VkAllocationCallbacks* allocator, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
@@ -2602,6 +3409,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, out VkDescriptorUpdateTemplate descriptorUpdateTemplate)
+	{
+		Unsafe.SkipInit(out descriptorUpdateTemplate);
+
+		fixed (VkDescriptorUpdateTemplate* descriptorUpdateTemplatePtr = &descriptorUpdateTemplate)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>)vkCreateDescriptorUpdateTemplate_ptr.Value)(device, createInfo, default, descriptorUpdateTemplatePtr);
+		}
+	}
+
 	public VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate)
 	{
 		Unsafe.SkipInit(out descriptorUpdateTemplate);
@@ -2609,6 +3426,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkDescriptorUpdateTemplate* descriptorUpdateTemplatePtr = &descriptorUpdateTemplate)
 		{
 			return ((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>)vkCreateDescriptorUpdateTemplate_ptr.Value)(device, createInfo, allocator, descriptorUpdateTemplatePtr);
+		}
+	}
+
+	public VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, in VkDescriptorUpdateTemplateCreateInfo createInfo, out VkDescriptorUpdateTemplate descriptorUpdateTemplate)
+	{
+		fixed (VkDescriptorUpdateTemplateCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out descriptorUpdateTemplate);
+
+			fixed (VkDescriptorUpdateTemplate* descriptorUpdateTemplatePtr = &descriptorUpdateTemplate)
+			{
+				return ((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>)vkCreateDescriptorUpdateTemplate_ptr.Value)(device, createInfoPtr, default, descriptorUpdateTemplatePtr);
+			}
 		}
 	}
 
@@ -2625,7 +3455,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate)
+	{
+		((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void>)vkDestroyDescriptorUpdateTemplate_ptr.Value)(device, descriptorUpdateTemplate, default);
+	}
+
+	public void vkDestroyDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void>)vkDestroyDescriptorUpdateTemplate_ptr.Value)(device, descriptorUpdateTemplate, allocator);
 	}
@@ -2650,9 +3485,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>)vkCmdDrawIndexedIndirectCount_ptr.Value)(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	}
 
+	public VkResult vkCreateRenderPass2(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkRenderPass* renderPass)
+	{
+		return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass2_ptr.Value)(device, createInfo, default, renderPass);
+	}
+
 	public VkResult vkCreateRenderPass2(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkAllocationCallbacks* allocator, VkRenderPass* renderPass)
 	{
 		return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass2_ptr.Value)(device, createInfo, allocator, renderPass);
+	}
+
+	public VkResult vkCreateRenderPass2(VkDevice device, in VkRenderPassCreateInfo2 createInfo, VkRenderPass* renderPass)
+	{
+		fixed (VkRenderPassCreateInfo2* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass2_ptr.Value)(device, createInfoPtr, default, renderPass);
+		}
 	}
 
 	public VkResult vkCreateRenderPass2(VkDevice device, in VkRenderPassCreateInfo2 createInfo, VkAllocationCallbacks* allocator, VkRenderPass* renderPass)
@@ -2663,6 +3511,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateRenderPass2(VkDevice device, VkRenderPassCreateInfo2* createInfo, out VkRenderPass renderPass)
+	{
+		Unsafe.SkipInit(out renderPass);
+
+		fixed (VkRenderPass* renderPassPtr = &renderPass)
+		{
+			return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass2_ptr.Value)(device, createInfo, default, renderPassPtr);
+		}
+	}
+
 	public VkResult vkCreateRenderPass2(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass)
 	{
 		Unsafe.SkipInit(out renderPass);
@@ -2670,6 +3528,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkRenderPass* renderPassPtr = &renderPass)
 		{
 			return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass2_ptr.Value)(device, createInfo, allocator, renderPassPtr);
+		}
+	}
+
+	public VkResult vkCreateRenderPass2(VkDevice device, in VkRenderPassCreateInfo2 createInfo, out VkRenderPass renderPass)
+	{
+		fixed (VkRenderPassCreateInfo2* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out renderPass);
+
+			fixed (VkRenderPass* renderPassPtr = &renderPass)
+			{
+				return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass2_ptr.Value)(device, createInfoPtr, default, renderPassPtr);
+			}
 		}
 	}
 
@@ -2736,9 +3607,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong>)vkGetDeviceMemoryOpaqueCaptureAddress_ptr.Value)(device, info);
 	}
 
+	public VkResult vkCreatePrivateDataSlot(VkDevice device, VkPrivateDataSlotCreateInfo* createInfo, VkPrivateDataSlot* privateDataSlot)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult>)vkCreatePrivateDataSlot_ptr.Value)(device, createInfo, default, privateDataSlot);
+	}
+
 	public VkResult vkCreatePrivateDataSlot(VkDevice device, VkPrivateDataSlotCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkPrivateDataSlot* privateDataSlot)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult>)vkCreatePrivateDataSlot_ptr.Value)(device, createInfo, allocator, privateDataSlot);
+	}
+
+	public VkResult vkCreatePrivateDataSlot(VkDevice device, in VkPrivateDataSlotCreateInfo createInfo, VkPrivateDataSlot* privateDataSlot)
+	{
+		fixed (VkPrivateDataSlotCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult>)vkCreatePrivateDataSlot_ptr.Value)(device, createInfoPtr, default, privateDataSlot);
+		}
 	}
 
 	public VkResult vkCreatePrivateDataSlot(VkDevice device, in VkPrivateDataSlotCreateInfo createInfo, VkAllocationCallbacks* allocator, VkPrivateDataSlot* privateDataSlot)
@@ -2749,7 +3633,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyPrivateDataSlot(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyPrivateDataSlot(VkDevice device, VkPrivateDataSlot privateDataSlot)
+	{
+		((delegate* unmanaged<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void>)vkDestroyPrivateDataSlot_ptr.Value)(device, privateDataSlot, default);
+	}
+
+	public void vkDestroyPrivateDataSlot(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void>)vkDestroyPrivateDataSlot_ptr.Value)(device, privateDataSlot, allocator);
 	}
@@ -3019,9 +3908,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfo*, VkResult>)vkTransitionImageLayout_ptr.Value)(device, transitionCount, transitions);
 	}
 
+	public VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkSwapchainKHR* swapchain)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSwapchainKHR_ptr.Value)(device, createInfo, default, swapchain);
+	}
+
 	public VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSwapchainKHR* swapchain)
 	{
 		return ((delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSwapchainKHR_ptr.Value)(device, createInfo, allocator, swapchain);
+	}
+
+	public VkResult vkCreateSwapchainKHR(VkDevice device, in VkSwapchainCreateInfoKHR createInfo, VkSwapchainKHR* swapchain)
+	{
+		fixed (VkSwapchainCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSwapchainKHR_ptr.Value)(device, createInfoPtr, default, swapchain);
+		}
 	}
 
 	public VkResult vkCreateSwapchainKHR(VkDevice device, in VkSwapchainCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSwapchainKHR* swapchain)
@@ -3032,6 +3934,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, out VkSwapchainKHR swapchain)
+	{
+		Unsafe.SkipInit(out swapchain);
+
+		fixed (VkSwapchainKHR* swapchainPtr = &swapchain)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSwapchainKHR_ptr.Value)(device, createInfo, default, swapchainPtr);
+		}
+	}
+
 	public VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain)
 	{
 		Unsafe.SkipInit(out swapchain);
@@ -3039,6 +3951,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkSwapchainKHR* swapchainPtr = &swapchain)
 		{
 			return ((delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSwapchainKHR_ptr.Value)(device, createInfo, allocator, swapchainPtr);
+		}
+	}
+
+	public VkResult vkCreateSwapchainKHR(VkDevice device, in VkSwapchainCreateInfoKHR createInfo, out VkSwapchainKHR swapchain)
+	{
+		fixed (VkSwapchainCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out swapchain);
+
+			fixed (VkSwapchainKHR* swapchainPtr = &swapchain)
+			{
+				return ((delegate* unmanaged<VkDevice, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSwapchainKHR_ptr.Value)(device, createInfoPtr, default, swapchainPtr);
+			}
 		}
 	}
 
@@ -3055,7 +3980,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroySwapchainKHR(VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* allocator = default)
+	public void vkDestroySwapchainKHR(VkDevice device, VkSwapchainKHR swapchain)
+	{
+		((delegate* unmanaged<VkDevice, VkSwapchainKHR, VkAllocationCallbacks*, void>)vkDestroySwapchainKHR_ptr.Value)(device, swapchain, default);
+	}
+
+	public void vkDestroySwapchainKHR(VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkSwapchainKHR, VkAllocationCallbacks*, void>)vkDestroySwapchainKHR_ptr.Value)(device, swapchain, allocator);
 	}
@@ -3120,9 +4050,22 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* createInfos, VkSwapchainKHR* swapchains)
+	{
+		return ((delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSharedSwapchainsKHR_ptr.Value)(device, swapchainCount, createInfos, default, swapchains);
+	}
+
 	public VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* createInfos, VkAllocationCallbacks* allocator, VkSwapchainKHR* swapchains)
 	{
 		return ((delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSharedSwapchainsKHR_ptr.Value)(device, swapchainCount, createInfos, allocator, swapchains);
+	}
+
+	public VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, in VkSwapchainCreateInfoKHR createInfos, VkSwapchainKHR* swapchains)
+	{
+		fixed (VkSwapchainCreateInfoKHR* createInfoPtr = &createInfos)
+		{
+			return ((delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSharedSwapchainsKHR_ptr.Value)(device, swapchainCount, createInfoPtr, default, swapchains);
+		}
 	}
 
 	public VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, in VkSwapchainCreateInfoKHR createInfos, VkAllocationCallbacks* allocator, VkSwapchainKHR* swapchains)
@@ -3133,6 +4076,16 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* createInfos, out VkSwapchainKHR swapchains)
+	{
+		Unsafe.SkipInit(out swapchains);
+
+		fixed (VkSwapchainKHR* swapchainsPtr = &swapchains)
+		{
+			return ((delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSharedSwapchainsKHR_ptr.Value)(device, swapchainCount, createInfos, default, swapchainsPtr);
+		}
+	}
+
 	public VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR* createInfos, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchains)
 	{
 		Unsafe.SkipInit(out swapchains);
@@ -3140,6 +4093,19 @@ public unsafe partial class VkDeviceApi
 		fixed (VkSwapchainKHR* swapchainsPtr = &swapchains)
 		{
 			return ((delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSharedSwapchainsKHR_ptr.Value)(device, swapchainCount, createInfos, allocator, swapchainsPtr);
+		}
+	}
+
+	public VkResult vkCreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, in VkSwapchainCreateInfoKHR createInfos, out VkSwapchainKHR swapchains)
+	{
+		fixed (VkSwapchainCreateInfoKHR* createInfoPtr = &createInfos)
+		{
+			Unsafe.SkipInit(out swapchains);
+
+			fixed (VkSwapchainKHR* swapchainsPtr = &swapchains)
+			{
+				return ((delegate* unmanaged<VkDevice, uint, VkSwapchainCreateInfoKHR*, VkAllocationCallbacks*, VkSwapchainKHR*, VkResult>)vkCreateSharedSwapchainsKHR_ptr.Value)(device, swapchainCount, createInfoPtr, default, swapchainsPtr);
+			}
 		}
 	}
 
@@ -3156,9 +4122,22 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateVideoSessionKHR(VkDevice device, VkVideoSessionCreateInfoKHR* createInfo, VkVideoSessionKHR* videoSession)
+	{
+		return ((delegate* unmanaged<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult>)vkCreateVideoSessionKHR_ptr.Value)(device, createInfo, default, videoSession);
+	}
+
 	public VkResult vkCreateVideoSessionKHR(VkDevice device, VkVideoSessionCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkVideoSessionKHR* videoSession)
 	{
 		return ((delegate* unmanaged<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult>)vkCreateVideoSessionKHR_ptr.Value)(device, createInfo, allocator, videoSession);
+	}
+
+	public VkResult vkCreateVideoSessionKHR(VkDevice device, in VkVideoSessionCreateInfoKHR createInfo, VkVideoSessionKHR* videoSession)
+	{
+		fixed (VkVideoSessionCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkVideoSessionCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionKHR*, VkResult>)vkCreateVideoSessionKHR_ptr.Value)(device, createInfoPtr, default, videoSession);
+		}
 	}
 
 	public VkResult vkCreateVideoSessionKHR(VkDevice device, in VkVideoSessionCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkVideoSessionKHR* videoSession)
@@ -3169,7 +4148,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyVideoSessionKHR(VkDevice device, VkVideoSessionKHR videoSession, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyVideoSessionKHR(VkDevice device, VkVideoSessionKHR videoSession)
+	{
+		((delegate* unmanaged<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void>)vkDestroyVideoSessionKHR_ptr.Value)(device, videoSession, default);
+	}
+
+	public void vkDestroyVideoSessionKHR(VkDevice device, VkVideoSessionKHR videoSession, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkVideoSessionKHR, VkAllocationCallbacks*, void>)vkDestroyVideoSessionKHR_ptr.Value)(device, videoSession, allocator);
 	}
@@ -3184,9 +4168,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkVideoSessionKHR, uint, VkBindVideoSessionMemoryInfoKHR*, VkResult>)vkBindVideoSessionMemoryKHR_ptr.Value)(device, videoSession, bindSessionMemoryInfoCount, bindSessionMemoryInfos);
 	}
 
+	public VkResult vkCreateVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersCreateInfoKHR* createInfo, VkVideoSessionParametersKHR* videoSessionParameters)
+	{
+		return ((delegate* unmanaged<VkDevice, VkVideoSessionParametersCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionParametersKHR*, VkResult>)vkCreateVideoSessionParametersKHR_ptr.Value)(device, createInfo, default, videoSessionParameters);
+	}
+
 	public VkResult vkCreateVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkVideoSessionParametersKHR* videoSessionParameters)
 	{
 		return ((delegate* unmanaged<VkDevice, VkVideoSessionParametersCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionParametersKHR*, VkResult>)vkCreateVideoSessionParametersKHR_ptr.Value)(device, createInfo, allocator, videoSessionParameters);
+	}
+
+	public VkResult vkCreateVideoSessionParametersKHR(VkDevice device, in VkVideoSessionParametersCreateInfoKHR createInfo, VkVideoSessionParametersKHR* videoSessionParameters)
+	{
+		fixed (VkVideoSessionParametersCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkVideoSessionParametersCreateInfoKHR*, VkAllocationCallbacks*, VkVideoSessionParametersKHR*, VkResult>)vkCreateVideoSessionParametersKHR_ptr.Value)(device, createInfoPtr, default, videoSessionParameters);
+		}
 	}
 
 	public VkResult vkCreateVideoSessionParametersKHR(VkDevice device, in VkVideoSessionParametersCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkVideoSessionParametersKHR* videoSessionParameters)
@@ -3202,7 +4199,12 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkVideoSessionParametersKHR, VkVideoSessionParametersUpdateInfoKHR*, VkResult>)vkUpdateVideoSessionParametersKHR_ptr.Value)(device, videoSessionParameters, updateInfo);
 	}
 
-	public void vkDestroyVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters)
+	{
+		((delegate* unmanaged<VkDevice, VkVideoSessionParametersKHR, VkAllocationCallbacks*, void>)vkDestroyVideoSessionParametersKHR_ptr.Value)(device, videoSessionParameters, default);
+	}
+
+	public void vkDestroyVideoSessionParametersKHR(VkDevice device, VkVideoSessionParametersKHR videoSessionParameters, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkVideoSessionParametersKHR, VkAllocationCallbacks*, void>)vkDestroyVideoSessionParametersKHR_ptr.Value)(device, videoSessionParameters, allocator);
 	}
@@ -3297,9 +4299,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkDescriptorUpdateTemplate, VkPipelineLayout, uint, void*, void>)vkCmdPushDescriptorSetWithTemplateKHR_ptr.Value)(commandBuffer, descriptorUpdateTemplate, layout, set, data);
 	}
 
+	public VkResult vkCreateDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>)vkCreateDescriptorUpdateTemplateKHR_ptr.Value)(device, createInfo, default, descriptorUpdateTemplate);
+	}
+
 	public VkResult vkCreateDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
 	{
 		return ((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>)vkCreateDescriptorUpdateTemplateKHR_ptr.Value)(device, createInfo, allocator, descriptorUpdateTemplate);
+	}
+
+	public VkResult vkCreateDescriptorUpdateTemplateKHR(VkDevice device, in VkDescriptorUpdateTemplateCreateInfo createInfo, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
+	{
+		fixed (VkDescriptorUpdateTemplateCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplateCreateInfo*, VkAllocationCallbacks*, VkDescriptorUpdateTemplate*, VkResult>)vkCreateDescriptorUpdateTemplateKHR_ptr.Value)(device, createInfoPtr, default, descriptorUpdateTemplate);
+		}
 	}
 
 	public VkResult vkCreateDescriptorUpdateTemplateKHR(VkDevice device, in VkDescriptorUpdateTemplateCreateInfo createInfo, VkAllocationCallbacks* allocator, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
@@ -3310,7 +4325,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate)
+	{
+		((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void>)vkDestroyDescriptorUpdateTemplateKHR_ptr.Value)(device, descriptorUpdateTemplate, default);
+	}
+
+	public void vkDestroyDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkDescriptorUpdateTemplate, VkAllocationCallbacks*, void>)vkDestroyDescriptorUpdateTemplateKHR_ptr.Value)(device, descriptorUpdateTemplate, allocator);
 	}
@@ -3320,9 +4340,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkDescriptorSet, VkDescriptorUpdateTemplate, void*, void>)vkUpdateDescriptorSetWithTemplateKHR_ptr.Value)(device, descriptorSet, descriptorUpdateTemplate, data);
 	}
 
+	public VkResult vkCreateRenderPass2KHR(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkRenderPass* renderPass)
+	{
+		return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass2KHR_ptr.Value)(device, createInfo, default, renderPass);
+	}
+
 	public VkResult vkCreateRenderPass2KHR(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkAllocationCallbacks* allocator, VkRenderPass* renderPass)
 	{
 		return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass2KHR_ptr.Value)(device, createInfo, allocator, renderPass);
+	}
+
+	public VkResult vkCreateRenderPass2KHR(VkDevice device, in VkRenderPassCreateInfo2 createInfo, VkRenderPass* renderPass)
+	{
+		fixed (VkRenderPassCreateInfo2* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkRenderPassCreateInfo2*, VkAllocationCallbacks*, VkRenderPass*, VkResult>)vkCreateRenderPass2KHR_ptr.Value)(device, createInfoPtr, default, renderPass);
+		}
 	}
 
 	public VkResult vkCreateRenderPass2KHR(VkDevice device, in VkRenderPassCreateInfo2 createInfo, VkAllocationCallbacks* allocator, VkRenderPass* renderPass)
@@ -3388,9 +4421,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void>)vkGetImageSparseMemoryRequirements2KHR_ptr.Value)(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
 	}
 
+	public VkResult vkCreateSamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkSamplerYcbcrConversion* ycbcrConversion)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversionKHR_ptr.Value)(device, createInfo, default, ycbcrConversion);
+	}
+
 	public VkResult vkCreateSamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion)
 	{
 		return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversionKHR_ptr.Value)(device, createInfo, allocator, ycbcrConversion);
+	}
+
+	public VkResult vkCreateSamplerYcbcrConversionKHR(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, VkSamplerYcbcrConversion* ycbcrConversion)
+	{
+		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversionKHR_ptr.Value)(device, createInfoPtr, default, ycbcrConversion);
+		}
 	}
 
 	public VkResult vkCreateSamplerYcbcrConversionKHR(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion)
@@ -3401,7 +4447,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator = default)
+	public void vkDestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion)
+	{
+		((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>)vkDestroySamplerYcbcrConversionKHR_ptr.Value)(device, ycbcrConversion, default);
+	}
+
+	public void vkDestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>)vkDestroySamplerYcbcrConversionKHR_ptr.Value)(device, ycbcrConversion, allocator);
 	}
@@ -3481,12 +4532,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong>)vkGetDeviceMemoryOpaqueCaptureAddressKHR_ptr.Value)(device, info);
 	}
 
+	public VkResult vkCreateDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR* deferredOperation)
+	{
+		return ((delegate* unmanaged<VkDevice, VkAllocationCallbacks*, VkDeferredOperationKHR*, VkResult>)vkCreateDeferredOperationKHR_ptr.Value)(device, default, deferredOperation);
+	}
+
 	public VkResult vkCreateDeferredOperationKHR(VkDevice device, VkAllocationCallbacks* allocator, VkDeferredOperationKHR* deferredOperation)
 	{
 		return ((delegate* unmanaged<VkDevice, VkAllocationCallbacks*, VkDeferredOperationKHR*, VkResult>)vkCreateDeferredOperationKHR_ptr.Value)(device, allocator, deferredOperation);
 	}
 
-	public void vkDestroyDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR operation, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR operation)
+	{
+		((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkAllocationCallbacks*, void>)vkDestroyDeferredOperationKHR_ptr.Value)(device, operation, default);
+	}
+
+	public void vkDestroyDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR operation, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkAllocationCallbacks*, void>)vkDestroyDeferredOperationKHR_ptr.Value)(device, operation, allocator);
 	}
@@ -3646,9 +4707,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkSwapchainKHR, VkPresentWait2InfoKHR*, VkResult>)vkWaitForPresent2KHR_ptr.Value)(device, swapchain, presentWait2Info);
 	}
 
+	public VkResult vkCreatePipelineBinariesKHR(VkDevice device, VkPipelineBinaryCreateInfoKHR* createInfo, VkPipelineBinaryHandlesInfoKHR* binaries)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPipelineBinaryCreateInfoKHR*, VkAllocationCallbacks*, VkPipelineBinaryHandlesInfoKHR*, VkResult>)vkCreatePipelineBinariesKHR_ptr.Value)(device, createInfo, default, binaries);
+	}
+
 	public VkResult vkCreatePipelineBinariesKHR(VkDevice device, VkPipelineBinaryCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkPipelineBinaryHandlesInfoKHR* binaries)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPipelineBinaryCreateInfoKHR*, VkAllocationCallbacks*, VkPipelineBinaryHandlesInfoKHR*, VkResult>)vkCreatePipelineBinariesKHR_ptr.Value)(device, createInfo, allocator, binaries);
+	}
+
+	public VkResult vkCreatePipelineBinariesKHR(VkDevice device, in VkPipelineBinaryCreateInfoKHR createInfo, VkPipelineBinaryHandlesInfoKHR* binaries)
+	{
+		fixed (VkPipelineBinaryCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPipelineBinaryCreateInfoKHR*, VkAllocationCallbacks*, VkPipelineBinaryHandlesInfoKHR*, VkResult>)vkCreatePipelineBinariesKHR_ptr.Value)(device, createInfoPtr, default, binaries);
+		}
 	}
 
 	public VkResult vkCreatePipelineBinariesKHR(VkDevice device, in VkPipelineBinaryCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkPipelineBinaryHandlesInfoKHR* binaries)
@@ -3659,7 +4733,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyPipelineBinaryKHR(VkDevice device, VkPipelineBinaryKHR pipelineBinary, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyPipelineBinaryKHR(VkDevice device, VkPipelineBinaryKHR pipelineBinary)
+	{
+		((delegate* unmanaged<VkDevice, VkPipelineBinaryKHR, VkAllocationCallbacks*, void>)vkDestroyPipelineBinaryKHR_ptr.Value)(device, pipelineBinary, default);
+	}
+
+	public void vkDestroyPipelineBinaryKHR(VkDevice device, VkPipelineBinaryKHR pipelineBinary, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkPipelineBinaryKHR, VkAllocationCallbacks*, void>)vkDestroyPipelineBinaryKHR_ptr.Value)(device, pipelineBinary, allocator);
 	}
@@ -3674,7 +4753,12 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkPipelineBinaryDataInfoKHR*, VkPipelineBinaryKeyKHR*, ulong*, void*, VkResult>)vkGetPipelineBinaryDataKHR_ptr.Value)(device, info, pipelineBinaryKey, pipelineBinaryDataSize, pipelineBinaryData);
 	}
 
-	public VkResult vkReleaseCapturedPipelineDataKHR(VkDevice device, VkReleaseCapturedPipelineDataInfoKHR* info, VkAllocationCallbacks* allocator = default)
+	public VkResult vkReleaseCapturedPipelineDataKHR(VkDevice device, VkReleaseCapturedPipelineDataInfoKHR* info)
+	{
+		return ((delegate* unmanaged<VkDevice, VkReleaseCapturedPipelineDataInfoKHR*, VkAllocationCallbacks*, VkResult>)vkReleaseCapturedPipelineDataKHR_ptr.Value)(device, info, default);
+	}
+
+	public VkResult vkReleaseCapturedPipelineDataKHR(VkDevice device, VkReleaseCapturedPipelineDataInfoKHR* info, VkAllocationCallbacks* allocator)
 	{
 		return ((delegate* unmanaged<VkDevice, VkReleaseCapturedPipelineDataInfoKHR*, VkAllocationCallbacks*, VkResult>)vkReleaseCapturedPipelineDataKHR_ptr.Value)(device, info, allocator);
 	}
@@ -3779,9 +4863,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, uint, uint, VkBuffer, ulong, uint, uint, void>)vkCmdDrawIndirectByteCountEXT_ptr.Value)(commandBuffer, instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride);
 	}
 
+	public VkResult vkCreateCuModuleNVX(VkDevice device, VkCuModuleCreateInfoNVX* createInfo, VkCuModuleNVX* module)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCuModuleCreateInfoNVX*, VkAllocationCallbacks*, VkCuModuleNVX*, VkResult>)vkCreateCuModuleNVX_ptr.Value)(device, createInfo, default, module);
+	}
+
 	public VkResult vkCreateCuModuleNVX(VkDevice device, VkCuModuleCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, VkCuModuleNVX* module)
 	{
 		return ((delegate* unmanaged<VkDevice, VkCuModuleCreateInfoNVX*, VkAllocationCallbacks*, VkCuModuleNVX*, VkResult>)vkCreateCuModuleNVX_ptr.Value)(device, createInfo, allocator, module);
+	}
+
+	public VkResult vkCreateCuModuleNVX(VkDevice device, in VkCuModuleCreateInfoNVX createInfo, VkCuModuleNVX* module)
+	{
+		fixed (VkCuModuleCreateInfoNVX* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCuModuleCreateInfoNVX*, VkAllocationCallbacks*, VkCuModuleNVX*, VkResult>)vkCreateCuModuleNVX_ptr.Value)(device, createInfoPtr, default, module);
+		}
 	}
 
 	public VkResult vkCreateCuModuleNVX(VkDevice device, in VkCuModuleCreateInfoNVX createInfo, VkAllocationCallbacks* allocator, VkCuModuleNVX* module)
@@ -3792,9 +4889,22 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateCuFunctionNVX(VkDevice device, VkCuFunctionCreateInfoNVX* createInfo, VkCuFunctionNVX* function)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCuFunctionCreateInfoNVX*, VkAllocationCallbacks*, VkCuFunctionNVX*, VkResult>)vkCreateCuFunctionNVX_ptr.Value)(device, createInfo, default, function);
+	}
+
 	public VkResult vkCreateCuFunctionNVX(VkDevice device, VkCuFunctionCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, VkCuFunctionNVX* function)
 	{
 		return ((delegate* unmanaged<VkDevice, VkCuFunctionCreateInfoNVX*, VkAllocationCallbacks*, VkCuFunctionNVX*, VkResult>)vkCreateCuFunctionNVX_ptr.Value)(device, createInfo, allocator, function);
+	}
+
+	public VkResult vkCreateCuFunctionNVX(VkDevice device, in VkCuFunctionCreateInfoNVX createInfo, VkCuFunctionNVX* function)
+	{
+		fixed (VkCuFunctionCreateInfoNVX* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCuFunctionCreateInfoNVX*, VkAllocationCallbacks*, VkCuFunctionNVX*, VkResult>)vkCreateCuFunctionNVX_ptr.Value)(device, createInfoPtr, default, function);
+		}
 	}
 
 	public VkResult vkCreateCuFunctionNVX(VkDevice device, in VkCuFunctionCreateInfoNVX createInfo, VkAllocationCallbacks* allocator, VkCuFunctionNVX* function)
@@ -3805,12 +4915,22 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyCuModuleNVX(VkDevice device, VkCuModuleNVX module, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyCuModuleNVX(VkDevice device, VkCuModuleNVX module)
+	{
+		((delegate* unmanaged<VkDevice, VkCuModuleNVX, VkAllocationCallbacks*, void>)vkDestroyCuModuleNVX_ptr.Value)(device, module, default);
+	}
+
+	public void vkDestroyCuModuleNVX(VkDevice device, VkCuModuleNVX module, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkCuModuleNVX, VkAllocationCallbacks*, void>)vkDestroyCuModuleNVX_ptr.Value)(device, module, allocator);
 	}
 
-	public void vkDestroyCuFunctionNVX(VkDevice device, VkCuFunctionNVX function, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyCuFunctionNVX(VkDevice device, VkCuFunctionNVX function)
+	{
+		((delegate* unmanaged<VkDevice, VkCuFunctionNVX, VkAllocationCallbacks*, void>)vkDestroyCuFunctionNVX_ptr.Value)(device, function, default);
+	}
+
+	public void vkDestroyCuFunctionNVX(VkDevice device, VkCuFunctionNVX function, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkCuFunctionNVX, VkAllocationCallbacks*, void>)vkDestroyCuFunctionNVX_ptr.Value)(device, function, allocator);
 	}
@@ -3870,9 +4990,19 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkDisplayKHR, VkDisplayPowerInfoEXT*, VkResult>)vkDisplayPowerControlEXT_ptr.Value)(device, display, displayPowerInfo);
 	}
 
+	public VkResult vkRegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, VkFence* fence)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDeviceEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult>)vkRegisterDeviceEventEXT_ptr.Value)(device, deviceEventInfo, default, fence);
+	}
+
 	public VkResult vkRegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, VkAllocationCallbacks* allocator, VkFence* fence)
 	{
 		return ((delegate* unmanaged<VkDevice, VkDeviceEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult>)vkRegisterDeviceEventEXT_ptr.Value)(device, deviceEventInfo, allocator, fence);
+	}
+
+	public VkResult vkRegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, VkFence* fence)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDisplayKHR, VkDisplayEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult>)vkRegisterDisplayEventEXT_ptr.Value)(device, display, displayEventInfo, default, fence);
 	}
 
 	public VkResult vkRegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, VkAllocationCallbacks* allocator, VkFence* fence)
@@ -3925,9 +5055,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkImage, VkImageDrmFormatModifierPropertiesEXT*, VkResult>)vkGetImageDrmFormatModifierPropertiesEXT_ptr.Value)(device, image, properties);
 	}
 
+	public VkResult vkCreateValidationCacheEXT(VkDevice device, VkValidationCacheCreateInfoEXT* createInfo, VkValidationCacheEXT* validationCache)
+	{
+		return ((delegate* unmanaged<VkDevice, VkValidationCacheCreateInfoEXT*, VkAllocationCallbacks*, VkValidationCacheEXT*, VkResult>)vkCreateValidationCacheEXT_ptr.Value)(device, createInfo, default, validationCache);
+	}
+
 	public VkResult vkCreateValidationCacheEXT(VkDevice device, VkValidationCacheCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkValidationCacheEXT* validationCache)
 	{
 		return ((delegate* unmanaged<VkDevice, VkValidationCacheCreateInfoEXT*, VkAllocationCallbacks*, VkValidationCacheEXT*, VkResult>)vkCreateValidationCacheEXT_ptr.Value)(device, createInfo, allocator, validationCache);
+	}
+
+	public VkResult vkCreateValidationCacheEXT(VkDevice device, in VkValidationCacheCreateInfoEXT createInfo, VkValidationCacheEXT* validationCache)
+	{
+		fixed (VkValidationCacheCreateInfoEXT* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkValidationCacheCreateInfoEXT*, VkAllocationCallbacks*, VkValidationCacheEXT*, VkResult>)vkCreateValidationCacheEXT_ptr.Value)(device, createInfoPtr, default, validationCache);
+		}
 	}
 
 	public VkResult vkCreateValidationCacheEXT(VkDevice device, in VkValidationCacheCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkValidationCacheEXT* validationCache)
@@ -3938,7 +5081,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyValidationCacheEXT(VkDevice device, VkValidationCacheEXT validationCache, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyValidationCacheEXT(VkDevice device, VkValidationCacheEXT validationCache)
+	{
+		((delegate* unmanaged<VkDevice, VkValidationCacheEXT, VkAllocationCallbacks*, void>)vkDestroyValidationCacheEXT_ptr.Value)(device, validationCache, default);
+	}
+
+	public void vkDestroyValidationCacheEXT(VkDevice device, VkValidationCacheEXT validationCache, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkValidationCacheEXT, VkAllocationCallbacks*, void>)vkDestroyValidationCacheEXT_ptr.Value)(device, validationCache, allocator);
 	}
@@ -3968,9 +5116,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkCoarseSampleOrderTypeNV, uint, VkCoarseSampleOrderCustomNV*, void>)vkCmdSetCoarseSampleOrderNV_ptr.Value)(commandBuffer, sampleOrderType, customSampleOrderCount, customSampleOrders);
 	}
 
+	public VkResult vkCreateAccelerationStructureNV(VkDevice device, VkAccelerationStructureCreateInfoNV* createInfo, VkAccelerationStructureKHR* accelerationStructure)
+	{
+		return ((delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoNV*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>)vkCreateAccelerationStructureNV_ptr.Value)(device, createInfo, default, accelerationStructure);
+	}
+
 	public VkResult vkCreateAccelerationStructureNV(VkDevice device, VkAccelerationStructureCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
 	{
 		return ((delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoNV*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>)vkCreateAccelerationStructureNV_ptr.Value)(device, createInfo, allocator, accelerationStructure);
+	}
+
+	public VkResult vkCreateAccelerationStructureNV(VkDevice device, in VkAccelerationStructureCreateInfoNV createInfo, VkAccelerationStructureKHR* accelerationStructure)
+	{
+		fixed (VkAccelerationStructureCreateInfoNV* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoNV*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>)vkCreateAccelerationStructureNV_ptr.Value)(device, createInfoPtr, default, accelerationStructure);
+		}
 	}
 
 	public VkResult vkCreateAccelerationStructureNV(VkDevice device, in VkAccelerationStructureCreateInfoNV createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
@@ -3981,7 +5142,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyAccelerationStructureNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyAccelerationStructureNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure)
+	{
+		((delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>)vkDestroyAccelerationStructureNV_ptr.Value)(device, accelerationStructure, default);
+	}
+
+	public void vkDestroyAccelerationStructureNV(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>)vkDestroyAccelerationStructureNV_ptr.Value)(device, accelerationStructure, allocator);
 	}
@@ -4011,9 +5177,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, uint, uint, uint, void>)vkCmdTraceRaysNV_ptr.Value)(commandBuffer, raygenShaderBindingTableBuffer, raygenShaderBindingOffset, missShaderBindingTableBuffer, missShaderBindingOffset, missShaderBindingStride, hitShaderBindingTableBuffer, hitShaderBindingOffset, hitShaderBindingStride, callableShaderBindingTableBuffer, callableShaderBindingOffset, callableShaderBindingStride, width, height, depth);
 	}
 
+	public VkResult vkCreateRayTracingPipelinesNV(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoNV* createInfos, VkPipeline* pipelines)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoNV*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateRayTracingPipelinesNV_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, default, pipelines);
+	}
+
 	public VkResult vkCreateRayTracingPipelinesNV(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoNV* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoNV*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateRayTracingPipelinesNV_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
+	}
+
+	public VkResult vkCreateRayTracingPipelinesNV(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkRayTracingPipelineCreateInfoNV createInfos, VkPipeline* pipelines)
+	{
+		fixed (VkRayTracingPipelineCreateInfoNV* createInfoPtr = &createInfos)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoNV*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateRayTracingPipelinesNV_ptr.Value)(device, pipelineCache, createInfoCount, createInfoPtr, default, pipelines);
+		}
 	}
 
 	public VkResult vkCreateRayTracingPipelinesNV(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkRayTracingPipelineCreateInfoNV createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
@@ -4284,9 +5463,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, uint, void>)vkCmdBindPipelineShaderGroupNV_ptr.Value)(commandBuffer, pipelineBindPoint, pipeline, groupIndex);
 	}
 
+	public VkResult vkCreateIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutCreateInfoNV* createInfo, VkIndirectCommandsLayoutNV* indirectCommandsLayout)
+	{
+		return ((delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoNV*, VkAllocationCallbacks*, VkIndirectCommandsLayoutNV*, VkResult>)vkCreateIndirectCommandsLayoutNV_ptr.Value)(device, createInfo, default, indirectCommandsLayout);
+	}
+
 	public VkResult vkCreateIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkIndirectCommandsLayoutNV* indirectCommandsLayout)
 	{
 		return ((delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoNV*, VkAllocationCallbacks*, VkIndirectCommandsLayoutNV*, VkResult>)vkCreateIndirectCommandsLayoutNV_ptr.Value)(device, createInfo, allocator, indirectCommandsLayout);
+	}
+
+	public VkResult vkCreateIndirectCommandsLayoutNV(VkDevice device, in VkIndirectCommandsLayoutCreateInfoNV createInfo, VkIndirectCommandsLayoutNV* indirectCommandsLayout)
+	{
+		fixed (VkIndirectCommandsLayoutCreateInfoNV* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoNV*, VkAllocationCallbacks*, VkIndirectCommandsLayoutNV*, VkResult>)vkCreateIndirectCommandsLayoutNV_ptr.Value)(device, createInfoPtr, default, indirectCommandsLayout);
+		}
 	}
 
 	public VkResult vkCreateIndirectCommandsLayoutNV(VkDevice device, in VkIndirectCommandsLayoutCreateInfoNV createInfo, VkAllocationCallbacks* allocator, VkIndirectCommandsLayoutNV* indirectCommandsLayout)
@@ -4297,7 +5489,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout)
+	{
+		((delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutNV, VkAllocationCallbacks*, void>)vkDestroyIndirectCommandsLayoutNV_ptr.Value)(device, indirectCommandsLayout, default);
+	}
+
+	public void vkDestroyIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutNV, VkAllocationCallbacks*, void>)vkDestroyIndirectCommandsLayoutNV_ptr.Value)(device, indirectCommandsLayout, allocator);
 	}
@@ -4307,9 +5504,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkDepthBiasInfoEXT*, void>)vkCmdSetDepthBias2EXT_ptr.Value)(commandBuffer, depthBiasInfo);
 	}
 
+	public VkResult vkCreatePrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotCreateInfo* createInfo, VkPrivateDataSlot* privateDataSlot)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult>)vkCreatePrivateDataSlotEXT_ptr.Value)(device, createInfo, default, privateDataSlot);
+	}
+
 	public VkResult vkCreatePrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkPrivateDataSlot* privateDataSlot)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult>)vkCreatePrivateDataSlotEXT_ptr.Value)(device, createInfo, allocator, privateDataSlot);
+	}
+
+	public VkResult vkCreatePrivateDataSlotEXT(VkDevice device, in VkPrivateDataSlotCreateInfo createInfo, VkPrivateDataSlot* privateDataSlot)
+	{
+		fixed (VkPrivateDataSlotCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult>)vkCreatePrivateDataSlotEXT_ptr.Value)(device, createInfoPtr, default, privateDataSlot);
+		}
 	}
 
 	public VkResult vkCreatePrivateDataSlotEXT(VkDevice device, in VkPrivateDataSlotCreateInfo createInfo, VkAllocationCallbacks* allocator, VkPrivateDataSlot* privateDataSlot)
@@ -4320,7 +5530,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlot privateDataSlot)
+	{
+		((delegate* unmanaged<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void>)vkDestroyPrivateDataSlotEXT_ptr.Value)(device, privateDataSlot, default);
+	}
+
+	public void vkDestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void>)vkDestroyPrivateDataSlotEXT_ptr.Value)(device, privateDataSlot, allocator);
 	}
@@ -4485,9 +5700,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, uint, VkMultiDrawIndexedInfoEXT*, uint, uint, uint, int*, void>)vkCmdDrawMultiIndexedEXT_ptr.Value)(commandBuffer, drawCount, indexInfo, instanceCount, firstInstance, stride, vertexOffset);
 	}
 
+	public VkResult vkCreateMicromapEXT(VkDevice device, VkMicromapCreateInfoEXT* createInfo, VkMicromapEXT* micromap)
+	{
+		return ((delegate* unmanaged<VkDevice, VkMicromapCreateInfoEXT*, VkAllocationCallbacks*, VkMicromapEXT*, VkResult>)vkCreateMicromapEXT_ptr.Value)(device, createInfo, default, micromap);
+	}
+
 	public VkResult vkCreateMicromapEXT(VkDevice device, VkMicromapCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkMicromapEXT* micromap)
 	{
 		return ((delegate* unmanaged<VkDevice, VkMicromapCreateInfoEXT*, VkAllocationCallbacks*, VkMicromapEXT*, VkResult>)vkCreateMicromapEXT_ptr.Value)(device, createInfo, allocator, micromap);
+	}
+
+	public VkResult vkCreateMicromapEXT(VkDevice device, in VkMicromapCreateInfoEXT createInfo, VkMicromapEXT* micromap)
+	{
+		fixed (VkMicromapCreateInfoEXT* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkMicromapCreateInfoEXT*, VkAllocationCallbacks*, VkMicromapEXT*, VkResult>)vkCreateMicromapEXT_ptr.Value)(device, createInfoPtr, default, micromap);
+		}
 	}
 
 	public VkResult vkCreateMicromapEXT(VkDevice device, in VkMicromapCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkMicromapEXT* micromap)
@@ -4498,7 +5726,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyMicromapEXT(VkDevice device, VkMicromapEXT micromap, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyMicromapEXT(VkDevice device, VkMicromapEXT micromap)
+	{
+		((delegate* unmanaged<VkDevice, VkMicromapEXT, VkAllocationCallbacks*, void>)vkDestroyMicromapEXT_ptr.Value)(device, micromap, default);
+	}
+
+	public void vkDestroyMicromapEXT(VkDevice device, VkMicromapEXT micromap, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkMicromapEXT, VkAllocationCallbacks*, void>)vkDestroyMicromapEXT_ptr.Value)(device, micromap, allocator);
 	}
@@ -4778,9 +6011,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkCoverageReductionModeNV, void>)vkCmdSetCoverageReductionModeNV_ptr.Value)(commandBuffer, coverageReductionMode);
 	}
 
+	public VkResult vkCreateTensorARM(VkDevice device, VkTensorCreateInfoARM* createInfo, VkTensorARM* tensor)
+	{
+		return ((delegate* unmanaged<VkDevice, VkTensorCreateInfoARM*, VkAllocationCallbacks*, VkTensorARM*, VkResult>)vkCreateTensorARM_ptr.Value)(device, createInfo, default, tensor);
+	}
+
 	public VkResult vkCreateTensorARM(VkDevice device, VkTensorCreateInfoARM* createInfo, VkAllocationCallbacks* allocator, VkTensorARM* tensor)
 	{
 		return ((delegate* unmanaged<VkDevice, VkTensorCreateInfoARM*, VkAllocationCallbacks*, VkTensorARM*, VkResult>)vkCreateTensorARM_ptr.Value)(device, createInfo, allocator, tensor);
+	}
+
+	public VkResult vkCreateTensorARM(VkDevice device, in VkTensorCreateInfoARM createInfo, VkTensorARM* tensor)
+	{
+		fixed (VkTensorCreateInfoARM* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkTensorCreateInfoARM*, VkAllocationCallbacks*, VkTensorARM*, VkResult>)vkCreateTensorARM_ptr.Value)(device, createInfoPtr, default, tensor);
+		}
 	}
 
 	public VkResult vkCreateTensorARM(VkDevice device, in VkTensorCreateInfoARM createInfo, VkAllocationCallbacks* allocator, VkTensorARM* tensor)
@@ -4791,14 +6037,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyTensorARM(VkDevice device, VkTensorARM tensor, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyTensorARM(VkDevice device, VkTensorARM tensor)
+	{
+		((delegate* unmanaged<VkDevice, VkTensorARM, VkAllocationCallbacks*, void>)vkDestroyTensorARM_ptr.Value)(device, tensor, default);
+	}
+
+	public void vkDestroyTensorARM(VkDevice device, VkTensorARM tensor, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkTensorARM, VkAllocationCallbacks*, void>)vkDestroyTensorARM_ptr.Value)(device, tensor, allocator);
+	}
+
+	public VkResult vkCreateTensorViewARM(VkDevice device, VkTensorViewCreateInfoARM* createInfo, VkTensorViewARM* view)
+	{
+		return ((delegate* unmanaged<VkDevice, VkTensorViewCreateInfoARM*, VkAllocationCallbacks*, VkTensorViewARM*, VkResult>)vkCreateTensorViewARM_ptr.Value)(device, createInfo, default, view);
 	}
 
 	public VkResult vkCreateTensorViewARM(VkDevice device, VkTensorViewCreateInfoARM* createInfo, VkAllocationCallbacks* allocator, VkTensorViewARM* view)
 	{
 		return ((delegate* unmanaged<VkDevice, VkTensorViewCreateInfoARM*, VkAllocationCallbacks*, VkTensorViewARM*, VkResult>)vkCreateTensorViewARM_ptr.Value)(device, createInfo, allocator, view);
+	}
+
+	public VkResult vkCreateTensorViewARM(VkDevice device, in VkTensorViewCreateInfoARM createInfo, VkTensorViewARM* view)
+	{
+		fixed (VkTensorViewCreateInfoARM* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkTensorViewCreateInfoARM*, VkAllocationCallbacks*, VkTensorViewARM*, VkResult>)vkCreateTensorViewARM_ptr.Value)(device, createInfoPtr, default, view);
+		}
 	}
 
 	public VkResult vkCreateTensorViewARM(VkDevice device, in VkTensorViewCreateInfoARM createInfo, VkAllocationCallbacks* allocator, VkTensorViewARM* view)
@@ -4809,7 +6073,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyTensorViewARM(VkDevice device, VkTensorViewARM tensorView, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyTensorViewARM(VkDevice device, VkTensorViewARM tensorView)
+	{
+		((delegate* unmanaged<VkDevice, VkTensorViewARM, VkAllocationCallbacks*, void>)vkDestroyTensorViewARM_ptr.Value)(device, tensorView, default);
+	}
+
+	public void vkDestroyTensorViewARM(VkDevice device, VkTensorViewARM tensorView, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkTensorViewARM, VkAllocationCallbacks*, void>)vkDestroyTensorViewARM_ptr.Value)(device, tensorView, allocator);
 	}
@@ -4854,9 +6123,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkShaderModuleIdentifierEXT*, void>)vkGetShaderModuleCreateInfoIdentifierEXT_ptr.Value)(device, createInfo, identifier);
 	}
 
+	public VkResult vkCreateOpticalFlowSessionNV(VkDevice device, VkOpticalFlowSessionCreateInfoNV* createInfo, VkOpticalFlowSessionNV* session)
+	{
+		return ((delegate* unmanaged<VkDevice, VkOpticalFlowSessionCreateInfoNV*, VkAllocationCallbacks*, VkOpticalFlowSessionNV*, VkResult>)vkCreateOpticalFlowSessionNV_ptr.Value)(device, createInfo, default, session);
+	}
+
 	public VkResult vkCreateOpticalFlowSessionNV(VkDevice device, VkOpticalFlowSessionCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkOpticalFlowSessionNV* session)
 	{
 		return ((delegate* unmanaged<VkDevice, VkOpticalFlowSessionCreateInfoNV*, VkAllocationCallbacks*, VkOpticalFlowSessionNV*, VkResult>)vkCreateOpticalFlowSessionNV_ptr.Value)(device, createInfo, allocator, session);
+	}
+
+	public VkResult vkCreateOpticalFlowSessionNV(VkDevice device, in VkOpticalFlowSessionCreateInfoNV createInfo, VkOpticalFlowSessionNV* session)
+	{
+		fixed (VkOpticalFlowSessionCreateInfoNV* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkOpticalFlowSessionCreateInfoNV*, VkAllocationCallbacks*, VkOpticalFlowSessionNV*, VkResult>)vkCreateOpticalFlowSessionNV_ptr.Value)(device, createInfoPtr, default, session);
+		}
 	}
 
 	public VkResult vkCreateOpticalFlowSessionNV(VkDevice device, in VkOpticalFlowSessionCreateInfoNV createInfo, VkAllocationCallbacks* allocator, VkOpticalFlowSessionNV* session)
@@ -4867,7 +6149,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyOpticalFlowSessionNV(VkDevice device, VkOpticalFlowSessionNV session, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyOpticalFlowSessionNV(VkDevice device, VkOpticalFlowSessionNV session)
+	{
+		((delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkAllocationCallbacks*, void>)vkDestroyOpticalFlowSessionNV_ptr.Value)(device, session, default);
+	}
+
+	public void vkDestroyOpticalFlowSessionNV(VkDevice device, VkOpticalFlowSessionNV session, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkOpticalFlowSessionNV, VkAllocationCallbacks*, void>)vkDestroyOpticalFlowSessionNV_ptr.Value)(device, session, allocator);
 	}
@@ -4887,9 +6174,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkAntiLagDataAMD*, void>)vkAntiLagUpdateAMD_ptr.Value)(device, data);
 	}
 
+	public VkResult vkCreateShadersEXT(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT* createInfos, VkShaderEXT* shaders)
+	{
+		return ((delegate* unmanaged<VkDevice, uint, VkShaderCreateInfoEXT*, VkAllocationCallbacks*, VkShaderEXT*, VkResult>)vkCreateShadersEXT_ptr.Value)(device, createInfoCount, createInfos, default, shaders);
+	}
+
 	public VkResult vkCreateShadersEXT(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT* createInfos, VkAllocationCallbacks* allocator, VkShaderEXT* shaders)
 	{
 		return ((delegate* unmanaged<VkDevice, uint, VkShaderCreateInfoEXT*, VkAllocationCallbacks*, VkShaderEXT*, VkResult>)vkCreateShadersEXT_ptr.Value)(device, createInfoCount, createInfos, allocator, shaders);
+	}
+
+	public VkResult vkCreateShadersEXT(VkDevice device, uint createInfoCount, in VkShaderCreateInfoEXT createInfos, VkShaderEXT* shaders)
+	{
+		fixed (VkShaderCreateInfoEXT* createInfoPtr = &createInfos)
+		{
+			return ((delegate* unmanaged<VkDevice, uint, VkShaderCreateInfoEXT*, VkAllocationCallbacks*, VkShaderEXT*, VkResult>)vkCreateShadersEXT_ptr.Value)(device, createInfoCount, createInfoPtr, default, shaders);
+		}
 	}
 
 	public VkResult vkCreateShadersEXT(VkDevice device, uint createInfoCount, in VkShaderCreateInfoEXT createInfos, VkAllocationCallbacks* allocator, VkShaderEXT* shaders)
@@ -4900,7 +6200,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyShaderEXT(VkDevice device, VkShaderEXT shader, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyShaderEXT(VkDevice device, VkShaderEXT shader)
+	{
+		((delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void>)vkDestroyShaderEXT_ptr.Value)(device, shader, default);
+	}
+
+	public void vkDestroyShaderEXT(VkDevice device, VkShaderEXT shader, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void>)vkDestroyShaderEXT_ptr.Value)(device, shader, allocator);
 	}
@@ -4965,9 +6270,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkQueue, VkOutOfBandQueueTypeInfoNV*, void>)vkQueueNotifyOutOfBandNV_ptr.Value)(queue, queueTypeInfo);
 	}
 
+	public VkResult vkCreateDataGraphPipelinesARM(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkDataGraphPipelineCreateInfoARM* createInfos, VkPipeline* pipelines)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkDataGraphPipelineCreateInfoARM*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateDataGraphPipelinesARM_ptr.Value)(device, deferredOperation, pipelineCache, createInfoCount, createInfos, default, pipelines);
+	}
+
 	public VkResult vkCreateDataGraphPipelinesARM(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkDataGraphPipelineCreateInfoARM* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
 		return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkDataGraphPipelineCreateInfoARM*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateDataGraphPipelinesARM_ptr.Value)(device, deferredOperation, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
+	}
+
+	public VkResult vkCreateDataGraphPipelinesARM(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, in VkDataGraphPipelineCreateInfoARM createInfos, VkPipeline* pipelines)
+	{
+		fixed (VkDataGraphPipelineCreateInfoARM* createInfoPtr = &createInfos)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkDataGraphPipelineCreateInfoARM*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateDataGraphPipelinesARM_ptr.Value)(device, deferredOperation, pipelineCache, createInfoCount, createInfoPtr, default, pipelines);
+		}
 	}
 
 	public VkResult vkCreateDataGraphPipelinesARM(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, in VkDataGraphPipelineCreateInfoARM createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
@@ -4978,9 +6296,22 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkCreateDataGraphPipelineSessionARM(VkDevice device, VkDataGraphPipelineSessionCreateInfoARM* createInfo, VkDataGraphPipelineSessionARM* session)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDataGraphPipelineSessionCreateInfoARM*, VkAllocationCallbacks*, VkDataGraphPipelineSessionARM*, VkResult>)vkCreateDataGraphPipelineSessionARM_ptr.Value)(device, createInfo, default, session);
+	}
+
 	public VkResult vkCreateDataGraphPipelineSessionARM(VkDevice device, VkDataGraphPipelineSessionCreateInfoARM* createInfo, VkAllocationCallbacks* allocator, VkDataGraphPipelineSessionARM* session)
 	{
 		return ((delegate* unmanaged<VkDevice, VkDataGraphPipelineSessionCreateInfoARM*, VkAllocationCallbacks*, VkDataGraphPipelineSessionARM*, VkResult>)vkCreateDataGraphPipelineSessionARM_ptr.Value)(device, createInfo, allocator, session);
+	}
+
+	public VkResult vkCreateDataGraphPipelineSessionARM(VkDevice device, in VkDataGraphPipelineSessionCreateInfoARM createInfo, VkDataGraphPipelineSessionARM* session)
+	{
+		fixed (VkDataGraphPipelineSessionCreateInfoARM* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDataGraphPipelineSessionCreateInfoARM*, VkAllocationCallbacks*, VkDataGraphPipelineSessionARM*, VkResult>)vkCreateDataGraphPipelineSessionARM_ptr.Value)(device, createInfoPtr, default, session);
+		}
 	}
 
 	public VkResult vkCreateDataGraphPipelineSessionARM(VkDevice device, in VkDataGraphPipelineSessionCreateInfoARM createInfo, VkAllocationCallbacks* allocator, VkDataGraphPipelineSessionARM* session)
@@ -5006,7 +6337,12 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, uint, VkBindDataGraphPipelineSessionMemoryInfoARM*, VkResult>)vkBindDataGraphPipelineSessionMemoryARM_ptr.Value)(device, bindInfoCount, bindInfos);
 	}
 
-	public void vkDestroyDataGraphPipelineSessionARM(VkDevice device, VkDataGraphPipelineSessionARM session, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyDataGraphPipelineSessionARM(VkDevice device, VkDataGraphPipelineSessionARM session)
+	{
+		((delegate* unmanaged<VkDevice, VkDataGraphPipelineSessionARM, VkAllocationCallbacks*, void>)vkDestroyDataGraphPipelineSessionARM_ptr.Value)(device, session, default);
+	}
+
+	public void vkDestroyDataGraphPipelineSessionARM(VkDevice device, VkDataGraphPipelineSessionARM session, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkDataGraphPipelineSessionARM, VkAllocationCallbacks*, void>)vkDestroyDataGraphPipelineSessionARM_ptr.Value)(device, session, allocator);
 	}
@@ -5036,9 +6372,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkTileMemoryBindInfoQCOM*, void>)vkCmdBindTileMemoryQCOM_ptr.Value)(commandBuffer, tileMemoryBindInfo);
 	}
 
+	public VkResult vkCreateExternalComputeQueueNV(VkDevice device, VkExternalComputeQueueCreateInfoNV* createInfo, VkExternalComputeQueueNV* externalQueue)
+	{
+		return ((delegate* unmanaged<VkDevice, VkExternalComputeQueueCreateInfoNV*, VkAllocationCallbacks*, VkExternalComputeQueueNV*, VkResult>)vkCreateExternalComputeQueueNV_ptr.Value)(device, createInfo, default, externalQueue);
+	}
+
 	public VkResult vkCreateExternalComputeQueueNV(VkDevice device, VkExternalComputeQueueCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkExternalComputeQueueNV* externalQueue)
 	{
 		return ((delegate* unmanaged<VkDevice, VkExternalComputeQueueCreateInfoNV*, VkAllocationCallbacks*, VkExternalComputeQueueNV*, VkResult>)vkCreateExternalComputeQueueNV_ptr.Value)(device, createInfo, allocator, externalQueue);
+	}
+
+	public VkResult vkCreateExternalComputeQueueNV(VkDevice device, in VkExternalComputeQueueCreateInfoNV createInfo, VkExternalComputeQueueNV* externalQueue)
+	{
+		fixed (VkExternalComputeQueueCreateInfoNV* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkExternalComputeQueueCreateInfoNV*, VkAllocationCallbacks*, VkExternalComputeQueueNV*, VkResult>)vkCreateExternalComputeQueueNV_ptr.Value)(device, createInfoPtr, default, externalQueue);
+		}
 	}
 
 	public VkResult vkCreateExternalComputeQueueNV(VkDevice device, in VkExternalComputeQueueCreateInfoNV createInfo, VkAllocationCallbacks* allocator, VkExternalComputeQueueNV* externalQueue)
@@ -5049,7 +6398,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyExternalComputeQueueNV(VkDevice device, VkExternalComputeQueueNV externalQueue, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyExternalComputeQueueNV(VkDevice device, VkExternalComputeQueueNV externalQueue)
+	{
+		((delegate* unmanaged<VkDevice, VkExternalComputeQueueNV, VkAllocationCallbacks*, void>)vkDestroyExternalComputeQueueNV_ptr.Value)(device, externalQueue, default);
+	}
+
+	public void vkDestroyExternalComputeQueueNV(VkDevice device, VkExternalComputeQueueNV externalQueue, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkExternalComputeQueueNV, VkAllocationCallbacks*, void>)vkDestroyExternalComputeQueueNV_ptr.Value)(device, externalQueue, allocator);
 	}
@@ -5094,9 +6448,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkBool32, VkGeneratedCommandsInfoEXT*, void>)vkCmdExecuteGeneratedCommandsEXT_ptr.Value)(commandBuffer, isPreprocessed, generatedCommandsInfo);
 	}
 
+	public VkResult vkCreateIndirectCommandsLayoutEXT(VkDevice device, VkIndirectCommandsLayoutCreateInfoEXT* createInfo, VkIndirectCommandsLayoutEXT* indirectCommandsLayout)
+	{
+		return ((delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoEXT*, VkAllocationCallbacks*, VkIndirectCommandsLayoutEXT*, VkResult>)vkCreateIndirectCommandsLayoutEXT_ptr.Value)(device, createInfo, default, indirectCommandsLayout);
+	}
+
 	public VkResult vkCreateIndirectCommandsLayoutEXT(VkDevice device, VkIndirectCommandsLayoutCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkIndirectCommandsLayoutEXT* indirectCommandsLayout)
 	{
 		return ((delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoEXT*, VkAllocationCallbacks*, VkIndirectCommandsLayoutEXT*, VkResult>)vkCreateIndirectCommandsLayoutEXT_ptr.Value)(device, createInfo, allocator, indirectCommandsLayout);
+	}
+
+	public VkResult vkCreateIndirectCommandsLayoutEXT(VkDevice device, in VkIndirectCommandsLayoutCreateInfoEXT createInfo, VkIndirectCommandsLayoutEXT* indirectCommandsLayout)
+	{
+		fixed (VkIndirectCommandsLayoutCreateInfoEXT* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutCreateInfoEXT*, VkAllocationCallbacks*, VkIndirectCommandsLayoutEXT*, VkResult>)vkCreateIndirectCommandsLayoutEXT_ptr.Value)(device, createInfoPtr, default, indirectCommandsLayout);
+		}
 	}
 
 	public VkResult vkCreateIndirectCommandsLayoutEXT(VkDevice device, in VkIndirectCommandsLayoutCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkIndirectCommandsLayoutEXT* indirectCommandsLayout)
@@ -5107,14 +6474,32 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyIndirectCommandsLayoutEXT(VkDevice device, VkIndirectCommandsLayoutEXT indirectCommandsLayout, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyIndirectCommandsLayoutEXT(VkDevice device, VkIndirectCommandsLayoutEXT indirectCommandsLayout)
+	{
+		((delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutEXT, VkAllocationCallbacks*, void>)vkDestroyIndirectCommandsLayoutEXT_ptr.Value)(device, indirectCommandsLayout, default);
+	}
+
+	public void vkDestroyIndirectCommandsLayoutEXT(VkDevice device, VkIndirectCommandsLayoutEXT indirectCommandsLayout, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkIndirectCommandsLayoutEXT, VkAllocationCallbacks*, void>)vkDestroyIndirectCommandsLayoutEXT_ptr.Value)(device, indirectCommandsLayout, allocator);
+	}
+
+	public VkResult vkCreateIndirectExecutionSetEXT(VkDevice device, VkIndirectExecutionSetCreateInfoEXT* createInfo, VkIndirectExecutionSetEXT* indirectExecutionSet)
+	{
+		return ((delegate* unmanaged<VkDevice, VkIndirectExecutionSetCreateInfoEXT*, VkAllocationCallbacks*, VkIndirectExecutionSetEXT*, VkResult>)vkCreateIndirectExecutionSetEXT_ptr.Value)(device, createInfo, default, indirectExecutionSet);
 	}
 
 	public VkResult vkCreateIndirectExecutionSetEXT(VkDevice device, VkIndirectExecutionSetCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkIndirectExecutionSetEXT* indirectExecutionSet)
 	{
 		return ((delegate* unmanaged<VkDevice, VkIndirectExecutionSetCreateInfoEXT*, VkAllocationCallbacks*, VkIndirectExecutionSetEXT*, VkResult>)vkCreateIndirectExecutionSetEXT_ptr.Value)(device, createInfo, allocator, indirectExecutionSet);
+	}
+
+	public VkResult vkCreateIndirectExecutionSetEXT(VkDevice device, in VkIndirectExecutionSetCreateInfoEXT createInfo, VkIndirectExecutionSetEXT* indirectExecutionSet)
+	{
+		fixed (VkIndirectExecutionSetCreateInfoEXT* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkIndirectExecutionSetCreateInfoEXT*, VkAllocationCallbacks*, VkIndirectExecutionSetEXT*, VkResult>)vkCreateIndirectExecutionSetEXT_ptr.Value)(device, createInfoPtr, default, indirectExecutionSet);
+		}
 	}
 
 	public VkResult vkCreateIndirectExecutionSetEXT(VkDevice device, in VkIndirectExecutionSetCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkIndirectExecutionSetEXT* indirectExecutionSet)
@@ -5125,7 +6510,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyIndirectExecutionSetEXT(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyIndirectExecutionSetEXT(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet)
+	{
+		((delegate* unmanaged<VkDevice, VkIndirectExecutionSetEXT, VkAllocationCallbacks*, void>)vkDestroyIndirectExecutionSetEXT_ptr.Value)(device, indirectExecutionSet, default);
+	}
+
+	public void vkDestroyIndirectExecutionSetEXT(VkDevice device, VkIndirectExecutionSetEXT indirectExecutionSet, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkIndirectExecutionSetEXT, VkAllocationCallbacks*, void>)vkDestroyIndirectExecutionSetEXT_ptr.Value)(device, indirectExecutionSet, allocator);
 	}
@@ -5145,9 +6535,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkRenderingEndInfoEXT*, void>)vkCmdEndRendering2EXT_ptr.Value)(commandBuffer, renderingEndInfo);
 	}
 
+	public VkResult vkCreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAccelerationStructureKHR* accelerationStructure)
+	{
+		return ((delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>)vkCreateAccelerationStructureKHR_ptr.Value)(device, createInfo, default, accelerationStructure);
+	}
+
 	public VkResult vkCreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
 	{
 		return ((delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>)vkCreateAccelerationStructureKHR_ptr.Value)(device, createInfo, allocator, accelerationStructure);
+	}
+
+	public VkResult vkCreateAccelerationStructureKHR(VkDevice device, in VkAccelerationStructureCreateInfoKHR createInfo, VkAccelerationStructureKHR* accelerationStructure)
+	{
+		fixed (VkAccelerationStructureCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfoKHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>)vkCreateAccelerationStructureKHR_ptr.Value)(device, createInfoPtr, default, accelerationStructure);
+		}
 	}
 
 	public VkResult vkCreateAccelerationStructureKHR(VkDevice device, in VkAccelerationStructureCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
@@ -5158,7 +6561,12 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyAccelerationStructureKHR(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyAccelerationStructureKHR(VkDevice device, VkAccelerationStructureKHR accelerationStructure)
+	{
+		((delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>)vkDestroyAccelerationStructureKHR_ptr.Value)(device, accelerationStructure, default);
+	}
+
+	public void vkDestroyAccelerationStructureKHR(VkDevice device, VkAccelerationStructureKHR accelerationStructure, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, VkAllocationCallbacks*, void>)vkDestroyAccelerationStructureKHR_ptr.Value)(device, accelerationStructure, allocator);
 	}
@@ -5238,9 +6646,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, VkStridedDeviceAddressRegionKHR*, uint, uint, uint, void>)vkCmdTraceRaysKHR_ptr.Value)(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, hitShaderBindingTable, callableShaderBindingTable, width, height, depth);
 	}
 
+	public VkResult vkCreateRayTracingPipelinesKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR* createInfos, VkPipeline* pipelines)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoKHR*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateRayTracingPipelinesKHR_ptr.Value)(device, deferredOperation, pipelineCache, createInfoCount, createInfos, default, pipelines);
+	}
+
 	public VkResult vkCreateRayTracingPipelinesKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
 		return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoKHR*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateRayTracingPipelinesKHR_ptr.Value)(device, deferredOperation, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
+	}
+
+	public VkResult vkCreateRayTracingPipelinesKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, in VkRayTracingPipelineCreateInfoKHR createInfos, VkPipeline* pipelines)
+	{
+		fixed (VkRayTracingPipelineCreateInfoKHR* createInfoPtr = &createInfos)
+		{
+			return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoKHR*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateRayTracingPipelinesKHR_ptr.Value)(device, deferredOperation, pipelineCache, createInfoCount, createInfoPtr, default, pipelines);
+		}
 	}
 
 	public VkResult vkCreateRayTracingPipelinesKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, in VkRayTracingPipelineCreateInfoKHR createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
@@ -5406,9 +6827,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkPhysicalDeviceSurfaceInfo2KHR*, VkDeviceGroupPresentModeFlagsKHR*, VkResult>)vkGetDeviceGroupSurfacePresentModes2EXT_ptr.Value)(device, surfaceInfo, modes);
 	}
 
+	public VkResult vkCreateExecutionGraphPipelinesAMDX(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkExecutionGraphPipelineCreateInfoAMDX* createInfos, VkPipeline* pipelines)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateExecutionGraphPipelinesAMDX_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, default, pipelines);
+	}
+
 	public VkResult vkCreateExecutionGraphPipelinesAMDX(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkExecutionGraphPipelineCreateInfoAMDX* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateExecutionGraphPipelinesAMDX_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
+	}
+
+	public VkResult vkCreateExecutionGraphPipelinesAMDX(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkExecutionGraphPipelineCreateInfoAMDX createInfos, VkPipeline* pipelines)
+	{
+		fixed (VkExecutionGraphPipelineCreateInfoAMDX* createInfoPtr = &createInfos)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkExecutionGraphPipelineCreateInfoAMDX*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateExecutionGraphPipelinesAMDX_ptr.Value)(device, pipelineCache, createInfoCount, createInfoPtr, default, pipelines);
+		}
 	}
 
 	public VkResult vkCreateExecutionGraphPipelinesAMDX(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkExecutionGraphPipelineCreateInfoAMDX createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
@@ -5449,9 +6883,22 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, ulong, ulong, ulong, void>)vkCmdDispatchGraphIndirectCountAMDX_ptr.Value)(commandBuffer, scratch, scratchSize, countInfo);
 	}
 
+	public VkResult vkCreateCudaModuleNV(VkDevice device, VkCudaModuleCreateInfoNV* createInfo, VkCudaModuleNV* module)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCudaModuleCreateInfoNV*, VkAllocationCallbacks*, VkCudaModuleNV*, VkResult>)vkCreateCudaModuleNV_ptr.Value)(device, createInfo, default, module);
+	}
+
 	public VkResult vkCreateCudaModuleNV(VkDevice device, VkCudaModuleCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkCudaModuleNV* module)
 	{
 		return ((delegate* unmanaged<VkDevice, VkCudaModuleCreateInfoNV*, VkAllocationCallbacks*, VkCudaModuleNV*, VkResult>)vkCreateCudaModuleNV_ptr.Value)(device, createInfo, allocator, module);
+	}
+
+	public VkResult vkCreateCudaModuleNV(VkDevice device, in VkCudaModuleCreateInfoNV createInfo, VkCudaModuleNV* module)
+	{
+		fixed (VkCudaModuleCreateInfoNV* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCudaModuleCreateInfoNV*, VkAllocationCallbacks*, VkCudaModuleNV*, VkResult>)vkCreateCudaModuleNV_ptr.Value)(device, createInfoPtr, default, module);
+		}
 	}
 
 	public VkResult vkCreateCudaModuleNV(VkDevice device, in VkCudaModuleCreateInfoNV createInfo, VkAllocationCallbacks* allocator, VkCudaModuleNV* module)
@@ -5467,9 +6914,22 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkCudaModuleNV, ulong*, void*, VkResult>)vkGetCudaModuleCacheNV_ptr.Value)(device, module, cacheSize, cacheData);
 	}
 
+	public VkResult vkCreateCudaFunctionNV(VkDevice device, VkCudaFunctionCreateInfoNV* createInfo, VkCudaFunctionNV* function)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCudaFunctionCreateInfoNV*, VkAllocationCallbacks*, VkCudaFunctionNV*, VkResult>)vkCreateCudaFunctionNV_ptr.Value)(device, createInfo, default, function);
+	}
+
 	public VkResult vkCreateCudaFunctionNV(VkDevice device, VkCudaFunctionCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, VkCudaFunctionNV* function)
 	{
 		return ((delegate* unmanaged<VkDevice, VkCudaFunctionCreateInfoNV*, VkAllocationCallbacks*, VkCudaFunctionNV*, VkResult>)vkCreateCudaFunctionNV_ptr.Value)(device, createInfo, allocator, function);
+	}
+
+	public VkResult vkCreateCudaFunctionNV(VkDevice device, in VkCudaFunctionCreateInfoNV createInfo, VkCudaFunctionNV* function)
+	{
+		fixed (VkCudaFunctionCreateInfoNV* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCudaFunctionCreateInfoNV*, VkAllocationCallbacks*, VkCudaFunctionNV*, VkResult>)vkCreateCudaFunctionNV_ptr.Value)(device, createInfoPtr, default, function);
+		}
 	}
 
 	public VkResult vkCreateCudaFunctionNV(VkDevice device, in VkCudaFunctionCreateInfoNV createInfo, VkAllocationCallbacks* allocator, VkCudaFunctionNV* function)
@@ -5480,12 +6940,22 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public void vkDestroyCudaModuleNV(VkDevice device, VkCudaModuleNV module, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyCudaModuleNV(VkDevice device, VkCudaModuleNV module)
+	{
+		((delegate* unmanaged<VkDevice, VkCudaModuleNV, VkAllocationCallbacks*, void>)vkDestroyCudaModuleNV_ptr.Value)(device, module, default);
+	}
+
+	public void vkDestroyCudaModuleNV(VkDevice device, VkCudaModuleNV module, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkCudaModuleNV, VkAllocationCallbacks*, void>)vkDestroyCudaModuleNV_ptr.Value)(device, module, allocator);
 	}
 
-	public void vkDestroyCudaFunctionNV(VkDevice device, VkCudaFunctionNV function, VkAllocationCallbacks* allocator = default)
+	public void vkDestroyCudaFunctionNV(VkDevice device, VkCudaFunctionNV function)
+	{
+		((delegate* unmanaged<VkDevice, VkCudaFunctionNV, VkAllocationCallbacks*, void>)vkDestroyCudaFunctionNV_ptr.Value)(device, function, default);
+	}
+
+	public void vkDestroyCudaFunctionNV(VkDevice device, VkCudaFunctionNV function, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkCudaFunctionNV, VkAllocationCallbacks*, void>)vkDestroyCudaFunctionNV_ptr.Value)(device, function, allocator);
 	}

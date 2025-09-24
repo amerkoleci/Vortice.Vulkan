@@ -303,6 +303,7 @@ partial class CsCodeGenerator
                 || cppEnum.Name.EndsWith("FlagBitsNN")
                 || cppEnum.Name.EndsWith("FlagBitsARM")
                 || cppEnum.Name.EndsWith("FlagBitsQCOM")
+                || cppEnum.Name.EndsWith("FlagBitsVALVE")
                 || (cppEnum.Name.StartsWith("Spv") && cppEnum.Name.EndsWith("Mask_")) // spirv.h
                 ;
 

@@ -11179,6 +11179,27 @@ public partial struct VkTraceRaysIndirectCommand2KHR
 	public uint depth;
 }
 
+public unsafe partial struct VkPhysicalDeviceShaderUntypedPointersFeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderUntypedPointersFeaturesKHR;
+	public void* pNext;
+	public VkBool32 shaderUntypedPointers;
+
+	public VkPhysicalDeviceShaderUntypedPointersFeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR;
@@ -13507,13 +13528,14 @@ public unsafe partial struct VkPhysicalDeviceLayeredApiVulkanPropertiesKHR : ISt
 	}
 }
 
-public unsafe partial struct VkPhysicalDeviceMaintenance8FeaturesKHR : IStructureType, IChainType
+public unsafe partial struct VkMemoryBarrierAccessFlags3KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance8FeaturesKHR;
+	public VkStructureType sType = VkStructureType.MemoryBarrierAccessFlags3KHR;
 	public void* pNext;
-	public VkBool32 maintenance8;
+	public VkAccessFlags3KHR srcAccessMask3;
+	public VkAccessFlags3KHR dstAccessMask3;
 
-	public VkPhysicalDeviceMaintenance8FeaturesKHR()
+	public VkMemoryBarrierAccessFlags3KHR()
 	{
 	}
 
@@ -13528,14 +13550,13 @@ public unsafe partial struct VkPhysicalDeviceMaintenance8FeaturesKHR : IStructur
 	}
 }
 
-public unsafe partial struct VkMemoryBarrierAccessFlags3KHR : IStructureType, IChainType
+public unsafe partial struct VkPhysicalDeviceMaintenance8FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryBarrierAccessFlags3KHR;
+	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance8FeaturesKHR;
 	public void* pNext;
-	public VkAccessFlags3KHR srcAccessMask3;
-	public VkAccessFlags3KHR dstAccessMask3;
+	public VkBool32 maintenance8;
 
-	public VkMemoryBarrierAccessFlags3KHR()
+	public VkPhysicalDeviceMaintenance8FeaturesKHR()
 	{
 	}
 
@@ -19717,6 +19738,96 @@ public unsafe partial struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT
 	public VkBool32 primitivesGeneratedQueryWithNonZeroStreams;
 
 	public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE;
+	public void* pNext;
+	public VkBool32 videoEncodeRgbConversion;
+
+	public VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkVideoEncodeRgbConversionCapabilitiesVALVE : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.VideoEncodeRgbConversionCapabilitiesVALVE;
+	public void* pNext;
+	public VkVideoEncodeRgbModelConversionFlagsVALVE rgbModels;
+	public VkVideoEncodeRgbRangeCompressionFlagsVALVE rgbRanges;
+	public VkVideoEncodeRgbChromaOffsetFlagsVALVE xChromaOffsets;
+	public VkVideoEncodeRgbChromaOffsetFlagsVALVE yChromaOffsets;
+
+	public VkVideoEncodeRgbConversionCapabilitiesVALVE()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkVideoEncodeProfileRgbConversionInfoVALVE : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.VideoEncodeProfileRgbConversionInfoVALVE;
+	public void* pNext;
+	public VkBool32 performEncodeRgbConversion;
+
+	public VkVideoEncodeProfileRgbConversionInfoVALVE()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkVideoEncodeSessionRgbConversionCreateInfoVALVE : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.VideoEncodeSessionRgbConversionCreateInfoVALVE;
+	public void* pNext;
+	public VkVideoEncodeRgbModelConversionFlagsVALVE rgbModel;
+	public VkVideoEncodeRgbRangeCompressionFlagsVALVE rgbRange;
+	public VkVideoEncodeRgbChromaOffsetFlagsVALVE xChromaOffset;
+	public VkVideoEncodeRgbChromaOffsetFlagsVALVE yChromaOffset;
+
+	public VkVideoEncodeSessionRgbConversionCreateInfoVALVE()
 	{
 	}
 
@@ -27596,6 +27707,54 @@ public unsafe partial struct VkAccelerationStructureTrianglesDisplacementMicroma
 	public VkMicromapEXT micromap;
 
 	public VkAccelerationStructureTrianglesDisplacementMicromapNV()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDenseGeometryFormatFeaturesAMDX;
+	public void* pNext;
+	public VkBool32 denseGeometryFormat;
+
+	public VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.AccelerationStructureDenseGeometryFormatTrianglesDataAMDX;
+	public void* pNext;
+	public VkDeviceOrHostAddressConstKHR compressedData;
+	public ulong dataSize;
+	public uint numTriangles;
+	public uint numVertices;
+	public uint maxPrimitiveIndex;
+	public uint maxGeometryIndex;
+	public VkCompressedTriangleFormatAMDX format;
+
+	public VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX()
 	{
 	}
 

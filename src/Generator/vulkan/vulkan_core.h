@@ -69,7 +69,7 @@ extern "C" {
 #define VK_API_VERSION_1_0 VK_MAKE_API_VERSION(0, 1, 0, 0)// Patch version should always be set to 0
 
 // Version of this file
-#define VK_HEADER_VERSION 321
+#define VK_HEADER_VERSION 327
 
 // Complete version of this file
 #define VK_HEADER_VERSION_COMPLETE VK_MAKE_API_VERSION(0, 1, 4, VK_HEADER_VERSION)
@@ -157,6 +157,7 @@ typedef enum VkResult {
     VK_ERROR_FORMAT_NOT_SUPPORTED = -11,
     VK_ERROR_FRAGMENTED_POOL = -12,
     VK_ERROR_UNKNOWN = -13,
+    VK_ERROR_VALIDATION_FAILED = -1000011001,
     VK_ERROR_OUT_OF_POOL_MEMORY = -1000069000,
     VK_ERROR_INVALID_EXTERNAL_HANDLE = -1000072003,
     VK_ERROR_FRAGMENTATION = -1000161000,
@@ -168,7 +169,6 @@ typedef enum VkResult {
     VK_SUBOPTIMAL_KHR = 1000001003,
     VK_ERROR_OUT_OF_DATE_KHR = -1000001004,
     VK_ERROR_INCOMPATIBLE_DISPLAY_KHR = -1000003001,
-    VK_ERROR_VALIDATION_FAILED_EXT = -1000011001,
     VK_ERROR_INVALID_SHADER_NV = -1000012000,
     VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR = -1000023000,
     VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR = -1000023001,
@@ -187,6 +187,7 @@ typedef enum VkResult {
     VK_INCOMPATIBLE_SHADER_BINARY_EXT = 1000482000,
     VK_PIPELINE_BINARY_MISSING_KHR = 1000483000,
     VK_ERROR_NOT_ENOUGH_SPACE_KHR = -1000483000,
+    VK_ERROR_VALIDATION_FAILED_EXT = VK_ERROR_VALIDATION_FAILED,
     VK_ERROR_OUT_OF_POOL_MEMORY_KHR = VK_ERROR_OUT_OF_POOL_MEMORY,
     VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR = VK_ERROR_INVALID_EXTERNAL_HANDLE,
     VK_ERROR_FRAGMENTATION_EXT = VK_ERROR_FRAGMENTATION,
@@ -968,6 +969,11 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT = 1000381001,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT = 1000382000,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR = 1000386000,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR = 1000387000,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE = 1000390000,
+    VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE = 1000390001,
+    VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE = 1000390002,
+    VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE = 1000390003,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT = 1000391000,
     VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT = 1000391001,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_FEATURES_EXT = 1000392000,
@@ -1085,6 +1091,12 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD = 1000476000,
     VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD = 1000476001,
     VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD = 1000476002,
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DENSE_GEOMETRY_FORMAT_FEATURES_AMDX = 1000478000,
+#endif
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+    VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DENSE_GEOMETRY_FORMAT_TRIANGLES_DATA_AMDX = 1000478001,
+#endif
     VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR = 1000479000,
     VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR = 1000479001,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_2_FEATURES_KHR = 1000479002,
@@ -1297,7 +1309,7 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_INLINE_SESSION_PARAMETERS_INFO_KHR = 1000586001,
     VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR = 1000586002,
     VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR = 1000586003,
-    VK_STRUCTURE_TYPE_OH_SURFACE_CREATE_INFO_OHOS = 1000587000,
+    VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS = 1000685000,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI = 1000590000,
     VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI = 1000590001,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV = 1000593000,
@@ -7535,7 +7547,7 @@ typedef struct VkPhysicalDeviceSubgroupSizeControlProperties {
 
 typedef struct VkPipelineShaderStageRequiredSubgroupSizeCreateInfo {
     VkStructureType    sType;
-    void*              pNext;
+    const void*        pNext;
     uint32_t           requiredSubgroupSize;
 } VkPipelineShaderStageRequiredSubgroupSizeCreateInfo;
 
@@ -8099,6 +8111,9 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT = 0x04000000ULL;
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT = 0x00800000ULL;
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT = 0x01000000ULL;
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX = 0x200000000ULL;
+#endif
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM = 0x20000000ULL;
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM = 0x08000000ULL;
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT = 0x80000000ULL;
@@ -12351,6 +12366,18 @@ VKAPI_ATTR void VKAPI_CALL vkCmdTraceRaysIndirect2KHR(
 #endif
 
 
+// VK_KHR_shader_untyped_pointers is a preprocessor guard. Do not pass it to API calls.
+#define VK_KHR_shader_untyped_pointers 1
+#define VK_KHR_SHADER_UNTYPED_POINTERS_SPEC_VERSION 1
+#define VK_KHR_SHADER_UNTYPED_POINTERS_EXTENSION_NAME "VK_KHR_shader_untyped_pointers"
+typedef struct VkPhysicalDeviceShaderUntypedPointersFeaturesKHR {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           shaderUntypedPointers;
+} VkPhysicalDeviceShaderUntypedPointersFeaturesKHR;
+
+
+
 // VK_KHR_portability_enumeration is a preprocessor guard. Do not pass it to API calls.
 #define VK_KHR_portability_enumeration 1
 #define VK_KHR_PORTABILITY_ENUMERATION_SPEC_VERSION 1
@@ -13615,18 +13642,18 @@ typedef VkFlags64 VkAccessFlags3KHR;
 typedef VkFlags64 VkAccessFlagBits3KHR;
 static const VkAccessFlagBits3KHR VK_ACCESS_3_NONE_KHR = 0ULL;
 
-typedef struct VkPhysicalDeviceMaintenance8FeaturesKHR {
-    VkStructureType    sType;
-    void*              pNext;
-    VkBool32           maintenance8;
-} VkPhysicalDeviceMaintenance8FeaturesKHR;
-
 typedef struct VkMemoryBarrierAccessFlags3KHR {
     VkStructureType      sType;
     const void*          pNext;
     VkAccessFlags3KHR    srcAccessMask3;
     VkAccessFlags3KHR    dstAccessMask3;
 } VkMemoryBarrierAccessFlags3KHR;
+
+typedef struct VkPhysicalDeviceMaintenance8FeaturesKHR {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           maintenance8;
+} VkPhysicalDeviceMaintenance8FeaturesKHR;
 
 
 
@@ -15727,6 +15754,9 @@ typedef enum VkGeometryTypeKHR {
     VK_GEOMETRY_TYPE_INSTANCES_KHR = 2,
     VK_GEOMETRY_TYPE_SPHERES_NV = 1000429004,
     VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV = 1000429005,
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+    VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX = 1000478000,
+#endif
     VK_GEOMETRY_TYPE_TRIANGLES_NV = VK_GEOMETRY_TYPE_TRIANGLES_KHR,
     VK_GEOMETRY_TYPE_AABBS_NV = VK_GEOMETRY_TYPE_AABBS_KHR,
     VK_GEOMETRY_TYPE_MAX_ENUM_KHR = 0x7FFFFFFF
@@ -15815,6 +15845,7 @@ typedef enum VkBuildAccelerationStructureFlagBitsKHR {
     VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISPLACEMENT_MICROMAP_UPDATE_BIT_NV = 0x00000200,
 #endif
     VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR = 0x00000800,
+    VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV = 0x00001000,
     VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV = VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR,
     VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NV = VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR,
     VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV = VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_KHR,
@@ -18104,7 +18135,7 @@ typedef struct VkDeviceDiagnosticsConfigCreateInfoNV {
 
 // VK_QCOM_tile_shading is a preprocessor guard. Do not pass it to API calls.
 #define VK_QCOM_tile_shading 1
-#define VK_QCOM_TILE_SHADING_SPEC_VERSION 1
+#define VK_QCOM_TILE_SHADING_SPEC_VERSION 2
 #define VK_QCOM_TILE_SHADING_EXTENSION_NAME "VK_QCOM_tile_shading"
 
 typedef enum VkTileShadingRenderPassFlagBitsQCOM {
@@ -19329,6 +19360,66 @@ typedef struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {
 typedef VkPhysicalDeviceGlobalPriorityQueryFeatures VkPhysicalDeviceGlobalPriorityQueryFeaturesEXT;
 
 typedef VkQueueFamilyGlobalPriorityProperties VkQueueFamilyGlobalPriorityPropertiesEXT;
+
+
+
+// VK_VALVE_video_encode_rgb_conversion is a preprocessor guard. Do not pass it to API calls.
+#define VK_VALVE_video_encode_rgb_conversion 1
+#define VK_VALVE_VIDEO_ENCODE_RGB_CONVERSION_SPEC_VERSION 1
+#define VK_VALVE_VIDEO_ENCODE_RGB_CONVERSION_EXTENSION_NAME "VK_VALVE_video_encode_rgb_conversion"
+
+typedef enum VkVideoEncodeRgbModelConversionFlagBitsVALVE {
+    VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_RGB_IDENTITY_BIT_VALVE = 0x00000001,
+    VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_IDENTITY_BIT_VALVE = 0x00000002,
+    VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_709_BIT_VALVE = 0x00000004,
+    VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_601_BIT_VALVE = 0x00000008,
+    VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_2020_BIT_VALVE = 0x00000010,
+    VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_FLAG_BITS_MAX_ENUM_VALVE = 0x7FFFFFFF
+} VkVideoEncodeRgbModelConversionFlagBitsVALVE;
+typedef VkFlags VkVideoEncodeRgbModelConversionFlagsVALVE;
+
+typedef enum VkVideoEncodeRgbRangeCompressionFlagBitsVALVE {
+    VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FULL_RANGE_BIT_VALVE = 0x00000001,
+    VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_NARROW_RANGE_BIT_VALVE = 0x00000002,
+    VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FLAG_BITS_MAX_ENUM_VALVE = 0x7FFFFFFF
+} VkVideoEncodeRgbRangeCompressionFlagBitsVALVE;
+typedef VkFlags VkVideoEncodeRgbRangeCompressionFlagsVALVE;
+
+typedef enum VkVideoEncodeRgbChromaOffsetFlagBitsVALVE {
+    VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_COSITED_EVEN_BIT_VALVE = 0x00000001,
+    VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_MIDPOINT_BIT_VALVE = 0x00000002,
+    VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_FLAG_BITS_MAX_ENUM_VALVE = 0x7FFFFFFF
+} VkVideoEncodeRgbChromaOffsetFlagBitsVALVE;
+typedef VkFlags VkVideoEncodeRgbChromaOffsetFlagsVALVE;
+typedef struct VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           videoEncodeRgbConversion;
+} VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE;
+
+typedef struct VkVideoEncodeRgbConversionCapabilitiesVALVE {
+    VkStructureType                               sType;
+    void*                                         pNext;
+    VkVideoEncodeRgbModelConversionFlagsVALVE     rgbModels;
+    VkVideoEncodeRgbRangeCompressionFlagsVALVE    rgbRanges;
+    VkVideoEncodeRgbChromaOffsetFlagsVALVE        xChromaOffsets;
+    VkVideoEncodeRgbChromaOffsetFlagsVALVE        yChromaOffsets;
+} VkVideoEncodeRgbConversionCapabilitiesVALVE;
+
+typedef struct VkVideoEncodeProfileRgbConversionInfoVALVE {
+    VkStructureType    sType;
+    const void*        pNext;
+    VkBool32           performEncodeRgbConversion;
+} VkVideoEncodeProfileRgbConversionInfoVALVE;
+
+typedef struct VkVideoEncodeSessionRgbConversionCreateInfoVALVE {
+    VkStructureType                                  sType;
+    const void*                                      pNext;
+    VkVideoEncodeRgbModelConversionFlagBitsVALVE     rgbModel;
+    VkVideoEncodeRgbRangeCompressionFlagBitsVALVE    rgbRange;
+    VkVideoEncodeRgbChromaOffsetFlagBitsVALVE        xChromaOffset;
+    VkVideoEncodeRgbChromaOffsetFlagBitsVALVE        yChromaOffset;
+} VkVideoEncodeSessionRgbConversionCreateInfoVALVE;
 
 
 
@@ -22603,7 +22694,7 @@ typedef struct VkPhysicalDeviceRayTracingValidationFeaturesNV {
 
 // VK_NV_cluster_acceleration_structure is a preprocessor guard. Do not pass it to API calls.
 #define VK_NV_cluster_acceleration_structure 1
-#define VK_NV_CLUSTER_ACCELERATION_STRUCTURE_SPEC_VERSION 3
+#define VK_NV_CLUSTER_ACCELERATION_STRUCTURE_SPEC_VERSION 4
 #define VK_NV_CLUSTER_ACCELERATION_STRUCTURE_EXTENSION_NAME "VK_NV_cluster_acceleration_structure"
 
 typedef enum VkClusterAccelerationStructureTypeNV {

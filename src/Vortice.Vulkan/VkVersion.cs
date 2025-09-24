@@ -37,7 +37,7 @@ public readonly struct VkVersion : IComparable, IComparable<VkVersion>, IEquatab
 
     public uint Minor => ((Value >> 12) & 0x3FFu);
 
-    public uint Patch => Value & 0xfffu;
+    public uint Patch => Value & 0xFFFu;
 
     public static bool operator ==(VkVersion left, VkVersion right) => left.Value == right.Value;
 

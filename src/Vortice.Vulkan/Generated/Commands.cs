@@ -21,9 +21,22 @@ unsafe partial class Vulkan
 	public static PFN_vkVoidFunction vkEnumerateInstanceLayerProperties_ptr;
 	public static PFN_vkVoidFunction vkEnumerateInstanceVersion_ptr;
 
+	public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, VkInstance* instance)
+	{
+		return ((delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)vkCreateInstance_ptr.Value)(createInfo, default, instance);
+	}
+
 	public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkInstance* instance)
 	{
 		return ((delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)vkCreateInstance_ptr.Value)(createInfo, allocator, instance);
+	}
+
+	public static VkResult vkCreateInstance(in VkInstanceCreateInfo createInfo, VkInstance* instance)
+	{
+		fixed (VkInstanceCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)vkCreateInstance_ptr.Value)(createInfoPtr, default, instance);
+		}
 	}
 
 	public static VkResult vkCreateInstance(in VkInstanceCreateInfo createInfo, VkAllocationCallbacks* allocator, VkInstance* instance)
@@ -34,6 +47,16 @@ unsafe partial class Vulkan
 		}
 	}
 
+	public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, out VkInstance instance)
+	{
+		Unsafe.SkipInit(out instance);
+
+		fixed (VkInstance* instancePtr = &instance)
+		{
+			return ((delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)vkCreateInstance_ptr.Value)(createInfo, default, instancePtr);
+		}
+	}
+
 	public static VkResult vkCreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance)
 	{
 		Unsafe.SkipInit(out instance);
@@ -41,6 +64,19 @@ unsafe partial class Vulkan
 		fixed (VkInstance* instancePtr = &instance)
 		{
 			return ((delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)vkCreateInstance_ptr.Value)(createInfo, allocator, instancePtr);
+		}
+	}
+
+	public static VkResult vkCreateInstance(in VkInstanceCreateInfo createInfo, out VkInstance instance)
+	{
+		fixed (VkInstanceCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out instance);
+
+			fixed (VkInstance* instancePtr = &instance)
+			{
+				return ((delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)vkCreateInstance_ptr.Value)(createInfoPtr, default, instancePtr);
+			}
 		}
 	}
 

@@ -111,6 +111,8 @@ public enum VkResult
 	/// </summary>
 	/// <unmanaged>VK_ERROR_UNKNOWN</unmanaged>
 	ErrorUnknown = -13,
+	/// <unmanaged>VK_ERROR_VALIDATION_FAILED</unmanaged>
+	ErrorValidationFailed = -1000011001,
 	/// <unmanaged>VK_ERROR_OUT_OF_POOL_MEMORY</unmanaged>
 	ErrorOutOfPoolMemory = -1000069000,
 	/// <unmanaged>VK_ERROR_INVALID_EXTERNAL_HANDLE</unmanaged>
@@ -133,8 +135,6 @@ public enum VkResult
 	ErrorOutOfDateKHR = -1000001004,
 	/// <unmanaged>VK_ERROR_INCOMPATIBLE_DISPLAY_KHR</unmanaged>
 	ErrorIncompatibleDisplayKHR = -1000003001,
-	/// <unmanaged>VK_ERROR_VALIDATION_FAILED_EXT</unmanaged>
-	ErrorValidationFailedEXT = -1000011001,
 	/// <unmanaged>VK_ERROR_INVALID_SHADER_NV</unmanaged>
 	ErrorInvalidShaderNV = -1000012000,
 	/// <unmanaged>VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR</unmanaged>
@@ -1668,6 +1668,16 @@ public enum VkStructureType
 	PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT = 1000382000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR</unmanaged>
 	PhysicalDeviceRayTracingMaintenance1FeaturesKHR = 1000386000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR</unmanaged>
+	PhysicalDeviceShaderUntypedPointersFeaturesKHR = 1000387000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE</unmanaged>
+	PhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE = 1000390000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE</unmanaged>
+	VideoEncodeRgbConversionCapabilitiesVALVE = 1000390001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE</unmanaged>
+	VideoEncodeProfileRgbConversionInfoVALVE = 1000390002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE</unmanaged>
+	VideoEncodeSessionRgbConversionCreateInfoVALVE = 1000390003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT</unmanaged>
 	PhysicalDeviceImageViewMinLodFeaturesEXT = 1000391000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT</unmanaged>
@@ -1890,6 +1900,10 @@ public enum VkStructureType
 	AntiLagDataAMD = 1000476001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD</unmanaged>
 	AntiLagPresentationInfoAMD = 1000476002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DENSE_GEOMETRY_FORMAT_FEATURES_AMDX</unmanaged>
+	PhysicalDeviceDenseGeometryFormatFeaturesAMDX = 1000478000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DENSE_GEOMETRY_FORMAT_TRIANGLES_DATA_AMDX</unmanaged>
+	AccelerationStructureDenseGeometryFormatTrianglesDataAMDX = 1000478001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR</unmanaged>
 	SurfaceCapabilitiesPresentId2KHR = 1000479000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR</unmanaged>
@@ -2314,8 +2328,8 @@ public enum VkStructureType
 	VideoDecodeH265InlineSessionParametersInfoKHR = 1000586002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR</unmanaged>
 	VideoDecodeAV1InlineSessionParametersInfoKHR = 1000586003,
-	/// <unmanaged>VK_STRUCTURE_TYPE_OH_SURFACE_CREATE_INFO_OHOS</unmanaged>
-	OhSurfaceCreateInfoOhos = 1000587000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS</unmanaged>
+	SurfaceCreateInfoOhos = 1000685000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI</unmanaged>
 	PhysicalDeviceHdrVividFeaturesHUAWEI = 1000590000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI</unmanaged>
@@ -5689,6 +5703,9 @@ public enum VkDriverId
 	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_MESA_HONEYKRISP</unmanaged>
 	MESAHoneykrisp = 26,
+	/// <summary>
+	/// Vulkan SC Emulation on Vulkan
+	/// </summary>
 	/// <unmanaged>VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN</unmanaged>
 	VulkanScEmulationOnVulkan = 27,
 }
@@ -7904,6 +7921,8 @@ public enum VkGeometryTypeKHR
 	SpheresNV = 1000429004,
 	/// <unmanaged>VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV</unmanaged>
 	LinearSweptSpheresNV = 1000429005,
+	/// <unmanaged>VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX</unmanaged>
+	DenseGeometryFormatTrianglesAMDX = 1000478000,
 }
 
 public enum VkAccelerationStructureTypeKHR
@@ -7994,6 +8013,8 @@ public enum VkBuildAccelerationStructureFlagsKHR
 	AllowDisplacementMicromapUpdateNV = 0x00000200,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR</unmanaged>
 	AllowDataAccess = 0x00000800,
+	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV</unmanaged>
+	AllowClusterOpacityMicromapsNV = 0x00001000,
 }
 
 [Flags]
@@ -8381,6 +8402,48 @@ public enum VkFrameBoundaryFlagsEXT
 	None = 0,
 	/// <unmanaged>VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT</unmanaged>
 	FrameEnd = 0x00000001,
+}
+
+[Flags]
+public enum VkVideoEncodeRgbModelConversionFlagsVALVE
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_RGB_IDENTITY_BIT_VALVE</unmanaged>
+	RgbIdentityVALVE = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_IDENTITY_BIT_VALVE</unmanaged>
+	YcbcrIdentityVALVE = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_709_BIT_VALVE</unmanaged>
+	Ycbcr709VALVE = 0x00000004,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_601_BIT_VALVE</unmanaged>
+	Ycbcr601VALVE = 0x00000008,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_2020_BIT_VALVE</unmanaged>
+	Ycbcr2020VALVE = 0x00000010,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_FLAG_BITS_MAX_ENUM_VALVE</unmanaged>
+	FlagBitsMaxEnumVALVE = 0x7FFFFFFF,
+}
+
+[Flags]
+public enum VkVideoEncodeRgbRangeCompressionFlagsVALVE
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FULL_RANGE_BIT_VALVE</unmanaged>
+	FullRangeVALVE = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_NARROW_RANGE_BIT_VALVE</unmanaged>
+	NarrowRangeVALVE = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FLAG_BITS_MAX_ENUM_VALVE</unmanaged>
+	FlagBitsMaxEnumVALVE = 0x7FFFFFFF,
+}
+
+[Flags]
+public enum VkVideoEncodeRgbChromaOffsetFlagsVALVE
+{
+	None = 0,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_COSITED_EVEN_BIT_VALVE</unmanaged>
+	CositedEvenVALVE = 0x00000001,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_MIDPOINT_BIT_VALVE</unmanaged>
+	MidpointVALVE = 0x00000002,
+	/// <unmanaged>VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_FLAG_BITS_MAX_ENUM_VALVE</unmanaged>
+	FlagBitsMaxEnumVALVE = 0x7FFFFFFF,
 }
 
 public enum VkMicromapTypeEXT
@@ -9085,6 +9148,14 @@ public enum VkDisplacementMicromapFormatNV
 	_256Triangles128Bytes = 2,
 	/// <unmanaged>VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV</unmanaged>
 	_1024Triangles128Bytes = 3,
+}
+
+public enum VkCompressedTriangleFormatAMDX
+{
+	/// <unmanaged>VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX</unmanaged>
+	Dgf1AMDX = 0,
+	/// <unmanaged>VK_COMPRESSED_TRIANGLE_FORMAT_MAX_ENUM_AMDX</unmanaged>
+	MaxEnumAMDX = 0x7FFFFFFF,
 }
 
 [Flags]
@@ -9976,6 +10047,8 @@ public enum VkBufferUsageFlags2 : ulong
 	MicromapBuildInputReadOnlyEXT = 0x00800000UL,
 	/// <unmanaged>VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT</unmanaged>
 	MicromapStorageEXT = 0x01000000UL,
+	/// <unmanaged>VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX</unmanaged>
+	CompressedDataDgf1AMDX = 0x200000000UL,
 	/// <unmanaged>VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM</unmanaged>
 	DataGraphForeignDescriptorARM = 0x20000000UL,
 	/// <unmanaged>VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM</unmanaged>

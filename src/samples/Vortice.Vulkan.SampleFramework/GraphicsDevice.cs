@@ -100,8 +100,8 @@ public unsafe sealed class GraphicsDevice : IDisposable
             instanceCreateInfo.pNext = &debugUtilsCreateInfo;
         }
 
-        VkResult result = vkCreateInstance(&instanceCreateInfo, null, out VkInstance);
-        if (result != VkResult.Success)
+        VkResult result = vkCreateInstance(&instanceCreateInfo, out VkInstance);
+        if (result != VK_SUCCESS)
         {
             throw new InvalidOperationException($"Failed to create vulkan instance: {result}");
         }

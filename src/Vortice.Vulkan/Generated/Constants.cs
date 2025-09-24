@@ -15,7 +15,7 @@ namespace Vortice.Vulkan;
 public static partial class Vulkan
 {
 	/// <unmanaged>VK_HEADER_VERSION</unmanaged>
-	public const uint VK_HEADER_VERSION = 321;
+	public const uint VK_HEADER_VERSION = 327;
 	/// <unmanaged>VK_HEADER_VERSION_COMPLETE</unmanaged>
 	public static VkVersion VK_HEADER_VERSION_COMPLETE => new VkVersion(0, 1, 4, VK_HEADER_VERSION);
 	/// <unmanaged>VK_ATTACHMENT_UNUSED</unmanaged>
@@ -105,21 +105,21 @@ public static partial class Vulkan
 	/// <unmanaged>vulkan_video_codecs_common</unmanaged>
 	public const uint vulkan_video_codecs_common = 1;
 	/// <unmanaged>STD_VIDEO_H264_CPB_CNT_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H264_CPB_CNT_LIST_SIZE = 32;
+	public const uint STD_VIDEO_H264_CPB_CNT_LIST_SIZE = 32U;
 	/// <unmanaged>STD_VIDEO_H264_SCALING_LIST_4X4_NUM_LISTS</unmanaged>
-	public const uint STD_VIDEO_H264_SCALING_LIST_4X4_NUM_LISTS = 6;
+	public const uint STD_VIDEO_H264_SCALING_LIST_4X4_NUM_LISTS = 6U;
 	/// <unmanaged>STD_VIDEO_H264_SCALING_LIST_4X4_NUM_ELEMENTS</unmanaged>
-	public const uint STD_VIDEO_H264_SCALING_LIST_4X4_NUM_ELEMENTS = 16;
+	public const uint STD_VIDEO_H264_SCALING_LIST_4X4_NUM_ELEMENTS = 16U;
 	/// <unmanaged>STD_VIDEO_H264_SCALING_LIST_8X8_NUM_LISTS</unmanaged>
-	public const uint STD_VIDEO_H264_SCALING_LIST_8X8_NUM_LISTS = 6;
+	public const uint STD_VIDEO_H264_SCALING_LIST_8X8_NUM_LISTS = 6U;
 	/// <unmanaged>STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS</unmanaged>
-	public const uint STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
+	public const uint STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS = 64U;
 	/// <unmanaged>STD_VIDEO_H264_MAX_NUM_LIST_REF</unmanaged>
-	public const uint STD_VIDEO_H264_MAX_NUM_LIST_REF = 32;
+	public const uint STD_VIDEO_H264_MAX_NUM_LIST_REF = 32U;
 	/// <unmanaged>STD_VIDEO_H264_MAX_CHROMA_PLANES</unmanaged>
-	public const uint STD_VIDEO_H264_MAX_CHROMA_PLANES = 2;
+	public const uint STD_VIDEO_H264_MAX_CHROMA_PLANES = 2U;
 	/// <unmanaged>STD_VIDEO_H264_NO_REFERENCE_PICTURE</unmanaged>
-	public const float STD_VIDEO_H264_NO_REFERENCE_PICTURE = 0xFF;
+	public const uint STD_VIDEO_H264_NO_REFERENCE_PICTURE = 0xFFU;
 	/// <unmanaged>vulkan_video_codec_h264std_encode</unmanaged>
 	public const uint vulkan_video_codec_h264std_encode = 1;
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_1_0_0</unmanaged>
@@ -137,51 +137,51 @@ public static partial class Vulkan
 	/// <unmanaged>vulkan_video_codec_h265std</unmanaged>
 	public const uint vulkan_video_codec_h265std = 1;
 	/// <unmanaged>STD_VIDEO_H265_CPB_CNT_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_CPB_CNT_LIST_SIZE = 32;
+	public const uint STD_VIDEO_H265_CPB_CNT_LIST_SIZE = 32U;
 	/// <unmanaged>STD_VIDEO_H265_SUBLAYERS_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_SUBLAYERS_LIST_SIZE = 7;
+	public const uint STD_VIDEO_H265_SUBLAYERS_LIST_SIZE = 7U;
 	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS = 6;
+	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS = 6U;
 	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS = 16;
+	public const uint STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS = 16U;
 	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS = 6;
+	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS = 6U;
 	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
+	public const uint STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64U;
 	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS = 6;
+	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS = 6U;
 	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS = 64;
+	public const uint STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS = 64U;
 	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS = 2;
+	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS = 2U;
 	/// <unmanaged>STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS</unmanaged>
-	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS = 64;
+	public const uint STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS = 64U;
 	/// <unmanaged>STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE = 6;
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE = 6U;
 	/// <unmanaged>STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19;
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE = 19U;
 	/// <unmanaged>STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE = 21;
+	public const uint STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE = 21U;
 	/// <unmanaged>STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE = 3;
+	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE = 3U;
 	/// <unmanaged>STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128;
+	public const uint STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE = 128U;
 	/// <unmanaged>STD_VIDEO_H265_MAX_NUM_LIST_REF</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_NUM_LIST_REF = 15;
+	public const uint STD_VIDEO_H265_MAX_NUM_LIST_REF = 15U;
 	/// <unmanaged>STD_VIDEO_H265_MAX_CHROMA_PLANES</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_CHROMA_PLANES = 2;
+	public const uint STD_VIDEO_H265_MAX_CHROMA_PLANES = 2U;
 	/// <unmanaged>STD_VIDEO_H265_MAX_SHORT_TERM_REF_PIC_SETS</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_SHORT_TERM_REF_PIC_SETS = 64;
+	public const uint STD_VIDEO_H265_MAX_SHORT_TERM_REF_PIC_SETS = 64U;
 	/// <unmanaged>STD_VIDEO_H265_MAX_DPB_SIZE</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_DPB_SIZE = 16;
+	public const uint STD_VIDEO_H265_MAX_DPB_SIZE = 16U;
 	/// <unmanaged>STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS = 32;
+	public const uint STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS = 32U;
 	/// <unmanaged>STD_VIDEO_H265_MAX_LONG_TERM_PICS</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_LONG_TERM_PICS = 16;
+	public const uint STD_VIDEO_H265_MAX_LONG_TERM_PICS = 16U;
 	/// <unmanaged>STD_VIDEO_H265_MAX_DELTA_POC</unmanaged>
-	public const uint STD_VIDEO_H265_MAX_DELTA_POC = 48;
+	public const uint STD_VIDEO_H265_MAX_DELTA_POC = 48U;
 	/// <unmanaged>STD_VIDEO_H265_NO_REFERENCE_PICTURE</unmanaged>
-	public const float STD_VIDEO_H265_NO_REFERENCE_PICTURE = 0xFF;
+	public const uint STD_VIDEO_H265_NO_REFERENCE_PICTURE = 0xFFU;
 	/// <unmanaged>vulkan_video_codec_h265std_encode</unmanaged>
 	public const uint vulkan_video_codec_h265std_encode = 1;
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_1_0_0</unmanaged>
@@ -205,7 +205,7 @@ public static partial class Vulkan
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_EXTENSION_NAME => "VK_STD_vulkan_video_codec_h264_decode"u8;
 	/// <unmanaged>STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE = 2;
+	public const uint STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE = 2U;
 	/// <unmanaged>VK_KHR_VIDEO_DECODE_H264_SPEC_VERSION</unmanaged>
 	public const uint VK_KHR_VIDEO_DECODE_H264_SPEC_VERSION = 9;
 	/// <unmanaged>VK_KHR_VIDEO_DECODE_H264_EXTENSION_NAME</unmanaged>
@@ -485,7 +485,7 @@ public static partial class Vulkan
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_EXTENSION_NAME => "VK_STD_vulkan_video_codec_h265_decode"u8;
 	/// <unmanaged>STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE</unmanaged>
-	public const uint STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8;
+	public const uint STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE = 8U;
 	/// <unmanaged>VK_KHR_VIDEO_DECODE_H265_SPEC_VERSION</unmanaged>
 	public const uint VK_KHR_VIDEO_DECODE_H265_SPEC_VERSION = 8;
 	/// <unmanaged>VK_KHR_VIDEO_DECODE_H265_EXTENSION_NAME</unmanaged>
@@ -692,6 +692,12 @@ public static partial class Vulkan
 	public const uint VK_KHR_RAY_TRACING_MAINTENANCE_1_SPEC_VERSION = 1;
 	/// <unmanaged>VK_KHR_RAY_TRACING_MAINTENANCE_1_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_KHR_RAY_TRACING_MAINTENANCE_1_EXTENSION_NAME => "VK_KHR_ray_tracing_maintenance1"u8;
+	/// <unmanaged>VK_KHR_shader_untyped_pointers</unmanaged>
+	public const uint VK_KHR_shader_untyped_pointers = 1;
+	/// <unmanaged>VK_KHR_SHADER_UNTYPED_POINTERS_SPEC_VERSION</unmanaged>
+	public const uint VK_KHR_SHADER_UNTYPED_POINTERS_SPEC_VERSION = 1;
+	/// <unmanaged>VK_KHR_SHADER_UNTYPED_POINTERS_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_KHR_SHADER_UNTYPED_POINTERS_EXTENSION_NAME => "VK_KHR_shader_untyped_pointers"u8;
 	/// <unmanaged>VK_KHR_portability_enumeration</unmanaged>
 	public const uint VK_KHR_portability_enumeration = 1;
 	/// <unmanaged>VK_KHR_PORTABILITY_ENUMERATION_SPEC_VERSION</unmanaged>
@@ -777,47 +783,47 @@ public static partial class Vulkan
 	/// <unmanaged>vulkan_video_codec_av1std</unmanaged>
 	public const uint vulkan_video_codec_av1std = 1;
 	/// <unmanaged>STD_VIDEO_AV1_NUM_REF_FRAMES</unmanaged>
-	public const uint STD_VIDEO_AV1_NUM_REF_FRAMES = 8;
+	public const uint STD_VIDEO_AV1_NUM_REF_FRAMES = 8U;
 	/// <unmanaged>STD_VIDEO_AV1_REFS_PER_FRAME</unmanaged>
-	public const uint STD_VIDEO_AV1_REFS_PER_FRAME = 7;
+	public const uint STD_VIDEO_AV1_REFS_PER_FRAME = 7U;
 	/// <unmanaged>STD_VIDEO_AV1_TOTAL_REFS_PER_FRAME</unmanaged>
-	public const uint STD_VIDEO_AV1_TOTAL_REFS_PER_FRAME = 8;
+	public const uint STD_VIDEO_AV1_TOTAL_REFS_PER_FRAME = 8U;
 	/// <unmanaged>STD_VIDEO_AV1_MAX_TILE_COLS</unmanaged>
-	public const uint STD_VIDEO_AV1_MAX_TILE_COLS = 64;
+	public const uint STD_VIDEO_AV1_MAX_TILE_COLS = 64U;
 	/// <unmanaged>STD_VIDEO_AV1_MAX_TILE_ROWS</unmanaged>
-	public const uint STD_VIDEO_AV1_MAX_TILE_ROWS = 64;
+	public const uint STD_VIDEO_AV1_MAX_TILE_ROWS = 64U;
 	/// <unmanaged>STD_VIDEO_AV1_MAX_SEGMENTS</unmanaged>
-	public const uint STD_VIDEO_AV1_MAX_SEGMENTS = 8;
+	public const uint STD_VIDEO_AV1_MAX_SEGMENTS = 8U;
 	/// <unmanaged>STD_VIDEO_AV1_SEG_LVL_MAX</unmanaged>
-	public const uint STD_VIDEO_AV1_SEG_LVL_MAX = 8;
+	public const uint STD_VIDEO_AV1_SEG_LVL_MAX = 8U;
 	/// <unmanaged>STD_VIDEO_AV1_PRIMARY_REF_NONE</unmanaged>
-	public const uint STD_VIDEO_AV1_PRIMARY_REF_NONE = 7;
+	public const uint STD_VIDEO_AV1_PRIMARY_REF_NONE = 7U;
 	/// <unmanaged>STD_VIDEO_AV1_SELECT_INTEGER_MV</unmanaged>
-	public const uint STD_VIDEO_AV1_SELECT_INTEGER_MV = 2;
+	public const uint STD_VIDEO_AV1_SELECT_INTEGER_MV = 2U;
 	/// <unmanaged>STD_VIDEO_AV1_SELECT_SCREEN_CONTENT_TOOLS</unmanaged>
-	public const uint STD_VIDEO_AV1_SELECT_SCREEN_CONTENT_TOOLS = 2;
+	public const uint STD_VIDEO_AV1_SELECT_SCREEN_CONTENT_TOOLS = 2U;
 	/// <unmanaged>STD_VIDEO_AV1_SKIP_MODE_FRAMES</unmanaged>
-	public const uint STD_VIDEO_AV1_SKIP_MODE_FRAMES = 2;
+	public const uint STD_VIDEO_AV1_SKIP_MODE_FRAMES = 2U;
 	/// <unmanaged>STD_VIDEO_AV1_MAX_LOOP_FILTER_STRENGTHS</unmanaged>
-	public const uint STD_VIDEO_AV1_MAX_LOOP_FILTER_STRENGTHS = 4;
+	public const uint STD_VIDEO_AV1_MAX_LOOP_FILTER_STRENGTHS = 4U;
 	/// <unmanaged>STD_VIDEO_AV1_LOOP_FILTER_ADJUSTMENTS</unmanaged>
-	public const uint STD_VIDEO_AV1_LOOP_FILTER_ADJUSTMENTS = 2;
+	public const uint STD_VIDEO_AV1_LOOP_FILTER_ADJUSTMENTS = 2U;
 	/// <unmanaged>STD_VIDEO_AV1_MAX_CDEF_FILTER_STRENGTHS</unmanaged>
-	public const uint STD_VIDEO_AV1_MAX_CDEF_FILTER_STRENGTHS = 8;
+	public const uint STD_VIDEO_AV1_MAX_CDEF_FILTER_STRENGTHS = 8U;
 	/// <unmanaged>STD_VIDEO_AV1_MAX_NUM_PLANES</unmanaged>
-	public const uint STD_VIDEO_AV1_MAX_NUM_PLANES = 3;
+	public const uint STD_VIDEO_AV1_MAX_NUM_PLANES = 3U;
 	/// <unmanaged>STD_VIDEO_AV1_GLOBAL_MOTION_PARAMS</unmanaged>
-	public const uint STD_VIDEO_AV1_GLOBAL_MOTION_PARAMS = 6;
+	public const uint STD_VIDEO_AV1_GLOBAL_MOTION_PARAMS = 6U;
 	/// <unmanaged>STD_VIDEO_AV1_MAX_NUM_Y_POINTS</unmanaged>
-	public const uint STD_VIDEO_AV1_MAX_NUM_Y_POINTS = 14;
+	public const uint STD_VIDEO_AV1_MAX_NUM_Y_POINTS = 14U;
 	/// <unmanaged>STD_VIDEO_AV1_MAX_NUM_CB_POINTS</unmanaged>
-	public const uint STD_VIDEO_AV1_MAX_NUM_CB_POINTS = 10;
+	public const uint STD_VIDEO_AV1_MAX_NUM_CB_POINTS = 10U;
 	/// <unmanaged>STD_VIDEO_AV1_MAX_NUM_CR_POINTS</unmanaged>
-	public const uint STD_VIDEO_AV1_MAX_NUM_CR_POINTS = 10;
+	public const uint STD_VIDEO_AV1_MAX_NUM_CR_POINTS = 10U;
 	/// <unmanaged>STD_VIDEO_AV1_MAX_NUM_POS_LUMA</unmanaged>
-	public const uint STD_VIDEO_AV1_MAX_NUM_POS_LUMA = 24;
+	public const uint STD_VIDEO_AV1_MAX_NUM_POS_LUMA = 24U;
 	/// <unmanaged>STD_VIDEO_AV1_MAX_NUM_POS_CHROMA</unmanaged>
-	public const uint STD_VIDEO_AV1_MAX_NUM_POS_CHROMA = 25;
+	public const uint STD_VIDEO_AV1_MAX_NUM_POS_CHROMA = 25U;
 	/// <unmanaged>vulkan_video_codec_av1std_decode</unmanaged>
 	public const uint vulkan_video_codec_av1std_decode = 1;
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_API_VERSION_1_0_0</unmanaged>
@@ -851,21 +857,21 @@ public static partial class Vulkan
 	/// <unmanaged>vulkan_video_codec_vp9std</unmanaged>
 	public const uint vulkan_video_codec_vp9std = 1;
 	/// <unmanaged>STD_VIDEO_VP9_NUM_REF_FRAMES</unmanaged>
-	public const uint STD_VIDEO_VP9_NUM_REF_FRAMES = 8;
+	public const uint STD_VIDEO_VP9_NUM_REF_FRAMES = 8U;
 	/// <unmanaged>STD_VIDEO_VP9_REFS_PER_FRAME</unmanaged>
-	public const uint STD_VIDEO_VP9_REFS_PER_FRAME = 3;
+	public const uint STD_VIDEO_VP9_REFS_PER_FRAME = 3U;
 	/// <unmanaged>STD_VIDEO_VP9_MAX_REF_FRAMES</unmanaged>
-	public const uint STD_VIDEO_VP9_MAX_REF_FRAMES = 4;
+	public const uint STD_VIDEO_VP9_MAX_REF_FRAMES = 4U;
 	/// <unmanaged>STD_VIDEO_VP9_LOOP_FILTER_ADJUSTMENTS</unmanaged>
-	public const uint STD_VIDEO_VP9_LOOP_FILTER_ADJUSTMENTS = 2;
+	public const uint STD_VIDEO_VP9_LOOP_FILTER_ADJUSTMENTS = 2U;
 	/// <unmanaged>STD_VIDEO_VP9_MAX_SEGMENTS</unmanaged>
-	public const uint STD_VIDEO_VP9_MAX_SEGMENTS = 8;
+	public const uint STD_VIDEO_VP9_MAX_SEGMENTS = 8U;
 	/// <unmanaged>STD_VIDEO_VP9_SEG_LVL_MAX</unmanaged>
-	public const uint STD_VIDEO_VP9_SEG_LVL_MAX = 4;
+	public const uint STD_VIDEO_VP9_SEG_LVL_MAX = 4U;
 	/// <unmanaged>STD_VIDEO_VP9_MAX_SEGMENTATION_TREE_PROBS</unmanaged>
-	public const uint STD_VIDEO_VP9_MAX_SEGMENTATION_TREE_PROBS = 7;
+	public const uint STD_VIDEO_VP9_MAX_SEGMENTATION_TREE_PROBS = 7U;
 	/// <unmanaged>STD_VIDEO_VP9_MAX_SEGMENTATION_PRED_PROB</unmanaged>
-	public const uint STD_VIDEO_VP9_MAX_SEGMENTATION_PRED_PROB = 3;
+	public const uint STD_VIDEO_VP9_MAX_SEGMENTATION_PRED_PROB = 3U;
 	/// <unmanaged>vulkan_video_codec_vp9std_decode</unmanaged>
 	public const uint vulkan_video_codec_vp9std_decode = 1;
 	/// <unmanaged>VK_STD_VULKAN_VIDEO_CODEC_VP9_DECODE_API_VERSION_1_0_0</unmanaged>
@@ -1843,7 +1849,7 @@ public static partial class Vulkan
 	/// <unmanaged>VK_QCOM_tile_shading</unmanaged>
 	public const uint VK_QCOM_tile_shading = 1;
 	/// <unmanaged>VK_QCOM_TILE_SHADING_SPEC_VERSION</unmanaged>
-	public const uint VK_QCOM_TILE_SHADING_SPEC_VERSION = 1;
+	public const uint VK_QCOM_TILE_SHADING_SPEC_VERSION = 2;
 	/// <unmanaged>VK_QCOM_TILE_SHADING_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_QCOM_TILE_SHADING_EXTENSION_NAME => "VK_QCOM_tile_shading"u8;
 	/// <unmanaged>VK_NV_low_latency</unmanaged>
@@ -2044,6 +2050,12 @@ public static partial class Vulkan
 	public const uint VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION = 1;
 	/// <unmanaged>VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_EXT_GLOBAL_PRIORITY_QUERY_EXTENSION_NAME => "VK_EXT_global_priority_query"u8;
+	/// <unmanaged>VK_VALVE_video_encode_rgb_conversion</unmanaged>
+	public const uint VK_VALVE_video_encode_rgb_conversion = 1;
+	/// <unmanaged>VK_VALVE_VIDEO_ENCODE_RGB_CONVERSION_SPEC_VERSION</unmanaged>
+	public const uint VK_VALVE_VIDEO_ENCODE_RGB_CONVERSION_SPEC_VERSION = 1;
+	/// <unmanaged>VK_VALVE_VIDEO_ENCODE_RGB_CONVERSION_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_VALVE_VIDEO_ENCODE_RGB_CONVERSION_EXTENSION_NAME => "VK_VALVE_video_encode_rgb_conversion"u8;
 	/// <unmanaged>VK_EXT_image_view_min_lod</unmanaged>
 	public const uint VK_EXT_image_view_min_lod = 1;
 	/// <unmanaged>VK_EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION</unmanaged>
@@ -2473,7 +2485,7 @@ public static partial class Vulkan
 	/// <unmanaged>VK_NV_cluster_acceleration_structure</unmanaged>
 	public const uint VK_NV_cluster_acceleration_structure = 1;
 	/// <unmanaged>VK_NV_CLUSTER_ACCELERATION_STRUCTURE_SPEC_VERSION</unmanaged>
-	public const uint VK_NV_CLUSTER_ACCELERATION_STRUCTURE_SPEC_VERSION = 3;
+	public const uint VK_NV_CLUSTER_ACCELERATION_STRUCTURE_SPEC_VERSION = 4;
 	/// <unmanaged>VK_NV_CLUSTER_ACCELERATION_STRUCTURE_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_NV_CLUSTER_ACCELERATION_STRUCTURE_EXTENSION_NAME => "VK_NV_cluster_acceleration_structure"u8;
 	/// <unmanaged>VK_NV_partitioned_acceleration_structure</unmanaged>
@@ -2726,6 +2738,16 @@ public static partial class Vulkan
 	public const uint VK_NV_DISPLACEMENT_MICROMAP_SPEC_VERSION = 2;
 	/// <unmanaged>VK_NV_DISPLACEMENT_MICROMAP_EXTENSION_NAME</unmanaged>
 	public static ReadOnlySpan<byte> VK_NV_DISPLACEMENT_MICROMAP_EXTENSION_NAME => "VK_NV_displacement_micromap"u8;
+	/// <unmanaged>VK_AMDX_dense_geometry_format</unmanaged>
+	public const uint VK_AMDX_dense_geometry_format = 1;
+	/// <unmanaged>VK_AMDX_DENSE_GEOMETRY_FORMAT_SPEC_VERSION</unmanaged>
+	public const uint VK_AMDX_DENSE_GEOMETRY_FORMAT_SPEC_VERSION = 1;
+	/// <unmanaged>VK_AMDX_DENSE_GEOMETRY_FORMAT_EXTENSION_NAME</unmanaged>
+	public static ReadOnlySpan<byte> VK_AMDX_DENSE_GEOMETRY_FORMAT_EXTENSION_NAME => "VK_AMDX_dense_geometry_format"u8;
+	/// <unmanaged>VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX</unmanaged>
+	public const uint VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX = 128U;
+	/// <unmanaged>VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX</unmanaged>
+	public const uint VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX = 128U;
 
 	public const VkResult VK_SUCCESS = VkResult.Success;
 	public const VkResult VK_NOT_READY = VkResult.NotReady;
@@ -2746,6 +2768,7 @@ public static partial class Vulkan
 	public const VkResult VK_ERROR_FORMAT_NOT_SUPPORTED = VkResult.ErrorFormatNotSupported;
 	public const VkResult VK_ERROR_FRAGMENTED_POOL = VkResult.ErrorFragmentedPool;
 	public const VkResult VK_ERROR_UNKNOWN = VkResult.ErrorUnknown;
+	public const VkResult VK_ERROR_VALIDATION_FAILED = VkResult.ErrorValidationFailed;
 	public const VkResult VK_ERROR_OUT_OF_POOL_MEMORY = VkResult.ErrorOutOfPoolMemory;
 	public const VkResult VK_ERROR_INVALID_EXTERNAL_HANDLE = VkResult.ErrorInvalidExternalHandle;
 	public const VkResult VK_ERROR_FRAGMENTATION = VkResult.ErrorFragmentation;
@@ -2757,7 +2780,6 @@ public static partial class Vulkan
 	public const VkResult VK_SUBOPTIMAL_KHR = VkResult.SuboptimalKHR;
 	public const VkResult VK_ERROR_OUT_OF_DATE_KHR = VkResult.ErrorOutOfDateKHR;
 	public const VkResult VK_ERROR_INCOMPATIBLE_DISPLAY_KHR = VkResult.ErrorIncompatibleDisplayKHR;
-	public const VkResult VK_ERROR_VALIDATION_FAILED_EXT = VkResult.ErrorValidationFailedEXT;
 	public const VkResult VK_ERROR_INVALID_SHADER_NV = VkResult.ErrorInvalidShaderNV;
 	public const VkResult VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR = VkResult.ErrorImageUsageNotSupportedKHR;
 	public const VkResult VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR = VkResult.ErrorVideoPictureLayoutNotSupportedKHR;
@@ -3518,6 +3540,11 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT = VkStructureType.PipelineColorWriteCreateInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT = VkStructureType.PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR = VkStructureType.PhysicalDeviceRayTracingMaintenance1FeaturesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR = VkStructureType.PhysicalDeviceShaderUntypedPointersFeaturesKHR;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE = VkStructureType.PhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE = VkStructureType.VideoEncodeRgbConversionCapabilitiesVALVE;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE = VkStructureType.VideoEncodeProfileRgbConversionInfoVALVE;
+	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE = VkStructureType.VideoEncodeSessionRgbConversionCreateInfoVALVE;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT = VkStructureType.PhysicalDeviceImageViewMinLodFeaturesEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT = VkStructureType.ImageViewMinLodCreateInfoEXT;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_FEATURES_EXT = VkStructureType.PhysicalDeviceMultiDrawFeaturesEXT;
@@ -3629,6 +3656,8 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD = VkStructureType.PhysicalDeviceAntiLagFeaturesAMD;
 	public const VkStructureType VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD = VkStructureType.AntiLagDataAMD;
 	public const VkStructureType VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD = VkStructureType.AntiLagPresentationInfoAMD;
+	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DENSE_GEOMETRY_FORMAT_FEATURES_AMDX = VkStructureType.PhysicalDeviceDenseGeometryFormatFeaturesAMDX;
+	public const VkStructureType VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DENSE_GEOMETRY_FORMAT_TRIANGLES_DATA_AMDX = VkStructureType.AccelerationStructureDenseGeometryFormatTrianglesDataAMDX;
 	public const VkStructureType VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR = VkStructureType.SurfaceCapabilitiesPresentId2KHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR = VkStructureType.PresentId2KHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_2_FEATURES_KHR = VkStructureType.PhysicalDevicePresentId2FeaturesKHR;
@@ -3841,7 +3870,7 @@ public static partial class Vulkan
 	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_INLINE_SESSION_PARAMETERS_INFO_KHR = VkStructureType.VideoDecodeH264InlineSessionParametersInfoKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR = VkStructureType.VideoDecodeH265InlineSessionParametersInfoKHR;
 	public const VkStructureType VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR = VkStructureType.VideoDecodeAV1InlineSessionParametersInfoKHR;
-	public const VkStructureType VK_STRUCTURE_TYPE_OH_SURFACE_CREATE_INFO_OHOS = VkStructureType.OhSurfaceCreateInfoOhos;
+	public const VkStructureType VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS = VkStructureType.SurfaceCreateInfoOhos;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI = VkStructureType.PhysicalDeviceHdrVividFeaturesHUAWEI;
 	public const VkStructureType VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI = VkStructureType.HdrVividDynamicMetadataHUAWEI;
 	public const VkStructureType VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV = VkStructureType.PhysicalDeviceCooperativeMatrix2FeaturesNV;
@@ -5776,6 +5805,7 @@ public static partial class Vulkan
 	public const VkGeometryTypeKHR VK_GEOMETRY_TYPE_INSTANCES_KHR = VkGeometryTypeKHR.Instances;
 	public const VkGeometryTypeKHR VK_GEOMETRY_TYPE_SPHERES_NV = VkGeometryTypeKHR.SpheresNV;
 	public const VkGeometryTypeKHR VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV = VkGeometryTypeKHR.LinearSweptSpheresNV;
+	public const VkGeometryTypeKHR VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX = VkGeometryTypeKHR.DenseGeometryFormatTrianglesAMDX;
 	public const VkAccelerationStructureTypeKHR VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR = VkAccelerationStructureTypeKHR.TopLevel;
 	public const VkAccelerationStructureTypeKHR VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR = VkAccelerationStructureTypeKHR.BottomLevel;
 	public const VkAccelerationStructureTypeKHR VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR = VkAccelerationStructureTypeKHR.Generic;
@@ -5806,6 +5836,7 @@ public static partial class Vulkan
 	public const VkBuildAccelerationStructureFlagsKHR VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_BIT_EXT = VkBuildAccelerationStructureFlagsKHR.AllowOpacityMicromapDataUpdateEXT;
 	public const VkBuildAccelerationStructureFlagsKHR VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISPLACEMENT_MICROMAP_UPDATE_BIT_NV = VkBuildAccelerationStructureFlagsKHR.AllowDisplacementMicromapUpdateNV;
 	public const VkBuildAccelerationStructureFlagsKHR VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR = VkBuildAccelerationStructureFlagsKHR.AllowDataAccess;
+	public const VkBuildAccelerationStructureFlagsKHR VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV = VkBuildAccelerationStructureFlagsKHR.AllowClusterOpacityMicromapsNV;
 	public const VkMemoryOverallocationBehaviorAMD VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD = VkMemoryOverallocationBehaviorAMD.DefaultAMD;
 	public const VkMemoryOverallocationBehaviorAMD VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD = VkMemoryOverallocationBehaviorAMD.AllowedAMD;
 	public const VkMemoryOverallocationBehaviorAMD VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD = VkMemoryOverallocationBehaviorAMD.DisallowedAMD;
@@ -5927,6 +5958,18 @@ public static partial class Vulkan
 	public const VkDeviceAddressBindingTypeEXT VK_DEVICE_ADDRESS_BINDING_TYPE_UNBIND_EXT = VkDeviceAddressBindingTypeEXT.Unbind;
 	public const VkDeviceAddressBindingFlagsEXT VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT = VkDeviceAddressBindingFlagsEXT.InternalObject;
 	public const VkFrameBoundaryFlagsEXT VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT = VkFrameBoundaryFlagsEXT.FrameEnd;
+	public const VkVideoEncodeRgbModelConversionFlagsVALVE VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_RGB_IDENTITY_BIT_VALVE = VkVideoEncodeRgbModelConversionFlagsVALVE.RgbIdentityVALVE;
+	public const VkVideoEncodeRgbModelConversionFlagsVALVE VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_IDENTITY_BIT_VALVE = VkVideoEncodeRgbModelConversionFlagsVALVE.YcbcrIdentityVALVE;
+	public const VkVideoEncodeRgbModelConversionFlagsVALVE VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_709_BIT_VALVE = VkVideoEncodeRgbModelConversionFlagsVALVE.Ycbcr709VALVE;
+	public const VkVideoEncodeRgbModelConversionFlagsVALVE VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_601_BIT_VALVE = VkVideoEncodeRgbModelConversionFlagsVALVE.Ycbcr601VALVE;
+	public const VkVideoEncodeRgbModelConversionFlagsVALVE VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_2020_BIT_VALVE = VkVideoEncodeRgbModelConversionFlagsVALVE.Ycbcr2020VALVE;
+	public const VkVideoEncodeRgbModelConversionFlagsVALVE VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_FLAG_BITS_MAX_ENUM_VALVE = VkVideoEncodeRgbModelConversionFlagsVALVE.FlagBitsMaxEnumVALVE;
+	public const VkVideoEncodeRgbRangeCompressionFlagsVALVE VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FULL_RANGE_BIT_VALVE = VkVideoEncodeRgbRangeCompressionFlagsVALVE.FullRangeVALVE;
+	public const VkVideoEncodeRgbRangeCompressionFlagsVALVE VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_NARROW_RANGE_BIT_VALVE = VkVideoEncodeRgbRangeCompressionFlagsVALVE.NarrowRangeVALVE;
+	public const VkVideoEncodeRgbRangeCompressionFlagsVALVE VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FLAG_BITS_MAX_ENUM_VALVE = VkVideoEncodeRgbRangeCompressionFlagsVALVE.FlagBitsMaxEnumVALVE;
+	public const VkVideoEncodeRgbChromaOffsetFlagsVALVE VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_COSITED_EVEN_BIT_VALVE = VkVideoEncodeRgbChromaOffsetFlagsVALVE.CositedEvenVALVE;
+	public const VkVideoEncodeRgbChromaOffsetFlagsVALVE VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_MIDPOINT_BIT_VALVE = VkVideoEncodeRgbChromaOffsetFlagsVALVE.MidpointVALVE;
+	public const VkVideoEncodeRgbChromaOffsetFlagsVALVE VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_FLAG_BITS_MAX_ENUM_VALVE = VkVideoEncodeRgbChromaOffsetFlagsVALVE.FlagBitsMaxEnumVALVE;
 	public const VkMicromapTypeEXT VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT = VkMicromapTypeEXT.OpacityMicromap;
 	public const VkMicromapTypeEXT VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV = VkMicromapTypeEXT.DisplacementMicromapNV;
 	public const VkBuildMicromapModeEXT VK_BUILD_MICROMAP_MODE_BUILD_EXT = VkBuildMicromapModeEXT.Build;
@@ -6147,6 +6190,8 @@ public static partial class Vulkan
 	public const VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV = VkDisplacementMicromapFormatNV._64Triangles64Bytes;
 	public const VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV = VkDisplacementMicromapFormatNV._256Triangles128Bytes;
 	public const VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV = VkDisplacementMicromapFormatNV._1024Triangles128Bytes;
+	public const VkCompressedTriangleFormatAMDX VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX = VkCompressedTriangleFormatAMDX.Dgf1AMDX;
+	public const VkCompressedTriangleFormatAMDX VK_COMPRESSED_TRIANGLE_FORMAT_MAX_ENUM_AMDX = VkCompressedTriangleFormatAMDX.MaxEnumAMDX;
 	public const VkPipelineStageFlags2 VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT = VkPipelineStageFlags2.TopOfPipe;
 	public const VkPipelineStageFlags2 VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT = VkPipelineStageFlags2.DrawIndirect;
 	public const VkPipelineStageFlags2 VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT = VkPipelineStageFlags2.VertexInput;
@@ -6368,6 +6413,7 @@ public static partial class Vulkan
 	public const VkBufferUsageFlags2 VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT = VkBufferUsageFlags2.PushDescriptorsDescriptorBufferEXT;
 	public const VkBufferUsageFlags2 VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT = VkBufferUsageFlags2.MicromapBuildInputReadOnlyEXT;
 	public const VkBufferUsageFlags2 VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT = VkBufferUsageFlags2.MicromapStorageEXT;
+	public const VkBufferUsageFlags2 VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX = VkBufferUsageFlags2.CompressedDataDgf1AMDX;
 	public const VkBufferUsageFlags2 VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM = VkBufferUsageFlags2.DataGraphForeignDescriptorARM;
 	public const VkBufferUsageFlags2 VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM = VkBufferUsageFlags2.TileMemoryQCOM;
 	public const VkBufferUsageFlags2 VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT = VkBufferUsageFlags2.PreprocessBufferEXT;

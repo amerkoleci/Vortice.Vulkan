@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 
@@ -29,6 +28,13 @@ public unsafe partial class VkInstanceApi
     {
         fixed (byte* pName = name)
             return ((delegate* unmanaged<VkDevice, byte*, PFN_vkVoidFunction>)vkGetDeviceProcAddr_ptr.Value)(device, pName);
+    }
+
+    public VkPhysicalDeviceProperties vkGetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice)
+    {
+        VkPhysicalDeviceProperties properties;
+        ((delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties*, void>)vkGetPhysicalDeviceProperties_ptr.Value)(physicalDevice, &properties);
+        return properties;
     }
 
     public VkResult vkEnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, out uint propertyCount)

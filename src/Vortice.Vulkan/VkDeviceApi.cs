@@ -72,6 +72,20 @@ public unsafe partial class VkDeviceApi
         }
     }
 
+    public VkResult vkCreateShaderModule(VkDevice device, ReadOnlySpan<byte> bytecode, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
+    {
+        fixed (byte* bytecodePtr = bytecode)
+        {
+            VkShaderModuleCreateInfo createInfo = new()
+            {
+                codeSize = (nuint)bytecode.Length,
+                pCode = (uint*)bytecodePtr
+            };
+
+            return vkCreateShaderModule(device, &createInfo, allocator, out shaderModule);
+        }
+    }
+
     public VkResult vkCreateGraphicsPipeline(VkDevice device, VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
     {
         fixed (VkPipeline* pipelinePtr = &pipeline)
@@ -114,7 +128,7 @@ public unsafe partial class VkDeviceApi
         return vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, pipeline);
     }
 
-    public VkDescriptorPool vkCreateDescriptorPool(VkDevice device, Span<VkDescriptorPoolSize> poolSizes, uint maxSets = 1u)
+    public VkDescriptorPool vkCreateDescriptorPool(VkDevice device, ReadOnlySpan<VkDescriptorPoolSize> poolSizes, uint maxSets = 1u)
     {
         fixed (VkDescriptorPoolSize* poolSizesPtr = poolSizes)
         {
@@ -131,7 +145,7 @@ public unsafe partial class VkDeviceApi
         }
     }
 
-    public VkResult vkCreateDescriptorPool(VkDevice device, Span<VkDescriptorPoolSize> poolSizes, uint maxSets, out VkDescriptorPool descriptorPool)
+    public VkResult vkCreateDescriptorPool(VkDevice device, ReadOnlySpan<VkDescriptorPoolSize> poolSizes, uint maxSets, out VkDescriptorPool descriptorPool)
     {
         Unsafe.SkipInit(out descriptorPool);
 
@@ -161,7 +175,7 @@ public unsafe partial class VkDeviceApi
         vkUpdateDescriptorSets(device, 1, &writeDescriptorSet, 1, &copyDescriptorSet);
     }
 
-    public void vkUpdateDescriptorSets(VkDevice device, Span<VkWriteDescriptorSet> writeDescriptorSets)
+    public void vkUpdateDescriptorSets(VkDevice device, ReadOnlySpan<VkWriteDescriptorSet> writeDescriptorSets)
     {
         fixed (VkWriteDescriptorSet* writeDescriptorSetsPtr = writeDescriptorSets)
         {
@@ -169,7 +183,7 @@ public unsafe partial class VkDeviceApi
         }
     }
 
-    public void vkUpdateDescriptorSets(VkDevice device, Span<VkWriteDescriptorSet> writeDescriptorSets, Span<VkCopyDescriptorSet> copyDescriptorSets)
+    public void vkUpdateDescriptorSets(VkDevice device, ReadOnlySpan<VkWriteDescriptorSet> writeDescriptorSets, ReadOnlySpan<VkCopyDescriptorSet> copyDescriptorSets)
     {
         fixed (VkWriteDescriptorSet* writeDescriptorSetsPtr = writeDescriptorSets)
         {
@@ -220,7 +234,7 @@ public unsafe partial class VkDeviceApi
         vkCmdBindVertexBuffers(commandBuffer, binding, 1, &buffer, &offset);
     }
 
-    public void vkCmdBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, Span<VkBuffer> buffers, Span<ulong> offsets)
+    public void vkCmdBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, ReadOnlySpan<VkBuffer> buffers, ReadOnlySpan<ulong> offsets)
     {
         fixed (VkBuffer* buffersPtr = buffers)
         {
@@ -337,7 +351,7 @@ public unsafe partial class VkDeviceApi
     public VkResult vkCreateFramebuffer(
         VkDevice device,
         VkRenderPass renderPass,
-        Span<VkImageView> attachments,
+        ReadOnlySpan<VkImageView> attachments,
         uint width,
         uint height,
         uint layers,
@@ -362,7 +376,7 @@ public unsafe partial class VkDeviceApi
     public VkResult vkCreateFramebuffer(
         VkDevice device,
         VkRenderPass renderPass,
-        Span<VkImageView> attachments,
+        ReadOnlySpan<VkImageView> attachments,
         in VkExtent2D extent,
         uint layers,
         out VkFramebuffer framebuffer)
@@ -385,8 +399,8 @@ public unsafe partial class VkDeviceApi
 
     public VkResult vkCreatePipelineLayout(
         VkDevice device,
-        Span<VkDescriptorSetLayout> setLayouts,
-        Span<VkPushConstantRange> pushConstantRanges,
+        ReadOnlySpan<VkDescriptorSetLayout> setLayouts,
+        ReadOnlySpan<VkPushConstantRange> pushConstantRanges,
         out VkPipelineLayout pipelineLayout)
     {
         fixed (VkDescriptorSetLayout* setLayoutsPtr = setLayouts)
@@ -418,7 +432,7 @@ public unsafe partial class VkDeviceApi
         vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
     }
 
-    public void vkCmdSetViewport(VkCommandBuffer commandBuffer, Span<VkViewport> viewports)
+    public void vkCmdSetViewport(VkCommandBuffer commandBuffer, ReadOnlySpan<VkViewport> viewports)
     {
         fixed (VkViewport* viewportsPtr = viewports)
         {
@@ -489,7 +503,7 @@ public unsafe partial class VkDeviceApi
         vkCmdSetBlendConstants(commandBuffer, blendConstantsArray);
     }
 
-    public void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, Span<float> blendConstants)
+    public void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, ReadOnlySpan<float> blendConstants)
     {
         fixed (float* blendConstantsPtr = blendConstants)
         {
@@ -528,7 +542,7 @@ public unsafe partial class VkDeviceApi
         VkBuffer srcBuffer,
         VkImage dstImage,
         VkImageLayout dstImageLayout,
-        Span<VkBufferImageCopy> regions,
+        ReadOnlySpan<VkBufferImageCopy> regions,
         uint regionCount = 0)
     {
         if (regionCount == 0)

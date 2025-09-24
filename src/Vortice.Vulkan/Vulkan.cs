@@ -28,6 +28,12 @@ public static unsafe partial class Vulkan
     public const uint VK_TRUE = 1;
     public const uint VK_FALSE = 0;
 
+    public static VkVersion VK_API_VERSION_1_0 => new(0, 1, 0, 0);
+    public static VkVersion VK_API_VERSION_1_1 => new(0, 1, 1, 0);
+    public static VkVersion VK_API_VERSION_1_2 => new(0, 1, 2, 0);
+    public static VkVersion VK_API_VERSION_1_3 => new(0, 1, 3, 0);
+    public static VkVersion VK_API_VERSION_1_4 => new(0, 1, 4, 0);
+
     public static VkResult vkInitialize(string? libraryName = default)
     {
         if (OperatingSystem.IsWindows())

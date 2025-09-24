@@ -341,7 +341,6 @@ partial class CsCodeGenerator
                         CppFunction cppFunction = command.Value;
 
                         bool canUseOut = _outReturnFunctions.Contains(cppFunction.Name);
-
                         WriteFunctionInvocation(writer, cppFunction, false, instance: true);
 
                         if (command.Key.StartsWith("vkCreate")
@@ -389,7 +388,6 @@ partial class CsCodeGenerator
                         CppFunction cppFunction = command.Value;
 
                         bool canUseOut = _outReturnFunctions.Contains(cppFunction.Name);
-
                         WriteFunctionInvocation(writer, cppFunction, false, instance: true);
 
                         if (command.Key.StartsWith("vkCreate")
@@ -431,7 +429,7 @@ partial class CsCodeGenerator
     }
 
 
-    private void WriteTableCommands(CodeWriter writer, bool instance, Dictionary<string, CppFunction> commands)
+    private static void WriteTableCommands(CodeWriter writer, bool instance, Dictionary<string, CppFunction> commands)
     {
         foreach (KeyValuePair<string, CppFunction> instanceCommand in commands)
         {
@@ -456,11 +454,30 @@ partial class CsCodeGenerator
         }
     }
 
-    private void WriteFunctionInvocation(CodeWriter writer, CppFunction cppFunction, bool canUseOut,
-        bool inParameters = false, bool instance = false)
+    private void WriteFunctionInvocation(CodeWriter writer,
+        CppFunction cppFunction,
+        bool canUseOut,
+        bool inParameters = false,
+        bool instance = false)
+    {
+        bool hasAllocationCallbacks = _options.IsVulkan ? HasAllocationCallbacks(cppFunction) : false;
+        WriteFunctionInvocationInner(writer, cppFunction, canUseOut, inParameters, instance, true);
+
+        if (hasAllocationCallbacks)
+        {
+            WriteFunctionInvocationInner(writer, cppFunction, canUseOut, inParameters, instance, false);
+        }
+    }
+
+    private void WriteFunctionInvocationInner(CodeWriter writer,
+        CppFunction cppFunction,
+        bool canUseOut,
+        bool inParameters,
+        bool instance,
+        bool skipAllocationCallbacks)
     {
         string returnCsName = GetCsTypeName(cppFunction.ReturnType);
-        string argumentsString = GetParameterSignature(cppFunction, canUseOut, inParameters);
+        string argumentsString = GetParameterSignature(cppFunction, canUseOut, inParameters, skipAllocationCallbacks);
         string modifier = "public";
         if (instance == false)
             modifier += " static";
@@ -474,9 +491,9 @@ partial class CsCodeGenerator
             return;
         }
 
-        if (cppFunction.Name == "vmaCreateAllocator" ||
-            cppFunction.Name == "spvc_context_get_last_error_string" ||
-            cppFunction.Name == "spvc_compiler_get_name")
+        if (cppFunction.Name == "vmaCreateAllocator"
+            || cppFunction.Name == "spvc_context_get_last_error_string"
+            || cppFunction.Name == "spvc_compiler_get_name")
         {
             modifier = "private static";
             functionName += "Private";
@@ -548,6 +565,7 @@ partial class CsCodeGenerator
                     string paramCsTypeName = GetCsTypeName(cppParameter.Type);
                     string paramCsName = GetParameterName(cppParameter.Name);
 
+
                     if (canUseOut && CanBeUsedAsInOut(cppParameter.Type, true, out _))
                     {
                         paramCsName = $"{paramCsName}Ptr";
@@ -559,7 +577,15 @@ partial class CsCodeGenerator
                         paramCsName = "createInfoPtr";
                     }
 
-                    writer.Write($"{paramCsName}");
+                    if (paramCsTypeName == "VkAllocationCallbacks*"
+                        && skipAllocationCallbacks == true)
+                    {
+                        writer.Write($"default");
+                    }
+                    else
+                    {
+                        writer.Write($"{paramCsName}");
+                    }
 
                     if (index < cppFunction.Parameters.Count - 1)
                     {
@@ -580,7 +606,6 @@ partial class CsCodeGenerator
 
         writer.WriteLine();
     }
-
 
     private void EmitInvoke(
         CodeWriter writer,
@@ -640,17 +665,42 @@ partial class CsCodeGenerator
         return _instanceFunctions.Contains(name);
     }
 
-    public static string GetParameterSignature(CppFunction cppFunction, bool canUseOut, bool inParameters)
+    public static string GetParameterSignature(CppFunction cppFunction, bool canUseOut, bool inParameters, bool skipAllocationCallbacks = false)
     {
-        return GetParameterSignature(cppFunction.Parameters, canUseOut, inParameters);
+        return GetParameterSignature(cppFunction.Parameters, canUseOut, inParameters, skipAllocationCallbacks);
     }
 
-    private static string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool inParameters)
+    private static string GetParameterSignature(IList<CppParameter> parameters,
+        bool canUseOut,
+        bool inParameters,
+        bool skipAllocationCallbacks = false)
     {
         StringBuilder argumentBuilder = new();
         int index = 0;
 
-        foreach (CppParameter cppParameter in parameters)
+        IList<CppParameter> processParameters;
+        if (skipAllocationCallbacks)
+        {
+            processParameters = [];
+
+            foreach (CppParameter cppParameter in parameters)
+            {
+                string paramCsTypeName = GetCsTypeName(cppParameter.Type);
+
+                if (paramCsTypeName == "VkAllocationCallbacks*")
+                {
+                    continue;
+                }
+
+                processParameters.Add(cppParameter);
+            }
+        }
+        else
+        {
+            processParameters = parameters;
+        }
+
+        foreach (CppParameter cppParameter in processParameters)
         {
             string direction = string.Empty;
             string paramCsTypeName = GetCsTypeName(cppParameter.Type);
@@ -678,22 +728,30 @@ partial class CsCodeGenerator
             }
 
             argumentBuilder.Append(paramCsTypeName).Append(' ').Append(paramCsName);
-            if (index < parameters.Count - 1)
+            if (index < processParameters.Count - 1)
             {
                 argumentBuilder.Append(", ");
-            }
-            else
-            {
-                if (paramCsTypeName == "VkAllocationCallbacks*")
-                {
-                    argumentBuilder.Append(" = default");
-                }
             }
 
             index++;
         }
 
         return argumentBuilder.ToString();
+    }
+
+    private static bool HasAllocationCallbacks(CppFunction function)
+    {
+        foreach (CppParameter cppParameter in function.Parameters)
+        {
+            string paramCsTypeName = GetCsTypeName(cppParameter.Type);
+
+            if (paramCsTypeName == "VkAllocationCallbacks*")
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static string GetParameterName(string name)
