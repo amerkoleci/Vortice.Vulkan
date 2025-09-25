@@ -20,7 +20,7 @@ unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkQueue, uint, VkSubmitInfo*, VkFence, VkResult>)vkQueueSubmit_ptr.Value)(queue, 1, &submit, fence);
 	}
 
-	public VkResult vkQueueSubmit(VkQueue queue, ReadOnlySpan<VkSubmitInfo> submits, VkFence fence)
+	public VkResult vkQueueSubmit(VkQueue queue, Span<VkSubmitInfo> submits, VkFence fence)
 	{
 		fixed (VkSubmitInfo* submitsPtr = submits)
 		{
@@ -33,7 +33,7 @@ unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkFlushMappedMemoryRanges_ptr.Value)(device, 1, &memoryRange);
 	}
 
-	public VkResult vkFlushMappedMemoryRanges(VkDevice device, ReadOnlySpan<VkMappedMemoryRange> memoryRanges)
+	public VkResult vkFlushMappedMemoryRanges(VkDevice device, Span<VkMappedMemoryRange> memoryRanges)
 	{
 		fixed (VkMappedMemoryRange* memoryRangesPtr = memoryRanges)
 		{
@@ -46,7 +46,7 @@ unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkInvalidateMappedMemoryRanges_ptr.Value)(device, 1, &memoryRange);
 	}
 
-	public VkResult vkInvalidateMappedMemoryRanges(VkDevice device, ReadOnlySpan<VkMappedMemoryRange> memoryRanges)
+	public VkResult vkInvalidateMappedMemoryRanges(VkDevice device, Span<VkMappedMemoryRange> memoryRanges)
 	{
 		fixed (VkMappedMemoryRange* memoryRangesPtr = memoryRanges)
 		{
@@ -77,7 +77,7 @@ unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkQueue, uint, VkBindSparseInfo*, VkFence, VkResult>)vkQueueBindSparse_ptr.Value)(queue, 1, &bindInfo, fence);
 	}
 
-	public VkResult vkQueueBindSparse(VkQueue queue, ReadOnlySpan<VkBindSparseInfo> bindInfo, VkFence fence)
+	public VkResult vkQueueBindSparse(VkQueue queue, Span<VkBindSparseInfo> bindInfo, VkFence fence)
 	{
 		fixed (VkBindSparseInfo* bindInfoPtr = bindInfo)
 		{
@@ -90,7 +90,7 @@ unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, uint, VkFence*, VkResult>)vkResetFences_ptr.Value)(device, 1, &fence);
 	}
 
-	public VkResult vkResetFences(VkDevice device, ReadOnlySpan<VkFence> fences)
+	public VkResult vkResetFences(VkDevice device, Span<VkFence> fences)
 	{
 		fixed (VkFence* fencesPtr = fences)
 		{
@@ -103,7 +103,7 @@ unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult>)vkWaitForFences_ptr.Value)(device, 1, &fence, waitAll, timeout);
 	}
 
-	public VkResult vkWaitForFences(VkDevice device, ReadOnlySpan<VkFence> fences, VkBool32 waitAll, ulong timeout)
+	public VkResult vkWaitForFences(VkDevice device, Span<VkFence> fences, VkBool32 waitAll, ulong timeout)
 	{
 		fixed (VkFence* fencesPtr = fences)
 		{
@@ -116,7 +116,7 @@ unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult>)vkMergePipelineCaches_ptr.Value)(device, dstCache, 1, &srcCache);
 	}
 
-	public VkResult vkMergePipelineCaches(VkDevice device, VkPipelineCache dstCache, ReadOnlySpan<VkPipelineCache> srcCaches)
+	public VkResult vkMergePipelineCaches(VkDevice device, VkPipelineCache dstCache, Span<VkPipelineCache> srcCaches)
 	{
 		fixed (VkPipelineCache* srcCachesPtr = srcCaches)
 		{
@@ -129,7 +129,7 @@ unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult>)vkFreeDescriptorSets_ptr.Value)(device, descriptorPool, 1, &descriptorSet);
 	}
 
-	public VkResult vkFreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, ReadOnlySpan<VkDescriptorSet> descriptorSets)
+	public VkResult vkFreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, Span<VkDescriptorSet> descriptorSets)
 	{
 		fixed (VkDescriptorSet* descriptorSetsPtr = descriptorSets)
 		{
@@ -142,7 +142,7 @@ unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewport*, void>)vkCmdSetViewport_ptr.Value)(commandBuffer, firstViewport, 1, &viewport);
 	}
 
-	public void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, ReadOnlySpan<VkViewport> viewports)
+	public void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, Span<VkViewport> viewports)
 	{
 		fixed (VkViewport* viewportsPtr = viewports)
 		{
@@ -155,7 +155,7 @@ unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, uint, uint, VkRect2D*, void>)vkCmdSetScissor_ptr.Value)(commandBuffer, firstScissor, 1, &scissor);
 	}
 
-	public void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, ReadOnlySpan<VkRect2D> scissors)
+	public void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, Span<VkRect2D> scissors)
 	{
 		fixed (VkRect2D* scissorsPtr = scissors)
 		{
@@ -168,7 +168,7 @@ unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult>)vkBindBufferMemory2_ptr.Value)(device, 1, &bindInfo);
 	}
 
-	public VkResult vkBindBufferMemory2(VkDevice device, ReadOnlySpan<VkBindBufferMemoryInfo> bindInfos)
+	public VkResult vkBindBufferMemory2(VkDevice device, Span<VkBindBufferMemoryInfo> bindInfos)
 	{
 		fixed (VkBindBufferMemoryInfo* bindInfosPtr = bindInfos)
 		{
@@ -181,7 +181,7 @@ unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult>)vkBindImageMemory2_ptr.Value)(device, 1, &bindInfo);
 	}
 
-	public VkResult vkBindImageMemory2(VkDevice device, ReadOnlySpan<VkBindImageMemoryInfo> bindInfos)
+	public VkResult vkBindImageMemory2(VkDevice device, Span<VkBindImageMemoryInfo> bindInfos)
 	{
 		fixed (VkBindImageMemoryInfo* bindInfosPtr = bindInfos)
 		{

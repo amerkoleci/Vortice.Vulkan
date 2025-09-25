@@ -159,7 +159,7 @@ partial class CsCodeGenerator
                         string returnType = GetCsTypeName(function.ReturnType);
 
                         StringBuilder argumentsSingleElementBuilder = new();
-                        StringBuilder argumentsReadOnlySpanBuilder = new();
+                        StringBuilder argumentsSpanBuilder = new();
 
                         int index = 0;
                         List<string> invokeSingleElementParameters = [];
@@ -174,18 +174,18 @@ partial class CsCodeGenerator
                             if (index == countArgumentArrayIndex)
                             {
                                 AppendCountParameter(false,
-                                    argumentsSingleElementBuilder, argumentsReadOnlySpanBuilder,
+                                    argumentsSingleElementBuilder, argumentsSpanBuilder,
                                     invokeSingleElementParameters, invokeElementsParameters,
                                     returnArrayTypeName, returnVariableName,
                                     csCountParameterType);
                             }
 
                             argumentsSingleElementBuilder.Append(argumentSignature);
-                            argumentsReadOnlySpanBuilder.Append(argumentSignature);
+                            argumentsSpanBuilder.Append(argumentSignature);
                             if (index < newParameters.Count - 1)
                             {
                                 argumentsSingleElementBuilder.Append(", ");
-                                argumentsReadOnlySpanBuilder.Append(", ");
+                                argumentsSpanBuilder.Append(", ");
                             }
 
                             invokeSingleElementParameters.Add(paramCsName);
@@ -197,7 +197,7 @@ partial class CsCodeGenerator
                         if (newParameters.Count == countArgumentArrayIndex)
                         {
                             AppendCountParameter(true,
-                                    argumentsSingleElementBuilder, argumentsReadOnlySpanBuilder,
+                                    argumentsSingleElementBuilder, argumentsSpanBuilder,
                                     invokeSingleElementParameters, invokeElementsParameters,
                                     returnArrayTypeName, returnVariableName,
                                     csCountParameterType);
@@ -218,7 +218,7 @@ partial class CsCodeGenerator
                         writer.WriteLine();
 
                         // ReadOnlySpan
-                        var argumentsReadOnlySpanString = argumentsReadOnlySpanBuilder.ToString();
+                        var argumentsReadOnlySpanString = argumentsSpanBuilder.ToString();
                         using (writer.PushBlock($"public {methodModifier}{returnType} {function.Name}({argumentsReadOnlySpanString})"))
                         {
                             using (writer.PushBlock($"fixed ({returnArrayTypeName}* {returnVariableName}Ptr = {returnVariableName})"))
@@ -289,7 +289,7 @@ partial class CsCodeGenerator
     private static void AppendCountParameter(
         bool singleElement,
         StringBuilder argumentsSingleElementBuilder,
-        StringBuilder argumentsReadOnlySpanBuilder,
+        StringBuilder argumentsSpanBuilder,
         List<string> invokeSingleElementParameters,
         List<string> invokeElementsParameters,
         string returnArrayTypeName,
@@ -300,7 +300,7 @@ partial class CsCodeGenerator
         if (singleElement)
         {
             argumentsSingleElementBuilder.Append(", ");
-            argumentsReadOnlySpanBuilder.Append(", ");
+            argumentsSpanBuilder.Append(", ");
         }
 
         argumentsSingleElementBuilder
@@ -309,15 +309,15 @@ partial class CsCodeGenerator
             .Append(singleName);
 
         // Array invoke
-        argumentsReadOnlySpanBuilder
-            .Append($"ReadOnlySpan<{returnArrayTypeName}>")
+        argumentsSpanBuilder
+            .Append($"Span<{returnArrayTypeName}>")
             .Append(" ")
             .Append(returnVariableName);
 
         if (!singleElement)
         {
             argumentsSingleElementBuilder.Append(", ");
-            argumentsReadOnlySpanBuilder.Append(", ");
+            argumentsSpanBuilder.Append(", ");
         }
 
         invokeSingleElementParameters.Add("1");

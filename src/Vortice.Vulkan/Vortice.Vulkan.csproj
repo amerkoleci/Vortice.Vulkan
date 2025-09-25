@@ -6,11 +6,12 @@
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <IsPackable>true</IsPackable>
+    <WarningsAsErrors>true</WarningsAsErrors>
   </PropertyGroup>
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>3.0.2</VersionPrefix>
+    <VersionPrefix>3.0.3</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 

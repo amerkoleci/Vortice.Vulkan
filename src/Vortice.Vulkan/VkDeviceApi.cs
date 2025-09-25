@@ -128,7 +128,7 @@ public unsafe partial class VkDeviceApi
         return vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, pipeline);
     }
 
-    public VkDescriptorPool vkCreateDescriptorPool(VkDevice device, ReadOnlySpan<VkDescriptorPoolSize> poolSizes, uint maxSets = 1u)
+    public VkDescriptorPool vkCreateDescriptorPool(VkDevice device, Span<VkDescriptorPoolSize> poolSizes, uint maxSets = 1u)
     {
         fixed (VkDescriptorPoolSize* poolSizesPtr = poolSizes)
         {
@@ -145,7 +145,7 @@ public unsafe partial class VkDeviceApi
         }
     }
 
-    public VkResult vkCreateDescriptorPool(VkDevice device, ReadOnlySpan<VkDescriptorPoolSize> poolSizes, uint maxSets, out VkDescriptorPool descriptorPool)
+    public VkResult vkCreateDescriptorPool(VkDevice device, Span<VkDescriptorPoolSize> poolSizes, uint maxSets, out VkDescriptorPool descriptorPool)
     {
         Unsafe.SkipInit(out descriptorPool);
 
@@ -175,7 +175,7 @@ public unsafe partial class VkDeviceApi
         vkUpdateDescriptorSets(device, 1, &writeDescriptorSet, 1, &copyDescriptorSet);
     }
 
-    public void vkUpdateDescriptorSets(VkDevice device, ReadOnlySpan<VkWriteDescriptorSet> writeDescriptorSets)
+    public void vkUpdateDescriptorSets(VkDevice device, Span<VkWriteDescriptorSet> writeDescriptorSets)
     {
         fixed (VkWriteDescriptorSet* writeDescriptorSetsPtr = writeDescriptorSets)
         {
@@ -183,7 +183,7 @@ public unsafe partial class VkDeviceApi
         }
     }
 
-    public void vkUpdateDescriptorSets(VkDevice device, ReadOnlySpan<VkWriteDescriptorSet> writeDescriptorSets, ReadOnlySpan<VkCopyDescriptorSet> copyDescriptorSets)
+    public void vkUpdateDescriptorSets(VkDevice device, Span<VkWriteDescriptorSet> writeDescriptorSets, Span<VkCopyDescriptorSet> copyDescriptorSets)
     {
         fixed (VkWriteDescriptorSet* writeDescriptorSetsPtr = writeDescriptorSets)
         {
@@ -204,7 +204,7 @@ public unsafe partial class VkDeviceApi
         vkCmdBindDescriptorSets(commandBuffer, pipelineBindPoint, layout, firstSet, 1, &descriptorSet, 0, null);
     }
 
-    public void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, ReadOnlySpan<VkDescriptorSet> descriptorSets)
+    public void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, Span<VkDescriptorSet> descriptorSets)
     {
         fixed (VkDescriptorSet* descriptorSetsPtr = descriptorSets)
         {
@@ -217,8 +217,8 @@ public unsafe partial class VkDeviceApi
         VkPipelineBindPoint pipelineBindPoint,
         VkPipelineLayout layout,
         uint firstSet,
-        ReadOnlySpan<VkDescriptorSet> descriptorSets,
-        ReadOnlySpan<uint> dynamicOffsets)
+        Span<VkDescriptorSet> descriptorSets,
+        Span<uint> dynamicOffsets)
     {
         fixed (VkDescriptorSet* descriptorSetsPtr = descriptorSets)
         {
@@ -234,7 +234,7 @@ public unsafe partial class VkDeviceApi
         vkCmdBindVertexBuffers(commandBuffer, binding, 1, &buffer, &offset);
     }
 
-    public void vkCmdBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, ReadOnlySpan<VkBuffer> buffers, ReadOnlySpan<ulong> offsets)
+    public void vkCmdBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, Span<VkBuffer> buffers, Span<ulong> offsets)
     {
         fixed (VkBuffer* buffersPtr = buffers)
         {
@@ -250,7 +250,7 @@ public unsafe partial class VkDeviceApi
         vkCmdExecuteCommands(commandBuffer, 1, &secondaryCommandBuffer);
     }
 
-    public void vkCmdExecuteCommands(VkCommandBuffer commandBuffer, ReadOnlySpan<VkCommandBuffer> secondaryCommandBuffers)
+    public void vkCmdExecuteCommands(VkCommandBuffer commandBuffer, Span<VkCommandBuffer> secondaryCommandBuffers)
     {
         fixed (VkCommandBuffer* commandBuffersPtr = secondaryCommandBuffers)
         {
@@ -351,7 +351,7 @@ public unsafe partial class VkDeviceApi
     public VkResult vkCreateFramebuffer(
         VkDevice device,
         VkRenderPass renderPass,
-        ReadOnlySpan<VkImageView> attachments,
+        Span<VkImageView> attachments,
         uint width,
         uint height,
         uint layers,
@@ -376,7 +376,7 @@ public unsafe partial class VkDeviceApi
     public VkResult vkCreateFramebuffer(
         VkDevice device,
         VkRenderPass renderPass,
-        ReadOnlySpan<VkImageView> attachments,
+        Span<VkImageView> attachments,
         in VkExtent2D extent,
         uint layers,
         out VkFramebuffer framebuffer)
@@ -399,8 +399,8 @@ public unsafe partial class VkDeviceApi
 
     public VkResult vkCreatePipelineLayout(
         VkDevice device,
-        ReadOnlySpan<VkDescriptorSetLayout> setLayouts,
-        ReadOnlySpan<VkPushConstantRange> pushConstantRanges,
+        Span<VkDescriptorSetLayout> setLayouts,
+        Span<VkPushConstantRange> pushConstantRanges,
         out VkPipelineLayout pipelineLayout)
     {
         fixed (VkDescriptorSetLayout* setLayoutsPtr = setLayouts)
@@ -427,17 +427,10 @@ public unsafe partial class VkDeviceApi
         vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
     }
 
-    public void vkCmdSetViewport(VkCommandBuffer commandBuffer, VkViewport viewport)
-    {
-        vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
-    }
-
-    public void vkCmdSetViewport(VkCommandBuffer commandBuffer, ReadOnlySpan<VkViewport> viewports)
+    public void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, Span<VkViewport> viewports)
     {
         fixed (VkViewport* viewportsPtr = viewports)
-        {
-            vkCmdSetViewport(commandBuffer, 0, (uint)viewports.Length, viewportsPtr);
-        }
+            vkCmdSetViewport(commandBuffer, firstViewport, viewportCount, viewportsPtr);
     }
 
     public void vkCmdSetViewport<T>(VkCommandBuffer commandBuffer, uint firstViewport, T viewport) where T : unmanaged
@@ -451,16 +444,18 @@ public unsafe partial class VkDeviceApi
         vkCmdSetViewport(commandBuffer, firstViewport, 1, (VkViewport*)&viewport);
     }
 
-    public void vkCmdSetViewport<T>(VkCommandBuffer commandBuffer, uint firstViewport, int viewportCount, T* viewports) where T : unmanaged
+    public void vkCmdSetViewport<TViewport>(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, Span<TViewport> viewports)
+        where TViewport : unmanaged
     {
 #if DEBUG
-        if (sizeof(T) != sizeof(VkViewport))
+        if (sizeof(TViewport) != sizeof(VkViewport))
         {
             throw new ArgumentException($"Type T must have same size and layout as {nameof(VkViewport)}", nameof(viewports));
         }
 #endif
 
-        vkCmdSetViewport(commandBuffer, firstViewport, (uint)viewportCount, (VkViewport*)viewports);
+        fixed (TViewport* viewportsPtr = viewports)
+            vkCmdSetViewport(commandBuffer, firstViewport, viewportCount, (VkViewport*)viewportsPtr);
     }
 
     public void vkCmdSetScissor(VkCommandBuffer commandBuffer, int x, int y, uint width, uint height)
@@ -469,15 +464,11 @@ public unsafe partial class VkDeviceApi
         vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
     }
 
-    public void vkCmdSetScissor(VkCommandBuffer commandBuffer, VkRect2D scissor)
-    {
-        vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
-    }
-
-    public void vkCmdSetScissor<T>(VkCommandBuffer commandBuffer, uint firstScissor, T scissor) where T : unmanaged
+    public void vkCmdSetScissor<TRect2D>(VkCommandBuffer commandBuffer, uint firstScissor, TRect2D scissor)
+        where TRect2D : unmanaged
     {
 #if DEBUG
-        if (sizeof(T) != sizeof(VkRect2D))
+        if (sizeof(TRect2D) != sizeof(VkRect2D))
         {
             throw new ArgumentException($"Type T must have same size and layout as {nameof(VkRect2D)}", nameof(scissor));
         }
@@ -485,16 +476,24 @@ public unsafe partial class VkDeviceApi
         vkCmdSetScissor(commandBuffer, firstScissor, 1, (VkRect2D*)&scissor);
     }
 
-    public void vkCmdSetScissor<T>(VkCommandBuffer commandBuffer, uint firstScissor, int scissorCount, T* scissorRects) where T : unmanaged
+    public void vkCmdSetScissor<TRect2D>(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, Span<TRect2D> scissorRects)
+        where TRect2D : unmanaged
     {
 #if DEBUG
-        if (sizeof(T) != sizeof(VkRect2D))
+        if (sizeof(TRect2D) != sizeof(VkRect2D))
         {
             throw new ArgumentException($"Type T must have same size and layout as {nameof(VkRect2D)}", nameof(scissorRects));
         }
 #endif
 
-        vkCmdSetScissor(commandBuffer, firstScissor, (uint)scissorCount, (VkRect2D*)scissorRects);
+        fixed (TRect2D* scissorRectsPtr = scissorRects)
+            vkCmdSetScissor(commandBuffer, firstScissor, scissorCount, (VkRect2D*)scissorRectsPtr);
+    }
+
+    public void vkCmdSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, Span<VkRect2D> scissorRects)
+    {
+        fixed (VkRect2D* scissorRectsPtr = scissorRects)
+            vkCmdSetScissor(commandBuffer, firstScissor, scissorCount, scissorRectsPtr);
     }
 
     public void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, float red, float green, float blue, float alpha)
@@ -503,7 +502,7 @@ public unsafe partial class VkDeviceApi
         vkCmdSetBlendConstants(commandBuffer, blendConstantsArray);
     }
 
-    public void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, ReadOnlySpan<float> blendConstants)
+    public void vkCmdSetBlendConstants(VkCommandBuffer commandBuffer, Span<float> blendConstants)
     {
         fixed (float* blendConstantsPtr = blendConstants)
         {
@@ -511,30 +510,14 @@ public unsafe partial class VkDeviceApi
         }
     }
 
-    public void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D* fragmentSize, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
+    public void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, Span<VkExtent2D> fragmentSize, Span<VkFragmentShadingRateCombinerOpKHR> combinerOps)
     {
-        fixed (VkFragmentShadingRateCombinerOpKHR* combinerOpsPtr = &combinerOps[0])
+        fixed (VkExtent2D* fragmentSizePtr = fragmentSize)
         {
-            vkCmdSetFragmentShadingRateKHR(commandBuffer, fragmentSize, combinerOpsPtr);
-        }
-    }
-
-    public void vkCmdSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D[] fragmentSize, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
-    {
-        fixed (VkExtent2D* fragmentSizePtr = &fragmentSize[0])
-        {
-            fixed (VkFragmentShadingRateCombinerOpKHR* combinerOpsPtr = &combinerOps[0])
+            fixed (VkFragmentShadingRateCombinerOpKHR* combinerOpsPtr = combinerOps)
             {
                 vkCmdSetFragmentShadingRateKHR(commandBuffer, fragmentSizePtr, combinerOpsPtr);
             }
-        }
-    }
-
-    public void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR[] combinerOps)
-    {
-        fixed (VkFragmentShadingRateCombinerOpKHR* combinerOpsPtr = &combinerOps[0])
-        {
-            vkCmdSetFragmentShadingRateEnumNV(commandBuffer, shadingRate, combinerOpsPtr);
         }
     }
 
@@ -542,7 +525,7 @@ public unsafe partial class VkDeviceApi
         VkBuffer srcBuffer,
         VkImage dstImage,
         VkImageLayout dstImageLayout,
-        ReadOnlySpan<VkBufferImageCopy> regions,
+        Span<VkBufferImageCopy> regions,
         uint regionCount = 0)
     {
         if (regionCount == 0)
@@ -554,6 +537,60 @@ public unsafe partial class VkDeviceApi
                 regionCount,
                 pRegions
              );
+        }
+    }
+
+    public void vkCmdPipelineBarrier(VkCommandBuffer commandBuffer,
+        VkPipelineStageFlags srcStageMask,
+        VkPipelineStageFlags dstStageMask,
+        VkDependencyFlags dependencyFlags,
+        Span<VkMemoryBarrier> memoryBarriers,
+        Span<VkBufferMemoryBarrier> bufferMemoryBarriers,
+        Span<VkImageMemoryBarrier> imageMemoryBarriers)
+    {
+        fixed (VkMemoryBarrier* memoryBarriersPtr = memoryBarriers)
+        {
+            fixed (VkBufferMemoryBarrier* bufferMemoryBarriersPtr = bufferMemoryBarriers)
+            {
+                fixed (VkImageMemoryBarrier* imageMemoryBarriersPtr = imageMemoryBarriers)
+                {
+                    vkCmdPipelineBarrier(
+                        commandBuffer,
+                        srcStageMask,
+                        dstStageMask,
+                        dependencyFlags,
+                        (uint)memoryBarriers.Length, memoryBarriersPtr,
+                        (uint)bufferMemoryBarriers.Length, bufferMemoryBarriersPtr,
+                        (uint)imageMemoryBarriers.Length, imageMemoryBarriersPtr
+                        );
+                }
+            }
+        }
+    }
+
+    public void vkCmdPipelineBarrier2(VkCommandBuffer commandBuffer,
+        VkDependencyFlags dependencyFlags,
+        Span<VkMemoryBarrier2> memoryBarriers,
+        Span<VkBufferMemoryBarrier2> bufferMemoryBarriers,
+        Span<VkImageMemoryBarrier2> imageMemoryBarriers)
+    {
+        fixed (VkMemoryBarrier2* pMemoryBarriers = memoryBarriers)
+        {
+            fixed (VkBufferMemoryBarrier2* pBufferMemoryBarriers = bufferMemoryBarriers)
+            {
+                fixed (VkImageMemoryBarrier2* pImageMemoryBarriers = imageMemoryBarriers)
+                {
+                    VkDependencyInfo dependencyInfo = new();
+                    dependencyInfo.dependencyFlags = dependencyFlags;
+                    dependencyInfo.memoryBarrierCount = (uint)memoryBarriers.Length;
+                    dependencyInfo.pMemoryBarriers = pMemoryBarriers;
+                    dependencyInfo.bufferMemoryBarrierCount = (uint)bufferMemoryBarriers.Length;
+                    dependencyInfo.pBufferMemoryBarriers = pBufferMemoryBarriers;
+                    dependencyInfo.imageMemoryBarrierCount = (uint)imageMemoryBarriers.Length;
+                    dependencyInfo.pImageMemoryBarriers = pImageMemoryBarriers;
+                    vkCmdPipelineBarrier2(commandBuffer, &dependencyInfo);
+                }
+            }
         }
     }
 }

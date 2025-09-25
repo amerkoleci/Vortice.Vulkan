@@ -38,12 +38,13 @@ public sealed partial class CompileResult
                 }
             }
 
-            var builder = new StringBuilder();
-            foreach (var line in lines)
+            StringBuilder builder = new();
+            foreach (string line in lines)
             {
                 builder.AppendLine(line);
             }
             ErrorMessage = builder.ToString();
+            Bytecode = [];
         }
         else
         {
