@@ -8,7 +8,7 @@ namespace Generator;
 
 partial class CsCodeGenerator
 {
-    private static readonly HashSet<string> _structsAsRecord =
+    private static readonly HashSet<string> s_structsAsRecord =
     [
         "VkOffset2D",
         "VkOffset3D",
@@ -33,12 +33,15 @@ partial class CsCodeGenerator
             usings.AddRange(_options.ExtraUsings);
         }
 
+        string[] staticUsings = ["Vortice.Vulkan.Vulkan"];
+
         // Generate Structures
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Structures.cs"),
             false,
             _options.Namespace,
             [.. usings],
-            "#pragma warning disable CS0649"
+            "#pragma warning disable CS0649",
+            staticUsings
             );
 
         foreach (CppClass? cppClass in compilation.Classes)
@@ -108,7 +111,7 @@ partial class CsCodeGenerator
             isReadOnly = true;
         }
 
-        if (_structsAsRecord.Contains(cppClass.Name))
+        if (s_structsAsRecord.Contains(cppClass.Name))
         {
             modifier += " record";
         }
@@ -356,6 +359,10 @@ partial class CsCodeGenerator
                 else if (structName == "VkPhysicalDeviceIDProperties")
                 {
                     structureTypeValue = "PhysicalDeviceIdProperties";
+                }
+                else if (structName == "VkPhysicalDeviceShader64BitIndexingFeaturesEXT")
+                {
+                    structureTypeValue = "PhysicalDeviceShader64IndexingFeaturesEXT";
                 }
 
                 fieldInitializer = $" = VkStructureType.{structureTypeValue}";

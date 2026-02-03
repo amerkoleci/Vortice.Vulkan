@@ -18,6 +18,7 @@ partial class CsCodeGenerator
         "vkEnumerateDeviceLayerProperties",
 
         "vkQueueSubmit",
+        "vkQueueSubmit2",
         "vkFlushMappedMemoryRanges",
         "vkInvalidateMappedMemoryRanges",
 

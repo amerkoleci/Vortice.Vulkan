@@ -10,6 +10,7 @@
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Diagnostics.CodeAnalysis;
+using static Vortice.Vulkan.Vulkan;
 
 #pragma warning disable CS0649
 namespace Vortice.Vulkan;
@@ -73,30 +74,6 @@ public unsafe partial struct VkBufferMemoryBarrier : IStructureType, IChainType
 	}
 }
 
-public partial struct VkDispatchIndirectCommand
-{
-	public uint x;
-	public uint y;
-	public uint z;
-}
-
-public partial struct VkDrawIndexedIndirectCommand
-{
-	public uint indexCount;
-	public uint instanceCount;
-	public uint firstIndex;
-	public int vertexOffset;
-	public uint firstInstance;
-}
-
-public partial struct VkDrawIndirectCommand
-{
-	public uint vertexCount;
-	public uint instanceCount;
-	public uint firstVertex;
-	public uint firstInstance;
-}
-
 public partial struct VkImageSubresourceRange
 {
 	public VkImageAspectFlags aspectMask;
@@ -154,15 +131,6 @@ public unsafe partial struct VkMemoryBarrier : IStructureType, IChainType
 		get => pNext;
 		set => pNext = value;
 	}
-}
-
-public unsafe partial struct VkPipelineCacheHeaderVersionOne
-{
-	public uint headerSize;
-	public VkPipelineCacheHeaderVersion headerVersion;
-	public uint vendorID;
-	public uint deviceID;
-	public fixed byte pipelineCacheUUID[16];
 }
 
 public unsafe partial struct VkAllocationCallbacks
@@ -753,27 +721,6 @@ public unsafe partial struct VkSemaphoreCreateInfo : IStructureType, IChainType
 	}
 }
 
-public unsafe partial struct VkEventCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.EventCreateInfo;
-	public void* pNext;
-	public VkEventCreateFlags flags;
-
-	public VkEventCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkQueryPoolCreateInfo : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.QueryPoolCreateInfo;
@@ -810,31 +757,6 @@ public unsafe partial struct VkBufferCreateInfo : IStructureType, IChainType
 	public uint* pQueueFamilyIndices;
 
 	public VkBufferCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkBufferViewCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.BufferViewCreateInfo;
-	public void* pNext;
-	public VkBufferViewCreateFlags flags;
-	public VkBuffer buffer;
-	public VkFormat format;
-	public ulong offset;
-	public ulong range;
-
-	public VkBufferViewCreateInfo()
 	{
 	}
 
@@ -911,6 +833,195 @@ public unsafe partial struct VkImageViewCreateInfo : IStructureType, IChainType
 	public VkImageSubresourceRange subresourceRange;
 
 	public VkImageViewCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkCommandPoolCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.CommandPoolCreateInfo;
+	public void* pNext;
+	public VkCommandPoolCreateFlags flags;
+	public uint queueFamilyIndex;
+
+	public VkCommandPoolCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkCommandBufferAllocateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.CommandBufferAllocateInfo;
+	public void* pNext;
+	public VkCommandPool commandPool;
+	public VkCommandBufferLevel level;
+	public uint commandBufferCount;
+
+	public VkCommandBufferAllocateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkCommandBufferInheritanceInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.CommandBufferInheritanceInfo;
+	public void* pNext;
+	public VkRenderPass renderPass;
+	public uint subpass;
+	public VkFramebuffer framebuffer;
+	public VkBool32 occlusionQueryEnable;
+	public VkQueryControlFlags queryFlags;
+	public VkQueryPipelineStatisticFlags pipelineStatistics;
+
+	public VkCommandBufferInheritanceInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkCommandBufferBeginInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.CommandBufferBeginInfo;
+	public void* pNext;
+	public VkCommandBufferUsageFlags flags;
+	public VkCommandBufferInheritanceInfo* pInheritanceInfo;
+
+	public VkCommandBufferBeginInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkBufferCopy
+{
+	public ulong srcOffset;
+	public ulong dstOffset;
+	public ulong size;
+}
+
+public partial struct VkImageSubresourceLayers
+{
+	public VkImageAspectFlags aspectMask;
+	public uint mipLevel;
+	public uint baseArrayLayer;
+	public uint layerCount;
+}
+
+public partial struct VkBufferImageCopy
+{
+	public ulong bufferOffset;
+	public uint bufferRowLength;
+	public uint bufferImageHeight;
+	public VkImageSubresourceLayers imageSubresource;
+	public VkOffset3D imageOffset;
+	public VkExtent3D imageExtent;
+}
+
+public partial struct VkImageCopy
+{
+	public VkImageSubresourceLayers srcSubresource;
+	public VkOffset3D srcOffset;
+	public VkImageSubresourceLayers dstSubresource;
+	public VkOffset3D dstOffset;
+	public VkExtent3D extent;
+}
+
+public partial struct VkDispatchIndirectCommand
+{
+	public uint x;
+	public uint y;
+	public uint z;
+}
+
+public unsafe partial struct VkPipelineCacheHeaderVersionOne
+{
+	public uint headerSize;
+	public VkPipelineCacheHeaderVersion headerVersion;
+	public uint vendorID;
+	public uint deviceID;
+	public fixed byte pipelineCacheUUID[16];
+}
+
+public unsafe partial struct VkEventCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.EventCreateInfo;
+	public void* pNext;
+	public VkEventCreateFlags flags;
+
+	public VkEventCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkBufferViewCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.BufferViewCreateInfo;
+	public void* pNext;
+	public VkBufferViewCreateFlags flags;
+	public VkBuffer buffer;
+	public VkFormat format;
+	public ulong offset;
+	public ulong range;
+
+	public VkBufferViewCreateInfo()
 	{
 	}
 
@@ -1034,6 +1145,245 @@ public unsafe partial struct VkComputePipelineCreateInfo : IStructureType, IChai
 		get => pNext;
 		set => pNext = value;
 	}
+}
+
+public partial struct VkPushConstantRange
+{
+	public VkShaderStageFlags stageFlags;
+	public uint offset;
+	public uint size;
+}
+
+public unsafe partial struct VkPipelineLayoutCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineLayoutCreateInfo;
+	public void* pNext;
+	public VkPipelineLayoutCreateFlags flags;
+	public uint setLayoutCount;
+	public VkDescriptorSetLayout* pSetLayouts;
+	public uint pushConstantRangeCount;
+	public VkPushConstantRange* pPushConstantRanges;
+
+	public VkPipelineLayoutCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSamplerCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SamplerCreateInfo;
+	public void* pNext;
+	public VkSamplerCreateFlags flags;
+	public VkFilter magFilter;
+	public VkFilter minFilter;
+	public VkSamplerMipmapMode mipmapMode;
+	public VkSamplerAddressMode addressModeU;
+	public VkSamplerAddressMode addressModeV;
+	public VkSamplerAddressMode addressModeW;
+	public float mipLodBias;
+	public VkBool32 anisotropyEnable;
+	public float maxAnisotropy;
+	public VkBool32 compareEnable;
+	public VkCompareOp compareOp;
+	public float minLod;
+	public float maxLod;
+	public VkBorderColor borderColor;
+	public VkBool32 unnormalizedCoordinates;
+
+	public VkSamplerCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkCopyDescriptorSet : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.CopyDescriptorSet;
+	public void* pNext;
+	public VkDescriptorSet srcSet;
+	public uint srcBinding;
+	public uint srcArrayElement;
+	public VkDescriptorSet dstSet;
+	public uint dstBinding;
+	public uint dstArrayElement;
+	public uint descriptorCount;
+
+	public VkCopyDescriptorSet()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkDescriptorBufferInfo
+{
+	public VkBuffer buffer;
+	public ulong offset;
+	public ulong range;
+}
+
+public partial struct VkDescriptorImageInfo
+{
+	public VkSampler sampler;
+	public VkImageView imageView;
+	public VkImageLayout imageLayout;
+}
+
+public partial struct VkDescriptorPoolSize
+{
+	public VkDescriptorType type;
+	public uint descriptorCount;
+}
+
+public unsafe partial struct VkDescriptorPoolCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DescriptorPoolCreateInfo;
+	public void* pNext;
+	public VkDescriptorPoolCreateFlags flags;
+	public uint maxSets;
+	public uint poolSizeCount;
+	public VkDescriptorPoolSize* pPoolSizes;
+
+	public VkDescriptorPoolCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkDescriptorSetAllocateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DescriptorSetAllocateInfo;
+	public void* pNext;
+	public VkDescriptorPool descriptorPool;
+	public uint descriptorSetCount;
+	public VkDescriptorSetLayout* pSetLayouts;
+
+	public VkDescriptorSetAllocateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkDescriptorSetLayoutBinding
+{
+	public uint binding;
+	public VkDescriptorType descriptorType;
+	public uint descriptorCount;
+	public VkShaderStageFlags stageFlags;
+	public VkSampler* pImmutableSamplers;
+}
+
+public unsafe partial struct VkDescriptorSetLayoutCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DescriptorSetLayoutCreateInfo;
+	public void* pNext;
+	public VkDescriptorSetLayoutCreateFlags flags;
+	public uint bindingCount;
+	public VkDescriptorSetLayoutBinding* pBindings;
+
+	public VkDescriptorSetLayoutCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkWriteDescriptorSet : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.WriteDescriptorSet;
+	public void* pNext;
+	public VkDescriptorSet dstSet;
+	public uint dstBinding;
+	public uint dstArrayElement;
+	public uint descriptorCount;
+	public VkDescriptorType descriptorType;
+	public VkDescriptorImageInfo* pImageInfo;
+	public VkDescriptorBufferInfo* pBufferInfo;
+	public VkBufferView* pTexelBufferView;
+
+	public VkWriteDescriptorSet()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkDrawIndexedIndirectCommand
+{
+	public uint indexCount;
+	public uint instanceCount;
+	public uint firstIndex;
+	public int vertexOffset;
+	public uint firstInstance;
+}
+
+public partial struct VkDrawIndirectCommand
+{
+	public uint vertexCount;
+	public uint instanceCount;
+	public uint firstVertex;
+	public uint firstInstance;
 }
 
 public partial struct VkVertexInputBindingDescription
@@ -1353,228 +1703,6 @@ public unsafe partial struct VkGraphicsPipelineCreateInfo : IStructureType, ICha
 	}
 }
 
-public partial struct VkPushConstantRange
-{
-	public VkShaderStageFlags stageFlags;
-	public uint offset;
-	public uint size;
-}
-
-public unsafe partial struct VkPipelineLayoutCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PipelineLayoutCreateInfo;
-	public void* pNext;
-	public VkPipelineLayoutCreateFlags flags;
-	public uint setLayoutCount;
-	public VkDescriptorSetLayout* pSetLayouts;
-	public uint pushConstantRangeCount;
-	public VkPushConstantRange* pPushConstantRanges;
-
-	public VkPipelineLayoutCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkSamplerCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.SamplerCreateInfo;
-	public void* pNext;
-	public VkSamplerCreateFlags flags;
-	public VkFilter magFilter;
-	public VkFilter minFilter;
-	public VkSamplerMipmapMode mipmapMode;
-	public VkSamplerAddressMode addressModeU;
-	public VkSamplerAddressMode addressModeV;
-	public VkSamplerAddressMode addressModeW;
-	public float mipLodBias;
-	public VkBool32 anisotropyEnable;
-	public float maxAnisotropy;
-	public VkBool32 compareEnable;
-	public VkCompareOp compareOp;
-	public float minLod;
-	public float maxLod;
-	public VkBorderColor borderColor;
-	public VkBool32 unnormalizedCoordinates;
-
-	public VkSamplerCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkCopyDescriptorSet : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.CopyDescriptorSet;
-	public void* pNext;
-	public VkDescriptorSet srcSet;
-	public uint srcBinding;
-	public uint srcArrayElement;
-	public VkDescriptorSet dstSet;
-	public uint dstBinding;
-	public uint dstArrayElement;
-	public uint descriptorCount;
-
-	public VkCopyDescriptorSet()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public partial struct VkDescriptorBufferInfo
-{
-	public VkBuffer buffer;
-	public ulong offset;
-	public ulong range;
-}
-
-public partial struct VkDescriptorImageInfo
-{
-	public VkSampler sampler;
-	public VkImageView imageView;
-	public VkImageLayout imageLayout;
-}
-
-public partial struct VkDescriptorPoolSize
-{
-	public VkDescriptorType type;
-	public uint descriptorCount;
-}
-
-public unsafe partial struct VkDescriptorPoolCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.DescriptorPoolCreateInfo;
-	public void* pNext;
-	public VkDescriptorPoolCreateFlags flags;
-	public uint maxSets;
-	public uint poolSizeCount;
-	public VkDescriptorPoolSize* pPoolSizes;
-
-	public VkDescriptorPoolCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkDescriptorSetAllocateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.DescriptorSetAllocateInfo;
-	public void* pNext;
-	public VkDescriptorPool descriptorPool;
-	public uint descriptorSetCount;
-	public VkDescriptorSetLayout* pSetLayouts;
-
-	public VkDescriptorSetAllocateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkDescriptorSetLayoutBinding
-{
-	public uint binding;
-	public VkDescriptorType descriptorType;
-	public uint descriptorCount;
-	public VkShaderStageFlags stageFlags;
-	public VkSampler* pImmutableSamplers;
-}
-
-public unsafe partial struct VkDescriptorSetLayoutCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.DescriptorSetLayoutCreateInfo;
-	public void* pNext;
-	public VkDescriptorSetLayoutCreateFlags flags;
-	public uint bindingCount;
-	public VkDescriptorSetLayoutBinding* pBindings;
-
-	public VkDescriptorSetLayoutCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkWriteDescriptorSet : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.WriteDescriptorSet;
-	public void* pNext;
-	public VkDescriptorSet dstSet;
-	public uint dstBinding;
-	public uint dstArrayElement;
-	public uint descriptorCount;
-	public VkDescriptorType descriptorType;
-	public VkDescriptorImageInfo* pImageInfo;
-	public VkDescriptorBufferInfo* pBufferInfo;
-	public VkBufferView* pTexelBufferView;
-
-	public VkWriteDescriptorSet()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public partial struct VkAttachmentDescription
 {
 	public VkAttachmentDescriptionFlags flags;
@@ -1673,124 +1801,6 @@ public unsafe partial struct VkRenderPassCreateInfo : IStructureType, IChainType
 	}
 }
 
-public unsafe partial struct VkCommandPoolCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.CommandPoolCreateInfo;
-	public void* pNext;
-	public VkCommandPoolCreateFlags flags;
-	public uint queueFamilyIndex;
-
-	public VkCommandPoolCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkCommandBufferAllocateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.CommandBufferAllocateInfo;
-	public void* pNext;
-	public VkCommandPool commandPool;
-	public VkCommandBufferLevel level;
-	public uint commandBufferCount;
-
-	public VkCommandBufferAllocateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkCommandBufferInheritanceInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.CommandBufferInheritanceInfo;
-	public void* pNext;
-	public VkRenderPass renderPass;
-	public uint subpass;
-	public VkFramebuffer framebuffer;
-	public VkBool32 occlusionQueryEnable;
-	public VkQueryControlFlags queryFlags;
-	public VkQueryPipelineStatisticFlags pipelineStatistics;
-
-	public VkCommandBufferInheritanceInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkCommandBufferBeginInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.CommandBufferBeginInfo;
-	public void* pNext;
-	public VkCommandBufferUsageFlags flags;
-	public VkCommandBufferInheritanceInfo* pInheritanceInfo;
-
-	public VkCommandBufferBeginInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public partial struct VkBufferCopy
-{
-	public ulong srcOffset;
-	public ulong dstOffset;
-	public ulong size;
-}
-
-public partial struct VkImageSubresourceLayers
-{
-	public VkImageAspectFlags aspectMask;
-	public uint mipLevel;
-	public uint baseArrayLayer;
-	public uint layerCount;
-}
-
-public partial struct VkBufferImageCopy
-{
-	public ulong bufferOffset;
-	public uint bufferRowLength;
-	public uint bufferImageHeight;
-	public VkImageSubresourceLayers imageSubresource;
-	public VkOffset3D imageOffset;
-	public VkExtent3D imageExtent;
-}
-
 public readonly partial struct VkClearDepthStencilValue
 {
 	public readonly float depth;
@@ -1840,15 +1850,6 @@ public partial struct VkImageBlit
 	}
 }
 
-public partial struct VkImageCopy
-{
-	public VkImageSubresourceLayers srcSubresource;
-	public VkOffset3D srcOffset;
-	public VkImageSubresourceLayers dstSubresource;
-	public VkOffset3D dstOffset;
-	public VkExtent3D extent;
-}
-
 public partial struct VkImageResolve
 {
 	public VkImageSubresourceLayers srcSubresource;
@@ -1869,30 +1870,6 @@ public unsafe partial struct VkRenderPassBeginInfo : IStructureType, IChainType
 	public VkClearValue* pClearValues;
 
 	public VkRenderPassBeginInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceSubgroupProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSubgroupProperties;
-	public void* pNext;
-	public uint subgroupSize;
-	public VkShaderStageFlags supportedStages;
-	public VkSubgroupFeatureFlags supportedOperations;
-	public VkBool32 quadOperationsInAllStages;
-
-	public VkPhysicalDeviceSubgroupProperties()
 	{
 	}
 
@@ -1939,30 +1916,6 @@ public unsafe partial struct VkBindImageMemoryInfo : IStructureType, IChainType
 	public ulong memoryOffset;
 
 	public VkBindImageMemoryInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDevice16BitStorageFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDevice16BitStorageFeatures;
-	public void* pNext;
-	public VkBool32 storageBuffer16BitAccess;
-	public VkBool32 uniformAndStorageBuffer16BitAccess;
-	public VkBool32 storagePushConstant16;
-	public VkBool32 storageInputOutput16;
-
-	public VkPhysicalDevice16BitStorageFeatures()
 	{
 	}
 
@@ -2029,29 +1982,6 @@ public unsafe partial struct VkMemoryAllocateFlagsInfo : IStructureType, IChainT
 	public uint deviceMask;
 
 	public VkMemoryAllocateFlagsInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkDeviceGroupRenderPassBeginInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.DeviceGroupRenderPassBeginInfo;
-	public void* pNext;
-	public uint deviceMask;
-	public uint deviceRenderAreaCount;
-	public VkRect2D* pDeviceRenderAreas;
-
-	public VkDeviceGroupRenderPassBeginInfo()
 	{
 	}
 
@@ -2534,56 +2464,6 @@ public unsafe partial struct VkPhysicalDeviceSparseImageFormatInfo2 : IStructure
 	}
 }
 
-public unsafe partial struct VkPhysicalDevicePointClippingProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDevicePointClippingProperties;
-	public void* pNext;
-	public VkPointClippingBehavior pointClippingBehavior;
-
-	public VkPhysicalDevicePointClippingProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public partial struct VkInputAttachmentAspectReference
-{
-	public uint subpass;
-	public uint inputAttachmentIndex;
-	public VkImageAspectFlags aspectMask;
-}
-
-public unsafe partial struct VkRenderPassInputAttachmentAspectCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.RenderPassInputAttachmentAspectCreateInfo;
-	public void* pNext;
-	public uint aspectReferenceCount;
-	public VkInputAttachmentAspectReference* pAspectReferences;
-
-	public VkRenderPassInputAttachmentAspectCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkImageViewUsageCreateInfo : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.ImageViewUsageCreateInfo;
@@ -2591,120 +2471,6 @@ public unsafe partial struct VkImageViewUsageCreateInfo : IStructureType, IChain
 	public VkImageUsageFlags usage;
 
 	public VkImageViewUsageCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPipelineTessellationDomainOriginStateCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PipelineTessellationDomainOriginStateCreateInfo;
-	public void* pNext;
-	public VkTessellationDomainOrigin domainOrigin;
-
-	public VkPipelineTessellationDomainOriginStateCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkRenderPassMultiviewCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.RenderPassMultiviewCreateInfo;
-	public void* pNext;
-	public uint subpassCount;
-	public uint* pViewMasks;
-	public uint dependencyCount;
-	public int* pViewOffsets;
-	public uint correlationMaskCount;
-	public uint* pCorrelationMasks;
-
-	public VkRenderPassMultiviewCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceMultiviewFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMultiviewFeatures;
-	public void* pNext;
-	public VkBool32 multiview;
-	public VkBool32 multiviewGeometryShader;
-	public VkBool32 multiviewTessellationShader;
-
-	public VkPhysicalDeviceMultiviewFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceMultiviewProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMultiviewProperties;
-	public void* pNext;
-	public uint maxMultiviewViewCount;
-	public uint maxMultiviewInstanceIndex;
-
-	public VkPhysicalDeviceMultiviewProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceVariablePointersFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVariablePointersFeatures;
-	public void* pNext;
-	public VkBool32 variablePointersStorageBuffer;
-	public VkBool32 variablePointers;
-
-	public VkPhysicalDeviceVariablePointersFeatures()
 	{
 	}
 
@@ -2805,55 +2571,6 @@ public unsafe partial struct VkProtectedSubmitInfo : IStructureType, IChainType
 	}
 }
 
-public unsafe partial struct VkSamplerYcbcrConversionCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.SamplerYcbcrConversionCreateInfo;
-	public void* pNext;
-	public VkFormat format;
-	public VkSamplerYcbcrModelConversion ycbcrModel;
-	public VkSamplerYcbcrRange ycbcrRange;
-	public VkComponentMapping components;
-	public VkChromaLocation xChromaOffset;
-	public VkChromaLocation yChromaOffset;
-	public VkFilter chromaFilter;
-	public VkBool32 forceExplicitReconstruction;
-
-	public VkSamplerYcbcrConversionCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkSamplerYcbcrConversionInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.SamplerYcbcrConversionInfo;
-	public void* pNext;
-	public VkSamplerYcbcrConversion conversion;
-
-	public VkSamplerYcbcrConversionInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkBindImagePlaneMemoryInfo : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.BindImagePlaneMemoryInfo;
@@ -2882,86 +2599,6 @@ public unsafe partial struct VkImagePlaneMemoryRequirementsInfo : IStructureType
 	public VkImageAspectFlags planeAspect;
 
 	public VkImagePlaneMemoryRequirementsInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceSamplerYcbcrConversionFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSamplerYcbcrConversionFeatures;
-	public void* pNext;
-	public VkBool32 samplerYcbcrConversion;
-
-	public VkPhysicalDeviceSamplerYcbcrConversionFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkSamplerYcbcrConversionImageFormatProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.SamplerYcbcrConversionImageFormatProperties;
-	public void* pNext;
-	public uint combinedImageSamplerDescriptorCount;
-
-	public VkSamplerYcbcrConversionImageFormatProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public partial struct VkDescriptorUpdateTemplateEntry
-{
-	public uint dstBinding;
-	public uint dstArrayElement;
-	public uint descriptorCount;
-	public VkDescriptorType descriptorType;
-	public ulong offset;
-	public ulong stride;
-}
-
-public unsafe partial struct VkDescriptorUpdateTemplateCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.DescriptorUpdateTemplateCreateInfo;
-	public void* pNext;
-	public VkDescriptorUpdateTemplateCreateFlags flags;
-	public uint descriptorUpdateEntryCount;
-	public VkDescriptorUpdateTemplateEntry* pDescriptorUpdateEntries;
-	public VkDescriptorUpdateTemplateType templateType;
-	public VkDescriptorSetLayout descriptorSetLayout;
-	public VkPipelineBindPoint pipelineBindPoint;
-	public VkPipelineLayout pipelineLayout;
-	public uint set;
-
-	public VkDescriptorUpdateTemplateCreateInfo()
 	{
 	}
 
@@ -3287,6 +2924,114 @@ public unsafe partial struct VkExternalSemaphoreProperties : IStructureType, ICh
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceSubgroupProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceSubgroupProperties;
+	public void* pNext;
+	public uint subgroupSize;
+	public VkShaderStageFlags supportedStages;
+	public VkSubgroupFeatureFlags supportedOperations;
+	public VkBool32 quadOperationsInAllStages;
+
+	public VkPhysicalDeviceSubgroupProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevice16BitStorageFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevice16BitStorageFeatures;
+	public void* pNext;
+	public VkBool32 storageBuffer16BitAccess;
+	public VkBool32 uniformAndStorageBuffer16BitAccess;
+	public VkBool32 storagePushConstant16;
+	public VkBool32 storageInputOutput16;
+
+	public VkPhysicalDevice16BitStorageFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceVariablePointersFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceVariablePointersFeatures;
+	public void* pNext;
+	public VkBool32 variablePointersStorageBuffer;
+	public VkBool32 variablePointers;
+
+	public VkPhysicalDeviceVariablePointersFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkDescriptorUpdateTemplateEntry
+{
+	public uint dstBinding;
+	public uint dstArrayElement;
+	public uint descriptorCount;
+	public VkDescriptorType descriptorType;
+	public ulong offset;
+	public ulong stride;
+}
+
+public unsafe partial struct VkDescriptorUpdateTemplateCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DescriptorUpdateTemplateCreateInfo;
+	public void* pNext;
+	public VkDescriptorUpdateTemplateCreateFlags flags;
+	public uint descriptorUpdateEntryCount;
+	public VkDescriptorUpdateTemplateEntry* pDescriptorUpdateEntries;
+	public VkDescriptorUpdateTemplateType templateType;
+	public VkDescriptorSetLayout descriptorSetLayout;
+	public VkPipelineBindPoint pipelineBindPoint;
+	public VkPipelineLayout pipelineLayout;
+	public uint set;
+
+	public VkDescriptorUpdateTemplateCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceMaintenance3Properties : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance3Properties;
@@ -3316,6 +3061,262 @@ public unsafe partial struct VkDescriptorSetLayoutSupport : IStructureType, ICha
 	public VkBool32 supported;
 
 	public VkDescriptorSetLayoutSupport()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSamplerYcbcrConversionCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SamplerYcbcrConversionCreateInfo;
+	public void* pNext;
+	public VkFormat format;
+	public VkSamplerYcbcrModelConversion ycbcrModel;
+	public VkSamplerYcbcrRange ycbcrRange;
+	public VkComponentMapping components;
+	public VkChromaLocation xChromaOffset;
+	public VkChromaLocation yChromaOffset;
+	public VkFilter chromaFilter;
+	public VkBool32 forceExplicitReconstruction;
+
+	public VkSamplerYcbcrConversionCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSamplerYcbcrConversionInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SamplerYcbcrConversionInfo;
+	public void* pNext;
+	public VkSamplerYcbcrConversion conversion;
+
+	public VkSamplerYcbcrConversionInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceSamplerYcbcrConversionFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceSamplerYcbcrConversionFeatures;
+	public void* pNext;
+	public VkBool32 samplerYcbcrConversion;
+
+	public VkPhysicalDeviceSamplerYcbcrConversionFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSamplerYcbcrConversionImageFormatProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SamplerYcbcrConversionImageFormatProperties;
+	public void* pNext;
+	public uint combinedImageSamplerDescriptorCount;
+
+	public VkSamplerYcbcrConversionImageFormatProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkDeviceGroupRenderPassBeginInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DeviceGroupRenderPassBeginInfo;
+	public void* pNext;
+	public uint deviceMask;
+	public uint deviceRenderAreaCount;
+	public VkRect2D* pDeviceRenderAreas;
+
+	public VkDeviceGroupRenderPassBeginInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePointClippingProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePointClippingProperties;
+	public void* pNext;
+	public VkPointClippingBehavior pointClippingBehavior;
+
+	public VkPhysicalDevicePointClippingProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkInputAttachmentAspectReference
+{
+	public uint subpass;
+	public uint inputAttachmentIndex;
+	public VkImageAspectFlags aspectMask;
+}
+
+public unsafe partial struct VkRenderPassInputAttachmentAspectCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderPassInputAttachmentAspectCreateInfo;
+	public void* pNext;
+	public uint aspectReferenceCount;
+	public VkInputAttachmentAspectReference* pAspectReferences;
+
+	public VkRenderPassInputAttachmentAspectCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineTessellationDomainOriginStateCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineTessellationDomainOriginStateCreateInfo;
+	public void* pNext;
+	public VkTessellationDomainOrigin domainOrigin;
+
+	public VkPipelineTessellationDomainOriginStateCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkRenderPassMultiviewCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderPassMultiviewCreateInfo;
+	public void* pNext;
+	public uint subpassCount;
+	public uint* pViewMasks;
+	public uint dependencyCount;
+	public int* pViewOffsets;
+	public uint correlationMaskCount;
+	public uint* pCorrelationMasks;
+
+	public VkRenderPassMultiviewCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceMultiviewFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceMultiviewFeatures;
+	public void* pNext;
+	public VkBool32 multiview;
+	public VkBool32 multiviewGeometryShader;
+	public VkBool32 multiviewTessellationShader;
+
+	public VkPhysicalDeviceMultiviewFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceMultiviewProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceMultiviewProperties;
+	public void* pNext;
+	public uint maxMultiviewViewCount;
+	public uint maxMultiviewInstanceIndex;
+
+	public VkPhysicalDeviceMultiviewProperties()
 	{
 	}
 
@@ -3587,210 +3588,6 @@ public unsafe partial struct VkImageFormatListCreateInfo : IStructureType, IChai
 	}
 }
 
-public unsafe partial struct VkAttachmentDescription2 : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.AttachmentDescription2;
-	public void* pNext;
-	public VkAttachmentDescriptionFlags flags;
-	public VkFormat format;
-	public VkSampleCountFlags samples;
-	public VkAttachmentLoadOp loadOp;
-	public VkAttachmentStoreOp storeOp;
-	public VkAttachmentLoadOp stencilLoadOp;
-	public VkAttachmentStoreOp stencilStoreOp;
-	public VkImageLayout initialLayout;
-	public VkImageLayout finalLayout;
-
-	public VkAttachmentDescription2()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkAttachmentReference2 : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.AttachmentReference2;
-	public void* pNext;
-	public uint attachment;
-	public VkImageLayout layout;
-	public VkImageAspectFlags aspectMask;
-
-	public VkAttachmentReference2()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkSubpassDescription2 : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.SubpassDescription2;
-	public void* pNext;
-	public VkSubpassDescriptionFlags flags;
-	public VkPipelineBindPoint pipelineBindPoint;
-	public uint viewMask;
-	public uint inputAttachmentCount;
-	public VkAttachmentReference2* pInputAttachments;
-	public uint colorAttachmentCount;
-	public VkAttachmentReference2* pColorAttachments;
-	public VkAttachmentReference2* pResolveAttachments;
-	public VkAttachmentReference2* pDepthStencilAttachment;
-	public uint preserveAttachmentCount;
-	public uint* pPreserveAttachments;
-
-	public VkSubpassDescription2()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkSubpassDependency2 : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.SubpassDependency2;
-	public void* pNext;
-	public uint srcSubpass;
-	public uint dstSubpass;
-	public VkPipelineStageFlags srcStageMask;
-	public VkPipelineStageFlags dstStageMask;
-	public VkAccessFlags srcAccessMask;
-	public VkAccessFlags dstAccessMask;
-	public VkDependencyFlags dependencyFlags;
-	public int viewOffset;
-
-	public VkSubpassDependency2()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkRenderPassCreateInfo2 : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.RenderPassCreateInfo2;
-	public void* pNext;
-	public VkRenderPassCreateFlags flags;
-	public uint attachmentCount;
-	public VkAttachmentDescription2* pAttachments;
-	public uint subpassCount;
-	public VkSubpassDescription2* pSubpasses;
-	public uint dependencyCount;
-	public VkSubpassDependency2* pDependencies;
-	public uint correlatedViewMaskCount;
-	public uint* pCorrelatedViewMasks;
-
-	public VkRenderPassCreateInfo2()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkSubpassBeginInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.SubpassBeginInfo;
-	public void* pNext;
-	public VkSubpassContents contents;
-
-	public VkSubpassBeginInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkSubpassEndInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.SubpassEndInfo;
-	public void* pNext;
-
-	public VkSubpassEndInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDevice8BitStorageFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDevice8BitStorageFeatures;
-	public void* pNext;
-	public VkBool32 storageBuffer8BitAccess;
-	public VkBool32 uniformAndStorageBuffer8BitAccess;
-	public VkBool32 storagePushConstant8;
-
-	public VkPhysicalDevice8BitStorageFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkPhysicalDeviceDriverProperties : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceDriverProperties;
@@ -3815,367 +3612,6 @@ public unsafe partial struct VkPhysicalDeviceDriverProperties : IStructureType, 
 	}
 }
 
-public unsafe partial struct VkPhysicalDeviceShaderAtomicInt64Features : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderAtomicInt64Features;
-	public void* pNext;
-	public VkBool32 shaderBufferInt64Atomics;
-	public VkBool32 shaderSharedInt64Atomics;
-
-	public VkPhysicalDeviceShaderAtomicInt64Features()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceShaderFloat16Int8Features : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderFloat16Int8Features;
-	public void* pNext;
-	public VkBool32 shaderFloat16;
-	public VkBool32 shaderInt8;
-
-	public VkPhysicalDeviceShaderFloat16Int8Features()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceFloatControlsProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFloatControlsProperties;
-	public void* pNext;
-	public VkShaderFloatControlsIndependence denormBehaviorIndependence;
-	public VkShaderFloatControlsIndependence roundingModeIndependence;
-	public VkBool32 shaderSignedZeroInfNanPreserveFloat16;
-	public VkBool32 shaderSignedZeroInfNanPreserveFloat32;
-	public VkBool32 shaderSignedZeroInfNanPreserveFloat64;
-	public VkBool32 shaderDenormPreserveFloat16;
-	public VkBool32 shaderDenormPreserveFloat32;
-	public VkBool32 shaderDenormPreserveFloat64;
-	public VkBool32 shaderDenormFlushToZeroFloat16;
-	public VkBool32 shaderDenormFlushToZeroFloat32;
-	public VkBool32 shaderDenormFlushToZeroFloat64;
-	public VkBool32 shaderRoundingModeRTEFloat16;
-	public VkBool32 shaderRoundingModeRTEFloat32;
-	public VkBool32 shaderRoundingModeRTEFloat64;
-	public VkBool32 shaderRoundingModeRTZFloat16;
-	public VkBool32 shaderRoundingModeRTZFloat32;
-	public VkBool32 shaderRoundingModeRTZFloat64;
-
-	public VkPhysicalDeviceFloatControlsProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkDescriptorSetLayoutBindingFlagsCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.DescriptorSetLayoutBindingFlagsCreateInfo;
-	public void* pNext;
-	public uint bindingCount;
-	public VkDescriptorBindingFlags* pBindingFlags;
-
-	public VkDescriptorSetLayoutBindingFlagsCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceDescriptorIndexingFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorIndexingFeatures;
-	public void* pNext;
-	public VkBool32 shaderInputAttachmentArrayDynamicIndexing;
-	public VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
-	public VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
-	public VkBool32 shaderUniformBufferArrayNonUniformIndexing;
-	public VkBool32 shaderSampledImageArrayNonUniformIndexing;
-	public VkBool32 shaderStorageBufferArrayNonUniformIndexing;
-	public VkBool32 shaderStorageImageArrayNonUniformIndexing;
-	public VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
-	public VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
-	public VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
-	public VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
-	public VkBool32 descriptorBindingSampledImageUpdateAfterBind;
-	public VkBool32 descriptorBindingStorageImageUpdateAfterBind;
-	public VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
-	public VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
-	public VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
-	public VkBool32 descriptorBindingUpdateUnusedWhilePending;
-	public VkBool32 descriptorBindingPartiallyBound;
-	public VkBool32 descriptorBindingVariableDescriptorCount;
-	public VkBool32 runtimeDescriptorArray;
-
-	public VkPhysicalDeviceDescriptorIndexingFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceDescriptorIndexingProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorIndexingProperties;
-	public void* pNext;
-	public uint maxUpdateAfterBindDescriptorsInAllPools;
-	public VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
-	public VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
-	public VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
-	public VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
-	public VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
-	public VkBool32 robustBufferAccessUpdateAfterBind;
-	public VkBool32 quadDivergentImplicitLod;
-	public uint maxPerStageDescriptorUpdateAfterBindSamplers;
-	public uint maxPerStageDescriptorUpdateAfterBindUniformBuffers;
-	public uint maxPerStageDescriptorUpdateAfterBindStorageBuffers;
-	public uint maxPerStageDescriptorUpdateAfterBindSampledImages;
-	public uint maxPerStageDescriptorUpdateAfterBindStorageImages;
-	public uint maxPerStageDescriptorUpdateAfterBindInputAttachments;
-	public uint maxPerStageUpdateAfterBindResources;
-	public uint maxDescriptorSetUpdateAfterBindSamplers;
-	public uint maxDescriptorSetUpdateAfterBindUniformBuffers;
-	public uint maxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
-	public uint maxDescriptorSetUpdateAfterBindStorageBuffers;
-	public uint maxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
-	public uint maxDescriptorSetUpdateAfterBindSampledImages;
-	public uint maxDescriptorSetUpdateAfterBindStorageImages;
-	public uint maxDescriptorSetUpdateAfterBindInputAttachments;
-
-	public VkPhysicalDeviceDescriptorIndexingProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkDescriptorSetVariableDescriptorCountAllocateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.DescriptorSetVariableDescriptorCountAllocateInfo;
-	public void* pNext;
-	public uint descriptorSetCount;
-	public uint* pDescriptorCounts;
-
-	public VkDescriptorSetVariableDescriptorCountAllocateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkDescriptorSetVariableDescriptorCountLayoutSupport : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.DescriptorSetVariableDescriptorCountLayoutSupport;
-	public void* pNext;
-	public uint maxVariableDescriptorCount;
-
-	public VkDescriptorSetVariableDescriptorCountLayoutSupport()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkSubpassDescriptionDepthStencilResolve : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.SubpassDescriptionDepthStencilResolve;
-	public void* pNext;
-	public VkResolveModeFlags depthResolveMode;
-	public VkResolveModeFlags stencilResolveMode;
-	public VkAttachmentReference2* pDepthStencilResolveAttachment;
-
-	public VkSubpassDescriptionDepthStencilResolve()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceDepthStencilResolveProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDepthStencilResolveProperties;
-	public void* pNext;
-	public VkResolveModeFlags supportedDepthResolveModes;
-	public VkResolveModeFlags supportedStencilResolveModes;
-	public VkBool32 independentResolveNone;
-	public VkBool32 independentResolve;
-
-	public VkPhysicalDeviceDepthStencilResolveProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceScalarBlockLayoutFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceScalarBlockLayoutFeatures;
-	public void* pNext;
-	public VkBool32 scalarBlockLayout;
-
-	public VkPhysicalDeviceScalarBlockLayoutFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkImageStencilUsageCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.ImageStencilUsageCreateInfo;
-	public void* pNext;
-	public VkImageUsageFlags stencilUsage;
-
-	public VkImageStencilUsageCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkSamplerReductionModeCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.SamplerReductionModeCreateInfo;
-	public void* pNext;
-	public VkSamplerReductionMode reductionMode;
-
-	public VkSamplerReductionModeCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceSamplerFilterMinmaxProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSamplerFilterMinmaxProperties;
-	public void* pNext;
-	public VkBool32 filterMinmaxSingleComponentFormats;
-	public VkBool32 filterMinmaxImageComponentMapping;
-
-	public VkPhysicalDeviceSamplerFilterMinmaxProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkPhysicalDeviceVulkanMemoryModelFeatures : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceVulkanMemoryModelFeatures;
@@ -4185,204 +3621,6 @@ public unsafe partial struct VkPhysicalDeviceVulkanMemoryModelFeatures : IStruct
 	public VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
 
 	public VkPhysicalDeviceVulkanMemoryModelFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceImagelessFramebufferFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImagelessFramebufferFeatures;
-	public void* pNext;
-	public VkBool32 imagelessFramebuffer;
-
-	public VkPhysicalDeviceImagelessFramebufferFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkFramebufferAttachmentImageInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.FramebufferAttachmentImageInfo;
-	public void* pNext;
-	public VkImageCreateFlags flags;
-	public VkImageUsageFlags usage;
-	public uint width;
-	public uint height;
-	public uint layerCount;
-	public uint viewFormatCount;
-	public VkFormat* pViewFormats;
-
-	public VkFramebufferAttachmentImageInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkFramebufferAttachmentsCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.FramebufferAttachmentsCreateInfo;
-	public void* pNext;
-	public uint attachmentImageInfoCount;
-	public VkFramebufferAttachmentImageInfo* pAttachmentImageInfos;
-
-	public VkFramebufferAttachmentsCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkRenderPassAttachmentBeginInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.RenderPassAttachmentBeginInfo;
-	public void* pNext;
-	public uint attachmentCount;
-	public VkImageView* pAttachments;
-
-	public VkRenderPassAttachmentBeginInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceUniformBufferStandardLayoutFeatures;
-	public void* pNext;
-	public VkBool32 uniformBufferStandardLayout;
-
-	public VkPhysicalDeviceUniformBufferStandardLayoutFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderSubgroupExtendedTypesFeatures;
-	public void* pNext;
-	public VkBool32 shaderSubgroupExtendedTypes;
-
-	public VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSeparateDepthStencilLayoutsFeatures;
-	public void* pNext;
-	public VkBool32 separateDepthStencilLayouts;
-
-	public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkAttachmentReferenceStencilLayout : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.AttachmentReferenceStencilLayout;
-	public void* pNext;
-	public VkImageLayout stencilLayout;
-
-	public VkAttachmentReferenceStencilLayout()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkAttachmentDescriptionStencilLayout : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.AttachmentDescriptionStencilLayout;
-	public void* pNext;
-	public VkImageLayout stencilInitialLayout;
-	public VkImageLayout stencilFinalLayout;
-
-	public VkAttachmentDescriptionStencilLayout()
 	{
 	}
 
@@ -4659,6 +3897,769 @@ public unsafe partial struct VkDeviceMemoryOpaqueCaptureAddressInfo : IStructure
 	}
 }
 
+public unsafe partial struct VkPhysicalDevice8BitStorageFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevice8BitStorageFeatures;
+	public void* pNext;
+	public VkBool32 storageBuffer8BitAccess;
+	public VkBool32 uniformAndStorageBuffer8BitAccess;
+	public VkBool32 storagePushConstant8;
+
+	public VkPhysicalDevice8BitStorageFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderAtomicInt64Features : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderAtomicInt64Features;
+	public void* pNext;
+	public VkBool32 shaderBufferInt64Atomics;
+	public VkBool32 shaderSharedInt64Atomics;
+
+	public VkPhysicalDeviceShaderAtomicInt64Features()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderFloat16Int8Features : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderFloat16Int8Features;
+	public void* pNext;
+	public VkBool32 shaderFloat16;
+	public VkBool32 shaderInt8;
+
+	public VkPhysicalDeviceShaderFloat16Int8Features()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceFloatControlsProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceFloatControlsProperties;
+	public void* pNext;
+	public VkShaderFloatControlsIndependence denormBehaviorIndependence;
+	public VkShaderFloatControlsIndependence roundingModeIndependence;
+	public VkBool32 shaderSignedZeroInfNanPreserveFloat16;
+	public VkBool32 shaderSignedZeroInfNanPreserveFloat32;
+	public VkBool32 shaderSignedZeroInfNanPreserveFloat64;
+	public VkBool32 shaderDenormPreserveFloat16;
+	public VkBool32 shaderDenormPreserveFloat32;
+	public VkBool32 shaderDenormPreserveFloat64;
+	public VkBool32 shaderDenormFlushToZeroFloat16;
+	public VkBool32 shaderDenormFlushToZeroFloat32;
+	public VkBool32 shaderDenormFlushToZeroFloat64;
+	public VkBool32 shaderRoundingModeRTEFloat16;
+	public VkBool32 shaderRoundingModeRTEFloat32;
+	public VkBool32 shaderRoundingModeRTEFloat64;
+	public VkBool32 shaderRoundingModeRTZFloat16;
+	public VkBool32 shaderRoundingModeRTZFloat32;
+	public VkBool32 shaderRoundingModeRTZFloat64;
+
+	public VkPhysicalDeviceFloatControlsProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkDescriptorSetLayoutBindingFlagsCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DescriptorSetLayoutBindingFlagsCreateInfo;
+	public void* pNext;
+	public uint bindingCount;
+	public VkDescriptorBindingFlags* pBindingFlags;
+
+	public VkDescriptorSetLayoutBindingFlagsCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceDescriptorIndexingFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorIndexingFeatures;
+	public void* pNext;
+	public VkBool32 shaderInputAttachmentArrayDynamicIndexing;
+	public VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
+	public VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
+	public VkBool32 shaderUniformBufferArrayNonUniformIndexing;
+	public VkBool32 shaderSampledImageArrayNonUniformIndexing;
+	public VkBool32 shaderStorageBufferArrayNonUniformIndexing;
+	public VkBool32 shaderStorageImageArrayNonUniformIndexing;
+	public VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
+	public VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
+	public VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
+	public VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
+	public VkBool32 descriptorBindingSampledImageUpdateAfterBind;
+	public VkBool32 descriptorBindingStorageImageUpdateAfterBind;
+	public VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
+	public VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
+	public VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
+	public VkBool32 descriptorBindingUpdateUnusedWhilePending;
+	public VkBool32 descriptorBindingPartiallyBound;
+	public VkBool32 descriptorBindingVariableDescriptorCount;
+	public VkBool32 runtimeDescriptorArray;
+
+	public VkPhysicalDeviceDescriptorIndexingFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceDescriptorIndexingProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorIndexingProperties;
+	public void* pNext;
+	public uint maxUpdateAfterBindDescriptorsInAllPools;
+	public VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
+	public VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
+	public VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
+	public VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
+	public VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
+	public VkBool32 robustBufferAccessUpdateAfterBind;
+	public VkBool32 quadDivergentImplicitLod;
+	public uint maxPerStageDescriptorUpdateAfterBindSamplers;
+	public uint maxPerStageDescriptorUpdateAfterBindUniformBuffers;
+	public uint maxPerStageDescriptorUpdateAfterBindStorageBuffers;
+	public uint maxPerStageDescriptorUpdateAfterBindSampledImages;
+	public uint maxPerStageDescriptorUpdateAfterBindStorageImages;
+	public uint maxPerStageDescriptorUpdateAfterBindInputAttachments;
+	public uint maxPerStageUpdateAfterBindResources;
+	public uint maxDescriptorSetUpdateAfterBindSamplers;
+	public uint maxDescriptorSetUpdateAfterBindUniformBuffers;
+	public uint maxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
+	public uint maxDescriptorSetUpdateAfterBindStorageBuffers;
+	public uint maxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
+	public uint maxDescriptorSetUpdateAfterBindSampledImages;
+	public uint maxDescriptorSetUpdateAfterBindStorageImages;
+	public uint maxDescriptorSetUpdateAfterBindInputAttachments;
+
+	public VkPhysicalDeviceDescriptorIndexingProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkDescriptorSetVariableDescriptorCountAllocateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DescriptorSetVariableDescriptorCountAllocateInfo;
+	public void* pNext;
+	public uint descriptorSetCount;
+	public uint* pDescriptorCounts;
+
+	public VkDescriptorSetVariableDescriptorCountAllocateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkDescriptorSetVariableDescriptorCountLayoutSupport : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DescriptorSetVariableDescriptorCountLayoutSupport;
+	public void* pNext;
+	public uint maxVariableDescriptorCount;
+
+	public VkDescriptorSetVariableDescriptorCountLayoutSupport()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceScalarBlockLayoutFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceScalarBlockLayoutFeatures;
+	public void* pNext;
+	public VkBool32 scalarBlockLayout;
+
+	public VkPhysicalDeviceScalarBlockLayoutFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSamplerReductionModeCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SamplerReductionModeCreateInfo;
+	public void* pNext;
+	public VkSamplerReductionMode reductionMode;
+
+	public VkSamplerReductionModeCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceSamplerFilterMinmaxProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceSamplerFilterMinmaxProperties;
+	public void* pNext;
+	public VkBool32 filterMinmaxSingleComponentFormats;
+	public VkBool32 filterMinmaxImageComponentMapping;
+
+	public VkPhysicalDeviceSamplerFilterMinmaxProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceUniformBufferStandardLayoutFeatures;
+	public void* pNext;
+	public VkBool32 uniformBufferStandardLayout;
+
+	public VkPhysicalDeviceUniformBufferStandardLayoutFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderSubgroupExtendedTypesFeatures;
+	public void* pNext;
+	public VkBool32 shaderSubgroupExtendedTypes;
+
+	public VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkAttachmentDescription2 : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.AttachmentDescription2;
+	public void* pNext;
+	public VkAttachmentDescriptionFlags flags;
+	public VkFormat format;
+	public VkSampleCountFlags samples;
+	public VkAttachmentLoadOp loadOp;
+	public VkAttachmentStoreOp storeOp;
+	public VkAttachmentLoadOp stencilLoadOp;
+	public VkAttachmentStoreOp stencilStoreOp;
+	public VkImageLayout initialLayout;
+	public VkImageLayout finalLayout;
+
+	public VkAttachmentDescription2()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkAttachmentReference2 : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.AttachmentReference2;
+	public void* pNext;
+	public uint attachment;
+	public VkImageLayout layout;
+	public VkImageAspectFlags aspectMask;
+
+	public VkAttachmentReference2()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSubpassDescription2 : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SubpassDescription2;
+	public void* pNext;
+	public VkSubpassDescriptionFlags flags;
+	public VkPipelineBindPoint pipelineBindPoint;
+	public uint viewMask;
+	public uint inputAttachmentCount;
+	public VkAttachmentReference2* pInputAttachments;
+	public uint colorAttachmentCount;
+	public VkAttachmentReference2* pColorAttachments;
+	public VkAttachmentReference2* pResolveAttachments;
+	public VkAttachmentReference2* pDepthStencilAttachment;
+	public uint preserveAttachmentCount;
+	public uint* pPreserveAttachments;
+
+	public VkSubpassDescription2()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSubpassDependency2 : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SubpassDependency2;
+	public void* pNext;
+	public uint srcSubpass;
+	public uint dstSubpass;
+	public VkPipelineStageFlags srcStageMask;
+	public VkPipelineStageFlags dstStageMask;
+	public VkAccessFlags srcAccessMask;
+	public VkAccessFlags dstAccessMask;
+	public VkDependencyFlags dependencyFlags;
+	public int viewOffset;
+
+	public VkSubpassDependency2()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkRenderPassCreateInfo2 : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderPassCreateInfo2;
+	public void* pNext;
+	public VkRenderPassCreateFlags flags;
+	public uint attachmentCount;
+	public VkAttachmentDescription2* pAttachments;
+	public uint subpassCount;
+	public VkSubpassDescription2* pSubpasses;
+	public uint dependencyCount;
+	public VkSubpassDependency2* pDependencies;
+	public uint correlatedViewMaskCount;
+	public uint* pCorrelatedViewMasks;
+
+	public VkRenderPassCreateInfo2()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSubpassBeginInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SubpassBeginInfo;
+	public void* pNext;
+	public VkSubpassContents contents;
+
+	public VkSubpassBeginInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSubpassEndInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SubpassEndInfo;
+	public void* pNext;
+
+	public VkSubpassEndInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSubpassDescriptionDepthStencilResolve : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SubpassDescriptionDepthStencilResolve;
+	public void* pNext;
+	public VkResolveModeFlags depthResolveMode;
+	public VkResolveModeFlags stencilResolveMode;
+	public VkAttachmentReference2* pDepthStencilResolveAttachment;
+
+	public VkSubpassDescriptionDepthStencilResolve()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceDepthStencilResolveProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDepthStencilResolveProperties;
+	public void* pNext;
+	public VkResolveModeFlags supportedDepthResolveModes;
+	public VkResolveModeFlags supportedStencilResolveModes;
+	public VkBool32 independentResolveNone;
+	public VkBool32 independentResolve;
+
+	public VkPhysicalDeviceDepthStencilResolveProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImageStencilUsageCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ImageStencilUsageCreateInfo;
+	public void* pNext;
+	public VkImageUsageFlags stencilUsage;
+
+	public VkImageStencilUsageCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceImagelessFramebufferFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceImagelessFramebufferFeatures;
+	public void* pNext;
+	public VkBool32 imagelessFramebuffer;
+
+	public VkPhysicalDeviceImagelessFramebufferFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkFramebufferAttachmentImageInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.FramebufferAttachmentImageInfo;
+	public void* pNext;
+	public VkImageCreateFlags flags;
+	public VkImageUsageFlags usage;
+	public uint width;
+	public uint height;
+	public uint layerCount;
+	public uint viewFormatCount;
+	public VkFormat* pViewFormats;
+
+	public VkFramebufferAttachmentImageInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkFramebufferAttachmentsCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.FramebufferAttachmentsCreateInfo;
+	public void* pNext;
+	public uint attachmentImageInfoCount;
+	public VkFramebufferAttachmentImageInfo* pAttachmentImageInfos;
+
+	public VkFramebufferAttachmentsCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkRenderPassAttachmentBeginInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderPassAttachmentBeginInfo;
+	public void* pNext;
+	public uint attachmentCount;
+	public VkImageView* pAttachments;
+
+	public VkRenderPassAttachmentBeginInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceSeparateDepthStencilLayoutsFeatures;
+	public void* pNext;
+	public VkBool32 separateDepthStencilLayouts;
+
+	public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkAttachmentReferenceStencilLayout : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.AttachmentReferenceStencilLayout;
+	public void* pNext;
+	public VkImageLayout stencilLayout;
+
+	public VkAttachmentReferenceStencilLayout()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkAttachmentDescriptionStencilLayout : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.AttachmentDescriptionStencilLayout;
+	public void* pNext;
+	public VkImageLayout stencilInitialLayout;
+	public VkImageLayout stencilFinalLayout;
+
+	public VkAttachmentDescriptionStencilLayout()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceVulkan13Features : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceVulkan13Features;
@@ -4759,56 +4760,6 @@ public unsafe partial struct VkPhysicalDeviceVulkan13Properties : IStructureType
 	}
 }
 
-public partial struct VkPipelineCreationFeedback
-{
-	public VkPipelineCreationFeedbackFlags flags;
-	public ulong duration;
-}
-
-public unsafe partial struct VkPipelineCreationFeedbackCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PipelineCreationFeedbackCreateInfo;
-	public void* pNext;
-	public VkPipelineCreationFeedback* pPipelineCreationFeedback;
-	public uint pipelineStageCreationFeedbackCount;
-	public VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks;
-
-	public VkPipelineCreationFeedbackCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceShaderTerminateInvocationFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderTerminateInvocationFeatures;
-	public void* pNext;
-	public VkBool32 shaderTerminateInvocation;
-
-	public VkPhysicalDeviceShaderTerminateInvocationFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkPhysicalDeviceToolProperties : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceToolProperties;
@@ -4820,27 +4771,6 @@ public unsafe partial struct VkPhysicalDeviceToolProperties : IStructureType, IC
 	public fixed byte layer[256];
 
 	public VkPhysicalDeviceToolProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderDemoteToHelperInvocationFeatures;
-	public void* pNext;
-	public VkBool32 shaderDemoteToHelperInvocation;
-
-	public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures()
 	{
 	}
 
@@ -4904,27 +4834,6 @@ public unsafe partial struct VkPrivateDataSlotCreateInfo : IStructureType, IChai
 	public VkPrivateDataSlotCreateFlags flags;
 
 	public VkPrivateDataSlotCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDevicePipelineCreationCacheControlFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineCreationCacheControlFeatures;
-	public void* pNext;
-	public VkBool32 pipelineCreationCacheControl;
-
-	public VkPhysicalDevicePipelineCreationCacheControlFeatures()
 	{
 	}
 
@@ -5143,48 +5052,6 @@ public unsafe partial struct VkPhysicalDeviceSynchronization2Features : IStructu
 	}
 }
 
-public unsafe partial struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures;
-	public void* pNext;
-	public VkBool32 shaderZeroInitializeWorkgroupMemory;
-
-	public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceImageRobustnessFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageRobustnessFeatures;
-	public void* pNext;
-	public VkBool32 robustImageAccess;
-
-	public VkPhysicalDeviceImageRobustnessFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkBufferCopy2 : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.BufferCopy2;
@@ -5359,28 +5226,13 @@ public unsafe partial struct VkCopyImageToBufferInfo2 : IStructureType, IChainTy
 	}
 }
 
-public unsafe partial struct VkImageBlit2 : IStructureType, IChainType
+public unsafe partial struct VkPhysicalDeviceTextureCompressionASTCHDRFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageBlit2;
+	public VkStructureType sType = VkStructureType.PhysicalDeviceTextureCompressionASTCHDRFeatures;
 	public void* pNext;
-	public VkImageSubresourceLayers srcSubresource;
-	public srcOffsets__FixedBuffer srcOffsets;
+	public VkBool32 textureCompressionASTC_HDR;
 
-	[InlineArray(2)]
-	public partial struct srcOffsets__FixedBuffer
-	{
-		public VkOffset3D e0;
-	}
-	public VkImageSubresourceLayers dstSubresource;
-	public dstOffsets__FixedBuffer dstOffsets;
-
-	[InlineArray(2)]
-	public partial struct dstOffsets__FixedBuffer
-	{
-		public VkOffset3D e0;
-	}
-
-	public VkImageBlit2()
+	public VkPhysicalDeviceTextureCompressionASTCHDRFeatures()
 	{
 	}
 
@@ -5395,19 +5247,15 @@ public unsafe partial struct VkImageBlit2 : IStructureType, IChainType
 	}
 }
 
-public unsafe partial struct VkBlitImageInfo2 : IStructureType, IChainType
+public unsafe partial struct VkFormatProperties3 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BlitImageInfo2;
+	public VkStructureType sType = VkStructureType.FormatProperties3;
 	public void* pNext;
-	public VkImage srcImage;
-	public VkImageLayout srcImageLayout;
-	public VkImage dstImage;
-	public VkImageLayout dstImageLayout;
-	public uint regionCount;
-	public VkImageBlit2* pRegions;
-	public VkFilter filter;
+	public VkFormatFeatureFlags2 linearTilingFeatures;
+	public VkFormatFeatureFlags2 optimalTilingFeatures;
+	public VkFormatFeatureFlags2 bufferFeatures;
 
-	public VkBlitImageInfo2()
+	public VkFormatProperties3()
 	{
 	}
 
@@ -5422,17 +5270,13 @@ public unsafe partial struct VkBlitImageInfo2 : IStructureType, IChainType
 	}
 }
 
-public unsafe partial struct VkImageResolve2 : IStructureType, IChainType
+public unsafe partial struct VkPhysicalDeviceMaintenance4Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageResolve2;
+	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance4Features;
 	public void* pNext;
-	public VkImageSubresourceLayers srcSubresource;
-	public VkOffset3D srcOffset;
-	public VkImageSubresourceLayers dstSubresource;
-	public VkOffset3D dstOffset;
-	public VkExtent3D extent;
+	public VkBool32 maintenance4;
 
-	public VkImageResolve2()
+	public VkPhysicalDeviceMaintenance4Features()
 	{
 	}
 
@@ -5447,18 +5291,190 @@ public unsafe partial struct VkImageResolve2 : IStructureType, IChainType
 	}
 }
 
-public unsafe partial struct VkResolveImageInfo2 : IStructureType, IChainType
+public unsafe partial struct VkPhysicalDeviceMaintenance4Properties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ResolveImageInfo2;
+	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance4Properties;
 	public void* pNext;
-	public VkImage srcImage;
-	public VkImageLayout srcImageLayout;
-	public VkImage dstImage;
-	public VkImageLayout dstImageLayout;
-	public uint regionCount;
-	public VkImageResolve2* pRegions;
+	public ulong maxBufferSize;
 
-	public VkResolveImageInfo2()
+	public VkPhysicalDeviceMaintenance4Properties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkDeviceBufferMemoryRequirements : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DeviceBufferMemoryRequirements;
+	public void* pNext;
+	public VkBufferCreateInfo* pCreateInfo;
+
+	public VkDeviceBufferMemoryRequirements()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkDeviceImageMemoryRequirements : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DeviceImageMemoryRequirements;
+	public void* pNext;
+	public VkImageCreateInfo* pCreateInfo;
+	public VkImageAspectFlags planeAspect;
+
+	public VkDeviceImageMemoryRequirements()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkPipelineCreationFeedback
+{
+	public VkPipelineCreationFeedbackFlags flags;
+	public ulong duration;
+}
+
+public unsafe partial struct VkPipelineCreationFeedbackCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineCreationFeedbackCreateInfo;
+	public void* pNext;
+	public VkPipelineCreationFeedback* pPipelineCreationFeedback;
+	public uint pipelineStageCreationFeedbackCount;
+	public VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks;
+
+	public VkPipelineCreationFeedbackCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderTerminateInvocationFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderTerminateInvocationFeatures;
+	public void* pNext;
+	public VkBool32 shaderTerminateInvocation;
+
+	public VkPhysicalDeviceShaderTerminateInvocationFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderDemoteToHelperInvocationFeatures;
+	public void* pNext;
+	public VkBool32 shaderDemoteToHelperInvocation;
+
+	public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePipelineCreationCacheControlFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineCreationCacheControlFeatures;
+	public void* pNext;
+	public VkBool32 pipelineCreationCacheControl;
+
+	public VkPhysicalDevicePipelineCreationCacheControlFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures;
+	public void* pNext;
+	public VkBool32 shaderZeroInitializeWorkgroupMemory;
+
+	public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceImageRobustnessFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceImageRobustnessFeatures;
+	public void* pNext;
+	public VkBool32 robustImageAccess;
+
+	public VkPhysicalDeviceImageRobustnessFeatures()
 	{
 	}
 
@@ -5630,13 +5646,201 @@ public unsafe partial struct VkDescriptorPoolInlineUniformBlockCreateInfo : IStr
 	}
 }
 
-public unsafe partial struct VkPhysicalDeviceTextureCompressionASTCHDRFeatures : IStructureType, IChainType
+public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTextureCompressionASTCHDRFeatures;
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductFeatures;
 	public void* pNext;
-	public VkBool32 textureCompressionASTC_HDR;
+	public VkBool32 shaderIntegerDotProduct;
 
-	public VkPhysicalDeviceTextureCompressionASTCHDRFeatures()
+	public VkPhysicalDeviceShaderIntegerDotProductFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductProperties;
+	public void* pNext;
+	public VkBool32 integerDotProduct8BitUnsignedAccelerated;
+	public VkBool32 integerDotProduct8BitSignedAccelerated;
+	public VkBool32 integerDotProduct8BitMixedSignednessAccelerated;
+	public VkBool32 integerDotProduct4x8BitPackedUnsignedAccelerated;
+	public VkBool32 integerDotProduct4x8BitPackedSignedAccelerated;
+	public VkBool32 integerDotProduct4x8BitPackedMixedSignednessAccelerated;
+	public VkBool32 integerDotProduct16BitUnsignedAccelerated;
+	public VkBool32 integerDotProduct16BitSignedAccelerated;
+	public VkBool32 integerDotProduct16BitMixedSignednessAccelerated;
+	public VkBool32 integerDotProduct32BitUnsignedAccelerated;
+	public VkBool32 integerDotProduct32BitSignedAccelerated;
+	public VkBool32 integerDotProduct32BitMixedSignednessAccelerated;
+	public VkBool32 integerDotProduct64BitUnsignedAccelerated;
+	public VkBool32 integerDotProduct64BitSignedAccelerated;
+	public VkBool32 integerDotProduct64BitMixedSignednessAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating8BitUnsignedAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating8BitSignedAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating16BitUnsignedAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating16BitSignedAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating32BitUnsignedAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating32BitSignedAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating64BitUnsignedAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating64BitSignedAccelerated;
+	public VkBool32 integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated;
+
+	public VkPhysicalDeviceShaderIntegerDotProductProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceTexelBufferAlignmentProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentProperties;
+	public void* pNext;
+	public ulong storageTexelBufferOffsetAlignmentBytes;
+	public VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
+	public ulong uniformTexelBufferOffsetAlignmentBytes;
+	public VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
+
+	public VkPhysicalDeviceTexelBufferAlignmentProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImageBlit2 : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ImageBlit2;
+	public void* pNext;
+	public VkImageSubresourceLayers srcSubresource;
+	public srcOffsets__FixedBuffer srcOffsets;
+
+	[InlineArray(2)]
+	public partial struct srcOffsets__FixedBuffer
+	{
+		public VkOffset3D e0;
+	}
+	public VkImageSubresourceLayers dstSubresource;
+	public dstOffsets__FixedBuffer dstOffsets;
+
+	[InlineArray(2)]
+	public partial struct dstOffsets__FixedBuffer
+	{
+		public VkOffset3D e0;
+	}
+
+	public VkImageBlit2()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkBlitImageInfo2 : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.BlitImageInfo2;
+	public void* pNext;
+	public VkImage srcImage;
+	public VkImageLayout srcImageLayout;
+	public VkImage dstImage;
+	public VkImageLayout dstImageLayout;
+	public uint regionCount;
+	public VkImageBlit2* pRegions;
+	public VkFilter filter;
+
+	public VkBlitImageInfo2()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImageResolve2 : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ImageResolve2;
+	public void* pNext;
+	public VkImageSubresourceLayers srcSubresource;
+	public VkOffset3D srcOffset;
+	public VkImageSubresourceLayers dstSubresource;
+	public VkOffset3D dstOffset;
+	public VkExtent3D extent;
+
+	public VkImageResolve2()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkResolveImageInfo2 : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ResolveImageInfo2;
+	public void* pNext;
+	public VkImage srcImage;
+	public VkImageLayout srcImageLayout;
+	public VkImage dstImage;
+	public VkImageLayout dstImageLayout;
+	public uint regionCount;
+	public VkImageResolve2* pRegions;
+
+	public VkResolveImageInfo2()
 	{
 	}
 
@@ -5766,209 +5970,6 @@ public unsafe partial struct VkCommandBufferInheritanceRenderingInfo : IStructur
 	public VkSampleCountFlags rasterizationSamples;
 
 	public VkCommandBufferInheritanceRenderingInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductFeatures;
-	public void* pNext;
-	public VkBool32 shaderIntegerDotProduct;
-
-	public VkPhysicalDeviceShaderIntegerDotProductFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductProperties;
-	public void* pNext;
-	public VkBool32 integerDotProduct8BitUnsignedAccelerated;
-	public VkBool32 integerDotProduct8BitSignedAccelerated;
-	public VkBool32 integerDotProduct8BitMixedSignednessAccelerated;
-	public VkBool32 integerDotProduct4x8BitPackedUnsignedAccelerated;
-	public VkBool32 integerDotProduct4x8BitPackedSignedAccelerated;
-	public VkBool32 integerDotProduct4x8BitPackedMixedSignednessAccelerated;
-	public VkBool32 integerDotProduct16BitUnsignedAccelerated;
-	public VkBool32 integerDotProduct16BitSignedAccelerated;
-	public VkBool32 integerDotProduct16BitMixedSignednessAccelerated;
-	public VkBool32 integerDotProduct32BitUnsignedAccelerated;
-	public VkBool32 integerDotProduct32BitSignedAccelerated;
-	public VkBool32 integerDotProduct32BitMixedSignednessAccelerated;
-	public VkBool32 integerDotProduct64BitUnsignedAccelerated;
-	public VkBool32 integerDotProduct64BitSignedAccelerated;
-	public VkBool32 integerDotProduct64BitMixedSignednessAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating8BitUnsignedAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating8BitSignedAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating16BitUnsignedAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating16BitSignedAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating32BitUnsignedAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating32BitSignedAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating64BitUnsignedAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating64BitSignedAccelerated;
-	public VkBool32 integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated;
-
-	public VkPhysicalDeviceShaderIntegerDotProductProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceTexelBufferAlignmentProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentProperties;
-	public void* pNext;
-	public ulong storageTexelBufferOffsetAlignmentBytes;
-	public VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
-	public ulong uniformTexelBufferOffsetAlignmentBytes;
-	public VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
-
-	public VkPhysicalDeviceTexelBufferAlignmentProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkFormatProperties3 : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.FormatProperties3;
-	public void* pNext;
-	public VkFormatFeatureFlags2 linearTilingFeatures;
-	public VkFormatFeatureFlags2 optimalTilingFeatures;
-	public VkFormatFeatureFlags2 bufferFeatures;
-
-	public VkFormatProperties3()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceMaintenance4Features : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance4Features;
-	public void* pNext;
-	public VkBool32 maintenance4;
-
-	public VkPhysicalDeviceMaintenance4Features()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceMaintenance4Properties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance4Properties;
-	public void* pNext;
-	public ulong maxBufferSize;
-
-	public VkPhysicalDeviceMaintenance4Properties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkDeviceBufferMemoryRequirements : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.DeviceBufferMemoryRequirements;
-	public void* pNext;
-	public VkBufferCreateInfo* pCreateInfo;
-
-	public VkDeviceBufferMemoryRequirements()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkDeviceImageMemoryRequirements : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.DeviceImageMemoryRequirements;
-	public void* pNext;
-	public VkImageCreateInfo* pCreateInfo;
-	public VkImageAspectFlags planeAspect;
-
-	public VkDeviceImageMemoryRequirements()
 	{
 	}
 
@@ -6139,213 +6140,6 @@ public unsafe partial struct VkQueueFamilyGlobalPriorityProperties : IStructureT
 	}
 }
 
-public unsafe partial struct VkPhysicalDeviceShaderSubgroupRotateFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderSubgroupRotateFeatures;
-	public void* pNext;
-	public VkBool32 shaderSubgroupRotate;
-	public VkBool32 shaderSubgroupRotateClustered;
-
-	public VkPhysicalDeviceShaderSubgroupRotateFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceShaderFloatControls2Features : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderFloatControls2Features;
-	public void* pNext;
-	public VkBool32 shaderFloatControls2;
-
-	public VkPhysicalDeviceShaderFloatControls2Features()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceShaderExpectAssumeFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderExpectAssumeFeatures;
-	public void* pNext;
-	public VkBool32 shaderExpectAssume;
-
-	public VkPhysicalDeviceShaderExpectAssumeFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceLineRasterizationFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLineRasterizationFeatures;
-	public void* pNext;
-	public VkBool32 rectangularLines;
-	public VkBool32 bresenhamLines;
-	public VkBool32 smoothLines;
-	public VkBool32 stippledRectangularLines;
-	public VkBool32 stippledBresenhamLines;
-	public VkBool32 stippledSmoothLines;
-
-	public VkPhysicalDeviceLineRasterizationFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceLineRasterizationProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLineRasterizationProperties;
-	public void* pNext;
-	public uint lineSubPixelPrecisionBits;
-
-	public VkPhysicalDeviceLineRasterizationProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPipelineRasterizationLineStateCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PipelineRasterizationLineStateCreateInfo;
-	public void* pNext;
-	public VkLineRasterizationMode lineRasterizationMode;
-	public VkBool32 stippledLineEnable;
-	public uint lineStippleFactor;
-	public ushort lineStipplePattern;
-
-	public VkPipelineRasterizationLineStateCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorProperties;
-	public void* pNext;
-	public uint maxVertexAttribDivisor;
-	public VkBool32 supportsNonZeroFirstInstance;
-
-	public VkPhysicalDeviceVertexAttributeDivisorProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public partial struct VkVertexInputBindingDivisorDescription
-{
-	public uint binding;
-	public uint divisor;
-}
-
-public unsafe partial struct VkPipelineVertexInputDivisorStateCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PipelineVertexInputDivisorStateCreateInfo;
-	public void* pNext;
-	public uint vertexBindingDivisorCount;
-	public VkVertexInputBindingDivisorDescription* pVertexBindingDivisors;
-
-	public VkPipelineVertexInputDivisorStateCreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorFeatures;
-	public void* pNext;
-	public VkBool32 vertexAttributeInstanceRateDivisor;
-	public VkBool32 vertexAttributeInstanceRateZeroDivisor;
-
-	public VkPhysicalDeviceVertexAttributeDivisorFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkPhysicalDeviceIndexTypeUint8Features : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceIndexTypeUint8Features;
@@ -6460,31 +6254,6 @@ public unsafe partial struct VkPhysicalDeviceMaintenance5Properties : IStructure
 	}
 }
 
-public unsafe partial struct VkRenderingAreaInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.RenderingAreaInfo;
-	public void* pNext;
-	public uint viewMask;
-	public uint colorAttachmentCount;
-	public VkFormat* pColorAttachmentFormats;
-	public VkFormat depthAttachmentFormat;
-	public VkFormat stencilAttachmentFormat;
-
-	public VkRenderingAreaInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkImageSubresource2 : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.ImageSubresource2;
@@ -6549,27 +6318,6 @@ public unsafe partial struct VkSubresourceLayout2 : IStructureType, IChainType
 	}
 }
 
-public unsafe partial struct VkPipelineCreateFlags2CreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PipelineCreateFlags2CreateInfo;
-	public void* pNext;
-	public VkPipelineCreateFlags2 flags;
-
-	public VkPipelineCreateFlags2CreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkBufferUsageFlags2CreateInfo : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.BufferUsageFlags2CreateInfo;
@@ -6577,94 +6325,6 @@ public unsafe partial struct VkBufferUsageFlags2CreateInfo : IStructureType, ICh
 	public VkBufferUsageFlags2 usage;
 
 	public VkBufferUsageFlags2CreateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDevicePushDescriptorProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDevicePushDescriptorProperties;
-	public void* pNext;
-	public uint maxPushDescriptors;
-
-	public VkPhysicalDevicePushDescriptorProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDeviceDynamicRenderingLocalReadFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDynamicRenderingLocalReadFeatures;
-	public void* pNext;
-	public VkBool32 dynamicRenderingLocalRead;
-
-	public VkPhysicalDeviceDynamicRenderingLocalReadFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkRenderingAttachmentLocationInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.RenderingAttachmentLocationInfo;
-	public void* pNext;
-	public uint colorAttachmentCount;
-	public uint* pColorAttachmentLocations;
-
-	public VkRenderingAttachmentLocationInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkRenderingInputAttachmentIndexInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.RenderingInputAttachmentIndexInfo;
-	public void* pNext;
-	public uint colorAttachmentCount;
-	public uint* pColorAttachmentInputIndices;
-	public uint* pDepthInputAttachmentIndex;
-	public uint* pStencilInputAttachmentIndex;
-
-	public VkRenderingInputAttachmentIndexInfo()
 	{
 	}
 
@@ -6730,197 +6390,6 @@ public unsafe partial struct VkBindMemoryStatus : IStructureType, IChainType
 	public VkResult* pResult;
 
 	public VkBindMemoryStatus()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkBindDescriptorSetsInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.BindDescriptorSetsInfo;
-	public void* pNext;
-	public VkShaderStageFlags stageFlags;
-	public VkPipelineLayout layout;
-	public uint firstSet;
-	public uint descriptorSetCount;
-	public VkDescriptorSet* pDescriptorSets;
-	public uint dynamicOffsetCount;
-	public uint* pDynamicOffsets;
-
-	public VkBindDescriptorSetsInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPushConstantsInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PushConstantsInfo;
-	public void* pNext;
-	public VkPipelineLayout layout;
-	public VkShaderStageFlags stageFlags;
-	public uint offset;
-	public uint size;
-	public void* pValues;
-
-	public VkPushConstantsInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPushDescriptorSetInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PushDescriptorSetInfo;
-	public void* pNext;
-	public VkShaderStageFlags stageFlags;
-	public VkPipelineLayout layout;
-	public uint set;
-	public uint descriptorWriteCount;
-	public VkWriteDescriptorSet* pDescriptorWrites;
-
-	public VkPushDescriptorSetInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPushDescriptorSetWithTemplateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PushDescriptorSetWithTemplateInfo;
-	public void* pNext;
-	public VkDescriptorUpdateTemplate descriptorUpdateTemplate;
-	public VkPipelineLayout layout;
-	public uint set;
-	public void* pData;
-
-	public VkPushDescriptorSetWithTemplateInfo()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDevicePipelineProtectedAccessFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineProtectedAccessFeatures;
-	public void* pNext;
-	public VkBool32 pipelineProtectedAccess;
-
-	public VkPhysicalDevicePipelineProtectedAccessFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDevicePipelineRobustnessFeatures : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineRobustnessFeatures;
-	public void* pNext;
-	public VkBool32 pipelineRobustness;
-
-	public VkPhysicalDevicePipelineRobustnessFeatures()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPhysicalDevicePipelineRobustnessProperties : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineRobustnessProperties;
-	public void* pNext;
-	public VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
-	public VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
-	public VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
-	public VkPipelineRobustnessImageBehavior defaultRobustnessImages;
-
-	public VkPhysicalDevicePipelineRobustnessProperties()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkPipelineRobustnessCreateInfo : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PipelineRobustnessCreateInfo;
-	public void* pNext;
-	public VkPipelineRobustnessBufferBehavior storageBuffers;
-	public VkPipelineRobustnessBufferBehavior uniformBuffers;
-	public VkPipelineRobustnessBufferBehavior vertexInputs;
-	public VkPipelineRobustnessImageBehavior images;
-
-	public VkPipelineRobustnessCreateInfo()
 	{
 	}
 
@@ -7164,6 +6633,538 @@ public unsafe partial struct VkHostImageCopyDevicePerformanceQuery : IStructureT
 	public VkBool32 identicalMemoryLayout;
 
 	public VkHostImageCopyDevicePerformanceQuery()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderSubgroupRotateFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderSubgroupRotateFeatures;
+	public void* pNext;
+	public VkBool32 shaderSubgroupRotate;
+	public VkBool32 shaderSubgroupRotateClustered;
+
+	public VkPhysicalDeviceShaderSubgroupRotateFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderFloatControls2Features : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderFloatControls2Features;
+	public void* pNext;
+	public VkBool32 shaderFloatControls2;
+
+	public VkPhysicalDeviceShaderFloatControls2Features()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderExpectAssumeFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderExpectAssumeFeatures;
+	public void* pNext;
+	public VkBool32 shaderExpectAssume;
+
+	public VkPhysicalDeviceShaderExpectAssumeFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineCreateFlags2CreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineCreateFlags2CreateInfo;
+	public void* pNext;
+	public VkPipelineCreateFlags2 flags;
+
+	public VkPipelineCreateFlags2CreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePushDescriptorProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePushDescriptorProperties;
+	public void* pNext;
+	public uint maxPushDescriptors;
+
+	public VkPhysicalDevicePushDescriptorProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkBindDescriptorSetsInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.BindDescriptorSetsInfo;
+	public void* pNext;
+	public VkShaderStageFlags stageFlags;
+	public VkPipelineLayout layout;
+	public uint firstSet;
+	public uint descriptorSetCount;
+	public VkDescriptorSet* pDescriptorSets;
+	public uint dynamicOffsetCount;
+	public uint* pDynamicOffsets;
+
+	public VkBindDescriptorSetsInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPushConstantsInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PushConstantsInfo;
+	public void* pNext;
+	public VkPipelineLayout layout;
+	public VkShaderStageFlags stageFlags;
+	public uint offset;
+	public uint size;
+	public void* pValues;
+
+	public VkPushConstantsInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPushDescriptorSetInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PushDescriptorSetInfo;
+	public void* pNext;
+	public VkShaderStageFlags stageFlags;
+	public VkPipelineLayout layout;
+	public uint set;
+	public uint descriptorWriteCount;
+	public VkWriteDescriptorSet* pDescriptorWrites;
+
+	public VkPushDescriptorSetInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPushDescriptorSetWithTemplateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PushDescriptorSetWithTemplateInfo;
+	public void* pNext;
+	public VkDescriptorUpdateTemplate descriptorUpdateTemplate;
+	public VkPipelineLayout layout;
+	public uint set;
+	public void* pData;
+
+	public VkPushDescriptorSetWithTemplateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePipelineProtectedAccessFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineProtectedAccessFeatures;
+	public void* pNext;
+	public VkBool32 pipelineProtectedAccess;
+
+	public VkPhysicalDevicePipelineProtectedAccessFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePipelineRobustnessFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineRobustnessFeatures;
+	public void* pNext;
+	public VkBool32 pipelineRobustness;
+
+	public VkPhysicalDevicePipelineRobustnessFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePipelineRobustnessProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineRobustnessProperties;
+	public void* pNext;
+	public VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
+	public VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
+	public VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
+	public VkPipelineRobustnessImageBehavior defaultRobustnessImages;
+
+	public VkPhysicalDevicePipelineRobustnessProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineRobustnessCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineRobustnessCreateInfo;
+	public void* pNext;
+	public VkPipelineRobustnessBufferBehavior storageBuffers;
+	public VkPipelineRobustnessBufferBehavior uniformBuffers;
+	public VkPipelineRobustnessBufferBehavior vertexInputs;
+	public VkPipelineRobustnessImageBehavior images;
+
+	public VkPipelineRobustnessCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceLineRasterizationFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceLineRasterizationFeatures;
+	public void* pNext;
+	public VkBool32 rectangularLines;
+	public VkBool32 bresenhamLines;
+	public VkBool32 smoothLines;
+	public VkBool32 stippledRectangularLines;
+	public VkBool32 stippledBresenhamLines;
+	public VkBool32 stippledSmoothLines;
+
+	public VkPhysicalDeviceLineRasterizationFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceLineRasterizationProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceLineRasterizationProperties;
+	public void* pNext;
+	public uint lineSubPixelPrecisionBits;
+
+	public VkPhysicalDeviceLineRasterizationProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineRasterizationLineStateCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineRasterizationLineStateCreateInfo;
+	public void* pNext;
+	public VkLineRasterizationMode lineRasterizationMode;
+	public VkBool32 stippledLineEnable;
+	public uint lineStippleFactor;
+	public ushort lineStipplePattern;
+
+	public VkPipelineRasterizationLineStateCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorProperties : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorProperties;
+	public void* pNext;
+	public uint maxVertexAttribDivisor;
+	public VkBool32 supportsNonZeroFirstInstance;
+
+	public VkPhysicalDeviceVertexAttributeDivisorProperties()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkVertexInputBindingDivisorDescription
+{
+	public uint binding;
+	public uint divisor;
+}
+
+public unsafe partial struct VkPipelineVertexInputDivisorStateCreateInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PipelineVertexInputDivisorStateCreateInfo;
+	public void* pNext;
+	public uint vertexBindingDivisorCount;
+	public VkVertexInputBindingDivisorDescription* pVertexBindingDivisors;
+
+	public VkPipelineVertexInputDivisorStateCreateInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorFeatures;
+	public void* pNext;
+	public VkBool32 vertexAttributeInstanceRateDivisor;
+	public VkBool32 vertexAttributeInstanceRateZeroDivisor;
+
+	public VkPhysicalDeviceVertexAttributeDivisorFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkRenderingAreaInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderingAreaInfo;
+	public void* pNext;
+	public uint viewMask;
+	public uint colorAttachmentCount;
+	public VkFormat* pColorAttachmentFormats;
+	public VkFormat depthAttachmentFormat;
+	public VkFormat stencilAttachmentFormat;
+
+	public VkRenderingAreaInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceDynamicRenderingLocalReadFeatures : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDynamicRenderingLocalReadFeatures;
+	public void* pNext;
+	public VkBool32 dynamicRenderingLocalRead;
+
+	public VkPhysicalDeviceDynamicRenderingLocalReadFeatures()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkRenderingAttachmentLocationInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderingAttachmentLocationInfo;
+	public void* pNext;
+	public uint colorAttachmentCount;
+	public uint* pColorAttachmentLocations;
+
+	public VkRenderingAttachmentLocationInfo()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkRenderingInputAttachmentIndexInfo : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderingInputAttachmentIndexInfo;
+	public void* pNext;
+	public uint colorAttachmentCount;
+	public uint* pColorAttachmentInputIndices;
+	public uint* pDepthInputAttachmentIndex;
+	public uint* pStencilInputAttachmentIndex;
+
+	public VkRenderingInputAttachmentIndexInfo()
 	{
 	}
 
@@ -11802,6 +11803,27 @@ public unsafe partial struct VkReleaseSwapchainImagesInfoKHR : IStructureType, I
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceInternallySynchronizedQueuesFeaturesKHR;
+	public void* pNext;
+	public VkBool32 internallySynchronizedQueues;
+
+	public VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkCooperativeMatrixPropertiesKHR : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.CooperativeMatrixPropertiesKHR;
@@ -13067,6 +13089,123 @@ public unsafe partial struct VkBindDescriptorBufferEmbeddedSamplersInfoEXT : ISt
 	}
 }
 
+public partial struct VkStridedDeviceAddressRangeKHR
+{
+	public ulong address;
+	public ulong size;
+	public ulong stride;
+}
+
+public partial struct VkCopyMemoryIndirectCommandKHR
+{
+	public ulong srcAddress;
+	public ulong dstAddress;
+	public ulong size;
+}
+
+public unsafe partial struct VkCopyMemoryIndirectInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.CopyMemoryIndirectInfoKHR;
+	public void* pNext;
+	public VkAddressCopyFlagsKHR srcCopyFlags;
+	public VkAddressCopyFlagsKHR dstCopyFlags;
+	public uint copyCount;
+	public VkStridedDeviceAddressRangeKHR copyAddressRange;
+
+	public VkCopyMemoryIndirectInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkCopyMemoryToImageIndirectCommandKHR
+{
+	public ulong srcAddress;
+	public uint bufferRowLength;
+	public uint bufferImageHeight;
+	public VkImageSubresourceLayers imageSubresource;
+	public VkOffset3D imageOffset;
+	public VkExtent3D imageExtent;
+}
+
+public unsafe partial struct VkCopyMemoryToImageIndirectInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.CopyMemoryToImageIndirectInfoKHR;
+	public void* pNext;
+	public VkAddressCopyFlagsKHR srcCopyFlags;
+	public uint copyCount;
+	public VkStridedDeviceAddressRangeKHR copyAddressRange;
+	public VkImage dstImage;
+	public VkImageLayout dstImageLayout;
+	public VkImageSubresourceLayers* pImageSubresources;
+
+	public VkCopyMemoryToImageIndirectInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceCopyMemoryIndirectFeaturesKHR;
+	public void* pNext;
+	public VkBool32 indirectMemoryCopy;
+	public VkBool32 indirectMemoryToImageCopy;
+
+	public VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceCopyMemoryIndirectPropertiesKHR;
+	public void* pNext;
+	public VkQueueFlags supportedQueues;
+
+	public VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkVideoEncodeIntraRefreshCapabilitiesKHR : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.VideoEncodeIntraRefreshCapabilitiesKHR;
@@ -13571,6 +13710,29 @@ public unsafe partial struct VkPhysicalDeviceMaintenance8FeaturesKHR : IStructur
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceShaderFmaFeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderFmaFeaturesKHR;
+	public void* pNext;
+	public VkBool32 shaderFmaFloat16;
+	public VkBool32 shaderFmaFloat32;
+	public VkBool32 shaderFmaFloat64;
+
+	public VkPhysicalDeviceShaderFmaFeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceMaintenance9FeaturesKHR : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance9FeaturesKHR;
@@ -13795,6 +13957,114 @@ public unsafe partial struct VkPhysicalDevicePresentModeFifoLatestReadyFeaturesK
 	public VkBool32 presentModeFifoLatestReady;
 
 	public VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceMaintenance10FeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance10FeaturesKHR;
+	public void* pNext;
+	public VkBool32 maintenance10;
+
+	public VkPhysicalDeviceMaintenance10FeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceMaintenance10PropertiesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance10PropertiesKHR;
+	public void* pNext;
+	public VkBool32 rgba4OpaqueBlackSwizzled;
+	public VkBool32 resolveSrgbFormatAppliesTransferFunction;
+	public VkBool32 resolveSrgbFormatSupportsTransferFunctionControl;
+
+	public VkPhysicalDeviceMaintenance10PropertiesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkRenderingEndInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderingEndInfoKHR;
+	public void* pNext;
+
+	public VkRenderingEndInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkRenderingAttachmentFlagsInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderingAttachmentFlagsInfoKHR;
+	public void* pNext;
+	public VkRenderingAttachmentFlagsKHR flags;
+
+	public VkRenderingAttachmentFlagsInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkResolveImageModeInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ResolveImageModeInfoKHR;
+	public void* pNext;
+	public VkResolveImageFlagsKHR flags;
+	public VkResolveModeFlags resolveMode;
+	public VkResolveModeFlags stencilResolveMode;
+
+	public VkResolveImageModeInfoKHR()
 	{
 	}
 
@@ -15011,6 +15281,538 @@ public unsafe partial struct VkDebugUtilsObjectTagInfoEXT : IStructureType, ICha
 	public void* pTag;
 
 	public VkDebugUtilsObjectTagInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkHostAddressRangeEXT
+{
+	public void* address;
+	public ulong size;
+}
+
+public unsafe partial struct VkHostAddressRangeConstEXT
+{
+	public void* address;
+	public ulong size;
+}
+
+public partial struct VkDeviceAddressRangeEXT
+{
+	public ulong address;
+	public ulong size;
+}
+
+public unsafe partial struct VkTexelBufferDescriptorInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.TexelBufferDescriptorInfoEXT;
+	public void* pNext;
+	public VkFormat format;
+	public VkDeviceAddressRangeEXT addressRange;
+
+	public VkTexelBufferDescriptorInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImageDescriptorInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ImageDescriptorInfoEXT;
+	public void* pNext;
+	public VkImageViewCreateInfo* pView;
+	public VkImageLayout layout;
+
+	public VkImageDescriptorInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkTensorViewCreateInfoARM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.TensorViewCreateInfoARM;
+	public void* pNext;
+	public VkTensorViewCreateFlagsARM flags;
+	public VkTensorARM tensor;
+	public VkFormat format;
+
+	public VkTensorViewCreateInfoARM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+[StructLayout(LayoutKind.Explicit)]
+public unsafe partial struct VkResourceDescriptorDataEXT
+{
+	[FieldOffset(0)]
+	public VkImageDescriptorInfoEXT* pImage;
+	[FieldOffset(0)]
+	public VkTexelBufferDescriptorInfoEXT* pTexelBuffer;
+	[FieldOffset(0)]
+	public VkDeviceAddressRangeEXT* pAddressRange;
+	[FieldOffset(0)]
+	public VkTensorViewCreateInfoARM* pTensorARM;
+}
+
+public unsafe partial struct VkResourceDescriptorInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ResourceDescriptorInfoEXT;
+	public void* pNext;
+	public VkDescriptorType type;
+	public VkResourceDescriptorDataEXT data;
+
+	public VkResourceDescriptorInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkBindHeapInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.BindHeapInfoEXT;
+	public void* pNext;
+	public VkDeviceAddressRangeEXT heapRange;
+	public ulong reservedRangeOffset;
+	public ulong reservedRangeSize;
+
+	public VkBindHeapInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPushDataInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PushDataInfoEXT;
+	public void* pNext;
+	public uint offset;
+	public VkHostAddressRangeConstEXT data;
+
+	public VkPushDataInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkDescriptorMappingSourceConstantOffsetEXT
+{
+	public uint heapOffset;
+	public uint heapArrayStride;
+	public VkSamplerCreateInfo* pEmbeddedSampler;
+	public uint samplerHeapOffset;
+	public uint samplerHeapArrayStride;
+}
+
+public unsafe partial struct VkDescriptorMappingSourcePushIndexEXT
+{
+	public uint heapOffset;
+	public uint pushOffset;
+	public uint heapIndexStride;
+	public uint heapArrayStride;
+	public VkSamplerCreateInfo* pEmbeddedSampler;
+	public VkBool32 useCombinedImageSamplerIndex;
+	public uint samplerHeapOffset;
+	public uint samplerPushOffset;
+	public uint samplerHeapIndexStride;
+	public uint samplerHeapArrayStride;
+}
+
+public unsafe partial struct VkDescriptorMappingSourceIndirectIndexEXT
+{
+	public uint heapOffset;
+	public uint pushOffset;
+	public uint addressOffset;
+	public uint heapIndexStride;
+	public uint heapArrayStride;
+	public VkSamplerCreateInfo* pEmbeddedSampler;
+	public VkBool32 useCombinedImageSamplerIndex;
+	public uint samplerHeapOffset;
+	public uint samplerPushOffset;
+	public uint samplerAddressOffset;
+	public uint samplerHeapIndexStride;
+	public uint samplerHeapArrayStride;
+}
+
+public partial struct VkDescriptorMappingSourceHeapDataEXT
+{
+	public uint heapOffset;
+	public uint pushOffset;
+}
+
+public partial struct VkDescriptorMappingSourceIndirectAddressEXT
+{
+	public uint pushOffset;
+	public uint addressOffset;
+}
+
+public unsafe partial struct VkDescriptorMappingSourceShaderRecordIndexEXT
+{
+	public uint heapOffset;
+	public uint shaderRecordOffset;
+	public uint heapIndexStride;
+	public uint heapArrayStride;
+	public VkSamplerCreateInfo* pEmbeddedSampler;
+	public VkBool32 useCombinedImageSamplerIndex;
+	public uint samplerHeapOffset;
+	public uint samplerShaderRecordOffset;
+	public uint samplerHeapIndexStride;
+	public uint samplerHeapArrayStride;
+}
+
+public unsafe partial struct VkDescriptorMappingSourceIndirectIndexArrayEXT
+{
+	public uint heapOffset;
+	public uint pushOffset;
+	public uint addressOffset;
+	public uint heapIndexStride;
+	public VkSamplerCreateInfo* pEmbeddedSampler;
+	public VkBool32 useCombinedImageSamplerIndex;
+	public uint samplerHeapOffset;
+	public uint samplerPushOffset;
+	public uint samplerAddressOffset;
+	public uint samplerHeapIndexStride;
+}
+
+[StructLayout(LayoutKind.Explicit)]
+public partial struct VkDescriptorMappingSourceDataEXT
+{
+	[FieldOffset(0)]
+	public VkDescriptorMappingSourceConstantOffsetEXT constantOffset;
+	[FieldOffset(0)]
+	public VkDescriptorMappingSourcePushIndexEXT pushIndex;
+	[FieldOffset(0)]
+	public VkDescriptorMappingSourceIndirectIndexEXT indirectIndex;
+	[FieldOffset(0)]
+	public VkDescriptorMappingSourceIndirectIndexArrayEXT indirectIndexArray;
+	[FieldOffset(0)]
+	public VkDescriptorMappingSourceHeapDataEXT heapData;
+	[FieldOffset(0)]
+	public uint pushDataOffset;
+	[FieldOffset(0)]
+	public uint pushAddressOffset;
+	[FieldOffset(0)]
+	public VkDescriptorMappingSourceIndirectAddressEXT indirectAddress;
+	[FieldOffset(0)]
+	public VkDescriptorMappingSourceShaderRecordIndexEXT shaderRecordIndex;
+	[FieldOffset(0)]
+	public uint shaderRecordDataOffset;
+	[FieldOffset(0)]
+	public uint shaderRecordAddressOffset;
+}
+
+public unsafe partial struct VkDescriptorSetAndBindingMappingEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DescriptorSetAndBindingMappingEXT;
+	public void* pNext;
+	public uint descriptorSet;
+	public uint firstBinding;
+	public uint bindingCount;
+	public VkSpirvResourceTypeFlagsEXT resourceMask;
+	public VkDescriptorMappingSourceEXT source;
+	public VkDescriptorMappingSourceDataEXT sourceData;
+
+	public VkDescriptorSetAndBindingMappingEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkShaderDescriptorSetAndBindingMappingInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ShaderDescriptorSetAndBindingMappingInfoEXT;
+	public void* pNext;
+	public uint mappingCount;
+	public VkDescriptorSetAndBindingMappingEXT* pMappings;
+
+	public VkShaderDescriptorSetAndBindingMappingInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkOpaqueCaptureDataCreateInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.OpaqueCaptureDataCreateInfoEXT;
+	public void* pNext;
+	public VkHostAddressRangeConstEXT* pData;
+
+	public VkOpaqueCaptureDataCreateInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceDescriptorHeapFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorHeapFeaturesEXT;
+	public void* pNext;
+	public VkBool32 descriptorHeap;
+	public VkBool32 descriptorHeapCaptureReplay;
+
+	public VkPhysicalDeviceDescriptorHeapFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceDescriptorHeapPropertiesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorHeapPropertiesEXT;
+	public void* pNext;
+	public ulong samplerHeapAlignment;
+	public ulong resourceHeapAlignment;
+	public ulong maxSamplerHeapSize;
+	public ulong maxResourceHeapSize;
+	public ulong minSamplerHeapReservedRange;
+	public ulong minSamplerHeapReservedRangeWithEmbedded;
+	public ulong minResourceHeapReservedRange;
+	public ulong samplerDescriptorSize;
+	public ulong imageDescriptorSize;
+	public ulong bufferDescriptorSize;
+	public ulong samplerDescriptorAlignment;
+	public ulong imageDescriptorAlignment;
+	public ulong bufferDescriptorAlignment;
+	public ulong maxPushDataSize;
+	public ulong imageCaptureReplayOpaqueDataSize;
+	public uint maxDescriptorHeapEmbeddedSamplers;
+	public uint samplerYcbcrConversionCount;
+	public VkBool32 sparseDescriptorHeaps;
+	public VkBool32 protectedDescriptorHeaps;
+
+	public VkPhysicalDeviceDescriptorHeapPropertiesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkCommandBufferInheritanceDescriptorHeapInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.CommandBufferInheritanceDescriptorHeapInfoEXT;
+	public void* pNext;
+	public VkBindHeapInfoEXT* pSamplerHeapBindInfo;
+	public VkBindHeapInfoEXT* pResourceHeapBindInfo;
+
+	public VkCommandBufferInheritanceDescriptorHeapInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSamplerCustomBorderColorIndexCreateInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SamplerCustomBorderColorIndexCreateInfoEXT;
+	public void* pNext;
+	public uint index;
+
+	public VkSamplerCustomBorderColorIndexCreateInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSamplerCustomBorderColorCreateInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SamplerCustomBorderColorCreateInfoEXT;
+	public void* pNext;
+	public VkClearColorValue customBorderColor;
+	public VkFormat format;
+
+	public VkSamplerCustomBorderColorCreateInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkIndirectCommandsLayoutPushDataTokenNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.IndirectCommandsLayoutPushDataTokenNV;
+	public void* pNext;
+	public uint pushDataOffset;
+	public uint pushDataSize;
+
+	public VkIndirectCommandsLayoutPushDataTokenNV()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSubsampledImageFormatPropertiesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SubsampledImageFormatPropertiesEXT;
+	public void* pNext;
+	public uint subsampledImageDescriptorCount;
+
+	public VkSubsampledImageFormatPropertiesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceDescriptorHeapTensorPropertiesARM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorHeapTensorPropertiesARM;
+	public void* pNext;
+	public ulong tensorDescriptorSize;
+	public ulong tensorDescriptorAlignment;
+	public ulong tensorCaptureReplayOpaqueDataSize;
+
+	public VkPhysicalDeviceDescriptorHeapTensorPropertiesARM()
 	{
 	}
 
@@ -16382,6 +17184,247 @@ public unsafe partial struct VkCheckpointData2NV : IStructureType, IChainType
 	public void* pCheckpointMarker;
 
 	public VkCheckpointData2NV()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePresentTimingFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePresentTimingFeaturesEXT;
+	public void* pNext;
+	public VkBool32 presentTiming;
+	public VkBool32 presentAtAbsoluteTime;
+	public VkBool32 presentAtRelativeTime;
+
+	public VkPhysicalDevicePresentTimingFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPresentTimingSurfaceCapabilitiesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PresentTimingSurfaceCapabilitiesEXT;
+	public void* pNext;
+	public VkBool32 presentTimingSupported;
+	public VkBool32 presentAtAbsoluteTimeSupported;
+	public VkBool32 presentAtRelativeTimeSupported;
+	public VkPresentStageFlagsEXT presentStageQueries;
+
+	public VkPresentTimingSurfaceCapabilitiesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSwapchainCalibratedTimestampInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SwapchainCalibratedTimestampInfoEXT;
+	public void* pNext;
+	public VkSwapchainKHR swapchain;
+	public VkPresentStageFlagsEXT presentStage;
+	public ulong timeDomainId;
+
+	public VkSwapchainCalibratedTimestampInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSwapchainTimingPropertiesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SwapchainTimingPropertiesEXT;
+	public void* pNext;
+	public ulong refreshDuration;
+	public ulong refreshInterval;
+
+	public VkSwapchainTimingPropertiesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSwapchainTimeDomainPropertiesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.SwapchainTimeDomainPropertiesEXT;
+	public void* pNext;
+	public uint timeDomainCount;
+	public VkTimeDomainKHR* pTimeDomains;
+	public ulong* pTimeDomainIds;
+
+	public VkSwapchainTimeDomainPropertiesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPastPresentationTimingInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PastPresentationTimingInfoEXT;
+	public void* pNext;
+	public VkPastPresentationTimingFlagsEXT flags;
+	public VkSwapchainKHR swapchain;
+
+	public VkPastPresentationTimingInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkPresentStageTimeEXT
+{
+	public VkPresentStageFlagsEXT stage;
+	public ulong time;
+}
+
+public unsafe partial struct VkPastPresentationTimingEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PastPresentationTimingEXT;
+	public void* pNext;
+	public ulong presentId;
+	public ulong targetTime;
+	public uint presentStageCount;
+	public VkPresentStageTimeEXT* pPresentStages;
+	public VkTimeDomainKHR timeDomain;
+	public ulong timeDomainId;
+	public VkBool32 reportComplete;
+
+	public VkPastPresentationTimingEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPastPresentationTimingPropertiesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PastPresentationTimingPropertiesEXT;
+	public void* pNext;
+	public ulong timingPropertiesCounter;
+	public ulong timeDomainsCounter;
+	public uint presentationTimingCount;
+	public VkPastPresentationTimingEXT* pPresentationTimings;
+
+	public VkPastPresentationTimingPropertiesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPresentTimingInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PresentTimingInfoEXT;
+	public void* pNext;
+	public VkPresentTimingInfoFlagsEXT flags;
+	public ulong targetTime;
+	public ulong timeDomainId;
+	public VkPresentStageFlagsEXT presentStageQueries;
+	public VkPresentStageFlagsEXT targetTimeDomainPresentStage;
+
+	public VkPresentTimingInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPresentTimingsInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PresentTimingsInfoEXT;
+	public void* pNext;
+	public uint swapchainCount;
+	public VkPresentTimingInfoEXT* pTimingInfos;
+
+	public VkPresentTimingsInfoEXT()
 	{
 	}
 
@@ -17849,28 +18892,6 @@ public unsafe partial struct VkDeviceDeviceMemoryReportCreateInfoEXT : IStructur
 	}
 }
 
-public unsafe partial struct VkSamplerCustomBorderColorCreateInfoEXT : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.SamplerCustomBorderColorCreateInfoEXT;
-	public void* pNext;
-	public VkClearColorValue customBorderColor;
-	public VkFormat format;
-
-	public VkSamplerCustomBorderColorCreateInfoEXT()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkPhysicalDeviceCustomBorderColorPropertiesEXT : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceCustomBorderColorPropertiesEXT;
@@ -17900,6 +18921,27 @@ public unsafe partial struct VkPhysicalDeviceCustomBorderColorFeaturesEXT : IStr
 	public VkBool32 customBorderColorWithoutFormat;
 
 	public VkPhysicalDeviceCustomBorderColorFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceTextureCompressionASTC3DFeaturesEXT;
+	public void* pNext;
+	public VkBool32 textureCompressionASTC_3D;
+
+	public VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT()
 	{
 	}
 
@@ -20792,23 +21834,6 @@ public unsafe partial struct VkRenderPassFragmentDensityMapOffsetEndInfoEXT : IS
 	}
 }
 
-public partial struct VkCopyMemoryIndirectCommandNV
-{
-	public ulong srcAddress;
-	public ulong dstAddress;
-	public ulong size;
-}
-
-public partial struct VkCopyMemoryToImageIndirectCommandNV
-{
-	public ulong srcAddress;
-	public uint bufferRowLength;
-	public uint bufferImageHeight;
-	public VkImageSubresourceLayers imageSubresource;
-	public VkOffset3D imageOffset;
-	public VkExtent3D imageExtent;
-}
-
 public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectFeaturesNV : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceCopyMemoryIndirectFeaturesNV;
@@ -20830,43 +21855,22 @@ public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectFeaturesNV : IStr
 	}
 }
 
-public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectPropertiesNV : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCopyMemoryIndirectPropertiesNV;
-	public void* pNext;
-	public VkQueueFlags supportedQueues;
-
-	public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public partial struct VkDecompressMemoryRegionNV
 {
 	public ulong srcAddress;
 	public ulong dstAddress;
 	public ulong compressedSize;
 	public ulong decompressedSize;
-	public VkMemoryDecompressionMethodFlagsNV decompressionMethod;
+	public VkMemoryDecompressionMethodFlagsEXT decompressionMethod;
 }
 
-public unsafe partial struct VkPhysicalDeviceMemoryDecompressionFeaturesNV : IStructureType, IChainType
+public unsafe partial struct VkPhysicalDeviceMemoryDecompressionFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMemoryDecompressionFeaturesNV;
+	public VkStructureType sType = VkStructureType.PhysicalDeviceMemoryDecompressionFeaturesEXT;
 	public void* pNext;
 	public VkBool32 memoryDecompression;
 
-	public VkPhysicalDeviceMemoryDecompressionFeaturesNV()
+	public VkPhysicalDeviceMemoryDecompressionFeaturesEXT()
 	{
 	}
 
@@ -20881,14 +21885,14 @@ public unsafe partial struct VkPhysicalDeviceMemoryDecompressionFeaturesNV : ISt
 	}
 }
 
-public unsafe partial struct VkPhysicalDeviceMemoryDecompressionPropertiesNV : IStructureType, IChainType
+public unsafe partial struct VkPhysicalDeviceMemoryDecompressionPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMemoryDecompressionPropertiesNV;
+	public VkStructureType sType = VkStructureType.PhysicalDeviceMemoryDecompressionPropertiesEXT;
 	public void* pNext;
-	public VkMemoryDecompressionMethodFlagsNV decompressionMethods;
+	public VkMemoryDecompressionMethodFlagsEXT decompressionMethods;
 	public ulong maxDecompressionIndirectCount;
 
-	public VkPhysicalDeviceMemoryDecompressionPropertiesNV()
+	public VkPhysicalDeviceMemoryDecompressionPropertiesEXT()
 	{
 	}
 
@@ -21504,29 +22508,6 @@ public unsafe partial struct VkTensorCreateInfoARM : IStructureType, IChainType
 	public uint* pQueueFamilyIndices;
 
 	public VkTensorCreateInfoARM()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
-public unsafe partial struct VkTensorViewCreateInfoARM : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.TensorViewCreateInfoARM;
-	public void* pNext;
-	public VkTensorViewCreateFlagsARM flags;
-	public VkTensorARM tensor;
-	public VkFormat format;
-
-	public VkTensorViewCreateInfoARM()
 	{
 	}
 
@@ -22556,7 +23537,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderProperti
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingInvocationReorderPropertiesNV;
 	public void* pNext;
-	public VkRayTracingInvocationReorderModeNV rayTracingInvocationReorderReorderingHint;
+	public VkRayTracingInvocationReorderModeEXT rayTracingInvocationReorderReorderingHint;
 
 	public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV()
 	{
@@ -24001,6 +24982,37 @@ public unsafe partial struct VkTileMemorySizeInfoQCOM : IStructureType, IChainTy
 	}
 }
 
+public partial struct VkDecompressMemoryRegionEXT
+{
+	public ulong srcAddress;
+	public ulong dstAddress;
+	public ulong compressedSize;
+	public ulong decompressedSize;
+}
+
+public unsafe partial struct VkDecompressMemoryInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DecompressMemoryInfoEXT;
+	public void* pNext;
+	public VkMemoryDecompressionMethodFlagsEXT decompressionMethod;
+	public uint regionCount;
+	public VkDecompressMemoryRegionEXT* pRegions;
+
+	public VkDecompressMemoryInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkDisplaySurfaceStereoCreateInfoNV : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.DisplaySurfaceStereoCreateInfoNV;
@@ -25206,6 +26218,115 @@ public unsafe partial struct VkImageAlignmentControlCreateInfoMESA : IStructureT
 	}
 }
 
+public unsafe partial struct VkPushConstantBankInfoNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PushConstantBankInfoNV;
+	public void* pNext;
+	public uint bank;
+
+	public VkPushConstantBankInfoNV()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePushConstantBankFeaturesNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePushConstantBankFeaturesNV;
+	public void* pNext;
+	public VkBool32 pushConstantBank;
+
+	public VkPhysicalDevicePushConstantBankFeaturesNV()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePushConstantBankPropertiesNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePushConstantBankPropertiesNV;
+	public void* pNext;
+	public uint maxGraphicsPushConstantBanks;
+	public uint maxComputePushConstantBanks;
+	public uint maxGraphicsPushDataBanks;
+	public uint maxComputePushDataBanks;
+
+	public VkPhysicalDevicePushConstantBankPropertiesNV()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingInvocationReorderPropertiesEXT;
+	public void* pNext;
+	public VkRayTracingInvocationReorderModeEXT rayTracingInvocationReorderReorderingHint;
+	public uint maxShaderBindingTableRecordIndex;
+
+	public VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingInvocationReorderFeaturesEXT;
+	public void* pNext;
+	public VkBool32 rayTracingInvocationReorder;
+
+	public VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceDepthClampControlFeaturesEXT : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceDepthClampControlFeaturesEXT;
@@ -25393,6 +26514,120 @@ public unsafe partial struct VkPhysicalDevicePipelineOpacityMicromapFeaturesARM 
 	}
 }
 
+public unsafe partial struct VkPhysicalDevicePerformanceCountersByRegionFeaturesARM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePerformanceCountersByRegionFeaturesARM;
+	public void* pNext;
+	public VkBool32 performanceCountersByRegion;
+
+	public VkPhysicalDevicePerformanceCountersByRegionFeaturesARM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePerformanceCountersByRegionPropertiesARM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDevicePerformanceCountersByRegionPropertiesARM;
+	public void* pNext;
+	public uint maxPerRegionPerformanceCounters;
+	public VkExtent2D performanceCounterRegionSize;
+	public uint rowStrideAlignment;
+	public uint regionAlignment;
+	public VkBool32 identityTransformOrder;
+
+	public VkPhysicalDevicePerformanceCountersByRegionPropertiesARM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPerformanceCounterARM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PerformanceCounterARM;
+	public void* pNext;
+	public uint counterID;
+
+	public VkPerformanceCounterARM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPerformanceCounterDescriptionARM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PerformanceCounterDescriptionARM;
+	public void* pNext;
+	public VkPerformanceCounterDescriptionFlagsARM flags;
+	public fixed byte name[256];
+
+	public VkPerformanceCounterDescriptionARM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkRenderPassPerformanceCountersByRegionBeginInfoARM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.RenderPassPerformanceCountersByRegionBeginInfoARM;
+	public void* pNext;
+	public uint counterAddressCount;
+	public ulong* pCounterAddresses;
+	public VkBool32 serializeRegions;
+	public uint counterIndexCount;
+	public uint* pCounterIndices;
+
+	public VkRenderPassPerformanceCountersByRegionBeginInfoARM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceVertexAttributeRobustnessFeaturesEXT;
@@ -25541,26 +26776,6 @@ public unsafe partial struct VkPhysicalDevicePresentMeteringFeaturesNV : IStruct
 	}
 }
 
-public unsafe partial struct VkRenderingEndInfoEXT : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.RenderingEndInfoEXT;
-	public void* pNext;
-
-	public VkRenderingEndInfoEXT()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT;
@@ -25582,6 +26797,186 @@ public unsafe partial struct VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesE
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceShader64BitIndexingFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShader64IndexingFeaturesEXT;
+	public void* pNext;
+	public VkBool32 shader64BitIndexing;
+
+	public VkPhysicalDeviceShader64BitIndexingFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceCustomResolveFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceCustomResolveFeaturesEXT;
+	public void* pNext;
+	public VkBool32 customResolve;
+
+	public VkPhysicalDeviceCustomResolveFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkBeginCustomResolveInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.BeginCustomResolveInfoEXT;
+	public void* pNext;
+
+	public VkBeginCustomResolveInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkCustomResolveCreateInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.CustomResolveCreateInfoEXT;
+	public void* pNext;
+	public VkBool32 customResolve;
+	public uint colorAttachmentCount;
+	public VkFormat* pColorAttachmentFormats;
+	public VkFormat depthAttachmentFormat;
+	public VkFormat stencilAttachmentFormat;
+
+	public VkCustomResolveCreateInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPipelineCacheHeaderVersionDataGraphQCOM
+{
+	public uint headerSize;
+	public VkPipelineCacheHeaderVersion headerVersion;
+	public VkDataGraphModelCacheTypeQCOM cacheType;
+	public uint cacheVersion;
+	public fixed uint toolchainVersion[3];
+}
+
+public unsafe partial struct VkDataGraphPipelineBuiltinModelCreateInfoQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.DataGraphPipelineBuiltinModelCreateInfoQCOM;
+	public void* pNext;
+	public VkPhysicalDeviceDataGraphOperationSupportARM* pOperation;
+
+	public VkDataGraphPipelineBuiltinModelCreateInfoQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceDataGraphModelFeaturesQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceDataGraphModelFeaturesQCOM;
+	public void* pNext;
+	public VkBool32 dataGraphModel;
+
+	public VkPhysicalDeviceDataGraphModelFeaturesQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderLongVectorFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderLongVectorFeaturesEXT;
+	public void* pNext;
+	public VkBool32 longVector;
+
+	public VkPhysicalDeviceShaderLongVectorFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderLongVectorPropertiesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderLongVectorPropertiesEXT;
+	public void* pNext;
+	public uint maxVectorComponents;
+
+	public VkPhysicalDeviceShaderLongVectorPropertiesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC : IStructureType, IChainType
 {
 	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineCacheIncrementalModeFeaturesSEC;
@@ -25589,6 +26984,91 @@ public unsafe partial struct VkPhysicalDevicePipelineCacheIncrementalModeFeature
 	public VkBool32 pipelineCacheIncrementalMode;
 
 	public VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT;
+	public void* pNext;
+	public VkBool32 shaderUniformBufferUnsizedArray;
+
+	public VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkComputeOccupancyPriorityParametersNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.ComputeOccupancyPriorityParametersNV;
+	public void* pNext;
+	public float occupancyPriority;
+	public float occupancyThrottling;
+
+	public VkComputeOccupancyPriorityParametersNV()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceComputeOccupancyPriorityFeaturesNV;
+	public void* pNext;
+	public VkBool32 computeOccupancyPriority;
+
+	public VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderSubgroupPartitionedFeaturesEXT;
+	public void* pNext;
+	public VkBool32 shaderSubgroupPartitioned;
+
+	public VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT()
 	{
 	}
 

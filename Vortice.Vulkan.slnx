@@ -1,0 +1,32 @@
+<Solution>
+  <Folder Name="/build/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="LICENSE" />
+    <File Path="NuGet.config" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/samples/">
+    <File Path="LICENSE" />
+    <Project Path="src/samples/01-ClearScreen/01-ClearScreen.csproj" />
+    <Project Path="src/samples/02-DrawTriangle/02-DrawTriangle.csproj" />
+    <Project Path="src/samples/03-DrawTriangleVma/03-DrawTriangleVma.csproj" />
+    <Project Path="src/samples/Vortice.Vulkan.SampleFramework/Vortice.Vulkan.SampleFramework.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Vortice.ShaderCompiler.Test/Vortice.ShaderCompiler.Test.csproj" />
+    <Project Path="tests/Vortice.SPIRV.Reflect.Tests/Vortice.SPIRV.Reflect.Tests.csproj" />
+    <Project Path="tests/Vortice.SpirvCross.Test/Vortice.SpirvCross.Test.csproj" />
+  </Folder>
+  <Project Path="src/Generator/Generator.csproj" />
+  <Project Path="src/Vortice.ShaderCompiler/Vortice.ShaderCompiler.csproj" />
+  <Project Path="src/Vortice.SPIRV.Reflect/Vortice.SPIRV.Reflect.csproj" />
+  <Project Path="src/Vortice.SPIRV/Vortice.SPIRV.csproj" />
+  <Project Path="src/Vortice.SpirvCross/Vortice.SpirvCross.csproj" />
+  <Project Path="src/Vortice.Vulkan/Vortice.Vulkan.csproj" />
+  <Project Path="src/Vortice.VulkanMemoryAllocator/Vortice.VulkanMemoryAllocator.csproj" />
+</Solution>

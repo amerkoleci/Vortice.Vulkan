@@ -2,17 +2,17 @@
 <Project>
   <!-- https://learn.microsoft.com/nuget/consume-packages/central-package-management -->
   <ItemGroup>
-    <PackageVersion Include="CppAst" Version="0.23.1" />
+    <PackageVersion Include="CppAst" Version="0.24.0" />
 
-    <PackageVersion Include="Silk.NET.Shaderc.Native" Version="2.22.0" />
+    <PackageVersion Include="Silk.NET.Shaderc.Native" Version="2.23.0" />
 
     <!-- Samples -->
-    <PackageVersion Include="ppy.SDL3-CS" Version="2025.828.0" />
+    <PackageVersion Include="ppy.SDL3-CS" Version="2025.1205.0" />
     
     <!-- Tests -->
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
-    <PackageVersion Include="NUnit" Version="4.3.2" />
-    <PackageVersion Include="NUnit3TestAdapter" Version="5.0.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+    <PackageVersion Include="NUnit" Version="4.4.0" />
+    <PackageVersion Include="NUnit3TestAdapter" Version="6.01.0" />
   </ItemGroup>
 
 </Project>

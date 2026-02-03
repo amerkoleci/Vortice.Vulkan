@@ -14,7 +14,7 @@ public partial class CsCodeGenerator
         "params",
     ];
 
-    private static readonly char[] _spvcSeparator = ['_'];
+    private static readonly char[] s_spvcSeparator = ['_'];
 
     private static readonly Dictionary<string, string> s_csNameMappings = new()
     {
@@ -87,6 +87,8 @@ public partial class CsCodeGenerator
         { "VkScopeNV", "VkScopeKHR" },
         { "VkLineRasterizationModeEXT", "VkLineRasterizationMode" },
         { "VkPipelineCreateFlags2KHR", "VkPipelineCreateFlags2" },
+        { "VkMemoryDecompressionMethodFlagsNV", "VkMemoryDecompressionMethodFlagsEXT" },
+        
 
         // Spirv - Spirv-Cross
         { "SpvId", "uint" },
@@ -163,7 +165,7 @@ public partial class CsCodeGenerator
         {
             if (name.StartsWith("spvc_"))
             {
-                string[] parts = name["spvc_".Length..].Split(_spvcSeparator, StringSplitOptions.RemoveEmptyEntries);
+                string[] parts = name["spvc_".Length..].Split(s_spvcSeparator, StringSplitOptions.RemoveEmptyEntries);
                 string result = PrettifyName(parts);
                 AddCsMapping(name, result);
                 return result;

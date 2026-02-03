@@ -44,30 +44,50 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkWaitForFences_ptr;
 	public readonly PFN_vkVoidFunction vkCreateSemaphore_ptr;
 	public readonly PFN_vkVoidFunction vkDestroySemaphore_ptr;
-	public readonly PFN_vkVoidFunction vkCreateEvent_ptr;
-	public readonly PFN_vkVoidFunction vkDestroyEvent_ptr;
-	public readonly PFN_vkVoidFunction vkGetEventStatus_ptr;
-	public readonly PFN_vkVoidFunction vkSetEvent_ptr;
-	public readonly PFN_vkVoidFunction vkResetEvent_ptr;
 	public readonly PFN_vkVoidFunction vkCreateQueryPool_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyQueryPool_ptr;
 	public readonly PFN_vkVoidFunction vkGetQueryPoolResults_ptr;
 	public readonly PFN_vkVoidFunction vkCreateBuffer_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyBuffer_ptr;
-	public readonly PFN_vkVoidFunction vkCreateBufferView_ptr;
-	public readonly PFN_vkVoidFunction vkDestroyBufferView_ptr;
 	public readonly PFN_vkVoidFunction vkCreateImage_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyImage_ptr;
 	public readonly PFN_vkVoidFunction vkGetImageSubresourceLayout_ptr;
 	public readonly PFN_vkVoidFunction vkCreateImageView_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyImageView_ptr;
+	public readonly PFN_vkVoidFunction vkCreateCommandPool_ptr;
+	public readonly PFN_vkVoidFunction vkDestroyCommandPool_ptr;
+	public readonly PFN_vkVoidFunction vkResetCommandPool_ptr;
+	public readonly PFN_vkVoidFunction vkAllocateCommandBuffers_ptr;
+	public readonly PFN_vkVoidFunction vkFreeCommandBuffers_ptr;
+	public readonly PFN_vkVoidFunction vkBeginCommandBuffer_ptr;
+	public readonly PFN_vkVoidFunction vkEndCommandBuffer_ptr;
+	public readonly PFN_vkVoidFunction vkResetCommandBuffer_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyBuffer_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyImage_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyBufferToImage_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyImageToBuffer_ptr;
+	public readonly PFN_vkVoidFunction vkCmdUpdateBuffer_ptr;
+	public readonly PFN_vkVoidFunction vkCmdFillBuffer_ptr;
+	public readonly PFN_vkVoidFunction vkCmdPipelineBarrier_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBeginQuery_ptr;
+	public readonly PFN_vkVoidFunction vkCmdEndQuery_ptr;
+	public readonly PFN_vkVoidFunction vkCmdResetQueryPool_ptr;
+	public readonly PFN_vkVoidFunction vkCmdWriteTimestamp_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyQueryPoolResults_ptr;
+	public readonly PFN_vkVoidFunction vkCmdExecuteCommands_ptr;
+	public readonly PFN_vkVoidFunction vkCreateEvent_ptr;
+	public readonly PFN_vkVoidFunction vkDestroyEvent_ptr;
+	public readonly PFN_vkVoidFunction vkGetEventStatus_ptr;
+	public readonly PFN_vkVoidFunction vkSetEvent_ptr;
+	public readonly PFN_vkVoidFunction vkResetEvent_ptr;
+	public readonly PFN_vkVoidFunction vkCreateBufferView_ptr;
+	public readonly PFN_vkVoidFunction vkDestroyBufferView_ptr;
 	public readonly PFN_vkVoidFunction vkCreateShaderModule_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyShaderModule_ptr;
 	public readonly PFN_vkVoidFunction vkCreatePipelineCache_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyPipelineCache_ptr;
 	public readonly PFN_vkVoidFunction vkGetPipelineCacheData_ptr;
 	public readonly PFN_vkVoidFunction vkMergePipelineCaches_ptr;
-	public readonly PFN_vkVoidFunction vkCreateGraphicsPipelines_ptr;
 	public readonly PFN_vkVoidFunction vkCreateComputePipelines_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyPipeline_ptr;
 	public readonly PFN_vkVoidFunction vkCreatePipelineLayout_ptr;
@@ -82,20 +102,21 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkAllocateDescriptorSets_ptr;
 	public readonly PFN_vkVoidFunction vkFreeDescriptorSets_ptr;
 	public readonly PFN_vkVoidFunction vkUpdateDescriptorSets_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBindPipeline_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBindDescriptorSets_ptr;
+	public readonly PFN_vkVoidFunction vkCmdClearColorImage_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDispatch_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDispatchIndirect_ptr;
+	public readonly PFN_vkVoidFunction vkCmdSetEvent_ptr;
+	public readonly PFN_vkVoidFunction vkCmdResetEvent_ptr;
+	public readonly PFN_vkVoidFunction vkCmdWaitEvents_ptr;
+	public readonly PFN_vkVoidFunction vkCmdPushConstants_ptr;
+	public readonly PFN_vkVoidFunction vkCreateGraphicsPipelines_ptr;
 	public readonly PFN_vkVoidFunction vkCreateFramebuffer_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyFramebuffer_ptr;
 	public readonly PFN_vkVoidFunction vkCreateRenderPass_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyRenderPass_ptr;
 	public readonly PFN_vkVoidFunction vkGetRenderAreaGranularity_ptr;
-	public readonly PFN_vkVoidFunction vkCreateCommandPool_ptr;
-	public readonly PFN_vkVoidFunction vkDestroyCommandPool_ptr;
-	public readonly PFN_vkVoidFunction vkResetCommandPool_ptr;
-	public readonly PFN_vkVoidFunction vkAllocateCommandBuffers_ptr;
-	public readonly PFN_vkVoidFunction vkFreeCommandBuffers_ptr;
-	public readonly PFN_vkVoidFunction vkBeginCommandBuffer_ptr;
-	public readonly PFN_vkVoidFunction vkEndCommandBuffer_ptr;
-	public readonly PFN_vkVoidFunction vkResetCommandBuffer_ptr;
-	public readonly PFN_vkVoidFunction vkCmdBindPipeline_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetViewport_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetScissor_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetLineWidth_ptr;
@@ -105,62 +126,35 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkCmdSetStencilCompareMask_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetStencilWriteMask_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetStencilReference_ptr;
-	public readonly PFN_vkVoidFunction vkCmdBindDescriptorSets_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBindIndexBuffer_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBindVertexBuffers_ptr;
 	public readonly PFN_vkVoidFunction vkCmdDraw_ptr;
 	public readonly PFN_vkVoidFunction vkCmdDrawIndexed_ptr;
 	public readonly PFN_vkVoidFunction vkCmdDrawIndirect_ptr;
 	public readonly PFN_vkVoidFunction vkCmdDrawIndexedIndirect_ptr;
-	public readonly PFN_vkVoidFunction vkCmdDispatch_ptr;
-	public readonly PFN_vkVoidFunction vkCmdDispatchIndirect_ptr;
-	public readonly PFN_vkVoidFunction vkCmdCopyBuffer_ptr;
-	public readonly PFN_vkVoidFunction vkCmdCopyImage_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBlitImage_ptr;
-	public readonly PFN_vkVoidFunction vkCmdCopyBufferToImage_ptr;
-	public readonly PFN_vkVoidFunction vkCmdCopyImageToBuffer_ptr;
-	public readonly PFN_vkVoidFunction vkCmdUpdateBuffer_ptr;
-	public readonly PFN_vkVoidFunction vkCmdFillBuffer_ptr;
-	public readonly PFN_vkVoidFunction vkCmdClearColorImage_ptr;
 	public readonly PFN_vkVoidFunction vkCmdClearDepthStencilImage_ptr;
 	public readonly PFN_vkVoidFunction vkCmdClearAttachments_ptr;
 	public readonly PFN_vkVoidFunction vkCmdResolveImage_ptr;
-	public readonly PFN_vkVoidFunction vkCmdSetEvent_ptr;
-	public readonly PFN_vkVoidFunction vkCmdResetEvent_ptr;
-	public readonly PFN_vkVoidFunction vkCmdWaitEvents_ptr;
-	public readonly PFN_vkVoidFunction vkCmdPipelineBarrier_ptr;
-	public readonly PFN_vkVoidFunction vkCmdBeginQuery_ptr;
-	public readonly PFN_vkVoidFunction vkCmdEndQuery_ptr;
-	public readonly PFN_vkVoidFunction vkCmdResetQueryPool_ptr;
-	public readonly PFN_vkVoidFunction vkCmdWriteTimestamp_ptr;
-	public readonly PFN_vkVoidFunction vkCmdCopyQueryPoolResults_ptr;
-	public readonly PFN_vkVoidFunction vkCmdPushConstants_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBeginRenderPass_ptr;
 	public readonly PFN_vkVoidFunction vkCmdNextSubpass_ptr;
 	public readonly PFN_vkVoidFunction vkCmdEndRenderPass_ptr;
-	public readonly PFN_vkVoidFunction vkCmdExecuteCommands_ptr;
 	public readonly PFN_vkVoidFunction vkBindBufferMemory2_ptr;
 	public readonly PFN_vkVoidFunction vkBindImageMemory2_ptr;
 	public readonly PFN_vkVoidFunction vkGetDeviceGroupPeerMemoryFeatures_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetDeviceMask_ptr;
-	public readonly PFN_vkVoidFunction vkCmdDispatchBase_ptr;
 	public readonly PFN_vkVoidFunction vkGetImageMemoryRequirements2_ptr;
 	public readonly PFN_vkVoidFunction vkGetBufferMemoryRequirements2_ptr;
 	public readonly PFN_vkVoidFunction vkGetImageSparseMemoryRequirements2_ptr;
 	public readonly PFN_vkVoidFunction vkTrimCommandPool_ptr;
 	public readonly PFN_vkVoidFunction vkGetDeviceQueue2_ptr;
-	public readonly PFN_vkVoidFunction vkCreateSamplerYcbcrConversion_ptr;
-	public readonly PFN_vkVoidFunction vkDestroySamplerYcbcrConversion_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDispatchBase_ptr;
 	public readonly PFN_vkVoidFunction vkCreateDescriptorUpdateTemplate_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyDescriptorUpdateTemplate_ptr;
 	public readonly PFN_vkVoidFunction vkUpdateDescriptorSetWithTemplate_ptr;
 	public readonly PFN_vkVoidFunction vkGetDescriptorSetLayoutSupport_ptr;
-	public readonly PFN_vkVoidFunction vkCmdDrawIndirectCount_ptr;
-	public readonly PFN_vkVoidFunction vkCmdDrawIndexedIndirectCount_ptr;
-	public readonly PFN_vkVoidFunction vkCreateRenderPass2_ptr;
-	public readonly PFN_vkVoidFunction vkCmdBeginRenderPass2_ptr;
-	public readonly PFN_vkVoidFunction vkCmdNextSubpass2_ptr;
-	public readonly PFN_vkVoidFunction vkCmdEndRenderPass2_ptr;
+	public readonly PFN_vkVoidFunction vkCreateSamplerYcbcrConversion_ptr;
+	public readonly PFN_vkVoidFunction vkDestroySamplerYcbcrConversion_ptr;
 	public readonly PFN_vkVoidFunction vkResetQueryPool_ptr;
 	public readonly PFN_vkVoidFunction vkGetSemaphoreCounterValue_ptr;
 	public readonly PFN_vkVoidFunction vkWaitSemaphores_ptr;
@@ -168,13 +162,16 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkGetBufferDeviceAddress_ptr;
 	public readonly PFN_vkVoidFunction vkGetBufferOpaqueCaptureAddress_ptr;
 	public readonly PFN_vkVoidFunction vkGetDeviceMemoryOpaqueCaptureAddress_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDrawIndirectCount_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDrawIndexedIndirectCount_ptr;
+	public readonly PFN_vkVoidFunction vkCreateRenderPass2_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBeginRenderPass2_ptr;
+	public readonly PFN_vkVoidFunction vkCmdNextSubpass2_ptr;
+	public readonly PFN_vkVoidFunction vkCmdEndRenderPass2_ptr;
 	public readonly PFN_vkVoidFunction vkCreatePrivateDataSlot_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyPrivateDataSlot_ptr;
 	public readonly PFN_vkVoidFunction vkSetPrivateData_ptr;
 	public readonly PFN_vkVoidFunction vkGetPrivateData_ptr;
-	public readonly PFN_vkVoidFunction vkCmdSetEvent2_ptr;
-	public readonly PFN_vkVoidFunction vkCmdResetEvent2_ptr;
-	public readonly PFN_vkVoidFunction vkCmdWaitEvents2_ptr;
 	public readonly PFN_vkVoidFunction vkCmdPipelineBarrier2_ptr;
 	public readonly PFN_vkVoidFunction vkCmdWriteTimestamp2_ptr;
 	public readonly PFN_vkVoidFunction vkQueueSubmit2_ptr;
@@ -182,6 +179,12 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkCmdCopyImage2_ptr;
 	public readonly PFN_vkVoidFunction vkCmdCopyBufferToImage2_ptr;
 	public readonly PFN_vkVoidFunction vkCmdCopyImageToBuffer2_ptr;
+	public readonly PFN_vkVoidFunction vkGetDeviceBufferMemoryRequirements_ptr;
+	public readonly PFN_vkVoidFunction vkGetDeviceImageMemoryRequirements_ptr;
+	public readonly PFN_vkVoidFunction vkGetDeviceImageSparseMemoryRequirements_ptr;
+	public readonly PFN_vkVoidFunction vkCmdSetEvent2_ptr;
+	public readonly PFN_vkVoidFunction vkCmdResetEvent2_ptr;
+	public readonly PFN_vkVoidFunction vkCmdWaitEvents2_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBlitImage2_ptr;
 	public readonly PFN_vkVoidFunction vkCmdResolveImage2_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBeginRendering_ptr;
@@ -201,28 +204,25 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkCmdSetRasterizerDiscardEnable_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetDepthBiasEnable_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetPrimitiveRestartEnable_ptr;
-	public readonly PFN_vkVoidFunction vkGetDeviceBufferMemoryRequirements_ptr;
-	public readonly PFN_vkVoidFunction vkGetDeviceImageMemoryRequirements_ptr;
-	public readonly PFN_vkVoidFunction vkGetDeviceImageSparseMemoryRequirements_ptr;
-	public readonly PFN_vkVoidFunction vkCmdSetLineStipple_ptr;
 	public readonly PFN_vkVoidFunction vkMapMemory2_ptr;
 	public readonly PFN_vkVoidFunction vkUnmapMemory2_ptr;
-	public readonly PFN_vkVoidFunction vkCmdBindIndexBuffer2_ptr;
-	public readonly PFN_vkVoidFunction vkGetRenderingAreaGranularity_ptr;
 	public readonly PFN_vkVoidFunction vkGetDeviceImageSubresourceLayout_ptr;
 	public readonly PFN_vkVoidFunction vkGetImageSubresourceLayout2_ptr;
-	public readonly PFN_vkVoidFunction vkCmdPushDescriptorSet_ptr;
-	public readonly PFN_vkVoidFunction vkCmdPushDescriptorSetWithTemplate_ptr;
-	public readonly PFN_vkVoidFunction vkCmdSetRenderingAttachmentLocations_ptr;
-	public readonly PFN_vkVoidFunction vkCmdSetRenderingInputAttachmentIndices_ptr;
-	public readonly PFN_vkVoidFunction vkCmdBindDescriptorSets2_ptr;
-	public readonly PFN_vkVoidFunction vkCmdPushConstants2_ptr;
-	public readonly PFN_vkVoidFunction vkCmdPushDescriptorSet2_ptr;
-	public readonly PFN_vkVoidFunction vkCmdPushDescriptorSetWithTemplate2_ptr;
 	public readonly PFN_vkVoidFunction vkCopyMemoryToImage_ptr;
 	public readonly PFN_vkVoidFunction vkCopyImageToMemory_ptr;
 	public readonly PFN_vkVoidFunction vkCopyImageToImage_ptr;
 	public readonly PFN_vkVoidFunction vkTransitionImageLayout_ptr;
+	public readonly PFN_vkVoidFunction vkCmdPushDescriptorSet_ptr;
+	public readonly PFN_vkVoidFunction vkCmdPushDescriptorSetWithTemplate_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBindDescriptorSets2_ptr;
+	public readonly PFN_vkVoidFunction vkCmdPushConstants2_ptr;
+	public readonly PFN_vkVoidFunction vkCmdPushDescriptorSet2_ptr;
+	public readonly PFN_vkVoidFunction vkCmdPushDescriptorSetWithTemplate2_ptr;
+	public readonly PFN_vkVoidFunction vkCmdSetLineStipple_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBindIndexBuffer2_ptr;
+	public readonly PFN_vkVoidFunction vkGetRenderingAreaGranularity_ptr;
+	public readonly PFN_vkVoidFunction vkCmdSetRenderingAttachmentLocations_ptr;
+	public readonly PFN_vkVoidFunction vkCmdSetRenderingInputAttachmentIndices_ptr;
 	public readonly PFN_vkVoidFunction vkCreateSwapchainKHR_ptr;
 	public readonly PFN_vkVoidFunction vkDestroySwapchainKHR_ptr;
 	public readonly PFN_vkVoidFunction vkGetSwapchainImagesKHR_ptr;
@@ -334,6 +334,9 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkCmdPushDescriptorSetWithTemplate2KHR_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetDescriptorBufferOffsets2EXT_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyMemoryIndirectKHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyMemoryToImageIndirectKHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdEndRendering2KHR_ptr;
 	public readonly PFN_vkVoidFunction vkDebugMarkerSetObjectTagEXT_ptr;
 	public readonly PFN_vkVoidFunction vkDebugMarkerSetObjectNameEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCmdDebugMarkerBeginEXT_ptr;
@@ -353,6 +356,7 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkGetImageViewHandleNVX_ptr;
 	public readonly PFN_vkVoidFunction vkGetImageViewHandle64NVX_ptr;
 	public readonly PFN_vkVoidFunction vkGetImageViewAddressNVX_ptr;
+	public readonly PFN_vkVoidFunction vkGetDeviceCombinedImageSamplerIndexNVX_ptr;
 	public readonly PFN_vkVoidFunction vkCmdDrawIndirectCountAMD_ptr;
 	public readonly PFN_vkVoidFunction vkCmdDrawIndexedIndirectCountAMD_ptr;
 	public readonly PFN_vkVoidFunction vkGetShaderInfoAMD_ptr;
@@ -369,6 +373,15 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkCmdSetDiscardRectangleEnableEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetDiscardRectangleModeEXT_ptr;
 	public readonly PFN_vkVoidFunction vkSetHdrMetadataEXT_ptr;
+	public readonly PFN_vkVoidFunction vkWriteSamplerDescriptorsEXT_ptr;
+	public readonly PFN_vkVoidFunction vkWriteResourceDescriptorsEXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBindSamplerHeapEXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBindResourceHeapEXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdPushDataEXT_ptr;
+	public readonly PFN_vkVoidFunction vkGetImageOpaqueCaptureDataEXT_ptr;
+	public readonly PFN_vkVoidFunction vkRegisterCustomBorderColorEXT_ptr;
+	public readonly PFN_vkVoidFunction vkUnregisterCustomBorderColorEXT_ptr;
+	public readonly PFN_vkVoidFunction vkGetTensorOpaqueCaptureDataARM_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetSampleLocationsEXT_ptr;
 	public readonly PFN_vkVoidFunction vkGetImageDrmFormatModifierPropertiesEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCreateValidationCacheEXT_ptr;
@@ -403,6 +416,10 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkCmdSetCheckpointNV_ptr;
 	public readonly PFN_vkVoidFunction vkGetQueueCheckpointDataNV_ptr;
 	public readonly PFN_vkVoidFunction vkGetQueueCheckpointData2NV_ptr;
+	public readonly PFN_vkVoidFunction vkSetSwapchainPresentTimingQueueSizeEXT_ptr;
+	public readonly PFN_vkVoidFunction vkGetSwapchainTimingPropertiesEXT_ptr;
+	public readonly PFN_vkVoidFunction vkGetSwapchainTimeDomainPropertiesEXT_ptr;
+	public readonly PFN_vkVoidFunction vkGetPastPresentationTimingEXT_ptr;
 	public readonly PFN_vkVoidFunction vkInitializePerformanceApiINTEL_ptr;
 	public readonly PFN_vkVoidFunction vkUninitializePerformanceApiINTEL_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetPerformanceMarkerINTEL_ptr;
@@ -574,6 +591,8 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkGetDataGraphPipelinePropertiesARM_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBindTileMemoryQCOM_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDecompressMemoryEXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDecompressMemoryIndirectCountEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCreateExternalComputeQueueNV_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyExternalComputeQueueNV_ptr;
 	public readonly PFN_vkVoidFunction vkGetExternalComputeQueueDataNV_ptr;
@@ -591,6 +610,8 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkUpdateIndirectExecutionSetPipelineEXT_ptr;
 	public readonly PFN_vkVoidFunction vkUpdateIndirectExecutionSetShaderEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCmdEndRendering2EXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBeginCustomResolveEXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdSetComputeOccupancyPriorityNV_ptr;
 	public readonly PFN_vkVoidFunction vkCreateAccelerationStructureKHR_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyAccelerationStructureKHR_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBuildAccelerationStructuresKHR_ptr;
@@ -674,30 +695,50 @@ public unsafe partial class VkDeviceApi
 		vkWaitForFences_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkWaitForFences"u8);
 		vkCreateSemaphore_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateSemaphore"u8);
 		vkDestroySemaphore_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroySemaphore"u8);
-		vkCreateEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateEvent"u8);
-		vkDestroyEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyEvent"u8);
-		vkGetEventStatus_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetEventStatus"u8);
-		vkSetEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkSetEvent"u8);
-		vkResetEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkResetEvent"u8);
 		vkCreateQueryPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateQueryPool"u8);
 		vkDestroyQueryPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyQueryPool"u8);
 		vkGetQueryPoolResults_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetQueryPoolResults"u8);
 		vkCreateBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateBuffer"u8);
 		vkDestroyBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyBuffer"u8);
-		vkCreateBufferView_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateBufferView"u8);
-		vkDestroyBufferView_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyBufferView"u8);
 		vkCreateImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateImage"u8);
 		vkDestroyImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyImage"u8);
 		vkGetImageSubresourceLayout_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetImageSubresourceLayout"u8);
 		vkCreateImageView_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateImageView"u8);
 		vkDestroyImageView_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyImageView"u8);
+		vkCreateCommandPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateCommandPool"u8);
+		vkDestroyCommandPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyCommandPool"u8);
+		vkResetCommandPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkResetCommandPool"u8);
+		vkAllocateCommandBuffers_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkAllocateCommandBuffers"u8);
+		vkFreeCommandBuffers_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkFreeCommandBuffers"u8);
+		vkBeginCommandBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkBeginCommandBuffer"u8);
+		vkEndCommandBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkEndCommandBuffer"u8);
+		vkResetCommandBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkResetCommandBuffer"u8);
+		vkCmdCopyBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyBuffer"u8);
+		vkCmdCopyImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyImage"u8);
+		vkCmdCopyBufferToImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyBufferToImage"u8);
+		vkCmdCopyImageToBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyImageToBuffer"u8);
+		vkCmdUpdateBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdUpdateBuffer"u8);
+		vkCmdFillBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdFillBuffer"u8);
+		vkCmdPipelineBarrier_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPipelineBarrier"u8);
+		vkCmdBeginQuery_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginQuery"u8);
+		vkCmdEndQuery_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndQuery"u8);
+		vkCmdResetQueryPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdResetQueryPool"u8);
+		vkCmdWriteTimestamp_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdWriteTimestamp"u8);
+		vkCmdCopyQueryPoolResults_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyQueryPoolResults"u8);
+		vkCmdExecuteCommands_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdExecuteCommands"u8);
+		vkCreateEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateEvent"u8);
+		vkDestroyEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyEvent"u8);
+		vkGetEventStatus_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetEventStatus"u8);
+		vkSetEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkSetEvent"u8);
+		vkResetEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkResetEvent"u8);
+		vkCreateBufferView_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateBufferView"u8);
+		vkDestroyBufferView_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyBufferView"u8);
 		vkCreateShaderModule_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateShaderModule"u8);
 		vkDestroyShaderModule_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyShaderModule"u8);
 		vkCreatePipelineCache_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreatePipelineCache"u8);
 		vkDestroyPipelineCache_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyPipelineCache"u8);
 		vkGetPipelineCacheData_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetPipelineCacheData"u8);
 		vkMergePipelineCaches_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkMergePipelineCaches"u8);
-		vkCreateGraphicsPipelines_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateGraphicsPipelines"u8);
 		vkCreateComputePipelines_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateComputePipelines"u8);
 		vkDestroyPipeline_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyPipeline"u8);
 		vkCreatePipelineLayout_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreatePipelineLayout"u8);
@@ -712,20 +753,21 @@ public unsafe partial class VkDeviceApi
 		vkAllocateDescriptorSets_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkAllocateDescriptorSets"u8);
 		vkFreeDescriptorSets_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkFreeDescriptorSets"u8);
 		vkUpdateDescriptorSets_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkUpdateDescriptorSets"u8);
+		vkCmdBindPipeline_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindPipeline"u8);
+		vkCmdBindDescriptorSets_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindDescriptorSets"u8);
+		vkCmdClearColorImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdClearColorImage"u8);
+		vkCmdDispatch_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDispatch"u8);
+		vkCmdDispatchIndirect_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDispatchIndirect"u8);
+		vkCmdSetEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetEvent"u8);
+		vkCmdResetEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdResetEvent"u8);
+		vkCmdWaitEvents_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdWaitEvents"u8);
+		vkCmdPushConstants_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushConstants"u8);
+		vkCreateGraphicsPipelines_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateGraphicsPipelines"u8);
 		vkCreateFramebuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateFramebuffer"u8);
 		vkDestroyFramebuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyFramebuffer"u8);
 		vkCreateRenderPass_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateRenderPass"u8);
 		vkDestroyRenderPass_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyRenderPass"u8);
 		vkGetRenderAreaGranularity_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetRenderAreaGranularity"u8);
-		vkCreateCommandPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateCommandPool"u8);
-		vkDestroyCommandPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyCommandPool"u8);
-		vkResetCommandPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkResetCommandPool"u8);
-		vkAllocateCommandBuffers_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkAllocateCommandBuffers"u8);
-		vkFreeCommandBuffers_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkFreeCommandBuffers"u8);
-		vkBeginCommandBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkBeginCommandBuffer"u8);
-		vkEndCommandBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkEndCommandBuffer"u8);
-		vkResetCommandBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkResetCommandBuffer"u8);
-		vkCmdBindPipeline_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindPipeline"u8);
 		vkCmdSetViewport_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetViewport"u8);
 		vkCmdSetScissor_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetScissor"u8);
 		vkCmdSetLineWidth_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetLineWidth"u8);
@@ -735,62 +777,35 @@ public unsafe partial class VkDeviceApi
 		vkCmdSetStencilCompareMask_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetStencilCompareMask"u8);
 		vkCmdSetStencilWriteMask_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetStencilWriteMask"u8);
 		vkCmdSetStencilReference_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetStencilReference"u8);
-		vkCmdBindDescriptorSets_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindDescriptorSets"u8);
 		vkCmdBindIndexBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindIndexBuffer"u8);
 		vkCmdBindVertexBuffers_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindVertexBuffers"u8);
 		vkCmdDraw_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDraw"u8);
 		vkCmdDrawIndexed_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndexed"u8);
 		vkCmdDrawIndirect_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndirect"u8);
 		vkCmdDrawIndexedIndirect_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndexedIndirect"u8);
-		vkCmdDispatch_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDispatch"u8);
-		vkCmdDispatchIndirect_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDispatchIndirect"u8);
-		vkCmdCopyBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyBuffer"u8);
-		vkCmdCopyImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyImage"u8);
 		vkCmdBlitImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBlitImage"u8);
-		vkCmdCopyBufferToImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyBufferToImage"u8);
-		vkCmdCopyImageToBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyImageToBuffer"u8);
-		vkCmdUpdateBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdUpdateBuffer"u8);
-		vkCmdFillBuffer_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdFillBuffer"u8);
-		vkCmdClearColorImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdClearColorImage"u8);
 		vkCmdClearDepthStencilImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdClearDepthStencilImage"u8);
 		vkCmdClearAttachments_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdClearAttachments"u8);
 		vkCmdResolveImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdResolveImage"u8);
-		vkCmdSetEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetEvent"u8);
-		vkCmdResetEvent_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdResetEvent"u8);
-		vkCmdWaitEvents_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdWaitEvents"u8);
-		vkCmdPipelineBarrier_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPipelineBarrier"u8);
-		vkCmdBeginQuery_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginQuery"u8);
-		vkCmdEndQuery_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndQuery"u8);
-		vkCmdResetQueryPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdResetQueryPool"u8);
-		vkCmdWriteTimestamp_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdWriteTimestamp"u8);
-		vkCmdCopyQueryPoolResults_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyQueryPoolResults"u8);
-		vkCmdPushConstants_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushConstants"u8);
 		vkCmdBeginRenderPass_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginRenderPass"u8);
 		vkCmdNextSubpass_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdNextSubpass"u8);
 		vkCmdEndRenderPass_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndRenderPass"u8);
-		vkCmdExecuteCommands_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdExecuteCommands"u8);
 		vkBindBufferMemory2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkBindBufferMemory2"u8);
 		vkBindImageMemory2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkBindImageMemory2"u8);
 		vkGetDeviceGroupPeerMemoryFeatures_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceGroupPeerMemoryFeatures"u8);
 		vkCmdSetDeviceMask_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetDeviceMask"u8);
-		vkCmdDispatchBase_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDispatchBase"u8);
 		vkGetImageMemoryRequirements2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetImageMemoryRequirements2"u8);
 		vkGetBufferMemoryRequirements2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetBufferMemoryRequirements2"u8);
 		vkGetImageSparseMemoryRequirements2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetImageSparseMemoryRequirements2"u8);
 		vkTrimCommandPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkTrimCommandPool"u8);
 		vkGetDeviceQueue2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceQueue2"u8);
-		vkCreateSamplerYcbcrConversion_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateSamplerYcbcrConversion"u8);
-		vkDestroySamplerYcbcrConversion_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroySamplerYcbcrConversion"u8);
+		vkCmdDispatchBase_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDispatchBase"u8);
 		vkCreateDescriptorUpdateTemplate_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateDescriptorUpdateTemplate"u8);
 		vkDestroyDescriptorUpdateTemplate_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyDescriptorUpdateTemplate"u8);
 		vkUpdateDescriptorSetWithTemplate_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkUpdateDescriptorSetWithTemplate"u8);
 		vkGetDescriptorSetLayoutSupport_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDescriptorSetLayoutSupport"u8);
-		vkCmdDrawIndirectCount_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndirectCount"u8);
-		vkCmdDrawIndexedIndirectCount_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndexedIndirectCount"u8);
-		vkCreateRenderPass2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateRenderPass2"u8);
-		vkCmdBeginRenderPass2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginRenderPass2"u8);
-		vkCmdNextSubpass2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdNextSubpass2"u8);
-		vkCmdEndRenderPass2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndRenderPass2"u8);
+		vkCreateSamplerYcbcrConversion_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateSamplerYcbcrConversion"u8);
+		vkDestroySamplerYcbcrConversion_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroySamplerYcbcrConversion"u8);
 		vkResetQueryPool_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkResetQueryPool"u8);
 		vkGetSemaphoreCounterValue_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetSemaphoreCounterValue"u8);
 		vkWaitSemaphores_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkWaitSemaphores"u8);
@@ -798,13 +813,16 @@ public unsafe partial class VkDeviceApi
 		vkGetBufferDeviceAddress_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetBufferDeviceAddress"u8);
 		vkGetBufferOpaqueCaptureAddress_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetBufferOpaqueCaptureAddress"u8);
 		vkGetDeviceMemoryOpaqueCaptureAddress_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceMemoryOpaqueCaptureAddress"u8);
+		vkCmdDrawIndirectCount_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndirectCount"u8);
+		vkCmdDrawIndexedIndirectCount_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndexedIndirectCount"u8);
+		vkCreateRenderPass2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateRenderPass2"u8);
+		vkCmdBeginRenderPass2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginRenderPass2"u8);
+		vkCmdNextSubpass2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdNextSubpass2"u8);
+		vkCmdEndRenderPass2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndRenderPass2"u8);
 		vkCreatePrivateDataSlot_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreatePrivateDataSlot"u8);
 		vkDestroyPrivateDataSlot_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyPrivateDataSlot"u8);
 		vkSetPrivateData_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkSetPrivateData"u8);
 		vkGetPrivateData_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetPrivateData"u8);
-		vkCmdSetEvent2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetEvent2"u8);
-		vkCmdResetEvent2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdResetEvent2"u8);
-		vkCmdWaitEvents2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdWaitEvents2"u8);
 		vkCmdPipelineBarrier2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPipelineBarrier2"u8);
 		vkCmdWriteTimestamp2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdWriteTimestamp2"u8);
 		vkQueueSubmit2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkQueueSubmit2"u8);
@@ -812,6 +830,12 @@ public unsafe partial class VkDeviceApi
 		vkCmdCopyImage2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyImage2"u8);
 		vkCmdCopyBufferToImage2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyBufferToImage2"u8);
 		vkCmdCopyImageToBuffer2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyImageToBuffer2"u8);
+		vkGetDeviceBufferMemoryRequirements_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceBufferMemoryRequirements"u8);
+		vkGetDeviceImageMemoryRequirements_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceImageMemoryRequirements"u8);
+		vkGetDeviceImageSparseMemoryRequirements_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceImageSparseMemoryRequirements"u8);
+		vkCmdSetEvent2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetEvent2"u8);
+		vkCmdResetEvent2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdResetEvent2"u8);
+		vkCmdWaitEvents2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdWaitEvents2"u8);
 		vkCmdBlitImage2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBlitImage2"u8);
 		vkCmdResolveImage2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdResolveImage2"u8);
 		vkCmdBeginRendering_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginRendering"u8);
@@ -831,28 +855,25 @@ public unsafe partial class VkDeviceApi
 		vkCmdSetRasterizerDiscardEnable_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetRasterizerDiscardEnable"u8);
 		vkCmdSetDepthBiasEnable_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetDepthBiasEnable"u8);
 		vkCmdSetPrimitiveRestartEnable_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetPrimitiveRestartEnable"u8);
-		vkGetDeviceBufferMemoryRequirements_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceBufferMemoryRequirements"u8);
-		vkGetDeviceImageMemoryRequirements_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceImageMemoryRequirements"u8);
-		vkGetDeviceImageSparseMemoryRequirements_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceImageSparseMemoryRequirements"u8);
-		vkCmdSetLineStipple_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetLineStipple"u8);
 		vkMapMemory2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkMapMemory2"u8);
 		vkUnmapMemory2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkUnmapMemory2"u8);
-		vkCmdBindIndexBuffer2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindIndexBuffer2"u8);
-		vkGetRenderingAreaGranularity_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetRenderingAreaGranularity"u8);
 		vkGetDeviceImageSubresourceLayout_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceImageSubresourceLayout"u8);
 		vkGetImageSubresourceLayout2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetImageSubresourceLayout2"u8);
-		vkCmdPushDescriptorSet_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushDescriptorSet"u8);
-		vkCmdPushDescriptorSetWithTemplate_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushDescriptorSetWithTemplate"u8);
-		vkCmdSetRenderingAttachmentLocations_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetRenderingAttachmentLocations"u8);
-		vkCmdSetRenderingInputAttachmentIndices_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetRenderingInputAttachmentIndices"u8);
-		vkCmdBindDescriptorSets2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindDescriptorSets2"u8);
-		vkCmdPushConstants2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushConstants2"u8);
-		vkCmdPushDescriptorSet2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushDescriptorSet2"u8);
-		vkCmdPushDescriptorSetWithTemplate2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushDescriptorSetWithTemplate2"u8);
 		vkCopyMemoryToImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCopyMemoryToImage"u8);
 		vkCopyImageToMemory_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCopyImageToMemory"u8);
 		vkCopyImageToImage_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCopyImageToImage"u8);
 		vkTransitionImageLayout_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkTransitionImageLayout"u8);
+		vkCmdPushDescriptorSet_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushDescriptorSet"u8);
+		vkCmdPushDescriptorSetWithTemplate_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushDescriptorSetWithTemplate"u8);
+		vkCmdBindDescriptorSets2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindDescriptorSets2"u8);
+		vkCmdPushConstants2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushConstants2"u8);
+		vkCmdPushDescriptorSet2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushDescriptorSet2"u8);
+		vkCmdPushDescriptorSetWithTemplate2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushDescriptorSetWithTemplate2"u8);
+		vkCmdSetLineStipple_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetLineStipple"u8);
+		vkCmdBindIndexBuffer2_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindIndexBuffer2"u8);
+		vkGetRenderingAreaGranularity_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetRenderingAreaGranularity"u8);
+		vkCmdSetRenderingAttachmentLocations_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetRenderingAttachmentLocations"u8);
+		vkCmdSetRenderingInputAttachmentIndices_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetRenderingInputAttachmentIndices"u8);
 		vkCreateSwapchainKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateSwapchainKHR"u8);
 		vkDestroySwapchainKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroySwapchainKHR"u8);
 		vkGetSwapchainImagesKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetSwapchainImagesKHR"u8);
@@ -964,6 +985,9 @@ public unsafe partial class VkDeviceApi
 		vkCmdPushDescriptorSetWithTemplate2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushDescriptorSetWithTemplate2KHR"u8);
 		vkCmdSetDescriptorBufferOffsets2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetDescriptorBufferOffsets2EXT"u8);
 		vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindDescriptorBufferEmbeddedSamplers2EXT"u8);
+		vkCmdCopyMemoryIndirectKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyMemoryIndirectKHR"u8);
+		vkCmdCopyMemoryToImageIndirectKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyMemoryToImageIndirectKHR"u8);
+		vkCmdEndRendering2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndRendering2KHR"u8);
 		vkDebugMarkerSetObjectTagEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDebugMarkerSetObjectTagEXT"u8);
 		vkDebugMarkerSetObjectNameEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDebugMarkerSetObjectNameEXT"u8);
 		vkCmdDebugMarkerBeginEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDebugMarkerBeginEXT"u8);
@@ -983,6 +1007,7 @@ public unsafe partial class VkDeviceApi
 		vkGetImageViewHandleNVX_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetImageViewHandleNVX"u8);
 		vkGetImageViewHandle64NVX_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetImageViewHandle64NVX"u8);
 		vkGetImageViewAddressNVX_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetImageViewAddressNVX"u8);
+		vkGetDeviceCombinedImageSamplerIndexNVX_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceCombinedImageSamplerIndexNVX"u8);
 		vkCmdDrawIndirectCountAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndirectCountAMD"u8);
 		vkCmdDrawIndexedIndirectCountAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndexedIndirectCountAMD"u8);
 		vkGetShaderInfoAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetShaderInfoAMD"u8);
@@ -999,6 +1024,15 @@ public unsafe partial class VkDeviceApi
 		vkCmdSetDiscardRectangleEnableEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetDiscardRectangleEnableEXT"u8);
 		vkCmdSetDiscardRectangleModeEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetDiscardRectangleModeEXT"u8);
 		vkSetHdrMetadataEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkSetHdrMetadataEXT"u8);
+		vkWriteSamplerDescriptorsEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkWriteSamplerDescriptorsEXT"u8);
+		vkWriteResourceDescriptorsEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkWriteResourceDescriptorsEXT"u8);
+		vkCmdBindSamplerHeapEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindSamplerHeapEXT"u8);
+		vkCmdBindResourceHeapEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindResourceHeapEXT"u8);
+		vkCmdPushDataEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPushDataEXT"u8);
+		vkGetImageOpaqueCaptureDataEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetImageOpaqueCaptureDataEXT"u8);
+		vkRegisterCustomBorderColorEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkRegisterCustomBorderColorEXT"u8);
+		vkUnregisterCustomBorderColorEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkUnregisterCustomBorderColorEXT"u8);
+		vkGetTensorOpaqueCaptureDataARM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetTensorOpaqueCaptureDataARM"u8);
 		vkCmdSetSampleLocationsEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetSampleLocationsEXT"u8);
 		vkGetImageDrmFormatModifierPropertiesEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetImageDrmFormatModifierPropertiesEXT"u8);
 		vkCreateValidationCacheEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateValidationCacheEXT"u8);
@@ -1033,6 +1067,10 @@ public unsafe partial class VkDeviceApi
 		vkCmdSetCheckpointNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetCheckpointNV"u8);
 		vkGetQueueCheckpointDataNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetQueueCheckpointDataNV"u8);
 		vkGetQueueCheckpointData2NV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetQueueCheckpointData2NV"u8);
+		vkSetSwapchainPresentTimingQueueSizeEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkSetSwapchainPresentTimingQueueSizeEXT"u8);
+		vkGetSwapchainTimingPropertiesEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetSwapchainTimingPropertiesEXT"u8);
+		vkGetSwapchainTimeDomainPropertiesEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetSwapchainTimeDomainPropertiesEXT"u8);
+		vkGetPastPresentationTimingEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetPastPresentationTimingEXT"u8);
 		vkInitializePerformanceApiINTEL_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkInitializePerformanceApiINTEL"u8);
 		vkUninitializePerformanceApiINTEL_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkUninitializePerformanceApiINTEL"u8);
 		vkCmdSetPerformanceMarkerINTEL_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetPerformanceMarkerINTEL"u8);
@@ -1204,6 +1242,8 @@ public unsafe partial class VkDeviceApi
 		vkGetDataGraphPipelinePropertiesARM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDataGraphPipelinePropertiesARM"u8);
 		vkCmdSetAttachmentFeedbackLoopEnableEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetAttachmentFeedbackLoopEnableEXT"u8);
 		vkCmdBindTileMemoryQCOM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindTileMemoryQCOM"u8);
+		vkCmdDecompressMemoryEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDecompressMemoryEXT"u8);
+		vkCmdDecompressMemoryIndirectCountEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDecompressMemoryIndirectCountEXT"u8);
 		vkCreateExternalComputeQueueNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateExternalComputeQueueNV"u8);
 		vkDestroyExternalComputeQueueNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyExternalComputeQueueNV"u8);
 		vkGetExternalComputeQueueDataNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetExternalComputeQueueDataNV"u8);
@@ -1221,6 +1261,8 @@ public unsafe partial class VkDeviceApi
 		vkUpdateIndirectExecutionSetPipelineEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkUpdateIndirectExecutionSetPipelineEXT"u8);
 		vkUpdateIndirectExecutionSetShaderEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkUpdateIndirectExecutionSetShaderEXT"u8);
 		vkCmdEndRendering2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndRendering2EXT"u8);
+		vkCmdBeginCustomResolveEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginCustomResolveEXT"u8);
+		vkCmdSetComputeOccupancyPriorityNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetComputeOccupancyPriorityNV"u8);
 		vkCreateAccelerationStructureKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateAccelerationStructureKHR"u8);
 		vkDestroyAccelerationStructureKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyAccelerationStructureKHR"u8);
 		vkCmdBuildAccelerationStructuresKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBuildAccelerationStructuresKHR"u8);
@@ -1619,103 +1661,6 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkSemaphore, VkAllocationCallbacks*, void>)vkDestroySemaphore_ptr.Value)(device, semaphore, allocator);
 	}
 
-	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkEvent* @event)
-	{
-		return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, default, @event);
-	}
-
-	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkEvent* @event)
-	{
-		return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, allocator, @event);
-	}
-
-	public VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, VkEvent* @event)
-	{
-		fixed (VkEventCreateInfo* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfoPtr, default, @event);
-		}
-	}
-
-	public VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, VkAllocationCallbacks* allocator, VkEvent* @event)
-	{
-		fixed (VkEventCreateInfo* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfoPtr, allocator, @event);
-		}
-	}
-
-	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, out VkEvent @event)
-	{
-		Unsafe.SkipInit(out @event);
-
-		fixed (VkEvent* @eventPtr = &@event)
-		{
-			return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, default, @eventPtr);
-		}
-	}
-
-	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkEvent @event)
-	{
-		Unsafe.SkipInit(out @event);
-
-		fixed (VkEvent* @eventPtr = &@event)
-		{
-			return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, allocator, @eventPtr);
-		}
-	}
-
-	public VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, out VkEvent @event)
-	{
-		fixed (VkEventCreateInfo* createInfoPtr = &createInfo)
-		{
-			Unsafe.SkipInit(out @event);
-
-			fixed (VkEvent* @eventPtr = &@event)
-			{
-				return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfoPtr, default, @eventPtr);
-			}
-		}
-	}
-
-	public VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkEvent @event)
-	{
-		fixed (VkEventCreateInfo* createInfoPtr = &createInfo)
-		{
-			Unsafe.SkipInit(out @event);
-
-			fixed (VkEvent* @eventPtr = &@event)
-			{
-				return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfoPtr, allocator, @eventPtr);
-			}
-		}
-	}
-
-	public void vkDestroyEvent(VkDevice device, VkEvent @event)
-	{
-		((delegate* unmanaged<VkDevice, VkEvent, VkAllocationCallbacks*, void>)vkDestroyEvent_ptr.Value)(device, @event, default);
-	}
-
-	public void vkDestroyEvent(VkDevice device, VkEvent @event, VkAllocationCallbacks* allocator)
-	{
-		((delegate* unmanaged<VkDevice, VkEvent, VkAllocationCallbacks*, void>)vkDestroyEvent_ptr.Value)(device, @event, allocator);
-	}
-
-	public VkResult vkGetEventStatus(VkDevice device, VkEvent @event)
-	{
-		return ((delegate* unmanaged<VkDevice, VkEvent, VkResult>)vkGetEventStatus_ptr.Value)(device, @event);
-	}
-
-	public VkResult vkSetEvent(VkDevice device, VkEvent @event)
-	{
-		return ((delegate* unmanaged<VkDevice, VkEvent, VkResult>)vkSetEvent_ptr.Value)(device, @event);
-	}
-
-	public VkResult vkResetEvent(VkDevice device, VkEvent @event)
-	{
-		return ((delegate* unmanaged<VkDevice, VkEvent, VkResult>)vkResetEvent_ptr.Value)(device, @event);
-	}
-
 	public VkResult vkCreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, VkQueryPool* queryPool)
 	{
 		return ((delegate* unmanaged<VkDevice, VkQueryPoolCreateInfo*, VkAllocationCallbacks*, VkQueryPool*, VkResult>)vkCreateQueryPool_ptr.Value)(device, createInfo, default, queryPool);
@@ -1883,88 +1828,6 @@ public unsafe partial class VkDeviceApi
 	public void vkDestroyBuffer(VkDevice device, VkBuffer buffer, VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkBuffer, VkAllocationCallbacks*, void>)vkDestroyBuffer_ptr.Value)(device, buffer, allocator);
-	}
-
-	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkBufferView* view)
-	{
-		return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, default, view);
-	}
-
-	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkBufferView* view)
-	{
-		return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, allocator, view);
-	}
-
-	public VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, VkBufferView* view)
-	{
-		fixed (VkBufferViewCreateInfo* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfoPtr, default, view);
-		}
-	}
-
-	public VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, VkAllocationCallbacks* allocator, VkBufferView* view)
-	{
-		fixed (VkBufferViewCreateInfo* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfoPtr, allocator, view);
-		}
-	}
-
-	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, out VkBufferView view)
-	{
-		Unsafe.SkipInit(out view);
-
-		fixed (VkBufferView* viewPtr = &view)
-		{
-			return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, default, viewPtr);
-		}
-	}
-
-	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBufferView view)
-	{
-		Unsafe.SkipInit(out view);
-
-		fixed (VkBufferView* viewPtr = &view)
-		{
-			return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, allocator, viewPtr);
-		}
-	}
-
-	public VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, out VkBufferView view)
-	{
-		fixed (VkBufferViewCreateInfo* createInfoPtr = &createInfo)
-		{
-			Unsafe.SkipInit(out view);
-
-			fixed (VkBufferView* viewPtr = &view)
-			{
-				return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfoPtr, default, viewPtr);
-			}
-		}
-	}
-
-	public VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkBufferView view)
-	{
-		fixed (VkBufferViewCreateInfo* createInfoPtr = &createInfo)
-		{
-			Unsafe.SkipInit(out view);
-
-			fixed (VkBufferView* viewPtr = &view)
-			{
-				return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfoPtr, allocator, viewPtr);
-			}
-		}
-	}
-
-	public void vkDestroyBufferView(VkDevice device, VkBufferView bufferView)
-	{
-		((delegate* unmanaged<VkDevice, VkBufferView, VkAllocationCallbacks*, void>)vkDestroyBufferView_ptr.Value)(device, bufferView, default);
-	}
-
-	public void vkDestroyBufferView(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* allocator)
-	{
-		((delegate* unmanaged<VkDevice, VkBufferView, VkAllocationCallbacks*, void>)vkDestroyBufferView_ptr.Value)(device, bufferView, allocator);
 	}
 
 	public VkResult vkCreateImage(VkDevice device, VkImageCreateInfo* createInfo, VkImage* image)
@@ -2146,6 +2009,362 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkImageView, VkAllocationCallbacks*, void>)vkDestroyImageView_ptr.Value)(device, imageView, allocator);
 	}
 
+	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkCommandPool* commandPool)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, default, commandPool);
+	}
+
+	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkCommandPool* commandPool)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, allocator, commandPool);
+	}
+
+	public VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, VkCommandPool* commandPool)
+	{
+		fixed (VkCommandPoolCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfoPtr, default, commandPool);
+		}
+	}
+
+	public VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, VkCommandPool* commandPool)
+	{
+		fixed (VkCommandPoolCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfoPtr, allocator, commandPool);
+		}
+	}
+
+	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, out VkCommandPool commandPool)
+	{
+		Unsafe.SkipInit(out commandPool);
+
+		fixed (VkCommandPool* commandPoolPtr = &commandPool)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, default, commandPoolPtr);
+		}
+	}
+
+	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool)
+	{
+		Unsafe.SkipInit(out commandPool);
+
+		fixed (VkCommandPool* commandPoolPtr = &commandPool)
+		{
+			return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, allocator, commandPoolPtr);
+		}
+	}
+
+	public VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, out VkCommandPool commandPool)
+	{
+		fixed (VkCommandPoolCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out commandPool);
+
+			fixed (VkCommandPool* commandPoolPtr = &commandPool)
+			{
+				return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfoPtr, default, commandPoolPtr);
+			}
+		}
+	}
+
+	public VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool)
+	{
+		fixed (VkCommandPoolCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out commandPool);
+
+			fixed (VkCommandPool* commandPoolPtr = &commandPool)
+			{
+				return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfoPtr, allocator, commandPoolPtr);
+			}
+		}
+	}
+
+	public void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool)
+	{
+		((delegate* unmanaged<VkDevice, VkCommandPool, VkAllocationCallbacks*, void>)vkDestroyCommandPool_ptr.Value)(device, commandPool, default);
+	}
+
+	public void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* allocator)
+	{
+		((delegate* unmanaged<VkDevice, VkCommandPool, VkAllocationCallbacks*, void>)vkDestroyCommandPool_ptr.Value)(device, commandPool, allocator);
+	}
+
+	public VkResult vkResetCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolResetFlags, VkResult>)vkResetCommandPool_ptr.Value)(device, commandPool, flags);
+	}
+
+	public VkResult vkAllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, VkCommandBuffer* commandBuffers)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCommandBufferAllocateInfo*, VkCommandBuffer*, VkResult>)vkAllocateCommandBuffers_ptr.Value)(device, allocateInfo, commandBuffers);
+	}
+
+	public void vkFreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* commandBuffers)
+	{
+		((delegate* unmanaged<VkDevice, VkCommandPool, uint, VkCommandBuffer*, void>)vkFreeCommandBuffers_ptr.Value)(device, commandPool, commandBufferCount, commandBuffers);
+	}
+
+	public VkResult vkBeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* beginInfo)
+	{
+		return ((delegate* unmanaged<VkCommandBuffer, VkCommandBufferBeginInfo*, VkResult>)vkBeginCommandBuffer_ptr.Value)(commandBuffer, beginInfo);
+	}
+
+	public VkResult vkEndCommandBuffer(VkCommandBuffer commandBuffer)
+	{
+		return ((delegate* unmanaged<VkCommandBuffer, VkResult>)vkEndCommandBuffer_ptr.Value)(commandBuffer);
+	}
+
+	public VkResult vkResetCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags)
+	{
+		return ((delegate* unmanaged<VkCommandBuffer, VkCommandBufferResetFlags, VkResult>)vkResetCommandBuffer_ptr.Value)(commandBuffer, flags);
+	}
+
+	public void vkCmdCopyBuffer(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkBuffer dstBuffer, uint regionCount, VkBufferCopy* regions)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkBuffer, VkBuffer, uint, VkBufferCopy*, void>)vkCmdCopyBuffer_ptr.Value)(commandBuffer, srcBuffer, dstBuffer, regionCount, regions);
+	}
+
+	public void vkCmdCopyImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageCopy* regions)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageCopy*, void>)vkCmdCopyImage_ptr.Value)(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, regions);
+	}
+
+	public void vkCmdCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkBufferImageCopy* regions)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkBuffer, VkImage, VkImageLayout, uint, VkBufferImageCopy*, void>)vkCmdCopyBufferToImage_ptr.Value)(commandBuffer, srcBuffer, dstImage, dstImageLayout, regionCount, regions);
+	}
+
+	public void vkCmdCopyImageToBuffer(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkBuffer dstBuffer, uint regionCount, VkBufferImageCopy* regions)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkBuffer, uint, VkBufferImageCopy*, void>)vkCmdCopyImageToBuffer_ptr.Value)(commandBuffer, srcImage, srcImageLayout, dstBuffer, regionCount, regions);
+	}
+
+	public void vkCmdUpdateBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong dataSize, void* data)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, void*, void>)vkCmdUpdateBuffer_ptr.Value)(commandBuffer, dstBuffer, dstOffset, dataSize, data);
+	}
+
+	public void vkCmdFillBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong size, uint data)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, uint, void>)vkCmdFillBuffer_ptr.Value)(commandBuffer, dstBuffer, dstOffset, size, data);
+	}
+
+	public void vkCmdPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkPipelineStageFlags, VkDependencyFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void>)vkCmdPipelineBarrier_ptr.Value)(commandBuffer, srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
+	}
+
+	public void vkCmdBeginQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, void>)vkCmdBeginQuery_ptr.Value)(commandBuffer, queryPool, query, flags);
+	}
+
+	public void vkCmdEndQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, void>)vkCmdEndQuery_ptr.Value)(commandBuffer, queryPool, query);
+	}
+
+	public void vkCmdResetQueryPool(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, void>)vkCmdResetQueryPool_ptr.Value)(commandBuffer, queryPool, firstQuery, queryCount);
+	}
+
+	public void vkCmdWriteTimestamp(VkCommandBuffer commandBuffer, VkPipelineStageFlags pipelineStage, VkQueryPool queryPool, uint query)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkQueryPool, uint, void>)vkCmdWriteTimestamp_ptr.Value)(commandBuffer, pipelineStage, queryPool, query);
+	}
+
+	public void vkCmdCopyQueryPoolResults(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount, VkBuffer dstBuffer, ulong dstOffset, ulong stride, VkQueryResultFlags flags)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, VkBuffer, ulong, ulong, VkQueryResultFlags, void>)vkCmdCopyQueryPoolResults_ptr.Value)(commandBuffer, queryPool, firstQuery, queryCount, dstBuffer, dstOffset, stride, flags);
+	}
+
+	public void vkCmdExecuteCommands(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer* commandBuffers)
+	{
+		((delegate* unmanaged<VkCommandBuffer, uint, VkCommandBuffer*, void>)vkCmdExecuteCommands_ptr.Value)(commandBuffer, commandBufferCount, commandBuffers);
+	}
+
+	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkEvent* @event)
+	{
+		return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, default, @event);
+	}
+
+	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkEvent* @event)
+	{
+		return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, allocator, @event);
+	}
+
+	public VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, VkEvent* @event)
+	{
+		fixed (VkEventCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfoPtr, default, @event);
+		}
+	}
+
+	public VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, VkAllocationCallbacks* allocator, VkEvent* @event)
+	{
+		fixed (VkEventCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfoPtr, allocator, @event);
+		}
+	}
+
+	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, out VkEvent @event)
+	{
+		Unsafe.SkipInit(out @event);
+
+		fixed (VkEvent* @eventPtr = &@event)
+		{
+			return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, default, @eventPtr);
+		}
+	}
+
+	public VkResult vkCreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkEvent @event)
+	{
+		Unsafe.SkipInit(out @event);
+
+		fixed (VkEvent* @eventPtr = &@event)
+		{
+			return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfo, allocator, @eventPtr);
+		}
+	}
+
+	public VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, out VkEvent @event)
+	{
+		fixed (VkEventCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out @event);
+
+			fixed (VkEvent* @eventPtr = &@event)
+			{
+				return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfoPtr, default, @eventPtr);
+			}
+		}
+	}
+
+	public VkResult vkCreateEvent(VkDevice device, in VkEventCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkEvent @event)
+	{
+		fixed (VkEventCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out @event);
+
+			fixed (VkEvent* @eventPtr = &@event)
+			{
+				return ((delegate* unmanaged<VkDevice, VkEventCreateInfo*, VkAllocationCallbacks*, VkEvent*, VkResult>)vkCreateEvent_ptr.Value)(device, createInfoPtr, allocator, @eventPtr);
+			}
+		}
+	}
+
+	public void vkDestroyEvent(VkDevice device, VkEvent @event)
+	{
+		((delegate* unmanaged<VkDevice, VkEvent, VkAllocationCallbacks*, void>)vkDestroyEvent_ptr.Value)(device, @event, default);
+	}
+
+	public void vkDestroyEvent(VkDevice device, VkEvent @event, VkAllocationCallbacks* allocator)
+	{
+		((delegate* unmanaged<VkDevice, VkEvent, VkAllocationCallbacks*, void>)vkDestroyEvent_ptr.Value)(device, @event, allocator);
+	}
+
+	public VkResult vkGetEventStatus(VkDevice device, VkEvent @event)
+	{
+		return ((delegate* unmanaged<VkDevice, VkEvent, VkResult>)vkGetEventStatus_ptr.Value)(device, @event);
+	}
+
+	public VkResult vkSetEvent(VkDevice device, VkEvent @event)
+	{
+		return ((delegate* unmanaged<VkDevice, VkEvent, VkResult>)vkSetEvent_ptr.Value)(device, @event);
+	}
+
+	public VkResult vkResetEvent(VkDevice device, VkEvent @event)
+	{
+		return ((delegate* unmanaged<VkDevice, VkEvent, VkResult>)vkResetEvent_ptr.Value)(device, @event);
+	}
+
+	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkBufferView* view)
+	{
+		return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, default, view);
+	}
+
+	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkBufferView* view)
+	{
+		return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, allocator, view);
+	}
+
+	public VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, VkBufferView* view)
+	{
+		fixed (VkBufferViewCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfoPtr, default, view);
+		}
+	}
+
+	public VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, VkAllocationCallbacks* allocator, VkBufferView* view)
+	{
+		fixed (VkBufferViewCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfoPtr, allocator, view);
+		}
+	}
+
+	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, out VkBufferView view)
+	{
+		Unsafe.SkipInit(out view);
+
+		fixed (VkBufferView* viewPtr = &view)
+		{
+			return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, default, viewPtr);
+		}
+	}
+
+	public VkResult vkCreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBufferView view)
+	{
+		Unsafe.SkipInit(out view);
+
+		fixed (VkBufferView* viewPtr = &view)
+		{
+			return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfo, allocator, viewPtr);
+		}
+	}
+
+	public VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, out VkBufferView view)
+	{
+		fixed (VkBufferViewCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out view);
+
+			fixed (VkBufferView* viewPtr = &view)
+			{
+				return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfoPtr, default, viewPtr);
+			}
+		}
+	}
+
+	public VkResult vkCreateBufferView(VkDevice device, in VkBufferViewCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkBufferView view)
+	{
+		fixed (VkBufferViewCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out view);
+
+			fixed (VkBufferView* viewPtr = &view)
+			{
+				return ((delegate* unmanaged<VkDevice, VkBufferViewCreateInfo*, VkAllocationCallbacks*, VkBufferView*, VkResult>)vkCreateBufferView_ptr.Value)(device, createInfoPtr, allocator, viewPtr);
+			}
+		}
+	}
+
+	public void vkDestroyBufferView(VkDevice device, VkBufferView bufferView)
+	{
+		((delegate* unmanaged<VkDevice, VkBufferView, VkAllocationCallbacks*, void>)vkDestroyBufferView_ptr.Value)(device, bufferView, default);
+	}
+
+	public void vkDestroyBufferView(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* allocator)
+	{
+		((delegate* unmanaged<VkDevice, VkBufferView, VkAllocationCallbacks*, void>)vkDestroyBufferView_ptr.Value)(device, bufferView, allocator);
+	}
+
 	public VkResult vkCreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkShaderModule* shaderModule)
 	{
 		return ((delegate* unmanaged<VkDevice, VkShaderModuleCreateInfo*, VkAllocationCallbacks*, VkShaderModule*, VkResult>)vkCreateShaderModule_ptr.Value)(device, createInfo, default, shaderModule);
@@ -2318,32 +2537,6 @@ public unsafe partial class VkDeviceApi
 	public VkResult vkMergePipelineCaches(VkDevice device, VkPipelineCache dstCache, uint srcCacheCount, VkPipelineCache* srcCaches)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult>)vkMergePipelineCaches_ptr.Value)(device, dstCache, srcCacheCount, srcCaches);
-	}
-
-	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* createInfos, VkPipeline* pipelines)
-	{
-		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateGraphicsPipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, default, pipelines);
-	}
-
-	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
-	{
-		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateGraphicsPipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
-	}
-
-	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkGraphicsPipelineCreateInfo createInfos, VkPipeline* pipelines)
-	{
-		fixed (VkGraphicsPipelineCreateInfo* createInfoPtr = &createInfos)
-		{
-			return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateGraphicsPipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfoPtr, default, pipelines);
-		}
-	}
-
-	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkGraphicsPipelineCreateInfo createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
-	{
-		fixed (VkGraphicsPipelineCreateInfo* createInfoPtr = &createInfos)
-		{
-			return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateGraphicsPipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfoPtr, allocator, pipelines);
-		}
 	}
 
 	public VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo* createInfos, VkPipeline* pipelines)
@@ -2730,6 +2923,77 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, uint, VkWriteDescriptorSet*, uint, VkCopyDescriptorSet*, void>)vkUpdateDescriptorSets_ptr.Value)(device, descriptorWriteCount, descriptorWrites, descriptorCopyCount, descriptorCopies);
 	}
 
+	public void vkCmdBindPipeline(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void>)vkCmdBindPipeline_ptr.Value)(commandBuffer, pipelineBindPoint, pipeline);
+	}
+
+	public void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* descriptorSets, uint dynamicOffsetCount, uint* dynamicOffsets)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkDescriptorSet*, uint, uint*, void>)vkCmdBindDescriptorSets_ptr.Value)(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, descriptorSets, dynamicOffsetCount, dynamicOffsets);
+	}
+
+	public void vkCmdClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* color, uint rangeCount, VkImageSubresourceRange* ranges)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkClearColorValue*, uint, VkImageSubresourceRange*, void>)vkCmdClearColorImage_ptr.Value)(commandBuffer, image, imageLayout, color, rangeCount, ranges);
+	}
+
+	public void vkCmdDispatch(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ)
+	{
+		((delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void>)vkCmdDispatch_ptr.Value)(commandBuffer, groupCountX, groupCountY, groupCountZ);
+	}
+
+	public void vkCmdDispatchIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, void>)vkCmdDispatchIndirect_ptr.Value)(commandBuffer, buffer, offset);
+	}
+
+	public void vkCmdSetEvent(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void>)vkCmdSetEvent_ptr.Value)(commandBuffer, @event, stageMask);
+	}
+
+	public void vkCmdResetEvent(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void>)vkCmdResetEvent_ptr.Value)(commandBuffer, @event, stageMask);
+	}
+
+	public void vkCmdWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers)
+	{
+		((delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkPipelineStageFlags, VkPipelineStageFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void>)vkCmdWaitEvents_ptr.Value)(commandBuffer, eventCount, events, srcStageMask, dstStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
+	}
+
+	public void vkCmdPushConstants(VkCommandBuffer commandBuffer, VkPipelineLayout layout, VkShaderStageFlags stageFlags, uint offset, uint size, void* values)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkPipelineLayout, VkShaderStageFlags, uint, uint, void*, void>)vkCmdPushConstants_ptr.Value)(commandBuffer, layout, stageFlags, offset, size, values);
+	}
+
+	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* createInfos, VkPipeline* pipelines)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateGraphicsPipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, default, pipelines);
+	}
+
+	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo* createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateGraphicsPipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
+	}
+
+	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkGraphicsPipelineCreateInfo createInfos, VkPipeline* pipelines)
+	{
+		fixed (VkGraphicsPipelineCreateInfo* createInfoPtr = &createInfos)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateGraphicsPipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfoPtr, default, pipelines);
+		}
+	}
+
+	public VkResult vkCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, in VkGraphicsPipelineCreateInfo createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines)
+	{
+		fixed (VkGraphicsPipelineCreateInfo* createInfoPtr = &createInfos)
+		{
+			return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkGraphicsPipelineCreateInfo*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vkCreateGraphicsPipelines_ptr.Value)(device, pipelineCache, createInfoCount, createInfoPtr, allocator, pipelines);
+		}
+	}
+
 	public VkResult vkCreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, VkFramebuffer* framebuffer)
 	{
 		return ((delegate* unmanaged<VkDevice, VkFramebufferCreateInfo*, VkAllocationCallbacks*, VkFramebuffer*, VkResult>)vkCreateFramebuffer_ptr.Value)(device, createInfo, default, framebuffer);
@@ -2909,123 +3173,6 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkCommandPool* commandPool)
-	{
-		return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, default, commandPool);
-	}
-
-	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkCommandPool* commandPool)
-	{
-		return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, allocator, commandPool);
-	}
-
-	public VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, VkCommandPool* commandPool)
-	{
-		fixed (VkCommandPoolCreateInfo* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfoPtr, default, commandPool);
-		}
-	}
-
-	public VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, VkCommandPool* commandPool)
-	{
-		fixed (VkCommandPoolCreateInfo* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfoPtr, allocator, commandPool);
-		}
-	}
-
-	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, out VkCommandPool commandPool)
-	{
-		Unsafe.SkipInit(out commandPool);
-
-		fixed (VkCommandPool* commandPoolPtr = &commandPool)
-		{
-			return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, default, commandPoolPtr);
-		}
-	}
-
-	public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool)
-	{
-		Unsafe.SkipInit(out commandPool);
-
-		fixed (VkCommandPool* commandPoolPtr = &commandPool)
-		{
-			return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfo, allocator, commandPoolPtr);
-		}
-	}
-
-	public VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, out VkCommandPool commandPool)
-	{
-		fixed (VkCommandPoolCreateInfo* createInfoPtr = &createInfo)
-		{
-			Unsafe.SkipInit(out commandPool);
-
-			fixed (VkCommandPool* commandPoolPtr = &commandPool)
-			{
-				return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfoPtr, default, commandPoolPtr);
-			}
-		}
-	}
-
-	public VkResult vkCreateCommandPool(VkDevice device, in VkCommandPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool)
-	{
-		fixed (VkCommandPoolCreateInfo* createInfoPtr = &createInfo)
-		{
-			Unsafe.SkipInit(out commandPool);
-
-			fixed (VkCommandPool* commandPoolPtr = &commandPool)
-			{
-				return ((delegate* unmanaged<VkDevice, VkCommandPoolCreateInfo*, VkAllocationCallbacks*, VkCommandPool*, VkResult>)vkCreateCommandPool_ptr.Value)(device, createInfoPtr, allocator, commandPoolPtr);
-			}
-		}
-	}
-
-	public void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool)
-	{
-		((delegate* unmanaged<VkDevice, VkCommandPool, VkAllocationCallbacks*, void>)vkDestroyCommandPool_ptr.Value)(device, commandPool, default);
-	}
-
-	public void vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* allocator)
-	{
-		((delegate* unmanaged<VkDevice, VkCommandPool, VkAllocationCallbacks*, void>)vkDestroyCommandPool_ptr.Value)(device, commandPool, allocator);
-	}
-
-	public VkResult vkResetCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags)
-	{
-		return ((delegate* unmanaged<VkDevice, VkCommandPool, VkCommandPoolResetFlags, VkResult>)vkResetCommandPool_ptr.Value)(device, commandPool, flags);
-	}
-
-	public VkResult vkAllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, VkCommandBuffer* commandBuffers)
-	{
-		return ((delegate* unmanaged<VkDevice, VkCommandBufferAllocateInfo*, VkCommandBuffer*, VkResult>)vkAllocateCommandBuffers_ptr.Value)(device, allocateInfo, commandBuffers);
-	}
-
-	public void vkFreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* commandBuffers)
-	{
-		((delegate* unmanaged<VkDevice, VkCommandPool, uint, VkCommandBuffer*, void>)vkFreeCommandBuffers_ptr.Value)(device, commandPool, commandBufferCount, commandBuffers);
-	}
-
-	public VkResult vkBeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* beginInfo)
-	{
-		return ((delegate* unmanaged<VkCommandBuffer, VkCommandBufferBeginInfo*, VkResult>)vkBeginCommandBuffer_ptr.Value)(commandBuffer, beginInfo);
-	}
-
-	public VkResult vkEndCommandBuffer(VkCommandBuffer commandBuffer)
-	{
-		return ((delegate* unmanaged<VkCommandBuffer, VkResult>)vkEndCommandBuffer_ptr.Value)(commandBuffer);
-	}
-
-	public VkResult vkResetCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags)
-	{
-		return ((delegate* unmanaged<VkCommandBuffer, VkCommandBufferResetFlags, VkResult>)vkResetCommandBuffer_ptr.Value)(commandBuffer, flags);
-	}
-
-	public void vkCmdBindPipeline(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, void>)vkCmdBindPipeline_ptr.Value)(commandBuffer, pipelineBindPoint, pipeline);
-	}
-
 	public void vkCmdSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewport* viewports)
 	{
 		((delegate* unmanaged<VkCommandBuffer, uint, uint, VkViewport*, void>)vkCmdSetViewport_ptr.Value)(commandBuffer, firstViewport, viewportCount, viewports);
@@ -3071,11 +3218,6 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkStencilFaceFlags, uint, void>)vkCmdSetStencilReference_ptr.Value)(commandBuffer, faceMask, reference);
 	}
 
-	public void vkCmdBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* descriptorSets, uint dynamicOffsetCount, uint* dynamicOffsets)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkDescriptorSet*, uint, uint*, void>)vkCmdBindDescriptorSets_ptr.Value)(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, descriptorSets, dynamicOffsetCount, dynamicOffsets);
-	}
-
 	public void vkCmdBindIndexBuffer(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkIndexType indexType)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkIndexType, void>)vkCmdBindIndexBuffer_ptr.Value)(commandBuffer, buffer, offset, indexType);
@@ -3106,54 +3248,9 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>)vkCmdDrawIndexedIndirect_ptr.Value)(commandBuffer, buffer, offset, drawCount, stride);
 	}
 
-	public void vkCmdDispatch(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ)
-	{
-		((delegate* unmanaged<VkCommandBuffer, uint, uint, uint, void>)vkCmdDispatch_ptr.Value)(commandBuffer, groupCountX, groupCountY, groupCountZ);
-	}
-
-	public void vkCmdDispatchIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, void>)vkCmdDispatchIndirect_ptr.Value)(commandBuffer, buffer, offset);
-	}
-
-	public void vkCmdCopyBuffer(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkBuffer dstBuffer, uint regionCount, VkBufferCopy* regions)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkBuffer, VkBuffer, uint, VkBufferCopy*, void>)vkCmdCopyBuffer_ptr.Value)(commandBuffer, srcBuffer, dstBuffer, regionCount, regions);
-	}
-
-	public void vkCmdCopyImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageCopy* regions)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageCopy*, void>)vkCmdCopyImage_ptr.Value)(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, regions);
-	}
-
 	public void vkCmdBlitImage(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkImageBlit* regions, VkFilter filter)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageBlit*, VkFilter, void>)vkCmdBlitImage_ptr.Value)(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, regions, filter);
-	}
-
-	public void vkCmdCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, uint regionCount, VkBufferImageCopy* regions)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkBuffer, VkImage, VkImageLayout, uint, VkBufferImageCopy*, void>)vkCmdCopyBufferToImage_ptr.Value)(commandBuffer, srcBuffer, dstImage, dstImageLayout, regionCount, regions);
-	}
-
-	public void vkCmdCopyImageToBuffer(VkCommandBuffer commandBuffer, VkImage srcImage, VkImageLayout srcImageLayout, VkBuffer dstBuffer, uint regionCount, VkBufferImageCopy* regions)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkBuffer, uint, VkBufferImageCopy*, void>)vkCmdCopyImageToBuffer_ptr.Value)(commandBuffer, srcImage, srcImageLayout, dstBuffer, regionCount, regions);
-	}
-
-	public void vkCmdUpdateBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong dataSize, void* data)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, void*, void>)vkCmdUpdateBuffer_ptr.Value)(commandBuffer, dstBuffer, dstOffset, dataSize, data);
-	}
-
-	public void vkCmdFillBuffer(VkCommandBuffer commandBuffer, VkBuffer dstBuffer, ulong dstOffset, ulong size, uint data)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, uint, void>)vkCmdFillBuffer_ptr.Value)(commandBuffer, dstBuffer, dstOffset, size, data);
-	}
-
-	public void vkCmdClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* color, uint rangeCount, VkImageSubresourceRange* ranges)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkClearColorValue*, uint, VkImageSubresourceRange*, void>)vkCmdClearColorImage_ptr.Value)(commandBuffer, image, imageLayout, color, rangeCount, ranges);
 	}
 
 	public void vkCmdClearDepthStencilImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearDepthStencilValue* depthStencil, uint rangeCount, VkImageSubresourceRange* ranges)
@@ -3171,56 +3268,6 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkImage, VkImageLayout, VkImage, VkImageLayout, uint, VkImageResolve*, void>)vkCmdResolveImage_ptr.Value)(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, regions);
 	}
 
-	public void vkCmdSetEvent(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void>)vkCmdSetEvent_ptr.Value)(commandBuffer, @event, stageMask);
-	}
-
-	public void vkCmdResetEvent(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags, void>)vkCmdResetEvent_ptr.Value)(commandBuffer, @event, stageMask);
-	}
-
-	public void vkCmdWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers)
-	{
-		((delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkPipelineStageFlags, VkPipelineStageFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void>)vkCmdWaitEvents_ptr.Value)(commandBuffer, eventCount, events, srcStageMask, dstStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-	}
-
-	public void vkCmdPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags srcStageMask, VkPipelineStageFlags dstStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkPipelineStageFlags, VkDependencyFlags, uint, VkMemoryBarrier*, uint, VkBufferMemoryBarrier*, uint, VkImageMemoryBarrier*, void>)vkCmdPipelineBarrier_ptr.Value)(commandBuffer, srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-	}
-
-	public void vkCmdBeginQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, VkQueryControlFlags, void>)vkCmdBeginQuery_ptr.Value)(commandBuffer, queryPool, query, flags);
-	}
-
-	public void vkCmdEndQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, void>)vkCmdEndQuery_ptr.Value)(commandBuffer, queryPool, query);
-	}
-
-	public void vkCmdResetQueryPool(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, void>)vkCmdResetQueryPool_ptr.Value)(commandBuffer, queryPool, firstQuery, queryCount);
-	}
-
-	public void vkCmdWriteTimestamp(VkCommandBuffer commandBuffer, VkPipelineStageFlags pipelineStage, VkQueryPool queryPool, uint query)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkPipelineStageFlags, VkQueryPool, uint, void>)vkCmdWriteTimestamp_ptr.Value)(commandBuffer, pipelineStage, queryPool, query);
-	}
-
-	public void vkCmdCopyQueryPoolResults(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount, VkBuffer dstBuffer, ulong dstOffset, ulong stride, VkQueryResultFlags flags)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, VkBuffer, ulong, ulong, VkQueryResultFlags, void>)vkCmdCopyQueryPoolResults_ptr.Value)(commandBuffer, queryPool, firstQuery, queryCount, dstBuffer, dstOffset, stride, flags);
-	}
-
-	public void vkCmdPushConstants(VkCommandBuffer commandBuffer, VkPipelineLayout layout, VkShaderStageFlags stageFlags, uint offset, uint size, void* values)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkPipelineLayout, VkShaderStageFlags, uint, uint, void*, void>)vkCmdPushConstants_ptr.Value)(commandBuffer, layout, stageFlags, offset, size, values);
-	}
-
 	public void vkCmdBeginRenderPass(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* renderPassBegin, VkSubpassContents contents)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkRenderPassBeginInfo*, VkSubpassContents, void>)vkCmdBeginRenderPass_ptr.Value)(commandBuffer, renderPassBegin, contents);
@@ -3234,11 +3281,6 @@ public unsafe partial class VkDeviceApi
 	public void vkCmdEndRenderPass(VkCommandBuffer commandBuffer)
 	{
 		((delegate* unmanaged<VkCommandBuffer, void>)vkCmdEndRenderPass_ptr.Value)(commandBuffer);
-	}
-
-	public void vkCmdExecuteCommands(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer* commandBuffers)
-	{
-		((delegate* unmanaged<VkCommandBuffer, uint, VkCommandBuffer*, void>)vkCmdExecuteCommands_ptr.Value)(commandBuffer, commandBufferCount, commandBuffers);
 	}
 
 	public VkResult vkBindBufferMemory2(VkDevice device, uint bindInfoCount, VkBindBufferMemoryInfo* bindInfos)
@@ -3259,11 +3301,6 @@ public unsafe partial class VkDeviceApi
 	public void vkCmdSetDeviceMask(VkCommandBuffer commandBuffer, uint deviceMask)
 	{
 		((delegate* unmanaged<VkCommandBuffer, uint, void>)vkCmdSetDeviceMask_ptr.Value)(commandBuffer, deviceMask);
-	}
-
-	public void vkCmdDispatchBase(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ)
-	{
-		((delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void>)vkCmdDispatchBase_ptr.Value)(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 	}
 
 	public void vkGetImageMemoryRequirements2(VkDevice device, VkImageMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements)
@@ -3301,86 +3338,9 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkSamplerYcbcrConversion* ycbcrConversion)
+	public void vkCmdDispatchBase(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ)
 	{
-		return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, default, ycbcrConversion);
-	}
-
-	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion)
-	{
-		return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, allocator, ycbcrConversion);
-	}
-
-	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, VkSamplerYcbcrConversion* ycbcrConversion)
-	{
-		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfoPtr, default, ycbcrConversion);
-		}
-	}
-
-	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion)
-	{
-		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfoPtr, allocator, ycbcrConversion);
-		}
-	}
-
-	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, out VkSamplerYcbcrConversion ycbcrConversion)
-	{
-		Unsafe.SkipInit(out ycbcrConversion);
-
-		fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
-		{
-			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, default, ycbcrConversionPtr);
-		}
-	}
-
-	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion)
-	{
-		Unsafe.SkipInit(out ycbcrConversion);
-
-		fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
-		{
-			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, allocator, ycbcrConversionPtr);
-		}
-	}
-
-	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, out VkSamplerYcbcrConversion ycbcrConversion)
-	{
-		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
-		{
-			Unsafe.SkipInit(out ycbcrConversion);
-
-			fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
-			{
-				return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfoPtr, default, ycbcrConversionPtr);
-			}
-		}
-	}
-
-	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion)
-	{
-		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
-		{
-			Unsafe.SkipInit(out ycbcrConversion);
-
-			fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
-			{
-				return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfoPtr, allocator, ycbcrConversionPtr);
-			}
-		}
-	}
-
-	public void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion)
-	{
-		((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>)vkDestroySamplerYcbcrConversion_ptr.Value)(device, ycbcrConversion, default);
-	}
-
-	public void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator)
-	{
-		((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>)vkDestroySamplerYcbcrConversion_ptr.Value)(device, ycbcrConversion, allocator);
+		((delegate* unmanaged<VkCommandBuffer, uint, uint, uint, uint, uint, uint, void>)vkCmdDispatchBase_ptr.Value)(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 	}
 
 	public VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkDescriptorUpdateTemplate* descriptorUpdateTemplate)
@@ -3473,6 +3433,123 @@ public unsafe partial class VkDeviceApi
 	public void vkGetDescriptorSetLayoutSupport(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkDescriptorSetLayoutSupport* support)
 	{
 		((delegate* unmanaged<VkDevice, VkDescriptorSetLayoutCreateInfo*, VkDescriptorSetLayoutSupport*, void>)vkGetDescriptorSetLayoutSupport_ptr.Value)(device, createInfo, support);
+	}
+
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkSamplerYcbcrConversion* ycbcrConversion)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, default, ycbcrConversion);
+	}
+
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, allocator, ycbcrConversion);
+	}
+
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, VkSamplerYcbcrConversion* ycbcrConversion)
+	{
+		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfoPtr, default, ycbcrConversion);
+		}
+	}
+
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion)
+	{
+		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfoPtr, allocator, ycbcrConversion);
+		}
+	}
+
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, out VkSamplerYcbcrConversion ycbcrConversion)
+	{
+		Unsafe.SkipInit(out ycbcrConversion);
+
+		fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, default, ycbcrConversionPtr);
+		}
+	}
+
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion)
+	{
+		Unsafe.SkipInit(out ycbcrConversion);
+
+		fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
+		{
+			return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfo, allocator, ycbcrConversionPtr);
+		}
+	}
+
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, out VkSamplerYcbcrConversion ycbcrConversion)
+	{
+		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out ycbcrConversion);
+
+			fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
+			{
+				return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfoPtr, default, ycbcrConversionPtr);
+			}
+		}
+	}
+
+	public VkResult vkCreateSamplerYcbcrConversion(VkDevice device, in VkSamplerYcbcrConversionCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion)
+	{
+		fixed (VkSamplerYcbcrConversionCreateInfo* createInfoPtr = &createInfo)
+		{
+			Unsafe.SkipInit(out ycbcrConversion);
+
+			fixed (VkSamplerYcbcrConversion* ycbcrConversionPtr = &ycbcrConversion)
+			{
+				return ((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversionCreateInfo*, VkAllocationCallbacks*, VkSamplerYcbcrConversion*, VkResult>)vkCreateSamplerYcbcrConversion_ptr.Value)(device, createInfoPtr, allocator, ycbcrConversionPtr);
+			}
+		}
+	}
+
+	public void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion)
+	{
+		((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>)vkDestroySamplerYcbcrConversion_ptr.Value)(device, ycbcrConversion, default);
+	}
+
+	public void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator)
+	{
+		((delegate* unmanaged<VkDevice, VkSamplerYcbcrConversion, VkAllocationCallbacks*, void>)vkDestroySamplerYcbcrConversion_ptr.Value)(device, ycbcrConversion, allocator);
+	}
+
+	public void vkResetQueryPool(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount)
+	{
+		((delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, void>)vkResetQueryPool_ptr.Value)(device, queryPool, firstQuery, queryCount);
+	}
+
+	public VkResult vkGetSemaphoreCounterValue(VkDevice device, VkSemaphore semaphore, ulong* value)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSemaphore, ulong*, VkResult>)vkGetSemaphoreCounterValue_ptr.Value)(device, semaphore, value);
+	}
+
+	public VkResult vkWaitSemaphores(VkDevice device, VkSemaphoreWaitInfo* waitInfo, ulong timeout)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult>)vkWaitSemaphores_ptr.Value)(device, waitInfo, timeout);
+	}
+
+	public VkResult vkSignalSemaphore(VkDevice device, VkSemaphoreSignalInfo* signalInfo)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult>)vkSignalSemaphore_ptr.Value)(device, signalInfo);
+	}
+
+	public ulong vkGetBufferDeviceAddress(VkDevice device, VkBufferDeviceAddressInfo* info)
+	{
+		return ((delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong>)vkGetBufferDeviceAddress_ptr.Value)(device, info);
+	}
+
+	public ulong vkGetBufferOpaqueCaptureAddress(VkDevice device, VkBufferDeviceAddressInfo* info)
+	{
+		return ((delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong>)vkGetBufferOpaqueCaptureAddress_ptr.Value)(device, info);
+	}
+
+	public ulong vkGetDeviceMemoryOpaqueCaptureAddress(VkDevice device, VkDeviceMemoryOpaqueCaptureAddressInfo* info)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong>)vkGetDeviceMemoryOpaqueCaptureAddress_ptr.Value)(device, info);
 	}
 
 	public void vkCmdDrawIndirectCount(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
@@ -3572,41 +3649,6 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkSubpassEndInfo*, void>)vkCmdEndRenderPass2_ptr.Value)(commandBuffer, subpassEndInfo);
 	}
 
-	public void vkResetQueryPool(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount)
-	{
-		((delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, void>)vkResetQueryPool_ptr.Value)(device, queryPool, firstQuery, queryCount);
-	}
-
-	public VkResult vkGetSemaphoreCounterValue(VkDevice device, VkSemaphore semaphore, ulong* value)
-	{
-		return ((delegate* unmanaged<VkDevice, VkSemaphore, ulong*, VkResult>)vkGetSemaphoreCounterValue_ptr.Value)(device, semaphore, value);
-	}
-
-	public VkResult vkWaitSemaphores(VkDevice device, VkSemaphoreWaitInfo* waitInfo, ulong timeout)
-	{
-		return ((delegate* unmanaged<VkDevice, VkSemaphoreWaitInfo*, ulong, VkResult>)vkWaitSemaphores_ptr.Value)(device, waitInfo, timeout);
-	}
-
-	public VkResult vkSignalSemaphore(VkDevice device, VkSemaphoreSignalInfo* signalInfo)
-	{
-		return ((delegate* unmanaged<VkDevice, VkSemaphoreSignalInfo*, VkResult>)vkSignalSemaphore_ptr.Value)(device, signalInfo);
-	}
-
-	public ulong vkGetBufferDeviceAddress(VkDevice device, VkBufferDeviceAddressInfo* info)
-	{
-		return ((delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong>)vkGetBufferDeviceAddress_ptr.Value)(device, info);
-	}
-
-	public ulong vkGetBufferOpaqueCaptureAddress(VkDevice device, VkBufferDeviceAddressInfo* info)
-	{
-		return ((delegate* unmanaged<VkDevice, VkBufferDeviceAddressInfo*, ulong>)vkGetBufferOpaqueCaptureAddress_ptr.Value)(device, info);
-	}
-
-	public ulong vkGetDeviceMemoryOpaqueCaptureAddress(VkDevice device, VkDeviceMemoryOpaqueCaptureAddressInfo* info)
-	{
-		return ((delegate* unmanaged<VkDevice, VkDeviceMemoryOpaqueCaptureAddressInfo*, ulong>)vkGetDeviceMemoryOpaqueCaptureAddress_ptr.Value)(device, info);
-	}
-
 	public VkResult vkCreatePrivateDataSlot(VkDevice device, VkPrivateDataSlotCreateInfo* createInfo, VkPrivateDataSlot* privateDataSlot)
 	{
 		return ((delegate* unmanaged<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult>)vkCreatePrivateDataSlot_ptr.Value)(device, createInfo, default, privateDataSlot);
@@ -3653,21 +3695,6 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void>)vkGetPrivateData_ptr.Value)(device, objectType, objectHandle, privateDataSlot, data);
 	}
 
-	public void vkCmdSetEvent2(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfo* dependencyInfo)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfo*, void>)vkCmdSetEvent2_ptr.Value)(commandBuffer, @event, dependencyInfo);
-	}
-
-	public void vkCmdResetEvent2(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2 stageMask)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags2, void>)vkCmdResetEvent2_ptr.Value)(commandBuffer, @event, stageMask);
-	}
-
-	public void vkCmdWaitEvents2(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkDependencyInfo* dependencyInfos)
-	{
-		((delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkDependencyInfo*, void>)vkCmdWaitEvents2_ptr.Value)(commandBuffer, eventCount, events, dependencyInfos);
-	}
-
 	public void vkCmdPipelineBarrier2(VkCommandBuffer commandBuffer, VkDependencyInfo* dependencyInfo)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkDependencyInfo*, void>)vkCmdPipelineBarrier2_ptr.Value)(commandBuffer, dependencyInfo);
@@ -3701,6 +3728,36 @@ public unsafe partial class VkDeviceApi
 	public void vkCmdCopyImageToBuffer2(VkCommandBuffer commandBuffer, VkCopyImageToBufferInfo2* copyImageToBufferInfo)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkCopyImageToBufferInfo2*, void>)vkCmdCopyImageToBuffer2_ptr.Value)(commandBuffer, copyImageToBufferInfo);
+	}
+
+	public void vkGetDeviceBufferMemoryRequirements(VkDevice device, VkDeviceBufferMemoryRequirements* info, VkMemoryRequirements2* memoryRequirements)
+	{
+		((delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void>)vkGetDeviceBufferMemoryRequirements_ptr.Value)(device, info, memoryRequirements);
+	}
+
+	public void vkGetDeviceImageMemoryRequirements(VkDevice device, VkDeviceImageMemoryRequirements* info, VkMemoryRequirements2* memoryRequirements)
+	{
+		((delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void>)vkGetDeviceImageMemoryRequirements_ptr.Value)(device, info, memoryRequirements);
+	}
+
+	public void vkGetDeviceImageSparseMemoryRequirements(VkDevice device, VkDeviceImageMemoryRequirements* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements)
+	{
+		((delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void>)vkGetDeviceImageSparseMemoryRequirements_ptr.Value)(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
+	}
+
+	public void vkCmdSetEvent2(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfo* dependencyInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkEvent, VkDependencyInfo*, void>)vkCmdSetEvent2_ptr.Value)(commandBuffer, @event, dependencyInfo);
+	}
+
+	public void vkCmdResetEvent2(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2 stageMask)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkEvent, VkPipelineStageFlags2, void>)vkCmdResetEvent2_ptr.Value)(commandBuffer, @event, stageMask);
+	}
+
+	public void vkCmdWaitEvents2(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkDependencyInfo* dependencyInfos)
+	{
+		((delegate* unmanaged<VkCommandBuffer, uint, VkEvent*, VkDependencyInfo*, void>)vkCmdWaitEvents2_ptr.Value)(commandBuffer, eventCount, events, dependencyInfos);
 	}
 
 	public void vkCmdBlitImage2(VkCommandBuffer commandBuffer, VkBlitImageInfo2* blitImageInfo)
@@ -3798,26 +3855,6 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkBool32, void>)vkCmdSetPrimitiveRestartEnable_ptr.Value)(commandBuffer, primitiveRestartEnable);
 	}
 
-	public void vkGetDeviceBufferMemoryRequirements(VkDevice device, VkDeviceBufferMemoryRequirements* info, VkMemoryRequirements2* memoryRequirements)
-	{
-		((delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void>)vkGetDeviceBufferMemoryRequirements_ptr.Value)(device, info, memoryRequirements);
-	}
-
-	public void vkGetDeviceImageMemoryRequirements(VkDevice device, VkDeviceImageMemoryRequirements* info, VkMemoryRequirements2* memoryRequirements)
-	{
-		((delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void>)vkGetDeviceImageMemoryRequirements_ptr.Value)(device, info, memoryRequirements);
-	}
-
-	public void vkGetDeviceImageSparseMemoryRequirements(VkDevice device, VkDeviceImageMemoryRequirements* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements)
-	{
-		((delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, uint*, VkSparseImageMemoryRequirements2*, void>)vkGetDeviceImageSparseMemoryRequirements_ptr.Value)(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
-	}
-
-	public void vkCmdSetLineStipple(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern)
-	{
-		((delegate* unmanaged<VkCommandBuffer, uint, ushort, void>)vkCmdSetLineStipple_ptr.Value)(commandBuffer, lineStippleFactor, lineStipplePattern);
-	}
-
 	public VkResult vkMapMemory2(VkDevice device, VkMemoryMapInfo* memoryMapInfo, void** data)
 	{
 		return ((delegate* unmanaged<VkDevice, VkMemoryMapInfo*, void**, VkResult>)vkMapMemory2_ptr.Value)(device, memoryMapInfo, data);
@@ -3826,16 +3863,6 @@ public unsafe partial class VkDeviceApi
 	public VkResult vkUnmapMemory2(VkDevice device, VkMemoryUnmapInfo* memoryUnmapInfo)
 	{
 		return ((delegate* unmanaged<VkDevice, VkMemoryUnmapInfo*, VkResult>)vkUnmapMemory2_ptr.Value)(device, memoryUnmapInfo);
-	}
-
-	public void vkCmdBindIndexBuffer2(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, ulong size, VkIndexType indexType)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, VkIndexType, void>)vkCmdBindIndexBuffer2_ptr.Value)(commandBuffer, buffer, offset, size, indexType);
-	}
-
-	public void vkGetRenderingAreaGranularity(VkDevice device, VkRenderingAreaInfo* renderingAreaInfo, VkExtent2D* granularity)
-	{
-		((delegate* unmanaged<VkDevice, VkRenderingAreaInfo*, VkExtent2D*, void>)vkGetRenderingAreaGranularity_ptr.Value)(device, renderingAreaInfo, granularity);
 	}
 
 	public void vkGetDeviceImageSubresourceLayout(VkDevice device, VkDeviceImageSubresourceInfo* info, VkSubresourceLayout2* layout)
@@ -3848,6 +3875,26 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkImage, VkImageSubresource2*, VkSubresourceLayout2*, void>)vkGetImageSubresourceLayout2_ptr.Value)(device, image, subresource, layout);
 	}
 
+	public VkResult vkCopyMemoryToImage(VkDevice device, VkCopyMemoryToImageInfo* copyMemoryToImageInfo)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfo*, VkResult>)vkCopyMemoryToImage_ptr.Value)(device, copyMemoryToImageInfo);
+	}
+
+	public VkResult vkCopyImageToMemory(VkDevice device, VkCopyImageToMemoryInfo* copyImageToMemoryInfo)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfo*, VkResult>)vkCopyImageToMemory_ptr.Value)(device, copyImageToMemoryInfo);
+	}
+
+	public VkResult vkCopyImageToImage(VkDevice device, VkCopyImageToImageInfo* copyImageToImageInfo)
+	{
+		return ((delegate* unmanaged<VkDevice, VkCopyImageToImageInfo*, VkResult>)vkCopyImageToImage_ptr.Value)(device, copyImageToImageInfo);
+	}
+
+	public VkResult vkTransitionImageLayout(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfo* transitions)
+	{
+		return ((delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfo*, VkResult>)vkTransitionImageLayout_ptr.Value)(device, transitionCount, transitions);
+	}
+
 	public void vkCmdPushDescriptorSet(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, VkWriteDescriptorSet*, void>)vkCmdPushDescriptorSet_ptr.Value)(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, descriptorWrites);
@@ -3856,16 +3903,6 @@ public unsafe partial class VkDeviceApi
 	public void vkCmdPushDescriptorSetWithTemplate(VkCommandBuffer commandBuffer, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkPipelineLayout layout, uint set, void* data)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkDescriptorUpdateTemplate, VkPipelineLayout, uint, void*, void>)vkCmdPushDescriptorSetWithTemplate_ptr.Value)(commandBuffer, descriptorUpdateTemplate, layout, set, data);
-	}
-
-	public void vkCmdSetRenderingAttachmentLocations(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfo* locationInfo)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfo*, void>)vkCmdSetRenderingAttachmentLocations_ptr.Value)(commandBuffer, locationInfo);
-	}
-
-	public void vkCmdSetRenderingInputAttachmentIndices(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfo* inputAttachmentIndexInfo)
-	{
-		((delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfo*, void>)vkCmdSetRenderingInputAttachmentIndices_ptr.Value)(commandBuffer, inputAttachmentIndexInfo);
 	}
 
 	public void vkCmdBindDescriptorSets2(VkCommandBuffer commandBuffer, VkBindDescriptorSetsInfo* bindDescriptorSetsInfo)
@@ -3888,24 +3925,29 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkPushDescriptorSetWithTemplateInfo*, void>)vkCmdPushDescriptorSetWithTemplate2_ptr.Value)(commandBuffer, pushDescriptorSetWithTemplateInfo);
 	}
 
-	public VkResult vkCopyMemoryToImage(VkDevice device, VkCopyMemoryToImageInfo* copyMemoryToImageInfo)
+	public void vkCmdSetLineStipple(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern)
 	{
-		return ((delegate* unmanaged<VkDevice, VkCopyMemoryToImageInfo*, VkResult>)vkCopyMemoryToImage_ptr.Value)(device, copyMemoryToImageInfo);
+		((delegate* unmanaged<VkCommandBuffer, uint, ushort, void>)vkCmdSetLineStipple_ptr.Value)(commandBuffer, lineStippleFactor, lineStipplePattern);
 	}
 
-	public VkResult vkCopyImageToMemory(VkDevice device, VkCopyImageToMemoryInfo* copyImageToMemoryInfo)
+	public void vkCmdBindIndexBuffer2(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, ulong size, VkIndexType indexType)
 	{
-		return ((delegate* unmanaged<VkDevice, VkCopyImageToMemoryInfo*, VkResult>)vkCopyImageToMemory_ptr.Value)(device, copyImageToMemoryInfo);
+		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, ulong, VkIndexType, void>)vkCmdBindIndexBuffer2_ptr.Value)(commandBuffer, buffer, offset, size, indexType);
 	}
 
-	public VkResult vkCopyImageToImage(VkDevice device, VkCopyImageToImageInfo* copyImageToImageInfo)
+	public void vkGetRenderingAreaGranularity(VkDevice device, VkRenderingAreaInfo* renderingAreaInfo, VkExtent2D* granularity)
 	{
-		return ((delegate* unmanaged<VkDevice, VkCopyImageToImageInfo*, VkResult>)vkCopyImageToImage_ptr.Value)(device, copyImageToImageInfo);
+		((delegate* unmanaged<VkDevice, VkRenderingAreaInfo*, VkExtent2D*, void>)vkGetRenderingAreaGranularity_ptr.Value)(device, renderingAreaInfo, granularity);
 	}
 
-	public VkResult vkTransitionImageLayout(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfo* transitions)
+	public void vkCmdSetRenderingAttachmentLocations(VkCommandBuffer commandBuffer, VkRenderingAttachmentLocationInfo* locationInfo)
 	{
-		return ((delegate* unmanaged<VkDevice, uint, VkHostImageLayoutTransitionInfo*, VkResult>)vkTransitionImageLayout_ptr.Value)(device, transitionCount, transitions);
+		((delegate* unmanaged<VkCommandBuffer, VkRenderingAttachmentLocationInfo*, void>)vkCmdSetRenderingAttachmentLocations_ptr.Value)(commandBuffer, locationInfo);
+	}
+
+	public void vkCmdSetRenderingInputAttachmentIndices(VkCommandBuffer commandBuffer, VkRenderingInputAttachmentIndexInfo* inputAttachmentIndexInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkRenderingInputAttachmentIndexInfo*, void>)vkCmdSetRenderingInputAttachmentIndices_ptr.Value)(commandBuffer, inputAttachmentIndexInfo);
 	}
 
 	public VkResult vkCreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkSwapchainKHR* swapchain)
@@ -4808,6 +4850,21 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkBindDescriptorBufferEmbeddedSamplersInfoEXT*, void>)vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr.Value)(commandBuffer, bindDescriptorBufferEmbeddedSamplersInfo);
 	}
 
+	public void vkCmdCopyMemoryIndirectKHR(VkCommandBuffer commandBuffer, VkCopyMemoryIndirectInfoKHR* copyMemoryIndirectInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkCopyMemoryIndirectInfoKHR*, void>)vkCmdCopyMemoryIndirectKHR_ptr.Value)(commandBuffer, copyMemoryIndirectInfo);
+	}
+
+	public void vkCmdCopyMemoryToImageIndirectKHR(VkCommandBuffer commandBuffer, VkCopyMemoryToImageIndirectInfoKHR* copyMemoryToImageIndirectInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkCopyMemoryToImageIndirectInfoKHR*, void>)vkCmdCopyMemoryToImageIndirectKHR_ptr.Value)(commandBuffer, copyMemoryToImageIndirectInfo);
+	}
+
+	public void vkCmdEndRendering2KHR(VkCommandBuffer commandBuffer, VkRenderingEndInfoKHR* renderingEndInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkRenderingEndInfoKHR*, void>)vkCmdEndRendering2KHR_ptr.Value)(commandBuffer, renderingEndInfo);
+	}
+
 	public VkResult vkDebugMarkerSetObjectTagEXT(VkDevice device, VkDebugMarkerObjectTagInfoEXT* tagInfo)
 	{
 		return ((delegate* unmanaged<VkDevice, VkDebugMarkerObjectTagInfoEXT*, VkResult>)vkDebugMarkerSetObjectTagEXT_ptr.Value)(device, tagInfo);
@@ -4955,6 +5012,11 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkImageView, VkImageViewAddressPropertiesNVX*, VkResult>)vkGetImageViewAddressNVX_ptr.Value)(device, imageView, properties);
 	}
 
+	public ulong vkGetDeviceCombinedImageSamplerIndexNVX(VkDevice device, ulong imageViewIndex, ulong samplerIndex)
+	{
+		return ((delegate* unmanaged<VkDevice, ulong, ulong, ulong>)vkGetDeviceCombinedImageSamplerIndexNVX_ptr.Value)(device, imageViewIndex, samplerIndex);
+	}
+
 	public void vkCmdDrawIndirectCountAMD(VkCommandBuffer commandBuffer, VkBuffer buffer, ulong offset, VkBuffer countBuffer, ulong countBufferOffset, uint maxDrawCount, uint stride)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>)vkCmdDrawIndirectCountAMD_ptr.Value)(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
@@ -5043,6 +5105,51 @@ public unsafe partial class VkDeviceApi
 	public void vkSetHdrMetadataEXT(VkDevice device, uint swapchainCount, VkSwapchainKHR* swapchains, VkHdrMetadataEXT* metadata)
 	{
 		((delegate* unmanaged<VkDevice, uint, VkSwapchainKHR*, VkHdrMetadataEXT*, void>)vkSetHdrMetadataEXT_ptr.Value)(device, swapchainCount, swapchains, metadata);
+	}
+
+	public VkResult vkWriteSamplerDescriptorsEXT(VkDevice device, uint samplerCount, VkSamplerCreateInfo* samplers, VkHostAddressRangeEXT* descriptors)
+	{
+		return ((delegate* unmanaged<VkDevice, uint, VkSamplerCreateInfo*, VkHostAddressRangeEXT*, VkResult>)vkWriteSamplerDescriptorsEXT_ptr.Value)(device, samplerCount, samplers, descriptors);
+	}
+
+	public VkResult vkWriteResourceDescriptorsEXT(VkDevice device, uint resourceCount, VkResourceDescriptorInfoEXT* resources, VkHostAddressRangeEXT* descriptors)
+	{
+		return ((delegate* unmanaged<VkDevice, uint, VkResourceDescriptorInfoEXT*, VkHostAddressRangeEXT*, VkResult>)vkWriteResourceDescriptorsEXT_ptr.Value)(device, resourceCount, resources, descriptors);
+	}
+
+	public void vkCmdBindSamplerHeapEXT(VkCommandBuffer commandBuffer, VkBindHeapInfoEXT* bindInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkBindHeapInfoEXT*, void>)vkCmdBindSamplerHeapEXT_ptr.Value)(commandBuffer, bindInfo);
+	}
+
+	public void vkCmdBindResourceHeapEXT(VkCommandBuffer commandBuffer, VkBindHeapInfoEXT* bindInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkBindHeapInfoEXT*, void>)vkCmdBindResourceHeapEXT_ptr.Value)(commandBuffer, bindInfo);
+	}
+
+	public void vkCmdPushDataEXT(VkCommandBuffer commandBuffer, VkPushDataInfoEXT* pushDataInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkPushDataInfoEXT*, void>)vkCmdPushDataEXT_ptr.Value)(commandBuffer, pushDataInfo);
+	}
+
+	public VkResult vkGetImageOpaqueCaptureDataEXT(VkDevice device, uint imageCount, VkImage* images, VkHostAddressRangeEXT* datas)
+	{
+		return ((delegate* unmanaged<VkDevice, uint, VkImage*, VkHostAddressRangeEXT*, VkResult>)vkGetImageOpaqueCaptureDataEXT_ptr.Value)(device, imageCount, images, datas);
+	}
+
+	public VkResult vkRegisterCustomBorderColorEXT(VkDevice device, VkSamplerCustomBorderColorCreateInfoEXT* borderColor, VkBool32 requestIndex, uint* index)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSamplerCustomBorderColorCreateInfoEXT*, VkBool32, uint*, VkResult>)vkRegisterCustomBorderColorEXT_ptr.Value)(device, borderColor, requestIndex, index);
+	}
+
+	public void vkUnregisterCustomBorderColorEXT(VkDevice device, uint index)
+	{
+		((delegate* unmanaged<VkDevice, uint, void>)vkUnregisterCustomBorderColorEXT_ptr.Value)(device, index);
+	}
+
+	public VkResult vkGetTensorOpaqueCaptureDataARM(VkDevice device, uint tensorCount, VkTensorARM* tensors, VkHostAddressRangeEXT* datas)
+	{
+		return ((delegate* unmanaged<VkDevice, uint, VkTensorARM*, VkHostAddressRangeEXT*, VkResult>)vkGetTensorOpaqueCaptureDataARM_ptr.Value)(device, tensorCount, tensors, datas);
 	}
 
 	public void vkCmdSetSampleLocationsEXT(VkCommandBuffer commandBuffer, VkSampleLocationsInfoEXT* sampleLocationsInfo)
@@ -5286,6 +5393,26 @@ public unsafe partial class VkDeviceApi
 	public void vkGetQueueCheckpointData2NV(VkQueue queue, uint* checkpointDataCount, VkCheckpointData2NV* checkpointData)
 	{
 		((delegate* unmanaged<VkQueue, uint*, VkCheckpointData2NV*, void>)vkGetQueueCheckpointData2NV_ptr.Value)(queue, checkpointDataCount, checkpointData);
+	}
+
+	public VkResult vkSetSwapchainPresentTimingQueueSizeEXT(VkDevice device, VkSwapchainKHR swapchain, uint size)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSwapchainKHR, uint, VkResult>)vkSetSwapchainPresentTimingQueueSizeEXT_ptr.Value)(device, swapchain, size);
+	}
+
+	public VkResult vkGetSwapchainTimingPropertiesEXT(VkDevice device, VkSwapchainKHR swapchain, VkSwapchainTimingPropertiesEXT* swapchainTimingProperties, ulong* swapchainTimingPropertiesCounter)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSwapchainKHR, VkSwapchainTimingPropertiesEXT*, ulong*, VkResult>)vkGetSwapchainTimingPropertiesEXT_ptr.Value)(device, swapchain, swapchainTimingProperties, swapchainTimingPropertiesCounter);
+	}
+
+	public VkResult vkGetSwapchainTimeDomainPropertiesEXT(VkDevice device, VkSwapchainKHR swapchain, VkSwapchainTimeDomainPropertiesEXT* swapchainTimeDomainProperties, ulong* timeDomainsCounter)
+	{
+		return ((delegate* unmanaged<VkDevice, VkSwapchainKHR, VkSwapchainTimeDomainPropertiesEXT*, ulong*, VkResult>)vkGetSwapchainTimeDomainPropertiesEXT_ptr.Value)(device, swapchain, swapchainTimeDomainProperties, timeDomainsCounter);
+	}
+
+	public VkResult vkGetPastPresentationTimingEXT(VkDevice device, VkPastPresentationTimingInfoEXT* pastPresentationTimingInfo, VkPastPresentationTimingPropertiesEXT* pastPresentationTimingProperties)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPastPresentationTimingInfoEXT*, VkPastPresentationTimingPropertiesEXT*, VkResult>)vkGetPastPresentationTimingEXT_ptr.Value)(device, pastPresentationTimingInfo, pastPresentationTimingProperties);
 	}
 
 	public VkResult vkInitializePerformanceApiINTEL(VkDevice device, VkInitializePerformanceApiInfoINTEL* initializeInfo)
@@ -6372,6 +6499,16 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkTileMemoryBindInfoQCOM*, void>)vkCmdBindTileMemoryQCOM_ptr.Value)(commandBuffer, tileMemoryBindInfo);
 	}
 
+	public void vkCmdDecompressMemoryEXT(VkCommandBuffer commandBuffer, VkDecompressMemoryInfoEXT* decompressMemoryInfoEXT)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDecompressMemoryInfoEXT*, void>)vkCmdDecompressMemoryEXT_ptr.Value)(commandBuffer, decompressMemoryInfoEXT);
+	}
+
+	public void vkCmdDecompressMemoryIndirectCountEXT(VkCommandBuffer commandBuffer, VkMemoryDecompressionMethodFlagsEXT decompressionMethod, ulong indirectCommandsAddress, ulong indirectCommandsCountAddress, uint maxDecompressionCount, uint stride)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkMemoryDecompressionMethodFlagsEXT, ulong, ulong, uint, uint, void>)vkCmdDecompressMemoryIndirectCountEXT_ptr.Value)(commandBuffer, decompressionMethod, indirectCommandsAddress, indirectCommandsCountAddress, maxDecompressionCount, stride);
+	}
+
 	public VkResult vkCreateExternalComputeQueueNV(VkDevice device, VkExternalComputeQueueCreateInfoNV* createInfo, VkExternalComputeQueueNV* externalQueue)
 	{
 		return ((delegate* unmanaged<VkDevice, VkExternalComputeQueueCreateInfoNV*, VkAllocationCallbacks*, VkExternalComputeQueueNV*, VkResult>)vkCreateExternalComputeQueueNV_ptr.Value)(device, createInfo, default, externalQueue);
@@ -6530,9 +6667,19 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkIndirectExecutionSetEXT, uint, VkWriteIndirectExecutionSetShaderEXT*, void>)vkUpdateIndirectExecutionSetShaderEXT_ptr.Value)(device, indirectExecutionSet, executionSetWriteCount, executionSetWrites);
 	}
 
-	public void vkCmdEndRendering2EXT(VkCommandBuffer commandBuffer, VkRenderingEndInfoEXT* renderingEndInfo)
+	public void vkCmdEndRendering2EXT(VkCommandBuffer commandBuffer, VkRenderingEndInfoKHR* renderingEndInfo)
 	{
-		((delegate* unmanaged<VkCommandBuffer, VkRenderingEndInfoEXT*, void>)vkCmdEndRendering2EXT_ptr.Value)(commandBuffer, renderingEndInfo);
+		((delegate* unmanaged<VkCommandBuffer, VkRenderingEndInfoKHR*, void>)vkCmdEndRendering2EXT_ptr.Value)(commandBuffer, renderingEndInfo);
+	}
+
+	public void vkCmdBeginCustomResolveEXT(VkCommandBuffer commandBuffer, VkBeginCustomResolveInfoEXT* beginCustomResolveInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkBeginCustomResolveInfoEXT*, void>)vkCmdBeginCustomResolveEXT_ptr.Value)(commandBuffer, beginCustomResolveInfo);
+	}
+
+	public void vkCmdSetComputeOccupancyPriorityNV(VkCommandBuffer commandBuffer, VkComputeOccupancyPriorityParametersNV* parameters)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkComputeOccupancyPriorityParametersNV*, void>)vkCmdSetComputeOccupancyPriorityNV_ptr.Value)(commandBuffer, parameters);
 	}
 
 	public VkResult vkCreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAccelerationStructureKHR* accelerationStructure)

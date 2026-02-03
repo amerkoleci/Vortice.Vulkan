@@ -145,7 +145,8 @@ partial class CsCodeGenerator
         { "VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG", "Include" },
 
         // VkMemoryDecompressionMethodFlagBitsNV
-        { "VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV", "GDeflate_1_0" },
+        { "VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT", "GDeflate_1_0_EXT" },
+        { "VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV", "GDeflate_1_0_NV" },
 
         // VkDisplacementMicromapFormatNV
         { "VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV", "_64Triangles64Bytes" },
@@ -598,6 +599,12 @@ partial class CsCodeGenerator
                     continue;
                 }
 
+                // Already mapped with VkMemoryDecompressionMethodFlagBitsEXT
+                if (typedef.Name == "VkMemoryDecompressionMethodFlagsEXT")
+                {
+                    continue;
+                }
+
                 if (typedef.Name.EndsWith("Flags", StringComparison.OrdinalIgnoreCase)
                     || typedef.Name.EndsWith("FlagsKHR", StringComparison.OrdinalIgnoreCase)
                     || typedef.Name.EndsWith("FlagsEXT", StringComparison.OrdinalIgnoreCase)
@@ -684,6 +691,10 @@ partial class CsCodeGenerator
                     else if (fieldType.EndsWith("FlagBits3KHR"))
                     {
                         fieldType = fieldType.Replace("FlagBits3KHR", "Flags3KHR");
+                    }
+                    else if (fieldType.EndsWith("FlagBitsEXT"))
+                    {
+                        fieldType = fieldType.Replace("FlagBitsEXT", "FlagsEXT");
                     }
 
                     writer.WriteLine("[Flags]");
@@ -791,6 +802,10 @@ partial class CsCodeGenerator
                         else if (cleanEnumName.EndsWith("FlagBits3KHR"))
                         {
                             cleanEnumName = cleanEnumName.Replace("FlagBits3KHR", "Flags3KHR");
+                        }
+                        else if (cleanEnumName.EndsWith("FlagBitsEXT"))
+                        {
+                            cleanEnumName = cleanEnumName.Replace("FlagBitsEXT", "FlagsEXT");
                         }
 
                         s_enumConstants.Add($"{cleanEnumName} {cppField.Name} = {cleanEnumName}.{csFieldName}");

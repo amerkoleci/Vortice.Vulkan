@@ -207,6 +207,19 @@ unsafe partial class VkDeviceApi
 		}
 	}
 
+	public VkResult vkQueueSubmit2(VkQueue queue, VkSubmitInfo2 submit, VkFence fence)
+	{
+		return ((delegate* unmanaged<VkQueue, uint, VkSubmitInfo2*, VkFence, VkResult>)vkQueueSubmit2_ptr.Value)(queue, 1, &submit, fence);
+	}
+
+	public VkResult vkQueueSubmit2(VkQueue queue, Span<VkSubmitInfo2> submits, VkFence fence)
+	{
+		fixed (VkSubmitInfo2* submitsPtr = submits)
+		{
+			return ((delegate* unmanaged<VkQueue, uint, VkSubmitInfo2*, VkFence, VkResult>)vkQueueSubmit2_ptr.Value)(queue, (uint)submits.Length, submitsPtr, fence);
+		}
+	}
+
 	public VkResult vkGetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, out uint swapchainImageCount)
 	{
 		swapchainImageCount = default;

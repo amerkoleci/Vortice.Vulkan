@@ -162,6 +162,27 @@ public static class Program
             };
         }
 
+        if (OperatingSystem.IsWindows())
+        {
+            //@"C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0"
+            parserOptions.SystemIncludeFolders.AddRange(SdkResolver.ResolveStdLib());
+
+            // Windows Sdk candidates 10.0.22621.0, 10.0.26100.0
+            List<string> sdkPaths = SdkResolver.ResolveWindowsSdk("10.0.26100.0");
+            if (sdkPaths.Count > 0)
+            {
+                parserOptions.SystemIncludeFolders.AddRange(sdkPaths);
+            }
+            else
+            {
+                sdkPaths = SdkResolver.ResolveWindowsSdk("10.0.22621.0");
+                if (sdkPaths.Count > 0)
+                {
+                    parserOptions.SystemIncludeFolders.AddRange(sdkPaths);
+                }
+            }
+        }
+
         CppCompilation compilation = CppParser.ParseFile(headerFile, parserOptions);
 
         // Print diagnostic messages

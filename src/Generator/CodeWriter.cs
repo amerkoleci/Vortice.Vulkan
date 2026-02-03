@@ -12,7 +12,12 @@ public sealed class CodeWriter : IDisposable
 
     public int IndentLevel { get; private set; }
 
-    public CodeWriter(string fileName, bool enableNullable, string? @namespace, string[] usingNamespaces, string? codeBeforeNamespace = default)
+    public CodeWriter(string fileName,
+        bool enableNullable,
+        string? @namespace,
+        string[] usingNamespaces,
+        string? codeBeforeNamespace = default,
+        string[]? staticUsings = default)
     {
         _indentStrings = new string[10];
         for (int i = 0; i < _indentStrings.Length; i++)
@@ -40,6 +45,14 @@ public sealed class CodeWriter : IDisposable
         foreach (string ns in usingNamespaces)
         {
             _writer.WriteLine($"using {ns};");
+        }
+
+        if (staticUsings != null)
+        {
+            foreach (string ns in staticUsings)
+            {
+                _writer.WriteLine($"using static {ns};");
+            }
         }
 
         if (usingNamespaces.Length > 0)

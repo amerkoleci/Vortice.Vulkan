@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
     <Description>Vulkan low level bindings</Description>
     <PackageTags>3D graphics vulkan standard game gamedev</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -11,7 +11,7 @@
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>3.0.3</VersionPrefix>
+    <VersionPrefix>3.1.0</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 

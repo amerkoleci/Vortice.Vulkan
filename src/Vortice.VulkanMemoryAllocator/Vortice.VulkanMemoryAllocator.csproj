@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
     <Description>VulkanMemoryAllocator bindings.</Description>
     <IncludeContentInPack>true</IncludeContentInPack>
     <RootNamespace>Vortice.Vulkan</RootNamespace>
@@ -11,7 +11,7 @@
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>1.6.3</VersionPrefix>
+    <VersionPrefix>1.6.4</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 

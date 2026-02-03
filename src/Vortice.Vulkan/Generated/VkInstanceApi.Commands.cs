@@ -99,6 +99,7 @@ public unsafe partial class VkInstanceApi
 	public readonly PFN_vkVoidFunction vkCreateDebugUtilsMessengerEXT_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyDebugUtilsMessengerEXT_ptr;
 	public readonly PFN_vkVoidFunction vkSubmitDebugUtilsMessageEXT_ptr;
+	public readonly PFN_vkVoidFunction vkGetPhysicalDeviceDescriptorSizeEXT_ptr;
 	public readonly PFN_vkVoidFunction vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr;
 	public readonly PFN_vkVoidFunction vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr;
 	public readonly PFN_vkVoidFunction vkGetPhysicalDeviceToolPropertiesEXT_ptr;
@@ -113,6 +114,7 @@ public unsafe partial class VkInstanceApi
 	public readonly PFN_vkVoidFunction vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM_ptr;
 	public readonly PFN_vkVoidFunction vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM_ptr;
 	public readonly PFN_vkVoidFunction vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr;
+	public readonly PFN_vkVoidFunction vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM_ptr;
 	public readonly PFN_vkVoidFunction vkCreateAndroidSurfaceKHR_ptr;
 	public readonly PFN_vkVoidFunction vkCreateMetalSurfaceEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCreateViSurfaceNN_ptr;
@@ -212,6 +214,7 @@ public unsafe partial class VkInstanceApi
 		vkCreateDebugUtilsMessengerEXT_ptr = vkGetInstanceProcAddr(instance.Handle, "vkCreateDebugUtilsMessengerEXT"u8);
 		vkDestroyDebugUtilsMessengerEXT_ptr = vkGetInstanceProcAddr(instance.Handle, "vkDestroyDebugUtilsMessengerEXT"u8);
 		vkSubmitDebugUtilsMessageEXT_ptr = vkGetInstanceProcAddr(instance.Handle, "vkSubmitDebugUtilsMessageEXT"u8);
+		vkGetPhysicalDeviceDescriptorSizeEXT_ptr = vkGetInstanceProcAddr(instance.Handle, "vkGetPhysicalDeviceDescriptorSizeEXT"u8);
 		vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr = vkGetInstanceProcAddr(instance.Handle, "vkGetPhysicalDeviceMultisamplePropertiesEXT"u8);
 		vkGetPhysicalDeviceCalibrateableTimeDomainsEXT_ptr = vkGetInstanceProcAddr(instance.Handle, "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT"u8);
 		vkGetPhysicalDeviceToolPropertiesEXT_ptr = vkGetInstanceProcAddr(instance.Handle, "vkGetPhysicalDeviceToolPropertiesEXT"u8);
@@ -226,6 +229,7 @@ public unsafe partial class VkInstanceApi
 		vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM_ptr = vkGetInstanceProcAddr(instance.Handle, "vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM"u8);
 		vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM_ptr = vkGetInstanceProcAddr(instance.Handle, "vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM"u8);
 		vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr = vkGetInstanceProcAddr(instance.Handle, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV"u8);
+		vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM_ptr = vkGetInstanceProcAddr(instance.Handle, "vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM"u8);
 		vkCreateAndroidSurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, "vkCreateAndroidSurfaceKHR"u8);
 		vkCreateMetalSurfaceEXT_ptr = vkGetInstanceProcAddr(instance.Handle, "vkCreateMetalSurfaceEXT"u8);
 		vkCreateViSurfaceNN_ptr = vkGetInstanceProcAddr(instance.Handle, "vkCreateViSurfaceNN"u8);
@@ -1030,6 +1034,11 @@ public unsafe partial class VkInstanceApi
 		((delegate* unmanaged<VkInstance, VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void>)vkSubmitDebugUtilsMessageEXT_ptr.Value)(instance, messageSeverity, messageTypes, callbackData);
 	}
 
+	public ulong vkGetPhysicalDeviceDescriptorSizeEXT(VkPhysicalDevice physicalDevice, VkDescriptorType descriptorType)
+	{
+		return ((delegate* unmanaged<VkPhysicalDevice, VkDescriptorType, ulong>)vkGetPhysicalDeviceDescriptorSizeEXT_ptr.Value)(physicalDevice, descriptorType);
+	}
+
 	public void vkGetPhysicalDeviceMultisamplePropertiesEXT(VkPhysicalDevice physicalDevice, VkSampleCountFlags samples, VkMultisamplePropertiesEXT* multisampleProperties)
 	{
 		((delegate* unmanaged<VkPhysicalDevice, VkSampleCountFlags, VkMultisamplePropertiesEXT*, void>)vkGetPhysicalDeviceMultisamplePropertiesEXT_ptr.Value)(physicalDevice, samples, multisampleProperties);
@@ -1119,6 +1128,11 @@ public unsafe partial class VkInstanceApi
 	public VkResult vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeMatrixFlexibleDimensionsPropertiesNV* properties)
 	{
 		return ((delegate* unmanaged<VkPhysicalDevice, uint*, VkCooperativeMatrixFlexibleDimensionsPropertiesNV*, VkResult>)vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV_ptr.Value)(physicalDevice, propertyCount, properties);
+	}
+
+	public VkResult vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* counterCount, VkPerformanceCounterARM* counters, VkPerformanceCounterDescriptionARM* counterDescriptions)
+	{
+		return ((delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkPerformanceCounterARM*, VkPerformanceCounterDescriptionARM*, VkResult>)vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM_ptr.Value)(physicalDevice, queueFamilyIndex, counterCount, counters, counterDescriptions);
 	}
 
 	public VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)

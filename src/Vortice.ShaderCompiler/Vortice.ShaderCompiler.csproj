@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net9.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
     <Description>https://github.com/google/shaderc bindings.</Description>
     <IncludeContentInPack>true</IncludeContentInPack>
   </PropertyGroup>
 
   <!-- Version -->
   <PropertyGroup>
-    <VersionPrefix>1.8.0</VersionPrefix>
+    <VersionPrefix>1.9.0</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 

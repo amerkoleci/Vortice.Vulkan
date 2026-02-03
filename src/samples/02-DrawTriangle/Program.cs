@@ -231,7 +231,7 @@ public static unsafe class Program
 
         private void OnDraw(VkCommandBuffer commandBuffer, VkRenderingAttachmentInfo colorAttachment, VkExtent2D size)
         {
-            colorAttachment.clearValue = new (0.0f, 0.0f, 0.2f, 1.0f);
+            colorAttachment.clearValue = new(0.0f, 0.0f, 0.2f, 1.0f);
 
             // Begin the render pass.
             VkRenderingInfo renderingInfo = new()
@@ -255,11 +255,11 @@ public static unsafe class Program
                 minDepth = 0.0f,
                 maxDepth = 1.0f
             };
-            _graphicsDevice.DeviceApi.vkCmdSetViewport(commandBuffer, viewport);
+            _graphicsDevice.DeviceApi.vkCmdSetViewport(commandBuffer, 0, viewport);
 
             // Update dynamic scissor state
             VkRect2D scissor = new(VkOffset2D.Zero, MainWindow.Extent);
-            _graphicsDevice.DeviceApi.vkCmdSetScissor(commandBuffer, scissor);
+            _graphicsDevice.DeviceApi.vkCmdSetScissor(commandBuffer, 0, scissor);
 
             // Bind the rendering pipeline
             _graphicsDevice.DeviceApi.vkCmdBindPipeline(commandBuffer, VkPipelineBindPoint.Graphics, _pipeline);
