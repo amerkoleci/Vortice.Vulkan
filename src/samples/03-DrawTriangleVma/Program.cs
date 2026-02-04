@@ -58,7 +58,7 @@ public static unsafe class Program
             vmaCreateAllocator(in allocatorCreateInfo, out _allocator).CheckResult();
 
             VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = new();
-            _graphicsDevice.DeviceApi.vkCreatePipelineLayout(_graphicsDevice, in pipelineLayoutCreateInfo, null, out _pipelineLayout).CheckResult();
+            _graphicsDevice.DeviceApi.vkCreatePipelineLayout(in pipelineLayoutCreateInfo, null, out _pipelineLayout).CheckResult();
 
             // Create pipeline
             {
@@ -156,20 +156,20 @@ public static unsafe class Program
                 };
 
                 // Create rendering pipeline using the specified states
-                _graphicsDevice.DeviceApi.vkCreateGraphicsPipeline(_graphicsDevice, pipelineCreateInfo, out _pipeline).CheckResult();
+                _graphicsDevice.DeviceApi.vkCreateGraphicsPipeline(pipelineCreateInfo, out _pipeline).CheckResult();
 
-                _graphicsDevice.DeviceApi.vkDestroyShaderModule(_graphicsDevice, vertexShader);
-                _graphicsDevice.DeviceApi.vkDestroyShaderModule(_graphicsDevice, fragmentShader);
+                _graphicsDevice.DeviceApi.vkDestroyShaderModule(vertexShader);
+                _graphicsDevice.DeviceApi.vkDestroyShaderModule(fragmentShader);
             }
 
             {
                 // Create vertex buffer
-                ReadOnlySpan<VertexPositionColor> sourceData = new VertexPositionColor[]
-                {
+                ReadOnlySpan<VertexPositionColor> sourceData =
+                [
                     new VertexPositionColor(new Vector3(0f, 0.5f, 0.0f), new Vector4(1.0f, 0.0f, 0.0f, 1.0f)),
                     new VertexPositionColor(new Vector3(0.5f, -0.5f, 0.0f), new Vector4(0.0f, 1.0f, 0.0f, 1.0f)),
                     new VertexPositionColor(new Vector3(-0.5f, -0.5f, 0.0f), new Vector4(0.0f, 0.0f, 1.0f, 1.0f))
-                };
+                ];
 
                 uint vertexBufferSize = (uint)(sourceData.Length * VertexPositionColor.SizeInBytes);
 
@@ -215,8 +215,8 @@ public static unsafe class Program
         {
             _graphicsDevice.WaitIdle();
 
-            _graphicsDevice.DeviceApi.vkDestroyPipelineLayout(_graphicsDevice, _pipelineLayout);
-            _graphicsDevice.DeviceApi.vkDestroyPipeline(_graphicsDevice, _pipeline);
+            _graphicsDevice.DeviceApi.vkDestroyPipelineLayout(_pipelineLayout);
+            _graphicsDevice.DeviceApi.vkDestroyPipeline(_pipeline);
             _vertexBuffer.Destroy(_allocator);
 
             VmaTotalStatistics stats;

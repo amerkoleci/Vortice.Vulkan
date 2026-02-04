@@ -15,21 +15,21 @@ namespace Vortice.Vulkan;
 
 unsafe partial class VkInstanceApi
 {
-	public VkResult vkEnumeratePhysicalDevices(VkInstance instance, out uint physicalDeviceCount)
+	public VkResult vkEnumeratePhysicalDevices(out uint physicalDeviceCount)
 	{
 		physicalDeviceCount = default;
 		fixed (uint* physicalDeviceCountPtr = &physicalDeviceCount)
 		{
-			return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDevice*, VkResult>)vkEnumeratePhysicalDevices_ptr.Value)(instance, physicalDeviceCountPtr, default);
+			return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDevice*, VkResult>)vkEnumeratePhysicalDevices_ptr.Value)(Instance, physicalDeviceCountPtr, default);
 		}
 	}
 
-	public VkResult vkEnumeratePhysicalDevices(VkInstance instance, Span<VkPhysicalDevice> physicalDevices)
+	public VkResult vkEnumeratePhysicalDevices(Span<VkPhysicalDevice> physicalDevices)
 	{
 		uint physicalDeviceCount = checked((uint)physicalDevices.Length);
 		fixed (VkPhysicalDevice* physicalDevicesPtr = physicalDevices)
 		{
-			return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDevice*, VkResult>)vkEnumeratePhysicalDevices_ptr.Value)(instance, &physicalDeviceCount, physicalDevicesPtr);
+			return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDevice*, VkResult>)vkEnumeratePhysicalDevices_ptr.Value)(Instance, &physicalDeviceCount, physicalDevicesPtr);
 		}
 	}
 
@@ -285,21 +285,21 @@ unsafe partial class VkInstanceApi
 		}
 	}
 
-	public VkResult vkEnumeratePhysicalDeviceGroupsKHR(VkInstance instance, out uint physicalDeviceGroupCount)
+	public VkResult vkEnumeratePhysicalDeviceGroupsKHR(out uint physicalDeviceGroupCount)
 	{
 		physicalDeviceGroupCount = default;
 		fixed (uint* physicalDeviceGroupCountPtr = &physicalDeviceGroupCount)
 		{
-			return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>)vkEnumeratePhysicalDeviceGroupsKHR_ptr.Value)(instance, physicalDeviceGroupCountPtr, default);
+			return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>)vkEnumeratePhysicalDeviceGroupsKHR_ptr.Value)(Instance, physicalDeviceGroupCountPtr, default);
 		}
 	}
 
-	public VkResult vkEnumeratePhysicalDeviceGroupsKHR(VkInstance instance, Span<VkPhysicalDeviceGroupProperties> physicalDeviceGroupProperties)
+	public VkResult vkEnumeratePhysicalDeviceGroupsKHR(Span<VkPhysicalDeviceGroupProperties> physicalDeviceGroupProperties)
 	{
 		uint physicalDeviceGroupCount = checked((uint)physicalDeviceGroupProperties.Length);
 		fixed (VkPhysicalDeviceGroupProperties* physicalDeviceGroupPropertiesPtr = physicalDeviceGroupProperties)
 		{
-			return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>)vkEnumeratePhysicalDeviceGroupsKHR_ptr.Value)(instance, &physicalDeviceGroupCount, physicalDeviceGroupPropertiesPtr);
+			return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>)vkEnumeratePhysicalDeviceGroupsKHR_ptr.Value)(Instance, &physicalDeviceGroupCount, physicalDeviceGroupPropertiesPtr);
 		}
 	}
 

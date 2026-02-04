@@ -56,11 +56,11 @@ public sealed unsafe class Swapchain : IDisposable
             oldSwapchain = VkSwapchainKHR.Null
         };
 
-        device.DeviceApi.vkCreateSwapchainKHR(device.VkDevice, &createInfo, null, out Handle).CheckResult();
+        device.DeviceApi.vkCreateSwapchainKHR(&createInfo, null, out Handle).CheckResult();
 
-        device.DeviceApi.vkGetSwapchainImagesKHR(device.VkDevice, Handle, out uint swapChainImageCount).CheckResult();
+        device.DeviceApi.vkGetSwapchainImagesKHR(Handle, out uint swapChainImageCount).CheckResult();
         Span<VkImage> swapChainImages = stackalloc VkImage[(int)swapChainImageCount];
-        device.DeviceApi.vkGetSwapchainImagesKHR(device.VkDevice, Handle, swapChainImages).CheckResult();
+        device.DeviceApi.vkGetSwapchainImagesKHR(Handle, swapChainImages).CheckResult();
         _swapChainImages = swapChainImages.ToArray();
         _swapChainImageViews = new VkImageView[swapChainImageCount];
         Format = createInfo.imageFormat;
@@ -75,7 +75,7 @@ public sealed unsafe class Swapchain : IDisposable
                 new VkImageSubresourceRange(VkImageAspectFlags.Color, 0, 1, 0, 1)
                 );
 
-            device.DeviceApi.vkCreateImageView(Device.VkDevice, &viewCreateInfo, null, out _swapChainImageViews[i]).CheckResult();
+            device.DeviceApi.vkCreateImageView(&viewCreateInfo, null, out _swapChainImageViews[i]).CheckResult();
         }
     }
 
@@ -83,17 +83,17 @@ public sealed unsafe class Swapchain : IDisposable
     {
         for (int i = 0; i < _swapChainImageViews.Length; i++)
         {
-            Device.DeviceApi.vkDestroyImageView(Device, _swapChainImageViews[i]);
+            Device.DeviceApi.vkDestroyImageView(_swapChainImageViews[i]);
         }
 
         if (Handle != VkSwapchainKHR.Null)
         {
-            Device.DeviceApi.vkDestroySwapchainKHR(Device, Handle);
+            Device.DeviceApi.vkDestroySwapchainKHR(Handle);
         }
 
         if (_surface != VkSurfaceKHR.Null)
         {
-            Device.InstanceApi.vkDestroySurfaceKHR(Device.VkInstance, _surface);
+            Device.InstanceApi.vkDestroySurfaceKHR(_surface);
         }
     }
 

@@ -7,8 +7,8 @@ partial class CsCodeGenerator
 {
     private void GenerateFormatHelpers()
     {
-        if (_vulkanSpecification == null)
-            throw new InvalidOperationException();
+        if (_vulkanSpecification is null)
+            return;
 
         // Generate Functions
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "VkFormatUtils.cs"),

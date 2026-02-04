@@ -2,22 +2,20 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.Marshalling;
-using System.Text;
 
 namespace Vortice.Vulkan;
 
 public unsafe partial class VkDeviceApi
 {
-    public VkResult vkAllocateCommandBuffer(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, out VkCommandBuffer commandBuffer)
+    public VkResult vkAllocateCommandBuffer(VkCommandBufferAllocateInfo* allocateInfo, out VkCommandBuffer commandBuffer)
     {
         fixed (VkCommandBuffer* ptr = &commandBuffer)
         {
-            return vkAllocateCommandBuffers(device, allocateInfo, ptr);
+            return vkAllocateCommandBuffers(allocateInfo, ptr);
         }
     }
 
-    public VkResult vkAllocateCommandBuffer(VkDevice device, VkCommandPool commandPool, out VkCommandBuffer commandBuffer)
+    public VkResult vkAllocateCommandBuffer(VkCommandPool commandPool, out VkCommandBuffer commandBuffer)
     {
         VkCommandBufferAllocateInfo allocateInfo = new()
         {
@@ -28,11 +26,11 @@ public unsafe partial class VkDeviceApi
 
         fixed (VkCommandBuffer* ptr = &commandBuffer)
         {
-            return vkAllocateCommandBuffers(device, &allocateInfo, ptr);
+            return vkAllocateCommandBuffers(&allocateInfo, ptr);
         }
     }
 
-    public VkResult vkAllocateCommandBuffer(VkDevice device, VkCommandPool commandPool, VkCommandBufferLevel level, out VkCommandBuffer commandBuffer)
+    public VkResult vkAllocateCommandBuffer(VkCommandPool commandPool, VkCommandBufferLevel level, out VkCommandBuffer commandBuffer)
     {
         VkCommandBufferAllocateInfo allocateInfo = new()
         {
@@ -43,11 +41,11 @@ public unsafe partial class VkDeviceApi
 
         fixed (VkCommandBuffer* ptr = &commandBuffer)
         {
-            return vkAllocateCommandBuffers(device, &allocateInfo, ptr);
+            return vkAllocateCommandBuffers(&allocateInfo, ptr);
         }
     }
 
-    public VkResult vkCreateShaderModule(VkDevice device, nuint codeSize, byte* code, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
+    public VkResult vkCreateShaderModule(nuint codeSize, byte* code, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
     {
         VkShaderModuleCreateInfo createInfo = new()
         {
@@ -55,10 +53,10 @@ public unsafe partial class VkDeviceApi
             pCode = (uint*)code
         };
 
-        return vkCreateShaderModule(device, &createInfo, allocator, out shaderModule);
+        return vkCreateShaderModule(&createInfo, allocator, out shaderModule);
     }
 
-    public VkResult vkCreateShaderModule(VkDevice device, Span<byte> bytecode, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
+    public VkResult vkCreateShaderModule(Span<byte> bytecode, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
     {
         fixed (byte* bytecodePtr = bytecode)
         {
@@ -68,11 +66,11 @@ public unsafe partial class VkDeviceApi
                 pCode = (uint*)bytecodePtr
             };
 
-            return vkCreateShaderModule(device, &createInfo, allocator, out shaderModule);
+            return vkCreateShaderModule(&createInfo, allocator, out shaderModule);
         }
     }
 
-    public VkResult vkCreateShaderModule(VkDevice device, ReadOnlySpan<byte> bytecode, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
+    public VkResult vkCreateShaderModule(ReadOnlySpan<byte> bytecode, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule)
     {
         fixed (byte* bytecodePtr = bytecode)
         {
@@ -82,53 +80,53 @@ public unsafe partial class VkDeviceApi
                 pCode = (uint*)bytecodePtr
             };
 
-            return vkCreateShaderModule(device, &createInfo, allocator, out shaderModule);
+            return vkCreateShaderModule(&createInfo, allocator, out shaderModule);
         }
     }
 
-    public VkResult vkCreateGraphicsPipeline(VkDevice device, VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
+    public VkResult vkCreateGraphicsPipeline(VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
     {
         fixed (VkPipeline* pipelinePtr = &pipeline)
         {
-            return vkCreateGraphicsPipelines(device, VkPipelineCache.Null, 1, &createInfo, null, pipelinePtr);
+            return vkCreateGraphicsPipelines(VkPipelineCache.Null, 1, &createInfo, null, pipelinePtr);
         }
     }
 
-    public VkResult vkCreateGraphicsPipeline(VkDevice device, VkPipelineCache pipelineCache, VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
+    public VkResult vkCreateGraphicsPipeline(VkPipelineCache pipelineCache, VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
     {
         fixed (VkPipeline* pipelinePtr = &pipeline)
         {
-            return vkCreateGraphicsPipelines(device, pipelineCache, 1, &createInfo, null, pipelinePtr);
+            return vkCreateGraphicsPipelines(pipelineCache, 1, &createInfo, null, pipelinePtr);
         }
     }
 
-    public VkResult vkCreateGraphicsPipeline(VkDevice device, VkPipelineCache pipelineCache, VkGraphicsPipelineCreateInfo createInfo, VkPipeline* pipeline)
+    public VkResult vkCreateGraphicsPipeline(VkPipelineCache pipelineCache, VkGraphicsPipelineCreateInfo createInfo, VkPipeline* pipeline)
     {
-        return vkCreateGraphicsPipelines(device, pipelineCache, 1, &createInfo, null, pipeline);
+        return vkCreateGraphicsPipelines(pipelineCache, 1, &createInfo, null, pipeline);
     }
 
-    public VkResult vkCreateComputePipeline(VkDevice device, VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
+    public VkResult vkCreateComputePipeline(VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
     {
         fixed (VkPipeline* pipelinePtr = &pipeline)
         {
-            return vkCreateComputePipelines(device, VkPipelineCache.Null, 1, &createInfo, null, pipelinePtr);
+            return vkCreateComputePipelines(VkPipelineCache.Null, 1, &createInfo, null, pipelinePtr);
         }
     }
 
-    public VkResult vkCreateComputePipeline(VkDevice device, VkPipelineCache pipelineCache, VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
+    public VkResult vkCreateComputePipeline(VkPipelineCache pipelineCache, VkComputePipelineCreateInfo createInfo, out VkPipeline pipeline)
     {
         fixed (VkPipeline* pipelinePtr = &pipeline)
         {
-            return vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, pipelinePtr);
+            return vkCreateComputePipelines(pipelineCache, 1, &createInfo, null, pipelinePtr);
         }
     }
 
-    public VkResult vkCreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, VkComputePipelineCreateInfo createInfo, VkPipeline* pipeline)
+    public VkResult vkCreateComputePipelines(VkPipelineCache pipelineCache, VkComputePipelineCreateInfo createInfo, VkPipeline* pipeline)
     {
-        return vkCreateComputePipelines(device, pipelineCache, 1, &createInfo, null, pipeline);
+        return vkCreateComputePipelines(pipelineCache, 1, &createInfo, null, pipeline);
     }
 
-    public VkDescriptorPool vkCreateDescriptorPool(VkDevice device, Span<VkDescriptorPoolSize> poolSizes, uint maxSets = 1u)
+    public VkDescriptorPool vkCreateDescriptorPool(Span<VkDescriptorPoolSize> poolSizes, uint maxSets = 1u)
     {
         fixed (VkDescriptorPoolSize* poolSizesPtr = poolSizes)
         {
@@ -140,12 +138,12 @@ public unsafe partial class VkDeviceApi
             };
 
             VkDescriptorPool descriptorPool;
-            vkCreateDescriptorPool(device, &createInfo, null, &descriptorPool).CheckResult();
+            vkCreateDescriptorPool(&createInfo, null, &descriptorPool).CheckResult();
             return descriptorPool;
         }
     }
 
-    public VkResult vkCreateDescriptorPool(VkDevice device, Span<VkDescriptorPoolSize> poolSizes, uint maxSets, out VkDescriptorPool descriptorPool)
+    public VkResult vkCreateDescriptorPool(Span<VkDescriptorPoolSize> poolSizes, uint maxSets, out VkDescriptorPool descriptorPool)
     {
         Unsafe.SkipInit(out descriptorPool);
 
@@ -160,36 +158,36 @@ public unsafe partial class VkDeviceApi
                     pPoolSizes = poolSizesPtr
                 };
 
-                return vkCreateDescriptorPool(device, &createInfo, null, descriptorPoolPtr);
+                return vkCreateDescriptorPool(&createInfo, null, descriptorPoolPtr);
             }
         }
     }
 
-    public void vkUpdateDescriptorSets(VkDevice device, VkWriteDescriptorSet writeDescriptorSet)
+    public void vkUpdateDescriptorSets(VkWriteDescriptorSet writeDescriptorSet)
     {
-        vkUpdateDescriptorSets(device, 1, &writeDescriptorSet, 0, null);
+        vkUpdateDescriptorSets(1, &writeDescriptorSet, 0, null);
     }
 
-    public void vkUpdateDescriptorSets(VkDevice device, VkWriteDescriptorSet writeDescriptorSet, VkCopyDescriptorSet copyDescriptorSet)
+    public void vkUpdateDescriptorSets(VkWriteDescriptorSet writeDescriptorSet, VkCopyDescriptorSet copyDescriptorSet)
     {
-        vkUpdateDescriptorSets(device, 1, &writeDescriptorSet, 1, &copyDescriptorSet);
+        vkUpdateDescriptorSets(1, &writeDescriptorSet, 1, &copyDescriptorSet);
     }
 
-    public void vkUpdateDescriptorSets(VkDevice device, Span<VkWriteDescriptorSet> writeDescriptorSets)
+    public void vkUpdateDescriptorSets(Span<VkWriteDescriptorSet> writeDescriptorSets)
     {
         fixed (VkWriteDescriptorSet* writeDescriptorSetsPtr = writeDescriptorSets)
         {
-            vkUpdateDescriptorSets(device, (uint)writeDescriptorSets.Length, writeDescriptorSetsPtr, 0, null);
+            vkUpdateDescriptorSets((uint)writeDescriptorSets.Length, writeDescriptorSetsPtr, 0, null);
         }
     }
 
-    public void vkUpdateDescriptorSets(VkDevice device, Span<VkWriteDescriptorSet> writeDescriptorSets, Span<VkCopyDescriptorSet> copyDescriptorSets)
+    public void vkUpdateDescriptorSets(Span<VkWriteDescriptorSet> writeDescriptorSets, Span<VkCopyDescriptorSet> copyDescriptorSets)
     {
         fixed (VkWriteDescriptorSet* writeDescriptorSetsPtr = writeDescriptorSets)
         {
             fixed (VkCopyDescriptorSet* copyDescriptorSetsPtr = copyDescriptorSets)
             {
-                vkUpdateDescriptorSets(device, (uint)writeDescriptorSets.Length, writeDescriptorSetsPtr, (uint)copyDescriptorSets.Length, copyDescriptorSetsPtr);
+                vkUpdateDescriptorSets((uint)writeDescriptorSets.Length, writeDescriptorSetsPtr, (uint)copyDescriptorSets.Length, copyDescriptorSetsPtr);
             }
         }
     }
@@ -278,28 +276,28 @@ public unsafe partial class VkDeviceApi
         return vkQueuePresentKHR(queue, &presentInfo);
     }
 
-    public VkResult vkCreateCommandPool(VkDevice device, uint queueFamilyIndex, out VkCommandPool commandPool)
+    public VkResult vkCreateCommandPool(uint queueFamilyIndex, out VkCommandPool commandPool)
     {
         VkCommandPoolCreateInfo createInfo = new()
         {
             queueFamilyIndex = queueFamilyIndex
         };
-        return vkCreateCommandPool(device, &createInfo, null, out commandPool);
+        return vkCreateCommandPool(&createInfo, null, out commandPool);
     }
 
-    public VkResult vkCreateCommandPool(VkDevice device, VkCommandPoolCreateFlags flags, uint queueFamilyIndex, out VkCommandPool commandPool)
+    public VkResult vkCreateCommandPool(VkCommandPoolCreateFlags flags, uint queueFamilyIndex, out VkCommandPool commandPool)
     {
         VkCommandPoolCreateInfo createInfo = new()
         {
             flags = flags,
             queueFamilyIndex = queueFamilyIndex
         };
-        return vkCreateCommandPool(device, &createInfo, null, out commandPool);
+        return vkCreateCommandPool(&createInfo, null, out commandPool);
     }
 
-    public void vkFreeCommandBuffers(VkDevice device, VkCommandPool commandPool, VkCommandBuffer commandBuffer)
+    public void vkFreeCommandBuffers(VkCommandPool commandPool, VkCommandBuffer commandBuffer)
     {
-        vkFreeCommandBuffers(device, commandPool, 1, &commandBuffer);
+        vkFreeCommandBuffers(commandPool, 1, &commandBuffer);
     }
 
     public VkResult vkBeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferUsageFlags flags)
@@ -312,25 +310,25 @@ public unsafe partial class VkDeviceApi
         return vkBeginCommandBuffer(commandBuffer, &beginInfo);
     }
 
-    public VkResult vkCreateSemaphore(VkDevice device, out VkSemaphore semaphore)
+    public VkResult vkCreateSemaphore(out VkSemaphore semaphore)
     {
         VkSemaphoreCreateInfo createInfo = new();
-        return vkCreateSemaphore(device, &createInfo, null, out semaphore);
+        return vkCreateSemaphore(&createInfo, null, out semaphore);
     }
 
-    public VkResult vkCreateFence(VkDevice device, out VkFence fence)
+    public VkResult vkCreateFence(out VkFence fence)
     {
         VkFenceCreateInfo createInfo = new();
-        return vkCreateFence(device, &createInfo, null, out fence);
+        return vkCreateFence(&createInfo, null, out fence);
     }
 
-    public VkResult vkCreateFence(VkDevice device, VkFenceCreateFlags flags, out VkFence fence)
+    public VkResult vkCreateFence(VkFenceCreateFlags flags, out VkFence fence)
     {
         VkFenceCreateInfo createInfo = new(flags);
-        return vkCreateFence(device, &createInfo, null, out fence);
+        return vkCreateFence(&createInfo, null, out fence);
     }
 
-    public VkResult vkCreateTypedSemaphore(VkDevice device, VkSemaphoreType type, ulong initialValue, out VkSemaphore semaphore)
+    public VkResult vkCreateTypedSemaphore(VkSemaphoreType type, ulong initialValue, out VkSemaphore semaphore)
     {
         VkSemaphoreTypeCreateInfo typeCreateiInfo = new()
         {
@@ -345,11 +343,10 @@ public unsafe partial class VkDeviceApi
             flags = VkSemaphoreCreateFlags.None
         };
 
-        return vkCreateSemaphore(device, &createInfo, null, out semaphore);
+        return vkCreateSemaphore(&createInfo, null, out semaphore);
     }
 
     public VkResult vkCreateFramebuffer(
-        VkDevice device,
         VkRenderPass renderPass,
         Span<VkImageView> attachments,
         uint width,
@@ -369,12 +366,11 @@ public unsafe partial class VkDeviceApi
                 layers = layers
             };
 
-            return vkCreateFramebuffer(device, &createInfo, null, out framebuffer);
+            return vkCreateFramebuffer(&createInfo, null, out framebuffer);
         }
     }
 
     public VkResult vkCreateFramebuffer(
-        VkDevice device,
         VkRenderPass renderPass,
         Span<VkImageView> attachments,
         in VkExtent2D extent,
@@ -393,12 +389,11 @@ public unsafe partial class VkDeviceApi
                 layers = layers
             };
 
-            return vkCreateFramebuffer(device, &createInfo, null, out framebuffer);
+            return vkCreateFramebuffer(&createInfo, null, out framebuffer);
         }
     }
 
     public VkResult vkCreatePipelineLayout(
-        VkDevice device,
         Span<VkDescriptorSetLayout> setLayouts,
         Span<VkPushConstantRange> pushConstantRanges,
         out VkPipelineLayout pipelineLayout)
@@ -416,7 +411,7 @@ public unsafe partial class VkDeviceApi
                     pPushConstantRanges = pushConstantRangesPtr,
                 };
 
-                return vkCreatePipelineLayout(device, &createInfo, null, out pipelineLayout);
+                return vkCreatePipelineLayout(&createInfo, null, out pipelineLayout);
             }
         }
     }

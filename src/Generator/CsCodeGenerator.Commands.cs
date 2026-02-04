@@ -341,22 +341,22 @@ partial class CsCodeGenerator
                         CppFunction cppFunction = command.Value;
 
                         bool canUseOut = _outReturnFunctions.Contains(cppFunction.Name);
-                        WriteFunctionInvocation(writer, cppFunction, false, instance: true);
+                        WriteFunctionInvocation(writer, cppFunction, false, instance: true, firstParameterType: "VkInstance", firstParameterValue: "Instance");
 
                         if (command.Key.StartsWith("vkCreate")
                             && command.Key != "vkCreateDeferredOperationKHR")
                         {
-                            WriteFunctionInvocation(writer, cppFunction, false, true, instance: true);
+                            WriteFunctionInvocation(writer, cppFunction, false, true, instance: true, firstParameterType: "VkInstance", firstParameterValue: "Instance");
                         }
 
                         if (canUseOut)
                         {
-                            WriteFunctionInvocation(writer, cppFunction, true, instance: true);
+                            WriteFunctionInvocation(writer, cppFunction, true, instance: true, firstParameterType: "VkInstance", firstParameterValue: "Instance");
 
                             if (command.Key.StartsWith("vkCreate")
                                 && command.Key != "vkCreateDeferredOperationKHR")
                             {
-                                WriteFunctionInvocation(writer, cppFunction, true, true, instance: true);
+                                WriteFunctionInvocation(writer, cppFunction, true, true, instance: true, firstParameterType: "VkInstance", firstParameterValue: "Instance");
                             }
                         }
                     }
@@ -388,22 +388,22 @@ partial class CsCodeGenerator
                         CppFunction cppFunction = command.Value;
 
                         bool canUseOut = _outReturnFunctions.Contains(cppFunction.Name);
-                        WriteFunctionInvocation(writer, cppFunction, false, instance: true);
+                        WriteFunctionInvocation(writer, cppFunction, false, instance: true, firstParameterType: "VkDevice", firstParameterValue: "Device");
 
                         if (command.Key.StartsWith("vkCreate")
                             && command.Key != "vkCreateDeferredOperationKHR")
                         {
-                            WriteFunctionInvocation(writer, cppFunction, false, true, instance: true);
+                            WriteFunctionInvocation(writer, cppFunction, false, true, instance: true, firstParameterType: "VkDevice", firstParameterValue: "Device");
                         }
 
                         if (canUseOut)
                         {
-                            WriteFunctionInvocation(writer, cppFunction, true, instance: true);
+                            WriteFunctionInvocation(writer, cppFunction, true, instance: true, firstParameterType: "VkDevice", firstParameterValue: "Device");
 
                             if (command.Key.StartsWith("vkCreate")
                                 && command.Key != "vkCreateDeferredOperationKHR")
                             {
-                                WriteFunctionInvocation(writer, cppFunction, true, true, instance: true);
+                                WriteFunctionInvocation(writer, cppFunction, true, true, instance: true, firstParameterType: "VkDevice", firstParameterValue: "Device");
                             }
                         }
                     }
@@ -458,14 +458,16 @@ partial class CsCodeGenerator
         CppFunction cppFunction,
         bool canUseOut,
         bool inParameters = false,
-        bool instance = false)
+        bool instance = false,
+        string? firstParameterType = default,
+        string? firstParameterValue = default)
     {
         bool hasAllocationCallbacks = _options.IsVulkan ? HasAllocationCallbacks(cppFunction) : false;
-        WriteFunctionInvocationInner(writer, cppFunction, canUseOut, inParameters, instance, true);
+        WriteFunctionInvocationInner(writer, cppFunction, canUseOut, inParameters, instance, true, firstParameterType, firstParameterValue);
 
         if (hasAllocationCallbacks)
         {
-            WriteFunctionInvocationInner(writer, cppFunction, canUseOut, inParameters, instance, false);
+            WriteFunctionInvocationInner(writer, cppFunction, canUseOut, inParameters, instance, false, firstParameterType, firstParameterValue);
         }
     }
 
@@ -474,10 +476,12 @@ partial class CsCodeGenerator
         bool canUseOut,
         bool inParameters,
         bool instance,
-        bool skipAllocationCallbacks)
+        bool skipAllocationCallbacks,
+        string? firstParameterType = default,
+        string? firstParameterValue = default)
     {
         string returnCsName = GetCsTypeName(cppFunction.ReturnType);
-        string argumentsString = GetParameterSignature(cppFunction, canUseOut, inParameters, skipAllocationCallbacks);
+        string argumentsString = GetParameterSignature(cppFunction, canUseOut, inParameters, skipAllocationCallbacks, firstParameterType);
         string modifier = "public";
         if (instance == false)
             modifier += " static";
@@ -584,7 +588,17 @@ partial class CsCodeGenerator
                     }
                     else
                     {
-                        writer.Write($"{paramCsName}");
+                        if (index == 0
+                            && !string.IsNullOrEmpty(firstParameterType)
+                            && !string.IsNullOrEmpty(firstParameterValue)
+                            && paramCsTypeName == firstParameterType)
+                        {
+                            writer.Write($"{firstParameterValue}");
+                        }
+                        else
+                        {
+                            writer.Write($"{paramCsName}");
+                        }
                     }
 
                     if (index < cppFunction.Parameters.Count - 1)
@@ -665,18 +679,22 @@ partial class CsCodeGenerator
         return _instanceFunctions.Contains(name);
     }
 
-    public static string GetParameterSignature(CppFunction cppFunction, bool canUseOut, bool inParameters, bool skipAllocationCallbacks = false)
+    public static string GetParameterSignature(CppFunction cppFunction,
+        bool canUseOut,
+        bool inParameters,
+        bool skipAllocationCallbacks = false,
+        string? firstParameterType = default)
     {
-        return GetParameterSignature(cppFunction.Parameters, canUseOut, inParameters, skipAllocationCallbacks);
+        return GetParameterSignature(cppFunction.Parameters, canUseOut, inParameters, skipAllocationCallbacks, firstParameterType);
     }
 
     private static string GetParameterSignature(IList<CppParameter> parameters,
         bool canUseOut,
         bool inParameters,
-        bool skipAllocationCallbacks = false)
+        bool skipAllocationCallbacks = false,
+        string? firstParameterType = default)
     {
         StringBuilder argumentBuilder = new();
-        int index = 0;
 
         IList<CppParameter> processParameters;
         if (skipAllocationCallbacks)
@@ -687,7 +705,31 @@ partial class CsCodeGenerator
             {
                 string paramCsTypeName = GetCsTypeName(cppParameter.Type);
 
+                if (processParameters.Count == 0
+                    && !string.IsNullOrEmpty(firstParameterType)
+                    && paramCsTypeName == firstParameterType)
+                {
+                    continue;
+                }
+
                 if (paramCsTypeName == "VkAllocationCallbacks*")
+                {
+                    continue;
+                }
+
+                processParameters.Add(cppParameter);
+            }
+        }
+        else if (!string.IsNullOrEmpty(firstParameterType))
+        {
+            processParameters = [];
+
+            foreach (CppParameter cppParameter in parameters)
+            {
+                string paramCsTypeName = GetCsTypeName(cppParameter.Type);
+
+                if (processParameters.Count == 0 &&
+                    paramCsTypeName == firstParameterType)
                 {
                     continue;
                 }
@@ -700,6 +742,8 @@ partial class CsCodeGenerator
             processParameters = parameters;
         }
 
+
+        int index = 0;
         foreach (CppParameter cppParameter in processParameters)
         {
             string direction = string.Empty;

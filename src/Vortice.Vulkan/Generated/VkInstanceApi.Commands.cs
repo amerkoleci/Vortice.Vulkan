@@ -245,19 +245,19 @@ public unsafe partial class VkInstanceApi
 		vkCreateXlibSurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, "vkCreateXlibSurfaceKHR"u8);
 		vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, "vkGetPhysicalDeviceXlibPresentationSupportKHR"u8);
 	}
-	public void vkDestroyInstance(VkInstance instance)
+	public void vkDestroyInstance()
 	{
-		((delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void>)vkDestroyInstance_ptr.Value)(instance, default);
+		((delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void>)vkDestroyInstance_ptr.Value)(Instance, default);
 	}
 
-	public void vkDestroyInstance(VkInstance instance, VkAllocationCallbacks* allocator)
+	public void vkDestroyInstance(VkAllocationCallbacks* allocator)
 	{
-		((delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void>)vkDestroyInstance_ptr.Value)(instance, allocator);
+		((delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void>)vkDestroyInstance_ptr.Value)(Instance, allocator);
 	}
 
-	public VkResult vkEnumeratePhysicalDevices(VkInstance instance, uint* physicalDeviceCount, VkPhysicalDevice* physicalDevices)
+	public VkResult vkEnumeratePhysicalDevices(uint* physicalDeviceCount, VkPhysicalDevice* physicalDevices)
 	{
-		return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDevice*, VkResult>)vkEnumeratePhysicalDevices_ptr.Value)(instance, physicalDeviceCount, physicalDevices);
+		return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDevice*, VkResult>)vkEnumeratePhysicalDevices_ptr.Value)(Instance, physicalDeviceCount, physicalDevices);
 	}
 
 	public void vkGetPhysicalDeviceFeatures(VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures* features)
@@ -432,9 +432,9 @@ public unsafe partial class VkInstanceApi
 		((delegate* unmanaged<VkPhysicalDevice, VkFormat, VkImageType, VkSampleCountFlags, VkImageUsageFlags, VkImageTiling, uint*, VkSparseImageFormatProperties*, void>)vkGetPhysicalDeviceSparseImageFormatProperties_ptr.Value)(physicalDevice, format, type, samples, usage, tiling, propertyCount, properties);
 	}
 
-	public VkResult vkEnumeratePhysicalDeviceGroups(VkInstance instance, uint* physicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* physicalDeviceGroupProperties)
+	public VkResult vkEnumeratePhysicalDeviceGroups(uint* physicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* physicalDeviceGroupProperties)
 	{
-		return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>)vkEnumeratePhysicalDeviceGroups_ptr.Value)(instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
+		return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>)vkEnumeratePhysicalDeviceGroups_ptr.Value)(Instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
 	}
 
 	public void vkGetPhysicalDeviceFeatures2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures2* features)
@@ -492,14 +492,14 @@ public unsafe partial class VkInstanceApi
 		return ((delegate* unmanaged<VkPhysicalDevice, uint*, VkPhysicalDeviceToolProperties*, VkResult>)vkGetPhysicalDeviceToolProperties_ptr.Value)(physicalDevice, toolCount, toolProperties);
 	}
 
-	public void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface)
+	public void vkDestroySurfaceKHR(VkSurfaceKHR surface)
 	{
-		((delegate* unmanaged<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void>)vkDestroySurfaceKHR_ptr.Value)(instance, surface, default);
+		((delegate* unmanaged<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void>)vkDestroySurfaceKHR_ptr.Value)(Instance, surface, default);
 	}
 
-	public void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* allocator)
+	public void vkDestroySurfaceKHR(VkSurfaceKHR surface, VkAllocationCallbacks* allocator)
 	{
-		((delegate* unmanaged<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void>)vkDestroySurfaceKHR_ptr.Value)(instance, surface, allocator);
+		((delegate* unmanaged<VkInstance, VkSurfaceKHR, VkAllocationCallbacks*, void>)vkDestroySurfaceKHR_ptr.Value)(Instance, surface, allocator);
 	}
 
 	public VkResult vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, VkBool32* supported)
@@ -654,53 +654,53 @@ public unsafe partial class VkInstanceApi
 		}
 	}
 
-	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkDisplaySurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(instance, createInfo, default, surface);
+		return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(Instance, createInfo, default, surface);
 	}
 
-	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkDisplaySurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(instance, createInfo, allocator, surface);
+		return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(Instance, createInfo, allocator, surface);
 	}
 
-	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, in VkDisplaySurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
-	{
-		fixed (VkDisplaySurfaceCreateInfoKHR* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(instance, createInfoPtr, default, surface);
-		}
-	}
-
-	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, in VkDisplaySurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateDisplayPlaneSurfaceKHR(in VkDisplaySurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
 	{
 		fixed (VkDisplaySurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(instance, createInfoPtr, allocator, surface);
+			return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(Instance, createInfoPtr, default, surface);
 		}
 	}
 
-	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, out VkSurfaceKHR surface)
+	public VkResult vkCreateDisplayPlaneSurfaceKHR(in VkDisplaySurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		fixed (VkDisplaySurfaceCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(Instance, createInfoPtr, allocator, surface);
+		}
+	}
+
+	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkDisplaySurfaceCreateInfoKHR* createInfo, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(instance, createInfo, default, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(Instance, createInfo, default, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkDisplaySurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(instance, createInfo, allocator, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(Instance, createInfo, allocator, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, in VkDisplaySurfaceCreateInfoKHR createInfo, out VkSurfaceKHR surface)
+	public VkResult vkCreateDisplayPlaneSurfaceKHR(in VkDisplaySurfaceCreateInfoKHR createInfo, out VkSurfaceKHR surface)
 	{
 		fixed (VkDisplaySurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
@@ -708,12 +708,12 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkSurfaceKHR* surfacePtr = &surface)
 			{
-				return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(instance, createInfoPtr, default, surfacePtr);
+				return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(Instance, createInfoPtr, default, surfacePtr);
 			}
 		}
 	}
 
-	public VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, in VkDisplaySurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateDisplayPlaneSurfaceKHR(in VkDisplaySurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		fixed (VkDisplaySurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
@@ -721,7 +721,7 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkSurfaceKHR* surfacePtr = &surface)
 			{
-				return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(instance, createInfoPtr, allocator, surfacePtr);
+				return ((delegate* unmanaged<VkInstance, VkDisplaySurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateDisplayPlaneSurfaceKHR_ptr.Value)(Instance, createInfoPtr, allocator, surfacePtr);
 			}
 		}
 	}
@@ -771,9 +771,9 @@ public unsafe partial class VkInstanceApi
 		((delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceSparseImageFormatInfo2*, uint*, VkSparseImageFormatProperties2*, void>)vkGetPhysicalDeviceSparseImageFormatProperties2KHR_ptr.Value)(physicalDevice, formatInfo, propertyCount, properties);
 	}
 
-	public VkResult vkEnumeratePhysicalDeviceGroupsKHR(VkInstance instance, uint* physicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* physicalDeviceGroupProperties)
+	public VkResult vkEnumeratePhysicalDeviceGroupsKHR(uint* physicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* physicalDeviceGroupProperties)
 	{
-		return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>)vkEnumeratePhysicalDeviceGroupsKHR_ptr.Value)(instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
+		return ((delegate* unmanaged<VkInstance, uint*, VkPhysicalDeviceGroupProperties*, VkResult>)vkEnumeratePhysicalDeviceGroupsKHR_ptr.Value)(Instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
 	}
 
 	public void vkGetPhysicalDeviceExternalBufferPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* externalBufferInfo, VkExternalBufferProperties* externalBufferProperties)
@@ -851,45 +851,45 @@ public unsafe partial class VkInstanceApi
 		return ((delegate* unmanaged<VkPhysicalDevice, uint*, VkTimeDomainKHR*, VkResult>)vkGetPhysicalDeviceCalibrateableTimeDomainsKHR_ptr.Value)(physicalDevice, timeDomainCount, timeDomains);
 	}
 
-	public VkResult vkCreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, VkDebugReportCallbackEXT* callback)
+	public VkResult vkCreateDebugReportCallbackEXT(VkDebugReportCallbackCreateInfoEXT* createInfo, VkDebugReportCallbackEXT* callback)
 	{
-		return ((delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>)vkCreateDebugReportCallbackEXT_ptr.Value)(instance, createInfo, default, callback);
+		return ((delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>)vkCreateDebugReportCallbackEXT_ptr.Value)(Instance, createInfo, default, callback);
 	}
 
-	public VkResult vkCreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkDebugReportCallbackEXT* callback)
+	public VkResult vkCreateDebugReportCallbackEXT(VkDebugReportCallbackCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkDebugReportCallbackEXT* callback)
 	{
-		return ((delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>)vkCreateDebugReportCallbackEXT_ptr.Value)(instance, createInfo, allocator, callback);
+		return ((delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>)vkCreateDebugReportCallbackEXT_ptr.Value)(Instance, createInfo, allocator, callback);
 	}
 
-	public VkResult vkCreateDebugReportCallbackEXT(VkInstance instance, in VkDebugReportCallbackCreateInfoEXT createInfo, VkDebugReportCallbackEXT* callback)
+	public VkResult vkCreateDebugReportCallbackEXT(in VkDebugReportCallbackCreateInfoEXT createInfo, VkDebugReportCallbackEXT* callback)
 	{
 		fixed (VkDebugReportCallbackCreateInfoEXT* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>)vkCreateDebugReportCallbackEXT_ptr.Value)(instance, createInfoPtr, default, callback);
+			return ((delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>)vkCreateDebugReportCallbackEXT_ptr.Value)(Instance, createInfoPtr, default, callback);
 		}
 	}
 
-	public VkResult vkCreateDebugReportCallbackEXT(VkInstance instance, in VkDebugReportCallbackCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkDebugReportCallbackEXT* callback)
+	public VkResult vkCreateDebugReportCallbackEXT(in VkDebugReportCallbackCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkDebugReportCallbackEXT* callback)
 	{
 		fixed (VkDebugReportCallbackCreateInfoEXT* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>)vkCreateDebugReportCallbackEXT_ptr.Value)(instance, createInfoPtr, allocator, callback);
+			return ((delegate* unmanaged<VkInstance, VkDebugReportCallbackCreateInfoEXT*, VkAllocationCallbacks*, VkDebugReportCallbackEXT*, VkResult>)vkCreateDebugReportCallbackEXT_ptr.Value)(Instance, createInfoPtr, allocator, callback);
 		}
 	}
 
-	public void vkDestroyDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackEXT callback)
+	public void vkDestroyDebugReportCallbackEXT(VkDebugReportCallbackEXT callback)
 	{
-		((delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void>)vkDestroyDebugReportCallbackEXT_ptr.Value)(instance, callback, default);
+		((delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void>)vkDestroyDebugReportCallbackEXT_ptr.Value)(Instance, callback, default);
 	}
 
-	public void vkDestroyDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackEXT callback, VkAllocationCallbacks* allocator)
+	public void vkDestroyDebugReportCallbackEXT(VkDebugReportCallbackEXT callback, VkAllocationCallbacks* allocator)
 	{
-		((delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void>)vkDestroyDebugReportCallbackEXT_ptr.Value)(instance, callback, allocator);
+		((delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void>)vkDestroyDebugReportCallbackEXT_ptr.Value)(Instance, callback, allocator);
 	}
 
-	public void vkDebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, ulong location, int messageCode, byte* layerPrefix, byte* message)
+	public void vkDebugReportMessageEXT(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, ulong location, int messageCode, byte* layerPrefix, byte* message)
 	{
-		((delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, ulong, int, byte*, byte*, void>)vkDebugReportMessageEXT_ptr.Value)(instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
+		((delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, ulong, int, byte*, byte*, void>)vkDebugReportMessageEXT_ptr.Value)(Instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
 	}
 
 	public VkResult vkGetPhysicalDeviceExternalImageFormatPropertiesNV(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkExternalMemoryHandleTypeFlagsNV externalHandleType, VkExternalImageFormatPropertiesNV* externalImageFormatProperties)
@@ -947,53 +947,53 @@ public unsafe partial class VkInstanceApi
 		((delegate* unmanaged<VkCommandBuffer, VkDebugUtilsLabelEXT*, void>)vkCmdInsertDebugUtilsLabelEXT_ptr.Value)(commandBuffer, labelInfo);
 	}
 
-	public VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerCreateInfoEXT* createInfo, VkDebugUtilsMessengerEXT* messenger)
+	public VkResult vkCreateDebugUtilsMessengerEXT(VkDebugUtilsMessengerCreateInfoEXT* createInfo, VkDebugUtilsMessengerEXT* messenger)
 	{
-		return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(instance, createInfo, default, messenger);
+		return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(Instance, createInfo, default, messenger);
 	}
 
-	public VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkDebugUtilsMessengerEXT* messenger)
+	public VkResult vkCreateDebugUtilsMessengerEXT(VkDebugUtilsMessengerCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkDebugUtilsMessengerEXT* messenger)
 	{
-		return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(instance, createInfo, allocator, messenger);
+		return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(Instance, createInfo, allocator, messenger);
 	}
 
-	public VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, in VkDebugUtilsMessengerCreateInfoEXT createInfo, VkDebugUtilsMessengerEXT* messenger)
-	{
-		fixed (VkDebugUtilsMessengerCreateInfoEXT* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(instance, createInfoPtr, default, messenger);
-		}
-	}
-
-	public VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, in VkDebugUtilsMessengerCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkDebugUtilsMessengerEXT* messenger)
+	public VkResult vkCreateDebugUtilsMessengerEXT(in VkDebugUtilsMessengerCreateInfoEXT createInfo, VkDebugUtilsMessengerEXT* messenger)
 	{
 		fixed (VkDebugUtilsMessengerCreateInfoEXT* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(instance, createInfoPtr, allocator, messenger);
+			return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(Instance, createInfoPtr, default, messenger);
 		}
 	}
 
-	public VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerCreateInfoEXT* createInfo, out VkDebugUtilsMessengerEXT messenger)
+	public VkResult vkCreateDebugUtilsMessengerEXT(in VkDebugUtilsMessengerCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkDebugUtilsMessengerEXT* messenger)
+	{
+		fixed (VkDebugUtilsMessengerCreateInfoEXT* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(Instance, createInfoPtr, allocator, messenger);
+		}
+	}
+
+	public VkResult vkCreateDebugUtilsMessengerEXT(VkDebugUtilsMessengerCreateInfoEXT* createInfo, out VkDebugUtilsMessengerEXT messenger)
 	{
 		Unsafe.SkipInit(out messenger);
 
 		fixed (VkDebugUtilsMessengerEXT* messengerPtr = &messenger)
 		{
-			return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(instance, createInfo, default, messengerPtr);
+			return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(Instance, createInfo, default, messengerPtr);
 		}
 	}
 
-	public VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkDebugUtilsMessengerEXT messenger)
+	public VkResult vkCreateDebugUtilsMessengerEXT(VkDebugUtilsMessengerCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkDebugUtilsMessengerEXT messenger)
 	{
 		Unsafe.SkipInit(out messenger);
 
 		fixed (VkDebugUtilsMessengerEXT* messengerPtr = &messenger)
 		{
-			return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(instance, createInfo, allocator, messengerPtr);
+			return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(Instance, createInfo, allocator, messengerPtr);
 		}
 	}
 
-	public VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, in VkDebugUtilsMessengerCreateInfoEXT createInfo, out VkDebugUtilsMessengerEXT messenger)
+	public VkResult vkCreateDebugUtilsMessengerEXT(in VkDebugUtilsMessengerCreateInfoEXT createInfo, out VkDebugUtilsMessengerEXT messenger)
 	{
 		fixed (VkDebugUtilsMessengerCreateInfoEXT* createInfoPtr = &createInfo)
 		{
@@ -1001,12 +1001,12 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkDebugUtilsMessengerEXT* messengerPtr = &messenger)
 			{
-				return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(instance, createInfoPtr, default, messengerPtr);
+				return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(Instance, createInfoPtr, default, messengerPtr);
 			}
 		}
 	}
 
-	public VkResult vkCreateDebugUtilsMessengerEXT(VkInstance instance, in VkDebugUtilsMessengerCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkDebugUtilsMessengerEXT messenger)
+	public VkResult vkCreateDebugUtilsMessengerEXT(in VkDebugUtilsMessengerCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkDebugUtilsMessengerEXT messenger)
 	{
 		fixed (VkDebugUtilsMessengerCreateInfoEXT* createInfoPtr = &createInfo)
 		{
@@ -1014,24 +1014,24 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkDebugUtilsMessengerEXT* messengerPtr = &messenger)
 			{
-				return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(instance, createInfoPtr, allocator, messengerPtr);
+				return ((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vkCreateDebugUtilsMessengerEXT_ptr.Value)(Instance, createInfoPtr, allocator, messengerPtr);
 			}
 		}
 	}
 
-	public void vkDestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT messenger)
+	public void vkDestroyDebugUtilsMessengerEXT(VkDebugUtilsMessengerEXT messenger)
 	{
-		((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void>)vkDestroyDebugUtilsMessengerEXT_ptr.Value)(instance, messenger, default);
+		((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void>)vkDestroyDebugUtilsMessengerEXT_ptr.Value)(Instance, messenger, default);
 	}
 
-	public void vkDestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT messenger, VkAllocationCallbacks* allocator)
+	public void vkDestroyDebugUtilsMessengerEXT(VkDebugUtilsMessengerEXT messenger, VkAllocationCallbacks* allocator)
 	{
-		((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void>)vkDestroyDebugUtilsMessengerEXT_ptr.Value)(instance, messenger, allocator);
+		((delegate* unmanaged<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void>)vkDestroyDebugUtilsMessengerEXT_ptr.Value)(Instance, messenger, allocator);
 	}
 
-	public void vkSubmitDebugUtilsMessageEXT(VkInstance instance, VkDebugUtilsMessageSeverityFlagsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageTypes, VkDebugUtilsMessengerCallbackDataEXT* callbackData)
+	public void vkSubmitDebugUtilsMessageEXT(VkDebugUtilsMessageSeverityFlagsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageTypes, VkDebugUtilsMessengerCallbackDataEXT* callbackData)
 	{
-		((delegate* unmanaged<VkInstance, VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void>)vkSubmitDebugUtilsMessageEXT_ptr.Value)(instance, messageSeverity, messageTypes, callbackData);
+		((delegate* unmanaged<VkInstance, VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void>)vkSubmitDebugUtilsMessageEXT_ptr.Value)(Instance, messageSeverity, messageTypes, callbackData);
 	}
 
 	public ulong vkGetPhysicalDeviceDescriptorSizeEXT(VkPhysicalDevice physicalDevice, VkDescriptorType descriptorType)
@@ -1064,29 +1064,29 @@ public unsafe partial class VkInstanceApi
 		return ((delegate* unmanaged<VkPhysicalDevice, uint*, VkFramebufferMixedSamplesCombinationNV*, VkResult>)vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_ptr.Value)(physicalDevice, combinationCount, combinations);
 	}
 
-	public VkResult vkCreateHeadlessSurfaceEXT(VkInstance instance, VkHeadlessSurfaceCreateInfoEXT* createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateHeadlessSurfaceEXT(VkHeadlessSurfaceCreateInfoEXT* createInfo, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateHeadlessSurfaceEXT_ptr.Value)(instance, createInfo, default, surface);
+		return ((delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateHeadlessSurfaceEXT_ptr.Value)(Instance, createInfo, default, surface);
 	}
 
-	public VkResult vkCreateHeadlessSurfaceEXT(VkInstance instance, VkHeadlessSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateHeadlessSurfaceEXT(VkHeadlessSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateHeadlessSurfaceEXT_ptr.Value)(instance, createInfo, allocator, surface);
+		return ((delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateHeadlessSurfaceEXT_ptr.Value)(Instance, createInfo, allocator, surface);
 	}
 
-	public VkResult vkCreateHeadlessSurfaceEXT(VkInstance instance, in VkHeadlessSurfaceCreateInfoEXT createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateHeadlessSurfaceEXT(in VkHeadlessSurfaceCreateInfoEXT createInfo, VkSurfaceKHR* surface)
 	{
 		fixed (VkHeadlessSurfaceCreateInfoEXT* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateHeadlessSurfaceEXT_ptr.Value)(instance, createInfoPtr, default, surface);
+			return ((delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateHeadlessSurfaceEXT_ptr.Value)(Instance, createInfoPtr, default, surface);
 		}
 	}
 
-	public VkResult vkCreateHeadlessSurfaceEXT(VkInstance instance, in VkHeadlessSurfaceCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateHeadlessSurfaceEXT(in VkHeadlessSurfaceCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		fixed (VkHeadlessSurfaceCreateInfoEXT* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateHeadlessSurfaceEXT_ptr.Value)(instance, createInfoPtr, allocator, surface);
+			return ((delegate* unmanaged<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateHeadlessSurfaceEXT_ptr.Value)(Instance, createInfoPtr, allocator, surface);
 		}
 	}
 
@@ -1135,66 +1135,53 @@ public unsafe partial class VkInstanceApi
 		return ((delegate* unmanaged<VkPhysicalDevice, uint, uint*, VkPerformanceCounterARM*, VkPerformanceCounterDescriptionARM*, VkResult>)vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM_ptr.Value)(physicalDevice, queueFamilyIndex, counterCount, counters, counterDescriptions);
 	}
 
-	public VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateAndroidSurfaceKHR(VkAndroidSurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(instance, createInfo, default, surface);
+		return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(Instance, createInfo, default, surface);
 	}
 
-	public VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateAndroidSurfaceKHR(VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(instance, createInfo, allocator, surface);
+		return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(Instance, createInfo, allocator, surface);
 	}
 
-	public VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, in VkAndroidSurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
-	{
-		fixed (VkAndroidSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(instance, createInfoPtr, default, surface);
-		}
-	}
-
-	public VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, in VkAndroidSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateAndroidSurfaceKHR(in VkAndroidSurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
 	{
 		fixed (VkAndroidSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(instance, createInfoPtr, allocator, surface);
+			return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(Instance, createInfoPtr, default, surface);
 		}
 	}
 
-	public VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, out VkSurfaceKHR surface)
+	public VkResult vkCreateAndroidSurfaceKHR(in VkAndroidSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		fixed (VkAndroidSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(Instance, createInfoPtr, allocator, surface);
+		}
+	}
+
+	public VkResult vkCreateAndroidSurfaceKHR(VkAndroidSurfaceCreateInfoKHR* createInfo, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(instance, createInfo, default, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(Instance, createInfo, default, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateAndroidSurfaceKHR(VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(instance, createInfo, allocator, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(Instance, createInfo, allocator, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, in VkAndroidSurfaceCreateInfoKHR createInfo, out VkSurfaceKHR surface)
-	{
-		fixed (VkAndroidSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
-		{
-			Unsafe.SkipInit(out surface);
-
-			fixed (VkSurfaceKHR* surfacePtr = &surface)
-			{
-				return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(instance, createInfoPtr, default, surfacePtr);
-			}
-		}
-	}
-
-	public VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, in VkAndroidSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateAndroidSurfaceKHR(in VkAndroidSurfaceCreateInfoKHR createInfo, out VkSurfaceKHR surface)
 	{
 		fixed (VkAndroidSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
@@ -1202,58 +1189,71 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkSurfaceKHR* surfacePtr = &surface)
 			{
-				return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(instance, createInfoPtr, allocator, surfacePtr);
+				return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(Instance, createInfoPtr, default, surfacePtr);
 			}
 		}
 	}
 
-	public VkResult vkCreateMetalSurfaceEXT(VkInstance instance, VkMetalSurfaceCreateInfoEXT* createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateAndroidSurfaceKHR(in VkAndroidSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(instance, createInfo, default, surface);
-	}
-
-	public VkResult vkCreateMetalSurfaceEXT(VkInstance instance, VkMetalSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
-	{
-		return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(instance, createInfo, allocator, surface);
-	}
-
-	public VkResult vkCreateMetalSurfaceEXT(VkInstance instance, in VkMetalSurfaceCreateInfoEXT createInfo, VkSurfaceKHR* surface)
-	{
-		fixed (VkMetalSurfaceCreateInfoEXT* createInfoPtr = &createInfo)
+		fixed (VkAndroidSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(instance, createInfoPtr, default, surface);
+			Unsafe.SkipInit(out surface);
+
+			fixed (VkSurfaceKHR* surfacePtr = &surface)
+			{
+				return ((delegate* unmanaged<VkInstance, VkAndroidSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateAndroidSurfaceKHR_ptr.Value)(Instance, createInfoPtr, allocator, surfacePtr);
+			}
 		}
 	}
 
-	public VkResult vkCreateMetalSurfaceEXT(VkInstance instance, in VkMetalSurfaceCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateMetalSurfaceEXT(VkMetalSurfaceCreateInfoEXT* createInfo, VkSurfaceKHR* surface)
+	{
+		return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(Instance, createInfo, default, surface);
+	}
+
+	public VkResult vkCreateMetalSurfaceEXT(VkMetalSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(Instance, createInfo, allocator, surface);
+	}
+
+	public VkResult vkCreateMetalSurfaceEXT(in VkMetalSurfaceCreateInfoEXT createInfo, VkSurfaceKHR* surface)
 	{
 		fixed (VkMetalSurfaceCreateInfoEXT* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(instance, createInfoPtr, allocator, surface);
+			return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(Instance, createInfoPtr, default, surface);
 		}
 	}
 
-	public VkResult vkCreateMetalSurfaceEXT(VkInstance instance, VkMetalSurfaceCreateInfoEXT* createInfo, out VkSurfaceKHR surface)
+	public VkResult vkCreateMetalSurfaceEXT(in VkMetalSurfaceCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		fixed (VkMetalSurfaceCreateInfoEXT* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(Instance, createInfoPtr, allocator, surface);
+		}
+	}
+
+	public VkResult vkCreateMetalSurfaceEXT(VkMetalSurfaceCreateInfoEXT* createInfo, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(instance, createInfo, default, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(Instance, createInfo, default, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateMetalSurfaceEXT(VkInstance instance, VkMetalSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateMetalSurfaceEXT(VkMetalSurfaceCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(instance, createInfo, allocator, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(Instance, createInfo, allocator, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateMetalSurfaceEXT(VkInstance instance, in VkMetalSurfaceCreateInfoEXT createInfo, out VkSurfaceKHR surface)
+	public VkResult vkCreateMetalSurfaceEXT(in VkMetalSurfaceCreateInfoEXT createInfo, out VkSurfaceKHR surface)
 	{
 		fixed (VkMetalSurfaceCreateInfoEXT* createInfoPtr = &createInfo)
 		{
@@ -1261,12 +1261,12 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkSurfaceKHR* surfacePtr = &surface)
 			{
-				return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(instance, createInfoPtr, default, surfacePtr);
+				return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(Instance, createInfoPtr, default, surfacePtr);
 			}
 		}
 	}
 
-	public VkResult vkCreateMetalSurfaceEXT(VkInstance instance, in VkMetalSurfaceCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateMetalSurfaceEXT(in VkMetalSurfaceCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		fixed (VkMetalSurfaceCreateInfoEXT* createInfoPtr = &createInfo)
 		{
@@ -1274,84 +1274,84 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkSurfaceKHR* surfacePtr = &surface)
 			{
-				return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(instance, createInfoPtr, allocator, surfacePtr);
+				return ((delegate* unmanaged<VkInstance, VkMetalSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateMetalSurfaceEXT_ptr.Value)(Instance, createInfoPtr, allocator, surfacePtr);
 			}
 		}
 	}
 
-	public VkResult vkCreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateViSurfaceNN(VkViSurfaceCreateInfoNN* createInfo, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateViSurfaceNN_ptr.Value)(instance, createInfo, default, surface);
+		return ((delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateViSurfaceNN_ptr.Value)(Instance, createInfo, default, surface);
 	}
 
-	public VkResult vkCreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateViSurfaceNN(VkViSurfaceCreateInfoNN* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateViSurfaceNN_ptr.Value)(instance, createInfo, allocator, surface);
+		return ((delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateViSurfaceNN_ptr.Value)(Instance, createInfo, allocator, surface);
 	}
 
-	public VkResult vkCreateViSurfaceNN(VkInstance instance, in VkViSurfaceCreateInfoNN createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateViSurfaceNN(in VkViSurfaceCreateInfoNN createInfo, VkSurfaceKHR* surface)
 	{
 		fixed (VkViSurfaceCreateInfoNN* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateViSurfaceNN_ptr.Value)(instance, createInfoPtr, default, surface);
+			return ((delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateViSurfaceNN_ptr.Value)(Instance, createInfoPtr, default, surface);
 		}
 	}
 
-	public VkResult vkCreateViSurfaceNN(VkInstance instance, in VkViSurfaceCreateInfoNN createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateViSurfaceNN(in VkViSurfaceCreateInfoNN createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		fixed (VkViSurfaceCreateInfoNN* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateViSurfaceNN_ptr.Value)(instance, createInfoPtr, allocator, surface);
+			return ((delegate* unmanaged<VkInstance, VkViSurfaceCreateInfoNN*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateViSurfaceNN_ptr.Value)(Instance, createInfoPtr, allocator, surface);
 		}
 	}
 
-	public VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateWaylandSurfaceKHR(VkWaylandSurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(instance, createInfo, default, surface);
+		return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(Instance, createInfo, default, surface);
 	}
 
-	public VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateWaylandSurfaceKHR(VkWaylandSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(instance, createInfo, allocator, surface);
+		return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(Instance, createInfo, allocator, surface);
 	}
 
-	public VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, in VkWaylandSurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateWaylandSurfaceKHR(in VkWaylandSurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
 	{
 		fixed (VkWaylandSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(instance, createInfoPtr, default, surface);
+			return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(Instance, createInfoPtr, default, surface);
 		}
 	}
 
-	public VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, in VkWaylandSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateWaylandSurfaceKHR(in VkWaylandSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		fixed (VkWaylandSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(instance, createInfoPtr, allocator, surface);
+			return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(Instance, createInfoPtr, allocator, surface);
 		}
 	}
 
-	public VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, out VkSurfaceKHR surface)
+	public VkResult vkCreateWaylandSurfaceKHR(VkWaylandSurfaceCreateInfoKHR* createInfo, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(instance, createInfo, default, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(Instance, createInfo, default, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateWaylandSurfaceKHR(VkWaylandSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(instance, createInfo, allocator, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(Instance, createInfo, allocator, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, in VkWaylandSurfaceCreateInfoKHR createInfo, out VkSurfaceKHR surface)
+	public VkResult vkCreateWaylandSurfaceKHR(in VkWaylandSurfaceCreateInfoKHR createInfo, out VkSurfaceKHR surface)
 	{
 		fixed (VkWaylandSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
@@ -1359,12 +1359,12 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkSurfaceKHR* surfacePtr = &surface)
 			{
-				return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(instance, createInfoPtr, default, surfacePtr);
+				return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(Instance, createInfoPtr, default, surfacePtr);
 			}
 		}
 	}
 
-	public VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, in VkWaylandSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateWaylandSurfaceKHR(in VkWaylandSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		fixed (VkWaylandSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
@@ -1372,7 +1372,7 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkSurfaceKHR* surfacePtr = &surface)
 			{
-				return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(instance, createInfoPtr, allocator, surfacePtr);
+				return ((delegate* unmanaged<VkInstance, VkWaylandSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWaylandSurfaceKHR_ptr.Value)(Instance, createInfoPtr, allocator, surfacePtr);
 			}
 		}
 	}
@@ -1382,53 +1382,53 @@ public unsafe partial class VkInstanceApi
 		return ((delegate* unmanaged<VkPhysicalDevice, uint, nint, VkBool32>)vkGetPhysicalDeviceWaylandPresentationSupportKHR_ptr.Value)(physicalDevice, queueFamilyIndex, display);
 	}
 
-	public VkResult vkCreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateWin32SurfaceKHR(VkWin32SurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(instance, createInfo, default, surface);
+		return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(Instance, createInfo, default, surface);
 	}
 
-	public VkResult vkCreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateWin32SurfaceKHR(VkWin32SurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(instance, createInfo, allocator, surface);
+		return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(Instance, createInfo, allocator, surface);
 	}
 
-	public VkResult vkCreateWin32SurfaceKHR(VkInstance instance, in VkWin32SurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
-	{
-		fixed (VkWin32SurfaceCreateInfoKHR* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(instance, createInfoPtr, default, surface);
-		}
-	}
-
-	public VkResult vkCreateWin32SurfaceKHR(VkInstance instance, in VkWin32SurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateWin32SurfaceKHR(in VkWin32SurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
 	{
 		fixed (VkWin32SurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(instance, createInfoPtr, allocator, surface);
+			return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(Instance, createInfoPtr, default, surface);
 		}
 	}
 
-	public VkResult vkCreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, out VkSurfaceKHR surface)
+	public VkResult vkCreateWin32SurfaceKHR(in VkWin32SurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		fixed (VkWin32SurfaceCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(Instance, createInfoPtr, allocator, surface);
+		}
+	}
+
+	public VkResult vkCreateWin32SurfaceKHR(VkWin32SurfaceCreateInfoKHR* createInfo, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(instance, createInfo, default, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(Instance, createInfo, default, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateWin32SurfaceKHR(VkWin32SurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(instance, createInfo, allocator, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(Instance, createInfo, allocator, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateWin32SurfaceKHR(VkInstance instance, in VkWin32SurfaceCreateInfoKHR createInfo, out VkSurfaceKHR surface)
+	public VkResult vkCreateWin32SurfaceKHR(in VkWin32SurfaceCreateInfoKHR createInfo, out VkSurfaceKHR surface)
 	{
 		fixed (VkWin32SurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
@@ -1436,12 +1436,12 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkSurfaceKHR* surfacePtr = &surface)
 			{
-				return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(instance, createInfoPtr, default, surfacePtr);
+				return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(Instance, createInfoPtr, default, surfacePtr);
 			}
 		}
 	}
 
-	public VkResult vkCreateWin32SurfaceKHR(VkInstance instance, in VkWin32SurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateWin32SurfaceKHR(in VkWin32SurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		fixed (VkWin32SurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
@@ -1449,7 +1449,7 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkSurfaceKHR* surfacePtr = &surface)
 			{
-				return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(instance, createInfoPtr, allocator, surfacePtr);
+				return ((delegate* unmanaged<VkInstance, VkWin32SurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateWin32SurfaceKHR_ptr.Value)(Instance, createInfoPtr, allocator, surfacePtr);
 			}
 		}
 	}
@@ -1474,29 +1474,29 @@ public unsafe partial class VkInstanceApi
 		return ((delegate* unmanaged<VkPhysicalDevice, uint, VkDisplayKHR*, VkResult>)vkGetWinrtDisplayNV_ptr.Value)(physicalDevice, deviceRelativeId, display);
 	}
 
-	public VkResult vkCreateXcbSurfaceKHR(VkInstance instance, VkXcbSurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateXcbSurfaceKHR(VkXcbSurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXcbSurfaceKHR_ptr.Value)(instance, createInfo, default, surface);
+		return ((delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXcbSurfaceKHR_ptr.Value)(Instance, createInfo, default, surface);
 	}
 
-	public VkResult vkCreateXcbSurfaceKHR(VkInstance instance, VkXcbSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateXcbSurfaceKHR(VkXcbSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXcbSurfaceKHR_ptr.Value)(instance, createInfo, allocator, surface);
+		return ((delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXcbSurfaceKHR_ptr.Value)(Instance, createInfo, allocator, surface);
 	}
 
-	public VkResult vkCreateXcbSurfaceKHR(VkInstance instance, in VkXcbSurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateXcbSurfaceKHR(in VkXcbSurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
 	{
 		fixed (VkXcbSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXcbSurfaceKHR_ptr.Value)(instance, createInfoPtr, default, surface);
+			return ((delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXcbSurfaceKHR_ptr.Value)(Instance, createInfoPtr, default, surface);
 		}
 	}
 
-	public VkResult vkCreateXcbSurfaceKHR(VkInstance instance, in VkXcbSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateXcbSurfaceKHR(in VkXcbSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
 		fixed (VkXcbSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXcbSurfaceKHR_ptr.Value)(instance, createInfoPtr, allocator, surface);
+			return ((delegate* unmanaged<VkInstance, VkXcbSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXcbSurfaceKHR_ptr.Value)(Instance, createInfoPtr, allocator, surface);
 		}
 	}
 
@@ -1505,53 +1505,53 @@ public unsafe partial class VkInstanceApi
 		return ((delegate* unmanaged<VkPhysicalDevice, uint, nint, nint, VkBool32>)vkGetPhysicalDeviceXcbPresentationSupportKHR_ptr.Value)(physicalDevice, queueFamilyIndex, connection, visual_id);
 	}
 
-	public VkResult vkCreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
+	public VkResult vkCreateXlibSurfaceKHR(VkXlibSurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(instance, createInfo, default, surface);
+		return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(Instance, createInfo, default, surface);
 	}
 
-	public VkResult vkCreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateXlibSurfaceKHR(VkXlibSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
 	{
-		return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(instance, createInfo, allocator, surface);
+		return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(Instance, createInfo, allocator, surface);
 	}
 
-	public VkResult vkCreateXlibSurfaceKHR(VkInstance instance, in VkXlibSurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
-	{
-		fixed (VkXlibSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
-		{
-			return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(instance, createInfoPtr, default, surface);
-		}
-	}
-
-	public VkResult vkCreateXlibSurfaceKHR(VkInstance instance, in VkXlibSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	public VkResult vkCreateXlibSurfaceKHR(in VkXlibSurfaceCreateInfoKHR createInfo, VkSurfaceKHR* surface)
 	{
 		fixed (VkXlibSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
-			return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(instance, createInfoPtr, allocator, surface);
+			return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(Instance, createInfoPtr, default, surface);
 		}
 	}
 
-	public VkResult vkCreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, out VkSurfaceKHR surface)
+	public VkResult vkCreateXlibSurfaceKHR(in VkXlibSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)
+	{
+		fixed (VkXlibSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(Instance, createInfoPtr, allocator, surface);
+		}
+	}
+
+	public VkResult vkCreateXlibSurfaceKHR(VkXlibSurfaceCreateInfoKHR* createInfo, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(instance, createInfo, default, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(Instance, createInfo, default, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateXlibSurfaceKHR(VkXlibSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		Unsafe.SkipInit(out surface);
 
 		fixed (VkSurfaceKHR* surfacePtr = &surface)
 		{
-			return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(instance, createInfo, allocator, surfacePtr);
+			return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(Instance, createInfo, allocator, surfacePtr);
 		}
 	}
 
-	public VkResult vkCreateXlibSurfaceKHR(VkInstance instance, in VkXlibSurfaceCreateInfoKHR createInfo, out VkSurfaceKHR surface)
+	public VkResult vkCreateXlibSurfaceKHR(in VkXlibSurfaceCreateInfoKHR createInfo, out VkSurfaceKHR surface)
 	{
 		fixed (VkXlibSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
@@ -1559,12 +1559,12 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkSurfaceKHR* surfacePtr = &surface)
 			{
-				return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(instance, createInfoPtr, default, surfacePtr);
+				return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(Instance, createInfoPtr, default, surfacePtr);
 			}
 		}
 	}
 
-	public VkResult vkCreateXlibSurfaceKHR(VkInstance instance, in VkXlibSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
+	public VkResult vkCreateXlibSurfaceKHR(in VkXlibSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface)
 	{
 		fixed (VkXlibSurfaceCreateInfoKHR* createInfoPtr = &createInfo)
 		{
@@ -1572,7 +1572,7 @@ public unsafe partial class VkInstanceApi
 
 			fixed (VkSurfaceKHR* surfacePtr = &surface)
 			{
-				return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(instance, createInfoPtr, allocator, surfacePtr);
+				return ((delegate* unmanaged<VkInstance, VkXlibSurfaceCreateInfoKHR*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vkCreateXlibSurfaceKHR_ptr.Value)(Instance, createInfoPtr, allocator, surfacePtr);
 			}
 		}
 	}

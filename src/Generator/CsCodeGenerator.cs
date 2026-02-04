@@ -127,10 +127,11 @@ public partial class CsCodeGenerator
         GenerateCommands(compilation);
 
         if (_options.IsVulkan)
+        {
             GenerateHelperCommands(compilation);
+        }
 
-        if (_vulkanSpecification != null)
-            GenerateFormatHelpers();
+        GenerateFormatHelpers();
     }
 
     public static void AddCsMapping(string typeName, string csTypeName)

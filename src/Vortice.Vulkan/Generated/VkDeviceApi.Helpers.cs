@@ -28,47 +28,47 @@ unsafe partial class VkDeviceApi
 		}
 	}
 
-	public VkResult vkFlushMappedMemoryRanges(VkDevice device, VkMappedMemoryRange memoryRange)
+	public VkResult vkFlushMappedMemoryRanges(VkMappedMemoryRange memoryRange)
 	{
-		return ((delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkFlushMappedMemoryRanges_ptr.Value)(device, 1, &memoryRange);
+		return ((delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkFlushMappedMemoryRanges_ptr.Value)(Device, 1, &memoryRange);
 	}
 
-	public VkResult vkFlushMappedMemoryRanges(VkDevice device, Span<VkMappedMemoryRange> memoryRanges)
-	{
-		fixed (VkMappedMemoryRange* memoryRangesPtr = memoryRanges)
-		{
-			return ((delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkFlushMappedMemoryRanges_ptr.Value)(device, (uint)memoryRanges.Length, memoryRangesPtr);
-		}
-	}
-
-	public VkResult vkInvalidateMappedMemoryRanges(VkDevice device, VkMappedMemoryRange memoryRange)
-	{
-		return ((delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkInvalidateMappedMemoryRanges_ptr.Value)(device, 1, &memoryRange);
-	}
-
-	public VkResult vkInvalidateMappedMemoryRanges(VkDevice device, Span<VkMappedMemoryRange> memoryRanges)
+	public VkResult vkFlushMappedMemoryRanges(Span<VkMappedMemoryRange> memoryRanges)
 	{
 		fixed (VkMappedMemoryRange* memoryRangesPtr = memoryRanges)
 		{
-			return ((delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkInvalidateMappedMemoryRanges_ptr.Value)(device, (uint)memoryRanges.Length, memoryRangesPtr);
+			return ((delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkFlushMappedMemoryRanges_ptr.Value)(Device, (uint)memoryRanges.Length, memoryRangesPtr);
 		}
 	}
 
-	public void vkGetImageSparseMemoryRequirements(VkDevice device, VkImage image, out uint sparseMemoryRequirementCount)
+	public VkResult vkInvalidateMappedMemoryRanges(VkMappedMemoryRange memoryRange)
+	{
+		return ((delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkInvalidateMappedMemoryRanges_ptr.Value)(Device, 1, &memoryRange);
+	}
+
+	public VkResult vkInvalidateMappedMemoryRanges(Span<VkMappedMemoryRange> memoryRanges)
+	{
+		fixed (VkMappedMemoryRange* memoryRangesPtr = memoryRanges)
+		{
+			return ((delegate* unmanaged<VkDevice, uint, VkMappedMemoryRange*, VkResult>)vkInvalidateMappedMemoryRanges_ptr.Value)(Device, (uint)memoryRanges.Length, memoryRangesPtr);
+		}
+	}
+
+	public void vkGetImageSparseMemoryRequirements(VkImage image, out uint sparseMemoryRequirementCount)
 	{
 		sparseMemoryRequirementCount = default;
 		fixed (uint* sparseMemoryRequirementCountPtr = &sparseMemoryRequirementCount)
 		{
-			((delegate* unmanaged<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void>)vkGetImageSparseMemoryRequirements_ptr.Value)(device, image, sparseMemoryRequirementCountPtr, default);
+			((delegate* unmanaged<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void>)vkGetImageSparseMemoryRequirements_ptr.Value)(Device, image, sparseMemoryRequirementCountPtr, default);
 		}
 	}
 
-	public void vkGetImageSparseMemoryRequirements(VkDevice device, VkImage image, Span<VkSparseImageMemoryRequirements> sparseMemoryRequirements)
+	public void vkGetImageSparseMemoryRequirements(VkImage image, Span<VkSparseImageMemoryRequirements> sparseMemoryRequirements)
 	{
 		uint sparseMemoryRequirementCount = checked((uint)sparseMemoryRequirements.Length);
 		fixed (VkSparseImageMemoryRequirements* sparseMemoryRequirementsPtr = sparseMemoryRequirements)
 		{
-			((delegate* unmanaged<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void>)vkGetImageSparseMemoryRequirements_ptr.Value)(device, image, &sparseMemoryRequirementCount, sparseMemoryRequirementsPtr);
+			((delegate* unmanaged<VkDevice, VkImage, uint*, VkSparseImageMemoryRequirements*, void>)vkGetImageSparseMemoryRequirements_ptr.Value)(Device, image, &sparseMemoryRequirementCount, sparseMemoryRequirementsPtr);
 		}
 	}
 
@@ -85,55 +85,55 @@ unsafe partial class VkDeviceApi
 		}
 	}
 
-	public VkResult vkResetFences(VkDevice device, VkFence fence)
+	public VkResult vkResetFences(VkFence fence)
 	{
-		return ((delegate* unmanaged<VkDevice, uint, VkFence*, VkResult>)vkResetFences_ptr.Value)(device, 1, &fence);
+		return ((delegate* unmanaged<VkDevice, uint, VkFence*, VkResult>)vkResetFences_ptr.Value)(Device, 1, &fence);
 	}
 
-	public VkResult vkResetFences(VkDevice device, Span<VkFence> fences)
-	{
-		fixed (VkFence* fencesPtr = fences)
-		{
-			return ((delegate* unmanaged<VkDevice, uint, VkFence*, VkResult>)vkResetFences_ptr.Value)(device, (uint)fences.Length, fencesPtr);
-		}
-	}
-
-	public VkResult vkWaitForFences(VkDevice device, VkFence fence, VkBool32 waitAll, ulong timeout)
-	{
-		return ((delegate* unmanaged<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult>)vkWaitForFences_ptr.Value)(device, 1, &fence, waitAll, timeout);
-	}
-
-	public VkResult vkWaitForFences(VkDevice device, Span<VkFence> fences, VkBool32 waitAll, ulong timeout)
+	public VkResult vkResetFences(Span<VkFence> fences)
 	{
 		fixed (VkFence* fencesPtr = fences)
 		{
-			return ((delegate* unmanaged<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult>)vkWaitForFences_ptr.Value)(device, (uint)fences.Length, fencesPtr, waitAll, timeout);
+			return ((delegate* unmanaged<VkDevice, uint, VkFence*, VkResult>)vkResetFences_ptr.Value)(Device, (uint)fences.Length, fencesPtr);
 		}
 	}
 
-	public VkResult vkMergePipelineCaches(VkDevice device, VkPipelineCache dstCache, VkPipelineCache srcCache)
+	public VkResult vkWaitForFences(VkFence fence, VkBool32 waitAll, ulong timeout)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult>)vkMergePipelineCaches_ptr.Value)(device, dstCache, 1, &srcCache);
+		return ((delegate* unmanaged<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult>)vkWaitForFences_ptr.Value)(Device, 1, &fence, waitAll, timeout);
 	}
 
-	public VkResult vkMergePipelineCaches(VkDevice device, VkPipelineCache dstCache, Span<VkPipelineCache> srcCaches)
+	public VkResult vkWaitForFences(Span<VkFence> fences, VkBool32 waitAll, ulong timeout)
+	{
+		fixed (VkFence* fencesPtr = fences)
+		{
+			return ((delegate* unmanaged<VkDevice, uint, VkFence*, VkBool32, ulong, VkResult>)vkWaitForFences_ptr.Value)(Device, (uint)fences.Length, fencesPtr, waitAll, timeout);
+		}
+	}
+
+	public VkResult vkMergePipelineCaches(VkPipelineCache dstCache, VkPipelineCache srcCache)
+	{
+		return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult>)vkMergePipelineCaches_ptr.Value)(Device, dstCache, 1, &srcCache);
+	}
+
+	public VkResult vkMergePipelineCaches(VkPipelineCache dstCache, Span<VkPipelineCache> srcCaches)
 	{
 		fixed (VkPipelineCache* srcCachesPtr = srcCaches)
 		{
-			return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult>)vkMergePipelineCaches_ptr.Value)(device, dstCache, (uint)srcCaches.Length, srcCachesPtr);
+			return ((delegate* unmanaged<VkDevice, VkPipelineCache, uint, VkPipelineCache*, VkResult>)vkMergePipelineCaches_ptr.Value)(Device, dstCache, (uint)srcCaches.Length, srcCachesPtr);
 		}
 	}
 
-	public VkResult vkFreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, VkDescriptorSet descriptorSet)
+	public VkResult vkFreeDescriptorSets(VkDescriptorPool descriptorPool, VkDescriptorSet descriptorSet)
 	{
-		return ((delegate* unmanaged<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult>)vkFreeDescriptorSets_ptr.Value)(device, descriptorPool, 1, &descriptorSet);
+		return ((delegate* unmanaged<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult>)vkFreeDescriptorSets_ptr.Value)(Device, descriptorPool, 1, &descriptorSet);
 	}
 
-	public VkResult vkFreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, Span<VkDescriptorSet> descriptorSets)
+	public VkResult vkFreeDescriptorSets(VkDescriptorPool descriptorPool, Span<VkDescriptorSet> descriptorSets)
 	{
 		fixed (VkDescriptorSet* descriptorSetsPtr = descriptorSets)
 		{
-			return ((delegate* unmanaged<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult>)vkFreeDescriptorSets_ptr.Value)(device, descriptorPool, (uint)descriptorSets.Length, descriptorSetsPtr);
+			return ((delegate* unmanaged<VkDevice, VkDescriptorPool, uint, VkDescriptorSet*, VkResult>)vkFreeDescriptorSets_ptr.Value)(Device, descriptorPool, (uint)descriptorSets.Length, descriptorSetsPtr);
 		}
 	}
 
@@ -163,47 +163,47 @@ unsafe partial class VkDeviceApi
 		}
 	}
 
-	public VkResult vkBindBufferMemory2(VkDevice device, VkBindBufferMemoryInfo bindInfo)
+	public VkResult vkBindBufferMemory2(VkBindBufferMemoryInfo bindInfo)
 	{
-		return ((delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult>)vkBindBufferMemory2_ptr.Value)(device, 1, &bindInfo);
+		return ((delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult>)vkBindBufferMemory2_ptr.Value)(Device, 1, &bindInfo);
 	}
 
-	public VkResult vkBindBufferMemory2(VkDevice device, Span<VkBindBufferMemoryInfo> bindInfos)
+	public VkResult vkBindBufferMemory2(Span<VkBindBufferMemoryInfo> bindInfos)
 	{
 		fixed (VkBindBufferMemoryInfo* bindInfosPtr = bindInfos)
 		{
-			return ((delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult>)vkBindBufferMemory2_ptr.Value)(device, (uint)bindInfos.Length, bindInfosPtr);
+			return ((delegate* unmanaged<VkDevice, uint, VkBindBufferMemoryInfo*, VkResult>)vkBindBufferMemory2_ptr.Value)(Device, (uint)bindInfos.Length, bindInfosPtr);
 		}
 	}
 
-	public VkResult vkBindImageMemory2(VkDevice device, VkBindImageMemoryInfo bindInfo)
+	public VkResult vkBindImageMemory2(VkBindImageMemoryInfo bindInfo)
 	{
-		return ((delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult>)vkBindImageMemory2_ptr.Value)(device, 1, &bindInfo);
+		return ((delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult>)vkBindImageMemory2_ptr.Value)(Device, 1, &bindInfo);
 	}
 
-	public VkResult vkBindImageMemory2(VkDevice device, Span<VkBindImageMemoryInfo> bindInfos)
+	public VkResult vkBindImageMemory2(Span<VkBindImageMemoryInfo> bindInfos)
 	{
 		fixed (VkBindImageMemoryInfo* bindInfosPtr = bindInfos)
 		{
-			return ((delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult>)vkBindImageMemory2_ptr.Value)(device, (uint)bindInfos.Length, bindInfosPtr);
+			return ((delegate* unmanaged<VkDevice, uint, VkBindImageMemoryInfo*, VkResult>)vkBindImageMemory2_ptr.Value)(Device, (uint)bindInfos.Length, bindInfosPtr);
 		}
 	}
 
-	public void vkGetImageSparseMemoryRequirements2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, out uint sparseMemoryRequirementCount)
+	public void vkGetImageSparseMemoryRequirements2(VkImageSparseMemoryRequirementsInfo2* info, out uint sparseMemoryRequirementCount)
 	{
 		sparseMemoryRequirementCount = default;
 		fixed (uint* sparseMemoryRequirementCountPtr = &sparseMemoryRequirementCount)
 		{
-			((delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void>)vkGetImageSparseMemoryRequirements2_ptr.Value)(device, info, sparseMemoryRequirementCountPtr, default);
+			((delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void>)vkGetImageSparseMemoryRequirements2_ptr.Value)(Device, info, sparseMemoryRequirementCountPtr, default);
 		}
 	}
 
-	public void vkGetImageSparseMemoryRequirements2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, Span<VkSparseImageMemoryRequirements2> sparseMemoryRequirements)
+	public void vkGetImageSparseMemoryRequirements2(VkImageSparseMemoryRequirementsInfo2* info, Span<VkSparseImageMemoryRequirements2> sparseMemoryRequirements)
 	{
 		uint sparseMemoryRequirementCount = checked((uint)sparseMemoryRequirements.Length);
 		fixed (VkSparseImageMemoryRequirements2* sparseMemoryRequirementsPtr = sparseMemoryRequirements)
 		{
-			((delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void>)vkGetImageSparseMemoryRequirements2_ptr.Value)(device, info, &sparseMemoryRequirementCount, sparseMemoryRequirementsPtr);
+			((delegate* unmanaged<VkDevice, VkImageSparseMemoryRequirementsInfo2*, uint*, VkSparseImageMemoryRequirements2*, void>)vkGetImageSparseMemoryRequirements2_ptr.Value)(Device, info, &sparseMemoryRequirementCount, sparseMemoryRequirementsPtr);
 		}
 	}
 
@@ -220,21 +220,21 @@ unsafe partial class VkDeviceApi
 		}
 	}
 
-	public VkResult vkGetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, out uint swapchainImageCount)
+	public VkResult vkGetSwapchainImagesKHR(VkSwapchainKHR swapchain, out uint swapchainImageCount)
 	{
 		swapchainImageCount = default;
 		fixed (uint* swapchainImageCountPtr = &swapchainImageCount)
 		{
-			return ((delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult>)vkGetSwapchainImagesKHR_ptr.Value)(device, swapchain, swapchainImageCountPtr, default);
+			return ((delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult>)vkGetSwapchainImagesKHR_ptr.Value)(Device, swapchain, swapchainImageCountPtr, default);
 		}
 	}
 
-	public VkResult vkGetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, Span<VkImage> swapchainImages)
+	public VkResult vkGetSwapchainImagesKHR(VkSwapchainKHR swapchain, Span<VkImage> swapchainImages)
 	{
 		uint swapchainImageCount = checked((uint)swapchainImages.Length);
 		fixed (VkImage* swapchainImagesPtr = swapchainImages)
 		{
-			return ((delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult>)vkGetSwapchainImagesKHR_ptr.Value)(device, swapchain, &swapchainImageCount, swapchainImagesPtr);
+			return ((delegate* unmanaged<VkDevice, VkSwapchainKHR, uint*, VkImage*, VkResult>)vkGetSwapchainImagesKHR_ptr.Value)(Device, swapchain, &swapchainImageCount, swapchainImagesPtr);
 		}
 	}
 

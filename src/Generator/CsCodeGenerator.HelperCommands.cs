@@ -101,6 +101,11 @@ partial class CsCodeGenerator
     private void GenerateHelpers(List<CppFunction> commands, bool instance, string className, string fileName)
     {
         string methodModifier = instance ? string.Empty : "static ";
+        string? firstParameterType = default;
+        if (instance)
+        {
+            firstParameterType = className == "VkInstanceApi" ? "VkInstance" : "VkDevice";
+        }
 
         // Generate Functions
         using (CodeWriter writer = new(Path.Combine(_options.OutputPath, $"{fileName}.cs"),
@@ -122,35 +127,48 @@ partial class CsCodeGenerator
                     bool hasArrayReturn = false;
                     int countArgumentArrayIndex = 0;
 
-                    foreach (CppParameter parameter in function.Parameters)
+                    foreach (CppParameter cppParameter in function.Parameters)
                     {
-                        if (parameter.Name.EndsWith("count", StringComparison.OrdinalIgnoreCase))
+                        if (cppParameter.Name.EndsWith("count", StringComparison.OrdinalIgnoreCase))
                         {
-                            countParameterName = GetParameterName(parameter.Name);
+                            countParameterName = GetParameterName(cppParameter.Name);
                             continue;
                         }
 
-                        if (CanBeUsedAsInOut(parameter.Type, true, out CppType? cppTypeDeclaration))
+                        if (CanBeUsedAsInOut(cppParameter.Type, true, out CppType? cppTypeDeclaration))
                         {
-                            returnVariableName = GetParameterName(parameter.Name);
+                            returnVariableName = GetParameterName(cppParameter.Name);
                             returnArrayTypeName = GetCsTypeName(cppTypeDeclaration);
                             hasArrayReturn = true;
-                            countArgumentArrayIndex = function.Parameters.IndexOf(parameter) - 1;
+                            countArgumentArrayIndex = function.Parameters.IndexOf(cppParameter) - 1;
                             continue;
                         }
 
-                        if (parameter.Type is CppPointerType pointerType
+                        if (cppParameter.Type is CppPointerType pointerType
                             && pointerType.ElementType is CppQualifiedType qualifiedType
                             && !string.IsNullOrEmpty(countParameterName))
                         {
-                            returnVariableName = GetParameterName(parameter.Name);
+                            returnVariableName = GetParameterName(cppParameter.Name);
                             returnArrayTypeName = GetCsTypeName(qualifiedType);
                             hasArrayReturn = false;
-                            countArgumentArrayIndex = function.Parameters.IndexOf(parameter) - 1;
+                            countArgumentArrayIndex = function.Parameters.IndexOf(cppParameter) - 1;
                             continue;
                         }
 
-                        newParameters.Add(parameter);
+                        string paramCsTypeName = GetCsTypeName(cppParameter.Type);
+                        if (newParameters.Count == 0
+                            && !string.IsNullOrEmpty(firstParameterType)
+                            && firstParameterType == paramCsTypeName)
+                        {
+                            if (className == "VkInstanceApi")
+                                newParameters.Add(new CppParameter(cppParameter.Type, "Instance"));
+                            else if (className == "VkDeviceApi")
+                                newParameters.Add(new CppParameter(cppParameter.Type, "Device"));
+                        }
+                        else
+                        {
+                            newParameters.Add(cppParameter);
+                        }
                     }
 
                     string csCountParameterType = "uint";
@@ -166,6 +184,11 @@ partial class CsCodeGenerator
                         List<string> invokeSingleElementParameters = [];
                         List<string> invokeElementsParameters = [];
 
+                        if (function.Name == "vkFlushMappedMemoryRanges")
+                        {
+
+                        }
+
                         foreach (CppParameter cppParameter in newParameters)
                         {
                             string paramCsTypeName = GetCsTypeName(cppParameter.Type);
@@ -179,6 +202,16 @@ partial class CsCodeGenerator
                                     invokeSingleElementParameters, invokeElementsParameters,
                                     returnArrayTypeName, returnVariableName,
                                     csCountParameterType);
+                            }
+
+                            if (index == 0
+                                && !string.IsNullOrEmpty(firstParameterType)
+                                && firstParameterType == paramCsTypeName)
+                            {
+                                invokeSingleElementParameters.Add(paramCsName);
+                                invokeElementsParameters.Add(paramCsName);
+                                index++;
+                                continue;
                             }
 
                             argumentsSingleElementBuilder.Append(argumentSignature);
@@ -235,7 +268,7 @@ partial class CsCodeGenerator
                     }
                     else
                     {
-                        string argumentsString = GetParameterSignature(newParameters, false, false);
+                        string argumentsString = GetParameterSignature(newParameters, false, false, firstParameterType: firstParameterType);
                         string extraArgs = string.Empty;
                         if (!string.IsNullOrEmpty(argumentsString))
                         {
@@ -250,11 +283,12 @@ partial class CsCodeGenerator
                             writer.WriteLine($"{countParameterName} = default;");
                             using (writer.PushBlock($"fixed ({csCountParameterType}* {countParameterName}Ptr = &{countParameterName})"))
                             {
-                                List<string> invokeParameters = new(newParameters.Select(item => GetParameterName(item.Name)))
-                            {
-                                $"{countParameterName}Ptr",
-                                "default"
-                            };
+                                List<string> invokeParameters =
+                                [
+                                    .. newParameters.Select(item => GetParameterName(item.Name)),
+                                    $"{countParameterName}Ptr",
+                                    "default"
+                                ];
                                 EmitInvoke(writer, function, invokeParameters,
                                     handleCheckResult: false,
                                     emitReturn: true);
@@ -298,7 +332,7 @@ partial class CsCodeGenerator
         string csCountParameterType)
     {
         var singleName = GetSingleName(returnVariableName);
-        if (singleElement)
+        if (singleElement && argumentsSingleElementBuilder.Length > 0)
         {
             argumentsSingleElementBuilder.Append(", ");
             argumentsSpanBuilder.Append(", ");
