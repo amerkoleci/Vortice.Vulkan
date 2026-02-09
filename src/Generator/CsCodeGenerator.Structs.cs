@@ -33,7 +33,7 @@ partial class CsCodeGenerator
             usings.AddRange(_options.ExtraUsings);
         }
 
-        string[] staticUsings = ["Vortice.Vulkan.Vulkan"];
+        string[] staticUsings = [];
 
         // Generate Structures
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Structures.cs"),
@@ -158,6 +158,11 @@ partial class CsCodeGenerator
 
     private void WriteField(CodeWriter writer, string structName, CppField field, bool handleSType, bool isUnion = false, bool isReadOnly = false)
     {
+        if (structName == "VkShaderModuleCreateInfo")
+        {
+
+        }
+
         string csFieldName = NormalizeFieldName(field.Name);
 
         if (isUnion)

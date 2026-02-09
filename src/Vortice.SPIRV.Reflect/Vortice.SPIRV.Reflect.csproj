@@ -35,6 +35,11 @@
       <Pack>True</Pack>
       <Visible>False</Visible>
     </Content>
+    <Content Include="$(NativeLibDirectory)linux-arm64\libspirv-reflect.so">
+      <PackagePath>runtimes/linux-arm64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
     <Content Include="$(NativeLibDirectory)osx\libspirv-reflect.dylib">
       <PackagePath>runtimes/osx/native</PackagePath>
       <Pack>True</Pack>

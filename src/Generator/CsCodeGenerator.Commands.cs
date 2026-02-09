@@ -168,6 +168,10 @@ partial class CsCodeGenerator
             return true;
         }
 
+
+        if (string.IsNullOrEmpty(sourceFileName))
+            return true;
+
         if (!vulkan)
             return ShouldIgnoreVulkanFile(sourceFileName);
 
@@ -176,6 +180,7 @@ partial class CsCodeGenerator
 
     private static bool ShouldIgnoreVulkanFile(string sourceFileName)
     {
+
         if (sourceFileName == "vulkan_core"
             || sourceFileName.StartsWith("vulkan_video_"))
         {

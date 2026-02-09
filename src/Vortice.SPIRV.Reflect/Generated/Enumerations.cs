@@ -38,7 +38,7 @@ public enum SpvReflectResult
 	/// <unmanaged>SPV_REFLECT_RESULT_ERROR_SPIRV_UNEXPECTED_EOF</unmanaged>
 	ErrorSPIRVUnexpectedEof = 11,
 	/// <unmanaged>SPV_REFLECT_RESULT_ERROR_SPIRV_INVALID_ID_REFERENCE</unmanaged>
-	ErrorSPIRVInvalidIDReference = 12,
+	ErrorSPIRVInvalidIdReference = 12,
 	/// <unmanaged>SPV_REFLECT_RESULT_ERROR_SPIRV_SET_NUMBER_OVERFLOW</unmanaged>
 	ErrorSPIRVSetNumberOverflow = 13,
 	/// <unmanaged>SPV_REFLECT_RESULT_ERROR_SPIRV_INVALID_STORAGE_CLASS</unmanaged>
@@ -422,6 +422,8 @@ public enum SpvReflectGenerator
 	WineVkd3dShaderCompiler = 18,
 	/// <unmanaged>SPV_REFLECT_GENERATOR_CLAY_CLAY_SHADER_COMPILER</unmanaged>
 	ClayClayShaderCompiler = 19,
+	/// <unmanaged>SPV_REFLECT_GENERATOR_SLANG_SHADER_COMPILER</unmanaged>
+	SlangShaderCompiler = 40,
 }
 
 public enum SpvReflectArrayDimType

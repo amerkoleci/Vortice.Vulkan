@@ -102,6 +102,9 @@ unsafe partial class Vma
 	[LibraryImport(LibName, EntryPoint = "vmaAllocateMemory")]
 	public static partial VkResult vmaAllocateMemory(VmaAllocator allocator, VkMemoryRequirements* vkMemoryRequirements, VmaAllocationCreateInfo* createInfo, out VmaAllocation allocation, out VmaAllocationInfo allocationInfo);
 
+	[LibraryImport(LibName, EntryPoint = "vmaAllocateDedicatedMemory")]
+	public static partial VkResult vmaAllocateDedicatedMemory(VmaAllocator allocator, VkMemoryRequirements* vkMemoryRequirements, VmaAllocationCreateInfo* createInfo, void* memoryAllocateNext, VmaAllocation* allocation, VmaAllocationInfo* allocationInfo);
+
 	[LibraryImport(LibName, EntryPoint = "vmaAllocateMemoryPages")]
 	public static partial VkResult vmaAllocateMemoryPages(VmaAllocator allocator, VkMemoryRequirements* vkMemoryRequirements, VmaAllocationCreateInfo* createInfo, nuint allocationCount, VmaAllocation* allocations, VmaAllocationInfo* allocationInfo);
 
@@ -201,6 +204,9 @@ unsafe partial class Vma
 	[LibraryImport(LibName, EntryPoint = "vmaCreateBufferWithAlignment")]
 	public static partial VkResult vmaCreateBufferWithAlignment(VmaAllocator allocator, VkBufferCreateInfo* bufferCreateInfo, VmaAllocationCreateInfo* allocationCreateInfo, ulong minAlignment, out VkBuffer buffer, out VmaAllocation allocation, out VmaAllocationInfo allocationInfo);
 
+	[LibraryImport(LibName, EntryPoint = "vmaCreateDedicatedBuffer")]
+	public static partial VkResult vmaCreateDedicatedBuffer(VmaAllocator allocator, VkBufferCreateInfo* bufferCreateInfo, VmaAllocationCreateInfo* allocationCreateInfo, void* memoryAllocateNext, VkBuffer* buffer, VmaAllocation* allocation, VmaAllocationInfo* allocationInfo);
+
 	[LibraryImport(LibName, EntryPoint = "vmaCreateAliasingBuffer")]
 	public static partial VkResult vmaCreateAliasingBuffer(VmaAllocator allocator, VmaAllocation allocation, VkBufferCreateInfo* bufferCreateInfo, VkBuffer* buffer);
 
@@ -221,6 +227,9 @@ unsafe partial class Vma
 
 	[LibraryImport(LibName, EntryPoint = "vmaCreateImage")]
 	public static partial VkResult vmaCreateImage(VmaAllocator allocator, VkImageCreateInfo* imageCreateInfo, VmaAllocationCreateInfo* allocationCreateInfo, out VkImage image, out VmaAllocation allocation, out VmaAllocationInfo allocationInfo);
+
+	[LibraryImport(LibName, EntryPoint = "vmaCreateDedicatedImage")]
+	public static partial VkResult vmaCreateDedicatedImage(VmaAllocator allocator, VkImageCreateInfo* imageCreateInfo, VmaAllocationCreateInfo* allocationCreateInfo, void* memoryAllocateNext, VkImage* image, VmaAllocation* allocation, VmaAllocationInfo* allocationInfo);
 
 	[LibraryImport(LibName, EntryPoint = "vmaCreateAliasingImage")]
 	public static partial VkResult vmaCreateAliasingImage(VmaAllocator allocator, VmaAllocation allocation, VkImageCreateInfo* imageCreateInfo, VkImage* image);

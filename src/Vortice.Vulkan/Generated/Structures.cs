@@ -136,11 +136,11 @@ public unsafe partial struct VkMemoryBarrier : IStructureType, IChainType
 public unsafe partial struct VkAllocationCallbacks
 {
 	public void* pUserData;
-	public delegate* unmanaged<void*, ulong, ulong, VkSystemAllocationScope, void*> pfnAllocation;
-	public delegate* unmanaged<void*, void*, ulong, ulong, VkSystemAllocationScope, void*> pfnReallocation;
+	public delegate* unmanaged<void*, nuint, nuint, VkSystemAllocationScope, void*> pfnAllocation;
+	public delegate* unmanaged<void*, void*, nuint, nuint, VkSystemAllocationScope, void*> pfnReallocation;
 	public delegate* unmanaged<void*, void*, void> pfnFree;
-	public delegate* unmanaged<void*, ulong, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalAllocation;
-	public delegate* unmanaged<void*, ulong, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalFree;
+	public delegate* unmanaged<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalAllocation;
+	public delegate* unmanaged<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalFree;
 }
 
 public unsafe partial struct VkApplicationInfo : IStructureType, IChainType
@@ -349,7 +349,7 @@ public unsafe partial struct VkPhysicalDeviceLimits
 	public fixed uint maxViewportDimensions[2];
 	public fixed float viewportBoundsRange[2];
 	public uint viewportSubPixelBits;
-	public ulong minMemoryMapAlignment;
+	public nuint minMemoryMapAlignment;
 	public ulong minTexelBufferOffsetAlignment;
 	public ulong minUniformBufferOffsetAlignment;
 	public ulong minStorageBufferOffsetAlignment;
@@ -1041,7 +1041,7 @@ public unsafe partial struct VkShaderModuleCreateInfo : IStructureType, IChainTy
 	public VkStructureType sType = VkStructureType.ShaderModuleCreateInfo;
 	public void* pNext;
 	public VkShaderModuleCreateFlags flags;
-	public ulong codeSize;
+	public nuint codeSize;
 	public uint* pCode;
 
 	public VkShaderModuleCreateInfo()
@@ -1064,7 +1064,7 @@ public unsafe partial struct VkPipelineCacheCreateInfo : IStructureType, IChainT
 	public VkStructureType sType = VkStructureType.PipelineCacheCreateInfo;
 	public void* pNext;
 	public VkPipelineCacheCreateFlags flags;
-	public ulong initialDataSize;
+	public nuint initialDataSize;
 	public void* pInitialData;
 
 	public VkPipelineCacheCreateInfo()
@@ -1086,14 +1086,14 @@ public partial struct VkSpecializationMapEntry
 {
 	public uint constantID;
 	public uint offset;
-	public ulong size;
+	public nuint size;
 }
 
 public unsafe partial struct VkSpecializationInfo
 {
 	public uint mapEntryCount;
 	public VkSpecializationMapEntry* pMapEntries;
-	public ulong dataSize;
+	public nuint dataSize;
 	public void* pData;
 }
 
@@ -3000,8 +3000,8 @@ public partial struct VkDescriptorUpdateTemplateEntry
 	public uint dstArrayElement;
 	public uint descriptorCount;
 	public VkDescriptorType descriptorType;
-	public ulong offset;
-	public ulong stride;
+	public nuint offset;
+	public nuint stride;
 }
 
 public unsafe partial struct VkDescriptorUpdateTemplateCreateInfo : IStructureType, IChainType
@@ -8104,10 +8104,10 @@ public unsafe partial struct StdVideoH264PictureParameterSet
 	public byte num_ref_idx_l0_default_active_minus1;
 	public byte num_ref_idx_l1_default_active_minus1;
 	public StdVideoH264WeightedBipredIdc weighted_bipred_idc;
-	public byte pic_init_qp_minus26;
-	public byte pic_init_qs_minus26;
-	public byte chroma_qp_index_offset;
-	public byte second_chroma_qp_index_offset;
+	public sbyte pic_init_qp_minus26;
+	public sbyte pic_init_qs_minus26;
+	public sbyte chroma_qp_index_offset;
+	public sbyte second_chroma_qp_index_offset;
 	public StdVideoH264ScalingLists* pScalingLists;
 }
 
@@ -8124,14 +8124,14 @@ public unsafe partial struct StdVideoEncodeH264WeightTable
 	public StdVideoEncodeH264WeightTableFlags flags;
 	public byte luma_log2_weight_denom;
 	public byte chroma_log2_weight_denom;
-	public fixed byte luma_weight_l0[32];
-	public fixed byte luma_offset_l0[32];
-	public fixed byte chroma_weight_l0[32 * 2];
-	public fixed byte chroma_offset_l0[32 * 2];
-	public fixed byte luma_weight_l1[32];
-	public fixed byte luma_offset_l1[32];
-	public fixed byte chroma_weight_l1[32 * 2];
-	public fixed byte chroma_offset_l1[32 * 2];
+	public fixed sbyte luma_weight_l0[32];
+	public fixed sbyte luma_offset_l0[32];
+	public fixed sbyte chroma_weight_l0[32 * 2];
+	public fixed sbyte chroma_offset_l0[32 * 2];
+	public fixed sbyte luma_weight_l1[32];
+	public fixed sbyte luma_offset_l1[32];
+	public fixed sbyte chroma_weight_l1[32 * 2];
+	public fixed sbyte chroma_offset_l1[32 * 2];
 }
 
 public partial struct StdVideoEncodeH264SliceHeaderFlags
@@ -8226,9 +8226,9 @@ public unsafe partial struct StdVideoEncodeH264SliceHeader
 	public StdVideoEncodeH264SliceHeaderFlags flags;
 	public uint first_mb_in_slice;
 	public StdVideoH264SliceType slice_type;
-	public byte slice_alpha_c0_offset_div2;
-	public byte slice_beta_offset_div2;
-	public byte slice_qp_delta;
+	public sbyte slice_alpha_c0_offset_div2;
+	public sbyte slice_beta_offset_div2;
+	public sbyte slice_qp_delta;
 	public byte reserved1;
 	public StdVideoH264CabacInitIdc cabac_init_idc;
 	public StdVideoH264DisableDeblockingFilterIdc disable_deblocking_filter_idc;
@@ -8893,23 +8893,23 @@ public unsafe partial struct StdVideoH265PictureParameterSet
 	public byte num_extra_slice_header_bits;
 	public byte num_ref_idx_l0_default_active_minus1;
 	public byte num_ref_idx_l1_default_active_minus1;
-	public byte init_qp_minus26;
+	public sbyte init_qp_minus26;
 	public byte diff_cu_qp_delta_depth;
-	public byte pps_cb_qp_offset;
-	public byte pps_cr_qp_offset;
-	public byte pps_beta_offset_div2;
-	public byte pps_tc_offset_div2;
+	public sbyte pps_cb_qp_offset;
+	public sbyte pps_cr_qp_offset;
+	public sbyte pps_beta_offset_div2;
+	public sbyte pps_tc_offset_div2;
 	public byte log2_parallel_merge_level_minus2;
 	public byte log2_max_transform_skip_block_size_minus2;
 	public byte diff_cu_chroma_qp_offset_depth;
 	public byte chroma_qp_offset_list_len_minus1;
-	public fixed byte cb_qp_offset_list[6];
-	public fixed byte cr_qp_offset_list[6];
+	public fixed sbyte cb_qp_offset_list[6];
+	public fixed sbyte cr_qp_offset_list[6];
 	public byte log2_sao_offset_scale_luma;
 	public byte log2_sao_offset_scale_chroma;
-	public byte pps_act_y_qp_offset_plus5;
-	public byte pps_act_cb_qp_offset_plus5;
-	public byte pps_act_cr_qp_offset_plus3;
+	public sbyte pps_act_y_qp_offset_plus5;
+	public sbyte pps_act_cb_qp_offset_plus5;
+	public sbyte pps_act_cr_qp_offset_plus3;
 	public byte pps_num_palette_predictor_initializers;
 	public byte luma_bit_depth_entry_minus8;
 	public byte chroma_bit_depth_entry_minus8;
@@ -8936,15 +8936,15 @@ public unsafe partial struct StdVideoEncodeH265WeightTable
 {
 	public StdVideoEncodeH265WeightTableFlags flags;
 	public byte luma_log2_weight_denom;
-	public byte delta_chroma_log2_weight_denom;
-	public fixed byte delta_luma_weight_l0[15];
-	public fixed byte luma_offset_l0[15];
-	public fixed byte delta_chroma_weight_l0[15 * 2];
-	public fixed byte delta_chroma_offset_l0[15 * 2];
-	public fixed byte delta_luma_weight_l1[15];
-	public fixed byte luma_offset_l1[15];
-	public fixed byte delta_chroma_weight_l1[15 * 2];
-	public fixed byte delta_chroma_offset_l1[15 * 2];
+	public sbyte delta_chroma_log2_weight_denom;
+	public fixed sbyte delta_luma_weight_l0[15];
+	public fixed sbyte luma_offset_l0[15];
+	public fixed sbyte delta_chroma_weight_l0[15 * 2];
+	public fixed sbyte delta_chroma_offset_l0[15 * 2];
+	public fixed sbyte delta_luma_weight_l1[15];
+	public fixed sbyte luma_offset_l1[15];
+	public fixed sbyte delta_chroma_weight_l1[15 * 2];
+	public fixed sbyte delta_chroma_offset_l1[15 * 2];
 }
 
 public partial struct StdVideoEncodeH265SliceSegmentHeaderFlags
@@ -8971,14 +8971,14 @@ public unsafe partial struct StdVideoEncodeH265SliceSegmentHeader
 	public uint slice_segment_address;
 	public byte collocated_ref_idx;
 	public byte MaxNumMergeCand;
-	public byte slice_cb_qp_offset;
-	public byte slice_cr_qp_offset;
-	public byte slice_beta_offset_div2;
-	public byte slice_tc_offset_div2;
-	public byte slice_act_y_qp_offset;
-	public byte slice_act_cb_qp_offset;
-	public byte slice_act_cr_qp_offset;
-	public byte slice_qp_delta;
+	public sbyte slice_cb_qp_offset;
+	public sbyte slice_cr_qp_offset;
+	public sbyte slice_beta_offset_div2;
+	public sbyte slice_tc_offset_div2;
+	public sbyte slice_act_y_qp_offset;
+	public sbyte slice_act_cb_qp_offset;
+	public sbyte slice_act_cr_qp_offset;
+	public sbyte slice_qp_delta;
 	public ushort reserved1;
 	public StdVideoEncodeH265WeightTable* pWeightTable;
 }
@@ -10713,7 +10713,7 @@ public unsafe partial struct VkPipelineExecutableInternalRepresentationKHR : ISt
 	public fixed byte name[256];
 	public fixed byte description[256];
 	public VkBool32 isText;
-	public ulong dataSize;
+	public nuint dataSize;
 	public void* pData;
 
 	public VkPipelineExecutableInternalRepresentationKHR()
@@ -11462,7 +11462,7 @@ public unsafe partial struct VkPipelineBinaryKeyKHR : IStructureType, IChainType
 
 public unsafe partial struct VkPipelineBinaryDataKHR
 {
-	public ulong dataSize;
+	public nuint dataSize;
 	public void* pData;
 }
 
@@ -11988,9 +11988,9 @@ public unsafe partial struct StdVideoAV1LoopFilter
 	public fixed byte loop_filter_level[4];
 	public byte loop_filter_sharpness;
 	public byte update_ref_delta;
-	public fixed byte loop_filter_ref_deltas[8];
+	public fixed sbyte loop_filter_ref_deltas[8];
 	public byte update_mode_delta;
-	public fixed byte loop_filter_mode_deltas[2];
+	public fixed sbyte loop_filter_mode_deltas[2];
 }
 
 public partial struct StdVideoAV1QuantizationFlags
@@ -12004,11 +12004,11 @@ public partial struct StdVideoAV1Quantization
 {
 	public StdVideoAV1QuantizationFlags flags;
 	public byte base_q_idx;
-	public byte DeltaQYDc;
-	public byte DeltaQUDc;
-	public byte DeltaQUAc;
-	public byte DeltaQVDc;
-	public byte DeltaQVAc;
+	public sbyte DeltaQYDc;
+	public sbyte DeltaQUDc;
+	public sbyte DeltaQUAc;
+	public sbyte DeltaQVDc;
+	public sbyte DeltaQVAc;
 	public byte qm_y;
 	public byte qm_u;
 	public byte qm_v;
@@ -12095,9 +12095,9 @@ public unsafe partial struct StdVideoAV1FilmGrain
 	public byte num_cr_points;
 	public fixed byte point_cr_value[10];
 	public fixed byte point_cr_scaling[10];
-	public fixed byte ar_coeffs_y_plus_128[24];
-	public fixed byte ar_coeffs_cb_plus_128[25];
-	public fixed byte ar_coeffs_cr_plus_128[25];
+	public fixed sbyte ar_coeffs_y_plus_128[24];
+	public fixed sbyte ar_coeffs_cb_plus_128[25];
+	public fixed sbyte ar_coeffs_cr_plus_128[25];
 	public byte cb_mult;
 	public byte cb_luma_mult;
 	public ushort cb_offset;
@@ -12422,7 +12422,7 @@ public unsafe partial struct StdVideoEncodeAV1PictureInfo
 	public byte delta_q_res;
 	public byte delta_lf_res;
 	public fixed byte ref_order_hint[8];
-	public fixed byte ref_frame_idx[7];
+	public fixed sbyte ref_frame_idx[7];
 	public fixed byte reserved1[3];
 	public fixed uint delta_frame_id_minus_1[7];
 	public StdVideoAV1TileInfo* pTileInfo;
@@ -12786,9 +12786,9 @@ public unsafe partial struct StdVideoVP9LoopFilter
 	public byte loop_filter_level;
 	public byte loop_filter_sharpness;
 	public byte update_ref_delta;
-	public fixed byte loop_filter_ref_deltas[4];
+	public fixed sbyte loop_filter_ref_deltas[4];
 	public byte update_mode_delta;
-	public fixed byte loop_filter_mode_deltas[2];
+	public fixed sbyte loop_filter_mode_deltas[2];
 }
 
 public partial struct StdVideoVP9SegmentationFlags
@@ -12833,9 +12833,9 @@ public unsafe partial struct StdVideoDecodeVP9PictureInfo
 	public byte ref_frame_sign_bias_mask;
 	public StdVideoVP9InterpolationFilter interpolation_filter;
 	public byte base_q_idx;
-	public byte delta_q_y_dc;
-	public byte delta_q_uv_dc;
-	public byte delta_q_uv_ac;
+	public sbyte delta_q_y_dc;
+	public sbyte delta_q_uv_dc;
+	public sbyte delta_q_uv_ac;
 	public byte tile_cols_log2;
 	public byte tile_rows_log2;
 	public fixed ushort reserved1[3];
@@ -14084,7 +14084,7 @@ public unsafe partial struct VkDebugReportCallbackCreateInfoEXT : IStructureType
 	public VkStructureType sType = VkStructureType.DebugReportCallbackCreateInfoEXT;
 	public void* pNext;
 	public VkDebugReportFlagsEXT flags;
-	public delegate* unmanaged<VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, ulong, int, byte*, byte*, void*, uint> pfnCallback;
+	public delegate* unmanaged<VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void*, uint> pfnCallback;
 	public void* pUserData;
 
 	public VkDebugReportCallbackCreateInfoEXT()
@@ -14153,7 +14153,7 @@ public unsafe partial struct VkDebugMarkerObjectTagInfoEXT : IStructureType, ICh
 	public VkDebugReportObjectTypeEXT objectType;
 	public ulong @object;
 	public ulong tagName;
-	public ulong tagSize;
+	public nuint tagSize;
 	public void* pTag;
 
 	public VkDebugMarkerObjectTagInfoEXT()
@@ -14335,7 +14335,7 @@ public unsafe partial struct VkCuModuleCreateInfoNVX : IStructureType, IChainTyp
 {
 	public VkStructureType sType = VkStructureType.CuModuleCreateInfoNVX;
 	public void* pNext;
-	public ulong dataSize;
+	public nuint dataSize;
 	public void* pData;
 
 	public VkCuModuleCreateInfoNVX()
@@ -14408,9 +14408,9 @@ public unsafe partial struct VkCuLaunchInfoNVX : IStructureType, IChainType
 	public uint blockDimY;
 	public uint blockDimZ;
 	public uint sharedMemBytes;
-	public ulong paramCount;
+	public nuint paramCount;
 	public void** pParams;
-	public ulong extraCount;
+	public nuint extraCount;
 	public void** pExtras;
 
 	public VkCuLaunchInfoNVX()
@@ -14499,8 +14499,8 @@ public partial struct VkShaderResourceUsageAMD
 	public uint numUsedVgprs;
 	public uint numUsedSgprs;
 	public uint ldsSizePerLocalWorkGroup;
-	public ulong ldsUsageSizeInBytes;
-	public ulong scratchMemUsageInBytes;
+	public nuint ldsUsageSizeInBytes;
+	public nuint scratchMemUsageInBytes;
 }
 
 public unsafe partial struct VkShaderStatisticsInfoAMD
@@ -15277,7 +15277,7 @@ public unsafe partial struct VkDebugUtilsObjectTagInfoEXT : IStructureType, ICha
 	public VkObjectType objectType;
 	public ulong objectHandle;
 	public ulong tagName;
-	public ulong tagSize;
+	public nuint tagSize;
 	public void* pTag;
 
 	public VkDebugUtilsObjectTagInfoEXT()
@@ -15298,13 +15298,13 @@ public unsafe partial struct VkDebugUtilsObjectTagInfoEXT : IStructureType, ICha
 public unsafe partial struct VkHostAddressRangeEXT
 {
 	public void* address;
-	public ulong size;
+	public nuint size;
 }
 
 public unsafe partial struct VkHostAddressRangeConstEXT
 {
 	public void* address;
-	public ulong size;
+	public nuint size;
 }
 
 public partial struct VkDeviceAddressRangeEXT
@@ -15675,7 +15675,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorHeapPropertiesEXT : IStru
 	public ulong imageDescriptorAlignment;
 	public ulong bufferDescriptorAlignment;
 	public ulong maxPushDataSize;
-	public ulong imageCaptureReplayOpaqueDataSize;
+	public nuint imageCaptureReplayOpaqueDataSize;
 	public uint maxDescriptorHeapEmbeddedSamplers;
 	public uint samplerYcbcrConversionCount;
 	public VkBool32 sparseDescriptorHeaps;
@@ -15810,7 +15810,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorHeapTensorPropertiesARM :
 	public void* pNext;
 	public ulong tensorDescriptorSize;
 	public ulong tensorDescriptorAlignment;
-	public ulong tensorCaptureReplayOpaqueDataSize;
+	public nuint tensorCaptureReplayOpaqueDataSize;
 
 	public VkPhysicalDeviceDescriptorHeapTensorPropertiesARM()
 	{
@@ -16298,7 +16298,7 @@ public unsafe partial struct VkValidationCacheCreateInfoEXT : IStructureType, IC
 	public VkStructureType sType = VkStructureType.ValidationCacheCreateInfoEXT;
 	public void* pNext;
 	public VkValidationCacheCreateFlagsEXT flags;
-	public ulong initialDataSize;
+	public nuint initialDataSize;
 	public void* pInitialData;
 
 	public VkValidationCacheCreateInfoEXT()
@@ -17833,8 +17833,20 @@ public unsafe partial struct VkPhysicalDeviceMemoryBudgetPropertiesEXT : IStruct
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceMemoryBudgetPropertiesEXT;
 	public void* pNext;
-	public fixed ulong heapBudget[16];
-	public fixed ulong heapUsage[16];
+	public heapBudget__FixedBuffer heapBudget;
+
+	[InlineArray(16)]
+	public partial struct heapBudget__FixedBuffer
+	{
+		public ulong e0;
+	}
+	public heapUsage__FixedBuffer heapUsage;
+
+	[InlineArray(16)]
+	public partial struct heapUsage__FixedBuffer
+	{
+		public ulong e0;
+	}
 
 	public VkPhysicalDeviceMemoryBudgetPropertiesEXT()
 	{
@@ -19235,25 +19247,25 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferPropertiesEXT : ISt
 	public uint maxSamplerDescriptorBufferBindings;
 	public uint maxEmbeddedImmutableSamplerBindings;
 	public uint maxEmbeddedImmutableSamplers;
-	public ulong bufferCaptureReplayDescriptorDataSize;
-	public ulong imageCaptureReplayDescriptorDataSize;
-	public ulong imageViewCaptureReplayDescriptorDataSize;
-	public ulong samplerCaptureReplayDescriptorDataSize;
-	public ulong accelerationStructureCaptureReplayDescriptorDataSize;
-	public ulong samplerDescriptorSize;
-	public ulong combinedImageSamplerDescriptorSize;
-	public ulong sampledImageDescriptorSize;
-	public ulong storageImageDescriptorSize;
-	public ulong uniformTexelBufferDescriptorSize;
-	public ulong robustUniformTexelBufferDescriptorSize;
-	public ulong storageTexelBufferDescriptorSize;
-	public ulong robustStorageTexelBufferDescriptorSize;
-	public ulong uniformBufferDescriptorSize;
-	public ulong robustUniformBufferDescriptorSize;
-	public ulong storageBufferDescriptorSize;
-	public ulong robustStorageBufferDescriptorSize;
-	public ulong inputAttachmentDescriptorSize;
-	public ulong accelerationStructureDescriptorSize;
+	public nuint bufferCaptureReplayDescriptorDataSize;
+	public nuint imageCaptureReplayDescriptorDataSize;
+	public nuint imageViewCaptureReplayDescriptorDataSize;
+	public nuint samplerCaptureReplayDescriptorDataSize;
+	public nuint accelerationStructureCaptureReplayDescriptorDataSize;
+	public nuint samplerDescriptorSize;
+	public nuint combinedImageSamplerDescriptorSize;
+	public nuint sampledImageDescriptorSize;
+	public nuint storageImageDescriptorSize;
+	public nuint uniformTexelBufferDescriptorSize;
+	public nuint robustUniformTexelBufferDescriptorSize;
+	public nuint storageTexelBufferDescriptorSize;
+	public nuint robustStorageTexelBufferDescriptorSize;
+	public nuint uniformBufferDescriptorSize;
+	public nuint robustUniformBufferDescriptorSize;
+	public nuint storageBufferDescriptorSize;
+	public nuint robustStorageBufferDescriptorSize;
+	public nuint inputAttachmentDescriptorSize;
+	public nuint accelerationStructureDescriptorSize;
 	public ulong maxSamplerDescriptorBufferRange;
 	public ulong maxResourceDescriptorBufferRange;
 	public ulong samplerDescriptorBufferAddressSpaceSize;
@@ -19279,7 +19291,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferDensityMapPropertie
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT;
 	public void* pNext;
-	public ulong combinedImageSamplerDensityMapDescriptorSize;
+	public nuint combinedImageSamplerDensityMapDescriptorSize;
 
 	public VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT()
 	{
@@ -20623,7 +20635,7 @@ public unsafe partial struct VkFrameBoundaryEXT : IStructureType, IChainType
 	public uint bufferCount;
 	public VkBuffer* pBuffers;
 	public ulong tagName;
-	public ulong tagSize;
+	public nuint tagSize;
 	public void* pTag;
 
 	public VkFrameBoundaryEXT()
@@ -21623,7 +21635,7 @@ public unsafe partial struct VkDescriptorSetLayoutHostMappingInfoVALVE : IStruct
 {
 	public VkStructureType sType = VkStructureType.DescriptorSetLayoutHostMappingInfoVALVE;
 	public void* pNext;
-	public ulong descriptorOffset;
+	public nuint descriptorOffset;
 	public uint descriptorSize;
 
 	public VkDescriptorSetLayoutHostMappingInfoVALVE()
@@ -22898,9 +22910,9 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferTensorPropertiesARM
 {
 	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorBufferTensorPropertiesARM;
 	public void* pNext;
-	public ulong tensorCaptureReplayDescriptorDataSize;
-	public ulong tensorViewCaptureReplayDescriptorDataSize;
-	public ulong tensorDescriptorSize;
+	public nuint tensorCaptureReplayDescriptorDataSize;
+	public nuint tensorViewCaptureReplayDescriptorDataSize;
+	public nuint tensorDescriptorSize;
 
 	public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM()
 	{
@@ -23395,7 +23407,7 @@ public unsafe partial struct VkShaderCreateInfoEXT : IStructureType, IChainType
 	public VkShaderStageFlags stage;
 	public VkShaderStageFlags nextStage;
 	public VkShaderCodeTypeEXT codeType;
-	public ulong codeSize;
+	public nuint codeSize;
 	public void* pCode;
 	public byte* pName;
 	public uint setLayoutCount;
@@ -23651,18 +23663,18 @@ public unsafe partial struct VkConvertCooperativeVectorMatrixInfoNV : IStructure
 {
 	public VkStructureType sType = VkStructureType.ConvertCooperativeVectorMatrixInfoNV;
 	public void* pNext;
-	public ulong srcSize;
+	public nuint srcSize;
 	public VkDeviceOrHostAddressConstKHR srcData;
-	public ulong* pDstSize;
+	public nuint* pDstSize;
 	public VkDeviceOrHostAddressKHR dstData;
 	public VkComponentTypeKHR srcComponentType;
 	public VkComponentTypeKHR dstComponentType;
 	public uint numRows;
 	public uint numColumns;
 	public VkCooperativeVectorMatrixLayoutNV srcLayout;
-	public ulong srcStride;
+	public nuint srcStride;
 	public VkCooperativeVectorMatrixLayoutNV dstLayout;
-	public ulong dstStride;
+	public nuint dstStride;
 
 	public VkConvertCooperativeVectorMatrixInfoNV()
 	{
@@ -24371,7 +24383,7 @@ public unsafe partial struct VkDataGraphPipelinePropertyQueryResultARM : IStruct
 	public void* pNext;
 	public VkDataGraphPipelinePropertyARM property;
 	public VkBool32 isText;
-	public ulong dataSize;
+	public nuint dataSize;
 	public void* pData;
 
 	public VkDataGraphPipelinePropertyQueryResultARM()
@@ -26395,7 +26407,7 @@ public unsafe partial struct VkHdrVividDynamicMetadataHUAWEI : IStructureType, I
 {
 	public VkStructureType sType = VkStructureType.HdrVividDynamicMetadataHUAWEI;
 	public void* pNext;
-	public ulong dynamicMetadataSize;
+	public nuint dynamicMetadataSize;
 	public void* pDynamicMetadata;
 
 	public VkHdrVividDynamicMetadataHUAWEI()
@@ -29008,7 +29020,7 @@ public unsafe partial struct VkCudaModuleCreateInfoNV : IStructureType, IChainTy
 {
 	public VkStructureType sType = VkStructureType.CudaModuleCreateInfoNV;
 	public void* pNext;
-	public ulong dataSize;
+	public nuint dataSize;
 	public void* pData;
 
 	public VkCudaModuleCreateInfoNV()
@@ -29060,9 +29072,9 @@ public unsafe partial struct VkCudaLaunchInfoNV : IStructureType, IChainType
 	public uint blockDimY;
 	public uint blockDimZ;
 	public uint sharedMemBytes;
-	public ulong paramCount;
+	public nuint paramCount;
 	public void** pParams;
-	public ulong extraCount;
+	public nuint extraCount;
 	public void** pExtras;
 
 	public VkCudaLaunchInfoNV()

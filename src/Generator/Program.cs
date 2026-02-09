@@ -42,10 +42,14 @@ public static class Program
             parserOptions = new()
             {
                 ParseMacros = true,
-                SystemIncludeFolders =
+                IncludeFolders =
                 {
                     Path.Combine(AppContext.BaseDirectory, "headers")
-                }
+                },
+                Defines =
+                {
+                    "_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH"
+                },
             };
 
             generateOptions = new()
@@ -133,6 +137,7 @@ public static class Program
             parserOptions = new()
             {
                 ParseMacros = true,
+                AutoSquashTypedef = true,
                 Defines =
                 {
                     //"VK_NO_PROTOTYPES",
@@ -164,6 +169,8 @@ public static class Program
 
         if (OperatingSystem.IsWindows())
         {
+            //parserOptions.ConfigureForWindowsMsvc(CppTargetCpu.X86_64, CppVisualStudioVersion.VS2022);
+
             //@"C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0"
             parserOptions.SystemIncludeFolders.AddRange(SdkResolver.ResolveStdLib());
 

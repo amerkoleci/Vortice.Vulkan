@@ -61,7 +61,7 @@ public unsafe partial struct VmaAllocatorCreateInfo
 	public VkAllocationCallbacks* pAllocationCallbacks;
 	public VmaDeviceMemoryCallbacks* pDeviceMemoryCallbacks;
 	public ulong* pHeapSizeLimit;
-	internal VmaVulkanFunctions* pVulkanFunctions;
+	public VmaVulkanFunctions* pVulkanFunctions;
 	public VkInstance instance;
 	public VkVersion vulkanApiVersion;
 	public VkExternalMemoryHandleTypeFlagsKHR* pTypeExternalMemoryHandleTypes;

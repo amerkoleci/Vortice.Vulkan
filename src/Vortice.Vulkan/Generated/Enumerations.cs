@@ -9946,7 +9946,7 @@ public enum VkXlibSurfaceCreateFlagsKHR
 public enum VkPipelineStageFlags2 : ulong
 {
 	/// <unmanaged>VK_PIPELINE_STAGE_2_NONE</unmanaged>
-	None = 0,
+	None = 0UL,
 	/// <unmanaged>VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT</unmanaged>
 	TopOfPipe = 0x00000001UL,
 	/// <unmanaged>VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT</unmanaged>
@@ -10059,7 +10059,7 @@ public enum VkPipelineStageFlags2 : ulong
 public enum VkAccessFlags2 : ulong
 {
 	/// <unmanaged>VK_ACCESS_2_NONE</unmanaged>
-	None = 0,
+	None = 0UL,
 	/// <unmanaged>VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT</unmanaged>
 	IndirectCommandRead = 0x00000001UL,
 	/// <unmanaged>VK_ACCESS_2_INDEX_READ_BIT</unmanaged>
@@ -10455,7 +10455,7 @@ public enum VkPipelineCreateFlags2 : ulong
 public enum VkAccessFlags3KHR : ulong
 {
 	/// <unmanaged>VK_ACCESS_3_NONE_KHR</unmanaged>
-	None = 0,
+	None = 0UL,
 }
 
 [Flags]

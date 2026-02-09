@@ -252,7 +252,7 @@ public partial class CsCodeGenerator
             case CppPrimitiveKind.Int:
                 return "int";
 
-            case CppPrimitiveKind.LongLong:
+            case CppPrimitiveKind.Long:
                 return "long";
 
             case CppPrimitiveKind.UnsignedChar:
@@ -267,14 +267,24 @@ public partial class CsCodeGenerator
             case CppPrimitiveKind.UnsignedLong:
                 return "ulong";
 
+            case CppPrimitiveKind.LongLong:
+                return "nint";
+
             case CppPrimitiveKind.UnsignedLongLong:
-                return "ulong";
+                // { "size_t", "nuint" },
+                return "nuint";
 
             case CppPrimitiveKind.Float:
                 return "float";
 
             case CppPrimitiveKind.Double:
                 return "double";
+
+            //case CppPrimitiveKind.IntPtr:
+            //    return "nint";
+            //
+            //case CppPrimitiveKind.UIntPtr:
+            //    return "nuint";
 
             default:
                 throw new InvalidOperationException($"Unknown primitive type: {primitiveType.Kind}");
@@ -297,9 +307,14 @@ public partial class CsCodeGenerator
             {
                 return GetCsTypeName(subPointerType) + "*";
             }
-            else if (qualifiedType.ElementType is CppTypedef typedef)
+            else if (qualifiedType.ElementType is CppTypedef cppTypedef)
             {
-                return GetCsTypeName(typedef);
+                if (cppTypedef.Name == "size_t")
+                {
+
+                }
+
+                return GetCsTypeName(cppTypedef);
             }
             else if (qualifiedType.ElementType is CppEnum @enum)
             {

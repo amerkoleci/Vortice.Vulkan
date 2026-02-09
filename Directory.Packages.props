@@ -2,7 +2,7 @@
 <Project>
   <!-- https://learn.microsoft.com/nuget/consume-packages/central-package-management -->
   <ItemGroup>
-    <PackageVersion Include="CppAst" Version="0.24.0" />
+    <PackageVersion Include="CppAst" Version="0.22.0" />
 
     <PackageVersion Include="Silk.NET.Shaderc.Native" Version="2.23.0" />
 

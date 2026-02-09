@@ -1743,9 +1743,9 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkQueryPool, VkAllocationCallbacks*, void>)vkDestroyQueryPool_ptr.Value)(Device, queryPool, allocator);
 	}
 
-	public VkResult vkGetQueryPoolResults(VkQueryPool queryPool, uint firstQuery, uint queryCount, ulong dataSize, void* data, ulong stride, VkQueryResultFlags flags)
+	public VkResult vkGetQueryPoolResults(VkQueryPool queryPool, uint firstQuery, uint queryCount, nuint dataSize, void* data, ulong stride, VkQueryResultFlags flags)
 	{
-		return ((delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, ulong, void*, ulong, VkQueryResultFlags, VkResult>)vkGetQueryPoolResults_ptr.Value)(Device, queryPool, firstQuery, queryCount, dataSize, data, stride, flags);
+		return ((delegate* unmanaged<VkDevice, VkQueryPool, uint, uint, nuint, void*, ulong, VkQueryResultFlags, VkResult>)vkGetQueryPoolResults_ptr.Value)(Device, queryPool, firstQuery, queryCount, dataSize, data, stride, flags);
 	}
 
 	public VkResult vkCreateBuffer(VkBufferCreateInfo* createInfo, VkBuffer* buffer)
@@ -2529,9 +2529,9 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkPipelineCache, VkAllocationCallbacks*, void>)vkDestroyPipelineCache_ptr.Value)(Device, pipelineCache, allocator);
 	}
 
-	public VkResult vkGetPipelineCacheData(VkPipelineCache pipelineCache, ulong* dataSize, void* data)
+	public VkResult vkGetPipelineCacheData(VkPipelineCache pipelineCache, nuint* dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipelineCache, ulong*, void*, VkResult>)vkGetPipelineCacheData_ptr.Value)(Device, pipelineCache, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkPipelineCache, nuint*, void*, VkResult>)vkGetPipelineCacheData_ptr.Value)(Device, pipelineCache, dataSize, data);
 	}
 
 	public VkResult vkMergePipelineCaches(VkPipelineCache dstCache, uint srcCacheCount, VkPipelineCache* srcCaches)
@@ -4634,9 +4634,9 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkMemoryUnmapInfo*, VkResult>)vkUnmapMemory2KHR_ptr.Value)(Device, memoryUnmapInfo);
 	}
 
-	public VkResult vkGetEncodedVideoSessionParametersKHR(VkVideoEncodeSessionParametersGetInfoKHR* videoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* feedbackInfo, ulong* dataSize, void* data)
+	public VkResult vkGetEncodedVideoSessionParametersKHR(VkVideoEncodeSessionParametersGetInfoKHR* videoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* feedbackInfo, nuint* dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, ulong*, void*, VkResult>)vkGetEncodedVideoSessionParametersKHR_ptr.Value)(Device, videoSessionParametersInfo, feedbackInfo, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkVideoEncodeSessionParametersGetInfoKHR*, VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, VkResult>)vkGetEncodedVideoSessionParametersKHR_ptr.Value)(Device, videoSessionParametersInfo, feedbackInfo, dataSize, data);
 	}
 
 	public void vkCmdEncodeVideoKHR(VkCommandBuffer commandBuffer, VkVideoEncodeInfoKHR* encodeInfo)
@@ -4790,9 +4790,9 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkPipelineCreateInfoKHR*, VkPipelineBinaryKeyKHR*, VkResult>)vkGetPipelineKeyKHR_ptr.Value)(Device, pipelineCreateInfo, pipelineKey);
 	}
 
-	public VkResult vkGetPipelineBinaryDataKHR(VkPipelineBinaryDataInfoKHR* info, VkPipelineBinaryKeyKHR* pipelineBinaryKey, ulong* pipelineBinaryDataSize, void* pipelineBinaryData)
+	public VkResult vkGetPipelineBinaryDataKHR(VkPipelineBinaryDataInfoKHR* info, VkPipelineBinaryKeyKHR* pipelineBinaryKey, nuint* pipelineBinaryDataSize, void* pipelineBinaryData)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipelineBinaryDataInfoKHR*, VkPipelineBinaryKeyKHR*, ulong*, void*, VkResult>)vkGetPipelineBinaryDataKHR_ptr.Value)(Device, info, pipelineBinaryKey, pipelineBinaryDataSize, pipelineBinaryData);
+		return ((delegate* unmanaged<VkDevice, VkPipelineBinaryDataInfoKHR*, VkPipelineBinaryKeyKHR*, nuint*, void*, VkResult>)vkGetPipelineBinaryDataKHR_ptr.Value)(Device, info, pipelineBinaryKey, pipelineBinaryDataSize, pipelineBinaryData);
 	}
 
 	public VkResult vkReleaseCapturedPipelineDataKHR(VkReleaseCapturedPipelineDataInfoKHR* info)
@@ -5027,9 +5027,9 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>)vkCmdDrawIndexedIndirectCountAMD_ptr.Value)(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	}
 
-	public VkResult vkGetShaderInfoAMD(VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, ulong* infoSize, void* info)
+	public VkResult vkGetShaderInfoAMD(VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipeline, VkShaderStageFlags, VkShaderInfoTypeAMD, ulong*, void*, VkResult>)vkGetShaderInfoAMD_ptr.Value)(Device, pipeline, shaderStage, infoType, infoSize, info);
+		return ((delegate* unmanaged<VkDevice, VkPipeline, VkShaderStageFlags, VkShaderInfoTypeAMD, nuint*, void*, VkResult>)vkGetShaderInfoAMD_ptr.Value)(Device, pipeline, shaderStage, infoType, infoSize, info);
 	}
 
 	public void vkCmdBeginConditionalRenderingEXT(VkCommandBuffer commandBuffer, VkConditionalRenderingBeginInfoEXT* conditionalRenderingBegin)
@@ -5203,9 +5203,9 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkValidationCacheEXT, uint, VkValidationCacheEXT*, VkResult>)vkMergeValidationCachesEXT_ptr.Value)(Device, dstCache, srcCacheCount, srcCaches);
 	}
 
-	public VkResult vkGetValidationCacheDataEXT(VkValidationCacheEXT validationCache, ulong* dataSize, void* data)
+	public VkResult vkGetValidationCacheDataEXT(VkValidationCacheEXT validationCache, nuint* dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkValidationCacheEXT, ulong*, void*, VkResult>)vkGetValidationCacheDataEXT_ptr.Value)(Device, validationCache, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkValidationCacheEXT, nuint*, void*, VkResult>)vkGetValidationCacheDataEXT_ptr.Value)(Device, validationCache, dataSize, data);
 	}
 
 	public void vkCmdBindShadingRateImageNV(VkCommandBuffer commandBuffer, VkImageView imageView, VkImageLayout imageLayout)
@@ -5310,19 +5310,19 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public VkResult vkGetRayTracingShaderGroupHandlesKHR(VkPipeline pipeline, uint firstGroup, uint groupCount, ulong dataSize, void* data)
+	public VkResult vkGetRayTracingShaderGroupHandlesKHR(VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, ulong, void*, VkResult>)vkGetRayTracingShaderGroupHandlesKHR_ptr.Value)(Device, pipeline, firstGroup, groupCount, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>)vkGetRayTracingShaderGroupHandlesKHR_ptr.Value)(Device, pipeline, firstGroup, groupCount, dataSize, data);
 	}
 
-	public VkResult vkGetRayTracingShaderGroupHandlesNV(VkPipeline pipeline, uint firstGroup, uint groupCount, ulong dataSize, void* data)
+	public VkResult vkGetRayTracingShaderGroupHandlesNV(VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, ulong, void*, VkResult>)vkGetRayTracingShaderGroupHandlesNV_ptr.Value)(Device, pipeline, firstGroup, groupCount, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>)vkGetRayTracingShaderGroupHandlesNV_ptr.Value)(Device, pipeline, firstGroup, groupCount, dataSize, data);
 	}
 
-	public VkResult vkGetAccelerationStructureHandleNV(VkAccelerationStructureKHR accelerationStructure, ulong dataSize, void* data)
+	public VkResult vkGetAccelerationStructureHandleNV(VkAccelerationStructureKHR accelerationStructure, nuint dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, ulong, void*, VkResult>)vkGetAccelerationStructureHandleNV_ptr.Value)(Device, accelerationStructure, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkAccelerationStructureKHR, nuint, void*, VkResult>)vkGetAccelerationStructureHandleNV_ptr.Value)(Device, accelerationStructure, dataSize, data);
 	}
 
 	public void vkCmdWriteAccelerationStructuresPropertiesNV(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery)
@@ -5702,9 +5702,9 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkDescriptorSetLayout, uint, ulong*, void>)vkGetDescriptorSetLayoutBindingOffsetEXT_ptr.Value)(Device, layout, binding, offset);
 	}
 
-	public void vkGetDescriptorEXT(VkDescriptorGetInfoEXT* descriptorInfo, ulong dataSize, void* descriptor)
+	public void vkGetDescriptorEXT(VkDescriptorGetInfoEXT* descriptorInfo, nuint dataSize, void* descriptor)
 	{
-		((delegate* unmanaged<VkDevice, VkDescriptorGetInfoEXT*, ulong, void*, void>)vkGetDescriptorEXT_ptr.Value)(Device, descriptorInfo, dataSize, descriptor);
+		((delegate* unmanaged<VkDevice, VkDescriptorGetInfoEXT*, nuint, void*, void>)vkGetDescriptorEXT_ptr.Value)(Device, descriptorInfo, dataSize, descriptor);
 	}
 
 	public void vkCmdBindDescriptorBuffersEXT(VkCommandBuffer commandBuffer, uint bufferCount, VkDescriptorBufferBindingInfoEXT* bindingInfos)
@@ -5888,9 +5888,9 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToMicromapInfoEXT*, VkResult>)vkCopyMemoryToMicromapEXT_ptr.Value)(Device, deferredOperation, info);
 	}
 
-	public VkResult vkWriteMicromapsPropertiesEXT(uint micromapCount, VkMicromapEXT* micromaps, VkQueryType queryType, ulong dataSize, void* data, ulong stride)
+	public VkResult vkWriteMicromapsPropertiesEXT(uint micromapCount, VkMicromapEXT* micromaps, VkQueryType queryType, nuint dataSize, void* data, nuint stride)
 	{
-		return ((delegate* unmanaged<VkDevice, uint, VkMicromapEXT*, VkQueryType, ulong, void*, ulong, VkResult>)vkWriteMicromapsPropertiesEXT_ptr.Value)(Device, micromapCount, micromaps, queryType, dataSize, data, stride);
+		return ((delegate* unmanaged<VkDevice, uint, VkMicromapEXT*, VkQueryType, nuint, void*, nuint, VkResult>)vkWriteMicromapsPropertiesEXT_ptr.Value)(Device, micromapCount, micromaps, queryType, dataSize, data, stride);
 	}
 
 	public void vkCmdCopyMicromapEXT(VkCommandBuffer commandBuffer, VkCopyMicromapInfoEXT* info)
@@ -6337,9 +6337,9 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkShaderEXT, VkAllocationCallbacks*, void>)vkDestroyShaderEXT_ptr.Value)(Device, shader, allocator);
 	}
 
-	public VkResult vkGetShaderBinaryDataEXT(VkShaderEXT shader, ulong* dataSize, void* data)
+	public VkResult vkGetShaderBinaryDataEXT(VkShaderEXT shader, nuint* dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkShaderEXT, ulong*, void*, VkResult>)vkGetShaderBinaryDataEXT_ptr.Value)(Device, shader, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkShaderEXT, nuint*, void*, VkResult>)vkGetShaderBinaryDataEXT_ptr.Value)(Device, shader, dataSize, data);
 	}
 
 	public void vkCmdBindShadersEXT(VkCommandBuffer commandBuffer, uint stageCount, VkShaderStageFlags* stages, VkShaderEXT* shaders)
@@ -6748,9 +6748,9 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToAccelerationStructureInfoKHR*, VkResult>)vkCopyMemoryToAccelerationStructureKHR_ptr.Value)(Device, deferredOperation, info);
 	}
 
-	public VkResult vkWriteAccelerationStructuresPropertiesKHR(uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, ulong dataSize, void* data, ulong stride)
+	public VkResult vkWriteAccelerationStructuresPropertiesKHR(uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, nuint dataSize, void* data, nuint stride)
 	{
-		return ((delegate* unmanaged<VkDevice, uint, VkAccelerationStructureKHR*, VkQueryType, ulong, void*, ulong, VkResult>)vkWriteAccelerationStructuresPropertiesKHR_ptr.Value)(Device, accelerationStructureCount, accelerationStructures, queryType, dataSize, data, stride);
+		return ((delegate* unmanaged<VkDevice, uint, VkAccelerationStructureKHR*, VkQueryType, nuint, void*, nuint, VkResult>)vkWriteAccelerationStructuresPropertiesKHR_ptr.Value)(Device, accelerationStructureCount, accelerationStructures, queryType, dataSize, data, stride);
 	}
 
 	public void vkCmdCopyAccelerationStructureKHR(VkCommandBuffer commandBuffer, VkCopyAccelerationStructureInfoKHR* info)
@@ -6819,9 +6819,9 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkPipeline pipeline, uint firstGroup, uint groupCount, ulong dataSize, void* data)
+	public VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data)
 	{
-		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, ulong, void*, VkResult>)vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr.Value)(Device, pipeline, firstGroup, groupCount, dataSize, data);
+		return ((delegate* unmanaged<VkDevice, VkPipeline, uint, uint, nuint, void*, VkResult>)vkGetRayTracingCaptureReplayShaderGroupHandlesKHR_ptr.Value)(Device, pipeline, firstGroup, groupCount, dataSize, data);
 	}
 
 	public void vkCmdTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, ulong indirectDeviceAddress)
@@ -7056,9 +7056,9 @@ public unsafe partial class VkDeviceApi
 		}
 	}
 
-	public VkResult vkGetCudaModuleCacheNV(VkCudaModuleNV module, ulong* cacheSize, void* cacheData)
+	public VkResult vkGetCudaModuleCacheNV(VkCudaModuleNV module, nuint* cacheSize, void* cacheData)
 	{
-		return ((delegate* unmanaged<VkDevice, VkCudaModuleNV, ulong*, void*, VkResult>)vkGetCudaModuleCacheNV_ptr.Value)(Device, module, cacheSize, cacheData);
+		return ((delegate* unmanaged<VkDevice, VkCudaModuleNV, nuint*, void*, VkResult>)vkGetCudaModuleCacheNV_ptr.Value)(Device, module, cacheSize, cacheData);
 	}
 
 	public VkResult vkCreateCudaFunctionNV(VkCudaFunctionCreateInfoNV* createInfo, VkCudaFunctionNV* function)

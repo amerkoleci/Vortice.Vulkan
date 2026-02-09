@@ -184,11 +184,6 @@ partial class CsCodeGenerator
                         List<string> invokeSingleElementParameters = [];
                         List<string> invokeElementsParameters = [];
 
-                        if (function.Name == "vkFlushMappedMemoryRanges")
-                        {
-
-                        }
-
                         foreach (CppParameter cppParameter in newParameters)
                         {
                             string paramCsTypeName = GetCsTypeName(cppParameter.Type);

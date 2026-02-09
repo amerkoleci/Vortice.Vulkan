@@ -214,6 +214,9 @@ public unsafe partial struct SpvReflectSpecializationConstant
 	public uint spirv_id;
 	public uint constant_id;
 	public byte* name;
+	public SpvReflectTypeDescription* type_description;
+	public uint default_value_size;
+	public void* default_value;
 }
 
 public unsafe partial struct SpvReflectShaderModule

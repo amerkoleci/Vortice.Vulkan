@@ -887,9 +887,9 @@ public unsafe partial class VkInstanceApi
 		((delegate* unmanaged<VkInstance, VkDebugReportCallbackEXT, VkAllocationCallbacks*, void>)vkDestroyDebugReportCallbackEXT_ptr.Value)(Instance, callback, allocator);
 	}
 
-	public void vkDebugReportMessageEXT(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, ulong location, int messageCode, byte* layerPrefix, byte* message)
+	public void vkDebugReportMessageEXT(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, byte* message)
 	{
-		((delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, ulong, int, byte*, byte*, void>)vkDebugReportMessageEXT_ptr.Value)(Instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
+		((delegate* unmanaged<VkInstance, VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void>)vkDebugReportMessageEXT_ptr.Value)(Instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
 	}
 
 	public VkResult vkGetPhysicalDeviceExternalImageFormatPropertiesNV(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkExternalMemoryHandleTypeFlagsNV externalHandleType, VkExternalImageFormatPropertiesNV* externalImageFormatProperties)
