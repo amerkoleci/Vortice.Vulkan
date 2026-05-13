@@ -369,6 +369,10 @@ partial class CsCodeGenerator
                 {
                     structureTypeValue = "PhysicalDeviceShader64IndexingFeaturesEXT";
                 }
+                else if (structName == "VkQueueFamilyDataGraphTOSAPropertiesARM")
+                {
+                    structureTypeValue = "QueueFamilyDataGraphTosaPropertiesARM";
+                }
 
                 fieldInitializer = $" = VkStructureType.{structureTypeValue}";
             }

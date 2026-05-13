@@ -305,6 +305,28 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkCmdPipelineBarrier2KHR_ptr;
 	public readonly PFN_vkVoidFunction vkCmdWriteTimestamp2KHR_ptr;
 	public readonly PFN_vkVoidFunction vkQueueSubmit2KHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBindIndexBuffer3KHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBindVertexBuffers3KHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDrawIndirect2KHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDrawIndexedIndirect2KHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDispatchIndirect2KHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyMemoryKHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyMemoryToImageKHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyImageToMemoryKHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdUpdateMemoryKHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdFillMemoryKHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyQueryPoolResultsToMemoryKHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDrawIndirectCount2KHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDrawIndexedIndirectCount2KHR_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBeginConditionalRendering2EXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBindTransformFeedbackBuffers2EXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBeginTransformFeedback2EXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdEndTransformFeedback2EXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDrawIndirectByteCount2EXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDrawMeshTasksIndirect2EXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdDrawMeshTasksIndirectCount2EXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdWriteMarkerToMemoryAMD_ptr;
+	public readonly PFN_vkVoidFunction vkCreateAccelerationStructure2KHR_ptr;
 	public readonly PFN_vkVoidFunction vkCmdCopyBuffer2KHR_ptr;
 	public readonly PFN_vkVoidFunction vkCmdCopyImage2KHR_ptr;
 	public readonly PFN_vkVoidFunction vkCmdCopyBufferToImage2KHR_ptr;
@@ -336,6 +358,8 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr;
 	public readonly PFN_vkVoidFunction vkCmdCopyMemoryIndirectKHR_ptr;
 	public readonly PFN_vkVoidFunction vkCmdCopyMemoryToImageIndirectKHR_ptr;
+	public readonly PFN_vkVoidFunction vkGetDeviceFaultReportsKHR_ptr;
+	public readonly PFN_vkVoidFunction vkGetDeviceFaultDebugInfoKHR_ptr;
 	public readonly PFN_vkVoidFunction vkCmdEndRendering2KHR_ptr;
 	public readonly PFN_vkVoidFunction vkDebugMarkerSetObjectTagEXT_ptr;
 	public readonly PFN_vkVoidFunction vkDebugMarkerSetObjectNameEXT_ptr;
@@ -462,6 +486,7 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkDestroyPrivateDataSlotEXT_ptr;
 	public readonly PFN_vkVoidFunction vkSetPrivateDataEXT_ptr;
 	public readonly PFN_vkVoidFunction vkGetPrivateDataEXT_ptr;
+	public readonly PFN_vkVoidFunction vkQueueSetPerfHintQCOM_ptr;
 	public readonly PFN_vkVoidFunction vkCmdDispatchTileQCOM_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBeginPerTileExecutionQCOM_ptr;
 	public readonly PFN_vkVoidFunction vkCmdEndPerTileExecutionQCOM_ptr;
@@ -509,6 +534,7 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkCmdDrawClusterHUAWEI_ptr;
 	public readonly PFN_vkVoidFunction vkCmdDrawClusterIndirectHUAWEI_ptr;
 	public readonly PFN_vkVoidFunction vkSetDeviceMemoryPriorityEXT_ptr;
+	public readonly PFN_vkVoidFunction vkCmdSetDispatchParametersARM_ptr;
 	public readonly PFN_vkVoidFunction vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr;
 	public readonly PFN_vkVoidFunction vkGetDescriptorSetHostMappingVALVE_ptr;
 	public readonly PFN_vkVoidFunction vkCmdCopyMemoryIndirectNV_ptr;
@@ -609,9 +635,16 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkDestroyIndirectExecutionSetEXT_ptr;
 	public readonly PFN_vkVoidFunction vkUpdateIndirectExecutionSetPipelineEXT_ptr;
 	public readonly PFN_vkVoidFunction vkUpdateIndirectExecutionSetShaderEXT_ptr;
+	public readonly PFN_vkVoidFunction vkCreateShaderInstrumentationARM_ptr;
+	public readonly PFN_vkVoidFunction vkDestroyShaderInstrumentationARM_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBeginShaderInstrumentationARM_ptr;
+	public readonly PFN_vkVoidFunction vkCmdEndShaderInstrumentationARM_ptr;
+	public readonly PFN_vkVoidFunction vkGetShaderInstrumentationValuesARM_ptr;
+	public readonly PFN_vkVoidFunction vkClearShaderInstrumentationMetricsARM_ptr;
 	public readonly PFN_vkVoidFunction vkCmdEndRendering2EXT_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBeginCustomResolveEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetComputeOccupancyPriorityNV_ptr;
+	public readonly PFN_vkVoidFunction vkCmdSetPrimitiveRestartIndexEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCreateAccelerationStructureKHR_ptr;
 	public readonly PFN_vkVoidFunction vkDestroyAccelerationStructureKHR_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBuildAccelerationStructuresKHR_ptr;
@@ -956,6 +989,28 @@ public unsafe partial class VkDeviceApi
 		vkCmdPipelineBarrier2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdPipelineBarrier2KHR"u8);
 		vkCmdWriteTimestamp2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdWriteTimestamp2KHR"u8);
 		vkQueueSubmit2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkQueueSubmit2KHR"u8);
+		vkCmdBindIndexBuffer3KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindIndexBuffer3KHR"u8);
+		vkCmdBindVertexBuffers3KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindVertexBuffers3KHR"u8);
+		vkCmdDrawIndirect2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndirect2KHR"u8);
+		vkCmdDrawIndexedIndirect2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndexedIndirect2KHR"u8);
+		vkCmdDispatchIndirect2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDispatchIndirect2KHR"u8);
+		vkCmdCopyMemoryKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyMemoryKHR"u8);
+		vkCmdCopyMemoryToImageKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyMemoryToImageKHR"u8);
+		vkCmdCopyImageToMemoryKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyImageToMemoryKHR"u8);
+		vkCmdUpdateMemoryKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdUpdateMemoryKHR"u8);
+		vkCmdFillMemoryKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdFillMemoryKHR"u8);
+		vkCmdCopyQueryPoolResultsToMemoryKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyQueryPoolResultsToMemoryKHR"u8);
+		vkCmdDrawIndirectCount2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndirectCount2KHR"u8);
+		vkCmdDrawIndexedIndirectCount2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndexedIndirectCount2KHR"u8);
+		vkCmdBeginConditionalRendering2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginConditionalRendering2EXT"u8);
+		vkCmdBindTransformFeedbackBuffers2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindTransformFeedbackBuffers2EXT"u8);
+		vkCmdBeginTransformFeedback2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginTransformFeedback2EXT"u8);
+		vkCmdEndTransformFeedback2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndTransformFeedback2EXT"u8);
+		vkCmdDrawIndirectByteCount2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawIndirectByteCount2EXT"u8);
+		vkCmdDrawMeshTasksIndirect2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawMeshTasksIndirect2EXT"u8);
+		vkCmdDrawMeshTasksIndirectCount2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawMeshTasksIndirectCount2EXT"u8);
+		vkCmdWriteMarkerToMemoryAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdWriteMarkerToMemoryAMD"u8);
+		vkCreateAccelerationStructure2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateAccelerationStructure2KHR"u8);
 		vkCmdCopyBuffer2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyBuffer2KHR"u8);
 		vkCmdCopyImage2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyImage2KHR"u8);
 		vkCmdCopyBufferToImage2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyBufferToImage2KHR"u8);
@@ -987,6 +1042,8 @@ public unsafe partial class VkDeviceApi
 		vkCmdBindDescriptorBufferEmbeddedSamplers2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindDescriptorBufferEmbeddedSamplers2EXT"u8);
 		vkCmdCopyMemoryIndirectKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyMemoryIndirectKHR"u8);
 		vkCmdCopyMemoryToImageIndirectKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyMemoryToImageIndirectKHR"u8);
+		vkGetDeviceFaultReportsKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceFaultReportsKHR"u8);
+		vkGetDeviceFaultDebugInfoKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDeviceFaultDebugInfoKHR"u8);
 		vkCmdEndRendering2KHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndRendering2KHR"u8);
 		vkDebugMarkerSetObjectTagEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDebugMarkerSetObjectTagEXT"u8);
 		vkDebugMarkerSetObjectNameEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDebugMarkerSetObjectNameEXT"u8);
@@ -1113,6 +1170,7 @@ public unsafe partial class VkDeviceApi
 		vkDestroyPrivateDataSlotEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyPrivateDataSlotEXT"u8);
 		vkSetPrivateDataEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkSetPrivateDataEXT"u8);
 		vkGetPrivateDataEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetPrivateDataEXT"u8);
+		vkQueueSetPerfHintQCOM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkQueueSetPerfHintQCOM"u8);
 		vkCmdDispatchTileQCOM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDispatchTileQCOM"u8);
 		vkCmdBeginPerTileExecutionQCOM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginPerTileExecutionQCOM"u8);
 		vkCmdEndPerTileExecutionQCOM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndPerTileExecutionQCOM"u8);
@@ -1160,6 +1218,7 @@ public unsafe partial class VkDeviceApi
 		vkCmdDrawClusterHUAWEI_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawClusterHUAWEI"u8);
 		vkCmdDrawClusterIndirectHUAWEI_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDrawClusterIndirectHUAWEI"u8);
 		vkSetDeviceMemoryPriorityEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkSetDeviceMemoryPriorityEXT"u8);
+		vkCmdSetDispatchParametersARM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetDispatchParametersARM"u8);
 		vkGetDescriptorSetLayoutHostMappingInfoVALVE_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDescriptorSetLayoutHostMappingInfoVALVE"u8);
 		vkGetDescriptorSetHostMappingVALVE_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDescriptorSetHostMappingVALVE"u8);
 		vkCmdCopyMemoryIndirectNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyMemoryIndirectNV"u8);
@@ -1260,9 +1319,16 @@ public unsafe partial class VkDeviceApi
 		vkDestroyIndirectExecutionSetEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyIndirectExecutionSetEXT"u8);
 		vkUpdateIndirectExecutionSetPipelineEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkUpdateIndirectExecutionSetPipelineEXT"u8);
 		vkUpdateIndirectExecutionSetShaderEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkUpdateIndirectExecutionSetShaderEXT"u8);
+		vkCreateShaderInstrumentationARM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateShaderInstrumentationARM"u8);
+		vkDestroyShaderInstrumentationARM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyShaderInstrumentationARM"u8);
+		vkCmdBeginShaderInstrumentationARM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginShaderInstrumentationARM"u8);
+		vkCmdEndShaderInstrumentationARM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndShaderInstrumentationARM"u8);
+		vkGetShaderInstrumentationValuesARM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetShaderInstrumentationValuesARM"u8);
+		vkClearShaderInstrumentationMetricsARM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkClearShaderInstrumentationMetricsARM"u8);
 		vkCmdEndRendering2EXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndRendering2EXT"u8);
 		vkCmdBeginCustomResolveEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginCustomResolveEXT"u8);
 		vkCmdSetComputeOccupancyPriorityNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetComputeOccupancyPriorityNV"u8);
+		vkCmdSetPrimitiveRestartIndexEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetPrimitiveRestartIndexEXT"u8);
 		vkCreateAccelerationStructureKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateAccelerationStructureKHR"u8);
 		vkDestroyAccelerationStructureKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyAccelerationStructureKHR"u8);
 		vkCmdBuildAccelerationStructuresKHR_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBuildAccelerationStructuresKHR"u8);
@@ -4674,6 +4740,137 @@ public unsafe partial class VkDeviceApi
 		return ((delegate* unmanaged<VkQueue, uint, VkSubmitInfo2*, VkFence, VkResult>)vkQueueSubmit2KHR_ptr.Value)(queue, submitCount, submits, fence);
 	}
 
+	public void vkCmdBindIndexBuffer3KHR(VkCommandBuffer commandBuffer, VkBindIndexBuffer3InfoKHR* info)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkBindIndexBuffer3InfoKHR*, void>)vkCmdBindIndexBuffer3KHR_ptr.Value)(commandBuffer, info);
+	}
+
+	public void vkCmdBindVertexBuffers3KHR(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBindVertexBuffer3InfoKHR* bindingInfos)
+	{
+		((delegate* unmanaged<VkCommandBuffer, uint, uint, VkBindVertexBuffer3InfoKHR*, void>)vkCmdBindVertexBuffers3KHR_ptr.Value)(commandBuffer, firstBinding, bindingCount, bindingInfos);
+	}
+
+	public void vkCmdDrawIndirect2KHR(VkCommandBuffer commandBuffer, VkDrawIndirect2InfoKHR* info)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDrawIndirect2InfoKHR*, void>)vkCmdDrawIndirect2KHR_ptr.Value)(commandBuffer, info);
+	}
+
+	public void vkCmdDrawIndexedIndirect2KHR(VkCommandBuffer commandBuffer, VkDrawIndirect2InfoKHR* info)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDrawIndirect2InfoKHR*, void>)vkCmdDrawIndexedIndirect2KHR_ptr.Value)(commandBuffer, info);
+	}
+
+	public void vkCmdDispatchIndirect2KHR(VkCommandBuffer commandBuffer, VkDispatchIndirect2InfoKHR* info)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDispatchIndirect2InfoKHR*, void>)vkCmdDispatchIndirect2KHR_ptr.Value)(commandBuffer, info);
+	}
+
+	public void vkCmdCopyMemoryKHR(VkCommandBuffer commandBuffer, VkCopyDeviceMemoryInfoKHR* copyMemoryInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkCopyDeviceMemoryInfoKHR*, void>)vkCmdCopyMemoryKHR_ptr.Value)(commandBuffer, copyMemoryInfo);
+	}
+
+	public void vkCmdCopyMemoryToImageKHR(VkCommandBuffer commandBuffer, VkCopyDeviceMemoryImageInfoKHR* copyMemoryInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkCopyDeviceMemoryImageInfoKHR*, void>)vkCmdCopyMemoryToImageKHR_ptr.Value)(commandBuffer, copyMemoryInfo);
+	}
+
+	public void vkCmdCopyImageToMemoryKHR(VkCommandBuffer commandBuffer, VkCopyDeviceMemoryImageInfoKHR* copyMemoryInfo)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkCopyDeviceMemoryImageInfoKHR*, void>)vkCmdCopyImageToMemoryKHR_ptr.Value)(commandBuffer, copyMemoryInfo);
+	}
+
+	public void vkCmdUpdateMemoryKHR(VkCommandBuffer commandBuffer, VkDeviceAddressRangeKHR* dstRange, VkAddressCommandFlagsKHR dstFlags, ulong dataSize, void* data)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDeviceAddressRangeKHR*, VkAddressCommandFlagsKHR, ulong, void*, void>)vkCmdUpdateMemoryKHR_ptr.Value)(commandBuffer, dstRange, dstFlags, dataSize, data);
+	}
+
+	public void vkCmdFillMemoryKHR(VkCommandBuffer commandBuffer, VkDeviceAddressRangeKHR* dstRange, VkAddressCommandFlagsKHR dstFlags, uint data)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDeviceAddressRangeKHR*, VkAddressCommandFlagsKHR, uint, void>)vkCmdFillMemoryKHR_ptr.Value)(commandBuffer, dstRange, dstFlags, data);
+	}
+
+	public void vkCmdCopyQueryPoolResultsToMemoryKHR(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint firstQuery, uint queryCount, VkStridedDeviceAddressRangeKHR* dstRange, VkAddressCommandFlagsKHR dstFlags, VkQueryResultFlags queryResultFlags)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkQueryPool, uint, uint, VkStridedDeviceAddressRangeKHR*, VkAddressCommandFlagsKHR, VkQueryResultFlags, void>)vkCmdCopyQueryPoolResultsToMemoryKHR_ptr.Value)(commandBuffer, queryPool, firstQuery, queryCount, dstRange, dstFlags, queryResultFlags);
+	}
+
+	public void vkCmdDrawIndirectCount2KHR(VkCommandBuffer commandBuffer, VkDrawIndirectCount2InfoKHR* info)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDrawIndirectCount2InfoKHR*, void>)vkCmdDrawIndirectCount2KHR_ptr.Value)(commandBuffer, info);
+	}
+
+	public void vkCmdDrawIndexedIndirectCount2KHR(VkCommandBuffer commandBuffer, VkDrawIndirectCount2InfoKHR* info)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDrawIndirectCount2InfoKHR*, void>)vkCmdDrawIndexedIndirectCount2KHR_ptr.Value)(commandBuffer, info);
+	}
+
+	public void vkCmdBeginConditionalRendering2EXT(VkCommandBuffer commandBuffer, VkConditionalRenderingBeginInfo2EXT* conditionalRenderingBegin)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkConditionalRenderingBeginInfo2EXT*, void>)vkCmdBeginConditionalRendering2EXT_ptr.Value)(commandBuffer, conditionalRenderingBegin);
+	}
+
+	public void vkCmdBindTransformFeedbackBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBindTransformFeedbackBuffer2InfoEXT* bindingInfos)
+	{
+		((delegate* unmanaged<VkCommandBuffer, uint, uint, VkBindTransformFeedbackBuffer2InfoEXT*, void>)vkCmdBindTransformFeedbackBuffers2EXT_ptr.Value)(commandBuffer, firstBinding, bindingCount, bindingInfos);
+	}
+
+	public void vkCmdBeginTransformFeedback2EXT(VkCommandBuffer commandBuffer, uint firstCounterRange, uint counterRangeCount, VkBindTransformFeedbackBuffer2InfoEXT* counterInfos)
+	{
+		((delegate* unmanaged<VkCommandBuffer, uint, uint, VkBindTransformFeedbackBuffer2InfoEXT*, void>)vkCmdBeginTransformFeedback2EXT_ptr.Value)(commandBuffer, firstCounterRange, counterRangeCount, counterInfos);
+	}
+
+	public void vkCmdEndTransformFeedback2EXT(VkCommandBuffer commandBuffer, uint firstCounterRange, uint counterRangeCount, VkBindTransformFeedbackBuffer2InfoEXT* counterInfos)
+	{
+		((delegate* unmanaged<VkCommandBuffer, uint, uint, VkBindTransformFeedbackBuffer2InfoEXT*, void>)vkCmdEndTransformFeedback2EXT_ptr.Value)(commandBuffer, firstCounterRange, counterRangeCount, counterInfos);
+	}
+
+	public void vkCmdDrawIndirectByteCount2EXT(VkCommandBuffer commandBuffer, uint instanceCount, uint firstInstance, VkBindTransformFeedbackBuffer2InfoEXT* counterInfo, uint counterOffset, uint vertexStride)
+	{
+		((delegate* unmanaged<VkCommandBuffer, uint, uint, VkBindTransformFeedbackBuffer2InfoEXT*, uint, uint, void>)vkCmdDrawIndirectByteCount2EXT_ptr.Value)(commandBuffer, instanceCount, firstInstance, counterInfo, counterOffset, vertexStride);
+	}
+
+	public void vkCmdDrawMeshTasksIndirect2EXT(VkCommandBuffer commandBuffer, VkDrawIndirect2InfoKHR* info)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDrawIndirect2InfoKHR*, void>)vkCmdDrawMeshTasksIndirect2EXT_ptr.Value)(commandBuffer, info);
+	}
+
+	public void vkCmdDrawMeshTasksIndirectCount2EXT(VkCommandBuffer commandBuffer, VkDrawIndirectCount2InfoKHR* info)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDrawIndirectCount2InfoKHR*, void>)vkCmdDrawMeshTasksIndirectCount2EXT_ptr.Value)(commandBuffer, info);
+	}
+
+	public void vkCmdWriteMarkerToMemoryAMD(VkCommandBuffer commandBuffer, VkMemoryMarkerInfoAMD* info)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkMemoryMarkerInfoAMD*, void>)vkCmdWriteMarkerToMemoryAMD_ptr.Value)(commandBuffer, info);
+	}
+
+	public VkResult vkCreateAccelerationStructure2KHR(VkAccelerationStructureCreateInfo2KHR* createInfo, VkAccelerationStructureKHR* accelerationStructure)
+	{
+		return ((delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfo2KHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>)vkCreateAccelerationStructure2KHR_ptr.Value)(Device, createInfo, default, accelerationStructure);
+	}
+
+	public VkResult vkCreateAccelerationStructure2KHR(VkAccelerationStructureCreateInfo2KHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
+	{
+		return ((delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfo2KHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>)vkCreateAccelerationStructure2KHR_ptr.Value)(Device, createInfo, allocator, accelerationStructure);
+	}
+
+	public VkResult vkCreateAccelerationStructure2KHR(in VkAccelerationStructureCreateInfo2KHR createInfo, VkAccelerationStructureKHR* accelerationStructure)
+	{
+		fixed (VkAccelerationStructureCreateInfo2KHR* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfo2KHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>)vkCreateAccelerationStructure2KHR_ptr.Value)(Device, createInfoPtr, default, accelerationStructure);
+		}
+	}
+
+	public VkResult vkCreateAccelerationStructure2KHR(in VkAccelerationStructureCreateInfo2KHR createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure)
+	{
+		fixed (VkAccelerationStructureCreateInfo2KHR* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkAccelerationStructureCreateInfo2KHR*, VkAllocationCallbacks*, VkAccelerationStructureKHR*, VkResult>)vkCreateAccelerationStructure2KHR_ptr.Value)(Device, createInfoPtr, allocator, accelerationStructure);
+		}
+	}
+
 	public void vkCmdCopyBuffer2KHR(VkCommandBuffer commandBuffer, VkCopyBufferInfo2* copyBufferInfo)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkCopyBufferInfo2*, void>)vkCmdCopyBuffer2KHR_ptr.Value)(commandBuffer, copyBufferInfo);
@@ -4858,6 +5055,16 @@ public unsafe partial class VkDeviceApi
 	public void vkCmdCopyMemoryToImageIndirectKHR(VkCommandBuffer commandBuffer, VkCopyMemoryToImageIndirectInfoKHR* copyMemoryToImageIndirectInfo)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkCopyMemoryToImageIndirectInfoKHR*, void>)vkCmdCopyMemoryToImageIndirectKHR_ptr.Value)(commandBuffer, copyMemoryToImageIndirectInfo);
+	}
+
+	public VkResult vkGetDeviceFaultReportsKHR(ulong timeout, uint* faultCounts, VkDeviceFaultInfoKHR* faultInfo)
+	{
+		return ((delegate* unmanaged<VkDevice, ulong, uint*, VkDeviceFaultInfoKHR*, VkResult>)vkGetDeviceFaultReportsKHR_ptr.Value)(Device, timeout, faultCounts, faultInfo);
+	}
+
+	public VkResult vkGetDeviceFaultDebugInfoKHR(VkDeviceFaultDebugInfoKHR* debugInfo)
+	{
+		return ((delegate* unmanaged<VkDevice, VkDeviceFaultDebugInfoKHR*, VkResult>)vkGetDeviceFaultDebugInfoKHR_ptr.Value)(Device, debugInfo);
 	}
 
 	public void vkCmdEndRendering2KHR(VkCommandBuffer commandBuffer, VkRenderingEndInfoKHR* renderingEndInfo)
@@ -5677,6 +5884,11 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void>)vkGetPrivateDataEXT_ptr.Value)(Device, objectType, objectHandle, privateDataSlot, data);
 	}
 
+	public VkResult vkQueueSetPerfHintQCOM(VkQueue queue, VkPerfHintInfoQCOM* perfHintInfo)
+	{
+		return ((delegate* unmanaged<VkQueue, VkPerfHintInfoQCOM*, VkResult>)vkQueueSetPerfHintQCOM_ptr.Value)(queue, perfHintInfo);
+	}
+
 	public void vkCmdDispatchTileQCOM(VkCommandBuffer commandBuffer, VkDispatchTileInfoQCOM* dispatchTileInfo)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkDispatchTileInfoQCOM*, void>)vkCmdDispatchTileQCOM_ptr.Value)(commandBuffer, dispatchTileInfo);
@@ -5936,6 +6148,11 @@ public unsafe partial class VkDeviceApi
 	public void vkSetDeviceMemoryPriorityEXT(VkDeviceMemory memory, float priority)
 	{
 		((delegate* unmanaged<VkDevice, VkDeviceMemory, float, void>)vkSetDeviceMemoryPriorityEXT_ptr.Value)(Device, memory, priority);
+	}
+
+	public void vkCmdSetDispatchParametersARM(VkCommandBuffer commandBuffer, VkDispatchParametersARM* dispatchParameters)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkDispatchParametersARM*, void>)vkCmdSetDispatchParametersARM_ptr.Value)(commandBuffer, dispatchParameters);
 	}
 
 	public void vkGetDescriptorSetLayoutHostMappingInfoVALVE(VkDescriptorSetBindingReferenceVALVE* bindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE* hostMapping)
@@ -6667,6 +6884,62 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, VkIndirectExecutionSetEXT, uint, VkWriteIndirectExecutionSetShaderEXT*, void>)vkUpdateIndirectExecutionSetShaderEXT_ptr.Value)(Device, indirectExecutionSet, executionSetWriteCount, executionSetWrites);
 	}
 
+	public VkResult vkCreateShaderInstrumentationARM(VkShaderInstrumentationCreateInfoARM* createInfo, VkShaderInstrumentationARM* instrumentation)
+	{
+		return ((delegate* unmanaged<VkDevice, VkShaderInstrumentationCreateInfoARM*, VkAllocationCallbacks*, VkShaderInstrumentationARM*, VkResult>)vkCreateShaderInstrumentationARM_ptr.Value)(Device, createInfo, default, instrumentation);
+	}
+
+	public VkResult vkCreateShaderInstrumentationARM(VkShaderInstrumentationCreateInfoARM* createInfo, VkAllocationCallbacks* allocator, VkShaderInstrumentationARM* instrumentation)
+	{
+		return ((delegate* unmanaged<VkDevice, VkShaderInstrumentationCreateInfoARM*, VkAllocationCallbacks*, VkShaderInstrumentationARM*, VkResult>)vkCreateShaderInstrumentationARM_ptr.Value)(Device, createInfo, allocator, instrumentation);
+	}
+
+	public VkResult vkCreateShaderInstrumentationARM(in VkShaderInstrumentationCreateInfoARM createInfo, VkShaderInstrumentationARM* instrumentation)
+	{
+		fixed (VkShaderInstrumentationCreateInfoARM* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkShaderInstrumentationCreateInfoARM*, VkAllocationCallbacks*, VkShaderInstrumentationARM*, VkResult>)vkCreateShaderInstrumentationARM_ptr.Value)(Device, createInfoPtr, default, instrumentation);
+		}
+	}
+
+	public VkResult vkCreateShaderInstrumentationARM(in VkShaderInstrumentationCreateInfoARM createInfo, VkAllocationCallbacks* allocator, VkShaderInstrumentationARM* instrumentation)
+	{
+		fixed (VkShaderInstrumentationCreateInfoARM* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkShaderInstrumentationCreateInfoARM*, VkAllocationCallbacks*, VkShaderInstrumentationARM*, VkResult>)vkCreateShaderInstrumentationARM_ptr.Value)(Device, createInfoPtr, allocator, instrumentation);
+		}
+	}
+
+	public void vkDestroyShaderInstrumentationARM(VkShaderInstrumentationARM instrumentation)
+	{
+		((delegate* unmanaged<VkDevice, VkShaderInstrumentationARM, VkAllocationCallbacks*, void>)vkDestroyShaderInstrumentationARM_ptr.Value)(Device, instrumentation, default);
+	}
+
+	public void vkDestroyShaderInstrumentationARM(VkShaderInstrumentationARM instrumentation, VkAllocationCallbacks* allocator)
+	{
+		((delegate* unmanaged<VkDevice, VkShaderInstrumentationARM, VkAllocationCallbacks*, void>)vkDestroyShaderInstrumentationARM_ptr.Value)(Device, instrumentation, allocator);
+	}
+
+	public void vkCmdBeginShaderInstrumentationARM(VkCommandBuffer commandBuffer, VkShaderInstrumentationARM instrumentation)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkShaderInstrumentationARM, void>)vkCmdBeginShaderInstrumentationARM_ptr.Value)(commandBuffer, instrumentation);
+	}
+
+	public void vkCmdEndShaderInstrumentationARM(VkCommandBuffer commandBuffer)
+	{
+		((delegate* unmanaged<VkCommandBuffer, void>)vkCmdEndShaderInstrumentationARM_ptr.Value)(commandBuffer);
+	}
+
+	public VkResult vkGetShaderInstrumentationValuesARM(VkShaderInstrumentationARM instrumentation, uint* metricBlockCount, void* metricValues, VkShaderInstrumentationValuesFlagsARM flags)
+	{
+		return ((delegate* unmanaged<VkDevice, VkShaderInstrumentationARM, uint*, void*, VkShaderInstrumentationValuesFlagsARM, VkResult>)vkGetShaderInstrumentationValuesARM_ptr.Value)(Device, instrumentation, metricBlockCount, metricValues, flags);
+	}
+
+	public void vkClearShaderInstrumentationMetricsARM(VkShaderInstrumentationARM instrumentation)
+	{
+		((delegate* unmanaged<VkDevice, VkShaderInstrumentationARM, void>)vkClearShaderInstrumentationMetricsARM_ptr.Value)(Device, instrumentation);
+	}
+
 	public void vkCmdEndRendering2EXT(VkCommandBuffer commandBuffer, VkRenderingEndInfoKHR* renderingEndInfo)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkRenderingEndInfoKHR*, void>)vkCmdEndRendering2EXT_ptr.Value)(commandBuffer, renderingEndInfo);
@@ -6680,6 +6953,11 @@ public unsafe partial class VkDeviceApi
 	public void vkCmdSetComputeOccupancyPriorityNV(VkCommandBuffer commandBuffer, VkComputeOccupancyPriorityParametersNV* parameters)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkComputeOccupancyPriorityParametersNV*, void>)vkCmdSetComputeOccupancyPriorityNV_ptr.Value)(commandBuffer, parameters);
+	}
+
+	public void vkCmdSetPrimitiveRestartIndexEXT(VkCommandBuffer commandBuffer, uint primitiveRestartIndex)
+	{
+		((delegate* unmanaged<VkCommandBuffer, uint, void>)vkCmdSetPrimitiveRestartIndexEXT_ptr.Value)(commandBuffer, primitiveRestartIndex);
 	}
 
 	public VkResult vkCreateAccelerationStructureKHR(VkAccelerationStructureCreateInfoKHR* createInfo, VkAccelerationStructureKHR* accelerationStructure)

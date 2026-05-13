@@ -189,6 +189,24 @@ partial class CsCodeGenerator
         { "VkBlockMatchWindowCompareModeQCOM", "VK_BLOCK_MATCH_WINDOW_COMPARE_MODE" },
         { "VkCubicFilterWeightsQCOM", "VK_CUBIC_FILTER_WEIGHTS" },
         { "VkLayeredDriverUnderlyingApiMSFT", "VK_LAYERED_DRIVER_UNDERLYING_API" },
+        { "VkPerfHintTypeQCOM", "VK_PERF_HINT_TYPE" },
+        { "VkOutOfBandQueueTypeNV", "VK_OUT_OF_BAND_QUEUE_TYPE" },
+        { "VkDataGraphPipelineSessionBindPointARM", "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT" },
+        { "VkDataGraphPipelineSessionBindPointTypeARM", "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE" },
+        { "VkDataGraphPipelinePropertyARM", "VK_DATA_GRAPH_PIPELINE_PROPERTY" },
+        { "VkPhysicalDeviceDataGraphProcessingEngineTypeARM", "VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE" },
+        { "VkPhysicalDeviceDataGraphOperationTypeARM", "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE" },
+        { "VkDataGraphTOSALevelARM", "VK_DATA_GRAPH_TOSA_LEVEL" },
+        { "VkDataGraphTOSAQualityFlagBitsARM", "VK_DATA_GRAPH_TOSA_QUALITY" },
+        { "VkDisplaySurfaceStereoTypeNV", "VK_DISPLAY_SURFACE_STEREO_TYPE" },
+        { "VkClusterAccelerationStructureTypeNV", "VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE" },
+        { "VkClusterAccelerationStructureOpTypeNV", "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE" },
+        { "VkClusterAccelerationStructureOpModeNV", "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE" },
+        { "VkDataGraphOpticalFlowPerformanceLevelARM", "VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL" },
+        { "VkDataGraphPipelineNodeTypeARM", "VK_DATA_GRAPH_PIPELINE_NODE_TYPE" },
+        { "VkDataGraphPipelineNodeConnectionTypeARM", "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE" },
+        { "VkThrottleHintTypeSEC", "VK_THROTTLE_HINT_TYPE" },
+        { "VkNeuralAcceleratorStatisticsModeARM", "VK_NEURAL_ACCELERATOR_STATISTICS_MODE" },
 
         // spvc
         { "spvc_result", "SPVC_ERROR" },
@@ -454,7 +472,8 @@ partial class CsCodeGenerator
                         || enumItem.Name.EndsWith("_MAX_ENUM_ANDROID")
                         || enumItem.Name.EndsWith("_MAX_ENUM_QCOM")
                         || enumItem.Name.EndsWith("_MAX_ENUM_MSFT")
-                        || enumItem.Name.EndsWith("_MAX_ENUM_MSFT")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_ARM")
+                        || enumItem.Name.EndsWith("_MAX_ENUM_SEC")
                         //enumItem.Name == "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT" ||
                         || enumItem.Name == "VK_STENCIL_FRONT_AND_BACK"
                         || enumItem.Name == "VK_PIPELINE_CREATE_DISPATCH_BASE"
@@ -880,7 +899,7 @@ partial class CsCodeGenerator
         if (enumName == "VkFormat")
         {
             enumItemName = cppEnumItemName.Substring(enumNamePrefix.Length + 1);
-            string[] splits = enumItemName.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] splits = enumItemName.Split(['_'], StringSplitOptions.RemoveEmptyEntries);
             if (splits.Length <= 1)
             {
                 enumItemName = char.ToUpperInvariant(enumItemName[0]) + enumItemName.Substring(1).ToLowerInvariant();
@@ -1021,6 +1040,22 @@ partial class CsCodeGenerator
                     else if (part.Equals("SFIXED5", StringComparison.OrdinalIgnoreCase))
                     {
                         sb.Append("SFixed5");
+                    }
+                    else if (part.Equals("BFLOAT16", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("BFloat16");
+                    }
+                    else if (part.Equals("FLOAT8E4M3", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Float8e4m3");
+                    }
+                    else if (part.Equals("FLOAT8E5M2", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("Float8e5m2");
+                    }
+                    else if (part.Equals("FPENCODING", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb.Append("FPEncoding");
                     }
                     else
                     {

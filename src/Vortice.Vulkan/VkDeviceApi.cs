@@ -588,4 +588,23 @@ public unsafe partial class VkDeviceApi
             }
         }
     }
+
+    public VkResult vkAllocateDescriptorSets(in VkDescriptorSetAllocateInfo allocateInfo, VkDescriptorSet* descriptorSets)
+    {
+        fixed (VkDescriptorSetAllocateInfo* pAllocateInfo = &allocateInfo)
+        {
+            return ((delegate* unmanaged<VkDevice, VkDescriptorSetAllocateInfo*, VkDescriptorSet*, VkResult>)vkAllocateDescriptorSets_ptr.Value)(Device, pAllocateInfo, descriptorSets);
+        }
+    }
+
+    public VkResult vkAllocateDescriptorSets(in VkDescriptorSetAllocateInfo allocateInfo, out VkDescriptorSet descriptorSets)
+    {
+        fixed (VkDescriptorSetAllocateInfo* pAllocateInfo = &allocateInfo)
+        {
+            fixed (VkDescriptorSet* pDescriptorSets = &descriptorSets)
+            {
+                return ((delegate* unmanaged<VkDevice, VkDescriptorSetAllocateInfo*, VkDescriptorSet*, VkResult>)vkAllocateDescriptorSets_ptr.Value)(Device, pAllocateInfo, pDescriptorSets);
+            }
+        }
+    }
 }

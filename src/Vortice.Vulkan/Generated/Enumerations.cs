@@ -414,6 +414,8 @@ public enum VkStructureType
 	PhysicalDeviceMultiviewProperties = 1000053002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES</unmanaged>
 	PhysicalDeviceShaderDrawParametersFeatures = 1000063000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES</unmanaged>
+	PhysicalDeviceDriverProperties = 1000196000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES</unmanaged>
 	PhysicalDeviceVulkan11Features = 49,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES</unmanaged>
@@ -424,8 +426,6 @@ public enum VkStructureType
 	PhysicalDeviceVulkan12Properties = 52,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO</unmanaged>
 	ImageFormatListCreateInfo = 1000147000,
-	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES</unmanaged>
-	PhysicalDeviceDriverProperties = 1000196000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES</unmanaged>
 	PhysicalDeviceVulkanMemoryModelFeatures = 1000211000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES</unmanaged>
@@ -1226,6 +1226,8 @@ public enum VkStructureType
 	PhysicalDeviceImageViewImageFormatInfoEXT = 1000170000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT</unmanaged>
 	FilterCubicImageViewImageFormatPropertiesEXT = 1000170001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM</unmanaged>
+	PhysicalDeviceCooperativeMatrixConversionFeaturesQCOM = 1000172000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT</unmanaged>
 	ImportMemoryHostPointerInfoEXT = 1000178000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT</unmanaged>
@@ -1342,6 +1344,14 @@ public enum VkStructureType
 	PhysicalDeviceShaderCoreProperties2AMD = 1000227000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD</unmanaged>
 	PhysicalDeviceCoherentMemoryFeaturesAMD = 1000229000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CONSTANT_DATA_FEATURES_KHR</unmanaged>
+	PhysicalDeviceShaderConstantDataFeaturesKHR = 1000231000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_FEATURES_KHR</unmanaged>
+	PhysicalDeviceShaderAbortFeaturesKHR = 1000233000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_FAULT_SHADER_ABORT_MESSAGE_INFO_KHR</unmanaged>
+	DeviceFaultShaderAbortMessageInfoKHR = 1000233001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_PROPERTIES_KHR</unmanaged>
+	PhysicalDeviceShaderAbortPropertiesKHR = 1000233002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT</unmanaged>
 	PhysicalDeviceShaderImageAtomicInt64FeaturesEXT = 1000234000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_QUAD_CONTROL_FEATURES_KHR</unmanaged>
@@ -1502,6 +1512,12 @@ public enum VkStructureType
 	PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV</unmanaged>
 	DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PERF_HINT_INFO_QCOM</unmanaged>
+	PerfHintInfoQCOM = 1000302000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_FEATURES_QCOM</unmanaged>
+	PhysicalDeviceQueuePerfHintFeaturesQCOM = 1000302001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_PROPERTIES_QCOM</unmanaged>
+	PhysicalDeviceQueuePerfHintPropertiesQCOM = 1000302002,
 	/// <unmanaged>VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV</unmanaged>
 	CudaModuleCreateInfoNV = 1000307000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV</unmanaged>
@@ -1576,6 +1592,38 @@ public enum VkStructureType
 	DescriptorBufferBindingPushDescriptorBufferHandleEXT = 1000316012,
 	/// <unmanaged>VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT</unmanaged>
 	AccelerationStructureCaptureDescriptorDataInfoEXT = 1000316009,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_MEMORY_COPY_KHR</unmanaged>
+	DeviceMemoryCopyKHR = 1000318000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_COPY_DEVICE_MEMORY_INFO_KHR</unmanaged>
+	CopyDeviceMemoryInfoKHR = 1000318001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_MEMORY_IMAGE_COPY_KHR</unmanaged>
+	DeviceMemoryImageCopyKHR = 1000318002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_COPY_DEVICE_MEMORY_IMAGE_INFO_KHR</unmanaged>
+	CopyDeviceMemoryImageInfoKHR = 1000318003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_RANGE_BARRIERS_INFO_KHR</unmanaged>
+	MemoryRangeBarriersInfoKHR = 1000318004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_RANGE_BARRIER_KHR</unmanaged>
+	MemoryRangeBarrierKHR = 1000318005,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_ADDRESS_COMMANDS_FEATURES_KHR</unmanaged>
+	PhysicalDeviceDeviceAddressCommandsFeaturesKHR = 1000318006,
+	/// <unmanaged>VK_STRUCTURE_TYPE_BIND_INDEX_BUFFER_3_INFO_KHR</unmanaged>
+	BindIndexBuffer3InfoKHR = 1000318007,
+	/// <unmanaged>VK_STRUCTURE_TYPE_BIND_VERTEX_BUFFER_3_INFO_KHR</unmanaged>
+	BindVertexBuffer3InfoKHR = 1000318008,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DRAW_INDIRECT_2_INFO_KHR</unmanaged>
+	DrawIndirect2InfoKHR = 1000318009,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DRAW_INDIRECT_COUNT_2_INFO_KHR</unmanaged>
+	DrawIndirectCount2InfoKHR = 1000318010,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DISPATCH_INDIRECT_2_INFO_KHR</unmanaged>
+	DispatchIndirect2InfoKHR = 1000318011,
+	/// <unmanaged>VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_2_EXT</unmanaged>
+	ConditionalRenderingBeginInfo2EXT = 1000318012,
+	/// <unmanaged>VK_STRUCTURE_TYPE_BIND_TRANSFORM_FEEDBACK_BUFFER_2_INFO_EXT</unmanaged>
+	BindTransformFeedbackBuffer2InfoEXT = 1000318013,
+	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_MARKER_INFO_AMD</unmanaged>
+	MemoryMarkerInfoAMD = 1000318014,
+	/// <unmanaged>VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_2_KHR</unmanaged>
+	AccelerationStructureCreateInfo2KHR = 1000318015,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_FEATURES_EXT</unmanaged>
 	PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT = 1000320000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT</unmanaged>
@@ -1792,6 +1840,10 @@ public enum VkStructureType
 	PhysicalDeviceSchedulingControlsFeaturesARM = 1000417001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM</unmanaged>
 	PhysicalDeviceSchedulingControlsPropertiesARM = 1000417002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DISPATCH_PARAMETERS_ARM</unmanaged>
+	DispatchParametersARM = 1000417003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_DISPATCH_PARAMETERS_PROPERTIES_ARM</unmanaged>
+	PhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM = 1000417004,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT</unmanaged>
 	PhysicalDeviceImageSlicedViewOf3DFeaturesEXT = 1000418000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT</unmanaged>
@@ -2132,6 +2184,8 @@ public enum VkStructureType
 	PhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM = 1000507019,
 	/// <unmanaged>VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM</unmanaged>
 	DataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM = 1000507015,
+	/// <unmanaged>VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_TOSA_PROPERTIES_ARM</unmanaged>
+	QueueFamilyDataGraphTosaPropertiesARM = 1000508000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM</unmanaged>
 	PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM = 1000510000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM</unmanaged>
@@ -2376,6 +2430,14 @@ public enum VkStructureType
 	GeneratedCommandsPipelineInfoEXT = 1000572013,
 	/// <unmanaged>VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT</unmanaged>
 	GeneratedCommandsShaderInfoEXT = 1000572014,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_KHR</unmanaged>
+	PhysicalDeviceFaultFeaturesKHR = 1000573000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_PROPERTIES_KHR</unmanaged>
+	PhysicalDeviceFaultPropertiesKHR = 1000573001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_KHR</unmanaged>
+	DeviceFaultInfoKHR = 1000573002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DEVICE_FAULT_DEBUG_INFO_KHR</unmanaged>
+	DeviceFaultDebugInfoKHR = 1000573003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR</unmanaged>
 	PhysicalDeviceMaintenance8FeaturesKHR = 1000574000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR</unmanaged>
@@ -2448,6 +2510,14 @@ public enum VkStructureType
 	PerformanceCounterDescriptionARM = 1000605003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM</unmanaged>
 	RenderPassPerformanceCountersByRegionBeginInfoARM = 1000605004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_FEATURES_ARM</unmanaged>
+	PhysicalDeviceShaderInstrumentationFeaturesARM = 1000607000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_PROPERTIES_ARM</unmanaged>
+	PhysicalDeviceShaderInstrumentationPropertiesARM = 1000607001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_CREATE_INFO_ARM</unmanaged>
+	ShaderInstrumentationCreateInfoARM = 1000607002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_METRIC_DESCRIPTION_ARM</unmanaged>
+	ShaderInstrumentationMetricDescriptionARM = 1000607003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT</unmanaged>
 	PhysicalDeviceVertexAttributeRobustnessFeaturesEXT = 1000608000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FORMAT_PACK_FEATURES_ARM</unmanaged>
@@ -2498,6 +2568,24 @@ public enum VkStructureType
 	RenderingEndInfoKHR = 1000619003,
 	/// <unmanaged>VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR</unmanaged>
 	ResolveImageModeInfoKHR = 1000630004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_OPTICAL_FLOW_FEATURES_ARM</unmanaged>
+	PhysicalDeviceDataGraphOpticalFlowFeaturesARM = 1000631000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_OPTICAL_FLOW_PROPERTIES_ARM</unmanaged>
+	QueueFamilyDataGraphOpticalFlowPropertiesARM = 1000631001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_INFO_ARM</unmanaged>
+	DataGraphOpticalFlowImageFormatInfoARM = 1000631003,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_ARM</unmanaged>
+	DataGraphOpticalFlowImageFormatPropertiesARM = 1000631004,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM</unmanaged>
+	DataGraphPipelineOpticalFlowDispatchInfoARM = 1000631005,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_CREATE_INFO_ARM</unmanaged>
+	DataGraphPipelineOpticalFlowCreateInfoARM = 1000631002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_IMAGE_LAYOUT_ARM</unmanaged>
+	DataGraphPipelineResourceInfoImageLayoutARM = 1000631006,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CREATE_INFO_ARM</unmanaged>
+	DataGraphPipelineSingleNodeCreateInfoARM = 1000631007,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CONNECTION_ARM</unmanaged>
+	DataGraphPipelineSingleNodeConnectionARM = 1000631008,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT</unmanaged>
 	PhysicalDeviceShaderLongVectorFeaturesEXT = 1000635000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT</unmanaged>
@@ -2510,8 +2598,28 @@ public enum VkStructureType
 	ComputeOccupancyPriorityParametersNV = 1000645000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV</unmanaged>
 	PhysicalDeviceComputeOccupancyPriorityFeaturesNV = 1000645001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_11_FEATURES_KHR</unmanaged>
+	PhysicalDeviceMaintenance11FeaturesKHR = 1000657000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR</unmanaged>
+	QueueFamilyOptimalImageTransferGranularityPropertiesKHR = 1000657001,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT</unmanaged>
 	PhysicalDeviceShaderSubgroupPartitionedFeaturesEXT = 1000662000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC</unmanaged>
+	UbmSurfaceCreateInfoSEC = 1000664000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE</unmanaged>
+	PhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE = 1000673000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC</unmanaged>
+	PhysicalDeviceThrottleHintFeaturesSEC = 1000674000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC</unmanaged>
+	ThrottleHintSubmitInfoSEC = 1000674001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM</unmanaged>
+	DataGraphPipelineNeuralStatisticsCreateInfoARM = 1000676000,
+	/// <unmanaged>VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM</unmanaged>
+	DataGraphPipelineSessionNeuralStatisticsCreateInfoARM = 1000676001,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM</unmanaged>
+	PhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM = 1000676002,
+	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT</unmanaged>
+	PhysicalDevicePrimitiveRestartIndexFeaturesEXT = 1000678000,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES</unmanaged>
 	PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures,
 	/// <unmanaged>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES</unmanaged>
@@ -2522,101 +2630,6 @@ public enum VkStructureType
 	PhysicalDeviceMutableDescriptorTypeFeaturesVALVE = PhysicalDeviceMutableDescriptorTypeFeaturesEXT,
 	/// <unmanaged>VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_VALVE</unmanaged>
 	MutableDescriptorTypeCreateInfoVALVE = MutableDescriptorTypeCreateInfoEXT,
-}
-
-public enum VkImageLayout
-{
-	/// <summary>
-	/// Implicit layout an image is when its contents are undefined due to various reasons (e.g. right after creation)
-	/// </summary>
-	/// <unmanaged>VK_IMAGE_LAYOUT_UNDEFINED</unmanaged>
-	Undefined = 0,
-	/// <summary>
-	/// General layout when image can be used for any kind of access
-	/// </summary>
-	/// <unmanaged>VK_IMAGE_LAYOUT_GENERAL</unmanaged>
-	General = 1,
-	/// <summary>
-	/// Optimal layout when image is only used for color attachment read/write
-	/// </summary>
-	/// <unmanaged>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</unmanaged>
-	ColorAttachmentOptimal = 2,
-	/// <summary>
-	/// Optimal layout when image is only used for depth/stencil attachment read/write
-	/// </summary>
-	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL</unmanaged>
-	DepthStencilAttachmentOptimal = 3,
-	/// <summary>
-	/// Optimal layout when image is used for read only depth/stencil attachment and shader access
-	/// </summary>
-	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL</unmanaged>
-	DepthStencilReadOnlyOptimal = 4,
-	/// <summary>
-	/// Optimal layout when image is used for read only shader access
-	/// </summary>
-	/// <unmanaged>VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL</unmanaged>
-	ShaderReadOnlyOptimal = 5,
-	/// <summary>
-	/// Optimal layout when image is used only as source of transfer operations
-	/// </summary>
-	/// <unmanaged>VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL</unmanaged>
-	TransferSrcOptimal = 6,
-	/// <summary>
-	/// Optimal layout when image is used only as destination of transfer operations
-	/// </summary>
-	/// <unmanaged>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</unmanaged>
-	TransferDstOptimal = 7,
-	/// <summary>
-	/// Initial layout used when the data is populated by the CPU
-	/// </summary>
-	/// <unmanaged>VK_IMAGE_LAYOUT_PREINITIALIZED</unmanaged>
-	Preinitialized = 8,
-	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL</unmanaged>
-	DepthReadOnlyStencilAttachmentOptimal = 1000117000,
-	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL</unmanaged>
-	DepthAttachmentStencilReadOnlyOptimal = 1000117001,
-	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL</unmanaged>
-	DepthAttachmentOptimal = 1000241000,
-	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL</unmanaged>
-	DepthReadOnlyOptimal = 1000241001,
-	/// <unmanaged>VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL</unmanaged>
-	StencilAttachmentOptimal = 1000241002,
-	/// <unmanaged>VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL</unmanaged>
-	StencilReadOnlyOptimal = 1000241003,
-	/// <unmanaged>VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL</unmanaged>
-	ReadOnlyOptimal = 1000314000,
-	/// <unmanaged>VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL</unmanaged>
-	AttachmentOptimal = 1000314001,
-	/// <unmanaged>VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ</unmanaged>
-	RenderingLocalRead = 1000232000,
-	/// <unmanaged>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</unmanaged>
-	PresentSrcKHR = 1000001002,
-	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR</unmanaged>
-	VideoDecodeDstKHR = 1000024000,
-	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR</unmanaged>
-	VideoDecodeSrcKHR = 1000024001,
-	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR</unmanaged>
-	VideoDecodeDpbKHR = 1000024002,
-	/// <unmanaged>VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR</unmanaged>
-	SharedPresentKHR = 1000111000,
-	/// <unmanaged>VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT</unmanaged>
-	FragmentDensityMapOptimalEXT = 1000218000,
-	/// <unmanaged>VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR</unmanaged>
-	FragmentShadingRateAttachmentOptimalKHR = 1000164003,
-	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR</unmanaged>
-	VideoEncodeDstKHR = 1000299000,
-	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR</unmanaged>
-	VideoEncodeSrcKHR = 1000299001,
-	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR</unmanaged>
-	VideoEncodeDpbKHR = 1000299002,
-	/// <unmanaged>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</unmanaged>
-	AttachmentFeedbackLoopOptimalEXT = 1000339000,
-	/// <unmanaged>VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM</unmanaged>
-	TensorAliasingARM = 1000460000,
-	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR</unmanaged>
-	VideoEncodeQuantizationMapKHR = 1000553000,
-	/// <unmanaged>VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT</unmanaged>
-	ZeroInitializedEXT = 1000620000,
 }
 
 /// <summary>
@@ -2740,6 +2753,8 @@ public enum VkObjectType
 	IndirectCommandsLayoutEXT = 1000572000,
 	/// <unmanaged>VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT</unmanaged>
 	IndirectExecutionSetEXT = 1000572001,
+	/// <unmanaged>VK_OBJECT_TYPE_SHADER_INSTRUMENTATION_ARM</unmanaged>
+	ShaderInstrumentationARM = 1000607000,
 }
 
 public enum VkVendorId
@@ -3371,6 +3386,12 @@ public enum VkFormat
 	Astc6x6x6SfloatBlockEXT = 1000288029,
 	/// <unmanaged>VK_FORMAT_R8_BOOL_ARM</unmanaged>
 	R8BOOLARM = 1000460000,
+	/// <unmanaged>VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM</unmanaged>
+	R16SfloatFPEncodingBFloat16ARM = 1000460001,
+	/// <unmanaged>VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM</unmanaged>
+	R8SfloatFPEncodingFloat8e4m3ARM = 1000460002,
+	/// <unmanaged>VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM</unmanaged>
+	R8SfloatFPEncodingFloat8e5m2ARM = 1000460003,
 	/// <unmanaged>VK_FORMAT_R16G16_SFIXED5_NV</unmanaged>
 	R16G16SFixed5NV = 1000464000,
 	/// <unmanaged>VK_FORMAT_R10X6_UINT_PACK16_ARM</unmanaged>
@@ -3486,6 +3507,101 @@ public enum VkSharingMode
 	Concurrent = 1,
 }
 
+public enum VkImageLayout
+{
+	/// <summary>
+	/// Implicit layout an image is when its contents are undefined due to various reasons (e.g. right after creation)
+	/// </summary>
+	/// <unmanaged>VK_IMAGE_LAYOUT_UNDEFINED</unmanaged>
+	Undefined = 0,
+	/// <summary>
+	/// General layout when image can be used for any kind of access
+	/// </summary>
+	/// <unmanaged>VK_IMAGE_LAYOUT_GENERAL</unmanaged>
+	General = 1,
+	/// <summary>
+	/// Optimal layout when image is only used for color attachment read/write
+	/// </summary>
+	/// <unmanaged>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</unmanaged>
+	ColorAttachmentOptimal = 2,
+	/// <summary>
+	/// Optimal layout when image is only used for depth/stencil attachment read/write
+	/// </summary>
+	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL</unmanaged>
+	DepthStencilAttachmentOptimal = 3,
+	/// <summary>
+	/// Optimal layout when image is used for read only depth/stencil attachment and shader access
+	/// </summary>
+	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL</unmanaged>
+	DepthStencilReadOnlyOptimal = 4,
+	/// <summary>
+	/// Optimal layout when image is used for read only shader access
+	/// </summary>
+	/// <unmanaged>VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL</unmanaged>
+	ShaderReadOnlyOptimal = 5,
+	/// <summary>
+	/// Optimal layout when image is used only as source of transfer operations
+	/// </summary>
+	/// <unmanaged>VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL</unmanaged>
+	TransferSrcOptimal = 6,
+	/// <summary>
+	/// Optimal layout when image is used only as destination of transfer operations
+	/// </summary>
+	/// <unmanaged>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</unmanaged>
+	TransferDstOptimal = 7,
+	/// <summary>
+	/// Initial layout used when the data is populated by the CPU
+	/// </summary>
+	/// <unmanaged>VK_IMAGE_LAYOUT_PREINITIALIZED</unmanaged>
+	Preinitialized = 8,
+	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL</unmanaged>
+	DepthReadOnlyStencilAttachmentOptimal = 1000117000,
+	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL</unmanaged>
+	DepthAttachmentStencilReadOnlyOptimal = 1000117001,
+	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL</unmanaged>
+	DepthAttachmentOptimal = 1000241000,
+	/// <unmanaged>VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL</unmanaged>
+	DepthReadOnlyOptimal = 1000241001,
+	/// <unmanaged>VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL</unmanaged>
+	StencilAttachmentOptimal = 1000241002,
+	/// <unmanaged>VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL</unmanaged>
+	StencilReadOnlyOptimal = 1000241003,
+	/// <unmanaged>VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL</unmanaged>
+	ReadOnlyOptimal = 1000314000,
+	/// <unmanaged>VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL</unmanaged>
+	AttachmentOptimal = 1000314001,
+	/// <unmanaged>VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ</unmanaged>
+	RenderingLocalRead = 1000232000,
+	/// <unmanaged>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</unmanaged>
+	PresentSrcKHR = 1000001002,
+	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR</unmanaged>
+	VideoDecodeDstKHR = 1000024000,
+	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR</unmanaged>
+	VideoDecodeSrcKHR = 1000024001,
+	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR</unmanaged>
+	VideoDecodeDpbKHR = 1000024002,
+	/// <unmanaged>VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR</unmanaged>
+	SharedPresentKHR = 1000111000,
+	/// <unmanaged>VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT</unmanaged>
+	FragmentDensityMapOptimalEXT = 1000218000,
+	/// <unmanaged>VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR</unmanaged>
+	FragmentShadingRateAttachmentOptimalKHR = 1000164003,
+	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR</unmanaged>
+	VideoEncodeDstKHR = 1000299000,
+	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR</unmanaged>
+	VideoEncodeSrcKHR = 1000299001,
+	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR</unmanaged>
+	VideoEncodeDpbKHR = 1000299002,
+	/// <unmanaged>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</unmanaged>
+	AttachmentFeedbackLoopOptimalEXT = 1000339000,
+	/// <unmanaged>VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM</unmanaged>
+	TensorAliasingARM = 1000460000,
+	/// <unmanaged>VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR</unmanaged>
+	VideoEncodeQuantizationMapKHR = 1000553000,
+	/// <unmanaged>VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT</unmanaged>
+	ZeroInitializedEXT = 1000620000,
+}
+
 public enum VkComponentSwizzle
 {
 	/// <unmanaged>VK_COMPONENT_SWIZZLE_IDENTITY</unmanaged>
@@ -3596,20 +3712,6 @@ public enum VkSamplerAddressMode
 	MirrorClampToEdge = 4,
 }
 
-public enum VkSamplerMipmapMode
-{
-	/// <summary>
-	/// Choose nearest mip level
-	/// </summary>
-	/// <unmanaged>VK_SAMPLER_MIPMAP_MODE_NEAREST</unmanaged>
-	Nearest = 0,
-	/// <summary>
-	/// Linear filter between mip levels
-	/// </summary>
-	/// <unmanaged>VK_SAMPLER_MIPMAP_MODE_LINEAR</unmanaged>
-	Linear = 1,
-}
-
 public enum VkCompareOp
 {
 	/// <unmanaged>VK_COMPARE_OP_NEVER</unmanaged>
@@ -3628,6 +3730,20 @@ public enum VkCompareOp
 	GreaterOrEqual = 6,
 	/// <unmanaged>VK_COMPARE_OP_ALWAYS</unmanaged>
 	Always = 7,
+}
+
+public enum VkSamplerMipmapMode
+{
+	/// <summary>
+	/// Choose nearest mip level
+	/// </summary>
+	/// <unmanaged>VK_SAMPLER_MIPMAP_MODE_NEAREST</unmanaged>
+	Nearest = 0,
+	/// <summary>
+	/// Linear filter between mip levels
+	/// </summary>
+	/// <unmanaged>VK_SAMPLER_MIPMAP_MODE_LINEAR</unmanaged>
+	Linear = 1,
 }
 
 public enum VkDescriptorType
@@ -3996,6 +4112,62 @@ public enum VkFrontFace
 	Clockwise = 1,
 }
 
+public enum VkLogicOp
+{
+	/// <unmanaged>VK_LOGIC_OP_CLEAR</unmanaged>
+	Clear = 0,
+	/// <unmanaged>VK_LOGIC_OP_AND</unmanaged>
+	And = 1,
+	/// <unmanaged>VK_LOGIC_OP_AND_REVERSE</unmanaged>
+	AndReverse = 2,
+	/// <unmanaged>VK_LOGIC_OP_COPY</unmanaged>
+	Copy = 3,
+	/// <unmanaged>VK_LOGIC_OP_AND_INVERTED</unmanaged>
+	AndInverted = 4,
+	/// <unmanaged>VK_LOGIC_OP_NO_OP</unmanaged>
+	NoOp = 5,
+	/// <unmanaged>VK_LOGIC_OP_XOR</unmanaged>
+	Xor = 6,
+	/// <unmanaged>VK_LOGIC_OP_OR</unmanaged>
+	Or = 7,
+	/// <unmanaged>VK_LOGIC_OP_NOR</unmanaged>
+	Nor = 8,
+	/// <unmanaged>VK_LOGIC_OP_EQUIVALENT</unmanaged>
+	Equivalent = 9,
+	/// <unmanaged>VK_LOGIC_OP_INVERT</unmanaged>
+	Invert = 10,
+	/// <unmanaged>VK_LOGIC_OP_OR_REVERSE</unmanaged>
+	OrReverse = 11,
+	/// <unmanaged>VK_LOGIC_OP_COPY_INVERTED</unmanaged>
+	CopyInverted = 12,
+	/// <unmanaged>VK_LOGIC_OP_OR_INVERTED</unmanaged>
+	OrInverted = 13,
+	/// <unmanaged>VK_LOGIC_OP_NAND</unmanaged>
+	Nand = 14,
+	/// <unmanaged>VK_LOGIC_OP_SET</unmanaged>
+	Set = 15,
+}
+
+public enum VkStencilOp
+{
+	/// <unmanaged>VK_STENCIL_OP_KEEP</unmanaged>
+	Keep = 0,
+	/// <unmanaged>VK_STENCIL_OP_ZERO</unmanaged>
+	Zero = 1,
+	/// <unmanaged>VK_STENCIL_OP_REPLACE</unmanaged>
+	Replace = 2,
+	/// <unmanaged>VK_STENCIL_OP_INCREMENT_AND_CLAMP</unmanaged>
+	IncrementAndClamp = 3,
+	/// <unmanaged>VK_STENCIL_OP_DECREMENT_AND_CLAMP</unmanaged>
+	DecrementAndClamp = 4,
+	/// <unmanaged>VK_STENCIL_OP_INVERT</unmanaged>
+	Invert = 5,
+	/// <unmanaged>VK_STENCIL_OP_INCREMENT_AND_WRAP</unmanaged>
+	IncrementAndWrap = 6,
+	/// <unmanaged>VK_STENCIL_OP_DECREMENT_AND_WRAP</unmanaged>
+	DecrementAndWrap = 7,
+}
+
 public enum VkVertexInputRate
 {
 	/// <unmanaged>VK_VERTEX_INPUT_RATE_VERTEX</unmanaged>
@@ -4042,62 +4214,6 @@ public enum VkPolygonMode
 	FillRectangleNV = 1000153000,
 }
 
-public enum VkStencilOp
-{
-	/// <unmanaged>VK_STENCIL_OP_KEEP</unmanaged>
-	Keep = 0,
-	/// <unmanaged>VK_STENCIL_OP_ZERO</unmanaged>
-	Zero = 1,
-	/// <unmanaged>VK_STENCIL_OP_REPLACE</unmanaged>
-	Replace = 2,
-	/// <unmanaged>VK_STENCIL_OP_INCREMENT_AND_CLAMP</unmanaged>
-	IncrementAndClamp = 3,
-	/// <unmanaged>VK_STENCIL_OP_DECREMENT_AND_CLAMP</unmanaged>
-	DecrementAndClamp = 4,
-	/// <unmanaged>VK_STENCIL_OP_INVERT</unmanaged>
-	Invert = 5,
-	/// <unmanaged>VK_STENCIL_OP_INCREMENT_AND_WRAP</unmanaged>
-	IncrementAndWrap = 6,
-	/// <unmanaged>VK_STENCIL_OP_DECREMENT_AND_WRAP</unmanaged>
-	DecrementAndWrap = 7,
-}
-
-public enum VkLogicOp
-{
-	/// <unmanaged>VK_LOGIC_OP_CLEAR</unmanaged>
-	Clear = 0,
-	/// <unmanaged>VK_LOGIC_OP_AND</unmanaged>
-	And = 1,
-	/// <unmanaged>VK_LOGIC_OP_AND_REVERSE</unmanaged>
-	AndReverse = 2,
-	/// <unmanaged>VK_LOGIC_OP_COPY</unmanaged>
-	Copy = 3,
-	/// <unmanaged>VK_LOGIC_OP_AND_INVERTED</unmanaged>
-	AndInverted = 4,
-	/// <unmanaged>VK_LOGIC_OP_NO_OP</unmanaged>
-	NoOp = 5,
-	/// <unmanaged>VK_LOGIC_OP_XOR</unmanaged>
-	Xor = 6,
-	/// <unmanaged>VK_LOGIC_OP_OR</unmanaged>
-	Or = 7,
-	/// <unmanaged>VK_LOGIC_OP_NOR</unmanaged>
-	Nor = 8,
-	/// <unmanaged>VK_LOGIC_OP_EQUIVALENT</unmanaged>
-	Equivalent = 9,
-	/// <unmanaged>VK_LOGIC_OP_INVERT</unmanaged>
-	Invert = 10,
-	/// <unmanaged>VK_LOGIC_OP_OR_REVERSE</unmanaged>
-	OrReverse = 11,
-	/// <unmanaged>VK_LOGIC_OP_COPY_INVERTED</unmanaged>
-	CopyInverted = 12,
-	/// <unmanaged>VK_LOGIC_OP_OR_INVERTED</unmanaged>
-	OrInverted = 13,
-	/// <unmanaged>VK_LOGIC_OP_NAND</unmanaged>
-	Nand = 14,
-	/// <unmanaged>VK_LOGIC_OP_SET</unmanaged>
-	Set = 15,
-}
-
 public enum VkAttachmentLoadOp
 {
 	/// <unmanaged>VK_ATTACHMENT_LOAD_OP_LOAD</unmanaged>
@@ -4128,149 +4244,6 @@ public enum VkSubpassContents
 	SecondaryCommandBuffers = 1,
 	/// <unmanaged>VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR</unmanaged>
 	InlineAndSecondaryCommandBuffersKHR = 1000451000,
-}
-
-[Flags]
-public enum VkAccessFlags
-{
-	/// <summary>
-	/// Controls coherency of indirect command reads
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_INDIRECT_COMMAND_READ_BIT</unmanaged>
-	IndirectCommandRead = 0x00000001,
-	/// <summary>
-	/// Controls coherency of index reads
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_INDEX_READ_BIT</unmanaged>
-	IndexRead = 0x00000002,
-	/// <summary>
-	/// Controls coherency of vertex attribute reads
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT</unmanaged>
-	VertexAttributeRead = 0x00000004,
-	/// <summary>
-	/// Controls coherency of uniform buffer reads
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_UNIFORM_READ_BIT</unmanaged>
-	UniformRead = 0x00000008,
-	/// <summary>
-	/// Controls coherency of input attachment reads
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_INPUT_ATTACHMENT_READ_BIT</unmanaged>
-	InputAttachmentRead = 0x00000010,
-	/// <summary>
-	/// Controls coherency of shader reads
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_SHADER_READ_BIT</unmanaged>
-	ShaderRead = 0x00000020,
-	/// <summary>
-	/// Controls coherency of shader writes
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_SHADER_WRITE_BIT</unmanaged>
-	ShaderWrite = 0x00000040,
-	/// <summary>
-	/// Controls coherency of color attachment reads
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_COLOR_ATTACHMENT_READ_BIT</unmanaged>
-	ColorAttachmentRead = 0x00000080,
-	/// <summary>
-	/// Controls coherency of color attachment writes
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT</unmanaged>
-	ColorAttachmentWrite = 0x00000100,
-	/// <summary>
-	/// Controls coherency of depth/stencil attachment reads
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT</unmanaged>
-	DepthStencilAttachmentRead = 0x00000200,
-	/// <summary>
-	/// Controls coherency of depth/stencil attachment writes
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT</unmanaged>
-	DepthStencilAttachmentWrite = 0x00000400,
-	/// <summary>
-	/// Controls coherency of transfer reads
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_TRANSFER_READ_BIT</unmanaged>
-	TransferRead = 0x00000800,
-	/// <summary>
-	/// Controls coherency of transfer writes
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_TRANSFER_WRITE_BIT</unmanaged>
-	TransferWrite = 0x00001000,
-	/// <summary>
-	/// Controls coherency of host reads
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_HOST_READ_BIT</unmanaged>
-	HostRead = 0x00002000,
-	/// <summary>
-	/// Controls coherency of host writes
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_HOST_WRITE_BIT</unmanaged>
-	HostWrite = 0x00004000,
-	/// <summary>
-	/// Controls coherency of memory reads
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_MEMORY_READ_BIT</unmanaged>
-	MemoryRead = 0x00008000,
-	/// <summary>
-	/// Controls coherency of memory writes
-	/// </summary>
-	/// <unmanaged>VK_ACCESS_MEMORY_WRITE_BIT</unmanaged>
-	MemoryWrite = 0x00010000,
-	/// <unmanaged>VK_ACCESS_NONE</unmanaged>
-	None = 0,
-	/// <unmanaged>VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT</unmanaged>
-	TransformFeedbackWriteEXT = 0x02000000,
-	/// <unmanaged>VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT</unmanaged>
-	TransformFeedbackCounterReadEXT = 0x04000000,
-	/// <unmanaged>VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT</unmanaged>
-	TransformFeedbackCounterWriteEXT = 0x08000000,
-	/// <unmanaged>VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT</unmanaged>
-	ConditionalRenderingReadEXT = 0x00100000,
-	/// <unmanaged>VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT</unmanaged>
-	ColorAttachmentReadNoncoherentEXT = 0x00080000,
-	/// <unmanaged>VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR</unmanaged>
-	AccelerationStructureReadKHR = 0x00200000,
-	/// <unmanaged>VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR</unmanaged>
-	AccelerationStructureWriteKHR = 0x00400000,
-	/// <unmanaged>VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT</unmanaged>
-	FragmentDensityMapReadEXT = 0x01000000,
-	/// <unmanaged>VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR</unmanaged>
-	FragmentShadingRateAttachmentReadKHR = 0x00800000,
-	/// <unmanaged>VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_EXT</unmanaged>
-	CommandPreprocessReadEXT = 0x00020000,
-	/// <unmanaged>VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_EXT</unmanaged>
-	CommandPreprocessWriteEXT = 0x00040000,
-}
-
-[Flags]
-public enum VkImageAspectFlags
-{
-	/// <unmanaged>VK_IMAGE_ASPECT_COLOR_BIT</unmanaged>
-	Color = 0x00000001,
-	/// <unmanaged>VK_IMAGE_ASPECT_DEPTH_BIT</unmanaged>
-	Depth = 0x00000002,
-	/// <unmanaged>VK_IMAGE_ASPECT_STENCIL_BIT</unmanaged>
-	Stencil = 0x00000004,
-	/// <unmanaged>VK_IMAGE_ASPECT_METADATA_BIT</unmanaged>
-	Metadata = 0x00000008,
-	/// <unmanaged>VK_IMAGE_ASPECT_PLANE_0_BIT</unmanaged>
-	Plane0 = 0x00000010,
-	/// <unmanaged>VK_IMAGE_ASPECT_PLANE_1_BIT</unmanaged>
-	Plane1 = 0x00000020,
-	/// <unmanaged>VK_IMAGE_ASPECT_PLANE_2_BIT</unmanaged>
-	Plane2 = 0x00000040,
-	/// <unmanaged>VK_IMAGE_ASPECT_NONE</unmanaged>
-	None = 0,
-	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT</unmanaged>
-	MemoryPlane0EXT = 0x00000080,
-	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT</unmanaged>
-	MemoryPlane1EXT = 0x00000100,
-	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT</unmanaged>
-	MemoryPlane2EXT = 0x00000200,
-	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT</unmanaged>
-	MemoryPlane3EXT = 0x00000400,
 }
 
 [Flags]
@@ -4441,6 +4414,8 @@ public enum VkImageCreateFlags
 	VideoProfileIndependentKHR = 0x00100000,
 	/// <unmanaged>VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT</unmanaged>
 	FragmentDensityMapOffsetEXT = 0x00008000,
+	/// <unmanaged>VK_IMAGE_CREATE_ALIAS_SINGLE_LAYER_DESCRIPTOR_BIT_KHR</unmanaged>
+	AliasSingleLayerDescriptorKHR = 0x00400000,
 }
 
 [Flags]
@@ -4663,6 +4638,48 @@ public enum VkQueueFlags
 }
 
 [Flags]
+public enum VkShaderStageFlags
+{
+	None = 0,
+	/// <unmanaged>VK_SHADER_STAGE_VERTEX_BIT</unmanaged>
+	Vertex = 0x00000001,
+	/// <unmanaged>VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT</unmanaged>
+	TessellationControl = 0x00000002,
+	/// <unmanaged>VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT</unmanaged>
+	TessellationEvaluation = 0x00000004,
+	/// <unmanaged>VK_SHADER_STAGE_GEOMETRY_BIT</unmanaged>
+	Geometry = 0x00000008,
+	/// <unmanaged>VK_SHADER_STAGE_FRAGMENT_BIT</unmanaged>
+	Fragment = 0x00000010,
+	/// <unmanaged>VK_SHADER_STAGE_COMPUTE_BIT</unmanaged>
+	Compute = 0x00000020,
+	/// <unmanaged>VK_SHADER_STAGE_ALL_GRAPHICS</unmanaged>
+	AllGraphics = 0x0000001F,
+	/// <unmanaged>VK_SHADER_STAGE_ALL</unmanaged>
+	All = 0x7FFFFFFF,
+	/// <unmanaged>VK_SHADER_STAGE_RAYGEN_BIT_KHR</unmanaged>
+	RaygenKHR = 0x00000100,
+	/// <unmanaged>VK_SHADER_STAGE_ANY_HIT_BIT_KHR</unmanaged>
+	AnyHitKHR = 0x00000200,
+	/// <unmanaged>VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR</unmanaged>
+	ClosestHitKHR = 0x00000400,
+	/// <unmanaged>VK_SHADER_STAGE_MISS_BIT_KHR</unmanaged>
+	MissKHR = 0x00000800,
+	/// <unmanaged>VK_SHADER_STAGE_INTERSECTION_BIT_KHR</unmanaged>
+	IntersectionKHR = 0x00001000,
+	/// <unmanaged>VK_SHADER_STAGE_CALLABLE_BIT_KHR</unmanaged>
+	CallableKHR = 0x00002000,
+	/// <unmanaged>VK_SHADER_STAGE_TASK_BIT_EXT</unmanaged>
+	TaskEXT = 0x00000040,
+	/// <unmanaged>VK_SHADER_STAGE_MESH_BIT_EXT</unmanaged>
+	MeshEXT = 0x00000080,
+	/// <unmanaged>VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI</unmanaged>
+	SubpassShadingHUAWEI = 0x00004000,
+	/// <unmanaged>VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI</unmanaged>
+	ClusterCullingHUAWEI = 0x00080000,
+}
+
+[Flags]
 public enum VkDeviceQueueCreateFlags
 {
 	None = 0,
@@ -4791,14 +4808,32 @@ public enum VkMemoryMapFlags
 }
 
 [Flags]
-public enum VkSparseMemoryBindFlags
+public enum VkImageAspectFlags
 {
+	/// <unmanaged>VK_IMAGE_ASPECT_COLOR_BIT</unmanaged>
+	Color = 0x00000001,
+	/// <unmanaged>VK_IMAGE_ASPECT_DEPTH_BIT</unmanaged>
+	Depth = 0x00000002,
+	/// <unmanaged>VK_IMAGE_ASPECT_STENCIL_BIT</unmanaged>
+	Stencil = 0x00000004,
+	/// <unmanaged>VK_IMAGE_ASPECT_METADATA_BIT</unmanaged>
+	Metadata = 0x00000008,
+	/// <unmanaged>VK_IMAGE_ASPECT_PLANE_0_BIT</unmanaged>
+	Plane0 = 0x00000010,
+	/// <unmanaged>VK_IMAGE_ASPECT_PLANE_1_BIT</unmanaged>
+	Plane1 = 0x00000020,
+	/// <unmanaged>VK_IMAGE_ASPECT_PLANE_2_BIT</unmanaged>
+	Plane2 = 0x00000040,
+	/// <unmanaged>VK_IMAGE_ASPECT_NONE</unmanaged>
 	None = 0,
-	/// <summary>
-	/// Operation binds resource metadata to memory
-	/// </summary>
-	/// <unmanaged>VK_SPARSE_MEMORY_BIND_METADATA_BIT</unmanaged>
-	Metadata = 0x00000001,
+	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT</unmanaged>
+	MemoryPlane0EXT = 0x00000080,
+	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT</unmanaged>
+	MemoryPlane1EXT = 0x00000100,
+	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT</unmanaged>
+	MemoryPlane2EXT = 0x00000200,
+	/// <unmanaged>VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT</unmanaged>
+	MemoryPlane3EXT = 0x00000400,
 }
 
 [Flags]
@@ -4820,6 +4855,17 @@ public enum VkSparseImageFormatFlags
 	/// </summary>
 	/// <unmanaged>VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT</unmanaged>
 	NonstandardBlockSize = 0x00000004,
+}
+
+[Flags]
+public enum VkSparseMemoryBindFlags
+{
+	None = 0,
+	/// <summary>
+	/// Operation binds resource metadata to memory
+	/// </summary>
+	/// <unmanaged>VK_SPARSE_MEMORY_BIND_METADATA_BIT</unmanaged>
+	Metadata = 0x00000001,
 }
 
 [Flags]
@@ -5064,6 +5110,120 @@ public enum VkImageViewCreateFlags
 }
 
 [Flags]
+public enum VkAccessFlags
+{
+	/// <summary>
+	/// Controls coherency of indirect command reads
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_INDIRECT_COMMAND_READ_BIT</unmanaged>
+	IndirectCommandRead = 0x00000001,
+	/// <summary>
+	/// Controls coherency of index reads
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_INDEX_READ_BIT</unmanaged>
+	IndexRead = 0x00000002,
+	/// <summary>
+	/// Controls coherency of vertex attribute reads
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT</unmanaged>
+	VertexAttributeRead = 0x00000004,
+	/// <summary>
+	/// Controls coherency of uniform buffer reads
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_UNIFORM_READ_BIT</unmanaged>
+	UniformRead = 0x00000008,
+	/// <summary>
+	/// Controls coherency of input attachment reads
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_INPUT_ATTACHMENT_READ_BIT</unmanaged>
+	InputAttachmentRead = 0x00000010,
+	/// <summary>
+	/// Controls coherency of shader reads
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_SHADER_READ_BIT</unmanaged>
+	ShaderRead = 0x00000020,
+	/// <summary>
+	/// Controls coherency of shader writes
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_SHADER_WRITE_BIT</unmanaged>
+	ShaderWrite = 0x00000040,
+	/// <summary>
+	/// Controls coherency of color attachment reads
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_COLOR_ATTACHMENT_READ_BIT</unmanaged>
+	ColorAttachmentRead = 0x00000080,
+	/// <summary>
+	/// Controls coherency of color attachment writes
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT</unmanaged>
+	ColorAttachmentWrite = 0x00000100,
+	/// <summary>
+	/// Controls coherency of depth/stencil attachment reads
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT</unmanaged>
+	DepthStencilAttachmentRead = 0x00000200,
+	/// <summary>
+	/// Controls coherency of depth/stencil attachment writes
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT</unmanaged>
+	DepthStencilAttachmentWrite = 0x00000400,
+	/// <summary>
+	/// Controls coherency of transfer reads
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_TRANSFER_READ_BIT</unmanaged>
+	TransferRead = 0x00000800,
+	/// <summary>
+	/// Controls coherency of transfer writes
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_TRANSFER_WRITE_BIT</unmanaged>
+	TransferWrite = 0x00001000,
+	/// <summary>
+	/// Controls coherency of host reads
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_HOST_READ_BIT</unmanaged>
+	HostRead = 0x00002000,
+	/// <summary>
+	/// Controls coherency of host writes
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_HOST_WRITE_BIT</unmanaged>
+	HostWrite = 0x00004000,
+	/// <summary>
+	/// Controls coherency of memory reads
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_MEMORY_READ_BIT</unmanaged>
+	MemoryRead = 0x00008000,
+	/// <summary>
+	/// Controls coherency of memory writes
+	/// </summary>
+	/// <unmanaged>VK_ACCESS_MEMORY_WRITE_BIT</unmanaged>
+	MemoryWrite = 0x00010000,
+	/// <unmanaged>VK_ACCESS_NONE</unmanaged>
+	None = 0,
+	/// <unmanaged>VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT</unmanaged>
+	TransformFeedbackWriteEXT = 0x02000000,
+	/// <unmanaged>VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT</unmanaged>
+	TransformFeedbackCounterReadEXT = 0x04000000,
+	/// <unmanaged>VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT</unmanaged>
+	TransformFeedbackCounterWriteEXT = 0x08000000,
+	/// <unmanaged>VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT</unmanaged>
+	ConditionalRenderingReadEXT = 0x00100000,
+	/// <unmanaged>VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT</unmanaged>
+	ColorAttachmentReadNoncoherentEXT = 0x00080000,
+	/// <unmanaged>VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR</unmanaged>
+	AccelerationStructureReadKHR = 0x00200000,
+	/// <unmanaged>VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR</unmanaged>
+	AccelerationStructureWriteKHR = 0x00400000,
+	/// <unmanaged>VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT</unmanaged>
+	FragmentDensityMapReadEXT = 0x01000000,
+	/// <unmanaged>VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR</unmanaged>
+	FragmentShadingRateAttachmentReadKHR = 0x00800000,
+	/// <unmanaged>VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_EXT</unmanaged>
+	CommandPreprocessReadEXT = 0x00020000,
+	/// <unmanaged>VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_EXT</unmanaged>
+	CommandPreprocessWriteEXT = 0x00040000,
+}
+
+[Flags]
 public enum VkDependencyFlags
 {
 	None = 0,
@@ -5114,6 +5274,17 @@ public enum VkCommandPoolResetFlags
 }
 
 [Flags]
+public enum VkQueryControlFlags
+{
+	None = 0,
+	/// <summary>
+	/// Require precise results to be collected by the query
+	/// </summary>
+	/// <unmanaged>VK_QUERY_CONTROL_PRECISE_BIT</unmanaged>
+	Precise = 0x00000001,
+}
+
+[Flags]
 public enum VkCommandBufferUsageFlags
 {
 	None = 0,
@@ -5126,17 +5297,6 @@ public enum VkCommandBufferUsageFlags
 	/// </summary>
 	/// <unmanaged>VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT</unmanaged>
 	SimultaneousUse = 0x00000004,
-}
-
-[Flags]
-public enum VkQueryControlFlags
-{
-	None = 0,
-	/// <summary>
-	/// Require precise results to be collected by the query
-	/// </summary>
-	/// <unmanaged>VK_QUERY_CONTROL_PRECISE_BIT</unmanaged>
-	Precise = 0x00000001,
 }
 
 [Flags]
@@ -5237,6 +5397,16 @@ public enum VkPipelineCreateFlags
 }
 
 [Flags]
+public enum VkPipelineLayoutCreateFlags
+{
+	None = 0,
+	/// <unmanaged>VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT</unmanaged>
+	IndependentSetsEXT = 0x00000002,
+	/// <unmanaged>VK_PIPELINE_LAYOUT_CREATE_NO_TASK_SHADER_BIT_KHR</unmanaged>
+	NoTaskShaderKHR = 0x00000004,
+}
+
+[Flags]
 public enum VkPipelineShaderStageCreateFlags
 {
 	None = 0,
@@ -5244,56 +5414,6 @@ public enum VkPipelineShaderStageCreateFlags
 	AllowVaryingSubgroupSize = 0x00000001,
 	/// <unmanaged>VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT</unmanaged>
 	RequireFullSubgroups = 0x00000002,
-}
-
-[Flags]
-public enum VkShaderStageFlags
-{
-	None = 0,
-	/// <unmanaged>VK_SHADER_STAGE_VERTEX_BIT</unmanaged>
-	Vertex = 0x00000001,
-	/// <unmanaged>VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT</unmanaged>
-	TessellationControl = 0x00000002,
-	/// <unmanaged>VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT</unmanaged>
-	TessellationEvaluation = 0x00000004,
-	/// <unmanaged>VK_SHADER_STAGE_GEOMETRY_BIT</unmanaged>
-	Geometry = 0x00000008,
-	/// <unmanaged>VK_SHADER_STAGE_FRAGMENT_BIT</unmanaged>
-	Fragment = 0x00000010,
-	/// <unmanaged>VK_SHADER_STAGE_COMPUTE_BIT</unmanaged>
-	Compute = 0x00000020,
-	/// <unmanaged>VK_SHADER_STAGE_ALL_GRAPHICS</unmanaged>
-	AllGraphics = 0x0000001F,
-	/// <unmanaged>VK_SHADER_STAGE_ALL</unmanaged>
-	All = 0x7FFFFFFF,
-	/// <unmanaged>VK_SHADER_STAGE_RAYGEN_BIT_KHR</unmanaged>
-	RaygenKHR = 0x00000100,
-	/// <unmanaged>VK_SHADER_STAGE_ANY_HIT_BIT_KHR</unmanaged>
-	AnyHitKHR = 0x00000200,
-	/// <unmanaged>VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR</unmanaged>
-	ClosestHitKHR = 0x00000400,
-	/// <unmanaged>VK_SHADER_STAGE_MISS_BIT_KHR</unmanaged>
-	MissKHR = 0x00000800,
-	/// <unmanaged>VK_SHADER_STAGE_INTERSECTION_BIT_KHR</unmanaged>
-	IntersectionKHR = 0x00001000,
-	/// <unmanaged>VK_SHADER_STAGE_CALLABLE_BIT_KHR</unmanaged>
-	CallableKHR = 0x00002000,
-	/// <unmanaged>VK_SHADER_STAGE_TASK_BIT_EXT</unmanaged>
-	TaskEXT = 0x00000040,
-	/// <unmanaged>VK_SHADER_STAGE_MESH_BIT_EXT</unmanaged>
-	MeshEXT = 0x00000080,
-	/// <unmanaged>VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI</unmanaged>
-	SubpassShadingHUAWEI = 0x00004000,
-	/// <unmanaged>VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI</unmanaged>
-	ClusterCullingHUAWEI = 0x00080000,
-}
-
-[Flags]
-public enum VkPipelineLayoutCreateFlags
-{
-	None = 0,
-	/// <unmanaged>VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT</unmanaged>
-	IndependentSetsEXT = 0x00000002,
 }
 
 [Flags]
@@ -5384,6 +5504,14 @@ public enum VkCullModeFlags
 }
 
 [Flags]
+public enum VkPipelineColorBlendStateCreateFlags
+{
+	None = 0,
+	/// <unmanaged>VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT</unmanaged>
+	RasterizationOrderAttachmentAccessEXT = 0x00000001,
+}
+
+[Flags]
 public enum VkPipelineDepthStencilStateCreateFlags
 {
 	None = 0,
@@ -5391,14 +5519,6 @@ public enum VkPipelineDepthStencilStateCreateFlags
 	RasterizationOrderAttachmentDepthAccessEXT = 0x00000001,
 	/// <unmanaged>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT</unmanaged>
 	RasterizationOrderAttachmentStencilAccessEXT = 0x00000002,
-}
-
-[Flags]
-public enum VkPipelineColorBlendStateCreateFlags
-{
-	None = 0,
-	/// <unmanaged>VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT</unmanaged>
-	RasterizationOrderAttachmentAccessEXT = 0x00000001,
 }
 
 [Flags]
@@ -5479,6 +5599,14 @@ public enum VkStencilFaceFlags
 	FrontAndBack = 0x00000003,
 }
 
+public enum VkPointClippingBehavior
+{
+	/// <unmanaged>VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES</unmanaged>
+	AllClipPlanes = 0,
+	/// <unmanaged>VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY</unmanaged>
+	UserClipPlanesOnly = 1,
+}
+
 public enum VkDescriptorUpdateTemplateType
 {
 	/// <summary>
@@ -5538,20 +5666,64 @@ public enum VkChromaLocation
 	Midpoint = 1,
 }
 
-public enum VkPointClippingBehavior
-{
-	/// <unmanaged>VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES</unmanaged>
-	AllClipPlanes = 0,
-	/// <unmanaged>VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY</unmanaged>
-	UserClipPlanesOnly = 1,
-}
-
 public enum VkTessellationDomainOrigin
 {
 	/// <unmanaged>VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT</unmanaged>
 	UpperLeft = 0,
 	/// <unmanaged>VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT</unmanaged>
 	LowerLeft = 1,
+}
+
+[Flags]
+public enum VkSubgroupFeatureFlags
+{
+	None = 0,
+	/// <summary>
+	/// Basic subgroup operations
+	/// </summary>
+	/// <unmanaged>VK_SUBGROUP_FEATURE_BASIC_BIT</unmanaged>
+	Basic = 0x00000001,
+	/// <summary>
+	/// Vote subgroup operations
+	/// </summary>
+	/// <unmanaged>VK_SUBGROUP_FEATURE_VOTE_BIT</unmanaged>
+	Vote = 0x00000002,
+	/// <summary>
+	/// Arithmetic subgroup operations
+	/// </summary>
+	/// <unmanaged>VK_SUBGROUP_FEATURE_ARITHMETIC_BIT</unmanaged>
+	Arithmetic = 0x00000004,
+	/// <summary>
+	/// Ballot subgroup operations
+	/// </summary>
+	/// <unmanaged>VK_SUBGROUP_FEATURE_BALLOT_BIT</unmanaged>
+	Ballot = 0x00000008,
+	/// <summary>
+	/// Shuffle subgroup operations
+	/// </summary>
+	/// <unmanaged>VK_SUBGROUP_FEATURE_SHUFFLE_BIT</unmanaged>
+	Shuffle = 0x00000010,
+	/// <summary>
+	/// Shuffle relative subgroup operations
+	/// </summary>
+	/// <unmanaged>VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT</unmanaged>
+	ShuffleRelative = 0x00000020,
+	/// <summary>
+	/// Clustered subgroup operations
+	/// </summary>
+	/// <unmanaged>VK_SUBGROUP_FEATURE_CLUSTERED_BIT</unmanaged>
+	Clustered = 0x00000040,
+	/// <summary>
+	/// Quad subgroup operations
+	/// </summary>
+	/// <unmanaged>VK_SUBGROUP_FEATURE_QUAD_BIT</unmanaged>
+	Quad = 0x00000080,
+	/// <unmanaged>VK_SUBGROUP_FEATURE_ROTATE_BIT</unmanaged>
+	Rotate = 0x00000200,
+	/// <unmanaged>VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT</unmanaged>
+	RotateClustered = 0x00000400,
+	/// <unmanaged>VK_SUBGROUP_FEATURE_PARTITIONED_BIT_EXT</unmanaged>
+	PartitionedEXT = 0x00000100,
 }
 
 [Flags]
@@ -5719,58 +5891,6 @@ public enum VkExternalSemaphoreFeatureFlags
 	Exportable = 0x00000001,
 	/// <unmanaged>VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT</unmanaged>
 	Importable = 0x00000002,
-}
-
-[Flags]
-public enum VkSubgroupFeatureFlags
-{
-	None = 0,
-	/// <summary>
-	/// Basic subgroup operations
-	/// </summary>
-	/// <unmanaged>VK_SUBGROUP_FEATURE_BASIC_BIT</unmanaged>
-	Basic = 0x00000001,
-	/// <summary>
-	/// Vote subgroup operations
-	/// </summary>
-	/// <unmanaged>VK_SUBGROUP_FEATURE_VOTE_BIT</unmanaged>
-	Vote = 0x00000002,
-	/// <summary>
-	/// Arithmetic subgroup operations
-	/// </summary>
-	/// <unmanaged>VK_SUBGROUP_FEATURE_ARITHMETIC_BIT</unmanaged>
-	Arithmetic = 0x00000004,
-	/// <summary>
-	/// Ballot subgroup operations
-	/// </summary>
-	/// <unmanaged>VK_SUBGROUP_FEATURE_BALLOT_BIT</unmanaged>
-	Ballot = 0x00000008,
-	/// <summary>
-	/// Shuffle subgroup operations
-	/// </summary>
-	/// <unmanaged>VK_SUBGROUP_FEATURE_SHUFFLE_BIT</unmanaged>
-	Shuffle = 0x00000010,
-	/// <summary>
-	/// Shuffle relative subgroup operations
-	/// </summary>
-	/// <unmanaged>VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT</unmanaged>
-	ShuffleRelative = 0x00000020,
-	/// <summary>
-	/// Clustered subgroup operations
-	/// </summary>
-	/// <unmanaged>VK_SUBGROUP_FEATURE_CLUSTERED_BIT</unmanaged>
-	Clustered = 0x00000040,
-	/// <summary>
-	/// Quad subgroup operations
-	/// </summary>
-	/// <unmanaged>VK_SUBGROUP_FEATURE_QUAD_BIT</unmanaged>
-	Quad = 0x00000080,
-	/// <unmanaged>VK_SUBGROUP_FEATURE_ROTATE_BIT</unmanaged>
-	Rotate = 0x00000200,
-	/// <unmanaged>VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT</unmanaged>
-	RotateClustered = 0x00000400,
-	/// <unmanaged>VK_SUBGROUP_FEATURE_PARTITIONED_BIT_EXT</unmanaged>
-	PartitionedEXT = 0x00000100,
 }
 
 public enum VkDriverId
@@ -7205,6 +7325,54 @@ public enum VkVideoEncodeContentFlagsKHR
 	Rendered = 0x00000004,
 }
 
+public enum VkAccelerationStructureTypeKHR
+{
+	/// <unmanaged>VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR</unmanaged>
+	TopLevel = 0,
+	/// <unmanaged>VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR</unmanaged>
+	BottomLevel = 1,
+	/// <unmanaged>VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR</unmanaged>
+	Generic = 2,
+}
+
+[Flags]
+public enum VkAddressCommandFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_ADDRESS_COMMAND_PROTECTED_BIT_KHR</unmanaged>
+	Protected = 0x00000001,
+	/// <unmanaged>VK_ADDRESS_COMMAND_FULLY_BOUND_BIT_KHR</unmanaged>
+	FullyBound = 0x00000002,
+	/// <unmanaged>VK_ADDRESS_COMMAND_STORAGE_BUFFER_USAGE_BIT_KHR</unmanaged>
+	StorageBufferUsage = 0x00000004,
+	/// <unmanaged>VK_ADDRESS_COMMAND_UNKNOWN_STORAGE_BUFFER_USAGE_BIT_KHR</unmanaged>
+	UnknownStorageBufferUsage = 0x00000008,
+	/// <unmanaged>VK_ADDRESS_COMMAND_TRANSFORM_FEEDBACK_BUFFER_USAGE_BIT_KHR</unmanaged>
+	TransformFeedbackBufferUsage = 0x00000010,
+	/// <unmanaged>VK_ADDRESS_COMMAND_UNKNOWN_TRANSFORM_FEEDBACK_BUFFER_USAGE_BIT_KHR</unmanaged>
+	UnknownTransformFeedbackBufferUsage = 0x00000020,
+}
+
+[Flags]
+public enum VkConditionalRenderingFlagsEXT
+{
+	None = 0,
+	/// <unmanaged>VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT</unmanaged>
+	Inverted = 0x00000001,
+}
+
+[Flags]
+public enum VkAccelerationStructureCreateFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR</unmanaged>
+	DeviceAddressCaptureReplay = 0x00000001,
+	/// <unmanaged>VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT</unmanaged>
+	DescriptorBufferCaptureReplayEXT = 0x00000008,
+	/// <unmanaged>VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV</unmanaged>
+	MotionNV = 0x00000004,
+}
+
 [Flags]
 public enum VkPresentScalingFlagsKHR
 {
@@ -7791,6 +7959,48 @@ public enum VkPhysicalDeviceLayeredApiKHR
 	OpenGLES = 4,
 }
 
+public enum VkDeviceFaultAddressTypeKHR
+{
+	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_KHR</unmanaged>
+	None = 0,
+	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_KHR</unmanaged>
+	ReadInvalid = 1,
+	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_KHR</unmanaged>
+	WriteInvalid = 2,
+	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_KHR</unmanaged>
+	ExecuteInvalid = 3,
+	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_KHR</unmanaged>
+	InstructionPointerUnknown = 4,
+	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_KHR</unmanaged>
+	InstructionPointerInvalid = 5,
+	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_KHR</unmanaged>
+	InstructionPointerFault = 6,
+}
+
+public enum VkDeviceFaultVendorBinaryHeaderVersionKHR
+{
+	/// <unmanaged>VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_KHR</unmanaged>
+	One = 1,
+}
+
+[Flags]
+public enum VkDeviceFaultFlagsKHR
+{
+	None = 0,
+	/// <unmanaged>VK_DEVICE_FAULT_FLAG_DEVICE_LOST_KHR</unmanaged>
+	FlagDeviceLost = 0x00000001,
+	/// <unmanaged>VK_DEVICE_FAULT_FLAG_MEMORY_ADDRESS_KHR</unmanaged>
+	FlagMemoryAddress = 0x00000002,
+	/// <unmanaged>VK_DEVICE_FAULT_FLAG_INSTRUCTION_ADDRESS_KHR</unmanaged>
+	FlagInstructionAddress = 0x00000004,
+	/// <unmanaged>VK_DEVICE_FAULT_FLAG_VENDOR_KHR</unmanaged>
+	FlagVendor = 0x00000008,
+	/// <unmanaged>VK_DEVICE_FAULT_FLAG_WATCHDOG_TIMEOUT_KHR</unmanaged>
+	FlagWatchdogTimeout = 0x00000010,
+	/// <unmanaged>VK_DEVICE_FAULT_FLAG_OVERFLOW_KHR</unmanaged>
+	FlagOverflow = 0x00000020,
+}
+
 public enum VkDefaultVertexAttributeValueKHR
 {
 	/// <unmanaged>VK_DEFAULT_VERTEX_ATTRIBUTE_VALUE_ZERO_ZERO_ZERO_ZERO_KHR</unmanaged>
@@ -7977,14 +8187,6 @@ public enum VkValidationCheckEXT
 	All = 0,
 	/// <unmanaged>VK_VALIDATION_CHECK_SHADERS_EXT</unmanaged>
 	Shaders = 1,
-}
-
-[Flags]
-public enum VkConditionalRenderingFlagsEXT
-{
-	None = 0,
-	/// <unmanaged>VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT</unmanaged>
-	Inverted = 0x00000001,
 }
 
 [Flags]
@@ -8229,16 +8431,6 @@ public enum VkGeometryTypeKHR
 	LinearSweptSpheresNV = 1000429005,
 	/// <unmanaged>VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX</unmanaged>
 	DenseGeometryFormatTrianglesAMDX = 1000478000,
-}
-
-public enum VkAccelerationStructureTypeKHR
-{
-	/// <unmanaged>VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR</unmanaged>
-	TopLevel = 0,
-	/// <unmanaged>VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR</unmanaged>
-	BottomLevel = 1,
-	/// <unmanaged>VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR</unmanaged>
-	Generic = 2,
 }
 
 public enum VkCopyAccelerationStructureModeKHR
@@ -8557,6 +8749,18 @@ public enum VkDeviceDiagnosticsConfigFlagsNV
 	EnableShaderErrorReporting = 0x00000008,
 }
 
+public enum VkPerfHintTypeQCOM
+{
+	/// <unmanaged>VK_PERF_HINT_TYPE_DEFAULT_QCOM</unmanaged>
+	Default = 0,
+	/// <unmanaged>VK_PERF_HINT_TYPE_FREQUENCY_MIN_QCOM</unmanaged>
+	FrequencyMin = 1,
+	/// <unmanaged>VK_PERF_HINT_TYPE_FREQUENCY_MAX_QCOM</unmanaged>
+	FrequencyMax = 2,
+	/// <unmanaged>VK_PERF_HINT_TYPE_FREQUENCY_SCALED_QCOM</unmanaged>
+	FrequencyScaled = 3,
+}
+
 [Flags]
 public enum VkTileShadingRenderPassFlagsQCOM
 {
@@ -8693,33 +8897,6 @@ public enum VkImageCompressionFixedRateFlagsEXT
 	Rate23bpc = 0x00400000,
 	/// <unmanaged>VK_IMAGE_COMPRESSION_FIXED_RATE_24BPC_BIT_EXT</unmanaged>
 	Rate24bpc = 0x00800000,
-}
-
-public enum VkDeviceFaultAddressTypeEXT
-{
-	/// <summary>
-	/// Currently unused
-	/// </summary>
-	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT</unmanaged>
-	None = 0,
-	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT</unmanaged>
-	ReadInvalid = 1,
-	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT</unmanaged>
-	WriteInvalid = 2,
-	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_EXT</unmanaged>
-	ExecuteInvalid = 3,
-	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_EXT</unmanaged>
-	InstructionPointerUnknown = 4,
-	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_EXT</unmanaged>
-	InstructionPointerInvalid = 5,
-	/// <unmanaged>VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_EXT</unmanaged>
-	InstructionPointerFault = 6,
-}
-
-public enum VkDeviceFaultVendorBinaryHeaderVersionEXT
-{
-	/// <unmanaged>VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT</unmanaged>
-	One = 1,
 }
 
 public enum VkDeviceAddressBindingTypeEXT
@@ -8936,8 +9113,6 @@ public enum VkTensorTilingARM
 	VK_TENSOR_TILING_OPTIMAL_ = 0,
 	/// <unmanaged>VK_TENSOR_TILING_LINEAR_ARM</unmanaged>
 	VK_TENSOR_TILING_LINEAR_ = 1,
-	/// <unmanaged>VK_TENSOR_TILING_MAX_ENUM_ARM</unmanaged>
-	VK_TENSOR_TILING_MAX_ENUM_ = 0x7FFFFFFF,
 }
 
 public enum VkOpticalFlowPerformanceLevelNV
@@ -9074,6 +9249,8 @@ public enum VkShaderCreateFlagsEXT
 	LinkStage = 0x00000001,
 	/// <unmanaged>VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT</unmanaged>
 	DescriptorHeap = 0x00000400,
+	/// <unmanaged>VK_SHADER_CREATE_INSTRUMENT_SHADER_BIT_ARM</unmanaged>
+	InstrumentShaderARM = 0x00000800,
 	/// <unmanaged>VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT</unmanaged>
 	AllowVaryingSubgroupSize = 0x00000002,
 	/// <unmanaged>VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT</unmanaged>
@@ -9090,6 +9267,8 @@ public enum VkShaderCreateFlagsEXT
 	IndirectBindable = 0x00000080,
 	/// <unmanaged>VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</unmanaged>
 	_64Indexing = 0x00008000,
+	/// <unmanaged>VK_SHADER_CREATE_INDEPENDENT_SETS_BIT_KHR</unmanaged>
+	IndependentSetsKHR = 0x00040000,
 }
 
 public enum VkRayTracingInvocationReorderModeEXT
@@ -9163,59 +9342,81 @@ public enum VkLatencyMarkerNV
 public enum VkOutOfBandQueueTypeNV
 {
 	/// <unmanaged>VK_OUT_OF_BAND_QUEUE_TYPE_RENDER_NV</unmanaged>
-	TypeRender = 0,
+	Render = 0,
 	/// <unmanaged>VK_OUT_OF_BAND_QUEUE_TYPE_PRESENT_NV</unmanaged>
-	TypePresent = 1,
+	Present = 1,
 }
 
 public enum VkDataGraphPipelineSessionBindPointARM
 {
 	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM</unmanaged>
-	VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ = 0,
-	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_MAX_ENUM_ARM</unmanaged>
-	VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_MAX_ENUM_ = 0x7FFFFFFF,
+	Transient = 0,
+	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_OPTICAL_FLOW_CACHE_ARM</unmanaged>
+	OpticalFlowCache = 1000631001,
+	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_NEURAL_ACCELERATOR_STATISTICS_ARM</unmanaged>
+	NeuralAcceleratorStatistics = 1000676000,
 }
 
 public enum VkDataGraphPipelineSessionBindPointTypeARM
 {
 	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ARM</unmanaged>
-	VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ = 0,
-	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MAX_ENUM_ARM</unmanaged>
-	VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MAX_ENUM_ = 0x7FFFFFFF,
+	Memory = 0,
 }
 
 public enum VkDataGraphPipelinePropertyARM
 {
 	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_PROPERTY_CREATION_LOG_ARM</unmanaged>
-	VK_DATA_GRAPH_PIPELINE_PROPERTY_CREATION_LOG_ = 0,
+	CreationLog = 0,
 	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ARM</unmanaged>
-	VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ = 1,
-	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_PROPERTY_MAX_ENUM_ARM</unmanaged>
-	VK_DATA_GRAPH_PIPELINE_PROPERTY_MAX_ENUM_ = 0x7FFFFFFF,
+	Identifier = 1,
+	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_PROPERTY_NEURAL_ACCELERATOR_DEBUG_DATABASE_ARM</unmanaged>
+	NeuralAcceleratorDebugDatabase = 1000676000,
+	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_PROPERTY_NEURAL_ACCELERATOR_STATISTICS_INFO_ARM</unmanaged>
+	NeuralAcceleratorStatisticsInfo = 1000676001,
 }
 
 public enum VkPhysicalDeviceDataGraphProcessingEngineTypeARM
 {
 	/// <unmanaged>VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_DEFAULT_ARM</unmanaged>
-	VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_DEFAULT_ = 0,
+	Default = 0,
 	/// <unmanaged>VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM</unmanaged>
-	VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM = 1000629000,
+	NeuralQCOM = 1000629000,
 	/// <unmanaged>VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM</unmanaged>
-	VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM = 1000629001,
-	/// <unmanaged>VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_MAX_ENUM_ARM</unmanaged>
-	VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_MAX_ENUM_ = 0x7FFFFFFF,
+	ComputeQCOM = 1000629001,
 }
 
 public enum VkPhysicalDeviceDataGraphOperationTypeARM
 {
 	/// <unmanaged>VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_SPIRV_EXTENDED_INSTRUCTION_SET_ARM</unmanaged>
-	VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_SPIRV_EXTENDED_INSTRUCTION_SET_ = 0,
+	SPIRVExtendedInstructionSet = 0,
 	/// <unmanaged>VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_NEURAL_MODEL_QCOM</unmanaged>
-	VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_NEURAL_MODEL_QCOM = 1000629000,
+	NeuralModelQCOM = 1000629000,
 	/// <unmanaged>VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_BUILTIN_MODEL_QCOM</unmanaged>
-	VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_BUILTIN_MODEL_QCOM = 1000629001,
-	/// <unmanaged>VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_MAX_ENUM_ARM</unmanaged>
-	VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_MAX_ENUM_ = 0x7FFFFFFF,
+	BuiltinModelQCOM = 1000629001,
+	/// <unmanaged>VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_OPTICAL_FLOW_ARM</unmanaged>
+	OpticalFlow = 1000631000,
+}
+
+public enum VkDataGraphTOSALevelARM
+{
+	/// <unmanaged>VK_DATA_GRAPH_TOSA_LEVEL_NONE_ARM</unmanaged>
+	None = 0,
+	/// <unmanaged>VK_DATA_GRAPH_TOSA_LEVEL_8K_ARM</unmanaged>
+	_8k = 1,
+}
+
+[Flags]
+public enum VkDataGraphTOSAQualityFlagsARM
+{
+	None = 0,
+	/// <unmanaged>VK_DATA_GRAPH_TOSA_QUALITY_ACCELERATED_ARM</unmanaged>
+	Accelerated = 0x00000001,
+	/// <unmanaged>VK_DATA_GRAPH_TOSA_QUALITY_CONFORMANT_ARM</unmanaged>
+	Conformant = 0x00000002,
+	/// <unmanaged>VK_DATA_GRAPH_TOSA_QUALITY_EXPERIMENTAL_ARM</unmanaged>
+	Experimental = 0x00000004,
+	/// <unmanaged>VK_DATA_GRAPH_TOSA_QUALITY_DEPRECATED_ARM</unmanaged>
+	Deprecated = 0x00000008,
 }
 
 public enum VkBlockMatchWindowCompareModeQCOM
@@ -9249,49 +9450,49 @@ public enum VkLayeredDriverUnderlyingApiMSFT
 public enum VkDisplaySurfaceStereoTypeNV
 {
 	/// <unmanaged>VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV</unmanaged>
-	TypeNone = 0,
+	None = 0,
 	/// <unmanaged>VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV</unmanaged>
-	TypeOnboardDin = 1,
+	OnboardDin = 1,
 	/// <unmanaged>VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV</unmanaged>
-	TypeHdmi3D = 2,
+	Hdmi3D = 2,
 	/// <unmanaged>VK_DISPLAY_SURFACE_STEREO_TYPE_INBAND_DISPLAYPORT_NV</unmanaged>
-	TypeInbandDisplayport = 3,
+	InbandDisplayport = 3,
 }
 
 public enum VkClusterAccelerationStructureTypeNV
 {
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_CLUSTERS_BOTTOM_LEVEL_NV</unmanaged>
-	TypeClustersBottomLevel = 0,
+	ClustersBottomLevel = 0,
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_NV</unmanaged>
-	TypeTriangleCluster = 1,
+	TriangleCluster = 1,
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_TEMPLATE_NV</unmanaged>
-	TypeTriangleClusterTemplate = 2,
+	TriangleClusterTemplate = 2,
 }
 
 public enum VkClusterAccelerationStructureOpTypeNV
 {
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_MOVE_OBJECTS_NV</unmanaged>
-	TypeMoveObjects = 0,
+	MoveObjects = 0,
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_CLUSTERS_BOTTOM_LEVEL_NV</unmanaged>
-	TypeBuildClustersBottomLevel = 1,
+	BuildClustersBottomLevel = 1,
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_NV</unmanaged>
-	TypeBuildTriangleCluster = 2,
+	BuildTriangleCluster = 2,
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_TEMPLATE_NV</unmanaged>
-	TypeBuildTriangleClusterTemplate = 3,
+	BuildTriangleClusterTemplate = 3,
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV</unmanaged>
-	TypeInstantiateTriangleCluster = 4,
+	InstantiateTriangleCluster = 4,
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_GET_CLUSTER_TEMPLATE_INDICES_NV</unmanaged>
-	TypeGetClusterTemplateIndices = 5,
+	GetClusterTemplateIndices = 5,
 }
 
 public enum VkClusterAccelerationStructureOpModeNV
 {
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV</unmanaged>
-	ModeImplicitDestinations = 0,
+	ImplicitDestinations = 0,
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV</unmanaged>
-	ModeExplicitDestinations = 1,
+	ExplicitDestinations = 1,
 	/// <unmanaged>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV</unmanaged>
-	ModeComputeSizes = 2,
+	ComputeSizes = 2,
 }
 
 [Flags]
@@ -9442,24 +9643,124 @@ public enum VkDataGraphModelCacheTypeQCOM
 	VK_DATA_GRAPH_MODEL_CACHE_TYPE_GENERIC_BINARY_ = 0,
 }
 
+public enum VkDataGraphOpticalFlowPerformanceLevelARM
+{
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_UNKNOWN_ARM</unmanaged>
+	Unknown = 0,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_SLOW_ARM</unmanaged>
+	Slow = 1,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_MEDIUM_ARM</unmanaged>
+	Medium = 2,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_FAST_ARM</unmanaged>
+	Fast = 3,
+}
+
+public enum VkDataGraphPipelineNodeTypeARM
+{
+	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_NODE_TYPE_OPTICAL_FLOW_ARM</unmanaged>
+	OpticalFlow = 1000631000,
+}
+
+public enum VkDataGraphPipelineNodeConnectionTypeARM
+{
+	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_INPUT_ARM</unmanaged>
+	OpticalFlowInput = 1000631000,
+	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_REFERENCE_ARM</unmanaged>
+	OpticalFlowReference = 1000631001,
+	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_HINT_ARM</unmanaged>
+	OpticalFlowHint = 1000631002,
+	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_FLOW_VECTOR_ARM</unmanaged>
+	OpticalFlowFlowVector = 1000631003,
+	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_COST_ARM</unmanaged>
+	OpticalFlowCost = 1000631004,
+}
+
+[Flags]
+public enum VkDataGraphOpticalFlowGridSizeFlagsARM
+{
+	None = 0,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_UNKNOWN_ARM</unmanaged>
+	Unknown = 0,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_ARM</unmanaged>
+	_1x1 = 0x00000001,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_2X2_BIT_ARM</unmanaged>
+	_2x2 = 0x00000002,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_ARM</unmanaged>
+	_4x4 = 0x00000004,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_ARM</unmanaged>
+	_8x8 = 0x00000008,
+}
+
+[Flags]
+public enum VkDataGraphOpticalFlowCreateFlagsARM
+{
+	None = 0,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_ENABLE_HINT_BIT_ARM</unmanaged>
+	EnableHint = 0x00000001,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_ENABLE_COST_BIT_ARM</unmanaged>
+	EnableCost = 0x00000002,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_RESERVED_30_BIT_ARM</unmanaged>
+	Reserved30 = 0x40000000,
+}
+
+[Flags]
+public enum VkDataGraphOpticalFlowImageUsageFlagsARM
+{
+	None = 0,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_UNKNOWN_ARM</unmanaged>
+	Unknown = 0,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_INPUT_BIT_ARM</unmanaged>
+	Input = 0x00000001,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_OUTPUT_BIT_ARM</unmanaged>
+	Output = 0x00000002,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_HINT_BIT_ARM</unmanaged>
+	Hint = 0x00000004,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_COST_BIT_ARM</unmanaged>
+	Cost = 0x00000008,
+}
+
+[Flags]
+public enum VkDataGraphOpticalFlowExecuteFlagsARM
+{
+	None = 0,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_ARM</unmanaged>
+	DisableTemporalHints = 0x00000001,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_INPUT_UNCHANGED_BIT_ARM</unmanaged>
+	InputUnchanged = 0x00000002,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_REFERENCE_UNCHANGED_BIT_ARM</unmanaged>
+	ReferenceUnchanged = 0x00000004,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_INPUT_IS_PREVIOUS_REFERENCE_BIT_ARM</unmanaged>
+	InputIsPreviousReference = 0x00000008,
+	/// <unmanaged>VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_REFERENCE_IS_PREVIOUS_INPUT_BIT_ARM</unmanaged>
+	ReferenceIsPreviousInput = 0x00000010,
+}
+
+public enum VkThrottleHintTypeSEC
+{
+	/// <unmanaged>VK_THROTTLE_HINT_TYPE_DEFAULT_SEC</unmanaged>
+	DefaultSEC = 0,
+	/// <unmanaged>VK_THROTTLE_HINT_TYPE_LOW_SEC</unmanaged>
+	LowSEC = 1,
+	/// <unmanaged>VK_THROTTLE_HINT_TYPE_HIGH_SEC</unmanaged>
+	HighSEC = 2,
+}
+
+public enum VkNeuralAcceleratorStatisticsModeARM
+{
+	/// <unmanaged>VK_NEURAL_ACCELERATOR_STATISTICS_MODE_DISABLED_ARM</unmanaged>
+	Disabled = 0,
+	/// <unmanaged>VK_NEURAL_ACCELERATOR_STATISTICS_MODE_STATISTICS0_ARM</unmanaged>
+	Statistics0 = 1,
+	/// <unmanaged>VK_NEURAL_ACCELERATOR_STATISTICS_MODE_STATISTICS1_ARM</unmanaged>
+	Statistics1 = 2,
+}
+
 public enum VkBuildAccelerationStructureModeKHR
 {
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR</unmanaged>
 	Build = 0,
 	/// <unmanaged>VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR</unmanaged>
 	Update = 1,
-}
-
-[Flags]
-public enum VkAccelerationStructureCreateFlagsKHR
-{
-	None = 0,
-	/// <unmanaged>VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR</unmanaged>
-	DeviceAddressCaptureReplay = 0x00000001,
-	/// <unmanaged>VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT</unmanaged>
-	DescriptorBufferCaptureReplayEXT = 0x00000008,
-	/// <unmanaged>VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV</unmanaged>
-	MotionNV = 0x00000004,
 }
 
 public enum VkShaderGroupShaderKHR
@@ -9553,7 +9854,7 @@ public enum VkDescriptorPoolResetFlags
 }
 
 [Flags]
-public enum VkPipelineVertexInputStateCreateFlags
+public enum VkPipelineDynamicStateCreateFlags
 {
 	None = 0,
 }
@@ -9565,13 +9866,7 @@ public enum VkPipelineInputAssemblyStateCreateFlags
 }
 
 [Flags]
-public enum VkPipelineTessellationStateCreateFlags
-{
-	None = 0,
-}
-
-[Flags]
-public enum VkPipelineViewportStateCreateFlags
+public enum VkPipelineMultisampleStateCreateFlags
 {
 	None = 0,
 }
@@ -9583,13 +9878,19 @@ public enum VkPipelineRasterizationStateCreateFlags
 }
 
 [Flags]
-public enum VkPipelineMultisampleStateCreateFlags
+public enum VkPipelineTessellationStateCreateFlags
 {
 	None = 0,
 }
 
 [Flags]
-public enum VkPipelineDynamicStateCreateFlags
+public enum VkPipelineVertexInputStateCreateFlags
+{
+	None = 0,
+}
+
+[Flags]
+public enum VkPipelineViewportStateCreateFlags
 {
 	None = 0,
 }
@@ -10287,6 +10588,12 @@ public enum VkFormatFeatureFlags2 : ulong
 	StencilCopyOnComputeQueueKHR = 0x40000000000000UL,
 	/// <unmanaged>VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_TRANSFER_QUEUE_BIT_KHR</unmanaged>
 	StencilCopyOnTransferQueueKHR = 0x80000000000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_IMAGE_BIT_ARM</unmanaged>
+	DataGraphOpticalFlowImageARM = 0x100000000000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_VECTOR_BIT_ARM</unmanaged>
+	DataGraphOpticalFlowVectorARM = 0x200000000000000UL,
+	/// <unmanaged>VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_COST_BIT_ARM</unmanaged>
+	DataGraphOpticalFlowCostARM = 0x400000000000000UL,
 }
 
 [Flags]
@@ -10441,6 +10748,8 @@ public enum VkPipelineCreateFlags2 : ulong
 	DescriptorBufferEXT = 0x20000000UL,
 	/// <unmanaged>VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM</unmanaged>
 	DisallowOpacityMicromapARM = 0x2000000000UL,
+	/// <unmanaged>VK_PIPELINE_CREATE_2_INSTRUMENT_SHADERS_BIT_ARM</unmanaged>
+	InstrumentShadersARM = 0x8000000000UL,
 	/// <unmanaged>VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR</unmanaged>
 	CaptureDataKHR = 0x80000000UL,
 	/// <unmanaged>VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT</unmanaged>
@@ -10470,6 +10779,8 @@ public enum VkPhysicalDeviceSchedulingControlsFlagsARM : ulong
 {
 	/// <unmanaged>VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM</unmanaged>
 	ShaderCoreCountARM = 0x00000001UL,
+	/// <unmanaged>VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_DISPATCH_PARAMETERS_ARM</unmanaged>
+	DispatchParametersARM = 0x00000002UL,
 }
 
 [Flags]
@@ -10514,4 +10825,6 @@ public enum VkDataGraphPipelineSessionCreateFlagsARM : ulong
 {
 	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM</unmanaged>
 	ProtectedARM = 0x00000001UL,
+	/// <unmanaged>VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_OPTICAL_FLOW_CACHE_BIT_ARM</unmanaged>
+	OpticalFlowCacheARM = 0x00000002UL,
 }

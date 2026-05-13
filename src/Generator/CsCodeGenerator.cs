@@ -88,6 +88,7 @@ public partial class CsCodeGenerator
         { "VkLineRasterizationModeEXT", "VkLineRasterizationMode" },
         { "VkPipelineCreateFlags2KHR", "VkPipelineCreateFlags2" },
         { "VkMemoryDecompressionMethodFlagsNV", "VkMemoryDecompressionMethodFlagsEXT" },
+        { "VkPipelineStageFlags2KHR", "VkPipelineStageFlags2" },
         
 
         // Spirv - Spirv-Cross

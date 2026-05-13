@@ -94,6 +94,7 @@ partial class CsCodeGenerator
         "vkGetFenceWin32HandleKHR",
         "vkGetMemoryWin32HandleNV",
         "vkGetMemoryAndroidHardwareBufferANDROID",
+        "vkGetPhysicalDeviceFormatProperties2",
 
         // vma
         "vmaCreateAllocator",
