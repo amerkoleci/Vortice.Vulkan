@@ -1383,14 +1383,17 @@ public unsafe partial class VkDeviceApi
 		vkDestroyCudaFunctionNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyCudaFunctionNV"u8);
 		vkCmdCudaLaunchKernelNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCudaLaunchKernelNV"u8);
 	}
+
 	public void vkDestroyDevice()
 	{
 		((delegate* unmanaged<VkDevice, VkAllocationCallbacks*, void>)vkDestroyDevice_ptr.Value)(Device, default);
+		_ = Vulkan.RemoveDeviceTable(Device);
 	}
 
 	public void vkDestroyDevice(VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkDevice, VkAllocationCallbacks*, void>)vkDestroyDevice_ptr.Value)(Device, allocator);
+		_ = Vulkan.RemoveDeviceTable(Device);
 	}
 
 	public void vkGetDeviceQueue(uint queueFamilyIndex, uint queueIndex, VkQueue* queue)

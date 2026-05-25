@@ -2,11 +2,9 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Collections.Concurrent;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
-using System.Text;
 
 namespace Vortice.Vulkan;
 
@@ -229,5 +227,15 @@ public static unsafe partial class Vulkan
         }
 
         return 0;
+    }
+
+    internal static bool RemoveInstanceTable(VkInstance instance)
+    {
+        return s_instanceTables.TryRemove(instance, out _);
+    }
+
+    internal static bool RemoveDeviceTable(VkDevice device)
+    {
+        return s_deviceTables.TryRemove(device, out _);
     }
 }

@@ -251,14 +251,17 @@ public unsafe partial class VkInstanceApi
 		vkCreateXlibSurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, "vkCreateXlibSurfaceKHR"u8);
 		vkGetPhysicalDeviceXlibPresentationSupportKHR_ptr = vkGetInstanceProcAddr(instance.Handle, "vkGetPhysicalDeviceXlibPresentationSupportKHR"u8);
 	}
+
 	public void vkDestroyInstance()
 	{
 		((delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void>)vkDestroyInstance_ptr.Value)(Instance, default);
+		_ = Vulkan.RemoveInstanceTable(Instance);
 	}
 
 	public void vkDestroyInstance(VkAllocationCallbacks* allocator)
 	{
 		((delegate* unmanaged<VkInstance, VkAllocationCallbacks*, void>)vkDestroyInstance_ptr.Value)(Instance, allocator);
+		_ = Vulkan.RemoveInstanceTable(Instance);
 	}
 
 	public VkResult vkEnumeratePhysicalDevices(uint* physicalDeviceCount, VkPhysicalDevice* physicalDevices)
