@@ -2,6 +2,7 @@
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Xml.Linq;
 
@@ -9,28 +10,36 @@ namespace Generator;
 
 public class VulkanSpecification
 {
-    public EnumDefinition[] Enums { get; }
-    public ExtensionDefinition[] Extensions { get; }
-    public FormatDefinition[] Formats { get; }
-
     public VulkanSpecification(Stream stream)
     {
         XDocument spec = XDocument.Load(stream);
         XElement registry = spec.Element("registry")!;
         XElement commands = registry.Element("commands")!;
 
-        Enums = registry.Elements("enums")
+        IEnumerable<XElement> types = registry.Elements("types");
+        Typedefs = [.. types.Elements("type").Where(xe => xe.Value.Contains("typedef") && xe.HasCategoryAttribute("bitmask")).Select(xe2 => TypedefDefinition.CreateFromXml(xe2))];
+        Structures = [.. types.Elements("type").Where(typex => typex.HasCategoryAttribute("struct")).Select(typex => StructureDefinition.CreateFromXml(typex))];
+        Unions = [.. types.Elements("type").Where(typex => typex.HasCategoryAttribute("union")).Select(typex => StructureDefinition.CreateFromXml(typex))];
+
+        Constants = [.. registry.Elements("enums").Where(static enumx => enumx.Attribute("name")!.Value == "API Constants").SelectMany(static enumx => enumx.Elements("enum")).Select(static enumxx => ConstantDefinition.CreateFromXml(enumxx))];
+
+        Enums = [.. registry.Elements("enums")
             .Where(enumx => enumx.GetTypeAttributeOrNull() == "enum" || enumx.GetTypeAttributeOrNull() == "bitmask")
-            .Select(enumx => EnumDefinition.CreateFromXml(enumx)).ToArray();
+            .Select(enumx => EnumDefinition.CreateFromXml(enumx))];
 
-        Extensions = registry.Element("extensions")!.Elements("extension")
-                .Select(ExtensionDefinition.CreateFromXml).ToArray();
+        Extensions = [.. registry.Element("extensions")!.Elements("extension").Select(ExtensionDefinition.CreateFromXml)];
 
-        Formats = registry.Element("formats")!.Elements("format")
-                .Select(FormatDefinition.CreateFromXml).ToArray();
+        Formats = [.. registry.Element("formats")!.Elements("format").Select(FormatDefinition.CreateFromXml)];
 
         AddExtensionEnums();
     }
+    public TypedefDefinition[] Typedefs { get; }
+    public StructureDefinition[] Structures { get; }
+    public StructureDefinition[] Unions { get; }
+    public ConstantDefinition[] Constants { get; }
+    public EnumDefinition[] Enums { get; }
+    public ExtensionDefinition[] Extensions { get; }
+    public FormatDefinition[] Formats { get; }
 
     private void AddExtensionEnums()
     {
@@ -45,9 +54,14 @@ public class VulkanSpecification
         }
     }
 
+    public StructureDefinition? GetStructureDefinition(string name)
+    {
+        return Structures.FirstOrDefault(item => item.Name == name);
+    }
+
     public EnumDefinition? GetEnumDefinition(string name)
     {
-        return Enums.FirstOrDefault(ed => ed.Name == name);
+        return Enums.FirstOrDefault(item => item.Name == name);
     }
 
     internal static string? EscapeComment(string? comment)
@@ -57,6 +71,219 @@ public class VulkanSpecification
 
         comment = HttpUtility.HtmlEncode(comment);
         return comment;
+    }
+}
+
+public class TypedefDefinition
+{
+    public string Name { get; }
+    public string? Requires { get; }
+    public string Type { get; }
+
+    public TypedefDefinition(string name, string? requires, string type)
+    {
+        Name = name;
+        Requires = requires;
+        Type = type;
+    }
+
+    public static TypedefDefinition CreateFromXml(XElement xe)
+    {
+        string name = xe.GetNameElement();
+        string? requires = xe.Attribute("requires")?.Value;
+        string type = xe.GetTypeElement();
+        return new TypedefDefinition(name, requires, type);
+    }
+
+    public override string ToString() => $"{Name}, {Requires} -> {Type}";
+}
+
+public sealed class TypeSpec
+{
+    public string Name { get; }
+    public int PointerIndirection { get; }
+    public int ArrayDimensions { get; }
+
+    public TypeSpec(string name) : this(name, 0, 0) { }
+    public TypeSpec(string name, int pointerIndirection) : this(name, pointerIndirection, 0) { }
+    public TypeSpec(string name, int pointerIndirection, int arrayDimensions)
+    {
+        Name = name;
+        PointerIndirection = pointerIndirection;
+        ArrayDimensions = arrayDimensions;
+    }
+
+    public override string ToString() => GetFullTypeName();
+
+    private string GetFullTypeName()
+    {
+        return $"{Name}{new string('*', PointerIndirection)}{GetArrayPortion()}";
+    }
+
+    private string GetArrayPortion()
+    {
+        if (ArrayDimensions == 0)
+        {
+            return string.Empty;
+        }
+        else if (ArrayDimensions == 1)
+        {
+            return "[]";
+        }
+        else
+        {
+            return $"[{new string(',', ArrayDimensions - 1)}]";
+        }
+    }
+}
+
+public class MemberSpec
+{
+    public string Name { get; }
+    public TypeSpec Type { get; }
+    public bool IsOptional { get; }
+    public int ElementCount { get; }
+    public string ElementCountSymbolic { get; }
+    public string Comment { get; }
+    public string? LegalValues { get; }
+
+    public MemberSpec(string name, TypeSpec type, bool isOptional, int elementCount, string elementCountSymbolic, string comment, string? legalValues)
+    {
+        Name = name;
+        Type = type;
+        IsOptional = isOptional;
+        ElementCount = elementCount;
+        ElementCountSymbolic = elementCountSymbolic;
+        Comment = comment;
+        LegalValues = legalValues;
+    }
+
+    public static MemberSpec CreateFromXml(XElement xe)
+    {
+        ArgumentNullException.ThrowIfNull(xe);
+
+        string name = xe.GetNameElement();
+        bool isOptional = xe.GetOptionalAttributeOrFalse();
+        string typeName = xe.Element("type")!.Value;
+        int pointerLevel = xe.Value.Contains($"{typeName}*") ? 1 : 0; // TODO: Make this better.
+        if (xe.Value.Contains($"{typeName}* const*"))
+        {
+            pointerLevel += 1;
+        }
+
+        TypeSpec type = new TypeSpec(typeName, pointerLevel);
+
+        bool foundConstantElementCount = false;
+        int elementCount = 1;
+        string elementCountSymbolic = null;
+        for (int i = 2; i < 10; i++)
+        {
+            if (xe.Value.Contains($"{name}[{i}]"))
+            {
+                elementCount = i;
+                foundConstantElementCount = true;
+                break;
+            }
+        }
+
+        if (!foundConstantElementCount)
+        {
+            Match m = Regex.Match(xe.Value, @"\[(.*)\]");
+            if (m.Captures.Count > 0)
+            {
+                elementCountSymbolic = m.Groups[1].Value;
+            }
+        }
+
+        string? value = xe.Attribute("values")?.Value;
+
+        return new MemberSpec(name, type, isOptional, elementCount, elementCountSymbolic, string.Empty, value);
+    }
+
+    public override string ToString()
+    {
+        string optionalPart = IsOptional ? "[opt] " : "";
+        string countPart = ElementCount != 1 ? $" [{ElementCount}]" : ElementCountSymbolic != null ? $" [{ElementCountSymbolic}]" : "";
+        return $"{optionalPart}{Type} {Name}";
+    }
+}
+
+public class StructureDefinition
+{
+    public string Name { get; }
+    public MemberSpec[] Members { get; }
+
+    public StructureDefinition(string name, MemberSpec[] members)
+    {
+        Name = name;
+        Members = members;
+    }
+
+    public static StructureDefinition CreateFromXml(XElement xe)
+    {
+        ArgumentNullException.ThrowIfNull(xe);
+
+        string name = xe.GetNameAttribute();
+        MemberSpec[] members = xe.Elements("member").Select(memberx => MemberSpec.CreateFromXml(memberx)).ToArray();
+        return new StructureDefinition(name, members);
+    }
+
+    public override string ToString()
+    {
+        return $"struct {Name}[{Members.Length}]";
+    }
+}
+
+public class ConstantDefinition
+{
+
+    public ConstantDefinition(string name, string value, string? comment)
+    {
+        Name = name;
+        Value = value;
+        Type = ParseType(value);
+        Comment = comment;
+    }
+    public string Name { get; }
+    public string Value { get; }
+    public ConstantType Type { get; }
+    public string? Comment { get; }
+
+    private ConstantType ParseType(string value)
+    {
+        if (value.EndsWith("f"))
+        {
+            return ConstantType.Float32;
+        }
+        else
+        {
+            if (value.EndsWith("ULL)"))
+            {
+                return ConstantType.UInt64;
+            }
+            else
+            {
+                return ConstantType.UInt32;
+            }
+        }
+    }
+
+    public static ConstantDefinition CreateFromXml(XElement xe)
+    {
+        ArgumentNullException.ThrowIfNull(xe);
+
+        string name = xe.GetNameAttribute();
+        string value = xe.Attribute("value")!.Value;
+        string? comment = xe.Attribute("comment")?.Value;
+
+        return new ConstantDefinition(name, value, comment);
+    }
+
+    public enum ConstantType
+    {
+        UInt32,
+        UInt64,
+        Float32,
     }
 }
 

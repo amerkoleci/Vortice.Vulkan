@@ -1042,6 +1042,31 @@ public readonly partial struct VkDebugUtilsMessengerEXT : IEquatable<VkDebugUtil
 /// A non-dispatchable handle.
 /// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
+public readonly partial struct VkGpaSessionAMD : IEquatable<VkGpaSessionAMD>
+{
+	public VkGpaSessionAMD(ulong handle) { Handle = handle; }
+	public ulong Handle { get; }
+	public bool IsNull => Handle == 0;
+	public bool IsNotNull => Handle != 0;
+	public static VkGpaSessionAMD Null => new(0);
+	public static implicit operator VkGpaSessionAMD(ulong handle) => new(handle);
+	public static implicit operator ulong(VkGpaSessionAMD handle) => handle.Handle;
+	public static bool operator ==(VkGpaSessionAMD left, VkGpaSessionAMD right) => left.Handle == right.Handle;
+	public static bool operator !=(VkGpaSessionAMD left, VkGpaSessionAMD right) => left.Handle != right.Handle;
+	public static bool operator ==(VkGpaSessionAMD left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkGpaSessionAMD left, ulong right) => left.Handle != right;
+	public bool Equals(VkGpaSessionAMD other) => Handle == other.Handle;
+	/// <inheritdoc/>
+	public override bool Equals(object? obj) => obj is VkGpaSessionAMD handle && Equals(handle);
+	/// <inheritdoc/>
+	public override int GetHashCode() => Handle.GetHashCode();
+	private string DebuggerDisplay => $"{nameof(VkGpaSessionAMD)} [0x{Handle.ToString("X")}]";
+}
+
+/// <summary>
+/// A non-dispatchable handle.
+/// </summary>
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
 public readonly partial struct VkTensorARM : IEquatable<VkTensorARM>
 {
 	public VkTensorARM(ulong handle) { Handle = handle; }

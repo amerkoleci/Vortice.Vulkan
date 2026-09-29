@@ -7,12 +7,12 @@
     <PackageVersion Include="Silk.NET.Shaderc.Native" Version="2.23.0" />
 
     <!-- Samples -->
-    <PackageVersion Include="ppy.SDL3-CS" Version="2025.1205.0" />
+    <PackageVersion Include="ppy.SDL3-CS" Version="2026.722.0" />
     
     <!-- Tests -->
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-    <PackageVersion Include="NUnit" Version="4.4.0" />
-    <PackageVersion Include="NUnit3TestAdapter" Version="6.01.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
+    <PackageVersion Include="NUnit" Version="5.0.0" />
+    <PackageVersion Include="NUnit3TestAdapter" Version="6.3.0" />
   </ItemGroup>
 
 </Project>

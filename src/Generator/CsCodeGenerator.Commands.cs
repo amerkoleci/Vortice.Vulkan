@@ -341,6 +341,7 @@ partial class CsCodeGenerator
                         writer.WriteLine();
                         WriteTableCommands(writer, true, instanceCommands);
                     }
+                    writer.WriteLine();
 
                     foreach (KeyValuePair<string, CppFunction> command in instanceCommands)
                     {
@@ -388,6 +389,7 @@ partial class CsCodeGenerator
                         writer.WriteLine();
                         WriteTableCommands(writer, false, deviceCommands);
                     }
+                    writer.WriteLine();
 
                     foreach (KeyValuePair<string, CppFunction> command in deviceCommands)
                     {
@@ -616,6 +618,21 @@ partial class CsCodeGenerator
                 }
 
                 writer.WriteLine(");");
+
+                if (firstParameterType is "VkInstance")
+                {
+                    if (cppFunction.Name == "vkDestroyInstance")
+                    {
+                        writer.WriteLine("_ = Vulkan.RemoveInstanceTable(Instance);");
+                    }
+                }
+                else if (firstParameterType is "VkDevice")
+                {
+                    if (cppFunction.Name == "vkDestroyDevice")
+                    {
+                        writer.WriteLine("_ = Vulkan.RemoveDeviceTable(Device);");
+                    }
+                }
 
                 for (int i = 0; i < closeBlockCount; i++)
                 {

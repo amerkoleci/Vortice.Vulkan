@@ -397,6 +397,18 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkCmdSetDiscardRectangleEnableEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCmdSetDiscardRectangleModeEXT_ptr;
 	public readonly PFN_vkVoidFunction vkSetHdrMetadataEXT_ptr;
+	public readonly PFN_vkVoidFunction vkCreateGpaSessionAMD_ptr;
+	public readonly PFN_vkVoidFunction vkDestroyGpaSessionAMD_ptr;
+	public readonly PFN_vkVoidFunction vkSetGpaDeviceClockModeAMD_ptr;
+	public readonly PFN_vkVoidFunction vkGetGpaDeviceClockInfoAMD_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBeginGpaSessionAMD_ptr;
+	public readonly PFN_vkVoidFunction vkCmdEndGpaSessionAMD_ptr;
+	public readonly PFN_vkVoidFunction vkCmdBeginGpaSampleAMD_ptr;
+	public readonly PFN_vkVoidFunction vkCmdEndGpaSampleAMD_ptr;
+	public readonly PFN_vkVoidFunction vkGetGpaSessionStatusAMD_ptr;
+	public readonly PFN_vkVoidFunction vkGetGpaSessionResultsAMD_ptr;
+	public readonly PFN_vkVoidFunction vkResetGpaSessionAMD_ptr;
+	public readonly PFN_vkVoidFunction vkCmdCopyGpaSessionResultsAMD_ptr;
 	public readonly PFN_vkVoidFunction vkWriteSamplerDescriptorsEXT_ptr;
 	public readonly PFN_vkVoidFunction vkWriteResourceDescriptorsEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBindSamplerHeapEXT_ptr;
@@ -490,6 +502,13 @@ public unsafe partial class VkDeviceApi
 	public readonly PFN_vkVoidFunction vkCmdDispatchTileQCOM_ptr;
 	public readonly PFN_vkVoidFunction vkCmdBeginPerTileExecutionQCOM_ptr;
 	public readonly PFN_vkVoidFunction vkCmdEndPerTileExecutionQCOM_ptr;
+	public readonly PFN_vkVoidFunction vkSetLatencySleepModeLegacyNV_ptr;
+	public readonly PFN_vkVoidFunction vkLatencySleepLegacyNV_ptr;
+	public readonly PFN_vkVoidFunction vkSetLatencyMarkerLegacyNV_ptr;
+	public readonly PFN_vkVoidFunction vkGetLatencyTimingsLegacyNV_ptr;
+	public readonly PFN_vkVoidFunction vkQueueNotifyOutOfBandLegacyNV_ptr;
+	public readonly PFN_vkVoidFunction vkGetSleepStatusLegacyNV_ptr;
+	public readonly PFN_vkVoidFunction vkShutdownLatencyDeviceLegacyNV_ptr;
 	public readonly PFN_vkVoidFunction vkGetDescriptorSetLayoutSizeEXT_ptr;
 	public readonly PFN_vkVoidFunction vkGetDescriptorSetLayoutBindingOffsetEXT_ptr;
 	public readonly PFN_vkVoidFunction vkGetDescriptorEXT_ptr;
@@ -1081,6 +1100,18 @@ public unsafe partial class VkDeviceApi
 		vkCmdSetDiscardRectangleEnableEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetDiscardRectangleEnableEXT"u8);
 		vkCmdSetDiscardRectangleModeEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdSetDiscardRectangleModeEXT"u8);
 		vkSetHdrMetadataEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkSetHdrMetadataEXT"u8);
+		vkCreateGpaSessionAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCreateGpaSessionAMD"u8);
+		vkDestroyGpaSessionAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkDestroyGpaSessionAMD"u8);
+		vkSetGpaDeviceClockModeAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkSetGpaDeviceClockModeAMD"u8);
+		vkGetGpaDeviceClockInfoAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetGpaDeviceClockInfoAMD"u8);
+		vkCmdBeginGpaSessionAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginGpaSessionAMD"u8);
+		vkCmdEndGpaSessionAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndGpaSessionAMD"u8);
+		vkCmdBeginGpaSampleAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginGpaSampleAMD"u8);
+		vkCmdEndGpaSampleAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndGpaSampleAMD"u8);
+		vkGetGpaSessionStatusAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetGpaSessionStatusAMD"u8);
+		vkGetGpaSessionResultsAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetGpaSessionResultsAMD"u8);
+		vkResetGpaSessionAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkResetGpaSessionAMD"u8);
+		vkCmdCopyGpaSessionResultsAMD_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdCopyGpaSessionResultsAMD"u8);
 		vkWriteSamplerDescriptorsEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkWriteSamplerDescriptorsEXT"u8);
 		vkWriteResourceDescriptorsEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkWriteResourceDescriptorsEXT"u8);
 		vkCmdBindSamplerHeapEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBindSamplerHeapEXT"u8);
@@ -1174,6 +1205,13 @@ public unsafe partial class VkDeviceApi
 		vkCmdDispatchTileQCOM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdDispatchTileQCOM"u8);
 		vkCmdBeginPerTileExecutionQCOM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdBeginPerTileExecutionQCOM"u8);
 		vkCmdEndPerTileExecutionQCOM_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkCmdEndPerTileExecutionQCOM"u8);
+		vkSetLatencySleepModeLegacyNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkSetLatencySleepModeLegacyNV"u8);
+		vkLatencySleepLegacyNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkLatencySleepLegacyNV"u8);
+		vkSetLatencyMarkerLegacyNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkSetLatencyMarkerLegacyNV"u8);
+		vkGetLatencyTimingsLegacyNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetLatencyTimingsLegacyNV"u8);
+		vkQueueNotifyOutOfBandLegacyNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkQueueNotifyOutOfBandLegacyNV"u8);
+		vkGetSleepStatusLegacyNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetSleepStatusLegacyNV"u8);
+		vkShutdownLatencyDeviceLegacyNV_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkShutdownLatencyDeviceLegacyNV"u8);
 		vkGetDescriptorSetLayoutSizeEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDescriptorSetLayoutSizeEXT"u8);
 		vkGetDescriptorSetLayoutBindingOffsetEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDescriptorSetLayoutBindingOffsetEXT"u8);
 		vkGetDescriptorEXT_ptr = api.vkGetDeviceProcAddr(device.Handle, "vkGetDescriptorEXT"u8);
@@ -5317,6 +5355,92 @@ public unsafe partial class VkDeviceApi
 		((delegate* unmanaged<VkDevice, uint, VkSwapchainKHR*, VkHdrMetadataEXT*, void>)vkSetHdrMetadataEXT_ptr.Value)(Device, swapchainCount, swapchains, metadata);
 	}
 
+	public VkResult vkCreateGpaSessionAMD(VkGpaSessionCreateInfoAMD* createInfo, VkGpaSessionAMD* gpaSession)
+	{
+		return ((delegate* unmanaged<VkDevice, VkGpaSessionCreateInfoAMD*, VkAllocationCallbacks*, VkGpaSessionAMD*, VkResult>)vkCreateGpaSessionAMD_ptr.Value)(Device, createInfo, default, gpaSession);
+	}
+
+	public VkResult vkCreateGpaSessionAMD(VkGpaSessionCreateInfoAMD* createInfo, VkAllocationCallbacks* allocator, VkGpaSessionAMD* gpaSession)
+	{
+		return ((delegate* unmanaged<VkDevice, VkGpaSessionCreateInfoAMD*, VkAllocationCallbacks*, VkGpaSessionAMD*, VkResult>)vkCreateGpaSessionAMD_ptr.Value)(Device, createInfo, allocator, gpaSession);
+	}
+
+	public VkResult vkCreateGpaSessionAMD(in VkGpaSessionCreateInfoAMD createInfo, VkGpaSessionAMD* gpaSession)
+	{
+		fixed (VkGpaSessionCreateInfoAMD* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkGpaSessionCreateInfoAMD*, VkAllocationCallbacks*, VkGpaSessionAMD*, VkResult>)vkCreateGpaSessionAMD_ptr.Value)(Device, createInfoPtr, default, gpaSession);
+		}
+	}
+
+	public VkResult vkCreateGpaSessionAMD(in VkGpaSessionCreateInfoAMD createInfo, VkAllocationCallbacks* allocator, VkGpaSessionAMD* gpaSession)
+	{
+		fixed (VkGpaSessionCreateInfoAMD* createInfoPtr = &createInfo)
+		{
+			return ((delegate* unmanaged<VkDevice, VkGpaSessionCreateInfoAMD*, VkAllocationCallbacks*, VkGpaSessionAMD*, VkResult>)vkCreateGpaSessionAMD_ptr.Value)(Device, createInfoPtr, allocator, gpaSession);
+		}
+	}
+
+	public void vkDestroyGpaSessionAMD(VkGpaSessionAMD gpaSession)
+	{
+		((delegate* unmanaged<VkDevice, VkGpaSessionAMD, VkAllocationCallbacks*, void>)vkDestroyGpaSessionAMD_ptr.Value)(Device, gpaSession, default);
+	}
+
+	public void vkDestroyGpaSessionAMD(VkGpaSessionAMD gpaSession, VkAllocationCallbacks* allocator)
+	{
+		((delegate* unmanaged<VkDevice, VkGpaSessionAMD, VkAllocationCallbacks*, void>)vkDestroyGpaSessionAMD_ptr.Value)(Device, gpaSession, allocator);
+	}
+
+	public VkResult vkSetGpaDeviceClockModeAMD(VkGpaDeviceClockModeInfoAMD* info)
+	{
+		return ((delegate* unmanaged<VkDevice, VkGpaDeviceClockModeInfoAMD*, VkResult>)vkSetGpaDeviceClockModeAMD_ptr.Value)(Device, info);
+	}
+
+	public VkResult vkGetGpaDeviceClockInfoAMD(VkGpaDeviceGetClockInfoAMD* info)
+	{
+		return ((delegate* unmanaged<VkDevice, VkGpaDeviceGetClockInfoAMD*, VkResult>)vkGetGpaDeviceClockInfoAMD_ptr.Value)(Device, info);
+	}
+
+	public VkResult vkCmdBeginGpaSessionAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession)
+	{
+		return ((delegate* unmanaged<VkCommandBuffer, VkGpaSessionAMD, VkResult>)vkCmdBeginGpaSessionAMD_ptr.Value)(commandBuffer, gpaSession);
+	}
+
+	public VkResult vkCmdEndGpaSessionAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession)
+	{
+		return ((delegate* unmanaged<VkCommandBuffer, VkGpaSessionAMD, VkResult>)vkCmdEndGpaSessionAMD_ptr.Value)(commandBuffer, gpaSession);
+	}
+
+	public VkResult vkCmdBeginGpaSampleAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession, VkGpaSampleBeginInfoAMD* gpaSampleBeginInfo, uint* sampleID)
+	{
+		return ((delegate* unmanaged<VkCommandBuffer, VkGpaSessionAMD, VkGpaSampleBeginInfoAMD*, uint*, VkResult>)vkCmdBeginGpaSampleAMD_ptr.Value)(commandBuffer, gpaSession, gpaSampleBeginInfo, sampleID);
+	}
+
+	public void vkCmdEndGpaSampleAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession, uint sampleID)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkGpaSessionAMD, uint, void>)vkCmdEndGpaSampleAMD_ptr.Value)(commandBuffer, gpaSession, sampleID);
+	}
+
+	public VkResult vkGetGpaSessionStatusAMD(VkGpaSessionAMD gpaSession)
+	{
+		return ((delegate* unmanaged<VkDevice, VkGpaSessionAMD, VkResult>)vkGetGpaSessionStatusAMD_ptr.Value)(Device, gpaSession);
+	}
+
+	public VkResult vkGetGpaSessionResultsAMD(VkGpaSessionAMD gpaSession, uint sampleID, nuint* sizeInBytes, void* data)
+	{
+		return ((delegate* unmanaged<VkDevice, VkGpaSessionAMD, uint, nuint*, void*, VkResult>)vkGetGpaSessionResultsAMD_ptr.Value)(Device, gpaSession, sampleID, sizeInBytes, data);
+	}
+
+	public VkResult vkResetGpaSessionAMD(VkGpaSessionAMD gpaSession)
+	{
+		return ((delegate* unmanaged<VkDevice, VkGpaSessionAMD, VkResult>)vkResetGpaSessionAMD_ptr.Value)(Device, gpaSession);
+	}
+
+	public void vkCmdCopyGpaSessionResultsAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD gpaSession)
+	{
+		((delegate* unmanaged<VkCommandBuffer, VkGpaSessionAMD, void>)vkCmdCopyGpaSessionResultsAMD_ptr.Value)(commandBuffer, gpaSession);
+	}
+
 	public VkResult vkWriteSamplerDescriptorsEXT(uint samplerCount, VkSamplerCreateInfo* samplers, VkHostAddressRangeEXT* descriptors)
 	{
 		return ((delegate* unmanaged<VkDevice, uint, VkSamplerCreateInfo*, VkHostAddressRangeEXT*, VkResult>)vkWriteSamplerDescriptorsEXT_ptr.Value)(Device, samplerCount, samplers, descriptors);
@@ -5905,6 +6029,41 @@ public unsafe partial class VkDeviceApi
 	public void vkCmdEndPerTileExecutionQCOM(VkCommandBuffer commandBuffer, VkPerTileEndInfoQCOM* perTileEndInfo)
 	{
 		((delegate* unmanaged<VkCommandBuffer, VkPerTileEndInfoQCOM*, void>)vkCmdEndPerTileExecutionQCOM_ptr.Value)(commandBuffer, perTileEndInfo);
+	}
+
+	public void vkSetLatencySleepModeLegacyNV(VkBool32 lowLatencyMode, VkBool32 lowLatencyBoost, uint minimumIntervalUs)
+	{
+		((delegate* unmanaged<VkDevice, VkBool32, VkBool32, uint, void>)vkSetLatencySleepModeLegacyNV_ptr.Value)(Device, lowLatencyMode, lowLatencyBoost, minimumIntervalUs);
+	}
+
+	public void vkLatencySleepLegacyNV(VkSemaphore signalSemaphore, ulong value)
+	{
+		((delegate* unmanaged<VkDevice, VkSemaphore, ulong, void>)vkLatencySleepLegacyNV_ptr.Value)(Device, signalSemaphore, value);
+	}
+
+	public void vkSetLatencyMarkerLegacyNV(ulong frameID, uint marker)
+	{
+		((delegate* unmanaged<VkDevice, ulong, uint, void>)vkSetLatencyMarkerLegacyNV_ptr.Value)(Device, frameID, marker);
+	}
+
+	public void vkGetLatencyTimingsLegacyNV(void* timings)
+	{
+		((delegate* unmanaged<VkDevice, void*, void>)vkGetLatencyTimingsLegacyNV_ptr.Value)(Device, timings);
+	}
+
+	public void vkQueueNotifyOutOfBandLegacyNV(VkQueue queue, uint queueType)
+	{
+		((delegate* unmanaged<VkQueue, uint, void>)vkQueueNotifyOutOfBandLegacyNV_ptr.Value)(queue, queueType);
+	}
+
+	public void vkGetSleepStatusLegacyNV(VkBool32* lowLatencyMode)
+	{
+		((delegate* unmanaged<VkDevice, VkBool32*, void>)vkGetSleepStatusLegacyNV_ptr.Value)(Device, lowLatencyMode);
+	}
+
+	public void vkShutdownLatencyDeviceLegacyNV()
+	{
+		((delegate* unmanaged<VkDevice, void>)vkShutdownLatencyDeviceLegacyNV_ptr.Value)(Device);
 	}
 
 	public void vkGetDescriptorSetLayoutSizeEXT(VkDescriptorSetLayout layout, ulong* layoutSizeInBytes)

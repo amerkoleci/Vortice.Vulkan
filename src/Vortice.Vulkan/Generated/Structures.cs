@@ -10,6 +10,7 @@
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Diagnostics.CodeAnalysis;
+using static Vortice.Vulkan.Vulkan;
 
 #pragma warning disable CS0649
 namespace Vortice.Vulkan;
@@ -58,7 +59,7 @@ public unsafe partial struct VkAllocationCallbacks
 
 public unsafe partial struct VkApplicationInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ApplicationInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 	public void* pNext;
 	public byte* pApplicationName;
 	public VkVersion applicationVersion;
@@ -99,7 +100,7 @@ public partial struct VkImageFormatProperties
 
 public unsafe partial struct VkInstanceCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.InstanceCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
 	public void* pNext;
 	public VkInstanceCreateFlags flags;
 	public VkApplicationInfo* pApplicationInfo;
@@ -356,7 +357,7 @@ public partial struct VkQueueFamilyProperties
 
 public unsafe partial struct VkDeviceQueueCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceQueueCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
 	public void* pNext;
 	public VkDeviceQueueCreateFlags flags;
 	public uint queueFamilyIndex;
@@ -380,7 +381,7 @@ public unsafe partial struct VkDeviceQueueCreateInfo : IStructureType, IChainTyp
 
 public unsafe partial struct VkDeviceCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
 	public void* pNext;
 	public VkDeviceCreateFlags flags;
 	public uint queueCreateInfoCount;
@@ -422,7 +423,7 @@ public unsafe partial struct VkLayerProperties
 
 public unsafe partial struct VkSubmitInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubmitInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
 	public void* pNext;
 	public uint waitSemaphoreCount;
 	public VkSemaphore* pWaitSemaphores;
@@ -449,7 +450,7 @@ public unsafe partial struct VkSubmitInfo : IStructureType, IChainType
 
 public unsafe partial struct VkMappedMemoryRange : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MappedMemoryRange;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE;
 	public void* pNext;
 	public VkDeviceMemory memory;
 	public ulong offset;
@@ -472,7 +473,7 @@ public unsafe partial struct VkMappedMemoryRange : IStructureType, IChainType
 
 public unsafe partial struct VkMemoryAllocateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryAllocateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
 	public void* pNext;
 	public ulong allocationSize;
 	public uint memoryTypeIndex;
@@ -564,7 +565,7 @@ public unsafe partial struct VkSparseImageOpaqueMemoryBindInfo
 
 public unsafe partial struct VkBindSparseInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindSparseInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_SPARSE_INFO;
 	public void* pNext;
 	public uint waitSemaphoreCount;
 	public VkSemaphore* pWaitSemaphores;
@@ -594,7 +595,7 @@ public unsafe partial struct VkBindSparseInfo : IStructureType, IChainType
 
 public unsafe partial struct VkFenceCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FenceCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
 	public void* pNext;
 	public VkFenceCreateFlags flags;
 
@@ -615,7 +616,7 @@ public unsafe partial struct VkFenceCreateInfo : IStructureType, IChainType
 
 public unsafe partial struct VkSemaphoreCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SemaphoreCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
 	public void* pNext;
 	public VkSemaphoreCreateFlags flags;
 
@@ -636,7 +637,7 @@ public unsafe partial struct VkSemaphoreCreateInfo : IStructureType, IChainType
 
 public unsafe partial struct VkQueryPoolCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueryPoolCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO;
 	public void* pNext;
 	public VkQueryPoolCreateFlags flags;
 	public VkQueryType queryType;
@@ -660,7 +661,7 @@ public unsafe partial struct VkQueryPoolCreateInfo : IStructureType, IChainType
 
 public unsafe partial struct VkBufferCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
 	public void* pNext;
 	public VkBufferCreateFlags flags;
 	public ulong size;
@@ -686,7 +687,7 @@ public unsafe partial struct VkBufferCreateInfo : IStructureType, IChainType
 
 public unsafe partial struct VkImageCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
 	public void* pNext;
 	public VkImageCreateFlags flags;
 	public VkImageType imageType;
@@ -745,7 +746,7 @@ public partial struct VkImageSubresourceRange
 
 public unsafe partial struct VkImageViewCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageViewCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
 	public void* pNext;
 	public VkImageViewCreateFlags flags;
 	public VkImage image;
@@ -771,7 +772,7 @@ public unsafe partial struct VkImageViewCreateInfo : IStructureType, IChainType
 
 public unsafe partial struct VkCommandPoolCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CommandPoolCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
 	public void* pNext;
 	public VkCommandPoolCreateFlags flags;
 	public uint queueFamilyIndex;
@@ -793,7 +794,7 @@ public unsafe partial struct VkCommandPoolCreateInfo : IStructureType, IChainTyp
 
 public unsafe partial struct VkCommandBufferAllocateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CommandBufferAllocateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
 	public void* pNext;
 	public VkCommandPool commandPool;
 	public VkCommandBufferLevel level;
@@ -816,7 +817,7 @@ public unsafe partial struct VkCommandBufferAllocateInfo : IStructureType, IChai
 
 public unsafe partial struct VkCommandBufferInheritanceInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CommandBufferInheritanceInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO;
 	public void* pNext;
 	public VkRenderPass renderPass;
 	public uint subpass;
@@ -842,7 +843,7 @@ public unsafe partial struct VkCommandBufferInheritanceInfo : IStructureType, IC
 
 public unsafe partial struct VkCommandBufferBeginInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CommandBufferBeginInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 	public void* pNext;
 	public VkCommandBufferUsageFlags flags;
 	public VkCommandBufferInheritanceInfo* pInheritanceInfo;
@@ -898,7 +899,7 @@ public partial struct VkImageCopy
 
 public unsafe partial struct VkBufferMemoryBarrier : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferMemoryBarrier;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER;
 	public void* pNext;
 	public VkAccessFlags srcAccessMask;
 	public VkAccessFlags dstAccessMask;
@@ -925,7 +926,7 @@ public unsafe partial struct VkBufferMemoryBarrier : IStructureType, IChainType
 
 public unsafe partial struct VkImageMemoryBarrier : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageMemoryBarrier;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
 	public void* pNext;
 	public VkAccessFlags srcAccessMask;
 	public VkAccessFlags dstAccessMask;
@@ -953,7 +954,7 @@ public unsafe partial struct VkImageMemoryBarrier : IStructureType, IChainType
 
 public unsafe partial struct VkMemoryBarrier : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryBarrier;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_BARRIER;
 	public void* pNext;
 	public VkAccessFlags srcAccessMask;
 	public VkAccessFlags dstAccessMask;
@@ -991,7 +992,7 @@ public unsafe partial struct VkPipelineCacheHeaderVersionOne
 
 public unsafe partial struct VkEventCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.EventCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EVENT_CREATE_INFO;
 	public void* pNext;
 	public VkEventCreateFlags flags;
 
@@ -1012,7 +1013,7 @@ public unsafe partial struct VkEventCreateInfo : IStructureType, IChainType
 
 public unsafe partial struct VkBufferViewCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferViewCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO;
 	public void* pNext;
 	public VkBufferViewCreateFlags flags;
 	public VkBuffer buffer;
@@ -1037,7 +1038,7 @@ public unsafe partial struct VkBufferViewCreateInfo : IStructureType, IChainType
 
 public unsafe partial struct VkShaderModuleCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ShaderModuleCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
 	public void* pNext;
 	public VkShaderModuleCreateFlags flags;
 	public nuint codeSize;
@@ -1060,7 +1061,7 @@ public unsafe partial struct VkShaderModuleCreateInfo : IStructureType, IChainTy
 
 public unsafe partial struct VkPipelineCacheCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineCacheCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineCacheCreateFlags flags;
 	public nuint initialDataSize;
@@ -1098,7 +1099,7 @@ public unsafe partial struct VkSpecializationInfo
 
 public unsafe partial struct VkPipelineShaderStageCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineShaderStageCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineShaderStageCreateFlags flags;
 	public VkShaderStageFlags stage;
@@ -1123,7 +1124,7 @@ public unsafe partial struct VkPipelineShaderStageCreateInfo : IStructureType, I
 
 public unsafe partial struct VkComputePipelineCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ComputePipelineCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineCreateFlags flags;
 	public VkPipelineShaderStageCreateInfo stage;
@@ -1155,7 +1156,7 @@ public partial struct VkPushConstantRange
 
 public unsafe partial struct VkPipelineLayoutCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineLayoutCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineLayoutCreateFlags flags;
 	public uint setLayoutCount;
@@ -1180,7 +1181,7 @@ public unsafe partial struct VkPipelineLayoutCreateInfo : IStructureType, IChain
 
 public unsafe partial struct VkSamplerCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
 	public void* pNext;
 	public VkSamplerCreateFlags flags;
 	public VkFilter magFilter;
@@ -1216,7 +1217,7 @@ public unsafe partial struct VkSamplerCreateInfo : IStructureType, IChainType
 
 public unsafe partial struct VkCopyDescriptorSet : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyDescriptorSet;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET;
 	public void* pNext;
 	public VkDescriptorSet srcSet;
 	public uint srcBinding;
@@ -1263,7 +1264,7 @@ public partial struct VkDescriptorPoolSize
 
 public unsafe partial struct VkDescriptorPoolCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorPoolCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
 	public void* pNext;
 	public VkDescriptorPoolCreateFlags flags;
 	public uint maxSets;
@@ -1287,7 +1288,7 @@ public unsafe partial struct VkDescriptorPoolCreateInfo : IStructureType, IChain
 
 public unsafe partial struct VkDescriptorSetAllocateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorSetAllocateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
 	public void* pNext;
 	public VkDescriptorPool descriptorPool;
 	public uint descriptorSetCount;
@@ -1319,7 +1320,7 @@ public unsafe partial struct VkDescriptorSetLayoutBinding
 
 public unsafe partial struct VkDescriptorSetLayoutCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorSetLayoutCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
 	public void* pNext;
 	public VkDescriptorSetLayoutCreateFlags flags;
 	public uint bindingCount;
@@ -1342,7 +1343,7 @@ public unsafe partial struct VkDescriptorSetLayoutCreateInfo : IStructureType, I
 
 public unsafe partial struct VkWriteDescriptorSet : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.WriteDescriptorSet;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 	public void* pNext;
 	public VkDescriptorSet dstSet;
 	public uint dstBinding;
@@ -1435,7 +1436,7 @@ public partial struct VkPipelineColorBlendAttachmentState
 
 public unsafe partial struct VkPipelineColorBlendStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineColorBlendStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineColorBlendStateCreateFlags flags;
 	public VkBool32 logicOpEnable;
@@ -1461,7 +1462,7 @@ public unsafe partial struct VkPipelineColorBlendStateCreateInfo : IStructureTyp
 
 public unsafe partial struct VkPipelineDepthStencilStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineDepthStencilStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineDepthStencilStateCreateFlags flags;
 	public VkBool32 depthTestEnable;
@@ -1491,7 +1492,7 @@ public unsafe partial struct VkPipelineDepthStencilStateCreateInfo : IStructureT
 
 public unsafe partial struct VkPipelineDynamicStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineDynamicStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineDynamicStateCreateFlags flags;
 	public uint dynamicStateCount;
@@ -1514,7 +1515,7 @@ public unsafe partial struct VkPipelineDynamicStateCreateInfo : IStructureType, 
 
 public unsafe partial struct VkPipelineInputAssemblyStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineInputAssemblyStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineInputAssemblyStateCreateFlags flags;
 	public VkPrimitiveTopology topology;
@@ -1537,7 +1538,7 @@ public unsafe partial struct VkPipelineInputAssemblyStateCreateInfo : IStructure
 
 public unsafe partial struct VkPipelineMultisampleStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineMultisampleStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineMultisampleStateCreateFlags flags;
 	public VkSampleCountFlags rasterizationSamples;
@@ -1564,7 +1565,7 @@ public unsafe partial struct VkPipelineMultisampleStateCreateInfo : IStructureTy
 
 public unsafe partial struct VkPipelineRasterizationStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineRasterizationStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineRasterizationStateCreateFlags flags;
 	public VkBool32 depthClampEnable;
@@ -1595,7 +1596,7 @@ public unsafe partial struct VkPipelineRasterizationStateCreateInfo : IStructure
 
 public unsafe partial struct VkPipelineTessellationStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineTessellationStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineTessellationStateCreateFlags flags;
 	public uint patchControlPoints;
@@ -1617,7 +1618,7 @@ public unsafe partial struct VkPipelineTessellationStateCreateInfo : IStructureT
 
 public unsafe partial struct VkPipelineVertexInputStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineVertexInputStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineVertexInputStateCreateFlags flags;
 	public uint vertexBindingDescriptionCount;
@@ -1642,7 +1643,7 @@ public unsafe partial struct VkPipelineVertexInputStateCreateInfo : IStructureTy
 
 public unsafe partial struct VkPipelineViewportStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineViewportStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineViewportStateCreateFlags flags;
 	public uint viewportCount;
@@ -1667,7 +1668,7 @@ public unsafe partial struct VkPipelineViewportStateCreateInfo : IStructureType,
 
 public unsafe partial struct VkGraphicsPipelineCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GraphicsPipelineCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineCreateFlags flags;
 	public uint stageCount;
@@ -1723,7 +1724,7 @@ public partial struct VkAttachmentReference
 
 public unsafe partial struct VkFramebufferCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FramebufferCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
 	public void* pNext;
 	public VkFramebufferCreateFlags flags;
 	public VkRenderPass renderPass;
@@ -1775,7 +1776,7 @@ public unsafe partial struct VkSubpassDescription
 
 public unsafe partial struct VkRenderPassCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
 	public void* pNext;
 	public VkRenderPassCreateFlags flags;
 	public uint attachmentCount;
@@ -1860,7 +1861,7 @@ public partial struct VkImageResolve
 
 public unsafe partial struct VkRenderPassBeginInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassBeginInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
 	public void* pNext;
 	public VkRenderPass renderPass;
 	public VkFramebuffer framebuffer;
@@ -1885,7 +1886,7 @@ public unsafe partial struct VkRenderPassBeginInfo : IStructureType, IChainType
 
 public unsafe partial struct VkBindBufferMemoryInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindBufferMemoryInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO;
 	public void* pNext;
 	public VkBuffer buffer;
 	public VkDeviceMemory memory;
@@ -1908,7 +1909,7 @@ public unsafe partial struct VkBindBufferMemoryInfo : IStructureType, IChainType
 
 public unsafe partial struct VkBindImageMemoryInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindImageMemoryInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO;
 	public void* pNext;
 	public VkImage image;
 	public VkDeviceMemory memory;
@@ -1931,7 +1932,7 @@ public unsafe partial struct VkBindImageMemoryInfo : IStructureType, IChainType
 
 public unsafe partial struct VkMemoryDedicatedRequirements : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryDedicatedRequirements;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS;
 	public void* pNext;
 	public VkBool32 prefersDedicatedAllocation;
 	public VkBool32 requiresDedicatedAllocation;
@@ -1953,7 +1954,7 @@ public unsafe partial struct VkMemoryDedicatedRequirements : IStructureType, ICh
 
 public unsafe partial struct VkMemoryDedicatedAllocateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryDedicatedAllocateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO;
 	public void* pNext;
 	public VkImage image;
 	public VkBuffer buffer;
@@ -1975,7 +1976,7 @@ public unsafe partial struct VkMemoryDedicatedAllocateInfo : IStructureType, ICh
 
 public unsafe partial struct VkMemoryAllocateFlagsInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryAllocateFlagsInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO;
 	public void* pNext;
 	public VkMemoryAllocateFlags flags;
 	public uint deviceMask;
@@ -1997,7 +1998,7 @@ public unsafe partial struct VkMemoryAllocateFlagsInfo : IStructureType, IChainT
 
 public unsafe partial struct VkDeviceGroupCommandBufferBeginInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceGroupCommandBufferBeginInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO;
 	public void* pNext;
 	public uint deviceMask;
 
@@ -2018,7 +2019,7 @@ public unsafe partial struct VkDeviceGroupCommandBufferBeginInfo : IStructureTyp
 
 public unsafe partial struct VkDeviceGroupSubmitInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceGroupSubmitInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO;
 	public void* pNext;
 	public uint waitSemaphoreCount;
 	public uint* pWaitSemaphoreDeviceIndices;
@@ -2044,7 +2045,7 @@ public unsafe partial struct VkDeviceGroupSubmitInfo : IStructureType, IChainTyp
 
 public unsafe partial struct VkDeviceGroupBindSparseInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceGroupBindSparseInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO;
 	public void* pNext;
 	public uint resourceDeviceIndex;
 	public uint memoryDeviceIndex;
@@ -2066,7 +2067,7 @@ public unsafe partial struct VkDeviceGroupBindSparseInfo : IStructureType, IChai
 
 public unsafe partial struct VkBindBufferMemoryDeviceGroupInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindBufferMemoryDeviceGroupInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO;
 	public void* pNext;
 	public uint deviceIndexCount;
 	public uint* pDeviceIndices;
@@ -2088,7 +2089,7 @@ public unsafe partial struct VkBindBufferMemoryDeviceGroupInfo : IStructureType,
 
 public unsafe partial struct VkBindImageMemoryDeviceGroupInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindImageMemoryDeviceGroupInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO;
 	public void* pNext;
 	public uint deviceIndexCount;
 	public uint* pDeviceIndices;
@@ -2112,7 +2113,7 @@ public unsafe partial struct VkBindImageMemoryDeviceGroupInfo : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceGroupProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceGroupProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES;
 	public void* pNext;
 	public uint physicalDeviceCount;
 	public physicalDevices__FixedBuffer physicalDevices;
@@ -2141,7 +2142,7 @@ public unsafe partial struct VkPhysicalDeviceGroupProperties : IStructureType, I
 
 public unsafe partial struct VkDeviceGroupDeviceCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceGroupDeviceCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO;
 	public void* pNext;
 	public uint physicalDeviceCount;
 	public VkPhysicalDevice* pPhysicalDevices;
@@ -2163,7 +2164,7 @@ public unsafe partial struct VkDeviceGroupDeviceCreateInfo : IStructureType, ICh
 
 public unsafe partial struct VkBufferMemoryRequirementsInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferMemoryRequirementsInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_MEMORY_REQUIREMENTS_INFO_2;
 	public void* pNext;
 	public VkBuffer buffer;
 
@@ -2184,7 +2185,7 @@ public unsafe partial struct VkBufferMemoryRequirementsInfo2 : IStructureType, I
 
 public unsafe partial struct VkImageMemoryRequirementsInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageMemoryRequirementsInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2;
 	public void* pNext;
 	public VkImage image;
 
@@ -2205,7 +2206,7 @@ public unsafe partial struct VkImageMemoryRequirementsInfo2 : IStructureType, IC
 
 public unsafe partial struct VkImageSparseMemoryRequirementsInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageSparseMemoryRequirementsInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2;
 	public void* pNext;
 	public VkImage image;
 
@@ -2226,7 +2227,7 @@ public unsafe partial struct VkImageSparseMemoryRequirementsInfo2 : IStructureTy
 
 public unsafe partial struct VkMemoryRequirements2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryRequirements2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2;
 	public void* pNext;
 	public VkMemoryRequirements memoryRequirements;
 
@@ -2247,7 +2248,7 @@ public unsafe partial struct VkMemoryRequirements2 : IStructureType, IChainType
 
 public unsafe partial struct VkSparseImageMemoryRequirements2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SparseImageMemoryRequirements2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2;
 	public void* pNext;
 	public VkSparseImageMemoryRequirements memoryRequirements;
 
@@ -2268,7 +2269,7 @@ public unsafe partial struct VkSparseImageMemoryRequirements2 : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceFeatures2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFeatures2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2;
 	public void* pNext;
 	public VkPhysicalDeviceFeatures features;
 
@@ -2289,7 +2290,7 @@ public unsafe partial struct VkPhysicalDeviceFeatures2 : IStructureType, IChainT
 
 public unsafe partial struct VkPhysicalDeviceProperties2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceProperties2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2;
 	public void* pNext;
 	public VkPhysicalDeviceProperties properties;
 
@@ -2310,7 +2311,7 @@ public unsafe partial struct VkPhysicalDeviceProperties2 : IStructureType, IChai
 
 public unsafe partial struct VkFormatProperties2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FormatProperties2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2;
 	public void* pNext;
 	public VkFormatProperties formatProperties;
 
@@ -2331,7 +2332,7 @@ public unsafe partial struct VkFormatProperties2 : IStructureType, IChainType
 
 public unsafe partial struct VkImageFormatProperties2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageFormatProperties2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2;
 	public void* pNext;
 	public VkImageFormatProperties imageFormatProperties;
 
@@ -2352,7 +2353,7 @@ public unsafe partial struct VkImageFormatProperties2 : IStructureType, IChainTy
 
 public unsafe partial struct VkPhysicalDeviceImageFormatInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageFormatInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2;
 	public void* pNext;
 	public VkFormat format;
 	public VkImageType type;
@@ -2377,7 +2378,7 @@ public unsafe partial struct VkPhysicalDeviceImageFormatInfo2 : IStructureType, 
 
 public unsafe partial struct VkQueueFamilyProperties2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyProperties2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2;
 	public void* pNext;
 	public VkQueueFamilyProperties queueFamilyProperties;
 
@@ -2398,7 +2399,7 @@ public unsafe partial struct VkQueueFamilyProperties2 : IStructureType, IChainTy
 
 public unsafe partial struct VkPhysicalDeviceMemoryProperties2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMemoryProperties2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2;
 	public void* pNext;
 	public VkPhysicalDeviceMemoryProperties memoryProperties;
 
@@ -2419,7 +2420,7 @@ public unsafe partial struct VkPhysicalDeviceMemoryProperties2 : IStructureType,
 
 public unsafe partial struct VkSparseImageFormatProperties2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SparseImageFormatProperties2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2;
 	public void* pNext;
 	public VkSparseImageFormatProperties properties;
 
@@ -2440,7 +2441,7 @@ public unsafe partial struct VkSparseImageFormatProperties2 : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDeviceSparseImageFormatInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSparseImageFormatInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2;
 	public void* pNext;
 	public VkFormat format;
 	public VkImageType type;
@@ -2465,7 +2466,7 @@ public unsafe partial struct VkPhysicalDeviceSparseImageFormatInfo2 : IStructure
 
 public unsafe partial struct VkImageViewUsageCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageViewUsageCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO;
 	public void* pNext;
 	public VkImageUsageFlags usage;
 
@@ -2486,7 +2487,7 @@ public unsafe partial struct VkImageViewUsageCreateInfo : IStructureType, IChain
 
 public unsafe partial struct VkPhysicalDeviceProtectedMemoryFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceProtectedMemoryFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES;
 	public void* pNext;
 	public VkBool32 protectedMemory;
 
@@ -2507,7 +2508,7 @@ public unsafe partial struct VkPhysicalDeviceProtectedMemoryFeatures : IStructur
 
 public unsafe partial struct VkPhysicalDeviceProtectedMemoryProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceProtectedMemoryProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES;
 	public void* pNext;
 	public VkBool32 protectedNoFault;
 
@@ -2528,7 +2529,7 @@ public unsafe partial struct VkPhysicalDeviceProtectedMemoryProperties : IStruct
 
 public unsafe partial struct VkDeviceQueueInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceQueueInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2;
 	public void* pNext;
 	public VkDeviceQueueCreateFlags flags;
 	public uint queueFamilyIndex;
@@ -2551,7 +2552,7 @@ public unsafe partial struct VkDeviceQueueInfo2 : IStructureType, IChainType
 
 public unsafe partial struct VkProtectedSubmitInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ProtectedSubmitInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO;
 	public void* pNext;
 	public VkBool32 protectedSubmit;
 
@@ -2572,7 +2573,7 @@ public unsafe partial struct VkProtectedSubmitInfo : IStructureType, IChainType
 
 public unsafe partial struct VkBindImagePlaneMemoryInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindImagePlaneMemoryInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO;
 	public void* pNext;
 	public VkImageAspectFlags planeAspect;
 
@@ -2593,7 +2594,7 @@ public unsafe partial struct VkBindImagePlaneMemoryInfo : IStructureType, IChain
 
 public unsafe partial struct VkImagePlaneMemoryRequirementsInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImagePlaneMemoryRequirementsInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO;
 	public void* pNext;
 	public VkImageAspectFlags planeAspect;
 
@@ -2621,7 +2622,7 @@ public partial struct VkExternalMemoryProperties
 
 public unsafe partial struct VkPhysicalDeviceExternalImageFormatInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExternalImageFormatInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleType;
 
@@ -2642,7 +2643,7 @@ public unsafe partial struct VkPhysicalDeviceExternalImageFormatInfo : IStructur
 
 public unsafe partial struct VkExternalImageFormatProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalImageFormatProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES;
 	public void* pNext;
 	public VkExternalMemoryProperties externalMemoryProperties;
 
@@ -2663,7 +2664,7 @@ public unsafe partial struct VkExternalImageFormatProperties : IStructureType, I
 
 public unsafe partial struct VkPhysicalDeviceExternalBufferInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExternalBufferInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO;
 	public void* pNext;
 	public VkBufferCreateFlags flags;
 	public VkBufferUsageFlags usage;
@@ -2686,7 +2687,7 @@ public unsafe partial struct VkPhysicalDeviceExternalBufferInfo : IStructureType
 
 public unsafe partial struct VkExternalBufferProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalBufferProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES;
 	public void* pNext;
 	public VkExternalMemoryProperties externalMemoryProperties;
 
@@ -2707,7 +2708,7 @@ public unsafe partial struct VkExternalBufferProperties : IStructureType, IChain
 
 public unsafe partial struct VkPhysicalDeviceIDProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceIdProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES;
 	public void* pNext;
 	public fixed byte deviceUUID[16];
 	public fixed byte driverUUID[16];
@@ -2732,7 +2733,7 @@ public unsafe partial struct VkPhysicalDeviceIDProperties : IStructureType, ICha
 
 public unsafe partial struct VkExternalMemoryImageCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalMemoryImageCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleTypes;
 
@@ -2753,7 +2754,7 @@ public unsafe partial struct VkExternalMemoryImageCreateInfo : IStructureType, I
 
 public unsafe partial struct VkExternalMemoryBufferCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalMemoryBufferCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleTypes;
 
@@ -2774,7 +2775,7 @@ public unsafe partial struct VkExternalMemoryBufferCreateInfo : IStructureType, 
 
 public unsafe partial struct VkExportMemoryAllocateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMemoryAllocateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleTypes;
 
@@ -2795,7 +2796,7 @@ public unsafe partial struct VkExportMemoryAllocateInfo : IStructureType, IChain
 
 public unsafe partial struct VkPhysicalDeviceExternalFenceInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExternalFenceInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO;
 	public void* pNext;
 	public VkExternalFenceHandleTypeFlags handleType;
 
@@ -2816,7 +2817,7 @@ public unsafe partial struct VkPhysicalDeviceExternalFenceInfo : IStructureType,
 
 public unsafe partial struct VkExternalFenceProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalFenceProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES;
 	public void* pNext;
 	public VkExternalFenceHandleTypeFlags exportFromImportedHandleTypes;
 	public VkExternalFenceHandleTypeFlags compatibleHandleTypes;
@@ -2839,7 +2840,7 @@ public unsafe partial struct VkExternalFenceProperties : IStructureType, IChainT
 
 public unsafe partial struct VkExportFenceCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportFenceCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO;
 	public void* pNext;
 	public VkExternalFenceHandleTypeFlags handleTypes;
 
@@ -2860,7 +2861,7 @@ public unsafe partial struct VkExportFenceCreateInfo : IStructureType, IChainTyp
 
 public unsafe partial struct VkExportSemaphoreCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportSemaphoreCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO;
 	public void* pNext;
 	public VkExternalSemaphoreHandleTypeFlags handleTypes;
 
@@ -2881,7 +2882,7 @@ public unsafe partial struct VkExportSemaphoreCreateInfo : IStructureType, IChai
 
 public unsafe partial struct VkPhysicalDeviceExternalSemaphoreInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExternalSemaphoreInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO;
 	public void* pNext;
 	public VkExternalSemaphoreHandleTypeFlags handleType;
 
@@ -2902,7 +2903,7 @@ public unsafe partial struct VkPhysicalDeviceExternalSemaphoreInfo : IStructureT
 
 public unsafe partial struct VkExternalSemaphoreProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalSemaphoreProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES;
 	public void* pNext;
 	public VkExternalSemaphoreHandleTypeFlags exportFromImportedHandleTypes;
 	public VkExternalSemaphoreHandleTypeFlags compatibleHandleTypes;
@@ -2925,7 +2926,7 @@ public unsafe partial struct VkExternalSemaphoreProperties : IStructureType, ICh
 
 public unsafe partial struct VkPhysicalDeviceSubgroupProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSubgroupProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES;
 	public void* pNext;
 	public uint subgroupSize;
 	public VkShaderStageFlags supportedStages;
@@ -2949,7 +2950,7 @@ public unsafe partial struct VkPhysicalDeviceSubgroupProperties : IStructureType
 
 public unsafe partial struct VkPhysicalDevice16BitStorageFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevice16BitStorageFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES;
 	public void* pNext;
 	public VkBool32 storageBuffer16BitAccess;
 	public VkBool32 uniformAndStorageBuffer16BitAccess;
@@ -2973,7 +2974,7 @@ public unsafe partial struct VkPhysicalDevice16BitStorageFeatures : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceVariablePointersFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVariablePointersFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES;
 	public void* pNext;
 	public VkBool32 variablePointersStorageBuffer;
 	public VkBool32 variablePointers;
@@ -3005,7 +3006,7 @@ public partial struct VkDescriptorUpdateTemplateEntry
 
 public unsafe partial struct VkDescriptorUpdateTemplateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorUpdateTemplateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO;
 	public void* pNext;
 	public VkDescriptorUpdateTemplateCreateFlags flags;
 	public uint descriptorUpdateEntryCount;
@@ -3033,7 +3034,7 @@ public unsafe partial struct VkDescriptorUpdateTemplateCreateInfo : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceMaintenance3Properties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance3Properties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES;
 	public void* pNext;
 	public uint maxPerSetDescriptors;
 	public ulong maxMemoryAllocationSize;
@@ -3055,7 +3056,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance3Properties : IStructure
 
 public unsafe partial struct VkDescriptorSetLayoutSupport : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorSetLayoutSupport;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT;
 	public void* pNext;
 	public VkBool32 supported;
 
@@ -3076,7 +3077,7 @@ public unsafe partial struct VkDescriptorSetLayoutSupport : IStructureType, ICha
 
 public unsafe partial struct VkSamplerYcbcrConversionCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerYcbcrConversionCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO;
 	public void* pNext;
 	public VkFormat format;
 	public VkSamplerYcbcrModelConversion ycbcrModel;
@@ -3104,7 +3105,7 @@ public unsafe partial struct VkSamplerYcbcrConversionCreateInfo : IStructureType
 
 public unsafe partial struct VkSamplerYcbcrConversionInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerYcbcrConversionInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO;
 	public void* pNext;
 	public VkSamplerYcbcrConversion conversion;
 
@@ -3125,7 +3126,7 @@ public unsafe partial struct VkSamplerYcbcrConversionInfo : IStructureType, ICha
 
 public unsafe partial struct VkPhysicalDeviceSamplerYcbcrConversionFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSamplerYcbcrConversionFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES;
 	public void* pNext;
 	public VkBool32 samplerYcbcrConversion;
 
@@ -3146,7 +3147,7 @@ public unsafe partial struct VkPhysicalDeviceSamplerYcbcrConversionFeatures : IS
 
 public unsafe partial struct VkSamplerYcbcrConversionImageFormatProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerYcbcrConversionImageFormatProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES;
 	public void* pNext;
 	public uint combinedImageSamplerDescriptorCount;
 
@@ -3167,7 +3168,7 @@ public unsafe partial struct VkSamplerYcbcrConversionImageFormatProperties : ISt
 
 public unsafe partial struct VkDeviceGroupRenderPassBeginInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceGroupRenderPassBeginInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO;
 	public void* pNext;
 	public uint deviceMask;
 	public uint deviceRenderAreaCount;
@@ -3190,7 +3191,7 @@ public unsafe partial struct VkDeviceGroupRenderPassBeginInfo : IStructureType, 
 
 public unsafe partial struct VkPhysicalDevicePointClippingProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePointClippingProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES;
 	public void* pNext;
 	public VkPointClippingBehavior pointClippingBehavior;
 
@@ -3218,7 +3219,7 @@ public partial struct VkInputAttachmentAspectReference
 
 public unsafe partial struct VkRenderPassInputAttachmentAspectCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassInputAttachmentAspectCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO;
 	public void* pNext;
 	public uint aspectReferenceCount;
 	public VkInputAttachmentAspectReference* pAspectReferences;
@@ -3240,7 +3241,7 @@ public unsafe partial struct VkRenderPassInputAttachmentAspectCreateInfo : IStru
 
 public unsafe partial struct VkPipelineTessellationDomainOriginStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineTessellationDomainOriginStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO;
 	public void* pNext;
 	public VkTessellationDomainOrigin domainOrigin;
 
@@ -3261,7 +3262,7 @@ public unsafe partial struct VkPipelineTessellationDomainOriginStateCreateInfo :
 
 public unsafe partial struct VkRenderPassMultiviewCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassMultiviewCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO;
 	public void* pNext;
 	public uint subpassCount;
 	public uint* pViewMasks;
@@ -3287,7 +3288,7 @@ public unsafe partial struct VkRenderPassMultiviewCreateInfo : IStructureType, I
 
 public unsafe partial struct VkPhysicalDeviceMultiviewFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMultiviewFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES;
 	public void* pNext;
 	public VkBool32 multiview;
 	public VkBool32 multiviewGeometryShader;
@@ -3310,7 +3311,7 @@ public unsafe partial struct VkPhysicalDeviceMultiviewFeatures : IStructureType,
 
 public unsafe partial struct VkPhysicalDeviceMultiviewProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMultiviewProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES;
 	public void* pNext;
 	public uint maxMultiviewViewCount;
 	public uint maxMultiviewInstanceIndex;
@@ -3332,7 +3333,7 @@ public unsafe partial struct VkPhysicalDeviceMultiviewProperties : IStructureTyp
 
 public unsafe partial struct VkPhysicalDeviceShaderDrawParametersFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderDrawParametersFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderDrawParameters;
 
@@ -3361,7 +3362,7 @@ public partial struct VkConformanceVersion
 
 public unsafe partial struct VkPhysicalDeviceDriverProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDriverProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES;
 	public void* pNext;
 	public VkDriverId driverID;
 	public fixed byte driverName[256];
@@ -3385,7 +3386,7 @@ public unsafe partial struct VkPhysicalDeviceDriverProperties : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceVulkan11Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVulkan11Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES;
 	public void* pNext;
 	public VkBool32 storageBuffer16BitAccess;
 	public VkBool32 uniformAndStorageBuffer16BitAccess;
@@ -3417,7 +3418,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan11Features : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceVulkan11Properties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVulkan11Properties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES;
 	public void* pNext;
 	public fixed byte deviceUUID[16];
 	public fixed byte driverUUID[16];
@@ -3452,7 +3453,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan11Properties : IStructureType
 
 public unsafe partial struct VkPhysicalDeviceVulkan12Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVulkan12Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES;
 	public void* pNext;
 	public VkBool32 samplerMirrorClampToEdge;
 	public VkBool32 drawIndirectCount;
@@ -3519,7 +3520,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan12Features : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceVulkan12Properties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVulkan12Properties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES;
 	public void* pNext;
 	public VkDriverId driverID;
 	public fixed byte driverName[256];
@@ -3591,7 +3592,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan12Properties : IStructureType
 
 public unsafe partial struct VkImageFormatListCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageFormatListCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO;
 	public void* pNext;
 	public uint viewFormatCount;
 	public VkFormat* pViewFormats;
@@ -3613,7 +3614,7 @@ public unsafe partial struct VkImageFormatListCreateInfo : IStructureType, IChai
 
 public unsafe partial struct VkPhysicalDeviceVulkanMemoryModelFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVulkanMemoryModelFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES;
 	public void* pNext;
 	public VkBool32 vulkanMemoryModel;
 	public VkBool32 vulkanMemoryModelDeviceScope;
@@ -3636,7 +3637,7 @@ public unsafe partial struct VkPhysicalDeviceVulkanMemoryModelFeatures : IStruct
 
 public unsafe partial struct VkPhysicalDeviceHostQueryResetFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceHostQueryResetFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES;
 	public void* pNext;
 	public VkBool32 hostQueryReset;
 
@@ -3657,7 +3658,7 @@ public unsafe partial struct VkPhysicalDeviceHostQueryResetFeatures : IStructure
 
 public unsafe partial struct VkPhysicalDeviceTimelineSemaphoreFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTimelineSemaphoreFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES;
 	public void* pNext;
 	public VkBool32 timelineSemaphore;
 
@@ -3678,7 +3679,7 @@ public unsafe partial struct VkPhysicalDeviceTimelineSemaphoreFeatures : IStruct
 
 public unsafe partial struct VkPhysicalDeviceTimelineSemaphoreProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTimelineSemaphoreProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES;
 	public void* pNext;
 	public ulong maxTimelineSemaphoreValueDifference;
 
@@ -3699,7 +3700,7 @@ public unsafe partial struct VkPhysicalDeviceTimelineSemaphoreProperties : IStru
 
 public unsafe partial struct VkSemaphoreTypeCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SemaphoreTypeCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SEMAPHORE_TYPE_CREATE_INFO;
 	public void* pNext;
 	public VkSemaphoreType semaphoreType;
 	public ulong initialValue;
@@ -3721,7 +3722,7 @@ public unsafe partial struct VkSemaphoreTypeCreateInfo : IStructureType, IChainT
 
 public unsafe partial struct VkTimelineSemaphoreSubmitInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TimelineSemaphoreSubmitInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO;
 	public void* pNext;
 	public uint waitSemaphoreValueCount;
 	public ulong* pWaitSemaphoreValues;
@@ -3745,7 +3746,7 @@ public unsafe partial struct VkTimelineSemaphoreSubmitInfo : IStructureType, ICh
 
 public unsafe partial struct VkSemaphoreWaitInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SemaphoreWaitInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SEMAPHORE_WAIT_INFO;
 	public void* pNext;
 	public VkSemaphoreWaitFlags flags;
 	public uint semaphoreCount;
@@ -3769,7 +3770,7 @@ public unsafe partial struct VkSemaphoreWaitInfo : IStructureType, IChainType
 
 public unsafe partial struct VkSemaphoreSignalInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SemaphoreSignalInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SEMAPHORE_SIGNAL_INFO;
 	public void* pNext;
 	public VkSemaphore semaphore;
 	public ulong value;
@@ -3791,7 +3792,7 @@ public unsafe partial struct VkSemaphoreSignalInfo : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceBufferDeviceAddressFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES;
 	public void* pNext;
 	public VkBool32 bufferDeviceAddress;
 	public VkBool32 bufferDeviceAddressCaptureReplay;
@@ -3814,7 +3815,7 @@ public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressFeatures : IStru
 
 public unsafe partial struct VkBufferDeviceAddressInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferDeviceAddressInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO;
 	public void* pNext;
 	public VkBuffer buffer;
 
@@ -3835,7 +3836,7 @@ public unsafe partial struct VkBufferDeviceAddressInfo : IStructureType, IChainT
 
 public unsafe partial struct VkBufferOpaqueCaptureAddressCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferOpaqueCaptureAddressCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO;
 	public void* pNext;
 	public ulong opaqueCaptureAddress;
 
@@ -3856,7 +3857,7 @@ public unsafe partial struct VkBufferOpaqueCaptureAddressCreateInfo : IStructure
 
 public unsafe partial struct VkMemoryOpaqueCaptureAddressAllocateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryOpaqueCaptureAddressAllocateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO;
 	public void* pNext;
 	public ulong opaqueCaptureAddress;
 
@@ -3877,7 +3878,7 @@ public unsafe partial struct VkMemoryOpaqueCaptureAddressAllocateInfo : IStructu
 
 public unsafe partial struct VkDeviceMemoryOpaqueCaptureAddressInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceMemoryOpaqueCaptureAddressInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO;
 	public void* pNext;
 	public VkDeviceMemory memory;
 
@@ -3898,7 +3899,7 @@ public unsafe partial struct VkDeviceMemoryOpaqueCaptureAddressInfo : IStructure
 
 public unsafe partial struct VkPhysicalDevice8BitStorageFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevice8BitStorageFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES;
 	public void* pNext;
 	public VkBool32 storageBuffer8BitAccess;
 	public VkBool32 uniformAndStorageBuffer8BitAccess;
@@ -3921,7 +3922,7 @@ public unsafe partial struct VkPhysicalDevice8BitStorageFeatures : IStructureTyp
 
 public unsafe partial struct VkPhysicalDeviceShaderAtomicInt64Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderAtomicInt64Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderBufferInt64Atomics;
 	public VkBool32 shaderSharedInt64Atomics;
@@ -3943,7 +3944,7 @@ public unsafe partial struct VkPhysicalDeviceShaderAtomicInt64Features : IStruct
 
 public unsafe partial struct VkPhysicalDeviceShaderFloat16Int8Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderFloat16Int8Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderFloat16;
 	public VkBool32 shaderInt8;
@@ -3965,7 +3966,7 @@ public unsafe partial struct VkPhysicalDeviceShaderFloat16Int8Features : IStruct
 
 public unsafe partial struct VkPhysicalDeviceFloatControlsProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFloatControlsProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES;
 	public void* pNext;
 	public VkShaderFloatControlsIndependence denormBehaviorIndependence;
 	public VkShaderFloatControlsIndependence roundingModeIndependence;
@@ -4002,7 +4003,7 @@ public unsafe partial struct VkPhysicalDeviceFloatControlsProperties : IStructur
 
 public unsafe partial struct VkDescriptorSetLayoutBindingFlagsCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorSetLayoutBindingFlagsCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO;
 	public void* pNext;
 	public uint bindingCount;
 	public VkDescriptorBindingFlags* pBindingFlags;
@@ -4024,7 +4025,7 @@ public unsafe partial struct VkDescriptorSetLayoutBindingFlagsCreateInfo : IStru
 
 public unsafe partial struct VkPhysicalDeviceDescriptorIndexingFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorIndexingFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderInputAttachmentArrayDynamicIndexing;
 	public VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
@@ -4064,7 +4065,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorIndexingFeatures : IStruc
 
 public unsafe partial struct VkPhysicalDeviceDescriptorIndexingProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorIndexingProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES;
 	public void* pNext;
 	public uint maxUpdateAfterBindDescriptorsInAllPools;
 	public VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
@@ -4107,7 +4108,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorIndexingProperties : IStr
 
 public unsafe partial struct VkDescriptorSetVariableDescriptorCountAllocateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorSetVariableDescriptorCountAllocateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO;
 	public void* pNext;
 	public uint descriptorSetCount;
 	public uint* pDescriptorCounts;
@@ -4129,7 +4130,7 @@ public unsafe partial struct VkDescriptorSetVariableDescriptorCountAllocateInfo 
 
 public unsafe partial struct VkDescriptorSetVariableDescriptorCountLayoutSupport : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorSetVariableDescriptorCountLayoutSupport;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT;
 	public void* pNext;
 	public uint maxVariableDescriptorCount;
 
@@ -4150,7 +4151,7 @@ public unsafe partial struct VkDescriptorSetVariableDescriptorCountLayoutSupport
 
 public unsafe partial struct VkPhysicalDeviceScalarBlockLayoutFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceScalarBlockLayoutFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES;
 	public void* pNext;
 	public VkBool32 scalarBlockLayout;
 
@@ -4171,7 +4172,7 @@ public unsafe partial struct VkPhysicalDeviceScalarBlockLayoutFeatures : IStruct
 
 public unsafe partial struct VkSamplerReductionModeCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerReductionModeCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO;
 	public void* pNext;
 	public VkSamplerReductionMode reductionMode;
 
@@ -4192,7 +4193,7 @@ public unsafe partial struct VkSamplerReductionModeCreateInfo : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceSamplerFilterMinmaxProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSamplerFilterMinmaxProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES;
 	public void* pNext;
 	public VkBool32 filterMinmaxSingleComponentFormats;
 	public VkBool32 filterMinmaxImageComponentMapping;
@@ -4214,7 +4215,7 @@ public unsafe partial struct VkPhysicalDeviceSamplerFilterMinmaxProperties : ISt
 
 public unsafe partial struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceUniformBufferStandardLayoutFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES;
 	public void* pNext;
 	public VkBool32 uniformBufferStandardLayout;
 
@@ -4235,7 +4236,7 @@ public unsafe partial struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures
 
 public unsafe partial struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderSubgroupExtendedTypesFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderSubgroupExtendedTypes;
 
@@ -4256,7 +4257,7 @@ public unsafe partial struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures
 
 public unsafe partial struct VkAttachmentDescription2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AttachmentDescription2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2;
 	public void* pNext;
 	public VkAttachmentDescriptionFlags flags;
 	public VkFormat format;
@@ -4285,7 +4286,7 @@ public unsafe partial struct VkAttachmentDescription2 : IStructureType, IChainTy
 
 public unsafe partial struct VkAttachmentReference2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AttachmentReference2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2;
 	public void* pNext;
 	public uint attachment;
 	public VkImageLayout layout;
@@ -4308,7 +4309,7 @@ public unsafe partial struct VkAttachmentReference2 : IStructureType, IChainType
 
 public unsafe partial struct VkSubpassDescription2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubpassDescription2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2;
 	public void* pNext;
 	public VkSubpassDescriptionFlags flags;
 	public VkPipelineBindPoint pipelineBindPoint;
@@ -4339,7 +4340,7 @@ public unsafe partial struct VkSubpassDescription2 : IStructureType, IChainType
 
 public unsafe partial struct VkSubpassDependency2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubpassDependency2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2;
 	public void* pNext;
 	public uint srcSubpass;
 	public uint dstSubpass;
@@ -4367,7 +4368,7 @@ public unsafe partial struct VkSubpassDependency2 : IStructureType, IChainType
 
 public unsafe partial struct VkSubpassBeginInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubpassBeginInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO;
 	public void* pNext;
 	public VkSubpassContents contents;
 
@@ -4388,7 +4389,7 @@ public unsafe partial struct VkSubpassBeginInfo : IStructureType, IChainType
 
 public unsafe partial struct VkSubpassEndInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubpassEndInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBPASS_END_INFO;
 	public void* pNext;
 
 	public VkSubpassEndInfo()
@@ -4408,7 +4409,7 @@ public unsafe partial struct VkSubpassEndInfo : IStructureType, IChainType
 
 public unsafe partial struct VkRenderPassCreateInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassCreateInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2;
 	public void* pNext;
 	public VkRenderPassCreateFlags flags;
 	public uint attachmentCount;
@@ -4437,7 +4438,7 @@ public unsafe partial struct VkRenderPassCreateInfo2 : IStructureType, IChainTyp
 
 public unsafe partial struct VkSubpassDescriptionDepthStencilResolve : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubpassDescriptionDepthStencilResolve;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE;
 	public void* pNext;
 	public VkResolveModeFlags depthResolveMode;
 	public VkResolveModeFlags stencilResolveMode;
@@ -4460,7 +4461,7 @@ public unsafe partial struct VkSubpassDescriptionDepthStencilResolve : IStructur
 
 public unsafe partial struct VkPhysicalDeviceDepthStencilResolveProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDepthStencilResolveProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES;
 	public void* pNext;
 	public VkResolveModeFlags supportedDepthResolveModes;
 	public VkResolveModeFlags supportedStencilResolveModes;
@@ -4484,7 +4485,7 @@ public unsafe partial struct VkPhysicalDeviceDepthStencilResolveProperties : ISt
 
 public unsafe partial struct VkImageStencilUsageCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageStencilUsageCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO;
 	public void* pNext;
 	public VkImageUsageFlags stencilUsage;
 
@@ -4505,7 +4506,7 @@ public unsafe partial struct VkImageStencilUsageCreateInfo : IStructureType, ICh
 
 public unsafe partial struct VkPhysicalDeviceImagelessFramebufferFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImagelessFramebufferFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES;
 	public void* pNext;
 	public VkBool32 imagelessFramebuffer;
 
@@ -4526,7 +4527,7 @@ public unsafe partial struct VkPhysicalDeviceImagelessFramebufferFeatures : IStr
 
 public unsafe partial struct VkFramebufferAttachmentImageInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FramebufferAttachmentImageInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENT_IMAGE_INFO;
 	public void* pNext;
 	public VkImageCreateFlags flags;
 	public VkImageUsageFlags usage;
@@ -4553,7 +4554,7 @@ public unsafe partial struct VkFramebufferAttachmentImageInfo : IStructureType, 
 
 public unsafe partial struct VkRenderPassAttachmentBeginInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassAttachmentBeginInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO;
 	public void* pNext;
 	public uint attachmentCount;
 	public VkImageView* pAttachments;
@@ -4575,7 +4576,7 @@ public unsafe partial struct VkRenderPassAttachmentBeginInfo : IStructureType, I
 
 public unsafe partial struct VkFramebufferAttachmentsCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FramebufferAttachmentsCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO;
 	public void* pNext;
 	public uint attachmentImageInfoCount;
 	public VkFramebufferAttachmentImageInfo* pAttachmentImageInfos;
@@ -4597,7 +4598,7 @@ public unsafe partial struct VkFramebufferAttachmentsCreateInfo : IStructureType
 
 public unsafe partial struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSeparateDepthStencilLayoutsFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES;
 	public void* pNext;
 	public VkBool32 separateDepthStencilLayouts;
 
@@ -4618,7 +4619,7 @@ public unsafe partial struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures
 
 public unsafe partial struct VkAttachmentReferenceStencilLayout : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AttachmentReferenceStencilLayout;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_STENCIL_LAYOUT;
 	public void* pNext;
 	public VkImageLayout stencilLayout;
 
@@ -4639,7 +4640,7 @@ public unsafe partial struct VkAttachmentReferenceStencilLayout : IStructureType
 
 public unsafe partial struct VkAttachmentDescriptionStencilLayout : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AttachmentDescriptionStencilLayout;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT;
 	public void* pNext;
 	public VkImageLayout stencilInitialLayout;
 	public VkImageLayout stencilFinalLayout;
@@ -4661,7 +4662,7 @@ public unsafe partial struct VkAttachmentDescriptionStencilLayout : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceVulkan13Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVulkan13Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES;
 	public void* pNext;
 	public VkBool32 robustImageAccess;
 	public VkBool32 inlineUniformBlock;
@@ -4696,7 +4697,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan13Features : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceVulkan13Properties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVulkan13Properties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES;
 	public void* pNext;
 	public uint minSubgroupSize;
 	public uint maxSubgroupSize;
@@ -4761,7 +4762,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan13Properties : IStructureType
 
 public unsafe partial struct VkPhysicalDeviceToolProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceToolProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TOOL_PROPERTIES;
 	public void* pNext;
 	public fixed byte name[256];
 	public fixed byte version[256];
@@ -4786,7 +4787,7 @@ public unsafe partial struct VkPhysicalDeviceToolProperties : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDevicePrivateDataFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePrivateDataFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_FEATURES;
 	public void* pNext;
 	public VkBool32 privateData;
 
@@ -4807,7 +4808,7 @@ public unsafe partial struct VkPhysicalDevicePrivateDataFeatures : IStructureTyp
 
 public unsafe partial struct VkDevicePrivateDataCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DevicePrivateDataCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO;
 	public void* pNext;
 	public uint privateDataSlotRequestCount;
 
@@ -4828,7 +4829,7 @@ public unsafe partial struct VkDevicePrivateDataCreateInfo : IStructureType, ICh
 
 public unsafe partial struct VkPrivateDataSlotCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PrivateDataSlotCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO;
 	public void* pNext;
 	public VkPrivateDataSlotCreateFlags flags;
 
@@ -4849,7 +4850,7 @@ public unsafe partial struct VkPrivateDataSlotCreateInfo : IStructureType, IChai
 
 public unsafe partial struct VkMemoryBarrier2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryBarrier2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_BARRIER_2;
 	public void* pNext;
 	public VkPipelineStageFlags2 srcStageMask;
 	public VkAccessFlags2 srcAccessMask;
@@ -4873,7 +4874,7 @@ public unsafe partial struct VkMemoryBarrier2 : IStructureType, IChainType
 
 public unsafe partial struct VkBufferMemoryBarrier2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferMemoryBarrier2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER_2;
 	public void* pNext;
 	public VkPipelineStageFlags2 srcStageMask;
 	public VkAccessFlags2 srcAccessMask;
@@ -4902,7 +4903,7 @@ public unsafe partial struct VkBufferMemoryBarrier2 : IStructureType, IChainType
 
 public unsafe partial struct VkImageMemoryBarrier2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageMemoryBarrier2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER_2;
 	public void* pNext;
 	public VkPipelineStageFlags2 srcStageMask;
 	public VkAccessFlags2 srcAccessMask;
@@ -4932,7 +4933,7 @@ public unsafe partial struct VkImageMemoryBarrier2 : IStructureType, IChainType
 
 public unsafe partial struct VkDependencyInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DependencyInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEPENDENCY_INFO;
 	public void* pNext;
 	public VkDependencyFlags dependencyFlags;
 	public uint memoryBarrierCount;
@@ -4959,7 +4960,7 @@ public unsafe partial struct VkDependencyInfo : IStructureType, IChainType
 
 public unsafe partial struct VkSemaphoreSubmitInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SemaphoreSubmitInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SEMAPHORE_SUBMIT_INFO;
 	public void* pNext;
 	public VkSemaphore semaphore;
 	public ulong value;
@@ -4983,7 +4984,7 @@ public unsafe partial struct VkSemaphoreSubmitInfo : IStructureType, IChainType
 
 public unsafe partial struct VkCommandBufferSubmitInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CommandBufferSubmitInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO;
 	public void* pNext;
 	public VkCommandBuffer commandBuffer;
 	public uint deviceMask;
@@ -5005,7 +5006,7 @@ public unsafe partial struct VkCommandBufferSubmitInfo : IStructureType, IChainT
 
 public unsafe partial struct VkSubmitInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubmitInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBMIT_INFO_2;
 	public void* pNext;
 	public VkSubmitFlags flags;
 	public uint waitSemaphoreInfoCount;
@@ -5032,7 +5033,7 @@ public unsafe partial struct VkSubmitInfo2 : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceSynchronization2Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSynchronization2Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES;
 	public void* pNext;
 	public VkBool32 synchronization2;
 
@@ -5053,7 +5054,7 @@ public unsafe partial struct VkPhysicalDeviceSynchronization2Features : IStructu
 
 public unsafe partial struct VkBufferCopy2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferCopy2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_COPY_2;
 	public void* pNext;
 	public ulong srcOffset;
 	public ulong dstOffset;
@@ -5076,7 +5077,7 @@ public unsafe partial struct VkBufferCopy2 : IStructureType, IChainType
 
 public unsafe partial struct VkCopyBufferInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyBufferInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_BUFFER_INFO_2;
 	public void* pNext;
 	public VkBuffer srcBuffer;
 	public VkBuffer dstBuffer;
@@ -5100,7 +5101,7 @@ public unsafe partial struct VkCopyBufferInfo2 : IStructureType, IChainType
 
 public unsafe partial struct VkImageCopy2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageCopy2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_COPY_2;
 	public void* pNext;
 	public VkImageSubresourceLayers srcSubresource;
 	public VkOffset3D srcOffset;
@@ -5125,7 +5126,7 @@ public unsafe partial struct VkImageCopy2 : IStructureType, IChainType
 
 public unsafe partial struct VkCopyImageInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyImageInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_IMAGE_INFO_2;
 	public void* pNext;
 	public VkImage srcImage;
 	public VkImageLayout srcImageLayout;
@@ -5151,7 +5152,7 @@ public unsafe partial struct VkCopyImageInfo2 : IStructureType, IChainType
 
 public unsafe partial struct VkBufferImageCopy2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferImageCopy2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2;
 	public void* pNext;
 	public ulong bufferOffset;
 	public uint bufferRowLength;
@@ -5177,7 +5178,7 @@ public unsafe partial struct VkBufferImageCopy2 : IStructureType, IChainType
 
 public unsafe partial struct VkCopyBufferToImageInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyBufferToImageInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_BUFFER_TO_IMAGE_INFO_2;
 	public void* pNext;
 	public VkBuffer srcBuffer;
 	public VkImage dstImage;
@@ -5202,7 +5203,7 @@ public unsafe partial struct VkCopyBufferToImageInfo2 : IStructureType, IChainTy
 
 public unsafe partial struct VkCopyImageToBufferInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyImageToBufferInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_IMAGE_TO_BUFFER_INFO_2;
 	public void* pNext;
 	public VkImage srcImage;
 	public VkImageLayout srcImageLayout;
@@ -5227,7 +5228,7 @@ public unsafe partial struct VkCopyImageToBufferInfo2 : IStructureType, IChainTy
 
 public unsafe partial struct VkPhysicalDeviceTextureCompressionASTCHDRFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTextureCompressionASTCHDRFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES;
 	public void* pNext;
 	public VkBool32 textureCompressionASTC_HDR;
 
@@ -5248,7 +5249,7 @@ public unsafe partial struct VkPhysicalDeviceTextureCompressionASTCHDRFeatures :
 
 public unsafe partial struct VkFormatProperties3 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FormatProperties3;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3;
 	public void* pNext;
 	public VkFormatFeatureFlags2 linearTilingFeatures;
 	public VkFormatFeatureFlags2 optimalTilingFeatures;
@@ -5271,7 +5272,7 @@ public unsafe partial struct VkFormatProperties3 : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceMaintenance4Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance4Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES;
 	public void* pNext;
 	public VkBool32 maintenance4;
 
@@ -5292,7 +5293,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance4Features : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceMaintenance4Properties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance4Properties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES;
 	public void* pNext;
 	public ulong maxBufferSize;
 
@@ -5313,7 +5314,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance4Properties : IStructure
 
 public unsafe partial struct VkDeviceBufferMemoryRequirements : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceBufferMemoryRequirements;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS;
 	public void* pNext;
 	public VkBufferCreateInfo* pCreateInfo;
 
@@ -5334,7 +5335,7 @@ public unsafe partial struct VkDeviceBufferMemoryRequirements : IStructureType, 
 
 public unsafe partial struct VkDeviceImageMemoryRequirements : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceImageMemoryRequirements;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS;
 	public void* pNext;
 	public VkImageCreateInfo* pCreateInfo;
 	public VkImageAspectFlags planeAspect;
@@ -5362,7 +5363,7 @@ public partial struct VkPipelineCreationFeedback
 
 public unsafe partial struct VkPipelineCreationFeedbackCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineCreationFeedbackCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineCreationFeedback* pPipelineCreationFeedback;
 	public uint pipelineStageCreationFeedbackCount;
@@ -5385,7 +5386,7 @@ public unsafe partial struct VkPipelineCreationFeedbackCreateInfo : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceShaderTerminateInvocationFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderTerminateInvocationFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TERMINATE_INVOCATION_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderTerminateInvocation;
 
@@ -5406,7 +5407,7 @@ public unsafe partial struct VkPhysicalDeviceShaderTerminateInvocationFeatures :
 
 public unsafe partial struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderDemoteToHelperInvocationFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderDemoteToHelperInvocation;
 
@@ -5427,7 +5428,7 @@ public unsafe partial struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeatu
 
 public unsafe partial struct VkPhysicalDevicePipelineCreationCacheControlFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineCreationCacheControlFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES;
 	public void* pNext;
 	public VkBool32 pipelineCreationCacheControl;
 
@@ -5448,7 +5449,7 @@ public unsafe partial struct VkPhysicalDevicePipelineCreationCacheControlFeature
 
 public unsafe partial struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderZeroInitializeWorkgroupMemory;
 
@@ -5469,7 +5470,7 @@ public unsafe partial struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatur
 
 public unsafe partial struct VkPhysicalDeviceImageRobustnessFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageRobustnessFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ROBUSTNESS_FEATURES;
 	public void* pNext;
 	public VkBool32 robustImageAccess;
 
@@ -5490,7 +5491,7 @@ public unsafe partial struct VkPhysicalDeviceImageRobustnessFeatures : IStructur
 
 public unsafe partial struct VkPhysicalDeviceSubgroupSizeControlFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSubgroupSizeControlFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_FEATURES;
 	public void* pNext;
 	public VkBool32 subgroupSizeControl;
 	public VkBool32 computeFullSubgroups;
@@ -5512,7 +5513,7 @@ public unsafe partial struct VkPhysicalDeviceSubgroupSizeControlFeatures : IStru
 
 public unsafe partial struct VkPhysicalDeviceSubgroupSizeControlProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSubgroupSizeControlProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES;
 	public void* pNext;
 	public uint minSubgroupSize;
 	public uint maxSubgroupSize;
@@ -5536,7 +5537,7 @@ public unsafe partial struct VkPhysicalDeviceSubgroupSizeControlProperties : ISt
 
 public unsafe partial struct VkPipelineShaderStageRequiredSubgroupSizeCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineShaderStageRequiredSubgroupSizeCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO;
 	public void* pNext;
 	public uint requiredSubgroupSize;
 
@@ -5557,7 +5558,7 @@ public unsafe partial struct VkPipelineShaderStageRequiredSubgroupSizeCreateInfo
 
 public unsafe partial struct VkPhysicalDeviceInlineUniformBlockFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceInlineUniformBlockFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES;
 	public void* pNext;
 	public VkBool32 inlineUniformBlock;
 	public VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
@@ -5579,7 +5580,7 @@ public unsafe partial struct VkPhysicalDeviceInlineUniformBlockFeatures : IStruc
 
 public unsafe partial struct VkPhysicalDeviceInlineUniformBlockProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceInlineUniformBlockProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES;
 	public void* pNext;
 	public uint maxInlineUniformBlockSize;
 	public uint maxPerStageDescriptorInlineUniformBlocks;
@@ -5604,7 +5605,7 @@ public unsafe partial struct VkPhysicalDeviceInlineUniformBlockProperties : IStr
 
 public unsafe partial struct VkWriteDescriptorSetInlineUniformBlock : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.WriteDescriptorSetInlineUniformBlock;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK;
 	public void* pNext;
 	public uint dataSize;
 	public void* pData;
@@ -5626,7 +5627,7 @@ public unsafe partial struct VkWriteDescriptorSetInlineUniformBlock : IStructure
 
 public unsafe partial struct VkDescriptorPoolInlineUniformBlockCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorPoolInlineUniformBlockCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO;
 	public void* pNext;
 	public uint maxInlineUniformBlockBindings;
 
@@ -5647,7 +5648,7 @@ public unsafe partial struct VkDescriptorPoolInlineUniformBlockCreateInfo : IStr
 
 public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderIntegerDotProduct;
 
@@ -5668,7 +5669,7 @@ public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductFeatures : I
 
 public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderIntegerDotProductProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES;
 	public void* pNext;
 	public VkBool32 integerDotProduct8BitUnsignedAccelerated;
 	public VkBool32 integerDotProduct8BitSignedAccelerated;
@@ -5718,7 +5719,7 @@ public unsafe partial struct VkPhysicalDeviceShaderIntegerDotProductProperties :
 
 public unsafe partial struct VkPhysicalDeviceTexelBufferAlignmentProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES;
 	public void* pNext;
 	public ulong storageTexelBufferOffsetAlignmentBytes;
 	public VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
@@ -5742,7 +5743,7 @@ public unsafe partial struct VkPhysicalDeviceTexelBufferAlignmentProperties : IS
 
 public unsafe partial struct VkImageBlit2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageBlit2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_BLIT_2;
 	public void* pNext;
 	public VkImageSubresourceLayers srcSubresource;
 	public srcOffsets__FixedBuffer srcOffsets;
@@ -5778,7 +5779,7 @@ public unsafe partial struct VkImageBlit2 : IStructureType, IChainType
 
 public unsafe partial struct VkBlitImageInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BlitImageInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BLIT_IMAGE_INFO_2;
 	public void* pNext;
 	public VkImage srcImage;
 	public VkImageLayout srcImageLayout;
@@ -5805,7 +5806,7 @@ public unsafe partial struct VkBlitImageInfo2 : IStructureType, IChainType
 
 public unsafe partial struct VkImageResolve2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageResolve2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_RESOLVE_2;
 	public void* pNext;
 	public VkImageSubresourceLayers srcSubresource;
 	public VkOffset3D srcOffset;
@@ -5830,7 +5831,7 @@ public unsafe partial struct VkImageResolve2 : IStructureType, IChainType
 
 public unsafe partial struct VkResolveImageInfo2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ResolveImageInfo2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RESOLVE_IMAGE_INFO_2;
 	public void* pNext;
 	public VkImage srcImage;
 	public VkImageLayout srcImageLayout;
@@ -5856,7 +5857,7 @@ public unsafe partial struct VkResolveImageInfo2 : IStructureType, IChainType
 
 public unsafe partial struct VkRenderingAttachmentInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderingAttachmentInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO;
 	public void* pNext;
 	public VkImageView imageView;
 	public VkImageLayout imageLayout;
@@ -5884,7 +5885,7 @@ public unsafe partial struct VkRenderingAttachmentInfo : IStructureType, IChainT
 
 public unsafe partial struct VkRenderingInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderingInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDERING_INFO;
 	public void* pNext;
 	public VkRenderingFlags flags;
 	public VkRect2D renderArea;
@@ -5912,7 +5913,7 @@ public unsafe partial struct VkRenderingInfo : IStructureType, IChainType
 
 public unsafe partial struct VkPipelineRenderingCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineRenderingCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO;
 	public void* pNext;
 	public uint viewMask;
 	public uint colorAttachmentCount;
@@ -5937,7 +5938,7 @@ public unsafe partial struct VkPipelineRenderingCreateInfo : IStructureType, ICh
 
 public unsafe partial struct VkPhysicalDeviceDynamicRenderingFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDynamicRenderingFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES;
 	public void* pNext;
 	public VkBool32 dynamicRendering;
 
@@ -5958,7 +5959,7 @@ public unsafe partial struct VkPhysicalDeviceDynamicRenderingFeatures : IStructu
 
 public unsafe partial struct VkCommandBufferInheritanceRenderingInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CommandBufferInheritanceRenderingInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO;
 	public void* pNext;
 	public VkRenderingFlags flags;
 	public uint viewMask;
@@ -5985,7 +5986,7 @@ public unsafe partial struct VkCommandBufferInheritanceRenderingInfo : IStructur
 
 public unsafe partial struct VkPhysicalDeviceVulkan14Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVulkan14Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_FEATURES;
 	public void* pNext;
 	public VkBool32 globalPriorityQuery;
 	public VkBool32 shaderSubgroupRotate;
@@ -6026,7 +6027,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan14Features : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceVulkan14Properties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVulkan14Properties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES;
 	public void* pNext;
 	public uint lineSubPixelPrecisionBits;
 	public uint maxVertexAttribDivisor;
@@ -6071,7 +6072,7 @@ public unsafe partial struct VkPhysicalDeviceVulkan14Properties : IStructureType
 
 public unsafe partial struct VkDeviceQueueGlobalPriorityCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceQueueGlobalPriorityCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO;
 	public void* pNext;
 	public VkQueueGlobalPriority globalPriority;
 
@@ -6092,7 +6093,7 @@ public unsafe partial struct VkDeviceQueueGlobalPriorityCreateInfo : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceGlobalPriorityQueryFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceGlobalPriorityQueryFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES;
 	public void* pNext;
 	public VkBool32 globalPriorityQuery;
 
@@ -6113,7 +6114,7 @@ public unsafe partial struct VkPhysicalDeviceGlobalPriorityQueryFeatures : IStru
 
 public unsafe partial struct VkQueueFamilyGlobalPriorityProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyGlobalPriorityProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES;
 	public void* pNext;
 	public uint priorityCount;
 	public priorities__FixedBuffer priorities;
@@ -6141,7 +6142,7 @@ public unsafe partial struct VkQueueFamilyGlobalPriorityProperties : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceIndexTypeUint8Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceIndexTypeUint8Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES;
 	public void* pNext;
 	public VkBool32 indexTypeUint8;
 
@@ -6162,7 +6163,7 @@ public unsafe partial struct VkPhysicalDeviceIndexTypeUint8Features : IStructure
 
 public unsafe partial struct VkMemoryMapInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryMapInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_MAP_INFO;
 	public void* pNext;
 	public VkMemoryMapFlags flags;
 	public VkDeviceMemory memory;
@@ -6186,7 +6187,7 @@ public unsafe partial struct VkMemoryMapInfo : IStructureType, IChainType
 
 public unsafe partial struct VkMemoryUnmapInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryUnmapInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO;
 	public void* pNext;
 	public VkMemoryUnmapFlags flags;
 	public VkDeviceMemory memory;
@@ -6208,7 +6209,7 @@ public unsafe partial struct VkMemoryUnmapInfo : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceMaintenance5Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance5Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES;
 	public void* pNext;
 	public VkBool32 maintenance5;
 
@@ -6229,7 +6230,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance5Features : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceMaintenance5Properties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance5Properties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES;
 	public void* pNext;
 	public VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
 	public VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
@@ -6255,7 +6256,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance5Properties : IStructure
 
 public unsafe partial struct VkSubresourceLayout2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubresourceLayout2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2;
 	public void* pNext;
 	public VkSubresourceLayout subresourceLayout;
 
@@ -6276,7 +6277,7 @@ public unsafe partial struct VkSubresourceLayout2 : IStructureType, IChainType
 
 public unsafe partial struct VkImageSubresource2 : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageSubresource2;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2;
 	public void* pNext;
 	public VkImageSubresource imageSubresource;
 
@@ -6297,7 +6298,7 @@ public unsafe partial struct VkImageSubresource2 : IStructureType, IChainType
 
 public unsafe partial struct VkDeviceImageSubresourceInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceImageSubresourceInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_IMAGE_SUBRESOURCE_INFO;
 	public void* pNext;
 	public VkImageCreateInfo* pCreateInfo;
 	public VkImageSubresource2* pSubresource;
@@ -6319,7 +6320,7 @@ public unsafe partial struct VkDeviceImageSubresourceInfo : IStructureType, ICha
 
 public unsafe partial struct VkBufferUsageFlags2CreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferUsageFlags2CreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO;
 	public void* pNext;
 	public VkBufferUsageFlags2 usage;
 
@@ -6340,7 +6341,7 @@ public unsafe partial struct VkBufferUsageFlags2CreateInfo : IStructureType, ICh
 
 public unsafe partial struct VkPhysicalDeviceMaintenance6Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance6Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES;
 	public void* pNext;
 	public VkBool32 maintenance6;
 
@@ -6361,7 +6362,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance6Features : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceMaintenance6Properties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance6Properties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES;
 	public void* pNext;
 	public VkBool32 blockTexelViewCompatibleMultipleLayers;
 	public uint maxCombinedImageSamplerDescriptorCount;
@@ -6384,7 +6385,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance6Properties : IStructure
 
 public unsafe partial struct VkBindMemoryStatus : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindMemoryStatus;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS;
 	public void* pNext;
 	public VkResult* pResult;
 
@@ -6405,7 +6406,7 @@ public unsafe partial struct VkBindMemoryStatus : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceHostImageCopyFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceHostImageCopyFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES;
 	public void* pNext;
 	public VkBool32 hostImageCopy;
 
@@ -6426,7 +6427,7 @@ public unsafe partial struct VkPhysicalDeviceHostImageCopyFeatures : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceHostImageCopyProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceHostImageCopyProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES;
 	public void* pNext;
 	public uint copySrcLayoutCount;
 	public VkImageLayout* pCopySrcLayouts;
@@ -6452,7 +6453,7 @@ public unsafe partial struct VkPhysicalDeviceHostImageCopyProperties : IStructur
 
 public unsafe partial struct VkMemoryToImageCopy : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryToImageCopy;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_TO_IMAGE_COPY;
 	public void* pNext;
 	public void* pHostPointer;
 	public uint memoryRowLength;
@@ -6478,7 +6479,7 @@ public unsafe partial struct VkMemoryToImageCopy : IStructureType, IChainType
 
 public unsafe partial struct VkImageToMemoryCopy : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageToMemoryCopy;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_TO_MEMORY_COPY;
 	public void* pNext;
 	public void* pHostPointer;
 	public uint memoryRowLength;
@@ -6504,7 +6505,7 @@ public unsafe partial struct VkImageToMemoryCopy : IStructureType, IChainType
 
 public unsafe partial struct VkCopyMemoryToImageInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyMemoryToImageInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INFO;
 	public void* pNext;
 	public VkHostImageCopyFlags flags;
 	public VkImage dstImage;
@@ -6529,7 +6530,7 @@ public unsafe partial struct VkCopyMemoryToImageInfo : IStructureType, IChainTyp
 
 public unsafe partial struct VkCopyImageToMemoryInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyImageToMemoryInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_IMAGE_TO_MEMORY_INFO;
 	public void* pNext;
 	public VkHostImageCopyFlags flags;
 	public VkImage srcImage;
@@ -6554,7 +6555,7 @@ public unsafe partial struct VkCopyImageToMemoryInfo : IStructureType, IChainTyp
 
 public unsafe partial struct VkCopyImageToImageInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyImageToImageInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_IMAGE_TO_IMAGE_INFO;
 	public void* pNext;
 	public VkHostImageCopyFlags flags;
 	public VkImage srcImage;
@@ -6581,7 +6582,7 @@ public unsafe partial struct VkCopyImageToImageInfo : IStructureType, IChainType
 
 public unsafe partial struct VkHostImageLayoutTransitionInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.HostImageLayoutTransitionInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_HOST_IMAGE_LAYOUT_TRANSITION_INFO;
 	public void* pNext;
 	public VkImage image;
 	public VkImageLayout oldLayout;
@@ -6605,7 +6606,7 @@ public unsafe partial struct VkHostImageLayoutTransitionInfo : IStructureType, I
 
 public unsafe partial struct VkSubresourceHostMemcpySize : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubresourceHostMemcpySize;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE;
 	public void* pNext;
 	public ulong size;
 
@@ -6626,7 +6627,7 @@ public unsafe partial struct VkSubresourceHostMemcpySize : IStructureType, IChai
 
 public unsafe partial struct VkHostImageCopyDevicePerformanceQuery : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.HostImageCopyDevicePerformanceQuery;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY;
 	public void* pNext;
 	public VkBool32 optimalDeviceAccess;
 	public VkBool32 identicalMemoryLayout;
@@ -6648,7 +6649,7 @@ public unsafe partial struct VkHostImageCopyDevicePerformanceQuery : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceShaderSubgroupRotateFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderSubgroupRotateFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderSubgroupRotate;
 	public VkBool32 shaderSubgroupRotateClustered;
@@ -6670,7 +6671,7 @@ public unsafe partial struct VkPhysicalDeviceShaderSubgroupRotateFeatures : IStr
 
 public unsafe partial struct VkPhysicalDeviceShaderFloatControls2Features : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderFloatControls2Features;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT_CONTROLS_2_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderFloatControls2;
 
@@ -6691,7 +6692,7 @@ public unsafe partial struct VkPhysicalDeviceShaderFloatControls2Features : IStr
 
 public unsafe partial struct VkPhysicalDeviceShaderExpectAssumeFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderExpectAssumeFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES;
 	public void* pNext;
 	public VkBool32 shaderExpectAssume;
 
@@ -6712,7 +6713,7 @@ public unsafe partial struct VkPhysicalDeviceShaderExpectAssumeFeatures : IStruc
 
 public unsafe partial struct VkPipelineCreateFlags2CreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineCreateFlags2CreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineCreateFlags2 flags;
 
@@ -6733,7 +6734,7 @@ public unsafe partial struct VkPipelineCreateFlags2CreateInfo : IStructureType, 
 
 public unsafe partial struct VkPhysicalDevicePushDescriptorProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePushDescriptorProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES;
 	public void* pNext;
 	public uint maxPushDescriptors;
 
@@ -6754,7 +6755,7 @@ public unsafe partial struct VkPhysicalDevicePushDescriptorProperties : IStructu
 
 public unsafe partial struct VkBindDescriptorSetsInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindDescriptorSetsInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO;
 	public void* pNext;
 	public VkShaderStageFlags stageFlags;
 	public VkPipelineLayout layout;
@@ -6781,7 +6782,7 @@ public unsafe partial struct VkBindDescriptorSetsInfo : IStructureType, IChainTy
 
 public unsafe partial struct VkPushConstantsInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PushConstantsInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO;
 	public void* pNext;
 	public VkPipelineLayout layout;
 	public VkShaderStageFlags stageFlags;
@@ -6806,7 +6807,7 @@ public unsafe partial struct VkPushConstantsInfo : IStructureType, IChainType
 
 public unsafe partial struct VkPushDescriptorSetInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PushDescriptorSetInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO;
 	public void* pNext;
 	public VkShaderStageFlags stageFlags;
 	public VkPipelineLayout layout;
@@ -6831,7 +6832,7 @@ public unsafe partial struct VkPushDescriptorSetInfo : IStructureType, IChainTyp
 
 public unsafe partial struct VkPushDescriptorSetWithTemplateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PushDescriptorSetWithTemplateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO;
 	public void* pNext;
 	public VkDescriptorUpdateTemplate descriptorUpdateTemplate;
 	public VkPipelineLayout layout;
@@ -6855,7 +6856,7 @@ public unsafe partial struct VkPushDescriptorSetWithTemplateInfo : IStructureTyp
 
 public unsafe partial struct VkPhysicalDevicePipelineProtectedAccessFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineProtectedAccessFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES;
 	public void* pNext;
 	public VkBool32 pipelineProtectedAccess;
 
@@ -6876,7 +6877,7 @@ public unsafe partial struct VkPhysicalDevicePipelineProtectedAccessFeatures : I
 
 public unsafe partial struct VkPhysicalDevicePipelineRobustnessFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineRobustnessFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES;
 	public void* pNext;
 	public VkBool32 pipelineRobustness;
 
@@ -6897,7 +6898,7 @@ public unsafe partial struct VkPhysicalDevicePipelineRobustnessFeatures : IStruc
 
 public unsafe partial struct VkPhysicalDevicePipelineRobustnessProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineRobustnessProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES;
 	public void* pNext;
 	public VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
 	public VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
@@ -6921,7 +6922,7 @@ public unsafe partial struct VkPhysicalDevicePipelineRobustnessProperties : IStr
 
 public unsafe partial struct VkPipelineRobustnessCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineRobustnessCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO;
 	public void* pNext;
 	public VkPipelineRobustnessBufferBehavior storageBuffers;
 	public VkPipelineRobustnessBufferBehavior uniformBuffers;
@@ -6945,7 +6946,7 @@ public unsafe partial struct VkPipelineRobustnessCreateInfo : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDeviceLineRasterizationFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLineRasterizationFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES;
 	public void* pNext;
 	public VkBool32 rectangularLines;
 	public VkBool32 bresenhamLines;
@@ -6971,7 +6972,7 @@ public unsafe partial struct VkPhysicalDeviceLineRasterizationFeatures : IStruct
 
 public unsafe partial struct VkPhysicalDeviceLineRasterizationProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLineRasterizationProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES;
 	public void* pNext;
 	public uint lineSubPixelPrecisionBits;
 
@@ -6992,7 +6993,7 @@ public unsafe partial struct VkPhysicalDeviceLineRasterizationProperties : IStru
 
 public unsafe partial struct VkPipelineRasterizationLineStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineRasterizationLineStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO;
 	public void* pNext;
 	public VkLineRasterizationMode lineRasterizationMode;
 	public VkBool32 stippledLineEnable;
@@ -7016,7 +7017,7 @@ public unsafe partial struct VkPipelineRasterizationLineStateCreateInfo : IStruc
 
 public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorProperties : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorProperties;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES;
 	public void* pNext;
 	public uint maxVertexAttribDivisor;
 	public VkBool32 supportsNonZeroFirstInstance;
@@ -7044,7 +7045,7 @@ public partial struct VkVertexInputBindingDivisorDescription
 
 public unsafe partial struct VkPipelineVertexInputDivisorStateCreateInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineVertexInputDivisorStateCreateInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO;
 	public void* pNext;
 	public uint vertexBindingDivisorCount;
 	public VkVertexInputBindingDivisorDescription* pVertexBindingDivisors;
@@ -7066,7 +7067,7 @@ public unsafe partial struct VkPipelineVertexInputDivisorStateCreateInfo : IStru
 
 public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES;
 	public void* pNext;
 	public VkBool32 vertexAttributeInstanceRateDivisor;
 	public VkBool32 vertexAttributeInstanceRateZeroDivisor;
@@ -7088,7 +7089,7 @@ public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorFeatures : IS
 
 public unsafe partial struct VkRenderingAreaInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderingAreaInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDERING_AREA_INFO;
 	public void* pNext;
 	public uint viewMask;
 	public uint colorAttachmentCount;
@@ -7113,7 +7114,7 @@ public unsafe partial struct VkRenderingAreaInfo : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceDynamicRenderingLocalReadFeatures : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDynamicRenderingLocalReadFeatures;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES;
 	public void* pNext;
 	public VkBool32 dynamicRenderingLocalRead;
 
@@ -7134,7 +7135,7 @@ public unsafe partial struct VkPhysicalDeviceDynamicRenderingLocalReadFeatures :
 
 public unsafe partial struct VkRenderingAttachmentLocationInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderingAttachmentLocationInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO;
 	public void* pNext;
 	public uint colorAttachmentCount;
 	public uint* pColorAttachmentLocations;
@@ -7156,7 +7157,7 @@ public unsafe partial struct VkRenderingAttachmentLocationInfo : IStructureType,
 
 public unsafe partial struct VkRenderingInputAttachmentIndexInfo : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderingInputAttachmentIndexInfo;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO;
 	public void* pNext;
 	public uint colorAttachmentCount;
 	public uint* pColorAttachmentInputIndices;
@@ -7200,7 +7201,7 @@ public partial struct VkSurfaceFormatKHR
 
 public unsafe partial struct VkSwapchainCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkSwapchainCreateFlagsKHR flags;
 	public VkSurfaceKHR surface;
@@ -7236,7 +7237,7 @@ public unsafe partial struct VkSwapchainCreateInfoKHR : IStructureType, IChainTy
 
 public unsafe partial struct VkPresentInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PresentInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
 	public void* pNext;
 	public uint waitSemaphoreCount;
 	public VkSemaphore* pWaitSemaphores;
@@ -7262,7 +7263,7 @@ public unsafe partial struct VkPresentInfoKHR : IStructureType, IChainType
 
 public unsafe partial struct VkImageSwapchainCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageSwapchainCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkSwapchainKHR swapchain;
 
@@ -7283,7 +7284,7 @@ public unsafe partial struct VkImageSwapchainCreateInfoKHR : IStructureType, ICh
 
 public unsafe partial struct VkBindImageMemorySwapchainInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindImageMemorySwapchainInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR;
 	public void* pNext;
 	public VkSwapchainKHR swapchain;
 	public uint imageIndex;
@@ -7305,7 +7306,7 @@ public unsafe partial struct VkBindImageMemorySwapchainInfoKHR : IStructureType,
 
 public unsafe partial struct VkAcquireNextImageInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AcquireNextImageInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR;
 	public void* pNext;
 	public VkSwapchainKHR swapchain;
 	public ulong timeout;
@@ -7330,7 +7331,7 @@ public unsafe partial struct VkAcquireNextImageInfoKHR : IStructureType, IChainT
 
 public unsafe partial struct VkDeviceGroupPresentCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceGroupPresentCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR;
 	public void* pNext;
 	public fixed uint presentMask[32];
 	public VkDeviceGroupPresentModeFlagsKHR modes;
@@ -7352,7 +7353,7 @@ public unsafe partial struct VkDeviceGroupPresentCapabilitiesKHR : IStructureTyp
 
 public unsafe partial struct VkDeviceGroupPresentInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceGroupPresentInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR;
 	public void* pNext;
 	public uint swapchainCount;
 	public uint* pDeviceMasks;
@@ -7375,7 +7376,7 @@ public unsafe partial struct VkDeviceGroupPresentInfoKHR : IStructureType, IChai
 
 public unsafe partial struct VkDeviceGroupSwapchainCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceGroupSwapchainCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkDeviceGroupPresentModeFlagsKHR modes;
 
@@ -7402,7 +7403,7 @@ public partial struct VkDisplayModeParametersKHR
 
 public unsafe partial struct VkDisplayModeCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplayModeCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkDisplayModeCreateFlagsKHR flags;
 	public VkDisplayModeParametersKHR parameters;
@@ -7460,7 +7461,7 @@ public unsafe partial struct VkDisplayPropertiesKHR
 
 public unsafe partial struct VkDisplaySurfaceCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplaySurfaceCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkDisplaySurfaceCreateFlagsKHR flags;
 	public VkDisplayModeKHR displayMode;
@@ -7488,7 +7489,7 @@ public unsafe partial struct VkDisplaySurfaceCreateInfoKHR : IStructureType, ICh
 
 public unsafe partial struct VkDisplayPresentInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplayPresentInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR;
 	public void* pNext;
 	public VkRect2D srcRect;
 	public VkRect2D dstRect;
@@ -7511,7 +7512,7 @@ public unsafe partial struct VkDisplayPresentInfoKHR : IStructureType, IChainTyp
 
 public unsafe partial struct VkQueueFamilyQueryResultStatusPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyQueryResultStatusPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_QUERY_RESULT_STATUS_PROPERTIES_KHR;
 	public void* pNext;
 	public VkBool32 queryResultStatusSupport;
 
@@ -7532,7 +7533,7 @@ public unsafe partial struct VkQueueFamilyQueryResultStatusPropertiesKHR : IStru
 
 public unsafe partial struct VkQueueFamilyVideoPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyVideoPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_VIDEO_PROPERTIES_KHR;
 	public void* pNext;
 	public VkVideoCodecOperationFlagsKHR videoCodecOperations;
 
@@ -7553,7 +7554,7 @@ public unsafe partial struct VkQueueFamilyVideoPropertiesKHR : IStructureType, I
 
 public unsafe partial struct VkVideoProfileInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoProfileInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_PROFILE_INFO_KHR;
 	public void* pNext;
 	public VkVideoCodecOperationFlagsKHR videoCodecOperation;
 	public VkVideoChromaSubsamplingFlagsKHR chromaSubsampling;
@@ -7577,7 +7578,7 @@ public unsafe partial struct VkVideoProfileInfoKHR : IStructureType, IChainType
 
 public unsafe partial struct VkVideoProfileListInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoProfileListInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_PROFILE_LIST_INFO_KHR;
 	public void* pNext;
 	public uint profileCount;
 	public VkVideoProfileInfoKHR* pProfiles;
@@ -7599,7 +7600,7 @@ public unsafe partial struct VkVideoProfileListInfoKHR : IStructureType, IChainT
 
 public unsafe partial struct VkVideoCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_CAPABILITIES_KHR;
 	public void* pNext;
 	public VkVideoCapabilityFlagsKHR flags;
 	public ulong minBitstreamBufferOffsetAlignment;
@@ -7628,7 +7629,7 @@ public unsafe partial struct VkVideoCapabilitiesKHR : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceVideoFormatInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVideoFormatInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_FORMAT_INFO_KHR;
 	public void* pNext;
 	public VkImageUsageFlags imageUsage;
 
@@ -7649,7 +7650,7 @@ public unsafe partial struct VkPhysicalDeviceVideoFormatInfoKHR : IStructureType
 
 public unsafe partial struct VkVideoFormatPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoFormatPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_FORMAT_PROPERTIES_KHR;
 	public void* pNext;
 	public VkFormat format;
 	public VkComponentMapping componentMapping;
@@ -7675,7 +7676,7 @@ public unsafe partial struct VkVideoFormatPropertiesKHR : IStructureType, IChain
 
 public unsafe partial struct VkVideoPictureResourceInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoPictureResourceInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_PICTURE_RESOURCE_INFO_KHR;
 	public void* pNext;
 	public VkOffset2D codedOffset;
 	public VkExtent2D codedExtent;
@@ -7699,7 +7700,7 @@ public unsafe partial struct VkVideoPictureResourceInfoKHR : IStructureType, ICh
 
 public unsafe partial struct VkVideoReferenceSlotInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoReferenceSlotInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_REFERENCE_SLOT_INFO_KHR;
 	public void* pNext;
 	public int slotIndex;
 	public VkVideoPictureResourceInfoKHR* pPictureResource;
@@ -7721,7 +7722,7 @@ public unsafe partial struct VkVideoReferenceSlotInfoKHR : IStructureType, IChai
 
 public unsafe partial struct VkVideoSessionMemoryRequirementsKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoSessionMemoryRequirementsKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_SESSION_MEMORY_REQUIREMENTS_KHR;
 	public void* pNext;
 	public uint memoryBindIndex;
 	public VkMemoryRequirements memoryRequirements;
@@ -7743,7 +7744,7 @@ public unsafe partial struct VkVideoSessionMemoryRequirementsKHR : IStructureTyp
 
 public unsafe partial struct VkBindVideoSessionMemoryInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindVideoSessionMemoryInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_VIDEO_SESSION_MEMORY_INFO_KHR;
 	public void* pNext;
 	public uint memoryBindIndex;
 	public VkDeviceMemory memory;
@@ -7767,7 +7768,7 @@ public unsafe partial struct VkBindVideoSessionMemoryInfoKHR : IStructureType, I
 
 public unsafe partial struct VkVideoSessionCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoSessionCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_SESSION_CREATE_INFO_KHR;
 	public void* pNext;
 	public uint queueFamilyIndex;
 	public VkVideoSessionCreateFlagsKHR flags;
@@ -7796,7 +7797,7 @@ public unsafe partial struct VkVideoSessionCreateInfoKHR : IStructureType, IChai
 
 public unsafe partial struct VkVideoSessionParametersCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoSessionParametersCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkVideoSessionParametersCreateFlagsKHR flags;
 	public VkVideoSessionParametersKHR videoSessionParametersTemplate;
@@ -7819,7 +7820,7 @@ public unsafe partial struct VkVideoSessionParametersCreateInfoKHR : IStructureT
 
 public unsafe partial struct VkVideoSessionParametersUpdateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoSessionParametersUpdateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_SESSION_PARAMETERS_UPDATE_INFO_KHR;
 	public void* pNext;
 	public uint updateSequenceCount;
 
@@ -7840,7 +7841,7 @@ public unsafe partial struct VkVideoSessionParametersUpdateInfoKHR : IStructureT
 
 public unsafe partial struct VkVideoBeginCodingInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoBeginCodingInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_BEGIN_CODING_INFO_KHR;
 	public void* pNext;
 	public VkVideoBeginCodingFlagsKHR flags;
 	public VkVideoSessionKHR videoSession;
@@ -7865,7 +7866,7 @@ public unsafe partial struct VkVideoBeginCodingInfoKHR : IStructureType, IChainT
 
 public unsafe partial struct VkVideoEndCodingInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEndCodingInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_END_CODING_INFO_KHR;
 	public void* pNext;
 	public VkVideoEndCodingFlagsKHR flags;
 
@@ -7886,7 +7887,7 @@ public unsafe partial struct VkVideoEndCodingInfoKHR : IStructureType, IChainTyp
 
 public unsafe partial struct VkVideoCodingControlInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoCodingControlInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_CODING_CONTROL_INFO_KHR;
 	public void* pNext;
 	public VkVideoCodingControlFlagsKHR flags;
 
@@ -7907,7 +7908,7 @@ public unsafe partial struct VkVideoCodingControlInfoKHR : IStructureType, IChai
 
 public unsafe partial struct VkVideoDecodeCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_CAPABILITIES_KHR;
 	public void* pNext;
 	public VkVideoDecodeCapabilityFlagsKHR flags;
 
@@ -7928,7 +7929,7 @@ public unsafe partial struct VkVideoDecodeCapabilitiesKHR : IStructureType, ICha
 
 public unsafe partial struct VkVideoDecodeUsageInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeUsageInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_USAGE_INFO_KHR;
 	public void* pNext;
 	public VkVideoDecodeUsageFlagsKHR videoUsageHints;
 
@@ -7949,7 +7950,7 @@ public unsafe partial struct VkVideoDecodeUsageInfoKHR : IStructureType, IChainT
 
 public unsafe partial struct VkVideoDecodeInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_INFO_KHR;
 	public void* pNext;
 	public VkVideoDecodeFlagsKHR flags;
 	public VkBuffer srcBuffer;
@@ -8236,7 +8237,7 @@ public unsafe partial struct StdVideoEncodeH264SliceHeader
 
 public unsafe partial struct VkVideoEncodeH264CapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264CapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_KHR;
 	public void* pNext;
 	public VkVideoEncodeH264CapabilityFlagsKHR flags;
 	public StdVideoH264LevelIdc maxLevelIdc;
@@ -8276,7 +8277,7 @@ public partial struct VkVideoEncodeH264QpKHR
 
 public unsafe partial struct VkVideoEncodeH264QualityLevelPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264QualityLevelPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_KHR;
 	public void* pNext;
 	public VkVideoEncodeH264RateControlFlagsKHR preferredRateControlFlags;
 	public uint preferredGopFrameCount;
@@ -8305,7 +8306,7 @@ public unsafe partial struct VkVideoEncodeH264QualityLevelPropertiesKHR : IStruc
 
 public unsafe partial struct VkVideoEncodeH264SessionCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264SessionCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkBool32 useMaxLevelIdc;
 	public StdVideoH264LevelIdc maxLevelIdc;
@@ -8327,7 +8328,7 @@ public unsafe partial struct VkVideoEncodeH264SessionCreateInfoKHR : IStructureT
 
 public unsafe partial struct VkVideoEncodeH264SessionParametersAddInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264SessionParametersAddInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR;
 	public void* pNext;
 	public uint stdSPSCount;
 	public StdVideoH264SequenceParameterSet* pStdSPSs;
@@ -8351,7 +8352,7 @@ public unsafe partial struct VkVideoEncodeH264SessionParametersAddInfoKHR : IStr
 
 public unsafe partial struct VkVideoEncodeH264SessionParametersCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264SessionParametersCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR;
 	public void* pNext;
 	public uint maxStdSPSCount;
 	public uint maxStdPPSCount;
@@ -8374,7 +8375,7 @@ public unsafe partial struct VkVideoEncodeH264SessionParametersCreateInfoKHR : I
 
 public unsafe partial struct VkVideoEncodeH264SessionParametersGetInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264SessionParametersGetInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_GET_INFO_KHR;
 	public void* pNext;
 	public VkBool32 writeStdSPS;
 	public VkBool32 writeStdPPS;
@@ -8398,7 +8399,7 @@ public unsafe partial struct VkVideoEncodeH264SessionParametersGetInfoKHR : IStr
 
 public unsafe partial struct VkVideoEncodeH264SessionParametersFeedbackInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264SessionParametersFeedbackInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_KHR;
 	public void* pNext;
 	public VkBool32 hasStdSPSOverrides;
 	public VkBool32 hasStdPPSOverrides;
@@ -8420,7 +8421,7 @@ public unsafe partial struct VkVideoEncodeH264SessionParametersFeedbackInfoKHR :
 
 public unsafe partial struct VkVideoEncodeH264NaluSliceInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264NaluSliceInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_NALU_SLICE_INFO_KHR;
 	public void* pNext;
 	public int constantQp;
 	public StdVideoEncodeH264SliceHeader* pStdSliceHeader;
@@ -8442,7 +8443,7 @@ public unsafe partial struct VkVideoEncodeH264NaluSliceInfoKHR : IStructureType,
 
 public unsafe partial struct VkVideoEncodeH264PictureInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264PictureInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PICTURE_INFO_KHR;
 	public void* pNext;
 	public uint naluSliceEntryCount;
 	public VkVideoEncodeH264NaluSliceInfoKHR* pNaluSliceEntries;
@@ -8466,7 +8467,7 @@ public unsafe partial struct VkVideoEncodeH264PictureInfoKHR : IStructureType, I
 
 public unsafe partial struct VkVideoEncodeH264DpbSlotInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264DpbSlotInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_DPB_SLOT_INFO_KHR;
 	public void* pNext;
 	public StdVideoEncodeH264ReferenceInfo* pStdReferenceInfo;
 
@@ -8487,7 +8488,7 @@ public unsafe partial struct VkVideoEncodeH264DpbSlotInfoKHR : IStructureType, I
 
 public unsafe partial struct VkVideoEncodeH264ProfileInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264ProfileInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PROFILE_INFO_KHR;
 	public void* pNext;
 	public StdVideoH264ProfileIdc stdProfileIdc;
 
@@ -8508,7 +8509,7 @@ public unsafe partial struct VkVideoEncodeH264ProfileInfoKHR : IStructureType, I
 
 public unsafe partial struct VkVideoEncodeH264RateControlInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264RateControlInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_INFO_KHR;
 	public void* pNext;
 	public VkVideoEncodeH264RateControlFlagsKHR flags;
 	public uint gopFrameCount;
@@ -8540,7 +8541,7 @@ public partial struct VkVideoEncodeH264FrameSizeKHR
 
 public unsafe partial struct VkVideoEncodeH264RateControlLayerInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264RateControlLayerInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_KHR;
 	public void* pNext;
 	public VkBool32 useMinQp;
 	public VkVideoEncodeH264QpKHR minQp;
@@ -8566,7 +8567,7 @@ public unsafe partial struct VkVideoEncodeH264RateControlLayerInfoKHR : IStructu
 
 public unsafe partial struct VkVideoEncodeH264GopRemainingFrameInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264GopRemainingFrameInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_GOP_REMAINING_FRAME_INFO_KHR;
 	public void* pNext;
 	public VkBool32 useGopRemainingFrames;
 	public uint gopRemainingI;
@@ -9058,7 +9059,7 @@ public partial struct StdVideoEncodeH265ReferenceInfo
 
 public unsafe partial struct VkVideoEncodeH265CapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265CapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_CAPABILITIES_KHR;
 	public void* pNext;
 	public VkVideoEncodeH265CapabilityFlagsKHR flags;
 	public StdVideoH265LevelIdc maxLevelIdc;
@@ -9094,7 +9095,7 @@ public unsafe partial struct VkVideoEncodeH265CapabilitiesKHR : IStructureType, 
 
 public unsafe partial struct VkVideoEncodeH265SessionCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265SessionCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkBool32 useMaxLevelIdc;
 	public StdVideoH265LevelIdc maxLevelIdc;
@@ -9123,7 +9124,7 @@ public partial struct VkVideoEncodeH265QpKHR
 
 public unsafe partial struct VkVideoEncodeH265QualityLevelPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265QualityLevelPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUALITY_LEVEL_PROPERTIES_KHR;
 	public void* pNext;
 	public VkVideoEncodeH265RateControlFlagsKHR preferredRateControlFlags;
 	public uint preferredGopFrameCount;
@@ -9151,7 +9152,7 @@ public unsafe partial struct VkVideoEncodeH265QualityLevelPropertiesKHR : IStruc
 
 public unsafe partial struct VkVideoEncodeH265SessionParametersAddInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265SessionParametersAddInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR;
 	public void* pNext;
 	public uint stdVPSCount;
 	public StdVideoH265VideoParameterSet* pStdVPSs;
@@ -9177,7 +9178,7 @@ public unsafe partial struct VkVideoEncodeH265SessionParametersAddInfoKHR : IStr
 
 public unsafe partial struct VkVideoEncodeH265SessionParametersCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265SessionParametersCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR;
 	public void* pNext;
 	public uint maxStdVPSCount;
 	public uint maxStdSPSCount;
@@ -9201,7 +9202,7 @@ public unsafe partial struct VkVideoEncodeH265SessionParametersCreateInfoKHR : I
 
 public unsafe partial struct VkVideoEncodeH265SessionParametersGetInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265SessionParametersGetInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_GET_INFO_KHR;
 	public void* pNext;
 	public VkBool32 writeStdVPS;
 	public VkBool32 writeStdSPS;
@@ -9227,7 +9228,7 @@ public unsafe partial struct VkVideoEncodeH265SessionParametersGetInfoKHR : IStr
 
 public unsafe partial struct VkVideoEncodeH265SessionParametersFeedbackInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265SessionParametersFeedbackInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_KHR;
 	public void* pNext;
 	public VkBool32 hasStdVPSOverrides;
 	public VkBool32 hasStdSPSOverrides;
@@ -9250,7 +9251,7 @@ public unsafe partial struct VkVideoEncodeH265SessionParametersFeedbackInfoKHR :
 
 public unsafe partial struct VkVideoEncodeH265NaluSliceSegmentInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265NaluSliceSegmentInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_NALU_SLICE_SEGMENT_INFO_KHR;
 	public void* pNext;
 	public int constantQp;
 	public StdVideoEncodeH265SliceSegmentHeader* pStdSliceSegmentHeader;
@@ -9272,7 +9273,7 @@ public unsafe partial struct VkVideoEncodeH265NaluSliceSegmentInfoKHR : IStructu
 
 public unsafe partial struct VkVideoEncodeH265PictureInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265PictureInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PICTURE_INFO_KHR;
 	public void* pNext;
 	public uint naluSliceSegmentEntryCount;
 	public VkVideoEncodeH265NaluSliceSegmentInfoKHR* pNaluSliceSegmentEntries;
@@ -9295,7 +9296,7 @@ public unsafe partial struct VkVideoEncodeH265PictureInfoKHR : IStructureType, I
 
 public unsafe partial struct VkVideoEncodeH265DpbSlotInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265DpbSlotInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_DPB_SLOT_INFO_KHR;
 	public void* pNext;
 	public StdVideoEncodeH265ReferenceInfo* pStdReferenceInfo;
 
@@ -9316,7 +9317,7 @@ public unsafe partial struct VkVideoEncodeH265DpbSlotInfoKHR : IStructureType, I
 
 public unsafe partial struct VkVideoEncodeH265ProfileInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265ProfileInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PROFILE_INFO_KHR;
 	public void* pNext;
 	public StdVideoH265ProfileIdc stdProfileIdc;
 
@@ -9337,7 +9338,7 @@ public unsafe partial struct VkVideoEncodeH265ProfileInfoKHR : IStructureType, I
 
 public unsafe partial struct VkVideoEncodeH265RateControlInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265RateControlInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR;
 	public void* pNext;
 	public VkVideoEncodeH265RateControlFlagsKHR flags;
 	public uint gopFrameCount;
@@ -9369,7 +9370,7 @@ public partial struct VkVideoEncodeH265FrameSizeKHR
 
 public unsafe partial struct VkVideoEncodeH265RateControlLayerInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265RateControlLayerInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_LAYER_INFO_KHR;
 	public void* pNext;
 	public VkBool32 useMinQp;
 	public VkVideoEncodeH265QpKHR minQp;
@@ -9395,7 +9396,7 @@ public unsafe partial struct VkVideoEncodeH265RateControlLayerInfoKHR : IStructu
 
 public unsafe partial struct VkVideoEncodeH265GopRemainingFrameInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265GopRemainingFrameInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_GOP_REMAINING_FRAME_INFO_KHR;
 	public void* pNext;
 	public VkBool32 useGopRemainingFrames;
 	public uint gopRemainingI;
@@ -9457,7 +9458,7 @@ public unsafe partial struct StdVideoDecodeH264ReferenceInfo
 
 public unsafe partial struct VkVideoDecodeH264ProfileInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH264ProfileInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_PROFILE_INFO_KHR;
 	public void* pNext;
 	public StdVideoH264ProfileIdc stdProfileIdc;
 	public VkVideoDecodeH264PictureLayoutFlagsKHR pictureLayout;
@@ -9479,7 +9480,7 @@ public unsafe partial struct VkVideoDecodeH264ProfileInfoKHR : IStructureType, I
 
 public unsafe partial struct VkVideoDecodeH264CapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH264CapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_CAPABILITIES_KHR;
 	public void* pNext;
 	public StdVideoH264LevelIdc maxLevelIdc;
 	public VkOffset2D fieldOffsetGranularity;
@@ -9501,7 +9502,7 @@ public unsafe partial struct VkVideoDecodeH264CapabilitiesKHR : IStructureType, 
 
 public unsafe partial struct VkVideoDecodeH264SessionParametersAddInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH264SessionParametersAddInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR;
 	public void* pNext;
 	public uint stdSPSCount;
 	public StdVideoH264SequenceParameterSet* pStdSPSs;
@@ -9525,7 +9526,7 @@ public unsafe partial struct VkVideoDecodeH264SessionParametersAddInfoKHR : IStr
 
 public unsafe partial struct VkVideoDecodeH264SessionParametersCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH264SessionParametersCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR;
 	public void* pNext;
 	public uint maxStdSPSCount;
 	public uint maxStdPPSCount;
@@ -9548,7 +9549,7 @@ public unsafe partial struct VkVideoDecodeH264SessionParametersCreateInfoKHR : I
 
 public unsafe partial struct VkVideoDecodeH264PictureInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH264PictureInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_PICTURE_INFO_KHR;
 	public void* pNext;
 	public StdVideoDecodeH264PictureInfo* pStdPictureInfo;
 	public uint sliceCount;
@@ -9571,7 +9572,7 @@ public unsafe partial struct VkVideoDecodeH264PictureInfoKHR : IStructureType, I
 
 public unsafe partial struct VkVideoDecodeH264DpbSlotInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH264DpbSlotInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_DPB_SLOT_INFO_KHR;
 	public void* pNext;
 	public StdVideoDecodeH264ReferenceInfo* pStdReferenceInfo;
 
@@ -9592,7 +9593,7 @@ public unsafe partial struct VkVideoDecodeH264DpbSlotInfoKHR : IStructureType, I
 
 public unsafe partial struct VkImportMemoryFdInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportMemoryFDInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleType;
 	public int fd;
@@ -9614,7 +9615,7 @@ public unsafe partial struct VkImportMemoryFdInfoKHR : IStructureType, IChainTyp
 
 public unsafe partial struct VkMemoryFdPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryFDPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR;
 	public void* pNext;
 	public uint memoryTypeBits;
 
@@ -9635,7 +9636,7 @@ public unsafe partial struct VkMemoryFdPropertiesKHR : IStructureType, IChainTyp
 
 public unsafe partial struct VkMemoryGetFdInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryGetFDInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR;
 	public void* pNext;
 	public VkDeviceMemory memory;
 	public VkExternalMemoryHandleTypeFlags handleType;
@@ -9657,7 +9658,7 @@ public unsafe partial struct VkMemoryGetFdInfoKHR : IStructureType, IChainType
 
 public unsafe partial struct VkImportSemaphoreFdInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportSemaphoreFDInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR;
 	public void* pNext;
 	public VkSemaphore semaphore;
 	public VkSemaphoreImportFlags flags;
@@ -9681,7 +9682,7 @@ public unsafe partial struct VkImportSemaphoreFdInfoKHR : IStructureType, IChain
 
 public unsafe partial struct VkSemaphoreGetFdInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SemaphoreGetFDInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR;
 	public void* pNext;
 	public VkSemaphore semaphore;
 	public VkExternalSemaphoreHandleTypeFlags handleType;
@@ -9716,7 +9717,7 @@ public unsafe partial struct VkPresentRegionKHR
 
 public unsafe partial struct VkPresentRegionsKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PresentRegionsKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR;
 	public void* pNext;
 	public uint swapchainCount;
 	public VkPresentRegionKHR* pRegions;
@@ -9738,7 +9739,7 @@ public unsafe partial struct VkPresentRegionsKHR : IStructureType, IChainType
 
 public unsafe partial struct VkSharedPresentSurfaceCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SharedPresentSurfaceCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR;
 	public void* pNext;
 	public VkImageUsageFlags sharedPresentSupportedUsageFlags;
 
@@ -9759,7 +9760,7 @@ public unsafe partial struct VkSharedPresentSurfaceCapabilitiesKHR : IStructureT
 
 public unsafe partial struct VkImportFenceFdInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportFenceFDInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR;
 	public void* pNext;
 	public VkFence fence;
 	public VkFenceImportFlags flags;
@@ -9783,7 +9784,7 @@ public unsafe partial struct VkImportFenceFdInfoKHR : IStructureType, IChainType
 
 public unsafe partial struct VkFenceGetFdInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FenceGetFDInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR;
 	public void* pNext;
 	public VkFence fence;
 	public VkExternalFenceHandleTypeFlags handleType;
@@ -9805,7 +9806,7 @@ public unsafe partial struct VkFenceGetFdInfoKHR : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDevicePerformanceQueryFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePerformanceQueryFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 performanceCounterQueryPools;
 	public VkBool32 performanceCounterMultipleQueryPools;
@@ -9827,7 +9828,7 @@ public unsafe partial struct VkPhysicalDevicePerformanceQueryFeaturesKHR : IStru
 
 public unsafe partial struct VkPhysicalDevicePerformanceQueryPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePerformanceQueryPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR;
 	public void* pNext;
 	public VkBool32 allowCommandBufferQueryCopies;
 
@@ -9848,7 +9849,7 @@ public unsafe partial struct VkPhysicalDevicePerformanceQueryPropertiesKHR : ISt
 
 public unsafe partial struct VkPerformanceCounterKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerformanceCounterKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_KHR;
 	public void* pNext;
 	public VkPerformanceCounterUnitKHR unit;
 	public VkPerformanceCounterScopeKHR scope;
@@ -9872,7 +9873,7 @@ public unsafe partial struct VkPerformanceCounterKHR : IStructureType, IChainTyp
 
 public unsafe partial struct VkPerformanceCounterDescriptionKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerformanceCounterDescriptionKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_KHR;
 	public void* pNext;
 	public VkPerformanceCounterDescriptionFlagsKHR flags;
 	public fixed byte name[256];
@@ -9896,7 +9897,7 @@ public unsafe partial struct VkPerformanceCounterDescriptionKHR : IStructureType
 
 public unsafe partial struct VkQueryPoolPerformanceCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueryPoolPerformanceCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR;
 	public void* pNext;
 	public uint queueFamilyIndex;
 	public uint counterIndexCount;
@@ -9936,7 +9937,7 @@ public partial struct VkPerformanceCounterResultKHR
 
 public unsafe partial struct VkAcquireProfilingLockInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AcquireProfilingLockInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR;
 	public void* pNext;
 	public VkAcquireProfilingLockFlagsKHR flags;
 	public ulong timeout;
@@ -9958,7 +9959,7 @@ public unsafe partial struct VkAcquireProfilingLockInfoKHR : IStructureType, ICh
 
 public unsafe partial struct VkPerformanceQuerySubmitInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerformanceQuerySubmitInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PERFORMANCE_QUERY_SUBMIT_INFO_KHR;
 	public void* pNext;
 	public uint counterPassIndex;
 
@@ -9979,7 +9980,7 @@ public unsafe partial struct VkPerformanceQuerySubmitInfoKHR : IStructureType, I
 
 public unsafe partial struct VkPhysicalDeviceSurfaceInfo2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSurfaceInfo2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR;
 	public void* pNext;
 	public VkSurfaceKHR surface;
 
@@ -10000,7 +10001,7 @@ public unsafe partial struct VkPhysicalDeviceSurfaceInfo2KHR : IStructureType, I
 
 public unsafe partial struct VkSurfaceCapabilities2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfaceCapabilities2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR;
 	public void* pNext;
 	public VkSurfaceCapabilitiesKHR surfaceCapabilities;
 
@@ -10021,7 +10022,7 @@ public unsafe partial struct VkSurfaceCapabilities2KHR : IStructureType, IChainT
 
 public unsafe partial struct VkSurfaceFormat2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfaceFormat2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR;
 	public void* pNext;
 	public VkSurfaceFormatKHR surfaceFormat;
 
@@ -10042,7 +10043,7 @@ public unsafe partial struct VkSurfaceFormat2KHR : IStructureType, IChainType
 
 public unsafe partial struct VkDisplayProperties2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplayProperties2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_PROPERTIES_2_KHR;
 	public void* pNext;
 	public VkDisplayPropertiesKHR displayProperties;
 
@@ -10063,7 +10064,7 @@ public unsafe partial struct VkDisplayProperties2KHR : IStructureType, IChainTyp
 
 public unsafe partial struct VkDisplayPlaneProperties2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplayPlaneProperties2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_PLANE_PROPERTIES_2_KHR;
 	public void* pNext;
 	public VkDisplayPlanePropertiesKHR displayPlaneProperties;
 
@@ -10084,7 +10085,7 @@ public unsafe partial struct VkDisplayPlaneProperties2KHR : IStructureType, ICha
 
 public unsafe partial struct VkDisplayModeProperties2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplayModeProperties2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR;
 	public void* pNext;
 	public VkDisplayModePropertiesKHR displayModeProperties;
 
@@ -10105,7 +10106,7 @@ public unsafe partial struct VkDisplayModeProperties2KHR : IStructureType, IChai
 
 public unsafe partial struct VkDisplayPlaneInfo2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplayPlaneInfo2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR;
 	public void* pNext;
 	public VkDisplayModeKHR mode;
 	public uint planeIndex;
@@ -10127,7 +10128,7 @@ public unsafe partial struct VkDisplayPlaneInfo2KHR : IStructureType, IChainType
 
 public unsafe partial struct VkDisplayPlaneCapabilities2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplayPlaneCapabilities2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR;
 	public void* pNext;
 	public VkDisplayPlaneCapabilitiesKHR capabilities;
 
@@ -10148,7 +10149,7 @@ public unsafe partial struct VkDisplayPlaneCapabilities2KHR : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDeviceShaderBfloat16FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderBfloat16FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_BFLOAT16_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 shaderBFloat16Type;
 	public VkBool32 shaderBFloat16DotProduct;
@@ -10171,7 +10172,7 @@ public unsafe partial struct VkPhysicalDeviceShaderBfloat16FeaturesKHR : IStruct
 
 public unsafe partial struct VkPhysicalDeviceShaderClockFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderClockFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CLOCK_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 shaderSubgroupClock;
 	public VkBool32 shaderDeviceClock;
@@ -10228,7 +10229,7 @@ public partial struct StdVideoDecodeH265ReferenceInfo
 
 public unsafe partial struct VkVideoDecodeH265ProfileInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH265ProfileInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_PROFILE_INFO_KHR;
 	public void* pNext;
 	public StdVideoH265ProfileIdc stdProfileIdc;
 
@@ -10249,7 +10250,7 @@ public unsafe partial struct VkVideoDecodeH265ProfileInfoKHR : IStructureType, I
 
 public unsafe partial struct VkVideoDecodeH265CapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH265CapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_CAPABILITIES_KHR;
 	public void* pNext;
 	public StdVideoH265LevelIdc maxLevelIdc;
 
@@ -10270,7 +10271,7 @@ public unsafe partial struct VkVideoDecodeH265CapabilitiesKHR : IStructureType, 
 
 public unsafe partial struct VkVideoDecodeH265SessionParametersAddInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH265SessionParametersAddInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR;
 	public void* pNext;
 	public uint stdVPSCount;
 	public StdVideoH265VideoParameterSet* pStdVPSs;
@@ -10296,7 +10297,7 @@ public unsafe partial struct VkVideoDecodeH265SessionParametersAddInfoKHR : IStr
 
 public unsafe partial struct VkVideoDecodeH265SessionParametersCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH265SessionParametersCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR;
 	public void* pNext;
 	public uint maxStdVPSCount;
 	public uint maxStdSPSCount;
@@ -10320,7 +10321,7 @@ public unsafe partial struct VkVideoDecodeH265SessionParametersCreateInfoKHR : I
 
 public unsafe partial struct VkVideoDecodeH265PictureInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH265PictureInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_PICTURE_INFO_KHR;
 	public void* pNext;
 	public StdVideoDecodeH265PictureInfo* pStdPictureInfo;
 	public uint sliceSegmentCount;
@@ -10343,7 +10344,7 @@ public unsafe partial struct VkVideoDecodeH265PictureInfoKHR : IStructureType, I
 
 public unsafe partial struct VkVideoDecodeH265DpbSlotInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH265DpbSlotInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_DPB_SLOT_INFO_KHR;
 	public void* pNext;
 	public StdVideoDecodeH265ReferenceInfo* pStdReferenceInfo;
 
@@ -10364,7 +10365,7 @@ public unsafe partial struct VkVideoDecodeH265DpbSlotInfoKHR : IStructureType, I
 
 public unsafe partial struct VkFragmentShadingRateAttachmentInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FragmentShadingRateAttachmentInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR;
 	public void* pNext;
 	public VkAttachmentReference2* pFragmentShadingRateAttachment;
 	public VkExtent2D shadingRateAttachmentTexelSize;
@@ -10386,7 +10387,7 @@ public unsafe partial struct VkFragmentShadingRateAttachmentInfoKHR : IStructure
 
 public unsafe partial struct VkPipelineFragmentShadingRateStateCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineFragmentShadingRateStateCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkExtent2D fragmentSize;
 	public combinerOps__FixedBuffer combinerOps;
@@ -10414,7 +10415,7 @@ public unsafe partial struct VkPipelineFragmentShadingRateStateCreateInfoKHR : I
 
 public unsafe partial struct VkPhysicalDeviceFragmentShadingRateFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentShadingRateFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 pipelineFragmentShadingRate;
 	public VkBool32 primitiveFragmentShadingRate;
@@ -10437,7 +10438,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShadingRateFeaturesKHR : IS
 
 public unsafe partial struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentShadingRatePropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR;
 	public void* pNext;
 	public VkExtent2D minFragmentShadingRateAttachmentTexelSize;
 	public VkExtent2D maxFragmentShadingRateAttachmentTexelSize;
@@ -10474,7 +10475,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR : 
 
 public unsafe partial struct VkPhysicalDeviceFragmentShadingRateKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentShadingRateKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR;
 	public void* pNext;
 	public VkSampleCountFlags sampleCounts;
 	public VkExtent2D fragmentSize;
@@ -10496,7 +10497,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShadingRateKHR : IStructure
 
 public unsafe partial struct VkRenderingFragmentShadingRateAttachmentInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderingFragmentShadingRateAttachmentInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR;
 	public void* pNext;
 	public VkImageView imageView;
 	public VkImageLayout imageLayout;
@@ -10519,7 +10520,7 @@ public unsafe partial struct VkRenderingFragmentShadingRateAttachmentInfoKHR : I
 
 public unsafe partial struct VkPhysicalDeviceShaderConstantDataFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderConstantDataFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CONSTANT_DATA_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 shaderConstantData;
 
@@ -10540,7 +10541,7 @@ public unsafe partial struct VkPhysicalDeviceShaderConstantDataFeaturesKHR : ISt
 
 public unsafe partial struct VkPhysicalDeviceShaderAbortFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderAbortFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 shaderAbort;
 
@@ -10561,7 +10562,7 @@ public unsafe partial struct VkPhysicalDeviceShaderAbortFeaturesKHR : IStructure
 
 public unsafe partial struct VkDeviceFaultShaderAbortMessageInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceFaultShaderAbortMessageInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_FAULT_SHADER_ABORT_MESSAGE_INFO_KHR;
 	public void* pNext;
 	public ulong messageDataSize;
 	public void* pMessageData;
@@ -10583,7 +10584,7 @@ public unsafe partial struct VkDeviceFaultShaderAbortMessageInfoKHR : IStructure
 
 public unsafe partial struct VkPhysicalDeviceShaderAbortPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderAbortPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_PROPERTIES_KHR;
 	public void* pNext;
 	public ulong maxShaderAbortMessageSize;
 
@@ -10604,7 +10605,7 @@ public unsafe partial struct VkPhysicalDeviceShaderAbortPropertiesKHR : IStructu
 
 public unsafe partial struct VkPhysicalDeviceShaderQuadControlFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderQuadControlFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_QUAD_CONTROL_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 shaderQuadControl;
 
@@ -10625,7 +10626,7 @@ public unsafe partial struct VkPhysicalDeviceShaderQuadControlFeaturesKHR : IStr
 
 public unsafe partial struct VkSurfaceProtectedCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfaceProtectedCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR;
 	public void* pNext;
 	public VkBool32 supportsProtected;
 
@@ -10646,7 +10647,7 @@ public unsafe partial struct VkSurfaceProtectedCapabilitiesKHR : IStructureType,
 
 public unsafe partial struct VkPhysicalDevicePresentWaitFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePresentWaitFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_WAIT_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 presentWait;
 
@@ -10667,7 +10668,7 @@ public unsafe partial struct VkPhysicalDevicePresentWaitFeaturesKHR : IStructure
 
 public unsafe partial struct VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineExecutablePropertiesFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 pipelineExecutableInfo;
 
@@ -10688,7 +10689,7 @@ public unsafe partial struct VkPhysicalDevicePipelineExecutablePropertiesFeature
 
 public unsafe partial struct VkPipelineInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_INFO_KHR;
 	public void* pNext;
 	public VkPipeline pipeline;
 
@@ -10709,7 +10710,7 @@ public unsafe partial struct VkPipelineInfoKHR : IStructureType, IChainType
 
 public unsafe partial struct VkPipelineExecutablePropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineExecutablePropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_PROPERTIES_KHR;
 	public void* pNext;
 	public VkShaderStageFlags stages;
 	public fixed byte name[256];
@@ -10733,7 +10734,7 @@ public unsafe partial struct VkPipelineExecutablePropertiesKHR : IStructureType,
 
 public unsafe partial struct VkPipelineExecutableInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineExecutableInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INFO_KHR;
 	public void* pNext;
 	public VkPipeline pipeline;
 	public uint executableIndex;
@@ -10768,7 +10769,7 @@ public partial struct VkPipelineExecutableStatisticValueKHR
 
 public unsafe partial struct VkPipelineExecutableStatisticKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineExecutableStatisticKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_STATISTIC_KHR;
 	public void* pNext;
 	public fixed byte name[256];
 	public fixed byte description[256];
@@ -10792,7 +10793,7 @@ public unsafe partial struct VkPipelineExecutableStatisticKHR : IStructureType, 
 
 public unsafe partial struct VkPipelineExecutableInternalRepresentationKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineExecutableInternalRepresentationKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INTERNAL_REPRESENTATION_KHR;
 	public void* pNext;
 	public fixed byte name[256];
 	public fixed byte description[256];
@@ -10817,7 +10818,7 @@ public unsafe partial struct VkPipelineExecutableInternalRepresentationKHR : ISt
 
 public unsafe partial struct VkPipelineLibraryCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineLibraryCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR;
 	public void* pNext;
 	public uint libraryCount;
 	public VkPipeline* pLibraries;
@@ -10839,7 +10840,7 @@ public unsafe partial struct VkPipelineLibraryCreateInfoKHR : IStructureType, IC
 
 public unsafe partial struct VkPresentIdKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PresentIdKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PRESENT_ID_KHR;
 	public void* pNext;
 	public uint swapchainCount;
 	public ulong* pPresentIds;
@@ -10861,7 +10862,7 @@ public unsafe partial struct VkPresentIdKHR : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDevicePresentIdFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePresentIdFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 presentId;
 
@@ -10882,7 +10883,7 @@ public unsafe partial struct VkPhysicalDevicePresentIdFeaturesKHR : IStructureTy
 
 public unsafe partial struct VkVideoEncodeInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_INFO_KHR;
 	public void* pNext;
 	public VkVideoEncodeFlagsKHR flags;
 	public VkBuffer dstBuffer;
@@ -10911,7 +10912,7 @@ public unsafe partial struct VkVideoEncodeInfoKHR : IStructureType, IChainType
 
 public unsafe partial struct VkVideoEncodeCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_CAPABILITIES_KHR;
 	public void* pNext;
 	public VkVideoEncodeCapabilityFlagsKHR flags;
 	public VkVideoEncodeRateControlModeFlagsKHR rateControlModes;
@@ -10938,7 +10939,7 @@ public unsafe partial struct VkVideoEncodeCapabilitiesKHR : IStructureType, ICha
 
 public unsafe partial struct VkQueryPoolVideoEncodeFeedbackCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueryPoolVideoEncodeFeedbackCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_FEEDBACK_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkVideoEncodeFeedbackFlagsKHR encodeFeedbackFlags;
 
@@ -10959,7 +10960,7 @@ public unsafe partial struct VkQueryPoolVideoEncodeFeedbackCreateInfoKHR : IStru
 
 public unsafe partial struct VkVideoEncodeUsageInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeUsageInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_USAGE_INFO_KHR;
 	public void* pNext;
 	public VkVideoEncodeUsageFlagsKHR videoUsageHints;
 	public VkVideoEncodeContentFlagsKHR videoContentHints;
@@ -10982,7 +10983,7 @@ public unsafe partial struct VkVideoEncodeUsageInfoKHR : IStructureType, IChainT
 
 public unsafe partial struct VkVideoEncodeRateControlLayerInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeRateControlLayerInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_RATE_CONTROL_LAYER_INFO_KHR;
 	public void* pNext;
 	public ulong averageBitrate;
 	public ulong maxBitrate;
@@ -11006,7 +11007,7 @@ public unsafe partial struct VkVideoEncodeRateControlLayerInfoKHR : IStructureTy
 
 public unsafe partial struct VkVideoEncodeRateControlInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeRateControlInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_RATE_CONTROL_INFO_KHR;
 	public void* pNext;
 	public VkVideoEncodeRateControlFlagsKHR flags;
 	public VkVideoEncodeRateControlModeFlagsKHR rateControlMode;
@@ -11032,7 +11033,7 @@ public unsafe partial struct VkVideoEncodeRateControlInfoKHR : IStructureType, I
 
 public unsafe partial struct VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVideoEncodeQualityLevelInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR;
 	public void* pNext;
 	public VkVideoProfileInfoKHR* pVideoProfile;
 	public uint qualityLevel;
@@ -11054,7 +11055,7 @@ public unsafe partial struct VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR : IS
 
 public unsafe partial struct VkVideoEncodeQualityLevelPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeQualityLevelPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUALITY_LEVEL_PROPERTIES_KHR;
 	public void* pNext;
 	public VkVideoEncodeRateControlModeFlagsKHR preferredRateControlMode;
 	public uint preferredRateControlLayerCount;
@@ -11076,7 +11077,7 @@ public unsafe partial struct VkVideoEncodeQualityLevelPropertiesKHR : IStructure
 
 public unsafe partial struct VkVideoEncodeQualityLevelInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeQualityLevelInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR;
 	public void* pNext;
 	public uint qualityLevel;
 
@@ -11097,7 +11098,7 @@ public unsafe partial struct VkVideoEncodeQualityLevelInfoKHR : IStructureType, 
 
 public unsafe partial struct VkVideoEncodeSessionParametersGetInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeSessionParametersGetInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_PARAMETERS_GET_INFO_KHR;
 	public void* pNext;
 	public VkVideoSessionParametersKHR videoSessionParameters;
 
@@ -11118,7 +11119,7 @@ public unsafe partial struct VkVideoEncodeSessionParametersGetInfoKHR : IStructu
 
 public unsafe partial struct VkVideoEncodeSessionParametersFeedbackInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeSessionParametersFeedbackInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_PARAMETERS_FEEDBACK_INFO_KHR;
 	public void* pNext;
 	public VkBool32 hasOverrides;
 
@@ -11152,7 +11153,7 @@ public partial struct VkStridedDeviceAddressRangeKHR
 
 public unsafe partial struct VkDeviceMemoryCopyKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceMemoryCopyKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_MEMORY_COPY_KHR;
 	public void* pNext;
 	public VkDeviceAddressRangeKHR srcRange;
 	public VkAddressCommandFlagsKHR srcFlags;
@@ -11176,7 +11177,7 @@ public unsafe partial struct VkDeviceMemoryCopyKHR : IStructureType, IChainType
 
 public unsafe partial struct VkCopyDeviceMemoryInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyDeviceMemoryInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_DEVICE_MEMORY_INFO_KHR;
 	public void* pNext;
 	public uint regionCount;
 	public VkDeviceMemoryCopyKHR* pRegions;
@@ -11198,7 +11199,7 @@ public unsafe partial struct VkCopyDeviceMemoryInfoKHR : IStructureType, IChainT
 
 public unsafe partial struct VkDeviceMemoryImageCopyKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceMemoryImageCopyKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_MEMORY_IMAGE_COPY_KHR;
 	public void* pNext;
 	public VkDeviceAddressRangeKHR addressRange;
 	public VkAddressCommandFlagsKHR addressFlags;
@@ -11226,7 +11227,7 @@ public unsafe partial struct VkDeviceMemoryImageCopyKHR : IStructureType, IChain
 
 public unsafe partial struct VkCopyDeviceMemoryImageInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyDeviceMemoryImageInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_DEVICE_MEMORY_IMAGE_INFO_KHR;
 	public void* pNext;
 	public VkImage image;
 	public uint regionCount;
@@ -11249,7 +11250,7 @@ public unsafe partial struct VkCopyDeviceMemoryImageInfoKHR : IStructureType, IC
 
 public unsafe partial struct VkMemoryRangeBarrierKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryRangeBarrierKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_RANGE_BARRIER_KHR;
 	public void* pNext;
 	public VkPipelineStageFlags2 srcStageMask;
 	public VkAccessFlags2 srcAccessMask;
@@ -11277,7 +11278,7 @@ public unsafe partial struct VkMemoryRangeBarrierKHR : IStructureType, IChainTyp
 
 public unsafe partial struct VkMemoryRangeBarriersInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryRangeBarriersInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_RANGE_BARRIERS_INFO_KHR;
 	public void* pNext;
 	public uint memoryRangeBarrierCount;
 	public VkMemoryRangeBarrierKHR* pMemoryRangeBarriers;
@@ -11299,7 +11300,7 @@ public unsafe partial struct VkMemoryRangeBarriersInfoKHR : IStructureType, ICha
 
 public unsafe partial struct VkPhysicalDeviceDeviceAddressCommandsFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDeviceAddressCommandsFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_ADDRESS_COMMANDS_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 deviceAddressCommands;
 
@@ -11320,7 +11321,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceAddressCommandsFeaturesKHR : 
 
 public unsafe partial struct VkBindIndexBuffer3InfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindIndexBuffer3InfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_INDEX_BUFFER_3_INFO_KHR;
 	public void* pNext;
 	public VkDeviceAddressRangeKHR addressRange;
 	public VkAddressCommandFlagsKHR addressFlags;
@@ -11343,7 +11344,7 @@ public unsafe partial struct VkBindIndexBuffer3InfoKHR : IStructureType, IChainT
 
 public unsafe partial struct VkBindVertexBuffer3InfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindVertexBuffer3InfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_VERTEX_BUFFER_3_INFO_KHR;
 	public void* pNext;
 	public VkBool32 setStride;
 	public VkStridedDeviceAddressRangeKHR addressRange;
@@ -11366,7 +11367,7 @@ public unsafe partial struct VkBindVertexBuffer3InfoKHR : IStructureType, IChain
 
 public unsafe partial struct VkDrawIndirect2InfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DrawIndirect2InfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DRAW_INDIRECT_2_INFO_KHR;
 	public void* pNext;
 	public VkStridedDeviceAddressRangeKHR addressRange;
 	public VkAddressCommandFlagsKHR addressFlags;
@@ -11389,7 +11390,7 @@ public unsafe partial struct VkDrawIndirect2InfoKHR : IStructureType, IChainType
 
 public unsafe partial struct VkDrawIndirectCount2InfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DrawIndirectCount2InfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DRAW_INDIRECT_COUNT_2_INFO_KHR;
 	public void* pNext;
 	public VkStridedDeviceAddressRangeKHR addressRange;
 	public VkAddressCommandFlagsKHR addressFlags;
@@ -11414,7 +11415,7 @@ public unsafe partial struct VkDrawIndirectCount2InfoKHR : IStructureType, IChai
 
 public unsafe partial struct VkDispatchIndirect2InfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DispatchIndirect2InfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPATCH_INDIRECT_2_INFO_KHR;
 	public void* pNext;
 	public VkDeviceAddressRangeKHR addressRange;
 	public VkAddressCommandFlagsKHR addressFlags;
@@ -11436,7 +11437,7 @@ public unsafe partial struct VkDispatchIndirect2InfoKHR : IStructureType, IChain
 
 public unsafe partial struct VkConditionalRenderingBeginInfo2EXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ConditionalRenderingBeginInfo2EXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_2_EXT;
 	public void* pNext;
 	public VkDeviceAddressRangeKHR addressRange;
 	public VkAddressCommandFlagsKHR addressFlags;
@@ -11459,7 +11460,7 @@ public unsafe partial struct VkConditionalRenderingBeginInfo2EXT : IStructureTyp
 
 public unsafe partial struct VkBindTransformFeedbackBuffer2InfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindTransformFeedbackBuffer2InfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_TRANSFORM_FEEDBACK_BUFFER_2_INFO_EXT;
 	public void* pNext;
 	public VkDeviceAddressRangeKHR addressRange;
 	public VkAddressCommandFlagsKHR addressFlags;
@@ -11481,7 +11482,7 @@ public unsafe partial struct VkBindTransformFeedbackBuffer2InfoEXT : IStructureT
 
 public unsafe partial struct VkMemoryMarkerInfoAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryMarkerInfoAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_MARKER_INFO_AMD;
 	public void* pNext;
 	public VkPipelineStageFlags2 stage;
 	public VkDeviceAddressRangeKHR dstRange;
@@ -11505,7 +11506,7 @@ public unsafe partial struct VkMemoryMarkerInfoAMD : IStructureType, IChainType
 
 public unsafe partial struct VkAccelerationStructureCreateInfo2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureCreateInfo2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_2_KHR;
 	public void* pNext;
 	public VkAccelerationStructureCreateFlagsKHR createFlags;
 	public VkDeviceAddressRangeKHR addressRange;
@@ -11529,7 +11530,7 @@ public unsafe partial struct VkAccelerationStructureCreateInfo2KHR : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentShaderBarycentricFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 fragmentShaderBarycentric;
 
@@ -11550,7 +11551,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesKH
 
 public unsafe partial struct VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentShaderBarycentricPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR;
 	public void* pNext;
 	public VkBool32 triStripVertexOrderIndependentOfProvokingVertex;
 
@@ -11571,7 +11572,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShaderBarycentricProperties
 
 public unsafe partial struct VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 shaderSubgroupUniformControlFlow;
 
@@ -11592,7 +11593,7 @@ public unsafe partial struct VkPhysicalDeviceShaderSubgroupUniformControlFlowFea
 
 public unsafe partial struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 workgroupMemoryExplicitLayout;
 	public VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout;
@@ -11616,7 +11617,7 @@ public unsafe partial struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeatur
 
 public unsafe partial struct VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingMaintenance1FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 rayTracingMaintenance1;
 	public VkBool32 rayTracingPipelineTraceRaysIndirect2;
@@ -11656,7 +11657,7 @@ public partial struct VkTraceRaysIndirectCommand2KHR
 
 public unsafe partial struct VkPhysicalDeviceShaderUntypedPointersFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderUntypedPointersFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 shaderUntypedPointers;
 
@@ -11677,7 +11678,7 @@ public unsafe partial struct VkPhysicalDeviceShaderUntypedPointersFeaturesKHR : 
 
 public unsafe partial struct VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MAXIMAL_RECONVERGENCE_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 shaderMaximalReconvergence;
 
@@ -11698,7 +11699,7 @@ public unsafe partial struct VkPhysicalDeviceShaderMaximalReconvergenceFeaturesK
 
 public unsafe partial struct VkSurfaceCapabilitiesPresentId2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfaceCapabilitiesPresentId2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR;
 	public void* pNext;
 	public VkBool32 presentId2Supported;
 
@@ -11719,7 +11720,7 @@ public unsafe partial struct VkSurfaceCapabilitiesPresentId2KHR : IStructureType
 
 public unsafe partial struct VkPresentId2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PresentId2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR;
 	public void* pNext;
 	public uint swapchainCount;
 	public ulong* pPresentIds;
@@ -11741,7 +11742,7 @@ public unsafe partial struct VkPresentId2KHR : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDevicePresentId2FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePresentId2FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_2_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 presentId2;
 
@@ -11762,7 +11763,7 @@ public unsafe partial struct VkPhysicalDevicePresentId2FeaturesKHR : IStructureT
 
 public unsafe partial struct VkSurfaceCapabilitiesPresentWait2KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfaceCapabilitiesPresentWait2KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_WAIT_2_KHR;
 	public void* pNext;
 	public VkBool32 presentWait2Supported;
 
@@ -11783,7 +11784,7 @@ public unsafe partial struct VkSurfaceCapabilitiesPresentWait2KHR : IStructureTy
 
 public unsafe partial struct VkPhysicalDevicePresentWait2FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePresentWait2FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_WAIT_2_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 presentWait2;
 
@@ -11804,7 +11805,7 @@ public unsafe partial struct VkPhysicalDevicePresentWait2FeaturesKHR : IStructur
 
 public unsafe partial struct VkPresentWait2InfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PresentWait2InfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PRESENT_WAIT_2_INFO_KHR;
 	public void* pNext;
 	public ulong presentId;
 	public ulong timeout;
@@ -11826,7 +11827,7 @@ public unsafe partial struct VkPresentWait2InfoKHR : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingPositionFetchFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_POSITION_FETCH_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 rayTracingPositionFetch;
 
@@ -11847,7 +11848,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR 
 
 public unsafe partial struct VkPhysicalDevicePipelineBinaryFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineBinaryFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_BINARY_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 pipelineBinaries;
 
@@ -11868,7 +11869,7 @@ public unsafe partial struct VkPhysicalDevicePipelineBinaryFeaturesKHR : IStruct
 
 public unsafe partial struct VkPhysicalDevicePipelineBinaryPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineBinaryPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_BINARY_PROPERTIES_KHR;
 	public void* pNext;
 	public VkBool32 pipelineBinaryInternalCache;
 	public VkBool32 pipelineBinaryInternalCacheControl;
@@ -11893,7 +11894,7 @@ public unsafe partial struct VkPhysicalDevicePipelineBinaryPropertiesKHR : IStru
 
 public unsafe partial struct VkDevicePipelineBinaryInternalCacheControlKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DevicePipelineBinaryInternalCacheControlKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_PIPELINE_BINARY_INTERNAL_CACHE_CONTROL_KHR;
 	public void* pNext;
 	public VkBool32 disableInternalCache;
 
@@ -11914,7 +11915,7 @@ public unsafe partial struct VkDevicePipelineBinaryInternalCacheControlKHR : ISt
 
 public unsafe partial struct VkPipelineBinaryKeyKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineBinaryKeyKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_BINARY_KEY_KHR;
 	public void* pNext;
 	public uint keySize;
 	public fixed byte key[32];
@@ -11949,7 +11950,7 @@ public unsafe partial struct VkPipelineBinaryKeysAndDataKHR
 
 public unsafe partial struct VkPipelineCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_CREATE_INFO_KHR;
 	public void* pNext;
 
 	public VkPipelineCreateInfoKHR()
@@ -11969,7 +11970,7 @@ public unsafe partial struct VkPipelineCreateInfoKHR : IStructureType, IChainTyp
 
 public unsafe partial struct VkPipelineBinaryCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineBinaryCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_BINARY_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkPipelineBinaryKeysAndDataKHR* pKeysAndDataInfo;
 	public VkPipeline pipeline;
@@ -11992,7 +11993,7 @@ public unsafe partial struct VkPipelineBinaryCreateInfoKHR : IStructureType, ICh
 
 public unsafe partial struct VkPipelineBinaryInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineBinaryInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_BINARY_INFO_KHR;
 	public void* pNext;
 	public uint binaryCount;
 	public VkPipelineBinaryKHR* pPipelineBinaries;
@@ -12014,7 +12015,7 @@ public unsafe partial struct VkPipelineBinaryInfoKHR : IStructureType, IChainTyp
 
 public unsafe partial struct VkReleaseCapturedPipelineDataInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ReleaseCapturedPipelineDataInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RELEASE_CAPTURED_PIPELINE_DATA_INFO_KHR;
 	public void* pNext;
 	public VkPipeline pipeline;
 
@@ -12035,7 +12036,7 @@ public unsafe partial struct VkReleaseCapturedPipelineDataInfoKHR : IStructureTy
 
 public unsafe partial struct VkPipelineBinaryDataInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineBinaryDataInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_BINARY_DATA_INFO_KHR;
 	public void* pNext;
 	public VkPipelineBinaryKHR pipelineBinary;
 
@@ -12056,7 +12057,7 @@ public unsafe partial struct VkPipelineBinaryDataInfoKHR : IStructureType, IChai
 
 public unsafe partial struct VkPipelineBinaryHandlesInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineBinaryHandlesInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_BINARY_HANDLES_INFO_KHR;
 	public void* pNext;
 	public uint pipelineBinaryCount;
 	public VkPipelineBinaryKHR* pPipelineBinaries;
@@ -12078,7 +12079,7 @@ public unsafe partial struct VkPipelineBinaryHandlesInfoKHR : IStructureType, IC
 
 public unsafe partial struct VkSurfacePresentModeKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfacePresentModeKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_KHR;
 	public void* pNext;
 	public VkPresentModeKHR presentMode;
 
@@ -12099,7 +12100,7 @@ public unsafe partial struct VkSurfacePresentModeKHR : IStructureType, IChainTyp
 
 public unsafe partial struct VkSurfacePresentScalingCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfacePresentScalingCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_KHR;
 	public void* pNext;
 	public VkPresentScalingFlagsKHR supportedPresentScaling;
 	public VkPresentGravityFlagsKHR supportedPresentGravityX;
@@ -12124,7 +12125,7 @@ public unsafe partial struct VkSurfacePresentScalingCapabilitiesKHR : IStructure
 
 public unsafe partial struct VkSurfacePresentModeCompatibilityKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfacePresentModeCompatibilityKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_KHR;
 	public void* pNext;
 	public uint presentModeCount;
 	public VkPresentModeKHR* pPresentModes;
@@ -12146,7 +12147,7 @@ public unsafe partial struct VkSurfacePresentModeCompatibilityKHR : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSwapchainMaintenance1FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SWAPCHAIN_MAINTENANCE_1_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 swapchainMaintenance1;
 
@@ -12167,7 +12168,7 @@ public unsafe partial struct VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR : 
 
 public unsafe partial struct VkSwapchainPresentFenceInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainPresentFenceInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_FENCE_INFO_KHR;
 	public void* pNext;
 	public uint swapchainCount;
 	public VkFence* pFences;
@@ -12189,7 +12190,7 @@ public unsafe partial struct VkSwapchainPresentFenceInfoKHR : IStructureType, IC
 
 public unsafe partial struct VkSwapchainPresentModesCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainPresentModesCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODES_CREATE_INFO_KHR;
 	public void* pNext;
 	public uint presentModeCount;
 	public VkPresentModeKHR* pPresentModes;
@@ -12211,7 +12212,7 @@ public unsafe partial struct VkSwapchainPresentModesCreateInfoKHR : IStructureTy
 
 public unsafe partial struct VkSwapchainPresentModeInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainPresentModeInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODE_INFO_KHR;
 	public void* pNext;
 	public uint swapchainCount;
 	public VkPresentModeKHR* pPresentModes;
@@ -12233,7 +12234,7 @@ public unsafe partial struct VkSwapchainPresentModeInfoKHR : IStructureType, ICh
 
 public unsafe partial struct VkSwapchainPresentScalingCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainPresentScalingCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_SCALING_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkPresentScalingFlagsKHR scalingBehavior;
 	public VkPresentGravityFlagsKHR presentGravityX;
@@ -12256,7 +12257,7 @@ public unsafe partial struct VkSwapchainPresentScalingCreateInfoKHR : IStructure
 
 public unsafe partial struct VkReleaseSwapchainImagesInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ReleaseSwapchainImagesInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RELEASE_SWAPCHAIN_IMAGES_INFO_KHR;
 	public void* pNext;
 	public VkSwapchainKHR swapchain;
 	public uint imageIndexCount;
@@ -12279,7 +12280,7 @@ public unsafe partial struct VkReleaseSwapchainImagesInfoKHR : IStructureType, I
 
 public unsafe partial struct VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceInternallySynchronizedQueuesFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INTERNALLY_SYNCHRONIZED_QUEUES_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 internallySynchronizedQueues;
 
@@ -12300,7 +12301,7 @@ public unsafe partial struct VkPhysicalDeviceInternallySynchronizedQueuesFeature
 
 public unsafe partial struct VkCooperativeMatrixPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CooperativeMatrixPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_KHR;
 	public void* pNext;
 	public uint MSize;
 	public uint NSize;
@@ -12329,7 +12330,7 @@ public unsafe partial struct VkCooperativeMatrixPropertiesKHR : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceCooperativeMatrixFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCooperativeMatrixFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 cooperativeMatrix;
 	public VkBool32 cooperativeMatrixRobustBufferAccess;
@@ -12351,7 +12352,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrixFeaturesKHR : IStr
 
 public unsafe partial struct VkPhysicalDeviceCooperativeMatrixPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCooperativeMatrixPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR;
 	public void* pNext;
 	public VkShaderStageFlags cooperativeMatrixSupportedStages;
 
@@ -12372,7 +12373,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrixPropertiesKHR : IS
 
 public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceComputeShaderDerivativesFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 computeDerivativeGroupQuads;
 	public VkBool32 computeDerivativeGroupLinear;
@@ -12394,7 +12395,7 @@ public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR
 
 public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceComputeShaderDerivativesPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR;
 	public void* pNext;
 	public VkBool32 meshAndTaskShaderDerivatives;
 
@@ -12702,7 +12703,7 @@ public unsafe partial struct StdVideoDecodeAV1ReferenceInfo
 
 public unsafe partial struct VkVideoDecodeAV1ProfileInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeAV1ProfileInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PROFILE_INFO_KHR;
 	public void* pNext;
 	public StdVideoAV1Profile stdProfile;
 	public VkBool32 filmGrainSupport;
@@ -12724,7 +12725,7 @@ public unsafe partial struct VkVideoDecodeAV1ProfileInfoKHR : IStructureType, IC
 
 public unsafe partial struct VkVideoDecodeAV1CapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeAV1CapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_CAPABILITIES_KHR;
 	public void* pNext;
 	public StdVideoAV1Level maxLevel;
 
@@ -12745,7 +12746,7 @@ public unsafe partial struct VkVideoDecodeAV1CapabilitiesKHR : IStructureType, I
 
 public unsafe partial struct VkVideoDecodeAV1SessionParametersCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeAV1SessionParametersCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR;
 	public void* pNext;
 	public StdVideoAV1SequenceHeader* pStdSequenceHeader;
 
@@ -12766,7 +12767,7 @@ public unsafe partial struct VkVideoDecodeAV1SessionParametersCreateInfoKHR : IS
 
 public unsafe partial struct VkVideoDecodeAV1PictureInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeAV1PictureInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PICTURE_INFO_KHR;
 	public void* pNext;
 	public StdVideoDecodeAV1PictureInfo* pStdPictureInfo;
 	public fixed int referenceNameSlotIndices[7];
@@ -12792,7 +12793,7 @@ public unsafe partial struct VkVideoDecodeAV1PictureInfoKHR : IStructureType, IC
 
 public unsafe partial struct VkVideoDecodeAV1DpbSlotInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeAV1DpbSlotInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR;
 	public void* pNext;
 	public StdVideoDecodeAV1ReferenceInfo* pStdReferenceInfo;
 
@@ -12929,7 +12930,7 @@ public unsafe partial struct StdVideoEncodeAV1ReferenceInfo
 
 public unsafe partial struct VkPhysicalDeviceVideoEncodeAV1FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVideoEncodeAV1FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_AV1_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 videoEncodeAV1;
 
@@ -12950,7 +12951,7 @@ public unsafe partial struct VkPhysicalDeviceVideoEncodeAV1FeaturesKHR : IStruct
 
 public unsafe partial struct VkVideoEncodeAV1CapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeAV1CapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_CAPABILITIES_KHR;
 	public void* pNext;
 	public VkVideoEncodeAV1CapabilityFlagsKHR flags;
 	public StdVideoAV1Level maxLevel;
@@ -13001,7 +13002,7 @@ public partial struct VkVideoEncodeAV1QIndexKHR
 
 public unsafe partial struct VkVideoEncodeAV1QualityLevelPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeAV1QualityLevelPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUALITY_LEVEL_PROPERTIES_KHR;
 	public void* pNext;
 	public VkVideoEncodeAV1RateControlFlagsKHR preferredRateControlFlags;
 	public uint preferredGopFrameCount;
@@ -13036,7 +13037,7 @@ public unsafe partial struct VkVideoEncodeAV1QualityLevelPropertiesKHR : IStruct
 
 public unsafe partial struct VkVideoEncodeAV1SessionCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeAV1SessionCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkBool32 useMaxLevel;
 	public StdVideoAV1Level maxLevel;
@@ -13058,7 +13059,7 @@ public unsafe partial struct VkVideoEncodeAV1SessionCreateInfoKHR : IStructureTy
 
 public unsafe partial struct VkVideoEncodeAV1SessionParametersCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeAV1SessionParametersCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR;
 	public void* pNext;
 	public StdVideoAV1SequenceHeader* pStdSequenceHeader;
 	public StdVideoEncodeAV1DecoderModelInfo* pStdDecoderModelInfo;
@@ -13082,7 +13083,7 @@ public unsafe partial struct VkVideoEncodeAV1SessionParametersCreateInfoKHR : IS
 
 public unsafe partial struct VkVideoEncodeAV1PictureInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeAV1PictureInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PICTURE_INFO_KHR;
 	public void* pNext;
 	public VkVideoEncodeAV1PredictionModeKHR predictionMode;
 	public VkVideoEncodeAV1RateControlGroupKHR rateControlGroup;
@@ -13109,7 +13110,7 @@ public unsafe partial struct VkVideoEncodeAV1PictureInfoKHR : IStructureType, IC
 
 public unsafe partial struct VkVideoEncodeAV1DpbSlotInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeAV1DpbSlotInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_DPB_SLOT_INFO_KHR;
 	public void* pNext;
 	public StdVideoEncodeAV1ReferenceInfo* pStdReferenceInfo;
 
@@ -13130,7 +13131,7 @@ public unsafe partial struct VkVideoEncodeAV1DpbSlotInfoKHR : IStructureType, IC
 
 public unsafe partial struct VkVideoEncodeAV1ProfileInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeAV1ProfileInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PROFILE_INFO_KHR;
 	public void* pNext;
 	public StdVideoAV1Profile stdProfile;
 
@@ -13158,7 +13159,7 @@ public partial struct VkVideoEncodeAV1FrameSizeKHR
 
 public unsafe partial struct VkVideoEncodeAV1GopRemainingFrameInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeAV1GopRemainingFrameInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_GOP_REMAINING_FRAME_INFO_KHR;
 	public void* pNext;
 	public VkBool32 useGopRemainingFrames;
 	public uint gopRemainingIntra;
@@ -13182,7 +13183,7 @@ public unsafe partial struct VkVideoEncodeAV1GopRemainingFrameInfoKHR : IStructu
 
 public unsafe partial struct VkVideoEncodeAV1RateControlInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeAV1RateControlInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_RATE_CONTROL_INFO_KHR;
 	public void* pNext;
 	public VkVideoEncodeAV1RateControlFlagsKHR flags;
 	public uint gopFrameCount;
@@ -13207,7 +13208,7 @@ public unsafe partial struct VkVideoEncodeAV1RateControlInfoKHR : IStructureType
 
 public unsafe partial struct VkVideoEncodeAV1RateControlLayerInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeAV1RateControlLayerInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_RATE_CONTROL_LAYER_INFO_KHR;
 	public void* pNext;
 	public VkBool32 useMinQIndex;
 	public VkVideoEncodeAV1QIndexKHR minQIndex;
@@ -13320,7 +13321,7 @@ public unsafe partial struct StdVideoDecodeVP9PictureInfo
 
 public unsafe partial struct VkPhysicalDeviceVideoDecodeVP9FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVideoDecodeVP9FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_DECODE_VP9_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 videoDecodeVP9;
 
@@ -13341,7 +13342,7 @@ public unsafe partial struct VkPhysicalDeviceVideoDecodeVP9FeaturesKHR : IStruct
 
 public unsafe partial struct VkVideoDecodeVP9ProfileInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeVP9ProfileInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_VP9_PROFILE_INFO_KHR;
 	public void* pNext;
 	public StdVideoVP9Profile stdProfile;
 
@@ -13362,7 +13363,7 @@ public unsafe partial struct VkVideoDecodeVP9ProfileInfoKHR : IStructureType, IC
 
 public unsafe partial struct VkVideoDecodeVP9CapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeVP9CapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_VP9_CAPABILITIES_KHR;
 	public void* pNext;
 	public StdVideoVP9Level maxLevel;
 
@@ -13383,7 +13384,7 @@ public unsafe partial struct VkVideoDecodeVP9CapabilitiesKHR : IStructureType, I
 
 public unsafe partial struct VkVideoDecodeVP9PictureInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeVP9PictureInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_VP9_PICTURE_INFO_KHR;
 	public void* pNext;
 	public StdVideoDecodeVP9PictureInfo* pStdPictureInfo;
 	public fixed int referenceNameSlotIndices[3];
@@ -13408,7 +13409,7 @@ public unsafe partial struct VkVideoDecodeVP9PictureInfoKHR : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDeviceVideoMaintenance1FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVideoMaintenance1FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 videoMaintenance1;
 
@@ -13429,7 +13430,7 @@ public unsafe partial struct VkPhysicalDeviceVideoMaintenance1FeaturesKHR : IStr
 
 public unsafe partial struct VkVideoInlineQueryInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoInlineQueryInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR;
 	public void* pNext;
 	public VkQueryPool queryPool;
 	public uint firstQuery;
@@ -13452,7 +13453,7 @@ public unsafe partial struct VkVideoInlineQueryInfoKHR : IStructureType, IChainT
 
 public unsafe partial struct VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceUnifiedImageLayoutsFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFIED_IMAGE_LAYOUTS_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 unifiedImageLayouts;
 	public VkBool32 unifiedImageLayoutsVideo;
@@ -13474,7 +13475,7 @@ public unsafe partial struct VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR : IS
 
 public unsafe partial struct VkAttachmentFeedbackLoopInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AttachmentFeedbackLoopInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ATTACHMENT_FEEDBACK_LOOP_INFO_EXT;
 	public void* pNext;
 	public VkBool32 feedbackLoopEnable;
 
@@ -13495,7 +13496,7 @@ public unsafe partial struct VkAttachmentFeedbackLoopInfoEXT : IStructureType, I
 
 public unsafe partial struct VkCalibratedTimestampInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CalibratedTimestampInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR;
 	public void* pNext;
 	public VkTimeDomainKHR timeDomain;
 
@@ -13516,7 +13517,7 @@ public unsafe partial struct VkCalibratedTimestampInfoKHR : IStructureType, ICha
 
 public unsafe partial struct VkSetDescriptorBufferOffsetsInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SetDescriptorBufferOffsetsInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT;
 	public void* pNext;
 	public VkShaderStageFlags stageFlags;
 	public VkPipelineLayout layout;
@@ -13542,7 +13543,7 @@ public unsafe partial struct VkSetDescriptorBufferOffsetsInfoEXT : IStructureTyp
 
 public unsafe partial struct VkBindDescriptorBufferEmbeddedSamplersInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindDescriptorBufferEmbeddedSamplersInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT;
 	public void* pNext;
 	public VkShaderStageFlags stageFlags;
 	public VkPipelineLayout layout;
@@ -13572,7 +13573,7 @@ public partial struct VkCopyMemoryIndirectCommandKHR
 
 public unsafe partial struct VkCopyMemoryIndirectInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyMemoryIndirectInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_MEMORY_INDIRECT_INFO_KHR;
 	public void* pNext;
 	public VkAddressCopyFlagsKHR srcCopyFlags;
 	public VkAddressCopyFlagsKHR dstCopyFlags;
@@ -13606,7 +13607,7 @@ public partial struct VkCopyMemoryToImageIndirectCommandKHR
 
 public unsafe partial struct VkCopyMemoryToImageIndirectInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyMemoryToImageIndirectInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INDIRECT_INFO_KHR;
 	public void* pNext;
 	public VkAddressCopyFlagsKHR srcCopyFlags;
 	public uint copyCount;
@@ -13632,7 +13633,7 @@ public unsafe partial struct VkCopyMemoryToImageIndirectInfoKHR : IStructureType
 
 public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCopyMemoryIndirectFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 indirectMemoryCopy;
 	public VkBool32 indirectMemoryToImageCopy;
@@ -13654,7 +13655,7 @@ public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR : ISt
 
 public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCopyMemoryIndirectPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_KHR;
 	public void* pNext;
 	public VkQueueFlags supportedQueues;
 
@@ -13675,7 +13676,7 @@ public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR : I
 
 public unsafe partial struct VkVideoEncodeIntraRefreshCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeIntraRefreshCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_INTRA_REFRESH_CAPABILITIES_KHR;
 	public void* pNext;
 	public VkVideoEncodeIntraRefreshModeFlagsKHR intraRefreshModes;
 	public uint maxIntraRefreshCycleDuration;
@@ -13700,7 +13701,7 @@ public unsafe partial struct VkVideoEncodeIntraRefreshCapabilitiesKHR : IStructu
 
 public unsafe partial struct VkVideoEncodeSessionIntraRefreshCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeSessionIntraRefreshCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_INTRA_REFRESH_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkVideoEncodeIntraRefreshModeFlagsKHR intraRefreshMode;
 
@@ -13721,7 +13722,7 @@ public unsafe partial struct VkVideoEncodeSessionIntraRefreshCreateInfoKHR : ISt
 
 public unsafe partial struct VkVideoEncodeIntraRefreshInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeIntraRefreshInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_INTRA_REFRESH_INFO_KHR;
 	public void* pNext;
 	public uint intraRefreshCycleDuration;
 	public uint intraRefreshIndex;
@@ -13743,7 +13744,7 @@ public unsafe partial struct VkVideoEncodeIntraRefreshInfoKHR : IStructureType, 
 
 public unsafe partial struct VkVideoReferenceIntraRefreshInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoReferenceIntraRefreshInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_REFERENCE_INTRA_REFRESH_INFO_KHR;
 	public void* pNext;
 	public uint dirtyIntraRefreshRegions;
 
@@ -13764,7 +13765,7 @@ public unsafe partial struct VkVideoReferenceIntraRefreshInfoKHR : IStructureTyp
 
 public unsafe partial struct VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_INTRA_REFRESH_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 videoEncodeIntraRefresh;
 
@@ -13785,7 +13786,7 @@ public unsafe partial struct VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR 
 
 public unsafe partial struct VkVideoEncodeQuantizationMapCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeQuantizationMapCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR;
 	public void* pNext;
 	public VkExtent2D maxQuantizationMapExtent;
 
@@ -13806,7 +13807,7 @@ public unsafe partial struct VkVideoEncodeQuantizationMapCapabilitiesKHR : IStru
 
 public unsafe partial struct VkVideoFormatQuantizationMapPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoFormatQuantizationMapPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_FORMAT_QUANTIZATION_MAP_PROPERTIES_KHR;
 	public void* pNext;
 	public VkExtent2D quantizationMapTexelSize;
 
@@ -13827,7 +13828,7 @@ public unsafe partial struct VkVideoFormatQuantizationMapPropertiesKHR : IStruct
 
 public unsafe partial struct VkVideoEncodeQuantizationMapInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeQuantizationMapInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_INFO_KHR;
 	public void* pNext;
 	public VkImageView quantizationMap;
 	public VkExtent2D quantizationMapExtent;
@@ -13849,7 +13850,7 @@ public unsafe partial struct VkVideoEncodeQuantizationMapInfoKHR : IStructureTyp
 
 public unsafe partial struct VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeQuantizationMapSessionParametersCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_SESSION_PARAMETERS_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkExtent2D quantizationMapTexelSize;
 
@@ -13870,7 +13871,7 @@ public unsafe partial struct VkVideoEncodeQuantizationMapSessionParametersCreate
 
 public unsafe partial struct VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_QUANTIZATION_MAP_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 videoEncodeQuantizationMap;
 
@@ -13891,7 +13892,7 @@ public unsafe partial struct VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesK
 
 public unsafe partial struct VkVideoEncodeH264QuantizationMapCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH264QuantizationMapCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUANTIZATION_MAP_CAPABILITIES_KHR;
 	public void* pNext;
 	public int minQpDelta;
 	public int maxQpDelta;
@@ -13913,7 +13914,7 @@ public unsafe partial struct VkVideoEncodeH264QuantizationMapCapabilitiesKHR : I
 
 public unsafe partial struct VkVideoEncodeH265QuantizationMapCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeH265QuantizationMapCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUANTIZATION_MAP_CAPABILITIES_KHR;
 	public void* pNext;
 	public int minQpDelta;
 	public int maxQpDelta;
@@ -13935,7 +13936,7 @@ public unsafe partial struct VkVideoEncodeH265QuantizationMapCapabilitiesKHR : I
 
 public unsafe partial struct VkVideoFormatH265QuantizationMapPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoFormatH265QuantizationMapPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_FORMAT_H265_QUANTIZATION_MAP_PROPERTIES_KHR;
 	public void* pNext;
 	public VkVideoEncodeH265CtbSizeFlagsKHR compatibleCtbSizes;
 
@@ -13956,7 +13957,7 @@ public unsafe partial struct VkVideoFormatH265QuantizationMapPropertiesKHR : ISt
 
 public unsafe partial struct VkVideoEncodeAV1QuantizationMapCapabilitiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeAV1QuantizationMapCapabilitiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUANTIZATION_MAP_CAPABILITIES_KHR;
 	public void* pNext;
 	public int minQIndexDelta;
 	public int maxQIndexDelta;
@@ -13978,7 +13979,7 @@ public unsafe partial struct VkVideoEncodeAV1QuantizationMapCapabilitiesKHR : IS
 
 public unsafe partial struct VkVideoFormatAV1QuantizationMapPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoFormatAV1QuantizationMapPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_FORMAT_AV1_QUANTIZATION_MAP_PROPERTIES_KHR;
 	public void* pNext;
 	public VkVideoEncodeAV1SuperblockSizeFlagsKHR compatibleSuperblockSizes;
 
@@ -13999,7 +14000,7 @@ public unsafe partial struct VkVideoFormatAV1QuantizationMapPropertiesKHR : IStr
 
 public unsafe partial struct VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 shaderRelaxedExtendedInstruction;
 
@@ -14020,7 +14021,7 @@ public unsafe partial struct VkPhysicalDeviceShaderRelaxedExtendedInstructionFea
 
 public unsafe partial struct VkPhysicalDeviceMaintenance7FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance7FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 maintenance7;
 
@@ -14041,7 +14042,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance7FeaturesKHR : IStructur
 
 public unsafe partial struct VkPhysicalDeviceMaintenance7PropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance7PropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR;
 	public void* pNext;
 	public VkBool32 robustFragmentShadingRateAttachmentAccess;
 	public VkBool32 separateDepthStencilAttachmentAccess;
@@ -14069,7 +14070,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance7PropertiesKHR : IStruct
 
 public unsafe partial struct VkPhysicalDeviceLayeredApiPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLayeredApiPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR;
 	public void* pNext;
 	public uint vendorID;
 	public uint deviceID;
@@ -14093,7 +14094,7 @@ public unsafe partial struct VkPhysicalDeviceLayeredApiPropertiesKHR : IStructur
 
 public unsafe partial struct VkPhysicalDeviceLayeredApiPropertiesListKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLayeredApiPropertiesListKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR;
 	public void* pNext;
 	public uint layeredApiCount;
 	public VkPhysicalDeviceLayeredApiPropertiesKHR* pLayeredApis;
@@ -14115,7 +14116,7 @@ public unsafe partial struct VkPhysicalDeviceLayeredApiPropertiesListKHR : IStru
 
 public unsafe partial struct VkPhysicalDeviceLayeredApiVulkanPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLayeredApiVulkanPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR;
 	public void* pNext;
 	public VkPhysicalDeviceProperties2 properties;
 
@@ -14136,7 +14137,7 @@ public unsafe partial struct VkPhysicalDeviceLayeredApiVulkanPropertiesKHR : ISt
 
 public unsafe partial struct VkPhysicalDeviceFaultFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFaultFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 deviceFault;
 	public VkBool32 deviceFaultVendorBinary;
@@ -14160,7 +14161,7 @@ public unsafe partial struct VkPhysicalDeviceFaultFeaturesKHR : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceFaultPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFaultPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_PROPERTIES_KHR;
 	public void* pNext;
 	public uint maxDeviceFaultCount;
 
@@ -14195,7 +14196,7 @@ public unsafe partial struct VkDeviceFaultVendorInfoKHR
 
 public unsafe partial struct VkDeviceFaultInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceFaultInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_KHR;
 	public void* pNext;
 	public VkDeviceFaultFlagsKHR flags;
 	public ulong groupId;
@@ -14221,7 +14222,7 @@ public unsafe partial struct VkDeviceFaultInfoKHR : IStructureType, IChainType
 
 public unsafe partial struct VkDeviceFaultDebugInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceFaultDebugInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_FAULT_DEBUG_INFO_KHR;
 	public void* pNext;
 	public uint vendorBinarySize;
 	public void* pVendorBinaryData;
@@ -14258,7 +14259,7 @@ public unsafe partial struct VkDeviceFaultVendorBinaryHeaderVersionOneKHR
 
 public unsafe partial struct VkMemoryBarrierAccessFlags3KHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryBarrierAccessFlags3KHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR;
 	public void* pNext;
 	public VkAccessFlags3KHR srcAccessMask3;
 	public VkAccessFlags3KHR dstAccessMask3;
@@ -14280,7 +14281,7 @@ public unsafe partial struct VkMemoryBarrierAccessFlags3KHR : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDeviceMaintenance8FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance8FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 maintenance8;
 
@@ -14301,7 +14302,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance8FeaturesKHR : IStructur
 
 public unsafe partial struct VkPhysicalDeviceShaderFmaFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderFmaFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FMA_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 shaderFmaFloat16;
 	public VkBool32 shaderFmaFloat32;
@@ -14324,7 +14325,7 @@ public unsafe partial struct VkPhysicalDeviceShaderFmaFeaturesKHR : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceMaintenance9FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance9FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 maintenance9;
 
@@ -14345,7 +14346,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance9FeaturesKHR : IStructur
 
 public unsafe partial struct VkPhysicalDeviceMaintenance9PropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance9PropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_PROPERTIES_KHR;
 	public void* pNext;
 	public VkBool32 image2DViewOf3DSparse;
 	public VkDefaultVertexAttributeValueKHR defaultVertexAttributeValue;
@@ -14367,7 +14368,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance9PropertiesKHR : IStruct
 
 public unsafe partial struct VkQueueFamilyOwnershipTransferPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyOwnershipTransferPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_OWNERSHIP_TRANSFER_PROPERTIES_KHR;
 	public void* pNext;
 	public uint optimalImageTransferToQueueFamilies;
 
@@ -14388,7 +14389,7 @@ public unsafe partial struct VkQueueFamilyOwnershipTransferPropertiesKHR : IStru
 
 public unsafe partial struct VkPhysicalDeviceVideoMaintenance2FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVideoMaintenance2FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_2_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 videoMaintenance2;
 
@@ -14409,7 +14410,7 @@ public unsafe partial struct VkPhysicalDeviceVideoMaintenance2FeaturesKHR : IStr
 
 public unsafe partial struct VkVideoDecodeH264InlineSessionParametersInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH264InlineSessionParametersInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_INLINE_SESSION_PARAMETERS_INFO_KHR;
 	public void* pNext;
 	public StdVideoH264SequenceParameterSet* pStdSPS;
 	public StdVideoH264PictureParameterSet* pStdPPS;
@@ -14431,7 +14432,7 @@ public unsafe partial struct VkVideoDecodeH264InlineSessionParametersInfoKHR : I
 
 public unsafe partial struct VkVideoDecodeH265InlineSessionParametersInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeH265InlineSessionParametersInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR;
 	public void* pNext;
 	public StdVideoH265VideoParameterSet* pStdVPS;
 	public StdVideoH265SequenceParameterSet* pStdSPS;
@@ -14454,7 +14455,7 @@ public unsafe partial struct VkVideoDecodeH265InlineSessionParametersInfoKHR : I
 
 public unsafe partial struct VkVideoDecodeAV1InlineSessionParametersInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoDecodeAV1InlineSessionParametersInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR;
 	public void* pNext;
 	public StdVideoAV1SequenceHeader* pStdSequenceHeader;
 
@@ -14473,9 +14474,74 @@ public unsafe partial struct VkVideoDecodeAV1InlineSessionParametersInfoKHR : IS
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_FEEDBACK_2_FEATURES_KHR;
+	public void* pNext;
+	public VkBool32 videoEncodeFeedback2;
+
+	public VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkVideoEncodeFeedback2CapabilitiesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_FEEDBACK_2_CAPABILITIES_KHR;
+	public void* pNext;
+	public uint maxPerPartitionFeedbackEntries;
+	public VkVideoEncodePerPartitionFeedbackFlagsKHR supportedPerPartitionEncodeFeedbackFlags;
+
+	public VkVideoEncodeFeedback2CapabilitiesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_PER_PARTITION_FEEDBACK_CREATE_INFO_KHR;
+	public void* pNext;
+	public uint maxPerPartitionFeedbackEntries;
+	public VkVideoEncodePerPartitionFeedbackFlagsKHR perPartitionEncodeFeedbackFlags;
+
+	public VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceDepthClampZeroOneFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDepthClampZeroOneFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 depthClampZeroOne;
 
@@ -14496,7 +14562,7 @@ public unsafe partial struct VkPhysicalDeviceDepthClampZeroOneFeaturesKHR : IStr
 
 public unsafe partial struct VkPhysicalDeviceRobustness2FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRobustness2FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 robustBufferAccess2;
 	public VkBool32 robustImageAccess2;
@@ -14519,7 +14585,7 @@ public unsafe partial struct VkPhysicalDeviceRobustness2FeaturesKHR : IStructure
 
 public unsafe partial struct VkPhysicalDeviceRobustness2PropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRobustness2PropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_KHR;
 	public void* pNext;
 	public ulong robustStorageBufferAccessSizeAlignment;
 	public ulong robustUniformBufferAccessSizeAlignment;
@@ -14541,7 +14607,7 @@ public unsafe partial struct VkPhysicalDeviceRobustness2PropertiesKHR : IStructu
 
 public unsafe partial struct VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePresentModeFifoLatestReadyFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 presentModeFifoLatestReady;
 
@@ -14560,9 +14626,119 @@ public unsafe partial struct VkPhysicalDevicePresentModeFifoLatestReadyFeaturesK
 	}
 }
 
+public partial struct VkMicromapUsageKHR
+{
+	public uint count;
+	public uint subdivisionLevel;
+	public VkOpacityMicromapFormatKHR format;
+}
+
+public unsafe partial struct VkAccelerationStructureGeometryMicromapDataKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MICROMAP_DATA_KHR;
+	public void* pNext;
+	public uint usageCountsCount;
+	public VkMicromapUsageKHR* pUsageCounts;
+	public VkMicromapUsageKHR** ppUsageCounts;
+	public ulong data;
+	public ulong triangleArray;
+	public ulong triangleArrayStride;
+
+	public VkAccelerationStructureGeometryMicromapDataKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceOpacityMicromapFeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_KHR;
+	public void* pNext;
+	public VkBool32 micromap;
+
+	public VkPhysicalDeviceOpacityMicromapFeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceOpacityMicromapPropertiesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_KHR;
+	public void* pNext;
+	public uint maxOpacity2StateSubdivisionLevel;
+	public uint maxOpacity4StateSubdivisionLevel;
+	public uint maxOpacityLossy4StateSubdivisionLevel;
+	public ulong maxMicromapTriangles;
+
+	public VkPhysicalDeviceOpacityMicromapPropertiesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkMicromapTriangleKHR
+{
+	public uint dataOffset;
+	public ushort subdivisionLevel;
+	public ushort format;
+}
+
+public unsafe partial struct VkAccelerationStructureTrianglesOpacityMicromapKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_KHR;
+	public void* pNext;
+	public VkIndexType indexType;
+	public ulong indexBuffer;
+	public ulong indexStride;
+	public uint baseTriangle;
+	public VkAccelerationStructureKHR micromap;
+
+	public VkAccelerationStructureTrianglesOpacityMicromapKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceMaintenance10FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance10FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 maintenance10;
 
@@ -14583,7 +14759,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance10FeaturesKHR : IStructu
 
 public unsafe partial struct VkPhysicalDeviceMaintenance10PropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance10PropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR;
 	public void* pNext;
 	public VkBool32 rgba4OpaqueBlackSwizzled;
 	public VkBool32 resolveSrgbFormatAppliesTransferFunction;
@@ -14606,7 +14782,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance10PropertiesKHR : IStruc
 
 public unsafe partial struct VkRenderingEndInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderingEndInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDERING_END_INFO_KHR;
 	public void* pNext;
 
 	public VkRenderingEndInfoKHR()
@@ -14626,7 +14802,7 @@ public unsafe partial struct VkRenderingEndInfoKHR : IStructureType, IChainType
 
 public unsafe partial struct VkRenderingAttachmentFlagsInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderingAttachmentFlagsInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_FLAGS_INFO_KHR;
 	public void* pNext;
 	public VkRenderingAttachmentFlagsKHR flags;
 
@@ -14647,7 +14823,7 @@ public unsafe partial struct VkRenderingAttachmentFlagsInfoKHR : IStructureType,
 
 public unsafe partial struct VkResolveImageModeInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ResolveImageModeInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR;
 	public void* pNext;
 	public VkResolveImageFlagsKHR flags;
 	public VkResolveModeFlags resolveMode;
@@ -14668,9 +14844,30 @@ public unsafe partial struct VkResolveImageModeInfoKHR : IStructureType, IChainT
 	}
 }
 
+public unsafe partial struct VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_LIBRARY_GROUP_HANDLES_FEATURES_KHR;
+	public void* pNext;
+	public VkBool32 pipelineLibraryGroupHandles;
+
+	public VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceMaintenance11FeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMaintenance11FeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_11_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 maintenance11;
 
@@ -14691,7 +14888,7 @@ public unsafe partial struct VkPhysicalDeviceMaintenance11FeaturesKHR : IStructu
 
 public unsafe partial struct VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyOptimalImageTransferGranularityPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR;
 	public void* pNext;
 	public VkExtent3D optimalImageTransferGranularity;
 
@@ -14710,9 +14907,158 @@ public unsafe partial struct VkQueueFamilyOptimalImageTransferGranularityPropert
 	}
 }
 
+public unsafe partial struct VkFormatProperties4KHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_4_KHR;
+	public void* pNext;
+	public VkFormatFeatureFlags4KHR linearTilingFeatures;
+	public VkFormatFeatureFlags4KHR optimalTilingFeatures;
+	public VkFormatFeatureFlags4KHR bufferFeatures;
+
+	public VkFormatProperties4KHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImageUsageFlags2CreateInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_USAGE_FLAGS_2_CREATE_INFO_KHR;
+	public void* pNext;
+	public VkImageUsageFlags2KHR usage;
+
+	public VkImageUsageFlags2CreateInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImageCreateFlags2CreateInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_FLAGS_2_CREATE_INFO_KHR;
+	public void* pNext;
+	public VkImageCreateFlags2KHR flags;
+
+	public VkImageCreateFlags2CreateInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImageViewUsage2CreateInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_2_CREATE_INFO_KHR;
+	public void* pNext;
+	public VkImageUsageFlags2KHR usage;
+
+	public VkImageViewUsage2CreateInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceExtendedFlagsFeaturesKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_FLAGS_FEATURES_KHR;
+	public void* pNext;
+	public VkBool32 extendedFlags;
+
+	public VkPhysicalDeviceExtendedFlagsFeaturesKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImageStencilUsage2CreateInfoKHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_2_CREATE_INFO_KHR;
+	public void* pNext;
+	public VkImageUsageFlags2KHR stencilUsage;
+
+	public VkImageStencilUsage2CreateInfoKHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSharedPresentSurfaceCapabilities2KHR : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_2_KHR;
+	public void* pNext;
+	public VkImageUsageFlags2KHR sharedPresentSupportedUsageFlags;
+
+	public VkSharedPresentSurfaceCapabilities2KHR()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkDebugReportCallbackCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DebugReportCallbackCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkDebugReportFlagsEXT flags;
 	public delegate* unmanaged<VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void*, uint> pfnCallback;
@@ -14735,7 +15081,7 @@ public unsafe partial struct VkDebugReportCallbackCreateInfoEXT : IStructureType
 
 public unsafe partial struct VkPipelineRasterizationStateRasterizationOrderAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineRasterizationStateRasterizationOrderAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD;
 	public void* pNext;
 	public VkRasterizationOrderAMD rasterizationOrder;
 
@@ -14756,7 +15102,7 @@ public unsafe partial struct VkPipelineRasterizationStateRasterizationOrderAMD :
 
 public unsafe partial struct VkDebugMarkerObjectNameInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DebugMarkerObjectNameInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT;
 	public void* pNext;
 	public VkDebugReportObjectTypeEXT objectType;
 	public ulong @object;
@@ -14779,7 +15125,7 @@ public unsafe partial struct VkDebugMarkerObjectNameInfoEXT : IStructureType, IC
 
 public unsafe partial struct VkDebugMarkerObjectTagInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DebugMarkerObjectTagInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT;
 	public void* pNext;
 	public VkDebugReportObjectTypeEXT objectType;
 	public ulong @object;
@@ -14804,7 +15150,7 @@ public unsafe partial struct VkDebugMarkerObjectTagInfoEXT : IStructureType, ICh
 
 public unsafe partial struct VkDebugMarkerMarkerInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DebugMarkerMarkerInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT;
 	public void* pNext;
 	public byte* pMarkerName;
 	public fixed float color[4];
@@ -14826,7 +15172,7 @@ public unsafe partial struct VkDebugMarkerMarkerInfoEXT : IStructureType, IChain
 
 public unsafe partial struct VkDedicatedAllocationImageCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DedicatedAllocationImageCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkBool32 dedicatedAllocation;
 
@@ -14847,7 +15193,7 @@ public unsafe partial struct VkDedicatedAllocationImageCreateInfoNV : IStructure
 
 public unsafe partial struct VkDedicatedAllocationBufferCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DedicatedAllocationBufferCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV;
 	public void* pNext;
 	public VkBool32 dedicatedAllocation;
 
@@ -14868,7 +15214,7 @@ public unsafe partial struct VkDedicatedAllocationBufferCreateInfoNV : IStructur
 
 public unsafe partial struct VkDedicatedAllocationMemoryAllocateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DedicatedAllocationMemoryAllocateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV;
 	public void* pNext;
 	public VkImage image;
 	public VkBuffer buffer;
@@ -14890,7 +15236,7 @@ public unsafe partial struct VkDedicatedAllocationMemoryAllocateInfoNV : IStruct
 
 public unsafe partial struct VkPhysicalDeviceTransformFeedbackFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTransformFeedbackFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 transformFeedback;
 	public VkBool32 geometryStreams;
@@ -14912,7 +15258,7 @@ public unsafe partial struct VkPhysicalDeviceTransformFeedbackFeaturesEXT : IStr
 
 public unsafe partial struct VkPhysicalDeviceTransformFeedbackPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTransformFeedbackPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT;
 	public void* pNext;
 	public uint maxTransformFeedbackStreams;
 	public uint maxTransformFeedbackBuffers;
@@ -14942,7 +15288,7 @@ public unsafe partial struct VkPhysicalDeviceTransformFeedbackPropertiesEXT : IS
 
 public unsafe partial struct VkPipelineRasterizationStateStreamCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineRasterizationStateStreamCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkPipelineRasterizationStateStreamCreateFlagsEXT flags;
 	public uint rasterizationStream;
@@ -14964,7 +15310,7 @@ public unsafe partial struct VkPipelineRasterizationStateStreamCreateInfoEXT : I
 
 public unsafe partial struct VkCuModuleCreateInfoNVX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CuModuleCreateInfoNVX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CU_MODULE_CREATE_INFO_NVX;
 	public void* pNext;
 	public nuint dataSize;
 	public void* pData;
@@ -14986,7 +15332,7 @@ public unsafe partial struct VkCuModuleCreateInfoNVX : IStructureType, IChainTyp
 
 public unsafe partial struct VkCuModuleTexturingModeCreateInfoNVX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CuModuleTexturingModeCreateInfoNVX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CU_MODULE_TEXTURING_MODE_CREATE_INFO_NVX;
 	public void* pNext;
 	public VkBool32 use64bitTexturing;
 
@@ -15007,7 +15353,7 @@ public unsafe partial struct VkCuModuleTexturingModeCreateInfoNVX : IStructureTy
 
 public unsafe partial struct VkCuFunctionCreateInfoNVX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CuFunctionCreateInfoNVX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CU_FUNCTION_CREATE_INFO_NVX;
 	public void* pNext;
 	public VkCuModuleNVX module;
 	public byte* pName;
@@ -15029,7 +15375,7 @@ public unsafe partial struct VkCuFunctionCreateInfoNVX : IStructureType, IChainT
 
 public unsafe partial struct VkCuLaunchInfoNVX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CuLaunchInfoNVX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CU_LAUNCH_INFO_NVX;
 	public void* pNext;
 	public VkCuFunctionNVX function;
 	public uint gridDimX;
@@ -15061,7 +15407,7 @@ public unsafe partial struct VkCuLaunchInfoNVX : IStructureType, IChainType
 
 public unsafe partial struct VkImageViewHandleInfoNVX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageViewHandleInfoNVX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX;
 	public void* pNext;
 	public VkImageView imageView;
 	public VkDescriptorType descriptorType;
@@ -15084,7 +15430,7 @@ public unsafe partial struct VkImageViewHandleInfoNVX : IStructureType, IChainTy
 
 public unsafe partial struct VkImageViewAddressPropertiesNVX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageViewAddressPropertiesNVX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX;
 	public void* pNext;
 	public ulong deviceAddress;
 	public ulong size;
@@ -15106,7 +15452,7 @@ public unsafe partial struct VkImageViewAddressPropertiesNVX : IStructureType, I
 
 public unsafe partial struct VkTextureLODGatherFormatPropertiesAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TextureLODGatherFormatPropertiesAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD;
 	public void* pNext;
 	public VkBool32 supportsTextureGatherLODBiasAMD;
 
@@ -15147,7 +15493,7 @@ public unsafe partial struct VkShaderStatisticsInfoAMD
 
 public unsafe partial struct VkPhysicalDeviceCornerSampledImageFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCornerSampledImageFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 cornerSampledImage;
 
@@ -15176,7 +15522,7 @@ public partial struct VkExternalImageFormatPropertiesNV
 
 public unsafe partial struct VkExternalMemoryImageCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalMemoryImageCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlagsNV handleTypes;
 
@@ -15197,7 +15543,7 @@ public unsafe partial struct VkExternalMemoryImageCreateInfoNV : IStructureType,
 
 public unsafe partial struct VkExportMemoryAllocateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMemoryAllocateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlagsNV handleTypes;
 
@@ -15218,7 +15564,7 @@ public unsafe partial struct VkExportMemoryAllocateInfoNV : IStructureType, ICha
 
 public unsafe partial struct VkValidationFlagsEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ValidationFlagsEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT;
 	public void* pNext;
 	public uint disabledValidationCheckCount;
 	public VkValidationCheckEXT* pDisabledValidationChecks;
@@ -15240,7 +15586,7 @@ public unsafe partial struct VkValidationFlagsEXT : IStructureType, IChainType
 
 public unsafe partial struct VkImageViewASTCDecodeModeEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageViewASTCDecodeModeEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT;
 	public void* pNext;
 	public VkFormat decodeMode;
 
@@ -15261,7 +15607,7 @@ public unsafe partial struct VkImageViewASTCDecodeModeEXT : IStructureType, ICha
 
 public unsafe partial struct VkPhysicalDeviceASTCDecodeFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceASTCDecodeFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 decodeModeSharedExponent;
 
@@ -15282,7 +15628,7 @@ public unsafe partial struct VkPhysicalDeviceASTCDecodeFeaturesEXT : IStructureT
 
 public unsafe partial struct VkConditionalRenderingBeginInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ConditionalRenderingBeginInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT;
 	public void* pNext;
 	public VkBuffer buffer;
 	public ulong offset;
@@ -15305,7 +15651,7 @@ public unsafe partial struct VkConditionalRenderingBeginInfoEXT : IStructureType
 
 public unsafe partial struct VkPhysicalDeviceConditionalRenderingFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceConditionalRenderingFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 conditionalRendering;
 	public VkBool32 inheritedConditionalRendering;
@@ -15327,7 +15673,7 @@ public unsafe partial struct VkPhysicalDeviceConditionalRenderingFeaturesEXT : I
 
 public unsafe partial struct VkCommandBufferInheritanceConditionalRenderingInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CommandBufferInheritanceConditionalRenderingInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT;
 	public void* pNext;
 	public VkBool32 conditionalRenderingEnable;
 
@@ -15354,7 +15700,7 @@ public partial struct VkViewportWScalingNV
 
 public unsafe partial struct VkPipelineViewportWScalingStateCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineViewportWScalingStateCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkBool32 viewportWScalingEnable;
 	public uint viewportCount;
@@ -15377,7 +15723,7 @@ public unsafe partial struct VkPipelineViewportWScalingStateCreateInfoNV : IStru
 
 public unsafe partial struct VkSurfaceCapabilities2EXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfaceCapabilities2EXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT;
 	public void* pNext;
 	public uint minImageCount;
 	public uint maxImageCount;
@@ -15408,7 +15754,7 @@ public unsafe partial struct VkSurfaceCapabilities2EXT : IStructureType, IChainT
 
 public unsafe partial struct VkDisplayPowerInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplayPowerInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT;
 	public void* pNext;
 	public VkDisplayPowerStateEXT powerState;
 
@@ -15429,7 +15775,7 @@ public unsafe partial struct VkDisplayPowerInfoEXT : IStructureType, IChainType
 
 public unsafe partial struct VkDeviceEventInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceEventInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT;
 	public void* pNext;
 	public VkDeviceEventTypeEXT deviceEvent;
 
@@ -15450,7 +15796,7 @@ public unsafe partial struct VkDeviceEventInfoEXT : IStructureType, IChainType
 
 public unsafe partial struct VkDisplayEventInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplayEventInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT;
 	public void* pNext;
 	public VkDisplayEventTypeEXT displayEvent;
 
@@ -15471,7 +15817,7 @@ public unsafe partial struct VkDisplayEventInfoEXT : IStructureType, IChainType
 
 public unsafe partial struct VkSwapchainCounterCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainCounterCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkSurfaceCounterFlagsEXT surfaceCounters;
 
@@ -15512,7 +15858,7 @@ public partial struct VkPresentTimeGOOGLE
 
 public unsafe partial struct VkPresentTimesInfoGOOGLE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PresentTimesInfoGOOGLE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE;
 	public void* pNext;
 	public uint swapchainCount;
 	public VkPresentTimeGOOGLE* pTimes;
@@ -15534,7 +15880,7 @@ public unsafe partial struct VkPresentTimesInfoGOOGLE : IStructureType, IChainTy
 
 public unsafe partial struct VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX;
 	public void* pNext;
 	public VkBool32 perViewPositionAllComponents;
 
@@ -15555,7 +15901,7 @@ public unsafe partial struct VkPhysicalDeviceMultiviewPerViewAttributesPropertie
 
 public unsafe partial struct VkMultiviewPerViewAttributesInfoNVX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MultiviewPerViewAttributesInfoNVX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX;
 	public void* pNext;
 	public VkBool32 perViewAttributes;
 	public VkBool32 perViewAttributesPositionXOnly;
@@ -15585,7 +15931,7 @@ public partial struct VkViewportSwizzleNV
 
 public unsafe partial struct VkPipelineViewportSwizzleStateCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineViewportSwizzleStateCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkPipelineViewportSwizzleStateCreateFlagsNV flags;
 	public uint viewportCount;
@@ -15608,7 +15954,7 @@ public unsafe partial struct VkPipelineViewportSwizzleStateCreateInfoNV : IStruc
 
 public unsafe partial struct VkPhysicalDeviceDiscardRectanglePropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDiscardRectanglePropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT;
 	public void* pNext;
 	public uint maxDiscardRectangles;
 
@@ -15629,7 +15975,7 @@ public unsafe partial struct VkPhysicalDeviceDiscardRectanglePropertiesEXT : ISt
 
 public unsafe partial struct VkPipelineDiscardRectangleStateCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineDiscardRectangleStateCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkPipelineDiscardRectangleStateCreateFlagsEXT flags;
 	public VkDiscardRectangleModeEXT discardRectangleMode;
@@ -15653,7 +15999,7 @@ public unsafe partial struct VkPipelineDiscardRectangleStateCreateInfoEXT : IStr
 
 public unsafe partial struct VkPhysicalDeviceConservativeRasterizationPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceConservativeRasterizationPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT;
 	public void* pNext;
 	public float primitiveOverestimationSize;
 	public float maxExtraPrimitiveOverestimationSize;
@@ -15682,7 +16028,7 @@ public unsafe partial struct VkPhysicalDeviceConservativeRasterizationProperties
 
 public unsafe partial struct VkPipelineRasterizationConservativeStateCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineRasterizationConservativeStateCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkPipelineRasterizationConservativeStateCreateFlagsEXT flags;
 	public VkConservativeRasterizationModeEXT conservativeRasterizationMode;
@@ -15705,7 +16051,7 @@ public unsafe partial struct VkPipelineRasterizationConservativeStateCreateInfoE
 
 public unsafe partial struct VkPhysicalDeviceDepthClipEnableFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDepthClipEnableFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 depthClipEnable;
 
@@ -15726,7 +16072,7 @@ public unsafe partial struct VkPhysicalDeviceDepthClipEnableFeaturesEXT : IStruc
 
 public unsafe partial struct VkPipelineRasterizationDepthClipStateCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineRasterizationDepthClipStateCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags;
 	public VkBool32 depthClipEnable;
@@ -15754,7 +16100,7 @@ public partial struct VkXYColorEXT
 
 public unsafe partial struct VkHdrMetadataEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.HdrMetadataEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_HDR_METADATA_EXT;
 	public void* pNext;
 	public VkXYColorEXT displayPrimaryRed;
 	public VkXYColorEXT displayPrimaryGreen;
@@ -15782,7 +16128,7 @@ public unsafe partial struct VkHdrMetadataEXT : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRelaxedLineRasterizationFeaturesIMG;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RELAXED_LINE_RASTERIZATION_FEATURES_IMG;
 	public void* pNext;
 	public VkBool32 relaxedLineRasterization;
 
@@ -15803,7 +16149,7 @@ public unsafe partial struct VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG
 
 public unsafe partial struct VkDebugUtilsLabelEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DebugUtilsLabelEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT;
 	public void* pNext;
 	public byte* pLabelName;
 	public fixed float color[4];
@@ -15825,7 +16171,7 @@ public unsafe partial struct VkDebugUtilsLabelEXT : IStructureType, IChainType
 
 public unsafe partial struct VkDebugUtilsObjectNameInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DebugUtilsObjectNameInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT;
 	public void* pNext;
 	public VkObjectType objectType;
 	public ulong objectHandle;
@@ -15848,7 +16194,7 @@ public unsafe partial struct VkDebugUtilsObjectNameInfoEXT : IStructureType, ICh
 
 public unsafe partial struct VkDebugUtilsMessengerCallbackDataEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DebugUtilsMessengerCallbackDataEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT;
 	public void* pNext;
 	public VkDebugUtilsMessengerCallbackDataFlagsEXT flags;
 	public byte* pMessageIdName;
@@ -15878,7 +16224,7 @@ public unsafe partial struct VkDebugUtilsMessengerCallbackDataEXT : IStructureTy
 
 public unsafe partial struct VkDebugUtilsMessengerCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DebugUtilsMessengerCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkDebugUtilsMessengerCreateFlagsEXT flags;
 	public VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
@@ -15903,7 +16249,7 @@ public unsafe partial struct VkDebugUtilsMessengerCreateInfoEXT : IStructureType
 
 public unsafe partial struct VkDebugUtilsObjectTagInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DebugUtilsObjectTagInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT;
 	public void* pNext;
 	public VkObjectType objectType;
 	public ulong objectHandle;
@@ -15912,6 +16258,196 @@ public unsafe partial struct VkDebugUtilsObjectTagInfoEXT : IStructureType, ICha
 	public void* pTag;
 
 	public VkDebugUtilsObjectTagInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkGpaPerfBlockPropertiesAMD
+{
+	public VkGpaPerfBlockAMD blockType;
+	public VkGpaPerfBlockPropertiesFlagsAMD flags;
+	public uint instanceCount;
+	public uint maxEventID;
+	public uint maxGlobalOnlyCounters;
+	public uint maxGlobalSharedCounters;
+	public uint maxStreamingCounters;
+}
+
+public unsafe partial struct VkPhysicalDeviceGpaFeaturesAMD : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_FEATURES_AMD;
+	public void* pNext;
+	public VkBool32 perfCounters;
+	public VkBool32 streamingPerfCounters;
+	public VkBool32 sqThreadTracing;
+	public VkBool32 clockModes;
+
+	public VkPhysicalDeviceGpaFeaturesAMD()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceGpaPropertiesAMD : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_AMD;
+	public void* pNext;
+	public VkPhysicalDeviceGpaPropertiesFlagsAMD flags;
+	public ulong maxSqttSeBufferSize;
+	public uint shaderEngineCount;
+	public uint perfBlockCount;
+	public VkGpaPerfBlockPropertiesAMD* pPerfBlocks;
+
+	public VkPhysicalDeviceGpaPropertiesAMD()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceGpaProperties2AMD : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_2_AMD;
+	public void* pNext;
+	public uint revisionId;
+
+	public VkPhysicalDeviceGpaProperties2AMD()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public partial struct VkGpaPerfCounterAMD
+{
+	public VkGpaPerfBlockAMD blockType;
+	public uint blockInstance;
+	public uint eventID;
+}
+
+public unsafe partial struct VkGpaSampleBeginInfoAMD : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GPA_SAMPLE_BEGIN_INFO_AMD;
+	public void* pNext;
+	public VkGpaSampleTypeAMD sampleType;
+	public VkBool32 sampleInternalOperations;
+	public VkBool32 cacheFlushOnCounterCollection;
+	public VkBool32 sqShaderMaskEnable;
+	public VkGpaSqShaderStageFlagsAMD sqShaderMask;
+	public uint perfCounterCount;
+	public VkGpaPerfCounterAMD* pPerfCounters;
+	public uint streamingPerfTraceSampleInterval;
+	public ulong perfCounterDeviceMemoryLimit;
+	public VkBool32 sqThreadTraceEnable;
+	public VkBool32 sqThreadTraceSuppressInstructionTokens;
+	public ulong sqThreadTraceDeviceMemoryLimit;
+	public VkPipelineStageFlags timingPreSample;
+	public VkPipelineStageFlags timingPostSample;
+
+	public VkGpaSampleBeginInfoAMD()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkGpaDeviceClockModeInfoAMD : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GPA_DEVICE_CLOCK_MODE_INFO_AMD;
+	public void* pNext;
+	public VkGpaDeviceClockModeAMD clockMode;
+	public float memoryClockRatioToPeak;
+	public float engineClockRatioToPeak;
+
+	public VkGpaDeviceClockModeInfoAMD()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkGpaDeviceGetClockInfoAMD : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GPA_DEVICE_GET_CLOCK_INFO_AMD;
+	public void* pNext;
+	public float memoryClockRatioToPeak;
+	public float engineClockRatioToPeak;
+	public uint memoryClockFrequency;
+	public uint engineClockFrequency;
+
+	public VkGpaDeviceGetClockInfoAMD()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkGpaSessionCreateInfoAMD : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GPA_SESSION_CREATE_INFO_AMD;
+	public void* pNext;
+	public VkGpaSessionAMD secondaryCopySource;
+
+	public VkGpaSessionCreateInfoAMD()
 	{
 	}
 
@@ -15940,7 +16476,7 @@ public unsafe partial struct VkHostAddressRangeConstEXT
 
 public unsafe partial struct VkTexelBufferDescriptorInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TexelBufferDescriptorInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TEXEL_BUFFER_DESCRIPTOR_INFO_EXT;
 	public void* pNext;
 	public VkFormat format;
 	public VkDeviceAddressRangeKHR addressRange;
@@ -15962,7 +16498,7 @@ public unsafe partial struct VkTexelBufferDescriptorInfoEXT : IStructureType, IC
 
 public unsafe partial struct VkImageDescriptorInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageDescriptorInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_DESCRIPTOR_INFO_EXT;
 	public void* pNext;
 	public VkImageViewCreateInfo* pView;
 	public VkImageLayout layout;
@@ -15984,7 +16520,7 @@ public unsafe partial struct VkImageDescriptorInfoEXT : IStructureType, IChainTy
 
 public unsafe partial struct VkTensorViewCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TensorViewCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_VIEW_CREATE_INFO_ARM;
 	public void* pNext;
 	public VkTensorViewCreateFlagsARM flags;
 	public VkTensorARM tensor;
@@ -16020,7 +16556,7 @@ public unsafe partial struct VkResourceDescriptorDataEXT
 
 public unsafe partial struct VkResourceDescriptorInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ResourceDescriptorInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RESOURCE_DESCRIPTOR_INFO_EXT;
 	public void* pNext;
 	public VkDescriptorType type;
 	public VkResourceDescriptorDataEXT data;
@@ -16042,7 +16578,7 @@ public unsafe partial struct VkResourceDescriptorInfoEXT : IStructureType, IChai
 
 public unsafe partial struct VkBindHeapInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindHeapInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_HEAP_INFO_EXT;
 	public void* pNext;
 	public VkDeviceAddressRangeKHR heapRange;
 	public ulong reservedRangeOffset;
@@ -16065,7 +16601,7 @@ public unsafe partial struct VkBindHeapInfoEXT : IStructureType, IChainType
 
 public unsafe partial struct VkPushDataInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PushDataInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PUSH_DATA_INFO_EXT;
 	public void* pNext;
 	public uint offset;
 	public VkHostAddressRangeConstEXT data;
@@ -16193,7 +16729,7 @@ public partial struct VkDescriptorMappingSourceDataEXT
 
 public unsafe partial struct VkDescriptorSetAndBindingMappingEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorSetAndBindingMappingEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_AND_BINDING_MAPPING_EXT;
 	public void* pNext;
 	public uint descriptorSet;
 	public uint firstBinding;
@@ -16219,7 +16755,7 @@ public unsafe partial struct VkDescriptorSetAndBindingMappingEXT : IStructureTyp
 
 public unsafe partial struct VkShaderDescriptorSetAndBindingMappingInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ShaderDescriptorSetAndBindingMappingInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SHADER_DESCRIPTOR_SET_AND_BINDING_MAPPING_INFO_EXT;
 	public void* pNext;
 	public uint mappingCount;
 	public VkDescriptorSetAndBindingMappingEXT* pMappings;
@@ -16241,7 +16777,7 @@ public unsafe partial struct VkShaderDescriptorSetAndBindingMappingInfoEXT : ISt
 
 public unsafe partial struct VkOpaqueCaptureDataCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.OpaqueCaptureDataCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_OPAQUE_CAPTURE_DATA_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkHostAddressRangeConstEXT* pData;
 
@@ -16262,7 +16798,7 @@ public unsafe partial struct VkOpaqueCaptureDataCreateInfoEXT : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceDescriptorHeapFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorHeapFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 descriptorHeap;
 	public VkBool32 descriptorHeapCaptureReplay;
@@ -16284,7 +16820,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorHeapFeaturesEXT : IStruct
 
 public unsafe partial struct VkPhysicalDeviceDescriptorHeapPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorHeapPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_PROPERTIES_EXT;
 	public void* pNext;
 	public ulong samplerHeapAlignment;
 	public ulong resourceHeapAlignment;
@@ -16323,7 +16859,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorHeapPropertiesEXT : IStru
 
 public unsafe partial struct VkCommandBufferInheritanceDescriptorHeapInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CommandBufferInheritanceDescriptorHeapInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_DESCRIPTOR_HEAP_INFO_EXT;
 	public void* pNext;
 	public VkBindHeapInfoEXT* pSamplerHeapBindInfo;
 	public VkBindHeapInfoEXT* pResourceHeapBindInfo;
@@ -16345,7 +16881,7 @@ public unsafe partial struct VkCommandBufferInheritanceDescriptorHeapInfoEXT : I
 
 public unsafe partial struct VkSamplerCustomBorderColorIndexCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerCustomBorderColorIndexCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_INDEX_CREATE_INFO_EXT;
 	public void* pNext;
 	public uint index;
 
@@ -16366,7 +16902,7 @@ public unsafe partial struct VkSamplerCustomBorderColorIndexCreateInfoEXT : IStr
 
 public unsafe partial struct VkSamplerCustomBorderColorCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerCustomBorderColorCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkClearColorValue customBorderColor;
 	public VkFormat format;
@@ -16388,7 +16924,7 @@ public unsafe partial struct VkSamplerCustomBorderColorCreateInfoEXT : IStructur
 
 public unsafe partial struct VkIndirectCommandsLayoutPushDataTokenNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.IndirectCommandsLayoutPushDataTokenNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_PUSH_DATA_TOKEN_NV;
 	public void* pNext;
 	public uint pushDataOffset;
 	public uint pushDataSize;
@@ -16410,7 +16946,7 @@ public unsafe partial struct VkIndirectCommandsLayoutPushDataTokenNV : IStructur
 
 public unsafe partial struct VkSubsampledImageFormatPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubsampledImageFormatPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBSAMPLED_IMAGE_FORMAT_PROPERTIES_EXT;
 	public void* pNext;
 	public uint subsampledImageDescriptorCount;
 
@@ -16431,7 +16967,7 @@ public unsafe partial struct VkSubsampledImageFormatPropertiesEXT : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceDescriptorHeapTensorPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorHeapTensorPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_TENSOR_PROPERTIES_ARM;
 	public void* pNext;
 	public ulong tensorDescriptorSize;
 	public ulong tensorDescriptorAlignment;
@@ -16454,7 +16990,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorHeapTensorPropertiesARM :
 
 public unsafe partial struct VkAttachmentSampleCountInfoAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AttachmentSampleCountInfoAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD;
 	public void* pNext;
 	public uint colorAttachmentCount;
 	public VkSampleCountFlags* pColorAttachmentSamples;
@@ -16483,7 +17019,7 @@ public partial struct VkSampleLocationEXT
 
 public unsafe partial struct VkSampleLocationsInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SampleLocationsInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT;
 	public void* pNext;
 	public VkSampleCountFlags sampleLocationsPerPixel;
 	public VkExtent2D sampleLocationGridSize;
@@ -16519,7 +17055,7 @@ public partial struct VkSubpassSampleLocationsEXT
 
 public unsafe partial struct VkRenderPassSampleLocationsBeginInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassSampleLocationsBeginInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT;
 	public void* pNext;
 	public uint attachmentInitialSampleLocationsCount;
 	public VkAttachmentSampleLocationsEXT* pAttachmentInitialSampleLocations;
@@ -16543,7 +17079,7 @@ public unsafe partial struct VkRenderPassSampleLocationsBeginInfoEXT : IStructur
 
 public unsafe partial struct VkPipelineSampleLocationsStateCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineSampleLocationsStateCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkBool32 sampleLocationsEnable;
 	public VkSampleLocationsInfoEXT sampleLocationsInfo;
@@ -16565,7 +17101,7 @@ public unsafe partial struct VkPipelineSampleLocationsStateCreateInfoEXT : IStru
 
 public unsafe partial struct VkPhysicalDeviceSampleLocationsPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSampleLocationsPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT;
 	public void* pNext;
 	public VkSampleCountFlags sampleLocationSampleCounts;
 	public VkExtent2D maxSampleLocationGridSize;
@@ -16590,7 +17126,7 @@ public unsafe partial struct VkPhysicalDeviceSampleLocationsPropertiesEXT : IStr
 
 public unsafe partial struct VkMultisamplePropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MultisamplePropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT;
 	public void* pNext;
 	public VkExtent2D maxSampleLocationGridSize;
 
@@ -16611,7 +17147,7 @@ public unsafe partial struct VkMultisamplePropertiesEXT : IStructureType, IChain
 
 public unsafe partial struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceBlendOperationAdvancedFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 advancedBlendCoherentOperations;
 
@@ -16632,7 +17168,7 @@ public unsafe partial struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT :
 
 public unsafe partial struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceBlendOperationAdvancedPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT;
 	public void* pNext;
 	public uint advancedBlendMaxColorAttachments;
 	public VkBool32 advancedBlendIndependentBlend;
@@ -16658,7 +17194,7 @@ public unsafe partial struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT
 
 public unsafe partial struct VkPipelineColorBlendAdvancedStateCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineColorBlendAdvancedStateCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkBool32 srcPremultiplied;
 	public VkBool32 dstPremultiplied;
@@ -16681,7 +17217,7 @@ public unsafe partial struct VkPipelineColorBlendAdvancedStateCreateInfoEXT : IS
 
 public unsafe partial struct VkPipelineCoverageToColorStateCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineCoverageToColorStateCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkPipelineCoverageToColorStateCreateFlagsNV flags;
 	public VkBool32 coverageToColorEnable;
@@ -16704,7 +17240,7 @@ public unsafe partial struct VkPipelineCoverageToColorStateCreateInfoNV : IStruc
 
 public unsafe partial struct VkPipelineCoverageModulationStateCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineCoverageModulationStateCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkPipelineCoverageModulationStateCreateFlagsNV flags;
 	public VkCoverageModulationModeNV coverageModulationMode;
@@ -16729,7 +17265,7 @@ public unsafe partial struct VkPipelineCoverageModulationStateCreateInfoNV : ISt
 
 public unsafe partial struct VkPhysicalDeviceShaderSMBuiltinsPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderSMBuiltinsPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV;
 	public void* pNext;
 	public uint shaderSMCount;
 	public uint shaderWarpsPerSM;
@@ -16751,7 +17287,7 @@ public unsafe partial struct VkPhysicalDeviceShaderSMBuiltinsPropertiesNV : IStr
 
 public unsafe partial struct VkPhysicalDeviceShaderSMBuiltinsFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderSMBuiltinsFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 shaderSMBuiltins;
 
@@ -16779,7 +17315,7 @@ public partial struct VkDrmFormatModifierPropertiesEXT
 
 public unsafe partial struct VkDrmFormatModifierPropertiesListEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DrmFormatModifierPropertiesListEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT;
 	public void* pNext;
 	public uint drmFormatModifierCount;
 	public VkDrmFormatModifierPropertiesEXT* pDrmFormatModifierProperties;
@@ -16801,7 +17337,7 @@ public unsafe partial struct VkDrmFormatModifierPropertiesListEXT : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageDrmFormatModifierInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT;
 	public void* pNext;
 	public ulong drmFormatModifier;
 	public VkSharingMode sharingMode;
@@ -16825,7 +17361,7 @@ public unsafe partial struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT : ISt
 
 public unsafe partial struct VkImageDrmFormatModifierListCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageDrmFormatModifierListCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT;
 	public void* pNext;
 	public uint drmFormatModifierCount;
 	public ulong* pDrmFormatModifiers;
@@ -16847,7 +17383,7 @@ public unsafe partial struct VkImageDrmFormatModifierListCreateInfoEXT : IStruct
 
 public unsafe partial struct VkImageDrmFormatModifierExplicitCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageDrmFormatModifierExplicitCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT;
 	public void* pNext;
 	public ulong drmFormatModifier;
 	public uint drmFormatModifierPlaneCount;
@@ -16870,7 +17406,7 @@ public unsafe partial struct VkImageDrmFormatModifierExplicitCreateInfoEXT : ISt
 
 public unsafe partial struct VkImageDrmFormatModifierPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageDrmFormatModifierPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT;
 	public void* pNext;
 	public ulong drmFormatModifier;
 
@@ -16898,7 +17434,7 @@ public partial struct VkDrmFormatModifierProperties2EXT
 
 public unsafe partial struct VkDrmFormatModifierPropertiesList2EXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DrmFormatModifierPropertiesList2EXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_2_EXT;
 	public void* pNext;
 	public uint drmFormatModifierCount;
 	public VkDrmFormatModifierProperties2EXT* pDrmFormatModifierProperties;
@@ -16920,7 +17456,7 @@ public unsafe partial struct VkDrmFormatModifierPropertiesList2EXT : IStructureT
 
 public unsafe partial struct VkValidationCacheCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ValidationCacheCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkValidationCacheCreateFlagsEXT flags;
 	public nuint initialDataSize;
@@ -16943,7 +17479,7 @@ public unsafe partial struct VkValidationCacheCreateInfoEXT : IStructureType, IC
 
 public unsafe partial struct VkShaderModuleValidationCacheCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ShaderModuleValidationCacheCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkValidationCacheEXT validationCache;
 
@@ -16970,7 +17506,7 @@ public unsafe partial struct VkShadingRatePaletteNV
 
 public unsafe partial struct VkPipelineViewportShadingRateImageStateCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineViewportShadingRateImageStateCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkBool32 shadingRateImageEnable;
 	public uint viewportCount;
@@ -16993,7 +17529,7 @@ public unsafe partial struct VkPipelineViewportShadingRateImageStateCreateInfoNV
 
 public unsafe partial struct VkPhysicalDeviceShadingRateImageFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShadingRateImageFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 shadingRateImage;
 	public VkBool32 shadingRateCoarseSampleOrder;
@@ -17015,7 +17551,7 @@ public unsafe partial struct VkPhysicalDeviceShadingRateImageFeaturesNV : IStruc
 
 public unsafe partial struct VkPhysicalDeviceShadingRateImagePropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShadingRateImagePropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV;
 	public void* pNext;
 	public VkExtent2D shadingRateTexelSize;
 	public uint shadingRatePaletteSize;
@@ -17053,7 +17589,7 @@ public unsafe partial struct VkCoarseSampleOrderCustomNV
 
 public unsafe partial struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineViewportCoarseSampleOrderStateCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkCoarseSampleOrderTypeNV sampleOrderType;
 	public uint customSampleOrderCount;
@@ -17076,7 +17612,7 @@ public unsafe partial struct VkPipelineViewportCoarseSampleOrderStateCreateInfoN
 
 public unsafe partial struct VkRayTracingShaderGroupCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RayTracingShaderGroupCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV;
 	public void* pNext;
 	public VkRayTracingShaderGroupTypeKHR type;
 	public uint generalShader;
@@ -17101,7 +17637,7 @@ public unsafe partial struct VkRayTracingShaderGroupCreateInfoNV : IStructureTyp
 
 public unsafe partial struct VkRayTracingPipelineCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RayTracingPipelineCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkPipelineCreateFlags flags;
 	public uint stageCount;
@@ -17130,7 +17666,7 @@ public unsafe partial struct VkRayTracingPipelineCreateInfoNV : IStructureType, 
 
 public unsafe partial struct VkGeometryTrianglesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GeometryTrianglesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV;
 	public void* pNext;
 	public VkBuffer vertexData;
 	public ulong vertexOffset;
@@ -17161,7 +17697,7 @@ public unsafe partial struct VkGeometryTrianglesNV : IStructureType, IChainType
 
 public unsafe partial struct VkGeometryAABBNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GeometryAABBNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV;
 	public void* pNext;
 	public VkBuffer aabbData;
 	public uint numAABBs;
@@ -17191,7 +17727,7 @@ public partial struct VkGeometryDataNV
 
 public unsafe partial struct VkGeometryNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GeometryNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GEOMETRY_NV;
 	public void* pNext;
 	public VkGeometryTypeKHR geometryType;
 	public VkGeometryDataNV geometry;
@@ -17214,7 +17750,7 @@ public unsafe partial struct VkGeometryNV : IStructureType, IChainType
 
 public unsafe partial struct VkAccelerationStructureInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV;
 	public void* pNext;
 	public VkAccelerationStructureTypeKHR type;
 	public VkBuildAccelerationStructureFlagsKHR flags;
@@ -17239,7 +17775,7 @@ public unsafe partial struct VkAccelerationStructureInfoNV : IStructureType, ICh
 
 public unsafe partial struct VkAccelerationStructureCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV;
 	public void* pNext;
 	public ulong compactedSize;
 	public VkAccelerationStructureInfoNV info;
@@ -17261,7 +17797,7 @@ public unsafe partial struct VkAccelerationStructureCreateInfoNV : IStructureTyp
 
 public unsafe partial struct VkBindAccelerationStructureMemoryInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindAccelerationStructureMemoryInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV;
 	public void* pNext;
 	public VkAccelerationStructureKHR accelerationStructure;
 	public VkDeviceMemory memory;
@@ -17286,7 +17822,7 @@ public unsafe partial struct VkBindAccelerationStructureMemoryInfoNV : IStructur
 
 public unsafe partial struct VkWriteDescriptorSetAccelerationStructureNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.WriteDescriptorSetAccelerationStructureNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV;
 	public void* pNext;
 	public uint accelerationStructureCount;
 	public VkAccelerationStructureKHR* pAccelerationStructures;
@@ -17308,7 +17844,7 @@ public unsafe partial struct VkWriteDescriptorSetAccelerationStructureNV : IStru
 
 public unsafe partial struct VkAccelerationStructureMemoryRequirementsInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureMemoryRequirementsInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV;
 	public void* pNext;
 	public VkAccelerationStructureMemoryRequirementsTypeKHR type;
 	public VkAccelerationStructureKHR accelerationStructure;
@@ -17330,7 +17866,7 @@ public unsafe partial struct VkAccelerationStructureMemoryRequirementsInfoNV : I
 
 public unsafe partial struct VkPhysicalDeviceRayTracingPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV;
 	public void* pNext;
 	public uint shaderGroupHandleSize;
 	public uint maxRecursionDepth;
@@ -17368,7 +17904,7 @@ public partial struct VkAabbPositionsKHR
 
 public unsafe partial struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRepresentativeFragmentTestFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 representativeFragmentTest;
 
@@ -17389,7 +17925,7 @@ public unsafe partial struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesN
 
 public unsafe partial struct VkPipelineRepresentativeFragmentTestStateCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineRepresentativeFragmentTestStateCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkBool32 representativeFragmentTestEnable;
 
@@ -17410,7 +17946,7 @@ public unsafe partial struct VkPipelineRepresentativeFragmentTestStateCreateInfo
 
 public unsafe partial struct VkPhysicalDeviceImageViewImageFormatInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageViewImageFormatInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT;
 	public void* pNext;
 	public VkImageViewType imageViewType;
 
@@ -17431,7 +17967,7 @@ public unsafe partial struct VkPhysicalDeviceImageViewImageFormatInfoEXT : IStru
 
 public unsafe partial struct VkFilterCubicImageViewImageFormatPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FilterCubicImageViewImageFormatPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT;
 	public void* pNext;
 	public VkBool32 filterCubic;
 	public VkBool32 filterCubicMinmax;
@@ -17453,7 +17989,7 @@ public unsafe partial struct VkFilterCubicImageViewImageFormatPropertiesEXT : IS
 
 public unsafe partial struct VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCooperativeMatrixConversionFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 cooperativeMatrixConversion;
 
@@ -17472,9 +18008,30 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrixConversionFeatures
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ELAPSED_TIMER_QUERY_FEATURES_QCOM;
+	public void* pNext;
+	public VkBool32 elapsedTimerQuery;
+
+	public VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkImportMemoryHostPointerInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportMemoryHostPointerInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleType;
 	public void* pHostPointer;
@@ -17496,7 +18053,7 @@ public unsafe partial struct VkImportMemoryHostPointerInfoEXT : IStructureType, 
 
 public unsafe partial struct VkMemoryHostPointerPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryHostPointerPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT;
 	public void* pNext;
 	public uint memoryTypeBits;
 
@@ -17517,7 +18074,7 @@ public unsafe partial struct VkMemoryHostPointerPropertiesEXT : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExternalMemoryHostPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT;
 	public void* pNext;
 	public ulong minImportedHostPointerAlignment;
 
@@ -17538,7 +18095,7 @@ public unsafe partial struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT : I
 
 public unsafe partial struct VkPipelineCompilerControlCreateInfoAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineCompilerControlCreateInfoAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD;
 	public void* pNext;
 	public VkPipelineCompilerControlFlagsAMD compilerControlFlags;
 
@@ -17559,7 +18116,7 @@ public unsafe partial struct VkPipelineCompilerControlCreateInfoAMD : IStructure
 
 public unsafe partial struct VkPhysicalDeviceShaderCorePropertiesAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderCorePropertiesAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD;
 	public void* pNext;
 	public uint shaderEngineCount;
 	public uint shaderArraysPerEngineCount;
@@ -17593,7 +18150,7 @@ public unsafe partial struct VkPhysicalDeviceShaderCorePropertiesAMD : IStructur
 
 public unsafe partial struct VkDeviceMemoryOverallocationCreateInfoAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceMemoryOverallocationCreateInfoAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD;
 	public void* pNext;
 	public VkMemoryOverallocationBehaviorAMD overallocationBehavior;
 
@@ -17614,7 +18171,7 @@ public unsafe partial struct VkDeviceMemoryOverallocationCreateInfoAMD : IStruct
 
 public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVertexAttributeDivisorPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT;
 	public void* pNext;
 	public uint maxVertexAttribDivisor;
 
@@ -17635,7 +18192,7 @@ public unsafe partial struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT
 
 public unsafe partial struct VkPhysicalDeviceMeshShaderFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMeshShaderFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 taskShader;
 	public VkBool32 meshShader;
@@ -17657,7 +18214,7 @@ public unsafe partial struct VkPhysicalDeviceMeshShaderFeaturesNV : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceMeshShaderPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMeshShaderPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV;
 	public void* pNext;
 	public uint maxDrawMeshTasksCount;
 	public uint maxTaskWorkGroupInvocations;
@@ -17696,7 +18253,7 @@ public partial struct VkDrawMeshTasksIndirectCommandNV
 
 public unsafe partial struct VkPhysicalDeviceShaderImageFootprintFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderImageFootprintFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 imageFootprint;
 
@@ -17717,7 +18274,7 @@ public unsafe partial struct VkPhysicalDeviceShaderImageFootprintFeaturesNV : IS
 
 public unsafe partial struct VkPipelineViewportExclusiveScissorStateCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineViewportExclusiveScissorStateCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV;
 	public void* pNext;
 	public uint exclusiveScissorCount;
 	public VkRect2D* pExclusiveScissors;
@@ -17739,7 +18296,7 @@ public unsafe partial struct VkPipelineViewportExclusiveScissorStateCreateInfoNV
 
 public unsafe partial struct VkPhysicalDeviceExclusiveScissorFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExclusiveScissorFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 exclusiveScissor;
 
@@ -17760,7 +18317,7 @@ public unsafe partial struct VkPhysicalDeviceExclusiveScissorFeaturesNV : IStruc
 
 public unsafe partial struct VkQueueFamilyCheckpointPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyCheckpointPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV;
 	public void* pNext;
 	public VkPipelineStageFlags checkpointExecutionStageMask;
 
@@ -17781,7 +18338,7 @@ public unsafe partial struct VkQueueFamilyCheckpointPropertiesNV : IStructureTyp
 
 public unsafe partial struct VkCheckpointDataNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CheckpointDataNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV;
 	public void* pNext;
 	public VkPipelineStageFlags stage;
 	public void* pCheckpointMarker;
@@ -17803,7 +18360,7 @@ public unsafe partial struct VkCheckpointDataNV : IStructureType, IChainType
 
 public unsafe partial struct VkQueueFamilyCheckpointProperties2NV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyCheckpointProperties2NV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV;
 	public void* pNext;
 	public VkPipelineStageFlags2 checkpointExecutionStageMask;
 
@@ -17824,7 +18381,7 @@ public unsafe partial struct VkQueueFamilyCheckpointProperties2NV : IStructureTy
 
 public unsafe partial struct VkCheckpointData2NV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CheckpointData2NV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV;
 	public void* pNext;
 	public VkPipelineStageFlags2 stage;
 	public void* pCheckpointMarker;
@@ -17846,7 +18403,7 @@ public unsafe partial struct VkCheckpointData2NV : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDevicePresentTimingFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePresentTimingFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_TIMING_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 presentTiming;
 	public VkBool32 presentAtAbsoluteTime;
@@ -17869,7 +18426,7 @@ public unsafe partial struct VkPhysicalDevicePresentTimingFeaturesEXT : IStructu
 
 public unsafe partial struct VkPresentTimingSurfaceCapabilitiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PresentTimingSurfaceCapabilitiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT;
 	public void* pNext;
 	public VkBool32 presentTimingSupported;
 	public VkBool32 presentAtAbsoluteTimeSupported;
@@ -17893,7 +18450,7 @@ public unsafe partial struct VkPresentTimingSurfaceCapabilitiesEXT : IStructureT
 
 public unsafe partial struct VkSwapchainCalibratedTimestampInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainCalibratedTimestampInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT;
 	public void* pNext;
 	public VkSwapchainKHR swapchain;
 	public VkPresentStageFlagsEXT presentStage;
@@ -17916,7 +18473,7 @@ public unsafe partial struct VkSwapchainCalibratedTimestampInfoEXT : IStructureT
 
 public unsafe partial struct VkSwapchainTimingPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainTimingPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_TIMING_PROPERTIES_EXT;
 	public void* pNext;
 	public ulong refreshDuration;
 	public ulong refreshInterval;
@@ -17938,7 +18495,7 @@ public unsafe partial struct VkSwapchainTimingPropertiesEXT : IStructureType, IC
 
 public unsafe partial struct VkSwapchainTimeDomainPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainTimeDomainPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_TIME_DOMAIN_PROPERTIES_EXT;
 	public void* pNext;
 	public uint timeDomainCount;
 	public VkTimeDomainKHR* pTimeDomains;
@@ -17961,7 +18518,7 @@ public unsafe partial struct VkSwapchainTimeDomainPropertiesEXT : IStructureType
 
 public unsafe partial struct VkPastPresentationTimingInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PastPresentationTimingInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_INFO_EXT;
 	public void* pNext;
 	public VkPastPresentationTimingFlagsEXT flags;
 	public VkSwapchainKHR swapchain;
@@ -17989,7 +18546,7 @@ public partial struct VkPresentStageTimeEXT
 
 public unsafe partial struct VkPastPresentationTimingEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PastPresentationTimingEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_EXT;
 	public void* pNext;
 	public ulong presentId;
 	public ulong targetTime;
@@ -18016,7 +18573,7 @@ public unsafe partial struct VkPastPresentationTimingEXT : IStructureType, IChai
 
 public unsafe partial struct VkPastPresentationTimingPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PastPresentationTimingPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_PROPERTIES_EXT;
 	public void* pNext;
 	public ulong timingPropertiesCounter;
 	public ulong timeDomainsCounter;
@@ -18040,7 +18597,7 @@ public unsafe partial struct VkPastPresentationTimingPropertiesEXT : IStructureT
 
 public unsafe partial struct VkPresentTimingInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PresentTimingInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PRESENT_TIMING_INFO_EXT;
 	public void* pNext;
 	public VkPresentTimingInfoFlagsEXT flags;
 	public ulong targetTime;
@@ -18065,7 +18622,7 @@ public unsafe partial struct VkPresentTimingInfoEXT : IStructureType, IChainType
 
 public unsafe partial struct VkPresentTimingsInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PresentTimingsInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PRESENT_TIMINGS_INFO_EXT;
 	public void* pNext;
 	public uint swapchainCount;
 	public VkPresentTimingInfoEXT* pTimingInfos;
@@ -18087,7 +18644,7 @@ public unsafe partial struct VkPresentTimingsInfoEXT : IStructureType, IChainTyp
 
 public unsafe partial struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL;
 	public void* pNext;
 	public VkBool32 shaderIntegerFunctions2;
 
@@ -18129,7 +18686,7 @@ public partial struct VkPerformanceValueINTEL
 
 public unsafe partial struct VkInitializePerformanceApiInfoINTEL : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.InitializePerformanceApiInfoINTEL;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_INITIALIZE_PERFORMANCE_API_INFO_INTEL;
 	public void* pNext;
 	public void* pUserData;
 
@@ -18150,7 +18707,7 @@ public unsafe partial struct VkInitializePerformanceApiInfoINTEL : IStructureTyp
 
 public unsafe partial struct VkQueryPoolPerformanceQueryCreateInfoINTEL : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueryPoolPerformanceQueryCreateInfoINTEL;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL;
 	public void* pNext;
 	public VkQueryPoolSamplingModeINTEL performanceCountersSampling;
 
@@ -18171,7 +18728,7 @@ public unsafe partial struct VkQueryPoolPerformanceQueryCreateInfoINTEL : IStruc
 
 public unsafe partial struct VkPerformanceMarkerInfoINTEL : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerformanceMarkerInfoINTEL;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PERFORMANCE_MARKER_INFO_INTEL;
 	public void* pNext;
 	public ulong marker;
 
@@ -18192,7 +18749,7 @@ public unsafe partial struct VkPerformanceMarkerInfoINTEL : IStructureType, ICha
 
 public unsafe partial struct VkPerformanceStreamMarkerInfoINTEL : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerformanceStreamMarkerInfoINTEL;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PERFORMANCE_STREAM_MARKER_INFO_INTEL;
 	public void* pNext;
 	public uint marker;
 
@@ -18213,7 +18770,7 @@ public unsafe partial struct VkPerformanceStreamMarkerInfoINTEL : IStructureType
 
 public unsafe partial struct VkPerformanceOverrideInfoINTEL : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerformanceOverrideInfoINTEL;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PERFORMANCE_OVERRIDE_INFO_INTEL;
 	public void* pNext;
 	public VkPerformanceOverrideTypeINTEL type;
 	public VkBool32 enable;
@@ -18236,7 +18793,7 @@ public unsafe partial struct VkPerformanceOverrideInfoINTEL : IStructureType, IC
 
 public unsafe partial struct VkPerformanceConfigurationAcquireInfoINTEL : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerformanceConfigurationAcquireInfoINTEL;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PERFORMANCE_CONFIGURATION_ACQUIRE_INFO_INTEL;
 	public void* pNext;
 	public VkPerformanceConfigurationTypeINTEL type;
 
@@ -18257,7 +18814,7 @@ public unsafe partial struct VkPerformanceConfigurationAcquireInfoINTEL : IStruc
 
 public unsafe partial struct VkPhysicalDevicePCIBusInfoPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePCIBusInfoPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT;
 	public void* pNext;
 	public uint pciDomain;
 	public uint pciBus;
@@ -18281,7 +18838,7 @@ public unsafe partial struct VkPhysicalDevicePCIBusInfoPropertiesEXT : IStructur
 
 public unsafe partial struct VkDisplayNativeHdrSurfaceCapabilitiesAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplayNativeHdrSurfaceCapabilitiesAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD;
 	public void* pNext;
 	public VkBool32 localDimmingSupport;
 
@@ -18302,7 +18859,7 @@ public unsafe partial struct VkDisplayNativeHdrSurfaceCapabilitiesAMD : IStructu
 
 public unsafe partial struct VkSwapchainDisplayNativeHdrCreateInfoAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainDisplayNativeHdrCreateInfoAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD;
 	public void* pNext;
 	public VkBool32 localDimmingEnable;
 
@@ -18323,7 +18880,7 @@ public unsafe partial struct VkSwapchainDisplayNativeHdrCreateInfoAMD : IStructu
 
 public unsafe partial struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMapFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 fragmentDensityMap;
 	public VkBool32 fragmentDensityMapDynamic;
@@ -18346,7 +18903,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT : ISt
 
 public unsafe partial struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMapPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT;
 	public void* pNext;
 	public VkExtent2D minFragmentDensityTexelSize;
 	public VkExtent2D maxFragmentDensityTexelSize;
@@ -18369,7 +18926,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT : I
 
 public unsafe partial struct VkRenderPassFragmentDensityMapCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassFragmentDensityMapCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkAttachmentReference fragmentDensityMapAttachment;
 
@@ -18390,7 +18947,7 @@ public unsafe partial struct VkRenderPassFragmentDensityMapCreateInfoEXT : IStru
 
 public unsafe partial struct VkRenderingFragmentDensityMapAttachmentInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderingFragmentDensityMapAttachmentInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT;
 	public void* pNext;
 	public VkImageView imageView;
 	public VkImageLayout imageLayout;
@@ -18412,7 +18969,7 @@ public unsafe partial struct VkRenderingFragmentDensityMapAttachmentInfoEXT : IS
 
 public unsafe partial struct VkPhysicalDeviceShaderCoreProperties2AMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderCoreProperties2AMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD;
 	public void* pNext;
 	public VkShaderCorePropertiesFlagsAMD shaderCoreFeatures;
 	public uint activeComputeUnitCount;
@@ -18434,7 +18991,7 @@ public unsafe partial struct VkPhysicalDeviceShaderCoreProperties2AMD : IStructu
 
 public unsafe partial struct VkPhysicalDeviceCoherentMemoryFeaturesAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCoherentMemoryFeaturesAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD;
 	public void* pNext;
 	public VkBool32 deviceCoherentMemory;
 
@@ -18455,7 +19012,7 @@ public unsafe partial struct VkPhysicalDeviceCoherentMemoryFeaturesAMD : IStruct
 
 public unsafe partial struct VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderImageAtomicInt64FeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 shaderImageInt64Atomics;
 	public VkBool32 sparseImageInt64Atomics;
@@ -18477,7 +19034,7 @@ public unsafe partial struct VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT :
 
 public unsafe partial struct VkPhysicalDeviceMemoryBudgetPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMemoryBudgetPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT;
 	public void* pNext;
 	public heapBudget__FixedBuffer heapBudget;
 
@@ -18511,7 +19068,7 @@ public unsafe partial struct VkPhysicalDeviceMemoryBudgetPropertiesEXT : IStruct
 
 public unsafe partial struct VkPhysicalDeviceMemoryPriorityFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMemoryPriorityFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 memoryPriority;
 
@@ -18532,7 +19089,7 @@ public unsafe partial struct VkPhysicalDeviceMemoryPriorityFeaturesEXT : IStruct
 
 public unsafe partial struct VkMemoryPriorityAllocateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryPriorityAllocateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT;
 	public void* pNext;
 	public float priority;
 
@@ -18553,7 +19110,7 @@ public unsafe partial struct VkMemoryPriorityAllocateInfoEXT : IStructureType, I
 
 public unsafe partial struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 dedicatedAllocationImageAliasing;
 
@@ -18574,7 +19131,7 @@ public unsafe partial struct VkPhysicalDeviceDedicatedAllocationImageAliasingFea
 
 public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceBufferDeviceAddressFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 bufferDeviceAddress;
 	public VkBool32 bufferDeviceAddressCaptureReplay;
@@ -18597,7 +19154,7 @@ public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT : IS
 
 public unsafe partial struct VkBufferDeviceAddressCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferDeviceAddressCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT;
 	public void* pNext;
 	public ulong deviceAddress;
 
@@ -18618,7 +19175,7 @@ public unsafe partial struct VkBufferDeviceAddressCreateInfoEXT : IStructureType
 
 public unsafe partial struct VkValidationFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ValidationFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT;
 	public void* pNext;
 	public uint enabledValidationFeatureCount;
 	public VkValidationFeatureEnableEXT* pEnabledValidationFeatures;
@@ -18642,7 +19199,7 @@ public unsafe partial struct VkValidationFeaturesEXT : IStructureType, IChainTyp
 
 public unsafe partial struct VkCooperativeMatrixPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CooperativeMatrixPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV;
 	public void* pNext;
 	public uint MSize;
 	public uint NSize;
@@ -18670,7 +19227,7 @@ public unsafe partial struct VkCooperativeMatrixPropertiesNV : IStructureType, I
 
 public unsafe partial struct VkPhysicalDeviceCooperativeMatrixFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCooperativeMatrixFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 cooperativeMatrix;
 	public VkBool32 cooperativeMatrixRobustBufferAccess;
@@ -18692,7 +19249,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrixFeaturesNV : IStru
 
 public unsafe partial struct VkPhysicalDeviceCooperativeMatrixPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCooperativeMatrixPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV;
 	public void* pNext;
 	public VkShaderStageFlags cooperativeMatrixSupportedStages;
 
@@ -18713,7 +19270,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrixPropertiesNV : ISt
 
 public unsafe partial struct VkPhysicalDeviceCoverageReductionModeFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCoverageReductionModeFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COVERAGE_REDUCTION_MODE_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 coverageReductionMode;
 
@@ -18734,7 +19291,7 @@ public unsafe partial struct VkPhysicalDeviceCoverageReductionModeFeaturesNV : I
 
 public unsafe partial struct VkPipelineCoverageReductionStateCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineCoverageReductionStateCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkPipelineCoverageReductionStateCreateFlagsNV flags;
 	public VkCoverageReductionModeNV coverageReductionMode;
@@ -18756,7 +19313,7 @@ public unsafe partial struct VkPipelineCoverageReductionStateCreateInfoNV : IStr
 
 public unsafe partial struct VkFramebufferMixedSamplesCombinationNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FramebufferMixedSamplesCombinationNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV;
 	public void* pNext;
 	public VkCoverageReductionModeNV coverageReductionMode;
 	public VkSampleCountFlags rasterizationSamples;
@@ -18780,7 +19337,7 @@ public unsafe partial struct VkFramebufferMixedSamplesCombinationNV : IStructure
 
 public unsafe partial struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentShaderInterlockFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 fragmentShaderSampleInterlock;
 	public VkBool32 fragmentShaderPixelInterlock;
@@ -18803,7 +19360,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT 
 
 public unsafe partial struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceYcbcrImageArraysFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_IMAGE_ARRAYS_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 ycbcrImageArrays;
 
@@ -18824,7 +19381,7 @@ public unsafe partial struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT : IStru
 
 public unsafe partial struct VkPhysicalDeviceProvokingVertexFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceProvokingVertexFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 provokingVertexLast;
 	public VkBool32 transformFeedbackPreservesProvokingVertex;
@@ -18846,7 +19403,7 @@ public unsafe partial struct VkPhysicalDeviceProvokingVertexFeaturesEXT : IStruc
 
 public unsafe partial struct VkPhysicalDeviceProvokingVertexPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceProvokingVertexPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_PROPERTIES_EXT;
 	public void* pNext;
 	public VkBool32 provokingVertexModePerPipeline;
 	public VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex;
@@ -18868,7 +19425,7 @@ public unsafe partial struct VkPhysicalDeviceProvokingVertexPropertiesEXT : IStr
 
 public unsafe partial struct VkPipelineRasterizationProvokingVertexStateCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineRasterizationProvokingVertexStateCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkProvokingVertexModeEXT provokingVertexMode;
 
@@ -18889,7 +19446,7 @@ public unsafe partial struct VkPipelineRasterizationProvokingVertexStateCreateIn
 
 public unsafe partial struct VkHeadlessSurfaceCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.HeadlessSurfaceCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkHeadlessSurfaceCreateFlagsEXT flags;
 
@@ -18910,7 +19467,7 @@ public unsafe partial struct VkHeadlessSurfaceCreateInfoEXT : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderAtomicFloatFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 shaderBufferFloat32Atomics;
 	public VkBool32 shaderBufferFloat32AtomicAdd;
@@ -18942,7 +19499,7 @@ public unsafe partial struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT : IStr
 
 public unsafe partial struct VkPhysicalDeviceExtendedDynamicStateFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExtendedDynamicStateFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 extendedDynamicState;
 
@@ -18963,7 +19520,7 @@ public unsafe partial struct VkPhysicalDeviceExtendedDynamicStateFeaturesEXT : I
 
 public unsafe partial struct VkPhysicalDeviceMapMemoryPlacedFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMapMemoryPlacedFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 memoryMapPlaced;
 	public VkBool32 memoryMapRangePlaced;
@@ -18986,7 +19543,7 @@ public unsafe partial struct VkPhysicalDeviceMapMemoryPlacedFeaturesEXT : IStruc
 
 public unsafe partial struct VkPhysicalDeviceMapMemoryPlacedPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMapMemoryPlacedPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT;
 	public void* pNext;
 	public ulong minPlacedMemoryMapAlignment;
 
@@ -19007,7 +19564,7 @@ public unsafe partial struct VkPhysicalDeviceMapMemoryPlacedPropertiesEXT : IStr
 
 public unsafe partial struct VkMemoryMapPlacedInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryMapPlacedInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT;
 	public void* pNext;
 	public void* pPlacedAddress;
 
@@ -19028,7 +19585,7 @@ public unsafe partial struct VkMemoryMapPlacedInfoEXT : IStructureType, IChainTy
 
 public unsafe partial struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderAtomicFloat2FeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 shaderBufferFloat16Atomics;
 	public VkBool32 shaderBufferFloat16AtomicAdd;
@@ -19060,7 +19617,7 @@ public unsafe partial struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT : ISt
 
 public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_NV;
 	public void* pNext;
 	public uint maxGraphicsShaderGroupCount;
 	public uint maxIndirectSequenceCount;
@@ -19089,7 +19646,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 
 public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 deviceGeneratedCommands;
 
@@ -19110,7 +19667,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV :
 
 public unsafe partial struct VkGraphicsShaderGroupCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GraphicsShaderGroupCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GRAPHICS_SHADER_GROUP_CREATE_INFO_NV;
 	public void* pNext;
 	public uint stageCount;
 	public VkPipelineShaderStageCreateInfo* pStages;
@@ -19134,7 +19691,7 @@ public unsafe partial struct VkGraphicsShaderGroupCreateInfoNV : IStructureType,
 
 public unsafe partial struct VkGraphicsPipelineShaderGroupsCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GraphicsPipelineShaderGroupsCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV;
 	public void* pNext;
 	public uint groupCount;
 	public VkGraphicsShaderGroupCreateInfoNV* pGroups;
@@ -19188,7 +19745,7 @@ public partial struct VkIndirectCommandsStreamNV
 
 public unsafe partial struct VkIndirectCommandsLayoutTokenNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.IndirectCommandsLayoutTokenNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV;
 	public void* pNext;
 	public VkIndirectCommandsTokenTypeNV tokenType;
 	public uint stream;
@@ -19221,7 +19778,7 @@ public unsafe partial struct VkIndirectCommandsLayoutTokenNV : IStructureType, I
 
 public unsafe partial struct VkIndirectCommandsLayoutCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.IndirectCommandsLayoutCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV;
 	public void* pNext;
 	public VkIndirectCommandsLayoutUsageFlagsNV flags;
 	public VkPipelineBindPoint pipelineBindPoint;
@@ -19247,7 +19804,7 @@ public unsafe partial struct VkIndirectCommandsLayoutCreateInfoNV : IStructureTy
 
 public unsafe partial struct VkGeneratedCommandsInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GeneratedCommandsInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV;
 	public void* pNext;
 	public VkPipelineBindPoint pipelineBindPoint;
 	public VkPipeline pipeline;
@@ -19280,7 +19837,7 @@ public unsafe partial struct VkGeneratedCommandsInfoNV : IStructureType, IChainT
 
 public unsafe partial struct VkGeneratedCommandsMemoryRequirementsInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GeneratedCommandsMemoryRequirementsInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV;
 	public void* pNext;
 	public VkPipelineBindPoint pipelineBindPoint;
 	public VkPipeline pipeline;
@@ -19304,7 +19861,7 @@ public unsafe partial struct VkGeneratedCommandsMemoryRequirementsInfoNV : IStru
 
 public unsafe partial struct VkPhysicalDeviceInheritedViewportScissorFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceInheritedViewportScissorFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INHERITED_VIEWPORT_SCISSOR_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 inheritedViewportScissor2D;
 
@@ -19325,7 +19882,7 @@ public unsafe partial struct VkPhysicalDeviceInheritedViewportScissorFeaturesNV 
 
 public unsafe partial struct VkCommandBufferInheritanceViewportScissorInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CommandBufferInheritanceViewportScissorInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV;
 	public void* pNext;
 	public VkBool32 viewportScissor2D;
 	public uint viewportDepthCount;
@@ -19348,7 +19905,7 @@ public unsafe partial struct VkCommandBufferInheritanceViewportScissorInfoNV : I
 
 public unsafe partial struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTexelBufferAlignmentFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 texelBufferAlignment;
 
@@ -19369,7 +19926,7 @@ public unsafe partial struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT : I
 
 public unsafe partial struct VkRenderPassTransformBeginInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassTransformBeginInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM;
 	public void* pNext;
 	public VkSurfaceTransformFlagsKHR transform;
 
@@ -19390,7 +19947,7 @@ public unsafe partial struct VkRenderPassTransformBeginInfoQCOM : IStructureType
 
 public unsafe partial struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CommandBufferInheritanceRenderPassTransformInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM;
 	public void* pNext;
 	public VkSurfaceTransformFlagsKHR transform;
 	public VkRect2D renderArea;
@@ -19412,7 +19969,7 @@ public unsafe partial struct VkCommandBufferInheritanceRenderPassTransformInfoQC
 
 public unsafe partial struct VkPhysicalDeviceDepthBiasControlFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDepthBiasControlFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_BIAS_CONTROL_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 depthBiasControl;
 	public VkBool32 leastRepresentableValueForceUnormRepresentation;
@@ -19436,7 +19993,7 @@ public unsafe partial struct VkPhysicalDeviceDepthBiasControlFeaturesEXT : IStru
 
 public unsafe partial struct VkDepthBiasInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DepthBiasInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEPTH_BIAS_INFO_EXT;
 	public void* pNext;
 	public float depthBiasConstantFactor;
 	public float depthBiasClamp;
@@ -19459,7 +20016,7 @@ public unsafe partial struct VkDepthBiasInfoEXT : IStructureType, IChainType
 
 public unsafe partial struct VkDepthBiasRepresentationInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DepthBiasRepresentationInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEPTH_BIAS_REPRESENTATION_INFO_EXT;
 	public void* pNext;
 	public VkDepthBiasRepresentationEXT depthBiasRepresentation;
 	public VkBool32 depthBiasExact;
@@ -19481,7 +20038,7 @@ public unsafe partial struct VkDepthBiasRepresentationInfoEXT : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceDeviceMemoryReportFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDeviceMemoryReportFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_MEMORY_REPORT_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 deviceMemoryReport;
 
@@ -19502,7 +20059,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceMemoryReportFeaturesEXT : ISt
 
 public unsafe partial struct VkDeviceMemoryReportCallbackDataEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceMemoryReportCallbackDataEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT;
 	public void* pNext;
 	public VkDeviceMemoryReportFlagsEXT flags;
 	public VkDeviceMemoryReportEventTypeEXT type;
@@ -19529,7 +20086,7 @@ public unsafe partial struct VkDeviceMemoryReportCallbackDataEXT : IStructureTyp
 
 public unsafe partial struct VkDeviceDeviceMemoryReportCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceDeviceMemoryReportCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkDeviceMemoryReportFlagsEXT flags;
 	public delegate* unmanaged<VkDeviceMemoryReportCallbackDataEXT*, void*, void> pfnUserCallback;
@@ -19552,7 +20109,7 @@ public unsafe partial struct VkDeviceDeviceMemoryReportCreateInfoEXT : IStructur
 
 public unsafe partial struct VkPhysicalDeviceCustomBorderColorPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCustomBorderColorPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT;
 	public void* pNext;
 	public uint maxCustomBorderColorSamplers;
 
@@ -19573,7 +20130,7 @@ public unsafe partial struct VkPhysicalDeviceCustomBorderColorPropertiesEXT : IS
 
 public unsafe partial struct VkPhysicalDeviceCustomBorderColorFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCustomBorderColorFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 customBorderColors;
 	public VkBool32 customBorderColorWithoutFormat;
@@ -19595,7 +20152,7 @@ public unsafe partial struct VkPhysicalDeviceCustomBorderColorFeaturesEXT : IStr
 
 public unsafe partial struct VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTextureCompressionASTC3DFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_3D_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 textureCompressionASTC_3D;
 
@@ -19616,7 +20173,7 @@ public unsafe partial struct VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT
 
 public unsafe partial struct VkPhysicalDevicePresentBarrierFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePresentBarrierFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_BARRIER_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 presentBarrier;
 
@@ -19637,7 +20194,7 @@ public unsafe partial struct VkPhysicalDevicePresentBarrierFeaturesNV : IStructu
 
 public unsafe partial struct VkSurfaceCapabilitiesPresentBarrierNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfaceCapabilitiesPresentBarrierNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_BARRIER_NV;
 	public void* pNext;
 	public VkBool32 presentBarrierSupported;
 
@@ -19658,7 +20215,7 @@ public unsafe partial struct VkSurfaceCapabilitiesPresentBarrierNV : IStructureT
 
 public unsafe partial struct VkSwapchainPresentBarrierCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainPresentBarrierCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_BARRIER_CREATE_INFO_NV;
 	public void* pNext;
 	public VkBool32 presentBarrierEnable;
 
@@ -19679,7 +20236,7 @@ public unsafe partial struct VkSwapchainPresentBarrierCreateInfoNV : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceDiagnosticsConfigFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDiagnosticsConfigFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 diagnosticsConfig;
 
@@ -19700,7 +20257,7 @@ public unsafe partial struct VkPhysicalDeviceDiagnosticsConfigFeaturesNV : IStru
 
 public unsafe partial struct VkDeviceDiagnosticsConfigCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceDiagnosticsConfigCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV;
 	public void* pNext;
 	public VkDeviceDiagnosticsConfigFlagsNV flags;
 
@@ -19721,7 +20278,7 @@ public unsafe partial struct VkDeviceDiagnosticsConfigCreateInfoNV : IStructureT
 
 public unsafe partial struct VkPerfHintInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerfHintInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PERF_HINT_INFO_QCOM;
 	public void* pNext;
 	public VkPerfHintTypeQCOM type;
 	public uint scale;
@@ -19743,7 +20300,7 @@ public unsafe partial struct VkPerfHintInfoQCOM : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceQueuePerfHintFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceQueuePerfHintFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 queuePerfHint;
 
@@ -19764,7 +20321,7 @@ public unsafe partial struct VkPhysicalDeviceQueuePerfHintFeaturesQCOM : IStruct
 
 public unsafe partial struct VkPhysicalDeviceQueuePerfHintPropertiesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceQueuePerfHintPropertiesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_PROPERTIES_QCOM;
 	public void* pNext;
 	public VkQueueFlags supportedQueues;
 
@@ -19783,9 +20340,116 @@ public unsafe partial struct VkPhysicalDeviceQueuePerfHintPropertiesQCOM : IStru
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceImageProcessing3FeaturesQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_3_FEATURES_QCOM;
+	public void* pNext;
+	public VkBool32 imageGatherLinear;
+	public VkBool32 imageGatherExtendedModes;
+	public VkBool32 blockMatchExtendedClampToEdge;
+
+	public VkPhysicalDeviceImageProcessing3FeaturesQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_FEATURES_QCOM;
+	public void* pNext;
+	public VkBool32 shaderMultipleWaitQueues;
+
+	public VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_PROPERTIES_QCOM;
+	public void* pNext;
+	public uint maxShaderWaitQueues;
+
+	public VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderSplitBarrierFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_FEATURES_EXT;
+	public void* pNext;
+	public VkBool32 shaderSplitBarrier;
+
+	public VkPhysicalDeviceShaderSplitBarrierFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceShaderSplitBarrierPropertiesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_PROPERTIES_EXT;
+	public void* pNext;
+	public uint splitBarrierReservedSharedMemory;
+
+	public VkPhysicalDeviceShaderSplitBarrierPropertiesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceTileShadingFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTileShadingFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 tileShading;
 	public VkBool32 tileShadingFragmentStage;
@@ -19819,7 +20483,7 @@ public unsafe partial struct VkPhysicalDeviceTileShadingFeaturesQCOM : IStructur
 
 public unsafe partial struct VkPhysicalDeviceTileShadingPropertiesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTileShadingPropertiesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM;
 	public void* pNext;
 	public uint maxApronSize;
 	public VkBool32 preferNonCoherent;
@@ -19843,7 +20507,7 @@ public unsafe partial struct VkPhysicalDeviceTileShadingPropertiesQCOM : IStruct
 
 public unsafe partial struct VkRenderPassTileShadingCreateInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassTileShadingCreateInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM;
 	public void* pNext;
 	public VkTileShadingRenderPassFlagsQCOM flags;
 	public VkExtent2D tileApronSize;
@@ -19865,7 +20529,7 @@ public unsafe partial struct VkRenderPassTileShadingCreateInfoQCOM : IStructureT
 
 public unsafe partial struct VkPerTileBeginInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerTileBeginInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PER_TILE_BEGIN_INFO_QCOM;
 	public void* pNext;
 
 	public VkPerTileBeginInfoQCOM()
@@ -19885,7 +20549,7 @@ public unsafe partial struct VkPerTileBeginInfoQCOM : IStructureType, IChainType
 
 public unsafe partial struct VkPerTileEndInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerTileEndInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM;
 	public void* pNext;
 
 	public VkPerTileEndInfoQCOM()
@@ -19905,7 +20569,7 @@ public unsafe partial struct VkPerTileEndInfoQCOM : IStructureType, IChainType
 
 public unsafe partial struct VkDispatchTileInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DispatchTileInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPATCH_TILE_INFO_QCOM;
 	public void* pNext;
 
 	public VkDispatchTileInfoQCOM()
@@ -19925,7 +20589,7 @@ public unsafe partial struct VkDispatchTileInfoQCOM : IStructureType, IChainType
 
 public unsafe partial struct VkQueryLowLatencySupportNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueryLowLatencySupportNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV;
 	public void* pNext;
 	public void* pQueriedLowLatencyData;
 
@@ -19946,7 +20610,7 @@ public unsafe partial struct VkQueryLowLatencySupportNV : IStructureType, IChain
 
 public unsafe partial struct VkPhysicalDeviceDescriptorBufferPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorBufferPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT;
 	public void* pNext;
 	public VkBool32 combinedImageSamplerDescriptorSingleArray;
 	public VkBool32 bufferlessPushDescriptors;
@@ -19999,7 +20663,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferPropertiesEXT : ISt
 
 public unsafe partial struct VkPhysicalDeviceDescriptorBufferFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorBufferFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 descriptorBuffer;
 	public VkBool32 descriptorBufferCaptureReplay;
@@ -20023,7 +20687,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferFeaturesEXT : IStru
 
 public unsafe partial struct VkDescriptorAddressInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorAddressInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_ADDRESS_INFO_EXT;
 	public void* pNext;
 	public ulong address;
 	public ulong range;
@@ -20046,7 +20710,7 @@ public unsafe partial struct VkDescriptorAddressInfoEXT : IStructureType, IChain
 
 public unsafe partial struct VkDescriptorBufferBindingInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorBufferBindingInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_BUFFER_BINDING_INFO_EXT;
 	public void* pNext;
 	public ulong address;
 	public VkBufferUsageFlags usage;
@@ -20068,7 +20732,7 @@ public unsafe partial struct VkDescriptorBufferBindingInfoEXT : IStructureType, 
 
 public unsafe partial struct VkDescriptorBufferBindingPushDescriptorBufferHandleEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorBufferBindingPushDescriptorBufferHandleEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_BUFFER_BINDING_PUSH_DESCRIPTOR_BUFFER_HANDLE_EXT;
 	public void* pNext;
 	public VkBuffer buffer;
 
@@ -20114,7 +20778,7 @@ public unsafe partial struct VkDescriptorDataEXT
 
 public unsafe partial struct VkDescriptorGetInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorGetInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_GET_INFO_EXT;
 	public void* pNext;
 	public VkDescriptorType type;
 	public VkDescriptorDataEXT data;
@@ -20136,7 +20800,7 @@ public unsafe partial struct VkDescriptorGetInfoEXT : IStructureType, IChainType
 
 public unsafe partial struct VkBufferCaptureDescriptorDataInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BufferCaptureDescriptorDataInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT;
 	public void* pNext;
 	public VkBuffer buffer;
 
@@ -20157,7 +20821,7 @@ public unsafe partial struct VkBufferCaptureDescriptorDataInfoEXT : IStructureTy
 
 public unsafe partial struct VkImageCaptureDescriptorDataInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageCaptureDescriptorDataInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT;
 	public void* pNext;
 	public VkImage image;
 
@@ -20178,7 +20842,7 @@ public unsafe partial struct VkImageCaptureDescriptorDataInfoEXT : IStructureTyp
 
 public unsafe partial struct VkImageViewCaptureDescriptorDataInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageViewCaptureDescriptorDataInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_EXT;
 	public void* pNext;
 	public VkImageView imageView;
 
@@ -20199,7 +20863,7 @@ public unsafe partial struct VkImageViewCaptureDescriptorDataInfoEXT : IStructur
 
 public unsafe partial struct VkSamplerCaptureDescriptorDataInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerCaptureDescriptorDataInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT;
 	public void* pNext;
 	public VkSampler sampler;
 
@@ -20220,7 +20884,7 @@ public unsafe partial struct VkSamplerCaptureDescriptorDataInfoEXT : IStructureT
 
 public unsafe partial struct VkOpaqueCaptureDescriptorDataCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.OpaqueCaptureDescriptorDataCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_OPAQUE_CAPTURE_DESCRIPTOR_DATA_CREATE_INFO_EXT;
 	public void* pNext;
 	public void* opaqueCaptureDescriptorData;
 
@@ -20241,7 +20905,7 @@ public unsafe partial struct VkOpaqueCaptureDescriptorDataCreateInfoEXT : IStruc
 
 public unsafe partial struct VkAccelerationStructureCaptureDescriptorDataInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureCaptureDescriptorDataInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT;
 	public void* pNext;
 	public VkAccelerationStructureKHR accelerationStructure;
 	public VkAccelerationStructureKHR accelerationStructureNV;
@@ -20263,7 +20927,7 @@ public unsafe partial struct VkAccelerationStructureCaptureDescriptorDataInfoEXT
 
 public unsafe partial struct VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT;
 	public void* pNext;
 	public nuint combinedImageSamplerDensityMapDescriptorSize;
 
@@ -20284,7 +20948,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferDensityMapPropertie
 
 public unsafe partial struct VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 graphicsPipelineLibrary;
 
@@ -20305,7 +20969,7 @@ public unsafe partial struct VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT 
 
 public unsafe partial struct VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT;
 	public void* pNext;
 	public VkBool32 graphicsPipelineLibraryFastLinking;
 	public VkBool32 graphicsPipelineLibraryIndependentInterpolationDecoration;
@@ -20327,7 +20991,7 @@ public unsafe partial struct VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEX
 
 public unsafe partial struct VkGraphicsPipelineLibraryCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GraphicsPipelineLibraryCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_LIBRARY_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkGraphicsPipelineLibraryFlagsEXT flags;
 
@@ -20348,7 +21012,7 @@ public unsafe partial struct VkGraphicsPipelineLibraryCreateInfoEXT : IStructure
 
 public unsafe partial struct VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_FEATURES_AMD;
 	public void* pNext;
 	public VkBool32 shaderEarlyAndLateFragmentTests;
 
@@ -20369,7 +21033,7 @@ public unsafe partial struct VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeat
 
 public unsafe partial struct VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentShadingRateEnumsFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 fragmentShadingRateEnums;
 	public VkBool32 supersampleFragmentShadingRates;
@@ -20392,7 +21056,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV 
 
 public unsafe partial struct VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentShadingRateEnumsPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV;
 	public void* pNext;
 	public VkSampleCountFlags maxFragmentShadingRateInvocationCount;
 
@@ -20413,7 +21077,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentShadingRateEnumsPropertiesN
 
 public unsafe partial struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineFragmentShadingRateEnumStateCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkFragmentShadingRateTypeNV shadingRateType;
 	public VkFragmentShadingRateNV shadingRate;
@@ -20451,7 +21115,7 @@ public unsafe partial struct VkDeviceOrHostAddressConstKHR
 
 public unsafe partial struct VkAccelerationStructureGeometryMotionTrianglesDataNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureGeometryMotionTrianglesDataNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MOTION_TRIANGLES_DATA_NV;
 	public void* pNext;
 	public VkDeviceOrHostAddressConstKHR vertexData;
 
@@ -20472,7 +21136,7 @@ public unsafe partial struct VkAccelerationStructureGeometryMotionTrianglesDataN
 
 public unsafe partial struct VkAccelerationStructureMotionInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureMotionInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MOTION_INFO_NV;
 	public void* pNext;
 	public uint maxInstances;
 	public VkAccelerationStructureMotionInfoFlagsNV flags;
@@ -20532,7 +21196,7 @@ public partial struct VkAccelerationStructureMotionInstanceNV
 
 public unsafe partial struct VkPhysicalDeviceRayTracingMotionBlurFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingMotionBlurFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MOTION_BLUR_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 rayTracingMotionBlur;
 	public VkBool32 rayTracingMotionBlurPipelineTraceRaysIndirect;
@@ -20554,7 +21218,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingMotionBlurFeaturesNV : IS
 
 public unsafe partial struct VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_2_PLANE_444_FORMATS_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 ycbcr2plane444Formats;
 
@@ -20575,7 +21239,7 @@ public unsafe partial struct VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT : 
 
 public unsafe partial struct VkPhysicalDeviceFragmentDensityMap2FeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMap2FeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 fragmentDensityMapDeferred;
 
@@ -20596,7 +21260,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMap2FeaturesEXT : IS
 
 public unsafe partial struct VkPhysicalDeviceFragmentDensityMap2PropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMap2PropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT;
 	public void* pNext;
 	public VkBool32 subsampledLoads;
 	public VkBool32 subsampledCoarseReconstructionEarlyAccess;
@@ -20620,7 +21284,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMap2PropertiesEXT : 
 
 public unsafe partial struct VkCopyCommandTransformInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyCommandTransformInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_COMMAND_TRANSFORM_INFO_QCOM;
 	public void* pNext;
 	public VkSurfaceTransformFlagsKHR transform;
 
@@ -20641,7 +21305,7 @@ public unsafe partial struct VkCopyCommandTransformInfoQCOM : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDeviceImageCompressionControlFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageCompressionControlFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 imageCompressionControl;
 
@@ -20662,7 +21326,7 @@ public unsafe partial struct VkPhysicalDeviceImageCompressionControlFeaturesEXT 
 
 public unsafe partial struct VkImageCompressionControlEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageCompressionControlEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT;
 	public void* pNext;
 	public VkImageCompressionFlagsEXT flags;
 	public uint compressionControlPlaneCount;
@@ -20685,7 +21349,7 @@ public unsafe partial struct VkImageCompressionControlEXT : IStructureType, ICha
 
 public unsafe partial struct VkImageCompressionPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageCompressionPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT;
 	public void* pNext;
 	public VkImageCompressionFlagsEXT imageCompressionFlags;
 	public VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags;
@@ -20707,7 +21371,7 @@ public unsafe partial struct VkImageCompressionPropertiesEXT : IStructureType, I
 
 public unsafe partial struct VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 attachmentFeedbackLoopLayout;
 
@@ -20728,7 +21392,7 @@ public unsafe partial struct VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeature
 
 public unsafe partial struct VkPhysicalDevice4444FormatsFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevice4444FormatsFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 formatA4R4G4B4;
 	public VkBool32 formatA4B4G4R4;
@@ -20750,7 +21414,7 @@ public unsafe partial struct VkPhysicalDevice4444FormatsFeaturesEXT : IStructure
 
 public unsafe partial struct VkPhysicalDeviceFaultFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFaultFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 deviceFault;
 	public VkBool32 deviceFaultVendorBinary;
@@ -20772,7 +21436,7 @@ public unsafe partial struct VkPhysicalDeviceFaultFeaturesEXT : IStructureType, 
 
 public unsafe partial struct VkDeviceFaultCountsEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceFaultCountsEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_FAULT_COUNTS_EXT;
 	public void* pNext;
 	public uint addressInfoCount;
 	public uint vendorInfoCount;
@@ -20795,7 +21459,7 @@ public unsafe partial struct VkDeviceFaultCountsEXT : IStructureType, IChainType
 
 public unsafe partial struct VkDeviceFaultInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceFaultInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_EXT;
 	public void* pNext;
 	public fixed byte description[256];
 	public VkDeviceFaultAddressInfoKHR* pAddressInfos;
@@ -20819,7 +21483,7 @@ public unsafe partial struct VkDeviceFaultInfoEXT : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 rasterizationOrderColorAttachmentAccess;
 	public VkBool32 rasterizationOrderDepthAttachmentAccess;
@@ -20842,7 +21506,7 @@ public unsafe partial struct VkPhysicalDeviceRasterizationOrderAttachmentAccessF
 
 public unsafe partial struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRGBA10X6FormatsFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 formatRgba10x6WithoutYCbCrSampler;
 
@@ -20863,7 +21527,7 @@ public unsafe partial struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT : IStruc
 
 public unsafe partial struct VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMutableDescriptorTypeFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 mutableDescriptorType;
 
@@ -20890,7 +21554,7 @@ public unsafe partial struct VkMutableDescriptorTypeListEXT
 
 public unsafe partial struct VkMutableDescriptorTypeCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MutableDescriptorTypeCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT;
 	public void* pNext;
 	public uint mutableDescriptorTypeListCount;
 	public VkMutableDescriptorTypeListEXT* pMutableDescriptorTypeLists;
@@ -20912,7 +21576,7 @@ public unsafe partial struct VkMutableDescriptorTypeCreateInfoEXT : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVertexInputDynamicStateFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_INPUT_DYNAMIC_STATE_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 vertexInputDynamicState;
 
@@ -20933,7 +21597,7 @@ public unsafe partial struct VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT 
 
 public unsafe partial struct VkVertexInputBindingDescription2EXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VertexInputBindingDescription2EXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT;
 	public void* pNext;
 	public uint binding;
 	public uint stride;
@@ -20957,7 +21621,7 @@ public unsafe partial struct VkVertexInputBindingDescription2EXT : IStructureTyp
 
 public unsafe partial struct VkVertexInputAttributeDescription2EXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VertexInputAttributeDescription2EXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT;
 	public void* pNext;
 	public uint location;
 	public uint binding;
@@ -20981,7 +21645,7 @@ public unsafe partial struct VkVertexInputAttributeDescription2EXT : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceDrmPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDrmPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRM_PROPERTIES_EXT;
 	public void* pNext;
 	public VkBool32 hasPrimary;
 	public VkBool32 hasRender;
@@ -21007,7 +21671,7 @@ public unsafe partial struct VkPhysicalDeviceDrmPropertiesEXT : IStructureType, 
 
 public unsafe partial struct VkPhysicalDeviceAddressBindingReportFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceAddressBindingReportFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ADDRESS_BINDING_REPORT_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 reportAddressBinding;
 
@@ -21028,7 +21692,7 @@ public unsafe partial struct VkPhysicalDeviceAddressBindingReportFeaturesEXT : I
 
 public unsafe partial struct VkDeviceAddressBindingCallbackDataEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceAddressBindingCallbackDataEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT;
 	public void* pNext;
 	public VkDeviceAddressBindingFlagsEXT flags;
 	public ulong baseAddress;
@@ -21052,7 +21716,7 @@ public unsafe partial struct VkDeviceAddressBindingCallbackDataEXT : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceDepthClipControlFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDepthClipControlFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_CONTROL_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 depthClipControl;
 
@@ -21073,7 +21737,7 @@ public unsafe partial struct VkPhysicalDeviceDepthClipControlFeaturesEXT : IStru
 
 public unsafe partial struct VkPipelineViewportDepthClipControlCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineViewportDepthClipControlCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkBool32 negativeOneToOne;
 
@@ -21094,7 +21758,7 @@ public unsafe partial struct VkPipelineViewportDepthClipControlCreateInfoEXT : I
 
 public unsafe partial struct VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 primitiveTopologyListRestart;
 	public VkBool32 primitiveTopologyPatchListRestart;
@@ -21116,7 +21780,7 @@ public unsafe partial struct VkPhysicalDevicePrimitiveTopologyListRestartFeature
 
 public unsafe partial struct VkSubpassShadingPipelineCreateInfoHUAWEI : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubpassShadingPipelineCreateInfoHUAWEI;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI;
 	public void* pNext;
 	public VkRenderPass renderPass;
 	public uint subpass;
@@ -21138,7 +21802,7 @@ public unsafe partial struct VkSubpassShadingPipelineCreateInfoHUAWEI : IStructu
 
 public unsafe partial struct VkPhysicalDeviceSubpassShadingFeaturesHUAWEI : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSubpassShadingFeaturesHUAWEI;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_FEATURES_HUAWEI;
 	public void* pNext;
 	public VkBool32 subpassShading;
 
@@ -21159,7 +21823,7 @@ public unsafe partial struct VkPhysicalDeviceSubpassShadingFeaturesHUAWEI : IStr
 
 public unsafe partial struct VkPhysicalDeviceSubpassShadingPropertiesHUAWEI : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSubpassShadingPropertiesHUAWEI;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_PROPERTIES_HUAWEI;
 	public void* pNext;
 	public uint maxSubpassShadingWorkgroupSizeAspectRatio;
 
@@ -21180,7 +21844,7 @@ public unsafe partial struct VkPhysicalDeviceSubpassShadingPropertiesHUAWEI : IS
 
 public unsafe partial struct VkPhysicalDeviceInvocationMaskFeaturesHUAWEI : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceInvocationMaskFeaturesHUAWEI;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INVOCATION_MASK_FEATURES_HUAWEI;
 	public void* pNext;
 	public VkBool32 invocationMask;
 
@@ -21201,7 +21865,7 @@ public unsafe partial struct VkPhysicalDeviceInvocationMaskFeaturesHUAWEI : IStr
 
 public unsafe partial struct VkMemoryGetRemoteAddressInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryGetRemoteAddressInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_GET_REMOTE_ADDRESS_INFO_NV;
 	public void* pNext;
 	public VkDeviceMemory memory;
 	public VkExternalMemoryHandleTypeFlags handleType;
@@ -21223,7 +21887,7 @@ public unsafe partial struct VkMemoryGetRemoteAddressInfoNV : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDeviceExternalMemoryRDMAFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExternalMemoryRDMAFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_RDMA_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 externalMemoryRDMA;
 
@@ -21244,7 +21908,7 @@ public unsafe partial struct VkPhysicalDeviceExternalMemoryRDMAFeaturesNV : IStr
 
 public unsafe partial struct VkPipelinePropertiesIdentifierEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelinePropertiesIdentifierEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_PROPERTIES_IDENTIFIER_EXT;
 	public void* pNext;
 	public fixed byte pipelineIdentifier[16];
 
@@ -21265,7 +21929,7 @@ public unsafe partial struct VkPipelinePropertiesIdentifierEXT : IStructureType,
 
 public unsafe partial struct VkPhysicalDevicePipelinePropertiesFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelinePropertiesFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 pipelinePropertiesIdentifier;
 
@@ -21286,7 +21950,7 @@ public unsafe partial struct VkPhysicalDevicePipelinePropertiesFeaturesEXT : ISt
 
 public unsafe partial struct VkPhysicalDeviceFrameBoundaryFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFrameBoundaryFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAME_BOUNDARY_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 frameBoundary;
 
@@ -21307,7 +21971,7 @@ public unsafe partial struct VkPhysicalDeviceFrameBoundaryFeaturesEXT : IStructu
 
 public unsafe partial struct VkFrameBoundaryEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FrameBoundaryEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT;
 	public void* pNext;
 	public VkFrameBoundaryFlagsEXT flags;
 	public ulong frameID;
@@ -21336,7 +22000,7 @@ public unsafe partial struct VkFrameBoundaryEXT : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 multisampledRenderToSingleSampled;
 
@@ -21357,7 +22021,7 @@ public unsafe partial struct VkPhysicalDeviceMultisampledRenderToSingleSampledFe
 
 public unsafe partial struct VkSubpassResolvePerformanceQueryEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SubpassResolvePerformanceQueryEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT;
 	public void* pNext;
 	public VkBool32 optimal;
 
@@ -21378,7 +22042,7 @@ public unsafe partial struct VkSubpassResolvePerformanceQueryEXT : IStructureTyp
 
 public unsafe partial struct VkMultisampledRenderToSingleSampledInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MultisampledRenderToSingleSampledInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_INFO_EXT;
 	public void* pNext;
 	public VkBool32 multisampledRenderToSingleSampledEnable;
 	public VkSampleCountFlags rasterizationSamples;
@@ -21400,7 +22064,7 @@ public unsafe partial struct VkMultisampledRenderToSingleSampledInfoEXT : IStruc
 
 public unsafe partial struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExtendedDynamicState2FeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 extendedDynamicState2;
 	public VkBool32 extendedDynamicState2LogicOp;
@@ -21423,7 +22087,7 @@ public unsafe partial struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT : 
 
 public unsafe partial struct VkPhysicalDeviceColorWriteEnableFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceColorWriteEnableFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 colorWriteEnable;
 
@@ -21444,7 +22108,7 @@ public unsafe partial struct VkPhysicalDeviceColorWriteEnableFeaturesEXT : IStru
 
 public unsafe partial struct VkPipelineColorWriteCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineColorWriteCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT;
 	public void* pNext;
 	public uint attachmentCount;
 	public VkBool32* pColorWriteEnables;
@@ -21466,7 +22130,7 @@ public unsafe partial struct VkPipelineColorWriteCreateInfoEXT : IStructureType,
 
 public unsafe partial struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 primitivesGeneratedQuery;
 	public VkBool32 primitivesGeneratedQueryWithRasterizerDiscard;
@@ -21489,7 +22153,7 @@ public unsafe partial struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT
 
 public unsafe partial struct VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE;
 	public void* pNext;
 	public VkBool32 videoEncodeRgbConversion;
 
@@ -21510,7 +22174,7 @@ public unsafe partial struct VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVAL
 
 public unsafe partial struct VkVideoEncodeRgbConversionCapabilitiesVALVE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeRgbConversionCapabilitiesVALVE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE;
 	public void* pNext;
 	public VkVideoEncodeRgbModelConversionFlagsVALVE rgbModels;
 	public VkVideoEncodeRgbRangeCompressionFlagsVALVE rgbRanges;
@@ -21534,7 +22198,7 @@ public unsafe partial struct VkVideoEncodeRgbConversionCapabilitiesVALVE : IStru
 
 public unsafe partial struct VkVideoEncodeProfileRgbConversionInfoVALVE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeProfileRgbConversionInfoVALVE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE;
 	public void* pNext;
 	public VkBool32 performEncodeRgbConversion;
 
@@ -21555,7 +22219,7 @@ public unsafe partial struct VkVideoEncodeProfileRgbConversionInfoVALVE : IStruc
 
 public unsafe partial struct VkVideoEncodeSessionRgbConversionCreateInfoVALVE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.VideoEncodeSessionRgbConversionCreateInfoVALVE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE;
 	public void* pNext;
 	public VkVideoEncodeRgbModelConversionFlagsVALVE rgbModel;
 	public VkVideoEncodeRgbRangeCompressionFlagsVALVE rgbRange;
@@ -21579,7 +22243,7 @@ public unsafe partial struct VkVideoEncodeSessionRgbConversionCreateInfoVALVE : 
 
 public unsafe partial struct VkPhysicalDeviceImageViewMinLodFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageViewMinLodFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 minLod;
 
@@ -21600,7 +22264,7 @@ public unsafe partial struct VkPhysicalDeviceImageViewMinLodFeaturesEXT : IStruc
 
 public unsafe partial struct VkImageViewMinLodCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageViewMinLodCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT;
 	public void* pNext;
 	public float minLod;
 
@@ -21621,7 +22285,7 @@ public unsafe partial struct VkImageViewMinLodCreateInfoEXT : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDeviceMultiDrawFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMultiDrawFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 multiDraw;
 
@@ -21642,7 +22306,7 @@ public unsafe partial struct VkPhysicalDeviceMultiDrawFeaturesEXT : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceMultiDrawPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMultiDrawPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_PROPERTIES_EXT;
 	public void* pNext;
 	public uint maxMultiDrawCount;
 
@@ -21676,7 +22340,7 @@ public partial struct VkMultiDrawIndexedInfoEXT
 
 public unsafe partial struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImage2DViewOf3DFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_2D_VIEW_OF_3D_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 image2DViewOf3D;
 	public VkBool32 sampler2DViewOf3D;
@@ -21698,7 +22362,7 @@ public unsafe partial struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT : IStruc
 
 public unsafe partial struct VkPhysicalDeviceShaderTileImageFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderTileImageFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 shaderTileImageColorReadAccess;
 	public VkBool32 shaderTileImageDepthReadAccess;
@@ -21721,7 +22385,7 @@ public unsafe partial struct VkPhysicalDeviceShaderTileImageFeaturesEXT : IStruc
 
 public unsafe partial struct VkPhysicalDeviceShaderTileImagePropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderTileImagePropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT;
 	public void* pNext;
 	public VkBool32 shaderTileImageCoherentReadAccelerated;
 	public VkBool32 shaderTileImageReadSampleFromPixelRateInvocation;
@@ -21760,7 +22424,7 @@ public unsafe partial struct VkDeviceOrHostAddressKHR
 
 public unsafe partial struct VkMicromapBuildInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MicromapBuildInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MICROMAP_BUILD_INFO_EXT;
 	public void* pNext;
 	public VkMicromapTypeEXT type;
 	public VkBuildMicromapFlagsEXT flags;
@@ -21791,7 +22455,7 @@ public unsafe partial struct VkMicromapBuildInfoEXT : IStructureType, IChainType
 
 public unsafe partial struct VkMicromapCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MicromapCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MICROMAP_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkMicromapCreateFlagsEXT createFlags;
 	public VkBuffer buffer;
@@ -21817,7 +22481,7 @@ public unsafe partial struct VkMicromapCreateInfoEXT : IStructureType, IChainTyp
 
 public unsafe partial struct VkPhysicalDeviceOpacityMicromapFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceOpacityMicromapFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 micromap;
 	public VkBool32 micromapCaptureReplay;
@@ -21840,7 +22504,7 @@ public unsafe partial struct VkPhysicalDeviceOpacityMicromapFeaturesEXT : IStruc
 
 public unsafe partial struct VkPhysicalDeviceOpacityMicromapPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceOpacityMicromapPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_EXT;
 	public void* pNext;
 	public uint maxOpacity2StateSubdivisionLevel;
 	public uint maxOpacity4StateSubdivisionLevel;
@@ -21862,7 +22526,7 @@ public unsafe partial struct VkPhysicalDeviceOpacityMicromapPropertiesEXT : IStr
 
 public unsafe partial struct VkMicromapVersionInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MicromapVersionInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MICROMAP_VERSION_INFO_EXT;
 	public void* pNext;
 	public byte* pVersionData;
 
@@ -21883,7 +22547,7 @@ public unsafe partial struct VkMicromapVersionInfoEXT : IStructureType, IChainTy
 
 public unsafe partial struct VkCopyMicromapToMemoryInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyMicromapToMemoryInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_MICROMAP_TO_MEMORY_INFO_EXT;
 	public void* pNext;
 	public VkMicromapEXT src;
 	public VkDeviceOrHostAddressKHR dst;
@@ -21906,7 +22570,7 @@ public unsafe partial struct VkCopyMicromapToMemoryInfoEXT : IStructureType, ICh
 
 public unsafe partial struct VkCopyMemoryToMicromapInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyMemoryToMicromapInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_MEMORY_TO_MICROMAP_INFO_EXT;
 	public void* pNext;
 	public VkDeviceOrHostAddressConstKHR src;
 	public VkMicromapEXT dst;
@@ -21929,7 +22593,7 @@ public unsafe partial struct VkCopyMemoryToMicromapInfoEXT : IStructureType, ICh
 
 public unsafe partial struct VkCopyMicromapInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyMicromapInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_MICROMAP_INFO_EXT;
 	public void* pNext;
 	public VkMicromapEXT src;
 	public VkMicromapEXT dst;
@@ -21952,7 +22616,7 @@ public unsafe partial struct VkCopyMicromapInfoEXT : IStructureType, IChainType
 
 public unsafe partial struct VkMicromapBuildSizesInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MicromapBuildSizesInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MICROMAP_BUILD_SIZES_INFO_EXT;
 	public void* pNext;
 	public ulong micromapSize;
 	public ulong buildScratchSize;
@@ -21975,7 +22639,7 @@ public unsafe partial struct VkMicromapBuildSizesInfoEXT : IStructureType, IChai
 
 public unsafe partial struct VkAccelerationStructureTrianglesOpacityMicromapEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureTrianglesOpacityMicromapEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT;
 	public void* pNext;
 	public VkIndexType indexType;
 	public VkDeviceOrHostAddressConstKHR indexBuffer;
@@ -22001,16 +22665,9 @@ public unsafe partial struct VkAccelerationStructureTrianglesOpacityMicromapEXT 
 	}
 }
 
-public partial struct VkMicromapTriangleEXT
-{
-	public uint dataOffset;
-	public ushort subdivisionLevel;
-	public ushort format;
-}
-
 public unsafe partial struct VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceClusterCullingShaderFeaturesHUAWEI;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_FEATURES_HUAWEI;
 	public void* pNext;
 	public VkBool32 clustercullingShader;
 	public VkBool32 multiviewClusterCullingShader;
@@ -22032,7 +22689,7 @@ public unsafe partial struct VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI 
 
 public unsafe partial struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceClusterCullingShaderPropertiesHUAWEI;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_PROPERTIES_HUAWEI;
 	public void* pNext;
 	public fixed uint maxWorkGroupCount[3];
 	public fixed uint maxWorkGroupSize[3];
@@ -22056,7 +22713,7 @@ public unsafe partial struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWE
 
 public unsafe partial struct VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_VRS_FEATURES_HUAWEI;
 	public void* pNext;
 	public VkBool32 clusterShadingRate;
 
@@ -22077,7 +22734,7 @@ public unsafe partial struct VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAW
 
 public unsafe partial struct VkPhysicalDeviceBorderColorSwizzleFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceBorderColorSwizzleFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BORDER_COLOR_SWIZZLE_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 borderColorSwizzle;
 	public VkBool32 borderColorSwizzleFromImage;
@@ -22099,7 +22756,7 @@ public unsafe partial struct VkPhysicalDeviceBorderColorSwizzleFeaturesEXT : ISt
 
 public unsafe partial struct VkSamplerBorderColorComponentMappingCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerBorderColorComponentMappingCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkComponentMapping components;
 	public VkBool32 srgb;
@@ -22121,7 +22778,7 @@ public unsafe partial struct VkSamplerBorderColorComponentMappingCreateInfoEXT :
 
 public unsafe partial struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 pageableDeviceLocalMemory;
 
@@ -22142,7 +22799,7 @@ public unsafe partial struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEX
 
 public unsafe partial struct VkPhysicalDeviceShaderCorePropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderCorePropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM;
 	public void* pNext;
 	public uint pixelRate;
 	public uint texelRate;
@@ -22165,7 +22822,7 @@ public unsafe partial struct VkPhysicalDeviceShaderCorePropertiesARM : IStructur
 
 public unsafe partial struct VkDeviceQueueShaderCoreControlCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceQueueShaderCoreControlCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM;
 	public void* pNext;
 	public uint shaderCoreCount;
 
@@ -22186,7 +22843,7 @@ public unsafe partial struct VkDeviceQueueShaderCoreControlCreateInfoARM : IStru
 
 public unsafe partial struct VkPhysicalDeviceSchedulingControlsFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSchedulingControlsFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 schedulingControls;
 
@@ -22207,7 +22864,7 @@ public unsafe partial struct VkPhysicalDeviceSchedulingControlsFeaturesARM : ISt
 
 public unsafe partial struct VkPhysicalDeviceSchedulingControlsPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSchedulingControlsPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM;
 	public void* pNext;
 	public VkPhysicalDeviceSchedulingControlsFlagsARM schedulingControlsFlags;
 
@@ -22228,7 +22885,7 @@ public unsafe partial struct VkPhysicalDeviceSchedulingControlsPropertiesARM : I
 
 public unsafe partial struct VkDispatchParametersARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DispatchParametersARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPATCH_PARAMETERS_ARM;
 	public void* pNext;
 	public uint workGroupBatchSize;
 	public uint maxQueuedWorkGroupBatches;
@@ -22251,7 +22908,7 @@ public unsafe partial struct VkDispatchParametersARM : IStructureType, IChainTyp
 
 public unsafe partial struct VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_DISPATCH_PARAMETERS_PROPERTIES_ARM;
 	public void* pNext;
 	public uint schedulingControlsMaxWarpsCount;
 	public uint schedulingControlsMaxQueuedBatchesCount;
@@ -22274,7 +22931,7 @@ public unsafe partial struct VkPhysicalDeviceSchedulingControlsDispatchParameter
 
 public unsafe partial struct VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageSlicedViewOf3DFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 imageSlicedViewOf3D;
 
@@ -22295,7 +22952,7 @@ public unsafe partial struct VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT : IS
 
 public unsafe partial struct VkImageViewSlicedCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageViewSlicedCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT;
 	public void* pNext;
 	public uint sliceOffset;
 	public uint sliceCount;
@@ -22317,7 +22974,7 @@ public unsafe partial struct VkImageViewSlicedCreateInfoEXT : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE;
 	public void* pNext;
 	public VkBool32 descriptorSetHostMapping;
 
@@ -22338,7 +22995,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorSetHostMappingFeaturesVAL
 
 public unsafe partial struct VkDescriptorSetBindingReferenceVALVE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorSetBindingReferenceVALVE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_BINDING_REFERENCE_VALVE;
 	public void* pNext;
 	public VkDescriptorSetLayout descriptorSetLayout;
 	public uint binding;
@@ -22360,7 +23017,7 @@ public unsafe partial struct VkDescriptorSetBindingReferenceVALVE : IStructureTy
 
 public unsafe partial struct VkDescriptorSetLayoutHostMappingInfoVALVE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorSetLayoutHostMappingInfoVALVE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_HOST_MAPPING_INFO_VALVE;
 	public void* pNext;
 	public nuint descriptorOffset;
 	public uint descriptorSize;
@@ -22382,7 +23039,7 @@ public unsafe partial struct VkDescriptorSetLayoutHostMappingInfoVALVE : IStruct
 
 public unsafe partial struct VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceNonSeamlessCubeMapFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 nonSeamlessCubeMap;
 
@@ -22403,7 +23060,7 @@ public unsafe partial struct VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT : ISt
 
 public unsafe partial struct VkPhysicalDeviceRenderPassStripedFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRenderPassStripedFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 renderPassStriped;
 
@@ -22424,7 +23081,7 @@ public unsafe partial struct VkPhysicalDeviceRenderPassStripedFeaturesARM : IStr
 
 public unsafe partial struct VkPhysicalDeviceRenderPassStripedPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRenderPassStripedPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_PROPERTIES_ARM;
 	public void* pNext;
 	public VkExtent2D renderPassStripeGranularity;
 	public uint maxRenderPassStripes;
@@ -22446,7 +23103,7 @@ public unsafe partial struct VkPhysicalDeviceRenderPassStripedPropertiesARM : IS
 
 public unsafe partial struct VkRenderPassStripeInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassStripeInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_INFO_ARM;
 	public void* pNext;
 	public VkRect2D stripeArea;
 
@@ -22467,7 +23124,7 @@ public unsafe partial struct VkRenderPassStripeInfoARM : IStructureType, IChainT
 
 public unsafe partial struct VkRenderPassStripeBeginInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassStripeBeginInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_BEGIN_INFO_ARM;
 	public void* pNext;
 	public uint stripeInfoCount;
 	public VkRenderPassStripeInfoARM* pStripeInfos;
@@ -22489,7 +23146,7 @@ public unsafe partial struct VkRenderPassStripeBeginInfoARM : IStructureType, IC
 
 public unsafe partial struct VkRenderPassStripeSubmitInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassStripeSubmitInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_SUBMIT_INFO_ARM;
 	public void* pNext;
 	public uint stripeSemaphoreInfoCount;
 	public VkSemaphoreSubmitInfo* pStripeSemaphoreInfos;
@@ -22511,7 +23168,7 @@ public unsafe partial struct VkRenderPassStripeSubmitInfoARM : IStructureType, I
 
 public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 fragmentDensityMapOffset;
 
@@ -22532,7 +23189,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT
 
 public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMapOffsetPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_EXT;
 	public void* pNext;
 	public VkExtent2D fragmentDensityOffsetGranularity;
 
@@ -22553,7 +23210,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesE
 
 public unsafe partial struct VkRenderPassFragmentDensityMapOffsetEndInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassFragmentDensityMapOffsetEndInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_EXT;
 	public void* pNext;
 	public uint fragmentDensityOffsetCount;
 	public VkOffset2D* pFragmentDensityOffsets;
@@ -22575,7 +23232,7 @@ public unsafe partial struct VkRenderPassFragmentDensityMapOffsetEndInfoEXT : IS
 
 public unsafe partial struct VkPhysicalDeviceCopyMemoryIndirectFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCopyMemoryIndirectFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 indirectCopy;
 
@@ -22605,7 +23262,7 @@ public partial struct VkDecompressMemoryRegionNV
 
 public unsafe partial struct VkPhysicalDeviceMemoryDecompressionFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMemoryDecompressionFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 memoryDecompression;
 
@@ -22626,7 +23283,7 @@ public unsafe partial struct VkPhysicalDeviceMemoryDecompressionFeaturesEXT : IS
 
 public unsafe partial struct VkPhysicalDeviceMemoryDecompressionPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMemoryDecompressionPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_EXT;
 	public void* pNext;
 	public VkMemoryDecompressionMethodFlagsEXT decompressionMethods;
 	public ulong maxDecompressionIndirectCount;
@@ -22648,7 +23305,7 @@ public unsafe partial struct VkPhysicalDeviceMemoryDecompressionPropertiesEXT : 
 
 public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 deviceGeneratedCompute;
 	public VkBool32 deviceGeneratedComputePipelines;
@@ -22671,7 +23328,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsComputeFeatu
 
 public unsafe partial struct VkComputePipelineIndirectBufferInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ComputePipelineIndirectBufferInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV;
 	public void* pNext;
 	public ulong deviceAddress;
 	public ulong size;
@@ -22694,7 +23351,7 @@ public unsafe partial struct VkComputePipelineIndirectBufferInfoNV : IStructureT
 
 public unsafe partial struct VkPipelineIndirectDeviceAddressInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineIndirectDeviceAddressInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_INDIRECT_DEVICE_ADDRESS_INFO_NV;
 	public void* pNext;
 	public VkPipelineBindPoint pipelineBindPoint;
 	public VkPipeline pipeline;
@@ -22721,7 +23378,7 @@ public partial struct VkBindPipelineIndirectCommandNV
 
 public unsafe partial struct VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_LINEAR_SWEPT_SPHERES_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 spheres;
 	public VkBool32 linearSweptSpheres;
@@ -22743,7 +23400,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingLinearSweptSpheresFeature
 
 public unsafe partial struct VkAccelerationStructureGeometryLinearSweptSpheresDataNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureGeometryLinearSweptSpheresDataNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_LINEAR_SWEPT_SPHERES_DATA_NV;
 	public void* pNext;
 	public VkFormat vertexFormat;
 	public VkDeviceOrHostAddressConstKHR vertexData;
@@ -22774,7 +23431,7 @@ public unsafe partial struct VkAccelerationStructureGeometryLinearSweptSpheresDa
 
 public unsafe partial struct VkAccelerationStructureGeometrySpheresDataNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureGeometrySpheresDataNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_SPHERES_DATA_NV;
 	public void* pNext;
 	public VkFormat vertexFormat;
 	public VkDeviceOrHostAddressConstKHR vertexData;
@@ -22803,7 +23460,7 @@ public unsafe partial struct VkAccelerationStructureGeometrySpheresDataNV : IStr
 
 public unsafe partial struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLinearColorAttachmentFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 linearColorAttachment;
 
@@ -22824,7 +23481,7 @@ public unsafe partial struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV : I
 
 public unsafe partial struct VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 imageCompressionControlSwapchain;
 
@@ -22845,7 +23502,7 @@ public unsafe partial struct VkPhysicalDeviceImageCompressionControlSwapchainFea
 
 public unsafe partial struct VkImageViewSampleWeightCreateInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageViewSampleWeightCreateInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM;
 	public void* pNext;
 	public VkOffset2D filterCenter;
 	public VkExtent2D filterSize;
@@ -22868,7 +23525,7 @@ public unsafe partial struct VkImageViewSampleWeightCreateInfoQCOM : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceImageProcessingFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageProcessingFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 textureSampleWeighted;
 	public VkBool32 textureBoxFilter;
@@ -22891,7 +23548,7 @@ public unsafe partial struct VkPhysicalDeviceImageProcessingFeaturesQCOM : IStru
 
 public unsafe partial struct VkPhysicalDeviceImageProcessingPropertiesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageProcessingPropertiesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_PROPERTIES_QCOM;
 	public void* pNext;
 	public uint maxWeightFilterPhases;
 	public VkExtent2D maxWeightFilterDimension;
@@ -22915,7 +23572,7 @@ public unsafe partial struct VkPhysicalDeviceImageProcessingPropertiesQCOM : ISt
 
 public unsafe partial struct VkPhysicalDeviceNestedCommandBufferFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceNestedCommandBufferFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 nestedCommandBuffer;
 	public VkBool32 nestedCommandBufferRendering;
@@ -22938,7 +23595,7 @@ public unsafe partial struct VkPhysicalDeviceNestedCommandBufferFeaturesEXT : IS
 
 public unsafe partial struct VkPhysicalDeviceNestedCommandBufferPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceNestedCommandBufferPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT;
 	public void* pNext;
 	public uint maxCommandBufferNestingLevel;
 
@@ -22959,7 +23616,7 @@ public unsafe partial struct VkPhysicalDeviceNestedCommandBufferPropertiesEXT : 
 
 public unsafe partial struct VkExternalMemoryAcquireUnmodifiedEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalMemoryAcquireUnmodifiedEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT;
 	public void* pNext;
 	public VkBool32 acquireUnmodifiedMemory;
 
@@ -22980,7 +23637,7 @@ public unsafe partial struct VkExternalMemoryAcquireUnmodifiedEXT : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceExtendedDynamicState3FeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExtendedDynamicState3FeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 extendedDynamicState3TessellationDomainOrigin;
 	public VkBool32 extendedDynamicState3DepthClampEnable;
@@ -23031,7 +23688,7 @@ public unsafe partial struct VkPhysicalDeviceExtendedDynamicState3FeaturesEXT : 
 
 public unsafe partial struct VkPhysicalDeviceExtendedDynamicState3PropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExtendedDynamicState3PropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT;
 	public void* pNext;
 	public VkBool32 dynamicPrimitiveTopologyUnrestricted;
 
@@ -23071,7 +23728,7 @@ public partial struct VkColorBlendAdvancedEXT
 
 public unsafe partial struct VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceSubpassMergeFeedbackFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_MERGE_FEEDBACK_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 subpassMergeFeedback;
 
@@ -23092,7 +23749,7 @@ public unsafe partial struct VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT : I
 
 public unsafe partial struct VkRenderPassCreationControlEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassCreationControlEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_CONTROL_EXT;
 	public void* pNext;
 	public VkBool32 disallowMerging;
 
@@ -23118,7 +23775,7 @@ public partial struct VkRenderPassCreationFeedbackInfoEXT
 
 public unsafe partial struct VkRenderPassCreationFeedbackCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassCreationFeedbackCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_FEEDBACK_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkRenderPassCreationFeedbackInfoEXT* pRenderPassFeedback;
 
@@ -23146,7 +23803,7 @@ public unsafe partial struct VkRenderPassSubpassFeedbackInfoEXT
 
 public unsafe partial struct VkRenderPassSubpassFeedbackCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassSubpassFeedbackCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkRenderPassSubpassFeedbackInfoEXT* pSubpassFeedback;
 
@@ -23167,7 +23824,7 @@ public unsafe partial struct VkRenderPassSubpassFeedbackCreateInfoEXT : IStructu
 
 public unsafe partial struct VkDirectDriverLoadingInfoLUNARG : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DirectDriverLoadingInfoLUNARG;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_INFO_LUNARG;
 	public void* pNext;
 	public VkDirectDriverLoadingModeLUNARG flags;
 	public delegate* unmanaged<VkInstance, byte*, PFN_vkVoidFunction> pfnGetInstanceProcAddr;
@@ -23189,7 +23846,7 @@ public unsafe partial struct VkDirectDriverLoadingInfoLUNARG : IStructureType, I
 
 public unsafe partial struct VkDirectDriverLoadingListLUNARG : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DirectDriverLoadingListLUNARG;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG;
 	public void* pNext;
 	public VkDirectDriverLoadingModeLUNARG mode;
 	public uint driverCount;
@@ -23212,7 +23869,7 @@ public unsafe partial struct VkDirectDriverLoadingListLUNARG : IStructureType, I
 
 public unsafe partial struct VkTensorDescriptionARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TensorDescriptionARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_DESCRIPTION_ARM;
 	public void* pNext;
 	public VkTensorTilingARM tiling;
 	public VkFormat format;
@@ -23238,7 +23895,7 @@ public unsafe partial struct VkTensorDescriptionARM : IStructureType, IChainType
 
 public unsafe partial struct VkTensorCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TensorCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_CREATE_INFO_ARM;
 	public void* pNext;
 	public VkTensorCreateFlagsARM flags;
 	public VkTensorDescriptionARM* pDescription;
@@ -23263,7 +23920,7 @@ public unsafe partial struct VkTensorCreateInfoARM : IStructureType, IChainType
 
 public unsafe partial struct VkTensorMemoryRequirementsInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TensorMemoryRequirementsInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_MEMORY_REQUIREMENTS_INFO_ARM;
 	public void* pNext;
 	public VkTensorARM tensor;
 
@@ -23284,7 +23941,7 @@ public unsafe partial struct VkTensorMemoryRequirementsInfoARM : IStructureType,
 
 public unsafe partial struct VkBindTensorMemoryInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindTensorMemoryInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_TENSOR_MEMORY_INFO_ARM;
 	public void* pNext;
 	public VkTensorARM tensor;
 	public VkDeviceMemory memory;
@@ -23307,7 +23964,7 @@ public unsafe partial struct VkBindTensorMemoryInfoARM : IStructureType, IChainT
 
 public unsafe partial struct VkWriteDescriptorSetTensorARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.WriteDescriptorSetTensorARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_TENSOR_ARM;
 	public void* pNext;
 	public uint tensorViewCount;
 	public VkTensorViewARM* pTensorViews;
@@ -23329,7 +23986,7 @@ public unsafe partial struct VkWriteDescriptorSetTensorARM : IStructureType, ICh
 
 public unsafe partial struct VkTensorFormatPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TensorFormatPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_FORMAT_PROPERTIES_ARM;
 	public void* pNext;
 	public VkFormatFeatureFlags2 optimalTilingTensorFeatures;
 	public VkFormatFeatureFlags2 linearTilingTensorFeatures;
@@ -23351,7 +24008,7 @@ public unsafe partial struct VkTensorFormatPropertiesARM : IStructureType, IChai
 
 public unsafe partial struct VkPhysicalDeviceTensorPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTensorPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TENSOR_PROPERTIES_ARM;
 	public void* pNext;
 	public uint maxTensorDimensionCount;
 	public ulong maxTensorElements;
@@ -23384,7 +24041,7 @@ public unsafe partial struct VkPhysicalDeviceTensorPropertiesARM : IStructureTyp
 
 public unsafe partial struct VkTensorMemoryBarrierARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TensorMemoryBarrierARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_MEMORY_BARRIER_ARM;
 	public void* pNext;
 	public VkPipelineStageFlags2 srcStageMask;
 	public VkAccessFlags2 srcAccessMask;
@@ -23411,7 +24068,7 @@ public unsafe partial struct VkTensorMemoryBarrierARM : IStructureType, IChainTy
 
 public unsafe partial struct VkTensorDependencyInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TensorDependencyInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_DEPENDENCY_INFO_ARM;
 	public void* pNext;
 	public uint tensorMemoryBarrierCount;
 	public VkTensorMemoryBarrierARM* pTensorMemoryBarriers;
@@ -23433,7 +24090,7 @@ public unsafe partial struct VkTensorDependencyInfoARM : IStructureType, IChainT
 
 public unsafe partial struct VkPhysicalDeviceTensorFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTensorFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TENSOR_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 tensorNonPacked;
 	public VkBool32 shaderTensorAccess;
@@ -23459,7 +24116,7 @@ public unsafe partial struct VkPhysicalDeviceTensorFeaturesARM : IStructureType,
 
 public unsafe partial struct VkDeviceTensorMemoryRequirementsARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DeviceTensorMemoryRequirementsARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_TENSOR_MEMORY_REQUIREMENTS_ARM;
 	public void* pNext;
 	public VkTensorCreateInfoARM* pCreateInfo;
 
@@ -23480,7 +24137,7 @@ public unsafe partial struct VkDeviceTensorMemoryRequirementsARM : IStructureTyp
 
 public unsafe partial struct VkTensorCopyARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TensorCopyARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_COPY_ARM;
 	public void* pNext;
 	public uint dimensionCount;
 	public ulong* pSrcOffset;
@@ -23504,7 +24161,7 @@ public unsafe partial struct VkTensorCopyARM : IStructureType, IChainType
 
 public unsafe partial struct VkCopyTensorInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyTensorInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_TENSOR_INFO_ARM;
 	public void* pNext;
 	public VkTensorARM srcTensor;
 	public VkTensorARM dstTensor;
@@ -23528,7 +24185,7 @@ public unsafe partial struct VkCopyTensorInfoARM : IStructureType, IChainType
 
 public unsafe partial struct VkMemoryDedicatedAllocateInfoTensorARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryDedicatedAllocateInfoTensorARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_TENSOR_ARM;
 	public void* pNext;
 	public VkTensorARM tensor;
 
@@ -23549,7 +24206,7 @@ public unsafe partial struct VkMemoryDedicatedAllocateInfoTensorARM : IStructure
 
 public unsafe partial struct VkPhysicalDeviceExternalTensorInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExternalTensorInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_TENSOR_INFO_ARM;
 	public void* pNext;
 	public VkTensorCreateFlagsARM flags;
 	public VkTensorDescriptionARM* pDescription;
@@ -23572,7 +24229,7 @@ public unsafe partial struct VkPhysicalDeviceExternalTensorInfoARM : IStructureT
 
 public unsafe partial struct VkExternalTensorPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalTensorPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_TENSOR_PROPERTIES_ARM;
 	public void* pNext;
 	public VkExternalMemoryProperties externalMemoryProperties;
 
@@ -23593,7 +24250,7 @@ public unsafe partial struct VkExternalTensorPropertiesARM : IStructureType, ICh
 
 public unsafe partial struct VkExternalMemoryTensorCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalMemoryTensorCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_TENSOR_CREATE_INFO_ARM;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleTypes;
 
@@ -23614,7 +24271,7 @@ public unsafe partial struct VkExternalMemoryTensorCreateInfoARM : IStructureTyp
 
 public unsafe partial struct VkPhysicalDeviceDescriptorBufferTensorFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorBufferTensorFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_TENSOR_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 descriptorBufferTensorDescriptors;
 
@@ -23635,7 +24292,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferTensorFeaturesARM :
 
 public unsafe partial struct VkPhysicalDeviceDescriptorBufferTensorPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorBufferTensorPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_TENSOR_PROPERTIES_ARM;
 	public void* pNext;
 	public nuint tensorCaptureReplayDescriptorDataSize;
 	public nuint tensorViewCaptureReplayDescriptorDataSize;
@@ -23658,7 +24315,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorBufferTensorPropertiesARM
 
 public unsafe partial struct VkDescriptorGetTensorInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DescriptorGetTensorInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DESCRIPTOR_GET_TENSOR_INFO_ARM;
 	public void* pNext;
 	public VkTensorViewARM tensorView;
 
@@ -23679,7 +24336,7 @@ public unsafe partial struct VkDescriptorGetTensorInfoARM : IStructureType, ICha
 
 public unsafe partial struct VkTensorCaptureDescriptorDataInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TensorCaptureDescriptorDataInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_CAPTURE_DESCRIPTOR_DATA_INFO_ARM;
 	public void* pNext;
 	public VkTensorARM tensor;
 
@@ -23700,7 +24357,7 @@ public unsafe partial struct VkTensorCaptureDescriptorDataInfoARM : IStructureTy
 
 public unsafe partial struct VkTensorViewCaptureDescriptorDataInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TensorViewCaptureDescriptorDataInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_ARM;
 	public void* pNext;
 	public VkTensorViewARM tensorView;
 
@@ -23721,7 +24378,7 @@ public unsafe partial struct VkTensorViewCaptureDescriptorDataInfoARM : IStructu
 
 public unsafe partial struct VkFrameBoundaryTensorsARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FrameBoundaryTensorsARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FRAME_BOUNDARY_TENSORS_ARM;
 	public void* pNext;
 	public uint tensorCount;
 	public VkTensorARM* pTensors;
@@ -23743,7 +24400,7 @@ public unsafe partial struct VkFrameBoundaryTensorsARM : IStructureType, IChainT
 
 public unsafe partial struct VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderModuleIdentifierFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 shaderModuleIdentifier;
 
@@ -23764,7 +24421,7 @@ public unsafe partial struct VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT :
 
 public unsafe partial struct VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderModuleIdentifierPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_PROPERTIES_EXT;
 	public void* pNext;
 	public fixed byte shaderModuleIdentifierAlgorithmUUID[16];
 
@@ -23785,7 +24442,7 @@ public unsafe partial struct VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT
 
 public unsafe partial struct VkPipelineShaderStageModuleIdentifierCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineShaderStageModuleIdentifierCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT;
 	public void* pNext;
 	public uint identifierSize;
 	public byte* pIdentifier;
@@ -23807,7 +24464,7 @@ public unsafe partial struct VkPipelineShaderStageModuleIdentifierCreateInfoEXT 
 
 public unsafe partial struct VkShaderModuleIdentifierEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ShaderModuleIdentifierEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT;
 	public void* pNext;
 	public uint identifierSize;
 	public fixed byte identifier[32];
@@ -23829,7 +24486,7 @@ public unsafe partial struct VkShaderModuleIdentifierEXT : IStructureType, IChai
 
 public unsafe partial struct VkPhysicalDeviceOpticalFlowFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceOpticalFlowFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPTICAL_FLOW_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 opticalFlow;
 
@@ -23850,7 +24507,7 @@ public unsafe partial struct VkPhysicalDeviceOpticalFlowFeaturesNV : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceOpticalFlowPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceOpticalFlowPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV;
 	public void* pNext;
 	public VkOpticalFlowGridSizeFlagsNV supportedOutputGridSizes;
 	public VkOpticalFlowGridSizeFlagsNV supportedHintGridSizes;
@@ -23881,7 +24538,7 @@ public unsafe partial struct VkPhysicalDeviceOpticalFlowPropertiesNV : IStructur
 
 public unsafe partial struct VkOpticalFlowImageFormatInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.OpticalFlowImageFormatInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_OPTICAL_FLOW_IMAGE_FORMAT_INFO_NV;
 	public void* pNext;
 	public VkOpticalFlowUsageFlagsNV usage;
 
@@ -23902,7 +24559,7 @@ public unsafe partial struct VkOpticalFlowImageFormatInfoNV : IStructureType, IC
 
 public unsafe partial struct VkOpticalFlowImageFormatPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.OpticalFlowImageFormatPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_NV;
 	public void* pNext;
 	public VkFormat format;
 
@@ -23923,7 +24580,7 @@ public unsafe partial struct VkOpticalFlowImageFormatPropertiesNV : IStructureTy
 
 public unsafe partial struct VkOpticalFlowSessionCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.OpticalFlowSessionCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_INFO_NV;
 	public void* pNext;
 	public uint width;
 	public uint height;
@@ -23952,7 +24609,7 @@ public unsafe partial struct VkOpticalFlowSessionCreateInfoNV : IStructureType, 
 
 public unsafe partial struct VkOpticalFlowSessionCreatePrivateDataInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.OpticalFlowSessionCreatePrivateDataInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_PRIVATE_DATA_INFO_NV;
 	public void* pNext;
 	public uint id;
 	public uint size;
@@ -23975,7 +24632,7 @@ public unsafe partial struct VkOpticalFlowSessionCreatePrivateDataInfoNV : IStru
 
 public unsafe partial struct VkOpticalFlowExecuteInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.OpticalFlowExecuteInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_OPTICAL_FLOW_EXECUTE_INFO_NV;
 	public void* pNext;
 	public VkOpticalFlowExecuteFlagsNV flags;
 	public uint regionCount;
@@ -23998,7 +24655,7 @@ public unsafe partial struct VkOpticalFlowExecuteInfoNV : IStructureType, IChain
 
 public unsafe partial struct VkPhysicalDeviceLegacyDitheringFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLegacyDitheringFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_DITHERING_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 legacyDithering;
 
@@ -24019,7 +24676,7 @@ public unsafe partial struct VkPhysicalDeviceLegacyDitheringFeaturesEXT : IStruc
 
 public unsafe partial struct VkPhysicalDeviceAntiLagFeaturesAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceAntiLagFeaturesAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD;
 	public void* pNext;
 	public VkBool32 antiLag;
 
@@ -24040,7 +24697,7 @@ public unsafe partial struct VkPhysicalDeviceAntiLagFeaturesAMD : IStructureType
 
 public unsafe partial struct VkAntiLagPresentationInfoAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AntiLagPresentationInfoAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD;
 	public void* pNext;
 	public VkAntiLagStageAMD stage;
 	public ulong frameIndex;
@@ -24062,7 +24719,7 @@ public unsafe partial struct VkAntiLagPresentationInfoAMD : IStructureType, ICha
 
 public unsafe partial struct VkAntiLagDataAMD : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AntiLagDataAMD;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD;
 	public void* pNext;
 	public VkAntiLagModeAMD mode;
 	public uint maxFPS;
@@ -24085,7 +24742,7 @@ public unsafe partial struct VkAntiLagDataAMD : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceShaderObjectFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderObjectFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 shaderObject;
 
@@ -24106,7 +24763,7 @@ public unsafe partial struct VkPhysicalDeviceShaderObjectFeaturesEXT : IStructur
 
 public unsafe partial struct VkPhysicalDeviceShaderObjectPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderObjectPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT;
 	public void* pNext;
 	public fixed byte shaderBinaryUUID[16];
 	public uint shaderBinaryVersion;
@@ -24128,7 +24785,7 @@ public unsafe partial struct VkPhysicalDeviceShaderObjectPropertiesEXT : IStruct
 
 public unsafe partial struct VkShaderCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ShaderCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SHADER_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkShaderCreateFlagsEXT flags;
 	public VkShaderStageFlags stage;
@@ -24166,7 +24823,7 @@ public partial struct VkDepthClampRangeEXT
 
 public unsafe partial struct VkPhysicalDeviceTilePropertiesFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTilePropertiesFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_PROPERTIES_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 tileProperties;
 
@@ -24187,7 +24844,7 @@ public unsafe partial struct VkPhysicalDeviceTilePropertiesFeaturesQCOM : IStruc
 
 public unsafe partial struct VkTilePropertiesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TilePropertiesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM;
 	public void* pNext;
 	public VkExtent3D tileSize;
 	public VkExtent2D apronSize;
@@ -24210,7 +24867,7 @@ public unsafe partial struct VkTilePropertiesQCOM : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceAmigoProfilingFeaturesSEC : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceAmigoProfilingFeaturesSEC;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_AMIGO_PROFILING_FEATURES_SEC;
 	public void* pNext;
 	public VkBool32 amigoProfiling;
 
@@ -24231,7 +24888,7 @@ public unsafe partial struct VkPhysicalDeviceAmigoProfilingFeaturesSEC : IStruct
 
 public unsafe partial struct VkAmigoProfilingSubmitInfoSEC : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AmigoProfilingSubmitInfoSEC;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_AMIGO_PROFILING_SUBMIT_INFO_SEC;
 	public void* pNext;
 	public ulong firstDrawTimestamp;
 	public ulong swapBufferTimestamp;
@@ -24253,7 +24910,7 @@ public unsafe partial struct VkAmigoProfilingSubmitInfoSEC : IStructureType, ICh
 
 public unsafe partial struct VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_VIEWPORTS_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 multiviewPerViewViewports;
 
@@ -24274,7 +24931,7 @@ public unsafe partial struct VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQC
 
 public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingInvocationReorderPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV;
 	public void* pNext;
 	public VkRayTracingInvocationReorderModeEXT rayTracingInvocationReorderReorderingHint;
 
@@ -24295,7 +24952,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderProperti
 
 public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingInvocationReorderFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 rayTracingInvocationReorder;
 
@@ -24316,7 +24973,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderFeatures
 
 public unsafe partial struct VkPhysicalDeviceCooperativeVectorPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCooperativeVectorPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV;
 	public void* pNext;
 	public VkShaderStageFlags cooperativeVectorSupportedStages;
 	public VkBool32 cooperativeVectorTrainingFloat16Accumulation;
@@ -24340,7 +24997,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeVectorPropertiesNV : ISt
 
 public unsafe partial struct VkPhysicalDeviceCooperativeVectorFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCooperativeVectorFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 cooperativeVector;
 	public VkBool32 cooperativeVectorTraining;
@@ -24362,7 +25019,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeVectorFeaturesNV : IStru
 
 public unsafe partial struct VkCooperativeVectorPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CooperativeVectorPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COOPERATIVE_VECTOR_PROPERTIES_NV;
 	public void* pNext;
 	public VkComponentTypeKHR inputType;
 	public VkComponentTypeKHR inputInterpretation;
@@ -24388,7 +25045,7 @@ public unsafe partial struct VkCooperativeVectorPropertiesNV : IStructureType, I
 
 public unsafe partial struct VkConvertCooperativeVectorMatrixInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ConvertCooperativeVectorMatrixInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CONVERT_COOPERATIVE_VECTOR_MATRIX_INFO_NV;
 	public void* pNext;
 	public nuint srcSize;
 	public VkDeviceOrHostAddressConstKHR srcData;
@@ -24420,7 +25077,7 @@ public unsafe partial struct VkConvertCooperativeVectorMatrixInfoNV : IStructure
 
 public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 extendedSparseAddressSpace;
 
@@ -24441,7 +25098,7 @@ public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesN
 
 public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExtendedSparseAddressSpacePropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV;
 	public void* pNext;
 	public ulong extendedSparseAddressSpaceSize;
 	public VkImageUsageFlags extendedSparseImageUsageFlags;
@@ -24464,7 +25121,7 @@ public unsafe partial struct VkPhysicalDeviceExtendedSparseAddressSpacePropertie
 
 public unsafe partial struct VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLegacyVertexAttributesFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 legacyVertexAttributes;
 
@@ -24485,7 +25142,7 @@ public unsafe partial struct VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT :
 
 public unsafe partial struct VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLegacyVertexAttributesPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT;
 	public void* pNext;
 	public VkBool32 nativeUnalignedPerformance;
 
@@ -24515,7 +25172,7 @@ public unsafe partial struct VkLayerSettingEXT
 
 public unsafe partial struct VkLayerSettingsCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.LayerSettingsCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT;
 	public void* pNext;
 	public uint settingCount;
 	public VkLayerSettingEXT* pSettings;
@@ -24537,7 +25194,7 @@ public unsafe partial struct VkLayerSettingsCreateInfoEXT : IStructureType, ICha
 
 public unsafe partial struct VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderCoreBuiltinsFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 shaderCoreBuiltins;
 
@@ -24558,7 +25215,7 @@ public unsafe partial struct VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM : ISt
 
 public unsafe partial struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderCoreBuiltinsPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_PROPERTIES_ARM;
 	public void* pNext;
 	public ulong shaderCoreMask;
 	public uint shaderCoreCount;
@@ -24579,30 +25236,9 @@ public unsafe partial struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM : I
 	}
 }
 
-public unsafe partial struct VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT : IStructureType, IChainType
-{
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT;
-	public void* pNext;
-	public VkBool32 pipelineLibraryGroupHandles;
-
-	public VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT()
-	{
-	}
-
-	/// <inheritdoc />
-	readonly VkStructureType IStructureType.sType => sType;
-
-	/// <inheritdoc />
-	void* IChainType.pNext
-	{
-		get => pNext;
-		set => pNext = value;
-	}
-}
-
 public unsafe partial struct VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 dynamicRenderingUnusedAttachments;
 
@@ -24623,7 +25259,7 @@ public unsafe partial struct VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFe
 
 public unsafe partial struct VkLatencySleepModeInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.LatencySleepModeInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV;
 	public void* pNext;
 	public VkBool32 lowLatencyMode;
 	public VkBool32 lowLatencyBoost;
@@ -24646,7 +25282,7 @@ public unsafe partial struct VkLatencySleepModeInfoNV : IStructureType, IChainTy
 
 public unsafe partial struct VkLatencySleepInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.LatencySleepInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_LATENCY_SLEEP_INFO_NV;
 	public void* pNext;
 	public VkSemaphore signalSemaphore;
 	public ulong value;
@@ -24668,7 +25304,7 @@ public unsafe partial struct VkLatencySleepInfoNV : IStructureType, IChainType
 
 public unsafe partial struct VkSetLatencyMarkerInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SetLatencyMarkerInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SET_LATENCY_MARKER_INFO_NV;
 	public void* pNext;
 	public ulong presentID;
 	public VkLatencyMarkerNV marker;
@@ -24690,7 +25326,7 @@ public unsafe partial struct VkSetLatencyMarkerInfoNV : IStructureType, IChainTy
 
 public unsafe partial struct VkLatencyTimingsFrameReportNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.LatencyTimingsFrameReportNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_LATENCY_TIMINGS_FRAME_REPORT_NV;
 	public void* pNext;
 	public ulong presentID;
 	public ulong inputSampleTimeUs;
@@ -24724,7 +25360,7 @@ public unsafe partial struct VkLatencyTimingsFrameReportNV : IStructureType, ICh
 
 public unsafe partial struct VkGetLatencyMarkerInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GetLatencyMarkerInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GET_LATENCY_MARKER_INFO_NV;
 	public void* pNext;
 	public uint timingCount;
 	public VkLatencyTimingsFrameReportNV* pTimings;
@@ -24746,7 +25382,7 @@ public unsafe partial struct VkGetLatencyMarkerInfoNV : IStructureType, IChainTy
 
 public unsafe partial struct VkLatencySubmissionPresentIdNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.LatencySubmissionPresentIdNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV;
 	public void* pNext;
 	public ulong presentID;
 
@@ -24767,7 +25403,7 @@ public unsafe partial struct VkLatencySubmissionPresentIdNV : IStructureType, IC
 
 public unsafe partial struct VkSwapchainLatencyCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SwapchainLatencyCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV;
 	public void* pNext;
 	public VkBool32 latencyModeEnable;
 
@@ -24788,7 +25424,7 @@ public unsafe partial struct VkSwapchainLatencyCreateInfoNV : IStructureType, IC
 
 public unsafe partial struct VkOutOfBandQueueTypeInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.OutOfBandQueueTypeInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_OUT_OF_BAND_QUEUE_TYPE_INFO_NV;
 	public void* pNext;
 	public VkOutOfBandQueueTypeNV queueType;
 
@@ -24809,7 +25445,7 @@ public unsafe partial struct VkOutOfBandQueueTypeInfoNV : IStructureType, IChain
 
 public unsafe partial struct VkLatencySurfaceCapabilitiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.LatencySurfaceCapabilitiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV;
 	public void* pNext;
 	public uint presentModeCount;
 	public VkPresentModeKHR* pPresentModes;
@@ -24831,7 +25467,7 @@ public unsafe partial struct VkLatencySurfaceCapabilitiesNV : IStructureType, IC
 
 public unsafe partial struct VkPhysicalDeviceDataGraphFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDataGraphFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 dataGraph;
 	public VkBool32 dataGraphUpdateAfterBind;
@@ -24856,7 +25492,7 @@ public unsafe partial struct VkPhysicalDeviceDataGraphFeaturesARM : IStructureTy
 
 public unsafe partial struct VkDataGraphPipelineConstantARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineConstantARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_ARM;
 	public void* pNext;
 	public uint id;
 	public void* pConstantData;
@@ -24878,7 +25514,7 @@ public unsafe partial struct VkDataGraphPipelineConstantARM : IStructureType, IC
 
 public unsafe partial struct VkDataGraphPipelineResourceInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineResourceInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_ARM;
 	public void* pNext;
 	public uint descriptorSet;
 	public uint binding;
@@ -24901,7 +25537,7 @@ public unsafe partial struct VkDataGraphPipelineResourceInfoARM : IStructureType
 
 public unsafe partial struct VkDataGraphPipelineCompilerControlCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineCompilerControlCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_COMPILER_CONTROL_CREATE_INFO_ARM;
 	public void* pNext;
 	public byte* pVendorOptions;
 
@@ -24922,7 +25558,7 @@ public unsafe partial struct VkDataGraphPipelineCompilerControlCreateInfoARM : I
 
 public unsafe partial struct VkDataGraphPipelineCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CREATE_INFO_ARM;
 	public void* pNext;
 	public VkPipelineCreateFlags2 flags;
 	public VkPipelineLayout layout;
@@ -24946,7 +25582,7 @@ public unsafe partial struct VkDataGraphPipelineCreateInfoARM : IStructureType, 
 
 public unsafe partial struct VkDataGraphPipelineShaderModuleCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineShaderModuleCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SHADER_MODULE_CREATE_INFO_ARM;
 	public void* pNext;
 	public VkShaderModule module;
 	public byte* pName;
@@ -24971,7 +25607,7 @@ public unsafe partial struct VkDataGraphPipelineShaderModuleCreateInfoARM : IStr
 
 public unsafe partial struct VkDataGraphPipelineSessionCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineSessionCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_CREATE_INFO_ARM;
 	public void* pNext;
 	public VkDataGraphPipelineSessionCreateFlagsARM flags;
 	public VkPipeline dataGraphPipeline;
@@ -24993,7 +25629,7 @@ public unsafe partial struct VkDataGraphPipelineSessionCreateInfoARM : IStructur
 
 public unsafe partial struct VkDataGraphPipelineSessionBindPointRequirementsInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineSessionBindPointRequirementsInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENTS_INFO_ARM;
 	public void* pNext;
 	public VkDataGraphPipelineSessionARM session;
 
@@ -25014,7 +25650,7 @@ public unsafe partial struct VkDataGraphPipelineSessionBindPointRequirementsInfo
 
 public unsafe partial struct VkDataGraphPipelineSessionBindPointRequirementARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineSessionBindPointRequirementARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENT_ARM;
 	public void* pNext;
 	public VkDataGraphPipelineSessionBindPointARM bindPoint;
 	public VkDataGraphPipelineSessionBindPointTypeARM bindPointType;
@@ -25037,7 +25673,7 @@ public unsafe partial struct VkDataGraphPipelineSessionBindPointRequirementARM :
 
 public unsafe partial struct VkDataGraphPipelineSessionMemoryRequirementsInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineSessionMemoryRequirementsInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_MEMORY_REQUIREMENTS_INFO_ARM;
 	public void* pNext;
 	public VkDataGraphPipelineSessionARM session;
 	public VkDataGraphPipelineSessionBindPointARM bindPoint;
@@ -25060,7 +25696,7 @@ public unsafe partial struct VkDataGraphPipelineSessionMemoryRequirementsInfoARM
 
 public unsafe partial struct VkBindDataGraphPipelineSessionMemoryInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BindDataGraphPipelineSessionMemoryInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BIND_DATA_GRAPH_PIPELINE_SESSION_MEMORY_INFO_ARM;
 	public void* pNext;
 	public VkDataGraphPipelineSessionARM session;
 	public VkDataGraphPipelineSessionBindPointARM bindPoint;
@@ -25085,7 +25721,7 @@ public unsafe partial struct VkBindDataGraphPipelineSessionMemoryInfoARM : IStru
 
 public unsafe partial struct VkDataGraphPipelineInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_INFO_ARM;
 	public void* pNext;
 	public VkPipeline dataGraphPipeline;
 
@@ -25106,7 +25742,7 @@ public unsafe partial struct VkDataGraphPipelineInfoARM : IStructureType, IChain
 
 public unsafe partial struct VkDataGraphPipelinePropertyQueryResultARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelinePropertyQueryResultARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_PROPERTY_QUERY_RESULT_ARM;
 	public void* pNext;
 	public VkDataGraphPipelinePropertyARM property;
 	public VkBool32 isText;
@@ -25130,7 +25766,7 @@ public unsafe partial struct VkDataGraphPipelinePropertyQueryResultARM : IStruct
 
 public unsafe partial struct VkDataGraphPipelineIdentifierCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineIdentifierCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_IDENTIFIER_CREATE_INFO_ARM;
 	public void* pNext;
 	public uint identifierSize;
 	public byte* pIdentifier;
@@ -25152,7 +25788,7 @@ public unsafe partial struct VkDataGraphPipelineIdentifierCreateInfoARM : IStruc
 
 public unsafe partial struct VkDataGraphPipelineDispatchInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineDispatchInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_DISPATCH_INFO_ARM;
 	public void* pNext;
 	public VkDataGraphPipelineDispatchFlagsARM flags;
 
@@ -25186,7 +25822,7 @@ public unsafe partial struct VkPhysicalDeviceDataGraphOperationSupportARM
 
 public unsafe partial struct VkQueueFamilyDataGraphPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyDataGraphPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROPERTIES_ARM;
 	public void* pNext;
 	public VkPhysicalDeviceDataGraphProcessingEngineARM engine;
 	public VkPhysicalDeviceDataGraphOperationSupportARM operation;
@@ -25208,7 +25844,7 @@ public unsafe partial struct VkQueueFamilyDataGraphPropertiesARM : IStructureTyp
 
 public unsafe partial struct VkDataGraphProcessingEngineCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphProcessingEngineCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PROCESSING_ENGINE_CREATE_INFO_ARM;
 	public void* pNext;
 	public uint processingEngineCount;
 	public VkPhysicalDeviceDataGraphProcessingEngineARM* pProcessingEngines;
@@ -25230,7 +25866,7 @@ public unsafe partial struct VkDataGraphProcessingEngineCreateInfoARM : IStructu
 
 public unsafe partial struct VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_INFO_ARM;
 	public void* pNext;
 	public uint queueFamilyIndex;
 	public VkPhysicalDeviceDataGraphProcessingEngineTypeARM engineType;
@@ -25252,7 +25888,7 @@ public unsafe partial struct VkPhysicalDeviceQueueFamilyDataGraphProcessingEngin
 
 public unsafe partial struct VkQueueFamilyDataGraphProcessingEnginePropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyDataGraphProcessingEnginePropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_PROPERTIES_ARM;
 	public void* pNext;
 	public VkExternalSemaphoreHandleTypeFlags foreignSemaphoreHandleTypes;
 	public VkExternalMemoryHandleTypeFlags foreignMemoryHandleTypes;
@@ -25274,7 +25910,7 @@ public unsafe partial struct VkQueueFamilyDataGraphProcessingEnginePropertiesARM
 
 public unsafe partial struct VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM;
 	public void* pNext;
 	public uint dimension;
 	public uint zeroCount;
@@ -25303,7 +25939,7 @@ public unsafe partial struct VkDataGraphTOSANameQualityARM
 
 public unsafe partial struct VkQueueFamilyDataGraphTOSAPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyDataGraphTosaPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_TOSA_PROPERTIES_ARM;
 	public void* pNext;
 	public uint profileCount;
 	public VkDataGraphTOSANameQualityARM* pProfiles;
@@ -25328,7 +25964,7 @@ public unsafe partial struct VkQueueFamilyDataGraphTOSAPropertiesARM : IStructur
 
 public unsafe partial struct VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 multiviewPerViewRenderAreas;
 
@@ -25349,7 +25985,7 @@ public unsafe partial struct VkPhysicalDeviceMultiviewPerViewRenderAreasFeatures
 
 public unsafe partial struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM;
 	public void* pNext;
 	public uint perViewRenderAreaCount;
 	public VkRect2D* pPerViewRenderAreas;
@@ -25371,7 +26007,7 @@ public unsafe partial struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCO
 
 public unsafe partial struct VkPhysicalDevicePerStageDescriptorSetFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePerStageDescriptorSetFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 perStageDescriptorSet;
 	public VkBool32 dynamicPipelineLayout;
@@ -25393,7 +26029,7 @@ public unsafe partial struct VkPhysicalDevicePerStageDescriptorSetFeaturesNV : I
 
 public unsafe partial struct VkPhysicalDeviceImageProcessing2FeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageProcessing2FeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 textureBlockMatch2;
 
@@ -25414,7 +26050,7 @@ public unsafe partial struct VkPhysicalDeviceImageProcessing2FeaturesQCOM : IStr
 
 public unsafe partial struct VkPhysicalDeviceImageProcessing2PropertiesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageProcessing2PropertiesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM;
 	public void* pNext;
 	public VkExtent2D maxBlockMatchWindow;
 
@@ -25435,7 +26071,7 @@ public unsafe partial struct VkPhysicalDeviceImageProcessing2PropertiesQCOM : IS
 
 public unsafe partial struct VkSamplerBlockMatchWindowCreateInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerBlockMatchWindowCreateInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM;
 	public void* pNext;
 	public VkExtent2D windowExtent;
 	public VkBlockMatchWindowCompareModeQCOM windowCompareMode;
@@ -25457,7 +26093,7 @@ public unsafe partial struct VkSamplerBlockMatchWindowCreateInfoQCOM : IStructur
 
 public unsafe partial struct VkPhysicalDeviceCubicWeightsFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCubicWeightsFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUBIC_WEIGHTS_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 selectableCubicWeights;
 
@@ -25478,7 +26114,7 @@ public unsafe partial struct VkPhysicalDeviceCubicWeightsFeaturesQCOM : IStructu
 
 public unsafe partial struct VkSamplerCubicWeightsCreateInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerCubicWeightsCreateInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_CUBIC_WEIGHTS_CREATE_INFO_QCOM;
 	public void* pNext;
 	public VkCubicFilterWeightsQCOM cubicWeights;
 
@@ -25499,7 +26135,7 @@ public unsafe partial struct VkSamplerCubicWeightsCreateInfoQCOM : IStructureTyp
 
 public unsafe partial struct VkBlitImageCubicWeightsInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BlitImageCubicWeightsInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BLIT_IMAGE_CUBIC_WEIGHTS_INFO_QCOM;
 	public void* pNext;
 	public VkCubicFilterWeightsQCOM cubicWeights;
 
@@ -25520,7 +26156,7 @@ public unsafe partial struct VkBlitImageCubicWeightsInfoQCOM : IStructureType, I
 
 public unsafe partial struct VkPhysicalDeviceYcbcrDegammaFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceYcbcrDegammaFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_DEGAMMA_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 ycbcrDegamma;
 
@@ -25541,7 +26177,7 @@ public unsafe partial struct VkPhysicalDeviceYcbcrDegammaFeaturesQCOM : IStructu
 
 public unsafe partial struct VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM;
 	public void* pNext;
 	public VkBool32 enableYDegamma;
 	public VkBool32 enableCbCrDegamma;
@@ -25563,7 +26199,7 @@ public unsafe partial struct VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM 
 
 public unsafe partial struct VkPhysicalDeviceCubicClampFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCubicClampFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUBIC_CLAMP_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 cubicRangeClamp;
 
@@ -25584,7 +26220,7 @@ public unsafe partial struct VkPhysicalDeviceCubicClampFeaturesQCOM : IStructure
 
 public unsafe partial struct VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 attachmentFeedbackLoopDynamicState;
 
@@ -25605,7 +26241,7 @@ public unsafe partial struct VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateF
 
 public unsafe partial struct VkPhysicalDeviceLayeredDriverPropertiesMSFT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceLayeredDriverPropertiesMSFT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT;
 	public void* pNext;
 	public VkLayeredDriverUnderlyingApiMSFT underlyingAPI;
 
@@ -25626,7 +26262,7 @@ public unsafe partial struct VkPhysicalDeviceLayeredDriverPropertiesMSFT : IStru
 
 public unsafe partial struct VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDescriptorPoolOverallocationFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 descriptorPoolOverallocation;
 
@@ -25647,7 +26283,7 @@ public unsafe partial struct VkPhysicalDeviceDescriptorPoolOverallocationFeature
 
 public unsafe partial struct VkPhysicalDeviceTileMemoryHeapFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTileMemoryHeapFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 tileMemoryHeap;
 
@@ -25668,7 +26304,7 @@ public unsafe partial struct VkPhysicalDeviceTileMemoryHeapFeaturesQCOM : IStruc
 
 public unsafe partial struct VkPhysicalDeviceTileMemoryHeapPropertiesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceTileMemoryHeapPropertiesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM;
 	public void* pNext;
 	public VkBool32 queueSubmitBoundary;
 	public VkBool32 tileBufferTransfers;
@@ -25690,7 +26326,7 @@ public unsafe partial struct VkPhysicalDeviceTileMemoryHeapPropertiesQCOM : IStr
 
 public unsafe partial struct VkTileMemoryRequirementsQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TileMemoryRequirementsQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM;
 	public void* pNext;
 	public ulong size;
 	public ulong alignment;
@@ -25712,7 +26348,7 @@ public unsafe partial struct VkTileMemoryRequirementsQCOM : IStructureType, ICha
 
 public unsafe partial struct VkTileMemoryBindInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TileMemoryBindInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM;
 	public void* pNext;
 	public VkDeviceMemory memory;
 
@@ -25733,7 +26369,7 @@ public unsafe partial struct VkTileMemoryBindInfoQCOM : IStructureType, IChainTy
 
 public unsafe partial struct VkTileMemorySizeInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.TileMemorySizeInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM;
 	public void* pNext;
 	public ulong size;
 
@@ -25762,7 +26398,7 @@ public partial struct VkDecompressMemoryRegionEXT
 
 public unsafe partial struct VkDecompressMemoryInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DecompressMemoryInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DECOMPRESS_MEMORY_INFO_EXT;
 	public void* pNext;
 	public VkMemoryDecompressionMethodFlagsEXT decompressionMethod;
 	public uint regionCount;
@@ -25785,7 +26421,7 @@ public unsafe partial struct VkDecompressMemoryInfoEXT : IStructureType, IChainT
 
 public unsafe partial struct VkDisplaySurfaceStereoCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplaySurfaceStereoCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV;
 	public void* pNext;
 	public VkDisplaySurfaceStereoTypeNV stereoType;
 
@@ -25806,7 +26442,7 @@ public unsafe partial struct VkDisplaySurfaceStereoCreateInfoNV : IStructureType
 
 public unsafe partial struct VkDisplayModeStereoPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DisplayModeStereoPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV;
 	public void* pNext;
 	public VkBool32 hdmi3DSupported;
 
@@ -25827,7 +26463,7 @@ public unsafe partial struct VkDisplayModeStereoPropertiesNV : IStructureType, I
 
 public unsafe partial struct VkPhysicalDeviceRawAccessChainsFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRawAccessChainsFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 shaderRawAccessChains;
 
@@ -25848,7 +26484,7 @@ public unsafe partial struct VkPhysicalDeviceRawAccessChainsFeaturesNV : IStruct
 
 public unsafe partial struct VkExternalComputeQueueDeviceCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalComputeQueueDeviceCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DEVICE_CREATE_INFO_NV;
 	public void* pNext;
 	public uint reservedExternalQueues;
 
@@ -25869,7 +26505,7 @@ public unsafe partial struct VkExternalComputeQueueDeviceCreateInfoNV : IStructu
 
 public unsafe partial struct VkExternalComputeQueueCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalComputeQueueCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkQueue preferredQueue;
 
@@ -25890,7 +26526,7 @@ public unsafe partial struct VkExternalComputeQueueCreateInfoNV : IStructureType
 
 public unsafe partial struct VkExternalComputeQueueDataParamsNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalComputeQueueDataParamsNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DATA_PARAMS_NV;
 	public void* pNext;
 	public uint deviceIndex;
 
@@ -25911,7 +26547,7 @@ public unsafe partial struct VkExternalComputeQueueDataParamsNV : IStructureType
 
 public unsafe partial struct VkPhysicalDeviceExternalComputeQueuePropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExternalComputeQueuePropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV;
 	public void* pNext;
 	public uint externalDataSize;
 	public uint maxExternalQueues;
@@ -25933,7 +26569,7 @@ public unsafe partial struct VkPhysicalDeviceExternalComputeQueuePropertiesNV : 
 
 public unsafe partial struct VkPhysicalDeviceCommandBufferInheritanceFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCommandBufferInheritanceFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 commandBufferInheritance;
 
@@ -25954,7 +26590,7 @@ public unsafe partial struct VkPhysicalDeviceCommandBufferInheritanceFeaturesNV 
 
 public unsafe partial struct VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 shaderFloat16VectorAtomics;
 
@@ -25975,7 +26611,7 @@ public unsafe partial struct VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV
 
 public unsafe partial struct VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderReplicatedCompositesFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 shaderReplicatedComposites;
 
@@ -25994,9 +26630,55 @@ public unsafe partial struct VkPhysicalDeviceShaderReplicatedCompositesFeaturesE
 	}
 }
 
+public unsafe partial struct VkTensorRollingBackingCreateInfoARM : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_ROLLING_BACKING_CREATE_INFO_ARM;
+	public void* pNext;
+	public fixed uint wraps[4];
+
+	public VkTensorRollingBackingCreateInfoARM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkTensorExplicitTilingFormatPropertiesARM : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_TENSOR_EXPLICIT_TILING_FORMAT_PROPERTIES_ARM;
+	public void* pNext;
+	public VkFormatFeatureFlags2 brick16TilingTensorFeatures;
+	public VkFormatFeatureFlags2 brick8TilingTensorFeatures;
+	public VkFormatFeatureFlags2 brick4TilingTensorFeatures;
+	public VkFormatFeatureFlags2 blockUTilingTensorFeatures;
+	public VkFormatFeatureFlags2 blockU64kTilingTensorFeatures;
+
+	public VkTensorExplicitTilingFormatPropertiesARM()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceShaderFloat8FeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderFloat8FeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT8_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 shaderFloat8;
 	public VkBool32 shaderFloat8CooperativeMatrix;
@@ -26018,7 +26700,7 @@ public unsafe partial struct VkPhysicalDeviceShaderFloat8FeaturesEXT : IStructur
 
 public unsafe partial struct VkPhysicalDeviceRayTracingValidationFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingValidationFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 rayTracingValidation;
 
@@ -26039,7 +26721,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingValidationFeaturesNV : IS
 
 public unsafe partial struct VkPhysicalDeviceClusterAccelerationStructureFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceClusterAccelerationStructureFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 clusterAccelerationStructure;
 
@@ -26060,7 +26742,7 @@ public unsafe partial struct VkPhysicalDeviceClusterAccelerationStructureFeature
 
 public unsafe partial struct VkPhysicalDeviceClusterAccelerationStructurePropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceClusterAccelerationStructurePropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_PROPERTIES_NV;
 	public void* pNext;
 	public uint maxVerticesPerCluster;
 	public uint maxTrianglesPerCluster;
@@ -26088,7 +26770,7 @@ public unsafe partial struct VkPhysicalDeviceClusterAccelerationStructurePropert
 
 public unsafe partial struct VkClusterAccelerationStructureClustersBottomLevelInputNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ClusterAccelerationStructureClustersBottomLevelInputNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV;
 	public void* pNext;
 	public uint maxTotalClusterCount;
 	public uint maxClusterCountPerAccelerationStructure;
@@ -26110,7 +26792,7 @@ public unsafe partial struct VkClusterAccelerationStructureClustersBottomLevelIn
 
 public unsafe partial struct VkClusterAccelerationStructureTriangleClusterInputNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ClusterAccelerationStructureTriangleClusterInputNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV;
 	public void* pNext;
 	public VkFormat vertexFormat;
 	public uint maxGeometryIndexValue;
@@ -26138,7 +26820,7 @@ public unsafe partial struct VkClusterAccelerationStructureTriangleClusterInputN
 
 public unsafe partial struct VkClusterAccelerationStructureMoveObjectsInputNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ClusterAccelerationStructureMoveObjectsInputNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_MOVE_OBJECTS_INPUT_NV;
 	public void* pNext;
 	public VkClusterAccelerationStructureTypeNV type;
 	public VkBool32 noMoveOverlap;
@@ -26172,7 +26854,7 @@ public unsafe partial struct VkClusterAccelerationStructureOpInputNV
 
 public unsafe partial struct VkClusterAccelerationStructureInputInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ClusterAccelerationStructureInputInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_INPUT_INFO_NV;
 	public void* pNext;
 	public uint maxAccelerationStructureCount;
 	public VkBuildAccelerationStructureFlagsKHR flags;
@@ -26204,7 +26886,7 @@ public partial struct VkStridedDeviceAddressRegionKHR
 
 public unsafe partial struct VkClusterAccelerationStructureCommandsInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ClusterAccelerationStructureCommandsInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV;
 	public void* pNext;
 	public VkClusterAccelerationStructureInputInfoNV input;
 	public ulong dstImplicitData;
@@ -26314,7 +26996,7 @@ public partial struct VkClusterAccelerationStructureGetTemplateIndicesInfoNV
 
 public unsafe partial struct VkAccelerationStructureBuildSizesInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureBuildSizesInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR;
 	public void* pNext;
 	public ulong accelerationStructureSize;
 	public ulong updateScratchSize;
@@ -26337,7 +27019,7 @@ public unsafe partial struct VkAccelerationStructureBuildSizesInfoKHR : IStructu
 
 public unsafe partial struct VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RayTracingPipelineClusterAccelerationStructureCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV;
 	public void* pNext;
 	public VkBool32 allowClusterAccelerationStructure;
 
@@ -26358,7 +27040,7 @@ public unsafe partial struct VkRayTracingPipelineClusterAccelerationStructureCre
 
 public unsafe partial struct VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePartitionedAccelerationStructureFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 partitionedAccelerationStructure;
 
@@ -26379,7 +27061,7 @@ public unsafe partial struct VkPhysicalDevicePartitionedAccelerationStructureFea
 
 public unsafe partial struct VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePartitionedAccelerationStructurePropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_PROPERTIES_NV;
 	public void* pNext;
 	public uint maxPartitionCount;
 
@@ -26400,7 +27082,7 @@ public unsafe partial struct VkPhysicalDevicePartitionedAccelerationStructurePro
 
 public unsafe partial struct VkPartitionedAccelerationStructureFlagsNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PartitionedAccelerationStructureFlagsNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_FLAGS_NV;
 	public void* pNext;
 	public VkBool32 enablePartitionTranslation;
 
@@ -26454,7 +27136,7 @@ public unsafe partial struct VkPartitionedAccelerationStructureWritePartitionTra
 
 public unsafe partial struct VkWriteDescriptorSetPartitionedAccelerationStructureNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.WriteDescriptorSetPartitionedAccelerationStructureNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV;
 	public void* pNext;
 	public uint accelerationStructureCount;
 	public ulong* pAccelerationStructures;
@@ -26476,7 +27158,7 @@ public unsafe partial struct VkWriteDescriptorSetPartitionedAccelerationStructur
 
 public unsafe partial struct VkPartitionedAccelerationStructureInstancesInputNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PartitionedAccelerationStructureInstancesInputNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCES_INPUT_NV;
 	public void* pNext;
 	public VkBuildAccelerationStructureFlagsKHR flags;
 	public uint instanceCount;
@@ -26501,7 +27183,7 @@ public unsafe partial struct VkPartitionedAccelerationStructureInstancesInputNV 
 
 public unsafe partial struct VkBuildPartitionedAccelerationStructureInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BuildPartitionedAccelerationStructureInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV;
 	public void* pNext;
 	public VkPartitionedAccelerationStructureInstancesInputNV input;
 	public ulong srcAccelerationStructureData;
@@ -26527,7 +27209,7 @@ public unsafe partial struct VkBuildPartitionedAccelerationStructureInfoNV : ISt
 
 public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 deviceGeneratedCommands;
 	public VkBool32 dynamicGeneratedPipelineLayout;
@@ -26549,7 +27231,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT 
 
 public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDeviceGeneratedCommandsPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT;
 	public void* pNext;
 	public uint maxIndirectPipelineCount;
 	public uint maxIndirectShaderObjectCount;
@@ -26581,7 +27263,7 @@ public unsafe partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEX
 
 public unsafe partial struct VkGeneratedCommandsMemoryRequirementsInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GeneratedCommandsMemoryRequirementsInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_EXT;
 	public void* pNext;
 	public VkIndirectExecutionSetEXT indirectExecutionSet;
 	public VkIndirectCommandsLayoutEXT indirectCommandsLayout;
@@ -26605,7 +27287,7 @@ public unsafe partial struct VkGeneratedCommandsMemoryRequirementsInfoEXT : IStr
 
 public unsafe partial struct VkIndirectExecutionSetPipelineInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.IndirectExecutionSetPipelineInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT;
 	public void* pNext;
 	public VkPipeline initialPipeline;
 	public uint maxPipelineCount;
@@ -26627,7 +27309,7 @@ public unsafe partial struct VkIndirectExecutionSetPipelineInfoEXT : IStructureT
 
 public unsafe partial struct VkIndirectExecutionSetShaderLayoutInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.IndirectExecutionSetShaderLayoutInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_LAYOUT_INFO_EXT;
 	public void* pNext;
 	public uint setLayoutCount;
 	public VkDescriptorSetLayout* pSetLayouts;
@@ -26649,7 +27331,7 @@ public unsafe partial struct VkIndirectExecutionSetShaderLayoutInfoEXT : IStruct
 
 public unsafe partial struct VkIndirectExecutionSetShaderInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.IndirectExecutionSetShaderInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_INFO_EXT;
 	public void* pNext;
 	public uint shaderCount;
 	public VkShaderEXT* pInitialShaders;
@@ -26684,7 +27366,7 @@ public unsafe partial struct VkIndirectExecutionSetInfoEXT
 
 public unsafe partial struct VkIndirectExecutionSetCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.IndirectExecutionSetCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkIndirectExecutionSetInfoTypeEXT type;
 	public VkIndirectExecutionSetInfoEXT info;
@@ -26706,7 +27388,7 @@ public unsafe partial struct VkIndirectExecutionSetCreateInfoEXT : IStructureTyp
 
 public unsafe partial struct VkGeneratedCommandsInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GeneratedCommandsInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_EXT;
 	public void* pNext;
 	public VkShaderStageFlags shaderStages;
 	public VkIndirectExecutionSetEXT indirectExecutionSet;
@@ -26736,7 +27418,7 @@ public unsafe partial struct VkGeneratedCommandsInfoEXT : IStructureType, IChain
 
 public unsafe partial struct VkWriteIndirectExecutionSetPipelineEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.WriteIndirectExecutionSetPipelineEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT;
 	public void* pNext;
 	public uint index;
 	public VkPipeline pipeline;
@@ -26792,7 +27474,7 @@ public unsafe partial struct VkIndirectCommandsTokenDataEXT
 
 public unsafe partial struct VkIndirectCommandsLayoutTokenEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.IndirectCommandsLayoutTokenEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_EXT;
 	public void* pNext;
 	public VkIndirectCommandsTokenTypeEXT type;
 	public VkIndirectCommandsTokenDataEXT data;
@@ -26815,7 +27497,7 @@ public unsafe partial struct VkIndirectCommandsLayoutTokenEXT : IStructureType, 
 
 public unsafe partial struct VkIndirectCommandsLayoutCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.IndirectCommandsLayoutCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkIndirectCommandsLayoutUsageFlagsEXT flags;
 	public VkShaderStageFlags shaderStages;
@@ -26862,7 +27544,7 @@ public partial struct VkBindIndexBufferIndirectCommandEXT
 
 public unsafe partial struct VkGeneratedCommandsPipelineInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GeneratedCommandsPipelineInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT;
 	public void* pNext;
 	public VkPipeline pipeline;
 
@@ -26883,7 +27565,7 @@ public unsafe partial struct VkGeneratedCommandsPipelineInfoEXT : IStructureType
 
 public unsafe partial struct VkGeneratedCommandsShaderInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.GeneratedCommandsShaderInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT;
 	public void* pNext;
 	public uint shaderCount;
 	public VkShaderEXT* pShaders;
@@ -26905,7 +27587,7 @@ public unsafe partial struct VkGeneratedCommandsShaderInfoEXT : IStructureType, 
 
 public unsafe partial struct VkWriteIndirectExecutionSetShaderEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.WriteIndirectExecutionSetShaderEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_SHADER_EXT;
 	public void* pNext;
 	public uint index;
 	public VkShaderEXT shader;
@@ -26927,7 +27609,7 @@ public unsafe partial struct VkWriteIndirectExecutionSetShaderEXT : IStructureTy
 
 public unsafe partial struct VkPhysicalDeviceImageAlignmentControlFeaturesMESA : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageAlignmentControlFeaturesMESA;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA;
 	public void* pNext;
 	public VkBool32 imageAlignmentControl;
 
@@ -26948,7 +27630,7 @@ public unsafe partial struct VkPhysicalDeviceImageAlignmentControlFeaturesMESA :
 
 public unsafe partial struct VkPhysicalDeviceImageAlignmentControlPropertiesMESA : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceImageAlignmentControlPropertiesMESA;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA;
 	public void* pNext;
 	public uint supportedImageAlignmentMask;
 
@@ -26969,7 +27651,7 @@ public unsafe partial struct VkPhysicalDeviceImageAlignmentControlPropertiesMESA
 
 public unsafe partial struct VkImageAlignmentControlCreateInfoMESA : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImageAlignmentControlCreateInfoMESA;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA;
 	public void* pNext;
 	public uint maximumRequestedAlignment;
 
@@ -26990,7 +27672,7 @@ public unsafe partial struct VkImageAlignmentControlCreateInfoMESA : IStructureT
 
 public unsafe partial struct VkPushConstantBankInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PushConstantBankInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PUSH_CONSTANT_BANK_INFO_NV;
 	public void* pNext;
 	public uint bank;
 
@@ -27011,7 +27693,7 @@ public unsafe partial struct VkPushConstantBankInfoNV : IStructureType, IChainTy
 
 public unsafe partial struct VkPhysicalDevicePushConstantBankFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePushConstantBankFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_CONSTANT_BANK_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 pushConstantBank;
 
@@ -27032,7 +27714,7 @@ public unsafe partial struct VkPhysicalDevicePushConstantBankFeaturesNV : IStruc
 
 public unsafe partial struct VkPhysicalDevicePushConstantBankPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePushConstantBankPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_CONSTANT_BANK_PROPERTIES_NV;
 	public void* pNext;
 	public uint maxGraphicsPushConstantBanks;
 	public uint maxComputePushConstantBanks;
@@ -27056,7 +27738,7 @@ public unsafe partial struct VkPhysicalDevicePushConstantBankPropertiesNV : IStr
 
 public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingInvocationReorderPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT;
 	public void* pNext;
 	public VkRayTracingInvocationReorderModeEXT rayTracingInvocationReorderReorderingHint;
 	public uint maxShaderBindingTableRecordIndex;
@@ -27078,7 +27760,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderProperti
 
 public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingInvocationReorderFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 rayTracingInvocationReorder;
 
@@ -27099,7 +27781,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingInvocationReorderFeatures
 
 public unsafe partial struct VkPhysicalDeviceDepthClampControlFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDepthClampControlFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 depthClampControl;
 
@@ -27120,7 +27802,7 @@ public unsafe partial struct VkPhysicalDeviceDepthClampControlFeaturesEXT : IStr
 
 public unsafe partial struct VkPipelineViewportDepthClampControlCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineViewportDepthClampControlCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkDepthClampModeEXT depthClampMode;
 	public VkDepthClampRangeEXT* pDepthClampRange;
@@ -27142,7 +27824,7 @@ public unsafe partial struct VkPipelineViewportDepthClampControlCreateInfoEXT : 
 
 public unsafe partial struct VkPhysicalDeviceHdrVividFeaturesHUAWEI : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceHdrVividFeaturesHUAWEI;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI;
 	public void* pNext;
 	public VkBool32 hdrVivid;
 
@@ -27163,7 +27845,7 @@ public unsafe partial struct VkPhysicalDeviceHdrVividFeaturesHUAWEI : IStructure
 
 public unsafe partial struct VkHdrVividDynamicMetadataHUAWEI : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.HdrVividDynamicMetadataHUAWEI;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI;
 	public void* pNext;
 	public nuint dynamicMetadataSize;
 	public void* pDynamicMetadata;
@@ -27185,7 +27867,7 @@ public unsafe partial struct VkHdrVividDynamicMetadataHUAWEI : IStructureType, I
 
 public unsafe partial struct VkCooperativeMatrixFlexibleDimensionsPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CooperativeMatrixFlexibleDimensionsPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV;
 	public void* pNext;
 	public uint MGranularity;
 	public uint NGranularity;
@@ -27215,7 +27897,7 @@ public unsafe partial struct VkCooperativeMatrixFlexibleDimensionsPropertiesNV :
 
 public unsafe partial struct VkPhysicalDeviceCooperativeMatrix2FeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCooperativeMatrix2FeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 cooperativeMatrixWorkgroupScope;
 	public VkBool32 cooperativeMatrixFlexibleDimensions;
@@ -27242,7 +27924,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrix2FeaturesNV : IStr
 
 public unsafe partial struct VkPhysicalDeviceCooperativeMatrix2PropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCooperativeMatrix2PropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV;
 	public void* pNext;
 	public uint cooperativeMatrixWorkgroupScopeMaxWorkgroupSize;
 	public uint cooperativeMatrixFlexibleDimensionsMaxDimension;
@@ -27265,7 +27947,7 @@ public unsafe partial struct VkPhysicalDeviceCooperativeMatrix2PropertiesNV : IS
 
 public unsafe partial struct VkPhysicalDevicePipelineOpacityMicromapFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineOpacityMicromapFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_OPACITY_MICROMAP_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 pipelineOpacityMicromap;
 
@@ -27286,7 +27968,7 @@ public unsafe partial struct VkPhysicalDevicePipelineOpacityMicromapFeaturesARM 
 
 public unsafe partial struct VkPhysicalDevicePerformanceCountersByRegionFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePerformanceCountersByRegionFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 performanceCountersByRegion;
 
@@ -27307,7 +27989,7 @@ public unsafe partial struct VkPhysicalDevicePerformanceCountersByRegionFeatures
 
 public unsafe partial struct VkPhysicalDevicePerformanceCountersByRegionPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePerformanceCountersByRegionPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_PROPERTIES_ARM;
 	public void* pNext;
 	public uint maxPerRegionPerformanceCounters;
 	public VkExtent2D performanceCounterRegionSize;
@@ -27332,7 +28014,7 @@ public unsafe partial struct VkPhysicalDevicePerformanceCountersByRegionProperti
 
 public unsafe partial struct VkPerformanceCounterARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerformanceCounterARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_ARM;
 	public void* pNext;
 	public uint counterID;
 
@@ -27353,7 +28035,7 @@ public unsafe partial struct VkPerformanceCounterARM : IStructureType, IChainTyp
 
 public unsafe partial struct VkPerformanceCounterDescriptionARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PerformanceCounterDescriptionARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_ARM;
 	public void* pNext;
 	public VkPerformanceCounterDescriptionFlagsARM flags;
 	public fixed byte name[256];
@@ -27375,7 +28057,7 @@ public unsafe partial struct VkPerformanceCounterDescriptionARM : IStructureType
 
 public unsafe partial struct VkRenderPassPerformanceCountersByRegionBeginInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RenderPassPerformanceCountersByRegionBeginInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM;
 	public void* pNext;
 	public uint counterAddressCount;
 	public ulong* pCounterAddresses;
@@ -27400,7 +28082,7 @@ public unsafe partial struct VkRenderPassPerformanceCountersByRegionBeginInfoARM
 
 public unsafe partial struct VkPhysicalDeviceShaderInstrumentationFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderInstrumentationFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 shaderInstrumentation;
 
@@ -27421,7 +28103,7 @@ public unsafe partial struct VkPhysicalDeviceShaderInstrumentationFeaturesARM : 
 
 public unsafe partial struct VkPhysicalDeviceShaderInstrumentationPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderInstrumentationPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_PROPERTIES_ARM;
 	public void* pNext;
 	public uint numMetrics;
 	public VkBool32 perBasicBlockGranularity;
@@ -27443,7 +28125,7 @@ public unsafe partial struct VkPhysicalDeviceShaderInstrumentationPropertiesARM 
 
 public unsafe partial struct VkShaderInstrumentationCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ShaderInstrumentationCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_CREATE_INFO_ARM;
 	public void* pNext;
 
 	public VkShaderInstrumentationCreateInfoARM()
@@ -27463,7 +28145,7 @@ public unsafe partial struct VkShaderInstrumentationCreateInfoARM : IStructureTy
 
 public unsafe partial struct VkShaderInstrumentationMetricDescriptionARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ShaderInstrumentationMetricDescriptionARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_METRIC_DESCRIPTION_ARM;
 	public void* pNext;
 	public fixed byte name[256];
 	public fixed byte description[256];
@@ -27493,7 +28175,7 @@ public partial struct VkShaderInstrumentationMetricDataHeaderARM
 
 public unsafe partial struct VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceVertexAttributeRobustnessFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 vertexAttributeRobustness;
 
@@ -27514,7 +28196,7 @@ public unsafe partial struct VkPhysicalDeviceVertexAttributeRobustnessFeaturesEX
 
 public unsafe partial struct VkPhysicalDeviceFormatPackFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFormatPackFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FORMAT_PACK_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 formatPack;
 
@@ -27535,7 +28217,7 @@ public unsafe partial struct VkPhysicalDeviceFormatPackFeaturesARM : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_FEATURES_VALVE;
 	public void* pNext;
 	public VkBool32 fragmentDensityMapLayered;
 
@@ -27556,7 +28238,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVA
 
 public unsafe partial struct VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_PROPERTIES_VALVE;
 	public void* pNext;
 	public uint maxFragmentDensityMapLayers;
 
@@ -27577,7 +28259,7 @@ public unsafe partial struct VkPhysicalDeviceFragmentDensityMapLayeredProperties
 
 public unsafe partial struct VkPipelineFragmentDensityMapLayeredCreateInfoVALVE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineFragmentDensityMapLayeredCreateInfoVALVE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE;
 	public void* pNext;
 	public uint maxFragmentDensityMapLayers;
 
@@ -27598,7 +28280,7 @@ public unsafe partial struct VkPipelineFragmentDensityMapLayeredCreateInfoVALVE 
 
 public unsafe partial struct VkSetPresentConfigNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SetPresentConfigNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV;
 	public void* pNext;
 	public uint numFramesPerBatch;
 	public uint presentConfigFeedback;
@@ -27620,7 +28302,7 @@ public unsafe partial struct VkSetPresentConfigNV : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDevicePresentMeteringFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePresentMeteringFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 presentMetering;
 
@@ -27639,9 +28321,51 @@ public unsafe partial struct VkPhysicalDevicePresentMeteringFeaturesNV : IStruct
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SWAPCHAIN_FEATURES_EXT;
+	public void* pNext;
+	public VkBool32 multisampledRenderToSwapchain;
+
+	public VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkSwapchainFlagsSurfaceCapabilitiesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_FLAGS_SURFACE_CAPABILITIES_EXT;
+	public void* pNext;
+	public VkSwapchainCreateFlagsKHR swapchainSupportedFlags;
+
+	public VkSwapchainFlagsSurfaceCapabilitiesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 zeroInitializeDeviceMemory;
 
@@ -27662,7 +28386,7 @@ public unsafe partial struct VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesE
 
 public unsafe partial struct VkPhysicalDeviceShader64BitIndexingFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShader64IndexingFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 shader64BitIndexing;
 
@@ -27683,7 +28407,7 @@ public unsafe partial struct VkPhysicalDeviceShader64BitIndexingFeaturesEXT : IS
 
 public unsafe partial struct VkPhysicalDeviceCustomResolveFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCustomResolveFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 customResolve;
 
@@ -27704,7 +28428,7 @@ public unsafe partial struct VkPhysicalDeviceCustomResolveFeaturesEXT : IStructu
 
 public unsafe partial struct VkBeginCustomResolveInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.BeginCustomResolveInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BEGIN_CUSTOM_RESOLVE_INFO_EXT;
 	public void* pNext;
 
 	public VkBeginCustomResolveInfoEXT()
@@ -27724,7 +28448,7 @@ public unsafe partial struct VkBeginCustomResolveInfoEXT : IStructureType, IChai
 
 public unsafe partial struct VkCustomResolveCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CustomResolveCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkBool32 customResolve;
 	public uint colorAttachmentCount;
@@ -27758,7 +28482,7 @@ public unsafe partial struct VkPipelineCacheHeaderVersionDataGraphQCOM
 
 public unsafe partial struct VkDataGraphPipelineBuiltinModelCreateInfoQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineBuiltinModelCreateInfoQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM;
 	public void* pNext;
 	public VkPhysicalDeviceDataGraphOperationSupportARM* pOperation;
 
@@ -27779,7 +28503,7 @@ public unsafe partial struct VkDataGraphPipelineBuiltinModelCreateInfoQCOM : ISt
 
 public unsafe partial struct VkPhysicalDeviceDataGraphModelFeaturesQCOM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDataGraphModelFeaturesQCOM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM;
 	public void* pNext;
 	public VkBool32 dataGraphModel;
 
@@ -27800,7 +28524,7 @@ public unsafe partial struct VkPhysicalDeviceDataGraphModelFeaturesQCOM : IStruc
 
 public unsafe partial struct VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDataGraphOpticalFlowFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_OPTICAL_FLOW_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 dataGraphOpticalFlow;
 
@@ -27821,7 +28545,7 @@ public unsafe partial struct VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM : I
 
 public unsafe partial struct VkQueueFamilyDataGraphOpticalFlowPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.QueueFamilyDataGraphOpticalFlowPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_OPTICAL_FLOW_PROPERTIES_ARM;
 	public void* pNext;
 	public VkDataGraphOpticalFlowGridSizeFlagsARM supportedOutputGridSizes;
 	public VkDataGraphOpticalFlowGridSizeFlagsARM supportedHintGridSizes;
@@ -27849,7 +28573,7 @@ public unsafe partial struct VkQueueFamilyDataGraphOpticalFlowPropertiesARM : IS
 
 public unsafe partial struct VkDataGraphPipelineOpticalFlowCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineOpticalFlowCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_CREATE_INFO_ARM;
 	public void* pNext;
 	public uint width;
 	public uint height;
@@ -27878,7 +28602,7 @@ public unsafe partial struct VkDataGraphPipelineOpticalFlowCreateInfoARM : IStru
 
 public unsafe partial struct VkDataGraphOpticalFlowImageFormatPropertiesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphOpticalFlowImageFormatPropertiesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_ARM;
 	public void* pNext;
 	public VkFormat format;
 
@@ -27899,7 +28623,7 @@ public unsafe partial struct VkDataGraphOpticalFlowImageFormatPropertiesARM : IS
 
 public unsafe partial struct VkDataGraphOpticalFlowImageFormatInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphOpticalFlowImageFormatInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_INFO_ARM;
 	public void* pNext;
 	public VkDataGraphOpticalFlowImageUsageFlagsARM usage;
 
@@ -27920,7 +28644,7 @@ public unsafe partial struct VkDataGraphOpticalFlowImageFormatInfoARM : IStructu
 
 public unsafe partial struct VkDataGraphPipelineOpticalFlowDispatchInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineOpticalFlowDispatchInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM;
 	public void* pNext;
 	public VkDataGraphOpticalFlowExecuteFlagsARM flags;
 	public uint meanFlowL1NormHint;
@@ -27942,7 +28666,7 @@ public unsafe partial struct VkDataGraphPipelineOpticalFlowDispatchInfoARM : ISt
 
 public unsafe partial struct VkDataGraphPipelineResourceInfoImageLayoutARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineResourceInfoImageLayoutARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_IMAGE_LAYOUT_ARM;
 	public void* pNext;
 	public VkImageLayout layout;
 
@@ -27963,7 +28687,7 @@ public unsafe partial struct VkDataGraphPipelineResourceInfoImageLayoutARM : ISt
 
 public unsafe partial struct VkDataGraphPipelineSingleNodeConnectionARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineSingleNodeConnectionARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CONNECTION_ARM;
 	public void* pNext;
 	public uint set;
 	public uint binding;
@@ -27986,7 +28710,7 @@ public unsafe partial struct VkDataGraphPipelineSingleNodeConnectionARM : IStruc
 
 public unsafe partial struct VkDataGraphPipelineSingleNodeCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineSingleNodeCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CREATE_INFO_ARM;
 	public void* pNext;
 	public VkDataGraphPipelineNodeTypeARM nodeType;
 	public uint connectionCount;
@@ -28009,7 +28733,7 @@ public unsafe partial struct VkDataGraphPipelineSingleNodeCreateInfoARM : IStruc
 
 public unsafe partial struct VkPhysicalDeviceShaderLongVectorFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderLongVectorFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 longVector;
 
@@ -28030,7 +28754,7 @@ public unsafe partial struct VkPhysicalDeviceShaderLongVectorFeaturesEXT : IStru
 
 public unsafe partial struct VkPhysicalDeviceShaderLongVectorPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderLongVectorPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT;
 	public void* pNext;
 	public uint maxVectorComponents;
 
@@ -28051,7 +28775,7 @@ public unsafe partial struct VkPhysicalDeviceShaderLongVectorPropertiesEXT : ISt
 
 public unsafe partial struct VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePipelineCacheIncrementalModeFeaturesSEC;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC;
 	public void* pNext;
 	public VkBool32 pipelineCacheIncrementalMode;
 
@@ -28072,7 +28796,7 @@ public unsafe partial struct VkPhysicalDevicePipelineCacheIncrementalModeFeature
 
 public unsafe partial struct VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 shaderUniformBufferUnsizedArray;
 
@@ -28093,7 +28817,7 @@ public unsafe partial struct VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeat
 
 public unsafe partial struct VkComputeOccupancyPriorityParametersNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ComputeOccupancyPriorityParametersNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV;
 	public void* pNext;
 	public float occupancyPriority;
 	public float occupancyThrottling;
@@ -28115,7 +28839,7 @@ public unsafe partial struct VkComputeOccupancyPriorityParametersNV : IStructure
 
 public unsafe partial struct VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceComputeOccupancyPriorityFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 computeOccupancyPriority;
 
@@ -28134,9 +28858,85 @@ public unsafe partial struct VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV 
 	}
 }
 
+public unsafe partial struct VkCooperativeMatrixProperties2EXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_2_EXT;
+	public void* pNext;
+	public uint MGranularity;
+	public uint NGranularity;
+	public uint KGranularity;
+	public VkComponentTypeKHR AType;
+	public VkComponentTypeKHR BType;
+	public VkComponentTypeKHR CType;
+	public VkComponentTypeKHR ResultType;
+
+	public VkCooperativeMatrixProperties2EXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceCooperativeMatrixInfo2EXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_INFO_2_EXT;
+	public void* pNext;
+	public VkScopeKHR scope;
+	public uint invocations;
+	public uint subgroupSize;
+	public VkCooperativeMatrixFlagsEXT flags;
+
+	public VkPhysicalDeviceCooperativeMatrixInfo2EXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_MAINTENANCE_1_FEATURES_EXT;
+	public void* pNext;
+	public VkBool32 cooperativeMatrixProperties2;
+	public VkBool32 cooperativeMatrixReductions;
+	public VkBool32 cooperativeMatrixConversions;
+	public VkBool32 cooperativeMatrixPerElementOperations;
+	public VkBool32 cooperativeMatrixGetCoordinate;
+
+	public VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderSubgroupPartitionedFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 shaderSubgroupPartitioned;
 
@@ -28155,9 +28955,33 @@ public unsafe partial struct VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEX
 	}
 }
 
+public unsafe partial struct VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OCP_MICROSCALING_TYPES_FEATURES_EXT;
+	public void* pNext;
+	public VkBool32 shaderFloat4;
+	public VkBool32 shaderFloat6;
+	public VkBool32 shaderFloat8UnsignedE8M0;
+	public VkBool32 shaderMXInt8;
+
+	public VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
 public unsafe partial struct VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE;
 	public void* pNext;
 	public VkBool32 shaderMixedFloatDotProductFloat16AccFloat32;
 	public VkBool32 shaderMixedFloatDotProductFloat16AccFloat16;
@@ -28181,7 +29005,7 @@ public unsafe partial struct VkPhysicalDeviceShaderMixedFloatDotProductFeaturesV
 
 public unsafe partial struct VkThrottleHintSubmitInfoSEC : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ThrottleHintSubmitInfoSEC;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC;
 	public void* pNext;
 	public VkThrottleHintTypeSEC throttleHint;
 
@@ -28202,7 +29026,7 @@ public unsafe partial struct VkThrottleHintSubmitInfoSEC : IStructureType, IChai
 
 public unsafe partial struct VkPhysicalDeviceThrottleHintFeaturesSEC : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceThrottleHintFeaturesSEC;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC;
 	public void* pNext;
 	public VkBool32 throttleHint;
 
@@ -28223,7 +29047,7 @@ public unsafe partial struct VkPhysicalDeviceThrottleHintFeaturesSEC : IStructur
 
 public unsafe partial struct VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM;
 	public void* pNext;
 	public VkBool32 dataGraphNeuralAcceleratorStatistics;
 
@@ -28244,7 +29068,7 @@ public unsafe partial struct VkPhysicalDeviceDataGraphNeuralAcceleratorStatistic
 
 public unsafe partial struct VkDataGraphPipelineNeuralStatisticsCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineNeuralStatisticsCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM;
 	public void* pNext;
 	public VkBool32 allowNeuralStatistics;
 
@@ -28265,7 +29089,7 @@ public unsafe partial struct VkDataGraphPipelineNeuralStatisticsCreateInfoARM : 
 
 public unsafe partial struct VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.DataGraphPipelineSessionNeuralStatisticsCreateInfoARM;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM;
 	public void* pNext;
 	public VkNeuralAcceleratorStatisticsModeARM mode;
 
@@ -28286,11 +29110,181 @@ public unsafe partial struct VkDataGraphPipelineSessionNeuralStatisticsCreateInf
 
 public unsafe partial struct VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePrimitiveRestartIndexFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 primitiveRestartIndex;
 
 	public VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceImageTilingControlFeaturesEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_TILING_CONTROL_FEATURES_EXT;
+	public void* pNext;
+	public VkBool32 imageTilingControl;
+
+	public VkPhysicalDeviceImageTilingControlFeaturesEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkImageTilingControlCreateInfoEXT : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_TILING_CONTROL_CREATE_INFO_EXT;
+	public void* pNext;
+	public VkImageTilingControlEXT tilingControl;
+
+	public VkImageTilingControlCreateInfoEXT()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV;
+	public void* pNext;
+	public VkBool32 cooperativeMatrixDecodeVector;
+
+	public VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDevicePrivateDataBaseHandleFeaturesNV : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_BASE_HANDLE_FEATURES_NV;
+	public void* pNext;
+	public VkBool32 privateDataBaseHandle;
+
+	public VkPhysicalDevicePrivateDataBaseHandleFeaturesNV()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceInfoPropertiesINTEL : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INFO_PROPERTIES_INTEL;
+	public void* pNext;
+	public uint deviceIpVersionArch;
+	public uint deviceIpVersionRelease;
+	public uint deviceIpVersionRevision;
+
+	public VkPhysicalDeviceInfoPropertiesINTEL()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_FEATURES_VALVE;
+	public void* pNext;
+	public VkBool32 bufferDeviceAddressAllocationAlignment;
+
+	public VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_PROPERTIES_VALVE;
+	public void* pNext;
+	public uint maxBufferDeviceAddressAllocationAlignment;
+
+	public VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE()
+	{
+	}
+
+	/// <inheritdoc />
+	readonly VkStructureType IStructureType.sType => sType;
+
+	/// <inheritdoc />
+	void* IChainType.pNext
+	{
+		get => pNext;
+		set => pNext = value;
+	}
+}
+
+public unsafe partial struct VkBufferDeviceAddressAlignmentAllocateInfoVALVE : IStructureType, IChainType
+{
+	public VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_ALIGNMENT_ALLOCATE_INFO_VALVE;
+	public void* pNext;
+	public uint alignment;
+
+	public VkBufferDeviceAddressAlignmentAllocateInfoVALVE()
 	{
 	}
 
@@ -28315,7 +29309,7 @@ public partial struct VkAccelerationStructureBuildRangeInfoKHR
 
 public unsafe partial struct VkAccelerationStructureGeometryTrianglesDataKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureGeometryTrianglesDataKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR;
 	public void* pNext;
 	public VkFormat vertexFormat;
 	public VkDeviceOrHostAddressConstKHR vertexData;
@@ -28342,7 +29336,7 @@ public unsafe partial struct VkAccelerationStructureGeometryTrianglesDataKHR : I
 
 public unsafe partial struct VkAccelerationStructureGeometryAabbsDataKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureGeometryAabbsDataKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR;
 	public void* pNext;
 	public VkDeviceOrHostAddressConstKHR data;
 	public ulong stride;
@@ -28364,7 +29358,7 @@ public unsafe partial struct VkAccelerationStructureGeometryAabbsDataKHR : IStru
 
 public unsafe partial struct VkAccelerationStructureGeometryInstancesDataKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureGeometryInstancesDataKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR;
 	public void* pNext;
 	public VkBool32 arrayOfPointers;
 	public VkDeviceOrHostAddressConstKHR data;
@@ -28397,7 +29391,7 @@ public partial struct VkAccelerationStructureGeometryDataKHR
 
 public unsafe partial struct VkAccelerationStructureGeometryKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureGeometryKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_KHR;
 	public void* pNext;
 	public VkGeometryTypeKHR geometryType;
 	public VkAccelerationStructureGeometryDataKHR geometry;
@@ -28420,7 +29414,7 @@ public unsafe partial struct VkAccelerationStructureGeometryKHR : IStructureType
 
 public unsafe partial struct VkAccelerationStructureBuildGeometryInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureBuildGeometryInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR;
 	public void* pNext;
 	public VkAccelerationStructureTypeKHR type;
 	public VkBuildAccelerationStructureFlagsKHR flags;
@@ -28449,7 +29443,7 @@ public unsafe partial struct VkAccelerationStructureBuildGeometryInfoKHR : IStru
 
 public unsafe partial struct VkAccelerationStructureCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkAccelerationStructureCreateFlagsKHR createFlags;
 	public VkBuffer buffer;
@@ -28475,7 +29469,7 @@ public unsafe partial struct VkAccelerationStructureCreateInfoKHR : IStructureTy
 
 public unsafe partial struct VkWriteDescriptorSetAccelerationStructureKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.WriteDescriptorSetAccelerationStructureKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR;
 	public void* pNext;
 	public uint accelerationStructureCount;
 	public VkAccelerationStructureKHR* pAccelerationStructures;
@@ -28497,7 +29491,7 @@ public unsafe partial struct VkWriteDescriptorSetAccelerationStructureKHR : IStr
 
 public unsafe partial struct VkPhysicalDeviceAccelerationStructureFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceAccelerationStructureFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 accelerationStructure;
 	public VkBool32 accelerationStructureCaptureReplay;
@@ -28522,7 +29516,7 @@ public unsafe partial struct VkPhysicalDeviceAccelerationStructureFeaturesKHR : 
 
 public unsafe partial struct VkPhysicalDeviceAccelerationStructurePropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceAccelerationStructurePropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR;
 	public void* pNext;
 	public ulong maxGeometryCount;
 	public ulong maxInstanceCount;
@@ -28550,7 +29544,7 @@ public unsafe partial struct VkPhysicalDeviceAccelerationStructurePropertiesKHR 
 
 public unsafe partial struct VkAccelerationStructureDeviceAddressInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureDeviceAddressInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR;
 	public void* pNext;
 	public VkAccelerationStructureKHR accelerationStructure;
 
@@ -28571,7 +29565,7 @@ public unsafe partial struct VkAccelerationStructureDeviceAddressInfoKHR : IStru
 
 public unsafe partial struct VkAccelerationStructureVersionInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureVersionInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_INFO_KHR;
 	public void* pNext;
 	public byte* pVersionData;
 
@@ -28592,7 +29586,7 @@ public unsafe partial struct VkAccelerationStructureVersionInfoKHR : IStructureT
 
 public unsafe partial struct VkCopyAccelerationStructureToMemoryInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyAccelerationStructureToMemoryInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_TO_MEMORY_INFO_KHR;
 	public void* pNext;
 	public VkAccelerationStructureKHR src;
 	public VkDeviceOrHostAddressKHR dst;
@@ -28615,7 +29609,7 @@ public unsafe partial struct VkCopyAccelerationStructureToMemoryInfoKHR : IStruc
 
 public unsafe partial struct VkCopyMemoryToAccelerationStructureInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyMemoryToAccelerationStructureInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_MEMORY_TO_ACCELERATION_STRUCTURE_INFO_KHR;
 	public void* pNext;
 	public VkDeviceOrHostAddressConstKHR src;
 	public VkAccelerationStructureKHR dst;
@@ -28638,7 +29632,7 @@ public unsafe partial struct VkCopyMemoryToAccelerationStructureInfoKHR : IStruc
 
 public unsafe partial struct VkCopyAccelerationStructureInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CopyAccelerationStructureInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_INFO_KHR;
 	public void* pNext;
 	public VkAccelerationStructureKHR src;
 	public VkAccelerationStructureKHR dst;
@@ -28661,7 +29655,7 @@ public unsafe partial struct VkCopyAccelerationStructureInfoKHR : IStructureType
 
 public unsafe partial struct VkRayTracingShaderGroupCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RayTracingShaderGroupCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkRayTracingShaderGroupTypeKHR type;
 	public uint generalShader;
@@ -28687,7 +29681,7 @@ public unsafe partial struct VkRayTracingShaderGroupCreateInfoKHR : IStructureTy
 
 public unsafe partial struct VkRayTracingPipelineInterfaceCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RayTracingPipelineInterfaceCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_INTERFACE_CREATE_INFO_KHR;
 	public void* pNext;
 	public uint maxPipelineRayPayloadSize;
 	public uint maxPipelineRayHitAttributeSize;
@@ -28709,7 +29703,7 @@ public unsafe partial struct VkRayTracingPipelineInterfaceCreateInfoKHR : IStruc
 
 public unsafe partial struct VkRayTracingPipelineCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.RayTracingPipelineCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkPipelineCreateFlags flags;
 	public uint stageCount;
@@ -28741,7 +29735,7 @@ public unsafe partial struct VkRayTracingPipelineCreateInfoKHR : IStructureType,
 
 public unsafe partial struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingPipelineFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 rayTracingPipeline;
 	public VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplay;
@@ -28766,7 +29760,7 @@ public unsafe partial struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR : ISt
 
 public unsafe partial struct VkPhysicalDeviceRayTracingPipelinePropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayTracingPipelinePropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_PROPERTIES_KHR;
 	public void* pNext;
 	public uint shaderGroupHandleSize;
 	public uint maxRayRecursionDepth;
@@ -28801,7 +29795,7 @@ public partial struct VkTraceRaysIndirectCommandKHR
 
 public unsafe partial struct VkPhysicalDeviceRayQueryFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceRayQueryFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_QUERY_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 rayQuery;
 
@@ -28822,7 +29816,7 @@ public unsafe partial struct VkPhysicalDeviceRayQueryFeaturesKHR : IStructureTyp
 
 public unsafe partial struct VkPhysicalDeviceMeshShaderFeaturesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMeshShaderFeaturesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_EXT;
 	public void* pNext;
 	public VkBool32 taskShader;
 	public VkBool32 meshShader;
@@ -28847,7 +29841,7 @@ public unsafe partial struct VkPhysicalDeviceMeshShaderFeaturesEXT : IStructureT
 
 public unsafe partial struct VkPhysicalDeviceMeshShaderPropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceMeshShaderPropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT;
 	public void* pNext;
 	public uint maxTaskWorkGroupTotalCount;
 	public fixed uint maxTaskWorkGroupCount[3];
@@ -28902,7 +29896,7 @@ public partial struct VkDrawMeshTasksIndirectCommandEXT
 
 public unsafe partial struct VkAndroidSurfaceCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AndroidSurfaceCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkAndroidSurfaceCreateFlagsKHR flags;
 	public nint window;
@@ -28924,7 +29918,7 @@ public unsafe partial struct VkAndroidSurfaceCreateInfoKHR : IStructureType, ICh
 
 public unsafe partial struct VkAndroidHardwareBufferUsageANDROID : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AndroidHardwareBufferUsageAndroid;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID;
 	public void* pNext;
 	public ulong androidHardwareBufferUsage;
 
@@ -28945,7 +29939,7 @@ public unsafe partial struct VkAndroidHardwareBufferUsageANDROID : IStructureTyp
 
 public unsafe partial struct VkAndroidHardwareBufferPropertiesANDROID : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AndroidHardwareBufferPropertiesAndroid;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID;
 	public void* pNext;
 	public ulong allocationSize;
 	public uint memoryTypeBits;
@@ -28967,7 +29961,7 @@ public unsafe partial struct VkAndroidHardwareBufferPropertiesANDROID : IStructu
 
 public unsafe partial struct VkAndroidHardwareBufferFormatPropertiesANDROID : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AndroidHardwareBufferFormatPropertiesAndroid;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID;
 	public void* pNext;
 	public VkFormat format;
 	public ulong externalFormat;
@@ -28995,7 +29989,7 @@ public unsafe partial struct VkAndroidHardwareBufferFormatPropertiesANDROID : IS
 
 public unsafe partial struct VkImportAndroidHardwareBufferInfoANDROID : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportAndroidHardwareBufferInfoAndroid;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID;
 	public void* pNext;
 	public nint buffer;
 
@@ -29016,7 +30010,7 @@ public unsafe partial struct VkImportAndroidHardwareBufferInfoANDROID : IStructu
 
 public unsafe partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryGetAndroidHardwareBufferInfoAndroid;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID;
 	public void* pNext;
 	public VkDeviceMemory memory;
 
@@ -29037,7 +30031,7 @@ public unsafe partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID : IStru
 
 public unsafe partial struct VkExternalFormatANDROID : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExternalFormatAndroid;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID;
 	public void* pNext;
 	public ulong externalFormat;
 
@@ -29058,7 +30052,7 @@ public unsafe partial struct VkExternalFormatANDROID : IStructureType, IChainTyp
 
 public unsafe partial struct VkAndroidHardwareBufferFormatProperties2ANDROID : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AndroidHardwareBufferFormatProperties2Android;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID;
 	public void* pNext;
 	public VkFormat format;
 	public ulong externalFormat;
@@ -29086,7 +30080,7 @@ public unsafe partial struct VkAndroidHardwareBufferFormatProperties2ANDROID : I
 
 public unsafe partial struct VkPhysicalDeviceExternalFormatResolveFeaturesANDROID : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExternalFormatResolveFeaturesAndroid;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_FEATURES_ANDROID;
 	public void* pNext;
 	public VkBool32 externalFormatResolve;
 
@@ -29107,7 +30101,7 @@ public unsafe partial struct VkPhysicalDeviceExternalFormatResolveFeaturesANDROI
 
 public unsafe partial struct VkPhysicalDeviceExternalFormatResolvePropertiesANDROID : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceExternalFormatResolvePropertiesAndroid;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID;
 	public void* pNext;
 	public VkBool32 nullColorAttachmentWithExternalFormatResolve;
 	public VkChromaLocation externalFormatResolveChromaOffsetX;
@@ -29130,7 +30124,7 @@ public unsafe partial struct VkPhysicalDeviceExternalFormatResolvePropertiesANDR
 
 public unsafe partial struct VkAndroidHardwareBufferFormatResolvePropertiesANDROID : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AndroidHardwareBufferFormatResolvePropertiesAndroid;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID;
 	public void* pNext;
 	public VkFormat colorAttachmentFormat;
 
@@ -29151,7 +30145,7 @@ public unsafe partial struct VkAndroidHardwareBufferFormatResolvePropertiesANDRO
 
 public unsafe partial struct VkMetalSurfaceCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MetalSurfaceCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkMetalSurfaceCreateFlagsEXT flags;
 	public nint pLayer;
@@ -29173,7 +30167,7 @@ public unsafe partial struct VkMetalSurfaceCreateInfoEXT : IStructureType, IChai
 
 public unsafe partial struct VkExportMetalObjectCreateInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMetalObjectCreateInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT;
 	public void* pNext;
 	public VkExportMetalObjectTypeFlagsEXT exportObjectType;
 
@@ -29194,7 +30188,7 @@ public unsafe partial struct VkExportMetalObjectCreateInfoEXT : IStructureType, 
 
 public unsafe partial struct VkExportMetalObjectsInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMetalObjectsInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECTS_INFO_EXT;
 	public void* pNext;
 
 	public VkExportMetalObjectsInfoEXT()
@@ -29214,7 +30208,7 @@ public unsafe partial struct VkExportMetalObjectsInfoEXT : IStructureType, IChai
 
 public unsafe partial struct VkExportMetalDeviceInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMetalDeviceInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_DEVICE_INFO_EXT;
 	public void* pNext;
 	public nint mtlDevice;
 
@@ -29235,7 +30229,7 @@ public unsafe partial struct VkExportMetalDeviceInfoEXT : IStructureType, IChain
 
 public unsafe partial struct VkExportMetalCommandQueueInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMetalCommandQueueInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_COMMAND_QUEUE_INFO_EXT;
 	public void* pNext;
 	public VkQueue queue;
 	public nint mtlCommandQueue;
@@ -29257,7 +30251,7 @@ public unsafe partial struct VkExportMetalCommandQueueInfoEXT : IStructureType, 
 
 public unsafe partial struct VkExportMetalBufferInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMetalBufferInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_BUFFER_INFO_EXT;
 	public void* pNext;
 	public VkDeviceMemory memory;
 	public nint mtlBuffer;
@@ -29279,7 +30273,7 @@ public unsafe partial struct VkExportMetalBufferInfoEXT : IStructureType, IChain
 
 public unsafe partial struct VkImportMetalBufferInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportMetalBufferInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_METAL_BUFFER_INFO_EXT;
 	public void* pNext;
 	public nint mtlBuffer;
 
@@ -29300,7 +30294,7 @@ public unsafe partial struct VkImportMetalBufferInfoEXT : IStructureType, IChain
 
 public unsafe partial struct VkExportMetalTextureInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMetalTextureInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_TEXTURE_INFO_EXT;
 	public void* pNext;
 	public VkImage image;
 	public VkImageView imageView;
@@ -29325,7 +30319,7 @@ public unsafe partial struct VkExportMetalTextureInfoEXT : IStructureType, IChai
 
 public unsafe partial struct VkImportMetalTextureInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportMetalTextureInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_METAL_TEXTURE_INFO_EXT;
 	public void* pNext;
 	public VkImageAspectFlags plane;
 	public nint mtlTexture;
@@ -29347,7 +30341,7 @@ public unsafe partial struct VkImportMetalTextureInfoEXT : IStructureType, IChai
 
 public unsafe partial struct VkExportMetalIOSurfaceInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMetalIOSurfaceInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_IO_SURFACE_INFO_EXT;
 	public void* pNext;
 	public VkImage image;
 	public nint ioSurface;
@@ -29369,7 +30363,7 @@ public unsafe partial struct VkExportMetalIOSurfaceInfoEXT : IStructureType, ICh
 
 public unsafe partial struct VkImportMetalIOSurfaceInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportMetalIOSurfaceInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_METAL_IO_SURFACE_INFO_EXT;
 	public void* pNext;
 	public nint ioSurface;
 
@@ -29390,7 +30384,7 @@ public unsafe partial struct VkImportMetalIOSurfaceInfoEXT : IStructureType, ICh
 
 public unsafe partial struct VkExportMetalSharedEventInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMetalSharedEventInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT;
 	public void* pNext;
 	public VkSemaphore semaphore;
 	public VkEvent @event;
@@ -29413,7 +30407,7 @@ public unsafe partial struct VkExportMetalSharedEventInfoEXT : IStructureType, I
 
 public unsafe partial struct VkImportMetalSharedEventInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportMetalSharedEventInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT;
 	public void* pNext;
 	public nint mtlSharedEvent;
 
@@ -29434,7 +30428,7 @@ public unsafe partial struct VkImportMetalSharedEventInfoEXT : IStructureType, I
 
 public unsafe partial struct VkImportMemoryMetalHandleInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportMemoryMetalHandleInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleType;
 	public void* handle;
@@ -29456,7 +30450,7 @@ public unsafe partial struct VkImportMemoryMetalHandleInfoEXT : IStructureType, 
 
 public unsafe partial struct VkMemoryMetalHandlePropertiesEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryMetalHandlePropertiesEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_METAL_HANDLE_PROPERTIES_EXT;
 	public void* pNext;
 	public uint memoryTypeBits;
 
@@ -29477,7 +30471,7 @@ public unsafe partial struct VkMemoryMetalHandlePropertiesEXT : IStructureType, 
 
 public unsafe partial struct VkMemoryGetMetalHandleInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryGetMetalHandleInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_GET_METAL_HANDLE_INFO_EXT;
 	public void* pNext;
 	public VkDeviceMemory memory;
 	public VkExternalMemoryHandleTypeFlags handleType;
@@ -29499,7 +30493,7 @@ public unsafe partial struct VkMemoryGetMetalHandleInfoEXT : IStructureType, ICh
 
 public unsafe partial struct VkViSurfaceCreateInfoNN : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ViSurfaceCreateInfoNN;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN;
 	public void* pNext;
 	public VkViSurfaceCreateFlagsNN flags;
 	public void* window;
@@ -29521,7 +30515,7 @@ public unsafe partial struct VkViSurfaceCreateInfoNN : IStructureType, IChainTyp
 
 public unsafe partial struct VkWaylandSurfaceCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.WaylandSurfaceCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkWaylandSurfaceCreateFlagsKHR flags;
 	public nint display;
@@ -29544,7 +30538,7 @@ public unsafe partial struct VkWaylandSurfaceCreateInfoKHR : IStructureType, ICh
 
 public unsafe partial struct VkWin32SurfaceCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.Win32SurfaceCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkWin32SurfaceCreateFlagsKHR flags;
 	public nint hinstance;
@@ -29567,7 +30561,7 @@ public unsafe partial struct VkWin32SurfaceCreateInfoKHR : IStructureType, IChai
 
 public unsafe partial struct VkImportMemoryWin32HandleInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportMemoryWin32HandleInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlags handleType;
 	public nint handle;
@@ -29590,7 +30584,7 @@ public unsafe partial struct VkImportMemoryWin32HandleInfoKHR : IStructureType, 
 
 public unsafe partial struct VkExportMemoryWin32HandleInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMemoryWin32HandleInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR;
 	public void* pNext;
 	public nint pAttributes;
 	public uint dwAccess;
@@ -29613,7 +30607,7 @@ public unsafe partial struct VkExportMemoryWin32HandleInfoKHR : IStructureType, 
 
 public unsafe partial struct VkMemoryWin32HandlePropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryWin32HandlePropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR;
 	public void* pNext;
 	public uint memoryTypeBits;
 
@@ -29634,7 +30628,7 @@ public unsafe partial struct VkMemoryWin32HandlePropertiesKHR : IStructureType, 
 
 public unsafe partial struct VkMemoryGetWin32HandleInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.MemoryGetWin32HandleInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR;
 	public void* pNext;
 	public VkDeviceMemory memory;
 	public VkExternalMemoryHandleTypeFlags handleType;
@@ -29656,7 +30650,7 @@ public unsafe partial struct VkMemoryGetWin32HandleInfoKHR : IStructureType, ICh
 
 public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.Win32KeyedMutexAcquireReleaseInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR;
 	public void* pNext;
 	public uint acquireCount;
 	public VkDeviceMemory* pAcquireSyncs;
@@ -29683,7 +30677,7 @@ public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoKHR : IStructure
 
 public unsafe partial struct VkImportSemaphoreWin32HandleInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportSemaphoreWin32HandleInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR;
 	public void* pNext;
 	public VkSemaphore semaphore;
 	public VkSemaphoreImportFlags flags;
@@ -29708,7 +30702,7 @@ public unsafe partial struct VkImportSemaphoreWin32HandleInfoKHR : IStructureTyp
 
 public unsafe partial struct VkExportSemaphoreWin32HandleInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportSemaphoreWin32HandleInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR;
 	public void* pNext;
 	public nint pAttributes;
 	public uint dwAccess;
@@ -29731,7 +30725,7 @@ public unsafe partial struct VkExportSemaphoreWin32HandleInfoKHR : IStructureTyp
 
 public unsafe partial struct VkD3D12FenceSubmitInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.D3D12FenceSubmitInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR;
 	public void* pNext;
 	public uint waitSemaphoreValuesCount;
 	public ulong* pWaitSemaphoreValues;
@@ -29755,7 +30749,7 @@ public unsafe partial struct VkD3D12FenceSubmitInfoKHR : IStructureType, IChainT
 
 public unsafe partial struct VkSemaphoreGetWin32HandleInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SemaphoreGetWin32HandleInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR;
 	public void* pNext;
 	public VkSemaphore semaphore;
 	public VkExternalSemaphoreHandleTypeFlags handleType;
@@ -29777,7 +30771,7 @@ public unsafe partial struct VkSemaphoreGetWin32HandleInfoKHR : IStructureType, 
 
 public unsafe partial struct VkImportFenceWin32HandleInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportFenceWin32HandleInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR;
 	public void* pNext;
 	public VkFence fence;
 	public VkFenceImportFlags flags;
@@ -29802,7 +30796,7 @@ public unsafe partial struct VkImportFenceWin32HandleInfoKHR : IStructureType, I
 
 public unsafe partial struct VkExportFenceWin32HandleInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportFenceWin32HandleInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR;
 	public void* pNext;
 	public nint pAttributes;
 	public uint dwAccess;
@@ -29825,7 +30819,7 @@ public unsafe partial struct VkExportFenceWin32HandleInfoKHR : IStructureType, I
 
 public unsafe partial struct VkFenceGetWin32HandleInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.FenceGetWin32HandleInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR;
 	public void* pNext;
 	public VkFence fence;
 	public VkExternalFenceHandleTypeFlags handleType;
@@ -29847,7 +30841,7 @@ public unsafe partial struct VkFenceGetWin32HandleInfoKHR : IStructureType, ICha
 
 public unsafe partial struct VkImportMemoryWin32HandleInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ImportMemoryWin32HandleInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV;
 	public void* pNext;
 	public VkExternalMemoryHandleTypeFlagsNV handleType;
 	public nint handle;
@@ -29869,7 +30863,7 @@ public unsafe partial struct VkImportMemoryWin32HandleInfoNV : IStructureType, I
 
 public unsafe partial struct VkExportMemoryWin32HandleInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExportMemoryWin32HandleInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV;
 	public void* pNext;
 	public nint pAttributes;
 	public uint dwAccess;
@@ -29891,7 +30885,7 @@ public unsafe partial struct VkExportMemoryWin32HandleInfoNV : IStructureType, I
 
 public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.Win32KeyedMutexAcquireReleaseInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV;
 	public void* pNext;
 	public uint acquireCount;
 	public VkDeviceMemory* pAcquireSyncs;
@@ -29918,7 +30912,7 @@ public unsafe partial struct VkWin32KeyedMutexAcquireReleaseInfoNV : IStructureT
 
 public unsafe partial struct VkSurfaceFullScreenExclusiveInfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfaceFullScreenExclusiveInfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT;
 	public void* pNext;
 	public VkFullScreenExclusiveEXT fullScreenExclusive;
 
@@ -29939,7 +30933,7 @@ public unsafe partial struct VkSurfaceFullScreenExclusiveInfoEXT : IStructureTyp
 
 public unsafe partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfaceCapabilitiesFullScreenExclusiveEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT;
 	public void* pNext;
 	public VkBool32 fullScreenExclusiveSupported;
 
@@ -29960,7 +30954,7 @@ public unsafe partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT : IStru
 
 public unsafe partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.SurfaceFullScreenExclusiveWin32InfoEXT;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT;
 	public void* pNext;
 	public nint hmonitor;
 
@@ -29981,7 +30975,7 @@ public unsafe partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT : IStructu
 
 public unsafe partial struct VkXcbSurfaceCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.XcbSurfaceCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkXcbSurfaceCreateFlagsKHR flags;
 	public nint connection;
@@ -30004,7 +30998,7 @@ public unsafe partial struct VkXcbSurfaceCreateInfoKHR : IStructureType, IChainT
 
 public unsafe partial struct VkXlibSurfaceCreateInfoKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.XlibSurfaceCreateInfoKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR;
 	public void* pNext;
 	public VkXlibSurfaceCreateFlagsKHR flags;
 	public nint dpy;
@@ -30027,7 +31021,7 @@ public unsafe partial struct VkXlibSurfaceCreateInfoKHR : IStructureType, IChain
 
 public unsafe partial struct VkPhysicalDevicePortabilitySubsetFeaturesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePortabilitySubsetFeaturesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR;
 	public void* pNext;
 	public VkBool32 constantAlphaColorBlendFactors;
 	public VkBool32 events;
@@ -30062,7 +31056,7 @@ public unsafe partial struct VkPhysicalDevicePortabilitySubsetFeaturesKHR : IStr
 
 public unsafe partial struct VkPhysicalDevicePortabilitySubsetPropertiesKHR : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDevicePortabilitySubsetPropertiesKHR;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_PROPERTIES_KHR;
 	public void* pNext;
 	public uint minVertexInputBindingStrideAlignment;
 
@@ -30083,7 +31077,7 @@ public unsafe partial struct VkPhysicalDevicePortabilitySubsetPropertiesKHR : IS
 
 public unsafe partial struct VkPhysicalDeviceShaderEnqueueFeaturesAMDX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderEnqueueFeaturesAMDX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX;
 	public void* pNext;
 	public VkBool32 shaderEnqueue;
 	public VkBool32 shaderMeshEnqueue;
@@ -30105,7 +31099,7 @@ public unsafe partial struct VkPhysicalDeviceShaderEnqueueFeaturesAMDX : IStruct
 
 public unsafe partial struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceShaderEnqueuePropertiesAMDX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX;
 	public void* pNext;
 	public uint maxExecutionGraphDepth;
 	public uint maxExecutionGraphShaderOutputNodes;
@@ -30132,7 +31126,7 @@ public unsafe partial struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX : IStru
 
 public unsafe partial struct VkExecutionGraphPipelineScratchSizeAMDX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExecutionGraphPipelineScratchSizeAMDX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_SCRATCH_SIZE_AMDX;
 	public void* pNext;
 	public ulong minSize;
 	public ulong maxSize;
@@ -30155,7 +31149,7 @@ public unsafe partial struct VkExecutionGraphPipelineScratchSizeAMDX : IStructur
 
 public unsafe partial struct VkExecutionGraphPipelineCreateInfoAMDX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.ExecutionGraphPipelineCreateInfoAMDX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX;
 	public void* pNext;
 	public VkPipelineCreateFlags flags;
 	public uint stageCount;
@@ -30206,7 +31200,7 @@ public partial struct VkDispatchGraphCountInfoAMDX
 
 public unsafe partial struct VkPipelineShaderStageNodeCreateInfoAMDX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PipelineShaderStageNodeCreateInfoAMDX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX;
 	public void* pNext;
 	public byte* pName;
 	public uint index;
@@ -30228,7 +31222,7 @@ public unsafe partial struct VkPipelineShaderStageNodeCreateInfoAMDX : IStructur
 
 public unsafe partial struct VkCudaModuleCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CudaModuleCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV;
 	public void* pNext;
 	public nuint dataSize;
 	public void* pData;
@@ -30250,7 +31244,7 @@ public unsafe partial struct VkCudaModuleCreateInfoNV : IStructureType, IChainTy
 
 public unsafe partial struct VkCudaFunctionCreateInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CudaFunctionCreateInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV;
 	public void* pNext;
 	public VkCudaModuleNV module;
 	public byte* pName;
@@ -30272,7 +31266,7 @@ public unsafe partial struct VkCudaFunctionCreateInfoNV : IStructureType, IChain
 
 public unsafe partial struct VkCudaLaunchInfoNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.CudaLaunchInfoNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV;
 	public void* pNext;
 	public VkCudaFunctionNV function;
 	public uint gridDimX;
@@ -30304,7 +31298,7 @@ public unsafe partial struct VkCudaLaunchInfoNV : IStructureType, IChainType
 
 public unsafe partial struct VkPhysicalDeviceCudaKernelLaunchFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCudaKernelLaunchFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 cudaKernelLaunchFeatures;
 
@@ -30325,7 +31319,7 @@ public unsafe partial struct VkPhysicalDeviceCudaKernelLaunchFeaturesNV : IStruc
 
 public unsafe partial struct VkPhysicalDeviceCudaKernelLaunchPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceCudaKernelLaunchPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV;
 	public void* pNext;
 	public uint computeCapabilityMinor;
 	public uint computeCapabilityMajor;
@@ -30347,7 +31341,7 @@ public unsafe partial struct VkPhysicalDeviceCudaKernelLaunchPropertiesNV : IStr
 
 public unsafe partial struct VkPhysicalDeviceDisplacementMicromapFeaturesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDisplacementMicromapFeaturesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_FEATURES_NV;
 	public void* pNext;
 	public VkBool32 displacementMicromap;
 
@@ -30368,7 +31362,7 @@ public unsafe partial struct VkPhysicalDeviceDisplacementMicromapFeaturesNV : IS
 
 public unsafe partial struct VkPhysicalDeviceDisplacementMicromapPropertiesNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDisplacementMicromapPropertiesNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV;
 	public void* pNext;
 	public uint maxDisplacementMicromapSubdivisionLevel;
 
@@ -30389,7 +31383,7 @@ public unsafe partial struct VkPhysicalDeviceDisplacementMicromapPropertiesNV : 
 
 public unsafe partial struct VkAccelerationStructureTrianglesDisplacementMicromapNV : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureTrianglesDisplacementMicromapNV;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV;
 	public void* pNext;
 	public VkFormat displacementBiasAndScaleFormat;
 	public VkFormat displacementVectorFormat;
@@ -30425,7 +31419,7 @@ public unsafe partial struct VkAccelerationStructureTrianglesDisplacementMicroma
 
 public unsafe partial struct VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.PhysicalDeviceDenseGeometryFormatFeaturesAMDX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DENSE_GEOMETRY_FORMAT_FEATURES_AMDX;
 	public void* pNext;
 	public VkBool32 denseGeometryFormat;
 
@@ -30446,7 +31440,7 @@ public unsafe partial struct VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX : I
 
 public unsafe partial struct VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX : IStructureType, IChainType
 {
-	public VkStructureType sType = VkStructureType.AccelerationStructureDenseGeometryFormatTrianglesDataAMDX;
+	public VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DENSE_GEOMETRY_FORMAT_TRIANGLES_DATA_AMDX;
 	public void* pNext;
 	public VkDeviceOrHostAddressConstKHR compressedData;
 	public ulong dataSize;

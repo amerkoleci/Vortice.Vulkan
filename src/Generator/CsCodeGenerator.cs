@@ -269,11 +269,11 @@ public partial class CsCodeGenerator
                 return "ulong";
 
             case CppPrimitiveKind.LongLong:
-                return "nint";
+                return "long";
 
             case CppPrimitiveKind.UnsignedLongLong:
                 // { "size_t", "nuint" },
-                return "nuint";
+                return "ulong";
 
             case CppPrimitiveKind.Float:
                 return "float";

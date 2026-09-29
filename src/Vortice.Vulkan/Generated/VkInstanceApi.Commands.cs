@@ -118,6 +118,7 @@ public unsafe partial class VkInstanceApi
 	public readonly PFN_vkVoidFunction vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM_ptr;
 	public readonly PFN_vkVoidFunction vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM_ptr;
 	public readonly PFN_vkVoidFunction vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM_ptr;
+	public readonly PFN_vkVoidFunction vkGetPhysicalDeviceCooperativeMatrixProperties2EXT_ptr;
 	public readonly PFN_vkVoidFunction vkCreateAndroidSurfaceKHR_ptr;
 	public readonly PFN_vkVoidFunction vkCreateMetalSurfaceEXT_ptr;
 	public readonly PFN_vkVoidFunction vkCreateViSurfaceNN_ptr;
@@ -236,6 +237,7 @@ public unsafe partial class VkInstanceApi
 		vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM_ptr = vkGetInstanceProcAddr(instance.Handle, "vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM"u8);
 		vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM_ptr = vkGetInstanceProcAddr(instance.Handle, "vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM"u8);
 		vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM_ptr = vkGetInstanceProcAddr(instance.Handle, "vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM"u8);
+		vkGetPhysicalDeviceCooperativeMatrixProperties2EXT_ptr = vkGetInstanceProcAddr(instance.Handle, "vkGetPhysicalDeviceCooperativeMatrixProperties2EXT"u8);
 		vkCreateAndroidSurfaceKHR_ptr = vkGetInstanceProcAddr(instance.Handle, "vkCreateAndroidSurfaceKHR"u8);
 		vkCreateMetalSurfaceEXT_ptr = vkGetInstanceProcAddr(instance.Handle, "vkCreateMetalSurfaceEXT"u8);
 		vkCreateViSurfaceNN_ptr = vkGetInstanceProcAddr(instance.Handle, "vkCreateViSurfaceNN"u8);
@@ -1167,6 +1169,11 @@ public unsafe partial class VkInstanceApi
 	public VkResult vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkQueueFamilyDataGraphPropertiesARM* queueFamilyDataGraphProperties, VkDataGraphOpticalFlowImageFormatInfoARM* opticalFlowImageFormatInfo, uint* formatCount, VkDataGraphOpticalFlowImageFormatPropertiesARM* imageFormatProperties)
 	{
 		return ((delegate* unmanaged<VkPhysicalDevice, uint, VkQueueFamilyDataGraphPropertiesARM*, VkDataGraphOpticalFlowImageFormatInfoARM*, uint*, VkDataGraphOpticalFlowImageFormatPropertiesARM*, VkResult>)vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM_ptr.Value)(physicalDevice, queueFamilyIndex, queueFamilyDataGraphProperties, opticalFlowImageFormatInfo, formatCount, imageFormatProperties);
+	}
+
+	public VkResult vkGetPhysicalDeviceCooperativeMatrixProperties2EXT(VkPhysicalDevice physicalDevice, VkPhysicalDeviceCooperativeMatrixInfo2EXT* cooperativeMatrixInfo, uint* propertyCount, VkCooperativeMatrixProperties2EXT* properties)
+	{
+		return ((delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceCooperativeMatrixInfo2EXT*, uint*, VkCooperativeMatrixProperties2EXT*, VkResult>)vkGetPhysicalDeviceCooperativeMatrixProperties2EXT_ptr.Value)(physicalDevice, cooperativeMatrixInfo, propertyCount, properties);
 	}
 
 	public VkResult vkCreateAndroidSurfaceKHR(VkAndroidSurfaceCreateInfoKHR* createInfo, VkSurfaceKHR* surface)

@@ -207,6 +207,11 @@ partial class CsCodeGenerator
         { "VkDataGraphPipelineNodeConnectionTypeARM", "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE" },
         { "VkThrottleHintTypeSEC", "VK_THROTTLE_HINT_TYPE" },
         { "VkNeuralAcceleratorStatisticsModeARM", "VK_NEURAL_ACCELERATOR_STATISTICS_MODE" },
+        { "VkTensorTilingARM", "VK_TENSOR_TILING" },
+        { "VkImageUsageFlags2KHR", "VK_IMAGE_USAGE_2" },
+        { "VkImageUsageFlagBits2KHR", "VK_IMAGE_USAGE_2" },
+        { "VkImageCreateFlags2KHR", "VK_IMAGE_CREATE_2" },
+        { "VkImageCreateFlagBits2KHR", "VK_IMAGE_CREATE_2" },
 
         // spvc
         { "spvc_result", "SPVC_ERROR" },
@@ -284,6 +289,7 @@ partial class CsCodeGenerator
         "hlsl",
         "msl",
         "mtl",
+        "nvk",
     };
 
     private readonly HashSet<string> s_enumConstants = [];
@@ -314,6 +320,7 @@ partial class CsCodeGenerator
             bool isBitmask = cppEnum.Name.EndsWith("FlagBits")
                 || cppEnum.Name.EndsWith("FlagBits2")
                 || cppEnum.Name.EndsWith("FlagBits3")
+                || cppEnum.Name.EndsWith("FlagBits4")
                 || cppEnum.Name.EndsWith("FlagBitsEXT")
                 || cppEnum.Name.EndsWith("FlagBitsKHR")
                 || cppEnum.Name.EndsWith("FlagBitsNV")
@@ -618,6 +625,7 @@ partial class CsCodeGenerator
                     continue;
                 }
 
+
                 // Already mapped with VkMemoryDecompressionMethodFlagBitsEXT
                 if (typedef.Name == "VkMemoryDecompressionMethodFlagsEXT")
                 {
@@ -631,6 +639,7 @@ partial class CsCodeGenerator
                     || typedef.Name.EndsWith("FlagsAMD", StringComparison.OrdinalIgnoreCase)
                     || typedef.Name.EndsWith("FlagsMVK", StringComparison.OrdinalIgnoreCase)
                     || typedef.Name.EndsWith("FlagsNN", StringComparison.OrdinalIgnoreCase)
+                    || typedef.Name.EndsWith("Flags4KHR", StringComparison.OrdinalIgnoreCase)
                     )
                 {
                     writer.WriteLine("[Flags]");
@@ -683,7 +692,7 @@ partial class CsCodeGenerator
                         }
                     }
 
-                    if (fieldType.EndsWith("FlagBits2"))
+                    if(fieldType.EndsWith("FlagBits2"))
                     {
                         fieldType = fieldType.Replace("FlagBits2", "Flags2");
                     }
@@ -714,6 +723,14 @@ partial class CsCodeGenerator
                     else if (fieldType.EndsWith("FlagBitsEXT"))
                     {
                         fieldType = fieldType.Replace("FlagBitsEXT", "FlagsEXT");
+                    }
+                    else if(fieldType.EndsWith("FlagBits4"))
+                    {
+                        fieldType = fieldType.Replace("FlagBits4", "Flags4");
+                    }
+                    else if (fieldType.EndsWith("FlagBits4KHR"))
+                    {
+                        fieldType = fieldType.Replace("FlagBits4KHR", "Flags4KHR");
                     }
 
                     writer.WriteLine("[Flags]");
@@ -825,6 +842,14 @@ partial class CsCodeGenerator
                         else if (cleanEnumName.EndsWith("FlagBitsEXT"))
                         {
                             cleanEnumName = cleanEnumName.Replace("FlagBitsEXT", "FlagsEXT");
+                        }
+                        else if (cleanEnumName.EndsWith("FlagBits4"))
+                        {
+                            cleanEnumName = cleanEnumName.Replace("FlagBits4", "Flags4");
+                        }
+                        else if (cleanEnumName.EndsWith("FlagBits4KHR"))
+                        {
+                            cleanEnumName = cleanEnumName.Replace("FlagBits4KHR", "Flags4KHR");
                         }
 
                         s_enumConstants.Add($"{cleanEnumName} {cppField.Name} = {cleanEnumName}.{csFieldName}");

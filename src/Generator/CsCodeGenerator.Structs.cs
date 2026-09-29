@@ -33,7 +33,10 @@ partial class CsCodeGenerator
             usings.AddRange(_options.ExtraUsings);
         }
 
-        string[] staticUsings = [];
+        string[] staticUsings =
+        [
+            "Vortice.Vulkan.Vulkan"
+        ];
 
         // Generate Structures
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Structures.cs"),
@@ -158,11 +161,6 @@ partial class CsCodeGenerator
 
     private void WriteField(CodeWriter writer, string structName, CppField field, bool handleSType, bool isUnion = false, bool isReadOnly = false)
     {
-        if (structName == "VkShaderModuleCreateInfo")
-        {
-
-        }
-
         string csFieldName = NormalizeFieldName(field.Name);
 
         if (isUnion)
@@ -320,61 +318,70 @@ partial class CsCodeGenerator
             string fieldInitializer = string.Empty;
             if (handleSType && csFieldName == "sType")
             {
-                string structureTypeValue = structName;
-                if (structureTypeValue.StartsWith("Vk"))
+                StructureDefinition? structureDefinition = _vulkanSpecification!.GetStructureDefinition(structName);
+                if (structureDefinition is not null)
                 {
-                    structureTypeValue = structureTypeValue.Substring(2);
+                    MemberSpec sTypeField = structureDefinition.Members.First(item => item.Name == "sType");
+                    fieldInitializer = $" = {sTypeField.LegalValues}";
                 }
-                if (structureTypeValue.EndsWith("ANDROID"))
+                else
                 {
-                    structureTypeValue = structureTypeValue.Replace("ANDROID", "Android");
-                }
-                if (structureTypeValue == "ImportMemoryFdInfoKHR")
-                {
-                    structureTypeValue = "ImportMemoryFDInfoKHR";
-                }
-                else if (structureTypeValue == "MemoryFdPropertiesKHR")
-                {
-                    structureTypeValue = "MemoryFDPropertiesKHR";
-                }
-                else if (structureTypeValue == "MemoryGetFdInfoKHR")
-                {
-                    structureTypeValue = "MemoryGetFDInfoKHR";
-                }
-                else if (structureTypeValue == "ImportSemaphoreFdInfoKHR")
-                {
-                    structureTypeValue = "ImportSemaphoreFDInfoKHR";
-                }
-                else if (structureTypeValue == "SemaphoreGetFdInfoKHR")
-                {
-                    structureTypeValue = "SemaphoreGetFDInfoKHR";
-                }
-                else if (structureTypeValue == "ImportFenceFdInfoKHR")
-                {
-                    structureTypeValue = "ImportFenceFDInfoKHR";
-                }
-                else if (structureTypeValue == "FenceGetFdInfoKHR")
-                {
-                    structureTypeValue = "FenceGetFDInfoKHR";
-                }
-                else if (structureTypeValue == "VkSurfaceCapabilitiesPresentId2KHR")
-                {
-                    structureTypeValue = "FenceGetFDInfoKHR";
-                }
-                else if (structName == "VkPhysicalDeviceIDProperties")
-                {
-                    structureTypeValue = "PhysicalDeviceIdProperties";
-                }
-                else if (structName == "VkPhysicalDeviceShader64BitIndexingFeaturesEXT")
-                {
-                    structureTypeValue = "PhysicalDeviceShader64IndexingFeaturesEXT";
-                }
-                else if (structName == "VkQueueFamilyDataGraphTOSAPropertiesARM")
-                {
-                    structureTypeValue = "QueueFamilyDataGraphTosaPropertiesARM";
-                }
+                    string structureTypeValue = structName;
+                    if (structureTypeValue.StartsWith("Vk"))
+                    {
+                        structureTypeValue = structureTypeValue.Substring(2);
+                    }
+                    if (structureTypeValue.EndsWith("ANDROID"))
+                    {
+                        structureTypeValue = structureTypeValue.Replace("ANDROID", "Android");
+                    }
+                    if (structureTypeValue == "ImportMemoryFdInfoKHR")
+                    {
+                        structureTypeValue = "ImportMemoryFDInfoKHR";
+                    }
+                    else if (structureTypeValue == "MemoryFdPropertiesKHR")
+                    {
+                        structureTypeValue = "MemoryFDPropertiesKHR";
+                    }
+                    else if (structureTypeValue == "MemoryGetFdInfoKHR")
+                    {
+                        structureTypeValue = "MemoryGetFDInfoKHR";
+                    }
+                    else if (structureTypeValue == "ImportSemaphoreFdInfoKHR")
+                    {
+                        structureTypeValue = "ImportSemaphoreFDInfoKHR";
+                    }
+                    else if (structureTypeValue == "SemaphoreGetFdInfoKHR")
+                    {
+                        structureTypeValue = "SemaphoreGetFDInfoKHR";
+                    }
+                    else if (structureTypeValue == "ImportFenceFdInfoKHR")
+                    {
+                        structureTypeValue = "ImportFenceFDInfoKHR";
+                    }
+                    else if (structureTypeValue == "FenceGetFdInfoKHR")
+                    {
+                        structureTypeValue = "FenceGetFDInfoKHR";
+                    }
+                    else if (structureTypeValue == "VkSurfaceCapabilitiesPresentId2KHR")
+                    {
+                        structureTypeValue = "FenceGetFDInfoKHR";
+                    }
+                    else if (structName == "VkPhysicalDeviceIDProperties")
+                    {
+                        structureTypeValue = "PhysicalDeviceIdProperties";
+                    }
+                    else if (structName == "VkPhysicalDeviceShader64BitIndexingFeaturesEXT")
+                    {
+                        structureTypeValue = "PhysicalDeviceShader64IndexingFeaturesEXT";
+                    }
+                    else if (structName == "VkQueueFamilyDataGraphTOSAPropertiesARM")
+                    {
+                        structureTypeValue = "QueueFamilyDataGraphTosaPropertiesARM";
+                    }
 
-                fieldInitializer = $" = VkStructureType.{structureTypeValue}";
+                    fieldInitializer = $" = VkStructureType.{structureTypeValue}";
+                }
             }
 
             writer.WriteLine($"{modifier} {fieldPrefix}{csFieldType} {csFieldName}{fieldInitializer};");

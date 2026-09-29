@@ -99,6 +99,36 @@ unsafe partial class Vulkan
 			case VkFormat.Astc10x10SfloatBlock: return (10, 10, 1);
 			case VkFormat.Astc12x10SfloatBlock: return (12, 10, 1);
 			case VkFormat.Astc12x12SfloatBlock: return (12, 12, 1);
+			case VkFormat.Astc3x3x3UnormBlockEXT: return (3, 3, 3);
+			case VkFormat.Astc3x3x3SrgbBlockEXT: return (3, 3, 3);
+			case VkFormat.Astc3x3x3SfloatBlockEXT: return (3, 3, 3);
+			case VkFormat.Astc4x3x3UnormBlockEXT: return (4, 3, 3);
+			case VkFormat.Astc4x3x3SrgbBlockEXT: return (4, 3, 3);
+			case VkFormat.Astc4x3x3SfloatBlockEXT: return (4, 3, 3);
+			case VkFormat.Astc4x4x3UnormBlockEXT: return (4, 4, 3);
+			case VkFormat.Astc4x4x3SrgbBlockEXT: return (4, 4, 3);
+			case VkFormat.Astc4x4x3SfloatBlockEXT: return (4, 4, 3);
+			case VkFormat.Astc4x4x4UnormBlockEXT: return (4, 4, 4);
+			case VkFormat.Astc4x4x4SrgbBlockEXT: return (4, 4, 4);
+			case VkFormat.Astc4x4x4SfloatBlockEXT: return (4, 4, 4);
+			case VkFormat.Astc5x4x4UnormBlockEXT: return (5, 4, 4);
+			case VkFormat.Astc5x4x4SrgbBlockEXT: return (5, 4, 4);
+			case VkFormat.Astc5x4x4SfloatBlockEXT: return (5, 4, 4);
+			case VkFormat.Astc5x5x4UnormBlockEXT: return (5, 5, 4);
+			case VkFormat.Astc5x5x4SrgbBlockEXT: return (5, 5, 4);
+			case VkFormat.Astc5x5x4SfloatBlockEXT: return (5, 5, 4);
+			case VkFormat.Astc5x5x5UnormBlockEXT: return (5, 5, 5);
+			case VkFormat.Astc5x5x5SrgbBlockEXT: return (5, 5, 5);
+			case VkFormat.Astc5x5x5SfloatBlockEXT: return (5, 5, 5);
+			case VkFormat.Astc6x5x5UnormBlockEXT: return (6, 5, 5);
+			case VkFormat.Astc6x5x5SrgbBlockEXT: return (6, 5, 5);
+			case VkFormat.Astc6x5x5SfloatBlockEXT: return (6, 5, 5);
+			case VkFormat.Astc6x6x5UnormBlockEXT: return (6, 6, 5);
+			case VkFormat.Astc6x6x5SrgbBlockEXT: return (6, 6, 5);
+			case VkFormat.Astc6x6x5SfloatBlockEXT: return (6, 6, 5);
+			case VkFormat.Astc6x6x6UnormBlockEXT: return (6, 6, 6);
+			case VkFormat.Astc6x6x6SrgbBlockEXT: return (6, 6, 6);
+			case VkFormat.Astc6x6x6SfloatBlockEXT: return (6, 6, 6);
 
 			default: return (1, 1, 1);
 		}
@@ -349,6 +379,36 @@ unsafe partial class Vulkan
 			case VkFormat.Astc10x10SfloatBlock: return 16;
 			case VkFormat.Astc12x10SfloatBlock: return 16;
 			case VkFormat.Astc12x12SfloatBlock: return 16;
+			case VkFormat.Astc3x3x3UnormBlockEXT: return 16;
+			case VkFormat.Astc3x3x3SrgbBlockEXT: return 16;
+			case VkFormat.Astc3x3x3SfloatBlockEXT: return 16;
+			case VkFormat.Astc4x3x3UnormBlockEXT: return 16;
+			case VkFormat.Astc4x3x3SrgbBlockEXT: return 16;
+			case VkFormat.Astc4x3x3SfloatBlockEXT: return 16;
+			case VkFormat.Astc4x4x3UnormBlockEXT: return 16;
+			case VkFormat.Astc4x4x3SrgbBlockEXT: return 16;
+			case VkFormat.Astc4x4x3SfloatBlockEXT: return 16;
+			case VkFormat.Astc4x4x4UnormBlockEXT: return 16;
+			case VkFormat.Astc4x4x4SrgbBlockEXT: return 16;
+			case VkFormat.Astc4x4x4SfloatBlockEXT: return 16;
+			case VkFormat.Astc5x4x4UnormBlockEXT: return 16;
+			case VkFormat.Astc5x4x4SrgbBlockEXT: return 16;
+			case VkFormat.Astc5x4x4SfloatBlockEXT: return 16;
+			case VkFormat.Astc5x5x4UnormBlockEXT: return 16;
+			case VkFormat.Astc5x5x4SrgbBlockEXT: return 16;
+			case VkFormat.Astc5x5x4SfloatBlockEXT: return 16;
+			case VkFormat.Astc5x5x5UnormBlockEXT: return 16;
+			case VkFormat.Astc5x5x5SrgbBlockEXT: return 16;
+			case VkFormat.Astc5x5x5SfloatBlockEXT: return 16;
+			case VkFormat.Astc6x5x5UnormBlockEXT: return 16;
+			case VkFormat.Astc6x5x5SrgbBlockEXT: return 16;
+			case VkFormat.Astc6x5x5SfloatBlockEXT: return 16;
+			case VkFormat.Astc6x6x5UnormBlockEXT: return 16;
+			case VkFormat.Astc6x6x5SrgbBlockEXT: return 16;
+			case VkFormat.Astc6x6x5SfloatBlockEXT: return 16;
+			case VkFormat.Astc6x6x6UnormBlockEXT: return 16;
+			case VkFormat.Astc6x6x6SrgbBlockEXT: return 16;
+			case VkFormat.Astc6x6x6SfloatBlockEXT: return 16;
 			case VkFormat.G8B8R82Plane444Unorm: return 3;
 			case VkFormat.G10X6B10X6R10X62Plane444Unorm3Pack16: return 6;
 			case VkFormat.G12X4B12X4R12X42Plane444Unorm3Pack16: return 6;
@@ -371,6 +431,9 @@ unsafe partial class Vulkan
 			case VkFormat.G14X2B14X2R14X22Plane420Unorm3Pack16ARM: return 6;
 			case VkFormat.G14X2B14X2R14X22Plane422Unorm3Pack16ARM: return 6;
 			case VkFormat.R8BOOLARM: return 1;
+			case VkFormat.R16SfloatFPEncodingBFloat16ARM: return 2;
+			case VkFormat.R8SfloatFPEncodingFloat8e4m3ARM: return 1;
+			case VkFormat.R8SfloatFPEncodingFloat8e5m2ARM: return 1;
 
 			default: return 0;
 		}
@@ -621,6 +684,36 @@ unsafe partial class Vulkan
 			case VkFormat.Astc10x10SfloatBlock: return 100;
 			case VkFormat.Astc12x10SfloatBlock: return 120;
 			case VkFormat.Astc12x12SfloatBlock: return 144;
+			case VkFormat.Astc3x3x3UnormBlockEXT: return 27;
+			case VkFormat.Astc3x3x3SrgbBlockEXT: return 27;
+			case VkFormat.Astc3x3x3SfloatBlockEXT: return 27;
+			case VkFormat.Astc4x3x3UnormBlockEXT: return 36;
+			case VkFormat.Astc4x3x3SrgbBlockEXT: return 36;
+			case VkFormat.Astc4x3x3SfloatBlockEXT: return 36;
+			case VkFormat.Astc4x4x3UnormBlockEXT: return 48;
+			case VkFormat.Astc4x4x3SrgbBlockEXT: return 48;
+			case VkFormat.Astc4x4x3SfloatBlockEXT: return 48;
+			case VkFormat.Astc4x4x4UnormBlockEXT: return 64;
+			case VkFormat.Astc4x4x4SrgbBlockEXT: return 64;
+			case VkFormat.Astc4x4x4SfloatBlockEXT: return 64;
+			case VkFormat.Astc5x4x4UnormBlockEXT: return 80;
+			case VkFormat.Astc5x4x4SrgbBlockEXT: return 80;
+			case VkFormat.Astc5x4x4SfloatBlockEXT: return 80;
+			case VkFormat.Astc5x5x4UnormBlockEXT: return 100;
+			case VkFormat.Astc5x5x4SrgbBlockEXT: return 100;
+			case VkFormat.Astc5x5x4SfloatBlockEXT: return 100;
+			case VkFormat.Astc5x5x5UnormBlockEXT: return 125;
+			case VkFormat.Astc5x5x5SrgbBlockEXT: return 125;
+			case VkFormat.Astc5x5x5SfloatBlockEXT: return 125;
+			case VkFormat.Astc6x5x5UnormBlockEXT: return 150;
+			case VkFormat.Astc6x5x5SrgbBlockEXT: return 150;
+			case VkFormat.Astc6x5x5SfloatBlockEXT: return 150;
+			case VkFormat.Astc6x6x5UnormBlockEXT: return 180;
+			case VkFormat.Astc6x6x5SrgbBlockEXT: return 180;
+			case VkFormat.Astc6x6x5SfloatBlockEXT: return 180;
+			case VkFormat.Astc6x6x6UnormBlockEXT: return 216;
+			case VkFormat.Astc6x6x6SrgbBlockEXT: return 216;
+			case VkFormat.Astc6x6x6SfloatBlockEXT: return 216;
 			case VkFormat.G8B8R82Plane444Unorm: return 1;
 			case VkFormat.G10X6B10X6R10X62Plane444Unorm3Pack16: return 1;
 			case VkFormat.G12X4B12X4R12X42Plane444Unorm3Pack16: return 1;
@@ -643,6 +736,9 @@ unsafe partial class Vulkan
 			case VkFormat.G14X2B14X2R14X22Plane420Unorm3Pack16ARM: return 1;
 			case VkFormat.G14X2B14X2R14X22Plane422Unorm3Pack16ARM: return 1;
 			case VkFormat.R8BOOLARM: return 1;
+			case VkFormat.R16SfloatFPEncodingBFloat16ARM: return 1;
+			case VkFormat.R8SfloatFPEncodingFloat8e4m3ARM: return 1;
+			case VkFormat.R8SfloatFPEncodingFloat8e5m2ARM: return 1;
 
 			default: return 0;
 		}
@@ -893,6 +989,36 @@ unsafe partial class Vulkan
 			case VkFormat.Astc10x10SfloatBlock: return "ASTC_10x10";
 			case VkFormat.Astc12x10SfloatBlock: return "ASTC_12x10";
 			case VkFormat.Astc12x12SfloatBlock: return "ASTC_12x12";
+			case VkFormat.Astc3x3x3UnormBlockEXT: return "ASTC_3x3x3";
+			case VkFormat.Astc3x3x3SrgbBlockEXT: return "ASTC_3x3x3";
+			case VkFormat.Astc3x3x3SfloatBlockEXT: return "ASTC_3x3x3";
+			case VkFormat.Astc4x3x3UnormBlockEXT: return "ASTC_4x3x3";
+			case VkFormat.Astc4x3x3SrgbBlockEXT: return "ASTC_4x3x3";
+			case VkFormat.Astc4x3x3SfloatBlockEXT: return "ASTC_4x3x3";
+			case VkFormat.Astc4x4x3UnormBlockEXT: return "ASTC_4x4x3";
+			case VkFormat.Astc4x4x3SrgbBlockEXT: return "ASTC_4x4x3";
+			case VkFormat.Astc4x4x3SfloatBlockEXT: return "ASTC_4x4x3";
+			case VkFormat.Astc4x4x4UnormBlockEXT: return "ASTC_4x4x4";
+			case VkFormat.Astc4x4x4SrgbBlockEXT: return "ASTC_4x4x4";
+			case VkFormat.Astc4x4x4SfloatBlockEXT: return "ASTC_4x4x4";
+			case VkFormat.Astc5x4x4UnormBlockEXT: return "ASTC_5x4x4";
+			case VkFormat.Astc5x4x4SrgbBlockEXT: return "ASTC_5x4x4";
+			case VkFormat.Astc5x4x4SfloatBlockEXT: return "ASTC_5x4x4";
+			case VkFormat.Astc5x5x4UnormBlockEXT: return "ASTC_5x5x4";
+			case VkFormat.Astc5x5x4SrgbBlockEXT: return "ASTC_5x5x4";
+			case VkFormat.Astc5x5x4SfloatBlockEXT: return "ASTC_5x5x4";
+			case VkFormat.Astc5x5x5UnormBlockEXT: return "ASTC_5x5x5";
+			case VkFormat.Astc5x5x5SrgbBlockEXT: return "ASTC_5x5x5";
+			case VkFormat.Astc5x5x5SfloatBlockEXT: return "ASTC_5x5x5";
+			case VkFormat.Astc6x5x5UnormBlockEXT: return "ASTC_6x5x5";
+			case VkFormat.Astc6x5x5SrgbBlockEXT: return "ASTC_6x5x5";
+			case VkFormat.Astc6x5x5SfloatBlockEXT: return "ASTC_6x5x5";
+			case VkFormat.Astc6x6x5UnormBlockEXT: return "ASTC_6x6x5";
+			case VkFormat.Astc6x6x5SrgbBlockEXT: return "ASTC_6x6x5";
+			case VkFormat.Astc6x6x5SfloatBlockEXT: return "ASTC_6x6x5";
+			case VkFormat.Astc6x6x6UnormBlockEXT: return "ASTC_6x6x6";
+			case VkFormat.Astc6x6x6SrgbBlockEXT: return "ASTC_6x6x6";
+			case VkFormat.Astc6x6x6SfloatBlockEXT: return "ASTC_6x6x6";
 			case VkFormat.G8B8R82Plane444Unorm: return "8-bit 2-plane 444";
 			case VkFormat.G10X6B10X6R10X62Plane444Unorm3Pack16: return "10-bit 2-plane 444";
 			case VkFormat.G12X4B12X4R12X42Plane444Unorm3Pack16: return "12-bit 2-plane 444";
@@ -915,6 +1041,9 @@ unsafe partial class Vulkan
 			case VkFormat.G14X2B14X2R14X22Plane420Unorm3Pack16ARM: return "14-bit 2-plane 420";
 			case VkFormat.G14X2B14X2R14X22Plane422Unorm3Pack16ARM: return "14-bit 2-plane 422";
 			case VkFormat.R8BOOLARM: return "8-bit";
+			case VkFormat.R16SfloatFPEncodingBFloat16ARM: return "16-bit";
+			case VkFormat.R8SfloatFPEncodingFloat8e4m3ARM: return "8-bit";
+			case VkFormat.R8SfloatFPEncodingFloat8e5m2ARM: return "8-bit";
 
 			default: return string.Empty;
 		}
@@ -1165,6 +1294,36 @@ unsafe partial class Vulkan
 			case VkFormat.Astc10x10SfloatBlock: return 4;
 			case VkFormat.Astc12x10SfloatBlock: return 4;
 			case VkFormat.Astc12x12SfloatBlock: return 4;
+			case VkFormat.Astc3x3x3UnormBlockEXT: return 4;
+			case VkFormat.Astc3x3x3SrgbBlockEXT: return 4;
+			case VkFormat.Astc3x3x3SfloatBlockEXT: return 4;
+			case VkFormat.Astc4x3x3UnormBlockEXT: return 4;
+			case VkFormat.Astc4x3x3SrgbBlockEXT: return 4;
+			case VkFormat.Astc4x3x3SfloatBlockEXT: return 4;
+			case VkFormat.Astc4x4x3UnormBlockEXT: return 4;
+			case VkFormat.Astc4x4x3SrgbBlockEXT: return 4;
+			case VkFormat.Astc4x4x3SfloatBlockEXT: return 4;
+			case VkFormat.Astc4x4x4UnormBlockEXT: return 4;
+			case VkFormat.Astc4x4x4SrgbBlockEXT: return 4;
+			case VkFormat.Astc4x4x4SfloatBlockEXT: return 4;
+			case VkFormat.Astc5x4x4UnormBlockEXT: return 4;
+			case VkFormat.Astc5x4x4SrgbBlockEXT: return 4;
+			case VkFormat.Astc5x4x4SfloatBlockEXT: return 4;
+			case VkFormat.Astc5x5x4UnormBlockEXT: return 4;
+			case VkFormat.Astc5x5x4SrgbBlockEXT: return 4;
+			case VkFormat.Astc5x5x4SfloatBlockEXT: return 4;
+			case VkFormat.Astc5x5x5UnormBlockEXT: return 4;
+			case VkFormat.Astc5x5x5SrgbBlockEXT: return 4;
+			case VkFormat.Astc5x5x5SfloatBlockEXT: return 4;
+			case VkFormat.Astc6x5x5UnormBlockEXT: return 4;
+			case VkFormat.Astc6x5x5SrgbBlockEXT: return 4;
+			case VkFormat.Astc6x5x5SfloatBlockEXT: return 4;
+			case VkFormat.Astc6x6x5UnormBlockEXT: return 4;
+			case VkFormat.Astc6x6x5SrgbBlockEXT: return 4;
+			case VkFormat.Astc6x6x5SfloatBlockEXT: return 4;
+			case VkFormat.Astc6x6x6UnormBlockEXT: return 4;
+			case VkFormat.Astc6x6x6SrgbBlockEXT: return 4;
+			case VkFormat.Astc6x6x6SfloatBlockEXT: return 4;
 			case VkFormat.G8B8R82Plane444Unorm: return 3;
 			case VkFormat.G10X6B10X6R10X62Plane444Unorm3Pack16: return 3;
 			case VkFormat.G12X4B12X4R12X42Plane444Unorm3Pack16: return 3;
@@ -1187,6 +1346,9 @@ unsafe partial class Vulkan
 			case VkFormat.G14X2B14X2R14X22Plane420Unorm3Pack16ARM: return 3;
 			case VkFormat.G14X2B14X2R14X22Plane422Unorm3Pack16ARM: return 3;
 			case VkFormat.R8BOOLARM: return 1;
+			case VkFormat.R16SfloatFPEncodingBFloat16ARM: return 1;
+			case VkFormat.R8SfloatFPEncodingFloat8e4m3ARM: return 1;
+			case VkFormat.R8SfloatFPEncodingFloat8e5m2ARM: return 1;
 
 			default: return 0;
 		}
@@ -2672,6 +2834,24 @@ unsafe partial class Vulkan
 					case 0: return 8;
 					default: return 0;
 				}
+			case VkFormat.R16SfloatFPEncodingBFloat16ARM:
+				switch (component)
+				{
+					case 0: return 16;
+					default: return 0;
+				}
+			case VkFormat.R8SfloatFPEncodingFloat8e4m3ARM:
+				switch (component)
+				{
+					case 0: return 8;
+					default: return 0;
+				}
+			case VkFormat.R8SfloatFPEncodingFloat8e5m2ARM:
+				switch (component)
+				{
+					case 0: return 8;
+					default: return 0;
+				}
 
 			default: return 0;
 		}
@@ -2756,6 +2936,36 @@ unsafe partial class Vulkan
 			case VkFormat.Astc10x10SfloatBlock:
 			case VkFormat.Astc12x10SfloatBlock:
 			case VkFormat.Astc12x12SfloatBlock:
+			case VkFormat.Astc3x3x3UnormBlockEXT:
+			case VkFormat.Astc3x3x3SrgbBlockEXT:
+			case VkFormat.Astc3x3x3SfloatBlockEXT:
+			case VkFormat.Astc4x3x3UnormBlockEXT:
+			case VkFormat.Astc4x3x3SrgbBlockEXT:
+			case VkFormat.Astc4x3x3SfloatBlockEXT:
+			case VkFormat.Astc4x4x3UnormBlockEXT:
+			case VkFormat.Astc4x4x3SrgbBlockEXT:
+			case VkFormat.Astc4x4x3SfloatBlockEXT:
+			case VkFormat.Astc4x4x4UnormBlockEXT:
+			case VkFormat.Astc4x4x4SrgbBlockEXT:
+			case VkFormat.Astc4x4x4SfloatBlockEXT:
+			case VkFormat.Astc5x4x4UnormBlockEXT:
+			case VkFormat.Astc5x4x4SrgbBlockEXT:
+			case VkFormat.Astc5x4x4SfloatBlockEXT:
+			case VkFormat.Astc5x5x4UnormBlockEXT:
+			case VkFormat.Astc5x5x4SrgbBlockEXT:
+			case VkFormat.Astc5x5x4SfloatBlockEXT:
+			case VkFormat.Astc5x5x5UnormBlockEXT:
+			case VkFormat.Astc5x5x5SrgbBlockEXT:
+			case VkFormat.Astc5x5x5SfloatBlockEXT:
+			case VkFormat.Astc6x5x5UnormBlockEXT:
+			case VkFormat.Astc6x5x5SrgbBlockEXT:
+			case VkFormat.Astc6x5x5SfloatBlockEXT:
+			case VkFormat.Astc6x6x5UnormBlockEXT:
+			case VkFormat.Astc6x6x5SrgbBlockEXT:
+			case VkFormat.Astc6x6x5SfloatBlockEXT:
+			case VkFormat.Astc6x6x6UnormBlockEXT:
+			case VkFormat.Astc6x6x6SrgbBlockEXT:
+			case VkFormat.Astc6x6x6SfloatBlockEXT:
 				return true;
 
 			default:
@@ -2842,6 +3052,36 @@ unsafe partial class Vulkan
 			case VkFormat.Astc10x10SfloatBlock: return "ASTC HDR";
 			case VkFormat.Astc12x10SfloatBlock: return "ASTC HDR";
 			case VkFormat.Astc12x12SfloatBlock: return "ASTC HDR";
+			case VkFormat.Astc3x3x3UnormBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc3x3x3SrgbBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc3x3x3SfloatBlockEXT: return "ASTC HDR";
+			case VkFormat.Astc4x3x3UnormBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc4x3x3SrgbBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc4x3x3SfloatBlockEXT: return "ASTC HDR";
+			case VkFormat.Astc4x4x3UnormBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc4x4x3SrgbBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc4x4x3SfloatBlockEXT: return "ASTC HDR";
+			case VkFormat.Astc4x4x4UnormBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc4x4x4SrgbBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc4x4x4SfloatBlockEXT: return "ASTC HDR";
+			case VkFormat.Astc5x4x4UnormBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc5x4x4SrgbBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc5x4x4SfloatBlockEXT: return "ASTC HDR";
+			case VkFormat.Astc5x5x4UnormBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc5x5x4SrgbBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc5x5x4SfloatBlockEXT: return "ASTC HDR";
+			case VkFormat.Astc5x5x5UnormBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc5x5x5SrgbBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc5x5x5SfloatBlockEXT: return "ASTC HDR";
+			case VkFormat.Astc6x5x5UnormBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc6x5x5SrgbBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc6x5x5SfloatBlockEXT: return "ASTC HDR";
+			case VkFormat.Astc6x6x5UnormBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc6x6x5SrgbBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc6x6x5SfloatBlockEXT: return "ASTC HDR";
+			case VkFormat.Astc6x6x6UnormBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc6x6x6SrgbBlockEXT: return "ASTC LDR";
+			case VkFormat.Astc6x6x6SfloatBlockEXT: return "ASTC HDR";
 
 			default:
 				return string.Empty;
@@ -3093,6 +3333,36 @@ unsafe partial class Vulkan
 			case VkFormat.Astc10x10SfloatBlock: return 0;
 			case VkFormat.Astc12x10SfloatBlock: return 0;
 			case VkFormat.Astc12x12SfloatBlock: return 0;
+			case VkFormat.Astc3x3x3UnormBlockEXT: return 0;
+			case VkFormat.Astc3x3x3SrgbBlockEXT: return 0;
+			case VkFormat.Astc3x3x3SfloatBlockEXT: return 0;
+			case VkFormat.Astc4x3x3UnormBlockEXT: return 0;
+			case VkFormat.Astc4x3x3SrgbBlockEXT: return 0;
+			case VkFormat.Astc4x3x3SfloatBlockEXT: return 0;
+			case VkFormat.Astc4x4x3UnormBlockEXT: return 0;
+			case VkFormat.Astc4x4x3SrgbBlockEXT: return 0;
+			case VkFormat.Astc4x4x3SfloatBlockEXT: return 0;
+			case VkFormat.Astc4x4x4UnormBlockEXT: return 0;
+			case VkFormat.Astc4x4x4SrgbBlockEXT: return 0;
+			case VkFormat.Astc4x4x4SfloatBlockEXT: return 0;
+			case VkFormat.Astc5x4x4UnormBlockEXT: return 0;
+			case VkFormat.Astc5x4x4SrgbBlockEXT: return 0;
+			case VkFormat.Astc5x4x4SfloatBlockEXT: return 0;
+			case VkFormat.Astc5x5x4UnormBlockEXT: return 0;
+			case VkFormat.Astc5x5x4SrgbBlockEXT: return 0;
+			case VkFormat.Astc5x5x4SfloatBlockEXT: return 0;
+			case VkFormat.Astc5x5x5UnormBlockEXT: return 0;
+			case VkFormat.Astc5x5x5SrgbBlockEXT: return 0;
+			case VkFormat.Astc5x5x5SfloatBlockEXT: return 0;
+			case VkFormat.Astc6x5x5UnormBlockEXT: return 0;
+			case VkFormat.Astc6x5x5SrgbBlockEXT: return 0;
+			case VkFormat.Astc6x5x5SfloatBlockEXT: return 0;
+			case VkFormat.Astc6x6x5UnormBlockEXT: return 0;
+			case VkFormat.Astc6x6x5SrgbBlockEXT: return 0;
+			case VkFormat.Astc6x6x5SfloatBlockEXT: return 0;
+			case VkFormat.Astc6x6x6UnormBlockEXT: return 0;
+			case VkFormat.Astc6x6x6SrgbBlockEXT: return 0;
+			case VkFormat.Astc6x6x6SfloatBlockEXT: return 0;
 			case VkFormat.G8B8R82Plane444Unorm: return 0;
 			case VkFormat.G10X6B10X6R10X62Plane444Unorm3Pack16: return 16;
 			case VkFormat.G12X4B12X4R12X42Plane444Unorm3Pack16: return 16;
@@ -3115,6 +3385,9 @@ unsafe partial class Vulkan
 			case VkFormat.G14X2B14X2R14X22Plane420Unorm3Pack16ARM: return 16;
 			case VkFormat.G14X2B14X2R14X22Plane422Unorm3Pack16ARM: return 16;
 			case VkFormat.R8BOOLARM: return 0;
+			case VkFormat.R16SfloatFPEncodingBFloat16ARM: return 0;
+			case VkFormat.R8SfloatFPEncodingFloat8e4m3ARM: return 0;
+			case VkFormat.R8SfloatFPEncodingFloat8e5m2ARM: return 0;
 
 			default: return 0;
 		}
