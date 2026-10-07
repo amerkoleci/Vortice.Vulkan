@@ -213,6 +213,37 @@ partial class CsCodeGenerator
         { "VkImageCreateFlags2KHR", "VK_IMAGE_CREATE_2" },
         { "VkImageCreateFlagBits2KHR", "VK_IMAGE_CREATE_2" },
 
+        // Spirv
+        { "SpvImageOperandsShift", "SpvImageOperands" },
+        { "SpvImageOperandsMask", "SpvImageOperands" },
+        { "SpvFPFastMathModeShift", "SpvFPFastMathMode" },
+        { "SpvFPFastMathModeMask", "SpvFPFastMathMode" },
+        { "SpvLoopControlShift", "SpvLoopControl" },
+        { "SpvLoopControlMask", "SpvLoopControl" },
+        { "SpvFunctionControlShift", "SpvFunctionControl" },
+        { "SpvFunctionControlMask", "SpvFunctionControl" },
+        { "SpvMemorySemanticsShift", "SpvMemorySemantics" },
+        { "SpvMemorySemanticsMask", "SpvMemorySemantics" },
+        { "SpvMemoryAccessShift", "SpvMemoryAccess" },
+        { "SpvMemoryAccessMask", "SpvMemoryAccess" },
+        { "SpvKernelProfilingInfoShift", "SpvKernelProfilingInfo" },
+        { "SpvKernelProfilingInfoMask", "SpvKernelProfilingInfo" },
+        { "SpvRayFlagsShift", "SpvRayFlags" },
+        { "SpvRayFlagsMask", "SpvRayFlags" },
+        { "SpvFragmentShadingRateMask", "SpvFragmentShadingRate" },
+        { "SpvCooperativeMatrixOperandsShift", "SpvCooperativeMatrixOperands" },
+        { "SpvCooperativeMatrixOperandsMask", "SpvCooperativeMatrixOperands" },
+        { "SpvCooperativeMatrixReduceShift", "SpvCooperativeMatrixReduce" },
+        { "SpvCooperativeMatrixReduceMask", "SpvCooperativeMatrixReduce" },
+        { "SpvTensorAddressingOperandsShift", "SpvTensorAddressingOperands" },
+        { "SpvTensorAddressingOperandsMask", "SpvTensorAddressingOperands" },
+        { "SpvTensorOperandsShift", "SpvTensorOperands" },
+        { "SpvTensorOperandsMask", "SpvTensorOperands" },
+        { "SpvMatrixMultiplyAccumulateOperandsShift", "SpvMatrixMultiplyAccumulateOperands" },
+        { "SpvMatrixMultiplyAccumulateOperandsMask", "SpvMatrixMultiplyAccumulateOperands" },
+        { "SpvRawAccessChainOperandsShift", "SpvRawAccessChainOperands" },
+        { "SpvRawAccessChainOperandsMask", "SpvRawAccessChainOperands" },
+
         // spvc
         { "spvc_result", "SPVC_ERROR" },
         { "spvc_hlsl_binding_flag_bits", "SPVC_HLSL_BINDING_AUTO" },
@@ -222,6 +253,8 @@ partial class CsCodeGenerator
         {  "SpvReflectResourceType", "SPV_REFLECT_RESOURCE_FLAG" },
         {  "SpvReflectArrayDimType", "SPV_REFLECT_ARRAY_DIM" },
         {  "SpvReflectExecutionModeValue", "SPV_REFLECT_EXECUTION_MODE" },
+
+
     };
 
     private static readonly HashSet<string> s_ignoredParts = new(StringComparer.OrdinalIgnoreCase)
@@ -363,7 +396,23 @@ partial class CsCodeGenerator
 
             bool shouldGeneratePrettyPrefix = _options.IsVulkan || enumName.StartsWith("Vma") || enumName.StartsWith("spvc_") || enumName.StartsWith("SpvReflect");
             string enumCsName = GetCsCleanName(enumName, shouldGeneratePrettyPrefix);
-            string enumNamePrefix = shouldGeneratePrettyPrefix ? GetEnumNamePrefix(enumName) : enumName;
+
+            string enumNamePrefix;
+            if (shouldGeneratePrettyPrefix)
+            {
+                enumNamePrefix = GetEnumNamePrefix(enumName);
+            }
+            else
+            {
+                if (s_knownEnumPrefixes.TryGetValue(enumName, out string? knownValue))
+                {
+                    enumNamePrefix = knownValue;
+                }
+                else
+                {
+                    enumNamePrefix = enumName;
+                }
+            }
 
             // Rename FlagBits in Flags.
             if (isBitmask)
@@ -445,8 +494,9 @@ partial class CsCodeGenerator
 
             using (writer.PushBlock($"{visibility} enum {enumCsName}{baseTypeDecl}"))
             {
-                if (isBitmask &&
-                    !cppEnum.Items.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "None"))
+                if (isBitmask
+                    && !cppEnum.Items.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "None")
+                    && !cppEnum.Items.Any(item => GetPrettyEnumName(item.Name, enumNamePrefix) == "MaskNone"))
                 {
                     writer.WriteLine("None = 0,");
                     noneAdded = true;
@@ -497,6 +547,10 @@ partial class CsCodeGenerator
                     }
 
                     string enumItemName = GetEnumItemName(cppEnum.Name, enumItem.Name, enumNamePrefix);
+                    if (enumItemName == "2x2Shift")
+                    {
+
+                    }
 
                     if (!string.IsNullOrEmpty(extensionPrefix) && enumItemName.EndsWith(extensionPrefix))
                     {
@@ -692,7 +746,7 @@ partial class CsCodeGenerator
                         }
                     }
 
-                    if(fieldType.EndsWith("FlagBits2"))
+                    if (fieldType.EndsWith("FlagBits2"))
                     {
                         fieldType = fieldType.Replace("FlagBits2", "Flags2");
                     }
@@ -724,7 +778,7 @@ partial class CsCodeGenerator
                     {
                         fieldType = fieldType.Replace("FlagBitsEXT", "FlagsEXT");
                     }
-                    else if(fieldType.EndsWith("FlagBits4"))
+                    else if (fieldType.EndsWith("FlagBits4"))
                     {
                         fieldType = fieldType.Replace("FlagBits4", "Flags4");
                     }
@@ -1223,6 +1277,10 @@ partial class CsCodeGenerator
                 if (enumPrefix.EndsWith("SpvDim"))
                 {
                     return "Dim" + result;
+                }
+                else
+                {
+                    return "_" + result;
                 }
             }
 

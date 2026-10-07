@@ -10,6 +10,7 @@
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Diagnostics.CodeAnalysis;
+using static Vortice.Vulkan.Vulkan;
 
 #pragma warning disable CS0649
 namespace Vortice.Vulkan;
@@ -50,6 +51,7 @@ public unsafe partial struct VmaVulkanFunctions
 	public delegate* unmanaged<VkDevice, VkDeviceBufferMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceBufferMemoryRequirements;
 	public delegate* unmanaged<VkDevice, VkDeviceImageMemoryRequirements*, VkMemoryRequirements2*, void> vkGetDeviceImageMemoryRequirements;
 	public void* vkGetMemoryWin32HandleKHR;
+	public delegate* unmanaged<VkPhysicalDevice, VkPhysicalDeviceProperties2*, void> vkGetPhysicalDeviceProperties2KHR;
 }
 
 public unsafe partial struct VmaAllocatorCreateInfo
@@ -128,6 +130,7 @@ public unsafe partial struct VmaAllocationCreateInfo
 	public VmaPool pool;
 	public void* pUserData;
 	public float priority;
+	public ulong minAlignment;
 }
 
 public unsafe partial struct VmaPoolCreateInfo

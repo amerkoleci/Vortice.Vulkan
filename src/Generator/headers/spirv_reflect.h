@@ -118,6 +118,7 @@ typedef enum SpvReflectTypeFlagBits {
   SPV_REFLECT_TYPE_FLAG_EXTERNAL_SAMPLED_IMAGE          = 0x00040000,
   SPV_REFLECT_TYPE_FLAG_EXTERNAL_BLOCK                  = 0x00080000,
   SPV_REFLECT_TYPE_FLAG_EXTERNAL_ACCELERATION_STRUCTURE = 0x00100000,
+  SPV_REFLECT_TYPE_FLAG_EXTERNAL_TENSOR_ARM             = 0x00200000,
   SPV_REFLECT_TYPE_FLAG_EXTERNAL_MASK                   = 0x00FF0000,
   SPV_REFLECT_TYPE_FLAG_STRUCT                          = 0x10000000,
   SPV_REFLECT_TYPE_FLAG_ARRAY                           = 0x20000000,
@@ -285,7 +286,8 @@ typedef enum SpvReflectDescriptorType {
   SPV_REFLECT_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC     =  8,        // = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC
   SPV_REFLECT_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC     =  9,        // = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC
   SPV_REFLECT_DESCRIPTOR_TYPE_INPUT_ATTACHMENT           = 10,        // = VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT
-  SPV_REFLECT_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR = 1000150000 // = VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR
+  SPV_REFLECT_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR = 1000150000, // = VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR
+  SPV_REFLECT_DESCRIPTOR_TYPE_TENSOR_ARM                 = 1000460000  // = VK_DESCRIPTOR_TYPE_TENSOR_ARM
 } SpvReflectDescriptorType;
 
 /*! @enum SpvReflectShaderStageFlagBits
@@ -385,6 +387,13 @@ typedef struct SpvReflectBindingArrayTraits {
   uint32_t                          dims[SPV_REFLECT_MAX_ARRAY_DIMS];
 } SpvReflectBindingArrayTraits;
 
+typedef struct SpvReflectTensorTraits {
+  // 0 if the tensor is unranked, ~0 if the rank is not an OpConstant
+  uint32_t                          rank;
+  // All 0 if the tensor is not shaped, ~0 for a dimension that is not an OpConstant
+  uint32_t                          dims[SPV_REFLECT_MAX_ARRAY_DIMS];
+} SpvReflectTensorTraits;
+
 /*! @struct SpvReflectTypeDescription
     @brief Information about an OpType* instruction
 */
@@ -404,6 +413,7 @@ typedef struct SpvReflectTypeDescription {
     SpvReflectNumericTraits         numeric;
     SpvReflectImageTraits           image;
     SpvReflectArrayTraits           array;
+    SpvReflectTensorTraits          tensor;
   } traits;
 
   // If underlying type is a struct (ex. array of structs)
@@ -527,6 +537,29 @@ typedef enum SpvReflectExecutionModeValue {
   SPV_REFLECT_EXECUTION_MODE_SPEC_CONSTANT = 0xFFFFFFFF // specialization constant
 } SpvReflectExecutionModeValue;
 
+/*! @struct SpvReflectEntryPointResourceHeapAccess
+    @brief One distinct resource-heap access pattern (OpUntypedAccessChainKHR
+           element type + stride) reachable from this entry point.
+*/
+typedef struct SpvReflectEntryPointResourceHeapAccess {
+  const char*                       heap_name;
+  uint32_t                          runtime_array_type_id;
+  uint32_t                          stride;  // UINT32_MAX when not specified by shader (e.g. ArrayStride from OpConstantSizeOfEXT) or could not be resolved
+  SpvReflectDescriptorType          descriptor_type;
+  SpvReflectTypeDescription*        type_description;
+} SpvReflectEntryPointResourceHeapAccess;
+
+/*! @struct SpvReflectEntryPointSamplerHeapAccess
+    @brief One distinct sampler-heap access pattern reachable from this entry
+           point (usually at most one).
+*/
+typedef struct SpvReflectEntryPointSamplerHeapAccess {
+  const char*                       heap_name;
+  uint32_t                          runtime_array_type_id;
+  uint32_t                          stride;  // UINT32_MAX when not specified by shader (e.g. ArrayStride from OpConstantSizeOfEXT) or could not be resolved
+  SpvReflectTypeDescription*        type_description;
+} SpvReflectEntryPointSamplerHeapAccess;
+
 /*! @struct SpvReflectEntryPoint
 
  */
@@ -562,7 +595,28 @@ typedef struct SpvReflectEntryPoint {
   } local_size;
   uint32_t                          invocations; // valid for geometry
   uint32_t                          output_vertices; // valid for geometry, tesselation
+
+  // SPV_EXT_descriptor_heap: distinct heap access patterns reachable from this
+  // entry point's static call graph. Each entry corresponds to a unique
+  // (heap variable, OpUntypedAccessChainKHR Data Type) pair.
+  uint32_t                                resource_heap_access_count;
+  SpvReflectEntryPointResourceHeapAccess* resource_heap_accesses;
+  uint32_t                                sampler_heap_access_count;
+  SpvReflectEntryPointSamplerHeapAccess*  sampler_heap_accesses;
 } SpvReflectEntryPoint;
+
+/*! @struct SpvReflectGraphEntryPoint
+    @brief An OpGraphEntryPointARM (SPV_ARM_graph)
+*/
+typedef struct SpvReflectGraphEntryPoint {
+  const char*                       name;
+  uint32_t                          id; // OpGraphARM
+
+  uint32_t                          input_count;
+  SpvReflectDescriptorBinding**     inputs;
+  uint32_t                          output_count;
+  SpvReflectDescriptorBinding**     outputs;
+} SpvReflectGraphEntryPoint;
 
 /*! @struct SpvReflectCapability
 
@@ -628,6 +682,8 @@ typedef struct SpvReflectShaderModule {
   SpvReflectBlockVariable*          push_constant_blocks;                             // Uses value(s) from first entry point
   uint32_t                          spec_constant_count;                              // Uses value(s) from first entry point
   SpvReflectSpecializationConstant* spec_constants;                                   // Uses value(s) from first entry point
+  uint32_t                          graph_entry_point_count;
+  SpvReflectGraphEntryPoint*        graph_entry_points;
 
   struct Internal {
     SpvReflectModuleFlags           module_flags;
@@ -716,6 +772,18 @@ const uint32_t* spvReflectGetCode(const SpvReflectShaderModule* p_module);
                       or NULL if it's not found.
 */
 const SpvReflectEntryPoint* spvReflectGetEntryPoint(
+  const SpvReflectShaderModule* p_module,
+  const char*                   entry_point
+);
+
+/*! @fn spvReflectGetGraphEntryPoint
+
+ @param  p_module     Pointer to an instance of SpvReflectShaderModule.
+ @param  entry_point  Name of the requested graph entry point.
+ @return              Returns a const pointer to the requested graph entry point,
+                      or NULL if it's not found.
+*/
+const SpvReflectGraphEntryPoint* spvReflectGetGraphEntryPoint(
   const SpvReflectShaderModule* p_module,
   const char*                   entry_point
 );

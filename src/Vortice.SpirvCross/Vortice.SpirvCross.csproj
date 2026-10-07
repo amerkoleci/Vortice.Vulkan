@@ -10,7 +10,7 @@
 
   <!-- Verion -->
   <PropertyGroup>
-    <VersionPrefix>1.5.4</VersionPrefix>
+    <VersionPrefix>1.6.0</VersionPrefix>
     <VersionSuffix Condition="'$(VersionSuffix)' == ''"></VersionSuffix>
   </PropertyGroup>
 
@@ -32,6 +32,11 @@
     </Content>
     <Content Include="$(NativeLibDirectory)linux-x64\libspirv-cross.so">
       <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(NativeLibDirectory)linux-arm64\libspirv-cross.so">
+      <PackagePath>runtimes/linux-arm64/native</PackagePath>
       <Pack>True</Pack>
       <Visible>False</Visible>
     </Content>

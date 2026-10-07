@@ -64,6 +64,12 @@ public unsafe partial struct SpvReflectBindingArrayTraits
 	public fixed uint dims[32];
 }
 
+public unsafe partial struct SpvReflectTensorTraits
+{
+	public uint rank;
+	public fixed uint dims[32];
+}
+
 public unsafe partial struct SpvReflectTypeDescription
 {
 	public uint id;
@@ -80,6 +86,7 @@ public unsafe partial struct SpvReflectTypeDescription
 		public SpvReflectNumericTraits numeric;
 		public SpvReflectImageTraits image;
 		public SpvReflectArrayTraits array;
+		public SpvReflectTensorTraits tensor;
 	}
 	public SpvReflectTypeDescription* struct_type_description;
 	public uint copied;
@@ -171,6 +178,23 @@ public unsafe partial struct SpvReflectDescriptorSet
 	public SpvReflectDescriptorBinding** bindings;
 }
 
+public unsafe partial struct SpvReflectEntryPointResourceHeapAccess
+{
+	public byte* heap_name;
+	public uint runtime_array_type_id;
+	public uint stride;
+	public SpvReflectDescriptorType descriptor_type;
+	public SpvReflectTypeDescription* type_description;
+}
+
+public unsafe partial struct SpvReflectEntryPointSamplerHeapAccess
+{
+	public byte* heap_name;
+	public uint runtime_array_type_id;
+	public uint stride;
+	public SpvReflectTypeDescription* type_description;
+}
+
 public unsafe partial struct SpvReflectEntryPoint
 {
 	public byte* name;
@@ -201,6 +225,20 @@ public unsafe partial struct SpvReflectEntryPoint
 	}
 	public uint invocations;
 	public uint output_vertices;
+	public uint resource_heap_access_count;
+	public SpvReflectEntryPointResourceHeapAccess* resource_heap_accesses;
+	public uint sampler_heap_access_count;
+	public SpvReflectEntryPointSamplerHeapAccess* sampler_heap_accesses;
+}
+
+public unsafe partial struct SpvReflectGraphEntryPoint
+{
+	public byte* name;
+	public uint id;
+	public uint input_count;
+	public SpvReflectDescriptorBinding** inputs;
+	public uint output_count;
+	public SpvReflectDescriptorBinding** outputs;
 }
 
 public partial struct SpvReflectCapability
@@ -254,6 +292,8 @@ public unsafe partial struct SpvReflectShaderModule
 	public SpvReflectBlockVariable* push_constant_blocks;
 	public uint spec_constant_count;
 	public SpvReflectSpecializationConstant* spec_constants;
+	public uint graph_entry_point_count;
+	public SpvReflectGraphEntryPoint* graph_entry_points;
 	public Internal* _internal;
 	
 	public unsafe partial struct Internal

@@ -37,6 +37,9 @@ unsafe partial class SPIRVReflectApi
 	[LibraryImport(LibName, EntryPoint = "spvReflectGetEntryPoint")]
 	public static partial SpvReflectEntryPoint* spvReflectGetEntryPoint(SpvReflectShaderModule* p_module, byte* entry_point);
 
+	[LibraryImport(LibName, EntryPoint = "spvReflectGetGraphEntryPoint")]
+	public static partial SpvReflectGraphEntryPoint* spvReflectGetGraphEntryPoint(SpvReflectShaderModule* p_module, byte* entry_point);
+
 	[LibraryImport(LibName, EntryPoint = "spvReflectEnumerateDescriptorBindings")]
 	public static partial SpvReflectResult spvReflectEnumerateDescriptorBindings(SpvReflectShaderModule* p_module, uint* p_count, SpvReflectDescriptorBinding** pp_bindings);
 

@@ -29,6 +29,18 @@ public enum SpvSourceLanguage
 	CPP_for_OpenCL = 6,
 	/// <unmanaged>SpvSourceLanguageSYCL</unmanaged>
 	SYCL = 7,
+	/// <unmanaged>SpvSourceLanguageHERO_C</unmanaged>
+	HERO_C = 8,
+	/// <unmanaged>SpvSourceLanguageNZSL</unmanaged>
+	NZSL = 9,
+	/// <unmanaged>SpvSourceLanguageWGSL</unmanaged>
+	WGSL = 10,
+	/// <unmanaged>SpvSourceLanguageSlang</unmanaged>
+	Slang = 11,
+	/// <unmanaged>SpvSourceLanguageZig</unmanaged>
+	Zig = 12,
+	/// <unmanaged>SpvSourceLanguageRust</unmanaged>
+	Rust = 13,
 }
 
 public enum SpvExecutionModel
@@ -187,6 +199,12 @@ public enum SpvExecutionMode
 	LocalSizeId = 38,
 	/// <unmanaged>SpvExecutionModeLocalSizeHintId</unmanaged>
 	LocalSizeHintId = 39,
+	/// <unmanaged>SpvExecutionModeNonCoherentColorAttachmentReadEXT</unmanaged>
+	NonCoherentColorAttachmentReadEXT = 4169,
+	/// <unmanaged>SpvExecutionModeNonCoherentDepthAttachmentReadEXT</unmanaged>
+	NonCoherentDepthAttachmentReadEXT = 4170,
+	/// <unmanaged>SpvExecutionModeNonCoherentStencilAttachmentReadEXT</unmanaged>
+	NonCoherentStencilAttachmentReadEXT = 4171,
 	/// <unmanaged>SpvExecutionModeSubgroupUniformControlFlowKHR</unmanaged>
 	SubgroupUniformControlFlowKHR = 4421,
 	/// <unmanaged>SpvExecutionModePostDepthCoverage</unmanaged>
@@ -201,10 +219,26 @@ public enum SpvExecutionMode
 	RoundingModeRTE = 4462,
 	/// <unmanaged>SpvExecutionModeRoundingModeRTZ</unmanaged>
 	RoundingModeRTZ = 4463,
+	/// <unmanaged>SpvExecutionModeNonCoherentTileAttachmentReadQCOM</unmanaged>
+	NonCoherentTileAttachmentReadQCOM = 4489,
+	/// <unmanaged>SpvExecutionModeTileShadingRateQCOM</unmanaged>
+	TileShadingRateQCOM = 4490,
 	/// <unmanaged>SpvExecutionModeEarlyAndLateFragmentTestsAMD</unmanaged>
 	EarlyAndLateFragmentTestsAMD = 5017,
 	/// <unmanaged>SpvExecutionModeStencilRefReplacingEXT</unmanaged>
 	StencilRefReplacingEXT = 5027,
+	/// <unmanaged>SpvExecutionModeCoalescingAMDX</unmanaged>
+	CoalescingAMDX = 5069,
+	/// <unmanaged>SpvExecutionModeIsApiEntryAMDX</unmanaged>
+	IsApiEntryAMDX = 5070,
+	/// <unmanaged>SpvExecutionModeMaxNodeRecursionAMDX</unmanaged>
+	MaxNodeRecursionAMDX = 5071,
+	/// <unmanaged>SpvExecutionModeStaticNumWorkgroupsAMDX</unmanaged>
+	StaticNumWorkgroupsAMDX = 5072,
+	/// <unmanaged>SpvExecutionModeShaderIndexAMDX</unmanaged>
+	ShaderIndexAMDX = 5073,
+	/// <unmanaged>SpvExecutionModeMaxNumWorkgroupsAMDX</unmanaged>
+	MaxNumWorkgroupsAMDX = 5077,
 	/// <unmanaged>SpvExecutionModeStencilRefUnchangedFrontAMD</unmanaged>
 	StencilRefUnchangedFrontAMD = 5079,
 	/// <unmanaged>SpvExecutionModeStencilRefGreaterFrontAMD</unmanaged>
@@ -217,6 +251,14 @@ public enum SpvExecutionMode
 	StencilRefGreaterBackAMD = 5083,
 	/// <unmanaged>SpvExecutionModeStencilRefLessBackAMD</unmanaged>
 	StencilRefLessBackAMD = 5084,
+	/// <unmanaged>SpvExecutionModeQuadDerivativesKHR</unmanaged>
+	QuadDerivativesKHR = 5088,
+	/// <unmanaged>SpvExecutionModeRequireFullQuadsKHR</unmanaged>
+	RequireFullQuadsKHR = 5089,
+	/// <unmanaged>SpvExecutionModeSharesInputWithAMDX</unmanaged>
+	SharesInputWithAMDX = 5102,
+	/// <unmanaged>SpvExecutionModeArithmeticPoisonKHR</unmanaged>
+	ArithmeticPoisonKHR = 5157,
 	/// <unmanaged>SpvExecutionModeOutputLinesEXT</unmanaged>
 	OutputLinesEXT = 5269,
 	/// <unmanaged>SpvExecutionModeOutputLinesNV</unmanaged>
@@ -225,8 +267,12 @@ public enum SpvExecutionMode
 	OutputPrimitivesEXT = 5270,
 	/// <unmanaged>SpvExecutionModeOutputPrimitivesNV</unmanaged>
 	OutputPrimitivesNV = 5270,
+	/// <unmanaged>SpvExecutionModeDerivativeGroupQuadsKHR</unmanaged>
+	DerivativeGroupQuadsKHR = 5289,
 	/// <unmanaged>SpvExecutionModeDerivativeGroupQuadsNV</unmanaged>
 	DerivativeGroupQuadsNV = 5289,
+	/// <unmanaged>SpvExecutionModeDerivativeGroupLinearKHR</unmanaged>
+	DerivativeGroupLinearKHR = 5290,
 	/// <unmanaged>SpvExecutionModeDerivativeGroupLinearNV</unmanaged>
 	DerivativeGroupLinearNV = 5290,
 	/// <unmanaged>SpvExecutionModeOutputTrianglesEXT</unmanaged>
@@ -245,6 +291,8 @@ public enum SpvExecutionMode
 	ShadingRateInterlockOrderedEXT = 5370,
 	/// <unmanaged>SpvExecutionModeShadingRateInterlockUnorderedEXT</unmanaged>
 	ShadingRateInterlockUnorderedEXT = 5371,
+	/// <unmanaged>SpvExecutionModeShader64BitIndexingEXT</unmanaged>
+	Shader64BitIndexingEXT = 5427,
 	/// <unmanaged>SpvExecutionModeSharedLocalMemorySizeINTEL</unmanaged>
 	SharedLocalMemorySizeINTEL = 5618,
 	/// <unmanaged>SpvExecutionModeRoundingModeRTPINTEL</unmanaged>
@@ -265,8 +313,22 @@ public enum SpvExecutionMode
 	NumSIMDWorkitemsINTEL = 5896,
 	/// <unmanaged>SpvExecutionModeSchedulerTargetFmaxMhzINTEL</unmanaged>
 	SchedulerTargetFmaxMhzINTEL = 5903,
+	/// <unmanaged>SpvExecutionModeMaximallyReconvergesKHR</unmanaged>
+	MaximallyReconvergesKHR = 6023,
+	/// <unmanaged>SpvExecutionModeFPFastMathDefault</unmanaged>
+	FPFastMathDefault = 6028,
+	/// <unmanaged>SpvExecutionModeStreamingInterfaceINTEL</unmanaged>
+	StreamingInterfaceINTEL = 6154,
+	/// <unmanaged>SpvExecutionModeRegisterMapInterfaceINTEL</unmanaged>
+	RegisterMapInterfaceINTEL = 6160,
 	/// <unmanaged>SpvExecutionModeNamedBarrierCountINTEL</unmanaged>
 	NamedBarrierCountINTEL = 6417,
+	/// <unmanaged>SpvExecutionModeMaximumRegistersINTEL</unmanaged>
+	MaximumRegistersINTEL = 6461,
+	/// <unmanaged>SpvExecutionModeMaximumRegistersIdINTEL</unmanaged>
+	MaximumRegistersIdINTEL = 6462,
+	/// <unmanaged>SpvExecutionModeNamedMaximumRegistersINTEL</unmanaged>
+	NamedMaximumRegistersINTEL = 6463,
 }
 
 public enum SpvStorageClass
@@ -297,6 +359,12 @@ public enum SpvStorageClass
 	Image = 11,
 	/// <unmanaged>SpvStorageClassStorageBuffer</unmanaged>
 	StorageBuffer = 12,
+	/// <unmanaged>SpvStorageClassTileImageEXT</unmanaged>
+	TileImageEXT = 4172,
+	/// <unmanaged>SpvStorageClassTileAttachmentQCOM</unmanaged>
+	TileAttachmentQCOM = 4491,
+	/// <unmanaged>SpvStorageClassNodePayloadAMDX</unmanaged>
+	NodePayloadAMDX = 5068,
 	/// <unmanaged>SpvStorageClassCallableDataKHR</unmanaged>
 	CallableDataKHR = 5328,
 	/// <unmanaged>SpvStorageClassCallableDataNV</unmanaged>
@@ -325,12 +393,20 @@ public enum SpvStorageClass
 	PhysicalStorageBuffer = 5349,
 	/// <unmanaged>SpvStorageClassPhysicalStorageBufferEXT</unmanaged>
 	PhysicalStorageBufferEXT = 5349,
+	/// <unmanaged>SpvStorageClassHitObjectAttributeNV</unmanaged>
+	HitObjectAttributeNV = 5385,
 	/// <unmanaged>SpvStorageClassTaskPayloadWorkgroupEXT</unmanaged>
 	TaskPayloadWorkgroupEXT = 5402,
+	/// <unmanaged>SpvStorageClassHitObjectAttributeEXT</unmanaged>
+	HitObjectAttributeEXT = 5411,
 	/// <unmanaged>SpvStorageClassCodeSectionINTEL</unmanaged>
 	CodeSectionINTEL = 5605,
+	/// <unmanaged>SpvStorageClassDeviceOnlyALTERA</unmanaged>
+	DeviceOnlyALTERA = 5936,
 	/// <unmanaged>SpvStorageClassDeviceOnlyINTEL</unmanaged>
 	DeviceOnlyINTEL = 5936,
+	/// <unmanaged>SpvStorageClassHostOnlyALTERA</unmanaged>
+	HostOnlyALTERA = 5937,
 	/// <unmanaged>SpvStorageClassHostOnlyINTEL</unmanaged>
 	HostOnlyINTEL = 5937,
 }
@@ -351,6 +427,8 @@ public enum SpvDim
 	Buffer = 5,
 	/// <unmanaged>SpvDimSubpassData</unmanaged>
 	SubpassData = 6,
+	/// <unmanaged>SpvDimTileImageDataEXT</unmanaged>
+	TileImageDataEXT = 4173,
 }
 
 public enum SpvSamplerAddressingMode
@@ -543,140 +621,166 @@ public enum SpvImageChannelDataType
 	UnormInt24 = 15,
 	/// <unmanaged>SpvImageChannelDataTypeUnormInt101010_2</unmanaged>
 	UnormInt101010_2 = 16,
+	/// <unmanaged>SpvImageChannelDataTypeUnormInt10X6EXT</unmanaged>
+	UnormInt10X6EXT = 17,
+	/// <unmanaged>SpvImageChannelDataTypeUnsignedIntRaw10EXT</unmanaged>
+	UnsignedIntRaw10EXT = 19,
+	/// <unmanaged>SpvImageChannelDataTypeUnsignedIntRaw12EXT</unmanaged>
+	UnsignedIntRaw12EXT = 20,
+	/// <unmanaged>SpvImageChannelDataTypeUnormInt2_101010EXT</unmanaged>
+	UnormInt2_101010EXT = 21,
+	/// <unmanaged>SpvImageChannelDataTypeUnsignedInt10X6EXT</unmanaged>
+	UnsignedInt10X6EXT = 22,
+	/// <unmanaged>SpvImageChannelDataTypeUnsignedInt12X4EXT</unmanaged>
+	UnsignedInt12X4EXT = 23,
+	/// <unmanaged>SpvImageChannelDataTypeUnsignedInt14X2EXT</unmanaged>
+	UnsignedInt14X2EXT = 24,
+	/// <unmanaged>SpvImageChannelDataTypeUnormInt12X4EXT</unmanaged>
+	UnormInt12X4EXT = 25,
+	/// <unmanaged>SpvImageChannelDataTypeUnormInt14X2EXT</unmanaged>
+	UnormInt14X2EXT = 26,
 }
 
 public enum SpvImageOperandsShift
 {
 	/// <unmanaged>SpvImageOperandsBiasShift</unmanaged>
-	SpvImageOperandsBiasShift = 0,
+	BiasShift = 0,
 	/// <unmanaged>SpvImageOperandsLodShift</unmanaged>
-	SpvImageOperandsLodShift = 1,
+	LodShift = 1,
 	/// <unmanaged>SpvImageOperandsGradShift</unmanaged>
-	SpvImageOperandsGradShift = 2,
+	GradShift = 2,
 	/// <unmanaged>SpvImageOperandsConstOffsetShift</unmanaged>
-	SpvImageOperandsConstOffsetShift = 3,
+	ConstOffsetShift = 3,
 	/// <unmanaged>SpvImageOperandsOffsetShift</unmanaged>
-	SpvImageOperandsOffsetShift = 4,
+	OffsetShift = 4,
 	/// <unmanaged>SpvImageOperandsConstOffsetsShift</unmanaged>
-	SpvImageOperandsConstOffsetsShift = 5,
+	ConstOffsetsShift = 5,
 	/// <unmanaged>SpvImageOperandsSampleShift</unmanaged>
-	SpvImageOperandsSampleShift = 6,
+	SampleShift = 6,
 	/// <unmanaged>SpvImageOperandsMinLodShift</unmanaged>
-	SpvImageOperandsMinLodShift = 7,
+	MinLodShift = 7,
 	/// <unmanaged>SpvImageOperandsMakeTexelAvailableShift</unmanaged>
-	SpvImageOperandsMakeTexelAvailableShift = 8,
+	MakeTexelAvailableShift = 8,
 	/// <unmanaged>SpvImageOperandsMakeTexelAvailableKHRShift</unmanaged>
-	SpvImageOperandsMakeTexelAvailableKHRShift = 8,
+	MakeTexelAvailableKHRShift = 8,
 	/// <unmanaged>SpvImageOperandsMakeTexelVisibleShift</unmanaged>
-	SpvImageOperandsMakeTexelVisibleShift = 9,
+	MakeTexelVisibleShift = 9,
 	/// <unmanaged>SpvImageOperandsMakeTexelVisibleKHRShift</unmanaged>
-	SpvImageOperandsMakeTexelVisibleKHRShift = 9,
+	MakeTexelVisibleKHRShift = 9,
 	/// <unmanaged>SpvImageOperandsNonPrivateTexelShift</unmanaged>
-	SpvImageOperandsNonPrivateTexelShift = 10,
+	NonPrivateTexelShift = 10,
 	/// <unmanaged>SpvImageOperandsNonPrivateTexelKHRShift</unmanaged>
-	SpvImageOperandsNonPrivateTexelKHRShift = 10,
+	NonPrivateTexelKHRShift = 10,
 	/// <unmanaged>SpvImageOperandsVolatileTexelShift</unmanaged>
-	SpvImageOperandsVolatileTexelShift = 11,
+	VolatileTexelShift = 11,
 	/// <unmanaged>SpvImageOperandsVolatileTexelKHRShift</unmanaged>
-	SpvImageOperandsVolatileTexelKHRShift = 11,
+	VolatileTexelKHRShift = 11,
 	/// <unmanaged>SpvImageOperandsSignExtendShift</unmanaged>
-	SpvImageOperandsSignExtendShift = 12,
+	SignExtendShift = 12,
 	/// <unmanaged>SpvImageOperandsZeroExtendShift</unmanaged>
-	SpvImageOperandsZeroExtendShift = 13,
+	ZeroExtendShift = 13,
 	/// <unmanaged>SpvImageOperandsNontemporalShift</unmanaged>
-	SpvImageOperandsNontemporalShift = 14,
+	NontemporalShift = 14,
 	/// <unmanaged>SpvImageOperandsOffsetsShift</unmanaged>
-	SpvImageOperandsOffsetsShift = 16,
-	/// <unmanaged>SpvImageOperandsMax</unmanaged>
-	SpvImageOperandsMax = 0x7fffffff,
+	OffsetsShift = 16,
 }
 
 [Flags]
 public enum SpvImageOperandsMask
 {
 	/// <unmanaged>SpvImageOperandsMaskNone</unmanaged>
-	None = 0,
+	MaskNone = 0,
 	/// <unmanaged>SpvImageOperandsBiasMask</unmanaged>
-	SpvImageOperandsBiasMask = 0x00000001,
+	BiasMask = 0x00000001,
 	/// <unmanaged>SpvImageOperandsLodMask</unmanaged>
-	SpvImageOperandsLodMask = 0x00000002,
+	LodMask = 0x00000002,
 	/// <unmanaged>SpvImageOperandsGradMask</unmanaged>
-	SpvImageOperandsGradMask = 0x00000004,
+	GradMask = 0x00000004,
 	/// <unmanaged>SpvImageOperandsConstOffsetMask</unmanaged>
-	SpvImageOperandsConstOffsetMask = 0x00000008,
+	ConstOffsetMask = 0x00000008,
 	/// <unmanaged>SpvImageOperandsOffsetMask</unmanaged>
-	SpvImageOperandsOffsetMask = 0x00000010,
+	OffsetMask = 0x00000010,
 	/// <unmanaged>SpvImageOperandsConstOffsetsMask</unmanaged>
-	SpvImageOperandsConstOffsetsMask = 0x00000020,
+	ConstOffsetsMask = 0x00000020,
 	/// <unmanaged>SpvImageOperandsSampleMask</unmanaged>
-	SpvImageOperandsSampleMask = 0x00000040,
+	SampleMask = 0x00000040,
 	/// <unmanaged>SpvImageOperandsMinLodMask</unmanaged>
-	SpvImageOperandsMinLodMask = 0x00000080,
+	MinLodMask = 0x00000080,
 	/// <unmanaged>SpvImageOperandsMakeTexelAvailableMask</unmanaged>
-	SpvImageOperandsMakeTexelAvailableMask = 0x00000100,
+	MakeTexelAvailableMask = 0x00000100,
 	/// <unmanaged>SpvImageOperandsMakeTexelAvailableKHRMask</unmanaged>
-	SpvImageOperandsMakeTexelAvailableKHRMask = 0x00000100,
+	MakeTexelAvailableKHRMask = 0x00000100,
 	/// <unmanaged>SpvImageOperandsMakeTexelVisibleMask</unmanaged>
-	SpvImageOperandsMakeTexelVisibleMask = 0x00000200,
+	MakeTexelVisibleMask = 0x00000200,
 	/// <unmanaged>SpvImageOperandsMakeTexelVisibleKHRMask</unmanaged>
-	SpvImageOperandsMakeTexelVisibleKHRMask = 0x00000200,
+	MakeTexelVisibleKHRMask = 0x00000200,
 	/// <unmanaged>SpvImageOperandsNonPrivateTexelMask</unmanaged>
-	SpvImageOperandsNonPrivateTexelMask = 0x00000400,
+	NonPrivateTexelMask = 0x00000400,
 	/// <unmanaged>SpvImageOperandsNonPrivateTexelKHRMask</unmanaged>
-	SpvImageOperandsNonPrivateTexelKHRMask = 0x00000400,
+	NonPrivateTexelKHRMask = 0x00000400,
 	/// <unmanaged>SpvImageOperandsVolatileTexelMask</unmanaged>
-	SpvImageOperandsVolatileTexelMask = 0x00000800,
+	VolatileTexelMask = 0x00000800,
 	/// <unmanaged>SpvImageOperandsVolatileTexelKHRMask</unmanaged>
-	SpvImageOperandsVolatileTexelKHRMask = 0x00000800,
+	VolatileTexelKHRMask = 0x00000800,
 	/// <unmanaged>SpvImageOperandsSignExtendMask</unmanaged>
-	SpvImageOperandsSignExtendMask = 0x00001000,
+	SignExtendMask = 0x00001000,
 	/// <unmanaged>SpvImageOperandsZeroExtendMask</unmanaged>
-	SpvImageOperandsZeroExtendMask = 0x00002000,
+	ZeroExtendMask = 0x00002000,
 	/// <unmanaged>SpvImageOperandsNontemporalMask</unmanaged>
-	SpvImageOperandsNontemporalMask = 0x00004000,
+	NontemporalMask = 0x00004000,
 	/// <unmanaged>SpvImageOperandsOffsetsMask</unmanaged>
-	SpvImageOperandsOffsetsMask = 0x00010000,
+	OffsetsMask = 0x00010000,
 }
 
 public enum SpvFPFastMathModeShift
 {
 	/// <unmanaged>SpvFPFastMathModeNotNaNShift</unmanaged>
-	SpvFPFastMathModeNotNaNShift = 0,
+	NotNaNShift = 0,
 	/// <unmanaged>SpvFPFastMathModeNotInfShift</unmanaged>
-	SpvFPFastMathModeNotInfShift = 1,
+	NotInfShift = 1,
 	/// <unmanaged>SpvFPFastMathModeNSZShift</unmanaged>
-	SpvFPFastMathModeNSZShift = 2,
+	NSZShift = 2,
 	/// <unmanaged>SpvFPFastMathModeAllowRecipShift</unmanaged>
-	SpvFPFastMathModeAllowRecipShift = 3,
+	AllowRecipShift = 3,
 	/// <unmanaged>SpvFPFastMathModeFastShift</unmanaged>
-	SpvFPFastMathModeFastShift = 4,
+	FastShift = 4,
+	/// <unmanaged>SpvFPFastMathModeAllowContractShift</unmanaged>
+	AllowContractShift = 16,
 	/// <unmanaged>SpvFPFastMathModeAllowContractFastINTELShift</unmanaged>
-	SpvFPFastMathModeAllowContractFastINTELShift = 16,
+	AllowContractFastINTELShift = 16,
+	/// <unmanaged>SpvFPFastMathModeAllowReassocShift</unmanaged>
+	AllowReassocShift = 17,
 	/// <unmanaged>SpvFPFastMathModeAllowReassocINTELShift</unmanaged>
-	SpvFPFastMathModeAllowReassocINTELShift = 17,
-	/// <unmanaged>SpvFPFastMathModeMax</unmanaged>
-	SpvFPFastMathModeMax = 0x7fffffff,
+	AllowReassocINTELShift = 17,
+	/// <unmanaged>SpvFPFastMathModeAllowTransformShift</unmanaged>
+	AllowTransformShift = 18,
 }
 
 [Flags]
 public enum SpvFPFastMathModeMask
 {
 	/// <unmanaged>SpvFPFastMathModeMaskNone</unmanaged>
-	None = 0,
+	MaskNone = 0,
 	/// <unmanaged>SpvFPFastMathModeNotNaNMask</unmanaged>
-	SpvFPFastMathModeNotNaNMask = 0x00000001,
+	NotNaNMask = 0x00000001,
 	/// <unmanaged>SpvFPFastMathModeNotInfMask</unmanaged>
-	SpvFPFastMathModeNotInfMask = 0x00000002,
+	NotInfMask = 0x00000002,
 	/// <unmanaged>SpvFPFastMathModeNSZMask</unmanaged>
-	SpvFPFastMathModeNSZMask = 0x00000004,
+	NSZMask = 0x00000004,
 	/// <unmanaged>SpvFPFastMathModeAllowRecipMask</unmanaged>
-	SpvFPFastMathModeAllowRecipMask = 0x00000008,
+	AllowRecipMask = 0x00000008,
 	/// <unmanaged>SpvFPFastMathModeFastMask</unmanaged>
-	SpvFPFastMathModeFastMask = 0x00000010,
+	FastMask = 0x00000010,
+	/// <unmanaged>SpvFPFastMathModeAllowContractMask</unmanaged>
+	AllowContractMask = 0x00010000,
 	/// <unmanaged>SpvFPFastMathModeAllowContractFastINTELMask</unmanaged>
-	SpvFPFastMathModeAllowContractFastINTELMask = 0x00010000,
+	AllowContractFastINTELMask = 0x00010000,
+	/// <unmanaged>SpvFPFastMathModeAllowReassocMask</unmanaged>
+	AllowReassocMask = 0x00020000,
 	/// <unmanaged>SpvFPFastMathModeAllowReassocINTELMask</unmanaged>
-	SpvFPFastMathModeAllowReassocINTELMask = 0x00020000,
+	AllowReassocINTELMask = 0x00020000,
+	/// <unmanaged>SpvFPFastMathModeAllowTransformMask</unmanaged>
+	AllowTransformMask = 0x00040000,
 }
 
 public enum SpvFPRoundingMode
@@ -729,6 +833,10 @@ public enum SpvFunctionParameterAttribute
 	NoWrite = 6,
 	/// <unmanaged>SpvFunctionParameterAttributeNoReadWrite</unmanaged>
 	NoReadWrite = 7,
+	/// <unmanaged>SpvFunctionParameterAttributeRuntimeAlignedALTERA</unmanaged>
+	RuntimeAlignedALTERA = 5940,
+	/// <unmanaged>SpvFunctionParameterAttributeRuntimeAlignedINTEL</unmanaged>
+	RuntimeAlignedINTEL = 5940,
 }
 
 public enum SpvDecoration
@@ -827,6 +935,8 @@ public enum SpvDecoration
 	AlignmentId = 46,
 	/// <unmanaged>SpvDecorationMaxByteOffsetId</unmanaged>
 	MaxByteOffsetId = 47,
+	/// <unmanaged>SpvDecorationSaturatedToLargestFloat8NormalConversionEXT</unmanaged>
+	SaturatedToLargestFloat8NormalConversionEXT = 4216,
 	/// <unmanaged>SpvDecorationNoSignedWrap</unmanaged>
 	NoSignedWrap = 4469,
 	/// <unmanaged>SpvDecorationNoUnsignedWrap</unmanaged>
@@ -839,6 +949,28 @@ public enum SpvDecoration
 	BlockMatchSamplerQCOM = 4499,
 	/// <unmanaged>SpvDecorationExplicitInterpAMD</unmanaged>
 	ExplicitInterpAMD = 4999,
+	/// <unmanaged>SpvDecorationNodeSharesPayloadLimitsWithAMDX</unmanaged>
+	NodeSharesPayloadLimitsWithAMDX = 5019,
+	/// <unmanaged>SpvDecorationNodeMaxPayloadsAMDX</unmanaged>
+	NodeMaxPayloadsAMDX = 5020,
+	/// <unmanaged>SpvDecorationTrackFinishWritingAMDX</unmanaged>
+	TrackFinishWritingAMDX = 5078,
+	/// <unmanaged>SpvDecorationPayloadNodeNameAMDX</unmanaged>
+	PayloadNodeNameAMDX = 5091,
+	/// <unmanaged>SpvDecorationPayloadNodeBaseIndexAMDX</unmanaged>
+	PayloadNodeBaseIndexAMDX = 5098,
+	/// <unmanaged>SpvDecorationPayloadNodeSparseArrayAMDX</unmanaged>
+	PayloadNodeSparseArrayAMDX = 5099,
+	/// <unmanaged>SpvDecorationPayloadNodeArraySizeAMDX</unmanaged>
+	PayloadNodeArraySizeAMDX = 5100,
+	/// <unmanaged>SpvDecorationPayloadDispatchIndirectAMDX</unmanaged>
+	PayloadDispatchIndirectAMDX = 5105,
+	/// <unmanaged>SpvDecorationArrayStrideIdEXT</unmanaged>
+	ArrayStrideIdEXT = 5124,
+	/// <unmanaged>SpvDecorationOffsetIdEXT</unmanaged>
+	OffsetIdEXT = 5125,
+	/// <unmanaged>SpvDecorationUTFEncodedKHR</unmanaged>
+	UTFEncodedKHR = 5145,
 	/// <unmanaged>SpvDecorationOverrideCoverageNV</unmanaged>
 	OverrideCoverageNV = 5248,
 	/// <unmanaged>SpvDecorationPassthroughNV</unmanaged>
@@ -871,6 +1003,14 @@ public enum SpvDecoration
 	AliasedPointer = 5356,
 	/// <unmanaged>SpvDecorationAliasedPointerEXT</unmanaged>
 	AliasedPointerEXT = 5356,
+	/// <unmanaged>SpvDecorationMemberOffsetNV</unmanaged>
+	MemberOffsetNV = 5358,
+	/// <unmanaged>SpvDecorationHitObjectShaderRecordBufferNV</unmanaged>
+	HitObjectShaderRecordBufferNV = 5386,
+	/// <unmanaged>SpvDecorationHitObjectShaderRecordBufferEXT</unmanaged>
+	HitObjectShaderRecordBufferEXT = 5389,
+	/// <unmanaged>SpvDecorationBankNV</unmanaged>
+	BankNV = 5397,
 	/// <unmanaged>SpvDecorationBindlessSamplerNV</unmanaged>
 	BindlessSamplerNV = 5398,
 	/// <unmanaged>SpvDecorationBindlessImageNV</unmanaged>
@@ -911,48 +1051,116 @@ public enum SpvDecoration
 	FunctionRoundingModeINTEL = 5822,
 	/// <unmanaged>SpvDecorationFunctionDenormModeINTEL</unmanaged>
 	FunctionDenormModeINTEL = 5823,
+	/// <unmanaged>SpvDecorationRegisterALTERA</unmanaged>
+	RegisterALTERA = 5825,
 	/// <unmanaged>SpvDecorationRegisterINTEL</unmanaged>
 	RegisterINTEL = 5825,
+	/// <unmanaged>SpvDecorationMemoryALTERA</unmanaged>
+	MemoryALTERA = 5826,
 	/// <unmanaged>SpvDecorationMemoryINTEL</unmanaged>
 	MemoryINTEL = 5826,
+	/// <unmanaged>SpvDecorationNumbanksALTERA</unmanaged>
+	NumbanksALTERA = 5827,
 	/// <unmanaged>SpvDecorationNumbanksINTEL</unmanaged>
 	NumbanksINTEL = 5827,
+	/// <unmanaged>SpvDecorationBankwidthALTERA</unmanaged>
+	BankwidthALTERA = 5828,
 	/// <unmanaged>SpvDecorationBankwidthINTEL</unmanaged>
 	BankwidthINTEL = 5828,
+	/// <unmanaged>SpvDecorationMaxPrivateCopiesALTERA</unmanaged>
+	MaxPrivateCopiesALTERA = 5829,
 	/// <unmanaged>SpvDecorationMaxPrivateCopiesINTEL</unmanaged>
 	MaxPrivateCopiesINTEL = 5829,
+	/// <unmanaged>SpvDecorationSinglepumpALTERA</unmanaged>
+	SinglepumpALTERA = 5830,
 	/// <unmanaged>SpvDecorationSinglepumpINTEL</unmanaged>
 	SinglepumpINTEL = 5830,
+	/// <unmanaged>SpvDecorationDoublepumpALTERA</unmanaged>
+	DoublepumpALTERA = 5831,
 	/// <unmanaged>SpvDecorationDoublepumpINTEL</unmanaged>
 	DoublepumpINTEL = 5831,
+	/// <unmanaged>SpvDecorationMaxReplicatesALTERA</unmanaged>
+	MaxReplicatesALTERA = 5832,
 	/// <unmanaged>SpvDecorationMaxReplicatesINTEL</unmanaged>
 	MaxReplicatesINTEL = 5832,
+	/// <unmanaged>SpvDecorationSimpleDualPortALTERA</unmanaged>
+	SimpleDualPortALTERA = 5833,
 	/// <unmanaged>SpvDecorationSimpleDualPortINTEL</unmanaged>
 	SimpleDualPortINTEL = 5833,
+	/// <unmanaged>SpvDecorationMergeALTERA</unmanaged>
+	MergeALTERA = 5834,
 	/// <unmanaged>SpvDecorationMergeINTEL</unmanaged>
 	MergeINTEL = 5834,
+	/// <unmanaged>SpvDecorationBankBitsALTERA</unmanaged>
+	BankBitsALTERA = 5835,
 	/// <unmanaged>SpvDecorationBankBitsINTEL</unmanaged>
 	BankBitsINTEL = 5835,
+	/// <unmanaged>SpvDecorationForcePow2DepthALTERA</unmanaged>
+	ForcePow2DepthALTERA = 5836,
 	/// <unmanaged>SpvDecorationForcePow2DepthINTEL</unmanaged>
 	ForcePow2DepthINTEL = 5836,
+	/// <unmanaged>SpvDecorationStridesizeALTERA</unmanaged>
+	StridesizeALTERA = 5883,
+	/// <unmanaged>SpvDecorationStridesizeINTEL</unmanaged>
+	StridesizeINTEL = 5883,
+	/// <unmanaged>SpvDecorationWordsizeALTERA</unmanaged>
+	WordsizeALTERA = 5884,
+	/// <unmanaged>SpvDecorationWordsizeINTEL</unmanaged>
+	WordsizeINTEL = 5884,
+	/// <unmanaged>SpvDecorationTrueDualPortALTERA</unmanaged>
+	TrueDualPortALTERA = 5885,
+	/// <unmanaged>SpvDecorationTrueDualPortINTEL</unmanaged>
+	TrueDualPortINTEL = 5885,
+	/// <unmanaged>SpvDecorationBurstCoalesceALTERA</unmanaged>
+	BurstCoalesceALTERA = 5899,
 	/// <unmanaged>SpvDecorationBurstCoalesceINTEL</unmanaged>
 	BurstCoalesceINTEL = 5899,
+	/// <unmanaged>SpvDecorationCacheSizeALTERA</unmanaged>
+	CacheSizeALTERA = 5900,
 	/// <unmanaged>SpvDecorationCacheSizeINTEL</unmanaged>
 	CacheSizeINTEL = 5900,
+	/// <unmanaged>SpvDecorationDontStaticallyCoalesceALTERA</unmanaged>
+	DontStaticallyCoalesceALTERA = 5901,
 	/// <unmanaged>SpvDecorationDontStaticallyCoalesceINTEL</unmanaged>
 	DontStaticallyCoalesceINTEL = 5901,
+	/// <unmanaged>SpvDecorationPrefetchALTERA</unmanaged>
+	PrefetchALTERA = 5902,
 	/// <unmanaged>SpvDecorationPrefetchINTEL</unmanaged>
 	PrefetchINTEL = 5902,
+	/// <unmanaged>SpvDecorationStallEnableALTERA</unmanaged>
+	StallEnableALTERA = 5905,
 	/// <unmanaged>SpvDecorationStallEnableINTEL</unmanaged>
 	StallEnableINTEL = 5905,
+	/// <unmanaged>SpvDecorationFuseLoopsInFunctionALTERA</unmanaged>
+	FuseLoopsInFunctionALTERA = 5907,
 	/// <unmanaged>SpvDecorationFuseLoopsInFunctionINTEL</unmanaged>
 	FuseLoopsInFunctionINTEL = 5907,
+	/// <unmanaged>SpvDecorationMathOpDSPModeALTERA</unmanaged>
+	MathOpDSPModeALTERA = 5909,
+	/// <unmanaged>SpvDecorationMathOpDSPModeINTEL</unmanaged>
+	MathOpDSPModeINTEL = 5909,
 	/// <unmanaged>SpvDecorationAliasScopeINTEL</unmanaged>
 	AliasScopeINTEL = 5914,
 	/// <unmanaged>SpvDecorationNoAliasINTEL</unmanaged>
 	NoAliasINTEL = 5915,
+	/// <unmanaged>SpvDecorationInitiationIntervalALTERA</unmanaged>
+	InitiationIntervalALTERA = 5917,
+	/// <unmanaged>SpvDecorationInitiationIntervalINTEL</unmanaged>
+	InitiationIntervalINTEL = 5917,
+	/// <unmanaged>SpvDecorationMaxConcurrencyALTERA</unmanaged>
+	MaxConcurrencyALTERA = 5918,
+	/// <unmanaged>SpvDecorationMaxConcurrencyINTEL</unmanaged>
+	MaxConcurrencyINTEL = 5918,
+	/// <unmanaged>SpvDecorationPipelineEnableALTERA</unmanaged>
+	PipelineEnableALTERA = 5919,
+	/// <unmanaged>SpvDecorationPipelineEnableINTEL</unmanaged>
+	PipelineEnableINTEL = 5919,
+	/// <unmanaged>SpvDecorationBufferLocationALTERA</unmanaged>
+	BufferLocationALTERA = 5921,
 	/// <unmanaged>SpvDecorationBufferLocationINTEL</unmanaged>
 	BufferLocationINTEL = 5921,
+	/// <unmanaged>SpvDecorationIOPipeStorageALTERA</unmanaged>
+	IOPipeStorageALTERA = 5944,
 	/// <unmanaged>SpvDecorationIOPipeStorageINTEL</unmanaged>
 	IOPipeStorageINTEL = 5944,
 	/// <unmanaged>SpvDecorationFunctionFloatingPointModeINTEL</unmanaged>
@@ -963,6 +1171,72 @@ public enum SpvDecoration
 	VectorComputeCallableFunctionINTEL = 6087,
 	/// <unmanaged>SpvDecorationMediaBlockIOINTEL</unmanaged>
 	MediaBlockIOINTEL = 6140,
+	/// <unmanaged>SpvDecorationStallFreeALTERA</unmanaged>
+	StallFreeALTERA = 6151,
+	/// <unmanaged>SpvDecorationStallFreeINTEL</unmanaged>
+	StallFreeINTEL = 6151,
+	/// <unmanaged>SpvDecorationFPMaxErrorDecorationINTEL</unmanaged>
+	FPMaxErrorDecorationINTEL = 6170,
+	/// <unmanaged>SpvDecorationLatencyControlLabelALTERA</unmanaged>
+	LatencyControlLabelALTERA = 6172,
+	/// <unmanaged>SpvDecorationLatencyControlLabelINTEL</unmanaged>
+	LatencyControlLabelINTEL = 6172,
+	/// <unmanaged>SpvDecorationLatencyControlConstraintALTERA</unmanaged>
+	LatencyControlConstraintALTERA = 6173,
+	/// <unmanaged>SpvDecorationLatencyControlConstraintINTEL</unmanaged>
+	LatencyControlConstraintINTEL = 6173,
+	/// <unmanaged>SpvDecorationConduitKernelArgumentALTERA</unmanaged>
+	ConduitKernelArgumentALTERA = 6175,
+	/// <unmanaged>SpvDecorationConduitKernelArgumentINTEL</unmanaged>
+	ConduitKernelArgumentINTEL = 6175,
+	/// <unmanaged>SpvDecorationRegisterMapKernelArgumentALTERA</unmanaged>
+	RegisterMapKernelArgumentALTERA = 6176,
+	/// <unmanaged>SpvDecorationRegisterMapKernelArgumentINTEL</unmanaged>
+	RegisterMapKernelArgumentINTEL = 6176,
+	/// <unmanaged>SpvDecorationMMHostInterfaceAddressWidthALTERA</unmanaged>
+	MMHostInterfaceAddressWidthALTERA = 6177,
+	/// <unmanaged>SpvDecorationMMHostInterfaceAddressWidthINTEL</unmanaged>
+	MMHostInterfaceAddressWidthINTEL = 6177,
+	/// <unmanaged>SpvDecorationMMHostInterfaceDataWidthALTERA</unmanaged>
+	MMHostInterfaceDataWidthALTERA = 6178,
+	/// <unmanaged>SpvDecorationMMHostInterfaceDataWidthINTEL</unmanaged>
+	MMHostInterfaceDataWidthINTEL = 6178,
+	/// <unmanaged>SpvDecorationMMHostInterfaceLatencyALTERA</unmanaged>
+	MMHostInterfaceLatencyALTERA = 6179,
+	/// <unmanaged>SpvDecorationMMHostInterfaceLatencyINTEL</unmanaged>
+	MMHostInterfaceLatencyINTEL = 6179,
+	/// <unmanaged>SpvDecorationMMHostInterfaceReadWriteModeALTERA</unmanaged>
+	MMHostInterfaceReadWriteModeALTERA = 6180,
+	/// <unmanaged>SpvDecorationMMHostInterfaceReadWriteModeINTEL</unmanaged>
+	MMHostInterfaceReadWriteModeINTEL = 6180,
+	/// <unmanaged>SpvDecorationMMHostInterfaceMaxBurstALTERA</unmanaged>
+	MMHostInterfaceMaxBurstALTERA = 6181,
+	/// <unmanaged>SpvDecorationMMHostInterfaceMaxBurstINTEL</unmanaged>
+	MMHostInterfaceMaxBurstINTEL = 6181,
+	/// <unmanaged>SpvDecorationMMHostInterfaceWaitRequestALTERA</unmanaged>
+	MMHostInterfaceWaitRequestALTERA = 6182,
+	/// <unmanaged>SpvDecorationMMHostInterfaceWaitRequestINTEL</unmanaged>
+	MMHostInterfaceWaitRequestINTEL = 6182,
+	/// <unmanaged>SpvDecorationStableKernelArgumentALTERA</unmanaged>
+	StableKernelArgumentALTERA = 6183,
+	/// <unmanaged>SpvDecorationStableKernelArgumentINTEL</unmanaged>
+	StableKernelArgumentINTEL = 6183,
+	/// <unmanaged>SpvDecorationHostAccessINTEL</unmanaged>
+	HostAccessINTEL = 6188,
+	/// <unmanaged>SpvDecorationInitModeALTERA</unmanaged>
+	InitModeALTERA = 6190,
+	/// <unmanaged>SpvDecorationInitModeINTEL</unmanaged>
+	InitModeINTEL = 6190,
+	/// <unmanaged>SpvDecorationImplementInRegisterMapALTERA</unmanaged>
+	ImplementInRegisterMapALTERA = 6191,
+	/// <unmanaged>SpvDecorationImplementInRegisterMapINTEL</unmanaged>
+	ImplementInRegisterMapINTEL = 6191,
+	/// <unmanaged>SpvDecorationConditionalINTEL</unmanaged>
+	ConditionalINTEL = 6247,
+	/// <unmanaged>SpvDecorationCacheControlLoadINTEL</unmanaged>
+	CacheControlLoadINTEL = 6442,
+	/// <unmanaged>SpvDecorationCacheControlStoreINTEL</unmanaged>
+	CacheControlStoreINTEL = 6443,
 }
 
 public enum SpvBuiltIn
@@ -1049,6 +1323,16 @@ public enum SpvBuiltIn
 	VertexIndex = 42,
 	/// <unmanaged>SpvBuiltInInstanceIndex</unmanaged>
 	InstanceIndex = 43,
+	/// <unmanaged>SpvBuiltInCoreIDARM</unmanaged>
+	CoreIDARM = 4160,
+	/// <unmanaged>SpvBuiltInCoreCountARM</unmanaged>
+	CoreCountARM = 4161,
+	/// <unmanaged>SpvBuiltInCoreMaxIDARM</unmanaged>
+	CoreMaxIDARM = 4162,
+	/// <unmanaged>SpvBuiltInWarpIDARM</unmanaged>
+	WarpIDARM = 4163,
+	/// <unmanaged>SpvBuiltInWarpMaxIDARM</unmanaged>
+	WarpMaxIDARM = 4164,
 	/// <unmanaged>SpvBuiltInSubgroupEqMask</unmanaged>
 	SubgroupEqMask = 4416,
 	/// <unmanaged>SpvBuiltInSubgroupEqMaskKHR</unmanaged>
@@ -1083,6 +1367,12 @@ public enum SpvBuiltIn
 	ViewIndex = 4440,
 	/// <unmanaged>SpvBuiltInShadingRateKHR</unmanaged>
 	ShadingRateKHR = 4444,
+	/// <unmanaged>SpvBuiltInTileOffsetQCOM</unmanaged>
+	TileOffsetQCOM = 4492,
+	/// <unmanaged>SpvBuiltInTileDimensionQCOM</unmanaged>
+	TileDimensionQCOM = 4493,
+	/// <unmanaged>SpvBuiltInTileApronSizeQCOM</unmanaged>
+	TileApronSizeQCOM = 4494,
 	/// <unmanaged>SpvBuiltInBaryCoordNoPerspAMD</unmanaged>
 	BaryCoordNoPerspAMD = 4992,
 	/// <unmanaged>SpvBuiltInBaryCoordNoPerspCentroidAMD</unmanaged>
@@ -1099,6 +1389,14 @@ public enum SpvBuiltIn
 	BaryCoordPullModelAMD = 4998,
 	/// <unmanaged>SpvBuiltInFragStencilRefEXT</unmanaged>
 	FragStencilRefEXT = 5014,
+	/// <unmanaged>SpvBuiltInRemainingRecursionLevelsAMDX</unmanaged>
+	RemainingRecursionLevelsAMDX = 5021,
+	/// <unmanaged>SpvBuiltInShaderIndexAMDX</unmanaged>
+	ShaderIndexAMDX = 5073,
+	/// <unmanaged>SpvBuiltInSamplerHeapEXT</unmanaged>
+	SamplerHeapEXT = 5122,
+	/// <unmanaged>SpvBuiltInResourceHeapEXT</unmanaged>
+	ResourceHeapEXT = 5123,
 	/// <unmanaged>SpvBuiltInViewportMaskNV</unmanaged>
 	ViewportMaskNV = 5253,
 	/// <unmanaged>SpvBuiltInSecondaryPositionNV</unmanaged>
@@ -1203,12 +1501,24 @@ public enum SpvBuiltIn
 	HitKindNV = 5333,
 	/// <unmanaged>SpvBuiltInCurrentRayTimeNV</unmanaged>
 	CurrentRayTimeNV = 5334,
+	/// <unmanaged>SpvBuiltInHitTriangleVertexPositionsKHR</unmanaged>
+	HitTriangleVertexPositionsKHR = 5335,
+	/// <unmanaged>SpvBuiltInHitMicroTriangleVertexPositionsNV</unmanaged>
+	HitMicroTriangleVertexPositionsNV = 5337,
+	/// <unmanaged>SpvBuiltInHitMicroTriangleVertexBarycentricsNV</unmanaged>
+	HitMicroTriangleVertexBarycentricsNV = 5344,
 	/// <unmanaged>SpvBuiltInIncomingRayFlagsKHR</unmanaged>
 	IncomingRayFlagsKHR = 5351,
 	/// <unmanaged>SpvBuiltInIncomingRayFlagsNV</unmanaged>
 	IncomingRayFlagsNV = 5351,
 	/// <unmanaged>SpvBuiltInRayGeometryIndexKHR</unmanaged>
 	RayGeometryIndexKHR = 5352,
+	/// <unmanaged>SpvBuiltInHitIsSphereNV</unmanaged>
+	HitIsSphereNV = 5359,
+	/// <unmanaged>SpvBuiltInHitIsLSSNV</unmanaged>
+	HitIsLSSNV = 5360,
+	/// <unmanaged>SpvBuiltInHitSpherePositionNV</unmanaged>
+	HitSpherePositionNV = 5361,
 	/// <unmanaged>SpvBuiltInWarpsPerSMNV</unmanaged>
 	WarpsPerSMNV = 5374,
 	/// <unmanaged>SpvBuiltInSMCountNV</unmanaged>
@@ -1217,6 +1527,18 @@ public enum SpvBuiltIn
 	WarpIDNV = 5376,
 	/// <unmanaged>SpvBuiltInSMIDNV</unmanaged>
 	SMIDNV = 5377,
+	/// <unmanaged>SpvBuiltInHitLSSPositionsNV</unmanaged>
+	HitLSSPositionsNV = 5396,
+	/// <unmanaged>SpvBuiltInHitKindFrontFacingMicroTriangleNV</unmanaged>
+	HitKindFrontFacingMicroTriangleNV = 5405,
+	/// <unmanaged>SpvBuiltInHitKindBackFacingMicroTriangleNV</unmanaged>
+	HitKindBackFacingMicroTriangleNV = 5406,
+	/// <unmanaged>SpvBuiltInHitSphereRadiusNV</unmanaged>
+	HitSphereRadiusNV = 5420,
+	/// <unmanaged>SpvBuiltInHitLSSRadiiNV</unmanaged>
+	HitLSSRadiiNV = 5421,
+	/// <unmanaged>SpvBuiltInClusterIDNV</unmanaged>
+	ClusterIDNV = 5436,
 	/// <unmanaged>SpvBuiltInCullMaskKHR</unmanaged>
 	CullMaskKHR = 6021,
 }
@@ -1245,253 +1567,297 @@ public enum SpvSelectionControlMask
 public enum SpvLoopControlShift
 {
 	/// <unmanaged>SpvLoopControlUnrollShift</unmanaged>
-	SpvLoopControlUnrollShift = 0,
+	UnrollShift = 0,
 	/// <unmanaged>SpvLoopControlDontUnrollShift</unmanaged>
-	SpvLoopControlDontUnrollShift = 1,
+	DontUnrollShift = 1,
 	/// <unmanaged>SpvLoopControlDependencyInfiniteShift</unmanaged>
-	SpvLoopControlDependencyInfiniteShift = 2,
+	DependencyInfiniteShift = 2,
 	/// <unmanaged>SpvLoopControlDependencyLengthShift</unmanaged>
-	SpvLoopControlDependencyLengthShift = 3,
+	DependencyLengthShift = 3,
 	/// <unmanaged>SpvLoopControlMinIterationsShift</unmanaged>
-	SpvLoopControlMinIterationsShift = 4,
+	MinIterationsShift = 4,
 	/// <unmanaged>SpvLoopControlMaxIterationsShift</unmanaged>
-	SpvLoopControlMaxIterationsShift = 5,
+	MaxIterationsShift = 5,
 	/// <unmanaged>SpvLoopControlIterationMultipleShift</unmanaged>
-	SpvLoopControlIterationMultipleShift = 6,
+	IterationMultipleShift = 6,
 	/// <unmanaged>SpvLoopControlPeelCountShift</unmanaged>
-	SpvLoopControlPeelCountShift = 7,
+	PeelCountShift = 7,
 	/// <unmanaged>SpvLoopControlPartialCountShift</unmanaged>
-	SpvLoopControlPartialCountShift = 8,
+	PartialCountShift = 8,
+	/// <unmanaged>SpvLoopControlInitiationIntervalALTERAShift</unmanaged>
+	InitiationIntervalALTERAShift = 16,
 	/// <unmanaged>SpvLoopControlInitiationIntervalINTELShift</unmanaged>
-	SpvLoopControlInitiationIntervalINTELShift = 16,
+	InitiationIntervalINTELShift = 16,
+	/// <unmanaged>SpvLoopControlMaxConcurrencyALTERAShift</unmanaged>
+	MaxConcurrencyALTERAShift = 17,
 	/// <unmanaged>SpvLoopControlMaxConcurrencyINTELShift</unmanaged>
-	SpvLoopControlMaxConcurrencyINTELShift = 17,
+	MaxConcurrencyINTELShift = 17,
+	/// <unmanaged>SpvLoopControlDependencyArrayALTERAShift</unmanaged>
+	DependencyArrayALTERAShift = 18,
 	/// <unmanaged>SpvLoopControlDependencyArrayINTELShift</unmanaged>
-	SpvLoopControlDependencyArrayINTELShift = 18,
+	DependencyArrayINTELShift = 18,
+	/// <unmanaged>SpvLoopControlPipelineEnableALTERAShift</unmanaged>
+	PipelineEnableALTERAShift = 19,
 	/// <unmanaged>SpvLoopControlPipelineEnableINTELShift</unmanaged>
-	SpvLoopControlPipelineEnableINTELShift = 19,
+	PipelineEnableINTELShift = 19,
+	/// <unmanaged>SpvLoopControlLoopCoalesceALTERAShift</unmanaged>
+	LoopCoalesceALTERAShift = 20,
 	/// <unmanaged>SpvLoopControlLoopCoalesceINTELShift</unmanaged>
-	SpvLoopControlLoopCoalesceINTELShift = 20,
+	LoopCoalesceINTELShift = 20,
+	/// <unmanaged>SpvLoopControlMaxInterleavingALTERAShift</unmanaged>
+	MaxInterleavingALTERAShift = 21,
 	/// <unmanaged>SpvLoopControlMaxInterleavingINTELShift</unmanaged>
-	SpvLoopControlMaxInterleavingINTELShift = 21,
+	MaxInterleavingINTELShift = 21,
+	/// <unmanaged>SpvLoopControlSpeculatedIterationsALTERAShift</unmanaged>
+	SpeculatedIterationsALTERAShift = 22,
 	/// <unmanaged>SpvLoopControlSpeculatedIterationsINTELShift</unmanaged>
-	SpvLoopControlSpeculatedIterationsINTELShift = 22,
+	SpeculatedIterationsINTELShift = 22,
+	/// <unmanaged>SpvLoopControlNoFusionALTERAShift</unmanaged>
+	NoFusionALTERAShift = 23,
 	/// <unmanaged>SpvLoopControlNoFusionINTELShift</unmanaged>
-	SpvLoopControlNoFusionINTELShift = 23,
-	/// <unmanaged>SpvLoopControlMax</unmanaged>
-	SpvLoopControlMax = 0x7fffffff,
+	NoFusionINTELShift = 23,
+	/// <unmanaged>SpvLoopControlLoopCountALTERAShift</unmanaged>
+	LoopCountALTERAShift = 24,
+	/// <unmanaged>SpvLoopControlLoopCountINTELShift</unmanaged>
+	LoopCountINTELShift = 24,
+	/// <unmanaged>SpvLoopControlMaxReinvocationDelayALTERAShift</unmanaged>
+	MaxReinvocationDelayALTERAShift = 25,
+	/// <unmanaged>SpvLoopControlMaxReinvocationDelayINTELShift</unmanaged>
+	MaxReinvocationDelayINTELShift = 25,
 }
 
 [Flags]
 public enum SpvLoopControlMask
 {
 	/// <unmanaged>SpvLoopControlMaskNone</unmanaged>
-	None = 0,
+	MaskNone = 0,
 	/// <unmanaged>SpvLoopControlUnrollMask</unmanaged>
-	SpvLoopControlUnrollMask = 0x00000001,
+	UnrollMask = 0x00000001,
 	/// <unmanaged>SpvLoopControlDontUnrollMask</unmanaged>
-	SpvLoopControlDontUnrollMask = 0x00000002,
+	DontUnrollMask = 0x00000002,
 	/// <unmanaged>SpvLoopControlDependencyInfiniteMask</unmanaged>
-	SpvLoopControlDependencyInfiniteMask = 0x00000004,
+	DependencyInfiniteMask = 0x00000004,
 	/// <unmanaged>SpvLoopControlDependencyLengthMask</unmanaged>
-	SpvLoopControlDependencyLengthMask = 0x00000008,
+	DependencyLengthMask = 0x00000008,
 	/// <unmanaged>SpvLoopControlMinIterationsMask</unmanaged>
-	SpvLoopControlMinIterationsMask = 0x00000010,
+	MinIterationsMask = 0x00000010,
 	/// <unmanaged>SpvLoopControlMaxIterationsMask</unmanaged>
-	SpvLoopControlMaxIterationsMask = 0x00000020,
+	MaxIterationsMask = 0x00000020,
 	/// <unmanaged>SpvLoopControlIterationMultipleMask</unmanaged>
-	SpvLoopControlIterationMultipleMask = 0x00000040,
+	IterationMultipleMask = 0x00000040,
 	/// <unmanaged>SpvLoopControlPeelCountMask</unmanaged>
-	SpvLoopControlPeelCountMask = 0x00000080,
+	PeelCountMask = 0x00000080,
 	/// <unmanaged>SpvLoopControlPartialCountMask</unmanaged>
-	SpvLoopControlPartialCountMask = 0x00000100,
+	PartialCountMask = 0x00000100,
+	/// <unmanaged>SpvLoopControlInitiationIntervalALTERAMask</unmanaged>
+	InitiationIntervalALTERAMask = 0x00010000,
 	/// <unmanaged>SpvLoopControlInitiationIntervalINTELMask</unmanaged>
-	SpvLoopControlInitiationIntervalINTELMask = 0x00010000,
+	InitiationIntervalINTELMask = 0x00010000,
+	/// <unmanaged>SpvLoopControlMaxConcurrencyALTERAMask</unmanaged>
+	MaxConcurrencyALTERAMask = 0x00020000,
 	/// <unmanaged>SpvLoopControlMaxConcurrencyINTELMask</unmanaged>
-	SpvLoopControlMaxConcurrencyINTELMask = 0x00020000,
+	MaxConcurrencyINTELMask = 0x00020000,
+	/// <unmanaged>SpvLoopControlDependencyArrayALTERAMask</unmanaged>
+	DependencyArrayALTERAMask = 0x00040000,
 	/// <unmanaged>SpvLoopControlDependencyArrayINTELMask</unmanaged>
-	SpvLoopControlDependencyArrayINTELMask = 0x00040000,
+	DependencyArrayINTELMask = 0x00040000,
+	/// <unmanaged>SpvLoopControlPipelineEnableALTERAMask</unmanaged>
+	PipelineEnableALTERAMask = 0x00080000,
 	/// <unmanaged>SpvLoopControlPipelineEnableINTELMask</unmanaged>
-	SpvLoopControlPipelineEnableINTELMask = 0x00080000,
+	PipelineEnableINTELMask = 0x00080000,
+	/// <unmanaged>SpvLoopControlLoopCoalesceALTERAMask</unmanaged>
+	LoopCoalesceALTERAMask = 0x00100000,
 	/// <unmanaged>SpvLoopControlLoopCoalesceINTELMask</unmanaged>
-	SpvLoopControlLoopCoalesceINTELMask = 0x00100000,
+	LoopCoalesceINTELMask = 0x00100000,
+	/// <unmanaged>SpvLoopControlMaxInterleavingALTERAMask</unmanaged>
+	MaxInterleavingALTERAMask = 0x00200000,
 	/// <unmanaged>SpvLoopControlMaxInterleavingINTELMask</unmanaged>
-	SpvLoopControlMaxInterleavingINTELMask = 0x00200000,
+	MaxInterleavingINTELMask = 0x00200000,
+	/// <unmanaged>SpvLoopControlSpeculatedIterationsALTERAMask</unmanaged>
+	SpeculatedIterationsALTERAMask = 0x00400000,
 	/// <unmanaged>SpvLoopControlSpeculatedIterationsINTELMask</unmanaged>
-	SpvLoopControlSpeculatedIterationsINTELMask = 0x00400000,
+	SpeculatedIterationsINTELMask = 0x00400000,
+	/// <unmanaged>SpvLoopControlNoFusionALTERAMask</unmanaged>
+	NoFusionALTERAMask = 0x00800000,
 	/// <unmanaged>SpvLoopControlNoFusionINTELMask</unmanaged>
-	SpvLoopControlNoFusionINTELMask = 0x00800000,
+	NoFusionINTELMask = 0x00800000,
+	/// <unmanaged>SpvLoopControlLoopCountALTERAMask</unmanaged>
+	LoopCountALTERAMask = 0x01000000,
+	/// <unmanaged>SpvLoopControlLoopCountINTELMask</unmanaged>
+	LoopCountINTELMask = 0x01000000,
+	/// <unmanaged>SpvLoopControlMaxReinvocationDelayALTERAMask</unmanaged>
+	MaxReinvocationDelayALTERAMask = 0x02000000,
+	/// <unmanaged>SpvLoopControlMaxReinvocationDelayINTELMask</unmanaged>
+	MaxReinvocationDelayINTELMask = 0x02000000,
 }
 
 public enum SpvFunctionControlShift
 {
 	/// <unmanaged>SpvFunctionControlInlineShift</unmanaged>
-	SpvFunctionControlInlineShift = 0,
+	InlineShift = 0,
 	/// <unmanaged>SpvFunctionControlDontInlineShift</unmanaged>
-	SpvFunctionControlDontInlineShift = 1,
+	DontInlineShift = 1,
 	/// <unmanaged>SpvFunctionControlPureShift</unmanaged>
-	SpvFunctionControlPureShift = 2,
+	PureShift = 2,
 	/// <unmanaged>SpvFunctionControlConstShift</unmanaged>
-	SpvFunctionControlConstShift = 3,
+	ConstShift = 3,
+	/// <unmanaged>SpvFunctionControlOptNoneEXTShift</unmanaged>
+	OptNoneEXTShift = 16,
 	/// <unmanaged>SpvFunctionControlOptNoneINTELShift</unmanaged>
-	SpvFunctionControlOptNoneINTELShift = 16,
-	/// <unmanaged>SpvFunctionControlMax</unmanaged>
-	SpvFunctionControlMax = 0x7fffffff,
+	OptNoneINTELShift = 16,
 }
 
 [Flags]
 public enum SpvFunctionControlMask
 {
 	/// <unmanaged>SpvFunctionControlMaskNone</unmanaged>
-	None = 0,
+	MaskNone = 0,
 	/// <unmanaged>SpvFunctionControlInlineMask</unmanaged>
-	SpvFunctionControlInlineMask = 0x00000001,
+	InlineMask = 0x00000001,
 	/// <unmanaged>SpvFunctionControlDontInlineMask</unmanaged>
-	SpvFunctionControlDontInlineMask = 0x00000002,
+	DontInlineMask = 0x00000002,
 	/// <unmanaged>SpvFunctionControlPureMask</unmanaged>
-	SpvFunctionControlPureMask = 0x00000004,
+	PureMask = 0x00000004,
 	/// <unmanaged>SpvFunctionControlConstMask</unmanaged>
-	SpvFunctionControlConstMask = 0x00000008,
+	ConstMask = 0x00000008,
+	/// <unmanaged>SpvFunctionControlOptNoneEXTMask</unmanaged>
+	OptNoneEXTMask = 0x00010000,
 	/// <unmanaged>SpvFunctionControlOptNoneINTELMask</unmanaged>
-	SpvFunctionControlOptNoneINTELMask = 0x00010000,
+	OptNoneINTELMask = 0x00010000,
 }
 
 public enum SpvMemorySemanticsShift
 {
 	/// <unmanaged>SpvMemorySemanticsAcquireShift</unmanaged>
-	SpvMemorySemanticsAcquireShift = 1,
+	AcquireShift = 1,
 	/// <unmanaged>SpvMemorySemanticsReleaseShift</unmanaged>
-	SpvMemorySemanticsReleaseShift = 2,
+	ReleaseShift = 2,
 	/// <unmanaged>SpvMemorySemanticsAcquireReleaseShift</unmanaged>
-	SpvMemorySemanticsAcquireReleaseShift = 3,
+	AcquireReleaseShift = 3,
 	/// <unmanaged>SpvMemorySemanticsSequentiallyConsistentShift</unmanaged>
-	SpvMemorySemanticsSequentiallyConsistentShift = 4,
+	SequentiallyConsistentShift = 4,
 	/// <unmanaged>SpvMemorySemanticsUniformMemoryShift</unmanaged>
-	SpvMemorySemanticsUniformMemoryShift = 6,
+	UniformMemoryShift = 6,
 	/// <unmanaged>SpvMemorySemanticsSubgroupMemoryShift</unmanaged>
-	SpvMemorySemanticsSubgroupMemoryShift = 7,
+	SubgroupMemoryShift = 7,
 	/// <unmanaged>SpvMemorySemanticsWorkgroupMemoryShift</unmanaged>
-	SpvMemorySemanticsWorkgroupMemoryShift = 8,
+	WorkgroupMemoryShift = 8,
 	/// <unmanaged>SpvMemorySemanticsCrossWorkgroupMemoryShift</unmanaged>
-	SpvMemorySemanticsCrossWorkgroupMemoryShift = 9,
+	CrossWorkgroupMemoryShift = 9,
 	/// <unmanaged>SpvMemorySemanticsAtomicCounterMemoryShift</unmanaged>
-	SpvMemorySemanticsAtomicCounterMemoryShift = 10,
+	AtomicCounterMemoryShift = 10,
 	/// <unmanaged>SpvMemorySemanticsImageMemoryShift</unmanaged>
-	SpvMemorySemanticsImageMemoryShift = 11,
+	ImageMemoryShift = 11,
 	/// <unmanaged>SpvMemorySemanticsOutputMemoryShift</unmanaged>
-	SpvMemorySemanticsOutputMemoryShift = 12,
+	OutputMemoryShift = 12,
 	/// <unmanaged>SpvMemorySemanticsOutputMemoryKHRShift</unmanaged>
-	SpvMemorySemanticsOutputMemoryKHRShift = 12,
+	OutputMemoryKHRShift = 12,
 	/// <unmanaged>SpvMemorySemanticsMakeAvailableShift</unmanaged>
-	SpvMemorySemanticsMakeAvailableShift = 13,
+	MakeAvailableShift = 13,
 	/// <unmanaged>SpvMemorySemanticsMakeAvailableKHRShift</unmanaged>
-	SpvMemorySemanticsMakeAvailableKHRShift = 13,
+	MakeAvailableKHRShift = 13,
 	/// <unmanaged>SpvMemorySemanticsMakeVisibleShift</unmanaged>
-	SpvMemorySemanticsMakeVisibleShift = 14,
+	MakeVisibleShift = 14,
 	/// <unmanaged>SpvMemorySemanticsMakeVisibleKHRShift</unmanaged>
-	SpvMemorySemanticsMakeVisibleKHRShift = 14,
+	MakeVisibleKHRShift = 14,
 	/// <unmanaged>SpvMemorySemanticsVolatileShift</unmanaged>
-	SpvMemorySemanticsVolatileShift = 15,
-	/// <unmanaged>SpvMemorySemanticsMax</unmanaged>
-	SpvMemorySemanticsMax = 0x7fffffff,
+	VolatileShift = 15,
 }
 
 [Flags]
 public enum SpvMemorySemanticsMask
 {
 	/// <unmanaged>SpvMemorySemanticsMaskNone</unmanaged>
-	None = 0,
+	MaskNone = 0,
 	/// <unmanaged>SpvMemorySemanticsAcquireMask</unmanaged>
-	SpvMemorySemanticsAcquireMask = 0x00000002,
+	AcquireMask = 0x00000002,
 	/// <unmanaged>SpvMemorySemanticsReleaseMask</unmanaged>
-	SpvMemorySemanticsReleaseMask = 0x00000004,
+	ReleaseMask = 0x00000004,
 	/// <unmanaged>SpvMemorySemanticsAcquireReleaseMask</unmanaged>
-	SpvMemorySemanticsAcquireReleaseMask = 0x00000008,
+	AcquireReleaseMask = 0x00000008,
 	/// <unmanaged>SpvMemorySemanticsSequentiallyConsistentMask</unmanaged>
-	SpvMemorySemanticsSequentiallyConsistentMask = 0x00000010,
+	SequentiallyConsistentMask = 0x00000010,
 	/// <unmanaged>SpvMemorySemanticsUniformMemoryMask</unmanaged>
-	SpvMemorySemanticsUniformMemoryMask = 0x00000040,
+	UniformMemoryMask = 0x00000040,
 	/// <unmanaged>SpvMemorySemanticsSubgroupMemoryMask</unmanaged>
-	SpvMemorySemanticsSubgroupMemoryMask = 0x00000080,
+	SubgroupMemoryMask = 0x00000080,
 	/// <unmanaged>SpvMemorySemanticsWorkgroupMemoryMask</unmanaged>
-	SpvMemorySemanticsWorkgroupMemoryMask = 0x00000100,
+	WorkgroupMemoryMask = 0x00000100,
 	/// <unmanaged>SpvMemorySemanticsCrossWorkgroupMemoryMask</unmanaged>
-	SpvMemorySemanticsCrossWorkgroupMemoryMask = 0x00000200,
+	CrossWorkgroupMemoryMask = 0x00000200,
 	/// <unmanaged>SpvMemorySemanticsAtomicCounterMemoryMask</unmanaged>
-	SpvMemorySemanticsAtomicCounterMemoryMask = 0x00000400,
+	AtomicCounterMemoryMask = 0x00000400,
 	/// <unmanaged>SpvMemorySemanticsImageMemoryMask</unmanaged>
-	SpvMemorySemanticsImageMemoryMask = 0x00000800,
+	ImageMemoryMask = 0x00000800,
 	/// <unmanaged>SpvMemorySemanticsOutputMemoryMask</unmanaged>
-	SpvMemorySemanticsOutputMemoryMask = 0x00001000,
+	OutputMemoryMask = 0x00001000,
 	/// <unmanaged>SpvMemorySemanticsOutputMemoryKHRMask</unmanaged>
-	SpvMemorySemanticsOutputMemoryKHRMask = 0x00001000,
+	OutputMemoryKHRMask = 0x00001000,
 	/// <unmanaged>SpvMemorySemanticsMakeAvailableMask</unmanaged>
-	SpvMemorySemanticsMakeAvailableMask = 0x00002000,
+	MakeAvailableMask = 0x00002000,
 	/// <unmanaged>SpvMemorySemanticsMakeAvailableKHRMask</unmanaged>
-	SpvMemorySemanticsMakeAvailableKHRMask = 0x00002000,
+	MakeAvailableKHRMask = 0x00002000,
 	/// <unmanaged>SpvMemorySemanticsMakeVisibleMask</unmanaged>
-	SpvMemorySemanticsMakeVisibleMask = 0x00004000,
+	MakeVisibleMask = 0x00004000,
 	/// <unmanaged>SpvMemorySemanticsMakeVisibleKHRMask</unmanaged>
-	SpvMemorySemanticsMakeVisibleKHRMask = 0x00004000,
+	MakeVisibleKHRMask = 0x00004000,
 	/// <unmanaged>SpvMemorySemanticsVolatileMask</unmanaged>
-	SpvMemorySemanticsVolatileMask = 0x00008000,
+	VolatileMask = 0x00008000,
 }
 
 public enum SpvMemoryAccessShift
 {
 	/// <unmanaged>SpvMemoryAccessVolatileShift</unmanaged>
-	SpvMemoryAccessVolatileShift = 0,
+	VolatileShift = 0,
 	/// <unmanaged>SpvMemoryAccessAlignedShift</unmanaged>
-	SpvMemoryAccessAlignedShift = 1,
+	AlignedShift = 1,
 	/// <unmanaged>SpvMemoryAccessNontemporalShift</unmanaged>
-	SpvMemoryAccessNontemporalShift = 2,
+	NontemporalShift = 2,
 	/// <unmanaged>SpvMemoryAccessMakePointerAvailableShift</unmanaged>
-	SpvMemoryAccessMakePointerAvailableShift = 3,
+	MakePointerAvailableShift = 3,
 	/// <unmanaged>SpvMemoryAccessMakePointerAvailableKHRShift</unmanaged>
-	SpvMemoryAccessMakePointerAvailableKHRShift = 3,
+	MakePointerAvailableKHRShift = 3,
 	/// <unmanaged>SpvMemoryAccessMakePointerVisibleShift</unmanaged>
-	SpvMemoryAccessMakePointerVisibleShift = 4,
+	MakePointerVisibleShift = 4,
 	/// <unmanaged>SpvMemoryAccessMakePointerVisibleKHRShift</unmanaged>
-	SpvMemoryAccessMakePointerVisibleKHRShift = 4,
+	MakePointerVisibleKHRShift = 4,
 	/// <unmanaged>SpvMemoryAccessNonPrivatePointerShift</unmanaged>
-	SpvMemoryAccessNonPrivatePointerShift = 5,
+	NonPrivatePointerShift = 5,
 	/// <unmanaged>SpvMemoryAccessNonPrivatePointerKHRShift</unmanaged>
-	SpvMemoryAccessNonPrivatePointerKHRShift = 5,
+	NonPrivatePointerKHRShift = 5,
 	/// <unmanaged>SpvMemoryAccessAliasScopeINTELMaskShift</unmanaged>
-	SpvMemoryAccessAliasScopeINTELMaskShift = 16,
+	AliasScopeINTELMaskShift = 16,
 	/// <unmanaged>SpvMemoryAccessNoAliasINTELMaskShift</unmanaged>
-	SpvMemoryAccessNoAliasINTELMaskShift = 17,
-	/// <unmanaged>SpvMemoryAccessMax</unmanaged>
-	SpvMemoryAccessMax = 0x7fffffff,
+	NoAliasINTELMaskShift = 17,
 }
 
 [Flags]
 public enum SpvMemoryAccessMask
 {
 	/// <unmanaged>SpvMemoryAccessMaskNone</unmanaged>
-	None = 0,
+	MaskNone = 0,
 	/// <unmanaged>SpvMemoryAccessVolatileMask</unmanaged>
-	SpvMemoryAccessVolatileMask = 0x00000001,
+	VolatileMask = 0x00000001,
 	/// <unmanaged>SpvMemoryAccessAlignedMask</unmanaged>
-	SpvMemoryAccessAlignedMask = 0x00000002,
+	AlignedMask = 0x00000002,
 	/// <unmanaged>SpvMemoryAccessNontemporalMask</unmanaged>
-	SpvMemoryAccessNontemporalMask = 0x00000004,
+	NontemporalMask = 0x00000004,
 	/// <unmanaged>SpvMemoryAccessMakePointerAvailableMask</unmanaged>
-	SpvMemoryAccessMakePointerAvailableMask = 0x00000008,
+	MakePointerAvailableMask = 0x00000008,
 	/// <unmanaged>SpvMemoryAccessMakePointerAvailableKHRMask</unmanaged>
-	SpvMemoryAccessMakePointerAvailableKHRMask = 0x00000008,
+	MakePointerAvailableKHRMask = 0x00000008,
 	/// <unmanaged>SpvMemoryAccessMakePointerVisibleMask</unmanaged>
-	SpvMemoryAccessMakePointerVisibleMask = 0x00000010,
+	MakePointerVisibleMask = 0x00000010,
 	/// <unmanaged>SpvMemoryAccessMakePointerVisibleKHRMask</unmanaged>
-	SpvMemoryAccessMakePointerVisibleKHRMask = 0x00000010,
+	MakePointerVisibleKHRMask = 0x00000010,
 	/// <unmanaged>SpvMemoryAccessNonPrivatePointerMask</unmanaged>
-	SpvMemoryAccessNonPrivatePointerMask = 0x00000020,
+	NonPrivatePointerMask = 0x00000020,
 	/// <unmanaged>SpvMemoryAccessNonPrivatePointerKHRMask</unmanaged>
-	SpvMemoryAccessNonPrivatePointerKHRMask = 0x00000020,
+	NonPrivatePointerKHRMask = 0x00000020,
 	/// <unmanaged>SpvMemoryAccessAliasScopeINTELMaskMask</unmanaged>
-	SpvMemoryAccessAliasScopeINTELMaskMask = 0x00010000,
+	AliasScopeINTELMaskMask = 0x00010000,
 	/// <unmanaged>SpvMemoryAccessNoAliasINTELMaskMask</unmanaged>
-	SpvMemoryAccessNoAliasINTELMaskMask = 0x00020000,
+	NoAliasINTELMaskMask = 0x00020000,
 }
 
 public enum SpvScope
@@ -1524,10 +1890,16 @@ public enum SpvGroupOperation
 	ExclusiveScan = 2,
 	/// <unmanaged>SpvGroupOperationClusteredReduce</unmanaged>
 	ClusteredReduce = 3,
+	/// <unmanaged>SpvGroupOperationPartitionedReduceEXT</unmanaged>
+	PartitionedReduceEXT = 6,
 	/// <unmanaged>SpvGroupOperationPartitionedReduceNV</unmanaged>
 	PartitionedReduceNV = 6,
+	/// <unmanaged>SpvGroupOperationPartitionedInclusiveScanEXT</unmanaged>
+	PartitionedInclusiveScanEXT = 7,
 	/// <unmanaged>SpvGroupOperationPartitionedInclusiveScanNV</unmanaged>
 	PartitionedInclusiveScanNV = 7,
+	/// <unmanaged>SpvGroupOperationPartitionedExclusiveScanEXT</unmanaged>
+	PartitionedExclusiveScanEXT = 8,
 	/// <unmanaged>SpvGroupOperationPartitionedExclusiveScanNV</unmanaged>
 	PartitionedExclusiveScanNV = 8,
 }
@@ -1545,18 +1917,16 @@ public enum SpvKernelEnqueueFlags
 public enum SpvKernelProfilingInfoShift
 {
 	/// <unmanaged>SpvKernelProfilingInfoCmdExecTimeShift</unmanaged>
-	SpvKernelProfilingInfoCmdExecTimeShift = 0,
-	/// <unmanaged>SpvKernelProfilingInfoMax</unmanaged>
-	SpvKernelProfilingInfoMax = 0x7fffffff,
+	CmdExecTimeShift = 0,
 }
 
 [Flags]
 public enum SpvKernelProfilingInfoMask
 {
 	/// <unmanaged>SpvKernelProfilingInfoMaskNone</unmanaged>
-	None = 0,
+	MaskNone = 0,
 	/// <unmanaged>SpvKernelProfilingInfoCmdExecTimeMask</unmanaged>
-	SpvKernelProfilingInfoCmdExecTimeMask = 0x00000001,
+	CmdExecTimeMask = 0x00000001,
 }
 
 public enum SpvCapability
@@ -1701,6 +2071,28 @@ public enum SpvCapability
 	ShaderViewportIndex = 70,
 	/// <unmanaged>SpvCapabilityUniformDecoration</unmanaged>
 	UniformDecoration = 71,
+	/// <unmanaged>SpvCapabilityCoreBuiltinsARM</unmanaged>
+	CoreBuiltinsARM = 4165,
+	/// <unmanaged>SpvCapabilityTileImageColorReadAccessEXT</unmanaged>
+	TileImageColorReadAccessEXT = 4166,
+	/// <unmanaged>SpvCapabilityTileImageDepthReadAccessEXT</unmanaged>
+	TileImageDepthReadAccessEXT = 4167,
+	/// <unmanaged>SpvCapabilityTileImageStencilReadAccessEXT</unmanaged>
+	TileImageStencilReadAccessEXT = 4168,
+	/// <unmanaged>SpvCapabilityTensorsARM</unmanaged>
+	TensorsARM = 4174,
+	/// <unmanaged>SpvCapabilityStorageTensorArrayDynamicIndexingARM</unmanaged>
+	StorageTensorArrayDynamicIndexingARM = 4175,
+	/// <unmanaged>SpvCapabilityStorageTensorArrayNonUniformIndexingARM</unmanaged>
+	StorageTensorArrayNonUniformIndexingARM = 4176,
+	/// <unmanaged>SpvCapabilityGraphARM</unmanaged>
+	GraphARM = 4191,
+	/// <unmanaged>SpvCapabilityCooperativeMatrixLayoutsARM</unmanaged>
+	CooperativeMatrixLayoutsARM = 4201,
+	/// <unmanaged>SpvCapabilityFloat8EXT</unmanaged>
+	Float8EXT = 4212,
+	/// <unmanaged>SpvCapabilityFloat8CooperativeMatrixEXT</unmanaged>
+	Float8CooperativeMatrixEXT = 4213,
 	/// <unmanaged>SpvCapabilityFragmentShadingRateKHR</unmanaged>
 	FragmentShadingRateKHR = 4422,
 	/// <unmanaged>SpvCapabilitySubgroupBallotKHR</unmanaged>
@@ -1759,6 +2151,8 @@ public enum SpvCapability
 	RayQueryProvisionalKHR = 4471,
 	/// <unmanaged>SpvCapabilityRayQueryKHR</unmanaged>
 	RayQueryKHR = 4472,
+	/// <unmanaged>SpvCapabilityUntypedPointersKHR</unmanaged>
+	UntypedPointersKHR = 4473,
 	/// <unmanaged>SpvCapabilityRayTraversalPrimitiveCullingKHR</unmanaged>
 	RayTraversalPrimitiveCullingKHR = 4478,
 	/// <unmanaged>SpvCapabilityRayTracingKHR</unmanaged>
@@ -1769,6 +2163,10 @@ public enum SpvCapability
 	TextureBoxFilterQCOM = 4485,
 	/// <unmanaged>SpvCapabilityTextureBlockMatchQCOM</unmanaged>
 	TextureBlockMatchQCOM = 4486,
+	/// <unmanaged>SpvCapabilityTileShadingQCOM</unmanaged>
+	TileShadingQCOM = 4495,
+	/// <unmanaged>SpvCapabilityCooperativeMatrixConversionQCOM</unmanaged>
+	CooperativeMatrixConversionQCOM = 4496,
 	/// <unmanaged>SpvCapabilityTextureBlockMatch2QCOM</unmanaged>
 	TextureBlockMatch2QCOM = 4498,
 	/// <unmanaged>SpvCapabilityFloat16ImageAMD</unmanaged>
@@ -1785,6 +2183,28 @@ public enum SpvCapability
 	Int64ImageEXT = 5016,
 	/// <unmanaged>SpvCapabilityShaderClockKHR</unmanaged>
 	ShaderClockKHR = 5055,
+	/// <unmanaged>SpvCapabilityShaderEnqueueAMDX</unmanaged>
+	ShaderEnqueueAMDX = 5067,
+	/// <unmanaged>SpvCapabilityQuadControlKHR</unmanaged>
+	QuadControlKHR = 5087,
+	/// <unmanaged>SpvCapabilityInt4TypeINTEL</unmanaged>
+	Int4TypeINTEL = 5112,
+	/// <unmanaged>SpvCapabilityInt4CooperativeMatrixINTEL</unmanaged>
+	Int4CooperativeMatrixINTEL = 5114,
+	/// <unmanaged>SpvCapabilityBFloat16TypeKHR</unmanaged>
+	BFloat16TypeKHR = 5116,
+	/// <unmanaged>SpvCapabilityBFloat16DotProductKHR</unmanaged>
+	BFloat16DotProductKHR = 5117,
+	/// <unmanaged>SpvCapabilityBFloat16CooperativeMatrixKHR</unmanaged>
+	BFloat16CooperativeMatrixKHR = 5118,
+	/// <unmanaged>SpvCapabilityAbortKHR</unmanaged>
+	AbortKHR = 5120,
+	/// <unmanaged>SpvCapabilityDescriptorHeapEXT</unmanaged>
+	DescriptorHeapEXT = 5128,
+	/// <unmanaged>SpvCapabilityConstantDataKHR</unmanaged>
+	ConstantDataKHR = 5146,
+	/// <unmanaged>SpvCapabilityPoisonFreezeKHR</unmanaged>
+	PoisonFreezeKHR = 5156,
 	/// <unmanaged>SpvCapabilitySampleMaskOverrideCoverageNV</unmanaged>
 	SampleMaskOverrideCoverageNV = 5249,
 	/// <unmanaged>SpvCapabilityGeometryShaderPassthroughNV</unmanaged>
@@ -1811,12 +2231,16 @@ public enum SpvCapability
 	FragmentBarycentricKHR = 5284,
 	/// <unmanaged>SpvCapabilityFragmentBarycentricNV</unmanaged>
 	FragmentBarycentricNV = 5284,
+	/// <unmanaged>SpvCapabilityComputeDerivativeGroupQuadsKHR</unmanaged>
+	ComputeDerivativeGroupQuadsKHR = 5288,
 	/// <unmanaged>SpvCapabilityComputeDerivativeGroupQuadsNV</unmanaged>
 	ComputeDerivativeGroupQuadsNV = 5288,
 	/// <unmanaged>SpvCapabilityFragmentDensityEXT</unmanaged>
 	FragmentDensityEXT = 5291,
 	/// <unmanaged>SpvCapabilityShadingRateNV</unmanaged>
 	ShadingRateNV = 5291,
+	/// <unmanaged>SpvCapabilityGroupNonUniformPartitionedEXT</unmanaged>
+	GroupNonUniformPartitionedEXT = 5297,
 	/// <unmanaged>SpvCapabilityGroupNonUniformPartitionedNV</unmanaged>
 	GroupNonUniformPartitionedNV = 5297,
 	/// <unmanaged>SpvCapabilityShaderNonUniform</unmanaged>
@@ -1867,6 +2291,8 @@ public enum SpvCapability
 	StorageTexelBufferArrayNonUniformIndexing = 5312,
 	/// <unmanaged>SpvCapabilityStorageTexelBufferArrayNonUniformIndexingEXT</unmanaged>
 	StorageTexelBufferArrayNonUniformIndexingEXT = 5312,
+	/// <unmanaged>SpvCapabilityRayTracingPositionFetchKHR</unmanaged>
+	RayTracingPositionFetchKHR = 5336,
 	/// <unmanaged>SpvCapabilityRayTracingNV</unmanaged>
 	RayTracingNV = 5340,
 	/// <unmanaged>SpvCapabilityRayTracingMotionBlurNV</unmanaged>
@@ -1883,6 +2309,8 @@ public enum SpvCapability
 	PhysicalStorageBufferAddresses = 5347,
 	/// <unmanaged>SpvCapabilityPhysicalStorageBufferAddressesEXT</unmanaged>
 	PhysicalStorageBufferAddressesEXT = 5347,
+	/// <unmanaged>SpvCapabilityComputeDerivativeGroupLinearKHR</unmanaged>
+	ComputeDerivativeGroupLinearKHR = 5350,
 	/// <unmanaged>SpvCapabilityComputeDerivativeGroupLinearNV</unmanaged>
 	ComputeDerivativeGroupLinearNV = 5350,
 	/// <unmanaged>SpvCapabilityRayTracingProvisionalKHR</unmanaged>
@@ -1901,8 +2329,52 @@ public enum SpvCapability
 	DemoteToHelperInvocation = 5379,
 	/// <unmanaged>SpvCapabilityDemoteToHelperInvocationEXT</unmanaged>
 	DemoteToHelperInvocationEXT = 5379,
+	/// <unmanaged>SpvCapabilityDisplacementMicromapNV</unmanaged>
+	DisplacementMicromapNV = 5380,
+	/// <unmanaged>SpvCapabilityRayTracingOpacityMicromapEXT</unmanaged>
+	RayTracingOpacityMicromapEXT = 5381,
+	/// <unmanaged>SpvCapabilityShaderInvocationReorderNV</unmanaged>
+	ShaderInvocationReorderNV = 5383,
+	/// <unmanaged>SpvCapabilityShaderInvocationReorderEXT</unmanaged>
+	ShaderInvocationReorderEXT = 5388,
 	/// <unmanaged>SpvCapabilityBindlessTextureNV</unmanaged>
 	BindlessTextureNV = 5390,
+	/// <unmanaged>SpvCapabilityRayQueryPositionFetchKHR</unmanaged>
+	RayQueryPositionFetchKHR = 5391,
+	/// <unmanaged>SpvCapabilityCooperativeVectorNV</unmanaged>
+	CooperativeVectorNV = 5394,
+	/// <unmanaged>SpvCapabilityAtomicFloat16VectorNV</unmanaged>
+	AtomicFloat16VectorNV = 5404,
+	/// <unmanaged>SpvCapabilityRayTracingDisplacementMicromapNV</unmanaged>
+	RayTracingDisplacementMicromapNV = 5409,
+	/// <unmanaged>SpvCapabilityRawAccessChainsNV</unmanaged>
+	RawAccessChainsNV = 5414,
+	/// <unmanaged>SpvCapabilityRayTracingSpheresGeometryNV</unmanaged>
+	RayTracingSpheresGeometryNV = 5418,
+	/// <unmanaged>SpvCapabilityRayTracingLinearSweptSpheresGeometryNV</unmanaged>
+	RayTracingLinearSweptSpheresGeometryNV = 5419,
+	/// <unmanaged>SpvCapabilityPushConstantBanksNV</unmanaged>
+	PushConstantBanksNV = 5423,
+	/// <unmanaged>SpvCapabilityLongVectorEXT</unmanaged>
+	LongVectorEXT = 5425,
+	/// <unmanaged>SpvCapabilityShader64BitIndexingEXT</unmanaged>
+	Shader64BitIndexingEXT = 5426,
+	/// <unmanaged>SpvCapabilityCooperativeMatrixReductionsNV</unmanaged>
+	CooperativeMatrixReductionsNV = 5430,
+	/// <unmanaged>SpvCapabilityCooperativeMatrixConversionsNV</unmanaged>
+	CooperativeMatrixConversionsNV = 5431,
+	/// <unmanaged>SpvCapabilityCooperativeMatrixPerElementOperationsNV</unmanaged>
+	CooperativeMatrixPerElementOperationsNV = 5432,
+	/// <unmanaged>SpvCapabilityCooperativeMatrixTensorAddressingNV</unmanaged>
+	CooperativeMatrixTensorAddressingNV = 5433,
+	/// <unmanaged>SpvCapabilityCooperativeMatrixBlockLoadsNV</unmanaged>
+	CooperativeMatrixBlockLoadsNV = 5434,
+	/// <unmanaged>SpvCapabilityCooperativeVectorTrainingNV</unmanaged>
+	CooperativeVectorTrainingNV = 5435,
+	/// <unmanaged>SpvCapabilityRayTracingClusterAccelerationStructureNV</unmanaged>
+	RayTracingClusterAccelerationStructureNV = 5437,
+	/// <unmanaged>SpvCapabilityTensorAddressingNV</unmanaged>
+	TensorAddressingNV = 5439,
 	/// <unmanaged>SpvCapabilitySubgroupShuffleINTEL</unmanaged>
 	SubgroupShuffleINTEL = 5568,
 	/// <unmanaged>SpvCapabilitySubgroupBufferBlockIOINTEL</unmanaged>
@@ -1945,40 +2417,78 @@ public enum SpvCapability
 	VariableLengthArrayINTEL = 5817,
 	/// <unmanaged>SpvCapabilityFunctionFloatControlINTEL</unmanaged>
 	FunctionFloatControlINTEL = 5821,
+	/// <unmanaged>SpvCapabilityFPGAMemoryAttributesALTERA</unmanaged>
+	FPGAMemoryAttributesALTERA = 5824,
 	/// <unmanaged>SpvCapabilityFPGAMemoryAttributesINTEL</unmanaged>
 	FPGAMemoryAttributesINTEL = 5824,
 	/// <unmanaged>SpvCapabilityFPFastMathModeINTEL</unmanaged>
 	FPFastMathModeINTEL = 5837,
+	/// <unmanaged>SpvCapabilityArbitraryPrecisionIntegersALTERA</unmanaged>
+	ArbitraryPrecisionIntegersALTERA = 5844,
 	/// <unmanaged>SpvCapabilityArbitraryPrecisionIntegersINTEL</unmanaged>
 	ArbitraryPrecisionIntegersINTEL = 5844,
+	/// <unmanaged>SpvCapabilityArbitraryPrecisionFloatingPointALTERA</unmanaged>
+	ArbitraryPrecisionFloatingPointALTERA = 5845,
 	/// <unmanaged>SpvCapabilityArbitraryPrecisionFloatingPointINTEL</unmanaged>
 	ArbitraryPrecisionFloatingPointINTEL = 5845,
 	/// <unmanaged>SpvCapabilityUnstructuredLoopControlsINTEL</unmanaged>
 	UnstructuredLoopControlsINTEL = 5886,
+	/// <unmanaged>SpvCapabilityFPGALoopControlsALTERA</unmanaged>
+	FPGALoopControlsALTERA = 5888,
 	/// <unmanaged>SpvCapabilityFPGALoopControlsINTEL</unmanaged>
 	FPGALoopControlsINTEL = 5888,
 	/// <unmanaged>SpvCapabilityKernelAttributesINTEL</unmanaged>
 	KernelAttributesINTEL = 5892,
 	/// <unmanaged>SpvCapabilityFPGAKernelAttributesINTEL</unmanaged>
 	FPGAKernelAttributesINTEL = 5897,
+	/// <unmanaged>SpvCapabilityFPGAMemoryAccessesALTERA</unmanaged>
+	FPGAMemoryAccessesALTERA = 5898,
 	/// <unmanaged>SpvCapabilityFPGAMemoryAccessesINTEL</unmanaged>
 	FPGAMemoryAccessesINTEL = 5898,
+	/// <unmanaged>SpvCapabilityFPGAClusterAttributesALTERA</unmanaged>
+	FPGAClusterAttributesALTERA = 5904,
 	/// <unmanaged>SpvCapabilityFPGAClusterAttributesINTEL</unmanaged>
 	FPGAClusterAttributesINTEL = 5904,
+	/// <unmanaged>SpvCapabilityLoopFuseALTERA</unmanaged>
+	LoopFuseALTERA = 5906,
 	/// <unmanaged>SpvCapabilityLoopFuseINTEL</unmanaged>
 	LoopFuseINTEL = 5906,
+	/// <unmanaged>SpvCapabilityFPGADSPControlALTERA</unmanaged>
+	FPGADSPControlALTERA = 5908,
+	/// <unmanaged>SpvCapabilityFPGADSPControlINTEL</unmanaged>
+	FPGADSPControlINTEL = 5908,
 	/// <unmanaged>SpvCapabilityMemoryAccessAliasingINTEL</unmanaged>
 	MemoryAccessAliasingINTEL = 5910,
+	/// <unmanaged>SpvCapabilityFPGAInvocationPipeliningAttributesALTERA</unmanaged>
+	FPGAInvocationPipeliningAttributesALTERA = 5916,
+	/// <unmanaged>SpvCapabilityFPGAInvocationPipeliningAttributesINTEL</unmanaged>
+	FPGAInvocationPipeliningAttributesINTEL = 5916,
+	/// <unmanaged>SpvCapabilityFPGABufferLocationALTERA</unmanaged>
+	FPGABufferLocationALTERA = 5920,
 	/// <unmanaged>SpvCapabilityFPGABufferLocationINTEL</unmanaged>
 	FPGABufferLocationINTEL = 5920,
+	/// <unmanaged>SpvCapabilityArbitraryPrecisionFixedPointALTERA</unmanaged>
+	ArbitraryPrecisionFixedPointALTERA = 5922,
 	/// <unmanaged>SpvCapabilityArbitraryPrecisionFixedPointINTEL</unmanaged>
 	ArbitraryPrecisionFixedPointINTEL = 5922,
+	/// <unmanaged>SpvCapabilityUSMStorageClassesALTERA</unmanaged>
+	USMStorageClassesALTERA = 5935,
 	/// <unmanaged>SpvCapabilityUSMStorageClassesINTEL</unmanaged>
 	USMStorageClassesINTEL = 5935,
+	/// <unmanaged>SpvCapabilityRuntimeAlignedAttributeALTERA</unmanaged>
+	RuntimeAlignedAttributeALTERA = 5939,
+	/// <unmanaged>SpvCapabilityRuntimeAlignedAttributeINTEL</unmanaged>
+	RuntimeAlignedAttributeINTEL = 5939,
+	/// <unmanaged>SpvCapabilityIOPipesALTERA</unmanaged>
+	IOPipesALTERA = 5943,
 	/// <unmanaged>SpvCapabilityIOPipesINTEL</unmanaged>
 	IOPipesINTEL = 5943,
+	/// <unmanaged>SpvCapabilityBlockingPipesALTERA</unmanaged>
+	BlockingPipesALTERA = 5945,
 	/// <unmanaged>SpvCapabilityBlockingPipesINTEL</unmanaged>
 	BlockingPipesINTEL = 5945,
+	/// <unmanaged>SpvCapabilityFPGARegALTERA</unmanaged>
+	FPGARegALTERA = 5948,
 	/// <unmanaged>SpvCapabilityFPGARegINTEL</unmanaged>
 	FPGARegINTEL = 5948,
 	/// <unmanaged>SpvCapabilityDotProductInputAll</unmanaged>
@@ -1999,79 +2509,161 @@ public enum SpvCapability
 	DotProductKHR = 6019,
 	/// <unmanaged>SpvCapabilityRayCullMaskKHR</unmanaged>
 	RayCullMaskKHR = 6020,
+	/// <unmanaged>SpvCapabilityCooperativeMatrixKHR</unmanaged>
+	CooperativeMatrixKHR = 6022,
+	/// <unmanaged>SpvCapabilityReplicatedCompositesEXT</unmanaged>
+	ReplicatedCompositesEXT = 6024,
 	/// <unmanaged>SpvCapabilityBitInstructions</unmanaged>
 	BitInstructions = 6025,
 	/// <unmanaged>SpvCapabilityGroupNonUniformRotateKHR</unmanaged>
 	GroupNonUniformRotateKHR = 6026,
+	/// <unmanaged>SpvCapabilityFloatControls2</unmanaged>
+	FloatControls2 = 6029,
+	/// <unmanaged>SpvCapabilityFMAKHR</unmanaged>
+	FMAKHR = 6030,
 	/// <unmanaged>SpvCapabilityAtomicFloat32AddEXT</unmanaged>
 	AtomicFloat32AddEXT = 6033,
 	/// <unmanaged>SpvCapabilityAtomicFloat64AddEXT</unmanaged>
 	AtomicFloat64AddEXT = 6034,
-	/// <unmanaged>SpvCapabilityLongConstantCompositeINTEL</unmanaged>
-	LongConstantCompositeINTEL = 6089,
+	/// <unmanaged>SpvCapabilityLongCompositesINTEL</unmanaged>
+	LongCompositesINTEL = 6089,
+	/// <unmanaged>SpvCapabilityOptNoneEXT</unmanaged>
+	OptNoneEXT = 6094,
 	/// <unmanaged>SpvCapabilityOptNoneINTEL</unmanaged>
 	OptNoneINTEL = 6094,
 	/// <unmanaged>SpvCapabilityAtomicFloat16AddEXT</unmanaged>
 	AtomicFloat16AddEXT = 6095,
 	/// <unmanaged>SpvCapabilityDebugInfoModuleINTEL</unmanaged>
 	DebugInfoModuleINTEL = 6114,
+	/// <unmanaged>SpvCapabilityBFloat16ConversionINTEL</unmanaged>
+	BFloat16ConversionINTEL = 6115,
 	/// <unmanaged>SpvCapabilitySplitBarrierINTEL</unmanaged>
 	SplitBarrierINTEL = 6141,
+	/// <unmanaged>SpvCapabilityArithmeticFenceEXT</unmanaged>
+	ArithmeticFenceEXT = 6144,
+	/// <unmanaged>SpvCapabilityFPGAClusterAttributesV2ALTERA</unmanaged>
+	FPGAClusterAttributesV2ALTERA = 6150,
+	/// <unmanaged>SpvCapabilityFPGAClusterAttributesV2INTEL</unmanaged>
+	FPGAClusterAttributesV2INTEL = 6150,
+	/// <unmanaged>SpvCapabilityFPGAKernelAttributesv2INTEL</unmanaged>
+	FPGAKernelAttributesv2INTEL = 6161,
+	/// <unmanaged>SpvCapabilityTaskSequenceALTERA</unmanaged>
+	TaskSequenceALTERA = 6162,
+	/// <unmanaged>SpvCapabilityTaskSequenceINTEL</unmanaged>
+	TaskSequenceINTEL = 6162,
+	/// <unmanaged>SpvCapabilityFPMaxErrorINTEL</unmanaged>
+	FPMaxErrorINTEL = 6169,
+	/// <unmanaged>SpvCapabilityFPGALatencyControlALTERA</unmanaged>
+	FPGALatencyControlALTERA = 6171,
+	/// <unmanaged>SpvCapabilityFPGALatencyControlINTEL</unmanaged>
+	FPGALatencyControlINTEL = 6171,
+	/// <unmanaged>SpvCapabilityFPGAArgumentInterfacesALTERA</unmanaged>
+	FPGAArgumentInterfacesALTERA = 6174,
+	/// <unmanaged>SpvCapabilityFPGAArgumentInterfacesINTEL</unmanaged>
+	FPGAArgumentInterfacesINTEL = 6174,
+	/// <unmanaged>SpvCapabilityGlobalVariableHostAccessINTEL</unmanaged>
+	GlobalVariableHostAccessINTEL = 6187,
+	/// <unmanaged>SpvCapabilityGlobalVariableFPGADecorationsALTERA</unmanaged>
+	GlobalVariableFPGADecorationsALTERA = 6189,
+	/// <unmanaged>SpvCapabilityGlobalVariableFPGADecorationsINTEL</unmanaged>
+	GlobalVariableFPGADecorationsINTEL = 6189,
+	/// <unmanaged>SpvCapabilitySubgroupBufferPrefetchINTEL</unmanaged>
+	SubgroupBufferPrefetchINTEL = 6220,
+	/// <unmanaged>SpvCapabilitySubgroup2DBlockIOINTEL</unmanaged>
+	Subgroup2DBlockIOINTEL = 6228,
+	/// <unmanaged>SpvCapabilitySubgroup2DBlockTransformINTEL</unmanaged>
+	Subgroup2DBlockTransformINTEL = 6229,
+	/// <unmanaged>SpvCapabilitySubgroup2DBlockTransposeINTEL</unmanaged>
+	Subgroup2DBlockTransposeINTEL = 6230,
+	/// <unmanaged>SpvCapabilitySubgroupMatrixMultiplyAccumulateINTEL</unmanaged>
+	SubgroupMatrixMultiplyAccumulateINTEL = 6236,
+	/// <unmanaged>SpvCapabilityTernaryBitwiseFunctionINTEL</unmanaged>
+	TernaryBitwiseFunctionINTEL = 6241,
+	/// <unmanaged>SpvCapabilityUntypedVariableLengthArrayINTEL</unmanaged>
+	UntypedVariableLengthArrayINTEL = 6243,
+	/// <unmanaged>SpvCapabilitySpecConditionalINTEL</unmanaged>
+	SpecConditionalINTEL = 6245,
+	/// <unmanaged>SpvCapabilityFunctionVariantsINTEL</unmanaged>
+	FunctionVariantsINTEL = 6246,
 	/// <unmanaged>SpvCapabilityGroupUniformArithmeticKHR</unmanaged>
 	GroupUniformArithmeticKHR = 6400,
+	/// <unmanaged>SpvCapabilityTensorFloat32RoundingINTEL</unmanaged>
+	TensorFloat32RoundingINTEL = 6425,
+	/// <unmanaged>SpvCapabilityMaskedGatherScatterINTEL</unmanaged>
+	MaskedGatherScatterINTEL = 6427,
+	/// <unmanaged>SpvCapabilityCacheControlsINTEL</unmanaged>
+	CacheControlsINTEL = 6441,
+	/// <unmanaged>SpvCapabilityRegisterLimitsINTEL</unmanaged>
+	RegisterLimitsINTEL = 6460,
+	/// <unmanaged>SpvCapabilityBindlessImagesINTEL</unmanaged>
+	BindlessImagesINTEL = 6528,
+	/// <unmanaged>SpvCapabilityDotProductFloat16AccFloat32VALVE</unmanaged>
+	DotProductFloat16AccFloat32VALVE = 6912,
+	/// <unmanaged>SpvCapabilityDotProductFloat16AccFloat16VALVE</unmanaged>
+	DotProductFloat16AccFloat16VALVE = 6913,
+	/// <unmanaged>SpvCapabilityDotProductBFloat16AccVALVE</unmanaged>
+	DotProductBFloat16AccVALVE = 6914,
+	/// <unmanaged>SpvCapabilityDotProductFloat8AccFloat32VALVE</unmanaged>
+	DotProductFloat8AccFloat32VALVE = 6915,
 }
 
 public enum SpvRayFlagsShift
 {
 	/// <unmanaged>SpvRayFlagsOpaqueKHRShift</unmanaged>
-	SpvRayFlagsOpaqueKHRShift = 0,
+	OpaqueKHRShift = 0,
 	/// <unmanaged>SpvRayFlagsNoOpaqueKHRShift</unmanaged>
-	SpvRayFlagsNoOpaqueKHRShift = 1,
+	NoOpaqueKHRShift = 1,
 	/// <unmanaged>SpvRayFlagsTerminateOnFirstHitKHRShift</unmanaged>
-	SpvRayFlagsTerminateOnFirstHitKHRShift = 2,
+	TerminateOnFirstHitKHRShift = 2,
 	/// <unmanaged>SpvRayFlagsSkipClosestHitShaderKHRShift</unmanaged>
-	SpvRayFlagsSkipClosestHitShaderKHRShift = 3,
+	SkipClosestHitShaderKHRShift = 3,
 	/// <unmanaged>SpvRayFlagsCullBackFacingTrianglesKHRShift</unmanaged>
-	SpvRayFlagsCullBackFacingTrianglesKHRShift = 4,
+	CullBackFacingTrianglesKHRShift = 4,
 	/// <unmanaged>SpvRayFlagsCullFrontFacingTrianglesKHRShift</unmanaged>
-	SpvRayFlagsCullFrontFacingTrianglesKHRShift = 5,
+	CullFrontFacingTrianglesKHRShift = 5,
 	/// <unmanaged>SpvRayFlagsCullOpaqueKHRShift</unmanaged>
-	SpvRayFlagsCullOpaqueKHRShift = 6,
+	CullOpaqueKHRShift = 6,
 	/// <unmanaged>SpvRayFlagsCullNoOpaqueKHRShift</unmanaged>
-	SpvRayFlagsCullNoOpaqueKHRShift = 7,
+	CullNoOpaqueKHRShift = 7,
+	/// <unmanaged>SpvRayFlagsSkipBuiltinPrimitivesNVShift</unmanaged>
+	SkipBuiltinPrimitivesNVShift = 8,
 	/// <unmanaged>SpvRayFlagsSkipTrianglesKHRShift</unmanaged>
-	SpvRayFlagsSkipTrianglesKHRShift = 8,
+	SkipTrianglesKHRShift = 8,
 	/// <unmanaged>SpvRayFlagsSkipAABBsKHRShift</unmanaged>
-	SpvRayFlagsSkipAABBsKHRShift = 9,
-	/// <unmanaged>SpvRayFlagsMax</unmanaged>
-	SpvRayFlagsMax = 0x7fffffff,
+	SkipAABBsKHRShift = 9,
+	/// <unmanaged>SpvRayFlagsForceOpacityMicromap2StateEXTShift</unmanaged>
+	ForceOpacityMicromap2StateEXTShift = 10,
 }
 
 [Flags]
 public enum SpvRayFlagsMask
 {
 	/// <unmanaged>SpvRayFlagsMaskNone</unmanaged>
-	None = 0,
+	MaskNone = 0,
 	/// <unmanaged>SpvRayFlagsOpaqueKHRMask</unmanaged>
-	SpvRayFlagsOpaqueKHRMask = 0x00000001,
+	OpaqueKHRMask = 0x00000001,
 	/// <unmanaged>SpvRayFlagsNoOpaqueKHRMask</unmanaged>
-	SpvRayFlagsNoOpaqueKHRMask = 0x00000002,
+	NoOpaqueKHRMask = 0x00000002,
 	/// <unmanaged>SpvRayFlagsTerminateOnFirstHitKHRMask</unmanaged>
-	SpvRayFlagsTerminateOnFirstHitKHRMask = 0x00000004,
+	TerminateOnFirstHitKHRMask = 0x00000004,
 	/// <unmanaged>SpvRayFlagsSkipClosestHitShaderKHRMask</unmanaged>
-	SpvRayFlagsSkipClosestHitShaderKHRMask = 0x00000008,
+	SkipClosestHitShaderKHRMask = 0x00000008,
 	/// <unmanaged>SpvRayFlagsCullBackFacingTrianglesKHRMask</unmanaged>
-	SpvRayFlagsCullBackFacingTrianglesKHRMask = 0x00000010,
+	CullBackFacingTrianglesKHRMask = 0x00000010,
 	/// <unmanaged>SpvRayFlagsCullFrontFacingTrianglesKHRMask</unmanaged>
-	SpvRayFlagsCullFrontFacingTrianglesKHRMask = 0x00000020,
+	CullFrontFacingTrianglesKHRMask = 0x00000020,
 	/// <unmanaged>SpvRayFlagsCullOpaqueKHRMask</unmanaged>
-	SpvRayFlagsCullOpaqueKHRMask = 0x00000040,
+	CullOpaqueKHRMask = 0x00000040,
 	/// <unmanaged>SpvRayFlagsCullNoOpaqueKHRMask</unmanaged>
-	SpvRayFlagsCullNoOpaqueKHRMask = 0x00000080,
+	CullNoOpaqueKHRMask = 0x00000080,
+	/// <unmanaged>SpvRayFlagsSkipBuiltinPrimitivesNVMask</unmanaged>
+	SkipBuiltinPrimitivesNVMask = 0x00000100,
 	/// <unmanaged>SpvRayFlagsSkipTrianglesKHRMask</unmanaged>
-	SpvRayFlagsSkipTrianglesKHRMask = 0x00000100,
+	SkipTrianglesKHRMask = 0x00000100,
 	/// <unmanaged>SpvRayFlagsSkipAABBsKHRMask</unmanaged>
-	SpvRayFlagsSkipAABBsKHRMask = 0x00000200,
+	SkipAABBsKHRMask = 0x00000200,
+	/// <unmanaged>SpvRayFlagsForceOpacityMicromap2StateEXTMask</unmanaged>
+	ForceOpacityMicromap2StateEXTMask = 0x00000400,
 }
 
 public enum SpvRayQueryIntersection
@@ -2118,15 +2710,15 @@ public enum SpvFragmentShadingRateShift
 public enum SpvFragmentShadingRateMask
 {
 	/// <unmanaged>SpvFragmentShadingRateMaskNone</unmanaged>
-	None = 0,
+	MaskNone = 0,
 	/// <unmanaged>SpvFragmentShadingRateVertical2PixelsMask</unmanaged>
-	SpvFragmentShadingRateVertical2PixelsMask = 0x00000001,
+	Vertical2PixelsMask = 0x00000001,
 	/// <unmanaged>SpvFragmentShadingRateVertical4PixelsMask</unmanaged>
-	SpvFragmentShadingRateVertical4PixelsMask = 0x00000002,
+	Vertical4PixelsMask = 0x00000002,
 	/// <unmanaged>SpvFragmentShadingRateHorizontal2PixelsMask</unmanaged>
-	SpvFragmentShadingRateHorizontal2PixelsMask = 0x00000004,
+	Horizontal2PixelsMask = 0x00000004,
 	/// <unmanaged>SpvFragmentShadingRateHorizontal4PixelsMask</unmanaged>
-	SpvFragmentShadingRateHorizontal4PixelsMask = 0x00000008,
+	Horizontal4PixelsMask = 0x00000008,
 }
 
 public enum SpvFPDenormMode
@@ -2183,6 +2775,344 @@ public enum SpvPackedVectorFormat
 	PackedVectorFormat4x8Bit = 0,
 	/// <unmanaged>SpvPackedVectorFormatPackedVectorFormat4x8BitKHR</unmanaged>
 	PackedVectorFormat4x8BitKHR = 0,
+}
+
+public enum SpvCooperativeMatrixOperandsShift
+{
+	/// <unmanaged>SpvCooperativeMatrixOperandsMatrixASignedComponentsKHRShift</unmanaged>
+	MatrixASignedComponentsKHRShift = 0,
+	/// <unmanaged>SpvCooperativeMatrixOperandsMatrixBSignedComponentsKHRShift</unmanaged>
+	MatrixBSignedComponentsKHRShift = 1,
+	/// <unmanaged>SpvCooperativeMatrixOperandsMatrixCSignedComponentsKHRShift</unmanaged>
+	MatrixCSignedComponentsKHRShift = 2,
+	/// <unmanaged>SpvCooperativeMatrixOperandsMatrixResultSignedComponentsKHRShift</unmanaged>
+	MatrixResultSignedComponentsKHRShift = 3,
+	/// <unmanaged>SpvCooperativeMatrixOperandsSaturatingAccumulationKHRShift</unmanaged>
+	SaturatingAccumulationKHRShift = 4,
+}
+
+[Flags]
+public enum SpvCooperativeMatrixOperandsMask
+{
+	/// <unmanaged>SpvCooperativeMatrixOperandsMaskNone</unmanaged>
+	MaskNone = 0,
+	/// <unmanaged>SpvCooperativeMatrixOperandsMatrixASignedComponentsKHRMask</unmanaged>
+	MatrixASignedComponentsKHRMask = 0x00000001,
+	/// <unmanaged>SpvCooperativeMatrixOperandsMatrixBSignedComponentsKHRMask</unmanaged>
+	MatrixBSignedComponentsKHRMask = 0x00000002,
+	/// <unmanaged>SpvCooperativeMatrixOperandsMatrixCSignedComponentsKHRMask</unmanaged>
+	MatrixCSignedComponentsKHRMask = 0x00000004,
+	/// <unmanaged>SpvCooperativeMatrixOperandsMatrixResultSignedComponentsKHRMask</unmanaged>
+	MatrixResultSignedComponentsKHRMask = 0x00000008,
+	/// <unmanaged>SpvCooperativeMatrixOperandsSaturatingAccumulationKHRMask</unmanaged>
+	SaturatingAccumulationKHRMask = 0x00000010,
+}
+
+public enum SpvCooperativeMatrixLayout
+{
+	/// <unmanaged>SpvCooperativeMatrixLayoutRowMajorKHR</unmanaged>
+	RowMajorKHR = 0,
+	/// <unmanaged>SpvCooperativeMatrixLayoutColumnMajorKHR</unmanaged>
+	ColumnMajorKHR = 1,
+	/// <unmanaged>SpvCooperativeMatrixLayoutRowBlockedInterleavedARM</unmanaged>
+	RowBlockedInterleavedARM = 4202,
+	/// <unmanaged>SpvCooperativeMatrixLayoutColumnBlockedInterleavedARM</unmanaged>
+	ColumnBlockedInterleavedARM = 4203,
+}
+
+public enum SpvCooperativeMatrixUse
+{
+	/// <unmanaged>SpvCooperativeMatrixUseMatrixAKHR</unmanaged>
+	MatrixAKHR = 0,
+	/// <unmanaged>SpvCooperativeMatrixUseMatrixBKHR</unmanaged>
+	MatrixBKHR = 1,
+	/// <unmanaged>SpvCooperativeMatrixUseMatrixAccumulatorKHR</unmanaged>
+	MatrixAccumulatorKHR = 2,
+}
+
+public enum SpvCooperativeMatrixReduceShift
+{
+	/// <unmanaged>SpvCooperativeMatrixReduceRowShift</unmanaged>
+	RowShift = 0,
+	/// <unmanaged>SpvCooperativeMatrixReduceColumnShift</unmanaged>
+	ColumnShift = 1,
+	/// <unmanaged>SpvCooperativeMatrixReduce2x2Shift</unmanaged>
+	_2x2Shift = 2,
+}
+
+[Flags]
+public enum SpvCooperativeMatrixReduceMask
+{
+	/// <unmanaged>SpvCooperativeMatrixReduceMaskNone</unmanaged>
+	MaskNone = 0,
+	/// <unmanaged>SpvCooperativeMatrixReduceRowMask</unmanaged>
+	RowMask = 0x00000001,
+	/// <unmanaged>SpvCooperativeMatrixReduceColumnMask</unmanaged>
+	ColumnMask = 0x00000002,
+	/// <unmanaged>SpvCooperativeMatrixReduce2x2Mask</unmanaged>
+	_2x2Mask = 0x00000004,
+}
+
+public enum SpvTensorClampMode
+{
+	/// <unmanaged>SpvTensorClampModeUndefined</unmanaged>
+	Undefined = 0,
+	/// <unmanaged>SpvTensorClampModeConstant</unmanaged>
+	Constant = 1,
+	/// <unmanaged>SpvTensorClampModeClampToEdge</unmanaged>
+	ClampToEdge = 2,
+	/// <unmanaged>SpvTensorClampModeRepeat</unmanaged>
+	Repeat = 3,
+	/// <unmanaged>SpvTensorClampModeRepeatMirrored</unmanaged>
+	RepeatMirrored = 4,
+}
+
+public enum SpvTensorAddressingOperandsShift
+{
+	/// <unmanaged>SpvTensorAddressingOperandsTensorViewShift</unmanaged>
+	TensorViewShift = 0,
+	/// <unmanaged>SpvTensorAddressingOperandsDecodeFuncShift</unmanaged>
+	DecodeFuncShift = 1,
+}
+
+[Flags]
+public enum SpvTensorAddressingOperandsMask
+{
+	/// <unmanaged>SpvTensorAddressingOperandsMaskNone</unmanaged>
+	MaskNone = 0,
+	/// <unmanaged>SpvTensorAddressingOperandsTensorViewMask</unmanaged>
+	TensorViewMask = 0x00000001,
+	/// <unmanaged>SpvTensorAddressingOperandsDecodeFuncMask</unmanaged>
+	DecodeFuncMask = 0x00000002,
+}
+
+public enum SpvTensorOperandsShift
+{
+	/// <unmanaged>SpvTensorOperandsNontemporalARMShift</unmanaged>
+	NontemporalARMShift = 0,
+	/// <unmanaged>SpvTensorOperandsOutOfBoundsValueARMShift</unmanaged>
+	OutOfBoundsValueARMShift = 1,
+	/// <unmanaged>SpvTensorOperandsMakeElementAvailableARMShift</unmanaged>
+	MakeElementAvailableARMShift = 2,
+	/// <unmanaged>SpvTensorOperandsMakeElementVisibleARMShift</unmanaged>
+	MakeElementVisibleARMShift = 3,
+	/// <unmanaged>SpvTensorOperandsNonPrivateElementARMShift</unmanaged>
+	NonPrivateElementARMShift = 4,
+}
+
+[Flags]
+public enum SpvTensorOperandsMask
+{
+	/// <unmanaged>SpvTensorOperandsMaskNone</unmanaged>
+	MaskNone = 0,
+	/// <unmanaged>SpvTensorOperandsNontemporalARMMask</unmanaged>
+	NontemporalARMMask = 0x00000001,
+	/// <unmanaged>SpvTensorOperandsOutOfBoundsValueARMMask</unmanaged>
+	OutOfBoundsValueARMMask = 0x00000002,
+	/// <unmanaged>SpvTensorOperandsMakeElementAvailableARMMask</unmanaged>
+	MakeElementAvailableARMMask = 0x00000004,
+	/// <unmanaged>SpvTensorOperandsMakeElementVisibleARMMask</unmanaged>
+	MakeElementVisibleARMMask = 0x00000008,
+	/// <unmanaged>SpvTensorOperandsNonPrivateElementARMMask</unmanaged>
+	NonPrivateElementARMMask = 0x00000010,
+}
+
+public enum SpvInitializationModeQualifier
+{
+	/// <unmanaged>SpvInitializationModeQualifierInitOnDeviceReprogramALTERA</unmanaged>
+	InitOnDeviceReprogramALTERA = 0,
+	/// <unmanaged>SpvInitializationModeQualifierInitOnDeviceReprogramINTEL</unmanaged>
+	InitOnDeviceReprogramINTEL = 0,
+	/// <unmanaged>SpvInitializationModeQualifierInitOnDeviceResetALTERA</unmanaged>
+	InitOnDeviceResetALTERA = 1,
+	/// <unmanaged>SpvInitializationModeQualifierInitOnDeviceResetINTEL</unmanaged>
+	InitOnDeviceResetINTEL = 1,
+}
+
+public enum SpvHostAccessQualifier
+{
+	/// <unmanaged>SpvHostAccessQualifierNoneINTEL</unmanaged>
+	NoneINTEL = 0,
+	/// <unmanaged>SpvHostAccessQualifierReadINTEL</unmanaged>
+	ReadINTEL = 1,
+	/// <unmanaged>SpvHostAccessQualifierWriteINTEL</unmanaged>
+	WriteINTEL = 2,
+	/// <unmanaged>SpvHostAccessQualifierReadWriteINTEL</unmanaged>
+	ReadWriteINTEL = 3,
+}
+
+public enum SpvLoadCacheControl
+{
+	/// <unmanaged>SpvLoadCacheControlUncachedINTEL</unmanaged>
+	UncachedINTEL = 0,
+	/// <unmanaged>SpvLoadCacheControlCachedINTEL</unmanaged>
+	CachedINTEL = 1,
+	/// <unmanaged>SpvLoadCacheControlStreamingINTEL</unmanaged>
+	StreamingINTEL = 2,
+	/// <unmanaged>SpvLoadCacheControlInvalidateAfterReadINTEL</unmanaged>
+	InvalidateAfterReadINTEL = 3,
+	/// <unmanaged>SpvLoadCacheControlConstCachedINTEL</unmanaged>
+	ConstCachedINTEL = 4,
+}
+
+public enum SpvStoreCacheControl
+{
+	/// <unmanaged>SpvStoreCacheControlUncachedINTEL</unmanaged>
+	UncachedINTEL = 0,
+	/// <unmanaged>SpvStoreCacheControlWriteThroughINTEL</unmanaged>
+	WriteThroughINTEL = 1,
+	/// <unmanaged>SpvStoreCacheControlWriteBackINTEL</unmanaged>
+	WriteBackINTEL = 2,
+	/// <unmanaged>SpvStoreCacheControlStreamingINTEL</unmanaged>
+	StreamingINTEL = 3,
+}
+
+public enum SpvNamedMaximumNumberOfRegisters
+{
+	/// <unmanaged>SpvNamedMaximumNumberOfRegistersAutoINTEL</unmanaged>
+	AutoINTEL = 0,
+}
+
+public enum SpvMatrixMultiplyAccumulateOperandsShift
+{
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixASignedComponentsINTELShift</unmanaged>
+	MatrixASignedComponentsINTELShift = 0,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBSignedComponentsINTELShift</unmanaged>
+	MatrixBSignedComponentsINTELShift = 1,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixCBFloat16INTELShift</unmanaged>
+	MatrixCBFloat16INTELShift = 2,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixResultBFloat16INTELShift</unmanaged>
+	MatrixResultBFloat16INTELShift = 3,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixAPackedInt8INTELShift</unmanaged>
+	MatrixAPackedInt8INTELShift = 4,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBPackedInt8INTELShift</unmanaged>
+	MatrixBPackedInt8INTELShift = 5,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixAPackedInt4INTELShift</unmanaged>
+	MatrixAPackedInt4INTELShift = 6,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBPackedInt4INTELShift</unmanaged>
+	MatrixBPackedInt4INTELShift = 7,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixATF32INTELShift</unmanaged>
+	MatrixATF32INTELShift = 8,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBTF32INTELShift</unmanaged>
+	MatrixBTF32INTELShift = 9,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixAPackedFloat16INTELShift</unmanaged>
+	MatrixAPackedFloat16INTELShift = 10,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBPackedFloat16INTELShift</unmanaged>
+	MatrixBPackedFloat16INTELShift = 11,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixAPackedBFloat16INTELShift</unmanaged>
+	MatrixAPackedBFloat16INTELShift = 12,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBPackedBFloat16INTELShift</unmanaged>
+	MatrixBPackedBFloat16INTELShift = 13,
+}
+
+[Flags]
+public enum SpvMatrixMultiplyAccumulateOperandsMask
+{
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMaskNone</unmanaged>
+	MaskNone = 0,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixASignedComponentsINTELMask</unmanaged>
+	MatrixASignedComponentsINTELMask = 0x00000001,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBSignedComponentsINTELMask</unmanaged>
+	MatrixBSignedComponentsINTELMask = 0x00000002,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixCBFloat16INTELMask</unmanaged>
+	MatrixCBFloat16INTELMask = 0x00000004,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixResultBFloat16INTELMask</unmanaged>
+	MatrixResultBFloat16INTELMask = 0x00000008,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixAPackedInt8INTELMask</unmanaged>
+	MatrixAPackedInt8INTELMask = 0x00000010,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBPackedInt8INTELMask</unmanaged>
+	MatrixBPackedInt8INTELMask = 0x00000020,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixAPackedInt4INTELMask</unmanaged>
+	MatrixAPackedInt4INTELMask = 0x00000040,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBPackedInt4INTELMask</unmanaged>
+	MatrixBPackedInt4INTELMask = 0x00000080,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixATF32INTELMask</unmanaged>
+	MatrixATF32INTELMask = 0x00000100,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBTF32INTELMask</unmanaged>
+	MatrixBTF32INTELMask = 0x00000200,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixAPackedFloat16INTELMask</unmanaged>
+	MatrixAPackedFloat16INTELMask = 0x00000400,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBPackedFloat16INTELMask</unmanaged>
+	MatrixBPackedFloat16INTELMask = 0x00000800,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixAPackedBFloat16INTELMask</unmanaged>
+	MatrixAPackedBFloat16INTELMask = 0x00001000,
+	/// <unmanaged>SpvMatrixMultiplyAccumulateOperandsMatrixBPackedBFloat16INTELMask</unmanaged>
+	MatrixBPackedBFloat16INTELMask = 0x00002000,
+}
+
+public enum SpvRawAccessChainOperandsShift
+{
+	/// <unmanaged>SpvRawAccessChainOperandsRobustnessPerComponentNVShift</unmanaged>
+	RobustnessPerComponentNVShift = 0,
+	/// <unmanaged>SpvRawAccessChainOperandsRobustnessPerElementNVShift</unmanaged>
+	RobustnessPerElementNVShift = 1,
+}
+
+[Flags]
+public enum SpvRawAccessChainOperandsMask
+{
+	/// <unmanaged>SpvRawAccessChainOperandsMaskNone</unmanaged>
+	MaskNone = 0,
+	/// <unmanaged>SpvRawAccessChainOperandsRobustnessPerComponentNVMask</unmanaged>
+	RobustnessPerComponentNVMask = 0x00000001,
+	/// <unmanaged>SpvRawAccessChainOperandsRobustnessPerElementNVMask</unmanaged>
+	RobustnessPerElementNVMask = 0x00000002,
+}
+
+public enum SpvFPEncoding
+{
+	/// <unmanaged>SpvFPEncodingBFloat16KHR</unmanaged>
+	BFloat16KHR = 0,
+	/// <unmanaged>SpvFPEncodingFloat8E4M3EXT</unmanaged>
+	Float8E4M3EXT = 4214,
+	/// <unmanaged>SpvFPEncodingFloat8E5M2EXT</unmanaged>
+	Float8E5M2EXT = 4215,
+}
+
+public enum SpvCooperativeVectorMatrixLayout
+{
+	/// <unmanaged>SpvCooperativeVectorMatrixLayoutRowMajorNV</unmanaged>
+	RowMajorNV = 0,
+	/// <unmanaged>SpvCooperativeVectorMatrixLayoutColumnMajorNV</unmanaged>
+	ColumnMajorNV = 1,
+	/// <unmanaged>SpvCooperativeVectorMatrixLayoutInferencingOptimalNV</unmanaged>
+	InferencingOptimalNV = 2,
+	/// <unmanaged>SpvCooperativeVectorMatrixLayoutTrainingOptimalNV</unmanaged>
+	TrainingOptimalNV = 3,
+}
+
+public enum SpvComponentType
+{
+	/// <unmanaged>SpvComponentTypeFloat16NV</unmanaged>
+	Float16NV = 0,
+	/// <unmanaged>SpvComponentTypeFloat32NV</unmanaged>
+	Float32NV = 1,
+	/// <unmanaged>SpvComponentTypeFloat64NV</unmanaged>
+	Float64NV = 2,
+	/// <unmanaged>SpvComponentTypeSignedInt8NV</unmanaged>
+	SignedInt8NV = 3,
+	/// <unmanaged>SpvComponentTypeSignedInt16NV</unmanaged>
+	SignedInt16NV = 4,
+	/// <unmanaged>SpvComponentTypeSignedInt32NV</unmanaged>
+	SignedInt32NV = 5,
+	/// <unmanaged>SpvComponentTypeSignedInt64NV</unmanaged>
+	SignedInt64NV = 6,
+	/// <unmanaged>SpvComponentTypeUnsignedInt8NV</unmanaged>
+	UnsignedInt8NV = 7,
+	/// <unmanaged>SpvComponentTypeUnsignedInt16NV</unmanaged>
+	UnsignedInt16NV = 8,
+	/// <unmanaged>SpvComponentTypeUnsignedInt32NV</unmanaged>
+	UnsignedInt32NV = 9,
+	/// <unmanaged>SpvComponentTypeUnsignedInt64NV</unmanaged>
+	UnsignedInt64NV = 10,
+	/// <unmanaged>SpvComponentTypeSignedInt8PackedNV</unmanaged>
+	SignedInt8PackedNV = 1000491000,
+	/// <unmanaged>SpvComponentTypeUnsignedInt8PackedNV</unmanaged>
+	UnsignedInt8PackedNV = 1000491001,
+	/// <unmanaged>SpvComponentTypeFloatE4M3NV</unmanaged>
+	FloatE4M3NV = 1000491002,
+	/// <unmanaged>SpvComponentTypeFloatE5M2NV</unmanaged>
+	FloatE5M2NV = 1000491003,
 }
 
 public enum SpvOp
@@ -2875,12 +3805,58 @@ public enum SpvOp
 	PtrNotEqual = 402,
 	/// <unmanaged>SpvOpPtrDiff</unmanaged>
 	PtrDiff = 403,
+	/// <unmanaged>SpvOpColorAttachmentReadEXT</unmanaged>
+	ColorAttachmentReadEXT = 4160,
+	/// <unmanaged>SpvOpDepthAttachmentReadEXT</unmanaged>
+	DepthAttachmentReadEXT = 4161,
+	/// <unmanaged>SpvOpStencilAttachmentReadEXT</unmanaged>
+	StencilAttachmentReadEXT = 4162,
+	/// <unmanaged>SpvOpTypeTensorARM</unmanaged>
+	TypeTensorARM = 4163,
+	/// <unmanaged>SpvOpTensorReadARM</unmanaged>
+	TensorReadARM = 4164,
+	/// <unmanaged>SpvOpTensorWriteARM</unmanaged>
+	TensorWriteARM = 4165,
+	/// <unmanaged>SpvOpTensorQuerySizeARM</unmanaged>
+	TensorQuerySizeARM = 4166,
+	/// <unmanaged>SpvOpGraphConstantARM</unmanaged>
+	GraphConstantARM = 4181,
+	/// <unmanaged>SpvOpGraphEntryPointARM</unmanaged>
+	GraphEntryPointARM = 4182,
+	/// <unmanaged>SpvOpGraphARM</unmanaged>
+	GraphARM = 4183,
+	/// <unmanaged>SpvOpGraphInputARM</unmanaged>
+	GraphInputARM = 4184,
+	/// <unmanaged>SpvOpGraphSetOutputARM</unmanaged>
+	GraphSetOutputARM = 4185,
+	/// <unmanaged>SpvOpGraphEndARM</unmanaged>
+	GraphEndARM = 4186,
+	/// <unmanaged>SpvOpTypeGraphARM</unmanaged>
+	TypeGraphARM = 4190,
 	/// <unmanaged>SpvOpTerminateInvocation</unmanaged>
 	TerminateInvocation = 4416,
+	/// <unmanaged>SpvOpTypeUntypedPointerKHR</unmanaged>
+	TypeUntypedPointerKHR = 4417,
+	/// <unmanaged>SpvOpUntypedVariableKHR</unmanaged>
+	UntypedVariableKHR = 4418,
+	/// <unmanaged>SpvOpUntypedAccessChainKHR</unmanaged>
+	UntypedAccessChainKHR = 4419,
+	/// <unmanaged>SpvOpUntypedInBoundsAccessChainKHR</unmanaged>
+	UntypedInBoundsAccessChainKHR = 4420,
 	/// <unmanaged>SpvOpSubgroupBallotKHR</unmanaged>
 	SubgroupBallotKHR = 4421,
 	/// <unmanaged>SpvOpSubgroupFirstInvocationKHR</unmanaged>
 	SubgroupFirstInvocationKHR = 4422,
+	/// <unmanaged>SpvOpUntypedPtrAccessChainKHR</unmanaged>
+	UntypedPtrAccessChainKHR = 4423,
+	/// <unmanaged>SpvOpUntypedInBoundsPtrAccessChainKHR</unmanaged>
+	UntypedInBoundsPtrAccessChainKHR = 4424,
+	/// <unmanaged>SpvOpUntypedArrayLengthKHR</unmanaged>
+	UntypedArrayLengthKHR = 4425,
+	/// <unmanaged>SpvOpUntypedPrefetchKHR</unmanaged>
+	UntypedPrefetchKHR = 4426,
+	/// <unmanaged>SpvOpFmaKHR</unmanaged>
+	FmaKHR = 4427,
 	/// <unmanaged>SpvOpSubgroupAllKHR</unmanaged>
 	SubgroupAllKHR = 4428,
 	/// <unmanaged>SpvOpSubgroupAnyKHR</unmanaged>
@@ -2891,6 +3867,10 @@ public enum SpvOp
 	GroupNonUniformRotateKHR = 4431,
 	/// <unmanaged>SpvOpSubgroupReadInvocationKHR</unmanaged>
 	SubgroupReadInvocationKHR = 4432,
+	/// <unmanaged>SpvOpExtInstWithForwardRefsKHR</unmanaged>
+	ExtInstWithForwardRefsKHR = 4433,
+	/// <unmanaged>SpvOpUntypedGroupAsyncCopyKHR</unmanaged>
+	UntypedGroupAsyncCopyKHR = 4434,
 	/// <unmanaged>SpvOpTraceRayKHR</unmanaged>
 	TraceRayKHR = 4445,
 	/// <unmanaged>SpvOpExecuteCallableKHR</unmanaged>
@@ -2925,6 +3905,22 @@ public enum SpvOp
 	SUDotAccSat = 4455,
 	/// <unmanaged>SpvOpSUDotAccSatKHR</unmanaged>
 	SUDotAccSatKHR = 4455,
+	/// <unmanaged>SpvOpTypeCooperativeMatrixKHR</unmanaged>
+	TypeCooperativeMatrixKHR = 4456,
+	/// <unmanaged>SpvOpCooperativeMatrixLoadKHR</unmanaged>
+	CooperativeMatrixLoadKHR = 4457,
+	/// <unmanaged>SpvOpCooperativeMatrixStoreKHR</unmanaged>
+	CooperativeMatrixStoreKHR = 4458,
+	/// <unmanaged>SpvOpCooperativeMatrixMulAddKHR</unmanaged>
+	CooperativeMatrixMulAddKHR = 4459,
+	/// <unmanaged>SpvOpCooperativeMatrixLengthKHR</unmanaged>
+	CooperativeMatrixLengthKHR = 4460,
+	/// <unmanaged>SpvOpConstantCompositeReplicateEXT</unmanaged>
+	ConstantCompositeReplicateEXT = 4461,
+	/// <unmanaged>SpvOpSpecConstantCompositeReplicateEXT</unmanaged>
+	SpecConstantCompositeReplicateEXT = 4462,
+	/// <unmanaged>SpvOpCompositeConstructReplicateEXT</unmanaged>
+	CompositeConstructReplicateEXT = 4463,
 	/// <unmanaged>SpvOpTypeRayQueryKHR</unmanaged>
 	TypeRayQueryKHR = 4472,
 	/// <unmanaged>SpvOpRayQueryInitializeKHR</unmanaged>
@@ -2947,6 +3943,8 @@ public enum SpvOp
 	ImageBlockMatchSSDQCOM = 4482,
 	/// <unmanaged>SpvOpImageBlockMatchSADQCOM</unmanaged>
 	ImageBlockMatchSADQCOM = 4483,
+	/// <unmanaged>SpvOpBitCastArrayQCOM</unmanaged>
+	BitCastArrayQCOM = 4497,
 	/// <unmanaged>SpvOpImageBlockMatchWindowSSDQCOM</unmanaged>
 	ImageBlockMatchWindowSSDQCOM = 4500,
 	/// <unmanaged>SpvOpImageBlockMatchWindowSADQCOM</unmanaged>
@@ -2955,6 +3953,12 @@ public enum SpvOp
 	ImageBlockMatchGatherSSDQCOM = 4502,
 	/// <unmanaged>SpvOpImageBlockMatchGatherSADQCOM</unmanaged>
 	ImageBlockMatchGatherSADQCOM = 4503,
+	/// <unmanaged>SpvOpCompositeConstructCoopMatQCOM</unmanaged>
+	CompositeConstructCoopMatQCOM = 4540,
+	/// <unmanaged>SpvOpCompositeExtractCoopMatQCOM</unmanaged>
+	CompositeExtractCoopMatQCOM = 4541,
+	/// <unmanaged>SpvOpExtractSubArrayQCOM</unmanaged>
+	ExtractSubArrayQCOM = 4542,
 	/// <unmanaged>SpvOpGroupIAddNonUniformAMD</unmanaged>
 	GroupIAddNonUniformAMD = 5000,
 	/// <unmanaged>SpvOpGroupFAddNonUniformAMD</unmanaged>
@@ -2977,16 +3981,206 @@ public enum SpvOp
 	FragmentFetchAMD = 5012,
 	/// <unmanaged>SpvOpReadClockKHR</unmanaged>
 	ReadClockKHR = 5056,
+	/// <unmanaged>SpvOpAllocateNodePayloadsAMDX</unmanaged>
+	AllocateNodePayloadsAMDX = 5074,
+	/// <unmanaged>SpvOpEnqueueNodePayloadsAMDX</unmanaged>
+	EnqueueNodePayloadsAMDX = 5075,
+	/// <unmanaged>SpvOpTypeNodePayloadArrayAMDX</unmanaged>
+	TypeNodePayloadArrayAMDX = 5076,
+	/// <unmanaged>SpvOpFinishWritingNodePayloadAMDX</unmanaged>
+	FinishWritingNodePayloadAMDX = 5078,
+	/// <unmanaged>SpvOpNodePayloadArrayLengthAMDX</unmanaged>
+	NodePayloadArrayLengthAMDX = 5090,
+	/// <unmanaged>SpvOpIsNodePayloadValidAMDX</unmanaged>
+	IsNodePayloadValidAMDX = 5101,
+	/// <unmanaged>SpvOpConstantStringAMDX</unmanaged>
+	ConstantStringAMDX = 5103,
+	/// <unmanaged>SpvOpSpecConstantStringAMDX</unmanaged>
+	SpecConstantStringAMDX = 5104,
+	/// <unmanaged>SpvOpGroupNonUniformQuadAllKHR</unmanaged>
+	GroupNonUniformQuadAllKHR = 5110,
+	/// <unmanaged>SpvOpGroupNonUniformQuadAnyKHR</unmanaged>
+	GroupNonUniformQuadAnyKHR = 5111,
+	/// <unmanaged>SpvOpTypeBufferEXT</unmanaged>
+	TypeBufferEXT = 5115,
+	/// <unmanaged>SpvOpBufferPointerEXT</unmanaged>
+	BufferPointerEXT = 5119,
+	/// <unmanaged>SpvOpAbortKHR</unmanaged>
+	AbortKHR = 5121,
+	/// <unmanaged>SpvOpUntypedImageTexelPointerEXT</unmanaged>
+	UntypedImageTexelPointerEXT = 5126,
+	/// <unmanaged>SpvOpMemberDecorateIdEXT</unmanaged>
+	MemberDecorateIdEXT = 5127,
+	/// <unmanaged>SpvOpConstantSizeOfEXT</unmanaged>
+	ConstantSizeOfEXT = 5129,
+	/// <unmanaged>SpvOpConstantDataKHR</unmanaged>
+	ConstantDataKHR = 5147,
+	/// <unmanaged>SpvOpSpecConstantDataKHR</unmanaged>
+	SpecConstantDataKHR = 5148,
+	/// <unmanaged>SpvOpPoisonKHR</unmanaged>
+	PoisonKHR = 5158,
+	/// <unmanaged>SpvOpFreezeKHR</unmanaged>
+	FreezeKHR = 5159,
+	/// <unmanaged>SpvOpHitObjectRecordHitMotionNV</unmanaged>
+	HitObjectRecordHitMotionNV = 5249,
+	/// <unmanaged>SpvOpHitObjectRecordHitWithIndexMotionNV</unmanaged>
+	HitObjectRecordHitWithIndexMotionNV = 5250,
+	/// <unmanaged>SpvOpHitObjectRecordMissMotionNV</unmanaged>
+	HitObjectRecordMissMotionNV = 5251,
+	/// <unmanaged>SpvOpHitObjectGetWorldToObjectNV</unmanaged>
+	HitObjectGetWorldToObjectNV = 5252,
+	/// <unmanaged>SpvOpHitObjectGetObjectToWorldNV</unmanaged>
+	HitObjectGetObjectToWorldNV = 5253,
+	/// <unmanaged>SpvOpHitObjectGetObjectRayDirectionNV</unmanaged>
+	HitObjectGetObjectRayDirectionNV = 5254,
+	/// <unmanaged>SpvOpHitObjectGetObjectRayOriginNV</unmanaged>
+	HitObjectGetObjectRayOriginNV = 5255,
+	/// <unmanaged>SpvOpHitObjectTraceRayMotionNV</unmanaged>
+	HitObjectTraceRayMotionNV = 5256,
+	/// <unmanaged>SpvOpHitObjectGetShaderRecordBufferHandleNV</unmanaged>
+	HitObjectGetShaderRecordBufferHandleNV = 5257,
+	/// <unmanaged>SpvOpHitObjectGetShaderBindingTableRecordIndexNV</unmanaged>
+	HitObjectGetShaderBindingTableRecordIndexNV = 5258,
+	/// <unmanaged>SpvOpHitObjectRecordEmptyNV</unmanaged>
+	HitObjectRecordEmptyNV = 5259,
+	/// <unmanaged>SpvOpHitObjectTraceRayNV</unmanaged>
+	HitObjectTraceRayNV = 5260,
+	/// <unmanaged>SpvOpHitObjectRecordHitNV</unmanaged>
+	HitObjectRecordHitNV = 5261,
+	/// <unmanaged>SpvOpHitObjectRecordHitWithIndexNV</unmanaged>
+	HitObjectRecordHitWithIndexNV = 5262,
+	/// <unmanaged>SpvOpHitObjectRecordMissNV</unmanaged>
+	HitObjectRecordMissNV = 5263,
+	/// <unmanaged>SpvOpHitObjectExecuteShaderNV</unmanaged>
+	HitObjectExecuteShaderNV = 5264,
+	/// <unmanaged>SpvOpHitObjectGetCurrentTimeNV</unmanaged>
+	HitObjectGetCurrentTimeNV = 5265,
+	/// <unmanaged>SpvOpHitObjectGetAttributesNV</unmanaged>
+	HitObjectGetAttributesNV = 5266,
+	/// <unmanaged>SpvOpHitObjectGetHitKindNV</unmanaged>
+	HitObjectGetHitKindNV = 5267,
+	/// <unmanaged>SpvOpHitObjectGetPrimitiveIndexNV</unmanaged>
+	HitObjectGetPrimitiveIndexNV = 5268,
+	/// <unmanaged>SpvOpHitObjectGetGeometryIndexNV</unmanaged>
+	HitObjectGetGeometryIndexNV = 5269,
+	/// <unmanaged>SpvOpHitObjectGetInstanceIdNV</unmanaged>
+	HitObjectGetInstanceIdNV = 5270,
+	/// <unmanaged>SpvOpHitObjectGetInstanceCustomIndexNV</unmanaged>
+	HitObjectGetInstanceCustomIndexNV = 5271,
+	/// <unmanaged>SpvOpHitObjectGetWorldRayDirectionNV</unmanaged>
+	HitObjectGetWorldRayDirectionNV = 5272,
+	/// <unmanaged>SpvOpHitObjectGetWorldRayOriginNV</unmanaged>
+	HitObjectGetWorldRayOriginNV = 5273,
+	/// <unmanaged>SpvOpHitObjectGetRayTMaxNV</unmanaged>
+	HitObjectGetRayTMaxNV = 5274,
+	/// <unmanaged>SpvOpHitObjectGetRayTMinNV</unmanaged>
+	HitObjectGetRayTMinNV = 5275,
+	/// <unmanaged>SpvOpHitObjectIsEmptyNV</unmanaged>
+	HitObjectIsEmptyNV = 5276,
+	/// <unmanaged>SpvOpHitObjectIsHitNV</unmanaged>
+	HitObjectIsHitNV = 5277,
+	/// <unmanaged>SpvOpHitObjectIsMissNV</unmanaged>
+	HitObjectIsMissNV = 5278,
+	/// <unmanaged>SpvOpReorderThreadWithHitObjectNV</unmanaged>
+	ReorderThreadWithHitObjectNV = 5279,
+	/// <unmanaged>SpvOpReorderThreadWithHintNV</unmanaged>
+	ReorderThreadWithHintNV = 5280,
+	/// <unmanaged>SpvOpTypeHitObjectNV</unmanaged>
+	TypeHitObjectNV = 5281,
 	/// <unmanaged>SpvOpImageSampleFootprintNV</unmanaged>
 	ImageSampleFootprintNV = 5283,
+	/// <unmanaged>SpvOpTypeCooperativeVectorNV</unmanaged>
+	TypeCooperativeVectorNV = 5288,
+	/// <unmanaged>SpvOpTypeVectorIdEXT</unmanaged>
+	TypeVectorIdEXT = 5288,
+	/// <unmanaged>SpvOpCooperativeVectorMatrixMulNV</unmanaged>
+	CooperativeVectorMatrixMulNV = 5289,
+	/// <unmanaged>SpvOpCooperativeVectorOuterProductAccumulateNV</unmanaged>
+	CooperativeVectorOuterProductAccumulateNV = 5290,
+	/// <unmanaged>SpvOpCooperativeVectorReduceSumAccumulateNV</unmanaged>
+	CooperativeVectorReduceSumAccumulateNV = 5291,
+	/// <unmanaged>SpvOpCooperativeVectorMatrixMulAddNV</unmanaged>
+	CooperativeVectorMatrixMulAddNV = 5292,
+	/// <unmanaged>SpvOpCooperativeMatrixConvertNV</unmanaged>
+	CooperativeMatrixConvertNV = 5293,
 	/// <unmanaged>SpvOpEmitMeshTasksEXT</unmanaged>
 	EmitMeshTasksEXT = 5294,
 	/// <unmanaged>SpvOpSetMeshOutputsEXT</unmanaged>
 	SetMeshOutputsEXT = 5295,
+	/// <unmanaged>SpvOpGroupNonUniformPartitionEXT</unmanaged>
+	GroupNonUniformPartitionEXT = 5296,
 	/// <unmanaged>SpvOpGroupNonUniformPartitionNV</unmanaged>
 	GroupNonUniformPartitionNV = 5296,
 	/// <unmanaged>SpvOpWritePackedPrimitiveIndices4x8NV</unmanaged>
 	WritePackedPrimitiveIndices4x8NV = 5299,
+	/// <unmanaged>SpvOpFetchMicroTriangleVertexPositionNV</unmanaged>
+	FetchMicroTriangleVertexPositionNV = 5300,
+	/// <unmanaged>SpvOpFetchMicroTriangleVertexBarycentricNV</unmanaged>
+	FetchMicroTriangleVertexBarycentricNV = 5301,
+	/// <unmanaged>SpvOpCooperativeVectorLoadNV</unmanaged>
+	CooperativeVectorLoadNV = 5302,
+	/// <unmanaged>SpvOpCooperativeVectorStoreNV</unmanaged>
+	CooperativeVectorStoreNV = 5303,
+	/// <unmanaged>SpvOpHitObjectRecordFromQueryEXT</unmanaged>
+	HitObjectRecordFromQueryEXT = 5304,
+	/// <unmanaged>SpvOpHitObjectRecordMissEXT</unmanaged>
+	HitObjectRecordMissEXT = 5305,
+	/// <unmanaged>SpvOpHitObjectRecordMissMotionEXT</unmanaged>
+	HitObjectRecordMissMotionEXT = 5306,
+	/// <unmanaged>SpvOpHitObjectGetIntersectionTriangleVertexPositionsEXT</unmanaged>
+	HitObjectGetIntersectionTriangleVertexPositionsEXT = 5307,
+	/// <unmanaged>SpvOpHitObjectGetRayFlagsEXT</unmanaged>
+	HitObjectGetRayFlagsEXT = 5308,
+	/// <unmanaged>SpvOpHitObjectSetShaderBindingTableRecordIndexEXT</unmanaged>
+	HitObjectSetShaderBindingTableRecordIndexEXT = 5309,
+	/// <unmanaged>SpvOpHitObjectReorderExecuteShaderEXT</unmanaged>
+	HitObjectReorderExecuteShaderEXT = 5310,
+	/// <unmanaged>SpvOpHitObjectTraceReorderExecuteEXT</unmanaged>
+	HitObjectTraceReorderExecuteEXT = 5311,
+	/// <unmanaged>SpvOpHitObjectTraceMotionReorderExecuteEXT</unmanaged>
+	HitObjectTraceMotionReorderExecuteEXT = 5312,
+	/// <unmanaged>SpvOpTypeHitObjectEXT</unmanaged>
+	TypeHitObjectEXT = 5313,
+	/// <unmanaged>SpvOpReorderThreadWithHintEXT</unmanaged>
+	ReorderThreadWithHintEXT = 5314,
+	/// <unmanaged>SpvOpReorderThreadWithHitObjectEXT</unmanaged>
+	ReorderThreadWithHitObjectEXT = 5315,
+	/// <unmanaged>SpvOpHitObjectTraceRayEXT</unmanaged>
+	HitObjectTraceRayEXT = 5316,
+	/// <unmanaged>SpvOpHitObjectTraceRayMotionEXT</unmanaged>
+	HitObjectTraceRayMotionEXT = 5317,
+	/// <unmanaged>SpvOpHitObjectRecordEmptyEXT</unmanaged>
+	HitObjectRecordEmptyEXT = 5318,
+	/// <unmanaged>SpvOpHitObjectExecuteShaderEXT</unmanaged>
+	HitObjectExecuteShaderEXT = 5319,
+	/// <unmanaged>SpvOpHitObjectGetCurrentTimeEXT</unmanaged>
+	HitObjectGetCurrentTimeEXT = 5320,
+	/// <unmanaged>SpvOpHitObjectGetAttributesEXT</unmanaged>
+	HitObjectGetAttributesEXT = 5321,
+	/// <unmanaged>SpvOpHitObjectGetHitKindEXT</unmanaged>
+	HitObjectGetHitKindEXT = 5322,
+	/// <unmanaged>SpvOpHitObjectGetPrimitiveIndexEXT</unmanaged>
+	HitObjectGetPrimitiveIndexEXT = 5323,
+	/// <unmanaged>SpvOpHitObjectGetGeometryIndexEXT</unmanaged>
+	HitObjectGetGeometryIndexEXT = 5324,
+	/// <unmanaged>SpvOpHitObjectGetInstanceIdEXT</unmanaged>
+	HitObjectGetInstanceIdEXT = 5325,
+	/// <unmanaged>SpvOpHitObjectGetInstanceCustomIndexEXT</unmanaged>
+	HitObjectGetInstanceCustomIndexEXT = 5326,
+	/// <unmanaged>SpvOpHitObjectGetObjectRayOriginEXT</unmanaged>
+	HitObjectGetObjectRayOriginEXT = 5327,
+	/// <unmanaged>SpvOpHitObjectGetObjectRayDirectionEXT</unmanaged>
+	HitObjectGetObjectRayDirectionEXT = 5328,
+	/// <unmanaged>SpvOpHitObjectGetWorldRayDirectionEXT</unmanaged>
+	HitObjectGetWorldRayDirectionEXT = 5329,
+	/// <unmanaged>SpvOpHitObjectGetWorldRayOriginEXT</unmanaged>
+	HitObjectGetWorldRayOriginEXT = 5330,
+	/// <unmanaged>SpvOpHitObjectGetObjectToWorldEXT</unmanaged>
+	HitObjectGetObjectToWorldEXT = 5331,
+	/// <unmanaged>SpvOpHitObjectGetWorldToObjectEXT</unmanaged>
+	HitObjectGetWorldToObjectEXT = 5332,
+	/// <unmanaged>SpvOpHitObjectGetRayTMaxEXT</unmanaged>
+	HitObjectGetRayTMaxEXT = 5333,
 	/// <unmanaged>SpvOpReportIntersectionKHR</unmanaged>
 	ReportIntersectionKHR = 5334,
 	/// <unmanaged>SpvOpReportIntersectionNV</unmanaged>
@@ -3001,12 +4195,32 @@ public enum SpvOp
 	TraceMotionNV = 5338,
 	/// <unmanaged>SpvOpTraceRayMotionNV</unmanaged>
 	TraceRayMotionNV = 5339,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionTriangleVertexPositionsKHR</unmanaged>
+	RayQueryGetIntersectionTriangleVertexPositionsKHR = 5340,
 	/// <unmanaged>SpvOpTypeAccelerationStructureKHR</unmanaged>
 	TypeAccelerationStructureKHR = 5341,
 	/// <unmanaged>SpvOpTypeAccelerationStructureNV</unmanaged>
 	TypeAccelerationStructureNV = 5341,
 	/// <unmanaged>SpvOpExecuteCallableNV</unmanaged>
 	ExecuteCallableNV = 5344,
+	/// <unmanaged>SpvOpRayQueryGetClusterIdNV</unmanaged>
+	RayQueryGetClusterIdNV = 5345,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionClusterIdNV</unmanaged>
+	RayQueryGetIntersectionClusterIdNV = 5345,
+	/// <unmanaged>SpvOpHitObjectGetClusterIdNV</unmanaged>
+	HitObjectGetClusterIdNV = 5346,
+	/// <unmanaged>SpvOpHitObjectGetRayTMinEXT</unmanaged>
+	HitObjectGetRayTMinEXT = 5347,
+	/// <unmanaged>SpvOpHitObjectGetShaderBindingTableRecordIndexEXT</unmanaged>
+	HitObjectGetShaderBindingTableRecordIndexEXT = 5348,
+	/// <unmanaged>SpvOpHitObjectGetShaderRecordBufferHandleEXT</unmanaged>
+	HitObjectGetShaderRecordBufferHandleEXT = 5349,
+	/// <unmanaged>SpvOpHitObjectIsEmptyEXT</unmanaged>
+	HitObjectIsEmptyEXT = 5350,
+	/// <unmanaged>SpvOpHitObjectIsHitEXT</unmanaged>
+	HitObjectIsHitEXT = 5351,
+	/// <unmanaged>SpvOpHitObjectIsMissEXT</unmanaged>
+	HitObjectIsMissEXT = 5352,
 	/// <unmanaged>SpvOpTypeCooperativeMatrixNV</unmanaged>
 	TypeCooperativeMatrixNV = 5358,
 	/// <unmanaged>SpvOpCooperativeMatrixLoadNV</unmanaged>
@@ -3021,12 +4235,46 @@ public enum SpvOp
 	BeginInvocationInterlockEXT = 5364,
 	/// <unmanaged>SpvOpEndInvocationInterlockEXT</unmanaged>
 	EndInvocationInterlockEXT = 5365,
+	/// <unmanaged>SpvOpCooperativeMatrixReduceNV</unmanaged>
+	CooperativeMatrixReduceNV = 5366,
+	/// <unmanaged>SpvOpCooperativeMatrixLoadTensorNV</unmanaged>
+	CooperativeMatrixLoadTensorNV = 5367,
+	/// <unmanaged>SpvOpCooperativeMatrixStoreTensorNV</unmanaged>
+	CooperativeMatrixStoreTensorNV = 5368,
+	/// <unmanaged>SpvOpCooperativeMatrixPerElementOpNV</unmanaged>
+	CooperativeMatrixPerElementOpNV = 5369,
+	/// <unmanaged>SpvOpTypeTensorLayoutNV</unmanaged>
+	TypeTensorLayoutNV = 5370,
+	/// <unmanaged>SpvOpTypeTensorViewNV</unmanaged>
+	TypeTensorViewNV = 5371,
+	/// <unmanaged>SpvOpCreateTensorLayoutNV</unmanaged>
+	CreateTensorLayoutNV = 5372,
+	/// <unmanaged>SpvOpTensorLayoutSetDimensionNV</unmanaged>
+	TensorLayoutSetDimensionNV = 5373,
+	/// <unmanaged>SpvOpTensorLayoutSetStrideNV</unmanaged>
+	TensorLayoutSetStrideNV = 5374,
+	/// <unmanaged>SpvOpTensorLayoutSliceNV</unmanaged>
+	TensorLayoutSliceNV = 5375,
+	/// <unmanaged>SpvOpTensorLayoutSetClampValueNV</unmanaged>
+	TensorLayoutSetClampValueNV = 5376,
+	/// <unmanaged>SpvOpCreateTensorViewNV</unmanaged>
+	CreateTensorViewNV = 5377,
+	/// <unmanaged>SpvOpTensorViewSetDimensionNV</unmanaged>
+	TensorViewSetDimensionNV = 5378,
+	/// <unmanaged>SpvOpTensorViewSetStrideNV</unmanaged>
+	TensorViewSetStrideNV = 5379,
 	/// <unmanaged>SpvOpDemoteToHelperInvocation</unmanaged>
 	DemoteToHelperInvocation = 5380,
 	/// <unmanaged>SpvOpDemoteToHelperInvocationEXT</unmanaged>
 	DemoteToHelperInvocationEXT = 5380,
 	/// <unmanaged>SpvOpIsHelperInvocationEXT</unmanaged>
 	IsHelperInvocationEXT = 5381,
+	/// <unmanaged>SpvOpTensorViewSetClipNV</unmanaged>
+	TensorViewSetClipNV = 5382,
+	/// <unmanaged>SpvOpTensorLayoutSetBlockSizeNV</unmanaged>
+	TensorLayoutSetBlockSizeNV = 5384,
+	/// <unmanaged>SpvOpCooperativeMatrixTransposeNV</unmanaged>
+	CooperativeMatrixTransposeNV = 5390,
 	/// <unmanaged>SpvOpConvertUToImageNV</unmanaged>
 	ConvertUToImageNV = 5391,
 	/// <unmanaged>SpvOpConvertUToSamplerNV</unmanaged>
@@ -3041,6 +4289,34 @@ public enum SpvOp
 	ConvertSampledImageToUNV = 5396,
 	/// <unmanaged>SpvOpSamplerImageAddressingModeNV</unmanaged>
 	SamplerImageAddressingModeNV = 5397,
+	/// <unmanaged>SpvOpRawAccessChainNV</unmanaged>
+	RawAccessChainNV = 5398,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionSpherePositionNV</unmanaged>
+	RayQueryGetIntersectionSpherePositionNV = 5427,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionSphereRadiusNV</unmanaged>
+	RayQueryGetIntersectionSphereRadiusNV = 5428,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionLSSPositionsNV</unmanaged>
+	RayQueryGetIntersectionLSSPositionsNV = 5429,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionLSSRadiiNV</unmanaged>
+	RayQueryGetIntersectionLSSRadiiNV = 5430,
+	/// <unmanaged>SpvOpRayQueryGetIntersectionLSSHitValueNV</unmanaged>
+	RayQueryGetIntersectionLSSHitValueNV = 5431,
+	/// <unmanaged>SpvOpHitObjectGetSpherePositionNV</unmanaged>
+	HitObjectGetSpherePositionNV = 5432,
+	/// <unmanaged>SpvOpHitObjectGetSphereRadiusNV</unmanaged>
+	HitObjectGetSphereRadiusNV = 5433,
+	/// <unmanaged>SpvOpHitObjectGetLSSPositionsNV</unmanaged>
+	HitObjectGetLSSPositionsNV = 5434,
+	/// <unmanaged>SpvOpHitObjectGetLSSRadiiNV</unmanaged>
+	HitObjectGetLSSRadiiNV = 5435,
+	/// <unmanaged>SpvOpHitObjectIsSphereHitNV</unmanaged>
+	HitObjectIsSphereHitNV = 5436,
+	/// <unmanaged>SpvOpHitObjectIsLSSHitNV</unmanaged>
+	HitObjectIsLSSHitNV = 5437,
+	/// <unmanaged>SpvOpRayQueryIsSphereHitNV</unmanaged>
+	RayQueryIsSphereHitNV = 5438,
+	/// <unmanaged>SpvOpRayQueryIsLSSHitNV</unmanaged>
+	RayQueryIsLSSHitNV = 5439,
 	/// <unmanaged>SpvOpSubgroupShuffleINTEL</unmanaged>
 	SubgroupShuffleINTEL = 5571,
 	/// <unmanaged>SpvOpSubgroupShuffleDownINTEL</unmanaged>
@@ -3357,40 +4633,76 @@ public enum SpvOp
 	SaveMemoryINTEL = 5819,
 	/// <unmanaged>SpvOpRestoreMemoryINTEL</unmanaged>
 	RestoreMemoryINTEL = 5820,
+	/// <unmanaged>SpvOpArbitraryFloatSinCosPiALTERA</unmanaged>
+	ArbitraryFloatSinCosPiALTERA = 5840,
 	/// <unmanaged>SpvOpArbitraryFloatSinCosPiINTEL</unmanaged>
 	ArbitraryFloatSinCosPiINTEL = 5840,
+	/// <unmanaged>SpvOpArbitraryFloatCastALTERA</unmanaged>
+	ArbitraryFloatCastALTERA = 5841,
 	/// <unmanaged>SpvOpArbitraryFloatCastINTEL</unmanaged>
 	ArbitraryFloatCastINTEL = 5841,
+	/// <unmanaged>SpvOpArbitraryFloatCastFromIntALTERA</unmanaged>
+	ArbitraryFloatCastFromIntALTERA = 5842,
 	/// <unmanaged>SpvOpArbitraryFloatCastFromIntINTEL</unmanaged>
 	ArbitraryFloatCastFromIntINTEL = 5842,
+	/// <unmanaged>SpvOpArbitraryFloatCastToIntALTERA</unmanaged>
+	ArbitraryFloatCastToIntALTERA = 5843,
 	/// <unmanaged>SpvOpArbitraryFloatCastToIntINTEL</unmanaged>
 	ArbitraryFloatCastToIntINTEL = 5843,
+	/// <unmanaged>SpvOpArbitraryFloatAddALTERA</unmanaged>
+	ArbitraryFloatAddALTERA = 5846,
 	/// <unmanaged>SpvOpArbitraryFloatAddINTEL</unmanaged>
 	ArbitraryFloatAddINTEL = 5846,
+	/// <unmanaged>SpvOpArbitraryFloatSubALTERA</unmanaged>
+	ArbitraryFloatSubALTERA = 5847,
 	/// <unmanaged>SpvOpArbitraryFloatSubINTEL</unmanaged>
 	ArbitraryFloatSubINTEL = 5847,
+	/// <unmanaged>SpvOpArbitraryFloatMulALTERA</unmanaged>
+	ArbitraryFloatMulALTERA = 5848,
 	/// <unmanaged>SpvOpArbitraryFloatMulINTEL</unmanaged>
 	ArbitraryFloatMulINTEL = 5848,
+	/// <unmanaged>SpvOpArbitraryFloatDivALTERA</unmanaged>
+	ArbitraryFloatDivALTERA = 5849,
 	/// <unmanaged>SpvOpArbitraryFloatDivINTEL</unmanaged>
 	ArbitraryFloatDivINTEL = 5849,
+	/// <unmanaged>SpvOpArbitraryFloatGTALTERA</unmanaged>
+	ArbitraryFloatGTALTERA = 5850,
 	/// <unmanaged>SpvOpArbitraryFloatGTINTEL</unmanaged>
 	ArbitraryFloatGTINTEL = 5850,
+	/// <unmanaged>SpvOpArbitraryFloatGEALTERA</unmanaged>
+	ArbitraryFloatGEALTERA = 5851,
 	/// <unmanaged>SpvOpArbitraryFloatGEINTEL</unmanaged>
 	ArbitraryFloatGEINTEL = 5851,
+	/// <unmanaged>SpvOpArbitraryFloatLTALTERA</unmanaged>
+	ArbitraryFloatLTALTERA = 5852,
 	/// <unmanaged>SpvOpArbitraryFloatLTINTEL</unmanaged>
 	ArbitraryFloatLTINTEL = 5852,
+	/// <unmanaged>SpvOpArbitraryFloatLEALTERA</unmanaged>
+	ArbitraryFloatLEALTERA = 5853,
 	/// <unmanaged>SpvOpArbitraryFloatLEINTEL</unmanaged>
 	ArbitraryFloatLEINTEL = 5853,
+	/// <unmanaged>SpvOpArbitraryFloatEQALTERA</unmanaged>
+	ArbitraryFloatEQALTERA = 5854,
 	/// <unmanaged>SpvOpArbitraryFloatEQINTEL</unmanaged>
 	ArbitraryFloatEQINTEL = 5854,
+	/// <unmanaged>SpvOpArbitraryFloatRecipALTERA</unmanaged>
+	ArbitraryFloatRecipALTERA = 5855,
 	/// <unmanaged>SpvOpArbitraryFloatRecipINTEL</unmanaged>
 	ArbitraryFloatRecipINTEL = 5855,
+	/// <unmanaged>SpvOpArbitraryFloatRSqrtALTERA</unmanaged>
+	ArbitraryFloatRSqrtALTERA = 5856,
 	/// <unmanaged>SpvOpArbitraryFloatRSqrtINTEL</unmanaged>
 	ArbitraryFloatRSqrtINTEL = 5856,
+	/// <unmanaged>SpvOpArbitraryFloatCbrtALTERA</unmanaged>
+	ArbitraryFloatCbrtALTERA = 5857,
 	/// <unmanaged>SpvOpArbitraryFloatCbrtINTEL</unmanaged>
 	ArbitraryFloatCbrtINTEL = 5857,
+	/// <unmanaged>SpvOpArbitraryFloatHypotALTERA</unmanaged>
+	ArbitraryFloatHypotALTERA = 5858,
 	/// <unmanaged>SpvOpArbitraryFloatHypotINTEL</unmanaged>
 	ArbitraryFloatHypotINTEL = 5858,
+	/// <unmanaged>SpvOpArbitraryFloatSqrtALTERA</unmanaged>
+	ArbitraryFloatSqrtALTERA = 5859,
 	/// <unmanaged>SpvOpArbitraryFloatSqrtINTEL</unmanaged>
 	ArbitraryFloatSqrtINTEL = 5859,
 	/// <unmanaged>SpvOpArbitraryFloatLogINTEL</unmanaged>
@@ -3447,36 +4759,68 @@ public enum SpvOp
 	AliasScopeDeclINTEL = 5912,
 	/// <unmanaged>SpvOpAliasScopeListDeclINTEL</unmanaged>
 	AliasScopeListDeclINTEL = 5913,
+	/// <unmanaged>SpvOpFixedSqrtALTERA</unmanaged>
+	FixedSqrtALTERA = 5923,
 	/// <unmanaged>SpvOpFixedSqrtINTEL</unmanaged>
 	FixedSqrtINTEL = 5923,
+	/// <unmanaged>SpvOpFixedRecipALTERA</unmanaged>
+	FixedRecipALTERA = 5924,
 	/// <unmanaged>SpvOpFixedRecipINTEL</unmanaged>
 	FixedRecipINTEL = 5924,
+	/// <unmanaged>SpvOpFixedRsqrtALTERA</unmanaged>
+	FixedRsqrtALTERA = 5925,
 	/// <unmanaged>SpvOpFixedRsqrtINTEL</unmanaged>
 	FixedRsqrtINTEL = 5925,
+	/// <unmanaged>SpvOpFixedSinALTERA</unmanaged>
+	FixedSinALTERA = 5926,
 	/// <unmanaged>SpvOpFixedSinINTEL</unmanaged>
 	FixedSinINTEL = 5926,
+	/// <unmanaged>SpvOpFixedCosALTERA</unmanaged>
+	FixedCosALTERA = 5927,
 	/// <unmanaged>SpvOpFixedCosINTEL</unmanaged>
 	FixedCosINTEL = 5927,
+	/// <unmanaged>SpvOpFixedSinCosALTERA</unmanaged>
+	FixedSinCosALTERA = 5928,
 	/// <unmanaged>SpvOpFixedSinCosINTEL</unmanaged>
 	FixedSinCosINTEL = 5928,
+	/// <unmanaged>SpvOpFixedSinPiALTERA</unmanaged>
+	FixedSinPiALTERA = 5929,
 	/// <unmanaged>SpvOpFixedSinPiINTEL</unmanaged>
 	FixedSinPiINTEL = 5929,
+	/// <unmanaged>SpvOpFixedCosPiALTERA</unmanaged>
+	FixedCosPiALTERA = 5930,
 	/// <unmanaged>SpvOpFixedCosPiINTEL</unmanaged>
 	FixedCosPiINTEL = 5930,
+	/// <unmanaged>SpvOpFixedSinCosPiALTERA</unmanaged>
+	FixedSinCosPiALTERA = 5931,
 	/// <unmanaged>SpvOpFixedSinCosPiINTEL</unmanaged>
 	FixedSinCosPiINTEL = 5931,
+	/// <unmanaged>SpvOpFixedLogALTERA</unmanaged>
+	FixedLogALTERA = 5932,
 	/// <unmanaged>SpvOpFixedLogINTEL</unmanaged>
 	FixedLogINTEL = 5932,
+	/// <unmanaged>SpvOpFixedExpALTERA</unmanaged>
+	FixedExpALTERA = 5933,
 	/// <unmanaged>SpvOpFixedExpINTEL</unmanaged>
 	FixedExpINTEL = 5933,
+	/// <unmanaged>SpvOpPtrCastToCrossWorkgroupALTERA</unmanaged>
+	PtrCastToCrossWorkgroupALTERA = 5934,
 	/// <unmanaged>SpvOpPtrCastToCrossWorkgroupINTEL</unmanaged>
 	PtrCastToCrossWorkgroupINTEL = 5934,
+	/// <unmanaged>SpvOpCrossWorkgroupCastToPtrALTERA</unmanaged>
+	CrossWorkgroupCastToPtrALTERA = 5938,
 	/// <unmanaged>SpvOpCrossWorkgroupCastToPtrINTEL</unmanaged>
 	CrossWorkgroupCastToPtrINTEL = 5938,
+	/// <unmanaged>SpvOpReadPipeBlockingALTERA</unmanaged>
+	ReadPipeBlockingALTERA = 5946,
 	/// <unmanaged>SpvOpReadPipeBlockingINTEL</unmanaged>
 	ReadPipeBlockingINTEL = 5946,
+	/// <unmanaged>SpvOpWritePipeBlockingALTERA</unmanaged>
+	WritePipeBlockingALTERA = 5947,
 	/// <unmanaged>SpvOpWritePipeBlockingINTEL</unmanaged>
 	WritePipeBlockingINTEL = 5947,
+	/// <unmanaged>SpvOpFPGARegALTERA</unmanaged>
+	FPGARegALTERA = 5949,
 	/// <unmanaged>SpvOpFPGARegINTEL</unmanaged>
 	FPGARegINTEL = 5949,
 	/// <unmanaged>SpvOpRayQueryGetRayTMinKHR</unmanaged>
@@ -3523,10 +4867,70 @@ public enum SpvOp
 	ConstantCompositeContinuedINTEL = 6091,
 	/// <unmanaged>SpvOpSpecConstantCompositeContinuedINTEL</unmanaged>
 	SpecConstantCompositeContinuedINTEL = 6092,
+	/// <unmanaged>SpvOpCompositeConstructContinuedINTEL</unmanaged>
+	CompositeConstructContinuedINTEL = 6096,
+	/// <unmanaged>SpvOpConvertFToBF16INTEL</unmanaged>
+	ConvertFToBF16INTEL = 6116,
+	/// <unmanaged>SpvOpConvertBF16ToFINTEL</unmanaged>
+	ConvertBF16ToFINTEL = 6117,
 	/// <unmanaged>SpvOpControlBarrierArriveINTEL</unmanaged>
 	ControlBarrierArriveINTEL = 6142,
 	/// <unmanaged>SpvOpControlBarrierWaitINTEL</unmanaged>
 	ControlBarrierWaitINTEL = 6143,
+	/// <unmanaged>SpvOpArithmeticFenceEXT</unmanaged>
+	ArithmeticFenceEXT = 6145,
+	/// <unmanaged>SpvOpTaskSequenceCreateALTERA</unmanaged>
+	TaskSequenceCreateALTERA = 6163,
+	/// <unmanaged>SpvOpTaskSequenceCreateINTEL</unmanaged>
+	TaskSequenceCreateINTEL = 6163,
+	/// <unmanaged>SpvOpTaskSequenceAsyncALTERA</unmanaged>
+	TaskSequenceAsyncALTERA = 6164,
+	/// <unmanaged>SpvOpTaskSequenceAsyncINTEL</unmanaged>
+	TaskSequenceAsyncINTEL = 6164,
+	/// <unmanaged>SpvOpTaskSequenceGetALTERA</unmanaged>
+	TaskSequenceGetALTERA = 6165,
+	/// <unmanaged>SpvOpTaskSequenceGetINTEL</unmanaged>
+	TaskSequenceGetINTEL = 6165,
+	/// <unmanaged>SpvOpTaskSequenceReleaseALTERA</unmanaged>
+	TaskSequenceReleaseALTERA = 6166,
+	/// <unmanaged>SpvOpTaskSequenceReleaseINTEL</unmanaged>
+	TaskSequenceReleaseINTEL = 6166,
+	/// <unmanaged>SpvOpTypeTaskSequenceALTERA</unmanaged>
+	TypeTaskSequenceALTERA = 6199,
+	/// <unmanaged>SpvOpTypeTaskSequenceINTEL</unmanaged>
+	TypeTaskSequenceINTEL = 6199,
+	/// <unmanaged>SpvOpSubgroupBlockPrefetchINTEL</unmanaged>
+	SubgroupBlockPrefetchINTEL = 6221,
+	/// <unmanaged>SpvOpSubgroup2DBlockLoadINTEL</unmanaged>
+	Subgroup2DBlockLoadINTEL = 6231,
+	/// <unmanaged>SpvOpSubgroup2DBlockLoadTransformINTEL</unmanaged>
+	Subgroup2DBlockLoadTransformINTEL = 6232,
+	/// <unmanaged>SpvOpSubgroup2DBlockLoadTransposeINTEL</unmanaged>
+	Subgroup2DBlockLoadTransposeINTEL = 6233,
+	/// <unmanaged>SpvOpSubgroup2DBlockPrefetchINTEL</unmanaged>
+	Subgroup2DBlockPrefetchINTEL = 6234,
+	/// <unmanaged>SpvOpSubgroup2DBlockStoreINTEL</unmanaged>
+	Subgroup2DBlockStoreINTEL = 6235,
+	/// <unmanaged>SpvOpSubgroupMatrixMultiplyAccumulateINTEL</unmanaged>
+	SubgroupMatrixMultiplyAccumulateINTEL = 6237,
+	/// <unmanaged>SpvOpBitwiseFunctionINTEL</unmanaged>
+	BitwiseFunctionINTEL = 6242,
+	/// <unmanaged>SpvOpUntypedVariableLengthArrayINTEL</unmanaged>
+	UntypedVariableLengthArrayINTEL = 6244,
+	/// <unmanaged>SpvOpConditionalExtensionINTEL</unmanaged>
+	ConditionalExtensionINTEL = 6248,
+	/// <unmanaged>SpvOpConditionalEntryPointINTEL</unmanaged>
+	ConditionalEntryPointINTEL = 6249,
+	/// <unmanaged>SpvOpConditionalCapabilityINTEL</unmanaged>
+	ConditionalCapabilityINTEL = 6250,
+	/// <unmanaged>SpvOpSpecConstantTargetINTEL</unmanaged>
+	SpecConstantTargetINTEL = 6251,
+	/// <unmanaged>SpvOpSpecConstantArchitectureINTEL</unmanaged>
+	SpecConstantArchitectureINTEL = 6252,
+	/// <unmanaged>SpvOpSpecConstantCapabilitiesINTEL</unmanaged>
+	SpecConstantCapabilitiesINTEL = 6253,
+	/// <unmanaged>SpvOpConditionalCopyObjectINTEL</unmanaged>
+	ConditionalCopyObjectINTEL = 6254,
 	/// <unmanaged>SpvOpGroupIMulKHR</unmanaged>
 	GroupIMulKHR = 6401,
 	/// <unmanaged>SpvOpGroupFMulKHR</unmanaged>
@@ -3543,5 +4947,23 @@ public enum SpvOp
 	GroupLogicalOrKHR = 6407,
 	/// <unmanaged>SpvOpGroupLogicalXorKHR</unmanaged>
 	GroupLogicalXorKHR = 6408,
+	/// <unmanaged>SpvOpRoundFToTF32INTEL</unmanaged>
+	RoundFToTF32INTEL = 6426,
+	/// <unmanaged>SpvOpMaskedGatherINTEL</unmanaged>
+	MaskedGatherINTEL = 6428,
+	/// <unmanaged>SpvOpMaskedScatterINTEL</unmanaged>
+	MaskedScatterINTEL = 6429,
+	/// <unmanaged>SpvOpConvertHandleToImageINTEL</unmanaged>
+	ConvertHandleToImageINTEL = 6529,
+	/// <unmanaged>SpvOpConvertHandleToSamplerINTEL</unmanaged>
+	ConvertHandleToSamplerINTEL = 6530,
+	/// <unmanaged>SpvOpConvertHandleToSampledImageINTEL</unmanaged>
+	ConvertHandleToSampledImageINTEL = 6531,
+	/// <unmanaged>SpvOpFDot2MixAcc32VALVE</unmanaged>
+	FDot2MixAcc32VALVE = 6916,
+	/// <unmanaged>SpvOpFDot2MixAcc16VALVE</unmanaged>
+	FDot2MixAcc16VALVE = 6917,
+	/// <unmanaged>SpvOpFDot4MixAcc32VALVE</unmanaged>
+	FDot4MixAcc32VALVE = 6918,
 }
 

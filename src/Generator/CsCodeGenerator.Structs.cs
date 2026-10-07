@@ -33,10 +33,11 @@ partial class CsCodeGenerator
             usings.AddRange(_options.ExtraUsings);
         }
 
-        string[] staticUsings =
-        [
-            "Vortice.Vulkan.Vulkan"
-        ];
+        string[] staticUsings = [];
+        if(_options.IsVulkan)
+        {
+            staticUsings = ["Vortice.Vulkan.VulkanNative"];
+        }
 
         // Generate Structures
         using CodeWriter writer = new(Path.Combine(_options.OutputPath, "Structures.cs"),

@@ -97,6 +97,8 @@ public enum SpvReflectTypeFlags
 	FlagExternalBlock = 0x00080000,
 	/// <unmanaged>SPV_REFLECT_TYPE_FLAG_EXTERNAL_ACCELERATION_STRUCTURE</unmanaged>
 	FlagExternalAccelerationStructure = 0x00100000,
+	/// <unmanaged>SPV_REFLECT_TYPE_FLAG_EXTERNAL_TENSOR_ARM</unmanaged>
+	FlagExternalTensorARM = 0x00200000,
 	/// <unmanaged>SPV_REFLECT_TYPE_FLAG_EXTERNAL_MASK</unmanaged>
 	FlagExternalMask = 0x00FF0000,
 	/// <unmanaged>SPV_REFLECT_TYPE_FLAG_STRUCT</unmanaged>
@@ -360,6 +362,8 @@ public enum SpvReflectDescriptorType
 	InputAttachment = 10,
 	/// <unmanaged>SPV_REFLECT_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR</unmanaged>
 	AccelerationStructureKHR = 1000150000,
+	/// <unmanaged>SPV_REFLECT_DESCRIPTOR_TYPE_TENSOR_ARM</unmanaged>
+	TensorARM = 1000460000,
 }
 
 [Flags]

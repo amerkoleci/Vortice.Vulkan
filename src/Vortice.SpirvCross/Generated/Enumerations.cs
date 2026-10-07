@@ -83,6 +83,8 @@ public enum ResourceType
 	ShaderRecordBuffer = 14,
 	/// <unmanaged>SPVC_RESOURCE_TYPE_GL_PLAIN_UNIFORM</unmanaged>
 	GlPlainUniform = 15,
+	/// <unmanaged>SPVC_RESOURCE_TYPE_TENSOR</unmanaged>
+	Tensor = 16,
 }
 
 public enum BuiltinResourceType
@@ -475,7 +477,7 @@ public enum CompilerOption
 	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_R32UI_LINEAR_TEXTURE_ALIGNMENT</unmanaged>
 	MSLR32uiLinearTextureAlignment = 134217797,
 	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_R32UI_ALIGNMENT_CONSTANT_ID</unmanaged>
-	MSLR32uiAlignmentConstantID = 134217798,
+	MSLR32uiAlignmentConstantId = 134217798,
 	/// <unmanaged>SPVC_COMPILER_OPTION_HLSL_FLATTEN_MATRIX_VERTEX_INPUT_SEMANTICS</unmanaged>
 	HLSLFlattenMatrixVertexInputSemantics = 67108935,
 	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_IOS_USE_SIMDGROUP_FUNCTIONS</unmanaged>
@@ -518,5 +520,11 @@ public enum CompilerOption
 	HLSLUseEntryPointName = 67108954,
 	/// <unmanaged>SPVC_COMPILER_OPTION_HLSL_PRESERVE_STRUCTURED_BUFFERS</unmanaged>
 	HLSLPreserveStructuredBuffers = 67108955,
+	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_AUTO_DISABLE_RASTERIZATION</unmanaged>
+	MSLAutoDisableRasterization = 134217820,
+	/// <unmanaged>SPVC_COMPILER_OPTION_MSL_ENABLE_POINT_SIZE_DEFAULT</unmanaged>
+	MSLEnablePointSizeDefault = 134217821,
+	/// <unmanaged>SPVC_COMPILER_OPTION_HLSL_USER_SEMANTIC</unmanaged>
+	HLSLUserSemantic = 67108958,
 }
 
