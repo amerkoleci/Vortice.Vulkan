@@ -93,3 +93,9 @@ if (NOT EMSCRIPTEN)
     # vma
     add_subdirectory(vma)
 endif()
+
+# spirv-reflect
+add_subdirectory(spirv-reflect)
+
+# spirv-cross
+add_subdirectory(spirv-cross)

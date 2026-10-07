@@ -11,7 +11,7 @@ target_include_directories(${TARGET_NAME} PUBLIC
 )
 target_link_libraries(${TARGET_NAME} PRIVATE vulkan)
 
-if (ALIMER_BUILD_SHARED)
+if (BUILD_SHARED_LIBS)
     if(WIN32)
         # VMA decorates every public function with VMA_CALL_PRE
         target_compile_definitions(${TARGET_NAME} PRIVATE "VMA_CALL_PRE=__declspec(dllexport)")
