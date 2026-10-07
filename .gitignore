@@ -22,6 +22,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 msbuild.log
+src/native/build*/
 
 # Visual Studio 2015
 .vs/
