@@ -19,7 +19,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    permissions:
+      id-token: write  # enable GitHub OIDC token issuance for this job    
+      
     steps:
     - name: Checkout
       uses: actions/checkout@v7
