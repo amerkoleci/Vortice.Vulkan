@@ -13,7 +13,7 @@
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>14.0</LangVersion>
+    <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UseArtifactsOutput>true</UseArtifactsOutput>

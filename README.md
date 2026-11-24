@@ -5,7 +5,7 @@
 [![Vulkan](https://img.shields.io/badge/vulkan-1.4.363.0-brightgreen.svg)](https://www.khronos.org/vulkan/)
 [![NuGet](https://img.shields.io/nuget/v/Vortice.Vulkan.svg)](https://www.nuget.org/packages/Vortice.Vulkan)
 
-**Vortice.Vulkan** is **.NET 9** and **.NET 10** low-level bindings for [Vulkan](https://www.khronos.org/vulkan/), [VulkanMemoryAllocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator), [SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross) and [shaderc](https://github.com/google/shaderc).
+**Vortice.Vulkan** is **.NET 10** and **.NET 11** low-level bindings for [Vulkan](https://www.khronos.org/vulkan/), [VulkanMemoryAllocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator), [SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross) and [shaderc](https://github.com/google/shaderc).
 
 ## Sponsors
 To further help development of these bindings library or other projects, please consider [SPONSOR](https://github.com/sponsors/amerkoleci) my profile in order to allow faster issue triaging and new features to be implemented.

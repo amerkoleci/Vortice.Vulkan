@@ -69,16 +69,20 @@ public static unsafe class Program
 
                 VkPipelineShaderStageCreateInfo* shaderStages = stackalloc VkPipelineShaderStageCreateInfo[2];
                 // Vertex shader
-                shaderStages[0] = new();
-                shaderStages[0].stage = VkShaderStageFlags.Vertex;
-                shaderStages[0].module = vertexShader;
-                shaderStages[0].pName = (byte*)entryPoint;
+                shaderStages[0] = new()
+                {
+                    stage = VkShaderStageFlags.Vertex,
+                    module = vertexShader,
+                    pName = (byte*)entryPoint
+                };
 
                 // Fragment shader
-                shaderStages[1] = new();
-                shaderStages[1].stage = VkShaderStageFlags.Fragment;
-                shaderStages[1].module = fragmentShader;
-                shaderStages[1].pName = entryPoint;
+                shaderStages[1] = new()
+                {
+                    stage = VkShaderStageFlags.Fragment,
+                    module = fragmentShader,
+                    pName = entryPoint
+                };
 
                 // VertexInputState
                 VkVertexInputBindingDescription vertexInputBinding = new(VertexPositionColor.SizeInBytes);
@@ -209,7 +213,6 @@ public static unsafe class Program
                 stagingBuffer.Destroy(_allocator);
             }
         }
-
 
         public override void Dispose()
         {

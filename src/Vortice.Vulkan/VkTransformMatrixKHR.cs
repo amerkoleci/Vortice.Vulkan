@@ -1,18 +1,22 @@
 ﻿// Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
-using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 namespace Vortice.Vulkan;
 
 /// <summary>
 /// Structure specifying a 3x4 affine transformation matrix
 /// </summary>
-[StructLayout(LayoutKind.Explicit)]
 public partial struct VkTransformMatrixKHR
 {
-    [FieldOffset(0)]
-    public unsafe fixed float matrix[3 * 4];
+    public VkTransformMatrixKHR_Matrix matrix;
+
+    [InlineArray(3 * 4)]
+    public partial struct VkTransformMatrixKHR_Matrix
+    {
+        public float e0;
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="VkTransformMatrixKHR"/> struct.
@@ -29,7 +33,7 @@ public partial struct VkTransformMatrixKHR
     /// <param name="m32">The value to assign at row 3 column 2 of the matrix.</param>
     /// <param name="m33">The value to assign at row 3 column 3 of the matrix.</param>
     /// <param name="m34">The value to assign at row 3 column 4 of the matrix.</param>
-    public unsafe VkTransformMatrixKHR(
+    public VkTransformMatrixKHR(
         float m11, float m12, float m13, float m14,
         float m21, float m22, float m23, float m24,
         float m31, float m32, float m33, float m34)

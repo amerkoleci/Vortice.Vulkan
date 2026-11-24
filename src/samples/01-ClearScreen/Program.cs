@@ -1,6 +1,7 @@
 // Copyright (c) Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
+using System.Runtime.CompilerServices;
 using Vortice.Vulkan;
 
 namespace ClearScreen;
@@ -14,7 +15,7 @@ public static unsafe class Program
 #endif
     public static void Main()
     {
-        using TestApp testApp = new TestApp();
+        using TestApp testApp = new();
         testApp.Run();
     }
 
@@ -56,7 +57,7 @@ public static unsafe class Program
                 renderArea = new VkRect2D(VkOffset2D.Zero, size),
                 layerCount = 1u,
                 colorAttachmentCount = 1,
-                pColorAttachments = & colorAttachment,
+                pColorAttachments = &colorAttachment,
             };
             _graphicsDevice.DeviceApi.vkCmdBeginRendering(commandBuffer, &renderingInfo);
             _graphicsDevice.DeviceApi.vkCmdSetBlendConstants(commandBuffer, 1.0f, 1.0f, 1.0f, 1.0f);

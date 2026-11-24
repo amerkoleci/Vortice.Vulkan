@@ -7976,22 +7976,6 @@ public unsafe partial struct VkVideoDecodeInfoKHR : IStructureType, IChainType
 	}
 }
 
-public partial struct StdVideoH264SpsVuiFlags
-{
-	public uint aspect_ratio_info_present_flag;
-	public uint overscan_info_present_flag;
-	public uint overscan_appropriate_flag;
-	public uint video_signal_type_present_flag;
-	public uint video_full_range_flag;
-	public uint color_description_present_flag;
-	public uint chroma_loc_info_present_flag;
-	public uint timing_info_present_flag;
-	public uint fixed_frame_rate_flag;
-	public uint bitstream_restriction_flag;
-	public uint nal_hrd_parameters_present_flag;
-	public uint vcl_hrd_parameters_present_flag;
-}
-
 public unsafe partial struct StdVideoH264HrdParameters
 {
 	public byte cpb_cnt_minus1;
@@ -8025,26 +8009,6 @@ public unsafe partial struct StdVideoH264SequenceParameterSetVui
 	public byte chroma_sample_loc_type_bottom_field;
 	public uint reserved1;
 	public StdVideoH264HrdParameters* pHrdParameters;
-}
-
-public partial struct StdVideoH264SpsFlags
-{
-	public uint constraint_set0_flag;
-	public uint constraint_set1_flag;
-	public uint constraint_set2_flag;
-	public uint constraint_set3_flag;
-	public uint constraint_set4_flag;
-	public uint constraint_set5_flag;
-	public uint direct_8x8_inference_flag;
-	public uint mb_adaptive_frame_field_flag;
-	public uint frame_mbs_only_flag;
-	public uint delta_pic_order_always_zero_flag;
-	public uint separate_colour_plane_flag;
-	public uint gaps_in_frame_num_value_allowed_flag;
-	public uint qpprime_y_zero_transform_bypass_flag;
-	public uint frame_cropping_flag;
-	public uint seq_scaling_matrix_present_flag;
-	public uint vui_parameters_present_flag;
 }
 
 public unsafe partial struct StdVideoH264ScalingLists
@@ -8084,18 +8048,6 @@ public unsafe partial struct StdVideoH264SequenceParameterSet
 	public StdVideoH264SequenceParameterSetVui* pSequenceParameterSetVui;
 }
 
-public partial struct StdVideoH264PpsFlags
-{
-	public uint transform_8x8_mode_flag;
-	public uint redundant_pic_cnt_present_flag;
-	public uint constrained_intra_pred_flag;
-	public uint deblocking_filter_control_present_flag;
-	public uint weighted_pred_flag;
-	public uint bottom_field_pic_order_in_frame_present_flag;
-	public uint entropy_coding_mode_flag;
-	public uint pic_scaling_matrix_present_flag;
-}
-
 public unsafe partial struct StdVideoH264PictureParameterSet
 {
 	public StdVideoH264PpsFlags flags;
@@ -8132,36 +8084,6 @@ public unsafe partial struct StdVideoEncodeH264WeightTable
 	public fixed sbyte luma_offset_l1[32];
 	public fixed sbyte chroma_weight_l1[32 * 2];
 	public fixed sbyte chroma_offset_l1[32 * 2];
-}
-
-public partial struct StdVideoEncodeH264SliceHeaderFlags
-{
-	public uint direct_spatial_mv_pred_flag;
-	public uint num_ref_idx_active_override_flag;
-	public uint reserved;
-}
-
-public partial struct StdVideoEncodeH264PictureInfoFlags
-{
-	public uint IdrPicFlag;
-	public uint is_reference;
-	public uint no_output_of_prior_pics_flag;
-	public uint long_term_reference_flag;
-	public uint adaptive_ref_pic_marking_mode_flag;
-	public uint reserved;
-}
-
-public partial struct StdVideoEncodeH264ReferenceInfoFlags
-{
-	public uint used_for_long_term_reference;
-	public uint reserved;
-}
-
-public partial struct StdVideoEncodeH264ReferenceListsInfoFlags
-{
-	public uint ref_pic_list_modification_flag_l0;
-	public uint ref_pic_list_modification_flag_l1;
-	public uint reserved;
 }
 
 public partial struct StdVideoEncodeH264RefListModEntry
@@ -8605,17 +8527,6 @@ public unsafe partial struct StdVideoH265SubLayerHrdParameters
 	public uint cbr_flag;
 }
 
-public partial struct StdVideoH265HrdFlags
-{
-	public uint nal_hrd_parameters_present_flag;
-	public uint vcl_hrd_parameters_present_flag;
-	public uint sub_pic_hrd_params_present_flag;
-	public uint sub_pic_cpb_params_in_pic_timing_sei_flag;
-	public uint fixed_pic_rate_general_flag;
-	public uint fixed_pic_rate_within_cvs_flag;
-	public uint low_delay_hrd_flag;
-}
-
 public unsafe partial struct StdVideoH265HrdParameters
 {
 	public StdVideoH265HrdFlags flags;
@@ -8633,23 +8544,6 @@ public unsafe partial struct StdVideoH265HrdParameters
 	public fixed ushort reserved[3];
 	public StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersNal;
 	public StdVideoH265SubLayerHrdParameters* pSubLayerHrdParametersVcl;
-}
-
-public partial struct StdVideoH265VpsFlags
-{
-	public uint vps_temporal_id_nesting_flag;
-	public uint vps_sub_layer_ordering_info_present_flag;
-	public uint vps_timing_info_present_flag;
-	public uint vps_poc_proportional_to_timing_flag;
-}
-
-public partial struct StdVideoH265ProfileTierLevelFlags
-{
-	public uint general_tier_flag;
-	public uint general_progressive_source_flag;
-	public uint general_interlaced_source_flag;
-	public uint general_non_packed_constraint_flag;
-	public uint general_frame_only_constraint_flag;
 }
 
 public partial struct StdVideoH265ProfileTierLevel
@@ -8685,28 +8579,6 @@ public unsafe partial struct StdVideoH265ScalingLists
 	public fixed byte ScalingListDCCoef32x32[2];
 }
 
-public partial struct StdVideoH265SpsVuiFlags
-{
-	public uint aspect_ratio_info_present_flag;
-	public uint overscan_info_present_flag;
-	public uint overscan_appropriate_flag;
-	public uint video_signal_type_present_flag;
-	public uint video_full_range_flag;
-	public uint colour_description_present_flag;
-	public uint chroma_loc_info_present_flag;
-	public uint neutral_chroma_indication_flag;
-	public uint field_seq_flag;
-	public uint frame_field_info_present_flag;
-	public uint default_display_window_flag;
-	public uint vui_timing_info_present_flag;
-	public uint vui_poc_proportional_to_timing_flag;
-	public uint vui_hrd_parameters_present_flag;
-	public uint bitstream_restriction_flag;
-	public uint tiles_fixed_structure_flag;
-	public uint motion_vectors_over_pic_boundaries_flag;
-	public uint restricted_ref_pic_lists_flag;
-}
-
 public unsafe partial struct StdVideoH265SequenceParameterSetVui
 {
 	public StdVideoH265SpsVuiFlags flags;
@@ -8740,46 +8612,6 @@ public unsafe partial struct StdVideoH265SequenceParameterSetVui
 public unsafe partial struct StdVideoH265PredictorPaletteEntries
 {
 	public fixed ushort PredictorPaletteEntries[3 * 128];
-}
-
-public partial struct StdVideoH265SpsFlags
-{
-	public uint sps_temporal_id_nesting_flag;
-	public uint separate_colour_plane_flag;
-	public uint conformance_window_flag;
-	public uint sps_sub_layer_ordering_info_present_flag;
-	public uint scaling_list_enabled_flag;
-	public uint sps_scaling_list_data_present_flag;
-	public uint amp_enabled_flag;
-	public uint sample_adaptive_offset_enabled_flag;
-	public uint pcm_enabled_flag;
-	public uint pcm_loop_filter_disabled_flag;
-	public uint long_term_ref_pics_present_flag;
-	public uint sps_temporal_mvp_enabled_flag;
-	public uint strong_intra_smoothing_enabled_flag;
-	public uint vui_parameters_present_flag;
-	public uint sps_extension_present_flag;
-	public uint sps_range_extension_flag;
-	public uint transform_skip_rotation_enabled_flag;
-	public uint transform_skip_context_enabled_flag;
-	public uint implicit_rdpcm_enabled_flag;
-	public uint explicit_rdpcm_enabled_flag;
-	public uint extended_precision_processing_flag;
-	public uint intra_smoothing_disabled_flag;
-	public uint high_precision_offsets_enabled_flag;
-	public uint persistent_rice_adaptation_enabled_flag;
-	public uint cabac_bypass_alignment_enabled_flag;
-	public uint sps_scc_extension_flag;
-	public uint sps_curr_pic_ref_enabled_flag;
-	public uint palette_mode_enabled_flag;
-	public uint sps_palette_predictor_initializers_present_flag;
-	public uint intra_boundary_filtering_disabled_flag;
-}
-
-public partial struct StdVideoH265ShortTermRefPicSetFlags
-{
-	public uint inter_ref_pic_set_prediction_flag;
-	public uint delta_rps_sign;
 }
 
 public unsafe partial struct StdVideoH265ShortTermRefPicSet
@@ -8849,41 +8681,6 @@ public unsafe partial struct StdVideoH265SequenceParameterSet
 	public StdVideoH265PredictorPaletteEntries* pPredictorPaletteEntries;
 }
 
-public partial struct StdVideoH265PpsFlags
-{
-	public uint dependent_slice_segments_enabled_flag;
-	public uint output_flag_present_flag;
-	public uint sign_data_hiding_enabled_flag;
-	public uint cabac_init_present_flag;
-	public uint constrained_intra_pred_flag;
-	public uint transform_skip_enabled_flag;
-	public uint cu_qp_delta_enabled_flag;
-	public uint pps_slice_chroma_qp_offsets_present_flag;
-	public uint weighted_pred_flag;
-	public uint weighted_bipred_flag;
-	public uint transquant_bypass_enabled_flag;
-	public uint tiles_enabled_flag;
-	public uint entropy_coding_sync_enabled_flag;
-	public uint uniform_spacing_flag;
-	public uint loop_filter_across_tiles_enabled_flag;
-	public uint pps_loop_filter_across_slices_enabled_flag;
-	public uint deblocking_filter_control_present_flag;
-	public uint deblocking_filter_override_enabled_flag;
-	public uint pps_deblocking_filter_disabled_flag;
-	public uint pps_scaling_list_data_present_flag;
-	public uint lists_modification_present_flag;
-	public uint slice_segment_header_extension_present_flag;
-	public uint pps_extension_present_flag;
-	public uint cross_component_prediction_enabled_flag;
-	public uint chroma_qp_offset_list_enabled_flag;
-	public uint pps_curr_pic_ref_enabled_flag;
-	public uint residual_adaptive_colour_transform_enabled_flag;
-	public uint pps_slice_act_qp_offsets_present_flag;
-	public uint pps_palette_predictor_initializers_present_flag;
-	public uint monochrome_palette_flag;
-	public uint pps_range_extension_flag;
-}
-
 public unsafe partial struct StdVideoH265PictureParameterSet
 {
 	public StdVideoH265PpsFlags flags;
@@ -8947,23 +8744,6 @@ public unsafe partial struct StdVideoEncodeH265WeightTable
 	public fixed sbyte delta_chroma_offset_l1[15 * 2];
 }
 
-public partial struct StdVideoEncodeH265SliceSegmentHeaderFlags
-{
-	public uint first_slice_segment_in_pic_flag;
-	public uint dependent_slice_segment_flag;
-	public uint slice_sao_luma_flag;
-	public uint slice_sao_chroma_flag;
-	public uint num_ref_idx_active_override_flag;
-	public uint mvd_l1_zero_flag;
-	public uint cabac_init_flag;
-	public uint cu_chroma_qp_offset_enabled_flag;
-	public uint deblocking_filter_override_flag;
-	public uint slice_deblocking_filter_disabled_flag;
-	public uint collocated_from_l0_flag;
-	public uint slice_loop_filter_across_slices_enabled_flag;
-	public uint reserved;
-}
-
 public unsafe partial struct StdVideoEncodeH265SliceSegmentHeader
 {
 	public StdVideoEncodeH265SliceSegmentHeaderFlags flags;
@@ -8983,13 +8763,6 @@ public unsafe partial struct StdVideoEncodeH265SliceSegmentHeader
 	public StdVideoEncodeH265WeightTable* pWeightTable;
 }
 
-public partial struct StdVideoEncodeH265ReferenceListsInfoFlags
-{
-	public uint ref_pic_list_modification_flag_l0;
-	public uint ref_pic_list_modification_flag_l1;
-	public uint reserved;
-}
-
 public unsafe partial struct StdVideoEncodeH265ReferenceListsInfo
 {
 	public StdVideoEncodeH265ReferenceListsInfoFlags flags;
@@ -8999,20 +8772,6 @@ public unsafe partial struct StdVideoEncodeH265ReferenceListsInfo
 	public fixed byte RefPicList1[15];
 	public fixed byte list_entry_l0[15];
 	public fixed byte list_entry_l1[15];
-}
-
-public partial struct StdVideoEncodeH265PictureInfoFlags
-{
-	public uint is_reference;
-	public uint IrapPicFlag;
-	public uint used_for_long_term_reference;
-	public uint discardable_flag;
-	public uint cross_layer_bla_flag;
-	public uint pic_output_flag;
-	public uint no_output_of_prior_pics_flag;
-	public uint short_term_ref_pic_set_sps_flag;
-	public uint slice_temporal_mvp_enabled_flag;
-	public uint reserved;
 }
 
 public unsafe partial struct StdVideoEncodeH265LongTermRefPics
@@ -9040,13 +8799,6 @@ public unsafe partial struct StdVideoEncodeH265PictureInfo
 	public StdVideoEncodeH265ReferenceListsInfo* pRefLists;
 	public StdVideoH265ShortTermRefPicSet* pShortTermRefPicSet;
 	public StdVideoEncodeH265LongTermRefPics* pLongTermRefPics;
-}
-
-public partial struct StdVideoEncodeH265ReferenceInfoFlags
-{
-	public uint used_for_long_term_reference;
-	public uint unused_for_reference;
-	public uint reserved;
 }
 
 public partial struct StdVideoEncodeH265ReferenceInfo
@@ -9418,16 +9170,6 @@ public unsafe partial struct VkVideoEncodeH265GopRemainingFrameInfoKHR : IStruct
 	}
 }
 
-public partial struct StdVideoDecodeH264PictureInfoFlags
-{
-	public uint field_pic_flag;
-	public uint is_intra;
-	public uint IdrPicFlag;
-	public uint bottom_field_flag;
-	public uint is_reference;
-	public uint complementary_field_pair;
-}
-
 public unsafe partial struct StdVideoDecodeH264PictureInfo
 {
 	public StdVideoDecodeH264PictureInfoFlags flags;
@@ -9438,14 +9180,6 @@ public unsafe partial struct StdVideoDecodeH264PictureInfo
 	public ushort frame_num;
 	public ushort idr_pic_id;
 	public fixed int PicOrderCnt[2];
-}
-
-public partial struct StdVideoDecodeH264ReferenceInfoFlags
-{
-	public uint top_field_flag;
-	public uint bottom_field_flag;
-	public uint used_for_long_term_reference;
-	public uint is_non_existing;
 }
 
 public unsafe partial struct StdVideoDecodeH264ReferenceInfo
@@ -10192,14 +9926,6 @@ public unsafe partial struct VkPhysicalDeviceShaderClockFeaturesKHR : IStructure
 	}
 }
 
-public partial struct StdVideoDecodeH265PictureInfoFlags
-{
-	public uint IrapPicFlag;
-	public uint IdrPicFlag;
-	public uint IsReference;
-	public uint short_term_ref_pic_set_sps_flag;
-}
-
 public unsafe partial struct StdVideoDecodeH265PictureInfo
 {
 	public StdVideoDecodeH265PictureInfoFlags flags;
@@ -10213,12 +9939,6 @@ public unsafe partial struct StdVideoDecodeH265PictureInfo
 	public fixed byte RefPicSetStCurrBefore[8];
 	public fixed byte RefPicSetStCurrAfter[8];
 	public fixed byte RefPicSetLtCurr[8];
-}
-
-public partial struct StdVideoDecodeH265ReferenceInfoFlags
-{
-	public uint used_for_long_term_reference;
-	public uint unused_for_reference;
 }
 
 public partial struct StdVideoDecodeH265ReferenceInfo
@@ -12414,15 +12134,6 @@ public unsafe partial struct VkPhysicalDeviceComputeShaderDerivativesPropertiesK
 	}
 }
 
-public partial struct StdVideoAV1ColorConfigFlags
-{
-	public uint mono_chrome;
-	public uint color_range;
-	public uint separate_uv_delta_q;
-	public uint color_description_present_flag;
-	public uint reserved;
-}
-
 public partial struct StdVideoAV1ColorConfig
 {
 	public StdVideoAV1ColorConfigFlags flags;
@@ -12436,25 +12147,12 @@ public partial struct StdVideoAV1ColorConfig
 	public StdVideoAV1ChromaSamplePosition chroma_sample_position;
 }
 
-public partial struct StdVideoAV1TimingInfoFlags
-{
-	public uint equal_picture_interval;
-	public uint reserved;
-}
-
 public partial struct StdVideoAV1TimingInfo
 {
 	public StdVideoAV1TimingInfoFlags flags;
 	public uint num_units_in_display_tick;
 	public uint time_scale;
 	public uint num_ticks_per_picture_minus_1;
-}
-
-public partial struct StdVideoAV1LoopFilterFlags
-{
-	public uint loop_filter_delta_enabled;
-	public uint loop_filter_delta_update;
-	public uint reserved;
 }
 
 public unsafe partial struct StdVideoAV1LoopFilter
@@ -12466,13 +12164,6 @@ public unsafe partial struct StdVideoAV1LoopFilter
 	public fixed sbyte loop_filter_ref_deltas[8];
 	public byte update_mode_delta;
 	public fixed sbyte loop_filter_mode_deltas[2];
-}
-
-public partial struct StdVideoAV1QuantizationFlags
-{
-	public uint using_qmatrix;
-	public uint diff_uv_delta;
-	public uint reserved;
 }
 
 public partial struct StdVideoAV1Quantization
@@ -12493,12 +12184,6 @@ public unsafe partial struct StdVideoAV1Segmentation
 {
 	public fixed byte FeatureEnabled[8];
 	public fixed short FeatureData[8 * 8];
-}
-
-public partial struct StdVideoAV1TileInfoFlags
-{
-	public uint uniform_tile_spacing_flag;
-	public uint reserved;
 }
 
 public unsafe partial struct StdVideoAV1TileInfo
@@ -12543,15 +12228,6 @@ public unsafe partial struct StdVideoAV1GlobalMotion
 	public fixed int gm_params[8 * 6];
 }
 
-public partial struct StdVideoAV1FilmGrainFlags
-{
-	public uint chroma_scaling_from_luma;
-	public uint overlap_flag;
-	public uint clip_to_restricted_range;
-	public uint update_grain;
-	public uint reserved;
-}
-
 public unsafe partial struct StdVideoAV1FilmGrain
 {
 	public StdVideoAV1FilmGrainFlags flags;
@@ -12581,30 +12257,6 @@ public unsafe partial struct StdVideoAV1FilmGrain
 	public ushort cr_offset;
 }
 
-public partial struct StdVideoAV1SequenceHeaderFlags
-{
-	public uint still_picture;
-	public uint reduced_still_picture_header;
-	public uint use_128x128_superblock;
-	public uint enable_filter_intra;
-	public uint enable_intra_edge_filter;
-	public uint enable_interintra_compound;
-	public uint enable_masked_compound;
-	public uint enable_warped_motion;
-	public uint enable_dual_filter;
-	public uint enable_order_hint;
-	public uint enable_jnt_comp;
-	public uint enable_ref_frame_mvs;
-	public uint frame_id_numbers_present_flag;
-	public uint enable_superres;
-	public uint enable_cdef;
-	public uint enable_restoration;
-	public uint film_grain_params_present;
-	public uint timing_info_present_flag;
-	public uint initial_display_delay_present_flag;
-	public uint reserved;
-}
-
 public unsafe partial struct StdVideoAV1SequenceHeader
 {
 	public StdVideoAV1SequenceHeaderFlags flags;
@@ -12621,40 +12273,6 @@ public unsafe partial struct StdVideoAV1SequenceHeader
 	public fixed byte reserved1[5];
 	public StdVideoAV1ColorConfig* pColorConfig;
 	public StdVideoAV1TimingInfo* pTimingInfo;
-}
-
-public partial struct StdVideoDecodeAV1PictureInfoFlags
-{
-	public uint error_resilient_mode;
-	public uint disable_cdf_update;
-	public uint use_superres;
-	public uint render_and_frame_size_different;
-	public uint allow_screen_content_tools;
-	public uint is_filter_switchable;
-	public uint force_integer_mv;
-	public uint frame_size_override_flag;
-	public uint buffer_removal_time_present_flag;
-	public uint allow_intrabc;
-	public uint frame_refs_short_signaling;
-	public uint allow_high_precision_mv;
-	public uint is_motion_mode_switchable;
-	public uint use_ref_frame_mvs;
-	public uint disable_frame_end_update_cdf;
-	public uint allow_warped_motion;
-	public uint reduced_tx_set;
-	public uint reference_select;
-	public uint skip_mode_present;
-	public uint delta_q_present;
-	public uint delta_lf_present;
-	public uint delta_lf_multi;
-	public uint segmentation_enabled;
-	public uint segmentation_update_map;
-	public uint segmentation_temporal_update;
-	public uint segmentation_update_data;
-	public uint UsesLr;
-	public uint usesChromaLr;
-	public uint apply_grain;
-	public uint reserved;
 }
 
 public unsafe partial struct StdVideoDecodeAV1PictureInfo
@@ -12683,13 +12301,6 @@ public unsafe partial struct StdVideoDecodeAV1PictureInfo
 	public StdVideoAV1LoopRestoration* pLoopRestoration;
 	public StdVideoAV1GlobalMotion* pGlobalMotion;
 	public StdVideoAV1FilmGrain* pFilmGrain;
-}
-
-public partial struct StdVideoDecodeAV1ReferenceInfoFlags
-{
-	public uint disable_frame_end_update_cdf;
-	public uint segmentation_enabled;
-	public uint reserved;
 }
 
 public unsafe partial struct StdVideoDecodeAV1ReferenceInfo
@@ -12827,14 +12438,6 @@ public partial struct StdVideoEncodeAV1ExtensionHeader
 	public byte spatial_id;
 }
 
-public partial struct StdVideoEncodeAV1OperatingPointInfoFlags
-{
-	public uint decoder_model_present_for_this_op;
-	public uint low_delay_mode_flag;
-	public uint initial_display_delay_present_for_this_op;
-	public uint reserved;
-}
-
 public partial struct StdVideoEncodeAV1OperatingPointInfo
 {
 	public StdVideoEncodeAV1OperatingPointInfoFlags flags;
@@ -12844,40 +12447,6 @@ public partial struct StdVideoEncodeAV1OperatingPointInfo
 	public uint decoder_buffer_delay;
 	public uint encoder_buffer_delay;
 	public byte initial_display_delay_minus_1;
-}
-
-public partial struct StdVideoEncodeAV1PictureInfoFlags
-{
-	public uint error_resilient_mode;
-	public uint disable_cdf_update;
-	public uint use_superres;
-	public uint render_and_frame_size_different;
-	public uint allow_screen_content_tools;
-	public uint is_filter_switchable;
-	public uint force_integer_mv;
-	public uint frame_size_override_flag;
-	public uint buffer_removal_time_present_flag;
-	public uint allow_intrabc;
-	public uint frame_refs_short_signaling;
-	public uint allow_high_precision_mv;
-	public uint is_motion_mode_switchable;
-	public uint use_ref_frame_mvs;
-	public uint disable_frame_end_update_cdf;
-	public uint allow_warped_motion;
-	public uint reduced_tx_set;
-	public uint skip_mode_present;
-	public uint delta_q_present;
-	public uint delta_lf_present;
-	public uint delta_lf_multi;
-	public uint segmentation_enabled;
-	public uint segmentation_update_map;
-	public uint segmentation_temporal_update;
-	public uint segmentation_update_data;
-	public uint UsesLr;
-	public uint usesChromaLr;
-	public uint show_frame;
-	public uint showable_frame;
-	public uint reserved;
 }
 
 public unsafe partial struct StdVideoEncodeAV1PictureInfo
@@ -12909,13 +12478,6 @@ public unsafe partial struct StdVideoEncodeAV1PictureInfo
 	public StdVideoAV1GlobalMotion* pGlobalMotion;
 	public StdVideoEncodeAV1ExtensionHeader* pExtensionHeader;
 	public uint* pBufferRemovalTimes;
-}
-
-public partial struct StdVideoEncodeAV1ReferenceInfoFlags
-{
-	public uint disable_frame_end_update_cdf;
-	public uint segmentation_enabled;
-	public uint reserved;
 }
 
 public unsafe partial struct StdVideoEncodeAV1ReferenceInfo
@@ -13232,12 +12794,6 @@ public unsafe partial struct VkVideoEncodeAV1RateControlLayerInfoKHR : IStructur
 	}
 }
 
-public partial struct StdVideoVP9ColorConfigFlags
-{
-	public uint color_range;
-	public uint reserved;
-}
-
 public partial struct StdVideoVP9ColorConfig
 {
 	public StdVideoVP9ColorConfigFlags flags;
@@ -13246,13 +12802,6 @@ public partial struct StdVideoVP9ColorConfig
 	public byte subsampling_y;
 	public byte reserved1;
 	public StdVideoVP9ColorSpace color_space;
-}
-
-public partial struct StdVideoVP9LoopFilterFlags
-{
-	public uint loop_filter_delta_enabled;
-	public uint loop_filter_delta_update;
-	public uint reserved;
 }
 
 public unsafe partial struct StdVideoVP9LoopFilter
@@ -13266,15 +12815,6 @@ public unsafe partial struct StdVideoVP9LoopFilter
 	public fixed sbyte loop_filter_mode_deltas[2];
 }
 
-public partial struct StdVideoVP9SegmentationFlags
-{
-	public uint segmentation_update_map;
-	public uint segmentation_temporal_update;
-	public uint segmentation_update_data;
-	public uint segmentation_abs_or_delta_update;
-	public uint reserved;
-}
-
 public unsafe partial struct StdVideoVP9Segmentation
 {
 	public StdVideoVP9SegmentationFlags flags;
@@ -13282,19 +12822,6 @@ public unsafe partial struct StdVideoVP9Segmentation
 	public fixed byte segmentation_pred_prob[3];
 	public fixed byte FeatureEnabled[8];
 	public fixed short FeatureData[8 * 4];
-}
-
-public partial struct StdVideoDecodeVP9PictureInfoFlags
-{
-	public uint error_resilient_mode;
-	public uint intra_only;
-	public uint allow_high_precision_mv;
-	public uint refresh_frame_context;
-	public uint frame_parallel_decoding_mode;
-	public uint segmentation_enabled;
-	public uint show_frame;
-	public uint UsePrevFrameMvs;
-	public uint reserved;
 }
 
 public unsafe partial struct StdVideoDecodeVP9PictureInfo
@@ -26918,13 +26445,6 @@ public partial struct VkStridedDeviceAddressNV
 	public ulong strideInBytes;
 }
 
-public partial struct VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV
-{
-	public uint geometryIndex;
-	public uint reserved;
-	public uint geometryFlags;
-}
-
 public partial struct VkClusterAccelerationStructureMoveObjectsInfoNV
 {
 	public ulong srcAccelerationStructure;
@@ -26935,58 +26455,6 @@ public partial struct VkClusterAccelerationStructureBuildClustersBottomLevelInfo
 	public uint clusterReferencesCount;
 	public uint clusterReferencesStride;
 	public ulong clusterReferences;
-}
-
-public partial struct VkClusterAccelerationStructureBuildTriangleClusterInfoNV
-{
-	public uint clusterID;
-	public VkClusterAccelerationStructureClusterFlagsNV clusterFlags;
-	public uint triangleCount;
-	public uint vertexCount;
-	public uint positionTruncateBitCount;
-	public uint indexType;
-	public uint opacityMicromapIndexType;
-	public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV baseGeometryIndexAndGeometryFlags;
-	public ushort indexBufferStride;
-	public ushort vertexBufferStride;
-	public ushort geometryIndexAndFlagsBufferStride;
-	public ushort opacityMicromapIndexBufferStride;
-	public ulong indexBuffer;
-	public ulong vertexBuffer;
-	public ulong geometryIndexAndFlagsBuffer;
-	public ulong opacityMicromapArray;
-	public ulong opacityMicromapIndexBuffer;
-}
-
-public partial struct VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV
-{
-	public uint clusterID;
-	public VkClusterAccelerationStructureClusterFlagsNV clusterFlags;
-	public uint triangleCount;
-	public uint vertexCount;
-	public uint positionTruncateBitCount;
-	public uint indexType;
-	public uint opacityMicromapIndexType;
-	public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV baseGeometryIndexAndGeometryFlags;
-	public ushort indexBufferStride;
-	public ushort vertexBufferStride;
-	public ushort geometryIndexAndFlagsBufferStride;
-	public ushort opacityMicromapIndexBufferStride;
-	public ulong indexBuffer;
-	public ulong vertexBuffer;
-	public ulong geometryIndexAndFlagsBuffer;
-	public ulong opacityMicromapArray;
-	public ulong opacityMicromapIndexBuffer;
-	public ulong instantiationBoundingBoxLimit;
-}
-
-public partial struct VkClusterAccelerationStructureInstantiateClusterInfoNV
-{
-	public uint clusterIdOffset;
-	public uint geometryIndexOffset;
-	public uint reserved;
-	public ulong clusterTemplateAddress;
-	public VkStridedDeviceAddressNV vertexBuffer;
 }
 
 public partial struct VkClusterAccelerationStructureGetTemplateIndicesInfoNV

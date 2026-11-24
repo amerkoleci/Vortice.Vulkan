@@ -34,9 +34,9 @@ partial class CsCodeGenerator
         }
 
         string[] staticUsings = [];
-        if(_options.IsVulkan)
+        if (_options.IsVulkan)
         {
-            staticUsings = ["Vortice.Vulkan.VulkanNative"];
+            staticUsings = ["Vortice.Vulkan.Vulkan"];
         }
 
         // Generate Structures
@@ -65,6 +65,48 @@ partial class CsCodeGenerator
                 || cppClass.Name == "VkAccelerationStructureInstanceKHR"
                 || cppClass.Name == "VkAccelerationStructureSRTMotionInstanceNV"
                 || cppClass.Name == "VkAccelerationStructureMatrixMotionInstanceNV"
+                || cppClass.Name == "StdVideoH264SpsVuiFlags"
+                || cppClass.Name == "StdVideoH264SpsFlags"
+                || cppClass.Name == "StdVideoH264PpsFlags"
+                || cppClass.Name == "StdVideoEncodeH264SliceHeaderFlags"
+                || cppClass.Name == "StdVideoEncodeH264PictureInfoFlags"
+                || cppClass.Name == "StdVideoEncodeH264ReferenceInfoFlags"
+                || cppClass.Name == "StdVideoEncodeH264ReferenceListsInfoFlags"
+                || cppClass.Name == "StdVideoH265HrdFlags"
+                || cppClass.Name == "StdVideoH265VpsFlags"
+                || cppClass.Name == "StdVideoH265ProfileTierLevelFlags"
+                || cppClass.Name == "StdVideoH265SpsVuiFlags"
+                || cppClass.Name == "StdVideoH265SpsFlags"
+                || cppClass.Name == "StdVideoH265ShortTermRefPicSetFlags"
+                || cppClass.Name == "StdVideoH265PpsFlags"
+                || cppClass.Name == "StdVideoEncodeH265SliceSegmentHeaderFlags"
+                || cppClass.Name == "StdVideoEncodeH265ReferenceListsInfoFlags"
+                || cppClass.Name == "StdVideoEncodeH265PictureInfoFlags"
+                || cppClass.Name == "StdVideoEncodeH265ReferenceInfoFlags"
+                || cppClass.Name == "StdVideoDecodeH264PictureInfoFlags"
+                || cppClass.Name == "StdVideoDecodeH264ReferenceInfoFlags"
+                || cppClass.Name == "StdVideoDecodeH265PictureInfoFlags"
+                || cppClass.Name == "StdVideoDecodeH265ReferenceInfoFlags"
+                || cppClass.Name == "StdVideoAV1ColorConfigFlags"
+                || cppClass.Name == "StdVideoAV1TimingInfoFlags"
+                || cppClass.Name == "StdVideoAV1LoopFilterFlags"
+                || cppClass.Name == "StdVideoAV1QuantizationFlags"
+                || cppClass.Name == "StdVideoAV1TileInfoFlags"
+                || cppClass.Name == "StdVideoAV1FilmGrainFlags"
+                || cppClass.Name == "StdVideoAV1SequenceHeaderFlags"
+                || cppClass.Name == "StdVideoDecodeAV1PictureInfoFlags"
+                || cppClass.Name == "StdVideoDecodeAV1ReferenceInfoFlags"
+                || cppClass.Name == "StdVideoEncodeAV1OperatingPointInfoFlags"
+                || cppClass.Name == "StdVideoEncodeAV1PictureInfoFlags"
+                || cppClass.Name == "StdVideoVP9SegmentationFlags"
+                || cppClass.Name == "StdVideoVP9LoopFilterFlags"
+                || cppClass.Name == "StdVideoVP9ColorConfigFlags"
+                || cppClass.Name == "StdVideoEncodeAV1ReferenceInfoFlags"
+                || cppClass.Name == "StdVideoDecodeVP9PictureInfoFlags"
+                || cppClass.Name == "VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV"
+                || cppClass.Name == "VkClusterAccelerationStructureBuildTriangleClusterInfoNV"
+                || cppClass.Name == "VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV"
+                || cppClass.Name == "VkClusterAccelerationStructureInstantiateClusterInfoNV"
                 )
             {
                 continue;
@@ -73,6 +115,21 @@ partial class CsCodeGenerator
             string sourceFileName = Path.GetFileNameWithoutExtension(cppClass.SourceFile);
             if (ShouldIgnoreFile(sourceFileName, _options.IsVulkan))
                 continue;
+
+            bool isStructWithBitFields = false;
+            foreach (CppField cppField in cppClass.Fields)
+            {
+                if (cppField.IsBitField)
+                {
+                    isStructWithBitFields = true;
+                    break;
+                }
+            }
+
+            if (isStructWithBitFields)
+            {
+                throw new NotImplementedException($"Bitfield struct generation is not implemented yet '{cppClass.Name}'.");
+            }
 
             WriteStruct(writer, cppClass, cppClass.Name);
 
@@ -130,6 +187,11 @@ partial class CsCodeGenerator
 
         using (writer.PushBlock($"{visibility} {modifier} struct {structName}{interfaceSubclass}"))
         {
+            //if (isBitFieldStruct)
+            //{
+            //    writer.WriteLine("public uint _bitfield;");
+            //}
+
             foreach (CppField cppField in cppClass.Fields)
             {
                 WriteField(writer, structName, cppField, hasSType, isUnion, isReadOnly);
@@ -168,6 +230,7 @@ partial class CsCodeGenerator
         {
             writer.WriteLine("[FieldOffset(0)]");
         }
+
 
         if (field.Type is CppArrayType arrayType)
         {
@@ -385,7 +448,20 @@ partial class CsCodeGenerator
                 }
             }
 
-            writer.WriteLine($"{modifier} {fieldPrefix}{csFieldType} {csFieldName}{fieldInitializer};");
+            //if (field.IsBitField)
+            //{
+            //    using (writer.PushBlock($"{modifier} {fieldPrefix}{csFieldType} {csFieldName}"))
+            //    {
+            //        writer.WriteLine("[MethodImpl(MethodImplOptions.AggressiveInlining)]");
+            //        using (writer.PushBlock($"readonly get"))
+            //        {
+            //        }
+            //    }
+            //}
+            //else
+            {
+                writer.WriteLine($"{modifier} {fieldPrefix}{csFieldType} {csFieldName}{fieldInitializer};");
+            }
         }
     }
 
